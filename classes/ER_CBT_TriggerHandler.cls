@@ -27,14 +27,8 @@ public class ER_CBT_TriggerHandler extends TriggerHandler {
     public override void afterInsert() {        
         if(isActive('ER_Insert_Contact_Ent_Check')) {
             //Insert contact entitlement on CBT insert only on status Approval - Pending
+            //Commented as part of EBR framework, entitlement creation is moved to New Registration After flow.
             Core_Contact_Business_Type_Handler.insertContactEntitlement(Trigger.new);
-        }
-        //Add this by Sai as IPS CBT is having Pending status issue, this will be removed from here once the IPS CBT is fixed. 
-        if(isActive('ER_Update_Contact_Enttl_Check')){
-            //Remove/add again contact entitlement on CBT update
-            //Core_Contact_Business_Type_Handler.updateContactEntitlement(Trigger.new, (Map<Id, Contact_Business_Types__c>)Trigger.OldMap);
-            
-            Core_Contact_Business_Type_Handler.upsertSubscription(Trigger.new);
         }
     }
     
@@ -42,6 +36,7 @@ public class ER_CBT_TriggerHandler extends TriggerHandler {
         if(isActive('ER_Update_Contact_Enttl_Check')){
             //Remove/add again contact entitlement on CBT update
             Core_Contact_Business_Type_Handler.updateContactEntitlement(Trigger.new, (Map<Id, Contact_Business_Types__c>)Trigger.OldMap);
+            
             Core_Contact_Business_Type_Handler.upsertSubscription(Trigger.new);
         }
         

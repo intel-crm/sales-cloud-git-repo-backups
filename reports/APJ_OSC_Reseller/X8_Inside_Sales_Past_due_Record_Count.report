@@ -34,7 +34,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Lin Lin Khoo,Chok Fui Man,caseen sze,sze chia hsin,Cynthia Chok,Lin Khoo,Tony Ferrolino Jr,siu chone cheah,Sae Wah Tor,Erica Tor,Arun Raghavan,Kelvin Lum,Takahiro Katayama</value>
+            <value>Tony Ferrolino Jr,siu chone cheah,Sae Wah Tor,Faisal Qamar,Erica Tor,Arun Raghavan,Kelvin Lum,Takahiro Katayama,Simon Wm Chan,Caseen Sze</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -75,6 +75,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

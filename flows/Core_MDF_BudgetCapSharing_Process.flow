@@ -241,6 +241,37 @@
                     <stringValue>Core_MDF_IPA_Budget_Type_Cap</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.RecordType.DeveloperName</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Core_MDF_Channel_MDF_Budget_Type_Cap</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
@@ -280,7 +311,7 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>AND([Core_MDF_Budget_Cap__c].RecordType.DeveloperName &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos;,OR(
+                <stringValue>AND([Core_MDF_Budget_Cap__c].RecordType.DeveloperName == &apos;Core_MDF_CCP_Budget_Cap&apos;,OR(
 	ISNEW(),
 	ISCHANGED([Core_MDF_Budget_Cap__c].OwnerId)	
 ))</stringValue>
@@ -288,12 +319,12 @@
         </processMetadataValues>
         <name>formula_myRule_3</name>
         <dataType>Boolean</dataType>
-        <expression>AND({!myVariable_current.RecordType.DeveloperName} &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos;,OR(
+        <expression>AND({!myVariable_current.RecordType.DeveloperName} == &apos;Core_MDF_CCP_Budget_Cap&apos;,OR(
 	ISNEW(),
 	ISCHANGED({!myVariable_current.OwnerId})	
 ))</expression>
     </formulas>
-    <interviewLabel>Core_MDF_BudgetCapSharing_Process-6_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_BudgetCapSharing_Process-7_InterviewLabel</interviewLabel>
     <label>Core_MDF_BudgetCapSharing_Process</label>
     <processMetadataValues>
         <name>ObjectType</name>

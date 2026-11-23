@@ -40,7 +40,7 @@ public class Core_Opp_Supp_Statusupdate_Test {
         catch(Exception e){
             Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'Error in test class ',Core_Details__c = e.getMessage(), Core_Origin__c='Core_Opp_Supp_Statusupdate_Test', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Sales CRM');
             insert logEntry;
-            
+
         }
         Test.stopTest();
         SYSTEM.assertEquals(TRUE, true);

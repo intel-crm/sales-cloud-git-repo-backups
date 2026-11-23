@@ -9,6 +9,10 @@
         <value>Backend_Systems</value>
     </caseValues>
     <fields>
+        <label><!-- Backend Connection String --></label>
+        <name>Core_IPS_Backend_Connection_String__c</name>
+    </fields>
+    <fields>
         <label><!-- Backend System URL --></label>
         <name>Core_IPS_Backend_System_URL__c</name>
     </fields>

@@ -225,13 +225,13 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Verify_Valid_Record</name>
-        <label>Verify Valid Record</label>
+        <name>Verify_valid_record</name>
+        <label>Verify valid record</label>
         <locationX>2703</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Valid_Record</name>
+            <name>valid_record</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record__Prior</leftValueReference>
@@ -250,7 +250,7 @@
             <connector>
                 <targetReference>Get_BT_Records</targetReference>
             </connector>
-            <label>Valid Record</label>
+            <label>valid record</label>
         </rules>
     </decisions>
     <description>This flow automatically creates Business Types and Entitlement Matrix Records while creating Entitlement Detail</description>
@@ -673,7 +673,7 @@
         <locationX>2577</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Verify_Valid_Record</targetReference>
+            <targetReference>Verify_valid_record</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>

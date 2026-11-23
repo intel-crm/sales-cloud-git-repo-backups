@@ -153,6 +153,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim ID </displayNameOverride>
             <field>Id</field>
             <table>PartnerFundClaim</table>
         </columns>
@@ -440,6 +441,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Request.Core_MDF_Activity_Types__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>BU Split Percentage</displayNameOverride>
             <field>Request.Core_MDF_BU_Percent_txt__c</field>
             <table>PartnerFundClaim</table>
@@ -461,6 +467,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_Options_Nm__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride> Is Outcome-Based?</displayNameOverride>
+            <field>Request.Core_MDF_Is_Outcome_Based_Ind__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Campaign ID</displayNameOverride>
             <field>Core_MDF_Campaign_Id__c</field>
             <table>PartnerFundClaim</table>
@@ -468,11 +485,6 @@
         <masterLabel>Partner Fund Claims</masterLabel>
     </sections>
     <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type_Options_Nm__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</field>
@@ -484,5 +496,23 @@
             <table>PartnerFundClaim</table>
         </columns>
         <masterLabel>Claims</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_VAT_CreatedBy_Nm__c</field>
+            <table>PartnerFundClaim.Claim_VAT_Documents__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Last_VAT_ModifiedBy_Nm__c</field>
+            <table>PartnerFundClaim.Claim_VAT_Documents__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account_nm__c</field>
+            <table>PartnerFundClaim.Claim_VAT_Documents__r</table>
+        </columns>
+        <masterLabel>Payment Documents</masterLabel>
     </sections>
 </ReportType>

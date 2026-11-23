@@ -26,16 +26,8 @@
         <titleSize>18</titleSize>
     </chart>
     <filter>
-        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>Case.Core_Case_Resolution_Reason__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Top_Opps_NA15</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_HC_Help_Needed__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

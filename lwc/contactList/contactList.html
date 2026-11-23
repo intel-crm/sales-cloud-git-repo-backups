@@ -1,0 +1,32 @@
+<template>
+    <template if:true={lessonlyusers.data}>
+        <template for:each={lessonlyusers.data} for:item="lessonlyuser">
+            
+            <a
+                href="#"
+                key={lessonlyuser.User_Id__c}
+                data-contact-id={lessonlyuser.User_Id__c}
+                onclick={handleSelect}
+            >
+                <lightning-layout>
+                    <lightning-formatted-name ></lightning-formatted-name>
+                    <lightning-layout-item padding="horizontal-small">
+                        <p>{lessonlyuser.User_Id__c}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </a>
+        </template>
+    </template>
+
+    <br><br>
+    <div style="font: size 40px;">
+        <h2>List of deleted users from Seismic and Lessonly</h2></div>
+    <template if:true={lessonlyusers.data}>
+        <lightning-datatable data={lessonlyusers.data} 
+                            columns={columns}>
+        </lightning-datatable>
+    </template>
+    <template if:true={error}>
+        {error}
+    </template>
+</template>

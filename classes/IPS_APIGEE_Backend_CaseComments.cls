@@ -7,11 +7,13 @@
 *   
 ************************************************/
 
-public without sharing class IPS_APIGEE_Backend_CaseComments implements System.Queueable, Database.AllowsCallouts{ // TWC745-9117 - ATHR Critical fixed by Tushar
+public without sharing class IPS_APIGEE_Backend_CaseComments implements System.Queueable, Database.AllowsCallouts{ // 'without sharing' added by Tushar
+    
     set<Id> caseCommentIds= new set<Id>();
     
     public IPS_APIGEE_Backend_CaseComments(set<Id> ids){
-        caseCommentIds= ids ;
+        if(ids!=null)
+            caseCommentIds= ids ;
     } 
     
     public void execute(System.QueueableContext ctx) {
@@ -19,26 +21,34 @@ public without sharing class IPS_APIGEE_Backend_CaseComments implements System.Q
         final string endPointUrl;
         string strDetails;     
         List<Core_IPS_Case_Comments__c> CaseCommentsToProcess;
+        
         //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
-       
-        
+        //Getting endpoint from custom setting
+        //endPointUrl = Core_IPS_System_Credentails_Apigee__c.getInstance('Core_IPS_CaseComment_Update').Core_IPS_EndPointURL__c;
         endPointUrl= 'callout:Core_IPS_Case_Create_Update_Comment_Attachment_Promote_Depromote'+'?action=attachmentupdate';
+        System.debug('<<<<<<<<<<ASPN-PAM Backend case comment TEST1>>>>>>>>>'+endPointUrl);
+	if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isAccessible()){
         CaseCommentsToProcess =[SELECT Id,Core_IPS_Case__c FROM Core_IPS_Case_Comments__c where id IN:caseCommentIds];
-        
-        for(Core_IPS_Case_Comments__c cc :CaseCommentsToProcess ){
-            try{
-                //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change 
-                //Preparing XML body
-                xmlbody=generateCaseComments(cc.Id,cc.Core_IPS_Case__c);
-                //Sending HttpRequest
-                sendXMLRequest(xmlbody,endPointUrl); 
-            }
-            catch(System.CalloutException ex){
-                strDetails += '\n A callout Exception Occurred While sending request \n';
-                Core_Log_Entry.logEntryWithException('SFDC','IPS',null,'warn','IPS JIRA,HSD,RTC Integration issue',strDetails,null,'CaseComment',null,ex);
-            }
         }
-        
+        system.debug('CaseCommentsToProcess --->'+CaseCommentsToProcess);
+        if(CaseCommentsToProcess!=null){
+            for(Core_IPS_Case_Comments__c cc :CaseCommentsToProcess ){
+            try{
+                //string casecommentIntegrationName = Core_IPS_System_Credentails_Apigee__c.getInstance('Core_IPS_CaseComment_Update').Name;
+                System.debug('<<<<<<<<<<ASPN-PAM Backend case comment TEST2>>>>>>>>>');
+                    //Generating access token
+                //string accesstoken = Core_IPS_APIGEE_Utility.generateAccessToken1(casecommentIntegrationName);
+                    //Preparing XML body
+                    xmlbody=generateCaseComments(cc.Id,cc.Core_IPS_Case__c);
+                    //Sending HttpRequest//TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
+                sendXMLRequest(xmlbody,endPointUrl); 
+                }
+                catch(System.CalloutException ex){
+                    strDetails += '\n A callout Exception Occurred While sending request \n';
+                    Core_Log_Entry.logEntryWithException('SFDC','IPS',null,'warn','IPS JIRA,HSD,RTC Integration issue',strDetails,null,'CaseComment',null,ex);
+                }
+            }
+        } 
     }
     
 /*************************************************
@@ -85,19 +95,20 @@ public without sharing class IPS_APIGEE_Backend_CaseComments implements System.Q
 *               And after Token availability , making one request to APIGEE to post JIRA,HSD,RTC integrations with XML we have. 
 * Author : Karthik Bandla
 ***************************************************/
-    private static void sendXMLRequest(String body,string endPointUrl){//TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
+    public static void sendXMLRequest(String body,string endPointUrl){//TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
         //added By Hassan for Authorization issue Fix.
         String ipsAuthorization = System.Label.IPS_Authorization;           
         try{
-            
+            System.debug('<<<<<<<<<<ASPN-PAM Backend case comment TEST3>>>>>>>>>');
             //Sending XML request
             HttpRequest req = new HttpRequest();
             req.setEndpoint(endPointUrl);
             req.setMethod('POST');
             req.setHeader('Content-Type','application/xml');
-            
+            //req.setHeader(ipsAuthorization,'Bearer ' + accesstoken);
             req.setBody(body);
             HTTPResponse response =  new Http().send(req);
+        
             
             // If error occured creating log 
             if(response.getStatusCode()!=200){

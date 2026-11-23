@@ -1,0 +1,108 @@
+<apex:page controller="PRM_DownloadVFController" showHeader="false" sidebar="false" contentType="{!contentTypeVar}" readonly="true" language="en-US">
+    <script type="text/javascript">
+        function CloseWindow()
+        { 
+        window.close();
+        }
+    
+    </script>
+    <apex:pageMessages id="pbm"/>
+    <apex:form >
+        <apex:outputPanel rendered="{!If(AND(salesWrapperVF != null, !ISBLANK(salesWrapperVF), !isExport) ,true,false) }">
+            <table>
+                <tr>
+                <th>Account Number</th>
+                <th>Invoice Number</th>
+                <th>Invoice Date</th>
+                <th>Form Factor</th>
+                <th>Product ordering code</th>
+                <th>Product code number</th>
+                <th>Invoiced Units</th>
+                <th>Distributor</th>
+                <th>Sales Type</th>
+                <th>Measurement Period</th>
+                </tr>
+                <apex:repeat value="{!salesWrapperVF}" var="key" id="theRepeat">
+                    <apex:repeat value="{!salesWrapperVF[key]}" var="salesData" id="theRepeat">
+                        <tr>
+                            <td>{!salesData.account_number}</td>
+                            <td>{!salesData.invoice_number}</td>
+                            <td>{!salesData.form_factor}</td>
+                            <td>{!salesData.invoice_date}</td>
+                            <td>{!salesData.form_factor}</td>
+                            <td>{!salesData.productOrderingCode}</td>
+                            <td>{!salesData.productCodeNumber}</td>
+                            <td>{!salesData.sales_out_units}</td>
+                            <td>{!salesData.distributor_name}</td>
+                            <td>{!salesData.sales_type}</td>
+                            <td>{!salesData.Measurement_Period}</td>
+                        </tr>
+                    </apex:repeat>
+                </apex:repeat>
+            </table>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!If(AND(trainingWrapperVF != null, !ISBLANK(trainingWrapperVF), !isExport) ,true,false) }">
+            <table>
+                <tr>
+                <th>Account Number</th>
+                <th>Contact Name</th>
+                <th>Training Id</th>
+                <th>Training Name</th>
+                <th>Completion Data</th>
+                <th>Training Credits</th>
+                <th>Measurement Period</th>
+                </tr>
+                <apex:repeat value="{!trainingWrapperVF}" var="key" id="training1">
+                    <apex:repeat value="{!trainingWrapperVF[key]}" var="trainingsData" id="training2">
+                        <tr>
+                            <td>{!trainingsData.account_number}</td>
+                            <td>{!trainingsData.contact_name}</td>
+                            <td>{!trainingsData.training_id}</td>
+                            <td>{!trainingsData.training_name}</td>
+                            <td>{!trainingsData.training_completion_date}</td>
+                            <td>{!trainingsData.training_credits}</td>
+                            <td>{!trainingsData.Measurement_Period}</td>
+                        </tr>
+                    </apex:repeat>
+                </apex:repeat>
+            </table>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!If(AND(opidtrainingWrapperVF != null, !ISBLANK(opidtrainingWrapperVF), !isExport) ,true,false) }">
+            <table>
+                <tr>
+                <th>Account Number</th>
+                <th>Invoice Number</th>
+                <th>Invoice Date</th>
+                <th>Form Factor</th>
+                <th>Product ordering code</th>
+                <th>Product code number</th>
+                <th>Invoiced Units</th>
+                <th>Distributor</th>
+                <th>Sales Type</th>
+                <th>Measurement Period</th>
+                </tr>
+                <apex:repeat value="{!opidtrainingWrapperVF}" var="key" id="opidtraining1">
+                    <apex:repeat value="{!opidtrainingWrapperVF[key]}" var="opidTrainingsData" id="training2">
+                        <tr>
+                            <td>{!opidTrainingsData.account_number}</td>
+                            <td>{!opidTrainingsData.contact_name}</td>
+                            <td>{!opidTrainingsData.training_id}</td>
+                            <td>{!opidTrainingsData.training_name}</td>
+                            <td>{!opidTrainingsData.training_completion_date}</td>
+                            <td>{!opidTrainingsData.training_credits}</td>
+                            <td>{!opidTrainingsData.Measurement_Period}</td>
+                        </tr>
+                    </apex:repeat>
+                </apex:repeat>
+            </table>
+        </apex:outputPanel>
+        <center>
+            <apex:commandButton action="{!performConfirmAction}"
+                rendered="{!If( AND( OR( AND(salesWrapperVF != null, !ISBLANK(salesWrapperVF)), AND(opidtrainingWrapperVF != null, !ISBLANK(opidtrainingWrapperVF)), AND(trainingWrapperVF != null, !ISBLANK(trainingWrapperVF)) ) , isExport), true, false)}" 
+                value="Confim"
+                id="theButton"
+                oncomplete="CloseWindow();"
+            ></apex:commandButton>
+        </center>
+    </apex:form>
+</apex:page>

@@ -153,7 +153,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('PSG_Approval_Check')){
                     PRM_PSG_RegistrationReqUtility.checkEVAndContactExistance((List<PRM_Registration_Request__c>)Trigger.new, null);         
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/
                 //LA check needs to be implemented for admin reg req at time of insertion (for AccountCreateReq--> in before update)
                 if(isActive('Legal_Agreement_Check')){
                     //String recordTypeId == Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId()
@@ -174,7 +174,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('Update_Submitted_Date')){
                     PRM_RegistrationRequestUtility.updateSubmittedDate((List<PRM_Registration_Request__c>)Trigger.new);
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/
                 if(isActive('Auto_Approve_User_Registration') && PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun==false){            
                     PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun=true;
                     PRM_RegistrationRequestUtility.autoApproveEndUserRegistration((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap, isSysAccMap, mapAccIdToListContact , mapAccount, acmList);
@@ -317,7 +317,12 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                         Core_IPA_Partner_Role__c,
                         Name,
                         Core_Intel_Partner_Alliance_PartnerGroup__c,
-                        Core_Deactivated__c
+                        Core_Deactivated__c,
+                        (SELECT Core_Partner_Account_Id__c,
+                                Primary_Account__c,
+                                Core_Partner_Account_Id__r.Is_Partner_Admin_Exist__c
+                         FROM Partner_Account_Group_Members1__r
+                         WHERE Core_Partner_Account_Id__c != null AND Core_Inactive_Ind__c = false)
                         FROM Account 
                         WHERE id IN: setExistingAcc
                     ]);
@@ -398,7 +403,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('PSG_Approval_Check')){
                     PRM_PSG_RegistrationReqUtility.checkEVAndContactExistance((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap);
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/
                 
                 
                 if(isActive('Legal_Agreement_Check')){
@@ -407,7 +412,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                  
                 
                 if(isActive('Partner_Relationship') && IPAfirstRun){
-                 PRM_RegistrationRequestUtility.partnerrelationship((List<PRM_Registration_Request__c>)Trigger.new, mapAccountIdTOListACR, contMap, (Map<Id,PRM_Registration_Request__c>)Trigger.oldMap,mapOfAccIdPartnerRole);
+                PRM_RegistrationRequestUtility.partnerrelationship((List<PRM_Registration_Request__c>)Trigger.new, mapAccountIdTOListACR, contMap, (Map<Id,PRM_Registration_Request__c>)Trigger.oldMap,mapOfAccIdPartnerRole, mapAccount);
                     IPAfirstRun = false;
                 }   
                 //Rahul added for US626612/US638396
@@ -473,7 +478,9 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
             }
             else {
                 //Moved code from after update to after insert as part of CidaaS requirments - atb
-                Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
+                //ATHR Fix - TWC729-9556 - JB
+                //Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
+                Id accCreateRequestId = PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
                 List<PRM_Registration_Request__c> listREgReqForIQR= new List<PRM_Registration_Request__c>();
                 for (PRM_Registration_Request__c regReq : (List<PRM_Registration_Request__c>)Trigger.new) {
                     if(regReq.PRM_Channel_Program_Level_txt__c == 'Intel Quote Request'

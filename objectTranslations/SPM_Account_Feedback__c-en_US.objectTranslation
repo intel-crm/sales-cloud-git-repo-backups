@@ -50,24 +50,20 @@
         <label><!-- Director Feedback --></label>
         <name>CRM_CST_DR_Feedback__c</name>
         <picklistValues>
-            <masterLabel>Add to Intel led</masterLabel>
-            <translation><!-- Add to Intel led --></translation>
+            <masterLabel>Add to Intel Covered</masterLabel>
+            <translation><!-- Add to Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Change Ownership</masterLabel>
             <translation><!-- Change Ownership --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Other Led</masterLabel>
-            <translation><!-- Change to Other Led --></translation>
+            <masterLabel>Change to Indirect Covered</masterLabel>
+            <translation><!-- Change to Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Partner</masterLabel>
-            <translation><!-- Change to Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Change to Uncovered</masterLabel>
-            <translation><!-- Change to Uncovered --></translation>
+            <masterLabel>Change to Not Covered</masterLabel>
+            <translation><!-- Change to Not Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partial</masterLabel>
@@ -99,47 +95,47 @@
         <name>CRM_CST_Is_Active_Planning_Period__c</name>
     </fields>
     <fields>
-        <label><!-- New Semi-Annual Account Category --></label>
+        <label><!-- New Account Category --></label>
         <name>CRM_CST_New_Core_Account_Category__c</name>
         <picklistValues>
-            <masterLabel>Distributors</masterLabel>
-            <translation><!-- Distributors --></translation>
+            <masterLabel>Device Builder - MNC</masterLabel>
+            <translation><!-- Device Builder - MNC --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Region Branded Disti</masterLabel>
-            <translation><!-- Region Branded Disti --></translation>
+            <masterLabel>Device Builder - Regional OxM</masterLabel>
+            <translation><!-- Device Builder - Regional OxM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Region Direct OxM Accts (non-T30)</masterLabel>
-            <translation><!-- Region Direct OxM Accts (non-T30) --></translation>
+            <masterLabel>Distributors (IA)</masterLabel>
+            <translation><!-- Distributors (IA) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Region Named B2B End User</masterLabel>
-            <translation><!-- Region Named B2B End User --></translation>
+            <masterLabel>End Customer</masterLabel>
+            <translation><!-- End Customer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Region Named Billings Accts</masterLabel>
-            <translation><!-- Region Named Billings Accts --></translation>
+            <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
+            <translation><!-- Hyperscaler (AWS, Azure, GCP) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Regional Co-Sell Partners</masterLabel>
             <translation><!-- Regional Co-Sell Partners --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Regional GSI/ISV/MSP</masterLabel>
-            <translation><!-- Regional GSI/ISV/MSP --></translation>
+            <masterLabel>Reseller - Branded Disti</masterLabel>
+            <translation><!-- Reseller - Branded Disti --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Regional Retailer</masterLabel>
-            <translation><!-- Regional Retailer --></translation>
+            <masterLabel>Reseller - Named Billing Accounts</masterLabel>
+            <translation><!-- Reseller - Named Billing Accounts --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Strategic Acct/Country Opportunity</masterLabel>
-            <translation><!-- Strategic Acct/Country Opportunity --></translation>
+            <masterLabel>Reseller - Retailers</masterLabel>
+            <translation><!-- Reseller - Retailers --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Top 30 Global Billings</masterLabel>
-            <translation><!-- Top 30 Global Billings --></translation>
+            <masterLabel>Solution Enabler (SI, ISV, CSP, MSP)</masterLabel>
+            <translation><!-- Solution Enabler (SI, ISV, CSP, MSP) --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -154,8 +150,8 @@
         <label><!-- VP Feedback --></label>
         <name>CRM_CST_VP_Feedback__c</name>
         <picklistValues>
-            <masterLabel>Add to Intel led</masterLabel>
-            <translation><!-- Add to Intel led --></translation>
+            <masterLabel>Add to Intel Covered</masterLabel>
+            <translation><!-- Add to Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Approved</masterLabel>
@@ -166,16 +162,12 @@
             <translation><!-- Change Ownership --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Other Led</masterLabel>
-            <translation><!-- Change to Other Led --></translation>
+            <masterLabel>Change to Indirect Covered</masterLabel>
+            <translation><!-- Change to Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Partner</masterLabel>
-            <translation><!-- Change to Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Change to Uncovered</masterLabel>
-            <translation><!-- Change to Uncovered --></translation>
+            <masterLabel>Change to Not Covered</masterLabel>
+            <translation><!-- Change to Not Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partial</masterLabel>
@@ -191,7 +183,7 @@
         <name>CST_Feedback_Propagated_By__c</name>
     </fields>
     <fields>
-        <label><!-- Semi-Annual Temp Account Category --></label>
+        <label><!-- Account Category --></label>
         <name>Category__c</name>
     </fields>
     <fields>
@@ -202,20 +194,16 @@
         <label><!-- New Account Primary Coverage --></label>
         <name>Coverage_Type__c</name>
         <picklistValues>
-            <masterLabel>Intel-led Account</masterLabel>
-            <translation><!-- Intel-led Account --></translation>
+            <masterLabel>Indirect Covered</masterLabel>
+            <translation><!-- Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not Covered Account</masterLabel>
-            <translation><!-- Not Covered Account --></translation>
+            <masterLabel>Intel Covered</masterLabel>
+            <translation><!-- Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other-led Account</masterLabel>
-            <translation><!-- Other-led Account --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner-led Account</masterLabel>
-            <translation><!-- Partner-led Account --></translation>
+            <masterLabel>Not Covered</masterLabel>
+            <translation><!-- Not Covered --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -250,24 +238,20 @@
         <label><!-- Feedback --></label>
         <name>Feedback__c</name>
         <picklistValues>
-            <masterLabel>Add to Intel led</masterLabel>
-            <translation><!-- Add to Intel led --></translation>
+            <masterLabel>Add to Intel Covered</masterLabel>
+            <translation><!-- Add to Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Change Ownership</masterLabel>
             <translation><!-- Change Ownership --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Other Led</masterLabel>
-            <translation><!-- Change to Other Led --></translation>
+            <masterLabel>Change to Indirect Covered</masterLabel>
+            <translation><!-- Change to Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Change to Partner</masterLabel>
-            <translation><!-- Change to Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Change to Uncovered</masterLabel>
-            <translation><!-- Change to Uncovered --></translation>
+            <masterLabel>Change to Not Covered</masterLabel>
+            <translation><!-- Change to Not Covered --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -306,10 +290,6 @@
         <picklistValues>
             <masterLabel>APJ Hosted Sales Group</masterLabel>
             <translation><!-- APJ Hosted Sales Group --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ India Sales Group</masterLabel>
-            <translation><!-- APJ India Sales Group --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>APJ Japan Sales Group</masterLabel>
@@ -372,8 +352,12 @@
             <translation><!-- EMEA Sales Group --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Global Solutions &amp; Services Sales Group</masterLabel>
-            <translation><!-- Global Solutions &amp; Services Sales Group --></translation>
+            <masterLabel>India Partner Led</masterLabel>
+            <translation><!-- India Partner Led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India Sales Group</masterLabel>
+            <translation><!-- India Sales Group --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC Hosted Sales Group</masterLabel>

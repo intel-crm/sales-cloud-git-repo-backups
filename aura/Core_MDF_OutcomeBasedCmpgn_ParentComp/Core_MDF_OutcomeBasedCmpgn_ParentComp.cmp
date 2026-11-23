@@ -11,17 +11,25 @@
     <aura:attribute name="selrecordtypeDeveloperName" type="String"/>
     
     <aura:attribute name="recordTypesFetched" type="Boolean" default="false"/>
+    <aura:attribute name="permsFetched" type="Boolean" default="false"/>
+    <!-- Stores permissions fetched from server: { hasIPA:Boolean, hasCCF:Boolean, hasDCF:Boolean } -->
+    <aura:attribute name="userCreationPermissions" type="Object" />
+    <!-- Internal flag to avoid duplicate permission fetches during click flow -->
+    <aura:attribute name="_permsReloading" type="Boolean" default="false" />
     <aura:attribute name="showNewButton" type="Boolean" default="false"/>
     <aura:attribute name="externalper" type="Boolean" default="false"/>
+    <aura:attribute name="showTypeSelector" type="Boolean" default="false"/>
+    <aura:attribute name="modalOverlay" type="Object" default="null" description="Stores reference to modal overlay for closing from child component"/>
     
     <lightning:navigation aura:id="navService" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
     <lightning:overlayLibrary aura:id="overlayLib"/>
 
     <aura:if isTrue="{!v.listviewpage}">
         <lightning:card title="{!$Label.c.Core_MDF_OutcomeBased_Campaign_Page_Header}" iconName="standard:partner_fund_request">
             <aura:set attribute="actions">
-                <aura:if isTrue="{!and(v.showNewButton, v.recordTypesFetched)}">
+                <aura:if isTrue="{!and(v.showNewButton, v.permsFetched)}">
                     <lightning:button variant="brand"
                                       label="{!$Label.c.Core_MDF_New}"
                                       title="{!$Label.c.Core_MDF_NewOutcomeBasedCampaign}"

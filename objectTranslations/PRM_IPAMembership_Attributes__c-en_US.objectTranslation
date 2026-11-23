@@ -14,6 +14,14 @@
         <relationshipLabel><!-- IPA Membership Attributes --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Activity earning excluded Date --></label>
+        <name>PRM_Activity_earning_excluded_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity earning excluded --></label>
+        <name>PRM_Activity_earning_excluded__c</name>
+    </fields>
+    <fields>
         <label><!-- Branded Point earning excluded Date --></label>
         <name>PRM_Branded_Point_earning_excl_Dt__c</name>
     </fields>
@@ -22,12 +30,28 @@
         <name>PRM_Branded_Point_earning_excl_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Client Business excluded Date --></label>
+        <name>PRM_ClientBusinessexcluded_StartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Business earning excluded --></label>
+        <name>PRM_Client_Business_earning_excluded__c</name>
+    </fields>
+    <fields>
         <label><!-- Component Point earning excluded Date --></label>
         <name>PRM_Component_Point_earning_excl_Dt__c</name>
     </fields>
     <fields>
         <label><!-- Component Point earning excluded --></label>
         <name>PRM_Component_Point_earning_excl_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ethernet Business earning excluded --></label>
+        <name>PRM_Ethernet_Business_earning_excluded__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ethernet Business excluded Date --></label>
+        <name>PRM_Ethernet_BusinessexcludedStartDt__c</name>
     </fields>
     <fields>
         <label><!-- Inactive Indicator --></label>
@@ -104,6 +128,14 @@
             <masterLabel>Web</masterLabel>
             <translation><!-- Web --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Server Business earning excluded --></label>
+        <name>PRM_Server_Business_earning_excluded__c</name>
+    </fields>
+    <fields>
+        <label><!-- Server Business excluded Date --></label>
+        <name>PRM_Server_Business_excluded_Start_Date__c</name>
     </fields>
     <recordTypes>
         <description><!-- IPA Membership Attributes for Location accounts --></description>

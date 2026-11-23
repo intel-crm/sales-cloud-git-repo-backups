@@ -15,7 +15,9 @@ public without sharing class Core_OppChildViewController { //TWC3123-5376: codes
     public boolean isNewOppClicked { get; set; }
         
     public void setSelectedRecordType2() {
+        system.debug('INSIDE SELECTED RECORDTYPE FUNCTION'+this.selectedRecordType);
         this.selectedRecordType2 = this.selectedRecordType.escapeHtml4();
+        system.debug('SELECTED RECORDTYPE2 LINE 19:'+this.selectedRecordType2);
     }
     
     
@@ -27,9 +29,8 @@ public without sharing class Core_OppChildViewController { //TWC3123-5376: codes
         newOppId='';
         urlparams = ApexPages.currentPage().getParameters();
         theme = UserInfo.getUiThemeDisplayed(); 
-        //System.debug('***UrlParams - '+urlparams);
-        //System.debug('**Theme - '+theme);
-        //System.debug('**oppid - '+solutionGroup);
+        
+       
         List<SelectOption> recordTypeOptions = new List<SelectOption>();
         string OppObjName = 'Opportunity';
         string dealOpp = 'Deal Opportunity';
@@ -41,8 +42,11 @@ public without sharing class Core_OppChildViewController { //TWC3123-5376: codes
         {
             recordTypeOptions.add(new SelectOption(rt.Id,rt.name));
         }
+        system.debug('RECORDTYPE OPTIONS:'+recordTypeOptions);
         SelectOption defaultOption = recordTypeOptions[0];
+        system.debug('SELECTED RECORDTYPE DEFAULT:'+defaultOption);
         this.selectedRecordType2 = defaultOption.getValue().escapeHtml4();
+         system.debug('SELECTED RECORDTYPE LINE 45:'+selectedRecordType2);
     }
     
     // Getter method for our sub-opportunity list
@@ -65,16 +69,14 @@ public without sharing class Core_OppChildViewController { //TWC3123-5376: codes
     
     // Getter method for the URL for the "New Sub Opportunity" button
     public String getNewOppUrl() {
-        //System.debug('**Theme - '+theme);
-        //System.debug('**this.selectedRecordType2 - '+this.selectedRecordType2);
+        system.debug('OPP URL:'+this.selectedRecordType2);
         //if(theme == 'Theme3'){          
-       string url = '/006/e?CF' + Label.Core_Opp_Solution_Group_Field_Id + '=' + EncodingUtil.urlEncode(solutionGroup.Name, 'UTF-8') +
-            '&CF' + Label.Core_Opp_Solution_Group_Field_Id + '_lkid=' + EncodingUtil.urlEncode(solutionGroup.Id, 'UTF-8') +
-            '&retURL=%2F' + EncodingUtil.urlEncode(solutionGroup.Id, 'UTF-8') +
-            '&accid=' + EncodingUtil.urlEncode(solutionGroup.AccountId, 'UTF-8') +
-            '&RecordType=' + EncodingUtil.urlEncode(this.selectedRecordType2, 'UTF-8') +
-            '&ent=Opportunity';       
-        return url;
+        return '/006/e?CF' + Label.Core_Opp_Solution_Group_Field_Id + '=' + EncodingUtil.urlEncode(solutionGroup.Name, 'UTF-8') +
+            '&CF' + Label.Core_Opp_Solution_Group_Field_Id + '_lkid=' + solutionGroup.Id +
+            '&retURL=%2F' + solutionGroup.Id +
+            '&accid=' + solutionGroup.AccountId +
+            '&RecordType=' + this.selectedRecordType2 +
+            '&ent=Opportunity';
         // }
         //return '';
     }

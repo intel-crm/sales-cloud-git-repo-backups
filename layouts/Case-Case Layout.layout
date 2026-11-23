@@ -86,8 +86,8 @@
                 <field>Core_IPS_GEC_Flag__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_BES_Promote_Status__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -260,7 +260,7 @@
             <quickActionName>FeedItem.PollPost</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
-            <quickActionName>Case.SendEmail</quickActionName>
+            <quickActionName>SendEmail</quickActionName>
         </quickActionListItems>
     </quickActionList>
     <relatedContent>
@@ -304,21 +304,6 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedAttachmentList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Status__c</fields>
-        <fields>Sub_Status__c</fields>
-        <fields>Owner__c</fields>
-        <fields>Last_Assigned_Queue__c</fields>
-        <fields>Escalated_Level__c</fields>
-        <fields>From__c</fields>
-        <fields>Until__c</fields>
-        <fields>Total_Hours__c</fields>
-        <fields>Total_Days__c</fields>
-        <relatedList>Status_Ownership_Duration__c.Parent__c</relatedList>
-        <sortField>From__c</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedObjects>ContactId</relatedObjects>
     <relatedObjects>AccountId</relatedObjects>

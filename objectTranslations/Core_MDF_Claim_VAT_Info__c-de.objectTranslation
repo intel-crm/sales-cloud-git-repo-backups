@@ -65,12 +65,16 @@
         <help>Zeigt den Anspruch an, der dem Zahlungsdokument zugeordnet ist</help>
         <label>Antrag</label>
         <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Payment Documents --></relationshipLabel>
+        <relationshipLabel><!-- Payment Documents (Claim) --></relationshipLabel>
     </fields>
     <fields>
         <help>Zeigt die Art des Zahlungsdokuments an, das vom Kunden hochgeladen werden muss.</help>
         <label>Dokumenttyp</label>
         <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Amount --></label>
+        <name>Core_MDF_Invoice_Amt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -137,6 +141,10 @@
         <name>Core_MDF_VAT_Amt__c</name>
     </fields>
     <fields>
+        <label>Kommentar zur Mehrwertsteuerstornierung</label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_VAT_CreatedBy_Nm__c</name>
     </fields>
@@ -163,7 +171,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Submit for Approval Record Type --></description>
-        <label><!-- Submit for Approval --></label>
+        <label>Zur Genehmigung einreichen</label>
         <name>Core_MDF_Submit_for_Approval</name>
     </recordTypes>
     <validationRules>

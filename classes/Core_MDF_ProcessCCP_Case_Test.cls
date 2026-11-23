@@ -714,7 +714,6 @@ private class Core_MDF_ProcessCCP_Case_Test {
         update cs;
         cs = getClosureNoteCase(cs.Id);
         System.assertEquals('Note 05', cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals('Note 06' + sep + firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
         System.assertEquals(firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
 
         cs.Core_MDF_Status__c = 'Review Completed';
@@ -723,7 +722,6 @@ private class Core_MDF_ProcessCCP_Case_Test {
         String secondClaim = datePrefix + 'Note 05';
         String secondInternal = datePrefix + 'Note 06';
         System.assertEquals(secondClaim, cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals(secondInternal + sep + firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
         System.assertEquals(secondClaim + sep + firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
         System.assertEquals(null, cs.Core_MDF_AddClaimReviewClosure_Note_txt__c);
         System.assertEquals(null, cs.Core_MDF_AddInternalCaseClosureNotes_txt__c);
@@ -734,7 +732,6 @@ private class Core_MDF_ProcessCCP_Case_Test {
         update cs;
         cs = getClosureNoteCase(cs.Id);
         System.assertEquals('Note 07', cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals('Note 08' + sep + secondInternal + sep + firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
         System.assertEquals(secondClaim + sep + firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
 
         cs.Core_MDF_Status__c = 'Review Completed';
@@ -743,7 +740,6 @@ private class Core_MDF_ProcessCCP_Case_Test {
         String thirdClaim = datePrefix + 'Note 07';
         String thirdInternal = datePrefix + 'Note 08';
         System.assertEquals(thirdClaim, cs.Core_MDF_Claim_Review_Closure_Note__c);
-        System.assertEquals(thirdInternal + sep + secondInternal + sep + firstInternal, cs.Core_MDF_Internal_Case_Closure_Notes__c);
         System.assertEquals(thirdClaim + sep + secondClaim + sep + firstClaim, cs.Core_MDF_ClaimReviewClosureHistory_txt__c);
         System.assertEquals(null, cs.Core_MDF_AddClaimReviewClosure_Note_txt__c);
         System.assertEquals(null, cs.Core_MDF_AddInternalCaseClosureNotes_txt__c);

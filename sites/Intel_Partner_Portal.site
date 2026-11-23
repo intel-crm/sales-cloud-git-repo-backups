@@ -23,15 +23,15 @@
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_dh34H_sf_default_cdn_Intel_Partner_Portal1</serverIsDown>
-    <siteAdmin>11540272@intel.com.crm</siteAdmin>
-    <siteGuestRecordDefaultOwner>11710633@intel.com.crm</siteGuestRecordDefaultOwner>
+    <serverIsDown>SNA_LightningIPSNew1_sf_default_cdn_hBp6b</serverIsDown>
+    <siteAdmin>10631298@intel.com.crm</siteAdmin>
+    <siteGuestRecordDefaultOwner>10631298@intel.com.crm</siteGuestRecordDefaultOwner>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
         <source>/Core_ExternalUser_IPS_Project</source>
-        <target>/IPS/s/new-project</target>
+        <target>/IPS/s/</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>

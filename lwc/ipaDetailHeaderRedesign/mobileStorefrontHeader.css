@@ -1,0 +1,37 @@
+@import "./mobileHeader.css";
+
+.badge-container {
+  align-items: center;
+  display: flex;
+  margin-right: 0;
+  width: 50%;
+}
+
+.logo {
+  aspect-ratio: 16/9;
+  max-height: 10rem;
+  object-fit: contain;
+  width: 100%;
+}
+
+.img-container {
+  background-color: var(--white);
+}
+
+.badge-name {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.specialty-img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.partner-status-gold {
+  color: var(--gold);
+}
+
+.partner-status-titanium {
+  color: var(--gray);
+}

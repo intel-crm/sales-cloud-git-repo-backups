@@ -4,16 +4,20 @@
     <attachmentOption>None</attachmentOption>
     <authenticationFailureAction>Discard</authenticationFailureAction>
     <authorizationFailureAction>Discard</authorizationFailureAction>
-    <authorizedSenders>nocontactcase.sslc@intel.com,tanvi.chauhan@intel.com</authorizedSenders>
+    <authorizedSenders>nocontactcase.sslc@intel.com,tanvi.chauhan@intel.com,intel.com</authorizedSenders>
     <emailServicesAddresses>
-        <authorizedSenders>nocontactcase.sslc@intel.com,
-tanvi.chauhan@intel.com</authorizedSenders>
         <developerName>IPS_SSLC</developerName>
         <isActive>true</isActive>
         <localPart>ips_sslc</localPart>
-        <runAsUser>integration.user@intel.com.crm</runAsUser>
+        <runAsUser>integration.user@intel.com.crm.crmdevint3</runAsUser>
     </emailServicesAddresses>
-    <errorRoutingAddress>anuj.k.hissaria@intel.com</errorRoutingAddress>
+    <emailServicesAddresses>
+        <developerName>IPS_SSLC1</developerName>
+        <isActive>true</isActive>
+        <localPart>ips_sslc</localPart>
+        <runAsUser>integration.user@intel.com.crm.crmdevint3</runAsUser>
+    </emailServicesAddresses>
+    <errorRoutingAddress>premx.ranjan@intel.com</errorRoutingAddress>
     <functionInactiveAction>Discard</functionInactiveAction>
     <functionName>IPS_SSLC</functionName>
     <isActive>true</isActive>

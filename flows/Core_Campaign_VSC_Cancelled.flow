@@ -11,8 +11,8 @@
         <label>Execute deletion batch process</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>Core_CampaignTaskDeletion_Batch</actionName>
-        <actionType>apex</actionType>
+        <actionName>nullNotFound</actionName>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -55,7 +55,6 @@
                 <elementReference>myVariable_current.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>Core_CampaignTaskDeletion_Batch</nameSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -272,7 +271,7 @@
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <status>InvalidDraft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

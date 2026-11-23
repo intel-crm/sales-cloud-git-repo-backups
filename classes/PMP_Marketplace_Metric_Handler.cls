@@ -49,7 +49,8 @@ public without sharing class PMP_Marketplace_Metric_Handler {  //SCRTY_PAG_Dashb
         System.debug('Count of partner groups ='+partnerGroups.size());
         Set<String> grpDevNames = new Set<String>();
         // Forming List of existing pags
-        for(Group grp:[SELECT Id, DeveloperName FROM Group WHERE DeveloperName LIKE 'PMP_%']){
+        //for(Group grp:[SELECT Id, DeveloperName FROM Group WHERE DeveloperName LIKE 'PMP_%']){
+        for(Group grp:[SELECT Id, DeveloperName FROM Group WHERE DeveloperName LIKE 'PMP_%' order by CreatedDate desc limit 49990]){
             String grpName = grp.DeveloperName;
             grpName = grpName.left(22);
             grpDevNames.add(grpName);
@@ -74,7 +75,8 @@ public without sharing class PMP_Marketplace_Metric_Handler {  //SCRTY_PAG_Dashb
         }
         
 		// Forming Map of pagdashboard rec to pag dashboard object
-		for(PMP_Marketplace_Metric__c getPagRec: [Select Id,Name,PMP_Metric_Nm__c,PMP_Metric_API_Nm__c,PMP_Mismatch_Cnt__c, PMP_Total_Cnt__c From 													PMP_Marketplace_Metric__c LIMIT 50000] ){
+		for(PMP_Marketplace_Metric__c getPagRec: [Select Id,Name,PMP_Metric_Nm__c,PMP_Metric_API_Nm__c,PMP_Mismatch_Cnt__c, PMP_Total_Cnt__c From 
+                                                  PMP_Marketplace_Metric__c LIMIT 49999] ){
 			pagRecNameToObjMap.put(getPagRec.PMP_Metric_API_Nm__c,getPagRec);
 		}
 			
@@ -106,7 +108,9 @@ public without sharing class PMP_Marketplace_Metric_Handler {  //SCRTY_PAG_Dashb
 		
 		// Updating dashboard record
 		if(dashboardRecToUpdate.size()!=null){
-			Database.update(dashboardRecToUpdate);
+            Database.SaveResult[] results = Database.update(dashboardRecToUpdate, false);
+            PMP_Utility.logDmlErrors((Object[]) results, 'PMP_Marketplace_Metric_Handler-pagGroupValidation');
+			//Database.update(dashboardRecToUpdate);
 		}
 
     }
@@ -585,7 +589,7 @@ public without sharing class PMP_Marketplace_Metric_Handler {  //SCRTY_PAG_Dashb
         /************************check whether all the lead grops are created or not****************************/
         
         Set<String> leadGrpDevNames = new Set<String>();
-        for(Group grp:[SELECT Id, DeveloperName FROM Group WHERE DeveloperName LIKE 'PMP_%']){
+        for(Group grp:[SELECT Id, DeveloperName FROM Group WHERE DeveloperName LIKE 'PMP_%' limit 1000]){
             String leadGrpName = null;
             String checkLeadStr = null;
             leadGrpName = grp.DeveloperName;

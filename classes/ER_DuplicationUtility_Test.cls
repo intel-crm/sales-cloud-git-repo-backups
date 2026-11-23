@@ -52,7 +52,7 @@ public class ER_DuplicationUtility_Test {
         List<PRM_Registration_Request__c> newList = new List<PRM_Registration_Request__c>();
         newList.add(regRequest1);
         newList.add(regRequest2);
-        //ER_DuplicationUtility.rejectDuplicates(newList,null);
+       // ER_DuplicationUtility.rejectDuplicates(newList,null);
        // System.assertEquals(req[0].PRM_Status__c,'Rejected');
        // ER_DuplicationUtility.rejectDuplicates(); 
        // ER_DuplicationUtility.DupCheck();
@@ -116,7 +116,7 @@ public class ER_DuplicationUtility_Test {
         regRequest.PRM_State_Province__c='NY';
         regRequest.PRM_Country__c='USA';
         regRequest.PRM_Zip_Postal_Code__c = '54533';
-        regRequest.PRM_Status__c ='New';
+        regRequest.PRM_Status__c ='New';  
         return regRequest;
         
         

@@ -318,15 +318,18 @@ public class Core_MDF_CloseActivity_Test {
             // US - TWC702-14285: Unit Test Method should include System.Assert
             // Verify user has access
             System.assert(hasAccess == true, 'User should have access to close activities');
+            
             Core_MDF_CloseActivity.activityCloseWrapper wrapper = new Core_MDF_CloseActivity.activityCloseWrapper();
             PartnerFundRequest pfr1 = [select id,Core_MDF_Start_Date__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Program__c,Core_MDF_Reimbursement_Rate__c from PartnerFundRequest where title =: 'TESTMDFDraft' and recordtypeid =: Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_CCF];
             // US - TWC702-14285: Unit Test Method should include System.Assert
             // Verify partner fund request was retrieved
             System.assertNotEquals(null, pfr1, 'PartnerFundRequest should be found');
+            
             wrapper = Core_MDF_CloseActivity.checkActivityEligibiltyForClose(pfr1.id);
             // US - TWC702-14285: Unit Test Method should include System.Assert
             // Verify activity eligibility wrapper is not null
             System.assertNotEquals(null, wrapper, 'Activity eligibility wrapper should not be null');
+            
             PartnerFundClaim claim1 = new PartnerFundClaim();
             claim1.Title ='Test Claim1';
             claim1.RequestId = pfr1.Id;
@@ -352,6 +355,7 @@ public class Core_MDF_CloseActivity_Test {
             System.assertEquals('Test Claim1', createdClaim.Title, 'Claim title should match');
             System.assertEquals(pfr1.Id, createdClaim.RequestId, 'Claim should reference correct PFR');
             System.assertEquals('Submitted', createdClaim.Core_MDF_Status__c, 'Claim status should be Submitted');
+            
             wrapper = Core_MDF_CloseActivity.checkClaims(pfr1.id);
             // US - TWC702-14285: Unit Test Method should include System.Assert
             // Verify claims checking worked properly

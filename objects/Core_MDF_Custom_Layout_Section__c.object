@@ -225,6 +225,29 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
                     <default>false</default>
                     <label>API Create</label>
                 </value>
+                <value>
+                    <fullName>API List View</fullName>
+                    <default>false</default>
+                    <label>API List View</label>
+                </value>
+                <value>
+                    <fullName>API Detail</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>API Detail</label>
+                </value>
+                <value>
+                    <fullName>API List</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>API List</label>
+                </value>
+                <value>
+                    <fullName>API Update</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>API Update</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -235,6 +258,18 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_List_API_Record_Count_Limit_nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>List API Record Count Limit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_No_Of_Columns_nm__c</fullName>
@@ -405,6 +440,22 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
         <visibleLines>3</visibleLines>
     </fields>
     <label>Custom Layout Section</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Object_Name_txt__c</field>
+            <operation>equals</operation>
+            <value>PartnerFundClaim</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Record_Type_Name_txt__c</field>
+            <operation>equals</operation>
+            <value>Co-GTM</value>
+        </filters>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>CLS-{0000}</displayFormat>
         <label>Custom Layout Section Name</label>

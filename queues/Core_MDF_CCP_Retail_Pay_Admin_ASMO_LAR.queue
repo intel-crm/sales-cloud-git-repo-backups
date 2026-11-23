@@ -7,12 +7,6 @@
         <publicGroups>
             <publicGroup>Core_MDF_CCP_Retail_ASMO_LAR_Pay_Admin</publicGroup>
         </publicGroups>
-        <users>
-            <user>12014159@intel.com.crm</user>
-            <user>11976517@intel.com.crm</user>
-            <user>11958137@intel.com.crm</user>
-            <user>larry.hill@intel.com.crm.crmprod</user>
-        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundClaim</sobjectType>

@@ -78,9 +78,9 @@ public class PMP_StaticConstants_Partner {
     
     //Added as part of US629512
     //Benefit related to the partner's account in Marketing Profile Information
-    //public static final String Solution_Marketplace_Basic_Access = 'Solution Marketplace Basic Access';
+    public static final String Solution_Marketplace_Basic_Access = 'Solution Marketplace Basic Access';
     public static final String Solutions_Marketplace_Basic_Profile = 'Solutions Marketplace Basic Profile';
-    //public static final String Solutions_Marketplace_Enhanced = 'Solutions Marketplace Enhanced';
+    public static final String Solutions_Marketplace_Enhanced = 'Solutions Marketplace Enhanced';
     
     
     //sorting logic constant values

@@ -24,7 +24,7 @@ public class Core_Reject_Prospect_Test{
          prospectrec= new Core_Prospect__c();
          prospectrec.Core_URLElectronicAddressTxt__c='www.google.com';
          prospectrec.Core_Notes_Txt__c='Test Prospect Notes';
-         prospectrec.Core_Source_Pkt__c  ='Sales AI';
+         prospectrec.Core_Source_Pkt__c  ='Test Prospect Source';
          insert prospectrec;
      }
      /*

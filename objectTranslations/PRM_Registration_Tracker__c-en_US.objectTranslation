@@ -51,19 +51,115 @@
         <name>PRM_Log_Entries__c</name>
     </fields>
     <fields>
+        <label><!-- Milestone Active? --></label>
+        <name>PRM_Milestone_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Name --></label>
+        <name>PRM_Milestone_Name__c</name>
+        <picklistValues>
+            <masterLabel>ACK Mail sent</masterLabel>
+            <translation><!-- ACK Mail sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ACR Approved</masterLabel>
+            <translation><!-- ACR Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AGS ID Creation</masterLabel>
+            <translation><!-- AGS ID Creation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved Rejected</masterLabel>
+            <translation><!-- Approved Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benefit assigned</masterLabel>
+            <translation><!-- Benefit assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dup Check Success</masterLabel>
+            <translation><!-- Dup Check Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EV Pending Completed</masterLabel>
+            <translation><!-- EV Pending Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EV Sent Unsent</masterLabel>
+            <translation><!-- EV Sent Unsent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entitlement assigned</masterLabel>
+            <translation><!-- Entitlement assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GetProfile API Called</masterLabel>
+            <translation><!-- GetProfile API Called --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest Redemption Complete</masterLabel>
+            <translation><!-- Guest Redemption Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invite Completed</masterLabel>
+            <translation><!-- Invite Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invite Sent Unsent</masterLabel>
+            <translation><!-- Invite Sent Unsent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registration Initiated</masterLabel>
+            <translation><!-- Registration Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registration Submitted</masterLabel>
+            <translation><!-- Registration Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBC Callout made</masterLabel>
+            <translation><!-- SBC Callout made --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subscription assigned</masterLabel>
+            <translation><!-- Subscription assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Logged In</masterLabel>
+            <translation><!-- User Logged In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waiting for Approval</masterLabel>
+            <translation><!-- Waiting for Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Welcome EmailSent Unsent</masterLabel>
+            <translation><!-- Welcome EmailSent Unsent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Milestone State --></label>
+        <name>PRM_Record_Stage__c</name>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation><!-- Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unassigned</masterLabel>
+            <translation><!-- Unassigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yet to Assign</masterLabel>
+            <translation><!-- Yet to Assign --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Registration Type --></label>
         <name>PRM_Registration_Type__c</name>
         <picklistValues>
             <masterLabel>Admin Invite</masterLabel>
             <translation><!-- Admin Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Admin Partner Invite</masterLabel>
-            <translation><!-- Admin Partner Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto Granted IPA for DZP</masterLabel>
-            <translation><!-- Auto Granted IPA for DZP --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Bulk Add</masterLabel>
@@ -100,7 +196,6 @@
         <name>PRM_Step_Number__c</name>
     </fields>
     <fields>
-        <help><!-- Time Taken between Previous Milestone and current Milestone --></help>
         <label><!-- Time Taken --></label>
         <name>PRM_Time_Difference__c</name>
     </fields>
@@ -112,6 +207,34 @@
         <label><!-- Contact --></label>
         <name>PRM_contact__c</name>
         <relationshipLabel><!-- Registration Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Registration Type --></label>
+        <name>Registration_Type__c</name>
+        <picklistValues>
+            <masterLabel>Admin Invite</masterLabel>
+            <translation><!-- Admin Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Add</masterLabel>
+            <translation><!-- Bulk Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Invite</masterLabel>
+            <translation><!-- Bulk Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Partner Invite</masterLabel>
+            <translation><!-- External Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Invite</masterLabel>
+            <translation><!-- Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self Registration</masterLabel>
+            <translation><!-- Self Registration --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Stage --></label>

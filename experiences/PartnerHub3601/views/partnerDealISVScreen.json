@@ -1,0 +1,60 @@
+{
+  "appPageId" : "7e5fbc65-d0ba-405c-8994-3df2b2fc213c",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "1bf88ce8-4755-4219-b987-ba73468d9fa3",
+  "label" : "Partner Deal ISV Screen",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "flowArguments" : "",
+        "flowName" : "test_POC_PEM"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "3c973be8-c8d0-4bb5-8431-f1a6e3e825ff",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d468496b-3eee-4d11-bf57-1c0c60cfa84b",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "flowArguments" : "",
+        "flowName" : "PEM_Deal_ISV_Screen"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "5d88803a-c412-44f4-8b70-28ddf17004d1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e544c799-4f7b-44e2-9bbc-a3488982d307",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "aae1ec0a-2e63-4ff8-ba17-0f419b8ec316",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Partner Deal ISV Screen"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1fe0e3ab-0809-4874-9218-c8813cc8f145",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ddbc7925-ff4c-42cf-9515-79e3dedff7e5",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-partner-deal-isv-screen"
+}

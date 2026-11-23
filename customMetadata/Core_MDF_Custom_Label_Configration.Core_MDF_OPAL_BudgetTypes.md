@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">MDF;OEM CMP;MDF+;Service Provider CMP</value>
+        <value xsi:type="xsd:string">MDF;OEM CMP;MDF+;Service Provider CMP;Intel MDF Account Based2</value>
     </values>
 </CustomMetadata>

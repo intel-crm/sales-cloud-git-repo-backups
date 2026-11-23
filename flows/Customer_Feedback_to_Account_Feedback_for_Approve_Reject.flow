@@ -2,10 +2,49 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>59.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Display_CM_Feedback_already_populated</name>
+        <label>Display CM Feedback already populated</label>
+        <locationX>490</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Invoke_CM_Subflow_to_get_AccountDetails</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>An Existing approval/rejection already exists</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Display_GM_Feedback_already_populated</name>
+        <label>Display GM Feedback already populated</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Invoke_GM_Subflow_to_get_AccountDetails</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>An Existing approval/rejection already exists</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Display_VP_Feedback_already_populated</name>
+        <label>Display VP Feedback already populated</label>
+        <locationX>930</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Invoke_VP_Subflow_to_get_AccountDetails</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>An Existing approval/rejection already exists</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
     <decisions>
         <name>Check_for_Field_Updates</name>
         <label>Check for Field Updates</label>
-        <locationX>732</locationX>
+        <locationX>1205</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -83,7 +122,7 @@
     <decisions>
         <name>Check_GM_CM_VP_Updates</name>
         <label>Check GM/CM/VP Updates</label>
-        <locationX>446</locationX>
+        <locationX>776</locationX>
         <locationY>431</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -118,7 +157,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Invoke_GM_Subflow_to_get_AccountDetails</targetReference>
+                <targetReference>GM_Feedback_field_populated_prior</targetReference>
             </connector>
             <label>Check GM Approved or Rejected</label>
         </rules>
@@ -154,7 +193,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Invoke_CM_Subflow_to_get_AccountDetails</targetReference>
+                <targetReference>CM_Feedback_field_populated_prior</targetReference>
             </connector>
             <label>Check CM Approved or Rejected</label>
         </rules>
@@ -190,16 +229,92 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Invoke_VP_Subflow_to_get_AccountDetails</targetReference>
+                <targetReference>VP_Feedback_field_populated_prior</targetReference>
             </connector>
             <label>Check VP Approved or Rejected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>CM_Feedback_field_populated_prior</name>
+        <label>CM Feedback field populated prior</label>
+        <locationX>622</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Invoke_CM_Subflow_to_get_AccountDetails</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CM_Feedback_already_approved_rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.CM_Feedback__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Display_CM_Feedback_already_populated</targetReference>
+            </connector>
+            <label>CM Feedback already approved/rejected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>GM_Feedback_field_populated_prior</name>
+        <label>GM Feedback field populated prior</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Invoke_GM_Subflow_to_get_AccountDetails</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>GM_Feedback_alreadyapproved_rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.GM_Feedback__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Display_GM_Feedback_already_populated</targetReference>
+            </connector>
+            <label>GM Feedback alreadyapproved/rejected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>VP_Feedback_field_populated_prior</name>
+        <label>VP Feedback field populated prior</label>
+        <locationX>1062</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Invoke_VP_Subflow_to_get_AccountDetails</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>VP_Feedback_already_approved_rejected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.VP_Feedback__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Display_VP_Feedback_already_populated</targetReference>
+            </connector>
+            <label>VP Feedback already approved/rejected</label>
         </rules>
     </decisions>
     <description>Update CM/GM/VP Fields in Account Feedback
 Added Feedback By check
 Fetch Account Details where VP/CM/GM = FeedbackBy
 Modified Account Detail and Account Share
-Account Detail Share check for VP is null records</description>
+Account Detail Share check for VP is null records
+Added Warning if Feedback already approved/rejected</description>
     <environments>Default</environments>
     <interviewLabel>Customer Feedback to Account Feedback {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Customer Feedback to Account Feedback for Approve/Reject</label>
@@ -223,7 +338,7 @@ Account Detail Share check for VP is null records</description>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>606</locationX>
+        <locationX>1079</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_for_Field_Updates</targetReference>
@@ -232,13 +347,13 @@ Account Detail Share check for VP is null records</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <subflows>
         <description>Inorder to get Account Details in with sharing context we invoke a subflow to fetch AccountDetail Records</description>
         <name>Invoke_CM_Subflow_to_get_AccountDetails</name>
         <label>Invoke CM Subflow to get AccountDetails</label>
-        <locationX>314</locationX>
-        <locationY>539</locationY>
+        <locationX>622</locationX>
+        <locationY>839</locationY>
         <flowName>Get_Account_Details_Accept_Reject</flowName>
         <inputAssignments>
             <name>customerFeedbackRec</name>
@@ -258,8 +373,8 @@ Account Detail Share check for VP is null records</description>
         <description>Inorder to get Account Details in with sharing context we invoke a subflow to fetch AccountDetail Records</description>
         <name>Invoke_GM_Subflow_to_get_AccountDetails</name>
         <label>Invoke GM Subflow to get AccountDetails</label>
-        <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationX>182</locationX>
+        <locationY>839</locationY>
         <flowName>Get_Account_Details_Accept_Reject</flowName>
         <inputAssignments>
             <name>customerFeedbackRec</name>
@@ -279,8 +394,8 @@ Account Detail Share check for VP is null records</description>
         <description>Inorder to get Account Details in with sharing context we invoke a subflow to fetch AccountDetail Records</description>
         <name>Invoke_VP_Subflow_to_get_AccountDetails</name>
         <label>invoke VP Subflow to get AccountDetails</label>
-        <locationX>578</locationX>
-        <locationY>539</locationY>
+        <locationX>1062</locationX>
+        <locationY>839</locationY>
         <flowName>Get_Account_Details_Accept_Reject</flowName>
         <inputAssignments>
             <name>customerFeedbackRec</name>

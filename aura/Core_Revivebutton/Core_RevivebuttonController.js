@@ -14,7 +14,7 @@
             }
         });
         $A.enqueueAction(action);
-       // $A.get("e.force:refreshView").fire();
+        $A.get("e.force:refreshView").fire();
 	}
 		
 	

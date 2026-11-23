@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Request Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Request Stage</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Reference Source ID --></label>
+        <name>Core_Account_Reference_Source_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_Account_Reference_Source_Name --></label>
+        <name>Core_Account_Reference_Source_Name__c</name>
+        <picklistValues>
+            <masterLabel>CoMarketing</masterLabel>
+            <translation><!-- CoMarketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IQR</masterLabel>
+            <translation><!-- IQR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MyDeals</masterLabel>
+            <translation><!-- MyDeals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Management</masterLabel>
+            <translation><!-- Opportunity Management --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Request Rejection Notes --></label>
+        <name>Core_Account_Request_Rejection_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Request Rejection Reason --></label>
+        <name>Core_Account_Request_Rejection_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Cannot Validate Company</masterLabel>
+            <translation><!-- Cannot Validate Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate</masterLabel>
+            <translation><!-- Duplicate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Clarification Response Provided</masterLabel>
+            <translation><!-- No Clarification Response Provided --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Request No Longer Required</masterLabel>
+            <translation><!-- Request No Longer Required --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Name - Local Language --></label>
+        <name>Core_Alternate_Language_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Represents the Reltio Mastered Id --></help>
+        <label><!-- Unified ID --></label>
+        <name>Core_Business_Party_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Customer Type --></label>
+        <name>Core_Customer_Aggregation_Type__c</name>
+        <picklistValues>
+            <masterLabel>Unified Country Customer</masterLabel>
+            <translation><!-- Unified Country Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Global Customer</masterLabel>
+            <translation><!-- Unified Global Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Intermediate Customer</masterLabel>
+            <translation><!-- Unified Intermediate Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Core Data Country Code --></label>
+        <name>Core_Data_Country_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Country Name --></label>
+        <name>Core_Data_Country_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mastered Name of type Simplified --></help>
+        <label><!-- Simplified Account Name --></label>
+        <name>Core_Data_Simplified_Account_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mastered Name of type Simplified Local Language --></help>
+        <label><!-- Simplified Local Language Name --></label>
+        <name>Core_Data_Simplified_Local_Language_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Requester Email --></label>
+        <name>Core_Intel_Requester_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Requester Name --></label>
+        <name>Core_Intel_Requester_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel Requester WWID --></label>
+        <name>Core_Intel_Requester_WWID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDM CPEs --></label>
+        <name>Core_MDM_CPEs__c</name>
+    </fields>
+    <fields>
+        <help><!-- Reltio Data Steward Validation Status --></help>
+        <label><!-- MDM Status --></label>
+        <name>Core_MDM_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation><!-- Requested --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unified Customer URL --></label>
+        <name>Core_MDM_Website__c</name>
+    </fields>
+    <fields>
+        <help><!-- Parent&apos;s Business Party ID from Reltio --></help>
+        <label><!-- Parent Unified ID --></label>
+        <name>Core_Parent_Business_Party_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requested Parent Business Party ID --></label>
+        <name>Core_Requested_Parent_BP_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- We Chat Id --></label>
+        <name>Core_WeChatId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Region --></label>
+        <name>Country_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Requested_Account__c</name>
+        <relationshipLabel><!-- Account Request Stage --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

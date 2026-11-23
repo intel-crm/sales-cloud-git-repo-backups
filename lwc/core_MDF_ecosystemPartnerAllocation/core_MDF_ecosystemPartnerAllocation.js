@@ -37,6 +37,9 @@ export default class EcosystemPartnerAllocation extends LightningElement {
         } else if (this.mode === 'clone') {
             this.isReadOnly = false;
             this.isEditMode = false;
+        } else if (this.mode === 'create') {
+            this.isReadOnly = false;
+            this.isEditMode = false;
         } else if (this.mode === '' && !this.recordId) {
             this.isReadOnly = false;
             this.isEditMode = false;
@@ -84,6 +87,7 @@ export default class EcosystemPartnerAllocation extends LightningElement {
     
         switch(this.mode) {
             case 'clone':
+            case 'create':
                 return false;
             case 'edit':
             case '':

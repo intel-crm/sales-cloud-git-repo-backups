@@ -238,8 +238,8 @@ Modification Log :
         //System.currentPageReference().getParameters().put('attachmentId',attachments.id);
         ApexPages.CurrentPage().getparameters().put('attachmentId',attachments.id);
           if(attachments.id != null)
-           inst1.deleteAttachments();  
-      }
+           inst1.deleteAttachments();
+    }
       System.assert(listcstSettings.size() > 0, true);
   }  
 /********************************************************************************************************************
@@ -509,8 +509,7 @@ Modification Log :
         List<Profile> ProfileList = [select id, name from Profile where name='Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
         for(Profile prf : ProfileList){
         profiles.put(prf.name, prf.id);
-        }
-        
+        }       
          User thisUser = [ select Id from User where Id = :UserInfo.getUserId() ];
          User userRecord = new User();
        
@@ -779,7 +778,7 @@ Modification Log :
             testAccount1.OwnerId = portalAccountOwner1.Id ;      
             insert testAccount1;                 
             Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup', ownerId = intelSupportOwner,
-                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful', MailingCountry = 'India');
+                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
             insert testContact1;      
 
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -838,10 +837,10 @@ Modification Log :
             Test.setCurrentPage(pageRef);
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
-           
+            
             //commented for Classic EOL : Tejaswini        
      /*   PageReference pageRef1=Page.Core_IPS_CaseAttachment_Visibility;
-        Test.setCurrentPage(pageRef); */
+        Test.setCurrentPage(pageRef1); */
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr1 = new ApexPages.standardController(CS);
             

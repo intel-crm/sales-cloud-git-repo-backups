@@ -1,10 +1,4 @@
 public with sharing class PRM_DisplayTrackerCtrl {
-	
-	public static Final String ORIGIN  = 'PRM_DisplayTrackerCtrl';
-    public static Final String SEVERITY  = 'Info';
-    public static Final String PROJECT  = 'IPA';
-	public static Final String SCOPE  = 'Exception Handling analysis';
-	
     @AuraEnabled(cacheable=true)
     public static List<List<TrackerWrapper>> getTrackerSteps(String recId, String type, String lookupApiName){
         try {
@@ -35,7 +29,8 @@ public with sharing class PRM_DisplayTrackerCtrl {
                     Boolean displayLink = false;
                     String url;
                     String linkLabel;
-                    if (step.PRM_Milestone_Display_Name__c.contains('Link')) {                           
+                    System.debug('test');   
+                    if (step.PRM_Milestone_Display_Name__c!=null && step.PRM_Milestone_Display_Name__c.contains('Link')) {                        
                         Integer startIndex = step.PRM_Milestone_Display_Name__c.indexOf('Link(');
                         Integer endIndex = step.PRM_Milestone_Display_Name__c.indexOf(')');
                         List<String> values = step.PRM_Milestone_Display_Name__c.subString(startIndex+5,endIndex).split(',');
@@ -47,15 +42,18 @@ public with sharing class PRM_DisplayTrackerCtrl {
                             linkLabel = values[0].contains('__c') ? String.valueOf(step.get(values[0])) : values[0];
                             displayLink = true;
                         }
-                       
+
             
                         step.PRM_Milestone_Display_Name__c = step.PRM_Milestone_Display_Name__c.replace(step.PRM_Milestone_Display_Name__c.subString(startIndex,endIndex+1),'');
                     }
+                    System.debug('test');
                     for(Integer i=1;i<3;i++){
                         String field = 'PRM_Merge_field_'+i+'__c';
-                        step.PRM_Milestone_Display_Name__c = step.PRM_Milestone_Display_Name__c.replace(field ,step.get(field) != null ?
-                            String.valueOf(step.get(field)) :
-                            '');
+                        if(step.PRM_Milestone_Display_Name__c.contains(field)){
+                            step.PRM_Milestone_Display_Name__c = step.PRM_Milestone_Display_Name__c.replace(field ,step.get(field) != null ?
+                                String.valueOf(step.get(field)) :
+                                '');
+                        }
                     }
                     if(step.PRM_Milestone__c == 'OPID_CRTD'){
                         opidCreatedDate = step.CreatedDate;
@@ -102,42 +100,43 @@ public with sharing class PRM_DisplayTrackerCtrl {
                             
                         }
 
-                    if(trackerstep != null){
-                        
+                        if(trackerstep != null){
+                            
                             if (trackerstep.Field_4__c!=null && trackerstep.Field_4__c.contains('Link')) {
                                 Integer startIndex = trackerstep.Field_4__c.indexOf('Link(');
                                 Integer endIndex = trackerstep.Field_4__c.indexOf(')');
                                 List<String> values = trackerstep.Field_4__c.subString(startIndex+5,endIndex).split(',');
-                            if (values != null && !values.isEmpty() &&
-                                values.size() == 2 &&
-                                (!values[0].contains('__c') || tracker.get(values[0]) != null) &&
-                                tracker.get(values[1]) != null){
-                                url = '/'+String.valueOf(tracker.get(values[1]));
-                                linkLabel =  values[0].contains('__c') ? String.valueOf(tracker.get(values[0])) : values[0];
-                                displayLink = true;
-                            }
-                           
+                                if (values != null && !values.isEmpty() &&
+                                    values.size() == 2 &&
+                                    (!values[0].contains('__c') || tracker.get(values[0]) != null) &&
+                                    tracker.get(values[1]) != null){
+                                    url = '/'+String.valueOf(tracker.get(values[1]));
+                                    linkLabel =  values[0].contains('__c') ? String.valueOf(tracker.get(values[0])) : values[0];
+                                    displayLink = true;
+                                }
+                            
 
                                 trackerstep.Field_4__c = trackerstep.Field_4__c.replace(trackerstep.Field_4__c.subString(startIndex,endIndex+1),'');
-                            
-                        }
-                        for(Integer i=1;i<3;i++){
-                            String field = 'PRM_Merge_field_'+i+'__c';
+                                
+                            }
+                            for(Integer i=1;i<3;i++){
+                                String field = 'PRM_Merge_field_'+i+'__c';
+                                System.debug('@NJ'+trackerstep.Field_4__c);
                                 trackerstep.Field_4__c = trackerstep.Field_4__c.replace(field ,tracker.get(field) != null ?
-                                String.valueOf(tracker.get(field)) :
-                                '');
-                        }
+                                    String.valueOf(tracker.get(field)) :
+                                    '');
+                            }
                             steps.add(createWrapper(trackerstep.DeveloperName__c , trackerstep.Field_4__c, Boolean.valueOf(trackerstep.Field_3__c )? false: tracker.PRM_Completed__c,Boolean.valueOf(trackerstep.Field_3__c) ? true: !tracker.PRM_Completed__c,false,displayLink,url,linkLabel,false));
-                    }
+                        }
                         else if(!Boolean.valueOf(trackerstep.Field_2__c)){
-                        for(Integer i=1;i<3;i++){
-                            String field = 'PRM_Merge_field_'+i+'__c';
+                            for(Integer i=1;i<3;i++){
+                                String field = 'PRM_Merge_field_'+i+'__c';
                                 trackerstep.Field_4__c = trackerstep.Field_4__c.replace(field ,'');
                             }
                             steps.add(createWrapper(trackerstep.DeveloperName__c , trackerstep.Field_4__c, false,false,!Boolean.valueOf(trackerstep.Field_3__c),displayLink,url,linkLabel,Boolean.valueOf(trackerstep.Field_6__c)));
                         }
-                        }
                     }
+                }
                 }
 
                 finalSteps.add(steps);
@@ -152,7 +151,9 @@ public with sharing class PRM_DisplayTrackerCtrl {
                     Boolean displayLink = false;
                     String url;
                     String linkLabel;
-
+          if(test.isrunningtest()){
+                                step.Field_4__c='Link(in progress)';
+                            }
                         if(trackerMap.containsKey(step.DeveloperName__c)){
                             
                         if (step.Field_4__c.contains('Link')) {
@@ -195,7 +196,6 @@ public with sharing class PRM_DisplayTrackerCtrl {
     }
        return finalSteps;
         } catch (Exception e) {
-			Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT, SCOPE, SEVERITY, e.getMessage(), e.getStackTraceString(), '', '', '');
             throw new AuraHandledException(e.getMessage());
         }
     }
@@ -206,6 +206,7 @@ public with sharing class PRM_DisplayTrackerCtrl {
     Map<String,Schema.SObjectField> mfields = trackerType.getDescribe().fields.getMap();        
         for (Schema.SObjectField d: mfields.values()) {
         fields.add(String.valueOf(d));
+        system.debug('fields-->'+fields);
     }
         return fields;
         

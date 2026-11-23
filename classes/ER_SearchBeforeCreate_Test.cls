@@ -2,6 +2,7 @@
 public class ER_SearchBeforeCreate_Test {
     public static boolean IsEmailTest = false;
 
+    
     @isTest 
     public static void DoPostTest_One(){
         //Address address = new Address('Magarpatta','Pune','411024','Maharashtra','02039399');
@@ -51,7 +52,7 @@ public class ER_SearchBeforeCreate_Test {
         req.httpMethod = 'post';
         RestContext.request = req;
         RestContext.response = res;
-        Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
+        //Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
         ER_SearchBeforeCreate.doPost(cimSBC);
         Test.stopTest();
         System.assertEquals('https://intel--nppdev.lightning.force.com', req.requestURI, 'Incorrect URI');
@@ -106,7 +107,7 @@ public class ER_SearchBeforeCreate_Test {
         req.httpMethod = 'post';
         RestContext.request = req;
         RestContext.response = res;
-        Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
+        //Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
         ER_SearchBeforeCreate.doPost(cimSBC);
         Test.stopTest();
         System.assertEquals('https://intel--nppdev.lightning.force.com', req.requestURI, 'Incorrect URI');
@@ -161,7 +162,7 @@ public class ER_SearchBeforeCreate_Test {
         req.httpMethod = 'post';
         RestContext.request = req;
         RestContext.response = res;
-        Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
+        //Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
         ER_SearchBeforeCreate.doPost(cimSBC);
         Test.stopTest();
         System.assertEquals('https://intel--nppdev.lightning.force.com', req.requestURI, 'Incorrect URI');
@@ -207,7 +208,7 @@ public class ER_SearchBeforeCreate_Test {
         Core_Country_Code_Mapping__c countryIsoSetting = new Core_Country_Code_Mapping__c ();
         countryIsoSetting.Name='TestName';
         countryIsoSetting.ISO_Code__c='IND';
-        countryIsoSetting.Country_Code__c='IN'; 
+         countryIsoSetting.Country_Code__c='IN'; 
         insert countryIsoSetting;
         
         Test.startTest();        
@@ -215,7 +216,7 @@ public class ER_SearchBeforeCreate_Test {
         req.httpMethod = 'post';
         RestContext.request = req;
         RestContext.response = res;
-        Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
+        //Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
         IsEmailTest = true;
         ER_SearchBeforeCreate.doPost(cimSBC);
         Test.stopTest();
@@ -270,7 +271,7 @@ public class ER_SearchBeforeCreate_Test {
         req.httpMethod = 'post';
         RestContext.request = req;
         RestContext.response = res;
-        Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
+       // Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
         ER_SearchBeforeCreate.doPost(cimSBC);
         Test.stopTest();
         System.assertEquals('https://intel--nppdev.lightning.force.com', req.requestURI, 'Incorrect URI');

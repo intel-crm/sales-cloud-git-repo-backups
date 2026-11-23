@@ -28,6 +28,11 @@
                     <label>Cancel Claim</label>
                 </value>
                 <value>
+                    <fullName>Cancel VAT</fullName>
+                    <default>false</default>
+                    <label>Cancel VAT</label>
+                </value>
+                <value>
                     <fullName>Change Owner</fullName>
                     <default>false</default>
                     <label>Change Owner</label>
@@ -91,6 +96,11 @@
                     <fullName>Notify Partner</fullName>
                     <default>false</default>
                     <label>Notify Partner</label>
+                </value>
+                <value>
+                    <fullName>Recall to Payment Clearance</fullName>
+                    <default>false</default>
+                    <label>Recall to Payment Clearance</label>
                 </value>
                 <value>
                     <fullName>Release Hold</fullName>

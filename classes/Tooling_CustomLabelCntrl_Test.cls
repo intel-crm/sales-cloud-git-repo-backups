@@ -69,5 +69,4 @@ public class Tooling_CustomLabelCntrl_Test {
         Test.stopTest();
         System.assertEquals(true, customLabels.size()>0);
     }
-    
 }

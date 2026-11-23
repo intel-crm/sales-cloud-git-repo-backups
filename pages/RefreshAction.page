@@ -1,0 +1,26 @@
+<apex:page standardController="Account_Create_Request__c" extensions="AccountRequestUpdateController">
+        <style>
+        .updateButton {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .updateButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages />
+            <apex:commandButton value="Refresh" action="{!updateAccountRequestField}" rerender="messages" styleClass="updateButton"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -262,7 +262,6 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>CPT_Quota_Setup__c</columns>
         <columns>PayeeID__c</columns>
         <columns>CPT_PlanID__c</columns>
         <columns>CPT_ElementID__c</columns>

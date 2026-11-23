@@ -1,0 +1,81 @@
+<template>
+    <template if:true={showSpinner}>
+        <div>
+            <lightning-spinner alternative-text="Loading" size="xx-small"></lightning-spinner>
+        </div>
+    </template>
+    <template if:true={isDisplayPage}>
+        <div class="slds-p-bottom_medium">  
+            <lightning-button label="Approve" title="Approve" onclick={onApprove} class="slds-m-right_x-small"></lightning-button>
+        </div>
+        <lightning-card title="Account Change Review"> 
+            <lightning-layout multiple-rows="true">
+                <!-- 1st Row -->
+                <lightning-layout-item style="padding: 14px 14px 0px 14px;"  size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                   <div class="slds-form-element slds-form-element_readonly">
+                        <label class="slds-form-element__label">Simplified Account Name</label>
+                        <div class="slds-form-element__control">
+                            <label class="slds-form-element__static">{masterAccountName}
+                            </label>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 14px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                   <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">New Simplified Account Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{newMasterAccountName}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+
+                <!-- 2nd row-->
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">Simplified Local Language Name</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{localName}
+                        </div>
+                    </div>
+               </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">New Simplified Local Language Name</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{newLocalName}
+                        </div>
+                    </div>
+               </div>
+                </lightning-layout-item>
+
+                <!-- 3rd row-->
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Business Partner Id</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{businessId}
+                            </div>
+                        </div>
+                   </div>
+                </lightning-layout-item>
+                <lightning-layout-item style="padding: 0px 14px 0px 14px;" size="6" large-device-size="6" medium-device-size="6"
+                small-device-size="12">
+                  <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">New Business Partner Id</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{newBusinessId}
+                        </div>
+                    </div>
+               </div>
+                </lightning-layout-item>
+            </lightning-layout>       
+        </lightning-card>
+    </template> 
+</template>

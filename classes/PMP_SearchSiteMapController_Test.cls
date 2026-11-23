@@ -83,7 +83,7 @@ public class PMP_SearchSiteMapController_Test {
          PMP_Company__c cmp1 = PMP_SearchTestDataFactory.createCompanyInformation('TestCompany1', acc1.Id, true);
         cmp1.PMP_Partner_Program_nm__c = 'Manufacturer';
         cmp1.PMP_Is_Published_Ind__c = true;
-        //cmp1.PMP_Account_Specialty__c = 'Cloud Data Center Specialist';
+        cmp1.PMP_Account_Specialty__c = 'Cloud Data Center Specialist';
         cmp1.PMP_Partner_Segment_Nm__c = 'Client Computing';
         cmp1.PMP_Company_Lifecycle_Status_Nm__c = 'Published';
         cmp1.PMP_Is_Enabled_Lead_Gen_Nm__c = 'True';
@@ -119,7 +119,7 @@ public class PMP_SearchSiteMapController_Test {
         offCategory.PMP_Ancestor_Category_Cd__c = 'NPP_01_TYPE|NPP_01_Industry';
         offCategory.PMP_Offering_Category_External_Key__c = 'NPP_01_Industry'; 
         update offCategory;
-        */    
+        */     
     /*}
     
     @isTest static void getAllCategories(){

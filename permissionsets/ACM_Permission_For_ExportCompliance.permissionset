@@ -14,6 +14,11 @@
         <field>Account.Core_Export_Compliance_Block__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Core_PSG_Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>ACM_Permission_For_ExportCompliance</label>
     <objectPermissions>

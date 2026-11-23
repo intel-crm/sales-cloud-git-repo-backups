@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <description>Hide Inactive Accounts</description>
+    <enforcementType>Scoping</enforcementType>
+    <masterLabel>Block Inactive Accounts</masterLabel>
+    <recordFilter>RecordTypeId=&apos;012o0000000GlzTAAS&apos;</recordFilter>
+    <targetEntity>Account</targetEntity>
+    <userCriteria>$User.IsActive=true</userCriteria>
+    <version>1</version>
+</RestrictionRule>

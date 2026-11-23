@@ -17,6 +17,15 @@
         <columns>
             <field>Account.Company_Informations__r$PMP_Benefit_Update_Ind__c</field>
         </columns>
+        <filter>
+            <criteriaItems>
+                <column>Account.Company_Informations__r$PMP_Marketing_Profile_Id__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>notEqual</operator>
+                <value></value>
+            </criteriaItems>
+        </filter>
         <format>Summary</format>
         <name>Partner Information</name>
         <params>
@@ -52,39 +61,7 @@
         <columns>
             <field>Account$CreatedDate</field>
         </columns>
-        <columns>
-            <field>Account$Core_Business_ID__c</field>
-        </columns>
         <filter>
-            <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5 AND 6</booleanFilter>
-            <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>contains</operator>
-                <value>Partner Admin</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>contains</operator>
-                <value>Lead Development Representative</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>contains</operator>
-                <value>Employee</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>contains</operator>
-                <value>Marketing specialist</value>
-            </criteriaItems>
             <criteriaItems>
                 <column>Account.Contacts.Contact_Entitlements__r$Core_Status__c</column>
                 <columnToColumn>false</columnToColumn>
@@ -126,23 +103,6 @@
         <columns>
             <field>Account.AccountBenefitAssociations__r$CreatedDate</field>
         </columns>
-        <filter>
-            <booleanFilter>1 AND 2</booleanFilter>
-            <criteriaItems>
-                <column>Account.AccountBenefitAssociations__r$PRM_Partner_Benefit_Id__c.Name</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>contains</operator>
-                <value>Solution Marketplace Basic Profile</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>Account.AccountBenefitAssociations__r$PRM_Partner_Benefit_Id__c.Name</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>notEqual</operator>
-                <value></value>
-            </criteriaItems>
-        </filter>
         <format>Summary</format>
         <name>Benefit Information</name>
         <params>

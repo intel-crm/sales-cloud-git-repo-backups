@@ -60,7 +60,7 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
           acc1.Industry='Agriculture';
           //acc1.Core_Sub_Industry__c= 'Crop Production';
           acc1.BillingPostalCode = '12345';
-          acc1.Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI();
+          //acc1.Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI();
           insert acc1;
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true); 
         Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Acc New 2', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
@@ -87,7 +87,7 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
         Core_MDF_Partner_Group_Mapping__c ccfPgm = new Core_MDF_Partner_Group_Mapping__c();
             ccfPgm.Core_MDF_Account__c = acc1.Id;
             ccfPgm.Core_MDF_Group_Name__c = 'Core_MDF_CCP_TESTACCTTEMP_CCF_EMEA_INTERNAL';
-            ccfPgm.Core_MDF_Type_of_Access__c = 'External';           
+            ccfPgm.Core_MDF_Type_of_Access__c = 'Internal';           
             ccfPgm.Core_MDF_Channel_Program__c = cp.Id;
             ccfPgm.Core_MDF_Region_cd__c = 'EMEA';
             ccfPgm.Core_MDF_Source_Txt__c = 'Test';  
@@ -102,7 +102,9 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
         iupgm.Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr';
         iupgm.Core_MDF_All_Accounts_cd__c = 'No';
         Database.insert(iupgm);
-            
+        Core_Opp_Bypass_Validation_Rule__c rec = new Core_Opp_Bypass_Validation_Rule__c();
+        rec.Bypass__c = true;
+        insert rec;    
         List<Opportunity> opp= Core_Test_Utility.createOpportunity(1);
         opp[0].CloseDate =  system.today().addDays(-2);
         opp[0].AccountId = acc1.Id;
@@ -204,13 +206,13 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromUser = */ Core_MDF_CCP_MassOwnerUpdate.getUser('testUser', 'Internal User', null, config);
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromSysUser = */ Core_MDF_CCP_MassOwnerUpdate.getUser('User', 'System User', null, config);
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromSalesUser = */ Core_MDF_CCP_MassOwnerUpdate.getUser('user', null, null, config2);
-			List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> fromExternalUser = Core_MDF_CCP_MassOwnerUpdate.getUser('user', 'External User', acc2.id, config);
+
 
             // Highlight: Unused Local Variables
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> toUser = */ Core_MDF_CCP_MassOwnerUpdate.getToUser('testUser', 'Internal User',acc2.Id,acc.id,config);
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> toUserSales = */ Core_MDF_CCP_MassOwnerUpdate.getToUser('user', null,null,null,config2);
            /* List<Core_MDF_CCP_MassOwnerUpdate.SObjectResult> toSystemUser = */ Core_MDF_CCP_MassOwnerUpdate.getToUser('User', 'System User',acc2.Id,acc.id,config);
-            
+
            // Highlight: Unused Local Variables 
           /*  Map<Id,String> nodeAcc = */ Core_MDF_CCP_MassOwnerUpdate.getAccountNodes(acc.Id,'Client');
           /*  Map<Id,String> nodeAcc1 = */Core_MDF_CCP_MassOwnerUpdate.getAccountNodes(acc2.Id,'test');
@@ -225,10 +227,9 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
             sObjectsToUpdate.add(opp);
             // Unit Test Method should include System.Assert 
             System.assert(sObjectsToUpdate.size() == 2,'Two sObjects should be prepared for update');
-            
             // Highlight: Unused Local Variable 
           /*  Core_MDF_CCP_MassOwnerUpdate.saveResWarpper res =  */ Core_MDF_CCP_MassOwnerUpdate.saveResult(sObjectsToUpdate);
-            Core_MDF_CCP_MassOwnerUpdate.FilterFieldsWrapper fltFldWrapper =  new Core_MDF_CCP_MassOwnerUpdate.FilterFieldsWrapper();
+            Core_MDF_CCP_MassOwnerUpdate.FilterFieldsWrapper fltFldWrapper = new Core_MDF_CCP_MassOwnerUpdate.FilterFieldsWrapper();
             Core_MDF_CCP_MassOwnerUpdate.picklistFilterFldWrapper pickListFldWrap = new  Core_MDF_CCP_MassOwnerUpdate.picklistFilterFldWrapper();
             pickListFldWrap.apiName='StageName';
             pickListFldWrap.value= new List<String>{'Qualify', 'Define', 'Develop'};
@@ -302,6 +303,14 @@ public class Core_MDF_CCP_MassOwnerUpdate_Test {
            Core_MDF_CCP_UtilityClass.triggerErrLoggingPE(ex,'Critical','test','test','Mass Access Ownership Transfer',null); 
              
         }
+        Test.stopTest();
+    }
+    @isTest
+    public static void testUserReports() {
+        Test.startTest();
+        Id userId = [SELECT Id from User limit 1].Id;
+        List<SObject> fromToUser = Core_MDF_CCP_MassOwnerUpdate.UserReports(userId, userId);
+        System.assertEquals(userId, userId);
         Test.stopTest();
     }
 }

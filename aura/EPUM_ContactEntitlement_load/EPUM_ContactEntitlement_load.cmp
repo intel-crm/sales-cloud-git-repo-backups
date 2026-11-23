@@ -1,0 +1,16 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="sContactIdStr" type="String" default="0034F00000XhHo9QAF" description="use to store the searched contact details"/>
+    <aura:attribute name="pContactIdStr" type="String" default="0036C00000KGxLKQA1" description="use to store the one partner Id(OPID) details. OPID is a type of Account"/>
+    <aura:attribute name="onePartnerIdStr" type="String" default="0014F00000afuVIQAY" description="use to store the one partner Id(OPID) details. OPID is a type of Account"/>
+    <aura:attribute name="intelAccountIdStr_PC" type="String" default="0014F00000aecDGQAY" description="use to store the one partner Id(OPID) details. OPID is a type of Account"/>
+    <aura:attribute name="sourceCmp" type="String" description="use to store the component name from where it is getting called" />
+    
+    <aura:attribute name="recordNotFound" type="Boolean" default="true"/>
+   <!-- {coming in load ent}
+    {!v.sContactIdStr}
+    {!v.recordNotFound}-->
+    <aura:registerEvent name="loadEntitlementEvent" type="c:EPUM_Contact_Entitlement_Event"/>
+    <div class="slds-float_leftsearchFooterSec">
+   	  <lightning:button aura:id="entitlementsLoadBtn"  onclick="{!c.loadEntitlements}" variant="brand" class="{!v.recordNotFound == false ? 'slds-button slds-show displayButton': 'slds-button slds-hide displayButton'}" disabled="{!v.recordNotFound}">View &amp; Manage Roles</lightning:button> <!--hideCmp-->
+	</div>
+</aura:component>

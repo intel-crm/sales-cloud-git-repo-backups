@@ -24,9 +24,6 @@
     <columns>
         <field>SPM_Account_Feedback__c$Account_ID__c.SF_Account__c.Owner</field>
     </columns>
-    <columns>
-        <field>SPM_Account_Feedback__c$New_Account_Owner__c</field>
-    </columns>
     <description>Displays all account feedback with sales group and account owners</description>
     <filter>
         <criteriaItems>
@@ -51,6 +48,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>SPM_Account_Feedback__c$CreatedDate</dateColumn>
+        <endDate>2025-01-05</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-05</startDate>
     </timeFrameFilter>
 </Report>

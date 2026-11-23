@@ -67,6 +67,7 @@
                 Asset objAsset = AssetList[i];
                 objAsset.OwnerId = adminUser.Id;
                 objAsset.Core_IPS_Project__c= proj.Id;
+                
                 objAsset.Core_Supported_Product__c=sp.Id;
             }
             insert AssetList;
@@ -267,7 +268,7 @@
             Core_RestAPI_CasesV1.doPost(objWrapper);
             Core_RestApi_Case_CreateV1_Handler handler = new Core_RestApi_Case_CreateV1_Handler('CreateCase', System.now(), objWrapper);
             Core_RestAPI_Response response= handler.createCase();
-            
+            handler.assetObj = AssetList[0];
             handler.insertCase();
             handler.doAllEnvDetailValidations();
             handler.insertEnvironmentDetails();
@@ -297,6 +298,10 @@
     
     @isTest public static void test_createCase_Positive(){
         Core_RestApi_Case_CreateV1_Handler handler = new Core_RestApi_Case_CreateV1_Handler('CreateCase', System.now(), objWrapper);
+        //added by rajeswari on 13 July for increase the code coverage
+        List<Asset> AssetList = new List<Asset>();
+         AssetList =  [select id,Core_IPS_Project__c from Asset ];
+         handler.assetObj=AssetList[0];
         Core_RestAPI_Response response= handler.createCase();
         
         
@@ -380,8 +385,10 @@
         handler1.isProductOrProjectValid();
         System.assertEquals(handler1.validateCaseInputs(),false);
         
-        // to cover isProductOrProjectValid() else if block for core_supported_product__r.Core_EOIS__c and assetObj.Core_IPS_Project__c  condition
+        // to cover isProductOrProjectValid() else if block for core_supported_product__r.
+        // Core_EOIS__c and assetObj.Core_IPS_Project__c  condition
         AssetList[0].Status = 'Active';
+       
         AssetList[0].Core_IPS_Project__r.Core_Status__c  = 'Active';
         AssetList[0].core_supported_product__r.Core_EOIS__c = true;
         update AssetList[0];

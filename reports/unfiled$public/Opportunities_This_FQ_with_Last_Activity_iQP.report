@@ -11,7 +11,7 @@
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
+        <groupingColumn>Opportunity.Core_Last_Activity_Date__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -32,6 +32,10 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OPPORTUNITY_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <field>Opportunity.Core_Last_Activity_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Opportunities This FQ with Last Activity</name>

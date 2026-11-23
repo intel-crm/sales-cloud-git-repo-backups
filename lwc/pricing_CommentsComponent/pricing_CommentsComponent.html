@@ -55,7 +55,8 @@
                 </tbody>
               </table>
               <div if:true={hasUpdateAccess} class="slds-align_absolute-center">
-                <lightning-button variant="brand" type="submit" label="Save" title="Save" onclick={handleSave} disabled={disableInput}>
+                <lightning-button variant="brand" type="submit" label="Save" title="Save" onclick={handleSave} class=""
+                  disabled={disableInput}>
                 </lightning-button>
               </div>
             </div>
@@ -63,7 +64,7 @@
         </lightning-tab>
       </template>
 
-      <template if:true={showRPMComments}>
+      <template if:true={showRPMComments}> 
         <lightning-tab label="Pricing Manager Comments">
           <div class="slds-p-around_x-small">
             <lightning-textarea data-id="pmCmnt" disabled={disblePMComment} value="" placeholder="Write a comment..."

@@ -12,12 +12,10 @@ public with sharing  class core_IPS_PortalEdqController {
         // Start 23/01/2023 Shobhit Srivastav Added logic to check, Is selected country belong to embargoed 
         Id recordTypeIdGEC = Schema.SObjectType.Case.getRecordTypeInfosByName().get('IPS GEC ReadOnly').getRecordTypeId();
         Map<String, embargo_country__mdt> embargoCountry = embargo_country__mdt.getAll();
-           
             if(newRecord.Core_IPS_Country_Region__c!=null){
                countryRegion =newRecord.Core_IPS_Country_Region__c.replaceAll('[^a-zA-Z0-9]', '_');
             }
             
-           
               if(embargoCountry.containsKey(countryRegion)) {
                   if(embargoCountry.get(countryRegion).State__c == null || embargoCountry.get(countryRegion).State__c == '') {
                     newRecord.Core_IPS_GEC_Flag__c = true;
@@ -36,14 +34,12 @@ public with sharing  class core_IPS_PortalEdqController {
                   }
                   }
               }
-
        if(newRecord.ContactId != null && (newRecord.Core_IPS_Country_Region__c != null || newRecord.Core_IPS_Embargoed_State__c != null)) {
             Boolean needUpdate = false;
             Contact toUpdateCon;
             if(Contact.SObjectType.getDescribe().isAccessible()) {
             toUpdateCon = [Select Id,Core_Country_Region__c,Core_IPS_Embargoed_State__c From Contact Where Id = :newRecord.ContactId];
             }
-          
             if(toUpdateCon != null && ((toUpdateCon.Core_Country_Region__c==null || toUpdateCon.Core_Country_Region__c=='') && Schema.sObjectType.Contact.fields.Core_Country_Region__c.isUpdateable())) {
                 toUpdateCon.Core_Country_Region__c= newRecord.Core_IPS_Country_Region__c;
                 needUpdate = true; 
@@ -112,7 +108,7 @@ public with sharing  class core_IPS_PortalEdqController {
                             Core_IPS_Response__c newresaddmulti = new Core_IPS_Response__c();
                             newresaddmulti.Core_IPS_Question_Master__c = c.edq[0].qquestion;
                           //  newresaddmulti.Core_IPS_Answer_Master__c = vb; // Commented this line as part of Store Empty EDQs
-                           
+                           // added by chiru
                            if(String.isBlank(vb)){
                             newresaddmulti.Core_IPS_Answer_Master__c = null;
                           }else {
@@ -124,7 +120,7 @@ public with sharing  class core_IPS_PortalEdqController {
                     } else {
 		      // Commented this line as part of Store Empty EDQs
                        // newres.Core_IPS_Answer_Master__c = c.edq[0].vvalue;
-		       
+		       //added by chiru
                        if(String.isBlank(c.edq[0].vvalue)){
                         newres.Core_IPS_Answer_Master__c = null;
                        }else {

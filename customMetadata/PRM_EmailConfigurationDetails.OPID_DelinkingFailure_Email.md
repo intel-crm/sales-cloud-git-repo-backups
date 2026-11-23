@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PRM_BusinessEvent__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">OPID_DelinkingFailure_Email</value>
     </values>
     <values>
         <field>PRM_ChannelProgram__c</field>

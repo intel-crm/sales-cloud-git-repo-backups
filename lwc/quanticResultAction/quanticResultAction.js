@@ -38,6 +38,7 @@ export default class QuanticResultAction extends LightningElement {
    * The result to perform the action on.
    * @api
    * @type {Result}
+   * @deprecated The component no longer needs a result.
    */
   @api result;
   /**
@@ -53,13 +54,13 @@ export default class QuanticResultAction extends LightningElement {
   _selected;
   /** @type {boolean} */
   _loading;
-  
+
   /**
    * Specifies whether the result action button is in selected state or not.
    * @api
    * @type {boolean}
    */
-  @api 
+  @api
   get selected() {
     return this._selected;
   }
@@ -72,7 +73,7 @@ export default class QuanticResultAction extends LightningElement {
    * @api
    * @type {boolean}
    */
-  @api 
+  @api
   get loading() {
     return this._loading;
   }
@@ -117,20 +118,31 @@ export default class QuanticResultAction extends LightningElement {
   };
 
   /**
-   * Dispatches a custon event.
+   * Dispatches a custom event.
    */
   handleClick(event) {
     event.stopPropagation();
-    const resultCopy = {...this.result};
     const resultActionEvent = new CustomEvent(this.eventName, {
       bubbles: true,
       composed: true,
-      detail: {
-        result: resultCopy,
-      },
     });
 
     this.dispatchEvent(resultActionEvent);
+  }
+
+  showTooltip() {
+    this.tooltipComponent?.showTooltip();
+  }
+
+  hideTooltip() {
+    this.tooltipComponent?.hideTooltip();
+  }
+
+  /**
+   * @returns {Object}
+   */
+  get tooltipComponent() {
+    return this.template.querySelector('c-quantic-tooltip');
   }
 
   /**

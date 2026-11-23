@@ -213,6 +213,11 @@
         <unique>false</unique>
     </fields>
     <label>ISVC Integration Warranty</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>ISVC_Int_Warranty-{00000}</displayFormat>
         <label>ISVC Integration Warranty Name</label>

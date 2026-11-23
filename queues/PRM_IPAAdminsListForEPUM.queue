@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>PRM_IPAAdminsListForEPUM</name>
+    <queueMembers>
+        <users>
+            <user>12072689@intel.com.crm</user>
+            <user>12069678@intel.com.crm</user>
+            <user>11992928@intel.com.crm</user>
+            <user>12005610@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PRM_EmailLog__c</sobjectType>
+    </queueSobject>
+</Queue>

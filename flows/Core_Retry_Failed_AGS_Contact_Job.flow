@@ -18,7 +18,6 @@
             </value>
         </inputParameters>
         <nameSegment>Core_Draco_Misc_Functionalities</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -95,8 +94,8 @@
         </connector>
         <schedule>
             <frequency>Daily</frequency>
-            <startDate>2025-07-08</startDate>
-            <startTime>00:00:00.000Z</startTime>
+            <startDate>2024-06-06</startDate>
+            <startTime>11:45:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

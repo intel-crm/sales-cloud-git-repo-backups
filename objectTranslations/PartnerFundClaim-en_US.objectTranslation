@@ -296,6 +296,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim Cancellation Reason --></label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help><!-- Free text note related to the Claim --></help>
         <label><!-- Claim Comments --></label>
         <name>Core_MDF_Claim_Comments__c</name>
@@ -612,6 +616,10 @@
     <fields>
         <label><!-- IsClaimReviewEscalation --></label>
         <name>Core_MDF_IsClaimReviewEscalation_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Super Claim --></label>
+        <name>Core_MDF_Is_Super_Claim__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -952,8 +960,20 @@
         <name>Core_MDF_Paid_By_Payment_Type_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Payment Type after Payment Run --></label>
+        <name>Core_MDF_PaymentType_aft_PaymentRun_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Payment Admin Reminder Date --></label>
         <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Currency --></label>
+        <name>Core_MDF_Payment_Currency_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Exchange Rate --></label>
+        <name>Core_MDF_Payment_Exchange_Rate_Nbr__c</name>
     </fields>
     <fields>
         <help><!-- Checked when bank is on hold --></help>
@@ -988,6 +1008,10 @@
     <fields>
         <label><!-- Payment Type --></label>
         <name>Core_MDF_Payment_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Local Amount --></label>
+        <name>Core_MDF_Payment_lcl_Amount__c</name>
     </fields>
     <fields>
         <label><!-- % of Intel Devices --></label>
@@ -1148,7 +1172,7 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
         <name>Core_MDF_Recovery_Hold_Ind__c</name>
     </fields>
     <fields>
-        <help><!-- Region Name --></help>
+        <help><!-- Country/Region Name --></help>
         <label><!-- Region --></label>
         <name>Core_MDF_Region_Cd__c</name>
     </fields>
@@ -1329,6 +1353,10 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
         <name>Core_MDF_Taxes_Local__c</name>
     </fields>
     <fields>
+        <label><!-- Third Party Ind --></label>
+        <name>Core_MDF_Third_Party_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Time video to last --></label>
         <name>Core_MDF_Time_video_to_last_txt__c</name>
     </fields>
@@ -1431,8 +1459,8 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
         <name>Core_MDF_VAT_Eligibility_Ind__c</name>
     </fields>
     <fields>
-        <help><!-- Checked when the Claim is selected for Payment Document process --></help>
-        <label><!-- Payment Documents Review Hold --></label>
+        <help><!-- Checked when the Claim is selected for Payment Document process Test --></help>
+        <label><!-- Payment Documents Review Hold Test --></label>
         <name>Core_MDF_VAT_Hold_Ind__c</name>
     </fields>
     <fields>
@@ -1459,6 +1487,10 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
     <fields>
         <label><!-- Invoice Type --></label>
         <name>Core_MDF_VAT_Opt_In_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vat Payment Local Amount --></label>
+        <name>Core_MDF_Vat_Payment_lcl_Amount__c</name>
     </fields>
     <fields>
         <label><!-- Where to take place --></label>
@@ -1628,6 +1660,10 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
         <name>Core_MDF_Restrict_Change_Owner</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- This user does not have permission to perform this action --></errorMessage>
+        <name>Core_MDF_Restrict_ClaimCloneAndEdit</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Activity needing approval. --></errorMessage>
         <name>Core_MDF_Restrict_Claim_Creation</name>
     </validationRules>
@@ -1664,7 +1700,7 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
         <name>Core_MDF_StartDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
+        <errorMessage><!-- Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range. Test --></errorMessage>
         <name>Core_MDF_StartDateValidation_Outcome</name>
     </validationRules>
     <validationRules>

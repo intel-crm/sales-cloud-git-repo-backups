@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Cancelled;Denied;Adjusted;Resubmission Window Closed;Paid;Paid and Pending Documents;Paid and PIC Pending;Paid and Resubmission Required</value>
+        <value xsi:type="xsd:string">Cancelled;Denied;Adjusted;Resubmission Window Closed;Paid;Paid and Pending Documents;Paid and PIC Pending;Paid and Resubmission Required;Closed</value>
     </values>
 </CustomMetadata>

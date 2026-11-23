@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Exception with Status Code 404 Occurred During  Partner/Offering Translation" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_404TranslationException />
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

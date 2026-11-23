@@ -89,17 +89,30 @@ public class ContactERPMIntegrationStatusHandler implements Queueable {
                                              
         if(contacts != null && contacts.size() > 0) {
             //update contactsToUpdate;
-            system.debug('contacts '+contacts);
             Core_ERPM_Outbound_Integration.evaluateAndSetERPMOutboundIntegrationStatus(contacts,null,false);
         }
     }
     
     private static void filterCSPRelatedContacts(Set<Id> contactIds) {
         if(contactIds != null && contactIds.size() > 0) {
-            List<Contact> contacts = [SELECT Id FROM Contact WHERE Core_IPA_PartnerRole__c NOT IN : configPartnerRoles  AND Id IN :contactIds];
+            //Ganesh Changes
+            /*List<Contact> contacts = [SELECT Id FROM Contact WHERE Core_IPA_PartnerRole__c NOT IN : configPartnerRoles  AND Id IN :contactIds];
             if(contacts != null && contacts.size() > 0) {
                 updateContactERPMIntegrationStatusToPending(contacts);
+            }*/
+            //Ganesh Changes
+            List<Contact> contacts = [SELECT Id, Core_IPA_PartnerRole__c FROM Contact WHERE Id IN :contactIds];
+            List<Contact> filteredContacts = new List<Contact>();
+
+			for(Contact con : contacts){
+    			if(!configPartnerRoles.contains(con.Core_IPA_PartnerRole__c)){
+        			filteredContacts.add(con);
+    			}
+			}
+            if(filteredContacts != null && filteredContacts.size() > 0) {
+                updateContactERPMIntegrationStatusToPending(filteredContacts);
             }
+            //Ganesh Changes
         }
     }     
     
@@ -115,29 +128,34 @@ public class ContactERPMIntegrationStatusHandler implements Queueable {
     
     
     public static void parseInputList(List<PRM_ContactSubscriptionAssociation__c> newList) {
-        Set<Id> contactIds = new Set<Id>();   
-        for(PRM_ContactSubscriptionAssociation__c obj : newList) {
-            if(obj.LastModifiedById!=Label.ERPM_OBM_Integration){
-                contactIds.add(obj.PRM_Contact_Id__c);
-            } 
+        try{
+            Set<Id> contactIds = new Set<Id>();   
+            for(PRM_ContactSubscriptionAssociation__c obj : newList) {
+                if(obj.LastModifiedById!=Label.ERPM_OBM_Integration){
+                    contactIds.add(obj.PRM_Contact_Id__c);
+                } 
+            }
+            //filterCSPRelatedContacts(contactIds);
+            if(contactIds != null && contactIds.size() > 0) {
+                List<Contact> contacts = [SELECT Id FROM Contact WHERE Id IN :contactIds];
+                if(contacts != null && contacts.size() > 0) {
+                    List<Contact> contactsToUpdate = new List<Contact>();
+                    for(Contact contact : contacts) {
+                        contactsToUpdate.add(new Contact(id = contact.Id
+                                                         , Core_ERPM_Integration_Status__c = 'Pending'
+                                                        ));
+                    }
+                    
+                    if(contactsToUpdate != null && contactsToUpdate.size() > 0) {
+                        update contactsToUpdate;
+                        updateContactERPMIntegrationStatusToPending(contactsToUpdate);
+                    } 
+                } 
+            }
+        }catch(Exception ex){
+            UCD_ACM_Logger.error('ContactERPMIntegrationStatusHandler','parseInputList','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+            UCD_ACM_Logger.setLogDetails();
         }
-        //filterCSPRelatedContacts(contactIds);
-        if(contactIds != null && contactIds.size() > 0) {
-            List<Contact> contacts = [SELECT Id FROM Contact WHERE Id IN :contactIds];
-            if(contacts != null && contacts.size() > 0) {
-                List<Contact> contactsToUpdate = new List<Contact>();
-                for(Contact contact : contacts) {
-                contactsToUpdate.add(new Contact(id = contact.Id
-                                    , Core_ERPM_Integration_Status__c = 'Pending'
-                                             ));
-                }
-                
-                if(contactsToUpdate != null && contactsToUpdate.size() > 0) {
-                    update contactsToUpdate;
-                    updateContactERPMIntegrationStatusToPending(contactsToUpdate);
-            } 
-            } 
-        } 
     }
     
     public static void parseInputList(List<Contact_Business_Types__c> newList) {
@@ -183,7 +201,13 @@ public class ContactERPMIntegrationStatusHandler implements Queueable {
     
      public static void UpdateContact(List<Contact> conList) { //Added by Vijay - AGATE
         if(conList != null && !conList.IsEmpty()){
-            update conList;
+            try{
+                update conList;
+            }catch(Exception ex){
+                UCD_ACM_Logger.error('ContactERPMIntegrationStatusHandler','UpdateContact','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+                UCD_ACM_Logger.setLogDetails();
+                
+            }
         }
     }
     

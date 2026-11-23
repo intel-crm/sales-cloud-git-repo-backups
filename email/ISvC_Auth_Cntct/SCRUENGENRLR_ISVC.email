@@ -1,0 +1,65 @@
+<style>
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+</style>
+<body class="setupTab" onload="init()" style="background-color: #FFFFFF; bEditID: b1st1; bLabel: body;">
+<table cellpadding="0" width="500" cellspacing="0" id="topTable" height="450">
+<tbody>
+<tr valign="top">
+<td style="background-color: #ffffff; beditid: r1st1; blabel: header; vertical-align: top; height: 95; text-align: left;"><img border="0" beditid="r1sp1" blabel="headerImage" id="r1sp1" src="http://c.na12.content.force.com/servlet/servlet.ImageServer?id=015U0000003sxfg&amp;oid=00DU0000000YT3c" /></td>
+</tr>
+<tr valign="top">
+<td style="background-color: #ffffff; beditid: r2st1; blabel: accent1; height: 0;"></td>
+</tr>
+<tr valign="top">
+<td styleinsert="1" height="300" style="background-color: #ffffff; beditid: r3st1; color: #000000; blabel: main; font-size: 12pt; font-family: arial;">
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400">
+<tbody>
+<tr valign="top" height="400">
+<td teditid="c1r1" style="background-color: #ffffff; beditid: r3st1; color: #000000; blabel: main; font-size: 12pt; font-family: arial;" aeditid="c1r1" locked="0">
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"><b>Action Required </b></span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;">Welcome to Intel Customer Support Service Request Management!.</span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;">Please retain this e-mail for future reference. </span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"><b>Login ID:</b> {!Contact.Email}</span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"><b>E-mail Address:</b> {!Contact.Email}</span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;">Your password should be protected as confidential. Your use of the password and Intel's websites are governed by Intel's Terms and Conditions of Use linked from the bottom of each respective site's web pages. </span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;">If you have any questions, please contact us <a href="http://www.intel.com/p/en_US/support">here</a>. </span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;">Visit this <a href="https://!%tst_us_en%!">link</a> any time to manage your profile. </span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;">Please DO NOT reply to this e-mail message. This is an automated response.</span></p>
+<p style="margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;">To ensure that you continue receiving our e-mails, please add us to your address book. </span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"> </span></p>
+<hr style="background-color: #E5E5E5;color: #E5E5E5;border: 0 none;height: 1px;"><footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"><img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png" alt="Intel logo" height="42" width="64" style="float: right;padding: 4px 0px 0px 50px;"> 
+<p style="font-size: 15pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span size="1" face="Arial, sans-serif" style="font-family: Arial, sans-serif; font-size: xx-small;">Intel is committed to protecting your privacy. For more information,</span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span size="1" face="Arial, sans-serif" style="font-family: Arial, sans-serif; font-size: xx-small;">please see the <a href="http://www.intel.com/content/www/us/en/privacy/intel-online-privacy-notice-summary.html">Intel Privacy Notice</a>. </span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span size="1" face="Arial, sans-serif" style="font-family: Arial, sans-serif; font-size: xx-small;"> </span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span size="1" face="Arial, sans-serif" style="font-family: Arial, sans-serif; font-size: xx-small;"><a href="http://www.intel.com/content/www/us/en/legal/terms-of-use.html?iid=ftr%20terms">Legal Information </a>| <a href="http://www.intel.com/sites/corporate/tradmarx.htm">Trademarks </a>© Intel Corporation. All rights reserved.</span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span size="1" face="Arial, sans-serif" style="font-family: Arial, sans-serif; font-size: xx-small;">*Other names and brands may be claimed as the property of others.</span></p>
+<p style="font-size: 12pt; margin: 0in 0in 0pt;" class="MsoNoSpacing"><span face="Arial, sans-serif" style="font-family: Arial, sans-serif;"><span size="1" style="font-size: xx-small;">**Intel is not responsible for content of sites outside our intranet sites.</span><span style="font-size: 12pt;"> </span></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr valign="top">
+<td style="background-color: #ffffff; beditid: r4st1; blabel: accent2; height: 0;"></td>
+</tr>
+<tr valign="top">
+<td style="background-color: #ffffff; beditid: r5st1; blabel: footer; vertical-align: top; height: 100; text-align: left;"></td>
+</tr>
+<tr valign="top">
+<td style="background-color: #ffffff; beditid: r6st1; blabel: accent3; height: 0;"></td>
+</tr>
+
+</tbody>
+</table>

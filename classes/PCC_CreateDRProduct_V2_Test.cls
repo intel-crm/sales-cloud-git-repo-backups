@@ -124,8 +124,8 @@ public class PCC_CreateDRProduct_V2_Test {
         
         Product_MM_Attribute_Mapping__c pmam = new Product_MM_Attribute_Mapping__c();
         pmam.Ordering_Code__c = 'WX80660E52630V4';
-        pmam.Name = '949344';
-        pmam.MMID__c = '949344';
+        pmam.Name = '949344'; 
+        //pmam.MMID__c = '949344';
         pmam.L4_Product__c = pr.Id;
         
         insert pmam;
@@ -134,7 +134,7 @@ public class PCC_CreateDRProduct_V2_Test {
         pmam1.Ordering_Code__c = 'WX80550E52630V4';
         pmam1.Name = '949348';
         pmam1.L5_Product__c = pr1.Id;
-        pmam1.MMID__c = '12831';
+        //pmam1.MMID__c = '12831'; 
         insert pmam1;
         
         Core_Design_Registration_Product__c DRproducts = new Core_Design_Registration_Product__c();
@@ -761,7 +761,7 @@ public class PCC_CreateDRProduct_V2_Test {
         Product_MM_Attribute_Mapping__c pmam1 = new Product_MM_Attribute_Mapping__c();
         pmam1.Ordering_Code__c = 'WX80550E52630V4';
         pmam1.Name = '949348';
-        pmam1.MMID__c = '949348';
+        //pmam1.MMID__c = '949348'; 
         pmam1.L4_Product__c = pr.Id;
         pmam1.L5_Product__c = pr.Id;
         insert pmam1;
@@ -807,25 +807,25 @@ public class PCC_CreateDRProduct_V2_Test {
         pmam1.Spec_Code__c = 'S';
         pmam1.Custom_Indicator__c = 'M';
         pmam1.Product_Status__c = 'RT';
-        pmam1.MMID__c = '949348';
+        //pmam1.MMID__c = '949348';
         insert pmam1;
         specCdToProductIdMap.put(pmam1.L5_Product__r.id, 'Q');
         PCC_CreateDRProductUtilityHandler_V2.Productwrapper pWrp = new PCC_CreateDRProductUtilityHandler_V2.Productwrapper();
         pWrp.specCdToProductIdMap = specCdToProductIdMap;
         pWrp.mmIdToProductIdMap = mmIdToProductIdMap;
         pWrp.orderingCdToProductIdMap = orderingCdToProductIdMap;
-        pWrp.oldMMIdToProductIdMap = oldMMIdToProductIdMap;
+       // pWrp.oldMMIdToProductIdMap = oldMMIdToProductIdMap;
         pWrp.prodStatusToProductIdMap = prodStatusToProductIdMap;
         pWrp.custIndToProductIdMap = custIndToProductIdMap;
 
         
         List<String> listOfOrderingCd = new List<String>();
         List<String> listOfMMId = new List<String>();
-        List<String> listOfOldMMId = new List<String>();
+        //List<String> listOfOldMMId = new List<String>();
         listOfMMId.add('949348');
         
         Test.startTest();
-        PCC_CreateDRProductUtilityHandler_V2.getProductId(listOfOrderingCd, listOfMMId, listOfOldMMId);
+        PCC_CreateDRProductUtilityHandler_V2.getProductId(listOfOrderingCd, listOfMMId);//, listOfOldMMId); 
         PCC_CreateDRProductUtilityHandler_V2.drEligible(pWrp, pmam1.L5_Product__r.id);
         system.assertEquals(pWrp, pWrp, 'assert statement');
         Test.stopTest();

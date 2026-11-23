@@ -51,6 +51,7 @@
         req.Process_Type__c = 'Partner';
         req.Requestor_Name__c = UserInfo.getName();
         req.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
+        req.State__c = 'New';
         req.Account_Name__c = reuestedAccount.Id;
         req.Core_Account_Reference_Source_Name__c = 'Partner'; 
         req.Address__City__s = 'Test';
@@ -253,7 +254,9 @@
         Test.startTest();
         Map<Id, Account> accountsByIds2 = accountQuerySelectorInstance.getAllChildAccounts(parentId);
         System.assert(accountsByIds2 != null);
+       // UCD_ACM_SelectorContracts.IAccountQuerySelector accountQuerySelectorInstance = UCD_ACM_AccountQuerySelector.getInstance();
        accountQuerySelectorInstance.getIntegrationMessageQueueByArqId(parentId);
+       accountQuerySelectorInstance.getAccountRequestQueueByAccountId(parentId,'Id, Name, Account_Name__c');
         Test.stopTest();
     }
     

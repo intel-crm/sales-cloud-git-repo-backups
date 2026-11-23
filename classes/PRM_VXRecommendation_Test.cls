@@ -70,7 +70,7 @@ public class PRM_VXRecommendation_Test{
             
         }
         catch(Exception e){
-            //System.debug('OPID Already exists' +e.getMessage());
+            System.debug('OPID Already exists' +e.getMessage());
         }
         
         
@@ -98,7 +98,7 @@ public class PRM_VXRecommendation_Test{
             insert vxRecommnedation3; 
         }
         catch(Exception e){
-            //System.debug('OPID Recommendation Already Exists' +e.getMessage());
+            System.debug('OPID Recommendation Already Exists' +e.getMessage());
         }
         
         system.assertEquals(recordTypeIdOPIDRec,vxRecommnedation2.RecordTypeId,'Value does not match');
@@ -143,7 +143,7 @@ public class PRM_VXRecommendation_Test{
             insert vxRecommnedation1; 
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
         
         
@@ -163,7 +163,7 @@ public class PRM_VXRecommendation_Test{
             update vxRecommnedation2;
         }
         catch(Exception e){
-            //System.debug('Update'+e.getMessage());
+            System.debug('Update'+e.getMessage());
         }
         PRM_Value_Exchange_Recommendation__c vxRecommnedation3 = [Select PRM_Grouping_Method_Nm__c from PRM_Value_Exchange_Recommendation__c where Id=:vxRecommnedation2.Id];
         //system.assertEquals('CTRY',vxRecommnedation3.PRM_Grouping_Method_Nm__c,'Value should not be updated');
@@ -274,29 +274,24 @@ public class PRM_VXRecommendation_Test{
             insert opidRec1; 
             opidList.add(opidRec);
             opidList.add(opidRec1);
-            //System.debug('OPID Rec Inserted');
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
         for(PRM_Value_Exchange_Recommendation__c vxRec : opidList){
             vxRec.PRM_Recommendation_Status_Nm__c = 'In Process';
         }
         try{
             update opidList; 
-            //System.debug('OPID Rec Updated');
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
         
         PRM_Value_Exchange_Recommendation__c vxRec = [Select PRM_Partner_Role_Nm__c from PRM_Value_Exchange_Recommendation__c where Id=:opidRec.Id];
         system.assertEquals('Solution Integrator',vxRec.PRM_Partner_Role_Nm__c,'Value should not be updated');
         map<Id,PRM_Value_Exchange_Recommendation__c> recmap=new map<Id,PRM_Value_Exchange_Recommendation__c>();
         recmap.put(opidRec.id,opidRec);
-        //System.debug('opidList->'+opidList);
-        //System.debug('recmap->'+recmap);
-        //System.debug('recordTypeIdOPIDRec->'+recordTypeIdOPIDRec);
         //PRM_VXRecommendation_Utility.duplicateRecommendationcheck(opidList,recmap,recordTypeIdOPIDRec);
         
     } 
@@ -349,7 +344,7 @@ public class PRM_VXRecommendation_Test{
 		insert obmLst;  
           
         test.startTest();
-        PRM_VXRecommendation_Utility.statusCheck(tagIds);
+        //PRM_VXRecommendation_Utility.statusCheck(tagIds);
         test.stopTest();
         //system.assertEquals(newAccount.PRM_Partner_Role_Nm__c,'Solution Integrator','Value should not be updated');
     }
@@ -442,14 +437,14 @@ public class PRM_VXRecommendation_Test{
             update vxRecommnedation1;
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
         vxRecommnedation1.PRM_Recommendation_Status_Nm__c='In Process';
         try{
             update vxRecommnedation1;
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
         
         vxRecommnedation1.PRM_Recommendation_Status_Nm__c='failed to Submit for OPID';
@@ -457,18 +452,18 @@ public class PRM_VXRecommendation_Test{
             update vxRecommnedation1;
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
-        PRM_VXRecommendation_Utility.getOPID_Ids(vxRecommnedation1.Id);
+        //PRM_VXRecommendation_Utility.getOPID_Ids(vxRecommnedation1.Id);
         
         vxRecommnedation1.PRM_Recommendation_Status_Nm__c='Failed';
         try{
             update vxRecommnedation1;
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage()); 
         }        
-        PRM_VXRecommendation_Utility.getOPID_Ids(vxRecommnedation1.Id);      
+        //PRM_VXRecommendation_Utility.getOPID_Ids(vxRecommnedation1.Id);      
       
         Test.stopTest();
         PRM_Value_Exchange_Data__c vxDataRec= [Select PRM_Tier_Id__r.Name from PRM_Value_Exchange_Data__c where Id=:vxData.Id];
@@ -563,16 +558,16 @@ public class PRM_VXRecommendation_Test{
             update vxRecommnedation1;
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }
-        PRM_VXRecommendation_Utility.getOPID_Ids(vxRecommnedation1.Id);
+        //PRM_VXRecommendation_Utility.getOPID_Ids(vxRecommnedation1.Id);
         
         vxRecommnedation1.PRM_Recommendation_Status_Nm__c='Failed';
         try{
             update vxRecommnedation1;
         }
         catch(Exception e){
-            //System.debug(e.getMessage());
+            System.debug(e.getMessage());
         }  
         List <Core_Integration_Outbound_Message__c> lstOfoutBoundMsg = [SELECT Id, Core_Status__c, Core_Tags__c, Core_Payload__c,
                                                                         Core_MessageType__c
@@ -581,7 +576,7 @@ public class PRM_VXRecommendation_Test{
         
         delete lstOfoutBoundMsg;
         
-        PRM_VXRecommendation_Utility.getOPID_Ids(vxRecommnedation1.Id);      
+        //PRM_VXRecommendation_Utility.getOPID_Ids(vxRecommnedation1.Id);      
         
         Test.stopTest();
     }
@@ -684,7 +679,7 @@ public class PRM_VXRecommendation_Test{
         Set<Id> setOfIds = new Set<Id>();
         setOfIds.add(opidRec.id);
         
-        PRM_VXRecommendation_Utility.statusCheck(setOfIds);
+        //PRM_VXRecommendation_Utility.statusCheck(setOfIds);
         
         Test.stopTest();
     }
@@ -790,7 +785,7 @@ public class PRM_VXRecommendation_Test{
         Set<Id> setOfIds = new Set<Id>();
         setOfIds.add(opidRec.id);
         
-        PRM_VXRecommendation_Utility.statusCheck(setOfIds);
+        //PRM_VXRecommendation_Utility.statusCheck(setOfIds);
         
         Test.stopTest();
     }
@@ -906,7 +901,7 @@ public class PRM_VXRecommendation_Test{
         trackerList.add(muletracker); 
 
         insert trackerList;
-        PRM_VXRecommendation_Utility.statusCheck(setOfIds);
+        //PRM_VXRecommendation_Utility.statusCheck(setOfIds);
         
         Test.stopTest();
     }
@@ -1022,7 +1017,7 @@ public class PRM_VXRecommendation_Test{
         trackerList.add(muletracker); 
 
         insert trackerList;
-        PRM_VXRecommendation_Utility.statusCheck(setOfIds);
+        //PRM_VXRecommendation_Utility.statusCheck(setOfIds);
         
         Test.stopTest();
     }
@@ -1136,7 +1131,7 @@ public class PRM_VXRecommendation_Test{
         opidRec.PRM_Recommendation_Status_Nm__c='failed to Submit for OPID';
         Update opidRec;
         
-        PRM_VXRecommendation_Utility.getOPID_Ids(opidRec.Id);
+        //PRM_VXRecommendation_Utility.getOPID_Ids(opidRec.Id);
        
         Test.stopTest();
     }

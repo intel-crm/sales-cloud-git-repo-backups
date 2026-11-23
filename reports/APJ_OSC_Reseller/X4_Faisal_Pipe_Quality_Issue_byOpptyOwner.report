@@ -52,7 +52,6 @@
         <field>Opportunity.Core_Last_Activity_Date__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Pipeline_Heath__c</column>
             <columnToColumn>false</columnToColumn>
@@ -61,18 +60,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>caseen.sze@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_EMAIL</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>rachel.chu@intel.com</value>
+            <value>faisal qamar</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -82,7 +74,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>MM_Pipe Quality Issue by OpptyOwner</name>
+    <name>4_Faisal_Pipe Quality Issue byOpptyOwner</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -108,6 +100,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <excludeButtons>Clone</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -22,30 +21,6 @@
                 <field>CPT_CR_Retail_Target__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Margin_CCG_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Margin_DCG_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
             </layoutItems>
@@ -56,6 +31,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>CPT_Quota_Period__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>CPT_CR_CCG_Consumer_CPU_Target__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -127,12 +106,6 @@
         <fields>CPT_CR_OEM_Target__c</fields>
         <fields>CPT_CR_Partner_Target__c</fields>
         <fields>CPT_CR_Retail_Target__c</fields>
-        <fields>CPT_MarVol_Margin_CCG_Target__c</fields>
-        <fields>CPT_MarVol_Margin_DCG_Target__c</fields>
-        <fields>CPT_MarVol_Next_Gen_CCG_LNL_Target__c</fields>
-        <fields>CPT_MarVol_Next_Gen_CCG_PTL_Target__c</fields>
-        <fields>CPT_MarVol_Next_Gen_CCG_WCL_Target__c</fields>
-        <fields>CPT_MarVol_Next_Gen_DCG_GNR_Target__c</fields>
     </miniLayout>
     <platformActionList>
         <actionListContext>Record</actionListContext>
@@ -165,7 +138,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hHo000005ZKS5</masterLabel>
+        <masterLabel>00h2D000004Ao0J</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

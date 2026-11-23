@@ -1,0 +1,127 @@
+<apex:component access="global" controller="Pricing_QuoteEmailAlertController">
+    
+    <html>
+        <style>
+            /* Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            table {
+            font-family: Intel Clear; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+            
+            h1{
+            font-family: Intel Clear Pro !important; 
+            }
+        </style>
+        
+        <apex:attribute name="quoteRecordId" type="Id" description="Tender Quote Id" assignTo="{!quoteId}"/>
+        
+        <body>
+            <EMAIL>
+                
+                <to></to>
+                
+                <cc></cc>
+                
+                <bcc></bcc>
+                
+            </EMAIL> 
+            
+            <!-- Header Banner -->    
+            <table style="background-color:#0168B5;" width="75%">
+                <tr>
+                    <td style="padding-left:50px;border: 0px;border:none;">
+                        <div style="color:white;"><h1>IQR Quote Letter</h1></div>
+                    </td>
+                    <td style="border:none;padding-right:20px;" align="right">
+                        <apex:image url="{!headerURL}" width="100" height="80" alt="Intel Logo"/>
+                    </td>
+                </tr>
+            </table>
+            <!-- Header Banner -->
+            <!-- Email Body -->
+ 
+            <table width="75%">
+                
+                <tr>
+                    <td style="padding-left:50px;padding-right:50px;">
+                        <br/>Hello. Attached is the quote letter for the price quote request submitted in the Intel Quote Request (IQR) tool.<br/><br/>
+                        <apex:outputText value="<Email>" /><br/>
+                        <apex:outputText value="<to> {!toEmails} </to>" /><br/>
+                        <apex:outputText value="<cc> {!ccEmails} </cc>" /><br/>
+                        <apex:outputText value="<bcc> {!bccEmails} </bcc>" /><br/>
+                        <apex:outputText value="</Email>" /><br/><br/>
+ 
+                        <b>Quote:</b>&nbsp;<apex:outputLink value="{!externalDomainName}/quote/{!quoteData.Id}" >{!quoteData.Name}</apex:outputLink><b> (External) </b><apex:outputLink value="{!domainName}/{!quoteData.Id}" >{!quotedata.Name}</apex:outputLink><b> (Internal)</b><br/>
+                        <b>End Customer:</b>&nbsp;{!quoteData.Pricing_End_Customer_Name__c}<br/>
+                        <!--<b>End Customer:</b>&nbsp;{!quoteData.Pricing_Customer_Nm__c}<br/>-->
+                        <b>Project:</b>&nbsp;{!quoteData.Pricing_Project_Name_Nm__c}<br/>
+                        <b>Reference Request ID:</b>&nbsp;{!quoteData.Pricing_Customer_Reference_Id__c}<br/><br/>
+                        
+                        This email was sent from an unmonitored mailbox. For questions, please contact your Intel Sales Rep or utilize the Chatter feature on the quote.<br/><br/>
+                        
+                    </td>
+                </tr>             
+            </table>
+            <!-- Email Body -->  
+            <!-- Global Footer -->
+            <table width="75%">
+                <tr>    
+                    <td style="text-align:center">
+                        <div style="font-size:10px">
+                            This message was sent to you as an important business communication related to your current relationship with Intel Quote Request (IQR)<br/>
+                            ©{!year(today())} Intel Corporation <br/>
+                            Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.
+                            <apex:outputLink value="www.intel.com" styleClass="intelBlue"> www.intel.com</apex:outputLink><br/>
+                            <apex:outputLink value="www.intel.com/privacy" styleClass="intelBlue">Privacy</apex:outputLink> | &nbsp;
+                            <apex:outputLink value="www.intel.com/cookies" styleClass="intelBlue">Cookies</apex:outputLink>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!-- Global Footer -->
+        </body>
+    </html>
+</apex:component>

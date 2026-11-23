@@ -289,6 +289,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Competitive Assessment --></label>
+        <name>Competitive_Assessment__c</name>
+    </fields>
+    <fields>
         <help><!-- Strategy to remove competitor threats in the solution design. (e.g. defining Intel affinities, existing investments that tie customer to Intel, etc.) --></help>
         <label><!-- Competitor Threat Mitigation --></label>
         <name>Competitor_Threat_Mitigation__c</name>
@@ -326,7 +330,7 @@
         <name>Core_Ambient_Temp_Req__c</name>
     </fields>
     <fields>
-        <help><!-- Displays the current approval status and is not editable. --></help>
+        <help>Show the current approval status and is not editable</help>
         <label><!-- Design Win Approval Status --></label>
         <name>Core_Approval_Status__c</name>
         <picklistValues>
@@ -400,7 +404,7 @@
         <relationshipLabel><!-- Opportunities (Approver 5) --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- Check the box to indicate this is an opportunity to convert an existing design based on a competitive architecture over to Intel Architecture. --></help>
+        <help>Check the box to indicate this is an opportunity to convert an existing design based on a competitive architecture over to Intel Architecture</help>
         <label><!-- Architecture Conversion --></label>
         <name>Core_Architecture_Conversion__c</name>
     </fields>
@@ -486,7 +490,7 @@
         <name>Core_Combined_Solution_Detail__c</name>
     </fields>
     <fields>
-        <help><!-- Select &apos;NO&apos; if this opportunity is NOT eligible for commission credit. This field has NO impact on KPI credit. --></help>
+        <help>Select ‘NO’ if this opportunity is NOT eligible for commission credit.  This field has NO impact on KPI credit.</help>
         <label><!-- Commissionable? --></label>
         <name>Core_Commissionable__c</name>
         <picklistValues>
@@ -499,7 +503,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- If applicable, select the major competitor for this opportunity/solution. --></help>
+        <help>The main architecture in competition for the Design Win</help>
         <label><!-- Competitive Architecture --></label>
         <name>Core_Competitive_Architecture__c</name>
         <picklistValues>
@@ -670,7 +674,7 @@
         <name>Core_Compliance_Comments__c</name>
     </fields>
     <fields>
-        <help><!-- This field is not editable and will display the current status of the compliance review. Opportunities cannot be submitted for win approval if this status is on hold or not approved. --></help>
+        <help>This field is not editable and will display the current status of the compliance review. Opportunities can not be submitted for win approval if this status is on hold or not approved</help>
         <label><!-- Compliance Status --></label>
         <name>Core_Compliance_Status__c</name>
         <picklistValues>
@@ -763,7 +767,7 @@
         <name>Core_Consumer_Sales_System__c</name>
     </fields>
     <fields>
-        <help><!-- Select the end market where the product/solution will be used. --></help>
+        <help>Identifies the end market where the product is used</help>
         <label><!-- Vertical Market --></label>
         <name>Core_Consumption_Market__c</name>
         <picklistValues>
@@ -1115,7 +1119,7 @@
         <name>Core_Entry_SPP_US__c</name>
     </fields>
     <fields>
-        <help><!-- Check the box if this opportunity should NOT receive KPI credit. If checked, the &apos;Opportunity KPIs&apos; section will not populate, any data already there will be removed within 24 hours. This does not apply to Consumption KPI. --></help>
+        <help>Check the box if this opportunity should NOT receive KPI credit. If checked, ‘Opportunity KPIs’ section will not populate, any data already there will be removed within 24 hours. This does not apply to Consumption KPI.</help>
         <label><!-- Exclude from KPIs --></label>
         <name>Core_Exclude_From_KPIs__c</name>
     </fields>
@@ -1124,7 +1128,7 @@
         <name>Core_Exclude_from_Confidence__c</name>
     </fields>
     <fields>
-        <help><!-- Free form text field to track the lead number or other reference ID from the system where the Opportunity originated. --></help>
+        <help>Free text field to track the lead number or number from other system that the Opportunity originated from</help>
         <label><!-- External ID --></label>
         <name>Core_External_ID__c</name>
     </fields>
@@ -1153,7 +1157,7 @@
         <name>Core_First_Board_Build_Date__c</name>
     </fields>
     <fields>
-        <help><!-- Date customer expects the production platforms will be shippable from the manufacturing site, i.e. ODM Quanta is building a tablet for Dell OEM. It represents the date Quanta will have finished Dell branded tablets on their dock ready to ship. --></help>
+        <help>The customer milestone date where production platforms are shippable from manufacturing site. i.e. ODM Quanta in TWN is building a tablet for Dell OEM.  It represents that date Quanta has finished Dell branded tablets on their shipping dock ready to go.</help>
         <label><!-- First Customer Ship Date --></label>
         <name>Core_First_Customer_Ship_Date__c</name>
     </fields>
@@ -1785,8 +1789,16 @@
         <name>Core_Is_KPI_Refresh__c</name>
     </fields>
     <fields>
+        <label><!-- Is Opportunity Partner Inactive --></label>
+        <name>Core_Is_Opportunity_Partner_Inactive__c</name>
+    </fields>
+    <fields>
         <label><!-- Is Product Vendor Inactive --></label>
         <name>Core_Is_Product_Vendor_Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Renewal/Amend PSG Quote --></label>
+        <name>Core_Is_Renewal_Amend_PSG_Quote__c</name>
     </fields>
     <fields>
         <label><!-- KPI - Business Industry Function --></label>
@@ -1846,53 +1858,53 @@
         <name>Core_Lead_to_Opportunity_Conversion__c</name>
     </fields>
     <fields>
-        <help><!-- Required field to provide details that expand upon the Loss/Cancel Reason.  This data helps us learn from losses. --></help>
+        <help>Opportunity Owners are required to provide details that explain and expand upon the Loss/Cancel Reason, so that we may learn from losses.</help>
         <label><!-- Loss/Cancel Details --></label>
         <name>Core_Loss_Cancel_Details__c</name>
     </fields>
     <fields>
-        <help><!-- The main reason the opportunity was Lost or Cancelled. Only editable when the opportunity stage is changed to Lost or Cancelled. --></help>
+        <help>The main reason the opportunity was Lost or Cancelled. This field is not editable unless the opportunity stage is Lost or Cancelled</help>
         <label><!-- Loss/Cancel Reason --></label>
         <name>Core_Loss_Cancel_Reason__c</name>
         <picklistValues>
-            <masterLabel>Another IA Bid Selected </masterLabel>
-            <translation><!-- Another IA Bid Selected  --></translation>
+            <masterLabel>Another IA Bid Selected</masterLabel>
+            <translation><!-- Another IA Bid Selected --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Customer Discontinued Project </masterLabel>
-            <translation><!-- Customer Discontinued Project  --></translation>
+            <masterLabel>Customer Discontinued Project</masterLabel>
+            <translation><!-- Customer Discontinued Project --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Entered in Error </masterLabel>
-            <translation><!-- Entered in Error  --></translation>
+            <masterLabel>Entered in Error</masterLabel>
+            <translation><!-- Entered in Error --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Feature/Performance</masterLabel>
             <translation><!-- Feature/Performance --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel No Longer Pursuing </masterLabel>
-            <translation><!-- Intel No Longer Pursuing  --></translation>
+            <masterLabel>Intel No Longer Pursuing</masterLabel>
+            <translation><!-- Intel No Longer Pursuing --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other (refer to Loss Details) </masterLabel>
-            <translation><!-- Other (refer to Loss Details)  --></translation>
+            <masterLabel>Other (refer to Loss Details)</masterLabel>
+            <translation><!-- Other (refer to Loss Details) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>POP Unobtainable </masterLabel>
-            <translation><!-- POP Unobtainable  --></translation>
+            <masterLabel>POP Unobtainable</masterLabel>
+            <translation><!-- POP Unobtainable --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Price </masterLabel>
-            <translation><!-- Price  --></translation>
+            <masterLabel>Price</masterLabel>
+            <translation><!-- Price --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Product Schedule </masterLabel>
-            <translation><!-- Product Schedule  --></translation>
+            <masterLabel>Product Schedule</masterLabel>
+            <translation><!-- Product Schedule --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Supply </masterLabel>
-            <translation><!-- Supply  --></translation>
+            <masterLabel>Supply</masterLabel>
+            <translation><!-- Supply --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1930,11 +1942,11 @@
     </fields>
     <fields>
         <help><!-- The MINDS questionnaire helps assess Intel’s export compliance obligations and must be filled out for Intel opportunities as indicated. Non-Intel parties must independently ensure their DR-related actions are compliant with all relevant trade obligations. --></help>
-        <label><!-- MINDS Questionnaire --></label>
+        <label>MAG Questionnaire</label>
         <name>Core_MAG_Questionnaire__c</name>
     </fields>
     <fields>
-        <help><!-- Indicate the region where the design will be manufactured.  Although optional, this is a reportable field and will help identify where to expect the revenue. --></help>
+        <help>Tracks where design will go to production to help track where revenue will be produced</help>
         <label><!-- Manufacturing Region --></label>
         <name>Core_Manufacturing_Geo__c</name>
         <picklistValues>
@@ -2016,8 +2028,8 @@
         <name>Core_Milestone_Count__c</name>
     </fields>
     <fields>
-        <help><!-- Military, intelligence, nuclear/biochemical, defense, or space (MINDS) use. Select when items for THIS opportunity are exclusively for MINDS use. Do NOT select when items for this opportunity are for commercial use or for many uses including MINDS. --></help>
-        <label><!-- Are Intel items used for MINDS? --></label>
+        <help>Does the end use of the ultimate end item involve a military, aerospace, or government related product/application?</help>
+        <label>Military, Aerospace, or Gov&apos;mt End Use?</label>
         <name>Core_Military_Aerospace_Govmt_End_Use__c</name>
         <picklistValues>
             <masterLabel>No</masterLabel>
@@ -3243,7 +3255,7 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Opportunity_Geo__c</name>
     </fields>
     <fields>
-        <help><!-- Unique 18 character system generated identifier for the opportunity (not editable). This ID is also embedded in the URL string. --></help>
+        <help>This field is not editable and shows the unique identifier for the opportunity</help>
         <label><!-- Opportunity ID --></label>
         <name>Core_Opportunity_ID__c</name>
     </fields>
@@ -3325,7 +3337,7 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Opportunity_Team_Geos__c</name>
     </fields>
     <fields>
-        <help><!-- Indicates whether opportunity is a Deal (bringing Intel based solutions to market) or Design (designing Intel products into customer applications). For Deal and Design definitions, please visit: goto/dealvsdesign --></help>
+        <help>Refers to the type of sales activity: Choose “design” when designing products into customer applications (push); choose “deal” when bringing Intel based solutions to the market (pull)</help>
         <label><!-- Opportunity Type --></label>
         <name>Core_Opportunity_Type__c</name>
         <picklistValues>
@@ -3541,7 +3553,7 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Private_Compliance_Comments__c</name>
     </fields>
     <fields>
-        <help><!-- Select the customer&apos;s application for the opportunity products. The available options are determined by the Product Segment selected. --></help>
+        <help>Identifies the physical product with Intel inside. Categorized by the product segment</help>
         <label><!-- Product Application --></label>
         <name>Core_Product_Application__c</name>
         <picklistValues>
@@ -3818,12 +3830,32 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Product_EOL_Count_Nm__c</name>
     </fields>
     <fields>
-        <help><!-- Indicates the Intel Product Families that the Account is interested in. This field will default from a converted lead if applicable and is not editable. --></help>
+        <help>Indicates the Intel Product Families that the Account is interested in. This field will default from a converted lead if applicable and is not editable</help>
         <label><!-- Product Interest --></label>
         <name>Core_Product_Interest__c</name>
         <picklistValues>
+            <masterLabel>4th Generation Intel® Xeon® Scalable processors</masterLabel>
+            <translation><!-- 4th Generation Intel® Xeon® Scalable processors --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Ethernet Controllers</masterLabel>
             <translation><!-- Ethernet Controllers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Tiber AI Studio</masterLabel>
+            <translation><!-- Intel Tiber AI Studio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Tiber App-Level Optimization</masterLabel>
+            <translation><!-- Intel Tiber App-Level Optimization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Tiber Developer Cloud</masterLabel>
+            <translation><!-- Intel Tiber Developer Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Tiber Trust Services</masterLabel>
+            <translation><!-- Intel Tiber Trust Services --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Atom™ Processors</masterLabel>
@@ -3834,16 +3866,36 @@ Partner-led - This option is systematically populated when an opportunity is cre
             <translation><!-- Intel® Core™ Processors --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Intel® Data Center GPU Flex Series on latest Intel® Xeon® processors</masterLabel>
+            <translation><!-- Intel® Data Center GPU Flex Series on latest Intel® Xeon® processors --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Intel® EP80579 Integrated Processor</masterLabel>
             <translation><!-- Intel® EP80579 Integrated Processor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Gaudi2 Deep Learning Server featuring eight Gaudi2 HL-225H mezzanine cards (SMC)</masterLabel>
+            <translation><!-- Intel® Gaudi2 Deep Learning Server featuring eight Gaudi2 HL-225H mezzanine cards (SMC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Max Series GPU</masterLabel>
+            <translation><!-- Intel® Max Series GPU --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Quark SoC</masterLabel>
             <translation><!-- Intel® Quark SoC --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Intel® Xeon® CPU Max Series processor with high bandwidth memory (HBM)</masterLabel>
+            <translation><!-- Intel® Xeon® CPU Max Series processor with high bandwidth memory (HBM) --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Intel® Xeon® Processors</masterLabel>
             <translation><!-- Intel® Xeon® Processors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiple platforms</masterLabel>
+            <translation><!-- Multiple platforms --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Power Products</masterLabel>
@@ -3863,7 +3915,6 @@ Partner-led - This option is systematically populated when an opportunity is cre
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Select the industry category the OPPORTUNITY is addressing, which determines the available options in the Product Application field. --></help>
         <label><!-- Product Segment --></label>
         <name>Core_Product_Segment__c</name>
         <picklistValues>
@@ -3886,13 +3937,17 @@ Partner-led - This option is systematically populated when an opportunity is cre
             <masterLabel>Embedded / IOT</masterLabel>
             <translation><!-- Embedded / IOT --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Test</masterLabel>
+            <translation><!-- Test --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Production Win KPI --></label>
         <name>Core_ProductionWin_KPI_Txt__c</name>
     </fields>
     <fields>
-        <help><!-- The date the customer expects to stop manufacturing the product.  Additional orders aren&apos;t expected to be placed with Intel past this date. --></help>
+        <help>The date that the customer is ending the manufacturing of their product. No additional orders are expected to be placed for Intel product</help>
         <label><!-- Production End Date --></label>
         <name>Core_Production_End_Date__c</name>
     </fields>
@@ -3909,7 +3964,7 @@ Partner-led - This option is systematically populated when an opportunity is cre
         <name>Core_Products_At_Risk_Count__c</name>
     </fields>
     <fields>
-        <help><!-- Describes where the customer is in the &quot;Purchase Cycle&quot;. This field will default from a converted lead if applicable and is not editable. --></help>
+        <help>Describes where the customer is in the &quot;Purchase Cycle&quot;. This field will default from a converted lead if applicable and is not editable</help>
         <label><!-- Project Phase --></label>
         <name>Core_Project_Phase__c</name>
         <picklistValues>
@@ -3930,7 +3985,7 @@ Partner-led - This option is systematically populated when an opportunity is cre
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Indicates the estimated US dollar size of the opportunity. This field will default from a converted lead if applicable and is not editable. --></help>
+        <help>Indicates the estimated US dollar size of the opportunity. This field will default from a converted lead if applicable and is not editable</help>
         <label><!-- Project Size --></label>
         <name>Core_Project_Size__c</name>
         <picklistValues>
@@ -3955,7 +4010,7 @@ Partner-led - This option is systematically populated when an opportunity is cre
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- This describes when the customer expects to be ready to make a purchase. This field will default from a converted lead if applicable and is not editable. --></help>
+        <help>Describes when the customer expects to be ready to make a purchase. This field will default from a converted lead if applicable and is not editable</help>
         <label><!-- Project Timeframe --></label>
         <name>Core_Project_Timeframe__c</name>
         <picklistValues>
@@ -4143,7 +4198,7 @@ Example:
         <name>Core_Retailer__c</name>
     </fields>
     <fields>
-        <help><!-- Multi-select field to be used for escalations. Select primary reason(s) why your opportunity is at significant risk, when you have been unable to get assistance through regular channels/contacts. --></help>
+        <help>This is to be used for escalations.  Select a reason when you have an opportunity with a significant risk and have been unable to get the help needed through regular channels/contacts.</help>
         <label><!-- Risk Reason --></label>
         <name>Core_Risk_Reason__c</name>
         <picklistValues>
@@ -4431,7 +4486,7 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Solution_Area_Count__c</name>
     </fields>
     <fields>
-        <help><!-- Must select value to save Deal opportunity. Intel &amp; partner bundled products &amp; services for a specific use case, deployed in end customer specific environment such as Energy, Health, Deep Learning, HPC. Corresponds to the top level of BU KPIs. --></help>
+        <help>Intel &amp; partner bundled products &amp; services for a specific use case, deployed in end customer specific environment such as Energy, Health, Deep Learning, HPC. Corresponds to the top level of BU KPIs.  Required to save Deal Opportunities (Single Select).</help>
         <label><!-- Solution Area --></label>
         <name>Core_Solution_Area__c</name>
         <picklistValues>
@@ -7147,7 +7202,7 @@ Scale Estimate: Only applies selected scale partner --></help>
     </fields>
     <fields>
         <help><!-- Add specific solution usage (MRS, Software, Intel Select SKUs).  Required to submit Deal Opportunities for Approval (Multi-Select). --></help>
-        <label><!-- Old Solution Detail --></label>
+        <label>Solution Detail</label>
         <name>Core_Solution_Detail__c</name>
         <picklistValues>
             <masterLabel>1S Xeon E / Xeon W (Wkst only) w/Intel® Optane Memory</masterLabel>
@@ -9549,7 +9604,7 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Solution_Group_ID__c</name>
     </fields>
     <fields>
-        <help><!-- If there are several related opportunities, create a Solution Group Opportunity to link them together, and then use this field to associate the opportunity to that Solution Group. --></help>
+        <help>If there are several related opportunities, create a Solution Group Opportunity to link them together and select that Solution Group Opportunity in this field</help>
         <label><!-- Solution Group --></label>
         <name>Core_Solution_Group__c</name>
         <relationshipLabel><!-- Opportunities --></relationshipLabel>
@@ -10044,7 +10099,7 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Solution_Provider__c</name>
     </fields>
     <fields>
-        <help><!-- Select all applicable values to submit Deal opportunity for Approval. Available field values are dependent upon Solution Area selection, and defines next level detail. --></help>
+        <help>Dependent on Solution Area, defines next level detail. Required to submit Deal Opportunities for Approval (Multi-Select).</help>
         <label><!-- Solution Type --></label>
         <name>Core_Solution_Type__c</name>
         <picklistValues>
@@ -10198,7 +10253,12 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Status_Update_Check__c</name>
     </fields>
     <fields>
-        <help><!-- Text field to enter status of the opportunity. Use format:   [MM/DD/YY]:  Status details, next steps, key actions and relevant comments, w/MOST CURRENT update at top. This field is searchable, but only the first 255 characters can be exported in reporting --></help>
+        <help>A free text field for you to enter the current status. 
+Suggested format  
+[mm/dd/yy] Status
+Major risks: none
+Key actions: none
+Further comments:</help>
         <label><!-- Status Update --></label>
         <name>Core_Status_Update__c</name>
     </fields>
@@ -10215,13 +10275,13 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Submit_For_Approval__c</name>
     </fields>
     <fields>
-        <help><!-- It is imperative to check this box when the identified risk has been mitigated, and escalation has ended. --></help>
+        <help>It is very important, once the risk has been mitigated, that the opportunity owner check this box to end the escalation</help>
         <label><!-- Support Completed --></label>
         <name>Core_Support_Completed__c</name>
     </fields>
     <fields>
-        <help><!-- Free form text field to provide specific details regarding the support needed to mitigate the identified risk(s) (max X characters):  X = to the max characters supported.   --></help>
-        <label><!-- Risk Detail --></label>
+        <help>Provide specific details on the support needed in order to mitigate the risk.</help>
+        <label>Support Requested</label>
         <name>Core_Support_Requested__c</name>
     </fields>
     <fields>
@@ -10277,7 +10337,7 @@ Scale Estimate: Only applies selected scale partner --></help>
         <name>Core_Technical_Owner_Manager__c</name>
     </fields>
     <fields>
-        <help><!-- Select the FAE/ITS supporting this opportunity. Required for Design opportunity type. For Channel Opportunities, this is the Partner User. --></help>
+        <help>Use the default value of &quot;User&quot; when selecting your technical owner.</help>
         <label><!-- Technical Owner --></label>
         <name>Core_Technical_Owner__c</name>
         <relationshipLabel><!-- Opportunities (Technical Owner) --></relationshipLabel>
@@ -10377,7 +10437,7 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_Volume_Count__c</name>
     </fields>
     <fields>
-        <help><!-- &quot;Estimated 12 months of fully ramped/peak volume production&quot; --></help>
+        <help>1st year of full volume production (after ramp up)</help>
         <label><!-- Volume --></label>
         <name>Core_Volume__c</name>
     </fields>
@@ -10434,6 +10494,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_Write_In_Product_Count__c</name>
     </fields>
     <fields>
+        <label><!-- Xvoyant Filter --></label>
+        <name>Core_Xvoyant_Filter__c</name>
+    </fields>
+    <fields>
         <label><!-- Z Height --></label>
         <name>Core_Z_Height__c</name>
     </fields>
@@ -10450,18 +10514,12 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_vPro__c</name>
     </fields>
     <fields>
-        <label><!-- Attendee --></label>
-        <name>CventEvents__Attendee__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Event --></label>
-        <name>CventEvents__EventTitle__c</name>
-    </fields>
-    <fields>
-        <label><!-- Cvent Event Number --></label>
-        <name>CventEvents__Event__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
     </fields>
     <fields>
         <label><!-- Decision Date --></label>
@@ -10481,6 +10539,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <help><!-- The First Article of Deployment (FAD) is an operational deployment of a solution in a working environment that has a higher implementation value than a lab-based experiment which is indicative of a POC. --></help>
         <label><!-- FAD Start Date --></label>
         <name>FAD_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gap In Client&apos;s Tech Stack --></label>
+        <name>Gap_In_Clients_Tech_Stack__c</name>
     </fields>
     <fields>
         <label><!-- Date Assigned to Partner --></label>
@@ -10525,6 +10587,62 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Is 6Sense Integration Enabled --></label>
+        <name>Is_6Sense_Integration_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Current Generator(s) --></label>
+        <name>LID__CurrentGenerators__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delivery/Installation Status --></label>
+        <name>LID__DeliveryInstallationStatus__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In progress</masterLabel>
+            <translation><!-- In progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yet to begin</masterLabel>
+            <translation><!-- Yet to begin --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is_Influenced --></label>
+        <name>LID__Is_Influenced__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Main Competitor(s) --></label>
+        <name>LID__MainCompetitors__c</name>
+    </fields>
+    <fields>
+        <label><!-- My DateTime --></label>
+        <name>LID__My_DateTime__c</name>
+    </fields>
+    <fields>
+        <label><!-- My Geolocation --></label>
+        <name>LID__My_Geolocation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Number --></label>
+        <name>LID__OrderNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tracking Number --></label>
+        <name>LID__TrackingNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Close date Prediction --></label>
+        <name>Opportunity_Close_date_Prediction__c</name>
+    </fields>
+    <fields>
         <help><!-- • Core: Ecosystem-led Transactional selling motions (e.g. Ecosystem-led end-customer engagement, Run-rate or Repeat silicon and accelerator business)
 • Growth: Intel-driven Outcomes-Based selling motions (e.g. Paid Software, Services Sales, Industry Transformational Engagements, VBS – New monetization model selling motions) --></help>
         <label><!-- Opportunity Focus --></label>
@@ -10547,6 +10665,14 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <help><!-- Proof of Concept (POC) dates to inform resource scheduling/allocation for POC delivery. --></help>
         <label><!-- POC Start Date --></label>
         <name>POC_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pain Points --></label>
+        <name>Pain_Points__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Total Price Sum --></label>
+        <name>Product_Total_Price_Sum__c</name>
     </fields>
     <fields>
         <help><!-- Push Reason Details is mandatory when Decision Date is pushed in Develop/Design stage --></help>
@@ -10650,6 +10776,14 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Technology_and_Readiness_Gaps__c</name>
     </fields>
     <fields>
+        <label><!-- Test predict SH --></label>
+        <name>Test_predict_SH__c</name>
+    </fields>
+    <fields>
+        <label><!-- Xvoyant Opp Amount --></label>
+        <name>Xvoyant_Opp_Amount__c</name>
+    </fields>
+    <fields>
         <label><!-- Current Sales Campaign --></label>
         <name>mkto_si__Current_Sales_Campaign__c</name>
     </fields>
@@ -10721,6 +10855,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>sbaa__SubmittedUser__c</name>
         <relationshipLabel><!-- Opportunities (Submitted User) --></relationshipLabel>
     </fields>
+    <fields>
+        <label><!-- ucdDate --></label>
+        <name>ucdDate__c</name>
+    </fields>
     <recordTypes>
         <description><!-- Used to create Deal related Opportunities --></description>
         <label><!-- Deal Opportunity --></label>
@@ -10751,6 +10889,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <label><!-- Solution Group --></label>
         <name>Core_Solution_Group</name>
     </recordTypes>
+    <validationRules>
+        <errorMessage><!-- You can not create Opportunity with ECB Flagged Account --></errorMessage>
+        <name>ACM_Stop_Opp_Creation_With_ECB_Accounts</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Please ensure the audit close date is ON or AFTER the audit start date. --></errorMessage>
         <name>CRM_Audit_Start_End_Date</name>
@@ -10816,6 +10958,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_Deal_Develop_Exit_Criteria</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Each of the fields must be completed before moving to the next Stage: Description, Status Update Product Segment, Product Application, Vertical Market and have at least one Contact must be associated to the Opportunity (Contact Roles section). --></errorMessage>
+        <name>Core_Deal_QualifyDefine_Exit_Criteria</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Each of the following fields must be completed before moving to the next Stage:  Description and Status Update. --></errorMessage>
         <name>Core_Deal_Qualify_Exit_Criteria</name>
     </validationRules>
@@ -10826,6 +10972,10 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
     <validationRules>
         <errorMessage><!-- Each of the following fields must be completed before moving to the next Stage:  Competitive Architecture, Intel Platform and must include at least one (1) Product and zero (0)  Write In Products. --></errorMessage>
         <name>Core_Design_Develop_Exit_Criteria</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Each of the fields must be completed before moving to the next Stage: Technical Owner, Description, Status Update, Product Segment, Product Application, Vertical Market and at least one Contact must be associated to the Opportunity (Contact Roles section) --></errorMessage>
+        <name>Core_Design_QualifyDefine_Exit_Criteria</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Each of the following fields must be completed before moving to the next Stage:  Technical Owner, Description and Status Update. --></errorMessage>
@@ -10878,7 +11028,7 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_Opp_Block_Spl_Chars_OpptyName</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please enter Loss/Cancel Details. --></errorMessage>
+        <errorMessage>Please scroll down to the At Risk section to enter Loss/Cancel Details.</errorMessage>
         <name>Core_Opp_Details_At_Risk</name>
     </validationRules>
     <validationRules>
@@ -10892,6 +11042,10 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
     <validationRules>
         <errorMessage><!-- You cannot create an Opportunity against an Intel Ultimate Account --></errorMessage>
         <name>Core_Opp_Intel_Ultimate_Account</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity Name can&apos;t be changed after Opportunity approval. --></errorMessage>
+        <name>Core_Opp_Locked_Fields_after_Approval</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Account can only be changed by Data Ops and Admins in the Design Win, Production Win, Production Loss, and Production Cancelled stages --></errorMessage>
@@ -10938,7 +11092,7 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
         <name>Core_Opp_Qualify_Define</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please enter a Loss/Cancel Reason. --></errorMessage>
+        <errorMessage>Please scroll down to the At Risk section to enter a Loss/Cancel Reason.</errorMessage>
         <name>Core_Opp_Reason_At_Risk</name>
     </validationRules>
     <validationRules>
@@ -10988,6 +11142,10 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
     <validationRules>
         <errorMessage><!-- Opportunities cannot be created against accounts with an Undefined Sales Group. Please update the account with the correct Sales Group and then save your opportunity. BKM: You can update the Sales Group in a new window. --></errorMessage>
         <name>Core_Opp_Sales_Group_Undefined</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunities cannot be created against accounts with an Undefined Sales Group. Please update the account with the correct Sales Group and then save your opportunity. BKM: You can update the Sales Group in a new window. --></errorMessage>
+        <name>Core_Opp_Sales_Group_Undefined_2</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Date Submitted for Approval cannot be less than the Created Date --></errorMessage>
@@ -11096,6 +11254,14 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
     <validationRules>
         <errorMessage><!-- This record is locked . The status cannot be changed once submitted for approval. If you need to edit it contact your admin. --></errorMessage>
         <name>Core_restrict_to_update_submitted_oppty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Reversal is only possible from Reverse Button. --></errorMessage>

@@ -24,7 +24,7 @@ public class Core_MDF_AccountProductMap_Batch_Test {
         prod1.Core_Product_Type__c = 'Graphics';
         prod1.Core_Product_Family__c = 'Compute Accelerators';
         prodIdList1.add(prod1.Id);
-        prodIdList1.add(prod.Id); 
+        prodIdList1.add(prod.Id);
         prodList.add(prod1);
         
         Database.insert(prodList);

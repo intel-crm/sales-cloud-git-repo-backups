@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_List__c</field>
-        <value xsi:type="xsd:string">Partner Admin,Partner Admin Delegate,Employee</value>
+        <value xsi:type="xsd:string">Employee</value>
     </values>
     <values>
         <field>PRM_Inactive_Indicator__c</field>
@@ -24,6 +24,6 @@
     </values>
     <values>
         <field>PRM_Tier__c</field>
-        <value xsi:type="xsd:string">Gold</value>
+        <value xsi:type="xsd:string">GOLD</value>
     </values>
 </CustomMetadata>

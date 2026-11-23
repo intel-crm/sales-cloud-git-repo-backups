@@ -6,7 +6,7 @@
         <name>Verify_SourceType_For_Legal_Agreements</name>
         <label>Verify SourceType For Legal Agreements</label>
         <locationX>182</locationX>
-        <locationY>647</locationY>
+        <locationY>600</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Valid_Record_for_Legal_Agreements</name>
@@ -25,13 +25,6 @@
                     <stringValue>Tend_Mgmt</stringValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Dev_Cloud_Ent</stringValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>ALA_Association_creation</targetReference>
             </connector>
@@ -42,7 +35,7 @@
         <name>Verify_Status_and_entitlement_details</name>
         <label>Verify Status and entitlement details</label>
         <locationX>380</locationX>
-        <locationY>323</locationY>
+        <locationY>276</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Status_and_entitlement_details</name>
@@ -72,6 +65,42 @@
                 <targetReference>Contact_Creation</targetReference>
             </connector>
             <label>Status and entitlement details</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_Status_and_entitlement_details1</name>
+        <label>verify Status and entitlement details</label>
+        <locationX>974</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Status_and_entitlement_details1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Entitlement_Details__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Salesforce_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>get_Data_Load_Object</targetReference>
+            </connector>
+            <label>Entitlement details</label>
         </rules>
     </decisions>
     <description>This flow triggers after New registration record is approved and it creates CBT  and Contacts.</description>
@@ -113,8 +142,47 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>get_Data_Load_Object</name>
+        <label>get Data Load Object</label>
+        <locationX>842</locationX>
+        <locationY>384</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PRM_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>createContact.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_AccountId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account_ID__r.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_Status_Reason__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Auto Grated IPA for DZP</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PRM_Bulk_Data_Upload__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
-        <locationX>254</locationX>
+        <locationX>551</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Verify_Status_and_entitlement_details</targetReference>
@@ -134,23 +202,26 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
                 <stringValue>Rejected</stringValue>
             </value>
         </filters>
-        <filters>
-            <field>Current_Status__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>Auto-Approval Approved</stringValue>
-            </value>
-        </filters>
         <object>PRM_Registration_Request__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Create_IPA_Entitlements</name>
+            <connector>
+                <targetReference>Verify_Status_and_entitlement_details1</targetReference>
+            </connector>
+            <label>Create IPA Entitlements</label>
+            <offsetNumber>0</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>InvalidDraft</status>
     <subflows>
         <name>ALA_Association_creation</name>
         <label>ALA Association creation</label>
         <locationX>50</locationX>
-        <locationY>755</locationY>
+        <locationY>708</locationY>
         <flowName>ER_Account_legalAgreement_Association</flowName>
         <inputAssignments>
             <name>TriggeredcontactInput</name>
@@ -169,7 +240,7 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
         <name>Contact_Creation</name>
         <label>Contact Creation</label>
         <locationX>182</locationX>
-        <locationY>431</locationY>
+        <locationY>384</locationY>
         <connector>
             <targetReference>Contact_Entitlement_Creation</targetReference>
         </connector>
@@ -186,7 +257,7 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
         <name>Contact_Entitlement_Creation</name>
         <label>Contact Entitlement Creation</label>
         <locationX>182</locationX>
-        <locationY>539</locationY>
+        <locationY>492</locationY>
         <connector>
             <targetReference>Verify_SourceType_For_Legal_Agreements</targetReference>
         </connector>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Schedule_path_of_API_Call_for_account_Primary_Coverage</flowApiName>
+    <label>testing flow</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Content_Type__c&quot;:&quot;AccountId&quot;,&quot;Content__c&quot;:&quot;001D300000lATO8IAO&quot;,&quot;Custom_Filter__c&quot;:&quot;001D300000lATO8IAO&quot;,&quot;Message_Status__c&quot;:&quot;New&quot;,&quot;Module_Name__c&quot;:&quot;COVERAGE_UPDATE&quot;,&quot;OwnerId&quot;:&quot;0052i0000055Cq5AAE&quot;,&quot;Queue_Type__c&quot;:&quot;Outbound&quot;,&quot;Retry_Count__c&quot;:1,&quot;Source_System__c&quot;:&quot;SLSCLD_ACM&quot;,&quot;value&quot;:{&quot;Content_Type__c&quot;:&quot;AccountId&quot;,&quot;Content__c&quot;:&quot;001D300000lATO8IAO&quot;,&quot;Custom_Filter__c&quot;:&quot;001D300000lATO8IAO&quot;,&quot;Message_Status__c&quot;:&quot;New&quot;,&quot;Module_Name__c&quot;:&quot;COVERAGE_UPDATE&quot;,&quot;OwnerId&quot;:&quot;0052i0000055Cq5AAE&quot;,&quot;Queue_Type__c&quot;:&quot;Outbound&quot;,&quot;Source_System__c&quot;:&quot;SLSCLD_ACM&quot;}}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>ScheduledPathApiName</leftValueReference>
+            <type>ScheduledPath</type>
+            <value>
+                <stringValue>Schedule_path_to_invoke_API</stringValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>RequestedStatus</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

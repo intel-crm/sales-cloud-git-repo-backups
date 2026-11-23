@@ -86,7 +86,7 @@ public class PRM_EmailUtilityTest {
             a1.BillingPostalCode='5600371';
             a1.ownerId= portalAccountOwner1.id ;
             a1.Core_User_Defined_Website__c='www.testww1.com';
-               a1.website='www.testww1.com';
+        	a1.website='www.testww1.com';
             accLst.add(a1);
             //insert a1;
             
@@ -121,7 +121,7 @@ public class PRM_EmailUtilityTest {
             a12.BillingPostalCode='5600322';
             a12.ownerId= portalAccountOwner1.id ;
             a12.Core_User_Defined_Website__c='www.testww122.com';
-               a12.website='www.testww122.com';
+        	a12.website='www.testww122.com';
             accLst.add(a12);
         insert accLst;
             
@@ -188,13 +188,12 @@ public class PRM_EmailUtilityTest {
             //acctContRel.PRM_Account_Channel_Membership_Id__c=acm.Id;
             acctContRel.PRM_Relationship_Id__c=contRelation.Id;
             acctContRel.PRM_InActive_Ind__c=false;
-                                           acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
             test.startTest();
-            Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
             insert acctContRel;
+            
             acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
             update acctContRel;
-            Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+            
         }
         
         UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -235,9 +234,9 @@ public class PRM_EmailUtilityTest {
             //Test.startTest();
             PRM_EmailUtility.EmailNotification en = new PRM_EmailUtility.EmailNotification();
             Map<String,String> paramMap = new Map<String,String>();
-                                                 en.EmailID= regRequest.PRM_Email_ID__c ;
-                                                 en.Language = regRequest.PRM_Preferred_Language__c ;
-                                                 paramMap.put('Registration_Request_ID',regRequest.id);
+			      en.EmailID= regRequest.PRM_Email_ID__c ;
+			      en.Language = regRequest.PRM_Preferred_Language__c ;
+			      paramMap.put('Registration_Request_ID',regRequest.id);
             paramMap.put('Contact_ID',cont.id);
             en.BusinessEvent = 'BENEFIT ADDITION40';
             en.InputParameters=paramMap;
@@ -262,6 +261,30 @@ public class PRM_EmailUtilityTest {
            // PRM_EmailUtility.sendEmail(en);
             System.assertEquals(a.Name,'ABC','Value does not match');
            
+            
+            en.partnerAdmin = true;
+            en.InputParameters.put('Contact_ID', cont.Id);
+            PRM_EmailUtility.sendEmail(en);
+            
+            // ---- COVER Contact Relationship ----
+            en.mailToContactID = new Map<String,String>{
+                cont.Id => cont.Email
+            };
+            PRM_EmailUtility.sendEmail(en);
+
+            
+            en.partnerAdmin = false;
+            en.partnerRole = 'Guest';
+            en.BusinessEvent = System.Label.PRM_Welcome_Email_New_Event;
+            PRM_EmailUtility.sendEmail(en);
+			
+            
+            en.BusinessEvent = System.Label.PRM_OPIDGold_BusinessEvent;
+            en.EmailID = 'opidtest@intel.com';
+            en.Language = 'ENG';
+            
+            PRM_EmailUtility.sendEmail(en);
+            
             Test.stopTest();
             
         }
@@ -276,7 +299,7 @@ public class PRM_EmailUtilityTest {
         ChannelProgram cp = PRM_TestUtility.getChannelPrograms();
         insert cp;
         ChannelProgramLevel cpl=new ChannelProgramLevel();
-        cpl.Name='Member';
+        cpl.Name='Partner';
         cpl.ProgramId=cp.Id;
         insert cpl;
         
@@ -510,7 +533,6 @@ public class PRM_EmailUtilityTest {
         acm.PRM_Channel_Program_Id__c=cp.Id;
         acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
         acm.PRM_Partner_Role__c='Service Provider';
-                             acm.PRM_Status_Reason_Txt__c = 'Testclass';'
         insert acm;
         
         PRM_Account_Contact_Relationship__c acctContRel=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
@@ -519,12 +541,10 @@ public class PRM_EmailUtilityTest {
         acctContRel.PRM_Relationship_Id__c = cr.Id;
         acctContRel.PRM_InActive_Ind__c=false;
         acctContRel.PRM_execute_trigger__c=true;
-                             acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');        
-insert acctContRel;     
+        insert acctContRel;
+        
         acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
         update acctContRel;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
@@ -658,7 +678,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
       acm.PRM_Channel_Program_Id__c=cp.Id;
       acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
       acm.PRM_Partner_Role__c='Service Provider';
-              acm.PRM_Status_Reason_Txt__c = 'Testclass';
       insert acm;
       
       PRM_Account_Contact_Relationship__c acctContRel=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
@@ -667,13 +686,10 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
       acctContRel.PRM_Relationship_Id__c = cr.Id;
       acctContRel.PRM_InActive_Ind__c=false;
       acctContRel.PRM_execute_trigger__c=true;
-              acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');     
-insert acctContRel;
+      insert acctContRel;
+      
       acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
       update acctContRel;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');   
-
       
       
       PRM_Specialty__c spec = new PRM_Specialty__c();
@@ -766,17 +782,17 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         insert cp;
         
         ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
-        cpl.Name='Member';
+        cpl.Name='Partner';
         cpl.ProgramId=cp.Id;
         insert cpl;
         
         ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
-        cpl1.Name='Gold';
+        cpl1.Name='Partner';
         cpl1.ProgramId=cp.Id;
         insert cpl1;
         
          ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
-        cpl2.Name='Titanium';
+        cpl2.Name='Prestige';
         cpl2.ProgramId=cp.Id;
         insert cpl2;
         Test.startTest();
@@ -903,10 +919,7 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr.PRM_Start_Date_Dt__c= system.today()-2; 
         acr.PRM_Status_Nm__c = 'Complete';
         acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');    
-insert acr;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+        insert acr;
         //system.debug('acr--1>'+acr);
         
         PRM_Account_Contact_Relationship__c acr1=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
@@ -919,10 +932,8 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr1.PRM_Start_Date_Dt__c= system.today()-2;    
         acr1.PRM_Status_Nm__c = 'Complete';
         acr1.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr1.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');        
-insert acr1;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');      
+        insert acr1;
+        
          PRM_Account_Contact_Relationship__c acr2=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
         acr2.PRM_InActive_Ind__c= false;
         acr2.PRM_Account_Id__c=childAccount.Id;
@@ -932,10 +943,8 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr2.PRM_Start_Date_Dt__c= system.today()-2;    
         acr2.PRM_Status_Nm__c = 'Complete';
         acr2.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr2.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
         insert acr2;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+
        Test.stopTest();   
 
         List<PRM_AccountChannelMembership__c> acmList = new List<PRM_AccountChannelMembership__c>();
@@ -1222,5 +1231,314 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
       PRM_Partner_Assist_Consent__c pacUpdated =[Select Id,Name,PRM_Distributor_Id__c,PRM_Account_Id__c from PRM_Partner_Assist_Consent__c where PRM_Account_Id__c=:account.Id Limit 1];
       system.assertNotEquals('',pacUpdated.PRM_Distributor_Id__c,'Value should not be null');
     }
+    
+    @isTest
+    static void forceCover_partnerAdminFalse() {
+        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Account account = new Account();//Account
+        account.RecordTypeId = recordTypeIdAccount;
+        account.Name='Amazon01';
+        account.BillingCity='City';
+        account.BillingStreet='Street1';
+        account.BillingCountry='India';
+        account.BillingPostalCode='Postal code';
+        account.Core_Account_Type__c='Cloud Service Provider (CSP)';
+        account.AccountNumber='8976542318';
+        account.Core_IPA_Partner_Role__c='Solution Integrator';
+    account.Core_User_Defined_Website__c='www.testtww.com';
+        account.website='www.testtww.com';
+        insert account;
+    
+    Contact cont = new Contact();  //Contact
+        cont.AccountId=account.Id;
+        cont.lastName='Grillea';
+        cont.FirstName='AAdams';
+        cont.email='AdamsGrill871@rediff.com';
+        cont.Core_Preferred_Language__c='ENG';
+        cont.Core_IPA_PartnerRole__c = 'Solution Integrator';
+        cont.Core_Login_Id__c = 'abc';
+        cont.Core_Do_Not_Contact__c = false;
+        cont.MailingCountry='USA';
+        cont.MailingCountryCode = 'USA';
+        insert cont;
+            
+        
+        Contact conDB = [
+                SELECT Id, FirstName, LastName
+                FROM Contact
+                WHERE Id = :cont.Id
+            ];
+
+    
+        
+        Map<String, SObject> dataMap = new Map<String, SObject>{
+                'Contact' => conDB   
+            };
+
+    
+        Test.startTest();
+    
+
+        String html = '{!Contact.Id}';    
+        String result;
+        Boolean entered = false;
+        try {
+           result= PRM_EmailUtility.processHtmlTemplate(
+                '{!Contact.Id}',
+                dataMap,
+                null,
+                false,  // ✅ branch hit
+                'Distributor',
+                'TEST_EVENT',
+                'ENG'
+            );
+        } catch (Exception e) {
+            System.debug('Unexpected exception: ' + e.getMessage());
+        }
+        
+        Account account1 = new Account();//Account
+        account1.RecordTypeId = recordTypeIdAccount;
+        account1.Name='Amazon011';
+        account1.BillingCity='City';
+        account1.BillingStreet='Street11';
+        account1.BillingCountry='India';
+        account1.BillingPostalCode='Postal code';
+        account1.Core_Account_Type__c='Cloud Service Provider (CSP)';
+        account1.AccountNumber='8976542389';
+        account1.Core_IPA_Partner_Role__c='Solution Integrator';
+    	account1.Core_User_Defined_Website__c='www.testsww.com';
+        account1.website='www.testsww.com';
+        insert account1;
+    
+   		 Contact cont1 = new Contact();  //Contact
+        cont1.AccountId=account1.Id;
+        cont1.lastName='Grilla';
+        cont1.FirstName='AAdms';
+        cont1.email='AdamsGrill1@rediff.com';
+        cont1.Core_Preferred_Language__c='ENG';
+        cont1.Core_IPA_PartnerRole__c = 'Solution Integrator';
+        cont1.Core_Login_Id__c = 'abc';
+        cont1.Core_Do_Not_Contact__c = false;
+        cont1.MailingCountry='USA';
+        cont1.MailingCountryCode = 'USA';
+        insert cont1;
+            
+
+        
+        Contact conDB1 = [
+        SELECT Id, FirstName, LastName
+        FROM Contact
+        WHERE Id = :cont1.Id
+        ];
+        
+        
+        Map<String,SObject> dataMap1 = new Map<String,SObject>();
+
+        dataMap1.put(
+        'ITERATOR_KEY',
+        conDB1
+        );
+
+        String result1=PRM_EmailUtility.processHtmlTemplate(
+            '{!Contact.FirstName}',
+            dataMap1,
+            'ITERATOR_KEY',
+            true,
+            'Distributor',
+            'TEST_EVENT',
+            'ENG'
+        );
+
+		/*PRM_Registration_Request__c regRequest = new PRM_Registration_Request__c();
+        regRequest.PRM_First_Name__c = 'Emma1';
+        regRequest.PRM_Last_Name__c = 'Stiles1';
+        regRequest.PRM_Contact_Country__c = 'US';
+        regRequest.PRM_Account_Name__c  = 'TestData5557';
+        regRequest.PRM_Contact_Login_ID__c  = 'emmastiles55@mailinator.com';
+        regRequest.PRM_Email_ID__c  = 'emmastiles55@mailinator.com';
+        regRequest.PRM_Enterprise_ID__c  = '300002199711' ;
+        regRequest.PRM_EV_Token__c  = null ;         
+        regRequest.PRM_Preferred_Language__c  = 'ZHO';
+        regRequest.PRM_Person_Phone_Number__c  = '9891744621';
+        insert regRequest;
+		
+        Map<String,SObject> dataMap2 = new Map<String,SObject>();
+		dataMap2.put('test@mailinator.com', regRequest);
+
+		PRM_EmailUtility.processHtmlTemplate(
+        '{!PRM_Registration_Request__c.PRM_EV_Token__c}',
+        dataMap,
+        'test@mailinator.com',
+        true,
+        'Distributor',
+        'TEST_EVENT',
+        'ENG'
+    	); */   
+        Test.stopTest();
+    
+    	System.assertNotEquals(null,result1);
+    	System.assertNotEquals(null, result);
+    }
+    
+    @isTest
+	static void cover_createEmailLogsBasedOnType_TargetObject() {
+
+     	Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Account account = new Account();//Account
+        account.RecordTypeId = recordTypeIdAccount;
+        account.Name='Amazon011';
+        account.BillingCity='City';
+        account.BillingStreet='Street11';
+        account.BillingCountry='India';
+        account.BillingPostalCode='Postal code';
+        account.Core_Account_Type__c='Cloud Service Provider (CSP)';
+        account.AccountNumber='89765424538';
+        account.Core_IPA_Partner_Role__c='Solution Integrator';
+   		account.Core_User_Defined_Website__c='www.testtwww.com';
+        account.website='www.testtwww.com';
+        insert account;
+    
+    	Contact cont = new Contact();  //Contact
+        cont.AccountId=account.Id;
+        cont.lastName='Grillie';
+        cont.FirstName='Aasp';
+        cont.email='AdamsGrill711@rediff.com';
+        cont.Core_Preferred_Language__c='ENG';
+        cont.Core_IPA_PartnerRole__c = 'Solution Integrator';
+        cont.Core_Login_Id__c = 'abc';
+        cont.Core_Do_Not_Contact__c = false;
+        cont.MailingCountry='USA';
+        cont.MailingCountryCode = 'USA';
+        insert cont;
+
+    Profile p = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
+
+    User u = new User(
+        Alias='ptest',
+        Email='ptest@test.com',
+        EmailEncodingKey='UTF-8',
+        LastName='User',
+        LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US',
+        TimeZoneSidKey='America/Chicago',
+        UserName='ptest'+System.currentTimeMillis()+'@test.com',
+        ProfileId=p.Id,
+        ContactId=cont.Id
+    );
+    insert u;
+
+    Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+    mail.setTargetObjectId(cont.Id);
+    mail.setSaveAsActivity(false);
+    mail.setSubject('Test');
+    mail.setHtmlBody('Body');
+
+    Map<String,String> idAddressMap =
+        new Map<String,String>{
+            cont.Id => cont.Email
+        };
+
+    Map<String,User> contactIdUserMap =
+        new Map<String,User>{
+            cont.Id => u
+        };
+
+    List<PRM_EmailLog__c> logs =
+        PRM_EmailUtility.createEmailLogsBasedOnType(
+            mail,
+            'IPA',
+            idAddressMap,
+            contactIdUserMap,
+            new Map<String,User>(),
+            'ENG',
+            'TEST_TEMPLATE'
+        );
+
+    System.assert(logs != null);
+    
+    Profile p1 = [
+        SELECT Id
+        FROM Profile
+        WHERE Name = 'System Administrator'
+        LIMIT 1
+    ];
+
+    User u1 = new User(
+        Alias='tusr',
+        Email='user12@intel.com',
+        EmailEncodingKey='UTF-8',
+        LastName='Test',
+        LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US',
+        TimeZoneSidKey='America/Chicago',
+        UserName='user' + System.currentTimeMillis() + '@intel.com',
+        ProfileId=p1.Id
+    );
+
+    insert u1;
+
+    Messaging.SingleEmailMessage mail1 =new Messaging.SingleEmailMessage();
+
+    mail1.setTargetObjectId(u1.Id);
+    mail1.setSaveAsActivity(false);
+    mail1.setSubject('Test Subject');
+    mail1.setHtmlBody('Test Body');
+
+    Map<String,String> idAddressMap1 =new Map<String,String>();
+
+    Map<String,User> contactIdUserMap1 =new Map<String,User>();
+
+    Map<String,User> userMap =
+        new Map<String,User>{
+            String.valueOf(u1.Id) => u1
+        };
+
+    List<PRM_EmailLog__c> logs1 =
+        PRM_EmailUtility.createEmailLogsBasedOnType(
+            mail1,
+            'IPA',
+            idAddressMap1,
+            contactIdUserMap1,
+            userMap,
+            'ENG',
+            'TEST_TEMPLATE'
+        );
+
+    System.assertNotEquals(null, logs1);
+}
+    
+    @isTest
+	static void coverToEmailLengthBranch() {
+
+    Messaging.SingleEmailMessage mail =
+        new Messaging.SingleEmailMessage();
+
+    List<String> emails = new List<String>();
+
+    for(Integer i=0;i<20;i++){
+        emails.add('user' + i + '@test.com');
+    }
+
+    mail.setToAddresses(emails);
+    mail.setSubject('Test');
+    mail.setHtmlBody('Body');
+
+    List<PRM_EmailLog__c> logs =
+        PRM_EmailUtility.createEmailLogsBasedOnType(
+            mail,
+            'IPA',
+            new Map<String,String>(),
+            new Map<String,User>(),
+            new Map<String,User>(),
+            'ENG',
+            'TEST_TEMPLATE'
+        );
+
+    if(!logs.isEmpty()){
+        System.assert(
+            logs[0].PRM_ToEmailIDCompleteValue__c != null
+        );
+    }
+}
     
 }

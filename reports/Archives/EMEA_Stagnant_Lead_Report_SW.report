@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_35054962</developerName>
+        <masterLabel>EMEA Owner</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ALIAS</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA OSC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - French</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - Hebrew</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - Turkey</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - German</sourceValue>
+            </sourceValues>
+            <value>OSC</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_45604159</developerName>
+        <masterLabel>OSC</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>ALIAS</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA OSC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - French</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - German</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - Hebrew</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EMEA OSC - Turkey</sourceValue>
+            </sourceValues>
+            <value>OSC</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Stagnant_Lead_State_SLA__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Stagnant_Lead_Stage_SLA__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Stagnant_Lead_Stage_Time__c</field>
+    </columns>
+    <columns>
+        <field>UNREAD</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_State__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Last_Activity_Date__c</field>
+    </columns>
+    <columns>
+        <field>ALIAS</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>COMPANY</field>
+    </columns>
+    <columns>
+        <field>RATING</field>
+    </columns>
+    <columns>
+        <field>STREET</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Conversion_Point__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_45604159</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Lead.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Qualified Lead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Stagnant_Lead_State_SLA__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>within SLA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_State__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Rejected</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <name>EMEA Stagnant Lead Report SW</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>LeadList</reportType>
+    <scope>org</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

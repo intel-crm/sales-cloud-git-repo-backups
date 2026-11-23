@@ -16,7 +16,7 @@
     ****************************************************************************************************-->
 <apex:page id="mypage" standardController="case" extensions="Core_IPS_AddCommentController" sidebar="false" showHeader="false" tabStyle="Case" >
 <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/> 
- <apex:includeScript value="/soap/ajax/29.0/connection.js"/>              
+ <apex:includeScript value="/soap/ajax/54.0/connection.js"/>              
     <apex:form >
     
         <apex:pageBlock > <!--rendered="{!ShowAddComments}"-->

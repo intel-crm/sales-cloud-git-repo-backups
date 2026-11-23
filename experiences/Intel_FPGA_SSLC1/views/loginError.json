@@ -9,6 +9,27 @@
     "regionName" : "header",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"text-align: center;\">Invalid Page</div>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "cda42577-687a-49d9-ab06-74c7f843569e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "35271d78-a845-4d13-8852-b8bdf8e749eb"
+      },
+      "renditions" : [ {
+        "id" : "35271d78-a845-4d13-8852-b8bdf8e749eb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">Invalid Page</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
     "id" : "9622594c-788b-4455-bbf3-d7aad873352c",
     "regionName" : "content",
     "type" : "region"
@@ -32,6 +53,7 @@
         "id" : "b9b34585-11a8-496e-8502-a842931cc4f3",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "Login Error"
           }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Business Partner</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Business Partner</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Business Partner Name --></label>
+        <name>Account_Business_Partner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Group --></label>
+        <name>ER_Account_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>ER_Account__c</name>
+        <relationshipLabel><!-- Account Business Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>ER_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Group Association --></label>
+        <name>ER_CMFGroupAssociation__c</name>
+        <relationshipLabel><!-- Account Business Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer Master File Grouping --></label>
+        <name>ER_Customer_Master_File_Grouping__c</name>
+        <relationshipLabel><!-- Account Business Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>ER_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>ER_Start_Date__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Only Business Partner Accounts can be associated. --></errorMessage>
+        <name>ER_Allow_only_Businesspartner_Accounts</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- ER_mass_Delete --></label>
+        <name>ER_mass_Delete</name>
+    </webLinks>
+</CustomObjectTranslation>

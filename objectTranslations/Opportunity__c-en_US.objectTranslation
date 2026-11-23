@@ -4,10 +4,6 @@
         <plural>false</plural>
         <value>Opportunities-NoSubmissionPeriod</value>
     </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Opportunities-NoSubmissionPeriod</value>
-    </caseValues>
     <fields>
         <label><!-- End Date --></label>
         <name>Core_End_Date__c</name>

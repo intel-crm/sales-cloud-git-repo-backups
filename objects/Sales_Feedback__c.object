@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Application__c</fullName>
         <label>Application</label>
@@ -190,19 +190,9 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>New License Request</fullName>
-                    <default>false</default>
-                    <label>New License Request</label>
-                </value>
-                <value>
                     <fullName>Generate License</fullName>
                     <default>false</default>
                     <label>Generate License</label>
-                </value>
-                <value>
-                    <fullName>Apply Renewal</fullName>
-                    <default>false</default>
-                    <label>Apply Renewal</label>
                 </value>
                 <value>
                     <fullName>Split Seats</fullName>
@@ -210,9 +200,14 @@
                     <label>Split Seats</label>
                 </value>
                 <value>
-                    <fullName>Merge Seats</fullName>
+                    <fullName>New License Request</fullName>
                     <default>false</default>
-                    <label>Merge Seats</label>
+                    <label>New License Request</label>
+                </value>
+                <value>
+                    <fullName>Apply Renewal</fullName>
+                    <default>false</default>
+                    <label>Apply Renewal</label>
                 </value>
                 <value>
                     <fullName>Re-host</fullName>
@@ -220,14 +215,19 @@
                     <label>Re-host</label>
                 </value>
                 <value>
+                    <fullName>Merge Seats</fullName>
+                    <default>false</default>
+                    <label>Merge Seats</label>
+                </value>
+                <value>
                     <fullName>Evaluation License/Employee License</fullName>
                     <default>false</default>
                     <label>Evaluation License/Employee License</label>
                 </value>
                 <value>
-                    <fullName>Other</fullName>
+                    <fullName>Others</fullName>
                     <default>false</default>
-                    <label>Other</label>
+                    <label>Others</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -274,42 +274,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Feedback_Month__c</fullName>
-        <externalId>false</externalId>
-        <formula>LEFT(TEXT(DATEVALUE(CreatedDate)), LEN(TEXT(DATEVALUE(CreatedDate)))-3)</formula>
-        <label>Feedback Month</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Feedback_Quarter__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(YEAR(DATEVALUE(CreatedDate)))+&quot;&apos; &quot;+
-CASE(MONTH(DATEVALUE(CreatedDate)),
-1,&quot;Q1&quot;,
-2,&quot;Q1&quot;,
-3,&quot;Q1&quot;,
-4,&quot;Q2&quot;,
-5,&quot;Q2&quot;,
-6,&quot;Q2&quot;,
-7,&quot;Q3&quot;,
-8,&quot;Q3&quot;,
-9,&quot;Q3&quot;,
-10,&quot;Q4&quot;,
-11,&quot;Q4&quot;,
-12,&quot;Q4&quot;,
-&quot;&quot;)</formula>
-        <label>Feedback Quarter</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Feedback_Text__c</fullName>
@@ -467,9 +431,25 @@ CASE(MONTH(DATEVALUE(CreatedDate)),
     <label>Feedback</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>PSG_Quoting_Feedback</fullName>
+        <columns>NAME</columns>
+        <columns>Application__c</columns>
+        <columns>User__c</columns>
+        <columns>Type__c</columns>
+        <columns>Rating__c</columns>
+        <columns>Scale__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Application__c</field>
+            <operation>equals</operation>
+            <value>PSG Quoting</value>
+        </filters>
+        <label>PSG Quoting Feedback</label>
     </listViews>
     <nameField>
         <displayFormat>F-{0000000000}</displayFormat>

@@ -19,6 +19,9 @@
         <field>CUST_CREATED_NAME</field>
     </columns>
     <columns>
+        <field>CUST_LAST_UPDATE_NAME</field>
+    </columns>
+    <columns>
         <field>SPM_Customer_Feedback__c.DR_Feedback__c</field>
     </columns>
     <columns>

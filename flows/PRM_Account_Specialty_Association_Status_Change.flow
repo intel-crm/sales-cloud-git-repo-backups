@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>This flow is used to update the Status Change Date field whenever the status is changed&quot;</description>
+    <environments>Default</environments>
+    <interviewLabel>PRM_Account_Specialty_Association_Status_Change {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_Account_Specialty_Association_Status_Change</label>
+    <migratedFromWorkflowRuleName>PRM_Account_Specialty_Association_Status_Change</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>This will change the Status Change Date field. with Last Modified Date field .</description>
+        <name>Update_Status_Change_Date_To_Last_Modified_Date</name>
+        <label>Update Status Change Date To Last Modified Date</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>PRM_Status_Change_Dt__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Status_Change_Date_To_Last_Modified_Date</targetReference>
+        </connector>
+        <filterFormula>AND(
+ISCHANGED( {!$Record.PRM_InActive_Ind__c}),
+{!$Label.PRM_IPARefresh} =&apos;FALSE&apos;
+)</filterFormula>
+        <object>PRM_Account_Specialty_Association__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -26,18 +26,6 @@
         <relationshipLabel><!-- Account IPA Affiliations --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Builder --></label>
-        <name>PRM_Builder__c</name>
-        <picklistValues>
-            <masterLabel>AI Builders</masterLabel>
-            <translation><!-- AI Builders --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Network Builders</masterLabel>
-            <translation><!-- Network Builders --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <help><!-- On update of any field, Reason Text should also be updated --></help>
         <label><!-- Reason Text --></label>
         <name>PRM_Notes__c</name>

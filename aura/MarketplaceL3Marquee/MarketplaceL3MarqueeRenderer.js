@@ -11,15 +11,15 @@
         
         // Use the library component to send the data and domain for the analytics message.
         // There is a window message listener in the HEAD script that will call the salesforceHit method.
-        var analyticsLibrary = component.find("analyticsLibrary");
+        const analyticsLibrary = component.find("analyticsLibrary");
 
         // Make the analytics call and add the canonical link
-        var analyticsPageType = component.get("v.analyticsPageType");
+        const analyticsPageType = component.get("v.analyticsPageType");
         analyticsLibrary.callAnalytics(analyticsPageType, 'Marketplace', true);
 
         // Get components used for the breadcrumbs
-        var coreIntcBreadcrumbs = component.find("coreIntcBreadcrumbs");
-        var ipaBreadcrumbsServiceMarketplace = component.find("ipaBreadcrumbsServiceMarketplace");
+        const coreIntcBreadcrumbs = component.find("coreIntcBreadcrumbs");
+        const ipaBreadcrumbsServiceMarketplace = component.find("ipaBreadcrumbsServiceMarketplace");
 
         // Call the service to get the breadcrumbs
         ipaBreadcrumbsServiceMarketplace.getMarketplaceBreadcrumbs().then((breadcrumbs) => {

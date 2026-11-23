@@ -39,9 +39,11 @@ global without sharing class Core_Account_B2B_Flag_Cleanup_Batch implements Data
                         accList.add(acc);
                     }
                 }
+                system.debug('Following ' + accList.Size() + ' Accounts are eligible to be updated to Core_B2B_Entitlement__c = False: ' + accList);
                 Database.update (accList,false);
                 BatchCompletionMessage = 'Core_Account_B2B_Flag_Cleanup_Batch batch Successful.';
-                BatchCompletionResult = 'Successfully executed batch and deleted ' + accList.size(); 
+                BatchCompletionResult = 'Successfully executed batch and deleted ' + accList.size();
+                
             }
         } catch (DmlException e) {
             BatchCompletionMessage = 'Core_Account_B2B_Flag_Cleanup_Batch batch Failed.';

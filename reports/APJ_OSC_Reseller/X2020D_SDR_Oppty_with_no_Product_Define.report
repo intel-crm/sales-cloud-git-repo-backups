@@ -47,11 +47,11 @@
             <value>Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>David Ting</value>
+            <value>Siu Chone Cheah</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

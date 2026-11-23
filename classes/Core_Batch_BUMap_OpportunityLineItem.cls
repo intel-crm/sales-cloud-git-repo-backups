@@ -23,15 +23,15 @@ global Class Core_Batch_BUMap_OpportunityLineItem implements Database.Batchable<
         
         List<String> ProdSegment = new List<String>();
         List<String> ProdType = new List<String>();
-        Bmt = [select id,Core_Product_Segment__c, Core_Product_Application__c, Core_Division_Shortname__c, Core_Product_Type__c from Core_BU_Mapping_Table__c where Core_Processed__c = false];
+        Bmt = [select id,Core_Product_Segment__c, Core_Product_Application__c, Core_LOB_Code__c, Core_Product_Type__c from Core_BU_Mapping_Table__c where Core_Processed__c = false];
         for(Core_BU_Mapping_Table__c bm: Bmt){
              
              ProdSegment.add(bm.Core_Product_Segment__c);
              ProdType.add(bm.Core_Product_Type__c);
         }
             //TWC4767-465 
-       String query = 'select id,Core_Product_Segment__c, Core_Product2_Division__c, Core_Product_Type__c,  Core_Product_Application__c,Core_BU_Mapping_record__c from opportunitylineitem where Core_Product_Segment__c IN:ProdSegment AND Core_Product_Type__c IN:ProdType AND (Opportunity.StageName IN (\'Design\', \'Develop\', \'Define\', \'Qualify\') OR (Opportunity.StageName IN (\'Design Win\',\'Production Win\',\'Lost\',\'Cancelled\',\'Production Lost\',\'Production Cancelled\') AND Opportunity.Core_Pending_Products__c >0)) AND (Core_Product_Application__c != null OR Core_Product_Segment__c != null) ORDER BY Opportunity.AccountId';
-       // String query = 'select id,Core_Product_Segment__c, Core_Product2_Division__c, Core_Product_Type__c,  Core_Product_Application__c,Core_BU_Mapping_record__c from opportunitylineitem where Opportunity.StageName IN (\'Design\', \'Develop\', \'Define\', \'Qualify\') OR ( Opportunity.StageName IN (\'Design Win\',\'Production Win\',\'Lost\',\'Cancelled\',\'Production Lost\',\'Production Cancelled\') AND Opportunity.Core_Pending_Products__c >0)  AND Core_Product_Segment__c IN:ProdSegment AND Core_Product_Type__c IN:ProdType ORDER BY Opportunity.AccountId';
+       String query = 'select id,Core_Product_Segment__c, Core_Product2_LOB_Code__c, Core_Product_Type__c,  Core_Product_Application__c,Core_BU_Mapping_record__c from opportunitylineitem where Core_Product_Segment__c IN:ProdSegment AND Core_Product_Type__c IN:ProdType AND (Opportunity.StageName IN (\'Design\', \'Develop\', \'Define\', \'Qualify\') OR (Opportunity.StageName IN (\'Design Win\',\'Production Win\',\'Lost\',\'Cancelled\',\'Production Lost\',\'Production Cancelled\') AND Opportunity.Core_Pending_Products__c >0)) AND (Core_Product_Application__c != null OR Core_Product_Segment__c != null) ORDER BY Opportunity.AccountId';
+       // String query = 'select id,Core_Product_Segment__c, Core_Product2_LOB_Code__c, Core_Product_Type__c,  Core_Product_Application__c,Core_BU_Mapping_record__c from opportunitylineitem where Opportunity.StageName IN (\'Design\', \'Develop\', \'Define\', \'Qualify\') OR ( Opportunity.StageName IN (\'Design Win\',\'Production Win\',\'Lost\',\'Cancelled\',\'Production Lost\',\'Production Cancelled\') AND Opportunity.Core_Pending_Products__c >0)  AND Core_Product_Segment__c IN:ProdSegment AND Core_Product_Type__c IN:ProdType ORDER BY Opportunity.AccountId';
         //System.debug('query:::'+query);
         return Database.getQueryLocator(query);
     }

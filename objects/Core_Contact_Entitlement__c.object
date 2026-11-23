@@ -200,6 +200,17 @@ AND(
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Contact_Entitlement_cid_prod__c</fullName>
+        <externalId>true</externalId>
+        <label>Core_Contact_Entitlement_cid_prod</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Contact_Id__c</fullName>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
@@ -288,7 +299,6 @@ AND(
     </fields>
     <fields>
         <fullName>Core_Entitlement_B2B_B2C_Indicator__c</fullName>
-        <description>Contact Entitlement B2B-B2C Indicator Value</description>
         <externalId>false</externalId>
         <formula>TEXT(Core_Entitlement_Id__r.Entitlement_B2B_B2C_Indicator__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -384,7 +394,7 @@ AND(
         <fullName>Core_Retrigger_Attempt__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>The number of retrigger attempts made to make the assignment successful</inlineHelpText>
+        <inlineHelpText>No.of retries made for successful assignment on maximum threshold of 3</inlineHelpText>
         <label>Retrigger Attempt</label>
         <precision>1</precision>
         <required>false</required>
@@ -408,7 +418,7 @@ AND(
         <label>Source</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -467,7 +477,6 @@ AND(
         <fullName>Core_Type__c</fullName>
         <externalId>false</externalId>
         <formula>IF(Core_From_Source__c, &apos;Engagement&apos;, &apos;Entitlement&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Type</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -528,6 +537,11 @@ AND(
         <columns>Core_Entitlement_Id__c</columns>
         <columns>Core_Selected__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATEDBY_USER</field>
+            <operation>contains</operation>
+            <value>Saba</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

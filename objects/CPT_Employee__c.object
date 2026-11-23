@@ -498,7 +498,7 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Account Executive</fullName>
                     <default>false</default>
@@ -704,7 +704,7 @@
         <fullName>CPT_Sales_Group__c</fullName>
         <description>The Sales Group of the Commissionable Employee.</description>
         <externalId>false</externalId>
-        <label>Sales Group</label>
+        <label>Region</label>
         <length>100</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -739,17 +739,17 @@
     <label>Commissionable Employee</label>
     <listViews>
         <fullName>All_Records</fullName>
-        <columns>OBJECT_ID</columns>
         <columns>NAME</columns>
         <columns>CPT_Employee_WWID__c</columns>
         <columns>CPT_First_Name__c</columns>
         <columns>CPT_Last_Name__c</columns>
-        <columns>CPT_Full_Name__c</columns>
         <columns>CPT_Manager_WWID__c</columns>
         <columns>CPT_Manager__c</columns>
-        <columns>CPT_Quota_Period__c</columns>
+        <columns>CPT_Sales_Compensation_Plan__c</columns>
         <columns>CPT_Plan_Name__c</columns>
         <columns>CPT_Job_Role__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>CPT_Quota_Period__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
         <sharedTo>
@@ -767,10 +767,10 @@
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
-        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <searchResultsAdditionalFields>CPT_Full_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CPT_Employee_WWID__c</searchResultsAdditionalFields>
     </searchLayouts>
@@ -809,6 +809,17 @@ NOT( $Permission.CPT_IT_Admin_System_Admin_Permission ),
 TEXT( CPT_Quota_Period__r.CPT_Locked_Status__c ) = &apos;Hard Lock&apos;
 )</errorConditionFormula>
         <errorMessage>This record is locked. Contact Commissions Admin with questions.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>xCPT_Prevent_ManagerUpdate_OnLockedRec</fullName>
+        <active>false</active>
+        <description>Prevent manager update when the related quota setup record is locked.</description>
+        <errorConditionFormula>AND
+(
+NOT($Permission.CPT_Commission_Admin_Permission),
+xCPT_Restrict_Update__c
+)</errorConditionFormula>
+        <errorMessage>Manager cannot be updated as the Quota setup record is Hard Locked. Contact your Administrator.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

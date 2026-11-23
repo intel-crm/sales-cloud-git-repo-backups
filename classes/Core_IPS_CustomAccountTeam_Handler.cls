@@ -20,7 +20,7 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
     * Brian Matthews              04/28/2016             Initial Release
     ****************************************************************************************************/
     public static void deleteStandardAccountTeam(List<Core_Account_Team__c> lstCustomDeletes) {
-            List <AccountTeamMember> lstAcctTeamMember = new List <AccountTeamMember>();
+            List <AccountTeamMember> lstAcctTeamMember=new List <AccountTeamMember>();
         Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
         if(!mapFunctionalityNameTriggerExecution.containsKey('deleteStandardAccountTeam') ||
            !mapFunctionalityNameTriggerExecution.get('deleteStandardAccountTeam').Core_Active__c) {
@@ -59,8 +59,11 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                 lstAcctTeamMember.add(acctTeamMemberId);                
         }
 
-        if (lstAcctTeamMember.size() > 0){ 
+        if (lstAcctTeamMember.size() > 0){
+            /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
+            if (AccountTeamMember.sObjectType.getDescribe().isDeletable()) {    
             	delete lstAcctTeamMember;
+            }
         }
     }
     
@@ -173,7 +176,7 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
     ****************************************************************************************************/
     public static List<Core_Account_Team__c> ipsRecordsOnly(List<Core_Account_Team__c> newList){        
         List<Core_Account_Team__c> ipsRecords = new List<Core_Account_Team__c>();
-        List<Account> accList = new List<Account>();
+        List<Account> accList=new  List<Account>();
         if(newList <> null && newList.size() > 0){
             Map<Id,List<Core_Account_Team__c>> accountTeambyAccountId = new Map<Id,List<Core_Account_Team__c>>();
             List<Core_Account_Team__c> catList;
@@ -450,12 +453,15 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                             }
                         }
                         if(parsbyAccountId <> null && parsbyAccountId.size() > 0){
+                            //dharani if parsbyAccountId contains key catObj.Core_Account__c
+                            if(parsbyAccountId.containsKey(catObj.Core_Account__c)){
                             for(Id parsId:parsbyAccountId.get(catObj.Core_Account__c)){
                                 if(faeIdsbyAccountId.get(catObj.Core_Account__c) <> null)
                                     userIdsbyParsId.put(parsId,faeIdsbyAccountId.get(catObj.Core_Account__c));
                             }
                         }
                     }
+                }
                 }
                 if(userIdsbyProjectId <> null && userIdsbyProjectId.size() > 0 && projectIdsbyAccountId <> null && projectIdsbyAccountId.size() > 0){
                     Map<Id,Set<Id>> assetIdsbyProjectId = Core_IPS_Helper_Utility.getAssetsByProjectId(userIdsbyProjectId.keyset());

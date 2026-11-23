@@ -18,11 +18,11 @@ public with sharing class PRM_ACRNotificationMessage {
     public static final String LOG_ENTRY_SEVERITY = 'Medium';
     public static string MsgForLogEntry='*** Entered PRM_ACRNotificationMessage ***\n';
 
-    @InvocableMethod(label='Send ACR Notification Message')
+    @InvocableMethod(label='Send ACR Notification Message') 
     public static void sendNotifications(MessageWrapper[] msgWrap){
         Id conId = null;
         String messageCd = '';
-        List<Id> contactList = new List<Id>();
+        List<Id> contactList = new List<Id>();  
         Boolean isCreatedSameDateAndTime = true;
         Integer existingAcrCount = 0;
         try{

@@ -1006,7 +1006,7 @@ catch(Exception e){}
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
         System.runAs(ListOfUser[0]){
             try{
-            insert ListOfAccounts;
+        insert ListOfAccounts;
             for(Account acc:ListOfAccounts){
                 acc.OwnerId=ListOfUserAccount[0].id;
             }

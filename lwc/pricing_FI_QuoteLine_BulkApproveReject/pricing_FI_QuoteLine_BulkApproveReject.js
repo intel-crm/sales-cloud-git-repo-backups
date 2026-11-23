@@ -292,6 +292,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
         if (element.searchKey != null && element.searchKey != '' && element.searchKey != undefined) {
             getFIPricingManagerSearch({ searchKey: element.searchKey })
                 .then((result) => {
+                    console.log('Enetered getFIPricingManagerSearch method: '+result);
                     if (result.length == 0 || result == '') {
                         element.recordsList = [];
                         element.message = 'No Records Found';
@@ -573,6 +574,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                 this.selectedData.push(JSON.parse(JSON.stringify(this.quoteLineData[index])));
             }
         }
+        console.log('1selectedData ' + JSON.stringify(this.selectedData));
         if (this.selectedData.length > 0 && this.error.length == 0 && !this.quoteLineDataHasError) {
             this.disabledBtn = true;
             this.selectedData.forEach(ql => {
@@ -582,6 +584,7 @@ export default class Pricing_FI_QuoteLine_BulkApproveReject extends LightningEle
                 delete ql.isError;
                 ql.Pricing_Status_Nm__c = action;
             });
+            console.log('2selectedData ' + JSON.stringify(this.selectedData));
             await bulkApprovalRejectionQuoteLineRPM({ quoteLineData: this.selectedData, action: action, quoteType: FIQuoteType })
                 .then(result => {
                     if (result == 'Success') {

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>C-LAB Customer User</description>
+    <description>COMPULAB LTD. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>C-LAB Customer User</name>
+    <name>COMPULAB LTD. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10663310_Idan_Nadel</parentRole>
+    <parentRole>EMP_11228802_Maayan_Ronen</parentRole>
 </Role>

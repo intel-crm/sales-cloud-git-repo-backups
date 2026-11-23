@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <available>true</available>
+    <description>To Notify Account Managers on PIC completion and To notify External Claim Submitters on PIC Pass</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_PIC_Completed_Notification</name>
+    <style>none</style>
+    <subject>Weekly POP Screening Status</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

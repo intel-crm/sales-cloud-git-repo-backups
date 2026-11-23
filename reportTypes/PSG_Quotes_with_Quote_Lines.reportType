@@ -228,11 +228,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_contract_manufacturer_disty_nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_contract_manufacturer_nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -339,11 +334,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_ecp_id_id__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__EmailTemplateId__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -355,16 +345,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_end_customer_disty_view_nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_end_customer_list_view__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_end_customer_city__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -637,12 +617,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_parentaccount__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>CMF Pricing Parent SF Id</displayNameOverride>
+            <displayNameOverride>CMF Pricing parent SF ID</displayNameOverride>
             <field>core_cpq_parent_account_id__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -1141,12 +1116,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.UserRole</field>
+            <field>core_cpq_quote_owner_name__c.UserRole</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__Opportunity2__c.Name</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Program_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_invalid_opn_ta__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Account_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_is_Budgetary_cb__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <masterLabel>Quotes</masterLabel>
@@ -2319,6 +2319,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Line_Number_Txt__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__UnproratedNetPrice__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
@@ -2429,12 +2434,54 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_Quote_Line_Number_Txt__c</field>
+            <field>pricing_TDP__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>pricing_core_count__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_Broken_Cost_Check__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Total_Requested_Quantity__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percent__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percentage__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Name__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Rationale_for_Pricing__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Application_Agent_Status__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <masterLabel>Quote Lines</masterLabel>
-    </sections>
-    <sections>
-        <masterLabel>PRID</masterLabel>
     </sections>
 </ReportType>

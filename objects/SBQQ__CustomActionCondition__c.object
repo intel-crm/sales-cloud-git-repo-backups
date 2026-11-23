@@ -204,6 +204,21 @@
                     <label>Quote Status</label>
                 </value>
                 <value>
+                    <fullName>PSG_Restricted_Product__c</fullName>
+                    <default>false</default>
+                    <label>PSG_Restricted_Product__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_PSG_Restricted_Product_Check__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_PSG_Restricted_Product_Check__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_PSG_Restricted_Product__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_PSG_Restricted_Product__c</label>
+                </value>
+                <value>
                     <fullName>Pricing_SW_Custom_Action__c</fullName>
                     <default>false</default>
                     <label>Pricing_SW_Custom_Action__c</label>

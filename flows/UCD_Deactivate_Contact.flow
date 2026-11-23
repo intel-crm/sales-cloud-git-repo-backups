@@ -5,8 +5,11 @@
     <decisions>
         <name>Check_Identity</name>
         <label>Check Identity</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Deactivate</name>
@@ -39,6 +42,21 @@
             <label>Deactivate</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>UCD Deactivate Contact {!$Flow.CurrentDateTime}</interviewLabel>
     <label>UCD Deactivate Contact</label>
@@ -61,11 +79,69 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_log_entry</name>
+        <label>Create log entry</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>UCD Deactivate Contact flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Update Contact</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+    </recordCreates>
     <recordUpdates>
         <name>Update_Contact_Deactivate</name>
         <label>Update Contact Deactivate</label>
         <locationX>50</locationX>
         <locationY>431</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Deactivated__c</field>
             <value>
@@ -81,7 +157,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_Identity</targetReference>

@@ -9,7 +9,7 @@
         <value>Conditions de prix</value>
     </caseValues>
     <fields>
-        <help>Choisissez un champ dans l&apos;objet cible.</help>
+        <help>Sélectionnez le champ qui doit contenir la valeur que vous saisissez dans le champ Valeur.</help>
         <label><!-- Field --></label>
         <name>SBQQ__Field__c</name>
         <picklistValues>
@@ -31,6 +31,10 @@
         <picklistValues>
             <masterLabel>RecordTypeId</masterLabel>
             <translation><!-- RecordTypeId --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__ListPrice__c</masterLabel>
+            <translation><!-- SBQQ__ListPrice__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SBQQ__OptionLevel__c</masterLabel>

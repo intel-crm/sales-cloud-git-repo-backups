@@ -78,11 +78,11 @@
             <value>dcg</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>FK_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Dmitry</value>
+            <operator>notContain</operator>
+            <value>ethernet</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

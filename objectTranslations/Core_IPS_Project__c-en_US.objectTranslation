@@ -168,6 +168,10 @@
             <translation><!-- EMEA --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC</masterLabel>
             <translation><!-- PRC --></translation>
         </picklistValues>
@@ -190,6 +194,10 @@
         <picklistValues>
             <masterLabel>IJKK</masterLabel>
             <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>KOREA</masterLabel>
@@ -285,10 +293,6 @@
         <errorMessage><!-- Sub-Region is required when creating / Updating the Project with a specified Region --></errorMessage>
         <name>SubRegionNotNullIfRegionExistedOnNewProj</name>
     </validationRules>
-    <webLinks>
-        <label><!-- Core_IPS_Update_Support_Owners --></label>
-        <name>Core_IPS_Update_Support_Owners</name>
-    </webLinks>
     <webLinks>
         <label><!-- core_Submit --></label>
         <name>core_Submit</name>

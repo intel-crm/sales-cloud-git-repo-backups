@@ -261,28 +261,26 @@
         <fullName>CBT_Validations</fullName>
         <active>true</active>
         <errorConditionFormula>IF(
-ISPICKVAL( Status__c , &apos;Approval - Pending&apos;) &amp;&amp;
+ISPICKVAL( Status__c , &apos;Approved&apos;) &amp;&amp;
 CONTAINS(Business_Types__r.Name, &apos;Developer Zone Premier&apos;) &amp;&amp;
-(
-ISBLANK( Contact__r.Core_English_Only_First_Name__c) ||  
-ISBLANK( Contact__r.Core_English_Only_Last_Name__c )
-)
+(ISBLANK( Contact__r.Core_English_Only_First_Name__c) &amp;&amp;  
+ISBLANK( Contact__r.Core_English_Only_Last_Name__c ))
 ,true,false
 )</errorConditionFormula>
         <errorDisplayField>Status__c</errorDisplayField>
         <errorMessage>CBT cannot be approved due one or more validations errors.
 • Contact&apos;s &apos;English Only First Name&apos; is Blank
-• Contact&apos;s &apos;English Only Last Name&apos; is Blank</errorMessage>
+• Contact&apos;s &apos;English Only Last Name&apos; is Blank.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Registration_Record_is_still_Pending</fullName>
         <active>true</active>
         <description>validation rule to restrict addition of CBT=Approved for a contact when Registration request for the same contact is pending</description>
-        <errorConditionFormula>AND(OR(
+        <errorConditionFormula>OR(
 Pending_Registration__c = true,
 ISPICKVAL(Contact__r.Pending_Registration__c, &apos;Yes&apos;)
-), Business_Types__r.Name = &apos;Developer Zone Premier&apos;)</errorConditionFormula>
-        <errorMessage>DZP Registration Request for the given email ID is in Open/Pending/Rejected status.</errorMessage>
+)</errorConditionFormula>
+        <errorMessage>Registration record is still Pending</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

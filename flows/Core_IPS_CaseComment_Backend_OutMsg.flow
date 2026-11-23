@@ -95,12 +95,12 @@
             <value>
                 <stringValue>AND( 
 $Profile.Name &lt;&gt; &apos;Integration&apos; , $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;,   
-[Core_IPS_Case_Comments__c].Core_IPS_Case__r.Core_IPS_Backend_ID__c &lt;&gt; null,  [Core_IPS_Case_Comments__c].Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, 
+[Core_IPS_Case_Comments__c].Core_IPS_Case__r.Core_IPS_BackendID__c &lt;&gt; null,  [Core_IPS_Case_Comments__c].Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, 
 [Core_IPS_Case_Comments__c].Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false,
 
 OR(
-      ISPICKVAL([Core_IPS_Case_Comments__c].Core_Promote_Status__c, &apos;&apos;), 
-      ISPICKVAL([Core_IPS_Case_Comments__c].Core_Promote_Status__c, &apos;In Progress&apos;)
+      ISPICKVAL([Core_IPS_Case_Comments__c].Core_IPS_BES_Promote_Status__c, &apos;&apos;), 
+      ISPICKVAL([Core_IPS_Case_Comments__c].Core_IPS_BES_Promote_Status__c, &apos;In Progress&apos;)
       ),
 OR(
       [Core_IPS_Case_Comments__c].Core_IPS_Comment_Attachment_Id__c == null, 
@@ -115,12 +115,12 @@ OR(
         <dataType>Boolean</dataType>
         <expression>AND( 
 {!$Profile.Name} &lt;&gt; &apos;Integration&apos; , {!$Profile.Name} &lt;&gt; &apos;IPS Data Migration&apos;,   
-{!myVariable_current.Core_IPS_Case__r.Core_IPS_Backend_ID__c} &lt;&gt; null,  {!myVariable_current.Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null, 
+{!myVariable_current.Core_IPS_Case__r.Core_IPS_BackendID__c} &lt;&gt; null,  {!myVariable_current.Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c} &lt;&gt; null, 
 {!myVariable_current.Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c} = false,
 
 OR(
-      ISPICKVAL({!myVariable_current.Core_Promote_Status__c}, &apos;&apos;), 
-      ISPICKVAL({!myVariable_current.Core_Promote_Status__c}, &apos;In Progress&apos;)
+      ISPICKVAL({!myVariable_current.Core_IPS_BES_Promote_Status__c}, &apos;&apos;), 
+      ISPICKVAL({!myVariable_current.Core_IPS_BES_Promote_Status__c}, &apos;In Progress&apos;)
       ),
 OR(
       {!myVariable_current.Core_IPS_Comment_Attachment_Id__c} == null, 
@@ -156,7 +156,7 @@ OR(
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

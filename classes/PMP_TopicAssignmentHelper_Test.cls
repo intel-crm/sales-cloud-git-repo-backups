@@ -368,7 +368,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     }//
 
     List<TopicAssignment> listCountTopicAssignment1 = [select id,entityId from TopicAssignment];
-    //System.debug(listCountTopicAssignment1.size());
+    
     
     insert listTopicAssignment;
 
@@ -381,14 +381,11 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     }
 
     test.startTest();
-   /*  System.debug(listTopicAssignment.size());
-    System.debug(listCountTopicAssignment.size());
-    System.debug(listWorkingCopyTopicAssignment.size()); //
     //System.assert(listCountTopicAssignment.size()==400);
     delete listWorkingCopyTopicAssignment;
 
     List<TopicAssignment> lstTopicAssignment = [select id from TopicAssignment];
-    // System.debug(lstTopicAssignment.size());
+    
     System.assert(lstTopicAssignment.isEmpty());
 
     test.stopTest();
@@ -469,7 +466,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     }//
     
     List<TopicAssignment> listCountTopicAssignment1 = [select id,entityId from TopicAssignment];
-    // System.debug(listCountTopicAssignment1.size());
+    
     insert listTopicAssignment;
 
     List<TopicAssignment> listCountTopicAssignment = [select id,entityId,topicId from TopicAssignment];
@@ -479,15 +476,13 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
             listWorkingCopyTopicAssignment.add(topicAssign);
         }
     }
-    /* System.debug(listTopicAssignment.size());
-    System.debug(listCountTopicAssignment.size());
-    System.debug(listWorkingCopyTopicAssignment.size()); //
+    /* //
     //System.assert(listCountTopicAssignment.size()==400);
     Test.startTest();
     delete listWorkingCopyTopicAssignment;
 
     List<TopicAssignment> lstTopicAssignment = [select id from TopicAssignment];
-    // System.debug(lstTopicAssignment.size());
+    
     System.assert(lstTopicAssignment.isEmpty());
 
     test.stopTest();
@@ -618,7 +613,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
 
     
     List<TopicAssignment> listCountTopicAssignment1 = [select id,entityId from TopicAssignment];
-    // System.debug(listCountTopicAssignment1.size());
+   
     insert listTopicAssignment;
 
     List<TopicAssignment> listCountTopicAssignment = [select id,entityId,topicId from TopicAssignment];
@@ -628,32 +623,28 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
             listWorkingCopyTopicAssignment.add(topicAssign);
         }
     }
-    /* System.debug(listTopicAssignment.size());
-    System.debug(listCountTopicAssignment.size());
-    System.debug(listWorkingCopyTopicAssignment.size()); 
+    /*  
     //System.assert(listCountTopicAssignment.size()==600);
 
 
     List<PMP_Marketplace_Event_Offering__c> listEventOfferings = [select id from PMP_Marketplace_Event_Offering__c];
     List<PMP_Marketplace_Event_Partner__c> listEventCompanies = [select id from PMP_Marketplace_Event_Partner__c];
 
-    /* System.debug(listEventOfferings.size());
-    System.debug(listEventCompanies.size()); //
+    /*  //
     //System.assert(listEventOfferings.size() == 200);
     Test.startTest();
     
     delete listWorkingCopyTopicAssignment;
 
     List<TopicAssignment> lstTopicAssignment = [select id from TopicAssignment];
-    // System.debug(lstTopicAssignment.size());
+    
     System.assert(lstTopicAssignment.isEmpty());
 
    listEventOfferings = [select id from PMP_Marketplace_Event_Offering__c];
     listEventCompanies = [select id from PMP_Marketplace_Event_Partner__c];
 
 
-    /* System.debug(listEventOfferings.size());
-    System.debug(listEventCompanies.size()); //
+    /*  //
     System.assert(listEventOfferings.isEmpty());
     
     
@@ -787,7 +778,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
 
     
     List<TopicAssignment> listCountTopicAssignment1 = [select id,entityId from TopicAssignment];
-    // System.debug(listCountTopicAssignment1.size());
+    
     insert listTopicAssignment;
 
     List<TopicAssignment> listCountTopicAssignment = [select id,entityId,topicId from TopicAssignment];
@@ -797,32 +788,28 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
             listWorkingCopyTopicAssignment.add(topicAssign);
         }
     }
-    /* System.debug(listTopicAssignment.size());
-    System.debug(listCountTopicAssignment.size());
-    System.debug(listWorkingCopyTopicAssignment.size()); //
+    /*  //
     //System.assert(listCountTopicAssignment.size()==1200);
 
 
     List<PMP_Marketplace_Event_Offering__c> listEventOfferings = [select id from PMP_Marketplace_Event_Offering__c];
     List<PMP_Marketplace_Event_Partner__c> listEventCompanies = [select id from PMP_Marketplace_Event_Partner__c];
 
-    /* System.debug(listEventOfferings.size());
-    System.debug(listEventCompanies.size()); //
+    /*  //
     //System.assert(listEventCompanies.size() == 400);
     Test.startTest();
 
     delete listWorkingCopyTopicAssignment;
 
     List<TopicAssignment> lstTopicAssignment = [select id from TopicAssignment];
-    // System.debug(lstTopicAssignment.size());
+    
     System.assert(lstTopicAssignment.isEmpty());
 
    listEventOfferings = [select id from PMP_Marketplace_Event_Offering__c];
     listEventCompanies = [select id from PMP_Marketplace_Event_Partner__c];
 
 
-    /* System.debug(listEventOfferings.size());
-    System.debug(listEventCompanies.size()); //
+    /*  //
     System.assert(listEventOfferings.isEmpty());
     
     

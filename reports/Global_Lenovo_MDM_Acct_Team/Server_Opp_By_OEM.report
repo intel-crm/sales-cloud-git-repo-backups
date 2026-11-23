@@ -91,11 +91,25 @@
             <value>NAR</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Sales_Segments__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Influencer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2.Core_Inf_KPI_ProdFamily__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Xeon</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OpportunityLineItem.Core_Vendor__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Lenovo</value>
+            <value>Dell,HP,Supermicro,Cray,Amazon,Cisco Systems,Lenovo</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -131,6 +145,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-22</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

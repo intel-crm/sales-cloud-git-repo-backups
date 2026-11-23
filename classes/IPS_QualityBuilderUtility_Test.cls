@@ -28,8 +28,8 @@ private class IPS_QualityBuilderUtility_Test {
     // To test positive response.
     @isTest static void testPositive() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
         multimock.setHeader('Content-Type', 'application/json');
         multimock.setStatusCode(200);
         
@@ -49,8 +49,8 @@ private class IPS_QualityBuilderUtility_Test {
     // To test positive response to test padding cond for "="
     @isTest static void testPaddingPositive() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
         multimock.setHeader('Content-Type', 'application/json');
         multimock.setStatusCode(200);
         
@@ -65,8 +65,8 @@ private class IPS_QualityBuilderUtility_Test {
     // To test positive response to test padding cond for NOT "=" & NOT "=="
     @isTest static void testPaddingBlankPositive() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
         multimock.setHeader('Content-Type', 'application/json');
         multimock.setStatusCode(200);
         Test.setMock(HttpCalloutMock.class, multimock);
@@ -80,8 +80,8 @@ private class IPS_QualityBuilderUtility_Test {
     // To test negative response
     @isTest static void testNegative() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
         multimock.setHeader('Content-Type', 'application/json');
         multimock.setStatusCode(400);
         
@@ -95,8 +95,8 @@ private class IPS_QualityBuilderUtility_Test {
     // To test negative response
     @isTest static void testIncorectReportNegative() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
         multimock.setHeader('Content-Type', 'application/json');
         multimock.setStatusCode(200);
         Test.setMock(HttpCalloutMock.class, multimock);
@@ -107,8 +107,8 @@ private class IPS_QualityBuilderUtility_Test {
     }
     @isTest static void testTokenGenerationFailure() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
         multimock.setHeader('Content-Type', 'application/json');
         multimock.setStatusCode(500); 
         
@@ -116,7 +116,7 @@ private class IPS_QualityBuilderUtility_Test {
         Test.startTest();
         
         try {
-            IPS_QualityBuilderUtility.generateTokenWithRetry('https://apis.intel.com/v1/auth/token', 'client_id', 'client_secret');
+            IPS_QualityBuilderUtility.generateTokenWithRetry('https://apis-stage.intel.com/v1/auth/token', 'client_id', 'client_secret');
         } catch (Exception e) {
             System.assert(e.getMessage().contains('Failed to generate token'), 'Expected failure message');
         }
@@ -127,8 +127,8 @@ private class IPS_QualityBuilderUtility_Test {
     
     @isTest static void testReportUploadFailure() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/v1/auth/token','IPS_QualityBuilder_TokenCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/m2r/isvc-services/v1/files','IPS_QualityBuilder_SendFileCallout_MockResponse');
         multimock.setHeader('Content-Type', 'application/json');
         multimock.setStatusCode(500); 
         
@@ -165,8 +165,8 @@ private class IPS_QualityBuilderUtility_Test {
     @isTest
     static void testReportUploadFailureNeg() {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('https://apis.intel.com/v1/auth/token', 'IPS_QualityBuilder_TokenCallout_MockResponse');
-        multimock.setStaticResource('https://apis.intel.com/m2r/isvc-services/v1/files', 'IPS_QualityBuilder_SendFileCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/v1/auth/token', 'IPS_QualityBuilder_TokenCallout_MockResponse');
+        multimock.setStaticResource('https://apis-stage.intel.com/m2r/isvc-services/v1/files', 'IPS_QualityBuilder_SendFileCallout_MockResponse');
         multimock.setHeader('Content-Type', 'application/json');
         multimock.setStatusCode(500);  // Simulate an HTTP failure response
         

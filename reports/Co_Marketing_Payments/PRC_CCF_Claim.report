@@ -63,7 +63,7 @@ Claim Status - Payment Due</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>PRC</value>
+            <value>PRC,INDIA</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>

@@ -119,6 +119,48 @@ public without sharing class Pricing_RestAPI_LoggingUtil {
         }
         return transLog.Id; 
     }
+    //Not using the below two methods
+    //for Logging Exception
+    //Creating log entries record passing exception
+    /* public static String logError(DateTime currTime, String apiName, Exception excp, Core_RestAPI_Response response){
+Core_Log_Entry__c log = new Core_Log_Entry__c();
+try{           
+log.Core_Message__c = String.ValueOf(requestObj.requestURI).abbreviate(255);
+log.Core_Origin__c = LABEL.Core_RestAPI_Log_Origin;
+log.Core_When__c = currTime;
+log.Core_Severity__c = LABEL.Core_RestAPI_Error_Severity;
+log.Core_Project__c = LABEL.Core_RestAPI_Log_Origin;
+log.Core_Tags__c=userInfoIds[0].ContactId+';'+response.Code;
+log.Core_Details__c = Core_RestAPI_Util.getExceptionAsString(excp)+' ; Request : '+'requestObj.requestBody != null ? JSON.serialize(requestObj.requestBody.toString()) : '+' ;Response : '+JSON.serializePretty(response)+ '; Time :' + System.now();
+insert log;
+errorLog  = [Select Name FROM Core_Log_Entry__c where Id =:log.id];
+}catch(Exception e){
+Pricing_Tender_Utility.logError(e);
+}
+return errorLog.Name;
+}
+
+// Creating log entries record passing exception code
+public static String logError(DateTime currTime, String apiName, String expCode, Core_RestAPI_Response response){
+
+Core_Log_Entry__c log = new Core_Log_Entry__c();
+try{
+
+log.Core_Message__c = String.ValueOf(requestObj.requestURI).abbreviate(255);
+log.Core_Origin__c = LABEL.Core_RestAPI_Log_Origin;
+log.Core_When__c = currTime;
+log.Core_Severity__c = LABEL.Core_RestAPI_Error_Severity;
+log.Core_Project__c = LABEL.Core_RestAPI_Log_Origin;
+log.Core_Tags__c=userInfoIds[0].ContactId+';'+expCode;
+log.Core_Details__c = expCode+' ; Request : '+( requestObj.requestBody != null ? JSON.serialize(requestObj) : '' )+' ;Response : '+( response != null ? JSON.serialize(response) : '')+ '; Time : ' +System.now();
+insert log;
+errorLog = [Select Name FROM Core_Log_Entry__c where Id =:log.id];
+
+}catch(Exception e){
+Pricing_Tender_Utility.logError(e);
+}
+return errorLog.Name;
+}*/
     
     //Creating log entries passing exception and code as the parameter
     public static String logError(DateTime currTime, String apiName, String expCode, Exception excp, Pricing_RestAPI_Response response){

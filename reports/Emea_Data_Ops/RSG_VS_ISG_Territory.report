@@ -56,9 +56,6 @@
         <field>Account$Name</field>
     </columns>
     <columns>
-        <field>Account$Owner</field>
-    </columns>
-    <columns>
         <field>Account.AccountTerritory2Associations$DeveloperName</field>
     </columns>
     <columns>
@@ -68,13 +65,6 @@
         <field>Account.AccountTerritory2Associations$Id</field>
     </columns>
     <filter>
-        <criteriaItems>
-            <column>Account$Owner</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Integration User,Uncovered Account,Vendor Sales Center,Agency Managed</value>
-        </criteriaItems>
         <criteriaItems>
             <column>Account$Core_Deactivated__c</column>
             <columnToColumn>false</columnToColumn>

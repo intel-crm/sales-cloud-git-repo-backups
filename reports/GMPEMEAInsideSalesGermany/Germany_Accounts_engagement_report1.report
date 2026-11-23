@@ -62,7 +62,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Makowska,Matusik,Mitwer,Opara,Sochacki,Studzinski,Witkowski,Alexandros,Natalia,Wallat,Agnieszka,Ewa,Saskia,Jakub,Kotelnikova</value>
+            <value>Lesiewski,Makowska,Matusik,Mitwer,Opara,Sochacki,Studzinski,Witkowski</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Country__c</column>
@@ -77,13 +77,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Completed,In Progress</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>TASK_SUBTYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Call</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

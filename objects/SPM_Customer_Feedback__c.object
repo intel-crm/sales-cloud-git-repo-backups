@@ -256,24 +256,49 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
+                    <fullName>Intel Covered</fullName>
+                    <default>true</default>
+                    <label>Intel Covered</label>
+                </value>
+                <value>
+                    <fullName>Indirect Covered</fullName>
+                    <default>false</default>
+                    <label>Indirect Covered</label>
+                </value>
+                <value>
+                    <fullName>Not Covered</fullName>
+                    <default>false</default>
+                    <label>Not Covered</label>
+                </value>
+                <value>
+                    <fullName>Altera Account</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Altera Account</label>
+                </value>
+                <value>
                     <fullName>Intel Led</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Intel-led Account</label>
-                </value>
-                <value>
-                    <fullName>Partner Led</fullName>
-                    <default>false</default>
-                    <label>Partner-led Account</label>
-                </value>
-                <value>
-                    <fullName>Other-led Account</fullName>
-                    <default>false</default>
-                    <label>Other-led Account</label>
                 </value>
                 <value>
                     <fullName>Uncovered</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Not Covered Account</label>
+                </value>
+                <value>
+                    <fullName>Other-led Account</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other-led Account</label>
+                </value>
+                <value>
+                    <fullName>Partner Led</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Partner-led Account</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -346,9 +371,9 @@
             <valueSetDefinition>
                 <sorted>true</sorted>
                 <value>
-                    <fullName>Add to Intel led</fullName>
+                    <fullName>Add to Intel Covered</fullName>
                     <default>false</default>
-                    <label>Add to Intel led</label>
+                    <label>Add to Intel Covered</label>
                 </value>
                 <value>
                     <fullName>Change GTM Model Only</fullName>
@@ -362,19 +387,20 @@
                     <label>Change Ownership</label>
                 </value>
                 <value>
+                    <fullName>Change to Indirect Covered</fullName>
+                    <default>false</default>
+                    <label>Change to Indirect Covered</label>
+                </value>
+                <value>
+                    <fullName>Change to Not Covered</fullName>
+                    <default>false</default>
+                    <label>Change to Not Covered</label>
+                </value>
+                <value>
                     <fullName>Change to Other Led</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Change to Other Led</label>
-                </value>
-                <value>
-                    <fullName>Change to Partner</fullName>
-                    <default>false</default>
-                    <label>Change to Partner</label>
-                </value>
-                <value>
-                    <fullName>Change to Uncovered</fullName>
-                    <default>false</default>
-                    <label>Change to Uncovered</label>
                 </value>
                 <value>
                     <fullName>Partial</fullName>
@@ -448,14 +474,14 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Change to Partner</fullName>
+                    <fullName>Change to Indirect Covered</fullName>
                     <default>false</default>
-                    <label>Change to Partner</label>
+                    <label>Change to Indirect Covered</label>
                 </value>
                 <value>
-                    <fullName>Change to Uncovered</fullName>
+                    <fullName>Change to Not Covered</fullName>
                     <default>false</default>
-                    <label>Change to Uncovered</label>
+                    <label>Change to Not Covered</label>
                 </value>
                 <value>
                     <fullName>Change Ownership</fullName>
@@ -468,9 +494,9 @@
                     <label>Partial</label>
                 </value>
                 <value>
-                    <fullName>Add to Intel led</fullName>
+                    <fullName>Add to Intel Covered</fullName>
                     <default>false</default>
-                    <label>Add to Intel led</label>
+                    <label>Add to Intel Covered</label>
                 </value>
                 <value>
                     <fullName>Change to Other Led</fullName>
@@ -503,33 +529,33 @@
                 </value>
             </valueSetDefinition>
             <valueSettings>
-                <controllingFieldValue>Intel Led</controllingFieldValue>
-                <controllingFieldValue>Partner Led</controllingFieldValue>
-                <valueName>Change to Partner</valueName>
+                <controllingFieldValue>Intel Covered</controllingFieldValue>
+                <controllingFieldValue>Indirect Covered</controllingFieldValue>
+                <valueName>Change to Indirect Covered</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Intel Led</controllingFieldValue>
-                <controllingFieldValue>Partner Led</controllingFieldValue>
-                <valueName>Change to Uncovered</valueName>
+                <controllingFieldValue>Intel Covered</controllingFieldValue>
+                <controllingFieldValue>Indirect Covered</controllingFieldValue>
+                <valueName>Change to Not Covered</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Intel Led</controllingFieldValue>
-                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <controllingFieldValue>Intel Covered</controllingFieldValue>
+                <controllingFieldValue>Indirect Covered</controllingFieldValue>
                 <valueName>Change Ownership</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Intel Led</controllingFieldValue>
-                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <controllingFieldValue>Intel Covered</controllingFieldValue>
+                <controllingFieldValue>Indirect Covered</controllingFieldValue>
                 <valueName>Partial</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Intel Led</controllingFieldValue>
-                <controllingFieldValue>Partner Led</controllingFieldValue>
-                <valueName>Add to Intel led</valueName>
+                <controllingFieldValue>Intel Covered</controllingFieldValue>
+                <controllingFieldValue>Indirect Covered</controllingFieldValue>
+                <valueName>Add to Intel Covered</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Intel Led</controllingFieldValue>
-                <controllingFieldValue>Partner Led</controllingFieldValue>
+                <controllingFieldValue>Intel Covered</controllingFieldValue>
+                <controllingFieldValue>Indirect Covered</controllingFieldValue>
                 <valueName>Change to Other Led</valueName>
             </valueSettings>
         </valueSet>
@@ -630,11 +656,6 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Global Solutions &amp; Services Sales Group</fullName>
-                    <default>false</default>
-                    <label>Global Solutions &amp; Services Sales Group</label>
-                </value>
-                <value>
                     <fullName>Americas US Sales Group</fullName>
                     <default>false</default>
                     <label>Americas US Sales Group</label>
@@ -663,11 +684,6 @@
                     <fullName>Americas Hosted Sales Group</fullName>
                     <default>false</default>
                     <label>Americas Hosted Sales Group</label>
-                </value>
-                <value>
-                    <fullName>APJ India Sales Group</fullName>
-                    <default>false</default>
-                    <label>APJ India Sales Group</label>
                 </value>
                 <value>
                     <fullName>APJ Japan Sales Group</fullName>
@@ -744,172 +760,160 @@
                     <default>false</default>
                     <label>Undefined</label>
                 </value>
+                <value>
+                    <fullName>India Partner Led</fullName>
+                    <default>false</default>
+                    <label>India Partner Led</label>
+                </value>
+                <value>
+                    <fullName>India Sales Group</fullName>
+                    <default>false</default>
+                    <label>India Sales Group</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
-                <controllingFieldValue>Change to Partner</controllingFieldValue>
+                <controllingFieldValue>Change to Indirect Covered</controllingFieldValue>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>Americas Partner Led</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Change to Partner</controllingFieldValue>
+                <controllingFieldValue>Change to Indirect Covered</controllingFieldValue>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>EMEA Partner Led</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Change to Partner</controllingFieldValue>
+                <controllingFieldValue>Change to Indirect Covered</controllingFieldValue>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>APJ Partner Led</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Change to Partner</controllingFieldValue>
+                <controllingFieldValue>Change to Indirect Covered</controllingFieldValue>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>PRC Partner Led</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>Change to Uncovered</controllingFieldValue>
+                <controllingFieldValue>Change to Indirect Covered</controllingFieldValue>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
+                <valueName>India Partner Led</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change to Not Covered</controllingFieldValue>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>Undefined</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
-                <valueName>Global Solutions &amp; Services Sales Group</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Change Ownership</controllingFieldValue>
-                <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>Americas US Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>Americas Brazil Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>Americas Mexico Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>Americas Canada Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>Americas ELAR Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>Americas Hosted Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
-                <valueName>APJ India Sales Group</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Change Ownership</controllingFieldValue>
-                <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>APJ Japan Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>APJ Korea Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>APJ Taiwan Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>APJ Southeast Asia Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>APJ Australia &amp; New Zealand Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>APJ Hosted Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>EMEA Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>EMEA Hosted Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>PRC Hosted Sales Group</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Change Ownership</controllingFieldValue>
                 <controllingFieldValue>Partial</controllingFieldValue>
-                <controllingFieldValue>Add to Intel led</controllingFieldValue>
-                <controllingFieldValue>Change to Other Led</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
                 <valueName>PRC Sales Group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Change Ownership</controllingFieldValue>
+                <controllingFieldValue>Partial</controllingFieldValue>
+                <controllingFieldValue>Add to Intel Covered</controllingFieldValue>
+                <valueName>India Sales Group</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -980,14 +984,14 @@
                     <label>Rejected</label>
                 </value>
                 <value>
-                    <fullName>Change to Partner</fullName>
+                    <fullName>Change to Indirect Covered</fullName>
                     <default>false</default>
-                    <label>Change to Partner</label>
+                    <label>Change to Indirect Covered</label>
                 </value>
                 <value>
-                    <fullName>Change to Uncovered</fullName>
+                    <fullName>Change to Not Covered</fullName>
                     <default>false</default>
-                    <label>Change to Uncovered</label>
+                    <label>Change to Not Covered</label>
                 </value>
                 <value>
                     <fullName>Change Ownership</fullName>
@@ -1000,20 +1004,21 @@
                     <label>Partial</label>
                 </value>
                 <value>
-                    <fullName>Add to Intel led</fullName>
+                    <fullName>Add to Intel Covered</fullName>
                     <default>false</default>
-                    <label>Add to Intel led</label>
-                </value>
-                <value>
-                    <fullName>Change to Other Led</fullName>
-                    <default>false</default>
-                    <label>Change to Other Led</label>
+                    <label>Add to Intel Covered</label>
                 </value>
                 <value>
                     <fullName>Change GTM Model Only</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Change GTM Model Only</label>
+                </value>
+                <value>
+                    <fullName>Change to Other Led</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Change to Other Led</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1042,7 +1047,7 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>All Your Customer Feedback</label>
+        <label>All Your Customers Feedbacks</label>
     </listViews>
     <listViews>
         <fullName>Your_Feedbacks</fullName>
@@ -1071,7 +1076,7 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Your Feedback</label>
+        <label>Your Feedbacks</label>
     </listViews>
     <nameField>
         <displayFormat>CUF-{000000}</displayFormat>
@@ -1081,6 +1086,169 @@
     </nameField>
     <pluralLabel>Customer Feedback</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>CM_Feedback</fullName>
+        <active>false</active>
+        <label>Country Manager Feedback</label>
+        <picklistValues>
+            <picklist>BU__c</picklist>
+            <values>
+                <fullName>CCG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCAI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEX</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CM_Feedback__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Coverage_Type__c</picklist>
+            <values>
+                <fullName>Indirect Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Covered</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Not Covered</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>DR_Feedback__c</picklist>
+            <values>
+                <fullName>Change to Indirect Covered</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Feedback_Type__c</picklist>
+            <values>
+                <fullName>Country Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Indirect Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Not Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Other Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GM_Feedback__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>GTM_Model__c</picklist>
+            <values>
+                <fullName>Core</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Growth</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Growth-VBS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>New_Sales_Group__c</picklist>
+            <values>
+                <fullName>Americas US Sales Group</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>VP_Feedback__c</picklist>
+            <values>
+                <fullName>Add to Intel Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change Ownership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Indirect Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Not Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <recordTypes>
         <fullName>DR_Feedback</fullName>
         <active>true</active>
@@ -1112,20 +1280,9 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Coverage_Type__c</picklist>
-            <values>
-                <fullName>Intel Led</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Led</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>DR_Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
+                <fullName>Add to Intel Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1133,15 +1290,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Other Led</fullName>
+                <fullName>Change to Indirect Covered</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Uncovered</fullName>
+                <fullName>Change to Not Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1167,7 +1320,7 @@
         <picklistValues>
             <picklist>Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
+                <fullName>Add to Intel Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1175,15 +1328,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Change to Indirect Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Not Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Change to Other Led</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Uncovered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1221,10 +1374,6 @@
             </values>
             <values>
                 <fullName>APJ Hosted Sales Group</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>APJ India Sales Group</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1288,7 +1437,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Global Solutions %26 Services Sales Group</fullName>
+                <fullName>India Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>India Sales Group</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1311,7 +1464,7 @@
         <picklistValues>
             <picklist>VP_Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
+                <fullName>Add to Intel Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1323,15 +1476,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Other Led</fullName>
+                <fullName>Change to Indirect Covered</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Uncovered</fullName>
+                <fullName>Change to Not Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1375,36 +1524,9 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Coverage_Type__c</picklist>
-            <values>
-                <fullName>Intel Led</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Led</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>DR_Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change Ownership</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Uncovered</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partial</fullName>
+                <fullName>Change to Indirect Covered</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1426,7 +1548,7 @@
         <picklistValues>
             <picklist>Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
+                <fullName>Add to Intel Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1434,11 +1556,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Partner</fullName>
+                <fullName>Change to Indirect Covered</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Uncovered</fullName>
+                <fullName>Change to Not Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1476,10 +1598,6 @@
             </values>
             <values>
                 <fullName>APJ Hosted Sales Group</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>APJ India Sales Group</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1543,7 +1661,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Global Solutions %26 Services Sales Group</fullName>
+                <fullName>India Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>India Sales Group</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1566,7 +1688,7 @@
         <picklistValues>
             <picklist>VP_Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
+                <fullName>Add to Intel Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1578,11 +1700,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Partner</fullName>
+                <fullName>Change to Indirect Covered</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Uncovered</fullName>
+                <fullName>Change to Not Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1626,40 +1748,9 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Coverage_Type__c</picklist>
-            <values>
-                <fullName>Intel Led</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partner Led</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>DR_Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change Ownership</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Other Led</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Uncovered</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Partial</fullName>
+                <fullName>Change to Indirect Covered</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1681,7 +1772,7 @@
         <picklistValues>
             <picklist>Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
+                <fullName>Add to Intel Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1689,15 +1780,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Change to Indirect Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Change to Not Covered</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Change to Other Led</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Uncovered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1735,10 +1826,6 @@
             </values>
             <values>
                 <fullName>APJ Hosted Sales Group</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>APJ India Sales Group</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1802,7 +1889,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Global Solutions %26 Services Sales Group</fullName>
+                <fullName>India Partner Led</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>India Sales Group</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1825,7 +1916,7 @@
         <picklistValues>
             <picklist>VP_Feedback__c</picklist>
             <values>
-                <fullName>Add to Intel led</fullName>
+                <fullName>Add to Intel Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1837,15 +1928,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Other Led</fullName>
+                <fullName>Change to Indirect Covered</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Change to Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Change to Uncovered</fullName>
+                <fullName>Change to Not Covered</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1866,6 +1953,7 @@
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>MassAssignRecordLabel</excludedStandardButtons>
         <listViewButtons>Submit_Feedback</listViewButtons>
         <massQuickActions>Approve</massQuickActions>
         <massQuickActions>Reject</massQuickActions>
@@ -1939,10 +2027,10 @@ IF( Customer_ID__r.RCStage__c == &apos;GM&apos; &amp;&amp; (ISNEW() || ISCHANGED
     <validationRules>
         <fullName>Sales_Group_Validation</fullName>
         <active>true</active>
-        <errorConditionFormula>IF(ISCHANGED(  VP_Feedback__c ) &amp;&amp;  (ISPICKVAL(VP_Feedback__c, &apos;Change to Partner&apos;)&amp;&amp; !(ISPICKVAL(New_Sales_Group__c,&apos;Americas Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;EMEA Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;APJ Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;PRC Partner Led&apos;) ) ),
+        <errorConditionFormula>IF(ISCHANGED(  VP_Feedback__c ) &amp;&amp;  (ISPICKVAL(VP_Feedback__c, &apos;Change to Partner&apos;)&amp;&amp; !(ISPICKVAL(New_Sales_Group__c,&apos;Americas Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;EMEA Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;APJ Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;PRC Partner Led&apos;) || ISPICKVAL(New_Sales_Group__c,&apos;India Partner Led&apos;) ) ),
 IF(ISCHANGED(  VP_Feedback__c ) &amp;&amp;  (ISPICKVAL(VP_Feedback__c, &apos;Change to Uncovered&apos;)&amp;&amp; !(ISPICKVAL(New_Sales_Group__c,&apos;Undefined&apos;))),true,false),false)</errorConditionFormula>
         <errorDisplayField>New_Sales_Group__c</errorDisplayField>
-        <errorMessage>You can only select Americas Partner Led, EMEA Partner Led, APJ Partner Led, PRC Partner Led for Change to Partner feedback option and you can only select Undefined for Change to Uncovered feedback option.</errorMessage>
+        <errorMessage>You can only select Americas Partner Led, EMEA Partner Led, APJ Partner Led, PRC Partner Led, India Partner Led for Change to Partner feedback option and you can only select Undefined for Change to Uncovered feedback option.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>
@@ -1957,6 +2045,32 @@ IF(ISCHANGED(  VP_Feedback__c ) &amp;&amp;  (ISPICKVAL(VP_Feedback__c, &apos;Cha
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
         <url>/flow/CST_Account_Update</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Approve</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Approve</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/Approve_Reject_Customer_Feedback_ScreenFlow?action=Approved</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Reject</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Reject</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/Approve_Reject_Customer_Feedback_ScreenFlow?action=Rejected</url>
     </webLinks>
     <webLinks>
         <fullName>Submit_Feedback</fullName>

@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-07-2026
+ * @last modified on  : 03-11-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -140,11 +140,27 @@ public class Pricing_PricingAI_Controller_Test {
         Test.stopTest();
     }
     
-    static testMethod void testGetExceptionSearchResults(){
+    static testMethod void testWriteJSONField(){
         SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
+        List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,Pricing_Approved_Start_Date_Dt__c from SBQQ__QuoteLine__c LIMIT 1];
+   
+        update quoteLineList;
+        JSONGenerator jsonGen = JSON.createGenerator(true);
+        Map<String,String> mapFieldNames = new Map<String,String>();
+        
+        User adminUser = [Select id from User where Email='firstName@intel.com'];
+        System.runAs(adminUser){
+            Test.startTest();
+            jsonGen.writeStartObject();
+            //Pricing_PricingAI_Controller.writeJSONField(jsonGen, quoteLineList[0], mapFieldNames, fldName);
+            Test.stopTest();
+        }
+    }
+    
+    static testMethod void testGetExceptionSearchResults(){
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name from SBQQ__QuoteLine__c LIMIT 1];
         //quoteLineList[0].SBQQ__Description__c = 'Test';
-        quoteLineList[0].Pricing_Reason_for_FeedBack_Txt__c = 'Test';
+       
         update quoteLineList;
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         System.runAs(adminUser){
@@ -164,7 +180,7 @@ public class Pricing_PricingAI_Controller_Test {
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,SBQQ__Description__c from SBQQ__QuoteLine__c LIMIT 1];
         quoteLineList[0].Pricing_Status_Nm__c = 'Pending Further Intel Review';
         quoteLineList[0].Pricing_Revised_Pricing_Start_Date_dt__c = System.today();
-        quoteLineList[0].Pricing_Reason_for_FeedBack_Txt__c = 'Test';
+       
         update quoteLineList;
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         System.runAs(adminUser){

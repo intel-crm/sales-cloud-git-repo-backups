@@ -1,6 +1,5 @@
 public with sharing class PMP_SearchPartnerDetailsController extends PMP_SearchWrapperStore{
-    
-    
+        
     @AuraEnabled(cacheable=true)
     public static PartnerDetail getPartnerDetails(String partnerId, String langCode){
         //System.debug('PPP-->partnerId:'+partnerId);

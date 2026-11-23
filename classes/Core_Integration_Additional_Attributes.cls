@@ -522,7 +522,7 @@ public class Core_Integration_Additional_Attributes implements Queueable {
             //Get the existing Account Contact Relationships ID's  to update some of the field values 
             Set<Id> existingAccountContactRelationships = new Set<Id>();        
             for(PRM_Account_Contact_Relationship__c contAcctReln : [SELECT Id, PRM_Relationship_Id__c, PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c , 
-                                                                    PRM_InActive_Ind__c, PRM_Status_Nm__c,PRM_No_Email__c
+                                                                    PRM_InActive_Ind__c, PRM_Status_Nm__c,PRM_No_Email__c,PRM_Status_Reason_Txt__c
                                                                     FROM PRM_Account_Contact_Relationship__c
                                                                     WHERE PRM_Account_Id__c =:accountId 
                                                                     AND PRM_Contact_Id__c =:contactId
@@ -540,6 +540,7 @@ public class Core_Integration_Additional_Attributes implements Queueable {
                                                                         if((contAcctReln.PRM_InActive_Ind__c != !IsOneRelationshipActive || contAcctReln.PRM_Status_Nm__c != 'Complete')
                                                                            && changeAgentId != 'SalesCloud'){
                                                                             contAcctReln.PRM_Status_Nm__c = 'Complete';
+                                                                            contAcctReln.PRM_Status_Reason_Txt__c ='Status set to Complete as part of Person Account Relationship';//TWC729-8089 : Adding reason text
                                                                             contAcctReln.PRM_No_Email__c = true;
                                                                             //contAcctReln.PRM_isActive__c = relation.inactiveIndicator;
                                                                             contAcctReln.PRM_InActive_Ind__c = !IsOneRelationshipActive;
@@ -568,6 +569,7 @@ system.debug('PRM_AccountChannelMembership__c ::  --> '+ ACM);*/
                         PRM_Contact_Id__c = contactId,
                         PRM_Relationship_Id__c = reltnspId,
                         PRM_Status_Nm__c = 'Complete',
+                        PRM_Status_Reason_Txt__c ='Added as part of Person Account Relationship',//TWC729-8089 : Adding reason text
                         PRM_No_Email__c = true,
                         //PRM_Partner_Role__c = partnerRole,
                         //PRM_Account_Channel_Membership_Id__c = (ACM != null && string.isNotBlank(ACM.Id)) ? ACM.Id : null,

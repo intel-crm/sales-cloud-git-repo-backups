@@ -296,6 +296,30 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Rebate_Claim_Upload__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Rebate Claim Upload</label>
+        <referenceTo>PCC_Rebate_Claim_Stage__c</referenceTo>
+        <relationshipLabel>TPT Trackers</relationshipLabel>
+        <relationshipName>TPT_Trackers</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Rebate_Claim__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Rebate Claim</label>
+        <referenceTo>PCC_Rebate_Claim__c</referenceTo>
+        <relationshipLabel>TPT Trackers</relationshipLabel>
+        <relationshipName>TPT_Trackers</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Registration_Type__c</fullName>
         <externalId>false</externalId>
         <formula>DealRegistration__r.PCC_Registration_Type__c</formula>

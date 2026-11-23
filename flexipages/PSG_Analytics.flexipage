@@ -5,15 +5,15 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>dashboardId</name>
-                    <value>0FK3b000000bnxUGAQ</value>
+                    <value>PSG_Dashboard</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableNotifications</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableSubscriptions</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -21,7 +21,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideOnError</name>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>openLinksInNewWindow</name>
@@ -41,7 +41,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showTitle</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentName>wave:waveDashboard</componentName>
                 <identifier>wave_waveDashboard</identifier>

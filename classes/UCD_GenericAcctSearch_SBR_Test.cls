@@ -232,7 +232,7 @@ public class UCD_GenericAcctSearch_SBR_Test {
          system.assertEquals('TestAccount1', parentAccount.name);
         Test.StopTest();
     }*/
-
+    
     @istest
     private static void getAccountRequestQueueTest(){
         List<UCD_GenericAcctSearch_SBR.fieldsetwrapper> fswList = new List<UCD_GenericAcctSearch_SBR.fieldsetwrapper>();
@@ -355,7 +355,7 @@ public class UCD_GenericAcctSearch_SBR_Test {
     }
 
 
-   /* @isTest
+    @isTest
     private static void sortingAccountTest(){
         
         List<Account> lstAccount = [Select id,Name, Core_Requested_Name__c from Account ];
@@ -363,7 +363,7 @@ public class UCD_GenericAcctSearch_SBR_Test {
         UCD_GenericAcctSearch_SBR.sortingAccount('TestAccount1','TestAccount1',lstAccount);
         System.assert(lstAccount != null);
         test.stopTest();
-    }*/
+    }
 
 
     @isTest
@@ -425,4 +425,11 @@ public class UCD_GenericAcctSearch_SBR_Test {
         Test.StopTest();
         System.assert(accountReqDuplicate != null);
     }
+
+    @isTest
+    public static  void checkUserFields(){
+        Map<String, String> us = UCD_GenericAcctSearch_SBR.userFields(UserInfo.getUserId());
+        System.assert(us.get('name') == UserInfo.getName());
+    }
+
 }

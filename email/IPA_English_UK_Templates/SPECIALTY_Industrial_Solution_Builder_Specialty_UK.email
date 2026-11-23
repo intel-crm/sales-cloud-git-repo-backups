@@ -34,7 +34,7 @@
 <th style="margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
 <h1 style="margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;">Congratulations on Qualifying!</h1><br/>
 </th>
-<th class="callout-inner" style="padding:15px;"><img src="https://intel--c.documentforce.com/servlet/servlet.ImageServer?id=0153b000005OXH2&oid=00Do0000000aRcf&lastMod=1609662404000" alt="Intel" title="Intel" align="right" class="float-center" style="height:100%;width:auto"></th>
+<th class="callout-inner" style="padding:15px;"><img src="https://intel--crmdevint3--c.documentforce.com/servlet/servlet.ImageServer?id=0152i0000000fuQ&oid=00D2i0000008d6j&lastMod=1601025427000" alt="Intel" title="Intel" align="right" class="float-center" style="height:100%;width:auto"></th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
 </tr>
 </tbody>
@@ -77,13 +77,13 @@
 <P><table style="padding: 0px; width: auto; text-align: left; vertical-align: top; border-collapse: collapse; border-spacing: 0;">
 <tbody>
 <tr style="padding: 0px; text-align: left; vertical-align: top;">
-<td style="background: #00aeef; margin: 0px; padding: 0px 20px; border-radius: 3px; border: currentColor; text-align: center !important; color: #fefefe; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><a style="margin: 0px; padding: 5px 0px; border-radius: 3px; border: 0px solid #00aeef; text-align: left; color: #fefefe; line-height: 1.3; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 400; text-decoration: none; display: inline-block;" href="https://www.intel.com/content/www/uk/en/secure/partner-alliance/membership/specialties/solutions-builder/overview.html">Access benefits</a></td>
+<td style="background: #00aeef; margin: 0px; padding: 0px 20px; border-radius: 3px; border: currentColor; text-align: center !important; color: #fefefe; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; vertical-align: top; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-word-wrap: break-word; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><a style="margin: 0px; padding: 5px 0px; border-radius: 3px; border: 0px solid #00aeef; text-align: left; color: #fefefe; line-height: 1.3; font-family: Arial,Helvetica,sans-serif; font-size: 18px; font-weight: 400; text-decoration: none; display: inline-block;" href="www.intel.com/content/www/us/en/secure/partner-alliance/membership/specialties/solutions-builder/overview.html">Access benefits</a></td>
 </tr>
 </tbody>
 </table></P>
 <P>*Benefits may vary by geography.</P>
 <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">Intel partners have a long history of innovation, and with Intel&reg; Partner Alliance, we&rsquo;ll help you accelerate building solutions for the data-centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.</P>
-<P>Visit <a href="https://www.intel.com/content/www/uk/en/partner-alliance/help/overview.html">intel.com/partnerhelp</a> for help and guidance on optimising your membership.</P>
+<P>Visit <a href="intel.com/partnerhelp">intel.com/partnerhelp</a> for help and guidance on optimising your membership.</P>
 <br>Thank you,<br>Your Intel&reg; Partner Alliance team</p>
 </th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
@@ -120,7 +120,7 @@
 <table width="100%" class="cq-rte-forcedborder" style="border: #d3d3d3; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px; ); color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;">This message was sent to you as an important business communication related to your current relationship with Intel&reg; Partner Alliance.<br>&copy; {!$Label.PRM_CurrentYear} Intel Corporation</td>
+<td class="auto-style1" valign="top" style="font-size: 10px; ); color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;">This message was sent to you as an important business communication related to your current relationship with Intel&reg; Partner Alliance.<br>&copy; {!Contact.Core_Current_Year__c} Intel Corporation</td>
 </tr>
 <tr>
 <td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="http://www.intel.com/" target="_blank" _rte_href="http://www.intel.com/">www.intel.com</a></td>

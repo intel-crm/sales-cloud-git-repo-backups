@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">/gpt-4o?api-version=2024-12-01-preview</value>
+        <value xsi:type="xsd:string">/gpt-4o?api-version=2025-01-01-preview</value>
     </values>
 </CustomMetadata>

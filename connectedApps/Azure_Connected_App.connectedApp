@@ -4,7 +4,7 @@
     <label>Azure Connected App</label>
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6juSkcgio6mV4aSeYpd.R672TdbQuWPjl1WUCU8nfiGHoCvQt4PjkJ1qaABs</consumerKey>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDtOigocBMPwbJ62IL4tOpgryfvj_m3ePAOQL8bI597UL0x1qzrmVVRCeFk0i</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -22,9 +22,15 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>azure_write@intel.com.crm</oauthClientCredentialUser>
+        <oauthClientCredentialUser>azure_write@intel.com.crm.crmdevint3</oauthClientCredentialUser>
+        <scopes>Basic</scopes>
         <scopes>Api</scopes>
+        <scopes>Full</scopes>
         <scopes>RefreshToken</scopes>
+        <scopes>Lightning</scopes>
+        <scopes>Content</scopes>
+        <scopes>SFAP</scopes>
+        <scopes>Interaction</scopes>
     </oauthConfig>
     <oauthPolicy>
         <ipRelaxation>ENFORCE</ipRelaxation>

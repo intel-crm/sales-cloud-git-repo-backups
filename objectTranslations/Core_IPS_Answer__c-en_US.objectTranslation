@@ -52,10 +52,6 @@
         <name>Core_IPS_Validate_Parent_Answer</name>
     </validationRules>
     <webLinks>
-        <label><!-- Manage_Dependent_Answers --></label>
-        <name>Manage_Dependent_Answers</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Manage_Dependent_Answers_LEX --></label>
         <name>Manage_Dependent_Answers_LEX</name>
     </webLinks>

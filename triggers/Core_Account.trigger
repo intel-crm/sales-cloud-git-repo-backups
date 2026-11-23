@@ -16,6 +16,7 @@ Modification Log :
 trigger Core_Account on Account (before insert, before update, before delete, after delete,after update,after insert) {
     Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     Boolean isSalesAssistUpdate = false;
+    
 
     
     if(Trigger.isUpdate && mapFunctionalityNameTriggerExecution.containsKey('BypassAccTriggerOnSalesAssistUpdate') && mapFunctionalityNameTriggerExecution.get('BypassAccTriggerOnSalesAssistUpdate').Core_Active__c){
@@ -28,10 +29,11 @@ trigger Core_Account on Account (before insert, before update, before delete, af
 
     try{
         if(mapFunctionalityNameTriggerExecution.containsKey('AccountTriggerExecution') &&
-            mapFunctionalityNameTriggerExecution.get('AccountTriggerExecution').Core_Active__c){
+            mapFunctionalityNameTriggerExecution.get('AccountTriggerExecution').Core_Active__c /*&& !Sales_ContractTriggerUtility.byPassQuoteTriggersOnContractRenewal*/){
                 if(!isSalesAssistUpdate){
                     TriggerHandler genericTrigger = new Core_AccountTriggerHandler();
                     genericTrigger.run();
+                    
                 }
         }
     }catch(Exception ex){

@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_MDF_Field_API_Name__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Comments_Internal_Only__c,Core_MDF_Comments__c</value>
+        <value xsi:type="xsd:string">Name,Description,StartDate,EndDate,Core_MDF_Reimbursement_Rate__c,Core_MDF_Total_Campaign_Cost_Amt__c,Core_MDF_Audience__c,Core_MDF_Technology__c,Core_MDF_Brand__c,Core_MDF_IPA_Priority_nm__c,Core_MDF_Product_Type__c,Core_MDF_Ecosystem_Partner_Nm__c,Core_MDF_Industry_Nm__c,Core_MDF_Key_Performance_Indicator__c,Core_MDF_Messaging__c,Core_MDF_Comments_Internal_Only__c,Core_MDF_Comments__c,Core_MDF_Custom_Reimbursement_Rate_pct__c</value>
     </values>
     <values>
         <field>Core_MDF_Field_ReadOnly_API_Name__c</field>

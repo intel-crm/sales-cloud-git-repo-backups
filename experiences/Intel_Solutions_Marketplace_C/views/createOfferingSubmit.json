@@ -48,14 +48,6 @@
     "regionName" : "marquee",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:MarketplaceCreateProductSubmission",
-      "id" : "1796bb30-051f-44d0-bf94-349c1c25e02a",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "bb334a02-00ae-4d34-a849-c5730f3111ef",
     "regionName" : "main",
     "type" : "region"
@@ -119,21 +111,6 @@
     "regionName" : "mainFullWidth",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "allMarketPlaceHelpLabel" : "All Marketplace help",
-        "faqTitle" : "Offering Creation",
-        "headingLabel" : "FAQs",
-        "inverse" : false,
-        "paddingHorizontal" : true,
-        "theme" : "default"
-      },
-      "componentName" : "c:MarketPlaceFAQ",
-      "id" : "bde485f7-6ec2-4e90-ac8e-d7a79a4182df",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "d2128852-ada9-452f-85e9-86c6b72c0d8a",
     "regionName" : "faqWhite",
     "type" : "region"

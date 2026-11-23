@@ -2,18 +2,18 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "ad0d16cf-8f7d-40b4-8026-a3b7d610a3f2",
+  "id" : "3b112acc-349d-4084-89a9-3ef1afc92166",
   "label" : "Opportunity Product List",
   "regions" : [ {
-    "id" : "5ea83a8b-7aa2-41c1-83b4-b5cf756f0ce1",
+    "id" : "0a145a2e-0381-47f0-8957-9a75ac0e903b",
     "regionName" : "header",
     "type" : "region"
   }, {
-    "id" : "b5329949-13fb-4c79-9726-f94c465fc94f",
+    "id" : "b683e9d6-9cbd-4f7f-a075-d4e38a730604",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "0f7ca147-c546-4a41-ae43-b9bdb5f47247",
+    "id" : "83594094-96c1-4dd8-b6b2-6982be6d250f",
     "regionName" : "footer",
     "type" : "region"
   } ],

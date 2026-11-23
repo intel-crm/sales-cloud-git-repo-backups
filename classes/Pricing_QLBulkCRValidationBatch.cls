@@ -2,8 +2,8 @@
 * @description       : Batch class is created to validate, clone and insert Quote Line and Performance Matrix records and send result email with CSV attached, and to call Pricing_QLBulkCRSendPayloadBatch to send request to MyDeals for the newly created Change Requests.
 * @author            : Rahul Maindalkar
 * @group             : 
-* @last modified on  : 04-27-2026
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+* @last modified on  : 03-05-2025
+* @last modified by  : Vrushabh Uprikar
 **/
 
 public class Pricing_QLBulkCRValidationBatch implements Database.Batchable<sObject>, Database.Stateful{
@@ -100,6 +100,7 @@ public class Pricing_QLBulkCRValidationBatch implements Database.Batchable<sObje
         message.setSubject('Result : Bulk Change Request Operation'); 
         message.setHtmlBody('Please see attached Bulk CR sucess error csv files');
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { message });
+
         
         //Update QL status to Revised for Write In Products Quote Line
         if(statusToUpdate.size()>0){

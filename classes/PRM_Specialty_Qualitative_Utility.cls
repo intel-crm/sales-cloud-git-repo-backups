@@ -49,7 +49,6 @@ public without sharing class PRM_Specialty_Qualitative_Utility {
 
         if(duplicateSet2 != null && duplicateSet2.size()>0){
             for(PRM_Specialty_Qualitative_Criteria__c sqca: specialtyAssocNewList2){
-                //System.debug('specialtyAssocNewList=======>'+sqca);
                 if(duplicateSet2.contains(sqca.PRM_Criteria_Id__c+''+sqca.PRM_Specialty_Id__c)){
                     sqca.addError(System.label.PRM_Specialty_Qualitative_Criteria_Duplicate_Error);
                 }            

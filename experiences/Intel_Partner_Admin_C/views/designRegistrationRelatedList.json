@@ -2,10 +2,10 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "e08aa573-1861-4cbf-b69f-4f6a3615c7bc",
+  "id" : "fcab19f0-6e86-4c47-86fa-6aad2849439a",
   "label" : "Design Registration Related List",
   "regions" : [ {
-    "id" : "9526afba-aaed-4426-be3d-e45346ef1005",
+    "id" : "e7779cb7-e398-4d92-ac14-4c081289020b",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -20,16 +20,16 @@
         "showRowNumbers" : true
       },
       "componentName" : "forceCommunity:relatedList",
-      "id" : "9d6e276a-9ccd-4674-959c-b9b00cd0e46f",
+      "id" : "d0e732af-af9d-4b2b-8477-ad1dbd36f984",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "e180cefd-306b-43db-b8d4-eea9919364e1",
+    "id" : "00a0e12d-31de-47fa-992a-e42b04e55d30",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "303ab71c-6d01-467b-bec8-3302fc80dd7e",
+    "id" : "aa643d28-a687-4ff9-a333-c5a2fada726d",
     "regionName" : "footer",
     "type" : "region"
   } ],

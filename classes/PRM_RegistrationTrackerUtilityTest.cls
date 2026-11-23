@@ -218,6 +218,7 @@ private class PRM_RegistrationTrackerUtilityTest{
         acr.PRM_isActive__c = True;
         acr.PRM_Status_Nm__c = 'Complete';
         acr.PRM_InActive_Ind__c = False;
+        acr.PRM_Status_Reason_Txt__c = 'Test';
         insert acr; 
         
         PRM_Registration_Request__c regRequest = new PRM_Registration_Request__c();
@@ -462,5 +463,252 @@ private class PRM_RegistrationTrackerUtilityTest{
         wrap.OPID_Assigned = true;
         wrap.OPID_Not_Assigned = false;
     }
+    
+    @IsTest
+    static void testTrackerCoverageSingleMethod() {
+
+    ChannelProgram cp = new ChannelProgram(
+        Name='Intel Partner Alliance',
+        Category='Reseller',
+        PRM_programCode__c='IPA_TEST'
+    );
+    insert cp;
+   
+
+    Id accountRT =
+        Schema.SObjectType.Account
+        .getRecordTypeInfosByName()
+        .get('Intel Account')
+        .getRecordTypeId();
+
+    Account acc = new Account(
+        RecordTypeId = accountRT,
+        Name = 'Tracker Test Acc1',
+        BillingCity = 'Bangalore',
+        BillingCountry = 'India',
+        BillingStreet = 'Test Street',
+        BillingPostalCode = '560001',
+        Core_Account_Type__c = 'Cloud Service Provider (CSP)',
+        Core_User_Defined_Website__c = 'www.test18.com',
+        Core_Geo__c = 'ASMO',
+        Core_IPA_Partner_Role__c = 'Service Provider'
+    );
+    insert acc;
+
+    Contact con = new Contact(
+        FirstName='Tracker',
+        LastName='User10',
+        Email='tracker90@mailinator.com',
+        AccountId=acc.Id,
+        Core_Job_Function__c='Branch Manager',
+        Core_IPA_PartnerRole__c='Service Provider',
+        Core_eRPM_Language_Code__c='Eng',
+        MailingCountry='India'
+    );
+    insert con;
+
+    PRM_ContactRelationships__c rel =
+        new PRM_ContactRelationships__c(
+            Name='Partner Admin',
+            PRM_Contact_Relationship_Cd__c='PRIMARY',
+            PRM_Channel_Program_Id__c=cp.Id
+        );
+    insert rel;
+
+    PRM_Account_Contact_Relationship__c acr =
+        new PRM_Account_Contact_Relationship__c(
+            PRM_Account_Id__c=acc.Id,
+            PRM_Contact_Id__c=con.Id,
+            PRM_Relationship_Id__c=rel.Id,
+            PRM_isActive__c=true,
+            PRM_Status_Nm__c='Complete',
+            PRM_InActive_Ind__c=false,
+            PRM_Status_Reason_Txt__c='Test',
+            PRM_AGS_Response_Status__c='Success',
+            PRM_Source_Agent__c='Admin Invite'
+        );
+    insert acr;
+
+    PRM_EmailLog__c elog =
+        new PRM_EmailLog__c(
+            PRM_Contact__c=con.Id,
+            Email_Template_Name__c='SCRRENGENRLREV'
+        );
+    insert elog;
+
+    PRM_Integration_Log__c intLog =
+        new PRM_Integration_Log__c(
+            PRM_Callout_Type__c='GetProfile',
+            PRM_System_Name__c='AEM',
+            PRM_Record_ID__c=con.Email
+        );
+    insert intLog;
+
+    PRM_Registration_Request__c reg =
+        PRM_TestUtility.getPRMRegistrationRequest();
+
+    reg.RecordTypeId =
+        Schema.getGlobalDescribe()
+        .get('PRM_Registration_Request__c')
+        .getDescribe()
+        .getRecordTypeInfosByDeveloperName()
+        .get(System.Label.PRM_Email_Verification_Request)
+        .getRecordTypeId();
+
+    reg.PRM_Email_ID__c = con.Email;
+    reg.PRM_Contact_Login_ID__c =
+        'login19@mailinator.com';
+
+    reg.PRM_EmailVerifiedDateTime__c = System.now();
+    reg.PRM_Channel_Program__c = cp.Id;
+    reg.PRM_Salesforce_ID__c = acc.Id;
+    reg.PRM_Matching_Contact__c = con.Id;
+    reg.PRM_Status__c = 'New';
+    reg.PRM_DeDup_Criteria__c='PENDING';
+    reg.PRM_Legal_Agreements__c='IPA_TANDC';
+    reg.PRM_Profile_Response__c='TEST';
+
+    insert reg;
+
+    List<PRM_Registration_Tracker__c> trackers =
+        new List<PRM_Registration_Tracker__c>();
+
+    trackers.add(
+        new PRM_Registration_Tracker__c(
+            PRM_Registration__c = reg.Id,
+            PRM_Contact__c = con.Id,
+            PRM_Account__c = acc.Id,
+            PRM_Email__c = con.Email,
+            Stage__c='1',
+            PRM_Current_Step__c=1,
+            PRM_Step_Number__c=1
+        )
+    );
+
+    trackers.add(
+        new PRM_Registration_Tracker__c(
+            PRM_Registration__c = reg.Id,
+            PRM_Contact__c = con.Id,
+            PRM_Account__c = acc.Id,
+            PRM_Email__c = con.Email,
+            Stage__c='23',
+            PRM_Current_Step__c=23,
+            PRM_Step_Number__c=23,
+            PRM_Integration_Log__c=intLog.Id
+        )
+    );
+
+    trackers.add(
+        new PRM_Registration_Tracker__c(
+            PRM_Contact__c = con.Id,
+            PRM_Account__c = acc.Id,
+            PRM_Email__c = con.Email,
+            Stage__c='24',
+            PRM_Current_Step__c=24,
+            PRM_Step_Number__c=24,
+            PRM_Integration_Log__c=intLog.Id,
+            PRM_Registration_Type__c='Admin Invite'
+        )
+    );
+
+    insert trackers;
+	
+    PRM_Registration_Tracker__c tracker = new PRM_Registration_Tracker__c(
+    PRM_Registration__c = reg.Id,
+    Stage__c = '23',
+    PRM_Current_Step__c = 23,
+    PRM_Step_Number__c = 23
+    );
+    insert tracker;
+    
+    List<PRM_Registration_Request__c> queriedRegs =[SELECT Id,PRM_Email_ID__c,(SELECT Id, Stage__c FROM Registration_Trackers__r)
+        FROM PRM_Registration_Request__c
+        WHERE Id = :reg.Id];
+
+    Test.startTest();
+        
+	PRM_RegistrationTrackerUtility.CheckUserLoginHistory(queriedRegs);
+    PRM_RegistrationTrackerUtility.createRegistrationTracker(
+        new List<PRM_Registration_Request__c>{reg},
+        null,
+        false,
+        false
+    );
+
+    PRM_RegistrationTrackerUtility.createRegistrationTracker(
+        null,
+        new Set<String>{con.Id},
+        false,
+        false
+    );
+	
+    reg.PRM_Status__c = 'Approved';
+    update reg;
+        
+    PRM_RegistrationTrackerUtility.createRegistrationTracker(
+        new List<PRM_Registration_Request__c>{reg},
+        null,
+        false,
+        false
+    );
+        
+    PRM_RegistrationTrackerUtility.checkforEVMailforAdmin(
+        new Set<String>{con.Id}
+    );
+
+    PRM_RegistrationTrackerUtility.checkInviteEmail(
+        new Set<String>{con.Id}
+    );
+
+    PRM_RegistrationTrackerUtility.getTrackers(reg.Id);
+
+    PRM_RegistrationTrackerUtility.medata =
+        PRM_RegistrationTrackerUtility.getmetadatafortestclass(
+            'PRM_Account_Contact_Profiles'
+        );
+
+    PRM_RegistrationTrackerUtility.getregWithTrackersforGetProfileAPI(
+        new Set<String>{con.Email},
+        null,
+        'PRM_Account_Contact_Profiles'
+    );
+
+    System.enqueueJob(
+        new PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable(
+            new List<PRM_Registration_Request__c>{reg},
+            null,
+            false,
+            false
+        )
+    );
+
+    System.enqueueJob(
+        new PRM_RegistrationTrackerUtility.UpdateTrackerSteps(
+            new Set<String>{reg.Id},
+            new Set<String>{con.Id},
+            null,
+            'PRM_EntitlementUtility',
+            'Self'
+        )
+    );
+
+    System.enqueueJob(
+        new PRM_RegistrationTrackerUtility.UpdateTrackerSteps(
+            new Set<String>{reg.Id},
+            new Set<String>{con.Id},
+            null,
+            'PRM_RegistrationApprovalEmail',
+            'Self'
+        )
+    );
+	
+    Core_Log_Entry__c ce=new Core_Log_Entry__c(Core_Severity__c='Test',Core_Origin__c='IPA',Core_When__c=DateTime.now());
+    insert ce;
+    PRM_RegistrationTrackerUtility.getLogEntries(ce.Id);
+        
+    Test.stopTest();
+
+    System.assertNotEquals(null, reg.Id);
+}
 
 }

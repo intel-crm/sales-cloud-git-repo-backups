@@ -44,7 +44,7 @@
         <field>Core_Account_Group_Member__c$Core_Partner_Account_Id__c.Core_OnePartnerID__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Inactive Acc w active 1pid Association</name>
+    <name>Active CAG with Inactive Intel Account</name>
     <params>
         <name>co</name>
         <value>1</value>

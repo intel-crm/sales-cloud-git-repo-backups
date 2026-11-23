@@ -86,17 +86,15 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
         <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <comment>Using Custom Record Type Selector Component</comment>
         <content>Core_MDF_PFR_RecordTypeSelectorComp</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>LightningComponent</type>
     </actionOverrides>
@@ -488,6 +486,7 @@ ISCHANGED( Core_MDF_Reason_Cd__c ),
 ISCHANGED(Core_MDF_Bypass_Amt_Val_Ind__c),
 (AND(TEXT(PRIORVALUE(Core_MDF_Adjustment_Status_nm__c)) == $Label.Core_MDF_Status_Cancelled ,TEXT(Core_MDF_Adjustment_Status_nm__c) == $Label.Core_MDF_Status_Approved))
 )</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Amount_Amt__c</errorDisplayField>
         <errorMessage>Adjustment request cannot be edited.</errorMessage>
     </validationRules>
     <validationRules>

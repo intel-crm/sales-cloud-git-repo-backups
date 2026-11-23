@@ -85,12 +85,16 @@
         <help>Указывает претензию, связанную с платежным документом</help>
         <label>Заявка</label>
         <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Payment Documents --></relationshipLabel>
+        <relationshipLabel><!-- Payment Documents (Claim) --></relationshipLabel>
     </fields>
     <fields>
         <help>Указывает на тип платежного документа, который покупатель должен загрузить.</help>
         <label>Тип документа</label>
         <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Amount --></label>
+        <name>Core_MDF_Invoice_Amt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -118,7 +122,7 @@
         <name>Core_MDF_Reimbursement_Amt__c</name>
     </fields>
     <fields>
-        <help>Статус платежного документа</help>
+        <help>The Статус платежного документа</help>
         <label>Статус документа</label>
         <name>Core_MDF_Status_Txt__c</name>
         <picklistValues>
@@ -157,6 +161,10 @@
         <name>Core_MDF_VAT_Amt__c</name>
     </fields>
     <fields>
+        <label>Комментарий об отмене НДС</label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_VAT_CreatedBy_Nm__c</name>
     </fields>
@@ -183,7 +191,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Submit for Approval Record Type --></description>
-        <label><!-- Submit for Approval --></label>
+        <label>Представить на утверждение</label>
         <name>Core_MDF_Submit_for_Approval</name>
     </recordTypes>
     <validationRules>

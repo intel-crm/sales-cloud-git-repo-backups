@@ -11,24 +11,21 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
     public static final String SEVERITY  = 'Critical';
     public static final String PROJECT  = 'IPA';
     public static Map<String, ReportWrapper> reportWrapperMap = new Map<String, ReportWrapper>();
-
+    public static BnftWrapper bw = new BnftWrapper();
     public static BnftMatrixWrapper bmw = new BnftMatrixWrapper();
     
-    
     @AuraEnabled
-    public static List<String> getAccountIds(){// String 
+    public static List<String> getAccountIds(){
         
         List<String> accountIds = new List<String>();
-        
-        String query = 'select id,(select  Core_Partner_Account_Id__c from Partner_Account_Group_Members1__r where Core_Inactive_Ind__c= false ) from account where Core_Intel_Partner_Alliance_PartnerGroup__c =true and Core_Deactivated__c = false and Core_IPA_One_Partner_Id__c <> null and RecordType.DeveloperName in (\'Mastered_Account\',\'Core_Partner_Account_Group\')';
-       
+        String query = 'select id,Name,RecordType.DeveloperName,(select Core_Intel_Account_Id__c,Core_Partner_Account_Id__r.Name, Core_Partner_Account_Id__c from Partner_Account_Group_Members1__r where Core_Inactive_Ind__c= false ),(select toLabel(PRM_Partner_Role__c), PRM_Account_Id__c,  PRM_Channel_Program_Level_Id__r.Name from Channel_Memberships1__r where PRM_Status_Nm__c =\'Approved\' and PRM_Channel_Program_Id__r.Name=\'Intel Partner Alliance\') from account where Core_Intel_Partner_Alliance_PartnerGroup__c =true and Core_IPA_One_Partner_Id__c!= null and RecordType.DeveloperName !=\'Inactive_Account\' order by lastmodifieddate desc';
         try{        
-            
             for(account accountRecord : Database.query(query)){  
                 accountIds.add(accountRecord.id);
                 if(accountRecord.Partner_Account_Group_Members1__r.size()>0)accountIds.add(accountRecord.Partner_Account_Group_Members1__r[0].Core_Partner_Account_Id__c);
             }
-        }catch(Exception ex){Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT,'Message', SEVERITY, ex.getMessage(), '', null, null, null);            
+        }catch(Exception ex){
+            Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT,'Message', SEVERITY, ex.getMessage(), '', null, null, null);            
         }
         return accountIds;
     }
@@ -40,6 +37,7 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
     
     @AuraEnabled
     public static List<ReportWrapper> getAccountsAndBenefits(List<String> accountIds, String wrapper){
+        System.debug('Logs -->'+wrapper);
         BnftMatrixWrapper matrixRecords =(BnftMatrixWrapper)JSON.deserialize(
             wrapper, BnftMatrixWrapper.class);
         
@@ -66,8 +64,10 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
             }
             
             checkApplicableBenefits(reportWrapperMap,matrixRecords);
-            //System.debug('reportWrapperMap -->'+JSON.serialize(reportWrapperMap));
-        }catch(Exception ex){Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT,'Message', SEVERITY, ex.getMessage(), '', null, null, null);throw new AuraHandledException('Eception Occurred :'+ex.getMessage());
+            System.debug('reportWrapperMap -->'+JSON.serialize(reportWrapperMap));
+        }catch(Exception ex){
+            Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT,'Message', SEVERITY, ex.getMessage(), '', null, null, null);
+            throw new AuraHandledException('Eception Occurred :'+ex.getMessage());
         }
         return reportWrapperMap.values();
     }
@@ -99,6 +99,8 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
             for(String actRoleTier : accountDetails.roleTier){
                 List<String> rl = actRoleTier.split('_');
                 String actRoleTier1;String actRoleTier2;
+                System.debug('Role -->'+rl);
+                System.debug('Record Type -->'+accountDetails.recordTypeName);
                 Set<String> responseBnft = getRoleTierSpecificBenefits(requiredBenefits,actRoleTier,accountDetails.recordTypeName);
                 if(responseBnft!=null && responseBnft.size()>0){roleSpecificBenefits.addAll(responseBnft);}
                 
@@ -129,13 +131,13 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
                 roleSpecificBenefits = recordSpecificBnft.get(recordType);
             }
         }
+        System.debug('roleSpecificBenefits -->'+JSON.serialize(roleSpecificBenefits));
         return roleSpecificBenefits;
     }
     
     // check if records are there as per benefit matrix  
     public static Set<String> checkRequiredBenefits( Set<String> roleSpecificBenefits, List<PRM_AccountBenefitAssociation__c> bnftsOnAccount){
         Set<String> missingBenefits = new Set<String>();
-        //System.debug('Required Ben -->'+JSON.serialize(roleSpecificBenefits));
         set<String> bnftsOnAcctNames = new Set<String>();
         if(bnftsOnAccount!=null && bnftsOnAccount.size()>0){
             for(PRM_AccountBenefitAssociation__c bnft : bnftsOnAccount){
@@ -144,8 +146,6 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
                 
             }   
         }
-        
-        //System.debug('Bnfts on Account -->'+JSON.serialize(bnftsOnAcctNames));
         
         if(roleSpecificBenefits!=null && roleSpecificBenefits.size()>0){
             for( String reqBnft : roleSpecificBenefits){
@@ -159,14 +159,12 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
                 
             }
         }
-        //System.debug('missingBenefits -->'+JSON.serialize(missingBenefits));
-        return missingBenefits;
-    }
+	return missingBenefits;
+      }
     
     // check if there are any extra benefits on the account
     public static Set<String> checkExtraBenefits( Set<String> roleSpecificBenefits, List<PRM_AccountBenefitAssociation__c> bnftsOnAccount){
         Set<String> wrongBenefits = new Set<String>();
-        //System.debug('Extra Required Ben -->'+JSON.serialize(roleSpecificBenefits));
         if(bnftsOnAccount!=null && bnftsOnAccount.size()>0){
             for( PRM_AccountBenefitAssociation__c reqBnft : bnftsOnAccount){                
                 if(roleSpecificBenefits!=null && roleSpecificBenefits.size()>0 && (!roleSpecificBenefits.contains(reqBnft.PRM_Partner_Benefit_Id__r.Name+'_Automatic') && !roleSpecificBenefits.contains(reqBnft.PRM_Partner_Benefit_Id__r.Name+'_Manual'))){
@@ -174,8 +172,7 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
                 }
             }
         }
-        //System.debug('wrongBenefits -->'+JSON.serialize(wrongBenefits));
-        return wrongBenefits;
+	return wrongBenefits;
     }
     
     
@@ -227,7 +224,18 @@ public without sharing class PRM_BenefitMisMatchReport{ // implements PRM_Custom
         @AuraEnabled public Map<String, Map<String,Set<String>>> opidAccountBenefits{get;set;}
         @AuraEnabled public Map<String, Map<String,Set<String>>> intelAccountBenefits{get;set;}
     }
-       
+    public class BnftWrapper{
+        public Map<String, Set<String>> missingBenefits{get;set;}
+        public Map<String, Set<String>> wrongBenefits{get;set;}
+        
+    }
+    
+    public class BenefitMismatchReportWrapper{
+        @AuraEnabled public String accountName{get;set;}
+        @AuraEnabled public Set<BnftWrapper> benefitsResult {get;set;}       
+        
+    }
+    
     public class ReportWrapper{
         
         @AuraEnabled public String accountId{get;set;}

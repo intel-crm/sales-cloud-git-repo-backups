@@ -28,7 +28,7 @@
     </actionOverrides>
     <brand>
         <headerColor>#E14FDD</headerColor>
-        <logo>IntelLogowithAsterisk6_1</logo>
+        <logo>IntelLogowithAsterisk61</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
@@ -43,46 +43,6069 @@
     <navType>Standard</navType>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Support Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Support Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Create_Request_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Premier Support User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L1</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L1</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L1</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L1</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L1</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Core_MDF_Campaign_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Campaign</pageOrSobjectType>
+        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Extended Sales Force-NB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Sales_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Partner_Lead_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Partner_Lead</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Lead_Prospect_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+        <recordType>Lead.Prospect</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Design_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Opportunity_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Opportunity</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Solution_Group_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <recordType>Opportunity.Core_Solution_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Standard_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Standard</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Contact_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Core_Intel_Contact</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Extended Sales Force-NB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Outlook_contact</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inactive_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Inactive_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
+        <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Intel_Account_Record_Page</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
+        <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Core_MDF_Co_Marketing</recordType>
         <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Intel_Account_Record_Page</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Core_MDF_Co_Marketing</recordType>
         <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_MDF_Co_Marketing</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_MDF_Co_Marketing</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Core_Direct_Account</recordType>
         <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Direct_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Direct_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Direct_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Requested_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Requested_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Requested_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Requested_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Rejected_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Rejected_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Rejected_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Rejected_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Partner_Account_Group</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Partner_Account_Group</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Partner_Account_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Partner_Account_Group</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Intel_Ultimate_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L1</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Support Org Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>UCD_Account_System_Default_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Support Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Release and Checkout</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Release and Checkout</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.End_Customer_Deal_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
         <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -105,11 +6128,20 @@
     <profileActionOverrides>
         <actionName>View</actionName>
         <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Core_Partner_Account_Group</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
+        <recordType>Account.Core_Partner_Account_Group</recordType>
         <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
+        <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -134,63 +6166,9 @@
         <content>Master_Account_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Rejected_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Rejected_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
+        <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -198,2094 +6176,6 @@
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Requested_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Requested_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Partner_Lead_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Partner_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Solution_Group_Opportunity_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Inactive_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Inactive_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_Direct_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Direct_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
@@ -2295,3930 +6185,26 @@
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Core_MDF_Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Partner Lead Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
         <type>Flexipage</type>
         <profile>Analytics Cloud Integration User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
+        <content>Master_Account_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
         <profile>Analytics Cloud Integration User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Intel</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Locked</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Sales_Lead</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Deal_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_New_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Account_Create_Request_New</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account_Create_Request__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Core Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Design_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
         <content>Master_Account_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
         <profile>Analytics Cloud Security User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6245,7 +6231,7 @@
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
+        <profile>B2B API Partner</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6254,7 +6240,7 @@
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
+        <profile>B2BMA Integration User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6263,61 +6249,7 @@
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L1</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Comarketing Support L2</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
+        <profile>B2BMA Integration User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6358,267 +6290,6 @@
     <profileActionOverrides>
         <actionName>View</actionName>
         <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>B2B API Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>B2BMA Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>B2BMA Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Global Export Compliance</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Analytics Cloud Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Standard_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Standard</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
@@ -6633,6 +6304,24 @@
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
         <profile>Coveo Integrator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>CRM - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6681,66 +6370,255 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Master_Account_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
+        <profile>Customer Community Plus User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
+        <profile>Customer Community User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Master_Account_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>Data Ops</profile>
+        <profile>Customer Community User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Extended Sales Force-NB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Extended Sales Force-NB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>GDPR BigID Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>GDPR BigID Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Identity User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Identity User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Integration-IAH</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent-Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent-Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Data Migration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Data Migration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS External Customer</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS External Customer</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Lenovo B2B  M2M</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Lenovo B2B  M2M</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Master_Account_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>Premier Support User</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
+        <profile>Minimum Access - Salesforce</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Master_Account_Record_Page</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
+        <profile>Minimum Access - Salesforce</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Partner Community Login User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6848,6 +6726,24 @@
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
         <profile>Production Support-Display</profile>
     </profileActionOverrides>
     <profileActionOverrides>
@@ -6866,7 +6762,7 @@
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
+        <profile>Replica of Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6875,7 +6771,7 @@
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-IPS</profile>
+        <profile>Replica of Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -6901,416 +6797,1809 @@
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Account</pageOrSobjectType>
         <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Insights Integration User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Insights Integration User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Salesforce API Only System Integrations</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Salesforce API Only System Integrations</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SalesforceIQ Integration User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SalesforceIQ Integration User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SolutionManager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>SolutionManager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>StandardAul</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>StandardAul</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Standard</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Standard</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Global Export Compliance</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L1</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Comarketing Support L2</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Agent Enhanced</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IPS Support Org Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Master_Account_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Mastered_Account</recordType>
+        <type>Flexipage</type>
+        <profile>Support Core Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Deal_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Deal_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.PCC_Deal_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>SMG/GMC Read Only</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Intel</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Account Brief Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>B2B API Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>PCC B2B API Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User (Read Only)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>CCP - Core Access</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>B2B API Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>CIM Hub Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Data Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IT @ Intel</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>IT Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>MarketingProfile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Partner</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Partner Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Partner Community Login User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Intel_Ultimate_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Core_Account_Intel_Ultimate</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Partner Community User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Partner Lead Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>PCC B2B API Integration</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Production Release and Checkout</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
-        <profile>Sales Manager</profile>
+        <profile>Sales CRM API</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
-        <profile>Sales Ops</profile>
+        <profile>Sales CRM Publish-Subscribe Integration</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Campaign_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Campaign</pageOrSobjectType>
-        <recordType>Campaign.Core_Marketing_Campaign</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Insights Integration User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Insights Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
-        <profile>Sales Ops</profile>
+        <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <type>Flexipage</type>
+        <profile>Salesforce API Only System Integrations</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Partner_Draft</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>SalesforceIQ Integration User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>SalesforceIQ Integration User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>SolutionManager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>SolutionManager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>StandardAul</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
         <type>Flexipage</type>
         <profile>Standard</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
         <content>Design_Registration_Partner_Draft</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
@@ -7320,1271 +8609,808 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Support Core Team</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User (Read Only)</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>CIM Hub Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Data Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>IT @ Intel</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>MarketingProfile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
+        <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
+        <profile>Sales Rep-BB</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
+        <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner_Draft</content>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Commissions Office Inquiries Admin User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Ops</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-BB-Dual IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Rep-CW</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Design_Registration_Partner_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
+        <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Customer Community User</profile>
+        <profile>BU Account Collaborator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Customer Community Plus User</profile>
+        <profile>BU Account Collaborator</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Customer Community User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Force.com - App Subscription User</profile>
+        <profile>Commissions Office Inquiries Admin User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Force.com - App Subscription User</profile>
+        <profile>Commissions Office Inquiries Admin User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Global Export Compliance</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Global Export Compliance</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Identity User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Identity User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Integration</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>IPA A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>IPA A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent Enhanced</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Agent-Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS External Customer</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Lenovo B2B  M2M</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IPS Support Org Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Minimum Access - Salesforce</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Partner</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
+        <profile>IPA System Profile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
+        <profile>IPA System Profile</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Production Release and Checkout</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Production Release and Checkout</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Production Support</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Production Support</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Master_Account_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Account</pageOrSobjectType>
-        <recordType>Account.Mastered_Account</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Production Support-Display</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
+        <type>Flexipage</type>
+        <profile>Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
+        <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Lead_Prospect_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Lead</pageOrSobjectType>
-        <recordType>Lead.Prospect</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
         <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>Support Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Intel</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>Support Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>A&amp;E User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>BU Account Collaborator</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>CCP - Core Access</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>Data Ops</profile>
+        <profile>Commissions Office Inquiries Admin User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>Data Ops</profile>
+        <profile>Commissions Office Inquiries Admin User</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>IT Admin</profile>
+        <profile>Global Export Compliance</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>IT Admin</profile>
+        <profile>Global Export Compliance</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA A&amp;E User</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>IPA System Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Release and Checkout</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Release and Checkout</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Reporting Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
+        <type>Flexipage</type>
+        <profile>Sales CRM API</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Manager</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Ops</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-BB-Dual IPS</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
         <profile>Sales Rep-CW</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_New_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_New_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_New_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_New_Solution_Group</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <recordType>Opportunity.Core_Opportunity</recordType>
-        <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
         <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
@@ -8593,7 +9419,7 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Design_Registration_Partner</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
         <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
@@ -8602,720 +9428,183 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Production Support-Display</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Reporting Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Outlook_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Outlook_contact</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Support Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Locked</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Support Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>CCP - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IPA A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Deal_Registration_Draft</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
-        <recordType>Core_Design_Registration__c.Deal_Registration_Draft</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Intel_Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Intel_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>A&amp;E User (Read Only)</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>BU Account Collaborator</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>CIM Hub Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Commissions Office Inquiries Admin User</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Global Export Compliance</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>A&amp;E User</profile>
+        <profile>Global Export Compliance</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>IT @ Intel</profile>
+        <profile>Production Release and Checkout</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>IT Admin</profile>
+        <profile>Production Release and Checkout</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>MarketingProfile</profile>
+        <profile>Production Support</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Production Support-Display</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-Display</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
+        <type>Flexipage</type>
+        <profile>Production Support-IPS</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Design_Registration_Locked</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Contact_Layout_Do_Not_Contact_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Contact</pageOrSobjectType>
-        <recordType>Contact.Core_Do_Not_Contact</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>IT Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Manager</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-BB-Dual IPS</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Sales Rep-CW</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
         <profile>Reporting Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>Core Integration</profile>
+        <profile>Sales CRM API</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Opportunity_Record_Page1</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Opportunity</pageOrSobjectType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>Core Integration</profile>
+        <profile>Sales CRM API</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>CRM_New_EMP_RecordPage</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
-        <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>CRM_New_EMP_RecordPage</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
-        <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>Admin</profile>
+        <profile>SMG/GMC Read Only</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>CRM_New_EMP_RecordPage</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Small</formFactor>
-        <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
-        <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>IT Admin</profile>
+        <profile>Support Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>CRM_New_EMP_RecordPage</content>
+        <content>Design_Registration_Locked</content>
         <formFactor>Large</formFactor>
-        <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
-        <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
+        <pageOrSobjectType>Core_Design_Registration__c</pageOrSobjectType>
+        <recordType>Core_Design_Registration__c.Core_Design_Registration_Partner</recordType>
         <type>Flexipage</type>
-        <profile>IT Admin</profile>
+        <profile>Support Core Team</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -9414,7 +9703,7 @@
         <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
         <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
         <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -9423,7 +9712,7 @@
         <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
         <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
         <type>Flexipage</type>
-        <profile>SMG/GMC Read Only</profile>
+        <profile>IT Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -9432,7 +9721,7 @@
         <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
         <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
         <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
@@ -9441,48 +9730,11 @@
         <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
         <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
         <type>Flexipage</type>
-        <profile>CRM - Core Access</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>CRM_New_EMP_RecordPage</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
-        <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>CRM_New_EMP_RecordPage</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
-        <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
-        <type>Flexipage</type>
-        <profile>Data Ops</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>CRM_New_EMP_RecordPage</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
-        <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>CRM_New_EMP_RecordPage</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Executive_Meeting_Brief__c</pageOrSobjectType>
-        <recordType>Executive_Meeting_Brief__c.CRM_New_Executive_Meeting_Brief</recordType>
-        <type>Flexipage</type>
-        <profile>Production Release and Checkout</profile>
+        <profile>Admin</profile>
     </profileActionOverrides>
     <tabs>standard-home</tabs>
     <tabs>Ask_a_Question1</tabs>
     <tabs>Ask_Commissions</tabs>
-    <tabs>SMG_AI</tabs>
     <tabs>Core_Pipeline_Management_New</tabs>
     <tabs>standard-Feed</tabs>
     <tabs>standard-Account</tabs>
@@ -9493,8 +9745,10 @@
     <tabs>standard-Lead</tabs>
     <tabs>standard-Contact</tabs>
     <tabs>standard-Task</tabs>
-    <tabs>Account_Plan__c</tabs>
+    <tabs>standard-AccountPlan</tabs>
     <tabs>Executive_Meeting_Brief__c</tabs>
+    <tabs>PIM_Products__x</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>BETA_UtilityBar1</utilityBar>
+    <utilityBar>BETA_2_UtilityBar</utilityBar>
 </CustomApplication>

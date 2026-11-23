@@ -4,12 +4,9 @@ public class PRM_IPAR_IPAMembershipTransformBatch implements Database.Batchable<
     public final Id prOPIDRecTypeId = Schema.SObjectType.PRM_IPAMembership_Attributes__c.getRecordTypeInfosByDeveloperName().get('X1PID_Account_Attributes').getRecordTypeId();
     public Integer totalProcessed = 0;
     public Integer totalSuccess = 0;
-    public String accountrecordId;
     public List<PRM_IPAMembership_Attributes__c> membershipRecords = new List<PRM_IPAMembership_Attributes__c>();
     public String csvData = 'RecordTypeId, PRM_Account_Id__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Point_Status_Txt__c, PRM_Points_Not_Eligible_Dt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Opt_in_Dt__c, PRM_Points_Opt_in_Ind__c, PRM_Registration_Source_Txt__c\n';
-    public PRM_IPAR_IPAMembershipTransformBatch(String id){
-        this.accountrecordId= id;
-    }
+    
     public List<Core_Log_Entry__c> errorLogs = new List<Core_Log_Entry__c>();
     public Database.QueryLocator start(Database.BatchableContext bc) {   
         String query;
@@ -50,7 +47,8 @@ public class PRM_IPAR_IPAMembershipTransformBatch implements Database.Batchable<
                 Boolean isManufacturer = false;
                 PRM_IPAMembership_Attributes__c membershipRecord = new PRM_IPAMembership_Attributes__c();
                 membershipRecord.PRM_Account_Id__c = acc;
-                        
+                membershipRecord.PRM_Inactive_Ind__c = false; // ✅ REQUIRED
+                
                 for (PRM_Profile_Responses__c response : accountToResponsesMap.get(acc)) {
                     Date parsedDate = null;
                     //Assign record type 
@@ -185,7 +183,7 @@ public class PRM_IPAR_IPAMembershipTransformBatch implements Database.Batchable<
         Attachment attachment = new Attachment();
         attachment.Name = 'IPAMembershipInfo.csv';
         attachment.Body = csvBlob;
-        attachment.ParentId = accountrecordId;
+        attachment.ParentId = '001Dw00002082IuIAI';
         if(!Test.isRunningTest()){
             insert attachment;
         }

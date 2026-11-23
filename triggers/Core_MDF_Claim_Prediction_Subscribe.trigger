@@ -1,6 +1,5 @@
 /****************************************************************************************************************************************
-* Trigger Name  : Core_MDF_Claim_Prediction_Subscribe
-* Test Class : Core_MDF_Claim_Prediction_Subscribe_Test 
+* Trigger Name  : Core_MDF_Claim_Prediction_Subscribe 
 * Version     : 1.0 
 * Created Date: 15-06-2020
 * Modification Log :
@@ -17,13 +16,14 @@ trigger Core_MDF_Claim_Prediction_Subscribe on Core_MDF_Claim_Prediction_Event__
     public class CustomException extends Exception{}
     List <Core_MDF_Claim_Prediction__c> obj = new List <Core_MDF_Claim_Prediction__c>();
     try{
-    
+        System.debug('trigger.new::'+trigger.new);
         List<Id> claimIds = new List<Id>();
         Set<Id> cId = new Set<Id>();
         for (Core_MDF_Claim_Prediction_Event__e evt: trigger.new){
             claimIds.add(evt.Core_MDF_PE_ID__c);
             
         } 
+        System.debug('claimIdsclaimIds::'+claimIds);
         
         Map<Id,Decimal> claimIdtoPICcycleMap = new Map<Id, Decimal>();
         for(Core_MDF_PIC_Review__c claim : [Select id, Core_MDF_Claim_ID_id__c, Core_MDF_CycleNumber_nbr__c from Core_MDF_PIC_Review__c where Core_MDF_Review_Status_nm__c = 'Completed' and Core_MDF_Claim_ID_id__c in : claimIds]){
@@ -41,6 +41,7 @@ trigger Core_MDF_Claim_Prediction_Subscribe on Core_MDF_Claim_Prediction_Event__
                 obj.add(new Core_MDF_Claim_Prediction__c(Core_MDF_Claim_id__c=evt.Core_MDF_PE_ID__c,Core_MDF_ClaimBrand_nm__c=claimMap.get(evt.Core_MDF_PE_ID__c).Core_MDF_Brand_Nm__c, Core_MDF_Activity_ID__c=evt.Core_MDF_Activity_ID__c, Core_MDF_Claim_Id_External_id__c = evt.Core_MDF_PE_ID__c,Core_MDF_CycleNumber_Nbr__c = claimIdtoPICcycleMap.get(evt.Core_MDF_PE_ID__c)));
         }
         
+        system.debug('runOnce' +runOnce);
         if(runOnce){
             Database.SaveResult[] srListUpdate = Database.update(cpList, false);
             Database.SaveResult[] srListInsert = Database.insert(obj, false);

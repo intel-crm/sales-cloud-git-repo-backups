@@ -13,6 +13,7 @@ public without sharing class Core_Contact_AccountChange_Handler {
     public static boolean IS_CHANGE_ACCOUNT = false;
     /*This method is called when account is changed on the contact and validate target account*/
     public static void validateTargetAccount(List<Contact> lstNewContacts){
+        system.debug('## ids '+lstNewContacts);
         Map<Id,Id> stContNewAccId = new Map<Id,Id>();
          Map<Id,Account> newAccountMap = new Map<Id,Account>();
         set<Id> stConId = new set<Id>();
@@ -24,12 +25,15 @@ public without sharing class Core_Contact_AccountChange_Handler {
         }
         //FLS Check Fixed - Aditya
         if(Account.SObjectType.getDescribe().isAccessible()){
+            system.debug('## isAccessible');
+            system.debug('## stContNewAccId '+stContNewAccId);
          newAccountMap =new Map<ID,Account>( [SELECT id,Name,Core_Business_Party_Id__c,Core_CNDA_Number__c,Core_Deactivated__c,Core_Deactivation_Reason__c,Core_English_Only_Name__c,Core_B2B_Entitlement__c,Core_IPS_Active__c,Owner.UserRole.Name,Core_IsODM__c,Core_Export_Compliance_Block__c from Account where id in : stContNewAccId.values()]);
         }
         if(Contact.SObjectType.getDescribe().isAccessible()){
          lstContacts = [SELECT id,Core_AGS_Integration_Status__c,Core_IPS_Active__c,Core_ERPM_Integration_Status__c,AccountId,Account.name,Account.Core_IPS_Active__c,Account.Core_English_Only_Name__c,Account.Core_IsODM__c,Account.Core_Export_Compliance_Block__c,Email,(SELECT id,Core_Contact_Id__c,Core_Selected__c,Core_From_Source__c,Core_Entitlement_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Entitlement_Id__r.Core_Category__c FROM Contact_Entitlements__r where Core_Selected__c=true and Core_From_Source__c=false ) FROM Contact Where Id IN : stConId];
         }
         for(Contact contactRef : lstContacts){
+            system.debug('## contactRef '+contactRef);
             Contact objContact = new Contact();
             Integer ContactIndex=null;
             for(Integer index =0;index<lstNewContacts.size();index++){
@@ -40,7 +44,7 @@ public without sharing class Core_Contact_AccountChange_Handler {
             ////System.debug('Queried old Account :'+contactRef.accountID);
             
             Account newAccountRec=newAccountMap.get(stContNewAccId.get(contactRef.id));
-            
+            system.debug('## newAccountRec '+newAccountRec);
             Boolean blnSelectedContactEntitlement=false;
             
             for(Core_Contact_Entitlement__c objConEntitlement : contactRef.Contact_Entitlements__r){
@@ -95,18 +99,23 @@ public without sharing class Core_Contact_AccountChange_Handler {
                 AllErrorMessages = AllErrorMessages+'\n  Account :'+contactRef.Account.Name+' is on  GEC Hold , ';
                 lstNewContacts[ContactIndex].accountid.addError(AllErrorMessages);
             } 
-            
+            //system.debug('## newAccountRec '+newAccountRec.Core_Export_Compliance_Block__c);
+            try{
             if(newAccountRec.Core_Export_Compliance_Block__c){
                 AllErrorMessages = AllErrorMessages+'\n  Account :'+contactRef.Account.Name+' is on  GEC Hold , ';
                 lstNewContacts[ContactIndex].accountid.addError(AllErrorMessages);
-            } 
+            
+            
             // Inactive account validation 
             
             if(newAccountRec.Core_Deactivated__c && newAccountRec.Core_Deactivation_Reason__c!=null) {
                 AllErrorMessages = AllErrorMessages+'\n Account is deactivated : ';
                 lstNewContacts[ContactIndex].accountid.addError(AllErrorMessages);
             }
-
+} 
+            }catch(Exception e){
+                system.debug('### '+e.getmessage());
+            }
             //eRPM trigger logic  atb
             //Updating this to pending in after update section in trigger (core_contact)
             //lstNewContacts[ContactIndex].Core_ERPM_Integration_Status__c = 'Pending';

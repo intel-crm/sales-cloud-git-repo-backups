@@ -1,0 +1,65 @@
+{
+  "appPageId" : "19350a48-c28b-468b-9a07-e8f3f5708e0d",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e58fa593-9691-407a-914d-2942c559d2d0",
+  "label" : "Campaign Detail",
+  "regions" : [ {
+    "id" : "972a1c22-f851-4a0c-9524-608779ceb7d9",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "126b6005-d2ba-40cc-80c6-f35a74e7959e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "899f6b9a-6592-4136-8e56-b16c72aa684a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9cc0982d-5ece-4149-8fde-71bcbcf883ed",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "345f9705-7de0-4590-b7e4-909a8ec08f94",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "53dc870f-3b24-45f0-b169-37168ee8c6a3",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3b13e191-ae91-4fe9-b84a-ceffa471923c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-701"
+}

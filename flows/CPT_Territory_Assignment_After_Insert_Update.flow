@@ -1,110 +1,594 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>57.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <description>24 Nov 2025</description>
-        <name>CPT_Update_the_target_Values_from_new_Assignment</name>
-        <label>Update the target Values from new Assignment</label>
-        <locationX>176</locationX>
-        <locationY>431</locationY>
+        <name>Assignment_3</name>
+        <label>Set Retail Selected</label>
+        <locationX>336</locationX>
+        <locationY>1163</locationY>
         <assignmentItems>
-            <assignToReference>$Record.CPT_BR_CCG_Target__c</assignToReference>
+            <assignToReference>varRetailSelected</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>CPT_Get_Target_Values.CPT_BR_CCG_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_BR_DCAI_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_BR_DCAI_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_CR_Partner_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_CR_Partner_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_CR_Retail_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_CR_Retail_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_CR_OEM_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_CR_OEM_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_BR_All_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_BR_All_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_MarVol_Margin_CCG_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_MarVol_Margin_CCG_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_MarVol_Margin_DCG_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_MarVol_Margin_DCG_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Get_Target_Values.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</elementReference>
+                <booleanValue>true</booleanValue>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>CPT_Populate_the_Target_Values</targetReference>
+            <targetReference>Iss_OEM_Selected</targetReference>
         </connector>
     </assignments>
-    <description>[24/Nov/25] 17:00  Flow to copy the target values from target object into the assignment</description>
+    <assignments>
+        <name>Set_OEM_Selected</name>
+        <label>Set OEM Selected</label>
+        <locationX>336</locationX>
+        <locationY>1463</locationY>
+        <assignmentItems>
+            <assignToReference>varOEMSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Territory_Assignment_Records</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Partner_Selected</name>
+        <label>Set Partner Selected</label>
+        <locationX>336</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>varPartnerSelected</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Is_Retail_Selected</targetReference>
+        </connector>
+    </assignments>
+    <constants>
+        <name>One</name>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>1.0</numberValue>
+        </value>
+    </constants>
+    <constants>
+        <name>PartnerPercentage</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>33.334%</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>Three</name>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>3.0</numberValue>
+        </value>
+    </constants>
+    <constants>
+        <name>Two</name>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>2.0</numberValue>
+        </value>
+    </constants>
+    <customErrors>
+        <name>Invalid_CR_Category_Selection</name>
+        <label>Invalid CR Category Selection</label>
+        <locationX>50</locationX>
+        <locationY>2147</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>Select only one eligible CR category across all Territory Assignments: OEM or Partner for Plans 120/122; Partner or Retail for Plan 240.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>BR_DCG_Default_Required</name>
+        <label>BR DCG Default Required?</label>
+        <locationX>248</locationX>
+        <locationY>1739</locationY>
+        <defaultConnector>
+            <targetReference>Conflicting_CR_Selections</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Apply_BR_Default</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>250</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>330</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>630</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.CPT_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>650</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_BR_DCG_Default</targetReference>
+            </connector>
+            <label>Apply BR Default</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Conflicting_CR_Selections</name>
+        <label>Conflicting CR Selections?</label>
+        <locationX>248</locationX>
+        <locationY>2039</locationY>
+        <defaultConnector>
+            <targetReference>Determine_Plan_Allocation</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Conflict_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CR_Selection_Conflict</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Invalid_CR_Category_Selection</targetReference>
+            </connector>
+            <label>Conflict Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Determine_Plan_Allocation</name>
+        <label>Determine Plan Allocation</label>
+        <locationX>446</locationX>
+        <locationY>2147</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Supported_CR_Plan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CR_Plan_Supported</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Quotasetup</targetReference>
+            </connector>
+            <label>Supported CR Plan</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Partner_Selected</name>
+        <label>Is Partner Selected?</label>
+        <locationX>468</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Is_Retail_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>CR Partner not selected</defaultConnectorLabel>
+        <rules>
+            <name>Partner_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_CR_Partner__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Partner_Selected</targetReference>
+            </connector>
+            <label>Partner Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Retail_Selected</name>
+        <label>Is Retail Selected?</label>
+        <locationX>468</locationX>
+        <locationY>1055</locationY>
+        <defaultConnector>
+            <targetReference>Iss_OEM_Selected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>CR Retail not selected</defaultConnectorLabel>
+        <rules>
+            <name>Retail_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_CR_Retail__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assignment_3</targetReference>
+            </connector>
+            <label>Retail Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Iss_OEM_Selected</name>
+        <label>Is OEM Selected?</label>
+        <locationX>468</locationX>
+        <locationY>1355</locationY>
+        <defaultConnector>
+            <targetReference>Territory_Assignment_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>OEM Not Selected</defaultConnectorLabel>
+        <rules>
+            <name>OEM_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Territory_Assignment_Records.CPT_CR_OEM__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_OEM_Selected</targetReference>
+            </connector>
+            <label>OEM Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Quota_Setup_Found</name>
+        <label>Quota Setup Found?</label>
+        <locationX>501</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CPT_Get_Quota_Setup.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Related_Territory_Assignments</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <description>[11/Nov/2026] Flow to copy the target values from target object into the assignment</description>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>754</locationX>
+        <locationY>539</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_2</name>
+        <locationX>446</locationX>
+        <locationY>2447</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>50</locationX>
+        <locationY>2255</locationY>
+    </ends>
     <environments>Default</environments>
+    <formulas>
+        <name>CheckboxCount</name>
+        <dataType>Number</dataType>
+        <expression>IF({!varOEMSelected}, 1, 0)
++
+IF({!varRetailSelected}, 1, 0)
++
+IF({!varPartnerSelected}, 1, 0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>CR_Plan_Supported</name>
+        <dataType>Boolean</dataType>
+        <expression>CASE(
+    TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+    &quot;120&quot;, 1,
+    &quot;122&quot;, 1,
+    &quot;240&quot;, 1,
+    &quot;250&quot;, 1,
+    &quot;330&quot;, 1,
+    &quot;331&quot;, 1,
+    &quot;620&quot;, 1,
+    &quot;630&quot;, 1,
+    &quot;631&quot;, 1,
+    &quot;640&quot;, 1,
+    &quot;650&quot;, 1,
+    0
+) = 1</expression>
+    </formulas>
+    <formulas>
+        <name>CR_Selection_Conflict</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+    AND(
+        OR(
+            ISPICKVAL({!CPT_Get_Quota_Setup.CPT_Plan__c}, &quot;120&quot;),
+            ISPICKVAL({!CPT_Get_Quota_Setup.CPT_Plan__c}, &quot;122&quot;)
+        ),
+        {!varOEMSelected},
+        {!varPartnerSelected}
+    ),
+    AND(
+        ISPICKVAL({!CPT_Get_Quota_Setup.CPT_Plan__c}, &quot;240&quot;),
+        {!varPartnerSelected},
+        {!varRetailSelected}
+    )
+)</expression>
+    </formulas>
     <formulas>
         <name>isRecordNew</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
     </formulas>
+    <formulas>
+        <name>OEMoneSelected</name>
+        <dataType>String</dataType>
+        <expression>IF({!varOEMSelected}, &quot;100%&quot;, &quot;0%&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>OEMtwoselected</name>
+        <dataType>String</dataType>
+        <expression>IF({!varOEMSelected}, &quot;50%&quot;, &quot;0%&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>Partneroneselected</name>
+        <dataType>String</dataType>
+        <expression>IF({!varPartnerSelected}, &quot;100%&quot;, &quot;0%&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>Partnertwoselected</name>
+        <dataType>String</dataType>
+        <expression>IF({!varPartnerSelected}, &quot;50%&quot;, &quot;0%&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>Percentage_BR_DCG</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+    TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+    &quot;250&quot;, &quot;40%&quot;,
+    &quot;330&quot;, &quot;20%&quot;,
+    &quot;630&quot;, &quot;20%&quot;,
+    &quot;650&quot;, &quot;20%&quot;,
+    &quot;&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Percentage_OEM</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+    TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+    &quot;250&quot;, &quot;60%&quot;,
+    &quot;330&quot;, &quot;30%&quot;,
+    &quot;620&quot;, &quot;20%&quot;,
+    &quot;630&quot;, &quot;40%&quot;,
+    IF(
+        NOT({!varOEMSelected}),
+        &quot;0%&quot;,
+        CASE(
+            TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+            &quot;120&quot;, &quot;20%&quot;,
+            &quot;122&quot;, &quot;40%&quot;,
+            &quot;331&quot;,
+                IF(
+                    {!CPT_Get_Quota_Setup.CPT_Sales_Group__c} &lt;&gt; &quot;PRC&quot;,
+                    &quot;50%&quot;,
+                    &quot;0%&quot;
+                ),
+            &quot;631&quot;,
+                IF(
+                    {!CPT_Get_Quota_Setup.CPT_Sales_Group__c} &lt;&gt; &quot;PRC&quot;,
+                    &quot;70%&quot;,
+                    &quot;0%&quot;
+                ),
+            &quot;640&quot;,
+                CASE(
+                    {!CheckboxCount},
+                    1, &quot;100%&quot;,
+                    2, &quot;50%&quot;,
+                    3, &quot;33.333%&quot;,
+                    &quot;0%&quot;
+                ),
+            &quot;650&quot;,
+                CASE(
+                    {!CheckboxCount},
+                    1, &quot;80%&quot;,
+                    2, &quot;40%&quot;,
+                    3, &quot;26.666%&quot;,
+                    &quot;0%&quot;
+                ),
+            &quot;0%&quot;
+        )
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Percentage_Partner</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varPartnerSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;120&quot;, &quot;20%&quot;,
+        &quot;122&quot;, &quot;40%&quot;,
+        &quot;240&quot;, &quot;100%&quot;,
+        &quot;640&quot;,
+            CASE(
+                {!CheckboxCount},
+                1, &quot;100%&quot;,
+                2, &quot;50%&quot;,
+                3, &quot;33.334%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;650&quot;,
+            CASE(
+                {!CheckboxCount},
+                1, &quot;80%&quot;,
+                2, &quot;40%&quot;,
+                3, &quot;26.668%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Percentage_Retail</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    NOT({!varRetailSelected}),
+    &quot;0%&quot;,
+    CASE(
+        TEXT({!CPT_Get_Quota_Setup.CPT_Plan__c}),
+        &quot;240&quot;, &quot;100%&quot;,
+        &quot;640&quot;,
+            CASE(
+                {!CheckboxCount},
+                1, &quot;100%&quot;,
+                2, &quot;50%&quot;,
+                3, &quot;33.333%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;650&quot;,
+            CASE(
+                {!CheckboxCount},
+                1, &quot;80%&quot;,
+                2, &quot;40%&quot;,
+                3, &quot;26.666%&quot;,
+                &quot;0%&quot;
+            ),
+        &quot;0%&quot;
+    )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>PercentageValue</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+   {!CheckboxCount},
+   1, &apos;100%&apos;,
+   2, &apos;50%&apos;,
+   3, &apos;33.333%&apos;,
+   &apos;&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Plan_240_OEM</name>
+        <dataType>String</dataType>
+        <expression>IF(
+   {!$Record.CPT_CR_OEM__c},  
+   &apos;100%&apos;,
+   &apos;0%&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Plan_240_Partner</name>
+        <dataType>String</dataType>
+        <expression>IF(
+   {!$Record.CPT_CR_Partner__c},  
+   &apos;100%&apos;,
+   &apos;0%&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Plan_240_Retail</name>
+        <dataType>String</dataType>
+        <expression>IF(
+   {!$Record.CPT_CR_Retail__c},  
+   &apos;100%&apos;,
+   &apos;0%&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>QS_OEM</name>
+        <dataType>String</dataType>
+        <expression>IF(
+   {!$Record.CPT_CR_OEM__c},  
+   {!PercentageValue},
+   &apos;0%&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>QS_Partner</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    {!$Record.CPT_CR_Partner__c},
+   {!PercentageValue},
+   &quot;0%&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>QS_Retail</name>
+        <dataType>String</dataType>
+        <expression>IF(
+   {!$Record.CPT_CR_Retail__c},
+   {!PercentageValue},
+   &quot;0%&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Retailoneselected</name>
+        <dataType>String</dataType>
+        <expression>IF({!varRetailSelected}, &quot;100%&quot;, &quot;0%&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>Retailtwoselected</name>
+        <dataType>String</dataType>
+        <expression>IF({!varRetailSelected}, &quot;50%&quot;, &quot;0%&quot;)</expression>
+    </formulas>
     <interviewLabel>CPT Territory Assignment - After Insert/Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CPT Territory Assignment - After Insert/Update</label>
+    <loops>
+        <name>Territory_Assignment_Records</name>
+        <label>Territory Assignment Records</label>
+        <locationX>248</locationX>
+        <locationY>647</locationY>
+        <collectionReference>Get_Related_Territory_Assignments</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Is_Partner_Selected</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>BR_DCG_Default_Required</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -125,43 +609,198 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <description>###</description>
-        <name>CPT_Get_Target_Values</name>
-        <label>Get Target Values</label>
-        <locationX>176</locationX>
+        <name>CPT_Get_Quota_Setup</name>
+        <label>Get Quota Setup</label>
+        <locationX>501</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>CPT_Update_the_target_Values_from_new_Assignment</targetReference>
+            <targetReference>Quota_Setup_Found</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.CPT_Territory_Target__r.Id</elementReference>
+                <elementReference>$Record.CPT_Quota_Setup__c</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>CPT_Territory_Target__c</object>
+        <object>CPT_Quota_Setup__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Related_Territory_Assignments</name>
+        <label>Get Related Territory Assignments</label>
+        <locationX>248</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Territory_Assignment_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CPT_Quota_Setup__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CPT_Quota_Setup__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>CPT_Territory_Assignment__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>CPT_Populate_the_Target_Values</name>
-        <label>Populate the Target Values</label>
-        <locationX>176</locationX>
-        <locationY>539</locationY>
-        <inputReference>$Record</inputReference>
+        <name>Update_BR_DCG_Default</name>
+        <label>Update BR DCG Default</label>
+        <locationX>116</locationX>
+        <locationY>1847</locationY>
+        <connector>
+            <targetReference>Conflicting_CR_Selections</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CPT_Quota_Setup__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CPT_BR_CCG_Assigned__c</field>
+            <value>
+                <stringValue>0%</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_BR_DCAI_Assigned__c</field>
+            <value>
+                <elementReference>Percentage_BR_DCG</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CPT_Quota_Setup__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Quotasetup</name>
+        <label>Update Quotasetup</label>
+        <locationX>314</locationX>
+        <locationY>2255</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CPT_Quota_Setup__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CPT_CR_OEM_Assigned__c</field>
+            <value>
+                <elementReference>Percentage_OEM</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_CR_Partner_Assigned__c</field>
+            <value>
+                <elementReference>Percentage_Partner</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CPT_CR_Retail_Assigned__c</field>
+            <value>
+                <elementReference>Percentage_Retail</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.CPT_Quota_Setup__r</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>375</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>CPT_Get_Target_Values</targetReference>
+            <targetReference>CPT_Get_Quota_Setup</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CPT_Quota_Setup__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <object>CPT_Territory_Assignment__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>TerritoryAssignmentRecords</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>CPT_Territory_Assignment__c</objectType>
+    </variables>
+    <variables>
+        <name>varOEMPercentage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>0%</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varOEMSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varPartnerPercentage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>0%</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varPartnerSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varRetailPercentage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>0%</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varRetailSelected</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
 </Flow>

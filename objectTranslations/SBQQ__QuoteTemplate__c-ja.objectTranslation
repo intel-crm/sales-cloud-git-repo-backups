@@ -9,6 +9,10 @@
         <name>Pricing_SW_Signature__c</name>
     </fields>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>すべてのパッケージ商品を見積ドキュメントに出力する必要がある場合は、チェックボックスをオンにします。オフにすると、ゼロでないパッケージ商品のみが出力されます。</help>
         <label><!-- Show All Package Product --></label>
         <name>SBQQ__AllPackageProductsShown__c</name>

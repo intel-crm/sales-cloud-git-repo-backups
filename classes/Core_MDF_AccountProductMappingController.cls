@@ -200,8 +200,6 @@ public without sharing class Core_MDF_AccountProductMappingController {
                 if(oldAccProdMap != null && !oldAccProdMap.isEmpty()) {
                      newAccProdMap.putAll(oldAccProdMap);
                 }
-
-
                     if(uncheckedProdIds != null && !uncheckedProdIds.isEmpty()){
                         for(string prodId : uncheckedProdIds){
                             String keyStr = accountId + '$' + prodId;
@@ -220,7 +218,6 @@ public without sharing class Core_MDF_AccountProductMappingController {
                     upsert newAccProdMap.values();
                 }
             }
-
         }
         catch(Exception exp) {
             Core_MDF_CCP_UtilityClass.logError(exp);

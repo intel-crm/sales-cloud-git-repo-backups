@@ -142,12 +142,14 @@ Modification Log :
                 
                 for(Case c : newList){
                     //if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)){
-                    if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && ((c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)) || (c.Core_IPS_gec_flag__c ==  true && oldMap.get(c.Id).Core_IPS_gec_status__c != c.Core_IPS_gec_status__c  && (c.Core_IPS_gec_status__c== 'Approved' || c.Core_IPS_gec_status__c== 'Approved with Guardrails')))){
+                    if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && ((c.Core_Product_Organization__c != oldMap.get(c.Id).Core_Product_Organization__c && (oldMap.get(c.Id).Core_IPS_Supported_Product__c != c.Core_IPS_Supported_Product__c || oldMap.get(c.Id).ownerId != c.OwnerId)) || 
+                       (c.Core_IPS_gec_flag__c ==  true && oldMap.get(c.Id).Core_IPS_gec_status__c != c.Core_IPS_gec_status__c  && (c.Core_IPS_gec_status__c== 'Approved' || c.Core_IPS_gec_status__c== 'Approved with Guardrails')))){
                         Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired = true;
                         break;
                     } 
                 }
-                if(Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired){  triggerAssignmentRuleAndProvideAccess(newListStr ,oldMapStr,isUpdate);
+                if(Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired){
+                triggerAssignmentRuleAndProvideAccess(newListStr ,oldMapStr,isUpdate);
               }else {
               triggerAssignmentRuleWithFuture(newListStr ,oldMapStr,isUpdate);
             }
@@ -186,7 +188,8 @@ Modification Log :
                   
                         // FLS Fix Applied as Part of Apex Guru
                         //if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId)  ){
-                         if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && ( (cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId)) || (cs.Core_IPS_gec_flag__c ==  true && oldCaseMap.get(cs.Id).Core_IPS_gec_status__c != cs.Core_IPS_gec_status__c  && ( cs.Core_IPS_gec_status__c== 'Approved' || cs.Core_IPS_gec_status__c== 'Approved with Guardrails')) ) ){     
+                         if(Label.Core_IPS_BES_Case_AutoPromotion_Toggle == 'true' && Schema.sObjectType.Case.fields.Core_IPS_New_Backend_System__c.isUpdateable() && Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired && ( (cs.Core_Product_Organization__c != OldCaseMap.get(cs.Id).Core_Product_Organization__c && (OldCaseMap.get(cs.Id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c || OldCaseMap.get(cs.Id).ownerId != cs.OwnerId))
+                              || (cs.Core_IPS_gec_flag__c ==  true && oldCaseMap.get(cs.Id).Core_IPS_gec_status__c != cs.Core_IPS_gec_status__c  && ( cs.Core_IPS_gec_status__c== 'Approved' || cs.Core_IPS_gec_status__c== 'Approved with Guardrails')) ) ){     
                             cs.Core_IPS_New_Backend_System__c = null; 
                             //Core_CaseTrigger_Dispatcher.IsAutoPromoteRequired = false;
                    }
@@ -2904,6 +2907,13 @@ Modification Log :
             
     //         for(case cs : newList){
     //            if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+    //             //	system.debug('COGUpdate Debug1 - '+cs.Core_IPS_Case_Owner_Email__c+'--' + cs.Core_IPS_Product_Org1__c);
+    //             //	system.debug('COGUpdate Debug2 - '+oldMap);
+    //             }
+    //             system.debug('New mail '+cs.Core_IPS_Case_Owner_Email__c );
+    //             system.debug(' old email '+oldMap.get(cs.id).Core_IPS_Case_Owner_Email__c );
+    //             system.debug('New prod org '+cs.Core_IPS_Product_Org1__c);
+    //             system.debug('old prod org '+oldMap.get(cs.id).Core_IPS_Product_Org1__c );
 
     //             //if(oldMap==null || (oldMap!=null && (cs.OwnerId!=oldMap.get(cs.id).OwnerId || cs.Core_IPS_Product_Org1__c != oldMap.get(cs.id).Core_IPS_Product_Org1__c))) // Commented by Ganapati for - US431208
     //            // if(oldMap==null || (oldMap!=null && (cs.Core_IPS_Case_Owner_Email__c!=oldMap.get(cs.id).Core_IPS_Case_Owner_Email__c || cs.Core_IPS_Product_Org1__c != oldMap.get(cs.id).Core_IPS_Product_Org1__c))) // Modified by Ganapati for - US431208
@@ -2911,6 +2921,7 @@ Modification Log :
     //                                                  (cs.Core_IPS_Case_Owner_Email__c!=null && cs.Core_IPS_Case_Owner_Groups__c == null && cs.Core_IPS_New_Backend_System__c!=null))))
     //             {
     //              if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+    //             	//	system.debug('COGUpdate Debug3 - IF');
     //              }
     //                 cs.Core_IPS_Case_Owner_Groups__c = null;    
     //                 //caseOwnerSet.add(cs.OwnerId);
@@ -2936,9 +2947,11 @@ Modification Log :
     //                     //String key = String.valueOf(cs.ownerId) + String.valueOf(cs.Core_IPS_Product_Org1__c);
     //                     String key = String.valueOf(cs.Core_IPS_Case_Owner_Email__c) + String.valueOf(cs.Core_IPS_Product_Org1__c); // Modified by Ganapati for - US431208
     //                     if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+    //             		//	system.debug('COGUpdate Debug4 - '+mapCaseOwnerGroup);
     //                 	}
     //                     if(mapCaseOwnerGroup.containsKey(key)) {
     //                             if(Integer.valueOf(System.Label.Core_IPS_EnableDebug)>0){
+    //             			//	system.debug('COGUpdate Debug5 - IF');
     //                 		}
     //                         cs.Core_IPS_Case_Owner_Groups__c = mapCaseOwnerGroup.get(key);
     //                     }
@@ -3669,6 +3682,7 @@ Modification Log :
             }
             return isQueryRequired;
         } Catch (Exception Ex){
+            System.debug('Core_IPS_CaseTriggerHandler.isQueryRequired Method Has Exception : '+ ex.GetMessage());
             return false;
         }
     }

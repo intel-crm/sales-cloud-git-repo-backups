@@ -1,16 +1,10 @@
-/****************************************************************************************************************************************
-* Class Name       : Core_MDF_OutcomeBasedCampDetailCntllr 
-* Test Class Name  : Core_MDF_OutcomeBasedDetailCntllrTest
-* Version          : 1.0 
-* Created Date     : 23/03/2026
-* Modification Log :
-* Developer            Date               Description
-* ---------------------------------------------------------------------------------------------------------------------------------------
-* Accenture - Ramapriya       23/03/2026         Server-side Controller class of Core_MDF_OutcomeBasedCampDetail 
-												 (used for Outcome-Based Campaigns Detail Page)
-*****************************************************************************************************************************************/
+/**
+ * @description Controller for Core_MDF_OutcomeBasedCampDetail component
+ * Handles access checking and internal note creation
+ */
 public without sharing class Core_MDF_OutcomeBasedCampDetailCntllr {
- @TestVisible private static Boolean testForceObjectAccessException = false;
+
+    @TestVisible private static Boolean testForceObjectAccessException = false;
     @TestVisible private static Boolean testCanCreateOverride;
     @TestVisible private static Boolean testCanUpdateOverride;
     @TestVisible private static Boolean testCanDeleteOverride;
@@ -58,70 +52,50 @@ public without sharing class Core_MDF_OutcomeBasedCampDetailCntllr {
 
         return accessMap;
     }
-    
-//Method to check whether the User has access to view the record
+
+    /**
+     * @description Check if current user has access to the specified record
+     * @param recordId The ID of the record to check access for
+     * @param objectApiName The API name of the object
+     * @return Map with hasAccess boolean
+     */
     @AuraEnabled
-    public static UserAccessResult checkUserRecordAccess(String recordId, String objectApiName) {
-        UserAccessResult result = new UserAccessResult();
-        
+    public static Map<String, Boolean> checkUserRecordAccess(String recordId, String objectApiName) {
+        Map<String, Boolean> result = new Map<String, Boolean>();
+        result.put('hasAccess', false);
+
         try {
-            
-            // Handle empty recordId
-            if (String.isBlank(recordId)) {
-                result.hasAccess = false;
+            if (String.isBlank(recordId) || String.isBlank(objectApiName)) {
                 return result;
             }
-            
-            // Handle invalid Id with different object
-            Id recId = Id.valueOf(recordId);
-            String objectName = recId.getSObjectType().getDescribe().getName();
-            
-            if (!objectName.equalsIgnoreCase(objectApiName)) {
-                result.hasAccess = false;
+
+            if (!Schema.getGlobalDescribe().containsKey(objectApiName)) {
                 return result;
             }
-            
-            // Query UserRecordAccess
-            List<UserRecordAccess> accessList = [
-                SELECT RecordId, HasReadAccess, HasEditAccess
-                FROM UserRecordAccess
-                WHERE UserId = :UserInfo.getUserId()
-                AND RecordId = :recordId
-                LIMIT 1
-            ];
-            
-            if (accessList.isEmpty()) {
-                result.hasAccess = false;
+
+            Schema.SObjectType objectType = Schema.getGlobalDescribe().get(objectApiName);
+            Schema.DescribeSObjectResult describeResult = objectType.getDescribe();
+
+            if (!describeResult.isAccessible()) {
                 return result;
             }
-            
-            UserRecordAccess userAccess = accessList[0];
-            
-            if (!accessList.isEmpty() && (userAccess.HasReadAccess || userAccess.HasEditAccess)){
-                result.hasAccess = true;
-                result.recordId = userAccess.RecordId;
-            } else {
-                result.hasAccess = false;
-            }
-            
+
+            List<SObject> records = (List<SObject>) Security.stripInaccessible(
+                AccessType.READABLE,
+                Database.query('SELECT Id FROM ' + objectApiName + ' WHERE Id = :recordId LIMIT 1')
+            ).getRecords();
+
+            result.put('hasAccess', !records.isEmpty());
+
         } catch (Exception e) {
-            result.hasAccess = false;
+            System.debug('ERROR in checkUserRecordAccess: ' + e.getMessage());
+            result.put('hasAccess', false);
         }
-        
+
         return result;
     }
-    
-    // Wrapper class to return access information
-    public class UserAccessResult {
-        @AuraEnabled public Boolean hasAccess { get; set; }
-        @AuraEnabled public String recordId { get; set; }
-        @AuraEnabled public String errorMessage { get; set; }
-        
-        public UserAccessResult() {
-            this.hasAccess = false;
-        }
-    }
- /**
+
+    /**
      * @description Get internal notes (Core_MDF_Notes__c) linked to the activity record
      * @param recordId The PartnerFundRequest (activity) record ID
     * @return List of note wrapper maps with Name, Title, Comments, CreatedByName, CreatedDateFormatted

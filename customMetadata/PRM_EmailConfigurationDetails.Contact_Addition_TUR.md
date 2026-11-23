@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">SECADD_ADMIN_NOTIFICATION_Turkish</value>
+        <value xsi:type="xsd:string">SECADD_ADMIN_NOTIFICATION_Thai</value>
     </values>
 </CustomMetadata>

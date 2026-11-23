@@ -29,12 +29,16 @@
         <help>지급 문서와 관련된 클레임을 나타냅니다.</help>
         <label>청구</label>
         <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Payment Documents --></relationshipLabel>
+        <relationshipLabel><!-- Payment Documents (Claim) --></relationshipLabel>
     </fields>
     <fields>
         <help>고객이 업로드해야 하는 결제 문서의 유형을 나타냅니다.</help>
         <label>문서 유형</label>
         <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Amount --></label>
+        <name>Core_MDF_Invoice_Amt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -101,6 +105,10 @@
         <name>Core_MDF_VAT_Amt__c</name>
     </fields>
     <fields>
+        <label>부가가치세 취소 코멘트</label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_VAT_CreatedBy_Nm__c</name>
     </fields>
@@ -126,7 +134,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Submit for Approval Record Type --></description>
-        <label><!-- Submit for Approval --></label>
+        <label>승인을 위해 제출</label>
         <name>Core_MDF_Submit_for_Approval</name>
     </recordTypes>
     <validationRules>

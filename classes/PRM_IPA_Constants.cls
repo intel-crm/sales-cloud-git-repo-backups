@@ -24,10 +24,14 @@ public class PRM_IPA_Constants {
     public static final String PRM_EMAIL_VERIFICATION_REQUEST = 'PRM_Email_Verification_Request';
     public static final String PRM_ACCOUNT_CREATE_REQUEST = 'Account_Create_Request';
     public static final String PRICING_TENDER_PGM_CHANNEL = 'Intel Quote Request';
-    public static final Id ACCOUNT_CREATE_REQUEST_RT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(PRM_ACCOUNT_CREATE_REQUEST).getRecordTypeId();
-    public static final Id CONTACT_RECORD_TYPE_ID = Schema.getGlobalDescribe().get('Contact').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();
-    public static final Id EV_RECORD_TYPE_ID =  Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get(PRM_EMAIL_VERIFICATION_REQUEST).getRecordTypeId();
-    public static final Id ADMIN_REGISTRATION_RT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId();
+    //public static final Id ACCOUNT_CREATE_REQUEST_RT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(PRM_ACCOUNT_CREATE_REQUEST).getRecordTypeId();//ATHR Fix - TWC729-9556 - SJ
+    //public static final Id CONTACT_RECORD_TYPE_ID = Schema.getGlobalDescribe().get('Contact').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();//ATHR Fix - TWC729-9556 - SJ
+    //public static final Id EV_RECORD_TYPE_ID =  Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get(PRM_EMAIL_VERIFICATION_REQUEST).getRecordTypeId();//ATHR Fix - TWC729-9556 - SJ
+    //public static final Id ADMIN_REGISTRATION_RT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId();//ATHR Fix - TWC729-9556 - SJ
+    public static final Id ACCOUNT_CREATE_REQUEST_RT = PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(PRM_ACCOUNT_CREATE_REQUEST).getRecordTypeId();
+    public static final Id CONTACT_RECORD_TYPE_ID = Contact.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();
+    public static final Id EV_RECORD_TYPE_ID = PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(PRM_EMAIL_VERIFICATION_REQUEST).getRecordTypeId();
+    public static final Id ADMIN_REGISTRATION_RT = PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId();
     public static final String Authorization = 'Authorization';
     public static final String Bearer = 'Bearer ';
 

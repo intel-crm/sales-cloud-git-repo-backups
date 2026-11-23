@@ -135,8 +135,8 @@ private class Core_MDF_Bank_Test {
             insert erpmEngagementList;
 
             //Creating Entitlement Detail for CCF and DCF with utility class
-            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator', agsRoleList[0].Id,'Intel® Partner Investment Center','CCF Account Budget Administrator', erpmEngagementList[0].Id, true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
-            Core_Entitlement__c entitlementDCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Datacenter Account Budget Administrator', agsRoleList[1].Id,'Intel® Partner Investment Center','DCF Account Budget Administrator', erpmEngagementList[1].Id, true,Core_MDF_CCP_ConstantClass.DCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator', agsRoleList[0].Id,'Consolidated Co-marketing Platform','CCF Account Budget Administrator', erpmEngagementList[0].Id, true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+            Core_Entitlement__c entitlementDCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Datacenter Account Budget Administrator', agsRoleList[1].Id,'Consolidated Co-marketing Platform','DCF Account Budget Administrator', erpmEngagementList[1].Id, true,Core_MDF_CCP_ConstantClass.DCF_PROGRAM,false);
             List<Core_Entitlement__c> entitlementList = new List<Core_Entitlement__c>();
             entitlementList.add(entitlementCCF);
             entitlementList.add(entitlementDCF);
@@ -564,7 +564,6 @@ private class Core_MDF_Bank_Test {
     static void disassociateBankTestWithClaimsAndEscalations(){
 
         User paymentAdmin = [Select Id FROM User Where LastName = 'Bank Payment Admin 123' LIMIT 1];
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         Account testIntelAccount = [Select Id FROM Account WHERE Name = 'Test Account' LIMIT 1];
     Test.startTest();
         Account testCMAccount = [Select Id FROM Account WHERE Name = 'Test Acc CCF' LIMIT 1];
@@ -595,15 +594,12 @@ private class Core_MDF_Bank_Test {
                 System.assert(bankRec.Core_MDF_Bank_Status__c != 'Active');
             }
         }
-        
-        System.runAs(sysAdminUser)
-        {
         Core_MDF_Account_Bank_Mapping__c abmCCF1 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(testCMAccount.Id, bankRec.Id, FALSE);
         abmCCF1.Core_MDF_Active_ind__c = TRUE;
         Database.insert(abmCCF1);
 
         PartnerFundRequest pfr = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Title = 'test' and Core_MDF_Fund_Request_Status__c= 'Closed' LIMIT 1];
-        PartnerFundRequest pfrPlan = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Core_MDF_Fund_Request_Status__c = 'Planned' LIMIT 1];
+        PartnerFundRequest pfrPlan = [Select Id, Core_MDF_Activity_Number__c FROM PartnerFundRequest WHERE Title = 'test' and Core_MDF_Fund_Request_Status__c= 'Planned' LIMIT 1];
         
         
         pfr.Amount = 0;
@@ -628,7 +624,7 @@ private class Core_MDF_Bank_Test {
         esc1.Core_MDF_Channel_Program_id__c = cp.Id;
         esc1.recordtypeid= claimRecType;
         Database.insert(esc1);
-        }
+
         System.runAs(paymentAdmin){
             bankRec.Core_MDF_Ineffective_Selection_ind__c = true;
             try{

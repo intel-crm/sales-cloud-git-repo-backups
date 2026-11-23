@@ -8,26 +8,26 @@
     <subject>Intel Enrollment Confirmation</subject>
     <textOnly>Intel Registration Confirmation
 
-INTEL® ON DEMAND WEB SERVICES
+Verify your e-mail
 
-Access granted, Welcome to the Intel© On Demand web services revenue environment!
+Action Required
 
-Dear  {!Contact.Name},
+This notice is to inform you that a profile has been created for you by an Intel Representative because of your interest in  Intel® On Demand - Revenue API.
 
-This notice is to inform you that you have been granted access to Intel® On Demand web services revenue environment (LIV). Use your login credentials listed below to log into the Intel® On Demand API Portal.
+
+Please retain this e-mail for future reference.
 
 E-mail Address: {!Contact.Email}
 
-Retain this email for future reference.
-Your use of Intel’s websites are governed by Intel’s Terms of Use linked from the bottom of each respective site’s web pages.
-If you have questions, did not request this update, or feel you have received this email in error, please contact us.
-To manage your profile, including available marketing subscriptions, please visit My Intel.
+What you need to do
 
-Sincerely,
+Please follow this link to complete your account set up or copy the URL into your browser.
 
-Registration Administrator
+Your use of Intel&apos;s websites are governed by Intel&apos;s Terms and Conditions of Use linked from the bottom of each respective site&apos;s web pages.
 
-Intel© On Demand Team
+If you feel you have received this e-mail in error, please contact us  here.
+
+Visit this  link any time to manage your profile.
 
 Please DO NOT reply to this e-mail message. This is an automated response.
 To ensure that you continue receiving our e-mails, please add us to your address book.
@@ -37,7 +37,7 @@ please see the Intel Privacy Notice.
 
 Legal Information | Trademarks © Intel Corporation. All rights reserved.
 *Other names and brands may be claimed as the property of others.
-**Intel is not responsible for content of sites outside our intranet sites.</textOnly>
+**Intel is not responsible for content of sites outside our intranet.</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

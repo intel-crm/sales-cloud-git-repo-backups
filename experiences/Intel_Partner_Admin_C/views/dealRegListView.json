@@ -2,7 +2,7 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "6c04f998-82e4-4170-8db1-282847e4d968",
+  "id" : "57c497a2-ea8a-4769-8f66-15baec4d6b27",
   "label" : "Deal Reg List View",
   "regions" : [ {
     "components" : [ {
@@ -10,19 +10,19 @@
         "menuItems" : "[]"
       },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "7f1855a7-32a5-4d79-867c-0174d2981b29",
+      "id" : "01da4262-6ccf-4957-a40e-b551bfd1876d",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "9f56a2cd-e188-4546-827d-17a16def4201",
+    "id" : "774d087e-6efb-42c9-915e-11755d4336c7",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
         "enableInlineEdit" : true,
-        "filterName" : "Deal_Registrations_Draft",
+        "filterName" : "Partner_Deal_Registrations_Draft",
         "layout" : "FULL",
         "pageSize" : 25,
         "scope" : "Core_Design_Registration__c",
@@ -37,16 +37,38 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "d18dda91-a296-48f4-bcc3-993692865d6e",
+      "id" : "573a0efc-028e-4c51-8fae-e8af420d0081",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "All",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Core_AE_Integration_Log__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "d4c697ed-84c3-41b9-a213-e33c28580906",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "3a1dc748-94e2-47e5-8bdf-d808561134af",
+    "id" : "10882d03-baea-439e-acde-e7ad3fe5ff13",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "0eb000a7-79b9-4713-bf6b-5f98a126e1f4",
+    "id" : "9dd714a1-58f4-4276-85f9-edb8756af2a3",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -57,15 +79,15 @@
         "title" : "Deal Reg List View"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "a7bcd410-3503-4624-bc0f-9e9522e30b7d",
+      "id" : "9cb4d0cd-1e69-44a3-af13-2fdc025eb360",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "b6b2037c-9bbd-446d-be13-8da790d65d3d",
+    "id" : "46dfa363-306b-4ebf-9d4d-098240713dc0",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "mrADB4cVNfBuNaXAvRkcedX6SGlRqE",
+  "themeLayoutType" : "D9gihoBcrVmPnDirmD7WyT5a9SjrsS",
   "type" : "view",
   "viewType" : "custom-deal-reg-list-view"
 }

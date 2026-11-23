@@ -35,16 +35,17 @@ export default class Pricing_listViewComp extends LightningElement {
                     delete option.Name;
                     delete option.DeveloperName;
                 });
-                
-                if (localStorage.getItem(this.itemTitle) == null || localStorage.getItem(this.itemTitle) == '' || localStorage.getItem(this.itemTitle) == undefined) {
 
+                if (this.getCookie() == null || this.getCookie() == '' || this.getCookie() == undefined) {
+        
                     this.currentFilter = this.listViewOptions[0].label;
                     this.currentFilterValue = this.listViewOptions[0].value;
-                    this.currentFilterId = this.listViewOptions[0].Id;
-                    localStorage.setItem(this.itemTitle, this.currentFilterValue);
+                    this.currentFilterId = this.listViewOptions[0].Id;                    
+                    this.createCookie(this.itemTitle, this.currentFilterValue, 365);
+                }
+                else {
 
-                } else {
-                    this.currentFilterValue = localStorage.getItem(this.itemTitle);
+                    this.currentFilterValue = this.getCookie();
                     this.listViewOptions.forEach(e => {
                         if (e.value == this.currentFilterValue) {
                             this.currentFilter = e.label;
@@ -53,19 +54,61 @@ export default class Pricing_listViewComp extends LightningElement {
                     });
                 }
 
-                this.mainListView = '/lightning/o/' + this.objectAPI + '/list?filterName=' + this.currentFilterId;
+                this.mainListView = window.location.origin + '/lightning/o/' + this.objectAPI + '/list?filterName=' + this.currentFilterId;
 
                 this.isLoading = false;
                 this.loadTable = true;
             })
             .catch(error => {
-                console.log('Error:', error);
+                console.error('Error:', error);
             });
+    }
+
+    createCookie(name, value, days) {
+        var expires;
+
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        } else {
+            expires = "";
+        }
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    getCookie() {
+        var cookieVal = this.retriveCookie();
+        var listViewItemName;
+        if (cookieVal != '') {
+            for(let i=0; i< cookieVal.length; i++)
+            {
+                if(cookieVal[i].includes(this.itemTitle))
+                {
+                    let value = cookieVal[i].split('=');
+                    listViewItemName = value[1];
+                }
+            }
+        } else {
+            listViewItemName = '';
+        }
+
+        return listViewItemName;
+    }
+
+    retriveCookie() {
+    
+        var cookieString = decodeURIComponent(document.cookie);
+        var cookieStrArray = cookieString.split("; ");
+        return cookieStrArray;
     }
 
     handleFilterChangeButton(event) {
 
         this.loadTable = false;
+        this.isLoading = true;
+
         let filter = event.target.dataset.filter;
         this.isExpanded = !this.isExpanded;
 
@@ -81,15 +124,12 @@ export default class Pricing_listViewComp extends LightningElement {
                 }
             });
 
-            localStorage.setItem(this.itemTitle, this.currentFilterValue);
-            this.mainListView = '/lightning/o/' + this.objectAPI + '/list?filterName=' + this.currentFilterId;
-            this.loadTable = true;
-
-        } else {
-
-            this.loadTable = false;
-            this.loadTable = true;
+            this.createCookie(this.itemTitle, this.currentFilterValue, 365);
+            this.mainListView = window.location.origin + '/lightning/o/' + this.objectAPI + '/list?filterName=' + this.currentFilterId;
         }
+        
+        this.loadTable = true;
+        this.isLoading = false;
     }
 
     get dropdownTriggerClass() {

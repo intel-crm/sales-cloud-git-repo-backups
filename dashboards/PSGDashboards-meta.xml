@@ -6,11 +6,6 @@
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>ags_internal_users</sharedTo>
-        <sharedToType>Group</sharedToType>
-    </folderShares>
-    <folderShares>
         <accessLevel>Manage</accessLevel>
         <sharedTo>AGS_PSG_Report_Admin</sharedTo>
         <sharedToType>Group</sharedToType>

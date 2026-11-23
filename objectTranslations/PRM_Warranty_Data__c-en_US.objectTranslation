@@ -47,6 +47,10 @@
         <relationshipLabel><!-- Warranty Data (One Partner ID) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Previous One Partner Account ID --></label>
+        <name>PRM_Previous_One_Partner_Account_ID__c</name>
+    </fields>
+    <fields>
         <label><!-- Warranty External Id --></label>
         <name>PRM_Warranty_ext_Id__c</name>
     </fields>

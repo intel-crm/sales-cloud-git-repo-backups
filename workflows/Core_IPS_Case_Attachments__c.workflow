@@ -15,7 +15,7 @@
         <fullName>Core_IPS_CaseAttachment_Backend_OutMsg</fullName>
         <apiVersion>34.0</apiVersion>
         <description>Backend Case Attachment Outbound Message</description>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2-dev.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>Core_Case__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
@@ -49,7 +49,7 @@
             <name>Core_IPS_CaseAttachment_Backend_OutMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This work rule sends outbound message for a case attachment created to an already promoted backend IPS case to backend System (JIRA, HSD ES..etc)</description>
         <formula>AND(Core_Case__r.Core_IPS_Backend_ID__c &lt;&gt; null, Core_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, Core_Case__r.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false , Core_Is_Migrated__c = false,(ISPICKVAL( Core_Promote_Status__c , &apos;&apos; ) || ISPICKVAL( Core_Promote_Status__c , &apos;In Progress&apos; )),(    ISPICKVAL(Core_Upload_Status__c, &apos;Complete&apos;)),  ( ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;) || CONTAINS($User.Username, &apos;ips.file.integrationuser&apos;)))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>

@@ -11,7 +11,7 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
    public Database.QueryLocator start(Database.BatchableContext context) {
         List<SPM_Planning_Period__c> planningRec = [Select Id,Name,Active__c,Planning_Period__c  FROM SPM_Planning_Period__c WHERE Active__c=true ORDER BY CreatedDate DESC LIMIT 1];
         String planningPeriod =  planningRec[0].Planning_Period__c;
-       //	system.debug('ACC PLANNING PERIOD:'+planningPeriod);
+       	system.debug('ACC PLANNING PERIOD:'+planningPeriod);
         String soqlQuery = 'SELECT Id,Name,GM_Feedback__c,Customer_Name__c,Customer_ID__r.Planning_Period__c FROM SPM_Customer_Feedback__c WHERE GM_Feedback__c =\'Approved\' AND Customer_ID__r.Core_PlanningPeriod__c=:planningPeriod';
         return Database.getQueryLocator(soqlQuery);
     }
@@ -28,7 +28,7 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
         Set<Id> uniqueAccId = new Set<Id>();
         
        
-      //  system.debug('Inside CST_CRMAccountUpdate_Batch execute:'+scope.size());
+        system.debug('Inside CST_CRMAccountUpdate_Batch execute:'+scope.size());
        
         //Populate customer ids from Customer Feedback Records 
         for(SPM_Customer_Feedback__c customerFeedback:scope){
@@ -38,11 +38,11 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
         //Fetch Account Feedback records based on CustomerId 
         accFeedbackList = [SELECT Id,Account_ID__c,Account_Name__c,New_Account_Owner__c,New_Sales_Group__c,Account_ID__r.SF_Account__c,Feedback__c,CRM_CST_New_Core_Account_Category__c,Coverage_Type__c FROM SPM_Account_Feedback__c WHERE Account_ID__r.SPM_Customer_ID__c IN:customerIdSet AND (New_Account_Owner__c!=null OR New_Sales_Group__c!=null OR Coverage_Type__c!=null OR CRM_CST_New_Core_Account_Category__c!=null) AND SF_Account_Updated__c=false ORDER BY Account_ID__r.SF_Account__c];
         
-      //  system.debug('Account feedback list is:'+accFeedbackList);
-      //  system.debug('Account feedback list size is:'+accFeedbackList.size());
+        system.debug('Account feedback list is:'+accFeedbackList);
+        system.debug('Account feedback list size is:'+accFeedbackList.size());
         
        Map<String, CST_CustomerFeedback_Account_Sync__mdt> coverageMetadata = CST_CustomerFeedback_Account_Sync__mdt.getAll();
-      // system.debug('CST COVERAGE'+coverageMetadata);
+       system.debug('CST COVERAGE'+coverageMetadata);
         
         //Loop through Account Feedback Records and check if duplicate feedbacks exist with differnt sales grp or account owner
         //First time a record comes in the loop its account id will be populated as a key in accIdCRMAccount Map
@@ -55,11 +55,11 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
                  dupAccFeedbackId.add(accFeedbackRec.Id);
             }
             else{
-      //      system.debug('AccFeedback is:'+ accFeedbackRec.Account_Name__c+'New owner:'+accFeedbackRec.New_Account_Owner__c+'New Sales grp:'+accFeedbackRec.New_Sales_Group__c);
+            system.debug('AccFeedback is:'+ accFeedbackRec.Account_Name__c+'New owner:'+accFeedbackRec.New_Account_Owner__c+'New Sales grp:'+accFeedbackRec.New_Sales_Group__c);
                 Account acc = new Account(Id= accFeedbackRec.Account_ID__r.SF_Account__c);
-                acc.Core_Account_Owner_Preview__c = accFeedbackRec.New_Account_Owner__c;
+                acc.Core_Account_Owner_Preview__c = accFeedbackRec.New_Account_Owner__c; 
                 acc.Core_Sales_Group_Preview__c = accFeedbackRec.New_Sales_Group__c;
-                String coverage='';
+                /*String coverage='';
                 if(accFeedbackRec.Coverage_Type__c== coverageMetadata.get('CST_Intel_Led').Account_Feedback_Value__c ){
                 	coverage = coverageMetadata.get('CST_Intel_Led').Account_Value__c;
                  }
@@ -71,11 +71,13 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
                   }
                   else if(accFeedbackRec.Coverage_Type__c== coverageMetadata.get('CST_Other_led_Account').Account_Feedback_Value__c ){
                   	coverage = coverageMetadata.get('CST_Other_led_Account').Account_Value__c;
-                  }
-                acc.Core_Account_Primary_Coverage_Preview__c = coverage;
+                  }*/
+                //commented as part of TWC3123-5894
+                acc.Core_Account_Primary_Coverage_Preview__c = accFeedbackRec.Coverage_Type__c;
+                //acc.Core_Account_Primary_Coverage_Preview__c = coverage;
                 acc.Core_Account_Category_Preview__c = accFeedbackRec.CRM_CST_New_Core_Account_Category__c;  
                 accIdCRMAccount.put(accFeedbackRec.Account_ID__r.SF_Account__c,accFeedbackRec);
-          //      system.debug('Map key is:'+accFeedbackRec.Account_ID__r.SF_Account__c+':Map value is:'+accFeedbackRec);
+                system.debug('Map key is:'+accFeedbackRec.Account_ID__r.SF_Account__c+':Map value is:'+accFeedbackRec);
                 //Avoid adding same Account twice to finalCRMAccountList
                 if(!uniqueAccId.contains(acc.Id)){
                    finalCRMAccountList.add(acc);
@@ -84,8 +86,8 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
                 
             }
         }
-    //    system.debug('Accountmap is:'+accIdCRMAccount);
-      //  system.debug('Duplicate accIds is:'+duplicateAccIds);
+        system.debug('Accountmap is:'+accIdCRMAccount);
+        system.debug('Duplicate accIds is:'+duplicateAccIds);
     
          //If accId present in duplicateIds ignore those records
          //Add the remaining Account records to crmList to update
@@ -100,11 +102,11 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
         for(Integer i=0; i < myResult.size(); i++) {
           if(myResult.get(i).isSuccess()) {
               allSuccessId.add(myResult.get(i).Id);
-      //          System.debug('Records are updated Successfully'+allSuccessId);
+                System.debug('Records are updated Successfully'+allSuccessId);
              } 
              else if(!myResult.get(i).isSuccess()) {
                Database.Error errors =  myResult.get(i).getErrors().get(0);
-       //         System.debug('Error Occurs While Processing The Record'+errors.getMessage());
+                System.debug('Error Occurs While Processing The Record'+errors.getMessage());
                 allFailedId.add(crmList.get(i).Id);
                 errorMap.put(crmList.get(i).Id,errors.getMessage());
              }
@@ -120,24 +122,24 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
         Database.SaveResult[] afResults;
         if(accFeedBackUpdateList.size()>0){
             afResults = Database.update(accFeedBackUpdateList,false);
-        //    system.debug('afResults --'+afResults);
+            system.debug('afResults --'+afResults);
         }
         for(Integer i=0; i < afResults.size(); i++) {
                 if(afResults.get(i).isSuccess()) {
                     allSuccessAFId.add(afResults.get(i).Id);
-       //             System.debug('AF Records are updated Successfully'+allSuccessId);
+                    System.debug('AF Records are updated Successfully'+allSuccessId);
                 } 
                 else if(!afResults.get(i).isSuccess()) {
                     Database.Error errors =  afResults.get(i).getErrors().get(0);
-         //           System.debug('AF Error Occurs While Processing The Record'+afResults.get(i).Id+' '+errors.getMessage());
+                    System.debug('AF Error Occurs While Processing The Record'+afResults.get(i).Id+' '+errors.getMessage());
                     allFailedAFId.add(afResults.get(i).Id);
                 }        
  
     	}
-     //   system.debug('AF SUCCESS ID:'+allSuccessAFId);
-     //   system.debug('AF SUCCESS ID SIZE:'+allSuccessAFId.size());
-     //   system.debug('AF FAILED ID:'+allFailedAFId);
-     //   system.debug('AF FAILED ID SIZE:'+allFailedAFId.size());
+        system.debug('AF SUCCESS ID:'+allSuccessAFId);
+        system.debug('AF SUCCESS ID SIZE:'+allSuccessAFId.size());
+        system.debug('AF FAILED ID:'+allFailedAFId);
+        system.debug('AF FAILED ID SIZE:'+allFailedAFId.size());
         
     }
     
@@ -152,7 +154,7 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
         }
         String mailBody = 'CRM Update is completed' +'<br/>';
         
-     //   system.debug('Inside finish dupAccIds:'+duplicateAccIds.size());
+        system.debug('Inside finish dupAccIds:'+duplicateAccIds.size());
          
         if(allSuccessId.size()>0){
           mailBody +='The following CRM Accounts were updated successfully';   
@@ -183,10 +185,11 @@ public class CST_CRMAccountBatch implements Database.Batchable<sObject>,Database
             }
             mailBody += '</table>';
          }
+         String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
         
-     //    system.debug('Logged in user is'+loggedUserEmail);
+
          Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-        String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
+        
          mail.setToAddresses(new String[] {loggedUserEmail});
          mail.setReplyTo('wsm-postmaster@intel.com');
          //mail.setSenderDisplayName('Intel Corporation-NoReply');

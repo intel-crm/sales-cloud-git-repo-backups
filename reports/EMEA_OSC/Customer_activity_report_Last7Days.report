@@ -4,25 +4,25 @@
         <calculatedFormula>TASK:SUM</calculatedFormula>
         <datatype>number</datatype>
         <developerName>FORMULA1</developerName>
-        <isActive>false</isActive>
+        <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>New Formula</masterLabel>
         <scale>2</scale>
     </aggregates>
     <columns>
-        <field>DUE_DATE</field>
+        <field>ACCOUNT</field>
     </columns>
     <columns>
-        <field>ACCOUNT</field>
+        <field>ACCOWNER</field>
+    </columns>
+    <columns>
+        <field>CREATED_BY</field>
     </columns>
     <columns>
         <field>WHAT_NAME</field>
     </columns>
     <columns>
         <field>SUBJECT</field>
-    </columns>
-    <columns>
-        <field>Activity.Core_Task_Type__c</field>
     </columns>
     <columns>
         <field>FULL_DESCRIPTION</field>
@@ -33,6 +33,12 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>TASK</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>DUE_DATE</field>
     </columns>
     <filter>
         <booleanFilter>((1 AND 3 AND (2 OR 4)) AND 5) AND 6</booleanFilter>
@@ -82,10 +88,6 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <field>CREATED_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>ROLLUP_DESCRIPTION</field>
         <sortOrder>Asc</sortOrder>
@@ -112,7 +114,9 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
         <interval>INTERVAL_CURPREV1</interval>

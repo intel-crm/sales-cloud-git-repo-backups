@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_Entitlement__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_Entitlement__c.Entitlements__r$Name</field>
+    </columns>
+    <columns>
+        <field>Core_Entitlement__c$Owner</field>
+    </columns>
+    <columns>
+        <field>Core_Entitlement__c$Id</field>
+    </columns>
+    <columns>
+        <field>Core_Entitlement__c.Entitlements__r$CreatedBy</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Copy of Test Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Contact_Entitlements__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_Entitlement__c.Entitlements__r$CreatedBy</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Core_Entitlement__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_PREVFY</interval>
+    </timeFrameFilter>
+</Report>

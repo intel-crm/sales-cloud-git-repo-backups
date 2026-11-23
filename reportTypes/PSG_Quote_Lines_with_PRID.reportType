@@ -621,6 +621,41 @@
             <field>core_cpq_parent_quote__c.core_cpq_active_cb__c</field>
             <table>SBQQ__QuoteLine__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Total_Requested_Quantity__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percent__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percentage__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Name__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Rationale_for_Pricing__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Application_Agent_Status__c</field>
+            <table>SBQQ__QuoteLine__c</table>
+        </columns>
         <masterLabel>Quote Lines</masterLabel>
     </sections>
 </ReportType>

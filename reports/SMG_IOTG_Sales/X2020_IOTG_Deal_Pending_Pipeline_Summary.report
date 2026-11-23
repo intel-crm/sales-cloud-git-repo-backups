@@ -1,35 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_70194091</developerName>
-        <masterLabel>Prod App Groups</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <value>Energy</value>
-        </values>
-        <values>
-            <value>Transportation</value>
-        </values>
-        <values>
-            <value>Industrial</value>
-        </values>
-        <values>
-            <value>Medical</value>
-        </values>
-        <values>
-            <value>Smart Home</value>
-        </values>
-        <values>
-            <value>Retail</value>
-        </values>
-        <values>
-            <value>Emb Other</value>
-        </values>
-    </buckets>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>EXP_PRODUCT_AMOUNT</field>
@@ -100,13 +70,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

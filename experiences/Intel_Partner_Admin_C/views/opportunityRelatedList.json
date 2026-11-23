@@ -2,10 +2,10 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "d1cd1996-794c-4eda-b649-872c546d1ae2",
+  "id" : "d57d9be0-79f0-4a30-9b63-5788ca3d3276",
   "label" : "Opportunity Related List",
   "regions" : [ {
-    "id" : "e857585e-ffb3-491e-8285-00645d5c8eb8",
+    "id" : "ac01a266-1571-44d4-9920-5f4e96dbc91f",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -20,20 +20,20 @@
         "showRowNumbers" : true
       },
       "componentName" : "forceCommunity:relatedList",
-      "id" : "6064af79-474b-4629-826a-cbbe6f112440",
+      "id" : "d357d165-b946-4bb2-8cee-3c92eee46ad7",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "7091d9b8-2283-460b-86b5-9deec2d318de",
+    "id" : "1726c485-123e-427a-b79a-40ddbacab900",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "c10d8ffc-bc94-4d2f-be9b-79ca34e0d6b8",
+    "id" : "f0835c77-bd71-4367-9cad-15761d3e7841",
     "regionName" : "footer",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "Inner",
   "type" : "view",
   "viewType" : "relatedlist-006"
 }

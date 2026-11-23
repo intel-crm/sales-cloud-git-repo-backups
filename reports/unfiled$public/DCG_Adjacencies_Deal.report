@@ -36,7 +36,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>persistent memory,xxv,silicon,omni</value>
+            <value>persistent memory,xxv</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>

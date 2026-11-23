@@ -461,6 +461,7 @@
         <columns>PRM_Question_Display_Txt__c</columns>
         <columns>PRM_Channel_Program_Id__c</columns>
         <columns>PRM_Display_Order_Nbr__c</columns>
+        <columns>PRM_InActive_Ind__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

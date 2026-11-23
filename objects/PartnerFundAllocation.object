@@ -168,7 +168,7 @@ IF((Amount - Core_MDF_Total_Activity_Allocated_Amount__c)&gt;0,(Amount - Core_MD
     </fields>
     <fields>
         <fullName>Core_MDF_Available_Allocation_Amount__c</fullName>
-        <formula>Amount - TotalApprovedFcs</formula>
+        <formula>Amount  -  TotalApprovedFcs</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>Amount available for Claim creation</inlineHelpText>
         <label>Claim Available Amount</label>
@@ -341,32 +341,8 @@ $Label.Core_MDF_Intel_System_User
         <columns>ChannelPartner</columns>
         <columns>Description</columns>
         <columns>Amount</columns>
-        <columns>Core_MDF_Available_Allocation_Amount__c</columns>
-        <columns>Core_MDF_Claim_Reserved_Amount_Amt__c</columns>
-        <columns>Core_MDF_Total_Activity_Allocated_Amount__c</columns>
-        <columns>Core_MDF_Available_Activity_Alloc_Amt__c</columns>
-        <columns>Core_MDF_Intel_Account_Name_Txt__c</columns>
-        <columns>TotalApprovedFcs</columns>
-        <columns>TotalApprovedFrs</columns>
-        <columns>TotalReimbursedFcs</columns>
         <filterScope>Everything</filterScope>
         <label>All Partner Fund Allocations</label>
-    </listViews>
-    <listViews>
-        <fullName>My_Partner_Fund_Allocations</fullName>
-        <columns>Name</columns>
-        <columns>Budget</columns>
-        <columns>Core_MDF_Budget_Type__c</columns>
-        <columns>ChannelPartner</columns>
-        <columns>Description</columns>
-        <columns>Amount</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Name</field>
-            <operation>contains</operation>
-            <value>2022 Q1 MDF Budget</value>
-        </filters>
-        <label>My Partner Fund Allocations</label>
     </listViews>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>

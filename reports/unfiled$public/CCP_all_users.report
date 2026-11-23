@@ -16,8 +16,7 @@
         <field>Core_Contact_Entitlement__c.Core_Entitlement_Id__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Contact_Entitlement__c.Core_Selected__c</field>
+        <field>IS_PARTNER</field>
     </columns>
     <description>Expose all external users with CCF, DCF, SPCF access</description>
     <filter>
@@ -26,7 +25,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>CCF External Content Viewer,CCF Boost External Content Viewer,DCF External Content Viewer,SPCF External Content Viewer</value>
+            <value>CCF USER,DCF USER,SPCF USER</value>
         </criteriaItems>
         <criteriaItems>
             <column>IS_PARTNER</column>
@@ -35,17 +34,10 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>lenovo</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>CCP all users with Entitlements</name>
+    <name>CCP all users</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -55,8 +47,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>ACCOUNT.NAME</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>LAST_ACTIVITY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

@@ -303,7 +303,6 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
 
         return activeContactIds;
     }
- //tushar --as part of vunerability change
      public static Set<Id> getContacts(Set<Id> projContactIds, Id accountId){
         Set<Id> activeContactIds = new Set<Id>();
         List<User> allActiveUsers = new List<User>();
@@ -318,7 +317,7 @@ public with sharing class core_Ips_InterestedParties_CTRL{// Changed by tushar b
         }
         for (User active : allActiveUsers){
             activeContactIds.add(active.contactid);
-        }  //tushar --as part of vunerability change
+        }
 
         return activeContactIds;
     }

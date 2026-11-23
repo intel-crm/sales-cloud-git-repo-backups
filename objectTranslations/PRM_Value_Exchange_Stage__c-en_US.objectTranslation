@@ -81,6 +81,10 @@
         <name>PRM_Tier_Id__c</name>
     </fields>
     <fields>
+        <label><!-- TimePeriod --></label>
+        <name>PRM_TimePeriod_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Time Period --></label>
         <name>PRM_Time_Period__c</name>
     </fields>

@@ -19,7 +19,7 @@ public class PRM_IPA_Integration_Scheduler_Test {
 		Database.update(partnerAccount1);
 		List<Account> updatedAcct= new List<Account>();
 		for(Account acc:[SELECT ID,NAME,Core_Account_Type__c,Core_IPA_Partner_Role__c FROM ACCOUNT]) {
-			//System.debug('acc ='+acc);
+			
 			 acc.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
             acc.Core_IPA_Partner_Role__c = 'Service Provider';
 			acc.Core_CIM_ID__c='12345';

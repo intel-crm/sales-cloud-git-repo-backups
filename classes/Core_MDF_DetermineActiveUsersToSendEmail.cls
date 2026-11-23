@@ -15,17 +15,19 @@ public without sharing class Core_MDF_DetermineActiveUsersToSendEmail {
     	List<Id> userIdParamsList = new List<Id>();
         Map<String,List<Id>> paramsToUserIdListMap = new Map<String,List<Id>>();
         Map<String,List<Id>> uniqueKeyToUserIdListMap = new Map<String,List<Id>>();
-
+        system.debug('paramsList1'+paramsList);
         for(mailParams params : paramsList){
             userIdParamsList.addAll(params.userIdList);
             for(Id userId : params.userIdList){
                 String key = '';
                 key += params.recordId + params.templateName + params.sendDiff + params.userIdList;
-
+                system.debug('@@key -> ' + key);
                 if(!paramsToUserIdListMap.containsKey(key)){
                     paramsToUserIdListMap.put(key, new List<Id>());
                 }
                 paramsToUserIdListMap.get(key).add(userId);
+                system.debug('@@paramsToUserIdListMapKey -> ' + paramsToUserIdListMap.keySet());
+                system.debug('@@paramsToUserIdListMapValues -> ' + paramsToUserIdListMap.Values());
             }
         }
         
@@ -43,6 +45,7 @@ public without sharing class Core_MDF_DetermineActiveUsersToSendEmail {
                 }
             }
         }
+        system.debug('@@uniqueKeyToUserIdListMapValues -> ' + uniqueKeyToUserIdListMap.Values());
         
         if(!userIdToNotifyList.isEmpty()){
         	for(mailParams input : paramsList){
@@ -64,6 +67,7 @@ public without sharing class Core_MDF_DetermineActiveUsersToSendEmail {
 
                 settingMailParameters.add(params);
             }
+            system.debug('@@settingMailParameters -> ' + settingMailParameters);
             if(settingMailParameters != NULL && settingMailParameters.Size() > 0){
                 Core_MDF_GenericClassToSendMail.sendEmailMethod(settingMailParameters);
         	}

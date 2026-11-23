@@ -12,6 +12,7 @@ Modification Log    :
 trigger PRM_MCGA_Trigger on PRM_Message_Contact_Group_Association__c (before update, before insert, after update, after insert) {
     // bypass added by Dinesh as part of IPA2.0 Refresh change
     if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
+        
         new PRM_MCGA_Trigger_Handler().run();
     }
 }

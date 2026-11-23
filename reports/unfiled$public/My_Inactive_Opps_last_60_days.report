@@ -41,11 +41,11 @@
             <value>LAST_N_DAYS:60</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Idsid__c</column>
+            <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>ngong</value>
+            <value>Nick Ong</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

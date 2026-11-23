@@ -31,14 +31,6 @@
                 <behavior>Required</behavior>
                 <field>PRM_Status_Reason_Txt__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Comments__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PRM_Suppress_Email__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
@@ -75,14 +67,14 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>PRM_AccountChannelMembership__c.Membership</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>ChangeRecordType</actionName>
@@ -140,7 +132,6 @@
         <fields>PRM_Partner_Tier__c</fields>
         <fields>PRM_Old_Partner_Role__c</fields>
         <fields>PRM_Partner_Role__c</fields>
-        <fields>PRM_Comments__c</fields>
         <fields>PRM_Status__c</fields>
         <fields>CREATED_DATE</fields>
         <relatedList>PRM_IPA_Membership__c.PRM_Account_Channel_Membership__c</relatedList>

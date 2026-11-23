@@ -15,9 +15,10 @@ public with sharing class Core_IPS_BES_Generate_BackendJSON {
                 } else if(messageType == 'Attachment' && (outBoundMsg.Comment_Id__c == null ||outBoundMsg.Comment_Id__c =='')&&(outBoundMsg.Core_IPS_Attachment_ID__c != null ||outBoundMsg.Core_IPS_Attachment_ID__c !='' )){
                     outBoundMap.put(outBoundMsg.Core_IPS_Case_ID__c+outBoundMsg.Core_IPS_Attachment_ID__c, outBoundMsg);   
                 } else if(messageType == 'Case' && (outBoundMsg.Comment_Id__c == null ||outBoundMsg.Comment_Id__c =='')&&(outBoundMsg.Core_IPS_Attachment_ID__c == null ||outBoundMsg.Core_IPS_Attachment_ID__c =='' )) {
-                    outBoundMap.put(outBoundMsg.Core_IPS_Case_ID__c, outBoundMsg);   
+                    outBoundMap.put(outBoundMsg.Core_IPS_Case_ID__c, outBoundMsg);  
+                    
                 }
-                if(outBoundMsg !=null && (outBoundMsg.Core_IPS_Case_ID__c !=null || outBoundMsg.Core_IPS_Case_ID__c !='')){
+                if(outBoundMsg.Core_IPS_Case_ID__c !=null || outBoundMsg.Core_IPS_Case_ID__c !=''){
                     caseIdList.add(outBoundMsg.Core_IPS_Case_ID__c);
                 }
                 

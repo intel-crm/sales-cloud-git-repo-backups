@@ -966,15 +966,15 @@
         <label>PRC-&gt;MACAU</label>
     </customValue>
     <customValue>
-        <fullName>PRC-&gt;CHINA</fullName>
-        <default>false</default>
-        <label>PRC-&gt;CHINA</label>
-    </customValue>
-    <customValue>
         <fullName>PRC-&gt;MAINLAND CHINA</fullName>
         <default>false</default>
-        <isActive>false</isActive>
         <label>PRC-&gt;MAINLAND CHINA</label>
+    </customValue>
+    <customValue>
+        <fullName>PRC-&gt;CHINA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>PRC-&gt;CHINA</label>
     </customValue>
     <masterLabel>Region-&gt;Country</masterLabel>
     <sorted>true</sorted>

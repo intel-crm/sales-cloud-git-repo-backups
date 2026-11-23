@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>PROBABILITY</field>
-    </columns>
-    <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
@@ -16,7 +13,10 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE2</field>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Area__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -27,25 +27,23 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Solution_Area__c</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Products__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
+        <field>PROBABILITY</field>
     </columns>
     <columns>
         <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Past_Due__c</field>
     </columns>
     <description>Shows all opportunities with Revenue and Solution area for current fiscal year. Excludes lost and canceled opportunities.</description>
     <filter>
@@ -58,12 +56,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>CLOSE_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Claire&apos;s Current Year Pipeline Report</name>
     <params>
         <name>terr</name>

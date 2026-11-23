@@ -42,7 +42,6 @@
     </fields>
     <fields>
         <fullName>PRM_Manual_Benefits__c</fullName>
-        <description>This field contains manual benefits of IPA</description>
         <label>PRM_Manual_Benefits</label>
         <required>false</required>
         <trackTrending>false</trackTrending>

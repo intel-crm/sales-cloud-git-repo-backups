@@ -334,6 +334,15 @@
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
+    <listViews>
+        <fullName>psgbot_LiveChatTranscript</fullName>
+        <filterScope>Queue</filterScope>
+        <label>psgbot</label>
+        <queue>psgbot</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>LiveChatVisitor</customTabListAdditionalFields>
         <customTabListAdditionalFields>StartTime</customTabListAdditionalFields>

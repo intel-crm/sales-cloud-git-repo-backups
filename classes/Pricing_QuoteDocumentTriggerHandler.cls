@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 01-09-2025
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class Pricing_QuoteDocumentTriggerHandler extends TriggerHandler{
     public override void afterInsert(){
         Set<Id> quoteIds = new Set<Id>();
@@ -21,11 +28,11 @@ public without sharing class Pricing_QuoteDocumentTriggerHandler extends Trigger
         
         //Tender QuoteLetter
         if(quoteLineIds.size() > 0){
-            Pricing_EmailUtility.sendEmail(quoteLineIds, Label.Pricing_QuoteLetter_Template_Name);
+            Pricing_EmailUtility.sendEmail(quoteLineIds,Label.Pricing_QuoteLetter_Template_Name);
         }
         //FI QuoteLetter
         if(fiquoteLineIds.size() > 0){
-            Pricing_EmailUtility.sendEmail(fiquoteLineIds, Label.Pricing_FI_QuoteLetter_Template_Name);
+            Pricing_EmailUtility.sendEmail(fiquoteLineIds,Label.Pricing_FI_QuoteLetter_Template_Name);
         }
     }
     

@@ -17,7 +17,7 @@ public with sharing class ACM_AI_createAccountTeamTest {
         accTeamMember.Core_Account_Category__c = 'Distributors (IA)' ;
         accTeamMember.UserId = UserInfo.getUserId();
         insert accTeamMember;
-
+	system.debug('Check');
     }
 
     @isTest

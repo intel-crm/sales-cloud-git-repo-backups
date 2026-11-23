@@ -79,6 +79,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_CoE_Request_Detail__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Opportunity_Support_Team_Member__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

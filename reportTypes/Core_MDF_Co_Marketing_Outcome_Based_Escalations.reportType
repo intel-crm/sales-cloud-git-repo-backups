@@ -184,62 +184,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Case_ID_Number_id__c.Core_MDF_Non_Compliance_Reason_txt__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_First_Attribution_Score_txt__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_First_POP_Score_txt__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_First_Engagement_Score_txt__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_First_Manual_Recovery_nbr__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Scorecard_id__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Current_Attribution_Score_txt__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Current_Engagement_Score_txt__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Current_Manual_Recovery_nbr__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Current_POP_Score_txt__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Claim_Review_Closure_Note_txt__c</field>
-            <table>Core_MDF_Escalation__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride> Is Outcome-Based?</displayNameOverride>
+            <displayNameOverride>Is Outcome-Based?</displayNameOverride>
             <field>Core_MDF_Co_Marketing_Activity_id__c.Core_MDF_Is_Outcome_Based_Ind__c</field>
             <table>Core_MDF_Escalation__c</table>
         </columns>

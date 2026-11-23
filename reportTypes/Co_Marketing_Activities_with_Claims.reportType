@@ -750,6 +750,21 @@
             <field>Core_MDF_EFT_Number_txt__c</field>
             <table>PartnerFundRequest.PartnerFundClaims</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Partner_Contact_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Measurement_Approach_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Measurement_Approach_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
         <masterLabel>Co-Marketing Activities</masterLabel>
     </sections>
     <sections>
@@ -761,11 +776,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Review_Status_nm__c</field>
-            <table>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_AI_PIC_Review_Ind__c</field>
             <table>PartnerFundRequest.PartnerFundClaims.PIC_Reviews__r</table>
         </columns>
         <masterLabel>PIC Reviews</masterLabel>

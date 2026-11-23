@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Navigator System LLC Partner User</description>
+    <description>NAVIGATOR Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Navigator System LLC Partner User</name>
+    <name>NAVIGATOR Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>A_E_Users_do_not_nest_users</parentRole>
+    <parentRole>EMP_11567470_Dmitry_Matchin</parentRole>
 </Role>

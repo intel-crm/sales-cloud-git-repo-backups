@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Account Plan Information - Customer Overview - Financial Metrics">
+        <div class="slds-m-around_medium">
+            <div class="slds-button-group" role="group">
+                <lightning-button label="Add Row" onclick={handleAddRow}></lightning-button>
+                <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+            </div>
+        </div>
+        <template for:each={metrics} for:item="metric">
+            <div key={metric.id} class="slds-p-around_small slds-box slds-m-around_small">
+                <div class="slds-grid slds-wrap slds-gutters">
+
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-combobox
+                            label="Year"
+                            data-id={metric.id}
+                            data-field="CRM_Year__c"
+                            value={metric.CRM_Year__c}
+                            options={yearOptions}
+                            onchange={handleFieldChange}>
+                        </lightning-combobox>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-combobox
+                            label="Metric"
+                            data-id={metric.id}
+                            data-field="CRM_Metric__c"
+                            value={metric.CRM_Metric__c}
+                            options={metricOptions}
+                            onchange={handleFieldChange}>
+                        </lightning-combobox>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input
+                            label="Value"
+                            type="number"
+                            data-id={metric.id}
+                            data-field="CRM_Value__c"
+                            value={metric.CRM_Value__c}
+                            onchange={handleFieldChange}>
+                        </lightning-input>
+                    </div>
+
+                </div>
+            </div>
+        </template>
+
+    
+    </lightning-card>
+</template>

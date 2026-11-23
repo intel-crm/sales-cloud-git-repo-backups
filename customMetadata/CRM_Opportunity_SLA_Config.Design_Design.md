@@ -16,11 +16,11 @@
     </values>
     <values>
         <field>CRM_SLA_Breach_1__c</field>
-        <value xsi:type="xsd:double">120.0</value>
+        <value xsi:type="xsd:double">400.0</value>
     </values>
     <values>
         <field>CRM_SLA_Breach_2__c</field>
-        <value xsi:type="xsd:double">134.0</value>
+        <value xsi:type="xsd:double">120.0</value>
     </values>
     <values>
         <field>CRM_Stage_Name__c</field>

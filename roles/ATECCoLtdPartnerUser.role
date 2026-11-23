@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>ATEC Computer Co., LTD Partner User</description>
+    <description>ATEC Co.,Ltd Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>ATEC Computer Co., LTD Partner User</name>
+    <name>ATEC Co.,Ltd Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11336504_Chung_Hyun_Kim</parentRole>
+    <parentRole>EMP_10807536_Doi_Kim</parentRole>
 </Role>

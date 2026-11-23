@@ -12,7 +12,7 @@ Sample API call:- /services/apexrest/v1.0/quoterequest/quotelines?action=changer
 
 Description=> Pass the quoteId and quoteLineDetails as an input JSON and it will submit the QuoteLine for Change Request
 *****************************************************************************************************************************************/
-global without sharing class Pricing_RestAPI_ChangeRequestQuoteLine {
+global without sharing class Pricing_RestAPI_ChangeRequestQuoteLine extends TriggerHandler{
     private static final DateTime ENTRY_TIME = System.now();
     private static final String RESTAPI_NAME = Pricing_RestAPI_ChangeRequestQuoteLine.class.getName();
     public static Pricing_RestAPI_Response response = new Pricing_RestAPI_Response();
@@ -62,6 +62,8 @@ global without sharing class Pricing_RestAPI_ChangeRequestQuoteLine {
                 }
                 createChangeRequest(quoteline,qliMap);
             }else{
+                if(!Pricing_RestAPI_QuotelinesV2.isSvdQuoteLine || TriggerHandler.isActive('Pricing_SVD_QuoteLine_Disabled')){
+                    system.debug('test:');
                 //nullify quoteline errors if Quote Id is not valid as quote error message whould have the validation errors
                 if(qErrorMsg.quoteLineErrorMsgs!=null && !qErrorMsg.quoteLineErrorMsgs.isEmpty()){
                     for(Pricing_RestAPI_QuotesUtilityV2.QuoteLineErrorMsg qe : qErrorMsg.quoteLineErrorMsgs){
@@ -72,6 +74,10 @@ global without sharing class Pricing_RestAPI_ChangeRequestQuoteLine {
                 }
                 Pricing_RestAPI_Util.quoteErrMsgsV2 = qErrorMsg;
                 Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
+                }else{
+                    Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
+                    response.errorContent.errorMessage = Label.Pricing_Tender_API_Quotelines_SVD_Changerequest_Error_Msg; 
+                }
             }
         }catch(Exception exp){
             Pricing_RestAPI_Util.processException(exp, Pricing_RestAPI_ResponseCodes.ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);
@@ -116,6 +122,7 @@ global without sharing class Pricing_RestAPI_ChangeRequestQuoteLine {
             for(SBQQ__QuoteLine__c parentSObjects: parentSObjectsRecord ){
                 SBQQ__QuoteLine__c parent;
                 parent = parentSObjects.clone(false, true, false, false);
+                // fiRPMCR = false for now we are passing
                 parent = Pricing_QuoteLineCloneController.quotelineFieldPopulation(parentSObjects,parent,quoteLineMap.get(parentSObjects.Id),Label.Pricing_Tender_QuoteLine_Action_Request_Change,true,false);
                 qliCRLst.add(parent);
             }

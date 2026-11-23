@@ -17,9 +17,33 @@
     "label" : "Login",
     "regions" : [ {
       "components" : [ {
+        "componentAttributes" : {
+          "richTextValue" : "<p>Replace this text with content of your own.</p>"
+        },
+        "componentName" : "forceCommunity:richTextInline",
+        "id" : "58aa478d-4ffc-4170-96fb-ee5dbc4d9c6e",
+        "renditionMap" : { },
+        "type" : "component"
+      }, {
         "componentAttributes" : { },
-        "componentName" : "c:sales_FPGA_IntelAccessDenied",
-        "id" : "f9a92cb4-ccbc-4f41-8357-94b66524bdf9",
+        "componentName" : "c:sales_LoginPage",
+        "id" : "20d71cb3-5ecf-406d-b840-8ff72766f6ff",
+        "renditionMap" : { },
+        "type" : "component"
+      }, {
+        "componentAttributes" : {
+          "richTextValue" : "<p>The Intel® FPGA Self-Service Licensing Center (SSLC) is upgrading to a new \nlocation on the altera.com domain. To ensure a smooth transition of your data, \n    the current site will not accept new license requests from <b>February 23rd</b> through \n    <b>March 15th</b>. \nYou will still be able to create evaluation and no-cost licenses on the intel.com \nSSLC during this time.</p>"
+        },
+        "componentName" : "forceCommunity:htmlBlock",
+        "id" : "a9ebf8b6-2d3c-46c6-805b-d4631f183307",
+        "renditionMap" : { },
+        "type" : "component"
+      }, {
+        "componentAttributes" : {
+          "richTextValue" : "Replace this text with content of your own."
+        },
+        "componentName" : "forceCommunity:richTextInline",
+        "id" : "217a4dce-6d9f-4fe1-9ef2-2fe37addaf3d",
         "renditionMap" : { },
         "type" : "component"
       } ],
@@ -123,12 +147,12 @@
     }, {
       "components" : [ {
         "componentAttributes" : {
-          "NavigationMenuEditorRefresh" : "Default_Navigation8",
-          "hideAppLauncher" : true,
+          "NavigationMenuEditorRefresh" : "Default_Navigation10",
+          "hideAppLauncher" : false,
           "hideHomeText" : false
         },
         "componentName" : "forceCommunity:globalNavigation",
-        "id" : "24b01f2a-3375-45fb-9a93-d3749608f345",
+        "id" : "c6425982-bf94-4b86-a887-ba23024d5f1d",
         "renditionMap" : { },
         "type" : "component"
       } ],
@@ -146,10 +170,10 @@
     }, {
       "components" : [ {
         "componentAttributes" : {
-          "richTextValue" : "<p style=\"text-align: center;\"><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">&nbsp;The Intel® FPGA Self-Service Licensing Center (SSLC) is upgrading to a new location on the altera.com domain. To ensure a smooth transition of your data, the current site will not accept new license requests from </span><strong style=\"font-size: 18px; color: rgb(230, 0, 0);\">February 23rd</strong><span style=\"font-size: 18px; color: rgb(230, 0, 0);\"> through </span><strong style=\"font-size: 18px; color: rgb(230, 0, 0);\">March 15th</strong><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">. </span></p><p style=\"text-align: center;\"><span style=\"font-size: 18px; color: rgb(230, 0, 0);\">You will still be able to create evaluation and no-cost licenses on the intel.com SSLC during this time</span></p>"
+          "richTextValue" : "<p>The Intel® FPGA Self-Service Licensing Center (SSLC) is upgrading to a new location on the altera.com domain. To ensure a smooth transition of your data, the current site will not accept new license requests from February 23rd through March 15th. You will still be able to create evaluation and no-cost licenses on the intel.com SSLC during this time.&nbsp;</p>"
         },
         "componentName" : "forceCommunity:richTextInline",
-        "id" : "32c6dd21-f94e-4a88-9b14-8a0c71642fcd",
+        "id" : "7d4f7af0-6d98-4a58-9417-aaec83cb37ec",
         "renditionMap" : { },
         "type" : "component"
       } ],

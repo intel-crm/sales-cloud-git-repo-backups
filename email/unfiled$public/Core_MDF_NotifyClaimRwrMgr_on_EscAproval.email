@@ -1,0 +1,14 @@
+<messaging:emailTemplate subject="{!$Label.Core_MDF_Claim_Case_Review_Result_Escalation_Request_ID} {!RelatedTo.Name} {!$Label.Core_MDF_Escalation_Approval_Notification_Subject}"
+                                   recipientType="User" relatedToType="Core_MDF_Escalation__c">
+<messaging:htmlEmailBody >
+<html>
+<body>
+     <p>{!$Label.Core_MDF_Escalation_Request_ID}&nbsp;<apex:outputLink value="{!RelatedTo.Core_MDF_Escalation_Detail_Link_txt__c}">{!RelatedTo.Name}
+     </apex:outputLink> {!$Label.Core_MDF_Claim_Case_Review_Result_Escalation} <br/>
+     {!$Label.Core_MDF_Claim_Case_Review_Result_Escalation_1}
+     </p>   
+      </body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -150,7 +150,7 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
-    <enableSearch>true</enableSearch>
+    <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
@@ -246,10 +246,6 @@
         <columns>NAME</columns>
         <columns>OWNER.FIRST_NAME</columns>
         <columns>OWNER.LAST_NAME</columns>
-        <columns>Core_Class_Name__c</columns>
-        <columns>Core_Method_Name__c</columns>
-        <columns>Core_IPS_Object_Name__c</columns>
-        <columns>Core_Record_Id__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
@@ -259,11 +255,6 @@
             <field>CREATED_DATE</field>
             <operation>equals</operation>
             <value>THIS_WEEK</value>
-        </filters>
-        <filters>
-            <field>Core_IPS_Object_Name__c</field>
-            <operation>equals</operation>
-            <value>Lead</value>
         </filters>
         <label>All- This Week</label>
         <language>en_US</language>

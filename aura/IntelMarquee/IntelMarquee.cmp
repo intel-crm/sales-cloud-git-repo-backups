@@ -1,4 +1,4 @@
-<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" controller="Core_UtilityController">
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" controller="Core_UtilityController">
     <aura:attribute name="type" type="string" description="Type determines the breadcrumb data" />
     <aura:attribute name="heading" type="string"  description="Main heading label"/>
     <aura:attribute name="text" type="string"  description="Optional Text label" />

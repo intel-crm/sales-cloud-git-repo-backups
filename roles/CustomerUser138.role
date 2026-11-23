@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>株式会社アスク Customer User</description>
+    <description>テックウインド株式会社 Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>株式会社アスク Customer User</name>
+    <name>テックウインド株式会社 Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>EMP_11227059_Toshiharu_Sumiyoshi</parentRole>
 </Role>

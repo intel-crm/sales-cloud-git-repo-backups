@@ -70,7 +70,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Qualify,Define,Develop,Design,Design Win,Production Win,Group,Group Open,Group Closed</value>
+            <value>,Qualify,Define,Develop,Design,Design Win,Production Win,Lost,Group,Production Lost,Group Open,Group Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opportunity_Partner__c.Core_Partner_Program__c</column>
@@ -78,27 +78,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>ISA Co-Selling</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_$Opportunity.Core_Approved_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>LAST_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_$Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Rejected</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opportunity_Partner__c.Core_Partner_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Distributor,Intel Authorized Distributor (IAD)</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -118,7 +97,7 @@
         <field>FK_OPP_STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>ISA Cosell APJT Opportunities (3)</name>
+    <name>ISA Cosell APJT Opportunities 2020 (3)</name>
     <params>
         <name>co</name>
         <value>0</value>

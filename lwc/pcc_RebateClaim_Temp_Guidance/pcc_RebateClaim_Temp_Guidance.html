@@ -1,0 +1,82 @@
+<template>
+    <lightning-card >
+        <div class="slds-card__header slds-clearfix">
+        <lightning-button label="Back" onclick={handleBack} slot="actions" class="slds-float_right"></lightning-button>
+        </div>
+    <div class="slds-grid slds-wrap bg-color-white">
+        <div class= "slds-text-heading_medium slds-align_absolute-center">
+            <div><b>Intel® Partner Rebate Claim Template User Guidance</b></div> 
+        </div>
+        
+        <div class="firstLine">
+            <p>As an Intel® Partner, you're required to fill up the Rebate Claim template to proceed with initiating the Rebate Claim related to your Deal Registration.</p>
+        </div>
+        <div class="secondLine" >
+            <p>There are 7 columns in the Rebate Claim template, and you need to ensure all the columns are provided with appropriate values as mentioned below.</p>
+        </div>
+        
+        <div >
+            <ul class="slds-p-around_medium slds-list_dotted">
+           <div class="attribute-heading"> <p>1. Quote Line Number </p></div>
+           <div class="attribute-info">
+            <li>Required column for processing Rebate Claim.</li>
+            <li>Unique Identifier in Intel® Quote Letter for a Financial Incentive (FI) eligible product.</li>
+            <li>If no value is provided in the uploaded Rebate Claim Template, the system will display an error as 'Blank Quote Line Number'.
+                Similarly, if an invalid Quote Line Number is provided, the system will display an error as 'Invalid Quote Line Number'.</li>
+           </div>
+           <div class="attribute-heading"> <p>2. Product Name </p></div>
+           <div class="attribute-info">
+            <li>Required column for processing Rebate Claim </li>
+            <li>Must be FI eligible product  </li>
+            <li>Need to furnish fully qualified product name as in Intel® Quote Letter</li>
+            <li> If no value is provided in the uploaded Rebate Claim Template, the system will display an error as 'Blank Product Name'.
+                 Similarly, if an invalid Product Name is provided, the system will display an error as 'Invalid Product Name'.</li>
+           </div>
+           <div class="attribute-heading"><p>3. Claim Quantity</p></div>
+           <div class="attribute-info">
+            <li>Required column for processing Rebate Claim</li>
+            <li>Must be a whole integer with no decimals</li>
+            <li>Should not exceed Approved Quantity as in Intel® Quote Letter</li>
+            <li> If no value is provided in the uploaded Rebate Claim Template, the system will display an error as 'Blank Claim Quantity'.
+                 Similarly, if an invalid Claim Quantity is provided, the system will display an error as 'Invalid Claim Quantity'.</li>
+           </div>
+           <div class="attribute-heading"> <p>4. OEM</p></div>
+           <div class="attribute-info">
+            <li>Required column for processing Rebate Claim.</li>
+            <li>Must mention the Eligible OEM Name as in Intel® Quote Letter.</li>
+            <li> If no value is provided in the uploaded Rebate Claim Template, the system will display an error as 'Blank OEM'.
+                 Similarly, if an invalid OEM is provided, the system will display an error as 'Invalid OEM'.</li>
+           </div>
+           <div class="attribute-heading"> <p>5. Consumption Countries</p></div>
+           <div class="attribute-info">
+            <li>Required column for processing Rebate Claim</li>
+            <li>Must mention the list of countries where the product units are likely to be used.</li>
+            <li>List of consumption countries should be delimited by a semi-colon (;).For e.g., U.S; U.K</li>
+            <li>If no value is provided in the uploaded Rebate Claim Template, the system will display an error as 'Blank Consumption Countries'.
+                Similarly, if an invalid Consumption Countires are provided, the system will display an error as 'Invalid Consumption Countries'.</li>
+           </div>
+           <div class="attribute-heading"> <p>6. Invoice Number</p></div>
+           <div class="attribute-info">
+            <li>Required column for processing Rebate Claim</li>
+            <li>Duly issued Invoice # to the End Customer </li>
+            <li>If no value is provided in the uploaded Rebate Claim Template, the system will display an error as 'Blank Invoice Number'.
+                Similarly, if an invalid Invoice Number is provided, the system will display an error as 'Invalid Invoice Number'.
+
+ </li>
+           </div>
+           <div class="attribute-heading"> <p>7. Invoice Date</p></div>
+           <div class="attribute-info">
+            <li>Required column for processing Rebate Claim </li>
+            <li>Invoice Date should be in the format MM/DD/YYYY.For e.g., 06/10/2024</li>
+            <li>If no value is provided in the uploaded Rebate Claim Template, the system will display an error as 'Blank Invoice Date'.
+                Similarly, if an invalid Invoice Date is provided, the system will display an error as 'Invalid Invoice Date'.</li>
+            <li>Invoice Date should be between the Quote Line's Approved Pricing Start & End Date</li>
+           </div>
+         </ul>
+        </div>
+        
+        </div>
+        
+
+        </lightning-card>
+</template>

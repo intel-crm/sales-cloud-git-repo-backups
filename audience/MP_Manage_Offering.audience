@@ -18,46 +18,16 @@
     <isDefaultAudience>false</isDefaultAudience>
     <targets>
         <target>
-            <groupName>e684bc9f-7cd6-4e18-8eef-413dd54214bd</groupName>
+            <groupName>dcb19668-ad26-4fe9-ab23-6bf8c4867c80</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
-            <targetValue>Create_Edit_Solution_Create_Edit_Solution_Page</targetValue>
+            <targetValue>Partner_Offering_List_Partner_Offering_List_Page</targetValue>
         </target>
         <target>
             <groupName>20c04920-70dc-4635-baa5-513dab36567a</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
             <targetValue>Partner_Solution_List_Partner_Solution_List_Page</targetValue>
-        </target>
-        <target>
-            <groupName>588a922d-b1fa-499e-a13a-af9bec20cac7</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Solutionsubmit_Solutionsubmit_Page</targetValue>
-        </target>
-        <target>
-            <groupName>bb3d5087-ccec-4931-8ed4-87e45be14e96</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Solution_Detail_Page_Solution_Detail_Page_Page</targetValue>
-        </target>
-        <target>
-            <groupName>d5cdb8bc-ade0-4a16-8b3d-be1d49406e73</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Solution_Submit_Solution_Submit_Page</targetValue>
-        </target>
-        <target>
-            <groupName>a7a32cdf-0cd9-4478-bfd7-2f5eebbeabbe</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Offering_Submit_create_offering_submit_Page</targetValue>
-        </target>
-        <target>
-            <groupName>14def7a1-13f3-456b-b278-3819b2900e51</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Partner_Offering_Related_List_Partner_Offering_Related_List_Page</targetValue>
         </target>
         <target>
             <groupName>25e4391e-a660-44c9-8f27-16f6092f0309</groupName>
@@ -72,10 +42,40 @@
             <targetValue>Offering_Edit_offering_edit_Page</targetValue>
         </target>
         <target>
-            <groupName>2186d600-09bf-4d9f-8ebf-c73ce941693a</groupName>
+            <groupName>a7a32cdf-0cd9-4478-bfd7-2f5eebbeabbe</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
-            <targetValue>Offering_Preview_offering_preview_Page</targetValue>
+            <targetValue>Offering_Submit_create_offering_submit_Page</targetValue>
+        </target>
+        <target>
+            <groupName>1a90360f-8bcf-48c0-88cd-49a2fce362ba</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Offerings_by_Category_Offerings_by_Category_Page</targetValue>
+        </target>
+        <target>
+            <groupName>744fb1a2-754c-4de2-8138-a95dc2fb1c4e</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Offerings_by_Application_Offerings_by_Application_Page</targetValue>
+        </target>
+        <target>
+            <groupName>fbc0e72f-6728-4f03-87b6-e6b8fecfc212</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Offerings_by_Industry_Offerings_by_Industry_Page</targetValue>
+        </target>
+        <target>
+            <groupName>e684bc9f-7cd6-4e18-8eef-413dd54214bd</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Create_Edit_Solution_Create_Edit_Solution_Page</targetValue>
+        </target>
+        <target>
+            <groupName>e87633b4-b72c-4b51-8492-42437ae9a8be</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Offerings_by_Use_Cases_Offerings_by_Use_Cases_Page</targetValue>
         </target>
         <target>
             <groupName>37c96208-52a9-49d2-b285-560ec1520aad</groupName>
@@ -84,10 +84,10 @@
             <targetValue>Partner_Offering_Detail_Partner_Offering_Details_Livelier_Page</targetValue>
         </target>
         <target>
-            <groupName>dcb19668-ad26-4fe9-ab23-6bf8c4867c80</groupName>
+            <groupName>588a922d-b1fa-499e-a13a-af9bec20cac7</groupName>
             <priority>1</priority>
             <targetType>ExperienceVariation</targetType>
-            <targetValue>Partner_Offering_List_Partner_Offering_List_Page</targetValue>
+            <targetValue>Solutionsubmit_Solutionsubmit_Page</targetValue>
         </target>
     </targets>
 </Audience>

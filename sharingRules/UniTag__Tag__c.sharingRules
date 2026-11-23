@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata"/>
-
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>X6Sense_Shared_Tags</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>6Sense Shared Tags</description>
+        <label>6Sense Shared Tags</label>
+        <sharedTo>
+            <group>SWS_6Sense_Admin_Group</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>SWS_6Sense_Admin_Group</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

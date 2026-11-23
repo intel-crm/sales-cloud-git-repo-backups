@@ -1,0 +1,6 @@
+{!User.Name} has rejected your request for approval on the following Opportunity: {!Opportunity.Link}
+
+Opportunity Name: {!Opportunity.Name}
+Rejection Comments: {!ApprovalRequest.Comments}
+
+Please click this link to make any necessary changes and resubmit as needed.

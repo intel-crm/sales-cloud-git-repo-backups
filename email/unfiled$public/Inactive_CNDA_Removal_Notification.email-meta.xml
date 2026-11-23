@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <available>true</available>
+    <description>Send Email to Account Owners &amp; A&amp;E folks on removal of inactive CNDA</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Inactive CNDA Removal Notification</name>
+    <style>none</style>
+    <subject>SalesCRM Inactive CNDA Bulk Action</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

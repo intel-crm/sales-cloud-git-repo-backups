@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SalesCRMJobStatusMailFailure</name>
     <style>none</style>
-    <subject>Production - Restart Failure  - Job Name $Job</subject>
+    <subject>DEVINT - Restart Failure  - Job Name $Job</subject>
     <type>custom</type>
     <uiType>SFX</uiType>
 </EmailTemplate>

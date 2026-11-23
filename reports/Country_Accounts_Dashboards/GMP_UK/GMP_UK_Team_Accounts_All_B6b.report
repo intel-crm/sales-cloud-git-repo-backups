@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <aggregates>
-        <calculatedFormula>Account.Core_Account_Cnt__c:SUM/User.User_Unique__c:SUM</calculatedFormula>
-        <datatype>number</datatype>
-        <developerName>FORMULA1</developerName>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Ratio</masterLabel>
-        <scale>2</scale>
-    </aggregates>
     <buckets>
         <bucketType>text</bucketType>
         <developerName>BucketField_30684249</developerName>
@@ -64,7 +55,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMP of Adrian Criddle,EMP of Iain Beckingham,EMP of Ian Jones,EMP of Jennifer Shileika,EMP of Graham Copperwheat,EMP of Jas Bhogal,EMP of Nina Woolvett,EMP of Richard George,EMP of Christine Harrison</value>
+            <value>EMP of Adrian Criddle,EMP of Graham Palmer,EMP of Iain Beckingham,EMP of Ian Jones,EMP of Jennifer Shileika,EMP of Graham Copperwheat,EMP of Jas Bhogal,EMP of Nina Woolvett,EMP of Richard George</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

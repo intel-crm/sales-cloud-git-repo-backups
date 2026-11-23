@@ -161,7 +161,7 @@
         <field>FK_$Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2021 Approved DDR Open Opps Tech Own</name>
+    <name>2020 Approved DDR Open Opps Tech Own</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -187,8 +187,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-25</endDate>
+        <endDate>2020-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-12-27</startDate>
+        <startDate>2019-12-29</startDate>
     </timeFrameFilter>
 </Report>

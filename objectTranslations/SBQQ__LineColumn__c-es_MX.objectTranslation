@@ -9,6 +9,10 @@
         <value>Columnas de partidas</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Determina el modo en que se alinean la etiqueta y los valores de las columnas.</help>
         <label><!-- Alignment --></label>
         <name>SBQQ__Alignment__c</name>

@@ -2,7 +2,7 @@
   @description       : 
   @author            : ChangeMeIn@UserSettingsUnder.SFDoc
   @group             : 
-  @last modified on  : 11-17-2026
+  @last modified on  : 11-04-2026
   @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 -->
 <aura:component controller="Pricing_QuoteLineController"
@@ -79,6 +79,7 @@
     <aura:attribute name="quoteLineType" type="string" default="" />
     <aura:attribute name="toastLineId" type="Id" default="" />
     <aura:attribute name="isSdmFastTrack" type="boolean" default="false" />
+    <aura:attribute name="quoteProgram" type="string" default="" />
 
     <!-- customer revision and field revision -->
     <aura:attribute name="showRevisionFields" type="boolean" default="false" />

@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>PSGInternalLADSharing</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>PSGInternalLADSharing</label>
-        <sharedTo>
-            <group>ags_internal_users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>CreatedById</field>
-            <operation>notEqual</operation>
-            <value></value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>PSG_Internal_User_License_Admin_Delegate_Sharing</fullName>
         <accessLevel>Edit</accessLevel>
         <label>PSG Internal User License Admin Delegate Sharing</label>

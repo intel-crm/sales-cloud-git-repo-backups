@@ -154,26 +154,15 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Sales_Legacy_DelegateContact_Id__c</fullName>
-        <description>This field stores the Delegate Admin Contact Id from Seibel as part of migration</description>
-        <externalId>false</externalId>
-        <label>Legacy Delegate Contact Id</label>
+        <fullName>Sales_Legacy_License_Admin_Delegate_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Legacy License Admin Delegate Id</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Sales_Legacy_PrimaryContact_Id__c</fullName>
-        <description>This field stores the Primary Admin Contact Id from Seibel as part of migration</description>
-        <externalId>false</externalId>
-        <label>Legacy Primary Contact Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>Sales_License_DlgAdmin_Contact__c</fullName>
@@ -306,8 +295,9 @@
         <columns>Sales_License_isActive__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Delegate Admins</label>
+        <language>en_US</language>
         <sharedTo>
-            <group>ags_internal_users</group>
+            <group>AGS_PSG_Internal_Users_ReadEdit</group>
         </sharedTo>
     </listViews>
     <listViews>
@@ -328,13 +318,7 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <filters>
-            <field>Sales_License_PrimaryAdmin_FirstName_Txt__c</field>
-            <operation>startsWith</operation>
-            <value>UATP2</value>
-        </filters>
-        <label>UATP2 WN4</label>
-        <language>en_US</language>
+        <label>All Active Delegate Admins</label>
         <sharedTo>
             <group>AGS_PSG_Internal_Users_ReadEdit</group>
         </sharedTo>
@@ -352,7 +336,6 @@
             <value>1</value>
         </filters>
         <label>My Active Delegate Admins</label>
-        <language>en_US</language>
         <sharedTo>
             <group>AGS_PSG_External_License_Users</group>
             <group>AGS_PSG_Internal_LicenseAdmin</group>
@@ -365,9 +348,8 @@
         <columns>Sales_License_DlgAdmin_LastName_Txt__c</columns>
         <columns>Sales_License_DlgAdmin_Email_Txt__c</columns>
         <columns>Sales_License_isActive__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <label>My Delegate Admins</label>
-        <language>en_US</language>
         <sharedTo>
             <group>AGS_PSG_External_License_Users</group>
             <group>AGS_PSG_Internal_LicenseAdmin</group>
@@ -380,6 +362,11 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>License Admin Delegates</pluralLabel>
+    <recordTypes>
+        <fullName>Sales_License_All_Internal_Users</fullName>
+        <active>true</active>
+        <label>License Admin Delegate Record Type</label>
+    </recordTypes>
     <searchLayouts>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>

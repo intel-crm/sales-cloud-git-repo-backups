@@ -25,7 +25,9 @@ public without sharing class PRM_AdminRegistration {
             String jsonString = JSON.serialize(currDependentValue);
             PickListInfo info = (PickListInfo) JSON.deserialize(jsonString, PickListInfo.class);
             String hexString = EncodingUtil.convertToHex(EncodingUtil.base64Decode(info.validFor)).toUpperCase();
-
+            //system.debug('!!'+info.validFor);
+            //system.debug('##'+EncodingUtil.base64Decode(info.validFor));
+            //system.debug('@@'+hexString);
             Integer baseCount = 0;
             for(Integer curr : hexString.getChars()){
                 Integer val = 0;
@@ -60,7 +62,8 @@ public without sharing class PRM_AdminRegistration {
             stateCountryInfoList.add(info);
         }
         logEntryMsg+='Entered into fetchStateCountryValues method with state and country list:'+stateCountryInfoList;
-              return stateCountryInfoList;
+      //  System.debug(LoggingLevel.ERROR,' before return ' + Limits.getCpuTime() + '/' + Limits.getLimitCpuTime());
+        return stateCountryInfoList;
     }
     
     @AuraEnabled(cacheable=true)
@@ -116,6 +119,7 @@ pi.partnerRoleMap = partnerRoleMap ;
         for(Contact c : [Select Id,AccountId,Account.Name,Account.BillingStreet,Account.BillingCountryCode,Account.BillingStateCode,
                          Account.BillingCity,Account.BillingPostalCode,Account.Core_Account_Type__c,Account.Core_User_Defined_Website__c,
                          toLabel(Core_IPA_PartnerRole__c) from Contact where Email =: emailId]){
+                             System.debug('c'+c);
                              accConMap = new Map<String,Contact>();
                              accConMap.put(c.Id,c);
                          }
@@ -134,6 +138,7 @@ pi.partnerRoleMap = partnerRoleMap ;
         for(Contact c : [Select Id,AccountId,Account.Name from Contact where Email =: emailId]){
                              accountIdSet.add(c.AccountId);
                          }
+        System.debug('accountIdSet-->'+accountIdSet);
         
         Map<String,Core_Intel_System_Accounts__mdt> mapSysAcc = Core_Intel_System_Accounts__mdt.getAll();
         for(String keySetString : mapSysAcc.keySet()){
@@ -148,9 +153,11 @@ pi.partnerRoleMap = partnerRoleMap ;
                flag = true;
             }
         }
-        
+         system.debug('flag--->'+flag);
          logEntryMsg+= 'Entered into systemAccountDetails method: System account present?'+flag;
         return flag;
+       
+
     }
    
 /****************************************************************************************************************
@@ -186,6 +193,7 @@ pi.partnerRoleMap = partnerRoleMap ;
         //String roleMapAccountTypeString = '';
         List<PRM_PartnerRoleTypeMappings__mdt> mdtRoleType= PRM_PartnerRoleTypeMappings__mdt.getall().values();
         
+        //System.debug('metadata map1'+mdtRoleType);        
         for(PRM_PartnerRoleTypeMappings__mdt roleTypeReq : mdtRoleType){
             if(roleTypeReq.isDefault__c ==true){
                 roleTypeMap.put(roleTypeReq.PRM_Partner_Role__c  , roleTypeReq.PRM_Biz_Org_Type__c);
@@ -202,7 +210,7 @@ pi.partnerRoleMap = partnerRoleMap ;
         
         List<String> accountTypelist = new List<String>();
         Boolean contactPartnerRoleEmpty;
-        for(Contact con : [Select Id,AccountId,Account.Core_Account_Type__c,Core_IPA_PartnerRole__c from Contact where Email =:emailId]){
+        for(Contact con : [Select Id,AccountId,Account.Core_Account_Type__c,Core_IPA_PartnerRole__c,Email from Contact where Email =:emailId]){
             if(con.Account.Core_Account_Type__c == null){
                 if(con.Core_IPA_PartnerRole__c != null){
                     partnerRole = roleTypeMap.get(con.Core_IPA_PartnerRole__c);
@@ -219,11 +227,16 @@ pi.partnerRoleMap = partnerRoleMap ;
                 accountTypelist.add('empty');
             }
             
-            
+            System.debug('CON:Role--'+con.Core_IPA_PartnerRole__c);
+            System.debug('CONTACT EMAIL=' + con.Email);
+			System.debug('CONTACT ROLE=' + con.Core_IPA_PartnerRole__c);
+            System.debug('EMAIL=' + emailId);
             if(con.Core_IPA_PartnerRole__c != null){        
                 if(roleTypeMap.containskey(con.Core_IPA_PartnerRole__c)){
                     if(con.Account.Core_Account_Type__c != null){
-                        String isMatchedPartnerRole = accountTypeToPartnerRoleMapping(roleTypeMap,accountTypelist,roleTypeAccountMap, con.Core_IPA_PartnerRole__c);            
+                        System.debug('Before accountTypeToPartnerRoleMapping');
+                        String isMatchedPartnerRole = accountTypeToPartnerRoleMapping(roleTypeMap,accountTypelist,roleTypeAccountMap, con.Core_IPA_PartnerRole__c); 
+                        System.debug('After accountTypeToPartnerRoleMapping');
                         if(isMatchedPartnerRole == ''){
                             partnerRole = roleTypeMap.get(con.Core_IPA_PartnerRole__c);
                         }else{
@@ -235,15 +248,18 @@ pi.partnerRoleMap = partnerRoleMap ;
                 accountIdset.add(con.AccountId);    
             }
         }     
-        
+        System.debug('accountIdset=' + accountIdset);
         if(!accountIdset.isEmpty()  && accountIdset != null){
             for(PRM_AccountChannelMembership__c acm : [Select Id,PRM_Account_Id__c,PRM_Status_Nm__c,PRM_Partner_Role__c from PRM_AccountChannelMembership__c 
                                                        where PRM_Account_Id__c in:accountIdset  Order by CreatedDate ASC]){
-                                                           
-                                                           if(acm.PRM_Status_Nm__c == system.label.PRM_Status){
+                                              
+                                                                System.debug('ACM Found=' + acm.Id);
+                                                                System.debug('ACM Status=' + acm.PRM_Status_Nm__c);                                                                                                                                                                                  
+                                                               if(acm.PRM_Status_Nm__c == system.label.PRM_Status){
                                                                String isMatchedPartnerRole = accountTypeToPartnerRoleMapping(roleTypeMap,accountTypelist,roleTypeAccountMap, acm.PRM_Partner_Role__c);
                                                                if (contactPartnerRoleEmpty == true){
                                                                    partnerRole = roleTypeMap.get(acm.PRM_Partner_Role__c);
+                                                                   System.debug('partnerRole263----> '+partnerRole);
                                                                    approvedAcm = true;
                                                                    break;
                                                                }
@@ -278,7 +294,7 @@ pi.partnerRoleMap = partnerRoleMap ;
             }
         }
          logEntryMsg+= 'Entered into fetchPendingACM method:with partner role?'+partnerRole;
-       
+        //System.debug('partnerRole'+partnerRole);
         return partnerRole;
     }
     
@@ -289,6 +305,7 @@ pi.partnerRoleMap = partnerRoleMap ;
              penRegReqMap = new Map<Id,String>();   
             penRegReqMap.put(regReq.id,regReq.PRM_Email_ID__c);
             }
+        System.debug('penRegReqMap'+penRegReqMap);
         logEntryMsg+= 'Entered into fetchPendingSelfRegRequests method:with registration details?'+penRegReqMap;
         return penRegReqMap;
     }
@@ -308,6 +325,7 @@ pi.partnerRoleMap = partnerRoleMap ;
                 list<PRM_SBC_Account_Search_Configuration__c> ipaAdminConfig=[select PRM_isActive__c,Account__c,Account__r.id,PRM_Contact__c,PRM_Contact__r.email from PRM_SBC_Account_Search_Configuration__c  
                 where RecordTypeId=:blocedAccContRT and ((PRM_Contact__r.email=:emailId and PRM_Type__c='Contact_Blocked') 
                 or (Account__r.id=:accId and PRM_Type__c='Account_Blocked')) and PRM_isActive__c=true ];
+                system.debug('ipaAdminConfig'+ipaAdminConfig);
                 boolean blocked=false;
                 iF(ipaAdminConfig.size()>0){
                     for(PRM_SBC_Account_Search_Configuration__c sbc:ipaAdminConfig){
@@ -328,6 +346,7 @@ pi.partnerRoleMap = partnerRoleMap ;
         
     /*@AuraEnabled
     public static List<Account> getAccountFromId(String accId){
+        System.debug('accId:'+accId);
         List<Account> accList;
 
         if(String.IsNotBlank(accId)){

@@ -484,7 +484,7 @@ public With Sharing class PMP_TopicAssignmentHelper {
     
     
     public static void handleException(String message,DmlException e,List<SObject> errorRecords ){
-        //System.debug(e);
+        
         PMP_Utility.logError(e, message);
         if(e.getMessage().contains('FIELD_CUSTOM_VALIDATION_EXCEPTION')){
             
@@ -501,7 +501,7 @@ public With Sharing class PMP_TopicAssignmentHelper {
     }
     
     public static void syncTopicCountToOffAndPartner(List<TopicAssignment> topicAssignmentList){
-        //system.debug('Inside Trigger');
+        
         Set<Id> topicEntityIds = new Set<Id>();
         Map<Id,Integer> offTopicMap = new Map<Id,Integer>();
         Map<Id,Integer> partnerTopicMap = new Map<Id,Integer>();

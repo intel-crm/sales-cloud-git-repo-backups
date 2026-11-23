@@ -23,7 +23,8 @@ public without sharing class UCD_ACM_AICleansedAddress {
             System.debug('$AIResponse '+aiResponse);
         }
         catch(Exception ex) {
-            UCD_ACM_Logger.error('UCD_ACM_AICleansedAddress','addressVerification','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+            //Ganesh Changes
+            UCD_ACM_Logger.error('UCD_ACM_AICleansedAddress','addressVerification','Message: '+ex.getMessage()+', Org:' + organizationName +', State:' + stateName +', Country:' + countryName +'. StackTrace: '+ex.getStackTraceString(),NULL);
         } finally {
             UCD_ACM_Logger.setLogDetails();
         }
@@ -77,11 +78,19 @@ public without sharing class UCD_ACM_AICleansedAddress {
         Map<String, Map<String,String>> mapOfAllStateCodeAndNameByCountry = new Map<String, Map<String,String>>();
         mapOfAllStateCodeAndNameByCountry = UCD_ACM_Utils.getGlobalPickList();
         Map<String,String> mapOfstateCodeAndName=mapOfAllStateCodeAndNameByCountry.get(countryMap.get(response.cleansed.country));
-        for(String currentStatesCode : mapOfstateCodeAndName.keySet()){
-            if(mapOfstateCodeAndName.get(currentStatesCode)==response.cleansed.stateProvince){
-                aiResponse.stateCode=currentStatesCode;
+        //Ganesh Changes
+        if(mapOfstateCodeAndName!=null){
+            for(String currentStatesCode : mapOfstateCodeAndName.keySet()){
+                if(mapOfstateCodeAndName.get(currentStatesCode)==response.cleansed.stateProvince){
+                    aiResponse.stateCode=currentStatesCode;
+                }
             }
         }
+        else{
+    		UCD_ACM_Logger.error('UCD_ACM_AICleansedAddress', 'mapResponse', 'State mapping not found for country: ' + response.cleansed.country, null);
+    		UCD_ACM_Logger.setLogDetails();
+		}
+        //Ganesh Changes
         aiResponse.countryCode=countryMap.get(response.cleansed.country);
         aiResponse.streetName=response.cleansed.address;
         aiResponse.cityName=response.cleansed.city;

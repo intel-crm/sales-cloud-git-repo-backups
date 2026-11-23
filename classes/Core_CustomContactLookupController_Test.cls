@@ -30,7 +30,7 @@ public class Core_CustomContactLookupController_Test{
         
         Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',
                                           AccountId=testAccount.Id,Core_Local_First_Name__c='david',Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false,MailingCountry='USA',
-                                         Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+                                         Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111',Core_Mailing_Address__CountryCode__s='USA');
    
         insert testContact;
         

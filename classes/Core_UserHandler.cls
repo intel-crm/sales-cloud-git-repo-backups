@@ -657,6 +657,52 @@ public without sharing class Core_UserHandler {
             
         }
     }
+    
+/***************************************************************************************************** 
+Method Name:        createInactiveIPAUser
+@return  :          void
+@parameters:        UserList
+Description:        //Method to create IPA users with employee entitlements with inactive status.
+Added By:           Intel - Draco team - 20/04/2026
+Modified By:        Date:       Changes: 
+******************************************************************************************************/
+    public static void createInactiveIPAUser(List<User> newList){
+        List<ID> contactIdList = new List<ID>();
+        List<Core_Contact_Entitlement__c> entitlementsList = New List<Core_Contact_Entitlement__c>();
+        for(User usr : newList){
+            if(usr.ContactId != null){  
+                contactIdList.add(usr.ContactId);
+            }
+        }
+        if(contactIdList.size() > 0){
+            String commaSeparatedCustLabelNotSkip = System.Label.Core_Draco_IPA_Entitlements_Not_Skip;
+            List<String> entstoNotSkipUserDeactivaton = commaSeparatedCustLabelNotSkip.split(',');
+            String commaSeparatedCustLabelSkip = System.Label.Core_Draco_IPA_Entitlements_Skip;
+            List<String> entstoSkipUserDeactivation = commaSeparatedCustLabelSkip.split(',');
+            entitlementsList = [SELECT Id,Core_Entitlement_Id__c,Core_Entitlement_Id__r.Core_Display_Name__c,
+                                Core_Contact_Id__c from Core_Contact_Entitlement__c where Core_Contact_Id__c IN: contactIdList
+                                AND ( Core_Entitlement_Id__r.Core_Display_Name__c IN: entstoNotSkipUserDeactivaton 
+                                     OR Core_Entitlement_Id__r.Core_Display_Name__c IN: entstoSkipUserDeactivation) 
+                                ORDER By Core_Entitlement_Id__r.Core_Display_Name__c ASC];
+            if(entitlementsList.size() > 0){
+                List<Id> contIdsWithEmpEnt = New List<Id>();
+                for(Core_Contact_Entitlement__c conEnt : entitlementsList){
+                    if(entstoNotSkipUserDeactivaton.contains(conEnt.Core_Entitlement_Id__r.Core_Display_Name__c)){
+                        contIdsWithEmpEnt.add(conEnt.Core_Contact_Id__c);
+                    }else if(entstoSkipUserDeactivation.contains(conEnt.Core_Entitlement_Id__r.Core_Display_Name__c) && contIdsWithEmpEnt.contains(conEnt.Core_Contact_Id__c)){
+                        contIdsWithEmpEnt.remove(contIdsWithEmpEnt.indexOf(conEnt.Core_Contact_Id__c));  
+                    }
+                }
+                if(contIdsWithEmpEnt.size() > 0){
+                    for(User usr : newList){
+                        if(contIdsWithEmpEnt.contains(usr.ContactId)){
+                            usr.isActive = false;
+                        }
+                    }
+                }
+            }
+        }        
+    }
     /***************************************************************************************************** 
 Method Name:        assignLanguage
 @return  :          void

@@ -186,8 +186,11 @@ public class CRM_EMB_AI_Integration_Outbound {
                 if (accPulseValue != null) {
                     briefWrap.acc_pulse = accPulseValue;
                 }
+                system.debug('briefWrap-'+briefWrap);
                 // Add content version IDs for this brief
                 String jsonPayload = JSON.serialize(briefWrap);
+                system.debug('jsonPayload-->'+jsonPayload);
+                system.debug('briefRecord.Id-->'+briefRecord.Id);
                 executiveBriefIdToJsonMap.put(briefRecord.Id,jsonPayload);
             }
             if(!executiveBriefIdToJsonMap.isEmpty()){
@@ -423,7 +426,7 @@ Modified By:        Date:       Changes:
     @AuraEnabled
     public static void updateExecutiveBriefStatus(List<Id> briefIds) {
         List<Executive_Meeting_Brief__c> briefsToUpdate = new List<Executive_Meeting_Brief__c>();
-    	
+        
         for(Id briefId : briefIds) {
             if(briefId != null) {
                 Executive_Meeting_Brief__c briefRec = new Executive_Meeting_Brief__c(Id = briefId);

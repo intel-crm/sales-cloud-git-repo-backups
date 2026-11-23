@@ -9,6 +9,6 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Bulk_Claim_Notification</template>
+        <template>unfiled$public/Core_MDF_Bulk_Claim_Notification</template>
     </alerts>
 </Workflow>

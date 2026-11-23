@@ -25,7 +25,7 @@
         //set the current list view id and name.
         component.set("v.currentListViewName", lstViewName);
         component.set("v.currentListViewId", lstViewId);
-        
+        console.log('Code Comparison1');
     },   
     exportRecords: function(component, event, helper) { 
        
@@ -53,6 +53,7 @@
         component.set("v.isLoading",'true');
        //call the helper method to load records.
         helper.loadRecords(component, event, sObj); 
+        console.log('Code Comparison2');
         
     },
     handleShowModal: function(component, event, helper) {
@@ -65,6 +66,7 @@
         
         //set the modal popup to true for it to be visible.      
         component.set("v.showModal",true);
+        component.set("v.isLoading",'false');
         
     },
     handleHideModal: function(component, event, helper) {

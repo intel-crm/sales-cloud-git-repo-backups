@@ -3,6 +3,7 @@
     <customButtons>Core_Opportunity_Clone_Button</customButtons>
     <customButtons>Core_Deal_Support</customButtons>
     <excludeButtons>Clone</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>

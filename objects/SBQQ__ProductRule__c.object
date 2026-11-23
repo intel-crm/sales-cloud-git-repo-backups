@@ -431,6 +431,12 @@
         <fullName>SBQQ__All</fullName>
         <columns>NAME</columns>
         <columns>SBQQ__Active__c</columns>
+        <columns>SBQQ__AdvancedCondition__c</columns>
+        <columns>SBQQ__ConditionsMet__c</columns>
+        <columns>SBQQ__EvaluationEvent__c</columns>
+        <columns>SBQQ__EvaluationOrder__c</columns>
+        <columns>SBQQ__ErrorMessage__c</columns>
+        <columns>SBQQ__Type__c</columns>
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>

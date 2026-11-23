@@ -1710,19 +1710,12 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
                     <fullName>Sales AI</fullName>
                     <default>true</default>
                     <label>Sales AI</label>
-                </value>
-                <value>
-                    <fullName>Sales_AI</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Sales_AI</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -2981,10 +2974,7 @@
         <customTabListAdditionalFields>OWNER.ALIAS</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_Status_Pkt__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_Source_Pkt__c</customTabListAdditionalFields>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
-        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
-        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <massQuickActions>Core_Mass_Claim</massQuickActions>
         <searchResultsAdditionalFields>Core_BusinessOrganizationNm__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Industry_Pkt__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>OWNER.ALIAS</searchResultsAdditionalFields>

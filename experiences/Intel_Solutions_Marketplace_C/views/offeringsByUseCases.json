@@ -111,21 +111,6 @@
     "regionName" : "blade2",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "allMarketPlaceHelpLabel" : "All Marketplace help",
-        "faqTitle" : "Offerings",
-        "headingLabel" : "FAQs",
-        "inverse" : false,
-        "paddingHorizontal" : true,
-        "theme" : "default"
-      },
-      "componentName" : "c:MarketPlaceFAQ",
-      "id" : "ed74ed97-752b-4def-b9e6-3edf3276ad2e",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "a7172b1d-224d-475a-ba51-cb6cdad857b3",
     "regionName" : "blade3",
     "type" : "region"

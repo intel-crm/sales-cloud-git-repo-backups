@@ -80,7 +80,7 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>
@@ -109,13 +109,13 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
-    <description>IOTG Design Dashboard</description>
+    <description>Optys with Products. USING OLD BU SHORT NAME!  New BU Short Name has missing Unassigned products as of 180110</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
@@ -136,15 +136,8 @@
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>IoTG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Embedded</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -155,7 +148,8 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+        <dateGranularity>FiscalQuarter</dateGranularity>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -163,7 +157,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US DESIGN IoTG WIN RATE</name>
+    <name>IoTG US DESIGN T1 WIN RATE</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -187,6 +181,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <interval>INTERVAL_PREVCURFY</interval>
     </timeFrameFilter>
 </Report>

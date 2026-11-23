@@ -170,7 +170,6 @@ public class PRM_SalesCloudContactIntStatus_Handler //implements Queueable
                 if((ipaCheckNewAcc == true && ipaCheckOldAcc == true) || (ipaCheckNewAcc == false && ipaCheckOldAcc == true) || (ipaCheckNewAcc == true && ipaCheckOldAcc == false))  {                     
                     isAccountChanged = true;
                 }
-            
                 if(!IPAPartnerRoles.contains(newCon.Core_IPA_PartnerRole__c) && !newCon.Core_IPS_Employee_Customer__c && oldContacts.get(newCon.Id).PRM_IPA_Integration_Status__c != 'Pending' && 
                 conIPACheck.containsKey(newCon.Id) && conIPACheck.get(newCon.Id)==true/*TWC729-7704 r4c issue fix*/
                 && ( newCon.Core_Job_Function_Code__c != oldContacts.get(newCon.Id).Core_Job_Function_Code__c
@@ -190,7 +189,6 @@ public class PRM_SalesCloudContactIntStatus_Handler //implements Queueable
                     || newCon.LastName != oldContacts.get(newCon.Id).LastName
                     || isAccountChanged == true
                 )){
-                          
                           //Contact con = new Contact(Id = newCon.id,PRM_IPA_Integration_Status__c = 'Pending');
                           newCon.PRM_IPA_Integration_Status__c = 'Pending';
                           //contactIds.add(newCon.Id);
@@ -209,29 +207,26 @@ public class PRM_SalesCloudContactIntStatus_Handler //implements Queueable
     //TWC729-7704 R4c issue fix
     private static Map<Id,PRM_Account_Contact_Relationship__c> getPCRRecord(Set<Id> contactIds){
         Map<Id,PRM_Account_Contact_Relationship__c> conPcrMap = new Map<Id,PRM_Account_Contact_Relationship__c>();
-        system.debug('conPcrMap:'+conPcrMap);
+        System.debug('PCR ContactIds=' + contactIds);
         if(contactIds!=null){
-           system.debug('contactIds:'+contactIds);
-            for( PRM_Account_Contact_Relationship__c pcr: [select id,PRM_Contact_Id__c,PRM_InActive_Ind__c from PRM_Account_Contact_Relationship__c where PRM_Status_Nm__c =: 'Complete' and PRM_Contact_Id__c in: contactIds]){
-                if(!conPcrMap.containsKey(pcr.PRM_Contact_Id__c)){
-                    system.debug('@SJ1conPcrMap:'+conPcrMap);
+            for( PRM_Account_Contact_Relationship__c pcr: [select id,PRM_Contact_Id__c,PRM_InActive_Ind__c,PRM_Status_Nm__c from PRM_Account_Contact_Relationship__c where PRM_Status_Nm__c =: 'Complete' and PRM_Contact_Id__c in: contactIds ]){
+                if(!conPcrMap.containskey(pcr.PRM_Contact_Id__c)){
                     conPcrMap.put(pcr.PRM_Contact_Id__c,pcr);
-                    system.debug('@SJ2conPcrMap:'+conPcrMap);
                 }
-                 else if(conPcrMap.get(pcr.PRM_Contact_Id__c).PRM_InActive_Ind__c && !pcr.PRM_InActive_Ind__c){
+                else if(conPcrMap.get(pcr.PRM_Contact_Id__c).PRM_InActive_Ind__c && !pcr.PRM_InActive_Ind__c){
                     conPcrMap.put(pcr.PRM_Contact_Id__c, pcr);
-                     system.debug('@SJ3conPcrMap:'+conPcrMap);
                 }
             }
-             system.debug('@SJ4conPcrMap:'+conPcrMap);
-        }
+    }
         return conPcrMap;
     }
+   
     
 
     private static void updateContactIPAIntegrationStatus(Set<Id> contacts) {
         if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
         List<Contact> contactsToBeUpdated = new List<Contact>();
+            System.debug('contactIds=' + contacts);
         Map<id,Contact> contactsMap = getContactsMap(contacts);
         System.debug('@RRT-------contactsMap'+contactsMap);
         if(contactsMap.size() > 0) {
@@ -243,8 +238,8 @@ public class PRM_SalesCloudContactIntStatus_Handler //implements Queueable
                     pendingContactIds.add(cont.id);
                 }
             }
-System.debug('@RRT-------contactsToBeUpdated'+contactsToBeUpdated);
-System.debug('@RRT-------pendingContactIds'+pendingContactIds);
+            System.debug('@RRT-------contactsToBeUpdated'+contactsToBeUpdated);
+            System.debug('@RRT-------pendingContactIds'+pendingContactIds);
 
             List<Contact> contactsToUpdateNew = new List<Contact>();
         if(!contactsToBeUpdated.isEmpty()){

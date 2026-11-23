@@ -17,7 +17,7 @@
         <name>CPT_BR_All_Target__c</name>
     </fields>
     <fields>
-        <label><!-- BR - CCG Target --></label>
+        <label><!-- BR - CCPG Target --></label>
         <name>CPT_BR_CCG_Target__c</name>
     </fields>
     <fields>
@@ -35,6 +35,10 @@
     <fields>
         <label><!-- BR - DCAI Ethernet Target --></label>
         <name>CPT_BR_NEX_Ethernet_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- CR - CCG Consumer Target --></label>
+        <name>CPT_CR_CCG_Consumer_CPU_Target__c</name>
     </fields>
     <fields>
         <label><!-- CR - One Intel OEM Target --></label>

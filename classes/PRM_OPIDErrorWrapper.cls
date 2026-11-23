@@ -50,7 +50,7 @@ public class PRM_OPIDErrorWrapper {
         return this.cagMapError;
     }
 
-    // AIA Start
+    //NJ AIA Start
     public void putAIAError(Map<String,String> aiaError){
         this.aiaMapError.putAll(aiaError);
     }
@@ -58,7 +58,7 @@ public class PRM_OPIDErrorWrapper {
     public Map<String,String> getAIAError(){
         return this.aiaMapError;
     }
-    // AIA end
+    //NJ AIA end
 
  /*	public void putABAError(Map<String,String> ABAError){
         this.abaMapError.putAll(ABAError);

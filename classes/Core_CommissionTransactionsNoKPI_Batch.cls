@@ -24,11 +24,10 @@ global without sharing class Core_CommissionTransactionsNoKPI_Batch implements D
             for (sObject record : scope) {
                 oppIdSet.add((Id)record.get('Id'));                
             }
-            //system.debug('###oppIdSet: '+ oppIdSet);
-            for (Core_Commissionable_Transaction__c oppWithComm: [SELECT Core_Opportunity__c FROM Core_Commissionable_Transaction__c where Core_Transaction_Timestamp__c > 2023-01-29T00:00:00.000+0000 and Core_Opportunity__c IN: oppIdSet]) {
+            DateTime commissionCutoff = Core_CommissionableTransactions.getCommissionCutoff();
+            for (Core_Commissionable_Transaction__c oppWithComm: [SELECT Core_Opportunity__c FROM Core_Commissionable_Transaction__c where CreatedDate >= :commissionCutoff and Core_Opportunity__c IN: oppIdSet]) {
                 oppIdSetToProcess.add(oppWithComm.Core_Opportunity__c);
             }
-            //system.debug('###KPIDtlsToProcess: '+oppIdSetToProcess.size());
             if(oppIdSetToProcess.size() > 0){
                 Core_CommissionableTransactions.processOpportunityWithNoKPI(oppIdSetToProcess);
             }

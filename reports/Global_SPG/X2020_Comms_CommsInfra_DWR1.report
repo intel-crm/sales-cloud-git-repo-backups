@@ -2,7 +2,7 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_Approved_Total_Price__c</field>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
         <field>TYPE</field>
@@ -79,20 +79,8 @@
         <relatedTable>Core_Opportunity_KPI__c</relatedTable>
         <relatedTableJoinColumn>Core_Opp_KPI_Opportunity__c</relatedTableJoinColumn>
     </crossFilters>
-    <crossFilters>
-        <criteriaItems>
-            <column>Core_Opp_KPI_Achieved__c</column>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <operation>with</operation>
-        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
-        <relatedTable>Core_Opportunity_KPI__c</relatedTable>
-        <relatedTableJoinColumn>Core_Opp_KPI_Opportunity__c</relatedTableJoinColumn>
-    </crossFilters>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 AND 4) AND (5 OR 6 OR 9) AND 7 AND 8)</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3 AND 4) AND (5 OR 6) AND 7 AND 8</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -126,7 +114,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>SOC,SOC-ATOM,SysOnChp-ATOM,Cascade Lake,Axxia</value>
+            <value>SOC,SOC-ATOM,Cascade Lake,Axxia</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_Code_Name__c</column>
@@ -149,13 +137,6 @@
             <operator>contains</operator>
             <value>DCG</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Intel C625 Chipset,Intel C626 Chipset,Intel C627 Chipset,Intel C628 Chipset,Intel C629 Chipset,QuickAssist Adapter 8960,QuickAssist Adapter 8970</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -166,7 +147,7 @@
     </groupingsAcross>
     <groupingsAcross>
         <dateGranularity>Quarter</dateGranularity>
-        <field>Opportunity.Core_Approved_Date__c</field>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
@@ -198,13 +179,11 @@
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2020-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

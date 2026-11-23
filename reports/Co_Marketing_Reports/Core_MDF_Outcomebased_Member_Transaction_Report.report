@@ -331,14 +331,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Intel Partner Alliance</value>
+            <value>Client CoMarketing Fund,Data Center CoMarketing Fund,Intel Partner Alliance</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Account Plan</value>
+            <value>Account Plan,MDF,MDF+,OEM CMP,Service Provider CMP</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</column>

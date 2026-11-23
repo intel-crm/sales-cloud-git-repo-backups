@@ -368,11 +368,6 @@
         <unique>false</unique>
     </fields>
     <label>Opportunity KPI History</label>
-    <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>OKH-{0000}</displayFormat>
         <label>Opportunity KPI History Name</label>

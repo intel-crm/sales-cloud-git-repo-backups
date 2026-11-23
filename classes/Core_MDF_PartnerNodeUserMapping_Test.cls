@@ -26,6 +26,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         UserRole usRole1 = [SELECT Id,Name FROM UserRole where Name like '%Partner User%' LIMIT 1];//US - TWC702-14285: Worked on this test class (no logic/structure change)
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.Email = 'sysadmin@example.com';
+        usr.Username = 'sysadmin.test@example.com';
         usr.UserRoleId = usRole.Id;
         database.insert(usr);
 
@@ -342,7 +343,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
             insert execution1;
         
         Test.startTest();
-        User systemAdminRecord = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User systemAdminRecord = [SELECT Id,Email from User where Username = 'sysadmin.test@example.com' limit 1];
         User partnerUserRec1 = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         Account accountRecord1 = [SELECT Id from Account where Name= 'Test Account' limit 1];
        
@@ -415,7 +416,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
     //Test method to test Create, Update & Delete PNUM Records
     @isTest static void updateanddeletePNUMRecords(){
         
-        User systemAdminRecord = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User systemAdminRecord = [SELECT Id,Email from User where Username = 'sysadmin.test@example.com' limit 1];
         User partnerUserRec1 = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         Account accountRecord1 = [SELECT Id from Account where Name= 'Test Account' limit 1];
 
@@ -448,7 +449,9 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
                 
                 pnumRecord.Core_MDF_Account__c = accRec2.Id;
                 Database.update(pnumRecord);
-                
+                Core_MDF_PNUM_Mapping_ServiceHandler.removeUsersFromNodeGroup(new List<Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord});
+                Core_MDF_PNUM_Mapping_ServiceHandler.removeAndAddUsersToNodeGroup(new List<Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord},new List<Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord});
+                Core_MDF_PNUM_Mapping_ServiceHandler.removeUsersFromNodeGroupOnDelete(new List<Core_MDF_Partner_Node_User_Mapping__c>{pnumRecord});
                 //pnumRecord.Core_MDF_Account__c = accRec1.Id;
                 //Database.update(pnumRecord);
 
@@ -470,7 +473,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
         psaRecord.PermissionSetId = ps.Id;
         insert psaRecord;*/
         Test.startTest();
-        User systemAdminRecord = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User systemAdminRecord = [SELECT Id,Email from User where Username = 'sysadmin.test@example.com' limit 1];
         Core_MDF_Partner_Node_User_Mapping__c pnumRecord = [SELECT ID,Core_MDF_Account__c,Core_MDF_User__c FROM Core_MDF_Partner_Node_User_Mapping__c limit 1];                                             
         List<Core_MDF_Partner_Node_User_Mapping__c> deleteRecordList = new List<Core_MDF_Partner_Node_User_Mapping__c>();
         
@@ -513,7 +516,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
     
     //Test method for exception scenario where user is empty
     @isTest static void createException(){
-        User systemAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User systemAdminUser = [SELECT Id,Email from User where Username = 'sysadmin.test@example.com' limit 1];
         
         Test.startTest();
         System.runAs(systemAdminUser){
@@ -534,7 +537,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
     @isTest
     static void testRetailSharing(){
         
-        User systemAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User systemAdminUser = [SELECT Id,Email from User where Username = 'sysadmin.test@example.com' limit 1];
         
         ChannelProgram retailCp = [SELECT Id, Name FROM ChannelProgram WHERE Name = 'Retail Marketing Funds' limit 1];
         
@@ -628,7 +631,7 @@ private class Core_MDF_PartnerNodeUserMapping_Test {
     @isTest
     static void testRetailCampaignSharing(){
         
-        User systemAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User systemAdminUser = [SELECT Id,Email from User where Username = 'sysadmin.test@example.com' limit 1];
         
         ChannelProgram retailCp = [SELECT Id, Name FROM ChannelProgram WHERE Name = 'Retail Marketing Funds' limit 1];
         

@@ -3,5 +3,6 @@ trigger accountChangeEvent on ACM_Account_Change_Event__e (after insert) {
     if(TriggerHandler.isActive('Pricing_UCD_Switch')) {
         Pricing_UCD_IQR_Response_Handler.processACMResponseForUnification(Trigger.New);
     }
+    System.debug('@NJ event triggered');
     PRM_OPID_UCD_Hierarchy_Handler.processOpidUcdHierarchy(Trigger.New);
 }

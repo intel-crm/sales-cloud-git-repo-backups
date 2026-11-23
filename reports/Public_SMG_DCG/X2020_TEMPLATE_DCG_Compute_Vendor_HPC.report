@@ -5,9 +5,6 @@
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>OpportunityLineItem.Core_Vertical_Market__c</field>
     </columns>
     <columns>

@@ -63,17 +63,14 @@ Return:None
              errMsg+='Value 1 in execute method is--'+regreqList+'--v2--'+contrecordIds+'--v3--'+retry+'--v4--'+EVfirstTime+' \n';
             if(regreqList != null){
                 errMsg+='Line 65 \n';
-                //System.debug(LoggingLevel.info,'>>>>>find me '+regreqList[0].PRM_Email_ID__c);
             }
             errMsg+='Line 68 \n ';
             createRegistrationTracker(regreqList, contrecordIds, retry, EVfirstTime);
             errMsg+='Line 70 \n';
         } catch (exception ex) {
-            //system.debug('---exception ' + ex.getmessage());
             getlogentries.errorMessage = getlogentries.errorMessage != null? getlogentries.errorMessage + ';' + ex.getmessage(): ex.getmessage();
         } finally {
             if (getlogentries.errorMessage != null)
-                //system.debug('---message ' + getlogentries.errorMessage);
             Core_Log_Entry.logEntryWithDetails(origin,project,'PRM_RegistrationTrackerUtility','Info','PRM_RegistrationTrackerUtility Invoked at' + system.today(),getlogentries.errorMessage,'','','');
         }
     }
@@ -127,7 +124,6 @@ Return:None
             regRList = [SELECT id,PRM_DeDup_Criteria__c,(SELECT id,Stage__c,PRM_Registration_Type__c,PRM_Current_Step__c,PRM_Step_Number__c,PRM_Registration__c,PRM_Log_Entries__c,PRM_Email__c,PRM_Last_Milestone_DateTime__c,CreatedDate,PRM_AGD_ID_Updated__c,PRM_Account__c,PRM_contact__c FROM Registration_Trackers__r WHERE PRM_Current_Step__c != NULL AND IsActive__c = true ORDER BY PRM_Step_Number__c DESC),Sync_Profile_Response__c,recordtype.developername,PRM_Auto_Approve__c,PRM_Status__c,PRM_Salesforce_ID__c,PRM_Matching_Contact__c,PRM_Email_Verification_Criteria__c,PRM_Email_Log__c,PRM_Email_ID__c,PRM_Email_Log__r.Email_Template_Name__c FROM PRM_Registration_Request__c WHERE id IN :regIds AND PRM_Channel_Program__r.Name = :Label.PRM_Intel_Partner_Alliance];
             
             errMsg+='Line 129 regRList value is--'+regRList+' \n';
-            //system.debug('---regRList ' + regRList);
             for (PRM_Registration_Request__c reg : regRList) {errMsg+='Line 131 reg -- '+reg+' \n';
                 list<PRM_Registration_Tracker__c> trackerList;
                 PRM_Registration_Tracker__c Tracker;
@@ -163,11 +159,9 @@ Return:None
                     regWrap.regtype = Tracker.PRM_Registration_Type__c;
                 }
                 errMsg+='Line 165 trackerMap value is--'+trackerMap+'--stpNo value is--'+stpNo+'--regWrap--'+regWrap+' \n';
-                //system.debug('---trackerMap ' + trackerMap);
                 if (trackerMap != null)regWrap.stageTrackerMap = trackerMap;
                 
                 if (registrationType != null && registrationType == 'Self') {
-                   // system.debug('---Self ');
                     regWrap.Registration_Initiated = reg != null ? true : false;
                     regWrap.regType = 'Self Registration';                    
                 }
@@ -185,6 +179,7 @@ Return:None
                 regWrap.Rejected = (reg.PRM_Status__c != null &&reg.PRM_Status__c == 'Rejected')? true: false;
                 regWrap.Approved = (reg.PRM_Status__c != null && reg.PRM_Status__c == 'Approved')? true: false;
                 errMsg+='Line 187 regWrap--'+regWrap+' \n';
+                System.debug('Appr val: '+regWrap.Approved);
                 if (regWrap.Approved) {
                     errMsg+='Line 189 regWrap approved \n';
                     //errMsg+='New Request is Approved: '+regWrap.Approved+'--ID--'+reg.Id+'\n';
@@ -209,7 +204,6 @@ Return:None
         }
         
         else if (regList == null && contrecordIds != null) { //
-           // system.debug('---contrecordIds ' + contrecordIds.size());
            errMsg+='Line 212 inside else if \n';
             ContactIds = contrecordIds;
             //Check EV for Admin
@@ -301,7 +295,6 @@ Return:None
         }
         errMsg+='Line 298 regWrapperList is--'+regWrapperList+' \n';
         
-        //system.debug('---regWrapperList ' + regWrapperList);
         if (regWrapperList.size() > 0){processWrapper(regWrapperList, conRegList);}
         Core_Log_Entry.logEntryWithDetails(origin,project,'PRM_RegistrationTrackerUtility','Info','PRM_RegistrationTrackerUtility - method createRegistrationTracker -  Invoked at' + system.today(),errMsg,'','','');
     }
@@ -364,9 +357,7 @@ Return:None
             }
         }
 
-        //System.debug('oldValues -->'+JSON.serialize(oldValues));
 
-        //System.debug('reqIdStageMap -->'+JSON.serialize(reqIdStageMap));
 
         List<PRM_Registration_Tracker__c> finalListToUpsert = new List<PRM_Registration_Tracker__c>();
         if(UpsertRTList.size()>0){
@@ -380,7 +371,6 @@ Return:None
           }
         }
 
-        //System.debug('finalListToUpsert -->'+JSON.serialize(finalListToUpsert));
 
         // END DINESH
         //Upsert Registration TRacker
@@ -417,8 +407,7 @@ Return: list<PRM_Registration_Tracker_Steps__mdt>
     ) {
         list<PRM_Registration_Tracker_Steps__mdt> QuerymdtList = new List<PRM_Registration_Tracker_Steps__mdt>();
         string step = '%;' + stepno + ';%';
-        //system.debug('---stepno ' + stepno + '--' + step);
-        list<PRM_Registration_Tracker_Steps__mdt> mdtList = new List<PRM_Registration_Tracker_Steps__mdt>();
+        //list<PRM_Registration_Tracker_Steps__mdt> mdtList = new List<PRM_Registration_Tracker_Steps__mdt>();
         string quryStr = 'select id,DeveloperName ,PRM_Revise__c,PRM_Revise_Step__c,PRM_Current_Step__c,PRM_Display_Step_No__c,PRM_Update_field__c,PRM_Registration_Type__c,Masterlabel,Label,PRM_Auto_Approved__c,Retry__c from PRM_Registration_Tracker_Steps__mdt where ';
         if (autoapproved != null && autoapproved) {
             //list<string> stepnoss = stepno.split(';');
@@ -426,11 +415,15 @@ Return: list<PRM_Registration_Tracker_Steps__mdt>
         }
         quryStr += ' PRM_Previous_Step__c like:step  order by PRM_Current_Step__c Asc ';
         QuerymdtList = Database.query(quryStr);
-        for (PRM_Registration_Tracker_Steps__mdt RT : QuerymdtList) {
+        //ATHR Fix - TWC729-9556 - JB - start
+        /*for (PRM_Registration_Tracker_Steps__mdt RT : QuerymdtList) {
             mdtList.add(RT);
         }
+        
        // system.debug('---nextMDTList ' + mdtList.size() + '--' + mdtList);
-        return mdtList;
+        return mdtList;*/
+        //ATHR Fix - TWC729-9556 - JB - end
+        return QuerymdtList;
     }
     
     /************************************************************************************************************************************
@@ -445,7 +438,6 @@ Return: list<PRM_Registration_Tracker__c>
         string currentStep
     ) {
         list<PRM_Registration_Tracker__c> trackerList = new List<PRM_Registration_Tracker__c>();
-        //system.debug('---currentStep ' + currentStep);
         boolean dorevise = false;
         boolean nonesatified = true;
   
@@ -457,15 +449,12 @@ Return: list<PRM_Registration_Tracker__c>
             );
             if (Trackermdt.size() > 0) {
                 for (PRM_Registration_Tracker_Steps__mdt track : Trackermdt) {
-                    //system.debug('---developername ' + track.developername);
                     boolean stgCheck = (boolean) WrapperValue.get(track.developername);
-                   // system.debug('---stagecheck ' + stgCheck);
                     if (stgCheck != null && stgCheck == true) {
                         getlogentries.errorMessage = getlogentries.errorMessage != null
                             ? getlogentries.errorMessage + ';' + track.developername
                             : track.developername;
                         if (track.PRM_Revise__c && wrap.stageTrackerMap != null && ((track.PRM_Revise_Step__c != null && wrap.stageTrackerMap.containskey(track.PRM_Revise_Step__c) || (track.Retry__c != null && wrap.stageTrackerMap.containskey(track.Retry__c))))) {
-                           // system.debug('---existingRecord ');
                             PRM_Registration_Tracker__c tracker1;
                             if (track.Retry__c != null) {tracker1 = wrap.stageTrackerMap.get(track.Retry__c);}
                             if (tracker1 == null){tracker1 = wrap.stageTrackerMap.get(track.PRM_Revise_Step__c);}
@@ -494,7 +483,6 @@ Return: list<PRM_Registration_Tracker__c>
                                     wrap.regType,
                                     track
                                 );
-                               // system.debug('---NewRecord');
                                 //trackerde.PRM_Step_Number__c=displayno;
                                 if (wrap.LogEntries != null){trackerde.PRM_Log_Entries__c = wrap.LogEntries;}
                                 if (wrap.IntegrationLog != null) {id objectId = wrap.IntegrationLog;SobjectType val = objectId.getSobjectType();if (String.valueof(val) == 'PRM_Integration_Log__c') {trackerde.PRM_Integration_Log__c = wrap.IntegrationLog;}
@@ -520,7 +508,6 @@ Return: list<PRM_Registration_Tracker__c>
                         PRM_Registration_Tracker_Steps__mdt trackmdt = PRM_Registration_Tracker_Steps__mdt.getInstance(
                             stgname
                         );
-                        //system.debug('---trackmdt ' + trackmdt);
                         if (trackmdt != null && trackmdt.PRM_Update_field__c != null) {
                             PRM_Registration_Tracker__c trackerupd = wrap.registrationTracker;
                             trackerupd.put(trackmdt.PRM_Update_field__c, system.now());
@@ -528,11 +515,9 @@ Return: list<PRM_Registration_Tracker__c>
                         }
                     }
                 }
-                //system.debug('---nonesatified ' + nonesatified);
             }
         }
         
-       // system.debug('---trackerList ' + trackerList.size() + '--' + trackerList);
         return trackerList;
     }
     
@@ -563,7 +548,6 @@ Return: map<string,list<PRM_Registration_Tracker__c>>
             WHERE PRM_contact__c IN :contatIds AND IsActive__c = true
             ORDER BY PRM_Step_Number__c DESC
         ]) {
-            //system.debug('---track ' + track);
             if (emailTrackerMap.containskey((track.PRM_Email__c).toLowercase())) {
                 List<PRM_Registration_Tracker__c> trList = emailTrackerMap.get(
                     (track.PRM_Email__c).toLowercase()
@@ -592,7 +576,7 @@ Return: static set<string>
             SELECT
             Id,
             PRM_Contact_Id__r.Email,
-            PRM_Contact_Id__c,
+            /*PRM_Contact_Id__c,*/ //ATHR Fix - TWC729-9556 - JB
             CreatedDate,
             PRM_Activated_Date__c
             FROM PRM_Account_Contact_Relationship__c
@@ -605,7 +589,6 @@ Return: static set<string>
             }
         }
         
-        //system.debug('---acrActivatedMap ' + acrActivatedMap);
         list<PRM_EmailLog__c> elList = new List<PRM_EmailLog__c>(
             [
                 SELECT
@@ -618,14 +601,17 @@ Return: static set<string>
                 FROM PRM_EmailLog__c
                 WHERE
                 PRM_Contact__c IN :conid
-                AND (Email_Template_Name__c LIKE '%SCRRENGENRLREV%'
+                /*AND (Email_Template_Name__c LIKE '%SCRRENGENRLREV%'
                      OR Email_Template_Name__c LIKE '%SCRUACCTADD%'
                      OR Email_Template_Name__c LIKE '%ADMINREG%'
-                     OR Email_Template_Name__c LIKE '%CampaignInviteForBulk%')
+                     OR Email_Template_Name__c LIKE '%CampaignInviteForBulk%')*///ATHR Fix - TWC729-9556 - JB
+                AND (Email_Template_Name__c LIKE 'SCRRENGENRLREV%'
+                     OR Email_Template_Name__c LIKE 'SCRUACCTADD%'
+                     OR Email_Template_Name__c LIKE 'ADMINREG%'
+                     OR Email_Template_Name__c LIKE 'CampaignInviteForBulk%')
                 order by createddate desc
             ]
         );
-        //system.debug('---elList ' + elList.size() + '--' + elList);
         if (elList != null && elList.size() > 0) {
             for (PRM_EmailLog__c el : elList) {
                 if (!evSenSet.contains(el.PRM_Contact__r.Email) && el.createddate >= acrActivatedMap.get(el.PRM_Contact__r.Email)) {
@@ -649,12 +635,10 @@ Return: map<string,string>
             FROM Core_Log_Entry__c
             WHERE id IN :logids
         ]) {
-           // system.debug('---logNmae ' + log.Name);
             logentryName = logentryName != null
                 ? logentryName + ';' + log.Name
                 : log.Name;
         }
-        //system.debug('---logentryName  ' + logentryName);
         
         return logentryName;
     }
@@ -678,9 +662,6 @@ Return: map<string,string>
             this.intLog = intLog1;
         }
         public void execute(QueueableContext context) {
-           // system.debug('---UpdateTrackerSteps  ');
-           // system.debug('---classname ' + classname);
-            //System.debug('-- email value -->'+this.EmailValue);
             Set<String> emailsIdsSet = new Set<String>();
             for(Contact contact : [select email from contact where id in :this.EmailValue]){
                 emailsIdsSet.add(contact.email);
@@ -691,7 +672,6 @@ Return: map<string,string>
             try {
                 //Getting called from API
                 if (recordList != null && recordList.size() > 0) {
-                    system.debug('---intLog ' + intLog);
                     WrapperList = getregistrationWithTrackers(
                         recordList,
                         classname,
@@ -709,7 +689,6 @@ Return: map<string,string>
                     for (PRM_Registration_Request__c reg : regReqListMap.values()) {
                         regIds.add(reg.id);
                     }
-                    //system.debug('---regIds ' + regIds);
                     if (regIds != null)
                         WrapperList = getregistrationWithTrackers(
                             regIds,
@@ -720,13 +699,12 @@ Return: map<string,string>
                 }else if(classname =='PRM_SendInviteEmail_Batch'){
                     WrapperList = checkInviteEmail(this.EmailValue);
                 }//IPA2.0 TWC727-2852 starts here 
-		else if(classname=='PRM_ProcessInboundOPIDRecords'){
+    else if(classname=='PRM_ProcessInboundOPIDRecords'){
                     set<string> regIds = new Set<string>();
                     
                     for(PRM_Registration_Request__c regReq : [SELECT id,PRM_DeDup_Criteria__c,Sync_Profile_Response__c,recordtype.developername,PRM_Auto_Approve__c,PRM_Status__c,PRM_Salesforce_ID__c,PRM_Matching_Contact__c,PRM_Email_Log__c,PRM_Email_ID__c,PRM_Email_Log__r.Email_Template_Name__c FROM PRM_Registration_Request__c WHERE PRM_Salesforce_ID__c IN: this.EmailValue  AND PRM_Channel_Program__r.Name = :Label.PRM_Intel_Partner_Alliance order by lastmodifiedDate desc]){ 
                         regIds.add(regReq.id);
                     }
-                    system.debug('---regIds ' + regIds);
                     if (!regIds.isEmpty()){
                         WrapperList = getregistrationWithTrackers(
                             regIds,
@@ -736,15 +714,13 @@ Return: map<string,string>
                         );
                     }
                 }//IPA2.0 TWC727-2852 ends here
-		else {
+    else {
                     getregWithTrackersforGetProfileAPI(EmailValue, intLog, classname);
                 }
-                //system.debug('---WrapperList ' + WrapperList);
                 if (WrapperList.size() > 0){processWrapper(WrapperList, null);}
             } catch (Exception ex) {getlogentries.errorMessage = getlogentries.errorMessage != null? getlogentries.errorMessage + ';' + ex.getmessage(): ex.getmessage();
             } finally {
                 if (getlogentries.errorMessage != null)
-                    system.debug('---message ' + getlogentries.errorMessage);
                 Core_Log_Entry.logEntryWithDetails(
                     origin,
                     project,
@@ -831,7 +807,6 @@ Return: map<string,string>
                 LIMIT 1
             ];
         }
-        system.debug('---mdt ' + mdt);
         if (reqList.size() > 0) {
             for (PRM_Registration_Request__c reg : reqList) {
                 registration = reg;
@@ -845,7 +820,6 @@ Return: map<string,string>
                             lastmilestoneDate = tracker.createddate;
                         trackerMap.put(tracker.Stage__c, tracker);
                     }
-                   // system.debug('---trackerMap ' + trackerMap);
                     if (
                         mdt != null && 
                         (mdt.PRM_Current_Step__c   == '6' && reg.recordtype.Name == 'Account Create Request' || mdt.PRM_Current_Step__c != '6') &&
@@ -916,8 +890,6 @@ Return: map<string,string>
                         regType = tracker.PRM_Registration_Type__c;
                         trackerMap.put(tracker.Stage__c, tracker);
                     }
-                    //system.debug('---trackerMap ' + trackerMap);
-                   // system.debug('---trackerMap ' + mdt.PRM_Current_Step__c);
                     if (
                         mdt != null &&
                         trackerMap != null &&
@@ -928,7 +900,6 @@ Return: map<string,string>
                         );
                         if (intelog != null) {id objectId = intelog;SobjectType val = objectId.getSobjectType();if (String.valueof(val) == 'PRM_Integration_Log__c') {tracker.PRM_Integration_Log__c = intelog;}
                         }
-                        //system.debug('---updatefield ' + mdt.PRM_Update_field__c);
                         if (mdt.PRM_Update_field__c != null)
                             tracker.put(mdt.PRM_Update_field__c, system.now());
                         trackerList.add(tracker);
@@ -941,8 +912,6 @@ Return: map<string,string>
         }
         
         if (createNewRecord) {
-           // system.debug('---registration ' + registration);
-           // system.debug('---cont ' + cont);
             PRM_Registration_Tracker__c trackerde = createRegTrackerInstance(
                 null,
                 registration,
@@ -950,7 +919,6 @@ Return: map<string,string>
                 regType,
                 mdt
             );
-           // system.debug('---elsePart');
             
             if (intelog != null){trackerde.PRM_Integration_Log__c = intelog;}
                 trackerde.PRM_Email__c = new List<string>(emailid)[0];
@@ -971,11 +939,9 @@ Return: map<string,string>
               if (regType != 'Self Registration') {                
                 trackerev.PRM_Last_Milestone_DateTime__c = lastmilestoneDate;trackerev.PRM_Step_Number__c = 4;trackerev.PRM_Current_Step__c = 49;trackerev.Stage__c = '49';         trackerev.PRM_Email__c = trackerde.PRM_Email__c;   
             trackerList.add(trackerev);}              
-              //System.debug('trackerev -->'+trackerev);              
             }
         }
         
-       // system.debug('---trackerList ' + trackerList);
         // Add query to check duplicates
         if (trackerList.size() > 0){Database.upsert(trackerList, false);}
     }
@@ -986,7 +952,7 @@ Return: map<string,string>
         string regType,
         string intelog
     ) {
-    
+    System.debug('INTEL:'+intelog);
     errMsg+='getregistrationWithTrackers called: \n ';
     
         list<PRM_Registration_Request__c> reqList = new List<PRM_Registration_Request__c>();
@@ -1011,8 +977,6 @@ Return: map<string,string>
         set<string> AccountIds = new Set<string>();
         set<string> opidAccountIds= new Set<string>(); //IPA2.0 TWC727-2852
         getStagePicklistvalues();
-       // system.debug('---classname ' + classname);
-        //system.debug('---intelog ' + intelog);
         Map<String, PRM_Registration_Request__c> mapEmailToRegTracker = new Map<String, PRM_Registration_Request__c>();
         if (regids != null && regids.size() > 0) {
             
@@ -1059,7 +1023,6 @@ Return: map<string,string>
                 ORDER BY CreatedDate desc
             ];           
       errMsg+='reqList value is: '+reqList+' \n ';
-           // system.debug('---reqList ' + reqList);
             for (PRM_Registration_Request__c regreq : reqList) {
                 emails.add(regreq.PRM_Email_ID__c);
                 if(!mapEmailToRegTracker.containsKey(regreq.PRM_Email_ID__c)){
@@ -1073,7 +1036,6 @@ Return: map<string,string>
             
             if (intelog != null)
                 logentriesName = getLogEntries(intelog);
-            //system.debug('---logentriesName ' + logentriesName);
         }
 
         
@@ -1116,7 +1078,7 @@ Return: map<string,string>
             (
                 SELECT ID, createdDate
                 FROM EmailLogs__r
-                WHERE Email_Template_Name__c LIKE '%SCRREQTOAPVDNEW%' order by createdDate desc
+                WHERE Email_Template_Name__c LIKE 'SCRREQTOAPVDNEW%' /*'%SCRREQTOAPVDNEW%'*/  order by createdDate desc //ATHR Fix - TWC729-9556 - JB
             ),
             (
                 SELECT
@@ -1171,11 +1133,6 @@ Return: map<string,string>
     
     errMsg+='ACRcheckMap value is '+ACRcheckMap+' \n SubcheckMap value is: '+SubcheckMap+'\n EntitlementcheckMap: '+EntitlementcheckMap+' \n WelcomeMailcheckMap: '+WelcomeMailcheckMap+' \n emailContactMap: '+emailContactMap+' \n ';
     
-        //system.debug('---ACRcheckMap ' + ACRcheckMap);
-        //system.debug('---SubcheckMap ' + SubcheckMap);
-       // system.debug('---EntitlementcheckMap ' + EntitlementcheckMap);
-       // system.debug('---WelcomeMailcheckMap ' + WelcomeMailcheckMap);
-       // system.debug('---emailContactMap ' + emailContactMap);
       
         /*if (AccountIds.size() > 0 && !ipaRefresh) {
             for (AggregateResult aggRes : [
@@ -1208,7 +1165,7 @@ Return: map<string,string>
                 benefitCount.put(accId, numApps);
             }
         }
-	 //IPA2.0TWC727-2852
+   //IPA2.0TWC727-2852
         for (PRM_Registration_Request__c reg : reqList) {
             //create instance of wrapper class
             RegistrationWrapper regWrap = new RegistrationWrapper();
@@ -1248,8 +1205,6 @@ Return: map<string,string>
                 //if(stageMap.containskey(tracker.Stage__c ) && regWrap.stageName==null  )
                 //regWrap.stageName=stageMap.get(tracker.Stage__c );
                 regWrap.stepNo = string.valueof(tracker.PRM_Current_Step__c);
-               // system.debug('---regWrap.stepNo' + regWrap.stepNo);
-               // system.debug('---logentriesName ' + logentriesName);
                 if (logentriesName != null)
                     regWrap.LogEntries = logentriesName;
                 
@@ -1285,7 +1240,6 @@ Return: map<string,string>
                 if (classname != null && classname != 'PRM_CIMCallout') {
                   errMsg+='Inside not PRM_CIMCallout block: \n ';
                     /*if (classname != null && classname == 'PRM_RegReqProcessingQueueable' && !ipaRefresh ) {
-                       // system.debug('reg.PRM_Salesforce_ID__r.Core_IPA_Badge_Tier__c'+reg.PRM_Salesforce_ID__r.Core_IPA_Badge_Tier__c);
              errMsg+='Inside PRM_RegReqProcessingQueueable block: \n ';
                         if (benefitCount != null && AccountEmailMap != null && AccountEmailMap.containskey(reg.PRM_Email_ID__c)) {
                             string accID = AccountEmailMap.get(reg.PRM_Email_ID__c);
@@ -1306,7 +1260,6 @@ Return: map<string,string>
                         errMsg+= '**** inside PRM_CreateAccountAndRelatedRecordsAdmin/PRM_CreateAccountAndRelatedRecords logic ****\n';                 
                         regWrap.AccountId = (emailAccountMap != null && emailAccountMap.containskey(reg.PRM_Email_ID__c))? emailAccountMap.get(reg.PRM_Email_ID__c): null;
                         regWrap.ContactId = (emailContactMap != null && emailContactMap.containskey(reg.PRM_Email_ID__c))? emailContactMap.get(reg.PRM_Email_ID__c): null;
-                        //system.debug('---regEmail ' + reg.PRM_Email_ID__c);
                         regWrap.ACR_Assigned = (ACRcheckMap != null && ACRcheckMap.containskey(reg.PRM_Email_ID__c))? true: false;
                         errMsg+= 'regWrap.ACR_Assigned: ' +regWrap.ACR_Assigned+'\n';
                         regWrap.ACR_Not_Assigned = regWrap.ACR_Assigned ? false : true;
@@ -1375,7 +1328,6 @@ Return: map<string,string>
         }
         
         if (updateRegReqList.size() > 0) {TriggerHandler.bypass('PRM_RegRequest_TriggerHandler');Database.update(updateRegReqList, false);TriggerHandler.clearbypass('PRM_RegRequest_TriggerHandler');}
-        //system.debug('---WrapList ' + WrapList);
         Core_Log_Entry.logEntryWithDetails(origin,project,'PRM_RegistrationTrackerUtility','Info','PRM_RegistrationTrackerUtility Invoked at' + system.today(),errMsg,'','','');
         return WrapList;
 
@@ -1413,7 +1365,6 @@ Return: map<string,string>
         string regtype,
         PRM_Registration_Tracker_Steps__mdt mdt
     ) {
-        //system.debug('---regtype ' + regtype);
         PRM_Registration_Tracker__c rt = new PRM_Registration_Tracker__c();
         if (reg != null) {
             rt.PRM_Registration__c = reg.id;
@@ -1466,7 +1417,6 @@ Return: map<string,string>
         ]) {
             UserMap.put(usr.id, usr.email);
         }
-       // system.debug('---UserMap ' + UserMap);
         string logcdn = '%' + label.PRM_Partner_Portal + '%';
         for (LoginHistory history : [
             SELECT ID, LoginTime, LoginUrl, userid
@@ -1481,7 +1431,6 @@ Return: map<string,string>
                 }
             }
         }
-       // system.debug('---loggedUsrMap' + loggedUsrMap);
         
         List<PRM_Registration_Request__c> requestObjList = new List<PRM_Registration_Request__c>();
         List<PRM_Registration_Tracker__c> trackerObjList = new List<PRM_Registration_Tracker__c>();
@@ -1507,7 +1456,6 @@ Return: map<string,string>
         
 
 
-       // system.debug('---upsertObjects ' + upsertObjects);
         // Add query to check duplicates
         if (upsertObjects.size() > 0){Database.upsert(upsertObjects, false);}
     }
@@ -1542,7 +1490,6 @@ Return: map<string,string>
             string stagename1;
             if(track.Stage__c!=null && track.PRM_Registration__c!= null &&  track.PRM_Registration__c == regid){
                 stagename1 = (track.Stage__c).Replace(' ', '_');
-                //System.debug('Stage Name -->' + stagename1);
                 WrapperVal.put(stagename1, true);
                 if (track.PRM_Registration__r.PRM_Auto_Approve__c){WrapperVal.put('autoapproved', true);}
                 admin = track.PRM_Registration__r.recordtype.Name == 'Admin Registration'? true: false;
@@ -1551,9 +1498,6 @@ Return: map<string,string>
             
         }
         List<PRM_Registration_Tracker__c> updateList = new List<PRM_Registration_Tracker__c>();
-        //System.debug('externalState1475'+ externalState);
-        //System.debug('missingRegTrackMap'+ JSON.serialize(missingRegTrackMap));
-        //System.debug('existingMilestones'+ JSON.serialize(existingMilestones));
         for(PRM_Registration_Tracker__c rtr : missingRegTrackMap.values()){
              if(!existingMilestones.contains(rtr.Stage__c) && regTracker!=null){
                 // PRM_Registration_Tracker__c rtrecord = new PRM_Registration_Tracker__c();              
@@ -1569,7 +1513,6 @@ Return: map<string,string>
         }
 
         //added dinesh
-        //System.debug('updateList -->'+JSON.serialize(updateList));
         if(updateList.size()>0){
             for(PRM_Registration_Tracker__c rt : updateList){
                 if(rt.Stage__c!=null){WrapperVal.put((rt.Stage__c).Replace(' ', '_'),true);}
@@ -1585,7 +1528,6 @@ Return: map<string,string>
                 WrapperVal.put('regInitiated', true);
             }
             
-            //system.debug('---regInitiated ' + WrapperVal.get('regInitiated'));
             if (WrapperVal.containskey('autoapproved') && WrapperVal.get('autoapproved') == true && !WrapperVal.containskey('Waiting_for_Approval') ) {
                 WrapperVal.put('manulApproval', true);
             } else {
@@ -1659,15 +1601,6 @@ Return: map<string,string>
                
             } 
            
-           // system.debug('externalState'+externalState);
-            system.debug(
-                '---Guest_redemption_complete    ' +
-                WrapperVal.get('Guest_redemption_complete')
-            );
-            system.debug(
-                '---User Logged into Partner Portal    ' +
-                WrapperVal.get('User Logged into Partner Portal')
-            );
             if ( WrapperVal.containskey('User_Logged_into_Partner_Portal') != null && WrapperVal.containskey('User_Logged_into_Partner_Portal') == true) {
                 WrapperVal.put('User_Yet_to_login', false);
             } else {
@@ -1679,7 +1612,6 @@ Return: map<string,string>
                 WrapperVal.put('ackmail', false);
             }
             
-            //System.debug(WrapperVal.get('Guest_redemption_complete'));
             
             if (WrapperVal.get('Guest_redemption_complete') == true) {
                 WrapperVal.put('Guest_redemption_complete', true);
@@ -1687,7 +1619,6 @@ Return: map<string,string>
                 WrapperVal.put('Guest_redemption_pending', true);
             }
             
-           // system.debug('---WrapperVal' + WrapperVal);
             wrap = (RegistrationWrapper) JSON.deserialize(
                 JSON.serialize(WrapperVal),
                 RegistrationWrapper.class
@@ -1704,7 +1635,6 @@ Return: map<string,string>
     
     Core_Log_Entry.logEntryWithDetails(origin,project,'PRM_RegistrationTrackerUtility','Info','PRM_RegistrationTrackerUtility getTracker method for: ' +regid ,errMsg,'','','');
     
-       // system.debug('---wrap ' + wrap);
         return wrap;
     }
     /*******************************************************************************************************
@@ -1788,10 +1718,10 @@ Return:None
         @AuraEnabled
         public boolean Entitlement_Not_Assigned { get; set; }
         @AuraEnabled
-	//IPA2.0 - TWC727-2852
+  //IPA2.0 - TWC727-2852
         public boolean Benefit_Entitlement_Assigned { get; set; }
         @AuraEnabled
-        public boolean Benefit_Entitlement_Not_Assigned	 { get; set; }
+        public boolean Benefit_Entitlement_Not_Assigned   { get; set; }
         @AuraEnabled
         public boolean Benefit_Entitlement_Yet_to_Assign { get; set; }
         @AuraEnabled
@@ -1894,7 +1824,6 @@ Return:None
                         ContrackerMap.put(trac.Stage__c, trac);
                     }
                     PRM_Registration_Tracker__c conTracker = con.Registration_Contacts__r[0];
-                    system.debug('---conTracker ' + conTracker);
                     regWrap.stepNo = string.valueof(conTracker.PRM_Current_Step__c);
                     if (ContrackerMap != null){regWrap.stageTrackerMap = ContrackerMap;}
                     regWrap.registrationTracker = conTracker != null ? conTracker : null;                    

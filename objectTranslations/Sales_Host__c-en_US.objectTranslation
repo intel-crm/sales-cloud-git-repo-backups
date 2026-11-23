@@ -61,7 +61,7 @@
         <name>Sales_IsTemporaryLicense__c</name>
     </fields>
     <fields>
-        <label>Legacy Host Id</label>
+        <label>Primary Computer ID</label>
         <name>Sales_Legacy_Host_Id__c</name>
     </fields>
     <fields>
@@ -136,7 +136,7 @@
         <name>Sales_Float_HOST_NIC_Allowed</name>
     </validationRules>
     <validationRules>
-        <errorMessage>For FLOAT License Type, either none or both Redundant Servers must be added to a host &amp; cannot add Companion Computer for FLOAT license type.</errorMessage>
+        <errorMessage><!-- For FLOAT License Type, either none or both Redundant Servers must be added to a host &amp; cannot add Companion Computer for FLOAT license type. --></errorMessage>
         <name>Sales_Float_Lic_NoneorBoth_RedServer_Req</name>
     </validationRules>
     <validationRules>

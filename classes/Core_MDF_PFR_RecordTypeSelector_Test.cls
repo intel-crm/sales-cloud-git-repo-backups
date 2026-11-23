@@ -115,7 +115,7 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
         Test.startTest();
         User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
         string objectName = 'Campaign';
-
+ 
         Map<String,id>  testMap=new Map<String,id>();
         System.runAs(user1){
            testMap= Core_MDF_PFR_RecordTypeSelector.fetchRecordTypeValues_string_id(objectName);
@@ -164,8 +164,7 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
         System.runAs(user1){
             String objectName = 'PartnerFundRequest';
             result1 = Core_MDF_PFR_RecordTypeSelector.checkSObjectCreatePermission(objectName);   
-        }
-        
+        }        
         Test.stopTest();
         Assert.areEqual(true, result1);
     }
@@ -206,6 +205,8 @@ private class Core_MDF_PFR_RecordTypeSelector_Test
         // US - TWC702-14285: Unit Test Method should include System.Assert
         System.assertNotEquals(null, testList, 'getRtBudTypeFieldSetMappings should return a non-null list');
     }
+    
+    
    /*  @isTest
     static void testgetRtBudTypeFieldSetMappings(){
         

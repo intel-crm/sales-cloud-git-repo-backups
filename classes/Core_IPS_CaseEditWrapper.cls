@@ -61,21 +61,8 @@ public Core_IPS_CaseEditWrapper(String caseId){
 	//isAgent = ??
 	//need to pass agent - below dynamically - currently passing it hardcode
 	isAgent = Core_IPS_Helper_Utility.isIPSCustomerUser(); //Added by Ganapati
-	User currentuser;
-	//String currentPageHeader = ApexPages.currentPage().getHeaders().get('Host');
-	String currentPage = URL.getSalesforceBaseUrl().toExternalForm(); 
-	if(currentPage.contains('premiersupport')){
-		currentUser = [SELECT Id, Name, Profile.Name FROM User WHERE Id=:UserInfo.getUserId()];
-		if(currentUser.Profile.Name == 'IPS Agent-Partner'){
-			isAgent = true;
-		}
-		else{
-			isAgent = false;
-		}
-		
-	}	
 	cs = Core_IPS_CaseUtility.getCase_DynamiCSOQL(caseId,isAgent);
-	
+    if (cs != null){
 	if(cs.core_ips_project_case__c != null){
 		project = new core_ips_project__c (name = cs.core_ips_project_case__r.Name, id = cs.core_ips_project_case__c);
 		
@@ -88,7 +75,8 @@ public Core_IPS_CaseEditWrapper(String caseId){
 		
 	}
 	if(cs.assetId != null){
-		asset = new asset (name = cs.product.name, id = cs.assetId);		
+		asset = new asset (name = cs.product.name, id = cs.assetId);
+		
 	}
 	//start added by Aayushi for US217499
 	//what is private Project? = UI logic need to understand
@@ -168,11 +156,14 @@ public Core_IPS_CaseEditWrapper(String caseId){
 	} // End By Sumukh for US107484 
 		
     envDetails=helper.getEnvironmentDetailsOperationList(cs.Core_IPS_Supported_Product__c,null,isAgent); 
+	System.debug('hk 171----> '+envDetails);
 	subCatEnvDetails = helper.getEnvironmentDetailsOperationList(null,cs.Core_Case_Issue_Sub_Category__c,isAgent); 
+	System.debug('hk 173----> '+subCatEnvDetails); 
     helper.setCurrentEnvironmentDetails(envDetails,''+cs.Id);
 	helper.setCurrentEnvironmentDetails(subCatEnvDetails,''+cs.Id);
 	fields = helper.getDynmicFields(envDetails);
 	subCatFields = helper.getDynmicFields(subCatEnvDetails);
+
 	if(cs.Core_IPS_Partner_Sup_Owner__c != null){
 		list<String> queries = helper.getLookupPartnerOwner(cs.Core_IPS_Project_Case__c,  cs.ContactId);
 		if(queries.size()==2){
@@ -180,7 +171,7 @@ public Core_IPS_CaseEditWrapper(String caseId){
 			PSOCountQuery = queries[1];
         }    
 	}	
-	
+    }	
 }                     
 /***************************************************************************************************
 Method Name:  DisplayPSAPSO
@@ -256,10 +247,10 @@ Public List<CustomSelectOptions>  DisplayPSAPSO(string selectedProjId, string se
 		else
 			ConId= selectedContactId;
 		//AccountId of Contact Case 
-		Id AcctId;     
+		Id AcctId;   
         //FLS Read fix applied - Gangadhar 19-10-2022
         if (Schema.sObjectType.Contact.isAccessible()){
-        for(Contact c: [SELECT AccountId FROM Contact WHERE Id =: ConId and Core_IPS_Active__c = True]){
+        	for(Contact c: [SELECT AccountId FROM Contact WHERE Id =: ConId and Core_IPS_Active__c = True]){
             AcctId = c.AccountId;
         }
         }

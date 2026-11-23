@@ -36,11 +36,13 @@ public class ER_EmailNotification_Utility_Test
         Core_Entitlement__c ento = new Core_Entitlement__c();
         ento.Name = 'OLO Label Orderer';
         ento.Core_Display_Name__c = 'OLO Label Orderer';
+        //ento.Core_ERPM_Engagement_Id__c = [SELECT Id FROM Core_ERPM_Engagement__c WHERE Core_Technical_Engagement_Code__c = 'IRDC_Priv' LIMIT 1].Id;
+        //ento.Core_AGS_Role_Id__c = [SELECT Id FROM Core_AGS_Role__c WHERE Core_Technical_Name__c = 'RDC Privileged User' LIMIT 1].Id;
         ento.Core_IsActive__c = true;
         insert ento;
         
         List<PRM_VXEnttlmntMatrix__c> emList = new List<PRM_VXEnttlmntMatrix__c>();
-        PRM_VXEnttlmntMatrix__c em= new PRM_VXEnttlmntMatrix__c(); 
+        PRM_VXEnttlmntMatrix__c em= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
         em.PRM_Entitlement_Id__c = ent.id;
         em.PRM_Approval_Type_Nm__c='Automatic';
         em.Business_Types__c = bt.Id;
@@ -59,7 +61,7 @@ public class ER_EmailNotification_Utility_Test
         
         Contact cont= PRM_TestUtility.getContact();
         cont.AccountId=acc.Id;
-        cont.MailingCountry='India';
+        cont.Mailing_Country_Region__c='IND';
         insert(cont);
      
         Core_Contact_Entitlement__c ceOld1=new Core_Contact_Entitlement__c();
@@ -90,7 +92,7 @@ public class ER_EmailNotification_Utility_Test
                                          where Core_Entitlement_Nm__c='Resource & Design Center for Secure Content' limit 1];
         ce.Core_Selected__c=true;
         ce.Core_Status__c='Complete';
-            
+        system.debug('EVdatetime is not null'+ ce);        
         update ce;
         Core_Contact_Entitlement__c ceUpd=[SELECT Id,Name,Core_Email_Pending_To_Requester_Ind__c FROM Core_Contact_Entitlement__c
                                            where Core_Entitlement_Nm__c='Resource & Design Center for Secure Content' limit 1];
@@ -113,8 +115,11 @@ public class ER_EmailNotification_Utility_Test
         objEmailNotif.geo='jp';
         Map<String,String> paramMap = new Map<String,String>();
         paramMap.put('EV_Contact_ID',testcont.Id);
-        objEmailNotif.InputParameters=paramMap;     
+        objEmailNotif.InputParameters=paramMap;
+        //List<PRM_Language_Culture_Mapping__mdt> lngCultureMdt = [Select Id,MasterLabel,PRM_Culture__c,PRM_Country__c,PRM_Country_Cd__c From PRM_Language_Culture_Mapping__mdt WHERE MasterLabel = :contMap.get(enttl.Core_Contact_Id__c).Core_Preferred_Language__c ];
+        //String culture = lngCultureMdt.size() > 0 ? lngCultureMdt[0].PRM_Culture__c : 'en';       
         objEmailNotif.BusinessEvent= 'Welcome_email_on_request_approval_New';
+        //objEmailNotifList.add(objEmailNotif);
         ER_EmailNotification_Utility.EmailNotification objEmailNotif1 = new ER_EmailNotification_Utility.EmailNotification();
         List<ER_Email_Configuration__mdt> mdtList = new list<ER_Email_Configuration__mdt>();
         ER_EmailNotification_Utility.GetEmailConfigurationMetadata(objEmailNotif1,mdtList);
@@ -131,6 +136,7 @@ public class ER_EmailNotification_Utility_Test
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         mail.setToAddresses(toaddess);
         mail.setTargetObjectId(testcont.Id);
+        //ER_EmailNotification_Utility.createEmailLogs(mail,'testemailtesting@teess.com','ENG','TestTemplate');
     }
     @isTest
     public static void sendAckEmail(){
@@ -159,7 +165,10 @@ public class ER_EmailNotification_Utility_Test
         req.PRM_Account_Phone__c  = '9891744632' ;
         req.PRM_Company_Size__c  = '10000+' ;      
         req.PRM_Company_Email_Domain__c  = null;
-        req.PRM_EV_flag__c  = false ;                            
+        req.PRM_EV_flag__c  = false ;
+        //req.PRM_Job_Function__c  = 'SALES-MKT' ;  
+        //req.PRM_Profession__c  = 'CONSULTANT' ; 
+        //req.Entitlement_Details__c = entt.Id ;                             
         req.PRM_EmailVerifiedDateTime__c  = DateTime.now() ;
         req.PRM_Legal_Agreements__c  = 'DZP_TANDC' ;
         req.PRM_Status__c  = 'New' ;  

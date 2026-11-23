@@ -26,13 +26,13 @@ global class Core_IntegrationBoxBContactRest {
                             Core_English_Only_Last_Name__c,Email,Phone,Account.Name,MailingCountry,Core_Job_Function__c,Core_Deactivated__c,
                             CreatedDate,LastModifiedDate/*,Account.Core_CIM_ID__c*/
                             FROM Contact 
-                            WHERE Id=:contactId];
+                            WHERE Id=:contactId WITH SECURITY_ENFORCED];
                 } else {
                     lstContacts = [SELECT Id, Core_Enterprise_Id__c,AccountId,FirstName,LastName,Core_English_Only_First_Name__c,
                             Core_English_Only_Last_Name__c,Email,Phone,Account.Name,MailingCountry,Core_Job_Function__c,Core_Deactivated__c,
                             CreatedDate,LastModifiedDate/*,Account.Core_CIM_ID__c*/
                             FROM Contact 
-                            WHERE Core_Enterprise_Id__c=:enterpriseId];
+                            WHERE Core_Enterprise_Id__c=:enterpriseId WITH SECURITY_ENFORCED];
                     if(lstContacts.size()>1) {
                         RestResponse res = RestContext.response;
                         res.statusCode = 300;

@@ -3,7 +3,7 @@ public class Core_AccountMeetingBriefHandler_Test {
     
     static final String TEST_USER_EMAIL = 'test.user.03232016@example.com';
     static final String TEST_CONTACT_EMAIL = 'test.contact.03032016@example.com';
-    
+
     @testSetup
     static void setupTestData() {
         Core_Trigger_Executions__c triggerEntry = new Core_Trigger_Executions__c(
@@ -18,7 +18,7 @@ public class Core_AccountMeetingBriefHandler_Test {
         insert testAccount;
         
         Contact testContact = new Contact(FirstName='Test', LastName='Contact', Email=TEST_CONTACT_EMAIL, AccountId=testAccount.Id,MailingCountry='USA',
-                                         Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+                                         Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111',Core_Mailing_Address__CountryCode__s='USA');
         insert testContact;
         
         List<User> testUsers = new List<User>();
@@ -54,8 +54,9 @@ public class Core_AccountMeetingBriefHandler_Test {
                                                                       Core_Account_Meeting_End_Time__c ='12:00 am',
                                                                       Core_Account_Meeting_Customer_Contact__c=testContact.Id,
                                                                       Core_Account_Meeting_Intel_Contact__c=testContact.Id);
-        try{
         insert brief;
+        try{
+        //insert brief;
         
         }catch(Exception ex){
             system.assertEquals(ex.getMessage(), ex.getMessage());

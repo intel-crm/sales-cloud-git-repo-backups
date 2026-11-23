@@ -69,6 +69,7 @@ function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAcc
             redirectUrl = redirectUrl1 + '&CF' + opportunityNameFieldId + '=' + encodeURIComponent(sOpportunityName) + '&CF' + opportunityNameFieldId + '_lkid=' + sOpportunityId +'&' + '00No000000CnaeD=' + UserRegion;
         
         window.location = redirectUrl;
+        console.log('redirectUrl'+redirectUrl);
        }
 	   if(UIthemedisplayed=='Theme3' && sOpportunityName == '' ){
         
@@ -76,13 +77,14 @@ function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAcc
         
         
         window.location = redirectUrl1;
+        console.log('redirectUrl1'+redirectUrl1);
        }
 	   
      if(UIthemedisplayed !='Theme3' && sOpportunityName == '' ){        
 		  sforce.one.createRecord('Core_Sales_Support_Request__c',recordTypeId,{ 
              Core_IT_Intel_Geo__c : UserRegion
              });
-
+        console.log('##');
 	}
 	 if(UIthemedisplayed !='Theme3' && sOpportunityName != '' ){
         
@@ -90,7 +92,7 @@ function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAcc
              Core_IT_Intel_Geo__c : UserRegion,
 			 Core_Opportunity__c : sOpportunityId
              });
-
+        console.log('$$');
 	}
 
         

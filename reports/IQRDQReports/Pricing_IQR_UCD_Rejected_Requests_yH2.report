@@ -46,7 +46,7 @@
         <field>Pricing_Integration_Staging__c$Pricing_QuoteID__c.Pricing_Is_Sanctioned__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5</booleanFilter>
+        <booleanFilter>(1 OR 2) AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>Pricing_Integration_Staging__c$Pricing_RequestID__c.RecordType</column>
             <columnToColumn>false</columnToColumn>
@@ -74,13 +74,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Pricing_Integration_Staging__c$Pricing_QuoteID__c.Pricing_IsUnifiedCustomer__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

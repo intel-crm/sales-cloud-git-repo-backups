@@ -35,7 +35,6 @@ public without sharing class PCC_Deal_FindRelatedDuplicateDeals {
                     wrapperList.addAll(findDuplicateOppties(reg, productIds,productIds.size()));
                 }
                 
-                System.debug('Duplicates -->'+JSON.serialize(wrapperList));
             }
             
             if(Test.isRunningTest()){throw new System.DMLException();
@@ -63,7 +62,6 @@ public without sharing class PCC_Deal_FindRelatedDuplicateDeals {
             } else {
                 query = LabelConfiguration__mdt.getInstance('Deal_Dup_Query_Part1').value__c + ' ' + LabelConfiguration__mdt.getInstance('Deal_Dup_Query_Part2').value__c + ' ' + LabelConfiguration__mdt.getInstance('Deal_Dup_Query_Part3').value__c;
             }
-            System.debug(JSON.serialize(query));
             duplicateDeals = Database.queryWithBinds(query, queryParams, AccessLevel.SYSTEM_MODE);
             // create wrapper
             wrapperList = createWeapper(reg,duplicateDeals,productIds, noOfProds);
@@ -137,12 +135,6 @@ public without sharing class PCC_Deal_FindRelatedDuplicateDeals {
                     }
                 }
                 if (matchedPrdIds.size() > 0) {
-                    System.debug(wrapperRecords);
-                    System.debug(reg);
-                    System.debug(obj);
-                    System.debug(matchedPrdIds.size());
-                    System.debug(noOfProds);
-                    System.debug(fields);
                     addWrapper(wrapperRecords, reg, obj, matchedPrdIds.size(), noOfProds, fields);
                 }
             }
@@ -151,7 +143,6 @@ public without sharing class PCC_Deal_FindRelatedDuplicateDeals {
     }
     
     private static void addWrapper(List<RelatedDuplicateWrapper> wrapperRecords, Core_Design_Registration__c reg, SObject obj, Integer matchedCount, Integer noOfProds, Map<String, String> fields) {
-        System.debug((Id) obj.get('OwnerId'));
         String ownerName = (String)obj.getSObject('Owner')?.get('Name')??null;
         // Builder build = new Builder().withDrId(reg.Id).withDrName(reg.Name).withPercentage((Integer)((Decimal.valueOf(matchedCount) / noOfProds) * 100)).withDuplicateDealName((String) obj.get('Name')).withDuplicateDealId((Id) obj.get('Id')).withObjectType(fields.get('objectType')).withEndCustomerId((String) obj.get(fields.get('accountIdField'))).withProjectName((String) obj.get(fields.get('nameField'))).withOwnerName(ownerName).withOwnerId((Id) obj.get('OwnerId'));
         RelatedDuplicateWrapper wrapper = new RelatedDuplicateWrapper(new Builder().withDrId(reg.Id).withDrName(reg.Name).withPercentage((Integer)((Decimal.valueOf(matchedCount) / noOfProds) * 100)).withDuplicateDealName((String) obj.get('Name')).withDuplicateDealId((Id) obj.get('Id')).withObjectType(fields.get('objectType')).withEndCustomerId((String) obj.get(fields.get('accountIdField'))).withProjectName((String) obj.get(fields.get('nameField'))).withOwnerName(ownerName).withOwnerId((Id) obj.get('OwnerId')));

@@ -94,6 +94,8 @@ public without sharing class PRM_OPIDProcessUtility {
         }
         return mapofError;
     }
+
+    //NJ AIA Start
     /**
         *  @description      : capture failure in Upsert operation of IPA Affiliations
         *  @name             : getErrorMessageForAIAupsert
@@ -113,6 +115,7 @@ public without sharing class PRM_OPIDProcessUtility {
         }
         return mapofError;
     }
+    //NJ AIA end
     /*
     public static Set<String> getSetOfAsscoiatedSFID(List<Core_Account_Group_Member__c> listOfObj){
         Set<String> setOfIDs = new Set<String>();
@@ -143,10 +146,15 @@ statusMessage = statusMessage.replace('{OldTier}', existingBadge);
         List<Core_OnePartner_Inbound_Message__c> listOfInboundMessage = [Select id,Core_Status__c,Core_CIM_ID__c,Core_OnePartnerID__c,Core_SalesCloud_AccountID__c,Core_PrimeID__c, Error_Description__c, Core_OnePartner_Account_Name__c, Core_Effective_End_Date_Time__c from Core_OnePartner_Inbound_Message__c where Core_Status__c = 'LOAD COMPLETE' and Core_SalesCloud_AccountID__c in :mapOfACMObj.keySet()];
         for(Core_OnePartner_Inbound_Message__c inboundMessage : listOfInboundMessage){
             String sfAccid = inboundMessage.Core_SalesCloud_AccountID__c;
+            //system.debug('Core_SalesCloud_AccountID__c >> '+sfAccid);
             if(mapOfACMObj.containsKey(sfAccid)){
                 inboundMessage.Error_Description__c = mapOfACMObj.get(sfAccid);
             }
         }
+        // System.debug(' listOfInboundMessage : '+listOfInboundMessage);
+        // system.debug('Log 1--'+listOfInboundMessage[0].Core_Effective_End_Date_Time__c);
+        // system.debug('Log 2--'+listOfInboundMessage[0].Core_PrimeID__c);
+        // system.debug('Log 3--'+listOfInboundMessage[0].Core_SalesCloud_AccountID__c);
         update listOfInboundMessage;
     }
     
@@ -202,6 +210,7 @@ statusMessage = statusMessage.replace('{OldTier}', existingBadge);
                 listOfInbound.add(inMsg);
             }
         }
+        System.debug('listOfInbound >> '+listOfInbound);
         if(!listOfInbound.isEmpty()){
             
             List<Database.SaveResult> listOfInboundUpdateResult=new List<Database.SaveResult>();
@@ -347,6 +356,7 @@ statusMessage = statusMessage.replace('{OldTier}', existingBadge);
                     delinkMapOfAccIdWithName.put(str.id,str.name);
                 }
             }
+
             errorLogMsg+='***successAccIdString : '+successAccIdString;
            
             if(!SuccessMapOfAccIdWithName.isEmpty()){
@@ -366,7 +376,9 @@ statusMessage = statusMessage.replace('{OldTier}', existingBadge);
                 lobPlaceholderMap.put('%Process%','association');
                 String lobBusinessEvent = 'OPID_AssociationFailure_Email';
                 callSendEmailUtil(lobPlaceholderMap,lobBusinessEvent);
-                
+                // string joblink='associate to the';
+                // OPID_AssociationFailure_Email
+                // sendEmail('OPIDLINKDELINK_FAILURE_NOTIFICATION',successAccIdString,joblink,'OPID Failed to Associate');
                 
             }
             if(!String.isBlank(delinkAccIdString)){
@@ -374,10 +386,11 @@ statusMessage = statusMessage.replace('{OldTier}', existingBadge);
                 lobPlaceholderMap.put('%Process%','delinking');
                 String lobBusinessEvent = 'OPID_DelinkingFailure_Email';
                 callSendEmailUtil(lobPlaceholderMap,lobBusinessEvent);
-
+                // string joblink='delink from the';
                 
-              
+                // sendEmail('OPIDLINKDELINK_FAILURE_NOTIFICATION',delinkAccIdString,joblink,'OPID Failed to Delink');
             }
+            
         }catch(Exception e){
             errorLogMsg+='***'+e;
         }
@@ -392,7 +405,7 @@ statusMessage = statusMessage.replace('{OldTier}', existingBadge);
             PRM_EmailUtility.customPlaceholdersMap = placeHolderMap;
             PRM_EmailUtility.sendEmailUtil(emailList);
         }catch(Exception ex){
-            //System.debug('Exception in emailUtil :'+ex);
+            System.debug('@NJ Exception in emailUtil :'+ex);
         }
     }
 

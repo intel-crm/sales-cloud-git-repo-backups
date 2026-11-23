@@ -466,8 +466,9 @@ export default class Core_MDF_ActivitySegments extends LightningElement {
     }
 
     @api isFormValid() {
-        this.isValid = false;
-        return this.template.querySelector("c-core_-m-d-f_-activity-segment-mapping").isFormValid();
+        const segmentForm = this.template.querySelector("c-core_-m-d-f_-activity-segment-mapping");
+        this.isValid = segmentForm ? segmentForm.isFormValid() : false;
+        return this.isValid;
     }
 
     showEditSegmentCmp(event) {

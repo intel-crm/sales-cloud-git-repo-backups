@@ -47,8 +47,11 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
     public static User currentUser;
     public static Boolean isSvdQuote = false;
     public static Boolean isClient = false;
+    //public static Boolean isSubmitQuote = false;
+    //public static Boolean isOverAllQtyLess = false;
     public static String primaryContactEmail;
     public static String actionType;
+    public static Boolean isQuota = true; 
     
     /**
     * @description method to recive post request and validate the param
@@ -58,6 +61,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
     @HttpPost
     global static Pricing_RestAPI_Response doPost(){
         RestRequest req = RestContext.request;
+        //currentUser = [Select Id,ContactId,AccountId,Email from User where Id = :UserInfo.getUserId()];
         //validate the action parameters if its create or submit
         if(validateActionParam()){
             if(isGetStatus){
@@ -159,8 +163,6 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
                 Set<Id> quoteIds = new Set<Id>();
                 Map<String, Object> jsonMap = (Map<String, Object>) JSON.deserializeUntyped(reqBody);
                 List<Object> reqQuoteIds = (List<Object>) jsonMap.get('quoteIds');
-                Pricing_RestAPI_QuotesUtilityV2 quoteUtility = new Pricing_RestAPI_QuotesUtilityV2();
-                Pricing_RestAPI_QuotesUtilityV2.QuoteErrorMsg quoteErrors = new Pricing_RestAPI_QuotesUtilityV2.QuoteErrorMsg();
                 for(Object obj:reqQuoteIds){
                     String quoteId = (String)obj;
                     if(quoteId.length() == 18 && Pattern.matches('[a-zA-Z0-9]{15,18}',quoteId)){
@@ -207,6 +209,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
                 }else{
                     Pricing_RestAPI_Util.quoteErrMsgsV2 = quoteErrors;
                     Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
+                    //response.errorContent.errorMessage = Label.Pricing_AE_Bulk_Insert_Error_Msg;
                 }
             }
             else{
@@ -259,7 +262,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
                                 }
                                 quoteLineIdMap = new Map<Id,SBQQ__QuoteLine__c>([SELECT id, Pricing_Quote_Line_Number__c,Pricing_Status_Nm__c,
                                                                                 Pricing_Program_Type_Nm__c,RecordTypeId,Pricing_Ready_for_Review_cb__c,Pricing_Original_Submitted_By_Id__c,
-                                                                                Pricing_Original_Submitted_Date_dt__c,Pricing_Last_Submitted_Date_dt__c,Pricing_Last_Submitted_By_Id__c 
+                                                                                Pricing_Original_Submitted_Date_dt__c,Pricing_Last_Submitted_Date_dt__c,Pricing_Last_Submitted_By_Id__c,src_sys_id__c
                                                                                 FROM SBQQ__QuoteLine__c WHERE Id IN:qlIdSet]);
                                 
                                 integer i = 0;
@@ -365,7 +368,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
     }
     
     public static void getStatusDetails(Set<Id> quoteIds){        
-        Map<Id, SBQQ__Quote__c> quoteMap = new Map<Id, SBQQ__Quote__c>([SELECT Id,Name, SBQQ__Status__c, Pricing_Customer_Reference_Id__c,(SELECT Id,Pricing_Quote_Line_Number__c, Pricing_Status_Nm__c,Pricing_Program_Type_Nm__c,Pricing_Lost_Reason_Nm__c FROM SBQQ__LineItems__r) FROM SBQQ__Quote__c where Id IN :quoteIds and SBQQ__Account__c = :Pricing_RestAPI_QuotesUtilityV2.currentUser.AccountId]);
+        Map<Id, SBQQ__Quote__c> quoteMap = new Map<Id, SBQQ__Quote__c>([SELECT Id,Name, SBQQ__Status__c, Pricing_Customer_Reference_Id__c,(SELECT Id,Pricing_Quote_Line_Number__c, Pricing_Status_Nm__c,Pricing_Program_Type_Nm__c,Pricing_Lost_Reason_Nm__c,src_sys_id__c FROM SBQQ__LineItems__r) FROM SBQQ__Quote__c where Id IN :quoteIds and SBQQ__Account__c = :Pricing_RestAPI_QuotesUtilityV2.currentUser.AccountId]);
         response.successContent = new List<GetStatusQuoteDetails>();
         Integer recordCount = 0;
         for(Id quoteId: quoteIds){
@@ -413,12 +416,11 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
             Pricing_RestAPI_QuotelinesV2.RecallRequest recallReq = String.isBlank(reqBody) ? new Pricing_RestAPI_QuotelinesV2.RecallRequest() : (Pricing_RestAPI_QuotelinesV2.RecallRequest) JSON.deserialize(reqBody, Pricing_RestAPI_QuotelinesV2.RecallRequest.class);
             Pricing_RestAPI_QuotesUtilityV2.QuoteErrorMsg quoteMsg = new Pricing_RestAPI_QuotesUtilityV2.QuoteErrorMsg();
             quoteMsg.quoteErrors = new Map<String, Pricing_RestAPI_QuotesUtilityV2.ErrorMsg>();
-            Pricing_RestAPI_QuotesUtilityV2 quoteUtility = new Pricing_RestAPI_QuotesUtilityV2();
             String quoteLineNumbers = '';
             Boolean isValid = true;
             
             if(quoteId != null){
-                List<SBQQ__QuoteLine__c> rollBackQLIList = [SELECT Id,Pricing_Quote_Line_Number__c,Pricing_Last_Submitted_By_Id__c,Pricing_Status_Nm__c,Pricing_Ready_for_Review_cb__c,Customer_Revision_Count_Cnt__c,Pricing_Reference_Quote_Line_Nbr__c,SBQQ__Quote__c,Pricing_Program_Type_Nm__c
+                List<SBQQ__QuoteLine__c> rollBackQLIList = [SELECT Id,Pricing_Quote_Line_Number__c,Pricing_Last_Submitted_By_Id__c,Pricing_Status_Nm__c,Pricing_Ready_for_Review_cb__c,Customer_Revision_Count_Cnt__c,Pricing_Reference_Quote_Line_Nbr__c,SBQQ__Quote__c,Pricing_Program_Type_Nm__c,src_sys_id__c
                                                             FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c =: quoteId AND SBQQ__Quote__r.SBQQ__Account__c =: Pricing_RestAPI_QuotesUtilityV2.currentUser.AccountId];
                 if(rollBackQLIList.size() > 0){
                     if(rollBackQLIList[0].Pricing_Program_Type_Nm__c!=Label.Pricing_Tender_Small_Volume_Quote || TriggerHandler.isActive('Pricing_SVD_Quote_Disabled')){
@@ -677,7 +679,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
                     }
                     SBQQ__Quote__c quote = !String.isBlank(recId) ? [Select Id, SBQQ__Account__c,Pricing_Program_Type_Nm__c from SBQQ__Quote__c where id = :quoteId and SBQQ__Account__c = :currentUser.AccountId Limit 1] 
                         : [Select Id, SBQQ__Account__c,Pricing_Program_Type_Nm__c from SBQQ__Quote__c where name = :quoteName and SBQQ__Account__c = :currentUser.AccountId Limit 1];
-                    quoteId = quote.Id;
+                            quoteId = quote.Id;
                     isClient = (quote.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_CCG_Quote)?true:false;
                     isValid=true;
                 }catch(Exception  exp){
@@ -805,6 +807,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
     
     public static Pricing_RestAPI_Response getSVDQuotaDetails(){
         Pricing_RestAPI_QuotesUtilityV2.QuoteErrorMsg quoteErrors = new Pricing_RestAPI_QuotesUtilityV2.QuoteErrorMsg();
+        //String currentUserAccountId = [Select Id, AccountId from User where Id = :UserInfo.getUserId()].AccountId;
         Pricing_RestAPI_QuotesUtilityV2 util = new Pricing_RestAPI_QuotesUtilityV2();
         Boolean isValid=util.validateSVDQuota(quoteErrors);
         
@@ -988,6 +991,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
         qDetails.partnerName = quote.Pricing_Partner_Name_Nm__c;
         qDetails.volumeExceptionQuote = quote.Pricing_Volume_Exception_Quota_Cb__c;
         qDetails.endCustomerUrl = quote.Pricing_End_Customer_URL__c;
+       
     }
     
     
@@ -1101,6 +1105,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
             qliWrapper.noOfCPUsPerSystem = qli.Pricing_CPUs_per_system_qty__c;
             qliWrapper.singleSystemPricePoint = qli.Pricing_Single_System_Price_Amt__c;
             qliWrapper.customerStdUnitPrice=qli.Pricing_OEM_Standard_Unit_Price_Amt__c;
+            qliWrapper.quotelineprogramtype=qli.Pricing_Program_Type_Nm__c;
             qliWrapper.requestedUnitPrice=qli.Pricing_Req_Discounted_Unit_Price__c;
             qliWrapper.totalBidWithoutDiscount= qli.Pricing_Total_Bid_without_Discount_Amt__c;
             qliWrapper.netIntelBidPrice = qli.Pricing_Net_IA_Bid_Price_Amt__c;
@@ -1349,10 +1354,10 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
             qliWrapper.quoteLineType = Label.Pricing_RestAPI_Products_GPU_Param;
             qliWrapper.quoteLineNumber=qli.Pricing_Quote_Line_Number__c;
             qliWrapper.quoteLineStatus=qli.Pricing_Status_Nm__c;
-            qliWrapper.noOfGPUs = qli.Pricing_No_of_GPUs__c;
+            //qliWrapper.noOfGPUs = qli.Pricing_No_of_GPUs__c;
             qliWrapper.writeInPairedCPU = qli.Pricing_Write_In_Paired_CPU_Nm__c;
             qliWrapper.noOfGPUsPerSystem = qli.Pricing_No_of_GPUs_per_system_nbr__c;
-            qliWrapper.changeRequest = qli.Pricing_New_Change_Request_cb__c;
+            qliWrapper.changeRequest = qli.Pricing_New_Change_Request_cb__c;//Pricing_Change_Request_cb__c
             qliWrapper.approvedPricingStartDate= qli.Pricing_Approved_Start_Date_Dup_Dt__c;
             qliWrapper.approvedPricingEndDate=qli.Pricing_Approved_End_Date_Dup_Dt__c;
             qliWrapper.approvedQuantity = qli.Pricing_Approved_Unit_Dup_Qty__c;
@@ -1385,6 +1390,7 @@ global without sharing class Pricing_RestAPI_QuotesV2 extends TriggerHandler{
             qliWrapper.pairedCPU = qli.Pricing_CPU_Txt__c;
             qliWrapper.singleSystemPricePoint = qli.Pricing_Single_System_Price_Amt__c;
             qliWrapper.customerStdUnitPrice=qli.Pricing_OEM_Standard_Unit_Price_Amt__c;
+            qliWrapper.quotelineprogramtype=qli.Pricing_Program_Type_Nm__c;
             qliWrapper.requestedUnitPrice=qli.Pricing_Req_Discounted_Unit_Price__c;
             qliWrapper.totalBidWithoutDiscount= qli.Pricing_Total_Bid_without_Discount_Amt__c;
             qliWrapper.netIntelBidPrice = qli.Pricing_Net_IA_Bid_Price_Amt__c;
@@ -1655,6 +1661,7 @@ properties to form the response
     @HttpPatch
     global static Pricing_RestAPI_Response doPatch(){
         RestRequest req = RestContext.request;
+        //currentUser = [Select Id,ContactId,AccountId,Email from User where Id = :UserInfo.getUserId()];
         //validate the action parameters if its update
         if(validateUpdateParam()){
             if(isUpdatePrimaryContact){
@@ -1750,6 +1757,7 @@ properties to form the response
             List<Pricing_Performance_Metric__c> perfMetricsList = new List<Pricing_Performance_Metric__c>();
             boolean isValid = quoteUtility.validateQuote(quote, quoteErrors, true);//validate Quote, Quote Line, Performance Metrics, and Quote Comments 
             
+            //if(Pricing_RestAPI_QuotesUtilityV2.isSvd && actionType.toLowerCase() == 'update'){
             if((!Pricing_RestAPI_QuotesUtilityV2.isSvd || TriggerHandler.isActive('Pricing_SVD_Quote_Disabled') && actionType.toLowerCase() == 'resubmit')|| actionType.toLowerCase() == 'update'){
                 if(isValid){
                     SBQQ__Quote__c newQuote = Pricing_RestAPI_QuotesUtilityV2.createQuoteRecord(quote.quoteDetails);
@@ -1831,7 +1839,7 @@ properties to form the response
                         }
                         quoteLineIdMap = new Map<Id,SBQQ__QuoteLine__c>([SELECT id, Pricing_Quote_Line_Number__c,Pricing_Status_Nm__c,
                                                                         Pricing_Program_Type_Nm__c,RecordTypeId,Pricing_Ready_for_Review_cb__c,Pricing_Original_Submitted_By_Id__c,
-                                                                        Pricing_Original_Submitted_Date_dt__c,Pricing_Last_Submitted_Date_dt__c,Pricing_Last_Submitted_By_Id__c 
+                                                                        Pricing_Original_Submitted_Date_dt__c,Pricing_Last_Submitted_Date_dt__c,Pricing_Last_Submitted_By_Id__c,src_sys_id__c 
                                                                         FROM SBQQ__QuoteLine__c WHERE Id IN:qlIdSet]);
                         
                         Integer i = 0;                                                 
@@ -1924,7 +1932,7 @@ properties to form the response
                 }
             }else{
                 Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
-            response.errorContent.errorMessage = Label.Pricing_Tender_API_Quote_SVD_Resubmit_Error_Msg;
+		        response.errorContent.errorMessage = Label.Pricing_Tender_API_Quote_SVD_Resubmit_Error_Msg;
             }            
         }catch(Exception exp){
             Pricing_RestAPI_Util.processException(exp, Pricing_RestAPI_ResponseCodes.ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);            
@@ -1941,6 +1949,7 @@ properties to form the response
     @HttpDelete
     global static Pricing_RestAPI_Response doDelete(){
         RestRequest req = RestContext.request;
+        //currentUser = [Select Id,ContactId,AccountId,Email from User where Id = :UserInfo.getUserId()];
         if(validateDeleteParam()){
             processDeleteRequest(); 
         }else{

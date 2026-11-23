@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 09-26-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 @isTest
 public class Pricing_QuoteDocumentTriggerHandler_Test {
     @testSetup
@@ -6,7 +13,7 @@ public class Pricing_QuoteDocumentTriggerHandler_Test {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Document_Trigger_Handler_Test');
             
             List<User> accExeUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
@@ -86,6 +93,7 @@ public class Pricing_QuoteDocumentTriggerHandler_Test {
         insert sr;
         List<SBQQ__QuoteDocument__c> sr1 = [SELECT id FROM SBQQ__QuoteDocument__c];
         system.assert(sr1.size() > 0);
+        
         test.stopTest();
     }
     

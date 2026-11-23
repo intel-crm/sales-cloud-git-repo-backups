@@ -28,8 +28,13 @@ public class Core_SSR_Controller_Test {
         
         // create Account Record
         //Id recAccountTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' limit 1][0].Id;
+        /***
         Account testAccount =   new Account(Name='Test SMG SSR Account', Industry='Agriculture', Core_Sub_Industry__c = 'Crop Production',
                                             BillingStreet='a', BillingCity='a', BillingState='MI', BillingCountry='USA', Core_Sales_Groups__c = 'Americas US Sales Group');
+        ***/
+        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Account testAccount = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
+        
         insert testAccount;      
         List<Account> testAccounts = [select id from Account where Id =: testAccount.Id];
         system.assertEquals(1, testAccounts.size());

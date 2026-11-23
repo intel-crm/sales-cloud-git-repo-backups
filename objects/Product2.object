@@ -259,6 +259,11 @@
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
+        <displayedFields>
+            <field>Core_OPN__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
         <label>Search Filters</label>
     </fieldSets>
     <fieldSets>
@@ -734,7 +739,7 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <label>Product Class</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -758,6 +763,19 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <label>Orderable</label>
         <trackHistory>true</trackHistory>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_Item_Package_Txt__c</fullName>
+        <description>Business currently use this field to determine some Business Process.
+Material Id is not present in Siebel, instead they go to SAP and search the Material Master for equivalent product.
+Material Master is 1-1 mapping with product(Unique).</description>
+        <externalId>false</externalId>
+        <label>Package</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Item_Price_Authorization_Ind__c</fullName>
@@ -833,7 +851,7 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <label>Line of Business</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -881,6 +899,245 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Available_to_TOE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used to control whether a product may be ordered or not
+If the product is unavailable to TOE it is not visible in Tools Order Entry</description>
+        <label>Available to TOE</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Devkit_ID__c</fullName>
+        <description>Used to differentiate dev kits from other products</description>
+        <externalId>false</externalId>
+        <label>Devkit ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Foundation_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Base Product</description>
+        <label>Foundation Product</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Products (Foundation Product)</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_License_Group__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is requires to associate the product to a specific license group.</description>
+        <label>License Group</label>
+        <referenceTo>License_Group__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_License__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>To access the extended/Licensing atrributes for PSG Products</description>
+        <inlineHelpText>To access the extended/Licensing atrributes for PSG Products</inlineHelpText>
+        <label>PSG License</label>
+        <referenceTo>PSG_License__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Maintenance_Duration__c</fullName>
+        <description>Value stored as Number of months.
+Drives Renewal availability (Product is available for renewal if the Maintenance date is &gt;= Current Date - Renewal Grace Period</description>
+        <externalId>false</externalId>
+        <label>Maintenance Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Product_Class__c</fullName>
+        <description>For IP or SW or ARM products expect class value as &quot;SV&quot;
+for DEV KIT expect class value as &quot;BD&quot;</description>
+        <externalId>false</externalId>
+        <label>PSG Product Class</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Product_Expiration_Duration__c</fullName>
+        <description>Value maintained as Number of Days (if 12 months = 365 days)</description>
+        <externalId>false</externalId>
+        <label>Product Expiration Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Sub_Component_Category__c</fullName>
+        <description>To identify the Standalone Products</description>
+        <externalId>false</externalId>
+        <label>PSG Sub Component Category</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Tool_License_Type__c</fullName>
+        <description>•	Defines the license type for a licensed product
+•	Fixed: Supports a single user on a single machine
+•	Float: Supports multiple users on multiple machines or in a server environment
+•	Neutral: Supports both Single/Multi machines
+•	Training Credit: Used for Training Credit product(s)</description>
+        <label>Tool License Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FIXED</fullName>
+                    <default>false</default>
+                    <label>FIXED</label>
+                </value>
+                <value>
+                    <fullName>FLOAT</fullName>
+                    <default>false</default>
+                    <label>FLOAT</label>
+                </value>
+                <value>
+                    <fullName>NEUTRAL</fullName>
+                    <default>false</default>
+                    <label>NEUTRAL</label>
+                </value>
+                <value>
+                    <fullName>N-A</fullName>
+                    <default>false</default>
+                    <label>N-A</label>
+                </value>
+                <value>
+                    <fullName>TRAINING CREDIT</fullName>
+                    <default>false</default>
+                    <label>TRAINING CREDIT</label>
+                </value>
+                <value>
+                    <fullName>COMPOSITE BUNDLE</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>COMPOSITE BUNDLE</label>
+                </value>
+                <value>
+                    <fullName>INTEGRATE BUNDLE</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>INTEGRATE BUNDLE</label>
+                </value>
+                <value>
+                    <fullName>OPTIONAL BUNDLE</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>OPTIONAL BUNDLE</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Tool_Type__c</fullName>
+        <description>Defines how products are licensed together
+•	Base: Used for base or foundation product
+•	IP: Used for IP Products
+•	Software: Used for Software Products
+•	Renewal: Used for ordering Base Product Renewal as part of Base Product maintenance.</description>
+        <label>Tool Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BASE</fullName>
+                    <default>false</default>
+                    <label>BASE</label>
+                </value>
+                <value>
+                    <fullName>IP</fullName>
+                    <default>false</default>
+                    <label>IP</label>
+                </value>
+                <value>
+                    <fullName>SOFTWARE</fullName>
+                    <default>false</default>
+                    <label>SOFTWARE</label>
+                </value>
+                <value>
+                    <fullName>RENEWAL</fullName>
+                    <default>false</default>
+                    <label>RENEWAL</label>
+                </value>
+                <value>
+                    <fullName>ADD SEAT</fullName>
+                    <default>false</default>
+                    <label>ADD SEAT</label>
+                </value>
+                <value>
+                    <fullName>BUNDLE</fullName>
+                    <default>false</default>
+                    <label>BUNDLE</label>
+                </value>
+                <value>
+                    <fullName>CORPORATE</fullName>
+                    <default>false</default>
+                    <label>CORPORATE</label>
+                </value>
+                <value>
+                    <fullName>PACKAGE</fullName>
+                    <default>false</default>
+                    <label>PACKAGE</label>
+                </value>
+                <value>
+                    <fullName>N-A</fullName>
+                    <default>false</default>
+                    <label>N-A</label>
+                </value>
+                <value>
+                    <fullName>TRAINING CREDIT</fullName>
+                    <default>false</default>
+                    <label>TRAINING CREDIT</label>
+                </value>
+                <value>
+                    <fullName>SOC</fullName>
+                    <default>false</default>
+                    <label>SOC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Core_Partner_Visible_Ind__c</fullName>
@@ -986,7 +1243,7 @@ for DEV KIT expect class value as &quot;BD&quot;</description>
         <label>Product Density Value</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -1253,7 +1510,7 @@ VPH lvl 1</description>
         <label>iPaaS Load ID</label>
         <length>20</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -2333,7 +2590,7 @@ VPH lvl 1</description>
         <precision>5</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -2505,6 +2762,25 @@ VPH lvl 1</description>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Sales_Available_to_TOE__c</fullName>
+        <formula>Core_Product_Ext_Attribute_Id__r.Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Available to TOE</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Tool_Type_Txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Core_PSG_License__r.PSG_Tool_Type__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tool Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SpecificationType</fullName>
     </fields>
     <fields>
@@ -2617,26 +2893,18 @@ VPH lvl 1</description>
         <columns>Core_Product_Org__c</columns>
         <columns>PRODUCT2.NAME</columns>
         <columns>Core_Code_Name__c</columns>
-        <columns>PRODUCT2.ACTIVE</columns>
-        <columns>Core_IPS_Visible_Flag__c</columns>
-        <columns>Core_Sales_Visible_Flag__c</columns>
-        <columns>Core_Product_Name_EPM_ID__c</columns>
-        <columns>Core_Unique_ID__c</columns>
-        <columns>Core_OPN__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>UPDATEDBY_USER.ALIAS</columns>
-        <columns>PRODUCT2.LAST_UPDATE</columns>
+        <columns>Core_Product_Type_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_Sales_Visible_Flag__c</field>
-            <operation>equals</operation>
-            <value>1</value>
+            <field>Core_Product_Family__c</field>
+            <operation>contains</operation>
+            <value>atom</value>
         </filters>
         <label>All Products</label>
     </listViews>
     <listViews>
         <fullName>All_Active_PSG_Products</fullName>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <columns>PRODUCT2.NAME</columns>
         <columns>PRODUCT2.ACTIVE</columns>
         <columns>Core_OPN__c</columns>
@@ -2660,12 +2928,12 @@ VPH lvl 1</description>
         <filters>
             <field>Core_Product_Type_Nm__c</field>
             <operation>equals</operation>
-            <value>Tool</value>
+            <value>Component</value>
         </filters>
         <filters>
-            <field>Core_Product_Type_Nm__c</field>
-            <operation>equals</operation>
-            <value>Component</value>
+            <field>PRODUCT2.NAME</field>
+            <operation>contains</operation>
+            <value>eASIC</value>
         </filters>
         <label>All Active PSG Products</label>
     </listViews>
@@ -2692,6 +2960,20 @@ VPH lvl 1</description>
         <label>All Component Products</label>
     </listViews>
     <listViews>
+        <fullName>All_Component_Products1</fullName>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>PRODUCT2.CUSTOMER_PRODUCT_ID</columns>
+        <columns>PRODUCT2.DESCRIPTION</columns>
+        <columns>PRODUCT2.FAMILY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Product_Type__c</field>
+            <operation>equals</operation>
+            <value>Component</value>
+        </filters>
+        <label>All Component Products</label>
+    </listViews>
+    <listViews>
         <fullName>All_IPS_Products</fullName>
         <columns>PRODUCT2.NAME</columns>
         <columns>Core_Product_Org__c</columns>
@@ -2710,7 +2992,6 @@ VPH lvl 1</description>
             <value>1</value>
         </filters>
         <label>All IPS Products</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>All_Inactive_Products</fullName>
@@ -2728,7 +3009,7 @@ VPH lvl 1</description>
     </listViews>
     <listViews>
         <fullName>All_PSG_Products</fullName>
-        <booleanFilter>(1 OR 2) and 3</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <columns>PRODUCT2.NAME</columns>
         <columns>Core_OPN__c</columns>
         <columns>Core_Item_Id__c</columns>
@@ -2755,34 +3036,7 @@ VPH lvl 1</description>
             <operation>equals</operation>
             <value>Component</value>
         </filters>
-        <filters>
-            <field>PRODUCT2.NAME</field>
-            <operation>equals</operation>
-            <value>Questa*-Intel® FPGA Edition SW-QUESTA-VWR</value>
-        </filters>
         <label>All PSG Products</label>
-    </listViews>
-    <listViews>
-        <fullName>All_Products_Filter</fullName>
-        <columns>Core_Product_Org__c</columns>
-        <columns>PRODUCT2.NAME</columns>
-        <columns>Core_Code_Name__c</columns>
-        <columns>PRODUCT2.ACTIVE</columns>
-        <columns>Core_IPS_Visible_Flag__c</columns>
-        <columns>Core_Sales_Visible_Flag__c</columns>
-        <columns>Core_Product_Name_EPM_ID__c</columns>
-        <columns>Core_Unique_ID__c</columns>
-        <columns>Core_Hierarchy_Name__c</columns>
-        <columns>Core_OPN__c</columns>
-        <columns>UPDATEDBY_USER.ALIAS</columns>
-        <columns>PRODUCT2.LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_OPN__c</field>
-            <operation>equals</operation>
-            <value>SW-CORPORATE</value>
-        </filters>
-        <label>All Products Filter</label>
     </listViews>
     <listViews>
         <fullName>All_Tools_Products</fullName>
@@ -2963,8 +3217,38 @@ IF ( Core_IPS_Visible_Flag__c, TRUE, FALSE), FALSE
         <errorMessage>Cannot Edit Name field</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_Prevent_PSGU_Non_PSG_Product_Fields</fullName>
+        <fullName>Core_Prevent_Non_PSG_Usr_Product_Fields</fullName>
         <active>false</active>
+        <description>Prevent Non PSG users from modifying PSG data</description>
+        <errorConditionFormula>IF(($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE || $Profile.Name ==&apos;System Administrator&apos; || $Profile.Name ==&apos;IT Admin&apos;)
+,FALSE,
+(
+NOT(($Permission.PSG_Master_Data_Read_Access || $Permission.PSG_Master_Data_Read_Write_Access ||
+$Permission.PSG_Account_Contact_Read_Write_Access || $Permission.PSG_Account_Contact_Super_Admin || $Permission.PSG_Product_Super_Admin || $Permission.PSG_Product_Read_Write_Access)) &amp;&amp;
+(   
+	ischanged(Core_Item_Price_Authorization_Ind__c) || 
+	ischanged(Core_Item_Quotable_Ind__c) || 
+	ischanged(Core_Item_Orderable_Ind__c) || 
+	ischanged(Core_Item_Shippable_Ind__c) || 
+	ischanged(Core_Item_Standard_Cost_Amt__c) || 
+	ischanged(Core_Item_Class_Nm__c) || 
+	ischanged(Core_Item_Sub_Component_Category_Nm__c) || 
+	ischanged(Core_Item_Signal_Cd__c) || 
+	ischanged(Core_Item_Id__c) || 
+	ischanged(Core_Item_Package_Txt__c) || 
+	ischanged(Core_Product_Ext_Attribute_Id__c) || 
+	ischanged(Core_Product_Type_Nm__c) || 
+	ischanged(Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c) || 
+	ischanged(Core_Prod_Tool_Type_Nm__c) || 
+	ischanged(Core_Class_and_Component_Sub_Category_Nm__c)
+)
+)
+)</errorConditionFormula>
+        <errorMessage>You cannot edit PSG data</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Prevent_PSGU_Non_PSG_Product_Fields</fullName>
+        <active>true</active>
         <description>Prevent PSG Users from editing Non-PSG data</description>
         <errorConditionFormula>IF(($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE || $Profile.Name ==&apos;System Administrator&apos; || $Profile.Name ==&apos;IT Admin&apos;)
 ,FALSE,

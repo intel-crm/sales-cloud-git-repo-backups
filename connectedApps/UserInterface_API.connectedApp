@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>kushal.r.khokale@intel.com</contactEmail>
+    <contactEmail>sridhar.swaminathan@intel.com</contactEmail>
     <label>UserInterface_API</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/authcallback/UserIntefaceAPI_CallBack</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6sWzA7dftDbAANxHlc2lcFGr2jgbFtG39zmWWvLys6LPuWG1uVIZa4uYeWGl</consumerKey>
+        <callbackUrl>https://intel--crmdevint3.sandbox.my.salesforce.com/services/authcallback/UserIntefaceAPI_CallBack</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHnXtkJBm9UdfINPMY9eEn7nzf09Toxfi7uhu0kDiMA4O2vUAzLs99_ovOmkF3ALp7981gJW</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -35,7 +35,7 @@
         <scopes>Eclair</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>ENFORCE</ipRelaxation>
+        <ipRelaxation>BYPASS</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>

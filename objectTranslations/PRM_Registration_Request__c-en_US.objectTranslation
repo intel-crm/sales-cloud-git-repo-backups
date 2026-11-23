@@ -298,10 +298,6 @@
             <translation><!-- Czech Republic --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Czechia</masterLabel>
-            <translation><!-- Czechia --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Dem. Rep. Congo</masterLabel>
             <translation><!-- Dem. Rep. Congo --></translation>
         </picklistValues>
@@ -982,8 +978,8 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkiye</masterLabel>
-            <translation><!-- Turkiye --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Turkmenistan</masterLabel>
@@ -1067,6 +1063,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Country --></label>
+        <name>Country_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Created Date/Time --></label>
         <name>Created_Date_Time__c</name>
     </fields>
@@ -1086,12 +1086,20 @@
             <translation><!-- A&amp;E Rejected --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Auto-Approval Approved</masterLabel>
             <translation><!-- Auto-Approval Approved --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Auto-Approval Pending</masterLabel>
             <translation><!-- Auto-Approval Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto-Approval Rejected</masterLabel>
+            <translation><!-- Auto-Approval Rejected --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Closed</masterLabel>
@@ -1114,6 +1122,10 @@
             <translation><!-- Open --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>RPM Admin Approved</masterLabel>
             <translation><!-- RPM Admin Approved --></translation>
         </picklistValues>
@@ -1124,6 +1136,10 @@
         <picklistValues>
             <masterLabel>RPM Admin Rejected</masterLabel>
             <translation><!-- RPM Admin Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales Approved</masterLabel>
@@ -1175,8 +1191,20 @@
         <name>ER_CMP_ID__c</name>
     </fields>
     <fields>
+        <label><!-- Campaign code --></label>
+        <name>ER_Campaign_code__c</name>
+    </fields>
+    <fields>
         <label><!-- Entitlement Detail Name --></label>
         <name>ER_Entitlement_Detail_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Display Name --></label>
+        <name>ER_Entitlement_Display_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>ER_Program__c</name>
     </fields>
     <fields>
         <label><!-- EV Expire Check --></label>
@@ -1192,7 +1220,7 @@
         <relationshipLabel><!-- New Registrations --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Geo --></label>
+        <label><!-- Geo Code --></label>
         <name>Geo_Code__c</name>
         <picklistValues>
             <masterLabel>APJ</masterLabel>
@@ -1214,6 +1242,14 @@
             <masterLabel>PROC</masterLabel>
             <translation><!-- PROC --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Geo (Region) --></label>
+        <name>Geo_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Geo__c</name>
     </fields>
     <fields>
         <label><!-- Job Title --></label>
@@ -1621,6 +1657,10 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>PRM_Enterprise_ID__c</name>
     </fields>
     <fields>
+        <label><!-- Errors Logged --></label>
+        <name>PRM_Errors_Logged__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact First Name --></label>
         <name>PRM_First_Name__c</name>
     </fields>
@@ -1856,32 +1896,12 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- DZP_TANDC --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DZP_TANDC_CH_TW</masterLabel>
-            <translation><!-- DZP_TANDC_CH_TW --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DZP_TANDC_CH_ZHO</masterLabel>
-            <translation><!-- DZP_TANDC_CH_ZHO --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DZP_TANDC_JPN</masterLabel>
-            <translation><!-- DZP_TANDC_JPN --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DZP_TANDC_KOR</masterLabel>
-            <translation><!-- DZP_TANDC_KOR --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>EDC_BASIC_TNC_ALL_ENG</masterLabel>
             <translation><!-- EDC_BASIC_TNC_ALL_ENG --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>GNRL_REG_TNC</masterLabel>
             <translation><!-- GNRL_REG_TNC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>INTEL_TERMS_OF_USE</masterLabel>
-            <translation><!-- INTEL_TERMS_OF_USE --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IPA_TANDC</masterLabel>
@@ -1939,6 +1959,10 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Partner Admin --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Partner Drafter</masterLabel>
+            <translation><!-- Partner Drafter --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Points Benefit Manager</masterLabel>
             <translation><!-- Points Benefit Manager --></translation>
         </picklistValues>
@@ -1993,6 +2017,10 @@ The field allows only English letters, digits (0-9), and the following special c
         <picklistValues>
             <masterLabel>Artificial Intelligence</masterLabel>
             <translation><!-- Artificial Intelligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Cloud</masterLabel>
@@ -2117,10 +2145,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <picklistValues>
             <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
             <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Retailer</masterLabel>
@@ -2312,6 +2336,10 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>PRM_Profile_Response__c</name>
     </fields>
     <fields>
+        <label><!-- Record Errored Out --></label>
+        <name>PRM_Record_Errored_Out__c</name>
+    </fields>
+    <fields>
         <label><!-- Record Link --></label>
         <name>PRM_Record_Link__c</name>
     </fields>
@@ -2345,10 +2373,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <picklistValues>
             <masterLabel>Invalid domain (website, email, etc.)</masterLabel>
             <translation><!-- Invalid domain (website, email, etc.) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Legal/Compliance</masterLabel>
-            <translation><!-- Legal/Compliance --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Non- functional website</masterLabel>
@@ -2477,14 +2501,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <label><!-- Status Reason --></label>
         <name>PRM_Status_Reason__c</name>
         <picklistValues>
-            <masterLabel>Access granted</masterLabel>
-            <translation><!-- Access granted --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Access granted to Existing User</masterLabel>
-            <translation><!-- Access granted to Existing User --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Account/contact not in English format</masterLabel>
             <translation><!-- Account/contact not in English format --></translation>
         </picklistValues>
@@ -2493,12 +2509,12 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Approved for Targeted Doc Only --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Bad / junk / test data</masterLabel>
-            <translation><!-- Bad / junk / test data --></translation>
+            <masterLabel>Auto Approval Rejected</masterLabel>
+            <translation><!-- Auto Approval Rejected --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Below Threshold</masterLabel>
-            <translation><!-- Below Threshold --></translation>
+            <masterLabel>Auto rejected as the Account belongs to LAR/Canada</masterLabel>
+            <translation><!-- Auto rejected as the Account belongs to LAR/Canada --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CNDA Initiated</masterLabel>
@@ -2509,14 +2525,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Contact is already Associated to an existing Intel Account --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Contacted Intel</masterLabel>
-            <translation><!-- Contacted Intel --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Contacted applicant</masterLabel>
-            <translation><!-- Contacted applicant --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Does not meet criteria</masterLabel>
             <translation><!-- Does not meet criteria --></translation>
         </picklistValues>
@@ -2525,24 +2533,12 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Duplicate Request --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Education</masterLabel>
-            <translation><!-- Education --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>IPA Invite in-process</masterLabel>
             <translation><!-- IPA Invite in-process --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Incorrect route - not partner-led/end customer scenario</masterLabel>
-            <translation><!-- Incorrect route - not partner-led/end customer scenario --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Inquiry assigned to LDR</masterLabel>
-            <translation><!-- Inquiry assigned to LDR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Inquiry assigned to account owner</masterLabel>
-            <translation><!-- Inquiry assigned to account owner --></translation>
+            <masterLabel>Incorrect route-not partner-led/end customer scenario</masterLabel>
+            <translation><!-- Incorrect route-not partner-led/end customer scenario --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>New Account/Contact Creation</masterLabel>
@@ -2565,36 +2561,16 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- No valid Intel opportunity indicated --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not IPA-eligible</masterLabel>
-            <translation><!-- Not IPA-eligible --></translation>
+            <masterLabel>Not IPA-elgible</masterLabel>
+            <translation><!-- Not IPA-elgible --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Others</masterLabel>
             <translation><!-- Others --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Passed to Partner</masterLabel>
-            <translation><!-- Passed to Partner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Review</masterLabel>
-            <translation><!-- Pending Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Personal email</masterLabel>
-            <translation><!-- Personal email --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Product no longer available for new designs</masterLabel>
             <translation><!-- Product no longer available for new designs --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Request approved with CNDA pending</masterLabel>
-            <translation><!-- Request approved with CNDA pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Unable to contact</masterLabel>
-            <translation><!-- Unable to contact --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2629,16 +2605,20 @@ The field allows only English letters, digits (0-9), and the following special c
         <label><!-- Subscriptions --></label>
         <name>PRM_Subscriptions__c</name>
         <picklistValues>
-            <masterLabel>Education and Training</masterLabel>
-            <translation><!-- Education and Training --></translation>
+            <masterLabel>Dev_edu_training</masterLabel>
+            <translation><!-- Dev_edu_training --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Events and Tradeshows</masterLabel>
-            <translation><!-- Events and Tradeshows --></translation>
+            <masterLabel>Developer Zone Newsletter</masterLabel>
+            <translation><!-- Developer Zone Newsletter --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Industry Solutions</masterLabel>
-            <translation><!-- Industry Solutions --></translation>
+            <masterLabel>FPGA Partner Program Newsletter</masterLabel>
+            <translation><!-- FPGA Partner Program Newsletter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside Edge Newsletter</masterLabel>
+            <translation><!-- Inside Edge Newsletter --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Cloud Insider Events and Tradeshows</masterLabel>
@@ -2661,14 +2641,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Membership Communications --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Newsletters</masterLabel>
-            <translation><!-- Newsletters --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Offers and Promotions</masterLabel>
-            <translation><!-- Offers and Promotions --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>OpenVINO &amp; AI Inference Newsletter</masterLabel>
             <translation><!-- OpenVINO &amp; AI Inference Newsletter --></translation>
         </picklistValues>
@@ -2685,28 +2657,16 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Points Communications --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Press Releases</masterLabel>
-            <translation><!-- Press Releases --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Updates</masterLabel>
-            <translation><!-- Product Updates --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Product and Solution Communications</masterLabel>
             <translation><!-- Product and Solution Communications --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Surveys</masterLabel>
-            <translation><!-- Surveys --></translation>
+            <masterLabel>Programmable Logic Newsletters</masterLabel>
+            <translation><!-- Programmable Logic Newsletters --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Training and Webinar Communications</masterLabel>
             <translation><!-- Training and Webinar Communications --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Webinars</masterLabel>
-            <translation><!-- Webinars --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2822,6 +2782,10 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>TPT__c</name>
     </fields>
     <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
         <label><!-- Total TPT(AE and sales) --></label>
         <name>Total_TPT_AE_and_sales__c</name>
     </fields>
@@ -2864,7 +2828,7 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>Company_NameEng_Should_be_alphanumeric</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please provide rejection reason. --></errorMessage>
+        <errorMessage><!-- If the registration request is &apos;DZP registration request &apos;and the status reason is &apos;others&apos; then comment should not be &apos;empty&apos;. --></errorMessage>
         <name>DZP_Registration_Status_Validation</name>
     </validationRules>
     <validationRules>
@@ -2884,7 +2848,7 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>PRM_StatusOnRegistration</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Select Status Reason, when Current status is Rejected/Closed --></errorMessage>
-        <name>Status_Reason_Mandatory_for_Rejection</name>
+        <errorMessage><!-- Exception Thrown : Please check it. --></errorMessage>
+        <name>PRM_Throw_Exception</name>
     </validationRules>
 </CustomObjectTranslation>

@@ -38,6 +38,11 @@
         <name>CISCO</name>
     </recordTypes>
     <recordTypes>
+        <description><!-- For DELL Partner User --></description>
+        <label><!-- DELL --></label>
+        <name>DELL</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- For HPE Partner User --></description>
         <label><!-- HPE --></label>
         <name>HPE</name>

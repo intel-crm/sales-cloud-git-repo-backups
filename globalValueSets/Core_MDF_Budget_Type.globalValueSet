@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
+        <fullName>Account Plan</fullName>
+        <default>false</default>
+        <label>Account Plan</label>
+    </customValue>
+    <customValue>
         <fullName>Business Client Acceleration - MDF</fullName>
         <default>false</default>
         <label>Business Client Acceleration - MDF</label>
@@ -14,6 +19,21 @@
         <fullName>Client Specialties MDF</fullName>
         <default>false</default>
         <label>Client Specialties MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Cloud</fullName>
+        <default>false</default>
+        <label>Cloud</label>
+    </customValue>
+    <customValue>
+        <fullName>Co-Engineering</fullName>
+        <default>false</default>
+        <label>Co-Engineering</label>
+    </customValue>
+    <customValue>
+        <fullName>Co-Investment</fullName>
+        <default>false</default>
+        <label>Co-Investment</label>
     </customValue>
     <customValue>
         <fullName>Data Center Market Accelerate</fullName>
@@ -56,6 +76,16 @@
         <label>ODM Growth Plan - Client MDF</label>
     </customValue>
     <customValue>
+        <fullName>Proposal II MDF</fullName>
+        <default>false</default>
+        <label>Proposal II MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Proposal I MDF</fullName>
+        <default>false</default>
+        <label>Proposal I MDF</label>
+    </customValue>
+    <customValue>
         <fullName>Retail MDF</fullName>
         <default>false</default>
         <label>Retail MDF</label>
@@ -74,31 +104,6 @@
         <fullName>SOEM Data Center MDF</fullName>
         <default>false</default>
         <label>SOEM Data Center MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Account Plan</fullName>
-        <default>false</default>
-        <label>Account Plan</label>
-    </customValue>
-    <customValue>
-        <fullName>Proposal I MDF</fullName>
-        <default>false</default>
-        <label>Proposal I MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Proposal II MDF</fullName>
-        <default>false</default>
-        <label>Proposal II MDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Cloud</fullName>
-        <default>false</default>
-        <label>Cloud</label>
-    </customValue>
-    <customValue>
-        <fullName>Co-Engineering</fullName>
-        <default>false</default>
-        <label>Co-Engineering</label>
     </customValue>
     <customValue>
         <fullName>CCG Market Accelerate</fullName>
@@ -125,12 +130,6 @@
         <label>Data Center Specialties MDF</label>
     </customValue>
     <customValue>
-        <fullName>IPA Account Based1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>IPA Account Based1</label>
-    </customValue>
-    <customValue>
         <fullName>Scale Market Accelerate - MDF</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -143,10 +142,10 @@
         <label>ODM Growth Plan- MDF</label>
     </customValue>
     <customValue>
-        <fullName>Intel MDF Account Based1</fullName>
+        <fullName>IPA Account Based1</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Intel MDF Account Based1</label>
+        <label>IPA Account Based1</label>
     </customValue>
     <customValue>
         <fullName>Optane Specialties MDF</fullName>
@@ -243,6 +242,12 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>VMWare Amplify - MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel MDF Account Based1</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Intel MDF Account Based1</label>
     </customValue>
     <customValue>
         <fullName>Acc 1</fullName>

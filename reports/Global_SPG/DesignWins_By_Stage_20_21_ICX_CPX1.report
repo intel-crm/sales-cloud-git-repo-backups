@@ -117,12 +117,6 @@
     <columns>
         <field>PROBABILITY</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Intel_Platform__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Platform_Name__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>

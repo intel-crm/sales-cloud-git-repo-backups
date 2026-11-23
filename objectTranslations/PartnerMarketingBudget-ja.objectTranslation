@@ -187,6 +187,10 @@
             <translation><!-- Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Co-Investment</masterLabel>
+            <translation><!-- Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>DCF 1.0</masterLabel>
             <translation><!-- DCF 1.0 --></translation>
         </picklistValues>
@@ -320,6 +324,16 @@
         </picklistValues>
     </fields>
     <fields>
+        <help><!-- Marketing Approval required for funding Co-Selling Tactic(s) --></help>
+        <label><!-- Co-Marketing --></label>
+        <name>Core_MDF_Co_Marketing_ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field Sales Approval required for funding Co-Marketing Tactic(s) --></help>
+        <label><!-- Co-Selling --></label>
+        <name>Core_MDF_Co_Selling_ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -327,6 +341,10 @@
         <help><!-- Enter the amount the budget should be reduced by --></help>
         <label><!-- Budget Reduction Amount --></label>
         <name>Core_MDF_Decrease_Budget_Amount_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsApprovalProcessBypassed --></label>
+        <name>Core_MDF_IsApprovalProcessBypassed_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -356,12 +374,21 @@
         <relationshipLabel><!-- Partner Marketing Budgets --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- Revenue Segment --></help>
+        <label><!-- Revenue Segment --></label>
+        <name>Core_MDF_Revenue_Segment_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Ultimate Account Id --></label>
         <name>Core_MDF_Ultimate_Account_Id__c</name>
     </fields>
     <fields>
         <label><!-- Budget Reference Number --></label>
         <name>Core_MDF_budget_ref_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Reference Number --></label>
+        <name>Core_MDF_budget_ref_txt__c</name>
     </fields>
     <recordTypes>
         <description><!-- This is the Record type for Channel MDF Account based --></description>
@@ -377,6 +404,11 @@
         <description><!-- Record Type for Co-GTM --></description>
         <label><!-- Co-GTM --></label>
         <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record Type for Co-Inv --></description>
+        <label><!-- Co-Inv --></label>
+        <name>Core_MDF_Co_Inv</name>
     </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Co-Marketing purposes. --></description>
@@ -458,6 +490,10 @@
     <validationRules>
         <errorMessage>プログラムの変更はできません。</errorMessage>
         <name>Core_MDF_Program_Cannot_Be_Edited</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not authorized to create the budget for the selected Program/Budget type --></errorMessage>
+        <name>Core_MDF_RestrictBudgetCreation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You are not authorized to create the record for the selected Account --></errorMessage>

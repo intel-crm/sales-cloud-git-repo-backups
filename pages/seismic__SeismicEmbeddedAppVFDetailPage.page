@@ -1,0 +1,53 @@
+<apex:page controller="seismic.SeismicEmbeddedAppVFDetailPageController" action="{!Init}" docType="html-5.0" applyBodyTag="false" showHeader="true" sidebar="false" standardStylesheets="false">
+
+  <script type="text/javascript" src="{!URLFOR($Resource.jquery_3_6_1_min_js)}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.jquery_base64_js)}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.lodash_min_js)}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.embeddedpage_js)}"></script>
+  <script type="text/javascript" src="{!URLFOR($Resource.SeismicIntegratedSDK_js)}"></script>
+  <script type="text/javascript" src="{!JSENCODE(CanvasSDKControllerUrlString)}"></script>
+  <script type="text/javascript">
+    if (!String.prototype.startsWith) {
+    String.prototype.startsWith = function(searchString, position) {
+    position = position || 0;
+    return this.indexOf(searchString, position) === position;
+    };
+    }
+  </script>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seismic Content Viewer</title>
+
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      body { background-color: white; font-size: 12px !important; line-height: 1.2 !important; }
+      body #contentWrapper .bodyDiv .outerNoSidebar .noSidebarCell { padding: 0; }
+      body #contentWrapper #bodyTable { padding: 0; }
+      body #contentWrapper #bodyTable #detailIFrame { height: 765px !important; }
+      body.sfdcBody { padding: 0 !important; }
+      body.sfdcBody.apexPageInline { margin: 0; }
+    </style>
+  </head>
+  <body>
+    <apex:pageMessages id="messages" escape="false" rendered="{!HasInvalidSubscription}"/>
+    <apex:canvasApp applicationName="SeismicCanvasApp" namespacePrefix="seismic" developerName="SeismicCanvasApp" parameters="{!CanvasAppParamString}" width="100%" scrolling="auto" onCanvasAppLoad="resize" rendered="{!IF(HasInvalidSubscription,false,true)}"/>
+    <script type="text/javascript">
+         
+      Sfdc.canvas.controller.subscribe({name : 'goBack', onData : function (e) {
+         handleGoBackRequest(e.backUrl);
+      }});
+   
+      function handleGoBackRequest(backUrl){
+        window.top.location.href = encodeURI(backUrl);
+      }
+
+      function resize() {
+        var body = document.body, html = document.documentElement;
+        var containerHeight = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+        Sfdc.canvas.controller.resize( {height : containerHeight+ "px"});
+      } 
+    </script>
+  </body>
+</apex:page>

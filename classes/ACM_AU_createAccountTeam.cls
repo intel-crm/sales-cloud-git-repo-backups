@@ -21,7 +21,7 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
     
     private void createAccountTeams(UCD_ACM_UnitOfWork unitOfWork, Map<Id, Account> oldAccounts, Map<Id, Account> newAccounts){
 
-        Map<Id, Account> mapOfIdwithAccountTeams = new Map<Id, Account>([select id,OwnerId, (Select id, TeamMemberRole, UserId, Core_Account_Category__c	from AccountTeamMembers where TeamMemberRole = 'Account Owner') from Account where ID IN :newAccounts.keySet()]);
+        Map<Id, Account> mapOfIdwithAccountTeams = new Map<Id, Account>([select id,OwnerId, (Select id, TeamMemberRole, UserId, Core_Account_Category__c  from AccountTeamMembers where TeamMemberRole = 'Account Owner') from Account where ID IN :newAccounts.keySet()]);
 
         Map<Id, List<AccountTeamMember>> mapAccountIdByAccountTeamMember = new Map<Id, List<AccountTeamMember>>();
         List<String> accountIdsForAccountTeam = new List<String>();
@@ -50,7 +50,7 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
         if(!accountIdsForAccountTeam.isEmpty()){
             List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
 
-                    lstAccountTeamMember = [Select id, AccountId, UserId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember where AccountId IN : accountIdsForAccountTeam  Order By CreatedDate ];
+                    lstAccountTeamMember = [Select id, AccountId, UserId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember where AccountId IN : accountIdsForAccountTeam WITH SECURITY_ENFORCED Order By CreatedDate];
             
 
             for(AccountTeamMember accountTeamRec: lstAccountTeamMember){
@@ -138,6 +138,7 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
             accountTeamMember.Core_Account_Category__c = account.Core_Account_Category__c ;
         }
         Core_AccountTeamMemberHandler.bypassValidationonAccountTeam = true;
+        System.debug('register ATM');
         unitOfWork.registerNew(accountTeamMember);
 
         if(!mapOfIdwithAccountTeams.isEmpty() && account != null && mapOfIdwithAccountTeams.get(account.Id) != null){
@@ -153,9 +154,6 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
                 }
             }
         }
-
-
-
     }
 
     /*
@@ -184,7 +182,4 @@ public without sharing class ACM_AU_createAccountTeam implements UCD_ACM_Service
 
     }
     */
-
-
-
 }

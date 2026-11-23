@@ -43,7 +43,7 @@ public without sharing class UCD_BizOrgRequestController {
             if (String.isBlank(requestModel.AccountRequests[i].Name) ||
                 String.isBlank(requestModel.AccountRequests[i].CustomerAggregationTypeCode) ||
                 String.isBlank(requestModel.AccountRequests[i].CustomerProcessEngagmentCode)) {
-                errors.add('Name, CustomerAggregationTypeCode and CustomerProcessEngagmentCode are mandatory fields');
+                errors.add(System.Label.UCD_ACM_MandatoryFieldsValidationMessage);
             }
             //validate address
             errors.addAll(validateAccountRequestAddresses(requestModel.AccountRequests[i].Addresses != null?requestModel.AccountRequests[i].Addresses:null));
@@ -67,13 +67,13 @@ public without sharing class UCD_BizOrgRequestController {
         if(addresses != null){
             for (UCD_BizOrgRequestModel.AccountAddresses address : addresses) {
                 if (String.isBlank(address.CountryCode) && String.isBlank(address.CountryName) ) {
-                    addressErrors.add('CountryCode/CountryName is required');
+                    addressErrors.add(System.Label.UCD_ACM_CountryName_Code_CannotbeBlank);
                 } else if (String.isNotBlank(address.CountryCode) && address.CountryCode.length() != 3) {
-                    addressErrors.add('CountryCode length is not valid. Expected 3-character CountryCode');
+                    addressErrors.add(System.Label.UCD_ACM_InvalidCountryCodeLength);
                 }
             }
         }else{
-            addressErrors.add('Addresses is required');
+            addressErrors.add(System.Label.UCD_ACM_AddressIsMandatory);
         }
         return addressErrors;
     }

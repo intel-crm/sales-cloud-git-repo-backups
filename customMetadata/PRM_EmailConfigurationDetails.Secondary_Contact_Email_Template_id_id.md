@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">SCRUACCTADD_English</value>
+        <value xsi:type="xsd:string">SCRUACCTADD_Indonesian</value>
     </values>
 </CustomMetadata>

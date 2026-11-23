@@ -3,7 +3,7 @@
   width: 100%;
   position: relative;
   background-color: t(darkBlue);
-  background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-mobile-v4.jpg');
+  background-image: url('/imp/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-mobile-v4.jpg');
   background-position: 0% 55%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -149,7 +149,7 @@
 @media (min-width: 768px) {
   .THIS {
     padding-bottom: 0;
-    background-image: url('/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-desktop-v4.jpg');
+    background-image: url('/imp/s/sfsites/c/resource/PMP_Resources/images/ipa-homepage-hub-hero-desktop-v4.jpg');
     background-position: 0% 70%;
   }
   .THIS .marquee-header {

@@ -1,187 +1,187 @@
 <template>
-    <a href="#" onclick={openModal}>
-        <slot name="tile"></slot>
-    </a>
-    <c-core-intc-modal data-name="modal1" has-body has-header onclose={closeModal} fixed-header>
-        <div slot="header">
-            <h3 class="color-white">{modalTitle}</h3>
-        </div>
-        <div slot="body">
+        <a href="#" onclick={openModal}>
+            <slot name="tile"></slot>
+        </a>
+        <c-core-intc-modal data-name="modal1" has-body has-header onclose={closeModal} fixed-header>
+            <div slot="header">
+                <h3 class="color-white">{modalTitle}</h3>
+            </div>
+            <div slot="body">
             <template if:true={isLoading}>
-                <lightning-spinner alternative-text="loading"></lightning-spinner>
+                    <lightning-spinner alternative-text="loading"></lightning-spinner>
             </template>
-            <div class="slds-p-around_large modal-body">
-                <div class="content-wrap">
-                    <template if:true={ifs.hasImageUrl}>
-                        <div class="image slds-m-right_medium">
-                            <img src={imageUrl}/>
-                        </div>
-                    </template>
-                    <div class="content">
-                        <template if:true={content}>
-                            <template for:each={content} for:item="item">
-                                <template if:true={item.isText}>
-                                    <p class="slds-m-bottom_medium" key={item.id}>{item.body}</p>
-                                </template>
-                                <template if:true={item.isRichText}>
-                                    <div class="slds-m-bottom_medium" key={item.id}><lightning-formatted-rich-text  class="spaced-out" value={item.body}></lightning-formatted-rich-text></div>
-                                </template>
-                                <template if:true={item.isLinks}>
-                                    <template for:each={item.body} for:item="link">
-                                        <div class="link-out slds-m-bottom_medium" key={link.id}>
-                                            <c-ipa-link label={link.label} external-url={link.externalUrl} community-page={link.communityPage}  object-page={link.objectPage} record-id={link.recordId} caret="true"></c-ipa-link>
-                                        </div>
+                <div class="slds-p-around_large modal-body">
+                    <div class="content-wrap">
+                        <template if:true={ifs.hasImageUrl}>
+                            <div class="image slds-m-right_medium">
+                                <img src={imageUrl}/>
+                            </div>
+                        </template>
+                        <div class="content">
+                            <template if:true={content}>
+                                <template for:each={content} for:item="item">
+                                    <template if:true={item.isText}>
+                                        <p class="slds-m-bottom_medium" key={item.id}>{item.body}</p>
+                                    </template>
+                                    <template if:true={item.isRichText}>
+                                        <div class="slds-m-bottom_medium" key={item.id}><lightning-formatted-rich-text  class="spaced-out" value={item.body}></lightning-formatted-rich-text></div>
+                                    </template>
+                                    <template if:true={item.isLinks}>
+                                        <template for:each={item.body} for:item="link">
+                                            <div class="link-out slds-m-bottom_medium" key={link.id}>
+                                                <c-ipa-link label={link.label} external-url={link.externalUrl} community-page={link.communityPage}  object-page={link.objectPage} record-id={link.recordId} caret="true"></c-ipa-link>
+                                            </div>
+                                        </template>
                                     </template>
                                 </template>
                             </template>
-                        </template>
-                    </div>    
-                </div>
-                <!-- acceptable domain add starts here -->
-                <template if:true={ifs.acceptabledomainTemplate}>
-                    <div class="slds-p-around_medium" id="modal-content-id-1">
-                        <div class="slds-grid slds-gutter slds-grid_vertical slds-m-bottom_small">
-                            <div class="slds-col">
-                                {label.PRM_AcceptableDomains_Info}
-                            </div>
-                            <div class="slds-col">
-                                <lightning-icon icon-name="utility:warning" alternative-text="warning" size="xx-small"></lightning-icon> {label.PRM_AcceptableDomains_Caution}
-                            </div>
-                        </div>
-                            <template for:each={responces} for:item="res" for:index="index">
-                                <div class="slds-grid slds-gutter slds-grid_align-center" key={res.RecordId}>
-                                    <div class="slds-col slds-size_1-of-3" key={res.RecordId}>
-                                        <div class="form-inline" data-rec={res.RecordId}>
-                                            <span>@</span>
-                                            <input
-                                                name={index}
-                                                title={res.RecordId}
-                                                onblur={handleAcceptDomainBlur}
-                                                value={res.WhiteListName}
-                                                onchange={handleAcceptDomainChange}
-                                                type="text"
-                                                style="width: 86%;margin-top: 3px;"
-                                            />
-                                        </div>            
-                                        <span class="slds-assistive-text">{res.WhiteListName}</span>
-                                    </div>
-                                    <div class="slds-col slds-size_1-of-3" style="width:4%;" key={res.RecordId}>
-                                        <lightning-helptext content={label.PRM_AcceptableDomains_HelpText} class="customIcon"> </lightning-helptext>
-                                        <button class="slds-button slds-button_icon" style="margin-top: 4px;">
-                                            <lightning-icon
-                                                icon-name="utility:delete"
-                                                alternative-text={label.PRM_Remove_ButtonLabel}
-                                                size="xx-small"
-                                                name={index}
-                                                class={res.RecordId}
-                                                onclick={removeDomain}
-                                                title={label.PRM_Remove_ButtonLabel}
-                                                tooltip={label.PRM_Remove_ButtonLabel}
-                                            >
-                                            </lightning-icon>
-                                            <span class="slds-assistive-text">{label.PRM_Remove_ButtonLabel}</span>
-                                        </button>
-                                    </div>
-                                    <div data-val={res.RecordId} class="slds-text-color_error errorMsg"></div>
-                                </div>
-                            </template> 
-                        <div class="slds-grid slds-grid_align-center slds-p-top_medium">
-                            <div class="slds-col slds-grow-none slds-p-right_small">
-                                <button class="slds-button slds-button_neutral add_domain" disabled={disableAddButton} onclick={addDomainTextField}>
-                                    {label.PRM_Add_ButtonLabel}
-                                </button>
-                            </div>
-                            <div class="slds-col slds-grow-none slds-p-left_small">
-                                <button class="slds-button slds-button_brand save_button" disabled={disableSaveButton}  onclick={saveAcceptableDomain}>
-                                    {label.PRM_Save_ButtonLabel}
-                                </button>
-                            </div>
-                        </div>
+                        </div>    
                     </div>
-                </template> 
-                <!-- acceptable domain add ends here -->
-                <template if:true={ifs.isGroupingConfirmation}>
-                    <div class="group-confirmation">
-                        <template for:each={groupCards} for:item="group">
-                            <div class="group-column" key={group.id}>
-                                <div class="heading">{group.title}</div>
-                                <div class="contact-card-list">
-                                    <template for:each={group.cards} for:item="card">
-                                        <div class="contact-card-list-item" key={card.id}>
-                                            <c-core-intc-simple-card card={card} card-template-type={cardStyle} theme="gray" type="contact-card" oncorelinkclick={handleLinkClick}>
-                                                <slot slot="body">
-                                                    <template for:each={card.members} for:item="member">
-                                                        <div class="slds-m-bottom_medium" key={member.id}>
-                                                            <p>{member.name}</p>
-                                                            <p>{member.entitlement}</p>
-                                                        </div>
-                                                    </template>
-                                                </slot>
-                                            </c-core-intc-simple-card>
+                    <!-- acceptable domain add starts here -->
+                    <template if:true={ifs.acceptabledomainTemplate}>
+                        <div class="slds-p-around_medium" id="modal-content-id-1">
+                            <div class="slds-grid slds-gutter slds-grid_vertical slds-m-bottom_small">
+                                <div class="slds-col">
+                                    {label.PRM_AcceptableDomains_Info}
+                                </div>
+                                <div class="slds-col">
+                                    <lightning-icon icon-name="utility:warning" alternative-text="warning" size="xx-small"></lightning-icon> {label.PRM_AcceptableDomains_Caution}
+                                </div>
+                            </div>
+                                <template for:each={responces} for:item="res" for:index="index">
+                                    <div class="slds-grid slds-gutter slds-grid_align-center" key={res.RecordId}>
+                                        <div class="slds-col slds-size_1-of-3" key={res.RecordId}>
+                                            <div class="form-inline" data-rec={res.RecordId}>
+                                                <span>@</span>
+                                                <input
+                                                    name={index}
+                                                    title={res.RecordId}
+                                                    onblur={handleAcceptDomainBlur}
+                                                    value={res.WhiteListName}
+                                                    onchange={handleAcceptDomainChange}
+                                                    type="text"
+                                                    style="width: 86%;margin-top: 3px;"
+                                                />
+                                            </div>            
+                                            <span class="slds-assistive-text">{res.WhiteListName}</span>
                                         </div>
-                                    </template>
+                                        <div class="slds-col slds-size_1-of-3" style="width:4%;" key={res.RecordId}>
+                                            <lightning-helptext content={label.PRM_AcceptableDomains_HelpText} class="customIcon"> </lightning-helptext>
+                                            <button class="slds-button slds-button_icon" style="margin-top: 4px;">
+                                                <lightning-icon
+                                                    icon-name="utility:delete"
+                                                    alternative-text={label.PRM_Remove_ButtonLabel}
+                                                    size="xx-small"
+                                                    name={index}
+                                                    class={res.RecordId}
+                                                    onclick={removeDomain}
+                                                    title={label.PRM_Remove_ButtonLabel}
+                                                    tooltip={label.PRM_Remove_ButtonLabel}
+                                                >
+                                                </lightning-icon>
+                                                <span class="slds-assistive-text">{label.PRM_Remove_ButtonLabel}</span>
+                                            </button>
+                                        </div>
+                                        <div data-val={res.RecordId} class="slds-text-color_error errorMsg"></div>
+                                    </div>
+                                </template> 
+                            <div class="slds-grid slds-grid_align-center slds-p-top_medium">
+                                <div class="slds-col slds-grow-none slds-p-right_small">
+                                    <button class="slds-button slds-button_neutral" onclick={addDomainTextField}>
+                                        {label.PRM_Add_ButtonLabel}
+                                    </button>
+                                </div>
+                                <div class="slds-col slds-grow-none slds-p-left_small">
+                                    <button class="slds-button slds-button_brand save_button" disabled={disableSaveButton}  onclick={saveAcceptableDomain}>
+                                        {label.PRM_Save_ButtonLabel}
+                                    </button>
                                 </div>
                             </div>
-                        </template>
-                    </div>
-                </template>
-                <template if:true={ifs.isTierConfirmation}>
-
-                    <div class="tier-confirmation table">
-                        <div class="table-heading row" >
-                            <div class="column flex-1">{label.tier}</div>
-                            <div class="column flex-2">{label.company}</div>
-                            <div class="column flex-1 align-right">{label.role}</div>
                         </div>
-                        <template for:each={tierTableData} for:item="item">
-                            <div class="row" key={item.id}>
-                                <div class="column flex-1 table-icon">
-                                    <template if:true={item.hasIcon}>
-                                        <span class={item.icon}></span>
-                                    </template>
-                                    {item.tier}
-                                </div>
-                                <div class="column flex-2">
-                                    {item.company}
-                                </div>
-                                <div class="column flex-1 align-right">
-                                    {item.role}
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </template>
-                <template if:true={ifs.isResponsibilitiesConfirmation}>
-
-                    <div class="role-confirmation table">
-                        <div class="table-heading row" >
-                            <div class="column flex-1">{label.responsibility}</div>
-                            <div class="column flex-1 align-right"></div>
-                        </div>
-                        <template for:each={responsibilitiesTableData} for:item="item">
-                            <div class="row" key={item.id} data-highlight={item.highlight} >
-                                <div class="column flex-1">
-                                    {item.responsibility}
-                                </div>
-                                <div class="column flex-1 align-right">
-                                    {item.employee}
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </template>
-                
-
-                <div class="footer-link">
-                    <template if:true={ifs.isFooterLinkValid}>
-                        <c-ipa-link external-url={footerLinkData.externalUrl} label={footerLinkData.label} community-page={footerLinkData.communityPage}  object-page={footerLinkData.objectPage} record-id={footerLinkData.recordId} ></c-ipa-link>
                     </template>
+                    <!-- acceptable domain add ends here -->
+                    <template if:true={ifs.isGroupingConfirmation}>
+                        <div class="group-confirmation">
+                            <template for:each={groupCards} for:item="group">
+                                <div class="group-column" key={group.id}>
+                                    <div class="heading">{group.title}</div>
+                                    <div class="contact-card-list">
+                                        <template for:each={group.cards} for:item="card">
+                                            <div class="contact-card-list-item" key={card.id}>
+                                                <c-core-intc-simple-card card={card} card-template-type={cardStyle} theme="gray" type="contact-card" oncorelinkclick={handleLinkClick}>
+                                                    <slot slot="body">
+                                                        <template for:each={card.members} for:item="member">
+                                                            <div class="slds-m-bottom_medium" key={member.id}>
+                                                                <p>{member.name}</p>
+                                                                <p>{member.entitlement}</p>
+                                                            </div>
+                                                        </template>
+                                                    </slot>
+                                                </c-core-intc-simple-card>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <template if:true={ifs.isTierConfirmation}>
+    
+                        <div class="tier-confirmation table">
+                            <div class="table-heading row" >
+                                <div class="column flex-1">{label.tier}</div>
+                                <div class="column flex-2">{label.company}</div>
+                                <div class="column flex-1 align-right">{label.role}</div>
+                            </div>
+                            <template for:each={tierTableData} for:item="item">
+                                <div class="row" key={item.id}>
+                                    <div class="column flex-1 table-icon">
+                                        <template if:true={item.hasIcon}>
+                                            <span class={item.icon}></span>
+                                        </template>
+                                        {item.tier}
+                                    </div>
+                                    <div class="column flex-2">
+                                        {item.company}
+                                    </div>
+                                    <div class="column flex-1 align-right">
+                                        {item.role}
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <template if:true={ifs.isResponsibilitiesConfirmation}>
+    
+                        <div class="role-confirmation table">
+                            <div class="table-heading row" >
+                                <div class="column flex-1">{label.responsibility}</div>
+                                <div class="column flex-1 align-right"></div>
+                            </div>
+                            <template for:each={responsibilitiesTableData} for:item="item">
+                                <div class="row" key={item.id} data-highlight={item.highlight} >
+                                    <div class="column flex-1">
+                                        {item.responsibility}
+                                    </div>
+                                    <div class="column flex-1 align-right">
+                                        {item.employee}
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    
+    
+                    <div class="footer-link">
+                        <template if:true={ifs.isFooterLinkValid}>
+                            <c-ipa-link external-url={footerLinkData.externalUrl} label={footerLinkData.label} community-page={footerLinkData.communityPage}  object-page={footerLinkData.objectPage} record-id={footerLinkData.recordId} ></c-ipa-link>
+                        </template>
+                    </div>
+    
                 </div>
-
+                <div class="slds-modal__footer">
+                    <button type="button" class="slds-button slds-button_brand" onclick={closeButton}>{label.close}</button>
+                </div>
             </div>
-            <div class="slds-modal__footer">
-                <button type="button" class="slds-button slds-button_brand" onclick={closeButton}>{label.close}</button>
-            </div>
-        </div>
-    </c-core-intc-modal>
+        </c-core-intc-modal>
 </template>

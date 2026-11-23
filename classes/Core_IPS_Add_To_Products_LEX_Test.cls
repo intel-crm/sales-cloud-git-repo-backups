@@ -12,16 +12,13 @@
     static void getRecords(){
         
     // Query Admin Profile
-    Profile profileRec = [SELECT Id,Name FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
+    Profile ProfileRec = [SELECT Id,Name FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
         
     // Create User
     userRecord = TestUtilities.getUser();
     userRecord.username = 'TestUserTest@intel.com';
-    userRecord.ProfileID = profileRec.Id;
-    User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert userRecord;
-        }
+    userRecord.ProfileID = ProfileRec.Id;
+    insert userRecord;
         
     // Creating Queue
     QueueRecord = new Group(Name='SupportOrgQueue', 
@@ -29,29 +26,29 @@
                            );
     insert QueueRecord;        
     // Creating Public Group
-    Group publicGroupRecord = new Group(Name = 'SupportOrgPublicGroup');
-    insert publicGroupRecord;
+    Group PublicGroupRecord = new Group(Name = 'SupportOrgPublicGroup');
+    insert PublicGroupRecord;
         
     System.runAs(userRecord){
         
         // Mapping the Queue to the Core_IPS_Product_Organization__c object
-        QueuesObject mappingQueueRecord = new QueueSObject(QueueID = QueueRecord.Id, SobjectType = 'Core_IPS_Product_Organization__c');
-        insert mappingQueueRecord;
+        QueuesObject MappingQueueRecord = new QueueSObject(QueueID = QueueRecord.Id, SobjectType = 'Core_IPS_Product_Organization__c');
+        insert MappingQueueRecord;
         
-        QueuesObject mappingQueueRecord2 = new QueueSObject(QueueID = QueueRecord.Id, SobjectType = 'Core_IPS_MAP_PAR__c');
-        insert mappingQueueRecord2;
+        QueuesObject MappingQueueRecord2 = new QueueSObject(QueueID = QueueRecord.Id, SobjectType = 'Core_IPS_MAP_PAR__c');
+        insert MappingQueueRecord2;
         
         // Adding Public Group to the Queue
-        GroupMember groupMemberObjectGroup = new GroupMember(GroupId = QueueRecord.Id,
-                           UserOrGroupId = publicGroupRecord.Id  
+        GroupMember groupMemberObject_Group = new GroupMember(GroupId = QueueRecord.Id,
+                                                               UserOrGroupId = PublicGroupRecord.Id  
                                                               );           
-        insert groupMemberObjectGroup;
+        insert groupMemberObject_Group;
         
         // Adding Member to the Public Group
-        GroupMember groupMemberObjectUser = new GroupMember(GroupId = publicGroupRecord.Id,
+        GroupMember groupMemberObject_User = new GroupMember(GroupId = PublicGroupRecord.Id,
                                                              UserOrGroupId = userRecord.Id
                                                              );
-        insert groupMemberObjectUser;
+        insert groupMemberObject_User;
         
         // Creating Product Record
         Product2 createProductRecord = TestUtilities.getProduct();
@@ -59,24 +56,24 @@
         System.Assert(createProductRecord.Id != null, 'Record not created');
         
         // Creating Support Org (Core_IPS_Product_Organization__c) Record
-        Core_IPS_Product_Organization__c supportOrgRecord = TestUtilities.getSupportOrg();
-        supportOrgRecord.OwnerId = QueueRecord.Id;
-        insert supportOrgRecord;
-        System.Assert(supportOrgRecord.Id != null, 'Record not created');
+        Core_IPS_Product_Organization__c SupportOrgRecord = TestUtilities.getSupportOrg();
+        SupportOrgRecord.OwnerId = QueueRecord.Id;
+        insert SupportOrgRecord;
+        System.Assert(SupportOrgRecord.Id != null, 'Record not created');
         
         // Creating Core Supported Product
         supportedProductRecord = TestUtilities.getSupportedProduct();
         supportedProductRecord.Core_Product__c = createProductRecord.id;
-        supportedProductRecord.Core_Product_Organization__c = supportOrgRecord.id;
+        supportedProductRecord.Core_Product_Organization__c = SupportOrgRecord.id;
         insert supportedProductRecord;
         System.Assert(supportedProductRecord.Id != null, 'Record not created');
         
         EnvironmentalDetailMaster1 = TestUtilities.getCoreQuestion();
-        EnvironmentalDetailMaster1.Core_IPS_Product_Organization__c = supportOrgRecord.id;
+        EnvironmentalDetailMaster1.Core_IPS_Product_Organization__c = SupportOrgRecord.id;
         insert EnvironmentalDetailMaster1;
         
         EnvironmentalDetailMaster2 = TestUtilities.getCoreQuestion();
-        EnvironmentalDetailMaster2.Core_IPS_Product_Organization__c = supportOrgRecord.id;
+        EnvironmentalDetailMaster2.Core_IPS_Product_Organization__c = SupportOrgRecord.id;
         insert EnvironmentalDetailMaster2;
         
         EnvironmentalDetailsOperational = TestUtilities.getEnvironmentalDetailsOperational();
@@ -85,23 +82,23 @@
         insert EnvironmentalDetailsOperational;
         
         // Create Custom Setting - IPS Error Codes
-        List<Core_IPS_Error_Code__c> listOfIpsErrorCodes = TestUtilities.getListOfIpsErrorCodes();
-        insert listOfIpsErrorCodes;
+        List<Core_IPS_Error_Code__c> ListofIpsErrorCodes = TestUtilities.getListOfIpsErrorCodes();
+        insert ListofIpsErrorCodes;
         
         // Create Custom Setting - IPS Lables
-        List<Core_IPS_Labels__c> listOfIpsLables = TestUtilities.getIPSLabel();
-        insert listOfIpsLables;
-        System.Assert(listOfIpsLables[0].Id != null, 'Record not created');
+        List<Core_IPS_Labels__c> ListofIpsLables = TestUtilities.getIPSLabel();
+        insert ListofIpsLables;
+        System.Assert(ListofIpsLables[0].Id != null, 'Record not created');
         
         // Create Case Category
-        Core_IPS_Product_Issue_Category__c caseCategory = TestUtilities.getCaseCategories();
-        caseCategory.Core_Type__c = 'Case Category';
-        caseCategory.Core_Supported_Product__c = supportedProductRecord.id;
-        insert caseCategory;
+        Core_IPS_Product_Issue_Category__c CaseCategory = TestUtilities.getCaseCategories();
+        CaseCategory.Core_Type__c = 'Case Category';
+        CaseCategory.Core_Supported_Product__c = supportedProductRecord.id;
+        insert CaseCategory;
         
         // Create Case SubCategory
         CaseSubCategory = TestUtilities.getCaseCategories();
-        CaseSubCategory.Core_Product_Issue_Category__c = caseCategory.id; 
+        CaseSubCategory.Core_Product_Issue_Category__c = CaseCategory.id; 
         insert CaseSubCategory;
         
         // Update EnvironmentalDetailsOperational
@@ -150,7 +147,7 @@
         Test.startTest();
         	String str = Core_IPS_Add_To_Products_LEX.checkBusinessRules(EnvironmentalDetailMaster1.Id);
         Test.stopTest();
-       // System.assert(str == 'Success', true);
+        System.assert(str == 'Success', true);
     }
     
     // No Records to Display

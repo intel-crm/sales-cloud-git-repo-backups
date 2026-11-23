@@ -52,7 +52,7 @@
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_Account_Manager}</leftValue>
                         <operator>EQUAL</operator>
@@ -72,6 +72,11 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>NE</operator>
                         <rightValue>IT Admin</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Internal_CSC_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

@@ -17,10 +17,6 @@
         <formula>Core_Prospect__c.Id</formula>
     </fieldOverrides>
     <fieldOverrides>
-        <field>Country</field>
-        <formula>TEXT(Core_Prospect__c.Core_Country_Pkt__c)</formula>
-    </fieldOverrides>
-    <fieldOverrides>
         <field>Industry</field>
         <formula>TEXT(Core_Prospect__c.Core_Industry_Pkt__c)</formula>
     </fieldOverrides>

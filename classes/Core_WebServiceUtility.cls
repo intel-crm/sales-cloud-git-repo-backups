@@ -89,7 +89,7 @@ public class Core_WebServiceUtility{
         httpReq.setTimeout(Integer.Valueof(sTimeOut));
         
         //Make the callout to the service
-        httpResp = http.send(httpReq);
+        httpResp = http.send(httpReq); system.debug('Response---'+httpResp.getStatusCode());
           
       } catch (Exception e) {
       

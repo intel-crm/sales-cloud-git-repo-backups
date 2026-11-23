@@ -177,20 +177,8 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Forecast_Amount__c</fullName>
-        <externalId>false</externalId>
-        <label>Forecast Amount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Forecast_Quarter__c</fullName>
-        <label>Forecast Quarter</label>
+        <fullName>Core_Forecaset_Quarter__c</fullName>
+        <label>Forecaset Quarter</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -198,6 +186,26 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <valueSet>
             <valueSetDefinition>
                 <sorted>false</sorted>
+                <value>
+                    <fullName>Q1 2023</fullName>
+                    <default>false</default>
+                    <label>Q1 2023</label>
+                </value>
+                <value>
+                    <fullName>Q2 2023</fullName>
+                    <default>false</default>
+                    <label>Q2 2023</label>
+                </value>
+                <value>
+                    <fullName>Q3 2023</fullName>
+                    <default>false</default>
+                    <label>Q3 2023</label>
+                </value>
+                <value>
+                    <fullName>Q4 2023</fullName>
+                    <default>false</default>
+                    <label>Q4 2023</label>
+                </value>
                 <value>
                     <fullName>Q1 2024</fullName>
                     <default>false</default>
@@ -227,6 +235,176 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
                     <fullName>Q2 2025</fullName>
                     <default>false</default>
                     <label>Q2 2025</label>
+                </value>
+                <value>
+                    <fullName>Q3 2025</fullName>
+                    <default>false</default>
+                    <label>Q3 2025</label>
+                </value>
+                <value>
+                    <fullName>Q4 2025</fullName>
+                    <default>false</default>
+                    <label>Q4 2025</label>
+                </value>
+                <value>
+                    <fullName>Q1 2026</fullName>
+                    <default>false</default>
+                    <label>Q1 2026</label>
+                </value>
+                <value>
+                    <fullName>Q2 2026</fullName>
+                    <default>false</default>
+                    <label>Q2 2026</label>
+                </value>
+                <value>
+                    <fullName>Q3 2026</fullName>
+                    <default>false</default>
+                    <label>Q3 2026</label>
+                </value>
+                <value>
+                    <fullName>Q4 2026</fullName>
+                    <default>false</default>
+                    <label>Q4 2026</label>
+                </value>
+                <value>
+                    <fullName>Q1 2027</fullName>
+                    <default>false</default>
+                    <label>Q1 2027</label>
+                </value>
+                <value>
+                    <fullName>Q2 2027</fullName>
+                    <default>false</default>
+                    <label>Q2 2027</label>
+                </value>
+                <value>
+                    <fullName>Q3 2027</fullName>
+                    <default>false</default>
+                    <label>Q3 2027</label>
+                </value>
+                <value>
+                    <fullName>Q4 2027</fullName>
+                    <default>false</default>
+                    <label>Q4 2027</label>
+                </value>
+                <value>
+                    <fullName>Q1 2028</fullName>
+                    <default>false</default>
+                    <label>Q1 2028</label>
+                </value>
+                <value>
+                    <fullName>Q2 2028</fullName>
+                    <default>false</default>
+                    <label>Q2 2028</label>
+                </value>
+                <value>
+                    <fullName>Q3 2028</fullName>
+                    <default>false</default>
+                    <label>Q3 2028</label>
+                </value>
+                <value>
+                    <fullName>Q4 2028</fullName>
+                    <default>false</default>
+                    <label>Q4 2028</label>
+                </value>
+                <value>
+                    <fullName>Q1 2029</fullName>
+                    <default>false</default>
+                    <label>Q1 2029</label>
+                </value>
+                <value>
+                    <fullName>Q2 2029</fullName>
+                    <default>false</default>
+                    <label>Q2 2029</label>
+                </value>
+                <value>
+                    <fullName>Q3 2029</fullName>
+                    <default>false</default>
+                    <label>Q3 2029</label>
+                </value>
+                <value>
+                    <fullName>Q4 2029</fullName>
+                    <default>false</default>
+                    <label>Q4 2029</label>
+                </value>
+                <value>
+                    <fullName>Q1 2030</fullName>
+                    <default>false</default>
+                    <label>Q1 2030</label>
+                </value>
+                <value>
+                    <fullName>Q2 2030</fullName>
+                    <default>false</default>
+                    <label>Q2 2030</label>
+                </value>
+                <value>
+                    <fullName>Q3 2030</fullName>
+                    <default>false</default>
+                    <label>Q3 2030</label>
+                </value>
+                <value>
+                    <fullName>Q4 2030</fullName>
+                    <default>false</default>
+                    <label>Q4 2030</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Forecast_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Forecast Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Forecast_Quarter__c</fullName>
+        <label>Forecast Quarter</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Q1 2023</fullName>
+                    <default>false</default>
+                    <label>Q1 2023</label>
+                </value>
+                <value>
+                    <fullName>Q2 2023</fullName>
+                    <default>false</default>
+                    <label>Q2 2023</label>
+                </value>
+                <value>
+                    <fullName>Q3 2023</fullName>
+                    <default>false</default>
+                    <label>Q3 2023</label>
+                </value>
+                <value>
+                    <fullName>Q4 2023</fullName>
+                    <default>false</default>
+                    <label>Q4 2023</label>
+                </value>
+                <value>
+                    <fullName>Q1 2024</fullName>
+                    <default>false</default>
+                    <label>Q1 2024</label>
+                </value>
+                <value>
+                    <fullName>Q2 2024</fullName>
+                    <default>false</default>
+                    <label>Q2 2024</label>
+                </value>
+                <value>
+                    <fullName>Q3 2024</fullName>
+                    <default>false</default>
+                    <label>Q3 2024</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -321,6 +499,11 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <columns>LAST_ACTIVITY</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Forecast__c</field>
+            <operation>equals</operation>
+            <value>Commit</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>
@@ -336,13 +519,41 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <active>true</active>
         <label>New</label>
         <picklistValues>
-            <picklist>Core_Forecast_Quarter__c</picklist>
+            <picklist>Core_Forecaset_Quarter__c</picklist>
+            <values>
+                <fullName>Q1 2023</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Q1 2024</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Q1 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2028</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2029</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2030</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2023</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -354,11 +565,114 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
                 <default>false</default>
             </values>
             <values>
+                <fullName>Q2 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2028</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2029</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2030</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Q3 2024</fullName>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Q3 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2028</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2029</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2030</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Q4 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2028</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2029</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2030</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Forecast_Quarter__c</picklist>
+            <values>
+                <fullName>Q1 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2023</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -387,9 +701,41 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
         <active>true</active>
         <label>ReadOnly</label>
         <picklistValues>
-            <picklist>Core_Forecast_Quarter__c</picklist>
+            <picklist>Core_Forecaset_Quarter__c</picklist>
+            <values>
+                <fullName>Q1 2023</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Q1 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2028</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2029</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2030</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2023</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -397,11 +743,118 @@ Core_Opportunity__r.CloseDate  &lt;=  Core_Quarter_First_Weekend_Date__c
                 <default>false</default>
             </values>
             <values>
+                <fullName>Q2 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2028</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2029</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2030</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Q3 2024</fullName>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Q3 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2028</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2029</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2030</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Q4 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2025</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2026</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2027</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2028</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2029</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2030</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_Forecast_Quarter__c</picklist>
+            <values>
+                <fullName>Q1 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q1 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q2 2024</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q3 2023</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Q4 2023</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

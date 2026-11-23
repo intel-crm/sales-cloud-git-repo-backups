@@ -110,9 +110,13 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
     }
 
     public PageReference setRetUrl() {
-        retUrl = Url.getSalesforceBaseUrl().toExternalForm() + '/' + designRegId;
+        String baseUrl = Url.getSalesforceBaseUrl().toExternalForm();
+        String uniqueParam = String.valueOf(System.currentTimeMillis()); // Use current timestamp as cache buster
+        retUrl = baseUrl + '/' + designRegId + '?cacheBuster=' + uniqueParam;
         PageReference pageRef = new PageReference(retUrl);
+        
         pageRef.setRedirect(true);
+        pageRef.getParameters().put('refresh', 'true');
         return pageRef;
     }
     
@@ -200,6 +204,15 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
         
         return null;
     }
+        //
+        // Update status before redirection
+       /* updateDDRProdRecords(allDesignRegProds, commentText);
+        
+        // Redirect to details page
+        PageReference pageRef = new PageReference('/' + designRegId);
+        pageRef.setRedirect(true);
+        return pageRef;
+        }*/
 
    /* private boolean isDealProduct(){
         system.debug('inside retueen deal'+allDealRegProds.size());
@@ -256,7 +269,7 @@ public with sharing class Core_Reject_Products_Pending_Ctrl {
 
         List<Core_Design_Registration_Product__c> pendingDDRProds = new List<Core_Design_Registration_Product__c>();
         pendingDDRProds = [SELECT Id FROM Core_Design_Registration_Product__c WHERE Core_Design_Registration_Id__c =: designRegId 
-                            AND Core_Design_Product_Status_Nm__c = :PENDING_DDR];
+                            AND Core_Design_Product_Status_Nm__c = :PENDING_DDR  WITH SECURITY_ENFORCED];
         List<Core_Design_Registration__c> parentDDR = [SELECT Id, Core_Design_Registration_Status_Nm__c FROM Core_Design_Registration__c
                                                         WHERE Id = :designRegId LIMIT 1];
         if(!allDesignRegProds.isEmpty() && pendingDDRProds.isEmpty() && !hasNewAprvdDRP ) {

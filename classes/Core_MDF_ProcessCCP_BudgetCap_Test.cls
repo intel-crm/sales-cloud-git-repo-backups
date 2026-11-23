@@ -158,7 +158,7 @@ Accenture – HP         5/09/2019         Created.
         usr1.ContactId = conRecord1.Id;
         usr1.ProfileId = profileToId.get('Partner');
         usr1.isActive = true;
-        // userList.add(usr1);  // 14285 Indira
+        //userList.add(usr1);
         
         User usr2 = new User(Alias = String.valueOf(datetime.now()).substring(0,8), Email='test1@example.com',
                                  EmailEncodingKey='UTF-8', LastName='User'+String.valueOf(date.today()), LanguageLocaleKey='en_US',
@@ -420,32 +420,30 @@ Accenture – HP         5/09/2019         Created.
         //Creating campaign
         Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7+ Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-10), System.today().addDays(10), 10000, 'Consumer Chromebook', dellCCFVirtualCorp.Id, '2-in-1', false); 
         camp.Core_MDF_Opal_Budget_Type_Txt__c= 'OEM CMP';
-        camp.Core_MDF_Technology__c ='';
         campaignList.add(camp);
     
         Campaign retailCampaign = Core_MDF_CCP_TestDataUtility.createCampaign('Retail Campaigm1','Gaming','9ᵗʰ Gen','No', Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 'Retail Marketing Funds', System.today().addDays(-20), System.today().addDays(20), 100000, 'Instore innovation', dellRMFVirtualCorp.Id,'Desktop', false); 
         retailCampaign.Core_MDF_Is_Opal__c='No';
         retailCampaign.Core_MDF_Opal_Budget_Type_Txt__c= 'Retail MDF';
-       // retailCampaign.Core_MDF_Activity_Category_Type__c =null;
+        retailCampaign.Core_MDF_Activity_Category_Type__c =null;
         retailCampaign.Core_MDF_Reimbursement_Rate__c='100%';
-       // retailCampaign.Core_MDF_Technology__c = 'Wifi6';
+        retailCampaign.Core_MDF_Technology__c = 'Wifi6';
         campaignList.add(retailCampaign);
         
         Campaign MdfCampaign = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp MDF','Gaming','Intel® Core™ i7+ Processor','MDF or both CMP & MDF', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_DCF, 'Data Center CoMarketing Fund', System.today().addDays(-100), System.today().addDays(10), 10000, 'Consumer Chromebook', dellDCFVirtualCorpMDF.Id, '2-in-1', false); 
         MdfCampaign.Core_MDF_Is_Opal__c='Yes MDF or both CMP & MDF';
         MdfCampaign.Core_MDF_Opal_Budget_Type_Txt__c='MDF';
         MdfCampaign.Core_MDF_Activity_Category__c = 'Audio 2025';
-       // MdfCampaign.Core_MDF_Activity_Category_Type__c = 'Audio 2025->Podcast';
-        MdfCampaign.Core_MDF_Technology__c ='';
+        MdfCampaign.Core_MDF_Activity_Category_Type__c = 'Audio 2025->Podcast';
         MdfCampaign.Core_MDF_Reimbursement_Rate__c='100%';
         campaignList.add(MdfCampaign);
         
         Campaign rsaMDCamp = Core_MDF_CCP_TestDataUtility.createCampaign('Retail Campaigm2','Gaming','9ᵗʰ Gen','No', Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 'Retail Marketing Funds', System.today().addDays(-10), System.today().addDays(10), 100000, 'Instore innovation', dellRMFVirtualCorp.Id,'Desktop', false); 
         rsaMDCamp.Core_MDF_Is_Opal__c='No';
         rsaMDCamp.Core_MDF_Opal_Budget_Type_Txt__c='RSA MD';
-        //rsaMDCamp.Core_MDF_Activity_Category_Type__c =null;
+        rsaMDCamp.Core_MDF_Activity_Category_Type__c =null;
         rsaMDCamp.Core_MDF_Reimbursement_Rate__c='100%';
-       // rsaMDCamp.Core_MDF_Technology__c = 'Wifi6';
+        rsaMDCamp.Core_MDF_Technology__c = 'Wifi6';
         campaignList.add(rsaMDCamp);
         //Test.startTest();
         system.runAs(usr2){
@@ -541,7 +539,7 @@ Accenture – HP         5/09/2019         Created.
         //Creating Partner fund Request for each Geo 
         PartnerFundRequest indiaActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                  string.valueof(dellCCFVirtualCorp.id),pfaDellCCFVirtualCorp,pmbRecord,
-                                                                                                 'BRAZIL','Consumer','Desktop','Intel® Core™ i5 Processor','Audio','Podcast','Draft'
+                                                                                                 'BRAZIL','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast','Podcast','Draft'
                                                                                                  ,false);
         indiaActivity.Title = 'indiaActivity';
         indiaActivity.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -557,7 +555,7 @@ Accenture – HP         5/09/2019         Created.
         
         PartnerFundRequest indiaActivity1= Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                  string.valueof(dellCCFVirtualCorp.id),pfaDellCCFVirtualCorp,pmbRecord,
-                                                                                                 'SINGAPORE','Consumer','Desktop','Intel® Core™ i5 Processor','Audio','Podcast','Draft'
+                                                                                                 'SINGAPORE','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast','Podcast','Draft'
                                                                                                  ,false);
         indiaActivity1.Title = 'indiaActivity1';
         indiaActivity1.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -572,7 +570,7 @@ Accenture – HP         5/09/2019         Created.
         pfrList.add(indiaActivity1);
         PartnerFundRequest indiaActivity2= Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                  string.valueof(dellCCFVirtualCorp.id),pfaDellCCFVirtualCorp,pmbRecord,
-                                                                                                 'EGYPT','Consumer','Desktop','Intel® Core™ i5 Processor','Audio','Podcast','Draft'
+                                                                                                 'EGYPT','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast','Podcast','Draft'
                                                                                                 ,false);
         indiaActivity2.Title = 'indiaActivity2';
         indiaActivity2.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -587,7 +585,7 @@ Accenture – HP         5/09/2019         Created.
         pfrList.add(indiaActivity2);
         PartnerFundRequest indiaActivity3 = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                                   string.valueof(dellCCFVirtualCorp.id),pfaDellCCFVirtualCorp,pmbRecord,
-                                                                                                  'MACAU','Consumer','Desktop','Intel® Core™ i5 Processor','Audio','Podcast','Draft'
+                                                                                                  'MACAU','Consumer','Desktop','Intel® Core™ i5 Processor','Broadcast','Podcast','Draft'
                                                                                                   ,false);
         indiaActivity3.Title = 'indiaActivity3';
         indiaActivity3.Core_MDF_Activity_Description__c = 'indiaActivity';
@@ -1152,7 +1150,7 @@ Accenture – HP         5/09/2019         Created.
             }
             
             List<Core_MDF_Budget_Cap__c> bdtCapListUpdate=[Select id,Core_MDF_Cap_Status_nm__c,Core_MDF_Budget_Type_nm__c,Core_MDF_Effective_Start_Date_Dt__c,Core_MDF_Effective_End_Date_Dt__c,Core_MDF_Requested_Cap_amt__c from Core_MDF_Budget_Cap__c
-                                                           where Core_MDF_Cap_Status_nm__c='Active' AND Core_MDF_Budget_Type_nm__c='Client Specialties MDF' LIMIT 2];
+                                                           where Core_MDF_Cap_Status_nm__c='Active' AND Core_MDF_Budget_Type_nm__c='Client Specialties MDF' LIMIT 2];                                                                
                                                                               
             bdtCapListUpdate[0].Core_MDF_Cap_Status_nm__c='Inactive';
             bdtCapListUpdate[1].Core_MDF_Effective_Start_Date_Dt__c = system.today().addDays(-251);

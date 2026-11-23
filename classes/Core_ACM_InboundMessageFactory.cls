@@ -1,0 +1,43 @@
+public without sharing class Core_ACM_InboundMessageFactory {
+
+    public static Core_Integration_Inbound_Message__c createSuccessMessage(String responseJson) {
+        Core_Integration_Inbound_Message__c inboundMsg = new Core_Integration_Inbound_Message__c();
+        inboundMsg.Core_Source_System__c=Core_ACM_Constants.SOURCE_ERPM;
+        inboundMsg.Core_Processing_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.PENDING_STATUS);
+        inboundMsg.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_BLACKBOX;
+        inboundMsg.Core_Payload__c = responseJson;
+        return inboundMsg;
+    }
+
+    public static Core_Integration_Inbound_Message__c createFailureMessage(Core_ACM_PayloadWrapper.ResponseWrapper response, String responseJson) {
+        Core_Integration_Inbound_Message__c inboundMsg = new Core_Integration_Inbound_Message__c();
+        inboundMsg.Core_Payload__c = responseJson;
+        inboundMsg.Core_Processing_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.PENDING_STATUS);
+        inboundMsg.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_BLACKBOX;
+        inboundMsg.Core_Error_Code__c = response.ErrorCode;
+        inboundMsg.Core_Error_Description__c = response.ErrorDetails;
+        inboundMsg.Core_Source_System__c=Core_ACM_Constants.SOURCE_ERPM;
+        return inboundMsg;
+    }
+	//Ganesh Changes
+	public static Core_Integration_Inbound_Message__c createAGSSuccessMessage(String responseJson) {
+        Core_Integration_Inbound_Message__c inboundMsg = new Core_Integration_Inbound_Message__c();
+        inboundMsg.Core_Source_System__c=Core_ACM_Constants.SOURCE_AGS;
+        inboundMsg.Core_Processing_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.PENDING_STATUS);
+        inboundMsg.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_AGS;
+        inboundMsg.Core_Payload__c = responseJson;
+        return inboundMsg;
+    }
+
+    public static Core_Integration_Inbound_Message__c createAGSFailureMessage(Core_ACM_PayloadWrapper.ResponseWrapper response, String responseJson) {
+        Core_Integration_Inbound_Message__c inboundMsg = new Core_Integration_Inbound_Message__c();
+        inboundMsg.Core_Payload__c = responseJson;
+        inboundMsg.Core_Processing_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.PENDING_STATUS);
+        inboundMsg.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_AGS;
+        inboundMsg.Core_Error_Code__c = response.ErrorCode;
+        inboundMsg.Core_Error_Description__c = response.ErrorDetails;
+        inboundMsg.Core_Source_System__c=Core_ACM_Constants.SOURCE_AGS;
+        return inboundMsg;
+    }
+	//Ganesh Changes
+}

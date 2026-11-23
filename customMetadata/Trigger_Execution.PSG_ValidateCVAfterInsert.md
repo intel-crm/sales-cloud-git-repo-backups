@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Active__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Class_Name__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Inactive_for_User__c</field>
-        <value xsi:type="xsd:string">0053b00000BsUXlAAN</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Object__c</field>

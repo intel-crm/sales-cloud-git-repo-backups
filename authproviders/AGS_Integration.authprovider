@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://login.microsoftonline.com/9889e411-4383-4500-8c2a-e8f095438f4f/oauth2/v2.0/authorize</authorizeUrl>
+    <consumerKey>2e7e0b1d-8b82-45c9-811c-18ce287c52ae</consumerKey>
+    <consumerSecret>Placeholder_Value</consumerSecret>
+    <defaultScopes>api://6ee2691f-e017-4258-8c62-340752525d45/.default</defaultScopes>
+    <friendlyName>AGS Integration</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>true</isPkceEnabled>
+    <providerType>OpenIdConnect</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>true</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://login.microsoftonline.com/9889e411-4383-4500-8c2a-e8f095438f4f/oauth2/v2.0/token</tokenUrl>
+</AuthProvider>

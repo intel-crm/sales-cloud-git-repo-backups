@@ -158,6 +158,18 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>Pricing_Unique_Migration_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>A unique id assigned to the record. This will be used to migrate the data from one environment to another using Copado or other data tools.</description>
+        <externalId>true</externalId>
+        <label>Unique Migration Id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>SBQQ__Alignment__c</fullName>
         <deprecated>false</deprecated>
         <description>Determines how the column label and values are aligned.</description>

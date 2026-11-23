@@ -432,11 +432,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>User_Unique__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Login_Id__c</field>
             <table>User</table>
         </columns>
@@ -538,6 +533,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPA_One_Partner_Id__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_License_Reclaimed__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Fields_Merged__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Status_In_Denodo__c</field>
             <table>User</table>
         </columns>
         <masterLabel>Users</masterLabel>

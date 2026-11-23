@@ -57,19 +57,7 @@ public without sharing class Core_BulkContactFlowProcessor {
                 Core_AGS_Retry_Count__c, Core_Entitlement_Assignment_Message__c, Core_Entitlement_Assignment_Status__c, Core_Entitlement_Status_Change_Date_Time__c, 
                 Contacts_Fields_Merged__c, Mailing_Country_Region__c, PIPL_Consent_Date__c, Core_Contact_Marketing_Status__c  FROM Contact WHERE Id IN :contactIds];
                 if(!contacts.isEmpty()){
-                    List<Core_ACM_Integration_Queue__c> queueRecords = Core_IntegrationQueueService.createQueueRecords(contacts, oldContactMap , operationType);
-                    /*if(!queueRecords.isEmpty()){
-                        Set<Id> queueRecordIds = new Set<Id>();
-                        for(Core_ACM_Integration_Queue__c queueRecord : queueRecords){
-                            if(queueRecord.Id != null){
-                                queueRecordIds.add(queueRecord.Id);
-                            }
-                        }
-                        if(!queueRecordIds.isEmpty()){
-                            Core_ACM_ERPMAPIBatchProcessor bulkBatch=new Core_ACM_ERPMAPIBatchProcessor(queueRecordIds,Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.BULK_MODE));
-                            Database.executeBatch(bulkBatch,20);
-                        }
-                    }*/
+                    Core_IntegrationQueueService.createQueueRecords(contacts, oldContactMap , operationType);
                 }
             }
         }

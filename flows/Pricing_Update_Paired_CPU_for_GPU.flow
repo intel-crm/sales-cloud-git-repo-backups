@@ -49,9 +49,16 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_field_Update</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Pricing_Paired_CPU_Nm__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SBQQ__Product__c</leftValueReference>
                 <operator>IsChanged</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -137,12 +144,19 @@
         <connector>
             <targetReference>On_Field_Update</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>or</filterLogic>
         <filters>
             <field>Pricing_Program_Type_Nm__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Data Center GPU</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_Program_Type_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Data Center Xeon® CPU</stringValue>
             </value>
         </filters>
         <object>SBQQ__QuoteLine__c</object>

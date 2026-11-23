@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>test</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>test</label>
+    <mutingPermissionSets>test_Muted</mutingPermissionSets>
+    <permissionSets>Core_MDF_CCFB_USER</permissionSets>
+    <permissionSets>Core_MDF_CCF_USER</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

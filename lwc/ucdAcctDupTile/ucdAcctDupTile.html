@@ -1,0 +1,59 @@
+<template> 
+    <!-- Start of spinner logic-->
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+        </lightning-spinner>
+    </template>  
+   <!-- end of spinner logic-->
+   <!-- Start of region data  along with table-->
+   <lightning-card>
+        <div class="slds-box slds-theme_shade" style="padding: 5px;height: 40px;text-align:center;">
+            <div class="slds-text-heading_small slds-float_left">
+                {title}
+            </div>
+            <div class="slds-float_right">
+                <lightning-button icon-name="utility:download" 
+                        label="Download as CSV" 
+                        title="Download CSV File"
+                        onclick={exportToCSV} variant="brand"></lightning-button> 
+            </div>
+        </div>
+                  
+    <div style="height:150px;">
+                    <div class="slds-scrollable_y" style="height:100%;">     
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="CIM ID Name">CIM ID </div>
+                    </th>
+                    <th class="slds-is-resizable" scope="col">
+                        <div class="slds-truncate" title="Duplicate Accounts">
+                            No. of Accounts
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={duplicates} for:item="dup">
+                    <tr key={dup.Core_CIM_ID__c} class="slds-hint-parent">
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="CIM ID">
+                                
+                                <lightning-button variant="base" label={dup.Core_CIM_ID__c} name={dup.Core_CIM_ID__c}
+                                    onclick={clickHandler}>{dup.Core_CIM_ID__c}</lightning-button>
+                                    
+                            </div>
+                        </td>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="No. of Duplicate Accounts">{dup.AccountCount}</div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</lightning-card>
+<!-- End of region data  along with table-->
+</template>

@@ -301,16 +301,10 @@
         <label>Other (EcosystemPartner.com)</label>
     </customValue>
     <customValue>
-        <fullName>Banner/Display Ad</fullName>
+        <fullName>Podcast</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Banner/Display Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Television</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Television</label>
+        <label>Podcast</label>
     </customValue>
     <customValue>
         <fullName>Streaming</fullName>
@@ -319,52 +313,22 @@
         <label>Streaming</label>
     </customValue>
     <customValue>
-        <fullName>Podcast</fullName>
+        <fullName>Searchandizing - Banner/Display</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Podcast</label>
+        <label>Searchandizing - Banner/Display</label>
     </customValue>
     <customValue>
-        <fullName>Radio</fullName>
+        <fullName>Television</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Radio</label>
+        <label>Television</label>
     </customValue>
     <customValue>
-        <fullName>Seed Unit</fullName>
+        <fullName>Other (Content)</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Seed Unit</label>
-    </customValue>
-    <customValue>
-        <fullName>Proof of Concept</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Proof of Concept</label>
-    </customValue>
-    <customValue>
-        <fullName>Magazine/Newspaper</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Magazine/Newspaper</label>
-    </customValue>
-    <customValue>
-        <fullName>Other (Telemarketing)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Other (Telemarketing)</label>
-    </customValue>
-    <customValue>
-        <fullName>Case Study</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Case Study</label>
-    </customValue>
-    <customValue>
-        <fullName>Demo/hardware cloud instance</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Demo/hardware cloud instance</label>
+        <label>Other (Content)</label>
     </customValue>
     <customValue>
         <fullName>Billboard/Transit</fullName>
@@ -391,22 +355,16 @@
         <label>Other (Migration)</label>
     </customValue>
     <customValue>
-        <fullName>Demo Hardware/Cloud Instance</fullName>
+        <fullName>Demo/hardware cloud instance</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Demo Hardware/Cloud Instance</label>
+        <label>Demo/hardware cloud instance</label>
     </customValue>
     <customValue>
         <fullName>Other (Trial Instance)</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Other (Trial Instance)</label>
-    </customValue>
-    <customValue>
-        <fullName>Searchandizing - Banner/Display</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Searchandizing - Banner/Display</label>
     </customValue>
     <customValue>
         <fullName>Other (Sales Event)</fullName>
@@ -433,11 +391,53 @@
         <label>Free Text Other</label>
     </customValue>
     <customValue>
-        <fullName>Other (Content)</fullName>
+        <fullName>Banner/Display Ad</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Other (Content)</label>
+        <label>Banner/Display Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Hardware/Cloud Instance</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Demo Hardware/Cloud Instance</label>
+    </customValue>
+    <customValue>
+        <fullName>Case Study</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Case Study</label>
+    </customValue>
+    <customValue>
+        <fullName>Other (Telemarketing)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other (Telemarketing)</label>
+    </customValue>
+    <customValue>
+        <fullName>Magazine/Newspaper</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Magazine/Newspaper</label>
+    </customValue>
+    <customValue>
+        <fullName>Proof of Concept</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Proof of Concept</label>
+    </customValue>
+    <customValue>
+        <fullName>Seed Unit</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Seed Unit</label>
+    </customValue>
+    <customValue>
+        <fullName>Radio</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Radio</label>
     </customValue>
     <masterLabel>Activity Sub Type</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

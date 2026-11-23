@@ -59,7 +59,6 @@ public without sharing class PRM_ErrorUtilityClass{
                 if(objCLE != null){
                     objCLE.put('Core_When__c',dtWhen);
                     Database.insert(objCLE);
-                    System.debug('******* Inserted Object:'+ objCLE.id);
                     return objCLE.id;
                 }
             }                      

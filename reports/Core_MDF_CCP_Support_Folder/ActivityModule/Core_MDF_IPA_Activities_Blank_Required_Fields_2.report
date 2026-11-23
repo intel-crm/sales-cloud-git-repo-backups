@@ -19,6 +19,9 @@
         <field>PartnerFundRequest$Core_MDF_Focus_Area_nm__c</field>
     </columns>
     <columns>
+        <field>PartnerFundRequest$Core_MDF_TargetAudience__c</field>
+    </columns>
+    <columns>
         <field>PartnerFundRequest$Core_MDF_Brand_nm__c</field>
     </columns>
     <columns>
@@ -33,17 +36,21 @@
     <columns>
         <field>PartnerFundRequest$Core_MDF_Priority_nm__c</field>
     </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_TargetAudience_nm__c</field>
-    </columns>
     <description>IPA Activities with Required fields blank (Target Audience, Brand, Product Type, Initiatives, Industry and Priority) based on Focus Area field not blank</description>
     <filter>
-        <booleanFilter>7 AND 8 AND 9 AND 1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 10)</booleanFilter>
+        <booleanFilter>8 AND 9 AND 10 AND 1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7)</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Focus_Area_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_TargetAudience__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
             <value></value>
         </criteriaItems>
         <criteriaItems>
@@ -101,13 +108,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Bristal org_CCPTest</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_TargetAudience_nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

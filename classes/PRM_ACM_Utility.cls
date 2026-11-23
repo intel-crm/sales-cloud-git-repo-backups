@@ -1307,7 +1307,7 @@ contactsToUpdateList.add(con);
                     }
                 }
                 if(accountIds != null && !accountIds.IsEmpty()){
-                    for(PRM_Account_Contact_Relationship__c acrList : [Select id, name, PRM_Account_Id__c, PRM_Contact_Id__c,PRM_Partner_Role__c,PRM_InActive_Ind__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c IN :accountIds AND PRM_Partner_Role__c IN :partnerRole]){
+                    for(PRM_Account_Contact_Relationship__c acrList : [Select id, name, PRM_Account_Id__c, PRM_Contact_Id__c,PRM_Partner_Role__c,PRM_InActive_Ind__c,PRM_Status_Reason_Txt__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c IN :accountIds AND PRM_Partner_Role__c IN :partnerRole]){
                         contactIds.add(acrList.PRM_Contact_Id__c);
                         /*US808806 -UTKARSH - inactivate ACR when ACM become inactive*/
                         if(acrList.PRM_InActive_Ind__c == false){
@@ -1321,7 +1321,7 @@ contactsToUpdateList.add(con);
                 
                 //Deactivating CSA records.
                 if(contactIds != null && !contactIds.IsEmpty()){
-                    for(PRM_ContactSubscriptionAssociation__c csa : [Select id , name, PRM_Contact_Id__c, PRM_Status_Nm__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c IN :contactIds]){
+                    for(PRM_ContactSubscriptionAssociation__c csa : [Select id , name, PRM_Contact_Id__c, PRM_Status_Nm__c,PRM_Status_Reason_Txt__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c IN :contactIds]){
                         csa.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;
                         csa.PRM_Status_Reason_Txt__c = 'Contact Subscription inactivated as part of membership inactivation.';//TWC729-8089 : Adding reason text : NJ
                         csaList.add(csa);
@@ -1559,7 +1559,7 @@ if(inactiveAllACRIdList != null && !inactiveAllACRIdList.IsEmpty()){update inact
             intelAccountIds.add(mem.Core_Intel_Account_Id__c);
         }
         
-        
+        System.debug('acmPartnerrolestring=' + acmPartnerrolestring);
         if((intelAccountIds != null && !intelAccountIds.IsEmpty()) && (acmPartnerrolestring != null)){
             for(PRM_Account_Contact_Relationship__c accCon : [Select PRM_Account_Id__c,PRM_Contact_Id__c, PRM_Contact_Id__r.email,PRM_Partner_Role__c,PRM_Contact_Id__r.Core_IPA_PartnerRole__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in :intelAccountIds and PRM_Relationship_Id__r.name=:System.Label.PRM_Primary_Contact AND PRM_InActive_Ind__c = false AND PRM_Status_Nm__c =:System.Label.PRM_ACR_Status]){
                 if(accCon.PRM_Contact_Id__r.Core_IPA_PartnerRole__c != null){

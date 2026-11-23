@@ -5,6 +5,10 @@
         <value>에스컬레이션</value>
     </caseValues>
     <fields>
+        <label><!-- Account --></label>
+        <name>Core_MDF_Account_txt_del__c</name>
+    </fields>
+    <fields>
         <label>활동 이름</label>
         <name>Core_MDF_Activity_Name_url__c</name>
     </fields>
@@ -200,7 +204,7 @@
         <name>Core_MDF_Program_txt__c</name>
     </fields>
     <fields>
-        <label>지역</label>
+        <label><!-- Region --></label>
         <name>Core_MDF_Region_txt__c</name>
     </fields>
     <fields>
@@ -310,6 +314,10 @@ Claim Submitter --></errorMessage>
     <validationRules>
         <errorMessage><!-- Approved amount cannot be edited in this status. --></errorMessage>
         <name>Core_MDF_ErrorOnEditingApprovedAmount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Do not Auto Create Claim can be edited only for Pending Review status. --></errorMessage>
+        <name>Core_MDF_ErrorOnEditing_Checkbox</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Claim Submitter cannot be edited when a claim is already created. --></errorMessage>

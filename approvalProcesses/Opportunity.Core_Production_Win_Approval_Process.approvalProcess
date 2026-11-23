@@ -34,7 +34,11 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_Approver_5__c</name>
+                <name>Core_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_Approver_2__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -46,11 +50,7 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_Approver_1__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_Approver_2__c</name>
+                <name>Core_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>

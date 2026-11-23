@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>[2/1/2022 5:38 PM] Harshadeep, KalitaX
+This action Belongs to Retail Quote Project.</description>
+    <height>250</height>
+    <label>New Quote Line</label>
+    <lightningComponent>Retail_CPQ_CreateQuoteLineOnQL</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>

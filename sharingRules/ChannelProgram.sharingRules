@@ -15,6 +15,21 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Channel_Program_Sharing_for_CoInv_External</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Channel Program Sharing for CoInv External user</description>
+        <label>Channel Program Sharing for CoInv External</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_CoInv_EXTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_Channel_Program_All_Users_CCP_Internal_Read_Write</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Channel Program All Users - CCP Internal Read Write</label>
@@ -24,7 +39,7 @@
         <criteriaItems>
             <field>Core_MDF_Technical_Program_Name__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+            <value>Client,Datacenter,Co-Inv,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Co-GTM</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -141,6 +156,34 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_COINV_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP COINV ALL Read</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_COINV_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Channel_Program_CCP_COINV_INTERNAL_ALL_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Channel Program CCP COINV INTERNAL ALL Read</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_COINV_INTERNAL_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Technical_Program_Name__c</field>
+            <operation>equals</operation>
+            <value>Co-Inv</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Core_MDF_Channel_Program_CCP_Claim_Case_Reviewer_Internal</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Channel Program - CCP Claim Case Reviewer Internal</description>
@@ -151,7 +194,7 @@
         <criteriaItems>
             <field>Core_MDF_Technical_Program_Name__c</field>
             <operation>equals</operation>
-            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Ecosystem Extension Fund,Co-GTM</value>
+            <value>Client,Datacenter,Service Provider Co-Marketing Fund,Client Co-Marketing Fund Boost,Retail Marketing Funds,Intel Partner Alliance,Co-GTM</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -193,8 +236,8 @@
         </sharedTo>
         <criteriaItems>
             <field>Core_MDF_Technical_Program_Name__c</field>
-            <operation>notEqual</operation>
-            <value></value>
+            <operation>equals</operation>
+            <value>Client,Datacenter,Retail Marketing Funds,Intel Partner Alliance,Co-GTM</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -445,6 +488,20 @@
             <field>Name</field>
             <operation>equals</operation>
             <value>Partner Covers Customer (PCC)</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Program_for_Deal_Partners</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Program for Deal Partners</label>
+        <sharedTo>
+            <group>PCC_Deal_Reg_Partner_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>contains</operation>
+            <value>Partner Alliance</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

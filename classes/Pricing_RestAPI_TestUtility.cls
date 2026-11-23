@@ -52,6 +52,7 @@ public class Pricing_RestAPI_TestUtility {
         Database.DMLOptions dml = new Database.DMLOptions();
 		dml.DuplicateRuleHeader.AllowSave = true; 
         List<Product2> productlist = new List<Product2>();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
 		for(integer i=1; i<=numberOfRecs; i++)
 			{
                	Product2 product =new Product2();
@@ -65,7 +66,7 @@ public class Pricing_RestAPI_TestUtility {
                 product.Core_Sales_Visible_Flag__c = True;
                 product.IsActive = True;
                 product.Core_Hierarchy_ID__c = '43';
-                product.Core_Group_Code_Short_Name__c = 'CCG P&L';
+                product.Core_Line_of_Business__c = lobValuesList[1];
                 product.Core_Avail_for_New_Designs__c=true;
         		productlist.add(product);			
                 

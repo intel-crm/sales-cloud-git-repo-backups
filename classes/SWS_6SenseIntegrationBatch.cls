@@ -36,19 +36,29 @@ public without sharing class SWS_6SenseIntegrationBatch implements Database.Batc
         this.accountIds = accountIds;
     }
     
-	public Database.queryLocator start(Database.BatchableContext bc){
+	public Database.queryLocator start(Database.BatchableContext bc){        
         SWS_UserOrGroupId = [SELECT Id FROM Group WHERE DeveloperName ='SWS_6Sense_Admin_Group']?.Id;
     	String query = 'SELECT Id FROM Opportunity WHERE Account.Core_Export_Compliance_Block__c = false AND Account.Is_6Sense_Integration_Enabled__c = true AND Core_Military_Aerospace_Govmt_End_Use__c = \'No\' AND Core_Design_Registration_Id__c = null AND Core_Consumption_Market__c <> \'Government\' AND Core_Opportunity_Coverage_Nm__c = \'Intel-Led Opportunity\' AND Account.Id IN :accountIds';
         return Database.getQueryLocator(query);
     }
     
-    public void execute(Database.BatchableContext bc, List<Opportunity> opportunityList){
+    public void execute(Database.BatchableContext bc, List<Opportunity> opportunityList){       
+       
         List<OpportunityShare> opportunityShared = new List<OpportunityShare>([SELECT Id,OpportunityId,UserOrGroup.Name,RowCause,Opportunity.Account.Is_6Sense_Integration_Enabled__c FROM OpportunityShare WHERE UserOrGroupId =:SWS_UserOrGroupId AND OpportunityId IN :opportunityList]);
         Map<Id, List<OpportunityShare>> opportunityShareMap = createMapOfOpptyShare(opportunityShared);
         List<OpportunityShare> opportunitySharingList = getSharingRecords(opportunityList,opportunityShareMap);
         if(!opportunitySharingList.isEmpty()){
             Database.insert(opportunitySharingList,true);
         }
+		List<Core_Oppty_KPI_New__c> opportunityKPIList = new List<Core_Oppty_KPI_New__c>([select Id, Core_KPI_Opportunity__c from Core_Oppty_KPI_New__c WHERE Core_IsActive__c =true and Core_KPI_Opportunity__c IN :opportunityList]);
+		
+		List<Core_Oppty_KPI_New__Share> opportunityKPIShared = new List<Core_Oppty_KPI_New__Share>([SELECT Id,ParentId,UserOrGroup.Name,RowCause,Parent.Core_KPI_Opportunity__r.Account.Is_6Sense_Integration_Enabled__c FROM Core_Oppty_KPI_New__Share WHERE UserOrGroupId =:SWS_UserOrGroupId AND ParentId IN :opportunityKPIList]);
+		
+		Map<Id, List<Core_Oppty_KPI_New__Share>> opportunityKPIShareMap = createMapOfOpptyKPIShare(opportunityKPIShared);
+		List<Core_Oppty_KPI_New__Share> opportunityKPISharingList = getKPISharingRecords(opportunityKPIList,opportunityKPIShareMap);
+        if(!opportunityKPISharingList.isEmpty()){
+            Database.insert(opportunityKPISharingList,true);
+        }  
     }
     
     public void finish(Database.BatchableContext bc) {
@@ -56,6 +66,7 @@ public without sharing class SWS_6SenseIntegrationBatch implements Database.Batc
         if(!opportunityShared.isEmpty()){
             Database.delete(opportunityShared,true);
         }
+         
     }
     
     /************************************************************************************************************
@@ -78,8 +89,33 @@ public without sharing class SWS_6SenseIntegrationBatch implements Database.Batc
                 opportunityShared.add(opptyShare);
             }
         }
-        
         return opportunityShared;
+    }
+	
+	
+	
+	  /************************************************************************************************************
+    *Method Name : getKPISharingRecords
+    *Created Date: 2025-03-03
+    *Author: Shijas KM
+    *Description : Method to get opportunity KPI that has not been shared with Integration user.
+    ************************************************************************************************************/
+    private List<Core_Oppty_KPI_New__Share> getKPISharingRecords(List<Core_Oppty_KPI_New__c> opportunityKPIList,Map<Id, List<Core_Oppty_KPI_New__Share>> opportunityKPIShareMap){
+        List<Core_Oppty_KPI_New__Share> opportunityKPIShared = new List<Core_Oppty_KPI_New__Share>();
+        for(Core_Oppty_KPI_New__c opptyKpi : opportunityKPIList){
+            if(opportunityKPIShareMap.containsKey(opptyKpi.Id)){	    	
+                continue;
+            }else{
+                Core_Oppty_KPI_New__Share opptyKPIShare = new Core_Oppty_KPI_New__Share();
+                opptyKPIShare.ParentId = opptyKpi.Id;
+                opptyKPIShare.RowCause = Schema.Core_Oppty_KPI_New__Share.RowCause.Manual;
+                opptyKPIShare.UserOrGroupId = SWS_UserOrGroupId;
+                opptyKPIShare.AccessLevel = 'Read';
+                opportunityKPIShared.add(opptyKPIShare);
+            }
+        }
+        
+        return opportunityKPIShared;
     }
     
     /************************************************************************************************************
@@ -97,6 +133,24 @@ public without sharing class SWS_6SenseIntegrationBatch implements Database.Batc
             opportunityShareMap.get(opportunityShare.OpportunityId).add(opportunityShare);
         }
         return opportunityShareMap;
+    }
+	
+	
+	 /************************************************************************************************************
+    *Method Name : createMapOfOpptyKPIShare
+    *Created Date: 2025-02-28
+    *Author: Shijas KM
+    *Description : Helper method to convert OpportunityKPIShare List into Map 
+    ************************************************************************************************************/
+    private Map<Id, List<Core_Oppty_KPI_New__Share>> createMapOfOpptyKPIShare(List<Core_Oppty_KPI_New__Share> opportunityKPIShared){
+        Map<Id, List<Core_Oppty_KPI_New__Share>> opportunityKPIShareMap = new Map<Id, List<Core_Oppty_KPI_New__Share>>();
+        for (Core_Oppty_KPI_New__Share opportunityKPIShare : opportunityKPIShared) {
+            if (!opportunityKPIShareMap.containsKey(opportunityKPIShare.ParentId)) {
+               opportunityKPIShareMap.put(opportunityKPIShare.ParentId, new List<Core_Oppty_KPI_New__Share>());
+            }
+            opportunityKPIShareMap.get(opportunityKPIShare.ParentId).add(opportunityKPIShare);
+        }
+        return opportunityKPIShareMap;
     }
     
     /************************************************************************************************************

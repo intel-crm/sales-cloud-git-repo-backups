@@ -8,8 +8,7 @@ Description    : This Class is used to validate the errors before submitting the
 * ----------------------------------------------------------------------------                 
 * Pratik Padwal           21 Feb, 2023               Initial Revision
 * Pratik Padwal           18 April, 2023             TWC3123-4111 - Added validation for PW Quantity and salesprice.
-* Areefa Banu		  26 May, 2023		     Removed CoE_Status__c from query
-* Areefa Banu		  02 Jan ,2025		     Added PW Approvel restriction 	
+* Areefa Banu			  26 May, 2023				 Removed CoE_Status__c from query
 */
 
 public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added without sharing keyword to fix code scan issue
@@ -277,7 +276,8 @@ public without sharing class Core_OppsPWApprovalCtrl { //TWC3123-5759 Added with
         }
         
         catch(exception e){
-            String errorMsg= e.getMessage();            
+            String errorMsg= e.getMessage();
+            system.debug('1@@errorMsg--->'+errorMsg);
             throw new AuraHandledException(errorMsg);            
         }
         

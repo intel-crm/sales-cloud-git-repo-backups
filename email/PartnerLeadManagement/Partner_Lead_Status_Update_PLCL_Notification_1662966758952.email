@@ -1,0 +1,98 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<table style="background-color: #0071c5; font-family: intel clear;" width="75%">
+	
+		<tr>
+			<td style="padding-left: 50px; border: none;">
+			<div style="color: white;">
+			<h1>LEAD STATUS UPDATE REQUESTED</h1>
+			</div>
+			</td>
+			<td align="right" style="border: none; padding-right: 20px;"><img src="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000005EBdu&amp;oid=00Do0000000aRcf" /></td>
+		</tr>
+	
+</table>
+
+<table style="border-collapse: collapse; font-family: intel clear;" width="75%">
+	
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p>Hello</p>
+
+			<p>We are pleased that you have Accepted {User_Core_Leads_Accepted_Current_Year__c}&nbsp;new leads and have Contacted {User_Core_Leads_Contacted_Current_Year__c} of those this year generated through our Intel® Partner Alliance program.</p>
+
+			<p>As we’re continually improving our lead generation tactics, we’d love to learn more about the status of these leads!</p>
+
+			<p>If you could please <a href="{Label_Core_Partner_Community}">log in and update the status of your leads</a> to reflect the current state we will leverage that information to learn and adjust our lead gen tactics moving forward.</p>
+
+			<p>Wishing you continued success,</p>
+
+			<p>Intel® Partner Alliance</p>
+
+			<p><strong>YOUR LEADS YEAR TO DATE</strong></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p><b>Leads Generated – {User_Core_Leads_Generated_Current_Year__c}</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p><b>Leads Accepted – {User_Core_Leads_Accepted_Current_Year__c}</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p><b>Leads Contacted –&nbsp;{User_Core_Leads_Contacted_Current_Year__c}</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p><b>Leads Qualified –&nbsp;{User_Core_Leads_Qualified_Current_Year__c}</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p><b>Leads Rejected –&nbsp;{User_Core_Leads_Rejected_Current_Year__c}</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p><b>Leads Dispositioned for Partner Lead Pilot –&nbsp;{User_Core_Leads_Dispositioned_Current_Year__c}</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p><a href="{Label_Core_Partner_Community}/s/?Lead-filterId=00Bo0000004VTSc"><b>Click here to disposition your leads</b></a><br />
+			Can’t access the link above?<br />
+			<a href="https://www.intel.com/content/www/us/en/secure/partner-alliance/help/leads/process-multiple-leads-video.html">View training on processing multiple Intel leads </a></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p>Questions? Let our Intel® Partner Alliance Team help:<br />
+			<a href="mailto:partnerleads@intel.com">programs@intel.com</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
+			<p>Note :<span style="color: red;"> Please don't reply to this mail as this is an auto generated mail, any reply to this email will not be monitored.</span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: 1px solid #d3d3d3; padding-left: 50px;">
+			<p style="text-align: center; font-size: 10px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation<br />
+			© {Year} Intel Corporation<br />
+			Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<br />
+			<a href="http://www.intel.com">www.intel.com</a><br />
+			<a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
+			</td>
+		</tr>
+	
+</table>
+
+</body></html>

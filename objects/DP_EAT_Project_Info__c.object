@@ -315,7 +315,7 @@
         <fullName>DP_EAT_Result_Summary__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;https://intel.lightning.force.com/lightning/r/Report/00O3b000007Ra2aEAC/view?queryScope=userFolders&amp;fv0=&quot;+IF( 
+        <formula>HYPERLINK(&quot;https://intel--crmdevint3.sandbox.lightning.force.com/lightning/r/Report/00O2i000000U5ofEAC/view?queryScope=userFolders&amp;fv0=&quot;+IF( 
 CONTAINS(  Name , &quot; &quot;) , 
 SUBSTITUTE(Name , &quot; &quot;, &quot;%20&quot;), 
  IF(
@@ -357,6 +357,7 @@ SUBSTITUTE(Name , &quot; &quot;, &quot;%20&quot;),
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>DP_EAT_Prefixes__c</columns>
+        <columns>DP_EAT_Email_Addresses__c</columns>
         <columns>DP_EAT_Job_Status__c</columns>
         <columns>DP_EAT_Number_of_last_ran_Test_Methods__c</columns>
         <columns>DP_EAT_Number_of_last_ran_Tests_Passed__c</columns>

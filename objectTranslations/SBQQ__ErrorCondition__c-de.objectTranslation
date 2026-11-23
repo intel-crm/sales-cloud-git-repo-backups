@@ -139,6 +139,18 @@
             <translation>Belegposten gruppieren</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PSG Restricted Product</masterLabel>
+            <translation><!-- PSG Restricted Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Restricted Product Check</masterLabel>
+            <translation><!-- PSG Restricted Product Check --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG_Suggested_Resale_Amt__c</masterLabel>
+            <translation><!-- PSG_Suggested_Resale_Amt__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Pricing_Quote_Program_Nm__c</masterLabel>
             <translation><!-- Pricing_Quote_Program_Nm__c --></translation>
         </picklistValues>
@@ -149,6 +161,10 @@
         <picklistValues>
             <masterLabel>Unit Price</masterLabel>
             <translation>Stückpreis</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_opn__c</masterLabel>
+            <translation><!-- core_cpq_opn__c --></translation>
         </picklistValues>
     </fields>
     <fields>

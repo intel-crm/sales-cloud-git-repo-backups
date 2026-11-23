@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalDataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authProvider>Sales_NoCostLicenseAuth</authProvider>
+    <customConfiguration>{&quot;inlineCountEnabled&quot;:&quot;false&quot;,&quot;requestCompression&quot;:&quot;false&quot;,&quot;pagination&quot;:&quot;CLIENT&quot;,&quot;errorMessagingStrategy&quot;:&quot;OBFUSCATED&quot;,&quot;noIdMapping&quot;:&quot;false&quot;,&quot;format&quot;:&quot;ATOM&quot;,&quot;searchFunc&quot;:&quot;&quot;,&quot;compatibility&quot;:&quot;DEFAULT&quot;,&quot;timeout&quot;:&quot;120&quot;,&quot;searchEnabled&quot;:&quot;true&quot;}</customConfiguration>
+    <endpoint>https://apis-stage.intel.com/m2r/psg-licensing/v1/</endpoint>
+    <isWritable>false</isWritable>
+    <label>Sales_NoCostLicenseProvider</label>
+    <principalType>NamedUser</principalType>
+    <protocol>Oauth</protocol>
+    <type>OData</type>
+</ExternalDataSource>

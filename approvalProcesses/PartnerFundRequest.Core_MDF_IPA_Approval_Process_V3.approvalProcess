@@ -451,7 +451,7 @@
         </rejectionActions>
     </approvalStep>
     <description>This approval process is for IPA Account based</description>
-    <emailTemplate>Testt/Core_MDF_Activity_Approval_Notification</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Activity_Approval_Notification</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>(1 OR 4 OR 5) AND 2 AND 3</booleanFilter>

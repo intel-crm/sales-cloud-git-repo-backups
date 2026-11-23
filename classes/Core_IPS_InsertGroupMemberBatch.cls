@@ -1,4 +1,4 @@
-public without sharing class Core_IPS_InsertGroupMemberBatch implements Database.Batchable<sObject >, Database.Stateful {
+public class Core_IPS_InsertGroupMemberBatch implements Database.Batchable<sObject >, Database.Stateful {
     public final String Query;
     public List<Core_IPS_Project_Member__c> projectMembersList;
     //START - Added as part of Active Project Member Fix - Retry Mechanism - TWC745-6567
@@ -30,9 +30,10 @@ public without sharing class Core_IPS_InsertGroupMemberBatch implements Database
                 for(Database.Error err : result.getErrors()) {
                     String errorMessage = 'Error occurred: ' + err.getStatusCode() + ' - ' + err.getMessage()+' - '+err.getFields();
                     errorRecs.add(errorMessage);
-    }
+                }  
             }
             else if(result.isSuccess()){
+                
 		groupMemSet.add(result.getId());
             }
         } 

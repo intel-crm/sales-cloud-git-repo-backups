@@ -5,7 +5,7 @@ public with sharing class PRM_SubmitAdminRegistration {
         logEntryMsg+='Entered into submitAdminRegistration'+inputJson;
         string inputJsonString=inputJson[0].replaceAll('\n', '');
         logEntryMsg+='Generated Input Json with trimming escaped characters'+inputJsonString;
-        
+        system.debug('inputJsonString-->'+inputJsonString);
         System.debug('inputJson -->'+inputJson);
         // get country code
         Map<String, Schema.SObjectField> objFieldMap = Schema.getGlobalDescribe().get('Account').getDescribe().fields.getMap();
@@ -16,6 +16,7 @@ public with sharing class PRM_SubmitAdminRegistration {
             countryLabelValueMap.put(f.getLabel(),f.getValue());
         }
 		logEntryMsg+='Generated countryLabelValueMap'+countryLabelValueMap;
+        System.debug('countryLabelValueMap -->'+JSON.serialize(countryLabelValueMap));
         Map<String, Object> inputMap = (Map<String, Object>)JSON.deserializeUntyped(inputJsonString);
         Map<String, String> inputMapString = new Map<String, String>();
 

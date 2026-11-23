@@ -18,6 +18,7 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
     /*showAccountsContacts on admin registration page*/
     @AuraEnabled
     public static accountContactList showAccountsContacts (map<string,string> requestDetails) {
+        System.debug('requestDetails -->'+JSON.serialize(requestDetails));
         list<Contact> contactDetails = new list<Contact>();
         accountContactList accCntList = new accountContactList();
         Account accountAssociatedToExistingContact = new Account() ;
@@ -31,15 +32,15 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
             String country = requestDetails.get('Country').trim();
             String state = requestDetails.get('State').trim();
             String website = requestDetails.get('Website').trim();
-
+            
             //SBR
             CountryStateWrapperForSBR csWrp = new CountryStateWrapperForSBR();
             csWrp = getCountryOrStateForSBR (country, state);
             fDetails = createFDetailsList (accountName, csWrp.country, csWrp.state, website);
-
+            
             //call UCD SBR
             ucdErrWrp = searchAccountFromUCDSBR(fDetails);
-            
+            System.debug('ucdErrWrp -->'+JSON.serialize(ucdErrWrp));
             if(!ucdErrWrp.isError) {
                 accCntList.accountList = ucdErrWrp.accList;
             } else {
@@ -63,9 +64,7 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
                 accountAssociatedToExistingContact = [Select Id,Name,BillingStreet,BillingCity,BillingState,BillingPostalCode,BillingCountry,Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Account_Type__c,Core_IPA_Partner_Role__c from Account where id = : contactDetails[0].Accountid ];
                 Id ipaChannelPgmId = [select id from ChannelProgram where prm_programCode__c=: System.Label.PRM_IPAEngagement limit 1].Id;
                 List<PRM_AccountChannelMembership__c> associatedACMList = new List<PRM_AccountChannelMembership__c>();
-                //associatedACMList = [Select id,PRM_Account_Id__c,PRM_Partner_Role__c,PRM_Channel_Program_Id__c,PRM_Status_Nm__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c =: accountAssociatedToExistingContact.id and PRM_Channel_Program_Id__c =: ipaChannelPgmId and PRM_Partner_Role__c =:requestDetails.get('PartnerRole') and PRM_Status_Nm__c != 'Inactive' and PRM_Status_Nm__c !='' ];
-                //TWC729-7584 - ApexGuru
-                associatedACMList = [Select id,PRM_Account_Id__c,PRM_Partner_Role__c,PRM_Channel_Program_Id__c,PRM_Status_Nm__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c =: accountAssociatedToExistingContact.id and PRM_Channel_Program_Id__c =: ipaChannelPgmId and PRM_Partner_Role__c =:requestDetails.get('PartnerRole') and PRM_Status_Nm__c IN ('Approved','Pending')];
+                associatedACMList = [Select id,PRM_Account_Id__c,PRM_Partner_Role__c,PRM_Channel_Program_Id__c,PRM_Status_Nm__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c =: accountAssociatedToExistingContact.id and PRM_Channel_Program_Id__c =: ipaChannelPgmId and PRM_Partner_Role__c =:requestDetails.get('PartnerRole') and PRM_Status_Nm__c != 'Inactive' and PRM_Status_Nm__c !='' ];
                 accCntList.accountAssociatedToExistingContact = accountAssociatedToExistingContact;
                 accCntList.duplicateContactRecord = contactDetails[0];
                 if (associatedACMList != null && associatedACMList.size()>0)
@@ -84,7 +83,7 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
         catch (Exception e) { PRM_ErrorUtilityClass.logError (e);
             throw new AuraHandledException(e.getMessage());
         }
-        
+        System.debug('accCntList -->'+JSON.serialize(accCntList));
         return accCntList;
     }
     
@@ -109,16 +108,17 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
         public Boolean displayRequestedAccount ;
         
     }
-
+    
     /*****************************************************************************************************************
-* Method Name: searchAccountFromUCDSBR
-* Date: Nov 2023
-* Owner: Shraddha
-* Description: to get list of matching accounts from sbr search
-* Return: List<matchingAccWrapper>
-******************************************************************************************************************/
+     * Method Name: searchAccountFromUCDSBR
+     * Date: Nov 2023
+     * Owner: Shraddha
+    
+     * Description: to get list of matching accounts from sbr search
+     * Return: List<matchingAccWrapper>
+     ******************************************************************************************************************/
     Public Static ucdErrorhandlingWrapper searchAccountFromUCDSBR (List<UCD_GenericAcctSearch_SBR.fieldsetwrapper> fDetails) {
-
+        
         ucdErrorhandlingWrapper ucdErrWrp = new ucdErrorhandlingWrapper();
         //Map<Id, UCD_GenericAcctSearch_SBR.AccountSearchDataModelWithError> ucdAccDetailsMap = new Map<Id, UCD_GenericAcctSearch_SBR.AccountSearchDataModelWithError>();
         List<matchingAccWrapper> accWrpList = new List<matchingAccWrapper>();
@@ -129,9 +129,11 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
             UCD_GenericAcctSearch_SBR.AccountSearchDataModelWithError accFinalDetails = UCD_GenericAcctSearch_SBR.getAcctResults (fDetails, 'Partner');
             //get only account details
             List<UCD_GenericAcctSearch_SBR.AccountSearchDataModel> accDetails = accFinalDetails.accountSearchModel;
+            
             if (accDetails != null && !accDetails.isEmpty()) {
                 getUcdAccDetailsMap(accDetails);
             }
+            
             if (!sbrAccountIds.isEmpty() && sbrAccountIds!= null) {
                 //TWC729-7054 - Nandana - new logic as part of removal of Core_Unified_Global_Customer__c
                 List<Account> accList = [SELECT Id, Name, Unified_Hierarchy_View__c,Core_Customer_Aggregation_Type__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Business_Party_Id__c, Core_Address_Details__c, 
@@ -148,7 +150,7 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
                     accidList.add(acc.id);
                 }
                 for(Account acc : [Select id,Core_Business_Party_Id__c from Account where Core_Business_Party_Id__c in: parentUnifiedId]){
-                  parentAccMap.put(acc.Core_Business_Party_Id__c,acc.id);
+                    parentAccMap.put(acc.Core_Business_Party_Id__c,acc.id);
                 }
                 mapOfAccWithBlokedStatus= PRM_MatchingAccounts.getBlockedAccount(accidList);
                 //TWC729-7054 - Nandana - new logic as part of removal of Core_Unified_Global_Customer__c
@@ -175,7 +177,7 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
         public Boolean isError {get;set;}
         public String errorMessage {get;set;}
     }
-
+    
     /* @dev - Shraddha M
     @desciption - to get the getUcdAccDetailsMap*/
     private static void getUcdAccDetailsMap(List<UCD_GenericAcctSearch_SBR.AccountSearchDataModel> accDetails) {
@@ -301,6 +303,7 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
         for(PermissionSetAssignment permissions:permissionsAssignedToUser){
             permissionsAssignedToUsers.add(permissions.PermissionSet.Name);
         }
+        system.debug('permissionsAssignedToUsers'+permissionsAssignedToUsers);
         matchingAccWrapper accWrp =new  matchingAccWrapper();
         try {
             if (regRecId != null) {
@@ -531,8 +534,8 @@ public without sharing class PRM_AdminRegistrationDuplicateDetails {
      */
     public static matchingAccWrapper setMatchingAccWrapper (Account acc,Map<String,String> parentAccMap,map<string,boolean> mapOfAccWithBlokedStatus) {
         matchingAccWrapper matchingAcc = new matchingAccWrapper();
-        //map<string,boolean> mapOfAccWithBlokedStatus=new Map<String,Boolean>();
-       // mapOfAccWithBlokedStatus=PRM_MatchingAccounts.getBlockedAccount(acc.Id);
+        // map<string,boolean> mapOfAccWithBlokedStatus=new Map<String,Boolean>();
+        //  mapOfAccWithBlokedStatus=PRM_MatchingAccounts.getBlockedAccount(acc.Id);
         matchingAcc.accUrl = '/'+ acc.Id;
         matchingAcc.accId = acc.Id;
         matchingAcc.accName = acc.Name;

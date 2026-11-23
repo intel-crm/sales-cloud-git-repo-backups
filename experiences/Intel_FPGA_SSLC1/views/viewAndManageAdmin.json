@@ -5,21 +5,13 @@
   "id" : "068148de-4752-4961-9fcd-6c394dbf1844",
   "label" : "View and Manage Admin",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_NonEventFeedback",
-      "id" : "d991848a-9037-4a48-b1cd-7eba18377511",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "82704fc3-76b7-434e-be20-fd056f64a910",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "enableInlineEdit" : true,
+        "enableInlineEdit" : false,
         "filterName" : "My_Active_Delegate_Admins",
         "layout" : "FULL",
         "pageSize" : 25,
@@ -31,11 +23,11 @@
         "showImageIcon" : true,
         "showManualRefreshButton" : true,
         "showObjectName" : true,
-        "showPinnedList" : true,
+        "showPinnedList" : false,
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "761dcd31-f033-4a7b-bb92-94fb1e661c39",
+      "id" : "6ded2184-f493-4be5-95b3-3404b282d2d8",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -44,6 +36,14 @@
     "regionName" : "content",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "2e3445dd-4455-4790-a372-6ca0fed62f65",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "025efac2-aeb6-4db2-8500-1e6cfd5cafe7",
     "regionName" : "footer",
     "type" : "region"

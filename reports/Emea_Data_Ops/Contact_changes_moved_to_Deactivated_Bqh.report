@@ -7,6 +7,9 @@
         <field>CONTACT_OWNER</field>
     </columns>
     <columns>
+        <field>CREATED</field>
+    </columns>
+    <columns>
         <field>field_key</field>
     </columns>
     <columns>
@@ -29,39 +32,26 @@
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <operator>equals</operator>
+            <value>Julia Sallaiova</value>
         </criteriaItems>
         <criteriaItems>
             <column>field_key</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>deactivation requested</value>
+            <value>Account Name</value>
         </criteriaItems>
         <criteriaItems>
             <column>NEWVAL</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>true</value>
+            <value>Account for Deactivated Contacts</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Contact.Core_Login_Status__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <aggregateType>RowCount</aggregateType>
-        <dateGranularity>Day</dateGranularity>
-        <field>CREATED</field>
-        <sortByName>RowCount</sortByName>
-        <sortOrder>Desc</sortOrder>
-        <sortType>Aggregate</sortType>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Contact changes - moved to Deactivated</name>
     <params>
         <name>co</name>
@@ -69,7 +59,7 @@
     </params>
     <reportType>ContactAuditHistory</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>CREATED_DATE</sortColumn>

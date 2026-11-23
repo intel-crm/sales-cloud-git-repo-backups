@@ -10,11 +10,11 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Q4 2021 - Q3 2022</values>
+            <values></values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Q4 2020 - Q3 2021</values>
+            <values>Q4 2024 - Q3 2025</values>
         </dashboardFilterOptions>
         <name>Measurement Period</name>
     </dashboardFilters>
@@ -34,7 +34,7 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <drillDownUrl>https://partner.intel.com/s/company-training-credits</drillDownUrl>
+                <drillDownUrl>https://crmdevint3-intelcloudcrm.cs37.force.com/ipa/s/company-training-credits</drillDownUrl>
                 <groupingSortProperties/>
                 <header>Total Company Training Credits</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
@@ -53,8 +53,8 @@
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>12031609@intel.com.crm</runningUser>
+    <owner>11855969@intel.com.crm</owner>
+    <runningUser>12254674.shamrinx.saba@intel.com</runningUser>
     <textColor>#000000</textColor>
     <title>TRAININGS</title>
     <titleColor>#000000</titleColor>

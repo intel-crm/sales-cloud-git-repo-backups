@@ -201,6 +201,16 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>CRM_Additional_Information__c</fullName>
+        <label>Additional Information</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>CRM_Additional_Legal_Guidance__c</fullName>
         <label>Additional Legal Guidance</label>
         <length>32768</length>
@@ -209,6 +219,29 @@
         <trackTrending>false</trackTrending>
         <type>Html</type>
         <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Agenda_Topic__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter Agenda Topic  Name or Objectives</inlineHelpText>
+        <label>Agenda Topic</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Agenda_Topic_backendField__c</fullName>
+        <label>Agenda Topic backendField</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>CRM_Agentic_Account_EmailIds__c</fullName>
@@ -267,6 +300,16 @@
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
+        <fullName>CRM_Background_Objective1__c</fullName>
+        <label>Background</label>
+        <length>131070</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>CRM_Brief_Requestor_Email__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>The email of the person who initiated the request for the executive brief. Typically, the TA or meeting organizer. This field determines where the completed brief will be emailed once finalized.</inlineHelpText>
@@ -316,6 +359,100 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>CRM_EMB_isOldOrNew__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This is technical field ,its created to identify old or new record</description>
+        <label>CRM_EMB_isOldOrNew</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CRM_EndTime_DetailField__c</fullName>
+        <label>End Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_End_Time__c</fullName>
+        <label>End Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Event_Engagement_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Event/Engagement Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_ExternalAttendees_Ids__c</fullName>
+        <label>CRM_ExternalAttendees_Ids</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_ExternalAttendees__c</fullName>
+        <label>External Attendees</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_External_Attendees__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>External Attendees</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Executive Meeting Briefs (External Attendees)</relationshipLabel>
+        <relationshipName>Executive_Meeting_Briefs2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_IntelAttendees__c</fullName>
+        <label>Intel Attendees</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Intel_Attendees__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Intel Attendees</label>
+        <referenceTo>Contract</referenceTo>
+        <relationshipLabel>Executive Meeting Briefs (Intel Attendees)</relationshipLabel>
+        <relationshipName>Executive_Meeting_Briefs1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>CRM_Intels_Meeting_Objectives__c</fullName>
         <inlineHelpText>Clearly outline what Intel aims to achieve in this meeting. Focus on desired outcomes, not discussion topics.</inlineHelpText>
         <label>Intel’s Meeting Objectives</label>
@@ -325,6 +462,16 @@
         <trackTrending>false</trackTrending>
         <type>Html</type>
         <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_InternalAttendees_Ids__c</fullName>
+        <label>CRM_InternalAttendees_Ids</label>
+        <length>131072</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>CRM_Investor_Scouting_Report__c</fullName>
@@ -346,6 +493,40 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Address</type>
+    </fields>
+    <fields>
+        <fullName>CRM_MeetingOwnerContact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Meeting Owner Contact</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Executive_Meeting_Briefs1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Meeting_Agenda_Items__c</fullName>
+        <label>Meeting Agenda Items</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Meeting_Owner_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Meeting Owner Contact</label>
+        <referenceTo>Contract</referenceTo>
+        <relationshipLabel>Executive Meeting Briefs</relationshipLabel>
+        <relationshipName>Executive_Meeting_Briefs</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>CRM_Most_Critical_Messages_to_Get_Across__c</fullName>
@@ -391,6 +572,48 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>CRM_PresentersConversationLeadNames__c</fullName>
+        <label>Presenters/Conversation Lead</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Presenters_Conversation_Lead_Id__c</fullName>
+        <label>Presenters/Conversation Lead Id</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Presenters_Conversation_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Presenters/Conversation Lead</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Executive_Meeting_Briefs2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Proactive_Talking_Points__c</fullName>
+        <inlineHelpText>Include key points the CEO should convey or ask during the conversation. Add speaker names for reference.</inlineHelpText>
+        <label>Proactive Talking Points</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>CRM_Rating__c</fullName>
         <description>Field to populate rating based on agentic response</description>
         <label>Rating</label>
@@ -401,6 +624,17 @@
         <type>TextArea</type>
     </fields>
     <fields>
+        <fullName>CRM_Reactive_Talking_Points__c</fullName>
+        <inlineHelpText>Add maximum of 3 topics</inlineHelpText>
+        <label>Reactive Talking Points</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
         <fullName>CRM_Recommendation__c</fullName>
         <label>Recommendation</label>
         <length>32768</length>
@@ -409,6 +643,38 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_ReviewedBy__c</fullName>
+        <label>CRM_ReviewedBy</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Reviewed_By_Names__c</fullName>
+        <label>Reviewed By</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Reviewed_by__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Reviewed by</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Executive Meeting Briefs (Reviewed by)</relationshipLabel>
+        <relationshipName>Executive_Meeting_Briefs1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>CRM_Scheduled_End_Date__c</fullName>
@@ -433,6 +699,16 @@
         <type>Time</type>
     </fields>
     <fields>
+        <fullName>CRM_Scheduled_End_Time__c</fullName>
+        <inlineHelpText>The date and end time of the customer meeting in local time. Example: 03/12/2025, 11:30 AM PST</inlineHelpText>
+        <label>Scheduled End Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>CRM_Scheduled_End_Time_txt__c</fullName>
         <description>The date and end time of the customer meeting in the local time zone corresponding to the meeting location</description>
         <externalId>false</externalId>
@@ -447,6 +723,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>CRM_Scheduled_Start_Time__c</fullName>
+        <inlineHelpText>The date and start time of the customer meeting in local time. Example: 03/12/2025, 10:00 AM PST</inlineHelpText>
+        <label>Scheduled Start Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>CRM_Scheduled_Start_Time_txt__c</fullName>
         <description>The date and start time of the customer meeting in the local time zone corresponding to the meeting location</description>
         <externalId>false</externalId>
@@ -459,6 +745,15 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_StartTime_DetailField__c</fullName>
+        <label>Start Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>CRM_Start_Date__c</fullName>
@@ -511,7 +806,7 @@
         <label>Document Link</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
@@ -551,17 +846,37 @@
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
+        <fullName>Presenters_Conversation_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Presenters/Conversation Lead</label>
+        <referenceTo>Contract</referenceTo>
+        <relationshipLabel>Executive Meeting Briefs (Presenters/Conversation Lead)</relationshipLabel>
+        <relationshipName>Executive_Meeting_Briefs2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Quip_Document_URL__c</fullName>
         <label>Quip_Document_URL</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
     <label>Executive Meeting Brief</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Executive_Meeting_Brief_Name__c</columns>
+        <columns>Brief_Status__c</columns>
+        <columns>Account__c</columns>
+        <columns>Core_Document_Link__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -588,12 +903,12 @@
         <displayFormat>EX-{0000}</displayFormat>
         <label>Executive Meeting Brief ID</label>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Executive Meeting Briefs</pluralLabel>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>CRM_New_Executive_Meeting_Brief</fullName>
         <active>true</active>
@@ -718,5 +1033,26 @@ ISBLANK(CRM_Time_Zone__c)
 )</errorConditionFormula>
         <errorMessage>Please select the Meeting Timezone</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Core_EMB_StartTime</fullName>
+        <active>false</active>
+        <description>Validate Start Time on Executive Meeting Brief</description>
+        <errorConditionFormula>CRM_Start_Time__c &gt;  CRM_End_Time__c</errorConditionFormula>
+        <errorDisplayField>CRM_End_Time__c</errorDisplayField>
+        <errorMessage>Start Time should be less than End Time</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CRM_EMB_New_Button</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/lightning/o/Executive_Meeting_Brief__c/new?c__accountId={!Account.Id}</url>
+    </webLinks>
 </CustomObject>

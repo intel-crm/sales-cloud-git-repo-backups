@@ -2,15 +2,13 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsTwoCol84Layout",
   "dataProviders" : [ ],
-  "id" : "02f837ea-7d92-46ef-8121-98d829f1881b",
+  "id" : "7986af70-d84a-43a3-958f-b1d3771e84da",
   "label" : "Deal Registration Detail",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : {
-        "menuItems" : "[]"
-      },
+      "componentAttributes" : { },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "0ac1928a-70ea-4d74-8590-4ceca693f02d",
+      "id" : "52833564-83e8-4bcd-880d-e19728d65504",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -19,14 +17,14 @@
         "recordId" : "{!recordId}"
       },
       "componentName" : "forceCommunity:recordHeadline",
-      "id" : "76530c65-1b38-4fb4-85f6-72df5da67ec4",
+      "id" : "83dc36cb-3395-4740-9d2f-1f58a9d73798",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     }, {
       "componentAttributes" : { },
       "componentName" : "c:pCC_DisplayDraftStatus",
-      "id" : "e6c21c16-7983-4c55-afa5-2bce0053ee3b",
+      "id" : "70fb8032-18f5-4bf1-b8a6-de2f1657f15c",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -35,58 +33,58 @@
         "recordId" : "{!recordId}"
       },
       "componentName" : "forceCommunity:pathAssistant",
-      "id" : "25c0be72-9b0e-46ad-be6b-d73e0f4d3fb9",
+      "id" : "3fe75926-a628-4cff-ab8c-c1cdabd56361",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "49ec43f0-5c79-4988-9466-0147b73851a2",
+    "id" : "50a31f85-fdf0-4a4c-9393-bde4805d80e7",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
         "tabsetConfig" : {
-          "UUID" : "ad727763-3de3-471f-b691-b83c12d57042",
+          "UUID" : "8a41dbca-2f65-43a1-9eb5-27c1fe2d74a5",
           "activeTab" : "",
           "tabs" : [ {
-            "UUID" : "be80184f-d48f-44a3-9d9d-8a95e073e5c2",
-            "allowGuestUser" : false,
+            "UUID" : "97d315d9-9e37-46c2-a71f-e0db2ba9cc73",
+            "allowGuestUser" : true,
             "locked" : false,
             "seedComponents" : [ ],
             "tabKey" : "1",
             "tabName" : "Details"
           }, {
-            "UUID" : "f48a452c-12c5-4c98-84dc-b111709a0a28",
+            "UUID" : "8c490c1d-cb8e-4f65-abee-0c16ae64e779",
             "allowGuestUser" : false,
             "locked" : false,
             "seedComponents" : [ ],
-            "tabKey" : "1bf04",
+            "tabKey" : "a122c",
             "tabName" : "Deal Reg Products"
           }, {
-            "UUID" : "090130cf-14f6-4083-b7cd-6f967fa5588b",
+            "UUID" : "53376139-bb7e-4d87-9255-6dfccfd2fc90",
             "allowGuestUser" : false,
             "locked" : false,
             "seedComponents" : [ ],
-            "tabKey" : "0433a",
+            "tabKey" : "28cf4",
             "tabName" : "Files"
           } ],
           "useOverflowMenu" : false
         }
       },
       "componentName" : "forceCommunity:tabset",
-      "id" : "ad727763-3de3-471f-b691-b83c12d57042",
+      "id" : "8a41dbca-2f65-43a1-9eb5-27c1fe2d74a5",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
             "recordId" : "{!recordId}"
           },
           "componentName" : "forceCommunity:recordDetail",
-          "id" : "2e21d765-6cf1-4b11-8238-f0838a411040",
+          "id" : "37441d9a-ede1-4cc9-b2c3-ea6e644e607b",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "be80184f-d48f-44a3-9d9d-8a95e073e5c2",
+        "id" : "97d315d9-9e37-46c2-a71f-e0db2ba9cc73",
         "regionLabel" : "Details",
         "regionName" : "1",
         "renditionMap" : { },
@@ -99,7 +97,17 @@
             "width" : "MEDIUM"
           },
           "componentName" : "forceCommunity:responsiveRelatedListSingle",
-          "id" : "4f2e9454-3a27-4f54-9412-db3432728f7e",
+          "id" : "23bdb4aa-6ea4-447a-9ca5-000bfa6f5304",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "ProcessSteps",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "bc0dd768-bce8-4e8d-8f58-96f4b3964867",
           "renditionMap" : { },
           "type" : "component"
         }, {
@@ -109,13 +117,13 @@
             "width" : "MEDIUM"
           },
           "componentName" : "forceCommunity:responsiveRelatedListSingle",
-          "id" : "e9f83b56-cbef-4591-a879-f3f9684cb9c5",
+          "id" : "cf245e9f-477e-4e8f-9bbc-1999c8adc1a7",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "f48a452c-12c5-4c98-84dc-b111709a0a28",
+        "id" : "8c490c1d-cb8e-4f65-abee-0c16ae64e779",
         "regionLabel" : "Deal Reg Products",
-        "regionName" : "1bf04",
+        "regionName" : "a122c",
         "renditionMap" : { },
         "type" : "region"
       }, {
@@ -126,7 +134,7 @@
             "width" : "MEDIUM"
           },
           "componentName" : "forceCommunity:responsiveRelatedListSingle",
-          "id" : "c0227e2c-5e17-4283-89a0-e97a6525c292",
+          "id" : "b5bea64e-ec8f-44d5-9179-7d8b7f7cd7f5",
           "renditionMap" : { },
           "type" : "component"
         }, {
@@ -134,13 +142,13 @@
             "richTextValue" : "<div style=\"padding-right:1rem;padding-left:1rem\">\n    <p style=\"color:#006eb3;padding-bottom:0.5rem\"><b>Deal Validity</b></p>\n<p>Please upload and submit documentation evidencing the End Customer’s solicitation for bids for this Project/Deal/Opportunity.  Acceptable forms of evidence include, but are not limited to:</p>\n<br/>\n<ul>\n    <li>Public RFPs or solicitation documents</li>\n    <li>Non-confidential communications from End Customer to Customer</li>\n</ul>\n    <br/>\n<p><i>\nNDA: Intel respects your confidentiality obligations with your partners.   Please do not submit to Intel any documents that would breach those obligations. Please reach out to Intel if a multiparty NDA is required.</i></p>\n</div>"
           },
           "componentName" : "forceCommunity:htmlBlock",
-          "id" : "55e91ffe-97ab-4632-ac99-3da16e4afc12",
+          "id" : "061a0fd2-709a-483f-932d-9e0784e96aab",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "090130cf-14f6-4083-b7cd-6f967fa5588b",
+        "id" : "53376139-bb7e-4d87-9255-6dfccfd2fc90",
         "regionLabel" : "Files",
-        "regionName" : "0433a",
+        "regionName" : "28cf4",
         "renditionMap" : { },
         "type" : "region"
       } ],
@@ -148,11 +156,11 @@
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "90995293-0855-42d3-a52f-50dd67296272",
+    "id" : "08563f18-2593-4479-95f3-55907eff215b",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "2cffd65f-d367-4611-8158-6b8f709beb02",
+    "id" : "d9f1349a-f1f2-43f7-9cb6-a48befdf95ea",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -163,11 +171,11 @@
         "title" : "{!Record._Object}: {!Record._Title}"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "2a43116e-d2c3-4a01-837b-8b66528841b7",
+      "id" : "d25bb7b3-c640-45c4-9f16-99aaf96a3a10",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "7574284e-2b9b-4e82-8934-3b8d0ff3b3a2",
+    "id" : "4daa7f46-b175-42af-a565-79ea8ca7c961",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   }, {
@@ -178,7 +186,7 @@
         "width" : "MEDIUM"
       },
       "componentName" : "forceCommunity:feedPublisher",
-      "id" : "09cc3934-0fef-4aea-8356-aa5ad97f1739",
+      "id" : "741bdddc-c82d-4a79-b28e-4d3528498d0e",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -194,16 +202,16 @@
         "type" : "Record"
       },
       "componentName" : "forceCommunity:forceCommunityFeed",
-      "id" : "21e4a261-ff29-48d1-964b-dbe6c8dabe9d",
+      "id" : "a154a7cd-4135-4668-984d-c77f5c1f004f",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "f33e111e-74ab-4ea1-b35e-ca3316099e03",
+    "id" : "f0c0c99e-7567-4c2d-86de-965af34e4017",
     "regionName" : "sidebar",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "YKT7Zn6tAHjSVdyTIMFhpZIEtQkAJG",
   "type" : "view",
   "viewType" : "detail-a3D"
 }

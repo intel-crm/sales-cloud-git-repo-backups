@@ -1,0 +1,21 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="dataTable">
+        <template if:true={showData}>
+        <lightning-datatable 
+            class="slds-icon_medium"
+            data={allNotes}
+            columns={columnsTable}
+            key-field="Id"
+            onsort={handleSort}
+            sorted-by={sortBy}
+            onrowaction={handleRowAction}
+            sorted-direction={sortDirection}
+            hide-checkbox-column="true">
+        </lightning-datatable> 
+        </template>
+        <template if:false={showData}>
+            <p>No attachments present</p>
+        </template>
+    </div> 
+</template>

@@ -270,6 +270,10 @@ public without sharing class PRM_EmailUtility {
                     List<String> recipientMergeFields = new List<String>();
                     if(emailConfig.PRM_RecipientLogic__c != null && emailConfig.PRM_RecipientLogic__c != '') {recipientMergeFields = emailConfig.PRM_RecipientLogic__c.split(',') ; } 
                     Map<String,String> objectFieldMap = new Map<String,String>();
+                    
+					System.debug('objectFieldMap=' + objectFieldMap);
+					
+					System.debug('recipientMergeFields=' + recipientMergeFields);
                     for(String s : recipientMergeFields)
                     {   String obj = s.substringBefore('.');
                      String fld = s.substringAfter('.');
@@ -286,11 +290,14 @@ public without sharing class PRM_EmailUtility {
                     List<String> recipientdataQueryList = new List<String>();
                     Map<String,SObject> recipientObjDetailsMap = new Map<String,Sobject>();
                     String recipientdataQuery;
+                    
+					System.debug('recipientObjIdSet=' + recipientObjIdSet);
                     for(String s : objectFieldMap.keyset())
                     {
                         recipientdataQuery = 'Select '+objectFieldMap.get(s)+' from '+s+' where id in : recipientObjIdSet' ; 
                     }
                     if(recipientdataQuery != null && recipientdataQuery.length() > 0) { recipientdataQueryList.add(recipientdataQuery); }
+                    System.debug('recipientdataQueryList=' + recipientdataQueryList);
                     for(String q : recipientdataQueryList) 
                     {
                         List<SObject> retrivedObjList = Database.query(q);  
@@ -509,6 +516,7 @@ public without sharing class PRM_EmailUtility {
         String rLanguage ;
         String rCountry ;
         String rGeo ;
+        System.debug('Recipient = ' + obj.PRM_Recipient__c);
         if(obj.PRM_Recipient__c == 'External Emails' || String.valueOf(obj.PRM_Recipient__c).contains('Public Group:')){
             for(PRM_EmailConfigurationDetails__mdt upgradeMetadataRecords :[SELECT PRM_BusinessEvent__c,PRM_Recipient__c,PRM_FolderName__c,PRM_TemplateName__c,PRM_TemplateUniqueName__c,PRM_Language__c from PRM_EmailConfigurationDetails__mdt where PRM_BusinessEvent__c IN :businessEventSet]){
                 Set<String> metadataLangSet = new Set<String>();
@@ -518,8 +526,11 @@ public without sharing class PRM_EmailUtility {
                 metadataLangSet.add(upgradeMetadataRecords.PRM_Language__c);
                 mapbusinesseventLang.put(upgradeMetadataRecords.PRM_BusinessEvent__c,metadataLangSet);
             }
-            
+            System.debug('JB Country--'+objEmailNotif.Country);
+            System.debug('JB Geo--'+objEmailNotif.Geo);
             emailConfDetails = getEmailConfigDetails(objEmailNotif,obj,translationMap,objEmailNotif.Language,objEmailNotif.Country,objEmailNotif.Geo);
+            //System.debug('BusinessEvent = ' + emailConfDetails.PRM_BusinessEvent__c);
+            //System.debug('Template Name=' + emailConfDetails.PRM_TemplateUniqueName__c);
             for(String emailId : recipientContactIds){
                 langTemplateMap.put(emailConfDetails.PRM_TemplateUniqueName__c,rLanguage);
                 mapContTemplate.put(emailId,emailConfDetails.PRM_TemplateUniqueName__c);
@@ -574,6 +585,7 @@ public without sharing class PRM_EmailUtility {
             String lang = langTemplateMap.get(templateName);
             EmailTemplate tempDetails = langEmailTempMap.get(templateName);
             String bodyAfterProcessingLabels = processLabelsInBody(tempDetails.HtmlValue,lang,translationMap) ; 
+            System.debug('Template Html=' + tempDetails.HtmlValue);
             emailTempMap.put(tempDetails,bodyAfterProcessingLabels);
             
             }
@@ -614,6 +626,12 @@ public without sharing class PRM_EmailUtility {
     private static PRM_EmailConfigurationDetails__mdt getEmailConfigDetails(EmailNotification objEmailNotif,PRM_EmailConfigurationDetails__mdt obj,Map<String,PRM_Email_Template_Translations__mdt> translationMap, String rLanguage,String rCountry,String rGeo){
         //identify the metadata as per the recipient's language, country and geo
         PRM_EmailConfigurationDetails__mdt mdtIdentified ;
+        System.debug('INPUT-rLanguage=' + rLanguage);
+        System.debug('INPUT-rCountry=' + rCountry);
+        System.debug('INPUT-rGeo=' + rGeo);
+        
+        System.debug('objEmailNotif.Country=' + objEmailNotif.Country);
+        System.debug('objEmailNotif.Geo=' + objEmailNotif.Geo);
         //Set<String> languageSet = new Set<String>{'ENG','ZHO'};
         //Map<emailTemplate,String> templateBodyMap = new Map<emailTemplate,String>();
         //if no language is found then select English as default language to query metadata record
@@ -630,6 +648,8 @@ public without sharing class PRM_EmailUtility {
         if(rLanguage != null && rLanguage != ' '){
             whereCondition += ' and PRM_Language__c = \''+String.escapeSingleQuotes(rLanguage)+'\'' ;
         }
+        System.debug('Inside Country--'+objEmailNotif.Country);
+        System.debug('Inside Geo--'+objEmailNotif.Geo);
         if(rGeo != null && rGeo != ' '){
             whereCondition += ' and PRM_Geo__c = \''+String.escapeSingleQuotes(rGeo)+'\'' ;
         }
@@ -644,6 +664,7 @@ public without sharing class PRM_EmailUtility {
         //combination of businessEvent+Language+Country+Geo+recipientType will be unique and will return only one result
         List<PRM_EmailConfigurationDetails__mdt> emailConfigList = database.query(queryForMdt); 
         //if no metadata record found for combination of language and country then, search only for contact's language
+        System.debug('emailConfigList--'+emailConfigList);
         if(emailConfigList != null && emailConfigList.size() == 0)
         {
             if(String.IsNotBlank(objEmailNotif.ChannelProgram)) {
@@ -655,6 +676,7 @@ public without sharing class PRM_EmailUtility {
             
         }
         //if no metadata record found then just take the record with language as "English" -- as a default template
+        System.debug('Inside--'+rLanguage);
         if(emailConfigList != null && emailConfigList.size() == 0)
         {   rLanguage = 'ENG' ;
          if(String.IsNotBlank(objEmailNotif.ChannelProgram)) {
@@ -692,8 +714,12 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
             {  
                 String o = s1.substringbefore('}').substringbefore('.');
                 String f=  s1.substringbefore('}').substringafter('.') ;  
+                System.debug('iterator=' + iterator);
+                System.debug('DataMap=' + dataMap);
+                System.debug('f=' + f);
                 if(iterator != null)
-                {
+                {	System.debug('o=' + o);
+					System.debug('f=' + f);
                     if(DataMap.get(iterator) != null) 
                     {
                         if(DataMap.get(iterator).get(f)!= null)
@@ -733,11 +759,13 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
             }
         }
         /*Utkarsh - US741977 - Changes to accomodate Team RUBY Flow*/
+        System.debug('partnerAdmin='+partnerAdmin);
         if(partnerAdmin == false){
-            //[TWC729-9164] -- START
             String twoDigitCode='';
-            Map<String,PRM_Language_Culture_Mapping__mdt > metadataMap = PRM_Language_Culture_Mapping__mdt.getAll();
-
+            Map<String,PRM_Language_Culture_Mapping__mdt> metadataMap =PRM_Language_Culture_Mapping__mdt.getAll();
+            
+            //Map<String,PRM_Language_Culture_Mapping__mdt > metadataMap = PRM_Language_Culture_Mapping__mdt.getAll();
+			System.debug('metadataMap=='+metadataMap.size());
             if(metadataMap!=null &&  metadataMap.size() > 0){
                 for(PRM_Language_Culture_Mapping__mdt record:metadataMap.values()){
                     if(record.MasterLabel==language){
@@ -751,9 +779,10 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
                     }
                 }
             }
+        
+            
             String translatedLangTemplate = System.Label.get('', 'PRM_Secondary_Invite_Link', twoDigitCode);
             tempHtmlValue = tempHtmlValue.replace(System.Label.PRM_Partner_Admin_Link,translatedLangTemplate);
-           //[TWC729-9164] -- END
            //tempHtmlValue = tempHtmlValue.replace(System.Label.PRM_Partner_Admin_Link,System.Label.PRM_Non_Partner_Admin_Link);
         }
         /*END - US741977*/
@@ -1836,5 +1865,5 @@ PRM_EmailUtility.templateName= mdtIdentified.PRM_TemplateUniqueName__c ;
         }
         
     }//End of Method    
-   
+       
 }

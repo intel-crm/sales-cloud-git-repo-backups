@@ -9,6 +9,7 @@
             <stringValue>Automatic_Lead_Populate_In_Reg</stringValue>
         </value>
     </constants>
+    <description>Update LeadID in Registration Records</description>
     <environments>Default</environments>
     <interviewLabel>Update LeadID in Registration Re{!AutomaticLeadPopulate}cords {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update LeadID in Registration Records</label>
@@ -21,7 +22,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -34,13 +35,13 @@
     <recordLookups>
         <name>Get_Record_ID_from_the_Lead_Record</name>
         <label>Get Record ID from the Lead Record</label>
-        <locationX>176</locationX>
-        <locationY>335</locationY>
+        <locationX>1096</locationX>
+        <locationY>371</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Registration_Record_from_email</targetReference>
         </connector>
-        <filterLogic>1</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>LastModifiedDate</field>
             <operator>GreaterThanOrEqualTo</operator>
@@ -61,8 +62,8 @@
     <recordLookups>
         <name>Get_Registration_Record_from_email</name>
         <label>Get Registration Record from email</label>
-        <locationX>176</locationX>
-        <locationY>455</locationY>
+        <locationX>1096</locationX>
+        <locationY>479</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Update_Registration_record_with_Lead_ID</targetReference>
@@ -87,8 +88,8 @@
     <recordUpdates>
         <name>Update_Registration_record_with_Lead_ID</name>
         <label>Update Registration record with Lead ID</label>
-        <locationX>176</locationX>
-        <locationY>575</locationY>
+        <locationX>1096</locationX>
+        <locationY>587</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>PRM_Email_ID__c</field>
@@ -106,24 +107,24 @@
         <object>PRM_Registration_Request__c</object>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
-        <locationY>0</locationY>
+        <locationX>970</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>Get_Record_ID_from_the_Lead_Record</targetReference>
         </connector>
         <filterLogic>1 OR 2</filterLogic>
         <filters>
             <field>RecordTypeId</field>
-            <operator>Contains</operator>
+            <operator>EqualTo</operator>
             <value>
-                <stringValue>0121J000000yaQ1QAI</stringValue>
+                <stringValue>012o0000000Tr9EAAS</stringValue>
             </value>
         </filters>
         <filters>
             <field>RecordTypeId</field>
-            <operator>Contains</operator>
+            <operator>EqualTo</operator>
             <value>
-                <stringValue>012o0000000Tr9EAAS</stringValue>
+                <stringValue>0121J000000yaQ1QAI</stringValue>
             </value>
         </filters>
         <object>Lead</object>
@@ -137,16 +138,6 @@
         <isCollection>true</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>var_Date</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <value>
-            <elementReference>$System.OriginDateTime</elementReference>
-        </value>
     </variables>
     <variables>
         <name>var_Email</name>

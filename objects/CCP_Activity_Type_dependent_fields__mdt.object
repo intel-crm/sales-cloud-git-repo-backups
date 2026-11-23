@@ -166,6 +166,7 @@
         <columns>Core_MDF_Object_API_Field_Name__c</columns>
         <columns>Core_MDF_Activity_Category_Txt__c</columns>
         <columns>Core_MDF_Activity_Type_Txt__c</columns>
+        <columns>Core_MDF_Activity_Subtype_Txt__c</columns>
         <columns>Core_MDF_Module__c</columns>
         <columns>Core_MDF_Sort_Order_Nbr__c</columns>
         <columns>Core_MDF_Program_Txt__c</columns>

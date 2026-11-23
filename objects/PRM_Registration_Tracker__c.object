@@ -157,7 +157,7 @@
         <fullName>IsActive__c</fullName>
         <defaultValue>true</defaultValue>
         <label>Active</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -165,7 +165,7 @@
         <fullName>PRM_AGD_ID_Updated__c</fullName>
         <label>AGD ID Updated</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -185,7 +185,7 @@
         <fullName>PRM_Attempted_for_IPA__c</fullName>
         <label>GetProfile API Called</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -193,7 +193,7 @@
         <fullName>PRM_CIM_CallOut_for_Dup_Check__c</fullName>
         <label>CIM CallOut for Dup Check</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -250,6 +250,157 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>PRM_Milestone_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Milestone Active?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Milestone_Name__c</fullName>
+        <label>Milestone Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Registration Initiated</fullName>
+                    <default>false</default>
+                    <label>Registration Initiated</label>
+                </value>
+                <value>
+                    <fullName>EV Sent Unsent</fullName>
+                    <default>false</default>
+                    <label>EV Sent Unsent</label>
+                </value>
+                <value>
+                    <fullName>EV Pending Completed</fullName>
+                    <default>false</default>
+                    <label>EV Pending Completed</label>
+                </value>
+                <value>
+                    <fullName>GetProfile API Called</fullName>
+                    <default>false</default>
+                    <label>GetProfile API Called</label>
+                </value>
+                <value>
+                    <fullName>SBC Callout made</fullName>
+                    <default>false</default>
+                    <label>SBC Callout made</label>
+                </value>
+                <value>
+                    <fullName>Registration Submitted</fullName>
+                    <default>false</default>
+                    <label>Registration Submitted</label>
+                </value>
+                <value>
+                    <fullName>Dup Check Success</fullName>
+                    <default>false</default>
+                    <label>Dup Check Success</label>
+                </value>
+                <value>
+                    <fullName>Waiting for Approval</fullName>
+                    <default>false</default>
+                    <label>Waiting for Approval</label>
+                </value>
+                <value>
+                    <fullName>ACK Mail sent</fullName>
+                    <default>false</default>
+                    <label>ACK Mail sent</label>
+                </value>
+                <value>
+                    <fullName>Approved Rejected</fullName>
+                    <default>false</default>
+                    <label>Approved Rejected</label>
+                </value>
+                <value>
+                    <fullName>ACR Approved</fullName>
+                    <default>false</default>
+                    <label>ACR Approved</label>
+                </value>
+                <value>
+                    <fullName>Subscription assigned</fullName>
+                    <default>false</default>
+                    <label>Subscription assigned</label>
+                </value>
+                <value>
+                    <fullName>Benefit assigned</fullName>
+                    <default>false</default>
+                    <label>Benefit assigned</label>
+                </value>
+                <value>
+                    <fullName>Entitlement assigned</fullName>
+                    <default>false</default>
+                    <label>Entitlement assigned</label>
+                </value>
+                <value>
+                    <fullName>Welcome EmailSent Unsent</fullName>
+                    <default>false</default>
+                    <label>Welcome EmailSent Unsent</label>
+                </value>
+                <value>
+                    <fullName>Guest Redemption Complete</fullName>
+                    <default>false</default>
+                    <label>Guest Redemption Complete</label>
+                </value>
+                <value>
+                    <fullName>User Logged In</fullName>
+                    <default>false</default>
+                    <label>User Logged In</label>
+                </value>
+                <value>
+                    <fullName>AGS ID Creation</fullName>
+                    <default>false</default>
+                    <label>AGS ID Creation</label>
+                </value>
+                <value>
+                    <fullName>Invite Sent Unsent</fullName>
+                    <default>false</default>
+                    <label>Invite Sent Unsent</label>
+                </value>
+                <value>
+                    <fullName>Invite Completed</fullName>
+                    <default>false</default>
+                    <label>Invite Completed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Record_Stage__c</fullName>
+        <label>Milestone State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yet to Assign</fullName>
+                    <default>false</default>
+                    <label>Yet to Assign</label>
+                </value>
+                <value>
+                    <fullName>Unassigned</fullName>
+                    <default>false</default>
+                    <label>Unassigned</label>
+                </value>
+                <value>
+                    <fullName>Assigned</fullName>
+                    <default>false</default>
+                    <label>Assigned</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>PRM_Registration_Type__c</fullName>
         <label>Registration Type</label>
         <required>false</required>
@@ -290,16 +441,6 @@
                     <default>false</default>
                     <label>Bulk Add</label>
                 </value>
-                <value>
-                    <fullName>Auto Granted IPA for DZP</fullName>
-                    <default>false</default>
-                    <label>Auto Granted IPA for DZP</label>
-                </value>
-                <value>
-                    <fullName>Admin Partner Invite</fullName>
-                    <default>false</default>
-                    <label>Admin Partner Invite</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -319,7 +460,7 @@
         <fullName>PRM_SBC_Callout_Time__c</fullName>
         <label>SBC Callout Time</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -338,12 +479,14 @@
     <fields>
         <fullName>PRM_Time_Difference__c</fullName>
         <externalId>false</externalId>
-        <formula>IF (FLOOR((CreatedDate - PRM_Last_Milestone_DateTime__c )) &gt; 0, TEXT(FLOOR((CreatedDate - PRM_Last_Milestone_DateTime__c )) ) &amp; &quot; day(s) &quot;, &quot;&quot;) 
-&amp; IF(FLOOR(MOD((CreatedDate - PRM_Last_Milestone_DateTime__c )* 24, 24 )) &gt; 0, TEXT(FLOOR(MOD((CreatedDate - PRM_Last_Milestone_DateTime__c )* 24, 24 ))) &amp; &quot; hour(s) &quot;,&quot;&quot;) 
-&amp; TEXT(ROUND(MOD(ABS((CreatedDate - PRM_Last_Milestone_DateTime__c ))* 24 * 60, 60 ), 0)) &amp; &quot; min(s) &quot;
-&amp; TEXT(ROUND(MOD(ABS((CreatedDate - PRM_Last_Milestone_DateTime__c) )* 24 * 60*60, 60 ), 0)) &amp; &quot; sec(s)&quot;</formula>
+        <formula>IF(
+CreatedDate - PRM_Last_Milestone_DateTime__c &gt; 0 ,
+TEXT( FLOOR( CreatedDate - PRM_Last_Milestone_DateTime__c ) ) &amp; &quot; days &quot;
+&amp; TEXT( FLOOR( MOD( (CreatedDate - PRM_Last_Milestone_DateTime__c ) * 24, 24 ) ) ) &amp; &quot; hours &quot;
+&amp; TEXT( ROUND( MOD( (CreatedDate - PRM_Last_Milestone_DateTime__c ) * 24 * 60, 60 ), 0 ) ) &amp; &quot; minutes&quot;,
+&quot;&quot;
+)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Time Taken between Previous Milestone and current Milestone</inlineHelpText>
         <label>Time Taken</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -370,6 +513,50 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Registration_Type__c</fullName>
+        <label>Registration Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Self Registration</fullName>
+                    <default>false</default>
+                    <label>Self Registration</label>
+                </value>
+                <value>
+                    <fullName>Admin Invite</fullName>
+                    <default>false</default>
+                    <label>Admin Invite</label>
+                </value>
+                <value>
+                    <fullName>Partner Invite</fullName>
+                    <default>false</default>
+                    <label>Partner Invite</label>
+                </value>
+                <value>
+                    <fullName>Bulk Invite</fullName>
+                    <default>false</default>
+                    <label>Bulk Invite</label>
+                </value>
+                <value>
+                    <fullName>External Partner Invite</fullName>
+                    <default>false</default>
+                    <label>External Partner Invite</label>
+                </value>
+                <value>
+                    <fullName>Bulk Add</fullName>
+                    <default>false</default>
+                    <label>Bulk Add</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Stage__c</fullName>

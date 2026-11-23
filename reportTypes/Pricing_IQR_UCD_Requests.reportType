@@ -88,6 +88,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_RequestID__c.Core_Mastered_Simplified_Account_Nm__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Survivor Account Id: Mastered Simplified Account Name</displayNameOverride>
+            <field>Pricing_RequestID__c.Core_Survivor_Account_Id__c.Core_Mastered_Simplified_Account_Nm__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Account Record Type</displayNameOverride>
             <field>Pricing_RequestID__c.RecordType</field>
             <table>Pricing_Integration_Staging__c</table>
@@ -130,6 +141,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Pricing_QuoteID__c</field>
+            <table>Pricing_Integration_Staging__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Bulk_ChangeRequest_chk__c</field>
             <table>Pricing_Integration_Staging__c</table>
         </columns>
         <masterLabel>Pricing Integration Stagings</masterLabel>

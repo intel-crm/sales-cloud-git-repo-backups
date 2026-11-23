@@ -358,11 +358,6 @@
         <columns>Core_MDF_Status_nm__c</columns>
         <columns>Core_MDF_Error_Message_txt__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Contact_id__c</field>
-            <operation>equals</operation>
-            <value>Anshika Singh</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

@@ -7,6 +7,10 @@
         <publicGroups>
             <publicGroup>Core_MDF_Program_Office_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>12005608@intel.com.crm</user>
+            <user>opal_pct_approver@intel.com</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundRequest</sobjectType>

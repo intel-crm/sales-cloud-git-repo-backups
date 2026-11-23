@@ -101,7 +101,7 @@ Vinodhini       27-Oct-10     New Param - AI PIC MDF POP Validation
                         PartnerFundClaim pfc = new PartnerFundClaim();
                         if(!isUpdate && !claim.Core_MDF_OutcomeBased_Ind__c) {
                             pfc  = [select Id,Core_MDF_Program__c, CreatedDate, Core_MDF_Status__c,Core_MDF_Budget_Type_Nm__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
-                                    Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c, Core_MDF_Activity_Types__c from PartnerFundClaim where Id =: claim.Id];
+                                    Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c, Core_MDF_Activity_Types__c, request.Core_MDF_Activity_Description__c, request.Core_MDF_POP_Requirements_txt__c, request.Core_MDF_Attribution_Requirements_txt__c, Amount, Core_MDF_Budget_Type_Options_Nm__c from PartnerFundClaim where Id =: claim.Id];
                             pfc.Core_MDF_Status__c = !Claim.Core_MDF_OutcomeBased_Ind__c ? label.Core_MDF_Claim_Status_PIC_Pending : claim.Core_MDF_Status__c;
                             
                         } else {
@@ -372,12 +372,12 @@ Roshan              19/01/2925  Added changes for "Reclaiming SF Partner License
         {
             contIdUserIdMap.put(pnum.Core_MDF_User__r.ContactId,pnum.Core_MDF_User__c);
         }
-        Core_MDF_ChannelProgram__mdt channelProgRec = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_ClaimSubEntitlementName_Txt__c 
+        List<Core_MDF_ChannelProgram__mdt> channelProgRec = [Select Core_MDF_Technical_Program_Name__c,Core_MDF_ClaimSubEntitlementName_Txt__c 
                                                        from Core_MDF_ChannelProgram__mdt where Core_MDF_Technical_Program_Name__c =:techProgramName LIMIT 1];                  
         
         Set<String> claimSubEntNameSet = new Set<String>();
-        if(channelProgRec != Null && channelProgRec.Core_MDF_ClaimSubEntitlementName_Txt__c != Null){
-            claimSubEntNameSet.addAll(channelProgRec.Core_MDF_ClaimSubEntitlementName_Txt__c.split(';'));       
+        if(channelProgRec != Null && !channelProgRec.isEmpty() && channelProgRec[0].Core_MDF_ClaimSubEntitlementName_Txt__c != Null){
+            claimSubEntNameSet.addAll(channelProgRec[0].Core_MDF_ClaimSubEntitlementName_Txt__c.split(';'));       
         }
         
         if(contIdUserIdMap!=null && contIdUserIdMap.size()>0 && claimSubEntNameSet != Null && claimSubEntNameSet.size()>0){
@@ -1104,6 +1104,14 @@ Modified By:        Date:       Changes:
     public static ProposedDataWrapper getDocumentData(String docId){     
         ProposedDataWrapper dataWrap = new ProposedDataWrapper();
         try{
+                // Query metadata first - avoids allocating 40+ MB into the heap
+        	ContentVersion fileInfo = [SELECT Id, ContentSize FROM ContentVersion WHERE ContentDocumentId = :docId LIMIT 1];
+
+        	if (fileInfo.ContentSize > Long.valueOf(System.Label.Core_MDF_ClaimEzy_MaxFileSize)) {
+    			dataWrap.isError = true;
+    			dataWrap.errorMsg = Core_MDF_CCP_ConstantClass.FIELD_CUSTOM_VALIDATION_EXCEPTION + System.Label.Core_MDF_Claim_ezy_MaxStringLimitError + ':';
+    			return dataWrap;
+			}
             //Get the versiondata based on ContentDocumentId
             ContentVersion conVer = [SELECT Id,versiondata FROM ContentVersion WHERE ContentDocumentId =: docId];
             //Convert to base64
@@ -1223,7 +1231,7 @@ Added By:           JB - 06/09/2025
 Test Class:		Core_MDF_PFC_IPAClaim_Test
 Modified By:        Date:       Changes:
 *******************************************************************************************************/
-     @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static PartnerFundClaim calculateAmountFields(PartnerFundClaim claim, String amountFields) {
         
         //To support for Brazil and German languages
@@ -1245,6 +1253,7 @@ Modified By:        Date:       Changes:
         Core_MDF_Claim_Utility.calculateClaimFieldsForInsert(claimList);
         return claimList[0];
     }   
+    
     
     /****************************************************************************************************** 
 Method Name:        getCampaignPurposeDetails

@@ -200,7 +200,7 @@ public without sharing class core_OpportunitySupportStatusController { //TWC3123
                 SeedSampleWrapData.bSamplesErrorMessage = System.Label.Core_Exception;
             }
             
-           
+           system.debug('AA ++'+httpResp2.getbody());
             
             // Use the parser to get the response as JSONParser type
             system.JSONParser parser = JSON.createParser(httpResp2.getbody());
@@ -344,7 +344,7 @@ public without sharing class core_OpportunitySupportStatusController { //TWC3123
                     if (sample.Opportunity.size() >= 1) {
                         sample.DetailViewCIMIDs = '';
                         sample.DetailViewOppIDs = '';
-                        for (SampleOpportunityAssociation oppAssoc : sample.Opportunity) {
+                        for (SampleOpportunityAssociation oppAssoc : sample.Opportunity) { system.debug('AA DetailViewCIMIDs--'+oppAssoc.AccountCIMID);
                             if (String.isNotBlank(oppAssoc.AccountCIMID)) sample.DetailViewCIMIDs += oppAssoc.AccountCIMID + ', ';
                             if (String.isNotBlank(oppAssoc.OpportunityId)) sample.DetailViewOppIDs += oppAssoc.OpportunityId + ', ';
                         }

@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_PartnerRole__c</field>
-        <value xsi:type="xsd:string">Builder</value>
+        <value xsi:type="xsd:string">Solution Integrator</value>
     </values>
     <values>
         <field>PRM_Priority__c</field>

@@ -37,7 +37,7 @@ public without sharing class PRM_AddContactsToGroupController {
                                  PRM_Account_Contact_Relationship__c where PRM_InActive_Ind__c  = False AND PRM_Contact_Id__c NOT IN : setOfContactIds
                                  AND PRM_Contact_Id__r.Account.Core_Intel_Partner_Alliance_PartnerGroup__c =:True AND (PRM_Contact_Id__r.Email IN :lstOfcontactEmail
                                  /*OR PRM_Contact_Id__r.Core_Login_Id__c IN :lstOfcontactEmail*/ OR PRM_Contact_Id__c IN :lstOfcontactEmail)];
-            
+           
             if(lstOfACR != null && !lstOfACR.isEmpty()){
                 for(PRM_Account_Contact_Relationship__c cntRec : lstOfACR){
                     ContactWrapper cntdata = new ContactWrapper();
@@ -134,7 +134,6 @@ public without sharing class PRM_AddContactsToGroupController {
                 }
             }
          return (successCount > 0) ? 'Success' : 'Failed';
-        
     }
      public with sharing class ContactWrapper {
          @auraEnabled public string id {get;set;}
@@ -144,7 +143,5 @@ public without sharing class PRM_AddContactsToGroupController {
          @auraEnabled public string contactPartnerRole {get;set;}
          @auraEnabled public string contactEmail {get;set;}
          @auraEnabled public string contactPhone {get;set;}
-         		
     }
-
 }

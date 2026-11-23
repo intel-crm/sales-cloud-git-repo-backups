@@ -1,7 +1,7 @@
 @isTest
 public class ER_ENT_PRG_AccountSearch_Test {
     public static Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-
+    
     @isTest 
     public static void DoPostTest_One(){
         
@@ -230,7 +230,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
 		
 		List<ER_SBC_PriorityMatrix__mdt> priorityMatrix = [SELECT AccountType__c,PriorityField__c,PriorityNumber__c,isObjectField__c,PriorityValue__c,isSearchScore__c FROM ER_SBC_PriorityMatrix__mdt WHERE AccountType__c = 'DZP' ORDER by PriorityNumber__c];
 		
-		Set<Id> acctIdset = new Set<Id> ();
+		Set<Id> acctIdset = new Set<Id> (); 
 		acctIdset.add(acc.id);
 		
         
@@ -251,8 +251,9 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void DoPostTest_Six(){
         RestRequest req = new RestRequest(); 
-        RestResponse res = new RestResponse();  
-         Account acc = new Account();
+        RestResponse res = new RestResponse(); 
+        
+        Account acc = new Account();
         acc.name='Test';
         acc.RecordTypeId = accountRecordTypeIntel;
         acc.Core_CIM_ID__c = '22213672';
@@ -298,8 +299,9 @@ public class ER_ENT_PRG_AccountSearch_Test {
      @isTest
     public static void DoPostTest_Seven(){
         RestRequest req = new RestRequest(); 
-        RestResponse res = new RestResponse();  
-         Account acc = new Account();
+        RestResponse res = new RestResponse();
+        
+        Account acc = new Account();
         acc.name='Test';
         acc.RecordTypeId = accountRecordTypeIntel;
         acc.Core_CIM_ID__c = '22213672';
@@ -501,6 +503,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         countryIsoSetting.Country_Code__c='IN'; 
         insert countryIsoSetting;
         
+        
         Account acc = new Account();
         acc.name='Test FPGA Licensing Account';
         acc.RecordTypeId = accountRecordTypeIntel;
@@ -600,7 +603,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_One()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -612,7 +614,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         //acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
@@ -627,7 +628,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         cccm.Country_Code__c = 'IN';
         cccm.ISO_Code__c = 'IND';
         cccm.name = 'India';
-        insert cccm;
+        insert cccm; 
         
                 
         Test.startTest();
@@ -636,8 +637,8 @@ public class ER_ENT_PRG_AccountSearch_Test {
         fixedSearchResults[0]= ct.id;
         System.Test.setFixedSearchResults(fixedSearchResults);
         ER_ENT_PRG_SearchCIMAccount uiCim =new ER_ENT_PRG_SearchCIMAccount();
-        set<Id> accSfdcId = new set<Id>();
-        accSfdcId.add(acc.Id);
+        set<Id> accSfdcId = new set<Id>(); 
+        accSfdcId.add(acc.Id); 
         uiCim.getCimResults('Herman', '4th Floor ITPL Brookfield', '560037', 'Bengaluru', 'IND', 'KAR', '0', '77',null,'new@b.com', null,true ,null, 'Service Provider', true);
         uiCim.getCimResults('Herman', '4th Floor ITPL Brookfield', '560037', 'Bengaluru', 'IND', 'KAR', null, '77','www.test.com','new@b.com', null,False ,null, 'Service Provider', true);
         uiCim.getCimResults('Herman', '4th Floor ITPL Brookfield', '560037', 'Bengaluru', 'IND', 'KAR', '0', '77',null,null, null,False ,accSfdcId, 'Service Provider', False);
@@ -668,7 +669,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_Two()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -680,7 +680,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         //acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
@@ -707,7 +706,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         set<Id> accSfdcId = new set<Id>();
         accSfdcId.add(acc.Id);
         uiCim.getCimResults('Herman', '4th Floor ITPL Brookfield', '560037', 'Bengaluru', 'IND', 'KAR', '0', '77',null,'new@b.com', null,true ,accSfdcId, 'Service Provider', true);
-         uiCim.getCimResults('Herman', '4th Floor ITPL Brookfield', '560037', 'Bengaluru', 'IND', 'KAR', null, '77','www.test.com','new@b.com', null,False ,null, 'Service Provider', true);
+        uiCim.getCimResults('Herman', '4th Floor ITPL Brookfield', '560037', 'Bengaluru', 'IND', 'KAR', null, '77','www.test.com','new@b.com', null,False ,null, 'Service Provider', true);
         uiCim.getCimResults('Herman', '4th Floor ITPL Brookfield', '560037', 'Bengaluru', 'IND', 'KAR', '0', '77',null,null, null,False ,accSfdcId, 'Service Provider', False);
         uiCim.getCimResults('Herman', '4th Floor ITPL Brookfield', '560037', 'Bengaluru', 'IND', 'KAR', '0', null,'www.test.com','new@b.com', null,False ,null, 'Service Provider', true);
         map<string,string> requestDetails = new map<string,string>();
@@ -736,7 +735,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_Three()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -748,7 +746,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         //acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
@@ -804,7 +801,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
      @isTest
     public static void testCallout_Seven()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
 		Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -816,7 +812,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         //acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
@@ -886,7 +881,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
      @isTest
     public static void testCallout_Four()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
 		Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -898,7 +892,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         //acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
@@ -967,7 +960,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_Five()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -979,7 +971,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         //acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
@@ -1034,7 +1025,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_Six()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -1046,7 +1036,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         //acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
@@ -1064,7 +1053,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         insert cccm;
         
                 
-        Test.startTest();
+        Test.startTest();    
         Test.setMock(HttpCalloutMock.class, new PRM_UIMockHttpResponse());
         Id [] fixedSearchResults= new Id[1];
         fixedSearchResults[0]= ct.id;
@@ -1102,5 +1091,8 @@ public class ER_ENT_PRG_AccountSearch_Test {
     {
         
         
-    }   
+    }
+    
+
+    
 }

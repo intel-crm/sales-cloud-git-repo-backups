@@ -15,23 +15,12 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Account Name</label>
-        <length>255</length>
+        <length>50</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <label>Core_Intel_System_Account</label>
-    <listViews>
-        <fullName>Intel_System_Accounts_View</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
-        <columns>AccountId__c</columns>
-        <columns>Account_Name__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>Intel System Accounts View</label>
-        <language>en_US</language>
-    </listViews>
     <pluralLabel>Core_Intel_System_Accounts</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

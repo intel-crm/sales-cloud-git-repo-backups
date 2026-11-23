@@ -10,5 +10,5 @@ Modifications   :
 * Siddharth                 10/02/2024               Created
 *****************************************************************************************************/
 trigger Pricing_QuoteHoldStatusAgeTrigger on Pricing_Quote_Hold_Status_Age__c (before insert, after insert) {
-	new Pricing_QuoteHoldStatusAgeHandler().run();
+    new Pricing_QuoteHoldStatusAgeHandler().run();
 }

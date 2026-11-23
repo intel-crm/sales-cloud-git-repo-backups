@@ -74,7 +74,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Manufacturing / Industrial</value>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_PSG_Tier__c</column>

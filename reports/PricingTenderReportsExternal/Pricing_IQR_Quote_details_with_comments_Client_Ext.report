@@ -247,7 +247,7 @@
                 <value>Revised</value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>IQR Quote without Comments for E block 1</name>
         <params>
             <name>co</name>
@@ -306,7 +306,7 @@
                 <value>Client</value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>IQR Quote Header and Comments block 1</name>
         <params>
             <name>co</name>
@@ -327,7 +327,7 @@
     </blockInfo>
     <description>This report loads all fields for all Client quotes when opened and can be filtered using the quote number or status depending on the requirement.</description>
     <format>MultiBlock</format>
-    <name>IQR Quotes with Comments - Client</name>
+    <name>IQR Quotes with Comments - Clients</name>
     <params>
         <name>lsk</name>
         <value>1</value>

@@ -12,12 +12,13 @@ Modification Log :
 global class Core_Batch_updateEOL implements Database.Batchable<sObject>,Database.Stateful {
     List<product2> prdList = new List<product2>();
     Set<String> finalOppLineIds = new Set<String>();
+    private Integer retryCount=0;
     global Core_Batch_updateEOL(List<product2> prList){
         prdList = prList;
     }
     global Database.QueryLocator start(Database.BatchableContext BC){
         
-        String query = 'SELECT id,product2Id,product2.Core_SA_Is_EOL__c from Opportunitylineitem where product2id in : prdList and core_status__c in'+Label.Core_SA_Pending_Status;
+        String query = 'SELECT id,product2Id,product2.Core_SA_Is_EOL__c from Opportunitylineitem where product2id in : prdList and core_status__c in'+Label.Core_SA_Pending_Status+'order by Opportunity.AccountId';
         return Database.getQueryLocator(query);
     }
     global void execute(Database.BatchableContext BC,List<Opportunitylineitem> scope){
@@ -78,9 +79,15 @@ global class Core_Batch_updateEOL implements Database.Batchable<sObject>,Databas
     } 
     global void finish(Database.BatchableContext BC){
         system.debug('finalOppLineIds->'+finalOppLineIds);
-        if(finalOppLineIds.size()>0){
-            Core_Batch_updateEOL_Retry b=new Core_Batch_updateEOL_Retry(finalOppLineIds,prdList);
-            database.executebatch(b,integer.valueof(system.label.Core_Batch_updateEOL_Retry_BatchSize));
+        
+        //TWC3123-5360---Core_ProductOpportunity_Test class apex cpu time limit exceeded issue fix
+        if(finalOppLineIds.size()>0) //while(retryCount < 5)
+        {
+            while(retryCount < 5) { //if(finalOppLineIds.size()>0){
+                system.debug('Line 83'+retryCount);
+                Core_Batch_updateEOL_Retry b=new Core_Batch_updateEOL_Retry(finalOppLineIds,prdList,retryCount++);
+                database.executebatch(b,integer.valueof(system.label.Core_Batch_updateEOL_Retry_BatchSize));
+            }
         }
     }
 }

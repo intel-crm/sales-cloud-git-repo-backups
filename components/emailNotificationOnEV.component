@@ -31,7 +31,7 @@
         <apex:repeat value="{!entitlementList}" var="ent">
             <tr> 
                 
-                <p>{!IF(AND(ent.Core_Entitlement_Requester_Id__c == reqId, ent.Core_Contact_Id__r.Id == contactId), ent.Core_Entitlement_Id__r.name,null)}</p>
+                <p>{!IF(AND(ent.reqId == reqId, ent.conId == contactId), ent.conEntName,null)}</p>
                 <!--<td>{!IF(lstContactEntitlementNames[requestorId][ent] ==true, "Assigned", "Removed")} </td> -->
                     
             </tr>

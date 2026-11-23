@@ -1,0 +1,8 @@
+<aura:event type="APPLICATION" description="Event is used to for EPUM" >
+    <aura:attribute name="sContactIdStr" type="String"/>
+    <aura:attribute name="showEntitlements" type="Boolean" default="false"/>
+    <aura:attribute name="sourceCmp" type="String" />
+  <!-- <aura:attribute name="onePartnerIdStr" type="String" />
+    <aura:attribute name="intelAccountIdStr_PC" type="String"/>
+   <aura:attribute name="pContactIdStr" type="String" default="0036C00000KGxLKQA1"/> -->
+</aura:event>

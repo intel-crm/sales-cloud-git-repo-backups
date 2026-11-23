@@ -57,7 +57,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>AR/VR/MR - Commercial,Business Desktop,CE - other,Consumer Mobility,Server,Server - HPC,Storage</value>
+            <value>Business Desktop,CE - other,Consumer Mobility,Server,Server - HPC,Storage</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

@@ -43,34 +43,15 @@
             <value>ASMO</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account$Owner</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Uncovered Account</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Account$Core_Sub_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>NAR</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account$Owner</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>Deanna waun,douglas geisler,heather husted,Jeffery noble,john langlois,dimas oliveira,madhu jayaprakash,mohamed-ali dioury,randy finfrock,scott ackerman,scott schmoll,steve hughes</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Account$Owner</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Account$Core_Account_Tier__c</field>

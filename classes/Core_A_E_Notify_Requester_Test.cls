@@ -12,11 +12,11 @@ public class Core_A_E_Notify_Requester_Test
         Contact NewContact = new Contact();
         String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         Account acc= new Account();
-         acc.Name = 'Test Account';
+        acc.Name = 'Test Account';
         acc.BillingCity ='test';
         acc.BillingCountry='India';
         acc.BillingStreet='Bangalore'; 
-    	acc.RecordTypeId=intelAccRecTypeId; 
+		acc.RecordTypeId=intelAccRecTypeId; 
         insert acc;
         NewContact.FirstName = 'Test';
         NewContact.LastName = 'Email';
@@ -33,7 +33,7 @@ public class Core_A_E_Notify_Requester_Test
         NewContact2.AccountId = acc.Id;
         NewContact2.Email = 'testsend2@mail.com'; 
         NewContact2.Core_AGS_Integration_Status__c = 'Pending';
-	NewContact2.MailingCountry='India';
+		NewContact2.MailingCountry='India';
         
         contacts.add(NewContact2);
         //insert NewContact2;
@@ -61,7 +61,7 @@ public class Core_A_E_Notify_Requester_Test
                              entitlement.Core_ERPM_Engagement_Id__c = erpmEng.Id;
                              entitlement.Core_AGS_Role_Id__c = agsRole.Id;
                              entitlement.Core_Category__c = 'Intel® Partner Investment Center';
-                             //entitlement.Core_Sub_Category__c = 'Client Co-Marketing Fund (CCF)';
+                             entitlement.Core_Sub_Category__c = 'Web Order Management (WOM)';
 							 entitlements.add(entitlement);
                              //insert entitlement;
         
@@ -71,7 +71,7 @@ public class Core_A_E_Notify_Requester_Test
                              entitlement1.Core_ERPM_Engagement_Id__c = erpmEng.Id;
                              entitlement1.Core_AGS_Role_Id__c = agsRole.Id;
                              entitlement1.Core_Category__c = 'Intel® Partner Investment Center';
-                             //entitlement1.Core_Sub_Category__c = 'Client Co-Marketing Fund (CCF)';
+                             entitlement1.Core_Sub_Category__c = 'Web Reporting';
 							 entitlements.add(entitlement1);
                              //insert entitlement1;
                              insert entitlements;
@@ -134,23 +134,23 @@ public class Core_A_E_Notify_Requester_Test
     static void testSendMail()
     {
         List<Contact> contacts = [select id from contact];
-        
+        //system.debug('Contact List of type contacts ==>'+contacts );
         List<Id> contactIds = new List<Id>();
         for(Contact con : contacts ) {  contactIds.add(con.Id);
                                      }
 		Assert.isNotNull(contacts);
-       
+        //system.debug('Contact List of type Ids ==>'+contactIds );
         Test.startTest();
         Core_A_E_Notify_Requester.sendEmail(contactIds);
         Test.stopTest();                           
     }
 	//Added as a part of Sela Code Scan Fixes(TWC1811-6067)
-   @isTest
+    @isTest
     static void testSendMail1()
     {
         
         List<Contact> contacts = [select id from contact where LastName='Email2' limit 1];
-        
+        //system.debug('Contact List of type contacts ==>'+contacts );
         List<Id> contactIds = new List<Id>();
         contactIds.add(contacts[0].id);
 		Assert.isNotNull(contacts[0].id);

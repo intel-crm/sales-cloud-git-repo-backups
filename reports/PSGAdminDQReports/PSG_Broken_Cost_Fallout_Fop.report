@@ -77,13 +77,6 @@
             <operator>equals</operator>
             <value>Budgetary,Design Win,Tools,Transfer Pricing,Contract Pricing</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$SBQQ__Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>In Progress,In Review,Pending,Approved</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

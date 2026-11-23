@@ -24,8 +24,7 @@ global class Core_MDF_ActivityClosure_Batch implements Database.Batchable<sObjec
             'Amount,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Is_Outcome_Based_Ind__c,Core_MDF_Activity_Level_nm__c,'+
             '(select Id,Amount from PartnerFundClaims where Core_MDF_Status__c IN : claimStatus AND Core_MDF_Type_Txt__c = \'Claim\') '+
             'FROM PartnerFundRequest '+
-            'WHERE Core_MDF_ToBeClosedDate__c <: todaysDate ' +
-            'AND Core_MDF_Fund_Request_Status__c != \'Closed\' AND Core_MDF_Fund_Request_Status__c != \'Cancelled\' AND Core_MDF_Fund_Request_Status__c != \'Declined\'';
+            'WHERE Core_MDF_Fund_Request_Status__c != \'Closed\' AND Core_MDF_Fund_Request_Status__c != \'Cancelled\' AND Core_MDF_Fund_Request_Status__c != \'Declined\'';
 		
         return Database.getQueryLocator(query);
     }

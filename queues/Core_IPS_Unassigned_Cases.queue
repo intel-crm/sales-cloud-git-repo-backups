@@ -7,6 +7,9 @@
         <publicGroups>
             <publicGroup>Core_IPS_Unassigned_Cases</publicGroup>
         </publicGroups>
+        <users>
+            <user>11962478@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>

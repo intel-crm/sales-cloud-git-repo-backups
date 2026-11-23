@@ -5,9 +5,9 @@
  
         
         action.setCallback(this, function(response) {
-            var state = response.getState();
+            var state = response.getState(); console.log('KPI state=='+ state);
             if (state === "SUCCESS") {
-                var msg = response.getReturnValue();
+                var msg = response.getReturnValue(); console.log('KPI state=='+ JSON.stringify(msg));
                 cmp.set("v.lastRefresh",msg.lastRefreshDate);
 
                 if(cmp.get("v.lastRefresh")== 'undefined' || cmp.get("v.lastRefresh")==null || cmp.get("v.lastRefresh")==''){

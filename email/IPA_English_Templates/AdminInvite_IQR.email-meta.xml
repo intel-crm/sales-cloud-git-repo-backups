@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Intel Quote Request for PSG</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>AdminInvite_IQR</name>
+    <style>none</style>
+    <subject>Welcome to Intel® Quote Request for FPGA and eASIC</subject>
+    <textOnly>Welcome to Intel® Quote Request for FPGA and eASIC
+
+{!Contact.FirstName},
+
+Welcome to Intel® Quote Request for FPGA and eASIC the new and improved Quoting system. This is your one stop shop to request and manage Quotes, request DPAs and ALNs, view Reports and Price Books.
+
+Log in to  {{TOOLLINK}}https://quoterequest.intel.com to get started!
+
+Thank you,
+Your FPGA and eASIC Intel© Quote Request Team
+
+
+This message was sent to you as an important business communication related to your current relationship with Intel®.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

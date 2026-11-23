@@ -9,7 +9,6 @@ private class Core_MDF_SchNotificationHandler_Test {
         // Creating User with utility class 
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.LastName = 'User Test';
-        usr.IsActive = true;
         usr.UserRoleId = usRole.Id;
         Database.insert(usr);
         System.runAs(usr){  
@@ -233,7 +232,7 @@ private class Core_MDF_SchNotificationHandler_Test {
     
     @isTest
     static void scheduledNotificatonTest(){
-        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test'and IsActive = true LIMIT 1];
+        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test' LIMIT 1];
         System.runAs(sysAdm){
         Test.startTest();
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
@@ -270,7 +269,7 @@ private class Core_MDF_SchNotificationHandler_Test {
     }
     @isTest
     static void scheduledNotificatonTestIpa(){
-        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test' and IsActive = true LIMIT 1];
+        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test' LIMIT 1];
         String notificationType = 'Proposal Approval Request';
         System.runAs(sysAdm){
          Test.startTest();
@@ -283,7 +282,7 @@ private class Core_MDF_SchNotificationHandler_Test {
         acc2.add(ipaPFR.Core_MDF_Ultimate_Account_Id__c); 
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         pfrList.add(ipaPFR);
-        Core_MDF_ScheduledNotificationHandler.notifyIPAUsers(acc1,acc2,pfrList,notificationType, false);
+        Core_MDF_ScheduledNotificationHandler.notifyIPAUsers(acc1,acc2,pfrList,notificationType);
         System.assertEquals(true, ipaPFR!=null);
             
         Test.stopTest();
@@ -291,7 +290,7 @@ private class Core_MDF_SchNotificationHandler_Test {
     }
     @isTest
     static void getUsersToSendMailTest() {
-        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test'and IsActive = true LIMIT 1];
+        User sysAdm = [SELECT Id FROM User WHERE lastname ='User Test' LIMIT 1];
         System.runAs(sysAdm){
 
         	PartnerFundRequest ipaPFR =[select id,title,Core_MDF_ToBeClosedDate__c,ChannelPartnerId,Core_MDF_Fund_Request_Status__c,

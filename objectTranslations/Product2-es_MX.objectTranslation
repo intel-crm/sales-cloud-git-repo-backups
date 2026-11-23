@@ -190,6 +190,10 @@
         <name>Core_Item_Orderable_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Package --></label>
+        <name>Core_Item_Package_Txt__c</name>
+    </fields>
+    <fields>
         <help><!-- Determines if product is available for DPA/ALN --></help>
         <label><!-- Price Auth --></label>
         <name>Core_Item_Price_Authorization_Ind__c</name>
@@ -241,6 +245,118 @@
     <fields>
         <label><!-- Old Product Name --></label>
         <name>Core_Old_Product_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available to TOE --></label>
+        <name>Core_PSG_Available_to_TOE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Devkit ID --></label>
+        <name>Core_PSG_Devkit_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foundation Product --></label>
+        <name>Core_PSG_Foundation_Product__c</name>
+        <relationshipLabel><!-- Products (Foundation Product) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- License Group --></label>
+        <name>Core_PSG_License_Group__c</name>
+        <relationshipLabel><!-- Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- To access the extended/Licensing atrributes for PSG Products --></help>
+        <label><!-- PSG License --></label>
+        <name>Core_PSG_License__c</name>
+        <relationshipLabel><!-- Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Maintenance Duration --></label>
+        <name>Core_PSG_Maintenance_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG Product Class --></label>
+        <name>Core_PSG_Product_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Expiration Duration --></label>
+        <name>Core_PSG_Product_Expiration_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSG Sub Component Category --></label>
+        <name>Core_PSG_Sub_Component_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tool License Type --></label>
+        <name>Core_PSG_Tool_License_Type__c</name>
+        <picklistValues>
+            <masterLabel>FIXED</masterLabel>
+            <translation><!-- FIXED --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FLOAT</masterLabel>
+            <translation><!-- FLOAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEUTRAL</masterLabel>
+            <translation><!-- NEUTRAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRAINING CREDIT</masterLabel>
+            <translation><!-- TRAINING CREDIT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Tool Type --></label>
+        <name>Core_PSG_Tool_Type__c</name>
+        <picklistValues>
+            <masterLabel>ADD SEAT</masterLabel>
+            <translation><!-- ADD SEAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BASE</masterLabel>
+            <translation><!-- BASE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BUNDLE</masterLabel>
+            <translation><!-- BUNDLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CORPORATE</masterLabel>
+            <translation><!-- CORPORATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IP</masterLabel>
+            <translation><!-- IP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N-A</masterLabel>
+            <translation><!-- N-A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PACKAGE</masterLabel>
+            <translation><!-- PACKAGE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RENEWAL</masterLabel>
+            <translation><!-- RENEWAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOC</masterLabel>
+            <translation><!-- SOC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOFTWARE</masterLabel>
+            <translation><!-- SOFTWARE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRAINING CREDIT</masterLabel>
+            <translation><!-- TRAINING CREDIT --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- Determines whether this Product is available to external partner users for selection on Opportunities. This product is added to the Partner Price Book. --></help>
@@ -956,6 +1072,14 @@
         <relationshipLabel><!-- Source Upgrades --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Available to TOE --></label>
+        <name>Sales_Available_to_TOE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tool Type --></label>
+        <name>Sales_Tool_Type_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- UCASE_CodeName --></label>
         <name>UCASE_CodeName__c</name>
     </fields>
@@ -970,6 +1094,10 @@
     <validationRules>
         <errorMessage><!-- Cannot Edit Name field --></errorMessage>
         <name>Core_Prevent_IPS_OrgAdm_Name_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit PSG data --></errorMessage>
+        <name>Core_Prevent_Non_PSG_Usr_Product_Fields</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You cannot edit non-PSG records, Please contact the support team for any access related help --></errorMessage>

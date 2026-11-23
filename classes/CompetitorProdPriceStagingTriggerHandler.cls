@@ -43,7 +43,7 @@ public without sharing class CompetitorProdPriceStagingTriggerHandler extends Tr
             Map<String,Pricing_Competitor_Product_Price__c> prodPriceNameRegToRecordMap = new Map<String,Pricing_Competitor_Product_Price__c>();
             Map<String,Pricing_Competitor_Product_Price__c> prodPriceNameRegToRecordMapInsert = new Map<String,Pricing_Competitor_Product_Price__c>();
             
-            for(Pricing_Competitor_Product_Price__c compProdPrice : [SELECT id,Pricing_Competitor_Product__c,Pricing_Competitor_Product__r.Name,Pricing_Region_Nm__c,	Pricing_List_Price__c,
+            for(Pricing_Competitor_Product_Price__c compProdPrice : [SELECT id,Pricing_Competitor_Product__c,Pricing_Competitor_Product__r.Name,Pricing_Region_Nm__c,   Pricing_List_Price__c,
                                                                      Pricing_Median_Meet_Comp_Discount__c,Pricing_Final_Meet_Comp_Price__c,Pricing_Application_Nm__c FROM Pricing_Competitor_Product_Price__c WHERE Pricing_Competitor_Product__r.Name IN :compProdPriceNameStagingTxt and Pricing_Region_Nm__c IN : compProdPriceStageRegionList]){
                                                                          compProdPriceNameRegToRecordMap.put(compProdPrice.Pricing_Competitor_Product__r.Name +'-'+compProdPrice.Pricing_Region_Nm__c +'-'+compProdPrice.Pricing_Application_Nm__c, compProdPrice);     
                                                                      }

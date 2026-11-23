@@ -110,7 +110,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                                    AND PMP_Benefit_Update_Ind__c=False LIMIT 30000];
                 } 
             }catch(Exception e){
-                //System.debug('Error occured while searching the keyword in traslation object :'+ e);
                // throw e;//error handling
                 
             }
@@ -181,7 +180,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
             }
         }
         partnerIds.addAll(partnersIdsFound);
-        // System.debug('partnerIds'+partnerIds);
         return partnerIds;
     }
     /**********************************************************************************************/
@@ -203,7 +201,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                 }
             }
         }catch(Exception e){
-            //System.debug(e.getMessage()+' '+e.getLineNumber()+' '+e.getCause());
             throw new AuraHandledException(e.getMessage()+' '+e.getLineNumber()+' '+e.getCause());
             //throw e;error handling
         }
@@ -230,7 +227,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         for(PMP_Partner_Specialty__c specData: specialtyList){
             optionList.add(specData.Name); 
         }
-        // system.debug('OptionList : '+ optionList);
         if (!optionList.isEmpty()){
             
             String query =  'SELECT id FROM PMP_Company__c WHERE toLabel(PMP_Account_Specialty__c) INCLUDES (';
@@ -333,7 +329,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         List<Id> partnerIds = new List<Id>();
         List<Id> result = null;
         List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
-        // System.debug('option'+option);
         //option = '234825394t34';
          //   option = metada.value;
          
@@ -346,7 +341,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
           
         try{
             partnerList = [ select id from PMP_Company__c where (PMP_Partner_Program_nm__c INCLUDES (:option) OR PMP_Account_Specialty__c INCLUDES (:option.replace('_', ' ')))];
-            //System.debug('partnerList'+partnerList);
         }catch(Exception e){
             //System.debug('Error in fetching Company Information records :'+ e);
         }
@@ -380,7 +374,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
             region = [SELECT Id,Name,PMP_Specification_Chinese_Nm__c,PMP_Specification_Japanese_Nm__c FROM PMP_Specification__c WHERE PMP_Partner_Product_Specification_Id__c =: PMP_StaticConstants_Partner.REGION_PIM_ID  LIMIT 1];//WITH SECURITY_ENFORCED
         }
         mergeSet.addAll(partnerIds);
-        // system.debug('---------'+partnerIds.size());
         if(selectedFilters.get('Partner Program_Partner')!=null && selectedFilters.get('Partner Program_Partner').size()>0){
            // partnerIds = getPartnerProgramResults(selectedFilters.get('Partner Program_Partner')[0]);                 
             mergeSet.retainAll(partnerIds);    
@@ -428,8 +421,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                          WHERE PMP_Company_Information_Id__c in :partners AND PMP_Field_Nm__c != :streamIdName];//WITH SECURITY_ENFORCED
         }*/
         List<Partner> partnerResults = new List<Partner>();
-		// system.debug('partnerProgType'+partnerProgType);
-        // System.debug('..partners ids in getpartners.'+partners);
         List<Id> partIds= partners;
         
         //Sorting Logic
@@ -440,7 +431,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         }else{
             sortBy = PMP_StaticConstants_Partner.sortByMostRecentPartner;
         }
-        // System.debug('$$PsortBy-->'+sortBy);
         List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
         //Logic to fetch sorted partners
         //String ptnrList = 'select Id,Name,PMP_Is_Distributor_Ind__c,PMP_Account_Id__c,PMP_Badge_Tier_Sequence_Nbr__c,PMP_Account_Id__r.Core_IPA_Badge_Tier__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c,PMP_Account_Industry__c,PMP_Account_Application__c,PMP_Account_Specialty__c,PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c,toLabel(PMP_Company_Lead_Gen_Language_Nm__c),PMP_IPA_Badge_Tier_Txt__c,PMP_Company_Status_Update_Dt__c,PMP_Account_Dsc__c,PMP_Account_Website__c,PMP_Disti_Sys_Solutions_Nm__c,PMP_Disti_Components_Nm__c,PMP_Disti_Country_Coverage_Txt__c,PMP_Account_Id__r.Core_Account_Type__c,PMP_Partner_Benefit_Type__c,PMP_Biz_Org_Type_Txt__c from PMP_Company__c where id in :partIds ORDER BY ';
@@ -453,7 +443,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         String finalPartnerList= ptnrList;// pagination fix: modified by priyanka from 'ptnrList+ sortBy' to 'ptnrList'
         //System.Debug('ptnrList to check biz org type'+ptnrList);
         Integer offset = (currentPage-1)*pageSize;
-        //system.debug('offset' + offset);
         List<String> finalPartnerIds= new List<String>(); //pagination fix: declared by priyanka
         
         //Pagination Logic
@@ -506,7 +495,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                     finalPartnerList+=' WHERE id in:partIds ORDER BY '+sortBy+' LIMIT 12 '; 
                 }
             
-            // system.debug('query is --------- ' + finalPartnerList);
             if(Schema.sObjectType.PMP_Company__c.isAccessible()){
                 String finalQuery=finalPartnerList;
                 partnerList = Database.query(finalQuery);
@@ -519,7 +507,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         Map<Id, PMP_Company__c> companyById = new Map<Id, PMP_Company__c>();
 		//Commenting as a part of OPID restructure										  
         //Set<Id> accIds = new Set<Id>();
-       // System.debug('..partnerList inside the getPartners()...'+partnerList);
         
         for (PMP_Company__c comp : partnerList)
         {
@@ -787,7 +774,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
              String web = '';
              if(ptnr.PMP_Account_Website__c != NULL) {
                     web = (ptnr.PMP_Account_Website__c.startsWith('http') ? '' : 'https://') + ptnr.PMP_Account_Website__c;
-                    //system.debug('..PMP_Account_Website__c...'+web);
                     partnerWrapper.website = web;
                 }            
             
@@ -884,7 +870,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                         partnerWrapperBizOrg.distributorTagline = distributorPartnerTagLine;
                         partnerWrapperBizOrg.contactPartnerVisible=partnerWrapper.isContactPartnerVisible;
                         isDistiPartner=true; //to indicate disti cards are formed
-                        // System.debug('PPP: partnerWrapper'+partnerWrapper);
                         partnerResults.add(partnerWrapperBizOrg);
                     }
                     }
@@ -894,11 +879,9 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                     }
                 }
             }
-            //System.debug('PPP: partnerWrapper'+partnerWrapper);
             
             if(!isDistiPartner){ // for non disti partner
                 partnerWrapper.contactPartnerVisible = partnerWrapper.isContactPartnerVisible; //for cta button visibility on partner cards
-                //System.debug('partnerWrapper'+partnerWrapper);
                 
                 /*End - 2.0 Changes*/
                 partnerResults.add(partnerWrapper);
@@ -947,14 +930,12 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
     
     //Modified on 15-Aug-2019 to search ODM_LOEM specialty by Nikhil
     public static List<Id> filterPartners(String catId,List<Id> partners){
-        // System.debug('catId'+catId);
         List<PMP_Partner_Program__c> odmLoem = new List<PMP_Partner_Program__c>();
         List<PMP_Partner_Program__c> partnerPrograms = new List<PMP_Partner_Program__c>();
         if(Schema.sObjectType.PMP_Company__c.isAccessible()){
             odmLoem = [SELECT id, PMP_Is_Active_Ind__c, PMP_Partner_Program_Value_Txt__c from PMP_Partner_Program__c where PMP_Partner_Program_Value_Txt__c = 'ODM-LOEM' AND PMP_Is_Active_Ind__c=TRUE];//WITH SECURITY_ENFORCED
             partnerPrograms = [SELECT id, PMP_Is_Active_Ind__c, PMP_Partner_Program_Value_Txt__c from PMP_Partner_Program__c where Id=:catId AND PMP_Is_Active_Ind__c=TRUE];//WITH SECURITY_ENFORCED
         }
-        // System.debug('partnerPrograms'+partnerPrograms);
         if(partnerPrograms.size() > 0){
             if(catId!=odmLoem[0].Id){
                  catId = partnerPrograms[0].PMP_Partner_Program_Value_Txt__c;
@@ -968,7 +949,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
         if(Schema.sObjectType.PMP_Company__c.isAccessible()){
             partnerList = [SELECT id,Name from PMP_Company__c where id in :partners and (PMP_Partner_Program_nm__c includes (:catId) OR PMP_Account_Specialty__c INCLUDES ( :catId.replace('_',' ')))];//WITH SECURITY_ENFORCED
         }
-        // System.debug('partnerList'+partnerList);
         List<Id> partnerIds = new List<Id>();
         for(PMP_Company__c partner : partnerList){
             partnerIds.add(partner.id);
@@ -995,7 +975,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
             }
             return partnerIds;
         }catch(Exception e){
-            //System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
             throw new AuraHandledException(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
         }
     }
@@ -1047,7 +1026,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
             specList.addAll(c.PMP_Account_Specialty__c.split(';'));
             partnerSpecMap.put(c.id,specList);
         } 
-        //system.debug('partnerSpecMap'+partnerSpecMap);
         for(String s: partnerSpecMap.keySet()){
             for(String specVal:partnerSpecMap.get(s)){
                 Specialty spec= new Specialty();
@@ -1070,7 +1048,6 @@ public with sharing class PMP_SearchPartnerController extends PMP_SearchWrapperS
                 }
             }
         }
-            //System.debug('..response..'+response);
      return response;
         }
     

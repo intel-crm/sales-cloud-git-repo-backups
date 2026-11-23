@@ -6,9 +6,9 @@
         <label>Client Computing</label>
     </customValue>
     <customValue>
-        <fullName>Data Center</fullName>
+        <fullName>Networking &amp; Telco</fullName>
         <default>false</default>
-        <label>Data Center</label>
+        <label>Networking &amp; Telco</label>
     </customValue>
     <customValue>
         <fullName>Edge</fullName>
@@ -16,21 +16,21 @@
         <label>Edge</label>
     </customValue>
     <customValue>
-        <fullName>Networking &amp; Telco</fullName>
+        <fullName>Data Center</fullName>
         <default>false</default>
-        <label>Networking &amp; Telco</label>
-    </customValue>
-    <customValue>
-        <fullName>FC1</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>FC1</label>
+        <label>Data Center</label>
     </customValue>
     <customValue>
         <fullName>FC2</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>FC2</label>
+    </customValue>
+    <customValue>
+        <fullName>FC1</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>FC1</label>
     </customValue>
     <customValue>
         <fullName>Networking &amp; Intelligent Edge</fullName>

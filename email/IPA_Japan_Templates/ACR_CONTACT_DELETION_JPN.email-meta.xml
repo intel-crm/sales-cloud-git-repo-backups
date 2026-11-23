@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION_JPN</name>
     <style>none</style>
@@ -18,7 +18,7 @@
 役割 (職種): {!AcrRoles}
 
 この変更が許可されたものでない場合は、ログインしてアカウントを更新してください。
-ご質問がある場合は、サポ﻿ートまでお問い合わせください
+ご質問がある場合は、こちらへご連絡ください https://signin.intel.com/ContactUs?Culture=ja-jp。
 
 
 
@@ -28,7 +28,7 @@
 このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
 © {!$Label.PRM_CurrentYear} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-プライバシー  |  Cookies</textOnly>
+プライバシー・ポリシー  |  Cookie</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

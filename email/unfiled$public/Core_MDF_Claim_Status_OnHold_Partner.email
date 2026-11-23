@@ -2,7 +2,7 @@
                          relatedToType="PartnerFundClaim"
                           language="{!RelatedTo.Core_MDF_Owner_Language_Locale_Key_txt__c}"
                           subject="{!IF(OR(RelatedTo.Core_MDF_Has_Sub_Claims_Ind__c,NOT(ISBLANK(RelatedTo.Core_MDF_Claim_Id__c))), RelatedTo.ChannelPartner.Name,'')} {!$Label.Core_MDF_EmailTemp_Subj1} {!IF(NOT(ISBLANK(RelatedTo.Core_MDF_Claim_Id__c)), RelatedTo.Core_MDF_Claim_Id__r.Core_MDF_Claim_Ref_Number__c, RelatedTo.Core_MDF_Claim_Ref_Number__c)}: {!IF(NOT(ISBLANK(RelatedTo.Core_MDF_Claim_Id__c)), RelatedTo.Core_MDF_Claim_Id__r.Title, RelatedTo.Title)} - {!$Label.Core_MDF_EmailTemp_Claim_Subject_Hold}" renderUsingSystemContextWithoutSharing="True">                          
-                          
+                         
                          
     <messaging:htmlEmailBody >
         <html>

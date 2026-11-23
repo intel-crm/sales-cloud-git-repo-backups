@@ -31,7 +31,6 @@
             </value>
         </inputParameters>
         <nameSegment>PCC_InvocableMethods</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action will approve process instance record.</description>
@@ -67,7 +66,6 @@
             </value>
         </inputParameters>
         <nameSegment>PCC_InvocableMethods</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action will approve process instance record.</description>
@@ -100,7 +98,6 @@
             </value>
         </inputParameters>
         <nameSegment>PCC_InvocableMethods</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <description>This action is to update process instance record.</description>
@@ -136,13 +133,12 @@
             </value>
         </inputParameters>
         <nameSegment>PCC_InvocableMethods</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Email</name>
         <label>Email</label>
         <locationX>3130</locationX>
-        <locationY>1214</locationY>
+        <locationY>998</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -187,7 +183,6 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -269,7 +264,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>get_intel_logo_link</targetReference>
+            <targetReference>Email</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -912,48 +907,6 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>get_intel_logo_link</name>
-        <label>get intel logo link</label>
-        <locationX>3130</locationX>
-        <locationY>998</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>get_internal_record_link</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>PCC_Intel_Logo_Link</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>LabelConfiguration__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>get_internal_record_link</name>
-        <label>get internal record link</label>
-        <locationX>3130</locationX>
-        <locationY>1106</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Email</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>PCC_Internal_Record_Link</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>LabelConfiguration__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_Products_Record</name>
         <label>Get Products Record</label>
         <locationX>1023</locationX>
@@ -1427,7 +1380,7 @@
 &lt;h1 style=&quot;margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;&quot;&gt;New Deal Submitted for Review for Covered End Customer&lt;/h1&gt;
 &lt;/th&gt;
 &lt;th class=&quot;callout-inner&quot; style=&quot;padding:15px;&quot;&gt; 
-&lt;img src={!get_intel_logo_link.Value__c} alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
+&lt;img src=https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005OXH2&amp;oid=00Do0000000aRcf&amp;lastMod=1609662404000 alt=&quot;Intel&quot; title=&quot;Intel&quot; align=&quot;right&quot; class=&quot;float-center&quot; style=&quot;height:100%;width:auto&quot;&gt;
 &lt;/th&gt;
 &lt;th class=&quot;expander&quot; style=&quot;margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;&quot;&gt;&lt;/th&gt;
 &lt;/tr&gt;
@@ -1466,9 +1419,6 @@
 A deal has been submitted for review and you are listed as the Account Executive for the end customer.   Upon deal approval, you will be listed as part of the opportunity team, providing the ability to monitor the deal through the sales cycle.
 &lt;br&gt;
 &lt;br&gt;
-No action is required from you at this time.
-&lt;br&gt;
-&lt;br&gt;
 &lt;b&gt;Registration Number: &lt;/b&gt;{!recordId.Name} 
 &lt;br&gt;
 &lt;b&gt;Deal Registration Name: &lt;/b&gt;{!recordId.Core_Design_Registration_Nm__c}
@@ -1478,10 +1428,7 @@ No action is required from you at this time.
 &lt;b&gt;End Customer Account: &lt;/b&gt;{!recordId.Core_End_Customer_Account_Id__r.Name}  
 &lt;br&gt;
 &lt;br&gt;
-For more details, you can access the deal registration record &lt;a href={!get_internal_record_link.Value__c}{!recordId.Id}&gt;here&lt;/a&gt;.
-&lt;br&gt;
-&lt;br&gt;
-If you don&apos;t have access, please click &lt;a href=https://salescrmtraining.intel.com/sales-tools/sales-crm/deal-registration-on-the-intel-partner-portal/deal-registration-how-to-access/&gt;here&lt;/a&gt;.
+For more details, you can access the deal registration record &lt;a href=https://intel--crmqa7.sandbox.lightning.force.com/{!recordId.Id}&gt;here&lt;/a&gt;.
 &lt;br&gt;
 &lt;br&gt;
 &lt;/p&gt;

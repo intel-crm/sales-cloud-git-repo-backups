@@ -11,146 +11,10 @@
     <fields>
         <label><!-- Action on (False) --></label>
         <name>Core_MDF_Action_on_False_nm__c</name>
-        <picklistValues>
-            <masterLabel>ATF Approval</masterLabel>
-            <translation><!-- ATF Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Additional Reviewer</masterLabel>
-            <translation><!-- Additional Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Customer Acceptance</masterLabel>
-            <translation><!-- Customer Acceptance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA Reviewer</masterLabel>
-            <translation><!-- EMEA Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>First Level Manager</masterLabel>
-            <translation><!-- First Level Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Geo Lead Approval</masterLabel>
-            <translation><!-- Geo Lead Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L1 Approval</masterLabel>
-            <translation><!-- L1 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L1&apos;s First Level Manager</masterLabel>
-            <translation><!-- L1&apos;s First Level Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L1&apos;s Second Level Manager</masterLabel>
-            <translation><!-- L1&apos;s Second Level Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L2 Approval</masterLabel>
-            <translation><!-- L2 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L3 Approval</masterLabel>
-            <translation><!-- L3 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>No Action</masterLabel>
-            <translation><!-- No Action --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>None</masterLabel>
-            <translation><!-- None --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Planned</masterLabel>
-            <translation><!-- Planned --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Price Reviewer</masterLabel>
-            <translation><!-- Price Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Program Office Reviewer</masterLabel>
-            <translation><!-- Program Office Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Second Level Manager</masterLabel>
-            <translation><!-- Second Level Manager --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Action on (True) --></label>
         <name>Core_MDF_Action_on_True_nm__c</name>
-        <picklistValues>
-            <masterLabel>ATF Approval</masterLabel>
-            <translation><!-- ATF Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Additional Reviewer</masterLabel>
-            <translation><!-- Additional Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Customer Acceptance</masterLabel>
-            <translation><!-- Customer Acceptance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA Reviewer</masterLabel>
-            <translation><!-- EMEA Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>First Level Manager</masterLabel>
-            <translation><!-- First Level Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Geo Lead Approval</masterLabel>
-            <translation><!-- Geo Lead Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L1 Approval</masterLabel>
-            <translation><!-- L1 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L1&apos;s First Level Manager</masterLabel>
-            <translation><!-- L1&apos;s First Level Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L1&apos;s Second Level Manager</masterLabel>
-            <translation><!-- L1&apos;s Second Level Manager --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L2 Approval</masterLabel>
-            <translation><!-- L2 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L3 Approval</masterLabel>
-            <translation><!-- L3 Approval --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>No Action</masterLabel>
-            <translation><!-- No Action --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>None</masterLabel>
-            <translation><!-- None --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Planned</masterLabel>
-            <translation><!-- Planned --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Price Reviewer</masterLabel>
-            <translation><!-- Price Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Program Office Reviewer</masterLabel>
-            <translation><!-- Program Office Reviewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Second Level Manager</masterLabel>
-            <translation><!-- Second Level Manager --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Active --></label>
@@ -177,7 +41,7 @@
         <name>Core_MDF_Budget_Type_Multi_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Budget Type --></label>
+        <label><!-- Budget Type Old --></label>
         <name>Core_MDF_Budget_Type_Nm__c</name>
     </fields>
     <fields>
@@ -654,7 +518,7 @@
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>
-        <errorMessage><!-- ID Field is mandatory for this Field value --></errorMessage>
+        <errorMessage><!-- ID Field is mandatory for Account and Activity. --></errorMessage>
         <name>Core_MDF_ARE_ID_Field_Mandate</name>
     </validationRules>
     <validationRules>

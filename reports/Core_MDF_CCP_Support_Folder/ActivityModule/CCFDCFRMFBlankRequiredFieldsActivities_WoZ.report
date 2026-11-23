@@ -63,7 +63,7 @@
     </columns>
     <description>CCF, DCF, RMF Program Activities having Required fields blank</description>
     <filter>
-        <booleanFilter>((1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15)) OR (16 AND (2 OR 3 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 15))) AND 17 AND 18</booleanFilter>
+        <booleanFilter>((1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 16 OR 17)) OR (18 AND (2 OR 3 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 17))) AND 19</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
@@ -128,7 +128,21 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Activity_SubType_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Reimbursement_Rate__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_TargetAudience__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -182,13 +196,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>A&amp;E Test Account JJ</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

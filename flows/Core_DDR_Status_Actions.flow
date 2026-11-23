@@ -15,6 +15,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_Design_Registration__c.Core_DDR_Send_Open_Design_Notification</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -156,8 +157,8 @@ NOT(ISPICKVAL({!$Record.Core_Design_Registration_Status_Nm__c}, &apos;Re-Submitt
                 <targetReference>Deal_Registration_Check</targetReference>
             </connector>
             <label>Open_Design_Remainder</label>
-            <offsetNumber>150</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
+            <offsetNumber>30</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
             <recordField>CreatedDate</recordField>
             <timeSource>RecordField</timeSource>
         </scheduledPaths>

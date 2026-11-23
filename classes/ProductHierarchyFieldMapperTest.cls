@@ -74,7 +74,7 @@ public class ProductHierarchyFieldMapperTest {
         System.assertEquals(1, results.size());
         System.assertEquals('59', results[0].Core_Hierarchy_ID__c);
         System.assertEquals('Valid Platform CodeName Hierarchy', results[0].Core_Hierarchy_Name__c);
-      //  System.assertEquals(true, results[0].Core_IsActive__c);
+        System.assertEquals(false, results[0].Core_IsActive__c);
     }
 
     @isTest

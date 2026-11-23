@@ -33,7 +33,7 @@
             onchange={handleChange} 
             placeholder={placeholder}
             required
-            onfocusout={handleFocusOut}
+            onblur={handleFocusOut}
             disabled={isDisabledField}>
         </lightning-input>
         <template if:true={searchKeyLenMsg}>

@@ -6,9 +6,9 @@
   },
   "details": {
     "details": {
-      "Name": "Test Campaign",
+      "Name": "FY26 Q3 Partner Launch",
       "Status": "In Progress",
-      "Core_MDF_Account__r.Name": "Test Account",
+      "Core_MDF_Account__r.Name": "Acme Retail",
       "Core_MDF_Channel_Program__r.Name": "Retail Marketing Funds"
     },
     "Campaign Budgets": [

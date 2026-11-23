@@ -36,10 +36,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Last_Touch_Marketing_Activity__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Type</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -326,6 +326,20 @@
     </fields>
     <label>Product fields mapping</label>
     <listViews>
+        <fullName>Deactivation_Date_Mapping</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>MasterLabel</field>
+            <operation>contains</operation>
+            <value>Deactivation</value>
+        </filters>
+        <label>Deactivation Date Mapping</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
         <fullName>IPS_Level_Configurations</fullName>
         <columns>MasterLabel</columns>
         <columns>Level__c</columns>

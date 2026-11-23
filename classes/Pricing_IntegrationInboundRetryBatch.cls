@@ -26,6 +26,7 @@ public without sharing class Pricing_IntegrationInboundRetryBatch implements Dat
         String statusMessage;
         try {
             for(Core_Integration_Inbound_Message__c integrationInboundRecord : scope) {
+                System.debug('integrationInboundRecord -> ' + integrationInboundRecord); 
                 integrationInboundRecord.Core_Retry_Counter__c = 0;
                 integrationInboundRecord.Core_Processing_Status__c = 'Pending';
                 inboundRecordMap.put(integrationInboundRecord.Id ,integrationInboundRecord.Name);

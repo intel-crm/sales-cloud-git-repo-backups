@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="New Rebate Claim Submitted for Review" recipientType="User" relatedToType="PCC_Rebate_Claim__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:PCC_RebateClaimApprovalNotification rebateClaimRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

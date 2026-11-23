@@ -13,14 +13,17 @@ public without sharing class Core_MDF_Bulk_Approvals_Requests {
 Method Name   :        isBulkApprovalRequestsNeeded
 @return       :        Boolean
 @parameters   :        null
-Description   :        returns true for the users based on the permission sets defined for bulk approvals
+Description   :        returns true for the users based on the permission sets defined for bulk approvals and object & program type
 Added By      :        Accenture - Sai - 03/11/2021
 Modified By   :        Date:           Changes:
 1. Sai                 06/12/2021      Now checking the user with its permission sets defined for bulk approvals.
+1. Sai                 07/01/2022      After checking with PS, checking object and program type additionally
 ***********************************************************************************************************************/  
-    @AuraEnabled
+    //Commented as part of WW14 unused code - Alekhya
+    /*@AuraEnabled
     public static Boolean isBulkApprovalRequestsNeeded(){        
         try {
+            List<ProcessInstanceWorkItem> piwiList = new List<ProcessInstanceWorkItem>();
             Boolean isBulkApprovalRequestsActive = false;
             String bulkApproverUserId = UserInfo.getUserId(); 
             List<String> bulkApprovalPermSetsList = new List<String>();
@@ -28,18 +31,56 @@ Modified By   :        Date:           Changes:
             if(bulkApprovalPermSet != null){
                 bulkApprovalPermSetsList = bulkApprovalPermSet.split(','); 
             } 
-            for(List<PermissionSetAssignment> perSetAssList : [SELECT Id, AssigneeId, PermissionSet.Name, PermissionSetId
-                                                               FROM PermissionSetAssignment 
-                                                               WHERE AssigneeId = :bulkApproverUserId
-                                                               AND PermissionSet.Name = :bulkApprovalPermSetsList
-                                                               AND Assignee.IsActive = TRUE]){
-                                                                   if(perSetAssList != null && perSetAssList.size() > 0){
-                                                                       isBulkApprovalRequestsActive = true;
-                                                                   }
-                                                               }
+            List<PermissionSetAssignment> perSetAssList = [SELECT Id, AssigneeId, PermissionSet.Name, PermissionSetId FROM PermissionSetAssignment 
+                                                           WHERE AssigneeId = :bulkApproverUserId AND PermissionSet.Name = :bulkApprovalPermSetsList
+                                                           AND Assignee.IsActive = TRUE];
+            if(perSetAssList != null && perSetAssList.size() > 0){
+                isBulkApprovalRequestsActive = true;
+                System.debug('CHECK 1: ' +isBulkApprovalRequestsActive);
+                for(ProcessInstanceWorkItem piwi : [SELECT id, ProcessInstance.TargetObjectId, ProcessInstance.TargetObject.Type, 
+                                                    ProcessInstance.TargetObject.Name, CreatedBy.name, CreatedDate FROM ProcessInstanceWorkItem
+                                                    WHERE ProcessInstance.Status = 'Pending' AND Actor.Id = :bulkApproverUserId  ORDER BY CreatedDate desc])
+                { 
+                    piwiList.add(piwi); 
+                }
+                System.debug('CHECK 2: ' +piwiList);
+                System.debug('CHECK 2_1: ' +piwiList.size());
+                System.debug('CHECK 2_2: ' +bulkApproverUserId);
+                List<Id> campaignOrPfrIds = new List<Id>();
+                List<String> programType = new List<String>();
+                if(piwiList != null && piwiList.size() > 0){
+                    for(ProcessInstanceWorkItem piwi : piwiList){
+                        campaignOrPfrIds.add(piwi.ProcessInstance.TargetObjectId);
+                        programType.add(piwi.ProcessInstance.TargetObject.Type); 
+                        System.debug('CHECK 3_1: ' +programType);
+                        System.debug('CHECK 3_2: ' +piwi);
+                    }
+                    System.debug('CHECK 3_3: ' +programType[0]);
+                    System.debug('CHECK 3_4: ' +programType[1]);
+                    System.debug('CHECK 3_5: ' +programType.size());
+                }
+                if(programType[0] == 'Campaign'){
+                    Campaign campaignRecord = [Select Id, Core_MDF_Program__c from Campaign where Id=:campaignOrPfrIds LIMIT 1];
+                    if(campaignRecord != null){
+                        isBulkApprovalRequestsActive = campaignRecord.Core_MDF_Program__c == 'Intel Partner Alliance' ? true : false;
+                        System.debug('CHECK 3: ' +campaignRecord.Core_MDF_Program__c);
+                        System.debug('CHECK 4: ' +isBulkApprovalRequestsActive);
+                    }
+                    
+                }
+                else if(programType[0] == 'PartnerFundRequest'){
+                    PartnerFundRequest pfrRecord = [Select Id, Core_MDF_Program__c from PartnerFundRequest where Id=:campaignOrPfrIds LIMIT 1];
+                    if(pfrRecord != null){
+                        isBulkApprovalRequestsActive = pfrRecord.Core_MDF_Program__c == 'Intel Partner Alliance' ? true : false;
+                        System.debug('CHECK 5: ' +pfrRecord.Core_MDF_Program__c);
+                        System.debug('CHECK 6: ' +isBulkApprovalRequestsActive);
+                    }
+                }
+            }               
+            System.debug('CHECK 7: ' +isBulkApprovalRequestsActive);
             return isBulkApprovalRequestsActive;  
         } catch (Exception e) { Core_MDF_CCP_UtilityClass.logError(e); return null; }
-    }
+    }*/
     
     /***************************************************************************************************** 
 Method Name   :        submitBulkApprovalRequests

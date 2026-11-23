@@ -1,6 +1,7 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" 
 controller="PRM_AdminRegistration"  
 access="global" >
+
     <aura:attribute type="Boolean" name="restrictEmbargoedCountry" default="true"/>
     <!--  <ltng:require styles="{!$Resource.MultiLineToast}" /> -->
     <lightning:notificationsLibrary aura:id="notifLib"/>
@@ -199,6 +200,10 @@ access="global" >
                                             messageWhenPatternMismatch="Illegal character on username/email id" 
                                             value="{!v.conEmail}" required="true" onchange="{!c.updateEmail}" 
                                             oncommit="{!c.getAccount}"/>
+                                            <!-- <aura:if isTrue="{!v.showBlockedContact}">
+                                                <lightning:helptext
+                                                content="The above contact is blocked"/>
+                                            </aura:if> -->
                                         </div>
                                     </div>
                                 </div>

@@ -267,7 +267,7 @@ global without sharing class Core_MDF_SendPaidPaymentEmailToAdmin implements Dat
                                                       WHERE Core_Entitlement_Id__r.Name LIKE '%Account Budget Administrator' AND 
                                                             Core_Contact_Id__c IN :contactIdUserIdMap.keySet() AND
                                                             Core_Type__c = 'Entitlement' AND 
-                                                            Core_Category__c = 'Intel® Partner Investment Center' AND
+                                                            Core_Category__c = 'Consolidated Co-marketing Platform' AND
                                                             Core_Ops_Status__c = 'Complete' AND
                                                             Core_Selected__c = true AND
                                                             Core_Status__c = 'Complete']){

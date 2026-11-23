@@ -28,6 +28,7 @@ public class Pricing_PricingAI_BulkControllerTest {
     }
     
     static testMethod void testMakeCallout(){
+       // SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name from SBQQ__QuoteLine__c LIMIT 1];
         List<String> quoteLineId = new List<String>();
         quoteLineId.add(quoteLineList[0].Id);
@@ -50,6 +51,7 @@ public class Pricing_PricingAI_BulkControllerTest {
     }
 
     static testMethod void testBlankSuccessContentMakeCallout(){
+       // SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name from SBQQ__QuoteLine__c LIMIT 1];
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         List<String> quoteLineId = new List<String>();
@@ -81,6 +83,7 @@ public class Pricing_PricingAI_BulkControllerTest {
     
     static testMethod void testGetQuoteLineDetails(){
         Test.startTest();
+       // SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,Pricing_Billing_Start_Date_Dt__c from SBQQ__QuoteLine__c LIMIT 1];
         List<String> quoteLineId = new List<String>();
         quoteLineId.add(quoteLineList[0].Id); 

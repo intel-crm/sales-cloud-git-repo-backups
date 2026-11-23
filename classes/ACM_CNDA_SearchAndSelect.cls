@@ -8,7 +8,7 @@ public without sharing class ACM_CNDA_SearchAndSelect
             
             // Check if the user has any of the allowed profiles
         	
-                Account acct = [Select Name,Core_CNDA_Number__c from Account where Id =: AcctID LIMIT 1];    
+                Account acct = [Select Name,Core_CNDA_Number__c from Account where Id =: AcctID WITH SECURITY_ENFORCED LIMIT 1];    
                 if(String.isNotBlank(Name))
                 {
                     return new MyReturnWrapper(getCNDAforName(Name,multiParam),acct.Core_CNDA_Number__c);
@@ -74,7 +74,7 @@ public without sharing class ACM_CNDA_SearchAndSelect
     // Method to append text to an existing string field of an Account
     public static Boolean appendToAccountField(Id accountId, String textToAppend,List<String> preselectedRows) {
         // Query the Account record to retrieve the existing field value
-        Account acc = [SELECT Id, Core_CNDA_Number__c FROM Account WHERE Id = :accountId LIMIT 1];
+        Account acc = [SELECT Id, Core_CNDA_Number__c FROM Account WHERE Id = :accountId WITH SECURITY_ENFORCED LIMIT 1];
         
         List<String> values = String.isBlank(acc.Core_CNDA_Number__c)? null : acc.Core_CNDA_Number__c.split('[;,/ ]');
         List<String> selectedRows = String.isBlank(textToAppend)? new List<String>() : textToAppend.split(';');

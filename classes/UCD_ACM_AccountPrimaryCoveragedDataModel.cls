@@ -1,0 +1,3 @@
+public class UCD_ACM_AccountPrimaryCoveragedDataModel {
+
+}

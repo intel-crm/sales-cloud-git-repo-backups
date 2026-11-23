@@ -284,7 +284,7 @@
         </rules>
     </decisions>
     <description>Remind users to complete EV after 3 days  since registration request time</description>
-    <interviewLabel>Core_PRM_EV_Reminder-16_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_PRM_EV_Reminder-15_InterviewLabel</interviewLabel>
     <label>Core_PRM_EV_Reminder</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -312,7 +312,7 @@
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myPreWaitDecision_myWait_myRule_1</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>

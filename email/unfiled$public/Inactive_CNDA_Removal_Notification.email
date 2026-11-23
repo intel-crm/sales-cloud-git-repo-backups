@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="SalesCRM Inactive CNDA Bulk Action" relatedToType="Account"  recipientType="User" >
+<messaging:htmlEmailBody >
+<p>Email Body</p>
+<c:ACM_InactiveCNDARemovalEmailTemplate />
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

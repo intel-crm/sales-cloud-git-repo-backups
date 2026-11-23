@@ -6,13 +6,9 @@ public with sharing class PRM_DMLUtility {
         String LOG_ENTRY_SEVERITY = 'Medium';
         List<Database.saveResult> saveResLst =  Database.insert(SObjList,false); 
         for (Database.SaveResult sr : saveResLst) {
-            if (sr.isSuccess()) {
-                System.debug('Insert Successful with ID -->'+sr.getId());                    
-            }
-            else if (!sr.isSuccess()){
+            if (!sr.isSuccess()){
                 for(Database.Error err : sr.getErrors())
                 {
-	                //System.debug('Insert failed on object '+Sobj+' from '+Source+' on id '+sr.getId()+' with error '+err.getmessage());
                 	Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,+err.getmessage(), '', '', '');
                 }
             }                   
@@ -26,13 +22,9 @@ public with sharing class PRM_DMLUtility {
         String LOG_ENTRY_SEVERITY = 'Medium';
         List<Database.saveResult> saveResLst =  Database.update(SObjList,false); 
         for (Database.SaveResult sr : saveResLst) {
-            if (sr.isSuccess()) {
-                System.debug('Update Successful with ID -->'+sr.getId());                    
-            }
-            else if (!sr.isSuccess()){
+           if (!sr.isSuccess()){
                 for(Database.Error err : sr.getErrors())
                 {
-                	//System.debug('Update failed on object '+Sobj+' from '+Source+' with id '+sr.getId());
                 	Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '');
                 } 
             }                  
@@ -46,13 +38,9 @@ public with sharing class PRM_DMLUtility {
         String LOG_ENTRY_SEVERITY = 'Medium';
         Database.UpsertResult[] saveResLst =  Database.upsert(SObjList,false); 
         for (Database.UpsertResult sr : saveResLst) {
-            if (sr.isSuccess()) {
-                System.debug('Upsert Successful with ID -->'+sr.getId());                    
-            }
-            else if (!sr.isSuccess()){
+            if (!sr.isSuccess()){
                 for(Database.Error err : sr.getErrors())
                 {
-                	//System.debug('Upsert failed on object '+Sobj+' from '+Source+' with id '+sr.getId());
                 	Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '');
                 } 
             }                  
@@ -67,13 +55,9 @@ public with sharing class PRM_DMLUtility {
         String LOG_ENTRY_SEVERITY = 'Medium';
         Database.DeleteResult[] saveResLst =  Database.delete(SObjList,false); 
         for (Database.DeleteResult sr : saveResLst) {
-            if (sr.isSuccess()) {
-                System.debug('Delete Successful with ID -->'+sr.getId());                    
-            }
-            else if (!sr.isSuccess()){
-                for(Database.Error err : sr.getErrors())
+           if (!sr.isSuccess()){
+                for(Database.Error err : sr.getErrors())	
                 {
-                System.debug('Delete failed on object '+Sobj+' from '+Source+' with id '+sr.getId());
                 String logEntry=Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '');
                 } 
             }                  

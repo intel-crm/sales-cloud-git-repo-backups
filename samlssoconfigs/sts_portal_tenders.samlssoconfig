@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
-    <errorUrl>https://quoterequest.intel.com/s/accessdenied</errorUrl>
-    <executionUserId>0053b00000BQZJu</executionUserId>
+    <errorUrl>https://signin.intel.com/logout</errorUrl>
     <identityLocation>SubjectNameId</identityLocation>
     <identityMapping>FederationId</identityMapping>
-    <issuer>https://sts.windows.net/46c98d88-e344-4ed4-8496-4ed7712e255d/</issuer>
-    <loginUrl>https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d/saml2</loginUrl>
-    <logoutUrl>https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d/saml2</logoutUrl>
+    <issuer>https://sts.windows.net/9889e411-4383-4500-8c2a-e8f095438f4f/</issuer>
+    <loginUrl>https://login.microsoftonline.com/9889e411-4383-4500-8c2a-e8f095438f4f/saml2</loginUrl>
+    <logoutUrl>https://login.microsoftonline.com/9889e411-4383-4500-8c2a-e8f095438f4f/saml2</logoutUrl>
     <name>sts-portal-tenders</name>
-    <oauthTokenEndpoint>https://intel.my.salesforce.com/services/oauth2/token?so=00Do0000000aRcf</oauthTokenEndpoint>
+    <oauthTokenEndpoint>https://intel--crmdevint3.sandbox.my.salesforce.com/services/oauth2/token?so=00D2i0000008d6j</oauthTokenEndpoint>
     <redirectBinding>false</redirectBinding>
     <requestSignatureMethod>1</requestSignatureMethod>
-    <requestSigningCertId>0P1cv0000000nvB</requestSigningCertId>
-    <salesforceLoginUrl>https://intel.my.salesforce.com?so=00Do0000000aRcf</salesforceLoginUrl>
-    <samlEntityId>https://saml.salesforce.com.crm.tenders</samlEntityId>
-    <samlJitHandlerId>01pHo00000EIK9x</samlJitHandlerId>
+    <requestSigningCertId>0P1TH0000000z3V</requestSigningCertId>
+    <salesforceLoginUrl>https://intel--crmdevint3.sandbox.my.salesforce.com?so=00D2i0000008d6j</salesforceLoginUrl>
+    <samlEntityId>https://saml.salesforce.com.crmdevint3.tenders</samlEntityId>
     <samlVersion>SAML2_0</samlVersion>
     <useConfigRequestMethod>true</useConfigRequestMethod>
     <useSameDigestAlgoForSigning>true</useSameDigestAlgoForSigning>
-    <userProvisioning>true</userProvisioning>
-    <validationCert>MIIC8DCCAdigAwIBAgIQWnHCFZkp/oRKZxoLqFSF5jANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yNTExMDcwNDMwMTZaFw0yODExMDcwNDMwMTRaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3DL7zhhAPPPyqfAJyKLuJ10I1x7oqrh2mzg4/nmYhxnn5yiQf3Ll3VMHcbPs9KgvVaeVIhT79nJPJvJt7QLyjg+2tv6sbSr+Rr8LScIA+PReciAQ0LXWfU5tEpa+lVZ2eu2O35j4aLvcq0nSh9FXRd4ujFCU4v4Dn9kXS43Lm5hrA1oIqmYDguXnfWpVGaA+ZLtnA/h9Y6klmSywzo65Cc4Jy3IBd0RH/OoYCR41n2vSrZwjYPFGIAnQdNVU/fAxzv1KjHFK4/sbV04/daX+beZ/sSvOQGA6LPWlTvqxT+xT8vnq9kLc9Gdrhw0sUNJV5ExX1g5B/xJNLVNHb/rEyQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCCL+N6ALg8yczNRoVcQNzZzP5A8hcH9zZOm0fxzZKP5eDNHn6TNIKuxrhAbFynnLNslJMse5FVHHaXhEH8418ueqixII6bkazBemyVaX1coOcPZybflf+ASm8QyJFIKI5jsm9MYyS+T4Q5R/t0w39T8Lg6TqewakqIVbEHcgrBNx7RiRy/gmaLk23ZhIbpyKRsX5YCwdZJI+M2cycWI+Usbm3G3QU5aPJXpZRiKxeiV9Sfaeb5e1LDkvNbFdHMSRXEwTe0pFylLVCuohbnrleOWHtGh7MSnzRXcLlOZRNwJ5o4axqp2Ni6Zt20YdqzdaF2G07SgiLgVze3EDsKVKdv</validationCert>
+    <userProvisioning>false</userProvisioning>
+    <validationCert>MIIC8DCCAdigAwIBAgIQLiK6AdVY/IhJEWq6DixPODANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMjA4MzAwOTA2MTJaFw0yNTA4MzAwOTA2MTFaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwdX53xhIlh8aDGFJPrLfGLURhjGYr3RjRBdHqkDkz6XnG154cpmrY4cuiFj5dvZs0BpSEFjV8kOCB14gAym+eBL+OKyu1Rbe4qz5qt+0QDIg6UJfFstLwSVYh+gSxH1x0GNg115N/5zHsEIvVU2/mmhwkKoP24GFj0Bhg6/8IA0Z4MNjcivj09NXYLa/SwLfX48uWWXiaVitEoyPRJO0OVS2eIaot4hA4D8aoTFuDxLYiEv7O8FJ48P/aiH2RyBohhhhLd3EHVXPeAvm9mVLzzYlKZLjoTvxhLMmzz1VKOwGZ/Sc/5Z7JbVhon9OoEbd8bQHwNHsO+POpTVsJa0krQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCgy1XtpLZ7DsQHwVNRlzE8ExxJPxb7iXKzn1EnGHnLa+p59+4Elp8oAFZ69PoIEajVAqwjY02n7gnpLT1xgT2gcdjuLcLvHy3uGdaf3R8zFR37+okh6eaQbJPnqkjAh3u0dCRLKo2sxpU8QLOMcHjpcvzlcnUsiCAKVrlaArc/r7zmoGBpaUL6fLw9MDrEo7KCqOTE9y/lUZC0IYuat638kxiVDDbydckiwS9URw0t5LHbbnyYjH+4tPo/xJgvvCeKbUslUSlH2tJjFizMHVVCycF/+L/i97dVSMNQaqss7V0NDGtyeHqcg7u1bSHGqIQ4KE8IkQtRSn4o0nK9yPu5</validationCert>
 </SamlSsoConfig>

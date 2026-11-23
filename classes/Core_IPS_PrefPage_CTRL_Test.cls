@@ -1,9 +1,5 @@
 @isTest
 public class Core_IPS_PrefPage_CTRL_Test {
-
-    private static User getPortalAccountOwner() {
-        return [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true AND UserRoleId != null LIMIT 1];
-    }
   
     @isTest
     static void SubmitChoice_Test(){
@@ -17,8 +13,6 @@ public class Core_IPS_PrefPage_CTRL_Test {
         accountRecord.BillingCountryCode='';
         accountRecord.BillingStreet='st 124563 louis street';
 		accountRecord.recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
-        User accountOwner = getPortalAccountOwner();
-        accountRecord.OwnerId = accountOwner.Id;
         insert accountRecord;
         System.assert(accountRecord.Id != null, 'Record not created');
 
@@ -49,9 +43,7 @@ public class Core_IPS_PrefPage_CTRL_Test {
         userAccount.TimeZoneSidKey='America/New_York';
         userAccount.ProfileId= pf.Id;
         userAccount.LocaleSidKey='en_US';
-        System.runAs(accountOwner) {
-            insert userAccount;
-        }
+        insert userAccount;
         System.assert(userAccount.Id != null, 'Record not created');
 
         System.runAs(userAccount){
@@ -69,8 +61,6 @@ public class Core_IPS_PrefPage_CTRL_Test {
         accountRecord.BillingCountryCode='';
         accountRecord.BillingStreet='st 124563 louis street';
 		accountRecord.recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
-        User accountOwner = getPortalAccountOwner();
-        accountRecord.OwnerId = accountOwner.Id;
         insert accountRecord;
         System.assert(accountRecord.Id != null, 'Record not created');
 
@@ -101,9 +91,7 @@ public class Core_IPS_PrefPage_CTRL_Test {
         userAccount.TimeZoneSidKey='America/New_York';
         userAccount.ProfileId= pf.Id;
         userAccount.LocaleSidKey='en_US';
-        System.runAs(accountOwner) {
-            insert userAccount;
-        }
+        insert userAccount;
         System.assert(userAccount.Id != null, 'Record not created');
 
         System.runAs(userAccount){
@@ -122,8 +110,6 @@ public class Core_IPS_PrefPage_CTRL_Test {
         accountRecord.BillingCountryCode='';
         accountRecord.BillingStreet='st 124563 louis street';
 		accountRecord.recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId();
-        User accountOwner = getPortalAccountOwner();
-        accountRecord.OwnerId = accountOwner.Id;
         insert accountRecord;
 		System.assert(accountRecord.Id != null, 'Record not created');
         
@@ -154,9 +140,7 @@ public class Core_IPS_PrefPage_CTRL_Test {
         userAccount.TimeZoneSidKey='America/New_York';
         userAccount.ProfileId= pf.Id;
         userAccount.LocaleSidKey='en_US';
-        System.runAs(accountOwner) {
-            insert userAccount;
-        }
+        insert userAccount;
         
         System.runAs(userAccount){
        Core_IPS_PrefPage_CTRL.Core_IPS_CommEmailOptController();

@@ -655,6 +655,76 @@
             <field>PRM_Duration__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Rejected_By__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_MDM_Rejection_Reason__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Suggested_Account__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Company_Nm_Eng__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Alt_CompanyNameLang__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Program__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_CMP_ID__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Entitlement_Display_Name__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Campaign_code__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Tax_Number__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Is_Returning_User__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Record_Link__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ACM_SDP_Product_Code__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ACM_SDP_System_Serial_Number__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
         <masterLabel>New Registrations</masterLabel>
     </sections>
     <sections>
@@ -778,6 +848,26 @@
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Account Name</displayNameOverride>
             <field>PRM_Account__c.Name</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Record_Stage__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Milestone_Active__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Milestone_Name__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsActive__c</field>
             <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
         </columns>
         <masterLabel>Registration Trackers</masterLabel>

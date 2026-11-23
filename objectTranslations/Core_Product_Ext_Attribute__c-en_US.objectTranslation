@@ -141,6 +141,11 @@
         <name>Core_SW_Lic_Generator_Parameter_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- License Group Do not use --></label>
+        <name>Core_SW_Lic_Group_Id_DoNotUse__c</name>
+        <relationshipLabel><!-- Core_Product_Ext_Attributes_DoNotUse --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- License Group --></label>
         <name>Core_SW_Lic_Group_Id__c</name>
         <relationshipLabel><!-- Core_Product_Ext_Attributes --></relationshipLabel>
@@ -148,6 +153,10 @@
     <fields>
         <label><!-- Linux Download URL --></label>
         <name>Core_SW_Lic_Linux_Download_URL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maintenance Duration (In Months) --></label>
+        <name>Core_SW_Lic_Maintenance_Duration_Nbr__c</name>
     </fields>
     <fields>
         <label><!-- Rehostable --></label>

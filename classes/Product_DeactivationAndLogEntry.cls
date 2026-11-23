@@ -70,8 +70,8 @@ public with sharing class Product_DeactivationAndLogEntry implements Database.Ba
             mail.setToAddresses(toAddresses);
             mail.setSubject('Product Integration: Product Deactivation was not processed for  '+totalRecordCount+' Records');
             String body = 'Hi,<br><br>';
-            body += 'This is to notify that Product deactivation job Product_DeactivationAndLogEntry class has failed to execute. <br>';
-            body += '<b> Total Records submitted for Deactivation - ' + totalRecordCount + '</b>, <br>';
+            body += 'This is to notify on records failure for deactivation in Product_DeactivationAndLogEntry class. <br>';
+            body += '<b> Total Record Count - ' + totalRecordCount + '</b>, <br>';
             body += 'For IpaasLoadId - ' + ipaasLoadId+'.';
             mail.setHtmlBody(body);
             mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);

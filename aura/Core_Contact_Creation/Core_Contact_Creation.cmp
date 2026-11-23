@@ -30,7 +30,7 @@
     <div class="slds-m-around_xx-large">
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" >
             <div class="slds-modal__container">
-                <header class="slds-modal__header">                    
+                <header class="slds-modal__header slds-scrollable_y">                    
                     <div class="slds-text-heading_large slds-border_bottom NewCont">{!$Label.c.Core_MDF_New_Contact}</div>
                     <form>
                         <div id="errorMessageDiv" class='slds-grid slds-show slds-col slds-size_12-of-12'></div>
@@ -129,7 +129,7 @@
                     
                     <div class="slds-text-heading_large slds-border_bottom divLine"></div>
                 <div class="slds-modal__content slds-p-around_medium slds-grid slds-grid_reverse" id="modal-content-id-1"> 
-                     <div class="slds-large-size_3-of-8 buttonsDiv" style="float:right;">
+                     <div class="slds-large-size_3-of-8 buttonsDiv" style="float:right; margin-right:33%;">
                         <lightning:button class="slds-button slds-button_neutral" type="submit" label="{!$Label.c.Core_MDF_LWC_CancelButton}" onclick="{!c.cancel}"/>
                         <lightning:button class="slds-button slds-button_brand" type="submit" label="{!$Label.c.Core_MDF_Save_Button}" onclick="{!c.save}"/>                   
                     </div>

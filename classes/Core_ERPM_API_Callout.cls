@@ -18,11 +18,14 @@ global  without sharing class Core_ERPM_API_Callout {
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_SCOPE    = 'Set-Profile API Call to ERPM';
+    public static Map<String,Core_ACM_Control_Execution__c> mapAcmControlExecution = Core_ACM_Control_Execution__c.getAll();
     
     @InvocableMethod(label='Core ERPM API Callout for Engagement' description='Assign ERPM Engagement of DZS upon assignment of DZP' category= 'Entitlement')
-    public static void assignERPMEngagements(List<String> ContactIdEntitlementName) {        
+    public static void assignERPMEngagements(List<String> ContactIdEntitlementName) {
+            
         string json = '';
         Map<string, ERPMSFEngagementSetting__mdt> erpmSFSettingMap = new Map<string, ERPMSFEngagementSetting__mdt>();
+        List<Core_ACM_Integration_Queue__c> queueRecords = new List<Core_ACM_Integration_Queue__c>();
         
         //Custom metadata to store entitlement/program to engagement mapping
         for(ERPMSFEngagementSetting__mdt mdt : [SELECT MasterLabel, EntitlementProgName__c, Code__c, Notify__c,core_removalRequired__c FROM ERPMSFEngagementSetting__mdt WHERE Core_Source__c IN ('Salesforce','Both')]) {
@@ -46,7 +49,7 @@ global  without sharing class Core_ERPM_API_Callout {
                 conIdEntitlMap.put(contactId, new List<String>{entitlementName});
             }
         }
-        
+        system.debug('Ganesh '+conIdEntitlMap); 
         List<Contact> conListAPI = [SELECT Id, FirstName, LastName, Email, Core_Job_Function__c, Core_Preferred_Language__c, Core_Profession__c, 
                                     Core_Account_Primary_Country__c,Core_Account_Primary_Street__c ,Core_Account_Primary_City__c, MailingStreet,MailingCity,MailingState,MailingPostalCode,MailingCountry,
                                     Core_Account_Primary_State__c, Core_Account_Primary_Postal_Code__c,Phone,Core_Do_Not_Contact__c, Core_Login_Status__c,
@@ -60,12 +63,47 @@ global  without sharing class Core_ERPM_API_Callout {
             if(con.Core_Login_Status__c == 'Active' || String.isBlank(con.Core_Login_Status__c) || selected){
                 //Generate payload using Contact
                 json = GeneratePayload(con, erpmSFSettingMap, conIdEntitlMap.get(con.Id),selected);
-                //Call eRPM setprofile v2 api only if payload is formed
-                if(string.IsNotBlank(json)) {
-                    ExecuteAPI(json, con.Id, con.Email, conIdEntitlMap.get(con.Id));                                                  
-                }  
+                if(mapAcmControlExecution.containsKey('Switch ERPM API Callout for Engagement') && mapAcmControlExecution.get('Switch ERPM API Callout for Engagement').IsActive__c){
+                    if(string.IsNotBlank(json)){
+                        Core_ACM_Integration_Queue__c queueRecord = new Core_ACM_Integration_Queue__c();
+                        queueRecord.Core_Contact__c = con.Id;
+                        queueRecord.Core_Process_Type__c = Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.LIVE);
+                        queueRecord.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_ERPM;
+                        queueRecord.Core_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.NEW_STATUS);
+                        queueRecord.Core_Payload__c = json;
+                        queueRecord.Core_Tags__c = 'API Call made upon status turning to Complete of: ' + String.join(conIdEntitlMap.get(con.Id), ',');
+                        queueRecords.add(queueRecord);
+                    }
+                }else{
+                    //Call eRPM setprofile v2 api only if payload is formed
+                    if(string.IsNotBlank(json)) {
+                        ExecuteAPI(json, con.Id, con.Email, conIdEntitlMap.get(con.Id));                                                  
+                    } 
+                }
             }                                                                                                                                                        
-        }                                                      
+        }
+        if (!queueRecords.isEmpty()) {
+            Database.SaveResult[] results = Database.insert(queueRecords, false);
+            handleInsertResults(results, queueRecords);
+
+            List<Contact_Message__c> contactMessages = new List<Contact_Message__c>();
+            buildContactMessage(results, queueRecords, contactMessages);
+            if (!contactMessages.isEmpty()) {
+                Database.SaveResult[] contactMessageResults = Database.insert(contactMessages, false);
+                handleContactMessageInsertResults(contactMessageResults, contactMessages);
+            }
+
+            Set<Id> queueRecordIds = new Set<Id>();
+            for (Core_ACM_Integration_Queue__c queueRecord : queueRecords) {
+                if (queueRecord.Id != null) {
+                    queueRecordIds.add(queueRecord.Id);
+                }
+            }
+            if (!queueRecordIds.isEmpty()) {
+                Core_ACM_ERPMAPIBatchProcessor liveBatch=new Core_ACM_ERPMAPIBatchProcessor(queueRecordIds, Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.LIVE), true);
+                Database.executeBatch(liveBatch,10);
+            }
+        }                                                  
     }
     
     //Method generates json payload using registration request and metadata
@@ -136,13 +174,14 @@ global  without sharing class Core_ERPM_API_Callout {
             }           
         }
         catch(Exception ex){
-            ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
+            UCD_ACM_Logger.error('Core_ERPM_API_Callout', 'GeneratePayload','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString(), con.Id);
+            /*ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
             custEx.Message = ex.getMessage();
             custEx.Cause = ex.getCause();
             custEx.StackTraceString = ex.getStackTraceString();
             custEx.LineNumber = ex.getLineNumber();                
             custEx.TypeName = ex.getTypeName();
-            createLogEntry('Error in GeneratePayload', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, con.Id, null, null);            
+            createLogEntry('Error in GeneratePayload', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, con.Id, null, null);*/            
         }
         return payload;
     }
@@ -214,6 +253,35 @@ global  without sharing class Core_ERPM_API_Callout {
             {insert objCLE;}
             
         }catch(Exception e){
+        }
+    }
+
+    private static void handleInsertResults(Database.SaveResult[] results, List<Core_ACM_Integration_Queue__c> queueRecords) {
+        for (Integer i = 0; i < results.size(); i++) {
+            if (!results[i].isSuccess()) {
+                UCD_ACM_Logger.error('Core_ERPM_API_Callout', 'handleInsertResults',
+                    'Failed to create Integration Queue record for Contact: ' + queueRecords[i].Core_Contact__c + '. Error: ' + results[i].getErrors(), queueRecords[i].Core_Contact__c);
+            }
+        }
+    }
+
+    private static void buildContactMessage(Database.SaveResult[] results, List<Core_ACM_Integration_Queue__c> queueRecords,List<Contact_Message__c> contactMessages) {
+        for (Integer i = 0; i < results.size(); i++) {
+            if (results[i].isSuccess() && queueRecords[i].Id != null) {
+                Contact_Message__c contMsg = new Contact_Message__c();
+                contMsg.Contact__c = queueRecords[i].Core_Contact__c;
+                contMsg.ACM_Integration_Queue__c = queueRecords[i].Id;
+                contactMessages.add(contMsg);
+            }
+        }
+    }
+
+    private static void handleContactMessageInsertResults(Database.SaveResult[] results, List<Contact_Message__c> contactMessages) {
+        for (Integer i = 0; i < results.size(); i++) {
+            if (!results[i].isSuccess()) {
+                UCD_ACM_Logger.error('Core_ERPM_API_Callout', 'handleContactMessageInsertResults',
+                    'Failed to create Contact Message record for Contact: ' + contactMessages[i].Contact__c + '. Error: ' + results[i].getErrors(), contactMessages[i].Contact__c);
+            }
         }
     }
 }

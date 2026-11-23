@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>PMP_External_Anonymous_Users_Specification_Value</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share Specification Value records to All Anonymous Users</description>
+        <label>PMP External - Anonymous Users - Specification Value</label>
+        <sharedTo>
+            <group>PMP_All_Anonymous_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>PMP_External_Coveo_User_Specification_Value</fullName>
         <accessLevel>Read</accessLevel>
         <description>Share all Specification Value records to Coveo User</description>
@@ -75,4 +90,19 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingGuestRules>
+        <fullName>PMP_External_Guest_User_Specification_Value</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share Specification Value records to Guest User</description>
+        <label>PMP External - Guest User - Specification Value</label>
+        <sharedTo>
+            <guestUser>Intel_Solutions_Marketplace</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
 </SharingRules>

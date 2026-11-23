@@ -233,8 +233,80 @@
         <label><!-- Specialty --></label>
         <name>PMP_Account_Specialty__c</name>
         <picklistValues>
+            <masterLabel>Artificial Intelligence Specialist</masterLabel>
+            <translation>AI スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Data Center Specialist</masterLabel>
+            <translation>クラウド・データセンター・スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Device as a Service Specialist</masterLabel>
+            <translation>スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enthusiast PC Specialist</masterLabel>
+            <translation>エンスージアスト向け PC スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing Specialist</masterLabel>
+            <translation>ハイパフォーマンス・コンピューティング・スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Solutions Builder Specialist</masterLabel>
+            <translation>産業用ソリューション・ビルダー・スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Client Specialist</masterLabel>
+            <translation>インテル® Optane™ クライアント・スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Client Speciality</masterLabel>
+            <translation><!-- Intel® Optane™ Client Speciality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Data Center Specialist</masterLabel>
+            <translation>インテル® Optane™ データセンター・スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Data Center Specialty</masterLabel>
+            <translation><!-- Intel® Optane™ Data Center Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Technology Specialist</masterLabel>
+            <translation><!-- Intel® Optane™ Technology Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Technology Specialty</masterLabel>
+            <translation><!-- Intel® Optane™ Technology Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOEM-ODM Partner Program</masterLabel>
+            <translation><!-- LOEM-ODM Partner Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Services Specialist</masterLabel>
+            <translation>マネージド・サービス・スペシャリスト</translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>None</masterLabel>
             <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty Benefits</masterLabel>
+            <translation>スペシャリスト特典</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty Partner</masterLabel>
+            <translation>専門パートナー</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Display Solutions Specialist</masterLabel>
+            <translation><!-- Visual Display Solutions Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Display Solutions Specialty</masterLabel>
+            <translation><!-- Visual Display Solutions Specialty --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -359,15 +431,15 @@
         <name>PMP_Company_Information_Language_Nm__c</name>
         <picklistValues>
             <masterLabel>English</masterLabel>
-            <translation>英語</translation>
+            <translation><!-- English --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Japanese</masterLabel>
-            <translation>日本語</translation>
+            <translation><!-- Japanese --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Simplified Chinese</masterLabel>
-            <translation>簡体中国語</translation>
+            <translation><!-- Simplified Chinese --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -448,6 +520,10 @@
         <name>PMP_Data_Load_Identifier_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- PMP Data Load Identifier --></label>
+        <name>PMP_Data_Load_Identifier__c</name>
+    </fields>
+    <fields>
         <label><!-- Distributor  Components --></label>
         <name>PMP_Disti_Components_Nm__c</name>
         <picklistValues>
@@ -467,8 +543,8 @@
             <translation><!-- Graphics --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Internet of Things and Embedded</masterLabel>
-            <translation>モノのインターネットとエンベデッド</translation>
+            <masterLabel>Internet of Things</masterLabel>
+            <translation><!-- Internet of Things --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -502,6 +578,10 @@
             <masterLabel>Internet of Things</masterLabel>
             <translation><!-- Internet of Things --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Do Not Contact Enabled ? --></label>
+        <name>PMP_Do_Not_Contact_Enabled__c</name>
     </fields>
     <fields>
         <label><!-- Enhanced Login Users --></label>
@@ -646,10 +726,6 @@
             <translation><!-- CSPx2 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Distributor</masterLabel>
-            <translation><!-- Distributor --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>ISA</masterLabel>
             <translation><!-- ISA --></translation>
         </picklistValues>
@@ -669,6 +745,10 @@
             <masterLabel>Resource &amp; Design Center</masterLabel>
             <translation><!-- Resource &amp; Design Center --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PMP_Partner_Role__c</name>
     </fields>
     <fields>
         <label><!-- Secondary Street --></label>
@@ -808,6 +888,14 @@
         <label><!-- Working Copy Id --></label>
         <name>PMP_Working_Copy_Id__c</name>
         <relationshipLabel><!-- Marketing Profile Information (Working Copy Id) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- isEmailDelivered --></label>
+        <name>PMP_isEmailDelivered__c</name>
+    </fields>
+    <fields>
+        <label><!-- retriggerCount --></label>
+        <name>PMP_retriggerCount__c</name>
     </fields>
     <nameFieldLabel>マーケットプレース・プロファイル名</nameFieldLabel>
 </CustomObjectTranslation>

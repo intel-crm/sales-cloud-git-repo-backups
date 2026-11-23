@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLPredictionDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>leads_converion_prediction</aiApplicationDeveloperName>
+    <description>predict a likelihood of a lead converting into an opportuinity based on factors activity history and lead source</description>
+    <developerName>mlpd_leads_converion_prediction_1728900779722_v0</developerName>
+    <masterLabel>leads converion prediction</masterLabel>
+    <status>Draft</status>
+    <type>BinaryClassification</type>
+</MLPredictionDefinition>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Change Request submission email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Change Request submission email</name>
+    <style>none</style>
+    <subject>Change request has been submitted</subject>
+    <textOnly>Hello,
+
+The following Change request has been submitted
+
+Change Request Number:{!PCC_Deal_Change_Request__c.Name}
+For more details, you can access it by clicking  {!PCC_Deal_Change_Request__c.Link}
+
+Thank you.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

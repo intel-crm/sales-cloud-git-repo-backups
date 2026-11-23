@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SWS_Initial Submission for Approval</name>
+    <style>none</style>
+    <subject>Approval Required: IDC Credit Request {!SWS_Cloud_Credit_Request__c.Name}</subject>
+    <textOnly>ACTION REQUIRED
+
+You have received a request to approve the Credit Request  {!SWS_Cloud_Credit_Request__c.Name} for generating IDC Coupon.
+
+Credit Request ID Request Type Customer Email Customer Name Product Interest (HW Compute Platform) Submitted By Submitted On
+{!SWS_Cloud_Credit_Request__c.Name}  {!SWS_Cloud_Credit_Request__c.SWS_Request_Type__c}  {!SWS_Cloud_Credit_Request__c.SWS_Email__c}  {!SWS_Cloud_Credit_Request__c.SWS_Full_Name__c}  {!SWS_Cloud_Credit_Request__c.SWS_HW_Compute_Platform_PL__c}  {!SWS_Cloud_Credit_Request__c.SWS_Submitted_by_for_approval__c}  {!SWS_Cloud_Credit_Request__c.SWS_Submitted_for_Approval_On__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

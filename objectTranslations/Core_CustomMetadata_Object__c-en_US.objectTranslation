@@ -17,6 +17,14 @@
         <name>DeveloperName__c</name>
     </fields>
     <fields>
+        <label><!-- Entitlement Category --></label>
+        <name>Entitlement_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Name --></label>
+        <name>Entitlement_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Field 1 (Text Area Long) --></label>
         <name>Field_1_Text_Area_Long__c</name>
     </fields>
@@ -86,8 +94,8 @@
         <name>Metadata_Name__c</name>
     </fields>
     <fields>
-        <label><!-- IPA Affiliation --></label>
-        <name>PRM_IPA_Affiliation__c</name>
+        <label><!-- Permission Set API Name --></label>
+        <name>Permission_Set_API_Name__c</name>
     </fields>
     <fields>
         <label><!-- Program --></label>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>6sense Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>6sense Products</value>
+    </caseValues>
+    <fields>
+        <label><!-- Is Deleted --></label>
+        <name>sixsense__IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Key --></label>
+        <name>sixsense__Product_Key__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

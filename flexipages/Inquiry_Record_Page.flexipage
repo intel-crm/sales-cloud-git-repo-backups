@@ -40,10 +40,10 @@
         <itemInstances>
             <componentInstance>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
-                <identifier>runtime_sales_activities_activityPanel1</identifier>
+                <identifier>runtime_sales_activities_activityPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-b63bb6ff-0e5f-4486-83bc-e84601b20d5b</name>
+        <name>Facet-cba5541c-d722-47e9-aa51-c24f6cf3de94</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -69,14 +69,14 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-b63bb6ff-0e5f-4486-83bc-e84601b20d5b</value>
+                    <value>Facet-cba5541c-d722-47e9-aa51-c24f6cf3de94</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
                     <value>Activity</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab1</identifier>
+                <identifier>customTab</identifier>
             </componentInstance>
         </itemInstances>
         <name>maintabs</name>

@@ -290,7 +290,7 @@ private class Core_MDF_BankTrigger_Test {
                                                                                            'Consumer',
                                                                                            'Desktop',
                                                                                            'Intel® Core™ i7 Processor',
-                                                                                           'Broadcast (Pre-2025)',
+                                                                                           'Broadcast',
                                                                                            'Podcast',
                                                                                            'Draft',
                                                                                            false);
@@ -308,7 +308,7 @@ private class Core_MDF_BankTrigger_Test {
                                                                                            'Consumer',
                                                                                            'Desktop',
                                                                                            'Intel® Core™ i7 Processor',
-                                                                                           'Broadcast (Pre-2025)',
+                                                                                           'Broadcast',
                                                                                            'Podcast',
                                                                                            'Draft',
                                                                                            false);
@@ -447,7 +447,6 @@ private class Core_MDF_BankTrigger_Test {
         newClaim.Core_MDF_Status__c = 'Submitted';
         newClaim.Core_MDF_Currency__c = 'USD';
         newClaim.Core_MDF_Taxes_Local__c = 0;
-        newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
         Database.insert(newClaim);
         
         System.runAs(paymentAdmin){
@@ -514,7 +513,6 @@ private class Core_MDF_BankTrigger_Test {
             newClaim.Core_MDF_Status__c = 'Submitted';
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             Database.insert(newClaim);
             
             
@@ -573,7 +571,7 @@ private class Core_MDF_BankTrigger_Test {
         
         accountShareList.add(accshareRecordCCF);
         Database.Insert(accountShareList);
-        assert.areEqual('None',accshareRecordCCF.CaseAccessLevel);        
+		assert.areEqual('None',accshareRecordCCF.CaseAccessLevel);        
         acctList.add(testIntelAccount);
         acctList.add(testAccount2);
         String errortext = 'Test';
@@ -623,7 +621,6 @@ Modified By:                  Date:            Changes:
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
             newClaim.Core_MDF_PIC_Review_Completed__c = true;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             Database.insert(newClaim);    
             try{
             bankRec.Core_MDF_Hold_Payments_from_AP_file_ind__c = 'yes';
@@ -666,7 +663,6 @@ Modified By:                  Date:            Changes:
             newClaim2.Core_MDF_Currency__c = 'USD';
             newClaim2.Core_MDF_Taxes_Local__c = 0;
             newClaim2.Core_MDF_PIC_Review_Completed__c = true;
-            newClaim2.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             Database.insert(newClaim2);     
             
             bankRec1.Core_MDF_ESD_Hold_Indicator__c = true;
@@ -707,7 +703,6 @@ Modified By:                  Date:            Changes:
             newClaim.Core_MDF_Status__c = 'Submitted';
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             Database.insert(newClaim);      
             bankRec.Core_MDF_Hold_Payments_from_AP_file_ind__c = 'Yes';
             bankRec.Core_MDF_Hold_Reason_txt__c='test';
@@ -746,7 +741,6 @@ Modified By:                  Date:            Changes:
             newClaim.Core_MDF_Status__c = 'Submitted';
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             Database.insert(newClaim);  
             bankRec.Core_MDF_ESD_Hold_Indicator__c = True;
             Database.update(bankRec);
@@ -779,7 +773,6 @@ Modified By:                  Date:            Changes:
             newClaim.Core_MDF_Status__c = 'Submitted';
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             Database.insert(newClaim);  
             bankRec.Core_MDF_ESD_Hold_Indicator__c = True;
             Database.update(bankRec);
@@ -856,7 +849,6 @@ Modified By:                  Date:            Changes:
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
             newClaim.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = false;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             //newClaim.Core_MDF_Hold_Payments_from_AP_file_ind__c=false;
             Database.insert(newClaim);   
             
@@ -897,7 +889,6 @@ Modified By:                  Date:            Changes:
             newClaim.Core_MDF_Status__c = 'Submitted';
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             //newClaim.Core_MDF_Hold_Payments_from_AP_file_ind__c=false;
             Database.insert(newClaim);   
             
@@ -938,7 +929,6 @@ Modified By:                  Date:            Changes:
             newClaim.Core_MDF_Status__c = 'Submitted';
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             //newClaim.Core_MDF_Hold_Payments_from_AP_file_ind__c=false;
             Database.insert(newClaim);  
             bankRec.Core_MDF_Hold_Payments_from_AP_file_ind__c = 'Yes';
@@ -974,30 +964,13 @@ Modified By:                  Date:            Changes:
             newClaim.Core_MDF_Currency__c = 'USD';
             newClaim.Core_MDF_Taxes_Local__c = 0;
             newClaim.Core_MDF_PIC_Review_Completed__c = true;
-            newClaim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
             //newClaim.Core_MDF_Hold_Payments_from_AP_file_ind__c=false;
             Database.insert(newClaim);  
             bankRec.Core_MDF_Bank_Location__c = 'AM';
             Database.update(bankRec);
             assert.areEqual('AM',bankRec.Core_MDF_Bank_Location__c);
-            Map<Id, List<Id>> campIdExternalGroupIdMap = new Map<Id,List<Id>>();
-            Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst1 = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Campaign',campIdExternalGroupIdMap, 'Edit',true);
-            Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst2 = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Campaign',campIdExternalGroupIdMap, 'Read','Manual');
-            Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst3 = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Campaign',campIdExternalGroupIdMap, 'Edit');
-            Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst4 = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('Campaign',campIdExternalGroupIdMap, 'Read','Manual','Read');
+            
             Test.stopTest();
-            //List<RecordManualShareClass> recordShareList = new List<RecordManualShareClass>();
-            List<id> idList= new List<id>();
-            idList.add(bankRec.id);
-            idList.add(newClaim.id);
-            idList.add(userInfo.getUserId());
-            campIdExternalGroupIdMap.put(bankRec.id,idList);
-            //RecordManualShareClass recordManualShare = new RecordManualShareClass('PartnerFundClaim',campIdExternalGroupIdMap,'Edit', userInfo.getUserId());
-            //List<sobject> sList = Core_MDF_GenericShareRecordActionClass.createShareRecordList(recordManualShare);
-            Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('PartnerFundClaim',campIdExternalGroupIdMap, 'Edit','Manual','Read');
-                List<Sobject> accountShareList = Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
-                List<Sobject> accountShareList1 = Core_MDF_GenericShareRecordActionClass.getShareRecordList(rmsInst);
-                Core_SearchAccountController searchAccount = new Core_SearchAccountController();
-            }
+        }
     }
 }

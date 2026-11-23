@@ -12,5 +12,5 @@
         <type>TextArea</type>
     </fields>
     <label>ICS Labels</label>
-    <visibility>Public</visibility>
+    <visibility>Protected</visibility>
 </CustomObject>

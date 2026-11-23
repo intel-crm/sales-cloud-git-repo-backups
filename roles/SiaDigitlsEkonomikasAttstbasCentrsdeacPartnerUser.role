@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>DELSKA Latvia Partner User</description>
+    <description>Sia Digitālās Ekonomikas Attīstības Centrs (deac) Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>DELSKA Latvia Partner User</name>
+    <name>Sia Digitālās Ekonomikas Attīstības Centrs (deac) Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>Admin</parentRole>
 </Role>

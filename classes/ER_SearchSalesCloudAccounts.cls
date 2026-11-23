@@ -1,9 +1,9 @@
-public without sharing class ER_SearchSalesCloudAccounts 
+public without sharing class ER_SearchSalesCloudAccounts  
 {
     public static String strCountryCode;
     
     public static map<id,contact> getAccounts(String contactDomain){
-        
+       
         map<id,contact> contactsMap = new map<id,contact>();       
         if((String.isEmpty(strCountryCode) || (!String.isEmpty(strCountryCode))))
         {
@@ -143,8 +143,7 @@ public without sharing class ER_SearchSalesCloudAccounts
                     }
                     else if(mData.get(pValue.PriorityField__c).getDescribe().getType() == DisplayType.STRING)
                     {
-                        String fValue=(String)seacrhAcct.acc.get(pValue.PriorityField__c);
-                        if(String.isNotBlank((String)seacrhAcct.acc.get(pValue.PriorityField__c)) && !fValue.Contains('Uncovered Account'))
+                        if(String.isNotBlank((String)seacrhAcct.acc.get(pValue.PriorityField__c)))
                         {
                             pBit=pBit+'1';
                         }

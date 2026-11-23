@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Interaction_Type__c</field>
-        <value xsi:type="xsd:string">parent</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>IsAccordion__c</field>
@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>PMP_Is_Search_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>PMP_Search_Filter_Group_Txt__c</field>
@@ -48,7 +48,7 @@
     </values>
     <values>
         <field>PMP_Search_Filter_Label_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">TDP</value>
     </values>
     <values>
         <field>Show_Select_All__c</field>

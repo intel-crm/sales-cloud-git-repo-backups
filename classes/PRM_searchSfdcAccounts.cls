@@ -22,9 +22,7 @@ public with sharing class PRM_searchSfdcAccounts {
     //public static boolean IPARefresh = Boolean.valueOf(label.PRM_IPARefresh);
     
     public static boolean emailValidationCheck(String email){
-        //System.debug('>>>> email : '+email);
         String emailRegex = System.Label.PRM_Email_Regex;
-        //System.debug('Email Regex : '+emailRegex);
         Pattern myPattern = Pattern.compile(emailRegex);
         Matcher myMatcher = MyPattern.matcher(email);
         return MyMatcher.matches();
@@ -41,10 +39,7 @@ public with sharing class PRM_searchSfdcAccounts {
     public static map<id,contact> getAccounts(String contactDomain){
         //List<contact> contList = new list<contact>();
         //Added by Naresh as part of US637998
-        //system.debug('strCountryCode PROCCountries ==>'+Label.PRM_PROC_Countries);
         List<String> PROCCountries = Label.PRM_PROC_Countries.toUpperCase().split(',');
-        //system.debug('strCountryCode PROCCountries ==>'+PROCCountries);
-        //system.debug('strCountryCode ==>'+strCountryCode);
         //List<Core_Intel_System_Accounts__mdt> systemAccounts = new List<Core_Intel_System_Accounts__mdt>();
         Set<Id> accountIds = new Set<Id>();
         map<id,contact> contactsMap = new map<id,contact>();
@@ -62,7 +57,6 @@ public with sharing class PRM_searchSfdcAccounts {
         if(isBlacklistedEmailDomian(contactDomain) && (String.isEmpty(strCountryCode) || (!String.isEmpty(strCountryCode) && !PROCCountries.contains(strCountryCode.toUpperCase())))){
         //if(isBlacklistedEmailDomian(contactDomain)){
             contactDomain = String.escapeSingleQuotes(contactDomain.substringAfter('@'));
-            //System.debug('ContactDomain : '+contactDomain);
             //contactDomain = String.escapeSingleQuotes(contactDomain);
             Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
             accountIds.add(intelaccountRT);
@@ -71,7 +65,6 @@ public with sharing class PRM_searchSfdcAccounts {
             Contact[] contList = (Contact[])searchList[0];
             for(contact ct : contList){
                 contactsMap.put(ct.Accountid,ct);
-                //system.debug('Contacts--> '+contactsMap);
             }
         }
         return contactsMap;
@@ -178,7 +171,6 @@ public with sharing class PRM_searchSfdcAccounts {
     //             for(PRM_SearchAccounts prmAccObj : mapOfsrcScoreSrcAccount.get(searchScoreProcessed)){
                     
     //                 // if(searchScoreProcessed>0)
-    //                 // {    //system.debug('searchScoreProcessed inside score match:'+searchScoreProcessed);
     //                 //     if(searchScoreProcessed >= 30)
     //                 //     {
     //                 //         if(targetcount < targetLimit) 
@@ -214,20 +206,13 @@ public with sharing class PRM_searchSfdcAccounts {
         
     //     }                                
     //         if(!sortedCIMIDMap.isEmpty()){
-    //             //System.debug('sortedCIMIDMap .>>>> ');
                                                           
     //             sortedListOfAccount.addAll(getResponseList(sortedCIMIDMap,CRITERIA_ONE));
-    //             //system.debug('sortedListOfAccount1:'+sortedListOfAccount);
     //             sortedListOfAccount.addAll(getResponseList(sortedCIMIDMap,CRITERIA_TWO));
-    //             //system.debug('sortedListOfAccount2:'+sortedListOfAccount);
     //             sortedListOfAccount.addAll(getResponseList(sortedCIMIDMap,CRITERIA_THREE));
-    //             //system.debug('sortedListOfAccount3:'+sortedListOfAccount);
     //             sortedListOfAccount.addAll(getResponseList(sortedCIMIDMap,CRITERIA_FOUR));
-    //             //system.debug('sortedListOfAccount4:'+sortedListOfAccount);
     //             sortedListOfAccount.addAll(getResponseList(sortedCIMIDMap,CRITERIA_FIVE));
-    //             //system.debug('sortedListOfAccount5:'+sortedListOfAccount);
     //             sortedListOfAccount.addAll(getResponseList(sortedCIMIDMap,CRITERIA_SIX));
-    //             //system.debug('sortedListOfAccount6:'+sortedListOfAccount);
                 
                                
     //           /*  sortedListOfAccount.addAll(sortedCIMIDMap.containsKey(CRITERIA_ONE)?sortedCIMIDMap.get(CRITERIA_ONE):null);
@@ -238,7 +223,6 @@ public with sharing class PRM_searchSfdcAccounts {
     //         } 
         
     //     if(!sortedDomainIDMap.isEmpty()){            
-    //         //System.debug('sortedDomainIDMap .>>>> ');
     //       //  for(sortedDomainIDMap)
     //         tempLst.addAll(getResponseList(sortedDomainIDMap,CRITERIA_ONE));
     //         tempLst.addAll(getResponseList(sortedDomainIDMap,CRITERIA_TWO));
@@ -252,11 +236,8 @@ public with sharing class PRM_searchSfdcAccounts {
     //             }
     //         }
     //     }
-    //     //system.debug('sortedListOfAccount:'+sortedListOfAccount.size());
         
     //     if(!sortedCIMIDMinScrMap.isEmpty()){            
-    //     //system.debug('sortedListOfAccount11:'+sortedListOfAccount.size());
-    //     //System.debug('sortedCIMIDMinScrMap .>>>> ');
     //         tempLst.clear();
     //         tempLst.addAll(getResponseList(sortedCIMIDMinScrMap,CRITERIA_ONE));
     //         tempLst.addAll(getResponseList(sortedCIMIDMinScrMap,CRITERIA_TWO));
@@ -313,7 +294,6 @@ public with sharing class PRM_searchSfdcAccounts {
                 for(PRM_SearchAccounts prmAccObj : mapOfsrcScoreSrcAccount.get(searchScoreProcessed)){
                     
                     // if(searchScoreProcessed>0)
-                    // {    //system.debug('searchScoreProcessed inside score match:'+searchScoreProcessed);
                     //     if(searchScoreProcessed >= 30)
                     //     {
                     //         if(targetcount < targetLimit) 
@@ -375,7 +355,7 @@ public with sharing class PRM_searchSfdcAccounts {
                         obj3.nonipaPartnerRoleAccsWithCover=att.nonipaPartnerRoleAccsWithCover;
                         obj3.nonIpaAccounts=att.nonIpaAccounts;
                         sortedCIMIDMinScrMap=sortIdBasedOnSortingCriteria(obj3);
-                    	//sortedCIMIDMinScrMap = sortIdBasedOnSortingCriteria(prmAccObj,att.acmMapObj,att.ipaPartnerRoleAccsWithCover,att.ipaPartnerRoleAccs,att.ipaAccounts,att.ipaPartnerRoleAccsWithOutCover,sortedCIMIDMinScrMap,att.nonipaPartnerRoleAccsWithCover,att.nonIpaAccounts);
+                      //sortedCIMIDMinScrMap = sortIdBasedOnSortingCriteria(prmAccObj,att.acmMapObj,att.ipaPartnerRoleAccsWithCover,att.ipaPartnerRoleAccs,att.ipaAccounts,att.ipaPartnerRoleAccsWithOutCover,sortedCIMIDMinScrMap,att.nonipaPartnerRoleAccsWithCover,att.nonIpaAccounts);
                     }
                 }  
             }
@@ -404,10 +384,8 @@ public with sharing class PRM_searchSfdcAccounts {
                 }
             }
         }
-        //system.debug('sortedListOfAccount:'+sortedListOfAccount.size());
         
         if(!sortedCIMIDMinScrMap.isEmpty()){            
-        //System.debug('sortedCIMIDMinScrMap .>>>> ');
             tempLst.clear();
             tempLst.addAll(getResponseList(sortedCIMIDMinScrMap,CRITERIA_ONE));
             tempLst.addAll(getResponseList(sortedCIMIDMinScrMap,CRITERIA_TWO));
@@ -427,8 +405,8 @@ public with sharing class PRM_searchSfdcAccounts {
     
     public static PRM_CIM_Request__mdt cimMdt;
     public static Integer targetLimit(){
-		cimMdt = [Select Id, MasterLabel,API_Key__c, PRM_Async_Id__c, PRM_Calling_System__c, Score_Bar__c,PRM_Restriction_Level__c, PRM_Max_Records__c, PRM_Max_Score__c, PRM_Min_Score__c from PRM_CIM_Request__mdt where MasterLabel =: Label.PRM_Dupe_Scores];
-			return  integer.valueof(cimMdt.PRM_Max_Records__c);
+    cimMdt = [Select Id, MasterLabel,API_Key__c, PRM_Async_Id__c, PRM_Calling_System__c, Score_Bar__c,PRM_Restriction_Level__c, PRM_Max_Records__c, PRM_Max_Score__c, PRM_Min_Score__c from PRM_CIM_Request__mdt where MasterLabel =: Label.PRM_Dupe_Scores];
+      return  integer.valueof(cimMdt.PRM_Max_Records__c);
     }
               
     private static List<PRM_SearchAccounts> getResponseList(Map<Integer,List<PRM_SearchAccounts>> mapObject, Integer criteria){
@@ -454,11 +432,9 @@ public with sharing class PRM_searchSfdcAccounts {
         //Set<String>SysAccIdSet = new Set<String>();
         for(PRM_SearchAccounts srchAccObj : lstSearchAccountObj){
             setOfAccId.add(srchAccObj.AccountId);
-            //system.debug('ACCOUNT IDS--> '+srchAccObj.AccountId);
         }
         
         Map<String,Integer> ipaBadgeMap = getIPABadgeMap();
-        //system.debug('ipaBadgeMap : '+ipaBadgeMap);
         //ACM Mapping with IPABadge details
         Map<Id, RelatedACMRecords> relatedACMMapObj = new Map<Id, RelatedACMRecords>();
         for(PRM_AccountChannelMembership__c acm :  [select PRM_Account_Id__c, Name ,PRM_Channel_Program_Id__r.name,toLabel(PRM_Partner_Role__c),PRM_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c, PRM_Account_Id__r.Core_Covered_Account__c ,PRM_Channel_Program_Level_Id__r.name,  PRM_Status_Nm__c, PRM_Status_Change_Dt__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c  in :setOfAccId and PRM_Status_Nm__c !='Inactive']){
@@ -472,7 +448,6 @@ public with sharing class PRM_searchSfdcAccounts {
                 acmRecord.listOfAcm.add(acm);
                 //String acmBadge = acm.PRM_Channel_Program_Level_Id__r.name.toUpperCase();
                 String acmBadge = acm.PRM_Channel_Program_Level_Id__r.name;
-                //system.debug('acmBadge : '+acmBadge);
                 if( acmBadge != null && ipaBadgeMap.get(acmBadge) < ipaBadgeMap.get(acmRecord.ipaBadge)){
                     acmRecord.ipaBadge = acmBadge;
                 }                    
@@ -487,7 +462,6 @@ public with sharing class PRM_searchSfdcAccounts {
                     if(ipaPartnerRoleAccsWithOutCover.containsKey(acm.PRM_Account_Id__c)){  ipaPartnerRoleAccsWithOutCover.remove(acm.PRM_Account_Id__c);
                       }    
                     ipaPartnerRoleAccsWithCover.put(acm.PRM_Account_Id__c,null);
-                    //system.debug('ipaPR --> '+ipaPartnerRoleAccsWithCover);                 
                     //2. ipa partner role ipa 
                 }else if(acm.PRM_Partner_Role__c == partnerRole 
                          && acm.PRM_Channel_Program_Id__r.name==System.Label.PRM_Intel_Partner_Alliance 
@@ -516,7 +490,6 @@ public with sharing class PRM_searchSfdcAccounts {
                                         && !ipaAccounts.containsKey(acm.PRM_Account_Id__c)
                     && !ipaPartnerRoleAccs.containsKey(acm.PRM_Account_Id__c) ){
                                              ipaPartnerRoleAccsWithOutCover.put(acm.PRM_Account_Id__c,null);
-                                             //system.debug('ipa --> '+ipaPartnerRoleAccsWithOutCover);
                                          }
                                   }
                                   
@@ -528,7 +501,6 @@ public with sharing class PRM_searchSfdcAccounts {
                    nonIpaAccounts.remove(acm.PRM_Account_Id__c);
                              }
                              nonipaPartnerRoleAccsWithCover.put(acm.PRM_Account_Id__c,null);
-                             //system.debug('nonipaWC --> '+nonipaPartnerRoleAccsWithCover);                       
                          }
              
             /* //nonipa uncovered partner role
@@ -555,11 +527,11 @@ public with sharing class PRM_searchSfdcAccounts {
         
         
         //For Empty ACMrecord scenario to put as nonIPA record
- 		map<id, Account> accMap=new Map<id, account>([select Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Covered_Account__c, id from account where id in: setOfAccId]);
+     map<id, Account> accMap=new Map<id, account>([select Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Covered_Account__c, id from account where id in: setOfAccId]);
             Account acc=new Account();
         for(id accId : setOfAccId){
                 if(accMap.containsKey(accId)){
-				 acc = accMap.get(accId);
+         acc = accMap.get(accId);
                 }
             if(!relatedACMMapObj.containsKey(accId)){
                     if(acc!=null){
@@ -570,7 +542,7 @@ public with sharing class PRM_searchSfdcAccounts {
                     }
                 relatedACMMapObj.put(accId, null);
             }
-        	}       
+          }       
          }       
         sortBasedOnIPAandPartnerRoleWrapper obj=new sortBasedOnIPAandPartnerRoleWrapper();
         obj.lstSrcAccount=lstSearchAccountObj;

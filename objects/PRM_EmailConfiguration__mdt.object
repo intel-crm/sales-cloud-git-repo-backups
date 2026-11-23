@@ -55,7 +55,6 @@
                 <value>
                     <fullName>FPGA Designer</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>FPGA Design Services</label>
                 </value>
                 <value>
@@ -71,24 +70,21 @@
                 <value>
                     <fullName>Manufacturer</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Manufacturer</label>
                 </value>
                 <value>
                     <fullName>Original Equipment Manufacturer (OEM)</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Original Equipment Manufacturer (OEM)</label>
                 </value>
                 <value>
                     <fullName>Solution Integrator</fullName>
                     <default>false</default>
-                    <label>Solution Integrator</label>
+                    <label>Service Integrator</label>
                 </value>
                 <value>
                     <fullName>Seller</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Solution Provider</label>
                 </value>
                 <value>
@@ -127,9 +123,9 @@
                     <label>Member</label>
                 </value>
                 <value>
-                    <fullName>Gold</fullName>
+                    <fullName>GOLD</fullName>
                     <default>false</default>
-                    <label>Gold</label>
+                    <label>GOLD</label>
                 </value>
                 <value>
                     <fullName>Titanium</fullName>
@@ -150,6 +146,22 @@
         </valueSet>
     </fields>
     <label>IPA Email Configuration</label>
+    <listViews>
+        <fullName>all</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>NamespacePrefix</columns>
+        <columns>PRM_PartnerRole__c</columns>
+        <columns>PRM_Priority__c</columns>
+        <columns>PRM_BusinessEvent__c</columns>
+        <columns>PRM_Entitlement_List__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>all</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <pluralLabel>IPA Email Configurations</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

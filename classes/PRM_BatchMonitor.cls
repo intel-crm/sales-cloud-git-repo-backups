@@ -10,13 +10,12 @@ global class PRM_BatchMonitor implements Database.Batchable<sObject> {
     Private static final string INTEGRATION_TYPE_MISSING = 'OPID Not Received';
     Private static final string INTEGRATION_TYPE_BATCH_FAILURE = 'Batch Failure';
     Private static final Integer BatchMonitor_Date = -1;
-    
-    
+
     global static Database.QueryLocator start(Database.BatchableContext context){
         List<String> jobName = System.label.ApexJobName.split(';');
         
-        DateTime dt = DateTime.Now().AddDays(BatchMonitor_Date);
-        String jobInfo = 'Select id,ApexClass.Name,JobType, NumberOfErrors,Status,ExtendedStatus, CreatedDate from AsyncApexJob where  (JobType =\'BatchApex\' or JobType = \'ScheduledApex\') '+(Test.isRunningTest() ? ' and ExtendedStatus!=NULL ':' and CreatedDate >= :dt and ApexClass.Name in :jobName');
+        DateTime dt = DateTime.Now().AddDays(BatchMonitor_Date);  
+        String jobInfo = 'Select id,ApexClass.Name,JobType, NumberOfErrors,Status,ExtendedStatus, CreatedDate from AsyncApexJob where  (JobType =\'BatchApex\' or JobType = \'ScheduledApex\') and CreatedDate >= :dt'+(Test.isRunningTest()? ' and ExtendedStatus!=NULL ':'')+' and ApexClass.Name = :jobName';
         return Database.getQueryLocator(jobInfo);
     } 
     
@@ -48,7 +47,7 @@ global class PRM_BatchMonitor implements Database.Batchable<sObject> {
                 update updateBatchLogs;
             }    
         }catch(DmlException e) {
-            System.debug('Exception: ' + e.getMessage());   
+            //System.debug('Exception: ' + e.getMessage());   
         }
     }
 }

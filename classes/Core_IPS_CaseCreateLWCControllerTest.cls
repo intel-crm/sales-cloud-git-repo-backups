@@ -18,14 +18,6 @@ public class Core_IPS_CaseCreateLWCControllerTest {
     static Case CaseRecord1 = new Case();
     static List<Contact> ListOfContacts;
     static List<Account> ListOfAccounts = new List<Account> ();
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
-
     /***************************************************************************************************
 Method Name:  getRecords
 Method Type: Void Method
@@ -50,7 +42,6 @@ Modification Log :
         SysAdminUsr = TestUtilities.getListOfUser(1);
         SysAdminUsr.get(0).UserName = 'SysAdminUsr'+SysAdminUsr.get(0).UserName;
         SysAdminUsr.get(0).ProfileID =  mapOfProfiles.get('System Administrator');
-        insertUsersWithValidationBypass(SysAdminUsr);
         // Create UserRole Record
         UserRole role = new UserRole();
         role.name='CEO';
@@ -303,7 +294,7 @@ Modification Log :
     
     static void insertCoreResponse(Id caseId) {
         List<Core_IPS_Response__c> lstResponse = new List<Core_IPS_Response__c>();
-        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c LIMIT 999]) {//ATHR Query limit fix
+        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c LIMIT 999]) { //ATHR Query limit fix
             for(Core_IPS_Answer__c objAns : objQues.Core_Answers__r) {
                 Core_IPS_Response__c objResponse = new Core_IPS_Response__c();
                 objResponse.Core_IPS_Case__c = caseId;
@@ -491,7 +482,7 @@ Modification Log :
         userlist[0].username='salesrep020211.abc@user.com';
         userlist[1].profileid=proflst[1].id;
         userlist[1].username='salesrep020212.abc@user.com';
-        insertUsersWithValidationBypass(userlist);
+        insert userlist;
         List<Case> listOfCases = TestUtilities.getListOfCases(1);
         insert listOfCases;
         Core_IPS_CaseCreateHelper helper = new Core_IPS_CaseCreateHelper();
@@ -654,7 +645,7 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
     public static void testMindsSection(){
         getRecords(2); 
         
-        // getDefaultCountry queries a Contact field that is not installed in this org.
+        Core_IPS_MindSectionController.getDefaultCountry(ListOfContacts.get(0).id);
         List<CustomSelectOptions> lst = Core_IPS_MindSectionController.getCountriesOptions();
         //List<CustomSelectOptions> lst2 = Core_IPS_MindSectionController.getStateOptions();
         System.assertEquals(true, lst != null);
@@ -745,7 +736,7 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
             Firstname='Bruce',   
             lastname='lastname1'
         );
-        insertUsersWithValidationBypass(new List<User>{portalAccountOwner1});
+        Database.insert(portalAccountOwner1);
         System.assertEquals(portalAccountOwner1!=null, true, 'portalAccountOwner1 Inserted');
         System.runAs ( portalAccountOwner1 ) {
             
@@ -791,7 +782,7 @@ FROM Core_IPS_Response__c WHERE Core_IPS_Case__c=:CaseRecord.id ][0].Core_IPS_Qu
                 Firstname='BruceS',   
                 lastname='lastname2'
             );
-            insertUsersWithValidationBypass(new List<User>{user1});
+            Database.insert(user1);
         
             
         System.runAs(user1){

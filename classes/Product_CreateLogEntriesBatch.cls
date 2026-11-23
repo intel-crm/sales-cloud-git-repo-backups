@@ -8,7 +8,7 @@ public with sharing class Product_CreateLogEntriesBatch implements Database.Batc
     List<Product_Log_Entry__c> prodLogEntriesList = new List<Product_Log_Entry__c>();
     
     public Product_CreateLogEntriesBatch(String ipaasLoadId){
-        prodLogEntriesList = [select Id,EPM_Id__c,Ipaas_LoadId__c,Product_Name__c,Logging_Type__c,Message__c,Method_Name__c,Class_Name__c,Unique_ID__c from Product_Log_Entry__c where Logging_Type__c IN ('OPN_Deactivation', 'Status_Deactivation')];
+        prodLogEntriesList = [select Id,EPM_Id__c,Ipaas_LoadId__c,Product_Name__c,Logging_Type__c,Message__c,Method_Name__c,Class_Name__c from Product_Log_Entry__c where Logging_Type__c IN ('OPN_Deactivation', 'Status_Deactivation')];
         this.ipaasId = ipaasLoadId;
         
     }

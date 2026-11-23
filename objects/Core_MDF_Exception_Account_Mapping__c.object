@@ -418,7 +418,6 @@
         <active>true</active>
         <description>Once user creates an exception account mapping with an account, user cant update that account</description>
         <errorConditionFormula>ISCHANGED(Core_MDF_Account_id__c)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account_id__c</errorDisplayField>
         <errorMessage>Cannot update account</errorMessage>
     </validationRules>
     <validationRules>

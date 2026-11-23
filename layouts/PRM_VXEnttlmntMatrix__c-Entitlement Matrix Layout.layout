@@ -24,7 +24,7 @@
                 <field>PRM_AGS_Role__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>PRM_Contact_Relationship_Id__c</field>
             </layoutItems>
             <layoutItems>

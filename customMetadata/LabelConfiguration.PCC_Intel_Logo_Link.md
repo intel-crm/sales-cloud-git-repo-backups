@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005OXH2&amp;oid=00Do0000000aRcf&amp;lastMod=1609662404000</value>
+        <value xsi:type="xsd:string">https://intel--crmdevint3.sandbox.file.force.com/servlet/servlet.ImageServer?id=0152i0000000fuQ&amp;oid=00D2i0000008d6j&amp;lastMod=1691395447000</value>
     </values>
 </CustomMetadata>

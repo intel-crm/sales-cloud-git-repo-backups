@@ -13,9 +13,6 @@
         <field>Contact.Partner_Community_Enrollment_Requests__r$PRM_Partner_Community_Nm__c</field>
     </columns>
     <columns>
-        <field>Contact.Partner_Community_Enrollment_Requests__r$PRM_Community_Change_Agent__c</field>
-    </columns>
-    <columns>
         <field>Contact.Partner_Community_Enrollment_Requests__r$PRM_End_Date_Dt__c</field>
     </columns>
     <columns>
@@ -23,6 +20,9 @@
     </columns>
     <columns>
         <field>Contact$Account</field>
+    </columns>
+    <columns>
+        <field>Contact.Partner_Community_Enrollment_Requests__r$LastModifiedBy</field>
     </columns>
     <filter>
         <criteriaItems>

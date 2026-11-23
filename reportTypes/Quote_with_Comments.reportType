@@ -236,13 +236,28 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Account_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Partner_Name_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_sw_Quote_Owner__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>End Customer URL</displayNameOverride>
             <field>Pricing_End_Customer_URL__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_is_Budgetary_cb__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>

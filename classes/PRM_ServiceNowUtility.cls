@@ -1,5 +1,5 @@
 public with sharing class PRM_ServiceNowUtility {
-    
+
     public static Final String ORIGIN  = 'PRM_ServiceNowUtility';
     public static Final String SEVERITY  = 'Info';
     public static Final String PROJECT  = 'IPA';   
@@ -17,7 +17,7 @@ public with sharing class PRM_ServiceNowUtility {
     }
     @future(callout=true)
     public static void ITSMCallout(String requestBody,list<Id> serviceNowIds){
-      //system.debug('future method called'+requestBody+''+serviceNowIds);
+     
       try{  
           PRM_Integration__mdt apiDetails; 
           Id recordId = serviceNowIds[0];
@@ -36,7 +36,7 @@ public with sharing class PRM_ServiceNowUtility {
             
           response = http.send(req);
           Map<String, Object> reqMap =   (Map<String, Object>) JSON.deserializeUntyped(response.getbody());
-          //system.debug('cas'+reqMap);
+          
           Map<String,Object> inc =( Map<String,Object> ) reqMap.get('result');
           String incNumber = (String) inc.get('number');
           String sys_id = (String) inc.get('sys_id');
@@ -48,9 +48,7 @@ public with sharing class PRM_ServiceNowUtility {
           }
           
           PRM_ServiceNowUtility.updateSNRecords(incNumber,serviceNowIds);
-          //System.debug('@@@number'+incNumber);
-          //system.debug('http Resp status::'+response.getStatusCode());
-          //system.debug('http Resp body::'+response.getBody()); 
+          
           }
 
     }
@@ -83,7 +81,7 @@ public static void createAttachment(String sysId,list<Id> snIds,String token){
         String fileName = ver.title.replaceAll('\\s+', '');
         String encodedStringfileName = EncodingUtil.urlEncode(fileName, 'UTF-8');
         String endPoint = System.Label.Attachment_API+'table_sys_id='+sysId+'&file_name='+ encodedStringfileName;
-        //system.debug(endPoint);
+        
         HttpRequest httpReq = new  HttpRequest();
         httpReq.setEndpoint(endPoint);
         httpReq.setMethod( 'POST' );
@@ -94,8 +92,7 @@ public static void createAttachment(String sysId,list<Id> snIds,String token){
         Http http = new Http();
         HTTPResponse reslt1 = http.send(httpReq);
         i++;
-        //system.debug('http Resp status::'+reslt1.getStatusCode());
-        //system.debug('http Resp body::'+reslt1.getBody()); 
+        
         }
         }
 }
@@ -109,18 +106,18 @@ public static PRM_Token_Model getToken(PRM_Integration__mdt agsAPIDetails) {
             httpReq.setHeader('content-type', 'application/x-www-form-urlencoded');            
             //string gType = EncodingUtil.urlEncode('client_credentials','UTF-8');
             String payLoad = 'grant_type=client_credentials&client_id=' + EncodingUtil.urlEncode(agsAPIDetails.Username__c,'UTF-8') +'&client_secret=' + EncodingUtil.urlEncode(agsAPIDetails.Password__c, 'UTF-8')+'&scope='+agsAPIDetails.scope__c;
-            //system.debug('payload- '+payload);       
+                 
             httpReq.setBody(payLoad);
             HttpResponse response = new Http().send(httpReq);
             if(response.getStatusCode() == 200 ) {
-                //system.debug('Response ===>'+EncodingUtil.urlDecode(response.getBody(), 'UTF-8'));
+             
                 token = PRM_Token_Model.parse(response.getBody());
                // Cache.Org.put('local.PRMIPAPartition.APIGEEaccesstoken',token.access_token, Integer.valueOf(Label.APIGEETokenExpiryTime),Cache.Visibility.ALL, true);
             }
         } 
         catch(Exception ex)
         {
-      Core_Log_Entry.logEntryWithException(ORIGIN, PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'', ex.getMessage() ,'' ,'PRM_ServiceNowUtility' ,'' ,ex);    
+			Core_Log_Entry.logEntryWithException(ORIGIN, PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'', ex.getMessage() ,'' ,'PRM_ServiceNowUtility' ,'' ,ex);    
         }
         return token;
         }   

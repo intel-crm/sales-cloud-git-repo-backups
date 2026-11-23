@@ -279,4 +279,53 @@ private class Core_MDF_RecallApprovalHandler_Test {
         
     }
     
+     // 14285 Indira - Start    
+   @isTest
+static void recallApprovalProcess_CoverWorkItemRemoval() {
+
+    User user = [SELECT Id FROM User WHERE LastName ='User Test Recall' LIMIT 1];
+
+    PartnerFundRequest pfr = [
+        SELECT Id, Core_MDF_Program__c, Core_MDF_Fund_Request_Status__c
+        FROM PartnerFundRequest 
+        WHERE Title = 'Retail MDF Activity' 
+        LIMIT 1
+    ];
+
+    System.runAs(user){
+        Test.startTest();
+
+        // Step 1: Put record in approval
+        pfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
+      
+        update pfr;
+
+        Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
+        req.setObjectId(pfr.Id);
+        req.setComments('Submit for approval');
+        Approval.ProcessResult result = Approval.process(req);
+
+        System.assert(result.isSuccess());
+
+        // Step 2: Ensure work item exists
+        List<ProcessInstanceWorkitem> workItems = [
+            SELECT Id, ProcessInstance.TargetObjectId
+            FROM ProcessInstanceWorkitem
+            WHERE ProcessInstance.TargetObjectId = :pfr.Id
+        ];
+
+        System.assert(workItems.size() > 0, 'Workitems should exist');
+
+        // Step 3: Fire recall event (this triggers your method)
+        Core_MDF_Recall_Approval__e evt = new Core_MDF_Recall_Approval__e();
+        evt.Core_MDF_Target_Object_Id__c = pfr.Id;
+        evt.Core_MDF_Request_Status_nm__c = 'Closed'; // IMPORTANT
+        evt.Core_MDF_Program_nm__c = pfr.Core_MDF_Program__c;
+
+        EventBus.publish(evt);
+
+        Test.stopTest();
+    }
+}  
+// 14285 Indira - end
 }

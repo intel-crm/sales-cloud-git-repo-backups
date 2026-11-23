@@ -113,7 +113,7 @@ public without sharing class  Core_IPS_MoveContactWithLargeCases {
         contactLookUp = new Case();
         //FLS Check Added - Yasasvi
         if(Case.SObjectType.getDescribe().isAccessible()){
-          contactLookUp.Id = [select Id from Case Limit 1].Id;
+        	contactLookUp.Id = [select Id from Case Limit 1].Id;
         }
         targetAccount = new Contact();
         userAuthorized = false;

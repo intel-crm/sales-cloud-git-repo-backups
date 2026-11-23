@@ -73,9 +73,9 @@
                                     <aura:if isTrue="{!v.displayType == 'partner'}">
                                         <lightning:layoutItem size="3" class="slds-m-right_large slds-show_medium partnerImage">
                                             <aura:if isTrue="{!v.partner.publishedStatus == 'Draft'}">
-                                                <!--<aura:if isTrue="{!v.partner.isLdrOeEmployee==false}">-->
-                                                    <aura:if isTrue="{!and(v.partner.isLdrOeEmployee == false, v.partner.hasRealImage != true)}">
+                                                    <aura:if isTrue="{!v.partner.isLdrOeEmployee==false}">
                                                         <c:MarketplaceEditPencilCmp visible="{!v.showEditPencil}" partnerId="{!v.recordId}" accessibilityLabel="{!v.addYourLogoLabel}">
+
                                                             <div class="imageWrapper emptyImage">
                                                                 <lightning:icon iconName="utility:add"  size="medium" />
                                                                 <p>{!v.addYourLogoLabel}</p>
@@ -85,9 +85,6 @@
                                                             <div class="imageWrapper">
                                                                 <img class="" src="{!v.partner.imageUrl}" />
                                                             </div>
-                                                            <aura:if isTrue="{!v.partner}">
-                                                            <c:MarketplaceEditPencilCmp visible="{!v.showEditPencil}" partnerId="{!v.recordId}"></c:MarketplaceEditPencilCmp>
-                                                        </aura:if>
                                                         </aura:set>
                                                     </aura:if>
                                                 

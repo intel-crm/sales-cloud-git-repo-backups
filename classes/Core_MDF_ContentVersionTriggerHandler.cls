@@ -15,5 +15,6 @@ public class Core_MDF_ContentVersionTriggerHandler extends TriggerHandler {
         //Invoke function to restrict file upload on content version manually 
     	Core_MDF_ContentVersionServiceHandler.validateVATFileSizeAndExtension(Trigger.New);
      }
+        
     }
 }

@@ -11,13 +11,16 @@ public class Core_MDF_GenericClassRecordTracking_Test {
         usrList.add(usr);
         Database.insert(usrList);
         System.runAs(usr){
+        
         List<String> bypassFunctionKeys = new List<String>();
             //adding bypass feature to bypass access validation
             bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
+            
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
+            
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
         Account accIntel = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Acc New 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);

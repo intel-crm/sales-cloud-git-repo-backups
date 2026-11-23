@@ -102,7 +102,6 @@
                 }
                
                 let oldQuoteLine = JSON.parse(JSON.stringify(response.getReturnValue()));  //NOSONAR
-                oldQuoteLine.Pricing_Backdate_Reason_Txt__c = oldQuoteLine.Pricing_Backdate_Reason_Txt__c != undefined ? oldQuoteLine.Pricing_Backdate_Reason_Txt__c : '';
                 oldQuoteLine.Pricing_Consumption_Platform__c = oldQuoteLine.Pricing_Consumption_Platform__c != undefined ? oldQuoteLine.Pricing_Consumption_Platform__c : '';
                 oldQuoteLine.Pricing_Consumption_Sale_Geo__c = oldQuoteLine.Pricing_Consumption_Sale_Geo__c != undefined ? oldQuoteLine.Pricing_Consumption_Sale_Geo__c : '';
                 oldQuoteLine.Pricing_Consumption_Country__c = oldQuoteLine.Pricing_Consumption_Country__c != undefined ? oldQuoteLine.Pricing_Consumption_Country__c : '';

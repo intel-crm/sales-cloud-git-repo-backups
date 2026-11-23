@@ -1,0 +1,53 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "ca0aca97-0223-4c7a-b7bf-c23ea872775f",
+  "label" : "PCC Change Request Related List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "backgroundVariant" : "mosaic-l0",
+        "recordId" : "{!recordId}",
+        "subtitle" : "",
+        "title" : "Intel® Deal Registration"
+      },
+      "componentName" : "c:ipaMarqueeLeads",
+      "id" : "459e8c84-d8b5-430a-b4ee-61f85b938f03",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0f399187-417e-463b-af49-ce4a17e1df7c",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "1fb5f29b-bd52-4868-a10d-90e4c5397dd1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "74ecc545-61de-406d-a675-30f1a1342872",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "5b8c7b66-8996-4af8-8777-267081f333d5",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "D9gihoBcrVmPnDirmD7WyT5a9SjrsS",
+  "type" : "view",
+  "viewType" : "relatedlist-aFy"
+}

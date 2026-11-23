@@ -1,0 +1,87 @@
+.slds-backdrop_open {
+  background-color: transparent;
+    
+}
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.qty {
+  text-align: center; 
+}
+.checkbox-wrapper {
+  white-space: nowrap;
+}
+.checkbox {
+  vertical-align: top;
+  display:inline-block;
+}
+.checkbox-label {
+  white-space: normal;
+  display:inline-block;
+}
+div.box{
+  height: 100px; 
+  //text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  font-size: 13px;
+}
+
+.slds-box {
+  text-align: center;
+  font-size: 15px;
+}
+
+.slds-backdrop {
+transition-duration: var(--lwc-durationSlowly,0.4s);
+width: 100%;
+height: 100%;
+opacity: 0;
+visibility: hidden;
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background: white;
+/* background: var(--sds-c-backdrop-color-background, var(--lwc-colorBackgroundTempModalTint,rgba(8, 7, 7, 0.6))); */
+z-index: var(--lwc-zIndexModal,9000);
+}
+
+.box-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+.card-container {
+    flex: 0 0 auto;
+}
+.table {
+    display: flex;
+}
+
+.column {
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.row {
+    border: 1px black solid;
+    height: 3em;
+    margin: auto;
+    width: 100%;
+}
+
+.slds-scrollable_x {
+  overflow-x: auto;
+}
+
+.scrollable-modal-content {
+  max-height: 500px;
+  overflow-y: auto;
+}

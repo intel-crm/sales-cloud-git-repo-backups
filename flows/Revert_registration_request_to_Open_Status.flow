@@ -158,8 +158,8 @@
         <object>PRM_Registration_Request__c</object>
         <schedule>
             <frequency>Daily</frequency>
-            <startDate>2024-02-20</startDate>
-            <startTime>20:00:00.000Z</startTime>
+            <startDate>2024-02-21</startDate>
+            <startTime>02:30:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

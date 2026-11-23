@@ -1,0 +1,39 @@
+.product-row {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Single row layout */
+.row-flex {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+/* Product wider */
+.product-input {
+    flex: 3;
+}
+
+/* Quantity smaller */
+.quantity-input {
+    flex: 1;
+}
+
+/* Buttons */
+.add-btn,
+.remove-btn {
+    flex: 0 0 auto;
+    margin-top: 1.5rem; /* aligns with input fields */
+}
+
+/* Dropdown */
+.lookup-dropdown {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    width: 100%; /* optional */
+}

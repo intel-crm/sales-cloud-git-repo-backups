@@ -350,6 +350,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_Backend_Rev__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_New_Backend_System__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Backend_System__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -706,6 +716,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Copy_Flag__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_BackendID__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <columns>
@@ -1390,6 +1405,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPS_BES_Promote_Status__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_QuantityofImpressionsinstances__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -1710,6 +1730,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CoveoV2__VisitId__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CoveoV2__VisitorId__c</field>
+            <table>Core_IPS_Project__c.Cases__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_UserAccount_Case__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
@@ -1781,11 +1811,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_IPS_Case_Owner_Groups__c.Core_IPS_Owner_Team_3__c</field>
-            <table>Core_IPS_Project__c.Cases__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner__c</field>
             <table>Core_IPS_Project__c.Cases__r</table>
         </columns>
         <masterLabel>Cases</masterLabel>

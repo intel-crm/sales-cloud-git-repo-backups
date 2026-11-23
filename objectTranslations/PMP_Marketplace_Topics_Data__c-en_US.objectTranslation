@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Marketplace Topics Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Marketplace Topics Data</value>
+    </caseValues>
+    <fields>
+        <help><!-- This field is used to check whether topic is Active --></help>
+        <label><!-- Is Active --></label>
+        <name>PMP_Is_Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the Chinese topic Description --></help>
+        <label><!-- Topic Chinese Desc --></label>
+        <name>PMP_Topic_Chinese_Desc__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the Chinese topic title --></help>
+        <label><!-- Topic Chinese Title --></label>
+        <name>PMP_Topic_Chinese_Title__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the english topic Description --></help>
+        <label><!-- Topic English Desc --></label>
+        <name>PMP_Topic_English_Desc__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the english topic title --></help>
+        <label><!-- Topic English Title --></label>
+        <name>PMP_Topic_English_Title__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field used to store the topic Id --></help>
+        <label><!-- Topic Id --></label>
+        <name>PMP_Topic_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the Japanese topic Description --></help>
+        <label><!-- Topic Japanese Desc --></label>
+        <name>PMP_Topic_Japanese_Desc__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will have the Japanese topic title --></help>
+        <label><!-- Topic Japanese Title --></label>
+        <name>PMP_Topic_Japanese_Title__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

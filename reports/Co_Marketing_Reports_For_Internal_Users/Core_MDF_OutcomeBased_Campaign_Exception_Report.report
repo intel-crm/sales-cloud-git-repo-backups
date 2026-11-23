@@ -44,14 +44,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Core_MDF_Intel_Partner_Alliance</value>
+            <value>Core_MDF_Client_CoMarketing_Fund,Core_MDF_Data_Center_CoMarketing_Fund,Core_MDF_Intel_Partner_Alliance</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_MDF_Exception__c$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Account Plan</value>
+            <value>Account Plan,MDF,MDF+,OEM CMP,Service Provider CMP</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

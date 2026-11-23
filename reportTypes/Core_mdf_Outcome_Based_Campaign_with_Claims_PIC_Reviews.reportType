@@ -783,6 +783,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Exp_Close_Dt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_No_Internal_Close_Date__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -849,12 +854,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Third_Party_Ind__c</field>
+            <table>PartnerFundRequest.PartnerFundClaims</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_L1_Approver_Id__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_IsRSMCreatedATFApproved_Ind__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Member_Activity_Owner_Id__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
@@ -894,6 +909,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Campaign_Reimbursement_Rate_pct__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Activity_Reimbursement_Rate_pct__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_ATF_Flag_nm__c</field>
             <table>PartnerFundRequest</table>
         </columns>
@@ -910,6 +935,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Content_DocumentIds_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>New_Channel_Partner__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <columns>
@@ -1230,6 +1260,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Outcomes_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Partner_Contact_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Measurement_Approach_nm__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Other_Measurement_Approach_txt__c</field>
             <table>PartnerFundRequest</table>
         </columns>
         <masterLabel>Co-Marketing Activities</masterLabel>

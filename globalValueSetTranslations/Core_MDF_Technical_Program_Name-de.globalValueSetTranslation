@@ -2,15 +2,19 @@
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
         <masterLabel>Client</masterLabel>
-        <translation>Client</translation>
+        <translation><!-- Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
-        <translation>Förderung des Client-Co-Marketing-Fonds</translation>
+        <translation><!-- Client Co-Marketing Fund Boost --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Co-GTM</masterLabel>
         <translation><!-- Co-GTM --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Co-Inv</masterLabel>
+        <translation><!-- Co-Inv --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Datacenter</masterLabel>
@@ -30,6 +34,6 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
-        <translation>Service-Provider-Co-Marketing-Fonds</translation>
+        <translation><!-- Service Provider Co-Marketing Fund --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

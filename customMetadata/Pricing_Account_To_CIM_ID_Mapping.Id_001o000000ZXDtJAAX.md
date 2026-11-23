@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Pricing_Number_of_Days__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:double">3.0</value>
     </values>
     <values>
         <field>Pricing_Unified_Customer_Aggregatio_Type__c</field>

@@ -6,7 +6,7 @@
     <aura:handler name="init" value="this" action="{!c.doInit}" 
                   description="This calls loads the custom list views on the object."/>
     
-    <!-- aura attributes -->  
+    <!-- aura attributes -->   
     <aura:attribute name="listViewResult" type="string[]"/>
     <aura:attribute name="ColKeys" type="Map"/>
     <aura:attribute name="fetchedsObjectList" type="Object[]" default=""/>
@@ -20,7 +20,7 @@
     <aura:attribute name="maxRecordWarning" type="String"/>
     
     <lightning:button class="ExportListButton" label="{!$Label.c.Core_MDF_Export_ListViewButtonLabel}" title="Export List View" onclick="{!c.handleShowModal}"/>
-    
+    <!-- Code comparison Test-->
     <!-- custom dropdown to display available list view options-->
     <aura:if isTrue = "{!v.showModal}">
         <div class="demo-only" style="height: 300px;">

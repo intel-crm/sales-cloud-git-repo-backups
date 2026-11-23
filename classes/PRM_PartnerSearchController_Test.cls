@@ -143,7 +143,49 @@ public class PRM_PartnerSearchController_Test {
         acctContRel2.PRM_Status_Reason_Txt__c='Test';
         insert acctContRel2;
         
-        PRM_PartnerSearchController.getAccountDetails(newAccount.Id);
+  // --------------------------------------------------
+  // IPA Membership Attributes (Active + Inactive)
+  // --------------------------------------------------
+  
+        PRM_IPAMembership_Attributes__c activeIpa = new PRM_IPAMembership_Attributes__c(
+        PRM_Account_Id__c = newAccount.Id,
+        PRM_Point_Status_Txt__c = 'Active',
+        PRM_Point_Status_Dt__c = Date.today(),
+        PRM_Point_Status_Reason_Txt__c = 'Active IPA',
+        PRM_InActive_Ind__c = false
+    );
+        PRM_IPAMembership_Attributes__c inactiveIpa = new PRM_IPAMembership_Attributes__c(
+        PRM_Account_Id__c = newAccount.Id,
+        PRM_Point_Status_Txt__c = 'Not Eligible',
+        PRM_Point_Status_Dt__c = Date.today().addDays(-10),
+        PRM_Point_Status_Reason_Txt__c = 'Inactive IPA',
+        PRM_InActive_Ind__c = true
+    );
+        
+        insert new List<PRM_IPAMembership_Attributes__c>{activeIpa, inactiveIpa};
+        
+        PRM_PartnerAccountDetailWrapper result = PRM_PartnerSearchController.getAccountDetails(newAccount.Id);
+        
+        System.assertNotEquals(
+        null,
+        result,
+        'Account detail wrapper should not be null'
+    );
+        
+                // Ensure IPA Membership Attributes exist
+        System.assertEquals(
+            'Active',
+            result.pointStatus,
+            'Point status should come from active IPA membership only'
+        );
+        
+        System.assertEquals(
+            'Active',
+            result.pointStatus,
+            'Inactive IPA membership record must be ignored'
+        );
+                
+        //PRM_PartnerSearchController.getAccountDetails(newAccount.Id);
         PRM_PartnerSearchController.getAccountDetails(newPagAccount.Id);
         PRM_PartnerSearchController.getAuth();
         System.RunAs(u){

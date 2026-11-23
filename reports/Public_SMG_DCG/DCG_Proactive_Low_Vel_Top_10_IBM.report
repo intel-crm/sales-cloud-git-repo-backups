@@ -120,7 +120,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>IBM Corp,redhat,IBM Software &amp; Global Services,IBM GTS,IBM Service</value>
+            <value>IBM Corp</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

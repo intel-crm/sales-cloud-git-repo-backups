@@ -40,16 +40,16 @@
         <field>TYPE</field>
     </columns>
     <crossFilters>
-        <operation>without</operation>
-        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
-        <relatedTable>Core_Goal__c</relatedTable>
-        <relatedTableJoinColumn>Core_Opportunity__c</relatedTableJoinColumn>
-    </crossFilters>
-    <crossFilters>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
         <relatedTable>Core_Opportunity_KPI__c</relatedTable>
         <relatedTableJoinColumn>Core_Opp_KPI_Opportunity__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <operation>without</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>Core_Goal__c</relatedTable>
+        <relatedTableJoinColumn>Core_Opportunity__c</relatedTableJoinColumn>
     </crossFilters>
     <filter>
         <criteriaItems>
@@ -64,7 +64,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

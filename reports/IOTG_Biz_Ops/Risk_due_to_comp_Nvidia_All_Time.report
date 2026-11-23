@@ -93,7 +93,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Competition</value>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Support_Requested__c</column>

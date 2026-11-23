@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>trigger_Notification</name>
+        <label>trigger Notification</label>
+        <locationX>999</locationX>
+        <locationY>162</locationY>
+        <actionName>Core_MDF_CampaignServiceHandler</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>cmp</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_CampaignServiceHandler</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Notification to customer {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Notification to customer</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <filterFormula>ISCHANGED({!$Record.Status}) &amp;&amp; ISPICKVAL({!$Record.Status},&apos;Pending Approval&apos;) &amp;&amp; Not(ISPICKVAL({!$Record__Prior.Status},&apos;Pending Approval&apos;))&amp;&amp;
+(ISPICKVAL({!$Record.Core_MDF_Program__c} ,&apos;Intel Partner Alliance&apos;) || ISPICKVAL({!$Record.Core_MDF_Program__c} ,&apos;Channel MDF&apos;)) &amp;&amp; 
+(ISPICKVAL({!$Record__Prior.Status},&apos;Pending Review&apos;) || ( Not(ISPICKVAL({!$Record__Prior.Core_MDF_Approval_Stage_nm__c},&apos;L1 Approval&apos;))&amp;&amp; {!$Record.Core_MDF_Approval_Step_Counter_nbr__c} = 1))</filterFormula>
+        <object>Campaign</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>send_Email_notification</name>
+            <connector>
+                <targetReference>trigger_Notification</targetReference>
+            </connector>
+            <label>send Email notification</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>Core_MDF_Approver_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

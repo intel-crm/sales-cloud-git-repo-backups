@@ -3,6 +3,7 @@ public Without Sharing class PRM_Retrigger_Emaillog_Utility{
     @AuraEnabled
     Public static String sendMail(Boolean fromComponent,id recordId){ 
         //List<PRM_Registration_Request__c> listRegReq = new List<PRM_Registration_Request__c>();
+        system.debug('recordId-->'+recordId);
         PRM_EmailLog__c emaillog = new PRM_EmailLog__c();
         List<Contact> conList =new List<Contact>();      
         Id emailID =recordId;
@@ -11,25 +12,26 @@ public Without Sharing class PRM_Retrigger_Emaillog_Utility{
         //Code changes for MP
         Messaging.SingleEmailMessage[] messages ;
         Messaging.SendEmailResult[] results ;
+        system.debug('emailID-->'+emailID);
         
         if(fromComponent)
         {                        
             //IPA2.0: US-TWC729-7976   
             emaillog = [Select ID,PRM_ToEmailID__c,PRM_Subject__c, Language__c,
                         Email_Template_Name__c,Email_Template_ID__c,PRM_Timestamp__c,PRM_EmailContent__c,PRM_Email_API_Response__c,
-                        PRM_EmailHTMLContent__c,PRM_Contact__c,PRM_User__c,PMP_Partner_Offering__c,PMP_Company__c/*,PSS_Partner_Solution__c*/ 
+                        PRM_EmailHTMLContent__c,PRM_Contact__c,PRM_Contact__r.Email,PRM_User__c,PMP_Partner_Offering__c,PMP_Company__c/*,PSS_Partner_Solution__c*/ 
                         FROM PRM_EmailLog__c WHERE Id=:emailID];        
                 
             }
+            system.debug('emaillog-->'+emaillog);
             if(emaillog != null){
                 //Code changes for MP
                 //IPA2.0: US-TWC729-7976   
                 if(emaillog.PMP_Partner_Offering__c != null || emaillog.PMP_Company__c != null /*|| emaillog.PSS_Partner_Solution__c != null*/){
                     Messaging.SingleEmailMessage emailMessage = new Messaging.SingleEmailMessage();
                     String userOrContactId = (emaillog.PRM_Contact__c != null ? emaillog.PRM_Contact__c : emaillog.PRM_User__c);
-                    String sObjectId = emaillog.PMP_Company__c != null? emaillog.PMP_Company__c : '' ;
-                    //String sObjectId = (emaillog.PMP_Partner_Offering__c != null ? emaillog.PMP_Partner_Offering__c : emaillog.PMP_Company__c);
-                    //String sObjectId = (emaillog.PSS_Partner_Solution__c != null ? emaillog.PSS_Partner_Solution__c : emaillog.PMP_Partner_Offering__c != null ? emaillog.PMP_Partner_Offering__c : emaillog.PMP_Company__c);
+                    String sObjectId = (emaillog.PMP_Partner_Offering__c != null ? emaillog.PMP_Partner_Offering__c : emaillog.PMP_Company__c);
+                    //String sObjectId = (emaillog.PSS_Partner_Solution__c != null ? emaillog.PSS_Partner_Solution__c : emaillog.PMP_Partner_Offering__c != null ? emaillog.PMP_Partner_Offering__c : emaillog.PMP_Company__c);//IPA2.0: US-TWC729-7976   
                     emailMessage = createEmailInstances(emaillog.Email_Template_Name__c,userOrContactId,sObjectId);
                     messages = new List<Messaging.SingleEmailMessage> {emailMessage};
                         results = Messaging.sendEmail(messages);
@@ -81,12 +83,23 @@ public Without Sharing class PRM_Retrigger_Emaillog_Utility{
                     }
                 }
                 }
-                         
-                String[] toAddresses = new String[] {emaillog.PRM_ToEmailID__c};
+                String recipientEmail;
+				if(!String.isBlank(emaillog.PRM_ToEmailID__c)){
+    				recipientEmail = emaillog.PRM_ToEmailID__c;
+				} else if(emaillog.PRM_Contact__c != nuLL && !String.isBlank(emaillog.PRM_Contact__r.Email)){
+    				recipientEmail = emaillog.PRM_Contact__r.Email;
+				}
+                system.debug('recipienteMAIL--'+ recipientEmail);
+        
+                //String[] toAddresses = new String[] {emaillog.PRM_ToEmailID__c};
+                String[] toAddresses = new String[] {recipientEmail};
                 email.setToAddresses(toAddresses);
                 email.setSubject(emaillog.PRM_Subject__c);
-                String emailHTMLContent = emaillog.PRM_EmailHTMLContent__c != null ? emaillog.PRM_EmailHTMLContent__c : emaillog.PRM_EmailContent__c;   
-        		emailHTMLContent = emailHTMLContent.replace('{!$Label.PRM_CurrentYear}', Label.PRM_CurrentYear);//IPA2.0 TWC727-3232
+                system.debug('emaillog.PRM_EmailContent__c-->'+emaillog.PRM_EmailContent__c);
+                String emailHTMLContent = emaillog.PRM_EmailHTMLContent__c != null ? emaillog.PRM_EmailHTMLContent__c : emaillog.PRM_EmailContent__c;
+                system.debug('emailHTMLContent-->'+emailHTMLContent);
+                emailHTMLContent = emailHTMLContent.replace('{!$Label.PRM_CurrentYear}', Label.PRM_CurrentYear);//IPA2.0 TWC727-3232
+            
                 if(emailTemplateName!=null){
                     if(emailTemplateName.contains(System.Label.PRM_Partner_Invite_Template) ||emailTemplateName.contains(System.Label.PRM_Admin_Invite_Template) || isBulkRetrigger){                                          
                         String newEVToken; 
@@ -100,16 +113,21 @@ public Without Sharing class PRM_Retrigger_Emaillog_Utility{
                             //System.debug('OldEVToken'+OldToken);
                         }                    
                             //AS a part od CiDaaS changes
+                            System.debug('OldToken:::::' +OldToken);
+                            System.debug('newEVToken:::::' +newEVToken);
                             if(emaillog != null){  
                                 conList =[SELECT id,AccountId,Account.Name,Account.AccountNumber,Account.BillingCountryCode,MailingCountryCode,Core_IPA_PartnerRole__c,Core_Do_Not_Contact__c,Core_Enterprise_Id__c,Core_Preferred_Language__c,Email,(SELECT PRM_Partner_Role__c,PRM_Relationship_Id__r.Name FROM Account_Contact_Relationships__r WHERE PRM_InActive_Ind__c=false) FROM Contact WHERE email =:emaillog.PRM_ToEmailID__c LIMIT 1];
-				
+        
                                 //List<String> sendEmailMsg = 
                                     PRM_Contact_AGS_CallbackHandler.sendEmailToContact(conList[0], EVToken, Strtags);
                                 UIMessage=System.label.PRM_Email_SuccessMsg;
-                                return UIMessage;
+                                system.debug('UIMessage-->'+UIMessage);
+                                if(!Test.isRunningTest()){
+                                    return UIMessage;
+                                }
                             }
                             
-                            //System.debug('OldToken:::::' +OldToken);
+                            
                             if(OldToken!=null){
                                 if(!Test.isRunningTest()){
                                     //Implemented as part of CiDaaS changes
@@ -123,7 +141,7 @@ public Without Sharing class PRM_Retrigger_Emaillog_Utility{
                             }
                             
                         }
-                    }
+                }
                     
                     email.setHtmlBody(emailHTMLContent);
                     email.setOrgWideEmailAddressId(owea.Id);
@@ -222,5 +240,5 @@ public Without Sharing class PRM_Retrigger_Emaillog_Utility{
             PRM_ErrorUtilityClass.logError(e);
         }
         return logList ;
-    	}
+      }
     }

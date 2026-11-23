@@ -93,10 +93,6 @@
             <translation><!-- ITP-Gold --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>ITP-HPC</masterLabel>
-            <translation><!-- ITP-HPC --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>ITP-ODM-LOEM</masterLabel>
             <translation><!-- ITP-ODM-LOEM --></translation>
         </picklistValues>
@@ -107,6 +103,10 @@
         <picklistValues>
             <masterLabel>ITP-Registered</masterLabel>
             <translation><!-- ITP-Registered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TIP-HPC</masterLabel>
+            <translation><!-- TIP-HPC --></translation>
         </picklistValues>
     </fields>
     <startsWith>Consonant</startsWith>

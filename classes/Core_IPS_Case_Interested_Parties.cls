@@ -5,7 +5,7 @@
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Ganapati                   21/04/2020             Created for US639296 - LEX: Create: Create External Interested Party
-****************************************************************************************************/ 
+****************************************************************************************************/
 
 public with sharing class Core_IPS_Case_Interested_Parties {
     public static Boolean isEditable;

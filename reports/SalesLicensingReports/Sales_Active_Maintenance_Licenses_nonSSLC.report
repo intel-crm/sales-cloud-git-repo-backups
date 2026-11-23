@@ -168,7 +168,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Original,Renewal,Optional</value>
+            <value>,Original,Renewal,Amend,Optional</value>
         </criteriaItems>
         <criteriaItems>
             <column>Sales_License__c$Sales_License_Status__c</column>

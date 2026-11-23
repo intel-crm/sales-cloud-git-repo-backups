@@ -8,7 +8,7 @@
         <developerName>Approval_Services</developerName>
         <isActive>true</isActive>
         <localPart>approval_services</localPart>
-        <runAsUser>salesforce.system.user@intel.com.crm</runAsUser>
+        <runAsUser>salesforce.system.user@intel.com.crm.crmdevint3</runAsUser>
     </emailServicesAddresses>
     <functionInactiveAction>Discard</functionInactiveAction>
     <functionName>Approval Services</functionName>

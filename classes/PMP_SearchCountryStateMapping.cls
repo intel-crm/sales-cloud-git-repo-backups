@@ -36,6 +36,12 @@ public with sharing class PMP_SearchCountryStateMapping extends PMP_SearchWrappe
             String label = plew.label;
             String value = plew.value;
             
+             Pattern pattern = Pattern.compile('^[0-9]+$');
+        Matcher matcher = pattern.matcher(value);
+            if(matcher.matches()){
+            system.debug(label +'    '+ value);
+            }
+            
             for(Integer index : validForToIndices(plew.validFor)){
                 	List<Option> optList = controllingValues.get(index).children;
                     Option opt = new Option();

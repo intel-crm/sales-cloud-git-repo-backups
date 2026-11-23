@@ -5,51 +5,35 @@
         <description>Support Team Error Notification</description>
         <protected>false</protected>
         <recipients>
-            <recipient>11072741@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>11637316@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>11710633@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>12076249@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>12140730@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>12217293@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>12240480@intel.com.crm</recipient>
+            <recipient>11962478@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IPS_BES_Support_Team</template>
+        <template>unfiled$public/Core_IPS_BES_Support_Team</template>
     </alerts>
     <alerts>
         <fullName>Core_IPS_BES_Technical_Error</fullName>
         <description>Tecnnical Error Notification</description>
         <protected>false</protected>
         <recipients>
-            <recipient>12140730@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>12217293@intel.com.crm</recipient>
+            <recipient>11962478@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_BES_Technical_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Core_IPS_Error_Notification</fullName>
+        <description>Error Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>11962478@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>IPS_Email_Templates/Core_IPS_Exception_Notification</template>
     </alerts>
 </Workflow>

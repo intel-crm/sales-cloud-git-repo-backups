@@ -25,7 +25,7 @@ p{
     border-width: thin; */
     /* left: 8px; */
     height: 168px;
-    width: 33%;
+    width: 32.6%;
     height: min-content;
 }
 /* a{
@@ -86,7 +86,6 @@ button.expandComponent, button.filterComponent {
 
 .MeasurementPeriod{
     padding-right: 40px;
-    
 }
 .back{
     background-color: rgb(243,243,243);
@@ -97,9 +96,9 @@ button.expandComponent, button.filterComponent {
 .filterName{
     width: 366px;
     height: 86.333px;
+    padding-left: 16px;
+    padding-right: 16px;
     padding-bottom: 16px;
-    font-size: 14px; /*Utkarsh - Added font size to allign measurment dropdown with training dashboard.*/
-    margin-left: 16px;
 }
 .measurementHeader{
     color: #444444;
@@ -109,7 +108,7 @@ button.expandComponent, button.filterComponent {
     font-size: 12px;
     font-weight: 400;
     font-family: sans-serif;
-    padding-bottom: 13px;
+    padding-bottom: 13px; 
 }
 .slds-combobox__input{
     border: 0.5px solid rgb(201,201,201);

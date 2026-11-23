@@ -62,8 +62,8 @@
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Eloqua</value>
+            <operator>equals</operator>
+            <value>User Eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>CONVERTED</column>

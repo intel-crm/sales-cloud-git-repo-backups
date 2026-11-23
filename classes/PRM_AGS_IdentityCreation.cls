@@ -441,14 +441,18 @@ when futher request to sync to AGS is sent */
                            //String contPartnerRoles = cont.Core_IPA_Partner_Role__c;
                            String contPartnerRoles = cont.Core_IPA_PartnerRole__c;
                            //Restrict identity creation for non-IPA partner roles (configured)
-                           if(!String.isEmpty(contPartnerRoles) && !nonIPApartnerRoles.contains(contPartnerRoles)){  
+                           if((!String.isEmpty(contPartnerRoles) && !nonIPApartnerRoles.contains(contPartnerRoles)) || (cont.Core_Login_Status__c=='Deleted' && String.isEmpty(contPartnerRoles))){  
                                String strTags = '';
                                if(!String.isEmpty(cont.Core_Enterprise_Id__c)){
                                    strTags = cont.Core_Enterprise_Id__c;
                                }                               
                                if(!String.isEmpty(cont.Email)){
                                    strTags = (strTags=='') ? cont.Email : strTags+' , '+cont.Email;
-                               }       
+                               }
+                               
+                                if(IS_DelayInviteEmail && (cont.Core_Login_Status__c=='Deleted' && String.isEmpty(contPartnerRoles))){
+                                      CreateBatchEntitlements(cont, null, strTags,'Admin Invite Email');
+                                } //JB
                                //system.debug('TestAcct contPartnerRoles ==>'+contPartnerRoles);
                                //if(!String.isEmpty(contPartnerRoles)){
                                for(String partnerRole : contPartnerRoles.split(';')){
@@ -941,16 +945,16 @@ acrListforUpdate.add(updateACR);
     }*/
     /*Utkarsh - TWC727-695 - This method creates batch entitlement record to Send invite email to user after 5 minutes of B2C creation*/
   public static void CreateBatchEntitlements(Contact contId,String evToken,String strTags,String source){
-     PRM_Account_Contact_Relationship__c acr = [Select id,PRM_Source_Agent__c from PRM_Account_Contact_Relationship__c where PRM_InActive_Ind__c =false and PRM_Relationship_Id__r.name='Employee' and PRM_Contact_Id__c=:contId.id  limit 1];
-    if(acr!=null && acr.PRM_Source_Agent__c!='Auto Granted IPA for DZP'){
-    PRM_Batch_Entitlement__c be = new PRM_Batch_Entitlement__c();
-    be.PRM_Contact_Id__c = contId.Id;
-    be.PRM_EV_Token__c = evToken;
-    be.PRM_IdentityAttribute__c = strTags;
-    be.PRM_Status_Nm__c = 'New';
-    be.PRM_Status_Reason_Txt__c ='PRM_AGS_IdentityCreation - Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ 
-    be.Source__c = source;
-    insert be;
+    PRM_Account_Contact_Relationship__c acr = [Select id,PRM_Status_Reason_Txt__c from PRM_Account_Contact_Relationship__c where PRM_Status_Nm__c ='Complete' and PRM_InActive_Ind__c =false and PRM_Relationship_Id__r.name='Employee' limit 1];
+    if(acr.PRM_Status_Reason_Txt__c!='Auto Granted IPA for DZP'){
+        PRM_Batch_Entitlement__c be = new PRM_Batch_Entitlement__c();
+        be.PRM_Contact_Id__c = contId.Id;
+        be.PRM_EV_Token__c = evToken;
+        be.PRM_IdentityAttribute__c = strTags;
+        be.PRM_Status_Nm__c = 'New';
+        be.PRM_Status_Reason_Txt__c ='PRM_AGS_IdentityCreation - Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ 
+        be.Source__c = source;
+        insert be;
     }
   }  
 }

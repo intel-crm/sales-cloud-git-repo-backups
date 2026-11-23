@@ -114,5 +114,15 @@
 
     handleInternalNoteRowAction: function(component, event, helper) {
         helper.handleInternalNoteRowAction(component, event);
+    },
+
+    // [Akash CCF/DCF] - Set isClientOrDCFProgram flag based on record type; true for Client/Datacenter, false for IPA and others
+    handleRecTypeChange: function(component, event, helper) {
+        var recTypeObj = component.get("v.recTypeObj");
+        var developerName = recTypeObj && recTypeObj.RecordType ? recTypeObj.RecordType.DeveloperName : "";
+        component.set("v.recordTypeDeveloperName", developerName);
+
+        var clientOrDCFRecordTypes = ["Core_MDF_Client_CoMarketing_Fund", "Core_MDF_Data_Center_CoMarketing_Fund"];
+        component.set("v.isClientOrDCFProgram", clientOrDCFRecordTypes.indexOf(developerName) !== -1);
     }
 })

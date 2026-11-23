@@ -313,11 +313,11 @@
         <name>Core_MDF_Activity_SubType_nm__c</name>
         <picklistValues>
             <masterLabel>Affiliate</masterLabel>
-            <translation><!-- Affiliate --></translation>
+            <translation>Affiliate</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Banner/Display</masterLabel>
-            <translation><!-- Banner/Display --></translation>
+            <translation>Banner/Display</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Catalog/Brochure</masterLabel>
@@ -365,7 +365,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Insert/Outsert/Flyer</masterLabel>
-            <translation><!-- Insert/Outsert/Flyer --></translation>
+            <translation>Insert/Outsert/Flyer</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Landing Experience</masterLabel>
@@ -2321,11 +2321,11 @@
         <name>Core_MDF_Country_nm__c</name>
         <picklistValues>
             <masterLabel>AFGHANISTAN</masterLabel>
-            <translation><!-- AFGHANISTAN --></translation>
+            <translation>test</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ALBANIA</masterLabel>
-            <translation><!-- ALBANIA --></translation>
+            <translation>test2</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ALGERIA</masterLabel>
@@ -3135,6 +3135,26 @@
     <fields>
         <label><!-- Initiatives --></label>
         <name>Core_MDF_Initiative_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Outcome_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome Type --></label>
+        <name>Core_MDF_Outcome_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Outcome Metric --></label>
+        <name>Core_MDF_Outcomes_nm__c</name>
     </fields>
     <fields>
         <label><!-- POP Requirement --></label>

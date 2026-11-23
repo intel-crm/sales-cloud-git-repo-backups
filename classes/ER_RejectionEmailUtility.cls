@@ -20,7 +20,7 @@ public without sharing class ER_RejectionEmailUtility {
         string params = '';
         try {
             if(isFirstRun){
-                
+         
                 List<PRM_Registration_Request__c> newRegRequest= new List<PRM_Registration_Request__c>();
                 Map<String, String> businessTypeMap = new Map<String, String>();
                 List<PRM_Language_Culture_Mapping__mdt> lngCultureMdtList = [Select Id,MasterLabel,PRM_Culture__c,PRM_Country__c,PRM_Country_Cd__c From PRM_Language_Culture_Mapping__mdt];
@@ -33,25 +33,25 @@ public without sharing class ER_RejectionEmailUtility {
                 //creating objectRegMap this map to store value as a part of bulkification and used it for input parameters..
                 for(PRM_Registration_Request__c req : newList)
                 {
-                    PRM_Registration_Request__c oldRequest= oldMap.get(req.Id);
-                    if(req!= null && req.RecordTypeId==accountApprovalRT && req.PRM_Status__c=='Rejected' && (oldRequest.PRM_Status__c== 'New' || oldRequest.PRM_Status__c=='Pending') && (string.isNotBlank(req.PRM_Status_Reason__c) || req.PRM_Source__c != 'DZP')){
-                        enttlNames.add(req.ER_Entitlement_Detail_Name__c);
-                        regReqIDs.add(req.Id);
-                        
+                   PRM_Registration_Request__c oldRequest= oldMap.get(req.Id);
+                if(req!= null && req.RecordTypeId==accountApprovalRT && req.PRM_Status__c=='Rejected' && ((string.isNotBlank(req.PRM_Status_Reason__c) && oldRequest.PRM_Status__c=='New') || (req.PRM_Source__c != 'DZP' && oldRequest.PRM_Status__c!='Approved'))){
+                    enttlNames.add(req.ER_Entitlement_Detail_Name__c);
+                    regReqIDs.add(req.Id);
+                
                         bussinessEventList.add('Rejection_Email_On_Request_Denial');
-                        
+                    
                     }
                 }
                 objectRegMap=ER_EmailNotification_Utility.getMapofInputParameter('Registration_Request_ID',regReqIDs);
-                //  Commented as part of TWC722-1818 - Team Quest      
-                /* for(Core_Entitlement__c enttl : [SELECT Id, Name FROM Core_Entitlement__c WHERE Id in: enttlIds]){
-enttlMap.put(enttl.Id, enttl.Name);
-
-}*/
+                 //  Commented as part of TWC722-1818 - Team Quest      
+               /* for(Core_Entitlement__c enttl : [SELECT Id, Name FROM Core_Entitlement__c WHERE Id in: enttlIds]){
+                    enttlMap.put(enttl.Id, enttl.Name);
+                   
+                }*/
                 if(Test.isRunningTest() && enttlNames.size() == 0){
                     throw new CustomException('Empty');
                 }
-                
+             
                 businessTypeMap = ER_RegistrationUtility.getBusinessTypesByEntitlementNames(enttlNames);
                 
                 List<ER_Email_Configuration__mdt> emailConfigMdtList = [SELECT id,Business_Event__c,BusinessType__c, 
@@ -61,14 +61,14 @@ enttlMap.put(enttl.Id, enttl.Name);
                                                                         FROM ER_Email_Configuration__mdt 
                                                                         where Business_Event__c IN: bussinessEventList];
                 
-                // Bulkified as part of TWC722-1818 - Team Quest --> start
+                 // Bulkified as part of TWC722-1818 - Team Quest --> start
                 List<ER_EmailNotification_Utility.EmailNotification> objEmailNotifList=new List<ER_EmailNotification_Utility.EmailNotification> ();    
                 for(PRM_Registration_Request__c regReq : newList){
                     
                     PRM_Registration_Request__c oldRequest= oldMap.get(regReq.Id);
                     string businessType = businessTypeMap.get(regReq.ER_Entitlement_Detail_Name__c);
                     params = 'Email: '+regReq.PRM_Email_ID__c + 'Business Type: '+ businessType;                    
-                    if(regReq!= null && regReq.RecordTypeId==accountApprovalRT && regReq.PRM_Status__c=='Rejected' && (oldRequest.PRM_Status__c== 'New' || oldRequest.PRM_Status__c=='Pending') && ((regReq.Current_Status__c != 'Closed' && string.isNotBlank(regReq.PRM_Status_Reason__c)) || (regReq.PRM_Source__c != 'DZP')) 
+                    if(regReq!= null && regReq.RecordTypeId==accountApprovalRT && regReq.PRM_Status__c=='Rejected' && ((regReq.Current_Status__c != 'Closed' && string.isNotBlank(regReq.PRM_Status_Reason__c) && oldRequest.PRM_Status__c=='New') || (regReq.PRM_Source__c != 'DZP' && oldRequest.PRM_Status__c!='Approved')) 
                        && string.isNotBlank(businessType)){
                            PRM_Language_Culture_Mapping__mdt langCultureForEmail;                
                            for(PRM_Language_Culture_Mapping__mdt mdtRec: lngCultureMdtList){
@@ -79,7 +79,7 @@ enttlMap.put(enttl.Id, enttl.Name);
                                    langCultureForEmail = mdtRec;
                                }
                            }
-                           
+                          
                            ER_EmailNotification_Utility.EmailNotification objEmailNotif = new ER_EmailNotification_Utility.EmailNotification();
                            objEmailNotif.Entitlements= regReq.ER_Entitlement_Detail_Name__c;
                            objEmailNotif.BusinessType = businessType;
@@ -91,31 +91,30 @@ enttlMap.put(enttl.Id, enttl.Name);
                                paramMap.put('LanguageCulture_MDT',langCultureForEmail.Id);    
                            }
                            objEmailNotif.InputParameters=paramMap;
-                           
-                           objEmailNotif.BusinessEvent= 'Rejection_Email_On_Request_Denial';
-                           
+                         
+                               objEmailNotif.BusinessEvent= 'Rejection_Email_On_Request_Denial';
+                         
                            Map<ER_EmailNotification_Utility.EmailNotification,List<ER_Email_Configuration__mdt>> emailConfigMapValue = ER_EmailNotification_Utility.GetEmailConfigurationMetadata(objEmailNotif,emailConfigMdtList);
-                           
+                         
                            if(emailConfigMapValue!=Null && !emailConfigMapValue.isEmpty()){
                                for(ER_Email_Configuration__mdt emailconfig1value: emailConfigMapValue.get(objEmailNotif)){
                                    emailTempMapList.add(emailconfig1value.Template_Name__c);
-                                   Map<String,sObject> paramMapObj = new Map<String,sObject>();
-                                   paramMapObj.put(regReq.Id,objectRegMap.get(regReq.Id));
-                                   if(langCultureForEmail != null){
-                                       paramMapObj.put(langCultureForEmail.Id,langCultureForEmail);
-                                   }
-                                   objEmailNotif.objDetailsMapNew = paramMapObj;
-                                   objEmailNotif.emailConfigMapValue = emailConfigMapValue;
-                                   objEmailNotifList.add(objEmailNotif);
                                }
                            }
-                           
-                       }   
+                           Map<String,sObject> paramMapObj = new Map<String,sObject>();
+                           paramMapObj.put(regReq.Id,objectRegMap.get(regReq.Id));
+                           if(langCultureForEmail != null){
+                           paramMapObj.put(langCultureForEmail.Id,langCultureForEmail);
+                           }
+                           objEmailNotif.objDetailsMapNew = paramMapObj;
+                           objEmailNotif.emailConfigMapValue = emailConfigMapValue;
+                            objEmailNotifList.add(objEmailNotif);
+                          }   
                 }
-                
-                if(!objEmailNotifList.isEmpty() && emailTempMapList.size() > 0){
-                    ER_EmailNotification_Utility.sendEmail(objEmailNotifList,emailTempMapList ); 
-                }// Bulkified as part of TWC722-1818 - Team Quest --------->End  
+         
+                   if(!objEmailNotifList.isEmpty() && emailTempMapList.size() > 0){
+                      ER_EmailNotification_Utility.sendEmail(objEmailNotifList,emailTempMapList ); 
+                    }// Bulkified as part of TWC722-1818 - Team Quest --------->End  
                 
             }
         } catch(Exception ex){                       

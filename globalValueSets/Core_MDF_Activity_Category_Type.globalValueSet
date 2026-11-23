@@ -56,6 +56,11 @@
         <label>Print-&gt;Other (Print)</label>
     </customValue>
     <customValue>
+        <fullName>Outcome-Based-&gt;Outcome-Based</fullName>
+        <default>false</default>
+        <label>Outcome-Based-&gt;Outcome-Based</label>
+    </customValue>
+    <customValue>
         <fullName>Out of Home-&gt;Billboard/Transit</fullName>
         <default>false</default>
         <label>Out of Home-&gt;Billboard/Transit</label>
@@ -1366,27 +1371,16 @@
         <label>Digital Media-&gt;IndustryPartner.com</label>
     </customValue>
     <customValue>
-        <fullName>Outcome-Based-&gt;Outcome-Based</fullName>
+        <fullName>Digital Media-&gt;Channel Partner Online Display</fullName>
         <default>false</default>
-        <label>Outcome-Based-&gt;Outcome-Based</label>
+        <isActive>false</isActive>
+        <label>Digital Media-&gt;Channel Partner Online Display</label>
     </customValue>
     <customValue>
         <fullName>Test2</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Test2</label>
-    </customValue>
-    <customValue>
-        <fullName>Event 2025-&gt;Third - Party Event</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Event 2025-&gt;Third - Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Test LOV Activity Category-&gt;Test LOV Type</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Test LOV Activity Category-&gt;Test LOV Type</label>
     </customValue>
     <customValue>
         <fullName>Sales Readiness 2025-&gt;Promotion – Non-Retail</fullName>
@@ -1401,10 +1395,10 @@
         <label>Sales Readiness 2025-&gt;Promotion – Retail</label>
     </customValue>
     <customValue>
-        <fullName>Test LOV Activity Category-&gt;Test LOV Type 2</fullName>
+        <fullName>Event 2025-&gt;Third - Party Event</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Test LOV Activity Category-&gt;Test LOV Type 2</label>
+        <label>Event 2025-&gt;Third - Party Event</label>
     </customValue>
     <customValue>
         <fullName>Digital 2025-&gt;Web Page</fullName>
@@ -1455,46 +1449,16 @@
         <label>Digital 2025-&gt;Banner/Display Ad</label>
     </customValue>
     <customValue>
-        <fullName>Tech Exploration-&gt;Demo Hardware/Cloud</fullName>
+        <fullName>Test LOV Activity Category-&gt;Test LOV Type</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Tech Exploration-&gt;Demo Hardware/Cloud</label>
+        <label>Test LOV Activity Category-&gt;Test LOV Type</label>
     </customValue>
     <customValue>
-        <fullName>OOH-&gt;Video Screen</fullName>
+        <fullName>Test LOV Activity Category-&gt;Test LOV Type 2</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>OOH-&gt;Video Screen</label>
-    </customValue>
-    <customValue>
-        <fullName>OOH-&gt;Other (OOH)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>OOH-&gt;Other (OOH)</label>
-    </customValue>
-    <customValue>
-        <fullName>OOH-&gt;Cinema</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>OOH-&gt;Cinema</label>
-    </customValue>
-    <customValue>
-        <fullName>OOH-&gt;Billboard/Transit</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>OOH-&gt;Billboard/Transit</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness-&gt;Slotting</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Sales Readiness-&gt;Slotting</label>
-    </customValue>
-    <customValue>
-        <fullName>Broadcast-&gt;TV</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Broadcast-&gt;TV</label>
+        <label>Test LOV Activity Category-&gt;Test LOV Type 2</label>
     </customValue>
     <customValue>
         <fullName>Other -&gt; Other</fullName>
@@ -1647,16 +1611,52 @@
         <label>Events -&gt; Event with Product Sales Onsite</label>
     </customValue>
     <customValue>
-        <fullName>Digital Media-&gt;Channel Partner Online Display</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Digital Media-&gt;Channel Partner Online Display</label>
-    </customValue>
-    <customValue>
         <fullName>Events -&gt; Event(Customer-Owned)</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Events -&gt; Event(Customer-Owned)</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration-&gt;Demo Hardware/Cloud</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Tech Exploration-&gt;Demo Hardware/Cloud</label>
+    </customValue>
+    <customValue>
+        <fullName>OOH-&gt;Video Screen</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>OOH-&gt;Video Screen</label>
+    </customValue>
+    <customValue>
+        <fullName>OOH-&gt;Other (OOH)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>OOH-&gt;Other (OOH)</label>
+    </customValue>
+    <customValue>
+        <fullName>OOH-&gt;Cinema</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>OOH-&gt;Cinema</label>
+    </customValue>
+    <customValue>
+        <fullName>OOH-&gt;Billboard/Transit</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>OOH-&gt;Billboard/Transit</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness-&gt;Slotting</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sales Readiness-&gt;Slotting</label>
+    </customValue>
+    <customValue>
+        <fullName>Broadcast-&gt;TV</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Broadcast-&gt;TV</label>
     </customValue>
     <masterLabel>Activity Category -&gt;Type</masterLabel>
     <sorted>false</sorted>

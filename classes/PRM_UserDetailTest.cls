@@ -20,8 +20,8 @@ public class PRM_UserDetailTest{
         cont.AccountId=testAccount.Id;
         cont.lastName='Grill';
         cont.FirstName='Adam';
-        cont.email='AdamGrill@rediff.com';
         cont.MailingCountry='USA';
+        cont.email='AdamGrill@rediff.com';
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.Core_IPA_PartnerRole__c='Distributor';

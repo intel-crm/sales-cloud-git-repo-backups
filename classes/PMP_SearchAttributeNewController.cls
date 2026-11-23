@@ -12,12 +12,10 @@ public with sharing class PMP_SearchAttributeNewController extends PMP_SearchWra
         if(String.isNotBlank(partnerOrOffId)) {
             
             if(partnerOrOffId.startsWith(keyPrefix)) {
-                // system.debug('partnerOrOffId1:::'+partnerOrOffId);
                 response = getPartnerAttributes(partnerOrOffId, langCode);
             } 
             //IPA2.0:US-4497-1631_OfferingEOL
             /*else {
-                // system.debug('partnerOrOffId2:::'+partnerOrOffId);
                 response = getOfferingAttributes(partnerOrOffId, langCode);
             }*/
         }
@@ -99,7 +97,6 @@ public with sharing class PMP_SearchAttributeNewController extends PMP_SearchWra
         
         if(ptnrDescMap.containsKey(ptnrId)){
             
-            // system.debug('userLanguage'+userLanguage +'static constant'+PMP_StaticConstants_Partner.JA);
             //DE114193 -- added the condition --> || userLanguage == PMP_StaticConstants_Partner.ZH_HANS_CN
             if (userLanguage == PMP_StaticConstants_Partner.ZH_CN || userLanguage == PMP_StaticConstants_Partner.ZH_HANS_CN && ptnrDescMap.get(ptnrId).PMP_Chinese_Txt__c != null){
                 temp = ptnrDescMap.get(ptnrId).PMP_Chinese_Txt__c;
@@ -379,12 +376,6 @@ public with sharing class PMP_SearchAttributeNewController extends PMP_SearchWra
                                PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.Type__c, PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c, 
                                PMP_Category_Id__r.PMP_Ancestor_Category_Nm__c,PMP_Category_Id__r.PMP_Partner_Product_Category_Cd__c ,PMP_Category_Id__r.PMP_Parent_Category_Id__c from PMP_Partner_Offering_Category__c  where name != null];
             }
-            //System.debug('offCatList'+offCatList);
-            for(PMP_Partner_Offering_Category__c offCat : offCatList){
-                // System.debug(offCat+'-');
-                // System.debug(offCat.PMP_Category_Id__r.Name);
-                // System.debug('ddd'+offcat.PMP_Category_Id__r.PMP_Parent_Category_Id__c );
-            }
             
         } 
         else{
@@ -417,7 +408,6 @@ public with sharing class PMP_SearchAttributeNewController extends PMP_SearchWra
         
         if(offDescMap.containsKey(offeringId)){
             
-            //system.debug('userLanguage'+userLanguage +'static constant'+PMP_StaticConstants_Partner.JA);
             //DE114193 -- added the condition --> || userLanguage == PMP_StaticConstants_Partner.ZH_HANS_CN
             if (userLanguage == PMP_StaticConstants_Partner.ZH_CN || userLanguage == PMP_StaticConstants_Partner.ZH_HANS_CN && offDescMap.get(offeringId).PMP_Chinese_Txt__c != null){
                 temp = offDescMap.get(offeringId).PMP_Chinese_Txt__c;

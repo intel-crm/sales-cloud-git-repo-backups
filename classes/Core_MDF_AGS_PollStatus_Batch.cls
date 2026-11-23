@@ -26,11 +26,9 @@ public class Core_MDF_AGS_PollStatus_Batch implements Database.Batchable<SObject
     /** Processes one batch scope of pending staging records against AGS. */
     public void execute(
         Database.BatchableContext bc,
-        List<SObject> scope
+        List<Core_MDF_IUPGM_Request_Staging__c> scope
     ) {
-        Core_MDF_IUPGMReqStaging_ServiceHandler.pollAgsPendingBatch(
-            (List<Core_MDF_IUPGM_Request_Staging__c>) scope
-        );
+        Core_MDF_IUPGMReqStaging_ServiceHandler.pollAgsPendingBatch(scope);
     }
     /******************************************************************************************************
     Method Name:        finish

@@ -9,7 +9,7 @@
     <standardValue>
         <fullName>Technical Owner (100%)</fullName>
         <default>false</default>
-        <label>Technical Owner (100% commitment over the lifetime of the opportunity)</label>
+        <label>Technical owner (100% commitment over the lifetime of the opportunity)</label>
     </standardValue>
     <standardValue>
         <fullName>Contributor (50%)</fullName>
@@ -32,8 +32,8 @@
         <label>Customer A&amp;E (0%)</label>
     </standardValue>
     <standardValue>
-        <fullName>Sales Account Manager</fullName>
+        <fullName>Opportunity Owner</fullName>
         <default>false</default>
-        <label>Sales Account Manager</label>
+        <label>Opportunity Owner (100%)</label>
     </standardValue>
 </StandardValueSet>

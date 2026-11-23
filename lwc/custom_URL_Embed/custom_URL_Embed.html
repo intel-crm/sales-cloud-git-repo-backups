@@ -8,7 +8,7 @@
         
         <template if:false={autoSignInEnabled}>
 						<div style={setDIVHeight}>
-								<iframe class=embed-iframe data-id="embed_iframe" allow="clipboard-read; clipboard-write" src={fullUrl} > </iframe>
+								<iframe class=embed-iframe data-id="embed_iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src={fullUrl} > </iframe>
 						</div>
             
         </template>

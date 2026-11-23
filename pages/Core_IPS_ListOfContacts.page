@@ -1,0 +1,27 @@
+<apex:page controller="Core_IPS_ListOfContactsController" action="{!showAllContacts}" >
+    <apex:form >  
+        <apex:pageBlock title="All Contacts"  >
+            <apex:pageblockSection title="Contact Information" collapsible="false" columns="1"  >
+                <apex:outputpanel id="contacts">   
+                    <Apex:outputtext >Records per page</Apex:outputtext> &nbsp;                 
+                    <apex:selectList value="{!numberLimit}" size="1" >
+                        <apex:selectOptions value="{!records}" />
+                        <apex:actionSupport action="{!showRecords}" event="onchange" reRender="contacts" />
+                    </apex:selectList>  
+                    <apex:pageBlockTable value="{!con}" var="contact"> 
+                        <apex:column value="{!contact.Name}"/>
+                        <apex:column value="{!contact.FirstName}"/>
+                        <apex:column value="{!contact.LastName}"/>
+                        <apex:column value="{!contact.Email}"/>
+                        <apex:column value="{!contact.Account.Name}"/>
+                    </apex:pageBlockTable>  
+                    <div align="left">    
+                        <apex:commandbutton style="float:centre" value="Next"  action="{!next}" rendered="{!disableNext}" reRender="contacts" /> &nbsp;
+                        <apex:commandbutton style="float:centre" value="Previous"  action="{!previous}" rendered="{!disablePrevious}" reRender="contacts"/> &nbsp;  
+                        <apex:outputtext rendered="{!totalSize>numberlimit && totalSize!=null }"> Showing Page # {!pageNumber} of {!totalPages}</apex:outputtext>     
+                    </div>
+                </apex:outputpanel>
+            </apex:pageblockSection>
+        </apex:pageBlock>  
+    </apex:form>
+</apex:page>

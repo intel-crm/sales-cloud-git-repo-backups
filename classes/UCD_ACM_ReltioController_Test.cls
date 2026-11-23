@@ -75,7 +75,7 @@ public class UCD_ACM_ReltioController_Test {
         
         // Assert the results
         System.assertNotEquals(null, response);
-        //System.assertEquals(1, response.size());
+        System.assertEquals(1, response.size());
     }
     
 

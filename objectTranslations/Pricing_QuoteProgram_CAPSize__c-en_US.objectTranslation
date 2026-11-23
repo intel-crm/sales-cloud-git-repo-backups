@@ -21,6 +21,10 @@
         <name>Pricing_Active_cb__c</name>
     </fields>
     <fields>
+        <label><!-- Quote Type --></label>
+        <name>Pricing_Quote_Type__c</name>
+    </fields>
+    <fields>
         <label><!-- Small Deal CAP size --></label>
         <name>Pricing_Small_Deal_CAP_size_Number__c</name>
     </fields>

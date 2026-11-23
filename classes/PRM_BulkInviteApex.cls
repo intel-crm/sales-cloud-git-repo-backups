@@ -35,7 +35,6 @@ public with sharing class PRM_BulkInviteApex {
     List<bulkDataWrapper> ObjList = new List<bulkDataWrapper>();
     if(string.isNotBlank(rowData)){
         ObjList =(List<bulkDataWrapper>)System.JSON.deserialize(rowData, 	List<bulkDataWrapper>.class);
-        system.debug('ObjList-->'+ObjList);
     }
        
         list<PRM_Bulk_Data_Upload__c> bulkListToInsert=new list<PRM_Bulk_Data_Upload__c>();
@@ -78,11 +77,9 @@ public with sharing class PRM_BulkInviteApex {
             }
             count++;
            
-            system.debug('sr-->'+sr);
            
        }
        
-        system.debug('resulLitst-->'+resulLitst);
     }
    return resulLitst;
 }
@@ -107,7 +104,6 @@ public with sharing class PRM_BulkInviteApex {
         datetime dtTime= Datetime.now().addMinutes(Integer.valueOf(system.label.PRM_getstatus_Time));// -8
         list<PRM_Bulk_Data_Upload__c>  bulkUploadList= [select id,PRM_Status__c,CreatedDate, PRM_ContactEmail__c,CreatedById, CreatedBy.Email,PRM_First_Name__c, PRM_Last_Name__c,PRM_Mailing_Country__c
         from PRM_Bulk_Data_Upload__c where (PRM_Status__c=:system.label.PRM_AsyncStatus or PRM_Status__c=:system.label.PRM_FailedLabel or  PRM_Status__c=:system.label.PRM_Status_New or PRM_Status__c=:system.label.PRM_Discarded) and CreatedDate >=:dtTime and  CreatedBy.Email=:userEmail];
-        system.debug('bulkUploadList-->'+bulkUploadList);
         for(PRM_Bulk_Data_Upload__c b:bulkUploadList){
                 if(b.PRM_Status__c==system.label.PRM_AsyncStatus){ countSuccess=countSuccess+1;
         }else if(b.PRM_Status__c==system.label.PRM_FailedLabel){ countFail=countFail+1;
@@ -124,7 +120,6 @@ public with sharing class PRM_BulkInviteApex {
             isLoading=false;
             stautsBulk='Wait';
         }
-        system.debug('stautsBulk--->'+stautsBulk);
        
         return stautsBulk;
     }
@@ -150,7 +145,6 @@ public with sharing class PRM_BulkInviteApex {
     }
 @AuraEnabled
 public static string retryStatusOver(){
-   // system.debug('retrycount-->'+retrycount);
     string userEmail=string.valueOf(user.email);
     datetime dtTime= Datetime.now().addMinutes(Integer.valueOf(system.label.PRM_getretryOver_Time)); //-10
     list<PRM_Bulk_Data_Upload__c> bulkUpdateLst=new list<PRM_Bulk_Data_Upload__c>();
@@ -178,7 +172,6 @@ public static string retryStatusOver(){
                     }
                 }
                 if(string.isNotBlank(bulkRecStringForExcelFail)){
-                    System.debug('bulkRecStringForExcelFail-->'+bulkRecStringForExcelFail);
                     PRM_SendEmailToUsers.sendData('PRM_Bulk_Invite_template','',bulkRecStringForExcelFail,System.Label.PRM_Failure_Email_Bulk,system.label.PRM_Bulk_Email_Subject);
                 }
                     

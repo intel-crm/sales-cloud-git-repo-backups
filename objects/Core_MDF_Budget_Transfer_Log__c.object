@@ -396,7 +396,6 @@ $Label.Core_MDF_Intel_System_User
         <columns>Core_MDF_To_Account_Current_Balance__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Account Transfer Log Name</label>

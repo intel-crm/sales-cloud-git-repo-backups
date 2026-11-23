@@ -4,6 +4,7 @@ public without sharing class Core_ACM_ERPMAPIBatchProcessor implements Database.
     Map<Id,Core_ACM_Integration_Queue__c> failedRecords = new Map<Id,Core_ACM_Integration_Queue__c>();
     Set<Id> recordIdsToProcess = new Set<Id>();
     private Integer retryCount;
+    private Boolean isEngagementCallout = false;
 
     public Core_ACM_ERPMAPIBatchProcessor() {
         this.processType = Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.BULK_MODE);
@@ -17,9 +18,10 @@ public without sharing class Core_ACM_ERPMAPIBatchProcessor implements Database.
         this.retryCount = 0;
     }
 
-    public Core_ACM_ERPMAPIBatchProcessor(Set<Id> failedRecordsId, Integer retryCount) {
+    public Core_ACM_ERPMAPIBatchProcessor(Set<Id> failedRecordsId, Integer retryCount, Boolean isEngagementCallout) {
         this.recordIdsToProcess = failedRecordsId;
         this.retryCount = retryCount + 1;
+        this.isEngagementCallout = isEngagementCallout;
     }
 
     public Core_ACM_ERPMAPIBatchProcessor(Set<Id> queueRecordIds, String processType) {
@@ -28,6 +30,15 @@ public without sharing class Core_ACM_ERPMAPIBatchProcessor implements Database.
             ? Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.BULK_MODE)
             : processType;
         this.retryCount = 0;
+    }
+
+    public Core_ACM_ERPMAPIBatchProcessor(Set<Id> queueRecordIds, String processType, Boolean isEngagementCallout) {
+        this.recordIdsToProcess = queueRecordIds;
+        this.processType = String.isBlank(processType)
+            ? Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.BULK_MODE)
+            : processType;
+        this.retryCount = 0;
+        this.isEngagementCallout = isEngagementCallout;
     }
 
     public Database.QueryLocator start(Database.BatchableContext context) {
@@ -40,15 +51,19 @@ public without sharing class Core_ACM_ERPMAPIBatchProcessor implements Database.
         List<Core_Integration_Inbound_Message__c> integrationInboundMsgToInsert = new List<Core_Integration_Inbound_Message__c>();
 
         for (Core_ACM_Integration_Queue__c queueRecord : scope) {
-            String responseBodyJson;
-            Core_ACM_PayloadWrapper.ResponseWrapper responseBody;
             try {
-                responseBodyJson = Core_ACM_CalloutService.executeAPICall(queueRecord, Core_ACM_Constants.SOURCE_ERPM);
-                System.debug('API Response Body Json@: ' + responseBodyJson);
+                Core_ACM_PayloadWrapper.ResponseWrapper responseBody = null;
+                String responseBodyJson = '';
+                if(this.isEngagementCallout){
+                    responseBodyJson = Core_ACM_CalloutService.executeAPICall(queueRecord, Core_ACM_Constants.SOURCE_ERPM_SET_PROFILES);
+                }
+                else{
+                    responseBodyJson = Core_ACM_CalloutService.executeAPICall(queueRecord, Core_ACM_Constants.SOURCE_ERPM);
+                }
                 if (responseBodyJson != null) {
                     responseBody = (Core_ACM_PayloadWrapper.ResponseWrapper) System.Json.deserialize(responseBodyJson, Core_ACM_PayloadWrapper.ResponseWrapper.class);
                 }
-                System.debug('API Response Body12: ' + responseBody);
+
                 if (responseBody != null) {
                     System.debug('API Response Body: ' + responseBody);
                     if (responseBody.Status == Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.SUCCESS_STATUS)) {
@@ -56,9 +71,7 @@ public without sharing class Core_ACM_ERPMAPIBatchProcessor implements Database.
                         queueRecord.Core_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.SUCCESS_STATUS);
                         queueRecord.Core_Retry_Count__c = retryCount;
                     } else {
-                        if (isFinalRetry()) {
-                            integrationInboundMsgToInsert.add(createFailureMessage(responseBody, responseBodyJson));
-                        }
+                        integrationInboundMsgToInsert.add(createFailureMessage(responseBody, responseBodyJson));
                         queueRecord.Core_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.FAILED_STATUS);
                         queueRecord.Core_Retry_Count__c = retryCount;
                         failedRecords.put(queueRecord.Id, queueRecord);
@@ -72,9 +85,6 @@ public without sharing class Core_ACM_ERPMAPIBatchProcessor implements Database.
                 queueRecord.Core_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.FAILED_STATUS);
                 queueRecord.Core_Retry_Count__c = retryCount;
                 failedRecords.put(queueRecord.Id, queueRecord);
-                if (isFinalRetry() && responseBodyJson != null) {
-                    integrationInboundMsgToInsert.add(createFailureMessage(responseBody, responseBodyJson));
-                }
                 UCD_ACM_Logger.error(Core_ACM_Constants.CLASS_BATCH_PROCESSOR, 'execute',
                     'Error processing queue record ' + queueRecord.Id + ': ' + e.getMessage() + '. StackTrace: ' + e.getStackTraceString(), queueRecord.Id);
             } finally {
@@ -95,18 +105,13 @@ public without sharing class Core_ACM_ERPMAPIBatchProcessor implements Database.
         }
     }
 
-    private Boolean isFinalRetry() {
-        return retryCount >= Core_ACM_Constants.API_MAX_RETRY;
-    }
-
     public void finish(Database.BatchableContext context) {
         if (!failedRecords.isEmpty()) {
             if (retryCount < Core_ACM_Constants.API_MAX_RETRY) {
-                Core_ACM_ERPMAPIBatchProcessor batchProcessor = new Core_ACM_ERPMAPIBatchProcessor(failedRecords.keySet(), retryCount);
+                Core_ACM_ERPMAPIBatchProcessor batchProcessor = new Core_ACM_ERPMAPIBatchProcessor(failedRecords.keySet(), retryCount, this.isEngagementCallout);
                 String jobName = 'Core_ACM_ERPM_Retry_' + String.valueOf(System.now().getTime());
                 System.scheduleBatch(batchProcessor, jobName, RETRY_DELAY_MINUTES, Core_ACM_Constants.API_RETRY_BATCH_SIZE);
             } else {
-                updateContactsAsFailed();
                 UCD_ACM_Logger.error(Core_ACM_Constants.CLASS_BATCH_PROCESSOR, 'finish',
                     'Retry attempts exhausted after ' + retryCount + ' retries. Remaining failed records count: ' + failedRecords.size(), NULL);
             }
@@ -145,37 +150,9 @@ public without sharing class Core_ACM_ERPMAPIBatchProcessor implements Database.
         inboundMsg.Core_Payload__c = responseJson;
         inboundMsg.Core_Processing_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.PENDING_STATUS);
         inboundMsg.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_BLACKBOX;
-        if (response != null) {
-            inboundMsg.Core_Error_Code__c = response.ErrorCode;
-            inboundMsg.Core_Error_Description__c = response.ErrorDetails;
-        }
+        inboundMsg.Core_Error_Code__c = response.ErrorCode;
+        inboundMsg.Core_Error_Description__c = response.ErrorDetails;
         inboundMsg.Core_Source_System__c = Core_ACM_Constants.SOURCE_ERPM;
         return inboundMsg;
-    }
-
-    private void updateContactsAsFailed() {
-        Set<Id> contactIds = new Set<Id>();
-
-        for (Core_ACM_Integration_Queue__c queueRec : failedRecords.values()) {
-            if (queueRec.Core_Contact__c!= null) {
-                contactIds.add(queueRec.Core_Contact__c);
-            }
-        }
-
-        if (contactIds.isEmpty()) {
-            return;
-        }
-
-        List<Contact> contactsToUpdate = [
-            SELECT Id, Core_ERPM_Integration_Status__c
-            FROM Contact
-            WHERE Id IN :contactIds
-        ];
-
-        for (Contact con : contactsToUpdate) {
-            con.Core_ERPM_Integration_Status__c = 'Failed';
-        }
-
-        update contactsToUpdate;
     }
 }

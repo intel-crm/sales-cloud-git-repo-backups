@@ -50,7 +50,7 @@
 
     <div> <c:core_MDF_Feedback> </c:core_MDF_Feedback> </div>
 
-    <div id="recode50footer"> </div>
+    <div id="recode50footer"></div>
     
    
 </aura:component>

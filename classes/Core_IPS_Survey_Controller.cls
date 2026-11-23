@@ -254,8 +254,10 @@ public with sharing class Core_IPS_Survey_Controller {
                 }
                 
                 Core_IPS_Response__c objEnvResponse = new Core_IPS_Response__c();                
-                //objEnvResponse.Core_IPS_Question__c = wQues.question; 
+                //objEnvResponse.Core_IPS_Question__c = wQues.question;
+                 if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Answer__c.isCreateable()) {
                     objEnvResponse.Core_IPS_Answer__c = wQues.answer;
+                 }
                 
                 //objEnvResponse.Core_IPS_Language__c = lang; // will be enabled later for localization/translation
                // if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) {

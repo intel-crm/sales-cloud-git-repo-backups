@@ -67,9 +67,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__QuoteLine__c$core_cpq_dollar_change_flag_cb__c</field>
     </columns>
-    <columns>
-        <field>SBQQ__QuoteLine__c$core_cpq_quote_line_type_txt__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>SBQQ__QuoteLine__c$core_cpq_quote_active_cb__c</column>

@@ -115,7 +115,7 @@ public class Core_OppApprovalCtrl_Test {
 
         insert CRMLabels;
         
-        //List<Id> listDDRId = new List<Id>();
+        List<Id> listDDRId = new List<Id>();
         Core_Design_Registration__c DDRLst = new Core_Design_Registration__c(
             Core_Product_Group_Nm__c = 'FPGA/Power',
             Core_Design_Registration_Nm__c = 'DDR Test',
@@ -512,7 +512,7 @@ public class Core_OppApprovalCtrl_Test {
     }
     static testMethod void validatechecks9(){
         try{
-            //Map<String, List<String>> errMsgMap = new Map<String, List<String>>();
+            Map<String, List<String>> errMsgMap = new Map<String, List<String>>();
             Opportunity opp1 = [select id,Core_Design_Registration_Id__c,accountid, Core_Exclude_From_KPIs__c, account.Core_Export_Compliance_Block__c, account.Core_Export_Compliance_Block_Reason__c, Core_Commissionable__c, Core_Compliance_Status__c, Account.RecordType.Name, Core_Write_In_Product_Count__c,Core_Design_Registration_Id__r.Core_Design_Registration_Status_Nm__c,RecordType.DeveloperName from opportunity where Core_Opportunity_Type__c='Design: Original' limit 1];
             Core_Design_Registration__c dr =[select id,Core_Opportunity_Id__c,Core_Design_Registration_Status_Nm__c from Core_Design_Registration__c where Core_Design_Registration_Nm__c like '%Test%' limit 1];               
             dr.Core_Design_Registration_Status_Nm__c='Re-Submitted';
@@ -577,7 +577,7 @@ public class Core_OppApprovalCtrl_Test {
     
     static testMethod void checkQLDates_Test(){
         
-        //List<Pricing_Competitor_Product__c> cpList = new List<Pricing_Competitor_Product__c>();
+        List<Pricing_Competitor_Product__c> cpList = new List<Pricing_Competitor_Product__c>();
         
         Pricing_Competitor_Product__c cp = new Pricing_Competitor_Product__c();
         cp.Name = 'Write In Product';
@@ -596,7 +596,7 @@ public class Core_OppApprovalCtrl_Test {
         insert contactInstance;
         
         
-        //product2 productInstance = [select id, name,Core_Division_Code__c,Core_Division_Code_Short_Name__c,Core_Group_Code__c,Core_Group_Code_Short_Name__c from Product2 where name like '%Intel%' limit 1];
+        product2 productInstance = [select id, name,Core_Division_Code__c,Core_Division_Code_Short_Name__c,Core_Group_Code__c,Core_Group_Code_Short_Name__c from Product2 where name like '%Intel%' limit 1];
         
         Pricing_UnifiedEndCustomerAccountMapping__c unifiedEndCustomer = new Pricing_UnifiedEndCustomerAccountMapping__c();
             unifiedEndCustomer.name='Write In End Customer';
@@ -785,8 +785,8 @@ public class Core_OppApprovalCtrl_Test {
     static testMethod void checkVBSOpp(){
         try {
             Core_OppApprovalCtrl.checklistWrapper wrp = new Core_OppApprovalCtrl.checklistWrapper();
-            //boolean hardStop = false;
-            //boolean softStop = false;
+            boolean hardStop = false;
+            boolean softStop = false;
             String err1 = Core_CRM_Utility.getCRMLabel('Core_VBS_TCV_GrtThan_DWAmt');
             String err2 = Core_CRM_Utility.getCRMLabel('Core_VBS_ContactSDt_GrtThanDesicionDt');
             String err3 = Core_CRM_Utility.getCRMLabel('Core_VBS_IntelLedGrowth_OppFocusReq');
@@ -852,7 +852,7 @@ public class Core_OppApprovalCtrl_Test {
     
     static testMethod void validatechecks13(){
         try{
-            //List<Pricing_Competitor_Product__c> cpList = new List<Pricing_Competitor_Product__c>();
+            List<Pricing_Competitor_Product__c> cpList = new List<Pricing_Competitor_Product__c>();
             
             Pricing_Competitor_Product__c cp = new Pricing_Competitor_Product__c();
             cp.Name = 'Write In Product';
@@ -873,7 +873,7 @@ public class Core_OppApprovalCtrl_Test {
             insert contactInstance;
             
             
-            //product2 productInstance = [select id, name,Core_Division_Code__c,Core_Division_Code_Short_Name__c,Core_Group_Code__c,Core_Group_Code_Short_Name__c from Product2 where name like '%Intel%' limit 1];
+            product2 productInstance = [select id, name,Core_Division_Code__c,Core_Division_Code_Short_Name__c,Core_Group_Code__c,Core_Group_Code_Short_Name__c from Product2 where name like '%Intel%' limit 1];
             
             Pricing_UnifiedEndCustomerAccountMapping__c unifiedEndCustomer = new Pricing_UnifiedEndCustomerAccountMapping__c();
             unifiedEndCustomer.name='Write In End Customer';

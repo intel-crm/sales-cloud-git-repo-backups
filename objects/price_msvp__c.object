@@ -142,14 +142,14 @@
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <deploymentStatus>Deployed</deploymentStatus>
+    <deploymentStatus>InDevelopment</deploymentStatus>
     <description>To store the MSVP L1 and L2 values</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
+    <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
@@ -178,17 +178,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>core_cpq_product_code__c</fullName>
-        <externalId>false</externalId>
-        <label>Product Code</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>core_cpq_product_name_txt__c</fullName>
@@ -226,16 +215,15 @@
     </fields>
     <fields>
         <fullName>core_cpq_unique_id__c</fullName>
-        <caseSensitive>false</caseSensitive>
         <description>Ensures that the combination of OPN and  MSVP Name is unique</description>
-        <externalId>true</externalId>
+        <externalId>false</externalId>
         <label>Unique Id</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>true</unique>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>price_10ku_y_amt__c</fullName>
@@ -331,131 +319,6 @@
         <type>Currency</type>
     </fields>
     <label>MSVP</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>core_cpq_product_opn__c</columns>
-        <columns>price_prototype_amt__c</columns>
-        <columns>price_250u_y_amt__c</columns>
-        <columns>price_500u_y_amt__c</columns>
-        <columns>price_1ku_y_amt__c</columns>
-        <columns>price_2_5ku_y_amt__c</columns>
-        <columns>price_5ku_y_amt__c</columns>
-        <columns>price_10ku_y_amt__c</columns>
-        <columns>price_level_1_amt__c</columns>
-        <columns>price_level_2_amt__c</columns>
-        <columns>core_cpq_effective_date_dt__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>core_cpq_product_nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>core_cpq_product_nm__c</field>
-            <operation>contains</operation>
-        </filters>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>FPGA_Product_s_MSVP</fullName>
-        <columns>NAME</columns>
-        <columns>core_cpq_product_opn__c</columns>
-        <columns>price_prototype_amt__c</columns>
-        <columns>price_250u_y_amt__c</columns>
-        <columns>price_500u_y_amt__c</columns>
-        <columns>price_1ku_y_amt__c</columns>
-        <columns>price_2_5ku_y_amt__c</columns>
-        <columns>price_5ku_y_amt__c</columns>
-        <columns>price_10ku_y_amt__c</columns>
-        <columns>price_level_1_amt__c</columns>
-        <columns>price_level_2_amt__c</columns>
-        <columns>core_cpq_effective_date_dt__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>price_msvp__c.PSG_MSVP_Record_Type</value>
-        </filters>
-        <filters>
-            <field>core_cpq_effective_date_dt__c</field>
-            <operation>lessOrEqual</operation>
-            <value>NEXT_N_YEARS:5</value>
-        </filters>
-        <filters>
-            <field>core_cpq_product_opn__c</field>
-            <operation>contains</operation>
-            <value>5CSXFC6D6F31I7N</value>
-        </filters>
-        <label>01 - MSVP (NEXT 05 years)</label>
-        <sharedTo>
-            <group>ags_internal_users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>X01_MSVP_NEXT_15_years</fullName>
-        <columns>NAME</columns>
-        <columns>core_cpq_product_opn__c</columns>
-        <columns>price_prototype_amt__c</columns>
-        <columns>price_250u_y_amt__c</columns>
-        <columns>price_500u_y_amt__c</columns>
-        <columns>price_1ku_y_amt__c</columns>
-        <columns>price_2_5ku_y_amt__c</columns>
-        <columns>price_5ku_y_amt__c</columns>
-        <columns>price_10ku_y_amt__c</columns>
-        <columns>price_level_1_amt__c</columns>
-        <columns>price_level_2_amt__c</columns>
-        <columns>core_cpq_effective_date_dt__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>price_msvp__c.PSG_MSVP_Record_Type</value>
-        </filters>
-        <filters>
-            <field>core_cpq_effective_date_dt__c</field>
-            <operation>greaterThan</operation>
-            <value>NEXT_N_YEARS:10</value>
-        </filters>
-        <label>01 - MSVP (NEXT 15 years)</label>
-        <sharedTo>
-            <group>ags_internal_users</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>x01_MSVP_NEXT_10_years</fullName>
-        <columns>NAME</columns>
-        <columns>core_cpq_product_opn__c</columns>
-        <columns>price_prototype_amt__c</columns>
-        <columns>price_250u_y_amt__c</columns>
-        <columns>price_500u_y_amt__c</columns>
-        <columns>price_1ku_y_amt__c</columns>
-        <columns>price_2_5ku_y_amt__c</columns>
-        <columns>price_5ku_y_amt__c</columns>
-        <columns>price_10ku_y_amt__c</columns>
-        <columns>price_level_1_amt__c</columns>
-        <columns>price_level_2_amt__c</columns>
-        <columns>core_cpq_effective_date_dt__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>price_msvp__c.PSG_MSVP_Record_Type</value>
-        </filters>
-        <filters>
-            <field>core_cpq_effective_date_dt__c</field>
-            <operation>greaterThan</operation>
-            <value>NEXT_N_YEARS:5</value>
-        </filters>
-        <filters>
-            <field>core_cpq_effective_date_dt__c</field>
-            <operation>lessOrEqual</operation>
-            <value>NEXT_N_YEARS:10</value>
-        </filters>
-        <label>01 - MSVP (NEXT 10 years)</label>
-        <sharedTo>
-            <group>ags_internal_users</group>
-        </sharedTo>
-    </listViews>
     <nameField>
         <displayFormat>MSVP-{0000000}</displayFormat>
         <label>MSVP Name</label>
@@ -481,15 +344,9 @@
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>PSG_MSVP_NoNegativeValueCheck</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Should perform the validation to ensure there are no -ve values for any of the pricing tiers of MSVP.</description>
-        <errorConditionFormula>AND(NOT( $Permission.PSG_External_Disty ),
-RecordType.DeveloperName = &apos;PSG_MSVP_Record_Type&apos;,
-OR( (price_level_1_amt__c&lt;0),( price_level_2_amt__c&lt;0),
-(price_10ku_y_amt__c &lt;0),(price_1ku_y_amt__c &lt;0),
-(price_2_5ku_y_amt__c &lt;0),( price_500u_y_amt__c &lt;0),
-( price_prototype_amt__c &lt;0),
-(price_5ku_y_amt__c &lt;0),( price_250u_y_amt__c &lt;0)))</errorConditionFormula>
+        <errorConditionFormula>true</errorConditionFormula>
         <errorMessage>Negative Values not allowed for MSVP</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

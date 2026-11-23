@@ -130,6 +130,29 @@
         </rules>
     </decisions>
     <decisions>
+        <description>IAO Change Switch is Enabled/Disabled</description>
+        <name>Check_IAO_Change_Switch</name>
+        <label>Check IAO Change Switch</label>
+        <locationX>1942</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IS_IAO_Switch_Disabled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Label.UCD_ACM_Switch_IAO_Change</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Associated_Account</targetReference>
+            </connector>
+            <label>IS IAO Switch Disabled</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>Check if all block compliance record has end date and account Export Compliance Block is set to true</description>
         <name>Check_If_All_Compliance_Watch_List_Have_End_Date_And_Account_ECB_is_Checked</name>
         <label>Check If All Compliance Watch List Have End Date And Account ECB is Checked</label>
@@ -157,29 +180,6 @@
                 <targetReference>UnCheck_Export_Compliance_Block</targetReference>
             </connector>
             <label>Is End Date Present And ECB Checked</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <description>Perform Screening From CWL Object Enabled or Disabled</description>
-        <name>Check_Perform_Screening_From_CWL_Object</name>
-        <label>Check Perform Screening From CWL Object</label>
-        <locationX>1942</locationX>
-        <locationY>323</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>IS_Perform_Screening_From_CWL_Enabled</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Label.PerformScreeningFromCWLObject</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_Associated_Account</targetReference>
-            </connector>
-            <label>IS Perform Screening From CWL Enabled</label>
         </rules>
     </decisions>
     <description>This Flow updates the Account Export Compliance Block And Reason Field On Account Based on Compliance Code Is Blocked Or Not</description>
@@ -560,7 +560,7 @@
         <locationX>1816</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_Perform_Screening_From_CWL_Object</targetReference>
+            <targetReference>Check_IAO_Change_Switch</targetReference>
         </connector>
         <object>Core_Account_Compliance_Watch_List__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>

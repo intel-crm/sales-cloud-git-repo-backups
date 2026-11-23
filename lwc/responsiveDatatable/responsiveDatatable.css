@@ -1,68 +1,68 @@
 .customTable {
-  table-layout: fixed;
+	table-layout: fixed;
 }
 
 .customWrap {
-  max-width: 100%;
-  text-overflow: ellipsis;
-  white-space: normal;
-  overflow: hidden;
-  word-break: break-word;
-  font-size: 16px;
-  color: #555555;
-  /* font-weight: 200; */
+	max-width: 100%;
+	text-overflow: ellipsis;
+	white-space: normal;
+	overflow: hidden;
+	word-break: break-word;
+	font-size: 16px;
+	color: #555555;
+	/* font-weight: 200; */
 }
 .customWrapHeader {
-  max-width: 100%;
-  text-overflow: ellipsis;
-  white-space: normal;
-  overflow: hidden;
-  word-break: break-word;
-  font-size: 16px;
-  color: #555555;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	white-space: normal;
+	overflow: hidden;
+	word-break: break-word;
+	font-size: 16px;
+	color: #555555;
 }
 .addCurrentUserCss {
-  /* max-width: 100%;
+	/* max-width: 100%;
 	text-overflow: ellipsis;
 	white-space: normal;
 	overflow: hidden;
 	word-break: break-all;
 	font-size: 12px;
 	color: #706e6b; */
-  max-width: 100%;
-  text-overflow: ellipsis;
-  white-space: normal;
-  overflow: hidden;
-  word-break: break-word;
-  font-size: 16px;
-  color: #555555;
-  /* font-weight: 200; */
+	max-width: 100%;
+	text-overflow: ellipsis;
+	white-space: normal;
+	overflow: hidden;
+	word-break: break-all;
+	font-size: 16px;
+	color: #555555;
+	/* font-weight: 200; */
 }
 .customWrapHeader:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 .customWrapHeaderNonSortable {
-  max-width: 100%;
-  text-overflow: ellipsis;
-  white-space: normal;
-  overflow: hidden;
-  word-break: break-all;
-  pointer-events: none;
-  font-size: 16px;
-  color: #555555;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	white-space: normal;
+	overflow: hidden;
+	word-break: break-all;
+	pointer-events: none;
+	font-size: 16px;
+	color: #555555;
 }
 
 th {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 2;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 2;
 }
 .error {
-  text-align: center;
-  font-size: 16px;
-  margin: 10px;
+	text-align: center;
+	font-size: 16px;
+	margin: 10px;
 }
 .slds-form-element__icon {
-  padding-top: 0px !important;
+	padding-top: 0px !important;
 }

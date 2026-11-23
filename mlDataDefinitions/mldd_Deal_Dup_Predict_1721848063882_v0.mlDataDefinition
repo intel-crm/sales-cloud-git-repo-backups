@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLDataDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <developerName>mldd_Deal_Dup_Predict_1721848063882_v0</developerName>
+    <entityDeveloperName>Deal_Prediction_Stage__c</entityDeveloperName>
+    <parentDefinitionDevName>mlpd_Deal_Dup_Predict_1721847015212_v0</parentDefinitionDevName>
+    <type>Prediction</type>
+</MLDataDefinition>

@@ -234,11 +234,16 @@ v19- Defaulting logic for opp owner and technical owner, Blank out for Previous 
         <connector>
             <targetReference>If_Team_Member_is_Partner</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Description_of_Contribution__c</field>
+            <operator>EqualTo</operator>
+        </filters>
         <object>OpportunityTeamMember</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Obsolete</status>
     <variables>
         <name>Cur_Val</name>
         <dataType>SObject</dataType>

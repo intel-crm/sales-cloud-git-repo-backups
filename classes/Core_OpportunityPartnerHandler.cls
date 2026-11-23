@@ -476,8 +476,8 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
             oppId.add(OppPartner.Core_Opportunity__c);      
         }
         if(oppId.size()>0){
-            for (Opportunity allOppKPI: [SELECT ID FROM Opportunity WHERE Id IN :oppId and (Core_Opportunity_Coverage_Nm__c <> 'Partner-Led Opportunity' or
-                                         Core_Coverage_Type_Nm__c <> 'Deal Registration')
+            for (Opportunity allOppKPI: [SELECT ID FROM Opportunity WHERE Id IN :oppId and Core_Opportunity_Coverage_Nm__c!='Partner-Led Opportunity' and
+                                         Core_Coverage_Type_Nm__c !='Deal Registration'
                                         ]) {
                                             oppIdForKPI.add(allOppKPI.Id);
                                         }
@@ -501,8 +501,8 @@ public without sharing class Core_OpportunityPartnerHandler {//TWC3123-5376: cod
             }
         }
         if(oppId.size()>0){
-            for (Opportunity allOppKPI: [SELECT ID FROM Opportunity WHERE Id IN :oppId and (Core_Opportunity_Coverage_Nm__c <> 'Partner-Led Opportunity' or
-                                         Core_Coverage_Type_Nm__c <> 'Deal Registration')
+            for (Opportunity allOppKPI: [SELECT ID FROM Opportunity WHERE Id IN :oppId and Core_Opportunity_Coverage_Nm__c!='Partner-Led Opportunity' and
+                                         Core_Coverage_Type_Nm__c !='Deal Registration'
                                         ]) {
                                             oppIdForKPI.add(allOppKPI.Id);
                                         }

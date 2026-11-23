@@ -953,6 +953,11 @@ Quote Program: Software</description>
         <type>Checkbox</type>
     </fields>
     <label>Product Option</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>PO-{000000}</displayFormat>
         <label>Option Name</label>

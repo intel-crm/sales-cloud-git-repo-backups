@@ -239,6 +239,7 @@
                 <value>
                     <fullName>Missing Approver Roles Configuration</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Missing Approver Roles Configuration</label>
                 </value>
             </valueSetDefinition>

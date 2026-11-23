@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM_Bulk_Invite</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM_Bulk_Invites</value>
+    </caseValues>
+    <fields>
+        <label><!-- PRM_Status --></label>
+        <name>PRM_Status__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -78,13 +78,6 @@
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>7</sequenceNumber>
-        <sourceFieldName>Pricing_Change_Request_Ind__c</sourceFieldName>
-        <value>true</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>Equals</operator>
         <sequenceNumber>1</sequenceNumber>
         <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
         <value>EMEA</value>
@@ -108,6 +101,13 @@
         <operator>IsNull</operator>
         <sequenceNumber>5</sequenceNumber>
         <sourceFieldName>Pricing_End_Customer_Country_Nm__c</sourceFieldName>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
+        <operator>Equals</operator>
+        <sequenceNumber>7</sequenceNumber>
+        <sourceFieldName>Pricing_Change_Request_Ind__c</sourceFieldName>
+        <value>true</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>

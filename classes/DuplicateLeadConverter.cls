@@ -1,101 +1,145 @@
 global class DuplicateLeadConverter implements Database.Batchable<SObject>, Database.Stateful {
 
-    private Id orgWideEmailId;
-
     global Database.QueryLocator start(Database.BatchableContext bc) {
 
-        List<OrgWideEmailAddress> oweList = [
-            SELECT Id
-            FROM OrgWideEmailAddress
-            WHERE Address = 'salescrm_sb@intel.com'
-            LIMIT 1
-        ];
-        if (!oweList.isEmpty()) {
-            orgWideEmailId = oweList[0].Id;
+        Set<Id> validRecordTypeIds = new Set<Id>();
+
+        for (RecordType rt : [
+            SELECT Id 
+            FROM RecordType 
+            WHERE SObjectType = 'Lead' 
+            AND Name IN ('Lead', 'Sales Lead')
+        ]) {
+            validRecordTypeIds.add(rt.Id);
         }
 
         return Database.getQueryLocator([
-            SELECT Id,
-                   Lead_Id__c,
-                   Contact_Id__c,
-                   Lead_Owner_Id__c,
-                   Lead_Status__c,
-                   Lead_Email__c,
-                   Contact_Email__c,
-                   Account_Id__c,
-                   Lead_Created_Date__c,
-                   IsConverted__c,
-                   Conversion_Error__c
-            FROM Lead_To_Convert__c
-            WHERE IsConverted__c = FALSE
-            ORDER BY Lead_Created_Date__c DESC
+            SELECT Id, Email, OwnerId, Core_Product_Interest__c, Core_Lead_Status__c, CreatedDate
+            FROM Lead
+            WHERE IsConverted = FALSE
+            AND Email != null
+            AND RecordTypeId IN :validRecordTypeIds
+            ORDER BY CreatedDate DESC
+            LIMIT 2000
         ]);
     }
 
-    global void execute(Database.BatchableContext bc, List<Lead_To_Convert__c> scope) {
+    global void execute(Database.BatchableContext bc, List<Lead> scope) {
 
-        if (scope.isEmpty()) return;
+        Set<String> emails = new Set<String>();
+        Set<Id> ownerIds = new Set<Id>();
 
-        Set<Id> userOwnerIds = new Set<Id>();
-
-        for (Lead_To_Convert__c rec : scope) {
-            if (rec.Lead_Owner_Id__c != null && !String.valueOf(rec.Lead_Owner_Id__c).startsWith('00G')) {
-                userOwnerIds.add(rec.Lead_Owner_Id__c);
-            }
+        for (Lead l : scope) {
+            emails.add(l.Email.toLowerCase());
+            ownerIds.add(l.OwnerId);
         }
 
-        Map<Id, User> ownerMap = userOwnerIds.isEmpty()
-            ? new Map<Id, User>()
-            : new Map<Id, User>([
-                SELECT Id, Email, FirstName, IsActive
-                FROM User
-                WHERE Id IN :userOwnerIds
-            ]);
+        Map<String, Contact> emailToContact = new Map<String, Contact>();
+        for (Contact c : [
+            SELECT Id, Email, OwnerId, AccountId
+            FROM Contact
+            WHERE Email IN :emails
+        ]) {
+            emailToContact.put(c.Email.toLowerCase(), c);
+        }
+        
+        system.debug('Email to Contact ' +emailToContact);
+
+        Map<Id, User> ownerMap = new Map<Id, User>(
+            [SELECT Id, Email, FirstName FROM User WHERE Id IN :ownerIds]
+        );
+
+        Map<Id, Group> queueMap = new Map<Id, Group>(
+            [SELECT Id FROM Group WHERE Id IN :ownerIds AND Type = 'Queue']
+        );
+
+        Id orgWideEmailId;
+        List<OrgWideEmailAddress> oweList = [
+            SELECT Id FROM OrgWideEmailAddress 
+            WHERE Address = 'salescrm_sb@intel.com'
+            LIMIT 1
+        ];
+        if (!oweList.isEmpty()) orgWideEmailId = oweList[0].Id;
 
         List<Database.LeadConvert> conversions = new List<Database.LeadConvert>();
+        List<Task> tasks = new List<Task>();
         List<Messaging.SingleEmailMessage> emailsToSend = new List<Messaging.SingleEmailMessage>();
         List<Lead> leadsToUpdateOwner = new List<Lead>();
 
         Id runningUserId = UserInfo.getUserId();
-        Datetime sixMonthsAgo = Datetime.now().addMonths(-6);
 
-        for (Lead_To_Convert__c rec : scope) {
+        for (Lead l : scope) {
 
-            if (rec.Lead_Id__c == null || rec.Contact_Id__c == null) {
-                continue;
-            }
+            Contact match = emailToContact.get(l.Email.toLowerCase());
+            if (match == null) continue;
 
-            Boolean isQueueOwner = rec.Lead_Owner_Id__c != null 
-                && String.valueOf(rec.Lead_Owner_Id__c).startsWith('00G');
+            User leadOwner = ownerMap.get(l.OwnerId);
+            Boolean isQueueOwner = queueMap.containsKey(l.OwnerId);
 
-            User leadOwner = ownerMap.get(rec.Lead_Owner_Id__c);
-
-            Boolean isInactiveOwner = leadOwner != null && !leadOwner.IsActive;
-
-            if (isQueueOwner || isInactiveOwner) {
-                leadsToUpdateOwner.add(new Lead(
-                    Id = rec.Lead_Id__c,
-                    OwnerId = runningUserId
-                ));
-            }
-
+            // ================= EMAIL BEFORE CONVERSION =================
             Boolean sendEmail = true;
 
             if (isQueueOwner) sendEmail = false;
-            if (isInactiveOwner) sendEmail = false;
             if (leadOwner != null && leadOwner.FirstName == 'Marketo') sendEmail = false;
-            if (rec.Lead_Status__c == 'Disqualified' ||
-                rec.Lead_Created_Date__c < sixMonthsAgo) sendEmail = false;
+            if (l.Core_Lead_Status__c == 'disqualified' ||
+                l.CreatedDate > System.now().addMonths(-6)) sendEmail = false;
 
+            if (sendEmail && orgWideEmailId != null && leadOwner != null) {
+
+                Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+                mail.setTargetObjectId(leadOwner.Id);
+                mail.setOrgWideEmailAddressId(orgWideEmailId);
+                mail.setSaveAsActivity(false);
+                mail.setSubject('Notification: Lead Automatically Converted to Contact');
+
+                mail.setPlainTextBody(
+                    'Hello,\n\n' +
+                    'The lead you own has been automatically converted because a new contact was created with the same email address.\n\n' +
+                    'Details:\n' +
+                    'Lead: ' + l.Id + ' (' + l.Email + ')\n' +
+                    'Contact: ' + match.Id + ' (' + match.Email + ')\n\n' +
+                    'The lead information is now associated with the contact record.'
+                );
+
+                emailsToSend.add(mail);
+            }
+
+            if (isQueueOwner) {
+                l.OwnerId = runningUserId;
+                leadsToUpdateOwner.add(l);
+            }
+
+            // ================= TASK CREATION =================
+            if (l.Core_Product_Interest__c != null) {
+
+                Task newTask = new Task();
+                newTask.OwnerId = match.OwnerId;
+                newTask.Type = 'Other';
+                newTask.Priority = 'Normal';
+                newTask.TaskSubtype = 'Task';
+                newTask.Subject = 'Automated - Duplicate Lead contact consolidation Task';
+
+                newTask.Description =
+                    'We identified a Lead record linked to a Contact with the same email address, resulting in duplicate entries. To resolve this, automation has:\n' +
+                    '1. Converted the Lead and mapped it to the existing Contact.\n' +
+                    '2. Consolidated all product interest details under the Contact to maintain a complete engagement view.\n\n' +
+                    'Updated Product Interests now associated with the Contact: ' + l.Core_Product_Interest__c;
+
+                newTask.WhoId = match.Id;
+                newTask.Status = 'Completed';
+                newTask.ActivityDate = Date.today();
+                newTask.RecordTypeId = '012o0000000Gn1AAAS';
+
+                tasks.add(newTask);
+            }
+
+            // ================= CONVERSION =================
             Database.LeadConvert lc = new Database.LeadConvert();
-            lc.setLeadId(rec.Lead_Id__c);
-            lc.setContactId(rec.Contact_Id__c);
+            lc.setLeadId(l.Id);
+            lc.setContactId(match.Id);
+            lc.setAccountId(match.AccountId);
             lc.setDoNotCreateOpportunity(true);
             lc.setConvertedStatus('Sales Qualified Lead');
-
-            if (rec.Account_Id__c != null) {
-                lc.setAccountId(rec.Account_Id__c);
-            }
 
             conversions.add(lc);
         }
@@ -104,71 +148,20 @@ global class DuplicateLeadConverter implements Database.Batchable<SObject>, Data
             update leadsToUpdateOwner;
         }
 
-        if (!conversions.isEmpty()) {
-
-            List<Database.LeadConvertResult> results = Database.convertLead(conversions, false);
-
-            for (Integer i = 0; i < results.size(); i++) {
-
-                Database.LeadConvertResult res = results[i];
-                Lead_To_Convert__c rec = scope[i];
-
-                Boolean isQueueOwner = rec.Lead_Owner_Id__c != null 
-                    && String.valueOf(rec.Lead_Owner_Id__c).startsWith('00G');
-
-                User leadOwner = ownerMap.get(rec.Lead_Owner_Id__c);
-                Boolean isInactiveOwner = leadOwner != null && !leadOwner.IsActive;
-
-                Boolean sendEmail = true;
-
-                if (isQueueOwner) sendEmail = false;
-                if (isInactiveOwner) sendEmail = false;
-                if (leadOwner != null && leadOwner.FirstName == 'Marketo') sendEmail = false;
-                if (rec.Lead_Status__c == 'Disqualified' ||
-                    rec.Lead_Created_Date__c < sixMonthsAgo) sendEmail = false;
-
-                if (res.isSuccess()) {
-                    rec.IsConverted__c = true;
-                    rec.Conversion_Error__c = null;
-
-                    if (sendEmail && orgWideEmailId != null && leadOwner != null) {
-
-                        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-                        mail.setTargetObjectId(leadOwner.Id);
-                        mail.setOrgWideEmailAddressId(orgWideEmailId);
-                        mail.setSaveAsActivity(false);
-                        mail.setSubject('Notification: Lead Automatically Converted to Contact');
-
-                        mail.setPlainTextBody(
-                            'Hello,\n\n' +
-                            'The lead you own has been automatically converted because a new contact was created with the same email address.\n\n' +
-                            'Details:\n' +
-                            'Lead: ' + rec.Lead_Id__c + ' (' + rec.Lead_Email__c + ')\n' +
-                            'Contact: ' + rec.Contact_Id__c + ' (' + rec.Contact_Email__c + ')\n\n' +
-                            'The lead information is now associated with the contact record.'
-                        );
-
-                        emailsToSend.add(mail);
-                    }
-                }
-                else {
-                    rec.IsConverted__c = false;
-                    String errMsg = '';
-                    for (Database.Error err : res.getErrors()) {
-                        errMsg += err.getMessage() + ' | ';
-                    }
-                    rec.Conversion_Error__c = errMsg;
-                }
-            }
-        }
-
         if (!emailsToSend.isEmpty()) {
             Messaging.sendEmail(emailsToSend);
         }
 
-        update scope;
+        if (!tasks.isEmpty()) {
+            insert tasks;
+        }
+
+        if (!conversions.isEmpty()) {
+            Database.convertLead(conversions, false);
+        }
     }
 
     global void finish(Database.BatchableContext bc) {
+        System.debug('Duplicate Lead conversion batch completed successfully.');
     }
 }

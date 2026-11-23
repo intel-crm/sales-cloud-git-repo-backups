@@ -1,0 +1,269 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "4fd8f0a7-d64d-4429-80ae-0af76b485e43",
+  "label" : "Marketplace Partner Specialty Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceSearchHeader",
+      "id" : "1dbf13cb-dd95-4fbc-ac77-f385d853ae80",
+      "renderPriority" : "HIGHEST",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "83ddb33d-2732-4521-833e-59252e54adde",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "1360b81b-d57c-4f8e-9a8f-5ed5cd976c3f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "136b84f4-0b54-4cb7-8c9d-765c0a808d47",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"PartnerSPecialtyPage\"/> \n<meta name=\"keywords\" content=\"marketplace partner specialty, {!Record._Title}, intel solutions marketplace\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"PartnerSPecialtyPage\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>\n<meta name=\"description\" content=\"Find marketplace partners by specialty: {!Record._Title} - on Intel® Solutions Marketplace and discover top industry leading innovation.\"/>",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title} Partner - Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "154f74ea-ade1-454f-8aa7-3e9b8e22243a",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "28d4634c-c990-4747-863c-f6bb51a52298",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "3060e28e-a606-46a7-ab7b-1f0ff83e914c",
+    "regionName" : "manageOfferingBar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "backgroundVariant" : "mosaic-l2",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "www.intel.com",
+        "ctaLabel" : "Intel Home",
+        "doAnalytics" : false,
+        "dynamicMarquee" : true,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Lorem Ipsum Title"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "964772de-5faf-4275-a5e5-8bcf53f09df9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8174be21-47fb-49ca-bef8-7daa949c9aaf",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceSearchResults",
+      "id" : "b5f9ed96-4d47-45b5-907d-253351d1e710",
+      "renderPriority" : "HIGH",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "98d9e204-5552-45aa-bca0-cb28e08ab61c",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "61f68cbe-fca3-44b8-951c-a8868bc239ea",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"PartnerSpecialtyPage\",\"title\":\"Partner Specialty Page\"}",
+        "category" : "{!recordId}"
+      },
+      "componentName" : "c:ipaSearch",
+      "id" : "a7804137-b6e6-4d3d-b976-ed95359983ac",
+      "renderPriority" : "HIGHEST",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ae35cb8d-e71c-422b-bf54-fe62fea88c05",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "22482536-b8d6-4c75-9ad5-7d6a81c3e41c",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "5344d0df-273a-4bd0-b2f8-526502d9f172",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "bb876749-1c27-4e41-940a-08d755cfe207",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaCommPage" : "",
+        "ctaExternalURL" : "",
+        "ctaLabel" : "Learn More",
+        "subtitle" : "Don’t miss out on special promotions, offers, training, marketing tools, and other valuable benefits of being a member.",
+        "theme" : "dark",
+        "title" : "Join the Intel® Partner Alliance"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "a8aecd14-1ca4-4761-8860-883fa37acb5b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2a48fccf-0fdd-4684-a346-4c1e7db7a5dd",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "categoryId" : "",
+        "searchType" : "all"
+      },
+      "componentName" : "c:MarketplaceSearchFilters",
+      "id" : "81ae4934-da33-4fca-8740-edaed3fcaa37",
+      "renderPriority" : "HIGH",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "44b031ae-a4c9-4f3c-9b9f-d806a88670b3",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaLabel" : "Learn more",
+        "ctaURL" : "https://www.intel.com/content/www/us/en/partner/programs-overview.html",
+        "ctaURLNewTab" : true,
+        "heading" : "Join An Intel® Partner Program",
+        "subHeading" : "Gain expertise, take advantage of special promotions, marketing tools and other valuable benefits of being a member",
+        "theme" : "dark"
+      },
+      "componentName" : "c:MarketPlaceCTABanner",
+      "id" : "4894aa1f-b743-4469-ae66-f86b3451528a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f4ee2ca6-5b26-4b3b-af9a-4eeca253eeb8",
+    "regionName" : "ctabar",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "d45b3310-fce0-4730-a01e-5059af2b10c1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ed7a364c-0b55-4c1e-97d9-a415f900cc5a",
+    "regionName" : "faq",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace Help",
+        "headingLabel" : "FAQs",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "2cc9933a-0dd8-4a1b-9e00-8218db126c95",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9c8bad8c-74b2-4774-9824-d6660bd9fe27",
+    "regionName" : "faqWhite",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaCompareTray",
+      "id" : "e8ce2554-616b-49ae-802d-6b7b50b1d3e1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "cee6ca8e-d503-45bf-a28c-a1fdc05d2e67",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "b6c13dd7-2370-4663-af7f-548644fa2244",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "26806c8a-68cf-4982-a334-302ec67ba4ca",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "13bda62a-9545-455a-8156-7406251b9668",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "548cfd95-28df-42f5-a319-9340206eedf2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d07ed36b-c3b1-41bc-97c0-d5202ad85a2e",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "0ec25ff3-a098-43cf-a7ce-660dacb5c73a",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "aa519bae-56ba-4721-ba14-7ad5d1b95275",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "fdea80d2-3ad9-4bf8-8ed8-2770cfeef445",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "d2c5c797-c287-4874-91fa-2c72cafa8e33",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "164754db-74f8-47cc-abcd-464fbb1d4d6c",
+    "regionName" : "blade10",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "detail-a8a"
+}

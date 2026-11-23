@@ -1,0 +1,8 @@
+<apex:page controller="Pricing_SyncSDMToQuote">                                                                                         
+    <apex:form >
+        <apex:pageMessages id="messages" />
+        <apex:outputText value="Button Which Adds Logged In FSE/SDM to Account Public Groups."/><br/><br/>
+        
+        <apex:commandButton value="Sync FSE/SDM To Quotes" action="{!addCurrentUserToPublicGroups}" rerender="messages" />
+    </apex:form>
+</apex:page>

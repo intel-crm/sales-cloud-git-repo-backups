@@ -331,9 +331,10 @@ class IpaSearchFilters extends LightningElement {
           }
         }
       }
+      console.log('taxonomyData1123---'+JSON.stringify(taxonomyData));
     });
   }
-
+  
   /**
    * Returns HTML Template used to render filter
    *
@@ -558,6 +559,7 @@ class IpaSearchFilters extends LightningElement {
       filterGrouping.hasFiltersWithResults = filterGrouping.filters.some((f) => f.hasResults);
       return filterGrouping;
     });
+    console.log('filterGroupings--->'+JSON.stringify(this.filterGroupings));
   }
 
   /**

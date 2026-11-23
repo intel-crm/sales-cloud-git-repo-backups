@@ -12,32 +12,91 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
     
     @TestSetUp
     static void createTestData(){
-        Test.startTest();
-        ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
-        Account ipaUltimateAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount ('IPA Intel Account',Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-        Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false); 
-        ipaCoMarketingAccount.Core_Geo__c = '';
-        ipaCoMarketingAccount.Core_Sub_Geo__c = '';
-        insert ipaCoMarketingAccount;
         
-        String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
-        List<Campaign> campaignList = new List<Campaign>();
-        Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 1',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 2',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP3 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 3',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP4 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 4',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP5 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 5',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP6 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 6',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP7 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 7',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP8 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 8',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP9 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 9',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP10 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 10',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        Campaign ipaCampaignForAP11 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 11',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
-        campaignList.add(ipaCampaignForAP1);campaignList.add(ipaCampaignForAP2);campaignList.add(ipaCampaignForAP3);campaignList.add(ipaCampaignForAP4);
-        campaignList.add(ipaCampaignForAP5);campaignList.add(ipaCampaignForAP6);campaignList.add(ipaCampaignForAP7);campaignList.add(ipaCampaignForAP8);
-        campaignList.add(ipaCampaignForAP9);campaignList.add(ipaCampaignForAP10);campaignList.add(ipaCampaignForAP11);
-        insert campaignList;
-        Test.stopTest();
+        UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1]; 
+        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
+        usr.LastName = 'User Test';
+        usr.UserRoleId = usRole.Id;
+        Database.insert(usr);
+        System.runAs(usr) {
+            Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
+            Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
+            PermissionSet ipaUserPs = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_IPA_Acct_Mgr' LIMIT 1];
+            
+            List<User> userList = new List<User>();
+            User ipaaccntmngr = Core_MDF_CCP_TestDataUtility.createUser(false);
+            ipaaccntmngr.LastName = 'IPA USER TESTING BULK';
+            ipaaccntmngr.Email = 'ipaAccntmngr@example.com';
+            ipaaccntmngr.Profile = ccpCoreAccessProfile;
+            userList.add(ipaaccntmngr);
+            
+            Database.insert(userList);
+            
+            PermissionSetAssignment assignPermissionSetObj = new PermissionSetAssignment();
+            assignPermissionSetObj.AssigneeId = ipaaccntmngr.Id;
+            assignPermissionSetObj.PermissionSetId = ipaUserPs.Id;
+            Database.insert(assignPermissionSetObj);
+            
+            Test.startTest();
+            ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
+            Account ipaUltimateAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount ('IPA Intel Account',Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
+            Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,ipaUltimateAccount.id, false); 
+            ipaCoMarketingAccount.Core_Geo__c = '';
+            ipaCoMarketingAccount.Core_Sub_Geo__c = '';
+            insert ipaCoMarketingAccount;
+            
+            Group ipaGrp = new Group();
+            ipaGrp.Name = 'Core CCP IPA Internal';
+            ipaGrp.DeveloperName = 'Core_MDF_CCP_IPA_Internal';
+            Database.insert(ipaGrp);
+     
+     		GroupMember ipaGrpMem = new GroupMember();
+            ipaGrpMem.UserOrGroupId = usr.Id;
+            ipaGrpMem.GroupId = ipaGrp.Id;
+            system.runAs(usr){
+            	Database.insert(ipaGrpMem);
+            }
+            
+            Core_MDF_Partner_Group_Mapping__c pgm1 = new Core_MDF_Partner_Group_Mapping__c();
+            pgm1.Core_MDF_Account__c = ipaUltimateAccount.Id;
+            pgm1.Core_MDF_Group_Name__c = 'Core_MDF_CCP_IPA_External';
+            pgm1.Core_MDF_Type_of_Access__c = 'EXTERNAL';
+            pgm1.Core_MDF_Group_Id__c = ipaGrp.Id;                
+            pgm1.Core_MDF_Channel_Program__c = ipaCP.Id;
+            pgm1.Core_MDF_Source_Txt__c = 'Test';
+            pgm1.Core_MDF_Region_cd__C = 'APJ';
+            pgm1.Core_MDF_AccountIdGroupName__c = ipaUltimateAccount.Id+'Core_MDF_CCP_IPA_External';
+            Database.insert(pgm1);
+            
+            String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
+        	budgetType = 'Data Center Specialties MDF';
+        	PartnerMarketingBudget budget = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget New',Core_MDF_CCP_IPA_TestDataUtility.budgetIPA_ProposalBased_Record_Type,ipaCoMarketingAccount.Id,ipaCP.Id,200000,System.today().addDays(-20),System.today(), false);
+        	budget.Core_MDF_Budget_Type_Txt__c='Data Center Specialties MDF';
+        	Database.insert(budget);
+        
+        	PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('allocation',budget,ipaCoMarketingAccount, 100000,true);
+        
+            
+            //String budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount);
+            List<Campaign> campaignList = new List<Campaign>();
+            Campaign ipaCampaignForAP1 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 1',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP2 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 2',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP3 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 3',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP4 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 4',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP5 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 5',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP6 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 6',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP7 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 7',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP8 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 8',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP9 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 9',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP10 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 10',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            Campaign ipaCampaignForAP11 = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP 11',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
+            campaignList.add(ipaCampaignForAP1);campaignList.add(ipaCampaignForAP2);campaignList.add(ipaCampaignForAP3);campaignList.add(ipaCampaignForAP4);
+            campaignList.add(ipaCampaignForAP5);campaignList.add(ipaCampaignForAP6);campaignList.add(ipaCampaignForAP7);campaignList.add(ipaCampaignForAP8);
+            campaignList.add(ipaCampaignForAP9);campaignList.add(ipaCampaignForAP10);campaignList.add(ipaCampaignForAP11);
+            insert campaignList;
+            
+            Test.stopTest();
+        }
     }
     
     private class ApprovalRequestsWrapper {
@@ -48,7 +107,10 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
     
     @isTest
     private static void submitBulkApprovalRequestsSyncTest() {
+        
+        User ipaaccntmngr = [SELECT Id, Name from User WHERE LastName = 'IPA USER TESTING BULK'];
         Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account'];
+        PartnerFundAllocation pfa=[Select id from PartnerFundAllocation where Title= :'allocation'];
         
         List<Campaign> ipaCampaignList = [SELECT Id, Core_MDF_Activity_Sub_Type_nm__c, Status, Core_MDF_Approval_Step_Counter_nbr__c, 
                                           Core_MDF_Reimbursement_Rate__c, Core_MDF_Region_cd__c, Description,
@@ -60,6 +122,8 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
         PartnerFundRequest ipaPFR1 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignList[0].id,ipaCoMarketingAccount.id,System.today(),System.today(),false);
         PartnerFundRequest ipaPFR2 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignList[1].id,ipaCoMarketingAccount.id,System.today(),System.today(),false);
+        ipaPFR1.AllocationId=pfa.id;
+        ipaPFR2.AllocationId=pfa.id;
         pfrList.add(ipaPFR1);pfrList.add(ipaPFR2);
         insert pfrList;
         
@@ -88,8 +152,12 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
         String aprReqInput = JSON.serialize(aprReqsList);
         Core_MDF_Bulk_Approvals_Requests.submitBulkApprovalRequests(aprReqInput);
         Core_MDF_Bulk_Approvals_Requests.getBulkApprovalCustomMessages();
-        Core_MDF_Bulk_Approvals_Requests.isBulkApprovalRequestsNeeded();
+      //  Core_MDF_Bulk_Approvals_Requests.isBulkApprovalRequestsNeeded();
         Core_MDF_Bulk_Approvals_Requests.getRecordTrackingForBulkRequests();
+        
+        System.runAs(ipaaccntmngr){
+       //     Core_MDF_Bulk_Approvals_Requests.isBulkApprovalRequestsNeeded();
+        }
         Test.stopTest();
     }
     
@@ -97,7 +165,7 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
     private static void submitBulkApprovalRequestsAsyncTest() {
         
         Account ipaCoMarketingAccount = [select id,Core_MDF_Parent_Fund_Account__c,Core_MDF_Channel_Program__c from Account where Name= 'IPA Co-Marketing Account'];
-        
+        PartnerFundAllocation pfa=[Select id from PartnerFundAllocation where Title= :'allocation'];
         List<Campaign> ipaCampaignsList = [SELECT Id, Core_MDF_Activity_Sub_Type_nm__c, Status, Core_MDF_Approval_Step_Counter_nbr__c, 
                                            Core_MDF_Reimbursement_Rate__c, Core_MDF_Region_cd__c, Description,
                                            StartDate, EndDate, Core_MDF_Total_Campaign_Cost_Amt__c, Core_MDF_Market__c  
@@ -116,6 +184,18 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
         PartnerFundRequest ipaPFR9 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignsList[8].id,ipaCoMarketingAccount.id,System.today(),System.today(),false);
         PartnerFundRequest ipaPFR10 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignsList[9].id,ipaCoMarketingAccount.id,System.today(),System.today(),false);
         PartnerFundRequest ipaPFR11 = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest(ipaCampaignsList[10].id,ipaCoMarketingAccount.id,System.today(),System.today(),false);
+        
+        ipaPFR1.AllocationId=pfa.id;
+        ipaPFR2.AllocationId=pfa.id;
+        ipaPFR3.AllocationId=pfa.id;
+        ipaPFR4.AllocationId=pfa.id; 
+        ipaPFR5.AllocationId=pfa.id;
+        ipaPFR6.AllocationId=pfa.id;
+        ipaPFR7.AllocationId=pfa.id;
+        ipaPFR8.AllocationId=pfa.id;
+        ipaPFR9.AllocationId=pfa.id;
+        ipaPFR10.AllocationId=pfa.id;
+        ipaPFR11.AllocationId=pfa.id;
         
         pfrList.add(ipaPFR1);pfrList.add(ipaPFR2);pfrList.add(ipaPFR3);pfrList.add(ipaPFR4);pfrList.add(ipaPFR5);pfrList.add(ipaPFR6);
         pfrList.add(ipaPFR7);pfrList.add(ipaPFR8);pfrList.add(ipaPFR9);pfrList.add(ipaPFR10);pfrList.add(ipaPFR11);
@@ -146,7 +226,6 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
         String aprReqInput = JSON.serialize(aprReqsList);
          // Unit Test Method should include System.Assert 
         System.assert(aprReqInput != null,'Serialized input should not be null');
-        
         Core_MDF_Bulk_Approvals_Requests.submitBulkApprovalRequests(aprReqInput);
         Test.stopTest();
     }
@@ -156,7 +235,6 @@ private class Core_MDF_Bulk_Approvals_Requests_Test {
         String aprReqInput = '';
         // Unit Test Method should include System.Assert
         System.assertEquals('',aprReqInput,'Input should be empty string for exception scenario');
-        
         Core_MDF_Bulk_Approvals_Requests.submitBulkApprovalRequests(aprReqInput);
     }
 }

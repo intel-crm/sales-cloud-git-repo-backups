@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">2026-04-16</value>
+        <value xsi:type="xsd:string">2024-01-01</value>
     </values>
 </CustomMetadata>

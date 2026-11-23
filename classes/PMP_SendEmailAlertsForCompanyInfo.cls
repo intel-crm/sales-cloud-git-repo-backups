@@ -36,8 +36,8 @@ public with sharing class PMP_SendEmailAlertsForCompanyInfo {
                  comInfoList = [select id,PMP_Partner_Benefit_Type__c,PMP_Suppress_Email_Ind__c,PMP_Published_Copy_Id__c from PMP_Company__c where Id=:CompanyInfoId];
                  //To get the type of benefit assigned. (To differentiate from storefront and Profile)
                  if(!comInfoList.isEmpty()){
-                     companyInfoType = comInfoList[0].PMP_Partner_Benefit_Type__c == 'Solutions Marketplace Enhanced'? 'Storefront': 'Profile';
-                  //   companyInfoType = comInfoList[0].PMP_Partner_Benefit_Type__c == 'Solutions Marketplace Basic Profile'? 'Storefront': 'Profile';
+                     //companyInfoType = comInfoList[0].PMP_Partner_Benefit_Type__c == 'Solutions Marketplace Enhanced'? 'Storefront': 'Profile';
+					 companyInfoType = comInfoList[0].PMP_Partner_Benefit_Type__c == 'Solutions Marketplace Basic Profile'? 'Storefront': 'Profile';
                  }                  
                  
                  sendEmail(comInfoList,apexEmailRecName,companyInfoType);
@@ -66,12 +66,29 @@ public with sharing class PMP_SendEmailAlertsForCompanyInfo {
                         
                         //fetch users to send the email
                         userCompanyMap = PMP_Utility.fetchUsersMapFromPagMember(comInfoList, allowedPermissionSets);
-                        
+                        //
+                     /*   for(Core_Contact_Entitlement__c ce:[SELECT name,id,status FROM Core_Contact_Entitlement__c where Core_Contact_Id__c in: 
+                      (select contactId from user where id in userCompanyMap.keyset() ) and
+                      Core_Contact_Id__r.Core_AGS_Integration_Status__c ='Successful' 
+                      and Core_Status__c ='Complete' and Core_Selected__c =true]){
+                          if(ce.Core_Entitlement_Id__r.name=='Partner Admin' || ce.Core_Entitlement_Id__r.name=='Employee')
+                        listOfActiveCEs.add(ce);
+                    }
+           */
+                list<PMP_Company__c> lstCompToUpdate=new list<PMP_Company__c>();
                         //Send emails
                         if(!userCompanyMap.keySet().isEmpty()){
-                            PMP_Utility.sendEmailAndLogData(apexEmailRec.Core_Email_Template_Nm__c, userCompanyMap);    
+                            PMP_Utility.sendEmailAndLogData(apexEmailRec.Core_Email_Template_Nm__c, userCompanyMap);
+                            for (PMP_Company__c comp: [select PMP_isEmailDelivered__c from PMP_Company__c 
+                                                       where id in: userCompanyMap?.values()]){
+                                           comp.PMP_isEmailDelivered__c=true; 
+                             			   lstCompToUpdate.add(comp);    
+                                                       }
+                                                   
                         } 
-                        
+                if(!lstCompToUpdate.isEmpty())
+                    database.update(lstCompToUpdate,false);
+                   system.debug('lstCompToUpdate'+lstCompToUpdate);     
                     }
                     
                     //For Suppress Email Functionality

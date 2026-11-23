@@ -258,10 +258,12 @@
             component.set("v.vatOptInMandatory", $A.get("$Label.c.Core_MDF_RMF_Vat_Required"));
             component.set("v.bankMandatory", $A.get("$Label.c.Core_MDF_RMF_Bank_Required_Message"));
         } else if(programName.toLowerCase() == $A.get("$Label.c.Core_MDF_CCF_Program_Name").toLowerCase()) {
+            component.set("v.showMetricsGuideline", true);
             component.set("v.showTaxAsMandatoryField", true);
             component.set("v.bankMandatory", $A.get("$Label.c.Core_MDF_CCF_Bank_Required_Message"));
             component.set("v.taxMandatory", $A.get("$Label.c.Core_MDF_CCF_Tax_Required_Message"));
         } else if (programName.toLowerCase() == $A.get("$Label.c.Core_MDF_Non_Localized_DCF_Program_Name").toLowerCase()) {
+            component.set("v.showMetricsGuideline", true);
             component.set("v.showTaxAsMandatoryField", true);
             component.set("v.bankMandatory", $A.get("$Label.c.Core_MDF_DCF_Bank_Required_Message"));
             component.set("v.taxMandatory", $A.get("$Label.c.Core_MDF_DCF_Tax_Required_Message"));

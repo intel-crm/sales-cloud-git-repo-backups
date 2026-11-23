@@ -14,35 +14,30 @@
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
-    <customWebAddresses>
-        <certificate>partner_intel_com14</certificate>
-        <domainName>partner.intel.com</domainName>
-        <primary>false</primary>
-    </customWebAddresses>
     <enableAuraRequests>true</enableAuraRequests>
     <favoriteIcon>favicon</favoriteIcon>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
     <genericErrorPage>Exception</genericErrorPage>
-    <inMaintenancePage>Core_IPS_Community_404_Error</inMaintenancePage>
-    <inactiveIndexPage>Core_IPS_Community_404_Error</inactiveIndexPage>
+    <inMaintenancePage>InMaintenance</inMaintenancePage>
+    <inactiveIndexPage>TestPage</inactiveIndexPage>
     <indexPage>CommunitiesLanding</indexPage>
     <masterLabel>Intel Partner Alliance</masterLabel>
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_iTypB_sf_default_cdn_Intel_Partner_Alliance1</serverIsDown>
+    <serverIsDown>SNA_FwzXy_sf_default_cdn_Intel_Partner_Alliance1</serverIsDown>
     <siteAdmin>11228279@intel.com.crm</siteAdmin>
     <siteGuestRecordDefaultOwner>11615861@intel.com.crm</siteGuestRecordDefaultOwner>
     <siteRedirectMappings>
         <action>Permanent</action>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isDynamic>false</isDynamic>
-        <source>/ipa</source>
+        <source>/ipa/</source>
         <target>/</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isDynamic>false</isDynamic>
         <source>/ipa/s/</source>
         <target>/</target>
@@ -739,27 +734,6 @@
         <isDynamic>false</isDynamic>
         <source>/ipa/s/manage-personnel?language=zh_TW</source>
         <target>/s/manage-personnel?language=zh_TW</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/s</source>
-        <target>https://www.intel.com/content/www/us/en/my-intel/ipa-service-maintenance-notice.html</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/s/</source>
-        <target>https://www.intel.com/content/www/us/en/my-intel/ipa-service-maintenance-notice.html</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/s/companyprofile</source>
-        <target>https://www.intel.com/content/www/us/en/my-intel/ipa-service-maintenance-notice.html</target>
     </siteRedirectMappings>
     <siteType>ChatterNetwork</siteType>
     <subdomain>intelcloudcrm</subdomain>

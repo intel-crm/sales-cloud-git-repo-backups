@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>APJ</masterLabel>
+        <translation>APJ (アジア太平洋、日本)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ASMO</masterLabel>
+        <translation>ASMO (北米)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EMEA</masterLabel>
+        <translation>EMEA (ヨーロッパ、中東、アフリカ)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PRC</masterLabel>
+        <translation>PRC (中国)</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

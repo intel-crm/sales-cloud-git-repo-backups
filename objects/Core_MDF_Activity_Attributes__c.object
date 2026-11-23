@@ -409,6 +409,12 @@
                     <label>Retail Activation Percentage Spend</label>
                 </value>
                 <value>
+                    <fullName>Retail Activation - # of Person Days Numeric</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Retail Activation - # of Person Days Numeric</label>
+                </value>
+                <value>
                     <fullName>Technical Services - # of Deployments</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -464,7 +470,7 @@
     <fields>
         <fullName>Core_MDF_Spending_Amount_amt__c</fullName>
         <label>Spending Amount</label>
-        <precision>18</precision>
+        <precision>16</precision>
         <required>false</required>
         <scale>2</scale>
         <trackHistory>false</trackHistory>

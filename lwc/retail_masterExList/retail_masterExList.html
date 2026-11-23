@@ -1,0 +1,66 @@
+<template>
+    <lightning-card title='Product Selection' icon-name="standard:product">
+        <div class="spinner">
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+            </template>
+        </div>
+        <lightning-layout>
+            <lightning-layout-item size = "6" alignment-bump="center" padding = "around-small" class = "slds-p-bottom_x-small">
+                <!--<lightning-combobox label={picklistlabel} 
+                name={picklistlabel} 
+                placeholder="Select Generation"
+                onchange={handlePickListValueChange} 
+                options={picklistvalueselected}
+                value={selectedGenValue}
+                disabled={disableObjectSelection}></lightning-combobox>-->
+                <lightning-dual-listbox
+                class="slds-box"
+                name="OppCons"
+                size="20px"
+                label="Select Generation"
+                source-label="Available Generation(s)"
+                selected-label="Selected Generation(s)"
+                options={picklistvalueselected}
+                onchange={handlePickListValueChange}>
+            </lightning-dual-listbox>
+
+              
+            </lightning-layout-item>
+            <lightning-layout-item size = "6" alignment-bump="center" padding = "around-large" class = "slds-p-bottom_x-small">
+                <lightning-input id="searchTxt" type="text" label="Processor No: Starts with" onchange={onchangeHandle} placeholder="Enter some value..." variant="label-inline" disabled={disableSearch}></lightning-input>
+                <lightning-input  type="text" label="Processor No: Ends with" onchange={onchangeEndsWithHandle} placeholder="Enter some value..." variant="label-inline" disabled={disableSearch}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item>
+                <template if:true={tableData}>
+                <div style='height:300px'  >
+                    <lightning-datatable
+                    key-field="Id"
+                    data-id="datarow"
+                    data={tableData}
+                    columns={columns}
+                    selected-rows={selection}
+                    onrowselection={rowSelection}
+                    >
+                </lightning-datatable>
+                </div>
+            </template>
+            <template if:false={tableData}>
+                No records found
+            </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-clearfix">
+            <div class="slds-float_right" style="padding: 10px;">
+                <lightning-button-group>
+                    <lightning-button class='footer-btn'  variant = "brand" icon-name="utility:save" label="Save" disabled={disableSave} onclick={saveData}></lightning-button>
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;<lightning-button class='footer-btn'  variant = "brand" icon-name="utility:cancel_file_request" label="Cancel" onclick={closeModal}></lightning-button>
+                    <!--&nbsp;&nbsp;<lightning-button class='footer-btn'  variant = "brand" icon-name="utility:cancel_file_request" label="refresh" onclick={refresh}></lightning-button>-->
+                </lightning-button-group>
+            </div>
+          </div>
+        </lightning-card>
+    </template>

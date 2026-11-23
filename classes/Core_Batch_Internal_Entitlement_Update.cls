@@ -53,7 +53,6 @@ global without sharing class Core_Batch_Internal_Entitlement_Update implements D
         }
 
         Database.update(EntitlementToUpdate, false);
-        
         Database.update(contactToUpdate, false);
     }
     

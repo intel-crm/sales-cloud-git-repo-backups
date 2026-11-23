@@ -41,6 +41,10 @@
         <value>Vorlagenabschnitten</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Aktivieren Sie das Kontrollkästchen, um die Dokumentsprachformatierung anzuwenden Gilt nur für Abschnitte, die auf Vorlageninhalt vom Typ &quot;HTML&quot; verweisen.</help>
         <label><!-- Apply Document Language Formatting --></label>
         <name>SBQQ__ApplyDocumentLanguageFormatting__c</name>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_A_E_Notify_Requester_Test</testClassName>
+    <testClassName>Core_AandE_Azure_Auth_Provider_Test</testClassName>
+    <testClassName>Core_Batch_A_E_DisableExtUser_Test</testClassName>
+    <testClassName>Core_Batch_A_E_PermSet_Mgmt_Test</testClassName>
+    <testClassName>Core_Batch_Int_Entitlement_Update_Test</testClassName>
+    <testClassName>Core_Batch_PG_Trtry_Assign_Schduler_Test</testClassName>
+    <testClassName>Core_Batch_Populate_Territory_Test</testClassName>
+    <testClassName>Core_Contact_Ent_Controller_Test</testClassName>
+    <testClassName>Core_Contact_Entitlement_Log_Tool_C_Test</testClassName>
+    <testClassName>Core_ContactEntAudienceUpdate_Test</testClassName>
+    <testClassName>Core_ContactEntitlementHelper_Test</testClassName>
+    <testClassName>Core_ContactEntVal_Test</testClassName>
+    <testClassName>Core_Draco_ContactUpdate_Batch_Test</testClassName>
+    <testClassName>Core_Draco_EntitlementCleanup_Batch_Test</testClassName>
+    <testClassName>Core_Draco_Misc_Functionalities_Test</testClassName>
+    <testClassName>Core_Draco_PSLicenceCleanupBatchTest</testClassName>
+    <testClassName>Core_EmailForFrozenUsersController_Test</testClassName>
+    <testClassName>Core_Entitlement_Out_Int_Test</testClassName>
+    <testClassName>Core_ERPM_API_Callout_Test</testClassName>
+    <testClassName>Core_InboundMsg_TriggerHandler_Test</testClassName>
+    <testClassName>Core_IntegrationInboundMessageAGS_Test</testClassName>
+    <testClassName>Core_PG_Territory_Assignment_Test</testClassName>
+    <testClassName>Core_ProactiveAlertAandEFailures_Test</testClassName>
+    <testClassName>Core_UserContact_Handler_Test</testClassName>
+    <testClassName>Core_UserFieldChangeHistoryTrackerTest</testClassName>
+    <testClassName>Core_UserFieldTrackerRecordDeleter_Test</testClassName>
+    <testClassName>Core_UserHandler_Test</testClassName>
+    <testClassName>PMP_Batch_Group_Management_Test</testClassName>
+</ApexTestSuite>

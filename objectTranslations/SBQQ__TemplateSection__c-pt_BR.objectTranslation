@@ -9,6 +9,10 @@
         <value>Seções de modelo</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Marque a caixa de seleção para aplicar a formatação do idioma do documento. Aplica-se somente às seções que apontam para o conteúdo do modelo do tipo &quot;HTML&quot;.</help>
         <label><!-- Apply Document Language Formatting --></label>
         <name>SBQQ__ApplyDocumentLanguageFormatting__c</name>

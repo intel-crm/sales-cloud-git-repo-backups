@@ -88,16 +88,7 @@ public class PMP_BreadcrumbController_Test {
         PMP_Partner_Category__c partCat2 = new PMP_Partner_Category__c(PMP_Category_Id__c=cat1.Id,PMP_Partner_Id__c=testPartner1.Id);
         insert partCat2;
         
-        PMP_Partner_Offering__c offering = new PMP_Partner_Offering__c();
-        offering.PMP_Partner_Offering_Visibility_Nm__c='Public Content';
-                                                           offering.PMP_Partner_Offering_Dsc__c='off desc';
-                                                        offering.Name='Testoffering';
-                                                        offering.PMP_Company_Id__c=testPartner1.id;
-                                                         offering.PMP_Partner_Offering_Lifecycle_Status_Nm__c='draft';
-                                                         offering.PMP_Partner_Offering_Tag_Line_Txt__c='taglineTest';
-        offering.PMP_Partner_Offering_Nm__c='Testoffering';
-        insert offering;
-        //    PMP_TestDataUtility.createOffering('Testoffering', 'Public Content','off desc',null,true,'draft','taglineTest'); 
+        PMP_Partner_Offering__c offering = PMP_TestDataUtility.createOffering('Testoffering', 'Public Content','off desc',null,true,'draft','taglineTest'); 
         offering.PMP_Partner_Offering_Lifecycle_Status_Nm__c = 'Published';
         offering.PMP_Partner_Offering_Start_Dt__c = System.today().addDays(-2);
         offering.PMP_Partner_Offering_End_Dt__c = System.today().addDays(2);

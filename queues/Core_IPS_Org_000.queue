@@ -7,22 +7,12 @@
         <publicGroups>
             <publicGroup>Core_IPS_Org_000</publicGroup>
         </publicGroups>
-        <users>
-            <user>ipsorgadm2@intel.com</user>
-            <user>10660044@intel.com.crm</user>
-            <user>11631392@intel.com.crm</user>
-            <user>salesrep1.test@intel.com.crm</user>
-            <user>12140730@intel.com.crm</user>
-        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_IPS_MAP_PAR__c</sobjectType>
     </queueSobject>
     <queueSobject>
         <sobjectType>Core_IPS_Product_Organization__c</sobjectType>
-    </queueSobject>
-    <queueSobject>
-        <sobjectType>Core_IPS_Project__c</sobjectType>
     </queueSobject>
     <queueSobject>
         <sobjectType>Core_IPS_Question__c</sobjectType>

@@ -8,13 +8,16 @@
             <type>accountOwner</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Account_Owner_Contact_Tokenized</template>
+        <template>unfiled$public/Core_Account_Owner_Contact_Tokenized</template>
     </alerts>
     <alerts>
         <fullName>Core_IPS_Contact_Notif_RDC_Access_EA</fullName>
-        <ccEmails>Field.Intel.Support@Intel.com</ccEmails>
         <description>Core IPS Contact Notif RDC Access EA</description>
         <protected>false</protected>
+        <recipients>
+            <field>Core_IPS_Intel_Support_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Contact_RDC_Access</template>
@@ -345,7 +348,7 @@
     <outboundMessages>
         <fullName>Core_Intmsg_Contact_New</fullName>
         <apiVersion>32.0</apiVersion>
-        <endpointUrl>https://proxydefault:WJ$K1ZmrZug7@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-sls-contacts-sf2erpm/contact</endpointUrl>
+        <endpointUrl>https://proxydefault:WJ$K1ZmrZug7@eip-crm-proxy-dev.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-contacts-sf2erpm/type/SM_OBM</endpointUrl>
         <fields>AccountId</fields>
         <fields>Core_Account_Legal_Name__c</fields>
         <fields>Core_Account_Primary_City__c</fields>

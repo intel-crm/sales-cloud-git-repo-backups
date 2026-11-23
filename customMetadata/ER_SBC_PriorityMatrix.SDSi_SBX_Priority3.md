@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>AccountType__c</field>
-        <value xsi:type="xsd:string">Intel On Demand(SiaaS_Service)</value>
+        <value xsi:type="xsd:string">SDSi Purchase Agent - SBX- external</value>
     </values>
     <values>
         <field>PriorityField__c</field>

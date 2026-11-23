@@ -17,6 +17,10 @@
         <name>Pricing_SW_Line_Editor</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- Pricing_SW PLI Line Editor --></label>
+        <name>Pricing_SW_PLI_Line_Editor</name>
+    </fieldSets>
+    <fieldSets>
         <label>Champs de calcul</label>
         <name>SBQQ__CalculatingFields</name>
     </fieldSets>
@@ -65,8 +69,81 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Active --></label>
+        <label><!-- Active_t --></label>
         <name>PSG_Active_cb__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity ID --></label>
+        <name>PSG_Opportunity_ID_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Type_del --></label>
+        <name>PSG_Quote_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Admin</masterLabel>
+            <translation><!-- Admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Budgetary</masterLabel>
+            <translation><!-- Budgetary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design Win</masterLabel>
+            <translation><!-- Design Win --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer Pricing</masterLabel>
+            <translation><!-- Transfer Pricing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status psg --></label>
+        <name>PSG_Status_txt__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Review</masterLabel>
+            <translation><!-- In Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recalled</masterLabel>
+            <translation><!-- Recalled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- By selecting yes, you are validating this is an AI Host - node opportunity. --></help>
+        <label><!-- AI Host Node --></label>
+        <name>Pricing_AI_Host_Node_cb__c</name>
     </fields>
     <fields>
         <label><!-- AI RFP Scraping Status --></label>
@@ -170,7 +247,7 @@
         <name>Pricing_Consumption_Countries__c</name>
     </fields>
     <fields>
-        <label><!-- Created Date --></label>
+        <label><!-- Current Date --></label>
         <name>Pricing_Created_Date__c</name>
     </fields>
     <fields>
@@ -432,6 +509,10 @@
         <name>Pricing_Partner_Name_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- Pricing Manager Group Id --></label>
+        <name>Pricing_Pricing_Manager_Group_Id_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Pricing Manager Group Label --></label>
         <name>Pricing_Pricing_Manager_Group_Label_Txt__c</name>
     </fields>
@@ -576,6 +657,10 @@
         <name>Pricing_SW_Approval_Comments__c</name>
     </fields>
     <fields>
+        <label><!-- Approved Date --></label>
+        <name>Pricing_SW_Approved_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- Approved/Rejected Date --></label>
         <name>Pricing_SW_Approved_Rejected_Date__c</name>
     </fields>
@@ -596,6 +681,10 @@
         <name>Pricing_SW_Description__c</name>
     </fields>
     <fields>
+        <label><!-- Exclude Prepaid Upfront Total --></label>
+        <name>Pricing_SW_Exclude_Prepaid_Upfront_Total__c</name>
+    </fields>
+    <fields>
         <help><!-- Expiry date should be &gt; 14 days from today&apos;s date. --></help>
         <label><!-- Expiry Date --></label>
         <name>Pricing_SW_Expiry_Date__c</name>
@@ -611,6 +700,22 @@
     <fields>
         <label><!-- Opportunity_Submit_Or_Approved --></label>
         <name>Pricing_SW_Opportunity_Submit_Or_Approve__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Product Type --></label>
+        <name>Pricing_SW_Quote_Product_Type__c</name>
+        <picklistValues>
+            <masterLabel>ITTA</masterLabel>
+            <translation><!-- ITTA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLI</masterLabel>
+            <translation><!-- PLI --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Rejected Date --></label>
+        <name>Pricing_SW_Rejected_Date__c</name>
     </fields>
     <fields>
         <label><!-- Submitted Date --></label>
@@ -1358,10 +1463,6 @@
             <translation><!-- New --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not Yet Approved</masterLabel>
-            <translation><!-- Not Yet Approved --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Pending</masterLabel>
             <translation><!-- Pending --></translation>
         </picklistValues>
@@ -1452,13 +1553,34 @@
         <relationshipLabel><!-- Quotes (Submitted User) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Account --></label>
+        <name>core_cpq_Account__c</name>
+        <relationshipLabel><!-- Quotes (Account) --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- Predicts the BM level required for approval of the Quote threshold. --></help>
         <label><!-- Approval Level --></label>
         <name>core_cpq_Approval_Level_txt__c</name>
     </fields>
     <fields>
+        <label><!-- CNDA --></label>
+        <name>core_cpq_CNDA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>core_cpq_Country__c</name>
+    </fields>
+    <fields>
         <label><!-- Disty Region check --></label>
         <name>core_cpq_Disty_Region_check__c</name>
+    </fields>
+    <fields>
+        <label><!-- ESD ID --></label>
+        <name>core_cpq_ESD_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>core_cpq_Geo__c</name>
     </fields>
     <fields>
         <label><!-- PSG Restricted Product Check --></label>
@@ -1469,9 +1591,57 @@
         <name>core_cpq_Process_flag__c</name>
     </fields>
     <fields>
+        <label><!-- Quote Description --></label>
+        <name>core_cpq_Quote_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Status Path --></label>
+        <name>core_cpq_Retail_Status_Path__c</name>
+        <picklistValues>
+            <masterLabel>Customer Acceptance</masterLabel>
+            <translation><!-- Customer Acceptance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote Generation</masterLabel>
+            <translation><!-- Quote Generation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote Header Creation</masterLabel>
+            <translation><!-- Quote Header Creation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote Line Creation</masterLabel>
+            <translation><!-- Quote Line Creation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote Line approval</masterLabel>
+            <translation><!-- Quote Line approval --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Revised Quote # --></label>
         <name>core_cpq_Revised_Quote__c</name>
         <relationshipLabel><!-- Quotes (Revised Quote) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>core_cpq_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Progress</masterLabel>
+            <translation><!-- In-Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- User Check --></label>
@@ -1586,10 +1756,6 @@
         <picklistValues>
             <masterLabel>Application</masterLabel>
             <translation><!-- Application --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Automotive</masterLabel>
-            <translation><!-- Automotive --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Broadcast</masterLabel>
@@ -1961,10 +2127,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- ECP ID --></label>
-        <name>core_cpq_ecp_id_id__c</name>
-    </fields>
-    <fields>
         <label><!-- ECP --></label>
         <name>core_cpq_ecp_nbr__c</name>
     </fields>
@@ -2010,9 +2172,6 @@
     </fields>
     <fields>
         <label><!-- End Customer --></label>
-        <lookupFilter>
-            <errorMessage><!-- End Customer Account selected is invalid. Account must be active with Legal/Pricing Parent assigned. --></errorMessage>
-        </lookupFilter>
         <name>core_cpq_end_customer_nm__c</name>
         <relationshipLabel><!-- Quotes (End Customer) --></relationshipLabel>
     </fields>
@@ -2306,7 +2465,7 @@
         <name>core_cpq_inreview_days__c</name>
     </fields>
     <fields>
-        <help><!-- Displays the OPNs which are dropped from the quote, which could be due to Pre-Release product not allowed OR Products are Inactive OR Non orderable. Please check the OPN attributes and add the correct one. --></help>
+        <help><!-- Inactive OPNs with no replacement &amp; OPNs that aren&apos;t Quotable/Orderable. --></help>
         <label><!-- Invalid OPNs --></label>
         <name>core_cpq_invalid_opn__c</name>
     </fields>
@@ -2316,7 +2475,7 @@
         <name>core_cpq_invalid_opn_ta__c</name>
     </fields>
     <fields>
-        <help><!-- Please refer to the Invalid OPNs&apos; in the Misc Info section of Quote header to view the Invalid OPNs --></help>
+        <help><!-- Inactive OPNs with no replacement &amp; OPNs that aren&apos;t Quotable/Orderable. --></help>
         <label><!-- Invalid OPNs --></label>
         <name>core_cpq_invalid_opns_dup__c</name>
     </fields>
@@ -2374,6 +2533,10 @@
         <picklistValues>
             <masterLabel>EMEA</masterLabel>
             <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JAPAN</masterLabel>
+            <translation><!-- JAPAN --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PRC</masterLabel>
@@ -3331,6 +3494,10 @@
             <translation><!-- ATE &amp; Semiconductor Tester --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>AUTOMOTIVE</masterLabel>
+            <translation><!-- AUTOMOTIVE --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Access</masterLabel>
             <translation><!-- Access --></translation>
         </picklistValues>
@@ -3529,6 +3696,10 @@
         <picklistValues>
             <masterLabel>Platform Mgmt</masterLabel>
             <translation><!-- Platform Mgmt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pro AV</masterLabel>
+            <translation><!-- Pro AV --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ProAV</masterLabel>
@@ -3743,6 +3914,10 @@
         <name>PSG_Quote_Submitted</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- Financial Incentive --></label>
+        <name>Pricing_Financial_Incentive_Create</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- Represents Financial Incentive Tender Quote in ReadOnly Status. --></description>
         <label><!-- Pricing Financial Incentive Quote - Read Only --></label>
         <name>Pricing_Financial_Incentive_Quote_Read_Only</name>
@@ -3751,21 +3926,6 @@
         <description><!-- Represents Financial Incentive Tender Quote in Submitted Status. --></description>
         <label><!-- Pricing Financial Incentive Quote - Submitted --></label>
         <name>Pricing_Financial_Incentive_Quote_Submitted</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Represents Ethernet Quote in Create Status --></description>
-        <label><!-- Ethernet --></label>
-        <name>Pricing_NIC_Quote_Create</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Represents Optane™ PMem Quote in Create Status --></description>
-        <label><!-- Optane™ PMem --></label>
-        <name>Pricing_PMem_Quote_Create</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Represents Optane™ SSD Quote in Create Status. --></description>
-        <label><!-- Optane™ SSD --></label>
-        <name>Pricing_SSD_Quote_Create</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Represents Small Volume Quotes - Data Center Xeon® CPU Quote in Create Status --></description>
@@ -3832,6 +3992,16 @@
         <label><!-- Pricing Tender Quote - Submitted --></label>
         <name>Pricing_Tender_Quote_Submitted</name>
     </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Retail Quote --></description>
+        <label><!-- Retail Quote - New --></label>
+        <name>Retail_Quote_New</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Represents Retail  Save Quote --></description>
+        <label><!-- Retail Quote - Save --></label>
+        <name>Retail_Quote_Save</name>
+    </recordTypes>
     <sharingReasons>
         <label><!-- PSG PGM Mapping --></label>
         <name>PSG_PGM_Mapping</name>
@@ -3858,6 +4028,10 @@
         <name>Block_AE_to_Edit_For_Submitted_Quotes</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- If Other is selected for Other Intel Product Lines for Project, then the Other Product Lines field cannot be blank. --></errorMessage>
+        <name>Core_Additional_Component_Validation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Please enter the email address for the Intel employee who is the Account Executive. If no Account Executive is covering this end customer, please leave this field blank. --></errorMessage>
         <name>Email_Validation_Intel_Dot_Com_For_AE</name>
     </validationRules>
@@ -3871,6 +4045,10 @@ Please verify and re-select the appropriate Contract Manufacturer Account or con
         <name>PSG_CM_Name_Check</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- CM Name is mandatory for Transfer Pricing Quotes. --></errorMessage>
+        <name>PSG_CM_Name_Mandatory</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- SOS can&apos;t Create/Modify a Contract Pricing Quote. --></errorMessage>
         <name>PSG_CP_Quote_Edit_Blocked_For_SOS</name>
     </validationRules>
@@ -3878,14 +4056,6 @@ Please verify and re-select the appropriate Contract Manufacturer Account or con
         <errorMessage><!-- Distributor Account selected is invalid.
 Please verify and re-select the appropriate Distributor Account or contact your system admin. --></errorMessage>
         <name>PSG_Distributor_Account_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Selected account is not a valid End Customer --></errorMessage>
-        <name>PSG_End_Customer_Account_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Expiry date cannot be less than the Quote created date. --></errorMessage>
-        <name>PSG_Expiry_Date_check</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Quote has been updated. Please refresh. --></errorMessage>
@@ -3898,10 +4068,6 @@ Please verify and re-select the appropriate Distributor Account or contact your 
     <validationRules>
         <errorMessage><!-- please do not use this screen. --></errorMessage>
         <name>PSG_Prevent_Creating_Quote_DistyList</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Quote Types should have equivalent Design Win Quotes as Parent Quotes. --></errorMessage>
-        <name>PSG_Quote_Type_Equivalent_To_Parent</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Quote Record cannot be created or edited during Freeze Period! --></errorMessage>
@@ -3920,7 +4086,7 @@ Please verify and re-select the appropriate Distributor Account or contact your 
         <name>Pricing_EndCustomerURLEditonReadOnlyPage</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Quota Exclusion Reason cannot be blank or changed when Exclude from Volume Exception Quota is checked or Exclude from Volume Exception Quota cannot be unchecked when Quota Exclusion Reason is not blank. --></errorMessage>
+        <errorMessage><!-- Quota Exclusion Reason cannot be blank or changed when Exclude from Volume Exception Quota is true or Exclude from Volume Exception Quota cannot be false when Quota Exclusion Reason is not blank. --></errorMessage>
         <name>Pricing_ExcludeRes_QuotaExclude_ChgCheck</name>
     </validationRules>
     <validationRules>
@@ -3936,6 +4102,10 @@ Please verify and re-select the appropriate Distributor Account or contact your 
         <name>Pricing_IntelResponseReqByDate_Check</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please enter a valid End Customer URL. --></errorMessage>
+        <name>Pricing_InvalidEndCustomerURLError</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Please provide a reason for re-routing the quote. --></errorMessage>
         <name>Pricing_MandateReason_OnPricingMgrEdit</name>
     </validationRules>
@@ -3948,11 +4118,11 @@ Please verify and re-select the appropriate Distributor Account or contact your 
         <name>Pricing_MultipleEmailCheck</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Pricing Manager and Re-Routing Reason is not editable for your role. --></errorMessage>
+        <errorMessage><!-- Pricing Manager is not editable for your role. --></errorMessage>
         <name>Pricing_PricingMgrEdit_Restriction</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Exclude from Volume Exception Quota cannot be checked and Quota Exclusion Reason cannot have value when Volume Exception Quota is unchecked. --></errorMessage>
+        <errorMessage><!-- Exclude from Volume Exception Quota cannot be true and Quota Exclusion Reason cannot have value when Volume Exception Quota is false. --></errorMessage>
         <name>Pricing_QuotaExclude_ExcludeReason_Check</name>
     </validationRules>
     <validationRules>
@@ -3992,12 +4162,24 @@ Please verify and re-select the appropriate Distributor Account or contact your 
         <name>Pricing_SW_Custom_Product_Flag_Price_0</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Expiry Date Should be 14 days greater than today --></errorMessage>
+        <errorMessage><!-- No changes allowed on Quote when Design Win Approval Status is Submitted or Approved in Opportunity. --></errorMessage>
+        <name>Pricing_SW_Design_Win_Approval_Status</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry Date must be in between 14 - 90 days from today. --></errorMessage>
         <name>Pricing_SW_Expiry_Date_14_days_or_less</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Expiry Date Should be greater than today --></errorMessage>
+        <name>Pricing_SW_Expiry_Date_less_than_Today</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- No changes allowed on Quote when Quote Status is Accepted/Denied/Rejected --></errorMessage>
         <name>Pricing_SW_FinalStatus</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quote Net Total cannot be less than 0 --></errorMessage>
+        <name>Pricing_SW_Net_Total_less_than_0</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Cannot create Software &amp; Services Quote directly from Quote tab, Please create Software &amp; Services Quote from Opportunity. --></errorMessage>
@@ -4024,8 +4206,12 @@ Please verify and re-select the appropriate Distributor Account or contact your 
         <name>Pricing_SW_Status_Transition_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Expiry Date must be more than 14 days in the future before quote can be submitted. --></errorMessage>
+        <errorMessage><!-- Expiry Date must be in between 14 - 90 days from today to submit quote. --></errorMessage>
         <name>Pricing_SW_Submit_For_ApprovalExpiryDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot enter both Target Customer Amount and Additional Disc on Quote. --></errorMessage>
+        <name>Pricing_SW_TargetCustometAmount_Discount</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please select a contact who belongs to the account and is authorized to use Intel Quote Request. --></errorMessage>
@@ -4072,10 +4258,6 @@ Please verify and re-select the appropriate Distributor Account or contact your 
         <name>Shipment_End_Dt_Before_Shipment_Start_Dt</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Selected Opportunity is not Valid for this End Customer --></errorMessage>
-        <name>Validate_Oppty_Account_with_End_Customer</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Either Pricing Start Date or Pricing End Date has already passed. Please ensure both fields are in the future. --></errorMessage>
         <name>shipment_date_check</name>
     </validationRules>
@@ -4090,6 +4272,10 @@ Please verify and re-select the appropriate Distributor Account or contact your 
     <webLinks>
         <label><!-- Pricing_Export_List_View --></label>
         <name>Pricing_Export_List_View</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Pricing_SyncSDMToQuotes --></label>
+        <name>Pricing_SyncSDMToQuotes</name>
     </webLinks>
     <webLinks>
         <label><!-- Recall_Approval --></label>

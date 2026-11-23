@@ -85,10 +85,10 @@ public without sharing class ER_AcknowledgementEmailUtility {
                     if(emailConfigMapValue!=Null && !emailConfigMapValue.isEmpty()){
                         for(ER_Email_Configuration__mdt emailconfig1value: emailConfigMapValue.get(objEmailNotif)){
                             emailTempMapList.add(emailconfig1value.Template_Name__c);
-                            objEmailNotif.emailConfigMapValue = emailConfigMapValue;
-                            objEmailNotifList.add(objEmailNotif);
                             }
                     }
+                    objEmailNotif.emailConfigMapValue = emailConfigMapValue;
+                    objEmailNotifList.add(objEmailNotif);
                 }               
             } 
             //Bulkified as part of TWC722-1818 - Team Quest

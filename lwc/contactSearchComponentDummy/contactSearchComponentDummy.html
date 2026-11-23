@@ -1,0 +1,26 @@
+<template>
+    <!-- Input field to enter search term -->
+    <lightning-input label="Search Contacts" value={searchTerm} onchange={handleSearchChange}></lightning-input>
+
+    <!-- Button to trigger the search functionality -->
+    <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+
+    <!-- Button to fetch all contacts -->
+    <lightning-button label="Fetch All Contacts" onclick={fetchContacts}></lightning-button>
+
+    <!-- Display filtered contacts -->
+    <template if:true={contacts}>
+        <ul>
+            <template for:each={contacts} for:item="contact">
+                <li key={contact.Id}>
+                    {contact.Name} - {contact.Email}
+                </li>
+            </template>
+        </ul>
+    </template>
+
+    <!-- Display error message if there is any -->
+    <template if:true={error}>
+        <div class="slds-text-color_error">{error}</div>
+    </template>
+</template>

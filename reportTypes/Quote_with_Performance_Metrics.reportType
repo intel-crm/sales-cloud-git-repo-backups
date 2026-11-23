@@ -270,6 +270,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_opprtunity_id__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__Opportunity2__c.StageName</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -285,13 +290,43 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_FI_Partner_Type__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Consumption_Countries__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Current_EndCustomer_Product_Prvd__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Account_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Partner_Name_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_sw_Quote_Owner__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>End Customer URL</displayNameOverride>
             <field>Pricing_End_Customer_URL__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_is_Budgetary_cb__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -309,6 +344,46 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Volume_Exception_Quota_Cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_ReRouting_Reason_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Quote_Routing_Category_Nm__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group_Name_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager_Group_Label_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Route_Rule_Id_Txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Route_Rule_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Pricing_Manager__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <masterLabel>Quotes</masterLabel>
@@ -1077,7 +1152,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_VerticalSegment__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_OEM_Name_FI__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Consumption_Segment__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Total_Product_Rebate__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
@@ -1127,7 +1217,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percent__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percentage__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Name__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Price_Rule_Error_Message__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Rationale_for_Pricing__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Application_Agent_Status__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <masterLabel>Quote Lines</masterLabel>

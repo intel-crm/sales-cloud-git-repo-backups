@@ -1,0 +1,52 @@
+<template>
+    
+    <template if:true={showLoadingSpinner}>
+       <!-- <div style="z-index: 10000 !important;"> -->
+            <lightning-spinner alternative-text="Uploading......" size="large"></lightning-spinner>
+      <!--  </div> -->
+    </template>
+
+    <template if:true={showRows}>
+    <lightning-record-edit-form object-api-name="SBQQ__QuoteLine__c" record-id={item.Id} density="auto" onload='{handleRecordFormDataLoad}'>
+        <lightning-messages> </lightning-messages>
+            <table class="slds-table_col-bordered" style="min-width:100px; width:auto;">
+                <tbody>
+                    <tr>
+                        <td scope="col" style="padding:0.5rem;">
+                            <div>
+                                <lightning-input type="checkbox" label=" " onchange={handleSelectChange}
+                                 value={isSelected} data-id={item.Id} class="selectRow" 
+                                 style="min-width:1rem;max-width:1rem;"></lightning-input>
+                            </div>
+                        </td>
+                        <td scope="col" style="min-width:6rem;max-width:6rem;padding:0.4rem;">
+                            <lightning-button variant="Base" label={item.Name} onclick={viewRecord} value={item.Id}></lightning-button>
+                        </td>
+                        <template for:each={qlColumns} for:item="colItem" for:index="index">
+                            <td key={colItem.fname} style="min-width:8rem;max-width:8rem;padding:0.4rem;" scope="col">
+                                <template if:true={isEdit}>
+                                    <template if:true={colItem.required}>
+                                        <lightning-input-field class={item.Name} field-name={colItem.fname} 
+                                        variant="label-hidden" required value={colItem.value} onchange={handleChange}></lightning-input-field>
+                                    </template>
+                                    <template if:false={colItem.required}>
+                                        <lightning-input-field class={item.Name} field-name={colItem.fname}
+                                        variant="label-hidden" value={colItem.value} onchange={handleChange}></lightning-input-field>
+                                    </template>
+                                </template>
+                                <template if:false={isEdit}>
+                                    <lightning-output-field class={item.Name} field-name={colItem.fname} variant="label-hidden" ></lightning-output-field>
+                                </template>
+                            </td>
+                        </template>
+                        <td key={item.Id} style="padding:0.4rem;">                                   
+                            <lightning-icon icon-name="utility:delete" access-key={item.Id} class="customActions"
+                                    alternative-text="Delete Row" size="small" title="Delete Row" onclick={deleteRow}>
+                            </lightning-icon>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </lightning-record-edit-form>
+</template>
+</template>

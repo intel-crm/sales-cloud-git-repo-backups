@@ -598,4 +598,45 @@ insert accBusinessType;
         }
         test.stopTest();
     }
+    
+    static testmethod void testgetL1andL2AccDetails() {
+        Pricing_UnifiedEndCustomerAccountMapping__c l1Record = new Pricing_UnifiedEndCustomerAccountMapping__c(Name ='Test unified End Cutsomer',Pricing_Unified_EndCustomer_Id__c = '1000678928');
+   		insert l1Record;
+        Pricing_UnifiedEndCustomerCountryMapping__c l2record = new Pricing_UnifiedEndCustomerCountryMapping__c(Name ='Test unified Country Cutomer',Pricing_Unified_Country_EndCustomer_Id__c = '1000678929');
+        //l2record.Pricing_Unified_EndCustomer_Id__c = l1Record.Pricing_Unified_EndCustomer_Id__c;
+        insert l2Record;
+  
+        Account acc1 = new Account();
+        acc1.RecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Account', Label.Pricing_Tender_Account_RecordType_IntelAccount);
+        acc1.Name = 'Test L2 Account';
+        acc1.Industry = 'Banking';
+        acc1.BillingCity = 'Pune';
+        acc1.BillingCountry = 'USA';
+        acc1.BillingStreet = 'G-210';
+        acc1.Core_Customer_Aggregation_Type__c = 'UNFD_CTRY_CUST';
+        acc1.Core_Business_Party_Id__c = '1000678929';
+        insert acc1;
+          Account acc2 = new Account();
+        acc2.RecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Account',Label.Pricing_Tender_Account_RecordType_IntelAccount);
+        acc2.Name = 'Test L1 Account';
+        acc2.Industry = 'Banking';
+        acc2.BillingCity = 'Pune';
+        acc2.BillingCountry = 'USA';
+        acc2.BillingStreet = 'G-210';
+        acc2.Core_Business_Party_Id__c = '1000678928';
+        insert acc2;
+        Test.startTest();
+       List<Pricing_UCD_IQR_FormRequest.unifiedL1AndL2Wrapper> unifiedL1AndL2List = Pricing_UCD_IQR_FormRequest.getL1andL2AccDetails(l2Record.id);
+       List<Pricing_UCD_IQR_FormRequest.unifiedL1AndL2Wrapper> unifiedList = Pricing_UCD_IQR_FormRequest.getL1andL2AccDetails(l1Record.id);
+   	   system.assertEquals(1,unifiedList.size());
+        test.stopTest();
+    }
+    
+      static testMethod void testgetDataTableColumns(){
+        Test.startTest();
+        List<Pricing_UCD_IQR_FormRequest.DataTableColumns> datacolumns = Pricing_UCD_IQR_FormRequest.getDataTableColumns();
+          Boolean isTrue = datacolumns.size()>0 ? true : false;
+          system.assertEquals(true,isTrue);
+        Test.stopTest();
+    }
 }

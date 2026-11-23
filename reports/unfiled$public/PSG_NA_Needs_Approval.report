@@ -26,73 +26,6 @@
             <value>Deal Win</value>
         </values>
     </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_14479034</developerName>
-        <masterLabel>PSG Region</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Business_Unit_Territory__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-ABOS</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-ACAN</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NE</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-NW</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-RM</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NW</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-CHI</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-MINN</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-OHIO</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-WI</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-NC</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-MID</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-SE</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-SE</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-NA-SC</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-NA-SW</sourceValue>
-            </sourceValues>
-            <value>PSG-NA-SW</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
-        <developerName>BucketField_45170733</developerName>
-        <masterLabel>PSG Regions</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Business_Unit_Territory__c</sourceColumnName>
-        <useOther>false</useOther>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -105,7 +38,7 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>true</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>BucketField_14479034</groupingColumn>
+        <groupingColumn>Opportunity.Core_Business_Unit_Territory__c</groupingColumn>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -150,10 +83,6 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>PROBABILITY</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -176,7 +105,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Agilex,CPLD,FPGA,Enpirion,BD-,DK-ACB,Rush Creek,DCP-A10,Stratix,Arria,Cyclone,eASIC,Power Solutions</value>
+            <value>CPLD,FPGA,Enpirion,BD-,DK-ACB,Rush Creek,DCP-A10,Stratix,Arria,Cyclone,eASIC,Power Solutions</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -202,7 +131,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_14479034</field>
+        <field>Opportunity.Core_Business_Unit_Territory__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>PSG NA Needs Approval</name>

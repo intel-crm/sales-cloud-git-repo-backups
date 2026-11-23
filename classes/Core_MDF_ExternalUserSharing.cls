@@ -255,6 +255,7 @@ public without sharing class Core_MDF_ExternalUserSharing implements Database.Ba
                     index++;
                 }
             }
+            System.debug('errorMap:' + errorMap);
             
             Boolean pnumDeleteSwitch =false;
             if(mapFunctionalityNameTriggerExecution.containsKey('callPnumDeleteBatch') &&

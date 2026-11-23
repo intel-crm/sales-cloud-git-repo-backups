@@ -257,7 +257,6 @@ public class core_MDF_Act_PurposeBatch_Test {
         camp.Core_MDF_Budget_Type_txt__c = budgetType;
         camp.Core_MDF_Budget__c = budget.Id;
         camp.Core_MDF_Reimbursement_Amt__c = 10000;
-        camp.Core_MDF_Technology__c='';
         Database.insert(camp);
             camp.Status = 'Completed';
             camp.Core_MDF_CampOutcomeOpt_In_Ind__c=true;

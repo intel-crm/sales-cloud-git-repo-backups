@@ -1,6 +1,7 @@
 ({	
     //This is to check weather user has access to create and Edit claim
     doInit : function(component, event, helper) {
+        debugger;
     	const action = component.get("c.isClaimEligibleForClone");
         action.setParams({
             'recordId': component.get("v.recordId")
@@ -16,6 +17,7 @@
                         component.set("v.accessErrorMsg", $A.get('$Label.c.Core_MDF_Validate_CreateClaim_InProgress_Error'));
                     }
                     else if(permission.isAssociatedPFRNotDeclined){             
+
               		    component.set("v.hasCloneAccess", permission.hasAccessToCloneClaim);
                     }
                     else{

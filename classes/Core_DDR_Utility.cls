@@ -6,7 +6,7 @@ public with sharing class Core_DDR_Utility {
         for(Integer i = 0; i < NoProducts; i++) {
             Product2 prod = new Product2();
             
-            prod.name = 'Intel Atom® CE4275 Media Processor'+i;
+            prod.name = 'Intel® Ethernet SFP+ LR Optics'+i;
             prod.Core_Design_Registration_Eligible_Ind__c  = true;
             prod.Core_Sales_Visible_Flag__c = true;
             prod.isActive = true;
@@ -64,7 +64,7 @@ public with sharing class Core_DDR_Utility {
         for (integer i = 0; i <NofDDR; i++) {
             Core_Design_Registration__c ddr = new Core_Design_Registration__c();
             
-            ddr.Core_Product_Group_Nm__c = 'FPGA/Power';
+            ddr.Core_Product_Group_Nm__c = 'Embedded/IOT';
             ddr.Core_Design_Registration_Nm__c = 'DDR Test'+i;
             ddr.Core_Design_Registration_Dsc__c = 'ABC';
             ddr.Core_Opportunity_Volume_Cnt__c = 5;

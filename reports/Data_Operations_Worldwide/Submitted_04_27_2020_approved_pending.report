@@ -19,9 +19,6 @@
         <field>OpportunityLineItem.Core_Claim_Date__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
-    </columns>
-    <columns>
         <field>CLOSE_DATE</field>
     </columns>
     <columns>

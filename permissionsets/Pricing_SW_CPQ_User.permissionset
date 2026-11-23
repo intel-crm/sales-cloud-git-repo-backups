@@ -3640,6 +3640,10 @@
         <enabled>true</enabled>
         <name>Pricing_SW_Custom_Action</name>
     </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Pricing_SW_Update_QL_List_Unit_Price</name>
+    </customPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Core_Account_Owner_Preview__c</field>

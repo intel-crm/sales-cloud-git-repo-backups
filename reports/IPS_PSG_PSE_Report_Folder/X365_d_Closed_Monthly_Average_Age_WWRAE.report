@@ -367,7 +367,7 @@
         <chartSummaries>
             <aggregate>Average</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Case.Core_IPS_Age__c</column>
+            <column>AGE</column>
         </chartSummaries>
         <chartType>LineGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -406,7 +406,6 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <aggregateTypes>Average</aggregateTypes>
         <field>Case.Core_IPS_Age__c</field>
     </columns>
     <columns>

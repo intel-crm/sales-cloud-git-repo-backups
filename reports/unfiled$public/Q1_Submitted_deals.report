@@ -43,7 +43,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>ming gao,kai hu,xiaodong hang,jay yu,jim gong,qingdong man,yali liang,sam han,ryan sun</value>
+            <value>ming gao,kai hu,xiaodong hang,jay yu,jim gong,qingdong man,yali liang,sam han,qing lu</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>

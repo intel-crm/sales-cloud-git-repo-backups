@@ -21,6 +21,7 @@ public without sharing class UCD_ACM_SelectorContracts {
         Map<Id,Account> getAccountsByIds(Set<Id> accountIds, String queryFields);
         List<Account> selectAccountsByName(Set<String> accountNames, String queryFields);
         Map<Id,List<Business_Types__c>> getBusinessTypesByAccountId(Set<Id> accountIds, String queryFields);
+        Map<Id,List<Account_Create_Request__c>> getAccountRequestQueueByAccountId(Set<Id> accountIds, String queryFields);   
         Map<String,Business_Types__c> getBusinessTypeId(Set<String> typeCodes);
         //String getAccountByBpId(String bpId);
         Map<Id,Account> getAccountsByIds(Set<Id> accountIds, String queryFields, String andClause);
@@ -46,7 +47,7 @@ public without sharing class UCD_ACM_SelectorContracts {
          //Map<Id,Account_Create_Request__c>  approveAccountRequest (List<Account_Create_Request__c> lstOfAccountCreateRequest);
          //Boolean  rejectAccountRequest (List<Account_Create_Request__c> lstOfAccountCreateRequest);
     } 
-
+    /* unused code
     public interface IContactQuerySelector {
         List<Contact> getCurrContactDetails(String contactId, String queryFields);
         List<Case> getCaseDetails(String contactId, String queryFields);
@@ -54,5 +55,5 @@ public without sharing class UCD_ACM_SelectorContracts {
         List<Core_Contact_Entitlement__c>  getEntitlementsDetails(String contactId, String queryFields);
         Account getTargetAccountObj(String AccountId, String accountQueryFields);
        // List<Contact_Move_Governance__c> getContactMoveGovDetails(String ContactMoveGovId , String contactMoveGovQueryFields);
-    }
+    }*/
 }

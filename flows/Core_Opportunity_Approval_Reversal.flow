@@ -3,10 +3,13 @@
     <actionCalls>
         <name>Retrigger_6QPS_Calculation_after_Opp_Update</name>
         <label>Retrigger 6QPS Calculation after Opp Update</label>
-        <locationX>1194</locationX>
+        <locationX>1458</locationX>
         <locationY>3146</locationY>
         <actionName>Core_OpportunityHandler</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_19</targetReference>
+        </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>newOppList</name>
@@ -22,7 +25,7 @@
     <assignments>
         <name>Adding_PC_PL_Products_to_list</name>
         <label>Adding PC_PL Products to list</label>
-        <locationX>6078</locationX>
+        <locationX>6342</locationX>
         <locationY>2006</locationY>
         <assignmentItems>
             <assignToReference>PC_PLOpptyProductList</assignToReference>
@@ -38,7 +41,7 @@
     <assignments>
         <name>Adding_prods_to_list</name>
         <label>Adding prods to list</label>
-        <locationX>1678</locationX>
+        <locationX>2074</locationX>
         <locationY>2738</locationY>
         <assignmentItems>
             <assignToReference>OppProductList</assignToReference>
@@ -54,7 +57,7 @@
     <assignments>
         <name>Adding_PW_status_products_to_List</name>
         <label>Adding PW status products to List</label>
-        <locationX>3174</locationX>
+        <locationX>3438</locationX>
         <locationY>2330</locationY>
         <assignmentItems>
             <assignToReference>PWOppProdList</assignToReference>
@@ -68,25 +71,9 @@
         </connector>
     </assignments>
     <assignments>
-        <name>assignment_to_record_variable</name>
-        <label>assignment to record variable</label>
-        <locationX>7882</locationX>
-        <locationY>1898</locationY>
-        <assignmentItems>
-            <assignToReference>LowTouchOpportunityProducts</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>LowTouchRecords</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>LowTouchRecords</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Blank_PW_Approval_Fields</name>
         <label>Blank PW Approval Fields</label>
-        <locationX>3174</locationX>
+        <locationX>3438</locationX>
         <locationY>2138</locationY>
         <assignmentItems>
             <assignToReference>PW_Oppty_Prods.Core_PW_Manager_Approved_Date__c</assignToReference>
@@ -186,7 +173,7 @@
     <assignments>
         <name>Change_the_OLI_status_to_Win_Approved</name>
         <label>Change the OLI status to Win Approved</label>
-        <locationX>6078</locationX>
+        <locationX>6342</locationX>
         <locationY>1814</locationY>
         <assignmentItems>
             <assignToReference>PC_PL_Oppty_products.Core_Status__c</assignToReference>
@@ -230,7 +217,7 @@
     <assignments>
         <name>Get_PW_Approved_Products_Count</name>
         <label>Get PW Approved Products Count</label>
-        <locationX>4230</locationX>
+        <locationX>4494</locationX>
         <locationY>1598</locationY>
         <assignmentItems>
             <assignToReference>CountPWApprovedProds</assignToReference>
@@ -246,7 +233,7 @@
     <assignments>
         <name>PL_to_WinApproved_Blanking_and_Restoring</name>
         <label>Change the OLI status to Win Approved</label>
-        <locationX>5814</locationX>
+        <locationX>6078</locationX>
         <locationY>1814</locationY>
         <assignmentItems>
             <assignToReference>PC_PL_Oppty_products.Core_Status__c</assignToReference>
@@ -298,7 +285,7 @@
     <assignments>
         <name>SAM_Manager_Approved</name>
         <label>SAM Manager Approved</label>
-        <locationX>6754</locationX>
+        <locationX>6292</locationX>
         <locationY>782</locationY>
         <assignmentItems>
             <assignToReference>SAMMangerCheck</assignToReference>
@@ -314,7 +301,7 @@
     <assignments>
         <name>Set_Record_type</name>
         <label>Set Record type</label>
-        <locationX>1612</locationX>
+        <locationX>1876</locationX>
         <locationY>1382</locationY>
         <assignmentItems>
             <assignToReference>Opportunity_Record_Type</assignToReference>
@@ -330,7 +317,7 @@
     <assignments>
         <name>Status_to_Cancelled</name>
         <label>Status to Cancelled</label>
-        <locationX>1546</locationX>
+        <locationX>1810</locationX>
         <locationY>2438</locationY>
         <assignmentItems>
             <assignToReference>DW_Oppty_Prods.Core_Status__c</assignToReference>
@@ -374,7 +361,7 @@
     <assignments>
         <name>Status_to_Lost</name>
         <label>Status to Lost</label>
-        <locationX>1282</locationX>
+        <locationX>1546</locationX>
         <locationY>2438</locationY>
         <assignmentItems>
             <assignToReference>DW_Oppty_Prods.Core_Status__c</assignToReference>
@@ -404,7 +391,37 @@
     <assignments>
         <name>Status_to_Pending</name>
         <label>Status to Pending</label>
-        <locationX>1810</locationX>
+        <locationX>2074</locationX>
+        <locationY>2438</locationY>
+        <assignmentItems>
+            <assignToReference>DW_Oppty_Prods.Core_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>countDWApprovedProds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>DW_Oppty_Prods.Core_BypassFlow__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fBypass</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Sync_DW_and_PW_fields</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Status_to_Pending_PC_PL</name>
+        <label>Status to Pending</label>
+        <locationX>2338</locationX>
         <locationY>2438</locationY>
         <assignmentItems>
             <assignToReference>DW_Oppty_Prods.Core_Status__c</assignToReference>
@@ -434,7 +451,7 @@
     <assignments>
         <name>Status_to_Win_Approved</name>
         <label>Status to Win Approved and Blank PW Approval fields</label>
-        <locationX>2910</locationX>
+        <locationX>3174</locationX>
         <locationY>2138</locationY>
         <assignmentItems>
             <assignToReference>PW_Oppty_Prods.Core_Status__c</assignToReference>
@@ -541,7 +558,7 @@
     <assignments>
         <name>Sync_DW_and_PW_fields</name>
         <label>Sync DW and PW fields</label>
-        <locationX>1678</locationX>
+        <locationX>2074</locationX>
         <locationY>2630</locationY>
         <assignmentItems>
             <assignToReference>DW_Oppty_Prods.Core_PW_Quantity__c</assignToReference>
@@ -559,7 +576,7 @@
         <description>Update Low Touch Opportunity Product if status is not pending</description>
         <name>Update_Low_Touch_Opportunity_Product</name>
         <label>Update Low Touch Opportunity Product</label>
-        <locationX>7882</locationX>
+        <locationX>6958</locationX>
         <locationY>1490</locationY>
         <assignmentItems>
             <assignToReference>LowTouchRecords.Core_Status__c</assignToReference>
@@ -577,6 +594,13 @@
         </assignmentItems>
         <assignmentItems>
             <assignToReference>LowTouchRecords.Core_Production_Claim_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Blanking</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>LowTouchRecords.Core_Approved_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Blanking</elementReference>
@@ -632,6 +656,20 @@
             </value>
         </assignmentItems>
         <assignmentItems>
+            <assignToReference>LowTouchRecords.Core_Approved_BU_Short_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Blank</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>LowTouchRecords.Core_PW_Sales_Price__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Blankingcurrency</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
             <assignToReference>LowTouchRecords.Core_Production_Claim_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
@@ -681,31 +719,10 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_PW_Sales_Price__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blankingcurrency</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>LowTouchRecords.Core_PW_Quantity__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Blankingcurrency</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_Decision_Date__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blanking</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_By__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -730,81 +747,8 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Claim_Date__c</assignToReference>
+            <assignToReference>LowTouchOpportunityProducts</assignToReference>
             <operator>Assign</operator>
-            <value>
-                <elementReference>Blanking</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_BU_Product_Segment__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_BU_Short_Name__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_Commissionable__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_KPI_Product_Group__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Opp_Approved_Sales_Group__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.CRM_DW_App_UCD_Customer_Name__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_Opportunity_Product_App__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_Opp_Product_Segment__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blank</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_PW_Manager_Approved_Date__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blanking</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.Core_Approved_Date__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Blanking</elementReference>
-            </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>LowTouchRecords.Core_Approved_Prime_Account_Name__c</assignToReference>
@@ -821,29 +765,13 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>When_Record_is_changed_from_PC_to_Pending</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Update_Records_Sales_Price_and_Total_Sales_Price</name>
-        <label>Update Records Sales Price and Total Sales Price</label>
-        <locationX>7750</locationX>
-        <locationY>1706</locationY>
-        <assignmentItems>
-            <assignToReference>LowTouchRecords.UnitPrice</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>LowTouchRecords.Core_Lost_Sales_Price__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>assignment_to_record_variable</targetReference>
+            <targetReference>LowTouchRecords</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Win_Approved_Count</name>
         <label>Win Approved Count</label>
-        <locationX>1612</locationX>
+        <locationX>1876</locationX>
         <locationY>1706</locationY>
         <assignmentItems>
             <assignToReference>countDWApprovedProds</assignToReference>
@@ -860,7 +788,7 @@
         <name>ProductionWinApprovedRecordsCollection</name>
         <elementSubtype>FilterCollectionProcessor</elementSubtype>
         <label>ProductionWinApprovedRecordsCollection</label>
-        <locationX>4230</locationX>
+        <locationX>4494</locationX>
         <locationY>1490</locationY>
         <assignNextValueToReference>currentItem_ProductionWinApprovedRecordsCollection</assignNextValueToReference>
         <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
@@ -888,7 +816,7 @@
         <name>WinApprovedRecordsCollection</name>
         <elementSubtype>FilterCollectionProcessor</elementSubtype>
         <label>WinApprovedRecordsCollection</label>
-        <locationX>1612</locationX>
+        <locationX>1876</locationX>
         <locationY>1598</locationY>
         <assignNextValueToReference>currentItem_WinApprovedRecordsCollection</assignNextValueToReference>
         <collectionProcessorType>FilterCollectionProcessor</collectionProcessorType>
@@ -933,7 +861,7 @@
     <decisions>
         <name>Check_if_Design_Opportunity</name>
         <label>Check if Design Opportunity</label>
-        <locationX>1194</locationX>
+        <locationX>1458</locationX>
         <locationY>1922</locationY>
         <defaultConnector>
             <targetReference>DW_Oppty_Prods</targetReference>
@@ -958,8 +886,11 @@
     <decisions>
         <name>DealRecType</name>
         <label>DealRecType</label>
-        <locationX>8674</locationX>
+        <locationX>7882</locationX>
         <locationY>1274</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_20</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>DesignWinDeal</name>
@@ -1003,7 +934,7 @@
         <description>Check this opportunity is created as part of Opportunity Renewal</description>
         <name>IsOpportunityCreatedAsOpportunityRenewal</name>
         <label>Is Opportunity Created As Opportunity Renewal</label>
-        <locationX>3358</locationX>
+        <locationX>3127</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Get_Opportunity_Team_Member</targetReference>
@@ -1026,7 +957,7 @@
         <description>Reverse functionality for Low touch and other Opportunities</description>
         <name>isUserApproverOrNot</name>
         <label>isUserApproverOrNot</label>
-        <locationX>6666</locationX>
+        <locationX>6204</locationX>
         <locationY>1058</locationY>
         <defaultConnector>
             <targetReference>Opportunity_Rec_Type_Check_for_No_Access_Screen</targetReference>
@@ -1164,7 +1095,7 @@
     <decisions>
         <name>isWinApprovedProductsPresent</name>
         <label>isWinApprovedProductsPresent</label>
-        <locationX>1612</locationX>
+        <locationX>1876</locationX>
         <locationY>1814</locationY>
         <defaultConnector>
             <targetReference>Win_Products_not_present</targetReference>
@@ -1189,7 +1120,7 @@
     <decisions>
         <name>Opportunity_Product_Status_Check</name>
         <label>Opportunity Product Status Check</label>
-        <locationX>1678</locationX>
+        <locationX>2074</locationX>
         <locationY>2330</locationY>
         <defaultConnector>
             <isGoTo>true</isGoTo>
@@ -1221,6 +1152,13 @@
                     <stringValue>Production Cancelled</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>DW_Oppty_Prods.Core_Loss_Cancel_Reason__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled - Failed Audit</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Status_to_Cancelled</targetReference>
             </connector>
@@ -1241,12 +1179,37 @@
             </connector>
             <label>Win Approved</label>
         </rules>
+        <rules>
+            <name>Production_Cancelled_with_Failed_Audit_Reason</name>
+            <conditionLogic>1 AND 2</conditionLogic>
+            <conditions>
+                <leftValueReference>DW_Oppty_Prods.Core_Loss_Cancel_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled - Failed Audit</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DW_Oppty_Prods.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Production Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Status_to_Pending_PC_PL</targetReference>
+            </connector>
+            <label>Production Cancelled with Failed Audit Reason</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Opportunity_Rec_Type_Check_for_No_Access_Screen</name>
         <label>Opportunity Rec Type Check for No Access Screen</label>
-        <locationX>9004</locationX>
+        <locationX>8212</locationX>
         <locationY>1166</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_21</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Deal</name>
@@ -1282,8 +1245,11 @@
     <decisions>
         <name>Opportunity_Stage_Check</name>
         <label>Opportunity Stage Check</label>
-        <locationX>4329</locationX>
+        <locationX>4197</locationX>
         <locationY>1274</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_22</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Design_Win_Stage</name>
@@ -1348,7 +1314,7 @@
     <decisions>
         <name>PC_PL_Oppty_Product_Status_Check</name>
         <label>PC/PL Oppty Product Status Check</label>
-        <locationX>6078</locationX>
+        <locationX>6342</locationX>
         <locationY>1706</locationY>
         <defaultConnector>
             <targetReference>Adding_PC_PL_Products_to_list</targetReference>
@@ -1371,12 +1337,19 @@
         </rules>
         <rules>
             <name>Production_Cancelled_OLI</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>PC_PL_Oppty_products.Core_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Production Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>PC_PL_Oppty_products.Core_Loss_Cancel_Reason__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled - Failed Audit</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -1388,7 +1361,7 @@
     <decisions>
         <name>PW_Products_Status_Check</name>
         <label>PW Products Status Check</label>
-        <locationX>3174</locationX>
+        <locationX>3438</locationX>
         <locationY>2030</locationY>
         <defaultConnector>
             <targetReference>Adding_PW_status_products_to_List</targetReference>
@@ -1442,8 +1415,11 @@
     <decisions>
         <name>PWApprovedProdsCountCheck</name>
         <label>PWApprovedProdsCountCheck</label>
-        <locationX>4230</locationX>
+        <locationX>4494</locationX>
         <locationY>1706</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_23</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>PW_Approved_Prods_Present</name>
@@ -1479,8 +1455,11 @@
     <decisions>
         <name>RecordTypes</name>
         <label>RecordTypes</label>
-        <locationX>3614</locationX>
+        <locationX>3878</locationX>
         <locationY>1814</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_24</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Design_Record_Type</name>
@@ -1523,7 +1502,7 @@
     <decisions>
         <name>SAM_Manager_Check_Approvel</name>
         <label>SAM Manager Check Approvel</label>
-        <locationX>6886</locationX>
+        <locationX>6424</locationX>
         <locationY>674</locationY>
         <defaultConnector>
             <targetReference>Get_SAM_Manager_Records</targetReference>
@@ -1576,8 +1555,11 @@
     <decisions>
         <name>Type_Of_Oppty</name>
         <label>Type Of Oppty</label>
-        <locationX>6254</locationX>
+        <locationX>6122</locationX>
         <locationY>1382</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_25</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Intel_led_Design_Deal_and_PCC_Design_Oppty</name>
@@ -1602,34 +1584,97 @@
             <label>Intel led Design/Deal and PCC Design Oppty</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>When_Record_is_changed_from_PC_to_Pending</name>
-        <label>When Record is changed from PC to Pending</label>
-        <locationX>7882</locationX>
-        <locationY>1598</locationY>
-        <defaultConnector>
-            <targetReference>assignment_to_record_variable</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Update_the_Sales_Price_and_Total_Sales_Price</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>LowTouchRecords.Core_Lost_Sales_Price__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Records_Sales_Price_and_Total_Sales_Price</targetReference>
-            </connector>
-            <label>Update the Sales Price and Total Sales Price</label>
-        </rules>
-    </decisions>
-    <description>Reversal of Oppty from PC/PL to DW - Changes to update Prod Cancelled to Lost instead of Cancelled.
-For Low Touch
-Production Sales Price and Production Quantity on Product and Production Win amount on Opportunity should blank out when using the reverse button.</description>
+    <description>Reversal of Oppty from PC/PL to DW - Changes to update Prod Cancelled to Lost instead of Cancelled</description>
+    <ends>
+        <name>END_ELEMENT_19</name>
+        <locationX>1458</locationX>
+        <locationY>3254</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_20</name>
+        <locationX>8102</locationX>
+        <locationY>1382</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_21</name>
+        <locationX>8542</locationX>
+        <locationY>1274</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_22</name>
+        <locationX>6518</locationX>
+        <locationY>1382</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_23</name>
+        <locationX>5110</locationX>
+        <locationY>1814</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_24</name>
+        <locationX>4670</locationX>
+        <locationY>1922</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_25</name>
+        <locationX>6254</locationX>
+        <locationY>1490</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_26</name>
+        <locationX>5990</locationX>
+        <locationY>2522</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_27</name>
+        <locationX>6870</locationX>
+        <locationY>1898</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_28</name>
+        <locationX>3086</locationX>
+        <locationY>2738</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_29</name>
+        <locationX>3878</locationX>
+        <locationY>2138</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_30</name>
+        <locationX>7838</locationX>
+        <locationY>1490</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_31</name>
+        <locationX>7398</locationX>
+        <locationY>1898</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_32</name>
+        <locationX>7134</locationX>
+        <locationY>2006</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_33</name>
+        <locationX>1766</locationX>
+        <locationY>3254</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_34</name>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_35</name>
+        <locationX>8212</locationX>
+        <locationY>1874</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_36</name>
+        <locationX>4197</locationX>
+        <locationY>3662</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>Blanking</name>
@@ -1662,7 +1707,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <loops>
         <name>DW_Oppty_Prods</name>
         <label>DW Oppty Prods</label>
-        <locationX>1194</locationX>
+        <locationX>1458</locationX>
         <locationY>2222</locationY>
         <collectionReference>Get_Opportunity_Product</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -1676,7 +1721,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <loops>
         <name>Get_SAM_Manager_Records</name>
         <label>Get SAM Manager Records</label>
-        <locationX>6666</locationX>
+        <locationX>6204</locationX>
         <locationY>566</locationY>
         <collectionReference>Get_Opportunity_Team_Member</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -1690,7 +1735,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <loops>
         <name>LowTouchRecords</name>
         <label>LowTouchRecords</label>
-        <locationX>7662</locationX>
+        <locationX>6870</locationX>
         <locationY>1382</locationY>
         <collectionReference>Get_Low_Touch_Opportunity_Products</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -1698,13 +1743,13 @@ Production Sales Price and Production Quantity on Product and Production Win amo
             <targetReference>Update_Low_Touch_Opportunity_Product</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Update_Low_Touch_Opportunities</targetReference>
+            <targetReference>Update_Low_Touch_Opportunity_Products</targetReference>
         </noMoreValuesConnector>
     </loops>
     <loops>
         <name>PC_PL_Oppty_products</name>
         <label>PC/PL Oppty products</label>
-        <locationX>5726</locationX>
+        <locationX>5990</locationX>
         <locationY>1598</locationY>
         <collectionReference>Get_PC_PL_Opportunity_Products</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -1719,7 +1764,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         <description>Looping through PW Approved/Lost/Cancelled Products</description>
         <name>PW_Oppty_Prods</name>
         <label>PW Oppty Prods</label>
-        <locationX>2822</locationX>
+        <locationX>3086</locationX>
         <locationY>1922</locationY>
         <collectionReference>Get_PW_Opportunity_Products</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -1752,7 +1797,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordLookups>
         <name>Get_Approval_Data</name>
         <label>Get Approval Data</label>
-        <locationX>6666</locationX>
+        <locationX>6204</locationX>
         <locationY>458</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1785,7 +1830,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         <description>Get Low Touch Opportunity Products</description>
         <name>Get_Low_Touch_Opportunity_Products</name>
         <label>Get Low Touch Opportunity Products</label>
-        <locationX>7662</locationX>
+        <locationX>6870</locationX>
         <locationY>1274</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1806,20 +1851,6 @@ Production Sales Price and Production Quantity on Product and Production Win amo
                 <stringValue>Pending</stringValue>
             </value>
         </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>Lost</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>Cancelled</stringValue>
-            </value>
-        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>OpportunityLineItem</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -1827,7 +1858,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordLookups>
         <name>Get_Opportunity</name>
         <label>Get Opportunity</label>
-        <locationX>3358</locationX>
+        <locationX>3127</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1848,7 +1879,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordLookups>
         <name>Get_Opportunity_Product</name>
         <label>Get Opportunity Products</label>
-        <locationX>1612</locationX>
+        <locationX>1876</locationX>
         <locationY>1490</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1869,7 +1900,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordLookups>
         <name>Get_Opportunity_Team_Member</name>
         <label>Get Opportunity Team Member</label>
-        <locationX>6666</locationX>
+        <locationX>6204</locationX>
         <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1897,7 +1928,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordLookups>
         <name>Get_PC_PL_Opportunity_Products</name>
         <label>Get PC/PL Opportunity Products</label>
-        <locationX>5726</locationX>
+        <locationX>5990</locationX>
         <locationY>1490</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1932,7 +1963,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordLookups>
         <name>Get_PW_Opportunity_Products</name>
         <label>Get PW Opportunity Products</label>
-        <locationX>4230</locationX>
+        <locationX>4494</locationX>
         <locationY>1382</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1981,24 +2012,21 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordUpdates>
         <name>Add_PC_PL_Collection_List</name>
         <label>Add PC_PL Collection List</label>
-        <locationX>5726</locationX>
+        <locationX>5990</locationX>
         <locationY>2306</locationY>
         <connector>
             <targetReference>Revert_PC_PL_Reversal_Backend_Field</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Copy_2_of_error_message</targetReference>
-        </faultConnector>
         <inputReference>PC_PLOpptyProductList</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>Revert_PC_PL_Reversal_Backend_Field</name>
         <label>Revert PC/PL Reversal Backend Field</label>
-        <locationX>5726</locationX>
+        <locationX>5990</locationX>
         <locationY>2414</locationY>
-        <faultConnector>
-            <targetReference>Copy_1_of_error_message</targetReference>
-        </faultConnector>
+        <connector>
+            <targetReference>END_ELEMENT_26</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -2018,7 +2046,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordUpdates>
         <name>Update_Deal_Opportunity_fields</name>
         <label>Update Deal Opportunity fields</label>
-        <locationX>3614</locationX>
+        <locationX>3878</locationX>
         <locationY>1922</locationY>
         <connector>
             <targetReference>Update_PW_Approved_Records_to_Win_Approved_Deal</targetReference>
@@ -2054,10 +2082,10 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         <description>Update Low Touch Opportunities</description>
         <name>Update_Low_Touch_Opportunities</name>
         <label>Update Low Touch Opportunities</label>
-        <locationX>7662</locationX>
-        <locationY>2090</locationY>
+        <locationX>6870</locationX>
+        <locationY>1790</locationY>
         <connector>
-            <targetReference>Update_Low_Touch_Opportunity_Products</targetReference>
+            <targetReference>END_ELEMENT_27</targetReference>
         </connector>
         <faultConnector>
             <targetReference>Error_Message_Opty_Low_Touch</targetReference>
@@ -2077,9 +2105,6 @@ Production Sales Price and Production Quantity on Product and Production Win amo
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Core_PW_Amount__c</field>
-        </inputAssignments>
-        <inputAssignments>
             <field>StageName</field>
             <value>
                 <stringValue>Qualify</stringValue>
@@ -2091,8 +2116,11 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         <description>Update Low Touch Opportunity Products</description>
         <name>Update_Low_Touch_Opportunity_Products</name>
         <label>Update Low Touch Opportunity Products</label>
-        <locationX>7662</locationX>
-        <locationY>2198</locationY>
+        <locationX>6870</locationX>
+        <locationY>1682</locationY>
+        <connector>
+            <targetReference>Update_Low_Touch_Opportunities</targetReference>
+        </connector>
         <faultConnector>
             <targetReference>error_message</targetReference>
         </faultConnector>
@@ -2101,7 +2129,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordUpdates>
         <name>Update_Opportunity_fields</name>
         <label>Update Opportunity fields</label>
-        <locationX>2822</locationX>
+        <locationX>3086</locationX>
         <locationY>2522</locationY>
         <connector>
             <targetReference>Update_PW_Approved_P_Lost_Cancelled_Products</targetReference>
@@ -2142,7 +2170,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordUpdates>
         <name>Update_Opportunity_Record</name>
         <label>Update Opportunity Record</label>
-        <locationX>1194</locationX>
+        <locationX>1458</locationX>
         <locationY>3038</locationY>
         <connector>
             <targetReference>Retrigger_6QPS_Calculation_after_Opp_Update</targetReference>
@@ -2165,6 +2193,9 @@ Production Sales Price and Production Quantity on Product and Production Win amo
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Core_DesignWin_KPI_Txt__c</field>
+        </inputAssignments>
+        <inputAssignments>
             <field>Core_PW_Amount__c</field>
         </inputAssignments>
         <object>Opportunity</object>
@@ -2172,7 +2203,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordUpdates>
         <name>Update_Prod_Lost_Opportunity_Products</name>
         <label>Update Prod Lost Opportunity Products</label>
-        <locationX>1194</locationX>
+        <locationX>1458</locationX>
         <locationY>2930</locationY>
         <connector>
             <targetReference>Update_Opportunity_Record</targetReference>
@@ -2186,8 +2217,11 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordUpdates>
         <name>Update_PW_Approved_P_Lost_Cancelled_Products</name>
         <label>Update PW Approved/P Lost/Cancelled Products</label>
-        <locationX>2822</locationX>
+        <locationX>3086</locationX>
         <locationY>2630</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_28</targetReference>
+        </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
             <targetReference>FaultScreen</targetReference>
@@ -2197,8 +2231,11 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordUpdates>
         <name>Update_PW_Approved_Records_to_Win_Approved_Deal</name>
         <label>Update PW OppProd Records to Win Approved_Deal</label>
-        <locationX>3614</locationX>
+        <locationX>3878</locationX>
         <locationY>2030</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_29</targetReference>
+        </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
             <targetReference>FaultScreen</targetReference>
@@ -2236,14 +2273,11 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <recordUpdates>
         <name>UpdateOpptyFields</name>
         <label>UpdateOpptyFields</label>
-        <locationX>5726</locationX>
+        <locationX>5990</locationX>
         <locationY>2198</locationY>
         <connector>
             <targetReference>Add_PC_PL_Collection_List</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Copy_3_of_error_message</targetReference>
-        </faultConnector>
         <filterLogic>1 AND (2 OR 3)</filterLogic>
         <filters>
             <field>Id</field>
@@ -2293,88 +2327,16 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         <object>Opportunity</object>
     </recordUpdates>
     <screens>
-        <name>Copy_1_of_error_message</name>
-        <label>error message</label>
-        <locationX>5990</locationX>
-        <locationY>2522</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <fields>
-            <name>Copy_1_of_Copy_1_of_Error</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <helpText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</helpText>
-        <showFooter>false</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>Copy_2_of_error_message</name>
-        <label>error message</label>
-        <locationX>6254</locationX>
-        <locationY>2414</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <fields>
-            <name>Copy_2_of_Copy_1_of_Error</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <helpText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</helpText>
-        <showFooter>false</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>Copy_3_of_error_message</name>
-        <label>error message</label>
-        <locationX>6518</locationX>
-        <locationY>2306</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <fields>
-            <name>Copy_3_of_Copy_1_of_Error</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <helpText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</helpText>
-        <showFooter>false</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
         <name>Deal_Validation_Screen</name>
         <label>Deal Validation Screen</label>
-        <locationX>8630</locationX>
+        <locationX>7838</locationX>
         <locationY>1382</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_30</targetReference>
+        </connector>
         <fields>
             <name>Copy_1_of_DealMessageScreenForNoAccess</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.Core_Opportunity_Approval_Reversal_Validation_Message_For_Deal}&lt;/p&gt;</fieldText>
@@ -2395,7 +2357,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         <description>Display Low Touch message</description>
         <name>Display_Low_Touch</name>
         <label>Display Low Touch</label>
-        <locationX>7662</locationX>
+        <locationX>6870</locationX>
         <locationY>1166</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -2405,7 +2367,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         </connector>
         <fields>
             <name>LowTouch_Reverse</name>
-            <fieldText>&lt;p&gt;Reversing the approval will set the Opportunity back to Previous Stage Qualify. Please Confirm to Proceed&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Reversing the approval will set the Opportunity back to Previous Stage. Please Confirm to Proceed.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -2423,13 +2385,16 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <screens>
         <name>error_message</name>
         <label>error message</label>
-        <locationX>7926</locationX>
-        <locationY>2306</locationY>
+        <locationX>7398</locationX>
+        <locationY>1790</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_31</targetReference>
+        </connector>
         <fields>
-            <name>Copy_1_of_Error</name>
+            <name>Error</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
@@ -2448,11 +2413,14 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <screens>
         <name>Error_Message_Opty_Low_Touch</name>
         <label>Error Message Opty Low Touch</label>
-        <locationX>8190</locationX>
-        <locationY>2198</locationY>
+        <locationX>7134</locationX>
+        <locationY>1898</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_32</targetReference>
+        </connector>
         <fields>
             <name>ErrorDetails</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Flow.FaultMessage}&lt;/span&gt;&lt;/p&gt;</fieldText>
@@ -2473,11 +2441,14 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <screens>
         <name>FaultScreen</name>
         <label>FaultScreen</label>
-        <locationX>1502</locationX>
+        <locationX>1766</locationX>
         <locationY>3146</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_33</targetReference>
+        </connector>
         <fields>
             <name>ErrorMessage</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
@@ -2503,6 +2474,9 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_34</targetReference>
+        </connector>
         <fields>
             <name>RenewalError</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Reversing the Stage of this Opportunity&amp;nbsp;is not allowed after Renewal is Created.&lt;/span&gt;&lt;/p&gt;</fieldText>
@@ -2522,7 +2496,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <screens>
         <name>Reverse_Opportunity_Screen</name>
         <label>Reverse Opportunity Screen</label>
-        <locationX>4329</locationX>
+        <locationX>4197</locationX>
         <locationY>1166</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -2550,11 +2524,14 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <screens>
         <name>Validation_Screen</name>
         <label>Validation Screen</label>
-        <locationX>9004</locationX>
+        <locationX>8212</locationX>
         <locationY>1766</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_35</targetReference>
+        </connector>
         <fields>
             <name>DesignValidationMsg_NoReverseAccess</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;{!$Label.Core_Opportunity_Approval_Reversal_Validation_Message}&lt;/p&gt;</fieldText>
@@ -2575,7 +2552,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <screens>
         <name>WarningMessage</name>
         <label>WarningMessage</label>
-        <locationX>1062</locationX>
+        <locationX>1326</locationX>
         <locationY>2030</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -2603,11 +2580,14 @@ Production Sales Price and Production Quantity on Product and Production Win amo
     <screens>
         <name>Win_Products_not_present</name>
         <label>Win Products not present</label>
-        <locationX>4329</locationX>
+        <locationX>4197</locationX>
         <locationY>3554</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_36</targetReference>
+        </connector>
         <fields>
             <name>NoREverseScreenMsg</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;Only Opportunities with atleast 1 Won Product can be Reversed&lt;/p&gt;</fieldText>
@@ -2625,7 +2605,7 @@ Production Sales Price and Production Quantity on Product and Production Win amo
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>3232</locationX>
+        <locationX>3001</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Opportunity</targetReference>

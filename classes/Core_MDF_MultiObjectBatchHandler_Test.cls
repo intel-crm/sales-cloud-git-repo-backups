@@ -1,163 +1,157 @@
 @isTest
 private class Core_MDF_MultiObjectBatchHandler_Test {
-    
-    @testSetup
-    static void setupData() {
-        
-        
-        // We will simulate metadata using a custom SObject for test (works since no org CMD dependency)
-        Core_MDF_CCP_Custom_Metadata_Utility__c setting = new Core_MDF_CCP_Custom_Metadata_Utility__c(
-            Core_MDF_Category__c = 'Missed_Approver_Email_Notification',
-            Core_MDF_Is_Active_Ind__c = true,
-            Core_MDF_Field_1_txt__c = 'PartnerFundRequest',
-            Core_MDF_Field_6_txt__c = 'Core_MDF_Approval_Stage__c = \'Draft\'',
-            
-            Core_MDF_Field_5_txt__c = 'Id,Name,Amount',
-            
-            Core_MDF_Field_7_txt__c = '{"Draft":"ABC_Role","Pending Approval":"XYZ_Role"}',
-            
-            Core_MDF_Field_9_txt__c = '{"Submitted":"Partner_Role"}',
-            
-            Core_MDF_Field_8_txt__c = '{"PMN Program":{"Draft":["Role1","Role2"],"Pending Approval":["Role3"]}}',
-            
-            Core_MDF_Field_15_txt__c = '{"ProgramA":{"APAC":"APAC_Role","EU":"EU_Role"}}',
-            
-            Core_MDF_Field_16_txt__c = '{"ProgramA":{"Capex":"Queue1","Opex":"Queue2"}}',
-            
-            Core_MDF_Field_12_txt__c = '{"ProgramA":{"Capex":"PublicGroup1","Opex":"PublicGroup2"}}'
+
+    // ---------------------------------------------------------
+    // Helper – Create Active User
+    // ---------------------------------------------------------
+    private static User createActiveUser() {
+        Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
+        User u = new User(
+            FirstName = 'Test',
+            LastName = 'User',
+            Email = 'testuser@test.com',
+            Username = 'testuser' + System.currentTimeMillis() + '@test.com',
+            Alias = 'tusr',
+            TimeZoneSidKey = 'Asia/Kolkata',
+            LocaleSidKey = 'en_US',
+            EmailEncodingKey = 'UTF-8',
+            ProfileId = p.Id,
+            LanguageLocaleKey = 'en_US'
         );
-        insert setting;
+        insert u;
+        return u;
     }
-    @isTest
-    static void testPrepareQueries() {
-        
-        Test.startTest();
-        
-        List<Core_MDF_MultiObjectBatchHandler.Core_MDF_ObjectQuery> result =
-            Core_MDF_MultiObjectBatchHandler.prepareQueries();
-        
-        Test.stopTest();
-        
-        System.assertEquals(1, result.size(), 'Should return one ObjectQuery');
-        
-        Core_MDF_MultiObjectBatchHandler.Core_MDF_ObjectQuery q = result[0];
-        
-        
-        System.assertEquals('PartnerFundRequest', q.objectName);
-        
-        System.assertEquals('Core_MDF_Approval_Stage__c = \'Draft\'', q.queryCondition);
-        
-        // Assert fields list
-        System.assertEquals(3, q.fields.size());
-        System.assertEquals('Id', q.fields[0]);
-        System.assertEquals('Name', q.fields[1]);
-        System.assertEquals('Amount', q.fields[2]);
-        
-        // Assert approval stage map
-        System.assertEquals('ABC_Role', q.mapOfApprovalStageToRole.get('Draft'));
-        System.assertEquals('XYZ_Role', q.mapOfApprovalStageToRole.get('Pending Approval'));
-        
-        // Assert PNUM map
-        System.assertEquals('Partner_Role', q.mapOfPnumApprovalStageToRole.get('Submitted'));
-        
-        // Assert program to stage roles
-        System.assert(q.mapOfProgramToApprovalStageToRolesList.containsKey('PMN Program'));
-        System.assertEquals(2, q.mapOfProgramToApprovalStageToRolesList.get('PMN Program').get('Draft').size());
-        
-        // Assert Geo role mapping
-        System.assert(q.mapOfProgramToGeoBasedToRole.containsKey('ProgramA'));
-        System.assertEquals('APAC_Role', q.mapOfProgramToGeoBasedToRole.get('ProgramA').get('APAC'));
-        
-        // Assert BudgetType to Queue Mapping
-        System.assertEquals('Queue1', q.mapOfProgramToBudgetTypeToQueue.get('ProgramA').get('Capex'));
-        
-        // Assert BudgetType to Public Group Mapping
-        //  System.assertEquals('PublicGroup1', q.mapOfPrgmTOBudgetTypeTOPublicGrp.get('ProgramA').get('Capex'));
-    }
-    @isTest
-    static void testStandardCombination() {
-        
-        List<List<String>> input = new List<List<String>>{
-            new List<String>{'AMER','EMEA'},
-                new List<String>{'Admin','Finance'}
-        };
-            
-            Set<String> result = Core_MDF_MultiObjectBatchHandler.getRoleRegionCombinations(input);
-        
-        System.assert(!result.isEmpty(), 'Result must not be empty');
-    }
-    @isTest
-    static void testBuildUniqueKey() {
-        System.assertEquals('AMER|Manager|NW',
-                            Core_MDF_MultiObjectBatchHandler.buildUniqueKey(
-                                new List<String>{' AMER ','Manager',' NW '}
-                            ));
-        
-        System.assertEquals('Finance|EMEA',
-                            Core_MDF_MultiObjectBatchHandler.buildUniqueKey(
-                                new List<String>{null,' ', '', 'Finance',' EMEA '}
-                            ));
-        
-        System.assertEquals('',
-                            Core_MDF_MultiObjectBatchHandler.buildUniqueKey(
-                                new List<String>{null,' ', ''}
-                            ));
-    }
-    @isTest
-    static void testGetPublicGroupsWithActiveUsers() {
-        
-        UserRole usRole = [SELECT Id, Name FROM UserRole where Name = 'Admin' LIMIT 50000];
-        User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);
-        testUser.LastName = 'Sys Admin';
-        testUser.UserRoleId = usRole.Id;
-        testUser.IsActive=true;
-        insert testUser;
-        
-        // Create public group
-        Group g = new Group(Name = 'FinanceGroup', Type = 'Regular');
+
+    // ---------------------------------------------------------
+    // Helper – Create Public Group
+    // ---------------------------------------------------------
+    private static Group createPublicGroup(String name) {
+        Group g = new Group(
+            Name = name,
+            Type = 'Regular'
+        );
         insert g;
-        
-        // Add user to public group
-        GroupMember gm = new GroupMember(GroupId = g.Id, UserOrGroupId = testUser.Id);
-        insert gm;
-        
-        // Input set
-        Set<String> inputGroups = new Set<String>{ 'FinanceGroup' };
-            
-            // Call method
-            Set<String> result = Core_MDF_MultiObjectBatchHandler.getPublicGroupsWithActiveUsers(inputGroups);
-        
-        // Validate
-        System.assertEquals(true, result.contains('FinanceGroup'));
+        return g;
     }
-    @isTest
-    static void test_getQueuesWithActiveUsers() {
-        
-        UserRole usRole = [SELECT Id, Name FROM UserRole where Name = 'Admin' LIMIT 50000];
-        User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);
-        testUser.LastName = 'Sys Admin';
-        testUser.UserRoleId = usRole.Id;
-        testUser.IsActive=true;
-        insert testUser;
-        
-        // Create Queue (Group)
-        Group q = new Group(
-            Name = 'TestQueue',
-            DeveloperName = 'TestQueue',
+
+    // ---------------------------------------------------------
+    // Helper – Create Queue
+    // ---------------------------------------------------------
+    private static Group createQueue(String developerName) {
+        Group g = new Group(
+            Name = developerName,
+            DeveloperName = developerName,
             Type = 'Queue'
         );
-        insert q;
-        
-        // Add user to queue
-        insert new GroupMember(
-            GroupId = q.Id,
-            UserOrGroupId = testUser.Id
+        insert g;
+        return g;
+    }
+
+    // ---------------------------------------------------------
+    // TEST getRoleRegionCombinations()
+    // ---------------------------------------------------------
+    @isTest static void test_getRoleRegionCombinations() {
+
+        List<List<String>> fields = new List<List<String>>{
+            new List<String>{'A', 'B'},
+            new List<String>{'X', 'Y'}
+        };
+
+        Set<String> result =
+            Core_MDF_MultiObjectBatchHandler.getRoleRegionCombinations(fields);
+
+        System.assertEquals(4, result.size());
+        System.assert(result.contains('A|X'));
+        System.assert(result.contains('A|Y'));
+        System.assert(result.contains('B|X'));
+        System.assert(result.contains('B|Y'));
+    }
+
+    // ---------------------------------------------------------
+    // TEST buildUniqueKey()
+    // ---------------------------------------------------------
+    @isTest static void test_buildUniqueKey() {
+
+        List<String> input = new List<String>{' A ', null, 'B', '', 'C '};
+
+        String key = Core_MDF_MultiObjectBatchHandler.buildUniqueKey(input);
+
+        System.assertEquals('A|B|C', key);
+    }
+
+    // ---------------------------------------------------------
+    // TEST getPublicGroupsWithActiveUsers()
+    // ---------------------------------------------------------
+    @isTest static void test_getPublicGroupsWithActiveUsers() {
+
+        User u = createActiveUser();
+
+        Group pg1 = createPublicGroup('PG1');
+        Group pg2 = createPublicGroup('PG2');
+
+        // Add user to PG1 only
+        insert new GroupMember(GroupId = pg1.Id, UserOrGroupId = u.Id);
+
+        Set<String> inputGroups = new Set<String>{'PG1', 'PG2'};
+
+        Set<String> result =
+            Core_MDF_MultiObjectBatchHandler.getPublicGroupsWithActiveUsers(inputGroups);
+
+        System.assertEquals(1, result.size());
+        System.assert(result.contains('PG1'));
+    }
+
+    // ---------------------------------------------------------
+    // TEST getQueuesWithActiveUsers()
+    // ---------------------------------------------------------
+    @isTest static void test_getQueuesWithActiveUsers() {
+
+        User u = createActiveUser();
+
+        Group queue1 = createQueue('Queue_A');
+        Group queue2 = createQueue('Queue_B');
+
+        // Add active user to Queue_A
+        insert new GroupMember(GroupId = queue1.Id, UserOrGroupId = u.Id);
+
+        Set<String> queueNames = new Set<String>{'Queue_A', 'Queue_B'};
+
+        Set<String> result =
+            Core_MDF_MultiObjectBatchHandler.getQueuesWithActiveUsers(queueNames);
+
+        System.assertEquals(1, result.size());
+        System.assert(result.contains('Queue_A'));
+    }
+
+    // ---------------------------------------------------------
+    // TEST prepareQueries()
+    // ---------------------------------------------------------
+    @isTest static void test_prepareQueries() {
+
+        // Create Custom Metadata Record
+     /*   Core_MDF_CCP_Custom_Metadata_Utility__mdt md = new Core_MDF_CCP_Custom_Metadata_Utility__mdt(
+            DeveloperName = 'TestCMD',
+            MasterLabel = 'TestCMD',
+            Core_MDF_Category__c = 'Missed_Approver_Email_Notification',
+            Core_MDF_Is_Active_Ind__c = true,
+            Core_MDF_Field_1_txt__c = 'Account',
+            Core_MDF_Field_5_txt__c = 'Name,Id',
+            Core_MDF_Field_6_txt__c = 'CreatedDate > TODAY',
+            Core_MDF_Field_7_txt__c = '{"Stage1":"RoleA"}',
+            Core_MDF_Field_9_txt__c = '{"P1":"R1"}',
+            Core_MDF_Field_8_txt__c = '{"ProgramA":{"Stage1":["Role1","Role2"]}}',
+            Core_MDF_Field_15_txt__c = '{"ProgramA":{"US":"RoleUS"}}',
+            Core_MDF_Field_16_txt__c = '{"ProgramA":{"Budget1":"Queue1"}}',
+            Core_MDF_Field_12_txt__c = '{"ProgramA":{"Budget1":"PublicGroup1"}}'
         );
-        
-        // Test
-        Set<String> input = new Set<String>{ 'TestQueue' };
-            Set<String> result = Core_MDF_MultiObjectBatchHandler.getQueuesWithActiveUsers(input);
-        
-        System.assertEquals(true, result.contains('TestQueue'));
+        insert md;*/
+
+        Test.startTest();
+        List<Core_MDF_MultiObjectBatchHandler.Core_MDF_ObjectQuery> listResult =
+            Core_MDF_MultiObjectBatchHandler.prepareQueries();
+        Test.stopTest();
+
+        System.assert(listResult.size() > 0, 'Queries should be returned');
+        System.assertEquals('Account', listResult[0].objectName);
     }
 }

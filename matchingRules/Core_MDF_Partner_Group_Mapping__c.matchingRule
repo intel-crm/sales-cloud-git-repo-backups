@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <matchingRules>
-        <fullName>Core_MDF_Duplicate_Check_Rule_For_PGM</fullName>
-        <label>Core_MDF_Duplicate_Check_Rule_For_PGM</label>
-        <matchingRuleItems>
-            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>Core_MDF_Account__c</fieldName>
-            <matchingMethod>Exact</matchingMethod>
-        </matchingRuleItems>
-        <matchingRuleItems>
-            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>Core_MDF_Group_Name__c</fieldName>
-            <matchingMethod>Exact</matchingMethod>
-        </matchingRuleItems>
-        <ruleStatus>Inactive</ruleStatus>
-    </matchingRules>
-    <matchingRules>
         <fullName>Core_MDF_Unique_AccountprogramId_on_PGM</fullName>
         <description>To check for unique accountid, program id or AccountIdGroupName</description>
         <label>Unique AccountprogramId on PGM</label>

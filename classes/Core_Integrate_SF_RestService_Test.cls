@@ -22,7 +22,6 @@ public class Core_Integrate_SF_RestService_Test {
         RestContext.response= res;
         Core_Integrate_SF_RestService.doPost();
         Core_Integrate_SF_RestService.SalesforceError sfError = (Core_Integrate_SF_RestService.SalesforceError)JSON.deserialize(RestContext.response.responseBody.toString(), Core_Integrate_SF_RestService.SalesforceError.class);
-        system.debug('sfError '+sfError);
         system.assertEquals(sfError.STATUS, 'SUCCESS');
     }
     
@@ -43,10 +42,8 @@ public class Core_Integrate_SF_RestService_Test {
         try{
             Core_Integrate_SF_RestService.doPost();
             Core_Integrate_SF_RestService.SalesforceError sfError = (Core_Integrate_SF_RestService.SalesforceError)JSON.deserialize(RestContext.response.responseBody.toString(), Core_Integrate_SF_RestService.SalesforceError.class);
-            system.debug('sfError '+sfError);
             system.assertEquals(sfError.STATUS, 'SUCCESS');
         }catch(Exception e){
-            system.debug('error '+e.getStackTraceString());
         }
     }
 }

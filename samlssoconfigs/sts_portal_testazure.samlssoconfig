@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <errorUrl>https://intel--crmdevint3.my.salesforce.com/LoginError</errorUrl>
+    <identityLocation>SubjectNameId</identityLocation>
+    <identityMapping>FederationId</identityMapping>
+    <issuer>https://sts.windows.net/9889e411-4383-4500-8c2a-e8f095438f4f/</issuer>
+    <loginUrl>https://login.microsoftonline.com/9889e411-4383-4500-8c2a-e8f095438f4f/saml2</loginUrl>
+    <logoutUrl>https://login.microsoftonline.com/9889e411-4383-4500-8c2a-e8f095438f4f/saml2</logoutUrl>
+    <name>sts-portal-testazurecommunity</name>
+    <oauthTokenEndpoint>https://intel--crmdevint3.sandbox.my.salesforce.com/services/oauth2/token?so=00D2i0000008d6j</oauthTokenEndpoint>
+    <redirectBinding>false</redirectBinding>
+    <requestSignatureMethod>1</requestSignatureMethod>
+    <requestSigningCertId>0P1TH0000000z3V</requestSigningCertId>
+    <salesforceLoginUrl>https://intel--crmdevint3.sandbox.my.salesforce.com?so=00D2i0000008d6j</salesforceLoginUrl>
+    <samlEntityId>https://saml.salesforce.com.crmdevint3.testazurecommunity</samlEntityId>
+    <samlVersion>SAML2_0</samlVersion>
+    <useConfigRequestMethod>true</useConfigRequestMethod>
+    <useSameDigestAlgoForSigning>true</useSameDigestAlgoForSigning>
+    <userProvisioning>false</userProvisioning>
+    <validationCert>MIIC8DCCAdigAwIBAgIQFLHOmyIIb49CckS7qbjliTANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMjA1MTkxMDU0MTFaFw0yNTA1MTkxMDU0MTBaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmX/ziSiDjVz9XkeyiaSUWyo2ugz/09iuDEdqKQKoBZgPUZhGnqfpTzZuT0AZr9LX6vLJDsK+30DbMDAeitq4wOqspYaetmUTe0uTQ9y++2/BOnA4vGJEyFAQ22wI9G9/1DA/aODqxy7N97Jq5eAPrpYHuNMndAEbyNGwL2lds9OaZpFducNr37qxIs3IppT0Jtz/O45hmC3CVFLCaymAeYZgu0v9ExaBRACMHt10n8HNxRgKsdvNWMkHFNQ4cpg3BQ3npwiJJYNR8OyTDWoo/bfePchDejWfP2Y3+ieFjRi8ppXHfOP+lVLRpNmjA7aaTYwlUFM+yIiteV1bRnFVUQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAR+KadpeQCx06r7y5VqK49b0Y/k5m4uMTknRsEvGd/veFuFLrzCXMvcLweofkCRURmSWIMfNOcMLn1OIbKmkHUicUS9g/ufzklLEwd9SjYiCWcUCPFh/HtKeYTpqqdu8xqV0olyBqj4Wp3yhi/Ww4xxE47yhsFXQjced194t8ZxcUUR7OTa2SB2ryonxZFbjjVaAImu/sw3IFWI8u/Ja8dmdglrudHiSPzi2LciALa/xsTS8XLdQ1BQnYvshfE/O9Fsm/RTKYDKYBs42vLUjOLhD967QP+MYUnrzMGQP7jZMRt5t436pSmk7nQZhZDtSkbNwAXSUGGJA6pSuE32Ncg</validationCert>
+</SamlSsoConfig>

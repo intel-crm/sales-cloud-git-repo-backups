@@ -19,6 +19,9 @@
 .subject {
     padding: 2rem 1rem 1rem 1rem;
 }
+/* .owner {
+    padding: 2rem 1rem 1rem 0;
+} */
 
 .toggle {
     padding: 1rem;

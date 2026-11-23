@@ -15,4 +15,29 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Test_Data_Opps</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Test Data Opps</label>
+        <sharedTo>
+            <group>Data_Ops_Test</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Sales_Reps_Account_request</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sales Reps Account request</label>
+        <sharedTo>
+            <group>Account_Request_Group_Opportunity</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Account_Request_Group_Opportunity</group>
+        </sharedFrom>
+    </sharingOwnerRules>
 </SharingRules>

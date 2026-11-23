@@ -54,18 +54,6 @@
             <translation><!-- Design and Technology Content (Resource &amp; Design Center) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>EPS Verified</masterLabel>
-            <translation><!-- EPS Verified --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Developer Cloud Enterprise</masterLabel>
-            <translation><!-- Intel Developer Cloud Enterprise --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel On Demand</masterLabel>
-            <translation><!-- Intel On Demand --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Intel Partner Alliance (IPA)</masterLabel>
             <translation><!-- Intel Partner Alliance (IPA) --></translation>
         </picklistValues>
@@ -136,6 +124,11 @@
         <relationshipLabel><!-- Entitlement Details --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Entitlement Detail Request --></label>
+        <name>Core_Entitlement_Detail_Request__c</name>
+        <relationshipLabel><!-- Entitlement Details --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Entitlement Type --></label>
         <name>Core_Entitlement_Type__c</name>
         <picklistValues>
@@ -146,6 +139,10 @@
             <masterLabel>Salesforce</masterLabel>
             <translation><!-- Salesforce --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Core_Entitlement__cId_Prod --></label>
+        <name>Core_Entitlement_cid_prod__c</name>
     </fields>
     <fields>
         <label><!-- Help Text --></label>
@@ -248,6 +245,10 @@
             <masterLabel>Web Reporting</masterLabel>
             <translation><!-- Web Reporting --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Visible on Contact UI --></label>
+        <name>Core_Visible_on_Contact_UI__c</name>
     </fields>
     <fields>
         <label><!-- Engagement Code --></label>

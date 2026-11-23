@@ -362,22 +362,10 @@
     "trustedSiteUrl" : "https://epsilon.6sense.com",
     "type" : "trustedSitesForScripts"
   }, {
-    "id" : "5f571b74-f08a-4df9-b052-7df6dd85d36b",
+    "id" : "8fb80171-ced3-4736-b2fb-616022617e55",
     "isActive" : true,
-    "trustedSiteName" : "https://cdn.cookielaw.org",
-    "trustedSiteUrl" : "https://cdn.cookielaw.org",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "c3dd205d-ebd4-41a5-b350-880710d9422c",
-    "isActive" : true,
-    "trustedSiteName" : "https://*.ibosscloud.com",
-    "trustedSiteUrl" : "https://*.ibosscloud.com",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "9a60a4c4-9a62-4a7b-940f-fe334a8c1efd",
-    "isActive" : true,
-    "trustedSiteName" : "https://*.onetrust.com",
-    "trustedSiteUrl" : "https://*.onetrust.com",
+    "trustedSiteName" : "ajax.googleapis.com",
+    "trustedSiteUrl" : "https://ajax.googleapis.com",
     "type" : "trustedSitesForScripts"
   } ],
   "type" : "site"

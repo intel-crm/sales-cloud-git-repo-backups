@@ -107,7 +107,9 @@ public class Core_RestAPI_Case_UpdateV1_Handler {
     
     /******************************************** Close case *****************************************************/
     public void closeCase(){
-        existingCaseObj.Status = 'Closed';
+        if (Schema.sObjectType.Case.fields.Status.isUpdateable()) {
+        	existingCaseObj.Status = 'Closed';
+        }
         existingCaseObj.Core_Sub_Status__c = 'Closed';
         existingCaseObj.Core_IPS_Partner_status_ReadOnly__c = true;
         existingCaseObj.RecordTypeId = [SELECT Id, Name, DeveloperName, SobjectType FROM RecordType where SobjectType  ='Case' AND DeveloperName = 'IPS_Closed_Case'].Id;
@@ -166,18 +168,18 @@ public class Core_RestAPI_Case_UpdateV1_Handler {
         //Add all other questions which were not being passed in request
         for(Core_IPS_Assigned_Environment_Variables__c suppProdEnv : mEnvDetailsAll.values()){
             if(suppProdEnv.Core_IPS_Question__r.name != null){
-                
-                if(!addedQuestions.contains(suppProdEnv.Core_IPS_Question__r.name)){                    
-		    Core_IPS_Response__c detail = new Core_IPS_Response__c();
-                    detail.Core_IPS_Case__c = existingCaseObj.id;
-                   
+                if(!addedQuestions.contains(suppProdEnv.Core_IPS_Question__r.name)){
+                    Core_IPS_Response__c detail = new Core_IPS_Response__c();
+                    if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) {
+                    	detail.Core_IPS_Case__c = existingCaseObj.id;
+                    }
                     detail.Core_IPS_Question_Master__c = suppProdEnv.Core_IPS_Question__r.id;
                     detail.Core_IPS_Answer__c = '';
                     detail.Core_IPS_Answer_Master__c=null;
                     envDetailsToUpdate.add(detail);
-		 }
                 }
             }
+        }
         
         oldEnvDetailsToDelete =[SELECT Id FROM Core_IPS_Response__c WHERE Core_IPS_Case__c =:existingCaseObj.Id AND Core_IPS_Agent_Only__c = false];
         Core_IPS_AdminUtility.DeleteEnvDetails(oldEnvDetailsToDelete);

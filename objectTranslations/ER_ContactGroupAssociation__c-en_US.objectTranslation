@@ -89,10 +89,18 @@
         <label><!-- Start Date --></label>
         <name>ER_StartDate__c</name>
     </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>ER_Start_Date__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Only Active Contacts Can be Added to CMF Group --></errorMessage>
         <name>ER_Allow_only_active_contacts</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- No CMF is linked to this group --></errorMessage>
+        <name>ER_add_contact_only_if_cmf_ispresent</name>
     </validationRules>
     <webLinks>
         <label><!-- Delete --></label>

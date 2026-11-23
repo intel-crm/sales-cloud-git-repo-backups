@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <flowDefinition>Pricing_SW_Custom_Workload_Expiry_Opportunity_Error</flowDefinition>
+    <flowDefinition>Pricing_SW_SubmiforApproval_Quote_Validations</flowDefinition>
     <label>Submit for Approval</label>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <type>Flow</type>

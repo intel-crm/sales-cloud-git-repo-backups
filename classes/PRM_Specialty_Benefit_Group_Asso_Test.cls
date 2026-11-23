@@ -34,7 +34,7 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         
         try{ 
             insert sbga1;
-            //System.assert(false);
+            System.assert(false);
         }
         catch(exception e){
             System.debug(e.getMessage());
@@ -83,7 +83,7 @@ public class PRM_Specialty_Benefit_Group_Asso_Test {
         
         Test.stopTest(); 
         List<PRM_Specialty_Benefit_Group_Association__c> spbgaList = [select Id,PRM_Benefit_Group_Id__r.Name from PRM_Specialty_Benefit_Group_Association__c where id=:sbga2.Id ];
-        //System.assertNotEquals('Benefitgroup Test', spbgaList[0].PRM_Benefit_Group_Id__r.Name,'Equal');
+        System.assertNotEquals('Benefitgroup Test', spbgaList[0].PRM_Benefit_Group_Id__r.Name,'Equal');
     }
     static testmethod void asactiveacheck(){
         Test.startTest();

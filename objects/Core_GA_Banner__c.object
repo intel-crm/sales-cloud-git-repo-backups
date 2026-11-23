@@ -186,7 +186,7 @@
         <columns>Core_Message__c</columns>
         <columns>Core_Start_Date__c</columns>
         <columns>Core_End_Date__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <label>GA Banner</label>
     </listViews>
     <nameField>

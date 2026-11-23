@@ -5,6 +5,10 @@
         <value>テンプレートコンテンツ</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>タイプが [カスタム] に設定されている場合にコンテンツを生成する VisualForce ページへの URL。</help>
         <label><!-- Custom Source --></label>
         <name>SBQQ__CustomSource__c</name>

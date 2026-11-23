@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Seshan Sekariapuram</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11381458_Fer_Rodas_Gomez</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_11645219_Seshan_Sekariapuram</parentRole>
+</Role>

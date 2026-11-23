@@ -31,6 +31,13 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP of Dieter Hoffend</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -42,14 +49,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>CCG Commercial Deal,CCG vPro Technology Adoption,DCG Adjacency Deal,DCG Intel Affinity CSP Deal,DCG Compute Deal,IoT Industry Transformation Win,IOTG Deal (Sell-To),PSG</value>
+            <value>CCG vPro Deal $,DCG Adjacencies,DCG Compute,NSG Optane Datacenter,PSG</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>CUST_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Florian Ranner,Donal,Christian Donitzky</value>
+            <operator>notContain</operator>
+            <value>CCG vPro Adoption Technologies</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -88,6 +95,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Date_Submitted_for_Approval__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2020-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

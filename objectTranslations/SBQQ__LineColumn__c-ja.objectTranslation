@@ -5,6 +5,10 @@
         <value>品目列</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>列の表示ラベルと値の位置揃えを決定します。</help>
         <label><!-- Alignment --></label>
         <name>SBQQ__Alignment__c</name>

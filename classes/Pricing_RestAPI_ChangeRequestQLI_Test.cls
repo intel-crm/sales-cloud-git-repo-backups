@@ -12,12 +12,13 @@ public class Pricing_RestAPI_ChangeRequestQLI_Test{
     
     @testSetup static void testSetup() {
         List<Product2> prodList = new List<Product2>();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         Product2 prod = new Product2();
         prod.Core_Product_Org__c = 'Sales';
         prod.Core_Product_Type__c = 'Processors';
         prod.Core_Sales_Visible_Flag__c  = True;
         prod.IsActive = True;
-        prod.Core_Group_Code_Short_Name__c = 'DCG~DCAI';
+        prod.Core_Line_of_Business__c = lobValuesList[0];
         prod.Core_Hierarchy_ID__c = '43';
         prod.Name = 'Product X';
         prod.Core_Processor_Number_Nm__c = 'test';

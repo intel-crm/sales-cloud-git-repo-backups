@@ -375,7 +375,7 @@
         <field>SUBJECT</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 6 OR (7 AND 8)) AND 4 AND 5</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR 6)AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
@@ -416,21 +416,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>PSG-JP-Unassigned,PSG-JP-MAG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>startsWith</operator>
-            <value>PSG-GAE</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Account_Sub_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>IJKK</value>
+            <value>PSG-JP-Unassigned</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -82,6 +82,10 @@
                 <behavior>Edit</behavior>
                 <field>PRM_DUNS_Nbr__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Source__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

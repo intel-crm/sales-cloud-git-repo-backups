@@ -4,13 +4,15 @@ public with sharing class Core_SAPXMLParser {
         List<Core_Log_Entry__c> logEntryList = new List<Core_Log_Entry__c>();
         Map<String, List<String>> shipToUnsuccessfulMap = new Map<String, List<String>>();
 		Map<String, Core_SAPXMLUtility.AccountEaiAltera> allAccountMap = new Map<String, Core_SAPXMLUtility.AccountEaiAltera>();
-         List<String> accountProcessedBeginList = new List<String>();
+        List<String> accountProcessedBeginList = new List<String>();
+
         try{
             List<Account> upsertAccountList = new List<Account>();
             List<Core_Account_SoldTo_ShipTo_Rel__c> soldToShipToList = new List<Core_Account_SoldTo_ShipTo_Rel__c>();
             //List<Core_Account_SoldTo_ShipTo_Rel__c> soldToShipToUpdateList = new List<Core_Account_SoldTo_ShipTo_Rel__c>();
             List<Id> existingShiptToUpdateExcludeList = new List<Id>();
-            List<RecordType> recType =[SELECT Id, DeveloperName FROM Recordtype WHERE DeveloperName = 'Core_Direct_Account'];
+            List<RecordType> recType = new List<RecordType>();
+            recType =[SELECT Id, DeveloperName FROM Recordtype WHERE DeveloperName = 'Core_Direct_Account'];
             Core_SAPXMLUtility.ListOfAccountEaiAltera listOfAccounts = parseSAPXML(messageXml);
             Integer externalIDCounter = 0;
             String externalID = String.valueOf(Datetime.Now())+String.valueOf(externalIDCounter);
@@ -103,64 +105,66 @@ public with sharing class Core_SAPXMLParser {
                 if(accountDoesntExist && ((String.isEmpty(accountEA.trainStationId) && accountEA.x_ALT_SAP_ACCT_TYPE == ENDCUSTOMERTYPE) || (!String.isEmpty(accountEA.trainStationId) && accountIdValidateMap.containsKey(accountEA.trainStationId) && accountIdValidateMap.get(accountEA.trainStationId).Core_Account_Record_Type__c=='Intel Account')
                   ))
                 {
-                    accountProcessedBeginList.add(accountEA.sAPAccountNumber);
-                    Boolean validated = True;
-                    Account acct = new Account();
-                    if(!String.isEmpty(accountEA.trainStationId)){
-                        acct.ParentId = accountEA.trainStationId;    
-                    }else{
-                        acct.ParentId = null;
-                    }
-                    
-                    acct.Name = accountEA.name;
-                    acct.Core_Direct_Account_Id__c = accountEA.sAPAccountNumber;
-                    acct.Core_Direct_Incoterm_Dsc__c = accountEA.freightTerms;
-                    //acct.Core_CIM_ID__c = accountEA.type;
-                    acct.Core_Direct_Payment_Term_Nm__c = accountEA.x_ALT_PAYTERMS;
-                    acct.Core_Direct_Account_Type_Nm__c = accountEA.x_ALT_SAP_ACCT_TYPE;
-                    acct.Core_Direct_Shipping_Condition_Nm__c = accountEA.shippingCondition;
-                    acct.BillingStreet = accountEA.streetAddress+' '+accountEA.streetAddress2;
-                    acct.BillingCity = accountEA.city;
-                    acct.BillingState = accountEA.state;//accountEA.regionCode;//accountEA.province;
-                    acct.BillingStateCode = accountEA.state;
-                    //acct.BillingCountry = accountEA.country; //it's auto populated based on BillingCountryCode with same value
-                    acct.BillingCountryCode = accountEA.country; //SAP send 3 char len ISO Code - Country Code
-                    acct.BillingPostalCode = accountEA.postalCode;
-                    //acct.Core_Geo__c = accountEA.regionCode;
-                    acct.Core_Direct_Sales_Organization_Nm__c = accountEA.salesOrganization;
-                    acct.Core_Nielsen_ID__c = accountEA.nielsenId;
-                    acct.Core_Direct_Distributor_Channel_Nm__c = accountEA.distyChannel;
-                    acct.Core_Direct_Ship_To_End_Customer_Id__c = accountEA.shipToEndCustomer;
-                    acct.Core_Direct_Shipping_Instruction_Txt__c = accountEA.shippingInstructions;
-                    acct.Core_Direct_Account_Name_Txt__c = accountEA.accountName2; 
-                    if(PARENT_ACCOUNT_TIER_MAP.containsKey(accountEA.parentAccountTier)){//SAP sends CAT0/CAT1, CAT2, CAT3, CAT4 maps to PSG TIER-1 etc..
-                        acct.Core_Direct_Parent_Account_Tier_Nm__c = PARENT_ACCOUNT_TIER_MAP.get(accountEA.parentAccountTier);    
-                    }else{
-                        acct.Core_Direct_Parent_Account_Tier_Nm__c = accountEA.parentAccountTier; //sets to null else error with bad picklist value
-                    }
-                    
-                    
-                    acct.RecordtypeId = recType[0].Id;
-                    if(accountEA.x_ALT_SAP_ACCT_TYPE == ENDCUSTOMERTYPE){
-                        acct.Core_Is_Pricing_Parent_ChkBox__c = True; //Boolean.valueOf(accountEA.IsPricingParent);    
-                    }
-                    acct.Core_Direct_Account_Active_Ind__c = True;
-                    if(!String.isEmpty(accountEA.expressStationId)){
-                        if(accountIdValidateMap.containsKey(accountEA.expressStationId)){
-                            acct.Id = accountEA.expressStationId; 
-                        }                        
-                        else{
-                            validated = False;
-                            attributes.results.add(returnJsonResult('Failed', accountEA.sAPAccountNumber,accountEA.expressStationId, accountEA.trainStationId, accountEA.expressStationId +' is invalid' ));
-                            //logEntryList.add(returnLogEntryResult(accountEA.expressStationId,'Failed',  accountEA.expressStationId +' is invalid' +messageXml));
-                            logEntryList.add(returnLogEntryResult(accountEA.sAPAccountNumber+' | '+accountEA.expressStationId, 'Failed', 'Status:Failed\nSourceType:SAP\nSAPAccountNumber:'+accountEA.sAPAccountNumber+'\nExpressStationId:'+accountEA.expressStationId+'\nTrainStationID:'+accountEA.trainStationId+'\nMessage:'+accountEA.expressStationId +' is invalid'+'\n\nXML:'+messageXml));
+                        accountProcessedBeginList.add(accountEA.sAPAccountNumber);
+                        Boolean validated = True;
+                        Account acct = new Account();
+                        if(!String.isEmpty(accountEA.trainStationId)){
+                            acct.ParentId = accountEA.trainStationId;    
+                        }else{
+                            acct.ParentId = null;
                         }
-                    }
+                        
+                        acct.Name = accountEA.name;
+                        acct.Core_Direct_Account_Id__c = accountEA.sAPAccountNumber;
+                        acct.Core_Direct_Incoterm_Dsc__c = accountEA.freightTerms;
+                        //acct.Core_CIM_ID__c = accountEA.type;
+                        acct.Core_Direct_Payment_Term_Nm__c = accountEA.x_ALT_PAYTERMS;
+                        acct.Core_Direct_Account_Type_Nm__c = accountEA.x_ALT_SAP_ACCT_TYPE;
+                        acct.Core_Direct_Shipping_Condition_Nm__c = accountEA.shippingCondition;
+                        acct.BillingStreet = accountEA.streetAddress+' '+accountEA.streetAddress2;
+                        acct.BillingCity = accountEA.city;
+                        acct.BillingState = accountEA.state;//accountEA.regionCode;//accountEA.province;
+                        acct.BillingStateCode = accountEA.state;
+                        //acct.BillingCountry = accountEA.country; //it's auto populated based on BillingCountryCode with same value
+                        acct.BillingCountryCode = accountEA.country; //SAP send 3 char len ISO Code - Country Code
+                        acct.BillingPostalCode = accountEA.postalCode;
+                        //acct.Core_Geo__c = accountEA.regionCode;
+                        acct.Core_Direct_Sales_Organization_Nm__c = accountEA.salesOrganization;
+                        acct.Core_Nielsen_ID__c = accountEA.nielsenId;
+                        acct.Core_Direct_Distributor_Channel_Nm__c = accountEA.distyChannel;
+                        acct.Core_Direct_Ship_To_End_Customer_Id__c = accountEA.shipToEndCustomer;
+                        acct.Core_Direct_Shipping_Instruction_Txt__c = accountEA.shippingInstructions;
+                        acct.Core_Direct_Account_Name_Txt__c = accountEA.accountName2; 
+                        if(PARENT_ACCOUNT_TIER_MAP.containsKey(accountEA.parentAccountTier)){//SAP sends CAT0/CAT1, CAT2, CAT3, CAT4 maps to PSG TIER-1 etc..
+                            acct.Core_Direct_Parent_Account_Tier_Nm__c = PARENT_ACCOUNT_TIER_MAP.get(accountEA.parentAccountTier);    
+                        }else{
+                            acct.Core_Direct_Parent_Account_Tier_Nm__c = accountEA.parentAccountTier; //sets to null else error with bad picklist value
+                        }
+                        
+                        
+                        acct.RecordtypeId = recType[0].Id;
+                        if(accountEA.x_ALT_SAP_ACCT_TYPE == ENDCUSTOMERTYPE){
+                            acct.Core_Is_Pricing_Parent_ChkBox__c = True; //Boolean.valueOf(accountEA.IsPricingParent);    
+                        }
+                        acct.Core_Direct_Account_Active_Ind__c = True;
+                        if(!String.isEmpty(accountEA.expressStationId)){
+                            if(accountIdValidateMap.containsKey(accountEA.expressStationId)){
+                                acct.Id = accountEA.expressStationId; 
+                            }                        
+                            else{
+                                validated = False;
+                                attributes.results.add(returnJsonResult('Failed', accountEA.sAPAccountNumber,accountEA.expressStationId, accountEA.trainStationId, accountEA.expressStationId +' is invalid' ));
+                                //logEntryList.add(returnLogEntryResult(accountEA.expressStationId,'Failed',  accountEA.expressStationId +' is invalid' +messageXml));
+                                logEntryList.add(returnLogEntryResult(accountEA.sAPAccountNumber+' | '+accountEA.expressStationId, 'Failed', 'Status:Failed\nSourceType:SAP\nSAPAccountNumber:'+accountEA.sAPAccountNumber+'\nExpressStationId:'+accountEA.expressStationId+'\nTrainStationID:'+accountEA.trainStationId+'\nMessage:'+accountEA.expressStationId +' is invalid'+'\n\nXML:'+messageXml));
+                            }
+                        }
+                        
+                        acct.External_Id__c = externalID;
+                        
+                        if(validated){
+                            upsertAccountList.add(acct);                        
+                        }
                     
-                    acct.External_Id__c = externalID;
-                    if(validated){
-                        upsertAccountList.add(acct);                        
-                    }
                     Account accountReference = new Account(External_Id__c=externalID); 
                     
                     //Sold To Ship To Junctinon Object

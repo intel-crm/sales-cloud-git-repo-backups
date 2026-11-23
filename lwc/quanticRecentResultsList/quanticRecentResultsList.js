@@ -1,14 +1,18 @@
-import {LightningElement, track, api} from 'lwc';
+import collapse from '@salesforce/label/c.quantic_Collapse';
+import emptyListLabel from '@salesforce/label/c.quantic_EmptyRecentResultListLabel';
+import expand from '@salesforce/label/c.quantic_Expand';
+import recentResultsLabel from '@salesforce/label/c.quantic_RecentResults';
 import {
   registerComponentForInit,
   initializeWithHeadless,
+  getHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
-import {I18nUtils, getItemFromLocalStorage, setItemInLocalStorage} from 'c/quanticUtils';
-
-import emptyListLabel from '@salesforce/label/c.quantic_EmptyRecentResultListLabel';
-import recentResultsLabel from '@salesforce/label/c.quantic_RecentResults';
-import collapse from '@salesforce/label/c.quantic_Collapse';
-import expand from '@salesforce/label/c.quantic_Expand';
+import {
+  I18nUtils,
+  getItemFromLocalStorage,
+  setItemInLocalStorage,
+} from 'c/quanticUtils';
+import {LightningElement, track, api} from 'lwc';
 
 /** @typedef {import("coveo").RecentResultsState} RecentResultsState */
 /** @typedef {import("coveo").RecentResultsList} RecentResultsList */
@@ -26,7 +30,7 @@ export default class QuanticRecentResultsList extends LightningElement {
     recentResultsLabel,
     collapse,
     expand,
-  }
+  };
 
   /**
    * The ID of the engine instance the component registers to.
@@ -47,7 +51,7 @@ export default class QuanticRecentResultsList extends LightningElement {
    */
   @api label = this.labels.recentResultsLabel;
   /**
-   * Where to display the linked URLs, as the name for a browsing context (a tab, window, or <iframe>).
+   * Where to display the linked URLs, as the name for a browsing context (a tab, window, or `<iframe>`).
    * The following keywords have special meanings for where to load the URL:
    *   - `_self`: the current browsing context. (Default)
    *   - `_blank`: usually a new tab, but users can configure their browsers to open a new window instead.
@@ -59,6 +63,12 @@ export default class QuanticRecentResultsList extends LightningElement {
    */
   @api target = '_self';
   /**
+   * Indicates whether the card of the recent results list should be completely hidden when it is empty.
+   * @api
+   * @type {boolean}
+   */
+  @api hideWhenEmpty;
+  /**
    * Whether the component is collapsed.
    * @api
    * @type {boolean}
@@ -69,10 +79,9 @@ export default class QuanticRecentResultsList extends LightningElement {
   }
   set isCollapsed(collapsed) {
     this._isCollapsed = collapsed;
-  }  
+  }
   /** @type {boolean} */
   _isCollapsed = false;
-
 
   /** @type {RecentResultsState} */
   @track state;
@@ -83,6 +92,8 @@ export default class QuanticRecentResultsList extends LightningElement {
   recentResultsList;
   /** @type {Function} */
   unsubscribe;
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
@@ -96,16 +107,19 @@ export default class QuanticRecentResultsList extends LightningElement {
    * @param {SearchEngine} engine
    */
   initialize = (engine) => {
-    this.recentResultsList = CoveoHeadless.buildRecentResultsList(engine, {
+    this.headless = getHeadlessBundle(this.engineId);
+    this.recentResultsList = this.headless.buildRecentResultsList(engine, {
       initialState: {
-        results: getItemFromLocalStorage(this.localStorageKey) ?? []
+        results: getItemFromLocalStorage(this.localStorageKey) ?? [],
       },
       options: {
-        maxLength: Number(this.maxLength)
-      }
+        maxLength: Number(this.maxLength),
+      },
     });
-    this.unsubscribe = this.recentResultsList.subscribe(() => this.updateState());
-  }
+    this.unsubscribe = this.recentResultsList.subscribe(() =>
+      this.updateState()
+    );
+  };
 
   disconnectedCallback() {
     this.unsubscribe?.();
@@ -114,7 +128,7 @@ export default class QuanticRecentResultsList extends LightningElement {
   updateState() {
     this.state = {...this.recentResultsList.state};
     if (this.state?.results) {
-      setItemInLocalStorage(this.localStorageKey, this.state.results)
+      setItemInLocalStorage(this.localStorageKey, this.state.results);
       this.showPlaceholder = false;
     }
   }
@@ -142,5 +156,16 @@ export default class QuanticRecentResultsList extends LightningElement {
   get actionButtonLabel() {
     const label = this.isCollapsed ? this.labels.expand : this.labels.collapse;
     return I18nUtils.format(label, this.label);
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
+  }
+
+  get shouldDisplayRecentResultsCard() {
+    return this.hasResults || !this.hideWhenEmpty;
   }
 }

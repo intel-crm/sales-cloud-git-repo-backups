@@ -12,7 +12,7 @@ Modification Log :
 *********************************************************************************************************************/
 @isTest
 private class PRM_CIMCalloutNEW_Test {
-    public static boolean ipaRefresh = Boolean.valueOf(Label.PRM_IPARefresh);
+    // public static boolean ipaRefresh = Boolean.valueOf(Label.PRM_IPARefresh);
     @testSetup
     static void createData(){
         List<ChannelProgram> cpp = new List<ChannelProgram>();
@@ -122,7 +122,6 @@ private class PRM_CIMCalloutNEW_Test {
         requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
         requestDetails.put('PartnerRole','Seller');
         requestDetails.put('Website','www.testwb.com');
-        System.debug('REQ--> '+requestDetails.get('Website'));
         
         
         PRM_Registration_Request__c regReq  = PRM_TestUtility.getPRMRegistrationRequest();
@@ -211,7 +210,7 @@ private class PRM_CIMCalloutNEW_Test {
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
+        acm.PRM_Partner_Role__c='Builder';
         acm.PRM_Status_Reason_Txt__c = 'Test class';
         TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
         insert acm;
@@ -236,7 +235,6 @@ private class PRM_CIMCalloutNEW_Test {
         requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
         requestDetails.put('PartnerRole','Seller');
         requestDetails.put('Website','www.testwb.com');
-        System.debug('REQ--> '+requestDetails.get('Website'));
         
         
         PRM_Registration_Request__c regReq  = PRM_TestUtility.getPRMRegistrationRequest();
@@ -319,7 +317,7 @@ private class PRM_CIMCalloutNEW_Test {
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
+        acm.PRM_Partner_Role__c='Builder';
         acm.PRM_Status_Reason_Txt__c = 'Test class';
         insert acm;
         
@@ -403,7 +401,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
+        acm.PRM_Partner_Role__c='Builder';
         acm.PRM_Status_Reason_Txt__c = 'Test class';
         insert acm;
         Core_Country_Code_Mapping__c cccm = new Core_Country_Code_Mapping__c();
@@ -494,7 +492,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
+        acm.PRM_Partner_Role__c='Builder';
         acm.PRM_Status_Reason_Txt__c = 'Test class';
         insert acm;
         
@@ -579,7 +577,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
+        acm.PRM_Partner_Role__c='Builder';
         acm.PRM_Status_Reason_Txt__c = 'Test class';
         insert acm;
         
@@ -693,7 +691,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
+        acm.PRM_Partner_Role__c='Builder';
         acm.PRM_Status_Reason_Txt__c = 'Test class';
         TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
         insert acm;
@@ -776,7 +774,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
+        acm.PRM_Partner_Role__c='Builder';
         acm.PRM_Status_Reason_Txt__c='Test';
         insert acm;
         Core_Country_Code_Mapping__c cccm = new Core_Country_Code_Mapping__c();

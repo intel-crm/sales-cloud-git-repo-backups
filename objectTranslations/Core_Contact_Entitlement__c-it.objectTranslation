@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Contact Entitlement --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Contact Entitlement --></value>
+    </caseValues>
+    <fields>
+        <label><!-- AGS Pending &gt; 30 Min --></label>
+        <name>AGS_Pending_30_Min__c</name>
+    </fields>
+    <fields>
+        <label><!-- AGS Pending Time --></label>
+        <name>Core_AGS_Pending_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Core_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core_Contact_Entitlement_cid_prod --></label>
+        <name>Core_Contact_Entitlement_cid_prod__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Core_Contact_Id__c</name>
+        <relationshipLabel><!-- Contact Entitlements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Is Data Loaded? --></label>
+        <name>Core_Data_Loaded__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Name --></label>
+        <name>Core_Display_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Don&apos;t Notify --></label>
+        <name>Core_DontNotify__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERPM Account Data --></label>
+        <name>Core_ERPM_Account_Data__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Pending To Requester --></label>
+        <name>Core_Email_Pending_To_Requester_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Engagement Tier --></label>
+        <name>Core_Engagement_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- EntitlementDuration --></label>
+        <name>Core_EntitlementDuration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement B2B / B2C Indicator --></label>
+        <name>Core_Entitlement_B2B_B2C_Indicator__c</name>
+    </fields>
+    <fields>
+        <help><!-- Help text from the Entitlement Detail record. --></help>
+        <label>Entitlement Help Text</label>
+        <name>Core_Entitlement_Help_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement --></label>
+        <name>Core_Entitlement_Id__c</name>
+        <relationshipLabel><!-- Contact Entitlements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Name --></label>
+        <name>Core_Entitlement_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement RequesterId --></label>
+        <name>Core_Entitlement_Requester_Id__c</name>
+        <relationshipLabel><!-- Contact Entitlements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Type --></label>
+        <name>Core_Entitlement_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- From Source --></label>
+        <name>Core_From_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ops Status --></label>
+        <name>Core_Ops_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- No.of retries made for successful assignment on maximum threshold of 3 --></help>
+        <label><!-- Retrigger Attempt --></label>
+        <name>Core_Retrigger_Attempt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Selected --></label>
+        <name>Core_Selected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Source --></label>
+        <name>Core_Source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Change Date/Time --></label>
+        <name>Core_Status_Change_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status__c</name>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status of Assignment/Removal --></label>
+        <name>Core_Status_of_Assignment_Failure__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Core_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Id --></label>
+        <name>Core_Unique_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Update Reason --></label>
+        <name>Core_Update_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>ER_Account_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Checked if entitlement is removed as part of partner license reclaim --></help>
+        <label><!-- Removal as part of License Reclaim? --></label>
+        <name>Removal_as_part_of_License_Reclaim__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Name --></nameFieldLabel>
+    
+</CustomObjectTranslation>

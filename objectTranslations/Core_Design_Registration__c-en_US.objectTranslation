@@ -9,13 +9,14 @@
         <value>Design-Deal Registrations</value>
     </caseValues>
     <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations (Account) --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Accepted By --></label>
         <name>Core_Accepted_By_Id__c</name>
         <relationshipLabel><!-- Design-Deal Registrations (Accepted By) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Account Record Type --></label>
-        <name>Core_Account_Record_Type__c</name>
     </fields>
     <fields>
         <label><!-- Age of Design --></label>
@@ -130,6 +131,10 @@
         <help><!-- Indicates whether this Design Registration is for a DSN Partner. --></help>
         <label><!-- Design Solution Network --></label>
         <name>Core_Design_Solution_Network_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Status Checkbox --></label>
+        <name>Core_Design_Status_Checkbox__c</name>
     </fields>
     <fields>
         <help><!-- Name of End Customer designing a product with Intel components.  This is a reference to the Account record in the Opportunity --></help>
@@ -998,7 +1003,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- This field indicates which Intel product group this Design Registration belongs to. --></help>
+        <help><!-- This field will allow the Disti to indicate which Intel product group this DDR belongs to. --></help>
         <label><!-- Product Group --></label>
         <name>Core_Product_Group_Nm__c</name>
         <picklistValues>
@@ -1008,10 +1013,6 @@
         <picklistValues>
             <masterLabel>Embedded/IOT Boards &amp; Systems</masterLabel>
             <translation><!-- Embedded/IOT Boards &amp; Systems --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>FPGA</masterLabel>
-            <translation><!-- FPGA --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1218,6 +1219,10 @@
             <translation><!-- Sports --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Test 999</masterLabel>
+            <translation><!-- Test 999 --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Transportation</masterLabel>
             <translation><!-- Transportation --></translation>
         </picklistValues>
@@ -1227,6 +1232,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Created_Through_Mapping_Tab --></label>
+        <name>Created_Through_Mapping_Tab__c</name>
+    </fields>
+    <fields>
         <help><!-- Partner&apos;s technical owner (field application engineer) email address --></help>
         <label><!-- Partner Contact Email --></label>
         <name>DDR_Partner_FAE_Email__c</name>
@@ -1234,6 +1243,10 @@
     <fields>
         <label><!-- Technical Owner --></label>
         <name>DDR_Technical_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delegated UserId --></label>
+        <name>Delegated_UserId__c</name>
     </fields>
     <fields>
         <label><!-- L2 - Approver --></label>
@@ -1290,7 +1303,6 @@
         <name>PCC_Deal_re_try_count__c</name>
     </fields>
     <fields>
-        <help><!-- Select &quot;Chip-down&quot; if CPU-only. Select &quot;Board-based&quot; for ODM-based solutions. --></help>
         <label><!-- Design Type --></label>
         <name>PCC_Design_Type__c</name>
         <picklistValues>
@@ -3193,6 +3205,10 @@
         <name>PCC_End_Customer_Country__c</name>
     </fields>
     <fields>
+        <label><!-- Quick tip on End Customer selection --></label>
+        <name>PCC_End_Customer_Quick_Tip__c</name>
+    </fields>
+    <fields>
         <label><!-- End Customer Sales Geography --></label>
         <name>PCC_End_Customer_Sales_Geography__c</name>
     </fields>
@@ -3605,13 +3621,11 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Select the ODM(board partner) for Board-based opportunities --></help>
-        <label><!-- ODM/Board Partner Account --></label>
+        <label><!-- ODM/Board partner --></label>
         <name>PCC_ODM_Board_Partner_Account__c</name>
-        <relationshipLabel><!-- Design-Deal Registrations (ODM/Board Partner Account) --></relationshipLabel>
+        <relationshipLabel><!-- Design-Deal Registrations (ODM/Board partner) --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- Select the ODM(board partner) for Board-based opportunities --></help>
         <label><!-- ODM/Board partner --></label>
         <name>PCC_ODM_Board_partner__c</name>
         <picklistValues>
@@ -3623,280 +3637,44 @@
             <translation><!-- Aaeon --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Accton</masterLabel>
-            <translation><!-- Accton --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Advantech</masterLabel>
             <translation><!-- Advantech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Aewin</masterLabel>
-            <translation><!-- Aewin --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Asrock</masterLabel>
-            <translation><!-- Asrock --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Asus</masterLabel>
             <translation><!-- Asus --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Avalue</masterLabel>
-            <translation><!-- Avalue --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Axiomtek</masterLabel>
-            <translation><!-- Axiomtek --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Bits &amp; Bytes</masterLabel>
-            <translation><!-- Bits &amp; Bytes --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CHINA HP CO., LTD.</masterLabel>
-            <translation><!-- CHINA HP CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Caswell</masterLabel>
-            <translation><!-- Caswell --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Celestica</masterLabel>
-            <translation><!-- Celestica --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cincoze</masterLabel>
-            <translation><!-- Cincoze --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Congatec</masterLabel>
             <translation><!-- Congatec --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DELL CHINA INC</masterLabel>
-            <translation><!-- DELL CHINA INC --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>DFI</masterLabel>
             <translation><!-- DFI --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>E-blue tech .Co, limited</masterLabel>
-            <translation><!-- E-blue tech .Co, limited --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>ECS</masterLabel>
             <translation><!-- ECS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EVOC INTELLIGENT TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- EVOC INTELLIGENT TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ennoconn</masterLabel>
-            <translation><!-- Ennoconn --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Firich Enterprises</masterLabel>
-            <translation><!-- Firich Enterprises --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Flytech</masterLabel>
-            <translation><!-- Flytech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Getac</masterLabel>
-            <translation><!-- Getac --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gifa</masterLabel>
-            <translation><!-- Gifa --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gigabyte</masterLabel>
-            <translation><!-- Gigabyte --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Guangzhou Special Control Electronic Industrial Co;Ltd.</masterLabel>
-            <translation><!-- Guangzhou Special Control Electronic Industrial Co;Ltd. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IBASE</masterLabel>
-            <translation><!-- IBASE --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IEI</masterLabel>
             <translation><!-- IEI --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>J&amp;WIPC Technology Development Ltd</masterLabel>
-            <translation><!-- J&amp;WIPC Technology Development Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>JETWAY</masterLabel>
-            <translation><!-- JETWAY --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Kontron</masterLabel>
             <translation><!-- Kontron --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lanner</masterLabel>
-            <translation><!-- Lanner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lenovo (Beijing) Limited</masterLabel>
-            <translation><!-- Lenovo (Beijing) Limited --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MSI</masterLabel>
-            <translation><!-- MSI --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mele Technologies (shenzhen)Co.,Ltd</masterLabel>
-            <translation><!-- Mele Technologies (shenzhen)Co.,Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mitac</masterLabel>
-            <translation><!-- Mitac --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Neousys</masterLabel>
-            <translation><!-- Neousys --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Nexcom</masterLabel>
-            <translation><!-- Nexcom --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Others</masterLabel>
             <translation><!-- Others --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Partner Tech</masterLabel>
-            <translation><!-- Partner Tech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Portwell</masterLabel>
-            <translation><!-- Portwell --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Posiflex</masterLabel>
-            <translation><!-- Posiflex --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Protech</masterLabel>
-            <translation><!-- Protech --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ricoh PFU Computing</masterLabel>
-            <translation><!-- Ricoh PFU Computing --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ASL INTELLIGENT SYSTEMS LTD</masterLabel>
-            <translation><!-- SHENZHEN ASL INTELLIGENT SYSTEMS LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD</masterLabel>
-            <translation><!-- SHENZHEN COLORFUL TECHNOLOGY &amp; DEVELOPMENT CO LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN COMSTAR TECHNOLOGY COMPANY</masterLabel>
-            <translation><!-- SHENZHEN COMSTAR TECHNOLOGY COMPANY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD</masterLabel>
-            <translation><!-- SHENZHEN DINGSHENG INTELLIGENCE TECHNOLOGY CO., LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ELSKY TECHNOLOGY CO.,LTD</masterLabel>
-            <translation><!-- SHENZHEN ELSKY TECHNOLOGY CO.,LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN EMDOOR ELECTRONIC TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN HANZSUNG TECHNOLOGY CO LTD</masterLabel>
-            <translation><!-- SHENZHEN HANZSUNG TECHNOLOGY CO LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN NORCO INTELLIGENT TECHNOLOGYCO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN SEAVO TECHNOLOGY CO;LTD</masterLabel>
-            <translation><!-- SHENZHEN SEAVO TECHNOLOGY CO;LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN WEITEMAI TECHNOLOGY CO., LTD.</masterLabel>
-            <translation><!-- SHENZHEN WEITEMAI TECHNOLOGY CO., LTD. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED</masterLabel>
-            <translation><!-- SHENZHEN ZEAL-ALL TECHNOLOGY LIMITED --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SHENZHEN ZEROONE TECHNOLOGY CO., LTD</masterLabel>
-            <translation><!-- SHENZHEN ZEROONE TECHNOLOGY CO., LTD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SNS Network</masterLabel>
-            <translation><!-- SNS Network --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SUPER MICRO COMPUTER, INC.</masterLabel>
-            <translation><!-- SUPER MICRO COMPUTER, INC. --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Seco</masterLabel>
             <translation><!-- Seco --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Senao Networks</masterLabel>
-            <translation><!-- Senao Networks --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ShenZhen Topstar Technology co., Ltd</masterLabel>
-            <translation><!-- ShenZhen Topstar Technology co., Ltd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shenzhen Datang Computer Co., Ltd.</masterLabel>
-            <translation><!-- Shenzhen Datang Computer Co., Ltd. --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shenzhen Minwin Technology CO.,LTd</masterLabel>
-            <translation><!-- Shenzhen Minwin Technology CO.,LTd --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Toshiba</masterLabel>
-            <translation><!-- Toshiba --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Tria</masterLabel>
             <translation><!-- Tria --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>V-Series</masterLabel>
-            <translation><!-- V-Series --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Vecow</masterLabel>
-            <translation><!-- Vecow --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WEIBU - PRC</masterLabel>
-            <translation><!-- WEIBU - PRC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Wistron</masterLabel>
-            <translation><!-- Wistron --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>suzhou nodka Automation technology Co., LTD.</masterLabel>
-            <translation><!-- suzhou nodka Automation technology Co., LTD. --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -4515,6 +4293,10 @@
         <label><!-- Deal Registration - Partner --></label>
         <name>PCC_Deal_Registration_Partner</name>
     </recordTypes>
+    <sharingReasons>
+        <label><!-- IPARefresh --></label>
+        <name>IPARefresh</name>
+    </sharingReasons>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Product Application cannot be changed in the given Design registration status. --></errorMessage>
@@ -4560,8 +4342,16 @@
         <name>DDR_StatusVal_upon_submission_Approval</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- End customer URL cannot be modified. --></errorMessage>
+        <name>DDR_customerURL</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You cannot change the owner of this record. If required, please raise an IT support request. --></errorMessage>
         <name>Internal_User_not_update_DR_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the Record type of this record. --></errorMessage>
+        <name>Internal_User_not_update_RecordType</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Ensure to have minimum of 2 characters --></errorMessage>
@@ -4576,6 +4366,14 @@
         <name>PCC_DDR_Block_Spl_Chars_DRName</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Product Group should be Embedded/IOT Boards &amp; Systems --></errorMessage>
+        <name>PCC_DDR_Proper_ProductGroup_Selection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Group can be either FPGA/Power or Embedded/IOT --></errorMessage>
+        <name>PCC_DDR_Right_ProductGroup_Selection</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- You cannot edit the field in the given status. --></errorMessage>
         <name>PCC_EditInactivePicklist</name>
     </validationRules>
@@ -4588,6 +4386,14 @@
         <name>PCC_EndCustAccBlankWithEndCustName</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Selected End Customer Account must be of Intel Account Record Type --></errorMessage>
+        <name>PCC_EndCustAcc_IntelRecCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill End Customer Name before Approving the record --></errorMessage>
+        <name>PCC_End_Customer_Mandatory_Check</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Registrations for FPGA product group has been disabled. Please refer to the message on Portal for more details --></errorMessage>
         <name>PCC_FPGA_DesignRegDisable</name>
     </validationRules>
@@ -4596,11 +4402,15 @@
         <name>PCC_Internal_Comments_Updation</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- ODM/Board Partner must be blank when Design Type is Chip-down. --></errorMessage>
+        <name>PCC_No_ODM_Partner_For_Chip_Down</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- ODM/Board Partner is required when Design Type is Board-based. --></errorMessage>
         <name>PCC_ODM_Partner_Required_For_Board_Based</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Product Segment selected on Design Details page is not considered for Embedded Designs. Please go back to the Details page to update Product segment to be either Embedded/IOT or Comms Infra. / Networking --></errorMessage>
+        <errorMessage><!-- Product Segment selected on Design Details page is not considered as Embedded Designs. Please go back to the Details page to update Product segment to be either Embedded/IOT or Comms Infra. / Networking --></errorMessage>
         <name>PCC_ProductSegment_EmbeddedIOT</name>
     </validationRules>
     <validationRules>
@@ -4610,6 +4420,10 @@
     <validationRules>
         <errorMessage><!-- Please provide valid email address --></errorMessage>
         <name>Partner_FAE_Email_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Either enter End Customer Name or Select End Customer Account --></errorMessage>
+        <name>TBD_PCC_EndCustNameAndSearchBlankCheck</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_Accept_Design --></label>

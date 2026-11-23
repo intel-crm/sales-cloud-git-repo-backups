@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLPredictionDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>Opportunity_close_date_prediction</aiApplicationDeveloperName>
+    <developerName>mlpd_Opportunity_close_date_prediction_1701234557383_v0</developerName>
+    <masterLabel>Opportunity close date prediction</masterLabel>
+    <negativeExpression>
+        <filterName>6a943b4d-a813-4fdf-8b4c-cff8e0015cf2</filterName>
+        <lhFilter>
+            <filterName>528c5c54-4f70-4581-9df4-cfdabe649dfc</filterName>
+            <lhFilter>
+                <filterName>72594961-663b-462c-b003-69517bcdd753</filterName>
+                <lhFilter>
+                    <filterName>5547bcca-5129-4d17-a991-71af7bc4588e</filterName>
+                    <lhPredictionField>Opportunity.StageName</lhPredictionField>
+                    <operation>Equals</operation>
+                    <rhType>String</rhType>
+                    <rhValue>Lost</rhValue>
+                </lhFilter>
+                <operation>Or</operation>
+                <rhFilter>
+                    <filterName>a0c17771-5b3d-4e2f-8b6b-b43bf17b1fe7</filterName>
+                    <lhPredictionField>Opportunity.StageName</lhPredictionField>
+                    <operation>Equals</operation>
+                    <rhType>String</rhType>
+                    <rhValue>Cancelled</rhValue>
+                </rhFilter>
+            </lhFilter>
+            <operation>Or</operation>
+            <rhFilter>
+                <filterName>91f66b92-a51e-444f-8cb9-32cab8e35ee6</filterName>
+                <lhPredictionField>Opportunity.StageName</lhPredictionField>
+                <operation>Equals</operation>
+                <rhType>String</rhType>
+                <rhValue>Production Lost</rhValue>
+            </rhFilter>
+        </lhFilter>
+        <operation>Or</operation>
+        <rhFilter>
+            <filterName>6af89b44-4665-4b1b-82a5-f4c5794b0612</filterName>
+            <lhPredictionField>Opportunity.StageName</lhPredictionField>
+            <operation>Equals</operation>
+            <rhType>String</rhType>
+            <rhValue>Production Cancelled</rhValue>
+        </rhFilter>
+    </negativeExpression>
+    <positiveExpression>
+        <filterName>bd475f5d-ed9b-4618-884b-27bccf55b116</filterName>
+        <lhFilter>
+            <filterName>e1bb223c-ad6a-448b-b1e6-e24554980bea</filterName>
+            <lhPredictionField>Opportunity.StageName</lhPredictionField>
+            <operation>Equals</operation>
+            <rhType>String</rhType>
+            <rhValue>Design Win</rhValue>
+        </lhFilter>
+        <operation>Or</operation>
+        <rhFilter>
+            <filterName>c8b5269e-f751-4aad-ae1f-4e3b3618a53c</filterName>
+            <lhPredictionField>Opportunity.StageName</lhPredictionField>
+            <operation>Equals</operation>
+            <rhType>String</rhType>
+            <rhValue>Production Win</rhValue>
+        </rhFilter>
+    </positiveExpression>
+    <pushbackField>Opportunity.Opportunity_Close_date_Prediction__c</pushbackField>
+    <status>Enabled</status>
+    <type>BinaryClassification</type>
+</MLPredictionDefinition>

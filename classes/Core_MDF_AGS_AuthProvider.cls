@@ -5,7 +5,7 @@ Description         :    Auth provider plugin used by AGS integrations to launch
                          exchange the authorization code for tokens, and supply token refresh/user
                          info behavior expected by Salesforce Auth.Provider extensions.
 Created By          :    Ramapriya
-******************************************************************************************************/
+*****************************************************************************************************************/
 global class Core_MDF_AGS_AuthProvider extends Auth.AuthProviderPluginClass {
     
     public String redirectUrl;

@@ -121,14 +121,14 @@ div.WordSection1
 </tr>
 <tr style="height: 74px;">
 <td style="height: 74px;">
-<p><span style="font-size: 12pt; color: #666666;">Welcome {!Contact.FirstName} {!Contact.LastName},</span><br /><br /><span style="font-size: 12pt; color: #666666;">Thank you for your interest! Please follow this <span style="color: #086db6;"><a href="
+<p><span style="font-size: 12pt; color: #666666;">Welcome !%UserFirstName%! !%UserLastName%!,</span><br /><br /><span style="font-size: 12pt; color: #666666;">Thank you for your interest! Please follow this <span style="color: #086db6;"><a href="
 https://www.intel.com/content/www/us/en/secure/my-intel/dashboard.html"
 style="color: #086db6;">link</a></span> to complete your set up. </span></p>
 </td>
 </tr>
 <tr style="height: 41px;">
 <td style="height: 41px;">
-<p><span style="font-size: 12pt; color: #666666;"><strong>Email ID: </strong>{!Contact.Email}</span></p>
+<p><span style="font-size: 12pt; color: #666666;"><strong>Email ID: </strong>!%UserEmailAddr%!</span></p>
 </td>
 </tr>
 <tr style="height: 41px;">
@@ -147,7 +147,7 @@ style="color: #086db6;">My Intel</a></span> <span style="color: #666666;">any ti
 <br /><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer></td>
 </tr>
 </tbody>
-<td style="border: none; text-align: right;"><span style="font-family: 'intel clear', sans-serif;"> <img class="floating" src="
+<td style="border: none; text-align: left;"><span style="font-family: 'intel clear', sans-serif;"> <img class="floating" src="
 https://www.intel.com/content/dam/logos/intel-logo.png"
    height="42" width="64" /></span>
 </table>

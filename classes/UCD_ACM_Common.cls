@@ -4,6 +4,8 @@ public without sharing class UCD_ACM_Common {
     private static Id dealAcctRTId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('End_Customer_Deal_Account').getRecordTypeId();
     private static Id intelAcctRTId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
     private static Id inactiveAcctRTId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Inactive_Account').getRecordTypeId();
+	//Ganesh Changes
+    public static Id requestedAccount = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
 
         
     /*
@@ -365,7 +367,7 @@ public static Map<String, Account> getParentAccountByBpId(Set<Account> intelAcco
                 accountToUpdate.Core_Unified_Intermediate_Customer_Name__c = null;
                 accountToUpdate.Core_Unified_Intermdt_Customer_2_BP_Id__c = null;
                 accountToUpdate.Core_Unified_Intermdt_Customer_2_Name__c = null;
-                accountToUpdate.Core_Reltio_Integration_Status__c = 'REPROCESS';
+                accountToUpdate.Core_Reltio_Integration_Status__c = 'PARENT_UPDATE REPROCESS';
                 acctsToUpdate.put(accountToUpdate.Id,accountToUpdate);
             }else{
                 Account parentAccount = getSameRTParentAccount(account.RecordTypeId, parentAccounts);
@@ -377,7 +379,7 @@ public static Map<String, Account> getParentAccountByBpId(Set<Account> intelAcco
                     }
                     if(account.RecordTypeId == intelAcctRTId && account.ParentId != null && parentAccount.id == account.ParentId && account.Core_Parent_Business_Party_Id__c != parentAccount.Core_Business_Party_Id__c) {
                         accountToUpdate.ParentId = null;
-                        accountToUpdate.Core_Reltio_Integration_Status__c = 'REPROCESS';
+                        accountToUpdate.Core_Reltio_Integration_Status__c = 'PARENT_UPDATE REPROCESS';
                         parentUpdated = true;
                     }
                     if(parentUpdated){

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AGS_Error_Message__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>AGS Error Message</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <label>Core Draco AGS Error Message</label>
+    <pluralLabel>Core Draco AGS Error Messages</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

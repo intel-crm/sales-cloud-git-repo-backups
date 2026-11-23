@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PCC Change Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PCC Change Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approved Line Items --></label>
+        <name>Approved_Line_Items__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval/Rejection Comments --></label>
+        <name>PCC_Approval_Rejection_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>PCC_Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review in Progress</masterLabel>
+            <translation><!-- Review in Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approved Products Count --></label>
+        <name>PCC_Approved_Products_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cancelled or Rejected Count --></label>
+        <name>PCC_Cancelled_or_Rejected_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Request Approver --></label>
+        <name>PCC_Change_Request_Approver__c</name>
+        <relationshipLabel><!-- PCC Change Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Decision Date --></label>
+        <name>PCC_Decision_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Errored Lines Count --></label>
+        <name>PCC_Errored_Lines_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- No Of Child Records --></label>
+        <name>PCC_No_Of_Child_Records__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>PCC_Opportunity__c</name>
+        <relationshipLabel><!-- PCC Change Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Transaction Information Message --></label>
+        <name>PCC_Transaction_Information_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pending Product Count --></label>
+        <name>Pending_Product_Count__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- Change Request --></label>
+        <name>Change_Request</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

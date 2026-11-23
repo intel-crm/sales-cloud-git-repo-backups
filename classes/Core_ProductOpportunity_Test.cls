@@ -115,7 +115,7 @@ public class Core_ProductOpportunity_Test {
         }
         Test.startTest();
         update prodList;
-        Core_Batch_updateEOL_Retry obj = new Core_Batch_updateEOL_Retry(lineitemSet,prodList); 
+        Core_Batch_updateEOL_Retry obj = new Core_Batch_updateEOL_Retry(lineitemSet,prodList,0); 
         DataBase.executeBatch(obj);
         Product2 prod = [SELECT id, Core_Is_Name_Changed_Chk__c FROM Product2 WHERE Id=: prodList[0].Id];
         System.assertEquals(True , prod.Core_Is_Name_Changed_Chk__c );

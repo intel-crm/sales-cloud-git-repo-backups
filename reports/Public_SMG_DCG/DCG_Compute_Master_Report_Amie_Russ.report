@@ -98,11 +98,8 @@
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
-    </columns>
     <filter>
-        <booleanFilter>(((1 and 2 and 3 and (4 or 5 or 6 or 11 or 12 or 13) and 7 and 8 and 9 and 10)))</booleanFilter>
+        <booleanFilter>(1 and 2 and 3 and (4 or 5 or 6 or 11) and 7 and 8 and 9 and 10)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -143,7 +140,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Idaville,Spring Hill,Habana,Goya,Gaudi</value>
+            <value>Idaville,Spring Hill,Spring Crest,Habana</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>
@@ -178,21 +175,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>crystal,hi speed,high speed,silicon</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>tofino</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Product2.Core_Code_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>tofino</value>
+            <value>crystal</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

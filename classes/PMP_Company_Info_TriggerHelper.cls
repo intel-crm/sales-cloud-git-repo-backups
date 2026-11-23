@@ -123,73 +123,145 @@ else invoke the future method.*/
             }           
         }       
     }
+
     
-    public static void createStagingFromCompany(List<PMP_Company__c> newCompanies) {
-        if (newCompanies == null || newCompanies.isEmpty()) return;
-    
-        Set<Id> accountIds = new Set<Id>();
-        Map<Id, PMP_Company__c> companyByAccId = new Map<Id, PMP_Company__c>();
-    
-        // Step 1: Filter valid companies + collect account Ids
-        for (PMP_Company__c c : newCompanies) {
-    
-            if (c.PMP_Company_Lifecycle_Status_Nm__c != 'Draft' ||
-                !c.PMP_Is_Working_Copy_Ind__c ||
-                String.isBlank(c.PMP_Opid_Sfid_Txt__c)) {
-                continue;
-            }
-    
-            // Safe Id conversion
-            try {
-                Id accId = (Id)c.PMP_Opid_Sfid_Txt__c;
-                accountIds.add(accId);
-                companyByAccId.put(accId, c);
-            } catch (Exception e) {
-                // Optionally log invalid Id
-            }
-        }
-    
-        if (accountIds.isEmpty()) return;
-    
-        // Step 2: Query Accounts
-        Map<Id, String> accToWebsite = new Map<Id, String>();
-    
-        for (Account acc : [
-            SELECT Id, UCD_Primary_Account__r.Core_User_Defined_Website__c
-            FROM Account
-            WHERE Id IN :accountIds
+public class RemoveStorefrontSharingQueueable implements Queueable {
+    private Set<Id> setConIdToRemove;
+
+    public RemoveStorefrontSharingQueueable(Set<Id> setConIdToRemove) {
+        this.setConIdToRemove = setConIdToRemove;
+    }
+
+    public void execute(QueueableContext context) {
+        // your logic here
+        removeStorefrontSharing(setConIdToRemove);
+    }
+}
+public static void removeStorefrontSharing(set<id> setConIdToRemove){
+	set<string> opidGroups=new set<string>();
+    set<id> activeOPIDs=new set<id>();
+    string pmpStr='PMP_';
+    String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;
+    string entitlementLabel=system.label.PMP_Egligble_Entitlement;
+    list<string> entitlementLabelValues=entitlementLabel.split(';');
+    List<GroupMember> listToRemoveFromGroupMember = new List<GroupMember>();
+    Map<String, Id> mapGroupNameToId = new Map<String, Id>();
+    Map<Id, Set<Id>> mapGroupIdWithUserIDs = new Map<Id, Set<Id>>();
+    map<id,set<GroupMember>> mapGroupIdWithGrpMmberId=new map<id,set<GroupMember>>();
+    system.debug('entitlementLabel'+entitlementLabel);
+    system.debug('entitlementLabelValues'+entitlementLabelValues);
+
+        // STEP 1: Build mapOpidUserids
+        Map<String, Set<Id>> mapOpidUserids = new Map<String, Set<Id>>();
+    if(setConIdToRemove!=null && !setConIdToRemove.isEmpty()){
+        for(contact con:[select Core_IPA_One_Partner_Id__c  from contact where id in :setConIdToRemove]){
+		 opidGroups.add(pmpStr+con.Core_IPA_One_Partner_Id__c);
+         activeOPIDs.add(con.Core_IPA_One_Partner_Id__c);
+	}
+    }
+    if(activeOPIDs!=null && !activeOPIDs.isEmpty()){
+        for (User u : [
+			SELECT Id,contact.Core_IPA_One_Partner_Id__c
+            FROM User
+            WHERE isActive=true and contact.Core_IPA_One_Partner_Id__c in :activeOPIDs
+            and ContactId in (SELECT Core_Contact_Id__c
+               FROM Core_Contact_Entitlement__c 
+               WHERE  Core_Entitlement_Id__r.name in :entitlementLabelValues)
         ]) {
-            String website = acc.UCD_Primary_Account__r?.Core_User_Defined_Website__c;
-    
-            if (!String.isBlank(website)) {
-                accToWebsite.put(acc.Id, website);
+            if (!mapOpidUserids.containsKey(u.contact.Core_IPA_One_Partner_Id__c)) {
+                mapOpidUserids.put(u.contact.Core_IPA_One_Partner_Id__c, new Set<Id>());
             }
+            mapOpidUserids.get(u.contact.Core_IPA_One_Partner_Id__c).add(u.Id);//id opidid1234,user1,user2
         }
+    }
     
-        if (accToWebsite.isEmpty()) return;
+
+        // STEP 2: Get Groups by DeveloperName
+        
+if(opidGroups!=null && !opidGroups.isEmpty()){
+        for (Group g : [
+            SELECT Id, DeveloperName
+            FROM Group
+            WHERE DeveloperName IN :opidGroups
+        ]) {
+            mapGroupNameToId.put(g.DeveloperName, g.Id);
+        }
+	}
+
+        // STEP 3: Get existing Group Members
+       
+    if(mapGroupNameToId!=null){
+        for (GroupMember gm : [
+            SELECT id, GroupId, UserOrGroupId
+            FROM GroupMember
+            WHERE GroupId IN :mapGroupNameToId.values()
+        ]) {
+            if (!mapGroupIdWithUserIDs.containsKey(gm.GroupId)) {
+                mapGroupIdWithUserIDs.put(gm.GroupId, new Set<Id>());//user1
+            }
+            mapGroupIdWithUserIDs.get(gm.GroupId).add(gm.UserOrGroupId);
+			if (!mapGroupIdWithGrpMmberId.containsKey(gm.GroupId)) {
+                mapGroupIdWithGrpMmberId.put(gm.GroupId, new Set<GroupMember>());
+            }
+            mapGroupIdWithGrpMmberId.get(gm.GroupId).add(gm);
+        }
+    }
+
+        // STEP 4: Prepare records to insert
+      
+    if(opidGroups!=null && !opidGroups.isEmpty()){
+         for (String groupName : opidGroups) {
+			Id groupId = mapGroupNameToId.containsKey(groupName) ? mapGroupNameToId.get(groupName) : null;
+           // Id groupId = mapGroupNameToId.containskey(groupName)?mapGroupNameToId.get(groupName):'';
+			//String opidId = groupName.split('_')[1];
+			String opidId;
+            if (groupName != null && groupName.contains('_')) {
+                List<String> parts = groupName.split('_');
+                opidId = (parts.size() > 1) ? parts[1] : null;
+            }
+            Set<Id> opidUsers = opidId!=null && mapOpidUserids.containskey(opidId)? mapOpidUserids.get(opidId): new Set<Id>();//opid id--userset
+        
+            Set<Id> existingUsers = groupId!=null && mapGroupIdWithUserIDs.containskey(groupId)?mapGroupIdWithUserIDs.get(groupId):new Set<Id>();
+            if(opidUsers!=null){
+                for (Id userId : opidUsers) {
+                if (existingUsers.contains(userId) && mapGroupIdWithGrpMmberId.containsKey(groupId) &&
+    			mapGroupIdWithGrpMmberId.get(groupId) != null) {
+                    listToRemoveFromGroupMember.addAll(mapGroupIdWithGrpMmberId.get(groupId));
+                }
+            }
+            }
+            
+        }
+    }
+       
+	
+	if(!listToRemoveFromGroupMember.isEmpty()){
+		delete listToRemoveFromGroupMember;
+	}
+	}
     
-        // Step 3: Create staging records
-        List<PMP_CompanyAutoFill__c> toInsert = new List<PMP_CompanyAutoFill__c>();
-    
-        for (Id accId : accToWebsite.keySet()) {
-    
-            PMP_Company__c c = companyByAccId.get(accId);
-            if (c == null) continue;
-    
+  public static void createStagingFromCompany(List<PMP_Company__c> newCompanies) {
+        if (newCompanies == null || newCompanies.isEmpty()) return;
+
+        List<PMP_CompanyAutoFill__c> toInsert =
+            new List<PMP_CompanyAutoFill__c>();
+
+        for (PMP_Company__c c : newCompanies) {
+
+            if (String.isBlank(c.PMP_Account_Website__c) || c.PMP_Company_Lifecycle_Status_Nm__c != 'Draft' || !c.PMP_Is_Working_Copy_Ind__c) continue;
+
             toInsert.add(new PMP_CompanyAutoFill__c(
-                PMP_Partner_Id__c     = c.Id,
-                PMP_Website__c        = accToWebsite.get(accId),
+                PMP_Partner_Id__c = c.Id,
+                PMP_Website__c    = c.PMP_Account_Website__c,
                 PMP_Autofill_Status__c = 'Staged'
             ));
         }
-    
-        // Step 4: Insert
+
         if (!toInsert.isEmpty()) {
             Database.SaveResult[] sr = Database.insert(toInsert, false);
-            PMP_Utility.logDmlErrors(
-                (Object[]) sr,
-                'PMP_Company_Info_TriggerHelper-createStagingFromCompany'
+            PMP_Utility.logDmlErrors((Object[]) sr,'PMP_Company_Info_TriggerHelper-createStagingFromCompany'
             );
         }
     }
+    
 }

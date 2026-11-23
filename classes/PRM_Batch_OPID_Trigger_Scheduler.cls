@@ -21,6 +21,6 @@ global without sharing class PRM_Batch_OPID_Trigger_Scheduler implements Schedul
     global void execute(SchedulableContext ctx) {
         PRM_VxDataStageBatch vxDataStageBatch = new PRM_VxDataStageBatch();
         //ID batchprocessid = 
-            Database.executeBatch(vxDataStageBatch,Integer.valueOf(Label.PRM_OPID_VxBatch)); 
+Database.executeBatch(vxDataStageBatch,Integer.valueOf(Label.PRM_OPID_VxBatch)); 
     }
 }

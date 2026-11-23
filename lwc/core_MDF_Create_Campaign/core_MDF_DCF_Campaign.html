@@ -148,20 +148,17 @@
                                         </lightning-dual-listbox>
                                     </lightning-layout-item>
                                 </template>  
-                                
                                  <template if:true={loadBudgetTypefields}>
                                 <template if:false={showAvailableBudgets}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">    
                                     </lightning-layout-item>
                                 </template>
-        
                                 <template if:true={showAvailableBudgets}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
                                         <c-core_-m-d-f_-campaign_-available_-budgets_-picklist picklistlabel={availableBudgetsLabel} values={availableBudgetValues} onbudgetselection={onBudgetSelection}></c-core_-m-d-f_-campaign_-available_-budgets_-picklist>
                                     </lightning-layout-item>
                                 </template>
-
-                                <template if:true={showApprovalCheckbox}>
+				                <template if:true={showApprovalCheckbox}>
                                     <lightning-layout-item flexibility="no-grow" size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="around-small">
                                         <lightning-input type="checkbox" 
                                         name="Core_MDF_Activity_Approval_Required_Ind__c"

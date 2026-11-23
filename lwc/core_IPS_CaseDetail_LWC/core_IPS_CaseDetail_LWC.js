@@ -390,7 +390,6 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 this.showSubCatEdqs = true;
                 console.log('DEBUG openEditModal prodEdqRecs=' + JSON.stringify(this.prodEdqRecs));
                 console.log('DEBUG openEditModal subCatRecEdqs=' + JSON.stringify(this.subCatRecEdqs));
-                  this.getSubCategoryEdqs(this.casesubcatedq);
                 setTimeout(() => {this.enableEdit();}, 100);
             }
             else{
@@ -1769,7 +1768,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     envQAs = new Map();
     edqdata;
     //Call Apex clone Method
-    CopyPartnerAccountRequired = false;
+    CopyPartnerAccountRequired = true;
     getcloneCaseData() {
         retriveCaseData({ recId: this.recordId })
         
@@ -1790,7 +1789,7 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                         this.showSubCategory = true;
                     }
                     if (this.clonedCase.Core_IPS_Project_Case__r == undefined) {
-                        this.CopyPartnerAccountRequired = true;
+                        this.CopyPartnerAccountRequired = false;
                     }
                     for (let key in this.clonedCase) {
                         console.log(key);
@@ -2044,21 +2043,11 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
     @api showSubCatEdqs;
     getSubCategoryEdqs(subcategoryId) {
         let tempVar = subcategoryId;
-        // capture values already resolved (e.g. from getCaseonLoad's subCatFields) before this.subCatRecEdqs gets overwritten below
-        let existingValueById = new Map((this.subCatRecEdqs || []).filter(f => f && f.value).map(f => [f.id, f.value]));
-
-	Promise.all([
-            getSubCatEdq({ supportedProductId: null, subCategoryid: tempVar, isAgent: this.profileattach }),
-            // getCaseonLoad resolves true saved answers (via setCurrentEnvironmentDetails) that getSubCatEdq never populates
-            this.recordId ? getCaseonLoad({ caseId: this.recordId }).catch(() => null) : Promise.resolve(null)
-        ])
-            .then(([data, caseLoadRes]) => {
+        
+	getSubCatEdq({ supportedProductId: null, subCategoryid: tempVar, isAgent: this.profileattach })
+            .then(data => {
                console.log('DEBUG getSubCategoryEdqs raw data from apex=' + JSON.stringify(data));
                console.log('DEBUG getSubCategoryEdqs prodEdqRecs=' + JSON.stringify(this.prodEdqRecs));
-               if (caseLoadRes && caseLoadRes.subCatFields) {
-                   caseLoadRes.subCatFields.filter(f => f && f.value).forEach(f => existingValueById.set(f.id, f.value));
-               }
-            
 		let subCateboryEDQ = new Set();
                 let eDQSet = new Set();
                 let i;
@@ -2082,14 +2071,12 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                 
                 console.log('sab temp subcatrecedqs' +JSON.stringify(tempSubCatRecEdqs));
                 let tempEDQData = JSON.parse(JSON.stringify(this.edqdata));
-                // trim/case-insensitive compare so saved answers still match if the question label has leading/trailing spaces or casing drift
-                const isSameQuestion = (qstn, label) => qstn && label && qstn.trim().toLowerCase() === label.trim().toLowerCase();
                 tempEDQData['Env Dtl Resp'].forEach(item => {
                     tempSubCatRecEdqs.forEach(item2 => {
-                        if (isSameQuestion(item.Qstn, item2.label) && !item2.lovs) {
+                        if (item.Qstn === item2.label && !item2.lovs) {
                             item2.value = item.Ansr;
                         }
-                        if (isSameQuestion(item.Qstn, item2.label) && item2.lovs) {
+                        if (item.Qstn === item2.label && item2.lovs) {
                             let tempValArr = [];
                             item2.lovs.forEach(item3 => {
                                 if (item3.label === item.Ansr && item2.type === 'Picklist') {
@@ -2117,17 +2104,11 @@ export default class Core_IPS_CaseDetail_LWC extends NavigationMixin(LightningEl
                         }
                     })
                 })
-                // restore values already resolved server-side (e.g. Text answers from getCaseonLoad) when the edqdata JSON had no match
-                tempSubCatRecEdqs.forEach(item2 => {
-                    if (!item2.value && existingValueById.has(item2.id)) {
-                        item2.value = existingValueById.get(item2.id);
-                    }
-                })
                 this.subCatRecEdqs = tempSubCatRecEdqs;
                 let tempprodEdqRecs = JSON.parse(JSON.stringify(this.prodEdqRecs));
                 tempEDQData['Env Dtl Resp'].forEach(item => {
                     tempprodEdqRecs.forEach(item2 => {
-                        if (isSameQuestion(item.Qstn, item2.label) && item2.lovs) {
+                        if (item.Qstn === item2.label && item2.lovs) {
                             item2.lovs.forEach(item3 => {
                                 if (item3.label === item.Ansr) {
                                     item2.value = item3.value;

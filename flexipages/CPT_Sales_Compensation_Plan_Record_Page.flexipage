@@ -31,6 +31,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -92,16 +96,6 @@
                 <identifier>RecordCPT_Plan_Type__cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_MarginVolume__c</fieldItem>
-                <identifier>RecordMarginVolume__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-1d6c8323-8588-46e7-b17b-5d31f96a08e7</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -130,20 +124,10 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>required</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.CPT_Percent_Sales_OKR__c</fieldItem>
-                <identifier>RecordCPT_Sales_OKR_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CPT_Percent_Sales_Team_Goal__c</fieldItem>
-                <identifier>RecordCPT_Sales_Team_Goal_cField</identifier>
+                <fieldItem>Record.CPT_Percent_Wins_Revenue__c</fieldItem>
+                <identifier>RecordCPT_Percent_Wins_c_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

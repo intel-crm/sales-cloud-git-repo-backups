@@ -279,6 +279,14 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_Recommend_for_Review_Flag_ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Recommend for Review Flag</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Review_Date_dt__c</fullName>
         <formula>CreatedDate</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

@@ -23,7 +23,7 @@
         <name>Core_MDF_Recovered_Budget_Nm__c</name>
     </fields>
     <fields>
-        <label>先结算，然后支付</label>
+        <label><!-- Settle, then get paid? --></label>
         <name>Core_MDF_Sure_Pay_Ind__c</name>
     </fields>
     <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>

@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Trigger_Events__c</field>
-        <value xsi:type="xsd:string">before insert,before update,after insert,after update</value>
+        <value xsi:type="xsd:string">After Insert</value>
     </values>
 </CustomMetadata>

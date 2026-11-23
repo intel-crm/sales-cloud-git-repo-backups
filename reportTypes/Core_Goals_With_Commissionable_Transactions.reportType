@@ -258,6 +258,21 @@
             <field>Core_Design_Product_Category__c</field>
             <table>Core_Goal__c.Commissionable_Transactions__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Audit_Status_Txt__c</field>
+            <table>Core_Goal__c.Commissionable_Transactions__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Audit_Close_Date__c</field>
+            <table>Core_Goal__c.Commissionable_Transactions__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CRM_Team_Member_Addition_Date__c</field>
+            <table>Core_Goal__c.Commissionable_Transactions__r</table>
+        </columns>
         <masterLabel>Commissionable Transactions</masterLabel>
     </sections>
 </ReportType>

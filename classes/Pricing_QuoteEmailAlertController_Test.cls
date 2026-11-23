@@ -100,6 +100,7 @@ public class Pricing_QuoteEmailAlertController_Test {
                                                   SBQQ__Quote__r.SBQQ__SalesRep__r.Name,Pricing_pm_approval_comments_nm__c, Pricing_Rejection_Comments_nm__c
                                                   FROM SBQQ__QuoteLine__c LIMIT 1];      
         //Test.StartTest();
+        //List<User> lstUsers = Pricing_Test_Utility.createUser();
         Pricing_QuoteEmailAlertController p1 = new Pricing_QuoteEmailAlertController();
         p1.quoteId = lstquote[0].Id;
         p1.quoteLineId = lstquoteLines[0].Id;

@@ -1,7 +1,7 @@
 /***************************************************************************************************
 Class Name:  Core_IPS_BES_CCG_CustomLogic
 Created Date: 17 Sept 2023
-Function    : This class contains CCG and also the Status/SubStatus Inbound Flow of DCG related custom logic(New HSD Bridge) 
+Function    : This class contains CCG and also the Status/SubStatus Inbound Flow of DCG related custom logic(New HSD Bridge)
 Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 

@@ -26,7 +26,7 @@ public class Core_MDF_AuditCaseProcess_Test {
         
         
         System.runAs(usr){
-            ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+            ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
             Account intacc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', 
                                                                               Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             intacc.Core_Account_Type__c = 'Reseller';

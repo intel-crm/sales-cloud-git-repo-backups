@@ -30,11 +30,14 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>fieldsToMask</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>internalUserName</name>
                     <value>Intel System User</value>
                 </componentInstanceProperties>
                 <componentName>core_MDF_HistoryComponent</componentName>
-                <identifier>core_MDF_HistoryComponent</identifier>
+                <identifier>c_core_MDF_HistoryComponent</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

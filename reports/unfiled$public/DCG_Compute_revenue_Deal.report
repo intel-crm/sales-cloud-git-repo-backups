@@ -52,13 +52,6 @@
             <operator>greaterThan</operator>
             <value>0</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>deal</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

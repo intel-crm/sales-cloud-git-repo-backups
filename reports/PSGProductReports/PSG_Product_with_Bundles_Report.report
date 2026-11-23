@@ -87,13 +87,20 @@
     </columns>
     <description>Report for PSG Products with associated Bundles</description>
     <filter>
-        <booleanFilter>1</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>Product2$Core_Product_Type_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Tool</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Product2$Core_Product_Type_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Component</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

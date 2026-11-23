@@ -21,8 +21,6 @@ import editProjectRecord from '@salesforce/apex/Core_IPS_Portal_ProjectUtility_L
 import Custom from '@salesforce/resourceUrl/CustomCSS_LWC';
 import PortalSiteURL from '@salesforce/label/c.Core_IPS_PortalSiteURL_LWC';
 import getErrorMsg from '@salesforce/label/c.Core_IPS_Error_Msg';
-import getErrorNoteMsg from '@salesforce/label/c.Core_IPS_Error_Notes_Msg';
-
 import TIME_ZONE from '@salesforce/i18n/timeZone';
 import Core_IPS_Required from '@salesforce/label/c.Core_IPS_Required';
 const timezone = TIME_ZONE;
@@ -523,38 +521,38 @@ existingProjectMembers() {
  * Description: Search the Project members based on the given input.
  */
 //defproj = [];//commented by sabira on  30-10-2026 as part of TWC745-9523
-//countProjSearch = 0;//commented by on 30-10-2026  sabira as part of TWC745-9523
+//countProjSearch = 0;//commented by on 30-10-2026 sabira as part of TWC745-9523
 projMemSearchChangeHandler(event) {
-  //commented by sabira on  30-10-2026  as part of TWC745-9523
+    //commented by sabira on  30-10-2026 as part of TWC745-9523
     /* let tempSelectedValues = this.defalutprojvalues;
     let tempVar = event.detail.value;
-     if (tempVar) {
-         if (this.countProjSearch == 0) {
-             this.defproj = this.defalutprojvalues;
-             this.countProjSearch = 1;
-         }
-         this.tempProjMembersOptions = this.initialMemberRecords;
-         if (this.tempProjMembersOptions) {
-             let recs = [];
-             for (let rec of this.tempProjMembersOptions) {
-                 if (rec.label.toLowerCase().includes(tempVar.toLowerCase())) {
-                     recs.push(rec);
-                 }
-             }
-             this.tempProjMembersOptions = recs;
-         }
-        this.defalutprojvalues = tempSelectedValues ; //commented by sabira on  30-10-2026  as part of TWC745-9523*/
- // Begin Change by Sabira on  30-10-2026 as Part of TWC745-9523
+    if (tempVar) {
+        if (this.countProjSearch == 0) {
+            this.defproj = this.defalutprojvalues;
+            this.countProjSearch = 1;
+        }
+        this.tempProjMembersOptions = this.initialMemberRecords;
+        if (this.tempProjMembersOptions) {
+            let recs = [];
+            for (let rec of this.tempProjMembersOptions) {
+                if (rec.label.toLowerCase().includes(tempVar.toLowerCase())) {
+                    recs.push(rec);
+                }
+            }
+            this.tempProjMembersOptions = recs;
+        }
+        this.defalutprojvalues = tempSelectedValues ;  //commented by sabira  as part of TWC745-9523*/
+        // Begin Change by Sabira  on  30-10-2026 as Part of TWC745-9523
     const searchValue = event.detail.value || '';
  
     if (searchValue) {
         this.tempProjMembersOptions = this.initialMemberRecords.filter(
             rec => rec.label.toLowerCase().includes(searchValue.toLowerCase())
         );
-	} /* end change by sabira on  30-10-2026 part of TWC745-9523 */
-	else {
+    } /* end change by sabira  on  30-10-2026 part of TWC745-9523 */
+    else {
         this.tempProjMembersOptions = this.initialMemberRecords;
-         // this.defalutprojvalues = tempSelectedValues;//commented by sabira on  30-10-2026 as a  part of TWC745-9523
+         // this.defalutprojvalues = tempSelectedValues; //commented by sabiraon  30-10-2026 as a  part of TWC745-9523
     }
 }
 @api productsArray = [];
@@ -622,7 +620,7 @@ userId = Id;
 handleChangeProjectmembers(event) {
      // arrow button clicks move items and always dispatch change before the click bubbles to handleClickProjectmembers
     this.suppressProjMemberClick = true;
-    //commented by sabira on  30-10-2026 as part of TWC745-9523
+    //commented by sabira on  30-10-2026as part of TWC745-9523
      /* this.projectsMembersArray = JSON.stringify(event.detail.value);
     this.selectedProjMembers = event.detail.value;
     if (this.defproj) {
@@ -632,7 +630,7 @@ handleChangeProjectmembers(event) {
         this.countProjSearch = 0;
     }
     this.validateProjectOwner();
-} //commented upto here  by sabira on  30-10-2026 as part of TWC745-9523 */ 
+}  //commented upto here  by sabira on  30-10-2026as part of TWC745-9523 */  
  //Begin change  by sabira on  30-10-2026  part of TWC745-9523
     const changedValues = event.detail.value || [];
     // Identify the options currently visible in the filtered list.
@@ -650,11 +648,11 @@ handleChangeProjectmembers(event) {
         ...changedValues,
         ...hiddenSelectedValues
     ])];
-    // Save the complete, latest selection for the next operation.added 
+    // Save the complete, latest selection for the next operation.
     this.defalutprojvalues = [...this.selectedProjMembers];
     this.projectsMembersArray = JSON.stringify(this.selectedProjMembers);
     this.validateProjectOwner();
- /* End  change upto here   by sabira on  30-10-2026 part of TWC745-9523 */ 
+    /* End  change upto here   by sabira on  30-10-2026 part of TWC745-9523 */ 
 }
  
 suppressProjMemberClick = false;
@@ -670,13 +668,13 @@ handleClickProjectmembers() {
     const currentValues = dualListbox ? dualListbox.value : this.selectedProjMembers;
     this.projectsMembersArray = JSON.stringify(currentValues);
     this.selectedProjMembers = currentValues;
- //commented this if block by sabira  on  30-10-2026 as a part of TWC745-9523 
+    //commented this if block by sabira on  30-10-2026  as a part of TWC745-9523 
    /* if (this.defproj) {
         this.selectedProjMembers = [...this.selectedProjMembers, ...this.defproj];
         this.defalutprojvalues = [...new Set(this.selectedProjMembers)];
         this.defproj = [];
         this.countProjSearch = 0;
-    }//commented by sabira on  30-10-2026 as a part of TWC745-9523  */ 
+    } //commented by sabira   on  30-10-2026 as a part of TWC745-9523  */ 
     
     getOwnerOfProject({
         projId: this.recordId
@@ -700,11 +698,11 @@ validateProjectOwner() {
         projId: this.recordId
     })
         .then(result => {
-           console.log('testing results',result );
+console.log('testing results',result );
             let memIdIsThere = this.selectedProjMembers.includes(result);
             if (memIdIsThere == false) {
                 this.showToast('Error', getErrorMsg, 'error');
-               setTimeout(() => window.location.reload(), 1000);
+                setTimeout(() => window.location.reload(), 1000);
             } else {
                 if (this.projectsMembersArray != null && this.projectsMembersArray != undefined) {
                     this.showaddProj = true;

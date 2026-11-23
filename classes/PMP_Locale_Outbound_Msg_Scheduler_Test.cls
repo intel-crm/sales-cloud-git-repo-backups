@@ -8,11 +8,6 @@
 *****************************************************************************************************************************************/
 @isTest
 public class PMP_Locale_Outbound_Msg_Scheduler_Test{
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_Locale_Outbound_Msg_Scheduler.isWorking();
-        System.assertEquals(true, result);
-    }
     //IPA2.0 - As part of TWC729-7977 commented the entire class
 /*  
     static testMethod void testLocaleOutboundScheduler(){

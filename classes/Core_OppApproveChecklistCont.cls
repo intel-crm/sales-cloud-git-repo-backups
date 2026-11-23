@@ -71,7 +71,7 @@ public with sharing class Core_OppApproveChecklistCont {
         oppty= (Opportunity)stdController.getRecord();
         OppId=ApexPages.currentPage().getParameters().get('id');
         try{
-        if(String.isNotBlank(oppty.Id)){
+            if(String.isNotBlank(oppty.Id)){
             // added field TWC3123-1204
             //TWC3123-6061
             list<Opportunity> opplist = [select id,Core_Decimal_Check__c,Core_Quantity_count__c,Opportunity_Focus__c,Account.RecordType.name, Core_Opportunity_Type__c,Core_Product_At_Risk__c,Core_Military_Aerospace_Govmt_End_Use__c,Core_Compliance_Status__c,Core_Production_End_Date__c,Core_First_Customer_Ship_Date__c,StageName,Core_Oppty_Check_BU_Short_Name__c,Core_Write_In_Product_Count__c,Core_Competitive_Architecture__c,Description, Core_MAG_Account__c, Core_Status_Update__c,Core_Manufacturing_Geo__c,Core_Volume__c,Core_Solution_Type__c,Core_Solution_Detail__c,Core_Combined_Solution_Detail__c,Core_Exclude_From_KPIs__c,CloseDate,Core_Solution_Area_Count__c,Core_Opportunity_Coverage_Nm__c,Desired_End_State__c,Technology_and_Readiness_Gaps__c,Business_Need__c,Technical_Need__c,FAD_Start_Date__c,FAD_End_Date__c,Competitor_Threat_Mitigation__c,RecordType.DeveloperName  from Opportunity where id =: oppty.Id]; //, CoE_Status__c
@@ -79,7 +79,7 @@ public with sharing class Core_OppApproveChecklistCont {
             List<OpportunityLineItem> opptyLineItemsList= [SELECT id, Name, Core_Vendor__r.RecordType.name, Core_Status__c, Core_BU_Short_Name__c, Core_Write_In_Product_Flag__c, Core_Vendor__c FROM OpportunityLineItem WHERE OpportunityId = :oppty.Id];
                 if(!opplist.isEmpty()){
                     
-            
+                
             //added query TWC3123-1204
             //List<Core_Opportunity_Partner__c> opptyPartnerList= [SELECT id, Name, Core_Partner__r.RecordType.name from Core_Opportunity_Partner__c where Core_Opportunity__c = :oppty.Id];
             // TWC3123-1204 end
@@ -417,7 +417,7 @@ public with sharing class Core_OppApproveChecklistCont {
                 }
             }
         }
-    }
+        }
         }
         catch(Exception e){
             PMP_Utility.logError(e, 'Core_OppApproveChecklistCont.const');

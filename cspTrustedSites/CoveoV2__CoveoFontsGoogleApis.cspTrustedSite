@@ -6,10 +6,10 @@
     <description>Coveo Fonts Google APIs</description>
     <endpointUrl>https://fonts.googleapis.com</endpointUrl>
     <isActive>true</isActive>
-    <isApplicableToConnectSrc>false</isApplicableToConnectSrc>
+    <isApplicableToConnectSrc>true</isApplicableToConnectSrc>
     <isApplicableToFontSrc>true</isApplicableToFontSrc>
-    <isApplicableToFrameSrc>false</isApplicableToFrameSrc>
-    <isApplicableToImgSrc>false</isApplicableToImgSrc>
-    <isApplicableToMediaSrc>false</isApplicableToMediaSrc>
-    <isApplicableToStyleSrc>false</isApplicableToStyleSrc>
+    <isApplicableToFrameSrc>true</isApplicableToFrameSrc>
+    <isApplicableToImgSrc>true</isApplicableToImgSrc>
+    <isApplicableToMediaSrc>true</isApplicableToMediaSrc>
+    <isApplicableToStyleSrc>true</isApplicableToStyleSrc>
 </CspTrustedSite>

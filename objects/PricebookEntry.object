@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -171,7 +171,17 @@
     </fields>
     <fields>
         <fullName>IsActive</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>PSG_Disty_Cost__c</fullName>
+        <description>Represents the distributors cost that will be referred in quote lines.</description>
+        <label>Disty Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
         <trackHistory>true</trackHistory>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>Pricebook2Id</fullName>
@@ -198,7 +208,7 @@
     </fields>
     <fields>
         <fullName>UseStandardPrice</fullName>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>core_cpq_minimum_order_qty__c</fullName>
@@ -279,4 +289,17 @@
         <searchResultsAdditionalFields>PRODUCT2.ACTIVE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Product2.Core_Sales_Visible_Flag__c</searchResultsAdditionalFields>
     </searchLayouts>
+    <validationRules>
+        <fullName>Core_Prevent_Non_Sales_Visible_Flag_Rec</fullName>
+        <active>false</active>
+        <description>To prevent users from adding records with sales visible flag as false</description>
+        <errorConditionFormula>IF(($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE)
+,FALSE,
+(
+AND(Product2.Core_Sales_Visible_Flag__c)
+  
+)
+)</errorConditionFormula>
+        <errorMessage>You cannot add Products with Sales Visible Flag with Flase</errorMessage>
+    </validationRules>
 </CustomObject>

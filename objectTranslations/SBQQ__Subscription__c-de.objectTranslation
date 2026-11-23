@@ -49,6 +49,283 @@
         <name>SBQQ__SubscriptionSearchResults</name>
     </fieldSets>
     <fields>
+        <label><!-- Alt_Megacore --></label>
+        <name>Core_PSG_Alt_Megacore__c</name>
+        <picklistValues>
+            <masterLabel>MegaCore1</masterLabel>
+            <translation><!-- MegaCore1 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- AuthCode Type --></label>
+        <name>Core_PSG_AuthCode_Type__c</name>
+        <picklistValues>
+            <masterLabel>Guard ID</masterLabel>
+            <translation><!-- Guard ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Host ID</masterLabel>
+            <translation><!-- Host ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NIC ID</masterLabel>
+            <translation><!-- NIC ID --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- CTI Class --></label>
+        <name>Core_PSG_CTI_Class_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>Core_PSG_City_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Classification --></label>
+        <name>Core_PSG_Classification_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Companion Machine Id --></label>
+        <name>Core_PSG_Companion_Machine_Id_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_PSG_Country_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Eval Type --></label>
+        <name>Core_PSG_Eval_Type__c</name>
+        <picklistValues>
+            <masterLabel>Disk ID</masterLabel>
+            <translation><!-- Disk ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NIC ID</masterLabel>
+            <translation><!-- NIC ID --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Gen Reason --></label>
+        <name>Core_PSG_Gen_Reason__c</name>
+        <picklistValues>
+            <masterLabel>In Renewal Process</masterLabel>
+            <translation><!-- In Renewal Process --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maintenance Problem</masterLabel>
+            <translation><!-- Maintenance Problem --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Guard ID/Serial # --></label>
+        <name>Core_PSG_Guard_ID_Serial_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- IP Base Prod Serial # --></label>
+        <name>Core_PSG_IP_Base_Prod_SerialNum_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- License First Name --></label>
+        <name>Core_PSG_License_First_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Last Name --></label>
+        <name>Core_PSG_License_Last_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPII Cust Rev --></label>
+        <name>Core_PSG_MPII_Cust_Rev_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPII Prod Rev --></label>
+        <name>Core_PSG_MPII_Prod_Rev_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPII Upgrade Shipment Status --></label>
+        <name>Core_PSG_MPII_Upgrade_ShipmentStatus_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maintenance Status --></label>
+        <name>Core_PSG_Maintenance_Status__c</name>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive-No Upgrade</masterLabel>
+            <translation><!-- Inactive-No Upgrade --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Nios Cust Rev --></label>
+        <name>Core_PSG_Nios_Cust_Rev_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nios Upgrade Shipment Status --></label>
+        <name>Core_PSG_Nios_Upgrade_ShipmentStatus_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Node-locked --></label>
+        <name>Core_PSG_Node_locked__c</name>
+    </fields>
+    <fields>
+        <label><!-- OSR --></label>
+        <name>Core_PSG_OSR_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operating System --></label>
+        <name>Core_PSG_Operating_System__c</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (HP)</masterLabel>
+            <translation><!-- Other (HP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (Sun)</masterLabel>
+            <translation><!-- Other (Sun) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ver. 10</masterLabel>
+            <translation><!-- Ver. 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ver. 9</masterLabel>
+            <translation><!-- Ver. 9 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Order Activation Code --></label>
+        <name>Core_PSG_Order_Activation_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Notes Altera --></label>
+        <name>Core_PSG_Order_Notes_Altera__c</name>
+        <picklistValues>
+            <masterLabel>Promotion</masterLabel>
+            <translation><!-- Promotion --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Order --></label>
+        <name>Core_PSG_Order__c</name>
+        <relationshipLabel><!-- Subscriptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- POS Name --></label>
+        <name>Core_PSG_POS_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- P.O. --></label>
+        <name>Core_PSG_PO_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Part Number --></label>
+        <name>Core_PSG_Part_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Machine Name --></label>
+        <name>Core_PSG_Primary_Machine_Name_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prod Rev - Nios --></label>
+        <name>Core_PSG_Prod_Rev_Nios_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prod Rev - Quartus --></label>
+        <name>Core_PSG_Prod_Rev_Quartus_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Distributor --></label>
+        <name>Core_PSG_Product_Distributor__c</name>
+        <picklistValues>
+            <masterLabel>ARROW</masterLabel>
+            <translation><!-- ARROW --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Product Tools Type --></label>
+        <name>Core_PSG_Product_Tools_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quartus Cust Rev --></label>
+        <name>Core_PSG_Quartus_Cust_Rev_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quartus Upgrade Shipment Status --></label>
+        <name>Core_PSG_Quartus_Upgrade_ShipStatus_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Platform --></label>
+        <name>Core_PSG_RU_Platform__c</name>
+        <picklistValues>
+            <masterLabel>HP</masterLabel>
+            <translation><!-- HP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sun (Solaris)</masterLabel>
+            <translation><!-- Sun (Solaris) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Core_PSG_Region_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- S.O. --></label>
+        <name>Core_PSG_SO_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship Date --></label>
+        <name>Core_PSG_Ship_Date_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship to RegUser --></label>
+        <name>Core_PSG_Ship_to_RegUser__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>Core_PSG_State_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- VHDL --></label>
+        <name>Core_PSG_VHDL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Verilog --></label>
+        <name>Core_PSG_Verilog__c</name>
+    </fields>
+    <fields>
+        <label><!-- WarBoard Region --></label>
+        <name>Core_PSG_WarBoard_Region_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Warranty Type --></label>
+        <name>Core_PSG_Warranty_Type__c</name>
+        <picklistValues>
+            <masterLabel>Full</masterLabel>
+            <translation><!-- Full --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hardware Only</masterLabel>
+            <translation><!-- Hardware Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software Only</masterLabel>
+            <translation><!-- Software Only --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Zip Code --></label>
+        <name>Core_PSG_Zip_Code__c</name>
+    </fields>
+    <fields>
         <help>Account, der Inhaber dieses Abonnements ist. Diese Beziehung wird zur Berechnung von Mengenrabatten herangezogen.</help>
         <label><!-- Account --></label>
         <name>SBQQ__Account__c</name>
@@ -505,8 +782,53 @@
         <name>SBQQ__UnitCost__c</name>
     </fields>
     <fields>
+        <label><!-- Asset RowId --></label>
+        <name>Sales_Asset_RowId_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available Quantity --></label>
+        <name>Sales_Avail_Qty_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available Rehost --></label>
+        <name>Sales_Available_Rehost_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Sales_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expiration Date --></label>
+        <name>Sales_Expiration_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Host/Node Id --></label>
+        <name>Sales_Host_Node_Id_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Legacy Contract Id --></label>
         <name>Sales_Legacy_Contract_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lic.User Contact ID --></label>
+        <name>Sales_Lic_User_Contact_ID__c</name>
+        <relationshipLabel><!-- Subscriptions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- License Activation Code --></label>
+        <name>Sales_License_Activation_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Flag --></label>
+        <name>Sales_License_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Number --></label>
+        <name>Sales_License_Number_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maintenance Expiration --></label>
+        <name>Sales_Maintenance_Expiration_Dt__c</name>
     </fields>
     <fields>
         <label><!-- Active Product --></label>
@@ -515,6 +837,14 @@
     <fields>
         <label><!-- Renewal Status --></label>
         <name>Sales_Renewal_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- SO# --></label>
+        <name>Sales_SONUM_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Web Display Flag --></label>
+        <name>Sales_Web_Display_Flag__c</name>
     </fields>
     <gender>Neuter</gender>
     <nameFieldLabel>Abonnementnummer</nameFieldLabel>

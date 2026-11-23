@@ -4,43 +4,44 @@
     <encodingKey>UTF-8</encodingKey>
     <name>CampaignInviteForBulk_ENG</name>
     <style>none</style>
-    <subject>Action Needed to retain your access to valuable Intel confidential resources</subject>
+    <subject>Complete Your Registration Now</subject>
     <textOnly>We invite you to join our Intel Partner Alliance Program!
 
-Act Now to Retain Your Access to Developer Zone
+Get access to training, developer resources, a global ecosystem, support, and more.
 
-Join Intel® Partner Alliance now
-
-First Name: {!Contact.FirstName}
-Last Name: {!Contact.LastName}
-Username (Email Address):{!Contact.Email}
-
-
-Act now to retain your exclusive access to the Intel Developer Zone Premier and unlock new benefits by joining Intel® Partner Alliance! Intel Partner Alliance membership access is now required to maintain your exclusive access to the Intel Developer Zone Premier, providing access to Intel’s Resource and Documentation Center, plus other NDA tools and resources for developers. When you join Intel Partner Alliance, you will gain access to other exclusive, highly valued benefits designed for partners and their employees.  A few examples include:
-
-Access to Intel Partner University, including badges that can be earned for completing competencies - curated training curriculum built around strategic focus areas, allowing you to build expertise in product, technology, and or business segment areas.
-Highly curated content focused on key industry topics such as Networking, Edge, AI, via the newly created Partner Activation Zones. Activation Zones are digital-first workspaces that curate critical resources and benefits - activating partners to build, market, and sell solutions based on Intel technology.
-Resources to expand your knowledge on Deep Learning, Machine Learning, and Generative AI and learn to navigate AI challenges using industry models tailored to data parameters through AI Everywhere pathways training.
-
-Your company is already a valued member of Intel Partner Alliance.  Join now by enrolling as a contact and you will earn 100 points¹ for your company and begin experiencing everything Intel Partner Alliance and Developer Zone Premier have to offer.
-
-Follow these quick and easy steps:
-
-Click Join Now and follow the prompts* to link you to your company’s account.
-Once confirmed you’ll receive an email to log into Intel Partner Alliance.
-
-Don’t risk losing your access to the Intel Developer Zone - Join Intel Partner Alliance Now
+Take the Next Step: Complete Your Registration Now
 
 Click to join
 
-*Azure Multi-Factor Authentication (MFA) Help page - https://www.intel.com/content/www/us/en/support/articles/000092340/programs/access-entitlement-for-myintel-users.html?wapkw=azure%20mfa%20help   
+First Name: {!Contact.FirstName}
+Last Name: {!Contact.LastName}
+Username (Email Address): {!Contact.Email}
+Note your email address is your username.
+
+Get the support you need to accelerate innovation and grow your business when you join the Intel® Partner Alliance Program.
+
+Your membership provides instant access to an exclusive network of ecosystem partners.
+
+Get rewarded for being an active partner when you join the Intel® Partner Alliance. Partners receive access to advanced training, developer and marketing resources, the partner showcase, support, and partner-to-partner community rewards.
+
+Enable growth and facilitate greater collaboration through various membership tiers. Explore the program&apos;s benefits, requirements and member roles below. Join Intel® Partner Alliance to reach more audiences; accelerate innovation; and meet new partners.
+
+Take a few moments to complete your registration and get started today.
+
+Click to join
+
+This link will expire in 24 hours – click the existing ‘Click to Join’ link to get a refreshed link.
+
+Reap the benefits of being an Intel partner, register for Intel® Partner Alliance and start with 1,000 points¹
+
+Not only does Intel® Partner Alliance offer a large variety of tools to help grow your business, but it also offers Points Benefits, with multiple opportunities to earn &amp; redeem points for eligible purchases, training, and other activities. If you haven’t registered, now is the perfect time. See the points terms and conditions.
 
 Need help signing up to be a partner?
 Contact support
 
 ¹Must be Points eligible to qualify. See eligibility requirements.
 
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 
 Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>

@@ -18,7 +18,6 @@ import selectQuarter from '@salesforce/label/c.Core_MDF_LWC_SelectQuarter_Label'
 import getDataLabel from '@salesforce/label/c.Core_MDF_GetData';
 import recoveryDashboard from '@salesforce/label/c.Core_MDF_LWC_RecoveryDashboardLabel';
 import recoveryRecordNotPresesntMessage from '@salesforce/label/c.Core_MDF_LWC_RecoveryDashboardError';
-import partnerCommunityURL from '@salesforce/label/c.Core_MDF_PFRCommunityLink';
 
 
 export default class Core_MDF_Recovery_Dashboard extends NavigationMixin(LightningElement) {//this class needs to be changed?
@@ -150,7 +149,7 @@ export default class Core_MDF_Recovery_Dashboard extends NavigationMixin(Lightni
             "type": "standard__webPage", 
             "attributes": 
             { 
-                "url": partnerCommunityURL+"s/recovery-dashboard/?c__programId="+this.programSelectedId+"&c__accountId="+this.accValueSelected+"&c__quarterYear="+this.quarterValueSelected+"&c__isRecovRecNotPresent="+this.isRecoveryRecordNotPresent 
+                "url": "https://intel--crmdevccp.sandbox.my.site.com/s/recovery-dashboard/?c__programId="+this.programSelectedId+"&c__accountId="+this.accValueSelected+"&c__quarterYear="+this.quarterValueSelected+"&c__isRecovRecNotPresent="+this.isRecoveryRecordNotPresent 
             }, 
          }); 
     }
@@ -334,12 +333,10 @@ export default class Core_MDF_Recovery_Dashboard extends NavigationMixin(Lightni
     }
 
     handleProgramFilterChange(event) {
-        let qrParams = this.queryParams;
         this.accountOptions = [];
         console.log('event.detail.value ',event.detail.value);
         //if(!this.isExternalUser){
         //to remove existing account value on program change
-        qrParams.accountId = null;
         this.template.querySelector('c-core_-m-d-f_-custom-lookup').handleRemovePill(event);
         this.accValueSelected = null;
         //}

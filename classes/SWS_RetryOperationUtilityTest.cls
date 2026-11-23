@@ -5,10 +5,10 @@ public class SWS_RetryOperationUtilityTest {
     private static void setup(){
         User u = SWS_TestUtilty.createUser();
         System.runAs(u){
-            SWS_Cloud_Credit_Request__c req = SWS_TestUtilty.createSingleRequest(false);
-            req.SWS_Country__c = null;
+            SWS_Cloud_Credit_Request__c req = SWS_TestUtilty.createSingleRequest(true);
+            /*req.SWS_Country__c = null;
             req.SWS_Submitter_Requster_Email__c = true;
-            update req;
+            update req;*/
         }
     }
     

@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : Accenture
 * @group             : 
-* @last modified on  : 04-26-2026
+* @last modified on  : 04-15-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements Database.Batchable<sObject>,Database.Stateful{
@@ -69,20 +69,12 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
 
         try{
             List<User> userList = new List<User>();
-            List<User> userAEInactiveList = new List<User>();
-            List<User> userNewAEList = new List<User>();
-            if(!String.isEmpty(aeAction) && aeAction != Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
+            if(!String.isEmpty(aeAction)){
                 userList = [SELECT Id ,Name FROM User WHERE Email =:newAEEmail AND IsActive = true];
-            }
-            if(!String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
-                userAEInactiveList = [SELECT Id ,Name FROM User WHERE Email =:oldAEEmail AND IsActive = false];
-            }
-            if(!String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
-                userNewAEList = [SELECT Id ,Name FROM User WHERE Email =:newAEEmail AND IsActive = true];
             }
             String query1 = Label.Pricing_BulkInsertUpdateAESalesRep_Batch_Query1;
 
-            List<SBQQ__Quote__c> quotesList = !String.isEmpty(aeAction) && aeAction != Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users && !aeAction.contains('End Customer') ?  
+            List<SBQQ__Quote__c> quotesList = !String.isEmpty(aeAction) && !aeAction.contains('End Customer') ?  
                 [SELECT Id,Name, Pricing_Intel_Account_Exec_Email_Txt__c FROM SBQQ__Quote__c 
                  WHERE Pricing_Intel_Account_Exec_Email_Txt__c =: UserInfo.getUserEmail() 
                  AND Pricing_Quote_Program_Nm__c =: Label.Pricing_Program_Code_Tender AND Pricing_On_Hold_Cb__c = false] : 
@@ -90,10 +82,6 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
                 [SELECT Id,Name, Pricing_Intel_Account_Exec_Email_Txt__c FROM SBQQ__Quote__c 
                  WHERE Pricing_Intel_Sales_Rep_Email_Txt__c =: oldFSEEmail 
                  AND Pricing_Quote_Program_Nm__c =: Label.Pricing_Program_Code_Tender AND Pricing_On_Hold_Cb__c = false] :
-            (!String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users) ? 
-            [SELECT Id,Name, Pricing_Intel_Account_Exec_Email_Txt__c FROM SBQQ__Quote__c 
-            WHERE Pricing_Intel_Account_Exec_Email_Txt__c =: oldAEEmail 
-            AND Pricing_Quote_Program_Nm__c =: Label.Pricing_Program_Code_Tender AND Pricing_On_Hold_Cb__c = false] :
             (!String.isEmpty(aeAction) && aeAction == Label.Pricing_EC_AE_BulkInsertion_Action && String.isNotBlank(endCustomerCountryName) && String.isNotBlank(unifiedEndCustomerId)) ? 
                 Database.query(query1 + ' AND Pricing_On_Hold_Cb__c =' + false + ' AND ((Pricing_IsUnifiedCustomer__c =' + true +' AND Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Id__c =\'' + unifiedEndCustomerId +'\''+') OR (Pricing_IsUnifiedCustomer__c =' + false +' AND Pricing_End_Customer__r.Pricing_Unified_EndCustomer_Id__c =\'' + unifiedEndCustomerId +'\''+')) AND Pricing_End_Customer_Country_Nm__c =\''+ endCustomerCountryName+'\'') :
             (!String.isEmpty(aeAction) && aeAction == Label.Pricing_EC_AE_BulkInsertion_Action && String.isBlank(endCustomerCountryName) && String.isBlank(unifiedEndCustomerId)) ? 
@@ -120,20 +108,14 @@ public without sharing class Pricing_BulkInsertUpdateAESalesRep_Batch implements
                 [SELECT Id, Assignee.Id FROM PermissionSetAssignment WHERE Assignee.Email =: newFSEEmail 
                     AND Assignee.IsActive = true AND PermissionSet.name =: Label.Pricing_Tender_PermissionSets_TenderUser LIMIT 1];
             
-            if(userList.size() == 0 && !String.isEmpty(aeAction) && aeAction != Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
-                errorIndicatorUser = Label.Pricing_Bulk_Invalid_AE_User_Err_Msg;
-                errorRespList.add(errorIndicatorUser);
-                createCoreLogEntry(errorIndicatorUser, 'An error has occurred in '+Label.Pricing_IQR_SFDC_Environment+' when processing the Bulk Action - '+ aeAction, aeAction );        
-            }
-            else if((userNewAEList.size() == 0 || userAEInactiveList.size() == 0) && !String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users){
+            if(userList.size() == 0 && !String.isEmpty(aeAction)){
                 errorIndicatorUser = Label.Pricing_Bulk_Invalid_AE_User_Err_Msg;
                 errorRespList.add(errorIndicatorUser);
                 createCoreLogEntry(errorIndicatorUser, 'An error has occurred in '+Label.Pricing_IQR_SFDC_Environment+' when processing the Bulk Action - '+ aeAction, aeAction );        
             }
             else if(quotesList.size() == 0){
                 errorIndicatorQuote = (!String.isEmpty(fseAction) && (fseAction == Label.Pricing_FSE_Bulk_Insert_Flow_Action || fseAction == Label.Pricing_FSE_Bulk_Insert_Flow_Action_For_Inactive_Users || fseAction == 'Sales Rep Replace')) ?  Label.Pricing_Bulk_AESDM_No_Quotes_Err_Msg.replace('<email address>' , oldFSEEmail) 
-                                      : (!String.isEmpty(aeAction) && aeAction.contains('End Customer')) ? Label.Pricing_bulk_EC_AE_No_Quotes_Msg : 
-                                      (!String.isEmpty(aeAction) && aeAction == Label.Pricing_AE_Bulk_Insert_Flow_Action_For_Inactive_Users)? Label.Pricing_Bulk_AESDM_No_Quotes_Err_Msg.replace('<email address>' , oldAEEmail): Label.Pricing_Bulk_AESDM_No_Quotes_Err_Msg.replace('<email address>' , UserInfo.getUserEmail());
+                                      : (!String.isEmpty(aeAction) && aeAction.contains('End Customer')) ? Label.Pricing_bulk_EC_AE_No_Quotes_Msg : Label.Pricing_Bulk_AESDM_No_Quotes_Err_Msg.replace('<email address>' , UserInfo.getUserEmail());
 
                 errorRespList.add(errorIndicatorQuote);
                 createCoreLogEntry(errorIndicatorQuote,'An error has occurred in '+Label.Pricing_IQR_SFDC_Environment+' when processing the Bulk Action - '+ (!String.isEmpty(aeAction) ? aeAction : fseAction), 

@@ -5,8 +5,8 @@
     <decisions>
         <name>Opportunity_Count_check</name>
         <label>Opportunity Count check</label>
-        <locationX>314</locationX>
-        <locationY>287</locationY>
+        <locationX>578</locationX>
+        <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Opportunity_count_value</name>
@@ -53,7 +53,6 @@
             <label>Opportunity count is null</label>
         </rules>
     </decisions>
-    <description>This flow updates Opportunity Account flag whenever an opportunity is added or removed from an Account</description>
     <environments>Default</environments>
     <interviewLabel>Core Opportunity Account check {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ACM Core Opportunity Account Check</label>
@@ -76,11 +75,114 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Log_Entry_for_Create_Records</name>
+        <label>Create Log Entry for Create Records</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Core_Opportunity_Account_check</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Update Opportunity account check</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Log_Entry_for_Opportunity_account_unchecked</name>
+        <label>Create Log Entry for Opportunity account unchecked</label>
+        <locationX>842</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Core_Opportunity_Account_check</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Opportunity account unchecked</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordUpdates>
         <name>Opportunity_account_unchecked</name>
         <label>Opportunity account unchecked</label>
-        <locationX>314</locationX>
-        <locationY>395</locationY>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_for_Opportunity_account_unchecked</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Is_Opportunity_Account__c</field>
             <value>
@@ -93,7 +195,10 @@
         <name>Update_Opportunity_account_check</name>
         <label>Update Opportunity account check</label>
         <locationX>50</locationX>
-        <locationY>395</locationY>
+        <locationY>431</locationY>
+        <faultConnector>
+            <targetReference>Create_Log_Entry_for_Create_Records</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Core_Is_Opportunity_Account__c</field>
             <value>
@@ -103,12 +208,12 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>188</locationX>
+        <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Opportunity_Count_check</targetReference>
         </connector>
-        <filterLogic>1 AND (2 OR 3) AND (3 OR 4 OR 5) AND 6</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Allow_Opportunity_Account_Edit__c</field>
             <operator>EqualTo</operator>
@@ -116,44 +221,9 @@
                 <booleanValue>false</booleanValue>
             </value>
         </filters>
-        <filters>
-            <field>Core_Opportunity_Count__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Allow_Opportunity_Account_Edit__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Opportunity_Count__c</field>
-            <operator>GreaterThanOrEqualTo</operator>
-            <value>
-                <numberValue>1.0</numberValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Opportunity_Count__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <numberValue>0.0</numberValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Account_Record_Type__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Intel Account</stringValue>
-            </value>
-        </filters>
         <object>Account</object>
-        <recordTriggerType>Update</recordTriggerType>
-        <triggerType>RecordBeforeSave</triggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
     <variables>

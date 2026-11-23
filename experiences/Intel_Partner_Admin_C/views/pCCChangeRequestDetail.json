@@ -1,0 +1,126 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "141e2185-2e68-40d9-9869-57ac0b4544df",
+  "label" : "PCC Change Request Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "backgroundVariant" : "mosaic-l0",
+        "recordId" : "{!recordId}",
+        "subtitle" : "",
+        "title" : "Intel® Deal Registration"
+      },
+      "componentName" : "c:ipaMarqueeLeads",
+      "id" : "1d333e8d-0f88-4668-9fa8-e132c7a2dd7d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e2f7f90b-c35d-4cd1-a45e-0e6ef4b6e27e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "09dc8bad-4652-4b18-a71d-fe412631f880",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "59e25c68-f688-49ac-9868-dc63d7f3a642",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "a4bab816-279c-425c-9eed-fb182c548b31",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "e39d9b38-070e-484b-93be-c94bd60a7f0a",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Details"
+          }, {
+            "UUID" : "7631f83e-bdde-42e0-b4e2-205e10889e10",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "Related"
+          } ],
+          "useOverflowMenu" : true
+        }
+      },
+      "componentName" : "forceCommunity:tabLayout",
+      "id" : "a4bab816-279c-425c-9eed-fb182c548b31",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "b3426604-6c68-4156-b5b3-22d1bf11eca0",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "e39d9b38-070e-484b-93be-c94bd60a7f0a",
+        "regionLabel" : "Details",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "relatedListApiName" : "Change_Request_Line_Items__r",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "28f92578-0259-486d-97e3-3ca8d96ac437",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "7631f83e-bdde-42e0-b4e2-205e10889e10",
+        "regionLabel" : "Related",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fe3affff-b3ff-4dcd-ad1a-147f64e11f28",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "fffc8ada-08a4-4feb-bcc9-368d0980cba1",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "af4da1e3-349f-4ca1-b336-ad3c27395663",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "D9gihoBcrVmPnDirmD7WyT5a9SjrsS",
+  "type" : "view",
+  "viewType" : "detail-aFy"
+}

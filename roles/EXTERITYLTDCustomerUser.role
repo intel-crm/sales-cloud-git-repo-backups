@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Vitec Ltd. Customer User</description>
+    <description>EXTERITY LTD Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Vitec Ltd. Customer User</name>
+    <name>EXTERITY LTD Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>emp_12341923_Alastair_Swain</parentRole>
+    <parentRole>EMP_11570288_Agnieszka_Kania</parentRole>
 </Role>

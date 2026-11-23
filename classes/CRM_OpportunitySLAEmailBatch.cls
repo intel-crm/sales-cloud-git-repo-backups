@@ -23,6 +23,7 @@ global class CRM_OpportunitySLAEmailBatch implements Database.Batchable<SObject>
                 FROM CRM_Opportunity_SLA_Config__mdt]) 
             {
                 String key = config.CRM_Record_Type__c + '|' + config.CRM_Stage_Name__c;
+                system.debug('INSIDE SLA CONFIG:'+config+' KEY IS:'+key);
                 configMap.put(key, config);
             }
            
@@ -86,7 +87,22 @@ global class CRM_OpportunitySLAEmailBatch implements Database.Batchable<SObject>
     }
 
     global Database.QueryLocator start(Database.BatchableContext bc) {
+        /*return Database.getQueryLocator(
+           [SELECT Id, Name, AccountId, Core_Opportunity_Type__c, CloseDate, Description, StageName, RecordType.Name, RecordTypeId,
+                  Core_Days_in_Current_Stage__c, Core_Status_Update__c, Core_Product_Application__c,
+                   Core_Product_Segment__c, Core_Consumption_Market__c, Core_Technical_Owner__c, Core_Intel_Platform__c, 
+                   Core_Competitive_Architecture__c, Core_Product_Count__c, Core_Contact_Roles_Count__c, 
+                   Core_First_Customer_Ship_Date__c, OwnerId, Owner.ManagerId, Owner.isActive, Core_Opportunity_Coverage_Nm__c
+            FROM Opportunity 
+            WHERE StageName IN :STAGE_NAMES 
+            AND Core_Days_in_Current_Stage__c >= :LOWEST_SLA_THRESHOLD 
+            AND CreatedDate >= :TWO_MONTHS_BACK 
+            AND RecordType.Name IN :RECORD_TYPE_NAME
+            ORDER BY OwnerId
+        ]
+);*/
        String query = 'SELECT Id, Name, AccountId, Core_Opportunity_Type__c, CloseDate, Description, StageName, RecordType.Name, RecordTypeId,Core_Days_in_Current_Stage__c, Core_Status_Update__c, Core_Product_Application__c,Core_Product_Segment__c, Core_Consumption_Market__c, Core_Technical_Owner__c, Core_Intel_Platform__c, Core_Competitive_Architecture__c, Core_Product_Count__c, Core_Contact_Roles_Count__c,Core_First_Customer_Ship_Date__c, OwnerId, Owner.ManagerId, Owner.isActive, Core_Opportunity_Coverage_Nm__c,Core_Commissionable__c FROM Opportunity '+ QUERY_CONDITIONS;
+       system.debug('INSIDE QUERY IS:'+query);
         return Database.getQueryLocator(query);
     }
 
@@ -149,6 +165,8 @@ global class CRM_OpportunitySLAEmailBatch implements Database.Batchable<SObject>
         
         for (Opportunity opp : scope) {
             String key = getKey(opp.RecordType.Name, opp.StageName);
+            system.debug('INSIDE KEY:'+key+' RECORD TYPE:'+opp.RecordType.Name+' OPP NAME:'+opp.Name);
+            system.debug('INSIDE CONFIGMAP:'+configMap.keySet());
             CRM_Opportunity_SLA_Config__mdt config = configMap.get(key);
             List<String> coverageSet = String.isNotBlank(config.CRM_Opportunity_Coverage__c) ? config.CRM_Opportunity_Coverage__c.split(';') : new List<String>();
   
@@ -262,6 +280,7 @@ global class CRM_OpportunitySLAEmailBatch implements Database.Batchable<SObject>
                 recipientMap.get(breach.recipientId).addOpportunityBreach(breach);
             }
         }
+        
         return recipientMap.values();
     }
     
@@ -307,7 +326,9 @@ global class CRM_OpportunitySLAEmailBatch implements Database.Batchable<SObject>
             
             // Build email
             Messaging.SingleEmailMessage email = buildEmailWithTemplate(firstBreach.opportunity, recipient, templateId, htmlTable,reportURL,templateBody,isManagerEmail);
+            system.debug('INSIDE MAIL:'+email);
             emails.add(email);
+            
             Map<String,String> emptyIdAddressMap = new Map<String,String>();
 			Map<String,User>  emptyContactIdUserMap= new Map<String,User>();
             

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>ARROW ELECTRONICS, INC Partner User</description>
+    <description>ARROW ELECTRONICS, INC Auto Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>ARROW ELECTRONICS, INC Partner User</name>
+    <name>ARROW ELECTRONICS, INC Auto Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10660507_Tim_Swyers</parentRole>
+    <parentRole>EMP_10047545_Sueellen_Uhte</parentRole>
 </Role>

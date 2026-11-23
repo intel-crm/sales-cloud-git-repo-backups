@@ -7,7 +7,6 @@
         <locationY>0</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailSubject</name>
             <value>
@@ -35,7 +34,6 @@
         <locationY>0</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailSubject</name>
             <value>
@@ -60,16 +58,15 @@
         <processMetadataValues>
             <name>apexSelection</name>
             <value>
-                <stringValue>Core_IPS_JSONTriggerHandler</stringValue>
+                <stringValue>Core_IPS_BES_JSONTriggerHandler</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Call JSON trigger handler</label>
+        <label>Core BES JSON Handler</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
         <actionName>Core_IPS_BES_JSONTriggerHandler</actionName>
         <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -311,7 +308,7 @@
         <queriedFields>Id</queriedFields>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>

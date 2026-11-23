@@ -18,8 +18,8 @@ public class ER_RegistrationProfileResponse {
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_SCOPE    = 'ER_RegistrationProfileResponse';
-
-    /*commented as part of EBR framework and implemented this logic with flows
+    
+    /*Commented as part of EBR framework and implemented the logic with Flows
     public static void getProfileResponseValues(List<PRM_Registration_Request__c> regRequestListNew, Map<id, PRM_Registration_Request__c> oldregRequestMap){
       
         String params = '';

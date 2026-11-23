@@ -33,7 +33,7 @@
             var state = res.getState();
             if (state === "SUCCESS") {
                 component.set("v.spinner", false);
-			 	var message = component.get("v.isOutComeBased") ? $A.get("$Label.c.Core_MDF_Submit_For_PaymentClearance_ToastMessage") : $A.get("$Label.c.Core_MDF_Submit_For_PIC_ToastMessage");
+		var message = component.get("v.isOutComeBased") ? $A.get("$Label.c.Core_MDF_Submit_For_PaymentClearance_ToastMessage") : $A.get("$Label.c.Core_MDF_Submit_For_PIC_ToastMessage");
                 this.fireToastEvent(message, "3000", "success");
 
                 //Roshan - close popup explicitly

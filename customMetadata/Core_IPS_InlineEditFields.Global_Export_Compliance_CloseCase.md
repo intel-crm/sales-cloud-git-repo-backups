@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Field_Name__c</field>
-        <value xsi:type="xsd:string">Core_IPS_CaseSource_of_Resolution__c,Status,Core_Sub_Status__c</value>
+        <value xsi:type="xsd:string">Core_IPS_CaseSource_of_Resolution__c,Status,Core_Sub_Status__c,Core_IPS_Problem_Statement__c,Core_IPS_Resolution__c</value>
     </values>
     <values>
         <field>Profile_Name__c</field>

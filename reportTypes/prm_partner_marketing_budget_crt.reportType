@@ -133,6 +133,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_IsApprovalProcessBypassed_Ind__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Budget_Type_Report_txt__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
@@ -209,6 +214,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Legacy_Budget_Ind__c</field>
+            <table>PartnerMarketingBudget</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_budget_ref_txt__c</field>
             <table>PartnerMarketingBudget</table>
         </columns>
         <columns>

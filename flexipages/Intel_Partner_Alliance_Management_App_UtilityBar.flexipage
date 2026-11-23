@@ -6,7 +6,7 @@
                 <componentInstanceProperties>
                     <name>eager</name>
                     <type>decorator</type>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -31,7 +31,7 @@
                 <componentInstanceProperties>
                     <name>width</name>
                     <type>decorator</type>
-                    <value>380</value>
+                    <value>340</value>
                 </componentInstanceProperties>
                 <componentName>pRM_CreateIssueForm</componentName>
                 <identifier>pRM_CreateIssueForm</identifier>

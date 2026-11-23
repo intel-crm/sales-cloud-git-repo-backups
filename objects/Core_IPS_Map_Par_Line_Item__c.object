@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Product_Access_Line_Item_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Product_Access_Line_Item_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -260,7 +254,7 @@ Indicates if the PAR line item requires approval or will automatically be approv
     <fields>
         <fullName>Core_IPS_ProfileBasedRecordLink__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( CreatedBy.Profile.Name  = &quot;IPS Support Org Admin&quot;,  &quot;https://intel.my.salesforce.com//&quot;&amp;Id , &quot;https://intel.lightning.force.com/lightning/r/Core_IPS_Map_Par_Line_Item__c/&quot;&amp;Id&amp;&quot;/view&quot;)</formula>
+        <formula>IF( CreatedBy.Profile.Name  = &quot;IPS Support Org Admin&quot;,  &quot;Environment.Core_IPS_Notification_Internal_URL/&quot;&amp;Id , &quot;https://intel.lightning.force.com/lightning/r/Core_IPS_Map_Par_Line_Item__c/&quot;&amp;Id&amp;&quot;/view&quot;)</formula>
         <label>ProfileBasedRecordLink</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -604,7 +598,7 @@ PLEASE NOTE:  You cannot manually create new Product Access Line Items through t
         <masterLabel>Inactivate Line Item</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/19.0/connection.js&quot;)} 
 
 // Get the record
 var LI = new sforce.SObject(&quot;Core_IPS_Map_Par_Line_Item__c&quot;); 

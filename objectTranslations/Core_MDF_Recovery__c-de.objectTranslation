@@ -3,42 +3,42 @@
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>false</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Nominative</caseType>
         <plural>true</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>false</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Accusative</caseType>
         <plural>true</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>false</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Genitive</caseType>
         <plural>true</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>false</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Dative</caseType>
         <plural>true</plural>
-        <value><!-- Recovery --></value>
+        <value>Recovery</value>
     </caseValues>
     <fields>
         <label>Betrag (USD)</label>
@@ -59,9 +59,9 @@
         <name>Core_MDF_Recovered_Budget_Nm__c</name>
     </fields>
     <fields>
-        <label>Begleichen, dann bezahlt werden</label>
+        <label><!-- Settle, then get paid? --></label>
         <name>Core_MDF_Sure_Pay_Ind__c</name>
     </fields>
-    
+    <gender>Neuter</gender>
     <nameFieldLabel><!-- Recovery Number --></nameFieldLabel>
 </CustomObjectTranslation>

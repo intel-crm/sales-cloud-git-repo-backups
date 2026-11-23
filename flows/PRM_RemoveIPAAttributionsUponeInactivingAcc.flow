@@ -4,7 +4,7 @@
         <description>Get the Record Type, Record ID and Unified ID of the Record sent by platform event.</description>
         <name>Get_Acc_Details_from_Platform_Event</name>
         <label>Get Account Details</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>170</locationY>
         <actionName>PRM_AccChange_ResponseParser</actionName>
         <actionType>apex</actionType>
@@ -25,29 +25,6 @@
     <apiVersion>62.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>assign_inactive_status_to_affiliation</name>
-        <label>assign inactive status to affiliation</label>
-        <locationX>138</locationX>
-        <locationY>1934</locationY>
-        <assignmentItems>
-            <assignToReference>loop_affiliations_for_OPID.PRM_Active__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>affliationsToUpdate</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>loop_affiliations_for_OPID</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>loop_affiliations_for_OPID</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Assign_inactive_status_to_Inactive</name>
         <label>Assign inactive status to Inactive</label>
         <locationX>138</locationX>
@@ -60,24 +37,17 @@
             </value>
         </assignmentItems>
         <assignmentItems>
+            <assignToReference>ipaacc</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Acm_to_Inactive.PRM_Account_Id__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
             <assignToReference>listOfACMToUpdate</assignToReference>
             <operator>Add</operator>
             <value>
                 <elementReference>Acm_to_Inactive</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>opid_id</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Acm_to_Inactive.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>IntelAccID</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Acm_to_Inactive.PRM_Account_Id__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -102,39 +72,9 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assignment_intel_accs_strategyname</name>
-        <label>Assignment intel accs strategyname</label>
-        <locationX>138</locationX>
-        <locationY>1442</locationY>
-        <assignmentItems>
-            <assignToReference>affNameOfLoc</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>loop_affliliations_for_strategyname_of_intel.PRM_Builder_Strategy__r.Name</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>loop_affliliations_for_strategyname_of_intel.PRM_Active__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>affliationsToUpdate</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>loop_affliliations_for_strategyname_of_intel</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>loop_affliliations_for_strategyname_of_intel</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>channelprogram_not_found</name>
         <label>channelprogram not found</label>
-        <locationX>1370</locationX>
+        <locationX>842</locationX>
         <locationY>494</locationY>
         <assignmentItems>
             <assignToReference>logentry</assignToReference>
@@ -145,26 +85,9 @@
         </assignmentItems>
     </assignments>
     <assignments>
-        <name>Copy_1_of_update_failed_for_affiliation</name>
-        <label>update failed for affiliation</label>
-        <locationX>314</locationX>
-        <locationY>2318</locationY>
-        <assignmentItems>
-            <assignToReference>logentry</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Failed to update affiliation</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Log_Entry</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>If_no_ACM_record_found</name>
         <label>If no ACM record found</label>
-        <locationX>1106</locationX>
+        <locationX>578</locationX>
         <locationY>710</locationY>
         <assignmentItems>
             <assignToReference>logentry</assignToReference>
@@ -179,26 +102,9 @@
         </connector>
     </assignments>
     <assignments>
-        <name>no_records</name>
-        <label>no records</label>
-        <locationX>578</locationX>
-        <locationY>1226</locationY>
-        <assignmentItems>
-            <assignToReference>logentry</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>No affiliation records found</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Log_Entry</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>NoInactiveAcc</name>
         <label>Account was Not Inactivated</label>
-        <locationX>1634</locationX>
+        <locationX>1106</locationX>
         <locationY>386</locationY>
         <assignmentItems>
             <assignToReference>logentry</assignToReference>
@@ -221,7 +127,7 @@
     <assignments>
         <name>update_failed_for_ACM</name>
         <label>update failed for ACM</label>
-        <locationX>842</locationX>
+        <locationX>314</locationX>
         <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>logentry</assignToReference>
@@ -365,13 +271,6 @@
         <dataType>String</dataType>
     </constants>
     <constants>
-        <name>opidrecordtype</name>
-        <dataType>String</dataType>
-        <value>
-            <stringValue>Partner Account Group Affiliation</stringValue>
-        </value>
-    </constants>
-    <constants>
         <name>PRM_ChannelProgramName</name>
         <dataType>String</dataType>
         <value>
@@ -397,7 +296,7 @@
         <description>Check if Account is turned Inactive.</description>
         <name>Account_turned_Inactive</name>
         <label>Account turned Inactive?</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>278</locationY>
         <defaultConnector>
             <targetReference>NoInactiveAcc</targetReference>
@@ -419,77 +318,6 @@
             <label>Inactive Account</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>Check_if_its_current_location_account</name>
-        <label>Check if its current location account</label>
-        <locationX>270</locationX>
-        <locationY>1334</locationY>
-        <defaultConnector>
-            <targetReference>loop_affliliations_for_strategyname_of_intel</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>ifnot</defaultConnectorLabel>
-        <rules>
-            <name>if_current_deactivate_account</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>loop_affliliations_for_strategyname_of_intel.PRM_Account__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>IntelAccID</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>loop_affliliations_for_strategyname_of_intel.PRM_Active__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assignment_intel_accs_strategyname</targetReference>
-            </connector>
-            <label>if current deactivate account</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>check_if_OPID_contains_related_affiliations</name>
-        <label>check if OPID contains related affiliations</label>
-        <locationX>270</locationX>
-        <locationY>1826</locationY>
-        <defaultConnector>
-            <targetReference>loop_affiliations_for_OPID</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>if not</defaultConnectorLabel>
-        <rules>
-            <name>if_yes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>loop_affiliations_for_OPID.PRM_Account__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>opid_id</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>loop_affiliations_for_OPID.RecordType.Name</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>opidrecordtype</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>affNameOfLoc</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <elementReference>loop_affiliations_for_OPID.PRM_Builder_Strategy__r.Name</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>assign_inactive_status_to_affiliation</targetReference>
-            </connector>
-            <label>if yes</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
     <interviewLabel>PRM_RemoveIPAAttributionsUponeInactivingAcc {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PRM_RemoveIPAAttributionsUponeInactivingAcc</label>
@@ -506,34 +334,6 @@
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>update_ACM_record</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
-        <name>loop_affiliations_for_OPID</name>
-        <label>loop affiliations for OPID</label>
-        <locationX>50</locationX>
-        <locationY>1718</locationY>
-        <collectionReference>get_IPA_Affliation_records_to_inactive</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>check_if_OPID_contains_related_affiliations</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>update_affilitions</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
-        <name>loop_affliliations_for_strategyname_of_intel</name>
-        <label>loop affliliations for strategyname of intel</label>
-        <locationX>50</locationX>
-        <locationY>1226</locationY>
-        <collectionReference>get_IPA_Affliation_records_to_inactive</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Check_if_its_current_location_account</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>loop_affiliations_for_OPID</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -558,8 +358,8 @@
     <recordCreates>
         <name>Log_Entry</name>
         <label>Log Entry</label>
-        <locationX>842</locationX>
-        <locationY>2600</locationY>
+        <locationX>578</locationX>
+        <locationY>1400</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -682,77 +482,26 @@
         <object>ChannelProgram</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <recordLookups>
-        <name>get_IPA_Affliation_records_to_inactive</name>
-        <label>get IPA Affliation records to inactive</label>
-        <locationX>50</locationX>
-        <locationY>1118</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>loop_affliliations_for_strategyname_of_intel</targetReference>
-        </connector>
-        <faultConnector>
-            <targetReference>no_records</targetReference>
-        </faultConnector>
-        <filterLogic>1 AND (2 OR 3)</filterLogic>
-        <filters>
-            <field>PRM_Active__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Account__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>IntelAccID</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Account__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>opid_id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>PRM_IPA_Affiliation__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordUpdates>
         <name>update_ACM_record</name>
         <label>update ACM record</label>
         <locationX>50</locationX>
         <locationY>1010</locationY>
         <connector>
-            <targetReference>get_IPA_Affliation_records_to_inactive</targetReference>
+            <targetReference>Log_Entry</targetReference>
         </connector>
         <faultConnector>
             <targetReference>update_failed_for_ACM</targetReference>
         </faultConnector>
         <inputReference>listOfACMToUpdate</inputReference>
     </recordUpdates>
-    <recordUpdates>
-        <name>update_affilitions</name>
-        <label>update affilitions</label>
-        <locationX>50</locationX>
-        <locationY>2210</locationY>
-        <connector>
-            <targetReference>Log_Entry</targetReference>
-        </connector>
-        <faultConnector>
-            <targetReference>Copy_1_of_update_failed_for_affiliation</targetReference>
-        </faultConnector>
-        <inputReference>affliationsToUpdate</inputReference>
-    </recordUpdates>
     <start>
-        <locationX>716</locationX>
+        <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Acc_Details_from_Platform_Event</targetReference>
         </connector>
-        <flowRunAsUser>TriggeringUser</flowRunAsUser>
+        <flowRunAsUser>DefaultWorkflowUser</flowRunAsUser>
         <object>ACM_Account_Change_Event__e</object>
         <triggerType>PlatformEvent</triggerType>
     </start>
@@ -764,21 +513,6 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Account</objectType>
-    </variables>
-    <variables>
-        <name>affliationsToUpdate</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>PRM_IPA_Affiliation__c</objectType>
-    </variables>
-    <variables>
-        <name>affNameOfLoc</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
     </variables>
     <variables>
         <description>Deactivation Inbound Record Creation Failed</description>
@@ -850,13 +584,6 @@
         <scale>0</scale>
     </variables>
     <variables>
-        <name>opid_id</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
         <name>PRM_ChannelProgram</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -870,12 +597,5 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Account</objectType>
-    </variables>
-    <variables>
-        <name>uniquekeyOfAccAndAffName</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
     </variables>
 </Flow>

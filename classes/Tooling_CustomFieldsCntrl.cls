@@ -7,7 +7,7 @@ public class Tooling_CustomFieldsCntrl {
     
     @AuraEnabled
     public static List<String> getCustomFieldIds() {
-        try{
+        
         HttpRequest req = createToolingAPIRequest('query?q=select+id+from+CustomField+where+NamespacePrefix+=+null', 'GET', false);
         HttpResponse response = sendToolingAPIRequest(req);
         System.debug(' -->'+JSON.serialize(response.getBody()));
@@ -38,7 +38,7 @@ public class Tooling_CustomFieldsCntrl {
                 break;
             }
         }
-        }catch(Exception ex){System.debug('Error -->'+ex.getMessage());}
+        
         return recordIds;
     }
     
@@ -53,8 +53,7 @@ public class Tooling_CustomFieldsCntrl {
         for (String fieldId : fieldIds) {
             refMap.put(fieldId, true);
         }
-        List<Id> unusedCustomFieldIds = new List<Id>();
-        try{
+        
         HttpRequest req = createToolingAPIRequest('query?q=select+Id+,MetadataComponentId+,MetadataComponentNamespace+,MetadataComponentName+,MetadataComponentType+,RefMetadataComponentId+,RefMetadataComponentNamespace+,RefMetadataComponentName+,RefMetadataComponentType+from+MetadataComponentDependency+where+RefMetadataComponentId+in' + ids, 'GET', false);
         HttpResponse res = sendToolingAPIRequest(req);
         
@@ -83,14 +82,13 @@ public class Tooling_CustomFieldsCntrl {
             fieldWrapperList.add(wrap);
         }
         
-        
+        List<Id> unusedCustomFieldIds = new List<Id>();
         
         for (String fieldId : refMap.keySet()) {
             if (refMap.get(fieldId)) {
                 unusedCustomFieldIds.add(fieldId);
             }
         }
-        }catch(Exception ex){System.debug('Error -->'+ ex.getMessage());}
         
         return getUnusedFieldDetails(unusedCustomFieldIds);
     }
@@ -98,13 +96,10 @@ public class Tooling_CustomFieldsCntrl {
     @AuraEnabled
     public static List<Tooling_FieldwrapperClass> getUnusedFieldDetails(List<Id> customFieldIds) {
         String ids = buildIdList(customFieldIds);
-        List<Tooling_FieldwrapperClass> fieldWrapperList = new List<Tooling_FieldwrapperClass>();
-        try{
-            
         
         HttpRequest req = createToolingAPIRequest('query?q=select+id+,DeveloperName+,EntityDefinition.Label+,EntityDefinition.DeveloperName+from+CustomField+where+id+in' + ids, 'GET', false);
         HttpResponse response = sendToolingAPIRequest(req);
-        
+        List<Tooling_FieldwrapperClass> fieldWrapperList = new List<Tooling_FieldwrapperClass>();
         
         Map<String, Object> jsonResponse = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
         List<Object> records = (List<Object>) jsonResponse.get('records');
@@ -119,12 +114,14 @@ public class Tooling_CustomFieldsCntrl {
             
             if (objectMap.containsKey('EntityDefinition')) {
                 Map<String, Object> objectDetails = (Map<String, Object>) objectMap.get('EntityDefinition');
-                if (objectDetails != null && objectDetails.containsKey('Label')) {fieldWrapper.ObjectName = (String) objectDetails.get('Label');fieldWrapper.objectAPIName = (String) objectDetails.get('DeveloperName');}
+                if (objectDetails != null && objectDetails.containsKey('Label')) {
+                    fieldWrapper.ObjectName = (String) objectDetails.get('Label');
+                    fieldWrapper.objectAPIName = (String) objectDetails.get('DeveloperName');
+                }
             }
             
             fieldWrapperList.add(fieldWrapper);
         }
-        }catch(Exception ex){System.debug('Error -->'+ex.getMessage());}
         
         return fieldWrapperList;
     }
@@ -152,7 +149,9 @@ public class Tooling_CustomFieldsCntrl {
         for (Integer i = 0; i < ids.size(); i++) {
             String id = ids[i];
             idList += '\'' + id + '\'';
-            if (i < ids.size() - 1 && i <2000)  {idList += ',';}
+            if (i < ids.size() - 1 && i <2000)  {
+                idList += ',';
+            }
             
         }
         idList += ')';

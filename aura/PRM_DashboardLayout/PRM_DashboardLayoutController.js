@@ -46,6 +46,9 @@
                         console.log('Internal user');
                         component.set("v.showManageManagePartnerBtn",true);
                         component.set("v.showManageStorefrontBtn",false);
+                        //window.open($A.get("$Label.c.PMP_Marketplace_Community_URL") + "/error", "_self");
+
+                        //window.open("$Label.c.PMP_Marketplace_Community_URL"+"/error" );
                     }
                     console.log('typeof retval.tabAccess',typeof retval.tabAccess);
                     if(tabPermission != null && tabPermission != 'undefined'){

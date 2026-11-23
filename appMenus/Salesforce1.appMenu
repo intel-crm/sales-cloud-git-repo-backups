@@ -9,6 +9,10 @@
         <type>StandardAppMenuItem</type>
     </appMenuItems>
     <appMenuItems>
+        <name>Consolidated_Co_Marketing_Program_Home</name>
+        <type>CustomTab</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>Tasks</name>
         <type>StandardAppMenuItem</type>
     </appMenuItems>

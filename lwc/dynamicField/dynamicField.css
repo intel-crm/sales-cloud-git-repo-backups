@@ -11,8 +11,7 @@
 }
 /*Sowmya start - INC14903157 - Applied fix on exceeding Char length on Long text Area*/
 .showRequired .slds-form-element__control{
-
-  border:1px solid #cc0000;
+    border:1px solid #cc0000;
 
 }
 .lengtherr{

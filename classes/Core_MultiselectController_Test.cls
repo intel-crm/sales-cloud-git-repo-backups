@@ -8,8 +8,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * kunal Mehta          10/03/2014              Original Version
 *************************************************************************************/
-@
-isTest
+@isTest
 public class Core_MultiselectController_Test {
 
     /*

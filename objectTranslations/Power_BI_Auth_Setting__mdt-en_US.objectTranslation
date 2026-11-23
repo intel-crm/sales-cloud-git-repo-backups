@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Power Bi Auth Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Power Bi Auth Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- ApexClass --></label>
+        <name>ApexClass__c</name>
+    </fields>
+    <fields>
+        <label><!-- Auth URL --></label>
+        <name>Auth_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- ClientId --></label>
+        <name>ClientId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ClientSecret --></label>
+        <name>ClientSecret__c</name>
+    </fields>
+    <fields>
+        <label><!-- Column Name --></label>
+        <name>Column_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- ReportId --></label>
+        <name>ReportId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Table Name --></label>
+        <name>Table_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- TenantId --></label>
+        <name>TenantId__c</name>
+    </fields>
+    <fields>
+        <label><!-- WorkspaceId --></label>
+        <name>WorkspaceId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

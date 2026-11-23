@@ -118,7 +118,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Idaville,Spring Hill,Habana,Gaudi,Goya</value>
+            <value>Idaville,Spring Hill,Habana</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>

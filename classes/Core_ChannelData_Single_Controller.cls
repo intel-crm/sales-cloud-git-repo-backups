@@ -394,6 +394,6 @@ public class Core_ChannelData_Single_Controller {
         PageReference pageRef = new ApexPages.StandardController(account).view();                            
         pageRef.setRedirect(true); 
         return pageRef;                          
-    } */  
+    }*/
 
 }

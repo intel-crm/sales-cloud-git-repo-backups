@@ -40,7 +40,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>END_ELEMENT_6</targetReference>
+            <targetReference>END_ELEMENT_1</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>AGS Flag Is False</defaultConnectorLabel>
         <rules>
@@ -90,7 +90,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>END_ELEMENT_8</targetReference>
+            <targetReference>END_ELEMENT_4</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -104,33 +104,28 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>END_ELEMENT_7</targetReference>
+                <targetReference>END_ELEMENT_4</targetReference>
             </connector>
             <label>Record present</label>
         </rules>
     </decisions>
     <ends>
-        <name>END_ELEMENT_10</name>
+        <name>END_ELEMENT_1</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
         <locationX>0</locationX>
         <locationY>0</locationY>
     </ends>
     <ends>
         <name>END_ELEMENT_6</name>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-    </ends>
-    <ends>
-        <name>END_ELEMENT_7</name>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-    </ends>
-    <ends>
-        <name>END_ELEMENT_8</name>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-    </ends>
-    <ends>
-        <name>END_ELEMENT_9</name>
         <locationX>0</locationX>
         <locationY>0</locationY>
     </ends>
@@ -143,7 +138,7 @@
     <formulas>
         <name>RetryCountPlusOne</name>
         <dataType>Number</dataType>
-        <expression>IF(ISBLANK({!$Record.Core_AGS_Retry_Count__c}), 0, {!$Record.Core_AGS_Retry_Count__c} + 1)</expression>
+        <expression>{!$Record.Core_AGS_Retry_Count__c} + 1</expression>
         <scale>0</scale>
     </formulas>
     <interviewLabel>Contact_AGS_Integration_Retrigger {!$Flow.CurrentDateTime}</interviewLabel>
@@ -187,7 +182,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>END_ELEMENT_9</targetReference>
+            <targetReference>END_ELEMENT_5</targetReference>
         </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
@@ -243,7 +238,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>END_ELEMENT_10</targetReference>
+            <targetReference>END_ELEMENT_6</targetReference>
         </connector>
         <faultConnector>
             <targetReference>Create_Log_Entry_record</targetReference>

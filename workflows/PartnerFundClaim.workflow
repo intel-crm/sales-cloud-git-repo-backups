@@ -9,7 +9,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Claim_Adj_Cancelled_Ext</template>
+        <template>unfiled$public/Core_MDF_Claim_Adj_Cancelled_Ext</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Claim_Adjustment_Cancellation_Internal</fullName>
@@ -20,7 +20,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Claim_Adj_Cancelled_Int</template>
+        <template>unfiled$public/Core_MDF_Claim_Adj_Cancelled_Int</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Claim_Notifications_Status_PAF</fullName>
@@ -97,7 +97,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_DocSubmissionConfirmation</template>
+        <template>unfiled$public/Core_MDF_DocSubmissionConfirmation</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_DocUploadRequestBefore15DaysAlert</fullName>
@@ -108,7 +108,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_DocUploadRequestBefore15Days</template>
+        <template>unfiled$public/Core_MDF_DocUploadRequestBefore15Days</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_DocUploadRequestBefore5DaysAlert</fullName>
@@ -119,7 +119,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_DocUploadRequestBefore5Days</template>
+        <template>unfiled$public/Core_MDF_DocUploadRequestBefore5Days</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_DocUploadRequestImmediateAlert</fullName>
@@ -130,7 +130,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_DocumentUploadRequest</template>
+        <template>unfiled$public/Core_MDF_DocumentUploadRequest</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Legacy_Before_Payment_Maximum_Attempts_Reached</fullName>
@@ -141,7 +141,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Legacy_Before_Max_Attempts</template>
+        <template>unfiled$public/Core_MDF_Legacy_Before_Max_Attempts</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Legacy_Document_Submission_Window_Closed</fullName>
@@ -152,7 +152,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Legacy_Doc_Sub_Window_Closed</template>
+        <template>unfiled$public/Core_MDF_Legacy_Doc_Sub_Window_Closed</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Legacy_Post_Payment_Document_Submission_Window_Closed</fullName>
@@ -163,7 +163,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Legacy_Post_DocSubWindowClosed</template>
+        <template>unfiled$public/Core_MDF_Legacy_Post_DocSubWindowClosed</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Legacy_Post_Payment_Maximum_Attempts_Reached</fullName>
@@ -174,7 +174,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Legacy_Post_Max_Attempt_Reached</template>
+        <template>unfiled$public/Core_MDF_Legacy_Post_Max_Attempt_Reached</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_NotifyClaimSubmitterOn_PICPass</fullName>
@@ -424,35 +424,63 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <rules>
-        <fullName>Core_MDF_Document_Request_Notifications</fullName>
+        <fullName>Core_MDF_Document_Hold_Request_Notifications</fullName>
         <actions>
             <name>Core_MDF_DocUploadRequestImmediateAlert</name>
             <type>Alert</type>
         </actions>
         <active>false</active>
         <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Status__c</field>
-            <operation>equals</operation>
-            <value>Pending Documents</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Legacy_Claim_Ind__c</field>
+            <field>PartnerFundClaim.Core_MDF_Document_Hold_Ind__c</field>
             <operation>equals</operation>
             <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundClaim.Core_MDF_Document_Hold_Eligibility_Ind__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundClaim.Core_MDF_Status__c</field>
+            <operation>equals</operation>
+            <value>Hold</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundClaim.Core_MDF_Audit_Hold__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundClaim.RecordTypeId</field>
+            <operation>contains</operation>
+            <value>Client Co-Marketing Fund,Data Center Co-Marketing Fund</value>
         </criteriaItems>
         <description>This workflow rule is used to send notifications to claim submitter to upload documents before the due date
 Reminders on 15th,25th day of document submission due date.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
             <actions>
-                <name>Core_MDF_Legacy_Document_Submission_Window_Closed</name>
+                <name>Core_MDF_DocUploadRequestBefore5DaysAlert</name>
                 <type>Alert</type>
             </actions>
+            <offsetFromField>PartnerFundClaim.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
+            <timeLength>-5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
             <actions>
-                <name>Update_Claim_Status_to_Denied</name>
+                <name>Core_MDF_UpdateFlaggedForReview_to_True</name>
                 <type>FieldUpdate</type>
             </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
+            <actions>
+                <name>Core_MDF_UpdateReviewType</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <actions>
+                <name>Core_MDF_Update_Review_Hold_to_True</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>PartnerFundClaim.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
             <timeLength>0</timeLength>
             <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
@@ -461,180 +489,9 @@ Reminders on 15th,25th day of document submission due date.</description>
                 <name>Core_MDF_DocUploadRequestBefore15DaysAlert</name>
                 <type>Alert</type>
             </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
+            <offsetFromField>PartnerFundClaim.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
             <timeLength>-15</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Core_MDF_DocUploadRequestBefore5DaysAlert</name>
-                <type>Alert</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>-5</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-    </rules>
-    <rules>
-        <fullName>Core_MDF_Legacy_Claim_Paid_and_Resub_Reqd</fullName>
-        <actions>
-            <name>Update_Legacy_Reminder_as_Reminder_1</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Status__c</field>
-            <operation>equals</operation>
-            <value>Paid and Resubmission Required</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Legacy_Claim_Ind__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <description>This workflow rule is used to update Claim status as &apos;Paid&apos; after 30 days time period.</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Core_MDF_Legacy_Post_Payment_Document_Submission_Window_Closed</name>
-                <type>Alert</type>
-            </actions>
-            <actions>
-                <name>Update_Claim_Status_to_Paid</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <actions>
-                <name>Update_Document_Submission_Missed_Ind</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>0</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Update_Legacy_Reminder_as_Reminder_3</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>-5</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Update_Legacy_Reminder_as_Reminder_2</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>-15</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-    </rules>
-    <rules>
-        <fullName>Core_MDF_Legacy_Claim_Resub_Reqd</fullName>
-        <actions>
-            <name>Update_Legacy_Reminder_as_Reminder_1</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Status__c</field>
-            <operation>equals</operation>
-            <value>Resubmission Required</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Legacy_Claim_Ind__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <description>This workflow rule is used to update Claim status as &apos;Denied&apos; after 30 days time period.</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Update_Legacy_Reminder_as_Reminder_2</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>-15</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Core_MDF_Legacy_Document_Submission_Window_Closed</name>
-                <type>Alert</type>
-            </actions>
-            <actions>
-                <name>Update_Claim_Status_to_Denied</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>0</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Update_Legacy_Reminder_as_Reminder_3</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>-5</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-    </rules>
-    <rules>
-        <fullName>Core_MDF_Post_Payment_Document_Request_Notifications</fullName>
-        <actions>
-            <name>Core_MDF_DocUploadRequestImmediateAlert</name>
-            <type>Alert</type>
-        </actions>
-        <active>false</active>
-        <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Status__c</field>
-            <operation>equals</operation>
-            <value>Paid and Pending Documents</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>PartnerFundClaim.Core_MDF_Legacy_Claim_Ind__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <description>This workflow rule is used to send notifications to claim submitter after the payment to upload documents before the due date
-Reminders on 15th,25th day of document submission due date.</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Core_MDF_DocUploadRequestBefore15DaysAlert</name>
-                <type>Alert</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>-15</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Core_MDF_DocUploadRequestBefore5DaysAlert</name>
-                <type>Alert</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>-5</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Core_MDF_Legacy_Post_Payment_Document_Submission_Window_Closed</name>
-                <type>Alert</type>
-            </actions>
-            <actions>
-                <name>Update_Claim_Status_to_Paid</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <actions>
-                <name>Update_Document_Submission_Missed_Ind</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <offsetFromField>PartnerFundClaim.Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c</offsetFromField>
-            <timeLength>0</timeLength>
-            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
     </rules>
 </Workflow>

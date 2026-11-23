@@ -221,9 +221,9 @@ global class PRM_RegistrationApprovalEmail implements Database.Batchable<sObject
             }
 
             Map<String,Id> mapOfContactEmailtoId = new Map<String,Id>();
-            if (!contactIdsToProcess.isEmpty()) {
+            if (!contactIdsToProcess.isEmpty()) { //ATHR Fix - TWC729-9556 - SJ
                 List<PRM_Bulk_Data_Upload__c> bulkUploadrecord = [
-                    SELECT Id, PRM_Contact_Id__c, PRM_Suppress_Email__c, PRM_ContactEmail__c
+                    SELECT Id, PRM_Contact_Id__c, PRM_Suppress_Email__c/*,PRM_ContactEmail__c*/
                     FROM PRM_Bulk_Data_Upload__c
                     WHERE PRM_Contact_Id__c IN :contactIdsToProcess
                     ORDER BY CreatedDate

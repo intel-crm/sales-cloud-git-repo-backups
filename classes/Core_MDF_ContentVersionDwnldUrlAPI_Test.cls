@@ -1,9 +1,9 @@
 /**
- * @description       : Test class for Core_MDF_ContentVersionDwnldUrlAPI
- * @author            : 
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-11-2026
- * @last modified by  : 
+ * @last modified on  : 03-03-2026
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @IsTest
 private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
@@ -14,8 +14,10 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
     private static final String BUDGET_TYPE_CCF = 'OEM CMP';
 
     private class TestRefs {
-        Id claimId;
-        String requestUserName;
+        public String quoteId;
+        public String requestUserName;
+        public String validContentDocumentId;
+        public String unlinkedContentDocumentId;
     }
 
     @TestSetup
@@ -206,10 +208,36 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
 
     private static TestRefs getRefs() {
         TestRefs r = new TestRefs();
-        PartnerFundClaim c = [SELECT Id FROM PartnerFundClaim ORDER BY CreatedDate DESC LIMIT 1];
+        SBQQ__Quote__c quote = [SELECT Id FROM SBQQ__Quote__c ORDER BY CreatedDate DESC LIMIT 1];
         User u = [SELECT Username FROM User WHERE Username = :USERNAME_BASE LIMIT 1];
-        r.claimId = c.Id;
+        
+        // Get ContentDocument IDs for testing
+        List<ContentDocumentLink> cdls = [
+            SELECT ContentDocumentId 
+            FROM ContentDocumentLink 
+            WHERE LinkedEntityId = :quote.Id
+        ];
+        
+        r.quoteId = quote.Id;
         r.requestUserName = u.Username;
+        r.validContentDocumentId = !cdls.isEmpty() ? cdls[0].ContentDocumentId : null;
+        
+        // Get an unlinked ContentDocument ID for negative testing
+        List<ContentVersion> allCVs = [SELECT ContentDocumentId FROM ContentVersion];
+        for (ContentVersion cv : allCVs) {
+            Boolean isLinked = false;
+            for (ContentDocumentLink cdl : cdls) {
+                if (cdl.ContentDocumentId == cv.ContentDocumentId) {
+                    isLinked = true;
+                    break;
+                }
+            }
+            if (!isLinked) {
+                r.unlinkedContentDocumentId = cv.ContentDocumentId;
+                break;
+            }
+        }
+        
         return r;
     }
 
@@ -245,7 +273,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
         TestRefs r = getRefs();
         List<String> ids = new List<String>{ 'APPFILE-VALID-1', 'APPFILE-NO-CV-1', 'APPFILE-NOT-EXIST' };
 
-        RestResponse res = invoke(bodyJson(r.claimId, ids, r.requestUserName));
+        RestResponse res = invoke(bodyJson(r.quoteId, ids, r.requestUserName));
         System.assertEquals(200, res.statusCode, 'Expected 200 for at least one valid URL');
 
         String json = res.responseBody != null ? res.responseBody.toString() : null;
@@ -282,7 +310,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
 
     @IsTest
     static void test_invalidJson_400_ERROR02() {
-        RestResponse res = invoke('{"claimId": "x", "appFileIds": [');
+        RestResponse res = invoke('{"quoteId": "x", "appFileIds": [');
         System.assertEquals(400, res.statusCode);
         Map<String, Object> err = (Map<String, Object>) JSON.deserializeUntyped(res.responseBody.toString());
         System.assertEquals(true, (Boolean) err.get('error'));
@@ -301,7 +329,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
     @IsTest
     static void test_nullAppFileIds_400_ERROR04() {
         TestRefs r = getRefs();
-        RestResponse res = invoke(bodyJson(r.claimId, null, r.requestUserName));
+        RestResponse res = invoke(bodyJson(r.quoteId, null, r.requestUserName));
         System.assertEquals(400, res.statusCode);
         Map<String, Object> err = (Map<String, Object>) JSON.deserializeUntyped(res.responseBody.toString());
         System.assertEquals('AppFile IDs are required', (String) err.get('message'));
@@ -310,7 +338,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
     @IsTest
     static void test_emptyAppFileIds_400_ERROR04() {
         TestRefs r = getRefs();
-        RestResponse res = invoke(bodyJson(r.claimId, new List<String>(), r.requestUserName));
+        RestResponse res = invoke(bodyJson(r.quoteId, new List<String>(), r.requestUserName));
         System.assertEquals(400, res.statusCode);
         Map<String, Object> err = (Map<String, Object>) JSON.deserializeUntyped(res.responseBody.toString());
         System.assertEquals('AppFile IDs are required', (String) err.get('message'));
@@ -319,7 +347,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
     @IsTest
     static void test_blankUserName_400_ERROR05() {
         TestRefs r = getRefs();
-        RestResponse res = invoke(bodyJson(r.claimId, new List<String>{ 'ANY' }, ''));
+        RestResponse res = invoke(bodyJson(r.quoteId, new List<String>{ 'ANY' }, ''));
         System.assertEquals(400, res.statusCode);
         Map<String, Object> err = (Map<String, Object>) JSON.deserializeUntyped(res.responseBody.toString());
         System.assertEquals('userName is required', (String) err.get('message'));
@@ -345,7 +373,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
         );
         insert u2;
 
-        RestResponse res = invoke(bodyJson(r.claimId, new List<String>{ 'ANY' }, u2.Username));
+        RestResponse res = invoke(bodyJson(r.quoteId, new List<String>{ 'ANY' }, u2.Username));
         System.assertEquals(403, res.statusCode);
         Map<String, Object> err = (Map<String, Object>) JSON.deserializeUntyped(res.responseBody.toString());
         System.assertEquals('User not authorized to access claim documents', (String) err.get('message'));
@@ -356,7 +384,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
         TestRefs r = getRefs();
         // Use a username that does not exist (LIKE will not find any active user)
         String nonExistentUser = 'nonexistent.user.like@example.com';
-        RestResponse res = invoke(bodyJson(r.claimId, new List<String>{ 'ANY' }, nonExistentUser));
+        RestResponse res = invoke(bodyJson(r.quoteId, new List<String>{ 'ANY' }, nonExistentUser));
         System.assertEquals(403, res.statusCode, 'Expected 403 when username LIKE finds no users');
         Map<String, Object> err = (Map<String, Object>) JSON.deserializeUntyped(res.responseBody.toString());
         System.assertEquals('User not authorized to access claim documents', (String) err.get('message'));
@@ -368,7 +396,7 @@ private class Core_MDF_ContentVersionDwnldUrlAPI_Test {
 
         // Ensure no valid doc URLs (no contentVersion ids) for the requested ids
         List<String> ids = new List<String>{ 'APPFILE-NO-CV-1', 'APPFILE-NOT-EXIST' };
-        RestResponse res = invoke(bodyJson(r.claimId, ids, r.requestUserName));
+        RestResponse res = invoke(bodyJson(r.quoteId, ids, r.requestUserName));
         System.assertEquals(404, res.statusCode);
         Map<String, Object> err = (Map<String, Object>) JSON.deserializeUntyped(res.responseBody.toString());
         System.assertEquals('No documents found for the provided appFileIds', (String) err.get('message'));

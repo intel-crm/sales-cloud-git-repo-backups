@@ -115,9 +115,10 @@ public class ER_SalesCloud_Integration_Model {
         public DateTime LastModifiedDate {set;get;}
         public DateTime CreatedDate {set;get;}
         public String LastModifiedBy {set;get;}
-        public String CreatedBy {set;get;} 
+        public String CreatedBy {set;get;}
         public List <cmfData> CMFs {set;get;}
-        
+    
+       // public List <accountBPData> BPAccounts {set;get;}
         
     }
     public class cmfWrapperAnE {
@@ -135,6 +136,7 @@ public class ER_SalesCloud_Integration_Model {
         public String LastModifiedBy {set;get;}
         public String CreatedBy {set;get;} 
         public List <cmfData> CMFs {set;get;}
+        //public List <accountBPData> BPAccounts {set;get;}
         public List<ContactBasicInfoAE> ContactBasicInformation {set;get;}
     }
     
@@ -160,6 +162,24 @@ public class ER_SalesCloud_Integration_Model {
         public boolean isActive {set;get;}
         
     }
+   /* public class accountBPData{
+        public String DirectAccountID {set;get;}
+        public String CMFID {set;get;}
+        public string Name {set;get;}
+        public string SalesOrgCode {set;get;}
+        public string SalesOrgName {set;get;}
+        public string SalesDistiChannelCode {set;get;}
+        public string SalesDistiChannelName {set;get;}
+        public string Address {set;get;}
+        public string AccountGroup {set;get;}
+        public string DirectCustomerRoleName {set;get;}
+        public string DirectCustomerRoleCode {set;get;}
+        public DateTime LastModifiedDate {set;get;}
+        public DateTime CreatedDate {set;get;}
+        public String LastModifiedBy {set;get;}
+        public String CreatedBy {set;get;} 
+        public boolean isActive {set;get;}
+    }*/
     public class ContactBasicInfoAE {
         public String FirstName {set;get;}
         public String LastName {set;get;}

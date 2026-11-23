@@ -11,26 +11,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>CRM_Linked_Opportunities__c.CRM_Link_Reason__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Linked_Opportunities__c.CRM_Linked_Opportunity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Linked_Opportunities__c.CRM_Primary_Opportunity__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>CRM_Linked_Opportunities__c.CRM_UniqueLinkedOppty__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>CRM_VBS_Product__c.CRM_VBS_Opportunity_Product__c</field>
         <readable>true</readable>
     </fieldPermissions>

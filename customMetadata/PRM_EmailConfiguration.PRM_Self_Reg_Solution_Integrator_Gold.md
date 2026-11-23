@@ -24,6 +24,6 @@
     </values>
     <values>
         <field>PRM_Tier__c</field>
-        <value xsi:type="xsd:string">Gold</value>
+        <value xsi:type="xsd:string">GOLD</value>
     </values>
 </CustomMetadata>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of  Javier Galiana</description>
+    <description>EMP of Adrian Criddle</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10613204_Jennifer_Shileika</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10100308_Javier_Galiana</parentRole>
+    <parentRole>EMP_10635546_Adrian_Criddle</parentRole>
 </Role>

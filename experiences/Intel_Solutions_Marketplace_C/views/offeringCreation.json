@@ -52,43 +52,6 @@
     "regionName" : "mainFullWidth",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "cancelButtonText" : "Cancel",
-        "changesSavedText" : "Changes saved",
-        "debugMode" : true,
-        "recordId" : "{!recordId}",
-        "recordListViewId" : "",
-        "saveButtonText" : "Save"
-      },
-      "componentName" : "c:MarketplaceCreateProductsForm",
-      "id" : "8fd87c2f-3eb4-4948-96f0-6d98651b420c",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "ja" : "1c6b3982-1d80-4d06-aea2-05f99e07d9f1",
-        "zh_cn" : "d7674687-240f-4753-91f1-10c89324d6b7"
-      },
-      "renditions" : [ {
-        "id" : "d7674687-240f-4753-91f1-10c89324d6b7",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "cancelButtonText" : "取消",
-            "saveButtonText" : "保存"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "1c6b3982-1d80-4d06-aea2-05f99e07d9f1",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "cancelButtonText" : "キャンセル",
-            "saveButtonText" : "保存"
-          }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    } ],
     "id" : "0004ce65-95cb-4f6d-ba96-7f8ddaec019d",
     "regionName" : "main",
     "type" : "region"
@@ -133,41 +96,6 @@
     "regionName" : "faq",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "allMarketPlaceHelpLabel" : "All Marketplace help",
-        "faqTitle" : "Offering Creation",
-        "headingLabel" : "FAQs",
-        "inverse" : false,
-        "paddingHorizontal" : true,
-        "theme" : "default"
-      },
-      "componentName" : "c:MarketPlaceFAQ",
-      "id" : "94365de9-9330-45d9-8222-a9e024b27d99",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "ja" : "ceb1da5b-b1fe-4d00-b75f-bbeab5aeb12f",
-        "zh_cn" : "1637242d-cee3-4f03-8681-a43b24595f5b"
-      },
-      "renditions" : [ {
-        "id" : "ceb1da5b-b1fe-4d00-b75f-bbeab5aeb12f",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "headingLabel" : "よくある質問"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "1637242d-cee3-4f03-8681-a43b24595f5b",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "headingLabel" : "常见问题解答"
-          }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    } ],
     "id" : "6392a9e6-5790-4b8f-b65a-494028563fde",
     "regionName" : "faqWhite",
     "type" : "region"

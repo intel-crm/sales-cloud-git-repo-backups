@@ -14,8 +14,7 @@ public class PCC_InvocableMethodTest {
         DDRLst[1].PCC_Current_EndCustomer_Product_Provider__c= 'US';
         DDRLst[2].PCC_Current_EndCustomer_Product_Provider__c= 'US';
     insert DDRLst;
-     Test.startTest();
-    //PCC_DealFormValidationController.callDealApprovalProcess(DDRLst[0].id);
+    PCC_DealFormValidationController.callDealApprovalProcess(DDRLst[0].id);
     List<PCC_InvocableMethods.ApprovalWrapper> approvalParam = new List<PCC_InvocableMethods.ApprovalWrapper>();
 
 // Create a new instance of ApprovalWrapper and add it to the list
@@ -28,7 +27,7 @@ public class PCC_InvocableMethodTest {
         
     //PCC_InvocableMethods.isAuthorizedUser(DDRLst[0]); 
     PCC_InvocableMethods.isAuthorizedUser(DDRLst[1]); 
-        Test.stopTest();
+        
     system.assertequals(true,PCC_InvocableMethods.isAuthorizedUser(DDRLst[0]));    
 }
 }

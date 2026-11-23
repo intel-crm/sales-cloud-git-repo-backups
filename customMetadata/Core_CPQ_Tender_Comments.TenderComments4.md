@@ -3,6 +3,10 @@
     <label>TenderComments4</label>
     <protected>false</protected>
     <values>
+        <field>Pricing_Answer__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
         <field>Pricing_Business_Unit_Pkl__c</field>
         <value xsi:type="xsd:string">DCG</value>
     </values>

@@ -40,7 +40,6 @@ public without sharing class Pricing_QuoteHoldStatusAgeHandler extends TriggerHa
                 for(Core_MDF_Partner_Group_Mapping__c partnerGroup : [select Id,Core_MDF_Account__c,Core_MDF_Channel_Program_Name_Txt__c,Core_MDF_Channel_Program__c,Core_MDF_AccountIdGroupName__c,Core_MDF_Group_Id__c,Core_MDF_Type_of_Access__c from Core_MDF_Partner_Group_Mapping__c where
                                                                       Core_MDF_Channel_Program_Name_Txt__c =: Label.Pricing_Tender_PGM_Channel and Core_MDF_Account__c in : accountIds and Core_MDF_Group_Id__c!=null]){
                                                                           if(partnerGroup.Core_MDF_Type_of_Access__c == Label.Pricing_Tender_PGM_Type) {
-
                                                                               if(accountHoldToGroupIdMap.keySet().contains(partnerGroup.Core_MDF_Account__c)){
                                                                                   accountHoldToGroupIdMap.get(partnerGroup.Core_MDF_Account__c).add(partnerGroup.Core_MDF_Group_Id__c);
                                                                               }else{

@@ -2,10 +2,10 @@
   "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "d4151566-930b-44f5-94d2-5831cc4fb97a",
+  "id" : "5a06d99f-95c3-4da8-b147-9eace79244da",
   "label" : "License Admin Delegate Related List",
   "regions" : [ {
-    "id" : "8a143895-9058-4024-9985-6976f8fffc97",
+    "id" : "73835462-2b06-4272-b917-be00bf463854",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -20,20 +20,20 @@
         "showRowNumbers" : true
       },
       "componentName" : "forceCommunity:relatedList",
-      "id" : "d24b12a7-f908-406c-923a-b94ed82400ea",
+      "id" : "2b774ee8-b10b-4684-b9eb-f5aabc8bd269",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "4908bd93-1bd9-48c1-b6c1-d0bf88f52df8",
+    "id" : "f443c868-7b53-4ce4-bce4-35809df1f505",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "fe6cedf4-4615-4396-8ee2-93d928462d42",
+    "id" : "9fdc1bc1-9bc5-420c-8aeb-b158d4dc20b8",
     "regionName" : "footer",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "relatedlist-aBq"
+  "viewType" : "relatedlist-aC8"
 }

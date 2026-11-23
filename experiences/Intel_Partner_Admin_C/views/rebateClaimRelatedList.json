@@ -1,0 +1,39 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "6fb5fcdd-0de9-471c-94b6-985d7dffb3c4",
+  "label" : "Rebate Claim Related List",
+  "regions" : [ {
+    "id" : "5cc5809b-bcca-4ad2-9014-b7f46162c3d2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "bd178408-70e2-4b45-bce3-78954f0920a9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a85d0644-d0ee-4890-9daa-e716d0ad3e3e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e67e0ed1-5467-4135-ab6f-2406e3365f49",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-aFm"
+}

@@ -5,6 +5,10 @@
         <value>品目列</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help><!-- Determines how the column label and values are aligned. --></help>
         <label>位置揃え</label>
         <name>SBQQ__Alignment__c</name>

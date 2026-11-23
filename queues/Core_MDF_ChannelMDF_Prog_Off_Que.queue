@@ -7,6 +7,9 @@
         <publicGroups>
             <publicGroup>Core_MDF_ChannelMDF_Program_Office_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>ccp_internal_program_admin@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundRequest</sobjectType>

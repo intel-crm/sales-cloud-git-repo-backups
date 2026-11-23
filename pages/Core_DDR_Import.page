@@ -1,0 +1,158 @@
+<apex:page controller="Core_DDR_Import_Controller"  id="pgId1" lightningStylesheets="true">
+
+  <style type="text/css">
+    .myClass1
+    {
+    color: black;
+    font-weight:bold;
+    }
+  </style>
+  <style>
+    #el_loading
+    {
+    display: none;
+    }
+  </style>
+
+  <apex:form enctype="multipart/form-data" id="formId1" >
+    <apex:pagemessages id="msgId" />
+    <apex:pageBlock id="pgBlkId1" >
+      <apex:pageBlockSection id="partnerAccPbsId1" title="Choose a partner account" rendered="{!isPartnerUser}">
+        <apex:inputField required="true" id="partnerAccountId" value="{!designBatch.Core_Partner_Account_Id__c}"/>
+      </apex:pageBlockSection>
+      <apex:outputPanel id="panelId1">
+        <apex:actionStatus startText="Bulk Uploading Is In-Progress.." stopText="{!stopText}" id="syncStatus" />
+        <br/>
+        <br/>
+        <apex:actionFunction name="callmethod" status="flSubmitSts" action="{!importCSVFile}"/>
+      </apex:outputPanel>
+      <apex:pageBlockSection columns="2" id="pgBlkSecId1">
+        <apex:inputFile value="{!csvFileBody}"  filename="{!csvAsString}" id="inputFileId1"/>
+
+        <apex:actionRegion >
+          <apex:commandButton value="Import Design Registration" reRender="pgBlkId1,pgBlkId2"  status="flSubmitSts" onclick="return checkForNoFileAndProceed();"  />
+        </apex:actionRegion>
+
+      </apex:pageBlockSection>
+
+    </apex:pageBlock>
+    <apex:pageBlock id="pgBlkId2">
+      <apex:outputPanel styleClass="myClass1">
+        <apex:outputText >Batch Id:</apex:outputText>
+        <apex:outputlink value="{!BatchId}">{!BatchMessage}</apex:outputlink>
+      </apex:outputPanel>
+    </apex:pageBlock>
+  </apex:form>
+
+  <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.75;width:100%;">
+    <div class="waitingHolder" style="top: 100px; width: 91px;">
+      <img class="waitingImage" src="/img/loading.gif" title="Please Wait..."  style="width: 40;height:40;"/>
+      <span class="waitingDescription">Attachment is uploading . . . .</span>
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+    function onUpload()
+    {
+    var ul = document.getElementById('el_loading');
+    ul.style.display = 'inline';
+    }
+
+    function checkForNoFileAndProceed()
+    {
+    var name=document.getElementById('pgId1:formId1:pgBlkId1:pgBlkSecId1:inputFileId1').value;
+    var startIndex = (name.indexOf('\\') >= 0 ? name.lastIndexOf('\\') : name.lastIndexOf('/'));
+    var filename1 = name.substring(startIndex);
+    var confirmationVal =null;
+
+    if (filename1.indexOf('\\') === 0 || filename1.indexOf('/') === 0)
+    {
+    filename1 = filename1.substring(1);
+    }
+
+    if(name == '' || name == null || !(name.includes('.csv')))
+    {
+    alert('Please choose a CSV file to upload.');
+    return false;
+    }
+    else
+    {
+    var fileContent =  document.getElementById('pgId1:formId1:pgBlkId1:pgBlkSecId1:inputFileId1').files[0];
+    var reader = new FileReader();
+    reader.readAsText(fileContent);
+
+    reader.onload = function(e)
+    {
+    var content = reader.result;
+    var lines = content.split('\r');
+    var rows = e.target.result.split("\n").length;
+    if(rows >= 3)
+    {
+    var confirmationVal2 = checkForFileNameAndNoOfrowsinSystem(filename1,rows );
+    }
+    else
+    {
+    alert('Please choose a CSV file with data.');
+    return false;
+    }
+    if(confirmationVal2 == false)
+    {
+    //document.getElementById('{!$Component.formId1.pgBlkId1.pgBlkSecId1.inputFileId1}').value = '';
+    }
+    else
+    {
+    callmethod();
+    }
+    }
+    }
+    }
+
+
+    function checkForFileNameAndNoOfrowsinSystem(fileName,noOfRecords)
+    {
+    noOfRecords = noOfRecords - 2;
+    var userInfo = sforce.connection.getUserInfo();
+
+    var userRecords = sforce.connection.query("Select id, accountid from user where id ='"+userInfo.userId+"'");
+    var partnerAccountId;
+    var userObjrecords = userRecords.getArray("records");
+    partnerAccountId = userObjrecords[0].AccountId;
+
+    if(partnerAccountId == null)
+    {
+    partnerAccountId =  document.getElementById('pgId1:formId1:pgBlkId1:partnerAccPbsId1:partnerAccountId_lkid').value;
+    }
+
+    var queryResults = sforce.connection.query("SELECT Id, Name, Core_File_Nm__c, Core_Total_Row_Cnt__c FROM Core_Design_Registration_Batch__c WHERE Core_File_Nm__c = '"+fileName+"' AND Core_Partner_Account_Id__c = '"+partnerAccountId+"' AND Core_Total_Row_Cnt__c = "+noOfRecords+" ORDER BY createdDate DESC LIMIT 1" );
+
+
+    //var queryResults = sforce.connection.query("Select Id, Name,Core_File_Nm__c,Core_Total_Row_Cnt__c From Core_Design_Registration_Batch__c where Core_File_Nm__c = '"+fileName+"' and CreatedById = '"+userInfo.userId+"' and Core_Total_Row_Cnt__c = "+noOfRecords+" order by createdDate desc limit 1" );
+    var confirmVal;
+    if(queryResults.size > 0)
+    {
+    var designBatchObjrecords = queryResults.getArray("records");
+    var totalRecordCount = designBatchObjrecords[0].Core_Total_Row_Cnt__c;
+    var totalRecordId = designBatchObjrecords[0].Id;
+
+    confirmVal = confirm('CAUTION: You or somebody from your Account has already uploaded a file with the same name and row count ('+parseInt(totalRecordCount)+'). Clicking Ok might create duplicate Design Registrations. Hit Cancel to go back and review the import file.');
+    }
+    return confirmVal;
+
+    }
+
+  </script>
+  <script src="../../soap/ajax/41.0/connection.js" type="text/javascript">
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+  </script>
+  <script type="text/javascript">
+    var sfdcUsrSessionId = '{!GETSESSIONID()}';
+    window.onload = setupPage;
+    function setupPage()
+    {
+    sforce.connection.sessionId='{!GETSESSIONID()}';
+    var userInfo = sforce.connection.getUserInfo();
+    }
+  </script>
+</apex:page>

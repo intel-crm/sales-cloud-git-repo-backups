@@ -52,9 +52,12 @@ public without sharing class PRM_EV_Reminder {
         if (langCultureForEmail != null) {
             paramMap.put('LanguageCulture_MDT', langCultureForEmail.Id);
         }
+        
+        
             objEmailNotif.BusinessEvent = System.label.PRM_Registration_request_for_new_User_EV_Reminder;
             PRM_EmailUtility.sendEmail(new List<PRM_EmailUtility.EmailNotification> { objEmailNotif });
-            //system.debug('Mail sent for new User!!!');
+            system.debug('Mail sent for new User!!!');
+        
     }
     
     private static PRM_Language_Culture_Mapping__mdt getLanguageCultureForEmail(PRM_Registration_Request__c regRequest) {

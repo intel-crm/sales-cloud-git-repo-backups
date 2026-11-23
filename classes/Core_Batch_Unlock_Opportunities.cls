@@ -12,7 +12,7 @@ global class Core_Batch_Unlock_Opportunities implements Database.Batchable<sObje
     
     // Get the opportunities to unlock
     global Database.QueryLocator start(Database.BatchableContext bc) {
-        return Database.getQueryLocator([select Id from Opportunity where Core_Approval_Status__c = 'Submitted' and (Core_Opportunity_Coverage_Nm__c <> 'Partner-Led Opportunity' or Core_Coverage_Type_Nm__c <> 'Deal Registration') and LastModifiedDate >= YESTERDAY]);
+        return Database.getQueryLocator([select Id from Opportunity where Core_Approval_Status__c = 'Submitted' and Core_Opportunity_Coverage_Nm__c <> 'Partner-Led Opportunity' and Core_Coverage_Type_Nm__c <> 'Deal Registration' and LastModifiedDate >= YESTERDAY]);
     }
     
     // Unlock them

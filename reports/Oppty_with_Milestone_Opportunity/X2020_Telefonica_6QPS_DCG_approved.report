@@ -137,11 +137,11 @@
             <value>ASMO,EMEA</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
+            <column>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Comms Infra. / Networking,Data Center Computing</value>
+            <value>DCG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -166,7 +166,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2022-Telefonica-6QPS-NEX-approved</name>
+    <name>2020-Telefonica-6QPS-DCG-approved</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -185,13 +185,11 @@
     </params>
     <reportType>OpportunityCustomEntity$Core_Opp_FC_Prod_Schedule__c@Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Product__c</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Claim_Date__c</dateColumn>
-        <endDate>2022-12-29</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-03</startDate>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

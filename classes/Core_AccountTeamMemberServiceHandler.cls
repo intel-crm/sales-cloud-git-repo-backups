@@ -66,7 +66,7 @@ public without sharing class Core_AccountTeamMemberServiceHandler{
         }
 
         if(accountIds.size() > 0){
-                mapAccounts = new  Map<Id, Account>( [Select id, OwnerId,Core_Account_Category__c from Account where Id IN :accountIds AND recordtypeID =:intelRecordTypeId ] );
+                mapAccounts = new  Map<Id, Account>( [Select id, OwnerId, Core_Account_Category__c from Account where Id IN :accountIds AND recordtypeID =:intelRecordTypeId ] );
         }
 
 

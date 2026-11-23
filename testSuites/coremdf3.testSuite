@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_ContentVersion_Test</testClassName>
+    <testClassName>Core_MDF_Create_Budget_Test</testClassName>
+    <testClassName>Core_MDF_Create_CCP_Cases_Test</testClassName>
+    <testClassName>Core_MDF_CustLayout_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_CustomerDisclaimer_Mock</testClassName>
+    <testClassName>Core_MDF_CustomLabelConfig_Test</testClassName>
+    <testClassName>Core_MDF_CustomLayoutConfig_Contrl_Test</testClassName>
+    <testClassName>Core_MDF_CustomMultiSelectPicklist_test</testClassName>
+    <testClassName>Core_MDF_DateTimeformat_test</testClassName>
+    <testClassName>Core_MDF_DeletePNUM_Batch_Test</testClassName>
+    <testClassName>Core_MDF_DetermineEmailRecipients_Test</testClassName>
+    <testClassName>Core_MDF_Display_Approval_Details_Test</testClassName>
+    <testClassName>Core_MDF_DownloadAllDocuments_Test</testClassName>
+    <testClassName>Core_MDF_DynamicContentGenerator_Test</testClassName>
+    <testClassName>Core_MDF_dynamicUrlsOnCommunity_Test</testClassName>
+    <testClassName>Core_MDF_ECM_Trigger_Test</testClassName>
+    <testClassName>Core_MDF_ECMCreationController_Test</testClassName>
+    <testClassName>Core_MDF_EmailTemplateTranslation_Test</testClassName>
+    <testClassName>Core_MDF_Escalation_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_Escalation_ServiceHandler_Test2</testClassName>
+    <testClassName>Core_MDF_ExceptionAccController_Test</testClassName>
+    <testClassName>Core_MDF_ExceptionTrigger_Test</testClassName>
+    <testClassName>Core_MDF_ExportToExcel_Mock</testClassName>
+    <testClassName>Core_MDF_ExportToExcel_Test</testClassName>
+    <testClassName>Core_MDF_ExportToExcelAccount_Mock</testClassName>
+    <testClassName>Core_MDF_ExtendedDataTable_Test</testClassName>
+    <testClassName>Core_MDF_ExternalListViewExportCloneTest</testClassName>
+    <testClassName>Core_MDF_ExternalUserSharing_Test</testClassName>
+</ApexTestSuite>

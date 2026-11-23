@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Read</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>PMP_Is_Active_Ind__c</fullName>
         <defaultValue>false</defaultValue>
@@ -228,6 +228,15 @@
         <type>Lookup</type>
     </fields>
     <label>Marketplace Partner Program</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Partner_Program_Value_Txt__c</columns>
+        <columns>PMP_Is_Active_Ind__c</columns>
+        <columns>PMP_Partner_Role_Parent_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Marketplace Partner Program Name</label>
         <type>Text</type>

@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>CCP Geo Lead Queue</name>
+    <queueMembers>
+        <users>
+            <user>12101198@intel.com.crm</user>
+        </users>
+    </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundRequest</sobjectType>
     </queueSobject>

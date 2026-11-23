@@ -40,7 +40,7 @@ public with sharing class UCD_ACM_AccountDeactivationService {
 
     private static String callAPI(String requestModel, String bpid) {
         Map < String , String > mapOfHeaders = new Map < String, String> { 'Content-Type' => 'application/json' };   
-        String endPointReltio = 'callout:SalesCRM_Apigee/ucd/v1/crosswalks/' + bpid ;
+        String endPointReltio = 'callout:SalesCRM_UCD_App/ucd/v1/crosswalks/' + bpid ;
         Core_RestClient restClient = new Core_RestClient(endPointReltio, HTTP_PATCH, mapOfHeaders, requestModel, Integer.valueOf(System.Label.Reltio_Timeout));    
         restClient.invokeAPI();
         return restClient.getHttpResponseBody();

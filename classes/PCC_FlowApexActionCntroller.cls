@@ -10,20 +10,26 @@ public with sharing class PCC_FlowApexActionCntroller {
     @InvocableMethod(label='Process Deal Lines' description='Process DR Lines and Create Opportunity Line items' category='Other')
     public static List<ActionOutput> processDealLines(List<Core_Design_Registration__c> dealRecord){
         // Validate input
+        Opportunity opportunity = new Opportunity();
+        List<OpportunityLineItem> oliList = new List<OpportunityLineItem>();
+        List<Core_Design_Registration_Product__c> drpLines = new List<Core_Design_Registration_Product__c>();
+        boolean isPDIEligible = false;
+        try{
+
         if (dealRecord == null || dealRecord.isEmpty()) {
             return new List<ActionOutput>{generateErrorOutput('dealRecord is empty or null')};
         }
 
         // Retrieve the opportunity related to the deal record
-        Opportunity opportunity = retrieveOpportunity(dealRecord[0].Id);
+        opportunity = retrieveOpportunity(dealRecord[0].Id);
         if (opportunity == null) {
             return new List<ActionOutput>{generateErrorOutput('No opportunity found for the given deal record')};
         }
 
         // Retrieve the products associated with the deal record
-        List<Core_Design_Registration_Product__c> drpLines = retrieveProducts(dealRecord[0].Id);
+        drpLines = retrieveProducts(dealRecord[0].Id);
         // Check if any product is eligible for PDI
-        boolean isPDIEligible = checkProductEligibility(drpLines);
+        isPDIEligible = checkProductEligibility(drpLines);
 
         // Collect product IDs
         Set<Id> productIds = new Set<Id>();
@@ -38,17 +44,20 @@ public with sharing class PCC_FlowApexActionCntroller {
         }
 
         // Create Opportunity Line Items
-        List<OpportunityLineItem> oliList = createOpportunityLineItems(drpLines, opportunity.Id, productToPriceBook);
+        oliList = createOpportunityLineItems(drpLines, opportunity.Id, productToPriceBook);
         // Process Opportunity Line Items and update DRP records
         String errorMessage = processOLIandUpdateDRP(oliList, drpLines);
 
         // Generate the output for the flow
         return new List<ActionOutput>{generateActionOutput(opportunity.Id, drpLines, oliList, isPDIEligible, !String.isBlank(errorMessage), errorMessage)};
+        }catch(Exception ex){
+            return new List<ActionOutput>{generateActionOutput(opportunity.Id, drpLines, oliList, isPDIEligible, !String.isBlank(ex.getMessage()), ex.getMessage())};
+        }
     }
 
     // Retrieves the opportunity related to the given deal record ID
     private static Opportunity retrieveOpportunity(Id dealRecordId) {
-        List<Opportunity> opportunityList = [SELECT Id FROM Opportunity WHERE Core_Design_Registration_Id__c = :dealRecordId ORDER BY CreatedDate DESC LIMIT 1];
+        List<Opportunity> opportunityList = [SELECT Id, Pricebook2.Name FROM Opportunity WHERE Core_Design_Registration_Id__c = :dealRecordId ORDER BY CreatedDate DESC LIMIT 1];
         return opportunityList.isEmpty() ? null : opportunityList[0];
     }
 
@@ -60,7 +69,7 @@ public with sharing class PCC_FlowApexActionCntroller {
     // Checks if any product in the list is eligible for PDI
     private static boolean checkProductEligibility(List<Core_Design_Registration_Product__c> drpLines) {
         for (Core_Design_Registration_Product__c product : drpLines) {
-            if (String.isNotBlank(product.PCC_Programs_Eligible__c) && product.PCC_Programs_Eligible__c.contains('PDI')) {
+            if (product.PCC_Programs_Eligible__c.contains('PDI')) {
                 return true;
             }
         }
@@ -68,7 +77,7 @@ public with sharing class PCC_FlowApexActionCntroller {
     }
 
     // Retrieves active Pricebook Entries for the given product IDs from the 'Partner Price Book'
-    private static Map<Id, PricebookEntry> getPricebookEntries(Set<Id> productIds) {
+    public static Map<Id, PricebookEntry> getPricebookEntries(Set<Id> productIds) {
         List<PricebookEntry> priceBookEntryRecords = [SELECT Id, Name, Product2Id, Product2.Name FROM PricebookEntry WHERE Pricebook2.Name = 'Partner Price Book' AND IsActive = true AND Product2Id IN :productIds];
         Map<Id, PricebookEntry> productToPriceBook = new Map<Id, PricebookEntry>();
         for (PricebookEntry pbe : priceBookEntryRecords) {
@@ -78,8 +87,7 @@ public with sharing class PCC_FlowApexActionCntroller {
     }
 
     // Creates Opportunity Line Items from the given DRP lines and price book entries
-    private static List<OpportunityLineItem> createOpportunityLineItems(List<Core_Design_Registration_Product__c> drpLines, Id opportunityId, Map<Id, PricebookEntry> productToPriceBook) {
-        System.debug('productToPriceBook -->'+JSON.serialize(productToPriceBook));
+    public static List<OpportunityLineItem> createOpportunityLineItems(List<Core_Design_Registration_Product__c> drpLines, Id opportunityId, Map<Id, PricebookEntry> productToPriceBook) {
         List<OpportunityLineItem> oliList = new List<OpportunityLineItem>();
         for (Core_Design_Registration_Product__c product : drpLines) {
             if (productToPriceBook.containsKey(product.Core_Product_Id__c)) {
@@ -88,21 +96,18 @@ public with sharing class PCC_FlowApexActionCntroller {
                 oli.Core_Design_Registration_Product_Id__c = product.Id;
                 oli.UnitPrice = product.Core_Target_Resale_Amt__c;
                 oli.Quantity = product.Core_Full_Year_Qty__c;
+                // oli.TotalPrice = oli.UnitPrice * oli.Quantity;
                 oli.Product2Id = product.Core_Product_Id__c;
                 oli.Failed_DDR_RecordID__c = product.Core_Design_Registration_Id__c;
-                if(!Test.isRunningTest()){
                 	oli.PricebookEntryId = productToPriceBook.get(product.Core_Product_Id__c).Id;    
-                }
-                
                 oliList.add(oli);
             }
         }
-        System.debug('oliList -->'+JSON.serialize(oliList));
         return oliList;
     }
 
     // Processes Opportunity Line Items and updates the associated DRP records
-    private static String processOLIandUpdateDRP(List<OpportunityLineItem> oliList, List<Core_Design_Registration_Product__c> drpList) {
+    public static String processOLIandUpdateDRP(List<OpportunityLineItem> oliList, List<Core_Design_Registration_Product__c> drpList) {
         String errorMessage = '';
 
         // Get locked record type ID
@@ -121,6 +126,7 @@ public with sharing class PCC_FlowApexActionCntroller {
                 drprec.Core_Locked_Ind__c = true;
                 drprec.RecordTypeId = recordTypeId;
                 updateDrpList.add(drprec);
+                
             } else {
                 for (Database.Error error : sr.getErrors()) {
                     errorMessage += 'Exception occurred while creating Opportunity Line Items: Fields: ' + error.getFields() + ' Message: ' + error.getMessage() + '\n';

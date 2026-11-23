@@ -110,6 +110,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public Decimal noOfCPUsPerSystem {get; set;}
         public Decimal singleSystemPricePoint {get;set;}
         public Decimal customerStdUnitPrice {get;set;}
+        public String quotelineprogramtype {set;get;}
         public Decimal requestedUnitPrice {get;set;}
         public Decimal totalBidWithoutDiscount {get;set;}
         public Decimal additionalDiscount {get;set;}
@@ -372,6 +373,7 @@ public with sharing class Pricing_RestAPI_QuoteDetailsWrapperV2 {
         public String pairedCPU {get;set;}
 	    public String writeInPairedCPU {get;set;}
         public Decimal customerStdUnitPrice {get;set;}
+        public String quotelineprogramtype {set;get;}
         public Decimal requestedUnitPrice {get;set;}
         public Decimal totalBidWithoutDiscount {get;set;}
         public Decimal additionalDiscount {get;set;}

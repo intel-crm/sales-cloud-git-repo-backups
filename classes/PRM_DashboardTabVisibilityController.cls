@@ -122,10 +122,12 @@ public without sharing class PRM_DashboardTabVisibilityController {
             rr.showManagePartnerBtn = false;
             rr.loggedInuserType = Label.PRM_External_User;
         }
+        
         if(profileName == Label.PRM_Internal_User || Test.isRunningTest()){
             rr.showManageStorefrontBtn = false;
             rr.showManagePartnerBtn = true;
             rr.loggedInuserType = Label.PRM_Internal_User;
+            
         }
         if(String.isNotBlank(isPartnerKeyMetricExt())){
             rr.partnerKeyMetricExtLink = isPartnerKeyMetricExt();  
@@ -813,7 +815,10 @@ public without sharing class PRM_DashboardTabVisibilityController {
         system.debug('---profileName '+profileName);
         if(profileName == Label.PRM_SysAdminProfile || profileName == Label.PRM_ITAdminProfile || profileName == Label.PRM_Internal_User) { // profile and internal user check 
             tabVisibility = true;
-        } else if(profileName == Label.PRM_External_User || profileName =='Partner') { // check external user
+        } 
+        
+       
+            else if(profileName == Label.PRM_External_User || profileName =='Partner') { // check external user
             // list of entitlements of logged in user           
             
             system.debug('---tabName '+tabName);
@@ -890,13 +895,18 @@ public without sharing class PRM_DashboardTabVisibilityController {
                     } 
                 }
             }
+            System.debug('BenefitSet::'+benefitset);
             
             for(PermissionSetAssignment pmsa : [SELECT Id, PermissionSetId, PermissionSet.Name, PermissionSet.ProfileId, PermissionSet.Profile.Name, AssigneeId, Assignee.Name FROM PermissionSetAssignment WHERE AssigneeId = :userinfo.getUserId()]){
                 loggedInUserpermissionSet.add(pmsa.PermissionSet.Name);
-            }         
+            }  
+             
             if(loggedInUserpermissionSet.contains(Label.PRM_Internal_Intel_Admin) || loggedInUserpermissionSet.contains(Label.PRM_Internal_Intel_Read_Only_pmset_name)) {
                 profileName = Label.PRM_Internal_User;
-            }else if(loggedInUserpermissionSet.contains(Label.PRM_External_Employee_pmset_name) && benefitset.size() > 0  && loggedInUserpermissionSet.size() > 0) {
+            }
+            // If user has any of these, treat as no dashboard access by returning an empty profileName
+           
+            else if(loggedInUserpermissionSet.contains(Label.PRM_External_Employee_pmset_name) && benefitset.size() > 0  && loggedInUserpermissionSet.size() > 0) {
                 profileName = Label.PRM_External_User;  
             } 
             return profileName;

@@ -159,6 +159,10 @@
         <name>Core_MDF_Select_All_Country_ind__c</name>
     </fields>
     <fields>
+        <label><!-- Technical Program Name --></label>
+        <name>Core_MDF_Technical_Program_Name_txt__c</name>
+    </fields>
+    <fields>
         <label>Impatto totale in dollari (USD)</label>
         <name>Core_MDF_Total_Dollar_Impact_amt__c</name>
     </fields>

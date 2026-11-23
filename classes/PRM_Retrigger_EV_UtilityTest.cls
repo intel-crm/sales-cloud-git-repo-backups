@@ -132,7 +132,7 @@ public class PRM_Retrigger_EV_UtilityTest {
         regreq.PRM_EV_Token__c='TOKEN';
         regreq.PRM_Channel_Program__c = cprogram1.Id;
         insert regreq;
-        regreqId=regreq.Id;       
+        regreqId=regreq.Id;         
         date d1 = date.today().addDays(-2);
         PRM_Retrigger_EV_Utility.Retrigger_EVWrapper obj_EV=new PRM_Retrigger_EV_Utility.Retrigger_EVWrapper();
         obj_EV.endDate=d1;

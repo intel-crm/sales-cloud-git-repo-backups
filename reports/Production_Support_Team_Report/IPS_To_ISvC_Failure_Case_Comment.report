@@ -10,9 +10,6 @@
         <field>Case.Core_Promote_Status__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Backend_System__c</field>
-    </columns>
-    <columns>
         <field>Core_IPS_Case_Comments__c.Core_IPS_Public__c</field>
     </columns>
     <columns>

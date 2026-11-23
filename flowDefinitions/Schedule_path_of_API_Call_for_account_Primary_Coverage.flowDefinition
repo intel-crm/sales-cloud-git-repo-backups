@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>5</activeVersionNumber>
+    <activeVersionNumber>56</activeVersionNumber>
+    <description>This flow(scheduled path) is used for sending attribute update to Reltio, such as Account Primary Coverage, OPId.</description>
+    <masterLabel>UCD ACM Trigger Attribute Updates to Reltio</masterLabel>
 </FlowDefinition>

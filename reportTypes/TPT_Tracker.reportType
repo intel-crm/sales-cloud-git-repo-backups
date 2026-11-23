@@ -23,6 +23,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>DealRegistrationProduct__c</field>
+            <table>TPT_Tracker__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LastActivityDate</field>
             <table>TPT_Tracker__c</table>
         </columns>

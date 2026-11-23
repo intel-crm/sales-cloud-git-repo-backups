@@ -3,7 +3,9 @@ public class PRM_SalesCloud_Integration_ForTesting {
     public static final String ACCOUNT_MESSAGE_TYPE = Label.PRM_SalesCloudInt_Account_Message_Type;
     public static final String CONTACT_MESSAGE_TYPE = Label.PRM_SalesCloudInt_Contact_Message_Type;
     
- /*   public static void GenerateAccountOBM (set<Id> IPAAccountIds){
+
+    /*
+    public static void GenerateAccountOBM (set<Id> IPAAccountIds){
         
         // This method is called from PRM_SalesCloud_AccountPayload_Batch class.
         system.debug('inside GenerateAccountOBM');
@@ -43,13 +45,13 @@ public class PRM_SalesCloud_Integration_ForTesting {
                                                                 }
                 }
             } 
-            /*
-            for(String key : benefitKeys) {
-            system.debug('Key ===>'+key);
-            }
-            for(String key : warrantyQtyMap.keySet()) {
-            system.debug('Key ===>'+key + ';;;'+ warrantyQtyMap.get(key) );
-            }
+            
+//for(String key : benefitKeys) {
+//system.debug('Key ===>'+key);
+//}
+for(String key : warrantyQtyMap.keySet()) {
+system.debug('Key ===>'+key + ';;;'+ warrantyQtyMap.get(key) );
+}
             //List<String> SLABenefitCodes = new List<String>{'BNFTCS48S','BNFTCS24S','BNFTCS4S'};
             List<String> SLABenefitCodes = Label.PRM_SLAHours_BenefitCodes.split(',');
             Map<String,Integer> warrantyQtyMapSLA = new Map<String,Integer>();
@@ -75,7 +77,8 @@ public class PRM_SalesCloud_Integration_ForTesting {
                                    // Account Channel Memberships
                                    (SELECT Id, PRM_Status_Change_Dt__c,PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Partner_Role__c,PRM_Status_Nm__c FROM Channel_Memberships1__r),
                                    // Account Benefit Associations     
-                                   (SELECT PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c/*,PRM_Quantity__c FROM AccountBenefitAssociations__r),
+                                   //(SELECT PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c,PRM_Quantity__c FROM AccountBenefitAssociations__r),
+                                   (SELECT PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c FROM AccountBenefitAssociations__r),
                                    // Account Specialty Assciations       
                                    (SELECT Name,PRM_Start_Date_Dt__c,PRM_InActive_Ind__c,PRM_Specialty_Id__r.Name,PRM_Specialty_Id__r.PRM_Role_Nm__c,PRM_Specialty_Id__r.PRM_Tier_Nm__c,PRM_Specialty_Type__c FROM Account_Specialty_Associations__r),
                                    // Account ONE PARTNER ID GROUP MEMEBRS       
@@ -136,7 +139,9 @@ public class PRM_SalesCloud_Integration_ForTesting {
                 }                
             } 
         }
-    }   
+    }
+    */
+    
     /*
 private static Integer getSLAHours(Account acct, Map<String,Integer> warrantyQtyMap, Id PAGRecordTypeId){  
 PRM_SalesCloud_Integration_Model.WarrantyBenefit warrantyBenefit = new PRM_SalesCloud_Integration_Model.WarrantyBenefit();
@@ -148,8 +153,9 @@ break;
 }
 }        
 return warrantyBenefit;
-}
+}*/
     
+    /*
     private static PRM_SalesCloud_Integration_Model.WarrantyBenefit getWarrantyInformation(Account acct, Map<String,Integer> warrantyQtyMap, Map<String,Integer> warrantyQtyMapSLA, Id PAGRecordTypeId){   
         
         PRM_SalesCloud_Integration_Model.WarrantyBenefit warrantyBenefit = new PRM_SalesCloud_Integration_Model.WarrantyBenefit();
@@ -203,26 +209,26 @@ return warrantyBenefit;
             }
         }
         
-        /**** commented out as we are fetching the quantity from Benefit matrix
-if(acct.Channel_Memberships1__r.size() > 0 && configTierCodes.contains(tierCode)){
-Integer quantity = 0;
+         //commented out as we are fetching the quantity from Benefit matrix
+//if(acct.Channel_Memberships1__r.size() > 0 && configTierCodes.contains(tierCode)){
+//Integer quantity = 0;
 
-for(PRM_AccountBenefitAssociation__c acctBenefitAssoc : acct.AccountBenefitAssociations__r){
-String benefitCode = acctBenefitAssoc.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c;
+//for(PRM_AccountBenefitAssociation__c acctBenefitAssoc : acct.AccountBenefitAssociations__r){
+//String benefitCode = acctBenefitAssoc.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c;
 //quantity = String.isEmpty(String.valueOf(acctBenefitAssoc.PRM_Quantity__c))? 0 : (Integer) acctBenefitAssoc.PRM_Quantity__c ;
-if(benefitCode == 'AWR'){
-if(quantity > awrCount){
-awrCount = quantity;
-}
+//if(benefitCode == 'AWR'){
+//if(quantity > awrCount){
+//awrCount = quantity;
+//}
 //warrantyBenefit.AWRQuantity = String.isEmpty(String.valueOf(acctBenefitAssoc.PRM_Quantity__c))? 0 : (Integer) acctBenefitAssoc.PRM_Quantity__c ;
-}else if(benefitCode == 'SWR'){
-if(quantity > swrCount){
-swrCount = quantity;
-}
+//}else if(benefitCode == 'SWR'){
+//if(quantity > swrCount){
+//swrCount = quantity;
+//}
 //warrantyBenefit.SWRQuantity = String.isEmpty(String.valueOf(acctBenefitAssoc.PRM_Quantity__c))? 0 : (Integer) acctBenefitAssoc.PRM_Quantity__c ;
-}
-}  
-}
+//}
+//}  
+//}
 
         warrantyBenefit.AWRQuantity = awrCount;
         warrantyBenefit.SWRQuantity = swrCount;
@@ -232,7 +238,9 @@ swrCount = quantity;
         //}
         return warrantyBenefit;
     }
-    
+    */
+
+    /*
     private static PRM_SalesCloud_Integration_Model.AccountInformation getAccountInformation(Account acct, Id PAGRecordTypeId){
         PRM_SalesCloud_Integration_Model.AccountInformation acctInfo = new PRM_SalesCloud_Integration_Model.AccountInformation();       
         acctInfo.Name = acct.Name;
@@ -272,7 +280,8 @@ swrCount = quantity;
         
         return acctInfo; 
     }
-    
+    */
+    /*
     // Partner Assist and WhiteListed domain Method  
     private static List<PRM_SalesCloud_Integration_Model.PartnerAssist> getPartnerAssist(Account acct){
         List<PRM_SalesCloud_Integration_Model.PartnerAssist> PartnerAssist = new List<PRM_SalesCloud_Integration_Model.PartnerAssist>();
@@ -290,6 +299,8 @@ swrCount = quantity;
         System.debug('PartnerAssist'+PartnerAssist);
         return PartnerAssist;
     }
+    */
+    /*
     private static List<PRM_SalesCloud_Integration_Model.WhiteListedDomain> getWhiteListedDomains(Account acct){
         List<PRM_SalesCloud_Integration_Model.WhiteListedDomain> WhiteListedDomains = new List<PRM_SalesCloud_Integration_Model.WhiteListedDomain>();
         for(Core_Account_Whitelisted_Domains__c whiteListedDomain : acct.Account_Whitelisted_Domains__r) {
@@ -303,7 +314,8 @@ swrCount = quantity;
         System.debug('WhiteListedDomain'+WhiteListedDomains);
         return WhiteListedDomains;
     }
-    
+    */
+    /*
     // End Partner and WhiteListed Domain
     private Static PRM_SalesCloud_Integration_Model.Address getAccountPrimaryAddress(Account acct){
         PRM_SalesCloud_Integration_Model.Address primaryAddress = new PRM_SalesCloud_Integration_Model.Address();
@@ -324,7 +336,8 @@ swrCount = quantity;
             return null;
         }
     }
-    
+    */
+    /*
     private Static PRM_SalesCloud_Integration_Model.Address getAccountSecondaryAddress(Account acct){       
         boolean isAddressEmpty = false;
         PRM_SalesCloud_Integration_Model.Address secondaryAddress = new PRM_SalesCloud_Integration_Model.Address();
@@ -342,7 +355,8 @@ swrCount = quantity;
             return null;
         }
     }
-    
+    */
+    /*
     //-----------------------------------------------------------------------------------------------------------------------------       
     private static List<PRM_SalesCloud_Integration_Model.AccountSpecialityAssociation> getAccountSpecialityAssociations(Account acct){
         List<PRM_SalesCloud_Integration_Model.AccountSpecialityAssociation> asas = new List<PRM_SalesCloud_Integration_Model.AccountSpecialityAssociation>();
@@ -361,7 +375,9 @@ swrCount = quantity;
         }
         return asas;
     }
+    */
     
+    /*
     private static List<PRM_SalesCloud_Integration_Model.AccountChannelMembership> getAccountChannelMemberships(Account acct){
         List<PRM_SalesCloud_Integration_Model.AccountChannelMembership> acms = new List<PRM_SalesCloud_Integration_Model.AccountChannelMembership>();
         for(PRM_AccountChannelMembership__c channelMembership: acct.Channel_Memberships1__r ){
@@ -378,6 +394,7 @@ swrCount = quantity;
         } 
         return acms;
     }
+    /*
     
     /*private static List<PRM_SalesCloud_Integration_Model.OnePartnerIDGroupMember> getOnePartnerIDGroupMembers(List<Core_Account_Group_Member__c> onePartnerGMs){
 List<PRM_SalesCloud_Integration_Model.OnePartnerIDGroupMember> opidms = new List<PRM_SalesCloud_Integration_Model.OnePartnerIDGroupMember>();
@@ -394,8 +411,9 @@ opidm.CIMId = onePartnerGM.Core_Intel_Account_Id__r.Core_CIM_ID__c;
 opidms.add(opidm);            
 }
 return opidms;
-}
+}*/
     
+    /*
     private static List<PRM_SalesCloud_Integration_Model.OnePartnerIDGroupMember> getOnePartnerIDGroupMembers(List<Core_Account_Group_Member__c> onePartnerGMs){
         List<PRM_SalesCloud_Integration_Model.OnePartnerIDGroupMember> opidms = new List<PRM_SalesCloud_Integration_Model.OnePartnerIDGroupMember>();
         for(Core_Account_Group_Member__c onePartnerGM: onePartnerGMs){
@@ -412,7 +430,8 @@ return opidms;
         }
         return opidms;
     }
-    
+    */
+    /*
     private static List<PRM_SalesCloud_Integration_Model.AccoutBenefitAssociation> getAccoutBenefitAssociations(Account acct){
         
         List<PRM_SalesCloud_Integration_Model.AccoutBenefitAssociation> abas = new List<PRM_SalesCloud_Integration_Model.AccoutBenefitAssociation>();
@@ -428,7 +447,9 @@ return opidms;
         }
         return abas;
     }
+    */
     //-----------------------------------------------------------------------------------------------------------------------------
+    /*
     public static void GenerateContactOBM(Set<Id> contactIds){
         Map<Id,Account> accountsMap = new Map<Id,Account>();
         Set<Id> accountIdSet = new Set<Id>();
@@ -508,7 +529,9 @@ return opidms;
                 //}
             }                
         }
-    }    
+    }
+    */
+    /*    
     private static PRM_SalesCloud_Integration_Model.ContactBasicInformation getContactBasicDetails(Contact cont, Map<String,String> pRoleLabelValueMap){
         //ContactBasicProfileWrapper ContactProfile
         PRM_SalesCloud_Integration_Model.ContactBasicInformation ContactDetails = new PRM_SalesCloud_Integration_Model.ContactBasicInformation();
@@ -547,10 +570,10 @@ return opidms;
         ContactDetails.WeChatUnionId = cont.PRM_Wechat_Union_Id__c;
         //ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
         //-----------------------------We chat-----------------------------
-        /*
-ContactDetails.WechatOpenId = cont.PRM_Wechat_Open_Id__c;
-ContactDetails.WechatUnionId = cont.PRM_Wechat_Union_Id__c;
-ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
+        
+//ContactDetails.WechatOpenId = cont.PRM_Wechat_Open_Id__c;
+//ContactDetails.WechatUnionId = cont.PRM_Wechat_Union_Id__c;
+//ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
 
         //-----------------------------We chat-----------------------------
         
@@ -558,6 +581,8 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
         
         return ContactDetails;
     }
+    */
+    /*
     private static PRM_SalesCloud_Integration_Model.Address getContactMailingAddress(Contact cont){
         PRM_SalesCloud_Integration_Model.Address mailingAddr = new PRM_SalesCloud_Integration_Model.Address();
         boolean isAddressEmpty = (String.isEmpty(cont.MailingStreet) && String.isEmpty(cont.MailingCity) 
@@ -577,6 +602,8 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
         }      
         
     }
+    */
+    /*
     private static List<PRM_SalesCloud_Integration_Model.AccountContactRelationship> getAccountContactRelationships(Contact cont){ 
         List<PRM_SalesCloud_Integration_Model.AccountContactRelationship> acrs = new List<PRM_SalesCloud_Integration_Model.AccountContactRelationship>();
         for(PRM_Account_Contact_Relationship__c acr: cont.Account_Contact_Relationships__r){
@@ -596,6 +623,8 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
         }
         return acrs;      
     }
+    */
+    /*
     private static List<PRM_SalesCloud_Integration_Model.ContactEntitlement> getContactEntitlements(Contact cont){
         
         List<PRM_SalesCloud_Integration_Model.ContactEntitlement> ContactEntitlements = new List<PRM_SalesCloud_Integration_Model.ContactEntitlement>();
@@ -610,6 +639,8 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
         }    
         return ContactEntitlements;
     }
+    */
+    /*
     private static List<PRM_SalesCloud_Integration_Model.ContactSubscription> getContactSubscriptions(Contact cont){
         
         List<PRM_SalesCloud_Integration_Model.ContactSubscription> subscriptions = new List<PRM_SalesCloud_Integration_Model.ContactSubscription>();
@@ -621,7 +652,9 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
             subscriptions.add(cs);
         }
         return subscriptions;
-    }  
+    } 
+    */ 
+    /*
     private static Core_Integration_Outbound_Message__c createAndGetOBM (String MessageType, String payload, String tags){
         Core_Integration_Outbound_Message__c outboundMsg = new Core_Integration_Outbound_Message__c();
         outboundMsg.Core_MessageType__c = MessageType;
@@ -629,20 +662,22 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
         outboundMsg.Core_Tags__c = tags == null || tags.length() <= 255 ? tags : tags.substring(0, 255);
         return outboundMsg;
     }
-        //Updated for US612331 (As an IPA admin I would like Contact to Contact integration to be established for all related contact attributes that are synced from Sales cloud to service cloud.)
-        /** private static PRM_SalesCloud_Integration_Model.ContactAccountInformation getContactAccountInformation(Account acct){
-            PRM_SalesCloud_Integration_Model.ContactAccountInformation acctInfo = new PRM_SalesCloud_Integration_Model.ContactAccountInformation();       
-        acctInfo.Name = acct.Name;
-        acctInfo.SalesGroup = acct.Core_Sales_Groups__c;
-        acctInfo.Industry = acct.Industry;
-        acctInfo.BizOrgType = acct.Core_Account_Type__c;
-        acctInfo.PartnerRole = acct.Core_IPA_Partner_Role__c;
-        acctInfo.address = new PRM_SalesCloud_Integration_Model.ContactAccountAddress();
-        acctInfo.address.PrimaryAddress = getAccountPrimaryAddress(acct);
+    */
 
-        return acctInfo;
-        } 
-        **/
+    //Updated for US612331 (As an IPA admin I would like Contact to Contact integration to be established for all related contact attributes that are synced from Sales cloud to service cloud.)
+    /** private static PRM_SalesCloud_Integration_Model.ContactAccountInformation getContactAccountInformation(Account acct){
+PRM_SalesCloud_Integration_Model.ContactAccountInformation acctInfo = new PRM_SalesCloud_Integration_Model.ContactAccountInformation();       
+acctInfo.Name = acct.Name;
+acctInfo.SalesGroup = acct.Core_Sales_Groups__c;
+acctInfo.Industry = acct.Industry;
+acctInfo.BizOrgType = acct.Core_Account_Type__c;
+acctInfo.PartnerRole = acct.Core_IPA_Partner_Role__c;
+acctInfo.address = new PRM_SalesCloud_Integration_Model.ContactAccountAddress();
+acctInfo.address.PrimaryAddress = getAccountPrimaryAddress(acct);
+
+return acctInfo;
+} 
+**/
     //Updated for US612331 (As an IPA admin I would like Contact to Contact integration to be established for all related contact attributes that are synced from Sales cloud to service cloud.)
     
 }

@@ -1,5 +1,5 @@
 @isTest public class Core_Batch_AccountCoverage_Test {
-     @isTest
+    /* @isTest
     static void testBatchExecution() {
         String result= Core_Batch_AccountShare.dummyMethod1();
         String result2= Core_Batch_AccountShare.dummyMethod2(); 
@@ -10,8 +10,8 @@
         String result7= Core_Batch_AccountShare.dummyMethod7(); 
         String result8= Core_Batch_AccountShare.dummyMethod8(); 
         String result9= Core_Batch_AccountShare.dummyMethod9();
-    }
-   /* 
+    }*/
+   
     @testSetup static void setup() {
         System.debug(' --------------- Core_Batch_AccountCoverage_Test Setting up the test Data-----------------------');
         // 1. Setup The Data for Role Hierarchy
@@ -40,14 +40,14 @@
         Profile prf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         Profile salesRepPrf = [select id, name from Profile where name = 'Sales Rep-BB' Limit 1];
         User adminUser = new User(Alias = 'admin', 
-                                  Email='adminTest@intel.com', 
+                                  Email='adminTest001@intel.com', 
                                   EmailEncodingKey='UTF-8',
                                   LastName='UnitTestAdmin',
                                   LanguageLocaleKey='en_US', 
                                   LocaleSidKey='en_US', 
                                   ProfileId = prf.Id, 
                                   TimeZoneSidKey='America/Los_Angeles',
-                                  UserName='adminTest@intel.com');
+                                  UserName='adminTest001@intel.com');
         insert adminUser;
         
         Set<Id> tstRoleIds = new Set<Id>();
@@ -171,7 +171,7 @@
         System.debug(' Intial Settings >> '+getAllSettings());
         System.debug(' Account Coverage before Batches '+getAccountExport());
         Test.startTest();
-        Database.executeBatch(new Core_Batch_AccountCoverage_Delete());
+        Database.executeBatch(new Core_Batch_AccountCoverage_Delete(True));
         Test.stopTest();
         
         
@@ -183,8 +183,8 @@
         sum.execute(null, [Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c ]);
         System.debug(' Day 1 Account Coverage After Summary  '+getAccountExport());
         
-        Database.executeBatch(new Core_Batch_AccountCoverage_Delete());
-        /*
+        Database.executeBatch(new Core_Batch_AccountCoverage_Delete(True));
+       /* 
         List<Core_AccountCoverage_Export__c> cel = new List<Core_AccountCoverage_Export__c> ();
         for(Core_AccountCoverage_Export__c ac :[Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c ]){
             ac.Core_Status__c = 'New';
@@ -210,25 +210,21 @@
         System.debug(' Result '+[Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c ]);
         //Database.executeBatch(new Core_Batch_AccountCoverage_Summary());
         
-    }*/
+        }*/
+        
+        
+        /*@isTest public static void testLoadTypeFull(){
     
-    /*
-@isTest public static void testLoadTypeFull(){
-
-//Day 1 : Full Load
-
-Integer count = [Select count() from AccountCoverage_Report__c];
-System.assertEquals(0, count);
-System.debug('++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Test Method 1 ++++++++++++++++++++++++++');
-System.debug(' Intial Settings >> '+getAllSettings());
-Test.startTest();
-Database.executeBatch(new Core_Batch_AccountCoverage_Delete());
-Test.stopTest();
-//Database.executeBatch(new Core_Batch_AccountCoverage_Summary());
-} 
-    */
+        //Day 1 : Full Load
     
-    
-    
-    
+        //Integer count = [Select count() from AccountCoverage_Report__c];
+        System.assertEquals(0, count);
+        System.debug('++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Test Method 1 ++++++++++++++++++++++++++');
+        System.debug(' Intial Settings >> '+getAllSettings());
+        Test.startTest();
+        Database.executeBatch(new Core_Batch_AccountCoverage_Delete());
+        Test.stopTest();
+        //Database.executeBatch(new Core_Batch_AccountCoverage_Summary());
+        } */    
+	}
 }

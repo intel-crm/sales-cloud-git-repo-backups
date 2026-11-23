@@ -224,31 +224,26 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Intel led</fullName>
-                    <default>true</default>
-                    <label>Intel-led Account</label>
+                    <fullName>Intel Covered</fullName>
+                    <default>false</default>
+                    <label>Intel Covered</label>
                 </value>
                 <value>
-                    <fullName>Partner-led Account</fullName>
+                    <fullName>Indirect Covered</fullName>
                     <default>false</default>
-                    <label>Partner-led Account</label>
+                    <label>Indirect Covered</label>
                 </value>
                 <value>
-                    <fullName>Other-led Account</fullName>
+                    <fullName>Not Covered</fullName>
                     <default>false</default>
-                    <label>Other-led Account</label>
-                </value>
-                <value>
-                    <fullName>Not Covered Account</fullName>
-                    <default>false</default>
-                    <label>Not Covered Account</label>
+                    <label>Not Covered</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Customer_category__c</fullName>
-        <label>Semi-Annual Temp Account Category</label>
+        <label>Account Category</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -457,12 +452,6 @@
                     <label>India Sales Group</label>
                 </value>
                 <value>
-                    <fullName>APJ India Sales Group</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>APJ India Sales Group</label>
-                </value>
-                <value>
                     <fullName>Global Solutions &amp; Services Sales Group</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -549,7 +538,6 @@
         <columns>New_Account_Owner__c</columns>
         <columns>Customer_category__c</columns>
         <columns>New_Sales_Group__c</columns>
-        <columns>GTM_Model__c</columns>
         <columns>Team_Members__c</columns>
         <columns>Reasoning__c</columns>
         <columns>CREATEDBY_USER</columns>

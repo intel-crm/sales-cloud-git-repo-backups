@@ -56,6 +56,10 @@
             <masterLabel>Created By</masterLabel>
             <translation>Créé par</translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_owner_mgr__c</masterLabel>
+            <translation><!-- core_cpq_owner_mgr__c --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help>Référencez l&apos;approbateur associé à cette approbation.</help>
@@ -178,6 +182,10 @@
     <validationRules>
         <errorMessage><!-- Please provide Comments before Rejection --></errorMessage>
         <name>Pricing_SW_Rejection_Approval_Comments</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Fields cannot be edited on Approval record. --></errorMessage>
+        <name>Pricing_SW_RestrictEditonApprovalFields</name>
     </validationRules>
     <webLinks>
         <label><!-- Approve --></label>

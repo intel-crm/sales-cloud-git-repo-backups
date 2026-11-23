@@ -31,10 +31,10 @@
         <label>Guest</label>
     </customValue>
     <customValue>
-        <fullName>Original Equipment Manufacturer (OEM)</fullName>
+        <fullName>OEM</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Original Equipment Manufacturer (OEM)</label>
+        <label>OEM</label>
     </customValue>
     <customValue>
         <fullName>Sponsor</fullName>
@@ -43,10 +43,10 @@
         <label>Sponsor</label>
     </customValue>
     <customValue>
-        <fullName>OEM</fullName>
+        <fullName>Original Equipment Manufacturer (OEM)</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>OEM</label>
+        <label>Original Equipment Manufacturer (OEM)</label>
     </customValue>
     <customValue>
         <fullName>Not Applicable</fullName>

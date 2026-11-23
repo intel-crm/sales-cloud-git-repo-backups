@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SalesCRMJobStatusMail</name>
     <style>none</style>
-    <subject>Production - Job Restarted - Job Name $Job</subject>
+    <subject>DEVINT - Job Restarted - Job Name $Job</subject>
     <type>custom</type>
     <uiType>SFX</uiType>
 </EmailTemplate>

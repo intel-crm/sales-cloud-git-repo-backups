@@ -74,17 +74,19 @@ private static final String v1_0 = 'v1.0';
             Case adminCase = caseList[0];
             adminCase.OwnerId = adminUser.Id;
             adminCase.ContactId = null;
+            //adminCase.Core_IPS_Customer_Visible__c = true;
             
             Case commUser1Case = caseList[1];
             commUser1Case.OwnerId = commUser1.Id;
             commUser1Case.ContactId = commUser1.ContactId;
             commUser1Case.AccountId = commUser1.Contact.AccountId;
+            //commUser1Case.Core_IPS_Customer_Visible__c = true;
             
             Case commUser2Case = caseList[2];
             commUser2Case.OwnerId = commUser2.Id;
             commUser2Case.ContactId = commUser2.ContactId;
             commUser2Case.AccountId = commUser2.Contact.AccountId;
-            
+            //commUser2Case.Core_IPS_Customer_Visible__c = true;
             insert caseList; 
             
             List<Core_IPS_Case_Attachments__c> lstattachments = new List<Core_IPS_Case_Attachments__c>();
@@ -150,6 +152,7 @@ private static final String v1_0 = 'v1.0';
     @isTest public static void test_doValidations_Positive(){
         Core_RestAPI_CaseAttachmentV1_Handler handler = new Core_RestAPI_CaseAttachmentV1_Handler(System.now(), 'Core_RestAPI_CaseAttachmentsV1'); 
         handler.doValidations();
+	System.assertEquals(handler != null, true);
     }
     //Test method - tests the negative cases for the method doValidations, method should not throw any excepctoin with invalid inputs
     //NOTE: for now there is no logic in doValidations and the method will be revisited when code gets added to doValidations method

@@ -363,159 +363,6 @@
             <value>Cyclone 10</value>
         </values>
     </buckets>
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_43216332</developerName>
-        <masterLabel>New Case Closure</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>Case.Core_Case_Closure__c</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel &gt; Design Review</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Design Consultation</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Customized Solution</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Performance Optimization</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Expected Behavior</sourceValue>
-            </sourceValues>
-            <value>Design Review/Consultation</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel &gt; Known Issue</sourceValue>
-            </sourceValues>
-            <value>Known Issue</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel &gt; Documentation Updated</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Documentation Missing</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Silicon Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Hardware Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Firmware Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Software Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Unknown Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Resolved via Prior Case</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Manufacturing</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Not Reproducible</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; No Fix/Not To Be Fixed</sourceValue>
-            </sourceValues>
-            <value>Fix in Intel all</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel &gt; Not Supported/Not POR</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Deferred To Future Project</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel &gt; Regression</sourceValue>
-            </sourceValues>
-            <value>Not Supported</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel &gt; Answered General Inquiry</sourceValue>
-            </sourceValues>
-            <value>Solution Provided</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Customer &gt; Configuration</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; Error/Fix</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; Updated Version</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; Manufacturing</sourceValue>
-            </sourceValues>
-            <value>Customer Errors</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Customer &gt; Documentation Guidance</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; Tool Vendor</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; SysInt Vendor</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; Software</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; OS Vendor</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; BIOS Vendor</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; Hardware</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Customer &gt; Community/Forum Support</sourceValue>
-            </sourceValues>
-            <value>Training Requried</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Customer &gt; Change Request</sourceValue>
-            </sourceValues>
-            <value>Enhancement Request</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Customer &gt; 3rd Party</sourceValue>
-            </sourceValues>
-            <value>3rd Party Issue/Fix</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Customer &gt; License Request</sourceValue>
-            </sourceValues>
-            <value>License Request</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Customer &gt; Abandoned</sourceValue>
-            </sourceValues>
-            <value>Abandoned by Customer</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -527,10 +374,10 @@
         <chartType>VerticalColumnStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>BucketField_40617595</groupingColumn>
+        <groupingColumn>Case.Core_Case_Closure__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>CLOSED_DATE</secondaryGroupingColumn>
+        <secondaryGroupingColumn>BucketField_40617595</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -563,6 +410,9 @@
     </columns>
     <columns>
         <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATE</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Case_Escalated_Date__c</field>
@@ -615,19 +465,12 @@
             <operator>equals</operator>
             <value>Closed</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Case_Closure__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Duplicate</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>CLOSED_DATE</field>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -637,7 +480,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_43216332</field>
+        <field>Case.Core_Case_Closure__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>MIPS Stratix 10 Case Closure all</name>
@@ -655,9 +498,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2021-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-01-01</startDate>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_PREVCURY</interval>
     </timeFrameFilter>
 </Report>

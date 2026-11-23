@@ -38,11 +38,11 @@
     </params>
     <reportType>CustomEntity$Core_AE_Integration_Log__c@Core_AE_Integration_Log__c.Core_Integration_Contact__c</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_AE_Integration_Log__c.Core_Log_Generation_Date__c</dateColumn>
-        <interval>INTERVAL_LAST90</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

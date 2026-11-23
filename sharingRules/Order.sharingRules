@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>PSGInternal_Order</fullName>
+        <fullName>PSGInternal</fullName>
         <accessLevel>Read</accessLevel>
-        <label>PSGInternal_Order</label>
+        <label>PSGInternal</label>
         <sharedTo>
             <group>ags_internal_users</group>
         </sharedTo>

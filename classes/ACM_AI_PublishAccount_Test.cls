@@ -123,7 +123,7 @@ public class ACM_AI_PublishAccount_Test {
         System.assertEquals(recordType[0].RecordTypeId, accountsAfterUpdate[0].RecordTypeId, 'Record Type Assignment is not correct.');	        
     }
     
-    /* @isTest
+     /*@isTest
     private static void whenSetIntegrationMessage(){
         UCD_ACM_UnitOfWork unitOfwork = new UCD_ACM_UnitOfWork();
         List<Account> accountsBeforeUpdate = [Select Id,Core_Business_Party_Id__c,RecordTypeId,Core_Account_Reference_Source_Name__c,ParentId,Core_Customer_Aggregation_Type__c from account where (Name = 'Account5' )];       

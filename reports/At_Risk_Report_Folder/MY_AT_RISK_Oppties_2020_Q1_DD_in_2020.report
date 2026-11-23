@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>Donut</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
-        <groupingColumn>Opportunity.Core_Sales_Groups__c</groupingColumn>
-        <legendPosition>Right</legendPosition>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>true</showTotal>
-        <showValues>true</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <title>Open Oppties STILL At Risk - Oppty Level</title>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
@@ -36,7 +10,6 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
     <columns>
@@ -62,11 +35,11 @@
 (if YOU do not find any oppties in this report then all your oppties are in new format and you&apos;re done! THANKS!)</description>
     <filter>
         <criteriaItems>
-            <column>Opportunity.Core_Support_Requested__c</column>
+            <column>Opportunity.Core_At_Risk__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <operator>equals</operator>
+            <value>1</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Products_At_Risk_Count__c</column>

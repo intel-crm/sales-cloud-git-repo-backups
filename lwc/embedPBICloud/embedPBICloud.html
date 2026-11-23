@@ -1,0 +1,10 @@
+<template>
+    <lightning-card>
+        <template if:true={hasAccess}>
+            <iframe src={fullUrl} height="600px" width="100%"> </iframe>
+        </template>
+        <template if:true={noAccess}>
+            <p>{noAccessMsg}</p>
+        </template>
+    </lightning-card>   
+</template>

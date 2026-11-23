@@ -163,7 +163,7 @@
     <sortColumn>OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
+        <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
         <interval>INTERVAL_LAST30</interval>
     </timeFrameFilter>
 </Report>

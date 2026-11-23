@@ -42,6 +42,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>ER_Clone_Source_Id__c</field>
+            <table>ER_Customer_Master_File_Group__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedBy</field>
             <table>ER_Customer_Master_File_Group__c</table>
         </columns>
@@ -196,6 +201,24 @@
             <field>ER_Active__c</field>
             <table>ER_Customer_Master_File_Group__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Active_Account_Business_Partners__c</field>
+            <table>ER_Customer_Master_File_Group__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Inactive_Account_Business_Partners__c</field>
+            <table>ER_Customer_Master_File_Group__c</table>
+        </columns>
         <masterLabel>Customer Master File Groupings</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Active_CMF_Count_Formula__c</field>
+            <table>ER_Customer_Master_File_Group__c.ContactGroupAssociations__r</table>
+        </columns>
+        <masterLabel>Contact Associations</masterLabel>
     </sections>
 </ReportType>

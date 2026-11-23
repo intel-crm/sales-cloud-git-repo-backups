@@ -337,7 +337,6 @@ public with sharing class PMP_SearchContextualFilterController extends PMP_Searc
             }
             
         }catch(Exception e){
-            System.debug(e.getMessage()+' '+e.getLineNumber()+' '+e.getCause());
             throw new AuraHandledException(e.getMessage()+' '+e.getLineNumber()+' '+e.getCause());
         }
         return Filter;

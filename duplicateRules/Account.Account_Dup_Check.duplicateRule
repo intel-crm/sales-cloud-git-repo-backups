@@ -5,20 +5,20 @@
     <alertText>A duplicate record exists with the same name and primary address.</alertText>
     <description xsi:nil="true"/>
     <duplicateRuleFilter>
-        <booleanFilter xsi:nil="true"/>
-        <duplicateRuleFilterItems>
-            <field>Profile</field>
-            <operation>notEqual</operation>
-            <value>Integration</value>
-            <sortOrder>1</sortOrder>
-            <table>User</table>
-        </duplicateRuleFilterItems>
+        <booleanFilter>1 AND 2</booleanFilter>
         <duplicateRuleFilterItems>
             <field>RecordType</field>
             <operation>equals</operation>
             <value>Intel Account</value>
-            <sortOrder>2</sortOrder>
+            <sortOrder>1</sortOrder>
             <table>Account</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>notEqual</operation>
+            <value>Integration</value>
+            <sortOrder>2</sortOrder>
+            <table>User</table>
         </duplicateRuleFilterItems>
     </duplicateRuleFilter>
     <duplicateRuleMatchRules>
@@ -28,6 +28,7 @@
     </duplicateRuleMatchRules>
     <isActive>true</isActive>
     <masterLabel>Account Dup Check</masterLabel>
+    <operationsOnUpdate>Alert</operationsOnUpdate>
     <securityOption>EnforceSharingRules</securityOption>
     <sortOrder>1</sortOrder>
 </DuplicateRule>

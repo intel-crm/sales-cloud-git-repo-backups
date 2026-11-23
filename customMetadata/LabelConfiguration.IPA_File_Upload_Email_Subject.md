@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">Intel Partner Alliance: Business License Needed</value>
+        <value xsi:type="xsd:string">Intel Partner Alliance: Business License Needed; 인텔® 파트너 얼라이언스: 비즈니스 라이선스 정보 필요</value>
     </values>
 </CustomMetadata>

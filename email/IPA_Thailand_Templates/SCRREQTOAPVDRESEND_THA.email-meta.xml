@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDRESEND_THA</name>
     <style>none</style>
-    <subject>โปรดกรอกใบสมัครเข้าร่วม Intel® Partner Alliance ของคุณให้ครบถ้วน</subject>
+    <subject>Complete your Intel® Partner Alliance application</subject>
     <textOnly>คุณเกือบถึงจุดหมายแล้ว!
 
 
@@ -23,8 +23,7 @@
 
 ไม่สามารถเข้าถึงลิงก์ด้านบนได้ใช่หรือไม่
 
-https://www.intel.com/content/www/th/th/secure/partner/forms/ipa-account-search.html
-
+https://wcm-ciqa.intel.com/content/www/th/th/secure/partner/forms/ipa-account-search.html
 หากคุณมีคำถามใดๆ โปรดติดต่อเราได้ที่ programs@intel.com
 
 ขอขอบคุณ
@@ -33,7 +32,7 @@ https://www.intel.com/content/www/th/th/secure/partner/forms/ipa-account-search.
 
 
 ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
 ความเป็นส่วนตัว | คุ้กกี้</textOnly>
     <type>custom</type>

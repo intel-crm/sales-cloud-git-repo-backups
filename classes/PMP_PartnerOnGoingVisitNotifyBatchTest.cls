@@ -1,10 +1,5 @@
 @isTest
 public class PMP_PartnerOnGoingVisitNotifyBatchTest {
-	@isTest
-    static void testIsWorking() {
-        Boolean result = PMP_PartnerOnGoingVisitNotifyBatch.isWorking();
-        System.assertEquals(true, result);
-    }
 //IPA2.0 - As part of TWC729-7977 commented the entire class
  /*   
     @testSetup

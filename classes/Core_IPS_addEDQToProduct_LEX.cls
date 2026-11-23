@@ -32,12 +32,12 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
     @AuraEnabled(cacheable=true)
     public static List<EnvironmentVarSel> getEnvironmentVariables_SupProd( String recordId, Integer limitSize, Integer offset , String fetchType){
             List<Core_IPS_Question__c> masterEnvList;
-        	List<Core_IPS_Supported_product__c> SupportedProductRecordList = new List<Core_IPS_Supported_product__c>();   // US-0049380 UnhandledExp_EDQs       
+        	List<Core_IPS_Supported_product__c> SupportedProductRecordList = new List<Core_IPS_Supported_product__c>();   // US-0049380 UnhandledExp_EDQs     
          String query;
             if(Core_IPS_Supported_product__c.SObjectType.getDescribe().isAccessible()){   
                 SupportedProductRecordList = [Select id,Core_Product_Organization__c, Core_Product_Organization__r.OwnerId, Core_EOIS__c, (select id, Core_Agent_Only__c,Core_IPS_Question__c,Core_Required__c,Core_Supported_Product__c,Core_Type__c,Core_Status__c from Environment_Detail_Operationals__r where (Core_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c and Core_Supported_Product__c=: recordId)) from Core_IPS_Supported_product__c where id =: recordId];
             }
-        if(SupportedProductRecordList != null && SupportedProductRecordList.size()>0){  // US-0049380 UnhandledExp_EDQs
+        if(SupportedProductRecordList != null && SupportedProductRecordList.size()>0){     // US-0049380 UnhandledExp_EDQs
           SupportedProductRecord = SupportedProductRecordList[0]; 
             set<id> existingIds = new set<id>();
             for(Core_IPS_Assigned_Environment_Variables__c env : SupportedProductRecord.Environment_Detail_Operationals__r){      
@@ -70,7 +70,7 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
                         envSel.ParentQuestion = env.Core_IPS_Parent_Question__r.Core_IPS_Question__c;
                         
                         envDetails.add(envSel);
-                    }  // US-0049380 UnhandledExp_EDQs
+                    }
             }
         }
         return envDetails;
@@ -97,11 +97,16 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
         String status = Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c;
         String query='';
         String CaseCatOrg = '';
+        set<id> existingIds = new set<id>();
+        envDetails = new List<EnvironmentVarSel>();        
+        List<Core_IPS_Product_Issue_Category__c> CaseCategoryRecordList = new List<Core_IPS_Product_Issue_Category__c>();
         if(Core_IPS_Product_Issue_Category__c.SObjectType.getDescribe().isAccessible()){
-                CaseCategoryRecord = [Select id,Name,Core_Issue_Sub_Category_Name__c,Core_Status__c,Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c, Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__r.OwnerID, Core_Product_Issue_Category__c, ( select id, Core_Agent_Only__c,Core_IPS_Question__c,Core_Required__c,Core_Supported_Product__c,Core_Type__c,Core_Status__c from Environment_Detail_Operationals__r where Core_Product_Issue_Sub_Category__c =: recordId) from Core_IPS_Product_Issue_Category__c where (id =: recordId)];
-                CaseCatOrg = CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c;
-            }        
-            set<id> existingIds = new set<id>();
+                CaseCategoryRecordList = [Select id,Name,Core_Issue_Sub_Category_Name__c,Core_Status__c,Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c, Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__r.OwnerID, Core_Product_Issue_Category__c, ( select id, Core_Agent_Only__c,Core_IPS_Question__c,Core_Required__c,Core_Supported_Product__c,Core_Type__c,Core_Status__c from Environment_Detail_Operationals__r where Core_Product_Issue_Sub_Category__c =: recordId) from Core_IPS_Product_Issue_Category__c where (id =: recordId)];
+        }
+        if(!CaseCategoryRecordList.isEmpty()){
+                    CaseCategoryRecord = CaseCategoryRecordList[0];
+                    CaseCatOrg = CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c;
+                    
                 for(Core_IPS_Assigned_Environment_Variables__c env:CaseCategoryRecord.Environment_Detail_Operationals__r){
                     existingIds.add(env.Core_IPS_Question__c);    
                 }
@@ -115,7 +120,6 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
                             } 
                         	masterEnvList = Database.Query(query);
                         }                    
-                envDetails = new List<EnvironmentVarSel>();
                 if(masterEnvList != NULL){
                             for(Core_IPS_Question__c env: masterEnvList){
                                     EnvironmentVarSel  envSel = new EnvironmentVarSel();
@@ -128,9 +132,9 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
                                     envDetails.add(envSel);
                             }   
                 }
-        return envDetails;
     }
-    
+    return envDetails;
+        }
     
      /*****************************************************************************************************************************************
      * Method Name: checkCaseSubCatEDQRules
@@ -161,10 +165,6 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
                     Set<id> setOfUserId = new Set<id> ();
                         SetOfUserId = Core_IPS_Helper_Utility.GetSetOfUsersbyQueueID(CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__r.OwnerID);
                         List<User> lstUser = [select profile.name from User where id=:UserInfo.getUserid()];
-                        SetupEntityAccess[] checkAccess = [SELECT Id FROM SetupEntityAccess WHERE SetupEntityId IN (SELECT Id FROM ApexPage WHERE Name = 'Core_IPS_addEnvironmentDetailsToSubCat') AND ParentId IN (SELECT PermissionSetId FROM PermissionSetAssignment WHERE AssigneeId = :UserInfo.getUserId()) LIMIT 1];
-                        if(checkAccess.size()<=0){
-                             return 'InsufficientAccess';
-                        }
                         if((System.Label.Core_IPS_Button_Override_ITAdmins).contains(lstUser[0].profile.name) == False)
                         {
                             if(!SetOfUserId.contains(currentLoggedInUser)){
@@ -227,7 +227,7 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
             }
           if(SupportedProductRecordList != null && SupportedProductRecordList.size()>0){  // US-0049380 UnhandledExp_EDQs
           SupportedProductRecord = SupportedProductRecordList[0]; 
-                             
+            
             if(SupportedProductRecord != null){
             Set<id> setOfUserId = new Set<id> ();
             currentLoggedInUser = UserInfo.getUserid();
@@ -469,15 +469,20 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
         set<id> existingIds = new set<id>();
         String query='';
         String coreType = 'Case Subcategory';
-       String Name1 =''; 
+        String Name1 =''; 
         List<Core_IPS_Master_Issue_Category__c> subcatlist;
+        List<Core_IPS_Product_Issue_Category__c> CaseCategoryRecordList = new List<Core_IPS_Product_Issue_Category__c>();
+
         if(Core_IPS_Product_Issue_Category__c.SObjectType.getDescribe().isAccessible()){
-            CaseCategoryRecord = [select id,name,Core_Issue_Category_Name__r.Name,Core_Status__c,Core_Supported_Product__c, Core_Supported_Product__r.Core_Product_Organization__r.OwnerId, Core_Supported_Product__r.Core_EOIS__c, (select id, Core_Issue_Sub_Category_Name__c from Product_Issue_Sub_Categories__r where Core_Product_Issue_Category__c =: recordID) from Core_IPS_Product_Issue_Category__c where id =: recordID];
-       		Name1 = CaseCategoryRecord.Core_Issue_Category_Name__r.Name;
+            CaseCategoryRecordList = [select id,name,Core_Issue_Category_Name__r.Name,Core_Status__c,Core_Supported_Product__c, Core_Supported_Product__r.Core_Product_Organization__r.OwnerId, Core_Supported_Product__r.Core_EOIS__c, (select id, Core_Issue_Sub_Category_Name__c from Product_Issue_Sub_Categories__r where Core_Product_Issue_Category__c =: recordID) from Core_IPS_Product_Issue_Category__c where id =: recordID];
         }
-        for(Core_IPS_Product_Issue_Category__c icRec : CaseCategoryRecord.Product_Issue_Sub_Categories__r){
-                existingIds.add(icRec.Core_Issue_Sub_Category_Name__c);
-        }
+            if(!CaseCategoryRecordList.isEmpty()){
+                CaseCategoryRecord = CaseCategoryRecordList[0];
+            	Name1 = CaseCategoryRecord.Core_Issue_Category_Name__r.Name;    
+                for(Core_IPS_Product_Issue_Category__c icRec : CaseCategoryRecord.Product_Issue_Sub_Categories__r){
+                	existingIds.add(icRec.Core_Issue_Sub_Category_Name__c);
+        		}
+        
         if(fetchTYpe=='Load Data' && offset != null ){
             query = 'select id,Name,Core_Status__c from Core_IPS_Master_Issue_Category__c where id not in :existingIds and Core_type__c=:coreType and Core_Master_Issue_Category__r.Name=:Name1 ORDER BY Name LIMIT :limitSize OFFSET: offset';
         	
@@ -488,6 +493,7 @@ public with sharing class Core_IPS_addEDQToProduct_LEX {
         }
         
         subcatlist = Database.Query(query);
+    }
         return subcatlist;
     }
     

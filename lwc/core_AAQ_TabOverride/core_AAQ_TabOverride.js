@@ -3,10 +3,11 @@ import { NavigationMixin } from 'lightning/navigation';
 import getOnLoadValue from '@salesforce/apex/Core_AAQ_TabOverride_Controller.onLoadLWC';
 import Core_AAQImage from "@salesforce/resourceUrl/Core_AAQImage";
 import getLabel from '@salesforce/apex/core_S2S_CaseExternalFeedController.getLabel';
-import { EnclosingUtilityId, getInfo,open,getAllUtilityInfo ,updatePanel,updateUtility } from 'lightning/platformUtilityBarApi';
+import { EnclosingUtilityId, getAllUtilityInfo } from 'lightning/platformUtilityBarApi';
 import chatUrlLabel from '@salesforce/label/c.sales_CRM_ChatUrl';
 import chatUrlMDFLabel from '@salesforce/label/c.core_MDF_ChatUrl';
 import chatUrlIPALabel from '@salesforce/label/c.core_IPA_ChatUrl';
+import chatUrlPricingLabel from '@salesforce/label/c.core_Pricing_ChatUrl';
 import chatHeader from '@salesforce/label/c.sales_CRM_ChatHeader';
 import chatBanner from '@salesforce/label/c.chatBanner';
 import chatTooltipSalesCRM from '@salesforce/label/c.chatTooltipSalesCRM';
@@ -15,6 +16,7 @@ import chatTooltipIPS from '@salesforce/label/c.chatTooltipIPS';
 import chatTooltipMDF from '@salesforce/label/c.chatTooltipMDF';
 import chatTooltipIPA from '@salesforce/label/c.chatTooltipIPA';
 import chatTooltipIQR from '@salesforce/label/c.chatTooltipIQR';//IQR AAQ
+import chatTooltipSMG from '@salesforce/label/c.chatTooltipSMG';
 // Removed fallback string constants for labels
 
 export default class Core_AAQ_TabOverride extends NavigationMixin(LightningElement) {
@@ -24,6 +26,7 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
     chatUrl = chatUrlLabel; // Use your actual chat URL
     MDFChatUrl = chatUrlMDFLabel;
     IPAChatUrl = chatUrlIPALabel;
+    PricingChatUrl = chatUrlPricingLabel;
     chatHeader = chatHeader;
     chatBanner = chatBanner;
     chatTooltipSalesCRM = chatTooltipSalesCRM;
@@ -31,6 +34,7 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
     chatTooltipIPS = chatTooltipIPS;
     chatTooltipMDF = chatTooltipMDF;
     chatTooltipIQR = chatTooltipIQR;//IQR AAQ
+    chatTooltipSMG = chatTooltipSMG;
     @track showIframe = false;
 
 
@@ -50,6 +54,7 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
     newCaseId;
     labels = {};
     images = ''
+    pricingButtonImageName = 'SMG_Pricing_Agent_Button.png';
 
     connectedCallback() {
         this.initTopic();
@@ -58,21 +63,33 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
         }
     }
 
+    get showPricingFloatingButton() {
+        return true;
+    }
+
+    get pricingAgentImageUrl() {
+        return Core_AAQImage + '/image/' + this.pricingButtonImageName;
+    }
+
     closeChatPanel() {
         this.showIframe = false;
     }
 
-    openChatModal(event) {
-        // Get the custom chat URL from the button's data attribute if it exists
-        const button = event.currentTarget;
-        const customChatUrl = button.getAttribute('data-chat-url');
-        
+    openChatModal(eventOrUrl) {
+        const customChatUrl = typeof eventOrUrl === 'string'
+            ? eventOrUrl
+            : eventOrUrl?.currentTarget?.getAttribute('data-chat-url');
+
         if (customChatUrl) {
             this.chatUrl = customChatUrl;
         }
         
         this.showIframe = true;
         this.isModel = false;
+    }
+
+    openPricingAgentChat() {
+        this.openChatModal(this.PricingChatUrl);
     }
 
     closeChatModal() {
@@ -88,13 +105,17 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
         getOnLoadValue().then((data, error) => {
             if (data) {
                 this.categoryColumn = data.map((item, index) => {
+                    const isLastRow = index === data.length - 1;
+                    const displayName = isLastRow ? 'SMG Pricing Agent' : item.Name;
                     const isChatBotProfile =
                         item.Name === 'Sales CRM' ||
                         item.Name === 'Access & Entitlement for Salesforce' ||
                         item.Name === 'Intel® Premier Support' ||
                         item.Name === 'Partner Investment Center'||
                         item.Name === 'Intel Partner Alliance'||
-                        item.Name === 'Intel Quote Request';//IQR AAQ
+                        item.Name === 'Intel Quote Request' ||
+                        isLastRow ||
+                        item.Name === 'SMG Pricing Agent';//IQR AAQ
                     let tooltipText = '';
                     if (item.Name === 'Sales CRM') {
                         tooltipText = chatTooltipSalesCRM;
@@ -108,24 +129,34 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
                         tooltipText = chatTooltipIPA;
                     }else if (item.Name === 'Intel Quote Request') {
                         tooltipText = chatTooltipIQR; //IQR AAQ
+                    }else if (item.Name === 'SMG Pricing Agent') {
+                        tooltipText = chatTooltipSMG;
                     }
                 
                     // Add rowClass for first 3 rows and 5th row
-                    const rowClass = (index < 3 || index == 4) ? 'aaq-row-pr2' : '';
+                    const rowClass = (index < 3 || index === 4) ? 'aaq-row-pr2' : '';
                     // Add a flag for the 5th row (index 4) to use a different chat URL
                     const isMDFRow = index === 4;
                     // Add a flag for the 8th row (index 7) to use IPA chat URL
                     const isIPARow = index === 7;
-                    const chatUrl = isMDFRow ? this.MDFChatUrl : isIPARow ? this.IPAChatUrl : this.chatUrl; //IQR AAQ
+                    const isPricingRow = isLastRow || item.Name === 'SMG Pricing Agent';
+                    const chatButtonTooltipText = isPricingRow ? chatTooltipSMG : tooltipText;
+                    const chatUrl = isMDFRow ? this.MDFChatUrl : isIPARow ? this.IPAChatUrl : isPricingRow ? this.PricingChatUrl : this.chatUrl; //IQR AAQ
+                    const imageURL = isPricingRow
+                        ? Core_AAQImage + '/image/' + this.pricingButtonImageName
+                        : Core_AAQImage + '/' + item.Core_Profile_Image__c;
                     return Object.assign(
                         {},
                         item,
-                        { imageURL: Core_AAQImage + '/' + item.Core_Profile_Image__c },
+                        { displayName },
+                        { imageURL },
                         { desc: (item.Core_Description__c != null ? item.Core_Description__c : '') + ' ' + (item.Core_Description2__c != null ? item.Core_Description2__c : '') },
                         { isChatBotProfile },
                         { tooltipText },
+                        { chatButtonTooltipText },
                         { rowClass },
                         { isMDFRow },
+                        { isPricingRow },
                         { chatUrl }
                     );
                 });
@@ -153,7 +184,7 @@ export default class Core_AAQ_TabOverride extends NavigationMixin(LightningEleme
             const utilityInfo = await getAllUtilityInfo();
             this.utilityCount = utilityInfo.length;
 
-        } catch (error) {
+        } catch {
             // return error
         }
     }

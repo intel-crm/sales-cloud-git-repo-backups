@@ -77,7 +77,7 @@ public without sharing class PRM_SalesCloud_Integration {
                                    // Account ERPM Engagements
                                   //Commenting as its no longert used (SELECT Core_Account_Id__r.Name,Core_ERPM_Engagement_Id__r.Name,Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_ERPM_Engagement_Id__r.Core_Technical_Tier_Code__c FROM Account_ERPM_Engagements__r),
                                    // Account Channel Memberships
-                                   (SELECT Id, PRM_Status_Change_Dt__c,PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Channel_Program_Level_Id__r.Rank,PRM_Partner_Role__c,PRM_Status_Nm__c,PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c FROM Channel_Memberships1__r WHERE PRM_Channel_Program_Level_Id__r.PRM_inactind__c = false),
+                                   (SELECT Id, PRM_Status_Change_Dt__c,PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Channel_Program_Level_Id__r.Rank,PRM_Partner_Role__c,PRM_Status_Nm__c,PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c FROM Channel_Memberships1__r WHERE PRM_Channel_Program_Level_Id__r.PRM_inactind__c = false), //Adding check on acm for getting active tier
                                    // Account Benefit Associations     
                                    (SELECT PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c/*,PRM_Quantity__c*/ FROM AccountBenefitAssociations__r),
                                    // Account Specialty Assciations       
@@ -85,7 +85,7 @@ public without sharing class PRM_SalesCloud_Integration {
                                    // Account ONE PARTNER ID GROUP MEMEBRS       
                                    (SELECT Name,Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Name,Core_Partner_Account_Id__c,Core_Partner_Account_Id__r.Name,Core_Inactive_Ind__c,Core_MDA_Ind__c FROM Partner_Account_Group_Members1__r WHERE Core_Inactive_Ind__c=false AND Core_Business_Party_Id__c != null limit 1),
                                    //Partner Group Members                                   
-                                   (SELECT Name,Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_CIM_ID__c,Core_Intel_Account_Id__r.Core_Business_Party_Id__c,Core_Intel_Account_Id__r.Name,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c ,Core_Partner_Account_Id__c,Core_Partner_Account_Id__r.Name,Core_Inactive_Ind__c,Core_MDA_Ind__c FROM Partner_Account_Group_Members__r WHERE Core_Business_Party_Id__c != null),                                   
+                                   (SELECT Name,Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_CIM_ID__c,Core_Intel_Account_Id__r.Core_Business_Party_Id__c,Core_Intel_Account_Id__r.Name,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c ,Core_Partner_Account_Id__c,Core_Partner_Account_Id__r.Name,Core_Inactive_Ind__c,Core_MDA_Ind__c FROM Partner_Account_Group_Members__r WHERE Core_Business_Party_Id__c != null),   //Adding ucdid not null condition                                
                                // Account Legal Agreements       
                                    (SELECT Name,PRM_Agreement_Sign_Dt__c,PRM_Signed_By_Name__c,PRM_Signed_By_Email__c,PRM_Partner_Agreement_Id__r.Name,PRM_Partner_Agreement_Id__r.PRM_InActive_Ind__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Category_Nm__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c,PRM_Partner_Agreement_Id__r.PRM_Channel_Program_Id__r.Name FROM AccountLegalAgreementAssociations__r),
                                    (SELECT Name,Partner_Program__r.name,Effective_End_Date_Time__c,Inactive_Indicator__c FROM Account_Whitelisted_Domains__r),
@@ -373,7 +373,6 @@ public without sharing class PRM_SalesCloud_Integration {
         } else if (acct.RecordTypeId == PAGRecordTypeId) {
             accountBenefitList = getBenefitsForAccount(acct.Id, null);
         }
-         System.debug('final list'+accountBenefitList);
         return accountBenefitList;
     }
 

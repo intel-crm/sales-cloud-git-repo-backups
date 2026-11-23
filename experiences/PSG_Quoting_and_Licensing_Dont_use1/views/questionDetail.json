@@ -1,0 +1,148 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "89667269-baee-4c31-88ca-15e8d5250952",
+  "label" : "Question Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "bannerText" : "",
+        "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "pageType" : "discussion",
+        "showSubTopics" : true,
+        "title" : "Welcome!",
+        "uniqueNameOrId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:headline",
+      "id" : "205fd128-45b2-4e04-b742-f741732a0a89",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "e0695e9a-b475-4027-98b2-3d5d498aef3a"
+      },
+      "renditions" : [ {
+        "id" : "e0695e9a-b475-4027-98b2-3d5d498aef3a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "市场推广基金",
+            "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+            "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+            "title" : "Welcome!"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "9b4f958b-ae29-48c4-bbc3-42cb8bf6e91b",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "id" : "{!feedItemId}"
+      },
+      "componentName" : "forceCommunity:feedItemDetail",
+      "id" : "cc2b7df2-b18f-403f-b64e-442e189da511",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "000bd786-81ce-4eac-8706-49b33eb3dabc"
+      },
+      "renditions" : [ {
+        "id" : "000bd786-81ce-4eac-8706-49b33eb3dabc",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "089256bf-752e-4174-bbad-058483d1e68d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "numberOfItems" : 5,
+        "showViewCounts" : true,
+        "title" : "Related Questions"
+      },
+      "componentName" : "selfService:similarQuestions",
+      "id" : "ea2c5acd-c24f-479b-88e9-d1afd2bf04f9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "43942835-22d2-4499-b40f-d64081a8a1d6"
+      },
+      "renditions" : [ {
+        "id" : "43942835-22d2-4499-b40f-d64081a8a1d6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Related Questions"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "channel" : "DefaultChannel",
+        "title" : ""
+      },
+      "componentName" : "forceCommunity:recommendations",
+      "id" : "e649f6fa-6544-4d6f-8e08-606894eee5a1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "db79d060-c7e3-4874-8135-3e5f2370736e"
+      },
+      "renditions" : [ {
+        "id" : "db79d060-c7e3-4874-8135-3e5f2370736e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "市场推广基金"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "aa3fdb0f-4bb6-49d1-a031-135f68720a58",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "06d37c97-895e-4347-b9e2-5ea6611b0a52",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record.Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "77f0dac8-5fd1-474f-843a-35c8ab57f1c3",
+      "renditionMap" : {
+        "zh_cn" : "1d7b3b7b-c48d-4259-9d64-efa2f3c7fd43"
+      },
+      "renditions" : [ {
+        "id" : "1d7b3b7b-c48d-4259-9d64-efa2f3c7fd43",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "{!Record.Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "171bc404-c6a4-4647-8081-b59dc2576138",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "feeditem"
+}

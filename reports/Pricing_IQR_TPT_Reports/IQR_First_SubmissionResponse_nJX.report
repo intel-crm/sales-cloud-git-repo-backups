@@ -73,7 +73,7 @@
         <calculatedFormula>(Pricing_Quote_Line_Status_Age__c.Pricing_First_SubmissionToResponse_Time__c)/24</calculatedFormula>
         <dataType>Double</dataType>
         <developerName>CDF1</developerName>
-        <label>Avg Response Time (Days)</label>
+        <label>Response Time (Days)</label>
         <scale>1</scale>
     </customDetailFormulas>
     <description>Time elapsed between when OEM first submitted quote line until Intel responded, calculated as Approved/Rejected Date minus First Submitted Date. Includes time quote line was in Draft status while OEM made updates for Customer Revision.</description>
@@ -164,8 +164,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CDF1</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Change_Time__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

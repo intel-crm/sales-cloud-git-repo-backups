@@ -1,0 +1,6 @@
+<apex:page >
+    <!--a7o2i000000CwnSAAS-->
+    <!-- <c:Pricing_QuoteLineApproveRPMNotification quoteLineRecordId="a7k2i000000DCWW"/> -->
+    <!-- <c:Pricing_QuoteLineApproveRPMNotification quoteLineRecordId="a7k2i000000DGyA"/> -->
+    <c:Pricing_QuoteLineApprovalNotification quoteLineRecordId="a7k2i000000DGyA"/>
+</apex:page>

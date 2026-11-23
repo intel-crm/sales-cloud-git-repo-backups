@@ -5,6 +5,10 @@
         <value>見積規約</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>この見積規約が使用できることを示します。</help>
         <label><!-- Active --></label>
         <name>SBQQ__Active__c</name>
@@ -95,6 +99,10 @@
         <help>規約の種別 (標準規約、カスタム規約、変更対象規約) を示します。</help>
         <label><!-- Type --></label>
         <name>SBQQ__Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Term Name --></label>
+        <name>core_cpq_Quote_Term_Name__c</name>
     </fields>
     <nameFieldLabel>規約番号</nameFieldLabel>
     <webLinks>

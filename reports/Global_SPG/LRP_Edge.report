@@ -7,19 +7,7 @@
         <field>DESCRIPTION</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Combined_Solution_Detail__c</field>
-    </columns>
-    <columns>
         <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>PROBABILITY</field>
-    </columns>
-    <columns>
-        <field>QUANTITY</field>
-    </columns>
-    <columns>
-        <field>EXP_AMOUNT</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -44,7 +32,7 @@
         <field>FULL_NAME</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 4 AND 5 AND (2 OR 3 OR 6) AND 7 AND 8</booleanFilter>
+        <booleanFilter>1 AND 4 AND 5 AND 6 AND (2 OR 3 OR 7)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -57,14 +45,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>edge,mec,sd-wan,ucpe,ngco,ran,core,upf</value>
+            <value>edge,mec,sd-wan,ucpe,ngco</value>
         </criteriaItems>
         <criteriaItems>
             <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>edge,mec,sd-wan,ucpe,ngco,ran,core,upf</value>
+            <value>edge,mec,sd-wan,ucpe,ngco</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
@@ -78,28 +66,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Comm Service Provider (CoSP),Telco/Service Provider,Service Provider,Cloud Service Provider (CSP)</value>
+            <value>Comm Service Provider (CoSP),Telco/Service Provider,Service Provider</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Consumption_Market__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cloud Service Providers</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Combined_Solution_Detail__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>edge,mec,sd-wan,ucpe,ngco,ran,core,upf</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>branch,core platform,core offering,core count,transfer,mimecast,transition,cores per,ranga,france,transactions,infranet,tranportation,range,security core</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>core system,core-,core -,dc transformation,dc modernization,new cloud build,france,cloud server refresh,notebook,workstation,infranet,data center storage,cloud modernization</value>
+            <value>edge,mec,sd-wan,ucpe,ngco</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -134,7 +115,7 @@
     </params>
     <params>
         <name>co</name>
-        <value>0</value>
+        <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>

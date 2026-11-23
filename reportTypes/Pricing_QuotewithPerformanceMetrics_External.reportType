@@ -796,18 +796,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Paired CPU Name</displayNameOverride>
-            <field>Pricing_Paired_CPU_Nm__c</field>
+            <field>Pricing_CPU_Txt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Payable_Quantity__c</field>
-            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_CPU_Txt__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <masterLabel>Quote Line</masterLabel>
@@ -860,5 +854,107 @@
             <table>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r</table>
         </columns>
         <masterLabel>Performance Metrics</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Deal_description__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Competition_Assumptions__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Intel_Uses_End_Customer__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_FI_Partner_Type__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Consumption_Countries__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Current_EndCustomer_Product_Prvd__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Account_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_is_Budgetary_cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <masterLabel>Quotes</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_VerticalSegment__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_OEM_Name_FI__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Total_Product_Rebate__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Paired CPU Name</displayNameOverride>
+            <field>Pricing_Paired_CPU_Nm__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percent__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percentage__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Name__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Rationale_for_Pricing__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Application_Agent_Status__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <masterLabel>Quote Lines</masterLabel>
     </sections>
 </ReportType>

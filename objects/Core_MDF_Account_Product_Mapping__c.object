@@ -255,7 +255,7 @@
     </nameField>
     <pluralLabel>Account Product Mappings</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <startsWith>Vowel</startsWith>
     <validationRules>
         <fullName>Core_MDF_Account_Required_Validation</fullName>

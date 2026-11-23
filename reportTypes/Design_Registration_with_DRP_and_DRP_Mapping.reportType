@@ -454,6 +454,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>PCC_Additional_Comments__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Comment_Txt__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
@@ -560,6 +565,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>MMID_or_Ordering_code__c</field>
+            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DDR_MMID_or_Ordering_code__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r</table>
         </columns>
         <columns>
@@ -712,11 +722,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PCC_Old_MM_Id__c</field>
-            <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity</displayNameOverride>
             <field>PCC_Opportunity__c</field>
             <table>Core_Design_Registration__c.Design_Registration_Line_Items__r.DDR_Product_Mappings__r</table>
         </columns>
@@ -746,6 +752,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>PCC_ODM_Board_partner__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>

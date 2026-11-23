@@ -7,6 +7,9 @@
         <publicGroups>
             <publicGroup>Core_MDF_CCP_Retail_APJ_Geo_Lead_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>test_rmf_apj_internal_geo_approver_escl1@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_MDF_Escalation__c</sobjectType>

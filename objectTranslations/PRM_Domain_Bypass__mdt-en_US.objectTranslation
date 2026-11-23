@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Domain Bypass</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Domain Bypass</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact Country Code --></label>
+        <name>Contact_Country_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Domain List --></label>
+        <name>Domain_List__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reg Country Code --></label>
+        <name>Reg_Country_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

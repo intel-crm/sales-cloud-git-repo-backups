@@ -175,6 +175,17 @@
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
     </fields>
+    <fields>
+        <fullName>Test_Deployment_Error__c</fullName>
+        <description>This Field is used to test the deployment error in QA3. need to be deployed till DevInt3</description>
+        <externalId>false</externalId>
+        <label>Test Deployment Error</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Partner Offering Json</label>
     <listViews>
         <fullName>All</fullName>

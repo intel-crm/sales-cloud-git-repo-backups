@@ -1,0 +1,125 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "a6d6042d-5c72-4148-9458-eb478229df60",
+  "label" : "Change Request Line Item Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "backgroundVariant" : "mosaic-l0",
+        "recordId" : "{!recordId}",
+        "subtitle" : "",
+        "title" : "Intel® Deal Registration"
+      },
+      "componentName" : "c:ipaMarqueeLeads",
+      "id" : "456eafe1-7b52-4303-a20e-b99a2990884f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f20f2262-a8f2-465c-9f72-fff77f06489c",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "ae34160d-61aa-47c7-8c2e-eda5fbd395c2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a498a747-ce52-4a80-a04b-4e8fec5901be",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "b255c528-e7d0-4e68-8043-c89f9ee9fb16",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "185f0b04-3e19-4427-a3d7-36c714017ba2",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Details"
+          }, {
+            "UUID" : "e30d1a62-1365-49d1-86d6-c420abe9040e",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "33d3c",
+            "tabName" : "Related"
+          } ],
+          "useOverflowMenu" : true
+        }
+      },
+      "componentName" : "forceCommunity:tabLayout",
+      "id" : "b255c528-e7d0-4e68-8043-c89f9ee9fb16",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "4970ebd3-d17e-4fb5-a666-3acaedeae772",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "185f0b04-3e19-4427-a3d7-36c714017ba2",
+        "regionLabel" : "Details",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:relatedRecords",
+          "id" : "e5fcec4b-37db-4cde-84c0-7856a27564f5",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "e30d1a62-1365-49d1-86d6-c420abe9040e",
+        "regionLabel" : "Related",
+        "regionName" : "33d3c",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e11f0b7c-27c9-4be1-8d9d-68aa346dedd8",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "39f13638-b328-4622-99c3-765d175e0b8a",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "eb10f2e9-67eb-439d-931a-597caadbcff6",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "D9gihoBcrVmPnDirmD7WyT5a9SjrsS",
+  "type" : "view",
+  "viewType" : "detail-aFx"
+}

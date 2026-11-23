@@ -26,6 +26,26 @@ public with sharing class Core_IPS_BugAssistController {
         return bugAssistAttachment.Id;
     }
     
+    /**
+* Created by Deepaksai as part of BugAssist
+* @params - recordId : bugAssist record id from core_IPS_caseCreation_form 
+* @return - Bug Assist record
+*/
+    /*@AuraEnabled
+public static Core_IPS_BugAssist_Attachment__c fetchBugAssistRecord(Id recordId){
+//if(recordId != null && recordId != ''){
+//  return [SELECT Id, Core_File_Name__c, Core_Upload_Status__c, Core_Last_Status_Updated_At__c, Core_File_Description__c, CreatedDate FROM Core_IPS_BugAssist_Attachment__c WHERE Id =: recordId WITH SECURITY_ENFORCED];
+//}
+//return null;
+List<Core_IPS_BugAssist_Attachment__c> bugAssistList = new List<Core_IPS_BugAssist_Attachment__c>();
+bugAssistList = [SELECT Id, Core_File_Name__c, Core_Upload_Status__c, Core_Last_Status_Updated_At__c, Core_File_Description__c, CreatedDate FROM Core_IPS_BugAssist_Attachment__c WHERE Id =: recordId WITH SECURITY_ENFORCED];
+if(bugAssistList.size()>0)
+{
+return bugAssistList[0];
+}
+return null;
+}*/
+    
     /** Wrapper to avoid exposing raw SObject to the LWC layer. */
 /*Start -- Tushar -- 12/05/2026 --- CRUD Added as part of vulnerability fix. */
     public class BugAssistRecordWrapper {
@@ -70,6 +90,7 @@ public with sharing class Core_IPS_BugAssistController {
     public static Boolean validateProductOrg(Id recordId){
         // Hassan Khan make a "List<Asset> productOrg" to fix (List has no rows for assignment to Sobject) Exception Handling issue.		
         List<Asset> productOrg =[ SELECT Id, Core_Supported_Product__c, Core_Product_Organization__r.Name FROM Asset WHERE Id =: recordId WITH SECURITY_ENFORCED];
+        system.debug('productOrg-->' + productOrg);
         if (!productOrg.isEmpty() && productOrg[0].Core_Product_Organization__r.Name ==label.Core_IPS_Bug_Assist_Supported_Products){
             return validateBugAssistProd(productOrg[0].Core_Supported_Product__c);
         }else{
@@ -96,14 +117,16 @@ public with sharing class Core_IPS_BugAssistController {
     }
     @AuraEnabled
     public static String getProductOrgName(Id recordId) {
-    List<Asset> productOrg = new List<Asset>();
     if (recordId == null) {
         return null;
     }
-    //Moved the query to  without sharing class - vulnerability fixes - Nuthana
-    String productOrgQuery = 'SELECT Id, Core_Product_Organization__r.Name FROM Asset WHERE Core_Product_Organization__r.Id = :recordId';
-    productOrg = (List<Asset>) Core_IPS_QueryService.queryRecords(productOrgQuery, new Map<String, Object>{ 'recordId' => recordId });
-        
+
+    List<Asset> productOrg = [
+        SELECT Id, Core_Product_Organization__r.Name
+        FROM Asset
+        WHERE Id = :recordId
+        WITH SECURITY_ENFORCED
+    ];
 
     if (!productOrg.isEmpty() && productOrg[0].Core_Product_Organization__r != null) {
         return productOrg[0].Core_Product_Organization__r.Name;
@@ -157,6 +180,8 @@ public with sharing class Core_IPS_BugAssistController {
             ipsAttachment.Core_Upload_Status__c = bugAssistRecord.Core_Upload_Status__c;
             // Adding Default Value if Description is Blank.
             ipsAttachment.Core_File_Description__c = (bugAssistRecord.Core_File_Description__c == null || bugAssistRecord.Core_File_Description__c =='' || bugAssistRecord.Core_File_Description__c == notApplicable) ? System.Label.Core_IPS_Bug_Assist_Attachment_Description : bugAssistRecord.Core_File_Description__c;
+            // Adding Case Id to the file URL For download Button URL.
+            //ipsAttachment.Core_File_URL__c = (bugAssistRecord.Core_File_URL__c.endsWith('null')) ? bugAssistRecord.Core_File_URL__c.substring(0, bugAssistRecord.Core_File_URL__c.length() - 4) + caseId : bugAssistRecord.Core_File_URL__c;
 			/*Start -- Tushar -- 12/05/2026 --- CRUD Added as part of vulnerability fix. */
             if (bugAssistRecord.Core_File_URL__c != null
                     && bugAssistRecord.Core_File_URL__c.startsWith(ALLOWED_HOST)

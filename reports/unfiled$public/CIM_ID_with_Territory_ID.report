@@ -10,9 +10,6 @@
         <field>Account$BillingCountryCode</field>
     </columns>
     <columns>
-        <field>Account$Owner</field>
-    </columns>
-    <columns>
         <field>Account$Core_CPM_ID__c</field>
     </columns>
     <columns>

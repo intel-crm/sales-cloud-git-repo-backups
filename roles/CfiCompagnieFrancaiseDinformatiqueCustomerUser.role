@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CFI Customer User</description>
+    <description>Cfi - Compagnie Francaise D&apos;informatique Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CFI Customer User</name>
+    <name>Cfi - Compagnie Francaise D&apos;informatique Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11638115_Bruno_Le_Gallou</parentRole>
+    <parentRole>Admin</parentRole>
 </Role>

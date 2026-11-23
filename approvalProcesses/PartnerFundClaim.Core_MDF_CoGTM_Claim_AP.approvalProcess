@@ -100,5 +100,5 @@
     <label>Core_MDF_CoGTM_Claim_AP</label>
     <processOrder>1</processOrder>
     <recordEditability>AdminOrCurrentApprover</recordEditability>
-    <showApprovalHistory>false</showApprovalHistory>
+    <showApprovalHistory>true</showApprovalHistory>
 </ApprovalProcess>

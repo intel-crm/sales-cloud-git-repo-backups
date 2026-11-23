@@ -9,7 +9,7 @@ public class Pricing_QuoteLine_BulkWonLost_Test {
             Test.startTest();
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Line_Bulk_Won_Lost');
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
             AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
@@ -22,11 +22,11 @@ public class Pricing_QuoteLine_BulkWonLost_Test {
     }
     
     static testMethod void testProcessWonLost(){
+        Test.startTest();
         SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,Pricing_Quote_Line_Number__c,Pricing_Status_Nm__c,Pricing_Reference_Quote_Line_Nbr__c from SBQQ__QuoteLine__c WHERE SBQQ__Quote__c =: quote.Id];
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         String msg = '';
-        Test.startTest();
         System.runAs(adminUser){
             quoteLineList[0].Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Approved;
             quoteLineList[1].Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Approved;
@@ -40,11 +40,11 @@ public class Pricing_QuoteLine_BulkWonLost_Test {
     }
     
     static testMethod void testProcessWonLostinValid(){
+        Test.startTest();
         SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,Pricing_Quote_Line_Number__c,Pricing_Status_Nm__c,Pricing_Reference_Quote_Line_Nbr__c from SBQQ__QuoteLine__c WHERE SBQQ__Quote__c =: quote.Id];
         User adminUser = [Select id from User where Email='firstName@intel.com'];
         String msg = '';
-        Test.startTest();
         System.runAs(adminUser){
             quoteLineList[0].Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Approved;
             quoteLineList[1].Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Approved;

@@ -17,4 +17,8 @@
     <tabs>Core_Value_Map__c</tabs>
     <tabs>Core_CCV__c</tabs>
     <tabs>Core_Role_Upload_Temp_Table_3__c</tabs>
+    <tabs>SBQQ__ProductOption__c</tabs>
+    <tabs>standard-Quote</tabs>
+    <tabs>Core_Design_Registration_Stage__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
 </CustomApplication>

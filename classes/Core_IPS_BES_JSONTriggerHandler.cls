@@ -1,4 +1,5 @@
-public with sharing class Core_IPS_BES_JSONTriggerHandler { 
+public with sharing class Core_IPS_BES_JSONTriggerHandler {
+    //Public Static List<case> caseList = new List<case>();
    @InvocableMethod 
     public static void getJson(List<Id> recordIdList){
         List<Id> caseRecordList = new List<Id>();
@@ -12,7 +13,7 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
         List<Core_IPS_BES_Error_Log__c> errorLogList =new List<Core_IPS_BES_Error_Log__c>();
         Map<String,Core_IPS_BES_Outbound_Message__c> outboundRecsMap = new Map<String,Core_IPS_BES_Outbound_Message__c>();
         Set<String> messageTypeSet = new Set<String>();
-        List<case> caseList = new List<case>();
+        List<case> caseList = new List<case>(); 
         Transient Map<String, List<String>> finalJSONData = new Map<String, List<String>>();
         Map<String,Core_IPS_BES_ApigeeIntegration.MessageStatus> status = new Map<String, Core_IPS_BES_ApigeeIntegration.MessageStatus>();
         
@@ -84,7 +85,6 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                             }
                             jsonMapCase.clear();
                             // End by Pavani - TWC745-5487 - 26/02/2024
-                           
                         } 
                     }else{
                         
@@ -93,13 +93,18 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                     gen.WriteEndArray();
                     finalJSONData.put(caseId+caseId, new List<String> {gen.getAsString()});
                 } catch(Exception e) {
-                   
+                   // System.debug('This is in the catch block');
                     Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
                 } finally {
-                   
+                    //System.debug('inside the finally block');
                 }
             }
-            
+               // added dml here by chiru
+            if(caseList != null && caseList.size()>0){
+             //  database.update(caseList, true);
+            }
+            systemJSONMap.clear();
+            caseJSONMap.clear();
         }
         //}
         //===============================================================================================
@@ -117,7 +122,28 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                 Transient Map<String, JSONGenerator> systemJSONMap = Core_IPS_BES_Generate_BackendJSON.generateBackendJSOn(attachmentRecordList,'Attachment');
                 attachmentJSONMap = Core_IPS_BES_Gen_CaseAttachmentsJSON.getJsonForCaseAttachmentObject(attachmentIdList);
                 allAttachmentStr = Core_IPS_BES_Gen_CaseAttachmentsJSON.getAllAttachmentUrls();
-                              for(String attId:systemJSONMap.keySet()){
+              /*  if(Core_IPS_Case_Attachments__c.SObjectType.getDescribe().isAccessible()){
+                	atts = [SELECT Name, Id,Core_Case__c FROM Core_IPS_Case_Attachments__c WHERE Name IN:attachmentJSONMap.keySet() ORDER BY CreatedDate DESC LIMIT 1];//06-09-23
+                }
+                if(!atts.isEmpty() && atts != null) {//06-09-23
+                    caseId = atts[0].Core_Case__c+''+atts[0].Id;
+                }
+                else{
+                   caseId = attachmentIdList[0]; 
+                }
+                //06-09-23
+                if(!atts.isEmpty() && systemJSONMap.containsKey(caseId.substring(18,36)+'Attachment')){
+                	SystemMap = (Map<String,Object>) JSON.deserializeUntyped(systemJSONMap.get(caseId.substring(18,36)+'Attachment').getAsString());
+                } 
+                else if(atts.isEmpty()){
+                    SystemMap = (Map<String,Object>) JSON.deserializeUntyped(systemJSONMap.get(caseId.substring(0,18)+'Attachment').getAsString());
+                    caseId = casetoAttId.get(caseId.substring(0,18))+''+caseId.substring(0,18);
+                }
+                else{
+                    SystemMap = (Map<String,Object>) JSON.deserializeUntyped(systemJSONMap.get(attachmentIdList[0]+'Attachment').getAsString());
+                    caseId = casetoAttId.get(attachmentIdList[0])+''+attachmentIdList[0];
+                }*/
+                for(String attId:systemJSONMap.keySet()){
                     String caseRec=(String)casetoAttId.get((Id) attId.substring(0,18));
                     caseId = caseRec + attId.substring(0,18);
                     Map<String,JSONGenerator> attRecd = attachmentJSONMap.get(caseRec);
@@ -149,8 +175,12 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                         finalJSONData.put(caseId,new List<String>{gen.getAsString()}); 
                 }
                 }
+            systemJSONMap.clear();
+            attachmentJSONMap.clear();
+
             } catch(Exception e) {
-                
+                //System.debug('Exception occu '+e.getMessage());
+                //System.debug('reason '+e.getStackTraceString());
                 Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
             }
         }
@@ -172,25 +202,27 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
                     gen.writeFieldName(Label.Core_IPS_system_details);
                     gen.writeObject(JSON.deserializeUntyped(systemJSONMap.get(caseId.substring(18,36)+'Comment').getAsString()));
                     gen.writeFieldName(Label.IPS_Core_comments);
+                    System.debug('get Heap size'+Limits.getHeapSize());
                     gen.writeObject(JSON.deserializeUntyped(commentJSONMap.get(caseId).getAsString()));
                     gen.writeEndObject();
                     gen.WriteEndArray();
-                    if(finalJSONData.get(caseId)!= null) {
+                    if(finalJSONData.get(caseId)!= null) {  
                         finalJSONData.get(caseId).add(gen.getAsString());
                     } else {
                         finalJSONData.put(caseId,new List<String>{gen.getAsString()}); 
                     }
                     //finalList.add((Map<String,String>)finalJSONData);
                 }catch(Exception e){
-                   
+                    //System.debug(e.getMessage()+'-'+e.getLineNumber());
                     Core_IPS_BES_LogEntry_Utility.insertLog(e,outboundRecsMap.get((String)systemMap.get(Label.Core_IPS_message_id)),null,null,caseId);
                 }
             }
 
-
+            systemJSONMap.clear();
+            commentJSONMap.clear();
 
         }
-        
+            
 			for(String key: finalJSONData.keySet()){
             for(String jsonStr: finalJSONData.get(key)){
                 Core_IPS_BES_ApigeeIntegration.MessageStatus messagestatus = Core_IPS_BES_ApigeeIntegration.sendJSONBody(jsonStr);
@@ -201,7 +233,12 @@ public with sharing class Core_IPS_BES_JSONTriggerHandler {
         
         //if(Case.SObjectType.getDescribe().isUpdateable()){
         //  if(messageType!='Comment'){
-        database.update(caseList, true);
+        
+        //  commented by chiru
+           database.update(caseList, true);
+             //performCaseDML();
+        
+        
         //   }
         
         //}

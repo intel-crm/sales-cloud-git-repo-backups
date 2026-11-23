@@ -324,7 +324,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_TimePeriod_Nm__c</fullName>
+        <description>This field to display the incoming data is for pervious time period or current time period.</description>
+        <externalId>false</externalId>
+        <label>TimePeriod</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Time_Period__c</fullName>
+        <description>This field to display the incoming data is for pervious time period or current time period.</description>
         <externalId>false</externalId>
         <label>Time Period</label>
         <length>20</length>

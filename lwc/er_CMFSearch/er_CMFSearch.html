@@ -32,6 +32,11 @@
                         <div class="slds-col slds-size_1-of-3 slds-p-top_large">
                             <lightning-button label="Search" variant="brand" onclick={handleSearchNew} disabled={searchButtonSwitch}></lightning-button>
                         </div>
+                        <div class="slds-col slds-p-top_large">
+              <!--IAO CMF TO BPID-->
+              <lightning-input type="toggle" checked={isCMFToGroup} message-toggle-active="CMF" message-toggle-inactive="Account" onchange={handleToggleChange}></lightning-input>
+
+            </div>
                     </div>
  
                     <!-- Data Table Section -->

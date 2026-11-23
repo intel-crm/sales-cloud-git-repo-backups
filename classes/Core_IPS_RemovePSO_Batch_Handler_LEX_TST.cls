@@ -2,7 +2,7 @@
 public class Core_IPS_RemovePSO_Batch_Handler_LEX_TST {
     
     static testMethod void testBatchKickoff(){
-        insert new Core_Contact_Bypass_Validation_Rule__c(SetupOwnerId=UserInfo.getOrganizationId(), Bypass__c=true);
+        
         Account upateAccount = new Account();
         upateAccount.name='XYZ';
         upateAccount.Phone = '+49-12345';

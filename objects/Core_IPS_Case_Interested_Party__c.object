@@ -358,8 +358,8 @@
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
-{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/apex.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/apex.js&quot;)} 
 
 var IPSCaseAtt = new sforce.SObject(&quot;Case&quot;); 
 IPSCaseAtt.Id = &apos;{!Case.Id}&apos;; 

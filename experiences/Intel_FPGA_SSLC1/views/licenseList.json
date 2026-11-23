@@ -5,14 +5,22 @@
   "id" : "89115237-19dd-4ee6-a77a-c18de55e8150",
   "label" : "License List",
   "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "99be9439-94e2-4bd3-959e-389d5559a13e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "2509911d-265e-4c3c-9323-d45d562f5f79",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "enableInlineEdit" : false,
-        "filterName" : "00B2i000001GWhpEAG",
+        "enableInlineEdit" : true,
+        "filterName" : "Sales_Unlicensed_Products_Ext",
         "layout" : "FULL",
         "pageSize" : 25,
         "scope" : "Sales_License__c",
@@ -23,7 +31,7 @@
         "showImageIcon" : true,
         "showManualRefreshButton" : true,
         "showObjectName" : true,
-        "showPinnedList" : true,
+        "showPinnedList" : false,
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
@@ -42,5 +50,5 @@
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "list-aBv"
+  "viewType" : "list-aAK"
 }

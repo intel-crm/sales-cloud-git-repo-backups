@@ -1,9 +1,9 @@
-/***************************************************************************************
+/**************************************************************************************
 Apex Class Name: Core_OppApprovalCtrl
 Version        : 1.0 
 Created Date   : 24 Aug, 2022
 Description    : This Class is used to validate the errors before submitting the opportunity for approval.
-* Developer                   Date                   Description
+Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Sanket Mahajan           24 Aug, 2022               Initial Revision
 * Gaurav Kurwade           14 Sep, 2022               Updated
@@ -27,7 +27,7 @@ public without sharing class  Core_OppApprovalCtrl {
         //Custom setting to check Sales group
         Opportunity__c accountConsition = Opportunity__c.getOrgDefaults();
         
-        //List<String> errMessageList= new List<String>();
+        List<String> errMessageList= new List<String>();
         Map<String, List<String>> errMsgMap = new Map<String, List<String>>();        
         checklistWrapper wrpr = new checklistWrapper();
         try{
@@ -78,9 +78,9 @@ public without sharing class  Core_OppApprovalCtrl {
                             }   
                         }
                     /*****************************
-      Change For  :::  TWC4767-2525::: If none of the SW Quote is marked as primary,Do not allow to submit the oppty
-      Added on/by  :::  13/09/24 - Areefa
-         *****************************************/
+			Change For	:::	TWC4767-2525::: If none of the SW Quote is marked as primary,Do not allow to submit the oppty
+			Added on/by	:::	13/09/24 - Areefa
+		     *****************************************/
                     
                     List<SBQQ__Quote__c> swquote1 = [SELECT id from SBQQ__Quote__c where SBQQ__Primary__c= true and Pricing_Quote_Program_Nm__c='Software & Services' and SBQQ__Opportunity2__c=:oppId];
                     if(oppObject.CRM_SW_Flag_Ind__c == true && swquote1.isEmpty()){ 
@@ -214,10 +214,11 @@ Added on/by:: 29/12/22 - Gaurav
                     //Jahnavi 
                     //TWC3123-5678-PCC Deal - To bypass the hard stop warning when competitive architecture is blank when opportunity is submitted 
                     /**********************************START************************************************************/
-                    List<OpportunityTeamMember> oppsTM = [Select Id, Name, Core_Description_of_Contribution__c from OpportunityTeamMember  where opportunityid =:oppId AND (Opportunity.StageName ='Design' or Opportunity.StageName ='Design Win' ) /*and Opportunity.Core_Design_Registration_Id__c=null*/];
-                    
+                    //Vidyadhar
+                    //List<OpportunityTeamMember> oppsTM = [Select Id, Name, Core_Description_of_Contribution__c from OpportunityTeamMember  where opportunityid =:oppId AND (Opportunity.StageName ='Design' or Opportunity.StageName ='Design Win' ) /*and Opportunity.Core_Design_Registration_Id__c=null*/];
+                    List<OpportunityTeamMember> oppsTM = [SELECT Id, Name, TeamMemberRole, Core_Description_of_Contribution__c FROM OpportunityTeamMember WHERE OpportunityId = :oppId];
                     List<String> members = new List<String>();
-                    if(!isPCCDealReg){
+                    if(!isPCCDealReg && (oppObject.StageName == 'Design' || oppObject.StageName == 'Design Win')){
                         for(OpportunityTeamMember teamMember:oppsTM)
                         {
                             if(String.Isblank(teamMember.Core_Description_of_Contribution__c))
@@ -236,7 +237,40 @@ Added on/by:: 29/12/22 - Gaurav
                         } else {
                             errMsgMap.put('hardStop', new List<String> { err });
                         }
-                    }                      
+                    }
+                    
+                    //Commissions changes 2026
+                    //Warning for opporutunity with more than 4 team members with a 100% role
+                    //Start
+                    
+                    if(oppObject.Core_Opportunity_Coverage_Nm__c.equalsIgnoreCase('Intel-Led Opportunity')){
+                        Set<String> eligibleRoles = new Set<String>();
+                        
+                        for(String commissionableRole : System.Label.CRM_commissionEligibleRoles.split(';')){
+                            if(String.isNotBlank(commissionableRole)){
+                                eligibleRoles.add(commissionableRole.trim());
+                            }
+                        }
+                        //Integer oppEligibleOtmSize = [select COUNT() from OpportunityTeamMember where OpportunityId =:oppObject.Id and TeamMemberRole in :eligibleRoles];
+                        Integer oppEligibleOtmSize = 0;
+                        for (OpportunityTeamMember teamMember : oppsTM) {
+                            if (eligibleRoles.contains(teamMember.TeamMemberRole)) {
+                                oppEligibleOtmSize++;
+                            }
+                        }
+                        if(oppEligibleOtmSize > 4){
+                            softStop = true;
+                            String err= System.Label.CRM_maxCommissionEligibleWarning;
+                            if(errMsgMap.containsKey('softStop')) {
+                                List<String> errList = errMsgMap.get('softStop');
+                                errList.add(err);
+                                errMsgMap.put('softStop', errList);
+                            } else {
+                                errMsgMap.put('softStop', new List<String> { err });
+                            }
+                        }
+                    }
+                    //End - Commissions changes 2026
                     /**********************************END**************************************************************/
                     //Added By Hira for Opportunity Solutions validation before DW Submission
                     /**********************************Start************************************************************/
@@ -510,7 +544,7 @@ errMsgMap.put('hardStop', new List<String> { err });
                 String strList = Core_FC_ProductSchedule_Ctrl.checkTotalQuantity(oppId);
                 if(isPCCDealReg && strList != ''){
                     hardStop = true;
-                    String err= strList+System.Label.Core_6QPS_Schedule_Error;
+                    String err= System.Label.Core_Oppo_Sch_prod_Qty_Ck+' '+ strList;//TWC3123-6757 changed label
                     
                     if(errMsgMap.containsKey('hardStop')) {
                         List<String> errList = errMsgMap.get('hardStop');
@@ -520,53 +554,58 @@ errMsgMap.put('hardStop', new List<String> { err });
                            }
                 }
                 
-                if(IsPCCDealReg){
+                //Commented as part of TWC3123-6757
+                /*if(IsPCCDealReg){
+                    system.debug('Inside isPCCDealReg:'+isPCCDealReg);
                     Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> allForecastSorted = Core_FC_ProductSchedule_Ctrl.getProdSortForecastMapMethod(String.valueOf(oppId));
                     Boolean showErr=false;
                     String strItemList = '';
                     Integer count = 1;
-                    List<Core_Opp_FC_Prod_Schedule__c> tempList = new List<Core_Opp_FC_Prod_Schedule__c>();
-                    /*List<Core_Opp_FC_Prod_Schedule__c> tempList2 = new List<Core_Opp_FC_Prod_Schedule__c>([SELECT id,Core_Opp_FC_Opportunity__c,Core_Opp_FC_isdeleted__c,Core_Opp_FC_Claim_Date__c,Core_Opp_FC_Quantity__c,Core_Opp_FC_Sched_Revenue__c,Core_FC_Opportunity_Product__r.Core_Status__c
-                                                                                                         FROM Core_Opp_FC_Prod_Schedule__c
-                                                                                                          WHERE Core_Opp_FC_Opportunity__c = :oppId AND 
-                                                                                                          Core_Opp_FC_isdeleted__c = false AND Core_FC_Opportunity_Product__r.Core_Status__c not in ('Lost','Cancelled')
-                                                                                                          ORDER BY Core_Opp_FC_Product__r.Name,Core_Opp_FC_Quarter_Date__c]);*/
-                     
+                    system.debug('Inside allForecastSorted:'+allForecastSorted);
+                    List<Core_Opp_FC_Prod_Schedule__c> fcPrdScList = new List<Core_Opp_FC_Prod_Schedule__c>();
                     for(OpportunityLineItem oliId : oppLineItemMap){
-                        Decimal totalqty = 0;
-                        Decimal totalRevenue =0;
-                        tempList = allForecastSorted.get(oliId.id);
+                        fcPrdScList = allForecastSorted.get(oliId.id);
+                        system.debug('Inside oliId:'+oliId);
+                        system.debug('Inside fcPrdScList:'+fcPrdScList);
+                        Map<Id , Double> prodschdmap = new Map<Id , Double>();
                         
-                            for(Core_Opp_FC_Prod_Schedule__c fc : tempList){
-
-                                totalqty =totalqty + fc.Core_Opp_FC_Quantity__c;
-                               totalRevenue=totalRevenue+fc.Core_Opp_FC_Sched_Revenue__c;                            
+                        for(Core_Opp_FC_Prod_Schedule__c fc : fcPrdScList){
+                            system.debug('Inside fc:'+fc);
+                            if(prodschdmap.containsKey(oliId.id)){
+                                Double schdQtyCount=0.0;
+                                schdQtyCount = fc.Core_Opp_FC_Quantity__c + prodschdmap.get(oliId.id);
+                                prodschdmap.put(oliId.id,schdQtyCount);
+                                
+                            } 
+                            else{
+                                prodschdmap.put(oliId.id,fc.Core_Opp_FC_Quantity__c);
                             }
-                       
-                        if(totalRevenue==0 && totalqty==0 && oliId.Core_Status__c!='Cancelled' && oliId.Core_Status__c!='Lost'){   
+                            
+                        }
+                        system.debug('Inside prodschdmap:'+prodschdmap);
+                        if((oliId.Quantity != prodschdmap.get(oliId.id)) && oliId.Core_Status__c!='Cancelled' && oliId.Core_Status__c!='Lost'){ 	
                             
                             showErr = true;
                             if(strItemList ==''){
-                                strItemList = 'Item#'+String.valueOf(count);                  
+                                strItemList = ' Item#'+String.valueOf(count);                  
                             }
-                            else{
-                                strItemList = strItemList+'/Item#'+String.valueOf(count);                                      
-                            }                            
+                            else{strItemList = strItemList+'/Item#'+String.valueOf(count);                                      
+                                }                            
                         }
                         count++;
                     }
                     if(showErr){
                         hardStop = true;
-                        String err= strItemList + System.Label.Core_Oppo_Approval_6QPS;
+                        String err= System.Label.Core_Oppo_Sch_prod_Qty_Ck + strItemList;
+                        system.debug('Inside label:'+err);
                         if(errMsgMap.containsKey('hardStop')) {
                             List<String> errList = errMsgMap.get('hardStop');
                             errList.add(err);
                             errMsgMap.put('hardStop', errList);
-                        } else {
-                            errMsgMap.put('hardStop', new List<String> { err });
-                        }
+                        } else {errMsgMap.put('hardStop', new List<String> { err });
+                               }
                     }
-                }
+                }*/
                 
                 if(oppObject.Account.RecordType.Name != 'Intel Account'){
                     hardStop = true;
@@ -626,9 +665,9 @@ errMsgMap.put('hardStop', new List<String> { err });
                 
                 if(attachsize.isEmpty() && Notesize.isEmpty() && contentdocSize.isEmpty() && taskList.isEmpty()){
                     /*****************************
-      Change For::: TWC4767-1769 POP Validation update for PCC
-      Added on/by:: 04/12/2024 - shijas
-        *****************************************/
+			Change For::: TWC4767-1769 POP Validation update for PCC
+			Added on/by:: 04/12/2024 - shijas
+		    *****************************************/
                     if(oppObject != null && isPCCDealReg){ 
                         // PCC POP Message block    
                         hardStop = true;
@@ -671,17 +710,17 @@ errMsgMap.put('hardStop', new List<String> { err });
                 //commented this method as part of TWC3123-6013
                 //Added for PCC 6QPS Quarter Not Aligned Warning Msg (TWC3123-5756)
                 /*
-    if(isPCCDealReg && Core_FC_ProductSchedule_Ctrl.checkFCQuarterDate(oppId)){
-    softStop = true;
-    String err= System.Label.Core_6QPS_Quarters_Not_Aligned;
-    if(errMsgMap.containsKey('softStop')) {
-    List<String> errList = errMsgMap.get('softStop');
-    errList.add(err);
-    errMsgMap.put('softStop', errList);
-    } else {
-    errMsgMap.put('softStop', new List<String> { err });
-    }
-    } */
+		if(isPCCDealReg && Core_FC_ProductSchedule_Ctrl.checkFCQuarterDate(oppId)){
+		softStop = true;
+		String err= System.Label.Core_6QPS_Quarters_Not_Aligned;
+		if(errMsgMap.containsKey('softStop')) {
+		List<String> errList = errMsgMap.get('softStop');
+		errList.add(err);
+		errMsgMap.put('softStop', errList);
+		} else {
+		errMsgMap.put('softStop', new List<String> { err });
+		}
+		} */
                 
                 
                 //TWC3123-6080 - Devashish 
@@ -724,6 +763,43 @@ errMsgMap.put('hardStop', new List<String> { err });
                     }
                 }
                 
+                //Vidyadhar
+                //Commission changes 2026
+                //Restrict opportunity Submissions
+                //Start - Custom setting - switch approach
+                if(oppObject.Core_Opportunity_Coverage_Nm__c.equalsIgnoreCase('Intel-Led Opportunity')){
+                    CRM_OpportunitySubmissionSwitch__c intelLedSwitch = CRM_OpportunitySubmissionSwitch__c.getInstance('CRM_IntelLed');
+                    if(intelLedSwitch.Opportunity_Coverage__c.trim().equalsIgnoreCase(oppObject.Core_Opportunity_Coverage_Nm__c) && Date.today() >= intelLedSwitch.Start_Date__c &&
+                      Date.today() <= intelLedSwitch.End_Date__c && intelLedSwitch.Active__c == true){
+                          hardStop = true;
+                          String err= Core_CRM_Utility.getCRMLabel('CRM_restrictOpptySubmissionMsg');
+                          
+                          if(errMsgMap.containsKey('hardStop')) {
+                              List<String> errList = errMsgMap.get('hardStop');
+                              errList.add(err);
+                              errMsgMap.put('hardStop', errList);
+                          } else {
+                              errMsgMap.put('hardStop', new List<String> { err });
+                          }
+                    }
+                }/*
+                if(oppObject.Core_Opportunity_Coverage_Nm__c.equalsIgnoreCase('Partner-Led Opportunity')){
+                    CRM_OpportunitySubmissionSwitch__c partnerLedSwitch = CRM_OpportunitySubmissionSwitch__c.getInstance('CRM_PartnerLed');
+                    if(partnerLedSwitch.Opportunity_Coverage__c.trim().equalsIgnoreCase(oppObject.Core_Opportunity_Coverage_Nm__c) && Date.today() > partnerLedSwitch.Start_Date__c &&
+                      Date.today() < partnerLedSwitch.End_Date__c && partnerLedSwitch.Active__c == true){
+                          hardStop = true;
+                          String err= 'Switch approach -'+Core_CRM_Utility.getCRMLabel('CRM_restrictOpptySubmissionMsg');
+                          
+                          if(errMsgMap.containsKey('hardStop')) {
+                              List<String> errList = errMsgMap.get('hardStop');
+                              errList.add(err);
+                              errMsgMap.put('hardStop', errList);
+                          } else {
+                              errMsgMap.put('hardStop', new List<String> { err });
+                          }
+                    }
+                }*/
+                //END
                 if(oppObject.Core_Opportunity_Type__c.containsIgnoreCase('Design') && (oppObject.Core_First_Customer_Ship_Date__c == null || String.valueOf(oppObject.Core_First_Customer_Ship_Date__c) == '' || oppObject.Core_First_Customer_Ship_Date__c < System.Today())){
                     softStop = true;
                     String err= System.Label.Core_Oppo_Approval_First_Customer_Ship_Date;
@@ -964,7 +1040,7 @@ errMsgMap.put('hardStop', new List<String> { err });
             if(oppObject != null && oppObject.RecordType.DeveloperName=='Core_Deal_Opportunity'
                && oppObject.Core_Opportunity_Coverage_Nm__c == 'Intel-Led Opportunity'){
                    
-                   List<SBQQ__QuoteLine__c> quoteLines = [ SELECT Name,SBQQ__Product__r.Name, SBQQ__Quote__r.Name,SBQQ__ProductName__c  ,Pricing_Quote_Line_Number__c,Pricing_ECAP_Price_Amt__c, SBQQ__Quote__r.SBQQ__Opportunity2__r.OwnerId,SBQQ__Quote__r.Pricing_Account_Executive_Nm__c,SBQQ__Quote__r.SBQQ__Opportunity2__c from SBQQ__QuoteLine__c  where SBQQ__Quote__r.Pricing_Quote_Program_Nm__c ='Tender' and SBQQ__Quote__r.Pricing_Program_Type_Nm__c IN ('Small Volume Quotes - Data Center Xeon® CPU' ,'Data Center' ,'Client' ) AND SBQQ__Quote__r.SBQQ__Opportunity2__c <> '' AND Pricing_Status_Nm__c IN ('Won','Lost','Approved') AND SBQQ__Product__r.Name <> 'Write In Product' AND SBQQ__Quote__r.SBQQ__Opportunity2__c=:oppId order by Pricing_Quote_Line_Number__c ];
+                   List<SBQQ__QuoteLine__c> quoteLines = [ SELECT Name,SBQQ__Product__r.Name, SBQQ__Quote__r.Name,SBQQ__ProductName__c	,Pricing_Quote_Line_Number__c,Pricing_ECAP_Price_Amt__c, SBQQ__Quote__r.SBQQ__Opportunity2__r.OwnerId,SBQQ__Quote__r.Pricing_Account_Executive_Nm__c,SBQQ__Quote__r.SBQQ__Opportunity2__c from SBQQ__QuoteLine__c  where SBQQ__Quote__r.Pricing_Quote_Program_Nm__c ='Tender' and SBQQ__Quote__r.Pricing_Program_Type_Nm__c IN ('Small Volume Quotes - Data Center Xeon® CPU' ,'Data Center' ,'Client' ) AND SBQQ__Quote__r.SBQQ__Opportunity2__c <> '' AND Pricing_Status_Nm__c IN ('Won','Lost','Approved') AND SBQQ__Product__r.Name <> 'Write In Product' AND SBQQ__Quote__r.SBQQ__Opportunity2__c=:oppId order by Pricing_Quote_Line_Number__c ];
                    List<OpportunityLineItem> oliListData = [Select id,Product2.name,Opportunity.OwnerId,Core_Status__c,UnitPrice from OpportunityLineItem where OpportunityId  =: oppId and Core_Status__c = 'Pending' order by Product2.name];
                    List<QuoteLineData> qldList = null;
                    QuoteLineData qld = new QuoteLineData() ;
@@ -996,7 +1072,6 @@ errMsgMap.put('hardStop', new List<String> { err });
             String errorMsg= 'Error Message ::: ' + E.getMessage() + ' Due to this issues ::: ' + E.getLineNumber();throw new AuraHandledException(errorMsg);  
             
         }
-        
         return wrpr;
         
     }
@@ -1050,7 +1125,7 @@ insert ExcepLog;*/
             
             for (Database.SaveResult sr : srList) {
                 if (!sr.isSuccess()) {
-                    for (Database.Error e  : sr.getErrors()) {                      
+                    for (Database.Error e  : sr.getErrors()) {	                    
                         failedData.add(new Core_Log_Entry__c(Core_Details__c = e.getMessage() , Core_Message__c = 'Error from  Core_OppApprovalCtrl updating Quote data', Core_Severity__c = 'Info', Core_Origin__c = 'Email_Sending_Process', Core_When__c = System.now()));
                     }
                 }

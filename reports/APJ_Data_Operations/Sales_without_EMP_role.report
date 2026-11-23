@@ -28,9 +28,6 @@
         <field>ACTIVE</field>
     </columns>
     <columns>
-        <field>User.Core_Manager__c</field>
-    </columns>
-    <columns>
         <field>LAST_LOGIN</field>
     </columns>
     <columns>
@@ -64,34 +61,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Frozen</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Users_No_Man,Users_with,Admin</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>LAST_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Test</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

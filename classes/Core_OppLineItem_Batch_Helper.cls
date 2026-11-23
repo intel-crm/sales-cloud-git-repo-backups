@@ -16,14 +16,14 @@ public without sharing class Core_OppLineItem_Batch_Helper {
         Map<String, Set<Core_BU_Mapping_Table__c>> extKeyWithDivShortNmBuMap = new Map<String, Set<Core_BU_Mapping_Table__c>>();
         Map<String, Set<Core_BU_Mapping_Table__c>> DivShortNmBuMapSetMap = new Map<String, Set<Core_BU_Mapping_Table__c>>();
         Core_BU_Mapping_Table__c blankBuMapRecord = null;
-        //Map of externalkey and weightage in which externalkey is Core_Product_Application__c+Core_Product_Segment__c+Core_Division_Shortname__c+Core_Product_Type__c
+        //Map of externalkey and weightage in which externalkey is Core_Product_Application__c+Core_Product_Segment__c+Core_LOB_Code__c+Core_Product_Type__c
         Map<String, Double> extKeyWeightageMap = new Map<String, Double>();
         //Map of externalkey and maximum weightage
         Map<String, Double> extKeyWeightageMap1 = new Map<String, Double>();
         String spaceStr = 'spaceCheck';
         String extKeyDivABD, extKeyDivAB, extKeyDivBD, extKeyDivAD, extKeyDivA, extKeyDivB, extKeyDivD;
         String extKey, tempKey;
-        List<Core_BU_Mapping_Table__c> listOfBUShortName = [SELECT Id,Core_BU_Segment__c,Core_BU_Shortname__c,Core_Division_Shortname__c,Core_Product_Application__c,Core_Product_Segment__c,Core_Weightage__c,Name,Core_Product_Type__c FROM Core_BU_Mapping_Table__c where isDeleted=false order by LastModifiedDate desc];
+        List<Core_BU_Mapping_Table__c> listOfBUShortName = [SELECT Id,Core_BU_Segment__c,Core_BU_Shortname__c,Core_LOB_Code__c,Core_Product_Application__c,Core_Product_Segment__c,Core_Weightage__c,Name,Core_Product_Type__c FROM Core_BU_Mapping_Table__c where isDeleted=false order by LastModifiedDate desc];
         if(!listOfBUShortName.isEmpty()){
             for(Core_BU_Mapping_Table__c buMap : listOfBUShortName){
                 extKey = extKeyDivABD = extKeyDivAB = extKeyDivBD = extKeyDivAD = extKeyDivA = extKeyDivB = extKeyDivD = '';
@@ -31,7 +31,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(buMap.Core_Product_Application__c <> null && buMap.Core_Product_Application__c <> ''){
                     tempKey = getExactValue(buMap.Core_Product_Application__c);
                     extKey = extKey + tempKey + ';';
-                    if(buMap.Core_Division_Shortname__c <> null && buMap.Core_Division_Shortname__c <> ''){
+                    if(buMap.Core_LOB_Code__c <> null && buMap.Core_LOB_Code__c <> ''){
                         extKeyDivABD = extKeyDivABD + tempKey + ';';
                         extKeyDivAB = extKeyDivAB + tempKey + ';';
                         extKeyDivAD = extKeyDivAD + tempKey + ';';
@@ -42,23 +42,23 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                 if(buMap.Core_Product_Segment__c <> null && buMap.Core_Product_Segment__c <> ''){
                     tempKey = getExactValue(buMap.Core_Product_Segment__c);
                     extKey = extKey + tempKey + ';';
-                    if(buMap.Core_Division_Shortname__c <> null && buMap.Core_Division_Shortname__c <> ''){
+                    if(buMap.Core_LOB_Code__c <> null && buMap.Core_LOB_Code__c <> ''){
                         extKeyDivABD = extKeyDivABD + tempKey + ';';
                         extKeyDivAB = extKeyDivAB + tempKey + ';';
                         extKeyDivBD = extKeyDivBD + tempKey + ';';
                         extKeyDivB = tempKey;
                     }
                 }
-                //Let's say C = Core_Division_Shortname__c
-                if(buMap.Core_Division_Shortname__c <> null && buMap.Core_Division_Shortname__c <> ''){
-                    extKey = extKey + getExactValue(buMap.Core_Division_Shortname__c) + ';';
+                //Let's say C = Core_LOB_Code__c
+                if(buMap.Core_LOB_Code__c <> null && buMap.Core_LOB_Code__c <> ''){
+                    extKey = extKey + getExactValue(buMap.Core_LOB_Code__c) + ';';
                     DivShortNmBuMapSetMap = prepareMapOfBURecList(extKey, buMap, DivShortNmBuMapSetMap);
                 }
                 //Let's say D = Core_Product_Type__c
                 if(buMap.Core_Product_Type__c <> null && buMap.Core_Product_Type__c <> ''){
                     tempKey = getExactValue(buMap.Core_Product_Type__c);
                     extKey = extKey + tempKey + ';';
-                    if(buMap.Core_Division_Shortname__c <> null && buMap.Core_Division_Shortname__c <> ''){
+                    if(buMap.Core_LOB_Code__c <> null && buMap.Core_LOB_Code__c <> ''){
                         extKeyDivABD = extKeyDivABD + tempKey + ';';
                         extKeyDivBD = extKeyDivBD + tempKey + ';';
                         extKeyDivAD = extKeyDivAD + tempKey + ';';
@@ -71,7 +71,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
                         extKeyWeightageMap.put(extKey, buMap.Core_Weightage__c);
                         extKeyWithBuMap.put(extKey, buMap);
                     }
-                    if(buMap.Core_Division_Shortname__c <> null && buMap.Core_Division_Shortname__c <> ''){
+                    if(buMap.Core_LOB_Code__c <> null && buMap.Core_LOB_Code__c <> ''){
                         if(extKeyDivABD <> ''){
                             extKeyDivABD = extKeyDivABD.removeEnd(';');
                             extKeyWithDivShortNmBuMap = prepareMapOfBURecList(extKeyDivABD, buMap, extKeyWithDivShortNmBuMap);
@@ -137,9 +137,9 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             extKeyBC = extKeyBC + extKeyB + ';';
             extKeyBD = extKeyBD + extKeyB + ';';
         }
-        //Let's say C = Core_product2_division__c
-        if(oppLineItem.Core_product2_division__c <> null && oppLineItem.Core_product2_division__c <> ''){
-            extKeyC = getExactValue(oppLineItem.Core_product2_division__c);
+        //Let's say C = Core_Product2_LOB_Code__c
+        if(oppLineItem.Core_Product2_LOB_Code__c <> null && oppLineItem.Core_Product2_LOB_Code__c <> ''){
+            extKeyC = getExactValue(oppLineItem.Core_Product2_LOB_Code__c);
             extKeyABCD = extKeyABCD + extKeyC + ';';
             extKeyABC = extKeyABC + extKeyC + ';';
             extKeyBCD = extKeyBCD + extKeyC + ';';
@@ -165,10 +165,10 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             extKeyABCD = extKeyABCD.removeEnd(';');
             tempFinalBuMap = getBuMapRecord(wrap.extKeyWithBuMap, extKeyABCD);
         }
-        if(tempFinalBuMap == null && oppLineItem.Core_product2_division__c <> null && extKeyABD <> ''){
+        if(tempFinalBuMap == null && oppLineItem.Core_Product2_LOB_Code__c <> null && extKeyABD <> ''){
             extKeyABD = extKeyABD.removeEnd(';');
             if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyABD)){
-                tempFinalBuMap = getBuMapRec(oppLineItem.Core_product2_division__c, wrap.extKeyWithDivShortNmBuMap.get(extKeyABD));
+                tempFinalBuMap = getBuMapRec(oppLineItem.Core_Product2_LOB_Code__c, wrap.extKeyWithDivShortNmBuMap.get(extKeyABD));
             }
         }
         /**************************************Four Fields Check Ends**************************************/
@@ -209,7 +209,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             }            
         }
         
-        if(tempFinalBuMap == null && oppLineItem.Core_product2_division__c <> null){
+        if(tempFinalBuMap == null && oppLineItem.Core_Product2_LOB_Code__c <> null){
             if(extKeyAB <> ''){
                 extKeyAB = extKeyAB.removeEnd(';');
                 if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyAB)){
@@ -230,7 +230,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             }
             
             if(!tempBuMapSet.isEmpty()){
-                tempFinalBuMap = getBuMapRec(oppLineItem.Core_product2_division__c, tempBuMapSet);
+                tempFinalBuMap = getBuMapRec(oppLineItem.Core_Product2_LOB_Code__c, tempBuMapSet);
                 tempBuMapSet.clear();
             }
         }
@@ -284,7 +284,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             }
         }
         
-        if(tempFinalBuMap == null && oppLineItem.Core_product2_division__c <> null){
+        if(tempFinalBuMap == null && oppLineItem.Core_Product2_LOB_Code__c <> null){
             if(extKeyA <> ''){
                 if(wrap.extKeyWithDivShortNmBuMap.containskey(extKeyA)){
                     tempBuMapSet.addAll(wrap.extKeyWithDivShortNmBuMap.get(extKeyA));
@@ -302,7 +302,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
             }
             
             if(!tempBuMapSet.isEmpty()){
-                tempFinalBuMap = getBuMapRec(oppLineItem.Core_product2_division__c, tempBuMapSet);
+                tempFinalBuMap = getBuMapRec(oppLineItem.Core_Product2_LOB_Code__c, tempBuMapSet);
                 tempBuMapSet.clear();
             }
         }
@@ -310,9 +310,9 @@ public without sharing class Core_OppLineItem_Batch_Helper {
         
         /**************************************One Field Check Starts**************************************/
         if(tempFinalBuMap == null){
-            if(oppLineItem.Core_product2_division__c <> null && !wrap.DivShortNmBuMapSetMap.isEmpty()){
+            if(oppLineItem.Core_Product2_LOB_Code__c <> null && !wrap.DivShortNmBuMapSetMap.isEmpty()){
                 for(String divShortNm : wrap.DivShortNmBuMapSetMap.keySet()){
-                    if(oppLineItem.Core_product2_division__c.containsIgnoreCase(divShortNm)){
+                    if(oppLineItem.Core_Product2_LOB_Code__c.containsIgnoreCase(divShortNm)){
                         tempBuMapSet.addAll(wrap.DivShortNmBuMapSetMap.get(divShortNm));
                     }
                 }
@@ -383,7 +383,7 @@ public without sharing class Core_OppLineItem_Batch_Helper {
     public static Core_BU_Mapping_Table__c getBuMapRec(String divShortName, Set<Core_BU_Mapping_Table__c> buMapRecSet){
         Core_BU_Mapping_Table__c tempRec = null;
         for(Core_BU_Mapping_Table__c buMapRec : buMapRecSet){
-            if(divShortName == null || (divShortName <> null && buMapRec.Core_Division_Shortname__c.containsIgnoreCase(divShortName))){
+            if(divShortName == null || (divShortName <> null && buMapRec.Core_LOB_Code__c.containsIgnoreCase(divShortName))){
                 if(tempRec == null){
                     tempRec = buMapRec;
                 }else{

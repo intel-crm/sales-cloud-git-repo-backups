@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>CCG BU</name>
+    <queueMembers>
+        <users>
+            <user>12056876@intel.com.crm</user>
+            <user>11835804@intel.com.crm</user>
+            <user>12125747@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Core_BU_Owner_Table__c</sobjectType>
+    </queueSobject>
+</Queue>

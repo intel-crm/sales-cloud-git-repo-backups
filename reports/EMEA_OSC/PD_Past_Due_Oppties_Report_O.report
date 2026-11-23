@@ -1,40 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <aggregate>Sum</aggregate>
-            <axisBinding>y</axisBinding>
-            <column>AMOUNT</column>
-        </chartSummaries>
-        <chartType>Donut</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
-        <groupingColumn>OWNER_MANAGER</groupingColumn>
-        <legendPosition>Bottom</legendPosition>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>true</showTotal>
-        <showValues>true</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
+    <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
+        <field>CREATED</field>
+    </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -45,13 +18,28 @@
         <field>Opportunity.Core_Push_Counter__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_Past_Due__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>LAST_UPDATE</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -74,38 +62,30 @@
             <value>Not Submitted</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>alex garea,jaroslaw tomala,korcan erguder,galin dimov,katarzyna bielak,gosia dzul,yulia smelkova,eran gal,mariusz jadwiszczok</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
+            <value>Adrianna Orłowska,Agata Gadomska,Alex Garea,Andrzej Taraszkiewicz,Antoine Guinebault,Ariel Hako,Arkadiusz Drazkowski,Arndt Mitwer,Barbara Barusova Maliszewska,Benedetta Cazzamali,Blazej Matusik,Bruno Le Gallou,Daria Serzysko,Dawid Studzinski,Dmitry Matchin,Dorian Witkowski,Ekaterina Kotelnikova,Eran Gal,Filip Ostojski,Franciszek Kucharski,Francois Klimczak,Galin Dimov,Hesham Ahmed Elsaid Ahmed Abdelfattah,Jacek Hadryś,Jaroslaw Tomala,Jason Holtom,Joaquim Martin,Kamil Guzik,Katarzyna Bielak,Katarzyna Makowska,Korcan Erguder,Krzysztof Maksimiuk,Leszek Grzywacz,Lukasz Balas,Lukasz Chrzanowski,Maciek Osiecki,Magdalena Dunska-Glowka,Magdalena Witke,Maksym Kozlianikov,Gosia Dzul,Marcin Makowski,Marcin Sochacki,Marek Lesiewski,Mariusz Jadwiszczok,Martin Opara,Michal Nowak,Michela Adamo,Milosz Cieszynski,Monica Pipitone,Natalia Radtke,Nikolay Panov,Ozkan Ozdikici,Peter Samoilov,Piotr Rybiński,Roberto Lipari,Roksana Dylewska,Stefano Roma,Tomasz Czajko,Tim Olszewski,Vladimir Fedorov,Vladimir Efimov,Yulia Smelkova,Michal Wrzosek</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Past Due - EMEA Inside Sales</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Past Due Oppties Report</name>
     <params>
         <name>terr</name>
         <value>all</value>

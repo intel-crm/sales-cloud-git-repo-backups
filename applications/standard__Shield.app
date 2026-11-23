@@ -12,5 +12,7 @@
     <tabs>standard-FieldAuditTrail</tabs>
     <tabs>standard-EventMonitoring</tabs>
     <tabs>standard-PlatformEncryption</tabs>
+    <tabs>PIM_Products__x</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

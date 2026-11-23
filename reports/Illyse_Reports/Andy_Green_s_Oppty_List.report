@@ -28,6 +28,9 @@
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Support_Requested__c</field>
     </columns>
     <columns>
@@ -91,7 +94,7 @@
             <column>User.Core_WWID__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>11638106</value>
+            <value>11727422</value>
         </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
@@ -104,19 +107,12 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>1/1/2020 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PROBABILITY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>0</value>
+            <value>10/1/2019 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Illyse Sheaffer&apos;s Oppty List</name>
+    <name>Andy Green&apos;s Oppty List</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -140,8 +136,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2024-12-31</endDate>
+        <endDate>2026-11-22</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-12-23</startDate>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

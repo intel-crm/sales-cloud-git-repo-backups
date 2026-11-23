@@ -25,7 +25,7 @@ public with sharing class Core_IPS_caseAttLinkFileCont_LWC {
                     caseObj = caseList[0];
                 }
             }
-            if(caseObj!= null && caseObj.Core_IPS_Supported_Product__c != null){ // TWC745-9175 - Exceptional Handling - Phani Added Null check
+            if(caseObj!= null && caseObj.Core_IPS_Supported_Product__c != null){ // Exceptional Handling fix
                 if (Schema.sObjectType.Core_IPS_File_Assignment__c.isAccessible()) {
                     CoreIPSFILEAssignLst = [SELECT id, Core_IPS_File_Upload_Master__c FROM Core_IPS_File_Assignment__c 
                                             WHERE Core_Supported_Product__c =: CaseObj.Core_IPS_Supported_Product__c];

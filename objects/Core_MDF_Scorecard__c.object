@@ -128,14 +128,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Core_MDF_Scorecard</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -233,6 +230,36 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_AI_Compliant_Status_Nm__c</fullName>
+        <description>Holds overall AI Status</description>
+        <label>AI Compliant Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AI Compliant</fullName>
+                    <default>false</default>
+                    <label>AI Compliant</label>
+                </value>
+                <value>
+                    <fullName>AI Non-Compliant</fullName>
+                    <default>false</default>
+                    <label>AI Non-Compliant</label>
+                </value>
+                <value>
+                    <fullName>AI Processing Failed</fullName>
+                    <default>false</default>
+                    <label>AI Processing Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_AI_Engagement_Comments_Txt__c</fullName>
@@ -929,6 +956,11 @@ IF(ISPICKVAL(  Core_MDF_Engagement_Nbr__c  , &apos;1&apos; ), (IF( (ISPICKVAL( C
         <unique>false</unique>
     </fields>
     <label>Scorecard</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>ScoreCard-{00000}</displayFormat>
         <label>Scorecard Name</label>

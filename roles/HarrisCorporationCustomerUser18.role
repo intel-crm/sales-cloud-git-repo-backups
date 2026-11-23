@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>L3Harris SE FL Customer User</description>
+    <description>Harris Corporation Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>L3Harris SE FL Customer User</name>
+    <name>Harris Corporation Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10649278_William_Willis</parentRole>
+    <parentRole>EMP_10280160_Gregg_Zeutzius</parentRole>
 </Role>

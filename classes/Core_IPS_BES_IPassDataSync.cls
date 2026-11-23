@@ -206,14 +206,18 @@ global with sharing class  Core_IPS_BES_IPassDataSync {
     public static MessageWrapper sendJsonData(String jsonBody){
         MessageWrapper messageWrapperObj = new MessageWrapper();
         try {
-             //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change            
-                String ipsBackendSystemEndPoint = 'callout:Core_IPS_Backend_System_Integration_DynamicSync'; 
+            //String token = ''; //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
+            //String ipsBackendSystemName = Core_IPS_System_Credentails_Apigee__c.getInstance('Core_IPS_Backend_System_Integration').Name;
+            //String ipsBackendSystemEndPoint = Core_IPS_System_Credentails_Apigee__c.getInstance('Core_IPS_Backend_System_Integration').Core_IPS_EndPointURL__c;
+            //token = Core_IPS_APIGEE_Utility.generateAccessToken1(ipsBackendSystemName);
+            //if(String.isNotBlank(token)){
+                String ipsBackendSystemEndPoint = 'callout:Core_IPS_Backend_System_Integration_DynamicSync'; //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
                 Http callout = new Http();
                 HttpRequest postRequest = new HttpRequest();
                 postRequest.setMethod('POST');
                 postRequest.setEndpoint(ipsBackendSystemEndPoint);
                 postRequest.setHeader('content-type', 'application/json');               
-                
+                //postRequest.setHeader(Label.Core_Apigee_Auth, 'Bearer ' + token);
                 postRequest.setBody(jsonBody);
                 postRequest.setTimeout(12000);
                 HttpResponse response = callout.send(postRequest); 
@@ -236,9 +240,14 @@ global with sharing class  Core_IPS_BES_IPassDataSync {
                    //Core_Log_Entry.logEntryWithDetails('SFDC','IPS',null,'baddata','Token Generation Failed',strDetails,null,'Backend_System','Cannot make call to Ipass');
                    Core_IPS_BES_LogEntry_Utility.insertLog(messageWrapperObj.errorCode, msg, 'Token Generation Failed');
                 }
-            
+            //}  else if(String.isBlank(token)) {
+                //messageWrapperObj.status = 'Failed';
+                //String strDetails= 'Token is empty.';
+                //messageWrapperObj.message = strDetails;
+                //Core_IPS_BES_LogEntry_Utility.insertLog(messageWrapperObj.errorCode, strDetails, 'Token Generation Failed');
+                ////Core_Log_Entry.logEntryWithDetails('SFDC','IPS',null,'baddata','Token Generation Failed',strDetails,null,'Backend_System','Cannot make call to Ipass');
                 
-            
+            //} //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
             //System.debug('jsonBody'+jsonBody);
            
 

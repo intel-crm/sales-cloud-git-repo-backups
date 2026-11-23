@@ -32,7 +32,6 @@ global class PRM_ProcessRollUpDownOPIDRecords implements  Database.Batchable<sOb
     
     
     global Database.QueryLocator start(Database.BatchableContext bc) {
-        System.debug('PRM_ProcessRollUpDownOPIDRecords start method called >>>>');                
         //added by Anish - start 
        // String pagRecordId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
         //String query= 'Select Id, name, Core_OnePartnerID__c from Account where Core_OnePartnerID__c in :opids and RecordTypeId = :pagRecordId';
@@ -46,12 +45,10 @@ global class PRM_ProcessRollUpDownOPIDRecords implements  Database.Batchable<sOb
     
     global void execute(Database.BatchableContext bc, List<Core_OnePartner_Inbound_Message__c> inboundMsgList){ 
         try{logEntryMsg+='\n*****SECOND BATCH EXECUTION STARTS HERE*******';
-            System.debug('Exceution of 2nd batch started...');
             Set<String> opids = new Set<String>();   
             Set<String> listOfAccountsRemoved = new Set<String>();
             //if(inboundMsgList.size()>0){
                 for(Core_OnePartner_Inbound_Message__c inbMsg: inboundMsgList){          
-                    SYstem.debug('inbMsg.Core_OnePartnerID__c>> '+inbMsg.Core_OnePartnerID__c);
                     opids.add(String.valueOf(inbMsg.Core_OnePartnerID__c.intValue())); 
                     if(inbMsg.Core_Effective_End_Date_Time__c != null && inbMsg.Core_Effective_End_Date_Time__c.date() <= Date.Today()){                    
                         listOfAccountsRemoved.add(String.valueOf(inbMsg.Core_OnePartnerID__c.intValue()));                                      
@@ -78,8 +75,6 @@ global class PRM_ProcessRollUpDownOPIDRecords implements  Database.Batchable<sOb
             opidAGRecOp.errLogForProcInMessage(errorWrapper);
             
             //Inactivate ABA based on inactivated ACM at OPID record taking reference of inactivated listofCAG record
-            System.debug('listOfAccountsRemoved >>> '+listOfAccountsRemoved);
-           // System.debug('updatedList >>> '+updatedList);
             if(!listOfAccountsRemoved.isEmpty())
             {                
                 logEntryMsg+=opidAGRecOp.inactivateBenefitAsPerACM(listOfAccountsRemoved);
@@ -89,15 +84,12 @@ global class PRM_ProcessRollUpDownOPIDRecords implements  Database.Batchable<sOb
                         PRM_ProcessInboundOPIDLogEntriesUtility logEntryUtility=new PRM_ProcessInboundOPIDLogEntriesUtility();
                         Integer fieldLength=Schema.SObjectType.Core_Log_Entry__c.fields.Core_Details__c.getLength();
                         logEntryUtility.addLogEntry(logEntryMsg,fieldLength);
-                        //System.debug('Inside if 409');
                         for(Integer i=0; i<logEntryUtility.logEntryList.size();i++){
                             Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,logEntryMsg.split('@@@')[0] ,logEntryUtility.logEntryList[i] , '', '', '');
                         }//loop ends here..
                     //}   
                     logEntryMsg = '';
-                    System.debug('inside if');
                 }
-            System.debug('Exceution of 2nd batch end...');
         }catch(Exception e){ PRM_ProcessInboundOPIDRecords processInbRecords = new PRM_ProcessInboundOPIDRecords();
             logEntryMsg+=PRM_ProcessInboundOPIDLogEntriesUtility.processException(e);
             processInbRecords.updateStatus(inboundMsgList,null, null, null, e.getMessage() + ': ' + e.getStackTraceString());
@@ -109,7 +101,6 @@ global class PRM_ProcessRollUpDownOPIDRecords implements  Database.Batchable<sOb
         //added by Anish - start 
    //     AsyncApexJob job = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed,  TotalJobItems, CreatedBy.Email FROM AsyncApexJob
      //                       WHERE Id = :bc.getJobId()];
-     //   System.debug('ResultBatch2'+job);
        
         //added by Anish - end
 

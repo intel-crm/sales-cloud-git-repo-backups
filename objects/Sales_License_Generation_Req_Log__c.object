@@ -164,10 +164,36 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>LicenseId__c</fullName>
+        <fullName>Generation_Request_Month__c</fullName>
         <externalId>false</externalId>
-        <label>LicenseId</label>
-        <length>255</length>
+        <formula>LEFT(TEXT(DATEVALUE(CreatedDate)), LEN(TEXT(DATEVALUE(CreatedDate)))-3)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Generation Request Month</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Generation_Request_Quarter__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(YEAR(DATEVALUE(CreatedDate)))+&quot;&apos; &quot;+
+CASE(MONTH(DATEVALUE(CreatedDate)),
+1,&quot;Q1&quot;,
+2,&quot;Q1&quot;,
+3,&quot;Q1&quot;,
+4,&quot;Q2&quot;,
+5,&quot;Q2&quot;,
+6,&quot;Q2&quot;,
+7,&quot;Q3&quot;,
+8,&quot;Q3&quot;,
+9,&quot;Q3&quot;,
+10,&quot;Q4&quot;,
+11,&quot;Q4&quot;,
+12,&quot;Q4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Generation Request Quarter</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>

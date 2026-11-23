@@ -133,7 +133,7 @@
             <name>Core_IPS_Status_field_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_IPS_MAP_PAR__c.RecordTypeId</field>
             <operation>equals</operation>

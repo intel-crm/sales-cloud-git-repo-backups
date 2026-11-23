@@ -6,7 +6,7 @@
 * ----------------------------------------------------------------------------                 
 * Farooq                  08/09/2020                This is to create dynamic approval process by creating a group
                                                     an submit an approavl process through group.
-* Farooq 				   /10/2024				    Modified the approval prcess as part of ATHR (TWC745-6578)
+* Farooq 							  /10/2024				 Modified the approval prcess as part of ATHR (TWC745-6578)
 ****************************************************************************************************/
 public without sharing class Core_IPS_OpportunityParApproval implements Queueable{
     private List<Core_IPS_Opppar_SuppOrgAdmin__c> newList;

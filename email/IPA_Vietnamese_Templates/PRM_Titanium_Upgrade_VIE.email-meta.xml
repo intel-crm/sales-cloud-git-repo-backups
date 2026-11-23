@@ -1,56 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>PRM_Titanium_Upgrade_VIE</name>
     <style>none</style>
     <subject>Chào mừng bạn đến với Liên minh Đối tác Intel® Titan</subject>
-    <textOnly>Hạng Titanium trong Liên minh Đối tác Intel®
-
+    <textOnly>Liên minh Đối tác Intel® Titan
 
 
 {!Contact.FirstName},
 
-Chúng tôi đã thực hiện một số thay đổi thú vị và đã sửa đổi các tiêu chí của chương trình Liên minh Đối tác Intel® cũng như nâng cao các lợi ích hỗ trợ nhu cầu kinh doanh của bạn. Do đó, công ty của bạn đã được nâng cấp lên Titanium trong Liên minh Đối tác Intel®. Xin chúc mừng!
+Xin chúc mừng! Công ty của bạn đã được nâng cấp lên thành Liên minh Đối tác Intel® Titan. Hãy tận dụng những lợi ích thành viên sau:
 
-Dưới đây là một số lợi ích gia tăng cho Titanium:
+Nhận thêm điểm với cả thành phần và hệ thống
+Được mời tham gia sự kiện đối tác Intel hàng đầu trong năm: Intel® Partner Connect
+Thư giới thiệu Titan từ quản lý Intel đến khách hàng tiềm năng của bạn
 
-Huy hiệu Titanium
-Số lần Bảo hành Thay thế Cao cấp cao hơn
-Điểm tối đa cao nhất
-
-
-Có rất nhiều điều thú vị với trải nghiệm mới của Đại học Đối tác Intel®, bao gồm:
-
-Một bản nâng cấp hoàn chỉnh cho trải nghiệm kỹ thuật số
-Lộ trình đào tạo cá nhân hóa
-Và một hệ thống xếp hạng nội dung mới để giúp các đối tác tìm và sử dụng nội dung được xếp hạng ngang hàng cao nhất.
-
-
-Ngoài ra, chúng tôi hiện đang cung cấp cho các đối tác của mình các xu hướng và thông tin chi tiết được chọn lọc trong ngành, do nhà khoa học dữ liệu trong nhóm Dự báo và Định cỡ Thị trường của Intel mang đến cho bạn.
-
-Hãy đón chờ trải nghiệm người dùng Thị trường Các giải pháp Intel® mới và đã được cải thiện:
-
-Giao diện mới và điều hướng trang web dễ dàng hơn
-Trải nghiệm được cải thiện để tạo kết nối và khách hàng tiềm năng giữa các đối tác
-Chức năng tìm kiếm tổng thể được cải thiện
-
-
-Liên minh Đối tác Intel® không ngừng nỗ lực nhằm mang lại nhiều giá trị và lợi ích hơn để doanh nghiệp của bạn có thể phát triển trong môi trường ngày nay. Tìm hiểu thêm về những gì Liên minh Đối tác Intel® cung cấp để giúp bạn thúc đẩy hoạt động kinh doanh của mình.
-
+Đăng nhập để truy cập các công cụ và tài nguyên.
 
 Bắt đầu ngay hôm nay
 
 
+Các đối tác của Intel đã có một lịch sử đổi mới lâu dài. Nay với Liên minh Đối tác Intel®, chúng tôi sẽ giúp bạn tăng tốc xây dựng các giải pháp cho nền kinh tế tập trung vào dữ liệu. Cùng nhau, chúng ta có thể kết nối, đổi mới và phát triển, tạo ra những cơ hội có tính khả thi cao.
 
-Xin cám ơn bạn,
+Truy cập intel.com/partnerhelp để được giúp đỡ và hướng dẫn cách tối ưu hóa tư cách thành viên của bạn.
+
+
+Xin cám ơn bạn!
 Nhóm Liên minh Đối tác Intel® của bạn
 
-
 Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
-© 2023 Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Quyền riêng tư &amp;verbar; Cookie</textOnly>
+Quyền riêng tư | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

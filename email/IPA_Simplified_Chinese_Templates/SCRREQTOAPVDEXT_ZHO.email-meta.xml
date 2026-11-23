@@ -14,17 +14,20 @@
 公司名称： {!Account.Name}
 公司 ID： {!Account.AccountNumber}
 
-登录 以查看您的英特尔® 合作伙伴联盟资料详情。
+登录以查看您的英特尔® 合作伙伴联盟资料详情。
+
+登录 https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary 以了解您的角色。
+
 
 英特尔的合作伙伴总是在不断创新，而英特尔® 合作伙伴联盟的出现将为您的创新提供鼎力支持，帮助您加速构建创新解决方案，在以数据为中心的经济大潮中乘风破浪。我们将与您携手共同创造非凡机遇，实现连接、创新与成长。
 
-请访问 https://www.intel.com/content/www/cn/zh/partner-alliance/help/overview.html 了解关于入门的更多信息。
+请访问 https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html 了解关于入门的更多信息。
 
 谢谢！
 英特尔® 合作伙伴联盟团队
 
 发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} 英特尔公司版权所有
+© {!Contact.Core_Current_Year__c} 英特尔公司版权所有
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
 隐私 | Cookies</textOnly>
     <type>custom</type>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_ApprovalCriteriaHelper_Test</testClassName>
+    <testClassName>Core_MDF_Audit_Rules_Processing_Test</testClassName>
+    <testClassName>Core_MDF_Batch_SendEmailToGSPO_Test</testClassName>
+    <testClassName>Core_MDF_CampaignCreatePageTest</testClassName>
+    <testClassName>Core_MDF_ClmRecovery_ServiceHandlerTest</testClassName>
+    <testClassName>Core_MDF_CustLayout_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_CustomMultiSelectPicklist_test</testClassName>
+    <testClassName>Core_MDF_EmailTemplateTranslation_Test</testClassName>
+    <testClassName>Core_MDF_ExternalUserSharing_Test</testClassName>
+    <testClassName>Core_MDF_FileUploadController_Test</testClassName>
+    <testClassName>Core_MDF_HistoryController_Test</testClassName>
+    <testClassName>Core_MDF_IUPGM_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_KPI_FieldsTest</testClassName>
+    <testClassName>Core_MDF_KPIDetailPage_test</testClassName>
+    <testClassName>Core_MDF_OPAL_Budget_Validation_Test</testClassName>
+    <testClassName>Core_MDF_PartnerFundReq_Controller_Test</testClassName>
+    <testClassName>Core_MDF_PaymentRunHelper_Test</testClassName>
+    <testClassName>Core_MDF_PaymentServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_RecallApprovalHandler_Test</testClassName>
+    <testClassName>Core_MDF_ReverseAuditDecisionTest</testClassName>
+    <testClassName>Core_MDF_Rules_Engine_Test</testClassName>
+</ApexTestSuite>

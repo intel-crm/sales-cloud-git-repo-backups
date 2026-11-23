@@ -253,7 +253,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         campaignRecord.Core_MDF_Industry_Nm__c = getFilteredString(campaignValues, 'Core_MDF_Industry_Nm__c');
         campaignRecord.Core_MDF_Opal_Budget_Type_Txt__c = getFilteredString(campaignValues, 'Core_MDF_Opal_Budget_Type_Txt__c');
         populateBackendCampaignFields(campaignRecord);
-        If(!Test.isRunningTest()){enforceCampaignUltimateAccountAccess(campaignRecord);}
+        enforceCampaignUltimateAccountAccess(campaignRecord);
         return campaignRecord;
     }
 
@@ -273,7 +273,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
             if (campaigns.isEmpty()) {
                 return null;
             }
-            If(!Test.isRunningTest()){ enforceCampaignUltimateAccountAccess(campaigns[0]);}           
+            //enforceCampaignUltimateAccountAccess(campaigns[0]);
             return campaigns[0];
         } catch (Exception e) {
             if (e instanceof Core_MDF_CCP_RestAPI_Utility.AccessDeniedException) {
@@ -474,7 +474,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
     private static Core_MDF_PFR_RestAPI_Utility.ResponseCodeSetting getErrorConfigDetails(String errorCode, String fallbackHttpStatusCode) {
         return Core_MDF_PFR_RestAPI_Utility.getResponseCodeSetting(errorCode, fallbackHttpStatusCode, null);
     }
-    @TestVisible
+
     private static String formatConfiguredMessage(String message, List<String> messageArgs) {
         if (String.isBlank(message) || messageArgs == null || messageArgs.isEmpty()) {
             return message;
@@ -523,7 +523,6 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
      * Gets Member Acceptor users in structured format grouped by Account Name (similar to SegmentProduct)
      * Returns List of maps with structure: {"Account Name": "...", "allowed values": [{userId, name}, ...]}
      */
-    @TestVisible
     private static List<Map<String, Object>> getMemberAcceptorUsersStructured(Campaign campaignDetail) {
         List<Map<String, Object>> structuredUsers = new List<Map<String, Object>>();
         if (campaignDetail == null) {
@@ -537,8 +536,10 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
 
         try {
             Set<Id> accountIds = new Set<Id>();
+            String utlimateAcid ='';
             if (String.isNotBlank(campaignDetail.Core_MDF_Account__c)) {
                 accountIds.add(campaignDetail.Core_MDF_Account__c);
+                utlimateAcid =campaignDetail.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c ;
             }
             Campaign objCmp =[select id,Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c from campaign where id=:campaignDetail.id limit 1];
             // Include direct child and related accounts tied to the campaign account.
@@ -550,7 +551,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
                     WHERE Core_MDF_CoMarketing_Ultimate_Account__c = : objCmp.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c //'0012i00000Ke2jfAAB' //campaignDetail.Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c
                     AND Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c =: campaignDetail.Core_MDF_Program__c
                     AND Core_MDF_Active_Ind__c =: true
-                    LIMIT 5000
+                    LIMIT 500
             ];
 
             for (Account relatedAccount : relatedAccounts) {
@@ -637,11 +638,10 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         return structuredUsers;
     }
 
-    @TestVisible
     private static List<UserDetail> getIntelApproverUsers(Id ultimateAccountId) {
         return getIntelApproverUsers(ultimateAccountId, null);
     }
-    @TestVisible
+
     public static List<UserDetail> getIntelApproverUsers(Campaign campaignRecord) {
         if (campaignRecord == null || campaignRecord.Core_MDF_Account__c == null) {
             return new List<UserDetail>();
@@ -674,7 +674,6 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
      * @param campaignRecord Optional campaign record to filter by country-mapped regions
      * @return List of Intel Approver users, filtered by region if campaign is provided
      */
-    @TestVisible
     private static List<UserDetail> getIntelApproverUsers(Id ultimateAccountId, Campaign campaignRecord) {
         List<UserDetail> userDetails = new List<UserDetail>();
         if (ultimateAccountId == null) {
@@ -741,7 +740,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         }
         return userDetails;
     }
-     @TestVisible
+
     private static List<UserDetail> getIntelApproverUsers(List<Account> accounts, Campaign campaignRecord) {
         List<UserDetail> userDetails = new List<UserDetail>();
         Set<Id> addedUserIds = new Set<Id>();
@@ -768,7 +767,6 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
      * @param countries List of country names from campaign
      * @return Set of region names that map to the given countries
      */
-    @TestVisible
     private static Set<String> getRegionsForCountries(List<String> countries) {
         Set<String> regions = new Set<String>();
         if (countries == null || countries.isEmpty()) {
@@ -800,7 +798,6 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
     /**
      * Builds the response values for one requested PFR field, honoring campaign-level restrictions.
      */
-    @TestVisible
     private static PicklistFieldValues processField(Map<String, Schema.SObjectField> fieldMap, String pfrFieldName, Campaign campaignRecord) {
         PicklistFieldValues fieldValues = new PicklistFieldValues();
         fieldValues.fieldLabel = FIELD_LABELS.get(pfrFieldName);
@@ -842,14 +839,14 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
             return fieldValues;
         }
 
-        /*if (pfrFieldName == 'Core_MDF_Reimbursement_Rate_txt__c') {
+        if (pfrFieldName == 'Core_MDF_Reimbursement_Rate_txt__c') {
             Set<String> campaignRates = getCampaignReimbursementRateValues(campaignRecord);
             if (!campaignRates.isEmpty()) {
                 fieldValues.values.addAll(campaignRates);
                 fieldValues.values.sort();
                 return fieldValues;
             }
-        }*/
+        }
         
         // Get active picklist values from PFR field, filtered by program type
         String programType = getProgramTypeFromCampaign(campaignRecord);
@@ -903,7 +900,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
     private static Boolean isCampaignLevelActivityField(String pfrFieldName) {
         return pfrFieldName == 'Core_MDF_ActivityCategory__c' || pfrFieldName == 'Core_MDF_Activity_Types__c';
     }
-    @TestVisible
+
     private static void populateCampaignLevelValues(PicklistFieldValues fieldValues, Map<String, Schema.SObjectField> fieldMap, String pfrFieldName, Campaign campaignRecord) {
         List<String> campaignValues;
         try {
@@ -937,7 +934,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
             }
         }
     }
-    @TestVisible
+
     private static void filterDependentValuesToFieldValues(PicklistFieldValues fieldValues) {
         if (fieldValues == null || fieldValues.values == null || fieldValues.values.isEmpty() || fieldValues.dependentValues == null) {
             return;
@@ -1123,7 +1120,6 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
      * @param campaignRecord Campaign record to get associated budgets
      * @return List of budget strings
      */
-    @TestVisible
     private static List<String> getAllowedBudgetValues(Campaign campaignRecord) {
         List<String> allowedBudgets = new List<String>();
         
@@ -1228,7 +1224,7 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         }
         return reimbursementRates;
     }
-    @TestVisible
+
     private static Set<String> getCampaignReimbursementRateValues(Campaign campaignRecord) {
         Set<String> rates = new Set<String>();
         Map<String, List<String>> ratesByBudget = getReimbursementRateValuesByBudget(campaignRecord);
@@ -1951,5 +1947,4 @@ global without sharing class Core_MDF_PFR_RestAPI_PicklistValues {
         }
         return false;
     }
-
 }

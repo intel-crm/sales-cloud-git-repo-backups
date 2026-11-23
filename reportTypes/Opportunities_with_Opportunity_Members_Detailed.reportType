@@ -102,11 +102,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Design_Type__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Approver_2__c</field>
             <table>Opportunity</table>
         </columns>
@@ -158,11 +153,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_At_Risk_Created_Date__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Attendee__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -372,6 +362,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__CurrentGenerators__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Customer_Project_Details__c</field>
             <table>Opportunity</table>
         </columns>
@@ -383,16 +378,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Customer_Project_Name__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__EventTitle__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Event__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -433,6 +418,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Decision_Opportunity_GEO__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__DeliveryInstallationStatus__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -732,6 +722,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__Is_Influenced__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IsBlank_Competitive_Arch__c</field>
             <table>Opportunity</table>
         </columns>
@@ -872,6 +867,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_LOEM__c</field>
             <table>Opportunity</table>
         </columns>
@@ -922,6 +922,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__MainCompetitors__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Manufacturing_Geo__c</field>
             <table>Opportunity</table>
         </columns>
@@ -963,6 +968,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Modern_Standby__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_DateTime__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_Geolocation__Latitude__s</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__My_Geolocation__Longitude__s</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -1293,6 +1313,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__OrderGroupID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__OrderNumber__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -1888,6 +1913,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Time_Till_Opportunity_Decision_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__TrackingNumber__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -2968,6 +2998,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Account.Lead_to_Account_on_Contact_NoOpportunity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.LID__LinkedIn_Company_Id__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>

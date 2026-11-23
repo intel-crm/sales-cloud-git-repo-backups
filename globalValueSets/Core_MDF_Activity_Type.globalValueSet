@@ -646,24 +646,6 @@
         <label>Offer - Rewards</label>
     </customValue>
     <customValue>
-        <fullName>Customer.com - Processor Badges on listing pages</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Customer.com - Processor Badges on listing pages</label>
-    </customValue>
-    <customValue>
-        <fullName>Customer.com - Onsite Search - PC keywords</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Customer.com - Onsite Search - PC keywords</label>
-    </customValue>
-    <customValue>
-        <fullName>Customer.com - Onsite Search - Cross sell keywords</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Customer.com - Onsite Search - Cross sell keywords</label>
-    </customValue>
-    <customValue>
         <fullName>Customer.com - Onsite Banner Ad</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -898,6 +880,24 @@
         <label>Sponsorships</label>
     </customValue>
     <customValue>
+        <fullName>Demo Hardware/Cloud</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Demo Hardware/Cloud</label>
+    </customValue>
+    <customValue>
+        <fullName>Slotting</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Slotting</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer - Bundle/Offer</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Buyer - Bundle/Offer</label>
+    </customValue>
+    <customValue>
         <fullName>Collateral - Poster/Sign/Banner</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -1054,6 +1054,12 @@
         <label>Other (Seller Incentive)</label>
     </customValue>
     <customValue>
+        <fullName>Third - Party Event</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Third - Party Event</label>
+    </customValue>
+    <customValue>
         <fullName>Promotion – Non-Retail</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -1076,30 +1082,6 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Test LOV Type 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Third - Party Event</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Third - Party Event</label>
-    </customValue>
-    <customValue>
-        <fullName>Demo Hardware/Cloud</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Demo Hardware/Cloud</label>
-    </customValue>
-    <customValue>
-        <fullName>Slotting</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Slotting</label>
-    </customValue>
-    <customValue>
-        <fullName>Buyer - Bundle/Offer</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Buyer - Bundle/Offer</label>
     </customValue>
     <customValue>
         <fullName>Salesforce Training - RSP Training - IREP</fullName>
@@ -1202,6 +1184,24 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Customer.com - Processor Badges on product pages</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer.com - Processor Badges on listing pages</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer.com - Processor Badges on listing pages</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer.com - Onsite Search - PC keywords</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer.com - Onsite Search - PC keywords</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer.com - Onsite Search - Cross sell keywords</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer.com - Onsite Search - Cross sell keywords</label>
     </customValue>
     <masterLabel>Activity Type</masterLabel>
     <sorted>true</sorted>

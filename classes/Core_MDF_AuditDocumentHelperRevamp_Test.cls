@@ -278,7 +278,6 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             Test.stopTest();
             // Unit Test Method should include System.Assert 
             System.assertEquals(1, auditDocWrapperList.size(), 'Audit document wrapper list should contain 1 item');
-            
             Core_MDF_AuditDocumentHelper_Revamp.insertAuditDocumentAndContentDocumentLink(auditDocWrapperList, pfc.Id, true);
         //}
     }
@@ -309,7 +308,6 @@ private class Core_MDF_AuditDocumentHelperRevamp_Test {
             Test.stopTest();
             // Unit Test Method should include System.Assert 
               System.assertEquals(false, auditDocWrapper1.isNewDocument, 'isNewDocument should be false for existing document');
-    
             Core_MDF_AuditDocumentHelper_Revamp.insertAuditDocumentAndContentDocumentLink(auditDocWrapperList, pfc.Id, true);
         //}
     }

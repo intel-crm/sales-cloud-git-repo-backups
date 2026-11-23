@@ -282,19 +282,14 @@
                     <label>OLO (Online Label Ordering)</label>
                 </value>
                 <value>
-                    <fullName>CIM-PRIME EOL - New Programs</fullName>
-                    <default>false</default>
-                    <label>CIM-PRIME EOL - New Programs</label>
-                </value>
-                <value>
                     <fullName>CDM (Consumption Data Management)</fullName>
                     <default>false</default>
                     <label>CDM (Consumption Data Management)</label>
                 </value>
                 <value>
-                    <fullName>Test Entitlements - Access and Entitlements</fullName>
+                    <fullName>CIM-PRIME EOL - New Programs</fullName>
                     <default>false</default>
-                    <label>Test Entitlements - Access and Entitlements</label>
+                    <label>CIM-PRIME EOL - New Programs</label>
                 </value>
                 <value>
                     <fullName>Retail Partner Systems (RPS)</fullName>
@@ -307,19 +302,9 @@
                     <label>Retail partners</label>
                 </value>
                 <value>
-                    <fullName>EPS Verified</fullName>
+                    <fullName>Test Entitlements - Access and Entitlements</fullName>
                     <default>false</default>
-                    <label>EPS Verified</label>
-                </value>
-                <value>
-                    <fullName>Intel On Demand</fullName>
-                    <default>false</default>
-                    <label>Intel On Demand</label>
-                </value>
-                <value>
-                    <fullName>Intel Developer Cloud Enterprise</fullName>
-                    <default>false</default>
-                    <label>Intel Developer Cloud Enterprise</label>
+                    <label>Test Entitlements - Access and Entitlements</label>
                 </value>
                 <value>
                     <fullName>Configure To Order &amp; Configure Price Quote Portals</fullName>
@@ -328,22 +313,10 @@
                     <label>Configure To Order &amp; Configure Price Quote Portals</label>
                 </value>
                 <value>
-                    <fullName>Consolidated Co-marketing Platform</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Consolidated Co-marketing Platform</label>
-                </value>
-                <value>
                     <fullName>Programmable Solutions Group – Non Partner</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Programmable Solutions Group – Non Partner</label>
-                </value>
-                <value>
-                    <fullName>RPS Agency</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>RPS Agency</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -381,6 +354,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_Entitlement_Detail_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Entitlement Detail Request</label>
+        <referenceTo>Core_Entitlement_Detail_Request__c</referenceTo>
+        <relationshipLabel>Entitlement Details</relationshipLabel>
+        <relationshipName>Entitlement_Details</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_Entitlement_Type__c</fullName>
         <description>Type of Entitlement, whether it is Salesforce based Internal Entitlement or External AGS Entitlement.</description>
         <label>Entitlement Type</label>
@@ -406,12 +391,23 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_Entitlement_cid_prod__c</fullName>
+        <externalId>true</externalId>
+        <label>Core_Entitlement__cId_Prod</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Help_Text__c</fullName>
         <externalId>false</externalId>
         <label>Help Text</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -458,7 +454,6 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
@@ -561,26 +556,17 @@
                     <default>false</default>
                     <label>Co-GTM</label>
                 </value>
-                <value>
-                    <fullName>Client Co-Marketing Fund (CCF)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Client Co-Marketing Fund (CCF)</label>
-                </value>
-                <value>
-                    <fullName>Data Center Co-Marketing Fund (DCF)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Data Center Co-Marketing Fund (DCF)</label>
-                </value>
-                <value>
-                    <fullName>Silicon as a Service (SiaaS)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Silicon as a Service (SiaaS)</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Visible_on_Contact_UI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicator to make Entitlement visible on Contact UI</description>
+        <label>Visible on Contact UI</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>ER_Program__c</fullName>
@@ -738,96 +724,21 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_Display_Name__c</columns>
-        <columns>Core_IsActive__c</columns>
         <columns>Core_ERPM_Engagement_Id__c</columns>
         <columns>Core_AGS_Role_Id__c</columns>
+        <columns>Core_IsActive__c</columns>
         <columns>Core_Category__c</columns>
         <columns>Core_Sub_Category__c</columns>
         <columns>Core_Help_Text__c</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
+        <columns>Entitlement_ID_18__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
-    <listViews>
-        <fullName>Engagement_List</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Display_Name__c</columns>
-        <columns>Core_IsActive__c</columns>
-        <columns>Core_ERPM_Engagement_Id__c</columns>
-        <columns>Core_AGS_Role_Id__c</columns>
-        <columns>Core_Category__c</columns>
-        <columns>Core_Sub_Category__c</columns>
-        <columns>Core_Help_Text__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_AGS_Role_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <label>Engagement List - All</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Entitlement_List</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Display_Name__c</columns>
-        <columns>Core_IsActive__c</columns>
-        <columns>Core_ERPM_Engagement_Id__c</columns>
-        <columns>Core_AGS_Role_Id__c</columns>
-        <columns>Core_Category__c</columns>
-        <columns>Core_Sub_Category__c</columns>
-        <columns>Core_Help_Text__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IsActive__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Entitlement List - Active</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Entitlement_List_Permission_Sets</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Display_Name__c</columns>
-        <columns>Core_IsActive__c</columns>
-        <columns>Core_ERPM_Engagement_Id__c</columns>
-        <columns>Core_AGS_Role_Id__c</columns>
-        <columns>Core_Permission_Set_API_Nm__c</columns>
-        <columns>Core_Public_Group_API_Nm__c</columns>
-        <columns>Core_Category__c</columns>
-        <columns>Core_Sub_Category__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_AGS_Role_Id__c</field>
-            <operation>notEqual</operation>
-        </filters>
-        <filters>
-            <field>Core_IsActive__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Entitlement List - Permission Sets</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
     <nameField>
         <label>Entitlement Name</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Entitlement Details</pluralLabel>

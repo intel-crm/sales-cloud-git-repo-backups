@@ -229,13 +229,6 @@
     <label>Bulk Upload Batch</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>core_cpq_failure_count_nbr__c</columns>
-        <columns>core_cpq_object_name_nm__c</columns>
-        <columns>core_cpq_success_count_nbr__c</columns>
-        <columns>core_cpq_total_rows_Nbr__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

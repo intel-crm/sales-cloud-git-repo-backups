@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DecisionTable xmlns="http://soap.sforce.com/2006/04/metadata">
     <collectOperator>None</collectOperator>
-    <conditionCriteria>1 AND 2 AND 3 AND 4</conditionCriteria>
+    <conditionCriteria>1 AND 2 AND 3</conditionCriteria>
     <conditionType>All</conditionType>
     <dataSourceType>SingleSobject</dataSourceType>
     <decisionTableParameters>
@@ -28,18 +28,8 @@
         <fieldPath>Pricing_Overall_Quote_Quantity_Nbr__c</fieldPath>
         <isGroupByField>false</isGroupByField>
         <isRequired>true</isRequired>
-        <operator>GreaterOrEqual</operator>
+        <operator>GreaterThan</operator>
         <sequence>3</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
-        <fieldName>Pricing_EndCustomer_CSP_List_Ind__c</fieldName>
-        <fieldPath>Pricing_EndCustomer_CSP_List_Ind__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>true</isRequired>
-        <operator>Equals</operator>
-        <sequence>4</sequence>
         <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableParameters>
@@ -99,17 +89,10 @@
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
-        <operator>GreaterOrEqual</operator>
+        <operator>GreaterThan</operator>
         <sequenceNumber>3</sequenceNumber>
         <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
         <value>1500</value>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>Equals</operator>
-        <sequenceNumber>7</sequenceNumber>
-        <sourceFieldName>Pricing_EndCustomer_CSP_List_Ind__c</sourceFieldName>
-        <value>false</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
@@ -122,15 +105,15 @@
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>5</sequenceNumber>
-        <sourceFieldName>Pricing_Program_Type_Nm__c</sourceFieldName>
-        <value>Data Center</value>
+        <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
+        <value>true</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>6</sequenceNumber>
-        <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
-        <value>true</value>
+        <sourceFieldName>Pricing_Program_Type_Nm__c</sourceFieldName>
+        <value>Data Center</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>
@@ -140,8 +123,8 @@
     <isBestFitEnabled>false</isBestFitEnabled>
     <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
     <isVersioned>false</isVersioned>
-    <setupName>Pricing Route Rules ASMO DCG HPC TRQ GTE</setupName>
-    <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</sourceConditionLogic>
+    <setupName>Pricing Route Rules ASMO DCG HPC TRQ GT</setupName>
+    <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>
     <usageType>Bre</usageType>

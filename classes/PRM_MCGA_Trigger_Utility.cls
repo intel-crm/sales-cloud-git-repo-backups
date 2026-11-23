@@ -66,7 +66,13 @@ public without sharing class PRM_MCGA_Trigger_Utility {
     private static void upsertMessageLog(List<PRM_Message_Log__c> messageLogList){
         Map<String,PRM_Message_Log__c> existingMessageLogMap =new Map<String,PRM_Message_Log__c>();//Map of Existing Message Log  
         List<PRM_Message_Log__c> upsertMessageLogList =new List<PRM_Message_Log__c>();//List to upsert Message Log
-        for(PRM_Message_Log__c msgLog:[Select Id, PRM_Message_Id__c,PRM_Contact_Id__c from PRM_Message_Log__c]){
+        List<String> messageIdList = new List<String>();
+        List<String> contactIdList = new List<String>();
+        for(PRM_Message_Log__c newMsgLog :messageLogList){
+            messageIdList.add(newMsgLog.PRM_Message_Id__c);
+            contactIdList.add(newMsgLog.PRM_Message_Id__c);
+        }
+        for(PRM_Message_Log__c msgLog:[Select Id, PRM_Message_Id__c,PRM_Contact_Id__c from PRM_Message_Log__c where PRM_Message_Id__c in :messageIdList and PRM_Contact_Id__c in: contactIdList]){
             String key=(String)msgLog.PRM_Message_Id__c+(String)msgLog.PRM_Contact_Id__c;
             existingMessageLogMap.put(key,msglog);                
         }

@@ -6,28 +6,26 @@
     <name>Community Request</name>
     <style>none</style>
     <subject>Community Request From New Partners</subject>
-    <textOnly>Dear {!PRM_Partner_Community_Enrollment_Request__c.PRM_Approver_Id__c},
-
-You have received a request from the following partner to join the community
+    <textOnly>Community Request
 
 
+Dear {!PRM_Partner_Community_Enrollment_Request__c.PRM_Approver_Id__c},
 
 Contact Name: {!Contact.Name}
-
 Contact Email: {!Contact.Email}
-
 Account Name: {!Account.Name}
-
 Salesforce ID: {!Account.Id}
 
 
 
-Login to Salesforce to provide the access to the contacts. 
+Login to Salesforce to provide the access to the contacts.
 
+Thank you,
+Your Intel® Partner Alliance team
 
-
-Thank you. 
-Your Intel® Partner Alliance team</textOnly>
+Copyright © {!Contact.Core_Current_Year__c} Intel Corporation. All rights reserved. Intel, the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. Intel.com
+Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

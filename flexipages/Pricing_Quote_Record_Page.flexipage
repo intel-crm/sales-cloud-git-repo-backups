@@ -103,26 +103,10 @@
                 <componentName>pricing_rfpsummary</componentName>
                 <identifier>c_pricing_rfpsummary</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Pricing_RFP_Scraping}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Success</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>In Progress</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Pricing_AI_RFP_Scraping_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Failed</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -354,16 +338,10 @@
                         <valueListItems>
                             <value>SBQQ__Quote__c.Generate_RFP_Scraping</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.Pricing_RFP_Scraping}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$Permission.CustomPermission.Pricing_Tender_Divisional_Pricing_Manager}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>false</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -386,6 +364,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -395,6 +377,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-2516b5c5-bb61-4202-97df-be928e349d11</value>
@@ -537,6 +523,31 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>flowArguments</name>
+                    <value>[]</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>flowLayout</name>
+                    <value>oneColumn</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>flowName</name>
+                    <value>Quality_Quote</value>
+                </componentInstanceProperties>
+                <componentName>flowruntime:interview</componentName>
+                <identifier>flowruntime_interview</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Pricing_Quote_Program_Nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Tender</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>pricing_CustomerDivisionComponent</componentName>
                 <identifier>c_pricing_CustomerDivisionComponent1</identifier>
                 <visibilityRule>
@@ -552,6 +563,12 @@
                         <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>smgPricingAgent</componentName>
+                <identifier>c_smgPricingAgent</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -614,6 +631,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-d5cd628a-db1f-43b1-9aa0-911b78788863</value>

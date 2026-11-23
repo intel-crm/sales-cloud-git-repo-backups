@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CAPGEMINI GROUP Customer User</description>
+    <description>CAPGEMINI FRANCE Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CAPGEMINI GROUP Customer User</name>
+    <name>CAPGEMINI FRANCE Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10682504_Igor_Rudym</parentRole>
+    <parentRole>EMP_10775450_Patricia_Vandenplas</parentRole>
 </Role>

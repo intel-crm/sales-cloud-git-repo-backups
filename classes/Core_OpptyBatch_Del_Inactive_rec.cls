@@ -30,8 +30,8 @@ global without sharing class Core_OpptyBatch_Del_Inactive_rec implements Databas
     global void finish(Database.BatchableContext BC){
         
         AsyncApexJob a = [Select Id, Status,ExtendedStatus,NumberOfErrors, JobItemsProcessed,TotalJobItems, CreatedBy.Email    from AsyncApexJob where Id =:BC.getJobId()];
-        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         String[] toAddresses = new String[] {a.CreatedBy.Email};
             mail.setToAddresses(toAddresses);
         mail.setSubject('Batch Del for Failure entries Core_Sales_Assist_Staging__c ' + a.Status);

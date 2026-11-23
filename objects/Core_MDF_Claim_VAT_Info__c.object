@@ -184,7 +184,7 @@
         <label>Approved File Id</label>
         <length>18</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -197,7 +197,7 @@
         <label>Approved Payment Document</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -225,11 +225,10 @@
         <inlineHelpText>Indicates the claim associated with the payment document</inlineHelpText>
         <label>Claim</label>
         <referenceTo>PartnerFundClaim</referenceTo>
-        <relationshipLabel>Payment Documents</relationshipLabel>
         <relationshipName>Claim_VAT_Documents</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -247,6 +246,19 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Invoice_Amt__c</fullName>
+        <description>Sum of Claim Reimbursement Amount and Offset Amount</description>
+        <formula>Core_MDF_Claim_Id__r.Amount + Core_MDF_Claim_Id__r.Core_MDF_Total_Claim_Offsets__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Invoice Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Last_VAT_ModifiedBy_Nm__c</fullName>
@@ -296,7 +308,7 @@ $Label.Core_MDF_Intel_System_User
         <description>This field is used to send reminder notification to RSM on 5th day of VAT record creation/rejection of VAT record by payment admin, if VAT documents are not uploaded.</description>
         <label>RSM Reminder Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -391,6 +403,15 @@ $Label.Core_MDF_Intel_System_User
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_VAT_Comments_txt__c</fullName>
+        <description>Captures the VAT comments.</description>
+        <label>VAT Cancellation Comment</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_VAT_CreatedBy_Nm__c</fullName>
         <externalId>false</externalId>
         <formula>IF(ISPICKVAL(CreatedBy.Profile.UserType,&apos;PowerPartner&apos;), 
@@ -483,11 +504,11 @@ $Label.Core_MDF_Intel_System_User)</formula>
         TEXT(Core_MDF_Sub_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c),
         TEXT(Core_MDF_Claim_Id__r.Core_MDF_Bank__r.Core_MDF_Intel_Company_Code__c)
     ), &apos;650&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;), 
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbF&apos;, $Label.Core_MDF_Click_here),
-HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbF&apos;, $Label.Core_MDF_Click_here)),
+HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0152i0000000j5M&apos;, $Label.Core_MDF_Click_here),
+HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0152i0000000j5M&apos;, $Label.Core_MDF_Click_here)),
 &apos;420&apos;, IF(ISPICKVAL($User.UserType,&apos;PowerPartner&apos;),
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbG&apos;, $Label.Core_MDF_Click_here),
-HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0153b000005OQbG&apos;, $Label.Core_MDF_Click_here)), null)</formula>
+HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0152i0000000j5N&apos;, $Label.Core_MDF_Click_here),
+HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &amp; &apos;0152i0000000j5N&apos;, $Label.Core_MDF_Click_here)), null)</formula>
         <label>Payment Document Guidelines</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -596,6 +617,7 @@ HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; $Label.Core_MDF_FileURLInternal &a
 OR(ISPICKVAL(Core_MDF_Status_Txt__c, &apos;Approved&apos;),
 ISPICKVAL(Core_MDF_Status_Txt__c, &apos;Cancelled&apos;),
 ISPICKVAL(Core_MDF_Status_Txt__c, &apos;Denied&apos;)))</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Approved_File_Id__c</errorDisplayField>
         <errorMessage>The Tax Invoice Number cannot be edited in its current status</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

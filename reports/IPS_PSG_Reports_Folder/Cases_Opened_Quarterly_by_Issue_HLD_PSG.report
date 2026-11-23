@@ -214,6 +214,27 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>PSG-GAE-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-EA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-PG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-System</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-unassigned</sourceValue>
+            </sourceValues>
+            <value>PGGAE</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>PSG-SJ-DLA!</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -287,27 +308,6 @@
             </sourceValues>
             <value>MAG</value>
         </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-GAE-Comps</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-EA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-PG</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-System</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-unassigned</sourceValue>
-            </sourceValues>
-            <value>GAE</value>
-        </values>
     </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
@@ -332,7 +332,7 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Obsolete-Cases Opened by Issue HLD</title>
+        <title>Cases Opened by Issue HLD</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -417,13 +417,6 @@
             <operator>notContain</operator>
             <value>PSG-ZBB,PSG-IR,PSG-Admin</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -437,7 +430,7 @@
         <field>BucketField_57505999</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete-Cases Opened Quarterly by Issue</name>
+    <name>Cases Opened Quarterly by Issue HLD PSG</name>
     <params>
         <name>units</name>
         <value>d</value>

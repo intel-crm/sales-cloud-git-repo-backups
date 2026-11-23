@@ -64,7 +64,6 @@ public class Core_MDF_CCP_UtilityClass_Test {
             } catch(Exception e){
                 Core_MDF_CCP_UtilityClass.getErrorDetails(e);
                 Core_MDF_CCP_UtilityClass.logError(e);
-                Core_MDF_CCP_UtilityClass.logErrorWithAdditionalMessage(e, 'Test Error');
                 Core_MDF_CCP_UtilityClass.logErrorWithAdditionalMessage(e, 'Test Error');                
             }
       }

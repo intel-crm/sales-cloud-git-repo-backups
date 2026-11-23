@@ -358,7 +358,9 @@ public without sharing class EPUM_SearchContact {
         WrapperCotactListView contactListViewWrapperObject = new WrapperCotactListView();
         List<String> IPADetachedEntList = string.isNotBlank(Label.EPUM_IPADetachEntitlements) ? Label.EPUM_IPADetachEntitlements.split(',') : null;
         
-        List<User> lstUserIntelAccountId = [SELECT Id, ContactId,toLabel(Contact.Core_IPA_PartnerRole__c), Contact.AccountId,Core_IPA_One_Partner_Id__c FROM User WHERE Id = :UserInfo.getUserId()];//subhadeep change for country
+        //List<User> lstUserIntelAccountId = [SELECT Id, ContactId,toLabel(Contact.Core_IPA_PartnerRole__c), Contact.AccountId,Core_IPA_One_Partner_Id__c FROM User WHERE Id = :UserInfo.getUserId()];//subhadeep change for country
+		//Ganesh Changes
+        List<User> lstUserIntelAccountId = [SELECT ContactId, Contact.Core_IPA_PartnerRole__c, Contact.AccountId,Core_IPA_One_Partner_Id__c FROM User WHERE Id = :UserInfo.getUserId()];//subhadeep change for country
 		 //Added by raushan
 		 String strOnePartnerId = lstUserIntelAccountId[0].Core_IPA_One_Partner_Id__c;
          String strContactPartnerRole = lstUserIntelAccountId[0].Contact.Core_IPA_PartnerRole__c;
@@ -496,7 +498,9 @@ public without sharing class EPUM_SearchContact {
         }
         //Subhadeep change for country---END
         contactListViewWrapperObject.lstContactToReturn = lstAllContacts;
-        contactListViewWrapperObject.contactPartnerRole = [SELECT Id, ContactId,toLabel(Contact.Core_IPA_PartnerRole__c), Contact.AccountId,Core_IPA_One_Partner_Id__c FROM User WHERE Id = : UserInfo.getUserId()].Contact.Core_IPA_PartnerRole__c;
+        //contactListViewWrapperObject.contactPartnerRole = [SELECT Id, ContactId,toLabel(Contact.Core_IPA_PartnerRole__c), Contact.AccountId,Core_IPA_One_Partner_Id__c FROM User WHERE Id = : UserInfo.getUserId()].Contact.Core_IPA_PartnerRole__c;
+        //Ganesh Changes
+        contactListViewWrapperObject.contactPartnerRole = strContactPartnerRole;
         contactListViewWrapperObject.accountPartnerTier = EPUM_ContactEntitlement_Util.getLogoUrl();
         contactListViewWrapperObject.loggedUserOPID = strOnePartnerId;
         contactListViewWrapperObject.loggedUserId = UserInfo.getUserId();

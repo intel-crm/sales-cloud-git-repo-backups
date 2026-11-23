@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Read</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>PRM_Agreement_Category_Nm__c</fullName>
         <label>Legal Agreement Category</label>
@@ -169,6 +169,16 @@
                     <default>false</default>
                     <label>Intel Insider Cloud All Agreements</label>
                 </value>
+                <value>
+                    <fullName>EDC_TNC</fullName>
+                    <default>false</default>
+                    <label>EDC_TNC</label>
+                </value>
+                <value>
+                    <fullName>General Registration Terms and Conditions</fullName>
+                    <default>false</default>
+                    <label>General Registration Terms and Conditions</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -177,7 +187,7 @@
         <caseSensitive>false</caseSensitive>
         <externalId>false</externalId>
         <label>Legal Agreement Code</label>
-        <length>30</length>
+        <length>20</length>
         <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -324,6 +334,14 @@
         <picklistValues>
             <picklist>PRM_Agreement_Category_Nm__c</picklist>
             <values>
+                <fullName>EDC_TNC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General Registration Terms and Conditions</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel Insider Cloud All Agreements</fullName>
                 <default>false</default>
             </values>
@@ -408,6 +426,6 @@
         </picklistValues>
     </recordTypes>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

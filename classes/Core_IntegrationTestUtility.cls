@@ -6,7 +6,7 @@ public class Core_IntegrationTestUtility {
         // Account records
         List<Account> testAccounts = Core_Test_Utility.createAccount(25);
         for(integer i = 0; i < testAccounts.size(); i++) {
-			testAccounts[i].Industry = 'Agriculture';
+            testAccounts[i].Industry = 'Agriculture';
             if(i > 16)
             {
                 testAccounts[i].BillingCountryCode = 'IND';
@@ -83,10 +83,10 @@ public class Core_IntegrationTestUtility {
         
        
         
-        testAccounts[2].Core_IPA_Partner_Role__c = 'Distributor';
-        testAccounts[3].Core_IPA_Partner_Role__c = 'Distributor';
-        testAccounts[3].Core_IPA_Partner_Role__c = 'Distributor';
-        testAccounts[24].Core_IPA_Partner_Role__c = 'Distributor';
+        testAccounts[2].Core_IPA_Partner_Role__c = 'Service Provider;Solution Integrator';
+        testAccounts[3].Core_IPA_Partner_Role__c = 'Service Provider;Solution Integrator';
+        testAccounts[3].Core_IPA_Partner_Role__c = 'Service Provider;Solution Integrator';
+        testAccounts[24].Core_IPA_Partner_Role__c = 'Service Provider';
         
        /* testAccounts[2].Core_IPA_Partner_Speciality__c = 'Enthusiast PC Specialist';
         testAccounts[3].Core_IPA_Partner_Speciality__c = 'Enthusiast PC Specialist;Video Specialist';
@@ -103,14 +103,14 @@ public class Core_IntegrationTestUtility {
         testAccounts[15].Core_Intel_Partner_Alliance_PartnerGroup__c = true;
         
 
-      	testAccounts[9].Core_IPA_Partner_Role__c='Distributor';
+      	testAccounts[9].Core_IPA_Partner_Role__c='Service Provider';
         
-        testAccounts[16].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount].Id;
-        testAccounts[19].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount].Id;
-        testAccounts[20].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount].Id;
-        testAccounts[21].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount].Id;
-        testAccounts[22].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount].Id;
-        testAccounts[23].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount].Id;
+        testAccounts[16].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount][0].Id;
+        testAccounts[19].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount][0].Id;
+        testAccounts[20].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount][0].Id;
+        testAccounts[21].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount][0].Id;
+        testAccounts[22].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount][0].Id;
+        testAccounts[23].OwnerId = [Select id from User where alias =: System.Label.PRM_UncoveredAccount][0].Id;
         
         testAccounts[16].CreatedDate=date.valueOf('2020-04-07 11:56:08');
         testAccounts[19].CreatedDate=date.valueOf('2020-04-07 11:57:08');
@@ -155,7 +155,6 @@ public class Core_IntegrationTestUtility {
         testContacts[0].Core_Preferred_Language__c = 'ENG';
         testContacts[0].MobilePhone = '2001001000';
         testContacts[0].Fax = '3001001000';
-		testContacts[0].MailingCountry='India';
         testContacts[0].MailingStreet = 'Test Address 0';
         testContacts[0].MailingCity = 'Vancouver';
         testContacts[0].MailingState = 'BC';
@@ -168,12 +167,11 @@ public class Core_IntegrationTestUtility {
         testContacts[0].Core_Contact_B2B_Indicator__c = true;
         testContacts[0].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId(); // Had to add this since other unrelated IPS code was failing without it
         testContacts[0].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
-        testContacts[0].Core_AGS_Republish_Ind__c = true;
+        
         
         testContacts[1].LastName = 'Test Contact 1';
         testContacts[1].Core_eRPM_Person_Id__c = '3000010';
         testContacts[1].Email = 'testcontact1@acct0.com';
-		testContacts[1].MailingCountry='India';
         testContacts[1].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[1].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[1].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -181,7 +179,6 @@ public class Core_IntegrationTestUtility {
         testContacts[2].LastName = 'Test Contact 2';
         testContacts[2].Core_eRPM_Person_Id__c = '3000020';
         testContacts[2].Email = 'testcontact2@acct2.com';
-        testContacts[2].MailingCountry='India';
         testContacts[2].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[2].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[2].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -189,7 +186,6 @@ public class Core_IntegrationTestUtility {
         testContacts[3].LastName = 'Test Contact 3';
         testContacts[3].Core_eRPM_Person_Id__c = '3000030';
         testContacts[3].Email = 'testcontact3@acct3.com';
-        testContacts[3].MailingCountry='India';
         testContacts[3].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[3].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[3].Core_IPA_PartnerRole__c = 'Distributor';
@@ -198,7 +194,6 @@ public class Core_IntegrationTestUtility {
         testContacts[4].LastName = 'Test Contact 4';
         testContacts[4].Core_eRPM_Person_Id__c = '3000040';
         testContacts[4].Email = 'testcontact4@acct4.com';
-        testContacts[4].MailingCountry='India';
         testContacts[4].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[4].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[4].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -206,7 +201,6 @@ public class Core_IntegrationTestUtility {
         testContacts[5].LastName = 'Test Contact 5';
         testContacts[5].Core_eRPM_Person_Id__c = '3000050';
         testContacts[5].Email = 'testcontact5@acct5.com';
-        testContacts[5].MailingCountry='India';
         testContacts[5].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[5].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[5].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -216,7 +210,6 @@ public class Core_IntegrationTestUtility {
         testContacts[6].LastName = 'Test Contact 6';
         testContacts[6].Core_eRPM_Person_Id__c = '3000060';
         testContacts[6].Email = 'testcontact6@acct6.com';
-        testContacts[6].MailingCountry='India';
         testContacts[6].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[6].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[6].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -224,7 +217,6 @@ public class Core_IntegrationTestUtility {
         
         //testContacts[7].Core_eRPM_Person_Id__c = '';
         testContacts[7].Email = 'blackbox_integ_user@mailnator.com';
-        testContacts[7].MailingCountry='India';
         testContacts[7].Core_Login_ID__c = 'test7';
         testContacts[7].Core_Enterprise_ID__c = '1000001007';
         testContacts[7].Core_Identity_Status__c = '';
@@ -252,7 +244,6 @@ public class Core_IntegrationTestUtility {
         testContacts[8].LastName = 'P';
         testContacts[8].Core_eRPM_Person_Id__c = '7000010';
         testContacts[8].Email = 'kevinp@mailinator.com';
-        testContacts[8].MailingCountry='India';
         testContacts[8].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[8].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[8].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -261,7 +252,6 @@ public class Core_IntegrationTestUtility {
         testContacts[9].LastName = 'A';
         testContacts[9].Core_eRPM_Person_Id__c = '7004010';
         testContacts[9].Email = 'karlaa@mailinator.com';
-        testContacts[9].MailingCountry='India';
         testContacts[9].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[9].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[9].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -270,7 +260,6 @@ public class Core_IntegrationTestUtility {
         testContacts[10].LastName = 'Y';
         testContacts[10].Core_eRPM_Person_Id__c = '7060010';
         testContacts[10].Email = 'johny@mailinator.com';
-        testContacts[10].MailingCountry='India';
         testContacts[10].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[10].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[10].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -278,7 +267,6 @@ public class Core_IntegrationTestUtility {
         testContacts[11].LastName = 'Test Contact 11';
         testContacts[11].Core_eRPM_Person_Id__c = '3003691';
         testContacts[11].Email = 'testcontact11@acct11.com';
-        testContacts[11].MailingCountry='India';
         testContacts[11].Core_ERPM_Integration_Status__c = 'Pending';
         testContacts[11].Core_IPS_Intel_Support_Owner__c = UserInfo.getUserId();
         testContacts[11].RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
@@ -289,7 +277,6 @@ public class Core_IntegrationTestUtility {
         return testContacts;
     }
     
-   
     // Test utility method to set up a bunch of test data
     public static void setupAcctContactEntitlementTestData(boolean IsIPATest) {
         
@@ -587,5 +574,5 @@ public class Core_IntegrationTestUtility {
     private static Core_ERPM_Engagement__c newERPMEngagement(String enggCode) {
         return new Core_ERPM_Engagement__c(Name=enggCode, Core_IsActive__c=true, Core_Engagement_Type__c='SMP',
                                            Core_Technical_Engagement_Code__c=enggCode, Core_Description__c=enggCode);
-    }
+    } 
 }

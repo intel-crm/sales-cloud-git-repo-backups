@@ -76,6 +76,10 @@
             <translation>Отменить заявку</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Cancel VAT</masterLabel>
+            <translation>Отменить НДС</translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Change Owner</masterLabel>
             <translation><!-- Change Owner --></translation>
         </picklistValues>
@@ -89,7 +93,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Close</masterLabel>
-            <translation>Закрыть</translation>
+            <translation>Закрыть действие</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Complete PIC Review</masterLabel>
@@ -126,6 +130,10 @@
         <picklistValues>
             <masterLabel>Notify Partner</masterLabel>
             <translation><!-- Notify Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recall to Payment Clearance</masterLabel>
+            <translation><!-- Recall to Payment Clearance --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Release Hold</masterLabel>
@@ -197,7 +205,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Outcome-Based Campaign</masterLabel>
-            <translation>Кампания на основе результатов</translation>
+            <translation><!-- Outcome-Based Campaign --></translation>
         </picklistValues>
     </fields>
     

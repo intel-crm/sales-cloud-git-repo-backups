@@ -6,11 +6,9 @@
   "label" : "Report Detail",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : {
-        "menuItems" : "[]"
-      },
+      "componentAttributes" : { },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "5d99192f-40b4-4450-86f4-31bd17b6d752",
+      "id" : "e2a3a1e9-eba8-43a4-9249-a89175c4e72d",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -52,7 +50,7 @@
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "Inner",
   "type" : "view",
   "viewType" : "detail-00O"
 }

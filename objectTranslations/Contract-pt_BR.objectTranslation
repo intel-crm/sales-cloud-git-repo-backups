@@ -21,6 +21,14 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
         <help>Determina se esse contrato está em vigor.</help>
         <label><!-- Active Contract --></label>
         <name>SBQQ__ActiveContract__c</name>
@@ -237,6 +245,10 @@
     <validationRules>
         <errorMessage><!-- Contract Status cannot be changed. --></errorMessage>
         <name>Sales_Contract_Status_change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please activate the Contract before proceeding. --></errorMessage>
+        <name>Sales_validateStatus_BeforeAmend</name>
     </validationRules>
     <webLinks>
         <label><!-- Amend --></label>

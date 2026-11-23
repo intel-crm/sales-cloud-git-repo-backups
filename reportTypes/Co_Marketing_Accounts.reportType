@@ -125,6 +125,46 @@
             <field>Core_MDF_Account__c.Core_CIM_ID__c</field>
             <table>Core_MDF_Partner_Group_Mapping__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Inactive_Ind__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_AccProgInactiveInd_Txt__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account__c.Core_Account_Primary_Coverage__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account__c.Core_Account_Primary_Coverage_Preview__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account__c.Core_Account_Category_Preview__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account__c.Core_Account_Category__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account__c.Core_Group_Id__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Account__c.Core_Group_Name__c</field>
+            <table>Core_MDF_Partner_Group_Mapping__c</table>
+        </columns>
         <masterLabel>Partner Group Mapping</masterLabel>
     </sections>
 </ReportType>

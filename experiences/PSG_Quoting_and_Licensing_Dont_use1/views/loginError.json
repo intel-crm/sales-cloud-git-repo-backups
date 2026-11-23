@@ -1,0 +1,72 @@
+{
+  "appPageId" : "51c1d074-9f90-4dd9-ac32-69dac1f061f2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "cbb48f01-6b55-4afb-af3e-d181fbae0b34",
+  "label" : "Login Error",
+  "regions" : [ {
+    "id" : "7c97edfb-fd45-45ea-ba0b-ddf83d1ec999",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"text-align: center;\">Invalid Page</div>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "cda42577-687a-49d9-ab06-74c7f843569e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "35271d78-a845-4d13-8852-b8bdf8e749eb"
+      },
+      "renditions" : [ {
+        "id" : "35271d78-a845-4d13-8852-b8bdf8e749eb",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"text-align: center;\">Invalid Page</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "9622594c-788b-4455-bbf3-d7aad873352c",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "7e0b1778-19fd-4c0c-9565-9975791d45e1",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Login Error"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f1b27f66-ff0f-46f5-9073-27161a8ee6b6",
+      "renditionMap" : {
+        "zh_cn" : "b9b34585-11a8-496e-8502-a842931cc4f3"
+      },
+      "renditions" : [ {
+        "id" : "b9b34585-11a8-496e-8502-a842931cc4f3",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "Login Error"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "a13ed788-fc1d-4ad2-80eb-092a4d8638a7",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Login",
+  "type" : "view",
+  "viewType" : "login-error"
+}

@@ -47,36 +47,36 @@ private class Core_MDF_Campaign_Details_RestAPI_Test {
                     'Core_MDF_Record_Type_Name_txt__c' => 'Master',
                     'Core_MDF_User_Type_nm__c' => 'External User',
                     'Core_MDF_Field_API_Name_txt__c' => 'Name',
-                    'Core_MDF_Field_Label_txt__c' => 'Campaign Name'
-                    //'API_Visibility__c' => true
+                    'Core_MDF_Field_Label_txt__c' => 'Campaign Name',
+                    'API_Visibility__c' => true
                 },
                 new Map<String, Object>{
                     'Core_MDF_Object_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
                     'Core_MDF_Record_Type_Name_txt__c' => 'Master',
                     'Core_MDF_User_Type_nm__c' => 'External User',
                     'Core_MDF_Field_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_PROGRAM_FIELD,
-                    'Core_MDF_Field_Label_txt__c' => 'Program Name'
-                    //'API_Visibility__c' => true
+                    'Core_MDF_Field_Label_txt__c' => 'Program Name',
+                    'API_Visibility__c' => true
                 },
                 new Map<String, Object>{
                     'Core_MDF_Object_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
                     'Core_MDF_Record_Type_Name_txt__c' => 'Master',
                     'Core_MDF_User_Type_nm__c' => 'External User',
                     'Core_MDF_Field_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_ACCOUNT_FIELD,
-                    'Core_MDF_Field_Label_txt__c' => 'Account Name'
-                    //'API_Visibility__c' => true
+                    'Core_MDF_Field_Label_txt__c' => 'Account Name',
+                    'API_Visibility__c' => true
                 },
                 new Map<String, Object>{
                     'Core_MDF_Object_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
                     'Core_MDF_Field_API_Name_txt__c' => 'Name',
-                    'Core_MDF_Field_Label_txt__c' => 'Campaign Name (Duplicate)'
-                    //'API_Visibility__c' => true
+                    'Core_MDF_Field_Label_txt__c' => 'Campaign Name (Duplicate)',
+                    'API_Visibility__c' => true
                 },
                 new Map<String, Object>{
                     'Core_MDF_Object_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
                     'Core_MDF_Field_API_Name_txt__c' => ' ',
-                    'Core_MDF_Field_Label_txt__c' => 'Ignored Blank Field'
-                    //'API_Visibility__c' => true
+                    'Core_MDF_Field_Label_txt__c' => 'Ignored Blank Field',
+                    'API_Visibility__c' => true
                 }
             }
         );
@@ -255,35 +255,38 @@ private class Core_MDF_Campaign_Details_RestAPI_Test {
         }
 
         Id sectionId = createLayoutSection(Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME, recordTypeName);
-        insert new List<Core_MDF_Custom_Layout_Configurations__c>{
-            new Core_MDF_Custom_Layout_Configurations__c(
-                Core_MDF_Section_id__c = sectionId,
-                Core_MDF_Object_API_Name_txt__c = Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
-                Core_MDF_Record_Type_Name_txt__c = recordTypeName,
-                Core_MDF_User_Type_nm__c = 'External User',
-                Core_MDF_Field_API_Name_txt__c = 'Name',
-                Core_MDF_Field_Label_txt__c = 'Campaign Name'
-                //API_Visibility__c = true
-            ),
-            new Core_MDF_Custom_Layout_Configurations__c(
-                Core_MDF_Section_id__c = sectionId,
-                Core_MDF_Object_API_Name_txt__c = Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
-                Core_MDF_Record_Type_Name_txt__c = recordTypeName,
-                Core_MDF_User_Type_nm__c = 'External User',
-                Core_MDF_Field_API_Name_txt__c = Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_PROGRAM_FIELD,
-                Core_MDF_Field_Label_txt__c = 'Program Name'
-                //API_Visibility__c = true
-            ),
-            new Core_MDF_Custom_Layout_Configurations__c(
-                Core_MDF_Section_id__c = sectionId,
-                Core_MDF_Object_API_Name_txt__c = Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
-                Core_MDF_Record_Type_Name_txt__c = recordTypeName,
-                Core_MDF_User_Type_nm__c = 'External User',
-                Core_MDF_Field_API_Name_txt__c = Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_ACCOUNT_FIELD,
-                Core_MDF_Field_Label_txt__c = 'Account Name'
-                //API_Visibility__c = true
-            )
-        };
+         insertRowsIfPossible(
+        'Core_MDF_Custom_Layout_Configurations__c',
+        new List<Map<String, Object>>{
+            new Map<String, Object>{
+                'Core_MDF_Section_id__c' => sectionId,
+                'Core_MDF_Object_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
+                'Core_MDF_Record_Type_Name_txt__c' => recordTypeName,
+                'Core_MDF_User_Type_nm__c' => 'External User',
+                'Core_MDF_Field_API_Name_txt__c' => 'Name',
+                'Core_MDF_Field_Label_txt__c' => 'Campaign Name',
+                'API_Visibility__c' => true
+                    },
+            new Map<String, Object>{
+                'Core_MDF_Section_id__c' => sectionId,
+                'Core_MDF_Object_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
+                'Core_MDF_Record_Type_Name_txt__c' => recordTypeName,
+                'Core_MDF_User_Type_nm__c' => 'External User',
+                'Core_MDF_Field_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_PROGRAM_FIELD,
+                'Core_MDF_Field_Label_txt__c' => 'Program Name',
+                'API_Visibility__c' => true
+                    },
+         new Map<String, Object>{
+                'Core_MDF_Section_id__c' => sectionId,
+                'Core_MDF_Object_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.CAMPAIGN_OBJECT_API_NAME,
+                'Core_MDF_Record_Type_Name_txt__c' => recordTypeName,
+                'Core_MDF_User_Type_nm__c' => 'External User',
+                'Core_MDF_Field_API_Name_txt__c' => Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_ACCOUNT_FIELD,
+                'Core_MDF_Field_Label_txt__c' => 'Account Name',
+                'API_Visibility__c' => true
+                    }
+        }
+        );
         Core_MDF_CCP_RestAPI_Utility.clearFieldConfigCache();
     }
 
@@ -649,12 +652,12 @@ private class Core_MDF_Campaign_Details_RestAPI_Test {
 
         System.assertEquals(200, RestContext.response.statusCode);
         System.assertEquals(c.Name, details.get('Name'));
-        //System.assertEquals('Partner Program', details.get('Core_MDF_Channel_Program__r.Name'));
-        //System.assertEquals('Partner Account', details.get('Core_MDF_Account__r.Name'));
-        //System.assertNotEquals(null, budgets);
-        //System.assertEquals(1, outcomes.size());
+        System.assertEquals('Partner Program', details.get('Core_MDF_Channel_Program__r.Name'));
+        System.assertEquals('Partner Account', details.get('Core_MDF_Account__r.Name'));
+        System.assertNotEquals(null, budgets);
+        System.assertEquals(1, outcomes.size());
         Map<String, Object> outcomeRow = (Map<String, Object>)outcomes[0];
-        //System.assertEquals(10, outcomeRow.get('Core_MDF_Goal_Quantity_nbr__c'));
+        System.assertEquals(10, outcomeRow.get('Core_MDF_Goal_Quantity_nbr__c'));
     }
 
     @IsTest
@@ -701,13 +704,13 @@ private class Core_MDF_Campaign_Details_RestAPI_Test {
         List<Object> outcomes = (List<Object>)detailsRoot.get('Campaign Purpose');
 
         System.assertEquals(200, firstStatusCode);
-        //System.assertEquals(c.Name, details.get('Campaign Name'));
-        //System.assertEquals('Partner Program', details.get('Program Name'));
-        //System.assertEquals('Partner Account', details.get('Account Name'));
-        //System.assertNotEquals(null, budgets);
-        //System.assertEquals(1, outcomes.size());
+        System.assertEquals(c.Name, details.get('Campaign Name'));
+        System.assertEquals('Partner Program', details.get('Program Name'));
+        System.assertEquals('Partner Account', details.get('Account Name'));
+        System.assertNotEquals(null, budgets);
+        System.assertEquals(1, outcomes.size());
         Map<String, Object> outcomeRow = (Map<String, Object>)outcomes[0];
-        //System.assert(outcomeRow.values().contains(10));
+        System.assert(outcomeRow.values().contains(10));
     }
 
     @IsTest

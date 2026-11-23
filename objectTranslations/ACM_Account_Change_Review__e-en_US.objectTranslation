@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ACM Account Change Review POC</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ACM Account Change Reviews</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Account Name --></label>
+        <name>New_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Address --></label>
+        <name>New_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Customer Aggregation Type --></label>
+        <name>New_Customer_Aggregation_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Customer Process Engagement --></label>
+        <name>New_Customer_Process_Engagement__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Parent ID --></label>
+        <name>New_Parent_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Phone --></label>
+        <name>New_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Simplified Account Name --></label>
+        <name>New_Simplified_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New UCD Global ID --></label>
+        <name>New_UCD_Global_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New UCD Global Name --></label>
+        <name>New_UCD_Global_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New UCD Intermediate ID --></label>
+        <name>New_UCD_Intermediate_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New UCD Intermediate Name --></label>
+        <name>New_UCD_Intermediate_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Unified ID --></label>
+        <name>New_Unified_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Website --></label>
+        <name>New_Website__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

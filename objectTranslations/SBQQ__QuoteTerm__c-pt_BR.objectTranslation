@@ -9,6 +9,10 @@
         <value>Termos de cotação</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Indica se o termo da cotação está disponível para uso.</help>
         <label><!-- Active --></label>
         <name>SBQQ__Active__c</name>
@@ -99,6 +103,10 @@
         <help>Indica se o termo é padrão, personalizado ou modificado.</help>
         <label><!-- Type --></label>
         <name>SBQQ__Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote Term Name --></label>
+        <name>core_cpq_Quote_Term_Name__c</name>
     </fields>
     <gender>Masculine</gender>
     <nameFieldLabel>Nº do termo</nameFieldLabel>

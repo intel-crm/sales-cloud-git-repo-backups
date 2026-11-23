@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Account.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>FULL_NAME</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -14,6 +8,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
+        <aggregateTypes>Average</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
     <columns>
@@ -22,6 +17,17 @@
     <columns>
         <aggregateTypes>Average</aggregateTypes>
         <field>Opportunity.Core_Days_from_Opportunity_Create_to_Su__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Opportunity.Core_Push_Counter__c</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -36,36 +42,34 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design Win,Production Win</value>
+            <value>Design Win</value>
         </criteriaItems>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Smelkova,Bielak,Korcan,Dimov,Tomala,Eran Gal,Jadwiszczok,Garea,Dzul</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
+            <value>Smelkova,Janicki,Tomala,Eran Gal,Jadwiszczok,Garea,Dzul</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>FiscalWeek</dateGranularity>
-        <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
-        <sortOrder>Desc</sortOrder>
+        <dateGranularity>Day</dateGranularity>
+        <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Sales_Groups__c</field>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Pipeline EMEA Inside Sales Won</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Sales_Groups__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Pipeline EMEA Inside Sales (WIP) Won</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -84,7 +88,7 @@
     </params>
     <reportType>Opportunity</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>AMOUNT</sortColumn>

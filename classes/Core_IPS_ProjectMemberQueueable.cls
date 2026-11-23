@@ -10,7 +10,7 @@
     * Amritesh                    11/08/2017              Created
     * Pavani                      11/10/2024              Modified - Active Project Member Fix - Retry Mechanism - TWC745-6567  
 ****************************************************************************************************/  
-public without sharing class Core_IPS_ProjectMemberQueueable implements Queueable {
+public class Core_IPS_ProjectMemberQueueable implements Queueable {
     public class CustomException extends Exception {}
     List<Id> usersList;
     List<Id> accList;
@@ -193,7 +193,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
         //List<Core_IPS_Project_Member__c> newList = (List<Core_IPS_Project_Member__c>)JSON.deserialize(serializedList, List<Core_IPS_Project_Member__c>.class);
         List<GroupMember> GMlist = new List<GroupMember>();
         Set<Id> groupMemSet = new Set<Id>();  //Added as part of Active Project Member Fix - Retry Mechanism - TWC745-6567
-        
+       
         for(Core_IPS_Project_Member__c PrjMember: newList){
             GroupMember GM = new GroupMember();
             GM.GroupId = projectById.get(PrjMember.Core_IPS_Project__c).Core_IPS_GroupId__c;
@@ -246,7 +246,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
                     System.enqueueJob(new Core_IPS_ProjectMemberQueueable(null,projMemRecNewList,projectById,'addprojectmember',retrycount), Integer.valueOf(System.Label.Core_IPS_ProjectMemberSchedulerTimeLimit));
                 } else {
                     fullErrorMessage = fullErrorMessage+ '\nFailed to Add Member in the Group Ids: '+ String.join(userFailedList, ',');
-                insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','AddProjectMembertoGroup',fullErrorMessage);
+                    insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','AddProjectMembertoGroup',fullErrorMessage);
             }
         }
         }//END
@@ -268,7 +268,9 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
     public static void AddorRemoveProjMembertoGroup(List<Core_IPS_Project_Member__c> oldList, List<Core_IPS_Project_Member__c> newList,Integer retrycount){
         //List<Core_IPS_Project_Member__c> oldList= (List<Core_IPS_Project_Member__c>)JSON.deserialize(oldListStr, List<Core_IPS_Project_Member__c>.class);
         //List<Core_IPS_Project_Member__c> newList= (List<Core_IPS_Project_Member__c>)JSON.deserialize(newListStr, List<Core_IPS_Project_Member__c>.class);
-		String operationType;
+        system.debug('oldList ProjectMemberQueueable'+oldList);
+        system.debug('newList ProjectMemberQueueable'+oldList);
+        String operationType;
         Map<Id,Core_IPS_Project_Member__c> oldMap = new Map<Id,Core_IPS_Project_Member__c>(oldList);
         List<GroupMember> GMlist = new List<GroupMember>();
         Set<Id> ProjectIdSet = new Set<Id>();
@@ -382,11 +384,11 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
                 retrycount++;
                 System.enqueueJob(new Core_IPS_ProjectMemberQueueable(oldList,projMemRecNewList,null,'addorremoveprojectmember',retrycount), Integer.valueOf(System.Label.Core_IPS_ProjectMemberSchedulerTimeLimit));
             } else {
-            insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','AddorRemoveProjMembertoGroup',errorDetailsRec);
+                insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','AddorRemoveProjMembertoGroup',errorDetailsRec);
             }
         }
 	//30072025 below part of the logic is shifted to Core_IPS_ProjectMember_Queueable.AddorRemoveProjMembertoGroup method from Core_IPS_Project_Member_Handler to enable ECBflag-Begin
-	if(Core_Trigger_Executions__c.getValues('myIntelProjectMembersTriggerHandler') != null){ //US-0050009 Hercules_IPS_ECBFlagIssueFix
+	if(Core_Trigger_Executions__c.getValues('myIntelProjectMembersTriggerHandler') != null){ 
         if(Core_Trigger_Executions__c.getValues('myIntelProjectMembersTriggerHandler').Core_Active__c){
             System.debug('Myintel queueable logic test1 05082025');
             List<Core_IPS_Project_Member__c> projMembers = new List<Core_IPS_Project_Member__c>();
@@ -480,7 +482,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
                     fullErrorMessage = fullErrorMessage+ '\nFailed to Remove Member from the Group Ids: '+ String.join(userFailedList, ',');
                 insertExceptionInFuture('','Core_IPS_ProjectMemberQueueable','Core_IPS_Project_Member__c','','removeProjectMemberfromGroupAfterDelete',fullErrorMessage);
             }
-            }
+            }    
         }
     }
     /***************************************************************************************************
@@ -494,6 +496,7 @@ public without sharing class Core_IPS_ProjectMemberQueueable implements Queueabl
 ****************************************************************************************************/
     @future
     public static void insertExceptionInFuture(string  Record_Id,string ClassName,string objectName,string Msg,string MethodName,String ex){ 
+           
         String excetionDeatils= '';
         if(ex.length() >= 32768) {
             excetionDeatils = ex.substring(0, 32767);

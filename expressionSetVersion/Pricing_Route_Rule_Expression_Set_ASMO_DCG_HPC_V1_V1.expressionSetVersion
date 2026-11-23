@@ -20,56 +20,6 @@
             <criteria>
                 <operator>Equals</operator>
                 <sequenceNumber>2</sequenceNumber>
-                <sourceFieldName>Pricing_RouteRule_Id</sourceFieldName>
-                <value>&apos;&apos;</value>
-                <valueType>Literal</valueType>
-            </criteria>
-            <criteria>
-                <operator>Equals</operator>
-                <sequenceNumber>3</sequenceNumber>
-                <sourceFieldName>Pricing_RouteRule_Name</sourceFieldName>
-                <value>&apos;&apos;</value>
-                <valueType>Literal</valueType>
-            </criteria>
-            <criteria>
-                <operator>Equals</operator>
-                <sequenceNumber>4</sequenceNumber>
-                <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
-                <value>&apos;&apos;</value>
-                <valueType>Literal</valueType>
-            </criteria>
-            <criteria>
-                <operator>Equals</operator>
-                <sequenceNumber>5</sequenceNumber>
-                <sourceFieldName>Pricing_Routing_RPM_Group</sourceFieldName>
-                <value>&apos;&apos;</value>
-                <valueType>Literal</valueType>
-            </criteria>
-            <resultParameter>condition_output__21</resultParameter>
-        </advancedCondition>
-        <hasNestedExplainability>false</hasNestedExplainability>
-        <label>Is Pricing Route Rules ASMO DCG CSP List has No Matching Rules ?</label>
-        <name>IsPricingRouteRulesASMODCGCSPListhasNoMatchingRules</name>
-        <resultIncluded>false</resultIncluded>
-        <sequenceNumber>2</sequenceNumber>
-        <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
-        <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
-        <shouldShowExplExternally>false</shouldShowExplExternally>
-        <stepType>AdvancedCondition</stepType>
-    </steps>
-    <steps>
-        <advancedCondition>
-            <conditionLogic>1 AND 2 AND 3 AND 4 AND 5</conditionLogic>
-            <criteria>
-                <operator>Equals</operator>
-                <sequenceNumber>1</sequenceNumber>
-                <sourceFieldName>Pricing_Routing_RPM_Email</sourceFieldName>
-                <value>&apos;&apos;</value>
-                <valueType>Literal</valueType>
-            </criteria>
-            <criteria>
-                <operator>Equals</operator>
-                <sequenceNumber>2</sequenceNumber>
                 <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
                 <value>&apos;&apos;</value>
                 <valueType>Literal</valueType>
@@ -101,7 +51,7 @@
         <label>Is Pricing Route Rules ASMO DCG HPC CR  has No Matching Rules ?</label>
         <name>IsPricingRouteRulesASMODCGHPCCRhasNoMatchingRules</name>
         <resultIncluded>false</resultIncluded>
-        <sequenceNumber>3</sequenceNumber>
+        <sequenceNumber>2</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
         <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
         <shouldShowExplExternally>false</shouldShowExplExternally>
@@ -151,7 +101,7 @@
         <label>Is Pricing Route Rules ASMO DCG HPC MS has No Matching Rules ?</label>
         <name>IsPricingRouteRulesASMODCGHPCMShasNoMatchingRules</name>
         <resultIncluded>false</resultIncluded>
-        <sequenceNumber>4</sequenceNumber>
+        <sequenceNumber>3</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
         <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
         <shouldShowExplExternally>false</shouldShowExplExternally>
@@ -201,62 +151,11 @@
         <label>Is Pricing Route Rules ASMO DCG HPC TRQ GT has No Matching Rules ?</label>
         <name>IsPricingRouteRulesASMODCGHPCTRQGThasNoMatchingRules</name>
         <resultIncluded>false</resultIncluded>
-        <sequenceNumber>5</sequenceNumber>
+        <sequenceNumber>4</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
         <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
         <shouldShowExplExternally>false</shouldShowExplExternally>
         <stepType>AdvancedCondition</stepType>
-    </steps>
-    <steps>
-        <actionType>GetOutputsFromDecisionTable</actionType>
-        <decisionTable>
-            <decisionTableName>Pricing_Route_Rules_ASMO_DCG_CSP_List</decisionTableName>
-            <mappings>
-                <input>false</input>
-                <name>Pricing_Routing_RPM_Email__c</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_Routing_RPM_Email</value>
-            </mappings>
-            <mappings>
-                <input>false</input>
-                <name>Pricing_Routing_Rule_Id__c</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_RouteRule_Id</value>
-            </mappings>
-            <mappings>
-                <input>false</input>
-                <name>Pricing_Routing_Output_Criteria_Nm__c</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_Routing_Output_Criteria_Nm</value>
-            </mappings>
-            <mappings>
-                <input>false</input>
-                <name>Pricing_RPM_Group_Name_Txt__c</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_Routing_RPM_Group</value>
-            </mappings>
-            <mappings>
-                <input>false</input>
-                <name>Name</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_RouteRule_Name</value>
-            </mappings>
-            <type>DecisionTable</type>
-        </decisionTable>
-        <hasNestedExplainability>false</hasNestedExplainability>
-        <label>Pricing Route Rules ASMO DCG CSP List</label>
-        <name>PricingRouteRulesASMODCGCSPList</name>
-        <resultIncluded>true</resultIncluded>
-        <sequenceNumber>1</sequenceNumber>
-        <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
-        <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
-        <shouldShowExplExternally>false</shouldShowExplExternally>
-        <stepType>BusinessKnowledgeModel</stepType>
     </steps>
     <steps>
         <actionType>GetOutputsFromDecisionTable</actionType>
@@ -300,9 +199,8 @@
             <type>DecisionTable</type>
         </decisionTable>
         <hasNestedExplainability>false</hasNestedExplainability>
-        <label>Pricing Route Rules ASMO DCG HPC CR</label>
-        <name>PricingRouteRulesASMODCGHPCCR</name>
-        <parentStep>IsPricingRouteRulesASMODCGCSPListhasNoMatchingRules</parentStep>
+        <label>Pricing Route Rules ASMO DCG CR</label>
+        <name>PricingRouteRulesASMODCGCR</name>
         <resultIncluded>true</resultIncluded>
         <sequenceNumber>1</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
@@ -480,19 +378,9 @@
         <collection>false</collection>
         <dataType>Boolean</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_ASMO_DCG_HPC_TRQ_LTE</lookupName>
+        <lookupName>Pricing_Route_Rules_ASMO_DCG_HPC</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Change_Request_Ind__c</name>
-        <output>false</output>
-        <type>Variable</type>
-    </variables>
-    <variables>
-        <collection>false</collection>
-        <dataType>Boolean</dataType>
-        <input>true</input>
-        <lookupName>Pricing_Route_Rules_ASMO_DCG_HPC_TRQ_LTE</lookupName>
-        <lookupType>DecisionTable</lookupType>
-        <name>Pricing_EndCustomer_CSP_List_Ind__c</name>
         <output>false</output>
         <type>Variable</type>
     </variables>
@@ -697,17 +585,6 @@
         <input>false</input>
         <name>condition_output__20</name>
         <output>false</output>
-        <type>Variable</type>
-        <value>False</value>
-    </variables>
-    <variables>
-        <collection>false</collection>
-        <dataType>Boolean</dataType>
-        <description>condition_output__21</description>
-        <input>false</input>
-        <name>condition_output__21</name>
-        <output>false</output>
-        <resultStep>IsPricingRouteRulesASMODCGCSPListhasNoMatchingRules</resultStep>
         <type>Variable</type>
         <value>False</value>
     </variables>

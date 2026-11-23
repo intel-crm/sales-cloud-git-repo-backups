@@ -84,11 +84,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Core_MDF_Escalation__c.Core_MDF_Cancel</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Core_MDF_Escalation__c.Create_Claim</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -97,6 +92,11 @@
             <actionName>Clone</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_MDF_Escalation__c.Core_MDF_Cancel</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>

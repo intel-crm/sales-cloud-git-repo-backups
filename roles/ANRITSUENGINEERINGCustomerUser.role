@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>ANRITSU CORPORATION Customer User</description>
+    <description>ANRITSU ENGINEERING Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>ANRITSU CORPORATION Customer User</name>
+    <name>ANRITSU ENGINEERING Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11646183_Jonguk_Kim</parentRole>
+    <parentRole>EMP_11645700_Koki_Fujita</parentRole>
 </Role>

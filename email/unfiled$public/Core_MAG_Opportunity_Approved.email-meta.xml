@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to owner when MAG opportunity is approved</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>MAG Opportunity Approved</name>
+    <style>none</style>
+    <subject>GEC Approved your SFDC Opportunity ID {!Opportunity.Id} Account Name {!Account.Name}</subject>
+    <textOnly>Hello {!Opportunity.OwnerFullName},
+
+Your MAG opportunity referenced in the subject line has been approved by GEC (Global Export Compliance team) based on our review of the MAG questionnaire that you completed.
+
+IMPORTANT:
+
+- Should any of your previous responses change, the approval status may change accordingly.  Please contact GEC as soon as you determine your prior response needs updating.
+
+- The scope of this approval is limited to GEC’s review of the opportunity based on your responses and the relationship to a military, aerospace or government project.  All the other requirements, internal and external, beyond export controls must be met according to the specific policies, rules and regulations (if applicable) prior to moving forward with the opportunity.
+
+Please let us know if you have any questions or concerns.
+
+Best regards,
+
+Global Export Compliance / Global Tax &amp; Trade
+Export.customer@intel.com</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

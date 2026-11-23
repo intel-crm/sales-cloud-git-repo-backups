@@ -340,74 +340,74 @@
                     <label>Intel Partner FAE</label>
                 </value>
                 <value>
-                    <fullName>Client User</fullName>
+                    <fullName>CCF User</fullName>
                     <default>false</default>
-                    <label>Client User</label>
+                    <label>CCF User</label>
                 </value>
                 <value>
-                    <fullName>Datacenter User</fullName>
+                    <fullName>DCF User</fullName>
                     <default>false</default>
-                    <label>Datacenter User</label>
+                    <label>DCF User</label>
                 </value>
                 <value>
-                    <fullName>Client Account Budget Administrator</fullName>
+                    <fullName>CCF Account Budget Administrator</fullName>
                     <default>false</default>
-                    <label>Client Account Budget Administrator</label>
+                    <label>CCF Account Budget Administrator</label>
                 </value>
                 <value>
-                    <fullName>Datacenter Account Budget Administrator</fullName>
+                    <fullName>DCF Account Budget Administrator</fullName>
                     <default>false</default>
-                    <label>Datacenter Account Budget Administrator</label>
+                    <label>DCF Account Budget Administrator</label>
                 </value>
                 <value>
-                    <fullName>Client Activity Submitter</fullName>
+                    <fullName>CCF Activity Submitter</fullName>
                     <default>false</default>
-                    <label>Client Activity Submitter</label>
+                    <label>CCF Activity Submitter</label>
                 </value>
                 <value>
-                    <fullName>Datacenter Activity Submitter</fullName>
+                    <fullName>DCF Activity Submitter</fullName>
                     <default>false</default>
-                    <label>Datacenter Activity Submitter</label>
+                    <label>DCF Activity Submitter</label>
                 </value>
                 <value>
-                    <fullName>Datacenter External Content Viewer</fullName>
+                    <fullName>DCF External Content Viewer</fullName>
                     <default>false</default>
-                    <label>Datacenter External Content Viewer</label>
+                    <label>DCF External Content Viewer</label>
                 </value>
                 <value>
-                    <fullName>Client External Content Viewer</fullName>
+                    <fullName>CCF External Content Viewer</fullName>
                     <default>false</default>
-                    <label>Client External Content Viewer</label>
+                    <label>CCF External Content Viewer</label>
                 </value>
                 <value>
-                    <fullName>Client Claim Submitter</fullName>
+                    <fullName>CCF Claim Submitter</fullName>
                     <default>false</default>
-                    <label>Client Claim Submitter</label>
+                    <label>CCF Claim Submitter</label>
                 </value>
                 <value>
-                    <fullName>Datacenter Claim Submitter</fullName>
+                    <fullName>DCF Claim Submitter</fullName>
                     <default>false</default>
-                    <label>Datacenter Claim Submitter</label>
+                    <label>DCF Claim Submitter</label>
                 </value>
                 <value>
-                    <fullName>Client External View All</fullName>
+                    <fullName>CCF External View All</fullName>
                     <default>false</default>
-                    <label>Client External View All</label>
+                    <label>CCF External View All</label>
                 </value>
                 <value>
-                    <fullName>Datacenter External View All</fullName>
+                    <fullName>DCF External View All</fullName>
                     <default>false</default>
-                    <label>Datacenter External View All</label>
+                    <label>DCF External View All</label>
                 </value>
                 <value>
-                    <fullName>Client User Administrator</fullName>
+                    <fullName>CCF User Administrator</fullName>
                     <default>false</default>
-                    <label>Client User Administrator</label>
+                    <label>CCF User Administrator</label>
                 </value>
                 <value>
-                    <fullName>Datacenter User Administrator</fullName>
+                    <fullName>DCF User Administrator</fullName>
                     <default>false</default>
-                    <label>Datacenter User Administrator</label>
+                    <label>DCF User Administrator</label>
                 </value>
                 <value>
                     <fullName>SPCF USER</fullName>
@@ -695,14 +695,14 @@
                     <label>CCF Boost Special Reports Viewer</label>
                 </value>
                 <value>
-                    <fullName>Client Special Reports Viewer</fullName>
+                    <fullName>CCF Special Reports Viewer</fullName>
                     <default>false</default>
-                    <label>Client Special Reports Viewer</label>
+                    <label>CCF Special Reports Viewer</label>
                 </value>
                 <value>
-                    <fullName>Datacenter Special Reports Viewer</fullName>
+                    <fullName>DCF Special Reports Viewer</fullName>
                     <default>false</default>
-                    <label>Datacenter Special Reports Viewer</label>
+                    <label>DCF Special Reports Viewer</label>
                 </value>
                 <value>
                     <fullName>RMF Special Reports Viewer</fullName>
@@ -980,14 +980,14 @@
                     <label>RMF Recovery Administrator</label>
                 </value>
                 <value>
-                    <fullName>Datacenter Recovery Administrator</fullName>
+                    <fullName>DCF Recovery Administrator</fullName>
                     <default>false</default>
-                    <label>Datacenter Recovery Administrator</label>
+                    <label>DCF Recovery Administrator</label>
                 </value>
                 <value>
-                    <fullName>Client Recovery Administrator</fullName>
+                    <fullName>CCF Recovery Administrator</fullName>
                     <default>false</default>
-                    <label>Client Recovery Administrator</label>
+                    <label>CCF Recovery Administrator</label>
                 </value>
                 <value>
                     <fullName>IPA Recovery Administrator (Proposal MDF)</fullName>
@@ -1035,6 +1035,26 @@
                     <label>OLO Intel Subcontractor</label>
                 </value>
                 <value>
+                    <fullName>CDM Retailer - External submitter</fullName>
+                    <default>false</default>
+                    <label>CDM Retailer - External submitter</label>
+                </value>
+                <value>
+                    <fullName>CDM OEM Sales - External Submitter</fullName>
+                    <default>false</default>
+                    <label>CDM OEM Sales - External Submitter</label>
+                </value>
+                <value>
+                    <fullName>CDM IAD - External submitter</fullName>
+                    <default>false</default>
+                    <label>CDM IAD - External submitter</label>
+                </value>
+                <value>
+                    <fullName>Intel On Demand Purchase Agent – VLS</fullName>
+                    <default>false</default>
+                    <label>Intel On Demand Purchase Agent – VLS</label>
+                </value>
+                <value>
                     <fullName>Intel On Demand Purchase Agent – VLS Test</fullName>
                     <default>false</default>
                     <label>Intel On Demand Purchase Agent – VLS Test</label>
@@ -1045,29 +1065,9 @@
                     <label>Partner Portal- Deal Reg</label>
                 </value>
                 <value>
-                    <fullName>Deal Reg Financial Incentive Access</fullName>
+                    <fullName>Deal Incentive User</fullName>
                     <default>false</default>
-                    <label>Deal Reg Financial Incentive Access</label>
-                </value>
-                <value>
-                    <fullName>Test Entitlement for Failure</fullName>
-                    <default>false</default>
-                    <label>Test Entitlement for Failure</label>
-                </value>
-                <value>
-                    <fullName>RPS_Agency(Marketing Studio)</fullName>
-                    <default>false</default>
-                    <label>RPS_Agency(Marketing Studio)</label>
-                </value>
-                <value>
-                    <fullName>EPS Verified Company</fullName>
-                    <default>false</default>
-                    <label>EPS Verified Company</label>
-                </value>
-                <value>
-                    <fullName>Intel Developer Cloud Enterprise</fullName>
-                    <default>false</default>
-                    <label>Intel Developer Cloud Enterprise</label>
+                    <label>Deal Incentive User</label>
                 </value>
                 <value>
                     <fullName>EEF User</fullName>
@@ -1080,19 +1080,14 @@
                     <label>Activating Partner Claim Submitter</label>
                 </value>
                 <value>
-                    <fullName>Primary Partner Activity Approver</fullName>
+                    <fullName>Activating Partner Activity Submitter</fullName>
                     <default>false</default>
-                    <label>Primary Partner Activity Approver</label>
+                    <label>Activating Partner Activity Submitter</label>
                 </value>
                 <value>
-                    <fullName>Activating Partner User Admin</fullName>
+                    <fullName>Activating Partner Budget Administrator</fullName>
                     <default>false</default>
-                    <label>Activating Partner User Admin</label>
-                </value>
-                <value>
-                    <fullName>Activating Partner Recovery Administrator</fullName>
-                    <default>false</default>
-                    <label>Activating Partner Recovery Administrator</label>
+                    <label>Activating Partner Budget Administrator</label>
                 </value>
                 <value>
                     <fullName>Primary Partner User Admin</fullName>
@@ -1100,9 +1095,9 @@
                     <label>Primary Partner User Admin</label>
                 </value>
                 <value>
-                    <fullName>Activating Partner Activity Submitter</fullName>
+                    <fullName>Activating Partner User Admin</fullName>
                     <default>false</default>
-                    <label>Activating Partner Activity Submitter</label>
+                    <label>Activating Partner User Admin</label>
                 </value>
                 <value>
                     <fullName>Primary Partner View Only</fullName>
@@ -1115,9 +1110,134 @@
                     <label>Activating Partner View Only</label>
                 </value>
                 <value>
-                    <fullName>Activating Partner Budget Administrator</fullName>
+                    <fullName>Primary Partner Activity Approver</fullName>
                     <default>false</default>
-                    <label>Activating Partner Budget Administrator</label>
+                    <label>Primary Partner Activity Approver</label>
+                </value>
+                <value>
+                    <fullName>Activating Partner Recovery Administrator</fullName>
+                    <default>false</default>
+                    <label>Activating Partner Recovery Administrator</label>
+                </value>
+                <value>
+                    <fullName>RPS_Agency(Marketing Studio)</fullName>
+                    <default>false</default>
+                    <label>RPS_Agency(Marketing Studio)</label>
+                </value>
+                <value>
+                    <fullName>Intel Developer Cloud Enterprise</fullName>
+                    <default>false</default>
+                    <label>Intel Developer Cloud Enterprise</label>
+                </value>
+                <value>
+                    <fullName>EPS Verified Company</fullName>
+                    <default>false</default>
+                    <label>EPS Verified Company</label>
+                </value>
+                <value>
+                    <fullName>CDM Third party Consumption Data Submitter</fullName>
+                    <default>false</default>
+                    <label>CDM Third party Consumption Data Submitter</label>
+                </value>
+                <value>
+                    <fullName>CDM External Submitter</fullName>
+                    <default>false</default>
+                    <label>CDM External Submitter</label>
+                </value>
+                <value>
+                    <fullName>Client Special Reports Viewer</fullName>
+                    <default>false</default>
+                    <label>Client Special Reports Viewer</label>
+                </value>
+                <value>
+                    <fullName>Client User</fullName>
+                    <default>false</default>
+                    <label>Client User</label>
+                </value>
+                <value>
+                    <fullName>Client User Administrator</fullName>
+                    <default>false</default>
+                    <label>Client User Administrator</label>
+                </value>
+                <value>
+                    <fullName>Client Activity Submitter</fullName>
+                    <default>false</default>
+                    <label>Client Activity Submitter</label>
+                </value>
+                <value>
+                    <fullName>Client External Content Viewer</fullName>
+                    <default>false</default>
+                    <label>Client External Content Viewer</label>
+                </value>
+                <value>
+                    <fullName>Client Account Budget Administrator</fullName>
+                    <default>false</default>
+                    <label>Client Account Budget Administrator</label>
+                </value>
+                <value>
+                    <fullName>Client Claim Submitter</fullName>
+                    <default>false</default>
+                    <label>Client Claim Submitter</label>
+                </value>
+                <value>
+                    <fullName>Client External View All</fullName>
+                    <default>false</default>
+                    <label>Client External View All</label>
+                </value>
+                <value>
+                    <fullName>Client Recovery Administrator</fullName>
+                    <default>false</default>
+                    <label>Client Recovery Administrator</label>
+                </value>
+                <value>
+                    <fullName>Datacenter Special Reports Viewer</fullName>
+                    <default>false</default>
+                    <label>Datacenter Special Reports Viewer</label>
+                </value>
+                <value>
+                    <fullName>Datacenter External View All</fullName>
+                    <default>false</default>
+                    <label>Datacenter External View All</label>
+                </value>
+                <value>
+                    <fullName>Datacenter User Administrator</fullName>
+                    <default>false</default>
+                    <label>Datacenter User Administrator</label>
+                </value>
+                <value>
+                    <fullName>Datacenter Claim Submitter</fullName>
+                    <default>false</default>
+                    <label>Datacenter Claim Submitter</label>
+                </value>
+                <value>
+                    <fullName>Datacenter External Content Viewer</fullName>
+                    <default>false</default>
+                    <label>Datacenter External Content Viewer</label>
+                </value>
+                <value>
+                    <fullName>Datacenter User</fullName>
+                    <default>false</default>
+                    <label>Datacenter User</label>
+                </value>
+                <value>
+                    <fullName>Datacenter Account Budget Administrator</fullName>
+                    <default>false</default>
+                    <label>Datacenter Account Budget Administrator</label>
+                </value>
+                <value>
+                    <fullName>Datacenter Activity Submitter</fullName>
+                    <default>false</default>
+                    <label>Datacenter Activity Submitter</label>
+                </value>
+                <value>
+                    <fullName>Datacenter Recovery Administrator</fullName>
+                    <default>false</default>
+                    <label>Datacenter Recovery Administrator</label>
+                </value>
+                <value>
+                    <fullName>Co-Engineering User</fullName>
+                    <default>false</default>
+                    <label>Co-Engineering User</label>
                 </value>
                 <value>
                     <fullName>Co-Engineering External View Only</fullName>
@@ -1145,19 +1265,9 @@
                     <label>Co-Engineering Project Approver</label>
                 </value>
                 <value>
-                    <fullName>Co-Engineering User</fullName>
+                    <fullName>Change Order Report</fullName>
                     <default>false</default>
-                    <label>Co-Engineering User</label>
-                </value>
-                <value>
-                    <fullName>CDM Third party Consumption Data Submitter</fullName>
-                    <default>false</default>
-                    <label>CDM Third party Consumption Data Submitter</label>
-                </value>
-                <value>
-                    <fullName>CDM External Submitter</fullName>
-                    <default>false</default>
-                    <label>CDM External Submitter</label>
+                    <label>Change Order Report</label>
                 </value>
                 <value>
                     <fullName>Co-Engineering Project Submitter</fullName>
@@ -1168,65 +1278,6 @@
                     <fullName>Platform Diagnostics External Upload</fullName>
                     <default>false</default>
                     <label>Platform Diagnostics External Upload</label>
-                </value>
-                <value>
-                    <fullName>Deal Incentive User</fullName>
-                    <default>false</default>
-                    <label>Deal Incentive User</label>
-                </value>
-                <value>
-                    <fullName>CCF Account Budget Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Account Budget Administrator</label>
-                </value>
-                <value>
-                    <fullName>CCF Activity Submitter</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Activity Submitter</label>
-                </value>
-                <value>
-                    <fullName>CCF Claim Submitter</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>CCF External Content Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF External Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>CCF External View All</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF External View All</label>
-                </value>
-                <value>
-                    <fullName>CCF Recovery Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Recovery Administrator</label>
-                </value>
-                <value>
-                    <fullName>CCF Special Reports Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF Special Reports Viewer</label>
-                </value>
-                <value>
-                    <fullName>CCF User</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF User</label>
-                </value>
-                <value>
-                    <fullName>CCF User Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CCF User Administrator</label>
                 </value>
                 <value>
                     <fullName>CIP General View</fullName>
@@ -1283,94 +1334,10 @@
                     <label>Configure Price Quote-Reseller User</label>
                 </value>
                 <value>
-                    <fullName>DCF Account Budget Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Account Budget Administrator</label>
-                </value>
-                <value>
-                    <fullName>DCF Activity Submitter</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Activity Submitter</label>
-                </value>
-                <value>
-                    <fullName>DCF Claim Submitter</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Claim Submitter</label>
-                </value>
-                <value>
-                    <fullName>DCF External Content Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF External Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>DCF External View All</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF External View All</label>
-                </value>
-                <value>
-                    <fullName>DCF Recovery Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Recovery Administrator</label>
-                </value>
-                <value>
-                    <fullName>DCF Special Reports Viewer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF Special Reports Viewer</label>
-                </value>
-                <value>
-                    <fullName>DCF User</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF User</label>
-                </value>
-                <value>
-                    <fullName>DCF User Administrator</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>DCF User Administrator</label>
-                </value>
-                <value>
-                    <fullName>Developer Zone Collaboration Workspaces</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Developer Zone Collaboration Workspaces</label>
-                </value>
-                <value>
-                    <fullName>Developer Zone Premier(CNDA required)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Developer Zone Premier(CNDA required)</label>
-                </value>
-                <value>
-                    <fullName>Developer Zone Standard Entitlement</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Developer Zone Standard Entitlement</label>
-                </value>
-                <value>
                     <fullName>External Content Viewer</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>External Content Viewer</label>
-                </value>
-                <value>
-                    <fullName>Intel On Demand Purchase Agent VLS</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel On Demand Purchase Agent VLS</label>
-                </value>
-                <value>
-                    <fullName>Intel On Demand Purchase Agent – VLS</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel On Demand Purchase Agent – VLS</label>
                 </value>
                 <value>
                     <fullName>Intel Premier Support (IPS - PSG users please see help text for more details)</fullName>
@@ -1391,40 +1358,10 @@
                     <label>Primary Lead Designated Rep</label>
                 </value>
                 <value>
-                    <fullName>QDMS-Test</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>QDMS-Test</label>
-                </value>
-                <value>
-                    <fullName>RPS Retailer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>RPS Retailer</label>
-                </value>
-                <value>
-                    <fullName>SEP for External DFAEs</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SEP for External DFAEs</label>
-                </value>
-                <value>
                     <fullName>Secure Content Library</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Secure Content Library</label>
-                </value>
-                <value>
-                    <fullName>SiaaS Purchase Agent - LIV – external</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SiaaS Purchase Agent - LIV – external</label>
-                </value>
-                <value>
-                    <fullName>SiaaS Purchase Agent - SBX- external</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SiaaS Purchase Agent - SBX- external</label>
                 </value>
                 <value>
                     <fullName>Stand Alone Retail user</fullName>
@@ -1491,9 +1428,14 @@
                     <label>RMF External User Administrator</label>
                 </value>
                 <value>
-                    <fullName>Channel MDF User Administrator</fullName>
+                    <fullName>Activating Partner User Admin</fullName>
                     <default>false</default>
-                    <label>Channel MDF User Administrator</label>
+                    <label>Activating Partner User Admin</label>
+                </value>
+                <value>
+                    <fullName>Primary Partner User Admin</fullName>
+                    <default>false</default>
+                    <label>Primary Partner User Admin</label>
                 </value>
                 <value>
                     <fullName>Co-Engineering User Administrator</fullName>

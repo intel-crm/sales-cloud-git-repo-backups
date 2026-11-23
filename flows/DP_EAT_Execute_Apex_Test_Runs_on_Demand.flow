@@ -225,6 +225,8 @@
             <label>Status is not Queued</label>
         </rules>
     </decisions>
+    <description>As per Salesforce recommendations, changed the flow run status to System context without sharing.</description>
+    <environments>Default</environments>
     <formulas>
         <name>dateTimeafterXMinutes</name>
         <dataType>DateTime</dataType>
@@ -327,7 +329,7 @@ SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;),
         <object>DP_EAT_Project_Info__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <runInMode>DefaultMode</runInMode>
+    <runInMode>SystemModeWithoutSharing</runInMode>
     <start>
         <locationX>864</locationX>
         <locationY>0</locationY>
@@ -342,10 +344,9 @@ SUBSTITUTE({!Fetch_Project_Info_record.Name}, &quot; &quot;, &quot;%20&quot;),
         <text>Hi,
 
 The execution of selected test classes for {!Fetch_Project_Info_record.Name} is completed. Please visit the below Reports for detailed results:-
+https://intel--crmdevint3.sandbox.lightning.force.com/lightning/r/Report/00O2i000000U5ofEAC/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}
 
-https://intel--crmdevint3.lightning.force.com/lightning/r/Report/00O2i000000TsOUEA0/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}
-
-https://intel--crmdevint3.lightning.force.com/lightning/r/Report/00O2i000000TsOTEA0/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}</text>
+https://intel--crmdevint3.sandbox.lightning.force.com/lightning/r/Report/00O2i000000U5oeEAC/view?queryScope=userFolders&amp;fv0={!ProjectNameFilterValue}</text>
     </textTemplates>
     <textTemplates>
         <name>faultEmailBody</name>

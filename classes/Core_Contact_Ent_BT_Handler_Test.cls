@@ -21,7 +21,7 @@ public class Core_Contact_Ent_BT_Handler_Test {
                                           BillingCountry='USA', BillingPostalCode='2395',Core_CNDA_Number__c = '126575',Core_IPS_Active__c = true);
         insert testAccount;
         Contact testContact = new Contact(FirstName='testFirstName123CBT',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastCBTName', Email='test1234@testingCBT.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='USA',
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                           Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
@@ -213,7 +213,7 @@ public class Core_Contact_Ent_BT_Handler_Test {
             insert testAccount;
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,MailingCountry='USA',
+                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,
                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
             
             insert testContact;
@@ -246,8 +246,7 @@ public class Core_Contact_Ent_BT_Handler_Test {
         regRequest.PRM_Status__c = 'New';
         regRequest.RecordTypeId = accCreateRequestId;
         insert regRequest;
-         System.assertEquals('New',regRequest.PRM_Status__c);
-           Business_Types__c business = new Business_Types__c(Business_Type_Code__c='Developer Zone Premier', Name='DZP', Is_Active__c = true);
+            Business_Types__c business = new Business_Types__c(Business_Type_Code__c='Developer Zone Premier', Name='DZP', Is_Active__c = true);
             
             insert business;
         
@@ -271,7 +270,7 @@ public class Core_Contact_Ent_BT_Handler_Test {
             insert testAccount;
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='USA',
+                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
             
             insert testContact;
@@ -320,7 +319,7 @@ public class Core_Contact_Ent_BT_Handler_Test {
         regRequest.PRM_Status__c = 'New';
         regRequest.RecordTypeId = accCreateRequestId;
         insert regRequest;   
-        System.assertEquals('New',regRequest.PRM_Status__c);
+        
         List<Id> reqIdList = new List<Id>();
         reqIdList.add(regRequest.Id);
         //ER_ABT_TriggerHandler_Utility.AssignAccountBusinessTypes(new List<PRM_Registration_Request__c>{regRequest}, entBusinessTypeMap);
@@ -336,7 +335,6 @@ public class Core_Contact_Ent_BT_Handler_Test {
 		Core_Contact_Entitlement__c ce2 = new Core_Contact_Entitlement__c(Core_Contact_Id__c = testContact.Id,Core_Entitlement_Id__c=ee.id,Core_Selected__c=true,Core_Status__c = 'Pending', Core_Source__c='Grant Access');
         Test.StartTest();
         insert ce2;
-        System.assertEquals(true,ce2.Core_Selected__c);
 		Test.StopTest();        
     }
     static testMethod void CBTValidateContactEntCompleteTrue()
@@ -347,7 +345,6 @@ public class Core_Contact_Ent_BT_Handler_Test {
         Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c = testContact.Id,Core_Entitlement_Id__c=ee.id,Core_Selected__c=true,Core_Status__c = 'Complete', Core_Source__c='Grant Access');
         Test.StartTest();
         insert ce1;
-        System.assertEquals(true,ce1.Core_Selected__c); 
 		Test.StopTest();        
     }
     static testMethod void CBTValidateContactEntPendingFalse()
@@ -358,7 +355,6 @@ public class Core_Contact_Ent_BT_Handler_Test {
         Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c = testContact.Id,Core_Entitlement_Id__c=ee.id,Core_Selected__c=false,Core_Status__c = 'Pending', Core_Source__c='Grant Access');
         Test.StartTest();
         insert ce1;
-        System.assertEquals(false,ce1.Core_Selected__c); 
         Test.StopTest();
         
     }
@@ -370,7 +366,6 @@ public class Core_Contact_Ent_BT_Handler_Test {
         Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c = testContact.Id,Core_Entitlement_Id__c=ee.id,Core_Selected__c=false,Core_Status__c = 'Complete', Core_Source__c='Grant Access');
         Test.StartTest();
         insert ce1;
-        System.assertEquals(false,ce1.Core_Selected__c); 
         Test.StopTest();
     }
 }

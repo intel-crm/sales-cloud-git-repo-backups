@@ -9,6 +9,10 @@
         <value>Commissions Percent Contribution</value>
     </caseValues>
     <fields>
+        <label><!-- API Value --></label>
+        <name>API_Value__c</name>
+    </fields>
+    <fields>
         <label><!-- Percent Contribution --></label>
         <name>Core_Percent_Contribution__c</name>
     </fields>

@@ -229,6 +229,7 @@
     </fields>
     <fields>
         <fullName>Core_GEC_Retry_Counter__c</fullName>
+        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>Retry Counter</label>
         <precision>18</precision>
@@ -295,6 +296,7 @@
         <columns>Core_Response__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>GEC-{0000000}</displayFormat>

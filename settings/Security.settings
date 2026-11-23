@@ -7,159 +7,147 @@
     <enableCoepHeader>false</enableCoepHeader>
     <enableCoopHeader>false</enableCoopHeader>
     <enableCrossOrgRedirects>false</enableCrossOrgRedirects>
-    <enableGraphQLApiForGuestUsers>false</enableGraphQLApiForGuestUsers>
+    <enableGraphQLApiForGuestUsers>true</enableGraphQLApiForGuestUsers>
     <enablePermissionsPolicy>false</enablePermissionsPolicy>
     <enableRequireHttpsConnection>true</enableRequireHttpsConnection>
     <networkAccess>
         <ipRanges>
-            <description>Asia (China)</description>
-            <end>220.203.247.94</end>
-            <start>220.203.247.81</start>
+            <end>198.175.68.255</end>
+            <start>198.175.68.1</start>
         </ipRanges>
         <ipRanges>
-            <description>Asia (India)</description>
-            <end>198.175.68.62</end>
-            <start>198.175.68.33</start>
+            <end>192.168.1.255</end>
+            <start>192.168.1.0</start>
         </ipRanges>
         <ipRanges>
-            <description>Europe (Ireland)</description>
-            <end>192.198.151.62</end>
-            <start>192.198.151.33</start>
+            <description>Test Ip</description>
+            <end>192.55.79.181</end>
+            <start>192.55.79.181</start>
         </ipRanges>
         <ipRanges>
-            <description>Asia (Malaysia)</description>
-            <end>192.198.147.190</end>
-            <start>192.198.147.161</start>
+            <end>192.55.79.255</end>
+            <start>192.55.79.0</start>
         </ipRanges>
         <ipRanges>
-            <description>Asia (Malaysia)</description>
-            <end>192.198.146.190</end>
-            <start>192.198.146.161</start>
+            <end>192.55.55.255</end>
+            <start>192.55.55.0</start>
         </ipRanges>
         <ipRanges>
-            <description>Asia</description>
-            <end>192.55.79.190</end>
-            <start>192.55.79.161</start>
+            <end>192.55.54.255</end>
+            <start>192.55.54.0</start>
         </ipRanges>
         <ipRanges>
-            <description>US / Americas (California)</description>
-            <end>192.55.55.62</end>
-            <start>192.55.55.33</start>
+            <description>for Impartner, integration user</description>
+            <end>141.163.216.4</end>
+            <start>141.163.216.0</start>
         </ipRanges>
         <ipRanges>
-            <description>US / Americas (California)</description>
-            <end>192.55.54.62</end>
-            <start>192.55.54.33</start>
+            <end>134.134.139.255</end>
+            <start>134.134.139.0</start>
         </ipRanges>
         <ipRanges>
-            <description>Middle East (Israel)</description>
-            <end>134.191.233.222</end>
-            <start>134.191.233.193</start>
+            <description>ANJALI</description>
+            <end>125.16.97.38</end>
+            <start>125.16.97.38</start>
         </ipRanges>
         <ipRanges>
-            <description>Middle East (Israel)</description>
-            <end>134.191.232.94</end>
-            <start>134.191.232.65</start>
+            <description>anu ip</description>
+            <end>106.219.181.57</end>
+            <start>106.219.181.57</start>
         </ipRanges>
         <ipRanges>
-            <description>Europe (Ireland)</description>
-            <end>134.191.227.62</end>
-            <start>134.191.227.33</start>
-        </ipRanges>
-        <ipRanges>
-            <description>Europe (Poland)</description>
-            <end>134.191.197.190</end>
-            <start>134.191.197.161</start>
-        </ipRanges>
-        <ipRanges>
-            <description>Europe (Poland)</description>
-            <end>134.191.196.190</end>
-            <start>134.191.196.161</start>
-        </ipRanges>
-        <ipRanges>
-            <description>US / Americas (Oregon)</description>
-            <end>134.134.139.94</end>
-            <start>134.134.139.65</start>
-        </ipRanges>
-        <ipRanges>
-            <description>US / Americas  (Oregon)</description>
-            <end>134.134.137.94</end>
-            <start>134.134.137.65</start>
-        </ipRanges>
-        <ipRanges>
-            <description>Asia (China)</description>
-            <end>114.94.152.94</end>
-            <start>114.94.152.81</start>
-        </ipRanges>
-        <ipRanges>
-            <description>Copado Cloud NA</description>
+            <description>Copado NA</description>
             <end>104.196.211.229</end>
             <start>104.196.211.229</start>
         </ipRanges>
         <ipRanges>
-            <description>For INC11060214</description>
-            <end>73.249.161.121</end>
-            <start>73.249.161.121</start>
+            <description>for Impartner, integration user</description>
+            <end>98.130.97.181</end>
+            <start>98.130.97.181</start>
         </ipRanges>
         <ipRanges>
-            <description>Copado Cloud NA</description>
+            <end>69.25.22.154</end>
+            <start>69.25.22.154</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Sridhar temporary</description>
+            <end>52.38.108.31</end>
+            <start>52.38.108.31</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner6</description>
+            <end>51.124.145.159</end>
+            <start>51.124.145.152</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner5</description>
+            <end>40.125.111.47</end>
+            <start>40.125.111.32</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Copado NA</description>
             <end>35.243.255.155</end>
             <start>35.243.255.155</start>
         </ipRanges>
         <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.240.210.131</end>
-            <start>35.240.210.131</start>
-        </ipRanges>
-        <ipRanges>
-            <description>Copado Cloud NA</description>
+            <description>Copado NA</description>
             <end>35.236.3.65</end>
             <start>35.236.3.65</start>
         </ipRanges>
         <ipRanges>
-            <description>Copado Cloud NA</description>
+            <description>Copado NA</description>
             <end>35.235.92.254</end>
             <start>35.235.92.254</start>
         </ipRanges>
         <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.233.242.136</end>
-            <start>35.233.242.136</start>
+            <description>Gcloud access to Headless 360 MCP</description>
+            <end>35.232.195.89</end>
+            <start>35.232.195.89</start>
         </ipRanges>
         <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.227.131.219</end>
-            <start>35.227.131.218</start>
-        </ipRanges>
-        <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.203.150.160</end>
-            <start>35.203.150.160</start>
-        </ipRanges>
-        <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.197.133.167</end>
-            <start>35.197.133.167</start>
-        </ipRanges>
-        <ipRanges>
-            <description>Copado Cloud NA</description>
+            <description>Copado NA</description>
             <end>34.94.128.245</end>
             <start>34.94.128.245</start>
         </ipRanges>
         <ipRanges>
-            <description>Copado Cloud NA</description>
+            <description>Copado NA</description>
             <end>34.73.251.138</end>
             <start>34.73.251.138</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner4</description>
+            <end>20.120.187.231</end>
+            <start>20.120.187.224</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner2</description>
+            <end>20.105.204.79</end>
+            <start>20.105.204.72</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner3</description>
+            <end>20.59.52.111</end>
+            <start>20.59.52.104</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Impartner 1</description>
+            <end>20.51.97.223</end>
+            <start>20.51.97.208</start>
+        </ipRanges>
+        <ipRanges>
+            <description>Temporary 2</description>
+            <end>13.110.246.8</end>
+            <start>13.110.246.8</start>
         </ipRanges>
     </networkAccess>
     <passwordPolicies>
         <complexity>UpperLowerCaseNumericSpecialCharacters</complexity>
-        <expiration>NinetyDays</expiration>
-        <historyRestriction>5</historyRestriction>
+        <expiration>ThirtyDays</expiration>
+        <historyRestriction>3</historyRestriction>
         <lockoutInterval>FifteenMinutes</lockoutInterval>
-        <maxLoginAttempts>ThreeAttempts</maxLoginAttempts>
+        <maxLoginAttempts>TenAttempts</maxLoginAttempts>
         <minimumPasswordLength>8</minimumPasswordLength>
-        <minimumPasswordLifetime>false</minimumPasswordLifetime>
+        <minimumPasswordLifetime>true</minimumPasswordLifetime>
         <obscureSecretAnswer>false</obscureSecretAnswer>
         <questionRestriction>DoesNotContainPassword</questionRestriction>
     </passwordPolicies>
@@ -172,7 +160,7 @@
         <canConfirmEmailChangeInLightningCommunities>false</canConfirmEmailChangeInLightningCommunities>
         <canConfirmIdentityBySmsOnly>true</canConfirmIdentityBySmsOnly>
         <disableTimeoutWarning>false</disableTimeoutWarning>
-        <enableBuiltInAuthenticator>false</enableBuiltInAuthenticator>
+        <enableBuiltInAuthenticator>true</enableBuiltInAuthenticator>
         <enableCSPOnEmail>true</enableCSPOnEmail>
         <enableCSRFOnGet>true</enableCSRFOnGet>
         <enableCSRFOnPost>true</enableCSRFOnPost>
@@ -191,11 +179,11 @@
         <enablePermissionsPolicy>false</enablePermissionsPolicy>
         <enablePostForSessions>false</enablePostForSessions>
         <enableSMSIdentity>true</enableSMSIdentity>
-        <enableU2F>false</enableU2F>
+        <enableU2F>true</enableU2F>
         <enforceIpRangesEveryRequest>false</enforceIpRangesEveryRequest>
         <enforceUserDeviceRevoked>false</enforceUserDeviceRevoked>
-        <forceLogoutOnSessionTimeout>true</forceLogoutOnSessionTimeout>
-        <forceRelogin>true</forceRelogin>
+        <forceLogoutOnSessionTimeout>false</forceLogoutOnSessionTimeout>
+        <forceRelogin>false</forceRelogin>
         <grantCameraAccess>TrustedUrls</grantCameraAccess>
         <grantMicrophoneAccess>TrustedUrls</grantMicrophoneAccess>
         <hasRetainedLoginHints>false</hasRetainedLoginHints>
@@ -206,7 +194,7 @@
         <lockSessionsToIp>false</lockSessionsToIp>
         <lockerServiceCSP>true</lockerServiceCSP>
         <lockerServiceNext>false</lockerServiceNext>
-        <lockerServiceNextControl>false</lockerServiceNextControl>
+        <lockerServiceNextControl>true</lockerServiceNextControl>
         <lockerTrustedMode>false</lockerTrustedMode>
         <redirectBlockModeEnabled>false</redirectBlockModeEnabled>
         <redirectionWarning>false</redirectionWarning>
@@ -223,6 +211,7 @@
         <useEAPIRateLimitForConnectAPI>false</useEAPIRateLimitForConnectAPI>
         <useLocalStorageForLogoutUrl>false</useLocalStorageForLogoutUrl>
         <vfInlineScriptInjection>Allow</vfInlineScriptInjection>
+        <welcomeEmailTemplateId>000000000000000</welcomeEmailTemplateId>
     </sessionSettings>
     <singleSignOnSettings>
         <enableCaseInsensitiveFederationID>false</enableCaseInsensitiveFederationID>

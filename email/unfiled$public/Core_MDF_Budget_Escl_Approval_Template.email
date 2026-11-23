@@ -1,0 +1,17 @@
+<messaging:emailTemplate subject="Escalation Request ID {!RelatedTo.Name} for Budget is approved to take action on Budget" 
+                         recipientType="User" relatedToType="Core_MDF_Escalation__c">
+    <messaging:htmlEmailBody >
+        <html>
+             <body>  <div style="font-size:17px;font-family:Calibri">
+             {!IF((RelatedTo.Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c == 'Retail Marketing Funds'), 'Click here to view ', 'Please view for ')}
+                your approval Budget Escalation Request ID: <a href="{!RelatedTo.Core_MDF_Escalation_Detail_Link_txt__c}">{!RelatedTo.Name}</a><br/><br/>
+                Budget Name: <a href="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Core_MDF_Budget_ID_Number_id__c}">{!RelatedTo.Core_MDF_Budget_ID_Number_id__r.Title}</a><br/>
+                Approved Amount:&nbsp;
+                <apex:outputText value="{0, Number, Currency}">
+                <apex:param value="{!RelatedTo.Core_MDF_Approved_Amount_amt__c}"/>
+                </apex:outputText> <br/>
+                  </div>
+             </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -47,6 +47,49 @@ public without sharing class PRM_PartnerAccountGroupDetails {
             act_detail.IPAAccount=acc.Core_Intel_Partner_Alliance_PartnerGroup__c;
             act_detail.Address =  acc.BillingCountry;
             List<ContactDetail> contactDetails=new List<ContactDetail>();
+            contactDetails.addAll(getContactDetails( acc, relationMap));
+            // for(Contact c:acc.Contacts)
+            // {
+            //     ContactDetail cnt_detail=new ContactDetail();
+            //     cnt_detail.Id=c.Id;
+            //     cnt_detail.Name=c.Name;
+            //     cnt_detail.Email=c.Email;
+            //     cnt_detail.PartnerRole=c.Core_IPA_PartnerRole__c;
+            //     List<PRM_Account_Contact_Relationship__c> accountAcrs=relationMap.get(acc.Id);
+            //     cnt_detail.ContactRelationship='';
+            //     if(accountAcrs!=null)
+            //     {
+            //     for (PRM_Account_Contact_Relationship__c acr: accountAcrs)
+            //     {
+            //         if(acr.PRM_Contact_Id__c==c.Id)
+            //         {
+            //             if(cnt_detail.ContactRelationship=='')
+            //         {
+            //             cnt_detail.ContactRelationship=acr.PRM_Relationship_Id__r.Name;
+            //         }else
+            //         {
+            //             cnt_detail.ContactRelationship=cnt_detail.ContactRelationship+' , '+acr.PRM_Relationship_Id__r.Name;
+            //         }
+            //         }
+                    
+            //     }
+            //     }
+                
+            //     contactDetails.add(cnt_detail);
+            // }
+            act_detail.cntDetails=contactDetails;
+            pag_details.IntelAccounts.add(act_detail);
+            
+        }
+        
+        
+        pag_details.PAGAccounts=pag_acct;
+        return pag_details;
+    }
+
+    public static List<ContactDetail> getContactDetails(Account acc, Map<String,List<PRM_Account_Contact_Relationship__c>> relationMap){
+
+        List<ContactDetail> contactDetails=new List<ContactDetail>();
             for(Contact c:acc.Contacts)
             {
                 ContactDetail cnt_detail=new ContactDetail();
@@ -62,23 +105,22 @@ public without sharing class PRM_PartnerAccountGroupDetails {
                 {
                     if(acr.PRM_Contact_Id__c==c.Id)
                     {
-                        if(cnt_detail.ContactRelationship=='')
-                    {
-                        cnt_detail.ContactRelationship=acr.PRM_Relationship_Id__r.Name;
-                    }else
-                    {
-                        cnt_detail.ContactRelationship=cnt_detail.ContactRelationship+' , '+acr.PRM_Relationship_Id__r.Name;
-                    }
+                    //     if(cnt_detail.ContactRelationship=='')
+                    // {
+                    //     cnt_detail.ContactRelationship=acr.PRM_Relationship_Id__r.Name;
+                    // }else
+                    // {
+                    //     cnt_detail.ContactRelationship=cnt_detail.ContactRelationship+' , '+acr.PRM_Relationship_Id__r.Name;
+                    // }
+                    cnt_detail.ContactRelationship = cnt_detail.ContactRelationship=='' ? acr.PRM_Relationship_Id__r.Name : cnt_detail.ContactRelationship+' , '+acr.PRM_Relationship_Id__r.Name;
                     }
                 }
                 }
+                
                 contactDetails.add(cnt_detail);
             }
-            act_detail.cntDetails=contactDetails;
-            pag_details.IntelAccounts.add(act_detail);
-        }
-        pag_details.PAGAccounts=pag_acct;
-        return pag_details;
+
+            return contactDetails;
     }
 
     public class PAGDetailsWrapper
@@ -87,8 +129,11 @@ public without sharing class PRM_PartnerAccountGroupDetails {
         public List<Account> PAGAccounts=new List<Account>();
         @AuraEnabled
         public List<IntelAccountDetails> IntelAccounts=new List<IntelAccountDetails>();
+        
+        
     }
-     
+    
+    
     public class IntelAccountDetails
     {   @AuraEnabled
         public String Id;
@@ -103,9 +148,9 @@ public without sharing class PRM_PartnerAccountGroupDetails {
         @AuraEnabled
         public String Address;
         @AuraEnabled
-        public List<ContactDetail> cntDetails=new List<ContactDetail>();  
+        public List<ContactDetail> cntDetails=new List<ContactDetail>();
+        
     }
-    
     public class ContactDetail
     {
         @AuraEnabled
@@ -117,6 +162,7 @@ public without sharing class PRM_PartnerAccountGroupDetails {
         @AuraEnabled
         public String PartnerRole;
         @AuraEnabled
-        public String ContactRelationship;    
-    }
+        public String ContactRelationship;
+        
+    }   
 }

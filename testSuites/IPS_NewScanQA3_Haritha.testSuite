@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_IPS_AccountTeam_Calculation_Test</testClassName>
+    <testClassName>Core_IPS_ExceptionHandling_Test</testClassName>
+    <testClassName>Core_IPS_Project_Controller_Test</testClassName>
+    <testClassName>Core_IPS_Questions_Utility_Test</testClassName>
+    <testClassName>Core_IPS_SSLCCase_HandlerTest</testClassName>
+</ApexTestSuite>

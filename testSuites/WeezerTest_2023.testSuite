@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_checkSObjectCRUDPermission_Test</testClassName>
+    <testClassName>Core_MDF_CustomLayoutConfig_Contrl_Test</testClassName>
+    <testClassName>Core_MDF_DetermineEmailRecipients_Test</testClassName>
+    <testClassName>Core_MDF_GeneralPurpose_UI_Utility_Test</testClassName>
+    <testClassName>Core_MDF_IUPGM_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_PartnerFundReq_Controller_Test</testClassName>
+    <testClassName>Core_MDF_PFR_Approval_Test</testClassName>
+    <testClassName>Core_MDF_Process_PartnerFundRequest_Test</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_PFR_Test</testClassName>
+    <testClassName>Core_MDF_Reopen_Activity_Test</testClassName>
+</ApexTestSuite>

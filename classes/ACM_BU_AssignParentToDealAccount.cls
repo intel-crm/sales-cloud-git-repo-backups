@@ -11,7 +11,7 @@ public without sharing class ACM_BU_AssignParentToDealAccount implements UCD_ACM
      * Method to set parent to deal accounts when parent is either null or it is updated
      */
     public void execute( Map<Id, Account> oldAccounts, Map<Id, Account> newAccounts) {
-       try {
+        try {
             // Run the logic only once and after all validations are completed
         if ((runOnce && isValid()) || Test.isRunningTest()) {
             //get deal accounts

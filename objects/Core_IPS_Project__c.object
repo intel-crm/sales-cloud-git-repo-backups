@@ -96,9 +96,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
-        <content>Core_New_IPSProject</content>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Visualforce</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
@@ -137,7 +135,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Premier_Support_Project_Record_Page1</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -145,7 +143,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Premier_Support_Project_Record_Page1</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -154,9 +152,9 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>IPS_Project_Compact_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>IPS_Project_Compact_layout</compactLayoutAssignment>
     <compactLayouts>
-        <fullName>IPS_Project_Compact_Layout</fullName>
+        <fullName>IPS_Project_Compact_layout</fullName>
         <fields>Name</fields>
         <fields>Core_Status__c</fields>
         <fields>OwnerId</fields>
@@ -521,6 +519,11 @@
                     <default>false</default>
                     <label>PRC</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -620,6 +623,11 @@
                     <default>false</default>
                     <label>WEUR</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
@@ -689,32 +697,35 @@
                 <controllingFieldValue>PRC</controllingFieldValue>
                 <valueName>PRC</valueName>
             </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>INDIA</controllingFieldValue>
+                <valueName>INDIA</valueName>
+            </valueSettings>
         </valueSet>
     </fields>
     <label>Premier Support Project</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
         <columns>Core_IPS_Project_ID__c</columns>
         <columns>Core_IPS_GroupId__c</columns>
+        <columns>Core_IPS_Group_Name__c</columns>
+        <columns>NAME</columns>
         <columns>Core_MPNDA__c</columns>
         <columns>Core_Number_of_Accounts__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>Core_Number_of_Products__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Status__c</columns>
         <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>All_Projects_Active</fullName>
-        <columns>NAME</columns>
         <columns>Core_IPS_Project_ID__c</columns>
+        <columns>NAME</columns>
         <columns>Core_Status__c</columns>
         <columns>Core_MPNDA__c</columns>
         <filterScope>Everything</filterScope>
@@ -722,11 +733,6 @@
             <field>Core_Status__c</field>
             <operation>equals</operation>
             <value>Active</value>
-        </filters>
-        <filters>
-            <field>Core_IPS_Private__c</field>
-            <operation>equals</operation>
-            <value>1</value>
         </filters>
         <label>All Active Projects</label>
         <sharedTo>
@@ -743,25 +749,12 @@
         <filters>
             <field>Core_Status__c</field>
             <operation>equals</operation>
-            <value>Active</value>
+            <value>Inactive,Active</value>
         </filters>
         <label>All Projects</label>
         <sharedTo>
             <allPartnerUsers></allPartnerUsers>
             <group>Core_PG_IPS_External_Customer</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_000_Core_IPS_Project</fullName>
-        <columns>NAME</columns>
-        <filterScope>Queue</filterScope>
-        <label>IPS - Org - Test Org 0</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_000</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_000</group>
-            <group>Core_IPS_Org_014</group>
-            <group>Core_PG_IT_Admin</group>
         </sharedTo>
     </listViews>
     <nameField>
@@ -832,6 +825,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>PRC</fullName>
                 <default>false</default>
             </values>
@@ -852,6 +849,10 @@
             </values>
             <values>
                 <fullName>IJKK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INDIA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1025,17 +1026,6 @@ NOT(ISCHANGED(Core_Number_of_Users__c))
         <errorMessage>Sub-Region is required when creating / Updating the Project with a specified Region</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
-    <webLinks>
-        <fullName>Core_IPS_Update_Support_Owners</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Update Support Owners</masterLabel>
-        <openType>noSidebar</openType>
-        <page>Core_IPS_AddProjSupportOwner</page>
-        <protected>false</protected>
-    </webLinks>
     <webLinks>
         <fullName>core_Submit</fullName>
         <availability>online</availability>

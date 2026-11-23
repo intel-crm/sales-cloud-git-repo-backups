@@ -6,16 +6,6 @@
         <label>Audio</label>
     </customValue>
     <customValue>
-        <fullName>Audio 2025</fullName>
-        <default>false</default>
-        <label>Audio 2025</label>
-    </customValue>
-    <customValue>
-        <fullName>Broadcast</fullName>
-        <default>false</default>
-        <label>Broadcast</label>
-    </customValue>
-    <customValue>
         <fullName>Broadcast (Pre-2025)</fullName>
         <default>false</default>
         <label>Broadcast (Pre-2025)</label>
@@ -26,24 +16,9 @@
         <label>Buyer Incentive</label>
     </customValue>
     <customValue>
-        <fullName>Buyer Incentive 2025</fullName>
-        <default>false</default>
-        <label>Buyer Incentive 2025</label>
-    </customValue>
-    <customValue>
         <fullName>Digital</fullName>
         <default>false</default>
         <label>Digital</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital 2025</fullName>
-        <default>false</default>
-        <label>Digital 2025</label>
-    </customValue>
-    <customValue>
-        <fullName>Digital Media</fullName>
-        <default>false</default>
-        <label>Digital Media</label>
     </customValue>
     <customValue>
         <fullName>Digital Media (Pre-2025)</fullName>
@@ -51,34 +26,9 @@
         <label>Digital Media (Pre-2025)</label>
     </customValue>
     <customValue>
-        <fullName>Event</fullName>
-        <default>false</default>
-        <label>Event</label>
-    </customValue>
-    <customValue>
         <fullName>Event (Pre-2025)</fullName>
         <default>false</default>
         <label>Event (Pre-2025)</label>
-    </customValue>
-    <customValue>
-        <fullName>Event 2025</fullName>
-        <default>false</default>
-        <label>Event 2025</label>
-    </customValue>
-    <customValue>
-        <fullName>Incentive</fullName>
-        <default>false</default>
-        <label>Incentive</label>
-    </customValue>
-    <customValue>
-        <fullName>Innovation</fullName>
-        <default>false</default>
-        <label>Innovation</label>
-    </customValue>
-    <customValue>
-        <fullName>Lead Management</fullName>
-        <default>false</default>
-        <label>Lead Management</label>
     </customValue>
     <customValue>
         <fullName>Lead Management (Pre-2025)</fullName>
@@ -86,34 +36,9 @@
         <label>Lead Management (Pre-2025)</label>
     </customValue>
     <customValue>
-        <fullName>Online Ad</fullName>
-        <default>false</default>
-        <label>Online Ad</label>
-    </customValue>
-    <customValue>
-        <fullName>Outcome-Based</fullName>
-        <default>false</default>
-        <label>Outcome-Based</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home</fullName>
-        <default>false</default>
-        <label>Out of Home</label>
-    </customValue>
-    <customValue>
         <fullName>Out of Home (Pre-2025)</fullName>
         <default>false</default>
         <label>Out of Home (Pre-2025)</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home 2025</fullName>
-        <default>false</default>
-        <label>Out of Home 2025</label>
-    </customValue>
-    <customValue>
-        <fullName>Out of Home Media</fullName>
-        <default>false</default>
-        <label>Out of Home Media</label>
     </customValue>
     <customValue>
         <fullName>Out of Home Media (Pre-2025)</fullName>
@@ -121,34 +46,14 @@
         <label>Out of Home Media (Pre-2025)</label>
     </customValue>
     <customValue>
-        <fullName>Paid Social Media</fullName>
-        <default>false</default>
-        <label>Paid Social Media</label>
-    </customValue>
-    <customValue>
         <fullName>Paid Social Media (Pre-2025)</fullName>
         <default>false</default>
         <label>Paid Social Media (Pre-2025)</label>
     </customValue>
     <customValue>
-        <fullName>Print</fullName>
-        <default>false</default>
-        <label>Print</label>
-    </customValue>
-    <customValue>
         <fullName>Print (Pre-2025)</fullName>
         <default>false</default>
         <label>Print (Pre-2025)</label>
-    </customValue>
-    <customValue>
-        <fullName>Print 2025</fullName>
-        <default>false</default>
-        <label>Print 2025</label>
-    </customValue>
-    <customValue>
-        <fullName>Print Media</fullName>
-        <default>false</default>
-        <label>Print Media</label>
     </customValue>
     <customValue>
         <fullName>Print Media (Pre-2025)</fullName>
@@ -161,24 +66,9 @@
         <label>Production</label>
     </customValue>
     <customValue>
-        <fullName>Production 2025</fullName>
-        <default>false</default>
-        <label>Production 2025</label>
-    </customValue>
-    <customValue>
-        <fullName>Purchase Incentive</fullName>
-        <default>false</default>
-        <label>Purchase Incentive</label>
-    </customValue>
-    <customValue>
         <fullName>Purchase Incentive (Pre-2025)</fullName>
         <default>false</default>
         <label>Purchase Incentive (Pre-2025)</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Incentive</fullName>
-        <default>false</default>
-        <label>Sales Incentive</label>
     </customValue>
     <customValue>
         <fullName>Sales Incentive (Pre-2025)</fullName>
@@ -186,24 +76,9 @@
         <label>Sales Incentive (Pre-2025)</label>
     </customValue>
     <customValue>
-        <fullName>Sales Readiness</fullName>
-        <default>false</default>
-        <label>Sales Readiness</label>
-    </customValue>
-    <customValue>
         <fullName>Sales Readiness (Pre-2025)</fullName>
         <default>false</default>
         <label>Sales Readiness (Pre-2025)</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Readiness 2025</fullName>
-        <default>false</default>
-        <label>Sales Readiness 2025</label>
-    </customValue>
-    <customValue>
-        <fullName>Search Engine Marketing (SEM)</fullName>
-        <default>false</default>
-        <label>Search Engine Marketing (SEM)</label>
     </customValue>
     <customValue>
         <fullName>Search Engine Marketing (SEM) (Pre-2025)</fullName>
@@ -211,24 +86,9 @@
         <label>Search Engine Marketing (SEM) (Pre-2025)</label>
     </customValue>
     <customValue>
-        <fullName>Search Performance</fullName>
-        <default>false</default>
-        <label>Search Performance</label>
-    </customValue>
-    <customValue>
         <fullName>Seller Incentive</fullName>
         <default>false</default>
         <label>Seller Incentive</label>
-    </customValue>
-    <customValue>
-        <fullName>Seller Incentive 2025</fullName>
-        <default>false</default>
-        <label>Seller Incentive 2025</label>
-    </customValue>
-    <customValue>
-        <fullName>Tech Exploration</fullName>
-        <default>false</default>
-        <label>Tech Exploration</label>
     </customValue>
     <customValue>
         <fullName>Tech Exploration (Pre-2025)</fullName>
@@ -241,9 +101,94 @@
         <label>Technical Sales</label>
     </customValue>
     <customValue>
-        <fullName>Technical Sales 2025</fullName>
+        <fullName>Video</fullName>
         <default>false</default>
-        <label>Technical Sales 2025</label>
+        <label>Video</label>
+    </customValue>
+    <customValue>
+        <fullName>Broadcast</fullName>
+        <default>false</default>
+        <label>Broadcast</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital Media</fullName>
+        <default>false</default>
+        <label>Digital Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Event</fullName>
+        <default>false</default>
+        <label>Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Incentive</fullName>
+        <default>false</default>
+        <label>Incentive</label>
+    </customValue>
+    <customValue>
+        <fullName>Lead Management</fullName>
+        <default>false</default>
+        <label>Lead Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Online Ad</fullName>
+        <default>false</default>
+        <label>Online Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home</fullName>
+        <default>false</default>
+        <label>Out of Home</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home Media</fullName>
+        <default>false</default>
+        <label>Out of Home Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Paid Social Media</fullName>
+        <default>false</default>
+        <label>Paid Social Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Print</fullName>
+        <default>false</default>
+        <label>Print</label>
+    </customValue>
+    <customValue>
+        <fullName>Print Media</fullName>
+        <default>false</default>
+        <label>Print Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Purchase Incentive</fullName>
+        <default>false</default>
+        <label>Purchase Incentive</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Incentive</fullName>
+        <default>false</default>
+        <label>Sales Incentive</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Readiness</fullName>
+        <default>false</default>
+        <label>Sales Readiness</label>
+    </customValue>
+    <customValue>
+        <fullName>Search Engine Marketing (SEM)</fullName>
+        <default>false</default>
+        <label>Search Engine Marketing (SEM)</label>
+    </customValue>
+    <customValue>
+        <fullName>Search Performance</fullName>
+        <default>false</default>
+        <label>Search Performance</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Exploration</fullName>
+        <default>false</default>
+        <label>Tech Exploration</label>
     </customValue>
     <customValue>
         <fullName>Training</fullName>
@@ -251,9 +196,34 @@
         <label>Training</label>
     </customValue>
     <customValue>
-        <fullName>Video</fullName>
+        <fullName>Digital 2025</fullName>
         <default>false</default>
-        <label>Video</label>
+        <label>Digital 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Audio 2025</fullName>
+        <default>false</default>
+        <label>Audio 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Seller Incentive 2025</fullName>
+        <default>false</default>
+        <label>Seller Incentive 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyer Incentive 2025</fullName>
+        <default>false</default>
+        <label>Buyer Incentive 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Sales 2025</fullName>
+        <default>false</default>
+        <label>Technical Sales 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Production 2025</fullName>
+        <default>false</default>
+        <label>Production 2025</label>
     </customValue>
     <customValue>
         <fullName>Video 2025</fullName>
@@ -261,10 +231,46 @@
         <label>Video 2025</label>
     </customValue>
     <customValue>
+        <fullName>Sales Readiness 2025</fullName>
+        <default>false</default>
+        <label>Sales Readiness 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Event 2025</fullName>
+        <default>false</default>
+        <label>Event 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Home 2025</fullName>
+        <default>false</default>
+        <label>Out of Home 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Print 2025</fullName>
+        <default>false</default>
+        <label>Print 2025</label>
+    </customValue>
+    <customValue>
+        <fullName>Innovation</fullName>
+        <default>false</default>
+        <label>Innovation</label>
+    </customValue>
+    <customValue>
+        <fullName>Outcome-Based</fullName>
+        <default>false</default>
+        <label>Outcome-Based</label>
+    </customValue>
+    <customValue>
         <fullName>Online</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Online</label>
+    </customValue>
+    <customValue>
+        <fullName>Code Comparison Test</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Code Comparison Test</label>
     </customValue>
     <customValue>
         <fullName>Media</fullName>

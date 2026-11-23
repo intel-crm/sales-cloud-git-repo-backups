@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION_ZHT</name>
     <style>none</style>
@@ -18,7 +18,7 @@
 關係（職位）： {!AcrRoles}
 
 若這項變更未獲授權，請登入來更新帳戶。
-如果您有疑問，請從這裡與我們聯絡支援團隊。
+如果您有疑問，請從這裡與我們聯絡https://signin.intel.com/ContactUs?Culture=zh-TW。
 
 
 
@@ -26,8 +26,8 @@
 您的 Intel® 夥伴聯盟團隊
 
 此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+© {!$Label.PRM_CurrentYear} Intel 公司
+Intel 公司，2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。 www.intel.com
 隱私權 | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>

@@ -1,7 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import getPriceForProduct from '@salesforce/apex/PCC_NewDesignRegProductCntrl.getPriceForProduct';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import MMID_SWITCH from '@salesforce/label/c.DDR_MMID_switch';
 
 export default class PccNewDesignRegProductLwc extends LightningElement {
     @api drId;
@@ -14,15 +13,6 @@ export default class PccNewDesignRegProductLwc extends LightningElement {
     ddiEligible;
     expDate;
     ddiFocused;
-
-    // Getter to determine the message based on custom label
-    get productSelectionMessage() {
-        if (MMID_SWITCH?.toLowerCase() === 'true') {
-            return 'Please select Product or MMID or Old MMID or Ordering code';
-        } else {
-            return 'Please select Product or MMID or Ordering code';
-        }
-    }
 
     async handleProductChange(event) {
         const prodId = event.target.value;
@@ -115,4 +105,5 @@ export default class PccNewDesignRegProductLwc extends LightningElement {
     handleClosePopup() {
         this.dispatchEvent(new CustomEvent('closequickmodal'));
     }
+
 }

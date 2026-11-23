@@ -248,6 +248,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PMP_Is_First_Run_Complete_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if the first run to download the pdf file is complete or not ? If it is marked as true, download the pdf only when the pdf updated date field is modified.</description>
+        <label>Is First Run Complete</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PMP_Is_Retrieved_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <description>This Boolean indicates if a document has been retrieved or not ?</description>
@@ -337,7 +346,6 @@
         <columns>PMP_Document_Name_Nm__c</columns>
         <columns>PMP_Updated_On_Dt__c</columns>
         <columns>PMP_Added_On_Dt__c</columns>
-        <columns>PMP_Document_Download_Path_url__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

@@ -117,7 +117,6 @@
             {
                 document.getElementById('opaque').style.display='block';
                 var popUp = document.getElementById('spinner');
-                console.log('called');
                 popUp.style.display = 'block'; 
             }
          /*Start--US254983--Trade Compliance Settings under My Settings tab*/   
@@ -125,7 +124,6 @@
             {
                 document.getElementById('opaque').style.display='none';
                 var popUp = document.getElementById('spinner');
-                console.log('called');
                 popUp.style.display = 'none';
             }
         /*End--US254983--Trade Compliance Settings under My Settings tab*/

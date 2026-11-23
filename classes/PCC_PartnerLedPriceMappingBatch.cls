@@ -3,7 +3,7 @@
 * Version     : 1.0 
 * Created Date:  01-08-2024
 * Modification Log :
-* Developer                   Date               Description
+* Developer            		  Date               Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 Aravind                       01-08-2024         Created
 *****************************************************************************************************************************************/
@@ -33,9 +33,8 @@ public with sharing class PCC_PartnerLedPriceMappingBatch implements Database.Ba
                 pp.PCC_L5_Product__c = attributeMap.get(pp.PCC_Material_Master__c).L5_Product__c;
            }
         }
-        
-        Database.update(priceData,false);
 
+        update priceData;
     }
     // Finish method
     public void finish(Database.BatchableContext BC){

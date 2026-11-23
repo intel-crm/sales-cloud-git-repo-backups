@@ -10,7 +10,7 @@
         <fieldPath>Pricing_Application_Nm__c</fieldPath>
         <isGroupByField>false</isGroupByField>
         <isRequired>true</isRequired>
-        <operator>Equals</operator>
+        <operator>NotEquals</operator>
         <sequence>1</sequence>
         <usage>INPUT</usage>
     </decisionTableParameters>

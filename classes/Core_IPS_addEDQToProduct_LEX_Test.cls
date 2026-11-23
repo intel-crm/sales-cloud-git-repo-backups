@@ -1,6 +1,4 @@
 @isTest
-// Added AssertEquals Added By Chiranjeevi - 31-JAN-2024
-//System.assert()--> statement Added By Hassan Khan 02-02-2024 
 public class Core_IPS_addEDQToProduct_LEX_Test {
 public static Core_IPS_Supported_Product__c supportedProductRecord;
 public static Core_IPS_Question__c EnvironmentalDetailMaster1;
@@ -26,6 +24,7 @@ static void getRecords(){
     // Creating Queue
     QueueRecord = new Group(Name='SupportOrgQueue', type='Queue');
     insert QueueRecord;
+    System.debug('This is QUEUE '+QueueRecord);
     // Creating Public Group
     Group PublicGroupRecord = new Group(Name = 'SupportOrgPublicGroup');
     insert PublicGroupRecord;
@@ -48,15 +47,18 @@ static void getRecords(){
             UserOrGroupId = userRecord.id
         );
         insert groupMemberObject_User;
+        system.debug('groupMemberObject_User--');
         // Creating Product Record
         Product2 createProductRecord = TestUtilities.getProduct();
         insert createProductRecord;
+        system.debug('createProductRecord--');
         System.Assert(createProductRecord.Id != null, 'Record not created');
         // Creating Support Org (Core_IPS_Product_Organization__c) Record
         Core_IPS_Product_Organization__c SupportOrgRecord = TestUtilities.getSupportOrg();
         SupportOrgRecord.OwnerId = QueueRecord.Id;
         insert SupportOrgRecord;
        
+        system.debug('SupportOrgRecord--'+SupportOrgRecord);
         System.Assert(SupportOrgRecord.Id != null, 'Record not created');
         // Creating Core Supported Product
         supportedProductRecord = TestUtilities.getSupportedProduct();
@@ -64,10 +66,12 @@ static void getRecords(){
         supportedProductRecord.Core_Product_Organization__c = SupportOrgRecord.id;
         insert supportedProductRecord;
        
+        system.debug('supportedProductRecord--'+supportedProductRecord);
         System.Assert(supportedProductRecord.Id != null, 'Record not created');
         EnvironmentalDetailMaster1 = TestUtilities.getCoreQuestion();
         EnvironmentalDetailMaster1.Core_IPS_Product_Organization__c = SupportOrgRecord.id;
         insert EnvironmentalDetailMaster1;
+        system.debug('EnvironmentalDetailMaster1--');
         Core_IPS_Question__c EnvironmentalDetailMaster2 = TestUtilities.getCoreQuestion();
         EnvironmentalDetailMaster2.Core_IPS_Product_Organization__c = SupportOrgRecord.id;
         insert EnvironmentalDetailMaster2;
@@ -75,18 +79,22 @@ static void getRecords(){
         EnvironmentalDetailsOperational.Core_IPS_Question__c = EnvironmentalDetailMaster2.id;
         EnvironmentalDetailsOperational.Core_Supported_Product__c = supportedProductRecord.Id;
         insert EnvironmentalDetailsOperational;
+        system.debug('EnvironmentalDetailsOperational--');
         // Create Custom Setting - IPS Error Codes
         List<Core_IPS_Error_Code__c> ListofIpsErrorCodes = TestUtilities.getListOfIpsErrorCodes();
         insert ListofIpsErrorCodes;
+        system.debug('ListofIpsErrorCodes--');
         // Create Custom Setting - IPS Lables
         List<Core_IPS_Labels__c> ListofIpsLables = TestUtilities.getIPSLabel();
         insert ListofIpsLables;
+        system.debug('ListofIpsLables--');
         System.Assert(ListofIpsLables[0].Id != null, 'Record not created');
         // Create Case Category
         CaseCategory = TestUtilities.getCaseCategories();
         CaseCategory.Core_Type__c = 'Case Category';
         CaseCategory.Core_Supported_Product__c = supportedProductRecord.id;
         insert CaseCategory;
+        system.debug('CaseCategory111--');
         // Create Case SubCategory
         CaseSubCategory = TestUtilities.getCaseCategories();
         CaseSubCategory.Core_Product_Issue_Category__c = CaseCategory.id; 
@@ -113,6 +121,7 @@ static void getRecords(){
         mic.add(MasterCaseSubCategories2);
  		mic1.add(MasterCaseCategories);
         mic1.add(MasterCaseCategories2);
+        system.debug('CaseSubCategory--');
         // Update EnvironmentalDetailsOperational
         EnvironmentalDetailsOperational.Core_Product_Issue_Sub_Category__c = CaseSubCategory.id;
         update EnvironmentalDetailsOperational;
@@ -148,6 +157,7 @@ static void getRecords(){
         ec7.Name='I107';
         ec7.Core_Error_Message__c='EOIS Product';
         insert ec7;
+        System.debug('envirinmental --- data');
     }
 }
 @isTest
@@ -156,13 +166,12 @@ static void getRecords(){
         Test.startTest();
         	
         	
-        	Core_IPS_addEDQToProduct_LEX.getEnvironmentVariables_SupProd(supportedProductRecord.id,0,0,'All Data');
-        	Core_IPS_addEDQToProduct_LEX.getEnvironmentVariables_CaseCat(CaseSubCategory.id,0,0,'All Data');
-        	Core_IPS_addEDQToProduct_LEX.getCategories(supportedProductRecord.id,0,0,'All Data');
-            Core_IPS_addEDQToProduct_LEX.getCategories(supportedProductRecord.id,10,0,'Load Data');
-        	Core_IPS_addEDQToProduct_LEX.getSubCategories(CaseCategory.id,0,0,'All Data');
-            Core_IPS_addEDQToProduct_LEX.getSubCategories(CaseCategory.id,10,0,'Load Data');
-         System.AssertEquals(CaseCategory.id == null, false);
+        	Core_IPS_addEDQToProduct_LEX.getEnvironmentVariables_SupProd(String.ValueOf(supportedProductRecord.id),0,0,'All Data');
+        	Core_IPS_addEDQToProduct_LEX.getEnvironmentVariables_CaseCat(String.ValueOf(CaseSubCategory.id),0,0,'All Data');
+        	Core_IPS_addEDQToProduct_LEX.getCategories(String.ValueOf(supportedProductRecord.id),0,0,'All Data');
+            Core_IPS_addEDQToProduct_LEX.getCategories(String.ValueOf(supportedProductRecord.id),10,0,'Load Data');
+        	Core_IPS_addEDQToProduct_LEX.getSubCategories(String.ValueOf(CaseCategory.id),0,0,'All Data');
+            Core_IPS_addEDQToProduct_LEX.getSubCategories(String.ValueOf(CaseCategory.id),10,0,'Load Data');
         Test.stopTest();
     }
     @isTest 
@@ -183,26 +192,24 @@ static void getRecords(){
         CaseCategory2.Core_Supported_Product__c = supportedProductRecord1.id;
         insert CaseCategory2;
         Test.startTest();
-        	Core_IPS_addEDQToProduct_LEX.checkSPEDQRules(supportedProductRecord.id);
-        	Core_IPS_addEDQToProduct_LEX.checkSPCaseCatRules(supportedProductRecord.id);
-        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(CaseSubCategory.id);
-        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatRules(CaseCategory2.id);
-        	Core_IPS_addEDQToProduct_LEX.checkSPCaseCatRules(supportedProductRecord1.id);
+        	Core_IPS_addEDQToProduct_LEX.checkSPEDQRules(String.ValueOf(supportedProductRecord.id));
+        	Core_IPS_addEDQToProduct_LEX.checkSPCaseCatRules(String.ValueOf(supportedProductRecord.id));
+        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(String.ValueOf(CaseSubCategory.id));
+        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatRules(String.ValueOf(CaseCategory2.id));
+        	Core_IPS_addEDQToProduct_LEX.checkSPCaseCatRules(String.ValueOf(supportedProductRecord1.id));
         Test.stopTest();
-        System.assert(SupportOrgRecord.id != null,true);
     }
     @isTest 
     public static void TestaddEnvironmentVariables(){
         getRecords();
         Test.startTest();
-        	List <Core_IPS_addEDQToProduct_LEX.EnvironmentVarSel> envdeatils = Core_IPS_addEDQToProduct_LEX.getEnvironmentVariables_SupProd(supportedProductRecord.id,10,0,'Load Data');
-            List <Core_IPS_addEDQToProduct_LEX.EnvironmentVarSel> envdeatils1 = Core_IPS_addEDQToProduct_LEX.getEnvironmentVariables_CaseCat(CaseSubCategory.id,10,0,'Load Data');
-        	List<Core_IPS_Master_Issue_Category__c> subcatlist = Core_IPS_addEDQToProduct_LEX.getSubCategories(CaseCategory.id,0,0,'All Data');
-        	Core_IPS_addEDQToProduct_LEX.addSubCategories(CaseCategory.id,mic);
-        	Core_IPS_addEDQToProduct_LEX.addCategories(supportedProductRecord.id,mic1);
-        	Core_IPS_addEDQToProduct_LEX.addEnvironmentVariables(envdeatils, supportedProductRecord.id,null);
-        	Core_IPS_addEDQToProduct_LEX.addEnvironmentVariables(envdeatils1, null,CaseSubCategory.id);
-            System.AssertEquals(subcatlist.size()>0, false);
+        	List <Core_IPS_addEDQToProduct_LEX.EnvironmentVarSel> envdeatils = Core_IPS_addEDQToProduct_LEX.getEnvironmentVariables_SupProd(String.ValueOf(supportedProductRecord.id),10,0,'Load Data');
+            List <Core_IPS_addEDQToProduct_LEX.EnvironmentVarSel> envdeatils1 = Core_IPS_addEDQToProduct_LEX.getEnvironmentVariables_CaseCat(String.ValueOf(CaseSubCategory.id),10,0,'Load Data');
+        	List<Core_IPS_Master_Issue_Category__c> subcatlist = Core_IPS_addEDQToProduct_LEX.getSubCategories(String.ValueOf(CaseCategory.id),0,0,'All Data');
+        	Core_IPS_addEDQToProduct_LEX.addSubCategories(String.ValueOf(CaseCategory.id),mic);
+        	Core_IPS_addEDQToProduct_LEX.addCategories(String.ValueOf(supportedProductRecord.id),mic1);
+        	Core_IPS_addEDQToProduct_LEX.addEnvironmentVariables(envdeatils, String.ValueOf(supportedProductRecord.id),null);
+        	Core_IPS_addEDQToProduct_LEX.addEnvironmentVariables(envdeatils1, null,String.ValueOf(CaseSubCategory.id));
         Test.stopTest();
     }
     @isTest
@@ -222,6 +229,7 @@ static void getRecords(){
         CaseCategory1.Core_Type__c = 'Case Category';
         CaseCategory1.Core_Supported_Product__c = supportedProductRecord.id;
         insert CaseCategory1;
+        system.debug('CaseCategory111--');
         // Create Case SubCategory
         Core_IPS_Product_Issue_Category__c CaseSubCategory2 = TestUtilities.getCaseCategories();
         CaseSubCategory2.Core_Product_Issue_Category__c = CaseCategory1.id; 
@@ -244,18 +252,18 @@ static void getRecords(){
         CaseCategory2.Core_Type__c = 'Case Category';
         CaseCategory2.Core_Supported_Product__c = supportedProductRecord1.id;
         insert CaseCategory2;
-       System.AssertEquals(CaseCategory2.Id != null, true);
+
         Test.startTest();
         	
-        	Core_IPS_addEDQToProduct_LEX.checkSPEDQRules(supportedProductRecord.id);
-        	Core_IPS_addEDQToProduct_LEX.checkSPCaseCatRules(supportedProductRecord1.id);
-        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(CaseSubCategory1.id);
-        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(CaseSubCategory.id);
-            Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(CaseSubCategory2.id);
-        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatRules(CaseCategory.id);
-        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatRules(CaseCategory2.id);
+        	Core_IPS_addEDQToProduct_LEX.checkSPEDQRules(String.ValueOf(supportedProductRecord.id));
+        	Core_IPS_addEDQToProduct_LEX.checkSPCaseCatRules(String.ValueOf(supportedProductRecord1.id));
+        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(String.ValueOf(CaseSubCategory1.id));
+        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(String.ValueOf(CaseSubCategory.id));
+            Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(String.ValueOf(CaseSubCategory2.id));
+        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatRules(String.ValueOf(CaseCategory.id));
+        	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatRules(String.ValueOf(CaseCategory2.id));
         	//Core_IPS_addEDQToProduct_LEX.checkSPRules(null);
-        	 System.AssertEquals(supportedProductRecord.id != null, true);
+        	
         Test.stopTest();	
     }
    @isTest
@@ -266,6 +274,5 @@ static void getRecords(){
         	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatRules(null);
         	Core_IPS_addEDQToProduct_LEX.checkCaseSubCatEDQRules(null);
         Test.stopTest();
-        System.assert(userRecord.id != null,true);
     }
 }

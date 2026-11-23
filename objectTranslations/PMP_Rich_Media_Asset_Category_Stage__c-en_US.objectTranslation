@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Rich Media Asset Category Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Rich Media Asset Category Stages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Category Id --></label>
+        <name>PMP_Category_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category Name --></label>
+        <name>PMP_Category_Name_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rich Media Asset Stage --></label>
+        <name>PMP_Rich_Media_Asset_Stage_Id__c</name>
+        <relationshipLabel><!-- Rich Media Asset Category Stages --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

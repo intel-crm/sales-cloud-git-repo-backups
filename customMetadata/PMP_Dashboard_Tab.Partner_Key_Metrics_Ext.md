@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PMP_Is_Active_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>PMP_Permission_Set_Name_Txt__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Employee,Lead Development Representative,Marketing Specialist,Partner Admin</value>
     </values>
     <values>
         <field>PRM_Partner_Role_Txt__c</field>

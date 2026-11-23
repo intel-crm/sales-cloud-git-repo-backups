@@ -6,3 +6,61 @@
 .background{
     background-color: white !important;
 }
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-icon {
+    --sds-c-icon-color-foreground-default: #f5a623;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f3f8ff;
+    border: 1px solid #d8e6ff;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.info-box lightning-icon {
+    --sds-c-icon-color-foreground-default: #0176d3;
+}
+
+
+.resource-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #d8dde6;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.resource-left {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.resource-icon {
+    background: #edf4ff;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.resource-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.resource-description {
+    margin-top: 4px;
+    color: #444;
+}

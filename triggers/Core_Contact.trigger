@@ -197,28 +197,49 @@ trigger Core_Contact on Contact(after insert, after update, before update,before
     if(trigger.isAfter && trigger.isDelete){
         ACM_DeleteDupsOnContactMergeHandler.contactStagingRecords(trigger.oldmap.keySet());
     }
-    //  if(Trigger.isAfter && Trigger.isUpdate) {
-    //     if (!mapFunctionalityNameTriggerExecution.isEmpty() && mapFunctionalityNameTriggerExecution.containsKey('SendContactstoLicense') && mapFunctionalityNameTriggerExecution.get('SendContactstoLicense').Core_Active__c) {
-    //     Core_SendContact_to_AGS_onGECChange.SendUpdatedContactsDatatoLicence(Trigger.new, Trigger.OldMap);
-    //     }
-    // }
-    if(Trigger.isAfter && Trigger.isUpdate) {
+     if(Trigger.isAfter && Trigger.isUpdate) {
+        if (!mapFunctionalityNameTriggerExecution.isEmpty() && mapFunctionalityNameTriggerExecution.containsKey('SendContactstoLicense') && mapFunctionalityNameTriggerExecution.get('SendContactstoLicense').Core_Active__c) {
+        Core_SendContact_to_AGS_onGECChange.SendUpdatedContactsDatatoLicence(Trigger.new, Trigger.OldMap);
+        }
+    }
+      if(Trigger.isAfter && Trigger.isUpdate) {
         // ERPM Outbound Message for Entitlement     
         //Core_Entitlement_Outbound_Integrations.generateAGSeRPMOBM(Trigger.new, Trigger.OldMap);
         //Core_Entitlement_Outbound_Integrations.generateErpmOutboundMessage(Trigger.new, Trigger.OldMap);
         //Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(Trigger.new, Trigger.OldMap);
         //Added by Draco related to A&E changes.....Changes In-progress
-        Boolean isERPMNewDesign=false;
+        
+          Boolean isERPMNewDesign=false;
+          
         if(!mapFunctionalityNameTriggerExecution.isEmpty() &&mapFunctionalityNameTriggerExecution.containsKey('ErpmApiCallProcess') && mapFunctionalityNameTriggerExecution.get('ErpmApiCallProcess').Core_Active__c){
             isERPMNewDesign=true;
         }
+		Boolean isAGSNewDesign=false;
+         
+		//Ganesh Changes
+        if(!mapFunctionalityNameTriggerExecution.isEmpty() && mapFunctionalityNameTriggerExecution.containsKey('AgsApiCallProcess') && mapFunctionalityNameTriggerExecution.get('AgsApiCallProcess').Core_Active__c){
+            isAGSNewDesign=true;
+        }
+
+		if(!isAGSNewDesign){
         Core_Entitlement_Outbound_Integrations.publishAGSMessage(Trigger.new, Trigger.OldMap);
+		}
+		//Ganesh Changes End
         if(!(System.isBatch() && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger)) && !isERPMNewDesign){
             Core_Entitlement_Outbound_Integrations.publishERPMMessage(Trigger.new, Trigger.OldMap);
         }
         if(System.Label.PRM_Tracker_Enabled=='true'){
             Core_ContactHandler.checkExternalUserState(Trigger.newMap, Trigger.oldMap);
         }
+         
+        /*if(isERPMNewDesign){
+            Core_ContactHandler.erpmProcessFlow(Trigger.new, Trigger.oldMap);
+        }*/
+		//Ganesh Changes
+		if(isAGSNewDesign){
+            Core_ContactHandler.agsProcessFlow(Trigger.new, Trigger.oldMap);
+        }
+		//Ganesh Changes End
    }
     
 

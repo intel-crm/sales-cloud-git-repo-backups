@@ -1,0 +1,182 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "24111961-1ea5-4d4e-acfe-13daf7d7e233",
+  "label" : "Rebate Claim Upload Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "menuItems" : "[]"
+      },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "1dd033be-dfdf-40d6-b6d4-2efb20ab3014",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"padding:0.5px; margin: 0px; \"><a  class=\"slds-button slds-button_neutral\" href=\"\nhttps://intel--crmdevint3.sandbox.my.site.com/partneradmin/s/rebate-claim-stage/PCC_Rebate_Claim_Stage__c\"\n  style=\"float: right; text-decoration: none;color: #0054ae; border-color: #0054ae; \">\n     Back to Rebate Claim Upload History\n</a></div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "7d295237-8284-4070-8f76-44897f2fcf90",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "08f863e0-4f66-4861-889d-3ed607f3c952",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c1a97a14-ec4d-437f-bf65-b82c47700bfb",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "625193e0-fe8b-4bc6-b09d-b33248ef0b1d",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "68e16a33-d7f1-47c5-8c69-6596c371ac30",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Details"
+          }, {
+            "UUID" : "fd14b1b2-6131-4b13-a945-e1902adc76e1",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "Files"
+          } ],
+          "useOverflowMenu" : true
+        }
+      },
+      "componentName" : "forceCommunity:tabLayout",
+      "id" : "625193e0-fe8b-4bc6-b09d-b33248ef0b1d",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "f231a4c9-7954-46f5-8866-e06a005fed3d",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "Rebate_Claim_Stages__r",
+            "relatedListComponentOverride" : "ADVGRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "265ee04a-e701-4aca-b476-f953e8844887",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "68e16a33-d7f1-47c5-8c69-6596c371ac30",
+        "regionLabel" : "Details",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "relatedListApiName" : "AttachedContentDocuments",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "f2f2f0c8-bb48-489f-994a-e104b46a4933",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "fd14b1b2-6131-4b13-a945-e1902adc76e1",
+        "regionLabel" : "Files",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "315e3243-f25c-4479-be4c-0646db561184",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "06d76d27-f9d8-4638-b827-173ae15b10db",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "55db29ec-f1fb-409c-9ff9-db0f3455652f",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a782e2a6-0f47-4afb-95bd-8349b7f2099d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "c:pcc_RebateClaimBulkUpload",
+      "id" : "e21e7bcc-e8e0-4866-976f-0e954e494f8e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "context" : "RECORD",
+        "recordId" : "{!recordId}",
+        "width" : "MEDIUM"
+      },
+      "componentName" : "forceCommunity:feedPublisher",
+      "id" : "6254986c-f0f1-4f82-9106-e7cc894cf39f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "canChangeSorting" : true,
+        "defaultFilter" : "",
+        "defaultSortOrderHomeFeed" : "Relevance",
+        "defaultSortOrderTopicsFeed" : "Relevance",
+        "feedDesign" : "DEFAULT",
+        "hasFeedSearch" : true,
+        "subjectId" : "{!recordId}",
+        "type" : "Record"
+      },
+      "componentName" : "forceCommunity:forceCommunityFeed",
+      "id" : "8ff1d7ba-591a-4370-978f-cf8808778c4c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e0b72990-1a98-4f28-bfd0-884346db6b51",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "D9gihoBcrVmPnDirmD7WyT5a9SjrsS",
+  "type" : "view",
+  "viewType" : "detail-aFl"
+}

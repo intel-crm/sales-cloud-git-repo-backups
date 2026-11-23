@@ -19,6 +19,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Unique_Admin_User__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_Supported_Org_Admin__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

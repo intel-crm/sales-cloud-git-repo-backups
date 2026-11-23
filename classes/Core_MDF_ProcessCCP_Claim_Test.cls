@@ -438,7 +438,6 @@ Accenture – VD        18-Dec-2019              Refactored to follow best pract
         indiaActivity4.Core_MDF_Product_Category_txt__c ='Notebook/Mobile';
         indiaActivity4.AllocationId = retailMDFAllocation.Id;
         indiaActivity4.Core_MDF_TargetAudience__c = 'Small and Medium Business';
-        indiaActivity4.Core_MDF_Activity_Types__c = 'Personnel';
         database.insert(indiaActivity4);
         
         Core_MDF_Account_Bank_Mapping__c abm2 = Core_MDF_CCP_TestDataUtility.createAccountBankMap(dellRMFVirtualCorp.Id,retailBank.Id,false);

@@ -4,7 +4,17 @@
         <field>CUST_ID</field>
     </columns>
     <columns>
-        <field>Core_Goal__c.Core_Goal_Oppty_Sales_Group__c</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Goal__c.Core_Approved_KPI_Revenue__c</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Approved_Date__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Goal__c.Core_Goal_Owner__c</field>
     </columns>
     <columns>
         <field>Core_Goal__c.Core_Goal_Status__c</field>
@@ -13,21 +23,7 @@
         <field>Core_Goal__c.Core_Goal_BU_Focus_Area__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Goal__c.Core_KPI_Revenue__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Goal__c.Core_Approved_KPI_Revenue__c</field>
-    </columns>
-    <columns>
-        <field>Core_Goal__c.Core_Goal_Approved_Date__c</field>
-    </columns>
-    <columns>
         <field>Core_Goal__c.Core_Opportunity__c</field>
-    </columns>
-    <columns>
-        <field>CUST_NAME</field>
     </columns>
     <columns>
         <field>Core_Goal__c.Core_Goal_Oppty_Owner__c</field>
@@ -42,12 +38,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Core_Goal__c.Core_Goal_Owner__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Deal Win Goal 2020 - HPE APJ:Adesh Gupta</name>
     <params>
         <name>co</name>
@@ -58,10 +49,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Core_Goal__c.Core_Goal_Approved_Date__c</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

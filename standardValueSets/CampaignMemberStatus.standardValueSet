@@ -2,11 +2,6 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>true</sorted>
     <standardValue>
-        <fullName>Accepted</fullName>
-        <default>false</default>
-        <label>Accepted</label>
-    </standardValue>
-    <standardValue>
         <fullName>Attended</fullName>
         <default>false</default>
         <label>Attended</label>
@@ -17,9 +12,9 @@
         <label>Attended On Demand</label>
     </standardValue>
     <standardValue>
-        <fullName>checkedin</fullName>
+        <fullName>Attended On-demand</fullName>
         <default>false</default>
-        <label>checkedin</label>
+        <label>Attended On-demand</label>
     </standardValue>
     <standardValue>
         <fullName>Clicked</fullName>
@@ -32,11 +27,6 @@
         <label>Clicked Email</label>
     </standardValue>
     <standardValue>
-        <fullName>Declined</fullName>
-        <default>false</default>
-        <label>Declined</label>
-    </standardValue>
-    <standardValue>
         <fullName>Demo Attended</fullName>
         <default>false</default>
         <label>Demo Attended</label>
@@ -45,21 +35,6 @@
         <fullName>Demo Requested</fullName>
         <default>false</default>
         <label>Demo Requested</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Downloaded Content</fullName>
-        <default>false</default>
-        <label>Downloaded Content</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Enviado</fullName>
-        <default>false</default>
-        <label>Enviado</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Envoyé</fullName>
-        <default>false</default>
-        <label>Envoyé</label>
     </standardValue>
     <standardValue>
         <fullName>Events Attended</fullName>
@@ -77,6 +52,11 @@
         <label>Executive Event Attended</label>
     </standardValue>
     <standardValue>
+        <fullName>Filled-out Form</fullName>
+        <default>false</default>
+        <label>Filled-out Form</label>
+    </standardValue>
+    <standardValue>
         <fullName>Form Submitted</fullName>
         <default>false</default>
         <label>Form Submitted</label>
@@ -90,6 +70,16 @@
         <fullName>Gesendet</fullName>
         <default>false</default>
         <label>Gesendet</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Influenced</fullName>
+        <default>false</default>
+        <label>Influenced</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Inviato</fullName>
+        <default>false</default>
+        <label>Inviato</label>
     </standardValue>
     <standardValue>
         <fullName>Invited</fullName>
@@ -112,14 +102,14 @@
         <label>No Show</label>
     </standardValue>
     <standardValue>
+        <fullName>On List</fullName>
+        <default>false</default>
+        <label>On List</label>
+    </standardValue>
+    <standardValue>
         <fullName>Page Viewed</fullName>
         <default>false</default>
         <label>Page Viewed</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Pending</fullName>
-        <default>false</default>
-        <label>Pending</label>
     </standardValue>
     <standardValue>
         <fullName>Registered</fullName>
@@ -127,9 +117,9 @@
         <label>Registered</label>
     </standardValue>
     <standardValue>
-        <fullName>Répondu</fullName>
+        <fullName>Registration Error</fullName>
         <default>false</default>
-        <label>Répondu</label>
+        <label>Registration Error</label>
     </standardValue>
     <standardValue>
         <fullName>Responded</fullName>
@@ -137,14 +127,9 @@
         <label>Responded</label>
     </standardValue>
     <standardValue>
-        <fullName>Respondida</fullName>
+        <fullName>Risposta</fullName>
         <default>false</default>
-        <label>Respondida</label>
-    </standardValue>
-    <standardValue>
-        <fullName>Respondido</fullName>
-        <default>false</default>
-        <label>Respondido</label>
+        <label>Risposta</label>
     </standardValue>
     <standardValue>
         <fullName>Sent</fullName>
@@ -155,6 +140,11 @@
         <fullName>Visited Booth</fullName>
         <default>false</default>
         <label>Visited Booth</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Waitlisted</fullName>
+        <default>false</default>
+        <label>Waitlisted</label>
     </standardValue>
     <standardValue>
         <fullName>Webinar Attended</fullName>
@@ -177,6 +167,16 @@
         <label>WeChat Chat Menu</label>
     </standardValue>
     <standardValue>
+        <fullName>WeChat Click Link</fullName>
+        <default>false</default>
+        <label>WeChat Click Link</label>
+    </standardValue>
+    <standardValue>
+        <fullName>WeChat Click Menu</fullName>
+        <default>false</default>
+        <label>WeChat Click Menu</label>
+    </standardValue>
+    <standardValue>
         <fullName>WeChat Forward</fullName>
         <default>false</default>
         <label>WeChat Forward</label>
@@ -185,6 +185,11 @@
         <fullName>WeChat Link Clicked</fullName>
         <default>false</default>
         <label>WeChat Link Clicked</label>
+    </standardValue>
+    <standardValue>
+        <fullName>WeChat Page View</fullName>
+        <default>false</default>
+        <label>WeChat Page View</label>
     </standardValue>
     <standardValue>
         <fullName>WeChat Page Viewed</fullName>
@@ -197,6 +202,11 @@
         <label>WeChat Scan Code</label>
     </standardValue>
     <standardValue>
+        <fullName>WeChat Scan QR Code</fullName>
+        <default>false</default>
+        <label>WeChat Scan QR Code</label>
+    </standardValue>
+    <standardValue>
         <fullName>Отправлено</fullName>
         <default>false</default>
         <label>Отправлено</label>
@@ -205,45 +215,5 @@
         <fullName>Получен ответ</fullName>
         <default>false</default>
         <label>Получен ответ</label>
-    </standardValue>
-    <standardValue>
-        <fullName>レスポンスあり</fullName>
-        <default>false</default>
-        <label>レスポンスあり</label>
-    </standardValue>
-    <standardValue>
-        <fullName>已傳送</fullName>
-        <default>false</default>
-        <label>已傳送</label>
-    </standardValue>
-    <standardValue>
-        <fullName>已发送</fullName>
-        <default>false</default>
-        <label>已发送</label>
-    </standardValue>
-    <standardValue>
-        <fullName>已回复</fullName>
-        <default>false</default>
-        <label>已回复</label>
-    </standardValue>
-    <standardValue>
-        <fullName>已回應</fullName>
-        <default>false</default>
-        <label>已回應</label>
-    </standardValue>
-    <standardValue>
-        <fullName>送信</fullName>
-        <default>false</default>
-        <label>送信</label>
-    </standardValue>
-    <standardValue>
-        <fullName>응답됨</fullName>
-        <default>false</default>
-        <label>응답됨</label>
-    </standardValue>
-    <standardValue>
-        <fullName>전송됨</fullName>
-        <default>false</default>
-        <label>전송됨</label>
     </standardValue>
 </StandardValueSet>

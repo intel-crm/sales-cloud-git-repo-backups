@@ -7,6 +7,9 @@
         <locationY>0</locationY>
         <actionName>SWS_OpportunityContactRoleCIAction</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
             <name>ocrIds</name>
@@ -25,6 +28,9 @@
         <locationY>0</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>recipientAddresses</name>
@@ -93,12 +99,29 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>Get_User_record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Create_Campaign_Influence_From_OCR</targetReference>
             </connector>
             <label>Present</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>UserFullName</name>
@@ -126,11 +149,39 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_User_record</name>
+        <label>Get User record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Campaign_Influence_Permission</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>UserPermissionsMarketingUser</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Campaign_Influence_Permission</targetReference>
+            <targetReference>Get_User_record</targetReference>
         </connector>
         <filterFormula>AND(
     NOT(ISBLANK({!$Record.ContactId})),
@@ -153,7 +204,7 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <value>
-            <stringValue>shijasx.kunnappallil@intel.com,naveenx.muthuramalingam@intel.com,mandy.m.hackett@intel.com</stringValue>
+            <stringValue>shijasx.kunnappallil@intel.com,naveenx.muthuramalingam@intel.com</stringValue>
         </value>
     </variables>
 </Flow>

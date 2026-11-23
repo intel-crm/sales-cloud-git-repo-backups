@@ -38,20 +38,6 @@
         <unique>false</unique>
     </fields>
     <label>Core Embargoed Country</label>
-    <listViews>
-        <fullName>UCD</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
-        <columns>Active__c</columns>
-        <columns>Country_Code__c</columns>
-        <columns>State__c</columns>
-        <columns>State_Code__c</columns>
-        <columns>IsProtected</columns>
-        <filterScope>Everything</filterScope>
-        <label>UCD</label>
-        <language>en_US</language>
-    </listViews>
     <pluralLabel>Core_Embargoed_Countries</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

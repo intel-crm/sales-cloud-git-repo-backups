@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
+        <fullName>Financial_Incentive_Quote_Templates</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Financial Incentive Quote Templates</label>
+        <sharedTo>
+            <group>Pricing_Fin_Inctv_Pricing_Manager_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>IQR Quote Template - Financial Incentive</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>IQR_Quote_Templates</fullName>
         <accessLevel>Read</accessLevel>
         <label>IQR Quote Templates</label>
@@ -27,7 +41,7 @@
             <operation>equals</operation>
             <value>IQR Software Quote Template</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>PSG_Quote_Templates_Sharing</fullName>

@@ -103,7 +103,7 @@
                             <i><apex:outputText >{!accname}</apex:outputText></i><br/><br/><br/><br/><br/><br/>                                  
                         </apex:outputPanel>
                     </apex:pageBlockSectionItem>
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.inlineHelpText}">                  {!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.label} 
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.inlineHelpText}" rendered="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.Accessible}" >                  {!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.label} 
                             <apex:outputPanel >
                                 <div class="requiredInput"> 
                                     <div style="float:left;">
@@ -118,7 +118,7 @@
                                     </div>
                                     <div class="requiredBlock"></div>
                                     <div>
-                                    <apex:inputTextarea value="{!submitterCommentsText}" id="submitterComments" style="height:50px;width:300px" html-placeholder="Please enter the comments.." />
+                                    <apex:inputTextarea value="{!submitterCommentsText}" id="submitterComments" style="height:50px;width:300px" html-placeholder="Please enter the comments.." rendered="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.Accessible}" /> <!-- US1021248 -- 30/06/2021 -- Haritha -- FLS check for appsec security vulnerability -->
                                     </div>
                                 </div> 
                            <!-- <apex:pageBlockSection id="pbS1" columns="1">
@@ -132,7 +132,7 @@
                 </apex:pageBlockSection>
                 
                 <b><apex:outputLabel >Search Supported Product:</apex:outputLabel></b>&nbsp;&nbsp;
-                <apex:inputText value="{!searchTextProd}" onkeypress="return noenterproduct(event);"/>
+                <apex:inputText value="{!searchTextProd}" onkeypress="return noenterproduct(event);" rendered="{!$ObjectType.Product2.fields.Name.Accessible}" /> <!-- US1021248 -- 30/06/2021 -- Haritha -- FLS check for appsec security vulnerability -->
                 <apex:commandButton value="Search" action="{!searchProducts}" reRender="pg3" status="splashStatus" styleClass="slds-button slds-button_neutral"/>
                 
                 <apex:pageBlockSection title="Supported Products List" columns="1"> <!--rendered="{!IF(productList.size()>0,true,false)}"--><!--rendered="{!(productListvalue)}"-->
@@ -207,7 +207,7 @@
                         </apex:outputPanel>                         
                     </apex:pageBlockSectionItem>
                     <!-- added by Manoj-->
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.inlineHelpText}"> {!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.label} 
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.inlineHelpText}" rendered="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.Accessible}" > {!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.label} 
                             <apex:outputPanel >
                              <div class="requiredInput">
                                  <div style="float:left;">
@@ -222,7 +222,7 @@
                                  </div>
                                  <div class="requiredBlock"></div>
                                  <div>
-                                     <apex:inputTextarea id="submitterComments" value="{!submitterCommentsText}" style="height:50px;width:300px" html-placeholder="Please enter the comments.." />
+                                     <apex:inputTextarea id="submitterComments" value="{!submitterCommentsText}" style="height:50px;width:300px" html-placeholder="Please enter the comments.." rendered="{!$ObjectType.Core_IPS_MAP_PAR__c.fields.Core_Submitter_Comments__c.Accessible}" /> <!-- US1021248 -- 30/06/2021 -- Haritha -- FLS check for appsec security vulnerability -->
                                  </div>
                                  
                              <!--div class="requiredBlock"></div>    

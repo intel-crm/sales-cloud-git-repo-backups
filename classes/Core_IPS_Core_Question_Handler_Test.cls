@@ -458,8 +458,7 @@ public class Core_IPS_Core_Question_Handler_Test {
             cq.Core_IPS_Question__c = 'Test';
             cq.Core_IPS_Required__c = false;
             cq.Core_IPS_Status__c = 'Active';
-            cq.Core_IPS_Add_to_Reporting__c = true;
-			cq.Core_IPS_Reporting_Name__c = 'Test ReportName';
+            
             insert cq;
             
                 

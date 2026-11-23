@@ -89,7 +89,7 @@ div.WordSection1
 <tbody>
 <tr style="height: 53px;">
 <td style="height: 53px;">
-<p><span style="font-size: 11pt; color: #666666;">Hello {!Contact.Name},</span><br /><br /><span style="font-size: 11pt;"><span style="color: #666666;">We are delighted to welcome you to Direct Customer Return Portal! <br/><br/> To activate your account, please click the link: </span> <span style="color: #086db6;"><a href="https://consumerint.intel.com/intelcorpintb2c.onmicrosoft.com/B2C_1A_UnifiedLogin_SISU_PSC_SAML/generic/login?entityId=https://saml.salesforce.com.isvcqa25.returnforcredit"
+<p><span style="font-size: 11pt; color: #666666;">Hello {!Contact.Name},</span><br /><br /><span style="font-size: 11pt;"><span style="color: #666666;">We are delighted to welcome you to Direct Customer Return Portal! <br/><br/> To activate your account, please click the link: </span> <span style="color: #086db6;"><a href="https://consumerint.intel.com/intelcorpintb2c.onmicrosoft.com/B2C_1A_UnifiedLogin_SISU_PSC_SAML/generic/login?entityId=https://saml.salesforce.com.isvcqa24.returnforcredit"
 style="color: #086db6;">link</a></span> </span></p>
 </td>
 </tr>

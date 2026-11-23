@@ -75,27 +75,6 @@
     <columns>
         <field>Lead.Core_Lead_Conversion_Point__c</field>
     </columns>
-    <columns>
-        <field>COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Marketing_Tactic_ID__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Marketing_Tactic_ID__c</field>
-    </columns>
-    <columns>
-        <field>EMAIL</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
-    </columns>
-    <columns>
-        <field>CONVERTED_OPPORTUNITY_ID</field>
-    </columns>
     <format>Tabular</format>
     <name>Weekly Webinar Lead Oppty Report</name>
     <params>
@@ -109,6 +88,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CONVERTED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

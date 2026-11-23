@@ -53,7 +53,6 @@ public class PRM_IPAMembership_TriggerHandler_Test {
         aba.PRM_Account_Id__c = opidAcc.Id;
         aba.PRM_Partner_Benefit_Id__c = pb.id;
         aba.PRM_Status_Nm__c = 'Active';
-        aba.PRM_Status_Reason_Txt__c='Test';
         insert aba;
     }
     @isTest

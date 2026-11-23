@@ -14,8 +14,7 @@ export default class PCC_DealReg_TermsAndConditions extends NavigationMixin(Ligh
     
     label = {
         termsLabel_Part1,
-        termsLabel_Part2
-        
+        termsLabel_Part2    
     };
 
     handleSelection(event){
@@ -29,7 +28,7 @@ export default class PCC_DealReg_TermsAndConditions extends NavigationMixin(Ligh
 		.then(result => {
             this.data = result;
 			this.showLoadingSpinner = true;
-            const pageUrl = window.location.origin + '/s/deal';
+            const pageUrl = window.location.origin + '/partneradmin/s/deal';
             window.open(pageUrl,'_self');
             this.isLoaded = true; 
         })

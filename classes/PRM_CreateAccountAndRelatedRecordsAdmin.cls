@@ -1,15 +1,16 @@
 public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
     public static string logEntries;
+    public static string logEntryMsg;
     public static Boolean IS_Admin_Invite = false;
-	public static final String ORIGIN = 'PRM_AdminRegistration';
+	public static final String ORIGIN = 'PRM_SubmitAdminRegistration';
     /*to create log entry*/
     public static final String SEVERITY = 'Info';
     /*to create log entry*/
     public static final String PROJECT = 'IPA Registrations';  
     /*to create log entry*/
-    public static final string SCOPE = 'PRM_CreateAccountAndRelatedRecordsAdmin';
+    public static final string SCOPE = 'PRM_SubmitAdminRegistration';
   	public static List<Core_Log_Entry__c> listOfLogEntries = new List<Core_Log_Entry__c>();
-	public static database.saveResult srList;
+    public static database.saveResult[] srList;
 	public static List<Database.UpsertResult> result;
     //public static boolean iparefresh = boolean.valueOf(Label.PRM_IPARefresh);
     
@@ -19,11 +20,12 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
      *  @param            : map<String,String>
      *  @throws exception : NONE
      **/
-  @AuraEnabled
+    @AuraEnabled
     public static Map<String,String> createAccountAndRelatedRecordsAdmin(Map<String,String> registrationDetailsMap, string logEntryMsg)
     {
 		
          logEntryMsg+= 'Entered into createAccountAndRelatedRecordsAdmin method:with registration details?'+registrationDetailsMap;
+        System.debug('registrationDetailsMap -->'+JSON.serialize(registrationDetailsMap));
         Map<String,String> recordIdsMap = new Map<String, String>();
         /*Sample input Map passed from client side...  for Reference
         {"AccountName":"s","BizOrgType":"EBM- Embedded Board Manufacturer","PartnerRole":"Not Applicable","AddressLine1":"Flat No 403, Pritam woods , Green Glen Layout","Country":"ALA","CountryLabel":"Aland Islands","State":"","StateLabel":"","City":"Be","PostalCode":"560103","ContactFirstName":"s","ContactLastName":"s","ContactEmail":"s","PreferredLanguage":"THA",
@@ -37,11 +39,13 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
         //Rollback everything, in case of any exception
         Savepoint sp = Database.setSavepoint();
         try{
+            
             String accPartnerRoleExisting;
             String ContPartnerSegmentExist;
             string acmstatusApp;
             boolean accexist=false;
             boolean newacm=false;
+            Set<String> setOpid=new Set<String>();
             list<prm_accountchannelMembership__c> acmsList=new list<prm_accountchannelMembership__c>();
             //Get values from input Map passed
             String accountDupStatus = registrationDetailsMap.get('AccountDuplicateStatus');
@@ -90,13 +94,17 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
                     ContactPartnerSegment = segTypeLabelMap.get(str);
                 }
             }
+            system.debug('accountpartnersegment'+AccountPartnerSegment);
+            system.debug('contactpartnersegmnet'+ContactPartnerSegment);
             
             if(registrationDetailsMap.keySet().contains('SelectedRow') &&  registrationDetailsMap.get('SelectedRow') != null && registrationDetailsMap.get('SelectedRow') != '')
             {
                 rowSelected = true;
                 selectedRowJSONList = (List<Object>) JSON.deserializeUntyped(registrationDetailsMap.get('SelectedRow'));
                 selectedRowMap = (Map<String,Object>) selectedRowJSONList[0];
+                // system.debug(selectedRowMap.get('Name'));
                 //String Name = String.valueOf(selectedRowMap.get('Name'));
+                //system.debug(name);
             }
             
             //Check scenario
@@ -111,6 +119,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
             
             //Create Account ********************************
             boolean newAccountCreated = false;
+            string opidWithPA='';
             Id accountId = selectedRowMap != null && selectedRowMap.containsKey('Id') && selectedRowMap.get('Id') != null?String.valueOf(selectedRowMap.get('Id')) : null;
             if((isDuplicateContact == false) && (accountDupStatus == 'NoDup' || (!rowSelected)) && String.IsBlank(accId) && String.isBlank(accountId))
             {
@@ -171,12 +180,15 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
             else if(rowSelected || String.IsNotBlank(accId)){
                 accexist=true;
                 List<Account> selectedAccountList  = new List<Account>();
-                
                 if(String.IsBlank(accountId)){accountId = accId;
                 }
-                selectedAccountList = [Select id,Name,AccountNumber,BillingCountryCode,ShippingCountryCode,BillingStateCode,ShippingStateCode,BillingStreet,ShippingStreet,BillingCity,ShippingCity,BillingPostalCode,ShippingPostalCode,Core_Account_Type__c,core_IPA_Partner_Role__c,Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Sales_Groups__c,Industry,Core_User_Defined_Website__c,Core_User_Defined_Phone_Number__c,Core_IPA_Partner_Segment__c,Core_IPA_Badge_Tier__c from Account where id =: accountId ];
+                selectedAccountList = [Select id,Name,Core_IPA_One_Partner_Id__c,AccountNumber,BillingCountryCode,ShippingCountryCode,BillingStateCode,ShippingStateCode,BillingStreet,ShippingStreet,BillingCity,ShippingCity,BillingPostalCode,ShippingPostalCode,Core_Account_Type__c,core_IPA_Partner_Role__c,Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Sales_Groups__c,Industry,Core_User_Defined_Website__c,Core_User_Defined_Phone_Number__c,Core_IPA_Partner_Segment__c,Core_IPA_Badge_Tier__c from Account where id =: accountId ];
                 if(selectedAccountList != null && selectedAccountList.size()>0) {
                     accToProcess =  selectedAccountList[0];
+                    opidWithPA=selectedAccountList[0].Core_IPA_One_Partner_Id__c;
+					setOpid.add(selectedAccountList[0].Core_IPA_One_Partner_Id__c);
+                    System.debug('DEBUG setOpid = ' + setOpid);
+                    System.debug('DEBUG opidWithPA = ' + opidWithPA);
                 }
                 list<prm_accountchannelMembership__c> acmsPending=new list<prm_accountchannelMembership__c>();
                 list<prm_accountchannelMembership__c> acmsApproved=new list<prm_accountchannelMembership__c>();
@@ -207,6 +219,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
                     }*/ //switch removal
                     acmstatusApp=acmsPending[0].PRM_Status_Nm__c;
                 }
+                System.debug('accToProcess160----> ' +accToProcess);
                 /** partener segment assigned to the existing account */
                 /*if(accToProcess.Core_IPA_Partner_Segment__c != null &&  accToProcess.Core_IPA_Partner_Segment__c != '' && (!iparefresh || Test.isRunningTest())) {
                     List<String> partnersegList = (accToProcess.Core_IPA_Partner_Segment__c).split(';');
@@ -237,13 +250,15 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
             if(accToProcess.Core_Intel_Partner_Alliance_PartnerGroup__c == false){
                 
                 if(accToProcess.AccountNumber == null || String.isBlank(accToProcess.AccountNumber)){
+                    System.debug('@@ BLANK ACCOUNT NUMBER');
                     accNumber = PRM_AccountNumberGenerator.getAccountNum();
                     if(String.isNotBlank(accNumber)){
                         accToProcess.AccountNumber = accNumber;
                     }
-                }
+                System.debug('@@ accNumber'+accNumber);  }
             }
             
+            system.debug('@ queried Account existing'+accToProcess);
             
             
             //Create Contact **************************
@@ -257,6 +272,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
                 cont.Email = registrationDetailsMap.get('ContactEmail');
                 //Keerthan added as part of US609304
                 /*******************/
+                System.debug('ContactCountry : '+registrationDetailsMap.get('ContactCountry'));
                 cont.MailingCountry = registrationDetailsMap.get('ContactCountry');
                 cont.MailingCountryCode = registrationDetailsMap.get('ContactCountry');
                 /*******************/
@@ -298,6 +314,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
                     //if(!iparefresh ||Test.isRunningTest())cont.Core_IPA_Contact_Segment__c = ContactPartnerSegment; //switch removal
                 }
                 cont.AccountId = accToProcess.id;
+                System.debug('Contact JSON -->'+JSON.serialize(cont));
                 insert cont;
                 newContactCreated = true;
                 contToProcess = cont;
@@ -376,7 +393,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
                 accChannelMembership.PRM_Status_Reason_Txt__c = 'Admin Registration';//TWC729-8089 : Adding reason text : NJ
                 if(ipaChannelPgmId != null && ipaChannelPgmId != '') {accChannelMembership.PRM_Channel_Program_Id__c = ipaChannelPgmId;}
                 if(channelProgramLevelId != null && channelProgramLevelId != '') {accChannelMembership.PRM_Channel_Program_Level_Id__c = channelProgramLevelId ;}
-		logEntryMsg+='Creating new ACM when New Account created or existing Account is NonIPA'+accChannelMembership;
+				logEntryMsg+='Creating new ACM when New Account created or existing Account is NonIPA'+accChannelMembership;
                 //update Account(Biz Org Type, PR, IPA) and Contact(PR) when ACM record created, but when records are not newly created already
                 /*if(!newContactCreated)
                 {
@@ -389,6 +406,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
                     }
                     //contToProcess.Core_IPA_Partner_Role__c = registrationDetailsMap.get('PartnerRole') ;
                     update contToProcess ;
+                    system.debug('<----Contact Updated--->');
                 }*/
             }
             
@@ -431,6 +449,8 @@ public without sharing class PRM_CreateAccountAndRelatedRecordsAdmin {
                         accToProcess.PRM_IPA_Badge_Tier_Date__c = System.now();
                     }
                 }
+                
+                system.debug('<----Account Updated--->');
             }
             
             //update contact's partner role if it is an existing contact
@@ -503,34 +523,48 @@ if(srList!=null){
             Map<String,PRM_Account_Contact_Relationship__c> existingACRMap = new Map<String,PRM_Account_Contact_Relationship__c>();
             List<PRM_Account_Contact_Relationship__c> accConRelationshipsToUpsert = new List<PRM_Account_Contact_Relationship__c>();
             Map<String,PRM_Account_Contact_Relationship__c> ACRMapForExistingACM = new Map<String,PRM_Account_Contact_Relationship__c>();
+			set<string> setPAAlreadyExist=new set<string>();
             //check for duplicates
-            for(PRM_Account_Contact_Relationship__c acr : [Select id,PRM_Account_Id__c,PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_InActive_Ind__c,PRM_Status_Nm__c,PRM_Partner_Role__c,PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c from PRM_Account_Contact_Relationship__c 
+            for(PRM_Account_Contact_Relationship__c acr : [Select id,PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c,PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_InActive_Ind__c,PRM_Status_Nm__c,PRM_Partner_Role__c,PRM_Relationship_Id__r.Name,PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c from PRM_Account_Contact_Relationship__c 
                                                            where PRM_Account_Id__c =: accToProcess.id
-                                                          ]){
-                if(acr.PRM_Contact_Id__c == contToProcess.id){
+														   or (PRM_Account_Id__r.Core_IPA_One_Partner_Id__c =: opidWithPA
+														   and PRM_InActive_Ind__c=false and PRM_Status_Nm__c='Complete'
+														   and (PRM_Relationship_Id__r.Name='Partner Admin' or PRM_Relationship_Id__r.Name='Partner Admin Delegate')
+                                                          )]){
+				if(accToProcess.id==acr.PRM_Account_Id__c){
+					if(acr.PRM_Contact_Id__c == contToProcess.id){
                     existingACRMap.put(String.valueOf(acr.PRM_Account_Id__c)+String.valueOf(acr.PRM_Contact_Id__c)+String.valueOf(acr.PRM_Relationship_Id__c),acr) ;
                 }
                 ACRMapForExistingACM.put(String.valueOf(acr.PRM_Relationship_Id__c),acr);
                 if(acr.PRM_InActive_Ind__c == false){
                     onlyEmp = true;
                 }
+				}
+				if(acr.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c!=null && opidWithPA==acr.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c && acr.PRM_InActive_Ind__c == false && acr.PRM_Status_Nm__c =='Complete'
+				&& (acr.PRM_Relationship_Id__r.Name == 'Partner Admin' || acr.PRM_Relationship_Id__r.Name == 'Partner Admin Delegate')){
+					setPAAlreadyExist.add(acr.PRM_Relationship_Id__r.Name);
+                    System.debug('DEBUG setPAAlreadyExist=' + setPAAlreadyExist);
+				}
+				
                 
             }
             if(ipaChannelPgmId != null  && ipaChannelPgmId != '' ){
                 for(PRM_ContactRelationships__c crel : [Select Id, Name, PRM_Channel_Program_Id__c From PRM_ContactRelationships__c Where PRM_Channel_Program_Id__c =: ipaChannelPgmId]){
                     contactRelationshipsById.put(crel.Name, crel);
                 }
+                system.debug('@@@contactRelationshipsById'+contactRelationshipsById);
             }
             Set<String> relationshipToAssign = new Set<String>();
+            System.debug('setPAAlreadyExist = ' + setPAAlreadyExist);
             
             if(contactRelationshipsById != null && (!contactRelationshipsById.isEmpty())){
                 //PC and WF both are assigned when new ACM is created, otherwise only WF
                 try{
-                    if(contactRelationshipsById.containsKey(System.Label.PRM_Primary_Contact)){
+                    if(contactRelationshipsById.containsKey(System.Label.PRM_Primary_Contact) ){
                         if(newAccountCreated||(rowSelected == false && isDuplicateContact == false)){
                             relationshipToAssign.add(contactRelationshipsById.get(System.Label.PRM_Primary_Contact).id);
                         }
-                        else if(acmstatusapp!='Approved'){
+                        else if(acmstatusapp!='Approved' && setPAAlreadyExist.isEmpty()){
                             relationshipToAssign.add(contactRelationshipsById.get(System.Label.PRM_Primary_Contact).id);
                             
                         }
@@ -544,6 +578,8 @@ if(srList!=null){
                     relationshipToAssign.add(contactRelationshipsById.get(System.Label.PRM_WorksFor).id);
                 }
             }
+            
+            system.debug('Relationship to assign-->'+relationshipToAssign);
             for(String crelID : relationshipToAssign)
             {
                 PRM_Account_Contact_Relationship__c accConRel = New PRM_Account_Contact_Relationship__c();
@@ -568,6 +604,9 @@ if(srList!=null){
                 {   //update ACR only if inActive indicator is false
                     if(existingACRMap.get(String.valueOf(accConRel.PRM_Account_Id__c)+String.valueOf(accConRel.PRM_Contact_Id__c)+String.valueOf(accConRel.PRM_Relationship_Id__c)).PRM_InActive_Ind__c == true){
                         for(PRM_Account_Contact_Relationship__c ExistingAcr: existingACRMap.values()){
+                            if(ExistingAcr.PRM_Relationship_Id__c != crelID){
+                                continue;
+                            }
                             if(onlyEmp && ExistingAcr.PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c == 'PRIMARY'){
                                 continue;
                             }
@@ -590,6 +629,7 @@ if(srList!=null){
                     //if no duplicate ACR record found..
                     accConRelationshipsToUpsert.add(accConRel) ;
                 }
+                system.debug('ACR List to upsert'+accConRelationshipsToUpsert);
             }
             if(accConRelationshipsToUpsert!= null && accConRelationshipsToUpsert.size()>0) { 
 			logEntryMsg+='accConRelationshipsToUpsert'+accConRelationshipsToUpsert;
@@ -610,7 +650,7 @@ if(srList!=null){
             List<Contact> contactsTosendEmail = new List<Contact>();
             contactsTosendEmail.add(contToProcess);
             //sendWelcomeEmailNotification(contactsTosendEmail);
-			 listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = 'PRM_AdminRegistration', 
+			 listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = 'PRM_AccountChangeEventSubscriber', 
                                                Core_Origin__c = ORIGIN, Core_Details__c = logEntryMsg, 
                                                Core_Severity__c = SEVERITY, Core_When__c = System.Now(), 
                                                Core_Project__c = PROJECT));
@@ -700,7 +740,21 @@ if(srList!=null){
                 }
                 
             }
-            if(accLegalAgreementUpsertList!= null && accLegalAgreementUpsertList.size()>0) {IS_Admin_Invite = true; upsert accLegalAgreementUpsertList ; }
+            if(accLegalAgreementUpsertList!= null && accLegalAgreementUpsertList.size()>0) {IS_Admin_Invite = true; 
+			//upsert accLegalAgreementUpsertList ;
+			logEntryMsg+='accLegalAgreementUpsertList'+accLegalAgreementUpsertList;
+			Result=database.upsert(accLegalAgreementUpsertList,false) ; 
+			  if(!result.isempty()){
+				for (Database.upsertResult sr : result) {
+                if (!sr.isSuccess()) {
+                    for (Database.Error e  : sr.getErrors()) {                      
+                       logEntryMsg+='Error Occured while upserting ACR'+e.getMessage()+'Id -->'+sr.getId(); 
+                    }
+                }
+            }
+		}
+
+			}
             
             //Update ACM to Approved Status
             Boolean isAdminProcess = True;
@@ -724,8 +778,19 @@ if(srList!=null){
                     }
                 }
             }
+            logEntryMsg+='acmListtoUpdate'+acmListtoUpdate;
+			
             if(acmListtoUpdate.size() > 0){
-                update acmListtoUpdate;
+              srList=database.update( acmListtoUpdate,false);
+				if(srList!=null){		
+		for (Database.SaveResult sr : srList) {
+                if (!sr.isSuccess()) {
+                    for (Database.Error e  : sr.getErrors()) {                      
+                       logEntryMsg+='Error Occured while updating acm'+e.getMessage()+'Id -->'+sr.getId(); 
+                    }
+                }
+            }
+			}
                 acmApproved = True;
             }
             if(acmApproved){
@@ -743,11 +808,16 @@ if(srList!=null){
             else{
                 logEntries='No Exception but ACM wasnt Approved';
             }
-            
+            listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = 'PRM_AccountChangeEventSubscriber', 
+                                               Core_Origin__c = ORIGIN, Core_Details__c = logEntryMsg, 
+                                               Core_Severity__c = SEVERITY, Core_When__c = System.Now(), 
+                                               Core_Project__c = PROJECT));
         }
         catch(exception e){string LogEntry=PRM_ErrorUtilityClass.logError(e);
             Database.rollback( sp );
             logEntries=logEntries!=null?logEntries+';'+LogEntry: LogEntry;
+            system.debug('---getmessage '+e.getmessage());
+            system.debug('---logEntries '+logEntries);
         }
         Finally{
             PRM_RegistrationTrackerUtility.EnQueueTrackerUtility(reordIds,null,logEntries,'PRM_CreateAccountAndRelatedRecordsAdmin','Admin');
@@ -804,7 +874,17 @@ if(srList!=null){
             cont.Core_Profession__c = regRequest.PRM_Profession__c;
             Schema.SObjectType acc1 = Schema.Account.getSObjectType();
             System.enqueueJob(new ContactERPMIntegrationStatusHandler(duplicateAccountQueueable,acc1));
-            update cont;
+         database.saveresult srList=database.update(cont,false);
+		  logEntryMsg+='contact to update'+cont;
+			if(srList!=null){		
+
+                if (!srList.isSuccess()) {
+                    for (Database.Error e  : srList.getErrors()) {                      
+                       logEntryMsg+='Error Occured while updating contacts'+e.getMessage()+'Id -->'+srList.getId(); 
+                    }
+                }
+            }
+			
             
             //##create Contact Subscription Association
             Set<String> subscriptionValues =new Set<String>();
@@ -836,11 +916,13 @@ if(srList!=null){
                     }
                 }
             }
+            System.debug('@JJKK contactSubscriptionUpsertList'+contactSubscriptionUpsertList);
             if(contactSubscriptionUpsertList!= null && contactSubscriptionUpsertList.size()>0) { 
                 List<Database.UpsertResult> result = Database.upsert(contactSubscriptionUpsertList, false); 
                 for(Database.UpsertResult rs:result){
                     if(!rs.isSuccess()){
                         System.debug('@JJKK re'+rs);
+						logEntryMsg+='Error -->'+rs.getErrors()+'Id -->'+rs.getId();
                     }
                 }
             } // added database.upsert to help partial update
@@ -863,6 +945,7 @@ if(srList!=null){
                         );// this is to avoind any unintended update request
                 }
             }
+            System.debug('@@JJ listRegReq'+listRegReq);
             if(!listRegReq.isEmpty()){
                System.enqueueJob(new PRM_CreateAccountAndRelatedRecords.UpdateSyncProfileResponse(listRegReq));
             }

@@ -27,6 +27,7 @@
     <description>Migrated from the: Core_OppProd_BU_Values_Upon_Approval workflow rule
 Workflow rule description: When a product status is set to &quot;Win Approved&quot;, stamp the current BU Short Name and BU Segment on the product.&quot;</description>
     <environments>Default</environments>
+    <interviewLabel>Core_OppProd_BU_Values_Upon_Approval {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_OppProd_BU_Values_Upon_Approval</label>
     <migratedFromWorkflowRuleName>Core_OppProd_BU_Values_Upon_Approval</migratedFromWorkflowRuleName>
     <processMetadataValues>
@@ -39,6 +40,12 @@ Workflow rule description: When a product status is set to &quot;Win Approved&qu
         <name>CanvasMode</name>
         <value>
             <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
@@ -82,5 +89,5 @@ Stamp the current BU Short Name</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Draft</status>
 </Flow>

@@ -89,7 +89,6 @@ public without sharing class  PRM_VXData_Report_Utility {
                                                 
                                                 
                                             }//loop block ends here
-                                           
              try {
                 if (!vxDataOldList.isEmpty() && vxDataOldList.size() > 0) {
                     updateVXDataReportFieldsWrapper obj=new updateVXDataReportFieldsWrapper();
@@ -98,7 +97,6 @@ public without sharing class  PRM_VXData_Report_Utility {
                     obj.countOfAccSalesGroupMap=countOfAccSalesGroupMap;
                     obj.countSalesAndTrainingNextTierMap=countSalesAndTrainingNextTierMap;
                     obj.locAccids=locaccts;
-                    System.debug('@RRT obj'+obj);
                     updateVXDataReportFields(obj);//JB -- ATHR long parameters fix
                     /*updateVXDataReportFields(
                         vxDataOldList,
@@ -157,7 +155,6 @@ public without sharing class  PRM_VXData_Report_Utility {
     //         }
 
     //          }//loop ends here
-    //     
     //     if(locAccids!=null && locAccids.size()>0){
     //         list<AggregateResult> dataListTrainedSum = new list<AggregateResult >();
     //         map<string,decimal> creditmap=new map<string,decimal>();
@@ -199,7 +196,6 @@ public without sharing class  PRM_VXData_Report_Utility {
                 
     //         // }
     //         dataListTrainedSum = [SELECT max(PRM_Training_Credit_Points_Count_Nbr__c) totalTrained,PRM_Account_Id__c,PRM_One_Partner_Id__c   from PRM_Value_Exchange_Data__c WHERE (PRM_Account_Id__c in :locAccids or PRM_One_Partner_Id__c in:locAccids) and PRM_TimePeriod_Nm__c=:Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c,PRM_Account_Id__c ];
-    //         system.debug('---dataListTrainedSum '+dataListTrainedSum );
     //         for(AggregateResult agresult: dataListTrainedSum ){
     //             if((string)agresult.get('PRM_One_Partner_Id__c')!=null)
     //             {
@@ -222,7 +218,6 @@ public without sharing class  PRM_VXData_Report_Utility {
     //                 }
     //             }
     //         }
-    //         system.debug('---creditmap '+creditmap);
     //         if(creditmap!=null){
     //             for(PRM_Value_Exchange_Data__c vx:updateVXRcrds){
     //                 if(vx.PRM_TimePeriod_Nm__c == Label.PRM_Current_measurement_period){
@@ -299,7 +294,6 @@ public without sharing class  PRM_VXData_Report_Utility {
             }
     
              }//loop ends here
-        //system.debug('---att.locAccids '+att.locAccids);
         if(att.locAccids!=null && att.locAccids.size()>0){
             list<AggregateResult> dataListTrainedSum = new list<AggregateResult >();
             map<string,decimal> creditmap=new map<string,decimal>();
@@ -341,7 +335,6 @@ public without sharing class  PRM_VXData_Report_Utility {
                 
             // }
             dataListTrainedSum = [SELECT max(PRM_Training_Credit_Points_Count_Nbr__c) totalTrained,PRM_Account_Id__c,PRM_One_Partner_Id__c   from PRM_Value_Exchange_Data__c WHERE (PRM_Account_Id__c in :att.locAccids or PRM_One_Partner_Id__c in:att.locAccids) and PRM_TimePeriod_Nm__c=:Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c,PRM_Account_Id__c ];
-            //system.debug('---dataListTrainedSum '+dataListTrainedSum );
             for(AggregateResult agresult: dataListTrainedSum ){
                 if((string)agresult.get('PRM_One_Partner_Id__c')!=null)
                 {
@@ -364,7 +357,6 @@ public without sharing class  PRM_VXData_Report_Utility {
                     }
                 }
             }
-            //system.debug('---creditmap '+creditmap);
             if(creditmap!=null){
                 for(PRM_Value_Exchange_Data__c vx:updateVXRcrds){
                     if(vx.PRM_TimePeriod_Nm__c == Label.PRM_Current_measurement_period){
@@ -382,14 +374,7 @@ public without sharing class  PRM_VXData_Report_Utility {
         }       
         if(Schema.sObjectType.PRM_Value_Exchange_Recommendation__c.isCreateable()){
             if(!updateVXRcrds.isEmpty()) {
-                List<Database.SaveResult> result = Database.update(updateVXRcrds);//updating VX records
-                for(Database.SaveResult sr : result) {
-                    if(!sr.isSuccess()) {
-                        for(Database.Error err : sr.getErrors()) {
-                            System.debug('RRTError -->'+sr.getErrors()+'Id -->'+sr.getId());
-                        }
-                    }
-                }
+                Database.update(updateVXRcrds);//updating VX records
             }
         }else {
                 Core_Log_Entry.logEntryWithDetails('PRM_VXData_Report_Utility', 'IPA','updateVXDataReportFields', 'exception',System.label.PRM_Log_Entry_Error_Object_Level,System.label.PRM_Log_Entry_Error_Object_Level , ' ', '', ' ');
@@ -407,35 +392,6 @@ public without sharing class  PRM_VXData_Report_Utility {
                 }
             }
             }
-        }
-    }
-    public static void shareRecordWithPublicGroup(List<PRM_Value_Exchange_Data__c> vxDataList){
-        try{
-            List<PRM_Value_Exchange_Data__Share> vxDataShareRecList = new List<PRM_Value_Exchange_Data__Share>();
-            Group grp = [
-                SELECT Id
-                FROM Group
-                WHERE DeveloperName = 'PMP_All_Partner_Users'
-                LIMIT 1
-            ];
-            if(vxDataList != null && vxDataList.size() > 0 &&  !vxDataList.isEmpty()){
-                for(PRM_Value_Exchange_Data__c vxData :vxDataList){
-                    PRM_Value_Exchange_Data__Share shareRec = new PRM_Value_Exchange_Data__Share();
-                    shareRec.ParentId = vxData.Id;
-                    shareRec.UserOrGroupId = grp.Id;
-                    shareRec.AccessLevel = 'Edit'; // Read or Edit
-                    shareRec.RowCause = Schema.PRM_Value_Exchange_Data__Share.RowCause.Manual;
-                    vxDataShareRecList.add(shareRec);
-                    
-                }
-            }
-            system.debug('vxDataShareRecList-->'+vxDataShareRecList);
-            if(vxDataShareRecList != null && vxDataShareRecList.size() > 0 &&  !vxDataShareRecList.isEmpty()){
-                insert vxDataShareRecList;
-            }
-        }
-        catch(exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'PRM_VXData_Report_Utility', Core_Project__c = 'PRM_VXData_Report_Utility' , Core_Details__c = 'Getting exception for VX Data record sharing', Core_Severity__c = 'info', Core_When__c = System.Now());
         }
     }
 }

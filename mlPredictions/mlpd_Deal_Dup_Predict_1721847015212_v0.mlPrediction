@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLPredictionDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>Deal_Dup_Predict</aiApplicationDeveloperName>
+    <developerName>mlpd_Deal_Dup_Predict_1721847015212_v0</developerName>
+    <masterLabel>Deal Dup Predict</masterLabel>
+    <status>Draft</status>
+    <type>BinaryClassification</type>
+</MLPredictionDefinition>

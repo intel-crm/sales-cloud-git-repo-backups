@@ -2,8 +2,6 @@ import { LightningElement,api } from 'lwc';
 
 export default class DynamicFormBuilder extends LightningElement {
     @api iscommunity;
-    @api iscummunitydropdown;
-   
     @api type;   // type of field
     @api fieldLabel;  // 
     @api lovs; // list of value

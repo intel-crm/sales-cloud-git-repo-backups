@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>Submit</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
@@ -14,6 +14,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Pricing_Intel_SKU_Performance_Nbr__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Predict_Won_Status_Percent__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

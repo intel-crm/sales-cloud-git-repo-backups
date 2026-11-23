@@ -49,7 +49,7 @@
         <field>PRIORITY</field>
     </columns>
     <filter>
-        <booleanFilter>(((((16 OR 15 OR 14 OR 13 OR 12 OR 11 OR 10 OR 9 OR 1 OR 4 OR 5 OR 6 OR 7 OR 8 OR 17 OR 18 OR 19 OR 20) AND 2 AND 3))))</booleanFilter>
+        <booleanFilter>((((16 OR 15 OR 14 OR 13 OR 12 OR 11 OR 10 OR 9 OR 1 OR 4 OR 5 OR 6 OR 7 OR 8 OR 17 OR 18 OR 19) AND 2 AND 3)))</booleanFilter>
         <criteriaItems>
             <column>FK_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -153,7 +153,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>GM 3.5 Open Issues</value>
+            <value>GM Info 3.5</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_NAME</column>
@@ -167,7 +167,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>startsWith</operator>
-            <value>GM MY22 Open Issue Report</value>
+            <value>GM_HARMAN</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_NAME</column>
@@ -181,14 +181,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>MY22_Info3.7_GM+Harman</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>MY20_Info3.5_GM+Harman</value>
+            <value>GM_Info3.5_MY22</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -207,8 +200,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Case.Core_IPS_Age__c</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

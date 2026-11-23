@@ -24,5 +24,6 @@ export const getMarketplaceBreadcrumbs = async() => {
     response.breadcrumb = result;
     console.log(':::response:::', response);
     return Promise.resolve(response);
+    //return null;
   })
 }

@@ -1,6 +1,10 @@
 {
-  "isSuccess": true,
-  "code": "200",
-  "message": "File uploaded successfully",
-  "fileId": "00Pxx0000000001"
+    "totalRecords": 1,
+    "successContent": [
+        {
+            "activity": "File Uploaded successfully for Activity: 0RJ1J0000008QxFWAU"
+        }
+    ],
+    "isSuccess": true,
+    "code": "200"
 }

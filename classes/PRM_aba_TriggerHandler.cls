@@ -28,17 +28,18 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
     public static boolean mpFirstUpdateRun = true;
     public static boolean mpFirstDeleteRun = true;
     @TestVisible static Boolean executeTrigger = true;
+    public static Map<String,Trigger_Execution__mdt> triggerExecution = Trigger_Execution__mdt.getAll();
     
     public override void afterInsert() {
-        if(executeTrigger && isActive('Partner_Benefit')&& PRM_accBenefitAssociationUtility.firstRunAfterInsert && Trigger.isInsert){
+        if(executeTrigger && triggerExecution.containsKey('Partner_Benefit') && triggerExecution.get('Partner_Benefit').Active__c/*isActive('Partner_Benefit')*/&& PRM_accBenefitAssociationUtility.firstRunAfterInsert && Trigger.isInsert){
             PRM_accBenefitAssociationUtility.firstRunAfterInsert = false;
             PRM_accBenefitAssociationUtility.onManualBenefitInsert((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap,false);
             PRM_accBenefitAssociationUtility.opidBenefitInactivation((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap); //Sheetal 14/5/2020
         }
 
-        if(isActive('ABA_Insert_ERPM_Integration_Trigger') && firstRun) {
+        if(triggerExecution.containsKey('ABA_Insert_ERPM_Integration_Trigger') && triggerExecution.get('ABA_Insert_ERPM_Integration_Trigger').Active__c/*isActive('ABA_Insert_ERPM_Integration_Trigger')*/ && firstRun) {
             if(system.isBatch()){
-                System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
+                System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));  
             }
             else{
                 System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
@@ -49,7 +50,7 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
         //Do not add firstRun check here,it will leads to failure of MPI records creation during select benefit scenario.
         //first run flag will make the method to be exectuted once and when the same ABA record fails in validation the method won't be executed again for the next ABA record.
       List<PRM_AccountBenefitAssociation__c> abaNewList= PRM_accBenefitAssociationUtility.getABAList((List<PRM_AccountBenefitAssociation__c>)Trigger.new);
-        if(isActive('ABA_Insert_PartnerUtility_Trigger')){
+        if(triggerExecution.containsKey('ABA_Insert_PartnerUtility_Trigger') && triggerExecution.get('ABA_Insert_PartnerUtility_Trigger').Active__c/*isActive('ABA_Insert_PartnerUtility_Trigger')*/){
             PMP_AccountBenefitPartnerUtility.insertUtility(abaNewList);
                       
         } 
@@ -58,8 +59,8 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
     }
     
     public override void afterUpdate() {
-        if(isActive('ABA_After_Update') && trigger.Isupdate && PRM_accBenefitAssociationUtility.firstRun) {
-            PRM_accBenefitAssociationUtility.firstRun = false;
+        if(triggerExecution.containsKey('ABA_After_Update') && triggerExecution.get('ABA_After_Update').Active__c/*isActive('ABA_After_Update')*/ && trigger.Isupdate && PRM_accBenefitAssociationUtility.firstRun) {
+            PRM_accBenefitAssociationUtility.firstRun = false; 
             PRM_accBenefitAssociationUtility.onManualBenefitInsert((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap,false);
             PRM_accBenefitAssociationUtility.onOPIDBenefitStatusInactive((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap); 
             PRM_accBenefitAssociationUtility.onStatusInactiveParent((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap);
@@ -67,20 +68,20 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
             PRM_accBenefitAssociationUtility.onStatusInactive((List<PRM_AccountBenefitAssociation__c>)Trigger.new);
         }
         List<PRM_AccountBenefitAssociation__c> abaNewList= PRM_accBenefitAssociationUtility.getABAList((List<PRM_AccountBenefitAssociation__c>)Trigger.new);
-        if(isActive('ABA_Update_PartnerUtility_Trigger') /*&& PRM_aba_TriggerHandler.mpFirstUpdateRun*/){
+        if(triggerExecution.containsKey('ABA_Update_PartnerUtility_Trigger') && triggerExecution.get('ABA_Update_PartnerUtility_Trigger').Active__c/*isActive('ABA_Update_PartnerUtility_Trigger')&& PRM_aba_TriggerHandler.mpFirstUpdateRun*/){
             PRM_aba_TriggerHandler.mpFirstUpdateRun = false;
           
             PMP_AccountBenefitPartnerUtility.updateUtility(abaNewList, (Map<Id,PRM_AccountBenefitAssociation__c>) Trigger.oldMap);
         }
         
-        if(isActive('ABA_Update_ERPM_Integration_Trigger') && firstRun) {
+        if(triggerExecution.containsKey('ABA_Update_ERPM_Integration_Trigger') && triggerExecution.get('ABA_Update_ERPM_Integration_Trigger').Active__c/*isActive('ABA_Update_ERPM_Integration_Trigger')*/ && firstRun) {
             
             if(system.isBatch()){
                 System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
             }
             else{
                 //Id jobid = 
-                    System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
+				System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
             }
             firstRun = false;
         }
@@ -97,7 +98,7 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
             {
                 firstRun = true;
             }
-            if(isActive('Partner_Benefit') && PRM_accBenefitAssociationUtility.firstRunBeforeInsert) {
+            if(triggerExecution.containsKey('Partner_Benefit') && triggerExecution.get('Partner_Benefit').Active__c/*isActive('Partner_Benefit')*/ && PRM_accBenefitAssociationUtility.firstRunBeforeInsert) {
                 //Validate MP benefit Modification on UI - Restrict user to Activate/Inactivate the MPI benefits
                 //IPA 2.0 TWC729-7887
                 //PRM_accBenefitAssociationUtility.validateMPBenefits((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap); 
@@ -119,7 +120,7 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
     }
 
     public override void beforeupdate(){
-        if(isActive('Partner_Benefit_Update') && PRM_accBenefitAssociationUtility.firstRunBeforeUpdate){
+        if(triggerExecution.containsKey('Partner_Benefit_Update') && triggerExecution.get('Partner_Benefit_Update').Active__c/*isActive('Partner_Benefit_Update')*/ && PRM_accBenefitAssociationUtility.firstRunBeforeUpdate){
             //Validate MP benefit Modification on UI -Validate MP benefit Modification on UI - Restrict user to Activate/Inactivate the MPI benefits
            //IPA 2.0 TWC729-7887
            //  PRM_accBenefitAssociationUtility.validateMPBenefits((List<PRM_AccountBenefitAssociation__c>)Trigger.new, (Map<Id,PRM_AccountBenefitAssociation__c>)Trigger.OldMap); 
@@ -142,7 +143,7 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
     }
     
   public override void beforeDelete() {
-        if(isActive('ABA_Delete_PartnerUtility_Trigger') && PRM_aba_TriggerHandler.mpFirstDeleteRun){
+        if(triggerExecution.containsKey('ABA_Delete_PartnerUtility_Trigger') && triggerExecution.get('ABA_Delete_PartnerUtility_Trigger').Active__c/*isActive('ABA_Delete_PartnerUtility_Trigger')*/ && PRM_aba_TriggerHandler.mpFirstDeleteRun){
             PRM_aba_TriggerHandler.mpFirstDeleteRun = false;
             PMP_AccountBenefitPartnerUtility.deleteUtility((List<PRM_AccountBenefitAssociation__c>)Trigger.old);
         }

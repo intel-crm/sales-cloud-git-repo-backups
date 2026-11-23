@@ -5,7 +5,7 @@ Created Date  : Nov 2021
 Functionality      : Deleting the PCR,ACM and Mapping the data to Archive Table
 Test Class: PRM_Purge_Registration_Requests_Test - validateACRandACMRecords() -Method
 *********************************************************************************************************************/
-public with sharing class PRM_Purge_PCR_ACM_Requests {
+public class PRM_Purge_PCR_ACM_Requests {
     public static Final String ORIGIN  = 'PRM_Purge_PCR_ACM_Requests';
     public static Final String SEVERITY  = 'Critical';
     public static Final String PROJECT  = 'IPA';
@@ -99,7 +99,8 @@ public with sharing class PRM_Purge_PCR_ACM_Requests {
                     }
                 }
             }
-        }Catch(Exception ex){Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT,'Message', SEVERITY, ex.getMessage(), '', '', '', '');
+        }Catch(Exception ex){
+            Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT,'Message', SEVERITY, ex.getMessage(), '', '', '', '');
         }
     }
 }

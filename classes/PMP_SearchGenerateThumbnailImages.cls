@@ -22,7 +22,7 @@ global without sharing class PMP_SearchGenerateThumbnailImages implements Databa
                        ' AND CreatedDate >= '+System.Label.PMP_CreatedDateFilter + 
                        ' AND CreatedDate <= '+System.Label.PMP_CreatedByDateEndFilter;
         
-        // system.debug('query = '+query);
+        
         return Database.getQueryLocator(query);
     }
     
@@ -34,7 +34,6 @@ global without sharing class PMP_SearchGenerateThumbnailImages implements Databa
 
     global void finish(Database.BatchableContext bc) {
         //Id jobId = bc.getJobId();
-        // System.debug('JobId----->'+jobId);
     } 
 
     public void generateThumbnails(Id partnerId) {
@@ -105,7 +104,6 @@ global without sharing class PMP_SearchGenerateThumbnailImages implements Databa
 
            
         }catch(Exception ex){
-            //system.debug('Exception while making PIM Resize callout:->'+ex);
             PMP_Utility.logError(ex,'PMP_Company_Thumbnail_Batch');
         }
         

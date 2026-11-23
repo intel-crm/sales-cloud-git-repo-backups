@@ -165,11 +165,6 @@
         <name>EBR_Entitlements</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- To configure entitlements for IQR program based on email domains and accounts --></description>
-        <label><!-- IQR Entitlements --></label>
-        <name>IQR_Entitlements</name>
-    </recordTypes>
-    <recordTypes>
         <label><!-- EntitlementWithBenefits --></label>
         <name>PRM_EntitlementWithBenefits</name>
     </recordTypes>

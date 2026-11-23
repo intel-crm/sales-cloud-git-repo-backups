@@ -100,16 +100,14 @@ public without sharing class Core_MDF_PFR_Grid {
                     Id currentUserId = UserInfo.getUserId();
                     List<String> accMgrRolesList = new List<String>{Label.Core_MDF_CCP_NRE_Account_Manager};
                     
-                    if(FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Account_Manager')){
-                        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = [SELECT Id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c 
+                    if(FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Co_GTM_Account_Manager')){List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = [SELECT Id FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c 
                                                                                     WHERE Core_MDF_Active_Ind__c = TRUE and Core_MDF_User_id__c =: currentUserId AND 
                                                                                     Core_MDF_Account_id__c =: campList[0].Core_MDF_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c AND 
                                                                                     Core_MDF_Program_nm__c ='CoGTM' AND Core_MDF_Role_nm__c IN: accMgrRolesList];
                         allowToCreate = !iupgmList.isEmpty();
                     }
                     //Akash - Added else if condition.
-                    else if(FeatureManagement.checkPermission('Core_MDF_CCP_External_Co_GTM_Project_Submitter')){
-                        List<Core_MDF_Partner_Node_User_Mapping__c> pnum = [SELECT Id,Core_MDF_Account__c, Core_MDF_User__c
+                    else if(FeatureManagement.checkPermission('Core_MDF_CCP_External_Co_GTM_Project_Submitter')){List<Core_MDF_Partner_Node_User_Mapping__c> pnum = [SELECT Id,Core_MDF_Account__c, Core_MDF_User__c
                                                                             FROM Core_MDF_Partner_Node_User_Mapping__c 
                                                                             WHERE Core_MDF_Account__c =: campList[0].Core_MDF_Account__c AND
                                                                             Core_MDF_Active_Ind__c = TRUE AND Core_MDF_User__c =: currentUserId

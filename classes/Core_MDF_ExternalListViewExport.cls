@@ -7,7 +7,7 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture – Sneha R         9/9/2020                   Updated class to remove usage of audience list and added custom permission check
 *****************************************************************************************************************************************/
-public with sharing class Core_MDF_ExternalListViewExport {
+public without sharing class Core_MDF_ExternalListViewExport {
     
     public static List<SingleColumn> lstColumn { get; set; }
     public static String strQuery;

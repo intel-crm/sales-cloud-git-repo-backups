@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>BaseURL__c</field>
-        <value xsi:type="xsd:string">https://www.intel.co.il/content/www/il/he/search.html?ws=marketplace#q=</value>
+        <value xsi:type="xsd:string">https://www.intel.co.il/content/www/il/he/search.html#q=</value>
     </values>
     <values>
         <field>LanguageCode__c</field>

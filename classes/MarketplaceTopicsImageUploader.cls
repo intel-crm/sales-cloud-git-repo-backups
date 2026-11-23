@@ -25,7 +25,6 @@ public with sharing class MarketplaceTopicsImageUploader {
         @AuraEnabled
         public static String getImages(String offeringId){
 
-            //System.debug('inside servers get image');
             GalleryWrapper offeringGallery = new GalleryWrapper();
             String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
             List<ImageWrapper> images = new List<ImageWrapper>();

@@ -18,18 +18,22 @@ public with sharing class Core_IPS_InternalCaseExport {
         }
         HttpRequest req = new HttpRequest();
         req.setEndpoint('callout:CaseExportToPDF/services/data/v54.0/sobjects/Case/listviews/'+ queryStr + '/describe');
+        System.debug('Hk 21 req.setEndpoint----> ' + 'callout:CaseExportToPDF/services/data/v54.0/sobjects/Case/listviews/'+ queryStr + '/describe');
         req.setMethod('GET');      
         Http h = new Http();
         HttpResponse res = h.send(req);
-        Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());     
-        strQuery = (String)root.get('query') + ' LIMIT 10000';
-        strQuery.replaceAll('SystemModstamp,', '');
-        List<sObject> lstSObj = Database.Query(strQuery);
-        Map<String, String> fieldNameToLabelMap = getFieldNameToLabelMap();
+        //Exception Handline for : Invalid conversion from runtime type List<ANY> to Map<String,ANY> -Phani
         ResultWrapper result = new ResultWrapper();
-        result.sObjectList = lstSObj;
-        result.fieldNameToLabelMap = fieldNameToLabelMap;
-        return result; 
+        if(res.getStatusCode() == 200){
+            Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());     
+            strQuery = (String)root.get('query') + ' LIMIT 10000';
+            strQuery.replaceAll('SystemModstamp,', '');
+            List<sObject> lstSObj = Database.Query(strQuery);
+            Map<String, String> fieldNameToLabelMap = getFieldNameToLabelMap();        
+            result.sObjectList = lstSObj;
+            result.fieldNameToLabelMap = fieldNameToLabelMap;             
+        }
+        return result;
     } 
     
     public static Map<String, String> getFieldNameToLabelMap() {

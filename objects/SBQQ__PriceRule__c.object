@@ -364,6 +364,15 @@
     <label>Price Rule</label>
     <listViews>
         <fullName>SBQQ__All</fullName>
+        <columns>NAME</columns>
+        <columns>SBQQ__LookupObject__c</columns>
+        <columns>SBQQ__Active__c</columns>
+        <columns>SBQQ__ConditionsMet__c</columns>
+        <columns>SBQQ__TargetObject__c</columns>
+        <columns>SBQQ__Product__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

@@ -2986,7 +2986,7 @@
     </fields>
     <fields>
         <fullName>Core_MDF_BudgetType_nm__c</fullName>
-        <description>Budget type details</description>
+        <description>Budge t type details</description>
         <label>Budget Type</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -3393,33 +3393,55 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <columns>NAME</columns>
         <columns>Core_MDF_Account__c</columns>
         <columns>Core_MDF_Group_Name__c</columns>
+        <columns>Core_MDF_Type_of_Access__c</columns>
         <columns>Core_MDF_Channel_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Channel_Program__c</field>
             <operation>contains</operation>
-            <value>PSG</value>
+            <value>Co-Inv</value>
         </filters>
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>IQR_PGM</fullName>
+        <fullName>IQR</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Account__c</columns>
-        <columns>Core_MDF_Channel_Program__c</columns>
-        <columns>Core_MDF_Type_of_Access__c</columns>
-        <columns>Core_MDF_Group_Id__c</columns>
         <columns>Core_MDF_Group_Name__c</columns>
+        <columns>Core_MDF_Type_of_Access__c</columns>
+        <columns>Core_MDF_Channel_Program__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Channel_Program__c</field>
-            <operation>equals</operation>
+            <operation>contains</operation>
             <value>Intel Quote Request</value>
         </filters>
-        <label>IQR PGM</label>
-        <sharedTo>
-            <group>IQR_Tech_Team</group>
-        </sharedTo>
+        <label>IQR</label>
+    </listViews>
+    <listViews>
+        <fullName>my_view</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Account__c</columns>
+        <columns>Core_MDF_Region_cd__c</columns>
+        <columns>Core_MDF_Group_Name__c</columns>
+        <columns>Core_MDF_Group_Id__c</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_MDF_Channel_Program__c</columns>
+        <columns>Core_MDF_Works_For__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Account__c</field>
+            <operation>contains</operation>
+            <value>DELL INC.</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Works_For__c</field>
+            <operation>contains</operation>
+            <value>DELL INC.</value>
+        </filters>
+        <label>my view</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>PGM-{000000000}</displayFormat>
@@ -4301,6 +4323,10 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
                 <default>false</default>
             </values>
             <values>
+                <fullName>Co-Investment</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>DCF 1%2E0</fullName>
                 <default>false</default>
             </values>
@@ -4541,10 +4567,9 @@ NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_IPA_Program_Name)))</err
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_PaymentTypeValidation</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Restrict manual creation of PGM  for Agency accounts i.e when co-Marketing active is false</description>
         <errorConditionFormula>AND((TEXT(Core_MDF_Payment_Type_nm__c) != NULL), (TEXT( Core_MDF_Type_of_Access__c ) == $Label.Core_MDF_External_label_for_PGM),  (Core_MDF_Account__r.Core_MDF_CoMarketingActive__c == FALSE))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
         <errorMessage>Payment Type is not applicable for the Agency Account.</errorMessage>
     </validationRules>
     <validationRules>

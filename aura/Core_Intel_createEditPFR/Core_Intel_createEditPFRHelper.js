@@ -5943,4 +5943,18 @@ if((component.get("v.componentAttributes.isLoggedInUserApprover") || component.g
     } 
 		},
 
+    // Akash CCF DCF - Apply the Account Plan start date validation
+    validateStartDate: function(component, startDate) {
+        var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
+        var isCCFOrDCF = recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_PFR_CCF") ||
+            recordTypeDeveloperName == $A.get("$Label.c.Core_MDF_PFR_DCF");
+        var CCFDCFOBCStartDate = $A.get("$Label.c.Core_MDF_CCF_DCF_BlockCampaign_StartDate");
+
+        if (isCCFOrDCF && startDate) {
+            component.set("v.showStartDateError", new Date(startDate) >= new Date(CCFDCFOBCStartDate));
+        } else {
+            component.set("v.showStartDateError", false);
+        }
+    }
+
     });

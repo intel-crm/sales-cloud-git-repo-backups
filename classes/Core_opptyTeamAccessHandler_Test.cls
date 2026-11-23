@@ -41,7 +41,7 @@ public class Core_opptyTeamAccessHandler_Test {
     
     static testMethod void opptyTeamAccessHandler1() {
         Profile p = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
-        //User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :p.Id AND isActive = true LIMIT 1];
+        User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId = :p.Id AND isActive = true LIMIT 1];
         List<Core_Trigger_Executions__c> triggExecList = new List<Core_Trigger_Executions__c>();
         triggExecList.add(new Core_Trigger_Executions__c(Name='opptyTeamAccess', Core_Class_Name__c='Core_OpportunityHandler', Core_Object__c='Opportunity_Partner', Core_Trigger_Events__c='After Update', Core_Active__c=true, Core_Description__c = 'blah blah'));      
         insert triggExecList;

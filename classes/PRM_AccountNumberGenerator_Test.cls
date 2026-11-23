@@ -17,7 +17,6 @@ public class PRM_AccountNumberGenerator_Test {
    /* @isTest
     static void insertAccount(){
         Test.startTest();
-        system.debug('inside insertAccount');
         Account__c customSetting = new Account__c();
         customSetting.PRM_Max_Account_Number__c = '63628892297';
         customSetting.Name ='AccountNumber';
@@ -34,7 +33,6 @@ public class PRM_AccountNumberGenerator_Test {
         a.BillingStreet='4th Floor,New Road';
         a.BillingPostalCode='110037';
         a.BillingStateCode='KA';
-        System.debug('a'+a);
         insert a; 
         test.stopTest();
     } */
@@ -57,7 +55,6 @@ public class PRM_AccountNumberGenerator_Test {
         a.BillingStreet='4th Floor,New Road';
         a.BillingPostalCode='110037';
         a.BillingStateCode='KA';
-        System.debug('a'+a);
         insert a; 
         
         Account a1 = PRM_TestUtility.getAccount();

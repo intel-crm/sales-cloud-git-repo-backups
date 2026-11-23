@@ -80,9 +80,10 @@ Purpose:   Assign New Entitelments to Contacts or Update Existing Entitelement
         try{
             //Maping records for contact entitlements.
             // added PRM_Partner_Benefit_Id__r.PRM_Account_Type_Nm__c as part of TWC729-5300
-            for(PRM_VXEnttlmntMatrix__c ent :[Select id, PRM_Entitlement_Id__c,PRM_Entitlement_Id__r.Name, PRM_Contact_Relationship_Id__c, PRM_IsActive_Ind__c,
-                                              PRM_Partner_Benefit_Id__c,PRM_Approval_Type_Nm__c,RecordType.Name,PRM_IPA_Partner_Role_Nm__c,PRM_AGS_Role__c,
-                                              PRM_Partner_Benefit_Id__r.PRM_Account_Type_Nm__c from PRM_VXEnttlmntMatrix__c 
+            //ATHR Fix - TWC729-9556 - SJ
+            for(PRM_VXEnttlmntMatrix__c ent :[Select id, PRM_Entitlement_Id__c,PRM_IsActive_Ind__c,
+                                              PRM_Approval_Type_Nm__c,PRM_IPA_Partner_Role_Nm__c,PRM_AGS_Role__c,
+                                              PRM_Partner_Benefit_Id__r.PRM_Account_Type_Nm__c/*,RecordType.Name,PRM_Partner_Benefit_Id__c,PRM_Contact_Relationship_Id__c,PRM_Entitlement_Id__r.Name*/ from PRM_VXEnttlmntMatrix__c 
                                               where PRM_Approval_Type_Nm__c =:System.Label.PRM_ApprovalType 
                                               AND PRM_IsActive_Ind__c = True 
                                               AND PRM_IPA_Partner_Role_Nm__c != null /*AND PRM_Channel_Program_Level_Id__r.name<>'Member'*/])

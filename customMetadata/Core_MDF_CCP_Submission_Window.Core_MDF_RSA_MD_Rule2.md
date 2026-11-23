@@ -36,7 +36,7 @@
     </values>
     <values>
         <field>Core_MDF_Closure_Date_Extension__c</field>
-        <value xsi:type="xsd:double">10.0</value>
+        <value xsi:type="xsd:double">1.0</value>
     </values>
     <values>
         <field>Core_MDF_Closure_date_Extension_Rule__c</field>

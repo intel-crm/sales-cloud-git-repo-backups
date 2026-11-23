@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Interaction_Type__c</field>
-        <value xsi:type="xsd:string">parent</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>IsAccordion__c</field>

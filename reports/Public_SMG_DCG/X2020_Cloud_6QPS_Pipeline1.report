@@ -75,7 +75,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG-Tier 2,DCAI-Tier 2,DCG-Tier 3,DCAI-Tier 3,DCG-Tier 4,DCAI-Tier 4</value>
+            <value>DCG-Tier 2,DCG-Tier 3,DCG-Tier 4</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</column>

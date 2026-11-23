@@ -1,0 +1,15 @@
+<template>
+    <!-- Popup container that opens automatically -->
+    <template if:true={isChatOpen}>
+        <section class="chat-popup">
+            <!--<div class="popup-header">
+                <h2>Chat with Us</h2>
+                <button class="close-btn" onclick={closeChat}>X</button>
+            </div>-->
+            <div class="popup-content">
+                <!-- Iframe to load the external chat UI -->
+                <iframe src={chatUrl} width="100%" height="100%" frameborder="0" class="chat-iframe"></iframe>
+            </div>
+        </section>
+    </template>
+</template>

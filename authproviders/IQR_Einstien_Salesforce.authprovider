@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6pWEh_P9Gff3jGpeei5Ac80xxZ9qL1VzeXvARvMqFAgpdmyA1jqymYQTkKHx</consumerKey>
+    <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDvkfBh.o_Ga8TeoD9ctyWbSIEBO0X3.0nw3wD4BbwnpV6eQyzjW_oV8fc_uQ</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
     <friendlyName>IQR_Einstien_Salesforce</friendlyName>
     <includeOrgIdInIdentifier>true</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>
-    <plugin>IPA_Apigee_Auth_Provider</plugin>
     <providerType>Salesforce</providerType>
     <requireMfa>false</requireMfa>
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>

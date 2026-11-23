@@ -5,7 +5,7 @@
 * Modification Log :
 * Developer            Date               Description
 * -----------------------------------------------------------------------------------------------------
-	Aditya 			  01-07-2024         Class for Azure OCR callouts to read file contents as a string
+    Aditya            01-07-2024         Class for Azure OCR callouts to read file contents as a string
 *******************************************************************************************************/
 public class Core_MDF_FormRecognizerIntegration {
     
@@ -23,7 +23,7 @@ public class Core_MDF_FormRecognizerIntegration {
             try{
                 String endpoint = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ClaimEzyOCREndpoint1');
                 String formRecognizerEndpoint = 'callout:Core_MDF_CCP_Azure_Document_Intelligence'+ endpoint;//prebuilt-layout;prebuilt-read
-                //String formRecognizerEndpoint = 'https://apis.intel.com/m2r/ccp-generative-ai/v1/analyses/prebuilt-read:analyze?api-version=2023-07-31';
+                //String formRecognizerEndpoint = 'https://apis-stage.intel.com/m2r/ccp-generative-ai/v1/analyses/prebuilt-read:analyze?api-version=2023-07-31';
                 // Request payload
                 String requestBody = '{"base64Source":"' + fileContent + '"}';
 
@@ -35,10 +35,13 @@ public class Core_MDF_FormRecognizerIntegration {
                 request.setBody(requestBody);
                 // Make the HTTP callout
                 Http http = new Http();
+                system.debug('getbdy=='+request.getBody());
                 response = http.send(request);
+                system.debug('getbdy=='+response.getBody());
 
             }catch(Exception ex){
-                Core_MDF_CCP_UtilityClass.logError(ex); throw ex;
+                Core_MDF_CCP_UtilityClass.logError(ex);
+                throw ex;
             }
             
             // Process the response
@@ -47,11 +50,13 @@ public class Core_MDF_FormRecognizerIntegration {
                 return extractedValue;
             } else {
                 // Handle error scenarios
-                Core_MDF_CCP_UtilityClass.logErrorAsNormal(response.getStatusCode() + ' - ' + response.getStatus() + ' - ' + response.getBody(), 'Core_MDF_AI_Tracking__c'); return null;
+                Core_MDF_CCP_UtilityClass.logErrorAsNormal(response.getStatusCode() + ' - ' + response.getStatus() + ' - ' + response.getBody(), 'Core_MDF_AI_Tracking__c');
+                return null;
             }
         }else{
             Core_MDF_CCP_UtilityClass.logErrorAsNormal(System.Label.Core_MDF_Claim_ezy_MaxStringLimitError, 'Core_MDF_AI_Tracking__c');
-            String error = 'FIELD_CUSTOM_VALIDATION_EXCEPTION,' + System.Label.Core_MDF_Claim_ezy_MaxStringLimitError + ':'; throw new StringException(error);
+            String error = 'FIELD_CUSTOM_VALIDATION_EXCEPTION,' + System.Label.Core_MDF_Claim_ezy_MaxStringLimitError + ':';
+            throw new StringException(error);
         }
     }
     
@@ -93,7 +98,8 @@ public class Core_MDF_FormRecognizerIntegration {
                     break;
                 }
             }
-        } catch (exception ex){    Core_MDF_CCP_UtilityClass.logError(ex);
+        } catch (exception ex){    
+        Core_MDF_CCP_UtilityClass.logError(ex);
         }
         //ATHR - Deeply Nested if 16209
         if(subsequentResponse.getBody() == null) {

@@ -46,7 +46,7 @@ public class PMP_Batch_Group_Management_Test{
                                           Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi');
             
             
-            //System.debug('partnerAccount test class ='+partnerAccount);
+            
             accts.add(partnerAccount1);
             accts.add(partnerAccount2);
             accts.add(partnerAccount3);
@@ -96,9 +96,9 @@ public class PMP_Batch_Group_Management_Test{
       accts.add(indpIntelAcct1);
             accts.add(indpIntelAcct2);
             // Inserting Acounts
-            Database.insert(accts);            
+            Database.insert(accts);
             
-            // System.debug('Accounts = '+ accts);
+            
             List<Account> allPartnerAccount = new List<Account>();
             allPartnerAccount = [SELECT Id,Name,RecordTypeId FROM Account WHERE RecordTypeId=:partnerAccRecTypeId];
             /****** Updating Account As Partner*****/
@@ -109,8 +109,7 @@ public class PMP_Batch_Group_Management_Test{
             }
             Database.update(accToUpdate);
             
-            // System.debug('accToUpdate ='+accToUpdate);
-            
+           
             
             /****** Creating Partner account group member record*****/
             List<Core_Account_Group_Member__c> allPag = new List<Core_Account_Group_Member__c>();
@@ -183,7 +182,7 @@ public class PMP_Batch_Group_Management_Test{
             /****** Creating ERPM_Engagement record*****/
             Core_ERPM_Engagement__c erpmEng1 =new Core_ERPM_Engagement__c(Name  ='Intel Premier Support',Core_IsActive__c=true);
             Database.insert(erpmEng1);
-            // System.debug('erpmEngagements ='+erpmEng1);
+           
             
             /****** Creating Contact record*****/
             List<Contact> allContacts = new List<Contact>();
@@ -225,7 +224,7 @@ public class PMP_Batch_Group_Management_Test{
             allContacts.add(contact10);
             Test.startTest();
             Database.insert(allContacts);
-            // System.debug('contact1 ='+contact1);
+            
            
             
             /****** Creating Entitlement detail records*****/
@@ -345,7 +344,7 @@ public class PMP_Batch_Group_Management_Test{
             User currentUser = [select Id from User where Id = :UserInfo.getUserId()];
             List<User> userList = new List<User>();
             
-            // System.debug('currentUser ='+currentUser);
+           
             
             System.runAs (currentUser) {
                 
@@ -372,7 +371,7 @@ public class PMP_Batch_Group_Management_Test{
                 Database.insert(userList);
                 
             }
-            // System.debug('userList ='+userList);
+           
             
 
             String publicGroupName = '';
@@ -384,7 +383,7 @@ public class PMP_Batch_Group_Management_Test{
                 partnerAccountId.add(acc.Id);
                  
             } 
-            //System.debug(partnerAccountId);
+           
             List<Group> lstPublicGroupToBeInserted = new List<Group>();
             for(Id accId:partnerAccountId){
                 //Forming Public Group Name
@@ -506,54 +505,29 @@ public class PMP_Batch_Group_Management_Test{
                Database.insert(accShare);
             } 
     static testmethod void test(){
-        Account acc = [Select id from Account WHERE Name ='PartnerAccount6' Limit 1];
-          acc.Core_Account_Type__c = 'Original Design Manufacturer (ODM)';
-          acc.Core_PMP_Membership_Change_Ind__c = true;
-          update acc;
-         
-              ChannelProgram cp = new ChannelProgram(); //Channel Program
-              cp.Name='Intel Partner Alliance';
-              cp.PRM_programCode__c='IPA';
-              insert cp;
-          
-              ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
-              cpl.Name='Titanium';
-              cpl.ProgramId=cp.Id;
-              insert cpl;
-            
-              PRM_AccountChannelMembership__c acm1= new PRM_AccountChannelMembership__c(); //Account Channel Membership
-              acm1.PRM_Account_Id__c=acc.id;
-              acm1.PRM_Status_Nm__c='Approved';
-              acm1.PRM_Channel_Program_Id__c=cp.Id;
-              acm1.PRM_Channel_Program_Level_Id__c=cpl.Id;
-              acm1.PRM_Partner_Role__c='Distributor';
-              acm1.PRM_Status_Reason_Txt__c='Testing';
-              insert acm1;
         Test.startTest();
         //System.runAs(new user(ID = UserInfo.getUserID())){
         
-          //Id batchId = Database.executeBatch(new PMP_Batch_Group_Management_Scheduler());
-          
+          //  Id batchId = Database.executeBatch(new PMP_Batch_Group_Management_Scheduler());
+          Account acc = [Select id from Account WHERE Name ='PartnerAccount6' Limit 1];
+          acc.Core_Account_Type__c = 'Original Design Manufacturer (ODM)';
+          acc.Core_PMP_Membership_Change_Ind__c = true;
+          update acc;
+
           Id batchId1 = Database.executeBatch(new PMP_Batch_Group_Management_Scheduler());
-        // Also schedule the batchable to explicitly cover scheduling path of execute (Database.Batchable.execute)
-        // Use a valid CRON expression (runs at next minute) and unique name
-        String cronExp = '0 0 0 15 3 ? 2026';
-      //  System.schedule('PMP_BGM_Schedule_', cronExp, new PMP_Batch_Group_Management_Scheduler());
-        Test.stopTest();
-        
-        // Post-assertions
-        acc.Core_PMP_Membership_Change_Ind__c = false;
-        update acc;
+         acc.Core_PMP_Membership_Change_Ind__c = false;
+          update acc;
+            String chron = '0 0 * ? * * *' ;
           List<User> lstUsers = [Select Id from User where Contact.Email = 'dellco1234@dell.com' Limit 1];
           List<GroupMember> lstQueriedGrpsMembers = [SELECT Id,GroupId,UserOrGroupID, Group.DeveloperName FROM GroupMember where UserOrGroupID =:lstUsers[0].Id];
-          // System.debug('size'+lstQueriedGrpsMembers.size());
+         
           System.assertEquals( true , lstQueriedGrpsMembers.size() > 1 ? true : false, 'users are inserted in groups' );
         //    System.schedule('Record Deletion', chron, new PMP_Batch_Group_Management_Scheduler());
             //Core_Mp_Public_Group_Creation.updatePublicGroupMembership();
             //Core_Mp_Public_Group_Creation.refinePartnerAccounts(partnerAccountId,accts);
             
         //}
-       // Test.stopTest();
+        Test.stopTest();
         
     }
 	
@@ -580,7 +554,7 @@ public class PMP_Batch_Group_Management_Test{
             User currentUser = [select Id from User where Id = :UserInfo.getUserId()];
             User testUser;
             
-            // System.debug('currentUser ='+currentUser);
+            
             
             System.runAs (currentUser) {
                 
@@ -630,7 +604,7 @@ public class PMP_Batch_Group_Management_Test{
 		groupIdSet.add('PMP_' + testGroup.Id);
 		inactiveList.add(pag);
 
-       // PMP_Batch_Group_Management.removeUsersFromAllPartnersGrp(inactiveList, groupIdSet);
+        PMP_Batch_Group_Management.removeUsersFromAllPartnersGrp(inactiveList, groupIdSet);
 		Test.stopTest();
         // Assert the group member was deleted
         //GroupMember[] checkDeleted = [SELECT Id FROM GroupMember WHERE Id = :gm.Id];

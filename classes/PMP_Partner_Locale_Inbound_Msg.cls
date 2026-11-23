@@ -191,10 +191,14 @@ public with sharing class PMP_Partner_Locale_Inbound_Msg {
             }
             
             if (!updatedTransList.isEmpty()){
-                Database.update(updatedTransList, true);
+                //Database.update(updatedTransList, true);
+                Database.SaveResult[] results = Database.update(updatedTransList, true);
+            	PMP_Utility.logDmlErrors((Object[]) results, 'PMP_Partner_Locale_Inbound_Msg-updateLocaleDetails');
             }
             if(!partners.isEmpty()){
-                Database.update(partners.values(), true);
+                //Database.update(partners.values(), true);
+                Database.SaveResult[] results = Database.update(partners.values(), true);
+            	PMP_Utility.logDmlErrors((Object[]) results, 'PMP_Partner_Locale_Inbound_Msg-updateLocaleDetails');
             }
             if (!approvedPartnerIds.isEmpty()){
                 publishTranslations(approvedPartnerIds);

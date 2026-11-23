@@ -27,8 +27,8 @@ public class PCC_SubmitDR_Controller_Test {
         c1.Core_eRPM_Language_Code__c = 'ENG';
         c1.RecordTypeId = contactRecordType;
         c1.Core_IPA_Partner_Role__c = 'Service Provider';
+        c1.MailingCountry='USA';
         c1.Email = 'test.diqhwqi@test.com';
-	c1.MailingCountry= 'USA';
         insert c1;
         
         Core_ERPM_Engagement__c ee = new Core_ERPM_Engagement__c();//ERPM Engagement

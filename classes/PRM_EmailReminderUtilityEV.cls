@@ -27,15 +27,12 @@ Public class PRM_EmailReminderUtilityEV {
             httpReq.setBody(requestBody);
             httpReq.setMethod('POST');
             response = new Http().send(httpReq);
-            system.debug('Response ===>'+EncodingUtil.urlDecode(response.getBody(), 'UTF-8'));
             String responseJsonString =EncodingUtil.urlDecode(response.getBody(), 'UTF-8');
             InputJsonResponseWrapper JsonRes =(InputJsonResponseWrapper) JSON.deserialize(responseJsonString, InputJsonResponseWrapper.Class);
             if(response.getStatusCode() != 201){
                 CustomException ex = new CustomException();                    
                 ex.Message = response.getBody();                          
                 ex.StackTraceString = System.Label.PRM_Mulesoft_Api_Error;                              
-                System.debug('Exception In Retrigger Call'+ex.Message);   
-                System.debug('Exception Trace'+ex.StackTraceString); 
                 //  createLogEntry('Failed To Retrieved EV Token', LOG_ENTRY_INFO,ex,EncodingUtil.urlDecode(response.getBody(), 'UTF-8')); 
             }else{
                 //Pick and Store the EV Token from Response

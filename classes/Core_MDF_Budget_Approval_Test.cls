@@ -90,7 +90,6 @@ public class Core_MDF_Budget_Approval_Test {
         User usr = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
 
         Test.startTest();
-
             PartnerMarketingBudget pmb = [Select id,OwnerId,Core_MDF_Budget_Status__c from PartnerMarketingBudget limit 1];
             system.assertEquals('Pending Review', pmb.Core_MDF_Budget_Status__c);
             Core_MDF_Budget_Approval.UserPermissionApproval userPA= Core_MDF_Budget_Approval.loadBudgetecord(pmb.id);
@@ -111,6 +110,7 @@ public class Core_MDF_Budget_Approval_Test {
         }
         Test.stopTest();
     }
+    //US - 14285 Commented by Rishabh
   /*  @isTest
     static void handleException(){  
         User usr1 = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];

@@ -150,14 +150,13 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Comments__c</fullName>
-        <description>Holds the user comments on Delinking and Relinking scenarios</description>
         <label>Comments</label>
         <length>32768</length>
         <trackHistory>false</trackHistory>
@@ -272,7 +271,6 @@
     </fields>
     <fields>
         <fullName>Inactive_Account__c</fullName>
-        <description>If true then indicates that the corresponding Intel account is deactivated</description>
         <formula>IF( Core_Intel_Account_Id__r.RecordType.Name = &apos;Inactive Account&apos;,true , false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Inactive Account</label>
@@ -282,7 +280,6 @@
     </fields>
     <fields>
         <fullName>Intel_Account_Name__c</fullName>
-        <description>Holds name of the corresponding Intel account</description>
         <externalId>false</externalId>
         <formula>Core_Intel_Account_Id__r.Name</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -325,7 +322,7 @@
         <defaultValue>false</defaultValue>
         <description>Indicates if the account is primary node and responsible for the linkage to OPID</description>
         <label>UCD Primary Account</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -348,6 +345,14 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>uCD_ActivationEmailSent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>ActivationEmailSent</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>One Partner ID Group Member</label>
     <listViews>
         <fullName>All</fullName>
@@ -356,12 +361,8 @@
         <columns>Core_Partner_Account_Id__c</columns>
         <columns>RECORDTYPE</columns>
         <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Partner_Account_Id__c</field>
-            <operation>contains</operation>
-            <value>Seashore</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

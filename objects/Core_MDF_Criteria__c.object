@@ -1030,6 +1030,7 @@ IF(ISBLANK(Core_MDF_Field_Name_9__c) ,&apos;&apos;, &apos;,&apos; &amp; BR() &am
         <active>true</active>
         <description>Should have at least one active approver to make criteria active.</description>
         <errorConditionFormula>IF((Core_MDF_Active__c == TRUE &amp;&amp;  Core_MDF_Approvers_Count__c  &lt;= 0),TRUE,FALSE)</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Active__c</errorDisplayField>
         <errorMessage>Active Approval Criteria must have at least one active approver. Please uncheck Active checkbox.</errorMessage>
     </validationRules>
     <validationRules>

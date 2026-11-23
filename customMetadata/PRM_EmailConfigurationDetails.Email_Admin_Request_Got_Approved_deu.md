@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>PRM_InputParameter__c</field>
-        <value xsi:type="xsd:string">Account_ID;Registration_Request_ID;LanguageCulture_MDT</value>
+        <value xsi:type="xsd:string">Account_ID;Registration_Request_ID</value>
     </values>
     <values>
         <field>PRM_Language__c</field>

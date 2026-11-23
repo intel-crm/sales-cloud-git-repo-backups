@@ -54,7 +54,8 @@ public class Core_MDF_Batch_UpdateCampaigns implements Database.Batchable<sObjec
                 // looping over the saveresults
                 for (Integer index = 0; index < srList.size(); index++) {
                     // if the campaign update got failed ,add the corresponding budget cap Ids in a failed budget caps set
-                    if(!srList[index].isSuccess()){failedBudgetCapIds.add(campaignList[index].Core_MDF_Budget_Cap__c);
+                    if(!srList[index].isSuccess() && campaignList[index].Core_MDF_Budget_Cap__c != null){
+                        failedBudgetCapIds.add(campaignList[index].Core_MDF_Budget_Cap__c);
                     }
                 }
             }
@@ -62,7 +63,7 @@ public class Core_MDF_Batch_UpdateCampaigns implements Database.Batchable<sObjec
         catch(Exception exceptionObj){Core_MDF_CCP_UtilityClass.logError(exceptionObj);}
     }    
     public void finish(Database.BatchableContext bc) { 
-        if(failedBudgetCapIds != NULL && failedBudgetCapIds.size()>0){
+        if(failedBudgetCapIds != null && failedBudgetCapIds.size()>0){
             setFailedIndicatorOnBudgetCaps();
         }
     }

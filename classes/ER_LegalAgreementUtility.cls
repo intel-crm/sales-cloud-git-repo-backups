@@ -12,7 +12,7 @@ Modification Log :
 
 public with Sharing  class ER_LegalAgreementUtility {
     
-    /*commented as part of EBR framework and implemented this logic with flows
+    /*Commented as part of EBR framework and implemented the logic with Flows
     //Sets LA criteria if LA sent in request matches in SF
     public static void updateLA(List<PRM_Registration_Request__c> regRequest){
         Set<String> allPASet = new Set<String>();
@@ -42,5 +42,6 @@ public with Sharing  class ER_LegalAgreementUtility {
             }            
         }
     }*/
+    
     
 }

@@ -2,7 +2,7 @@
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
         <fullName>Access_to_Company_Profile_For_IPA_Admins</fullName>
-        <accessLevel>Edit</accessLevel>
+        <accessLevel>Read</accessLevel>
         <label>Access to Company Profile For IPA Admins</label>
         <sharedTo>
             <group>IPA_All_Intel_Admin_Users</group>
@@ -13,20 +13,6 @@
             <value>null</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Access_to_assign_topic</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Access to assign topic</label>
-        <sharedTo>
-            <group>Topic_Assignment_Access</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>PMP_Marketing_Profile_Id__c</field>
-            <operation>notEqual</operation>
-            <value>null</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>L2_IPA_Support_Users_Company_Information_Sharing</fullName>
@@ -55,26 +41,6 @@
             <field>PMP_Company_Lifecycle_Status_Nm__c</field>
             <operation>equals</operation>
             <value>Published</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>PMP_External_Partner_Users_Company_Information</fullName>
-        <accessLevel>Read</accessLevel>
-        <description>Share all Published and Active Marketing Profile Information (aka Company Information) records to all Partner Users</description>
-        <label>PMP External - Partner Users - Company Information</label>
-        <sharedTo>
-            <group>PMP_All_Partner_Users</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>PMP_Company_Lifecycle_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Published</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>PMP_Partner_Inactive_Ind__c</field>
-            <operation>equals</operation>
-            <value>False</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

@@ -257,7 +257,6 @@ public class Core_MDF_CampaignPurposeBatch_Test {
         camp.Core_MDF_Budget_Type_txt__c = budgetType;
         camp.Core_MDF_Budget__c = budget.Id;
         camp.Core_MDF_Reimbursement_Amt__c = 10000;
-        camp.Core_MDF_Technology__c='';
         Database.insert(camp);
             camp.Status = 'Completed';
             camp.Core_MDF_CampOutcomeOpt_In_Ind__c=true;
@@ -389,9 +388,7 @@ public class Core_MDF_CampaignPurposeBatch_Test {
                                                      Core_MDF_Campaign_Id__r.Core_MDF_Ultimate_Account_txt__c, Core_MDF_Campaign_Id__r.Status 
                                                      FROM Core_MDF_Campaign_Outcomes__c];
             
-            system.debug('accids::'+cmppurpose.Core_MDF_Campaign_Id__r.Core_MDF_Ultimate_Account_txt__c);
-            system.debug('status::'+cmppurpose.Core_MDF_Campaign_Id__r.Status);
-            system.debug('status::'+cmppurpose.Core_MDF_Quantity_nbr__c);
+            
             
             List<Campaign> campToBeUpdated = new List<Campaign>();
                 List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>();
@@ -451,7 +448,7 @@ public class Core_MDF_CampaignPurposeBatch_Test {
             claimObj[0].Core_MDF_Status__c='Paid';
             database.update(claimObj);
             
-            system.debug('claimObj--ris'+claimObj);
+           
             
             list<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgm = [SELECT id,Core_MDF_User_id__c,Core_MDF_Program_nm__c,Core_MDF_GeoSubGeo_Budget_Type_nm__c,Core_MDF_is_User_Active_ind__c,
                                                                      Core_MDF_Role_nm__c,Core_MDF_Region_Sub_Region_nm__c, Core_MDF_Active_Ind__c,Core_MDF_Account_id__c
@@ -460,7 +457,7 @@ public class Core_MDF_CampaignPurposeBatch_Test {
                                                                     and Core_MDF_Active_Ind__c = TRUE
                                                                     and Core_MDF_Role_nm__c='Core_MDF_CCP_Internal_IPA_Acct_Mgr'
                                                                     AND Core_MDF_is_User_Active_ind__c = TRUE];
-            system.debug('iupgmList--ris'+iupgm);
+           
             
             
             Core_MDF_CampaignPurposeBatchForReminder ipaReminder = new Core_MDF_CampaignPurposeBatchForReminder();

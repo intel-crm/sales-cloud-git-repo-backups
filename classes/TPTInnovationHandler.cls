@@ -15,8 +15,8 @@ public class TPTInnovationHandler extends TriggerHandler{
     }
     //public override void beforeUpdate() {}
     public override void afterInsert() {
-        //TPT_Tracker.CreateUpdateTPTTracker(Trigger.New);                
-    }public override void afterUpdate() {
-        //.updateTPTTracker(Trigger.New,(Map<Id,InnovationTracker__c>)Trigger.oldMap);
+        TPT_Tracker.CreateUpdateTPTTracker(Trigger.New);                
+    }
+    public override void afterUpdate() {TPT_Tracker.updateTPTTracker(Trigger.New,(Map<Id,InnovationTracker__c>)Trigger.oldMap);
     }
 }

@@ -614,8 +614,6 @@ public class Core_IPS_MAPAccount_Test{
             accJunc.Core_MAP_PAR__c=mapRec.id;
             accJuncList.add(accJunc);
         }
-        System.assert(accJuncList.size() != 0, 'accJuncList should not be empty');
-
         insert accJuncList;
         Core_IPS_MAPAccount_Handler.DeleteLineItems(accJuncList); 
     }

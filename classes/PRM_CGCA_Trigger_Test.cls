@@ -42,6 +42,7 @@ public class PRM_CGCA_Trigger_Test {
         //con1.Core_IPA_Partner_Role__c = 'Service Provider';
         con1.Core_IPA_PartnerRole__c = 'Service Provider';
         con1.Core_Login_Id__c = 'abc';
+        con1.MailingCountry='USA';
         conListData.add(con1);
         //TestData for Contact 
         Contact con2 =new Contact();
@@ -54,6 +55,7 @@ public class PRM_CGCA_Trigger_Test {
         //con2.Core_IPA_Partner_Role__c = 'Service Provider';
         con2.Core_IPA_PartnerRole__c = 'Service Provider';
         con2.Core_Login_Id__c = 'Test';
+        con2.MailingCountry='USA';
         conListData.add(con2);
         insert conListData;
         
@@ -96,6 +98,7 @@ public class PRM_CGCA_Trigger_Test {
         insert msgList;
         
         List<PRM_Message_log__c> messageLogList = new List<PRM_Message_log__c>();
+        //system.debug('Message Id '+msgList[0].id);
         PRM_Message_log__c msgLog1 = new PRM_Message_log__c();//M1C1
         msgLog1.PRM_Message_Id__c = msgList[0].id;
         msgLog1.PRM_Contact_Id__c = conListData[0].id;

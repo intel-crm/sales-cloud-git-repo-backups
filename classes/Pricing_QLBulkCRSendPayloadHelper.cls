@@ -69,6 +69,7 @@ public without sharing class Pricing_QLBulkCRSendPayloadHelper {
                          quote.IsUnifiedEndCustomer = quoteLinesList[0].SBQQ__Quote__r.Pricing_IsUnifiedCustomer__c;
                          quote.UnifiedEndCustomerGlobalName = quoteLinesList[0].SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Unified_EndCustomer_Act_Mapping__r.Name;
                          quote.ComplianceWatchList = quoteLinesList[0].SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Compliance_Watch_List__c;
+                       
                          if(!quote.IsUnifiedEndCustomer){
                              quoteIds.add(quote.Id);
                          }

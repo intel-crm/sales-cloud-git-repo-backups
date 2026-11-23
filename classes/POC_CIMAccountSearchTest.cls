@@ -277,7 +277,7 @@ public class POC_CIMAccountSearchTest {
         ct.LastName='New';
         ct.Email='new@b1.com';
         ct.AccountId=acc.id;
-         ct.MailingCountry='India';
+        ct.MailingCountry='India';
         insert ct;
         
         

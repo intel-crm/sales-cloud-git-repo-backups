@@ -11,7 +11,7 @@
     <fields>
         <label><!-- Account --></label>
         <name>Core_MDF_Account__c</name>
-        <relationshipLabel><!-- Spending Targets Line Items --></relationshipLabel>
+        <relationshipLabel><!-- Target Setting Line Items --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- All Accounts --></label>

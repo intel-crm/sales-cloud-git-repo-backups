@@ -11,7 +11,7 @@ Modification Log :
 
 public without sharing class ER_DuplicationUtility {
     
-    /*commented as part of EBR framework and implemented this logic with flows
+    /*Commented as part of EBR framework and implemented the logic with Flows
     // Checks if there is duplicate regisrtation request and rejects duplicate
     public static void rejectDuplicates(List<PRM_Registration_Request__c> regReqList,Map<Id, PRM_Registration_Request__c> oldRequestMap){
         List<PRM_Registration_Request__c> duplicateRequest = new List<PRM_Registration_Request__c>();
@@ -87,8 +87,8 @@ public without sharing class ER_DuplicationUtility {
                 billingCountryForCallout = countryMap.get(regReq.PRM_Country__c);
                 
                
-            }
-            //TODO: Call CIM API when we get Account in request?
+            } 
+            //TODO: Call CIM API when we get Account in request?  
             oldRequestStatus = oldRegReqMap.get(regReq.Id).PRM_Dup_Status__c;
             if(((regReq.recordTypeId == accountCreateRequestRT) && regReq.PRM_Status__c != Label.PRM_Status_Rejected && String.isNotBlank(regReq.PRM_Account_Name__c) && String.isNotBlank(regReq.PRM_Address_Line_1__c) && String.isNotBlank(regReq.PRM_Zip_Postal_Code__c) && String.isNotBlank(regReq.PRM_City__c) && ((String.isBlank(regReq.PRM_Dup_Status__c)) || ( (regReq.PRM_Dup_Status__c == 'NOT PROC') && String.isNotBlank(oldRequestStatus) && (oldRequestStatus == 'ERROR')))) ||
                ((regReq.recordTypeId == accountCreateRequestRT) && (String.isNotBlank(regReq.PRM_Salesforce_ID__c)) && ((String.isBlank(regReq.PRM_Dup_Status__c)) || ((regReq.PRM_Dup_Status__c == 'NOT PROC') && String.isNotBlank(oldRequestStatus) && (oldRequestStatus == 'ERROR'))))){

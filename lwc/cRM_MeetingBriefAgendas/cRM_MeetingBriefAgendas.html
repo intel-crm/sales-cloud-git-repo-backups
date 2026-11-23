@@ -1,0 +1,111 @@
+<template>
+    <div class="sow-table">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Presenters/Conversation Lead</th>
+                    <th>Meeting Agenda Items</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={agendaItems} for:item="agenda">
+                    <tr key={agenda.id}>
+                        <td>
+                            <template if:true={agenda.isEditing}>
+                                <lightning-input type="time" value={agenda.startTime} data-id={agenda.id}
+                                    data-field="startTime" onchange={handleAgendaChange} class="no-label-space" variant="label-hidden"></lightning-input>
+                            </template>
+                            <template if:false={agenda.isEditing}>
+                                <lightning-formatted-time value={agenda.startTime}></lightning-formatted-time>
+                            </template>
+                        </td>
+                        <td>
+                            <template if:true={agenda.isEditing}>
+                                <lightning-input type="time" value={agenda.endTime} data-id={agenda.id}
+                                    data-field="endTime" onchange={handleAgendaChange} class="no-label-space" variant="label-hidden"></lightning-input>
+                            </template>
+                            <template if:false={agenda.isEditing}>
+                                <lightning-formatted-time value={agenda.endTime}></lightning-formatted-time>
+                            </template>
+                        </td>
+                        <td>
+                            <template if:true={agenda.isEditing}>
+                                <lightning-input placeholder="Search People..." type="search" value={agenda.presentersLeadName} data-id={agenda.id}
+                                    data-field="presentersLead" onchange={handleSearchUsers3} class="no-label-space" variant="label-hidden"></lightning-input>
+                                <div class="slds-col">
+                                    <div if:true={agenda.showUserDropdown}
+                                        class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                                        role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <template for:each={agenda.userOptions} for:item="option">
+                                                <li key={option.value} role="presentation" class="slds-listbox__item">
+                                                    <div role="option"
+                                                        class="slds-listbox__option slds-listbox__option_plain slds-media slds-media_small slds-media_center"
+                                                        onclick={handleUserSelect3} data-id={agenda.id}
+                                                        data-value={option.value} data-name={option.label}>
+                                                        <span class="slds-media__figure">
+                                                            <lightning-icon icon-name="standard:user" size="small" alternative-text="User"></lightning-icon>
+                                                        </span>
+                                                        <span class="slds-media__body">
+                                                            <span class="slds-listbox__option-text slds-listbox__option-text_entity">{option.label}({option.email})</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </template>
+                            <template if:false={agenda.isEditing}>
+                                <div class="hover-container" data-id={agenda.id} onmouseover={handleMouseOver} onmouseout={handleMouseOut}>
+                                    <div class="avatar-name-container">
+                                        <template if:true={agenda.presentersLeadName}>
+                                            <lightning-avatar size="x-small" alternative-text="User Avatar" src={avatarImg}></lightning-avatar>
+                                        </template>
+                                        <a href="javascript:void(0);" onclick={handleNavigateToUser} data-id={agenda.id}>
+                                            {agenda.presentersLeadName}
+                                        </a>
+                                    </div>
+                                    <template if:true={agenda.showHoverCard}>
+                                        <div class="hover-card">
+                                            <lightning-card title="User Details">
+                                                <div class="slds-p-around_medium">
+                                                    <p><strong>Name:</strong> {agenda.userDetails.Name}</p>
+                                                    <p><strong>Email:</strong> {agenda.userDetails.Email}</p>
+                                                    <p><strong>Phone:</strong> {agenda.userDetails.Phone}</p>
+                                                </div>
+                                            </lightning-card>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </td>
+                        <td>
+                            <template if:true={agenda.isEditing}>
+                                <lightning-input type="text" value={agenda.agendaItems} data-id={agenda.id}
+                                    data-field="agendaItems" onchange={handleAgendaChange} class="no-label-space" variant="label-hidden"></lightning-input>
+                            </template>
+                            <template if:false={agenda.isEditing}>
+                                {agenda.agendaItems}
+                            </template>
+                        </td>
+                        <td>
+                            <lightning-button-icon icon-name="utility:edit" alternative-text="Edit"
+                                data-id={agenda.id} onclick={handleEditAgenda}></lightning-button-icon>
+                            <lightning-button-icon icon-name="utility:delete" alternative-text="Delete"
+                                data-id={agenda.id} onclick={handleRemoveAgenda}></lightning-button-icon>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+    <div class="slds-p-around_medium button-container">
+        <lightning-button label="Add New" onclick={handleAddAgenda}></lightning-button>
+        <!--<lightning-button label="Save" variant="brand" onclick={handleSave} class="slds-m-left_small"></lightning-button>
+        <lightning-button label="Cancel" onclick={handleCancel} class="slds-m-left_small"></lightning-button>-->
+    </div>
+</template>

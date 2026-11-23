@@ -1,3 +1,14 @@
+/*********************************************************************************************************************
+Class Name    : PRM_EmailToPrimaryContact_Test
+Version       : 1.0
+Created Date  : 06 April 2020
+Function      : Test Class for 'PRM_EmailToPrimaryContact'
+
+Modification Log :
+* Developer                 Date                    Description
+* --------------------------------------------------------------------------------------------------
+* Prasant Sahu             April 2020              Test Class for 'PRM_EmailToPrimaryContact'
+*********************************************************************************************************************/
 @isTest
 public class PRM_EmailToPrimaryContact_Test {
     @testSetup
@@ -35,7 +46,7 @@ public class PRM_EmailToPrimaryContact_Test {
         con.MailingCountry='USA';
         con.MailingCountryCode = 'USA';
         insert con;
-        //system.debug(con);
+        
      
         ChannelProgram cprogram = new ChannelProgram();
         cprogram.Name='New Partner Program';
@@ -135,7 +146,6 @@ public class PRM_EmailToPrimaryContact_Test {
         acr.PRM_Status_Reason_Txt__c='testing';
         //insert acr;
         acrList.add(acr);
-        //system.debug('acr--1>'+acr); 
         
         PRM_Account_Contact_Relationship__c acr1=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
         acr1.PRM_InActive_Ind__c= false;
@@ -153,7 +163,7 @@ public class PRM_EmailToPrimaryContact_Test {
         for(PRM_Account_Contact_Relationship__c acrRec: acrList){
             mapOfACR.put(acrRec.id,acrRec);
         }
-        //system.debug('acr1-->'+acr);
+        
         
         Test.startTest();
         List<PRM_Registration_Request__c> regReqList = new List<PRM_Registration_Request__c>();
@@ -288,7 +298,7 @@ public class PRM_EmailToPrimaryContact_Test {
         con.MailingCountryCode = 'USA';
         con.Core_Preferred_Language__c='ENG';
         insert con;
-        //system.debug(con);
+        
         
         Contact con1 = new Contact();
         con1.FirstName='Geralt';
@@ -305,7 +315,7 @@ public class PRM_EmailToPrimaryContact_Test {
         con1.MailingCountryCode = 'USA';
         con1.Core_Preferred_Language__c='ENG';
         insert con1;
-        //system.debug(con1);
+      
      
         ChannelProgram cprogram = new ChannelProgram();
         cprogram.Name='New Partner Program';
@@ -394,7 +404,7 @@ public class PRM_EmailToPrimaryContact_Test {
         acr.PRM_Status_Nm__c ='Pending Action';
         acr.PRM_Status_Reason_Txt__c='testing';
         insert acr;
-        //system.debug('acr--1>'+acr); 
+        
         
         PRM_Account_Contact_Relationship__c acr1=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
         acr1.PRM_InActive_Ind__c= false;
@@ -405,7 +415,7 @@ public class PRM_EmailToPrimaryContact_Test {
         acr1.PRM_Status_Nm__c ='Pending Action';
         acr1.PRM_Status_Reason_Txt__c='testing';
         insert acr1;
-        //system.debug('acr1-->'+acr);
+        
         
         PRM_Account_Contact_Relationship__c acr2=new PRM_Account_Contact_Relationship__c();
         acr2.PRM_InActive_Ind__c= false;

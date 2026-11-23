@@ -131,16 +131,14 @@
         <label>Chinese (Traditional)</label>
     </customValue>
     <customValue>
-        <fullName>Spanish: es</fullName>
+        <fullName>ENU</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>Spanish: es</label>
+        <label>English(UK)</label>
     </customValue>
     <customValue>
-        <fullName>Norwegian: no</fullName>
+        <fullName>ESP</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>Norwegian: no</label>
+        <label>Spanish(EMEA)</label>
     </customValue>
     <customValue>
         <fullName>Portuguese (Brazil): pt_BR</fullName>
@@ -173,10 +171,10 @@
         <label>Italian: it</label>
     </customValue>
     <customValue>
-        <fullName>ENU</fullName>
+        <fullName>German: de</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>English(UK)</label>
+        <label>German: de</label>
     </customValue>
     <customValue>
         <fullName>French: fr</fullName>
@@ -221,22 +219,22 @@
         <label>Chinese (Simplified): zh_CN</label>
     </customValue>
     <customValue>
-        <fullName>German: de</fullName>
+        <fullName>Norwegian: no</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>German: de</label>
+        <label>Norwegian: no</label>
     </customValue>
     <customValue>
-        <fullName>ESP</fullName>
+        <fullName>Spanish: es</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Spanish(EMEA)</label>
+        <label>Spanish: es</label>
     </customValue>
     <customValue>
-        <fullName>Spanish (Mexico): es_MX</fullName>
+        <fullName>Thai: th</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Spanish (Mexico): es_MX</label>
+        <label>Thai: th</label>
     </customValue>
     <customValue>
         <fullName>Swedish: sv</fullName>
@@ -245,10 +243,10 @@
         <label>Swedish: sv</label>
     </customValue>
     <customValue>
-        <fullName>Thai: th</fullName>
+        <fullName>Spanish (Mexico): es_MX</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Thai: th</label>
+        <label>Spanish (Mexico): es_MX</label>
     </customValue>
     <masterLabel>Language Codes</masterLabel>
     <sorted>false</sorted>

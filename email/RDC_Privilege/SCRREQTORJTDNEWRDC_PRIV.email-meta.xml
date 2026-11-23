@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Request Rejection Email for RDC Privilege Contacts</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTORJTDNEWRDC_PRIV</name>
+    <style>none</style>
+    <subject>Privileged Access Request For Resource &amp; Design Center Declined</subject>
+    <textOnly>Privileged Access Request For Resource &amp; Design Center Declined
+
+
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+
+We appreciate your interest in the Resource &amp; Design Center, however, upon review of your application we regret to inform you that your request for a Privileged account to the Resource &amp; Design Center has been declined. Some reasons for denial may include:
+
+
+Application does not meet the Privileged Program criteria.
+The request for Privileged access does not allow for the use of personal emails. The request needs to be submitted with your company&apos;s e-mail address.
+Privileged access to the Resource &amp; Design Center requires a Corporate Non-Disclosure Agreement (CNDA) between your company and Intel®.
+
+
+You may continue to use your login to access the site&apos;s public content and special offers. If you feel your request was denied in error, please contact account assistance via phone or email for more information.
+
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving your e-mails, please add us to your address book.
+
+Kind Regards,
+RDC Privilege Team
+
+This message was sent to you as an important business communication related to your current relationship with Resource &amp; Design Center.
+© 2020 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

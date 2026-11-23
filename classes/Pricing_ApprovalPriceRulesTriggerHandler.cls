@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 05-05-2026
+* @last modified on  : 06-17-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_ApprovalPriceRulesTriggerHandler extends TriggerHandler {
@@ -51,6 +51,9 @@ public without sharing class Pricing_ApprovalPriceRulesTriggerHandler extends Tr
 
                         if(rule.Pricing_Rule_Start_Date__c == null){
                             rule.Pricing_Rule_Start_Date__c = Date.today();
+                            //rule.Pricing_Minimum_Requested_Unit_Price__c = 1;
+                            //rule.Pricing_Minimum_Quantity__c = 1;
+                            
                         }
                         if(rule.Pricing_Rule_End_Date__c == null){
                         rule.Pricing_Rule_End_Date__c = Date.today().addMonths(12); 
@@ -284,8 +287,9 @@ public without sharing class Pricing_ApprovalPriceRulesTriggerHandler extends Tr
                 }       
             }
             if(productNames.size() > 0){
+                List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
                 for(Product2 prod : [Select Id,Name from Product2 where Name In: productNames and (IsActive = true AND Core_Product_Org__c = 'Sales' AND Core_Sales_Visible_Flag__c = true AND Core_Hierarchy_ID__c = '43' AND Core_Processor_Number_Nm__c != null AND ((Core_VerticalSegment__c in ('Mobile','Desktop','Workstation','Embedded') OR Core_Cross_Selling_Product_Type_Nm__c = 'Client') OR(
-                                        Core_Product_Type__c in ('Processors','Partnered Products') AND (Core_Group_Code_Short_Name__c Like '%DCG%' OR Core_Group_Code_Short_Name__c Like '%CCG%' OR Core_Group_Code_Short_Name__c Like '%CPLG%' OR Name Like '%Intel® Xeon®%')  AND Core_Product_Group_EPM_ID__c = null )))]){
+                                        Core_Product_Type__c in ('Processors','Partnered Products') AND (Core_Line_of_Business__c IN : lobValuesList OR Name Like '%Intel® Xeon®%')  AND Core_Product_Group_EPM_ID__c = null )))]){
                     prodNameToIdMap.put(prod.Name,prod.Id);
                     prodIdToNameMap.put(prod.Id,prod.Name);
                 }

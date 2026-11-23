@@ -28,8 +28,6 @@ public class PRM_PointsRedeemBenAssignBatch_Test {
 
         Id recordTypeIdPAGAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
         Id recordTypeAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        System.debug('OPID '+recordTypeIdPAGAccount);
-        System.debug('Acc '+recordTypeAccount);
         List<Account> acc = new List<Account>();
         Account opidAcc = new Account();//Account
         opidAcc.RecordTypeId = recordTypeIdPAGAccount;
@@ -617,14 +615,12 @@ public class PRM_PointsRedeemBenAssignBatch_Test {
             Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandler');
         }
         List<PRM_Account_Contact_Relationship__c> acrListAfterInsert = [select id,PRM_Relationship_Id__c,PRM_Account_Id__c,PRM_Contact_Id__c,PRM_Partner_Role__c,PRM_Status_Nm__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c =: acc[5].id];
-        System.debug('acrListAfterInsert-->'+acrListAfterInsert);
         List<PRM_Account_Contact_Relationship__c> acrListAfterInsert01 = [SELECT 
                     id,PRM_Relationship_Id__c
                     FROM PRM_Account_Contact_Relationship__c
                     WHERE PRM_Account_Id__c =: acc[5].id
                     AND  PRM_InActive_Ind__c = false
                   AND PRM_Relationship_Id__c =: contRelation1.Id];
-                    System.debug('acrListAfterInsert01-->'+acrListAfterInsert01);
                     
 
         PRM_Profile_Questions__c question1 = new PRM_Profile_Questions__c();

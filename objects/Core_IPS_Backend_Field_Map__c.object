@@ -166,7 +166,7 @@
         <fullName>Core_IPS_Deassociate__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Deassociate</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -174,7 +174,7 @@
         <fullName>Core_IPS_Default_Value__c</fullName>
         <label>Default Value</label>
         <length>32768</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Html</type>
         <visibleLines>25</visibleLines>
@@ -264,7 +264,7 @@ in HSD, Jira, RTC, ...</inlineHelpText>
         <inlineHelpText>The Target Field to be set
 to the Default Value</inlineHelpText>
         <label>UnMapped</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -283,7 +283,7 @@ to the Default Value</inlineHelpText>
         <fullName>Support_Update__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Support Update</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>

@@ -180,7 +180,7 @@ public class PRM_SF2MyIntel_Updates_API_Test {
         test.stopTest();
     }
     
-    public static Contact createTestContact(){  
+    public static Contact createTestContact(){        
         Id accountRecordTypeIntel = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
         
         Account acc = PRM_TestUtility.getAccount();
@@ -198,14 +198,12 @@ public class PRM_SF2MyIntel_Updates_API_Test {
         Contact con = PRM_TestUtility.getContact();
         con.Email='testUser'+String.valueOf(Math.random())+'@sfapitest.com';
         con.AccountId = acc.Id;
-        con.MailingCountry='USA';
         con.Core_Job_Function__c='Branch Manager';
         con.Core_eRPM_Language_Code__c='Eng';
         con.Core_IPA_PartnerRole__c = 'Service Provider';
         con.Core_Login_Id__c = 'abc';
         con.Core_IPA_Partner_Community__c='Intel® FPGA Partner';
-        insert con;
-        //System.debug(con);    
+        insert con; 
         return con;
     } 
     

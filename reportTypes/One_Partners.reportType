@@ -61,6 +61,41 @@
             <field>Core_MDA_Ind__c</field>
             <table>Core_Account_Group_Member__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Business_Party_Id__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Primary_Account__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Intel_Account_Name__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Delink_Association_User__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Inactive_Account__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>uCD_ActivationEmailSent__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Comments__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
         <masterLabel>One Partner ID Group Members</masterLabel>
     </sections>
 </ReportType>

@@ -22,7 +22,7 @@ public class PRM_EmailReminderBatch_Test {
         newAccount.Core_User_Defined_Website__c = 'www.google.com';
         newAccount.recordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         insert newAccount;
-        //System.debug('first account' + newAccount);
+        
 
         List<Contact> contlist = new List<Contact>();
         Contact cont = new Contact(); //Contact
@@ -105,7 +105,7 @@ public class PRM_EmailReminderBatch_Test {
         acr.PRM_Start_Date_Dt__c = system.today() - 2;
         acr.PRM_End_Date_Dt__c = acr.PRM_Start_Date_Dt__c + 1;
         insert acr;
-        //System.debug('acr--1>' + acr);
+       
 
         PRM_Account_Contact_Relationship__c acr1 = new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
         acr1.PRM_InActive_Ind__c = false;
@@ -163,7 +163,7 @@ public class PRM_EmailReminderBatch_Test {
         newAccount.Core_User_Defined_Website__c = 'www.google.com';
         newAccount.RecordTypeId=Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         insert newAccount;
-        //System.debug('first account' + newAccount);
+        
 
         List<Contact> contlist = new List<Contact>();
         Contact cont = new Contact(); //Contact
@@ -246,7 +246,7 @@ public class PRM_EmailReminderBatch_Test {
         acr.PRM_Start_Date_Dt__c = system.today() - 2;
         acr.PRM_End_Date_Dt__c = acr.PRM_Start_Date_Dt__c + 1;
         insert acr;
-        //System.debug('acr--1>' + acr);
+        
 
         PRM_Account_Contact_Relationship__c acr1 = new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
         acr1.PRM_InActive_Ind__c = false;
@@ -303,7 +303,7 @@ public class PRM_EmailReminderBatch_Test {
         newAccount.Core_User_Defined_Website__c = 'www.google.com';
         newAccount.RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         insert newAccount;
-        //System.debug('first account' + newAccount);
+        
 
         List<Contact> contlist = new List<Contact>();
         Contact cont = new Contact(); //Contact
@@ -386,8 +386,7 @@ public class PRM_EmailReminderBatch_Test {
         acr.PRM_Start_Date_Dt__c = system.today() - 2;
         acr.PRM_End_Date_Dt__c = acr.PRM_Start_Date_Dt__c + 1;
         insert acr;
-        //System.debug('acr--1>' + acr);
-
+        
         PRM_Account_Contact_Relationship__c acr1 = new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
         acr1.PRM_InActive_Ind__c = false;
         acr1.PRM_Account_Id__c = newAccount.Id;

@@ -92,7 +92,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                             false);
             acc1.Core_Account_Type__c = 'Reseller';
-            acc1.Core_Sales_Groups__c = 'Americas Hosted Sales Group';
+            acc1.Core_Sales_Groups__c = 'Automotive Sales Group';
             acc1.Industry = 'Food & Beverage';
             acc1.Core_MDF_Channel_Program__c = cp.Id;
             acc1.Core_MDF_CoMarketingAgency__c=true;

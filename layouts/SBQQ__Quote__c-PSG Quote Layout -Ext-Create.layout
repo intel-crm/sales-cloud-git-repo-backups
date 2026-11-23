@@ -269,13 +269,14 @@
     </quickActionList>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>core_cpq_product_nm__c</fields>
+        <fields>SBQQ__Product__c</fields>
         <fields>core_cpq_quote_line_type_txt__c</fields>
+        <fields>SBQQ__Quantity__c</fields>
         <fields>price_suggested_resale_amt__c</fields>
         <fields>price_brokencost_amt__c</fields>
+        <fields>price_disty_cost_nbr__c</fields>
         <fields>core_cpq_intel_margin_pct__c</fields>
         <fields>core_cpq_distributor_margin_pct__c</fields>
-        <fields>price_msvp_l2_amt__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -287,7 +288,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2i000000KQOA</masterLabel>
+        <masterLabel>00h2D0000023crZ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

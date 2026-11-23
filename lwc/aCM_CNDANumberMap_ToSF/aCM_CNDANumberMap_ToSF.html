@@ -1,0 +1,21 @@
+<template>
+    <lightning-card class="slds-text-heading_small slds-card_boundary" title="CNDA Result" icon-name="utility:multi_select_checkbox">
+            <template if:true={spinnerOn}>
+                <lightning-spinner variant="brand"></lightning-spinner>
+            </template>
+            <div style="height: 300px;">
+                <lightning-datatable
+                        key-field="contract_number"
+                        data={data}
+                        columns={columns}>
+                </lightning-datatable>
+            </div>
+            <lightning-button   variant="Neutral"
+                            label="Update CNDA value"
+                            title="Update CNDA value"
+                            onclick={getSelectedRecords} 
+                            slot="actions"
+                            icon-name="utility:check">
+        </lightning-button>
+    </lightning-card>
+</template>

@@ -7,17 +7,11 @@
         <field>Product2$Core_OPN__c</field>
     </columns>
     <columns>
-        <field>Product2$Core_Item_Id__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Product2$IsActive</field>
     </columns>
     <columns>
-        <field>Product2$Core_Product_Status__c</field>
-    </columns>
-    <columns>
-        <field>Product2$Core_Item_Signal_Cd__c</field>
+        <field>Product2$Core_Item_Id__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -37,34 +31,17 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2$Core_Sales_Visible_Flag__c</field>
+        <field>Product2.Product_Ext_Attribute__r$Core_SW_Lic_Renewal_Period_Nbr__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Product_Ext_Attribute__r$Core_Prod_QTE_Slow_Moving_Inventory_Ind__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Product_Ext_Attribute__r$Core_Prod_QTE_Alt_LGSTS_NW_Enabled_Ind__c</field>
+        <field>Product2$Core_Product_Status__c</field>
     </columns>
     <columns>
         <field>Product2$Core_Item_Class_Nm__c</field>
     </columns>
     <columns>
-        <field>Product2$Core_Product_Type_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Product2$Core_Hierarchy_ID__c</field>
-    </columns>
-    <columns>
-        <field>Product2$Core_Hierarchy_Name__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Product_Ext_Attribute__r$Core_SW_Lic_Authorization_Cd__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2.Product_Ext_Attribute__r$Core_SW_Lic_Renewal_Period_Nbr__c</field>
+        <field>Product2$Core_Sales_Visible_Flag__c</field>
     </columns>
     <columns>
         <field>Product2$SBQQ__SubscriptionPricing__c</field>
@@ -83,6 +60,23 @@
         <field>Product2$Core_Item_Sub_Component_Category_Nm__c</field>
     </columns>
     <columns>
+        <field>Product2$Core_Item_Signal_Cd__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Hierarchy_ID__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Hierarchy_Name__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Product2.Product_Ext_Attribute__r$Core_Prod_QTE_Alt_LGSTS_NW_Enabled_Ind__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Product2.Product_Ext_Attribute__r$Core_Prod_QTE_Slow_Moving_Inventory_Ind__c</field>
+    </columns>
+    <columns>
         <field>Product2.Product_Ext_Attribute__r$Core_Prod_Tool_Type_Nm__c</field>
     </columns>
     <columns>
@@ -90,18 +84,14 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Product2$Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c</field>
+        <field>Product2.Product_Ext_Attribute__r$Core_SW_Prod_Avail_To_TL_ORD_ENBLMT_Ind__c</field>
+    </columns>
+    <columns>
+        <field>Product2$Core_Product_Type_Nm__c</field>
     </columns>
     <description>Report with PSG Products and Extended Attributes</description>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
-        <criteriaItems>
-            <column>Product2$Core_Product_Type_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Component</value>
-        </criteriaItems>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>Product2$Core_Product_Type_Nm__c</column>
             <columnToColumn>false</columnToColumn>
@@ -110,11 +100,11 @@
             <value>Tool</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Product2$IsActive</column>
+            <column>Product2$Core_Product_Type_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>1</value>
+            <value>Component</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

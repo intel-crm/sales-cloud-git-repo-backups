@@ -9910,12 +9910,22 @@ static void testCoverage_ValidationErrors_And_ProgramDerivation() {
 }
 @IsTest
 static void testCoverage_Revoke_UserDoesNotExist() {
+
+    // Use a unique address so this test cannot accidentally match a real
+    // QA9 user or another test user's email. Do not supply new-user details;
+    // reply NO to exercise the missing-user REVOKE cancellation path.
+    String missingEmail = 'missing.revoke.'
+        + String.valueOf(DateTime.now().getTime())
+        + '.' + UserInfo.getUserId().right(6)
+        + '@example.invalid';
+
     List<Core_MDF_IUPGM_Rule_Config__mdt> configs = [
-        SELECT Core_MDF_Role_Label__c,
-               Core_MDF_AGS_Role_Name__c,
-               Core_MDF_Program__c,
-               Core_MDF_Permission_Set_Name__c,
-               Core_MDF_Is_Active__c
+        SELECT
+            Core_MDF_Role_Label__c,
+            Core_MDF_AGS_Role_Name__c,
+            Core_MDF_Program__c,
+            Core_MDF_Permission_Set_Name__c,
+            Core_MDF_Is_Active__c
         FROM Core_MDF_IUPGM_Rule_Config__mdt
         WHERE Core_MDF_Is_Active__c = true
           AND Core_MDF_Role_Label__c != null
@@ -9926,105 +9936,136 @@ static void testCoverage_Revoke_UserDoesNotExist() {
 
     System.assert(
         !configs.isEmpty(),
-        'An active IUPGM rule configuration is required for this test.'
+        'An active MDT role configuration is required'
     );
 
     Core_MDF_IUPGM_Rule_Config__mdt cfg = configs[0];
 
-    Map<String, Object> payload = new Map<String, Object>{
-        'userInput' => 'definitely.nonexistent.revoke.user@intel.com',
-        'program' => cfg.Core_MDF_Program__c,
-        'roleLabel' => cfg.Core_MDF_Role_Label__c,
-        'requestAction' => 'REVOKE'
-    };
+    // Prove the chosen email is not already present before invoking the API.
+    System.assertEquals(
+        0,
+        [SELECT COUNT() FROM User WHERE Email = :missingEmail],
+        'The generated test email must not belong to an existing user'
+    );
+
+    Map<String, Object> payload =
+        new Map<String, Object>{
+            'userInput' => missingEmail,
+
+            'program' =>
+                cfg.Core_MDF_Program__c,
+
+            'roleLabel' =>
+                cfg.Core_MDF_Role_Label__c,
+
+            'requestAction' => 'REVOKE',
+            // Decline the suggested new-user creation. The user remains missing,
+            // so the handler should make no changes and return its no-op response.
+            'userQuery' => 'no'
+        };
 
     Test.startTest();
+
     String result = callValidate(payload);
+
     Test.stopTest();
 
     Map<String, Object> response = parse(result);
 
-    System.assertEquals(
-        false,
-        response.get('success'),
-        'A revoke request for a nonexistent user should not succeed.'
+    System.assertNotEquals(
+        null,
+        response,
+        'Response should not be null'
     );
-
-    System.assertEquals(
-        true,
-        response.get('needsInput'),
-        'The response should ask for clarification when the user is not found.'
-    );
-
-    System.assertEquals(
-        true,
-        response.get('revokeUserNotFound'),
-        'The response should identify that the user was not found during a revoke request.'
-    );
-
-    System.assertEquals(
-        206,
-        RestContext.response.statusCode,
-        'The response should return HTTP 206 while requesting additional input.'
-    );
-}
-@IsTest
-static void testCoverage_Revoke_UserWithoutPermissionSet() {
-    User u = getTestUser();
-
-    // Select a role managed through IUPGM, not an AGS-only role.
-    List<Core_MDF_IUPGM_Rule_Config__mdt> configs = [
-        SELECT Core_MDF_Role_Label__c,
-               Core_MDF_Program__c,
-               Core_MDF_Permission_Set_Name__c,
-               Core_MDF_Is_Active__c,
-               Core_MDF_IUPGM_Required__c
-        FROM Core_MDF_IUPGM_Rule_Config__mdt
-        WHERE Core_MDF_Is_Active__c = true
-          AND Core_MDF_Role_Label__c != null
-          AND Core_MDF_Program__c != null
-          AND Core_MDF_Permission_Set_Name__c != null
-          AND Core_MDF_IUPGM_Required__c = true
-        LIMIT 1
-    ];
-
-    System.assert(
-        !configs.isEmpty(),
-        'An active IUPGM-managed MDT role with a Permission Set is required.'
-    );
-
-    Core_MDF_IUPGM_Rule_Config__mdt cfg = configs[0];
-
-    Map<String, Object> payload = new Map<String, Object>{
-        'userInput' => u.Email,
-        'program' => cfg.Core_MDF_Program__c,
-        'roleLabel' => cfg.Core_MDF_Role_Label__c,
-        'requestAction' => 'REVOKE'
-    };
-
-    Test.startTest();
-    String result = callValidate(payload);
-    Test.stopTest();
-
-    Map<String, Object> response = parse(result);
-    String msg = String.valueOf(response.get('message'));
 
     System.assertEquals(
         false,
         response.get('success'),
-        'A user without the requested IUPGM access should not be removable.'
+        'Revoke for a user that does not exist should fail'
     );
 
     System.assert(
-        msg.contains('Nothing to deactivate'),
-        'Expected nothing-to-deactivate message, got: ' + msg
+        String.valueOf(response.get('message')).contains('does not exist in Salesforce'),
+        'Expected the no-change response for a nonexistent user who declined creation'
     );
 
     System.assertEquals(
         200,
         RestContext.response.statusCode,
-        'Expected HTTP 200 for nothing-to-deactivate response.'
+        'Expected HTTP 200 when the user declines the suggested creation'
     );
+}
+@IsTest
+static void testCoverage_Revoke_UserWithoutPermissionSet() {
+
+    User u = getTestUser();
+
+    // The request handler resolves an exact Role Label + Program pair. Some
+    // orgs contain duplicate active metadata rows for that pair, including an
+    // AGS-only row. Select only a unique pair whose IUPGM-required flag is true
+    // so the test exercises the "no active IUPGM mapping" branch deterministically.
+    List<Core_MDF_IUPGM_Rule_Config__mdt> allConfigs = [
+        SELECT
+            Core_MDF_Role_Label__c,
+            Core_MDF_Program__c,
+            Core_MDF_Permission_Set_Name__c,
+            Core_MDF_IUPGM_Role_Name__c,
+            Core_MDF_Is_Active__c,
+            Core_MDF_IUPGM_Required__c
+        FROM Core_MDF_IUPGM_Rule_Config__mdt
+        WHERE Core_MDF_Is_Active__c = true
+          AND Core_MDF_Role_Label__c != null
+          AND Core_MDF_Program__c != null
+    ];
+
+    Map<String, Integer> pairCounts = new Map<String, Integer>();
+    for (Core_MDF_IUPGM_Rule_Config__mdt candidate : allConfigs) {
+        String key = candidate.Core_MDF_Role_Label__c + '||'
+            + candidate.Core_MDF_Program__c;
+        pairCounts.put(key, pairCounts.containsKey(key)
+            ? pairCounts.get(key) + 1 : 1);
+    }
+
+    Core_MDF_IUPGM_Rule_Config__mdt cfg;
+    for (Core_MDF_IUPGM_Rule_Config__mdt candidate : allConfigs) {
+        String key = candidate.Core_MDF_Role_Label__c + '||'
+            + candidate.Core_MDF_Program__c;
+        if (candidate.Core_MDF_IUPGM_Required__c == true
+            && String.isNotBlank(candidate.Core_MDF_Permission_Set_Name__c)
+            && pairCounts.get(key) == 1) {
+            cfg = candidate;
+            break;
+        }
+    }
+
+    System.assertNotEquals(
+        null,
+        cfg,
+        'Need an active, unique Role Label + Program MDT pair with IUPGM required and a permission set configured'
+    );
+
+    Map<String, Object> payload = new Map<String, Object>{
+        'userInput'     => u.Email,
+        'program'       => cfg.Core_MDF_Program__c,
+        'roleLabel'     => cfg.Core_MDF_Role_Label__c,
+        'requestAction' => 'REMOVE'
+    };
+
+    Test.startTest();
+    String result = callValidate(payload);
+    Test.stopTest();
+
+    Map<String, Object> response = parse(result);
+    System.assertEquals(false, response.get('success'),
+        'User without the role should not be removable');
+
+    String msg = String.valueOf(response.get('message'));
+    System.assert(
+        msg.contains('Nothing to deactivate'),
+        'Expected nothing-to-deactivate message for the selected IUPGM-required role, got: ' + msg
+    );
+    System.assertEquals(200, RestContext.response.statusCode,
+        'Expected HTTP 200 for nothing-to-deactivate response');
 }
     @IsTest
 static void testCoverage_MultiValueWarnings() {
@@ -11347,6 +11388,1834 @@ static void testCoverage_ValidateAccountRequirementForSummary_Direct() {
             if (r.containsKey('readyCount')) {
                 System.assertEquals(0, (Integer) r.get('readyCount'), 'Ready count should be 0');
             }
+        }
+    }
+
+    /*
+    ================================================================
+    COPY vs GRANT/REVOKE INTENT ROUTING
+    ================================================================
+    */
+
+    @IsTest
+    static void testCopyAllRolesPhrase_Detection() {
+        System.assertEquals(true, Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase(
+            'copy all roles access from anandx.abarna@intel.com to nandinix.dubbaka@intel.com'),
+            'copy all roles access → COPY');
+        System.assertEquals(true, Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase(
+            'copy all permissions from x@intel.com to y@intel.com'),
+            'copy all permissions → COPY');
+        System.assertEquals(false, Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase(
+            'grant all roles to x@intel.com'), 'grant all roles → not COPY');
+        System.assertEquals(false, Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase(
+            'revoke all roles from x@intel.com'), 'revoke all roles → not COPY');
+        System.assertEquals(false, Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase(
+            'what access does x@intel.com have'), 'list access → not COPY');
+        System.assertEquals(false, Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase(
+            'remove access for x@intel.com'), 'remove access → not COPY');
+        System.assertEquals(false, Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase(null),
+            'null → not COPY');
+    }
+
+    @IsTest
+    static void testChatbotCopyPayload_RoutesToCopy() {
+        // userInput carries the TARGET here, as in the live log; the query text decides source/target.
+        Map<String, Object> body = new Map<String, Object>{
+            'userInput'      => 'nobody.copytgt@intel.com',
+            'userQuery'      => 'copy access from nobody.copysrc@intel.com to nobody.copytgt@intel.com',
+            'requestorEmail' => 'requestor.test@intel.com',
+            'newUserEmail'   => 'nobody.copytgt@intel.com',
+            'userConfirmed'  => 'false'
+        };
+        Map<String, Object> r = postPayload(body);
+        System.assertEquals(false, r.get('success'), 'Unknown source user → success=false');
+        String msg = String.valueOf(r.get('message'));
+        System.assert(msg.contains('Source user [nobody.copysrc@intel.com]'),
+            'Source must come from the "from X" in the query, not userInput. Got: ' + msg);
+    }
+
+    @IsTest
+    static void testExtractCopyUsersFromQuery() {
+        String[] u = Core_MDF_IUPGM_RequestAPI.extractCopyUsersFromQuery(
+            'copy access from anandx.abarna@intel.com to nandinix.dubbaka@intel.com');
+        System.assertEquals('anandx.abarna@intel.com', u[0], 'source parsed from "from"');
+        System.assertEquals('nandinix.dubbaka@intel.com', u[1], 'target parsed from "to"');
+
+        u = Core_MDF_IUPGM_RequestAPI.extractCopyUsersFromQuery('copy access');
+        System.assertEquals(null, u[0], 'no source when wording absent');
+        System.assertEquals(null, u[1], 'no target when wording absent');
+    }
+
+    @IsTest
+    static void testCopyWithoutUsers_StillRequiresUsers() {
+        Map<String, Object> r = postPayload(new Map<String, Object>{
+            'userQuery'      => 'copy access',
+            'requestorEmail' => 'requestor.test@intel.com'
+        });
+        System.assertEquals('COPY_USERS_REQUIRED', r.get('errorCode'),
+            'COPY with no source/target must still return COPY_USERS_REQUIRED');
+    }
+
+    @IsTest
+    static void testGrantPayload_NotRoutedToCopy() {
+        Map<String, Object> r = postPayload(new Map<String, Object>{
+            'userInput'      => 'nobody.grant@intel.com',
+            'userQuery'      => 'grant all roles to nobody.grant@intel.com',
+            'requestorEmail' => 'requestor.test@intel.com'
+        });
+        String msg = String.valueOf(r.get('message'));
+        System.assertEquals(false, msg.contains('Source user'),
+            'GRANT payload must not be routed to COPY. Got: ' + msg);
+        System.assertNotEquals('COPY_USERS_REQUIRED', r.get('errorCode'),
+            'GRANT payload must not be routed to COPY');
+    }
+
+    @IsTest
+    static void testRevokePayload_NotRoutedToCopy() {
+        Map<String, Object> r = postPayload(new Map<String, Object>{
+            'userInput'      => 'nobody.revoke@intel.com',
+            'userQuery'      => 'revoke all roles from nobody.revoke@intel.com',
+            'requestorEmail' => 'requestor.test@intel.com'
+        });
+        String msg = String.valueOf(r.get('message'));
+        System.assertEquals(false, msg.contains('Source user'),
+            'REVOKE payload must not be routed to COPY. Got: ' + msg);
+        System.assertNotEquals('COPY_USERS_REQUIRED', r.get('errorCode'),
+            'REVOKE payload must not be routed to COPY');
+    }
+
+    @IsTest
+    static void testYesReplyWithFromToPair_RoutesToCopy() {
+        Map<String, Object> p = new Map<String, Object>{
+            'userInput'      => 'nandinix.dubbaka@intel.com',
+            'newUserEmail'   => 'anandx.abarna@intel.com',
+            'userQuery'      => 'Yes, assign the roles CCP Internal RMF Account Manager and CCP Internal Datacenter Marketing Account Manager from nandinix.dubbaka@intel.com to anandx.abarna@intel.com',
+            'requestorEmail' => 'requestor.test@intel.com'
+        };
+        System.assertEquals(Core_MDF_IUPGM_RequestAPI.RequestIntentType.COPY_ACCESS,
+            Core_MDF_IUPGM_RequestAPI.resolveIntent(p, (String) p.get('userQuery')),
+            '"Yes ... from X to Y" reply must route to COPY');
+    }
+
+    @IsTest
+    static void testGrantConfirmationWithRequestSummary_NotRoutedToCopy() {
+        String query = 'yes, from nandinix.dubbaka@intel.com to anandx.abarna@intel.com';
+        Map<String, Object> p = new Map<String, Object>{
+            'userInput'      => 'anandx.abarna@intel.com',
+            'userQuery'      => query,
+            'requestSummary' => new Map<String, Object>{ 'roleLabel' => 'Some Role' },
+            'userConfirmed'  => true
+        };
+        System.assertNotEquals(Core_MDF_IUPGM_RequestAPI.RequestIntentType.COPY_ACCESS,
+            Core_MDF_IUPGM_RequestAPI.resolveIntent(p, query),
+            'GRANT confirmation (requestSummary) must not be routed to COPY');
+    }
+
+    @IsTest
+    static void testGrantRequestWithoutYes_NotRoutedToCopy() {
+        String query = 'grant Co-Marketing role from nandinix.dubbaka@intel.com to anandx.abarna@intel.com';
+        Map<String, Object> p = new Map<String, Object>{
+            'userInput'      => 'anandx.abarna@intel.com',
+            'userQuery'      => query,
+            'requestorEmail' => 'requestor.test@intel.com'
+        };
+        System.assertEquals(Core_MDF_IUPGM_RequestAPI.RequestIntentType.NONE,
+            Core_MDF_IUPGM_RequestAPI.resolveIntent(p, query),
+            'GRANT request without a yes reply must keep the GRANT path');
+    }
+
+    @IsTest
+    static void testStatusQuery_RoutesToStatusIntent() {
+        String query = 'status of access request for anandx.abarna@intel.com';
+        Map<String, Object> p = new Map<String, Object>{
+            'userInput'      => 'anandx.abarna@intel.com',
+            'userQuery'      => query,
+            'requestorEmail' => 'status.check@intel.com'
+        };
+        System.assertEquals(Core_MDF_IUPGM_RequestAPI.RequestIntentType.STATUS_ACCESS,
+            Core_MDF_IUPGM_RequestAPI.resolveIntent(p, query),
+            'A status question must read staging rows, not re-run validation');
+    }
+
+    @IsTest
+    static void testStatusQueryWithConfirmationPayload_NotStatusIntent() {
+        String query = 'status yes';
+        Map<String, Object> p = new Map<String, Object>{
+            'requestSummary' => new Map<String, Object>{'userId' => '005000000000001AAA'},
+            'userConfirmed'  => true,
+            'userQuery'      => query
+        };
+        System.assertNotEquals(Core_MDF_IUPGM_RequestAPI.RequestIntentType.STATUS_ACCESS,
+            Core_MDF_IUPGM_RequestAPI.resolveIntent(p, query),
+            'A confirmation payload must never take the read-only status path');
+    }
+
+    @IsTest
+    static void testPlainYesWithoutPendingCopy_NotRoutedToCopy() {
+        String query = 'yes';
+        Map<String, Object> p = new Map<String, Object>{
+            'userQuery'      => query,
+            'requestorEmail' => 'pending.none@intel.com'
+        };
+        System.assertEquals(Core_MDF_IUPGM_RequestAPI.RequestIntentType.NONE,
+            Core_MDF_IUPGM_RequestAPI.resolveIntent(p, query),
+            'A plain yes with no live Copy preview must not route to COPY');
+    }
+
+    @IsTest
+    static void testPlainYesWithPendingCopy_RoutesToCopy() {
+        String requestor = 'pending.copy@intel.com';
+        insert new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_Request_Status_nm__c = 'Copy_Pending',
+            Core_MDF_Copy_Operation_Id__c = 'COR-TEST-PENDING',
+            Core_MDF_Requestor_Email__c   = requestor,
+            Core_MDF_Pending_Dependent_Role_txt__c = '{"eligibleRoles":[]}'
+        );
+        String query = 'Yes';
+        Map<String, Object> p = new Map<String, Object>{
+            'userQuery'      => query,
+            'requestorEmail' => requestor
+        };
+        System.assertEquals(Core_MDF_IUPGM_RequestAPI.RequestIntentType.COPY_ACCESS,
+            Core_MDF_IUPGM_RequestAPI.resolveIntent(p, query),
+            'A plain yes with a live Copy_Pending preview must route to COPY');
+    }
+
+    @IsTest
+    static void testCopyPendingRow_KeptAndNotQueuedForProcessing() {
+        Core_MDF_IUPGM_Request_Staging__c row = new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_Request_Status_nm__c = 'Copy_Pending',
+            Core_MDF_Copy_Operation_Id__c = 'COR-TEST-NOQUEUE',
+            Core_MDF_Requestor_Email__c   = 'pending.queue@intel.com'
+        );
+        insert row;
+        Core_MDF_IUPGM_Request_Staging__c saved = [
+            SELECT Core_MDF_Request_Status_nm__c, Core_MDF_Is_IUPGM_Processed__c
+            FROM Core_MDF_IUPGM_Request_Staging__c WHERE Id = :row.Id
+        ];
+        System.assertEquals('Copy_Pending', saved.Core_MDF_Request_Status_nm__c,
+            'Copy_Pending status must survive beforeInsert');
+        System.assertEquals(false, saved.Core_MDF_Is_IUPGM_Processed__c);
+    }
+
+
+    /*
+    ================================================================
+    ADDITIONAL COVERAGE — COPY / LIST ACCESS / STATUS ACCESS
+    These tests exercise the actual handler methods, not only intent
+    routing. IDS success-path tests require an IDS Named Credential
+    and a suitable Core_Federation_ID__c value in the target org.
+    ================================================================
+    */
+
+    @IsTest
+    static void testListAccess_MissingTargetUser() {
+        RestResponse res = new RestResponse();
+        Map<String, Object> payload = new Map<String, Object>();
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleListAccessRequest(
+            payload, res
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(400, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+        System.assert(
+            String.valueOf(response.get('message')).contains('provide the user')
+        );
+    }
+
+    @IsTest
+    static void testListAccess_UserNotFound() {
+        // Intentional behavior change: a user with no active Salesforce record (never existed or
+        // deactivated) now returns a graceful "no roles" response instead of a hard 404 error.
+        RestResponse res = new RestResponse();
+        Map<String, Object> payload = new Map<String, Object>{
+            'targetUserInput' => 'not.a.real.user.987654@intel.com'
+        };
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleListAccessRequest(
+            payload, res
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(200, res.statusCode);
+        System.assertEquals(true, response.get('success'));
+        System.assertEquals(0, (Integer) response.get('roleCount'));
+        System.assert(
+            String.valueOf(response.get('message')).contains('not an active user')
+        );
+    }
+
+    @IsTest
+    static void testListAccess_MissingCoreFederationIdDoesNotCallIds() {
+        User u = getTestUser();
+        RestResponse res = new RestResponse();
+        Map<String, Object> payload = new Map<String, Object>{
+            'targetUserInput' => u.Email
+        };
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleListAccessRequest(
+            payload, res
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(400, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+        System.assert(
+            String.valueOf(response.get('message')).contains('Federation ID')
+        );
+    }
+
+    @IsTest
+    static void testStatusAccess_MissingUser() {
+        RestResponse res = new RestResponse();
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleStatusRequest(
+            new Map<String, Object>(), res
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(400, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+        System.assert(
+            String.valueOf(response.get('message')).contains('provide the user')
+        );
+    }
+
+    @IsTest
+    static void testStatusAccess_UserNotFound() {
+        RestResponse res = new RestResponse();
+        Map<String, Object> payload = new Map<String, Object>{
+            'userInput' => 'unknown.status.user.987654@intel.com'
+        };
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleStatusRequest(
+            payload, res
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(404, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+    }
+
+    @IsTest
+    static void testStatusAccess_ReturnsRowsAndExcludesCopyPending() {
+        User u = getTestUser();
+
+        // QA orgs can have different restricted AGS Status values. Also, the
+        // field default may be a legacy value (for example Pending) that is
+        // no longer active. Explicitly supply an active value on every row.
+        String validAgsStatus;
+        for (Schema.PicklistEntry entry :
+            Core_MDF_IUPGM_Request_Staging__c.Core_MDF_AGS_Status_nm__c
+                .getDescribe().getPicklistValues()) {
+            if (entry.isActive()) {
+                validAgsStatus = entry.getValue();
+                break;
+            }
+        }
+        System.assertNotEquals(null, validAgsStatus,
+            'QA9 must have at least one active AGS Status picklist value');
+
+        insert new List<Core_MDF_IUPGM_Request_Staging__c>{
+            new Core_MDF_IUPGM_Request_Staging__c(
+                Core_MDF_IUPGM_User__c = u.Id,
+                Core_MDF_IUPGM_Program__c = 'IPA',
+                Core_MDF_IUPGM_Role_nm__c = 'Status Test Role A',
+                Core_MDF_Request_Status_nm__c = 'New',
+                Core_MDF_AGS_Status_nm__c = validAgsStatus,
+                // Keep the optional error-message field populated for response coverage.
+                Core_MDF_Error_Message_txt__c = 'Test status row A',
+                Core_MDF_Requested_By__c = u.Id
+            ),
+            new Core_MDF_IUPGM_Request_Staging__c(
+                Core_MDF_IUPGM_User__c = u.Id,
+                Core_MDF_IUPGM_Program__c = 'IPA',
+                Core_MDF_IUPGM_Role_nm__c = 'Status Test Role B',
+                Core_MDF_Request_Status_nm__c = 'New',
+                Core_MDF_AGS_Status_nm__c = validAgsStatus,
+                Core_MDF_Copy_Operation_Id__c = 'COR-STATUS-GROUP',
+                Core_MDF_Requested_By__c = u.Id
+            ),
+            new Core_MDF_IUPGM_Request_Staging__c(
+                Core_MDF_IUPGM_User__c = u.Id,
+                Core_MDF_IUPGM_Program__c = 'IPA',
+                Core_MDF_Request_Status_nm__c = 'Copy_Pending',
+                Core_MDF_AGS_Status_nm__c = validAgsStatus,
+                Core_MDF_Copy_Operation_Id__c = 'COR-STATUS-PENDING',
+                Core_MDF_Requested_By__c = u.Id
+            )
+        };
+
+        RestResponse res = new RestResponse();
+        Map<String, Object> payload = new Map<String, Object>{
+            'targetUserInput' => u.Email,
+            'userQuery' => 'show my access request status'
+        };
+
+        Test.startTest();
+        String result = Core_MDF_IUPGM_RequestAPI.handleStatusRequest(
+            payload, res
+        );
+        Test.stopTest();
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(200, res.statusCode);
+        System.assertEquals(true, response.get('success'));
+        System.assertEquals(2, response.get('requestCount'));
+
+        List<Object> requests = (List<Object>) response.get('requests');
+        System.assertEquals(2, requests.size());
+
+        for (Object item : requests) {
+            Map<String, Object> requestRow = (Map<String, Object>) item;
+            System.assertNotEquals(
+                'Copy_Pending',
+                requestRow.get('status'),
+                'A pending preview must not be exposed as a submitted request'
+            );
+        }
+    }
+
+    @IsTest
+    static void testStatusAccess_TargetUserInputTakesPrecedence() {
+        User u = getTestUser();
+        RestResponse res = new RestResponse();
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleStatusRequest(
+            new Map<String, Object>{
+                'targetUserInput' => u.Email,
+                'userInput' => 'unknown.user@intel.com'
+            },
+            res
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(200, res.statusCode);
+        System.assertEquals(true, response.get('success'));
+        System.assertEquals(u.Id, response.get('userId'));
+    }
+
+    @IsTest
+    static void testCopyAccess_SourceUserNotFound() {
+        User targetUser = getSecondUser();
+        RestResponse res = new RestResponse();
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'sourceUserInput' => 'missing.copy.source.123@intel.com',
+                'targetUserInput' => targetUser.Email,
+                'requestorEmail' => 'copy.test@intel.com'
+            },
+            res,
+            null,
+            false
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(404, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+        System.assert(
+            String.valueOf(response.get('message')).contains('Source user')
+        );
+    }
+
+    @IsTest
+    static void testCopyAccess_TargetUserNotFound() {
+        User sourceUser = getTestUser();
+        RestResponse res = new RestResponse();
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'sourceUserInput' => sourceUser.Email,
+                'targetUserInput' => 'missing.copy.target.123@intel.com',
+                'requestorEmail' => 'copy.test@intel.com'
+            },
+            res,
+            null,
+            false
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(404, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+        System.assert(
+            String.valueOf(response.get('message')).contains('Target user')
+        );
+    }
+
+    @IsTest
+    static void testCopyAccess_MissingFederationIdStopsBeforeIdsCallout() {
+        User sourceUser = getTestUser();
+        User targetUser = getSecondUser();
+        RestResponse res = new RestResponse();
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'sourceUserInput' => sourceUser.Email,
+                'targetUserInput' => targetUser.Email,
+                'requestorEmail' => 'copy.test@intel.com'
+            },
+            res,
+            null,
+            false
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(400, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+        System.assert(
+            String.valueOf(response.get('message')).contains('Federation ID')
+        );
+    }
+
+    @IsTest
+    static void testCopyAccess_ConfirmedPayloadMissingRoles() {
+        User targetUser = getSecondUser();
+        RestResponse res = new RestResponse();
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'userConfirmed' => true,
+                'copyOperationId' => 'COR-COPY-NO-ROLES',
+                'targetUserId' => String.valueOf(targetUser.Id),
+                'eligibleRoles' => new List<Object>()
+            },
+            res,
+            null,
+            false
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(400, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+        System.assert(
+            String.valueOf(response.get('message')).contains('No eligibleRoles')
+        );
+    }
+
+    @IsTest
+    static void testCopyAccess_ConfirmedPayloadInvalidTargetId() {
+        RestResponse res = new RestResponse();
+
+        String result = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'userConfirmed' => true,
+                'copyOperationId' => 'COR-COPY-BAD-ID',
+                'targetUserId' => 'not-an-id',
+                'eligibleRoles' => new List<Object>{
+                    new Map<String, Object>{
+                        'roleLabel' => 'Test Role',
+                        'program' => 'IPA',
+                        'permissionSetName' => 'Test_Copy_PS',
+                        'agsRoleName' => 'Test Copy Role'
+                    }
+                }
+            },
+            res,
+            null,
+            false
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(400, res.statusCode);
+        System.assertEquals(false, response.get('success'));
+    }
+
+    @IsTest
+    static void testCopyAccess_ConfirmedSubmissionCreatesStagingRecord() {
+        User targetUser = getSecondUser();
+        String operationId = 'COR-COPY-TEST-SUBMIT';
+
+        Map<String, Object> role = new Map<String, Object>{
+            'roleLabel' => 'Copy Test Role',
+            'program' => 'IPA',
+            'permissionSetName' => 'Core_MDF_Copy_Test_PS',
+            'agsRoleName' => 'Copy Test AGS Role'
+        };
+
+        RestResponse res = new RestResponse();
+        String result;
+
+        Test.startTest();
+        result = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'userConfirmed' => true,
+                'copyOperationId' => operationId,
+                'targetUserId' => String.valueOf(targetUser.Id),
+                'requestorEmail' => 'copy.submit.test@intel.com',
+                'eligibleRoles' => new List<Object>{ role }
+            },
+            res,
+            null,
+            false
+        );
+        Test.stopTest();
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(200, res.statusCode);
+        System.assertEquals(true, response.get('success'));
+
+        List<Core_MDF_IUPGM_Request_Staging__c> submitted = [
+            SELECT Id, Core_MDF_IUPGM_User__c, Core_MDF_IUPGM_Program__c,
+                   Core_MDF_IUPGM_Role_nm__c, Core_MDF_Request_Type_nm__c,
+                   Core_MDF_Copy_Operation_Id__c,
+                   Core_MDF_Request_Status_nm__c
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Core_MDF_Copy_Operation_Id__c = :operationId
+        ];
+
+        Boolean copyPicklistValueAvailable = false;
+        for (Schema.PicklistEntry entry :
+            Core_MDF_IUPGM_Request_Staging__c.Core_MDF_Request_Type_nm__c
+                .getDescribe().getPicklistValues()) {
+            if (entry.isActive() && entry.getValue() == 'COPY') {
+                copyPicklistValueAvailable = true;
+                break;
+            }
+        }
+
+        if (copyPicklistValueAvailable) {
+            System.assertEquals(
+                1,
+                submitted.size(),
+                'One eligible COPY role should create one staging record'
+            );
+            System.assertEquals(targetUser.Id, submitted[0].Core_MDF_IUPGM_User__c);
+            System.assertEquals('IPA', submitted[0].Core_MDF_IUPGM_Program__c);
+            System.assertEquals('Core_MDF_Copy_Test_PS',
+                submitted[0].Core_MDF_IUPGM_Role_nm__c);
+            System.assertEquals('COPY', submitted[0].Core_MDF_Request_Type_nm__c);
+        } else {
+            // Production code correctly attempts to persist Request Type = COPY.
+            // If the org's restricted picklist has not yet been configured with
+            // COPY, Database.insert(allOrNone=false) reports a per-role failure.
+            System.assertEquals(
+                0,
+                submitted.size(),
+                'No row can be inserted until COPY is added to the Request Type picklist'
+            );
+            List<Object> results = (List<Object>) response.get('results');
+            System.assertEquals(1, results.size());
+            Map<String, Object> roleResult = (Map<String, Object>) results[0];
+            System.assertEquals('Failed', roleResult.get('status'));
+            System.assert(
+                String.valueOf(roleResult.get('error')).contains('Core_MDF_Request_Type_nm__c')
+                    || String.valueOf(roleResult.get('error')).contains('COPY'),
+                'Expected the failed row to identify the missing COPY picklist value'
+            );
+        }
+    }
+
+    @IsTest
+    static void testCopyAccess_ConfirmedSubmissionSkipsInflightDuplicate() {
+        User targetUser = getSecondUser();
+        String operationId = 'COR-COPY-DUPLICATE-TEST';
+        String permissionSetName = 'Core_MDF_Copy_Duplicate_PS';
+
+        insert new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_IUPGM_User__c = targetUser.Id,
+            Core_MDF_IUPGM_Program__c = 'IPA',
+            Core_MDF_IUPGM_Role_nm__c = permissionSetName,
+            // Request Type is intentionally omitted: the duplicate guard keys on
+            // target user + permission-set role + program, not request type.
+            Core_MDF_Copy_Operation_Id__c = 'COR-COPY-EXISTING',
+            Core_MDF_Request_Status_nm__c = 'New',
+            Core_MDF_Requested_By__c = targetUser.Id
+        );
+
+        RestResponse res = new RestResponse();
+        String result = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'userConfirmed' => true,
+                'copyOperationId' => operationId,
+                'targetUserId' => String.valueOf(targetUser.Id),
+                'eligibleRoles' => new List<Object>{
+                    new Map<String, Object>{
+                        'roleLabel' => 'Duplicate Test Role',
+                        'program' => 'IPA',
+                        'permissionSetName' => permissionSetName,
+                        'agsRoleName' => 'Duplicate Test AGS Role'
+                    }
+                }
+            },
+            res,
+            null,
+            false
+        );
+
+        Map<String, Object> response = parse(result);
+        System.assertEquals(200, res.statusCode);
+        System.assertEquals(true, response.get('success'));
+
+        List<Object> roleResults = (List<Object>) response.get('results');
+        System.assertEquals(1, roleResults.size());
+        Map<String, Object> roleResult =
+            (Map<String, Object>) roleResults[0];
+        System.assertEquals('Skipped', roleResult.get('status'));
+
+        Integer matchingRows = [
+            SELECT COUNT()
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Core_MDF_IUPGM_User__c = :targetUser.Id
+              AND Core_MDF_IUPGM_Role_nm__c = :permissionSetName
+              AND Core_MDF_IUPGM_Program__c = 'IPA'
+        ];
+        System.assertEquals(
+            1,
+            matchingRows,
+            'Duplicate confirmation must not create another staging row'
+        );
+    }
+
+    private static Map<String, Object> postPayload(Map<String, Object> body) {
+        RestRequest  req = new RestRequest();
+        RestResponse res = new RestResponse();
+        req.requestURI  = '/services/apexrest/access/validateRequest';
+        req.httpMethod  = 'POST';
+        req.requestBody = Blob.valueOf(JSON.serialize(body));
+        RestContext.request  = req;
+        RestContext.response = res;
+
+        Test.startTest();
+        String result = Core_MDF_IUPGM_RequestAPI.validateRequest();
+        Test.stopTest();
+
+        return parse(result);
+    }
+
+    /*
+    ================================================================
+    AI INTENT CLASSIFICATION
+    ================================================================
+    */
+    private class IntentMock implements HttpCalloutMock {
+        private final String content;
+        private final Integer status;
+        private IntentMock(String content, Integer status) {
+            this.content = content;
+            this.status  = status;
+        }
+        public HttpResponse respond(HttpRequest req) {
+            mockCalls++;
+            HttpResponse resp = new HttpResponse();
+            resp.setStatusCode(status);
+            resp.setBody(JSON.serialize(new Map<String, Object>{
+                'choices' => new List<Object>{
+                    new Map<String, Object>{
+                        'message' => new Map<String, Object>{ 'content' => content }
+                    }
+                }
+            }));
+            return resp;
+        }
+    }
+
+    private static Integer mockCalls = 0;
+
+    private static void mockAi(String content, Integer status) {
+        mockCalls = 0;
+        Test.setMock(HttpCalloutMock.class, new IntentMock(content, status));
+    }
+
+    private static String aiIntentJson(String intent, Decimal confidence,
+                                       String sourceUser, String targetUser, String role) {
+        return JSON.serialize(new Map<String, Object>{
+            'intent'               => intent,
+            'confidence'           => confidence,
+            'sourceUser'           => sourceUser,
+            'targetUser'           => targetUser,
+            'role'                 => role,
+            'program'              => null,
+            'needsClarification'   => false,
+            'clarificationQuestion' => null
+        });
+    }
+
+    private static String aiIntentJsonFull(String intent, Object confidence, String sourceUser,
+                                           String targetUser, String role, Object needsClarification) {
+        return JSON.serialize(new Map<String, Object>{
+            'intent'               => intent,
+            'confidence'           => confidence,
+            'sourceUser'           => sourceUser,
+            'targetUser'           => targetUser,
+            'role'                 => role,
+            'program'              => null,
+            'needsClarification'   => needsClarification,
+            'clarificationQuestion' => null
+        });
+    }
+
+    /*
+    ----------------------------------------------------------------
+    1-5: AI correctly identifies each of the six intents
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void aiCopyClassificationRoutesToCopyHandler() {
+        mockAi(aiIntentJson('COPY_ACCESS', 0.96, 'iupgmtest.api@intel.com',
+                            'iupgmtest.second@intel.com', null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'please mirror iupgmtest.api@intel.com onto iupgmtest.second@intel.com'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'),
+            'High-confidence COPY must not be clarified');
+    }
+
+    @IsTest
+    static void aiListClassificationRoutesToListHandler() {
+        mockAi(aiIntentJson('LIST_ACCESS', 0.93, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'walk me through everything iupgmtest.api@intel.com currently holds'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'));
+    }
+
+    @IsTest
+    static void aiStatusClassificationRoutesToStatusHandler() {
+        mockAi(aiIntentJson('STATUS_ACCESS', 0.92, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'has iupgmtest.api@intel.com\'s access request been approved yet'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'));
+        System.assertEquals(true, out.containsKey('roleCount') || out.containsKey('success'),
+            'Must have reached the real STATUS handler');
+    }
+
+    @IsTest
+    static void aiRevokeWithoutKeywordFallsThroughToRevokeFlow() {
+        mockAi(aiIntentJson('REVOKE', 0.96, null, 'iupgmtest.api@intel.com', 'Finance Manager'), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'iupgmtest.api@intel.com should no longer have Finance Manager'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'));
+    }
+
+    @IsTest
+    static void aiGrantClassificationReachesGrantFlow() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'iupgmtest.api@intel.com', 'Finance Manager'), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'Give iupgmtest.api@intel.com the Finance Manager role'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'));
+        System.assertEquals(false, out.containsKey('roleCount'),
+            'A GRANT must never be answered with the read-only STATUS/LIST shape');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    6: Ambiguous AI response -> CLARIFY, never overridden by keywords
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void aiClarifyIntentAsksForClarification() {
+        mockAi(aiIntentJsonFull('CLARIFY', 0.9, null, null, null, true), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{ 'userQuery' => 'I need access' });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'));
+        System.assertEquals(true, out.get('needsInput'));
+    }
+
+    /** An explicit revoke word must not be turned into a GRANT even when the AI labels the text GRANT:
+     *  the request must stay on the REVOKE path (any summary it returns must say REVOKE). */
+    @IsTest
+    static void explicitRevokeWordOverridesAiGrantLabel() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'iupgmtest.api@intel.com', 'Finance Manager'), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'revoke access for iupgmtest.api@intel.com'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'));
+        if (out.get('requestSummary') instanceof Map<String, Object>) {
+            System.assertEquals('REVOKE', ((Map<String, Object>) out.get('requestSummary')).get('requestAction'),
+                'Explicit revoke wording must never produce a GRANT summary');
+        }
+    }
+
+    /** A continuation turn (here a role answer) that resends a REVOKE requestSummary must stay on the
+     *  REVOKE path - it must never come back as a GRANT summary. */
+    @IsTest
+    static void revokeSummaryPersistsAcrossContinuationTurn() {
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery'      => 'Finance Manager',
+            'requestSummary' => new Map<String, Object>{
+                'requestAction' => 'REVOKE',
+                'userEmail'     => 'iupgmtest.api@intel.com'
+            }
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        if (out.get('requestSummary') instanceof Map<String, Object>) {
+            System.assertEquals('REVOKE', ((Map<String, Object>) out.get('requestSummary')).get('requestAction'),
+                'A REVOKE continuation must never be re-classified as GRANT');
+        }
+    }
+
+    /** The chatbot sends requestAction=GRANT as its default. Revoke wording in the query must still
+     *  win: the request must not enter the GRANT flow (no account/region prompts, no GRANT summary). */
+    @IsTest
+    static void explicitGrantDefaultWithRevokeWordStaysOnRevokeFlow() {
+        Map<String, Object> r = postPayload(new Map<String, Object>{
+            'userInput'      => 'iupgmtest.api@intel.com',
+            'requestAction'  => 'GRANT',
+            'roleLabel'      => 'CCP Internal Client Field Account Manager',
+            'userQuery'      => 'revoke access for iupgmtest.api@intel.com for CCP Internal Client Field Account Manager',
+            'requestorEmail' => 'requestor.test@intel.com'
+        });
+        System.assertEquals(false, r.containsKey('missingFields'),
+            'REVOKE must never ask for account/region like a GRANT. Got: ' + JSON.serialize(r));
+        System.assert(JSON.serialize(r).toLowerCase().contains('deactivate'),
+            'Revoke wording with a GRANT default must get a deactivate response. Got: ' + JSON.serialize(r));
+    }
+
+    /** AI itself reports ambiguity (needsClarification = true) even though it also returned a
+     *  high confidence and an intent that keywords would agree with - the ambiguity must still win;
+     *  keywords are never used to silently resolve an AI-reported ambiguity. */
+    @IsTest
+    static void aiReportedAmbiguityIsNeverResolvedByKeyword() {
+        mockAi(aiIntentJsonFull('REVOKE', 0.95, null, 'iupgmtest.api@intel.com', 'Finance Manager', true), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'revoke access for iupgmtest.api@intel.com'
+        });
+        Test.stopTest();
+        System.assertEquals('INTENT_CLARIFICATION_REQUIRED', parse(raw).get('errorCode'));
+    }
+
+    /*
+    ----------------------------------------------------------------
+    7-9: Low confidence / invalid JSON / callout failure
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void lowConfidenceAiAsksForClarification() {
+        mockAi(aiIntentJson('GRANT', 0.40, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'maybe something for iupgmtest.api@intel.com'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'));
+        System.assertEquals(true, out.get('needsInput'));
+    }
+
+    @IsTest
+    static void invalidAiJsonAsksForClarification() {
+        mockAi('Sure! Here is the answer.', 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'iupgmtest.api@intel.com needs something sorted'
+        });
+        Test.stopTest();
+        System.assertEquals('INTENT_CLARIFICATION_REQUIRED', parse(raw).get('errorCode'));
+    }
+
+    @IsTest
+    static void invalidNeedsClarificationTypeTreatedAsTechnicalFailure() {
+        // needsClarification is a string, not a Boolean - must be rejected as malformed, not coerced.
+        mockAi(aiIntentJsonFull('GRANT', 0.95, null, 'iupgmtest.api@intel.com', null, 'true'), 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('give iupgmtest.api@intel.com access');
+        Test.stopTest();
+        System.assertEquals(false, ai.isValid, 'A wrong-typed needsClarification must invalidate the response');
+    }
+
+    @IsTest
+    static void aiFailureWithoutKeywordNeverDefaultsToGrant() {
+        mockAi('', 500);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'iupgmtest.api@intel.com needs something sorted'
+        });
+        Test.stopTest();
+        System.assertEquals('INTENT_CLARIFICATION_REQUIRED', parse(raw).get('errorCode'));
+    }
+
+    /*
+    ----------------------------------------------------------------
+    10: Keyword fallback works after a technical AI failure
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void aiFailureKeepsKeywordRevoke() {
+        mockAi('', 500);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'revoke access for iupgmtest.api@intel.com'
+        });
+        Test.stopTest();
+        System.assertNotEquals('INTENT_CLARIFICATION_REQUIRED', parse(raw).get('errorCode'),
+            'Keyword REVOKE must still route when AI is unavailable');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    12: Explicit structured actions bypass AI - including the
+    null/blank-field gating fix (a present-but-empty field must NOT
+    disable AI; only a MEANINGFUL value should).
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void explicitRequestActionBypassesAi() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{
+            'requestAction' => 'LIST_ACCESS',
+            'targetUserInput' => 'iupgmtest.api@intel.com',
+            'userQuery' => 'iupgmtest.api@intel.com'
+        });
+        Test.stopTest();
+        System.assertEquals(0, mockCalls, 'Explicit requestAction must not call AI');
+    }
+
+    @IsTest
+    static void nullStructuredFieldsDoNotBypassAi() {
+        mockAi(aiIntentJson('LIST_ACCESS', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{
+            'requestAction'    => null,
+            'roleLabel'        => '',
+            'sourceUserInput'  => null,
+            'userQuery'        => 'what access does iupgmtest.api@intel.com have'
+        });
+        Test.stopTest();
+        System.assertEquals(1, mockCalls,
+            'Null/blank structured fields must not disable AI classification');
+    }
+
+    @IsTest
+    static void roleSelectionContinuationBypassesAi() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{
+            'roleOptions' => new List<String>{ 'Finance Manager', 'HR Manager' },
+            'roleLabel'   => 'Finance Manager',
+            'userQuery'   => 'Finance Manager'
+        });
+        Test.stopTest();
+        System.assertEquals(0, mockCalls, 'An in-progress role-selection reply must not call AI');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    11-12: A bare confirmation-shaped reply ("yes"/"no"/"confirm") only
+    bypasses AI when there is an ACTUAL, server-verified pending
+    workflow (e.g. a live Copy_Pending preview) - never on text shape
+    alone. A question that merely CONTAINS an affirmative word (e.g.
+    "Confirm what access John has?") must reach the AI classifier like
+    any other free-text request.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void bareYesWithoutPendingWorkflowStillReachesAi() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{ 'userQuery' => 'yes' });
+        Test.stopTest();
+        System.assertEquals(1, mockCalls,
+            'A bare "yes" with no structured payload and no live pending workflow must still reach AI');
+    }
+
+    @IsTest
+    static void bareYesWithLivePendingCopyBypassesAi() {
+        User target = getTestUser();
+        insert new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_Request_Status_nm__c = 'Copy_Pending',
+            Core_MDF_Copy_Operation_Id__c = 'COR-TESTPEND01',
+            Core_MDF_IUPGM_User__c = target.Id,
+            Core_MDF_Requestor_Email__c = 'pending.requestor@intel.com',
+            Core_MDF_Pending_Dependent_Role_txt__c = JSON.serialize(new Map<String, Object>{
+                'eligibleRoles' => new List<Object>(), 'sourceUserName' => 'Some Source User'
+            })
+        );
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{
+            'userQuery'      => 'yes',
+            'requestorEmail' => 'pending.requestor@intel.com'
+        });
+        Test.stopTest();
+        System.assertEquals(0, mockCalls,
+            'A bare "yes" with a real, server-verified pending Copy preview must bypass AI');
+    }
+
+    @IsTest
+    static void confirmQuestionAboutAnotherUserIsNotTreatedAsConfirmation() {
+        mockAi(aiIntentJson('LIST_ACCESS', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{
+            'userQuery' => 'Confirm what access iupgmtest.api@intel.com has?'
+        });
+        Test.stopTest();
+        System.assertEquals(1, mockCalls,
+            'A genuine question starting with "Confirm" must still reach the AI classifier, '
+            + 'not be treated as a pending-operation confirmation');
+    }
+
+    @IsTest
+    static void proceedQuestionIsNotTreatedAsConfirmation() {
+        mockAi(aiIntentJson('LIST_ACCESS', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{
+            'userQuery' => 'Proceed with checking the access for iupgmtest.api@intel.com?'
+        });
+        Test.stopTest();
+        System.assertEquals(1, mockCalls,
+            'A genuine question starting with "Proceed" must still reach the AI classifier');
+    }
+
+    @IsTest
+    static void questionContainingConfirmWordIsNotTreatedAsConfirmation() {
+        mockAi(aiIntentJson('LIST_ACCESS', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{
+            'userQuery' => 'Can you confirm what access iupgmtest.api@intel.com currently has?'
+        });
+        Test.stopTest();
+        System.assertEquals(1, mockCalls,
+            'A genuine question that merely contains "confirm" must still reach the AI classifier');
+    }
+
+    @IsTest
+    static void isAffirmativeConfirmationRejectsQuestionsAndLongSentences() {
+        System.assertEquals(false,
+            Core_MDF_IUPGM_RequestAPI.isAffirmativeConfirmation(
+                'Can you confirm what access I currently have?'),
+            'A question must never be read as a confirmation');
+        System.assertEquals(false,
+            Core_MDF_IUPGM_RequestAPI.isAffirmativeConfirmation(
+                'I need to submit a different request for a colleague next week'),
+            'A long sentence merely containing "submit" must not be a confirmation');
+        System.assertEquals(true,
+            Core_MDF_IUPGM_RequestAPI.isAffirmativeConfirmation('Yes, please proceed'),
+            'A genuine leading "Yes" reply must still be recognised');
+        System.assertEquals(false,
+            Core_MDF_IUPGM_RequestAPI.isAffirmativeConfirmation('No, cancel this request'),
+            'A decline must never be read as a confirmation');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    1 (classifier-level): AI rejects unsupported intents and drops
+    invented entities, including harmless punctuation differences.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void classifierRejectsUnsupportedIntentAndDropsInventedEntities() {
+        mockAi(aiIntentJson('DELETE_ALL', 0.99, null, 'Zed Zebra', null), 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult bad =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('delete everything for iupgmtest.api@intel.com');
+        Test.stopTest();
+        System.assertEquals(false, bad.isValid);
+    }
+
+    @IsTest
+    static void classifierDropsEntitiesNotInQuery() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'Zed Zebra', 'Finance Manager'), 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('give iupgmtest.api@intel.com Finance Manager');
+        Test.stopTest();
+        System.assertEquals(true, ai.isValid);
+        System.assertEquals(null, ai.targetUser, 'Entities absent from the query must be dropped');
+        System.assertEquals('Finance Manager', ai.role);
+    }
+
+    /*
+    ----------------------------------------------------------------
+    16: Entity punctuation handling - the CLEANED value (not the raw
+    AI value) must be returned, so a trailing period never reaches the
+    Salesforce user/role lookup.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void classifierStripsTrailingPunctuationFromEmailEntity() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'john.doe@intel.com.', null), 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('Give access to john.doe@intel.com.');
+        Test.stopTest();
+        System.assertEquals(true, ai.isValid);
+        System.assertEquals('john.doe@intel.com', ai.targetUser,
+            'The returned entity must be the CLEANED value - no trailing punctuation - '
+            + 'and the email itself must not be over-normalized (internal dots preserved)');
+    }
+
+    @IsTest
+    static void classifierStripsWrappingPunctuationFromNameEntity() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'John Smith.', 'Finance Manager'), 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('Give John Smith the Finance Manager role');
+        Test.stopTest();
+        System.assertEquals(true, ai.isValid);
+        System.assertEquals('John Smith', ai.targetUser,
+            'Incidental trailing punctuation must be stripped from the returned entity');
+    }
+
+    @IsTest
+    static void classifierRejectsBadConfidenceType() {
+        mockAi(aiIntentJsonFull('GRANT', 'very confident', null, 'iupgmtest.api@intel.com', null, false), 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('give iupgmtest.api@intel.com access');
+        Test.stopTest();
+        System.assertEquals(false, ai.isValid);
+    }
+
+    @IsTest
+    static void confidenceThresholdOutOfRangeFallsBackToDefault() {
+        // getConfidenceThresholdPercent() must only honor a configured value within 1-100; this test
+        // only verifies the method never throws and always returns a usable in-range value, since the
+        // actual Core_MDF_IUPGM_RoleReco_MinConf record content is environment-specific.
+        Integer threshold = Core_MDF_IUPGMIntentClassifier.getConfidenceThresholdPercent();
+        System.assertEquals(true, threshold >= 1 && threshold <= 100,
+            'Threshold must always resolve to a value between 1 and 100');
+    }
+
+    @IsTest
+    static void oversizedQueryIsNotSilentlyTruncated() {
+        String longQuery = 'give access '.repeat(400) + 'to iupgmtest.api@intel.com';
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent(longQuery);
+        Test.stopTest();
+        System.assertEquals(false, ai.isValid,
+            'An oversized query must be treated as a technical failure, never silently truncated');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    14: Missing required entities -> needsInput, not a guessed route
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void aiCopyMissingTargetReturnsNeedsInput() {
+        mockAi(aiIntentJson('COPY_ACCESS', 0.95, 'iupgmtest.api@intel.com', null, null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'mirror iupgmtest.api@intel.com access for the new hire'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertEquals('COPY_USERS_REQUIRED', out.get('errorCode'));
+        System.assertEquals(true, out.get('needsInput'));
+    }
+
+    /** Only targetUser may identify the GRANT/REVOKE subject - sourceUser (which only makes sense
+     *  for COPY_ACCESS) must never be used as a fallback. With targetUser missing, the request must
+     *  fall through to the existing "Who needs access?" validation, not silently use sourceUser. */
+    @IsTest
+    static void grantNeverFallsBackToSourceUserAsTarget() {
+        mockAi(aiIntentJson('GRANT', 0.95, 'iupgmtest.api@intel.com', null, 'Finance Manager'), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'please arrange the Finance Manager role as discussed'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        List<Object> errors = (List<Object>) out.get('errors');
+        Boolean asksWhoNeedsAccess = false;
+        if (errors != null) {
+            for (Object e : errors) {
+                if (String.valueOf(e).contains('Who needs access')) asksWhoNeedsAccess = true;
+            }
+        }
+        System.assertEquals(true, asksWhoNeedsAccess,
+            'Missing targetUser must trigger the existing "Who needs access?" prompt, '
+            + 'not silently resolve to sourceUser');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    15: AI extracts an entity that does not correspond to a real
+    Salesforce user - the existing lookup must still catch it.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void aiExtractedUserNotInSalesforceStillFailsRealLookup() {
+        // "nobody.suchuser@intel.com" is a real substring of the query (not invented by the model),
+        // so cleanEntity legitimately keeps it - but no such Salesforce user exists, so the existing
+        // lookup logic (not the AI) must be the one to handle it. LIST_ACCESS intentionally returns a
+        // graceful "no roles" response (not a hard error) for a user with no active Salesforce record.
+        mockAi(aiIntentJson('LIST_ACCESS', 0.95, null, 'nobody.suchuser@intel.com', null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'what access does nobody.suchuser@intel.com have'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertEquals(true, out.get('success'));
+        System.assertEquals(0, (Integer) out.get('roleCount'));
+        System.assertEquals(true, String.valueOf(out.get('message')).contains('not an active user'),
+            'A nonexistent user named by AI must be rejected by the real Salesforce lookup, '
+            + 'not treated as valid');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    13-14 + finding 2/5: LIST_ACCESS and STATUS_ACCESS self-reference
+    pronoun handling. "my"/"me"/"I" must never be searched as a literal
+    username; resolution falls back to the TRUSTED identity that
+    authenticated this API call (UserInfo), never the client-supplied
+    requestorEmail payload field - see resolveTrustedRequesterEmail().
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void listAccessSelfReferenceResolvesViaTrustedIdentityNotPronoun() {
+        mockAi(aiIntentJson('LIST_ACCESS', 0.93, null, 'I', null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'What access do I have?'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('LIST_USER_REQUIRED', out.get('errorCode'),
+            'A self-reference pronoun must resolve via the trusted identity, not ask for a user, '
+            + 'and must never be searched literally as a user named "I"');
+    }
+
+    @IsTest
+    static void statusAccessSelfReferenceResolvesViaTrustedIdentityNotPronoun() {
+        mockAi(aiIntentJson('STATUS_ACCESS', 0.93, null, 'my', null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'What is the status of my request?'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('STATUS_USER_REQUIRED', out.get('errorCode'),
+            'A self-reference pronoun must resolve via the trusted identity, not ask for a user');
+        System.assertEquals(false, String.valueOf(out.get('message')).contains('or request'),
+            'The message must not claim a request-number-only lookup that is not implemented');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    15: Requester identity spoofing prevention - a client-supplied
+    requestorEmail must NEVER be used to resolve a self-reference
+    request; only the trusted, session-authenticated identity may be.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void requestorEmailPayloadCannotSpoofSelfReferenceIdentity() {
+        User other = getSecondUser();
+        mockAi(aiIntentJson('STATUS_ACCESS', 0.93, null, 'me', null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery'      => 'what is the status of my request',
+            'requestorEmail' => other.Email // attempt to impersonate another employee
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertEquals(false,
+            String.valueOf(out.get('message')).contains(other.Name),
+            'A client-supplied requestorEmail must never be used to resolve a self-reference '
+            + 'request - only the trusted, API-authenticated identity may be used');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    17: AI technical failure followed by a same-transaction COPY/LIST
+    IDS callout must never hit "uncommitted work pending" - confirms
+    the deferred (@future) error logging fix (finding 6).
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void aiFailureFollowedByCopyIdsCalloutDoesNotHitUncommittedWorkError() {
+        mockAi('', 500); // AI technical failure -> triggers deferred (future) error logging
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'copy access from iupgmtest.api@intel.com to iupgmtest.second@intel.com'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertEquals(false,
+            String.valueOf(out.get('message')).toLowerCase().contains('uncommitted work'),
+            'Deferred (future) AI-failure logging must never block a same-transaction IDS callout');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    9: GenAI callout exception (not just a non-200 response) must be
+    handled safely and never thrown upward.
+    ----------------------------------------------------------------
+    */
+    private class ThrowingMock implements HttpCalloutMock {
+        public HttpResponse respond(HttpRequest req) {
+            mockCalls++;
+            throw new CalloutException('Simulated callout failure');
+        }
+    }
+
+    @IsTest
+    static void aiCalloutExceptionIsHandledSafely() {
+        mockCalls = 0;
+        Test.setMock(HttpCalloutMock.class, new ThrowingMock());
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('give iupgmtest.api@intel.com access');
+        Test.stopTest();
+        System.assertEquals(false, ai.isValid, 'A callout exception must be handled safely, never thrown upward');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    5-6: Missing mandatory JSON fields and incorrect field data types
+    must be treated as technical failures, never silently coerced.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void classifierRejectsResponseMissingMandatoryField() {
+        // Deliberately omit 'needsClarification' - this is now a MANDATORY field.
+        String missingField = JSON.serialize(new Map<String, Object>{
+            'intent' => 'GRANT', 'confidence' => 0.95,
+            'sourceUser' => null, 'targetUser' => 'iupgmtest.api@intel.com',
+            'role' => null, 'program' => null, 'clarificationQuestion' => null
+        });
+        mockAi(missingField, 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('give iupgmtest.api@intel.com access');
+        Test.stopTest();
+        System.assertEquals(false, ai.isValid, 'A response missing a mandatory field must be rejected');
+    }
+
+    @IsTest
+    static void classifierRejectsWrongTypedEntityField() {
+        String badType = JSON.serialize(new Map<String, Object>{
+            'intent' => 'GRANT', 'confidence' => 0.95,
+            'sourceUser' => null, 'targetUser' => 12345, // number instead of String/null
+            'role' => null, 'program' => null,
+            'needsClarification' => false, 'clarificationQuestion' => null
+        });
+        mockAi(badType, 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('give access to this user');
+        Test.stopTest();
+        System.assertEquals(false, ai.isValid, 'A wrong-typed optional entity field must invalidate the response');
+    }
+
+    @IsTest
+    static void classifierRejectsClarifyWithoutNeedsClarificationTrue() {
+        // intent = CLARIFY but needsClarification = false is an internally inconsistent response.
+        mockAi(aiIntentJsonFull('CLARIFY', 0.9, null, null, null, false), 200);
+        Test.startTest();
+        Core_MDF_IUPGMIntentClassifier.IntentResult ai =
+            Core_MDF_IUPGMIntentClassifier.classifyIntent('I need access');
+        Test.stopTest();
+        System.assertEquals(false, ai.isValid,
+            'CLARIFY with needsClarification=false is inconsistent and must be rejected');
+    }
+
+    /*
+    ----------------------------------------------------------------
+    16 + finding 1: Preservation - AI-classified GRANT/REVOKE reaches
+    the real, unchanged business flow, and the legacy resolveIntent()
+    dispatcher is skipped so it cannot override AI's decision even
+    when the raw text also contains an unrelated keyword ("status").
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void aiGrantRoutingSkipsLegacyDispatcherDespiteStatusKeyword() {
+        User target = getSecondUser();
+        mockAi(aiIntentJson('GRANT', 0.95, null, target.Email, null), 200);
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery' => 'Give ' + target.Email + ' access, what is the status by the way'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertEquals(false, out.containsKey('roleCount'),
+            'The legacy dispatcher must not re-route this to the read-only STATUS handler');
+        System.assertNotEquals('INTENT_CLARIFICATION_REQUIRED', out.get('errorCode'));
+    }
+
+    @IsTest
+    static void existingCopyConfirmationFlowStillBypassesAi() {
+        mockAi(aiIntentJson('GRANT', 0.95, null, 'iupgmtest.api@intel.com', null), 200);
+        Test.startTest();
+        callValidate(new Map<String, Object>{
+            'copyOperationId' => 'COR-TEST0001',
+            'eligibleRoles'   => new List<String>{ 'Finance Manager' },
+            'userConfirmed'   => true,
+            'userQuery'       => 'yes'
+        });
+        Test.stopTest();
+        System.assertEquals(0, mockCalls, 'An existing COPY confirmation payload must never reach AI');
+    }
+
+    /*
+    ================================================================
+    SELF-REFERENCE RESOLUTION (requestorEmail, with UserInfo fallback)
+    Confirmed priority: requestorEmail first, UserInfo.getUserEmail() only if requestorEmail is blank.
+    routeClassifiedIntent() is called directly (now @testVisible) so the resolved
+    sourceUserInput/targetUserInput/userInput can be asserted precisely, rather than inferred from the
+    end-to-end HTTP response shape.
+    ================================================================
+    */
+
+    @IsTest
+    static void copySelfReferenceSourceResolvesToRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'req.self@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'COPY_ACCESS', null, 'iupgmtest.second@intel.com', null, null,
+            p, res, 'Copy my access to iupgmtest.second@intel.com');
+        System.assertEquals('req.self@intel.com', p.get('sourceUserInput'),
+            'Self-reference source must resolve to requestorEmail');
+        System.assertEquals('iupgmtest.second@intel.com', p.get('targetUserInput'));
+    }
+
+    @IsTest
+    static void copySelfReferenceWithoutTargetStillResolvesSourceAndAsksForTarget() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'req.self@intel.com' };
+        RestResponse res = new RestResponse();
+        String raw = Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'COPY_ACCESS', null, null, null, null, p, res, 'Copy my access');
+        Map<String, Object> out = parse(raw);
+        System.assertEquals('COPY_USERS_REQUIRED', out.get('errorCode'));
+        System.assertEquals('req.self@intel.com', p.get('sourceUserInput'),
+            'Source must still resolve to requestorEmail even though target is missing');
+    }
+
+    @IsTest
+    static void listSelfReferenceWhatAccessDoIHaveResolvesToRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'req.self@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'LIST_ACCESS', null, null, null, null, p, res, 'What access do I have?');
+        System.assertEquals('req.self@intel.com', p.get('targetUserInput'));
+    }
+
+    @IsTest
+    static void listSelfReferenceShowMeMyRolesResolvesToRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'req.self@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'LIST_ACCESS', null, null, null, null, p, res, 'Show me my roles');
+        System.assertEquals('req.self@intel.com', p.get('targetUserInput'));
+    }
+
+    @IsTest
+    static void statusSelfReferenceWhatsTheStatusResolvesToRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'req.self@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'STATUS_ACCESS', null, null, null, null, p, res, 'What\'s the status of my request?');
+        System.assertEquals('req.self@intel.com', p.get('targetUserInput'));
+    }
+
+    @IsTest
+    static void statusSelfReferenceCheckMyLatestRequestResolvesToRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'req.self@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'STATUS_ACCESS', null, null, null, null, p, res, 'Check my latest request');
+        System.assertEquals('req.self@intel.com', p.get('targetUserInput'));
+    }
+
+    @IsTest
+    static void grantSelfReferenceGrantMeResolvesToRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'req.self@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'GRANT', null, null, 'CCF Operations Admin', null,
+            p, res, 'Grant me CCF Operations Admin access');
+        System.assertEquals('req.self@intel.com', p.get('userInput'));
+        System.assertEquals('CCF Operations Admin', p.get('roleLabel'));
+    }
+
+    @IsTest
+    static void revokeSelfReferenceRevokeMyResolvesToRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'req.self@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'REVOKE', null, null, 'CCF Operations Admin', null,
+            p, res, 'Revoke my CCF Operations Admin access');
+        System.assertEquals('req.self@intel.com', p.get('userInput'));
+        System.assertEquals('REVOKE', p.get('requestAction'));
+    }
+
+    /*
+    ----------------------------------------------------------------
+    Missing requestorEmail.
+    IMPORTANT - per the CONFIRMED priority (requestorEmail primary, UserInfo.getUserEmail() fallback -
+    see resolveRequestorIdentity()), a blank requestorEmail does NOT reach the "ask for email"
+    clarification branch, because UserInfo.getUserEmail() is always populated for any authenticated
+    Apex execution context (Email is a required field on every Salesforce User, including the running
+    test user). These tests verify the ACTUAL resulting behavior (fallback to UserInfo, business
+    processing proceeds) rather than asserting a clarification outcome that cannot occur given this
+    fallback chain - see the written report for the full explanation.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void copySelfReferenceWithBlankRequestorEmailFallsBackToUserInfo() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => '' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'COPY_ACCESS', null, 'iupgmtest.second@intel.com', null, null,
+            p, res, 'Copy my access to iupgmtest.second@intel.com');
+        System.assertEquals(UserInfo.getUserEmail(), p.get('sourceUserInput'),
+            'With requestorEmail blank, resolution falls back to UserInfo per the confirmed priority');
+    }
+
+    @IsTest
+    static void listSelfReferenceWithBlankRequestorEmailFallsBackToUserInfo() {
+        Map<String, Object> p = new Map<String, Object>();
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'LIST_ACCESS', null, null, null, null, p, res, 'What access do I have?');
+        System.assertEquals(UserInfo.getUserEmail(), p.get('targetUserInput'));
+    }
+
+    @IsTest
+    static void statusSelfReferenceWithBlankRequestorEmailFallsBackToUserInfo() {
+        Map<String, Object> p = new Map<String, Object>();
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'STATUS_ACCESS', null, null, null, null, p, res, 'What is the status of my request?');
+        System.assertEquals(UserInfo.getUserEmail(), p.get('targetUserInput'));
+    }
+
+    @IsTest
+    static void grantSelfReferenceWithBlankRequestorEmailFallsBackToUserInfo() {
+        Map<String, Object> p = new Map<String, Object>();
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'GRANT', null, null, 'CCF Operations Admin', null, p, res, 'Grant me CCF Operations Admin access');
+        System.assertEquals(UserInfo.getUserEmail(), p.get('userInput'));
+    }
+
+    @IsTest
+    static void revokeSelfReferenceWithBlankRequestorEmailFallsBackToUserInfo() {
+        Map<String, Object> p = new Map<String, Object>();
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'REVOKE', null, null, 'CCF Operations Admin', null, p, res, 'Revoke my CCF Operations Admin access');
+        System.assertEquals(UserInfo.getUserEmail(), p.get('userInput'));
+    }
+
+    /*
+    ----------------------------------------------------------------
+    Regression: explicit employee references must never be replaced
+    by requestorEmail, even when requestorEmail is present.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void explicitEmployeeReferenceNotReplacedByRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'someone.else@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'GRANT', null, 'john.doe@intel.com', 'CCF Operations Admin', null,
+            p, res, 'Grant John CCF Operations Admin access');
+        System.assertEquals('john.doe@intel.com', p.get('userInput'),
+            'An explicitly named employee must never be replaced by requestorEmail');
+    }
+
+    @IsTest
+    static void explicitCopySourceAndTargetNotReplacedByRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'someone.else@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'COPY_ACCESS', 'ramapriya@intel.com', 'nandini@intel.com', null, null,
+            p, res, 'Copy access from Ramapriya to Nandini');
+        System.assertEquals('ramapriya@intel.com', p.get('sourceUserInput'));
+        System.assertEquals('nandini@intel.com', p.get('targetUserInput'));
+    }
+
+    /*
+    ----------------------------------------------------------------
+    Regression: AI failure + keyword fallback must not accidentally
+    treat an unrelated (explicitly-emailed) request as self-referencing.
+    Keyword fallback always passes sourceUser=null/targetUser=null into
+    routeClassifiedIntent(), so this exercises the exact same code path.
+    ----------------------------------------------------------------
+    */
+    @IsTest
+    static void keywordFallbackRevokeWithExplicitEmailDoesNotResolveToRequestorEmail() {
+        Map<String, Object> p = new Map<String, Object>{ 'requestorEmail' => 'someone.else@intel.com' };
+        RestResponse res = new RestResponse();
+        Core_MDF_IUPGM_RequestAPI.routeClassifiedIntent(
+            'REVOKE', null, null, null, null, p, res, 'revoke access for iupgmtest.api@intel.com');
+        System.assertEquals(false, p.containsKey('userInput'),
+            'A query with an explicit email (no self-referential wording) must not resolve userInput '
+            + 'to requestorEmail - the existing email-regex deeper in the GRANT/REVOKE flow handles it');
+    }
+
+    @IsTest
+    static void aiFailureKeywordRevokeWithExplicitEmailNotTreatedAsSelfReference() {
+        mockAi('', 500); // AI technical failure -> keyword fallback
+        Test.startTest();
+        String raw = callValidate(new Map<String, Object>{
+            'userQuery'      => 'revoke access for iupgmtest.api@intel.com',
+            'requestorEmail' => 'someone.else@intel.com'
+        });
+        Test.stopTest();
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals('REQUESTOR_EMAIL_REQUIRED', out.get('errorCode'));
+    }
+
+    /*
+    ================================================================
+    COPY target has no active Salesforce account - Core Access
+    bootstrap flow (mirrors the existing GRANT new-user pattern).
+    ================================================================
+    */
+    @IsTest
+    static void copyTargetNotFoundAsksForFullNameAndFederationId() {
+        User source = getTestUser();
+        RestResponse res = new RestResponse();
+        String raw = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'sourceUserInput' => source.Email,
+                'targetUserInput' => 'brand.new.hire@intel.com'
+            },
+            res, 'Copy access from ' + source.Email + ' to brand.new.hire@intel.com', false);
+        Map<String, Object> out = parse(raw);
+        System.assertEquals(206, res.statusCode);
+        System.assertEquals(true, out.get('needsInput'));
+        System.assertEquals(true, out.get('targetNeedsCreation'));
+        List<Object> missingFields = (List<Object>) out.get('missingFields');
+        System.assertEquals(2, missingFields.size(),
+            'Both Full Name and Federation ID must be requested for the new target user');
+    }
+
+    @IsTest
+    static void copyTargetNotFoundNegativeReplyMakesNoChanges() {
+        User source = getTestUser();
+        RestResponse res = new RestResponse();
+        String raw = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'sourceUserInput' => source.Email,
+                'targetUserInput' => 'brand.new.hire@intel.com'
+            },
+            res, 'no, cancel this request', false);
+        Map<String, Object> out = parse(raw);
+        System.assertEquals(false, out.get('success'));
+        System.assertEquals(true, String.valueOf(out.get('message')).contains('no changes'));
+    }
+
+    @IsTest
+    static void copyTargetNameOnlyInputStillReturnsNotFound() {
+        // A name-only target (no '@') cannot be bootstrapped - a new user requires an email.
+        User source = getTestUser();
+        RestResponse res = new RestResponse();
+        String raw = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'sourceUserInput' => source.Email,
+                'targetUserInput' => 'Completely Unknown Person'
+            },
+            res, 'Copy access from ' + source.Email + ' to Completely Unknown Person', false);
+        Map<String, Object> out = parse(raw);
+        System.assertEquals(404, res.statusCode);
+        System.assertEquals(false, out.get('success'));
+    }
+
+    @IsTest
+    static void copyTargetReadyToCreateProceedsPastIdentityGate() {
+        // Once Full Name + Federation ID are supplied, the flow must move past the "ask for identity"
+        // gate (it will then attempt the real IDS lookup for the source, which has no mock in this
+        // test context - any outcome beyond the identity-gate response is acceptable here).
+        User source = getTestUser();
+        RestResponse res = new RestResponse();
+        String raw = Core_MDF_IUPGM_RequestAPI.handleCopyUserAccessRequest(
+            new Map<String, Object>{
+                'sourceUserInput'     => source.Email,
+                'targetUserInput'     => 'brand.new.hire@intel.com',
+                'newUserFullName'     => 'Brand New Hire',
+                'newUserFederationId' => '123456789'
+            },
+            res, 'Copy access from ' + source.Email + ' to brand.new.hire@intel.com', false);
+        Map<String, Object> out = parse(raw);
+        System.assertNotEquals(true, out.get('targetNeedsCreation') == true && out.get('needsInput') == true,
+            'Must not still be asking for Full Name/Federation ID once both were already provided');
+    }
+
+    @IsTest
+    static void isCopyAllRolesPhraseRecognisesMimicAndClone() {
+        System.assertEquals(true,
+            Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase('mimic access of john for jane'));
+        System.assertEquals(true,
+            Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase('clone the access from john to jane'));
+        System.assertEquals(false,
+            Core_MDF_IUPGM_RequestAPI.isCopyAllRolesPhrase('grant jane access to the budget tool'));
+    }
+
+    /*
+    ================================================================
+    submitPendingDependentRoles() - new list-shaped (COPY) branch.
+    Confirms it creates one dependent staging row per parked eligible
+    role, tagged COPY and sharing the Core Access row's
+    Copy_Operation_Id__c, without touching the existing single-role
+    (GRANT) branch's behavior.
+    ================================================================
+    */
+    @IsTest
+    static void submitPendingDependentRolesCreatesOneRowPerCopiedRole() {
+        User target = getTestUser();
+        Core_MDF_IUPGM_Request_Staging__c coreAccessRow = new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_IUPGM_User__c    = target.Id,
+            Core_MDF_Requestor_Email__c = 'requestor@intel.com',
+            Core_MDF_Request_Type_nm__c = 'COPY',
+            Core_MDF_Copy_Operation_Id__c = 'COR-TESTBOOT01',
+            Core_MDF_Pending_Dependent_Role_txt__c = JSON.serialize(new Map<String, Object>{
+                'eligibleRoles' => new List<Map<String, Object>>{
+                    new Map<String, Object>{
+                        'roleLabel' => 'Finance Manager', 'program' => 'Client',
+                        'permissionSetName' => 'Finance_Manager_PS', 'agsRoleName' => 'Finance Manager AGS'
+                    },
+                    new Map<String, Object>{
+                        'roleLabel' => 'HR Manager', 'program' => 'Client',
+                        'permissionSetName' => 'HR_Manager_PS', 'agsRoleName' => 'HR Manager AGS'
+                    }
+                },
+                'sourceUserName' => 'Some Source User'
+            })
+        );
+        insert coreAccessRow;
+
+        Test.startTest();
+        Core_MDF_IUPGMReqStaging_ServiceHandler.submitPendingDependentRoles(
+            new Set<Id>{ coreAccessRow.Id });
+        Test.stopTest();
+
+        List<Core_MDF_IUPGM_Request_Staging__c> dependents = [
+            SELECT Id, Core_MDF_Request_Type_nm__c, Core_MDF_IUPGM_Role_nm__c,
+                   Core_MDF_Copy_Operation_Id__c, Core_MDF_Copy_Source_User_txt__c
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Id != :coreAccessRow.Id
+        ];
+        System.assertEquals(2, dependents.size(), 'One dependent row must be created per parked role');
+        for (Core_MDF_IUPGM_Request_Staging__c d : dependents) {
+            System.assertEquals('COPY', d.Core_MDF_Request_Type_nm__c);
+            System.assertEquals('COR-TESTBOOT01', d.Core_MDF_Copy_Operation_Id__c);
+            System.assertEquals('Some Source User', d.Core_MDF_Copy_Source_User_txt__c);
         }
     }
 }

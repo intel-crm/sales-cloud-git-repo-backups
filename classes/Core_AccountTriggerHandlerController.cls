@@ -8,13 +8,13 @@ public without sharing class Core_AccountTriggerHandlerController {
     public static Id coMarketingRecordtypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get(Label.Core_MDF_Co_Marketing_Record_Type_Name).getRecordTypeId(); //Added by Accenture - VD -> Check if the record type is not Co-Marketing
     public static Id pAGRecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId(); //Added by Accenture - US408340 -> Check if the record type is not Core_Partner_Account_Group
     public static Id DirectAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Direct Account').getRecordTypeId();// Added by Unicorn Team to bypass trigger methods 
-    public static Id requestedAccount = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
+    //Ganesh Changes moved to UCD_ACM_Common //public static Id requestedAccount = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
     public static Map<Id,set<Id>> accIdToExtGrpIdMap = new Map<Id,set<Id>>();
     public static Boolean runOnce = true;
     private static UCD_ACM_ServiceContracts.IAccountService accountServiceInstance = UCD_ACM_AccountService.getInstance();
-    private static Id intelAccountRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-    private static Id endCustomerRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('End Customer Deal Account').getRecordTypeId();
-    private static Id rejectedAccount = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Rejected Account').getRecordTypeId();
+    //Ganesh Changes //private static Id intelAccountRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+    //Ganesh Changes //private static Id endCustomerRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('End Customer Deal Account').getRecordTypeId();
+    //Ganesh Changes //private static Id rejectedAccount = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Rejected Account').getRecordTypeId();
     public static Id masterRecrodtypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
 
 
@@ -31,8 +31,9 @@ public without sharing class Core_AccountTriggerHandlerController {
 
         if(allAccounts!= null){
 
-            Map<String, String> mapOfRecordtypeIdByName = new   Map<String, String>();
-            Map<Id,Schema.RecordTypeInfo> rtMapById = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosById();
+            Map<String, String> mapOfRecordtypeIdByName = new   Map<String, String>();            
+            //Map<Id,Schema.RecordTypeInfo> rtMapById = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosById();
+            Map<Id,Schema.RecordTypeInfo> rtMapById = Schema.SObjectType.Account.getRecordTypeInfosById();//Ganesh Changes
 
             for(Id recordTypeId : rtMapById.keySet()){
                 mapOfRecordtypeIdByName.put(recordTypeId, rtMapById.get(recordTypeId).getName());
@@ -94,7 +95,7 @@ public without sharing class Core_AccountTriggerHandlerController {
         Map<Id,Account> oldAccountMapToBeInserted = new Map<Id,Account>();
         for(Account acc : listNewAccount){
             //Start of Changes - To check if the record type is not Core_Partner_Account_Group - US408340 - by Accenture 
-            if(acc.RecordTypeId != coMarketingRecordTypeId && acc.RecordTypeId != pAGRecordTypeId && acc.RecordTypeId != DirectAccRecTypeId && Acc.RecordTypeId != requestedAccount){
+            if(acc.RecordTypeId != coMarketingRecordTypeId && acc.RecordTypeId != pAGRecordTypeId && acc.RecordTypeId != DirectAccRecTypeId && Acc.RecordTypeId != UCD_ACM_Common.requestedAccount){
             //End of Changes - To check if the record type is not Core_Partner_Account_Group - US408340 - by Accenture 
                 newAccountListToBeInserted.add(acc);
                 if(mapOldsObject != NULL && mapOldsObject.size() > 0){
@@ -371,10 +372,10 @@ public without sharing class Core_AccountTriggerHandlerController {
         /*Utkarsh Changes END*/
         if(accountsChangedToUncovered != null && !accountsChangedToUncovered.isEmpty()) {
             List<PermissionSetAssignment> currentUserPerSet = new List<PermissionSetAssignment>();
-            currentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId
-                                    FROM PermissionSetAssignment
-                                    WHERE AssigneeId = :Userinfo.getUserId() and PermissionSet.Name = 'Account_Validations_Bypass'];
-    
+            //currentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId FROM PermissionSetAssignment WHERE AssigneeId = :Userinfo.getUserId() and PermissionSet.Name = 'Account_Validations_Bypass'];
+            //Ganesh Changes
+            currentUserPerSet = [SELECT Id FROM PermissionSetAssignment WHERE AssigneeId = :Userinfo.getUserId() and PermissionSet.Name = 'Account_Validations_Bypass'];
+
             if(!currentUserPerSet.isEmpty()){
                 return;
             }

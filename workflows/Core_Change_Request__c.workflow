@@ -8,8 +8,9 @@
             <field>Core_Requestor__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>Testt/Account_Team_Request_Approval</template>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Account_Team_Request_Approval</template>
     </alerts>
     <alerts>
         <fullName>Account_Team_Rejection_Notification_to_the_requester</fullName>
@@ -19,16 +20,16 @@
             <field>Core_Requestor__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>Testt/Account_Team_Request_Rejection</template>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Account_Team_Request_Rejection</template>
     </alerts>
     <alerts>
         <fullName>Core_Change_Request_Territory_Notification</fullName>
-        <ccEmails>intel.covered.accounts@intel.com</ccEmails>
         <description>Core_Change_Request_Territory_Notification</description>
         <protected>false</protected>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Territory_Request_Notification</template>
+        <template>unfiled$public/Core_Territory_Request_Notification</template>
     </alerts>
     <alerts>
         <fullName>Core_Change_Request_Update</fullName>
@@ -49,11 +50,10 @@
     </alerts>
     <alerts>
         <fullName>Core_Change_Request_to_Data_Ops</fullName>
-        <ccEmails>intel.covered.accounts@intel.com</ccEmails>
         <description>Core_Change_Request_to_Data_Ops</description>
         <protected>false</protected>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/New_Account_Creation_Data_Ops</template>
+        <template>unfiled$public/New_Account_Creation_Data_Ops</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_Change_Request_Account_Owner_Submit</fullName>
@@ -79,7 +79,7 @@
     <fieldUpdates>
         <fullName>Core_Change_Request_Status_Data_Governan</fullName>
         <field>Core_Status__c</field>
-        <literalValue>Submitted to Data Governance</literalValue>
+        <literalValue>Approved</literalValue>
         <name>Core_Change_Request_Status_Data_Governan</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>

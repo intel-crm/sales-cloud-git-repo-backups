@@ -329,26 +329,13 @@
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>
-        <fullName>Add_Members_For_External_Customers</fullName>
-        <availability>online</availability>
-        <description>Add Members for External Customers</description>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <linkType>url</linkType>
-        <masterLabel>Add Members</masterLabel>
-        <openType>replace</openType>
-        <protected>false</protected>
-        <requireRowSelection>false</requireRowSelection>
-        <url>/IPS/Core_ExternalUser_IPS_Project?id={!Core_IPS_Project__c.Id}&amp;stepIndex=1&amp;modeStr=add&amp;editProj=true</url>
-    </webLinks>
-    <webLinks>
         <fullName>Core_IPS_Add_Members</fullName>
         <availability>online</availability>
         <displayType>massActionButton</displayType>
         <encodingKey>UTF-8</encodingKey>
         <height>600</height>
         <linkType>url</linkType>
-        <masterLabel>Add Members LEX</masterLabel>
+        <masterLabel>Add Members</masterLabel>
         <openType>sidebar</openType>
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
@@ -366,19 +353,5 @@
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
         <url>/apex/Core_addAccountsToProject?projectId={!Core_IPS_Project__c.Id}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>Remove_Members</fullName>
-        <availability>online</availability>
-        <description>This button will redirect the external users to a page where they can remove existing Members from IPS Project.
-Is used on the IPS External Layout</description>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <linkType>url</linkType>
-        <masterLabel>Remove Members</masterLabel>
-        <openType>replace</openType>
-        <protected>false</protected>
-        <requireRowSelection>false</requireRowSelection>
-        <url>/IPS/Core_ExternalUser_IPS_Project?id={!Core_IPS_Project__c.Id}&amp;stepIndex=1&amp;modeStr=remove&amp;editProj=true</url>
     </webLinks>
 </CustomObject>

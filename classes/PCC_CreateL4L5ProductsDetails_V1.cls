@@ -18,7 +18,7 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V1 {
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_SEVERITY = 'Medium';
     public static final String LOG_ENTRY_INFO     = 'info'; 
-    public static final Boolean mmidSwitch = Boolean.valueOf(System.Label.DDR_MMID_switch); // TWC729-8985 - Add switch for Old MMID based changes
+    
     @HttpGet
     global static void getProductRecord(){
         RestRequest req = RestContext.request;
@@ -28,7 +28,7 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V1 {
         
         String mmid = req.params.get('mmid');
         String orderingCode = req.params.get('orderingcd');
-        String oldMMID = req.params.get('oldmmid');/*TWC727-2709 - PCC: Remove all references from old MMID*/
+        //String oldMMID = req.params.get('oldmmid');/*TWC727-2709 - PCC: Remove all references from old MMID*/
         //List<Product_MM_Attribute_Mapping__c> l4l5Mapping = new List<Product_MM_Attribute_Mapping__c>();
         Product_MM_Attribute_Mapping__c l4l5Mapping = new Product_MM_Attribute_Mapping__c();
         PCC_Wrapper.PCC_restAPIl4l5DetailsWrapper respWrp = new PCC_Wrapper.PCC_restAPIl4l5DetailsWrapper();
@@ -38,34 +38,13 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V1 {
             Integer paramSize  = RestContext.request.params.keySet().size();
             
             if(paramSize == 1) {
-                /*if(mmid == null && orderingCode == null){
-                  isError = true;
+                if(mmid == null && orderingCode == null){
+                	isError = true;
                     errWrp.ResponseBody=PCC_Constants.MMID_ORDCODE;
-                }*/
-                if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-                    if(mmid != null || orderingCode != null || oldMMID!= null){// || oldMMID!= null) {/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                        try {
-                            l4l5Mapping=getL4L5Mapping(mmid,orderingCode,oldMMID);//,oldMMID);/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                            system.debug('l4l5Mapping--->'+l4l5Mapping);
-                            
-                            PCC_Wrapper.PCC_l4l5DetailsWrapper ddrWrp = PCC_CreateDRProductUtilityHandler_V1.setl4l5Wrapper(l4l5Mapping);
-                            isSuccess =  true;
-                            respWrp = PCC_CreateDRProductUtilityHandler_V1.setResponseBodyForl4l5Product(200, 'SUCCESS', null, ddrWrp, null);
-                             }
-                        catch(QueryException e) {
-                             String identifier = mmid != null ? 'MMID: ' + mmid :
-                                                    orderingCode != null ? 'orderingcode: ' + orderingCode : 
-                                                    oldMMID != null ? 'oldMMID: ' + oldMMID : 'unknown identifier';/*TWC727-2709 - PCC: Remove all references from old MMID*/
-                                errWrp.ResponseBody = 'No Product tagged with provided ' + identifier;
-                                errWrp.ErrorCode = 9011;
-                                isError = true;
-                        }
-                    }
                 }
-                else{
-                    if(mmid != null || orderingCode != null){// || oldMMID!= null) {/*TWC727-2709 - PCC: Remove all references from old MMID*/
+                if(mmid != null || orderingCode != null){// || oldMMID!= null) {/*TWC727-2709 - PCC: Remove all references from old MMID*/
                     try {
-                        l4l5Mapping=getL4L5Mapping(mmid,orderingCode,null);//,oldMMID);/*TWC727-2709 - PCC: Remove all references from old MMID*/
+                        l4l5Mapping=getL4L5Mapping(mmid,orderingCode);//,oldMMID);/*TWC727-2709 - PCC: Remove all references from old MMID*/
                         system.debug('l4l5Mapping--->'+l4l5Mapping);
                         
                         PCC_Wrapper.PCC_l4l5DetailsWrapper ddrWrp = PCC_CreateDRProductUtilityHandler_V1.setl4l5Wrapper(l4l5Mapping);
@@ -81,12 +60,11 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V1 {
                             isError = true;
                     }
                 }
-                }
             }
             else if(paramSize == 0) {
                 RestContext.response.addHeader('Content-Type', 'application/json');      
                 RestContext.response.statusCode = 400;
-                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(400, 'FAILURE', 400, 'Please provide MMID or ordering code to get L4 &L5 product details ', null))); 
+                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(400, 'FAILURE', 400, PCC_Constants.MMID_ORDCODE, null))); 
             }
             if(isSuccess) {
                 RestContext.response.addHeader('Content-Type', 'application/json');
@@ -110,17 +88,17 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V1 {
         }
     }
 
-    global static Product_MM_Attribute_Mapping__c getL4L5Mapping(String mmid,String orderingCode, String oldMMID){//String oldMMID) {/*TWC727-2709 - PCC: Remove all references from old MMID*/
+    global static Product_MM_Attribute_Mapping__c getL4L5Mapping(String mmid,String orderingCode){//String oldMMID) {/*TWC727-2709 - PCC: Remove all references from old MMID*/
         Product_MM_Attribute_Mapping__c l4l5Mapping = new Product_MM_Attribute_Mapping__c();
     if(mmid != null) {
-        l4l5Mapping = [SELECT id,Ordering_Code__c,MMID__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where Name =:mmid WITH USER_MODE];
+        l4l5Mapping = [SELECT id,Ordering_Code__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where Name =:mmid WITH USER_MODE];
         }
         else if(orderingCode != null) {
-        l4l5Mapping = [SELECT id,Ordering_Code__c,MMID__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where Ordering_Code__c =:orderingCode WITH USER_MODE];
+        l4l5Mapping = [SELECT id,Ordering_Code__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where Ordering_Code__c =:orderingCode WITH USER_MODE];
         }/*TWC727-2709 - PCC: Remove all references from old MMID*/
-        else if(oldMMID != null && mmidSwitch) { // TWC729-8985 - Add switch for Old MMID based changes
+        /*else if(oldMMID != null) {
         l4l5Mapping = [SELECT id,Ordering_Code__c,MMID__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where MMID__c =:oldMMID WITH USER_MODE];
-        }
+        }*/
         return l4l5Mapping;
     }
 }

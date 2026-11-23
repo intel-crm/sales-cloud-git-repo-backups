@@ -324,7 +324,7 @@ IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Execution&quot;),
     <fields>
         <fullName>Core_MDF_Ext_Document_Name__c</fullName>
         <externalId>false</externalId>
-        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK($Label.Core_MDF_PFRCommunityLink+&apos;sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
+        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK($Label.Core_MDF_PFRCommunityLink+&apos;sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;_blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Document Name</label>
         <required>false</required>
@@ -335,7 +335,7 @@ IF(INCLUDES( Core_MDF_App_Document_Types_nm__c, &quot;Proof of Execution&quot;),
     <fields>
         <fullName>Core_MDF_Int_Document_Name__c</fullName>
         <externalId>false</externalId>
-        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK(&apos;/sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
+        <formula>IF((!Core_MDF_SFT_File_Download_Ind__c) , HYPERLINK(&apos;/sfc/servlet.shepherd/document/download/&apos;+ Core_MDF_Document_Id__c +&apos;?operationContext=S1&apos;, Core_MDF_Document_Title__c ,&apos;_blank&apos;), HYPERLINK(Core_MDF_SFT_File_Download_URL__c,Core_MDF_Document_Title__c))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Document Name</label>
         <required>false</required>

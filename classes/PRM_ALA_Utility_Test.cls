@@ -46,7 +46,7 @@ public class PRM_ALA_Utility_Test {
         List<Account> accts1 = new List<Account>();        
        /* Account partnerAccount1 = new Account(Name ='PartnerAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'CCG Sales Group',
                                               Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',RecordTypeId=accountRTPartnerAccountGroup);
-        System.debug('partnerAccount ='+partnerAccount1.IsPartner);
+       
         accts1.add(partnerAccount1);
         Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'CCG Sales Group',
                                             Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');

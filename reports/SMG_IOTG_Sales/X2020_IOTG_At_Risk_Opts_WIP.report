@@ -99,7 +99,6 @@
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsAcross>
-        <dateGranularity>Month</dateGranularity>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>

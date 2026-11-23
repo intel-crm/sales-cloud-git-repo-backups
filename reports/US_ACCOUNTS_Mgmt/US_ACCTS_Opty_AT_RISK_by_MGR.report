@@ -35,6 +35,9 @@
         <field>AMOUNT</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>STAGE_DURATION</field>
     </columns>
     <columns>
@@ -70,7 +73,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,dan russell</value>
+            <value>Palmeri,Calfin,Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_At_Risk__c</column>
@@ -97,7 +100,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US OEM &amp; Strategic Acct AT RISK Opptys</name>
+    <name>US ACCTS Opty AT RISK by MGR</name>
     <params>
         <name>terr</name>
         <value>all</value>

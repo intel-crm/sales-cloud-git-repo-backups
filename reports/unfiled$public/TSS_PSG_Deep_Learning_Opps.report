@@ -67,6 +67,9 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_First_Customer_Ship_Date__c</field>
     </columns>
     <columns>
@@ -74,9 +77,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Approval_Status__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
@@ -139,28 +139,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Vision Accelerator Design,Pyramid Lake,HDDL-F,Mustang-F100,IEI,OpenVINO,Artificial Intelligence,&quot; AI &quot;,Deep Learning,Machine Learning,Inference,resnet,mobilenet,yolo,VGG,lstm,rnn,cnn,convolutional,neural,DLA,CoreDLA</value>
+            <value>Vision Accelerator Design,Pyramid Lake,HDDL-F,Mustang-F100,IEI,OpenVINO,Artificial Intelligence,Deep Learning,Machine Learning,Inference,resnet,mobilenet,yolo,VGG</value>
         </criteriaItems>
         <criteriaItems>
             <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Vision Accelerator Design,Pyramid Lake,HDDL-F,Mustang-F100,IEI,OpenVINO,Artificial Intelligence,&quot; AI &quot;,Deep Learning,Machine Learning,Inference,resnet,mobilenet,yolo,VGG,lstm,rnn,cnn,convolutional,neural,DLA,CoreDLA</value>
+            <value>Vision Accelerator Design,Pyramid Lake,HDDL-F,Mustang-F100,IEI,OpenVINO,Artificial Intelligence,Deep Learning,Machine Learning,Inference,resnet,mobilenet,yolo,VGG,lstm,rnn</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Status_Update__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Vision Accelerator Design,Pyramid Lake,HDDL-F,Mustang-F100,IEI,OpenVINO,Artificial Intelligence,&quot; AI &quot;,Deep Learning,Machine Learning,Inference,resnet,mobilenet,yolo,VGG,lstm,rnn,cnn,convolutional,neural,DLA,CoreDLA</value>
+            <value>Vision Accelerator Design,Pyramid Lake,HDDL-F,Mustang-F100,IEI,OpenVINO,Artificial Intelligence,Deep Learning,Machine Learning,Inference,resnet,mobilenet,yolo,VGG,lstm,rnn</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Intel® PAC,Arria,Stratix,Cyclone,Agilex,MAX</value>
+            <value>Intel® PAC,Arria,Stratix,Cyclone,Agilex</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>

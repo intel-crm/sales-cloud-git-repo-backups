@@ -30,7 +30,7 @@ public class ProductStagingDMLServiceTest {
         for (Integer i = 0; i < 5; i++) {
             Product_Inbound_Staging__c pis = new Product_Inbound_Staging__c();
             pis.iPaaS_Load_ID__c = 'testLoadId';
-            //pis.Core_Unique_ID__c = 'unique_' + i;
+            pis.Core_Unique_ID__c = 'unique_' + i;
             pis.level_1_epm_id__c = '1001';
             pis.level_1_epm_name__c = 'L1';
             pis.Core_Hierarchy_ID__c = '43';
@@ -43,8 +43,8 @@ public class ProductStagingDMLServiceTest {
         service.upsertStagingRecords(records, 'testLoadId');
         Test.stopTest();
 
-        //List<Product_Inbound_Staging__c> inserted = [SELECT Id FROM Product_Inbound_Staging__c WHERE iPaaS_Load_ID__c = 'testLoadId'];
-        //System.assertEquals(5, inserted.size());
+        List<Product_Inbound_Staging__c> inserted = [SELECT Id FROM Product_Inbound_Staging__c WHERE iPaaS_Load_ID__c = 'testLoadId'];
+        System.assertEquals(5, inserted.size());
     }
     
     @isTest
@@ -53,7 +53,7 @@ public class ProductStagingDMLServiceTest {
         for (Integer i = 0; i < 5; i++) {
             Product_Inbound_Staging__c pis = new Product_Inbound_Staging__c();
             pis.iPaaS_Load_ID__c = 'testLoadId';
-            //pis.Core_Unique_ID__c = 'unique_' + i;
+            pis.Core_Unique_ID__c = 'unique_' + i;
             pis.level_1_epm_id__c = '1001';
             pis.level_1_epm_name__c = 'L1';
             pis.Core_Hierarchy_ID__c = '43';
@@ -66,7 +66,7 @@ public class ProductStagingDMLServiceTest {
         service.upsertStagingRecordsOnly(records, 'testLoadId');
         Test.stopTest();
 
-        //List<Product_Inbound_Staging__c> inserted = [SELECT Id FROM Product_Inbound_Staging__c WHERE iPaaS_Load_ID__c = 'testLoadId'];
-        //System.assertEquals(5, inserted.size());
+        List<Product_Inbound_Staging__c> inserted = [SELECT Id FROM Product_Inbound_Staging__c WHERE iPaaS_Load_ID__c = 'testLoadId'];
+        System.assertEquals(5, inserted.size());
     }
 }

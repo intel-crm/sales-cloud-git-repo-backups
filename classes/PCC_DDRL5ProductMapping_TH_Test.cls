@@ -36,7 +36,6 @@ public class PCC_DDRL5ProductMapping_TH_Test {
         c1.RecordTypeId = contactRecordType;
         c1.Core_IPA_Partner_Role__c = 'Service Provider';
         c1.Email = 'test.diqhwqi@test.com';
-        c1.MailingCountry='India';
         insert c1;
         
         Contact c2 = PRM_TestUtility.getContact();
@@ -46,7 +45,6 @@ public class PCC_DDRL5ProductMapping_TH_Test {
         c2.Core_eRPM_Language_Code__c = 'ENG';
         c2.RecordTypeId = contactRecordType;
         c2.Core_IPA_Partner_Role__c = 'Service Provider';
-        c2.MailingCountry='India';
         c2.Email = 'test.diqhwqi11@test.com';
         insert c2;
         

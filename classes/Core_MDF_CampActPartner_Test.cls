@@ -48,7 +48,6 @@ public without sharing class Core_MDF_CampActPartner_Test{
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
-        Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name = 'CCP - Core Access'];
         // Highlight: Unused Local Variable 
        // UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 50000];
         // Creating User with utility class 
@@ -59,8 +58,8 @@ public without sharing class Core_MDF_CampActPartner_Test{
         
         User usr1 = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr1.LastName = 'User Test1';
-        usr1.profileId = ccpCoreProfile.Id;
-        Database.insert(usr1);
+       // usr1.UserRoleId = usRole.Id;
+        // Database.insert(usr1);
         
         User usr2 = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr2.LastName = 'TestClass TestUser';
@@ -71,7 +70,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
         ChannelProgram eefCp = Core_MDF_CCP_TestDataUtility.createProgram('Ecosystem Extension Fund','Ecosystem Extension Fund', true);
         
         Id campaign_RecordType_EEF = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Ecosystem_Extension_Fund').getRecordTypeId();
-        Id iupgm_Recordtype_EEF = Schema.SObjectType.Core_MDF_Int_Users_Partner_Geo_Mapping__c .getRecordTypeInfosByDeveloperName().get('Core_MDF_Ecosystem_Extension_Fund').getRecordTypeId();
+        
         //Create Group
         Group eefGrp = new Group();
         eefGrp.Name = 'Core CCP EEF External';
@@ -99,12 +98,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
             insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = eefBudLoader.Id);
             PermissionSet eefBudManager = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_Internal_EEF_Budget_Manager' LIMIT 1];
             insert new PermissionSetAssignment(AssigneeId = usr2.id, PermissionSetId = eefBudManager.Id);
-            PermissionSet eefPrimAccManager = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr' LIMIT 1];
-            insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = eefPrimAccManager.Id);
-            PermissionSet eefPrimAccManager1 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr' LIMIT 1];
-            insert new PermissionSetAssignment(AssigneeId = usr2.id, PermissionSetId = eefPrimAccManager1.Id);
-            PermissionSet eefPrimAccManager2 = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr' LIMIT 1];
-            insert new PermissionSetAssignment(AssigneeId = usr1.id, PermissionSetId = eefPrimAccManager2.Id);            
+            
         }
         
         List<PartnerMarketingBudget> pmbList = new List<PartnerMarketingBudget>(); 
@@ -132,10 +126,6 @@ public without sharing class Core_MDF_CampActPartner_Test{
             eeFWWgrp.Name = 'Core CCP EEF WW INTERNAL';
             eeFWWgrp.DeveloperName = 'Core_CCP_EEF_WW_Internal';
             insert eeFWWgrp;
-            Group eeFASMOgrp = new Group();
-            eeFASMOgrp.Name = 'Core CCP EEF ASMO INTERNAL';
-            eeFASMOgrp.DeveloperName = 'Core_CCP_EEF_ASMO_Internal';
-            insert eeFASMOgrp;
             
             // Creating Partner Group Mapping
             Core_MDF_Partner_Group_Mapping__c pgm = new Core_MDF_Partner_Group_Mapping__c();
@@ -153,18 +143,6 @@ public without sharing class Core_MDF_CampActPartner_Test{
             pgm1.Core_MDF_Channel_Program__c = eefCp.Id;
             Database.insert(pgm1);
             
-            Core_MDF_Partner_Group_Mapping__c asmoPGM = new Core_MDF_Partner_Group_Mapping__c();
-            asmoPGM.Core_MDF_Account__c = intelAcc.Id;
-            asmoPGM.Core_MDF_Group_Name__c = 'Core_CCP_EEF_ASMO_Internal';
-            asmoPGM.Core_MDF_Type_of_Access__c = 'Internal';
-            asmoPGM.Core_MDF_Region_cd__c = 'ASMO';
-            asmoPGM.Core_MDF_BudgetType_nm__c = 'Cloud';
-            asmoPGM.Core_MDF_Group_Id__c = eeFASMOgrp.Id;                
-            asmoPGM.Core_MDF_Channel_Program__c = eefCp.Id;
-            asmoPGM.Core_MDF_Source_Txt__c = 'Test';
-            asmoPGM.Core_MDF_AccountIdGroupName__c = intelAcc.Id+'Core_CCP_EEF_ASMO_Internal';
-            insert asmoPGM;
-            
             Core_MDF_Partner_Group_Mapping__c wwPgm = new Core_MDF_Partner_Group_Mapping__c();
             wwPgm.Core_MDF_Account__c = intelAcc.Id;
             wwPgm.Core_MDF_Group_Name__c = 'Core_CCP_EEF_WW_Internal';
@@ -173,35 +151,8 @@ public without sharing class Core_MDF_CampActPartner_Test{
             wwPgm.Core_MDF_Group_Id__c = eeFWWgrp.Id;                
             wwPgm.Core_MDF_Channel_Program__c = eefCp.Id;
             wwPgm.Core_MDF_Source_Txt__c = 'Test';
-            wwPgm.Core_MDF_AccountIdGroupName__c = intelAcc.Id+'Core_CCP_EEF_WW_Internal';
-            insert wwPgm;
+            wwPgm.Core_MDF_AccountIdGroupName__c = intelAcc.Id+'Core_CCP_DCF_WW_Internal';
             
-            Core_MDF_Partner_Group_Mapping__c wwPgm1 = new Core_MDF_Partner_Group_Mapping__c();
-            wwPgm1.Core_MDF_Account__c = acc1.Id;
-            wwPgm1.Core_MDF_Group_Name__c = 'Core_CCP_EEF_WW_Internal';
-            wwPgm1.Core_MDF_Type_of_Access__c = 'Internal';
-            wwPgm1.Core_MDF_Region_cd__c = 'WW';
-            wwPgm1.Core_MDF_BudgetType_nm__c = 'Cloud';
-            wwPgm1.Core_MDF_Group_Id__c = eeFWWgrp.Id;                
-            wwPgm1.Core_MDF_Channel_Program__c = eefCp.Id;
-            wwPgm1.Core_MDF_Source_Txt__c = 'Test';
-            wwPgm1.Core_MDF_AccountIdGroupName__c = intelAcc.Id+'Core_CCP_EEF_WW_Internal';
-            insert wwPgm1;
-
-            
-            List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmLst = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
-            Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm1 = new Core_MDF_Int_Users_Partner_Geo_Mapping__c();
-            iupgm1.RecordTypeId =  iupgm_Recordtype_EEF;
-            iupgm1.Core_MDF_Program_nm__c = 'Ecosystem Extension Fund';
-            iupgm1.Core_MDF_Region_Sub_Region_nm__c = 'WW';
-            iupgm1.Core_MDF_User_id__c =  usr.Id;
-            iupgm1.Core_MDF_All_Budget_Type_Access_Ind__c = true;
-            iupgm1.Core_MDF_All_Accounts_cd__c = 'No';
-            iupgm1.Core_MDF_Account_id__c = intelAcc.Id;
-            iupgm1.Core_MDF_Role_nm__c='Core_MDF_Internal_EEF_Primary_Partner_Acct_Mgr';
-            iupgm1.Core_MDF_Channel_Program_id__c = eefCp.Id;
-            iupgmLst.add(iupgm1);
-            insert iupgmLst;
             
             Campaign eefCamp = new Campaign();
             eefCamp.RecordTypeId = campaign_RecordType_EEF;
@@ -315,7 +266,7 @@ public without sharing class Core_MDF_CampActPartner_Test{
     static void testGetSIOrISVAccounts() {
         User usr1 = [SELECT Id FROM User WHERE LastName = 'TestClass TestUser' LIMIT 50000];
         System.runAs(usr1){
-            Account acc = [Select Id,Core_MDF_Partner_Type_nm__c from Account where Core_MDF_Partner_Type_nm__c = 'Primary Partner'];
+            Account acc = [Select Id from Account where Core_MDF_Partner_Type_nm__c = 'Primary Partner'];
             Core_MDF_CampaignCreatePage.getSIOrISVAccounts(acc.Id);
             // Unit Test Method should include System.Assert 
             System.assertEquals('Primary Partner', acc.Core_MDF_Partner_Type_nm__c, 'Account partner type should be Primary Partner');

@@ -21,10 +21,6 @@
         <name>core_cpq_isactive__c</name>
     </fields>
     <fields>
-        <label><!-- Product Code --></label>
-        <name>core_cpq_product_code__c</name>
-    </fields>
-    <fields>
         <label><!-- Product Name --></label>
         <name>core_cpq_product_name_txt__c</name>
     </fields>

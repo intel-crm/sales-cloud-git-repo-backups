@@ -64,7 +64,7 @@ Modification Log :
                                         </li>
                                     </aura:if>
                                     
-                                </aura:iteration>
+                                </aura:iteration >
                                 <aura:if isTrue="{!v.isMatchingContact}">
                                     <li class="slds-path__item slds-is-lost" onmouseover="{!c.handleMouseEnter}" onmouseout="{!c.handleMouseLeave}" role="presentation">
                                         <a aria-selected="false" class="slds-path__link" role="option" tabindex="-1" >

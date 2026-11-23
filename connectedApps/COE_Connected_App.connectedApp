@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
     <contactEmail>david.a.hood@intel.com</contactEmail>
+    <description>This connected app is used for COE Integration profile users</description>
     <label>COE Connected App</label>
     <oauthConfig>
-        <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6tosohedV__N7yut4wkP3Pja4vg24jIv5l5hnTqPpzA5ucyKIdbXb5Fi59Ci</consumerKey>
+        <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDh955GIgjdCUU3OwCPKUnQjlFT6XrZcU1NV9wVMaa0qUCdXV9GHEJJ.QjXHT</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -24,7 +25,6 @@
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Basic</scopes>
         <scopes>Api</scopes>
-        <scopes>RefreshToken</scopes>
     </oauthConfig>
     <oauthPolicy>
         <ipRelaxation>BYPASS</ipRelaxation>

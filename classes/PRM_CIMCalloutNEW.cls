@@ -81,8 +81,10 @@ public without sharing class PRM_CIMCalloutNEW
         requestDetail.IncludeDefaultAttributesForSourceTypes = False;
         requestDetail.AsynchronousRequestId = cimMdt.PRM_Async_Id__c;
         
+        //system.debug('---Request Details: '+requestDetail);        
         String reqBody = JSON.serialize(requestDetail);
         req.setBody(reqBody);
+        //system.debug('---httpCIMRequest -->'+reqBody);
         HttpResponse response ;
            
         try{
@@ -94,9 +96,11 @@ public without sharing class PRM_CIMCalloutNEW
             else{
             response = http.send(req);
             }
+            //system.debug('---httpCIMResponse '+response.getStatusCode()+'--'+response.getBody());
             
             if(response.getStatusCode() == 200 && String.isNotBlank(response.getBody())){
                 PRM_CIMWrapper respWrap = (PRM_CIMWrapper)JSON.deserialize(response.getBody(),PRM_CIMWrapper.class);
+                system.debug('---After Parsing CIM Response::'+respWrap);
                 if(respWrap != null && string.isblank(respWrap.ErrorDetailsTxt) && string.isblank(respWrap.ErrorCd) ){
                     //Call below method to process CIM Repsonse and get relevant Info out CIM Response
                     sfdcAccountIds=handleResponse(respWrap,accountsSfdc);
@@ -111,7 +115,7 @@ public without sharing class PRM_CIMCalloutNEW
            
         }
         catch(Exception e){
-         system.debug('---Exception in CIM Response '+e.getmessage());
+         //system.debug('---Exception in CIM Response '+e.getmessage());
         }
         finally{
             PRM_ProcessInboundOPIDLogEntriesUtility logEntryUtility=new PRM_ProcessInboundOPIDLogEntriesUtility();
@@ -232,6 +236,7 @@ public without sharing class PRM_CIMCalloutNEW
         if(AllAccountsMAP.size()>0)
         {        
             AllAccounts=AllAccountsMAP.values();
+            //system.debug('---AllAccounts '+AllAccounts);
         }
         
         //Apply the sorting
@@ -241,6 +246,7 @@ public without sharing class PRM_CIMCalloutNEW
         //Create final wrapper list
         if(searcAcc.size()>0)
         seachresult=prepareFinalList(searcAcc);
+        //system.debug('---seachresult '+seachresult);
         
         return seachresult;
     }
@@ -315,6 +321,8 @@ public without sharing class PRM_CIMCalloutNEW
             count = 0,
             totalrecords=AllAccounts.size(),
             maxrecord=integer.valueof(cimMdt.PRM_Max_Records__c);*/
+            
+        //system.debug('---totalrecords '+totalrecords+'--'+maxrecord);
         
         //while ((count <=totalrecords ) || (targetcount > =maxrecord)) 
  /*       
@@ -340,6 +348,7 @@ public without sharing class PRM_CIMCalloutNEW
             }
            /* else if(targetLimit(targetcount)){
                 //Accounts matched by Email Domain
+               system.debug('---EmailMatch');
                acc.priority=2;
                sortedAccountResults.add(acc); targetcount++;
             }*/
@@ -411,6 +420,7 @@ public without sharing class PRM_CIMCalloutNEW
         for(Core_Country_Code_Mapping__c allCountries : Core_Country_Code_Mapping__c.getAll().values()) {
             countryMap.put(allCountries.ISO_Code__c,allCountries.Country_Code__c);
         }
+        //system.debug('---countryMap '+countryMap);
         for(PRM_SearchAccountsNew sa: sortedaccounts){
             string country2code; 
             country2code=countryMap.containskey(sa.acc.BillingCountryCode)?countryMap.get(sa.acc.BillingCountryCode):sa.acc.BillingCountryCode;
@@ -492,7 +502,7 @@ public without sharing class PRM_CIMCalloutNEW
         public String BusinessOrganizationNm;
         public PhysicalAddress PhysicalAddress;
         public list<ElectronicAddress> ElectronicAddress;
-    }
+    } 
     
     public class PhysicalAddress{
         public String PostalCd;

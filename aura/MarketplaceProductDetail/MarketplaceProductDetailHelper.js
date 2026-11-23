@@ -1272,7 +1272,7 @@
         var requestInitiatedTime=new Date().getTime();
         $A.enqueueAction(action);
                 } else {
-                    window.location.href = $A.get("$Label.c.PMP_Error_Page_URL");
+                 //   window.location.href = $A.get("$Label.c.PMP_Error_Page_URL");
                 }
             }
         });

@@ -15,6 +15,7 @@ public without sharing class ACM_BU_RTForRejectedAccount implements UCD_ACM_Serv
             try {
                 // get rejected accounts
                 setRejectedCollection(oldAccounts,newAccounts);
+                UCD_ACM_Logger.information('ACM_BU_RTForRejectedAccount','execute','New Accounts: '+newAccounts,null);
                 if (!rejectedAccounts.isEmpty()) {
                     // set record type of rejected accounts
                     setRejectedToApprovedAttributes();
@@ -116,6 +117,7 @@ public without sharing class ACM_BU_RTForRejectedAccount implements UCD_ACM_Serv
                 }
             }
         }
+        UCD_ACM_Logger.information('ACM_BU_RTForRejectedAccount','getSurvivorAccountIdById','survivorAccountIdByBPId: '+survivorAccountIdByBPId, null);
 
         return survivorAccountIdByBPId;
     }

@@ -261,7 +261,7 @@ public class PRM_IPAPartnerOnboarding_CTRL_Test {
     public static void testSubmitCommunityEnrollmentRequest(){
         User u=[Select Id,ContactId from User where UserName='testusercon1@test.com' limit 1];
         /*userrole ur = [select id from userrole where name='admin' limit 1];
-        System.debug('Ur -->'+ur);
+        
         u.UserRoleId=ur.id;
         update u;*/
         System.runAs(u){

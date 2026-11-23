@@ -135,6 +135,14 @@
         <type>MasterDetail</type>
     </fields>
     <fields>
+        <fullName>Core_Objective_Comments_Section__c</fullName>
+        <label>Objective Comments Section</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Description</fullName>
         <trackHistory>false</trackHistory>
     </fields>

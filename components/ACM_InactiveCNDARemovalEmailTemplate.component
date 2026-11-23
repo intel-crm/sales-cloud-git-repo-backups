@@ -1,0 +1,23 @@
+<apex:component access="global">
+    <h3>&lt;System generated email&gt;</h3>
+    <br/>
+    <p>
+        Please note below is the list of accounts with CNDAs in Inactive state, data cleanse is complete and inactive NDAs are removed from SalesCRM Account.
+    </p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>NDA List</th>
+                <th>Account ID</th>               
+            </tr>
+        </thead>
+        <tbody>
+            <!--<apex:repeat value="{!wrapperList}" var="wrapper">
+                <tr>
+                    <td>{!wrapper.ndaList}</td>
+                    <td>{!wrapper.accountId}</td>
+                </tr>
+            </apex:repeat>-->
+        </tbody>
+    </table>
+</apex:component>

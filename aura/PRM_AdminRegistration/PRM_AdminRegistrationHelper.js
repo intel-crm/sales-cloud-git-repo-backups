@@ -47,9 +47,9 @@
                 component.set("v.optionsLanguage", finalLanguageList);
                 component.set("v.partnerRoleTypeMap", partRoleTypeMap);
                 console.log('partRoleTypeMap' + JSON.stringify(component.get("v.partnerRoleTypeMap")));
-                
+
                 component.set("v.optionsType", optionOrgType);
-                
+
                 component.set("v.stateCountryInfo", data.stateCountryInfoList);
                 let stateCountryList = data.stateCountryInfoList;
                 let keys = [];
@@ -61,7 +61,10 @@
                     };
                     keys.push(c);
                 }
+
+                console.log('keys -->',keys);
                 
+
                 component.set('v.optionsCountry', keys);
                 component.set("v.formSpinner", false);
                 component.set("v.loadPage", true);
@@ -93,7 +96,7 @@
         let prev = component.find("prevButn");
         $A.util.addClass(prev, "slds-hide");
         console.log('yes');
-        
+
     },
 
     populateStateValues: function (component, event, helper) {
@@ -102,20 +105,20 @@
         var selectedCountry = component.get("v.countrySelected");
 
         for (let i in countries) {
-         
+
             console.log('countries[i] Label' + JSON.stringify(countries[i].label));
             console.log('countries[i] Value' + JSON.stringify(countries[i].value));
             if (countries[i].value == selectedCountry) {
                 console.log('ITS A MATCH' + countries[i].label);
                 component.set("v.countryLabel", countries[i].label);
-               
+
                 break;
             }
         }
         component.set("v.stateSelected", "");
         var selectedCountry = event.getParam("value");
         component.set("v.countrySelected", selectedCountry);
-        
+
         let stateCountryInfo = component.get("v.stateCountryInfo");
         let values = [];
         for (let i = 0; i < stateCountryInfo.length; i++) {
@@ -130,7 +133,7 @@
                 }
             }
         }
-        
+
         component.set("v.optionsState", values);
         var stateList = component.find("stateList");
         if (values == null || values.length == 0) {
@@ -148,13 +151,13 @@
         var selectedState = component.get("v.stateSelected");
 
         for (let i in state) {
-           
+
             console.log('state[i] Label' + JSON.stringify(state[i].label));
             console.log('state[i] Value' + JSON.stringify(state[i].value));
             if (state[i].value == selectedState) {
                 console.log('ITS A MATCH' + state[i].label);
                 component.set("v.stateLabel", state[i].label);
-              
+
                 break;
             }
         }
@@ -173,7 +176,7 @@
         component.set("v.buttonSection", true);
         var prev = component.find("prevButn");
         $A.util.addClass(prev, "slds-hide");
-       
+
 
     },
 
@@ -209,69 +212,70 @@
         }
     },
 
+
     nextEvent: function (component, event, helper) {
         console.log('duplicate Method 3');
-//blocked account:
-if(component.get("v.accId")!=null && component.get("v.accId")!=undefined){
-           
-    let action4 = component.get("c.getBlockedAccountContact");
-    action4.setParams({
-        emailId: component.get("v.conEmail"), accId:component.get("v.accId")
+        //blocked account:
+        if (component.get("v.accId") != null && component.get("v.accId") != undefined) {
 
-    });
+            let action4 = component.get("c.getBlockedAccountContact");
+            action4.setParams({
+                emailId: component.get("v.conEmail"), accId: component.get("v.accId")
 
-    ///blocked cont:
-action4.setCallback(this, function (data) {
-var state = data.getState();
-if (component.isValid() && state === "SUCCESS") {
-let result = data.getReturnValue();
-console.log('result' + JSON.stringify(result));
+            });
 
-if (result != null) {
-   
-   if(result==true){
-    component.set("v.showUI", true);
-    component.set("v.showTables", false);
-        var stepNumber = component.get("v.currentStep");
-        console.log('stepNumber' + stepNumber);
-        if (stepNumber == "step2") {
-            component.set("v.currentStep", 'step1');
+            ///blocked cont:
+            action4.setCallback(this, function (data) {
+                var state = data.getState();
+                if (component.isValid() && state === "SUCCESS") {
+                    let result = data.getReturnValue();
+                    console.log('result' + JSON.stringify(result));
+
+                    if (result != null) {
+
+                        if (result == true) {
+                            component.set("v.showUI", true);
+                            component.set("v.showTables", false);
+                            var stepNumber = component.get("v.currentStep");
+                            console.log('stepNumber' + stepNumber);
+                            if (stepNumber == "step2") {
+                                component.set("v.currentStep", 'step1');
+                            }
+                            component.set("v.blockedContact", result);
+                            // component.set("v.showUI", true);
+                            component.set("v.showBlockedContact", true);
+                            component.set("v.associatedAccountIsIPA", false);
+                            let toastEvent = $A.get("e.force:showToast");
+                            toastEvent.setParams({
+                                "type": "error",
+                                "mode": "sticky",
+                                "message": $A.get("$Label.c.PRM_BlockedAccountError")
+                            });
+                            toastEvent.fire();
+                            component.find("nextBtn").set("v.disabled", true);
+                        }
+                    }
+
+                }
+            });
+            $A.enqueueAction(action4);
         }
-   component.set("v.blockedContact",result);
-   // component.set("v.showUI", true);
-    component.set("v.showBlockedContact", true);
-    component.set("v.associatedAccountIsIPA",false);
-    let toastEvent = $A.get("e.force:showToast");
-    toastEvent.setParams({
-        "type": "error",
-        "mode": "sticky",
-        "message": $A.get("$Label.c.PRM_BlockedAccountError")
-    });
-    toastEvent.fire();
-    component.find("nextBtn").set("v.disabled", true);
-   }
-}
-
-}
-});
-    $A.enqueueAction(action4);
-}
-if(component.get("v.showBlockedContact")==false){
-    console.log('showBlockedContact' + component.get("v.showBlockedContact"));
-        component.set("v.showUI", false);
-        component.set("v.showProgressBar", false);
-        component.set("v.showTables", true);
-        console.log('Table' + component.get("v.showTables"));
-        let stepNumber = component.get("v.currentStep");
-        console.log('stepNumber' + stepNumber);
-        if (stepNumber == "step1") {
-            component.set("v.currentStep", 'step2');
+        if (component.get("v.showBlockedContact") == false) {
+            console.log('showBlockedContact' + component.get("v.showBlockedContact"));
+            component.set("v.showUI", false);
+            component.set("v.showProgressBar", false);
+            component.set("v.showTables", true);
+            console.log('Table' + component.get("v.showTables"));
+            let stepNumber = component.get("v.currentStep");
+            console.log('stepNumber' + stepNumber);
+            if (stepNumber == "step1") {
+                component.set("v.currentStep", 'step2');
+            }
+            $A.util.addClass(component.find("cancelBtn"), "slds-hide");
+            $A.util.addClass(component.find("nextBtn"), "slds-hide");
+            console.log('accid for blocked' + component.get("v.accId"));
         }
-        $A.util.addClass(component.find("cancelBtn"), "slds-hide");
-        $A.util.addClass(component.find("nextBtn"), "slds-hide");
-        console.log('accid for blocked'+component.get("v.accId"));
-}  
-        
+
     },
 
     duplicateInfoPage: function (component, event, helper) {
@@ -295,7 +299,7 @@ if(component.get("v.showBlockedContact")==false){
 
     prevEvent: function (component, event, helper) {
         component.set("v.showUI", true);
-       
+
 
         console.log('disable it' + component.get("v.disableAccountInputs"));
         //keep account inputs disable if an existing contact got found
@@ -304,7 +308,7 @@ if(component.get("v.showBlockedContact")==false){
             console.log('component.find("addrLine1").get("v.disabled")' + component.find("addrLine1").get("v.disabled"));
             console.log('component.find("addrLine2").get("v.disabled")' + component.find("addrLine2").get("v.disabled"));
 
-            
+
             if (component.get("v.accountNameVisible")) {
                 component.find("accountName").set("v.disabled", true);
             }
@@ -330,10 +334,10 @@ if(component.get("v.showBlockedContact")==false){
                 component.find("web").set("v.disabled", true);
             }
             //added as part of INC10931061 by Yogesh
-            if (component.get("v.optionsType")){
-                  component.find("bizOrgType").set("v.disabled", true);
-              }
-            
+            if (component.get("v.optionsType")) {
+                component.find("bizOrgType").set("v.disabled", true);
+            }
+
 
         }
         component.set("v.showTables", false);
@@ -347,7 +351,7 @@ if(component.get("v.showBlockedContact")==false){
         component.find("nextBtn").set('v.disabled', false);
         var prev = component.find("prevButn");
         $A.util.addClass(prev, "slds-hide");
-       
+
 
         let value = component.find("childComp").getCimAccounts();
         console.log('value' + JSON.stringify(value));
@@ -375,26 +379,26 @@ if(component.get("v.showBlockedContact")==false){
                 let selectedCimValue = value.SelectedRow;
                 component.set("v.prevSelectedCimVal", selectedCimValue);
             }
-            if (value.AccountDuplicateStatus != null) {   
+            if (value.AccountDuplicateStatus != null) {
                 let dupStatus = value.AccountDuplicateStatus;
                 component.set("v.accountDuplicateStatus", dupStatus);
             }
-            if (value.ContactDuplicateStatus != null) {   
+            if (value.ContactDuplicateStatus != null) {
                 const contDupStatus = value.ContactDuplicateStatus;
                 component.set("v.contactDuplicateStatus", contDupStatus);
             }
-            if (value.accountDupStatusMap != null && value.accountDupStatusMap != undefined ) {   
+            if (value.accountDupStatusMap != null && value.accountDupStatusMap != undefined) {
                 let accountDupStatusMapObj = value.accountDupStatusMap;
                 component.set("v.accountDupStatusMapOnUI", accountDupStatusMapObj);
-                console.log('Setting accountDupStatusMapOnUI in Admin helper'+JSON.stringify(accountDupStatusMapObj));
+                console.log('Setting accountDupStatusMapOnUI in Admin helper' + JSON.stringify(accountDupStatusMapObj));
             }
-            
+
         }
         else if (value == null || value == '' || value.DuplicateRecords == null || value.DuplicateRecords == '') {
-           
+
             let v = "No Duplicate Values Found";
             component.set("v.prevCimVal", v);
-            
+
         }
 
     },
@@ -404,11 +408,11 @@ if(component.get("v.showBlockedContact")==false){
         let button = component.find('nextBtn');
         if (value == "show") {
             button.set('v.disabled', false);
-            
+
         }
         else {
             button.set('v.disabled', true);
-          
+
         }
     },
 
@@ -417,9 +421,42 @@ if(component.get("v.showBlockedContact")==false){
 
         let emailId = component.find("emailId");
         let regExpEmailformat = $A.get("$Label.c.PRM_ContactEmail_Regex");
-   
+        //    //blockedContact
+        //    // let blockedContact=component.get("c.getBlockedContact")
+        //    let action = component.get("c.getBlockedContact");
 
-        
+
+        //    action.setParams({
+        //        emailId: component.get("v.emailId")
+        //    });
+
+
+
+        //    action.setCallback(this, function (data) {
+        //        var state = data.getState();
+        //        if (component.isValid() && state === "SUCCESS") {
+        //            let result = data.getReturnValue();
+        //            console.log('result' + JSON.stringify(result));
+
+        //            if (result != null) {
+        //               component.set("v.blockedContact",result);
+        //               if(component.get("v.blockedContact") != true){
+
+        //                component.set("v.showBlockedContact", true);
+        //                let toastEvent = $A.get("e.force:showToast");
+        //                toastEvent.setParams({
+        //                    "type": "warning",
+        //                    "message": "Above contact is blocked"
+        //                });
+        //                toastEvent.fire();
+        //                component.find("nextBtn").set("v.disabled", true);
+        //               }
+        //            }
+        //        }
+        //    });
+        //    $A.enqueueAction(action);
+
+
         if ((component.get("v.accName") != null && component.get("v.accName") != '') &&
             (component.get("v.orgTypeSelected") != null && component.get("v.orgTypeSelected") != '') &&
             (component.get("v.addressOne") != null && component.get("v.addressOne") != '') &&
@@ -450,7 +487,7 @@ if(component.get("v.showBlockedContact")==false){
         }
     },
     partnerRoleChange: function (component, event, helper) {
-        
+
 
     },
 
@@ -476,31 +513,31 @@ if(component.get("v.showBlockedContact")==false){
     },
 
     // To show soft warning message for Emborgoed Countries 
- countryChangeMessage : function(component, event, helper){
+    countryChangeMessage: function (component, event, helper) {
         let embarHelpLink = $A.get("$Label.c.PRM_Embargoed_Help_Link").toString();
         let embarErroMsg = $A.get("$Label.c.PRM_Embargoed_Alert_MSG").toString();
-            component.set("v.showErrorMsg", true);
-            let emborMsglink = embarHelpLink;
-            let emborMsg = embarErroMsg;
-            let toastEvent = $A.get("e.force:showToast");
-            toastEvent.setParams({
-                mode: 'sticky',
-                type: "warning",
-                message: emborMsg,
-                messageTemplate: '{0} please visit {1}',
-                messageTemplateData: [
-                    emborMsg,
-                    {
-                        url: emborMsglink, 
-                        label: emborMsglink,
-                    }
-                ]
-            });
-            toastEvent.fire();
-},
+        component.set("v.showErrorMsg", true);
+        let emborMsglink = embarHelpLink;
+        let emborMsg = embarErroMsg;
+        let toastEvent = $A.get("e.force:showToast");
+        toastEvent.setParams({
+            mode: 'sticky',
+            type: "warning",
+            message: emborMsg,
+            messageTemplate: '{0} please visit {1}',
+            messageTemplateData: [
+                emborMsg,
+                {
+                    url: emborMsglink,
+                    label: emborMsglink,
+                }
+            ]
+        });
+        toastEvent.fire();
+    },
 
-     // Restrict embargoed countries - US860528 / US860527
-      prefhandleCountry: function (component, event, helper) {
+    // Restrict embargoed countries - US860528 / US860527
+    prefhandleCountry: function (component, event, helper) {
         let selectedaccItem = component.find("countryList").get("v.value");
         let selectedconItem = component.find("contCntry").get("v.value");
         let embarCountryString = $A.get("$Label.c.PRM_Embargoed_country").toString();
@@ -508,16 +545,16 @@ if(component.get("v.showBlockedContact")==false){
         let nonembarCountryString = $A.get("$Label.c.PRM_NonEmbargoed_Country").toString();
         let nonembarCountryList = nonembarCountryString.split(",");
         console.log('embarCountryList>' + embarCountryList);
-        if ((embarCountryList.includes(selectedaccItem) && nonembarCountryList.includes(selectedconItem)) || (embarCountryList.includes(selectedaccItem))  || (embarCountryList.includes(selectedconItem))) {
+        if ((embarCountryList.includes(selectedaccItem) && nonembarCountryList.includes(selectedconItem)) || (embarCountryList.includes(selectedaccItem)) || (embarCountryList.includes(selectedconItem))) {
             component.find("nextBtn").set("v.disabled", true);
             helper.countryChangeMessage(component, event, helper);
             component.set("v.restrictEmbargoedCountry", true);
-    
+
         } else {
             component.find("nextBtn").set("v.disabled", false);
             component.set("v.restrictEmbargoedCountry", false);
         }
-        if(component.get("v.showBlockedContact")==true){
+        if (component.get("v.showBlockedContact") == true) {
             component.find("nextBtn").set("v.disabled", true);
         }
     },
@@ -527,11 +564,11 @@ if(component.get("v.showBlockedContact")==false){
         component.set("v.showTables", false);
         component.set("v.showConfirmationPage", true);
 
-        
+
 
         let nextButton = component.find("nextBtn");
         $A.util.addClass(nextButton, "slds-hide");
-        
+
         let submit = component.find("submit");
         $A.util.removeClass(submit, "slds-hide");
 
@@ -543,7 +580,7 @@ if(component.get("v.showBlockedContact")==false){
 
     },
 
-    goToSBRMsgPage: function (component, event, helper){
+    goToSBRMsgPage: function (component, event, helper) {
         // show toast msg when admin tries to create new account 
         var toastEvent = $A.get("e.force:showToast");
 
@@ -552,9 +589,9 @@ if(component.get("v.showBlockedContact")==false){
             "mode": "sticky",
             "message": "Required message",
             "messageTemplate": $A.get("$Label.c.PRM_UCD_AdminRegErr"),
-            "messageTemplateData":["Admin",{
+            "messageTemplateData": ["Admin", {
                 url: $A.get("$Label.c.PRM_UCD_ClickHere"),
-                label:"click here"
+                label: "click here"
             }]
         });
         toastEvent.fire();
@@ -573,7 +610,7 @@ if(component.get("v.showBlockedContact")==false){
         console.log('InputMap before submission-->   ' + JSON.stringify(component.get("v.InputMap")));
         console.log('Account Id before submission-->   ' + JSON.stringify(component.get('v.accId')));
         var paramMapForApex = component.get("v.InputMap");
-        
+
         if (component.get('v.accId') != null && component.get('v.accId') != '' && component.get('v.accId') != undefined) {
             paramMapForApex.AccountID = component.get('v.accId');
             console.log('paramMapForApex.accId:' + paramMapForApex.AccountID);
@@ -605,7 +642,7 @@ if(component.get("v.showBlockedContact")==false){
         if (paramMapForApex.associatedAccountIsIPA != null) {
             paramMapForApex.associatedAccountIsIPA = JSON.stringify(paramMapForApex.associatedAccountIsIPA);
         }
-        
+
         console.log('Map before passing in submit method apex' + JSON.stringify(paramMapForApex));
         action.setParams({
             registrationDetailsMap: paramMapForApex
@@ -620,11 +657,11 @@ if(component.get("v.showBlockedContact")==false){
                 let Id = result.AccountId;
                 console.log('Id' + Id);
                 if (Id != null && Id != '') {
-                    
+
                     component.set("v.submissionSpinner", false);
                     component.set("v.showProgressBar", true);
 
-                   
+
 
                     component.set("v.showFinalPage", true);
                     component.set("v.accountId", Id);
@@ -670,11 +707,11 @@ if(component.get("v.showBlockedContact")==false){
     updateEmailInput: function (component, event, helper) {
         let emailId = component.find("emailId");
         let regExpEmailformat = $A.get("$Label.c.PRM_ContactEmail_Regex");
-               if (component.get("v.conEmail") != undefined && component.get("v.conEmail") != "" && emailId.get('v.value').match(regExpEmailformat)) {
+        if (component.get("v.conEmail") != undefined && component.get("v.conEmail") != "" && emailId.get('v.value').match(regExpEmailformat)) {
             component.find("nextBtn").set("v.disabled", true);
         }
         else {
-           
+
             if (component.get("v.restrictEmbargoedCountry") == true) {
                 component.find("nextBtn").set("v.disabled", true);
             } else {
@@ -682,7 +719,7 @@ if(component.get("v.showBlockedContact")==false){
             }
         }
 
-        
+
 
     },
 
@@ -716,7 +753,7 @@ if(component.get("v.showBlockedContact")==false){
             component.find("bizOrgType").set("v.disabled", false);
             component.find("contCntry").set("v.disabled", false);
         }
-      
+
         $A.util.removeClass(component.find("nextBtn"), "slds-hide");
     },
 
@@ -738,23 +775,23 @@ if(component.get("v.showBlockedContact")==false){
         action1.setParams({
             emailId: component.get("v.conEmail")
         });
-        
+
         let action2 = component.get("c.systemAccountDetails");
         action2.setParams({
             emailId: component.get("v.conEmail")
         });
-        let action3 = component.get("c.fetchPendingACM");  
+        let action3 = component.get("c.fetchPendingACM");
         action3.setParams({
             emailId: component.get("v.conEmail")
         });
         //blockedContact
         let action4 = component.get("c.getBlockedAccountContact");
         action4.setParams({
-            emailId: component.get("v.conEmail"), accId:component.get("v.accId")
+            emailId: component.get("v.conEmail"), accId: component.get("v.accId")
 
         });
-        
-      
+
+
         if (component.get("v.conEmail") != undefined && component.get("v.conEmail") != "" && emailId.get('v.value').match(regExpEmailformat)) {
             // to compare existing email with email changing in onchangeEvent
             component.set("v.conEmailCompare", component.get("v.conEmail"));
@@ -763,13 +800,13 @@ if(component.get("v.showBlockedContact")==false){
 
             let action = component.get("c.fetchAccountDetails");
 
-            
+
             action.setParams({
                 emailId: component.get("v.conEmail")
             });
 
-            
-            
+
+
             action.setCallback(this, function (data) {
                 var state = data.getState();
                 if (component.isValid() && state === "SUCCESS") {
@@ -797,8 +834,8 @@ if(component.get("v.showBlockedContact")==false){
                             component.find("zipCode").set("v.disabled", true);
                             component.find("web").set("v.disabled", true);
                             component.find("bizOrgType").set("v.disabled", true);
-                            
-                            
+
+
 
                             console.log('p1' + JSON.stringify(p));
 
@@ -826,8 +863,8 @@ if(component.get("v.showBlockedContact")==false){
                                 accResult.Account.BillingPostalCode = '';
                                 component.find("zipCode").set("v.disabled", false);
                             }
-                           
-                           
+
+
                             if (accResult.Account.Core_User_Defined_Website__c == undefined || accResult.Account.Core_User_Defined_Website__c == '') {
                                 accResult.Account.Core_User_Defined_Website__c = '';
                                 component.find("web").set("v.disabled", false);
@@ -835,42 +872,42 @@ if(component.get("v.showBlockedContact")==false){
 
                             console.log('p2' + JSON.stringify(p));
 
-               
-                            
-                            if(accResult.Account.Core_Account_Type__c!='' && accResult.Account.Core_Account_Type__c!=undefined && accResult.Account.Core_Account_Type__c!=null){
-                            component.set("v.orgTypeCheck", accResult.Account.Core_Account_Type__c);
+
+
+                            if (accResult.Account.Core_Account_Type__c != '' && accResult.Account.Core_Account_Type__c != undefined && accResult.Account.Core_Account_Type__c != null) {
+                                component.set("v.orgTypeCheck", accResult.Account.Core_Account_Type__c);
                             }
 
                             console.log('p3' + JSON.stringify(p));
 
-                            console.log('Country--->'+accResult.Account.BillingCountryCode);
-                            
+                            console.log('Country--->' + accResult.Account.BillingCountryCode);
+
 
                             component.set("v.accId", accResult.AccountId);
                             component.set("v.accName", accResult.Account.Name);
                             component.set("v.addressOne", accResult.Account.BillingStreet);
                             component.set("v.addressTwo", "");
                             component.set("v.countrySelected", accResult.Account.BillingCountryCode);
-                           let roleType = component.get("v.partnerRoleTypeMap");                           
-                            
-                           let optionsRole = '';
-                             if(accResult.Account.Core_Account_Type__c!='' && accResult.Account.Core_Account_Type__c!=undefined && accResult.Account.Core_Account_Type__c!=null){
-                            if(accResult.Account.Core_Account_Type__c.toString().includes(';')){
-                                
-                                let strAry = accResult.Account.Core_Account_Type__c.split(";");                                 
-                                
-                                strAry.forEach(orgType => {
-                                    if(optionsRole == ''){
-                                        optionsRole =   roleType[orgType];  
-                                    }else{
-                                        optionsRole = optionsRole + ';' + roleType[orgType];
-                                    }    
-                                });
-                            }else{
-                                optionsRole = roleType[accResult.Account.Core_Account_Type__c];    
-                            }                            
-                            component.set("v.optionsRole", optionsRole);
-                             }
+                            let roleType = component.get("v.partnerRoleTypeMap");
+
+                            let optionsRole = '';
+                            if (accResult.Account.Core_Account_Type__c != '' && accResult.Account.Core_Account_Type__c != undefined && accResult.Account.Core_Account_Type__c != null) {
+                                if (accResult.Account.Core_Account_Type__c.toString().includes(';')) {
+
+                                    let strAry = accResult.Account.Core_Account_Type__c.split(";");
+
+                                    strAry.forEach(orgType => {
+                                        if (optionsRole == '') {
+                                            optionsRole = roleType[orgType];
+                                        } else {
+                                            optionsRole = optionsRole + ';' + roleType[orgType];
+                                        }
+                                    });
+                                } else {
+                                    optionsRole = roleType[accResult.Account.Core_Account_Type__c];
+                                }
+                                component.set("v.optionsRole", optionsRole);
+                            }
                             var stateCountryInfo = component.get("v.stateCountryInfo");
                             let values = [];
                             for (let i = 0; i < stateCountryInfo.length; i++) {
@@ -891,7 +928,7 @@ if(component.get("v.showBlockedContact")==false){
                             component.set("v.stateSelected", accResult.Account.BillingStateCode);
                             component.set("v.userWebsite", accResult.Account.Core_User_Defined_Website__c);
                             component.set("v.disableAccountInputs", true);
-                           
+
                             if (component.find("accountName").get("v.disabled")) {
                                 component.set("v.accountNameVisible", true);
                             }
@@ -917,7 +954,7 @@ if(component.get("v.showBlockedContact")==false){
                                 component.set("v.webVisible", true);
                             }
 
-                            
+
                             $A.util.removeClass(component.find("nextBtn"), "slds-hide");
 
                             if (accResult.Account.Name != undefined && accResult.Account.Name != '' &&
@@ -934,18 +971,18 @@ if(component.get("v.showBlockedContact")==false){
                 }
             });
             $A.enqueueAction(action);
-            
+
             action1.setCallback(this, function (data) {
                 let state = data.getState();
                 if (state === "SUCCESS") {
                     let reReqresult = data.getReturnValue();
                     console.log('reReqresult' + JSON.stringify(reReqresult));
-                    
+
                     if (reReqresult == null) {
                         //helper.disableAccountInfo(component, event, helper);
-                    }else{
-                        
-                      
+                    } else {
+
+
                         let toastEvent = $A.get("e.force:showToast");
                         toastEvent.setParams({
                             "type": "error",
@@ -964,32 +1001,32 @@ if(component.get("v.showBlockedContact")==false){
                         component.find("zipCode").set("v.disabled", true);
                         component.find("web").set("v.disabled", true);
                         component.find("bizOrgType").set("v.disabled", true);
-                        
+
                     }
-                    
+
                 }
-                
-                
+
+
             });
-            $A.enqueueAction(action1); 
-            
-            
+            $A.enqueueAction(action1);
+
+
             action2.setCallback(this, function (data) {
                 let state = data.getState();
                 if (state === "SUCCESS") {
                     const returnvale = data.getReturnValue();
-                    console.log('returnvale-->' +JSON.stringify(returnvale));
-                    
+                    console.log('returnvale-->' + JSON.stringify(returnvale));
+
                     if (returnvale == true) {
                         let toastEvent = $A.get("e.force:showToast");
                         toastEvent.setParams({
                             "type": "error",
                             "mode": "sticky",
                             "message": $A.get("$Label.c.PRM_ACR_SystemAccError")
-                            
+
                         });
                         toastEvent.fire();
-                        
+
                         component.find("nextBtn").set("v.disabled", true);
                         component.find("contCntry").set("v.disabled", true);
                         component.find("accountName").set("v.disabled", true);
@@ -1001,11 +1038,11 @@ if(component.get("v.showBlockedContact")==false){
                         component.find("zipCode").set("v.disabled", true);
                         component.find("web").set("v.disabled", true);
                         component.find("bizOrgType").set("v.disabled", true);
-                    }else{
+                    } else {
                         //helper.disableAccountInfo(component, event, helper);
                     }
                 }
-                
+
             });
             $A.enqueueAction(action2);
             //Added as a part of INC10931061 Biz Org Type issue
@@ -1013,83 +1050,83 @@ if(component.get("v.showBlockedContact")==false){
                 let state = data.getState();
                 if (state === "SUCCESS") {
                     const returnvale = data.getReturnValue();
-                    console.log('returnvale-->' +JSON.stringify(returnvale));
+                    console.log('returnvale-->' + JSON.stringify(returnvale));
                     if (returnvale != 'inactive') {
                         console.log('inside returnvale');
                         component.set("v.orgTypeSelected", returnvale);
-                        var roleType = component.get("v.partnerRoleTypeMap");                           
+                        var roleType = component.get("v.partnerRoleTypeMap");
                         var optionsRole = '';
-                        if(returnvale!='' && returnvale!=undefined && returnvale!=null){
-                            if(returnvale.toString().includes(';')){
-                                
-                                let strAry = returnvale.split(";");                                 
+                        if (returnvale != '' && returnvale != undefined && returnvale != null) {
+                            if (returnvale.toString().includes(';')) {
+
+                                let strAry = returnvale.split(";");
                                 strAry.forEach(orgType => {
-                                    if(optionsRole == ''){
-                                        optionsRole =   roleType[orgType];  
-                                    }else{
+                                    if (optionsRole == '') {
+                                        optionsRole = roleType[orgType];
+                                    } else {
                                         optionsRole = optionsRole + ';' + roleType[orgType];
-                                    }    
+                                    }
                                 });
-                            }else{
-                                optionsRole = roleType[returnvale];    
-                            }                            
+                            } else {
+                                optionsRole = roleType[returnvale];
+                            }
                             component.set("v.optionsRole", optionsRole);
                         }
                         component.find("bizOrgType").set("v.disabled", true);
-                    }else{
+                    } else {
                         component.find("bizOrgType").set("v.disabled", false);
                     }
-                }                
-                });
+                }
+            });
             $A.enqueueAction(action3);
 
-///blocked cont:
-action4.setCallback(this, function (data) {
-    var state = data.getState();
-    if (component.isValid() && state === "SUCCESS") {
-        let result = data.getReturnValue();
-        console.log('result' + JSON.stringify(result));
+            ///blocked cont:
+            action4.setCallback(this, function (data) {
+                var state = data.getState();
+                if (component.isValid() && state === "SUCCESS") {
+                    let result = data.getReturnValue();
+                    console.log('result' + JSON.stringify(result));
 
-        if (result != null) {
-           component.set("v.blockedContact",result);
-           if(result==true){
-             
-            component.set("v.showBlockedContact", true);
-            let toastEvent = $A.get("e.force:showToast");
-            toastEvent.setParams({
-                "type": "error",
-                "mode": "sticky",
-                "message": $A.get("$Label.c.PRM_BlockedContError_IPA").toString()
+                    if (result != null) {
+                        component.set("v.blockedContact", result);
+                        if (result == true) {
+
+                            component.set("v.showBlockedContact", true);
+                            let toastEvent = $A.get("e.force:showToast");
+                            toastEvent.setParams({
+                                "type": "error",
+                                "mode": "sticky",
+                                "message": $A.get("$Label.c.PRM_BlockedContError_IPA").toString()
+                            });
+                            toastEvent.fire();
+                            component.find("nextBtn").set("v.disabled", true);
+                        }
+                    }
+                }
             });
-            toastEvent.fire();
-            component.find("nextBtn").set("v.disabled", true);
-           }
+            $A.enqueueAction(action4);
         }
-    }
-});
-$A.enqueueAction(action4);
-}
-        
 
-       
+
+
         else {
             component.find("nextBtn").set("v.disabled", true);
             helper.disableAccountInfo(component, event, helper);
         }
-        
+
     },
 
-   
-    prefhandleSuppressEmail: function (component, event, helper) {        
-        let suppressEmailValue = component.find('checkbox1').get('v.checked');        
-        if(suppressEmailValue){
+
+    prefhandleSuppressEmail: function (component, event, helper) {
+        let suppressEmailValue = component.find('checkbox1').get('v.checked');
+        if (suppressEmailValue) {
             component.set("v.suppressEmail", true);
-        }else{
+        } else {
             component.set("v.suppressEmail", false);
-        }     
-        console.log('Value -->'+suppressEmailValue);
+        }
+        console.log('Value -->' + suppressEmailValue);
     },
-    
-    
-    
+
+
+
 })

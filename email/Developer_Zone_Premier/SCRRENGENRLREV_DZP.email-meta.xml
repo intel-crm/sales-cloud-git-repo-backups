@@ -10,26 +10,21 @@
 
 {!PRM_Registration_Request__c.PRM_First_Name__c},
 
-Thank you for registering for access to Developer Zone Premier.
+Thank you for registering for access to RDC Privilege.
 Before we can process it, we need to make sure this email address is yours.
 This link will expire in 24 hours and will require you to trigger another email verification using your Login ID and password.
 
 
-Verify Your Email &amp; Set Your Password
-
-To complete the next step and set your password, please use username listed below
-
-Username: {!PRM_Registration_Request__c.PRM_Contact_Login_ID__c}
-Email Address: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+Verify now
 
 Can&apos;t access the link above?
-https://signin.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://www.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/forms/developer/dzp-account-search.html
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://wcm-qa.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner/forms/ipa-account-search.html
 
 
 Thank you,
-Your Developer Zone Premier team
+Your RDC Priv team
 
-This message was sent to you as an important business communication related to your current relationship with Developer Zone Premier.
+This message was sent to you as an important business communication related to your current relationship with Intel® Quote Request.
 © 2020 Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>

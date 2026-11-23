@@ -43,13 +43,6 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PRM_IPAMembership_Attributes__c.PRM_Points_Not_Eligible_Ind__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>

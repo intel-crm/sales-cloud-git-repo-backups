@@ -2,30 +2,28 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "fd8e96a3-a662-48ee-9c06-50a87274e915",
+  "id" : "dbe18405-be89-4302-8352-3443844878bd",
   "label" : "Opportunity List",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : {
-        "menuItems" : "[]"
-      },
+      "componentAttributes" : { },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "23e7105a-4a9b-4ec9-a2ed-cee2322e8a5a",
+      "id" : "4266fb45-21b9-4434-b2c1-26adfb304d83",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "d5146139-b279-4c5e-9d6f-36a534ee2d84",
+    "id" : "16b8214a-c45d-46bd-b3de-9739ee6039bd",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
         "enableInlineEdit" : true,
-        "filterName" : "{!filterId}",
+        "filterName" : "All_Opportunities_External",
         "layout" : "FULL",
         "pageSize" : 25,
-        "scope" : "{!objectName}",
+        "scope" : "Opportunity",
         "showActionBar" : true,
         "showChartsPanel" : true,
         "showDisplay" : "showall",
@@ -37,20 +35,20 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "adcb28d7-c095-43d1-8ef0-4c37b3e5bec5",
+      "id" : "3bd3f45e-e93d-424c-ae76-104e5f67580d",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "981d75b1-5ce8-4eca-a34b-97fb05693554",
+    "id" : "7436b86b-b189-428d-9156-b0ab4799f7a2",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "33e60848-2eb4-41cd-a379-d6d06f62d6c4",
+    "id" : "b449a651-7a32-463d-a256-c060311f161f",
     "regionName" : "footer",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "YKT7Zn6tAHjSVdyTIMFhpZIEtQkAJG",
   "type" : "view",
   "viewType" : "list-006"
 }

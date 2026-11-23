@@ -19,12 +19,14 @@ public without sharing class Core_IPS_Opportunity_PAR_Handler {
             Map<Id,String> approverMap = new Map<Id,String>();
             
             for(Core_IPS_Opportunity_PAR__c oppParApproval :oppParApprovalList){
+                if(oppParApproval.ProcessSteps.size()>0){
                 ProcessInstanceHistory  processStep = oppParApproval.ProcessSteps[0];
                 if(processStep!=null && oppParIdMap.get(oppParApproval.Id).Core_IPS_Approval_Status__c == 'Approved'){
                     queueIds.add(processStep.OriginalActorId);
                     oppParIdMap.get(oppParApproval.Id).Approved_By__c = processStep.ActorId;
                     
                 }    
+                }
             }
             
             
@@ -34,11 +36,14 @@ public without sharing class Core_IPS_Opportunity_PAR_Handler {
     @future
     public static void deleteGroup(List<Id> queueIds){
         List<Group> groupList = new List<Group>();
-        for(Id queueId: queueIds){
+        if(!Test.isRunningTest()){
+        	groupList = [Select Id from Group where Id in :queueIds];           
+        }
+       /* for(Id queueId: queueIds){
             if(!Test.isRunningTest()){
                 groupList.add(new Group(Id=queueId));
             }
-        }
+        }*/
         if(groupList.size()>0){
             
             if(Group.SObjectType.getDescribe().isDeletable()){ 

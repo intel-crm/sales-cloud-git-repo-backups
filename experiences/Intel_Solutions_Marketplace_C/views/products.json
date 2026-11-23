@@ -177,37 +177,6 @@
     "regionName" : "blade3",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "allMarketPlaceHelpLabel" : "All Marketplace help",
-        "headingLabel" : "FAQs"
-      },
-      "componentName" : "c:MarketPlaceFAQ",
-      "id" : "bb009f8b-eb90-4c38-93e8-c6c9ef759ddf",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "ja" : "181badda-f7eb-4149-9c55-a30d5e8575d8",
-        "zh_cn" : "dba775fb-347b-4710-aa1b-f2ab60b89041"
-      },
-      "renditions" : [ {
-        "id" : "181badda-f7eb-4149-9c55-a30d5e8575d8",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "headingLabel" : "FAQ"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "dba775fb-347b-4710-aa1b-f2ab60b89041",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "headingLabel" : "常见问题解答"
-          }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    } ],
     "id" : "8d46ec3a-37f2-4738-a82c-2da057e15c28",
     "regionName" : "blade4",
     "type" : "region"

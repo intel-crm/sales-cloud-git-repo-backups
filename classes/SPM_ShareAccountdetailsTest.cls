@@ -153,22 +153,23 @@ public class SPM_ShareAccountdetailsTest {
         
         insert createCustomer;
         List<SPM_Customer_Category__c> categoryCreate = new List<SPM_Customer_Category__c>();
-        SPM_Customer_Category__c createCategory = new SPM_Customer_Category__c(Customer_Detail__c =createCustomer.id,Coverage__c = 'Partner Led',Category__c = 'Distributors',  Core_Recommendation__c='Consider for Intel led');
+        SPM_Customer_Category__c createCategory = new SPM_Customer_Category__c(Customer_Detail__c =createCustomer.id,Coverage__c = 'Indirect Covered',Category__c = 'Distributors (IA)',  Core_Recommendation__c='Consider for Intel led');
         categoryCreate.add(createCategory);
-        SPM_Customer_Category__c createCategory1 = new SPM_Customer_Category__c(Customer_Detail__c =createCustomer.id,Coverage__c = 'Intel Led',Category__c = 'B2B End-user');
+        SPM_Customer_Category__c createCategory1 = new SPM_Customer_Category__c(Customer_Detail__c =createCustomer.id,Coverage__c = 'Intel Covered',Category__c = 'Reseller - Branded Disti');
         categoryCreate.add(createCategory1);
         
         insert categoryCreate;
         
-        String userWWID = [select Core_WWID__c from user where Id =: UserInfo.getUserId()].Core_WWID__c;
+        Id userWWID = [select Core_WWID__c from user where Id =: UserInfo.getUserId()].Core_WWID__c;
+        
         List<SPM_Account_Detail__c> accountDetailsList = new List<SPM_Account_Detail__c>();
-        SPM_Account_Detail__c account = new SPM_Account_Detail__c(Account_Owner_WWID__c = userWWID, SF_Account__c= a.id, Region__c = 'PCR', Category__c = 'Distributors' , SPM_Customer_ID__c =createCustomer.id ); 
+        SPM_Account_Detail__c account = new SPM_Account_Detail__c(Account_Owner_WWID__c = userWWID, SF_Account__c= a.id, Region__c = 'PCR', Category__c = 'Reseller - Branded Disti' , SPM_Customer_ID__c =createCustomer.id ); 
         accountDetailsList.add(account);
-        SPM_Account_Detail__c account1 = new SPM_Account_Detail__c(Account_Owner_WWID__c = userWWID, SF_Account__c= a.id, Region__c = 'PCR', Category__c = 'Distributors' , SPM_Customer_ID__c =createCustomer.id ); 
+        SPM_Account_Detail__c account1 = new SPM_Account_Detail__c(Account_Owner_WWID__c = userWWID, SF_Account__c= a.id, Region__c = 'PCR', Category__c = 'Reseller - Branded Disti' , SPM_Customer_ID__c =createCustomer.id ); 
         accountDetailsList.add(account1);
         insert accountDetailsList; 
         
-        SPM_Account_Detail__c account2 = new SPM_Account_Detail__c(Account_Owner_WWID__c = '33333', SF_Account__c= a.id, Region__c = 'PCR', Category__c = 'B2B End-user' , SPM_Customer_ID__c =createCustomer.id ); 
+        SPM_Account_Detail__c account2 = new SPM_Account_Detail__c(Account_Owner_WWID__c = '33333', SF_Account__c= a.id, Region__c = 'PCR', Category__c = 'Distributors (IA)' , SPM_Customer_ID__c =createCustomer.id ); 
         insert account2;
         
         Core_Trigger_Executions__c triggerExecRecord =new Core_Trigger_Executions__c(Core_Active__c=true,Core_Class_Name__c='SPM_AccountDetailsTriggerHandler',Core_Description__c='testing',Core_Object__c='SPM_New_Accounts__c',Core_Trigger_Events__c='After update',Name='shareNewAccountDetails');
@@ -177,23 +178,22 @@ public class SPM_ShareAccountdetailsTest {
     }
     
     @isTest  
-    static void testflowSharing() { 
+    static void testflowSharing() {  
         SPM_ShareAccountdetails.FlowInputs input = new SPM_ShareAccountdetails.FlowInputs();
         list<SPM_ShareAccountdetails.FlowInputs> inputList = new list<SPM_ShareAccountdetails.FlowInputs>();
         list<Id> acctownerWWIDlst = new list<Id>();
         list<Id> acctDetIdlst = new list<Id>();
         
         test.starttest();
-        List<SPM_Account_Detail__c> accountDetailsList = [select id, Account_Owner_WWID__c from SPM_Account_Detail__c where Category__c = 'Distributors' limit 2];
+        List<SPM_Account_Detail__c> accountDetailsList = [select id, Account_Owner_WWID__c from SPM_Account_Detail__c where Category__c = 'Reseller - Branded Disti' limit 2];
         for(SPM_Account_Detail__c acd : accountDetailsList) {
-            acctownerWWIDlst.add(acd.Id);
+            acctownerWWIDlst.add(acd.Account_Owner_WWID__c);
             acctDetIdlst.add(acd.Id);
         }
         input.AccountOwnerWWIDList = acctownerWWIDlst;
         input.AccountDetailIdList = acctDetIdlst;
         inputList.add(input);
         SPM_ShareAccountdetails.executeCRMAccountBatch(inputList);
-        SPM_ShareAccountdetails.getSecurtiyMape();
         test.stopTest();
     }
     
@@ -215,9 +215,10 @@ public class SPM_ShareAccountdetailsTest {
         test.starttest();
         SPM_New_Accounts__c NewAccount = new SPM_New_Accounts__c();
         NewAccount.Account_Name__c = 'test New Account';
-        NewAccount.Customer_category__c ='Distributors';
+        NewAccount.Customer_category__c ='Distributors (IA)';
         NewAccount.New_Account_Owner__c = tempUser.id;
         NewAccount.Reasoning__c	= 'testing';
+        NewAccount.Coverage__c = 'Indirect Covered';
         
         System.runAs(tempUser) {
             insert NewAccount;

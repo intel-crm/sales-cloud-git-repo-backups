@@ -8,7 +8,7 @@ public class Core_ContactEntVal_Test {
     @testSetup static void setup() {
         
         List<Core_Contact_Ent_Validation_Message__c> lstvalmsg = new List<Core_Contact_Ent_Validation_Message__c>();
-       // Core_Contact_Ent_Validation_Message__c entvalmsg1 = new Core_Contact_Ent_Validation_Message__c(Name='UI CNDA',Core_Error_Message__c='The account must have a valid CNDA to be able to grant access. Please verify if the account has a valid CNDA (<a href="https://intel.tap.thinksmart.com/prod/Portal/WorkflowDashboard/?cid=c924622d_fcae_4333_9c95_46104114907d" target="_blank">',Core_Error_Message2__c= 'NDA Viewer</a>) - and add it to account record',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=true);
+        // Core_Contact_Ent_Validation_Message__c entvalmsg1 = new Core_Contact_Ent_Validation_Message__c(Name='UI CNDA',Core_Error_Message__c='The account must have a valid CNDA to be able to grant access. Please verify if the account has a valid CNDA (<a href="https://intel.tap.thinksmart.com/prod/Portal/WorkflowDashboard/?cid=c924622d_fcae_4333_9c95_46104114907d" target="_blank">',Core_Error_Message2__c= 'NDA Viewer</a>) - and add it to account record',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=true);
         Core_Contact_Ent_Validation_Message__c entvalmsg2 = new Core_Contact_Ent_Validation_Message__c(Name='UI Unique Entitlement',Core_Error_Message__c='You cannot select IPS and Partner Portal together. Only one can be selected',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=true);
         Core_Contact_Ent_Validation_Message__c entvalmsg3 = new Core_Contact_Ent_Validation_Message__c(Name='System PersonalEmailIndicator',Core_Error_Message__c='NO Personal Emails',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=true);
         Core_Contact_Ent_Validation_Message__c entvalmsg4 = new Core_Contact_Ent_Validation_Message__c(Name='System English on Contact',Core_Error_Message__c='English Only on Contact can\'t be blank (Populate from Standard and Alternate if avalible and meet req)',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
@@ -21,9 +21,9 @@ public class Core_ContactEntVal_Test {
         lstvalmsg.add(entvalmsg4);
         //lstvalmsg.add(entvalmsg5);
         //lstvalmsg.add(entvalmsg6);
-		lstvalmsg.add(entvalmsg7);
+        lstvalmsg.add(entvalmsg7);
         
-      
+        
         insert lstvalmsg;
         
         String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
@@ -160,7 +160,7 @@ public class Core_ContactEntVal_Test {
             system.runas(itAdminUser){
                 update accVal;
                 
-                        
+                
             }
             
             List<Account> lstValue =[select id,Name,Core_Sales_Group__c,Core_IsODM__c,Core_English_Only_Name__c,Core_Account_Type__c from Account where id =:acc[0].id];
@@ -246,7 +246,7 @@ public class Core_ContactEntVal_Test {
             Core_Contact_Entitlement__c ce5 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact1.Id,Core_Entitlement_Id__c= lstEnt[4].id, Core_Selected__c=true);
             Core_Contact_Entitlement__c ce6 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact1.Id,Core_Entitlement_Id__c= lstEnt[5].id, Core_Selected__c=true);
             //Core_Contact_Entitlement__c ce7 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact1.Id,Core_Entitlement_Id__c= lstEnt[5].id, Core_Selected__c=true);
-         
+            
             newlstentitle.add(ce1);                                                                         
             newlstentitle.add(ce2);
             newlstentitle.add(ce3);
@@ -302,10 +302,10 @@ public class Core_ContactEntVal_Test {
             Core_Contact_Ent_Validation_Message__c entvalmsg2 = new Core_Contact_Ent_Validation_Message__c(Name='UI CNDA',Core_Error_Message__c='The account must have a valid CNDA to be able to grant access. Please verify if the account has a valid CNDA (<a href="https://intel.tap.thinksmart.com/prod/Portal/WorkflowDashboard/?cid=c924622d_fcae_4333_9c95_46104114907d" target="_blank">',Core_Error_Message2__c= 'NDA Viewer</a>) - and add it to account record',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=true);
             Core_Contact_Ent_Validation_Message__c entvalmsg3 = new Core_Contact_Ent_Validation_Message__c(Name='UI Unique Entitlement',Core_Error_Message__c='You cannot select IPS and Partner Portal together. Only one can be selected',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=true);
             Core_Contact_Ent_Validation_Message__c entvalmsg8 = new Core_Contact_Ent_Validation_Message__c(Name='System ODM',Core_Error_Message__c='Can\'t be selected if ODM is TRUE on Account Record',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
-        	Core_Contact_Ent_Validation_Message__c entvalmsg5 = new Core_Contact_Ent_Validation_Message__c(Name='System Account Owner Role',Core_Error_Message__c='Account Owner Role Can\'t be blank',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
-        	Core_Contact_Ent_Validation_Message__c entvalmsg6 = new Core_Contact_Ent_Validation_Message__c(Name='System ISO',Core_Error_Message__c='IPS Contacts must have an identified Intel Support Owner for accounts with a CNDA',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
- 			Core_Contact_Ent_Validation_Message__c entvalmsg7 = new Core_Contact_Ent_Validation_Message__c(Name='System Unique Entitlement',Core_Error_Message__c='You cannot select IPS and Partner Portal together.   Only one can be selected.',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
- 
+            Core_Contact_Ent_Validation_Message__c entvalmsg5 = new Core_Contact_Ent_Validation_Message__c(Name='System Account Owner Role',Core_Error_Message__c='Account Owner Role Can\'t be blank',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
+            Core_Contact_Ent_Validation_Message__c entvalmsg6 = new Core_Contact_Ent_Validation_Message__c(Name='System ISO',Core_Error_Message__c='IPS Contacts must have an identified Intel Support Owner for accounts with a CNDA',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
+            Core_Contact_Ent_Validation_Message__c entvalmsg7 = new Core_Contact_Ent_Validation_Message__c(Name='System Unique Entitlement',Core_Error_Message__c='You cannot select IPS and Partner Portal together.   Only one can be selected.',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
+            
             lstvalmsg.add(entvalmsg);
             lstvalmsg.add(entvalmsg1);
             lstvalmsg.add(entvalmsg2);
@@ -422,7 +422,7 @@ cev1.Core_Account_Owner_Role__c=true;
 cev1.Core_CIM_ID__c=true;
 cev1.Core_CNDA__c=false;
 cev1.Core_Contact_English_Only_Name__c=true;
-cev1.Core_Entitlement_Id__c='{!Environment.Sales Enablement Portal}';
+cev1.Core_Entitlement_Id__c='a2W1J0000019iVFUAY';
 cev1.Core_Entitlement_Name__c='Sales Enablement Portal';
 cev1.Core_ODM_Checked__c=false;
 cev1.Core_ODM_Unchecked__c=false;
@@ -435,11 +435,11 @@ Database.insert(contEntValidation);*/
         //Removed hardcoded Salesforce Id's as a part of Sela Code Scan Fixes(TWC1811-6067)
         List<Core_Contact_Entitlement_Validation_Req__c> contEntValidationReq = new List<Core_Contact_Entitlement_Validation_Req__c>();
         
-		Core_Entitlement__c entDetail = new Core_Entitlement__c();
-		entDetail.Name='Sales Enablement Portal';
-		entDetail.Core_Display_Name__c='Sales Enablement Portal';
-		entDetail.Core_IsActive__c=true;
-		insert entDetail;
+        Core_Entitlement__c entDetail = new Core_Entitlement__c();
+        entDetail.Name='Sales Enablement Portal';
+        entDetail.Core_Display_Name__c='Sales Enablement Portal';
+        entDetail.Core_IsActive__c=true;
+        insert entDetail;
         Core_Contact_Entitlement_Validation_Req__c cevr1 = new Core_Contact_Entitlement_Validation_Req__c();
         cevr1.Name='2';
         cevr1.Core_Entitlement_id__c=entDetail.id;
@@ -513,8 +513,8 @@ Database.insert(contEntValidation);*/
         Core_Contact_Ent_Validation_Message__c entvalmsg8 = new Core_Contact_Ent_Validation_Message__c(Name='System ODM',Core_Error_Message__c='Can\'t be selected if ODM is TRUE on Account Record',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
         Core_Contact_Ent_Validation_Message__c entvalmsg5 = new Core_Contact_Ent_Validation_Message__c(Name='System Account Owner Role',Core_Error_Message__c='Account Owner Role Can\'t be blank',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
         Core_Contact_Ent_Validation_Message__c entvalmsg6 = new Core_Contact_Ent_Validation_Message__c(Name='System ISO',Core_Error_Message__c='IPS Contacts must have an identified Intel Support Owner for accounts with a CNDA',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
- 		Core_Contact_Ent_Validation_Message__c entvalmsg7 = new Core_Contact_Ent_Validation_Message__c(Name='System Unique Entitlement',Core_Error_Message__c='You cannot select IPS and Partner Portal together.   Only one can be selected.',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
- 
+        Core_Contact_Ent_Validation_Message__c entvalmsg7 = new Core_Contact_Ent_Validation_Message__c(Name='System Unique Entitlement',Core_Error_Message__c='You cannot select IPS and Partner Portal together.   Only one can be selected.',Core_System_Validation_Name__c=false,Core_UI_Validation_Name__c=false);
+        
         entvalmsg4.Name='System PSG Basic';
         entvalmsg4.Core_Error_Message__c='No PSG basic Engagement for that contact';
         entvalmsg4.Core_Error_Message2__c='';
@@ -546,7 +546,7 @@ Database.insert(contEntValidation);*/
         Core_Contact_Entitlement__c ce6 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact1.Id,Core_Entitlement_Id__c= lstEnt[5].id, Core_Selected__c=true);
         Core_Contact_Entitlement__c ce7 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact2.Id,Core_Entitlement_Id__c= lstEnt[6].id, Core_Selected__c=true);
         Core_Contact_Entitlement__c ce8 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact2.Id,Core_Entitlement_Id__c= lstEnt[5].id, Core_Selected__c=true);
-    
+        
         newlstentitle.add(ce1);                                                                         
         //newlstentitle.add(ce2);
         newlstentitle.add(ce3);
@@ -738,7 +738,7 @@ Database.insert(contEntValidation);*/
             insert executions;
             system.assertNOTEquals(null,executions.id,'Custom setting not created');
             String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-           
+            
             Account testAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts',Core_CNDA_Number__c = '',RecordTypeId=intelAccRecTypeId,
                                               Core_Account_Type__c='Other', Industry='Others',Core_IsODM__c =false,Core_English_Only_Name__c ='',
                                               BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test',
@@ -822,27 +822,27 @@ Database.insert(contEntValidation);*/
             
             
             /*List<Account> acc = new List<Account>();
-            Account testAccount = new Account(Name='阿昌', Core_Sales_Group__c='Global Accounts',Core_IsODM__c = true,
-                                              Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',Core_English_Only_Name__c = '',
-                                              BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test123',
-                                              BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123124');
-            
-            insert.testAccount; 
-            Account testAccount1 = new Account(Name='阿', Core_Sales_Group__c='Global Accounts',Core_IsODM__c = False,
-                                              Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',Core_English_Only_Name__c = '',
-                                              BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test123',
-                                              BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123126');
-            
-            insert.testAccount1; 
-             
-            insert acc; */
+Account testAccount = new Account(Name='阿昌', Core_Sales_Group__c='Global Accounts',Core_IsODM__c = true,
+Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',Core_English_Only_Name__c = '',
+BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test123',
+BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123124');
+
+insert.testAccount; 
+Account testAccount1 = new Account(Name='阿', Core_Sales_Group__c='Global Accounts',Core_IsODM__c = False,
+Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',Core_English_Only_Name__c = '',
+BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test123',
+BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123126');
+
+insert.testAccount1; 
+
+insert acc; */
             
             /*Account accVal = new Account();
-            accVal=[select name from account where id in:acc];
-            accVal.name = '阿昌';
-            accVal.Core_Alternate_Language_Name__c='test';
-            update accVal;
-            System.assert(true,accVal.name != null);*/
+accVal=[select name from account where id in:acc];
+accVal.name = '阿昌';
+accVal.Core_Alternate_Language_Name__c='test';
+update accVal;
+System.assert(true,accVal.name != null);*/
             
             
             
@@ -861,9 +861,9 @@ Database.insert(contEntValidation);*/
             
             acc.add(testAccount);
             Account testAccount1 = new Account(Name='阿', Core_Sales_Group__c='Global Accounts',Core_IsODM__c = False, RecordTypeId=intelAccRecTypeId,
-                                              Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',Core_English_Only_Name__c = '',
-                                              BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test123',
-                                              BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123126');
+                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',Core_English_Only_Name__c = '',
+                                               BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test123',
+                                               BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123126');
             
             acc.add(testAccount1); 
             
@@ -873,18 +873,18 @@ Database.insert(contEntValidation);*/
             
             lsttestContact.add(testContact);
             Contact testContactA = new Contact(FirstName='阿昌', LastName='阿昌', Email='test1238@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
-                                              AccountId=testAccount1.Id,Core_Set_ERPM_Status_Bypass__c=true,Core_Local_First_Name__c='david',Core_Local_Last_Name__c='geetha',Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false);
+                                               AccountId=testAccount1.Id,Core_Set_ERPM_Status_Bypass__c=true,Core_Local_First_Name__c='david',Core_Local_Last_Name__c='geetha',Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false);
             
             lsttestContact.add(testContactA);
             insert lsttestContact;
             
             /*Contact testConUpdate = new Contact();
-            testConUpdate = [select id,firstname,lastname from contact where id=:testContact.id];
-            testConUpdate.firstname = '阿昌';
-            testConUpdate.lastname = '阿昌';
-            testConUpdate.Core_Local_First_Name__c='david';
-            testConUpdate.Core_Local_Last_Name__c='geetha';
-            update testConUpdate;*/
+testConUpdate = [select id,firstname,lastname from contact where id=:testContact.id];
+testConUpdate.firstname = '阿昌';
+testConUpdate.lastname = '阿昌';
+testConUpdate.Core_Local_First_Name__c='david';
+testConUpdate.Core_Local_Last_Name__c='geetha';
+update testConUpdate;*/
             
             
             Core_Entitlement_Profile_Access__c profileaccess = new Core_Entitlement_Profile_Access__c(Core_Entitlements_Allowed__c='Advanced Shipment and Invoice Notification ',Core_Profile_Id__c=itAdminPrf.id);
@@ -1004,7 +1004,7 @@ Database.insert(contEntValidation);*/
         system.assertequals(itAdminUser.LastName,'UnitTestAdmin1','Last name not matching as UnitTestAdmin1');
         
         //Removed hardcoded Salesforce Id's as a part of Sela Code Scan Fixes(TWC1811-6067)    
-		List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
+        List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
         User usr = new User();
         //usr=[select name,UserRoleId from User where id =:'0052D0000018FzFQAU'];
         usr.Username ='abche.test@example.com';
@@ -1022,7 +1022,7 @@ Database.insert(contEntValidation);*/
         
         List<Account> testAccountList = new List<Account>();
         String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-           
+        
         testAccountList.add(new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,RecordTypeId=intelAccRecTypeId,
                                         Core_Account_Type__c='Other', Industry='Others', BillingStreet='1234 tester St',
                                         BillingCity='testCity', BillingState='OR', BillingCountry='USA', BillingPostalCode='12345'/*, 
@@ -2059,7 +2059,7 @@ Core_ContactEntitlementValidation.validateUniqueEntitlement(entitle2.id,testCont
     
     
     
-        public @IsTest
+    public @IsTest
         static void validateAccountBenefitTest(){
             List<Id> entlIdList = new List<Id>();
             Test.startTest();
@@ -2077,11 +2077,16 @@ Core_ContactEntitlementValidation.validateUniqueEntitlement(entitle2.id,testCont
     
     
     public static testmethod void testValidateConflictPolicy() {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+        String intelAccRecTypeId = Schema.getGlobalDescribe()
+            .get('Account')
+            .getDescribe()
+            .getRecordTypeInfosByDeveloperName()
+            .get('Mastered_Account')
+            .getRecordTypeId();
         Account testAccConflictPolicy = new Account(Name='test1AccConflictPolicy', Core_Sales_Group__c='Global Accounts',
-                                                     Core_Account_Type__c='Other', Industry='Others',RecordTypeId=intelAccRecTypeId,
-                                                     BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
-                                                     BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '');
+                                                    Core_Account_Type__c='Other', Industry='Others',RecordTypeId = intelAccRecTypeId,
+                                                    BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
+                                                    BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '');
         insert testAccConflictPolicy;
         
         Contact testConConflictPolicy= new Contact(FirstName='testConConflictPolicy', LastName='testLastName', Email='testconconflictpolicy@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
@@ -2137,4 +2142,83 @@ Core_ContactEntitlementValidation.validateUniqueEntitlement(entitle2.id,testCont
         Core_ContactEntitlementValidation.validateConflictPolicy(entitlement1.Id, testConConflictPolicy, 'Quote Request Customer Full Access');
         Test.stopTest();
     }  
+    @isTest
+    static void testValidateEnglishOnlyFields_UsingSimplifiedAccountName() {
+        
+        String intelAccRecTypeId =
+            Schema.getGlobalDescribe().get('Account')
+            .getDescribe()
+            .getRecordTypeInfosByDeveloperName()
+            .get('Mastered_Account')
+            .getRecordTypeId();
+        
+        Account acc = new Account(
+            Name = '阿昌',
+            Core_Alternate_Language_Name__c = '测试',
+            Core_Data_Simplified_Account_Nm__c = 'SimplifiedAccount123',
+            Core_English_Only_Name__c = null,
+            Core_Sales_Group__c = 'Global Accounts',
+            Core_Account_Type__c = 'Other',
+            Industry = 'Others',
+            RecordTypeId = intelAccRecTypeId,
+            BillingStreet = '123 Main St',
+            BillingCity = 'Test City',
+            BillingState = 'OR',
+            BillingCountry = 'USA',
+            BillingPostalCode = '12345'
+        );
+        insert acc;
+        
+        Contact con = new Contact(
+            FirstName = 'John',
+            LastName = 'Doe',
+            AccountId = acc.Id,
+            Email = 'john.doe@test.com',
+            Core_Set_ERPM_Status_Bypass__c = true,
+            MailingCountry = 'India'
+        );
+        insert con;
+        
+        Contact contactRecord = [
+            SELECT Id,
+            FirstName,
+            LastName,
+            AccountId,
+            Core_English_Only_First_Name__c,
+            Core_English_Only_Last_Name__c,
+            Core_Local_First_Name__c,
+            Core_Local_Last_Name__c,
+            Account.Name,
+            Account.Core_English_Only_Name__c,
+            Account.Core_Alternate_Language_Name__c,
+            Account.Core_Data_Simplified_Account_Nm__c
+            FROM Contact
+            WHERE Id = :con.Id
+        ];
+        
+        Map<Id, Contact> contactMap = new Map<Id, Contact>();
+        Map<Id, Account> accountMap = new Map<Id, Account>();
+        
+        Test.startTest();
+        
+        Boolean result =
+            Core_ContactEntitlementValidation.validateEnglishOnlyFields(
+                contactRecord,
+                contactMap,
+                accountMap
+            );
+        
+        Test.stopTest();
+        
+        System.assertEquals(true, result);
+        System.assert(accountMap.containsKey(acc.Id));
+        
+        Account updatedAcc = accountMap.get(acc.Id);
+        
+        System.assertEquals(
+            'SimplifiedAccount123',
+            updatedAcc.Core_English_Only_Name__c,
+            'Expected Simplified Account Name to populate English Only Name'
+        );
+    }
 }

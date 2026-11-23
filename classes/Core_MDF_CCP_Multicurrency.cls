@@ -284,12 +284,12 @@ public without sharing class Core_MDF_CCP_Multicurrency {
     }
     
     public class getExchangeRateAndAmount{
-     @AuraEnabled   public decimal inputAmount{get;set;}
-     @AuraEnabled   public string inputCurrency{get;set;}
-     @AuraEnabled   public string outputCurrency{get;set;}
-     @AuraEnabled   public date inputDate{get;set;}
-     @AuraEnabled   public decimal conversionRate {get;set;}
-     @AuraEnabled   public decimal convertedAmount{get;set;}
+        @AuraEnabled public decimal inputAmount{get;set;}
+       @AuraEnabled public string inputCurrency{get;set;}
+       @AuraEnabled public string outputCurrency{get;set;}
+       @AuraEnabled public date inputDate{get;set;}
+       @AuraEnabled public decimal conversionRate {get;set;}
+       @AuraEnabled public decimal convertedAmount{get;set;}
     }
     
     public class errorHandling{

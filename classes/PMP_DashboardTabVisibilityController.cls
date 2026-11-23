@@ -20,12 +20,10 @@ public with sharing class PMP_DashboardTabVisibilityController {
                              AND ((PermissionSet.Name =:PMP_StaticConstants_Partner.INTEL_ADMIN OR PermissionSet.Name =:PMP_StaticConstants_Partner.INTEL_EMPLOYEE) OR (Assignee.Profile.Name IN ('System Administrator','IT Admin')))];*/   
         permissionSetList = [SELECT Id,Assignee.Profile.Name  FROM PermissionSetAssignment WHERE Assignee.Id =: UserInfo.getUserId()
                              AND ((PermissionSet.Name =:PMP_StaticConstants_Partner.INTEL_ADMIN OR PermissionSet.Name =:PMP_StaticConstants_Partner.INTEL_EMPLOYEE) OR (Assignee.Profile.Name IN ('System Administrator','IT Admin')))];
-        //System.debug('the name'+PermissionSet.Name);
         if(permissionSetList.size()>0){
             
             result =true;
         }
-        // System.debug('the result'+result);
         return result;
     }
     // Method to fetch benefit to show/hide Offerings and OfferingKeyMetrics tabs in dashboard Added By Manjula[US528775]   
@@ -40,7 +38,6 @@ public with sharing class PMP_DashboardTabVisibilityController {
             //{
                 accountBenefit =[SELECT PRM_Account_Id__c, PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c FROM PRM_AccountBenefitAssociation__c 
                                  where PRM_Account_Id__c=:accountId AND (PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c =:PMP_StaticConstants_Partner.BENEFIT_BASIC_PROFILE AND PRM_Status_Nm__c = 'Active')]; 
-                // System.debug('accountBenefit'+accountBenefit);
                 if(accountBenefit.size()>0)
                 {
                     result =true;
@@ -67,8 +64,7 @@ public with sharing class PMP_DashboardTabVisibilityController {
             List<PMP_Dashboard_Tab__mdt> dashTab=[Select Id,PMP_Is_Active_Ind__c,PMP_Permission_Set_Name_Txt__c from PMP_Dashboard_Tab__mdt where PMP_Is_Active_Ind__c=True];
             permissionSetList = [SELECT Id,PermissionSet.Name  FROM PermissionSetAssignment WHERE Assignee.Id =: UserInfo.getUserId()
                                  AND (PermissionSet.Name =:PMP_StaticConstants_Partner.EMPLOYEE )];
-            //System.debug('permissionSetList'+permissionSetList);
-            // System.debug('dashTab'+dashTab);
+         
             if(permissionSetList.size()>0){
                 for(PermissionSetAssignment perms : permissionSetList ){
                     

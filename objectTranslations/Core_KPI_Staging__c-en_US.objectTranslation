@@ -41,6 +41,18 @@
         <name>Core_KPI_Achieved__c</name>
     </fields>
     <fields>
+        <label><!-- KPI Current Status --></label>
+        <name>Core_KPI_Current_Status__c</name>
+        <picklistValues>
+            <masterLabel>Is KPI Failed</masterLabel>
+            <translation><!-- Is KPI Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Is KPI Refresh</masterLabel>
+            <translation><!-- Is KPI Refresh --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- KPI Name --></label>
         <name>Core_KPI_Name__c</name>
     </fields>
@@ -55,6 +67,23 @@
     <fields>
         <label><!-- KPI ID --></label>
         <name>Core_KPI_Record_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field is used in logic to check the status of KPI Refresh on Opportunity --></help>
+        <label><!-- KPI Refresh Status --></label>
+        <name>Core_KPI_Refresh_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Refreshing</masterLabel>
+            <translation><!-- Refreshing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- KPI Total Price --></label>

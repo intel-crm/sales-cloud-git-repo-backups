@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>Core_PSG_Quoting_Licensing</application>
+        <visible>true</visible>
+    </applicationVisibilities>
     <description>Permission Set for Business Admin for Modify All permission to BM Assignment Configs, BM Levels, BM Approval (Thresholds) objects</description>
     <hasActivationRequired>false</hasActivationRequired>
     <label>PSG Business Admin</label>

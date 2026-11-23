@@ -82,19 +82,11 @@
         <name>Core_IPS_PreventUserLookupChange</name>
     </validationRules>
     <webLinks>
-        <label><!-- Add_Members_For_External_Customers --></label>
-        <name>Add_Members_For_External_Customers</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Core_IPS_Add_Members --></label>
         <name>Core_IPS_Add_Members</name>
     </webLinks>
     <webLinks>
         <label><!-- New --></label>
         <name>New</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Remove_Members --></label>
-        <name>Remove_Members</name>
     </webLinks>
 </CustomObjectTranslation>

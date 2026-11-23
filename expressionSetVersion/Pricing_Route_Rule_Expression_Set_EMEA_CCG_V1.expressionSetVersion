@@ -5,7 +5,7 @@
     <label>Pricing Route Rule Expression Set EMEA CCG V1</label>
     <processType>Bre</processType>
     <shouldShowExplExternally>false</shouldShowExplExternally>
-    <startDate>2026-06-16T07:30:09.000Z</startDate>
+    <startDate>2026-05-22T07:16:03.000Z</startDate>
     <status>Active</status>
     <steps>
         <advancedCondition>
@@ -20,7 +20,7 @@
             <criteria>
                 <operator>Equals</operator>
                 <sequenceNumber>2</sequenceNumber>
-                <sourceFieldName>Pricing_Routing_RPM_Group</sourceFieldName>
+                <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
                 <value>&apos;&apos;</value>
                 <valueType>Literal</valueType>
             </criteria>
@@ -41,11 +41,11 @@
             <criteria>
                 <operator>Equals</operator>
                 <sequenceNumber>5</sequenceNumber>
-                <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
+                <sourceFieldName>Pricing_Routing_RPM_Group</sourceFieldName>
                 <value>&apos;&apos;</value>
                 <valueType>Literal</valueType>
             </criteria>
-            <resultParameter>condition_output__3</resultParameter>
+            <resultParameter>condition_output__1</resultParameter>
         </advancedCondition>
         <hasNestedExplainability>false</hasNestedExplainability>
         <label>Is Pricing Roue Rules EMEA CCG Covered/Uncovered  has No Matching Rules ?</label>
@@ -95,7 +95,7 @@
                 <value>&apos;&apos;</value>
                 <valueType>Literal</valueType>
             </criteria>
-            <resultParameter>condition_output__2</resultParameter>
+            <resultParameter>condition_output__4</resultParameter>
         </advancedCondition>
         <hasNestedExplainability>false</hasNestedExplainability>
         <label>Is Pricing Route Rules ASMO/EMEA CCG Retail has No Matching Rules ?</label>
@@ -145,7 +145,7 @@
                 <value>&apos;&apos;</value>
                 <valueType>Literal</valueType>
             </criteria>
-            <resultParameter>condition_output__1</resultParameter>
+            <resultParameter>condition_output__3</resultParameter>
         </advancedCondition>
         <hasNestedExplainability>false</hasNestedExplainability>
         <label>Is Pricing Route Rules EMEA CCG Change Request has No Matching Rules</label>
@@ -170,14 +170,14 @@
             <criteria>
                 <operator>Equals</operator>
                 <sequenceNumber>2</sequenceNumber>
-                <sourceFieldName>Pricing_Routing_RPM_Group</sourceFieldName>
+                <sourceFieldName>Pricing_RouteRule_Id</sourceFieldName>
                 <value>&apos;&apos;</value>
                 <valueType>Literal</valueType>
             </criteria>
             <criteria>
                 <operator>Equals</operator>
                 <sequenceNumber>3</sequenceNumber>
-                <sourceFieldName>Pricing_RouteRule_Id</sourceFieldName>
+                <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
                 <value>&apos;&apos;</value>
                 <valueType>Literal</valueType>
             </criteria>
@@ -191,15 +191,15 @@
             <criteria>
                 <operator>Equals</operator>
                 <sequenceNumber>5</sequenceNumber>
-                <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
+                <sourceFieldName>Pricing_Routing_RPM_Group</sourceFieldName>
                 <value>&apos;&apos;</value>
                 <valueType>Literal</valueType>
             </criteria>
-            <resultParameter>condition_output__4</resultParameter>
+            <resultParameter>condition_output__2</resultParameter>
         </advancedCondition>
         <hasNestedExplainability>false</hasNestedExplainability>
-        <label>Is Pricing Route Rules EMEA CCG Quantity GT 10000 has No Matching Rules?</label>
-        <name>IsPricingRouteRulesEMEACCGQuantityGT10000hasNoMatchingRules</name>
+        <label>Is Pricing Route Rules EMEA CCG Quantity GT 20000 has No Matching Rules?</label>
+        <name>IsPricingRouteRulesEMEACCGQuantityGT20000hasNoMatchingRules</name>
         <resultIncluded>false</resultIncluded>
         <sequenceNumber>5</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
@@ -404,9 +404,9 @@
             <type>DecisionTable</type>
         </decisionTable>
         <hasNestedExplainability>false</hasNestedExplainability>
-        <label>Pricing Route Rules EMEA CCG Quantity GT 10000</label>
-        <name>PricingRouteRulesEMEACCGQuantityGT10000</name>
-        <parentStep>IsPricingRouteRulesEMEACCGQuantityGT10000hasNoMatchingRules</parentStep>
+        <label>Pricing Route Rules EMEA CCG Quantity GT 20000</label>
+        <name>PricingRouteRulesEMEACCGQuantityGT20000</name>
+        <parentStep>IsPricingRouteRulesEMEACCGQuantityGT20000hasNoMatchingRules</parentStep>
         <resultIncluded>true</resultIncluded>
         <sequenceNumber>1</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
@@ -456,8 +456,8 @@
             <type>DecisionTable</type>
         </decisionTable>
         <hasNestedExplainability>false</hasNestedExplainability>
-        <label>Pricing Route Rules EMEA CCG Quantity GT 5000 and LTE 10000</label>
-        <name>PricingRouteRulesEMEACCGQuantityGT5000andLTE10000</name>
+        <label>Pricing Route Rules EMEA CCG Quantity GT 5000 and LTE 20000</label>
+        <name>PricingRouteRulesEMEACCGQuantityGT5000andLTE20000</name>
         <parentStep>IsPricingRoueRulesEMEACCGCoveredUncoveredhasNoMatchingRules</parentStep>
         <resultIncluded>true</resultIncluded>
         <sequenceNumber>1</sequenceNumber>
@@ -470,7 +470,7 @@
         <collection>false</collection>
         <dataType>Boolean</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_EMEA_CCG_Change_Request</lookupName>
+        <lookupName>Pricing_Route_Rules_EMEA_CCG_Covered_Uncovered</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Change_Request_Ind__c</name>
         <output>false</output>
@@ -522,7 +522,7 @@
         <dataType>Numeric</dataType>
         <decimalPlaces>2</decimalPlaces>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_EMEA_CCG_Quantity_GT_5000_and_LTE_20000</lookupName>
+        <lookupName>Pricing_Route_Rules_EMEA_CCG_Quantity_GT_20000</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Overall_Quote_Quantity_Nbr__c</name>
         <output>false</output>
@@ -542,7 +542,7 @@
         <collection>false</collection>
         <dataType>Text</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_ASMO_EMEA_CCG_Retail</lookupName>
+        <lookupName>Pricing_Route_Rules_EMEA_CCG_Change_Request</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Region_Nm__c</name>
         <output>false</output>
@@ -551,7 +551,6 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
-        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_RouteRule_Id</description>
         <input>false</input>
         <name>Pricing_RouteRule_Id</name>
@@ -561,7 +560,6 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
-        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_RouteRule_Name</description>
         <input>false</input>
         <name>Pricing_RouteRule_Name</name>
@@ -571,7 +569,6 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
-        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_Routing_Output_Criteria_Nm</description>
         <input>false</input>
         <name>Pricing_Routing_Output_Criteria_Nm</name>
@@ -581,7 +578,6 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
-        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_Routing_RPM_Email</description>
         <input>false</input>
         <name>Pricing_Routing_RPM_Email</name>
@@ -591,7 +587,6 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
-        <decimalPlaces>2</decimalPlaces>
         <description>Pricing_Routing_RPM_Group</description>
         <input>false</input>
         <name>Pricing_Routing_RPM_Group</name>
@@ -601,11 +596,22 @@
     <variables>
         <collection>false</collection>
         <dataType>Boolean</dataType>
+        <decimalPlaces>2</decimalPlaces>
+        <description>Test_CR_Ind</description>
+        <input>false</input>
+        <name>Test_CR_Ind</name>
+        <output>false</output>
+        <type>Constant</type>
+        <value>True</value>
+    </variables>
+    <variables>
+        <collection>false</collection>
+        <dataType>Boolean</dataType>
         <description>condition_output__1</description>
         <input>false</input>
         <name>condition_output__1</name>
         <output>false</output>
-        <resultStep>IsPricingRouteRulesEMEACCGChangeRequesthasNoMatchingRules</resultStep>
+        <resultStep>IsPricingRoueRulesEMEACCGCoveredUncoveredhasNoMatchingRules</resultStep>
         <type>Variable</type>
         <value>False</value>
     </variables>
@@ -616,7 +622,7 @@
         <input>false</input>
         <name>condition_output__2</name>
         <output>false</output>
-        <resultStep>IsPricingRouteRulesASMOEMEACCGRetailhasNoMatchingRules</resultStep>
+        <resultStep>IsPricingRouteRulesEMEACCGQuantityGT20000hasNoMatchingRules</resultStep>
         <type>Variable</type>
         <value>False</value>
     </variables>
@@ -627,7 +633,7 @@
         <input>false</input>
         <name>condition_output__3</name>
         <output>false</output>
-        <resultStep>IsPricingRoueRulesEMEACCGCoveredUncoveredhasNoMatchingRules</resultStep>
+        <resultStep>IsPricingRouteRulesEMEACCGChangeRequesthasNoMatchingRules</resultStep>
         <type>Variable</type>
         <value>False</value>
     </variables>
@@ -638,7 +644,7 @@
         <input>false</input>
         <name>condition_output__4</name>
         <output>false</output>
-        <resultStep>IsPricingRouteRulesEMEACCGQuantityGT10000hasNoMatchingRules</resultStep>
+        <resultStep>IsPricingRouteRulesASMOEMEACCGRetailhasNoMatchingRules</resultStep>
         <type>Variable</type>
         <value>False</value>
     </variables>

@@ -137,7 +137,7 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
         for(PMP_Company_Resource__c res: partner_resources){
             //if(res.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.IMAGE){
             if(res.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.IMAGE || res.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.THUMBNAIL_IMAGE){ //Uday: for image resize
-                    system.debug('resorces '+ res);
+                    
                     conDocIds.add(Id.valueof(res.PMP_Company_Image__c));
                     partnerIds.add(res.PMP_Company_Id__c);
                     contDocId = Id.valueof(res.PMP_Company_Image__c);
@@ -230,7 +230,7 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
                 }   
              }
             
-            system.debug('###contentDistributions:-'+contentDistributions);
+            
              //Insertion of above created content distribution 
             if(!contentDistributions.isEmpty()){
                  insert contentDistributions;
@@ -366,7 +366,6 @@ public WithOut Sharing class PMP_SearchCompanyResourceTriggerActions {
     //     Set<Id> contentAssetIds = new Set<Id>();
     //     List<ContentAsset> contentAssetList = new List<ContentAsset>();
         
-    //     //system.debug('*******partner_resources***in delete method****'+partner_resources);
     //     for(PMP_Company_Resource__c resource: partner_resources){
     //         //Check if the resource type is an image/thumbnail image then add all the content document Ids to a set
     //         if(resource.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.IMAGE || resource.PMP_Company_Resource_Type_Nm__c == PMP_StaticConstants_partner.THUMBNAIL_IMAGE){

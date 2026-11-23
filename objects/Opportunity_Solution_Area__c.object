@@ -132,7 +132,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Opportunity_Solution_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -140,7 +140,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Opportunity_Solution_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -268,6 +268,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Solution_Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Solution_Areas__r.Name</formula>
+        <label>Solution Title</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Technology_Enabled__c</fullName>
         <label>Technology Enabled</label>
         <length>32768</length>
@@ -304,12 +315,6 @@
         <columns>NAME</columns>
         <columns>CREATED_DATE</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>Core_Application_Workload__c</columns>
-        <columns>Core_End_Customer_Solution__c</columns>
-        <columns>Core_Industry__c</columns>
-        <columns>Core_Industry_Use_Case_s__c</columns>
-        <columns>Core_Opp_Solution__c</columns>
-        <columns>Core_Technology_Enabled__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -320,6 +325,30 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Opportunity Solutions</pluralLabel>
+    <profileSearchLayouts>
+        <fields>Core_Opp_Solution__c</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case_s__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Solution_Area_Type__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_Owner_Email__c</fields>
+        <profileName>Data Ops</profileName>
+    </profileSearchLayouts>
+    <profileSearchLayouts>
+        <fields>Core_Opp_Solution__c</fields>
+        <fields>Core_Application_Workload__c</fields>
+        <fields>Core_Industry_Use_Case_s__c</fields>
+        <fields>Core_Technology_Enabled__c</fields>
+        <fields>Core_Version__c</fields>
+        <fields>Solution_Area_Type__c</fields>
+        <fields>Core_End_Customer_Solution__c</fields>
+        <fields>Core_Industry__c</fields>
+        <fields>Core_Solution_Owner_Email__c</fields>
+        <profileName>Sales Manager</profileName>
+    </profileSearchLayouts>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>New</fullName>
@@ -331,7 +360,17 @@
         <active>true</active>
         <label>Opportunity Solution</label>
     </recordTypes>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Core_Opp_Solution__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Application_Workload__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Industry_Use_Case_s__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Technology_Enabled__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Solution_Area_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Version__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_End_Customer_Solution__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Industry__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Solution_Owner_Email__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

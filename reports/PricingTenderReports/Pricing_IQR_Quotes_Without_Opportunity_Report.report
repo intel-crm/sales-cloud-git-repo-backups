@@ -5,9 +5,8 @@
         <backgroundColor2>#FFFFFF</backgroundColor2>
         <backgroundFadeDir>Diagonal</backgroundFadeDir>
         <chartSummaries>
-            <aggregate>Unique</aggregate>
             <axisBinding>y</axisBinding>
-            <column>SBQQ__Quote__c$Name</column>
+            <column>RowCount</column>
         </chartSummaries>
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -27,11 +26,7 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <aggregateTypes>Unique</aggregateTypes>
         <field>SBQQ__Quote__c$Name</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Quote_Line_Number__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</field>
@@ -42,23 +37,20 @@
     <columns>
         <field>SBQQ__Quote__c$Pricing_End_Customer_Opportunity_Txt__c</field>
     </columns>
-    <columns>
-        <field>SBQQ__Quote__c$Pricing_Account_Executive_Nm__c</field>
-    </columns>
     <filter>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$Pricing_End_Customer_Opportunity_Txt__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$Pricing_Account_Executive_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>$USER</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c$Pricing_End_Customer_Opportunity_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -71,15 +63,13 @@
     <name>IQR Quotes Without Opportunity</name>
     <params>
         <name>co</name>
-        <value>0</value>
+        <value>1</value>
     </params>
     <reportType>Quote_with_Performance_Metrics__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>SBQQ__Quote__c$Name</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c.SBQQ__LineItems__r.Performance_Metrics__r$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

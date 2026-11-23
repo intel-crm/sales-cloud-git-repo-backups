@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Subhanku
  * @group             : Accenture
- * @last modified on  : 09-18-2026
+ * @last modified on  : 10-01-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_CommentsController {
@@ -121,7 +121,7 @@ public without sharing class Pricing_CommentsController {
      * @description       : This Method will return comments for specific account stored in Pricing_AccountId_Comments_Mapping__c custom setting.
      * @author            : Vrushabh
      * @param             : accountId Account Id from Quote.
-     * @last modified on  : 09-18-2026
+     * @last modified on  : 03-08-2024
     **/
     @AuraEnabled(cacheable=true)
     public static Pricing_AccountId_Comments_Mapping__c getAccountIdCommentsMapping(String accountId) {
@@ -133,6 +133,7 @@ public without sharing class Pricing_CommentsController {
         }
         return (accCommentMapping.size() > 0) ? accCommentMapping[0] : null;
     }
+    
     //This method checks if the current user is a Pricing Manager Alpha User  
     @AuraEnabled(cacheable=true)
     public static Boolean isPricingManagerAlpha() {

@@ -376,12 +376,11 @@
         <fullName>espy__All</fullName>
         <columns>NAME</columns>
         <columns>espy__CronExpression__c</columns>
-        <columns>espy__DeletedSchedular__c</columns>
-        <columns>espy__ApexClassName__c</columns>
         <columns>espy__CreatedDate__c</columns>
         <columns>espy__NextFireTime__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Batch Monitoring Name</label>

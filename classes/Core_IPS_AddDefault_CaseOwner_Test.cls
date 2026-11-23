@@ -65,7 +65,7 @@ public class Core_IPS_AddDefault_CaseOwner_Test {
         Contact testContact ;         
                                   
         Contact testContact1 = new Contact(FirstName='testFirstName33123', LastName='testLastName123', Email='test124643@testing.com.testsetup',
-                                                AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
+                                                AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
         insert testContact1;
         User partnerUser = new User(Alias = 'pips', 
                                     Email='parente@gmail.com', 

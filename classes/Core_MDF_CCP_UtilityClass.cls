@@ -354,7 +354,6 @@ Modified By:        Date:       Changes:
         }
         createLogEntries(coreLogMaps);
     }
-
 	public static List<String> collectDmlFailureDetails(List<Id> recordIds, Database.SaveResult[] dmlResults){
         List<String> failedRecordDetails = new List<String>();
         Integer sizeToProcess = Math.min(recordIds.size(), dmlResults.size());

@@ -91,8 +91,10 @@ public without sharing class UCD_ACM_AccountBusinessTypeHandler {
                                 rNewMapAccountBusinessType.put(accountBusinessType.Id,accountBusinessType);
                             }
                         }
+                        System.debug('#@$rNewAccountBusinessTypes '+rNewAccountBusinessTypes);
                         if(rNewAccountBusinessTypes.size() > 0){
                             rtsync.TriggerHandler.handle(operation, rNewAccountBusinessTypes, rNewMapAccountBusinessType, oldAccountBusinessTypes, mOldAccountBusinessTypes);
+                            System.debug('#@$Enterreltiosync');
                         }
                     }
                 }

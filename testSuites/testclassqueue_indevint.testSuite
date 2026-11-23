@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_ActivitySegmentMappingTest</testClassName>
+    <testClassName>Core_MDF_Bulk_ApprovalReqs_Batch_Test</testClassName>
+    <testClassName>Core_MDF_Bulk_Approvals_Requests_Test</testClassName>
+    <testClassName>Core_MDF_Bulk_Transaction_Test</testClassName>
+    <testClassName>Core_MDF_Campaign_QuickActionCtrlTest</testClassName>
+    <testClassName>Core_MDF_CloseActivity_Test</testClassName>
+    <testClassName>Core_MDF_ContentVersion_Test</testClassName>
+    <testClassName>Core_MDF_Create_Budget_Test</testClassName>
+    <testClassName>Core_MDF_MockHttpResponseGenerator_Test</testClassName>
+    <testClassName>Core_MDF_PartnerFundClaim_Test</testClassName>
+    <testClassName>Core_MDF_PFC_CampaignCAP_Test</testClassName>
+    <testClassName>Core_MDF_PFC_IPAClaim_Test</testClassName>
+    <testClassName>Core_MDF_PFC_RetailClaim_Test</testClassName>
+    <testClassName>Core_MDF_PFC_VAT_ServiceHandlerTest</testClassName>
+    <testClassName>Core_MDF_PFC_VAT_Test</testClassName>
+    <testClassName>Core_MDF_PGM_BatchHelper_Test</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_PFR_Test</testClassName>
+</ApexTestSuite>

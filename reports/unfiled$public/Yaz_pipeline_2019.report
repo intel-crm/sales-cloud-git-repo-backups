@@ -39,7 +39,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Yaz all opportunities after 2021</name>
+    <name>Yaz all opportunities 2020</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -67,6 +67,6 @@
         <dateColumn>CLOSE_DATE</dateColumn>
         <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

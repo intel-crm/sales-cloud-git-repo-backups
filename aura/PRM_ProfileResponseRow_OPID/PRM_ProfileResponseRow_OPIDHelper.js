@@ -20,12 +20,10 @@
                 console.log('>>is true');
                 booleanValue.set("v.value",true);
             }else if(returnValue != 'true' && returnValue != 'false' && returnValue != 'null'){
-                console.log('>>date'+JSON.stringify(returnValue));
-                
-            }else{
+                console.log('>>date'+JSON.stringify(returnValue)); 
+            }else {
                 console.log('>>is false');
                 booleanValue.set("v.value",false);
-                
             }            
             console.log('booleanValue--->'+booleanValue);
             
@@ -69,22 +67,27 @@
         console.log('objRes.answers.Id-->'+objRes.answers.Id);
         // getting answer records for the corresponding question..
         if(objRes.answers){
-            console.log('get answer record');
+            console.log('get answer record',objRes.answers);
+            console.log('get question record',objRes.response);
+            console.log('get question record',objRes.question);
             respAns = objRes.answers; 
             //filtering out answers if they match the response for the piclist and boolean type
             if(quesType.includes(objRes.question.PRM_Question_Type_Nm__c)){
+                console.log('respAns1',respAns);
                 respAns = respAns.filter(function( obj ) {
                     return obj.PRM_Answer_Display_Txt__c === String(objRes.response.PRM_Response_Txt__c);
                     
                 });       
+                console.log('respAns2',respAns);
             }
         }
+        console.log('respAns3',respAns[0]);
         //check if answer was found? and assign it to response
         if(respAns[0])
             saveResponse.PRM_Profile_Answer_Id__c = respAns[0].Id;
         respArr.push(saveResponse);
         cmp.set("v.saveResponse",respArr);
-        console.log('respAns[0].Id--->'+respAns[0].Id);
+       // console.log('respAns[0].Id--->'+respAns[0].Id);
         console.log(saveResponse);
         console.log("respArr-->"+JSON.stringify(respArr));
     },
@@ -99,13 +102,17 @@
         // console.log('Objresponse11'+JSON.stringify(objRes));
         
         // console.log('display text-'+JSON.stringify(objRes.question.PRM_Question_Cd__c)); 
-        console.log('Line 100'+objRes.response.PRM_Response_Txt__c);
+        console.log('Line 100'+checkboxVar);   
+        console.log('objRes',objRes);
+        
         if((objRes.question.PRM_Question_Cd__c == 'PRM_Opt_In' || objRes.question.PRM_Question_Cd__c == 'PRM_Point_Not_Eligible') && objRes.response.PRM_Response_Txt__c == true)
         {
             var today = new Date();
             var mydate =today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
             // console.log('final date'+JSON.stringify(objRes.response.PRM_Response_Txt__c));
             cmp.set('v.res.response.PRM_Response_Txt__c',mydate);
+            console.log('v.res.response.PRM_Response_Txt__c',v.res.response.PRM_Response_Txt__c);
+            console.log('mydate',mydate);
         }
         
         var expdate = cmp.find("expdate").get("v.value");

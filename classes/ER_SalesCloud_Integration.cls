@@ -16,6 +16,8 @@ public class ER_SalesCloud_Integration {
     public static final String LOG_ENTRY_ORIGIN   = 'SFDC';
     public static final String LOG_ENTRY_PROJECT  = 'Registration';
     public static string params = '';
+    //As part of IAO- CMF TO BPID changes
+    public static boolean isCMF=Boolean.valueOf(label.ER_IsCMF);
     public static void createLogEntry(String message, Exception ex, String tags, String severity, String objectType){
         String strDetailsAndEx = '';
         if( ex != null ) {
@@ -200,24 +202,49 @@ public class ER_SalesCloud_Integration {
         if(!accountIdSet.isEmpty()){
             accountsMap = new Map<Id, Account>([SELECT name,AccountNumber,Core_Business_Party_Id__c,Core_Sales_Groups__c,Industry,/*Core_Account_Type__c // BizOrgType code removal/,*/Core_IPA_Partner_Role__c,ShippingStreet,Shippingcity,ShippingState,ShippingStateCode,ShippingCountry,ShippingCountryCode,ShippingPostalCode,BillingStreet,BillingCity,BillingState,BillingStateCode,BillingCountry,BillingCountryCode,BillingPostalCode,Core_Business_ID__c, Core_Business_Partner_Id__c, Owner.Email, Owner.FirstName, Owner.LastName, Core_Prime_Account_Name__c,(SELECT name,Status__c,Status_Reason__c,Effective_End_Date__c,Effective_Start_Date__c,Business_Types__r.Business_Type_Code__c,Business_Types__r.Business_Types_Category__c,Business_Types__r.Name,Business_Types__r.Is_Active__c from Account_Business_Types__r) FROM Account WHERE Id IN :accountIdSet]);
         }
-        Map<String,List<ER_Customer_Master_File_Group__c>> cmfDataMap = new Map<String,List<ER_Customer_Master_File_Group__c>>();
-        for(ER_Customer_Master_File_Group__c cmfData :[SELECT id,name,ER_Active__c,ER_Description__c,ER_Count_of_Customer_Master_Files__c,ER_Inactive_Customer_Master_Files__c,ER_Count_of_Contacts__c,ER_Inactive_Contacts__c,CreatedBy.Name,CreatedDate,LastModifiedDate,LastModifiedBy.Name,(SELECT id,ER_CMF_Name__c,ER_Customer_Master_File_Group__r.Id,ER_Customer_Master_File_Group__r.NAme,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c,
-                                                                                                                                                                                                                                                                                                ER_Customer_Master_File_Group__r.ER_Inactive_Contacts__c,ER_Customer_Master_File_Group__r.LastModifiedBy.Name,ER_Customer_Master_File_Group__r.CreatedBy.Name,ER_Customer_Master_File_Group__r.CreatedDate,ER_Customer_Master_File_Group__r.LastModifiedDate,ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,ER_Customer_Master_File__r.ER_Sales_Org_Code__c ,ER_Customer_Master_File__r.ER_Sales_Org_Name__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c,ER_Customer_Master_File__r.ER_CMF_Address__c,ER_Customer_Master_File__r.ER_Account_Group__c,
-                                                                                                                                                                                                                                                                                                ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,ER_Customer_Master_File__r.Name,ER_Customer_Master_File__r.ER_CMF_Name__c,ER_Active__c from CMFGroupAssociations__r),(SELECT ER_Contact__r.id from ContactGroupAssociations__r) FROM ER_Customer_Master_File_Group__c  WHERE id IN (SELECT ER_Customer_Master_File_Group__c from ER_ContactGroupAssociation__c WHERE ER_Contact__r.id IN : contactIdSet)]){
-                                                                                                                                                                                                                                                                                                    for(ER_ContactGroupAssociation__c contactAssoc:cmfData.ContactGroupAssociations__r){
-                                                                                                                                                                                                                                                                                                        if(cmfDataMap.containsKey(contactAssoc.ER_Contact__r.id)){
-                                                                                                                                                                                                                                                                                                            List<ER_Customer_Master_File_Group__c> idsOfCmfGroup = cmfDataMap.get(contactAssoc.ER_Contact__r.id);
-                                                                                                                                                                                                                                                                                                            idsOfCmfGroup.add(cmfData);
-                                                                                                                                                                                                                                                                                                            cmfDataMap.put(contactAssoc.ER_Contact__r.id,idsOfCmfGroup);
-                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                        else{
-                                                                                                                                                                                                                                                                                                            cmfDataMap.put(contactAssoc.ER_Contact__r.id,new List<ER_Customer_Master_File_Group__c>{cmfData});
-                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                                                                                                                }
         
+        Map<String,List<ER_Customer_Master_File_Group__c>> cmfDataMap = new Map<String,List<ER_Customer_Master_File_Group__c>>();
+        Map<String,List<ER_Customer_Master_File_Group__c>> cmfgroupDataMap = new Map<String,List<ER_Customer_Master_File_Group__c>>();
+        //As part of IAO- CMF TO BPID changes
+        if(isCMF){
+            
+            for(ER_Customer_Master_File_Group__c cmfData :[SELECT id,name,ER_Active__c,ER_Description__c,ER_Count_of_Customer_Master_Files__c,ER_Inactive_Customer_Master_Files__c,ER_Count_of_Contacts__c,ER_Inactive_Contacts__c,CreatedBy.Name,CreatedDate,LastModifiedDate,LastModifiedBy.Name,(SELECT id,ER_CMF_Name__c,ER_Customer_Master_File_Group__r.Id,ER_Customer_Master_File_Group__r.NAme,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c,
+                                                                                                                                                                                                                                                                                                    ER_Customer_Master_File_Group__r.ER_Inactive_Contacts__c,ER_Customer_Master_File_Group__r.LastModifiedBy.Name,ER_Customer_Master_File_Group__r.CreatedBy.Name,ER_Customer_Master_File_Group__r.CreatedDate,ER_Customer_Master_File_Group__r.LastModifiedDate,ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,ER_Customer_Master_File__r.ER_Sales_Org_Code__c ,ER_Customer_Master_File__r.ER_Sales_Org_Name__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c,ER_Customer_Master_File__r.ER_CMF_Address__c,ER_Customer_Master_File__r.ER_Account_Group__c,
+                                                                                                                                                                                                                                                                                                    ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,ER_Customer_Master_File__r.Name,ER_Customer_Master_File__r.ER_CMF_Name__c,ER_Active__c from CMFGroupAssociations__r),(SELECT ER_Contact__r.id from ContactGroupAssociations__r) FROM ER_Customer_Master_File_Group__c  WHERE id IN (SELECT ER_Customer_Master_File_Group__c from ER_ContactGroupAssociation__c WHERE ER_Contact__r.id IN : contactIdSet)]){
+                                                                                                                                                                                                                                                                                                        for(ER_ContactGroupAssociation__c contactAssoc:cmfData.ContactGroupAssociations__r){
+                                                                                                                                                                                                                                                                                                            if(cmfDataMap.containsKey(contactAssoc.ER_Contact__r.id)){
+                                                                                                                                                                                                                                                                                                                List<ER_Customer_Master_File_Group__c> idsOfCmfGroup = cmfDataMap.get(contactAssoc.ER_Contact__r.id);
+                                                                                                                                                                                                                                                                                                                idsOfCmfGroup.add(cmfData);
+                                                                                                                                                                                                                                                                                                                cmfDataMap.put(contactAssoc.ER_Contact__r.id,idsOfCmfGroup);
+                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                            else{
+                                                                                                                                                                                                                                                                                                                cmfDataMap.put(contactAssoc.ER_Contact__r.id,new List<ER_Customer_Master_File_Group__c>{cmfData});
+                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                    }
+        }
+        else{
+            
+            for(ER_Customer_Master_File_Group__c cmfgroupData :[SELECT id,name,ER_Active__c,ER_Description__c,ER_Active_Account_Business_Partners__c,ER_Inactive_Account_Business_Partners__c,ER_Count_of_Contacts__c,ER_Inactive_Contacts__c,CreatedBy.Name,CreatedDate,LastModifiedDate,LastModifiedBy.Name,
+                                                                (SELECT Id,ER_Account__r.Core_Direct_Account_Id__c,ER_Account__r.Name,
+                                                                 ER_Customer_Master_File_Grouping__r.Id,ER_Customer_Master_File_Grouping__r.NAme,ER_Customer_Master_File_Grouping__r.ER_Active__c,ER_Customer_Master_File_Grouping__r.ER_Description__c,ER_Customer_Master_File_Grouping__r.ER_Count_of_Contacts__c,ER_Customer_Master_File_Grouping__r.ER_Inactive_Contacts__c,ER_Customer_Master_File_Grouping__r.LastModifiedBy.Name,ER_Customer_Master_File_Grouping__r.CreatedBy.Name,ER_Customer_Master_File_Grouping__r.CreatedDate,ER_Customer_Master_File_Grouping__r.LastModifiedDate,
+                                                                 ER_Account__r.BillingAddress,ER_Account__r.billingstate,ER_Account__r.billingcity,ER_Account__r.billingstreet,ER_Account__r.billingCountry,ER_Account__r.BillingCountryCode,ER_Account__r.BillingStateCode,ER_Account__r.billingPostalCode,ER_Account__r.Core_Direct_Account_Type_Nm__c,ER_Account__r.Core_ER_Direct_CustomerRelationship_Code__c,ER_Account__r.Core_Direct_Sales_Organization_Nm__c,ER_Account__r.Core_ER_Sales_Org_Name__c,ER_Account__r.Core_Direct_Distributor_Channel_Nm__c,ER_Account__r.Core_ER_Sales_Disti_Chnl_Name__c,ER_Account__r.Core_ER_Account_Group__c,ER_Active__c FROM Account_Business_Partners__r),
+                                                                (SELECT ER_Contact__r.id from ContactGroupAssociations__r) FROM ER_Customer_Master_File_Group__c  WHERE id IN (SELECT ER_Customer_Master_File_Group__c from ER_ContactGroupAssociation__c WHERE ER_Contact__r.id IN : contactIdSet)]){
+                                                                    for(ER_ContactGroupAssociation__c contactAssoc:cmfgroupData.ContactGroupAssociations__r){
+                                                                        if(cmfgroupDataMap.containsKey(contactAssoc.ER_Contact__r.id)){
+                                                                            List<ER_Customer_Master_File_Group__c> idsOfCmfGroup = cmfgroupDataMap.get(contactAssoc.ER_Contact__r.id);
+                                                                            idsOfCmfGroup.add(cmfgroupData);
+                                                                            cmfgroupDataMap.put(contactAssoc.ER_Contact__r.id,idsOfCmfGroup);
+                                                                        }
+                                                                        else{
+                                                                            cmfgroupDataMap.put(contactAssoc.ER_Contact__r.id,new List<ER_Customer_Master_File_Group__c>{cmfgroupData});
+                                                                        }
+                                                                    } 
+                                                                    
+                                                                }
+        }
         for(Contact cont: conts){
             String tags = '';
             ER_SalesCloud_Integration_Model.DSAPayload payload = new ER_SalesCloud_Integration_Model.DSAPayload();
@@ -236,8 +263,17 @@ public class ER_SalesCloud_Integration {
             payload.ContactBusinessTypes=businessTypeData.contactBusinessTypes;
             payload.BusinessTypeNames = String.join(businessTypeData.businessTypes,',');
             payload.LastModifiedDate = cont.LastModifiedDate;
-            if(cmfDataMap.get(cont.id) !=null && !(cmfDataMap.get(cont.id).isEmpty())){
-                payload.CMFGroups = getCMFDetails(cmfDataMap.get(cont.id));
+            //As part of IAO- CMF TO BPID changes
+            if(isCMF){
+                if(cmfDataMap.get(cont.id) !=null && !(cmfDataMap.get(cont.id).isEmpty())){
+                    payload.CMFGroups = getCMFDetails(cmfDataMap.get(cont.id));
+                }
+            }
+            else{
+                if(cmfgroupDataMap.get(cont.id) !=null && !(cmfgroupDataMap.get(cont.id).isEmpty())){
+                    payload.CMFGroups = getBPAccountDetails(cmfgroupDataMap.get(cont.id));
+                }
+                
             }
             tags = cont.Id+';'+cont.Email+';'+cont.Name;
             AE_ACM_Integration_change_event__e accountChangeEvent=createPlatformEvent(JSON.serialize(payload));
@@ -280,9 +316,18 @@ public class ER_SalesCloud_Integration {
             Map<String,String> contactIdToCmfMap = new Map<String,String>();
             List<Core_Integration_Outbound_Message__c> outboundMsgs = new List<Core_Integration_Outbound_Message__c>(); 
             List<AE_ACM_Integration_change_event__e> accountChangeEvents  = new List<AE_ACM_Integration_change_event__e>();
-            List<ER_Customer_Master_File_Group__c> cmfGroupList = [SELECT id,Name,ER_Description__c, ER_Active__c, ER_Count_of_Contacts__c, ER_Count_of_Customer_Master_Files__c, ER_Inactive_Contacts__c, ER_Inactive_Customer_Master_Files__c, CreatedDate, LastModifiedDate,LastModifiedBy.Name,CreatedBy.Name,(SELECT ER_Contact__r.id,ER_Contact__r.FirstName, ER_Contact__r.LastName, ER_Contact__r.Title, ER_Contact_Email__c, ER_Contact__r.MobilePhone, ER_Contact__r.Core_eRPM_Person_Id__c, ER_Contact__r.Core_Enterprise_Id__c, ER_Account_Name__c,/* ER_Contact__r.Core_Login_Id__c,*/ ER_Contact__r.CreatedDate, ER_Contact__r.LastModifiedDate,ER_Contact__r.LastModifiedBy.Name,ER_Contact__r.CreatedBy.Name,ER_Contact__r.AccountId,ER_Active__c,ER_Account_IsODM__c,CreatedDate,CreatedBy.Name,ER_Contact__r.MailingCountryCode,ER_Contact__r.Account.Core_Business_Party_Id__c from ContactGroupAssociations__r),(SELECT id,ER_CMF_Name__c,ER_Customer_Master_File_Group__r.NAme,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ER_Customer_Master_File_Group__r.ER_Inactive_Contacts__c,ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,ER_Customer_Master_File__r.ER_Sales_Org_Code__c ,ER_Customer_Master_File__r.ER_Sales_Org_Name__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c,ER_Customer_Master_File__r.ER_CMF_Address__c,ER_Customer_Master_File__r.ER_Account_Group__c,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,ER_Customer_Master_File__r.Name,ER_Customer_Master_File__r.ER_CMF_Name__c,ER_Active__c,CreatedBy.Name,CreatedDate,ER_Central_Block__c,ER_Customer_Master_File__r.CreatedDate,ER_Customer_Master_File__r.LastModifiedDate,ER_Customer_Master_File__r.LastModifiedBy.Name,ER_Customer_Master_File__r.CreatedBy.Name from CMFGroupAssociations__r) from ER_Customer_Master_File_Group__c   where ID IN :cmfGroupIds];
+            List<ER_Customer_Master_File_Group__c> cmfGroupList;
+            //As part of IAO- CMF TO BPID changes
+            if(isCMF){
+                cmfGroupList = [SELECT id,Name,ER_Description__c, ER_Active__c, ER_Count_of_Contacts__c, ER_Count_of_Customer_Master_Files__c, ER_Inactive_Contacts__c, ER_Inactive_Customer_Master_Files__c, CreatedDate, LastModifiedDate,LastModifiedBy.Name,CreatedBy.Name,(SELECT ER_Contact__r.id,ER_Contact__r.FirstName, ER_Contact__r.LastName, ER_Contact__r.Title, ER_Contact_Email__c, ER_Contact__r.MobilePhone, ER_Contact__r.Core_eRPM_Person_Id__c, ER_Contact__r.Core_Enterprise_Id__c, ER_Account_Name__c,/* ER_Contact__r.Core_Login_Id__c,*/ ER_Contact__r.CreatedDate, ER_Contact__r.LastModifiedDate,ER_Contact__r.LastModifiedBy.Name,ER_Contact__r.CreatedBy.Name,ER_Contact__r.AccountId,ER_Active__c,ER_Account_IsODM__c,CreatedDate,CreatedBy.Name,ER_Contact__r.MailingCountryCode,ER_Contact__r.Account.Core_Business_Party_Id__c from ContactGroupAssociations__r),(SELECT id,ER_CMF_Name__c,ER_Customer_Master_File_Group__r.NAme,ER_Customer_Master_File_Group__r.ER_Active__c,ER_Customer_Master_File_Group__r.ER_Description__c,ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Inactive_Customer_Master_Files__c,ER_Customer_Master_File_Group__r.ER_Count_of_Contacts__c,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ER_Customer_Master_File_Group__r.ER_Inactive_Contacts__c,ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c,ER_Customer_Master_File__r.ER_Sales_Org_Code__c ,ER_Customer_Master_File__r.ER_Sales_Org_Name__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c,ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c,ER_Customer_Master_File__r.ER_CMF_Address__c,ER_Customer_Master_File__r.ER_Account_Group__c,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c,ER_Customer_Master_File__r.Name,ER_Customer_Master_File__r.ER_CMF_Name__c,ER_Active__c,CreatedBy.Name,CreatedDate,ER_Central_Block__c,ER_Customer_Master_File__r.CreatedDate,ER_Customer_Master_File__r.LastModifiedDate,ER_Customer_Master_File__r.LastModifiedBy.Name,ER_Customer_Master_File__r.CreatedBy.Name from CMFGroupAssociations__r) from ER_Customer_Master_File_Group__c   where ID IN :cmfGroupIds];
+            }else{
+                cmfGroupList = [SELECT id,Name,ER_Description__c, ER_Active__c, ER_Count_of_Contacts__c, ER_Active_Account_Business_Partners__c, ER_Inactive_Contacts__c, ER_Inactive_Account_Business_Partners__c, CreatedDate, LastModifiedDate,LastModifiedBy.Name,CreatedBy.Name,
+                                (SELECT ER_Contact__r.id,ER_Contact__r.FirstName, ER_Contact__r.LastName, ER_Contact__r.Title, ER_Contact_Email__c, ER_Contact__r.MobilePhone, ER_Contact__r.Core_eRPM_Person_Id__c, ER_Contact__r.Core_Enterprise_Id__c, ER_Account_Name__c, ER_Contact__r.CreatedDate, ER_Contact__r.LastModifiedDate,ER_Contact__r.LastModifiedBy.Name,ER_Contact__r.CreatedBy.Name,ER_Contact__r.AccountId,ER_Active__c,ER_Account_IsODM__c,CreatedDate,CreatedBy.Name,ER_Contact__r.MailingCountryCode,ER_Contact__r.Account.Core_Business_Party_Id__c from ContactGroupAssociations__r),
+                                (SELECT id,ER_Customer_Master_File_Grouping__r.Name,ER_Customer_Master_File_Grouping__r.ER_Active__c,ER_Customer_Master_File_Grouping__r.ER_Description__c,ER_Customer_Master_File_Grouping__r.ER_Count_of_Customer_Master_Files__c,ER_Customer_Master_File_Grouping__r.ER_Inactive_Customer_Master_Files__c,ER_Customer_Master_File_Grouping__r.ER_Count_of_Contacts__c,ER_Customer_Master_File_Grouping__r.ER_Inactive_Contacts__c,
+                                 ER_Account__r.Core_Direct_Account_Id__c,ER_Account__r.Name,ER_Account__r.BillingAddress,ER_Account__r.billingstate,ER_Account__r.billingcity,ER_Account__r.billingstreet,ER_Account__r.billingCountry,ER_Account__r.BillingCountryCode,ER_Account__r.BillingStateCode,ER_Account__r.billingPostalCode,ER_Account__r.Core_Direct_Account_Type_Nm__c,ER_Account__r.Core_ER_Direct_CustomerRelationship_Code__c,ER_Account__r.Core_Direct_Sales_Organization_Nm__c,ER_Account__r.Core_ER_Sales_Org_Name__c,ER_Account__r.Core_Direct_Distributor_Channel_Nm__c,ER_Account__r.Core_ER_Sales_Disti_Chnl_Name__c,ER_Account__r.Core_ER_Account_Group__c,ER_Active__c,CreatedBy.Name,CreatedDate,ER_Account__r.CreatedDate,ER_Account__r.LastModifiedDate,ER_Account__r.LastModifiedBy.Name,ER_Account__r.CreatedBy.Name from Account_Business_Partners__r) from ER_Customer_Master_File_Group__c   where ID IN :cmfGroupIds];
+            }
             for(ER_Customer_Master_File_Group__c cmfGroupRec : cmfGroupList){
                 ER_SalesCloud_Integration_Model.cmfWrapperAnE payload = new ER_SalesCloud_Integration_Model.cmfWrapperAnE();
                 payload.MessageType = 'A&E CMF Group Integration';
@@ -290,8 +335,17 @@ public class ER_SalesCloud_Integration {
                 payload.GroupId = cmfGroupRec.Id;
                 payload.Description = cmfGroupRec.ER_Description__c;
                 payload.Active = cmfGroupRec.ER_Active__c;
-                payload.ActiveCMFCount = String.valueOf(cmfGroupRec.ER_Count_of_Customer_Master_Files__c);
-                payload.InActiveCMFCount = String.valueOf(cmfGroupRec.ER_Inactive_Customer_Master_Files__c);
+                if(isCMF){
+                    payload.ActiveCMFCount = String.valueOf(cmfGroupRec.ER_Count_of_Customer_Master_Files__c);
+                    System.debug('payload.ActiveCMFCoun 1'+payload.ActiveCMFCount);
+                    payload.InActiveCMFCount = String.valueOf(cmfGroupRec.ER_Inactive_Customer_Master_Files__c);
+                    System.debug('payload.ActiveCMFCount 2'+payload.ActiveCMFCount);
+                }else{
+                    payload.ActiveCMFCount = String.valueOf(cmfGroupRec.ER_Active_Account_Business_Partners__c);
+                    System.debug('payload.ActiveCMFCount1.1'+payload.ActiveCMFCount);
+                    payload.InActiveCMFCount = String.valueOf(cmfGroupRec.ER_Inactive_Account_Business_Partners__c);
+                    System.debug('payload.ActiveCMFCount2.1'+payload.ActiveCMFCount);
+                }
                 payload.ActiveContactCount = String.valueOf(cmfGroupRec.ER_Count_of_Contacts__c);
                 payload.InActiveContactCount = String.valueOf(cmfGroupRec.ER_Inactive_Contacts__c);
                 payload.CreatedDate = cmfGroupRec.CreatedDate; 
@@ -299,27 +353,56 @@ public class ER_SalesCloud_Integration {
                 payload.LastModifiedBy = cmfGroupRec.LastModifiedBy.Name;
                 payload.CreatedBy = cmfGroupRec.CreatedBy.Name;
                 List<ER_SalesCloud_Integration_Model.cmfData> cmfList = new List<ER_SalesCloud_Integration_Model.cmfData>();
-                for(ER_CMFGroupAssociation__c rec : cmfGroupRec.CMFGroupAssociations__r){
-                    ER_SalesCloud_Integration_Model.cmfData cmfDataRec = new  ER_SalesCloud_Integration_Model.cmfData();
-                    cmfDataRec.CMFID = rec.ER_Customer_Master_File__r.NAme;
-                    cmfDataRec.Name = rec.ER_Customer_Master_File__r.ER_CMF_Name__c;
-                    cmfDataRec.SalesOrgCode = rec.ER_Customer_Master_File__r.ER_Sales_Org_Code__c;
-                    cmfDataRec.SalesOrgName = rec.ER_Customer_Master_File__r.ER_Sales_Org_Name__c;
-                    cmfDataRec.SalesDistiChannelCode = rec.ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c;
-                    cmfDataRec.SalesDistiChannelName = rec.ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c;
-                    cmfDataRec.Address = rec.ER_Customer_Master_File__r.ER_CMF_Address__c;
-                    cmfDataRec.AccountGroup = rec.ER_Customer_Master_File__r.ER_Account_Group__c;
-                    cmfDataRec.DirectCustomerRoleCode = rec.ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c;
-                    cmfDataRec.DirectCustomerRoleName = rec.ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c;
-                    cmfDataRec.IsPartOfGroup = rec.ER_Active__c;
-                    cmfDataRec.CentralBlock = rec.ER_Central_Block__c;
-                    cmfDataRec.CMFAddedToGroup =rec.CreatedDate;
-                    cmfDataRec.CMFAddedToGroupBy = rec.CreatedBy.Name;
-                    cmfDataRec.CreatedDate = rec.ER_Customer_Master_File__r.CreatedDate;
-                    cmfDataRec.LastModifiedDate = rec.ER_Customer_Master_File__r.LastModifiedDate;
-                    cmfDataRec.LastModifiedBy = rec.ER_Customer_Master_File__r.LastModifiedBy.Name;
-                    cmfDataRec.CreatedBy = rec.ER_Customer_Master_File__r.CreatedBy.Name;
-                    cmfList.add(cmfDataRec);
+                //List<ER_SalesCloud_Integration_Model.accountBPData> bpAccountsList = new List<ER_SalesCloud_Integration_Model.accountBPData>();
+                if(isCMF){
+                    for(ER_CMFGroupAssociation__c rec : cmfGroupRec.CMFGroupAssociations__r){
+                        ER_SalesCloud_Integration_Model.cmfData cmfDataRec = new  ER_SalesCloud_Integration_Model.cmfData();
+                        cmfDataRec.CMFID = rec.ER_Customer_Master_File__r.NAme;
+                        cmfDataRec.Name = rec.ER_Customer_Master_File__r.ER_CMF_Name__c;
+                        cmfDataRec.SalesOrgCode = rec.ER_Customer_Master_File__r.ER_Sales_Org_Code__c;
+                        cmfDataRec.SalesOrgName = rec.ER_Customer_Master_File__r.ER_Sales_Org_Name__c;
+                        cmfDataRec.SalesDistiChannelCode = rec.ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Code__c;
+                        cmfDataRec.SalesDistiChannelName = rec.ER_Customer_Master_File__r.ER_Sales_Disti_Chnl_Name__c;
+                        cmfDataRec.Address = rec.ER_Customer_Master_File__r.ER_CMF_Address__c;
+                        cmfDataRec.AccountGroup = rec.ER_Customer_Master_File__r.ER_Account_Group__c;
+                        cmfDataRec.DirectCustomerRoleCode = rec.ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Code__c;
+                        cmfDataRec.DirectCustomerRoleName = rec.ER_Customer_Master_File__r.ER_Direct_Customer_Relationship_Name__c;
+                        cmfDataRec.IsPartOfGroup = rec.ER_Active__c;
+                        cmfDataRec.CentralBlock = rec.ER_Central_Block__c;
+                        cmfDataRec.CMFAddedToGroup =rec.CreatedDate;
+                        cmfDataRec.CMFAddedToGroupBy = rec.CreatedBy.Name;
+                        cmfDataRec.CreatedDate = rec.ER_Customer_Master_File__r.CreatedDate;
+                        cmfDataRec.LastModifiedDate = rec.ER_Customer_Master_File__r.LastModifiedDate;
+                        cmfDataRec.LastModifiedBy = rec.ER_Customer_Master_File__r.LastModifiedBy.Name;
+                        cmfDataRec.CreatedBy = rec.ER_Customer_Master_File__r.CreatedBy.Name;
+                        cmfList.add(cmfDataRec);
+                    }
+                }
+                else{
+                    for(ER_Account_Business_Partner__c rec : cmfGroupRec.Account_Business_Partners__r){
+                        ER_SalesCloud_Integration_Model.cmfData cmfDataRec = new  ER_SalesCloud_Integration_Model.cmfData();
+                        
+                        cmfDataRec.CMFID = rec.ER_Account__r.Core_Direct_Account_Id__c;
+                        cmfDataRec.name=  rec.ER_Account__r.Name;
+                        cmfDataRec.DirectCustomerRoleName=rec.ER_Account__r.Core_Direct_Account_Type_Nm__c ;
+                        cmfDataRec.SalesOrgName=rec.ER_Account__r.Core_ER_Sales_Org_Name__c;
+                        cmfDataRec.SalesOrgCode=rec.ER_Account__r.Core_Direct_Sales_Organization_Nm__c;
+                        cmfDataRec.SalesDistiChannelCode=rec.ER_Account__r.Core_Direct_Distributor_Channel_Nm__c; 
+                        cmfDataRec.SalesDistiChannelName=rec.ER_Account__r.Core_ER_Sales_Disti_Chnl_Name__c;
+                        cmfDataRec.AccountGroup=rec.ER_Account__r.Core_ER_Account_Group__c;
+                        cmfDataRec.DirectCustomerRoleCode=rec.ER_Account__r.Core_ER_Direct_CustomerRelationship_Code__c;
+                        cmfDataRec.Address=((rec.ER_Account__r.billingstate!=null)?rec.ER_Account__r.billingstate:'')+((rec.ER_Account__r.billingcity!=null)?rec.ER_Account__r.billingcity:'')+((rec.ER_Account__r.billingPostalCode!=null)?rec.ER_Account__r.billingPostalCode:'')+((rec.ER_Account__r.billingCountryCode!=null)?+rec.ER_Account__r.billingCountryCode:'');
+                        cmfDataRec.IsPartOfGroup = rec.ER_Active__c;
+                        //cmfDataRec.CentralBlock = rec.ER_Central_Block__c;
+                        cmfDataRec.CMFAddedToGroup =rec.CreatedDate;
+                        cmfDataRec.CMFAddedToGroupBy = rec.CreatedBy.Name;
+                        cmfDataRec.CreatedDate = rec.ER_Account__r.CreatedDate;
+                        cmfDataRec.LastModifiedDate = rec.ER_Account__r.LastModifiedDate;
+                        cmfDataRec.LastModifiedBy = rec.ER_Account__r.LastModifiedBy.Name;
+                        cmfDataRec.CreatedBy = rec.ER_Account__r.CreatedBy.Name;
+                        cmfList.add(cmfDataRec);
+                    }
+                    
                 }
                 
                 List<ER_SalesCloud_Integration_Model.ContactBasicInfoAE> contactBasicInfoList = new List<ER_SalesCloud_Integration_Model.ContactBasicInfoAE>();
@@ -350,6 +433,7 @@ public class ER_SalesCloud_Integration {
                     
                 }
                 payload.CMFs = cmfList;
+                //payload.BPAccounts=bpAccountsList;
                 payload.ContactBasicInformation = contactBasicInfoList;
                 String tags = cmfGroupRec.Id+';'+cmfGroupRec.Name;
                 AE_ACM_Integration_change_event__e accountChangeEvent=createPlatformEvent(JSON.serialize(payload));
@@ -406,9 +490,13 @@ public class ER_SalesCloud_Integration {
             cmfWrapperData.Active = grouprec.ER_Active__c;
             cmfWrapperData.Description= grouprec.ER_Description__c;
             cmfWrapperData.ActiveCMFcount= String.valueof(grouprec.ER_Count_of_Customer_Master_Files__c);
+            System.debug('cmfWrapperData.ActiveCMFcount 1.2'+cmfWrapperData.ActiveCMFcount);
             cmfWrapperData.InActiveCMFcount= String.valueof(grouprec.ER_Inactive_Customer_Master_Files__c);
+            System.debug(' cmfWrapperData.InActiveCMFcount 2.2'+ cmfWrapperData.InActiveCMFcount);
             cmfWrapperData.ActiveContactCount= String.valueof(grouprec.ER_Count_of_Contacts__c);
+            System.debug(' cmfWrapperData.ActiveContactCount 1.3'+ cmfWrapperData.ActiveContactCount);
             cmfWrapperData.InActiveContactCount= String.valueof(grouprec.ER_Inactive_Contacts__c);
+            System.debug('cmfWrapperData.InActiveContactCount 2.3'+cmfWrapperData.InActiveContactCount);
             List<ER_SalesCloud_Integration_Model.cmfData> cmfdetails = new List<ER_SalesCloud_Integration_Model.cmfData> ();
             for(ER_CMFGroupAssociation__c rec :cmfDataMap.get(GroupName)){
                 ER_SalesCloud_Integration_Model.cmfData cmf = new ER_SalesCloud_Integration_Model.cmfData();
@@ -429,6 +517,65 @@ public class ER_SalesCloud_Integration {
         }
         return cmfWrapperDataList;
         
+    }
+    //As part of IAO- CMF TO BPID changes
+    private static List<ER_SalesCloud_Integration_Model.cmfWrapper> getBPAccountDetails(List<ER_Customer_Master_File_Group__c> cmfgroupData){
+        Map<String,List<ER_Account_Business_Partner__c>> accountBPDataMap = new Map<String,List<ER_Account_Business_Partner__c>>();
+        for(ER_Customer_Master_File_Group__c grouprec:cmfgroupData){
+            
+            accountBPDataMap.put(grouprec.Name,new List<ER_Account_Business_Partner__c>{});
+            for(ER_Account_Business_Partner__c associationRec : grouprec.Account_Business_Partners__r){
+                if(accountBPDataMap.containsKey(associationRec.ER_Customer_Master_File_Grouping__r.Name)){
+                    List<ER_Account_Business_Partner__c> idsOfCmfGroup = accountBPDataMap.get(associationRec.ER_Customer_Master_File_Grouping__r.Name);
+                    idsOfCmfGroup.add(associationRec);
+                    accountBPDataMap.put(associationRec.ER_Customer_Master_File_Grouping__r.Name,idsOfCmfGroup);
+                }
+                else{
+                    accountBPDataMap.put(associationRec.ER_Customer_Master_File_Grouping__r.Name,new List<ER_Account_Business_Partner__c>{associationRec});
+                }
+            }
+        }
+        System.debug('GroupSize'+accountBPDataMap.size());
+        List<ER_SalesCloud_Integration_Model.cmfWrapper> cmfWrapperDataList = new List<ER_SalesCloud_Integration_Model.cmfWrapper>();
+        String GroupName;
+        for(ER_Customer_Master_File_Group__c grouprec:cmfgroupData){
+            GroupName = grouprec.Name;
+            ER_SalesCloud_Integration_Model.cmfWrapper cmfWrapperData = new ER_SalesCloud_Integration_Model.cmfWrapper();
+            cmfWrapperData.GroupName = GroupName; 
+            cmfWrapperData.GroupId = grouprec.Id;
+            cmfWrapperData.CreatedDate = grouprec.CreatedDate;
+            cmfWrapperData.LastModifiedDate = grouprec.LastModifiedDate;
+            cmfWrapperData.CreatedBy = grouprec.CreatedBy.Name;
+            cmfWrapperData.LastModifiedBy =grouprec.LastModifiedBy.Name;
+            cmfWrapperData.Active = grouprec.ER_Active__c;
+            cmfWrapperData.Description= grouprec.ER_Description__c;
+            cmfWrapperData.ActiveCMFcount= String.valueof(grouprec.ER_Active_Account_Business_Partners__c);
+            System.debug('cmfWrapperData.ActiveCMFcount 3.1'+cmfWrapperData.ActiveCMFcount);
+            cmfWrapperData.InActiveCMFcount= String.valueof(grouprec.ER_Inactive_Account_Business_Partners__c);
+             System.debug('cmfWrapperData.InActiveCMFcount 3.2'+cmfWrapperData.InActiveCMFcount);
+            cmfWrapperData.ActiveContactCount= String.valueof(grouprec.ER_Count_of_Contacts__c);
+             System.debug('cmfWrapperData.ActiveContactCount 3.3' +cmfWrapperData.ActiveContactCount);
+            cmfWrapperData.InActiveContactCount= String.valueof(grouprec.ER_Inactive_Contacts__c);
+             System.debug(' cmfWrapperData.InActiveContactCount 3.4'+ cmfWrapperData.InActiveContactCount);
+            List<ER_SalesCloud_Integration_Model.cmfData> cmfdetails = new List<ER_SalesCloud_Integration_Model.cmfData> ();
+            for(ER_Account_Business_Partner__c rec :accountBPDataMap.get(GroupName)){
+                ER_SalesCloud_Integration_Model.cmfData cmf = new ER_SalesCloud_Integration_Model.cmfData();
+                cmf.CMFID = rec.ER_Account__r.Core_Direct_Account_Id__c;
+                cmf.name=  rec.ER_Account__r.Name;
+                cmf.DirectCustomerRoleName=rec.ER_Account__r.Core_Direct_Account_Type_Nm__c ;
+                cmf.SalesOrgName=rec.ER_Account__r.Core_ER_Sales_Org_Name__c;
+                cmf.SalesOrgCode=rec.ER_Account__r.Core_Direct_Sales_Organization_Nm__c;
+                cmf.SalesDistiChannelCode=rec.ER_Account__r.Core_Direct_Distributor_Channel_Nm__c; 
+                cmf.SalesDistiChannelName=rec.ER_Account__r.Core_ER_Sales_Disti_Chnl_Name__c;
+                cmf.AccountGroup=rec.ER_Account__r.Core_ER_Account_Group__c;
+                cmf.DirectCustomerRoleCode=rec.ER_Account__r.Core_ER_Direct_CustomerRelationship_Code__c;
+                cmf.Address=((rec.ER_Account__r.billingstate!=null)?rec.ER_Account__r.billingstate:'')+((rec.ER_Account__r.billingcity!=null)?rec.ER_Account__r.billingcity:'')+((rec.ER_Account__r.billingPostalCode!=null)?rec.ER_Account__r.billingPostalCode:'')+((rec.ER_Account__r.billingCountryCode!=null)?+rec.ER_Account__r.billingCountryCode:'');
+                cmfdetails.add(cmf);
+            }
+            cmfWrapperData.CMFs=cmfdetails;
+            cmfWrapperDataList.add(cmfWrapperData);
+        }
+        return cmfWrapperDataList;
     }
     private static ER_SalesCloud_Integration_Model.ContactBasicInformation getContactBasicDetails(Contact cont, Map<String,String> pRoleLabelValueMap){
         ER_SalesCloud_Integration_Model.ContactBasicInformation ContactDetails = new ER_SalesCloud_Integration_Model.ContactBasicInformation();
@@ -593,7 +740,7 @@ public class ER_SalesCloud_Integration {
             accountChangeEvent.Message1__c = jsonString.substring(ref,jsonStringLen);
         }
         if(count == 2){
-			accountChangeEvent.Message1__c = jsonString.substring(ref,2*ref);
+            accountChangeEvent.Message1__c = jsonString.substring(ref,2*ref);
             accountChangeEvent.Message2__c = jsonString.substring(2*ref,jsonStringLen);
         }
         if(count == 3){
@@ -602,9 +749,9 @@ public class ER_SalesCloud_Integration {
             accountChangeEvent.Message3__c = jsonString.substring(3*ref,jsonStringLen);
         }
         concat = (accountChangeEvent.Message__c != NULL ? accountChangeEvent.Message__c : '')+
-                 (accountChangeEvent.Message1__c != NULL ? accountChangeEvent.Message1__c : '')+
-                 (accountChangeEvent.Message2__c != NULL ? accountChangeEvent.Message2__c : '')+
-            	 (accountChangeEvent.Message3__c != NULL ? accountChangeEvent.Message3__c : '');
+            (accountChangeEvent.Message1__c != NULL ? accountChangeEvent.Message1__c : '')+
+            (accountChangeEvent.Message2__c != NULL ? accountChangeEvent.Message2__c : '')+
+            (accountChangeEvent.Message3__c != NULL ? accountChangeEvent.Message3__c : '');
         if(concat == jsonString){
             System.debug('Verification-->>TRUE'+count);
         }

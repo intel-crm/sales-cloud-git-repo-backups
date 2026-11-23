@@ -6,16 +6,17 @@ public with sharing class UCD_AccountRecordTypeController {
         try{
             Id intelRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
             String rejectedAccount = 'Rejected_Account';
+            String businessPartner = 'Business_Partner';
             List<AccountRecordTypeWrapper> accRecTypeWrapList = new List<AccountRecordTypeWrapper>();
             Id defaultRecordType;
             String sbrRecordValue = 'Intel_SBR';
-            Boolean sbrAccess = FeatureManagement.checkPermission('SBR_Profile_Access');
-                
+            Boolean sbrAccess = FeatureManagement.checkPermission('SBR_Profile_Access');    
             List<Id> recordTypeIdList = new List<Id>();
-	    Schema.DescribeSObjectResult accDescribe = Account.SObjectType.getDescribe();
-	    Map<String, Schema.RecordTypeInfo> recordTypeInfoMap = accDescribe.getRecordTypeInfosByName();
+            Schema.DescribeSObjectResult accDescribe = Account.SObjectType.getDescribe();
+			Map<String, Schema.RecordTypeInfo> recordTypeInfoMap = accDescribe.getRecordTypeInfosByName();
+            
             for(RecordTypeInfo info: recordTypeInfoMap.values()) {
-                if(info.isAvailable() && !(info.isMaster()) && (Info.getDeveloperName() != rejectedAccount)) {
+                if(info.isAvailable() && !(info.isMaster()) && (Info.getDeveloperName() != rejectedAccount) && (Info.getDeveloperName() != businessPartner)) {
                     recordTypeIdList.add(info.getRecordTypeId());
                 } 
                 

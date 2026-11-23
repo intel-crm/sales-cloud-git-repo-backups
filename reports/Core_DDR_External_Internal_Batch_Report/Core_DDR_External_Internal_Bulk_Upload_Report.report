@@ -64,6 +64,9 @@
         <field>Core_Design_Registration_Stage__c.Core_Partner_FSR_Nm__c</field>
     </columns>
     <columns>
+        <field>Core_Design_Registration_Stage__c.Core_Design_Solution_Network_Ind__c</field>
+    </columns>
+    <columns>
         <field>Core_Design_Registration_Stage__c.Core_End_Customer_Nm__c</field>
     </columns>
     <columns>
@@ -124,10 +127,7 @@
         <field>Core_Design_Registration_Stage__c.Core_Manufacturing_Region_Cd__c</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration_Stage__c.Core_End_Customer_URL__c</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration_Stage__c.DDR_Partner_FAE_Email__c</field>
+        <field>Core_Design_Registration_Stage__c.Core_FPGA_Quote_Comments_Txt__c</field>
     </columns>
     <description>Bulk upload report called from Design Registration Batch Detailed Page. Running this report directly will NOT return any data.</description>
     <format>Tabular</format>

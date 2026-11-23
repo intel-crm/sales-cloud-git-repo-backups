@@ -126,6 +126,36 @@
             <field>Core_DontNotify__c</field>
             <table>Core_Contact_Entitlement__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Display_Nm__c</field>
+            <table>Core_Contact_Entitlement__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Status_of_Assignment_Failure__c</field>
+            <table>Core_Contact_Entitlement__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Retrigger_Attempt__c</field>
+            <table>Core_Contact_Entitlement__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Entitlement_B2B_B2C_Indicator__c</field>
+            <table>Core_Contact_Entitlement__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Entitlement_Type__c</field>
+            <table>Core_Contact_Entitlement__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Removal_as_part_of_License_Reclaim__c</field>
+            <table>Core_Contact_Entitlement__c</table>
+        </columns>
         <masterLabel>Contact Entitlements</masterLabel>
     </sections>
 </ReportType>

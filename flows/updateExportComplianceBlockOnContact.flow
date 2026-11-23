@@ -3,10 +3,13 @@
     <actionCalls>
         <name>Erro_email</name>
         <label>Error email</label>
-        <locationX>572</locationX>
-        <locationY>492</locationY>
+        <locationX>842</locationX>
+        <locationY>600</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_12</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailAddresses</name>
@@ -52,6 +55,21 @@
     <apiVersion>57.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>Update GEC flag on Contact when GEC flag changes on Account</description>
+    <ends>
+        <name>END_ELEMENT_11</name>
+        <locationX>50</locationX>
+        <locationY>276</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_12</name>
+        <locationX>842</locationX>
+        <locationY>708</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_13</name>
+        <locationX>314</locationX>
+        <locationY>600</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>ValidationBypass</name>
@@ -79,15 +97,72 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_log_entry</name>
+        <label>Create log entry</label>
+        <locationX>842</locationX>
+        <locationY>492</locationY>
+        <connector>
+            <targetReference>Erro_email</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>ACM updateExportComplianceBlockOnContact</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Update Account</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordUpdates>
         <description>Using this we are trying to  bypass &quot;Embargoed_Country&quot; Validation rule of Contact object</description>
         <name>Bypass_Embargoed_Country_Validation_Rule</name>
         <label>Bypass Embargoed Country Validation Rule</label>
-        <locationX>308</locationX>
+        <locationX>314</locationX>
         <locationY>276</locationY>
         <connector>
             <targetReference>updateContact</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Bypass_Flow__c</field>
@@ -108,8 +183,15 @@
         <description>Undo the changes done in bypass Embargoed Country Validation Rule</description>
         <name>Undo_Bypass_Embargoed_Country_Validation_Rule</name>
         <label>Undo Bypass Embargoed Country Validation Rule</label>
-        <locationX>308</locationX>
+        <locationX>314</locationX>
         <locationY>492</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_13</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Bypass_Flow__c</field>
@@ -129,13 +211,13 @@
     <recordUpdates>
         <name>updateContact</name>
         <label>updateContact</label>
-        <locationX>308</locationX>
+        <locationX>314</locationX>
         <locationY>384</locationY>
         <connector>
             <targetReference>Undo_Bypass_Embargoed_Country_Validation_Rule</targetReference>
         </connector>
         <faultConnector>
-            <targetReference>Erro_email</targetReference>
+            <targetReference>Create_log_entry</targetReference>
         </faultConnector>
         <inputAssignments>
             <field>Core_Con_Export_Compliance_Block_Reason__c</field>
@@ -152,8 +234,11 @@
         <inputReference>$Record.Contacts</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_11</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Export_Compliance_Block__c</field>

@@ -40,10 +40,6 @@
         <field>Order.Sales_ERP_Entry_Date_Dt__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>ORDER_TOTAL_AMOUNT</field>
-    </columns>
-    <columns>
         <field>Order.Sales_Header_Special_Instructions_Dsc__c</field>
     </columns>
     <columns>
@@ -135,9 +131,6 @@
         <field>ORDER_ITEM_DESCRIPTION</field>
     </columns>
     <columns>
-        <field>OrderItem.PSG_Customer_frght_collect_account__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OrderItem.SBQQ__QuotedQuantity__c</field>
     </columns>
@@ -168,7 +161,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Draft Order,SAP Order Creation Failed,Order Cancelled</value>
+            <value>,Draft Order,Order Activated,Order Shipped from SAP,SAP Order created successfully,Resubmission In Progress,SAP Order Creation Failed,SAP Order Shipment Failed,Order Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRICEBOOK_NAME</column>

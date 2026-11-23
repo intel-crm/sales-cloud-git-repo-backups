@@ -254,7 +254,7 @@
         <fullName>ER_Contact_Email_backend__c</fullName>
         <externalId>false</externalId>
         <label>Contact Email</label>
-        <length>120</length>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -372,15 +372,24 @@
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
+    <fields>
+        <fullName>ER_Start_Date__c</fullName>
+        <formula>CreatedDate</formula>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
     <label>Contact Association</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
         <columns>ER_Customer_Master_File_Group__c</columns>
         <columns>ER_Contact__c</columns>
         <columns>ER_Account_Name__c</columns>
         <columns>ER_Phone__c</columns>
         <columns>ER_Contact_Email__c</columns>
-        <columns>ER_Active__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -406,10 +415,10 @@
     </nameField>
     <pluralLabel>Contact Associations</pluralLabel>
     <searchLayouts>
-        <searchResultsAdditionalFields>ER_Contact__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>ER_Contact_Email_backend__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>ER_Account__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ER_Contact_Fields_Merged__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ER_Contact__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ER_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ER_Contact_Email__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ER_Customer_Master_File_Group__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
@@ -419,6 +428,13 @@
         <description>Only active contacts can be added in the CMF Group</description>
         <errorConditionFormula>AND(ISNEW(),NOT(ISPICKVAL(ER_Contact__r.Core_Login_Status__c ,&apos;Active&apos;)),ISNULL( ER_End_Date__c))</errorConditionFormula>
         <errorMessage>Only Active Contacts Can be Added to CMF Group</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ER_add_contact_only_if_cmf_ispresent</fullName>
+        <active>false</active>
+        <description>Add Contact to particular group if atleast one CMF is attached to group</description>
+        <errorConditionFormula>NOT(ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c&gt;0)</errorConditionFormula>
+        <errorMessage>No CMF is linked to this group</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>

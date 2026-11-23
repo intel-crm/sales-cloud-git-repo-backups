@@ -154,6 +154,7 @@ public without sharing class Core_SA_ServiceWrapper {
 
 		}
         // return TotalAssists of Type SAUserAssistsDefination
+        TotalAssists = null;
    		return(TotalAssists);
     }
     

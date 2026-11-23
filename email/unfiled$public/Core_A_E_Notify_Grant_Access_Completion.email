@@ -1,0 +1,43 @@
+<messaging:emailTemplate subject="A&E grant access status for contact {!relatedTo.Name} ({!relatedTo.Core_AGS_Integration_Status__c})" recipientType="user" relatedToType="contact" replyTo="donotreply@test.com">
+<messaging:htmlEmailBody >
+Dear  {!recipient.Name}, 
+<br/>
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Pending'}">
+Your request for A&#38;E grant access on contact {!relatedTo.Name} on Account {!relatedTo.Account.Name} is Pending.<br/>
+
+</apex:outputPanel>
+
+<br/><apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Successful'}">
+Your request for A&#38;E grant access on contact {!relatedTo.Name} on Account {!relatedTo.Account.Name} is Successful.
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Failed'}">
+We are currently processing your request to grant A&#38;E entitlement to the contact {!relatedTo.Name}, for Account {!relatedTo.Account.Name}. The process is taking longer than anticipated. We kindly ask for your patience and suggest you check back later while we continue to work on your request.
+</apex:outputPanel><br/>
+
+<br/>
+<c:Core_A_E_Entitlement_Data_For_Email contactId="{!relatedTo.Id}" reqId="{!recipient.Id}"/>
+<br/>
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Pending'}">
+Please create a case via <a href = "https://intel.lightning.force.com/lightning/n/Ask_a_Question" target = "_blank"> Ask a question in Salesforce </a> (Access &#38; Entitlements).
+<br></br>
+<br>Thank you!</br>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Failed'}">
+If the issue remains unresolved after 3 hours, please submit a case through the <a href = "https://intel.lightning.force.com/lightning/n/Ask_a_Question" target = "_blank"> Ask a question in Salesforce </a> (Access &#38; Entitlements).
+<br></br>
+<br>Thank you for your understanding.</br>
+</apex:outputPanel> 
+
+<apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Successful'}">
+Note: Above entitlement list is indicative. Please refer the contact record for more details.
+<br></br>
+<br>Thank you!</br>
+</apex:outputPanel><br/>
+
+
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

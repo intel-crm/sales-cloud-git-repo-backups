@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_OppProd_Clear_BU_Fields workflow rule
+Workflow rule description: Clears the approval fields in two situations:
+1) Products are created in a won status. This will prevent someone from cloning a product in won status
+2) Changing a product status from won to another status that is prior to won&quot;</description>
+    <label>Core_OppProd_Clear_BU_Fields_2</label>
+    <migratedFromWorkflowRuleName>Core_OppProd_Clear_BU_Fields</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Clear Field
+Clear the Field</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Core_Approved_BU_Product_Segment__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Approved_BU_Short_Name__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>OR(   AND(     ISNEW(),     OR(       CONTAINS(Text({!$Record.Core_Status__c}), &quot;Win&quot;),       TEXT({!$Record.Core_Status__c}) = &apos;Production Lost&apos;,       TEXT({!$Record.Core_Status__c}) = &apos;Production Cancelled&apos;,       NOT(ISNULL({!$Record.Core_Approved_Quantity__c}))     )   ),   AND(     ISCHANGED({!$Record.Core_Status__c}),     NOT(OR(       CONTAINS(Text({!$Record.Core_Status__c}), &quot;Win&quot;),      	TEXT({!$Record.Core_Status__c}) = &apos;Production Lost&apos;,     	TEXT({!$Record.Core_Status__c}) = &apos;Production Cancelled&apos;     ))   ) )</filterFormula>
+        <object>OpportunityLineItem</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

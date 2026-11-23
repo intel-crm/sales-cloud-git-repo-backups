@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>amal.thomas@intel.com</contactEmail>
+    <contactEmail>jeganathanx.balasubramani@intel.com</contactEmail>
     <label>BRE_Callback</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/authcallback/BRE_Callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6jXXUoDgm4rQxpXI3fJgdBrztzTplCELUZXe46OlkwTDswnogpndMchnFJR7</consumerKey>
+        <callbackUrl>https://intel--crmdevint3.sandbox.my.salesforce.com/services/authcallback/BRE_Callback</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDqxpMuu9YjXikCf20WWdcqA5Qrtu_mN35vYnaozNNoh5l.NAaJxrApUvk1LD</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -52,7 +52,7 @@
         <scopes>PwdlessLogin</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>ENFORCE</ipRelaxation>
+        <ipRelaxation>BYPASS</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>

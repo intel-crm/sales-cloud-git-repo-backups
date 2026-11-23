@@ -2,8 +2,6 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
         <fullName>CEP_Response_Email1</fullName>
-        <ccEmails>customer.excellence@intel.com</ccEmails>
-        <ccEmails>venu.karumuru@intel.com</ccEmails>
         <description>CEP Response Email - New</description>
         <protected>false</protected>
         <recipients>
@@ -21,6 +19,6 @@
             <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_CEP_Response_Email</template>
+        <template>unfiled$public/Core_CEP_Response_Email</template>
     </alerts>
 </Workflow>

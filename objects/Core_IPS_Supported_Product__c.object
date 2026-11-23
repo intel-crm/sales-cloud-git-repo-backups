@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Supported_Product_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Supported_Product_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -321,19 +315,6 @@ IF (CONTAINS(Core_Code_Name_Hidden_Insert_Spaces__c, &apos;NOCONA&apos;), SUBSTI
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_IPS_Opportunity_PAR__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Opportunity PAR</label>
-        <referenceTo>Core_IPS_Opportunity_PAR__c</referenceTo>
-        <relationshipLabel>Supported Products</relationshipLabel>
-        <relationshipName>Supported_Products</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Core_IPS_Public_Product__c</fullName>
         <defaultValue>false</defaultValue>
         <description>This field if checked indicates that the product is a public product</description>
@@ -477,6 +458,20 @@ This field value cannot be changed once checked as Public Product.</inlineHelpTe
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Support_Org_and_Product_Name__c</fullName>
+        <description>Support Org and Product Name for Search Layout to add Project Product.</description>
+        <externalId>false</externalId>
+        <formula>Core_Product_Organization__r.Core_IPS_Support_Org_Name__c  +&apos; : &apos;+  Core_Product__r.Name
+/*Core_Product_Organization__r.Name +&apos; : &apos;+ &apos;Intel® Integrated RAID Module RMS3HC080&apos;*/</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Support Org and Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Supported_Prod_Name__c</fullName>
         <description>Formula field that obtains it&apos;s value from the standard Product object Name field.</description>
         <externalId>false</externalId>
@@ -544,6 +539,17 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <type>Text</type>
         <unique>true</unique>
     </fields>
+    <fields>
+        <fullName>IPS_Enabled_For_Subscriptions__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Created as part of Taurus POC. please ignore</description>
+        <inlineHelpText>Created as part of Taurus POC. please ignore</inlineHelpText>
+        <label>Enabled For Subscriptions</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
     <label>Supported Product</label>
     <listViews>
         <fullName>All</fullName>
@@ -592,14 +598,15 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <searchFilterFields>Core_Flag_Status__c</searchFilterFields>
         <searchFilterFields>Core_Product__c</searchFilterFields>
         <searchFilterFields>Core_Supported_Product_Name__c</searchFilterFields>
+        <searchResultsAdditionalFields>Core_Support_Org_and_Product_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Supported_Product_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Product__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Code_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_Supported_Product_Alias__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Flag_Status__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Product_Organization__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Support_Org_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_Product_Application__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Code_Name__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_Supported_Product_Alias__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
@@ -731,17 +738,6 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <url>/lightning/n/CopyCategories_EDQ?c__recordId={!Core_IPS_Supported_Product__c.Id}</url>
     </webLinks>
     <webLinks>
-        <fullName>Core_Add_Issue_categories</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Add Case Categories</masterLabel>
-        <openType>sidebar</openType>
-        <page>Core_addIssueCategories</page>
-        <protected>false</protected>
-    </webLinks>
-    <webLinks>
         <fullName>Core_EDO_under_Sub_Cat</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
@@ -759,18 +755,6 @@ Set to unique to ensure a single EPM ID can be added to a Support Org only once.
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
         <url>https://intel--crmsb14.cs21.my.salesforce.com/00Oq0000000SKiw</url>
-    </webLinks>
-    <webLinks>
-        <fullName>Core_IPS_Copy_Categories_EnvironmentDetails</fullName>
-        <availability>online</availability>
-        <description>Copy Environment Details Questions, Case Categories, Sub Categories to another Supported Product</description>
-        <displayType>button</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Copy Categories &amp; EDQs</masterLabel>
-        <openType>sidebar</openType>
-        <page>Core_IPS_Copy_EnvironmentDetails</page>
-        <protected>false</protected>
     </webLinks>
     <webLinks>
         <fullName>Core_IPS_Set_to_General</fullName>
@@ -835,7 +819,7 @@ if (cnfrm) {
         <masterLabel>Set to EOIS</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/19.0/connection.js&quot;)} 
 
 // Get the record
 var SP = new sforce.SObject(&quot;Core_IPS_Supported_Product__c&quot;); 

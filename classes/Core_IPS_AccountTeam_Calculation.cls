@@ -55,11 +55,18 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
                       if(actShareObj.UserOrGroupId == custATObj.Core_Team_Member__c){
                           isMatched =True;                         
                           //[March/16/2016 : Added below if condition to only update the related Custom Account Team records when there is any change in Opportunity/Case/Account AccessLevel.]
+                          /*US1021249 - 05/27/2021 - Yamini - FLS Check for security vulnerability --*/
                           if(custATObj.Core_Opportunity_Access__c <> actShareObj.opportunityaccesslevel
                           || custATObj.Core_Case_Access__c <> actShareObj.caseaccesslevel || custATObj.Core_Account_Access__c <> actShareObj.accountaccesslevel){
-                              custATObj.Core_Opportunity_Access__c = actShareObj.opportunityaccesslevel;
+                           // if (Schema.sObjectType.Core_Account_Team__c.fields.Core_Opportunity_Access__c.isUpdateable()) { 
+                            custATObj.Core_Opportunity_Access__c = actShareObj.opportunityaccesslevel;
+                           // }
+                            if (Schema.sObjectType.Core_Account_Team__c.fields.Core_Case_Access__c.isUpdateable()) {
                               custATObj.Core_Case_Access__c = actShareObj.caseaccesslevel;
+                            }
+                            if (Schema.sObjectType.Core_Account_Team__c.fields.Core_Account_Access__c.isUpdateable()) {
                               custATObj.Core_Account_Access__c = actShareObj.accountaccesslevel;
+                            }
                               toUpdateList.add(custATObj);                                                            
                           }
                       }
@@ -71,12 +78,25 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
           }
           if(aShareInsertList <> null && aShareInsertList.size() > 0){
               for(AccountShare aShareObj : aShareInsertList){
-                  Core_Account_Team__c custom_AT = new Core_Account_Team__c(Core_Account__c = aShareObj.AccountId, 
-                                                                            Core_Team_Member__c=aShareObj.UserOrGroupId,
-                                                                            Core_Opportunity_Access__c = aShareObj.opportunityaccesslevel, 
-                                                                            Core_Case_Access__c = aShareObj.caseaccesslevel,
-                                                                            Core_Account_Access__c = aShareObj.accountaccesslevel                                                                            
-                                                                            );
+                  Core_Account_Team__c custom_AT = new Core_Account_Team__c();
+                  /*--Start US1021248 - 05/28/2021 - Farhaad - FLS Check for security vulnerability --*/
+                  if (Schema.sObjectType.Core_Account_Team__c.fields.Core_Account__c.isCreateable()) {
+                    custom_AT.Core_Account__c = aShareObj.AccountId;
+                  }
+                  if (Schema.sObjectType.Core_Account_Team__c.fields.Core_Team_Member__c.isCreateable()) {
+                    custom_AT.Core_Team_Member__c=aShareObj.UserOrGroupId;
+                  }
+                  if (Schema.sObjectType.Core_Account_Team__c.fields.Core_Opportunity_Access__c.isCreateable()) {
+                    custom_AT.Core_Opportunity_Access__c = aShareObj.opportunityaccesslevel;
+                  }
+                  if (Schema.sObjectType.Core_Account_Team__c.fields.Core_Case_Access__c.isCreateable()) {
+                    custom_AT.Core_Case_Access__c = aShareObj.caseaccesslevel;
+                  }
+                  if (Schema.sObjectType.Core_Account_Team__c.fields.Core_Account_Access__c.isCreateable()) {
+                    custom_AT.Core_Account_Access__c = aShareObj.accountaccesslevel;
+                  }
+                    /*--End US1021248 - 05/28/2021 - Farhaad - FLS Check for security vulnerability --*/                                                                          
+                                                                            
                   toInsertList.add(custom_AT);                  
               }                
           }
@@ -100,8 +120,13 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
       try{
           if(toInsertList <> null && toInsertList.size() > 0){
               if(context=='Batch'){
+                  /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
+                if (Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Change_Log__c.isCreateable()) {
                 lineItem.Core_Change_Log__c+='<tr><th>New AccountTeam Members</th><th>'+toInsertList.size()+'</th></tr>';
+                }
+                if (Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Number_of_Inserts__c.isCreateable()) {
                 lineItem.Core_Number_of_Inserts__c = toInsertList.size();
+                }
               }
               insert toInsertList;
               
@@ -110,7 +135,9 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
 
             if(context=='Batch'){
                 lineItem.Core_Change_Log__c+='<tr><th>Updated AccountTeam Members</th><th>'+toUpdateList.size()+'</th></tr>';
+                if (Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Number_of_Updates__c.isCreateable()) {
                 lineItem.Core_Number_of_Updates__c = toUpdateList.size();
+                }
               }
               update toUpdateList;
           }
@@ -118,12 +145,20 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
 
             if(context=='Batch'){
                 lineItem.Core_Change_Log__c+='<tr><th>Deleted AccountTeam Members</th><th>'+toDeleteList.size()+'</th></tr>';
+                if (Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Number_of_Deletes__c.isCreateable()) {
                 lineItem.Core_Number_of_Deletes__c = toDeleteList.size();
+                }
               }
+              /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
+              if (Core_Account_Team__c.sObjectType.getDescribe().isDeletable()) {
               delete toDeleteList;
+              }
           }
           if(context=='Batch'){
-               lineItem.Core_Change_Log__c+='</table>';
+               /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
+               // if (Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Change_Log__c.isCreateable()) {
+                     lineItem.Core_Change_Log__c+='</table>';
+                //}
                insert lineItem;
            }
           successStatus = 'true'; /* US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability */
@@ -138,8 +173,12 @@ public without sharing class Core_IPS_AccountTeam_Calculation {
         this.batchProcessingId=batchProcessingId;
         this.context=context;
         lineItem=new Batch_Processing_Line_Item__c();
-        lineItem.Batch_Processing__c = batchProcessingId;
-        lineItem.Core_Change_Log__c='<table><tr><th>Batch Started</th><th>'+accountId+'</th></tr>';
+        if (Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Batch_Processing__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+            lineItem.Batch_Processing__c = batchProcessingId;
+        }
+        if (Schema.sObjectType.Batch_Processing_Line_Item__c.fields.Core_Change_Log__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+            lineItem.Core_Change_Log__c='<table><tr><th>Batch Started</th><th>'+accountId+'</th></tr>';
+        }
         accId = accountId;
         calculateTeam();
     }

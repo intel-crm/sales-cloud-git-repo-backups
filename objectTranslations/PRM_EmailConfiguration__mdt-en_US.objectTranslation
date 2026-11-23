@@ -36,6 +36,10 @@
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Guest</masterLabel>
             <translation><!-- Guest --></translation>
         </picklistValues>
@@ -44,8 +48,20 @@
             <translation><!-- Independent Software Vendor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Integrator</masterLabel>
-            <translation><!-- Solution Integrator --></translation>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -56,8 +72,8 @@
         <label><!-- Tier --></label>
         <name>PRM_Tier__c</name>
         <picklistValues>
-            <masterLabel>Gold</masterLabel>
-            <translation><!-- Gold --></translation>
+            <masterLabel>GOLD</masterLabel>
+            <translation><!-- GOLD --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Member</masterLabel>

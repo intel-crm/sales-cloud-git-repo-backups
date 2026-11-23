@@ -39,6 +39,10 @@
         <name>CPT_Percent_Deal_Win_Revenue__c</name>
     </fields>
     <fields>
+        <label><!-- Margin --></label>
+        <name>CPT_Percent_Margin__c</name>
+    </fields>
+    <fields>
         <label><!-- Sales OKR --></label>
         <name>CPT_Percent_Sales_OKR__c</name>
     </fields>
@@ -47,9 +51,8 @@
         <name>CPT_Percent_Sales_Team_Goal__c</name>
     </fields>
     <fields>
-        <help><!-- The identifier of the Plan in Callidus system. --></help>
-        <label><!-- Persona ID --></label>
-        <name>CPT_Persona_ID__c</name>
+        <label><!-- Pay for Results --></label>
+        <name>CPT_Percent_Wins_Revenue__c</name>
     </fields>
     <fields>
         <help><!-- Unique Code given to each Plan by IT Team. This Code is stamped on the Quota Setup record, and is used to derive the OKR and Sales Team Goal dependent picklist values. --></help>
@@ -100,5 +103,9 @@
     <validationRules>
         <errorMessage><!-- Field not editable --></errorMessage>
         <name>CPT_Prevent_Plan_Number_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- 33.333 and 33.334 percent cannot be selected --></errorMessage>
+        <name>Restrict_33_percent_for_all_Plans</name>
     </validationRules>
 </CustomObjectTranslation>

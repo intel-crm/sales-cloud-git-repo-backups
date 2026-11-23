@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>AMI Customer User</description>
+    <description>American Megatrends, Inc. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>AMI Customer User</name>
+    <name>American Megatrends, Inc. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Inactive_Accounts_Role</parentRole>
+    <parentRole>IPS_Agent</parentRole>
 </Role>

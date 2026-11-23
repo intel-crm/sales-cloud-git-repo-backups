@@ -71,7 +71,6 @@ Workflow rule description: This workflow rule is used to send notifications to c
 Reminders on 15th,25th day of document submission due date.&quot;</description>
     <environments>Default</environments>
     <label>Core_MDF_Post_Payment_Document_Request_Notifications</label>
-    <migratedFromWorkflowRuleName>Core_MDF_Post_Payment_Document_Request_Notifications</migratedFromWorkflowRuleName>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Average</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>CDF1</column>
+        </chartSummaries>
+        <chartType>VerticalColumnGrouped</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Contact.Contact_Messages__r$CreatedDate</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>Contact.Contact_Messages__r$Core_Message_Type__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>true</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>Contact.Contact_Messages__r$Inbound_Message__c.Core_Created_Date_Time__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Contact_Messages__r$Inbound_Message__c.Core_Outbound_Message__c.Core_Created_Date_Time__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF((MINUTE(TIMEVALUE(Contact_Message__c.Inbound_Message__c.Core_Created_Date_Time__c)) - MINUTE(TIMEVALUE(Contact_Message__c.Inbound_Message__c.Core_Outbound_Message__c.Core_Created_Date_Time__c)))&lt;0, 60+MINUTE(TIMEVALUE(Contact_Message__c.Inbound_Message__c.Core_Created_Date_Time__c)) - MINUTE(TIMEVALUE(Contact_Message__c.Inbound_Message__c.Core_Outbound_Message__c.Core_Created_Date_Time__c)), MINUTE(TIMEVALUE(Contact_Message__c.Inbound_Message__c.Core_Created_Date_Time__c)) - MINUTE(TIMEVALUE(Contact_Message__c.Inbound_Message__c.Core_Outbound_Message__c.Core_Created_Date_Time__c)))</calculatedFormula>
+        <dataType>Double</dataType>
+        <description>Calculated Turn Around Time for entitlement transaction</description>
+        <developerName>CDF1</developerName>
+        <label>Turn Around Time</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>Contact.Contact_Messages__r$Core_Message_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>AGS Contact Entitlement 2.0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact.Contact_Messages__r$Core_Message_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>AGS Contact Entitlement</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <field>Contact.Contact_Messages__r$CreatedDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact.Contact_Messages__r$Core_Message_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>A&amp;E 2.0 Metrics</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>A_E_2_0_Metrics__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>CDF1</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Contact$CreatedDate</dateColumn>
+        <endDate>2020-09-01</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-08-31</startDate>
+    </timeFrameFilter>
+</Report>

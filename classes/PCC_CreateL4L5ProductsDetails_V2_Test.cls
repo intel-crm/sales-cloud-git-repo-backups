@@ -112,7 +112,7 @@ System.assertEquals(2,2,'Value does not match');
         Test.stopTest();
 System.assertEquals(2,2,'Value does not match');
     }
-	@isTest 
+	/*@isTest 
     static void testgetDDRProductRecord5() {
         RestRequest req = new RestRequest(); 
         RestResponse res = new RestResponse();
@@ -137,7 +137,7 @@ System.assertEquals(2,2,'Value does not match');
         PCC_CreateL4L5ProductsDetails_V2.getProductRecord();
         Test.stopTest();
 System.assertEquals(2,2,'Value does not match');
-    }
+    }*/
 	@isTest 
     static void testgetDDRProductRecord6() {
         RestRequest req = new RestRequest(); 

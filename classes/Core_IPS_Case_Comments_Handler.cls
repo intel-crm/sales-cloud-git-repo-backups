@@ -389,7 +389,7 @@ Modification Log :
                         if(Schema.SObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Authored_By_Name__c.isUpdateable()){
                             caseCmnt.Core_IPS_Comment_Authored_By_Name__c = userMap.get(caseCmnt.Core_IPS_Comment_Authored_By__c).name;
                         }
-                        // Avoid Deeply Nested IF Statements Kamala - TWC745-9117
+                        //Avoid Deeply Nested IF Statements Kamala
                         if((Label.Core_IPS_External_Lenovo_Customer_Profile_Id.contains(userMap.get(caseCmnt.Core_IPS_Comment_Authored_By__c).profileid)) &&(Schema.SObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Author_Type__c.isUpdateable())) {
                                 caseCmnt.Core_IPS_Comment_Author_Type__c = Core_IPS_Labels__c.getValues('Customer').value__c;                     
                         } 
@@ -468,7 +468,7 @@ Modification Log :
                     }
                     
                     //for(Core_IPS_Case_Comments__c RTF: newList){
-                    // Avoid Deeply Nested IF Statements Kamala - TWC745-9117
+                    //Avoid Deeply Nested IF Statements Kamala
                     if((caseComment.Core_IPS_Comment_Author_Type__c == Core_IPS_Labels__c.getValues('Customer').value__c || caseComment.Core_IPS_Comment_Author_Type__c == Core_IPS_Labels__c.getValues('Partner').value__c || caseComment.Core_IPS_Comment_Author_Type__c == Core_IPS_Labels__c.getValues('Partner - DFAE').value__c)
                        &&(subStatusSet.contains(cs.Core_Sub_Status__c) && caseComment.Core_IPS_Comment_Attachment_Id__c == null)){
                             cs.Core_Sub_Status__c = INVESTIGATING_TEXT;

@@ -24,7 +24,7 @@
         <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Sales_Groups__c</field>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
@@ -48,6 +48,9 @@
         <field>Opportunity.Core_Solution_Detail_DCG_CCG__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Solution_Detail__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Vendor__c</field>
     </columns>
     <columns>
@@ -63,7 +66,7 @@
         <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
     </columns>
     <filter>
-        <booleanFilter>(((((1 AND 2 AND (3 or 4 or 5))) AND 6) AND 7) AND 8)</booleanFilter>
+        <booleanFilter>((1 AND 2 AND (3 or 4 or 5))) AND 6</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -106,31 +109,12 @@
             <operator>notContain</operator>
             <value>Amazon CTT 6QPS</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Area__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>DCG Compute Deal $</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Solution_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>,AI on IA Deal Win (Off-Prem),Enterprise High Perf Compute (Off-Prem),Enterprise Analytics (Off-Prem)</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
-    <groupingsAcross>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
@@ -162,6 +146,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_PREVCURY</interval>
     </timeFrameFilter>
 </Report>

@@ -9,6 +9,7 @@ import PCC_DDRPermissionSet from '@salesforce/label/c.PCC_DDRPermissionSet';
 import { getRecord } from 'lightning/uiRecordApi';
 import USER_ID from '@salesforce/user/Id';
 import NAME_FIELD from '@salesforce/schema/User.Name';
+import REGISTRATION_TYPE from "@salesforce/schema/Core_Design_Registration__c.PCC_Registration_Type__c";
 
 
 
@@ -22,7 +23,9 @@ export default class PRM_NavigationCompPCC extends NavigationMixin(LightningElem
   @track partnerPermissions = [];
   @track hasPartnerAccepted = false;
   @track isDealPartner = false;
+  @track isDDRPartner = false;
   @track userName = '';
+  @track reg_Type = '';
   @wire(getRecord, {
     recordId: USER_ID,
     fields: [NAME_FIELD]
@@ -43,13 +46,23 @@ export default class PRM_NavigationCompPCC extends NavigationMixin(LightningElem
 
   @api menuItems = [];
   @track menus = [];
-
-  // clickedTab = 'tab1';
+  @track menuLst= [
+    { id: 1, label: 'Deal Home', target: '/partneradmin/s/deal' },
+    { id: 2, label: 'Design Home', target: '/partneradmin/s/ddr' },
+    { id: 3, label: 'Deal Registration', target: '/partneradmin/s/deal-reg-list-view' },
+    { id: 4, label: 'Design Registration', target: '/partneradmin/s/core-design-registration/Core_Design_Registration__c/Default' },
+    { id: 5, label: 'Opportunity', target: '/partneradmin/s/opportunity' },
+    { id: 6, label: 'Reports', target: '/partneradmin/s/report/' },
+    { id: 7, label: 'Bulk Upload', target: '/partneradmin/s/pcc-bulkupload' },
+    { id: 8, label: 'User Preferences', target: '/partneradmin/s/user-preferences'},
+    { id: 9, label: 'Rebate Claim', target: '/partneradmin/s/rebate-claim'}
+    ];
+  @track selectedTab;
   handleNavigation(event) {
 
     const target = event.target.dataset.target;
     const tabId = event.target.dataset.tabId;
-    const activetabContent = event.target.label;
+    
     this.clickedTab = tabId;
 
     if (target) {
@@ -63,15 +76,33 @@ export default class PRM_NavigationCompPCC extends NavigationMixin(LightningElem
   }
 
   connectedCallback() {
+    const pageLink = window.location;
+    console.log('@@PageLink=='+pageLink);
+    this.menuLst.forEach(menuItem => {
+      
+      console.log('@@menuItem=='+menuItem.target);
+      let url = pageLink.toString().toLowerCase();
+      let menuStr = menuItem.target.toString().toLowerCase();
+      if(url.includes(menuStr)){
+        this.selectedTab = menuItem.label;
+      }
+    })
+   console.log('@@Highlight=='+this.selectedTab);
+
     fetchUserPermissions()
       .then(data => {
-        if (data[0].permissionSets.length > 0) {
-          if (data[0].permissionSets.includes(this.dealPermissionSet)) {
+        console.log('@@Data=='+JSON.stringify(data));
+        if ((data[0].permissionSets.length > 0) && (data[0].permissionSets.includes(this.dealPermissionSet))) {
             this.isDealPartner = true;
             this.hasPartnerAccepted = data[0].hasPartnerAccepted;
           }
-        }
-        if (!this.hasPartnerAccepted && this.isDealPartner) { this.verifyTermsAndConditions(); } else{
+          if ((data[0].permissionSets.length > 0) && (data[0].permissionSets.includes(this.ddrPermissionSet))) {
+            this.isDDRPartner = true;
+          }
+        if (!this.hasPartnerAccepted && this.isDealPartner) { 
+          this.verifyTermsAndConditions(); 
+        } 
+        else{
           this.loadMenuItems();
         }
 
@@ -82,19 +113,55 @@ export default class PRM_NavigationCompPCC extends NavigationMixin(LightningElem
   }
 
   loadMenuItems() {
-    if (this.isDealPartner) {
-      this.menus.push({ id: 1, label: 'Home', target: '/s/deal', className: '' });
-      this.menus.push({ id: 2, label: 'Deal Registration', target: '/s/deal-reg-list-view', className: '' });
+    /*CodeScan Line Length is 160chars -- Don't Modify. */
+    
+          if (this.isDealPartner){
+            this.menus.push({ id: 1, label: 'Home', target: '/partneradmin/s/deal', className: '' });
+            this.menus.push({ id: 2, label: 'Deal Registration', target: '/partneradmin/s/deal-reg-list-view', 
+                              className: '' });
+            this.menus.push({ id: 4, label: 'Opportunity', target: '/partneradmin/s/opportunity/Opportunity/Default', 
+                                className: '' });
+            this.menus.push({ id: 5, label: 'Rebate Claim', target: '/partneradmin/s/rebate-claim/PCC_Rebate_Claim__c/Default', 
+                              className: '' });
+            this.menus.push({ id: 6, label: 'Reports', target: '/partneradmin/s/report/Report/Recent', className: '' });
+          }
+          if (this.isDDRPartner) {
+            this.menus.push({ id: 1, label: 'Home', target: '/partneradmin/s/ddr', className: '' });
+            this.menus.push({ id: 3, label: 'Design Registration',
+                              target: '/partneradmin/s/core-design-registration/Core_Design_Registration__c/Default', className: ''});
+            this.menus.push({ id: 4, label: 'Opportunity', target: '/partneradmin/s/opportunity/Opportunity/Default', 
+                                className: '' });
+            this.menus.push({ id: 6, label: 'Reports', target: '/partneradmin/s/report/Report/Recent', className: '' });
+            this.menus.push({ id: 7, label: 'Bulk Upload', target: '/partneradmin/s/pcc-bulkupload', className: '' });
+            this.menus.push({ id: 8, label: 'User Preferences', target: '/partneradmin/s/user-preferences', className: '' });
+          }
+    
+    this.menus.sort((a, b) => a.id - b.id);
+
+    if(this.selectedTab === undefined){
+      if(this.isDDRPartner){
+        this.selectedTab = 'Design Registration';
+      }
+      else {
+        this.selectedTab = 'Deal Registration';
+      }
     }
-    if (!this.isDealPartner) {
-      this.menus.push({ id: 1, label: 'Home', target: '/s/ddr', className: '' });
-      this.menus.push({ id: 3, label: 'Design Registration',target: '/s/core-design-registration/Core_Design_Registration__c/Default', className: ''
-      });
-      this.menus.push({ id: 6, label: 'Bulk Upload', target: '/s/pcc-bulkupload', className: '' });
-      this.menus.push({ id: 7, label: 'User Preferences', target: '/s/user-preferences', className: '' });
-    }
-    this.menus.push({ id: 4, label: 'Opportunity', target: '/s/opportunity/Opportunity/Default', className: '' });
-    this.menus.push({ id: 5, label: 'Reports', target: '/s/report/Report/Recent', className: '' });
+
+    this.menus.forEach(menuItem => {
+      if(this.selectedTab.includes('Home')){
+          if(this.isDealPartner && this.isDDRPartner &&(this.selectedTab === menuItem.label)){
+            menuItem.className = 'liselection';
+          }
+          else if(menuItem.label === 'Home') {
+            menuItem.className = 'liselection';
+          }
+        }
+        else if((this.selectedTab === menuItem.label) && !this.selectedTab.includes('Home')){
+          menuItem.className = 'liselection';
+          console.log('@@Assigned');
+        }
+    })
+    console.log('@@Menu Last=='+JSON.stringify(this.menus));
   }
 
   renderedCallback() {

@@ -39,7 +39,7 @@ public class PRM_RegistrationProfileResponse_Test {
         acc1.BillingStreet='4th Floor,ITPL,Brookfield';
         acc1.BillingPostalCode='560037';
         acc1.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
-        acc1.Core_IPA_Partner_Role__c = 'Manufacturer';
+        acc1.Core_IPA_Partner_Role__c = 'Guest';
         acc1.Core_account_Type__c = 'Original Design Manufacturer (ODM)';
         acc1.Industry = '';
         acc1.RecordTypeId = accountRecordType;
@@ -47,11 +47,12 @@ public class PRM_RegistrationProfileResponse_Test {
         
         Contact con = PRM_TestUtility.getContact();
         con.AccountId = acc1.Id;
-        con.Email = 'clayanderson99@outlook.com';
+        con.Email = 'clayanderson99@spamok.com';
         con.Core_eRPM_Language_Code__c  = 'ENG';
         con.Core_IPA_PartnerRole__c = '';
-        con.MailingCountryCode='IND';
-        con.Mailing_Country_Region__c='IND';
+        //con.MailingCountryCode='IND';
+        //con.Mailing_Country_Region__c='IND';
+        con.MailingCountry='IND';
         insert con; 
         /*PRM_Registration_Request__c rr = PRM_TestUtility.getPRMRegistrationRequest();
         rr.PRM_Enterprise_ID__c = '300002199713';
@@ -81,7 +82,7 @@ public class PRM_RegistrationProfileResponse_Test {
         rr2.PRM_Matching_Contact__c = con.Id;
         rr2.PRM_Salesforce_ID__c = acc1.Id;
         rr2.RecordTypeId = accountCreateRequestRT;
-        rr2.PRM_Partner_Role__c = 'Manufacturer';
+        rr2.PRM_Partner_Role__c = 'Guest';
         rr2.PRM_Channel_Program__c = cprogram.Id;
         insert rr2;
         
@@ -110,8 +111,9 @@ public class PRM_RegistrationProfileResponse_Test {
           contact.Core_Preferred_Language__c='ENG';
           contact.RecordTypeId=recordTypeIdContact;
           contact.AccountId = acc.Id;
-          contact.MailingCountryCode='IND';
-          contact.Mailing_Country_Region__c='IND';
+          //contact.MailingCountryCode='IND';
+          //contact.Mailing_Country_Region__c='IND';
+		  contact.MailingCountry='IND';
           insert contact;
         
         
@@ -143,7 +145,7 @@ public class PRM_RegistrationProfileResponse_Test {
         rev.PRM_Matching_Contact__c = con.Id;
         rev.PRM_Salesforce_ID__c = acc1.Id;
         rev.RecordTypeId = accountCreateRequestRT;
-        rev.PRM_Partner_Role__c = 'Manufacturer';
+        rev.PRM_Partner_Role__c = 'Guest';
         rev.PRM_Channel_Program__c = cprogram.Id;
          rev.recordTypeId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
         insert rev;
@@ -155,6 +157,25 @@ public class PRM_RegistrationProfileResponse_Test {
         PRM_Registration_Request__c rr = [Select Id,Name from PRM_Registration_Request__c where recordTypeId= :acrecordTypeID];
         ProcessInstance pI = [Select Id,TargetObjectId from ProcessInstance where TargetObjectId=:rr.Id];
         ProcessInstanceWorkitem recordId = [select Id,ProcessInstanceId from ProcessInstanceWorkitem where ProcessInstanceId=:pI.Id];
+        PRM_Profile_Questions__c ques = new PRM_Profile_Questions__c(
+            PRM_Question_Display_Txt__c = 'Test Question',
+            PRM_Question_Type_Nm__c = 'Picklist',
+            PRM_Partner_Role__c = 'Guest'
+        );
+        insert ques;
+        //JB
+        PRM_Profile_Answer__c ans1 = new PRM_Profile_Answer__c(
+            PRM_Profile_Questions_Id__c = ques.Id,
+            PRM_Answer_Display_Txt__c = 'Answer 1'
+        );
+        
+        PRM_Profile_Answer__c ans2 = new PRM_Profile_Answer__c(
+            PRM_Profile_Questions_Id__c = ques.Id,
+            PRM_Answer_Display_Txt__c = 'Answer 2'
+        );
+
+		insert new List<PRM_Profile_Answer__c>{ans1, ans2};
+        //JB
         PRM_RegistrationProfileResponse.displayResponse(recordId.Id);
         Test.stopTest();
         

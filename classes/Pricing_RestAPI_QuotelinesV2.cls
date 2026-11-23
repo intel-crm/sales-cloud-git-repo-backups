@@ -51,6 +51,8 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
     public static boolean isPatch = false;
     public static boolean isRollBack = false;
     public static boolean isSvdQuoteLine = false;
+    //public static boolean issubmit = false;
+    //public static boolean isDataCenterQuote = false;
     public static String actionType;
     
     @HttpPost
@@ -84,6 +86,7 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
             isCreateDraftQuoteLine = (actionType.toLowerCase()=='submit') ? false : true;
             isChangeReq = (actionType.toLowerCase()=='changerequest') ? true : false;
             isStatusChange = (actionType.toLowerCase()=='statuschange') ? true : false;
+            //isSubmit = (actionType.toLowerCase()=='submit') ? true : false;
             return true;
         }else if(actionType != null && actionType.toLowerCase() == 'recall' && !String.isBlank(recId)){
             isRollBack = true;
@@ -125,7 +128,7 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
             }
                 else{
                     Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
-                response.errorContent.errorMessage = Label.Pricing_Tender_API_Quotelines_SVD_Submit_Error_Msg;
+		            response.errorContent.errorMessage = Label.Pricing_Tender_API_Quotelines_SVD_Submit_Error_Msg;
                 }
             }
         }catch(Exception exp){
@@ -196,41 +199,40 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
             quoteMsg.quoteLineErrorMsgs = new List<Pricing_RestAPI_QuotesUtilityV2.QuoteLineErrorMsg>();
             Pricing_RestAPI_QuotesUtilityV2.QuoteLineErrorMsg qlErrorMsg = new Pricing_RestAPI_QuotesUtilityV2.QuoteLineErrorMsg();
             qlErrorMsg.quoteLineErrors = new Map<String, Pricing_RestAPI_QuotesUtilityV2.ErrorMsg>();
-            Pricing_RestAPI_QuotesUtilityV2 quoteUtility = new Pricing_RestAPI_QuotesUtilityV2();
             Boolean isValid = true;
             
             List<SBQQ__QuoteLine__c> rollBackQuoteLine = [SELECT Id,Pricing_Quote_Line_Number__c,Pricing_Last_Submitted_By_Id__c,Pricing_Status_Nm__c,Pricing_Ready_for_Review_cb__c,Customer_Revision_Count_Cnt__c,Pricing_Reference_Quote_Line_Nbr__c,SBQQ__Quote__c,Pricing_Program_Type_Nm__c
                                                           FROM SBQQ__QuoteLine__c WHERE Id =: quoteLineId AND SBQQ__Quote__r.SBQQ__Account__c =: Pricing_RestAPI_QuotesUtilityV2.currentUser.AccountId];
             if(rollBackQuoteLine.size() > 0){
                 if(rollBackQuoteLine[0].Pricing_Program_Type_Nm__c!=Label.Pricing_Tender_Small_Volume_Quote || TriggerHandler.isActive('Pricing_SVD_QuoteLine_Disabled')){   
-                if(!String.isBlank(recallReq.comment) && recallReq.comment.length()>8000){
-                    Pricing_RestAPI_QuotesUtilityV2.addValidationError(qlErrorMsg.quoteLineErrors, 'comment', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1019, new Map<String,String>{'{{dataMaxLimit}}'=> '8000'});
-                    isValid = false;
-                }
-                if(!(rollBackQuoteLine[0].Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview && rollBackQuoteLine[0].Pricing_Reference_Quote_Line_Nbr__c == null)){
-                    Pricing_RestAPI_QuotesUtilityV2.addValidationError(qlErrorMsg.quoteLineErrors, 'quoteLine', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1085, null);
-                    isValid = false;
-                }      
-                if(isValid){
-                    Pricing_BulkSalesRepActionController.recordApproval(rollBackQuoteLine, Label.Pricing_Tender_QuoteLine_Action_Rollback, null, false);
-                    
-                    // creating a chatter post for the quote
-                    FeedItem post = new FeedItem();
-                    post.Body = String.isBlank(recallReq.comment) ? UserInfo.getName() + ' recalled ' + rollBackQuoteLine[0].Pricing_Quote_Line_Number__c + '.': recallReq.comment;
-                    post.ParentId = rollBackQuoteLine[0].SBQQ__Quote__c;
-                    post.Visibility = 'AllUsers';
-                    insert post;
-                    
-                    String res = 'Recall successful.';
-                    response.totalRecords = 1;
-                    response.successContent = new List<RollBackDetails>();
-                    response.successContent.add(new RollBackDetails(rollBackQuoteLine[0].Id, res, rollBackQuoteLine[0].Pricing_Status_Nm__c, rollBackQuoteLine[0].Pricing_Quote_Line_Number__c));
-                }
-                else{
-                    quoteMsg.quoteLineErrorMsgs.add(qlErrorMsg);
-                    Pricing_RestAPI_Util.quoteErrMsgsV2 = quoteMsg;
-                    Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
-                }
+                    if(!String.isBlank(recallReq.comment) && recallReq.comment.length()>8000){
+                        Pricing_RestAPI_QuotesUtilityV2.addValidationError(qlErrorMsg.quoteLineErrors, 'comment', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1019, new Map<String,String>{'{{dataMaxLimit}}'=> '8000'});
+                        isValid = false;
+                    }
+                    if(!(rollBackQuoteLine[0].Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview && rollBackQuoteLine[0].Pricing_Reference_Quote_Line_Nbr__c == null)){
+                        Pricing_RestAPI_QuotesUtilityV2.addValidationError(qlErrorMsg.quoteLineErrors, 'quoteLine', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1085, null);
+                        isValid = false;
+                    }      
+                    if(isValid){
+                        Pricing_BulkSalesRepActionController.recordApproval(rollBackQuoteLine, Label.Pricing_Tender_QuoteLine_Action_Rollback, null, false);
+                        
+                        // creating a chatter post for the quote
+                        FeedItem post = new FeedItem();
+                        post.Body = String.isBlank(recallReq.comment) ? UserInfo.getName() + ' recalled ' + rollBackQuoteLine[0].Pricing_Quote_Line_Number__c + '.': recallReq.comment;
+                        post.ParentId = rollBackQuoteLine[0].SBQQ__Quote__c;
+                        post.Visibility = 'AllUsers';
+                        insert post;
+                        
+                        String res = 'Recall successful.';
+                        response.totalRecords = 1;
+                        response.successContent = new List<RollBackDetails>();
+                        response.successContent.add(new RollBackDetails(rollBackQuoteLine[0].Id, res, rollBackQuoteLine[0].Pricing_Status_Nm__c, rollBackQuoteLine[0].Pricing_Quote_Line_Number__c));
+                    }
+                    else{
+                        quoteMsg.quoteLineErrorMsgs.add(qlErrorMsg);
+                        Pricing_RestAPI_Util.quoteErrMsgsV2 = quoteMsg;
+                        Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
+                    }
                 }else{
                     Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
                     response.errorContent.errorMessage = Label.Pricing_Tender_API_Quotelines_SVD_Recall_Error_Msg;
@@ -295,7 +297,7 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
                 }
                 quoteLineIdMap = new Map<Id,SBQQ__QuoteLine__c>([SELECT id, Pricing_Quote_Line_Number__c,Pricing_Status_Nm__c,
                                                                  Pricing_Program_Type_Nm__c,RecordTypeId,Pricing_Ready_for_Review_cb__c,Pricing_Original_Submitted_By_Id__c,
-                                                                 Pricing_Original_Submitted_Date_dt__c,Pricing_Last_Submitted_Date_dt__c,Pricing_Last_Submitted_By_Id__c 
+                                                                 Pricing_Original_Submitted_Date_dt__c,Pricing_Last_Submitted_Date_dt__c,Pricing_Last_Submitted_By_Id__c
                                                                  FROM SBQQ__QuoteLine__c WHERE Id IN:qlIdSet and SBQQ__Quote__r.SBQQ__Account__c = :Pricing_RestAPI_QuotesUtilityV2.currentUser.AccountId]);
                 Integer j = 0;
                 
@@ -736,6 +738,7 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
         qlDetails.noOfCPUsPerSystem = quoteLine.Pricing_CPUs_per_system_qty__c;
         qlDetails.singleSystemPricePoint =quoteLine.Pricing_Single_System_Price_Amt__c;
         qlDetails.customerStdUnitPrice=quoteLine.Pricing_OEM_Standard_Unit_Price_Amt__c;
+        qlDetails.quotelineprogramtype=quoteLine.Pricing_Program_Type_Nm__c;
         qlDetails.requestedUnitPrice=quoteLine.Pricing_Req_Discounted_Unit_Price__c;
         qlDetails.totalBidWithoutDiscount=quoteLine.Pricing_Total_Bid_without_Discount_Amt__c;
         qlDetails.netIntelBidPrice = quoteLine.Pricing_Net_IA_Bid_Price_Amt__c;
@@ -967,7 +970,6 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
         qlDetails.quoteLineNumber=quoteLine.Pricing_Quote_Line_Number__c;
         qlDetails.quoteLineStatus=quoteLine.Pricing_Status_Nm__c;
         qlDetails.writeInPairedCPU = quoteLine.Pricing_Write_In_Paired_CPU_Nm__c;
-        qlDetails.noOfGPUs = quoteLine.Pricing_No_of_GPUs__c;
         qlDetails.noOfGPUsPerSystem = quoteLine.Pricing_No_of_GPUs_per_system_nbr__c;
         qlDetails.changeRequest = quoteLine.Pricing_New_Change_Request_cb__c;
         qlDetails.approvedPricingStartDate= quoteLine.Pricing_Approved_Start_Date_Dup_Dt__c;
@@ -1002,6 +1004,7 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
         qlDetails.pairedCPU = quoteLine.Pricing_CPU_Txt__c;
         qlDetails.singleSystemPricePoint =quoteLine.Pricing_Single_System_Price_Amt__c;
         qlDetails.customerStdUnitPrice=quoteLine.Pricing_OEM_Standard_Unit_Price_Amt__c;
+        qlDetails.quotelineprogramtype=quoteLine.Pricing_Program_Type_Nm__c;
         qlDetails.requestedUnitPrice=quoteLine.Pricing_Req_Discounted_Unit_Price__c;
         qlDetails.totalBidWithoutDiscount=quoteLine.Pricing_Total_Bid_without_Discount_Amt__c;
         qlDetails.netIntelBidPrice = quoteLine.Pricing_Net_IA_Bid_Price_Amt__c;
@@ -1183,13 +1186,13 @@ global without sharing class Pricing_RestAPI_QuotelinesV2 extends TriggerHandler
                 updateValidQuoteLines(quoteLine, qErrorMsg.quoteLineErrorMsgs);
             }else{
                 if((!isSvdQuoteLine || TriggerHandler.isActive('Pricing_SVD_QuoteLine_Disabled') && actionType.toLowerCase() == 'resubmit')||actionType.toLowerCase() == 'update'){
-                    //Invalid Performance metrics
-                    Pricing_RestAPI_Util.quoteErrMsgsV2 = qErrorMsg;
-                    Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
-                }else{
-                    Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
-                    response.errorContent.errorMessage = Label.Pricing_Tender_API_Quotelines_SVD_Resubmit_Error_Msg;
-                }
+                //Invalid Performance metrics
+                Pricing_RestAPI_Util.quoteErrMsgsV2 = qErrorMsg;
+                Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
+                    }else{
+                        Pricing_RestAPI_Util.processException(null, Pricing_RestAPI_ResponseCodes.MALFORMED_INPUT_9011, response, RESTAPI_NAME, ENTRY_TIME);
+                        response.errorContent.errorMessage = Label.Pricing_Tender_API_Quotelines_SVD_Resubmit_Error_Msg;
+                    }
             }
         }catch(Exception exp){
             Pricing_RestAPI_Util.processException(exp, Pricing_RestAPI_ResponseCodes.ERROR_CODE_500, response, RESTAPI_NAME, ENTRY_TIME);            

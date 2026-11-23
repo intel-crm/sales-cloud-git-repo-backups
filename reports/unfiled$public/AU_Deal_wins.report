@@ -35,16 +35,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Goal__c.Core_Goal_Oppty_Amount__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>Core_Goal__c.Core_Goal_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Peter Kerney,Amy Pendergast,Rebecca Tie</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

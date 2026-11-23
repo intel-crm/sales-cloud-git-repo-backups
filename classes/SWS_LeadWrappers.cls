@@ -92,7 +92,9 @@ public with sharing class SWS_LeadWrappers {
             this.lstUpdateContacts = ctx.lstUpdateContacts;
             this.lstAccountContactRole = ctx.lstAccountContactRole;
             this.lstOpportunityContactRole = ctx.lstOpportunityContactRole;
+             System.debug('DmlContext fn --->'+ ctx.mapConvertedOpportunityIdAccountId);
             this.mapConvertedOpportunityIdAccountId = ctx.mapConvertedOpportunityIdAccountId;
+            System.debug('DmlContext fn');
             this.mapExistingContactIdConvertedContactId = ctx.mapExistingContactIdConvertedContactId;
             this.mapContactIdLeadId = ctx.mapContactIdLeadId;
             this.mapExistingAccountIdConvertedAccountId = ctx.mapExistingAccountIdConvertedAccountId;

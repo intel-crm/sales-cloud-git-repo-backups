@@ -266,7 +266,7 @@
             <operation>equals</operation>
             <value>IPA Marketing Campaign</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>SWS_6Sense_Campaign_Sharing</fullName>
@@ -298,7 +298,7 @@
         <criteriaItems>
             <field>CreatedById</field>
             <operation>equals</operation>
-            <value>005Ho00000KMIKLIA5</value>
+            <value>005D3000006zJftIAE</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -318,7 +318,7 @@
         <criteriaItems>
             <field>CreatedById</field>
             <operation>equals</operation>
-            <value>005Ho00000KMIKGIA5</value>
+            <value>005D3000006z7ilIAA</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

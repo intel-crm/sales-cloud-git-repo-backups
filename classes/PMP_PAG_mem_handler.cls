@@ -27,8 +27,6 @@ public class PMP_PAG_mem_handler {
                                                  (SELECT Core_Account_Id__c, Core_ERPM_Business_Attributes__c, Core_ERPM_Engagement_Id__r.Name from Account_ERPM_Engagements__r Where Core_ERPM_Engagement_Id__r.Name =: PROGRAMS) 
                                                  from Account where RecordTypeId =: INTEL_RECTYPEID
                                                  AND Id IN (Select Core_Intel_Account_Id__c from Core_Account_Group_Member__c where Id IN: newMap.KeySet() AND Core_MDA_Ind__c = true) ORDER BY LastModifiedDate DESC]; //Added Core_IPA_Partner_Role__c for US589301
-     // system.debug('PROGRAMS 44 =>'+PROGRAMS);
-        // system.debug('changed_partnerAccs_lst 30 =>'+changed_partnerAccs_lst);
         for(Account acc : changed_partnerAccs_lst){ 
             for(Core_Account_Group_Member__c partner_grp_mem : acc.Partner_Account_Group_Members1__r){
                 if(partner_grp_mem.Core_Partner_Account_Id__c != null && partner_grp_mem.Core_Intel_Account_Id__c != null){
@@ -42,8 +40,6 @@ public class PMP_PAG_mem_handler {
                     IntelCompInfo_Map.put(comp_info.PMP_Account_Id__c, new List<PMP_Company__c>{comp_info});
                 }  
             }
-            // system.debug('Account_ERPM_Engagements__r 43 =>'+acc.Account_ERPM_Engagements__r);
-            // system.debug('PROGRAMS 44 =>'+PROGRAMS);
             for(Core_Account_ERPM_Engagement__c erpm_acc : acc.Account_ERPM_Engagements__r){
                 if(erpm_accounts_Map.containsKey(erpm_acc.Core_Account_Id__c)){
                     erpm_accounts_Map.get(erpm_acc.Core_Account_Id__c).add(erpm_acc);
@@ -58,28 +54,19 @@ public class PMP_PAG_mem_handler {
             PMP_Company__c company_existing;
             String partner_program = '';
             String program_membership = ''; 
-            // system.debug('acc 56 =>'+acc);
             Core_Account_Group_Member__c new_gm = newMap.get(grp_mem.Id);
-            // system.debug('new_gm 58 =>'+new_gm);
-            // system.debug('erpm_accounts_Map =>'+erpm_accounts_Map);
             if(erpm_accounts_Map.containsKey(new_gm.Core_Intel_Account_Id__c)){
-                // system.debug('containsKey 61 =>');
                 for( Core_Account_ERPM_Engagement__c eng : erpm_accounts_Map.get(new_gm.Core_Intel_Account_Id__c) ){
-                    // system.debug('eng 61 =>'+eng);
                     if( eng.Core_ERPM_Business_Attributes__c != INVALID_TIER ){ 
                         String progMembership = eng.Core_ERPM_Engagement_Id__r.Name + ' - ' + eng.Core_ERPM_Business_Attributes__c;
                         if(!program_membership.contains(progMembership))
                           program_membership += ';'  + progMembership;
                         if(!partner_program.contains(eng.Core_ERPM_Engagement_Id__r.Name))
                           partner_program += ';'  + eng.Core_ERPM_Engagement_Id__r.Name; 
-                        // system.debug('eng 66 =>'+program_membership);
-                        // system.debug('eng 67 =>'+partner_program);
                     }
                     else{
                         if(!partner_program.contains(eng.Core_ERPM_Engagement_Id__r.Name))
                           partner_program += ';'  + eng.Core_ERPM_Engagement_Id__r.Name;
-                        // system.debug('eng 71 =>'+eng);
-                        // system.debug('eng 72 =>'+partner_program);
                     } 
                 }                                
             }
@@ -125,7 +112,6 @@ public class PMP_PAG_mem_handler {
             Database.SaveResult[] ncList = Database.insert(newcompanies, false);
 			PMP_Utility.logDmlErrors((Object[]) ncList, 'PMP_PAG_mem_handler-onGroupMemAfterInsert');
 
-            // system.debug('newcompanies => '+newcompanies);
       System.enqueueJob(new PMP_SearchCreatePartnerWorkCopy(newcompanies));              
         }                 
     }    
@@ -233,7 +219,6 @@ public class PMP_PAG_mem_handler {
                 //Added to populate one partner Id at company level 31-Oct-2019
                 company.PMP_One_Partner_ID__c             = grp_mem.Core_Partner_Account_Id__c;
                 newcompanies.add(company);
-                //System.debug('comapany info'+ company);
 
             } else if (grp_mem.Core_MDA_Ind__c != null && grp_mem.Core_MDA_Ind__c == False && old_gm.Core_MDA_Ind__c == True && AccDetails_Map.containsKey(grp_mem.Core_Intel_Account_Id__c)){
                 //if(!partnerAccountMDA_Map.ContainsKey(partnerAccountIds_Map.get(grp_mem.Id))) grp_mem.addError('Atleast one MDA should be flagged for a partner Account Group');
@@ -252,7 +237,6 @@ public class PMP_PAG_mem_handler {
 			PMP_Utility.logDmlErrors((Object[]) ncList1, 'PMP_PAG_mem_handler-onGroupMemAfterUpdate');
 
 
-            // System.debug('comapany info'+ newcompanies);
             System.enqueueJob(new PMP_SearchCreatePartnerWorkCopy(newcompanies));              
         }
 

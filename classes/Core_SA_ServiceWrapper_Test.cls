@@ -14,7 +14,7 @@ public class Core_SA_ServiceWrapper_Test {
     @isTest static  void testGetTop3AssistsCallout() {
         String cim_id = '11773105';
         String user_id = '10526157';
-        String uri;
+        String uri;		
         Core_SA_Top3AssistsDefination TotalAssists;
         
         Test.startTest();
@@ -108,6 +108,7 @@ public class Core_SA_ServiceWrapper_Test {
         String cim_id = '11773105';
         String user_id = '10526157';
         String uri;
+		String tempVar = 'gBZkCSanDUd1SoRax1Nxa6xOaV20U527';
         Core_SA_UnreadAssistsDefination TotalAssists;
 
        	uri = 'callout:Core_SA_ServiceCredentials' + '/unreadassist?cim_id='+cim_id+'&user_id='+user_id;
@@ -121,7 +122,7 @@ public class Core_SA_ServiceWrapper_Test {
         
 		//Get the API-Key value from the custom settings
 		Core_SA_API_Key__c apiKey = Core_SA_API_Key__c.getValues(API_KEY); 
-		req.setHeader(API_KEY, 'gBZkCSanDUd1SoRax1Nxa6xOaV20U527');
+		req.setHeader(API_KEY, tempVar );
         
         // Create the mock response based on a static resource
         StaticResourceCalloutMock mock = new StaticResourceCalloutMock();

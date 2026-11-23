@@ -2,7 +2,7 @@
  * @description       : Class to update quotelines to Won/Lost from Bulk Screen
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 05-13-2026
+ * @last modified on  : 05-11-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteLine_BulkWonLost {
@@ -150,6 +150,7 @@ public without sharing class Pricing_QuoteLine_BulkWonLost {
                 dealId = String.isBlank(quoteLineIdtoRecordMap.get(qliId).Pricing_Deal_RFQ_Id__c) ? String.valueOf('') : quoteLineIdtoRecordMap.get(qliId).Pricing_Deal_RFQ_Id__c;
                 status = String.isBlank(quoteLineIdMap.get(qliId).Pricing_Status_Nm__c) ? String.valueOf('') : quoteLineIdMap.get(qliId).Pricing_Status_Nm__c;
                 resMsg = quoteLineIdtoRecordMap.get(qliId).Pricing_Quote_Line_Number__c + ',' + status + ',' + dealId + ',';
+                system.debug('errorMsg:'+errorMsg);
                 if(String.isBlank(errorMsg)){
                     SBQQ__QuoteLine__c qlitoUpdate = new SBQQ__QuoteLine__c();
                     qlitoUpdate.Id = qliId;
@@ -165,6 +166,7 @@ public without sharing class Pricing_QuoteLine_BulkWonLost {
                     quoteLineSuccessErromMap.put(qliId, resMsg);
                 }
             }
+            system.debug('quoteLineListtoUpdate:'+quoteLineListtoUpdate);
             if(quoteLineListtoUpdate.size() > 0){
                 Pricing_RecordJobHandler.isStopCalculatorForBulkWon = true;
                 SBQQ.TriggerControl.disable();

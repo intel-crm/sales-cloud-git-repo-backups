@@ -7,6 +7,7 @@
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Edit</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -247,6 +248,18 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>core_cpq_dpa_aln_no_nbr__c</fields>
+        <fields>core_cpq_sap_end_customer_nm__c</fields>
+        <fields>core_cpq_cm_name_nm__c</fields>
+        <fields>core_cpq_status_txt__c</fields>
+        <fields>core_cpq_ship_end_date_dt__c</fields>
+        <fields>core_cpq_change_flag__c</fields>
+        <fields>core_cpq_comments_txt__c</fields>
+        <fields>core_cpq_dollar_change_flag_ind__c</fields>
+        <relatedList>core_cpq_dpa_aln__c.core_cpq_active_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>sbaa__Status__c</fields>
         <fields>sbaa__Actions__c</fields>
         <fields>sbaa__Approver__c</fields>
@@ -272,6 +285,10 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <relatedList>core_cpq_disty_visibility__c.core_cpq_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <relatedList>SBQQ__QuoteLineGroup__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -292,6 +309,19 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>SBQQ__QuoteLine__c.core_cpq_parent_quote__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>core_cpq_prev_status__c</fields>
+        <fields>core_cpq_status__c</fields>
+        <fields>core_cpq_start_user__c</fields>
+        <fields>core_cpq_start_date__c</fields>
+        <fields>core_cpq_end_user__c</fields>
+        <fields>core_cpq_end_date__c</fields>
+        <fields>core_cpq_duration_minutes__c</fields>
+        <fields>core_cpq_approval_chain__c</fields>
+        <fields>core_cpq_approval__c</fields>
+        <relatedList>core_cpq_quote_history__c.core_cpq_quote__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

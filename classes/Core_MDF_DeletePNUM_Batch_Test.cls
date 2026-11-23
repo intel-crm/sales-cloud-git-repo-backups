@@ -46,7 +46,7 @@ private class Core_MDF_DeletePNUM_Batch_Test {
             
             Core_ERPM_Engagement__c cee=new Core_ERPM_Engagement__c(Name  ='DCF', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='DCF');
             insert cee;
-            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Data Center Co-Marketing Fund (DCF)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true);
+            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Intel® Partner Investment Center',Core_Sub_Category__c='Data Center Co-Marketing Fund (DCF)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true);
             insert entitle;
             //System.assert(true,entitle.Core_Category__c!= null);
             List<Core_Contact_Entitlement__c> contactEntList = new List<Core_Contact_Entitlement__c>();
@@ -142,7 +142,7 @@ private class Core_MDF_DeletePNUM_Batch_Test {
         Test.startTest();
         User usr1 = [Select id from User where LastName = 'User Test' limit 1];
         system.runAs(usr1) {
-            
+       
         
         User usr = [Select id from User where LastName = 'User Test3' limit 1];
         usr.IsActive = false;

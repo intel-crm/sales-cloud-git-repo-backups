@@ -256,6 +256,10 @@
             <translation><!-- Intel Authorized Distributor (IAD) --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>IoT Solution Aggregator</masterLabel>
+            <translation><!-- IoT Solution Aggregator --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Local Original Design Manufacturer (LODM)</masterLabel>
             <translation><!-- Local Original Design Manufacturer (LODM) --></translation>
         </picklistValues>
@@ -304,8 +308,12 @@
             <translation><!-- Retailer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Telco Equipment Manufacturer (TEM)</masterLabel>
-            <translation><!-- Telco Equipment Manufacturer (TEM) --></translation>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telcom Equipment Manufacturer (TEM)</masterLabel>
+            <translation><!-- Telcom Equipment Manufacturer (TEM) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Value Added Reseller (VAR)</masterLabel>

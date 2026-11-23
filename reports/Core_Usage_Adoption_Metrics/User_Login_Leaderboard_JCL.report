@@ -23,7 +23,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Integration,API,Test,Reltio,Eloqua,User,PSG_SOS,Auto,POC,Sales Assist,Azure</value>
+            <value>Integration,API,Test,Reltio,Eloqua,User,PSG_SOS,Auto,POC</value>
         </criteriaItems>
         <criteriaItems>
             <column>LOGIN_DATETIME</column>

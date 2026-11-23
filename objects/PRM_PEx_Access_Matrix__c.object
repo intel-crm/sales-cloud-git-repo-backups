@@ -195,6 +195,11 @@
                     <label>Device as a Service Specialty</label>
                 </value>
                 <value>
+                    <fullName>Docebo</fullName>
+                    <default>false</default>
+                    <label>Docebo</label>
+                </value>
+                <value>
                     <fullName>Enablement Zones</fullName>
                     <default>false</default>
                     <label>Enablement Zones</label>
@@ -584,6 +589,16 @@
         <columns>LAST_UPDATE</columns>
         <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Benefit_Blade__c</field>
+            <operation>equals</operation>
+            <value>Deal Registration</value>
+        </filters>
+        <filters>
+            <field>PRM_isActive_Indicator__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>
@@ -610,6 +625,10 @@
             </values>
             <values>
                 <fullName>Design Enablement Services%2CIDDS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Docebo</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -735,7 +754,11 @@
         <picklistValues>
             <picklist>PRM_Benefit_Blade__c</picklist>
             <values>
-                <fullName>Enablement Zones</fullName>
+                <fullName>Docebo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Tools and Resources</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -760,6 +783,10 @@
             </values>
             <values>
                 <fullName>Partner Help</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Lookup Tool</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -845,11 +872,15 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Enablement Zones</fullName>
+                <fullName>Docebo</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Enthusiast PC Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Tools and Resources</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -894,6 +925,10 @@
             </values>
             <values>
                 <fullName>Partner Help</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Lookup Tool</fullName>
                 <default>false</default>
             </values>
             <values>

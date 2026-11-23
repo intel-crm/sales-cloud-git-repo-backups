@@ -437,7 +437,13 @@
         <columns>Core_MDF_Remaining_Cap_amt__c</columns>
         <columns>Core_MDF_Budget_Name_id__c</columns>
         <columns>Core_MDF_Budget_Amount_amt__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Budget_Type_nm__c</field>
+            <operation>equals</operation>
+            <value>Proposal I MDF,Proposal II MDF</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -453,17 +459,11 @@
         <columns>Core_MDF_Budget_Amount_amt__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_Cap_Status_nm__c</field>
-            <operation>equals</operation>
-            <value>Approved</value>
-        </filters>
-        <filters>
             <field>Core_MDF_Program_txt__c</field>
-            <operation>contains</operation>
-            <value>0Pk1J000000KywA</value>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
         </filters>
         <label>Budget Caps Approved</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Boost_Finance_User</group>
         </sharedTo>
@@ -953,6 +953,20 @@
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <validationRules>
+        <fullName>Core_MDF_BudgetTypeCap_cannotbeEdited</fullName>
+        <active>false</active>
+        <description>For Channel MDF/IPA Budget Type Caps; Budget Type field cannot be edited.</description>
+        <errorConditionFormula>AND(OR( RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;) , NOT(ISNEW()),ISCHANGED(Core_MDF_Budget_Type_nm__c))</errorConditionFormula>
+        <errorMessage>Budget Type cannot be changed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_BudgetTypeCaps_ActiveValidation</fullName>
+        <active>false</active>
+        <description>IPA/Channel MDF Budget Type Caps can&apos;t be Inactive during creation</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;), ISNEW(),ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Inactive&apos;))</errorConditionFormula>
+        <errorMessage>Budget Type Caps can&apos;t be Inactive during creation</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_CheckBudgetStatusEqualsRejected</fullName>
         <active>true</active>
         <description>Restrict Budget Cap Creation when the Budget Status is equal to Rejected</description>
@@ -978,6 +992,7 @@
         <active>true</active>
         <description>For IPA Budget Caps; Geo field cannot be edited.</description>
         <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , NOT(ISNEW()),ISCHANGED(Core_MDF_Region_nm__c),  TEXT(Core_MDF_Cap_Status_nm__c)=&apos;Active&apos;  )</errorConditionFormula>
+        <errorDisplayField>Core_MDF_Approved_Cap_amt__c</errorDisplayField>
         <errorMessage>Geo cannot be changed.</errorMessage>
     </validationRules>
     <validationRules>
@@ -1017,17 +1032,45 @@ ISNULL( Core_MDF_Requested_Cap_amt__c ))</errorConditionFormula>
         <errorMessage>Requested Cap Amount is mandatory</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_MDF_MandatoryEffectiveStartDate</fullName>
+        <active>true</active>
+        <description>Effective Start Date is Mandatory for Channel MDF/IPA</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName =&apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;),ISBLANK(Core_MDF_Effective_Start_Date_Dt__c))</errorConditionFormula>
+        <errorMessage>Effective Start Date is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Mandatory_BudgetType</fullName>
+        <active>false</active>
+        <description>Budget Type is Mandatory for Channel MDF/IPA</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName =&apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;),ISBLANK(TEXT( Core_MDF_Budget_Type_nm__c )))</errorConditionFormula>
+        <errorMessage>Budget Type is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Mandatory_EffectiveEndDate</fullName>
+        <active>true</active>
+        <description>Effective End Date is Mandatory for Channel MDF/IPA</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName =&apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;),ISBLANK(Core_MDF_Effective_End_Date_Dt__c))</errorConditionFormula>
+        <errorMessage>Effective End Date is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_Mandatory_ReqCapAmt</fullName>
+        <active>true</active>
+        <description>Requested Cap Amount is Mandatory for Channel MDF/IPA</description>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName =&apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;,RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;),ISNULL( Core_MDF_Requested_Cap_amt__c ))</errorConditionFormula>
+        <errorMessage>Requested Cap Amount is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_Validate_ReqCapAmt_OnAmtChange</fullName>
         <active>true</active>
         <description>Requested Cap Amount cannot be less than Claimed Cap Amount on requested amount change</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; ,NOT(ISNEW()),ISCHANGED( Core_MDF_Requested_Cap_amt__c ) , Core_MDF_Requested_Cap_amt__c &lt;  Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;,RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;) ,NOT(ISNEW()),ISCHANGED( Core_MDF_Requested_Cap_amt__c ) , Core_MDF_Requested_Cap_amt__c &lt;  Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
         <errorMessage>The revised Requested Cap Amount cannot be lesser than Claimed Cap Amount.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Validate_ReqCapAmt_OnCreation</fullName>
         <active>true</active>
         <description>This rule validates the Budget Cap&apos;s requested amount with claimed amount while creation or activation</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c ,OR(ISNEW(), AND(ISCHANGED( Core_MDF_Cap_Status_nm__c ),
+        <errorConditionFormula>AND(OR(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;,RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos;), Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c ,OR(ISNEW(), AND(ISCHANGED( Core_MDF_Cap_Status_nm__c ),
 ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Active&apos;))
 ))</errorConditionFormula>
         <errorMessage>The Requested Cap Amount cannot be lesser than Claimed Cap Amount for the given time period.</errorMessage>
@@ -1036,7 +1079,7 @@ ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Active&apos;))
         <fullName>Core_MDF_Validate_ReqCapAmt_OnDateChange</fullName>
         <active>true</active>
         <description>This rule validates budget cap amount with claimed cap amount when time period of budget cap is changed</description>
-        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , NOT(ISNEW()),OR(ISCHANGED( Core_MDF_Effective_Start_Date_Dt__c  ) , ISCHANGED( Core_MDF_Effective_End_Date_Dt__c )),  Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
+        <errorConditionFormula>AND(OR( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , RecordType.DeveloperName = &apos;Core_MDF_Channel_MDF_Budget_Type_Cap&apos; ), NOT(ISNEW()),OR(ISCHANGED( Core_MDF_Effective_Start_Date_Dt__c  ) , ISCHANGED( Core_MDF_Effective_End_Date_Dt__c )),  Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
         <errorMessage>The Requested Cap Amount cannot be lesser than Claimed Cap Amount (due to change in the time period).</errorMessage>
     </validationRules>
     <validationRules>

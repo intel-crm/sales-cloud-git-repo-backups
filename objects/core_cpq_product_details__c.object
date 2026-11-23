@@ -173,11 +173,6 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Automotive</fullName>
-                    <default>false</default>
-                    <label>Automotive</label>
-                </value>
-                <value>
                     <fullName>Military</fullName>
                     <default>false</default>
                     <label>Military</label>
@@ -232,6 +227,16 @@
                     <default>false</default>
                     <label>Access</label>
                 </value>
+                <value>
+                    <fullName>TEST</fullName>
+                    <default>false</default>
+                    <label>TEST</label>
+                </value>
+                <value>
+                    <fullName>Transportation</fullName>
+                    <default>false</default>
+                    <label>Transportation</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -244,11 +249,16 @@
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
-                <sorted>false</sorted>
+                <sorted>true</sorted>
                 <value>
                     <fullName>Aerospace/Avionics</fullName>
                     <default>false</default>
                     <label>Aerospace/Avionics</label>
+                </value>
+                <value>
+                    <fullName>AR/VR/MR - Commercial</fullName>
+                    <default>false</default>
+                    <label>AR/VR/MR - Commercial</label>
                 </value>
                 <value>
                     <fullName>ASIC Emulation</fullName>
@@ -256,9 +266,24 @@
                     <label>ASIC Emulation</label>
                 </value>
                 <value>
+                    <fullName>ASIC Prototyping/Emulation</fullName>
+                    <default>false</default>
+                    <label>ASIC Prototyping/Emulation</label>
+                </value>
+                <value>
                     <fullName>ATE &amp; Semiconductor Tester</fullName>
                     <default>false</default>
                     <label>ATE &amp; Semiconductor Tester</label>
+                </value>
+                <value>
+                    <fullName>ATM</fullName>
+                    <default>false</default>
+                    <label>ATM</label>
+                </value>
+                <value>
+                    <fullName>Automotive</fullName>
+                    <default>false</default>
+                    <label>Automotive</label>
                 </value>
                 <value>
                     <fullName>Automotive - Other</fullName>
@@ -271,9 +296,9 @@
                     <label>Autonomous Driving - Other</label>
                 </value>
                 <value>
-                    <fullName>Studio Cameras, Multi-viewers, Editors</fullName>
+                    <fullName>Broadcast/Studio</fullName>
                     <default>false</default>
-                    <label>Studio Cameras, Multi-viewers, Editors</label>
+                    <label>Broadcast/Studio</label>
                 </value>
                 <value>
                     <fullName>Business Desktop</fullName>
@@ -306,9 +331,9 @@
                     <label>Consumer Mobility</label>
                 </value>
                 <value>
-                    <fullName>Industrial - Test &amp; Measuring Equipment</fullName>
+                    <fullName>Diagnostic, Test &amp; Measurement Equipment</fullName>
                     <default>false</default>
-                    <label>Industrial - Test &amp; Measuring Equipment</label>
+                    <label>Diagnostic, Test &amp; Measurement Equipment</label>
                 </value>
                 <value>
                     <fullName>Drives, Motor Control, Encoders</fullName>
@@ -321,9 +346,19 @@
                     <label>Electronic Gaming Machines</label>
                 </value>
                 <value>
-                    <fullName>Industrial Gateways</fullName>
+                    <fullName>Energy - Other</fullName>
                     <default>false</default>
-                    <label>Industrial Gateways</label>
+                    <label>Energy - Other</label>
+                </value>
+                <value>
+                    <fullName>Gaming &amp; Lottery Machines</fullName>
+                    <default>false</default>
+                    <label>Gaming &amp; Lottery Machines</label>
+                </value>
+                <value>
+                    <fullName>Gateway</fullName>
+                    <default>false</default>
+                    <label>Gateway</label>
                 </value>
                 <value>
                     <fullName>Health: Diagnostic/Therapeutic/Remote/Clinical Equipment</fullName>
@@ -336,9 +371,39 @@
                     <label>Imaging / EOIR</label>
                 </value>
                 <value>
-                    <fullName>Roadways -Traffic Management, Parking, Toll Collection, V2X &amp; MEC</fullName>
+                    <fullName>Imaging Devices (not IP Camera based)</fullName>
                     <default>false</default>
-                    <label>Roadways -Traffic Management, Parking, Toll Collection, V2X &amp; MEC</label>
+                    <label>Imaging Devices (not IP Camera based)</label>
+                </value>
+                <value>
+                    <fullName>Industrial Gateways</fullName>
+                    <default>false</default>
+                    <label>Industrial Gateways</label>
+                </value>
+                <value>
+                    <fullName>Industrial PCs</fullName>
+                    <default>false</default>
+                    <label>Industrial PCs</label>
+                </value>
+                <value>
+                    <fullName>Industrial Ruggedized Servers</fullName>
+                    <default>false</default>
+                    <label>Industrial Ruggedized Servers</label>
+                </value>
+                <value>
+                    <fullName>Industrial - Test &amp; Measuring Equipment</fullName>
+                    <default>false</default>
+                    <label>Industrial - Test &amp; Measuring Equipment</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure (e.g., Roadside, Rail, etc.)</fullName>
+                    <default>false</default>
+                    <label>Infrastructure (e.g., Roadside, Rail, etc.)</label>
+                </value>
+                <value>
+                    <fullName>Interactive Displays &amp; Kiosks</fullName>
+                    <default>false</default>
+                    <label>Interactive Displays &amp; Kiosks</label>
                 </value>
                 <value>
                     <fullName>Interactive Flatpanel Displays / Whiteboards</fullName>
@@ -346,9 +411,9 @@
                     <label>Interactive Flatpanel Displays / Whiteboards</label>
                 </value>
                 <value>
-                    <fullName>Energy - Other</fullName>
+                    <fullName>IOTG Other</fullName>
                     <default>false</default>
-                    <label>Energy - Other</label>
+                    <label>IOTG Other</label>
                 </value>
                 <value>
                     <fullName>Lottery</fullName>
@@ -361,9 +426,9 @@
                     <label>MEC/Edge Cloud</label>
                 </value>
                 <value>
-                    <fullName>Motion Controllers &amp; CNC&apos;s</fullName>
+                    <fullName>Motion Control and CNC</fullName>
                     <default>false</default>
-                    <label>Motion Controllers &amp; CNC&apos;s</label>
+                    <label>Motion Control and CNC</label>
                 </value>
                 <value>
                     <fullName>Network Appliance: Other</fullName>
@@ -396,9 +461,9 @@
                     <label>PLC &amp; PAC</label>
                 </value>
                 <value>
-                    <fullName>ATM</fullName>
+                    <fullName>POS / ATM</fullName>
                     <default>false</default>
-                    <label>ATM</label>
+                    <label>POS / ATM</label>
                 </value>
                 <value>
                     <fullName>Public Sector - Ruggedized PCs</fullName>
@@ -406,9 +471,19 @@
                     <label>Public Sector - Ruggedized PCs</label>
                 </value>
                 <value>
+                    <fullName>Radar</fullName>
+                    <default>false</default>
+                    <label>Radar</label>
+                </value>
+                <value>
                     <fullName>Radar/ Electronic Warfare</fullName>
                     <default>false</default>
                     <label>Radar/ Electronic Warfare</label>
+                </value>
+                <value>
+                    <fullName>Radar/EW/Cyber</fullName>
+                    <default>false</default>
+                    <label>Radar/EW/Cyber</label>
                 </value>
                 <value>
                     <fullName>RAN/Edge</fullName>
@@ -416,9 +491,9 @@
                     <label>RAN/Edge</label>
                 </value>
                 <value>
-                    <fullName>AR/VR/MR - Commercial</fullName>
+                    <fullName>Roadways -Traffic Management, Parking, Toll Collection, V2X &amp; MEC</fullName>
                     <default>false</default>
-                    <label>AR/VR/MR - Commercial</label>
+                    <label>Roadways -Traffic Management, Parking, Toll Collection, V2X &amp; MEC</label>
                 </value>
                 <value>
                     <fullName>Robotics</fullName>
@@ -426,19 +501,34 @@
                     <label>Robotics</label>
                 </value>
                 <value>
+                    <fullName>Robotics: Mobile (AGV, AMR)</fullName>
+                    <default>false</default>
+                    <label>Robotics: Mobile (AGV, AMR)</label>
+                </value>
+                <value>
+                    <fullName>Robotics: Stationary</fullName>
+                    <default>false</default>
+                    <label>Robotics: Stationary</label>
+                </value>
+                <value>
+                    <fullName>Routers</fullName>
+                    <default>false</default>
+                    <label>Routers</label>
+                </value>
+                <value>
                     <fullName>Routers	Routers</fullName>
                     <default>false</default>
                     <label>Routers	Routers</label>
                 </value>
                 <value>
-                    <fullName>Industrial PCs</fullName>
+                    <fullName>Ruggedized/Industrial/Vertical Grade PCs</fullName>
                     <default>false</default>
-                    <label>Industrial PCs</label>
+                    <label>Ruggedized/Industrial/Vertical Grade PCs</label>
                 </value>
                 <value>
-                    <fullName>Industrial Ruggedized Servers</fullName>
+                    <fullName>Ruggedized/Industrial/Vertical Grade Servers</fullName>
                     <default>false</default>
-                    <label>Industrial Ruggedized Servers</label>
+                    <label>Ruggedized/Industrial/Vertical Grade Servers</label>
                 </value>
                 <value>
                     <fullName>Sensor Platform</fullName>
@@ -456,14 +546,34 @@
                     <label>Smart Home</label>
                 </value>
                 <value>
+                    <fullName>Smart Places Compute</fullName>
+                    <default>false</default>
+                    <label>Smart Places Compute</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
                     <fullName>Storage	Storage</fullName>
                     <default>false</default>
                     <label>Storage	Storage</label>
                 </value>
                 <value>
+                    <fullName>Studio Cameras, Multi-viewers, Editors</fullName>
+                    <default>false</default>
+                    <label>Studio Cameras, Multi-viewers, Editors</label>
+                </value>
+                <value>
                     <fullName>Switches</fullName>
                     <default>false</default>
                     <label>Switches</label>
+                </value>
+                <value>
+                    <fullName>Thin Client, Cloud Client</fullName>
+                    <default>false</default>
+                    <label>Thin Client, Cloud Client</label>
                 </value>
                 <value>
                     <fullName>Thin Client, Cloud Client, Edge Client</fullName>
@@ -481,9 +591,19 @@
                     <label>Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)</label>
                 </value>
                 <value>
+                    <fullName>Video (incl. Camera, NVR, AI Box, Video Server)</fullName>
+                    <default>false</default>
+                    <label>Video (incl. Camera, NVR, AI Box, Video Server)</label>
+                </value>
+                <value>
                     <fullName>Video NVR / Recorder / Gateway / Server</fullName>
                     <default>false</default>
                     <label>Video NVR / Recorder / Gateway / Server</label>
+                </value>
+                <value>
+                    <fullName>Visual Cloud Media</fullName>
+                    <default>false</default>
+                    <label>Visual Cloud Media</label>
                 </value>
                 <value>
                     <fullName>Visual Cloud Media	Visual</fullName>
@@ -521,6 +641,11 @@
                     <label>Wireless Fronthaul</label>
                 </value>
                 <value>
+                    <fullName>Wireless Radio</fullName>
+                    <default>false</default>
+                    <label>Wireless Radio</label>
+                </value>
+                <value>
                     <fullName>Wireless Radio	Wireless Ra</fullName>
                     <default>false</default>
                     <label>Wireless Radio	Wireless Ra</label>
@@ -539,101 +664,6 @@
                     <fullName>Workstation</fullName>
                     <default>false</default>
                     <label>Workstation</label>
-                </value>
-                <value>
-                    <fullName>Automotive_1</fullName>
-                    <default>false</default>
-                    <label>Automotive_1</label>
-                </value>
-                <value>
-                    <fullName>Gateway_1</fullName>
-                    <default>false</default>
-                    <label>Gateway_1</label>
-                </value>
-                <value>
-                    <fullName>Routers</fullName>
-                    <default>false</default>
-                    <label>Routers</label>
-                </value>
-                <value>
-                    <fullName>Visual Cloud Media</fullName>
-                    <default>false</default>
-                    <label>Visual Cloud Media</label>
-                </value>
-                <value>
-                    <fullName>Wireless Radio</fullName>
-                    <default>false</default>
-                    <label>Wireless Radio</label>
-                </value>
-                <value>
-                    <fullName>Storage</fullName>
-                    <default>false</default>
-                    <label>Storage</label>
-                </value>
-                <value>
-                    <fullName>ASIC Prototyping/Emulation</fullName>
-                    <default>false</default>
-                    <label>ASIC Prototyping/Emulation</label>
-                </value>
-                <value>
-                    <fullName>Automotive</fullName>
-                    <default>false</default>
-                    <label>Automotive</label>
-                </value>
-                <value>
-                    <fullName>Gaming &amp; Lottery Machines</fullName>
-                    <default>false</default>
-                    <label>Gaming &amp; Lottery Machines</label>
-                </value>
-                <value>
-                    <fullName>Infrastructure (e.g., Roadside, Rail, etc.)</fullName>
-                    <default>false</default>
-                    <label>Infrastructure (e.g., Roadside, Rail, etc.)</label>
-                </value>
-                <value>
-                    <fullName>Military/Defense</fullName>
-                    <default>false</default>
-                    <label>Military/Defense</label>
-                </value>
-                <value>
-                    <fullName>Motion Control and CNC</fullName>
-                    <default>false</default>
-                    <label>Motion Control and CNC</label>
-                </value>
-                <value>
-                    <fullName>POS / ATM</fullName>
-                    <default>false</default>
-                    <label>POS / ATM</label>
-                </value>
-                <value>
-                    <fullName>Radar</fullName>
-                    <default>false</default>
-                    <label>Radar</label>
-                </value>
-                <value>
-                    <fullName>Radar/EW/Cyber</fullName>
-                    <default>false</default>
-                    <label>Radar/EW/Cyber</label>
-                </value>
-                <value>
-                    <fullName>Ruggedized/Industrial/Vertical Grade PCs</fullName>
-                    <default>false</default>
-                    <label>Ruggedized/Industrial/Vertical Grade PCs</label>
-                </value>
-                <value>
-                    <fullName>Smart Places Compute</fullName>
-                    <default>false</default>
-                    <label>Smart Places Compute</label>
-                </value>
-                <value>
-                    <fullName>Thin Client, Cloud Client</fullName>
-                    <default>false</default>
-                    <label>Thin Client, Cloud Client</label>
-                </value>
-                <value>
-                    <fullName>Wireline &amp; Cable Access</fullName>
-                    <default>false</default>
-                    <label>Wireline &amp; Cable Access</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -669,9 +699,19 @@
                     <label>Embedded / IOT</label>
                 </value>
                 <value>
-                    <fullName>Automotive / Transportation</fullName>
+                    <fullName>Embedded - Gaming &amp; Entertainment</fullName>
                     <default>false</default>
-                    <label>Automotive / Transportation</label>
+                    <label>Embedded - Gaming &amp; Entertainment</label>
+                </value>
+                <value>
+                    <fullName>Embedded - Industrial</fullName>
+                    <default>false</default>
+                    <label>Embedded - Industrial</label>
+                </value>
+                <value>
+                    <fullName>Connected Home</fullName>
+                    <default>false</default>
+                    <label>Connected Home</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -685,96 +725,46 @@
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
-                <sorted>false</sorted>
+                <sorted>true</sorted>
                 <value>
-                    <fullName>Diagnostic Imaging</fullName>
+                    <fullName>AI Inference</fullName>
                     <default>false</default>
-                    <label>Diagnostic Imaging</label>
+                    <label>AI Inference</label>
                 </value>
                 <value>
-                    <fullName>COMM Test Equipment</fullName>
+                    <fullName>AI Training</fullName>
                     <default>false</default>
-                    <label>COMM Test Equipment</label>
+                    <label>AI Training</label>
                 </value>
                 <value>
-                    <fullName>Other Military/Aero/Defense/Gov</fullName>
+                    <fullName>Application Acceleration</fullName>
                     <default>false</default>
-                    <label>Other Military/Aero/Defense/Gov</label>
+                    <label>Application Acceleration</label>
                 </value>
                 <value>
-                    <fullName>Other Wireline</fullName>
+                    <fullName>Application-Other</fullName>
                     <default>false</default>
-                    <label>Other Wireline</label>
+                    <label>Application-Other</label>
                 </value>
                 <value>
-                    <fullName>Other Wireless</fullName>
+                    <fullName>ASIC Prototyping</fullName>
                     <default>false</default>
-                    <label>Other Wireless</label>
+                    <label>ASIC Prototyping</label>
                 </value>
                 <value>
-                    <fullName>DO NOT USE - Head-end</fullName>
+                    <fullName>ATE &amp; Semiconductor Tester</fullName>
                     <default>false</default>
-                    <label>DO NOT USE - Head-end</label>
+                    <label>ATE &amp; Semiconductor Tester</label>
                 </value>
                 <value>
-                    <fullName>Studio</fullName>
+                    <fullName>AUTOMOTIVE</fullName>
                     <default>false</default>
-                    <label>Studio</label>
+                    <label>AUTOMOTIVE</label>
                 </value>
                 <value>
-                    <fullName>Other Broadcast</fullName>
+                    <fullName>Backhaul</fullName>
                     <default>false</default>
-                    <label>Other Broadcast</label>
-                </value>
-                <value>
-                    <fullName>Digital Gaming</fullName>
-                    <default>false</default>
-                    <label>Digital Gaming</label>
-                </value>
-                <value>
-                    <fullName>DO NOT USE-Home Appliance</fullName>
-                    <default>false</default>
-                    <label>DO NOT USE-Home Appliance</label>
-                </value>
-                <value>
-                    <fullName>Home Audio/Video</fullName>
-                    <default>false</default>
-                    <label>Home Audio/Video</label>
-                </value>
-                <value>
-                    <fullName>Mobile Devices</fullName>
-                    <default>false</default>
-                    <label>Mobile Devices</label>
-                </value>
-                <value>
-                    <fullName>Other Consumer</fullName>
-                    <default>false</default>
-                    <label>Other Consumer</label>
-                </value>
-                <value>
-                    <fullName>Driver Assistance</fullName>
-                    <default>false</default>
-                    <label>Driver Assistance</label>
-                </value>
-                <value>
-                    <fullName>Infotainment</fullName>
-                    <default>false</default>
-                    <label>Infotainment</label>
-                </value>
-                <value>
-                    <fullName>DO NOT USE-Surveillance/Building Automation</fullName>
-                    <default>false</default>
-                    <label>DO NOT USE-Surveillance/Building Automation</label>
-                </value>
-                <value>
-                    <fullName>Energy</fullName>
-                    <default>false</default>
-                    <label>Energy</label>
-                </value>
-                <value>
-                    <fullName>DO NOT USE-Point of Sale</fullName>
-                    <default>false</default>
-                    <label>DO NOT USE-Point of Sale</label>
+                    <label>Backhaul</label>
                 </value>
                 <value>
                     <fullName>Baseband</fullName>
@@ -782,54 +772,9 @@
                     <label>Baseband</label>
                 </value>
                 <value>
-                    <fullName>DO NOT USE-Core</fullName>
+                    <fullName>Blockchain</fullName>
                     <default>false</default>
-                    <label>DO NOT USE-Core</label>
-                </value>
-                <value>
-                    <fullName>Radio</fullName>
-                    <default>false</default>
-                    <label>Radio</label>
-                </value>
-                <value>
-                    <fullName>DO NOT USE-ASIC Prototyping &amp; Emulation</fullName>
-                    <default>false</default>
-                    <label>DO NOT USE-ASIC Prototyping &amp; Emulation</label>
-                </value>
-                <value>
-                    <fullName>Government Analytics</fullName>
-                    <default>false</default>
-                    <label>Government Analytics</label>
-                </value>
-                <value>
-                    <fullName>Imaging/EOIR</fullName>
-                    <default>false</default>
-                    <label>Imaging/EOIR</label>
-                </value>
-                <value>
-                    <fullName>Guidance &amp; Control</fullName>
-                    <default>false</default>
-                    <label>Guidance &amp; Control</label>
-                </value>
-                <value>
-                    <fullName>Radar/EW</fullName>
-                    <default>false</default>
-                    <label>Radar/EW</label>
-                </value>
-                <value>
-                    <fullName>Secure Communications</fullName>
-                    <default>false</default>
-                    <label>Secure Communications</label>
-                </value>
-                <value>
-                    <fullName>Transmission</fullName>
-                    <default>false</default>
-                    <label>Transmission</label>
-                </value>
-                <value>
-                    <fullName>Service Provider</fullName>
-                    <default>false</default>
-                    <label>Service Provider</label>
+                    <label>Blockchain</label>
                 </value>
                 <value>
                     <fullName>Cable Access</fullName>
@@ -842,64 +787,19 @@
                     <label>Carrier Access</label>
                 </value>
                 <value>
-                    <fullName>Other Access</fullName>
+                    <fullName>Coherent</fullName>
                     <default>false</default>
-                    <label>Other Access</label>
+                    <label>Coherent</label>
                 </value>
                 <value>
-                    <fullName>Infrastructure Acceleration</fullName>
+                    <fullName>COMM Test Equipment</fullName>
                     <default>false</default>
-                    <label>Infrastructure Acceleration</label>
+                    <label>COMM Test Equipment</label>
                 </value>
                 <value>
-                    <fullName>Application Acceleration</fullName>
+                    <fullName>Comp Storage</fullName>
                     <default>false</default>
-                    <label>Application Acceleration</label>
-                </value>
-                <value>
-                    <fullName>Surveillance</fullName>
-                    <default>false</default>
-                    <label>Surveillance</label>
-                </value>
-                <value>
-                    <fullName>Industrial Networking</fullName>
-                    <default>false</default>
-                    <label>Industrial Networking</label>
-                </value>
-                <value>
-                    <fullName>Vision Fog Server</fullName>
-                    <default>false</default>
-                    <label>Vision Fog Server</label>
-                </value>
-                <value>
-                    <fullName>Industrial Other</fullName>
-                    <default>false</default>
-                    <label>Industrial Other</label>
-                </value>
-                <value>
-                    <fullName>Enterprise</fullName>
-                    <default>false</default>
-                    <label>Enterprise</label>
-                </value>
-                <value>
-                    <fullName>DO NOT USE-Access</fullName>
-                    <default>false</default>
-                    <label>DO NOT USE-Access</label>
-                </value>
-                <value>
-                    <fullName>Backhaul</fullName>
-                    <default>false</default>
-                    <label>Backhaul</label>
-                </value>
-                <value>
-                    <fullName>DO NOT USE-Video Display</fullName>
-                    <default>false</default>
-                    <label>DO NOT USE-Video Display</label>
-                </value>
-                <value>
-                    <fullName>ProAV</fullName>
-                    <default>false</default>
-                    <label>ProAV</label>
+                    <label>Comp Storage</label>
                 </value>
                 <value>
                     <fullName>Computing and Storage</fullName>
@@ -907,29 +807,69 @@
                     <label>Computing and Storage</label>
                 </value>
                 <value>
-                    <fullName>Other Computer &amp; Storage</fullName>
+                    <fullName>Data Analytics</fullName>
                     <default>false</default>
-                    <label>Other Computer &amp; Storage</label>
+                    <label>Data Analytics</label>
                 </value>
                 <value>
-                    <fullName>Manufacturing/Control</fullName>
+                    <fullName>Diagnostic Imaging</fullName>
                     <default>false</default>
-                    <label>Manufacturing/Control</label>
+                    <label>Diagnostic Imaging</label>
                 </value>
                 <value>
-                    <fullName>E-Vehicle</fullName>
+                    <fullName>Digital Gaming</fullName>
                     <default>false</default>
-                    <label>E-Vehicle</label>
+                    <label>Digital Gaming</label>
                 </value>
                 <value>
-                    <fullName>NFV</fullName>
+                    <fullName>DO NOT USE-Access</fullName>
                     <default>false</default>
-                    <label>NFV</label>
+                    <label>DO NOT USE-Access</label>
                 </value>
                 <value>
-                    <fullName>ASIC Prototyping</fullName>
+                    <fullName>DO NOT USE-ASIC Prototyping &amp; Emulation</fullName>
                     <default>false</default>
-                    <label>ASIC Prototyping</label>
+                    <label>DO NOT USE-ASIC Prototyping &amp; Emulation</label>
+                </value>
+                <value>
+                    <fullName>DO NOT USE-Core</fullName>
+                    <default>false</default>
+                    <label>DO NOT USE-Core</label>
+                </value>
+                <value>
+                    <fullName>DO NOT USE - Head-end</fullName>
+                    <default>false</default>
+                    <label>DO NOT USE - Head-end</label>
+                </value>
+                <value>
+                    <fullName>DO NOT USE-Home Appliance</fullName>
+                    <default>false</default>
+                    <label>DO NOT USE-Home Appliance</label>
+                </value>
+                <value>
+                    <fullName>DO NOT USE-Point of Sale</fullName>
+                    <default>false</default>
+                    <label>DO NOT USE-Point of Sale</label>
+                </value>
+                <value>
+                    <fullName>DO NOT USE-Surveillance/Building Automation</fullName>
+                    <default>false</default>
+                    <label>DO NOT USE-Surveillance/Building Automation</label>
+                </value>
+                <value>
+                    <fullName>DO NOT USE-Video Display</fullName>
+                    <default>false</default>
+                    <label>DO NOT USE-Video Display</label>
+                </value>
+                <value>
+                    <fullName>Driver Assistance</fullName>
+                    <default>false</default>
+                    <label>Driver Assistance</label>
+                </value>
+                <value>
+                    <fullName>ElectroMedical</fullName>
+                    <default>false</default>
+                    <label>ElectroMedical</label>
                 </value>
                 <value>
                     <fullName>Emulation</fullName>
@@ -937,9 +877,214 @@
                     <label>Emulation</label>
                 </value>
                 <value>
+                    <fullName>Energy</fullName>
+                    <default>false</default>
+                    <label>Energy</label>
+                </value>
+                <value>
+                    <fullName>Enterprise</fullName>
+                    <default>false</default>
+                    <label>Enterprise</label>
+                </value>
+                <value>
+                    <fullName>E-Vehicle</fullName>
+                    <default>false</default>
+                    <label>E-Vehicle</label>
+                </value>
+                <value>
                     <fullName>Fronthaul</fullName>
                     <default>false</default>
                     <label>Fronthaul</label>
+                </value>
+                <value>
+                    <fullName>FSI</fullName>
+                    <default>false</default>
+                    <label>FSI</label>
+                </value>
+                <value>
+                    <fullName>Government Analytics</fullName>
+                    <default>false</default>
+                    <label>Government Analytics</label>
+                </value>
+                <value>
+                    <fullName>Guidance &amp; Control</fullName>
+                    <default>false</default>
+                    <label>Guidance &amp; Control</label>
+                </value>
+                <value>
+                    <fullName>Home Audio/Video</fullName>
+                    <default>false</default>
+                    <label>Home Audio/Video</label>
+                </value>
+                <value>
+                    <fullName>HPC</fullName>
+                    <default>false</default>
+                    <label>HPC</label>
+                </value>
+                <value>
+                    <fullName>Imaging/EOIR</fullName>
+                    <default>false</default>
+                    <label>Imaging/EOIR</label>
+                </value>
+                <value>
+                    <fullName>Industrial Networking</fullName>
+                    <default>false</default>
+                    <label>Industrial Networking</label>
+                </value>
+                <value>
+                    <fullName>Industrial Other</fullName>
+                    <default>false</default>
+                    <label>Industrial Other</label>
+                </value>
+                <value>
+                    <fullName>Infotainment</fullName>
+                    <default>false</default>
+                    <label>Infotainment</label>
+                </value>
+                <value>
+                    <fullName>Infrastructure Acceleration</fullName>
+                    <default>false</default>
+                    <label>Infrastructure Acceleration</label>
+                </value>
+                <value>
+                    <fullName>Legacy</fullName>
+                    <default>false</default>
+                    <label>Legacy</label>
+                </value>
+                <value>
+                    <fullName>Manufacturing/Control</fullName>
+                    <default>false</default>
+                    <label>Manufacturing/Control</label>
+                </value>
+                <value>
+                    <fullName>Mobile Devices</fullName>
+                    <default>false</default>
+                    <label>Mobile Devices</label>
+                </value>
+                <value>
+                    <fullName>Mobile Robotics</fullName>
+                    <default>false</default>
+                    <label>Mobile Robotics</label>
+                </value>
+                <value>
+                    <fullName>Networking</fullName>
+                    <default>false</default>
+                    <label>Networking</label>
+                </value>
+                <value>
+                    <fullName>NFV</fullName>
+                    <default>false</default>
+                    <label>NFV</label>
+                </value>
+                <value>
+                    <fullName>Non-Automotive Transportation</fullName>
+                    <default>false</default>
+                    <label>Non-Automotive Transportation</label>
+                </value>
+                <value>
+                    <fullName>Other Access</fullName>
+                    <default>false</default>
+                    <label>Other Access</label>
+                </value>
+                <value>
+                    <fullName>Other Broadcast</fullName>
+                    <default>false</default>
+                    <label>Other Broadcast</label>
+                </value>
+                <value>
+                    <fullName>Other Computer &amp; Storage</fullName>
+                    <default>false</default>
+                    <label>Other Computer &amp; Storage</label>
+                </value>
+                <value>
+                    <fullName>Other Consumer</fullName>
+                    <default>false</default>
+                    <label>Other Consumer</label>
+                </value>
+                <value>
+                    <fullName>Other Medical Products</fullName>
+                    <default>false</default>
+                    <label>Other Medical Products</label>
+                </value>
+                <value>
+                    <fullName>Other Military/Aero/Defense/Gov</fullName>
+                    <default>false</default>
+                    <label>Other Military/Aero/Defense/Gov</label>
+                </value>
+                <value>
+                    <fullName>Other Test Equipment</fullName>
+                    <default>false</default>
+                    <label>Other Test Equipment</label>
+                </value>
+                <value>
+                    <fullName>Other Wireless</fullName>
+                    <default>false</default>
+                    <label>Other Wireless</label>
+                </value>
+                <value>
+                    <fullName>Other Wireline</fullName>
+                    <default>false</default>
+                    <label>Other Wireline</label>
+                </value>
+                <value>
+                    <fullName>Platform Mgmt</fullName>
+                    <default>false</default>
+                    <label>Platform Mgmt</label>
+                </value>
+                <value>
+                    <fullName>ProAV</fullName>
+                    <default>false</default>
+                    <label>ProAV</label>
+                </value>
+                <value>
+                    <fullName>Pro AV</fullName>
+                    <default>false</default>
+                    <label>Pro AV</label>
+                </value>
+                <value>
+                    <fullName>Radar/EW</fullName>
+                    <default>false</default>
+                    <label>Radar/EW</label>
+                </value>
+                <value>
+                    <fullName>Radio</fullName>
+                    <default>false</default>
+                    <label>Radio</label>
+                </value>
+                <value>
+                    <fullName>Secure Communications</fullName>
+                    <default>false</default>
+                    <label>Secure Communications</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Service Provider</label>
+                </value>
+                <value>
+                    <fullName>SmartNIC</fullName>
+                    <default>false</default>
+                    <label>SmartNIC</label>
+                </value>
+                <value>
+                    <fullName>Storage</fullName>
+                    <default>false</default>
+                    <label>Storage</label>
+                </value>
+                <value>
+                    <fullName>Studio</fullName>
+                    <default>false</default>
+                    <label>Studio</label>
+                </value>
+                <value>
+                    <fullName>Surveillance</fullName>
+                    <default>false</default>
+                    <label>Surveillance</label>
+                </value>
+                <value>
+                    <fullName>Transmission</fullName>
+                    <default>false</default>
+                    <label>Transmission</label>
                 </value>
                 <value>
                     <fullName>Transportation as a Service</fullName>
@@ -952,94 +1097,14 @@
                     <label>Transportation Data Center</label>
                 </value>
                 <value>
-                    <fullName>ElectroMedical</fullName>
+                    <fullName>Transportation Infrastructure</fullName>
                     <default>false</default>
-                    <label>ElectroMedical</label>
+                    <label>Transportation Infrastructure</label>
                 </value>
                 <value>
-                    <fullName>Other Medical Products</fullName>
+                    <fullName>Vision Fog Server</fullName>
                     <default>false</default>
-                    <label>Other Medical Products</label>
-                </value>
-                <value>
-                    <fullName>ATE &amp; Semiconductor Tester</fullName>
-                    <default>false</default>
-                    <label>ATE &amp; Semiconductor Tester</label>
-                </value>
-                <value>
-                    <fullName>Other Test Equipment</fullName>
-                    <default>false</default>
-                    <label>Other Test Equipment</label>
-                </value>
-                <value>
-                    <fullName>SmartNIC</fullName>
-                    <default>false</default>
-                    <label>SmartNIC</label>
-                </value>
-                <value>
-                    <fullName>Networking</fullName>
-                    <default>false</default>
-                    <label>Networking</label>
-                </value>
-                <value>
-                    <fullName>Comp Storage</fullName>
-                    <default>false</default>
-                    <label>Comp Storage</label>
-                </value>
-                <value>
-                    <fullName>Platform Mgmt</fullName>
-                    <default>false</default>
-                    <label>Platform Mgmt</label>
-                </value>
-                <value>
-                    <fullName>Coherent</fullName>
-                    <default>false</default>
-                    <label>Coherent</label>
-                </value>
-                <value>
-                    <fullName>AI Inference</fullName>
-                    <default>false</default>
-                    <label>AI Inference</label>
-                </value>
-                <value>
-                    <fullName>AI Training</fullName>
-                    <default>false</default>
-                    <label>AI Training</label>
-                </value>
-                <value>
-                    <fullName>Application-Other</fullName>
-                    <default>false</default>
-                    <label>Application-Other</label>
-                </value>
-                <value>
-                    <fullName>Blockchain</fullName>
-                    <default>false</default>
-                    <label>Blockchain</label>
-                </value>
-                <value>
-                    <fullName>Data Analytics</fullName>
-                    <default>false</default>
-                    <label>Data Analytics</label>
-                </value>
-                <value>
-                    <fullName>FSI</fullName>
-                    <default>false</default>
-                    <label>FSI</label>
-                </value>
-                <value>
-                    <fullName>HPC</fullName>
-                    <default>false</default>
-                    <label>HPC</label>
-                </value>
-                <value>
-                    <fullName>Legacy</fullName>
-                    <default>false</default>
-                    <label>Legacy</label>
-                </value>
-                <value>
-                    <fullName>Storage</fullName>
-                    <default>false</default>
-                    <label>Storage</label>
+                    <label>Vision Fog Server</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1093,6 +1158,11 @@
                     <label>Education</label>
                 </value>
                 <value>
+                    <fullName>Energy (Utilities, Oil &amp; Gas, Solar &amp; Wind)</fullName>
+                    <default>false</default>
+                    <label>Energy (Utilities, Oil &amp; Gas, Solar &amp; Wind)</label>
+                </value>
+                <value>
                     <fullName>Enterprise</fullName>
                     <default>false</default>
                     <label>Enterprise</label>
@@ -1138,27 +1208,12 @@
                     <label>Transportation</label>
                 </value>
                 <value>
-                    <fullName>Automotive</fullName>
+                    <fullName>Undefined</fullName>
                     <default>false</default>
-                    <label>Automotive</label>
+                    <label>Undefined</label>
                 </value>
                 <value>
-                    <fullName>Energy and Utilities</fullName>
-                    <default>false</default>
-                    <label>Energy and Utilities</label>
-                </value>
-                <value>
-                    <fullName>Federal and Aerospace</fullName>
-                    <default>false</default>
-                    <label>Federal and Aerospace</label>
-                </value>
-                <value>
-                    <fullName>Smart Cities</fullName>
-                    <default>false</default>
-                    <label>Smart Cities</label>
-                </value>
-                <value>
-                    <fullName>Financial Services Industry</fullName>
+                    <fullName>Financial Services / Banking</fullName>
                     <default>false</default>
                     <label>Financial Services Industry</label>
                 </value>
@@ -1168,6 +1223,12 @@
     <label>Business Unit Mapping</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_product_application_nm__c</columns>
+        <columns>core_cpq_product_segment_nm__c</columns>
+        <columns>core_cpq_vertical_market_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

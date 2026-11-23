@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing_SW_ByPassQuoteDeletetionFlow</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing_SW_ByPassQuoteDeletetionFlow</value>
+    </caseValues>
+    <fields>
+        <label><!-- Pricing_SW_FirstNameofUser --></label>
+        <name>Pricing_SW_FirstNameofUser__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing_SW_FlowByPass --></label>
+        <name>Pricing_SW_FlowByPass__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pricing_SW_LastNameofUser --></label>
+        <name>Pricing_SW_LastNameofUser__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

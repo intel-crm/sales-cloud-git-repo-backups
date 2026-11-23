@@ -20,7 +20,7 @@ public class PCC_PartnerLeadPriceAPI_Test {
         
         Product_MM_Attribute_Mapping__c pmam = new Product_MM_Attribute_Mapping__c();
         pmam.Ordering_Code__c = 'QQ80723058DB';
-        pmam.Name = '99APD0'; pmam.MMID__c = '949344QQ80723058DB Q 47W';
+        pmam.Name = '99APD0'; //pmam.MMID__c = '949344QQ80723058DB Q 47W';//Sandhya Changes
         pmam.L4_Product__c = pr.Id;
         //Assert.isNotNull(pmam);
         insert pmam;
@@ -33,7 +33,7 @@ public class PCC_PartnerLeadPriceAPI_Test {
         insert priceRec;
     }
     }
-     
+	 
     @isTest 
     static void testgetpartnerleadprice() {
         

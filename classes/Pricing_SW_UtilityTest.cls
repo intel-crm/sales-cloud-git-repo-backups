@@ -391,13 +391,14 @@ public class Pricing_SW_UtilityTest {
 
     public static Product2 createProduct(){
         // Create a test product for the test with the name "Intel Trust Authority - Custom"
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         Product2 p = new Product2();
         p.Name = Label.Pricing_SW_ProductIntelTrustAuthorityCustom;
         p.Core_Product_Org__c = 'Sales';
         p.Core_Product_Type__c = 'Processors';
         p.Core_Sales_Visible_Flag__c = true;
         p.Core_Hierarchy_ID__c = '43';
-        p.Core_Group_Code_Short_Name__c = 'DCG~DCAI';
+        p.Core_Line_of_Business__c = lobValuesList[0];
         p.IsActive = true;
         insert p;
         return p;
@@ -565,6 +566,7 @@ public class Pricing_SW_UtilityTest {
 
     public static List<SBQQ__QuoteLine__c> createQuoteLinesSW(Id quoteId, Integer numquoteLines){
         List<Product2> products = new List<Product2>();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         for(Integer i=0;i<numquoteLines;i++) {
             Product2 prod = new Product2(Name='TestProduct1'+ i,
                                          Core_Product_Org__c = 'Sales',
@@ -572,7 +574,7 @@ public class Pricing_SW_UtilityTest {
                                          Core_Product_Type__c = 'Processors',
                                          Core_Sales_Visible_Flag__c = true,
                                          Core_Hierarchy_ID__c = '43',
-                                         Core_Group_Code_Short_Name__c = 'DCG',
+                                         Core_Line_of_Business__c = lobValuesList[0],
                                          Core_Item_Orderable_Ind__c = true,
                                          Core_Item_Quotable_Ind__c=true,
                                          Core_OPN__c = 'OPN'+i,

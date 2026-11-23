@@ -62,10 +62,8 @@ public with sharing class PRM_IPAR_ACMUpdateAssignEntitlment{
                     }else{
                         accountIdEntitlementIdMap.put(accountId, new Set<PRM_VXEnttlmntMatrix__c>{vx});
                     }
-                    //System.debug('entitlement with benefit----->'+);
                 }
             }
-            System.debug('account id entitlement id map----->'+accountIdEntitlementIdMap);
             }
         }
         if(accountIdEntitlementIdMap.size()>0){
@@ -78,7 +76,7 @@ public with sharing class PRM_IPAR_ACMUpdateAssignEntitlment{
         Map<Id, Set<Id>> actIdBnftSetMap = new Map<Id, Set<Id>>();// active benefits   - Location Account
         Map<Id, Set<Id>> opidActIdBnftIdsetMap = new Map<Id, Set<Id>>();
         // list of OPID and associated location accounts for adding opid benefits to location account benefits for Entitltment assignment       
-        for( PRM_AccountBenefitAssociation__c abaRec :[select id,PRM_Account_Id__r.RecordType.DeveloperName,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c, PRM_Account_Id__c, PRM_Partner_Benefit_Id__c,PRM_Source__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c,PRM_Partner_Benefit_Id__r.PRM_Account_Type_Nm__c  from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c in :actIds and PRM_Status_Nm__c=:Label.PRM_Active AND PRM_Source__c!='Specialty' and PRM_Account_Id__r.RecordType.DeveloperName =: Label.PRM_Partner_Account_Group_Record_Type]){            
+        for( PRM_AccountBenefitAssociation__c abaRec :[select id,PRM_Account_Id__c,PRM_Partner_Benefit_Id__c /*,PRM_Account_Id__r.RecordType.DeveloperName,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c,PRM_Source__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c,PRM_Partner_Benefit_Id__r.PRM_Account_Type_Nm__c*/  from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c in :actIds and PRM_Status_Nm__c=:Label.PRM_Active AND /*PRM_Source__c!='Specialty'*/PRM_Source__c in ('Tier','Select Benefit') and PRM_Account_Id__r.RecordType.DeveloperName =: Label.PRM_Partner_Account_Group_Record_Type]){//ATHR Fix - TWC729-9556 - SJ           
                  if(actIdBnftSetMap!=null && !actIdBnftSetMap.isEmpty() && actIdBnftSetMap.containsKey(abaRec.PRM_Account_Id__c)){                  
                         actIdBnftSetMap.get(abaRec.PRM_Account_Id__c).add(abaRec.PRM_Partner_Benefit_Id__c);
                     }else{
@@ -153,7 +151,7 @@ public with sharing class PRM_IPAR_ACMUpdateAssignEntitlment{
                 system.debug('already exis set#'+uniqConEnt);
                  /subhadeep new chnage END*/
                 Map<Id,Core_Contact_Entitlement__c> ceMap = new Map<Id,Core_Contact_Entitlement__c>();       
-                System.debug('contactIdEntitlementSetMap-->'+contactIdEntitlementSetMap);
+                //System.debug('contactIdEntitlementSetMap-->'+contactIdEntitlementSetMap);
                 if(contactIdEntitlementSetMap.get(contactId) != null){
                     for(PRM_VXEnttlmntMatrix__c vxent : contactIdEntitlementSetMap.get(contactId)){                        
                         Core_Contact_Entitlement__c ce;                        
@@ -185,7 +183,7 @@ public with sharing class PRM_IPAR_ACMUpdateAssignEntitlment{
              }
         }
         
-        System.debug('Before inactive finalContactEntilementMap -->\n'+finalContactEntilementMap);
+        //System.debug('Before inactive finalContactEntilementMap -->\n'+finalContactEntilementMap);
         
         // inactive entitlements which are not required for role/tier
         for(Id contactId : contactEntitlementMp.keySet()){
@@ -193,8 +191,7 @@ public with sharing class PRM_IPAR_ACMUpdateAssignEntitlment{
             if(finalContactEntilementMap.size()>0 && finalContactEntilementMap.containsKey(contactId) && finalContactEntilementMap.get(contactId)!=null){
                 entitlementsToUpdate = finalContactEntilementMap.get(contactId).keySet();
                 //conEntOrgDataSet.addAll(contactEntitlementMp.get(contactId).values());//subhadeep change new
-            }
-			System.debug('Entitlement to be updated for each cont----->'+entitlementsToUpdate);      
+            }      
             for(Id entitlementId : contactEntitlementMp.get(contactId).keySet()){//
                 Core_Contact_Entitlement__c ce;
                 if(!entitlementsToUpdate.contains(entitlementId) && entMatWrap.entitlementIds.contains(entitlementId)){
@@ -205,7 +202,6 @@ public with sharing class PRM_IPAR_ACMUpdateAssignEntitlment{
                     if(ce.Core_Selected__c== true){
                         ce.Core_Selected__c = false;
                     }
-                    System.debug('entitlement made inactive------->'+ce);
                 }
                 if(ce!=null){
                     if(finalContactEntilementMap.size()>0 && finalContactEntilementMap.containsKey(contactId) && finalContactEntilementMap.get(contactId)!=null){
@@ -228,22 +224,21 @@ public with sharing class PRM_IPAR_ACMUpdateAssignEntitlment{
         }
         //recordsToLoad.addAll(recordsSetToLoad);//Subhadeep change new
         Set<Core_Contact_Entitlement__c> uniqConEntlSet = new Set<Core_Contact_Entitlement__c>();
-        system.debug('org data--->'+conEntOrgDataSet);
+        //system.debug('org data--->'+conEntOrgDataSet);
         //Fix- TWC729-8334
         Map<String, Core_Contact_Entitlement__c> contOrgDataMap = new Map<String, Core_Contact_Entitlement__c>();
         for(Core_Contact_Entitlement__c distConEntl :conEntOrgDataSet){
             String key = distConEntl.Core_Contact_Id__c+''+distConEntl.Core_Entitlement_Id__c+''+distConEntl.Core_Selected__c;
             contOrgDataMap.put(key,distConEntl);
         }
-        system.debug('contOrgDataMap--->'+contOrgDataMap);
         for(Core_Contact_Entitlement__c setContEntRec :recordsSetToLoad){
             String key = setContEntRec.Core_Contact_Id__c+''+setContEntRec.Core_Entitlement_Id__c+''+setContEntRec.Core_Selected__c;
             //if(!contOrgDataMap.containsKey(key))
                 uniqConEntlSet.add(setContEntRec);
         }
-        system.debug('uniqConEntlSet-->'+uniqConEntlSet);
-        system.debug('recordsToLoad Set -->'+recordsSetToLoad);
-        System.debug('recordsToLoad -->'+recordsToLoad);
+        //system.debug(uniqConEntlSet);
+        //system.debug('recordsToLoad Set -->'+recordsSetToLoad);
+        //System.debug('recordsToLoad -->'+recordsToLoad);
         //lstCEEntitlement = recordsToLoad;  //Subhadeep change new
         lstCEEntitlement = new List <Core_Contact_Entitlement__c>(uniqConEntlSet);
         System.debug('Final Contact Entitlement List -->'+lstCEEntitlement);
@@ -326,7 +321,7 @@ public with sharing class PRM_IPAR_ACMUpdateAssignEntitlment{
             }
         }
         actIdEntIdMp.put(accountId, vxMat);
-        system.debug('actIdEntIdMp with benefit--->'+actIdEntIdMp);
+         //system.debug('actIdEntIdMp with benefit--->'+actIdEntIdMp);
         return actIdEntIdMp;
     }
 

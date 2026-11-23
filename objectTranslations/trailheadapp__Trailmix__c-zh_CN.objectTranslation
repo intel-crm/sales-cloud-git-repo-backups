@@ -17,7 +17,7 @@
         <name>trailheadapp__Created_By_Profile__c</name>
     </fields>
     <fields>
-        <help>不再需要此字段。在页面布局上编辑该字段的属性，并取消勾选必填框。</help>
+        <help>THIS FIELD IS NO LONGER REQUIRED. EDIT THE PROPERTIES FOR THIS FIELD ON THE PAGE LAYOUT AND UNHECK THE REQUIRED BOX.</help>
         <label><!-- Created By --></label>
         <name>trailheadapp__Creator_TH_SFID__c</name>
     </fields>

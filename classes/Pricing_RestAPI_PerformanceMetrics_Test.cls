@@ -14,11 +14,12 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
     @testSetup static void testSetup() {
         List<Product2> prodList = new List<Product2>();
         Product2 prod = new Product2();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         prod.Core_Product_Org__c = 'Sales';
         prod.Core_Product_Type__c = 'Processors';
         prod.Core_Sales_Visible_Flag__c  = True;
         prod.IsActive = True;
-        prod.Core_Group_Code_Short_Name__c = 'DCG~DCAI';
+        prod.Core_Line_of_Business__c = lobValuesList[0];
         prod.Core_Hierarchy_ID__c = '43';
         prod.Name = 'Product X';
         prod.Core_Processor_Number_Nm__c = 'test';
@@ -269,6 +270,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
             test.startTest();        
             List<Pricing_Performance_Metric__c> pmList = [Select Id from Pricing_Performance_Metric__c limit 1];
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
+            // Initialize response context explicitly; remove unused local variable
             RestContext.response = new RestResponse();
             req.requestUri='/services/apexrest/v1.0/quoterequest/performancemetrics?id=';
             req.httpMethod = 'GET';
@@ -285,6 +287,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
         system.runAs(usr){
             test.startTest();
             RestRequest req = (RestRequest)System.jSON.deserialize(Pricing_RestAPI_TestUtility.REQUEST_TEMPLATE, RestRequest.class);
+            // Initialize response context explicitly; remove unused local variable
             RestContext.response = new RestResponse();
             req.requestUri='/services/apexrest/v1.0/quoterequest/performancemetrics?id=';
             req.httpMethod = 'GET';
@@ -305,6 +308,7 @@ public class Pricing_RestAPI_PerformanceMetrics_Test {
             request.requestUri = '/services/apexrest/v1.0/quoterequest/performancemetrics';
             request.httpMethod = 'PATCH';
             request.addHeader('Content-Type', 'application/json');
+           // request.requestBody = Blob.valueOf('{ "quoteLineId":"'+quoteLineList[0].Id+'", "performanceMetrics":[{"performanceMetricsUsed":"Other","weighting":10,"intelScore":10,"compScore":5,"otherText":"Test" }]}');
             request.requestBody = Blob.valueOf('{	"quoteLineId":"'+quoteLineList[0].Id+'",	"performanceMetrics":[{"performanceMetricsId" : "'+pmList[0].id+'","performanceMetricsReferenceId":"PM-77","performanceMetricsUsed":"Other","weighting":"10","intelScore":10,"compScore":5,"otherText":"Test"}]}');
             RestContext.request = request;        
             RestResponse res = new RestResponse();

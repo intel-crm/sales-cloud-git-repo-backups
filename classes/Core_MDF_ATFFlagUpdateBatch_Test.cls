@@ -26,20 +26,20 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
             bypassFunctionKeys.add('byPassCampaignAndRelatedRecords');
             bypassFunctionKeys.add('Bypass_StampingOfActySubType_Check');
             bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
-           bypassFunctionKeys.add('Bypass_UpdateActivityFields');
+       		bypassFunctionKeys.add('Bypass_UpdateActivityFields');
             
             Set<String> myset1 = new Set<String>();
             List<String> result1 = new List<String>();
             myset1.addAll(bypassFunctionKeys);
             result1.addAll(myset1);
             
-
+            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
               
             permissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_Retail_Finance_Usr' LIMIT 1];
             insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps.Id);
             
             ChannelProgram cpRetail = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', True);
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client ','Client CoMarketing Fund', True);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client ','Client CoMarketing Fund', True); //US-14285
             List<Account> accList = new List<Account>();
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                             false);
@@ -98,13 +98,13 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         opalbudget.Core_MDF_Budget_Type__c='MDF';
         opalbudget.Core_MDF_Budget_Type_Txt__c='MDF';
         system.runAs(usr1){
-             insert opalbudget;
+           	insert opalbudget;
         }
         PartnerFundAllocation pfaRecordOpal = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('TestPFA3',opalbudget, acc, 199999, false);
         insert pfaRecordOpal;
         test.stopTest();
         List<PartnerFundRequest> pfrList=new List<PartnerFundRequest>();
-         PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
+       	PartnerFundRequest MDFpfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(MDFcamp.Id),
                                                                                           Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,string.valueof(acc.id),pfaRecordOpal,opalbudget,'INDIA','Small Business','Desktop',
                                                                                           'Intel® Core™ i7 Processor','Broadcast','Radio','Draft',false);
         MDFpfr.Title = 'Test Activity';
@@ -115,8 +115,8 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         MDFpfr.Core_MDF_Activity_Closure_Type__c='Manual';
         MDFpfr.Core_MDF_PriorValueOfStatus__c='Pending Review';
         MDFpfr.RequestedAmount = 1001;
-        MDFpfr.Core_MDF_ActivityCategory__c='';
-        MDFpfr.Core_MDF_Activity_Types__c='';
+        MDFpfr.Core_MDF_ActivityCategory__c=''; //US-14285
+        MDFpfr.Core_MDF_Activity_Types__c=''; //US-14285
         pfrList.add(MDFpfr);
         PartnerFundRequest RetailPfr2 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today()-10,System.today()-1,false); 
         RetailPfr2.Title ='Retail RSA MD Activity';
@@ -128,8 +128,8 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         RetailPfr2.Core_MDF_Fund_Request_Status__c = 'Pending Review';
         RetailPfr2.Core_MDF_Budget_Currency_cd__c ='USD';
         RetailPfr2.Core_MDF_Reimbursement_Rate_pct__c='100%';
-        RetailPfr2.Core_MDF_ActivityCategory__c='';
-        RetailPfr2.Core_MDF_Activity_Types__c='';   
+        RetailPfr2.Core_MDF_ActivityCategory__c=''; //US-14285
+        RetailPfr2.Core_MDF_Activity_Types__c='';  //US-14285
         RetailPfr2.AllocationId=retailAlloc.id;
        
         pfrList.add(RetailPfr2);
@@ -145,9 +145,9 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         RetailPfr1.Core_MDF_ATF_Flag_nm__c='ATF Date';
         RetailPfr1.Core_MDF_Budget_Currency_cd__c ='USD';
         RetailPfr1.Core_MDF_Reimbursement_Rate_pct__c='100%';
-        RetailPfr1.Core_MDF_ActivityCategory__c='';
+        RetailPfr1.Core_MDF_ActivityCategory__c=''; //US-14285
         RetailPfr1.AllocationId=retailAlloc.id;
-       RetailPfr1.Core_MDF_Activity_Types__c='';
+       RetailPfr1.Core_MDF_Activity_Types__c=''; //US-14285
         pfrList.add(RetailPfr1);
         PartnerFundRequest RetailPfr3 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today()-10,System.today()-1,false); 
         RetailPfr3.Title ='Retail RSA MD Activity';
@@ -161,8 +161,8 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         RetailPfr3.Core_MDF_Reimbursement_Rate_pct__c='100%';
         //RetailPfr3.Core_MDF_ATF_Flag_nm__c='ATF Date';
         RetailPfr3.AllocationId=retailAlloc.id;
-            RetailPfr3.Core_MDF_ActivityCategory__c='';
-        RetailPfr3.Core_MDF_Activity_Types__c='';
+        RetailPfr3.Core_MDF_ActivityCategory__c=''; //US-14285
+        RetailPfr3.Core_MDF_Activity_Types__c=''; //US-14285
         pfrList.add(RetailPfr3);
         
         PartnerFundRequest RetailPfr4 = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp1.Id),string.valueof(accRetail.id),System.today()-10,System.today()-1,false); 
@@ -177,9 +177,9 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
         RetailPfr4.Core_MDF_Reimbursement_Rate_pct__c='100%';
         RetailPfr4.Core_MDF_ATF_Flag_nm__c='ATF Date';
         RetailPfr4.AllocationId=retailAlloc.id;
-        
-        RetailPfr4.Core_MDF_ActivityCategory__c='';
-            RetailPfr4.Core_MDF_Activity_Types__c='';
+
+        RetailPfr4.Core_MDF_ActivityCategory__c=''; //US-14285
+        RetailPfr4.Core_MDF_Activity_Types__c=''; //US-14285
         pfrList.add(RetailPfr4);
         insert pfrList;
         }
@@ -195,6 +195,7 @@ public class Core_MDF_ATFFlagUpdateBatch_Test {
             test.startTest();
             List<PartnerFundRequest> pfrList = [SELECT Id,Core_MDF_Budget_Type_nm__c,Core_MDF_Start_Date__c,Core_MDF_ATF_Flag_nm__c,Core_MDF_Fund_Request_Status__c,CreatedDate FROM PartnerFundRequest];
             Core_MDF_ATFFlagUpdateBatch obj =new Core_MDF_ATFFlagUpdateBatch();
+
             Assert.isNotNull(pfrList);
             test.stopTest();
         }

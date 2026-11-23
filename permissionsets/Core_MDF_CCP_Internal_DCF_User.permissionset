@@ -5,11 +5,6 @@
         <name>Core_MDF_CCP_Internal_DCF_User</name>
     </customPermissions>
     <description>Internal User for DCF Program</description>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>PartnerFundRequest.Core_MDF_Approval_Stage__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP Internal DCF User</label>
     <license>Salesforce</license>
@@ -19,10 +14,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Core_MDF_Target_Setting__c.Core_MDF_Data_Center_Co_Marketing_Fund</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>PartnerFundAllocation.Core_MDF_Data_Center_CoMarketing_Fund</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
 </PermissionSet>

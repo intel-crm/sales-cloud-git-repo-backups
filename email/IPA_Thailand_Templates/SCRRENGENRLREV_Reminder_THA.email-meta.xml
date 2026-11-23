@@ -5,33 +5,28 @@
     <name>SCRRENGENRLREV_Reminder_THA</name>
     <style>none</style>
     <subject>แจ้งเตือน: อย่าลืมยืนยัน</subject>
-    <textOnly>การแจ้งเตือน: ตรวจสอบอีเมลและตั้งค่ารหัสผ่านของคุณ
-
+    <textOnly>สิ่งที่ต้องทำ
 
 
 {!PRM_Registration_Request__c.PRM_First_Name__c},
 
-ขอบคุณที่เริ่มลงทะเบียน Intel® Partner Alliance!
-โปรดคลิกที่ลิงก์ด้านล่างนี้เพื่อดำเนินการต่อ
+จะต้องยืนยันที่อยู่อีเมลของคุณ ก่อนที่คุณจะสามารถเข้าถึงสิทธิประโยชน์สำหรับสมาชิก Intel® Partner Alliance
 
 
-ตรวจสอบอีเมลของคุณ และตั้งค่ารหัสผ่าน
+ยืนยันทันที
 
-โปรดใช้ชื่อผู้ใช้ตามรายการด้านล่างเพื่อทำขั้นตอนต่อไปให้เสร็จ และตั้งค่ารหัสผ่านของคุณ
-ชื่อผู้ใช้: {!PRM_Registration_Request__c.PRM_Email_ID__c}
-
-ไม่สามารถเข้าถึงลิงก์ด้านบนได้ใช่ไหม
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=th&amp;target=	 https://wcm-ciqa.intel.com/content/www/th/th/secure/partner/forms/ipa-account-search.html
+ไม่สามารถเข้าถึงลิงก์ด้านบนได้ใช่หรือไม่
+https://signindev.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;target=https://ciqa.intel.com/content/www/us/en/secure/partner/forms/ipa-account-search.html
+หากคุณมีคำถามใดๆ หรือคิดว่าคุณได้รับข้อความนี้เนื่องจากข้อผิดพลาด โปรดติดต่อเราได้ที่  https://signin.intel.com/ContactUs?Culture=en-US.
 
 
-เราหวังเป็นอย่างยิ่งว่าคุณจะร่วมเป็นส่วนหนึ่งในโปรแกรมนี้!
-ด้วยความเคารพ
+ขอขอบคุณ
 ทีม Intel® Partner Alliance ของคุณ
 
-ข้อความนี้ส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA www.intel.com
-ความเป็นส่วนตัว&amp;verbar;คุ้กกี้</textOnly>
+ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
+ความเป็นส่วนตัว | คุ้กกี้</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

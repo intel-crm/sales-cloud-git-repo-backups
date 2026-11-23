@@ -240,4 +240,17 @@
         </columns>
         <masterLabel>Partner Industry Applications</masterLabel>
     </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_isEmailDelivered__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_retriggerCount__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <masterLabel>Marketing Profile Information</masterLabel>
+    </sections>
 </ReportType>

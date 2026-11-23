@@ -6,39 +6,7 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>partner community user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
-                <profile>customer community plus login user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
-                <profile>customer community plus user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
-                <profile>customer community login user</profile>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Profile</type>
-        </criterion>
-        <criterion>
-            <criteriaNumber>1</criteriaNumber>
-            <criterionValue>
-                <profile>partner community login user</profile>
+                <profile>partner</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
@@ -54,7 +22,47 @@
         <criterion>
             <criteriaNumber>1</criteriaNumber>
             <criterionValue>
-                <profile>partner</profile>
+                <profile>partner community login user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>customer community login user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>customer community plus user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>customer community plus login user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>partner community user</profile>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>Profile</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <profile>ips external customer</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
@@ -64,10 +72,10 @@
     <isDefaultAudience>false</isDefaultAudience>
     <targets>
         <target>
-            <groupName>e9d16df4-f97a-40e7-b493-5b01ec075c72$#$24b01f2a-3375-45fb-9a93-d3749608f345</groupName>
-            <priority>1</priority>
+            <groupName>e9d16df4-f97a-40e7-b493-5b01ec075c72$#$c6425982-bf94-4b86-a887-ba23024d5f1d</groupName>
+            <priority>2</priority>
             <targetType>ExperienceVariation</targetType>
-            <targetValue>Default_Navigation_Menu_2_Component_Properties</targetValue>
+            <targetValue>Default_Navigation_Menu_Component_Properties</targetValue>
         </target>
         <target>
             <groupName>6113ccb5-d263-42b6-934a-406aaceb37c1</groupName>

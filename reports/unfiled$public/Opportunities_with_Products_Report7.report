@@ -62,14 +62,14 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <format>Tabular</format>
-    <name>Yaz Close Opportunities&apos;20 with Products</name>
+    <name>Yaz Won Opportunities with Products</name>
     <params>
         <name>terr</name>
         <value>all</value>
     </params>
     <params>
         <name>open</name>
-        <value>closed</value>
+        <value>closedwon</value>
     </params>
     <params>
         <name>probability</name>

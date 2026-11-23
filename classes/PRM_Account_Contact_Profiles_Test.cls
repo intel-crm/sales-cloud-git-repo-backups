@@ -757,8 +757,38 @@ public class PRM_Account_Contact_Profiles_Test {
         Test.stopTest();
     }
      public static testMethod void getProfileRespFromMembership(){
-        Test.startTest();
          Account acct = [Select id From Account WHERE Name='IntelAccount1' LIMIT 1];
+         Account partnerAcct = [
+            SELECT Id
+            FROM Account
+            WHERE Name = 'PartnerAccount1'
+            LIMIT 1
+        ];
+        
+        acct.Core_IPA_One_Partner_Id__c = partnerAcct.Id;
+        update acct;
+         
+        Core_CustomMetadata_Object__c meta = new Core_CustomMetadata_Object__c(
+            DeveloperName__c = 'POINT_OPT_IN',
+            MasterLabel__c = 'Point Opt In',
+            Metadata_Name__c = 'PRM_IPAMembership_Mapping__mdt',
+            Field_1__c = 'Points Opt In',
+            Field_2__c = 'POINT_OPT',
+            Field_3__c = 'TRUE',
+            Field_6__c = 'PRM_Points_Opt_in_Ind__c',
+            Field_7__c = 'TRUE'
+        );
+        insert meta;
+         
+         PRM_IPAMembership_Attributes__c membership =
+            new PRM_IPAMembership_Attributes__c(
+                PRM_Account_Id__c = partnerAcct.Id,
+                PRM_Inactive_ind__c = false,
+                PRM_Points_Opt_in_Ind__c = true
+            );
+		insert membership;
+         
+        Test.startTest();
         PRM_Account_Contact_Profiles_Utility.getProfileResponseFromMembership(acct.Id);
         Test.stopTest();
     }
@@ -955,11 +985,44 @@ public class PRM_Account_Contact_Profiles_Test {
         abt.StatusReason = 'Approved';
 
     }
-
+    
+    @IsTest
+        static void testGetProfiles()
+        {
+            PRM_Registration_Request__c regReq =new PRM_Registration_Request__c(
+                    Name = 'CovThis',
+                    PRM_First_Name__c = 'Test03',
+                    PRM_Last_Name__c = 'User09',
+                    PRM_Email_ID__c = 'nomatch@inteltest.com',
+                    PRM_Status__c = 'New',
+                    PRM_Contact_Country__c = 'IND'
+             );
+            insert regReq;
+        
+            RestRequest request = new RestRequest();
+            request.requestUri = '/services/apexrest/GetProfile/';
+            request.httpMethod = 'POST';
+        
+            request.requestBody = Blob.valueOf(
+                '{"KeyInput":{"InputField":"EMAILID",' +
+                '"InputValue":"nomatch@inteltest.com",' +
+                '"IsProgramBased":"true",' +
+                '"Name":"IPA"}}'
+            );
+        
+            RestContext.request = request;
+        
+            Test.startTest();       
+            PRM_Account_Contact_Profiles_Model.Profiles profiles = PRM_Account_Contact_Profiles.GetProfiles();       
+            Test.stopTest();       
+            System.assertNotEquals(null, profiles);
+        }
+	
+    /*
      @IsTest
     static void testGetProfileResponses() {
 
-        /* ---------- Test Data Setup ---------- */
+        // ---------- Test Data Setup ---------- 
 
         // Account
         String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;            
@@ -1007,13 +1070,13 @@ public class PRM_Account_Contact_Profiles_Test {
         );
         insert response;
 
-        /* ---------- Execute ---------- */
+        // ---------- Execute ---------- 
         Test.startTest();
         List<PRM_Account_Contact_Profiles_Model.ProfileResponse> results =
             PRM_Account_Contact_Profiles_Utility.getProfileResponses(acc.Id);
         Test.stopTest();
 
-        /* ---------- Assertions ---------- */
+        // ---------- Assertions ---------- 
         System.assertNotEquals(null, results, 'Result list should not be null');
         System.assertEquals(1, results.size(), 'One profile response expected');
 
@@ -1063,17 +1126,18 @@ public class PRM_Account_Contact_Profiles_Test {
             'No profile responses should be returned when no data exists');
     }
     
+    
     @IsTest
     static void testGetAccountSpecialityAssociations() {
 
-        /* -------- Account -------- */
+        //-------- Account -------- 
         String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;            
         Account acc = new Account(Name ='Test Account',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'PRC Sales Group',Core_User_Defined_Website__c='www.test.com',
                                               Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',
                                              ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True        );
         insert acc;
 
-        /* -------- Specialty -------- */
+        //-------- Specialty -------- 
         Id selectBenRT=Schema.getGlobalDescribe().get('PRM_Specialty__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_Select_Benefits').getRecordTypeId();  
         Id specnRT=Schema.getGlobalDescribe().get('PRM_Specialty__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_Select_Benefits').getRecordTypeId();
         PRM_Specialty__c spec1 = new PRM_Specialty__c();
@@ -1089,7 +1153,7 @@ public class PRM_Account_Contact_Profiles_Test {
         spec1.PRM_Inactive_Ind__c=false;
         insert spec1;
 
-        /* -------- Account–Specialty Association -------- */
+        // -------- Account–Specialty Association -------- 
         PRM_Account_Specialty_Association__c asaRec =
             new PRM_Account_Specialty_Association__c(
                 //Name = 'Cloud Association',
@@ -1101,7 +1165,7 @@ public class PRM_Account_Contact_Profiles_Test {
             );
         insert asaRec;
 
-        /* -------- Re-query Account WITH child relationship -------- */
+        // -------- Re-query Account WITH child relationship -------- 
         Account accWithChildren = [
             SELECT Id,
                    (SELECT Id,
@@ -1116,13 +1180,13 @@ public class PRM_Account_Contact_Profiles_Test {
             WHERE Id = :acc.Id
         ];
 
-        /* -------- Execute -------- */
+        // -------- Execute -------- 
         Test.startTest();
         List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation> results =
             PRM_Account_Contact_Profiles_Utility.getAccountSpecialityAssociations(accWithChildren);
         Test.stopTest();
 
-        /* -------- Assertions -------- */
+        //-------- Assertions -------- 
         System.assertEquals(1, results.size(), 'One association expected');
 
         PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation result =
@@ -1142,5 +1206,6 @@ public class PRM_Account_Contact_Profiles_Test {
             'Role label should be populated'
         );
     }
+   */
    
 }

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Tanya Pelletier</description>
+    <description>EMP of Tim Westman</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11717648_Guanfang_Zhu</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11490540_Tanya_Pelletier</parentRole>
+    <parentRole>EMP_10055787_Tim_Westman</parentRole>
 </Role>

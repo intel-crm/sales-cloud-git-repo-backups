@@ -195,7 +195,7 @@
         <label>Opportunity Region</label>
         <length>25</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -657,18 +657,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Paid Partnerships</label>
-                </value>
-                <value>
-                    <fullName>Paid Services</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Paid Services</label>
-                </value>
-                <value>
-                    <fullName>Performance Optimization</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Performance Optimization</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

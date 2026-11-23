@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>share of Wallet</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ShareOfWallet__c</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Plan --></label>
+        <name>CRM_Account_Plan__c</name>
+        <relationshipLabel><!-- ShareOfWallet__c --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>CRM_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor --></label>
+        <name>CRM_Competitor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract End Date --></label>
+        <name>CRM_Contract_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Offering --></label>
+        <name>CRM_Offering__c</name>
+        <picklistValues>
+            <masterLabel>Creative Services</masterLabel>
+            <translation><!-- Creative Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Marketing</masterLabel>
+            <translation><!-- Digital Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Mail</masterLabel>
+            <translation><!-- Direct Mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Print Large Format</masterLabel>
+            <translation><!-- Print Large Format --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEO</masterLabel>
+            <translation><!-- SEO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Development</masterLabel>
+            <translation><!-- Web Development --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Spend --></label>
+        <name>CRM_Spend__c</name>
+    </fields>
+    <fields>
+        <label><!-- With --></label>
+        <name>CRM_With__c</name>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Don&apos;t do</masterLabel>
+            <translation><!-- Don&apos;t do --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Executes Internally</masterLabel>
+            <translation><!-- Executes Internally --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Us</masterLabel>
+            <translation><!-- Us --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Year --></label>
+        <name>CRM_Year__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

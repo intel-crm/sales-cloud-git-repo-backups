@@ -40,6 +40,8 @@ export default class Core_MDF_DisplayProducts extends LightningElement {
     @api isCommunity;
     @api hideHeader = false;
     @api activityAmount;
+    
+    
 
     @track segmentList;
     @track fieldsToDisplay;
@@ -74,12 +76,15 @@ export default class Core_MDF_DisplayProducts extends LightningElement {
     productFamilyStr = Core_MDF_ProductFamilyStr;
     productsStr = Core_MDF_ProductsStr;
 		spifMetrics = Core_MDF_SPIFMetrics;
-		
+
+   	
     connectedCallback() {
         /*This is for initialisation purpose*/
         let isCommunity = true;
         this.loadForm();
+        
     }
+
 
     loadForm() {
         returnSegments({recordId : this.recordId})
@@ -206,7 +211,8 @@ export default class Core_MDF_DisplayProducts extends LightningElement {
     }
 
     renderedCallback(){
-            this.checkSPIFAmountExceedsActivityAmount();
+           this.checkSPIFAmountExceedsActivityAmount();
+    
     }
 
     @api

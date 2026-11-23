@@ -209,7 +209,7 @@ public class Core_MDF_ECMCreationController_Test {
                                                                                            'Consumer',
                                                                                            'Desktop',
                                                                                            'Intel® Core™ i5 Processor',
-                                                                                           'Audio',
+                                                                                           'Broadcast',
                                                                                            'Podcast',
                                                                                            'Draft',
                                                                                            false);

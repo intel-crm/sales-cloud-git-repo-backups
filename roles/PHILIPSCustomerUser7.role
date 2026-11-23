@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>PHILIPS Netherlands Customer User</description>
+    <description>PHILIPS Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>PHILIPS Netherlands Customer User</name>
+    <name>PHILIPS Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>A_E_Users</parentRole>
 </Role>

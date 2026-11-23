@@ -62,6 +62,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Recommend_for_Review_Flag_ind__c</field>
+            <table>PartnerFundClaim.PIC_Reviews__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Review_Date_dt__c</field>
             <table>PartnerFundClaim.PIC_Reviews__r</table>
         </columns>

@@ -16,7 +16,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
           for(core_MDF_Picklist_Maintainance__mdt obj : objList){
          result.add(obj.Core_MDF_Picklist_Maintanance__c);
          
-	     }
+         }
          for( String obj: result )
          { 
          List<Core_MDF_Smart_Picklist_Maintainence.Wrapper> treeData= new List<Core_MDF_Smart_Picklist_Maintainence.Wrapper>();
@@ -25,7 +25,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
          RecType=Core_MDF_Smart_Picklist_Maintainence.GetRecordType(obj);
          System.assertNotEquals(null,treeData,'treeData should not be null');
         
-   		 }
+         }
     }*/
     @isTest
     static void testgetProgramData(){
@@ -73,6 +73,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
         String objName = 'Core_MDF_Custom_Picklist__c';
         String fldName = 'Core_MDF_Focus_Area_nm__c';
         picklistValues=Core_MDF_Smart_Picklist_Maintainence.getPickListValuesData(objName,fldName);
+        System.assertEquals(4,picklistValues.size(),'Excepted number of picklist values');
         try{
         Core_MDF_Smart_Picklist_Maintainence.getPickListValuesData(null,null);
         }
@@ -229,14 +230,14 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
     static void testGetDependentfieldsWithException(){
         try{
          Core_MDF_Smart_Picklist_Maintainence.getDependentfields(null, null);       
-   		 }
+         }
     catch(Exception e){
              String message = e.getMessage();
                assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }
-	}
- 	@isTest
+    }
+    @isTest
     static void testGetProgramDataWithException(){
        //try {
          
@@ -249,7 +250,7 @@ public class Core_MDF_Smart_Picklist_MaintainenceTest {
                assert.isTrue(message.contains('Script-thrown exception'));
              Core_MDF_CCP_UtilityClass.logError(e);
         }
-	}
+    }
     private class MockHttpResponseGenerator1 implements HttpCalloutMock {
         public HttpResponse respond(HttpRequest req) {
             // Simulate an exception response

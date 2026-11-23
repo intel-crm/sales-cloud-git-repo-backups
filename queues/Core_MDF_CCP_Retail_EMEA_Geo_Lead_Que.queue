@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>CCP Retail EMEA Geo Lead Que</name>
-    <queueMembers>
-        <publicGroups>
-            <publicGroup>Core_MDF_CCP_Retail_EMEA_Geo_Lead_Grp</publicGroup>
-        </publicGroups>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Core_MDF_Escalation__c</sobjectType>
     </queueSobject>

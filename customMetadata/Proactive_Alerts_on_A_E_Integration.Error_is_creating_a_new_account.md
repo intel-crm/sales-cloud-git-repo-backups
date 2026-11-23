@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_Error_Text__c</field>
-        <value xsi:type="xsd:string">2024</value>
+        <value xsi:type="xsd:string">&quot;ErrorCode&quot;: &quot;2024&quot;</value>
     </values>
     <values>
         <field>Core_Is_Active__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Core_Minimum_count_for_Alert__c</field>
-        <value xsi:type="xsd:double">10.0</value>
+        <value xsi:type="xsd:double">1.0</value>
     </values>
     <values>
         <field>IsIgnore__c</field>

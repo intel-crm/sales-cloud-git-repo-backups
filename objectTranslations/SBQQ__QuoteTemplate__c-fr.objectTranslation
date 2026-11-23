@@ -13,6 +13,10 @@
         <name>Pricing_SW_Signature__c</name>
     </fields>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Sélectionnez la case si tous les produits de package doivent être imprimés dans les documents de devis. Sinon, seuls les documents non vides sont imprimés.</help>
         <label><!-- Show All Package Product --></label>
         <name>SBQQ__AllPackageProductsShown__c</name>

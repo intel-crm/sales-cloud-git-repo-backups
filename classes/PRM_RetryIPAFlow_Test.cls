@@ -55,11 +55,9 @@ public without Sharing class PRM_RetryIPAFlow_Test {
          
         String LogEntryId_Account_Update = Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN_ACCOUNT_UPDATE, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_ACCOUNT_UPDATE, LOG_ENTRY_SEVERITY ,'unable to obtain exclusive access to this record or',JSON.serialize(new List<Account>{accIntel}),accIntel.Id, 'Account', accIntel.Id);
                         Core_Log_Entry__c logEntry_Account_Update = new Core_Log_Entry__c(Id = LogEntryId_Account_Update, Core_Retry_Counter__c = 1);
-                        System.debug('LogEntryId_Account_Update'+LogEntryId_Account_Update);
                         logEntryToUpdate.add(logEntry_Account_Update);
         
         String LogEntryId = Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY ,'unable to obtain exclusive access to this record or','','', '', 'checkuser@mailinator.com');
-                        System.debug('LogEntryId'+LogEntryId);
                         Core_Log_Entry__c logEntry = new Core_Log_Entry__c(Id = LogEntryId, Core_Retry_Counter__c = 1);
                         logEntryToUpdate.add(logEntry);
          

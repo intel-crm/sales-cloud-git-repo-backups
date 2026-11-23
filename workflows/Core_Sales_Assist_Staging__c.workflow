@@ -10,6 +10,6 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_SalesAssist_Failure_Template</template>
+        <template>unfiled$public/Core_SalesAssist_Failure_Template</template>
     </alerts>
 </Workflow>

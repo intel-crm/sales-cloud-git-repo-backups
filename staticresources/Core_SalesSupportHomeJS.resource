@@ -32,7 +32,7 @@ function addLoadEvent(currentTab) {
     }
 }*/
 
-function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAccountId, sOrderSeedsURL, sRequestSamplesURL,UserRegion,UIthemedisplayed, sRegURL, sWarningError, sPremierSupportURL) {
+function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAccountId, sOrderSeedsURL, sRequestSamplesURL,UserRegion,UIthemedisplayed, sRegURL, sWarningError, sPremierSupportURL, sWebQuoteURL) {
     
     requestType = document.getElementById(requestTypeElementId).value;
    
@@ -69,6 +69,8 @@ function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAcc
             redirectUrl = redirectUrl1 + '&CF' + opportunityNameFieldId + '=' + encodeURIComponent(sOpportunityName) + '&CF' + opportunityNameFieldId + '_lkid=' + sOpportunityId +'&' + '00No000000CnaeD=' + UserRegion;
         
         window.location = redirectUrl;
+        console.log('redirectUrl'+redirectUrl);
+
        }
 	   if(UIthemedisplayed=='Theme3' && sOpportunityName == '' ){
         
@@ -76,6 +78,7 @@ function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAcc
         
         
         window.location = redirectUrl1;
+        console.log('redirectUrl'+redirectUrl1);
        }
 	   
      if(UIthemedisplayed !='Theme3' && sOpportunityName == '' ){        
@@ -100,7 +103,11 @@ function newRequest(requestTypeElementId, sOpportunityId, sOpportunityName, sAcc
 	else if(requestType == 'Create PSG Quote') { 
 	   processOpportuntyQuote();
 	}
-        
+	else if(requestType == 'Create Web Quote') { 
+		var redirectWebQuoteUrl = sWebQuoteURL+sOpportunityId;
+		popupUrl = redirectWebQuoteUrl;
+	}
+    
     if (popupUrl != '') {
         
         //if (isIE()) { // bypass checks because ie cant make cross domain requests without relaxing security
@@ -155,7 +162,7 @@ function clickTab(tabName, tableId, messagesId) {
 	 //Intel Altera Phase1:
     //Below code modified to perform the load data to PSG Quote too.
     // Rangesh - SMG-DRD Integration - added tabName condition to preserve user selection in cookie
-    if ((tabName == 'tabSeeds') || (tabName == 'tabSamples') || (tabName == 'tabPSGQuote') || (tabName == 'tabDRDSSR') ) {
+    if ((tabName == 'tabSeeds') || (tabName == 'tabSamples') || (tabName == 'tabPSGQuote') || (tabName == 'tabDRDSSR') || (tabName == 'tabWebquotes') ) {
         if (document.getElementById(tableId) && document.getElementById(tableId).childNodes[2] &&
             (document.getElementById(tableId).childNodes[2].childNodes.length > 0)) {
 			
@@ -173,6 +180,9 @@ function clickTab(tabName, tableId, messagesId) {
                 pullSamples();
 			else if(tabName == 'tabPSGQuote') {
 			    pullPSGQuote();
+				}
+			else if(tabName == 'tabWebquotes') {
+			    pullWebQuotes();
 				}
 			
         }

@@ -377,42 +377,9 @@
         <columns>Core_Source_System__c</columns>
         <columns>Core_Status__c</columns>
         <columns>Core_Retry_Counter__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>Core_Failure_Reason__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Insert_Msgs</fullName>
-        <columns>NAME</columns>
-        <columns>Core_CIM_ID__c</columns>
-        <columns>Core_CIM_Message_Type__c</columns>
-        <columns>Core_CIM_Processing_Time__c</columns>
-        <columns>Core_Is_Invalid_Record__c</columns>
-        <columns>Core_Failure_Reason__c</columns>
-        <columns>Core_Log_Entry__c</columns>
-        <columns>Core_Message_ID__c</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Core_Status__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_CIM_Message_Type__c</field>
-            <operation>equals</operation>
-            <value>UPSERT</value>
-        </filters>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>greaterOrEqual</operation>
-            <value>3/5/2021 12:00 AM</value>
-        </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operation>equals</operation>
-            <value>Successful</value>
-        </filters>
-        <label>Insert Msgs</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>CS-{00000000}</displayFormat>

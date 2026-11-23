@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>AEHR SYSTEMS Customer User</description>
+    <description>AEHR TEST Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>AEHR SYSTEMS Customer User</name>
+    <name>AEHR TEST Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>EMP_11645373_Prasad_Reddy</parentRole>
 </Role>

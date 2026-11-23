@@ -34,7 +34,7 @@
                 </groupingSortProperties>
                 <header>Company Roles</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>IPACommunityDashboardReports/Contact_with_count_of_entitlements_d9k</report>
+                <report>IPAReports/Contact_with_count_of_entitlements_d9k</report>
                 <showPercentage>false</showPercentage>
                 <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
@@ -50,7 +50,7 @@
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
+    <owner>11863410@intel.com.crm</owner>
     <runningUser>11227352@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>ACCOUNT ACTIVITY</title>

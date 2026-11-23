@@ -327,11 +327,6 @@
                     <default>false</default>
                     <label>2H2035SalesGroup</label>
                 </value>
-                <value>
-                    <fullName>2017SalesGroup</fullName>
-                    <default>false</default>
-                    <label>2017SalesGroup</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -363,17 +358,11 @@
         <columns>NAME</columns>
         <columns>Account_Id__c</columns>
         <columns>Sales_Group__c</columns>
+        <columns>Sales_Group_Preview__c</columns>
         <columns>Period__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>CREATEDBY_USER</columns>
-        <columns>Account_Name__c</columns>
-        <columns>Sales_Group_Preview__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Period__c</field>
-            <operation>equals</operation>
-            <value>2H2024SalesGroup</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

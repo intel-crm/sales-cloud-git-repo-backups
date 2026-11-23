@@ -37,6 +37,8 @@ global class PRM_Account_Contact_Profiles_Model {
         public Boolean IsDeleted {set;get;}
         public Boolean IsODMAccount {set;get;}
         public List<cmfWrapper> CMFGroups{set;get;}
+        public String CNDANumber{set;get;}   //Ganesh Changes
+        
     }
     public class cmfWrapper {
         public String GroupName{set;get;}
@@ -47,6 +49,9 @@ global class PRM_Account_Contact_Profiles_Model {
         public String ActiveContactCount{set;get;}
         public String InActiveContactCount{set;get;}
         public List <cmfData> CMFs {set;get;}
+    	public String GroupId{set;get;} //Ganesh Changes
+       // public List <bpAccountData> BPAccounts {set;get;}
+        
     }
     public class cmfData{
         public String CMFID {set;get;}
@@ -61,9 +66,20 @@ global class PRM_Account_Contact_Profiles_Model {
         public string DirectCustomerRoleCode {set;get;}
         public Boolean CentralBlock {set;get;}
         public String SalesAreaOrderBlockCd {set;get;}
-        
-        
     }
+    /*public class bpAccountData{
+        public String DirectAccountID {set;get;}
+        public String CMFID {set;get;}
+        public string Name {set;get;}
+        public string SalesOrgCode {set;get;}
+        public string SalesOrgName {set;get;}
+        public string SalesDistiChannelCode {set;get;}
+        public string SalesDistiChannelName {set;get;}
+        public string Address {set;get;}
+        public string AccountGroup {set;get;}
+        public string DirectCustomerRoleName {set;get;}
+        public string DirectCustomerRoleCode {set;get;}     
+    }*/
     public class AccountResultWrapper {
         public String Status {set;get;}
         public Integer Responsecode {set;get;}
@@ -211,7 +227,6 @@ public String  SLSCLDRecord {set;get;}
         public String ZipPostalCode {set;get;}
         public String WeChatUnionId {set; get;}
         public String JobTitle {set; get;}
-        public String TaxNumber {set;get;}
         //-----------------------------We chat-----------------------------
         /*
 public  String WechatOpenId {set; get;}
@@ -320,7 +335,6 @@ public ContactAccountWrapper ContactAccount {set;get;}
         public String EnterpriseId {set;get;}
         public String AddressLine1 {set;get;}
         public String City {set;get;}
-        public String Country {set;get;}
         public String StateProvince {set;get;}
         public String ZipPostalCode {set;get;}
         public String AccountName {set;get;}
@@ -336,6 +350,7 @@ public ContactAccountWrapper ContactAccount {set;get;}
        
     public class AccountInformationWrapper{
         public String AccountId {set;get;}
+        public String OnePartnerId { get; set; }
         public String Name {set;get;} 
         Public String BadgeTier {set;get;}
         Public String BadgeTierLabel {set;get;}

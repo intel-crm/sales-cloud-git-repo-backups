@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
-    <consumerKey>3MVG9QDx8IX8nP5Rh0X3B7gohGgp9itUQE4Jc3vJ2z3HQby0gUTWbQEHaLSDo2R9qRUJ503NeZ8WZ.VGNHL_m</consumerKey>
+    <authorizeUrl>https://test.salesforce.com/services/oauth2/authorize</authorizeUrl>
+    <consumerKey>3MVG9PbQtiUzNgN7sOwYXQYNuDWyt3gshbVa_4HGn9iaBJPPBJFaOHd3bqLpWQSro18jecLJQr_VLf4r.e9Z9</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
+    <defaultScopes>full refresh_token offline_access</defaultScopes>
     <friendlyName>Service_Cloud_ISVC</friendlyName>
     <includeOrgIdInIdentifier>true</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>
@@ -10,4 +12,5 @@
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
     <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://test.salesforce.com/services/oauth2/token</tokenUrl>
 </AuthProvider>

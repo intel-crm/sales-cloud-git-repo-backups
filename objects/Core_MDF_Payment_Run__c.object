@@ -153,7 +153,7 @@
     <description>This Object is used to schedule the payments according to the Geo and Channel Program.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>true</enableFeeds>
+    <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
@@ -183,7 +183,6 @@
         <relationshipLabel>Payment Run</relationshipLabel>
         <relationshipName>Payment_Run</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -193,7 +192,6 @@
         <description>To store selected accounts for MDF Payment Run</description>
         <label>Account Names</label>
         <length>131072</length>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -204,7 +202,6 @@
         <description>Budget Type field</description>
         <label>Budget Type</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -217,7 +214,6 @@
         <fullName>Core_MDF_Budget_Type_nm__c</fullName>
         <label>Budget Type</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -232,7 +228,6 @@
         <description>Execution End Date</description>
         <label>Execution End Date</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
@@ -241,7 +236,6 @@
         <fullName>Core_MDF_ErrorDetails_Txt__c</fullName>
         <label>Error Details</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
@@ -250,7 +244,6 @@
         <fullName>Core_MDF_Files_Name_Txt__c</fullName>
         <label>Files Name</label>
         <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Html</type>
@@ -261,7 +254,6 @@
         <description>This fields holds the GSPO Notification Sent date</description>
         <label>GSPO Notification Sent On</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
@@ -270,7 +262,6 @@
         <fullName>Core_MDF_Geo_Txt__c</fullName>
         <label>Geo</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -283,7 +274,6 @@
         <fullName>Core_MDF_Is_OOC_Payment_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Out of Cycle Payment?</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -294,7 +284,6 @@
         <label>Payment Job Id</label>
         <length>50</length>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -304,7 +293,6 @@
         <fullName>Core_MDF_Payment_Nature_nm__c</fullName>
         <label>Payment Nature</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -340,7 +328,6 @@
         <fullName>Core_MDF_Payment_Run_for_Claims_Id__c</fullName>
         <label>Payment Run for Claims</label>
         <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -369,7 +356,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <fullName>Core_MDF_Payment_run_for_Accounts__c</fullName>
         <label>Payment run for Accounts</label>
         <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -383,7 +369,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <relationshipLabel>Payment Run (Channel Program)</relationshipLabel>
         <relationshipName>Payment_Run1</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -393,7 +378,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <description>Created this field to display it on payment screens and users can select program from available picklist values.</description>
         <label>Program</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -407,7 +391,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <defaultValue>false</defaultValue>
         <inlineHelpText>If this option is selected, all the accounts you have access to at the time of the scheduling/initiating the payment run will be included.</inlineHelpText>
         <label>Run For All Accounts</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -417,7 +400,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <defaultValue>false</defaultValue>
         <description>If Run Now checkbox is checked then the current payment run will scheduled at that moment.</description>
         <label>Run Now</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -426,7 +408,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <fullName>Core_MDF_ScheduleRun_Dtm__c</fullName>
         <label>Payment Run Date Time</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
@@ -435,7 +416,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <fullName>Core_MDF_Send_Notification_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Send Notification</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -445,7 +425,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <description>Execution Start Date</description>
         <label>Execution Start Date</label>
         <required>false</required>
-        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
@@ -454,7 +433,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <fullName>Core_MDF_Status_Txt__c</fullName>
         <label>Payment Run Status</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -490,7 +468,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <description>Sub Geo used only when Geo is ASMO .</description>
         <label>Sub Geo</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -525,7 +502,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <defaultValue>false</defaultValue>
         <description>This field would be set as true if there are VAT Claims available in this Payment Run</description>
         <label>VAT Claims Exist</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -549,12 +525,10 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
     <nameField>
         <displayFormat>{000000}</displayFormat>
         <label>Payment Run Number</label>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Payment Run</pluralLabel>
-    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Client_Co_Marketing_Fund_Boost</fullName>
@@ -1231,156 +1205,6 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         </picklistValues>
     </recordTypes>
     <recordTypes>
-        <fullName>Core_MDF_PaymentRunRecordType</fullName>
-        <active>false</active>
-        <label>Co-Marketing</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
-            <values>
-                <fullName>RSA MD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retail MDF</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Specialties MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Centric Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OEM CMP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RSA MD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retail MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Data Center MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider CMP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Geo_Txt__c</picklist>
-            <values>
-                <fullName>APJ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ASMO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EMEA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRC</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Payment_Nature_nm__c</picklist>
-            <values>
-                <fullName>Contra Revenue</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Expense</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Program_Txt__c</picklist>
-            <values>
-                <fullName>Client CoMarketing Fund</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client CoMarketing Fund Boost</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Center CoMarketing Fund</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider CoMarketing Fund</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Status_Txt__c</picklist>
-            <values>
-                <fullName>Completed</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Error</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>In-progress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Scheduled</fullName>
-                <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Subgeo_Txt__c</picklist>
-            <values>
-                <fullName>LAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NAR</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
         <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
         <active>true</active>
         <label>Retail Marketing Funds</label>
@@ -1939,7 +1763,7 @@ TRUE, FALSE
         <errorConditionFormula>OR(
     AND(
         Core_MDF_Program_Id__r.Name = $Label.Core_MDF_IPA_Program_Name,
-TEXT(Core_MDF_Geo_Txt__c) != &apos;EMEA&apos;,
+        TEXT(Core_MDF_Geo_Txt__c) != &apos;EMEA&apos;,
         TEXT(Core_MDF_Geo_Txt__c) != &apos;APJ&apos;,
         Core_MDF_Send_Notification_Ind__c
     ),

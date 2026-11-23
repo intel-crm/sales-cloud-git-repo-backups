@@ -334,7 +334,7 @@
     </fields>
     <fields>
         <help>Указывает кампанию, с которой связана эта заявка.</help>
-        <label>Кампания</label>
+        <label>Campaign</label>
         <name>Core_MDF_Campaign_Id__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
@@ -358,6 +358,10 @@
         <label><!-- Claim Batch Stage --></label>
         <name>Core_MDF_Claim_Batch_Stage__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Причина отмены требования</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
     </fields>
     <fields>
         <help>Текстовая заметка, связанная с заявкой</help>
@@ -572,7 +576,7 @@
         <name>Core_MDF_Document_Hold_Ind__c</name>
     </fields>
     <fields>
-        <help>Если документы не будут получены и подтверждены до этой даты, заявка не будет обработана для оплаты.</help>
+        <help>Этот флажок устанавливается, когда заявка выбрана для отправки документа POP и ожидает загрузки документа заказчиком</help>
         <label>Срок подачи документов</label>
         <name>Core_MDF_Document_Submission_DueDate_dtm__c</name>
     </fields>
@@ -590,7 +594,7 @@
         <name>Core_MDF_Duplicate_Claim__c</name>
     </fields>
     <fields>
-        <label>Номер EFT</label>
+        <label><!-- EFT Number --></label>
         <name>Core_MDF_EFT_Number_txt__c</name>
     </fields>
     <fields>
@@ -613,7 +617,7 @@
         <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
     </fields>
     <fields>
-        <label>Ожидаемый размер рекламного объявления</label>
+        <label><!-- Estimated Ad Size --></label>
         <name>Core_MDF_Estimated_Ad_Size_nbr__c</name>
     </fields>
     <fields>
@@ -678,11 +682,15 @@
         <name>Core_MDF_IsClaimReviewEscalation_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Is Super Claim --></label>
+        <name>Core_MDF_Is_Super_Claim__c</name>
+    </fields>
+    <fields>
         <label>Автор последнего изменения</label>
         <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
     </fields>
     <fields>
-        <label>Дата последнего восстановления</label>
+        <label><!-- Last Recovery Date --></label>
         <name>Core_MDF_Last_Recovery_Dt__c</name>
     </fields>
     <fields>
@@ -777,11 +785,11 @@
         <name>Core_MDF_No_Dedicated_Resources_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество активированных экземпляров</label>
+        <label><!-- # of Activated Instances --></label>
         <name>Core_MDF_No_of_ActivatedInstance_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество звонков</label>
+        <label><!-- # of Calls --></label>
         <name>Core_MDF_No_of_Calls_nbr__c</name>
     </fields>
     <fields>
@@ -793,7 +801,7 @@
         <name>Core_MDF_No_of_Conversions_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество дней</label>
+        <label><!-- # of Days --></label>
         <name>Core_MDF_No_of_Days_nbr__c</name>
     </fields>
     <fields>
@@ -833,7 +841,7 @@
         <name>Core_MDF_No_of_Individuals_Trained_nbr__c</name>
     </fields>
     <fields>
-        <label>Количество экземпляров</label>
+        <label><!-- # of Instances --></label>
         <name>Core_MDF_No_of_Instance_nbr__c</name>
     </fields>
     <fields>
@@ -862,7 +870,7 @@
         <name>Core_MDF_No_of_Signages_Nbr__c</name>
     </fields>
     <fields>
-        <label>Количество стажеров</label>
+        <label><!-- # of Trainees --></label>
         <name>Core_MDF_No_of_Trainees_nbr__c</name>
     </fields>
     <fields>
@@ -926,7 +934,7 @@
         <name>Core_MDF_Number_Sold_Nbr__c</name>
     </fields>
     <fields>
-        <label>Кол-во посетителей</label>
+        <label><!-- # of Attendees --></label>
         <name>Core_MDF_Number_of_Attendees_Nbr__c</name>
     </fields>
     <fields>
@@ -1016,8 +1024,20 @@
         <name>Core_MDF_Paid_By_Payment_Type_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Payment Type after Payment Run --></label>
+        <name>Core_MDF_PaymentType_aft_PaymentRun_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Payment Admin Reminder Date --></label>
         <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Currency --></label>
+        <name>Core_MDF_Payment_Currency_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Exchange Rate --></label>
+        <name>Core_MDF_Payment_Exchange_Rate_Nbr__c</name>
     </fields>
     <fields>
         <help>Этот флажок устанавливается в случае задержки банка</help>
@@ -1052,6 +1072,10 @@
     <fields>
         <label><!-- Payment Type --></label>
         <name>Core_MDF_Payment_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Local Amount --></label>
+        <name>Core_MDF_Payment_lcl_Amount__c</name>
     </fields>
     <fields>
         <label>Количество устройств Intel</label>
@@ -1208,7 +1232,7 @@
         <name>Core_MDF_Recommend_For_ClaimReview__c</name>
     </fields>
     <fields>
-        <label>Удерживать для восстановления</label>
+        <label><!-- Hold for Recovery --></label>
         <name>Core_MDF_Recovery_Hold_Ind__c</name>
     </fields>
     <fields>
@@ -1227,7 +1251,7 @@
         <name>Core_MDF_Reimbursable_Transaction_Amount__c</name>
     </fields>
     <fields>
-        <help>% возмещения, применимый к этой заявке</help>
+        <help>T% возмещения, применимый к этой заявке</help>
         <label>Ставка возмещения, %</label>
         <name>Core_MDF_Reimbursement_Percent__c</name>
     </fields>
@@ -1393,6 +1417,10 @@
         <name>Core_MDF_Taxes_Local__c</name>
     </fields>
     <fields>
+        <label><!-- Third Party Ind --></label>
+        <name>Core_MDF_Third_Party_Ind__c</name>
+    </fields>
+    <fields>
         <label>Продолжительность видео</label>
         <name>Core_MDF_Time_video_to_last_txt__c</name>
     </fields>
@@ -1525,6 +1553,10 @@
         <name>Core_MDF_VAT_Opt_In_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Vat Payment Local Amount --></label>
+        <name>Core_MDF_Vat_Payment_lcl_Amount__c</name>
+    </fields>
+    <fields>
         <label>Место размещения</label>
         <name>Core_MDF_Where_to_take_place_txt__c</name>
         <picklistValues>
@@ -1632,7 +1664,7 @@
         <name>Core_MDF_Close_Adjustment</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Введите сумму невозмещаемых расходов, которая больше нуля или равна нулю</errorMessage>
+        <errorMessage><!-- Please enter Costs not Reimbursable amount that is greater than or equal to zero --></errorMessage>
         <name>Core_MDF_CostNotReimbursable</name>
     </validationRules>
     <validationRules>
@@ -1684,12 +1716,16 @@
         <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Претензия уже была создана в связи с этой эскалации. Если придется представить дополнительные претензии, пожалуйста, введите новую эскалацию.</errorMessage>
+        <errorMessage><!-- A claim has already been created with this escalation. If additional claims have to be submitted please raise a new escalation. --></errorMessage>
         <name>Core_MDF_RestrictCreationOfMultipleClaim</name>
     </validationRules>
     <validationRules>
         <errorMessage>У этого пользователя нет прав на выполнение этого действия</errorMessage>
         <name>Core_MDF_Restrict_Change_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This user does not have permission to perform this action --></errorMessage>
+        <name>Core_MDF_Restrict_ClaimCloneAndEdit</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Activity needing approval. --></errorMessage>
@@ -1736,7 +1772,7 @@
         <name>Core_MDF_StartDate_EndDate_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Введите сумму налога, которая больше нуля или равна нулю</errorMessage>
+        <errorMessage><!-- Please enter Tax amount that is greater than or equal to zero --></errorMessage>
         <name>Core_MDF_TaxesLocal</name>
     </validationRules>
     <validationRules>

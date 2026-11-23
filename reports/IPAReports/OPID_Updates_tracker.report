@@ -10,9 +10,6 @@
         <field>PRM_Tracker__c.PRM_Milestone_Display_Name__c</field>
     </columns>
     <columns>
-        <field>PRM_Tracker__c.PRM_OPID__c</field>
-    </columns>
-    <columns>
         <field>PRM_Tracker__c.PRM_Location_Account__c</field>
     </columns>
     <columns>
@@ -20,13 +17,13 @@
         <field>PRM_Tracker__c.PRM_Completed__c</field>
     </columns>
     <columns>
-        <field>CUST_CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>PRM_Tracker__c.PRM_Log_Entries__c</field>
     </columns>
     <columns>
         <field>PRM_Tracker__c.PRM_Integration_Logs__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -38,7 +35,12 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Tabular</format>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PRM_Tracker__c.PRM_OPID__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>OPID Updates tracker</name>
     <params>
         <name>co</name>

@@ -92,7 +92,7 @@
             <label>Update_InqOwner_On_Con_OwnerChange</label>
         </rules>
     </decisions>
-    <interviewLabel>Core_Update_InquiryOwner_On_Contact_OwnerChange-2_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_Update_InquiryOwner_On_Contact_OwnerChange-1_InterviewLabel</interviewLabel>
     <label>Core_Update_InquiryOwner_On_Contact_OwnerChange</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -123,7 +123,7 @@
         <processMetadataValues>
             <name>evaluationType</name>
             <value>
-                <stringValue>criteria</stringValue>
+                <stringValue>always</stringValue>
             </value>
         </processMetadataValues>
         <processMetadataValues>
@@ -161,52 +161,6 @@
             <value>
                 <elementReference>myVariable_current.Id</elementReference>
             </value>
-        </filters>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>inputDataType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Record ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue></stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideType</name>
-                <value>
-                    <stringValue>ID</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>operatorDataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>GlobalConstant</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>NotEqualTo</operator>
         </filters>
         <inputAssignments>
             <processMetadataValues>

@@ -94,7 +94,6 @@
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Submitted_By_Id__c</field>
     </columns>
-    <description>Count of quote lines broken out by change request and non-change request</description>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Program_Type_Nm__c</column>
@@ -118,7 +117,7 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_New_Change_Request_cb__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>IQR - Quote Line Count</name>
+    <name>IQR - New Requests</name>
     <params>
         <name>co</name>
         <value>1</value>

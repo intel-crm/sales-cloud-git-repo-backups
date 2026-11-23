@@ -1,68 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_89831778</developerName>
-        <masterLabel>Product Application Group</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <value>Auto</value>
-        </values>
-        <values>
-            <value>Energy</value>
-        </values>
-        <values>
-            <value>Transportation</value>
-        </values>
-        <values>
-            <value>Retail</value>
-        </values>
-        <values>
-            <value>Gaming</value>
-        </values>
-        <values>
-            <value>Medical</value>
-        </values>
-        <values>
-            <value>MAG</value>
-        </values>
-        <values>
-            <value>Industrial</value>
-        </values>
-        <values>
-            <value>Smart Home/Bldg</value>
-        </values>
-    </buckets>
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <aggregate>Sum</aggregate>
-            <axisBinding>y</axisBinding>
-            <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
-        </chartSummaries>
-        <chartType>Pie</chartType>
-        <enableHoverLabels>true</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>BucketField_89831778</groupingColumn>
-        <legendPosition>Right</legendPosition>
-        <location>CHART_TOP</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>true</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>true</showValues>
-        <size>Large</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <title>IoT Mood Island Pipeline (pending only)</title>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
@@ -117,11 +54,6 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>BucketField_89831778</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <name>IoT MI-Pending Pipeline (Lisa)</name>
     <params>
         <name>terr</name>

@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-10-2026
+ * @last modified on  : 06-18-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -11,12 +11,13 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
     private static void createData(){
         Pricing_RestAPI_TestUtility.createRestAPIErrorCodesConfig();
         List<Product2> prodList = new List<Product2>();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         Product2 prod = new Product2();
         prod.Core_Product_Org__c = 'Sales';
         prod.Core_Product_Type__c = 'Processors';
         prod.Core_Sales_Visible_Flag__c  = True;
         prod.IsActive = True;
-        prod.Core_Group_Code_Short_Name__c = 'DCG~DCAI';
+        prod.Core_Line_of_Business__c = lobValuesList[0];
         prod.Core_Processor_Number_Nm__c = 'P6500';
         prod.Core_Hierarchy_ID__c = '43';
         prod.Name = 'Product X';
@@ -264,6 +265,7 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
                                       WHERE Pricing_Project_Name_Nm__c = 'Test Project123' Limit 1];
         User usr = [SELECT id, AccountId FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
         product2 prodClient = new product2();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         prodClient.Core_product_Org__c = 'Sales';
         prodClient.Core_product_Type__c = 'Processors';
         prodClient.Core_Sales_Visible_Flag__c  = True;
@@ -271,11 +273,22 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
         prodClient.Core_VerticalSegment__c = 'Desktop';
         prodClient.Core_Processor_Number_Nm__c = 'P6500';
         prodClient.Core_Hierarchy_ID__c = '43';
-        prodClient.Core_Group_Code_Short_Name__c = 'CCG';
+        prodClient.Core_Line_of_Business__c = lobValuesList[1];
         prodClient.Name = 'product Y';
         insert prodClient;
         system.runAs(usr){
             test.startTest();
+            /*product2 prodClient = new product2();
+prodClient.Core_product_Org__c = 'Sales';
+prodClient.Core_product_Type__c = 'Processors';
+prodClient.Core_Sales_Visible_Flag__c  = True;
+prodClient.IsActive = True;
+prodClient.Core_VerticalSegment__c = 'Desktop';
+prodClient.Core_Processor_Number_Nm__c = 'P6500';
+prodClient.Core_Hierarchy_ID__c = '43';
+prodClient.Core_Line_of_Business__c = lobValuesList[1];
+prodClient.Name = 'product Y';
+insert prodClient;*/
             Pricing_Competitor_Product__c cp1 = new Pricing_Competitor_Product__c(
                 Name = 'Product CCG',
                 Pricing_Competitor_Product_Provider_Nm__c = 'Pro-Z',
@@ -429,6 +442,7 @@ public class Pricing_RestAPI_GetAllQuotesV2_Test {
     static testMethod void testgetAllQuotesV2_DataCenterGPU_Test(){
         SBQQ__Quote__c quote = [select id from SBQQ__Quote__c limit 1];
         test.startTest();
+        List<SBQQ__QuoteLine__c> ql = [select id from SBQQ__QuoteLine__c limit 1];
         User usr = [SELECT id FROM User WHERE email='Rest_API_Get_All_Quotes_V2_Test@noemail.com'];
         system.runAs(usr){
             //test.startTest(); 

@@ -329,8 +329,6 @@
         <relatedList>RelatedFileList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>PRM_Account_Id__c</fields>
         <fields>PRM_Agreement_Sign_Dt__c</fields>

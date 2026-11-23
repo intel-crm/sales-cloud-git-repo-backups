@@ -236,6 +236,12 @@
         <label>CISCO</label>
     </recordTypes>
     <recordTypes>
+        <fullName>DELL</fullName>
+        <active>true</active>
+        <description>For DELL Partner User</description>
+        <label>DELL</label>
+    </recordTypes>
+    <recordTypes>
         <fullName>HPE</fullName>
         <active>true</active>
         <description>For HPE Partner User</description>

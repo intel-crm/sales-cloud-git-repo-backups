@@ -171,7 +171,8 @@
     <columns>
         <field>SUBJECT</field>
     </columns>
-    <description>Required for monthly management reports.Products bucketed</description>
+    <description>Required for monthly management reports.
+Products bucketed</description>
     <filter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -191,7 +192,7 @@
             <column>CREATED_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
+            <operator>equals</operator>
             <value>LAST_N_MONTHS:12</value>
         </criteriaItems>
         <language>en_US</language>

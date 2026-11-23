@@ -33,6 +33,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PMP_MarketplaceTopics</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PMP_OfferingDetailsController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -46,6 +50,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>PMP_ProductPartnerDetailsController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PMP_RefineFilterController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -106,6 +114,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>PMP_SearchSpecialistGroupListController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PMP_SearchTopicDetailController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

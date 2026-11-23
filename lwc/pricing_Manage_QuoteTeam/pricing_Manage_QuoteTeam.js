@@ -180,7 +180,7 @@ export default class Pricing_Manage_QuoteTeam extends LightningElement {
                 .then(result => {
                     this.message = result;
                     this.error = null;
-
+                    console.log('test@123;'+result);
                     if (result !== null && result !== undefined) {
                         this.userEmail = null;
                         this.userRole = undefined;

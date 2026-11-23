@@ -35,10 +35,6 @@
         <recordType>PartnerFundClaim.Core_MDF_Service_Provider_Co_Marketing_Fund</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>PartnerFundRequest.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
     <userPermissions>
         <enabled>true</enabled>
         <name>ChatterEnabledForUser</name>

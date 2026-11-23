@@ -91,11 +91,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Design_Type__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Approver_3__c</field>
             <table>Opportunity</table>
         </columns>
@@ -601,6 +596,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__Is_Influenced__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_IsBlank_Competitive_Arch__c</field>
             <table>Opportunity</table>
         </columns>
@@ -712,6 +712,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LeadSource</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>

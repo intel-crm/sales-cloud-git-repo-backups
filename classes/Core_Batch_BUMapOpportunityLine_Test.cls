@@ -5,7 +5,7 @@ Created Date:  9/26/17
 Description : Test Class to cover the Weekly batch classes
 * Developer                   Date                     Description
 * ----------------------------------------------------------------------------                 
-* Gaurav K.                21/07/2022                Initial Revision
+* Gaurav K.            		21/07/2022                Initial Revision
 *************************************************************************************/
 @isTest
 public class Core_Batch_BUMapOpportunityLine_Test {
@@ -47,12 +47,12 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         String CRON_EXP = system.now().addMinutes(10).format('ss mm HH dd MM ? yyyy');
         
         Account testAcct_BU = Core_Test_Utility.createAccount(1)[0];
-        testAcct_BU.Core_Sales_Groups__c = 'Americas Brazil Sales Group';
-        testAcct_BU.Industry = 'Education';
-        testAcct_BU.Core_Sub_Industry__c = 'Student';
+  		testAcct_BU.Core_Sub_Industry__c = 'Crop Production';
+        testAcct_BU.Industry = 'Agriculture';
+        testAcct_BU.Core_Sales_Groups__c='PRC Sales Group';
         insert testAcct_BU;
-        testAcct_BU.Core_CIM_ID__c='1234569';
-        update testAcct_BU;
+        //testAcct_BU.Core_CIM_ID__c='1234569';
+        //update testAcct_BU;
         
         // Simple test data
         //try{
@@ -61,8 +61,6 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testOpp_BU.AccountId = testAcct_BU.Id;       
         testOpp_BU.RecordTypeId =newOppRecTypeId;
         testOpp_BU.StageName ='Qualify';
-        testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
         insert testOpp_BU;
         
         List<Product2> testProducts_BU = Core_Test_Utility.createProduct(1);
@@ -76,7 +74,8 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testProducts_BU[0].Core_Division_Code_Short_Name__c='';
         update testProducts_BU[0];
         
-
+        testOpp_BU.Core_Product_Segment__c='Client Computing';
+        testOpp_BU.Core_Product_Application__c='Business Desktop';
         testOpp_BU.Core_Approved_Date__c =system.today();
         update testOpp_BU;      
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
@@ -107,7 +106,15 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testProducts_BU[0].Core_Product_Type__c='Emerging Technologies';
         testProducts_BU[0].Core_Division_Code_Short_Name__c='';
         update testProducts_BU[0];
-      
+        
+        testOpp_BU.Core_Product_Segment__c='Client Computing';
+        testOpp_BU.Core_Product_Application__c='';
+        testOpp_BU.CloseDate=Date.valueOf('2021-01-01');
+        testOpp_BU.StageName = 'Closed/Lost';
+        testOpp_BU.Core_Loss_Cancel_Reason__c = 'Cancelled - Budget';
+         testOpp_BU.Core_Loss_Cancel_Details__c = 'test cancel';
+        // testOpp_BU.Core_Approval_Status__c='Approved';
+        update testOpp_BU;
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
                                                   Description='1000', UnitPrice=11, Quantity=11, 
                                                   Core_Loss_Cancel_Reason__c=null, Core_Status__c='Pending',Core_Approved_Date__c =system.today()));
@@ -122,17 +129,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         update testOpp_BU;
         
         
-        insert oppBUItemList;    
-
-        testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='';
-        testOpp_BU.CloseDate=Date.valueOf('2021-01-01');
-        testOpp_BU.StageName = 'Cancelled';
-        testOpp_BU.Core_Loss_Cancel_Reason__c = 'Cancelled - Budget';
-        // testOpp_BU.Core_Approval_Status__c='Approved';
-        testOpp_BU.Core_Loss_Cancel_Details__c = 'Test data';
-        update testOpp_BU;
-	
+        insert oppBUItemList;       
         //}catch(Exception e){System.debug('Exception from Test class-->'+e.getMessage()+' @ Line Number'+e.getLinenumber());}  
         Test.StartTest();               
         database.executebatch(new Core_Batch_BUMapOpportunityLine_MidWeek(),20);   
@@ -146,32 +143,26 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         
         Test.StopTest();
     }   
- 
+    
     testMethod static void testBUMappingWeekly(){
         String CRON_EXP = system.now().addMinutes(10).format('ss mm HH dd MM ? yyyy');
         
         Account testAcct_BU = Core_Test_Utility.createAccount(1)[0];
-        testAcct_BU.Core_Sales_Groups__c = 'Americas Brazil Sales Group';
-        testAcct_BU.Industry = 'Education';
-        testAcct_BU.Core_Sub_Industry__c = 'Student';
+  		testAcct_BU.Core_Sub_Industry__c = 'Crop Production';
+        testAcct_BU.Industry = 'Agriculture';
+        testAcct_BU.Core_Sales_Groups__c='PRC Sales Group';
         insert testAcct_BU;
-        testAcct_BU.Core_CIM_ID__c='1234569';
-        update testAcct_BU;
+      //  testAcct_BU.Core_CIM_ID__c='1234569';
+       // update testAcct_BU;
         
         // Simple test data
         //try{
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
-         for(Opportunity xtestdata : [select id ,CloseDate from Opportunity ]){
-            system.debug('-before--data.closed--'+xtestdata.CloseDate );
-        }
         Opportunity testOpp_BU = Core_Test_Utility.createOpportunity(1)[0];
         testOpp_BU.AccountId = testAcct_BU.Id;       
         testOpp_BU.RecordTypeId =newOppRecTypeId;
         testOpp_BU.StageName ='Qualify';
-        testOpp_BU.Core_Product_Segment__c='Client Computing';
-        testOpp_BU.Core_Product_Application__c='Business Desktop';
-        testOpp_BU.CloseDate =Date.valueOf('2021-01-02');
-       
+        testOpp_BU.CloseDate = Date.newInstance(2018, 12, 31);
         insert testOpp_BU;
         
         List<Product2> testProducts_BU = Core_Test_Utility.createProduct(1);
@@ -195,9 +186,9 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testProducts_BU[0].Core_Product_Type__c='';
         testProducts_BU[0].Core_Division_Code_Short_Name__c='';
         update testProducts_BU[0];      
-        //testOpp_BU.Core_Product_Segment__c='Client Computing';
-        //testOpp_BU.Core_Product_Application__c='';
-        //update testOpp_BU;      
+        testOpp_BU.Core_Product_Segment__c='Client Computing';
+        testOpp_BU.Core_Product_Application__c='';
+        update testOpp_BU;      
         
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
                                                   Description='0100', UnitPrice=11, Quantity=11, 
@@ -209,7 +200,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
         testOpp_BU.Core_Product_Application__c='Business Desktop';
-        testOpp_BU.CloseDate=Date.valueOf('2021-01-02');
+        testOpp_BU.CloseDate=Date.valueOf('2018-01-02');
         System.assertEquals(testOpp_BU.Core_Product_Application__c, 'Business Desktop','Connected Home');
         update testOpp_BU;
         
@@ -220,7 +211,15 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         testProducts_BU[0].Core_Product_Type__c='Emerging Technologies';
         testProducts_BU[0].Core_Division_Code_Short_Name__c='';
         update testProducts_BU[0];
-       
+        
+        testOpp_BU.Core_Product_Segment__c='Client Computing';
+        testOpp_BU.Core_Product_Application__c='';
+        testOpp_BU.CloseDate=Date.valueOf('2018-01-02');
+        testOpp_BU.StageName = 'Closed/Lost';
+        testOpp_BU.Core_Loss_Cancel_Reason__c = 'Cancelled - Budget';
+        testOpp_BU.Core_Loss_Cancel_Details__c = 'test cancel';
+        // testOpp_BU.Core_Approval_Status__c='Approved';
+        update testOpp_BU;
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
                                                   Description='1000', UnitPrice=11, Quantity=11, 
                                                   Core_Loss_Cancel_Reason__c=null, Core_Status__c='Pending',Core_Approved_Date__c =system.today()));
@@ -231,8 +230,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
         testOpp_BU.Core_Product_Application__c='Business Desktop';
-        testOpp_BU.CloseDate=Date.valueOf('2021-01-02');
-       // testOpp_BU.CloseDate=Date.today().year() - 2+'-12-31';
+        testOpp_BU.CloseDate=Date.valueOf('2018-01-02');
         update testOpp_BU;
         
         oppBUItemList.add(new OpportunityLineItem(OpportunityId=testOpp_BU.Id, PricebookEntryId=testPBEs_BU[0].Id,
@@ -245,28 +243,13 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         
         testOpp_BU.Core_Product_Segment__c='Client Computing';
         testOpp_BU.Core_Product_Application__c='Business Desktop';
-        testOpp_BU.CloseDate=Date.valueOf('2021-01-02');
+        testOpp_BU.CloseDate=Date.valueOf('2020-01-02');
         update testOpp_BU;
         
-        insert oppBUItemList;  
-      
-        testOpp_BU.Core_Product_Segment__c='Data Center Computing';
-        testOpp_BU.Core_Product_Application__c='';
-        testOpp_BU.CloseDate=Date.valueOf('2021-01-02');
-        testOpp_BU.StageName = 'Cancelled';
-        testOpp_BU.Core_Loss_Cancel_Reason__c = 'Cancelled - Budget';
-        testOpp_BU.Core_Loss_Cancel_Details__c = 'Test data';
-        // testOpp_BU.Core_Approval_Status__c='Approved';
-        update testOpp_BU;
-	
+        insert oppBUItemList;    
+        
+        List<OpportunityLineItem> queriedOppLineItems = [SELECT Id, OpportunityId, Description, Core_Status__c, Core_Approved_Date__c FROM OpportunityLineItem WHERE Id IN :oppBUItemList];
         //}catch(Exception e){System.debug('Exception from Test class-->'+e.getMessage()+' @ Line Number'+e.getLinenumber());}  
-        List<Opportunity> testData = [select id ,CloseDate from Opportunity ];
-        for(Opportunity xtestdata : testData){
-            system.debug('-after--data.closed--'+xtestdata.CloseDate );
-            xtestdata.CloseDate = Date.valueOf('2021-01-02');
-        }
-        update testData;
-       
         Test.StartTest();              
         
         database.executebatch(new Core_Batch_BUMapOpportunityLine_EOW(),20); 
@@ -280,14 +263,14 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         
         Test.StopTest();
     }
-
+       
     testMethod static void testBUMapping11(){
         String CRON_EXP = system.now().addMinutes(10).format('ss mm HH dd MM ? yyyy');
         
         Account testAcct_BU = Core_Test_Utility.createAccount(1)[0];
-        testAcct_BU.Core_Sales_Groups__c = 'Americas Brazil Sales Group';
-        testAcct_BU.Industry = 'Education';
-        testAcct_BU.Core_Sub_Industry__c = 'Student';
+		testAcct_BU.Core_Sub_Industry__c = 'Crop Production';
+        testAcct_BU.Industry = 'Agriculture';
+        testAcct_BU.Core_Sales_Groups__c='PRC Sales Group';
         insert testAcct_BU;
         
         // Simple test data
@@ -370,7 +353,7 @@ public class Core_Batch_BUMapOpportunityLine_Test {
         Delete oppBUItemList[0];
         
         Test.StopTest();
-    }   
-   
+    }     
+    
     
 }

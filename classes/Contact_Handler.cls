@@ -27,18 +27,18 @@ Modification Log :
              if(Core_IPS_SkipTriggerHandler.skipQueueable){
                  return;
              }
-             // Tushar garg---- Bug fixing
             List<Core_IPS_Case_Interested_Party__c> interestedPartiesList;
             if (Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isAccessible() &&
             Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Type__c.isAccessible() &&
             Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Contact__c.isAccessible() &&
             Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
                 interestedPartiesList = [Select id,Active__c,Type__c,Contact__c,Contact__r.Core_IPS_Active__c,Contact__r.id,Contact__r.Core_IPS_Email_Opt_Out__c from Core_IPS_Case_Interested_Party__c where Case__r.Status !='Closed' and Contact__c IN : contIdSet limit 4999 FOR UPDATE  ];
-            }  // Tushar garg---- Bug fixing
+            	}
              List<Core_IPS_Case_Interested_Party__c> iPUpdateList = New List<Core_IPS_Case_Interested_Party__c>();
              List<Core_IPS_Case_Interested_Party__c> iPUpdateList1 = New List<Core_IPS_Case_Interested_Party__c>();
         
                  for(Core_IPS_Case_Interested_Party__c interestedPartyRec:  interestedPartiesList){
+                     
                       if(interestedPartyRec.Contact__r.Core_IPS_Active__c == false && interestedPartyRec.Active__c == true)
                       {
                           interestedPartyRec.Active__c = false;
@@ -58,7 +58,7 @@ Modification Log :
                           iPUpdateList.add(interestedPartyRec);
                           
                       }
-                        
+                        //System.debug(iPUpdateList.size());    
             }
                
         if(iPUpdateList.size()>0 && iPUpdateList != null){
@@ -79,7 +79,7 @@ Modification Log :
            }
         //   Core_IPS_UpdateIPlst updateIPList=new Core_IPS_UpdateIPlst(iPUpdateList);
         //   ID jobID = System.enqueueJob(updateIPList);
-       
+        //  //System.debug(jobID);
           
         }
     }
@@ -160,12 +160,13 @@ Modification Log :
                 Map<Id,User> userMap = new Map<Id,User>([Select id from User where contactid IN: contactIds]); //query opt US-0048819
                 List<Core_IPS_Project_Member__c> projectMembers;
                 if(userMap.keySet() <> null && userMap.keySet().size()>0){
-             // Tushar garg---- Bug fixing
                     if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_User__c.isAccessible() &&
                         Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Status__c.isAccessible() &&
                         Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_IPS_Project__c.isAccessible()) {
-                         projectMembers = [Select id,Core_User__c,Core_Status__c,Core_IPS_Project__c from Core_IPS_Project_Member__c where Core_Status__c='Active'  and Core_IPS_Contact__c IN: contactIds and Core_User__c IN: userMap.keySet()];
-                    }
+                        //projectMembers = [Select id,Core_User__c,Core_Status__c,Core_IPS_Project__c from Core_IPS_Project_Member__c where Core_Status__c='Active'  and Core_IPS_Contact__c IN: contactIds and Core_User__c IN: userMap.keySet()];
+                    	//Ganesh Changes
+                        projectMembers = [Select id,Core_Status__c from Core_IPS_Project_Member__c where Core_Status__c='Active'  and Core_IPS_Contact__c IN: contactIds and Core_User__c IN: userMap.keySet()];
+                        }
                 
                     for(Core_IPS_Project_Member__c pm: ProjectMembers){
                         pm.Core_Status__c = 'Inactive';

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>sriranjini.narasimhan@intel.com</contactEmail>
+    <label>IPS_RDC Chatbot</label>
+    <oauthConfig>
+        <callbackUrl>https://devfm1aempdts15.amr.corp.intel.com/content/www/us/en/secure/my-intel/token.html
+https://tst1aemcontent-ssl.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://tst1aemcontent.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://tstcqauthors.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://tstcqcontent-ssl.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://tstcqcontent.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://iqa2cqauthor.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://iqa2cqcontent.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://ottocqauthor.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://ottocqcontent.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://iqaaempod2authors-ssl.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://iqaaempod2authors.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://iqaaempod2content-ssl.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://tst1aemauthor.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://gctaadisp2w01.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://gctcqcontent.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://gctcqcontent-ssl.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://devfm1aempdts02.amr.corp.intel.com/content/www/us/en/secure/my-intel/token.html
+https://devfm1aempdts02.amr.corp.intel.com/content/www/us/en/secure/profile/my-intel.html
+https://www.getpostman.com/oauth2/callback
+https://iqa2cqcontent-ssl.cps.intel.com/content/www/us/en/secure/my-intel/token.html
+https://externalreporting-cons.intel.com/bot/index.html</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDvM0SY4kOjKP8GgUq_sl0RxYtOdH..CbJU3KpsvCB.fEn2eAX0764mP1lk44</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <profileName>Production Release and Checkout</profileName>
+    <profileName>IT Admin</profileName>
+    <profileName>IPS External Customer</profileName>
+    <sessionPolicy>
+        <sessionTimeout>30</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

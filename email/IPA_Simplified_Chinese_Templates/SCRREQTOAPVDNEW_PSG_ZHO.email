@@ -66,7 +66,7 @@
 <member>尊敬的 {!Contact.FirstName}：</member>
 <br>
 <br>欢迎访问英特尔&reg; FPGA 自助服务许可中心（SSLC）现在您可以查看、管理并且在必要时激活您的英特尔 PSG 软件和IP许可权利。<br>SSLC 采用引导法帮助您执行基本许可权利功能。我们还提供参考视频和文档。<br><br>请保存您的登录信息以方便未来使用：<br><br><b>电子邮件地址:</b> {!Contact.Email}<br><br>您的密码应该像机密一样受到保护。在英特尔网站上使用此密码受英特尔使用条款和条件（链接来自各个网站的网页底部）约束。</p>
-<br>登录 <a href= "https://licensing.intel.com/psg/s"> licensing.intel.com </a> 查看并管理您的英特尔&reg; PSG 软件和 IP 许可权利。<br>
+<br>登录 <a href= "https://crmqa3-intelcloudcrm.cs37.force.com/psg">intel.com/sslc</a> 查看并管理您的英特尔&reg; PSG 软件和 IP 许可权利。<br>
 </p>
 <br>谢谢！<br>您的英特尔&reg; PSG SSLC 团队</td></tr></p> 
 </th>
@@ -107,7 +107,7 @@
 <td class="auto-style1" valign="top" style="font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;">此消息作为英特尔&reg; 可编程解决方案事业集团与您的 FPGA 软件和/或 IP许可权相关的重要业务通信发送。</td>
 </tr>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px;border: #d3d3d3;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">&copy; {!$Label.PRM_CurrentYear} 英特尔公司</td>
+<td class="auto-style1" valign="top" style="font-size: 10px;border: #d3d3d3;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">&copy; {!Contact.Core_Current_Year__c} 英特尔公司</td>
 </tr>
 <tr>
 <td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">英特尔公司, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<span class="Apple-converted-space"></span><a style="color: #ffffff; text-decoration: none;" href="http://www.intel.cn/" target="_blank" _rte_href="http://www.intel.cn/"><u>www.intel.cn</u></a></td>

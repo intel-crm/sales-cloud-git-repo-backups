@@ -44,7 +44,7 @@ public without sharing class CRM_VBS_SOARTeamSyncHandler {
                     system.debug('correspondingOppMember'+correspondingOppMember);
                      if (correspondingOppMember != null && correspondingOppMember.User.IsActive &&  (correspondingOppMember.Core_Description_of_Contribution__c != soarMember.CRM_VBS_Description_of_Contribution__c || correspondingOppMember.TeamMemberRole != soarMember.CRM_VBS_Team_Role__c )) 
                      {
-                         correspondingOppMember.Core_Description_of_Contribution__c = soarMember.CRM_VBS_Description_of_Contribution__c +'\n'+ (correspondingOppMember.Core_Description_of_Contribution__c != null ? correspondingOppMember.Core_Description_of_Contribution__c : ''); 
+                         correspondingOppMember.Core_Description_of_Contribution__c = soarMember.CRM_VBS_Description_of_Contribution__c +'\n'+ correspondingOppMember.Core_Description_of_Contribution__c != null ? correspondingOppMember.Core_Description_of_Contribution__c : ''; 
                          correspondingOppMember.TeamMemberRole = soarMember.CRM_VBS_Team_Role__c;
                         // Update the record in the database
                         oppTeamMembersToInsertUpdate.add(correspondingOppMember);

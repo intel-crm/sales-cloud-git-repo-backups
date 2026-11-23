@@ -2,7 +2,7 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>主机信息</value>
+        <value><!-- Host Information --></value>
     </caseValues>
     <fields>
         <label><!-- Account --></label>
@@ -10,7 +10,7 @@
         <relationshipLabel><!-- Host Information --></relationshipLabel>
     </fields>
     <fields>
-        <label>输入计算机类型</label>
+        <label><!-- Help on how to determine Computer Type --></label>
         <name>Sales_CompType_URL_del__c</name>
     </fields>
     <fields>
@@ -62,7 +62,7 @@
     </fields>
     <fields>
         <help><!-- Altera Software Licenses (intel.com) --></help>
-        <label>输入计算机类型</label>
+        <label><!-- Help on how to determine Computer Type --></label>
         <name>Sales_LicenseType_URL_del__c</name>
     </fields>
     <fields>
@@ -103,14 +103,14 @@
     </fields>
     <fields>
         <help>请在右上角下拉菜单中使用“激活/停用主机”来激活或停用计算机。</help>
-        <label>主动</label>
+        <label>活跃</label>
         <name>Sales_isActiveHost__c</name>
     </fields>
     <fields>
         <label>临时 NIC ID</label>
         <name>Temporary_NIC_ID__c</name>
     </fields>
-    <nameFieldLabel>主计算机 ID</nameFieldLabel>
+    <nameFieldLabel><!-- Primary Computer ID --></nameFieldLabel>
     <recordTypes>
         <label>新电脑</label>
         <name>Sales_NewHost</name>
@@ -132,7 +132,7 @@
         <name>Sales_Float_HOST_NIC_Allowed</name>
     </validationRules>
     <validationRules>
-        <errorMessage>您必须同时指定两个冗余服务器 ID。</errorMessage>
+        <errorMessage>针对浮动许可类型，要么不准在主机上添加任何冗余服务器，要么必须在主机上同时添加冗两台余服务器。同时，浮动许可类型不能添加协作计算机。</errorMessage>
         <name>Sales_Float_Lic_NoneorBoth_RedServer_Req</name>
     </validationRules>
     <validationRules>

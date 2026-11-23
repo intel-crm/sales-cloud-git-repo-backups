@@ -82,6 +82,7 @@ public without sharing class SWS_Utility {
         if(exceptionDetails!=null){
             strDetails = getErrorDetails(exceptionDetails);
         }
+        system.debug('Software Sales');
         objCLE.Core_Origin__c=className;
         objCLE.Core_Project__c='Software Sales';
         objCLE.Core_Scope__c=methodName;
@@ -91,7 +92,10 @@ public without sharing class SWS_Utility {
         objCLE.Core_Details__c=strDetails;
         objCLE.Core_When__c=System.now();
         objCLE.Core_sObjectId__c=sObjectId;
+           system.debug('Software Sales 11');
         insert as system objCLE;
+           system.debug('Software Sales 1122');
+        
     }
     
     /************************************************************************************************************
@@ -121,4 +125,17 @@ public without sharing class SWS_Utility {
         }
         return String.join(errorList, ';');
     }
+    
+    
+    public static void createLogEntries(List<Core_Log_Entry__c> logEntryDataList) {   
+
+    // Perform a single DML operation for all log entries
+    if (!logEntryDataList.isEmpty()) {
+         System.debug('limit createLogEntries');
+            system.debug(Limits.getDmlStatements());
+        insert logEntryDataList;
+    }
+}
+    
+    
 }

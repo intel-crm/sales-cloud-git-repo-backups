@@ -8,7 +8,6 @@ public class PRM_Purge_Registration_Requests_Test {
         cp.Name='Intel Partner Alliance';
         cp.PRM_programCode__c='IPA';
         insert cp;
-        System.debug('Channel Prog '+cp);
         
         PRM_Registration_Request__c regRequest = new PRM_Registration_Request__c();
         regRequest.RecordTypeId=Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
@@ -19,20 +18,16 @@ public class PRM_Purge_Registration_Requests_Test {
         regRequest.PRM_Preferred_Language__c='ENG';
         regRequest.createdDate = Datetime.newInstance(2020, 10, 15);
         regRequest.PRM_Channel_Program__c = cp.id;
-        regRequest.PRM_Email_Verification_Criteria__c = 'PENDING';
+        regRequest.PRM_Email_Verification_Criteria__c = 'SUCCESS';
         regRequest.PRM_Status__c = 'New';
         insert regRequest;
-        System.debug('regRequest-> '+regRequest);
-        System.debug('regRequest.CreatedDate '+regRequest.CreatedDate);
-        System.debug('regRequest.PRM_Email_Verification_Criteria__c '+regRequest.PRM_Email_Verification_Criteria__c);
-        System.debug('regRequest.PRM_Status__c '+regRequest.PRM_Status__c);
-        System.debug('regRequest.PRM_Channel_Program__r.Name '+regRequest.PRM_Channel_Program__r.Name);
+        
         List<PRM_Registration_Request__c> purgeRegreqsList = new List<PRM_Registration_Request__c>([select id, PRM_Status__c, 
                                                                                                     PRM_Email_Verification_Criteria__c, PRM_Channel_Program__c, 
                                                                                                     PRM_Channel_Program__r.name from PRM_Registration_Request__c 
                                                                                                     where CreatedDate < LAST_N_DAYS:46 
-                                                                                                    and PRM_Email_Verification_Criteria__c = 'Pending' and PRM_Status__c = 'New']);
-        System.debug('purgeRegreqsList Size '+purgeRegreqsList.size()+' purgeRegreqsList '+purgeRegreqsList);
+                                                                                                    and PRM_Email_Verification_Criteria__c = 'SUCCESS' and PRM_Status__c = 'New']);
+
         regRequest.PRM_Email_Verification_Criteria__c = 'PENDING';
         update regRequest;
         List<PRM_Registration_Request__c> regReqList=new List<PRM_Registration_Request__c>();
@@ -40,6 +35,15 @@ public class PRM_Purge_Registration_Requests_Test {
         //PRM_Purge_RegReq_Schedular testsche = new PRM_Purge_RegReq_Schedular();
         //String sch = '0 0 12 * * ?';
         //system.schedule('Test status Check', sch, testsche );
+        PRM_Registration_Request__c rr = [
+            SELECT PRM_Email_Verification_Criteria__c,
+                   PRM_EmailVerifiedDateTime__c,
+                   PRM_Status__c
+            FROM PRM_Registration_Request__c
+            WHERE Id = :regRequest.Id
+        ];
+        
+    
         PRM_Purge_Registration_Requests.purgeRecords(regReqList);
         Test.stopTest();
     }
@@ -79,12 +83,12 @@ insert coreAccnt;*/
         cont.AccountId=newAccount.Id;
         cont.lastName='Grill';
         cont.FirstName='Adam';
-        cont.MailingCountry='USA';
         cont.email='AdamGrill@rediff.com';
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
         // cont.Core_IPA_Partner_Role__c = 'Service Provider';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
+        cont.MailingCountry='USA';
         insert cont;
         
         ChannelProgram cp = new ChannelProgram(); //Channel Program
@@ -135,6 +139,7 @@ insert coreAccnt;*/
             acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
             acm.PRM_Partner_Role__c='Service Provider';
             acm.PRM_Status_Nm__c = 'Pending';
+            acm.PRM_Status_Reason_Txt__c='Test01';
             insert acm;
             acm.PRM_Partner_Role__c='Distributor';
             update acm;
@@ -145,9 +150,9 @@ insert coreAccnt;*/
         
         Test.startTest();
         PRM_AccountChannelMembership__c acct1 = [Select Id, CreatedDate, LastModifiedDate from PRM_AccountChannelMembership__c where Id=:acm.id];
-        System.debug('test' +acct1.CreatedDate);
+        
         PRM_AccountChannelMembership__c acct = [Select Id, CreatedDate, LastModifiedDate from PRM_AccountChannelMembership__c where Id=:acm.id];
-        System.debug('test' +acct);
+        
         List<PRM_Account_Contact_Relationship__c> acrReqList=new List<PRM_Account_Contact_Relationship__c>();
         acrReqList.add(acctContRel);
         PRM_Purge_PCR_ACM_Requests.purgeRecords(acrReqList);

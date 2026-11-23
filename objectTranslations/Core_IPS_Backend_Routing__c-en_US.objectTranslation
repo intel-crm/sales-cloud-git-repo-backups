@@ -63,5 +63,10 @@
         <label><!-- Support Org --></label>
         <name>Support_Org__c</name>
     </fields>
+    <fields>
+        <label><!-- Support Org --></label>
+        <name>Support_Org_test__c</name>
+        <relationshipLabel><!-- Backend Routings --></relationshipLabel>
+    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

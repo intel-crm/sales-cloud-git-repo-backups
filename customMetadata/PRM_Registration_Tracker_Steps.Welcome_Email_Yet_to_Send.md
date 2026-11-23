@@ -16,11 +16,11 @@
     </values>
     <values>
         <field>PRM_Display_Step_No__c</field>
-        <value xsi:type="xsd:double">12.0</value>
+        <value xsi:type="xsd:double">14.0</value>
     </values>
     <values>
         <field>PRM_Previous_Step__c</field>
-        <value xsi:type="xsd:string">;0;4;5;6;8;9;21;28;34;38;39;14;15;10;50;51;</value>
+        <value xsi:type="xsd:string">;0;4;5;6;8;9;21;28;34;38;39;14;15;50;51;10;57;</value>
     </values>
     <values>
         <field>PRM_Registration_Type__c</field>

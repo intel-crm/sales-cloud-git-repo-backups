@@ -12,10 +12,12 @@ public without sharing class Pricing_UCD_IQR_BulkAutoRejection_Batch implements 
  
     public Database.QueryLocator start(Database.BatchableContext bc){
         //Query to get all quotelines where Status = PIFR or PFIR and Is Sanctioned = true and change requests that are not active(Integration status = null)
-         return database.getQueryLocator([SELECT id,Pricing_Status_Nm__c, Pricing_Is_Sanctioned__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Compliance_Watch_List__c,Pricing_Reference_Quote_Line_Nbr__c,Pricing_Integration_Status_Nm__c,Pricing_Rejection_Reason__c, 
+        system.debug('entering'); 
+        return database.getQueryLocator([SELECT id,Pricing_Status_Nm__c, Pricing_Is_Sanctioned__c,SBQQ__Quote__r.Pricing_Unified_Global_End_Customer_Nm__r.Pricing_Compliance_Watch_List__c,Pricing_Reference_Quote_Line_Nbr__c,Pricing_Integration_Status_Nm__c,Pricing_Rejection_Reason__c, 
                                         Pricing_Rejection_Comments_nm__c FROM SBQQ__QuoteLine__c WHERE Pricing_Quote_Program_Nm__c =: Label.Pricing_Tender_Quote_Program AND 
                                         Pricing_Is_Sanctioned__c=true AND (Pricing_Status_Nm__c IN: Label.Pricing_Tender_QuoteLine_Edit_Status.split(':')) 
                                         AND (Pricing_New_Change_Request_cb__c = false OR (Pricing_New_Change_Request_cb__c = true AND Pricing_Integration_Status_Nm__c = null))]);
+                                        
     }   
     
     public void execute(Database.BatchableContext bc, List<SBQQ__QuoteLine__c> quoteLineList){
@@ -27,6 +29,7 @@ public without sharing class Pricing_UCD_IQR_BulkAutoRejection_Batch implements 
             Set<Id> rejectedQuoteLineIds = new Set<Id>();
             String failedQuoteLineId = '';
             
+            system.debug('quoteLineList:'+quoteLineList);
             if(quoteLineList.size() > 0) {
                 for(SBQQ__QuoteLine__c quoteLine : quoteLineList) {
                     if(quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview ) {

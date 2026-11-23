@@ -1,0 +1,25 @@
+<apex:page >
+<head>
+<style type="text/css">.reportsExportVisualPickerOption .visual-picker-header{padding-bottom:var(--lwc-spacingMedium,1rem)}.reportsExportVisualPickerOption .visual-picker-body{padding-left:var(--lwc-spacingMedium,1rem);padding-right:var(--lwc-spacingMedium,1rem)}.reportsExportVisualPickerOption .slds-visual-picker__figure{height:11rem}.reportsExportVisualPickerOption .checkIconColor{color:var(--lwc-colorTextIconInverse,rgb(255, 255, 255))}</style>
+<style type="text/css">.reportsExportFormat{padding:var(--lwc-spacingSmall,0.75rem)}.reportsExportFormat .slds-form-element{padding-bottom:var(--lwc-spacingMedium,1rem)}.reportsExportFormat .data-excel-input-holder{flex-direction:row;display:flex}.reportsExportFormat .data-excel-input-holder>div:nth-child(1),.reportsExportFormat .data-excel-input-holder>div:nth-child(2){flex-grow:1;flex-basis:0}.reportsExportFormat .data-excel-input-holder>div:nth-child(1){padding-right:var(--lwc-spacingMedium,1rem)}.reportsExportFormat .formatted-excel-input-holder{width:50%;padding-right:var(--lwc-spacingXSmall,0.5rem)}</style>
+</head>
+<script >
+
+    var success = 'false';
+    function myFunction(){
+        document.getElementById('download').click();
+    }
+
+    
+    </script>
+<apex:form >
+
+   
+        <apex:PageBlock >
+        <ul aria-labelledby="LVIPRKvBjv" class="dropdown__list slds-dropdown_length-10" role="menu">
+        
+        <li class="slds-dropdown__item slds-is-selected actionBarButtonGroup-action-item item report-action-ReportExportAction" id="LVIPRKvBjv-item-4" role="presentation"><a aria-disabled="false" href="https://intel--crmdevint3.lightning.force.com/reports/lightningReportApp.app?reportid=00O2i000000SIWjEAO&isView=true&filterValues=fv0='Q-00004'" data-index="4" role="menuitem" tabindex="-1"><span class="slds-truncate" title="Export">Export</span></a></li>
+        </ul>
+        </apex:PageBlock>
+    </apex:form>    
+</apex:page>

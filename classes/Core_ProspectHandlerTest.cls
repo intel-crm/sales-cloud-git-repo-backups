@@ -21,7 +21,7 @@ public class Core_ProspectHandlerTest {
         List <Core_Prospect__c> prosList = new List <Core_Prospect__c> ();
         for (integer i = 0; i <100; i++) {
             Core_Prospect__c  prosInstance= new Core_Prospect__c();
-            //prosInstance.Core_Country_Pkt__c = 'USA';
+            prosInstance.Core_Country_Pkt__c = 'USA';
             prosInstance.Core_Source_Pkt__c='Sales AI';
             prosInstance.Core_URLElectronicAddressTxt__c='google.com';
             prosList.add(prosInstance);

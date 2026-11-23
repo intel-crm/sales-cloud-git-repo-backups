@@ -3,106 +3,10 @@
     <apiVersion>61.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Assign_Account_Owner_as_Contact_Owner_DZP</name>
-        <label>Assign Account Owner as Contact Owner DZP</label>
-        <locationX>352</locationX>
-        <locationY>782</locationY>
-        <assignmentItems>
-            <assignToReference>newContact.OwnerId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__r.OwnerId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Get_AccountTeamMembers</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Account_Owner_as_ISO_DZP</name>
-        <label>Assign Account Owner as ISO DZP</label>
-        <locationX>484</locationX>
-        <locationY>1598</locationY>
-        <assignmentItems>
-            <assignToReference>newContact.Core_IPS_Intel_Support_Owner__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__r.OwnerId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>ChannelProgram</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Account_Owner_as_ISO_DZP_Upd</name>
-        <label>Assign Account Owner as ISO DZP Upd</label>
-        <locationX>1062</locationX>
-        <locationY>3854</locationY>
-        <assignmentItems>
-            <assignToReference>Get_Contact_Record.Core_IPS_Intel_Support_Owner__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__r.OwnerId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Update_DZP_Contact</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Active_AcountTeamMember</name>
-        <label>Assign Active AcountTeamMember</label>
-        <locationX>440</locationX>
-        <locationY>1214</locationY>
-        <assignmentItems>
-            <assignToReference>ActiveAccountTeammeber</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_through_AccounTeamMembers.UserId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_through_AccounTeamMembers</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Active_AcountTeamMember_upd</name>
-        <label>Assign Active AcountTeamMember upd</label>
-        <locationX>1018</locationX>
-        <locationY>3470</locationY>
-        <assignmentItems>
-            <assignToReference>ActiveAccountTeammeber</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_through_AccounTeamMembers_Upd.UserId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_through_AccounTeamMembers_Upd</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Contact_owner_as_Account_Owner_DZP_Upd</name>
-        <label>Assign Contact owner as Account Owner DZP Upd</label>
-        <locationX>930</locationX>
-        <locationY>3038</locationY>
-        <assignmentItems>
-            <assignToReference>updateContact.OwnerId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__r.OwnerId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Get_Account_team_members_upd</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>assign_contact_record_output</name>
         <label>assign contact record output</label>
-        <locationX>688</locationX>
-        <locationY>2822</locationY>
+        <locationX>325</locationX>
+        <locationY>1142</locationY>
         <assignmentItems>
             <assignToReference>contactRecordOutput</assignToReference>
             <operator>Assign</operator>
@@ -115,104 +19,9 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_New_Contact_Values</name>
-        <label>Assign New Contact Values</label>
-        <locationX>550</locationX>
-        <locationY>566</locationY>
-        <assignmentItems>
-            <assignToReference>newContact.AccountId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.Core_Enterprise_Id__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Enterprise_ID__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.Core_Preferred_Language__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Preferred_Language__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.Core_Profession__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Profession__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.Email</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Email_ID__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.FirstName</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_First_Name__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.LastName</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Last_Name__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.MailingCountryCode</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Contact_Country__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.Phone</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Person_Phone_Number__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newContact.RecordTypeId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Get_Intel_contact_RT.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_Owner_and_Intel</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Partner_Role</name>
-        <label>Assign Partner Role</label>
-        <locationX>220</locationX>
-        <locationY>2114</locationY>
-        <assignmentItems>
-            <assignToReference>newContact.Core_IPA_PartnerRole__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Get_Account_Channel_Membership.PRM_Partner_Role__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Create_New_Contact</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Assign_Reg_Email_to_List</name>
         <label>Assign Reg Email to List</label>
-        <locationX>550</locationX>
+        <locationX>204</locationX>
         <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>newRegEmailList</assignToReference>
@@ -222,216 +31,38 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Assign_New_Contact_Values</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Technical_Owner_as_ISO_DZP</name>
-        <label>Assign Technical Owner as ISO DZP</label>
-        <locationX>220</locationX>
-        <locationY>1598</locationY>
-        <assignmentItems>
-            <assignToReference>newContact.Core_IPS_Intel_Support_Owner__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>ActiveAccountTeammeber</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>ChannelProgram</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_technical_Owner_as_ISO_DZP_Upd</name>
-        <label>Assign technical Owner as ISO DZP Upd</label>
-        <locationX>798</locationX>
-        <locationY>3854</locationY>
-        <assignmentItems>
-            <assignToReference>Get_Contact_Record.Core_IPS_Intel_Support_Owner__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>ActiveAccountTeammeber</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Update_DZP_Contact</targetReference>
+            <targetReference>Assign_partner_Role_if_IPA_Account</targetReference>
         </connector>
     </assignments>
     <decisions>
-        <name>Assign_Owner_and_Intel</name>
-        <label>Assign Owner and ISO for DZP</label>
-        <locationX>550</locationX>
-        <locationY>674</locationY>
+        <name>Assign_partner_Role_if_IPA_Account</name>
+        <label>Assign partner Role if IPA Account</label>
+        <locationX>204</locationX>
+        <locationY>566</locationY>
         <defaultConnector>
             <targetReference>Create_New_Contact</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>DZP_Registration</name>
+            <name>Set_Variable</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>triggeredRegisteredRecord.PRM_Source__c</leftValueReference>
+                <leftValueReference>triggeredRegisteredRecord.Account_ID__r.Core_Intel_Partner_Alliance_PartnerGroup__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>DZP</stringValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assign_Account_Owner_as_Contact_Owner_DZP</targetReference>
-            </connector>
-            <label>DZP Registration</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_Account_team_member</name>
-        <label>Check Account team member</label>
-        <locationX>352</locationX>
-        <locationY>1490</locationY>
-        <defaultConnector>
-            <targetReference>Assign_Account_Owner_as_ISO_DZP</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Technical_Owner_Present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>ActiveAccountTeammeber</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Technical_Owner_as_ISO_DZP</targetReference>
-            </connector>
-            <label>Technical Owner Present</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>IS_IPA_Account</name>
-        <label>IS IPA Account</label>
-        <locationX>352</locationX>
-        <locationY>2006</locationY>
-        <defaultConnector>
-            <targetReference>Create_New_Contact</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Set_Partner_Role</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Account_Channel_Membership</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Account_Channel_Membership.PRM_Partner_Role__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Partner_Role</targetReference>
+                <targetReference>Copy_1_of_Create_New_Contact</targetReference>
             </connector>
             <label>Set Partner Role</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Validate_Active_AccountTeamMember</name>
-        <label>Validate Active AccountTeamMember</label>
-        <locationX>572</locationX>
-        <locationY>1106</locationY>
-        <defaultConnector>
-            <targetReference>Loop_through_AccounTeamMembers</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Active_Technical_Owner_Team_Member_Found</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Loop_through_AccounTeamMembers.User.IsActive</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>ActiveAccountTeammeber</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Active_AcountTeamMember</targetReference>
-            </connector>
-            <label>Active Technical Owner Team Member Found</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Validate_Active_AccountTeamMember_Upd</name>
-        <label>Validate Active AccountTeamMember Upd</label>
-        <locationX>1150</locationX>
-        <locationY>3362</locationY>
-        <defaultConnector>
-            <targetReference>Loop_through_AccounTeamMembers_Upd</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Active_Technical_Owner_Team_Member_Found_upd</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Loop_through_AccounTeamMembers_Upd.User.IsActive</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>ActiveAccountTeammeber</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Active_AcountTeamMember_upd</targetReference>
-            </connector>
-            <label>Active Technical Owner Team Member Found upd</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Verify_Account_team_Member_upd</name>
-        <label>Verify Account team Member upd</label>
-        <locationX>930</locationX>
-        <locationY>3746</locationY>
-        <defaultConnector>
-            <targetReference>Assign_Account_Owner_as_ISO_DZP_Upd</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Technical_Owner_Present_Upd</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>ActiveAccountTeammeber</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_technical_Owner_as_ISO_DZP_Upd</targetReference>
-            </connector>
-            <label>Technical Owner Present Upd</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Verify_Email_already_present</name>
         <label>Verify Email already present</label>
-        <locationX>187</locationX>
+        <locationX>50</locationX>
         <locationY>350</locationY>
         <defaultConnector>
             <targetReference>Assign_Reg_Email_to_List</targetReference>
@@ -456,8 +87,8 @@
     <decisions>
         <name>Verify_Engagement_code_is_IPS</name>
         <label>Verify Engagement code is IPS</label>
-        <locationX>688</locationX>
-        <locationY>2930</locationY>
+        <locationX>325</locationX>
+        <locationY>1250</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Engagement_code_is_IPS</name>
@@ -481,40 +112,11 @@
             </connector>
             <label>Engagement code is IPS</label>
         </rules>
-        <rules>
-            <name>Engagement_Code_DZP</name>
-            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
-            <conditions>
-                <leftValueReference>triggeredRegisteredRecord.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>DZP</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Contact_Record.Core_IPS_Intel_Support_Owner__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Contact_Record.OwnerId</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__r.OwnerId</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Contact_owner_as_Account_Owner_DZP_Upd</targetReference>
-            </connector>
-            <label>Engagement Code DZP</label>
-        </rules>
     </decisions>
     <decisions>
         <name>Verify_existing_contact</name>
         <label>Verify existing contact</label>
-        <locationX>688</locationX>
+        <locationX>325</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Get_Contact_Record</targetReference>
@@ -539,34 +141,6 @@
     <environments>Default</environments>
     <interviewLabel>EBR Framework Contact Creation {!$Flow.CurrentDateTime}</interviewLabel>
     <label>EBR Framework Contact Creation</label>
-    <loops>
-        <name>Loop_through_AccounTeamMembers</name>
-        <label>Loop through AccounTeamMembers</label>
-        <locationX>352</locationX>
-        <locationY>998</locationY>
-        <collectionReference>Get_AccountTeamMembers</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Validate_Active_AccountTeamMember</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Check_Account_team_member</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
-        <name>Loop_through_AccounTeamMembers_Upd</name>
-        <label>Loop through AccounTeamMembers Upd</label>
-        <locationX>930</locationX>
-        <locationY>3254</locationY>
-        <collectionReference>Get_Account_team_members_upd</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Validate_Active_AccountTeamMember_Upd</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Verify_Account_team_Member_upd</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -587,10 +161,87 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
+        <name>Copy_1_of_Create_New_Contact</name>
+        <label>Create New Contact IPA</label>
+        <locationX>72</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>Get_Contact_Record</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Enterprise_Id__c</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Enterprise_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_IPA_PartnerRole__c</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.Account_ID__r.Core_IPA_Partner_Role__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Preferred_Language__c</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Preferred_Language__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Profession__c</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Profession__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Email_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_First_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Last_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MailingCountryCode</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Contact_Country__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Person_Phone_Number__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Intel_contact_RT.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
         <name>Create_Core_log_Entry_Rec_for_contact</name>
         <label>Create Core log Entry Rec for contact</label>
-        <locationX>314</locationX>
-        <locationY>3146</locationY>
+        <locationX>325</locationX>
+        <locationY>1466</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -627,151 +278,79 @@
     <recordCreates>
         <name>Create_New_Contact</name>
         <label>Create New Contact</label>
-        <locationX>550</locationX>
-        <locationY>2390</locationY>
+        <locationX>336</locationX>
+        <locationY>674</locationY>
         <connector>
             <targetReference>Get_Contact_Record</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Create_Core_log_Entry_Rec_for_contact</targetReference>
-        </faultConnector>
-        <inputReference>newContact</inputReference>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Enterprise_Id__c</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Enterprise_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Preferred_Language__c</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Preferred_Language__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Profession__c</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Profession__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Email_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_First_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Last_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MailingCountryCode</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Contact_Country__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>triggeredRegisteredRecord.PRM_Person_Phone_Number__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Intel_contact_RT.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
-    <recordLookups>
-        <name>ChannelProgram</name>
-        <label>ChannelProgram</label>
-        <locationX>352</locationX>
-        <locationY>1790</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Get_Account_Channel_Membership</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Name</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Intel Partner Alliance</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>IsActive</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>ChannelProgram</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Account_Channel_Membership</name>
-        <label>Get Account Channel Membership</label>
-        <locationX>352</locationX>
-        <locationY>1898</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>IS_IPA_Account</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>PRM_Account_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__r.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Status_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Approved</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>ChannelProgram.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>PRM_AccountChannelMembership__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Asc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Account_team_members_upd</name>
-        <label>Get Account team members upd</label>
-        <locationX>930</locationX>
-        <locationY>3146</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Loop_through_AccounTeamMembers_Upd</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>AccountId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>TeamMemberRole</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Team Member (100%)</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>AccountTeamMember</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>UserId</queriedFields>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_AccountTeamMembers</name>
-        <label>Get AccountTeamMembers</label>
-        <locationX>352</locationX>
-        <locationY>890</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Loop_through_AccounTeamMembers</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>AccountId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>triggeredRegisteredRecord.PRM_Salesforce_ID__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>TeamMemberRole</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Technical Owner (100%)</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>AccountTeamMember</object>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>UserId</queriedFields>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordLookups>
         <name>Get_Contact_Record</name>
         <label>Get Contact Record</label>
-        <locationX>688</locationX>
-        <locationY>2714</locationY>
+        <locationX>325</locationX>
+        <locationY>1034</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>assign_contact_record_output</targetReference>
@@ -795,7 +374,7 @@
     <recordLookups>
         <name>Get_Intel_contact_RT</name>
         <label>Get Intel contact RT</label>
-        <locationX>688</locationX>
+        <locationX>325</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -823,8 +402,8 @@
     <recordUpdates>
         <name>Update_Contact</name>
         <label>Update Contact</label>
-        <locationX>50</locationX>
-        <locationY>3038</locationY>
+        <locationX>61</locationX>
+        <locationY>1358</locationY>
         <faultConnector>
             <targetReference>Create_Core_log_Entry_Rec_for_contact</targetReference>
         </faultConnector>
@@ -844,15 +423,8 @@
         </inputAssignments>
         <object>Contact</object>
     </recordUpdates>
-    <recordUpdates>
-        <name>Update_DZP_Contact</name>
-        <label>Update DZP Contact</label>
-        <locationX>930</locationX>
-        <locationY>4046</locationY>
-        <inputReference>Get_Contact_Record</inputReference>
-    </recordUpdates>
     <start>
-        <locationX>562</locationX>
+        <locationX>199</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Intel_contact_RT</targetReference>
@@ -860,7 +432,7 @@
     </start>
     <status>Active</status>
     <variables>
-        <name>ActiveAccountTeammeber</name>
+        <name>AccountPartnerRole</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -872,14 +444,6 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>true</isOutput>
-        <objectType>Contact</objectType>
-    </variables>
-    <variables>
-        <name>newContact</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
         <objectType>Contact</objectType>
     </variables>
     <variables>
@@ -896,13 +460,5 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>PRM_Registration_Request__c</objectType>
-    </variables>
-    <variables>
-        <name>updateContact</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Contact</objectType>
     </variables>
 </Flow>

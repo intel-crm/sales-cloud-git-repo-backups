@@ -143,6 +143,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <description>Object to store the bulk Design Registration file and generate a batch identifier.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -156,6 +157,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Core_Design_Batch_Report_URL_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <formula>HYPERLINK(Left($Api.Enterprise_Server_URL_190,(find(&apos;/services&apos;,$Api.Enterprise_Server_URL_190))) +  &apos;00O1J000005K1n7?pv0=&apos;+Name, &apos;Click here to view the detailed report&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -168,6 +170,7 @@
     </fields>
     <fields>
         <fullName>Core_Fail_Design_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Design Count (Fail)</label>
         <summaryFilterItems>
             <field>Core_Design_Registration_Stage__c.Core_Header_Or_Product_Ind__c</field>
@@ -187,6 +190,7 @@
     </fields>
     <fields>
         <fullName>Core_Fail_Product_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Product Count (Fail)</label>
         <summaryFilterItems>
             <field>Core_Design_Registration_Stage__c.Core_Header_Or_Product_Ind__c</field>
@@ -206,6 +210,7 @@
     </fields>
     <fields>
         <fullName>Core_File_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <description>Name of file used for the bulk import.</description>
         <externalId>false</externalId>
         <inlineHelpText>Name of file used for bulk import. File attached in the section below.</inlineHelpText>
@@ -220,6 +225,7 @@
     <fields>
         <fullName>Core_Partner_Account_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
         <description>ISR/Internal user should select &quot;Partner Account&quot; field while uploading csv file.</description>
         <inlineHelpText>ISR/Internal user should select &quot;Partner Account&quot; field while uploading csv file.</inlineHelpText>
         <label>Partner Account</label>
@@ -233,6 +239,7 @@
     </fields>
     <fields>
         <fullName>Core_Pass_Design_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Design Count (Pass)</label>
         <summaryFilterItems>
             <field>Core_Design_Registration_Stage__c.Core_Header_Or_Product_Ind__c</field>
@@ -252,6 +259,7 @@
     </fields>
     <fields>
         <fullName>Core_Pass_Product_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Product Count (Pass)</label>
         <summaryFilterItems>
             <field>Core_Design_Registration_Stage__c.Core_Header_Or_Product_Ind__c</field>
@@ -271,6 +279,7 @@
     </fields>
     <fields>
         <fullName>Core_Total_Design_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Design Count (Total)</label>
         <summaryFilterItems>
             <field>Core_Design_Registration_Stage__c.Core_Header_Or_Product_Ind__c</field>
@@ -285,6 +294,7 @@
     </fields>
     <fields>
         <fullName>Core_Total_Product_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Product Count (Total)</label>
         <summaryFilterItems>
             <field>Core_Design_Registration_Stage__c.Core_Header_Or_Product_Ind__c</field>
@@ -299,6 +309,7 @@
     </fields>
     <fields>
         <fullName>Core_Total_Row_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Total Rows</label>
         <summaryForeignKey>Core_Design_Registration_Stage__c.Core_Batch_ID__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
@@ -365,6 +376,6 @@
         <protected>false</protected>
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
-        <url>/s/report/00O1J000005K1n7UAC?reportFilters=%5B%7B%22operator%22%3A%22equals%22%2C%22value%22%3A%22{!Core_Design_Registration_Batch__c.Name}%22%2C%22column%22%3A%22CUST_NAME%22%7D%5D</url>
+        <url>/partneradmin/s/report/00O1J000005K1n7?reportFilters=%5B%7B%22operator%22%3A%22equals%22%2C%22value%22%3A%22{!Core_Design_Registration_Batch__c.Name}%22%2C%22column%22%3A%22CUST_NAME%22%7D%5D</url>
     </webLinks>
 </CustomObject>

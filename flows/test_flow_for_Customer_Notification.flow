@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>core_mdf_update_approver_comment</name>
+        <label>core_mdf_update_approver_comment</label>
+        <locationX>1017</locationX>
+        <locationY>159</locationY>
+        <actionName>Core_MDF_CampaignServiceHandler</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>cmp</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_CampaignServiceHandler</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>test flow for Customer Notification {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>test flow for Customer Notification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>testing_data</name>
+        <label>testing data</label>
+        <locationX>626</locationX>
+        <locationY>425</locationY>
+        <inputReference>$Record</inputReference>
+    </recordCreates>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>testing_data</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND ( 3 OR 4)</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pending Approval</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Intel Partner Alliance</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Program__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Channel MDF</stringValue>
+            </value>
+        </filters>
+        <object>Campaign</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>trigger_Notification_customer</name>
+            <connector>
+                <targetReference>core_mdf_update_approver_comment</targetReference>
+            </connector>
+            <label>trigger Notification customer</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>Core_MDF_Approver_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+</Flow>

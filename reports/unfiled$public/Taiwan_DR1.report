@@ -13,7 +13,7 @@
         <field>Core_Design_Registration__c.Core_Design_Registration_Nm__c</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.Core_End_Customer_Country_Nm__c</field>
+        <field>Core_Design_Registration__c.PCC_End_Customer_Country__c</field>
     </columns>
     <columns>
         <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
@@ -60,18 +60,18 @@ Partner Account Region: APJ
 Include Approved DR.</description>
     <filter>
         <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Partner_Account_Id__c</column>
+            <column>Core_Design_Registration__c.PCC_End_Customer_Country__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>startsWith</operator>
-            <value>Synnex Technology International Corp,WORLD PEACE INDUSTRIAL CO.,LTD.,WT MICROELECTRONICS CO.,SERTEK INCORPORATED</value>
+            <operator>equals</operator>
+            <value>Taiwan</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Partner_Account_Id__c</column>
+            <column>Core_Design_Registration__c.Core_Partner_Account_Region_Cd__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>SYNNEX TECHNOLOGY INTERNATIONAL CORP. (HONG KONG BRANCH)</value>
+            <operator>equals</operator>
+            <value>APJ</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -87,7 +87,7 @@ Include Approved DR.</description>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>CUST_LAST_UPDATE</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

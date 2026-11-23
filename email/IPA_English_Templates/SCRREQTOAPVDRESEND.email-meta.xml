@@ -8,9 +8,6 @@
     <subject>Complete your Intel® Partner Alliance application</subject>
     <textOnly>You’re Almost There!
 
-
-
-
 {!PRM_Registration_Request__c.PRM_First_Name__c},
 
 Thank you for submitting your application. A profile has been created for {!PRM_Registration_Request__c.PRM_Email_ID__c}, and you are only a few steps away from becoming an Intel® Partner Alliance partner.
@@ -22,18 +19,17 @@ To activate your account and start enjoying your benefits, please complete your 
 Complete now
 
 Can&apos;t access the link above?
+{{EVLINK}}
 
-https://www.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner/forms/ipa-account-search.html
 
 If you have any questions, please contact us at programs@intel.com.
+
 
 Thank you,
 Your Intel® Partner Alliance team
 
-
-
 This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>
     <type>custom</type>

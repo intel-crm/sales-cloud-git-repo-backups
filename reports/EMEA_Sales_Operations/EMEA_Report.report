@@ -10,9 +10,6 @@
         <field>Account$Core_Account_Legal_Name__c</field>
     </columns>
     <columns>
-        <field>Account$Owner</field>
-    </columns>
-    <columns>
         <field>Account.AccountTerritory2Associations$Name</field>
     </columns>
     <columns>
@@ -42,20 +39,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account$Owner</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Integration User</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account$Owner</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Vendor Sales Center</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account$Core_Geo__c</column>

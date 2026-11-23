@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "c9b0ba1a-8acc-469b-97a3-469af14717fb",
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "configurationTags" : [ ],
+  "devName" : "Change_Request_Line_Item_Related_List__c",
+  "id" : "07b80078-a09a-41c1-89d1-55b8b3e0e527",
+  "label" : "Change Request Line Item Related List",
+  "objectApiName" : "PCC_Deal_Change_Request_Line_Item__c",
+  "routeType" : "relatedlist-aFx",
+  "type" : "route",
+  "urlPrefix" : "pcc-deal-change-request-line-item"
+}

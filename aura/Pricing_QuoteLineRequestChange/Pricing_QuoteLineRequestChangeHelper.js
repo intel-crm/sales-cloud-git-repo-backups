@@ -89,8 +89,8 @@
                 errorList.push(noChangeError);
             }
 
-            quoteLine.Pricing_Backdate_Reason_Txt__c = quoteLine.Pricing_Backdate_Reason_Txt__c != undefined ? quoteLine.Pricing_Backdate_Reason_Txt__c : '';
-                
+            console.log('paya:'+quoteLine.Pricing_Payable_Quantity__c);
+            console.log('oldpaya:'+oldQuoteLine.Pricing_Payable_Quantity__c);
             // Check if user change the date or quantity if there no change no need of request..
             if (quoteLine.Pricing_Approved_Start_Date_Dt__c === oldQuoteLine.Pricing_Approved_Start_Date_Dt__c &&
                 quoteLine.Pricing_Approved_End_Date_Dt__c === oldQuoteLine.Pricing_Approved_End_Date_Dt__c &&

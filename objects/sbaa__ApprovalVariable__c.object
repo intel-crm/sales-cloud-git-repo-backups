@@ -258,6 +258,11 @@
                     <default>false</default>
                     <label>core_cpq_tools_nc_bm_routing_check__c</label>
                 </value>
+                <value>
+                    <fullName>Pricing_SW_PLI_Approval_Discount__c</fullName>
+                    <default>false</default>
+                    <label>Pricing_SW_PLI_Approval_Discount__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

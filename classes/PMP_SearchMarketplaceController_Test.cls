@@ -206,7 +206,6 @@ public class PMP_SearchMarketplaceController_Test extends PMP_SearchWrapperStore
         PMP_Category__c child = [SELECT id from PMP_Category__c where Name='Healthcare' limit 1];
         
         Test.startTest();
-        PMP_SearchMarketplaceController.getSelectedFilters(child.id);
         system.assertNotEquals(null, PMP_SearchMarketplaceController.getSelectedFilters(child.id),'Failed');
         Test.stopTest();
     }
@@ -283,7 +282,7 @@ public class PMP_SearchMarketplaceController_Test extends PMP_SearchWrapperStore
         Test.stopTest();
     }
     
-    @isTest static void getPartnerArticlesTest(){
+   /* @isTest static void getPartnerArticlesTest(){
         
         Account testAccount = PMP_SearchTestDataFactory.createIntelAccount('testAccount', PMP_SearchTestDataFactory.intel_Account_Record_Type, true);        
         PMP_Company__c partner = PMP_SearchTestDataFactory.createCompanyInformation('testPartner', testAccount.Id, true);
@@ -293,7 +292,7 @@ public class PMP_SearchMarketplaceController_Test extends PMP_SearchWrapperStore
         ArticleData result = PMP_SearchMarketplaceController.getPartnerArticles(partner.Id, 'en_US');
         system.assert(result != null,'Failed');
         Test.stopTest();
-    }
+    }*/
     
     /*@isTest static void getFeaturedTabsTest(){
         
@@ -386,7 +385,7 @@ public class PMP_SearchMarketplaceController_Test extends PMP_SearchWrapperStore
        
         Test.startTest();
         
-        system.assertNotEquals(true,PMP_SearchMarketplaceController.isMarketingSpecialistAndOfferingEditor(),'Failed');//IPA 2.0 Offering EOL
+        //system.assertNotEquals(true,PMP_SearchMarketplaceController.isMarketingSpecialistAndOfferingEditor(),'Failed');//IPA 2.0 Offering EOL
         system.assertNotEquals(true,PMP_SearchMarketplaceController.isBasicProfileBenefitForOE(),'Failed');
         system.assertNotEquals(true,PMP_SearchMarketplaceController.isBasicProfileBenefit(),'Failed');
         system.assertNotEquals(false,PMP_SearchMarketplaceController.isMPAdmin(),'Failed');

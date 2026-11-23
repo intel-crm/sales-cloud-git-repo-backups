@@ -68,7 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>lessThan</operator>
-            <value>90</value>
+            <value>90.0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

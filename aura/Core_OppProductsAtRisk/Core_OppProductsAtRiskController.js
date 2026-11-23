@@ -51,6 +51,7 @@
                 }
                 component.set("v.allAtRisk", allAtRisk);
                 component.set("v.loaded", true);
+                 console.log('Loaded is:'+component.get("v.loaded"));
             }else{
                 console.log("Error on fetching opportunity product details : "+JSON.stringify(response.getError()));
             }

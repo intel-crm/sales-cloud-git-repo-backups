@@ -136,7 +136,11 @@ public with sharing class Core_MDF_KPI_FieldsController {
             activityRecObject = readRecordValues(activityId,mfieldsValues,'PartnerFundRequest');
         }
         
-        mfields = Schema.getGlobalDescribe().get(objectName).getDescribe().fields.getMap();
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult[] describeResult = Schema.describeSObjects(new List<String>{objectName});
+        if(describeResult != null && !describeResult.isEmpty()){
+            mfields = describeResult[0].fields.getMap();
+        }
         
         if (mfields != null){
             

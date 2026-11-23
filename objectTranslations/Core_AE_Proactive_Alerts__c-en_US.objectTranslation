@@ -13,6 +13,14 @@
         <name>Alert_Frequency__c</name>
     </fields>
     <fields>
+        <label><!-- Report Frequency (in days) --></label>
+        <name>Report_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send Integration Report --></label>
+        <name>Send_Integration_Report__c</name>
+    </fields>
+    <fields>
         <label><!-- Send Proactive Alert --></label>
         <name>Send_Proactive_Alert__c</name>
     </fields>

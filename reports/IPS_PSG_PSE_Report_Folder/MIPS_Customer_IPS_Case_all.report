@@ -31,6 +31,9 @@
                 <sourceValue>PSG-ASMO-unassigned</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>PSG-EMEA-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>PSG-EMEA-unassigned</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -61,7 +64,7 @@
                 <sourceValue>PSG-AP-Component/HSIO/IP</sourceValue>
             </sourceValues>
             <sourceValues>
-                <sourceValue>PSG-APJ-MAG</sourceValue>
+                <sourceValue>PSG-AP-Software/EMIF/Embedded</sourceValue>
             </sourceValues>
             <value>WWRAE</value>
         </values>
@@ -135,15 +138,6 @@
             <sourceValues>
                 <sourceValue>PSG-PG-Software!</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SJ-Board-Design!</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SJ-EMIF!</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SJ-SI!</sourceValue>
-            </sourceValues>
             <value>Factory APPS</value>
         </values>
     </buckets>
@@ -160,6 +154,9 @@
                 <sourceValue>PSG-AP-Component/HSIO/IP</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>PSG-AP-Software/EMIF/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>PSG-AP-unassigned</sourceValue>
             </sourceValues>
             <value>APRAE</value>
@@ -170,6 +167,12 @@
             </sourceValues>
             <sourceValues>
                 <sourceValue>PSG-EMEA-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-IP/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-Software</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>PSG-EMEA-Manager</sourceValue>
@@ -228,9 +231,6 @@
             <sourceValues>
                 <sourceValue>PSG-GAE-unassigned</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-APJ-MAG</sourceValue>
-            </sourceValues>
             <value>PGGAE</value>
         </values>
         <values>
@@ -257,15 +257,6 @@
             </sourceValues>
             <sourceValues>
                 <sourceValue>PSG-SH-Board-Design</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SJ-Board-Design!</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SJ-EMIF!</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SJ-SI!</sourceValue>
             </sourceValues>
             <value>SJ APPS</value>
         </values>
@@ -494,21 +485,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Admin,PRISM,CSTOOLS,eASIC,DTC,JP-CAT2,ZBB,IR,CQE,Enpiri</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>BucketField_57505999</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>AE,MAG,APPS</value>
+            <value>ZBB,IR,CQE,Enpiri</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -544,8 +521,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2022-03-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

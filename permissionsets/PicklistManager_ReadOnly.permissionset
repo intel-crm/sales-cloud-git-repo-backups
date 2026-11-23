@@ -20,10 +20,6 @@
     <hasActivationRequired>false</hasActivationRequired>
     <label>PicklistManager_ReadOnly</label>
     <license>Salesforce</license>
-    <pageAccesses>
-        <apexPage>Picklist_VF</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
     <tabSettings>
         <tab>Smart_Picklist1</tab>
         <visibility>Visible</visibility>

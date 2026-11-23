@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_LAN__c</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>EXP_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 16 OR 17</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes - Fortpark 1GB</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>&lt;OTHER&gt;;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes - Fortpark 10GB</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes - non Intel LAN</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Integrated - Fortpark 10GBDiscrete - Powerville;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Discrete - Coppervale</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel LAN Not Listed Here;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>non-Intel LAN;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>&lt;OTHER&gt;Intel LAN Not Listed Here;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Discrete - Sageville;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Discrete - Sageville;Intel LAN Not Listed Here;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Discrete - FortvilleDiscrete - Sageville;Intel LAN Not Listed Here;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Integrated - Fortpark 1GB;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Discrete - Coppervale PHY;Discrete - Powerville;Discrete - Fortville;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Discrete - Coppervale PHY;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Discrete - Fortville;</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_LAN__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Integrated - Fortpark 10GB;</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Lan obsolete values</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

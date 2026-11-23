@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Rebate Claim Payment Processed" recipientType="User" relatedToType="PCC_Rebate_Claim__c"
+renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:PCC_RebateClaimPaymentProcessedNoty rebateClaimRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

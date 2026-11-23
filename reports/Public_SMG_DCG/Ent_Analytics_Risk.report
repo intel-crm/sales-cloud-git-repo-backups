@@ -179,7 +179,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Enterprise Analytics &amp; AI,enterprise</value>
+            <value>Enterprise Analytics &amp; AI</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>

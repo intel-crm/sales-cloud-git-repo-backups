@@ -8,11 +8,7 @@ Modification Log :
 * ---------------------------------------------------------------------------- 
 Subhadeep Sadhu				10-Dec-2021				Added checks for blank Core_Entitlement_Requester_Id__c contact entitlements 
 *******************************************************************************************************************************/
-Public without sharing class Core_internalUserNotificationOnEV {
-
-    Static Set<String> setEntitlementName = new Set<String>();    
-    static List<Core_Contact_Entitlement__c> conEntlmtLst1 = new List<Core_Contact_Entitlement__c> ();
-    
+Public without sharing class Core_internalUserNotificationOnEV {    
     /*
 Method Name: sendEmailOnEvCompletion()
 return : null
@@ -20,8 +16,6 @@ Description: This method send email to contact entitlement requester  .*/
     
     @InvocableMethod(label='Send Email to Requester on EV' description='Notify requestor after Email Verification is completed')
     public static void sendEmailOnEvCompletion(List<Id> contactId){
-        
-        Set<Id> setRequestorId = new Set<Id>();
         //Set<String> setEntitlementName = new Set<String>();
         Messaging.Email[] lstEmails = new Messaging.Email[0];
         
@@ -39,10 +33,9 @@ Description: This method send email to contact entitlement requester  .*/
                                                                                                 AND Core_Source__c = 'Grant Access' 
                                                                                                 AND Core_Selected__c = True 
                                                                                                 AND Core_Status__c = 'Complete'
-                                                                                               	AND Core_Entitlement_Requester_Id__c != null]);
+                                                                                                AND Core_Entitlement_Requester_Id__c != null]);
         
         if(conEntlmtLst.size()>0){
-            conEntlmtLst1 =conEntlmtLst;
             //internalUserNotificationOnEV userEVClass = new internalUserNotificationOnEV();
             System.debug('Cont entl exists.');
             set<string> contactUser = new set<string>();
@@ -59,28 +52,19 @@ Description: This method send email to contact entitlement requester  .*/
                     email.saveAsActivity = false;
                     lstEmails.add(email);
                     OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    email.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
+                    if ( owea.size() > 0 ) {
+                        email.setOrgWideEmailAddressId(owea.get(0).Id);
+                    }
                     contactUser.add(conEntl.Core_Entitlement_Requester_Id__c +'__'+ conEntl.Core_Contact_Id__r.Id);
                 }
             }
         }
         
         //System.debug('Request Id>>'+reqId);
-        System.debug('Ent list>>'+setEntitlementName);
-        
-        
         if(lstEmails.size()>0){
             Messaging.sendEmail(lstEmails);
             
         } 
-        
-    }
-    
-    public List<Core_Contact_Entitlement__c> getEntitlementList(){
-        //System.debug('Request Id>>'+reqId);
-        return conEntlmtLst1;
         
     }
     

@@ -1,20 +1,14 @@
 @isTest
 private class Core_IPS_QueryServiceTest {
 
-    @TestSetup
-    static void setupAccountValidationBypass() {
-        insert new Core_Account_Bypass_Validation_Rule__c(
-            SetupOwnerId = UserInfo.getOrganizationId(),
-            ByPass__c = true
-        );
-    }
-
     @isTest
     static void testQueryRecordsWithParamsReturnsResults() {
+        Id recordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account acc = new Account(
             Name = 'Test QS Account',
             BillingCountry = 'United States',
             BillingStreet = '123 Test St',
+            RecordTypeId = recordTypeId,
             BillingCity = 'Bareilly'
         );
         insert acc;
@@ -47,10 +41,12 @@ private class Core_IPS_QueryServiceTest {
 
     @isTest
     static void testQueryRecordsPlainReturnsResults() {
+        Id recordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account acc = new Account(
             Name = 'Test QS Plain Account',
             BillingCountry = 'United States',
             BillingStreet = '123 Test St',
+            RecordTypeId = recordTypeId,
             BillingCity = 'Bareilly'
         );
         insert acc;
@@ -67,10 +63,12 @@ private class Core_IPS_QueryServiceTest {
 
     @isTest
     static void testQueryRecordsAsMapReturnsMap() {
+        Id recordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account acc = new Account(
             Name = 'Test QS Map Account',
             BillingCountry = 'United States',
             BillingStreet = '123 Test St',
+            RecordTypeId = recordTypeId,
             BillingCity = 'Bareilly'
         );
         insert acc;
@@ -99,10 +97,12 @@ private class Core_IPS_QueryServiceTest {
 
     @isTest
     static void testExecuteDynamicQueryReturnsResults() {
+        Id recordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account acc = new Account(
             Name = 'Test QS Dynamic Account',
             BillingCountry = 'United States',
             BillingStreet = '123 Test St',
+            RecordTypeId = recordTypeId,
             BillingCity = 'Bareilly'
         );
         insert acc;
@@ -119,10 +119,12 @@ private class Core_IPS_QueryServiceTest {
 
     @isTest
     static void testExecuteSoslReturnsResults() {
+        Id recordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account acc = new Account(
             Name = 'SOSLSearchAccount',
             BillingCountry = 'United States',
             BillingStreet = '123 Test St',
+            RecordTypeId = recordTypeId,
             BillingCity = 'Bareilly'
         );
         insert acc;
@@ -223,7 +225,7 @@ private class Core_IPS_QueryServiceTest {
             BillingStreet = '123 Test St'
         );
         insert existingAcc;
-        //delete existingAcc;
+        delete existingAcc;
 
         Account deletedAcc = new Account(Id = existingAcc.Id, Name = 'Fake Update Changed');
 
@@ -231,7 +233,7 @@ private class Core_IPS_QueryServiceTest {
         List<SObject> result = Core_IPS_QueryService.updateRecords(new List<SObject>{ deletedAcc });
         Test.stopTest();
 
-        //System.assertEquals(1, result.size(), 'Result list should be returned even when DML error occurs');
+        System.assertEquals(1, result.size(), 'Result list should be returned even when DML error occurs');
     }
 
     @isTest
@@ -242,7 +244,9 @@ private class Core_IPS_QueryServiceTest {
         Test.startTest();
         Core_IPS_QueryService.deleteRecords(new List<SObject>{ acc });
         Test.stopTest();
+
         List<Account> remaining = [SELECT Id FROM Account WHERE Id = :acc.Id];
+        System.assertEquals(0, remaining.size(), 'Record should be deleted');
     }
 
     @isTest
@@ -271,7 +275,7 @@ private class Core_IPS_QueryServiceTest {
             BillingStreet = '123 Test St'
         );
         insert existingAcc;
-        //delete existingAcc;
+        delete existingAcc;
 
         Account deletedAcc = new Account(Id = existingAcc.Id);
 
@@ -279,7 +283,7 @@ private class Core_IPS_QueryServiceTest {
         List<SObject> result = Core_IPS_QueryService.deleteRecords(new List<SObject>{ deletedAcc });
         Test.stopTest();
 
-       // System.assertEquals(1, result.size(), 'Result list should be returned even when DML error occurs');
+        System.assertEquals(1, result.size(), 'Result list should be returned even when DML error occurs');
     }
 
     @isTest

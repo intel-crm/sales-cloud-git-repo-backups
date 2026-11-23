@@ -2,6 +2,7 @@
 <PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
     <hasActivationRequired>false</hasActivationRequired>
     <label>PartnerCloudChannelManagerPsg</label>
+    <permissionSets>force__AgentforceForPartnersConfig</permissionSets>
     <permissionSets>force__LoyaltyManagementLite</permissionSets>
     <permissionSets>force__MDFForChannelManagers</permissionSets>
     <permissionSets>force__ManageB2bReferrals</permissionSets>

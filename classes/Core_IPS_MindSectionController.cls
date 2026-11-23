@@ -24,6 +24,7 @@ public with sharing class Core_IPS_MindSectionController {
             returnDefault.add('No');
         }
         }
+        system.debug(returnDefault);
         return returnDefault;
         
     }

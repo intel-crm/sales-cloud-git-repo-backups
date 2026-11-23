@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Einstein Interaction ContactTraining</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Einstein Interaction ContactTraining</value>
+    </caseValues>
+    <fields>
+        <label><!-- Einstein Recipient Contact --></label>
+        <name>Einstein_Recipient_Contact__c</name>
+        <relationshipLabel><!-- Einstein Interaction ContactTraining --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Einstein Recommend Training Links --></label>
+        <name>Einstein_Recommend_Training_Links__c</name>
+        <relationshipLabel><!-- Einstein Interaction ContactTraining --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

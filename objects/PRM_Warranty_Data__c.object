@@ -238,6 +238,16 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>PRM_Previous_One_Partner_Account_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Previous One Partner Account ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Warranty_ext_Id__c</fullName>
         <caseSensitive>true</caseSensitive>
         <externalId>true</externalId>
@@ -251,13 +261,7 @@
     <label>Warranty Data</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_One_Partner_Id__c</field>
-            <operation>equals</operation>
-            <value>Yixin Computer-China</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

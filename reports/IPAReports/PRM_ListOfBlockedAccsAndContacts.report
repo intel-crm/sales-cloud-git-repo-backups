@@ -7,13 +7,11 @@
         <field>PRM_SBC_Account_Search_Configuration__c$PRM_Contact__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>PRM_SBC_Account_Search_Configuration__c$PRM_isActive__c</field>
     </columns>
     <columns>
         <field>PRM_SBC_Account_Search_Configuration__c$PRM_Type__c</field>
-    </columns>
-    <columns>
-        <field>PRM_SBC_Account_Search_Configuration__c$PRM_Comments__c</field>
     </columns>
     <description>This report is used to show list of blocked accounts and contacts</description>
     <filter>
@@ -33,7 +31,7 @@
         <value>1</value>
     </params>
     <reportType>PRM_ListOfBlockedAccAndContacts__c</reportType>
-    <scope>organization</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

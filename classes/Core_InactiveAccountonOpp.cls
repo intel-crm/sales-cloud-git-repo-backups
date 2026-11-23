@@ -78,6 +78,7 @@ public without sharing class Core_InactiveAccountonOpp {//TWC3123-5299 added wit
             
             if(!fc.isEmpty()){
                 for(Core_Opp_FC_Prod_Schedule__c f:fc){
+                    System.debug('*FC'+f);
                     if(QtrStatus.contains(f.Core_Opp_FC_Approval_Status__c)){
                         ApprOrSubmittedQtr=true;
                         break;

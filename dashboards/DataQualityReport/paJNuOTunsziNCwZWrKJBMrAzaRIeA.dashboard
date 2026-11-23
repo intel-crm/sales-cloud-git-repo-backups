@@ -67,6 +67,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>PartnerFundRequest.Core_MDF_Activity_Number__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -98,6 +99,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>PartnerFundRequest.Core_MDF_Activity_Number__c</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
@@ -169,6 +171,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>PartnerFundRequest.Core_MDF_Activity_Number__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -200,6 +203,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>PartnerFundRequest.Core_MDF_Activity_Number__c</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
@@ -479,6 +483,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>PartnerFundRequest.Name</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -510,6 +515,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>PartnerFundRequest.Name</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
@@ -529,6 +535,7 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>PartnerFundRequest.Name</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -560,6 +567,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>PartnerFundRequest.Name</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
@@ -630,8 +638,8 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <description>Reporting Data Discrepancies</description>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>10675503@intel.com.crm</runningUser>
+    <owner>12101607@intel.com.crm</owner>
+    <runningUser>12101607@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Weezer Data Quality Reports</title>
     <titleColor>#000000</titleColor>

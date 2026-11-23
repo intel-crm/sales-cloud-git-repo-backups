@@ -195,5 +195,5 @@ public class PRM_PSG_RegistrationReqUtility_Test {
         Test.stopTest();
     }    
     
-    */ //TWC729-8986 - PSG removal from PRM classes
+    */
 }

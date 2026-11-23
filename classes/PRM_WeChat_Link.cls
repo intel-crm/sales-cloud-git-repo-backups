@@ -24,17 +24,15 @@ global class PRM_WeChat_Link {
             custEx.Message = ex.getMessage();
             custEx.Cause = ex.getCause();
             custEx.StackTraceString = ex.getStackTraceString();
-            custEx.LineNumber = ex.getLineNumber();                
+            custEx.LineNumber = ex.getLineNumber();                 
             custEx.TypeName = ex.getTypeName();
             
-            //ATHR - long parameters fix
-            PRM_WeChat_Link_Utility.createLogEntryWrapper obj1=new PRM_WeChat_Link_Utility.createLogEntryWrapper();
-            obj1.Msg='Error in Link WeChat API';
-            obj1.ex=custEx;
-            obj1.Severity=LOG_ENTRY_INFO;
-            obj1.params= RestContext.request.requestBody.toString();
-            PRM_WeChat_Link_Utility.createLogEntry(obj1);
-            
+            PRM_WeChat_Link_Utility.createLogEntryWrapper obj = new PRM_WeChat_Link_Utility.createLogEntryWrapper();
+            obj.Msg = 'Error in Link WeChat API';
+        	obj.ex = custEx;
+        	obj.Severity = LOG_ENTRY_ERROR;
+        	obj.params = RestContext.request.requestBody.toString();
+            PRM_WeChat_Link_Utility.createLogEntry(obj); //Athr fixes
             //PRM_WeChat_Link_Utility.createLogEntry('Error in Link WeChat API', custEx, LOG_ENTRY_ERROR, RestContext.request.requestBody.toString()); 
             return PRM_WeChat_Link_Utility.generateError('Failure',ex.getMessage());
         }

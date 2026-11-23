@@ -26,7 +26,7 @@ public class Core_OppChildViewController_Test {
             
             Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         	Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',
-                                       Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c='Americas Partner Holding');
+                                       Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI());
             Database.insert(acct);
             
             
@@ -113,6 +113,7 @@ public class Core_OppChildViewController_Test {
             SelectOption defaultOption = recordTypeOptions[0];
             oppChildViewController.selectedRecordType2 = defaultOption.getValue();
         	oppChildViewController.getNewOppUrl();
+            //oppChildViewController.setNewOppUrl();
         	oppChildViewController.setIsNewOppClickedTotrue();
         	oppChildViewController.getRecordTypeOptions();
         	Test.stopTest();
@@ -129,7 +130,7 @@ public class Core_OppChildViewController_Test {
                
         Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',
-                                   Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c='Americas Partner Holding');
+                                   Industry='Accommodation and Food Services',Core_Sub_Industry__c='Accommodation',Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI());
         Database.insert(acct);
         
         // Master Opportunity with No Subs

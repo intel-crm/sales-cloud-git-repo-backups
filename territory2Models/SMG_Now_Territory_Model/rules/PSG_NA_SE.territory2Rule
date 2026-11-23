@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
     <active>true</active>
-    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
     <name>PSG-NA-SE</name>
     <objectType>Account</objectType>
     <ruleItems>
@@ -23,10 +23,5 @@
         <field>Account.BillingPostalCode</field>
         <operation>lessOrEqual</operation>
         <value>39999</value>
-    </ruleItems>
-    <ruleItems>
-        <field>Account.Core_Deactivated__c</field>
-        <operation>equals</operation>
-        <value>False</value>
     </ruleItems>
 </Territory2Rule>

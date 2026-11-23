@@ -247,7 +247,37 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner__c</field>
+            <field>Core_MDF_Scorecard_Score_Nbr__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Right_to_Recover_Amt__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Total_Impact_Amt_USD__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Brand_nm__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Previous_Closed_Dt__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Excess_Requested_Amt__c</field>
             <table>Case</table>
         </columns>
         <masterLabel>Cases</masterLabel>
@@ -348,6 +378,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Budget_Type_Options_Nm__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Status__c</field>
             <table>Case.Partner_Fund_Claims__r</table>
         </columns>
@@ -356,7 +391,92 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type_Options_Nm__c</field>
+            <field>Core_MDF_Review_Hold_Rule_Nm__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Owner_UserType_Txt__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_BankSetUpInformation_txt__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Doc_Hold_to_Review_Hold_Ind__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Due_Date_nbr__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Eligible_for_PIC__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_PIC_Review_Completed__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_BackendReviewSelection_Ind__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_EvalInProgress_Ind__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Last_Reviewed_By_id__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Third_Party_Ind__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Document_Submission_Missed_Ind__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Total_Review_Duration_Mins_nbr__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Latest_Review_Cycle_Number_nbr__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Recommend_For_ClaimReview__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_RecentInternalComments_txt__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Legacy_Reminder_txt__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Legacy_Claim_Ind__c</field>
             <table>Case.Partner_Fund_Claims__r</table>
         </columns>
         <columns>
@@ -366,7 +486,42 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Reprocess_Claim__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Total_Claim_Recovery_Amount__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Proposal_Based_Ind__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Owner_Language_Locale_Key_txt__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Number_Of_Recoveries_Nbr__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Claim_Hold_Type_txt__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Excess_Requested_Amount__c</field>
+            <table>Case.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Log_Info_txt__c</field>
             <table>Case.Partner_Fund_Claims__r</table>
         </columns>
         <masterLabel>Claims</masterLabel>

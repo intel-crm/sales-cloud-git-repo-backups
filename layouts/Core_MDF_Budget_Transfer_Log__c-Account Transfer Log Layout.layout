@@ -51,6 +51,10 @@
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Budget_Type_Txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Co_Marketing_Activity__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

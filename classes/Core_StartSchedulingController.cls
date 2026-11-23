@@ -139,7 +139,7 @@ public without sharing class Core_StartSchedulingController {
                 }
             }
         }
-        
+        system.debug('oliIdSet size is:'+oliIdSet);
         if(opp[0].Core_Opportunity_Type__c.contains('Deal')){
             referenceDate = system.today();
             
@@ -156,6 +156,8 @@ public without sharing class Core_StartSchedulingController {
         if(oliPresentMap != null && !oliPresentMap.isEmpty()){
             Fcp = [SELECT id, Core_Opp_FC_Approval_Status__c, Core_Opp_FC_Opportunity__c, Core_Opp_FC_Product__r.Name, Core_Opp_FC_Quarter_Date__c, Core_Opp_Line_Item_RecordID__c FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c IN : opptyIdSet and Core_Is_Post_Win__c=false];//TWC3123-4884 Core_Is_Post_Win__c=falseto exclude Post Win records
         }
+        system.debug('FCP size is:'+Fcp.size());
+        system.debug('FCP rec is:'+Fcp);
         Date qtrDate;
         for(OpportunityLineItem oli : opp[0].OpportunityLineItems){
             
@@ -181,33 +183,35 @@ public without sharing class Core_StartSchedulingController {
                 
                  if(opp[0].Core_Opportunity_Type__c.contains('Deal')){
                     
-                    qty = 0;
+                    qty = 0;            
                     considerSalesPrice = oli.UnitPrice;
                 }
                 else if(opp[0].Core_Opportunity_Type__c.contains('Design')){
                     //TWC3123-4911 start If Opp Stage is 'Production Win' or 'Design Win' or Post-Win Product it will take Core_PW_Quantity__c and Core_PW_Sales_Price__c for calculation
-                    if((opp[0].StageName == 'Production Win' || opp[0].StageName == 'Design Win') && oli.Core_Status__c!='Post-Win')  {
-                         if(oli.Core_PW_Quantity__c!=null){
-                              qty =((oli.Core_PW_Quantity__c)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
-                          }
-                         if(oli.Core_PW_Sales_Price__c!=null){
-                              considerSalesPrice = oli.Core_PW_Sales_Price__c;
-                         }
-                     }
-                    //If Opp Stage is not in 'Production Win' or 'Design Win' it will take Quantity and UnitPrice for calculation
-                    else{
-                        if(oli.Quantity!=null){
-                              qty = ((oli.Quantity)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
-                          }
-                        if(oli.UnitPrice!=null){
-                            considerSalesPrice = oli.UnitPrice;
+                    qty = 0.00;
+                    if(!Core_Status.contains(oli.Core_Status__c)){
+                        if((opp[0].StageName == 'Production Win' || opp[0].StageName == 'Design Win') && oli.Core_Status__c!='Post-Win') {
+                            if(oli.Core_PW_Quantity__c!=null){
+                                qty =((oli.Core_PW_Quantity__c)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                            }
+                            if(oli.Core_PW_Sales_Price__c!=null){
+                                considerSalesPrice = oli.Core_PW_Sales_Price__c;
+                            }
                         }
-                                         
-                    }  
-             }//TWC3123-4911 end
-            system.debug('Inside considerSalesPrice is"'+considerSalesPrice);    
-        
-            forecastRecList.add(new Core_Opp_FC_Prod_Schedule__c(Core_FC_Opportunity_Product__c=oli.id,Core_Opp_FC_Opportunity__c = oli.OpportunityId, Core_Opp_FC_Quarter_Date__c= fc_Qtr_date ,Core_Opp_Line_Item_RecordID__c = oli.Id, Core_Opp_FC_Product__c = oli.Product2Id, Core_Opp_FC_Quantity__c = qty, Core_Opp_FC_isdeleted__c = false, Core_FC_Vendor__c = oli.Core_Vendor__c, Core_Opp_FC_Prod_Sales_Price__c = considerSalesPrice, Core_Opp_FC_Approval_Status__c = approvalStatus, Core_FC_BU_Product_Segment__c = oliPresentMap.get(oli.Id).Core_BU_Product_Segment__c,Core_FC_BU_Short_Name__c = oliPresentMap.get(oli.Id).Core_BU_Short_Name__c));//changed Core_Opp_FC_Prod_Sales_Price__c = oliPresentMap.get(oli.Id).UnitPrice to considerSalesPrico 
+                        //If Opp Stage is not in 'Production Win' or 'Design Win' it will take Quantity and UnitPrice for calculation
+                        else{
+                            if(oli.Quantity!=null){
+                                qty = ((oli.Quantity)/(Integer.valueOf(divisionLogic[i]))).round(System.RoundingMode.HALF_UP);
+                            }
+                            if(oli.UnitPrice!=null){
+                                considerSalesPrice = oli.UnitPrice;
+                            }
+                        }
+
+                    }
+                }//TWC3123-4911 end
+                
+                forecastRecList.add(new Core_Opp_FC_Prod_Schedule__c(Core_FC_Opportunity_Product__c=oli.id,Core_Opp_FC_Opportunity__c = oli.OpportunityId, Core_Opp_FC_Quarter_Date__c= fc_Qtr_date ,Core_Opp_Line_Item_RecordID__c = oli.Id, Core_Opp_FC_Product__c = oli.Product2Id, Core_Opp_FC_Quantity__c = qty, Core_Opp_FC_isdeleted__c = false, Core_FC_Vendor__c = oli.Core_Vendor__c, Core_Opp_FC_Prod_Sales_Price__c = considerSalesPrice, Core_Opp_FC_Approval_Status__c = approvalStatus, Core_FC_BU_Product_Segment__c = oliPresentMap.get(oli.Id).Core_BU_Product_Segment__c,Core_FC_BU_Short_Name__c = oliPresentMap.get(oli.Id).Core_BU_Short_Name__c));//changed Core_Opp_FC_Prod_Sales_Price__c = oliPresentMap.get(oli.Id).UnitPrice to considerSalesPrico 
                 fc_Qtr_date = fc_Qtr_date.addMonths(3);
                 
             }

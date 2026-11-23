@@ -34,7 +34,7 @@ public class PRM_searchSfdcAccountsTest {
         acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = '';
         insert acc;
-        //System.debug('INTEL ACCOUNT RT VALUE : '+intelaccountRT);
+        
         
         Account nonIpaAcc = new Account();
         nonIpaAcc.name='Test nonIpa';
@@ -77,7 +77,7 @@ public class PRM_searchSfdcAccountsTest {
       
         
         insert acc1;
-        //System.debug('INTEL ACCOUNT RT VALUE : '+intelaccountRT);
+        
         
         Account accCovered = new Account();
         accCovered.name='Test23241';
@@ -181,9 +181,9 @@ public class PRM_searchSfdcAccountsTest {
         obj_1.accountsSfdc=null;
         obj_1.regEmail='nexttest@test.com';
         obj_1.partnerRole='Service Provider';
-         List<PRM_CIMSearchResults__c> listOfCimResult = prmUICimCallout.getCimResults(obj_1);//Athr fixes*/
+       	List<PRM_CIMSearchResults__c> listOfCimResult = prmUICimCallout.getCimResults(obj_1);//Athr fixes*/
         //List<PRM_CIMSearchResults__c> listOfCimResult = prmUICimCallout.getCimResults('Sample', 'Magarpatta', '411024','Maharashtra','IN','MH','10','40','www.sampletest.com',null,'nexttest@test.com','Service Provider');
-        //System.debug('>>>>>>>>> listOfCimResult '+listOfCimResult);
+        
     
         PRM_Registration_Request__c regRequest = new PRM_Registration_Request__c();
         regRequest.Current_Status__c ='Open';
@@ -330,8 +330,7 @@ public class PRM_searchSfdcAccountsTest {
                           TimeZoneSidKey='America/Los_Angeles',
                           UserName=uniqueUserName);
         System.runAs(u) {
-            //System.debug('Current User: ' + UserInfo.getUserName());
-            //System.debug('Current Profile: ' + UserInfo.getProfileId());
+           
             Account acc4 = new Account();
                    acc4.RecordTypeId = intelaccountRT;
             acc4.name = 'Testing 123';
@@ -536,8 +535,7 @@ public class PRM_searchSfdcAccountsTest {
                           TimeZoneSidKey='America/Los_Angeles',
                           UserName=uniqueUserName);
         System.runAs(u) {
-            //System.debug('Current User: ' + UserInfo.getUserName());
-            //System.debug('Current Profile: ' + UserInfo.getProfileId());
+            
             Account acc45 = new Account();
             acc45.name = 'Testing 1236';
             acc45.RecordTypeId = intelaccountRT;

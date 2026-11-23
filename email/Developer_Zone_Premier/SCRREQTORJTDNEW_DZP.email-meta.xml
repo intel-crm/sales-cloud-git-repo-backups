@@ -6,41 +6,48 @@
     <name>SCRREQTORJTDNEW_DZP</name>
     <style>none</style>
     <subject>Request Rejection Email for DZP Contacts</subject>
-    <textOnly>Intel Registration Confirmation
+    <textOnly>Intel Registration Rejection
 
 
-Rejection Email
-
-Account Application Update
+Please DO NOT reply to this e-mail message. This is an automated response.
 
 Dear {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
 
-We appreciate your interest in Intel&apos;s Developer Zone. Upon review of your application, we regret to inform you that your request for a Premier Account has been declined. There are a variety of reasons why your request may have been declined, including but not limited to not meeting program criteria.  You may continue to use your Standard account to:
+We appreciate your interest in Intel&apos;s Developer Zone, however, upon review of your application we regret to inform you that your request for a Premier Account has been declined. Reasons Intel may decline your request include:
 
-Bookmark and subscribe to content.
-Attend events and webinars.
-Engage in the support forums
-Enter contests
-Access performance testing applications
-Access public documentation and resources
-Access development software downloads
-Access the Intel® Developer Cloud
-.	Manage newsletter and product update subscriptions
+Application does not meet the Developer Zone Premier program criteria, available in the Developer Zone Premier Terms &amp; Conditions.
+Premier access to Intel&apos;s Developer Zone requires a Corporate Non-Disclosure Agreement (CNDA) between your company and Intel, or you are a party to the Intel® Partner Alliance Terms and Conditions.
+Developer Zone Premier access requires the account to have an active Intel Account Representative or be an active Intel Partner Alliance Member
 
-If you feel your request was declined in error, please contact account assistance via phone (add) or email (add) for more information.
+You may continue to use your Standard account to access public content in the Developer Zone.  Below please find a menu of valuable resources that have been enabled with your continued growth in mind, as well as details on how to register for Intel Partner Alliance to qualify for Premier access.
+To ensure that you continue receiving our e-mails, please add us to your address book. Additionally, we have several distributors and resellers that you may wish to engage with for resource help with your project.
+
+How to Register for Intel Partner Alliance:
+
+Join Now: https://www.intel.com/content/www/us/en/partner-alliance/overview.html
+Membership Requirements: https://www.intel.com/content/www/us/en/partner-alliance/membership/overview.html
+
+
+Resources:
+
+Intel Solutions Document Library: https://builders.intel.com/solutionslibrary
+For product and pricing related questions, please contact your Motherboard OEM, Intel Authorized Distributors (IAD) or Intel Authorized Supplier (IAS). You can locate a list of IAD or IAS at: https://www.intel.com/content/www/us/en/partner/where-to-buy/overview.html
+For product information: https://ark.intel.com/
+Software &amp; Drivers download center: https://downloadcenter.intel.com/
+Intel Community: https://community.intel.com/
+Intel Solutions Marketplace catalog:  https://marketplace.intel.com/
+Intel Customer Support: https://www.intel.com/support
 
 Sincerely,
 Registration Administrator
 Developer Zone
 
-Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book.
+*Disclaimer: Additional qualifications may apply. Not all requests are approved.
 
 
 Intel is committed to protecting your privacy. For more Information,
 please see the Intel Privacy Notice. Intel Cookie Notice.
-Legal Information | Trademarks | © Intel Corporation.
-
-!%TemplateCode%!</textOnly>
+Legal Information | Trademarks | © Intel Corporation.</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

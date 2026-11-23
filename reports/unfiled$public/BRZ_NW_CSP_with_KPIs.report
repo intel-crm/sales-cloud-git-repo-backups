@@ -2,50 +2,6 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <buckets>
         <bucketType>text</bucketType>
-        <developerName>BucketField_38294380</developerName>
-        <masterLabel>Account Lead</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>DXC BRASIL</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Totvs S/A.</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EQUINIX Brazil</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Sonda do Brasil S/A.</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>T-Systems do Brasil</sourceValue>
-            </sourceValues>
-            <value>Tiago</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>REDE GLOBO</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>LOCAWEB</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>LEVEL 3</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>TIVIT</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>UOL</sourceValue>
-            </sourceValues>
-            <value>Pesiguelo</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
         <developerName>BucketField_62032551</developerName>
         <masterLabel>NWCSP</masterLabel>
         <nullTreatment>n</nullTreatment>
@@ -71,42 +27,6 @@
                 <sourceValue>Alaor Neto</sourceValue>
             </sourceValues>
             <value>CCG</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_65450841</developerName>
-        <masterLabel>Status</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>STAGE_NAME</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Qualify</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Define</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Develop</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Group Open</sourceValue>
-            </sourceValues>
-            <value>Open</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Design Win</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Production Win</sourceValue>
-            </sourceValues>
-            <value>Won</value>
         </values>
     </buckets>
     <chart>
@@ -164,7 +84,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Villamil,Ribeiro,Ramnath</value>
+            <value>Villamil,Ribeiro</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT_NAME</column>
@@ -178,12 +98,7 @@
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_38294380</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>BucketField_65450841</field>
+        <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
@@ -215,7 +130,7 @@
     </params>
     <reportType>OpportunityCustomEntity$Core_Opportunity_KPI__c</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>false</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>

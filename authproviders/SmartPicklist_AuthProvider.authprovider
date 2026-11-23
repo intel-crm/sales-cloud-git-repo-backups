@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://intel--crmdevsls3.sandbox.my.salesforce.com/services/oauth2/authorize</authorizeUrl>
+    <consumerKey>3MVG9FxR3Tq3eZN88sLG9b4Pw8DMVpj7ImVeToOxKs9OFcLlmf8S8wq0ou15dJBO_BncEyDhUlOx4FXOp6W7C</consumerKey>
+    <consumerSecret>Placeholder_Value</consumerSecret>
+    <defaultScopes>api refresh_token offline_access</defaultScopes>
+    <friendlyName>SmartPicklist AuthProvider</friendlyName>
+    <includeOrgIdInIdentifier>true</includeOrgIdInIdentifier>
+    <isPkceEnabled>true</isPkceEnabled>
+    <providerType>Salesforce</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://intel--crmdevsls3.sandbox.my.salesforce.com/services/oauth2/token</tokenUrl>
+</AuthProvider>

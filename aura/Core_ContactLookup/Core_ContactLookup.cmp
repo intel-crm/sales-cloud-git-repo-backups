@@ -50,7 +50,7 @@
     
     <lightning:card title="">
         
-        <aura:if isTrue="{!and(!v.isNew,!v.isView)}">
+       <aura:if isTrue="{!and(!v.isNew,!v.isView)}">
             
             <div class="slds-m-around--large">
                 <form class="slds-form--inline">
@@ -125,7 +125,7 @@
                         </aura:if-->
                 </div>
             </div>
-        </aura:if>
+      </aura:if>
         
         <!--aura:if isTrue="{!v.isView}">
             <c:StaffRecordView recordId="{!v.objId}"/>

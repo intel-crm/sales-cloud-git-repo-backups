@@ -1,0 +1,202 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "b975a33f-78c0-4117-8dca-cf2bd3c68b98",
+  "label" : "Partner Category Shadow Detail",
+  "regions" : [ {
+    "id" : "577abb12-d18d-4663-ace2-cfd3a558e91a",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "5213d842-56a2-4efe-986e-45f47c69ac0c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "4eddf917-2061-4b77-851f-72e81e291a43",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "26b127ba-b910-4234-b303-a4669995b40e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "0a44907a-94df-48af-8f50-1a27b36cc742",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title} Partner"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "31c9a44d-5d35-469d-acca-b053be3ead08",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "05b432d6-05d3-41b9-8b56-7ee2c552c0f2",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "ff0a3556-265e-4e7f-b8cb-035408eeb924",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "232bd1ae-0388-4b12-94e9-1d6e70222192",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "",
+        "backgroundVariant" : "mosaic-l2",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "www.intel.com",
+        "ctaLabel" : "Intel Home",
+        "doAnalytics" : false,
+        "dynamicMarquee" : true,
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Lorem Ipsum Title"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "82467807-6d61-4d35-98cc-f863db84fcdf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9f3060f9-c93b-4d21-8070-327d78e2cb0d",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"PartnerCategoryPage\",\"title\":\"Partner Category Page\"}",
+        "category" : "{!recordId}",
+        "showRecommendedResults" : false
+      },
+      "componentName" : "c:ipaSearch",
+      "id" : "4f903211-f936-4f53-a3bb-d8da10e27fb1",
+      "renderPriority" : "HIGHEST",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "123622ed-37b3-42ca-9581-937f3d8fe3c4",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "123e3159-e1a8-4914-a876-0cf296086b9e",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "97b6a927-55dd-4d78-8fcd-9fd67fcb3579",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaCommPage" : "",
+        "ctaExternalURL" : "",
+        "ctaLabel" : "Learn More",
+        "subtitle" : "Don’t miss out on special promotions, offers, training, marketing tools, and other valuable benefits of being a member.",
+        "theme" : "dark",
+        "title" : "Join the Intel® Partner Alliance"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "12a883ec-984e-46a8-9264-a83c6034b709",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7048ce5e-104f-4f34-ad42-8dc7d13e4040",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaCompareTray",
+      "id" : "ccb6cab7-dc44-4279-b8ab-d5a07f0abd5b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "72ba121d-3bc9-496a-966a-bc45933824e9",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "id" : "978335a8-e6ac-46c6-bdaf-ae343925fbfe",
+    "regionName" : "blade0",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:IntelContact",
+      "id" : "080be9c2-36c8-49fd-a52c-c9a8f8ba9554",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a50366ff-5881-4eb5-b95b-7d7b5b7c7c30",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "b9010ed7-b221-417f-9571-2b0eb1f2e1c5",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "22b8e94d-6e89-42d8-9464-c8f77e66ce03",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "f766306f-8e26-445a-b374-be6ec1c45f27",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "f581156f-a62a-49d4-addb-14908c8038b8",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "1b3b2e3d-5b89-4798-96b2-67bdfa437c00",
+    "regionName" : "blade10",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "I4ZadTEwb34mrpgTyzwHfI1whVauHn",
+  "type" : "view",
+  "viewType" : "detail-a9G"
+}

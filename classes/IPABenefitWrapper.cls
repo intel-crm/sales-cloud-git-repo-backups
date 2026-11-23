@@ -34,6 +34,7 @@ public class IPABenefitWrapper {
         
 
     }
+    
     public class CompanyProfile {
         @AuraEnabled public string label{get; set;}
         @AuraEnabled public string externalUrl{get; set;}

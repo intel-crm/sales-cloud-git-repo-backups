@@ -5,7 +5,6 @@
     <name>CCP IPA Case Reviewer Mgr Escltns L2 Que</name>
     <queueMembers>
         <publicGroups>
-            <publicGroup>Core_MDF_CCP_Claim_Case_Reviewer_Mgr_Grp</publicGroup>
             <publicGroup>Core_MDF_CCP_IPA_CaseRevMgr_Escl_L2_Grp</publicGroup>
         </publicGroups>
     </queueMembers>

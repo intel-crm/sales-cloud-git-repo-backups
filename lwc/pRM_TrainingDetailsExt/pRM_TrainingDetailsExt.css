@@ -1,3 +1,11 @@
 .spinner-padding {
   padding-top: 5%;
 }
+
+.link-text{
+    
+  text-align:center;
+  font: 2px;   
+  vertical-align: -webkit-baseline-middle;
+
+}

@@ -14,23 +14,45 @@ private class Core_Draco_InternalUsrsLicReclaim_Test {
     static void testDracoInternalUsrsLicReclaim() {
         User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
         System.runAs (thisUser) {
+            String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+            Account acc1 = new Account(); 
+            acc1.Name = 'Mobile Networks';
+            acc1.BillingCity = 'New York';
+            acc1.BillingStreet = 'Street 1';
+            acc1.BillingCountry = 'USA';
+            acc1.BillingCountryCode = 'USA';
+            acc1.BillingPostalCode = '24380';
+            acc1.Core_Account_Tier__c = 'Tier1';
+            acc1.RecordTypeId=intelAccRecTypeId;
+            insert acc1;
+            
+            Contact contact1 = new Contact(
+                FirstName = 'Contact1',
+                LastName = 'Partnerusr1',
+                Email = 'partnerusr1@example.com',
+                AccountId = acc1.Id,
+                MailingCountry = 'USA'
+            );
+            insert contact1;
+            
             // Create test Users
-            Profile ProfileId = [SELECT Id FROM Profile WHERE Name='Production Support-Display' LIMIT 1];
+            Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
             
             User testUser1 = new User(
                 Alias = 'testusr1',
                 Email = 'testpartnerusr@example.com',
                 Username = 'testpartnerusr@example.com',
                 FirstName = 'Test',
-                LastName = 'user1',
-                ProfileId = ProfileId.Id,
+                LastName = 'Partneruser1',
+                ProfileId = partnerProfile.Id,
                 TimeZoneSidKey = 'America/Los_Angeles',
                 LocaleSidKey = 'en_US',
                 EmailEncodingKey = 'UTF-8',
                 LanguageLocaleKey = 'en_US',
                 IsActive = true,
                 FederationIdentifier='11686330',
-                Core_Is_HQ_User__c=false
+                Core_Is_HQ_User__c=false,
+                ContactId = contact1.Id
             );
             insert testUser1;
             

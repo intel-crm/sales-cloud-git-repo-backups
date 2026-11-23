@@ -72,20 +72,59 @@ private class Core_MDF_RestAPI_ConnectedAppPlugin_Test {
     @IsTest
     static void testIsMappedExternalClientAppForUser_MappingExists_WrongAppId_ReturnsFalse() {
         Id userId = UserInfo.getUserId();
-        // Insert a mapping with a different app ID
         Core_MDF_External_App_User_Mapping__c mapping = new Core_MDF_External_App_User_Mapping__c(
             SetupOwnerId = userId,
             External_Client_App_Id__c = 'SOME_OTHER_APP_ID'
         );
         insert mapping;
 
-        Id differentFakeEcAppId = UserInfo.getUserId(); // different from the one in setting
+        Id differentFakeEcAppId = UserInfo.getUserId(); // different from the stored value
 
         Test.startTest();
         Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isMappedExternalClientAppForUser(userId, differentFakeEcAppId);
         Test.stopTest();
 
         System.assertEquals(false, result, 'Expected false when mapped app ID does not match');
+    }
+
+    @IsTest
+    static void testIsMappedExternalClientAppForUser_MatchingAppId_ReturnsTrue() {
+        Id userId = UserInfo.getUserId();
+        // Store the same ID string that String.valueOf(ecAppId) will produce
+        String matchingAppId = String.valueOf(userId);
+        Core_MDF_External_App_User_Mapping__c mapping = new Core_MDF_External_App_User_Mapping__c(
+            SetupOwnerId = userId,
+            External_Client_App_Id__c = matchingAppId
+        );
+        insert mapping;
+
+        Test.startTest();
+        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.isMappedExternalClientAppForUser(userId, userId);
+        Test.stopTest();
+
+        System.assertEquals(true, result, 'Expected true when mapped app ID matches the provided ecAppId');
+    }
+
+    @IsTest
+    static void testAuthorize_MappingMatches_NoEcAppAccess_ReturnsFalse() {
+        Core_MDF_RestAPI_ConnectedAppPlugin plugin = new Core_MDF_RestAPI_ConnectedAppPlugin();
+        Id userId = UserInfo.getUserId();
+        Id ecAppId = userId; // reused as fake ecApp ID — no real SetupEntityAccess will match
+
+        // Mapping where External_Client_App_Id__c matches String.valueOf(ecAppId)
+        Core_MDF_External_App_User_Mapping__c mapping = new Core_MDF_External_App_User_Mapping__c(
+            SetupOwnerId = userId,
+            External_Client_App_Id__c = String.valueOf(ecAppId)
+        );
+        insert mapping;
+
+        Test.startTest();
+        Boolean result = plugin.authorize(userId, ecAppId, false, null);
+        Test.stopTest();
+
+        // Mapping matches → isMappedExternalClientAppForUser returns true
+        // No real SetupEntityAccess exists for this ecAppId → hasExternalClientAppAccess returns false
+        System.assertEquals(false, result, 'Expected false when mapping matches but ecApp access is not granted');
     }
 
     // ============================================================
@@ -105,34 +144,35 @@ private class Core_MDF_RestAPI_ConnectedAppPlugin_Test {
         System.assertEquals(false, result, 'Expected false when no SetupEntityAccess record matches');
     }
 
-    /*@IsTest
-    static void testHasExternalClientAppAccess_NewUserWithNoPermissionSets_ReturnsFalse() {
-        Profile p = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
+    @IsTest
+    static void testHasExternalClientAppAccess_NewUserWithNoMatchingAccess_ReturnsFalse() {
+        // Retrieve any valid profile to create a minimal test user
+        Profile p = [SELECT Id FROM Profile WHERE UserLicense.Name = 'Salesforce' LIMIT 1];
         User testUser = new User(
             FirstName = 'Test',
-            LastName = 'NoPermission',
-            Email = 'testnopm_' + System.currentTimeMillis() + '@example.com.test',
-            Username = 'testnopm_' + System.currentTimeMillis() + '@example.com.test',
-            Alias = 'tnp',
+            LastName = 'NoAccess',
+            Email = 'testnoacc_' + System.currentTimeMillis() + '@example.com.test',
+            Username = 'testnoacc_' + System.currentTimeMillis() + '@example.com.test',
+            Alias = 'tna',
             TimeZoneSidKey = 'America/New_York',
             LocaleSidKey = 'en_US',
             EmailEncodingKey = 'UTF-8',
             LanguageLocaleKey = 'en_US',
             ProfileId = p.Id
         );
-        insert testUser;
+        // Isolate user DML from setup-object queries to prevent MIXED_DML_OPERATION
+        System.runAs(new User(Id = UserInfo.getUserId())) {
+            insert testUser;
+        }
 
-        Id fakeEcAppId = UserInfo.getUserId();
+        Id fakeEcAppId = UserInfo.getUserId(); // non-ecApp ID — SetupEntityAccess will return 0 rows
 
         Test.startTest();
-        Boolean result;
-        System.runAs(testUser) {
-            result = Core_MDF_RestAPI_ConnectedAppPlugin.hasExternalClientAppAccess(testUser.Id, fakeEcAppId);
-        }
+        Boolean result = Core_MDF_RestAPI_ConnectedAppPlugin.hasExternalClientAppAccess(testUser.Id, fakeEcAppId);
         Test.stopTest();
 
-        System.assertEquals(false, result, 'Expected false when user has no relevant permission sets');
-    }*/
+        System.assertEquals(false, result, 'Expected false when no SetupEntityAccess matches the provided ecAppId');
+    }
 
     // ============================================================
     // isTemporaryQaBypassProfileAllowed() tests

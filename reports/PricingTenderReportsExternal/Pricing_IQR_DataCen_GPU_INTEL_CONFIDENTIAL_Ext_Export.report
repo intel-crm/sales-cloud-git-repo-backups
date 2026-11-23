@@ -135,6 +135,7 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_No_of_GPUs__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_No_of_GPUs_per_system_nbr__c</field>
     </columns>
     <columns>
@@ -237,6 +238,9 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Paired_CPU_Nm__c</field>
     </columns>
     <filter>
         <criteriaItems>

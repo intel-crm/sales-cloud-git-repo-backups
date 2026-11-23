@@ -68,10 +68,6 @@
             <outputField>mkto_si__Last_Interesting_Moment_Type__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>Core_Profession__c</inputField>
-            <outputField>Core_Profession__c</outputField>
-        </mappingFields>
-        <mappingFields>
             <inputField>mkto_si__Relative_Score_Value__c</inputField>
             <outputField>mkto_si__Relative_Score_Value__c</outputField>
         </mappingFields>

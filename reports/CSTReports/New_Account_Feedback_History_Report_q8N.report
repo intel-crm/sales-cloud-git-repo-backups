@@ -75,7 +75,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>true</showSubTotals>
+    <showSubTotals>false</showSubTotals>
     <sortColumn>CREATED_DATE</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>

@@ -150,7 +150,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
@@ -182,7 +182,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -205,9 +205,21 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_FC_Approved_Claim_Quantity_nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Claim Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_FC_BU_Product_Segment__c</fullName>
@@ -215,7 +227,7 @@
         <label>BU Product Segment</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -226,7 +238,7 @@
         <label>6QPS BU Short Name</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -236,7 +248,7 @@
         <description>Stores the latest last modified date for a group of records having same Opportunity Line Item</description>
         <label>Forecast Last Modified Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -259,9 +271,35 @@
         <relationshipLabel>Forecast Product Schedules</relationshipLabel>
         <relationshipName>Forecast_Product_Schedules</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_FC_Remaining_Claim_Quantity_nbr__c</fullName>
+        <externalId>false</externalId>
+        <formula>( Core_Opp_FC_Quantity__c  -  (Core_FC_Approved_Claim_Quantity_nbr__c + Core_FC_Submitted_Claim_Quantity_nbr__c ) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Remaining Claim Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_FC_Submitted_Claim_Quantity_nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Submitted Claim Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_FC_Vendor__c</fullName>
@@ -271,7 +309,7 @@
         <relationshipLabel>Forecast Product Schedules</relationshipLabel>
         <relationshipName>Forecast_Product_Schedules</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -279,7 +317,7 @@
         <fullName>Core_Forecast_Old_Claim_Date__c</fullName>
         <label>Forecast Old Claim Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -289,7 +327,7 @@
         <description>This field is used to determine if the product is a post-win product</description>
         <inlineHelpText>This field is used to determine if the product is a post-win product</inlineHelpText>
         <label>Is Post Win</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -300,7 +338,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Forecast_Product_Schedules_Manager</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -308,7 +346,7 @@
         <fullName>Core_Opp_FC_Approval_Status__c</fullName>
         <label>Forecast Approval Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -346,7 +384,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Forecast_Product_Schedules</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -355,7 +393,7 @@
         <description>Stamping the date when the record was approved</description>
         <label>Forecast Approved Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -375,7 +413,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Forecast_Product_Schedules_Delegate</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -388,7 +426,7 @@
         <relationshipName>Forecast_Product_Schedules</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -399,7 +437,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -468,7 +506,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Forecast_Rejected_By</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -476,7 +514,7 @@
         <fullName>Core_Opp_FC_Rejected_Date__c</fullName>
         <label>Forecast Rejected Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -498,7 +536,7 @@
         <defaultValue>false</defaultValue>
         <description>Checked if the task is created upon submission for approval</description>
         <label>Forecast Is Task Created</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -506,7 +544,7 @@
         <fullName>Core_Opp_FC_isdeleted__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Forecast Is Hidden</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -517,7 +555,7 @@
         <label>Opportunity Line Item RecordID</label>
         <length>255</length>
         <required>true</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>

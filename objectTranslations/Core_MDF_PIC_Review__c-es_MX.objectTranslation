@@ -60,6 +60,10 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Recommend for Review Flag --></label>
+        <name>Core_MDF_Recommend_for_Review_Flag_ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Review Date --></label>
         <name>Core_MDF_Review_Date_dt__c</name>
     </fields>

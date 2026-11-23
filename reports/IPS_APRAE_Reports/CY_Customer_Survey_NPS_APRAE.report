@@ -56,9 +56,6 @@
         <field>OWNER</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Owner_Manager__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_IPS_Assigned_Queue__c</field>
     </columns>
     <columns>

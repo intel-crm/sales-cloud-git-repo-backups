@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Timi Personal Computing Co., Ltd. Partner User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Timi Personal Computing Co., Ltd. Partner User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_10674573_Doyle_Yang</parentRole>
+</Role>

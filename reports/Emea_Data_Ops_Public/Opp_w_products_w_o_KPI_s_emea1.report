@@ -37,16 +37,16 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <crossFilters>
-        <operation>with</operation>
-        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
-        <relatedTable>OpportunityLineItem</relatedTable>
-        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
-    </crossFilters>
-    <crossFilters>
         <operation>without</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
         <relatedTable>Core_Opportunity_KPI__c</relatedTable>
         <relatedTableJoinColumn>Core_Opp_KPI_Opportunity__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <operation>with</operation>
+        <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
+        <relatedTable>OpportunityLineItem</relatedTable>
+        <relatedTableJoinColumn>Opportunity</relatedTableJoinColumn>
     </crossFilters>
     <filter>
         <criteriaItems>
@@ -77,7 +77,7 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <scope>user</scope>
+    <scope>team</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

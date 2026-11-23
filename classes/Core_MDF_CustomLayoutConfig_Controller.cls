@@ -6,6 +6,28 @@
 public without sharing class Core_MDF_CustomLayoutConfig_Controller {
     public static List<string> languages = (Core_MDF_CCP_ConstantClass.CCP_SUPPORTED_LOCALE).split(',');
     public static boolean notifyPartnerCheck = false;
+
+    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    // Static cache added at class level — shared across all methods
+    private static Map<String, Schema.DescribeSObjectResult> describeCache = new Map<String, Schema.DescribeSObjectResult>();
+
+    // Private helper replaces getGlobalDescribe() in all methods
+    private static Schema.DescribeSObjectResult getSObjectDescribe(String objectName) {
+        if (String.isBlank(objectName)) { return null; }
+        String key = objectName.toLowerCase();
+        if (!describeCache.containsKey(key)) {
+            try {
+                Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+                if (results != null && !results.isEmpty()) {
+                    describeCache.put(key, results[0]);
+                }
+            } catch (Exception e) {
+                Core_MDF_CCP_UtilityClass.logError(e);
+            }
+        }
+        return describeCache.containsKey(key) ? describeCache.get(key) : null;
+    }
+
     @AuraEnabled
     public static Map<String, List<ResultWrapper>> getObjectFields(String recordId, String objAPIName, String fieldAPIName, String fieldView, String fieldAPIoperator) {
         List<ResultWrapper> resultList = new List<ResultWrapper>();
@@ -119,12 +141,16 @@ public without sharing class Core_MDF_CustomLayoutConfig_Controller {
                     objectDescribe = PartnerFundClaim.SObjectType.getDescribe();
                 }
                 when else {
-                    objectDescribe = Schema.getGlobalDescribe().get(objAPIName).getDescribe();
+					// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+                    objectDescribe = getSObjectDescribe(objAPIName);
                 }
             }				 
 			 
             for(Integer j=0; j < fieldName.size(); j++){
-                Schema.DescribeFieldResult fieldDescribe = objectDescribe.fields.getMap().get(fieldName[j].Core_MDF_Field_API_Name_txt__c).getDescribe();
+                // ATHR Fix: Null check on fields.getMap().get() return value
+                SObjectField fieldToken = objectDescribe.fields.getMap().get(fieldName[j].Core_MDF_Field_API_Name_txt__c);
+                if(fieldToken == null) { continue; }
+                Schema.DescribeFieldResult fieldDescribe = fieldToken.getDescribe();
                 if(fieldDescribe.isAccessible() == true){ 
                 	resultList.add(getLayoutDetails(fieldName[j], getRecords, fieldDescribe, userLang));
                 }
@@ -509,11 +535,16 @@ public without sharing class Core_MDF_CustomLayoutConfig_Controller {
                     parentObjectDescribe=PartnerFundRequest.SObjectType.getDescribe();
                   }
                   else{
-                    parentObjectDescribe = Schema.getGlobalDescribe().get(parentName).getDescribe();
+                    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+                    parentObjectDescribe = getSObjectDescribe(parentName);
                 }
             }
               if(parentObjectDescribe != null && parentObjectDescribe.isAccessible()){
-                parentFieldDescribe = parentObjectDescribe.fields.getMap().get(parentFieldName).getDescribe();
+                // ATHR Fix: Null check on fields.getMap().get() return value
+                SObjectField parentFieldToken = parentObjectDescribe.fields.getMap().get(parentFieldName);
+                if(parentFieldToken != null) {
+                    parentFieldDescribe = parentFieldToken.getDescribe();
+                }
               }
               if(parentFieldDescribe != null){
                     String fieldType = String.valueOf(parentFieldDescribe.getType());
@@ -597,6 +628,41 @@ public without sharing class Core_MDF_CustomLayoutConfig_Controller {
         wrapper.noOfColumns = field.Core_MDF_Section_id__r.Core_MDF_No_Of_Columns_nm__c;
         return wrapper;
     }
+
+    //TWC3117-19154 start
+    @AuraEnabled
+    public static void recallToPaymentClearance(Id claimId) {
+        if (claimId == null || claimId.getSObjectType() != PartnerFundClaim.SObjectType) {
+            throw new AuraHandledException('Provide a valid claim ID.');
+        }
+        try {
+            Set<String> eligibleSubclaimStatuses = new Set<String>{
+                Label.Core_MDF_Claim_Status_Payment_Due,
+                Label.Core_MDF_Claim_Status_Pending_Available_Fund,
+                Label.Core_MDF_Hold_Status
+            };
+            List<PartnerFundClaim> claimsToUpdate = new List<PartnerFundClaim>{
+                new PartnerFundClaim(
+                    Id = claimId,
+                    Core_MDF_Status__c = Label.Core_MDF_Claim_Status_Payment_Clearance_Processing,
+                    Core_MDF_PIC_Review_Completed__c = false
+                )
+            };
+            List<PartnerFundClaim> eligibleSubclaims = [SELECT Id FROM PartnerFundClaim WHERE Core_MDF_Claim_Id__c = :claimId AND Core_MDF_Status__c IN :eligibleSubclaimStatuses FOR UPDATE];
+            for (PartnerFundClaim subclaim : eligibleSubclaims) {
+                claimsToUpdate.add(new PartnerFundClaim(
+                    Id = subclaim.Id,
+                    Core_MDF_Status__c = Label.Core_MDF_Claim_Status_Draft,
+                    Core_MDF_PIC_Review_Completed__c = false
+                ));
+            }
+            update claimsToUpdate;
+        } catch (Exception e) {
+            Core_MDF_CCP_UtilityClass.logError(e);
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+    //TWC3117-19154 end
     
     @AuraEnabled
     public static void logErrors(String errorMessage, String objName) {

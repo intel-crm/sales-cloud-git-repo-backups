@@ -1,0 +1,135 @@
+<template>
+    <template if:true={showModal}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Header -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+         </button>
+                    <h2 class="slds-text-heading_medium slds-text-align_center">New Executive Meeting Brief Form</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+
+                    <div class="slds-p-around_medium">
+
+                        <!-- EVENT DETAILS -->
+                        <div class="custom-section slds-p-around_small">
+                            <div class="section-heading">
+                                <label class="slds-text-heading_medium section-header-title custom-header">EVENT DETAILS</label>
+                            </div>
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-3">
+                                    <label class="custom-label">Event Engagement Name</label>
+                                    <lightning-input label="Event Engagement Name" data-id="crmEventEngagementName"
+                                        value={crmEventEngagementName} onchange={handleInputChange} variant="label-hidden"></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <label class="custom-label">Scheduled Start Time</label>
+                                    <lightning-input type="datetime" label="Scheduled Start Time"
+                                        data-id="crmScheduledStartTime" value={crmScheduledStartTime}
+                                        onchange={handleInputChange} variant="label-hidden"></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <label class="custom-label">Scheduled End Time</label>
+                                    <lightning-input type="datetime"  label="Scheduled End Time"
+                                        data-id="crmScheduledEndTime" value={crmScheduledEndTime}
+                                        onchange={handleInputChange} variant="label-hidden"></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                        <!--MEETING OBJECTIVES SECTION-->
+                        <div class="custom-section slds-p-around_medium">
+                            <div class="section-heading">
+                                <label class="slds-text-heading_medium section-header-title custom-header">MEETING OBJECTIVES & KEY MESSAGES</label>
+                            </div>
+                            <label class="custom-label">Intel’s Meeting Objectives</label>
+                            <lightning-helptext content="Replace with: 3 bullets MAX" class="slds-m-left_x-small"></lightning-helptext>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Intels Meeting Objectives" value={crmIntelsMeetingObjectives}
+                                onchange={handleInputChange} data-id="crmIntelsMeetingObjectives">
+                            </lightning-input-rich-text>
+
+                            <label class="custom-label">Other Party’s Meeting Objectives</label>
+                            <lightning-helptext content="Replace with: 3 bullets MAX" class="slds-m-left_x-small"></lightning-helptext>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Other Party's Meeting Objectives" value={crmOtherPartysMeetingObjectives}
+                                onchange={handleInputChange} data-id="crmOtherPartysMeetingObjectives">
+                            </lightning-input-rich-text>
+
+                            <label class="custom-label">Most Critical Messages to Get Across</label>
+                            <lightning-helptext content="No more than 3 bullet points that specify what the executive MUST communicate during the meeting" class="slds-m-left_x-small"></lightning-helptext>
+                            <lightning-input-rich-text class="slds-m-bottom_medium"
+                                label="CRM Most Critical Messages to Get Across" value={crmMostCriticalMessages}
+                                onchange={handleInputChange} data-id="crmMostCriticalMessages">
+                            </lightning-input-rich-text>
+                        </div>
+                            <!-- Reviewed By 
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input type="search" placeholder="Search People..." label="Reviewed by"
+                                        value={searchTerm5} onchange={handleSearchChange5}>
+                                    </lightning-input>
+                                    <template if:true={showDropdown5}>
+                                        <ul class="slds-dropdown slds-dropdown_fluid">
+                                            <template for:each={filteredUsers5} for:item="user">
+                                                <li key={user.Id} class="slds-dropdown__item"
+                                                    onclick={handleUserSelect5} data-id={user.Id} data-name={user.Name}>
+                                                    <span class="slds-media__figure">
+                                                        <lightning-icon icon-name="standard:user" size="small" alternative-text="User"></lightning-icon>
+                                                    </span>
+                                                    <span>{user.Name}</span>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </template>
+                                    
+                                    <template for:each={selectedUsers5} for:item="user">
+                                        <span key={user.Id} class="slds-pill">
+                                            <span class="slds-pill__label">{user.Name}</span>
+                                        <button class="slds-button slds-button_icon" onclick={handleRemoveUser5} data-id={user.Id}>
+                                                <lightning-icon icon-name="utility:close"  size="xx-Small" alternative-text="Remove"></lightning-icon>
+                                            </button>
+                                        </span>
+                                    </template>
+                                    
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input class="slds-m-bottom_medium" label="Dress Code" type="text"
+                                        value={crmDressCode} onchange={handleInputChange} data-id="crmDressCode">
+                                    </lightning-input>
+                                </div>
+                            </div>
+                            <div class="margin-btm-10"></div>
+                            <div class="slds-col slds-size_1-of-1">
+                                
+                                <lightning-input-address address-label="Enter Address" street-label="Street"
+                                    street={crmLocationStreet} city-label="City" city={crmLocationCity}
+                                    postal-code-label="PostalCode" postal-code={crmLocationPostalCode}
+                                    country-label="Country Code" country={crmLocationCountryCode} province-label="State"
+                                    state={crmLocationStateCode} onchange={handleAddressChange}>
+
+                                </lightning-input-address>
+                                
+                            </div>-->
+                        </div>  
+
+                </div>
+                <!-- Modal/Popup Footer -->
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+                    <lightning-button class="slds-m-left_small" variant="neutral" label="Save and New"
+                        onclick={handleSave}>
+                    </lightning-button>
+                    <lightning-button class="slds-m-left_small" variant="brand" label="Save" onclick={handleSave}>
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        </div>
+
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

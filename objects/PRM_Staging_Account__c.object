@@ -510,102 +510,9 @@
     </fields>
     <label>IPA Staging - Account</label>
     <listViews>
-        <fullName>All_Records</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>PRM_Account_Name__c</columns>
-        <columns>PRM_Account_Country_Code__c</columns>
-        <columns>PRM_Account_State_Code__c</columns>
-        <columns>PRM_Account_Website__c</columns>
-        <columns>PRM_Account_Partner_Role__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Validation_Status__c</columns>
-        <columns>CREATED_DATE</columns>
+        <fullName>All</fullName>
         <filterScope>Everything</filterScope>
-        <label>All Records</label>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000006</fullName>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>NAME</columns>
-        <columns>PRM_Account_Name__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Account_Partner_Role__c</columns>
-        <columns>PRM_External_Account_Id__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PRM_Account_Country_Code__c</columns>
-        <columns>PRM_Account_State_Code__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Batch_Id__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000006</value>
-        </filters>
-        <label>BATCH-0000006</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000008</fullName>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>NAME</columns>
-        <columns>PRM_Account_Name__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Account_Partner_Role__c</columns>
-        <columns>PRM_External_Account_Id__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PRM_Account_Country_Code__c</columns>
-        <columns>PRM_Account_State_Code__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Batch_Id__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000008</value>
-        </filters>
-        <label>BATCH-0000008</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000013</fullName>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>NAME</columns>
-        <columns>PRM_Account_Name__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Account_Partner_Role__c</columns>
-        <columns>PRM_External_Account_Id__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PRM_Account_Country_Code__c</columns>
-        <columns>PRM_Account_State_Code__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Batch_Id__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000013</value>
-        </filters>
-        <label>BATCH-0000013</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_NULL</fullName>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>NAME</columns>
-        <columns>PRM_Account_Name__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Account_Partner_Role__c</columns>
-        <columns>PRM_External_Account_Id__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>PRM_Account_Country_Code__c</columns>
-        <columns>PRM_Account_State_Code__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Batch_Id__c</field>
-            <operation>equals</operation>
-        </filters>
-        <label>BATCH NULL</label>
-        <language>en_US</language>
+        <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>IPA-ACCT-{0000000}</displayFormat>
@@ -614,6 +521,6 @@
     </nameField>
     <pluralLabel>IPA Staging - Accounts</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

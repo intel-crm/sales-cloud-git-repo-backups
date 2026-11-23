@@ -4,6 +4,7 @@ import loadData from "@salesforce/apex/Core_MDF_ApprovalHistoryController.loadDa
 //16852 starts
 import getApprovalFlowData from '@salesforce/apex/Core_MDF_ApprovalHistoryController.getApprovalFlowData';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import getEligibleApproversForRecord from '@salesforce/apex/Core_MDF_CampaignPFR_Controller.getEligibleApproversForRecord';
 import { getRecord } from 'lightning/uiRecordApi';
 import USER_ID from '@salesforce/user/Id';
 import USER_TYPE_FIELD from '@salesforce/schema/User.UserType';

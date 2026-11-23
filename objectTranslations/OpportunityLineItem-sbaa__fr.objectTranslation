@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldSets>
+        <label><!-- Deal-Approval-Internal --></label>
+        <name>Deal_Approval_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-Deal-Internal --></label>
+        <name>Default_Deal_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-Design-Internal --></label>
+        <name>Default_Design_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Default-System-Internal --></label>
+        <name>Default_System_Internal</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Design-Approval-Internal --></label>
+        <name>Design_Approval_Internal</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Deal Desk --></label>
         <name>sbaa__DealDesk</name>
     </fieldSets>
@@ -125,6 +145,10 @@
     <fields>
         <label><!-- Available for New Designs --></label>
         <name>Core_Available_for_New_Designs__c</name>
+    </fields>
+    <fields>
+        <label><!-- BU Mapping Key --></label>
+        <name>Core_BU_Mapping_Key__c</name>
     </fields>
     <fields>
         <label><!-- BU Mapping record --></label>
@@ -3034,6 +3058,10 @@
         <name>Core_Is_Product_EOL__c</name>
     </fields>
     <fields>
+        <label><!-- Is Renewal/Amend PSG Quote --></label>
+        <name>Core_Is_Renewal_Amend_PSG_Quote__c</name>
+    </fields>
+    <fields>
         <label><!-- KPI - Business Industry Function --></label>
         <name>Core_KPI_Business_Industry_Function__c</name>
     </fields>
@@ -3093,52 +3121,52 @@
         <label><!-- Loss/Cancel Reason --></label>
         <name>Core_Loss_Cancel_Reason__c</name>
         <picklistValues>
-            <masterLabel>Another IA Bid Selected </masterLabel>
-            <translation><!-- Another IA Bid Selected  --></translation>
+            <masterLabel>Another IA Bid Selected</masterLabel>
+            <translation><!-- Another IA Bid Selected --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Customer Discontinued Project </masterLabel>
-            <translation><!-- Customer Discontinued Project  --></translation>
+            <masterLabel>Customer Discontinued Project</masterLabel>
+            <translation><!-- Customer Discontinued Project --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Design Reg. Product Swap </masterLabel>
-            <translation><!-- Design Reg. Product Swap  --></translation>
+            <masterLabel>Design Reg. Product Swap</masterLabel>
+            <translation><!-- Design Reg. Product Swap --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Entered in Error </masterLabel>
-            <translation><!-- Entered in Error  --></translation>
+            <masterLabel>Entered in Error</masterLabel>
+            <translation><!-- Entered in Error --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Failed Audit </masterLabel>
-            <translation><!-- Failed Audit  --></translation>
+            <masterLabel>Failed Audit</masterLabel>
+            <translation><!-- Failed Audit --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Feature/Performance </masterLabel>
-            <translation><!-- Feature/Performance  --></translation>
+            <masterLabel>Feature/Performance</masterLabel>
+            <translation><!-- Feature/Performance --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel No Longer Pursuing </masterLabel>
-            <translation><!-- Intel No Longer Pursuing  --></translation>
+            <masterLabel>Intel No Longer Pursuing</masterLabel>
+            <translation><!-- Intel No Longer Pursuing --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other (refer to Loss Details) </masterLabel>
-            <translation><!-- Other (refer to Loss Details)  --></translation>
+            <masterLabel>Other (refer to Loss Details)</masterLabel>
+            <translation><!-- Other (refer to Loss Details) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>POP Unobtainable </masterLabel>
-            <translation><!-- POP Unobtainable  --></translation>
+            <masterLabel>POP Unobtainable</masterLabel>
+            <translation><!-- POP Unobtainable --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Price </masterLabel>
-            <translation><!-- Price  --></translation>
+            <masterLabel>Price</masterLabel>
+            <translation><!-- Price --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Product Schedule </masterLabel>
-            <translation><!-- Product Schedule  --></translation>
+            <masterLabel>Product Schedule</masterLabel>
+            <translation><!-- Product Schedule --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Supply </masterLabel>
-            <translation><!-- Supply  --></translation>
+            <masterLabel>Supply</masterLabel>
+            <translation><!-- Supply --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -3665,6 +3693,10 @@
         <name>Core_Opportunity_Product_Vendor_Prime__c</name>
     </fields>
     <fields>
+        <label><!-- Opportunity Type RecordId --></label>
+        <name>Core_Opportunity_Type_RecordId__c</name>
+    </fields>
+    <fields>
         <help><!-- Use this field to provide details If you have selected ‘Other’ for either Competitor or Product.   The information you provide will be used to inform future additions to the lists. --></help>
         <label><!-- Other Competitor/Product --></label>
         <name>Core_OtherCompetitor_Product_Txt__c</name>
@@ -3743,6 +3775,10 @@
     <fields>
         <label><!-- Product2 Division --></label>
         <name>Core_Product2_Division__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product2 LOB Code --></label>
+        <name>Core_Product2_LOB_Code__c</name>
     </fields>
     <fields>
         <label><!-- Opportunity Product Application --></label>
@@ -3971,6 +4007,15 @@
         <name>Core_Software_Stack__c</name>
     </fields>
     <fields>
+        <help><!-- Field update only after product add --></help>
+        <label><!-- Solution Area Product Id --></label>
+        <name>Core_Solution_Area_Product_Id__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Status --></label>
         <name>Core_Status__c</name>
         <picklistValues>
@@ -4052,6 +4097,10 @@
         <name>Core_UCD_Opportunity_Product_Vendor__c</name>
     </fields>
     <fields>
+        <label><!-- Vendor Active --></label>
+        <name>Core_Vendor_Active__c</name>
+    </fields>
+    <fields>
         <label><!-- Vendor Group --></label>
         <name>Core_Vendor_Group__c</name>
     </fields>
@@ -4129,6 +4178,10 @@
         <name>Core_AtRisk_NewOrInProgress</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Risk Details, Risk Reason, Risk Priority is required. --></errorMessage>
+        <name>Core_At_Risk_Checks</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- This product is locked and not available for edit due to POP Audit Failure.  Please contact smg.pop.audit.team@intel.com with any questions. --></errorMessage>
         <name>Core_Cannot_Recall_Cancel_Failed_Audit</name>
     </validationRules>
@@ -4143,6 +4196,13 @@
     <validationRules>
         <errorMessage><!-- Product not available for new designs.  Please select a product that is marked available for new designs on the selection page. --></errorMessage>
         <name>Core_DesignFlag_True_For_OppType_Design</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- These fields can&apos;t be changed after approval:
+1. Write In Product Name
+2. Quantity
+3. Sales Price --></errorMessage>
+        <name>Core_Lock_Field_After_Opp_Approval</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- &quot;Write In Product Name&quot; can&apos;t be changed after approval. --></errorMessage>
@@ -4188,7 +4248,7 @@
         <name>Core_OppProd_PW_Quantity_SalesPrice</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only the person who approved the product win can change to a status which is prior to approval. --></errorMessage>
+        <errorMessage><!-- Only the person who approved the product win can change to a status which is prior to approval --></errorMessage>
         <name>Core_OppProd_Production_Cancelled</name>
     </validationRules>
     <validationRules>
@@ -4200,7 +4260,7 @@
         <name>Core_OppProd_Production_Status</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- When Product Status is Changed from PW Approved to any other before approval Status(i.e OnHold, Pending, Lost, Cancelled) - Production Win stage can be only reversed to Design Win Stage. --></errorMessage>
+        <errorMessage><!-- When Product Status is Changed from PW Approved to any other before approval Status(i.e OnHold, Pending, Lost, Cancelled) - Production Win stage can be only reversed to Design Win Stage. --></errorMessage>
         <name>Core_OppProd_Production_Win</name>
     </validationRules>
     <validationRules>
@@ -4232,7 +4292,7 @@
         <name>Core_OppProd_WinSub_To_Pend</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only the person who approved the product win can change to a status which is prior to approval --></errorMessage>
+        <errorMessage><!-- Only the person who approved the product win can change to a status which is prior to approval - 1 --></errorMessage>
         <name>Core_OppProd_Win_Approved</name>
     </validationRules>
     <validationRules>
@@ -4240,7 +4300,7 @@
         <name>Core_OppProd_Write_In_Name</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You are not allowed to edit the Opportunity Product after it is marked for Delete In Progress (&lt;15 min).
+        <errorMessage><!-- You are not allowed to edit the Opportunity Product after it is marked for To Be Deleted.
 Please add a new product. --></errorMessage>
         <name>Core_OppProduct_PreventUpdateToBeDeleted</name>
     </validationRules>

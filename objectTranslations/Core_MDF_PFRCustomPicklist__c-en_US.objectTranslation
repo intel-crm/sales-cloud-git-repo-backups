@@ -3105,6 +3105,26 @@
         <name>Core_MDF_Initiative_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_Outcome_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Outcome Type --></label>
+        <name>Core_MDF_Outcome_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Outcome Metric --></label>
+        <name>Core_MDF_Outcomes_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- POP Requirement --></label>
         <name>Core_MDF_POP_Requirement_nm__c</name>
         <picklistValues>

@@ -32,8 +32,10 @@ public without sharing class PRM_SendNotificationMessages {
         //If the Account is OPID Account querying on PAGM to get the location accounts
         Id recTypeId = [select RecordTypeId from Account where id =: accId ].RecordTypeId;
         if(messageCd == System.label.PRM_Msgcd_Store_Front || messageCd == System.label.PRM_Msgcd_Market || recTypeId == opidAccRecTypeId){
-            for (Core_Account_Group_Member__c cagm:[Select Id,Name,Core_Partner_Account_Id__c, Core_Intel_Account_Id__c From Core_Account_Group_Member__c Where Core_Partner_Account_Id__c = :accId AND Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c = true and Core_Inactive_Ind__c = false]){
-                intelAccIdsList.add(cagm.Core_Intel_Account_Id__c);
+            if(accId!=null){//NJ SOQL fix
+                for (Core_Account_Group_Member__c cagm:[Select Id,Name,Core_Partner_Account_Id__c, Core_Intel_Account_Id__c From Core_Account_Group_Member__c Where Core_Partner_Account_Id__c = :accId AND Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c = true and Core_Inactive_Ind__c = false]){
+                    intelAccIdsList.add(cagm.Core_Intel_Account_Id__c);
+                }
             }
             if(messageCd == System.label.PRM_Msgcd_Store_Front){
                 benefitName = System.label.PRM_Solutions_Marketplace_Enhanced;
@@ -89,9 +91,10 @@ public without sharing class PRM_SendNotificationMessages {
             }else{
                 contactList = [Select Id,Name,AccountId from Contact where AccountId IN:accIds and Core_Do_Not_Contact__c=false];
             }*/
-            contactList = (messageCode == System.label.PRM_Msgcd_NewContact) ? [SELECT Id, Name, AccountId FROM Contact WHERE AccountId IN (
+            //ATHR Fix - TWC729-9556 - SJ
+            contactList = (messageCode == System.label.PRM_Msgcd_NewContact) ? [SELECT Id, /*Name,*/ AccountId FROM Contact WHERE AccountId IN (
             SELECT PRM_Account_Id__c FROM PRM_Account_Contact_Relationship__c WHERE PRM_Contact_Id__c IN :accIds AND PRM_Status_Nm__c = 'Complete' AND PRM_InActive_Ind__c = false)
-            AND Core_Do_Not_Contact__c = false AND Id NOT IN :accIds] : [SELECT Id, Name, AccountId FROM Contact WHERE AccountId IN :accIds
+            AND Core_Do_Not_Contact__c = false AND Id NOT IN :accIds] : [SELECT Id, /*Name,*/ AccountId FROM Contact WHERE AccountId IN :accIds
             AND Core_Do_Not_Contact__c = false];
             //add Contact size
             if(contactList != null && !contactList.isEmpty()){
@@ -113,11 +116,7 @@ public without sharing class PRM_SendNotificationMessages {
                 
                 
                 PRM_ACRNotificationMessage.MsgForLogEntry+='\n*** Message Entitlement Association Query Starts ***';
-                //msgRecord = [Select Id,Name,PRM_Message_Cd__c,PRM_Title_Txt__c From PRM_Message__c where RecordTypeId =:eventMsgRecTypeId and PRM_Message_Cd__c =:messageCode LIMIT 1];
-                /*if(msgRecord != emptyMsg){
-                    List<PRM_Message_Entitlement_Association__c> meaRecords= [Select Id,PRM_Message_Id__c,PRM_Entitlement_Detail_Id__c from PRM_Message_Entitlement_Association__c where PRM_Message_Id__c = :msgRecord.Id];
-                    if(meaRecords.size()>0)
-                    */
+
                 List<PRM_Message_Entitlement_Association__c> meaRecords= [Select Id,PRM_Message_Id__c,PRM_Entitlement_Detail_Id__c from PRM_Message_Entitlement_Association__c where PRM_Message_Id__c = :msgRecord.Id];
                 if(msgRecord != emptyMsg && meaRecords.size()>0){
                     PRM_ACRNotificationMessage.MsgForLogEntry+='\n Msg entitlement size===> '+ meaRecords.size();
@@ -149,12 +148,7 @@ public without sharing class PRM_SendNotificationMessages {
                                        
                     PRM_ACRNotificationMessage.MsgForLogEntry+='\n*** Message Log Query Ends ***'+'\n';
                     PRM_ACRNotificationMessage.MsgForLogEntry+='\n*** Message Log Query Starts ***'; 
-                    /*if(toInsertLogRecConIdSet != null && !toInsertLogRecConIdSet.isEmpty()){
-                        system.debug('toInsertLogRecConIdSet:'+ toInsertLogRecConIdSet);
-                        List<PRM_Message_log__c> msgLogRecs = [Select Id,PRM_Message_Id__c,PRM_Contact_Id__c,PRM_Inactive_Ind__c,PRM_Message_Viewed_Ind__c from PRM_Message_log__c where PRM_Contact_Id__c IN :toInsertLogRecConIdSet AND PRM_Message_Id__c = :msgRecord.Id];
-                        system.debug('msgLogRecs:'+ msgLogRecs);
-                        if(!msgLogRecs.isEmpty() && msgLogRecs.size() > 0 ){
-                        */    
+   
                     List<PRM_Message_log__c> msgLogRecs = [Select Id,PRM_Message_Id__c,PRM_Contact_Id__c,PRM_Inactive_Ind__c,PRM_Message_Viewed_Ind__c from PRM_Message_log__c where PRM_Contact_Id__c IN :toInsertLogRecConIdSet AND PRM_Message_Id__c = :msgRecord.Id];
                     if(toInsertLogRecConIdSet != null && !toInsertLogRecConIdSet.isEmpty() && !msgLogRecs.isEmpty() && msgLogRecs.size() > 0 ){
                         PRM_ACRNotificationMessage.MsgForLogEntry+='\n Msg Log Size size===> '+ msgLogRecs.size();
@@ -173,9 +167,10 @@ public without sharing class PRM_SendNotificationMessages {
                         PRM_ACRNotificationMessage.MsgForLogEntry+='\n*** Message Log Query Ends ***'+'\n';
                         if(existingLogRecodIdSet.size()>0)
                             PRM_ACRNotificationMessage.MsgForLogEntry+='\n*** Size of Existing logrecords size==> '+existingLogRecodIdSet.size()+'\n'; 
-                        if(toInsertLogRecConIdSet.size()>0)
-                            PRM_ACRNotificationMessage.MsgForLogEntry+='\n*** Size of new logrecords size==> '+toInsertLogRecConIdSet.size()+'\n'; 
+                        //if(toInsertLogRecConIdSet.size()>0)
+                            //PRM_ACRNotificationMessage.MsgForLogEntry+='\n*** Size of new logrecords size==> '+toInsertLogRecConIdSet.size()+'\n'; 
                         if(toInsertLogRecConIdSet.size() > 0){
+							PRM_ACRNotificationMessage.MsgForLogEntry+='\n*** Size of new logrecords size==> '+toInsertLogRecConIdSet.size()+'\n'; 
                             for(Id conId:toInsertLogRecConIdSet){
                                 PRM_Message_log__c msgLog = new PRM_Message_log__c();
                                 msgLog.PRM_Contact_Id__c = conId;

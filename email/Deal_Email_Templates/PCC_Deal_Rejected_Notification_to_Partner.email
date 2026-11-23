@@ -1,0 +1,110 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Hello&nbsp;{!Core_Design_Registration__c.OwnerFullName}<o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">The following Deal Registration has been <b>Rejected.</b><o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b><o:p>&nbsp;</o:p></b></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Registration Number:</b><font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="font-size: 12pt;">&nbsp;</span></font><font face="arial">{!Core_Design_Registration__c.Name}</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Deal Registration Name:</b><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;</span><font face="arial">{!Core_Design_Registration__c.Core_Design_Registration_Nm__c}</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b>End Customer Account:</b> {!Core_Design_Registration__c.Core_End_Customer_Account_Id__c}<o:p></o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><b style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Rejection Reason:&nbsp;<o:p></o:p></b><font face="arial"><b>{!Core_Design_Registration__c.Core_Rejection_Reason_Nm__c}</b></font></p>
+
+<p class="MsoNormal" style=""><b style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Rejections Comments:&nbsp;<o:p></o:p></b><font face="arial"><b>{!Core_Design_Registration__c.Core_Rejection_Comment_Txt__c}</b></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>
+
+<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt; border-collapse: collapse; border: none;">
+ <tbody><tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes">
+  <td width="101" valign="top" style="width:76.0pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal"><span style="font-size:9.0pt">ID<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.0pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal"><span style="font-size:9.0pt">Product Name<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal"><span style="font-size:9.0pt">Partner Tracking Number<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal"><span style="font-size:9.0pt">Status<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal"><span style="font-size:9.0pt">Reason<o:p></o:p></span></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;
+  line-height:normal"><span style="font-size:9.0pt">Comment<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style="mso-yfti-irow:1;mso-yfti-lastrow:yes">
+  <td width="101" valign="top" style="width:76.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><o:p>&nbsp;</o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><o:p>&nbsp;</o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><o:p>&nbsp;</o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal">Rejected<o:p></o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><o:p>&nbsp;</o:p></p>
+  </td>
+  <td width="101" valign="top" style="width:76.05pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt">
+  <p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+</tbody></table>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><span style="background:yellow;mso-highlight:yellow">For
+more details, you can access the deal registration record <a href="{!Core_Design_Registration__c.Link}">here</a></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">This email was sent from an unmonitored mailbox. For
+questions, please contact your Intel Partner <a style="mso-comment-reference:
+JM_1;mso-comment-date:20240311T1452;mso-comment-done:yes">Sales</a>&nbsp;Account Manager.</p>]]></td>
+</tr>
+</table>

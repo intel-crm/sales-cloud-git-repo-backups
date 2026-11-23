@@ -449,8 +449,8 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                         if(use.Core_License_Reclaimed_on_Creation__c){
                             IntEntUserMap.put(use.ContactId, use.Core_License_Reclaimed_on_Creation__c);
                         } else {
-                            IntEntUserMap.put(use.ContactId, use.IsActive);
-                        }
+                        IntEntUserMap.put(use.ContactId, use.IsActive);
+                    }
                     }
                     for(Core_Contact_Entitlement__c currIntEnt : listPendingIntContEnt){
                 	String IntgLogTags = currIntEnt.Core_Display_Nm__c;                        
@@ -536,7 +536,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
            
             
             contactEntSuccessIdListToUpdate = Core_Draco_Misc_Functionalities.validateBeforeDML(entForUpdate,matchingContacts);
-            
+           
             if(contactEntSuccessIdListToUpdate != null && !contactEntSuccessIdListToUpdate.isEmpty()){
                 update contactEntSuccessIdListToUpdate;
             }
@@ -835,39 +835,39 @@ return enterpriseIdSet;
     @future
     public static void reprocessFailedInboundAsync(){
         try{
-            Integer maxRetryAttempt = integer.valueof(system.label.Max_Entitlement_Retry_Attempt);
-            List<Core_Integration_Inbound_Message__c> pendingIIM = new List<Core_Integration_Inbound_Message__c>();
-            Integer addMins = integer.valueof(System.Label.Core_Reprocess_TimeOffset_Minutes);
-            Datetime timeOffset = System.now();
-            timeOffset = timeOffset.addMinutes(-addMins);
-            string failedVal='Failed';
-            string roleVal='Role 2.0';
+        Integer maxRetryAttempt = integer.valueof(system.label.Max_Entitlement_Retry_Attempt);
+        List<Core_Integration_Inbound_Message__c> pendingIIM = new List<Core_Integration_Inbound_Message__c>();
+        Integer addMins = integer.valueof(System.Label.Core_Reprocess_TimeOffset_Minutes);
+        Datetime timeOffset = System.now();
+        timeOffset = timeOffset.addMinutes(-addMins);
+        string failedVal='Failed';
+        string roleVal='Role 2.0';
             Integer batchSize = integer.valueof(System.Label.Core_Reprocess_Batch_Size);
-            String soqlQueryStr = 'SELECT Id,Core_Retry_Counter__c,Core_Processing_Status__c, Core_Exception_Message__c FROM Core_Integration_Inbound_Message__c WHERE Core_Processing_Status__c =:failedVal  AND Core_Retry_Counter__c <=: maxRetryAttempt AND Core_Retry_Counter__c != 0 AND Core_Message_Type__c =:roleVal AND LastModifiedDate < ' + + timeOffset.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss\'Z\'') + ' LIMIT ' + batchSize;
+        String soqlQueryStr = 'SELECT Id,Core_Retry_Counter__c,Core_Processing_Status__c, Core_Exception_Message__c FROM Core_Integration_Inbound_Message__c WHERE Core_Processing_Status__c =:failedVal  AND Core_Retry_Counter__c <=: maxRetryAttempt AND Core_Retry_Counter__c != 0 AND Core_Message_Type__c =:roleVal AND LastModifiedDate < ' + + timeOffset.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss\'Z\'') + ' LIMIT ' + batchSize;
             
-            //Get the list of Role 2.0 Inbound messages which are exhaused in reprocessing attempt
-            List<Core_Integration_Inbound_Message__c> failedIIM = Database.query(soqlQueryStr);
+        //Get the list of Role 2.0 Inbound messages which are exhaused in reprocessing attempt
+        List<Core_Integration_Inbound_Message__c> failedIIM = Database.query(soqlQueryStr);
+        
+        for(Core_Integration_Inbound_Message__c IIM : failedIIM){
+            IIM.Core_Processing_Status__c = 'Pending';
+            IIM.Core_Retry_Counter__c += 1;
+            pendingIIM.add(IIM);
+
             
-            for(Core_Integration_Inbound_Message__c IIM : failedIIM){
-                IIM.Core_Processing_Status__c = 'Pending';
-                IIM.Core_Retry_Counter__c += 1;
-                pendingIIM.add(IIM);
-                
-                
-                Map<String,Object> FailedIIMMap = new Map<String,Object>();
-                FailedIIMMap.put('InboundMessageId',IIM.Id);
-                
-                //create instance of Interview
-                Flow.Interview.Update_Failed_Inbound_to_Pending pendingIIMFlow = new Flow.Interview.Update_Failed_Inbound_to_Pending(FailedIIMMap);
-                
-                //Invoke start method of the flow
-                pendingIIMFlow.start();
-            }
+            Map<String,Object> FailedIIMMap = new Map<String,Object>();
+            FailedIIMMap.put('InboundMessageId',IIM.Id);
+
+            //create instance of Interview
+            Flow.Interview.Update_Failed_Inbound_to_Pending pendingIIMFlow = new Flow.Interview.Update_Failed_Inbound_to_Pending(FailedIIMMap);
+
+            //Invoke start method of the flow
+            pendingIIMFlow.start();
+        }
         }catch(Exception e){
             UCD_ACM_Logger.error('Core_IntegrationInboundMessageAGS','reprocessFailedInboundAsync',e.getMessage(), null);
             UCD_ACM_Logger.setLogDetails();
         }
-        
+       
         //update pendingIIM;
     }
 

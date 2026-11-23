@@ -81,11 +81,13 @@
             <axisBinding>y</axisBinding>
             <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
+        <legendPosition>Bottom</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>BucketField_12541241</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -101,6 +103,9 @@
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
         <field>Account.Core_Account_Country__c</field>
     </columns>
     <columns>
@@ -114,6 +119,9 @@
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>OWNER_EMAIL</field>
@@ -210,9 +218,6 @@
         <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
-        <field>BucketField_12541241</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_Approved_List_Price__c</field>
     </columns>
@@ -239,7 +244,7 @@
         <field>ACCOUNT_OWNER</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6) AND 7</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND (7 OR 11) AND 8 AND 9 AND 10 AND 12</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
@@ -248,66 +253,96 @@
             <value>GMP APJ Sales Territory</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-Cloud</value>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Account_Tier__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-Tier 2,DCAI-Tier 2,DCG-Tier 3,DCAI-Tier 3,DCG-Tier 4,DCAI-Tier 4</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>DCG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Xeon</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Product2.Core_Inf_KPI_ProdGroup__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>crystal ridge</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
+            <column>INDUSTRY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>,Pending,Lost,Cancelled,Deleted,On Hold</value>
+            <value>Consulting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PROBABILITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>50.0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Ram</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Alastair Duncan,Jodie Frew,Elise Stanberg,Andrew Ridley,Nileshni Santiago,Siew May Cheow,HC Hwang,Vineet Giri,Sachin Anand,Swee Hoon Chan,Fransiskus Leonardus,Paul Haines,Jovern Lim,Patricia Lee,Duc Dang,Hung Choong Hwang</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_72264943</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Singapore,Australia,GEM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_12541241</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Won,Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Jason Kay Siah Ang,Faisal Qamar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0011J00001MZRwxQAH,0011J00001Nne3rQAB,0011J00001QsKIWQA3,001o000000qqVJJAA2,0013b00001q99FnAAI,0011J00001CYewnQAD,0011J00001CY65IQAT,001o0000011lLS8AAM,0011J00001CY67SQAT,001o000000OTf5HAAT,0013b00001r3mXvAAI,001o000000OSVjWAAX,0013b00001q99G2AAI,0011J00001L7JJTQA3,0013b00001q99OBAAY,0011J00001CZjpYQAT,001o000000OSjlxAAD,0013b00001q99NwAAI,0011J00001G3JJYQA3,0013b00001r419AAAQ,0013b00001r408LAAQ,0013b00001r5HCTAA2,001o000000p2I5eAAE,0013b00001r5HCnAAM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_12541241</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
         <dateGranularity>Quarter</dateGranularity>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>FULL_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>APJT NW CSP (Deal Won)</name>
+    <name>APJ T Consumption - NWCSP</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -332,7 +367,7 @@
     <sortColumn>Opportunity.Core_Volume__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

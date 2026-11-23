@@ -34,7 +34,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Integration,API,Test,Reltio,Eloqua,User,PSG_SOS,Auto,POC</value>
+            <value>Integration</value>
         </criteriaItems>
         <criteriaItems>
             <column>LOGIN_DATE</column>
@@ -42,13 +42,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
             <value>LAST_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>LICENSE_TYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>S</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

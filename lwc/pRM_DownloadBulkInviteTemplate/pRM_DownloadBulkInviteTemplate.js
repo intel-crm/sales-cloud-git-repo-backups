@@ -1,5 +1,5 @@
 import { LightningElement, track, api,wire } from "lwc";
-//import CountryList from '@salesforce/label/c.CountryList';
+import CountryList from '@salesforce/label/c.CountryList';
 import IPA_BulkInvite from '@salesforce/label/c.IPA_BulkInvite';
 import PRM_Bulk_Clickhere from '@salesforce/label/c.PRM_Bulk_Clickhere';
 import PMP_Okay from '@salesforce/label/c.PMP_Okay';
@@ -7,13 +7,13 @@ import PRM_Bulk_Header from '@salesforce/label/c.PRM_Bulk_Header';
 import { getObjectInfo, getPicklistValues } from "lightning/uiObjectInfoApi";
 //import getCountries from '@salesforce/apex/PRM_BulkInviteApex.getCountries';
 import ACCOUNT_OBJECT from "@salesforce/schema/Account";
-import country_field from "@salesforce/schema/Account.BillingCountry";
+import country_field from "@salesforce/schema/Account.Core_Account_Country__c";
 // Import getRatingPicklistValues function from Apex controller
 import getRatingPicklistValues from '@salesforce/apex/PRM_BulkInviteApex.getPicklistValues';
 export default class PRM_DownloadBulkInviteTemplate extends LightningElement {
   @api downloadtemp;
   @track isShowCoutryPopUp= false;
-  label={IPA_BulkInvite ,PRM_Bulk_Clickhere ,PMP_Okay ,PRM_Bulk_Header};
+  label={IPA_BulkInvite ,PRM_Bulk_Clickhere,PMP_Okay ,PRM_Bulk_Header};
   @track CountryList=[];
   columnNames = ["ContactEmail", "FirstName", "LastName", "ContactCountry"];
   columnHeader = ['country' ];
@@ -76,7 +76,7 @@ export default class PRM_DownloadBulkInviteTemplate extends LightningElement {
     this.ratingOptions.forEach(record => {
         // Ensure proper escaping for CSV values
         const row = [
-            '"' + record.label + '",' // Assuming record has a 'value' field
+            '"' + record.value + '",' // Assuming record has a 'value' field
         ]
         csvDoc += '\n' + row;
       });
@@ -87,10 +87,11 @@ export default class PRM_DownloadBulkInviteTemplate extends LightningElement {
       downloadElement.href = element;
       downloadElement.target = "_self";
   
-      downloadElement.download = "CountryList.csv";
+      downloadElement.download = "ContactList.csv";
       document.body.appendChild(downloadElement);
       downloadElement.click();
   }
+
   // this method is used to download the template
   downloadBulkInviteTemplateFile() {
     let doc = "";

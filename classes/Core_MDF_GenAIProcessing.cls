@@ -42,7 +42,9 @@ public class Core_MDF_GenAIProcessing {
 
             // Parse the JSON response
             if(response.getStatusCode() != 200) {
-                Core_MDF_CCP_UtilityClass.logErrorAsNormal('GEN AI endpoint is not giving proper result', 'Core_MDF_AI_Tracking__c'); contentWrapper.contentFromChatGPT = ''; return contentWrapper;
+                Core_MDF_CCP_UtilityClass.logErrorAsNormal('GEN AI endpoint is not giving proper result', 'Core_MDF_AI_Tracking__c');
+                contentWrapper.contentFromChatGPT = '';
+                return contentWrapper;
             }else{
                 // Deserialize the JSON string
                 Map<String, Object> parsedJson = (Map<String, Object>)JSON.deserializeUntyped(response.getBody());

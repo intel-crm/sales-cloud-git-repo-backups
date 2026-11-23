@@ -92,7 +92,7 @@
     </columns>
     <description>intent is to identify vpro platform components (not CPUs) that have been marked with Adv Tech = vpro - $ for these components is included in the vPro adder and do not qualify for vPro deal revenue</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
@@ -112,7 +112,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Core,Xeon,Intel vPro® Platform,Intel® Active Management Technology (Intel® AMT),Intel® Endpoint Management Assistant (Intel® EMA),Intel Unite® app,Intel® TXT-Based Solution,Intel Unite® Cloud Service,Intel® Transparent Supply Chain</value>
+            <value>Core,Xeon,Intel vPro® Platform</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -120,13 +120,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Develop,Design,Design Win</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

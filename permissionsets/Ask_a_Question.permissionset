@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
-        <apexClass>Core_AAQ_TabOverride_Controller</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>core_S2S_CaseExternalFeedController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -20,10 +16,10 @@
         <apexClass>core_S2S_ViewICSCases</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <customSettingAccesses>
+    <customPermissions>
         <enabled>true</enabled>
-        <name>core_S2S_ICS_Label__c</name>
-    </customSettingAccesses>
+        <name>SMG_One_AI_Plugin</name>
+    </customPermissions>
     <description>This is a permission set for Ask-a Questions</description>
     <externalCredentialPrincipalAccesses>
         <enabled>true</enabled>
@@ -783,6 +779,16 @@
     <label>Ask-a-Question</label>
     <license>Salesforce</license>
     <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Account</object>
+        <viewAllFields>false</viewAllFields>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
         <allowEdit>false</allowEdit>
@@ -922,12 +928,12 @@
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <recordTypeVisibilities>
+        <recordType>Account.Mastered_Account</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabSettings>
-        <tab>SMG_AI</tab>
+        <tab>SMG1AI</tab>
         <visibility>Visible</visibility>
     </tabSettings>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>RunFlow</name>
-    </userPermissions>
 </PermissionSet>

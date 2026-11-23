@@ -10,7 +10,7 @@ Modification Log :
 * Saif Alam              09/18/2018              Original version 
 ******************************************************************************/
 
-public without sharing class Core_ContactEntitlementAudienceUpdate {
+public class Core_ContactEntitlementAudienceUpdate {
  public static void updateContactAudience(List<Core_Contact_Entitlement__c> oldList, 
                                          List<Core_Contact_Entitlement__c> newList, 
                                          Map<Id,Core_Contact_Entitlement__c> oldMap, 
@@ -47,15 +47,13 @@ if (contactIDList.size() >0 || entIDList.size() > 0){
        List<String> pickList = new List<String>();
          for(Schema.Picklistentry pl : fld){
               pickList.add(pl.getValue());
-            }
-     
+            }     
                //Build the contact and entitlement maps
    List<Contact> contactList = [SELECT ID, Name,Core_Audience_List__c  FROM Contact WHERE ID IN :contactIDList];   
    List<Core_Entitlement__c> entitlementList = [SELECT ID,Name FROM Core_Entitlement__c WHERE ID IN :entIDList];
                // convert the lists to maps
                contactMap.putAll(contactList);
-               entMap.putAll(entitlementList);
-               
+               entMap.putAll(entitlementList);               
                
      //Loop thru each contact entitlement record. Get the the contact record and 
      //entitlement detail record. If entitlement exists in the picklist value and it is not 
@@ -122,8 +120,7 @@ if (contactIDList.size() >0 || entIDList.size() > 0){
                    }   
               }
                } // end of for(Core_Contact_Entitlement__c conEntObj : Trigger.new)
-    
-             //Update Contact Records
+                 //Update Contact Records
     if(updateFlag == true){
                Update contactMap.values();
      }

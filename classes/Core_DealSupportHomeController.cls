@@ -392,10 +392,10 @@ public with sharing class Core_DealSupportHomeController {
                             mapAccntNametoID.put(sObjAccnt.Core_Business_Party_Id__c,sObjAccnt.Name);
                     }
                     else { //TWC4767-3431
-                       for(Account sObjAccnt : [select Core_CIM_ID__c,name from Account where Core_CIM_ID__c in :lstAccntID])
-                            mapAccntNametoID.put(sObjAccnt.Core_CIM_ID__c,sObjAccnt.Name); 
-                    }
+                    for(Account sObjAccnt : [select Core_CIM_ID__c,name from Account where Core_CIM_ID__c in :lstAccntID])
+                        mapAccntNametoID.put(sObjAccnt.Core_CIM_ID__c,sObjAccnt.Name);
                 }   
+            }
             }
             
             //Convert the format of the Date from exter source format to the salesforce format

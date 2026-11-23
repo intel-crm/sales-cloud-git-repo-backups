@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DebugLevel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apexCode>FINEST</apexCode>
+    <apexProfiling>FINEST</apexProfiling>
+    <callout>INFO</callout>
+    <dataAccess>NONE</dataAccess>
+    <database>INFO</database>
+    <label>FullLogs</label>
+    <nba>NONE</nba>
+    <system>DEBUG</system>
+    <validation>INFO</validation>
+    <visualforce>INFO</visualforce>
+    <wave>INFO</wave>
+    <workflow>INFO</workflow>
+</DebugLevel>

@@ -87,7 +87,7 @@ public class Core_Product_Access_Line_Item_Handler{
     }
     
     
-     public static void submitApprovalRequestForLineItem(List<Core_IPS_Map_Par_Line_Item__c> litemsForApproval){
+    public static void submitApprovalRequestForLineItem(List<Core_IPS_Map_Par_Line_Item__c> litemsForApproval){
          List<Core_IPS_Map_Par_Line_Item__c> lItemList = new List<Core_IPS_Map_Par_Line_Item__c>();
          
         if(Core_IPS_Map_Par_Line_Item__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
@@ -137,8 +137,7 @@ public class Core_Product_Access_Line_Item_Handler{
             List<Approval.ProcessSubmitRequest> requests = mapOfApprovalProcess.get(prodOrgRec1);               
             Approval.process(requests);
         }
-    }
-    
+    }  
     //public static boolean dontAdd = false;
     public static void createUpdateAssetsonLItemInsert(List<Core_IPS_Map_Par_Line_Item__c> trgNew){
         List<Core_IPS_Map_Par_Line_Item__c> mList = new List<Core_IPS_Map_Par_Line_Item__c>();

@@ -178,11 +178,26 @@
         <connector>
             <targetReference>Get_Data_from_Custom_Meta_Data</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Customer_Process_Engagement__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Account_Reference_Source_Name__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
         <object>Account_Create_Request__c</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <textTemplates>
         <name>AcknowledgementMail</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>

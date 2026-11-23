@@ -910,7 +910,7 @@
         </rejectionActions>
     </approvalStep>
     <description>Approval Process flow to handle the activity approval process</description>
-    <emailTemplate>Testt/Core_MDF_NotifyActivityApprovers</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_NotifyActivityApprovers</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <booleanFilter>(1 OR 2 OR 3 OR (4 AND 5 )) AND 6</booleanFilter>

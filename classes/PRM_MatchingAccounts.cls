@@ -183,7 +183,7 @@ public without sharing class PRM_MatchingAccounts {
                         PRM_Phy_City__c, PRM_Phy_Country__c, PRM_Phy_State_Province__c, PRM_Phy_Zip_Postal_Code__c, PRM_Preferred_Language__c, 
                         PRM_ProcessInstanceWorkItem_Id__c, PRM_Profile_Response__c, PRM_Review_Note_txt__c, PRM_Salesforce_ID__c, PRM_State_Province__c, 
                         PRM_Status__c, PRM_Status_Reason__c, PRM_Subscriptions__c, PRM_Tax_ID_Registration__c, PRM_TriggerProcess__c, PRM_Wechat_Union_Id__c, 
-                        PRM_Zip_Postal_Code__c,PRM_Channel_Program_Level_txt__c, PRM_Is_Returning_User__c,RecordTypeId from PRM_Registration_Request__c where Id=: regRequestId];            
+                        PRM_Zip_Postal_Code__c,PRM_Channel_Program_Level_txt__c, RecordTypeId from PRM_Registration_Request__c where Id=: regRequestId];            
             for (PRM_Registration_Request__c regR : regRList) {
                 if ((regR.PRM_Status__c=='New' || regR.PRM_Status__c == 'Pending') && regR.PRM_Channel_Program_Level_txt__c== Label.PRM_Intel_Partner_Alliance && regR.RecordTypeid != Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId()) {
                     regR.PRM_Salesforce_ID__c = AccountId;
@@ -281,7 +281,7 @@ public without sharing class PRM_MatchingAccounts {
                               PRM_Phy_City__c, PRM_Phy_Country__c, PRM_Phy_State_Province__c, PRM_Phy_Zip_Postal_Code__c, PRM_Preferred_Language__c, 
                               PRM_ProcessInstanceWorkItem_Id__c, PRM_Profile_Response__c, PRM_Review_Note_txt__c, PRM_Salesforce_ID__c, PRM_State_Province__c, 
                               PRM_Status__c, PRM_Status_Reason__c, PRM_Subscriptions__c, PRM_Tax_ID_Registration__c, PRM_TriggerProcess__c, PRM_Wechat_Union_Id__c, 
-                              PRM_Zip_Postal_Code__c,PRM_Channel_Program_Level_txt__c,PRM_Is_Returning_User__c, RecordTypeId from PRM_Registration_Request__c where Id=: regRequestId];
+                              PRM_Zip_Postal_Code__c,PRM_Channel_Program_Level_txt__c, RecordTypeId from PRM_Registration_Request__c where Id=: regRequestId];
                 PRM_CreateAccountAndRelatedRecords.createAccountAndRelatedRecords(regRList01);
             }
     }

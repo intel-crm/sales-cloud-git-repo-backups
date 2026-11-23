@@ -9,6 +9,11 @@
         <value>Partnership Score Details</value>
     </caseValues>
     <fields>
+        <label><!-- Channel Program --></label>
+        <name>Channel_Program_id__c</name>
+        <relationshipLabel><!-- Partnership Score Details --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>Core_MDF_Account_Id__c</name>
     </fields>

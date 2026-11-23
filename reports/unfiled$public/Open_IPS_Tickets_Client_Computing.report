@@ -122,7 +122,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessOrEqual</operator>
-            <value>1/1/2018 12:00 AM</value>
+            <value>1/1/2017 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -141,7 +141,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Case.Core_Last_Case_Comment_Timestamp__c</sortColumn>
+    <sortColumn>CREATED_DATEONLY</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>

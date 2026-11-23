@@ -20,6 +20,7 @@ public without sharing class CustomerDisclaimer {
         //Reading from custom object
         @AuraEnabled
         public static String redirect(String siteUrl){
+            System.debug('Here in redirect!!');
             String toBeRedirectedToNDA = 'false';
             String query;
             Map<String,String> contentLangToValueMap = new Map<String,String>{};
@@ -150,6 +151,7 @@ public without sharing class CustomerDisclaimer {
         domainUrl = (domainUrl.lastIndexOf('/') == domainUrl.length()-1) ? domainUrl : domainUrl+'/';
         system.debug('#07 domainUrl after edit:' + domainUrl);
         endpointUrl = domainUrl+Label.CustomerDisclaimerApi+contentversionId+'/VersionData';
+        system.debug('<<EndPoint URL>>'+endpointUrl);
         req.setEndpoint(endpointUrl);
         req.setMethod('GET');      
         Http h = new Http();

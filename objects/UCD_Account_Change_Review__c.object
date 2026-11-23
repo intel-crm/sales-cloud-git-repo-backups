@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>Account_Change_Review_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>Account_Change_Review_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Current_Account_Name__c</fullName>
+        <label>Current Account Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Current_Address__c</fullName>
+        <label>Current Address</label>
+        <trackTrending>false</trackTrending>
+        <type>Address</type>
+    </fields>
+    <fields>
+        <fullName>Current_Customer_Aggregation_Type__c</fullName>
+        <label>Current Customer Aggregation Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UNFD_GLBL_CUST</fullName>
+                    <default>false</default>
+                    <label>Unified Global Customer</label>
+                </value>
+                <value>
+                    <fullName>UNFD_INTRMD_CUST</fullName>
+                    <default>false</default>
+                    <label>Unified Intermediate Customer</label>
+                </value>
+                <value>
+                    <fullName>UNFD_CTRY_CUST</fullName>
+                    <default>false</default>
+                    <label>Unified Country Customer</label>
+                </value>
+                <value>
+                    <fullName>UNFD_LOC_CUST</fullName>
+                    <default>false</default>
+                    <label>Unified Location Customer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Current_Customer_Process_Engagement__c</fullName>
+        <label>Current Customer Process Engagement</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>DIR_PRC_EXCPT</fullName>
+                    <default>false</default>
+                    <label>Direct Price Exception</label>
+                </value>
+                <value>
+                    <fullName>DISTI_PRC_EXCPT</fullName>
+                    <default>false</default>
+                    <label>Distributor Price Exception</label>
+                </value>
+                <value>
+                    <fullName>SLS_PPLN</fullName>
+                    <default>false</default>
+                    <label>Sales Pipeline</label>
+                </value>
+                <value>
+                    <fullName>SD_REV</fullName>
+                    <default>false</default>
+                    <label>Supply Demand Revenue</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Current_Parent_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Current Parent ID</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Change Review (Current Parent ID)</relationshipLabel>
+        <relationshipName>Account_Change_Review1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Current_Phone__c</fullName>
+        <label>Current Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Current_SF_account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Current SF account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Change Review</relationshipLabel>
+        <relationshipName>Account_Change_Review</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Current_Simplified_Account_Name__c</fullName>
+        <label>Current Simplified Account Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Current_UCD_Global_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Current UCD Global ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_UCD_Global_Name__c</fullName>
+        <label>Current UCD Global Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Current_UCD_Intermediate_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Current UCD Intermediate ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_UCD_Intermediate_Name__c</fullName>
+        <label>Current UCD Intermediate Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Current_Unified_Global_Customer_BPID__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Unified Global Customer BPID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_Unified_Global_Customer_Name__c</fullName>
+        <label>Current Unified Global Customer Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Current_Unified_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Unified ID</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_Unified_Intermediate_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Unified Intermediate ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Current_Unified_Intermediate_Name__c</fullName>
+        <label>Current Unified Intermediate Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Current_Website__c</fullName>
+        <label>Current Website</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>New_Account_Name__c</fullName>
+        <label>New Account Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>New_Address__c</fullName>
+        <label>New Address</label>
+        <trackTrending>false</trackTrending>
+        <type>Address</type>
+    </fields>
+    <fields>
+        <fullName>New_Customer_Aggregation_Type__c</fullName>
+        <label>New Customer Aggregation Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UNFD_GLBL_CUST</fullName>
+                    <default>false</default>
+                    <label>Unified Global Customer</label>
+                </value>
+                <value>
+                    <fullName>UNFD_INTRMD_CUST</fullName>
+                    <default>false</default>
+                    <label>Unified Intermediate Customer</label>
+                </value>
+                <value>
+                    <fullName>UNFD_CTRY_CUST</fullName>
+                    <default>false</default>
+                    <label>Unified Country Customer</label>
+                </value>
+                <value>
+                    <fullName>UNFD_LOC_CUST</fullName>
+                    <default>false</default>
+                    <label>Unified Location Customer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>New_Customer_Process_Engagement__c</fullName>
+        <label>New Customer Process Engagement</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>DIR_PRC_EXCPT</fullName>
+                    <default>false</default>
+                    <label>Direct Price Exception</label>
+                </value>
+                <value>
+                    <fullName>DISTI_PRC_EXCPT</fullName>
+                    <default>false</default>
+                    <label>Distributor Price Exception</label>
+                </value>
+                <value>
+                    <fullName>SLS_PPLN</fullName>
+                    <default>false</default>
+                    <label>Sales Pipeline</label>
+                </value>
+                <value>
+                    <fullName>SD_REV</fullName>
+                    <default>false</default>
+                    <label>Supply Demand Revenue</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>New_Parent_ID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>New Parent ID</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Change Review (New Parent ID)</relationshipLabel>
+        <relationshipName>Account_Change_Review2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Phone__c</fullName>
+        <label>New Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>New_Simplified_Account_Name__c</fullName>
+        <label>New Simplified Account Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>New_UCD_Global_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>New UCD Global ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_UCD_Global_Name__c</fullName>
+        <label>New UCD Global Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>New_UCD_Intermediate_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>New UCD Intermediate ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_UCD_Intermediate_Name__c</fullName>
+        <label>New UCD Intermediate Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>New_Unified_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>New Unified ID</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_Website__c</fullName>
+        <label>New Website</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Accepted</fullName>
+                    <default>false</default>
+                    <label>Accepted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Account Change Review</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Current_SF_account__c</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>ACR-{0000000}</displayFormat>
+        <label>Account Change Review Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Change Review</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

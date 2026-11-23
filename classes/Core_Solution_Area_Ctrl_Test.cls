@@ -14,7 +14,7 @@ public class Core_Solution_Area_Ctrl_Test {
     static testMethod void addSolAreaTest(){
         
         
-        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
         // Create an account
         Account acct = new Account(Name = 'TestAccount', BillingStreet = '123 Fake St',
@@ -25,8 +25,8 @@ public class Core_Solution_Area_Ctrl_Test {
         }
         
         Opportunity opps = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
-                                           AccountId = acct.Id,
-                                           StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1));
+                                           AccountId = acct.Id,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                           StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert opps;
         }
@@ -80,7 +80,7 @@ public class Core_Solution_Area_Ctrl_Test {
     static testMethod void updateSolAreaTest(){
         
         
-        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
         // Create an account
         Account acct = new Account(Name = 'TestAccountss', BillingStreet = '123 Fake St',
@@ -91,8 +91,8 @@ public class Core_Solution_Area_Ctrl_Test {
         
         
         Opportunity opps = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
-                                           AccountId = acct.Id,
-                                           StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1));
+                                           AccountId = acct.Id,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                           StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
         
             insert opps;
         
@@ -148,7 +148,7 @@ public class Core_Solution_Area_Ctrl_Test {
     static testMethod void restrictSolAreaTest(){
         
         
-        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
         // Create an account
         Account acct = new Account(Name = 'TestAccounts', BillingStreet = '123 Fake St',
@@ -159,8 +159,8 @@ public class Core_Solution_Area_Ctrl_Test {
         }
         
         Opportunity opps = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
-                                           AccountId = acct.Id,
-                                           StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1));
+                                           AccountId = acct.Id,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                           StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert opps;
         }
@@ -203,7 +203,7 @@ public class Core_Solution_Area_Ctrl_Test {
     static testMethod void restrict2SolAreaTest(){
         
         
-        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
          User usr = [select id, name, profile.name,IsActive, userrole.name from user where profile.name = 'Data Ops' AND IsActive =true Limit 1];                   
 
@@ -216,8 +216,8 @@ public class Core_Solution_Area_Ctrl_Test {
         }
         
         Opportunity opps = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
-                                           AccountId = acct.Id,
-                                           StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1));
+                                           AccountId = acct.Id,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                           StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert opps;
         }
@@ -554,7 +554,7 @@ public class Core_Solution_Area_Ctrl_Test {
     static testMethod void addSolutionAreaTest(){
         
         Test.startTest();
-        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
         // Create an account
         Account acct = new Account(Name = 'TestAccount', BillingStreet = '123 Fake St',
@@ -565,8 +565,8 @@ public class Core_Solution_Area_Ctrl_Test {
         }
         
         Opportunity opps = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
-                                           AccountId = acct.Id,
-                                           StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1));
+                                           AccountId = acct.Id,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                           StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert opps;
         }
@@ -674,10 +674,10 @@ public class Core_Solution_Area_Ctrl_Test {
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }
-         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;  
+         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;  
         Opportunity opps = new Opportunity(Name = 'Opportunity1 to Lose 09-24-2015', RecordTypeId = newOppRecTypeId,
-                                           AccountId = acct.Id,
-                                           StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1));
+                                           AccountId = acct.Id,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                           StageName = 'Qualify', CloseDate = System.Date.today().addYears(1));
       
          insert opps;
           

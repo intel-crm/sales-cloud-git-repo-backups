@@ -1,5 +1,5 @@
 ({
-    /*myAction : function(component, event, helper) {
+    myAction : function(component, event, helper) {
         console.log('account id'+component.get('v.recordId'));
         
         
@@ -56,7 +56,7 @@
 
          $A.enqueueAction(action);
          window.location.reload();
-}*/
+}
     
        
         

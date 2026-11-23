@@ -59,7 +59,7 @@
         <field>Opportunity.Core_Software_Stack__c</field>
     </columns>
     <columns>
-        <field>STAGE_NAME</field>
+        <field>Opportunity.Core_Approval_Status__c</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_ID</field>
@@ -95,7 +95,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Nadine St Gemme,Akanksha Balani,Katey Robertson,Loubna Wortley,Amy Doescher</value>
+            <value>Nadine St Gemme,Akanksha Balani,Katey Robertson,Loubna Wortley</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>

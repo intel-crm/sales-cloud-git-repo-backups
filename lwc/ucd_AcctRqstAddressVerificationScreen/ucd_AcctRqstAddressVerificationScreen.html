@@ -1,0 +1,44 @@
+<template>
+    <template if:true={showModal}>
+        <div class="background-overlay"></div>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+                <div class="slds-modal__content slds-is-relative"></div>
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_small slds-hyphenate">Address Standardization</h2>
+                    <lightning-icon class="slds-modal__close" icon-name="utility:close" onclick={closedModal}></lightning-icon>
+                </header>
+                <div class="slds-modal__content slds-p-around_small">
+                    <template if:true={cleansedAddress}>
+                        <template if:true={showAddress}>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <span><b>Loqate Cleansed Address</b></span>
+                                    <p style="color:rgb(27, 150, 255)">{cleansedAddress.streetName}</p>
+                                    <span style="color:rgb(27, 150, 255)">{cleansedAddress.cityName},</span>
+                                    <span style="color:rgb(27, 150, 255)">{cleansedAddress.stateValue} </span>
+                                    <span style="color:rgb(27, 150, 255)">{cleansedAddress.postalCode}</span>
+                                    <p style="color:rgb(27, 150, 255)">{cleansedAddress.countryValue}</p>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:false={showAddress}>
+                                <p style="color:rgb(41, 43, 44);text-align: center; font-weight: bold;">No match found, please provide correct format of St.address of the account Or continue with request submission</p>
+                        </template>
+                    </template>
+                </div>
+                <div class="slds-modal__footer">
+                    <div class="slds-grid">
+                        <div class="slds-col">
+                            <lightning-button-group>
+                                <lightning-button label="Cancel" onclick={closedModal}></lightning-button>
+                                <lightning-button variant="brand" label="Proceed" onclick={submitRequest}></lightning-button>
+                            </lightning-button-group>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+</template>

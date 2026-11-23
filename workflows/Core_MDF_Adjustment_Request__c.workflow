@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Claim_Adj_Create_fromAdjReq_Ext</template>
+        <template>unfiled$public/Core_MDF_Claim_Adj_Create_fromAdjReq_Ext</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Adjustment_Creation_Notification_for_Adj_Req_to_Internal_User</fullName>
@@ -22,6 +22,6 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Claim_Adj_Create_fromAdjReq_Int</template>
+        <template>unfiled$public/Core_MDF_Claim_Adj_Create_fromAdjReq_Int</template>
     </alerts>
 </Workflow>

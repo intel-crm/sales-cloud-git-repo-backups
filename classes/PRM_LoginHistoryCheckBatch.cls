@@ -13,7 +13,7 @@ public class PRM_LoginHistoryCheckBatch implements Database.Batchable<sObject>,D
         PRM_RegistrationTrackerUtility.CheckUserLoginHistory(scope);
     }
     
-    public void finish(Database.BatchableContext batchContext){   //Calling OPIDTriggerBatch
+    public void finish(Database.BatchableContext batchContext){   //Calling OPIDTriggerBatch 
         
     }    
 }

@@ -1,4 +1,4 @@
-public class AccountTeamBatchHandler{
+public without sharing class AccountTeamBatchHandler{
     
     public static DateTime getLastRunDateTime(String batchClassName){
         Core_Batch_header__c batchHeader=new Core_Batch_header__c();

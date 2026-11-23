@@ -4,7 +4,7 @@
     <label>GDPR Securiti App</label>
     <oauthConfig>
         <callbackUrl>https://app.securiti.ai/static/activateConnector.html</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6u_5fIPvgNTotOh92kSF5QDZEfroc1D2Ld.LeVrAJNrwdbKlDXoYsPF_lqK9</consumerKey>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDjJdUFcfSIJiDfwp3oXyLfkKMmjGKlTOZjKXWD6fT6SYEm1wkwjAHA.fueAC</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>true</isCodeCredentialEnabled>
@@ -29,7 +29,7 @@
         <scopes>CDPIdentityResolution</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>BYPASS</ipRelaxation>
+        <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>

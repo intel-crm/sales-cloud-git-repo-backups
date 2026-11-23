@@ -5,26 +5,26 @@
     <label>TLS Cert Automation</label>
     <oauthConfig>
         <callbackUrl>sfdc://oauth/jwt/success</callbackUrl>
-        <certificate>MIIDezCCAmMCFCLX0YnyukdnXoFlbnhpmw05NxgDMA0GCSqGSIb3DQEBCwUAMHox
+        <certificate>MIIDezCCAmMCFEVW4oeHu7iWdy2uT3ZSKfqhECq2MA0GCSqGSIb3DQEBCwUAMHox
 CzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xhcmEx
 GjAYBgNVBAoMEUludGVsIENvcnBvcmF0aW9uMQ4wDAYDVQQLDAVTYWxlczEcMBoG
-A1UEAwwTVExTX0NlcnRfQXV0b21hdGlvbjAeFw0yNTEyMjAxODU2MjlaFw0zMDEy
-MTkxODU2MjlaMHoxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwL
+A1UEAwwTVExTX0NlcnRfQXV0b21hdGlvbjAeFw0yNDAzMDQxNzA5MjRaFw0yNDA2
+MDIxNzA5MjRaMHoxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwL
 U2FudGEgQ2xhcmExGjAYBgNVBAoMEUludGVsIENvcnBvcmF0aW9uMQ4wDAYDVQQL
 DAVTYWxlczEcMBoGA1UEAwwTVExTX0NlcnRfQXV0b21hdGlvbjCCASIwDQYJKoZI
-hvcNAQEBBQADggEPADCCAQoCggEBALzqMAMB1Z9hbtviihNhD/aABJTfF56NnraC
-4XEF5SiPLm5PJPbYynGtURjofu3zSsjbFtiLJdPvP3tMpdK7Wq6/7PG8EmhTLekE
-kzvniH7SIWSSeddS+RgziKRmIms5Nvi6kBBFpY2G4+3HTs/3663BVcMuyhTcVopY
-V1TLth3Qf568/XBBKeRzvzQkC2M8mY3jVEPATx+2hV0kMMBGXs4J6oW/ZaWQRFiC
-5gOPQjb1+gy6IG2yLIvJcvRfx+N3ql5TrocC0ZlSqoVw8iyydRwxDC+IlklkgDgg
-KNrQYpFIMb4jYr7RJ6PzXpPDNhM1ae7X4hLQ4I/18S+0LSbhJ3kCAwEAATANBgkq
-hkiG9w0BAQsFAAOCAQEARF8lDsHbItGqGv2dgcpdcGGRMz9N76zQELediw18y5TD
-NbHy2uSjHBLgISg3wm59X5iITM8C5d9Nm5ruAfbx5D7diVlGSeqO1DJE5+egosEX
-BQXoHr54i9E/8Aqdp1hhwSQNs6vCT6qzjEWzTHxqCbNmy6H+P96PHsNMIqT+wgFC
-ACth5FZb4y+/f1+vjpRim93Nv5soMgBNzQEc0ZkgsX3qw71gD4zHJRf651V1iiB2
-ZiOkr7AmSTsEOKbfN2PEWCm0yk0cEX3QmogV6ZqX6FKj0UejLHkrWDl40S0UzIJw
-UgcZqulGheGxtmgi7ovJIBlBHZD6qLUt0VAJsOdy4g==</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6iqAYiZ0fiYLzRuMsDcrGtJ5djpgDcYfdiN.ahomlTSs3GlRcwjO48RHg0HS</consumerKey>
+hvcNAQEBBQADggEPADCCAQoCggEBANXbnHbOYs3cWtQn4HiZUsid/LUF4xWMSy+/
+5vZzOlG8hkao+9+P/fhI+NfGpGO87OUNL7Dq7FtH/66O+H4AI/ekaWpJYB7RiOad
+8P0mA3Jk86UB08tmsrRVxS/QuC+XD3AKI5XxqYOExf5w25TTWprHdVs/qlbhHbTY
+X9cq08EwTF/ledtlZQP8vGBEF8K4YqL6Twu77g3J5akklnurYGNG3tTX1M4qf5KQ
+Wf6PYN2DX5BE28eKLR03+3AG1d7l908ZgLXyi++Ycv+kj4Z8Iv1g42i+xNLw3GJz
+tVBpDu26xKmBroBOTpQfp9LrZJqITPKGoqIGkjEocWH3NW9HM8kCAwEAATANBgkq
+hkiG9w0BAQsFAAOCAQEABxaLSrDVLsRyV/KlbHu6qQXkPigCgXeR7FCAMmy4oazf
+g6dof9wMzamLUOr0wmey1kHcxAI+Yp5nYIBhmhxaaZ8AdN/wwgh4HR9BZHwk9hAj
+cZqHqhhEkMvFIs/ScmBxq7PaRzHVZiC+H9ZeHOldvNu2dCStpOdZ4pEUuQszpqrV
+IwfskFxGHCRp8LUjHj68Eli8EeY2/yd93A2XX3+eQGocfvrJ0eB5G20yNM67ujDQ
+mE+Gcsr5jfRCHIxGDoMz/zZeHVNt/aOV6obXn4HVqtveQlmtpvam1iD/pL7iO7yF
+DLN/pw4nvATKLgHk8vCWHPCJ3eaRcJo4i2BuHBXyBA==</certificate>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDtdge.DxtCfdvUjD55Hh7LaAuHYm7eOPVMgLsHAeHGesWRMspZoFzUeFjOT8</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -52,6 +52,6 @@ UgcZqulGheGxtmgi7ovJIBlBHZD6qLUt0VAJsOdy4g==</certificate>
     </oauthPolicy>
     <permissionSetName>TLS Cert Renewal Auth User</permissionSetName>
     <sessionPolicy>
-        <sessionTimeout>60</sessionTimeout>
+        <sessionTimeout>15</sessionTimeout>
     </sessionPolicy>
 </ConnectedApp>

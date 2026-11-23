@@ -58,14 +58,14 @@ public without sharing class SWS_IDCIntegration {
     ************************************************************************************************************/
     public static void getCoupon(SObject recordId) {
         String getCouponURL = SWS_Core_CRM_Labels__c.getValues('GenerateCoupon') != null ? SWS_Core_CRM_Labels__c.getValues('GenerateCoupon').SWS_Value__c : '';
-       	String reqtype = (String)recordId.get('SWS_Request_Type__c');
+        String reqtype = (String)recordId.get('SWS_Request_Type__c');
         if(reqtype == null){
             custJustification = SWS_Core_CRM_Labels__c.getValues('One_time_external_event')?.SWS_Value__c;
         }else{
             custJustification = SWS_Core_CRM_Labels__c.getValues((String)recordId.get('SWS_Request_Type__c'))?.SWS_Value__c;
         }   
         custEmail = (String)recordId.get('SWS_Email__c');
-        if(requestObj == null || String.isBlank(getCouponURL)){
+       	if(requestObj == null || String.isBlank(getCouponURL)){
             return;
         }
         payload = createPayload();
@@ -154,7 +154,7 @@ public without sharing class SWS_IDCIntegration {
         }
         
         private static void handleTextAreaField(JSONGenerator jsGen, String fieldName, Object fieldValue) {
-            jsGen.writeStringField(fieldName, fieldValue == null ? '' : String.valueOf(fieldValue));
+            jsGen.writeStringField(fieldName,fieldValue == null ? '' : String.valueOf(fieldValue));
         }
  
     

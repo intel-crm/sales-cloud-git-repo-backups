@@ -14,11 +14,11 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+        <field>OPP_QUANTITY</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
+        <field>AMOUNT</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Consumption_Market__c</field>

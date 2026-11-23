@@ -225,7 +225,7 @@ public class Core_MDF_Claim_Prediction_Subscribe_Test {
        // Unit Test Method should include System.Assert
         System.assertEquals(1, [SELECT Id FROM Core_MDF_Claim_Prediction__c WHERE Core_MDF_Claim_Id__c = :indiaClaim1.Id].size(), 'One Claim Prediction record should be created');
         System.assertNotEquals(null, cp.Id, 'Claim Prediction should have been inserted successfully');
-       
+        
         Test.stopTest();
   
         // Highlight: Unused Local Variable 

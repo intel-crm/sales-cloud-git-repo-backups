@@ -109,6 +109,10 @@
         <name>PRM_Retry_Count__c</name>
     </fields>
     <fields>
+        <label><!-- Send Reminders --></label>
+        <name>PRM_Send_Reminders__c</name>
+    </fields>
+    <fields>
         <label><!-- SkipValidation --></label>
         <name>PRM_SkipValidation__c</name>
     </fields>
@@ -124,12 +128,8 @@
             <translation><!-- Admin Invite --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Admin Partner Invite</masterLabel>
-            <translation><!-- Admin Partner Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto Granted IPA for DZP</masterLabel>
-            <translation><!-- Auto Granted IPA for DZP --></translation>
+            <masterLabel>Auto DZP Enrollment</masterLabel>
+            <translation><!-- Auto DZP Enrollment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Bulk Add</masterLabel>
@@ -160,6 +160,10 @@
         <label><!-- Status --></label>
         <name>PRM_Status_Nm__c</name>
         <picklistValues>
+            <masterLabel>AGS Identity Creation Failed</masterLabel>
+            <translation><!-- AGS Identity Creation Failed --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Complete</masterLabel>
             <translation><!-- Complete --></translation>
         </picklistValues>
@@ -178,6 +182,10 @@
         <name>PRM_Suppress_Email__c</name>
     </fields>
     <fields>
+        <label><!-- Suppress Reminders --></label>
+        <name>PRM_Suppress_Reminders__c</name>
+    </fields>
+    <fields>
         <label><!-- PRM_Unique_Combination --></label>
         <name>PRM_Unique_Combination__c</name>
     </fields>
@@ -186,8 +194,16 @@
         <name>PRM_execute_trigger__c</name>
     </fields>
     <fields>
+        <label><!-- isACRChanged --></label>
+        <name>PRM_isACRChanged__c</name>
+    </fields>
+    <fields>
         <label><!-- isActive --></label>
         <name>PRM_isActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- test - master branch autogetting updated --></label>
+        <name>test_master_branch__c</name>
     </fields>
     <recordTypes>
         <label><!-- Standard --></label>
@@ -203,11 +219,11 @@
         <name>PRM_Contact_Embargoed_Country_Check</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Contact Relationship is required --></errorMessage>
-        <name>PRM_Contact_Relationship_Check</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Website is mandatory for extending invite --></errorMessage>
         <name>PRM_WebsiteCheck</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Create_new_Contact --></label>
+        <name>Create_new_Contact</name>
+    </webLinks>
 </CustomObjectTranslation>

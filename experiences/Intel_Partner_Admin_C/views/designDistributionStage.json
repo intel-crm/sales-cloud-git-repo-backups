@@ -2,7 +2,7 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "535fdbc5-8f89-4ddc-b2f3-938b26465b25",
+  "id" : "1ac06ee1-8ddc-473a-8961-1ad91a04274c",
   "label" : "Design Distribution Stage",
   "regions" : [ {
     "components" : [ {
@@ -10,12 +10,12 @@
         "menuItems" : "[]"
       },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "8d32d789-d324-42dc-8321-999756e01b59",
+      "id" : "7f6d3100-bfa9-41ac-8ac6-d063437cd85f",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "53991dad-3f5a-4403-9521-435b33d78892",
+    "id" : "2d693641-ff8a-4272-99f4-55ed48ae9266",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -37,16 +37,16 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "fc1bd6b6-e969-46be-b10b-0630e2752683",
+      "id" : "e8acf225-e36f-410f-9ca5-1944786c54e6",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "0061a6f7-68b8-4e5e-8b01-3ce217fa5967",
+    "id" : "b99ad2dc-2290-46c5-a02d-90de92655fe4",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "2e2b67d5-6341-46d9-af0b-870f451c6eb3",
+    "id" : "872ce029-bda9-4ad5-940f-479f5a15cb06",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -54,18 +54,18 @@
       "componentAttributes" : {
         "customHeadTags" : "",
         "description" : "",
-        "title" : "Design Registration Stage"
+        "title" : "Design Distribution Stage"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "11f26940-f757-4dcf-8f67-2e18d5cfa3ff",
+      "id" : "2739770f-852c-4447-9051-01bbe3cfee9b",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "159882d7-526b-44ab-99de-eeec899607f5",
+    "id" : "0bb20a8e-b5b5-428e-99ea-9391c4b960b1",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "Inner",
   "type" : "view",
   "viewType" : "custom-design-distribution-stage"
 }

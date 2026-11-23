@@ -5,17 +5,18 @@ public class PRM_Specialty_Qualitative_Criteria_Test {
     static testmethod void testduplicateRecordCheck(){
         test.startTest();
         Map <String,Schema.RecordTypeInfo> recordTypeMap = PRM_Specialty_Criteria__c.sObjectType.getDescribe().getRecordTypeInfosByName(); 
+        Id qualitativeRecordTypeId = Schema.SObjectType.PRM_Specialty_Criteria__c.getRecordTypeInfosByName().get('Qualitative').getRecordTypeId();
         
         PRM_Specialty_Criteria__c sc= new PRM_Specialty_Criteria__c();
         sc.name= 'Speciality criteria';
-        sc.RecordTypeId=recordTypeMap.get('Qualitative').getRecordTypeId();
+        sc.RecordTypeId=qualitativeRecordTypeId;
         sc.PRM_Start_Date_Dt__c = System.today()+4;
         sc.PRM_Type_Nm__c = 'Qualitative';
         insert sc;
         
         PRM_Specialty_Criteria__c sc1= new PRM_Specialty_Criteria__c();
         sc1.name= 'Speciality criteria1';
-        sc1.RecordTypeId=recordTypeMap.get('Qualitative').getRecordTypeId();
+        sc1.RecordTypeId=qualitativeRecordTypeId;
         sc1.PRM_Start_Date_Dt__c = System.today()+4;
         sc1.PRM_Type_Nm__c = 'Qualitative';
         insert sc1;
@@ -53,17 +54,17 @@ public class PRM_Specialty_Qualitative_Criteria_Test {
     static testmethod void updatetestduplicateRecordCheck(){
         test.startTest();
         Map <String,Schema.RecordTypeInfo> recordTypeMap = PRM_Specialty_Criteria__c.sObjectType.getDescribe().getRecordTypeInfosByName(); 
-        
+        Id qualitativeRecordTypeId = Schema.SObjectType.PRM_Specialty_Criteria__c.getRecordTypeInfosByName().get('Qualitative').getRecordTypeId();
         PRM_Specialty_Criteria__c sc= new PRM_Specialty_Criteria__c();
         sc.name= 'Speciality criteria';
-        sc.RecordTypeId=recordTypeMap.get('Qualitative').getRecordTypeId();
+        sc.RecordTypeId=qualitativeRecordTypeId;
         sc.PRM_Start_Date_Dt__c = System.today()+4;
         sc.PRM_Type_Nm__c = 'Qualitative';
         insert sc;
         
         PRM_Specialty_Criteria__c sc1= new PRM_Specialty_Criteria__c();
         sc1.name= 'Speciality criteria1';
-        sc1.RecordTypeId=recordTypeMap.get('Qualitative').getRecordTypeId();
+        sc1.RecordTypeId=qualitativeRecordTypeId;
         sc1.PRM_Start_Date_Dt__c = System.today()+4;
         sc1.PRM_Type_Nm__c = 'Qualitative';
         insert sc1;

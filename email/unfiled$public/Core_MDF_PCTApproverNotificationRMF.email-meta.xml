@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>RMF PCT approvers will be notified</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_PCTApproverNotificationRMF</name>
+    <style>none</style>
+    <subject>Activity # is in  status</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -92,11 +92,13 @@ public class Core_RestAPI_IntPartyV1_Handler_Test {
     @isTest public static void test_doValidations_Positive(){
         Core_RestAPI_InterestedPartyV1_Handler handler = new Core_RestAPI_InterestedPartyV1_Handler(System.now(), 'Core_RestAPI_InterestedPartyV1_Handler'); 
         handler.doValidations();
+        System.assertEquals(handler != null, true);
     }
     
     //Test method - tests the negative cases for the method doValidations, method should not throw any excepctoin with invalid inputs
     //NOTE: for now there is no logic in doValidations and the method will be revisited when code gets added to doValidations method
     @isTest public static void test_doValidations_Negative(){
+        Core_RestAPI_InterestedPartyV1_Handler handler = null;
         Boolean exceptionThrown = false;
         try{
             RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
@@ -106,11 +108,12 @@ public class Core_RestAPI_IntPartyV1_Handler_Test {
             RestContext.request = requestObj;
             
             
-            Core_RestAPI_InterestedPartyV1_Handler handler = new Core_RestAPI_InterestedPartyV1_Handler(System.now(), 'Core_RestAPI_InterestedPartyV1_Handler'); 
+            handler = new Core_RestAPI_InterestedPartyV1_Handler(System.now(), 'Core_RestAPI_InterestedPartyV1_Handler'); 
             handler.doValidations();
         }catch(Exception e){
             exceptionThrown = false;   
         }        
         System.assertEquals(false, exceptionThrown);
+        System.assertEquals(handler != null, true);
     } 
 }

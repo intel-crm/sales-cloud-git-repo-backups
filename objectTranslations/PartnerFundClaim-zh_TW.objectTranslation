@@ -214,7 +214,7 @@
         <name>Core_MDF_Bank_Legal_Entity_Code_cd__c</name>
     </fields>
     <fields>
-        <help>申請款項應匯入的銀行別名</help>
+        <help>申請款項應該匯入的「銀行別名」</help>
         <label>銀行</label>
         <name>Core_MDF_Bank__c</name>
         <relationshipLabel><!-- Partner Fund Claims --></relationshipLabel>
@@ -256,7 +256,7 @@
     </fields>
     <fields>
         <help>顯示與此申請相關的行銷活動。</help>
-        <label>企劃案</label>
+        <label>Campaign</label>
         <name>Core_MDF_Campaign_Id__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
@@ -280,6 +280,10 @@
         <label><!-- Claim Batch Stage --></label>
         <name>Core_MDF_Claim_Batch_Stage__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>索賠取消原因</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
     </fields>
     <fields>
         <help>與此申請相關的自由文字備註</help>
@@ -494,7 +498,7 @@
         <name>Core_MDF_Document_Hold_Ind__c</name>
     </fields>
     <fields>
-        <help>如果我們未能在此日期前收到和確認文件，則不會處理索賠的付款。</help>
+        <help>選取申請以提交效能證明文件並等待客戶上傳文件時勾選</help>
         <label>文件送交截止日期</label>
         <name>Core_MDF_Document_Submission_DueDate_dtm__c</name>
     </fields>
@@ -512,7 +516,7 @@
         <name>Core_MDF_Duplicate_Claim__c</name>
     </fields>
     <fields>
-        <label>EFT 電匯編號</label>
+        <label><!-- EFT Number --></label>
         <name>Core_MDF_EFT_Number_txt__c</name>
     </fields>
     <fields>
@@ -600,11 +604,15 @@
         <name>Core_MDF_IsClaimReviewEscalation_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Is Super Claim --></label>
+        <name>Core_MDF_Is_Super_Claim__c</name>
+    </fields>
+    <fields>
         <label>上次更新者：</label>
         <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
     </fields>
     <fields>
-        <label>上次追償日期</label>
+        <label><!-- Last Recovery Date --></label>
         <name>Core_MDF_Last_Recovery_Dt__c</name>
     </fields>
     <fields>
@@ -699,11 +707,11 @@
         <name>Core_MDF_No_Dedicated_Resources_nbr__c</name>
     </fields>
     <fields>
-        <label>已啟動實例數</label>
+        <label><!-- # of Activated Instances --></label>
         <name>Core_MDF_No_of_ActivatedInstance_nbr__c</name>
     </fields>
     <fields>
-        <label>通話數目</label>
+        <label><!-- # of Calls --></label>
         <name>Core_MDF_No_of_Calls_nbr__c</name>
     </fields>
     <fields>
@@ -715,7 +723,7 @@
         <name>Core_MDF_No_of_Conversions_nbr__c</name>
     </fields>
     <fields>
-        <label>天數</label>
+        <label><!-- # of Days --></label>
         <name>Core_MDF_No_of_Days_nbr__c</name>
     </fields>
     <fields>
@@ -755,7 +763,7 @@
         <name>Core_MDF_No_of_Individuals_Trained_nbr__c</name>
     </fields>
     <fields>
-        <label>實例數</label>
+        <label><!-- # of Instances --></label>
         <name>Core_MDF_No_of_Instance_nbr__c</name>
     </fields>
     <fields>
@@ -784,7 +792,7 @@
         <name>Core_MDF_No_of_Signages_Nbr__c</name>
     </fields>
     <fields>
-        <label>學員人數</label>
+        <label><!-- # of Trainees --></label>
         <name>Core_MDF_No_of_Trainees_nbr__c</name>
     </fields>
     <fields>
@@ -820,11 +828,11 @@
         <name>Core_MDF_No_of_placemats_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- # of screens with IPOS --></label>
+        <label>使用 IPOS 的螢幕數</label>
         <name>Core_MDF_No_of_screens_with_IPOS_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- # of screens with connected IPOS --></label>
+        <label>使用連線 IPOS 的螢幕數</label>
         <name>Core_MDF_No_of_screens_with_con_IPOS_Nbr__c</name>
     </fields>
     <fields>
@@ -848,7 +856,7 @@
         <name>Core_MDF_Number_Sold_Nbr__c</name>
     </fields>
     <fields>
-        <label>參與人數</label>
+        <label><!-- # of Attendees --></label>
         <name>Core_MDF_Number_of_Attendees_Nbr__c</name>
     </fields>
     <fields>
@@ -938,8 +946,20 @@
         <name>Core_MDF_Paid_By_Payment_Type_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Payment Type after Payment Run --></label>
+        <name>Core_MDF_PaymentType_aft_PaymentRun_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Payment Admin Reminder Date --></label>
         <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Currency --></label>
+        <name>Core_MDF_Payment_Currency_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Exchange Rate --></label>
+        <name>Core_MDF_Payment_Exchange_Rate_Nbr__c</name>
     </fields>
     <fields>
         <help>銀行暫停時勾選</help>
@@ -974,6 +994,10 @@
     <fields>
         <label><!-- Payment Type --></label>
         <name>Core_MDF_Payment_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Local Amount --></label>
+        <name>Core_MDF_Payment_lcl_Amount__c</name>
     </fields>
     <fields>
         <label>Intel 裝置的 %</label>
@@ -1130,7 +1154,7 @@
         <name>Core_MDF_Recommend_For_ClaimReview__c</name>
     </fields>
     <fields>
-        <label>保留以進行追償</label>
+        <label><!-- Hold for Recovery --></label>
         <name>Core_MDF_Recovery_Hold_Ind__c</name>
     </fields>
     <fields>
@@ -1315,6 +1339,10 @@
         <name>Core_MDF_Taxes_Local__c</name>
     </fields>
     <fields>
+        <label><!-- Third Party Ind --></label>
+        <name>Core_MDF_Third_Party_Ind__c</name>
+    </fields>
+    <fields>
         <label>影片播放時間</label>
         <name>Core_MDF_Time_video_to_last_txt__c</name>
     </fields>
@@ -1447,6 +1475,10 @@
         <name>Core_MDF_VAT_Opt_In_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Vat Payment Local Amount --></label>
+        <name>Core_MDF_Vat_Payment_lcl_Amount__c</name>
+    </fields>
+    <fields>
         <label>在哪裡發生</label>
         <name>Core_MDF_Where_to_take_place_txt__c</name>
         <picklistValues>
@@ -1553,7 +1585,7 @@
         <name>Core_MDF_Close_Adjustment</name>
     </validationRules>
     <validationRules>
-        <errorMessage>請輸入大於或等於零的不可報銷費用金額</errorMessage>
+        <errorMessage><!-- Please enter Costs not Reimbursable amount that is greater than or equal to zero --></errorMessage>
         <name>Core_MDF_CostNotReimbursable</name>
     </validationRules>
     <validationRules>
@@ -1605,12 +1637,16 @@
         <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
     </validationRules>
     <validationRules>
-        <errorMessage>此升級已產生索賠。如果必須提交其他索賠，請提出新的升級。</errorMessage>
+        <errorMessage><!-- A claim has already been created with this escalation. If additional claims have to be submitted please raise a new escalation. --></errorMessage>
         <name>Core_MDF_RestrictCreationOfMultipleClaim</name>
     </validationRules>
     <validationRules>
         <errorMessage>這名使用者沒有執行此動作的許可權</errorMessage>
         <name>Core_MDF_Restrict_Change_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This user does not have permission to perform this action --></errorMessage>
+        <name>Core_MDF_Restrict_ClaimCloneAndEdit</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Activity needing approval. --></errorMessage>
@@ -1657,7 +1693,7 @@
         <name>Core_MDF_StartDate_EndDate_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>請輸入大於或等於零的税額</errorMessage>
+        <errorMessage><!-- Please enter Tax amount that is greater than or equal to zero --></errorMessage>
         <name>Core_MDF_TaxesLocal</name>
     </validationRules>
     <validationRules>

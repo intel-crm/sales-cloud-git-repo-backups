@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Benin,Cote d&apos;Ivoire,Ghana,Mali,Nigeria</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>South Africa</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Turkey</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Utd.Arab Emir.,Bahrain,Iraq,Kuwait,Oman,Qatar,Yemen,Algeria,Egypt,Jordan,Lebanon,Libya,Morocco,&quot;Palestine,State&quot;,Syria,Tunisia,Saudi Arabia</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Burundi,Eritrea,Ethiopia,Kenya,Tanzania,Uganda,Benin,Cote d&apos;Ivoire,Ghana,Mali,Nigeria,South Africa</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Saudi Arabia</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Utd.Arab Emir.,Bahrain,Iraq,Kuwait,Oman,Qatar,Yemen</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Algeria,Egypt,Jordan,Lebanon,Libya,Morocco,&quot;Palestine,State&quot;,Syria,Tunisia</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Burundi,Eritrea,Ethiopia,Kenya,Tanzania,Uganda</values>
+        </dashboardFilterOptions>
+        <name>Region</name>
+    </dashboardFilters>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>107.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <indicatorBreakpoint1>39.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>78.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_Approved_POC_s_ETS_TEAM_ONLY</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>H1 Approved POC&apos;s</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>32.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <indicatorBreakpoint1>5.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>9.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_Approved_RFx_s_ETS_TEAM_ONLY</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>H1 Approved RFx&apos;s</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>ColumnStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_Approved_TA_s_by_region_ETS</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>H1 Approved TA&apos;s by region</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>35.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <indicatorBreakpoint1>12.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>24.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_Approved_Pilots_ETS_TEAM_ONLY</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>H1 Approved Pilots&apos;s</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>7.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <indicatorBreakpoint1>2.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>4.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_Approved_Concept_ETS_TEAM_ONLY</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>H1 Approved Concept/Programs</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>ColumnStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_Approved_TA_ss_by_Owner_ETS</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>H1 Approved TA&apos;s by owner</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </middleSection>
+    <owner>10709190@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Medium</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>88.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <indicatorBreakpoint1>31.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>61.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_Approved_Deployments_ETS_ONLY</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>H1 Approved Deployments</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>8.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <indicatorBreakpoint1>1.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>2.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_Approved_Std_Offers_ETS_ONLY</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>H1 Approved Standard Offerings</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>Funnel</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>Core_Solution_Milestone__c.Core_Status__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <legendPosition>Right</legendPosition>
+            <report>EMEA_ISG_META_Milestones/X2016_H1_TA_s_by_region_ETS</report>
+            <showPercentage>true</showPercentage>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>H1 Pipeline by status</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>ColumnStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>META 2016 TA&apos;s</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>EMEA_ISG_META_Milestones/X2016_ISG_invalid_TA_s_by_owner_ETS</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>ISG invalid TA&apos;s by owner</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>10709190@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>2016 H1 TA&apos;s by ETS</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

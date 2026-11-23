@@ -129,7 +129,7 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Meeting_Brief_Agenda_Record_Page</content>
+        <content>Meeting_Brief_Agenda_Record_Page2</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -137,7 +137,7 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Meeting_Brief_Agenda_Record_Page</content>
+        <content>Meeting_Brief_Agenda_Record_Page2</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -179,6 +179,13 @@
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>CRM_End_Time__c</fullName>
+        <label>End Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>CRM_End_Time_txt__c</fullName>
@@ -232,6 +239,13 @@
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Start_Time__c</fullName>
+        <label>Start Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>CRM_Start_Time_txt__c</fullName>

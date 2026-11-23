@@ -1,6 +1,6 @@
 <apex:page standardController="Opportunity" recordSetVar="Opportunities">
     <apex:form >
-        <apex:pageBlock mode="edit" title="{!$Label.ImpartnerPRM__MassAssignOpportunitiesTitle}">
+        <apex:pageBlock mode="edit" title="{!$Label.impartnerprm__MassAssignOpportunitiesTitle}">
             <apex:pageMessages />
             <apex:pageBlockSection columns="1">
                 <apex:repeat value="{!$ObjectType.Opportunity.FieldSets.ImpartnerPRM__MassAssignToPartner}" var="f">
@@ -8,8 +8,8 @@
                 </apex:repeat>
             </apex:pageBlockSection>
             <apex:pageBlockButtons location="bottom">
-                <apex:commandButton value="{!$Label.ImpartnerPRM__Save}" action="{!save}" />
-                <apex:commandButton value="{!$Label.ImpartnerPRM__Cancel}" action="{!cancel}" />
+                <apex:commandButton value="{!$Label.impartnerprm__Save}" action="{!save}" />
+                <apex:commandButton value="{!$Label.impartnerprm__Cancel}" action="{!cancel}" />
             </apex:pageBlockButtons>
         </apex:pageBlock>
     </apex:form>

@@ -477,86 +477,9 @@
     </fields>
     <label>IPA Staging - Contact</label>
     <listViews>
-        <fullName>All_Records</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>PRM_Campaign_Id__c</columns>
-        <columns>PRM_Account_Id__c</columns>
-        <columns>PRM_Contact_First_Name__c</columns>
-        <columns>PRM_Contact_Last_Name__c</columns>
-        <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Campaign__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>PRM_Contact_New__c</columns>
-        <columns>PRM_Contact_Relationship__c</columns>
-        <columns>PRM_Validation_Status__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
+        <fullName>All</fullName>
         <filterScope>Everything</filterScope>
-        <label>All Records</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000005</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>PRM_Campaign_Id__c</columns>
-        <columns>PRM_Account_Id__c</columns>
-        <columns>PRM_Contact_First_Name__c</columns>
-        <columns>PRM_Contact_Last_Name__c</columns>
-        <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Validation_Status__c</columns>
-        <columns>PRM_Validation_Message__c</columns>
-        <columns>PRM_Campaign__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>PRM_Contact_New__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Batch_Id__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000005</value>
-        </filters>
-        <label>BATCH-0000005</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000012</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>PRM_Campaign_Id__c</columns>
-        <columns>PRM_Account_Id__c</columns>
-        <columns>PRM_Contact_First_Name__c</columns>
-        <columns>PRM_Contact_Last_Name__c</columns>
-        <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Validation_Status__c</columns>
-        <columns>PRM_Validation_Message__c</columns>
-        <columns>PRM_Campaign__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>PRM_Contact_New__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Batch_Id__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000012</value>
-        </filters>
-        <label>BATCH-0000012</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
+        <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>IPA-CNTCT-{0000000}</displayFormat>

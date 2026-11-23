@@ -99,6 +99,26 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Design_Reviewer_India</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Design Reviewer - India</label>
+        <sharedTo>
+            <group>Core_DDR_Access_APJ</group>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Core_Partner_Account_Region_Cd__c</field>
+            <operation>equals</operation>
+            <value>INDIA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Design Registration - Locked,Design Registration - Intel,Design Registration - Partner,Design Registration - Partner Draft</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>PCC_Channels_Ops_Sharing_Setting</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Channels Ops Sharing Setting</label>
@@ -111,7 +131,7 @@
             <operation>equals</operation>
             <value>Deal Registration - Partner,Deal Registration - Locked,Deal Registration - Draft</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>PCC_Deal_APJ_Sharing</fullName>

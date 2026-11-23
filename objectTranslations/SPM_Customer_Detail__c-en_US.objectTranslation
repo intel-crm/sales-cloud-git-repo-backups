@@ -45,16 +45,20 @@
         <label><!-- Account Primary Coverage --></label>
         <name>Coverage__c</name>
         <picklistValues>
-            <masterLabel>Intel-led Account</masterLabel>
-            <translation><!-- Intel-led Account --></translation>
+            <masterLabel>Indirect Covered</masterLabel>
+            <translation><!-- Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Partner-led Account</masterLabel>
-            <translation><!-- Partner-led Account --></translation>
+            <masterLabel>Intel Covered</masterLabel>
+            <translation><!-- Intel Covered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Covered</masterLabel>
+            <translation><!-- Not Covered --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Semi-Annual Temp Account Category --></label>
+        <label><!-- Account Category --></label>
         <name>Customer_Category__c</name>
     </fields>
     <fields>
@@ -66,12 +70,32 @@
         <name>DR__c</name>
     </fields>
     <fields>
+        <label><!-- Device Builder - MNC# --></label>
+        <name>Device_Builder_MNC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Device Builder - Regional OxM# --></label>
+        <name>Device_Builder_Regional_OxM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distributors (IA)# --></label>
+        <name>Distributors_IA__c</name>
+    </fields>
+    <fields>
         <label><!-- Distributors# --></label>
         <name>Distributors__c</name>
     </fields>
     <fields>
+        <label><!-- End Customer# --></label>
+        <name>End_Customer__c</name>
+    </fields>
+    <fields>
         <label><!-- GM --></label>
         <name>GM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hyperscaler (AWS, Azure, GCP)# --></label>
+        <name>Hyperscaler_AWS_Azure_GCP__c</name>
     </fields>
     <fields>
         <label><!-- Inactive --></label>
@@ -111,6 +135,10 @@
         <name>Region_Direct_OxMs__c</name>
     </fields>
     <fields>
+        <label><!-- Delete:Region --></label>
+        <name>Region__c</name>
+    </fields>
+    <fields>
         <label><!-- Regional Co-Sell Partners# --></label>
         <name>Regional_Co_Sell_Partners__c</name>
     </fields>
@@ -121,6 +149,18 @@
     <fields>
         <label><!-- Regional Retailer# --></label>
         <name>Regional_Retailer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reseller - Branded Disti# --></label>
+        <name>Reseller_Branded_Disti__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reseller - Named Billing Accounts# --></label>
+        <name>Reseller_Named_Billing_Accounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reseller - Retailers# --></label>
+        <name>Reseller_Retailers__c</name>
     </fields>
     <fields>
         <label><!-- AI Group ID --></label>
@@ -135,6 +175,10 @@
         <name>SPM_Sales_Group__c</name>
     </fields>
     <fields>
+        <label><!-- Solution Enabler (SI, ISV, CSP, MSP)# --></label>
+        <name>Solution_Enabler_SI_ISV_CSP_MSP__c</name>
+    </fields>
+    <fields>
         <label><!-- Top Global # --></label>
         <name>Top_Global__c</name>
     </fields>
@@ -143,4 +187,8 @@
         <name>VP__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- CRM_Update --></label>
+        <name>CRM_Update</name>
+    </webLinks>
 </CustomObjectTranslation>

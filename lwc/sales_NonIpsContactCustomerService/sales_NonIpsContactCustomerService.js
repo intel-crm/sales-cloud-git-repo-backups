@@ -111,7 +111,7 @@ export default class LwcNonIpsSubmitCase extends LightningElement {
                     this.showToast('Error',result,'error');
                 }
                 else{
-                    this.showToast('Success',this.label.SalesThankYoumsg,'success');
+                    this.showToast('Success',this,label.SalesThankYoumsg,'success');
                    
                     this.template.querySelectorAll('lightning-input[data-id="datafield"]').forEach(element => {
                     element.value = null;

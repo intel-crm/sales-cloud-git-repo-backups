@@ -1,11 +1,16 @@
 .tab-bar_list-container {
-  display: flex;
+  /* Prevents horizontal scrollbar from appearing when tabs overflow */
+  overflow-x: clip;
 }
 
 .tab-bar_dropdown {
   max-width: 150px;
 }
 
-.slds-tabs_default__overflow-button .slds-button:focus {
+.tab-bar__more-button:focus {
   text-decoration: none;
+}
+
+.tab-bar__dropdown-tab {
+  display: inline;
 }

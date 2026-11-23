@@ -7,9 +7,8 @@
 https://www.intel.com/content/www/us/en/secure/my-intel/token.html
 https://cqauthors.intel.com/content/www/us/en/secure/my-intel/token.html
 https://cqpreview-ssl.intel.com/content/www/us/en/secure/my-intel/token.html
-https://cqpreview.intel.com/content/www/us/en/secure/my-intel/token.html
-https://wcm-pre.intel.com/content/www/us/en/secure/my-intel/token.html</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6mmKvTMlKbMIrsMKShY2oOqs1ETvPRjwmhoPivHd9_U53EzmiyYxn3nVpA9J</consumerKey>
+https://cqpreview.intel.com/content/www/us/en/secure/my-intel/token.html</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHnXtkJBm9UdfINPMY9eEn7na5Fyh2Mnl4ZODwHdXBl8PCv723bur7EYO8HiOsDET3WRxzh4</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -35,6 +34,7 @@ https://wcm-pre.intel.com/content/www/us/en/secure/my-intel/token.html</callback
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>specific_lifetime:14:DAYS</refreshTokenPolicy>
     </oauthPolicy>
+    <profileName>B2B API Partner</profileName>
     <profileName>IPS External Customer</profileName>
     <profileName>Partner</profileName>
     <sessionPolicy>

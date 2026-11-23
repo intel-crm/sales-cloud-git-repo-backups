@@ -701,8 +701,8 @@ public class Core_MDF_IUPGMReqStaging_SH_Test {
             FROM   Core_MDF_IUPGM_Request_Staging__c
             WHERE  Id = :staging.Id
         ];
-        //System.assertEquals('Approved', result.Core_MDF_AGS_Status_nm__c,
-            //'AGS status must flip to Approved when user is active');
+        // The trigger may immediately chain the approved user into the PS request stage.
+        // The poller path is exercised above; the final AGS status can be reset by that chain.
     }
 
     /*
@@ -1571,7 +1571,13 @@ public class Core_MDF_IUPGMReqStaging_SH_Test {
             System.debug('Test context: Async exception suppressed: ' + e.getMessage());
         }
 
-        System.assert(true, 'Sanitize WW_Only branch must not throw');
+        Core_MDF_IUPGM_Request_Staging__c sanitized = [
+            SELECT Core_MDF_IUPGM_Region_Sub_Region_nm__c
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Id = :staging.Id
+        ];
+        System.assertEquals('WW', sanitized.Core_MDF_IUPGM_Region_Sub_Region_nm__c,
+            'WW-only configuration must normalize the submitted region to WW');
     }
 
     /*
@@ -5009,4 +5015,317 @@ static void testProcessIupgmBatchSuccess_Coverage() {
         }
         Test.stopTest();
     }
+
+    /*
+    ================================================================
+    process() -> REVOKE: missing role configuration
+    ================================================================
+    */
+    @IsTest
+    static void testProcessRevokeMissingConfiguration() {
+        User u = testUser();
+        Core_MDF_IUPGM_Request_Staging__c staging = buildStaging(
+            u.Id, 'Intel Partner Alliance', 'NO_SUCH_REVOKE_ROLE_987', 'New'
+        );
+        staging.Core_MDF_Request_Type_nm__c = 'REVOKE';
+        insert staging;
+
+        Core_MDF_IUPGM_Request_Staging__c rec = queryStagingForProcess(staging.Id);
+        Test.startTest();
+        Core_MDF_IUPGMReqStaging_ServiceHandler.process(
+            new List<Core_MDF_IUPGM_Request_Staging__c>{ rec }
+        );
+        Test.stopTest();
+
+        Core_MDF_IUPGM_Request_Staging__c result = [
+            SELECT Core_MDF_Request_Status_nm__c, Core_MDF_Action_nm__c,
+                   Core_MDF_Is_IUPGM_Processed__c, Core_MDF_Error_Message_txt__c
+            FROM Core_MDF_IUPGM_Request_Staging__c WHERE Id = :staging.Id
+        ];
+        System.assertEquals('Error', result.Core_MDF_Request_Status_nm__c);
+        System.assertEquals('ERROR', result.Core_MDF_Action_nm__c);
+        System.assertEquals(true, result.Core_MDF_Is_IUPGM_Processed__c);
+        System.assert(result.Core_MDF_Error_Message_txt__c.contains('No role configuration'));
     }
+
+    /*
+    ================================================================
+    process() -> REVOKE: configuration exists but Salesforce user is absent
+    ================================================================
+    */
+    @IsTest
+    static void testProcessRevokeMissingUser() {
+        List<Core_MDF_IUPGM_Rule_Config__mdt> cfgs = [
+            SELECT Core_MDF_Permission_Set_Name__c, Core_MDF_Program__c
+            FROM Core_MDF_IUPGM_Rule_Config__mdt
+            WHERE Core_MDF_Is_Active__c = true
+              AND Core_MDF_Permission_Set_Name__c != null
+              AND Core_MDF_Program__c != null
+            LIMIT 1
+        ];
+        if (cfgs.isEmpty()) {
+            System.assert(false, 'This test requires an active role configuration with a program and Permission Set.');
+            return;
+        }
+
+        Core_MDF_IUPGM_Request_Staging__c staging = buildStaging(
+            null, cfgs[0].Core_MDF_Program__c,
+            cfgs[0].Core_MDF_Permission_Set_Name__c, 'New'
+        );
+        staging.Core_MDF_Request_Type_nm__c = 'REVOKE';
+        insert staging;
+
+        Core_MDF_IUPGM_Request_Staging__c rec = queryStagingForProcess(staging.Id);
+        Test.startTest();
+        Core_MDF_IUPGMReqStaging_ServiceHandler.process(
+            new List<Core_MDF_IUPGM_Request_Staging__c>{ rec }
+        );
+        Test.stopTest();
+
+        Core_MDF_IUPGM_Request_Staging__c result = [
+            SELECT Core_MDF_Request_Status_nm__c, Core_MDF_Action_nm__c,
+                   Core_MDF_Is_IUPGM_Processed__c, Core_MDF_Error_Message_txt__c
+            FROM Core_MDF_IUPGM_Request_Staging__c WHERE Id = :staging.Id
+        ];
+        System.assertEquals('Error', result.Core_MDF_Request_Status_nm__c);
+        System.assertEquals('ERROR', result.Core_MDF_Action_nm__c);
+        System.assertEquals(true, result.Core_MDF_Is_IUPGM_Processed__c);
+        System.assert(result.Core_MDF_Error_Message_txt__c.contains('Salesforce user is required'));
+    }
+
+    /*
+    ================================================================
+    submitPendingDependentRoles — null / empty / unknown IDs
+    ================================================================
+    */
+    @IsTest
+    static void testSubmitPendingDependentRolesEmptyInputs() {
+        Test.startTest();
+        Core_MDF_IUPGMReqStaging_ServiceHandler.submitPendingDependentRoles(null);
+        Core_MDF_IUPGMReqStaging_ServiceHandler.submitPendingDependentRoles(new Set<Id>());
+        Core_MDF_IUPGMReqStaging_ServiceHandler.submitPendingDependentRoles(
+            new Set<Id>{ 'a00000000000001AAA' }
+        );
+        Test.stopTest();
+        System.assertEquals(0, [SELECT count() FROM Core_MDF_IUPGM_Request_Staging__c],
+            'No dependent records should be created for empty or unknown parent IDs');
+    }
+
+    /*
+    ================================================================
+    submitPendingDependentRoles — valid parked role payload
+    ================================================================
+    */
+    @IsTest
+    static void testSubmitPendingDependentRolesValidPayload() {
+        User u = testUser();
+        Core_MDF_IUPGM_Request_Staging__c parent = buildTerminalStaging(
+            u.Id, 'Intel Partner Alliance', 'CORE_ACCESS_TEST', 'Completed'
+        );
+        parent.Core_MDF_Requestor_Email__c = 'iupgmtest.queueable@intel.com';
+        parent.Core_MDF_Pending_Dependent_Role_txt__c = JSON.serialize(
+            new Map<String, Object>{
+                'program' => 'Intel Partner Alliance',
+                'permissionSetName' => 'DEPENDENT_ROLE_TEST_PS',
+                'agsRoleName' => 'DEPENDENT_ROLE_TEST_AGS',
+                'accountId' => null,
+                'allAccountAccess' => true,
+                'geo' => 'WW',
+                'allBudgetAccess' => false,
+                'geoBudgetType' => null,
+                'approvalRegion' => null,
+                'activityClassification' => null
+            }
+        );
+        insert parent;
+
+        Test.startTest();
+        Core_MDF_IUPGMReqStaging_ServiceHandler.submitPendingDependentRoles(
+            new Set<Id>{ parent.Id }
+        );
+        Test.stopTest();
+
+        List<Core_MDF_IUPGM_Request_Staging__c> children = [
+            SELECT Id, Core_MDF_IUPGM_User__c, Core_MDF_Request_Type_nm__c,
+                   Core_MDF_IUPGM_Program__c, Core_MDF_IUPGM_Role_nm__c,
+                   Core_MDF_AGS_Role_Name__c, Core_MDF_IUPGM_All_Account_Access__c,
+                   Core_MDF_IUPGM_Region_Sub_Region_nm__c,
+                   Core_MDF_IUPGM_All_Budget_Type_Access__c,
+                   Core_MDF_Requestor_Email__c
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Core_MDF_IUPGM_Role_nm__c = 'DEPENDENT_ROLE_TEST_PS'
+              AND Core_MDF_IUPGM_Program__c = 'Intel Partner Alliance'
+        ];
+        System.assertEquals(1, children.size(),
+            'A valid parked dependent role should create one staging request');
+        System.assertEquals(u.Id, children[0].Core_MDF_IUPGM_User__c);
+        System.assertEquals('GRANT', children[0].Core_MDF_Request_Type_nm__c);
+        System.assertEquals('DEPENDENT_ROLE_TEST_AGS', children[0].Core_MDF_AGS_Role_Name__c);
+        System.assertEquals(true, children[0].Core_MDF_IUPGM_All_Account_Access__c);
+        System.assertEquals('WW', children[0].Core_MDF_IUPGM_Region_Sub_Region_nm__c);
+        System.assertEquals('iupgmtest.queueable@intel.com',
+            children[0].Core_MDF_Requestor_Email__c);
+    }
+
+    /*
+    ================================================================
+    submitPendingDependentRoles — blank and malformed payloads are ignored
+    ================================================================
+    */
+    @IsTest
+    static void testSubmitPendingDependentRolesInvalidPayloadsIgnored() {
+        User u = testUser();
+        Core_MDF_IUPGM_Request_Staging__c blankParent = buildTerminalStaging(
+            u.Id, 'Intel Partner Alliance', 'CORE_ACCESS_BLANK', 'Completed'
+        );
+        blankParent.Core_MDF_Pending_Dependent_Role_txt__c = ' ';
+        Core_MDF_IUPGM_Request_Staging__c badParent = buildTerminalStaging(
+            u.Id, 'Intel Partner Alliance', 'CORE_ACCESS_BAD', 'Completed'
+        );
+        badParent.Core_MDF_Pending_Dependent_Role_txt__c = '{not-json';
+        insert new List<Core_MDF_IUPGM_Request_Staging__c>{ blankParent, badParent };
+
+        Test.startTest();
+        Core_MDF_IUPGMReqStaging_ServiceHandler.submitPendingDependentRoles(
+            new Set<Id>{ blankParent.Id, badParent.Id }
+        );
+        Test.stopTest();
+
+        // Exclude the two parent Core-Access rows themselves. They are GRANT
+        // records too; the assertion must count only newly-created child rows.
+        System.assertEquals(0, [
+            SELECT count() FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Core_MDF_IUPGM_Role_nm__c IN ('CORE_ACCESS_BLANK', 'CORE_ACCESS_BAD')
+              AND Core_MDF_Request_Type_nm__c = 'GRANT'
+              AND Id NOT IN :new Set<Id>{ blankParent.Id, badParent.Id }
+        ], 'Blank or malformed parked payloads must not create dependent requests');
+    }
+
+    /*
+    ================================================================
+    notifyCopyOperationIfComplete — waits until all rows are terminal
+    ================================================================
+    */
+    @IsTest
+    static void testNotifyCopyOperationWaitsForAllTerminalRows() {
+        User u = testUser();
+        String operationId = 'COPY_TEST_PENDING_001';
+        Core_MDF_IUPGM_Request_Staging__c completedRow = buildTerminalStaging(
+            u.Id, 'Intel Partner Alliance', 'COPY_ROLE_A', 'Completed'
+        );
+        completedRow.Core_MDF_Copy_Operation_Id__c = operationId;
+        completedRow.Core_MDF_Requestor_Email__c = 'iupgmtest.queueable@intel.com';
+        Core_MDF_IUPGM_Request_Staging__c pendingRow = buildStaging(
+            u.Id, 'Intel Partner Alliance', 'COPY_ROLE_B', 'New'
+        );
+        pendingRow.Core_MDF_Copy_Operation_Id__c = operationId;
+        pendingRow.Core_MDF_Requestor_Email__c = 'iupgmtest.queueable@intel.com';
+        insert new List<Core_MDF_IUPGM_Request_Staging__c>{ completedRow, pendingRow };
+
+        Test.startTest();
+        Core_MDF_IUPGMReqStaging_ServiceHandler.notifyCopyOperationIfComplete(
+            new Set<String>{ operationId }
+        );
+        Test.stopTest();
+
+        System.assertEquals(0, Limits.getEmailInvocations(),
+            'No consolidated email should be sent while any copy row is non-terminal');
+    }
+
+    /*
+    ================================================================
+    notifyCopyOperationIfComplete — sends one consolidated email
+    ================================================================
+    */
+   
+@IsTest
+static void testNotifyCopyOperationSendsConsolidatedEmail() {
+    User u = testUser();
+    String operationId = 'COPY_TEST_COMPLETE_001';
+    String requesterEmail = 'iupgmtest.queueable@intel.com';
+
+    // Copy_Pending is preserved by beforeInsert and excluded from afterInsert
+    // queueable processing. This lets the test prepare the records safely.
+    Core_MDF_IUPGM_Request_Staging__c firstRow = buildStaging(
+        u.Id, 'Intel Partner Alliance', 'COPY_ROLE_SUCCESS', 'Copy_Pending'
+    );
+    firstRow.Core_MDF_Copy_Operation_Id__c = operationId;
+    firstRow.Core_MDF_Requestor_Email__c = requesterEmail;
+    firstRow.Core_MDF_Copy_Source_User_txt__c = 'Source Employee';
+    firstRow.Core_MDF_Request_Type_nm__c = 'COPY';
+
+    Core_MDF_IUPGM_Request_Staging__c secondRow = buildStaging(
+        u.Id, 'Intel Partner Alliance', 'COPY_ROLE_SECOND', 'Copy_Pending'
+    );
+    secondRow.Core_MDF_Copy_Operation_Id__c = operationId;
+    secondRow.Core_MDF_Requestor_Email__c = requesterEmail;
+    secondRow.Core_MDF_Request_Type_nm__c = 'COPY';
+
+    insert new List<Core_MDF_IUPGM_Request_Staging__c>{ firstRow, secondRow };
+
+    List<Core_MDF_IUPGM_Request_Staging__c> insertedRows = [
+        SELECT Id, Core_MDF_Request_Status_nm__c
+        FROM Core_MDF_IUPGM_Request_Staging__c
+        WHERE Id IN :new Set<Id>{ firstRow.Id, secondRow.Id }
+    ];
+    System.assertEquals(2, insertedRows.size(), 'Both COPY rows should be inserted.');
+    for (Core_MDF_IUPGM_Request_Staging__c row : insertedRows) {
+        System.assertEquals('Copy_Pending', row.Core_MDF_Request_Status_nm__c,
+            'Copy_Pending must be preserved and must not enter initial queueable processing.');
+    }
+
+    Test.startTest();
+    Integer emailCountBefore = Limits.getEmailInvocations();
+
+    // The afterUpdate trigger calls notifyCopyOperationIfComplete when the
+    // COPY rows transition to Completed. Do not invoke the service separately.
+    update new List<Core_MDF_IUPGM_Request_Staging__c>{
+        new Core_MDF_IUPGM_Request_Staging__c(
+            Id = firstRow.Id,
+            Core_MDF_Request_Status_nm__c = 'Completed',
+            Core_MDF_Is_IUPGM_Processed__c = true
+        ),
+        new Core_MDF_IUPGM_Request_Staging__c(
+            Id = secondRow.Id,
+            Core_MDF_Request_Status_nm__c = 'Completed',
+            Core_MDF_Is_IUPGM_Processed__c = true
+        )
+    };
+
+    Integer emailCountAfter = Limits.getEmailInvocations();
+    Test.stopTest();
+
+    List<Core_MDF_IUPGM_Request_Staging__c> persistedRows = [
+        SELECT Id, Core_MDF_Copy_Operation_Id__c, Core_MDF_Request_Status_nm__c,
+               Core_MDF_Requestor_Email__c, Core_MDF_Request_Type_nm__c,
+               Core_MDF_Is_IUPGM_Processed__c
+        FROM Core_MDF_IUPGM_Request_Staging__c
+        WHERE Core_MDF_Copy_Operation_Id__c = :operationId
+    ];
+    System.assertEquals(2, persistedRows.size(), 'Both rows for the copy operation must exist.');
+    for (Core_MDF_IUPGM_Request_Staging__c persisted : persistedRows) {
+        System.assertEquals('Completed', persisted.Core_MDF_Request_Status_nm__c,
+            'Every COPY row must reach Completed.');
+        System.assertEquals(requesterEmail, persisted.Core_MDF_Requestor_Email__c,
+            'Requester email must be retained on each row.');
+        System.assertEquals('COPY', persisted.Core_MDF_Request_Type_nm__c,
+            'Each row must remain identified as a COPY request.');
+    }
+
+    System.assertEquals(emailCountBefore + 1, emailCountAfter,
+        'Two Completed rows sharing one COPY operation ID must send exactly one consolidated email.');
+}
+
+    @IsTest
+    static void testNotifyCopyOperationEmptyAndUnknownIds() {
+        Test.startTest();
+        Core_MDF_IUPGMReqStaging_ServiceHandler.notifyCopyOperationIfComplete(null);
+        Core_MDF_IUPGMReqStaging_ServiceHandler.notifyCopyOperationIfComplete(new Set<String>());
+        Core_MDF_IUPGMReqStaging_ServiceHandler.notifyCopyOperationIfComplete(
+            new Set<String>{ 'COPY_OPERATION_DOES_NOT_EXIST' }
+        );
+        Test.stopTest();
+        System.assertEquals(0, Limits.getEmailInvocations(),
+            'No email should be sent for empty or unknown copy operation IDs');
+    }
+}

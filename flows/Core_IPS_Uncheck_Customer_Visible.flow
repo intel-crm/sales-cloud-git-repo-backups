@@ -3,9 +3,8 @@
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>Migrated from the: Core_IPS_Uncheck_Customer_Visible workflow rule
-Workflow rule description: Uncheck Customer Visible checkbox if case created of type No Assigned Case</description>
+Workflow rule description: Uncheck Customer Visible checkbox if case created of type No Assigned Case&quot;</description>
     <environments>Default</environments>
-    <interviewLabel>Core_IPS_Uncheck_Customer_Visible {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_IPS_Uncheck_Customer_Visible</label>
     <migratedFromWorkflowRuleName>Core_IPS_Uncheck_Customer_Visible</migratedFromWorkflowRuleName>
     <processMetadataValues>
@@ -46,5 +45,5 @@ Workflow rule description: Uncheck Customer Visible checkbox if case created of 
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>InvalidDraft</status>
 </Flow>

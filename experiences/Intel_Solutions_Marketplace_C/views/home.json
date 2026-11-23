@@ -224,7 +224,7 @@
       },
       "componentName" : "c:ipaL0FeaturedOfferingsTabs",
       "id" : "62d592de-88b2-45ba-97b2-c663f0ad1935",
-      "renderPriority" : "HIGHEST",
+      "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
@@ -290,10 +290,11 @@
         "disableManagedMPPartners" : false,
         "disableViewDashboard" : false,
         "fullWidth" : true,
-        "portal" : "Marketplace"
+        "portal" : "Marketplace",
+        "showAllButtons" : true
       },
       "componentName" : "c:MarketplaceNavigationBar",
-      "id" : "c099efb7-a938-4b3d-92c7-04b3240085d3",
+      "id" : "e6f23a4c-57f4-4c56-93eb-3a1945c8d114",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

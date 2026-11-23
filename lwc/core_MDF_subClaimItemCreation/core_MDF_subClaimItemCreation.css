@@ -1,10 +1,10 @@
 .table-wrapper {
     overflow-x: auto;
-    width: 100%; 
+    width: 100%;
 }
 table {
     width: 100%;  
-    max-width: 100%;  
+    max-width: 100%;
     table-layout: fixed;
     overflow-x: auto;
 }
@@ -22,7 +22,6 @@ table {
 }
 .truncate {
   display: block;
-  width: 100%;
   max-width: 100%;
   white-space: nowrap;
   overflow: hidden;

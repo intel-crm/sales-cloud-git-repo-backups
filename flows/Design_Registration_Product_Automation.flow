@@ -12,8 +12,8 @@
     <customErrors>
         <name>CustomErrorForProduct</name>
         <label>CustomErrorForProduct</label>
-        <locationX>600</locationX>
-        <locationY>935</locationY>
+        <locationX>842</locationX>
+        <locationY>1151</locationY>
         <customErrorMessages>
             <errorMessage>Products cannot be added as opportunity is in the win or loss status</errorMessage>
             <isFieldError>false</isFieldError>
@@ -22,7 +22,7 @@
     <customErrors>
         <name>PFIR_Error</name>
         <label>PFIR Error</label>
-        <locationX>1128</locationX>
+        <locationX>1898</locationX>
         <locationY>1043</locationY>
         <customErrorMessages>
             <errorMessage>Product cannot be added at this Stage, Quote is in Review Status.</errorMessage>
@@ -32,7 +32,7 @@
     <decisions>
         <name>Check_if_QLI_is_in_PFIR_Status</name>
         <label>Check if QLI is in PFIR Status</label>
-        <locationX>1260</locationX>
+        <locationX>2030</locationX>
         <locationY>935</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -41,6 +41,13 @@
             <conditions>
                 <leftValueReference>Get_Quote_Lines_Details</leftValueReference>
                 <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PCC_Change_Requested__c</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
@@ -54,9 +61,10 @@
     <decisions>
         <name>CheckOpportunity</name>
         <label>CheckOpportunity</label>
-        <locationX>314</locationX>
+        <locationX>1106</locationX>
         <locationY>611</locationY>
         <defaultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>Opportunity_Product</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
@@ -114,8 +122,8 @@
     <decisions>
         <name>CheckStatus</name>
         <label>CheckStatus</label>
-        <locationX>512</locationX>
-        <locationY>827</locationY>
+        <locationX>578</locationX>
+        <locationY>1043</locationY>
         <defaultConnector>
             <targetReference>CustomErrorForProduct</targetReference>
         </defaultConnector>
@@ -139,7 +147,7 @@
     <decisions>
         <name>CheckUpdateorCreate</name>
         <label>CheckUpdateorCreate</label>
-        <locationX>1172</locationX>
+        <locationX>1947</locationX>
         <locationY>287</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -161,9 +169,10 @@
     <decisions>
         <name>Copy_1_of_CheckStatus</name>
         <label>CheckStatusofApprovedDr</label>
-        <locationX>116</locationX>
+        <locationX>842</locationX>
         <locationY>827</locationY>
         <defaultConnector>
+            <isGoTo>true</isGoTo>
             <targetReference>Get_Record_Types_for_Design</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
@@ -178,7 +187,6 @@
                 </rightValue>
             </conditions>
             <connector>
-                <isGoTo>true</isGoTo>
                 <targetReference>Opportunity_Product</targetReference>
             </connector>
             <label>CheckStatusofApprovedDr</label>
@@ -187,7 +195,7 @@
     <decisions>
         <name>Deal_or_Design</name>
         <label>Deal or Design?</label>
-        <locationX>688</locationX>
+        <locationX>1469</locationX>
         <locationY>503</locationY>
         <defaultConnector>
             <targetReference>is_Partner</targetReference>
@@ -212,7 +220,7 @@
     <decisions>
         <name>is_Partner</name>
         <label>is Partner?</label>
-        <locationX>1062</locationX>
+        <locationX>1832</locationX>
         <locationY>611</locationY>
         <defaultConnector>
             <targetReference>Get_Quote_Details</targetReference>
@@ -245,7 +253,7 @@
         <name>Populate_Product</name>
         <label>Populate Product</label>
         <locationX>314</locationX>
-        <locationY>1427</locationY>
+        <locationY>1259</locationY>
         <defaultConnector>
             <targetReference>Update_Product_Detail_on_DRP_Lookup</targetReference>
         </defaultConnector>
@@ -338,7 +346,7 @@
     <recordLookups>
         <name>Copy_1_of_Opportunity_Product</name>
         <label>Opportunity Product of Approved DR</label>
-        <locationX>116</locationX>
+        <locationX>842</locationX>
         <locationY>719</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -402,7 +410,7 @@
     <recordLookups>
         <name>Get_Quote_Details</name>
         <label>Get Quote Details</label>
-        <locationX>1260</locationX>
+        <locationX>2030</locationX>
         <locationY>719</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -423,7 +431,7 @@
     <recordLookups>
         <name>Get_Quote_Lines_Details</name>
         <label>Get Quote Lines Details</label>
-        <locationX>1260</locationX>
+        <locationX>2030</locationX>
         <locationY>827</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -451,7 +459,7 @@
     <recordLookups>
         <name>Get_Record_Types</name>
         <label>Get Record Types</label>
-        <locationX>864</locationX>
+        <locationX>1634</locationX>
         <locationY>719</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -473,7 +481,7 @@
         <name>Get_Record_Types_for_Design</name>
         <label>Get Record Types for Design</label>
         <locationX>314</locationX>
-        <locationY>1319</locationY>
+        <locationY>1151</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Populate_Product</targetReference>
@@ -493,7 +501,7 @@
     <recordLookups>
         <name>GetDRRecords</name>
         <label>GetDRRecords</label>
-        <locationX>688</locationX>
+        <locationX>1469</locationX>
         <locationY>395</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -514,8 +522,8 @@
     <recordLookups>
         <name>Opportunity_Product</name>
         <label>Opportunity Product</label>
-        <locationX>512</locationX>
-        <locationY>719</locationY>
+        <locationX>578</locationX>
+        <locationY>935</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>CheckStatus</targetReference>
@@ -593,7 +601,7 @@
         <name>Throw_Validation</name>
         <label>Throw_Validation</label>
         <locationX>50</locationX>
-        <locationY>1535</locationY>
+        <locationY>1367</locationY>
         <inputAssignments>
             <field>Core_ThrowValidation__c</field>
             <value>
@@ -606,7 +614,7 @@
         <name>Update_Design_Record_Type</name>
         <label>Update Design Record Type</label>
         <locationX>314</locationX>
-        <locationY>1535</locationY>
+        <locationY>1367</locationY>
         <inputAssignments>
             <field>RecordTypeId</field>
             <value>
@@ -619,7 +627,7 @@
         <name>Update_Product_Detail_on_DRP_Lookup</name>
         <label>Update_Product_Detail_on_DRP_Lookup</label>
         <locationX>578</locationX>
-        <locationY>1535</locationY>
+        <locationY>1367</locationY>
         <inputAssignments>
             <field>Core_Product_Id__c</field>
             <value>
@@ -637,7 +645,7 @@
     <recordUpdates>
         <name>Updated_Deal_Record_Type</name>
         <label>Updated Deal Record Type</label>
-        <locationX>864</locationX>
+        <locationX>1634</locationX>
         <locationY>827</locationY>
         <inputAssignments>
             <field>RecordTypeId</field>
@@ -648,12 +656,12 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>1046</locationX>
+        <locationX>1821</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CheckUpdateorCreate</targetReference>
         </connector>
-        <filterFormula>{!$Permission.PCC_Bypass_Automation} = False</filterFormula>
+        <filterFormula>{!$Permission.PCC_Bypass_Automation} = false</filterFormula>
         <object>Core_Design_Registration_Product__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

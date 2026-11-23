@@ -46,6 +46,7 @@ public without sharing class Core_MDF_SendPFREmailNotification{
                 if(newPfr.Core_MDF_Activity_First_Approver_txt__c != null && 
                    newPfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
                     userIds.add(newPfr.Core_MDF_Activity_First_Approver_txt__c);
+                       system.debug('userIds124 '+userIds);
                 }
             }
         } 
@@ -211,8 +212,10 @@ public without sharing class Core_MDF_SendPFREmailNotification{
                 if(newPfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM 
                     && newPfr.Core_MDF_Approval_Stage__c == Core_MDF_CCP_ConstantClass.L1_APPROVAL_PRIMARY_PARTNER){
                         userIdSet.add(newPfr.Core_MDF_Primary_Intel_Owner_Id__c);
+                        system.debug('@@@@userIdSet '+userIdSet);
                 } else {
                     userIdSet.add(newPfr.Core_MDF_Intel_Activity_Owner_Id__c);
+                    system.debug('@@@@userIdSet1 '+userIdSet);
                 }
                 pfrToSendEmailList.add(newPfr);
             }

@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Claim_Case_Reviewer_upon_Late_Claim_Escalation_Approval</fullName>
@@ -22,7 +22,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Late_Claim_Escalation_Approval</template>
+        <template>unfiled$public/Core_MDF_Late_Claim_Escalation_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_DCF_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -34,7 +34,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Escalation_ClaimSubmitter_when_Approved</fullName>
@@ -46,7 +46,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Notify_ClaimSubmitter</template>
+        <template>unfiled$public/Core_MDF_Notify_ClaimSubmitter</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -58,7 +58,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Retail_APJ_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -70,7 +70,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Retail_ASMO_LAR_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -82,7 +82,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Retail_ASMO_NAR_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -94,7 +94,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Retail_EMEA_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -106,7 +106,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Retail_PRC_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -118,7 +118,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_SPCF_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -130,7 +130,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_the_Escalation_Submitter_when_Approved</fullName>
@@ -144,7 +144,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Escalation_Approval_Email_Template</template>
+        <template>unfiled$public/Core_MDF_Escalation_Approval_Email_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_the_Escalation_Submitter_when_Denied</fullName>
@@ -158,7 +158,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Escalation_Approval_Email_Template</template>
+        <template>unfiled$public/Core_MDF_Escalation_Approval_Email_Template</template>
     </alerts>
     <alerts>
         <fullName>Notify_Claim_Case_Reviewer_Manager_upon_Claim_Case_Review_Result_Escalation_Appr</fullName>
@@ -170,7 +170,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyClaimRwrMgr_on_EscAproval</template>
+        <template>unfiled$public/Core_MDF_NotifyClaimRwrMgr_on_EscAproval</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_MDF_Cancel_Status</fullName>
@@ -220,7 +220,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_MDF_Status_to_Denied</fullName>

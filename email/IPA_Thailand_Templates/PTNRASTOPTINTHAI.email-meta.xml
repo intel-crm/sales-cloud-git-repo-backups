@@ -8,7 +8,7 @@
     <textOnly>อัปเดตบัญชีผู้ใช้ทางธุรกิจ
 
 
-!%UserFirstName%!,,
+!%UserFirstName%!,
 
 ประกาศนี้เป็นการแจ้งให้ทราบว่ามีบุคคลหนึ่งเลือกที่จะเริ่มแบ่งปันข้อมูลโปรแกรม Intel® Partner Alliance กับผู้แทนจำหน่ายที่ได้รับอนุญาตจาก Intel® และ/หรือซัพพลายเออร์ที่ได้รับการรับรองจาก Intel® (ผู้ให้บริการ)
 
@@ -21,14 +21,14 @@
 
 
 หากคุณไม่อนุมัติการดำเนินการนี้หรือคิดว่ามีข้อผิดพลาดเกิดขึ้น คุณสามารถแก้ไขตัวเลือกหรือยกเลิกได้
-หากคุณมีคำถามใดๆ โปรดติดต่อเราได้ที่ programs@intel.com.
+หากคุณมีคำถามใดๆ โปรดติดต่อเราได้ที่ programs@intel.com
 
 ขอขอบคุณ
 ทีม Intel® Partner Alliance ของคุณ
 
 ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
 ความเป็นส่วนตัว | คุ้กกี้</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>

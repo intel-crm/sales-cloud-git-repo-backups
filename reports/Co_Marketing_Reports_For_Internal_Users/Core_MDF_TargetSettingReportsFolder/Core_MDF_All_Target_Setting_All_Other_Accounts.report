@@ -62,7 +62,7 @@
     <name>All Target Setting - All Other Accounts</name>
     <params>
         <name>co</name>
-        <value>0</value>
+        <value>1</value>
     </params>
     <reportType>Core_MDF_TargetSetting_With_TargetSettingLineItem__c</reportType>
     <scope>organization</scope>

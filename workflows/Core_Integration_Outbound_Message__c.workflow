@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>outbound_message_sent</fullName>
+        <description>outbound message sent</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>12065807@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Account_Request_Creation</template>
+    </alerts>
     <outboundMessages>
         <fullName>Core_IntegrationAGSOutboundMsg</fullName>
         <apiVersion>38.0</apiVersion>
         <description>Entitlement AGS OBM.</description>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-ags/type/SM_OBM</endpointUrl>
+        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy-dev.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-ags/type/SM_OBM</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -18,33 +29,60 @@
         <fullName>Core_IntegrationAGSOutboundMsg2</fullName>
         <apiVersion>49.0</apiVersion>
         <description>Entitlement AGS OBM for A&amp;E 2.0</description>
-        <endpointUrl>https://069a99b8-e6a0-4828-a5a7-2b806d5514e5:WhX8Q~f_pSNssln4bZ9opatb6PkH6FBcPWwzBdjE@apis.intel.com/m2r/user-roles/v1/entitlements</endpointUrl>
+        <endpointUrl>https://069a99b8-e6a0-4828-a5a7-2b806d5514e5:WhX8Q~f_pSNssln4bZ9opatb6PkH6FBcPWwzBdjE@apis-stage.intel.com/m2r/user-roles/v1/entitlements</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
-        <integrationUser>integration.ags.obm@intel.com.crm</integrationUser>
+        <integrationUser>10560180@intel.com.crm</integrationUser>
         <name>Core_IntegrationAGSOutboundMsg2</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Core_IntegrationBoxBAccountOutboundMsg</fullName>
+        <apiVersion>38.0</apiVersion>
+        <description>Box B Account OBM</description>
+        <endpointUrl>https://8cc1c347-4525-4627-b9d8-0adb19ccbcbe:hXo8Q~45FFLG37OAwRcMMKaWumvD76UCqbBBUaZo@apis-stage.intel.com/m2r/sales-cloud/coverage/v1/account</endpointUrl>
+        <fields>Core_MessageType__c</fields>
+        <fields>Core_Payload__c</fields>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>10557526@intel.com.crm</integrationUser>
+        <name>Core_IntegrationBoxBAccountOutboundMsg</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Core_IntegrationBoxBContactOutboundMsg</fullName>
+        <apiVersion>38.0</apiVersion>
+        <endpointUrl>https://8cc1c347-4525-4627-b9d8-0adb19ccbcbe:hXo8Q~45FFLG37OAwRcMMKaWumvD76UCqbBBUaZo@apis-stage.intel.com/m2r/sales-cloud/coverage/v1/contact</endpointUrl>
+        <fields>Core_MessageType__c</fields>
+        <fields>Core_Payload__c</fields>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>integration_obm.user@intel.com.crm</integrationUser>
+        <name>Core_IntegrationBoxBContactOutboundMsg</name>
         <protected>false</protected>
         <useDeadLetterQueue>false</useDeadLetterQueue>
     </outboundMessages>
     <outboundMessages>
         <fullName>Core_IntegrationCIMOutboundMsg</fullName>
         <apiVersion>32.0</apiVersion>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-util-obm-consumer/eip-crm-sls-sf2cim</endpointUrl>
+        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy-dev.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-sf2cim/type/SM_OBM</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
         <integrationUser>10557526@intel.com.crm</integrationUser>
-        <name>x Core_IntegrationCIMOutboundMsg</name>
+        <name>Core_IntegrationCIMOutboundMsg</name>
         <protected>false</protected>
         <useDeadLetterQueue>false</useDeadLetterQueue>
     </outboundMessages>
     <outboundMessages>
         <fullName>Core_IntegrationERPMOutboundMsg</fullName>
         <apiVersion>38.0</apiVersion>
-        <endpointUrl>https://876fa729-f55e-448e-a202-8003cd3b214e:PPN8Q~f6XwRKkhLcuafGkKAOltybdt3e_I_yncF2@apis.intel.com/m2r/crm/erpm/v1/contacts</endpointUrl>
+        <endpointUrl>https://876fa729-f55e-448e-a202-8003cd3b214e:PPN8Q~f6XwRKkhLcuafGkKAOltybdt3e_I_yncF2@apis-stage.intel.com/m2r/crm/erpm/v1/contacts</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -58,7 +96,7 @@
         <fullName>Core_IntegrationPSGOutboundMsg</fullName>
         <apiVersion>38.0</apiVersion>
         <description>Send PSG Opportunity details to Ipaas</description>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-sls-siebel/quote</endpointUrl>
+        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy-dev.cloudhub.io/smit/api/eip-crm-sls-siebel/quote</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -72,7 +110,7 @@
         <fullName>Core_OnePartnerRequestOutboundMsg</fullName>
         <apiVersion>48.0</apiVersion>
         <description>One Partner Request Outbound message</description>
-        <endpointUrl>https://apis.intel.com/m2r/sales-cloud/opid/v1/partners/accounts?apikey=ddbf065e-4abc-4072-b625-5792c33e9b3d</endpointUrl>
+        <endpointUrl>https://apis-stage.intel.com/m2r/sales-cloud/opid/v1/partners/accounts?apikey=ddbf065e-4abc-4072-b625-5792c33e9b3d</endpointUrl>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
@@ -84,8 +122,8 @@
     <outboundMessages>
         <fullName>PMP_LTOutboundMsg</fullName>
         <apiVersion>46.0</apiVersion>
-        <description>Translation request sent to GLS via Apigee https://apis.intel.com/m2r/sales-cloud/translation/v1/articles</description>
-        <endpointUrl>https://apis.intel.com/m2r/sales-cloud/translation/v1/articles?apikey=a0ebe863-1b5c-461f-bcbd-e30284ff9fb1</endpointUrl>
+        <description>Translation request sent to GLS via Apigee https://apis-stage.intel.com/m2r/sales-cloud/translation/v1/articles</description>
+        <endpointUrl>https://apis-stage.intel.com/m2r/sales-cloud/translation/v1/articles?apikey=a0ebe863-1b5c-461f-bcbd-e30284ff9fb1</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -98,8 +136,8 @@
     <outboundMessages>
         <fullName>PMP_Partner_LTOutboundMsg</fullName>
         <apiVersion>48.0</apiVersion>
-        <description>Translation request sent to GLS via Apigee https://apis.intel.com/m2r/sales-cloud/translation/v1/articles</description>
-        <endpointUrl>https://apis.intel.com/m2r/sales-cloud/translation/v1/articles?apikey=a0ebe863-1b5c-461f-bcbd-e30284ff9fb1</endpointUrl>
+        <description>Translation request sent to GLS via Apigee https://apis-stage.intel.com/m2r/sales-cloud/translation/v1/articles</description>
+        <endpointUrl>https://apis-stage.intel.com/m2r/sales-cloud/translation/v1/articles?apikey=a0ebe863-1b5c-461f-bcbd-e30284ff9fb1</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -113,12 +151,12 @@
         <fullName>PRM_IPA_IntegrationOBM</fullName>
         <apiVersion>49.0</apiVersion>
         <description>IPA Integration Account/Contact Message</description>
-        <endpointUrl>https://79159eae-0011-4d83-98f7-9e0a16ff3bf9:Fe28Q~PnizvFSRWcI9RHgA4~wx-3eiK2snXcbbTX@apis.intel.com/m2r/sales-cloud/v1/customer-profiles/services/customer-details</endpointUrl>
+        <endpointUrl>https://79159eae-0011-4d83-98f7-9e0a16ff3bf9:5PC8Q~sjYX8C2omTuw5bNPHRVjTEsbYXWl9xYc7V@apis-stage.intel.com/m2r/sales-cloud/v1/customer-profiles/services/customer-details</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
-        <integrationUser>ipa_registration_integration.user@intel.com.crm</integrationUser>
+        <integrationUser>integration.user@intel.com.crm</integrationUser>
         <name>PRM_IPA_IntegrationOBM</name>
         <protected>false</protected>
         <useDeadLetterQueue>false</useDeadLetterQueue>
@@ -127,7 +165,7 @@
         <fullName>Pricing_IntegrationMydealOutboundMessage</fullName>
         <apiVersion>48.0</apiVersion>
         <description>Send Tenders Quote data to My Deals environment</description>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-sf2mydeals/type/SM_OBM</endpointUrl>
+        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy-dev.cloudhub.io/eip-mwfe-util-services/v1/sourcemsg/eip-m2s-sls-sf2mydeals/type/SM_OBM</endpointUrl>
         <fields>Core_MessageType__c</fields>
         <fields>Core_Payload__c</fields>
         <fields>Id</fields>
@@ -143,7 +181,7 @@
             <name>Core_IntegrationAGSOutboundMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
             <operation>equals</operation>
@@ -168,12 +206,57 @@
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
+        <fullName>Core_IntegrationBoxBAccountOutboundMsg</fullName>
+        <actions>
+            <name>Core_IntegrationBoxBAccountOutboundMsg</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
+            <operation>equals</operation>
+            <value>BoxB Account</value>
+        </criteriaItems>
+        <description>Message sent to iPAAS for BoxB System when message Type = BoxB Account</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IntegrationBoxBContactOutboundMsg</fullName>
+        <actions>
+            <name>Core_IntegrationBoxBContactOutboundMsg</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
+            <operation>equals</operation>
+            <value>Box B Contact</value>
+        </criteriaItems>
+        <description>Message sent to iPAAS for BoxB System when message Type = Box B Contact</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IntegrationCIMOutboundMsg</fullName>
+        <actions>
+            <name>Core_IntegrationCIMOutboundMsg</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
+            <operation>equals</operation>
+            <value>AccountMerge</value>
+        </criteriaItems>
+        <description>Message sent to iPAAS for CIM System when message Type = AccountMerge</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_IntegrationERPMOutboundMsg</fullName>
         <actions>
             <name>Core_IntegrationERPMOutboundMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
             <operation>equals</operation>
@@ -188,7 +271,7 @@
             <name>Core_IntegrationPSGOutboundMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
             <operation>equals</operation>
@@ -203,7 +286,7 @@
             <name>Core_OnePartnerRequestOutboundMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
             <operation>equals</operation>
@@ -254,7 +337,7 @@
             <operation>equals</operation>
             <value>Account Integration,Contact Integration</value>
         </criteriaItems>
-        <description>Message sent to Mulesoft System when message Type = Account Inegration / Contact Integration</description>
+        <description>Message sent to Mulesoft System when message Type = Account Inegration / COntact Integration</description>
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
@@ -263,28 +346,13 @@
             <name>Pricing_IntegrationMydealOutboundMessage</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
             <operation>equals</operation>
             <value>Tender</value>
         </criteriaItems>
         <description>Message sent to IPAAS for MyDeals when Message Type  = Tender</description>
-        <triggerType>onCreateOnly</triggerType>
-    </rules>
-    <rules>
-        <fullName>x Core_IntegrationCIMOutboundMsg</fullName>
-        <actions>
-            <name>Core_IntegrationCIMOutboundMsg</name>
-            <type>OutboundMessage</type>
-        </actions>
-        <active>false</active>
-        <criteriaItems>
-            <field>Core_Integration_Outbound_Message__c.Core_MessageType__c</field>
-            <operation>equals</operation>
-            <value>AccountMerge</value>
-        </criteriaItems>
-        <description>Message sent to iPAAS for CIM System when message Type = AccountMerge</description>
         <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>

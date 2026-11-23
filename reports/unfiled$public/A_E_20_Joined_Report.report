@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>Contact</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Contact.Contact_Entitlements__r$Core_Status__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Contacts block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Contacts__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>Contact$Core_AGS_Status_Change_Date_Time__c</dateColumn>
+            <interval>INTERVAL_CURRENT</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>Contact</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Contact$Core_AGS_Integration_Status__c</field>
+        </columns>
+        <columns>
+            <field>Contact$Core_ERPM_Integration_Status__c</field>
+        </columns>
+        <columns>
+            <field>Contact$Name</field>
+        </columns>
+        <columns>
+            <field>Contact.Contact_Messages__r$Id</field>
+        </columns>
+        <columns>
+            <field>Contact.Contact_Messages__r$Name</field>
+        </columns>
+        <columns>
+            <field>Contact.Contact_Messages__r$CreatedDate</field>
+        </columns>
+        <columns>
+            <field>Contact.Contact_Messages__r$Core_Inbound_Message_Status__c</field>
+        </columns>
+        <columns>
+            <field>Contact.Contact_Messages__r$LastModifiedDate</field>
+        </columns>
+        <columns>
+            <field>Contact.Contact_Messages__r$Core_Message_Type__c</field>
+        </columns>
+        <columns>
+            <field>Contact.Contact_Messages__r$Outbound_Message__c</field>
+        </columns>
+        <columns>
+            <field>Contact.Contact_Messages__r$Inbound_Message__c.Core_Message_Type__c</field>
+        </columns>
+        <filter>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <column>Contact.Contact_Messages__r$Core_Message_Type__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>AGS Contact Entitlement 2.0</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Contact.Contact_Messages__r$Core_Message_Type__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>AGS Contact Entitlement</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>A&amp;E 2.0 Metrics block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>A_E_2_0_Metrics__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>Contact$Core_AGS_Status_Change_Date_Time__c</dateColumn>
+            <interval>INTERVAL_CURRENT</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Contact</joinTable>
+    </blockInfo>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$Id</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>A&amp;E  2.0 Joined Report</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>Contacts__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

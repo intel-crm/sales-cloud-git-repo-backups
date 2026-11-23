@@ -12,6 +12,14 @@
         <label><!-- Legal Agreement Category --></label>
         <name>PRM_Agreement_Category_Nm__c</name>
         <picklistValues>
+            <masterLabel>EDC_TNC</masterLabel>
+            <translation><!-- EDC_TNC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Registration Terms and Conditions</masterLabel>
+            <translation><!-- General Registration Terms and Conditions --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Intel Insider Cloud All Agreements</masterLabel>
             <translation><!-- Intel Insider Cloud All Agreements --></translation>
         </picklistValues>

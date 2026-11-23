@@ -19,9 +19,6 @@
         <field>Contact.Core_Enterprise_Id__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_User_Status__c</field>
-    </columns>
-    <columns>
         <field>Contact.Core_Is_FederationId_Valid_Ind__c</field>
     </columns>
     <columns>
@@ -33,10 +30,9 @@
     <customDetailFormulas>
         <calculatedFormula>IF(NOT(ISPICKVAL(Contact.Core_Login_Status__c,&apos;Deleted&apos;)),&apos;Identity Attribute (Login status) not in sync with AGS&apos;,
 IF(NOT(ISBLANK(Contact.Core_Enterprise_Id__c)),&apos; Identity Attribute (Enterprise ID) not in sync with AGS&apos;,
-IF(Contact.Core_User_Status__c=&apos;Active&apos;, &apos;User is active.Only inactive users will be considered for UIOLI batch&apos;,
 IF(ISPICKVAL(Contact.Core_Is_FederationId_Valid_Ind__c,&apos;false&apos;),    &apos;Federation ID and Enetrprise ID are not in sync&apos;,
-IF(CONTAINS(Contact.Core_Email_Domain__c,&apos;@intel.com&apos;),&apos;Internal user; This record will not be considered for UIOLI batch&apos;,&apos;Yet to be picked up by the UIOLI batch&apos;)
-))))</calculatedFormula>
+IF(CONTAINS(Contact.Core_Email_Domain__c,&apos;@intel.com&apos;),&apos;Internal user; This record will not be considered for UIOLI batch&apos;,&apos;Yet to be picked up by the UIOLI batch OR User is active; Only inactive users will be considered for UIOLI batch&apos;)
+)))</calculatedFormula>
         <dataType>Text</dataType>
         <description>This Field shows contact&apos;s deletion status</description>
         <developerName>CDF1</developerName>

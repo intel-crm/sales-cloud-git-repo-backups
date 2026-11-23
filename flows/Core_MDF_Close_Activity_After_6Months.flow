@@ -45,6 +45,9 @@
         <label>myDecision</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
@@ -60,6 +63,31 @@
                 <targetReference>myRule_1_pmetdec</targetReference>
             </connector>
             <label>Verify Activity Valid Status</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>test</label>
         </rules>
     </decisions>
     <decisions>
@@ -292,7 +320,12 @@
    )
 )</expression>
     </formulas>
-    <interviewLabel>Core_MDF_Close_Activity_After_6Months-14_InterviewLabel</interviewLabel>
+    <formulas>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>true</expression>
+    </formulas>
+    <interviewLabel>Core_MDF_Close_Activity_After_6Months-15_InterviewLabel</interviewLabel>
     <label>Close Activity After 6Months</label>
     <processMetadataValues>
         <name>ObjectType</name>

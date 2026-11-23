@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>zay.s.montalbo@intel.com</contactEmail>
+    <contactEmail>anusha.d.n@intel.com</contactEmail>
     <label>AE Box B API Access</label>
     <oauthConfig>
         <callbackUrl>https://intel.my.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6t4WOxhSmunnzJCnPtsRvbaoof7CHbPp9K59pJ7L4JtsK2ZWfK1YvrmqSr9R</consumerKey>
+        <consumerKey>3MVG9ysJNY7CaIHnXtkJBm9UdfC4y_PLIeZS9ZAFVNzlqqSS_PY5ZVzciqQW4BqJi3homVASXRsR4n2bzFN1I</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
-        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isConsumerSecretOptional>true</isConsumerSecretOptional>
         <isDPopEnabled>false</isDPopEnabled>
         <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
         <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>

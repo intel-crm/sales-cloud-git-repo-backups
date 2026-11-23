@@ -31,7 +31,6 @@ public class PRM_ProfileReponseMismatchReportTest {
         opidAcc.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
         opidAcc.Website='www.abc.com';
         opidAcc.Core_User_Defined_Website__c='www.abc.com';
-        opidAcc.Core_IPA_Badge_Tier__c ='Member';
         insert opidAcc;
         
         
@@ -51,52 +50,14 @@ public class PRM_ProfileReponseMismatchReportTest {
         newAccount.Core_IPA_One_Partner_Id__c=opidAcc.id;
         insert newAccount;
         
-        Account opidAcc1 = new Account();//Account
-        opidAcc1.RecordTypeId = recordTypeIdPagAccount;
-        opidAcc1.Name='OPID 1';
-        //;;
-        opidAcc1.BillingCity='City1';
-        opidAcc1.BillingStreet='Street1';
-        opidAcc1.BillingCountry='India';
-        opidAcc1.BillingPostalCode='Postal code';
-        opidAcc1.Core_Account_Type__c='Intel Authorized Distributor (IAD);Intel Approved Device Supplier (IADS)';
-        opidAcc1.Core_IPA_Partner_Role__c='Service Provider;Distributor';
-        opidAcc1.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
-        opidAcc1.Website='www.abc.com';
-        opidAcc1.Core_User_Defined_Website__c='www.abc.com';
-        opidAcc1.Core_IPA_Badge_Tier__c ='Member';
-        insert opidAcc1;
-        
-         //location account
-        Account newAccount1 = new Account();//Account
-        newAccount1.RecordTypeId = recordTypeIdAccount;
-        newAccount1.Name='Greg Thomas';
-        newAccount1.BillingCity='City1';
-        newAccount1.BillingStreet='Street1';
-        newAccount1.BillingCountry='India';
-        newAccount1.BillingPostalCode='Postal code';
-        newAccount1.Core_Account_Type__c='Intel Authorized Distributor (IAD);Intel Approved Device Supplier (IADS)';
-        newAccount1.Core_IPA_Partner_Role__c='Service Provider;Distributor';
-        newAccount1.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
-        newAccount1.Website='www.abc.com';
-        newAccount1.Core_User_Defined_Website__c='www.abc.com';
-        newAccount1.Core_IPA_One_Partner_Id__c=opidAcc1.id;
-        insert newAccount1;
-        
-        
         Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
         coreAccnt.Core_Partner_Account_Id__c = opidAcc.id;
         coreAccnt.Core_Intel_Account_Id__c = newAccount.id;
         insert coreAccnt;
         
-        Core_Account_Group_Member__c coreAccnt1 = new Core_Account_Group_Member__c();
-        coreAccnt1.Core_Partner_Account_Id__c = opidAcc1.id;
-        coreAccnt1.Core_Intel_Account_Id__c = newAccount1.id;
-        insert coreAccnt1;
-        
         
         Set<Id> accIds = new Set<Id> 
-        { newAccount.Id,coreAccnt1.Id };
+        { newAccount.Id };
           
         Set<Id> newSet = new Set<id>();
         
@@ -104,7 +65,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         cont.AccountId=opidAcc.Id;
         cont.lastName='Grill';
         cont.FirstName='Adam';
-        cont.email='AdamGrill@rediff.com';        
+        cont.email='AdamGrill@rediff.com';
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
         //cont.Core_IPA_Partner_Role__c = 'Service Provider';
@@ -121,7 +82,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         cont2.AccountId=newAccount.Id;
         cont2.lastName='adam';
         cont2.FirstName='west';
-        cont2.email='AdamGrill@wst.com';      
+        cont2.email='AdamGrill@wst.com';
         cont2.Core_Job_Function__c='Branch Manager';
         cont2.Core_eRPM_Language_Code__c='Eng';
         //cont2.Core_IPA_Partner_Role__c = 'Service Provider';
@@ -200,46 +161,30 @@ public class PRM_ProfileReponseMismatchReportTest {
         newAccountAcm.PRM_Channel_Program_Id__c=cp.Id;
         newAccountAcm.PRM_Channel_Program_Level_Id__c=cpl.Id;
         newAccountAcm.PRM_Partner_Role__c='Service Provider';
+        newAccountAcm.PRM_Status_Reason_Txt__c='Test01';
         insert newAccountAcm;
-        
-        PRM_AccountChannelMembership__c newAccountAcm1= new PRM_AccountChannelMembership__c(); //Account Channel Membership
-        newAccountAcm1.PRM_Account_Id__c=newAccount.id;
-        newAccountAcm1.PRM_Status_Nm__c='Approved';
-        newAccountAcm1.PRM_Channel_Program_Id__c=cp.Id;
-        newAccountAcm1.PRM_Channel_Program_Level_Id__c=cpl1.Id;
-        newAccountAcm1.PRM_Partner_Role__c='Service Provider';
-        insert newAccountAcm1;
-        
-        PRM_AccountChannelMembership__c newAccountAcm2= new PRM_AccountChannelMembership__c(); //Account Channel Membership
-        newAccountAcm2.PRM_Account_Id__c=newAccount.id;
-        newAccountAcm2.PRM_Status_Nm__c='Approved';
-        newAccountAcm2.PRM_Channel_Program_Id__c=cp.Id;
-        newAccountAcm2.PRM_Channel_Program_Level_Id__c=cpl2.Id;
-        newAccountAcm2.PRM_Partner_Role__c='Service Provider';
-        
-        insert newAccountAcm2;
         
         list<sobject> testLst=new list<sobject>();
         
-        Account newAccount2 = new Account();//Account
-        newAccount2.RecordTypeId = recordTypeIdAccount;
-        newAccount2.Name='Greg Thomas';
-        newAccount2.BillingCity='City';
-        newAccount2.BillingStreet='Street';
-        newAccount2.BillingCountry='India';
-        newAccount2.BillingPostalCode='Postal code';
-        newAccount2.Core_Account_Type__c='Intel Authorized Distributor (IAD);Intel Approved Device Supplier (IADS)';
-        newAccount2.Core_IPA_Partner_Role__c='Service Provider;Distributor';
-        newAccount2.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
-        newAccount2.Website='www.abc.com';
-        newAccount2.Core_IPA_One_Partner_Id__c=opidAcc.id;
-        testLst.add(newAccount2);
+        Account newAccount1 = new Account();//Account
+        newAccount1.RecordTypeId = recordTypeIdAccount;
+        newAccount1.Name='Greg Thomas';
+        newAccount1.BillingCity='City';
+        newAccount1.BillingStreet='Street';
+        newAccount1.BillingCountry='India';
+        newAccount1.BillingPostalCode='Postal code';
+        newAccount1.Core_Account_Type__c='Intel Authorized Distributor (IAD);Intel Approved Device Supplier (IADS)';
+        newAccount1.Core_IPA_Partner_Role__c='Service Provider;Distributor';
+        newAccount1.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
+        newAccount1.Website='www.abc.com';
+        newAccount1.Core_IPA_One_Partner_Id__c=opidAcc.id;
+        testLst.add(newAccount1);
         
         Contact cont1 = new Contact();  //Contact  
         cont1.AccountId=newAccount.Id;
         cont1.lastName='Grill';
         cont1.FirstName='Adam';
-        cont1.email='AdamGrill123@rediff.com';      
+        cont1.email='AdamGrill123@rediff.com';
         cont1.Core_Job_Function__c='Branch Manager';
         cont1.Core_eRPM_Language_Code__c='Eng';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
@@ -258,16 +203,18 @@ public class PRM_ProfileReponseMismatchReportTest {
         insert pbTest;
         
         PRM_AccountBenefitAssociation__c abaTest= new PRM_AccountBenefitAssociation__c();
-        abaTest.PRM_Account_Id__c = newAccount2.Id;
+        abaTest.PRM_Account_Id__c = newAccount1.Id;
         abaTest.PRM_Partner_Benefit_Id__c = pbTest.id;
         abaTest.PRM_Source__c='Tier';
+        abaTest.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
         testLst.add(abaTest);
         
         PRM_AccountChannelMembership__c testACM= new PRM_AccountChannelMembership__c(); //Account Channel Membership
-        testACM.PRM_Account_Id__c=newAccount2.id;
+        testACM.PRM_Account_Id__c=newAccount1.id;
         testACM.PRM_Channel_Program_Id__c=cp.Id;
         testACM.PRM_Channel_Program_Level_Id__c=cpl.Id;
         testACM.PRM_Partner_Role__c='Service Provider';
+        testACM.PRM_Status_Reason_Txt__c='Test03';
         testLst.add(testACM);
         
         PRM_ACMUpdateUtility.upsertData(testLst);
@@ -278,7 +225,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         opidACM.PRM_Status_Nm__c='Approved';
         opidACM.PRM_Channel_Program_Id__c=cp.Id;
         opidACM.PRM_Channel_Program_Level_Id__c=cpl.Id;
-        
+        opidACM.PRM_Status_Reason_Txt__c='Test02';
         opidACM.PRM_Partner_Role__c='Service Provider';
         insert opidACM;
         
@@ -289,7 +236,6 @@ public class PRM_ProfileReponseMismatchReportTest {
         acctContRel.PRM_InActive_Ind__c=false;
         acctContRel.PRM_Status_Nm__c = 'Complete';
         insert acctContRel;
-        System.debug('acctContRel inserted:'+[select id,PRM_InActive_Ind__c,PRM_Status_Nm__c, PRM_Partner_Role__c, PRM_Account_Id__c, PRM_Relationship_Id__r.name,PRM_Account_Id__r.Core_IPA_Partner_Segment__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c, PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Contact_Id__c, PRM_Contact_Id__r.Core_IPA_PartnerRole__c ,PRM_Contact_Id__r.Core_IPA_Contact_Segment__c from PRM_Account_Contact_Relationship__c where id = :acctContRel.id]);
         acctContRel.PRM_Status_Nm__c = 'Complete';
         update acctContRel;
        
@@ -389,7 +335,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         bem111.PRM_IsActive_Ind__c=True;
         bem111.PRM_Partner_Benefit_Id__c=pb2.Id;
         bem111.PRM_Partner_Type_Id__c=pt.Id;
-        bem111.PRM_Partner_Role_Nm__c='Seller';
+        bem111.PRM_Partner_Role_Nm__c='Guest';
         benfitLst.add(bem111);
         
         PRM_VXBnftMatrix__c bem112=new PRM_VXBnftMatrix__c(); //Benefit Matrix
@@ -400,7 +346,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         bem112.PRM_IsActive_Ind__c=True;
         bem112.PRM_Partner_Benefit_Id__c=pb.Id;
         bem112.PRM_Partner_Type_Id__c=pt.Id;
-        bem112.PRM_Partner_Role_Nm__c='Seller';
+        bem112.PRM_Partner_Role_Nm__c='Guest';
         benfitLst.add(bem112);
         
         
@@ -412,7 +358,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         bem1111.PRM_IsActive_Ind__c=True;
         bem1111.PRM_Partner_Benefit_Id__c=pb1.Id;
         bem1111.PRM_Partner_Type_Id__c=pt.Id;
-        bem1111.PRM_Partner_Role_Nm__c='Seller';
+        bem1111.PRM_Partner_Role_Nm__c='Guest';
         benfitLst.add(bem1111);
         
         
@@ -424,7 +370,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         bem113.PRM_IsActive_Ind__c=True;
         bem113.PRM_Partner_Benefit_Id__c=pb.Id;
         bem113.PRM_Partner_Type_Id__c=pt.Id;
-        bem113.PRM_Partner_Role_Nm__c='Seller';
+        bem113.PRM_Partner_Role_Nm__c='Guest';
         benfitLst.add(bem113);
         insert benfitLst;
         
@@ -435,6 +381,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         aba.PRM_Partner_Benefit_Id__c = pb.id;
         aba.PRM_Status_Nm__c = 'Active';
         aba.PRM_Source__c='Tier';
+        aba.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
         abaLst.add(aba);
         
         PRM_AccountBenefitAssociation__c abaSpec = new PRM_AccountBenefitAssociation__c();
@@ -442,6 +389,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         abaSpec.PRM_Partner_Benefit_Id__c = pb.id;
         abaSpec.PRM_Status_Nm__c = 'Active';
         abaSpec.PRM_Source__c='Select Benefit';
+        abaSpec.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
         abaLst.add(abaSpec);
         
         PRM_AccountBenefitAssociation__c aba11 = new PRM_AccountBenefitAssociation__c();
@@ -449,13 +397,14 @@ public class PRM_ProfileReponseMismatchReportTest {
         aba11.PRM_Partner_Benefit_Id__c = wrBnft.id;
         aba11.PRM_Status_Nm__c = 'Active';        
         aba11.PRM_Source__c='Tier';
+        aba11.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
         abaLst.add(aba11);
         
         PRM_AccountBenefitAssociation__c aba1 = new PRM_AccountBenefitAssociation__c();
         aba1.PRM_Account_Id__c = newAccount.Id;
         aba1.PRM_Partner_Benefit_Id__c = pb1.id;
         aba1.PRM_Status_Nm__c = 'Active';
-        
+        aba1.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
         aba1.PRM_Source__c='Tier';
         abaLst.add(aba1);
         
@@ -481,7 +430,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         cont3.AccountId=testAccount.Id;
         cont3.lastName='Grilla';
         cont3.FirstName='Adama';
-        cont3.email='AdamGraill@rediff.com';     
+        cont3.email='AdamGraill@rediff.com';
         cont3.Core_Job_Function__c='Branch aManager';
         cont3.Core_eRPM_Language_Code__c='Eng';
         cont3.Core_IPA_Partner_Community__c = 'Intel® IOT Solution Partner';
@@ -504,6 +453,7 @@ public class PRM_ProfileReponseMismatchReportTest {
         testACM1.PRM_Channel_Program_Id__c=cp.Id;
         testACM1.PRM_Channel_Program_Level_Id__c=cpl.Id;
         testACM1.PRM_Partner_Role__c='Guest';
+        testACM1.PRM_Status_Reason_Txt__c='Test04';
         insert testACM1;
             
         //PRM_aba_TriggerHandler.executeTrigger = false;
@@ -653,5 +603,10 @@ public class PRM_ProfileReponseMismatchReportTest {
         
         
         test.stopTest();    
+        
+        
+        
+
+        
     }
 }

@@ -1,0 +1,10 @@
+@import "./mobileHeader.css";
+
+.offering-content {
+  --detail-marquee-background: var(--blue-steel-shade1);
+  --intc-carousel-bgcolor: var(--blue-steel-shade1);
+  --intc-carousel-indicator-bgcolor: var(--blue-steel-shade1);
+  --intc-carousel-indicator-height: 2.7rem;
+  --intc-carousel-indicator-width: 4.8rem;
+  --intc-gallery-image-border: none;
+}

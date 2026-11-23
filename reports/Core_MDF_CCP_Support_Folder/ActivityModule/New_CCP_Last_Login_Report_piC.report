@@ -73,7 +73,7 @@
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>false</isUnlocked>
                 <operator>contains</operator>
-                <value>CCF USER,DCF USER,SPCF USER,RMF USER,CCF Boost User,IPA MDF User</value>
+                <value>CCF,DCF,SPCF,RMF,IPA</value>
             </criteriaItems>
             <criteriaItems>
                 <column>Contact.Contact_Entitlements__r$Core_Status__c</column>
@@ -145,7 +145,7 @@
         <field>User$Contact</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>CCP Last Login Report</name>
+    <name>New CCP Last Login Report</name>
     <params>
         <name>lsk</name>
         <value>1</value>

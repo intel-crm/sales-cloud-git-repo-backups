@@ -7,9 +7,6 @@
         <locationY>404</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
-        <connector>
-            <targetReference>Update_Campaign_Stage</targetReference>
-        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>processDefinitionNameOrId</name>
@@ -57,19 +54,6 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordUpdates>
-        <name>Update_Campaign_Stage</name>
-        <label>Update Campaign Stage</label>
-        <locationX>891</locationX>
-        <locationY>403</locationY>
-        <inputAssignments>
-            <field>Core_MDF_Approval_Stage_nm__c</field>
-            <value>
-                <stringValue>L1 Approval</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
     <start>
         <locationX>490</locationX>
         <locationY>48</locationY>
@@ -89,5 +73,5 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

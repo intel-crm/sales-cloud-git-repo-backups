@@ -105,6 +105,15 @@
         			button.set("v.disabled",true);
                     helper.showToast(component, event, helper,message.message,"error");
                 }
+            }else{
+                var errors = a.getError();
+                if (errors) {
+                    console.log(errors);
+                    if (errors[0] && errors[0].message) {
+                        console.log("Error on submit quarter for approval "+errors[0].message);
+                        helper.toastMessage(component, "error", errors[0].message);
+                    }
+                }  
             }
             helper.hideSpinner(component);
         });

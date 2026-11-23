@@ -329,7 +329,7 @@ public without sharing class PRM_SendEmailsToPrimaryContacts {
         if(!objEmailNotifList.isEmpty()){
             sendEmail(objEmailNotifList,PRM_EmailUtility.customPlaceholdersMap);
         }
-    }	*/
+    }  */
     
     public class sendEmailNotificationToPrimaryContactsWrapper{
         public Set<String> setOfPrimaryContact{get;set;}

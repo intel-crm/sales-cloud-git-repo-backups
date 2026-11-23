@@ -1,0 +1,39 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="true" subject="Weekly Claim Score Update" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+<html>
+    <body>
+             <p>{!$Label.Core_MDF_EmailTemp_DearIntelemployee}</p>
+                 <p><span>This week your account(s) have new claim scores you can view by using the following 
+                          <strong>
+                          <c:Core_MDF_ReportLinkComp reportName="Claim Score Report" isExternalUser="false" reportUrlLabel="link" />
+                          </strong>
+                    </span>
+                 </p>
+                 <p><span>If you have questions, please reach out to <strong><a href="https://intelinside.intel.com/support">{!$Label.Core_MDF_Program_Support}</a>&nbsp;</strong>
+                    </span>
+                 </p>
+                 <p></p>
+        <p></p>
+        <p>{!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}</p>
+                    <p>{!$Label.Core_MDF_Email_Signature}</p> 
+                      
+               
+                <div style="font-size:11px;font-family:Calibri">
+                                   <p>
+                                     <i>  {!$Label.Core_MDF_EmailTemp_Claim_Footer1}
+                                           <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer2}<br/><br/></i>
+                                            {!$Label.Core_MDF_EmailTemp_Claim_Footer3}
+                                            <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Customer_Support}"> {!$Label.Core_MDF_EmailTemp_Claim_URL2} </a>
+                                           {!$Label.Core_MDF_EmailTemp_Claim_Footer4}<br/><br/>
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Home}" > {!$Label.Core_MDF_EmailTemp_Footer3} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Trademarks}"> {!$Label.Core_MDF_EmailTemp_Footer4} </a> | 
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Privacy}"> {!$Label.Core_MDF_EmailTemp_Footer5} </a> |
+                                    <a href = "{!$Label.Core_MDF_EmailTemp_Claim_HyperLink_Cookies}"> {!$Label.Core_MDF_EmailTemp_Footer6} </a>
+                            </p>         
+                    
+                    </div> 
+    </body>
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

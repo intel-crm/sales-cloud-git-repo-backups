@@ -35,7 +35,6 @@ public class PRM_Account_Specialty_Assoc_Handler extends TriggerHandler {
         }
     }
     public override void afterInsert(){
-        //system.debug('Entered  ASA afterInsert records');
         if(isActive('PRM_Account_Specialty_Assoc_Switch') && PRM_Account_Specialty_Assoc_Utility.firstRunAfterInsert) {     //Retrieved from Custom Metadata
             PRM_Account_Specialty_Assoc_Utility.firstRunAfterInsert = false;
         //    PRM_Account_Specialty_Assoc_Utility.updatePartnerSpecialityOnAccount(trigger.New, (map<id, PRM_Account_Specialty_Association__c>)trigger.oldMap);
@@ -58,7 +57,6 @@ public class PRM_Account_Specialty_Assoc_Handler extends TriggerHandler {
                // PRM_EmailUtility.sendEmailToPrimaryContacts(trigger.New, (map<id, PRM_Account_Specialty_Association__c>)trigger.oldMap);
             }
             if(trigger.IsUpdate && PRM_Account_Specialty_Assoc_Utility.firstRunAfterUpdate) {
-                //System.debug('PRM_Account_Specialty_Assoc_Utility.firstRunAfterUpdate-->'+PRM_Account_Specialty_Assoc_Utility.firstRunAfterUpdate);
                 PRM_Account_Specialty_Assoc_Utility.firstRunAfterUpdate = false;
                 PRM_Account_Specialty_Assoc_Utility.InactiveASAOnParentAcc(trigger.New, (map<id, PRM_Account_Specialty_Association__c>)trigger.oldMap); //UTKARSH - US706417
               //  PRM_Account_Specialty_Assoc_Utility.updatePartnerSpecialityOnAccount(trigger.New, (map<id, PRM_Account_Specialty_Association__c>)trigger.oldMap);

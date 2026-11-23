@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
-        <apexClass>CRM_QuoteRequestController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>CRM_Software_And_ServicesQuote</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -16,19 +12,10 @@
         <apexClass>Core_Opportunity_Support_statusupdate</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>Core_PCC_OpportunityReminderBatch</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>Pricing_QuoteEmailAlertController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
     <customPermissions>
         <enabled>true</enabled>
         <name>Core_CRM_Special_Access</name>
     </customPermissions>
-    <description>variety of things included DR high/low</description>
     <fieldPermissions>
         <editable>true</editable>
         <field>CRM_Linked_Opportunities__c.CRM_Link_Description__c</field>
@@ -202,11 +189,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>CRM_VBS_SOAR__c.CRM_VBS_VBS_Explore_Re_Use__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_Opportunity_Facts__c.Core_Sustainability_Compliance__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -515,11 +497,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.Core_Sustainability_Compliance__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Core_VBS_Status__c</field>
         <readable>true</readable>
@@ -592,6 +569,26 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>OpportunityLineItem.SBQQ__QuoteLine__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Account_Detail__c.Old_Account_Primary_Coverage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Account_Detail__c.Old_Account_owner__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Account_Detail__c.Old_Sales_Group__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SPM_Account_Detail__c.Old_Semi_Annual_Temp_Account_Category__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -674,4 +671,8 @@
         <tab>Core_Solution_Areas__c</tab>
         <visibility>Available</visibility>
     </tabSettings>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>RunFlow</name>
+    </userPermissions>
 </PermissionSet>

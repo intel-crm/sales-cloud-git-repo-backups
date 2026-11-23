@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Core_Inquiry_Email_Templates/Core_Inquiry_Asked_For_Contact_Follow_Up</template>
+        <template>unfiled$public/Core_Inquiry_Asked_For_Contact_Follow_Up</template>
     </alerts>
     <alerts>
         <fullName>Core_Inquiry_Asked_For_Lead_Follow_Up</fullName>
@@ -22,7 +22,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Core_Inquiry_Email_Templates/Core_Inquiry_Asked_For_Lead_Follow_Up</template>
+        <template>unfiled$public/Core_Inquiry_Asked_For_Lead_Follow_Up</template>
     </alerts>
     <alerts>
         <fullName>Core_Inquiry_CNDA_Request_Contact</fullName>
@@ -34,18 +34,19 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Core_Inquiry_Email_Templates/Core_Inquiry_CNDA_Contact_Request</template>
+        <template>unfiled$public/Core_Inquiry_CNDA_Contact_Request</template>
     </alerts>
     <alerts>
         <fullName>Core_Inquiry_CNDA_Request_Lead</fullName>
         <description>Core_Inquiry_CNDA_Request_Lead</description>
         <protected>false</protected>
         <recipients>
-            <type>owner</type>
+            <field>Core_Lead_Contact_Owner_Email__c</field>
+            <type>email</type>
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Core_Inquiry_Email_Templates/Core_Inquiry_CNDA_Lead_Request</template>
+        <template>unfiled$public/Core_Inquiry_CNDA_Lead_Request</template>
     </alerts>
     <alerts>
         <fullName>EA_Core_Inquiry_Asked_For_Lead_Follow_Up</fullName>
@@ -57,8 +58,17 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Core_Inquiry_Email_Templates/Core_Inquiry_Asked_For_Lead_Follow_Up</template>
+        <template>unfiled$public/Core_Inquiry_Asked_For_Lead_Follow_Up</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>Core_Entrance_Date_Reviewed_Empty</fullName>
+        <field>Core_Inquiry_Entrance_Date_Reviewed_Dte__c</field>
+        <name>Core_Entrance_Date_Reviewed_Empty</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_Inquiry_Entrance_Date_New</fullName>
         <field>Core_Inquiry_Entrance_Date_New_Dte__c</field>
@@ -110,6 +120,17 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Core_Lead_Contact_Owner_Email_Updation</fullName>
+        <description>Update the Lead/Contact Owner Email.</description>
+        <field>Core_Lead_Contact_Owner_Email__c</field>
+        <formula>IF( Core_Lead_Inquiries__c &lt;&gt; NULL, IF(Core_Lead_Inquiries__r.Owner:User.Email&lt;&gt; NULL, Core_Lead_Inquiries__r.Owner:User.Email, null),IF(Core_Contact_Inquiries__c &lt;&gt; NULL, IF(Core_Contact_Inquiries__r.Owner.Email&lt;&gt; NULL, Core_Contact_Inquiries__r.Owner.Email,null),null))</formula>
+        <name>Lead/Contact Owner Email Updation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Core_Update_Name</fullName>
         <description>This is to update the Inquiry name to Inquiry type of the record</description>
         <field>Name</field>
@@ -121,14 +142,27 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <rules>
+        <fullName>Core Inquiry Owner Email Update</fullName>
+        <actions>
+            <name>Core_Lead_Contact_Owner_Email_Updation</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_Inquiry__c.Core_Lead_Contact_Owner_Email__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_Inquiry_Asked_For_Contact_Follow_Up</fullName>
         <actions>
             <name>Core_Inquiry_Asked_For_Contact_Follow_Up</name>
             <type>Alert</type>
         </actions>
         <active>false</active>
-        <formula>Core_Contact_Inquiries__c  != NULL &amp;&amp;   (OR(   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Asked for Follow-up&apos;),  ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Requested Quote&apos;),   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Sales Approved&apos;)  ))</formula>
-        <triggerType>onCreateOnly</triggerType>
+        <formula>Core_Contact_Inquiries__c  != NULL &amp;&amp;   (OR(   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Asked for Follow-up&apos;),  ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Requested Quote&apos;),   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Sales Approved&apos;)  )) &amp;&amp;  Core_Lead_Contact_Owner_Email__c != NULL</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Core_Inquiry_Asked_For_Lead_Follow_Up</fullName>
@@ -137,8 +171,8 @@
             <type>Alert</type>
         </actions>
         <active>false</active>
-        <formula>Core_Lead_Inquiries__c != NULL &amp;&amp;   (OR(   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Asked for Follow-up&apos;),  ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Requested Quote&apos;),   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Sales Approved&apos;)  ))</formula>
-        <triggerType>onCreateOnly</triggerType>
+        <formula>Core_Lead_Inquiries__c != NULL &amp;&amp;   (OR(   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Asked for Follow-up&apos;),  ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Requested Quote&apos;),   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;Sales Approved&apos;)  )) &amp;&amp;  Core_Lead_Contact_Owner_Email__c != NULL</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Core_Inquiry_CNDA_Request_Contact</fullName>
@@ -147,8 +181,8 @@
             <type>Alert</type>
         </actions>
         <active>false</active>
-        <formula>Core_Contact_Inquiries__c != NULL &amp;&amp;   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;CNDA Request&apos;)</formula>
-        <triggerType>onCreateOnly</triggerType>
+        <formula>Core_Contact_Inquiries__c != NULL &amp;&amp;   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;CNDA Request&apos;)&amp;&amp;  Core_Lead_Contact_Owner_Email__c != NULL</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Core_Inquiry_CNDA_Request_Lead</fullName>
@@ -157,11 +191,15 @@
             <type>Alert</type>
         </actions>
         <active>false</active>
-        <formula>Core_Lead_Inquiries__c != NULL &amp;&amp;   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;CNDA Request&apos;)</formula>
-        <triggerType>onCreateOnly</triggerType>
+        <formula>Core_Lead_Inquiries__c != NULL &amp;&amp;   ISPICKVAL( Core_Inquiry_Type_Pkt__c , &apos;CNDA Request&apos;)&amp;&amp;  Core_Lead_Contact_Owner_Email__c != NULL</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Core_Inquiry_Entrance_Date_New</fullName>
+        <actions>
+            <name>Core_Entrance_Date_Reviewed_Empty</name>
+            <type>FieldUpdate</type>
+        </actions>
         <actions>
             <name>Core_Inquiry_Entrance_Date_New</name>
             <type>FieldUpdate</type>

@@ -1,6 +1,16 @@
 {
 "zh_CN" : [
 	{
+	"Parent Identifier" : "",
+	"Parent Name" : "",
+	"Child Identifier" : "Solution_Marketplace_Hierarchy",
+	"Child Name" : "",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
 	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
 	"Parent Name" : "",
 	"Child Identifier" : "NPP_01_TYPE",
@@ -1132,8 +1142,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "1GbE",
-						"Values"	 : "1GbE"
+						"Identifier" : "10/100 Fast Ethernet",
+						"Values"	 : "10/100 快速以太网"
 										}
 	},
 		{
@@ -1147,8 +1157,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "N/A",
-						"Values"	 : "不适用"
+						"Identifier" : "1GbE",
+						"Values"	 : "1GbE"
 										}
 	},
 		{
@@ -1177,8 +1187,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "10/100 Fast Ethernet",
-						"Values"	 : "10/100 快速以太网"
+						"Identifier" : ">10GbE",
+						"Values"	 : ">10GbE"
 										}
 	},
 		{
@@ -1192,8 +1202,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : ">10GbE",
-						"Values"	 : ">10GbE"
+						"Identifier" : "N/A",
+						"Values"	 : "不适用"
 										}
 	},
 		{
@@ -1357,23 +1367,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "PCIe 4.0",
-						"Values"	 : "PCIe 4.0"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_PCIExpress_PCIeRevision",
-		"Sequence" : "3,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"设备和接口",
-   		"Level 2" :"PCI Express",
-   		"Level 3" :"PCIe 修订版",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button (Single select)",
-					"Preset Values"   : {
-						"Identifier" : "N/A",
-						"Values"	 : "不适用"
+						"Identifier" : "PCIe 1.0",
+						"Values"	 : "PCIe 1.0"
 										}
 	},
 		{
@@ -1402,8 +1397,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "PCIe 1.0",
-						"Values"	 : "PCIe 1.0"
+						"Identifier" : "PCIe 3.0",
+						"Values"	 : "PCIe 3.0"
 										}
 	},
 		{
@@ -1417,8 +1412,23 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "PCIe 3.0",
-						"Values"	 : "PCIe 3.0"
+						"Identifier" : "PCIe 4.0",
+						"Values"	 : "PCIe 4.0"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_PCIExpress_PCIeRevision",
+		"Sequence" : "3,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"设备和接口",
+   		"Level 2" :"PCI Express",
+   		"Level 3" :"PCIe 修订版",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button (Single select)",
+					"Preset Values"   : {
+						"Identifier" : "N/A",
+						"Values"	 : "不适用"
 										}
 	},
 		{
@@ -2872,68 +2882,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "3G",
-						"Values"	 : "3G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "2G",
-						"Values"	 : "2G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Intel Wireless",
 						"Values"	 : "英特尔® 无线"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "4G",
-						"Values"	 : "4G"
 										}
 	},
 		{
@@ -2964,6 +2914,66 @@
 					"Preset Values"   : {
 						"Identifier" : "5G",
 						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "4G",
+						"Values"	 : "4G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "3G",
+						"Values"	 : "3G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "2G",
+						"Values"	 : "2G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -5047,21 +5057,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Intelligent Platform Management Interface (IPMI 1.0)",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_DeviceManagement_Standards",
-		"Sequence" : "1,810",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"设备和接口",
-   		"Level 2" :"设备管理",
-   		"Level 3" :"相关标准",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Platform Level Data Model",
 						"Values"	 : ""
 										}
@@ -5092,8 +5087,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Other",
-						"Values"	 : "其它"
+						"Identifier" : "Intelligent Platform Management Interface (IPMI 1.0)",
+						"Values"	 : ""
 										}
 	},
 		{
@@ -5109,6 +5104,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Intelligent Platform Management Interface (IPMI 2.0)",
 						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_DeviceManagement_Standards",
+		"Sequence" : "1,810",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"设备和接口",
+   		"Level 2" :"设备管理",
+   		"Level 3" :"相关标准",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Other",
+						"Values"	 : "其它"
 										}
 	},
 		{
@@ -5152,6 +5162,21 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
+						"Identifier" : "10/100 Fast Ethernet",
+						"Values"	 : "10/100 快速以太网"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
+		"Sequence" : "2,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"设备和接口",
+   		"Level 2" :"以太网",
+   		"Level 3" :"相关标准",
+   		"Level 4" :"",
+   		"Type"	  :"Radio button (Single select)",
+					"Preset Values"   : {
 						"Identifier" : "1GbE",
 						"Values"	 : "1GbE"
 										}
@@ -5182,37 +5207,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "100GbE",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
-		"Sequence" : "2,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"设备和接口",
-   		"Level 2" :"以太网",
-   		"Level 3" :"相关标准",
-   		"Level 4" :"",
-   		"Type"	  :"Radio button (Single select)",
-					"Preset Values"   : {
-						"Identifier" : "10/100 Fast Ethernet",
-						"Values"	 : "10/100 快速以太网"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
-		"Sequence" : "2,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"设备和接口",
-   		"Level 2" :"以太网",
-   		"Level 3" :"相关标准",
-   		"Level 4" :"",
-   		"Type"	  :"Radio button (Single select)",
-					"Preset Values"   : {
-						"Identifier" : "400GbE or higher",
+						"Identifier" : "25GbE",
 						"Values"	 : ""
 										}
 	},
@@ -5242,7 +5237,22 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "25GbE",
+						"Identifier" : "100GbE",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
+		"Sequence" : "2,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"设备和接口",
+   		"Level 2" :"以太网",
+   		"Level 3" :"相关标准",
+   		"Level 4" :"",
+   		"Type"	  :"Radio button (Single select)",
+					"Preset Values"   : {
+						"Identifier" : "400GbE or higher",
 						"Values"	 : ""
 										}
 	},
@@ -5392,6 +5402,21 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
+						"Identifier" : "PCIe 1.0",
+						"Values"	 : "PCIe 1.0"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_PCIExpress_PCIeRevision",
+		"Sequence" : "3,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"设备和接口",
+   		"Level 2" :"PCI Express",
+   		"Level 3" :"PCIe 修订版",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button (Single select)",
+					"Preset Values"   : {
 						"Identifier" : "PCIe 2.0",
 						"Values"	 : "PCIe 2.0"
 										}
@@ -5407,23 +5432,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "N/A",
-						"Values"	 : "不适用"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_PCIExpress_PCIeRevision",
-		"Sequence" : "3,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"设备和接口",
-   		"Level 2" :"PCI Express",
-   		"Level 3" :"PCIe 修订版",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button (Single select)",
-					"Preset Values"   : {
-						"Identifier" : "PCIe 1.0",
-						"Values"	 : "PCIe 1.0"
+						"Identifier" : "PCIe 3.0",
+						"Values"	 : "PCIe 3.0"
 										}
 	},
 		{
@@ -5452,8 +5462,8 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "PCIe 3.0",
-						"Values"	 : "PCIe 3.0"
+						"Identifier" : "N/A",
+						"Values"	 : "不适用"
 										}
 	},
 		{
@@ -6337,53 +6347,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "3G",
-						"Values"	 : "3G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Intel Wireless",
 						"Values"	 : "英特尔® 无线"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "4G",
-						"Values"	 : "4G"
 										}
 	},
 		{
@@ -6412,8 +6377,53 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "4G",
+						"Values"	 : "4G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "3G",
+						"Values"	 : "3G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "2G",
 						"Values"	 : "2G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -6637,7 +6647,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
+						"Identifier" : "Yes_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -6652,7 +6662,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
+						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -6712,7 +6722,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
+						"Identifier" : "Yes_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -6727,21 +6737,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Board_Quality_Metrics_Conflict_Mineral_Policy_Compliant",
-		"Sequence" : "12,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900214",
-		"Level 1" :"电路板质量指标",
-   		"Level 2" :"冲突矿物政策合规",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
@@ -6758,6 +6753,21 @@
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Board_Quality_Metrics_Conflict_Mineral_Policy_Compliant",
+		"Sequence" : "12,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900214",
+		"Level 1" :"电路板质量指标",
+   		"Level 2" :"冲突矿物政策合规",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -6774,6 +6784,21 @@
 					"Preset Values"   : {
 						"Identifier" : "",
 						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Acceleration_Software_Stack_Enabled",
+		"Sequence" : "12,500",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"板上启用加速软件堆栈",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "Open FPGA Stack",
+						"Values"	 : "Open FPGA stack"
 										}
 	},
 		{
@@ -6819,21 +6844,6 @@
 					"Preset Values"   : {
 						"Identifier" : "None",
 						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Acceleration_Software_Stack_Enabled",
-		"Sequence" : "12,500",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"板上启用加速软件堆栈",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
-						"Identifier" : "Open FPGA Stack",
-						"Values"	 : "Open FPGA stack"
 										}
 	},
 		{
@@ -9282,68 +9292,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "4G",
-						"Values"	 : "4G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "3G",
-						"Values"	 : "3G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Intel Wireless",
 						"Values"	 : "英特尔® 无线"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "2G",
-						"Values"	 : "2G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "8,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -9374,6 +9324,66 @@
 					"Preset Values"   : {
 						"Identifier" : "5G",
 						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "4G",
+						"Values"	 : "4G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "3G",
+						"Values"	 : "3G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "2G",
+						"Values"	 : "2G"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "8,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -61822,8 +61832,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "带有标记的数据输入"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -61852,8 +61862,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "在线学习"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "带有标记的数据输入"
 										}
 	},
 		{
@@ -61867,8 +61877,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
+						"Identifier" : "Online learning",
+						"Values"	 : "在线学习"
 										}
 	},
 		{
@@ -62162,38 +62172,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "IBM Cloud",
-						"Values"	 : "IBM 云"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "其它"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Oracle Cloud",
-						"Values"	 : "Oracle 云"
+						"Identifier" : "Amazon Web Services (AWS)",
+						"Values"	 : "Amazon Web Services (AWS)"
 										}
 	},
 		{
@@ -62222,8 +62202,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Alibaba Cloud",
-						"Values"	 : "阿里云"
+						"Identifier" : "IBM Cloud",
+						"Values"	 : "IBM 云"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Oracle Cloud",
+						"Values"	 : "Oracle 云"
 										}
 	},
 		{
@@ -62252,8 +62247,38 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Amazon Web Services (AWS)",
-						"Values"	 : "Amazon Web Services (AWS)"
+						"Identifier" : "Alibaba Cloud",
+						"Values"	 : "阿里云"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Private/On-Premises",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "On-Premises",
+						"Values"	 : ""
 										}
 	},
 		{
@@ -62297,21 +62322,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Private/On-Premises",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Edge Appliance",
 						"Values"	 : ""
 										}
@@ -62327,8 +62337,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "On-Premises",
-						"Values"	 : ""
+						"Identifier" : "Others",
+						"Values"	 : "其它"
 										}
 	},
 		{
@@ -62777,7 +62787,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Machine Learning",
+						"Identifier" : "Federated Training",
 						"Values"	 : ""
 										}
 	},
@@ -62792,7 +62802,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Federated Training",
+						"Identifier" : "Machine Learning",
 						"Values"	 : ""
 										}
 	},
@@ -63252,53 +63262,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Google Cloud",
-						"Values"	 : "谷歌云"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Amazon Web Services (AWS)",
 						"Values"	 : "Amazon Web Services (AWS)"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Oracle Cloud",
-						"Values"	 : "Oracle 云"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Alibaba Cloud",
-						"Values"	 : "阿里云"
 										}
 	},
 		{
@@ -63342,8 +63307,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "其它"
+						"Identifier" : "Oracle Cloud",
+						"Values"	 : "Oracle 云"
 										}
 	},
 		{
@@ -63357,8 +63322,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Jcloud/JD.com",
-						"Values"	 : ""
+						"Identifier" : "Google Cloud",
+						"Values"	 : "谷歌云"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Alibaba Cloud",
+						"Values"	 : "阿里云"
 										}
 	},
 		{
@@ -63373,21 +63353,6 @@
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
 						"Identifier" : "Private/On-Premises",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "SAP Cloud Platform",
 						"Values"	 : ""
 										}
 	},
@@ -63417,8 +63382,53 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "SAP Cloud Platform",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Jcloud/JD.com",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "Edge Appliance",
 						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Others",
+						"Values"	 : "其它"
 										}
 	},
 		{
@@ -63867,7 +63877,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Machine Learning",
+						"Identifier" : "Federated Training",
 						"Values"	 : ""
 										}
 	},
@@ -63882,7 +63892,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Federated Training",
+						"Identifier" : "Machine Learning",
 						"Values"	 : ""
 										}
 	},
@@ -64372,83 +64382,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "其它"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Oracle Cloud",
-						"Values"	 : "Oracle 云"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "IBM Cloud",
-						"Values"	 : "IBM 云"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Alibaba Cloud",
-						"Values"	 : "阿里云"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Amazon Web Services (AWS)",
 						"Values"	 : "Amazon Web Services (AWS)"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Google Cloud",
-						"Values"	 : "谷歌云"
 										}
 	},
 		{
@@ -64477,8 +64412,53 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "SAP Cloud Platform",
-						"Values"	 : ""
+						"Identifier" : "IBM Cloud",
+						"Values"	 : "IBM 云"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Oracle Cloud",
+						"Values"	 : "Oracle 云"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Google Cloud",
+						"Values"	 : "谷歌云"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Alibaba Cloud",
+						"Values"	 : "阿里云"
 										}
 	},
 		{
@@ -64493,21 +64473,6 @@
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
 						"Identifier" : "Private/On-Premises",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Jcloud/JD.com",
 						"Values"	 : ""
 										}
 	},
@@ -64537,8 +64502,53 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "SAP Cloud Platform",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Jcloud/JD.com",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "Edge Appliance",
 						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Others",
+						"Values"	 : "其它"
 										}
 	},
 		{
@@ -65297,7 +65307,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
+						"Identifier" : "Yes_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -65312,21 +65322,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_Design_File_Available",
-		"Sequence" : "8,600",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP 质量指标",
-   		"Level 2" :"设计文件是否可用？  （加密源代码或后期合成网表）",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
@@ -65347,12 +65342,12 @@
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_IP_Quality_Simulation_Model_FPGA",
-		"Sequence" : "8,700",
+		"Spec Identifier" : "NPP_IP_Quality_Design_File_Available",
+		"Sequence" : "8,600",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "TPS_900221",
 		"Level 1" :"IP 质量指标",
-   		"Level 2" :"适用于 ModelSim* 英特尔® FPGA 版本软件的模拟模型是否可用？",
+   		"Level 2" :"设计文件是否可用？  （加密源代码或后期合成网表）",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
@@ -65373,6 +65368,21 @@
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_Simulation_Model_FPGA",
+		"Sequence" : "8,700",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP 质量指标",
+   		"Level 2" :"适用于 ModelSim* 英特尔® FPGA 版本软件的模拟模型是否可用？",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -65447,7 +65457,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
+						"Identifier" : "Yes_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -65462,21 +65472,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_Readme_File",
-		"Sequence" : "9,100",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP 质量指标",
-   		"Level 2" :"自述文件是否可用？",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
@@ -65497,12 +65492,12 @@
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_IP_Quality_Parameterization_GUI",
-		"Sequence" : "9,300",
+		"Spec Identifier" : "NPP_IP_Quality_Readme_File",
+		"Sequence" : "9,100",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "TPS_900221",
 		"Level 1" :"IP 质量指标",
-   		"Level 2" :"是否存在供最终用户配置 IP 的参数化 GUI？",
+   		"Level 2" :"自述文件是否可用？",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
@@ -65523,6 +65518,21 @@
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_Parameterization_GUI",
+		"Sequence" : "9,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP 质量指标",
+   		"Level 2" :"是否存在供最终用户配置 IP 的参数化 GUI？",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -65567,7 +65577,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
+						"Identifier" : "Yes_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -65582,21 +65592,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_IP_XACT_Metadata",
-		"Sequence" : "10,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP 质量指标",
-   		"Level 2" :"包含 IP-XACT 元数据",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
@@ -65613,6 +65608,21 @@
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_IP_XACT_Metadata",
+		"Sequence" : "10,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP 质量指标",
+   		"Level 2" :"包含 IP-XACT 元数据",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -65717,7 +65727,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "No_Boolean",
+						"Identifier" : "Yes_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -65732,21 +65742,6 @@
    		"Level 4" :"",
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
-						"Identifier" : "Yes_Boolean",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_Interoperability_Reports_Available  ",
-		"Sequence" : "11,000",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP 质量指标",
-   		"Level 2" :"可提供互操作性报告  ",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Radio Button",
-					"Preset Values"   : {
 						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
@@ -65763,6 +65758,21 @@
    		"Type"	  :"Radio Button",
 					"Preset Values"   : {
 						"Identifier" : "Yes_Boolean",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_Interoperability_Reports_Available  ",
+		"Sequence" : "11,000",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP 质量指标",
+   		"Level 2" :"可提供互操作性报告  ",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Radio Button",
+					"Preset Values"   : {
+						"Identifier" : "No_Boolean",
 						"Values"	 : ""
 										}
 	},
@@ -65822,7 +65832,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "VHDL",
+						"Identifier" : "Verilog",
 						"Values"	 : ""
 										}
 	},
@@ -65837,21 +65847,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Verilog",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_Testbench_Language",
-		"Sequence" : "12,300",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"IP 质量指标",
-   		"Level 2" :"Testbench 语言",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "VHDL",
 						"Values"	 : ""
 										}
@@ -65868,6 +65863,21 @@
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
 						"Identifier" : "Verilog",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_Testbench_Language",
+		"Sequence" : "12,300",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"IP 质量指标",
+   		"Level 2" :"Testbench 语言",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "VHDL",
 						"Values"	 : ""
 										}
 	},
@@ -65912,36 +65922,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "None",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_FPGA _Simulation_Tools",
-		"Sequence" : "12,900",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP 质量指标",
-   		"Level 2" :"FPGA 模拟工具",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "NCSIM",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_IP_Quality_FPGA _Simulation_Tools",
-		"Sequence" : "12,900",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "TPS_900221",
-		"Level 1" :"IP 质量指标",
-   		"Level 2" :"FPGA 模拟工具",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Questa SIM",
 						"Values"	 : ""
 										}
@@ -65972,6 +65952,36 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "NCSIM",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_FPGA _Simulation_Tools",
+		"Sequence" : "12,900",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP 质量指标",
+   		"Level 2" :"FPGA 模拟工具",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "VCS",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_IP_Quality_FPGA _Simulation_Tools",
+		"Sequence" : "12,900",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "TPS_900221",
+		"Level 1" :"IP 质量指标",
+   		"Level 2" :"FPGA 模拟工具",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "Other",
 						"Values"	 : "其它"
 										}
@@ -65987,7 +65997,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "VCS",
+						"Identifier" : "None",
 						"Values"	 : ""
 										}
 	},
@@ -66972,38 +66982,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Oracle Cloud",
-						"Values"	 : "Oracle 云"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "其它"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Alibaba Cloud",
-						"Values"	 : "阿里云"
+						"Identifier" : "Amazon Web Services (AWS)",
+						"Values"	 : "Amazon Web Services (AWS)"
 										}
 	},
 		{
@@ -67032,8 +67012,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Amazon Web Services (AWS)",
-						"Values"	 : "Amazon Web Services (AWS)"
+						"Identifier" : "IBM Cloud",
+						"Values"	 : "IBM 云"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Oracle Cloud",
+						"Values"	 : "Oracle 云"
 										}
 	},
 		{
@@ -67062,8 +67057,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "IBM Cloud",
-						"Values"	 : "IBM 云"
+						"Identifier" : "Alibaba Cloud",
+						"Values"	 : "阿里云"
 										}
 	},
 		{
@@ -67078,6 +67073,21 @@
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
 						"Identifier" : "Private/On-Premises",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "On-Premises",
 						"Values"	 : ""
 										}
 	},
@@ -67122,7 +67132,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "On-Premises",
+						"Identifier" : "Edge Appliance",
 						"Values"	 : ""
 										}
 	},
@@ -67137,8 +67147,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Edge Appliance",
-						"Values"	 : ""
+						"Identifier" : "Others",
+						"Values"	 : "其它"
 										}
 	},
 		{
@@ -67587,7 +67597,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Machine Learning",
+						"Identifier" : "Federated Training",
 						"Values"	 : ""
 										}
 	},
@@ -67602,7 +67612,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Federated Training",
+						"Identifier" : "Machine Learning",
 						"Values"	 : ""
 										}
 	},
@@ -68042,21 +68052,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "带有标记的数据输入"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "910",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"人工智能功能",
-   		"Level 2" :"人工智能培训",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Yes",
 						"Values"	 : "Yes"
 										}
@@ -68072,8 +68067,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "在线学习"
+						"Identifier" : "Data-input only",
+						"Values"	 : "仅限数据输入"
 										}
 	},
 		{
@@ -68087,8 +68082,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Data-input only",
-						"Values"	 : "仅限数据输入"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "带有标记的数据输入"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "910",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"人工智能功能",
+   		"Level 2" :"人工智能培训",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Online learning",
+						"Values"	 : "在线学习"
 										}
 	},
 		{
@@ -68237,7 +68247,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Deployed",
+						"Identifier" : "Commercially Ready",
 						"Values"	 : ""
 										}
 	},
@@ -68252,7 +68262,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Commercially Ready",
+						"Identifier" : "Deployed",
 						"Values"	 : ""
 										}
 	},
@@ -68267,23 +68277,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "NLP Architect",
-						"Values"	 : "NLP Architect"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Toolkit",
-		"Sequence" : "1,100",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"工具包",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Intel IPC Catalyst",
-						"Values"	 : ""
+						"Identifier" : "Distiller",
+						"Values"	 : "Distiller"
 										}
 	},
 		{
@@ -68312,6 +68307,21 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
+						"Identifier" : "Intel IPC Catalyst",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Toolkit",
+		"Sequence" : "1,100",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"工具包",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
 						"Identifier" : "Intel Movidius Neural Compute SDK",
 						"Values"	 : "英特尔® Movidius™ 神经计算 SDK"
 										}
@@ -68327,8 +68337,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Distiller",
-						"Values"	 : "Distiller"
+						"Identifier" : "NLP Architect",
+						"Values"	 : "NLP Architect"
 										}
 	},
 		{
@@ -68577,8 +68587,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Pre-trained models only",
-						"Values"	 : "仅限预先培训的模型"
+						"Identifier" : "Data-input only",
+						"Values"	 : "仅限数据输入"
 										}
 	},
 		{
@@ -68592,8 +68602,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Data-input only",
-						"Values"	 : "仅限数据输入"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "带有标记的数据输入"
 										}
 	},
 		{
@@ -68622,8 +68632,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "带有标记的数据输入"
+						"Identifier" : "Pre-trained models only",
+						"Values"	 : "仅限预先培训的模型"
 										}
 	},
 		{
@@ -69007,21 +69017,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_VPU",
-		"Sequence" : "730",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"VPU",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Intel Movidius Myriad 2 VPU",
 						"Values"	 : "英特尔® Movidius™ Myriad™ 2 VPU"
 										}
@@ -69039,6 +69034,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Intel Movidius Myriad X VPU",
 						"Values"	 : "英特尔® Movidius™ Myriad™ X VPU"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_VPU",
+		"Sequence" : "730",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"VPU",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -69097,36 +69107,6 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "在线学习"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "910",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"人工智能功能",
-   		"Level 2" :"人工智能培训",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Pre-trained models only",
-						"Values"	 : "仅限预先培训的模型"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "910",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"人工智能功能",
-   		"Level 2" :"人工智能培训",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
 						"Identifier" : "Data-input only",
 						"Values"	 : "仅限数据输入"
 										}
@@ -69144,6 +69124,36 @@
 					"Preset Values"   : {
 						"Identifier" : "Labeled data-input",
 						"Values"	 : "带有标记的数据输入"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "910",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"人工智能功能",
+   		"Level 2" :"人工智能培训",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Online learning",
+						"Values"	 : "在线学习"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "910",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"人工智能功能",
+   		"Level 2" :"人工智能培训",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Pre-trained models only",
+						"Values"	 : "仅限预先培训的模型"
 										}
 	},
 		{
@@ -69277,7 +69287,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Deployed",
+						"Identifier" : "Commercially Ready",
 						"Values"	 : ""
 										}
 	},
@@ -69292,7 +69302,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Commercially Ready",
+						"Identifier" : "Deployed",
 						"Values"	 : ""
 										}
 	},
@@ -69307,8 +69317,38 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "NLP Architect",
-						"Values"	 : "NLP Architect"
+						"Identifier" : "Distiller",
+						"Values"	 : "Distiller"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Toolkit",
+		"Sequence" : "1,100",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"工具包",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Intel Distribution of OpenVINO toolkit",
+						"Values"	 : "英特尔® Distribution of OpenVINO™ 工具包"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Toolkit",
+		"Sequence" : "1,100",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"工具包",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Intel IPC Catalyst",
+						"Values"	 : ""
 										}
 	},
 		{
@@ -69337,8 +69377,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Distiller",
-						"Values"	 : "Distiller"
+						"Identifier" : "NLP Architect",
+						"Values"	 : "NLP Architect"
 										}
 	},
 		{
@@ -69369,36 +69409,6 @@
 					"Preset Values"   : {
 						"Identifier" : "RL Coach",
 						"Values"	 : "RL COACH"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Toolkit",
-		"Sequence" : "1,100",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"工具包",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Intel IPC Catalyst",
-						"Values"	 : ""
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Toolkit",
-		"Sequence" : "1,100",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"工具包",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Intel Distribution of OpenVINO toolkit",
-						"Values"	 : "英特尔® Distribution of OpenVINO™ 工具包"
 										}
 	},
 		{
@@ -69602,23 +69612,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Pre-trained models only",
-						"Values"	 : "仅限预先培训的模型"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "910",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"人工智能功能",
-   		"Level 2" :"人工智能培训",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "带有标记的数据输入"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -69647,8 +69642,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "带有标记的数据输入"
 										}
 	},
 		{
@@ -69664,6 +69659,21 @@
 					"Preset Values"   : {
 						"Identifier" : "Online learning",
 						"Values"	 : "在线学习"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "910",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"人工智能功能",
+   		"Level 2" :"人工智能培训",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Pre-trained models only",
+						"Values"	 : "仅限预先培训的模型"
 										}
 	},
 		{
@@ -71557,8 +71567,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Data-input only",
-						"Values"	 : "仅限数据输入"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -71572,8 +71582,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "在线学习"
+						"Identifier" : "Data-input only",
+						"Values"	 : "仅限数据输入"
 										}
 	},
 		{
@@ -71602,8 +71612,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
+						"Identifier" : "Online learning",
+						"Values"	 : "在线学习"
 										}
 	},
 		{
@@ -71752,7 +71762,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Deployed",
+						"Identifier" : "Commercially Ready",
 						"Values"	 : ""
 										}
 	},
@@ -71767,7 +71777,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Commercially Ready",
+						"Identifier" : "Deployed",
 						"Values"	 : ""
 										}
 	},
@@ -73392,8 +73402,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Google Cloud",
-						"Values"	 : "谷歌云"
+						"Identifier" : "Amazon Web Services (AWS)",
+						"Values"	 : "Amazon Web Services (AWS)"
 										}
 	},
 		{
@@ -73452,23 +73462,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Others",
-						"Values"	 : "其它"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Cloud_Services",
-		"Sequence" : "1,250",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"部署架构",
-   		"Level 2" :"",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Amazon Web Services (AWS)",
-						"Values"	 : "Amazon Web Services (AWS)"
+						"Identifier" : "Google Cloud",
+						"Values"	 : "谷歌云"
 										}
 	},
 		{
@@ -73497,7 +73492,7 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "SAP Cloud Platform",
+						"Identifier" : "Private/On-Premises",
 						"Values"	 : ""
 										}
 	},
@@ -73512,7 +73507,22 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Private/On-Premises",
+						"Identifier" : "On-Premises",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Cloud_Services",
+		"Sequence" : "1,250",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"部署架构",
+   		"Level 2" :"",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "SAP Cloud Platform",
 						"Values"	 : ""
 										}
 	},
@@ -73557,8 +73567,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "On-Premises",
-						"Values"	 : ""
+						"Identifier" : "Others",
+						"Values"	 : "其它"
 										}
 	},
 		{
@@ -74022,23 +74032,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Online learning",
-						"Values"	 : "在线学习"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
-		"Sequence" : "1,263",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"人工智能功能",
-   		"Level 2" :"人工智能培训",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Pre-trained models only",
-						"Values"	 : "仅限预先培训的模型"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -74067,8 +74062,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
+						"Identifier" : "Labeled data-input",
+						"Values"	 : "带有标记的数据输入"
 										}
 	},
 		{
@@ -74082,8 +74077,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Labeled data-input",
-						"Values"	 : "带有标记的数据输入"
+						"Identifier" : "Online learning",
+						"Values"	 : "在线学习"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_AI_Functionality_AI_Training",
+		"Sequence" : "1,263",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"人工智能功能",
+   		"Level 2" :"人工智能培训",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Pre-trained models only",
+						"Values"	 : "仅限预先培训的模型"
 										}
 	},
 		{
@@ -74322,7 +74332,7 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Deployed",
+						"Identifier" : "Commercially Ready",
 						"Values"	 : ""
 										}
 	},
@@ -74337,7 +74347,37 @@
    		"Level 4" :"",
    		"Type"	  :"Radio button (Single select)",
 					"Preset Values"   : {
-						"Identifier" : "Commercially Ready",
+						"Identifier" : "Deployed",
+						"Values"	 : ""
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "1,290",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Intel Wireless",
+						"Values"	 : "英特尔® 无线"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_Wireless_WAN",
+		"Sequence" : "1,290",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"无线",
+   		"Level 2" :"WAN",
+   		"Level 3" :"",
+   		"Level 4" :"",
+   		"Type"	  :"Checkbox",
+					"Preset Values"   : {
+						"Identifier" : "Private Wireless",
 						"Values"	 : ""
 										}
 	},
@@ -74367,23 +74407,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "2G",
-						"Values"	 : "2G"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "1,290",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"WAN",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "Intel Wireless",
-						"Values"	 : "英特尔® 无线"
+						"Identifier" : "4G",
+						"Values"	 : "4G"
 										}
 	},
 		{
@@ -74412,23 +74437,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "4G",
-						"Values"	 : "4G"
+						"Identifier" : "2G",
+						"Values"	 : "2G"
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_Wireless_WAN",
-		"Sequence" : "1,290",
+		"Spec Identifier" : "NPP_Wireless_WIFI",
+		"Sequence" : "1,300",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "Not minimum requirement. Optional",
 		"Level 1" :"无线",
-   		"Level 2" :"WAN",
+   		"Level 2" :"WIFI",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Private Wireless",
-						"Values"	 : ""
+						"Identifier" : "801.11ac",
+						"Values"	 : "801.11ac"
 										}
 	},
 		{
@@ -74472,8 +74497,8 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "802.11n",
-						"Values"	 : "802.11n"
+						"Identifier" : "802.11ad",
+						"Values"	 : "802.11ad"
 										}
 	},
 		{
@@ -74502,23 +74527,23 @@
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "801.11ac",
-						"Values"	 : "801.11ac"
+						"Identifier" : "802.11n",
+						"Values"	 : "802.11n"
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_Wireless_WIFI",
-		"Sequence" : "1,300",
+		"Spec Identifier" : "NPP_Wireless_NFC",
+		"Sequence" : "1,310",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "Not minimum requirement. Optional",
 		"Level 1" :"无线",
-   		"Level 2" :"WIFI",
+   		"Level 2" :"NFC",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "802.11ad",
-						"Values"	 : "802.11ad"
+						"Identifier" : "Yes",
+						"Values"	 : "Yes"
 										}
 	},
 		{
@@ -74537,12 +74562,12 @@
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_Wireless_NFC",
-		"Sequence" : "1,310",
+		"Spec Identifier" : "NPP_Wireless_Bluetooth",
+		"Sequence" : "1,320",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "Not minimum requirement. Optional",
 		"Level 1" :"无线",
-   		"Level 2" :"NFC",
+   		"Level 2" :"蓝牙",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
@@ -74567,33 +74592,18 @@
 										}
 	},
 		{
-		"Spec Identifier" : "NPP_Wireless_Bluetooth",
-		"Sequence" : "1,320",
+		"Spec Identifier" : "NPP_Wireless_Zigbee (802.15)",
+		"Sequence" : "1,330",
 		"Is_Active" : "True",
 		"Mandatory for Category" : "Not minimum requirement. Optional",
 		"Level 1" :"无线",
-   		"Level 2" :"蓝牙",
+   		"Level 2" :"Zigbee (802.15)",
    		"Level 3" :"",
    		"Level 4" :"",
    		"Type"	  :"Checkbox",
 					"Preset Values"   : {
-						"Identifier" : "Yes",
-						"Values"	 : "Yes"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
-		"Sequence" : "1,330",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"设备和接口",
-   		"Level 2" :"以太网",
-   		"Level 3" :"相关标准",
-   		"Level 4" :"",
-   		"Type"	  :"Radio button",
-					"Preset Values"   : {
-						"Identifier" : "1GbE",
-						"Values"	 : "1GbE"
+						"Identifier" : "",
+						"Values"	 : ""
 										}
 	},
 		{
@@ -74609,6 +74619,21 @@
 					"Preset Values"   : {
 						"Identifier" : "10/100 Fast Ethernet",
 						"Values"	 : "10/100 快速以太网"
+										}
+	},
+		{
+		"Spec Identifier" : "NPP_DevicesAndInterfaces_Ethernet_Standards",
+		"Sequence" : "1,330",
+		"Is_Active" : "True",
+		"Mandatory for Category" : "Not minimum requirement. Optional",
+		"Level 1" :"设备和接口",
+   		"Level 2" :"以太网",
+   		"Level 3" :"相关标准",
+   		"Level 4" :"",
+   		"Type"	  :"Radio button",
+					"Preset Values"   : {
+						"Identifier" : "1GbE",
+						"Values"	 : "1GbE"
 										}
 	},
 		{
@@ -74669,21 +74694,6 @@
 					"Preset Values"   : {
 						"Identifier" : "2.5GbE",
 						"Values"	 : "2.5GbE"
-										}
-	},
-		{
-		"Spec Identifier" : "NPP_Wireless_Zigbee (802.15)",
-		"Sequence" : "1,330",
-		"Is_Active" : "True",
-		"Mandatory for Category" : "Not minimum requirement. Optional",
-		"Level 1" :"无线",
-   		"Level 2" :"Zigbee (802.15)",
-   		"Level 3" :"",
-   		"Level 4" :"",
-   		"Type"	  :"Checkbox",
-					"Preset Values"   : {
-						"Identifier" : "",
-						"Values"	 : ""
 										}
 	},
 	
@@ -75087,6 +75097,1826 @@
 										}
 	},
 	
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
+	"Parent Name" : "",
+	"Child Identifier" : "NPP_01_Industry",
+	"Child Name" : "工业",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Agriculture",
+	"Child Name" : "农业",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_ArtsEntertain",
+	"Child Name" : "艺术与娱乐",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_ArtsEntertain",
+	"Parent Name" : "艺术与娱乐",
+	"Child Identifier" : "IPA_Ind_AE_AmuseGambling",
+	"Child Name" : "娱乐和赌博",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Auto",
+	"Child Name" : "汽车",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Auto",
+	"Parent Name" : "汽车",
+	"Child Identifier" : "IPA_Ind_AU_AutoDriving",
+	"Child Name" : "自动驾驶",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Auto",
+	"Parent Name" : "汽车",
+	"Child Identifier" : "IPA_Ind_AU_InVehicleExp",
+	"Child Name" : "车载信息娱乐",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_CommAviation",
+	"Child Name" : "商用航空",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_CommNw",
+	"Child Name" : "通信",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "通信",
+	"Child Identifier" : "IPA_Ind_Com_DataHostRelate",
+	"Child Name" : "数据处理、托管及相关服务",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "通信",
+	"Child Identifier" : "IPA_Ind_CNW_MediaSer",
+	"Child Name" : "媒体处理，服务",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "通信",
+	"Child Identifier" : "IPA_Ind_Com_Publish",
+	"Child Name" : "Publishing (except Internet)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "通信",
+	"Child Identifier" : "IPA_Ind_CNW_NwSecurityApps",
+	"Child Name" : "网络安全与应用",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "通信",
+	"Child Identifier" : "IPA_Ind_Com_Tele",
+	"Child Name" : "电信",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "通信",
+	"Child Identifier" : "IPA_Ind_CNW_SDNNFV",
+	"Child Name" : "SDN / NFV",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "通信",
+	"Child Identifier" : "IPA_Ind_CNW_WirelessAccess",
+	"Child Name" : "无线接入",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_CommNw",
+	"Parent Name" : "通信",
+	"Child Identifier" : "IPA_Ind_CNW_Infra",
+	"Child Name" : "无线基础设施",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_AeroDef",
+	"Child Name" : "国防与航天",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Education",
+	"Child Name" : "教育",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_EnergyUtil",
+	"Child Name" : "能源和公共事业",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_EnergyUtil",
+	"Parent Name" : "能源和公共事业",
+	"Child Identifier" : "IPA_Ind_EnergyUtil_ElectUtil",
+	"Child Name" : "Electric Power",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_EnergyUtil",
+	"Parent Name" : "能源和公共事业",
+	"Child Identifier" : "IPA_Ind_EnergyUtil_Gasoline",
+	"Child Name" : "石油和天然气",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Finance&Insurance",
+	"Child Name" : "金融与保险",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Gaming",
+	"Child Name" : "游戏",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Gaming",
+	"Parent Name" : "游戏",
+	"Child Identifier" : "IPA_Ind_Game_Esport",
+	"Child Name" : "电子竞技",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Gaming",
+	"Parent Name" : "游戏",
+	"Child Identifier" : "IPA_Ind_Game_PC",
+	"Child Name" : "PC 游戏",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Gov",
+	"Child Name" : "政府",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_HealthCare",
+	"Child Name" : "医疗和生命科学",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_Ind_HL_ClinicalSys",
+	"Child Name" : "临床系统",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_Ind_HC_Fitness",
+	"Child Name" : "运动健身",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_Ind_HL_LabLifeSci",
+	"Child Name" : "生命科学工具和服务",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_Ind_HC_DiagTherap",
+	"Child Name" : "医疗设备",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_Ind_HC_MedImg",
+	"Child Name" : "医疗成像",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_HealthCare",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_Ind_HC_PatinentINfo",
+	"Child Name" : "患者信息娱乐",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_AccomFoodServ",
+	"Child Name" : "食宿服务",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_AccomFoodServ",
+	"Parent Name" : "食宿服务",
+	"Child Identifier" : "IPA_Ind_AFS_Accommodation",
+	"Child Name" : "住宿",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_AccomFoodServ",
+	"Parent Name" : "食宿服务",
+	"Child Identifier" : "IPA_Ind_AFS_FoodDrinkServ",
+	"Child Name" : "Food and Drink Services",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Hospitality",
+	"Child Name" : "酒店服务",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Hospitality",
+	"Parent Name" : "酒店服务",
+	"Child Identifier" : "IPA_Ind_Hos_HoMoLo",
+	"Child Name" : "酒店、汽车旅馆和旅社",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Hospitality",
+	"Parent Name" : "酒店服务",
+	"Child Identifier" : "IPA_Ind_Hos_Res",
+	"Child Name" : "度假村和赌场",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_IndAuto",
+	"Child Name" : "工业自动化",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_IndAuto",
+	"Parent Name" : "工业自动化",
+	"Child Identifier" : "IPA_Ind_AU_FactoryAutom",
+	"Child Name" : "工厂自动化",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_IndAuto",
+	"Parent Name" : "工业自动化",
+	"Child Identifier" : "IPA_Ind_AU_HumanMachInterface",
+	"Child Name" : "人机交互",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_IndAuto",
+	"Parent Name" : "工业自动化",
+	"Child Identifier" : "IPA_Ind_AU_WorkConsolidation",
+	"Child Name" : "工作负载整合",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Manufacturing",
+	"Child Name" : "制造",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Manufacturing",
+	"Parent Name" : "制造",
+	"Child Identifier" : "IPA_Ind_Manuf_Automation",
+	"Child Name" : "汽车",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Manufacturing",
+	"Parent Name" : "制造",
+	"Child Identifier" : "IPA_Ind_Manuf_IndAuto",
+	"Child Name" : "工业自动化",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Manufacturing",
+	"Parent Name" : "制造",
+	"Child Identifier" : "IPA_Ind_Manuf_TransEquip",
+	"Child Name" : "运输设备",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_NotForProfit",
+	"Child Name" : "非盈利机构",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Others",
+	"Child Name" : "其它",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Professional&BusinessServices",
+	"Child Name" : "专业和商业服务",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_RealEstateRentLeas",
+	"Child Name" : "房地产与租赁",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Retail",
+	"Child Name" : "零售",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Software",
+	"Child Name" : "软件",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_Industry",
+	"Parent Name" : "工业",
+	"Child Identifier" : "IPA_Ind_Trans",
+	"Child Name" : "Transportation and Warehouse",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_AirTransp",
+	"Child Name" : "航空运输",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_Fleet",
+	"Child Name" : "车队管理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_Rail",
+	"Child Name" : "铁路运输",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_WareStorage",
+	"Child Name" : "仓储管理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_Logistics&Store",
+	"Child Name" : "物流、货运与存储",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_Ind_Trans",
+	"Parent Name" : "Transportation and Warehouse",
+	"Child Identifier" : "IPA_Ind_TR_Telematics",
+	"Child Name" : "远程信息处理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
+	"Parent Name" : "",
+	"Child Identifier" : "NPP_01_APP",
+	"Child Name" : "使用案例",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_AdvancedAnalytics",
+	"Child Name" : "高级数据分析",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_AlgoTradInvAdvCrypto",
+	"Child Name" : "Algorithmic Trading, Investment Advisory, Crypto",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ArtificalIntel",
+	"Child Name" : "人工智能",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_AnomalyDetection",
+	"Child Name" : "异常检测",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_ContentGeneration",
+	"Child Name" : "内容生成",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_conv_bots_and_agnt",
+	"Child Name" : "会话机器人和语言代理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_Data_prep_and_Mangmt",
+	"Child Name" : "Data preparation and management",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_DeepLearning",
+	"Child Name" : "深度学习",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_DrugDiscovery",
+	"Child Name" : "药物发现",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_Facialdete_recong_classificn",
+	"Child Name" : "Facial Detection/Recognition/Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_img_objetdetect_recog_classificn",
+	"Child Name" : "Image/Object Detection/ Recognition/Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_MachineLearning",
+	"Child Name" : "机器学习",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_Medicalimag_analysis_and_diagn",
+	"Child Name" : "Medical imaging, Analysis and Diagnostics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_predictiveMaintence_and_Analytics",
+	"Child Name" : "预测性维护和分析",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_RoboticProcessAuto",
+	"Child Name" : "机器人流程自动化",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_ArtificalIntel",
+	"Parent Name" : "人工智能",
+	"Child Identifier" : "IPA_APP_VideoSurveilAnalytics",
+	"Child Name" : "视频监控与分析",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_AssetOperationsOpt",
+	"Child Name" : "资产和运营优化",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_AMR",
+	"Child Name" : "自主移动机器人 (AMR)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_AssistedDiagnosisPres",
+	"Child Name" : "Assisted or automated diagnosis and prescription",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_AugmentedSearch",
+	"Child Name" : "搜索...",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_CloudComp",
+	"Child Name" : "云计算",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_CloudComp",
+	"Parent Name" : "云计算",
+	"Child Identifier" : "IPA_APP_CloudComp_Hybrid",
+	"Child Name" : "混合云",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_CloudComp",
+	"Parent Name" : "云计算",
+	"Child Identifier" : "IPA_APP_CloudComp_Private",
+	"Child Name" : "私有云",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_CloudComp",
+	"Parent Name" : "云计算",
+	"Child Identifier" : "IPA_APP_CloudComp_PrivateSDI",
+	"Child Name" : "Private Cloud and Software Defined Infrastructure",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_CloudComp",
+	"Parent Name" : "云计算",
+	"Child Identifier" : "IPA_APP_CloudComp_Public",
+	"Child Name" : "公有云",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_CognitiveReasoning",
+	"Child Name" : "认知推理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_Collaboration",
+	"Child Name" : "协作",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ConnectedWorker",
+	"Child Name" : "互联工人",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_CntrlOptmizatioAutonomy",
+	"Child Name" : "控制优化与自主性",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ConverBotsCSA",
+	"Child Name" : "Conversational Bots, Customer Service Assistants",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_DataLabeling",
+	"Child Name" : "Data Labeling",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_DataManagMonitor",
+	"Child Name" : "Data management and monitoring",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_DataPreparation",
+	"Child Name" : "数据准备",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_DataScience",
+	"Child Name" : "数据科学",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_DigSecSurv",
+	"Child Name" : "数字安全监督",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_DigSecSurv",
+	"Parent Name" : "数字安全监督",
+	"Child Identifier" : "IPA_APP_DSS_EnterDSSSol",
+	"Child Name" : "带有智能的企业 DSS 解决方案（1000 个以上的摄像头）",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_DigSecSurv",
+	"Parent Name" : "数字安全监督",
+	"Child Identifier" : "IPA_APP_DSS_EntryLvlSol",
+	"Child Name" : "入门级解决方案（1 到 20 个摄像头）",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_DigSecSurv",
+	"Parent Name" : "数字安全监督",
+	"Child Identifier" : "IPA_APP_DSS_HighLvlSol",
+	"Child Name" : "带有智能的高端解决方案（101 到 1000 个摄像头）",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_DigSecSurv",
+	"Parent Name" : "数字安全监督",
+	"Child Identifier" : "IPA_APP_DSS_MidLvlSol",
+	"Child Name" : "带有智能的中级解决方案（21 到 100 个摄像头）",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_DigSignage",
+	"Child Name" : "数字标牌",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_DigitalTwin",
+	"Child Name" : "数字孪生",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_EnergyMonitor",
+	"Child Name" : "能源监控",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_EnvMonitor",
+	"Child Name" : "环境监控",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ERP",
+	"Child Name" : "ERP",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_FacialRecogDetectClass",
+	"Child Name" : "Facial Recognition/Detection/Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_FactoryAutomation",
+	"Child Name" : "工厂自动化",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_FinancialAnalyticsPlatform",
+	"Child Name" : "Financial Analytics Platform",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_FraudThreatDetect",
+	"Child Name" : "Fraud and Threat Detection",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_HealthLifeSciences",
+	"Child Name" : "医疗和生命科学",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_CT",
+	"Child Name" : "CT - 计算机断层扫描",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_HealthIT",
+	"Child Name" : "医疗卫生 IT",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_LabInstrumentationPharma",
+	"Child Name" : "实验室仪器/制药",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_LIMSBox",
+	"Child Name" : "LIMS Box（实验室仪器管理系统箱）",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_MedicalRobots",
+	"Child Name" : "医疗机器人",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_MRI",
+	"Child Name" : "MRI - 磁共振成像",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_Omics",
+	"Child Name" : "Omics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_PACS",
+	"Child Name" : "PACS - 图片存档和通信系统/VNA-供应商中立存档",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_PatientMonitoring",
+	"Child Name" : "患者监测",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_PET",
+	"Child Name" : "PET - 正电子发射断层扫描",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_Telemedicine",
+	"Child Name" : "远程医疗",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_Ultrasound",
+	"Child Name" : "超声波",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_HealthLifeSciences",
+	"Parent Name" : "医疗和生命科学",
+	"Child Identifier" : "IPA_APP_X-Ray",
+	"Child Name" : "X 射线",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_HighPerfComputing",
+	"Child Name" : "高性能计算",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_HumanEmotionAnalysis",
+	"Child Name" : "Human Emotion Analysis",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_HumanWellnessMonitoring",
+	"Child Name" : "人体健康监测",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ImageRecog",
+	"Child Name" : "图像识别",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ImageRecogDetectClass",
+	"Child Name" : "Image Recognition/Detection/ Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_Intelgnt_vend",
+	"Child Name" : "智能自动售货",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_InterWhiteBoard",
+	"Child Name" : "交互式白板",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_IOT",
+	"Child Name" : "物联网",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_InventorySupplyChain",
+	"Child Name" : "库存和供应链管理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_InventoryMgmt",
+	"Child Name" : "库存管理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_LogisticsTracking",
+	"Child Name" : "物流跟踪",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_MachineConditionmontior",
+	"Child Name" : "机器状态监测",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_MediaEntertainment",
+	"Child Name" : "传媒娱乐部",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_MediaEntertainment",
+	"Parent Name" : "传媒娱乐部",
+	"Child Identifier" : "IPA_APP_Animatedfilms",
+	"Child Name" : "动画影片",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_MediaEntertainment",
+	"Parent Name" : "传媒娱乐部",
+	"Child Identifier" : "IPA_APP_GameDev",
+	"Child Name" : "游戏开发",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_MediaEntertainment",
+	"Parent Name" : "传媒娱乐部",
+	"Child Identifier" : "IPA_APP_GraphicsDesign",
+	"Child Name" : "图形设计",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_MediaEntertainment",
+	"Parent Name" : "传媒娱乐部",
+	"Child Identifier" : "IPA_APP_VideoEditingVisualEffctsMoviesTele",
+	"Child Name" : "视频编辑和视觉效果 / 电影 / 电视",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_MedicalImagAnalysis",
+	"Child Name" : "Medical imaging and Analysis",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ModelManageTraining",
+	"Child Name" : "Model management and training",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_NLP",
+	"Child Name" : "自然语言处理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ObjectRecogDetectClass",
+	"Child Name" : "Object Recognition/Detection/Classification",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_Other",
+	"Child Name" : "Other (pls specify)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_Others",
+	"Child Name" : "其它",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_PatientDataAnalytics",
+	"Child Name" : "Patient Data Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_PersonalMedicCare",
+	"Child Name" : "Personalized medication and care",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_PredictiveDiagnosis",
+	"Child Name" : "Predictive diagnosis",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_PredictiveMainten",
+	"Child Name" : "预测性维护",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_PrintImgnOffAuto",
+	"Child Name" : "打印成像和办公自动化",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_ProductInspection",
+	"Child Name" : "产品检查",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_QualityAssessment",
+	"Child Name" : "Quality Assessment",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_RecoSystems",
+	"Child Name" : "推荐系统",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_RetailBanking",
+	"Child Name" : "零售银行业务",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_RiskManageDetect",
+	"Child Name" : "Risk Management and Detection",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_Robot",
+	"Child Name" : "机器人",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "机器人",
+	"Child Identifier" : "IPA_APP_Robot_ArtR",
+	"Child Name" : "关节机器人",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "机器人",
+	"Child Identifier" : "IPA_APP_Robot_AGV",
+	"Child Name" : "自动导引车",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "机器人",
+	"Child Identifier" : "IPA_APP_Robot_AMR",
+	"Child Name" : "自主移动机器人 (AMR)",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "机器人",
+	"Child Identifier" : "IPA_APP_Robot_Cobts",
+	"Child Name" : "协作机器人",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "机器人",
+	"Child Identifier" : "IPA_APP_Robot_Hum",
+	"Child Name" : "人型机器人",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "IPA_APP_Robot",
+	"Parent Name" : "机器人",
+	"Child Identifier" : "IPA_APP_Robot_Hybrid",
+	"Child Name" : "混合机器人",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_SentimentAnalysis",
+	"Child Name" : "情感分析",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_SituationalMonitoring",
+	"Child Name" : "情景监测",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_SmartBuilding",
+	"Child Name" : "智能建筑",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_SmartCity",
+	"Child Name" : "智慧城市",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_SmCtPbSfCrAt",
+	"Child Name" : "Smart City/Public Safety/Crowd Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_SmartHome",
+	"Child Name" : "智能家庭",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_SmartLogistics",
+	"Child Name" : "智能物流",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_SocialMediaAnalytics",
+	"Child Name" : "Social Media Analytics",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_Storage",
+	"Child Name" : "存储",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_Telematics",
+	"Child Name" : "远程信息处理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_VideoMgmt",
+	"Child Name" : "视频管理",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "NPP_01_APP",
+	"Parent Name" : "使用案例",
+	"Child Identifier" : "IPA_APP_VoiceRecog",
+	"Child Name" : "语音识别",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
+	"Parent Name" : "",
+	"Child Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Child Name" : "合作伙伴计划细分",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Parent Name" : "合作伙伴计划细分",
+	"Child Identifier" : "Intel_Segments_Client_Computing",
+	"Child Name" : "客户端计算",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Parent Name" : "合作伙伴计划细分",
+	"Child Identifier" : "Intel_Segments_Data_Center",
+	"Child Name" : "数据中心",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Parent Name" : "合作伙伴计划细分",
+	"Child Identifier" : "Intel_Segments_Embedded_IoT",
+	"Child Name" : "嵌入式设备/物联网",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Intel_Segments_NPP_01_Busines_ Segments",
+	"Parent Name" : "合作伙伴计划细分",
+	"Child Identifier" : "Intel_Segments_Field_Programmable_Gate_Array",
+	"Child Name" : "现场可编程门阵列",
+	"Features" :	[ 
+					
+					{ }
+					]
+	},
+	{
+	"Parent Identifier" : "Solution_Marketplace_Hierarchy",
+	"Parent Name" : "",
+	"Child Identifier" : "Intel_Segments_NPP_01_Busines_",
+	"Child Name" : "合作伙伴计划细分",
+	"Features" :	[ 
+					
 					{ }
 					]
 	},

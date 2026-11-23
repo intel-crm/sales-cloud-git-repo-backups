@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sales Bulk Host Process for Lic Gen</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sales_Bulk_Host_Process_Lic_Gen</value>
+    </caseValues>
+    <fields>
+        <label><!-- Event Type --></label>
+        <name>Event_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Host Ids --></label>
+        <name>Host_Ids__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

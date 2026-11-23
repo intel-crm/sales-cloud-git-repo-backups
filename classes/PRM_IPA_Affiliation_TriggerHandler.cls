@@ -494,10 +494,9 @@ public static void updateDealIncFlgOnAccs(List<PRM_IPA_Affiliation__c> newList,M
 			//getAccountswith opids
 			for (Core_Account_Group_Member__c cag:[select id,name,Intel_Account_Name__c,Core_Intel_Account_Id__c, Core_Partner_Account_Id__c,
             Core_Partner_Account_Id__r.name,Core_Partner_Account_Id__r.PRM_Impartner_Deal_Sync__c , Core_Intel_Account_Id__r.PRM_Impartner_Deal_Sync__c,
-            Core_Intel_Account_Id__r.name, Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Intel_Account_Id__r.RecordType.name,
-			Core_Intel_Account_Id__r.ParentId, Core_Intel_Account_Id__r.Parent.name,Core_Intel_Account_Id__r.Parent.PRM_Impartner_Deal_Sync__c,
+             Core_Intel_Account_Id__r.name, Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Intel_Account_Id__r.RecordType.name,
 			Primary_Account__c from Core_Account_Group_Member__c where Core_Partner_Account_Id__c in :opidIds 
-			and (Primary_Account__c =true or Core_Intel_Partner_Alliance_PartnerGroup__c =true or Core_Intel_Account_Id__r.ParentId !=null)]){
+			and (Primary_Account__c =true or Core_Intel_Partner_Alliance_PartnerGroup__c =true)]){
 					if (cag.Core_Partner_Account_Id__c != null && !accountMap.containsKey(cag.Core_Partner_Account_Id__c) 
                     && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==true) {
 					accountMap.put(
@@ -539,30 +538,10 @@ public static void updateDealIncFlgOnAccs(List<PRM_IPA_Affiliation__c> newList,M
 						)
 					);
 				}
-				
-				if (cag.Core_Intel_Account_Id__r.parentId!=null && !accountMap.containsKey(cag.Core_Intel_Account_Id__r.parentId) && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==true){
-					accountMap.put(
-						cag.Core_Intel_Account_Id__r.parentId,
-						new Account(
-							Id = cag.Core_Intel_Account_Id__r.parentId,
-							PRM_Impartner_Deal_Sync__c=true
-						)
-					);
-				}
-				
-				else if(cag.Core_Intel_Account_Id__r.parentId!=null && !accountMap.containsKey(cag.Core_Intel_Account_Id__r.parentId) && mapOpidWithAffActive.containsKey(cag.Core_Partner_Account_Id__c ) && mapOpidWithAffActive.get(cag.Core_Partner_Account_Id__c)==false){
-					accountMap.put(
-						cag.Core_Intel_Account_Id__r.parentId,
-						new Account(
-							Id = cag.Core_Intel_Account_Id__r.parentId,
-							PRM_Impartner_Deal_Sync__c=false
-						)
-					);
-				}
 				}
 			}
 			if (!accountMap.isEmpty()) {
-				update accountMap?.values();
+				update accountMap.values();
 			}
 			
 		}
@@ -603,7 +582,7 @@ public static void updateDealIncFlgOnAccs(List<PRM_IPA_Affiliation__c> newList,M
             }
             
         }
-	Set<String> opidSet = new Set<String>();
+		Set<String> opidSet = new Set<String>();
         opidSet.addAll(opidBuildStratMap.keySet());
 		opidSet.addAll(opidInactiveBuildStratMap.keySet());
         if(!opidSet.isEmpty()){//TWC729-9422-If Affiliation is inactivated at 1PID, then it should roll down to location accounts-end

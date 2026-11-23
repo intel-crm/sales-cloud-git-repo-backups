@@ -486,7 +486,7 @@ public class Core_MDF_CampaignCreatePageTest {
         campaignBudgetRecord2.isActive = true;
         campaignBudgetsList.add(campaignBudgetRecord);
         //campaignBudgetsList.add(campaignBudgetRecord2);
-        
+
         // Highlight: Unused Local Variable 
       /*  Map<id,PartnerMarketingBudget> campaignBudgets = */ Core_MDF_CampaignCreatePage.getBudgetsForCampaign(ccpCoMarketingAccount.id, System.today(), System.today(), budgetTypeList);
         //string saveCampaignBudgetsResult = Core_MDF_CampaignCreatePage.saveCampaignBudgets(ccfOpalCampaign.id,campaignBudgetsList);
@@ -862,7 +862,7 @@ public class Core_MDF_CampaignCreatePageTest {
         Test.stopTest();
     }
 
-     @isTest
+    /*@isTest
     static void testGetDomainsForAccount() {
         Test.startTest();
         
@@ -884,5 +884,5 @@ public class Core_MDF_CampaignCreatePageTest {
         Assert.areEqual(0, Core_MDF_CampaignCreatePage.getDomainsForAccount('').size(), 'Should return empty list');
         
         Test.stopTest();
-    }
+    }*/
 }

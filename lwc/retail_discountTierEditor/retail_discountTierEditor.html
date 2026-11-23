@@ -1,0 +1,32 @@
+<template>
+    
+    <lightning-card title="Discount Schedule Editor" icon-name="custom:custom18"> 
+        <!--<lightning-messages></lightning-messages>-->
+        <lightning-button label="Add" title="Add" onclick={addNewRow} disabled={disableAddRow} slot="actions"></lightning-button>
+            <div class="spinner">
+                <template if:true={showSpinner}>
+                    <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+                </template>
+            </div>
+        <lightning-layout>
+            <lightning-layout-item size = "12" padding = "horizontal-medium"> 
+                <template if:true={tableData}>
+                    <div class="myTable" >
+                        <lightning-datatable column-widths-mode='auto'
+                        key-field="Id"
+                        data={tableData}
+                        columns={columns}
+                        onsave={handleSave}
+                        onrowaction={handleRowActions}
+                        suppress-bottom-bar={suppressFlag}
+                        oncellchange ={handleCellChange}
+                        draft-values={draftValues}
+                        hide-checkbox-column
+                        >
+                        </lightning-datatable>
+                    </div>
+                </template>
+             </lightning-layout-item>
+      </lightning-layout>
+    </lightning-card>
+</template>

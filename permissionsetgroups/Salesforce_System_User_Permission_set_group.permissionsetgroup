@@ -3,7 +3,6 @@
     <description>This permission set group is for adding permission sets needed for Salesforce System User</description>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Salesforce System User Permission set group</label>
-    <permissionSets>Core_IPS_L2_Permission_Set</permissionSets>
     <permissionSets>Core_Sales_CRM_API_Permission_Set</permissionSets>
     <status>Updated</status>
 </PermissionSetGroup>

@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_StatusUpdate</template>
+        <template>unfiled$public/Core_MDF_StatusUpdate</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_ActivityStatusUpdate</fullName>
@@ -35,6 +35,102 @@
         <template>unfiled$public/Core_MDF_ExternalStatusChange</template>
     </alerts>
     <alerts>
+        <fullName>Core_MDF_Activity_Prior_Approval_Notification</fullName>
+        <description>Activity Prior Approval Notification</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Core_MDF_Approver_10__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_1__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_4__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_5__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_6__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_7__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_8__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_9__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Core_MDF_Activity_Approval_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Core_MDF_Activity_Prior_Approval_Notification_External</fullName>
+        <description>Activity Prior Approval Notification External</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Core_MDF_Approver_10__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_1__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_2__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_3__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_4__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_5__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_6__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_7__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_8__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <recipients>
+            <field>Core_MDF_Approver_9__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Core_MDF_Activity_Approval_Notification</template>
+    </alerts>
+    <alerts>
         <fullName>Core_MDF_Notify_AfterTheFact_Users</fullName>
         <description>To notify After the Fact users when Activity is edited in past date</description>
         <protected>false</protected>
@@ -44,7 +140,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_StatusUpdate</template>
+        <template>unfiled$public/Core_MDF_StatusUpdate</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_RMF_ActivityStatusUpdate</fullName>
@@ -55,7 +151,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_RMF_StatusUpdate</template>
+        <template>unfiled$public/Core_MDF_RMF_StatusUpdate</template>
     </alerts>
     <fieldUpdates>
         <fullName>Approval_Status_Set_Rejected</fullName>
@@ -123,6 +219,16 @@
         <description>Clear Approval Stage</description>
         <field>Core_MDF_Approval_Stage__c</field>
         <literalValue>None</literalValue>
+        <name>Clear Approval Stage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_Approval_Stage_L1_app</fullName>
+        <description>Clear Approval Stage</description>
+        <field>Core_MDF_Approval_Stage__c</field>
         <name>Clear Approval Stage</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
@@ -377,7 +483,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_MDF_Clear_PCT_Ind</fullName>
@@ -549,6 +655,16 @@
         <field>Core_MDF_No_Internal_Close_Date__c</field>
         <formula>TODAY()</formula>
         <name>Update Act NoInternalApprovalCloseDate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Core_MDF_Update_ActivityExpDate</fullName>
+        <field>Core_MDF_Exp_Close_Dt__c</field>
+        <formula>TODAY()</formula>
+        <name>Update Activity Expected CloseDate</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
@@ -811,4 +927,54 @@
         <protected>false</protected>
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
+    <rules>
+        <fullName>Core_MDF_PFR_Approval_Prior_Notification_External</fullName>
+        <active>false</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>PartnerFundRequest.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending Approval</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Activity_Prior_Approval_Notification_External</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>PartnerFundRequest.Core_MDF_Start_Date__c</offsetFromField>
+            <timeLength>-2</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Core_MDF_PFR_Approval_Prior_Notification_Internal</fullName>
+        <active>false</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>PartnerFundRequest.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Retail Marketing Funds</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>PartnerFundRequest.Core_MDF_Fund_Request_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending Review</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Activity_Prior_Approval_Notification</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>PartnerFundRequest.Core_MDF_Start_Date__c</offsetFromField>
+            <timeLength>-2</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
 </Workflow>

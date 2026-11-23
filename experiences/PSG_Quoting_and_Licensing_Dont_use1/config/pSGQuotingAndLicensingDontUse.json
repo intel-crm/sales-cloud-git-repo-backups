@@ -1,0 +1,60 @@
+{
+  "forgotPasswordRouteId" : "72e79d11-c61c-4f19-a356-45c550d7c04d",
+  "isAvailableToGuests" : true,
+  "isFilteredComponentsView" : false,
+  "isProgressiveRenderingEnabled" : true,
+  "loginAppPageId" : "51c1d074-9f90-4dd9-ac32-69dac1f061f2",
+  "mainAppPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "preferredDomain" : "none",
+  "selfRegistrationRouteId" : "57de924b-3d15-4b4c-b4a2-194ee6349857",
+  "trustedSitesForScript" : [ {
+    "id" : "f1bfc225-977c-4718-a6d6-e8625d2af651",
+    "isActive" : true,
+    "trustedSiteName" : "www.intel.com",
+    "trustedSiteUrl" : "https://www.intel.com/",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "45dfca60-310c-4aa2-9538-b4b5a750dcde",
+    "isActive" : true,
+    "trustedSiteName" : "ajax.googleapis.com",
+    "trustedSiteUrl" : "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "a9543a86-bb3d-44fe-aa6e-8acfe350efa0",
+    "isActive" : true,
+    "trustedSiteName" : "Intel",
+    "trustedSiteUrl" : "https://www.intel.com/ighf/50recode.2/js/headerchooser.js",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "c65916f4-89ed-4d54-81f5-f3c55859d699",
+    "isActive" : true,
+    "trustedSiteName" : "ChatBot",
+    "trustedSiteUrl" : "https://d.la4-c1cs-phx.salesforceliveagent.com/chat/rest/",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "b03ba326-90d0-4123-85a7-5fdb6ec7c7d5",
+    "isActive" : true,
+    "trustedSiteName" : "Intel Official",
+    "trustedSiteUrl" : "https://www.intel.com/content/www/us/en/homepage.html",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "34a62ab7-745a-4e5d-b52d-c396e807bd44",
+    "isActive" : true,
+    "trustedSiteName" : "Intel_ALL",
+    "trustedSiteUrl" : "https://*.intel.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "2aa646bf-9d58-4317-bc36-9ad44ae31ea7",
+    "isActive" : true,
+    "trustedSiteName" : "Japanese Translation",
+    "trustedSiteUrl" : "https://www.intel.co.jp",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "890202da-369e-445f-9cfd-1636af4849e4",
+    "isActive" : true,
+    "trustedSiteName" : "Chinese Translation",
+    "trustedSiteUrl" : "https://www.intel.co.cn",
+    "type" : "trustedSitesForScripts"
+  } ],
+  "type" : "site"
+}

@@ -38,7 +38,7 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
     * author and date : Harshal Gosavi, 29th November 2021
     */
     public Map<Id,Account> getAccountsByIds(Set<Id> accountIds, String queryFields, String andClause){
-        String query = 'SELECT '+String.escapeSingleQuotes(queryFields)+' FROM account WHERE Id IN :accountIds and '+andClause;
+        String query = 'SELECT '+queryFields+' FROM account WHERE Id IN :accountIds and '+andClause;
         List<Account> accounts = Database.query(query);
 
         Map<Id,Account> accountsById = new Map<Id,Account>(accounts);
@@ -167,7 +167,7 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
     * author and date : chethan.s.kunder@intel.com, 1 Dec 2021
     */
     public Map<Id,Account> getAccountsByParentId(Set<Id> parentIds, String queryFields, String andClause){
-        String query = 'SELECT ' + String.escapeSingleQuotes(queryFields) + ' FROM Account WHERE ParentId IN :parentIds AND ' + andClause;
+        String query = 'SELECT ' +queryFields+ ' FROM Account WHERE ParentId IN :parentIds AND ' + andClause;
        List<Account> childAccounts = Database.query(query);
         Map<Id,Account> mChildAccounts = new Map<Id,Account>(childAccounts);
         return mChildAccounts.size() > 0 ? mChildAccounts : null;
@@ -314,6 +314,37 @@ public without sharing class UCD_ACM_AccountQuerySelector implements UCD_ACM_Sel
 
         return accountsByParentId.size() > 0 ? accountsByParentId : null;
 
+    }
+
+     /*
+    * description : get Account request queue List record using Account Id.
+    * params : Set of accountIds , String queryFields
+    * return : Map<AccountId,List<Account_Create_Request__c>>
+    * author and date : Tejasri, 16th oct 2023
+    */
+    public Map<Id,List<Account_Create_Request__c>> getAccountRequestQueueByAccountId(Set<Id> accountIds, String queryFields){
+        Map<Id,List<Account_Create_Request__c>> accountRequestQueueByAccountId = new Map<Id,List<Account_Create_Request__c>>();
+        try{
+            String query = String.format('SELECT {0} FROM Account_Create_Request__c Where Requested_Account__c IN :accountIds ',new List<String>{queryFields});
+            List<Account_Create_Request__c> AcountRequests = Database.query(String.escapeSingleQuotes(query));
+            // Create a map of AccountId By List of Account Requests.
+            For(Account_Create_Request__c AccountRequestQueue : AcountRequests){
+                if(accountRequestQueueByAccountId.containsKey(AccountRequestQueue.Requested_Account__c)){
+                    List<Account_Create_Request__c> AccountRequestFromMap = accountRequestQueueByAccountId.get(AccountRequestQueue.Requested_Account__c);
+                    AccountRequestFromMap.add(AccountRequestQueue);
+                }else{
+                    accountRequestQueueByAccountId.put(AccountRequestQueue.Requested_Account__c,new List<Account_Create_Request__c>{AccountRequestQueue});
+                }
+            }
+        }catch(Exception ex){
+            // UCD_ACM_Logger.error('UCD_ACM_AccountSelector','getBusinessTypesByAccountId','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'AccountIds: '+accountIds.toString());
+            // UCD_ACM_Logger.setLogDetails();
+        }
+        
+        if(accountRequestQueueByAccountId.size() > 0){
+            return accountRequestQueueByAccountId;
+        }
+        return null;
     }
 
     /*

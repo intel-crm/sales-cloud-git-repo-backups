@@ -345,13 +345,11 @@
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>My_Cases</fullName>
+        <fullName>All1</fullName>
         <columns>NAME</columns>
         <columns>Title__c</columns>
-        <columns>Incident_Number__c</columns>
-        <columns>Program__c</columns>
-        <filterScope>Mine</filterScope>
-        <label>My Cases</label>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>C-{00000}</displayFormat>

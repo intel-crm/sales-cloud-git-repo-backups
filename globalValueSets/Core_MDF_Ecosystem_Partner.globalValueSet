@@ -71,6 +71,11 @@
         <label>Bechtle</label>
     </customValue>
     <customValue>
+        <fullName>BRACK.CH AG</fullName>
+        <default>false</default>
+        <label>BRACK.CH AG</label>
+    </customValue>
+    <customValue>
         <fullName>Braemec</fullName>
         <default>false</default>
         <label>Braemec</label>
@@ -324,11 +329,6 @@
         <fullName>Zones</fullName>
         <default>false</default>
         <label>Zones</label>
-    </customValue>
-    <customValue>
-        <fullName>BRACK.CH AG</fullName>
-        <default>false</default>
-        <label>BRACK.CH AG</label>
     </customValue>
     <description>Stores value for Ecosystem Partner</description>
     <masterLabel>Ecosystem Partner</masterLabel>

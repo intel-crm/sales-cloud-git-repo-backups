@@ -10,6 +10,7 @@ public class Level1ProductResponseParser {
         String modifiedJson = response.getBody()
             .replace('"_metadata":', '"metadata":')
             .replace('"limit":', '"limitValue":');
+        System.debug((Level1ProductResponseWrapper) JSON.deserialize(modifiedJson, Level1ProductResponseWrapper.class));
         return (Level1ProductResponseWrapper) JSON.deserialize(modifiedJson, Level1ProductResponseWrapper.class);
     }
     

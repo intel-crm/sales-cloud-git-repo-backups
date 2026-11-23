@@ -15,7 +15,6 @@ global with sharing class PRM_ScheduleEntitlementBatch implements Schedulable
     {
         PRM_BatchCustomSetting__c bm = [Select Id, Name, PRM_NoOfRecords__c,PRM_SchedulingHour__c,PRM_NoOfBatchEntRecords__c From PRM_BatchCustomSetting__c Where Name =:System.Label.PRM_BatchValues LIMIT 1];
         Integer a=bm.PRM_NoOfBatchEntRecords__c.intValue();
-        //Id batchJobId = 
-            Database.executeBatch(new PRM_Contact_Entitlements_Insert_batch(), a);
+        Id batchJobId = Database.executeBatch(new PRM_Contact_Entitlements_Insert_batch(), a);
     }
 }

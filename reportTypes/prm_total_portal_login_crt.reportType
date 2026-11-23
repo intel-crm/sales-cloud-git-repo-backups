@@ -464,11 +464,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>User_Unique__c</field>
-            <table>Network.NetworkMembers</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Login_Id__c</field>
             <table>Network.NetworkMembers</table>
         </columns>
@@ -499,7 +494,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_License__c</field>
+            <field>Reason_for_Deletion__c</field>
             <table>Network.NetworkMembers</table>
         </columns>
         <columns>
@@ -520,16 +515,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Email_Trigger_Date__c</field>
-            <table>Network.NetworkMembers</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Type_Indicator__c</field>
-            <table>Network.NetworkMembers</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_User_Type__c</field>
             <table>Network.NetworkMembers</table>
         </columns>
         <columns>
@@ -564,7 +549,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Is_FederationId_Valid_Ind__c</field>
+            <field>Core_IPA_One_Partner_Id__c</field>
+            <table>Network.NetworkMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Type_Indicator__c</field>
+            <table>Network.NetworkMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Type__c</field>
             <table>Network.NetworkMembers</table>
         </columns>
         <columns>
@@ -574,12 +569,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPA_One_Partner_Id__c</field>
-            <table>Network.NetworkMembers</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Lead_Field_Update_Date__c</field>
+            <field>Core_Is_FederationId_Valid_Ind__c</field>
             <table>Network.NetworkMembers</table>
         </columns>
         <columns>
@@ -619,12 +609,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Federation_ID__c</field>
+            <field>Core_Lead_Field_Update_Date__c</field>
+            <table>Network.NetworkMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_License__c</field>
             <table>Network.NetworkMembers</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>User_loggedIN__c</field>
+            <table>Network.NetworkMembers</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Federation_ID__c</field>
             <table>Network.NetworkMembers</table>
         </columns>
         <columns>

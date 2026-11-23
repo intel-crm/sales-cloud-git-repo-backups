@@ -34,7 +34,7 @@ https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_
 
 
 此訊息為業務訊息，對於您與 Intel® 可程式化解決方案事業群的 FPGA 軟體和/或 IP 授權權利關係密切。
-© {!$Label.PRM_CurrentYear} Intel 公司
+© {!Contact.Core_Current_Year__c} Intel 公司
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。www.intel.com.tw
 隱私權&amp;verbar;Cookies</textOnly>
     <type>custom</type>

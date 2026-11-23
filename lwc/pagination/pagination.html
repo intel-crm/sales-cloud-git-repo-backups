@@ -1,1 +1,35 @@
-(hidden)
+<template>
+    <div class="slds-grid slds-wrap slds-table slds-table_bordered slds-border_left slds-border_right">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+            <div if:true={showSearchBox} class="commPadding">
+                    <lightning-input label="" type="search" placeholder={searchPlaceHolderText}  class="commPaginationFont" variant="label-hidden" onchange={handleKeyChange}></lightning-input>
+            </div>
+        </div>
+      
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_8-of-12"><!--PAGE NAVIGATION-->
+            <div style={controlPagination} class="slds-list_inline customSelect slds-float_right hiddenOnMobile commPadding">
+                <label class="slds-text-color_weak" for="recordsPerPage">{formLabels.PRM_RecordsPerPage}:&nbsp;</label> 
+                <div class="slds-select_container" style="padding-top: 10px;">
+                    <select class="slds-select commPaginationFont" id="recordsPerPage" onchange={handleRecordsPerPage}>
+                        <template for:each={pageSizeOptions} for:item="option">
+                            <option key={option} value={option}>{option}</option>
+                        </template>
+                    </select>
+                </div>
+            
+            <!-- <div style={controlPagination} class="paginatorPad">
+           
+                    <span style={controlPrevious}>
+                        <lightning-button-icon icon-name="utility:left" variant="bare" size="large" alternative-text={formLabels.PRM_PrevPage} onclick={previousPage}></lightning-button-icon>
+                    </span>
+                    <label class="slds-text-color_weak slds-p-horizontal_xx-small" for="pageNum">{formLabels.PRM_PageGrid}:</label> 
+                    <input type="number" id="pageNum" value={pageNumber} maxlength="4" onkeypress={handlePageNumberChange} class="customInput commPaginationFont"  title={formLabels.PRM_GoToPage}></input>
+                    <span>&nbsp;/&nbsp;<b id="totalPages">{totalPages}</b></span>
+                    <span style={controlNext}>
+                        <lightning-button-icon icon-name="utility:right" variant="bare" size="large" alternative-text={formLabels.PRM_NextPage} onclick={nextPage} class="slds-p-horizontal_x-small"></lightning-button-icon>
+                    </span>
+            </div> -->
+        </div>
+    </div>
+    </div>
+</template>

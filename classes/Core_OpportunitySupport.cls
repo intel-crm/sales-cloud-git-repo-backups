@@ -10,7 +10,7 @@ Modification Log :
 * Areefa Banu             26/02/2023              Original Version
 * Vijay					  07/03/2023			  Queried Opportunity fields
 *************************************************************************************/
-public without sharing class Core_OpportunitySupport { //TWC3123-5376: codescan fix: added without sharing
+public class Core_OpportunitySupport { //TWC3123-5376: codescan fix: added without sharing
     
     public class wrapperOpptSupportRequest{
         @AuraEnabled public boolean isThereAnOpenOpptSupportReq = false; 
@@ -20,7 +20,7 @@ public without sharing class Core_OpportunitySupport { //TWC3123-5376: codescan 
     
     @AuraEnabled
     public static wrapperOpptSupportRequest getOpportunityDetails(Id OpportunityId,Id oppSuprecorType,string whereCondition) {
-         //system.debug('Opportunity ID --'+whereCondition);
+         
         whereCondition =  String.escapeSingleQuotes(whereCondition);
         string whereConCheck = whereCondition.replaceAll('\\\\', '');
         wrapperOpptSupportRequest obj = new wrapperOpptSupportRequest();
@@ -42,7 +42,7 @@ public without sharing class Core_OpportunitySupport { //TWC3123-5376: codescan 
                 //opptSuppReq = [Select Id from Core_Opportunity_Support__c where Core_Status__c='Submitted' and Opportunity__c =:OpportunityId and RecordTypeId =:oppSuprecorType  limit 1];
                 
 		//opptSuppReq = Database.query(dynamicQr);
-                //system.debug('dynamicQr--'+dynamicQr);
+
                 //TWC3123-5376: code scan fix : Avoid Untrusted/Unescaped Variables in DML Query(possible soql injection)
                 opptSuppReq = Database.query(String.escapeSingleQuotes(dynamicQr).replaceAll('\\\\', ''));
                 if(opptSuppReq.size()>0) { obj.isThereAnOpenOpptSupportReq=true;}    

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldSets>
+        <label><!-- BT_User_EPIM --></label>
+        <name>BT_User_EPIM</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- CPQ_Lookup --></label>
         <name>CPQ_Lookup</name>
     </fieldSets>
@@ -230,6 +234,10 @@
     <fields>
         <label><!-- License Reclaimed --></label>
         <name>Partner_License_Reclaimed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for Deletion --></label>
+        <name>Reason_for_Deletion__c</name>
     </fields>
     <fields>
         <help><!-- Customize default tab in Product Lookup page. --></help>

@@ -1,5 +1,7 @@
 @isTest(SeeAllData=false)
 public class Core_MDF_PFC_VAT_Test {
+    // A unique username prevents selecting an existing org user with the same email.
+    private static final String ADMIN_USERNAME = 'core.mdf.pfc.vat.test.admin.' + UserInfo.getOrganizationId() + '@example.com';
     
      @TestSetUp
     static void createTestData() {
@@ -28,6 +30,7 @@ public class Core_MDF_PFC_VAT_Test {
         
         User usrs = Core_MDF_CCP_TestDataUtility.createUser(false);
         usrs.Email = 'sysadmin@example.com';
+        usrs.Username = ADMIN_USERNAME;
         usrs.LastName = 'System Adm';
         usrs.ProfileId = profileMap.get('System Administrator');
         usrs.isActive = true;
@@ -178,6 +181,12 @@ public class Core_MDF_PFC_VAT_Test {
             
             Core_MDF_Bank__Share bankshare = new Core_MDF_Bank__Share(UserOrGroupId = claimCase.Id, AccessLevel = 'Edit', parentId = bank.Id, RowCause = 'Manual');
             insert bankshare;
+            // The VAT tests query both banks as usrs, rather than their creator.
+            // Grant record access explicitly instead of relying on profile permissions.
+            insert new List<Core_MDF_Bank__Share>{
+                new Core_MDF_Bank__Share(UserOrGroupId = usrs.Id, AccessLevel = 'Edit', ParentId = bank.Id, RowCause = 'Manual'),
+                new Core_MDF_Bank__Share(UserOrGroupId = usrs.Id, AccessLevel = 'Edit', ParentId = bank1.Id, RowCause = 'Manual')
+            };
             //Do Account Bank Mapping for 'bank' and ABM is applicaple only for "Retail MDF" record type
             Test.startTest();
             //Core_MDF_Account_Bank_Mapping__c abm1 = 
@@ -282,7 +291,7 @@ PartnerMarketingBudget budget1 = [Select id,TotalAllocatedAmount from PartnerMar
     static void testRetailMDFVATInvoiceFileValidate()
     {
         
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
+        User sysAdminUser = [SELECT Id, Email FROM User WHERE Username = :ADMIN_USERNAME];
         User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         PartnerFundClaim claimins;
         Core_MDF_Claim_VAT_Info__c vatInfo;
@@ -395,7 +404,8 @@ PartnerMarketingBudget budget1 = [Select id,TotalAllocatedAmount from PartnerMar
             
             if(Core_MDF_PFC_Cancel.isClaimEligibleForCancel(claimins.Id).claimEligibleForCancel){
         test.stopTest();
-                Core_MDF_PFC_Cancel.cancelClaims(claimId);
+                //Core_MDF_PFC_Cancel.cancelClaims(claimId);
+                Core_MDF_PFC_Cancel.cancelClaimsWithReason(claimId, 'test');
         }
         }
         
@@ -417,7 +427,7 @@ static void submitForApproval(Id recordId){
     @isTest
     static void testVatApprovedFileUpdateUtility()
     {
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
+        User sysAdminUser = [SELECT Id, Email FROM User WHERE Username = :ADMIN_USERNAME];
         User paymentUser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
         User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         PartnerFundClaim claimins;
@@ -437,18 +447,18 @@ static void submitForApproval(Id recordId){
             claim1.Core_MDF_Status__c = 'Hold';
             claim1.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-            Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt,null,false,null,false,null,false);
-
+           // Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
+          //  String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
+      // res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt,null,false,null,false,null,false);
+             Database.insert(claim1);
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);  
 
-            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: res.claimDetail.id limit 1];
+            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: claim1.id limit 1];
             claimins.Core_MDF_Status__c = 'Hold';
             Database.update(claimins);
             
             // Read the VAT Invoice record
-            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : res.claimDetail.id limit 1];
+            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : claim1.id limit 1];
             
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
             Database.update(vatInfo);
@@ -480,7 +490,7 @@ static void submitForApproval(Id recordId){
             PermissionSetAssignment  psaExt2 = new PermissionSetAssignment(PermissionSetId = rmfUserPermissionSet.Id, AssigneeId = extUser.Id);
             insert psaExt2;
 
-            PartnerFundClaimShare shareRec = new PartnerFundClaimShare(ParentId = res.claimDetail.id , UserOrGroupId = extUser.Id, AccessLevel = 'Edit');
+            PartnerFundClaimShare shareRec = new PartnerFundClaimShare(ParentId = claim1.id , UserOrGroupId = extUser.Id, AccessLevel = 'Edit');
             insert shareRec;
             
             PermissionSet paymentAdminPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Retail_Payment_Adm'];        
@@ -510,7 +520,7 @@ static void submitForApproval(Id recordId){
     @isTest
     static void testVatApprovedFileUpdateUtility2()
     {
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
+        User sysAdminUser = [SELECT Id, Email FROM User WHERE Username = :ADMIN_USERNAME];
         User paymentUser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
         PartnerFundClaim claimins, claimins2;
         Core_MDF_Claim_VAT_Info__c vatInfo, vatInfo2;
@@ -529,19 +539,19 @@ static void submitForApproval(Id recordId){
             claim2.Core_MDF_Status__c = 'Hold';
             claim2.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-            Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
-
+           // Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
+            // String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
+       // res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+     Database.insert(claim2);
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
-            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: res.claimDetail.id limit 1];
+            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: claim2.id limit 1];
             claimins.Core_MDF_Status__c = 'Hold';
             Database.update(claimins);
 
 
             // Read the VAT Invoice record
-            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : res.claimDetail.id limit 1];
+            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : claim2.id limit 1];
             
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
             Database.update(vatInfo);
@@ -574,7 +584,7 @@ static void submitForApproval(Id recordId){
     @isTest
     static void testcaseReviewResultupdatesonVAT1()
     {
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
+        User sysAdminUser = [SELECT Id, Email FROM User WHERE Username = :ADMIN_USERNAME];
         User paymentUser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
         PartnerFundClaim claimins, claimins2;
         Core_MDF_Claim_VAT_Info__c vatInfo, vatInfo2;
@@ -597,20 +607,20 @@ static void submitForApproval(Id recordId){
             claim2.Core_MDF_FlaggedForBankDocHold_Ind__c=false;
             claim2.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-            Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+          //  Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
+          // String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
+     //  res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
 
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
-           
-            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: res.claimDetail.id limit 1];
+           Database.insert(claim2);
+            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: claim2.id limit 1];
             claimins.Core_MDF_Status__c = 'Hold';
             Database.update(claimins);
             pfclist= new List<PartnerFundClaim>();
             pfclist.add(claim2);
              Core_MDF_Claim_VAT_Process.updateclaimVATInfo(pfclist);
             // Read the VAT Invoice record
-            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : res.claimDetail.id limit 1];
+            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : claim2.id limit 1];
             
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
             Database.update(vatInfo);
@@ -655,8 +665,8 @@ static void submitForApproval(Id recordId){
                 auditDoc.Core_MDF_App_Document_Types_nm__c = 'Proof of Cost;Proof of Branding;Proof of Execution';               
                 auditDocList2.add(auditDoc);
             }            
-            Core_MDF_PartnerFundClaim.ClaimWrap saveClaim1  = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       saveClaim1  = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+          //  Core_MDF_PartnerFundClaim.ClaimWrap saveClaim1  = new Core_MDF_PartnerFundClaim.ClaimWrap();
+     //  saveClaim1  = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
 
             //String saveClaim1 = Core_MDF_PartnerFundClaim.saveClaim(claim2,auditDocList2);
                
@@ -694,7 +704,7 @@ static void submitForApproval(Id recordId){
   @isTest
     static void testRetailClaimWithChangeInAmountAndBank()
     {
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1]; 
+        User sysAdminUser = [SELECT Id, Email FROM User WHERE Username = :ADMIN_USERNAME]; 
         //User clmCaseUser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
         PartnerFundClaim claimins;
         Core_MDF_Claim_VAT_Info__c vatInfo,vatInfo1;
@@ -717,10 +727,10 @@ static void submitForApproval(Id recordId){
             claim1.Core_MDF_Status__c = 'Hold';         
             claim1.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>(); 
-            Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt,null,false,null,false,null,false);
-
+          //  Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
+          //  String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
+     //  res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList,amt,null,false,null,false,null,false);
+           Database.insert(claim1);
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim1, auditDocList);
             PartnerFundClaim pfc = [Select id,Core_MDF_To_Be_Audited_Ind__c,Core_MDF_Budget_Type_Options_Nm__c,Core_MDF_Program__c,Core_MDF_VAT_Eligibility_Ind__c,
                                           Core_MDF_Status__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Country_Location_nm__c,Core_MDF_Bank__C 
@@ -766,7 +776,7 @@ static void submitForApproval(Id recordId){
   @isTest
     static void testClaimStatusToDenied()
     {
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
+        User sysAdminUser = [SELECT Id, Email FROM User WHERE Username = :ADMIN_USERNAME];
         User paymentUser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
         PartnerFundClaim claimins, claimins2;
         Core_MDF_Claim_VAT_Info__c vatInfo, vatInfo2;
@@ -786,13 +796,13 @@ static void submitForApproval(Id recordId){
             claim2.Core_MDF_Status__c = 'Hold';
             claim2.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-            Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-            String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
-
+         //   Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
+          //  String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
+     //  res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+             Database.insert(claim2);
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
-            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: res.claimDetail.id limit 1];
+            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: claim2.id limit 1];
             claimins.Core_MDF_Status__c = 'Hold';
             Database.update(claimins);
 
@@ -873,7 +883,7 @@ static void submitForApproval(Id recordId){
     @isTest
     static void testcaseReviewResultupdatesonVAT2()
     {
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
+        User sysAdminUser = [SELECT Id, Email FROM User WHERE Username = :ADMIN_USERNAME];
         User paymentUser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
         PartnerFundClaim claimins, claimins2;
         Core_MDF_Claim_VAT_Info__c vatInfo, vatInfo2;
@@ -881,7 +891,7 @@ static void submitForApproval(Id recordId){
         List<PartnerFundClaim> pfclist;
         System.runAs(sysAdminUser)
         {
-            test.startTest();
+            test.startTest();            
             Core_MDF_Bank__c bank1 = [Select Id from Core_MDF_Bank__c where Core_MDF_Bank_Alias_Name__c='Test' limit 1];
             PartnerFundRequest pfr = [Select Id,Title,Core_MDF_Reimbursement_Rate__c from PartnerFundRequest where Title = 'Test Retail Activity'];
             PartnerFundClaim claim2 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, System.today(), bank1.Id, false);
@@ -894,20 +904,21 @@ static void submitForApproval(Id recordId){
             claim2.Core_MDF_Status__c = 'Hold';
             claim2.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-            String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-            Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
-
+          //  String amt='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
+         //   Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
+     //  res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt,null,false,null,false,null,false);
+          Database.insert(claim2);
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
-            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: res.claimDetail.id limit 1];
+            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: claim2.id limit 1];
             claimins.Core_MDF_Status__c = 'Hold';
             Database.update(claimins);
             pfclist= new List<PartnerFundClaim>();
             pfclist.add(claim2);
              Core_MDF_Claim_VAT_Process.updateclaimVATInfo(pfclist);
+            
             // Read the VAT Invoice record
-            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : res.claimDetail.id limit 1];
+            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : claim2.id limit 1];
             
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
             Database.update(vatInfo);
@@ -980,6 +991,7 @@ static void submitForApproval(Id recordId){
                 insert checklistRecord;
                
             Database.update(csNew);
+                test.stopTest();
             Core_MDF_Vat_Utility.caseReviewResultupdatesonVAT(pfclist,'Denied');
           system.assertEquals(csNew.Core_MDF_Review_Case_Status__c,'Review Completed');
             }
@@ -987,7 +999,7 @@ static void submitForApproval(Id recordId){
     @isTest
     static void testcaseReviewResultupdatesonVAT3()
     {
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' and LastName = 'System Adm' limit 1];
+        User sysAdminUser = [SELECT Id, Email FROM User WHERE Username = :ADMIN_USERNAME];
         User paymentUser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
         PartnerFundClaim claimins, claimins2;
         Core_MDF_Claim_VAT_Info__c vatInfo, vatInfo2;
@@ -1008,20 +1020,20 @@ static void submitForApproval(Id recordId){
             claim2.Core_MDF_Status__c = 'Hold';
             claim2.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             list<Core_MDF_Audit_Document__c> auditDocList = new list<Core_MDF_Audit_Document__c>();
-            String amt3='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
-            Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
-       res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt3,null,false,null,false,null,false);
-
+           // String amt3='{\"totalAmountLocal\" :100,\"costNotReimbursable\":0,\"taxesLocal\":0}';
+          //  Core_MDF_PartnerFundClaim.ClaimWrap res = new Core_MDF_PartnerFundClaim.ClaimWrap();
+     //  res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList,amt3,null,false,null,false,null,false);
+       Database.insert(claim2);
             //String res = Core_MDF_PartnerFundClaim.saveClaim(claim2, auditDocList);  
            
-            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: res.claimDetail.id limit 1];
+            claimins = [select id,Core_MDF_VAT_Eligibility_Ind__c,Core_MDF_Status__c,Core_MDF_Audit_Hold__c from PartnerFundClaim where id =: claim2.id limit 1];
             claimins.Core_MDF_Status__c = 'Hold';
             Database.update(claimins);
             pfclist= new List<PartnerFundClaim>();
             pfclist.add(claim2);
              Core_MDF_Claim_VAT_Process.updateclaimVATInfo(pfclist);
             // Read the VAT Invoice record
-            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : res.claimDetail.id limit 1];
+            vatInfo = [select id from Core_MDF_Claim_VAT_Info__c where Core_MDF_Claim_Id__c = : claim2.id limit 1];
             
             vatInfo.Core_MDF_VAT_Invoice_Number_Txt__c = 'VATINV001';
             Database.update(vatInfo);
@@ -1104,5 +1116,325 @@ static void submitForApproval(Id recordId){
             Core_MDF_Vat_Utility.invokeCaseReviewResultupdatesonVAT(paramsList);
             system.assertEquals(csNew.Core_MDF_Review_Case_Status__c,'Review Completed');
         }
-    }    
+    }
+
+    @isTest
+    static void testIsClaimEligibleForVATWhenNotOptedIn() {
+        PartnerFundClaim claim = new PartnerFundClaim();
+        claim.Core_MDF_VAT_Opt_In__c = 'Not Applicable';
+        claim.Core_MDF_VAT_Eligibility_Ind__c = true;
+
+        Test.startTest();
+        Core_MDF_Claim_VAT_Process.isClaimEligibleForVAT(new List<PartnerFundClaim>{ claim });
+        Test.stopTest();
+
+        System.assertEquals(false, claim.Core_MDF_VAT_Eligibility_Ind__c);
+    }
+
+    @isTest
+    static void testCreateUpdateVATRecordSkipsSuperClaim() {
+        PartnerFundClaim superClaim = new PartnerFundClaim();
+        superClaim.Core_MDF_Has_Sub_Claims_Ind__c = true;
+        superClaim.Core_MDF_VAT_Eligibility_Ind__c = true;
+
+        Test.startTest();
+        Core_MDF_Claim_VAT_Process.createUpdateVATRecord(new List<PartnerFundClaim>{ superClaim }, new Map<Id, PartnerFundClaim>(), new Map<Id, PartnerFundClaim>());
+        Test.stopTest();
+
+        System.assertEquals(true, superClaim.Core_MDF_Has_Sub_Claims_Ind__c);
+    }
+
+    @isTest
+    static void testGetVATCancellationOptionsWithoutPermission() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+
+        System.runAs(externalUser) {
+            Test.startTest();
+            Core_MDF_Claim_VAT_Process.VATCancellationDecision result = Core_MDF_Claim_VAT_Process.getVATCancellationOptions(null);
+            Test.stopTest();
+
+            System.assertEquals(false, result.isEligible);
+            System.assertEquals(false, result.isSuperClaim);
+            System.assertEquals(0, result.subClaims.size());
+        }
+    }
+
+    @isTest
+    static void testCancelClaimVATWithoutPermission() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+
+        System.runAs(externalUser) {
+            Boolean exceptionThrown = false;
+
+            Test.startTest();
+            try {
+                Core_MDF_Claim_VAT_Process.cancelClaimVAT(null);
+            } catch (AuraHandledException ex) {
+                exceptionThrown = true;
+            }
+            Test.stopTest();
+
+            System.assertEquals(true, exceptionThrown);
+        }
+    }
+
+    @isTest
+    static void testCancelSelectedSubClaimVATWithoutPermission() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+
+        System.runAs(externalUser) {
+            Boolean exceptionThrown = false;
+
+            Test.startTest();
+            try {
+                Core_MDF_Claim_VAT_Process.cancelSelectedSubClaimVAT(null, new List<Id>());
+            } catch (AuraHandledException ex) {
+                exceptionThrown = true;
+            }
+            Test.stopTest();
+
+            System.assertEquals(true, exceptionThrown);
+        }
+    }
+    private static void assignCancelVATPermission(User targetUser) {
+        CustomPermission cancelPermission = [SELECT Id FROM CustomPermission WHERE DeveloperName = 'Core_MDF_Cancel_VAT_Claim' LIMIT 1];
+
+        Set<Id> permissionSetIds = new Set<Id>();
+        for (SetupEntityAccess accessRecord : [SELECT ParentId FROM SetupEntityAccess WHERE SetupEntityId = :cancelPermission.Id]) {
+            permissionSetIds.add(accessRecord.ParentId);
+        }
+
+        List<PermissionSet> assignablePermissionSets = [SELECT Id FROM PermissionSet WHERE Id IN :permissionSetIds AND IsOwnedByProfile = false LIMIT 1];
+        System.assert(!assignablePermissionSets.isEmpty());
+        PermissionSetAssignment assignmentRecord = new PermissionSetAssignment(AssigneeId = targetUser.Id, PermissionSetId = assignablePermissionSets[0].Id);
+
+        User currentUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
+        System.runAs(currentUser) {
+            insert assignmentRecord;
+        }
+    }
+
+    private static Id getVATCancellationRequest(Boolean outcomeBased) {
+        PartnerFundRequest request = [SELECT Id, Core_MDF_Is_Outcome_Based_Ind__c FROM PartnerFundRequest WHERE Title = 'Test Retail Activity'LIMIT 1];
+        if (outcomeBased && request.Core_MDF_Is_Outcome_Based_Ind__c != true) {
+            TriggerHandler.bypass('Core_MDF_PartnerRequestTriggerHandler');
+            request.Core_MDF_Is_Outcome_Based_Ind__c = true;
+            update request;
+            TriggerHandler.clearBypass('Core_MDF_PartnerRequestTriggerHandler');
+        }
+        return request.Id;
+    }
+
+
+    private static PartnerFundClaim createVATCancellationClaim(String claimTitle, Id parentClaimId, Boolean isSuperClaim, Id requestId) {
+        Core_MDF_Bank__c testBank = [SELECT Id FROM Core_MDF_Bank__c WHERE Core_MDF_Bank_Alias_Name__c = 'Test' LIMIT 1];
+
+        PartnerFundClaim claim = Core_MDF_CCP_TestDataUtility.createClaim(
+            claimTitle,
+            Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail,
+            requestId,
+            System.today(),
+            System.today(),
+            50.00,
+            System.today(),
+            testBank.Id,
+            false
+        );
+
+        claim.Core_MDF_Type_Txt__c = 'Claim';
+        claim.Core_MDF_Currency__c = 'USD';
+        claim.Core_MDF_Country_Location_nm__c = 'UNITED KINGDOM';
+        claim.Core_MDF_VAT_Opt_In__c = Label.Core_MDF_nonTranslate_Service_Invoice_to_Intel;
+        claim.Core_MDF_VAT_Eligibility_Ind__c = true;
+        claim.Core_MDF_VAT_Hold_Ind__c = !isSuperClaim;
+        claim.Core_MDF_Status__c = Label.Core_MDF_Status_Hold;
+        claim.Core_MDF_Has_Sub_Claims_Ind__c = isSuperClaim;
+        claim.Core_MDF_Processing_Preference_nm__c = 'Settle, then get paid';
+        claim.Core_MDF_Requested_Reimbursement_Amt__c = 75;
+        claim.Core_MDF_Reimbursable_TransactionAmt_Loc__c = 75;
+        claim.Core_MDF_Reimbursable_Transaction_Amount__c = 75;
+        claim.Amount = 75;
+        claim.Core_MDF_ESD_Hold__c = false;
+        claim.Core_MDF_Audit_Hold__c = false;
+        claim.Core_MDF_Payment_Hold_ind__c = false;
+        claim.Core_MDF_Criteria_Hold_Ind__c = false;
+        claim.Core_MDF_Intel_Manual_Hold_Ind__c = false;
+        claim.Core_MDF_Member_Manual_Hold_Ind__c = false;
+        claim.Core_MDF_Bank_Doc_Hold_Ind__c = false;
+        claim.Core_MDF_Document_Hold_Ind__c = false;
+        claim.Core_MDF_Bank_Doc_Hold_Eligibility_Ind__c = false;
+
+        if (parentClaimId != null) {
+            claim.Core_MDF_Claim_Id__c = parentClaimId;
+        }
+
+        TriggerHandler.bypass('Core_MDF_PFC_TriggerHandler');
+        insert claim;
+        TriggerHandler.clearBypass('Core_MDF_PFC_TriggerHandler');
+
+        List<Core_MDF_Claim_VAT_Info__c> vatRecords;
+        if (parentClaimId == null) {
+            vatRecords = [SELECT Id, Core_MDF_Status_Txt__c FROM Core_MDF_Claim_VAT_Info__c WHERE Core_MDF_Claim_Id__c = :claim.Id AND Core_MDF_Sub_Claim_Id__c = null];
+        } else {
+            vatRecords = [SELECT Id, Core_MDF_Status_Txt__c FROM Core_MDF_Claim_VAT_Info__c WHERE Core_MDF_Sub_Claim_Id__c = :claim.Id
+            ];
+        }
+
+        if (vatRecords.size() > 1) {
+            delete vatRecords;
+            vatRecords.clear();
+        }
+        if (vatRecords.isEmpty()) {
+            Core_MDF_Claim_VAT_Info__c vatInfo = new Core_MDF_Claim_VAT_Info__c();
+            vatInfo.Core_MDF_Claim_Id__c = parentClaimId == null ? claim.Id : parentClaimId;
+            if (parentClaimId != null) {
+                vatInfo.Core_MDF_Sub_Claim_Id__c = claim.Id;
+            }
+            vatInfo.Core_MDF_Status_Txt__c = 'Pending Documents';
+            insert vatInfo;
+        } else {
+            vatRecords[0].Core_MDF_Status_Txt__c = 'Pending Documents';
+            update vatRecords[0];
+        }
+        return claim;
+    }
+
+    private static void updateClaimWithoutTrigger(PartnerFundClaim claim) {
+        TriggerHandler.bypass('Core_MDF_PFC_TriggerHandler');
+        update claim;
+        TriggerHandler.clearBypass('Core_MDF_PFC_TriggerHandler');
+    }
+
+    @isTest
+    static void testGetVATCancellationOptionsForEligibleClaim() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+        assignCancelVATPermission(externalUser);
+
+        Id requestId = getVATCancellationRequest(false);
+        PartnerFundClaim claim = createVATCancellationClaim('VAT Cancellation Eligible Claim', null, false, requestId);
+
+        System.runAs(externalUser) {
+            Test.startTest();
+            Core_MDF_Claim_VAT_Process.VATCancellationDecision decision = Core_MDF_Claim_VAT_Process.getVATCancellationOptions(claim.Id);
+            Test.stopTest();
+
+            System.assertEquals(false, decision.isSuperClaim);
+            System.assertEquals(true, decision.isEligible);
+            System.assertEquals(0, decision.subClaims.size());
+        }
+    }
+
+    @isTest
+    static void testGetVATCancellationOptionsForSuperClaimWithEligibleSubclaim() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+        assignCancelVATPermission(externalUser);
+
+        Id outcomeRequestId = getVATCancellationRequest(true);
+        PartnerFundClaim superClaim = createVATCancellationClaim('VAT Cancellation Super Claim', null, true, outcomeRequestId);
+        PartnerFundClaim subClaim = createVATCancellationClaim('VAT Cancellation Sub Claim', superClaim.Id, false, outcomeRequestId);
+
+        System.runAs(externalUser) {
+            Test.startTest();
+            Core_MDF_Claim_VAT_Process.VATCancellationDecision decision = Core_MDF_Claim_VAT_Process.getVATCancellationOptions(superClaim.Id);
+            Test.stopTest();
+
+            System.assertEquals(true, decision.isSuperClaim);
+            System.assertEquals(true, decision.isEligible);
+            System.assertEquals(1, decision.subClaims.size());
+            System.assertEquals(subClaim.Id, decision.subClaims[0].id);
+            System.assertEquals('Pending Documents', decision.subClaims[0].vatStatus);
+        }
+    }
+
+    @isTest
+    static void testGetVATCancellationOptionsWhenClaimIsNotOnVATHold() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+        assignCancelVATPermission(externalUser);
+
+        Id requestId = getVATCancellationRequest(false);
+        PartnerFundClaim claim = createVATCancellationClaim('VAT Cancellation Not On Hold', null, false, requestId);
+        claim.Core_MDF_VAT_Hold_Ind__c = false;
+        updateClaimWithoutTrigger(claim);
+
+        System.runAs(externalUser) {
+            Test.startTest();
+            Core_MDF_Claim_VAT_Process.VATCancellationDecision decision = Core_MDF_Claim_VAT_Process.getVATCancellationOptions(claim.Id);
+            Test.stopTest();
+
+            System.assertEquals(false, decision.isEligible);
+            System.assertEquals(false, decision.isSuperClaim);
+            System.assertEquals(Label.Core_MDF_Claim_Not_On_VAT_Hold, decision.errorMessage);
+        }
+    }
+
+    @isTest
+    static void testCancelSelectedSubClaimVATRequiresSelection() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+        assignCancelVATPermission(externalUser);
+
+        System.runAs(externalUser) {
+            Boolean exceptionThrown = false;
+
+            Test.startTest();
+            try {
+               	Core_MDF_Claim_VAT_Process.cancelSelectedSubClaimVAT(null, new List<Id>());
+            } catch (AuraHandledException ex) {
+                exceptionThrown = true;
+            }
+            Test.stopTest();
+
+            System.assertEquals(true, exceptionThrown);
+        }
+    }
+
+    @isTest
+    static void testCancelClaimVATSuccessfullyCancelsVAT() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+        assignCancelVATPermission(externalUser);
+
+        Id requestId = getVATCancellationRequest(false);
+        PartnerFundClaim claim = createVATCancellationClaim('VAT Cancellation Successful Claim', null, false, requestId);
+
+        System.runAs(externalUser) {
+            Test.startTest();
+            Boolean result = Core_MDF_Claim_VAT_Process.cancelClaimVAT(claim.Id);
+            Test.stopTest();
+
+            System.assertEquals(true, result);
+        }
+
+        PartnerFundClaim updatedClaim = [SELECT Id, Core_MDF_VAT_Eligibility_Ind__c, Core_MDF_VAT_Opt_In__c FROM PartnerFundClaim WHERE Id = :claim.Id];
+        Core_MDF_Claim_VAT_Info__c updatedVAT = [SELECT Id, Core_MDF_Status_Txt__c, Core_MDF_VAT_Comments_txt__c FROM Core_MDF_Claim_VAT_Info__c WHERE Core_MDF_Claim_Id__c = :claim.Id AND Core_MDF_Sub_Claim_Id__c = null LIMIT 1];
+
+        System.assertEquals(false, updatedClaim.Core_MDF_VAT_Eligibility_Ind__c);
+        System.assertEquals('Reimbursement Request for 3rd party payment (NET cost only)', updatedClaim.Core_MDF_VAT_Opt_In__c);
+        System.assertEquals('Cancelled', updatedVAT.Core_MDF_Status_Txt__c);
+        System.assert(String.isNotBlank(updatedVAT.Core_MDF_VAT_Comments_txt__c));
+    }
+
+    @isTest
+    static void testCancelSelectedSubClaimVATSuccessfullyCancelsSelectedSubclaim() {
+        User externalUser = [SELECT Id FROM User WHERE Email = 'test1@example.com' LIMIT 1];
+        assignCancelVATPermission(externalUser);
+
+        Id outcomeRequestId = getVATCancellationRequest(true);
+        PartnerFundClaim superClaim = createVATCancellationClaim('VAT Selected Cancellation Super Claim', null, true, outcomeRequestId);
+        PartnerFundClaim subClaim = createVATCancellationClaim('VAT Selected Cancellation Sub Claim', superClaim.Id, false, outcomeRequestId);
+
+        System.runAs(externalUser) {
+            Test.startTest();
+            Boolean result = Core_MDF_Claim_VAT_Process.cancelSelectedSubClaimVAT(superClaim.Id, new List<Id>{ subClaim.Id });
+            Test.stopTest();
+
+            System.assertEquals(true, result);
+        }
+
+        PartnerFundClaim updatedSubClaim = [SELECT Id, Core_MDF_VAT_Eligibility_Ind__c, Core_MDF_VAT_Opt_In__c FROM PartnerFundClaim WHERE Id = :subClaim.Id];
+        Core_MDF_Claim_VAT_Info__c updatedVAT = [SELECT Id, Core_MDF_Status_Txt__c, Core_MDF_VAT_Comments_txt__c FROM Core_MDF_Claim_VAT_Info__c WHERE Core_MDF_Sub_Claim_Id__c = :subClaim.Id LIMIT 1];
+
+        System.assertEquals(false, updatedSubClaim.Core_MDF_VAT_Eligibility_Ind__c);
+        System.assertEquals('Reimbursement Request for 3rd party payment (NET cost only)', updatedSubClaim.Core_MDF_VAT_Opt_In__c);
+        System.assertEquals('Cancelled', updatedVAT.Core_MDF_Status_Txt__c);
+        System.assert(String.isNotBlank(updatedVAT.Core_MDF_VAT_Comments_txt__c));
+    }  
 }

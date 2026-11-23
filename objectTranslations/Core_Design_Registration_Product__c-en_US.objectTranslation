@@ -162,7 +162,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel. --></help>
+        <help><!-- Intel will review Target Resale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Target Resale Price, which will/must be inputted by the Distributor registering the design. Submission of the Target Resale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor. --></help>
         <label><!-- Target Resale Price --></label>
         <name>Core_Target_Resale_Amt__c</name>
     </fields>
@@ -171,18 +171,31 @@
         <name>Core_ThrowValidation__c</name>
     </fields>
     <fields>
+        <label><!-- MMID or Ordering code --></label>
+        <name>DDR_MMID_or_Ordering_code__c</name>
+    </fields>
+    <fields>
         <label><!-- Target Resale Price Note --></label>
         <name>DDR_Target_Resale_Price_Note__c</name>
     </fields>
     <fields>
         <help><!-- Search Product by MMID or Old MMID or Ordering Code --></help>
-        <label><!-- MMID or Old MMID or Ordering code --></label>
+        <label><!-- MMID or Ordering code --></label>
         <name>MMID_or_Ordering_code__c</name>
         <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Additional Comments --></label>
         <name>PCC_Additional_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Request Line Item --></label>
+        <name>PCC_Change_Request_Line_Item__c</name>
+        <relationshipLabel><!-- Design-Deal Registration Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Change Requested? --></label>
+        <name>PCC_Change_Requested__c</name>
     </fields>
     <fields>
         <help><!-- Partner&apos;s competitor assumed to bid for this opportunity --></help>
@@ -374,6 +387,10 @@
         <name>DDR_Restrict_FPGA_Product</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- wrong product segment value --></errorMessage>
+        <name>EmbeddedIOTrule</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Required --></errorMessage>
         <name>PCC_Competitor_System_Model_is_Required</name>
     </validationRules>
@@ -410,12 +427,12 @@
         <name>PCC_Quote_Startdate_Greaterthan_Pricing</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Required --></errorMessage>
-        <name>PCC_System_Model_is_Required</name>
+        <errorMessage><!-- Partners cannot add/modify DRP at this stage. --></errorMessage>
+        <name>PCC_Restrict_Partners_from_Save_New</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Target Resale Price should not be blank or zero. --></errorMessage>
-        <name>PCC_TargetResalePrice_Mandatory</name>
+        <errorMessage><!-- Required --></errorMessage>
+        <name>PCC_System_Model_is_Required</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This Product is not eligible for DR submission. --></errorMessage>
@@ -458,7 +475,7 @@
         <name>PCC_strt_Dt_cant_be_mor_thn_today</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please provide value for either Product or MMID or Old MMID or Ordering code, but not both. At least one field must be filled in. --></errorMessage>
+        <errorMessage><!-- Please provide value for either Product or MMID or Ordering code, but not both. At least one field must be filled in. --></errorMessage>
         <name>Product_selection_error_message</name>
     </validationRules>
     <validationRules>
@@ -468,6 +485,10 @@
     <validationRules>
         <errorMessage><!-- Quantity must be greater than zero. --></errorMessage>
         <name>Restrict_products_with_Zero_Qty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can add by using the Product field or the MMID or Ordering code or Old MMID. --></errorMessage>
+        <name>User_can_enter_either_Product_or_MMID</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_Approve_Product --></label>
@@ -480,6 +501,10 @@
     <webLinks>
         <label><!-- Core_Approve_Products_Pending --></label>
         <name>Core_Approve_Products_Pending</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Cancel_Product --></label>
+        <name>Core_Cancel_Product</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Reject_Product --></label>

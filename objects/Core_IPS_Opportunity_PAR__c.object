@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Opportunity_PAR_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Opportunity_PAR_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -319,6 +319,7 @@ This is used in email template for submitter</description>
         <columns>Core_IPS_Premier_Support_Project__c</columns>
         <columns>LAST_UPDATE</columns>
         <columns>CREATEDBY_USER</columns>
+        <columns>Opportunity__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
         <language>en_US</language>

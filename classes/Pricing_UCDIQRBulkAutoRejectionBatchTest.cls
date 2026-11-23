@@ -36,6 +36,7 @@ public class Pricing_UCDIQRBulkAutoRejectionBatchTest {
     static testmethod void testAutoRejectionBulkBatch() {
         Test.startTest();
         List<User> lstUsers4 = [select id from user where email = 'firstName@intel.com' limit 1];
+        //List<User> partnerUser = [select id from user where email = 'partner@noemail.com' limit 1];
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id,Pricing_Unified_Global_End_Customer_Nm__c,SBQQ__Account__c from SBQQ__Quote__c Limit 1]);
         List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where SBQQ__Quote__c=:lstquote[0].id  limit 1]);
         Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);

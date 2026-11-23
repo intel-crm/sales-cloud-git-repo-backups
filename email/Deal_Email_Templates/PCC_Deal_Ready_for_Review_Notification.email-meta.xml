@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_DDR_Email</letterhead>
+    <name>Deal Ready for Review Notification</name>
+    <style>freeForm</style>
+    <subject>New Deal Submitted Ready for Review</subject>
+    <textOnly>Hello
+
+
+The following Deal Registration has been Assigned to you.
+
+
+Registration Number: {!Core_Design_Registration__c.Name}
+
+Deal Registration Name: {!Core_Design_Registration__c.Core_Design_Registration_Nm__c}
+
+Partner Account: {!Core_Design_Registration__c.Core_Partner_Account_Id__c}
+
+End Customer Account: {!Core_Design_Registration__c.Core_End_Customer_Account_Id__c}
+
+
+For more details, you can access the deal registration record here</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

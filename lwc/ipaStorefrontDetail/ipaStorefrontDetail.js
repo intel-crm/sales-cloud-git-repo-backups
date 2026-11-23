@@ -161,11 +161,27 @@ class IpaStorefrontDetail extends LightningElement {
     * @returns {string} company website label
     * @private
     */
-   get companyWebsiteLabel() {
-     return (this.data && this.data.companyInfo) ? companyWebsiteLabel.replace('{0}', this.data.companyInfo.websiteLabel) : '';
-   }
+  //  get companyWebsiteLabel() {
+  //    return (this.data && this.data.companyInfo) ? 
+  //    companyWebsiteLabel.replace('{0}', this.data.companyInfo.websiteLabel) 
+  //    : '';
+  //  }
+    get websiteUrl() {
+        return this.data?.companyInfo?.websiteUrl || '';
+    }
 
+    get websiteLabel() {
+         const label = this.data?.companyInfo?.websiteLabel;
+        return label ? this.companyWebsiteLabel.replace('{0}', label) : '';
+    }
 
+    get descriptionShort() {
+        return this.data?.companyInfo?.descriptionShort || '';
+    }
+
+    get description() {
+         return this.data?.companyInfo?.description || '';
+    }
    /**
     * Returns partner analytics details for contact menu
     *

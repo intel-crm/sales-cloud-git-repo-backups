@@ -12,7 +12,6 @@ public class Core_Draco_RoleCleanup_Batch_Test {
     @isTest
     static void testPortalRoleCleanup() {
         // Create test Accounts
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         Account acc1 = new Account(); 
         acc1.Name='Mobile Networks';
         acc1.BillingCity='Newyork';
@@ -21,7 +20,6 @@ public class Core_Draco_RoleCleanup_Batch_Test {
         acc1.BillingCountryCode='USA';
         acc1.BillingPostalCode='24356';
         acc1.Core_Account_Tier__c = 'Tier1';
-        acc1.RecordTypeId=intelAccRecTypeId;
         insert acc1;
         
         Account acc2 = new Account();
@@ -30,7 +28,6 @@ public class Core_Draco_RoleCleanup_Batch_Test {
         acc2.BillingCity='Texas';
         acc2.BillingStreet='Street 2';
         acc2.BillingCountry='USA';
-		acc2.RecordTypeId=intelAccRecTypeId;
         acc2.BillingCountryCode='USA';
         acc2.BillingPostalCode='76890';
         acc2.Core_Account_Tier__c = 'Tier1';

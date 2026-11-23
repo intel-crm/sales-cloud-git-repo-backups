@@ -550,7 +550,7 @@ ISPICKVAL(Core_MDF_Case_ID_Number_id__r.Account.Core_Geo__c,&apos;ASMO&apos;))</
         </rejectBehavior>
     </approvalStep>
     <description>Escalation Approval flow for Claim Case Review Result Record Type</description>
-    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

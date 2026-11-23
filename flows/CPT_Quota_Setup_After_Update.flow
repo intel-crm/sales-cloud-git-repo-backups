@@ -3,9 +3,9 @@
     <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Add_BR_CCG</name>
-        <label>Add BR-CCG</label>
-        <locationX>204</locationX>
+        <name>Add_BR_CCPG</name>
+        <label>Add BR-CCPG</label>
+        <locationX>50</locationX>
         <locationY>947</locationY>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
@@ -18,7 +18,7 @@
             <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>CCG</stringValue>
+                <stringValue>CCPG</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -54,61 +54,10 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_BR_ALL</name>
-        <label>Assign BR-ALL</label>
-        <locationX>204</locationX>
-        <locationY>1547</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>BR</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>ALL</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_BR_All_Quota__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_BR_All_Assigned__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_For_CR_OEM</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <description>12th Dec 2025 Changes done from BR DCAI to BR CCG</description>
         <name>Assign_BR_DCG</name>
         <label>Assign BR-DCG</label>
-        <locationX>204</locationX>
+        <locationX>50</locationX>
         <locationY>1247</locationY>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
@@ -153,14 +102,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>BR_ALL</targetReference>
+            <targetReference>Check_For_CR_OEM</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_CR_OEM</name>
         <label>Assign CR-OEM</label>
-        <locationX>204</locationX>
-        <locationY>1847</locationY>
+        <locationX>50</locationX>
+        <locationY>1547</locationY>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
             <operator>Assign</operator>
@@ -210,8 +159,8 @@
     <assignments>
         <name>Assign_CR_Partner</name>
         <label>Assign CR-Partner</label>
-        <locationX>204</locationX>
-        <locationY>2447</locationY>
+        <locationX>50</locationX>
+        <locationY>2147</locationY>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
             <operator>Assign</operator>
@@ -255,14 +204,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Check_For_MarginVolume</targetReference>
+            <targetReference>Check_For_Wins_Deal</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_CR_Retail</name>
         <label>Assign CR-Retail</label>
-        <locationX>204</locationX>
-        <locationY>2147</locationY>
+        <locationX>50</locationX>
+        <locationY>1847</locationY>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
             <operator>Assign</operator>
@@ -310,29 +259,29 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_MarVol_Margin_DCG_Assigned</name>
-        <label>Assign MarVol - Margin DCG % Assigned</label>
+        <name>Assign_Wins_Deal</name>
+        <label>Assign Wins Deal</label>
         <locationX>50</locationX>
-        <locationY>2855</locationY>
+        <locationY>2447</locationY>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>MARGINVOLUME</stringValue>
+                <stringValue>PFR</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>MARGIN DCG</stringValue>
+                <stringValue>DEAL WINS</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.CPT_MarVol_Margin_DCG_Quota__c</elementReference>
+                <elementReference>$Record.CPT_Wins_Deal_Quota__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -346,7 +295,7 @@
             <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.CPT_MarVol_Margin_DCG_Assigned__c</elementReference>
+                <elementReference>$Record.CPT_Wins_Deal_Assigned__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -357,33 +306,33 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Check_MarVol_Margin_CCG_Assigned_Not_0</targetReference>
+            <targetReference>Check_For_Wins_Design</targetReference>
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_MarVol_Next_Gen_CCG_LNL_Assigned</name>
-        <label>Assign MarVol - Next Gen CCG LNL % Assigned</label>
+        <name>Assign_Wins_Design</name>
+        <label>Assign Wins Design</label>
         <locationX>50</locationX>
-        <locationY>3755</locationY>
+        <locationY>2747</locationY>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>MARGINVOLUME</stringValue>
+                <stringValue>PFR</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>NEXT GEN CCG LNL</stringValue>
+                <stringValue>DESIGN WINS</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.CPT_MarVol_NextGen_CCG_LNL_Quota__c</elementReference>
+                <elementReference>$Record.CPT_Wins_Design_Quota__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -397,415 +346,7 @@
             <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_MarVol_Next_Gen_CCG_PTL_Assigned_Not_0</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_MarVol_Next_Gen_CCG_PTL_Assigned</name>
-        <label>Assign MarVol - Next Gen CCG PTL % Assigned</label>
-        <locationX>50</locationX>
-        <locationY>4055</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>MARGINVOLUME</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>NEXT GEN CCG PTL</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_NextGen_CCG_PTL_Quota__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_MarVol_Next_Gen_CCG_WCL_Assigned_Not_0</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_MarVol_Next_Gen_CCG_WCL_Assigned</name>
-        <label>Assign MarVol - Next Gen CCG WCL % Assigned</label>
-        <locationX>50</locationX>
-        <locationY>4355</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>MARGINVOLUME</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>NEXT GEN CCG WCL</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_NextGen_CCG_WCL_Quota__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_For_STG</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_MarVol_Next_Gen_DCG_GNR_Assigned</name>
-        <label>Assign MarVol - Next Gen DCG GNR % Assigned</label>
-        <locationX>50</locationX>
-        <locationY>3455</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>MARGINVOLUME</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>NEXT GEN DCG GNR</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_NextGen_DCG_GNR_Quota__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_MarVol_Next_Gen_CCG_LNL_Assigned_Not_0</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Sales_OKR_1</name>
-        <label>Assign Sales OKR 1</label>
-        <locationX>204</locationX>
-        <locationY>5039</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>SALESOKR</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>SALESOKR1</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <numberValue>0.0</numberValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Weight_50_Percent</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_Sales_OKR_2</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Sales_OKR_2</name>
-        <label>Assign Sales OKR 2</label>
-        <locationX>204</locationX>
-        <locationY>5147</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>SALESOKR</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>SALESOKR2</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <numberValue>0.0</numberValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Weight_50_Percent</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_Sales_OKR_3</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Sales_OKR_3</name>
-        <label>Assign Sales OKR 3</label>
-        <locationX>204</locationX>
-        <locationY>5255</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>SALESOKR</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>SALESOKR3</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <numberValue>0.0</numberValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Weight_50_Percent</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assignment_19</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_STG</name>
-        <label>Assign STG</label>
-        <locationX>204</locationX>
-        <locationY>4739</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>STG</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_Sales_Team_Goal__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <numberValue>0.0</numberValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_Sales_Team_Goal_Allocated__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_for_Sales_OKR</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assignment_19</name>
-        <label>Assign Sales OKR 4</label>
-        <locationX>204</locationX>
-        <locationY>5363</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>SALESOKR</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>SALESOKR4</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <numberValue>0.0</numberValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CPT_Weight_50_Percent</elementReference>
+                <elementReference>$Record.CPT_Wins_Design_Assigned__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -819,86 +360,10 @@
             <targetReference>New_Transposed_Record_Count_Check</targetReference>
         </connector>
     </assignments>
-    <assignments>
-        <name>MarVol_Margin_CCG_Assigned</name>
-        <label>Assign MarVol - Margin CCG % Assigned</label>
-        <locationX>50</locationX>
-        <locationY>3155</locationY>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_ElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>MARGINVOLUME</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_SubElementID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>MARGIN CCG</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Margin_CCG_Quota__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Quota_Setup__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRow.CPT_Weight_Percent__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CPT_MarVol_Margin_CCG_Assigned__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>NewTransposedRowsCollection</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>NewTransposedRow</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_MarVol_Next_Gen_DCG_GNR_Assigned_Not_0</targetReference>
-        </connector>
-    </assignments>
-    <decisions>
-        <name>BR_ALL</name>
-        <label>BR-ALL</label>
-        <locationX>336</locationX>
-        <locationY>1439</locationY>
-        <defaultConnector>
-            <targetReference>Check_For_CR_OEM</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>BR_ALL_Assigned</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_BR_All_Assigned__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>0%</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_BR_ALL</targetReference>
-            </connector>
-            <label>BR-ALL Assigned</label>
-        </rules>
-    </decisions>
     <decisions>
         <name>Check_for_assigned_sub_element</name>
         <label>Check for assigned sub-element</label>
-        <locationX>336</locationX>
+        <locationX>182</locationX>
         <locationY>839</locationY>
         <defaultConnector>
             <targetReference>Check_For_BR_DCAI</targetReference>
@@ -915,7 +380,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Add_BR_CCG</targetReference>
+                <targetReference>Add_BR_CCPG</targetReference>
             </connector>
             <label>BR-CCG Assigned?</label>
         </rules>
@@ -923,10 +388,10 @@
     <decisions>
         <name>Check_For_BR_DCAI</name>
         <label>Check For BR-DCG</label>
-        <locationX>336</locationX>
+        <locationX>182</locationX>
         <locationY>1139</locationY>
         <defaultConnector>
-            <targetReference>BR_ALL</targetReference>
+            <targetReference>Check_For_CR_OEM</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -948,8 +413,8 @@
     <decisions>
         <name>Check_For_CR_OEM</name>
         <label>Check For CR-OEM</label>
-        <locationX>336</locationX>
-        <locationY>1739</locationY>
+        <locationX>182</locationX>
+        <locationY>1439</locationY>
         <defaultConnector>
             <targetReference>Check_For_CR_Retail</targetReference>
         </defaultConnector>
@@ -973,10 +438,10 @@
     <decisions>
         <name>Check_For_CR_Partner</name>
         <label>Check For CR-Partner</label>
-        <locationX>336</locationX>
-        <locationY>2339</locationY>
+        <locationX>182</locationX>
+        <locationY>2039</locationY>
         <defaultConnector>
-            <targetReference>Check_For_MarginVolume</targetReference>
+            <targetReference>Check_For_Wins_Deal</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -998,8 +463,8 @@
     <decisions>
         <name>Check_For_CR_Retail</name>
         <label>Check For CR-Retail</label>
-        <locationX>336</locationX>
-        <locationY>2039</locationY>
+        <locationX>182</locationX>
+        <locationY>1739</locationY>
         <defaultConnector>
             <targetReference>Check_For_CR_Partner</targetReference>
         </defaultConnector>
@@ -1021,35 +486,13 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_For_MarginVolume</name>
-        <label>Check For MarginVolume</label>
-        <locationX>336</locationX>
-        <locationY>2639</locationY>
-        <defaultConnector>
-            <targetReference>Check_For_STG</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Is_MarginVolume_Assigned</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_MarVol_Assigned__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>0%</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Check_MarVol_Margin_DCG_Assigned_Not_0</targetReference>
-            </connector>
-            <label>Is MarginVolume Assigned ?</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Check_for_Quota_Stage</name>
         <label>Check for Quota Stage</label>
-        <locationX>534</locationX>
+        <locationX>380</locationX>
         <locationY>731</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Quota_stage_is_complete</name>
@@ -1068,208 +511,63 @@
         </rules>
     </decisions>
     <decisions>
-        <description>22 Jan 25</description>
-        <name>Check_for_Sales_OKR</name>
-        <label>Check for Sales OKR</label>
-        <locationX>336</locationX>
-        <locationY>4931</locationY>
+        <name>Check_For_Wins_Deal</name>
+        <label>Check For Wins Deal</label>
+        <locationX>182</locationX>
+        <locationY>2339</locationY>
+        <defaultConnector>
+            <targetReference>Check_For_Wins_Design</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Wins_Assigned</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CPT_Wins_Deal_Assigned__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>0%</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Wins_Deal</targetReference>
+            </connector>
+            <label>Wins Assigned</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_For_Wins_Design</name>
+        <label>Check For Wins Design</label>
+        <locationX>182</locationX>
+        <locationY>2639</locationY>
         <defaultConnector>
             <targetReference>New_Transposed_Record_Count_Check</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Is_Sales_OKR_Assigned</name>
+            <name>Wins_Design_Assigned</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.CPT_Sales_OKR_Allowed__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <numberValue>0.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Sales_OKR_1</targetReference>
-            </connector>
-            <label>Is Sales OKR Assigned</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_For_STG</name>
-        <label>Check For STG</label>
-        <locationX>336</locationX>
-        <locationY>4631</locationY>
-        <defaultConnector>
-            <targetReference>Check_for_Sales_OKR</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Is_STG_Assigned</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_Sales_Team_Goal__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-            </conditions>
-            <connector>
-                <targetReference>Assign_STG</targetReference>
-            </connector>
-            <label>Is STG Assigned</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_MarVol_Margin_CCG_Assigned_Not_0</name>
-        <label>Check MarVol - Margin CCG % Assigned Not 0</label>
-        <locationX>182</locationX>
-        <locationY>3047</locationY>
-        <defaultConnector>
-            <targetReference>Check_MarVol_Next_Gen_DCG_GNR_Assigned_Not_0</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>MarVol_Margin_CCG_Assigned_is_not_0</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_MarVol_Margin_CCG_Assigned__c</leftValueReference>
+                <leftValueReference>$Record.CPT_Wins_Design_Assigned__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
                     <stringValue>0%</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>MarVol_Margin_CCG_Assigned</targetReference>
+                <targetReference>Assign_Wins_Design</targetReference>
             </connector>
-            <label>MarVol - Margin CCG % Assigned is not 0%</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_MarVol_Margin_DCG_Assigned_Not_0</name>
-        <label>Check MarVol - Margin DCG % Assigned Not 0</label>
-        <locationX>182</locationX>
-        <locationY>2747</locationY>
-        <defaultConnector>
-            <targetReference>Check_MarVol_Margin_CCG_Assigned_Not_0</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>MarVol_Margin_DCG_Assigned_is_not_0</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_MarVol_Margin_DCG_Assigned__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>0%</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_MarVol_Margin_DCG_Assigned</targetReference>
-            </connector>
-            <label>MarVol - Margin DCG % Assigned is not 0%</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_MarVol_Next_Gen_CCG_LNL_Assigned_Not_0</name>
-        <label>Check MarVol - Next Gen CCG LNL % Assigned Not 0</label>
-        <locationX>182</locationX>
-        <locationY>3647</locationY>
-        <defaultConnector>
-            <targetReference>Check_MarVol_Next_Gen_CCG_PTL_Assigned_Not_0</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>MarVol_Next_Gen_CCG_LNL_Assigned_is_not_0</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_MarVol_Next_Gen_CCG_LNL_Assigned__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>0%</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_MarVol_Next_Gen_CCG_LNL_Assigned</targetReference>
-            </connector>
-            <label>MarVol - Next Gen CCG LNL % Assigned is not 0%</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_MarVol_Next_Gen_CCG_PTL_Assigned_Not_0</name>
-        <label>Check MarVol - Next Gen CCG PTL % Assigned Not 0</label>
-        <locationX>182</locationX>
-        <locationY>3947</locationY>
-        <defaultConnector>
-            <targetReference>Check_MarVol_Next_Gen_CCG_WCL_Assigned_Not_0</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>MarVol_Next_Gen_CCG_PTL_Assigned_is_not_0</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_MarVol_Next_Gen_CCG_PTL_Assigned__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>0%</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_MarVol_Next_Gen_CCG_PTL_Assigned</targetReference>
-            </connector>
-            <label>MarVol - Next Gen CCG PTL % Assigned is not 0%</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_MarVol_Next_Gen_CCG_WCL_Assigned_Not_0</name>
-        <label>Check MarVol - Next Gen CCG WCL % Assigned Not 0</label>
-        <locationX>182</locationX>
-        <locationY>4247</locationY>
-        <defaultConnector>
-            <targetReference>Check_For_STG</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>MarVol_Next_Gen_CCG_WCL_Assigned_is_not_0</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_MarVol_Next_Gen_CCG_WCL_Assigned__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>0%</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_MarVol_Next_Gen_CCG_WCL_Assigned</targetReference>
-            </connector>
-            <label>MarVol - Next Gen CCG WCL % Assigned is not 0%</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_MarVol_Next_Gen_DCG_GNR_Assigned_Not_0</name>
-        <label>Check MarVol - Next Gen DCG GNR % Assigned Not 0</label>
-        <locationX>182</locationX>
-        <locationY>3347</locationY>
-        <defaultConnector>
-            <targetReference>Check_MarVol_Next_Gen_CCG_LNL_Assigned_Not_0</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>MarVol_Next_Gen_DCG_GNR_Assigned_is_not_0</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.CPT_MarVol_Next_Gen_DCG_GNR_Assigned__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>0%</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_MarVol_Next_Gen_DCG_GNR_Assigned</targetReference>
-            </connector>
-            <label>MarVol - Next Gen DCG GNR % Assigned is not 0%</label>
+            <label>Wins Design Assigned</label>
         </rules>
     </decisions>
     <decisions>
         <name>New_Transposed_Record_Count_Check</name>
         <label>New Transposed Record Count Check</label>
-        <locationX>336</locationX>
-        <locationY>5555</locationY>
+        <locationX>182</locationX>
+        <locationY>2939</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>New_Records_to_Add</name>
@@ -1290,7 +588,7 @@
     <decisions>
         <name>Record_Count_Check</name>
         <label>Record Count Check</label>
-        <locationX>534</locationX>
+        <locationX>380</locationX>
         <locationY>431</locationY>
         <defaultConnector>
             <targetReference>Check_for_Quota_Stage</targetReference>
@@ -1312,7 +610,22 @@
             <label>There are existing records</label>
         </rules>
     </decisions>
-    <description>[12th December 2025] Adding the MarginVolume Change + Removed 0% Weights lines + Deleted Older Versions + BR DCG instead of BR DCAI</description>
+    <description>[11 Nov 2026]  Removed 0% Weights lines + Deleted Older Versions + BR DCG instead of BR DCAI+BR CCPG + PFR + DEAL WINS+Design WINS</description>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>578</locationX>
+        <locationY>839</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>314</locationX>
+        <locationY>3047</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>50</locationX>
+        <locationY>3155</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>CPT_Weight_50_Percent</name>
@@ -1343,14 +656,17 @@
     <recordCreates>
         <name>Create_New_Transposed_Rows_for_Assigned_Sub_elements</name>
         <label>Create New Transposed Rows for Assigned Sub-elements</label>
-        <locationX>204</locationX>
-        <locationY>5663</locationY>
+        <locationX>50</locationX>
+        <locationY>3047</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <inputReference>NewTransposedRowsCollection</inputReference>
     </recordCreates>
     <recordDeletes>
         <name>Delete_all_existing_records</name>
         <label>Delete all existing records</label>
-        <locationX>402</locationX>
+        <locationX>248</locationX>
         <locationY>539</locationY>
         <connector>
             <targetReference>Check_for_Quota_Stage</targetReference>
@@ -1361,7 +677,7 @@
         <description>20 Jan 2025</description>
         <name>Get_all_Transposed_records_for_the_Quota_Setup_record</name>
         <label>Get all Transposed records for the Quota Setup record</label>
-        <locationX>534</locationX>
+        <locationX>380</locationX>
         <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1381,7 +697,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>408</locationX>
+        <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_all_Transposed_records_for_the_Quota_Setup_record</targetReference>

@@ -117,7 +117,7 @@
     </fields>
     <fields>
         <help>Sous-type auquel est associée l&apos;activité de co-marketing</help>
-        <label>Type de sous-activité</label>
+        <label>de sous-activité</label>
         <name>Core_MDF_Activity_SubType_nm__c</name>
     </fields>
     <fields>
@@ -276,7 +276,7 @@
     </fields>
     <fields>
         <help>Indique la campagne à laquelle cette demande est associée.</help>
-        <label>Campagne</label>
+        <label>Campaign</label>
         <name>Core_MDF_Campaign_Id__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
@@ -300,6 +300,10 @@
         <label><!-- Claim Batch Stage --></label>
         <name>Core_MDF_Claim_Batch_Stage__c</name>
         <relationshipLabel><!-- Claims --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>Raison d&apos;annulation de la réclamation</label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
     </fields>
     <fields>
         <help>Remarque en texte libre liée à la demande</help>
@@ -514,7 +518,7 @@
         <name>Core_MDF_Document_Hold_Ind__c</name>
     </fields>
     <fields>
-        <help>Si les documents ne sont pas reçus et confirmés avant cette date, la demande ne sera pas traitée en vu d&apos;un paiement.</help>
+        <help>Vérifié lorsque la demande est sélectionnée pour la soumission du document POP et est en attente du chargement du document par le client.</help>
         <label>Échéance de la soumission de documents</label>
         <name>Core_MDF_Document_Submission_DueDate_dtm__c</name>
     </fields>
@@ -532,7 +536,7 @@
         <name>Core_MDF_Duplicate_Claim__c</name>
     </fields>
     <fields>
-        <label>Numéro de virement</label>
+        <label><!-- EFT Number --></label>
         <name>Core_MDF_EFT_Number_txt__c</name>
     </fields>
     <fields>
@@ -620,11 +624,15 @@
         <name>Core_MDF_IsClaimReviewEscalation_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- Is Super Claim --></label>
+        <name>Core_MDF_Is_Super_Claim__c</name>
+    </fields>
+    <fields>
         <label>Dernière modification par</label>
         <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
     </fields>
     <fields>
-        <label>Date de dernière récupération</label>
+        <label><!-- Last Recovery Date --></label>
         <name>Core_MDF_Last_Recovery_Dt__c</name>
     </fields>
     <fields>
@@ -719,11 +727,11 @@
         <name>Core_MDF_No_Dedicated_Resources_nbr__c</name>
     </fields>
     <fields>
-        <label>Nombre d’instances activées</label>
+        <label><!-- # of Activated Instances --></label>
         <name>Core_MDF_No_of_ActivatedInstance_nbr__c</name>
     </fields>
     <fields>
-        <label>Nombre d’appels</label>
+        <label><!-- # of Calls --></label>
         <name>Core_MDF_No_of_Calls_nbr__c</name>
     </fields>
     <fields>
@@ -735,7 +743,7 @@
         <name>Core_MDF_No_of_Conversions_nbr__c</name>
     </fields>
     <fields>
-        <label>Nombre de jours</label>
+        <label><!-- # of Days --></label>
         <name>Core_MDF_No_of_Days_nbr__c</name>
     </fields>
     <fields>
@@ -775,7 +783,7 @@
         <name>Core_MDF_No_of_Individuals_Trained_nbr__c</name>
     </fields>
     <fields>
-        <label>Nombre d’instances</label>
+        <label><!-- # of Instances --></label>
         <name>Core_MDF_No_of_Instance_nbr__c</name>
     </fields>
     <fields>
@@ -804,7 +812,7 @@
         <name>Core_MDF_No_of_Signages_Nbr__c</name>
     </fields>
     <fields>
-        <label>Nombre de stagiaires</label>
+        <label><!-- # of Trainees --></label>
         <name>Core_MDF_No_of_Trainees_nbr__c</name>
     </fields>
     <fields>
@@ -868,7 +876,7 @@
         <name>Core_MDF_Number_Sold_Nbr__c</name>
     </fields>
     <fields>
-        <label>Nombre de participants</label>
+        <label><!-- # of Attendees --></label>
         <name>Core_MDF_Number_of_Attendees_Nbr__c</name>
     </fields>
     <fields>
@@ -958,8 +966,20 @@
         <name>Core_MDF_Paid_By_Payment_Type_nm__c</name>
     </fields>
     <fields>
-        <label><!-- Payment Admin Reminder Date --></label>
+        <label><!-- Payment Type after Payment Run --></label>
+        <name>Core_MDF_PaymentType_aft_PaymentRun_nm__c</name>
+    </fields>
+    <fields>
+        <label>Pause de l&apos;étude des documents de paie</label>
         <name>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Currency --></label>
+        <name>Core_MDF_Payment_Currency_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Exchange Rate --></label>
+        <name>Core_MDF_Payment_Exchange_Rate_Nbr__c</name>
     </fields>
     <fields>
         <help>Vérifié lorsque la banque est en attente</help>
@@ -994,6 +1014,10 @@
     <fields>
         <label><!-- Payment Type --></label>
         <name>Core_MDF_Payment_Type_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retail Payment Local Amount --></label>
+        <name>Core_MDF_Payment_lcl_Amount__c</name>
     </fields>
     <fields>
         <label>Pourcentage d&apos;appareils Intel</label>
@@ -1150,7 +1174,7 @@ Régler, puis être payé – Idéal pour minimiser le recouvrement après paiem
         <name>Core_MDF_Recommend_For_ClaimReview__c</name>
     </fields>
     <fields>
-        <label>Mettre en attente pour la récupération</label>
+        <label><!-- Hold for Recovery --></label>
         <name>Core_MDF_Recovery_Hold_Ind__c</name>
     </fields>
     <fields>
@@ -1335,6 +1359,10 @@ Régler, puis être payé – Idéal pour minimiser le recouvrement après paiem
         <name>Core_MDF_Taxes_Local__c</name>
     </fields>
     <fields>
+        <label><!-- Third Party Ind --></label>
+        <name>Core_MDF_Third_Party_Ind__c</name>
+    </fields>
+    <fields>
         <label>Durée de diffusion de la vidéo</label>
         <name>Core_MDF_Time_video_to_last_txt__c</name>
     </fields>
@@ -1344,7 +1372,7 @@ Régler, puis être payé – Idéal pour minimiser le recouvrement après paiem
         <name>Core_MDF_To_Be_Audited_Ind__c</name>
     </fields>
     <fields>
-        <help>Montant (USD) réduisant le « Montant demandé (USD) » en raison des compensations d&apos;ajustement</help>
+        <help>Montant (USD) réduisant le « Montant demandé (USD) » en raison des compensations d&apos;ajustement.</help>
         <label>Montant de compensation total (USD)</label>
         <name>Core_MDF_Total_Claim_Offsets__c</name>
     </fields>
@@ -1467,6 +1495,10 @@ Régler, puis être payé – Idéal pour minimiser le recouvrement après paiem
         <name>Core_MDF_VAT_Opt_In_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Vat Payment Local Amount --></label>
+        <name>Core_MDF_Vat_Payment_lcl_Amount__c</name>
+    </fields>
+    <fields>
         <label>Lieu de parution</label>
         <name>Core_MDF_Where_to_take_place_txt__c</name>
         <picklistValues>
@@ -1575,7 +1607,7 @@ Régler, puis être payé – Idéal pour minimiser le recouvrement après paiem
         <name>Core_MDF_Close_Adjustment</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Veuillez saisir le montant des coûts non remboursables qui est supérieur ou égal à zéro</errorMessage>
+        <errorMessage><!-- Please enter Costs not Reimbursable amount that is greater than or equal to zero --></errorMessage>
         <name>Core_MDF_CostNotReimbursable</name>
     </validationRules>
     <validationRules>
@@ -1627,12 +1659,16 @@ Régler, puis être payé – Idéal pour minimiser le recouvrement après paiem
         <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Une revendication a déjà été créée avec cette escalade. Si des réclamations supplémentaires doivent être soumises, veuillez augmenter la procédure d’escalade.</errorMessage>
+        <errorMessage><!-- A claim has already been created with this escalation. If additional claims have to be submitted please raise a new escalation. --></errorMessage>
         <name>Core_MDF_RestrictCreationOfMultipleClaim</name>
     </validationRules>
     <validationRules>
         <errorMessage>Cet utilisateur n&apos;est pas autorisé à réaliser cette opération</errorMessage>
         <name>Core_MDF_Restrict_Change_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This user does not have permission to perform this action --></errorMessage>
+        <name>Core_MDF_Restrict_ClaimCloneAndEdit</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Activity needing approval. --></errorMessage>
@@ -1679,7 +1715,7 @@ Régler, puis être payé – Idéal pour minimiser le recouvrement après paiem
         <name>Core_MDF_StartDate_EndDate_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Veuillez saisir le montant de la taxe qui est supérieur ou égal à zéro</errorMessage>
+        <errorMessage><!-- Please enter Tax amount that is greater than or equal to zero --></errorMessage>
         <name>Core_MDF_TaxesLocal</name>
     </validationRules>
     <validationRules>

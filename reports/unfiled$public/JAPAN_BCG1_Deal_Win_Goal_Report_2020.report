@@ -16,20 +16,7 @@
     <columns>
         <field>Core_Goal__c.Core_Goal_Approved_Date__c</field>
     </columns>
-    <columns>
-        <field>Core_Goal__c.Core_Goal_Category__c</field>
-    </columns>
     <description>Report for Japan BCG #1 on Deal Win Goal Status 2020.</description>
-    <filter>
-        <criteriaItems>
-            <column>Core_Goal__c.Core_Goal_Approved_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

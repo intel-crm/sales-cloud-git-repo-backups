@@ -676,15 +676,15 @@
 					<!--/div-->
 					
 				</div>
-			<template if:false={popUpSpinner}>
-				<footer class="slds-modal__footer">
-					<button class="slds-button slds-button_neutral" onclick={closeModal}
-						title="Cancel">Cancel</button>
-					<button class="slds-button slds-button_brand" onclick={handleSubmitForApproval}
-						disabled={disableBulkApproveButton}
-						title={approvalButtonName}>{approvalButtonName}</button>
-				</footer>
-			</template>
+				<template if:false={popUpSpinner}>
+					<footer class="slds-modal__footer">
+						<button class="slds-button slds-button_neutral" onclick={closeModal}
+							title="Cancel">Cancel</button>
+						<button class="slds-button slds-button_brand" onclick={handleSubmitForApproval}
+							disabled={disableBulkApproveButton}
+							title={approvalButtonName}>{approvalButtonName}</button>
+					</footer>
+				</template>
 			</div>
 		</section>
 		<div class="slds-backdrop slds-backdrop_open"></div>

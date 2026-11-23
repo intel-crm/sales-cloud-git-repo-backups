@@ -8,6 +8,8 @@
 	},
 	//Calls the apex side method and constructs the myoptions
 	fetchPickListVal: function (component, objName, fieldName, parentId, parfieldName, rTypeName, cvalue) {
+        //exception fix
+        if ($A.util.isEmpty(parentId) || $A.util.isEmpty(parfieldName)) {return;}
 		//alert("inside pickhelper");
 		var action;
 		//var invalues = [];
@@ -175,6 +177,7 @@
 
 	// helper called to set values of in Myoption attribute
 	setMyOptionValues: function (component, valuefromPFR, myopts, dependentPicklistField) {
+        var currentSelectedValue = component.get("v.selectedValue");
         if (!$A.util.isEmpty(myopts) && myopts.length > 0 && myopts != undefined) {
 		myopts.sort(this.case_insensitive_sort);
         }

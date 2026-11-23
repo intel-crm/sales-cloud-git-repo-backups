@@ -13,6 +13,20 @@ global without sharing class UCD_BizOrgRequestRestController {
         // Parse request body
         UCD_BizOrgRequestRestModel requestModel = UCD_BizOrgRequestRestModel.parseRequestBody(RestContext.request.requestBody.toString());
         if(requestModel!=null && requestModel.AccountRequests != null){
+
+            for(UCD_BizOrgRequestRestModel.AccountRestDetail accountDetail : requestModel.AccountRequests){
+
+                if(  accountDetail.AccountRequestReferences == null){
+                    UCD_BizOrgRequestRestModel.AccountRestRequestReference requestReference = new UCD_BizOrgRequestRestModel.AccountRestRequestReference();
+                    requestReference.Name = 'MyDeals';
+                    requestReference.Value = '';
+                    List<UCD_BizOrgRequestRestModel.AccountRestRequestReference> requestReferences = new List<UCD_BizOrgRequestRestModel.AccountRestRequestReference>();
+                    requestReferences.add(requestReference);
+
+                    accountDetail.AccountRequestReferences = requestReferences;
+                }
+                
+            }
             // check duplicate requests
             TagDuplicateAccountRequest(requestModel);
             //validate request
@@ -42,7 +56,7 @@ global without sharing class UCD_BizOrgRequestRestController {
             if (String.isBlank(requestModel.AccountRequests[i].Name) ||
                 String.isBlank(requestModel.AccountRequests[i].CustomerAggregationTypeCode) ||
                 String.isBlank(requestModel.AccountRequests[i].CustomerProcessEngagmentCode)) {
-                errors.add('Name, CustomerAggregationTypeCode and CustomerProcessEngagmentCode are mandatory fields');
+                errors.add(System.Label.UCD_ACM_MandatoryFieldsValidationMessage);
             }
             //validate address
             errors.addAll(validateAccountRequestAddresses(requestModel.AccountRequests[i].Addresses != null?requestModel.AccountRequests[i].Addresses:null));
@@ -67,13 +81,13 @@ global without sharing class UCD_BizOrgRequestRestController {
         if(addresses != null){
             for (UCD_BizOrgRequestRestModel.AccountRestAddresses address : addresses) {
                 if (String.isBlank(address.CountryCode) && String.isBlank(address.CountryName) ) {
-                    addressErrors.add('CountryCode/CountryName is required');
+                    addressErrors.add(System.Label.UCD_ACM_CountryName_Code_CannotbeBlank);
                 } else if (String.isNotBlank(address.CountryCode) && address.CountryCode.length() != 3) {
-                    addressErrors.add('CountryCode length is not valid. Expected 3-character CountryCode');
+                    addressErrors.add(System.Label.UCD_ACM_InvalidCountryCodeLength);
                 }
             }
         }else{
-            addressErrors.add('Addresses is required');
+            addressErrors.add(System.Label.UCD_ACM_AddressIsMandatory);
         }
             
         return addressErrors;
@@ -159,14 +173,16 @@ global without sharing class UCD_BizOrgRequestRestController {
                 lstofnewModeladdr.add(newModelAddressRef);
             }
             accountModel.Addresses = lstofnewModeladdr;
-            Map < String , String > mapOfAccReqRef = new Map < String , String >();
+
+                Map < String , String > mapOfAccReqRef = new Map < String , String >();
+
             if(requestModelRecord.AccountRequestReferences != null){
                 if(requestModelRecord.AccountRequestReferences.size() > 0){
-                    for (UCD_BizOrgRequestRestModel.AccountRestRequestReference accountRef : requestModelRecord.AccountRequestReferences) {
-                        //mapOfAccReqRef.put(accountRef.Name, accountRef.Value);	
-                        mapOfAccReqRef.put('MyDeals', accountRef.Value);	
-                    }
-                    accountModel.AccountRequestReferences = mapOfAccReqRef;
+                for (UCD_BizOrgRequestRestModel.AccountRestRequestReference accountRef : requestModelRecord.AccountRequestReferences) {
+                    //mapOfAccReqRef.put(accountRef.Name, accountRef.Value);	
+                    mapOfAccReqRef.put('MyDeals', accountRef.Value);	
+                }
+                accountModel.AccountRequestReferences = mapOfAccReqRef;
                 }else{
                         mapOfAccReqRef.put('MyDeals', '');	
                         accountModel.AccountRequestReferences = mapOfAccReqRef;

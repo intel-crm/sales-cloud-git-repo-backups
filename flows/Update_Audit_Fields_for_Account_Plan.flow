@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>Core_Account_Plan_Score</name>
+        <dataType>Number</dataType>
+        <expression>(IF(NOT(ISBLANK({!$Record.Core_Account_Revenue__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Potential_Revenue_next_5_years__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Market_Cap__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Revenue_Customer_Overview__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Net_Income__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Cash_Investments__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Debt_long_term__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Price_Earnings__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Gross_Margin__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.Core_Employees__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.CRM_Customer_Nm__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.CRM_Account_Value_Impact_to_Intel__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.CRM_Intel_Partner_Alliance_Activity__c})), 1, 0) +
+IF(NOT(ISBLANK({!$Record.CRM_Recent_Customer_Announcements__c})), 1, 0) 
+) / 16 * 100</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Update Account Plan Record {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Audit Fields for Account Plan</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_the_Audit_Fields</name>
+        <label>Update the Audit Fields</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>CRM_Account_Plan_Score__c</field>
+            <value>
+                <elementReference>Core_Account_Plan_Score</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CRM_Created_By__c</field>
+            <value>
+                <elementReference>$Record.CreatedById</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CRM_Created_Date__c</field>
+            <value>
+                <elementReference>$Record.CreatedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CRM_Last_Modified_By__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedById</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CRM_Last_Modified_Date__c</field>
+            <value>
+                <elementReference>$Record.LastModifiedDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_the_Audit_Fields</targetReference>
+        </connector>
+        <object>AccountPlan</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

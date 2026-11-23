@@ -108,6 +108,7 @@
         <columns>Core_Account_English_Only_Name__c</columns>
         <columns>Core_Account_Owner_Role__c</columns>
         <columns>Core_CIM_ID__c</columns>
+        <columns>Core_Business_Party_Id__c</columns>
         <columns>Core_CNDA__c</columns>
         <columns>Core_Contact_English_Only_Name__c</columns>
         <columns>Core_ODM_Checked__c</columns>
@@ -118,6 +119,7 @@
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <visibility>Protected</visibility>
 </CustomObject>

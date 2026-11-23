@@ -22,6 +22,8 @@ import getDependentFields from '@salesforce/apex/Core_MDF_Smart_Picklist_Maintai
 import getDependentPicklistValues from '@salesforce/apex/Core_MDF_Smart_Picklist_Maintainence.getDependentPicklistValues';
 import getRTdetailsBasedOnObjectSelection from '@salesforce/apex/Core_MDF_Smart_Picklist_Maintainence.getRTdetailsBasedOnObjectSelection';
 import getPicklistValFromGVS from '@salesforce/apex/Core_MDF_Smart_Picklist_Maintainence.getPicklistValFromGVS';
+import getBackFillDetails from '@salesforce/apex/SmartPicklistBackfill.getBackFillDetails';
+import getOrgName from '@salesforce/apex/SmartPicklistBackfill.getOrgName';
 
 export default class core_MDF_PicklistView_MaintenanceScreen extends LightningElement {
     picklistMetadata = [];
@@ -126,6 +128,10 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
     @track data=[];
     @track dependentField;
     @track selectedFieldLabel;
+    @track showBackFillModal = false; //POC
+    @track orgName; //POC
+    @track backFillBtnName; //POC
+    @track backFillMessage;//POC
 
     
 
@@ -373,8 +379,11 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
         let fieldAPIName = event.target.dataset.name;
         console.log('in add new row method', fieldAPIName);
         let fieldOpt = JSON.parse(JSON.stringify(this.fieldOptions));
+        console.log('in add new row fieldOpt', fieldOpt);
         let index = fieldOpt.findIndex(fld => fld.value == fieldAPIName);
+        console.log('in add new row index', index);
         let fieldOptLength = fieldOpt[index].data.length;
+        console.log('in add new row fieldOptLength', fieldOptLength);
         const newRow = { label: '', value: '', isActive: '', id: fieldOpt[index].data.length + 1, isNew: true, showEditIcon: fieldOpt[index].data[fieldOptLength - 1].showEditIcon, isEditable: false };
         if (index !== -1) {
             fieldOpt[index].data.push(newRow);
@@ -429,12 +438,15 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
         picklistWrapper.fieldAPIName = fieldAPIName;
         picklistWrapper.picklistValues = this.fieldOptions[index].data;
         picklistWrapper.sorted = this.fieldOptions[index].sort;
+        console.log('Inside handleSave picklistvalues:'+picklistWrapper.picklistValues);
+        console.log('Inside handleSave picklistvalues sorted:'+picklistWrapper.sorted);
 
         updatePicklistValue({ pwcParams: picklistWrapper, backfill: false })
             .then(data => {
                 console.log('data', JSON.stringify(data));
                 console.log('after save field options', this.fieldOptions);
                 if (data != {} && data != undefined) {
+                    console.log('after save data not null',JSON.stringify(data));
                     if (Object.keys(data).length > 0 && Object.keys(data)[0] == 'true') {
                         this.fieldOptions[index].isExpanded = true;
                         let picklistData = this.fieldOptions[index].data.filter(dt => dt.isEditable == true);
@@ -557,6 +569,7 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
         })
         recordTypeWrapper.recordTypeName = this.recordTypeInfos[rTypeIndex].name;
         recordTypeWrapper.recordTypeFullName = this.selectedObject + '.' + this.recordTypeInfos[rTypeIndex].developerName;
+        recordTypeWrapper.businessProcess= this.selectedObject;//POC added
         recordTypeWrapper.pLWrapperParams = {
             objectName: this.selectedObject,
             fieldName: this.fieldOptions[fldInd].label,
@@ -730,7 +743,66 @@ export default class core_MDF_PicklistView_MaintenanceScreen extends LightningEl
         console.log('line 721', this.oldValue);
         this.fieldOptions[index].data[dataindex].label = this.oldValue;
     }
+    handleBackFillBtn(event){
+        getOrgName()
+            .then(res => {
+               console.log('Inside getOrgName:'+JSON.stringify(res));
+               this.orgName = res;
+               if( this.orgName=="crmdevint3"){
+                this.backFillBtnName = "DEVSLS";
+               }
+               if( this.orgName=="crmQA7"){
+                this.backFillBtnName = "DEVINT";
+               }
+            }
+            ).catch(error => {
+                console.log('Inside getOrgName error', error);
+            });
+        this.showBackFillModal = true;
+        console.log('Inside handleBackFillBtnClick');
+         
+    }
+    hideBackFillModal(event){
+         this.showBackFillModal = false;
+    }
     handlebackfill(event) {
+        
+        console.log('INSIDE BACKFILL');
+         let fieldAPIName = event.target.dataset.name;
+         console.log('INSIDE BACKFILL FIELDAPINAME:'+fieldAPIName);
+        let index = this.fieldOptions.findIndex(fld => fld.value == fieldAPIName);
+        console.log('INSIDE BACKFILL  index:'+index);
+        let picklistWrapper = {};
+        this.isLoading = true;
+
+        picklistWrapper.objectName = this.selectedObject;
+        picklistWrapper.fieldName = this.fieldOptions[index].label;
+        picklistWrapper.fieldAPIName = fieldAPIName;
+        picklistWrapper.picklistValues = this.fieldOptions[index].data;
+        picklistWrapper.sorted = this.fieldOptions[index].sort;;
+        console.log('INSIDE BACKFILL picklistValues:'+JSON.stringify(picklistWrapper.picklistValues));
+        console.log('INSIDE BACKFILL picklistWrapper:'+JSON.stringify(picklistWrapper));
+        getBackFillDetails( {pwcParams: picklistWrapper})
+            .then(res => {
+               console.log('Inside bckfill result:'+res);
+               this.showBackFillModal = false;
+            }
+            ).catch(error => {
+                console.log('Inside backfill error', error);
+            });
+            //added new start
+            const successEvent = new ShowToastEvent({
+            title: 'Success',
+            message: 'Picklist Backfill Job Running in the background. Please check after some time',
+            variant: 'success'
+        });
+        this.dispatchEvent(successEvent);
+        const errorEvent = new ShowToastEvent({
+            title: 'Error',
+            message: 'Error Occured while backfill',
+            variant: 'error'
+        });
+        //added new end
 
     }
     //method to handle dependency tab

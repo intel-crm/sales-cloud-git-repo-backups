@@ -205,7 +205,7 @@
                     <label>RecordTypeId</label>
                 </value>
                 <value>
-                    <fullName>core_cpq_Tool_Type__c</fullName>
+                    <fullName>Core_Prod_Tool_Type_Nm__c</fullName>
                     <default>false</default>
                     <label>Tool Type</label>
                 </value>
@@ -243,6 +243,11 @@
                     <fullName>SBQQ__SubscriptionTerm__c</fullName>
                     <default>false</default>
                     <label>SBQQ__SubscriptionTerm__c</label>
+                </value>
+                <value>
+                    <fullName>SBQQ__ListPrice__c</fullName>
+                    <default>false</default>
+                    <label>SBQQ__ListPrice__c</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

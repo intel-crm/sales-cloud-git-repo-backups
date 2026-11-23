@@ -1,0 +1,46 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta name=Generator content="Microsoft Word 15 (filtered medium)">
+</head>
+
+<body lang=EN-US>
+
+ <table style="background-color: #0071c5;" width="850">
+  <tbody>
+    <tr>
+	  <td style="padding-left: 50px; border: none;">
+	    <div style="color: white;">
+		  <h1>Kind Attention Please!</h1>
+		 </div>
+		</td>
+		<td style="border: none; padding-right: 20px;" align="right">
+		<img src="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" />
+		</td>
+		</tr>
+		</tbody>
+</table>
+
+<table style="height: 303px;" width="850" style="border-style: ridge;border-width:thin; border:0.10em solid #F9F9F9">
+<tbody>
+<div>
+<tr>
+<td style="width: 540.667px;">
+ <p>&nbsp;Hello All,<o:p></o:p></p>
+ <p>&nbsp;Please find the details of failed Sales Assist record:
+</br>
+&nbsp;Record Id: {!Core_Sales_Assist_Staging__c.Id}
+</br>
+&nbsp;Error Description : {!Core_Sales_Assist_Staging__c.Core_Error_Description_Txt__c}
+</a>
+ </p>
+ <p>&nbsp;Thanks,</p>
+ <p>&nbsp;Intel Support Team</p>
+<hr/>
+ <p style="text-align: center;font-size: 10px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation</br>&copy; 2019 Intel Corporation<br /> Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.</br> <a href="http://www.intel.com">www.intel.com</a></br><a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
+
+  </td>
+ </tr>
+ </div>
+ </tbody>
+ </table>
+ </body>
+ </html>

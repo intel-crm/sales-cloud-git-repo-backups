@@ -1,0 +1,125 @@
+.slds-p-around_medium {
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
+.slds-m-top_medium {
+    margin-top: 1rem;
+}
+.slds-combobox_container {
+    position: relative;
+}
+
+.slds-dropdown {
+    position: absolute;
+    /* top: 100%;
+    left: 0; */
+    z-index: 1;
+}
+
+.textarearbackground{
+    display: none;
+}
+
+.slds-col-delete-btn {
+    align-items: end;
+    display: flex;
+    padding-bottom: 2px;
+}
+
+.slds-grid {
+    height: 70px;
+    /* margin-bottom: 10px; */
+}
+
+.slds-truncate {
+    overflow: visible;
+}
+
+.delete-btn-container {
+    vertical-align: middle;
+    padding-top: 30px;
+}
+
+.slds-table {
+    margin-bottom: 10px;
+}
+
+.slds-col {
+    position: relative;
+    padding: 0.5rem;
+}
+
+.slds-modal__footer {
+    display: flex;    
+    padding: 1rem;
+	justify-content: center;
+}
+
+.slds-modal__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.slds-textarea{
+	height: 165px;
+}
+.section-heading {
+    background-color: rgba(226, 221, 221, 0.916) ;
+    padding: 0.5rem; /* Padding around the heading */
+    border-radius: 0.25rem; /* Optional: rounded corners */
+    margin-bottom: 1rem; /* Space between heading and content */
+}
+
+.custom-header{
+    font-size: medium;
+    font-weight: 400;
+}
+/*lightning-input-address {
+    display: flex;
+    flex-wrap: wrap;
+}
+lightning-input-address > * {
+    flex: 1 1 50%; 
+    box-sizing: border-box;
+    padding: 0.5rem;
+ }*/
+
+.no-label .slds-form-element__label {
+    display: none;
+}
+
+.no-label-space {
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+}
+
+.slds-align_absolute-center, .slds-align--absolute-center{
+    justify-content: left;
+}
+
+.lightning-helptext {
+    margin-left: 0.5rem; /* Adjust the margin as needed */
+}
+
+.margin-btm-10 {
+    margin-bottom: 10px;
+}
+
+.resize-rs {
+  margin-bottom: 0;
+}
+
+.resize-rs-1 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.resize-rs-2 {
+    margin-top: 14px;
+}
+  .slds-form-element[data-field="country"] {
+        display: none;
+    }

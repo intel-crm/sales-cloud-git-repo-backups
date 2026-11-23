@@ -3,8 +3,17 @@
     <actionOnInsert>Allow</actionOnInsert>
     <actionOnUpdate>Allow</actionOnUpdate>
     <alertText xsi:nil="true"/>
-    <description>This rule is only in place to identify duplicate records being created in ARQ and report on them for monitoring purposes</description>
-    <duplicateRuleFilter xsi:nil="true"/>
+    <description>Error! An account matching the customer name &amp; address you entered has been found. You can’t submit this new request as it is a duplicate.</description>
+    <duplicateRuleFilter>
+        <booleanFilter xsi:nil="true"/>
+        <duplicateRuleFilterItems>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Rejected</value>
+            <sortOrder>1</sortOrder>
+            <table>Account_Create_Request__c</table>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
     <duplicateRuleMatchRules>
         <matchRuleSObjectType>Account_Create_Request__c</matchRuleSObjectType>
         <matchingRule>ACM_AccountRequestCheck_matching_rule</matchingRule>

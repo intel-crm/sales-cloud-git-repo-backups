@@ -1,0 +1,109 @@
+<template>
+	<lightning-card>
+		<template if:true={pageLoaded}>
+			<lightning-accordion class="accordion" active-section-name="1">
+				<!--  onsectiontoggle={handleToggleSection} -->
+				<div class="slds-box ">
+					<lightning-accordion-section name="1" class="slds-text-title section-background"
+						label={tradeComplianceHeader}>
+						<div class="slds-box ">
+							<p class="slds-p-bottom_small slds-border_bottom">{tradeComplianceMessage}</p>
+
+							<div class="slds-grid slds-gutters">
+								<div class="slds-col slds-size_2-of-3">
+									<p>{tradeCompliance}</p>
+								</div>
+								<div class="slds-col slds-size_1-of-3">
+									<lightning-radio-group value={tradeComplianceValue} options={tradeComplianceOptions}
+										onchange={handleTradeComplianceChange} class="radio-combo-inline">
+									</lightning-radio-group>
+								</div>
+
+							</div>
+						</div>
+						<div class="slds-box">
+							<div class="slds-col slds-size_1-of-1">
+								{tradePrimary}
+							</div>
+							<div class="slds-col slds-size_1-of-6">
+								<lightning-combobox value={selectedCountry} options={countryOptions}
+									label={tradePrimaryCntry} class="center-align" onchange={handleCountryChange}>
+								</lightning-combobox>
+							</div>
+						</div>
+					</lightning-accordion-section>
+				</div>
+				<div class="slds-box">
+					<lightning-accordion-section class="slds-text-title section-background" name="2"
+						label={emailSectionHeader}>
+						<div class="slds-box ">
+							<p class="slds-p-bottom_small slds-border_bottom">{optOutMsg}</p>
+							<template if:true={emailOptOut}>
+								<div class="slds-grid slds-gutters">
+									<div class="slds-col slds-size_12-of-12">
+										<p>{emailOptInMSG}
+										</p>
+									</div>
+								</div>
+							</template>
+							<template if:false={emailOptOut}>
+								<div class="slds-grid slds-gutters">
+									<div class="slds-col slds-size_12-of-12">
+										<p>{emailOptOutMSG}
+										</p>
+									</div>
+								</div>
+							</template>
+
+							<div class="slds-grid slds-gutters">
+								<div class="slds-col slds-size_4-of-12">
+									<template if:true={emailOptOut}>
+										<lightning-input type="checkbox" checked={emailOptOut} value={emailOptOut}
+											label={outpOut} onchange={handleEmailOptOut} class="radio-combo-inline">
+										</lightning-input>
+									</template>
+
+									<template if:false={emailOptOut}>
+										<lightning-input type="checkbox" checked={emailOptOut} value={emailOptOut}
+											label={outpIn} onchange={handleEmailOptOut} class="radio-combo-inline">
+										</lightning-input>
+									</template>
+
+								</div>
+								
+							</div>
+						</div>
+					</lightning-accordion-section>
+				</div>
+				<div class="slds-box">
+					<lightning-accordion-section name="3" class="slds-text-title section-background"
+						label={timezoneHeader}>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-size_1-of-1">
+								<p class="slds-p-bottom_small slds-border_bottom">{timeZoneMessage}
+								</p>
+							</div>
+						</div>
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-size_2-of-3">
+								<lightning-combobox class="center-align" value={selectedTimeZone}
+									options={timeZoneOptions} label={timeZoneLabel}
+									onchange={handleTimeZoneChange}></lightning-combobox>
+							</div>
+						</div>
+					</lightning-accordion-section>
+				</div>
+
+				<div class="slds-col slds-size_1-of-1 slds-text-align_center slds-m-top_medium">
+					<lightning-button variant="brand" class="slds-p-around_small" label={submiButtonLabel} onclick={handleSubmit}
+						disabled={runSpinner}></lightning-button>
+					<lightning-button variant="neutral" label={cancelButtonLabel} onclick={handleCancel} disabled={runSpinner}>
+					</lightning-button>
+				</div>
+			</lightning-accordion>
+		</template>
+	</lightning-card>
+	<template if:true={runSpinner}>
+		<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+	</template>
+</template>

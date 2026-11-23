@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Account  Channel Memberships</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- test --></label>
+        <name>test</name>
+    </fieldSets>
     <fields>
         <label><!-- Account Channel Program Key --></label>
         <name>PRM_Account_Channel_Program_Key__c</name>
@@ -107,6 +111,10 @@
     <fields>
         <label><!-- Tier Name --></label>
         <name>PRM_Tier_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Program --></label>
+        <name>Partner_Program__c</name>
     </fields>
     <recordTypes>
         <label><!-- Standard --></label>

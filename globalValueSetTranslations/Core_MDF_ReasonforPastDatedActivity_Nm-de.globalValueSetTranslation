@@ -49,12 +49,20 @@
         <translation>Das ursprüngliche Projekt wurde versehentlich abgebrochen</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Original project was cancelled by mistake.</masterLabel>
+        <translation>Das ursprüngliche Projekt wurde versehentlich abgebrochen.</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project was discussed with Intel but not recorded in tool on time</masterLabel>
         <translation>Das Projekt wurde mit Intel besprochen, aber nicht rechtzeitig im Tool aufgezeichnet</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Project was discussed with Intel but not recorded in tool on time.</masterLabel>
+        <translation>Das Projekt wurde mit Intel besprochen, aber nicht rechtzeitig im Tool aufgezeichnet.</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project was left as draft but never submitted</masterLabel>

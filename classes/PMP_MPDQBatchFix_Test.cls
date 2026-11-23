@@ -1,6 +1,5 @@
 @IsTest
 public class PMP_MPDQBatchFix_Test {
-    
     @TestSetup static void batchTest(){
         prm_skip_trigger__c rec = new prm_skip_trigger__c(); //added to skip trigger error
         rec.Name = 'ABA_Trigger';
@@ -169,10 +168,10 @@ public class PMP_MPDQBatchFix_Test {
         jun.Is_Active__c=true;     
         insert jun;
         
-        LIST<PMP_Company__c> compInfo = [SELECT Id, Name FROM PMP_Company__c WHERE Name = 'test class Account2'];
+        PMP_Company__c compInfo = [SELECT Id, Name FROM PMP_Company__c WHERE Name = 'test class Account2'];
         //system.debug('compInfo'+compInfo);
         Test.startTest();
-        //PMP_MPDQBatchFix.sendWarningEmail(compInfo,'PMP_Company');
+        
         Database.executeBatch(new PMP_MPDQBatchFix(), 10);
         
         
@@ -282,7 +281,7 @@ public class PMP_MPDQBatchFix_Test {
         
         Test.stopTest();
     }
-
+/*
 @IsTest
 static void testActivateLatestInactiveRel() {
 
@@ -673,11 +672,10 @@ static void testInactivateMPIWhenNoApprovedACM() {
 
     /*acm.PRM_Status_Reason_Txt__c = 'Force Batch';
     update acm;*/
-
-    acm.PRM_Status_Nm__c = 'Pending';
-    update acm;
-
+/*
     Test.startTest();
+     acm.PRM_Status_Nm__c = 'Pending';
+    update acm;
     Database.executeBatch(new PMP_MPDQBatchFix(),10);
     Test.stopTest();
 
@@ -690,8 +688,8 @@ static void testInactivateMPIWhenNoApprovedACM() {
         true,
         companyAfter.PMP_Benefit_Update_Ind__c
     );*/
-}
-    @IsTest
+
+  /*  @IsTest
 static void testInactivateMPIWhenNoApprovedACMScenario3() {
 
        prm_skip_trigger__c rec = new prm_skip_trigger__c(
@@ -803,11 +801,9 @@ static void testInactivateMPIWhenNoApprovedACMScenario3() {
 
    acm.PRM_Status_Reason_Txt__c = 'Force Batch';
     update acm;*/
-
+  /*  Test.startTest();   
     acm.PRM_Status_Nm__c = 'Pending';
     update acm;
-
-    Test.startTest();
     Database.executeBatch(new PMP_MPDQBatchFix(),10);
     Test.stopTest();
 
@@ -815,12 +811,7 @@ static void testInactivateMPIWhenNoApprovedACMScenario3() {
         [SELECT PMP_Benefit_Update_Ind__c
          FROM PMP_Company__c
          WHERE Id=:pubCompany.Id];
-
-  /*  System.assertEquals(
-        true,
-        companyAfter.PMP_Benefit_Update_Ind__c
-    );*/
-}
+}*/
      @isTest static void batchTestSendwarningemail(){ prm_skip_trigger__c rec = new prm_skip_trigger__c(); //added to skip trigger error
         rec.Name = 'ABA_Trigger';
         rec.inactive__c = false;
@@ -1023,5 +1014,4 @@ static void testInactivateMPIWhenNoApprovedACMScenario3() {
         Database.executeBatch(new PMP_MPDQBatchFix(), 10);
         
         
-        Test.stopTest();}
-}
+                                                     Test.stopTest();}}

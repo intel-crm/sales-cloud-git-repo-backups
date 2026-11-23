@@ -51,6 +51,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Scheduler_Status_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Scheduler_Status_Txt__cField</identifier>
                 <visibilityRule>
@@ -93,6 +97,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Next_Batch_Run_Time_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Next_Batch_Run_Time_Txt__cField</identifier>
                 <visibilityRule>
@@ -183,6 +191,10 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Core_MDF_Object_JSON_Txt__c</fieldItem>
                 <identifier>RecordCore_MDF_Object_JSON_Txt_cField1</identifier>
             </fieldInstance>

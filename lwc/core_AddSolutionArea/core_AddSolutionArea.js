@@ -37,7 +37,7 @@ import Objects_Type_IUC from "@salesforce/apex/Core_AddSolutionArea.Get_Types_In
 import searchHelpText from "@salesforce/label/c.Core_SolSearchHelpText";
 //import Objects_Type_SP from "@salesforce/apex/Core_AddSolutionArea.Get_Types_Concatenated_Solution_Partners"; 
 
-const DELAY = 50;
+const DELAY = 250;
 
 const actions = [
   { label: 'Show details', name: 'show_details' }

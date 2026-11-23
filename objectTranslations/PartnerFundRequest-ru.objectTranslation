@@ -262,11 +262,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>EVT Exit</masterLabel>
-            <translation>Выход EVT</translation>
+            <translation><!-- EVT Exit --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>First Customer Shipment</masterLabel>
-            <translation>Первая отправка клиенту</translation>
+            <translation><!-- First Customer Shipment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Lab/Factory prep &amp; tools</masterLabel>
@@ -274,7 +274,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
-            <translation>Другое</translation>
+            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other - Eng Act field</masterLabel>
@@ -352,8 +352,18 @@
         <name>Core_MDF_Activity_Reimbursement_Amt_nbr__c</name>
     </fields>
     <fields>
+        <help><!-- Enter a value if need to change RR for this Activity --></help>
+        <label><!-- Activity Reimbursement Rate --></label>
+        <name>Core_MDF_Activity_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
         <label><!-- Activity Reserved Amount --></label>
         <name>Core_MDF_Activity_Reserved_Amount_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Second Approver --></label>
+        <name>Core_MDF_Activity_Second_Approver_txt__c</name>
+        <relationshipLabel><!-- Co-Marketing Activities (Activity Second Approver) --></relationshipLabel>
     </fields>
     <fields>
         <label>Вторичный компонент действия для розницы</label>
@@ -390,6 +400,10 @@
     <fields>
         <label>Подвид маркетингового действия</label>
         <name>Core_MDF_Activity_SubType_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Subtype old --></label>
+        <name>Core_MDF_Activity_Sub_Type_nm__c</name>
     </fields>
     <fields>
         <label>Тип маркетингового действия</label>
@@ -552,13 +566,17 @@
     </fields>
     <fields>
         <help>Если вы вводите валюту, отличную от долларов США, система оценит соответствующий лимит расходов в долларах США.</help>
-        <label>Локальный лимит расходов на действие</label>
+        <label>Общие инвестиции (Intel и партнер)</label>
         <name>Core_MDF_Budget_Amount_Local_amt__c</name>
     </fields>
     <fields>
         <help>Валюта суммы бюджета</help>
         <label>Валюта</label>
         <name>Core_MDF_Budget_Currency_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type (Reporting Only) --></label>
+        <name>Core_MDF_Budget_Type_Reporting_Only__c</name>
     </fields>
     <fields>
         <label><!-- Budget Type (Reporting Only) --></label>
@@ -584,6 +602,11 @@
     <fields>
         <label><!-- Campaign Reimbursement Amount (USD) --></label>
         <name>Core_MDF_Campaign_Reimbursement_Amt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the Reimbursement Rate that was selected at Campaign --></help>
+        <label><!-- Campaign Reimbursement Rate --></label>
+        <name>Core_MDF_Campaign_Reimbursement_Rate_pct__c</name>
     </fields>
     <fields>
         <help>Это ставка возмещения, которая была выбрана в ходе кампании</help>
@@ -738,6 +761,10 @@
         <name>Core_MDF_Exchange_Rate_ptc__c</name>
     </fields>
     <fields>
+        <label><!-- Expected Close Date --></label>
+        <name>Core_MDF_Exp_Close_Dt__c</name>
+    </fields>
+    <fields>
         <label>Комментарий утверждающего внешнего лица</label>
         <name>Core_MDF_External_Approval_Comment_txt__c</name>
     </fields>
@@ -784,6 +811,14 @@
         <name>Core_MDF_IPA_Int_Approver_Comment_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_IPA_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>Core_MDF_IPA_Sub_Region_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- CoMarketing Activity Incentive Criteria --></label>
         <name>Core_MDF_Incentive_Criteria_Id__c</name>
         <relationshipLabel><!-- Partner Fund Requests --></relationshipLabel>
@@ -819,6 +854,10 @@
     <fields>
         <label>Отрасль</label>
         <name>Core_MDF_Industry_Multi_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industry Partner --></label>
+        <name>Core_MDF_Industry_Partner_txt__c</name>
     </fields>
     <fields>
         <label><!-- Ineffective Date/Time --></label>
@@ -930,6 +969,11 @@
         <label>Акцептор участника</label>
         <name>Core_MDF_Member_Acceptor_Id__c</name>
         <relationshipLabel><!-- Co-Marketing Activities (Member Acceptor) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Member Activity Owner --></label>
+        <name>Core_MDF_Member_Activity_Owner_Id__c</name>
+        <relationshipLabel><!-- Co-Marketing Activities (Member Activity Owner) --></relationshipLabel>
     </fields>
     <fields>
         <label>Владелец участника</label>
@@ -1154,7 +1198,7 @@
         <name>Core_MDF_Number_of_Stores_nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Open Rate --></label>
+        <label><!-- # of Emails Opened --></label>
         <name>Core_MDF_Open_Rate_txt__c</name>
     </fields>
     <fields>
@@ -1176,6 +1220,10 @@
     <fields>
         <label>Другое название мероприятия</label>
         <name>Core_MDF_Other_Event_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Industry Partner --></label>
+        <name>Core_MDF_Other_Industry_Partner_txt__c</name>
     </fields>
     <fields>
         <label>Другие методы измерения</label>
@@ -1203,6 +1251,18 @@
         <name>Core_MDF_Outcome_Region_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Outcome Type --></label>
+        <name>Core_MDF_Outcome_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help>Выберите один результат. Этот результат будет использован для оценки успеха кампании.</help>
         <label>Метрика результатов</label>
         <name>Core_MDF_Outcomes_nm__c</name>
@@ -1224,35 +1284,35 @@
         <name>Core_MDF_POP_Requirement_nm__c</name>
         <picklistValues>
             <masterLabel>Documentation (photographs, printouts, test results)</masterLabel>
-            <translation>Документация (фотографии, распечатки, результаты тестов)</translation>
+            <translation><!-- Documentation (photographs, printouts, test results) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Email certifying completion by partner&apos;s senior engineer</masterLabel>
-            <translation>Адрес электронной почты с сертификатом завершения работы старшим инженером партнера</translation>
+            <translation><!-- Email certifying completion by partner&apos;s senior engineer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Live demonstration</masterLabel>
-            <translation>Демонстрация в реальном времени</translation>
+            <translation><!-- Live demonstration --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in catalog</masterLabel>
-            <translation>Доступность продукции в каталоге</translation>
+            <translation><!-- Product availability in catalog --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in configuration tool</masterLabel>
-            <translation>Доступность продукции в инструменте конфигурации</translation>
+            <translation><!-- Product availability in configuration tool --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in public catalog</masterLabel>
-            <translation>Наличие продукции в общедоступном каталоге</translation>
+            <translation><!-- Product availability in public catalog --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product received by Intel</masterLabel>
-            <translation>Продукт получен корпорацией Intel</translation>
+            <translation><!-- Product received by Intel --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Proof of general availability of product</masterLabel>
-            <translation>Подтверждение общей доступности продукции</translation>
+            <translation><!-- Proof of general availability of product --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1271,6 +1331,10 @@
     <fields>
         <label>Размещение</label>
         <name>Core_MDF_Placement_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Place to run --></label>
+        <name>Core_MDF_PlacetoRun_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Price reviewer check --></label>
@@ -1474,7 +1538,7 @@
         <name>Core_MDF_TV_Channel_s_txt__c</name>
     </fields>
     <fields>
-        <help>Выберите один или несколько вариантов, которые будут использоваться в рамках этой кампании. При отправке претензии вам будет предложено предоставить показатели для каждой выбранной вами тактики.</help>
+        <help><!-- Select one or more that will be used within this Campaign. When submitting a claim, you’ll be asked to provide metrics for each Tactic you choose --></help>
         <label>Тактики</label>
         <name>Core_MDF_Tactics_nm__c</name>
     </fields>
@@ -1599,6 +1663,38 @@
         <label>количество страниц, оплачивающих</label>
         <name>Core_MDF_pagespayingfor__c</name>
     </fields>
+    <fields>
+        <label><!-- New Channel Partner --></label>
+        <name>New_Channel_Partner__c</name>
+        <picklistValues>
+            <masterLabel>Accenture</masterLabel>
+            <translation><!-- Accenture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RedHat</masterLabel>
+            <translation><!-- RedHat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP</masterLabel>
+            <translation><!-- SAP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Testing Flow --></label>
+        <name>Testing_Flow_cd__c</name>
+        <picklistValues>
+            <masterLabel>ANZ</masterLabel>
+            <translation><!-- ANZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAIWAN</masterLabel>
+            <translation><!-- TAIWAN --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- test --></label>
+        <name>test__c</name>
+    </fields>
     <gender>Masculine</gender>
     <recordTypes>
         <description><!-- Channel MDF record type --></description>
@@ -1629,6 +1725,11 @@
         <description><!-- EEF Program Record Type --></description>
         <label><!-- Ecosystem Extension Fund --></label>
         <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Intel MDF Proposal Based Activity --></description>
+        <label><!-- Intel MDF Proposal Based --></label>
+        <name>Core_MDF_Intel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- IPA Program Type --></description>
@@ -1727,7 +1828,7 @@ Start Date, End Date, Campaign, Account --></errorMessage>
         <name>Core_MDF_Restrict_Event_Promotion_type</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This activity type is not available. Contact your Intel Representative for more information. --></errorMessage>
+        <errorMessage>Этот вид деятельности недоступен. Свяжитесь с вашим представителем Intel для получения более подробной информации.</errorMessage>
         <name>Core_MDF_Restrict_ExternalUserContentAct</name>
     </validationRules>
     <validationRules>
@@ -1753,10 +1854,6 @@ Start Date, End Date, Campaign, Account --></errorMessage>
     <validationRules>
         <errorMessage><!-- Please select an Intel Owner for the activity --></errorMessage>
         <name>Core_MDF_Validate_IntelOwner_Mandate_CMP</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select an Intel Owner for the activity --></errorMessage>
-        <name>Core_MDF_Validate_IntelOwner_Mandate_MDF</name>
     </validationRules>
     <validationRules>
         <errorMessage>Пожалуйста, выберите основного ответственного со стороны Intel за эту деятельность</errorMessage>

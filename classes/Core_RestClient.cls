@@ -144,6 +144,7 @@ public class Core_RestClient {
 		//Ganesh Changes End
 		
     }
+	
 
     // This method is used to get the body of the response from the server.
     private void setResponse() {
@@ -151,3 +152,12 @@ public class Core_RestClient {
     }
 
 }
+	
+	
+	
+	
+	
+	
+	
+	//UCD_ACM_AccountDeactivationService
+	//String endPointReltio = 'callout:SalesCRM_Apigee/ucd/v1/crosswalks/' + bpid ;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Flag to check in order to trigger some job/flow</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Process_Name__c</fullName>
+        <description>Process name which sets flag</description>
+        <externalId>false</externalId>
+        <label>Process Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isBatchRun__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>set to true in batch process and reset in flow</description>
+        <label>isBatchRun</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Core_IPS_Flags</label>
+    <visibility>Public</visibility>
+</CustomObject>

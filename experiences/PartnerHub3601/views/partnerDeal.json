@@ -1,0 +1,71 @@
+{
+  "appPageId" : "7e5fbc65-d0ba-405c-8994-3df2b2fc213c",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "3a615027-3401-4190-b109-ac71f6b59bec",
+  "label" : "Partner Deal",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "flowArguments" : "",
+        "flowName" : "test_POC_PEM"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "70b30fb7-129b-47f9-b07a-1d44f33f47c0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f284e5cb-9a79-4d6b-b099-fc11f114e9bb",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "flowArguments" : "",
+        "flowName" : "PEM_Deal_ISV_Screen"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "5256d2d7-1de0-462d-aa9e-d7c35ced56b7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "86b85d6e-2e57-4ba5-a6f4-199eb0048d0e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "flowArguments" : "",
+        "flowName" : "PEM_Add_Product"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "319bc083-0746-483f-a242-2c7397255621",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "46dbcfc6-d620-440c-b8bd-e018a2e7641e",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Partner Deal"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "37bb2116-04c8-40e5-9459-d9e2d64d1a44",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f790f425-7e81-4e0b-82c2-1c7d2dea1638",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-partner-deal"
+}

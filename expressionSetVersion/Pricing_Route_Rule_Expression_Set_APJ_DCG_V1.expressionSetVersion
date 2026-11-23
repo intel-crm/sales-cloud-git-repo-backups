@@ -4,7 +4,6 @@
     <expressionSetDefinition>Pricing_Route_Rule_Expression_Set_APJ_DCG</expressionSetDefinition>
     <label>Pricing Route Rule Expression Set APJ DCG V1</label>
     <processType>Bre</processType>
-    <rank>2</rank>
     <shouldShowExplExternally>false</shouldShowExplExternally>
     <startDate>2026-05-27T16:40:42.000Z</startDate>
     <status>Active</status>
@@ -52,7 +51,7 @@
         <label>Is Pricing Route Rules APJ DCG EndCust Without HT List and App has No Matching R</label>
         <name>IsPricingRouteRulesAPJDCGEndCustWithoutHTListandApphasNoMatchingR</name>
         <resultIncluded>false</resultIncluded>
-        <sequenceNumber>2</sequenceNumber>
+        <sequenceNumber>3</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
         <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
         <shouldShowExplExternally>false</shouldShowExplExternally>
@@ -100,8 +99,8 @@
             <type>DecisionTable</type>
         </decisionTable>
         <hasNestedExplainability>false</hasNestedExplainability>
-        <label>Pricing Route Rules APJ DCG EndCust Without HT List and App</label>
-        <name>PricingRouteRulesAPJDCGEndCustWithoutHTListandApp</name>
+        <label>Lookup Table</label>
+        <name>LookupTable</name>
         <resultIncluded>true</resultIncluded>
         <sequenceNumber>1</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
@@ -113,49 +112,13 @@
         <actionType>GetOutputsFromDecisionTable</actionType>
         <decisionTable>
             <decisionTableName>Pricing_Route_Rules_APJ_DCG</decisionTableName>
-            <mappings>
-                <input>false</input>
-                <name>Pricing_Routing_RPM_Email__c</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_Routing_RPM_Email</value>
-            </mappings>
-            <mappings>
-                <input>false</input>
-                <name>Pricing_Routing_Rule_Id__c</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_RouteRule_Id</value>
-            </mappings>
-            <mappings>
-                <input>false</input>
-                <name>Pricing_Routing_Output_Criteria_Nm__c</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_Routing_Output_Criteria_Nm</value>
-            </mappings>
-            <mappings>
-                <input>false</input>
-                <name>Pricing_RPM_Group_Name_Txt__c</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_Routing_RPM_Group</value>
-            </mappings>
-            <mappings>
-                <input>false</input>
-                <name>Name</name>
-                <output>true</output>
-                <type>Parameter</type>
-                <value>Pricing_RouteRule_Name</value>
-            </mappings>
             <type>DecisionTable</type>
         </decisionTable>
         <hasNestedExplainability>false</hasNestedExplainability>
         <label>Pricing Route Rules APJ DCG With End Customer HT List Criteria</label>
         <name>PricingRouteRulesAPJDCGWithEndCustomerHTListCriteria</name>
-        <parentStep>IsPricingRouteRulesAPJDCGEndCustWithoutHTListandApphasNoMatchingR</parentStep>
-        <resultIncluded>true</resultIncluded>
-        <sequenceNumber>1</sequenceNumber>
+        <resultIncluded>false</resultIncluded>
+        <sequenceNumber>2</sequenceNumber>
         <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
         <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
         <shouldShowExplExternally>false</shouldShowExplExternally>
@@ -209,6 +172,56 @@
         <input>false</input>
         <name>Pricing_RouteRule_Name</name>
         <output>true</output>
+        <type>Variable</type>
+    </variables>
+    <variables>
+        <collection>false</collection>
+        <dataType>Text</dataType>
+        <input>false</input>
+        <lookupName>Pricing_Route_Rules_APJ_DCG</lookupName>
+        <lookupType>DecisionTable</lookupType>
+        <name>Pricing_Route_Rules_APJ_DCG__Name</name>
+        <output>false</output>
+        <type>Variable</type>
+    </variables>
+    <variables>
+        <collection>false</collection>
+        <dataType>Text</dataType>
+        <input>false</input>
+        <lookupName>Pricing_Route_Rules_APJ_DCG</lookupName>
+        <lookupType>DecisionTable</lookupType>
+        <name>Pricing_Route_Rules_APJ_DCG__Pricing_RPM_Group_Name_Txt__c</name>
+        <output>false</output>
+        <type>Variable</type>
+    </variables>
+    <variables>
+        <collection>false</collection>
+        <dataType>Text</dataType>
+        <input>false</input>
+        <lookupName>Pricing_Route_Rules_APJ_DCG</lookupName>
+        <lookupType>DecisionTable</lookupType>
+        <name>Pricing_Route_Rules_APJ_DCG__Pricing_Routing_Output_Criteria_Nm__c</name>
+        <output>false</output>
+        <type>Variable</type>
+    </variables>
+    <variables>
+        <collection>false</collection>
+        <dataType>Text</dataType>
+        <input>false</input>
+        <lookupName>Pricing_Route_Rules_APJ_DCG</lookupName>
+        <lookupType>DecisionTable</lookupType>
+        <name>Pricing_Route_Rules_APJ_DCG__Pricing_Routing_RPM_Email__c</name>
+        <output>false</output>
+        <type>Variable</type>
+    </variables>
+    <variables>
+        <collection>false</collection>
+        <dataType>Text</dataType>
+        <input>false</input>
+        <lookupName>Pricing_Route_Rules_APJ_DCG</lookupName>
+        <lookupType>DecisionTable</lookupType>
+        <name>Pricing_Route_Rules_APJ_DCG__Pricing_Routing_Rule_Id__c</name>
+        <output>false</output>
         <type>Variable</type>
     </variables>
     <variables>

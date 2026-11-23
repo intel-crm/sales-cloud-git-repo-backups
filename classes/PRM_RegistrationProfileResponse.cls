@@ -27,11 +27,22 @@ public with sharing class PRM_RegistrationProfileResponse {
         //QuesAnsWrapper questionAnswerWrapper = new QuesAnsWrapper();
         Set<PRM_Profile_Answer__c> setofResponseAnswer = new Set<PRM_Profile_Answer__c>();
         Set<String> setOfAnswer = new Set<String>();
+                
         
         String instanceId = [Select ProcessInstanceId from ProcessInstanceWorkitem where Id =: recordId].ProcessInstanceId;
         String targetObjectId = [Select TargetObjectId from ProcessInstance where Id =: instanceId].TargetObjectId;
        //get partner role for record id.
        String recordPartnerRole=[SELECT PRM_Partner_Role__c FROM PRM_Registration_Request__c where Id=: targetObjectId].PRM_Partner_Role__c;
+        System.debug('recordPartnerRole=' + recordPartnerRole);
+        List<PRM_Profile_Questions__c> qList = [
+            SELECT Id, PRM_Partner_Role__c
+            FROM PRM_Profile_Questions__c
+            WHERE PRM_Partner_Role__c INCLUDES (:recordPartnerRole)
+        ];
+        
+        System.debug('Question Count=' + qList.size());
+        
+        
         //to get the master data
         for(PRM_Profile_Questions__c profQues : [Select Id,PRM_Question_Type_Nm__c,PRM_Question_Display_Txt__c from PRM_Profile_Questions__c where PRM_Partner_Role__c INCLUDES (:recordPartnerRole)]){
             profQuesMap.put(profQues.Id, profQues);
@@ -46,7 +57,7 @@ public with sharing class PRM_RegistrationProfileResponse {
                             PRM_Profile_Question_Id__r.PRM_Question_Type_Nm__c from PRM_Registration_Profile_Response__c 
                             where PRM_Registration_Request_Id__c=:targetObjectId];
             
-            //if(regResponseList != null && regResponseList.size()>0){
+            if(regResponseList != null){
                 for(PRM_Registration_Profile_Response__c resp : regResponseList){
                     if(resp.PRM_Profile_Question_Id__r.PRM_Question_Type_Nm__c == System.Label.PRM_TextArea &&
                         String.isBlank(resp.PRM_Profile_Answer_Id__r.PRM_Answer_Display_Txt__c)){
@@ -62,14 +73,14 @@ public with sharing class PRM_RegistrationProfileResponse {
                         setOfAnswer.add(resp.PRM_Profile_Answer_Id__r.PRM_Answer_Display_Txt__c);
                     }
                 }
-            //} //Athr fixes
+            }
         }
         createProfileResponseWrapperOfWrapperList obj=new createProfileResponseWrapperOfWrapperList();
         obj.setofResponseAnswer=setofResponseAnswer;
         obj.setOfAnswer=setOfAnswer;
         obj.profQuesMap=profQuesMap;
         obj.profQuesAnsMap=profQuesAnsMap;
-        return createProfileResponseWrapperList(obj);//Athr fixes
+        return createProfileResponseWrapperList(obj);//JB
         //return createProfileResponseWrapperList(setofResponseAnswer,setOfAnswer,profQuesMap, profQuesAnsMap);
     }
     /*public static List<QuesAnsWrapper> createProfileResponseWrapperList(Set<PRM_Profile_Answer__c> setofResponseAnswer, Set<String> setOfAnswer,  Map<String,PRM_Profile_Questions__c> profQuesMap,  Map<PRM_Profile_Questions__c,Set<PRM_Profile_Answer__c>> profQuesAnsMap){
@@ -90,7 +101,7 @@ public with sharing class PRM_RegistrationProfileResponse {
 
                 }
             }
-        //} //Athr fixes
+        //} //JB
         return getWrapperList(profQuesAnsMap, qaMap);
     }*/
     

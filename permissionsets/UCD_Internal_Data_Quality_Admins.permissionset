@@ -8,4 +8,12 @@
     <hasActivationRequired>false</hasActivationRequired>
     <label>UCD Internal - Data Quality Admins</label>
     <license>Salesforce</license>
+    <tabSettings>
+        <tab>Account_Deactivation</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>CIM_Duplicate_Accounts</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>

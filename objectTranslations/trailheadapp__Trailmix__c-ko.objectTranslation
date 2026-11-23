@@ -17,7 +17,7 @@
         <name>trailheadapp__Created_By_Profile__c</name>
     </fields>
     <fields>
-        <help>이 필드는 더 이상 필수 필드가 아닙니다. 이 필드의 속성을 페이지 레이아웃에서 편집하고 필수 상자의 선택을 취소하십시오.</help>
+        <help>THIS FIELD IS NO LONGER REQUIRED. EDIT THE PROPERTIES FOR THIS FIELD ON THE PAGE LAYOUT AND UNHECK THE REQUIRED BOX.</help>
         <label><!-- Created By --></label>
         <name>trailheadapp__Creator_TH_SFID__c</name>
     </fields>

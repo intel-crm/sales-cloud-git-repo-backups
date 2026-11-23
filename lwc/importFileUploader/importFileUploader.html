@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-p-around_medium">
+
+        <template lwc:if={isUploaded}>
+            <div class="slds-box slds-m-top_small">
+                <p>
+                    ✅ <strong>{fileName}</strong> 
+                    uploaded successfully
+                </p>
+                <p class="slds-text-color_weak 
+                           slds-m-top_x-small">
+                    Click Next to continue
+                </p>
+                <div class="slds-m-top_small">
+                    <lightning-button
+                        label="Upload Different File"
+                        onclick={handleReset}>
+                    </lightning-button>
+                </div>
+            </div>
+        </template>
+
+        <template lwc:else>
+            <lightning-file-upload
+                label="Upload CSV File"
+                name="importFileUploader"
+                accept=".csv"
+                record-id={recordId}
+                onuploadfinished={handleUploadFinished}
+                multiple="false">
+            </lightning-file-upload>
+            <p class="slds-text-color_weak 
+                       slds-m-top_small">
+                Only CSV files accepted.
+            </p>
+        </template>
+
+    </div>
+</template>

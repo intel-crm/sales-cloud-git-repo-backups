@@ -157,6 +157,9 @@
         <field>OpportunityLineItem.Core_Competitor_Product__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
@@ -177,18 +180,8 @@
     <columns>
         <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>inspur,bytedance,test</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
-    <name>DW products</name>
+    <name>DW$ Trackers</name>
     <params>
         <name>terr</name>
         <value>all</value>

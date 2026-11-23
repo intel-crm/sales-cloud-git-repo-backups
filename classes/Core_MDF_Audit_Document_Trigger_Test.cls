@@ -68,7 +68,7 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,pmb,'INDIA','Creator',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
+                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                            'Radio','Draft',false);
             pfr.RequestedAmount = 900000;
             pfr.Amount = 900000;
@@ -98,7 +98,7 @@ public class Core_MDF_Audit_Document_Trigger_Test {
                                                                                    100, 
                                                                                    System.today(), bank.ID, false);
             pfc.Core_MDF_Currency__c = 'USD';
-            
+            pfc.Core_MDF_Processing_Preference_nm__c='Settle, then get paid';
             insert pfc;
             
             // Creating claims
@@ -163,10 +163,10 @@ public class Core_MDF_Audit_Document_Trigger_Test {
             auditDoc1.Core_MDF_Document_Types__c='Proof of Cost;Proof of Execution;Proof of Attribution';
             auditDoc1.Core_MDF_App_Document_Types_nm__c= 'Proof of Cost;Proof of Execution;Proof of Attribution';
             insert auditDoc1;
-            for(PartnerFundClaimShare pfsc : [SELECT Id,RowCause, AccessLevel, UserOrGroup.name,UserOrGroupId FROM PartnerFundClaimShare  where ParentId=:pfc.id]){
-                    System.debug('Share Claim-->'+pfsc);
-                    System.debug('Share Claim Name-->'+pfsc.UserOrGroup.name);
-            }
+            //for(PartnerFundClaimShare pfsc : [SELECT Id,RowCause, AccessLevel, UserOrGroup.name,UserOrGroupId FROM PartnerFundClaimShare  where ParentId=:pfc.id]){
+                    //System.debug('Share Claim-->'+pfsc);
+                    //System.debug('Share Claim Name-->'+pfsc.UserOrGroup.name);
+            //}
         }
     }
     @isTest static void testDuplicate(){

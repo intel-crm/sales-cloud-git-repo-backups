@@ -150,7 +150,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation>Стимул — количество выигранных дизайнов</translation>
+            <translation><!-- Incentive - # of Design Wins --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
@@ -214,7 +214,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation>Тех. активация — число выигранных сделок</translation>
+            <translation><!-- Technical Activation - # of Deal Wins --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
@@ -222,7 +222,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation>Тех. активация — # выигр. Дизайнов</translation>
+            <translation><!-- Technical Activation - # of Design Wins --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>

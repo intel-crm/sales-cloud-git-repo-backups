@@ -13,9 +13,6 @@
         <field>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</field>
     </columns>
     <columns>
-        <field>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</field>
-    </columns>
-    <columns>
         <field>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</field>
     </columns>
     <columns>
@@ -32,7 +29,7 @@
     </columns>
     <description>Report showing Budget Type mismatch between Campaign and Activities for OPAL</description>
     <filter>
-        <booleanFilter>((1 AND 2) OR (3 AND 4) OR (5 AND 6) OR (7 AND 8) OR (9 AND 10)) AND 11</booleanFilter>
+        <booleanFilter>(1 AND 2) OR (3 AND 4) OR (5 AND 6) OR (7 AND 8) OR (9 AND 10)</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
@@ -101,14 +98,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Client Co-Marketing Fund</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Cancelled</value>
+            <value>Client</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

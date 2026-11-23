@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Else_condition</name>
+        <label>Else condition</label>
+        <locationX>446</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Else_condition_outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ElseConditionFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reset_the_Core_Lead_to_Opportunity</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Else condition outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_stage_status_check</name>
+        <label>Lead stage &amp; status check</label>
+        <locationX>248</locationX>
+        <locationY>311</locationY>
+        <defaultConnector>
+            <targetReference>Else_condition</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_stage_status_check_outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>PartnerRecordTypeFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_to_Opportunity_flag_Update</targetReference>
+            </connector>
+            <label>Lead stage &amp; status check outcome</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>ElseConditionFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,
+ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+ISPICKVAL({!$Record__Prior.Core_Lead_Status__c}, &quot;Disqualified&quot;),
+ISPICKVAL(({!$Record.Core_Lead_Status__c}), &quot;Accepted&quot;),
+OR(ISCHANGED({!$Record.Core_Lead_Status__c}),ISCHANGED({!$Record.Status}))
+)</expression>
+    </formulas>
+    <formulas>
+        <name>PartnerRecordTypeFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,
+ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+ISPICKVAL(({!$Record.Core_Lead_Status__c}), &quot;Disqualified&quot;),
+OR(ISCHANGED({!$Record.Core_Lead_Status__c}),ISCHANGED({!$Record.Status}))
+)</expression>
+    </formulas>
+    <interviewLabel>Core_Lead_Opportunity_Conversion {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_Opportunity_Conversion</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Lead_to_Opportunity_flag_Update</name>
+        <label>Lead_to_Opportunity_flag_Update</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Lead_to_Opportunity_Conversion_flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Reset_the_Core_Lead_to_Opportunity</name>
+        <label>Reset the Core_Lead_to_Opportunity_</label>
+        <locationX>314</locationX>
+        <locationY>551</locationY>
+        <inputAssignments>
+            <field>Core_Lead_to_Opportunity_Conversion_flag__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Lead_stage_status_check</targetReference>
+        </connector>
+        <filterFormula>AND(
+{!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;, 
+OR(ISCHANGED({!$Record.Core_Lead_Status__c}),ISCHANGED({!$Record.Status})))</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

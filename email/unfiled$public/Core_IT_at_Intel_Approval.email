@@ -1,0 +1,6 @@
+Hello, 
+
+A new support request, {!Core_Sales_Support_Request__c.Name} for IT @ Intel has been submitted. This is for the account {!Core_Sales_Support_Request__c.Core_Account_Name__c} and opportunity {!Core_Sales_Support_Request__c.Core_Opportunity__c}, submitted by {!Core_Sales_Support_Request__c.CreatedBy}.
+
+
+Please log into salesforce  ( https://intel--crmdevint3.sandbox.my.salesforce.com)  to assign an IT Region Manager.

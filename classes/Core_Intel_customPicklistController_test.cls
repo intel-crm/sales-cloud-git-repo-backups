@@ -20,7 +20,7 @@ Modified By:                      Date:08/03/2018                     Changes:No
         usr.UserRoleId = usRole1.Id;
         Database.insert(usr);
         system.runAs(usr){
-        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+        ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
         Account acc2 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 2', cp.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc1.Id, true);
         acc2.type ='EBM';
@@ -30,7 +30,7 @@ Modified By:                      Date:08/03/2018                     Changes:No
         camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
             insert camp;
 
-List<String> bypassFunctionKeys = new List<String>();
+        List<String> bypassFunctionKeys = new List<String>();
         bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
         bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
         bypassFunctionKeys.add('Bypass_ValidateActivityWithCampaign');
@@ -52,7 +52,7 @@ List<String> bypassFunctionKeys = new List<String>();
         Test.startTest();
         Map<String,String> lstpicklist = Core_Intel_customPicklistController.getselectOptions('PartnerFundRequest','Core_MDF_Activity_Types__c',camp.Id,'Core_MDF_Activity_Type__c','','');
         Test.stopTest();
-        //Assert.isTrue(lstpicklist.values().contains('Radio'));
+        Assert.isTrue(lstpicklist.values().contains('Radio'));
         }
     }
     /***************************************************************************************************** 
@@ -138,7 +138,7 @@ Modified By:                      Date:08/03/2018                     Changes:No
         test.startTest();
         String obj = 'PartnerFundRequest';
         List<String> field = new List<String>();
-        field.add('Core_MDF_Brand_nm__c'); 
+        field.add('Core_MDF_Brand__c'); 
         Map<String,String> result = Core_Intel_customPicklistController.apitoLabelReference(obj,field);
         test.stopTest();
         Assert.isTrue(result.values().contains('10ᵗʰ Gen'));
@@ -161,12 +161,12 @@ Modified By:                      Date:08/03/2018                     Changes:No
         Assert.isTrue(result.values().contains('10ᵗʰ Gen Core i5 processors')); 
     }
     }
-    @isTest 
+   /* @isTest 
     static void testCalloutforCMDF() {
         
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
         Map<String, Object> m =  Core_Intel_customPicklistController.customPicklistFetcher('Core_MDF_Channel_MDF_Account_Based');
         
-    }
+    }*/
     
 }

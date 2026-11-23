@@ -152,32 +152,6 @@
     "regionName" : "blade1",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "allMarketPlaceHelpLabel" : "All Marketplace help",
-        "faqTitle" : "Dashboard",
-        "headingLabel" : "FAQs",
-        "inverse" : false,
-        "paddingHorizontal" : true,
-        "theme" : "default"
-      },
-      "componentName" : "c:MarketPlaceFAQ",
-      "id" : "6abca243-b3f2-4b82-9d40-65c8df9e289a",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "ja" : "410543f8-94c5-46c4-bffc-0b526f8af63e"
-      },
-      "renditions" : [ {
-        "id" : "410543f8-94c5-46c4-bffc-0b526f8af63e",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "headingLabel" : "FAQ"
-          }
-        },
-        "type" : "renditionComponent"
-      } ],
-      "type" : "component"
-    } ],
     "id" : "63c2011b-fe64-45a3-b3e8-f09a691186e4",
     "regionName" : "blade2",
     "type" : "region"
@@ -244,7 +218,7 @@
     "components" : [ {
       "componentAttributes" : {
         "height" : "485",
-        "recordId" : "01Z3b000001X1QAEA0"
+        "recordId" : "HHJeUTRPiDfSeRxppyyeFUmHWiIYVq"
       },
       "componentName" : "forceCommunity:dashboard",
       "id" : "2686671b-e5dd-4bcb-b793-ab0d782ea128",

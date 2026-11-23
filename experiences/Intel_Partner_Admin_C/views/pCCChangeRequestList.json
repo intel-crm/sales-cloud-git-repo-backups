@@ -1,0 +1,60 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "5cd52314-a5e2-4004-bc7b-048969cb852a",
+  "label" : "PCC Change Request List",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "backgroundVariant" : "mosaic-l0",
+        "recordId" : "{!recordId}",
+        "subtitle" : "",
+        "title" : "Intel® Deal Registration"
+      },
+      "componentName" : "c:ipaMarqueeLeads",
+      "id" : "2e117cbe-7372-4541-8d5f-c1371d2ee2f1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6d7072b3-d9d2-49bd-b932-2b9bf30bfc03",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : false,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "526d1244-613d-4dbf-93ef-0b7ced9fb818",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e4f3f376-38b1-44c0-a142-6085f5e836e4",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "7eea0685-6d55-406d-8a36-e74220fd0153",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "D9gihoBcrVmPnDirmD7WyT5a9SjrsS",
+  "type" : "view",
+  "viewType" : "list-aFy"
+}

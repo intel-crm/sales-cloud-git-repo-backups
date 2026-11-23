@@ -170,12 +170,24 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_AccountCompany__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account (Company)</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Payments</relationshipLabel>
+        <relationshipName>Payments_del</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Account_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Account (Company)</label>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Payments</relationshipLabel>
-        <relationshipName>Payments2</relationshipName>
+        <relationshipName>Payments</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -199,7 +211,7 @@
         <description>Formula field to populate Budget Type on Payment. It is used in List View.</description>
         <externalId>false</externalId>
         <formula>IF( RecordType.DeveloperName == &apos;Core_MDF_RMF_MDF&apos;, &apos;Retail MDF&apos;, IF(RecordType.DeveloperName == &apos;Core_MDF_RMF_MD&apos;, &apos;RSA MD&apos;, &apos;&apos;) )</formula>
-        <label>Budget Type</label>
+        <label>Budget Type old</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -495,7 +507,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
         <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
         <columns>Core_MDF_Payment_Status_Txt__c</columns>
-        <columns>Core_MDF_AccountCompany_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

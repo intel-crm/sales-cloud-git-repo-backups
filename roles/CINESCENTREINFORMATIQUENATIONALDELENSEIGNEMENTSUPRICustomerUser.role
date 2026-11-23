@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>CINES  CENTRE INFORMATIQUE NATIONAL DE L&apos;ENSEIGNEMENT SUPÉRI Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>CINES  CENTRE INFORMATIQUE NATIONAL DE L&apos;ENSEIGNEMENT SUPÉRI Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11441553_Alexandre_Chauvin</parentRole>
+</Role>

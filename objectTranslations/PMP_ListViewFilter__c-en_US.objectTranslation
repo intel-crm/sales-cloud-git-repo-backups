@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_ListViewFilter</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_ListViewFilters</value>
+    </caseValues>
+    <fields>
+        <label><!-- PMP_FilterCondition --></label>
+        <name>PMP_FilterCondition__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP_IsActive --></label>
+        <name>PMP_IsActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP_ObjectAPIName --></label>
+        <name>PMP_ObjectAPIName__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

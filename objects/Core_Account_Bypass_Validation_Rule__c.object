@@ -20,5 +20,19 @@
         <type>Checkbox</type>
     </fields>
     <label>Core Account Bypass Validation Rule</label>
+    <listViews>
+        <fullName>UCD</fullName>
+        <columns>NAME</columns>
+        <columns>SETUP_OWNER_NAME</columns>
+        <columns>SETUP_TYPE</columns>
+        <columns>ByPass__c</columns>
+        <columns>Bypass_Flow__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>UCD</label>
+        <language>en_US</language>
+    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

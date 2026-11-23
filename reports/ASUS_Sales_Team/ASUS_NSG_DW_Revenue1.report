@@ -54,7 +54,7 @@
         <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020 ASUS NSG DW Revenue</name>
+    <name>ASUS NSG DW Revenue</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -80,6 +80,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

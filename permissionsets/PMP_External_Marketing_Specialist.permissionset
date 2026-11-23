@@ -112,6 +112,14 @@
         <apexClass>PMP_TaxonomyStore</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_DashboardTabVisibilityController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_DashboardTabVisibilityControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <customPermissions>
         <enabled>true</enabled>
         <name>PMP_Manage_Storefront</name>
@@ -139,6 +147,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PMP_Company__c.PMP_Account_Specialty__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Company__c.PMP_Badge_Tier_Sequence_Nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

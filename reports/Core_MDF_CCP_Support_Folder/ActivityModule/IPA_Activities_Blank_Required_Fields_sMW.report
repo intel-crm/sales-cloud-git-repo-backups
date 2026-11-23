@@ -58,18 +58,9 @@
     <columns>
         <field>PartnerFundRequest$Core_MDF_Reimbursement_Rate__c</field>
     </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_Brand_nm__c</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest$Campaign.Id</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_Activity_Description__c</field>
-    </columns>
     <description>IPA Activities with Blank Required fields</description>
     <filter>
-        <booleanFilter>(1 AND 8) AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14) AND 15</booleanFilter>
+        <booleanFilter>(1 AND 8) AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15) AND 16</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
@@ -127,6 +118,13 @@
             <value>Bristal org_CCPTest</value>
         </criteriaItems>
         <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_ProductType__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_BU_Split__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -135,6 +133,13 @@
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_BU_Percent_txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Activity_SubType_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -167,13 +172,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

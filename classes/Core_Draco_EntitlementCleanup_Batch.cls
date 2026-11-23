@@ -18,7 +18,7 @@ global class Core_Draco_EntitlementCleanup_Batch implements Database.Batchable<s
     global static String error_entitlementLevel = '';
     global static String error_contactLevel = '';
     global Set<Contact> conSet = new Set<Contact>();
-
+    
     global static Database.QueryLocator start(Database.BatchableContext context){    
         /********Getting the max retry value and list of error for the Batch**********/
         Map<String, Core_AE_Retry_and_Reprocess_Logics__c> mapMetadata =  Core_AE_Retry_and_Reprocess_Logics__c.getAll();
@@ -42,7 +42,7 @@ global class Core_Draco_EntitlementCleanup_Batch implements Database.Batchable<s
     }
     
     global void execute(Database.BatchableContext context, List<Core_Contact_Entitlement__c> lstAllFailedCERecords){
-
+        
         Map<String, Core_AE_Retry_and_Reprocess_Logics__c> mapMetadata =  Core_AE_Retry_and_Reprocess_Logics__c.getAll();
         for(String currentdata : mapMetadata.keySet()){
             if(mapMetadata.get(currentdata).Core_Logic_Name__c == 'Daily Entitlement Cleanup - Entitlement Based'){
@@ -51,8 +51,8 @@ global class Core_Draco_EntitlementCleanup_Batch implements Database.Batchable<s
                 
             }
         }
-
-          
+        
+        
         /*****************[START] - Update CE records and Republish Contacts for Entitlement Level Failures **************/
         Map<Id, Id> CERecordContactMap = new Map<Id, Id>();
         List<Core_Contact_Entitlement__c> EntitlementToUpdate = new List<Core_Contact_Entitlement__c>();
@@ -106,15 +106,16 @@ global class Core_Draco_EntitlementCleanup_Batch implements Database.Batchable<s
             if(mapMetadata.get(currentdata).Core_Logic_Name__c == 'Daily Entitlement Cleanup - Contact Based'){
                 max_contactLevel_retry = Integer.valueOf(mapMetadata.get(currentdata).Core_Maximum_Attempts__c);
                 error_contactLevel = mapMetadata.get(currentdata).Core_Error_Contains__c;
-               
+                
             }
         }
-
+        
         
         /*****************[START] - Update Retry counter and directly Republish Contacts for Contact Level Failures **************/
         List<String> ConLevel_ErrorList = string.isNotBlank(error_contactLevel) ? error_contactLevel.split(';') : null;
-        List<Contact> conLevelFailures = !Test.isRunningTest() ? [SELECT Id, Core_AGS_Retry_Count__c, Core_AGS_Integration_Message__c,Account.Core_Deactivated__c  FROM Contact WHERE (Core_AGS_Retry_Count__c = NULL OR Core_AGS_Retry_Count__c <: max_contactLevel_retry) AND Core_AGS_Integration_Status__c = 'Failed' AND LastModifiedDate = LAST_N_DAYS:2]
-        : [SELECT Id, Core_AGS_Retry_Count__c, Core_AGS_Integration_Message__c,Account.Core_Deactivated__c  FROM Contact WHERE (Core_AGS_Retry_Count__c = NULL OR Core_AGS_Retry_Count__c <: max_contactLevel_retry) AND Core_AGS_Integration_Status__c = 'Failed'];
+        String conQuery = 'SELECT Id, Core_AGS_Retry_Count__c, Core_AGS_Integration_Message__c, Account.Core_Deactivated__c FROM Contact WHERE (Core_AGS_Retry_Count__c = NULL OR Core_AGS_Retry_Count__c <: max_contactLevel_retry) AND Core_AGS_Integration_Status__c = \'Failed\''
+            + (!Test.isRunningTest() ? ' AND LastModifiedDate = LAST_N_DAYS:2' : '');
+        List<Contact> conLevelFailures = Database.query(conQuery);
         for(Contact failedCon : conLevelFailures){
             for(String ErrString : ConLevel_ErrorList){
                 if(failedCon.Core_AGS_Integration_Message__c.contains(ErrString)&& failedCon.Account.Core_Deactivated__c==false){
@@ -124,9 +125,8 @@ global class Core_Draco_EntitlementCleanup_Batch implements Database.Batchable<s
                 }
             }
         }
-       
         /*****************[END] - Update Retry counter and directly Republish Contacts for Contact Level Failures **************/
-     
+        
         
         if(!Test.isRunningTest()){
             Core_Draco_ContactUpdate_Batch contactUpdateBatch = new Core_Draco_ContactUpdate_Batch(conSet);

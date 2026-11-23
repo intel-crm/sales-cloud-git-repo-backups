@@ -1831,6 +1831,11 @@
                     <label>Add PSG Products</label>
                 </value>
                 <value>
+                    <fullName>Alert: Selected Product is &quot;PSG Restricted Product&quot;</fullName>
+                    <default>false</default>
+                    <label>Alert: Selected Product is &quot;PSG Restricted Product&quot;</label>
+                </value>
+                <value>
                     <fullName>Add Software Products</fullName>
                     <default>false</default>
                     <label>Add Software Products</label>
@@ -2166,9 +2171,9 @@
         <columns>SBQQ__Label__c</columns>
         <columns>SBQQ__ParentCustomAction__c</columns>
         <columns>SBQQ__Location__c</columns>
+        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Name</label>

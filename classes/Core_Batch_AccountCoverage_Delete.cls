@@ -6,45 +6,45 @@ Description    : This class deletes All the records from Account Coverage Export
 *************************************************************************************/
 public class Core_Batch_AccountCoverage_Delete implements Database.Batchable<sObject>{
     
- //    private String query = 'SELECT Id FROM Core_AccountCoverage_Export__c Where Core_Status__c = \'Delete\' AND Core_Operation__c = \'DEL\'';    
-      String query ='';
+   	private String query = 'SELECT Id FROM Core_AccountCoverage_Export__c Where Core_Status__c = \'Delete\' AND Core_Operation__c = \'DEL\'';    
+      //String query ='';
     //By default false, if it is false run the job on all the records 
-   // private Boolean deleteAll = false;
-   // public Core_Batch_AccountCoverage_Delete(){}
+    private Boolean deleteAll = false;
+    public Core_Batch_AccountCoverage_Delete(){}
     
     //WARNING : Passing true will delete all the Records from the Account Coverage export object
-//public Core_Batch_AccountCoverage_Delete(boolean deleteAllRecords){
-    //    deleteAll = deleteAllRecords;
-  //      query = (deleteAll == true ? 'SELECT Id FROM Core_AccountCoverage_Export__c ': query);
-    //}
+	public Core_Batch_AccountCoverage_Delete(boolean deleteAllRecords){
+       deleteAll = deleteAllRecords;
+       query = (deleteAll == true ? 'SELECT Id FROM Core_AccountCoverage_Export__c ': query);
+    }
   
     //Returns the query locator
     public Database.QueryLocator  start(Database.BatchableContext batchcontext) {
-//System.debug(' Core_Batch_AccountCoverage_Export_Delete STARTED >> Query '+query);
+		//System.debug(' Core_Batch_AccountCoverage_Export_Delete STARTED >> Query '+query);
         return Database.getQueryLocator(query);
     }
     
     //Cleans All the Account coverage Records before running the actual jobs
     public void execute(Database.BatchableContext BC, list<sObject> sobjlist){
-      //  System.debug(' Core_Batch_AccountCoverage_Export_Delete Execute Method Invoked   ');
-       // delete sobjlist;
-      //  DataBase.emptyRecycleBin(sobjlist); 
+       System.debug(' Core_Batch_AccountCoverage_Export_Delete Execute Method Invoked   '+sobjlist);
+       Delete sobjlist;
+       DataBase.emptyRecycleBin(sobjlist); 
     }
     
     //Finish invokes once batch finishes
     public void finish(Database.BatchableContext batchcontext){
-   /*     System.debug(' Core_Batch_AccountCoverage_Export_Delete FINISHED   ');
+        System.debug(' Core_Batch_AccountCoverage_Export_Delete FINISHED   ');
         
         //Reset All the Custom Settings Before Running and the status will  
         //be udpated back to 'Completed' after batch finishes
         //Core_AccountCoverageExportUtil.setCustomSettings('All', '');
         
         //Trigger the Account coverage Export Batch        
-        Database.executeBatch(new Core_Batch_AccountShare(),1500);*/
+        Database.executeBatch(new Core_Batch_AccountShare(),1500);
              
  
      }
-     public static String dummyMethod1() {
+    /* public static String dummyMethod1() {
         return null;
     } 
      public static String dummyMethod2() {
@@ -71,5 +71,5 @@ public class Core_Batch_AccountCoverage_Delete implements Database.Batchable<sOb
     } 
     public static String dummyMethod9() {
         return null;
-    } 
+    } */
 }

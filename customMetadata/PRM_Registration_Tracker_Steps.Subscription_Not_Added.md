@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>PRM_Previous_Step__c</field>
-        <value xsi:type="xsd:string">;;5;6;8;9;10;20;21;28;37;32;39;34;50;51;48;;</value>
+        <value xsi:type="xsd:string">;5;6;8;9;20;21;28;37;32;39;34;50;51;48;10;</value>
     </values>
     <values>
         <field>PRM_Registration_Type__c</field>

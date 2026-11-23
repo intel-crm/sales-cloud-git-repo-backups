@@ -10,22 +10,6 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Core_Account_Team_Role__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_Account_Access_Level__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_Case_Access_Level__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_Opportunity_Access_Level__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
                 <field>Core_Account__c</field>
             </layoutItems>
             <layoutItems>
@@ -63,12 +47,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <miniLayout>
-        <fields>Core_Account_Team_Role__c</fields>
-        <fields>Core_Account_Access_Level__c</fields>
-        <fields>Core_Case_Access_Level__c</fields>
-        <fields>Core_Opportunity_Access_Level__c</fields>
-    </miniLayout>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

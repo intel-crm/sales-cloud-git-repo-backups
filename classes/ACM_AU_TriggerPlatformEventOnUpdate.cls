@@ -71,7 +71,8 @@ public class ACM_AU_TriggerPlatformEventOnUpdate implements UCD_ACM_ServiceContr
                     || (acct.Core_Unified_Intermediate_Customer_Name__c != oldAcct.Core_Unified_Intermediate_Customer_Name__c)
                     || (acct.Core_Unified_Intermdt_Customer_2_BP_Id__c != oldAcct.Core_Unified_Intermdt_Customer_2_BP_Id__c)
                     || (acct.Core_Unified_Intermdt_Customer_2_Name__c != oldAcct.Core_Unified_Intermdt_Customer_2_Name__c)
-                    || (Label.PerformScreeningFromCWLObject == 'false' && (acct.Core_Compliance_Watch_List_Type__c != oldAcct.Core_Compliance_Watch_List_Type__c))
+                    || (Label.UCD_ACM_Switch_IAO_Change == 'true' && (acct.Core_Compliance_Watch_List_Type__c != oldAcct.Core_Compliance_Watch_List_Type__c || acct.Core_Compliance_Status__c!=oldAcct.Core_Compliance_Status__c))
+                    || (Label.UCD_ACM_Switch_IAO_Change == 'false' && (acct.Core_Compliance_Watch_List_Type__c != oldAcct.Core_Compliance_Watch_List_Type__c))
                     || (acct.Name != oldAcct.Name)))
             || (acct.RecordTypeId == inactiveAcctRTId && acct.RecordTypeId != oldRTId)));
     }

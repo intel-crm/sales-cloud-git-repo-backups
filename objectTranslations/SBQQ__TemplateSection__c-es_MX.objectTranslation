@@ -9,6 +9,10 @@
         <value>Secciones de plantillas</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Seleccione la casilla de verificación para aplicar el formato de idioma de documento. Solo se aplica a secciones que apuntan al contenido de plantilla del tipo &quot;HTML&quot;.</help>
         <label><!-- Apply Document Language Formatting --></label>
         <name>SBQQ__ApplyDocumentLanguageFormatting__c</name>

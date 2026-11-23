@@ -5,7 +5,6 @@ public with sharing class PRM_AccountNumberGenerator {
 *  @param            : NONE
 *  @throws exception : NONE
 **/
-    public static String maxAccountNumUpdated;
     public static String getAccountNum(){
         Long i;
         String num = '';
@@ -13,17 +12,12 @@ public with sharing class PRM_AccountNumberGenerator {
             // AggregateResult ar = [Select Max(PRM_AccountNumberFormula__c) act from Account where LastModifiedDate = LAST_N_DAYS:4];
             Account__c acs = Account__c.getValues('AccountNumber');
             if(acs!=null){
-                string accontNum;
-                if(String.isNotBlank(maxAccountNumUpdated)){
-                	accontNum = maxAccountNumUpdated;
-                }else{
-                    accontNum = Account__c.getValues('AccountNumber').PRM_Max_Account_Number__c;    
-                }                
+                string accontNum = Account__c.getValues('AccountNumber').PRM_Max_Account_Number__c;
+
                 
                 // i = long.valueOf(String.valueOf(acs.get('PRM_Max_Account_Number__c')))+1;
                 i = long.valueOf(accontNum)+1;
                 num = String.valueOf(i);
-                maxAccountNumUpdated = num;
             }
         }catch(Exception e){
             System.debug('Exception '+e);
@@ -41,7 +35,7 @@ public with sharing class PRM_AccountNumberGenerator {
                 Long accountnum = Long.valueOf(acs.PRM_Max_Account_Number__c);
                 for(Account acc : accList){ 
 
-                    if(oldMap==null || (!oldMap.isEmpty() && acc.AccountNumber != null && oldMap.get(acc.id).AccountNumber != acc.AccountNumber)){
+                    if(oldMap==null || (!oldMap.isEmpty() && oldMap.get(acc.id).AccountNumber != acc?.AccountNumber)){
                         Long maxAccountNumber = Long.valueOf(acc.AccountNumber);
                         if(maxAccountNumber>accountnum){ 
                             accountnum = maxAccountNumber;

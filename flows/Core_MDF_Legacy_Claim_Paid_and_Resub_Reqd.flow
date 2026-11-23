@@ -22,7 +22,6 @@
 Workflow rule description: This workflow rule is used to update Claim status as &apos;Paid&apos; after 30 days time period.&quot;</description>
     <environments>Default</environments>
     <label>Core_MDF_Legacy_Claim_Paid_and_Resub_Reqd</label>
-    <migratedFromWorkflowRuleName>Core_MDF_Legacy_Claim_Paid_and_Resub_Reqd</migratedFromWorkflowRuleName>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

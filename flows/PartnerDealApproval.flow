@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Stores the string value of the Approve decision.</description>
+        <name>ApprovedDecision</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Approve</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Stores the string value of the Approved lead status.</description>
+        <name>ApprovedLeadStatus</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Qualified</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Stores the Primary Group’s API name.</description>
+        <name>PrimaryGroupApiName</name>
+        <dataType>String</dataType>
+    </constants>
+    <constants>
+        <description>Stores the string value of the Rejected lead status.</description>
+        <name>RejectedLeadStatus</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Unqualified</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Stores the Secondary Group’s API name.</description>
+        <name>SecondaryGroupApiName</name>
+        <dataType>String</dataType>
+    </constants>
+    <constants>
+        <description>Stores the string value of the Submitted lead status.</description>
+        <name>SubmittedLeadStatus</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>New</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Determines whether the duplicate count returned by Find Duplicate Leads is greater than zero.</description>
+        <name>HasDuplicateDeals</name>
+        <label>Has Duplicate Deals?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>PrimaryGroupReview</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>HasDuplicates</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FindDuplicateLeads.Outputs.duplicateCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SecondaryGroupReview</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines whether the approvalDecision output of Primary Group Approval or Secondary Group Approval matches the ApprovedDecision constant.</description>
+        <name>HasReviewerApproved</name>
+        <label>Has Reviewer Approved?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>MarkLeadRejected</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>IsDealApproved</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>PrimaryGroupApproval.Outputs.approvalDecision</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>ApprovedDecision</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SecondaryGroupApproval.Outputs.approvalDecision</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>ApprovedDecision</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MarkLeadApproved</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines whether the Status field of the record that triggered the flow matches the SubmittedLeadStatus constant.</description>
+        <name>IsLeadInSubmittedStatus</name>
+        <label>Is Lead Status Submitted?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>LeadInSubmittedStatus</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>SubmittedLeadStatus</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>HasReviewerApproved</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines whether the lead owner is a partner user.</description>
+        <name>IsPartnerUser</name>
+        <label>Is Partner User?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>YesPartnerUser</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.UserType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PowerPartner</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>InitiationStage</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Identifies duplicate leads and notifies the appropriate group or account owner for approval. The reviewer approves or rejects the lead, updating the associated record.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Generates the base URL of the org.</description>
+        <name>BaseURL</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_660}, FIND(&apos;/services&apos;, {!$Api.Partner_Server_URL_660}))</expression>
+    </formulas>
+    <formulas>
+        <description>Determines the username of the primary approver, using PartnerAccountOwner if PrimaryGroupApiName is blank.</description>
+        <name>ChoosePrimaryApprover</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!PrimaryGroupApiName}), {!PartnerAccountOwner}, {!PrimaryGroupApiName})</expression>
+    </formulas>
+    <formulas>
+        <description>Calculates the username of the secondary approver, using PartnerAccountOwner if SecondaryGroupApiName is blank.</description>
+        <name>ChooseSecondaryApprover</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!SecondaryGroupApiName}), {!PartnerAccountOwner}, {!SecondaryGroupApiName})</expression>
+    </formulas>
+    <formulas>
+        <description>Generates the internal salesforce org URL from the BaseURL formula.</description>
+        <name>InternalOrgURL</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    CONTAINS({!BaseURL}, &quot;.site&quot;),
+    LEFT(
+        SUBSTITUTE({!BaseURL}, &quot;.site&quot;, &quot;.salesforce&quot;),
+        FIND(&quot;/&quot;, SUBSTITUTE({!BaseURL}, &quot;.site&quot;, &quot;.salesforce&quot;), 9)
+    ),
+    {!BaseURL}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Generates the URL of the submitted lead record by concatenating InternalOrgURL and the record ID.</description>
+        <name>LeadRecordURL</name>
+        <dataType>String</dataType>
+        <expression>{!InternalOrgURL} &amp;  {!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <description>Stores the username of the owner of the partner account related to the lead&apos;s owner.</description>
+        <name>PartnerAccountOwner</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Owner:User.Contact.Account.Owner.Username}</expression>
+    </formulas>
+    <interviewLabel>Deal Approval: {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Partner Deal Approval</label>
+    <orchestratedStages>
+        <description>Prepares variables used across the flow.</description>
+        <name>InitiationStage</name>
+        <label>Initiation Stage</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>HasDuplicateDeals</targetReference>
+        </connector>
+        <exitConditionLogic>and</exitConditionLogic>
+        <stageSteps>
+            <description>Calls an action that updates the Status field of the lead that triggered the flow to the SubmittedLeadStatus constant.</description>
+            <name>MarkLeadSubmitted</name>
+            <actionName>partner_deal_rgstr__UpdateDealStatus</actionName>
+            <actionType>stepBackground</actionType>
+            <canAssigneeEdit>false</canAssigneeEdit>
+            <debugSimulateStep>false</debugSimulateStep>
+            <entryConditionLogic>and</entryConditionLogic>
+            <exitConditionLogic>and</exitConditionLogic>
+            <inputParameters>
+                <name>LeadID</name>
+                <value>
+                    <elementReference>$Record.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>LeadStatus</name>
+                <value>
+                    <elementReference>SubmittedLeadStatus</elementReference>
+                </value>
+            </inputParameters>
+            <label>Mark Lead Submitted</label>
+            <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <runAsUser>false</runAsUser>
+            <shouldLock>false</shouldLock>
+            <stepSubtype>BackgroundStep</stepSubtype>
+        </stageSteps>
+        <stageSteps>
+            <description>Calls an action to find duplicate leads for the record that was passed into the flow.</description>
+            <name>FindDuplicateLeads</name>
+            <actionName>partner_deal_rgstr__FindDuplicateLeads</actionName>
+            <actionType>stepBackground</actionType>
+            <canAssigneeEdit>false</canAssigneeEdit>
+            <debugSimulateStep>false</debugSimulateStep>
+            <entryConditionLogic>and</entryConditionLogic>
+            <exitConditionLogic>and</exitConditionLogic>
+            <inputParameters>
+                <name>LeadId</name>
+                <value>
+                    <elementReference>$Record.Id</elementReference>
+                </value>
+            </inputParameters>
+            <label>Find Duplicate Leads</label>
+            <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <runAsUser>false</runAsUser>
+            <shouldLock>false</shouldLock>
+            <stepSubtype>BackgroundStep</stepSubtype>
+        </stageSteps>
+    </orchestratedStages>
+    <orchestratedStages>
+        <description>Updates the status of the lead record to the value stored in the ApprovedLeadStatus constant.</description>
+        <name>MarkLeadApproved</name>
+        <label>Mark Lead Approved</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <exitConditionLogic>and</exitConditionLogic>
+        <stageSteps>
+            <description>Calls an action that updates the Status field of the lead that triggered the flow to the ApprovedLeadStatus constant.</description>
+            <name>UpdateStatusToApproved</name>
+            <actionName>partner_deal_rgstr__UpdateDealStatus</actionName>
+            <actionType>stepBackground</actionType>
+            <canAssigneeEdit>false</canAssigneeEdit>
+            <debugSimulateStep>false</debugSimulateStep>
+            <entryConditionLogic>and</entryConditionLogic>
+            <exitConditionLogic>and</exitConditionLogic>
+            <inputParameters>
+                <name>LeadID</name>
+                <value>
+                    <elementReference>$Record.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>LeadStatus</name>
+                <value>
+                    <elementReference>ApprovedLeadStatus</elementReference>
+                </value>
+            </inputParameters>
+            <label>Update Lead Status To Approved</label>
+            <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <runAsUser>false</runAsUser>
+            <shouldLock>false</shouldLock>
+            <stepSubtype>BackgroundStep</stepSubtype>
+        </stageSteps>
+    </orchestratedStages>
+    <orchestratedStages>
+        <description>Updates the status of the lead record to the value stored in the RejectedLeadStatus constant.</description>
+        <name>MarkLeadRejected</name>
+        <label>Mark Lead Rejected</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <exitConditionLogic>and</exitConditionLogic>
+        <stageSteps>
+            <description>Calls an action that updates the Status field of the lead that triggered the flow to the RejectedLeadStatus constant.</description>
+            <name>UpdateStatustoRejected</name>
+            <actionName>partner_deal_rgstr__UpdateDealStatus</actionName>
+            <actionType>stepBackground</actionType>
+            <canAssigneeEdit>false</canAssigneeEdit>
+            <debugSimulateStep>false</debugSimulateStep>
+            <entryConditionLogic>and</entryConditionLogic>
+            <exitConditionLogic>and</exitConditionLogic>
+            <inputParameters>
+                <name>LeadID</name>
+                <value>
+                    <elementReference>$Record.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>LeadStatus</name>
+                <value>
+                    <elementReference>RejectedLeadStatus</elementReference>
+                </value>
+            </inputParameters>
+            <label>Update Status To Rejected</label>
+            <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <runAsUser>false</runAsUser>
+            <shouldLock>false</shouldLock>
+            <stepSubtype>BackgroundStep</stepSubtype>
+        </stageSteps>
+    </orchestratedStages>
+    <orchestratedStages>
+        <description>If the lead is unique, members of the primary group will be notified for review and approval.</description>
+        <name>PrimaryGroupReview</name>
+        <label>Primary Group Review</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>IsLeadInSubmittedStatus</targetReference>
+        </connector>
+        <exitConditionLogic>and</exitConditionLogic>
+        <stageSteps>
+            <description>Calls an approval action for the primary group.</description>
+            <name>PrimaryGroupApproval</name>
+            <actionName>partner_deal_rgstr__ReviewDeal</actionName>
+            <actionType>stepApproval</actionType>
+            <assignees>
+                <assignee>
+                    <elementReference>ChoosePrimaryApprover</elementReference>
+                </assignee>
+                <assigneeType>Resource</assigneeType>
+            </assignees>
+            <canAssigneeEdit>true</canAssigneeEdit>
+            <debugSimulateStep>false</debugSimulateStep>
+            <entryConditionLogic>and</entryConditionLogic>
+            <exitConditionLogic>and</exitConditionLogic>
+            <inputParameters>
+                <name>ActionInput__RecordId</name>
+                <value>
+                    <elementReference>$Record.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>ActionInput__CustomEmailSubject</name>
+                <value>
+                    <elementReference>DefaultEmailSubject</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>ActionInput__CustomEmailBody</name>
+                <value>
+                    <elementReference>DefaultEmailBody</elementReference>
+                </value>
+            </inputParameters>
+            <label>Primary Group Approval</label>
+            <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <runAsUser>false</runAsUser>
+            <shouldLock>true</shouldLock>
+            <stepSubtype>ApprovalStep</stepSubtype>
+        </stageSteps>
+    </orchestratedStages>
+    <orchestratedStages>
+        <description>If the lead is duplicate, members of secondary group will be notified for review and approval.</description>
+        <name>SecondaryGroupReview</name>
+        <label>Secondary Group Review</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>IsLeadInSubmittedStatus</targetReference>
+        </connector>
+        <exitConditionLogic>and</exitConditionLogic>
+        <stageSteps>
+            <description>Calls an approval action for the secondary group.</description>
+            <name>SecondaryGroupApproval</name>
+            <actionName>partner_deal_rgstr__ReviewDeal</actionName>
+            <actionType>stepApproval</actionType>
+            <assignees>
+                <assignee>
+                    <elementReference>ChooseSecondaryApprover</elementReference>
+                </assignee>
+                <assigneeType>Resource</assigneeType>
+            </assignees>
+            <canAssigneeEdit>true</canAssigneeEdit>
+            <debugSimulateStep>false</debugSimulateStep>
+            <entryConditionLogic>and</entryConditionLogic>
+            <exitConditionLogic>and</exitConditionLogic>
+            <inputParameters>
+                <name>ActionInput__RecordId</name>
+                <value>
+                    <elementReference>$Record.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>ActionInput__CustomEmailSubject</name>
+                <value>
+                    <elementReference>DuplicateEmailSubject</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>ActionInput__CustomEmailBody</name>
+                <value>
+                    <elementReference>DuplicateDealEmailBody</elementReference>
+                </value>
+            </inputParameters>
+            <label>Secondary Group Approval</label>
+            <requiresAsyncProcessing>false</requiresAsyncProcessing>
+            <runAsUser>false</runAsUser>
+            <shouldLock>true</shouldLock>
+            <stepSubtype>ApprovalStep</stepSubtype>
+        </stageSteps>
+    </orchestratedStages>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>ApprovalWorkflow</processType>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <sourceTemplate>partner_deal_rgstr__DealApproval</sourceTemplate>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>IsPartnerUser</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeadSource</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Partner</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012TH000002NHtRYAW</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Stores the body of the email notifying the approver that a deal registration lead is awaiting review.</description>
+        <name>DefaultEmailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hello,&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Record.Owner:User.FirstName} {!$Record.Owner:User.LastName} has requested your approval for the following record:&amp;nbsp;&lt;/p&gt;&lt;p&gt;Record: {!$Record.FirstName} {!$Record.LastName}&lt;/p&gt;&lt;p&gt;Submitted on: {!$Flow.CurrentDateTime}&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please review the details by clicking the link below. You can approve or reject the request from the record page.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;{!LeadRecordURL}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Click Here to View the Record&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Stores the subject of the email notifying the approver that a deal registration lead is awaiting review.</description>
+        <name>DefaultEmailSubject</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Approval Needed: New Deal Registered for {!$Record.Company}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Stores the body of the email notifying the approver that a duplicate deal registration lead is awaiting review.</description>
+        <name>DuplicateDealEmailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hello,&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Record.Owner:User.FirstName} {!$Record.Owner:User.LastName} has requested your approval for the following record:&amp;nbsp;&lt;/p&gt;&lt;p&gt;Record: {!$Record.FirstName} {!$Record.LastName}&lt;/p&gt;&lt;p&gt;Submitted on: {!$Flow.CurrentDateTime}&amp;nbsp;&lt;/p&gt;&lt;p&gt;Potential Duplicates: &lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;{!FindDuplicateLeads.Outputs.duplicateCount}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please review the details by clicking the link below. You can approve or reject the request from the record page.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;{!LeadRecordURL}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Click Here to View the Record&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Thank you.&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Stores the subject of the email notifying the approver that a potential duplicate deal registration lead is awaiting review.</description>
+        <name>DuplicateEmailSubject</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Approval Needed: Potential Duplicate Deal Registered for {!$Record.Company}&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

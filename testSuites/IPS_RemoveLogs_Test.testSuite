@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_IPS_Case_Comments_Test</testClassName>
+    <testClassName>Core_IPS_CaseUpdateQueueable_Test</testClassName>
+    <testClassName>Core_IPS_EoisErrorController_test</testClassName>
+    <testClassName>Core_IPS_GetNextRespDueDateInMis_Test</testClassName>
+    <testClassName>Core_IPS_IntelSupportTeam_Handler_Test</testClassName>
+    <testClassName>Core_IPS_MoveContactWithBatch_Test</testClassName>
+    <testClassName>Core_IPS_Project_Controller_Test</testClassName>
+    <testClassName>Core_IPS_Project_Member_Controller_Test</testClassName>
+    <testClassName>Core_IPS_SSLCCase_HandlerTest</testClassName>
+</ApexTestSuite>

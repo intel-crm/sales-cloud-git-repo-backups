@@ -60,7 +60,7 @@
         <apex:attribute name="partnerType" type="String" description="type of the partner in company"/>
         <body>
             <!-- Header Banner -->
-            <c:PMP_Global_Header message="You can now create Showcase offering/s"/>
+            <c:PMP_Global_Header message="Your Showcase storefront is now approved and published"/><!--IPA2.0 TWC729-8011-->
             <!-- Header Banner -->
             
             <!-- Email content -->
@@ -71,14 +71,15 @@
                         <br/>Hello<br/><br/>
                         Congratulations! Your Intel® Partner Showcase storefront has been approved, published, and is currently live.
                         <br/><br/>
-                        Use the link below to create Offering/s for your storefront. You can also view your dashboard and review leads while signed into the Partner Showcase.
+                        <!--IPA 2.0 TWC729-8011 Use the link below to create Offering/s for your storefront. You can also view your dashboard and review leads while signed into the Partner Showcase.-->
+                        <!--IPA 2.0 TWC729-8011-->The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. You can view your dashboard and review leads while signed into the Partner Showcase. 
+                        <br/>Use the link below to see your Storefront
                         <br/>
-                        <p><apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">Create your offering/s</apex:outputLink></p>
-                        <br/>
-                        The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. Once your offerings are published, partners and enterprise users will be able to view them and connect with you.
-                        <br/><br/>
-                        Remember to submit your offerings for Intel review and publishing.
-                        <br/><br/>
+                        <p><!--<apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">Create your offering/s</apex:outputLink>--></p><!--IPA2.0 TWC729-8011-->
+                            <p><apex:outputLink value="{!$Label.PMP_PartnerURL}{!partnerData.PMP_Published_Copy_Id__c}" styleClass="intelBlue">View storefront</apex:outputLink></p><br/>
+                            <br/>
+                        <!--The Intel® Partner Showcase is a new online platform to drive collaboration in today’s exciting data-centric landscape. Once your offerings are published, partners and enterprise users will be able to view them and connect with you.--><!--IPA 2.0-TWC729-8011-->
+                        <!--Remember to submit your offerings for Intel review and publishing.IPA 2.0 TWC729-8011-->
                         Thanks for your prompt attention,<br/><br/>
                         The Intel® Partner Showcase Team <br/><br/>
                

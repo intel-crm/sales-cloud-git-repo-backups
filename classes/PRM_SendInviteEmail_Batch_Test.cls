@@ -37,7 +37,7 @@ public class PRM_SendInviteEmail_Batch_Test {
         con1.Core_Preferred_Language__c = 'ENG';
         con1.MailingCountryCode = 'USA';
         insert con1;
-        System.debug(con1);
+        
         
         ChannelProgram cp = PRM_TestUtility.getChannelPrograms();
         insert cp;
@@ -74,7 +74,6 @@ public class PRM_SendInviteEmail_Batch_Test {
         acrEmpA.PRM_Contact_Id__c = con1.Id;
         acrEmpA.PRM_InActive_Ind__c= false;
         acrEmpA.PRM_Status_Nm__c = 'Pending Action';
-        acrEmpA.PRM_Status_Reason_Txt__c ='Test';
         insert acrEmpA;
         
         PRM_Batch_Entitlement__c be = new PRM_Batch_Entitlement__c();

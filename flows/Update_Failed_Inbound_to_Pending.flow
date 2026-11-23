@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>55.0</apiVersion>
+    <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Assign_new_Retry_Counter_Value</name>
         <label>Assign new Retry Counter Value</label>
-        <locationX>537</locationX>
-        <locationY>446</locationY>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>RetryCounterOld</assignToReference>
             <operator>Assign</operator>
@@ -19,11 +19,6 @@
         </connector>
     </assignments>
     <environments>Default</environments>
-    <formulas>
-        <name>ResumeTime</name>
-        <dataType>DateTime</dataType>
-        <expression>{!$Flow.CurrentDateTime} + 1/1440</expression>
-    </formulas>
     <formulas>
         <name>RetryCounterNew</name>
         <dataType>Number</dataType>
@@ -41,7 +36,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -51,15 +46,119 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Log_Entry</name>
+        <label>Create Log Entry</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <stringValue>Updated Inbound Message</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <stringValue>Updated Inbound Message</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>SFDC</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>Entitlement</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>IntegrationInboundMessageAGS</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>info</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>InboundMessageId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectId__c</field>
+            <value>
+                <elementReference>InboundMessageId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>create_log_entry_failed</name>
+        <label>create log entry failed</label>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>Update failed inbound to pending</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>high</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>InboundMessageId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>GetInboundMessage</name>
         <label>GetInboundMessage</label>
-        <locationX>537</locationX>
-        <locationY>326</locationY>
+        <locationX>50</locationX>
+        <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Assign_new_Retry_Counter_Value</targetReference>
         </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>create_log_entry_failed</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -78,8 +177,14 @@
     <recordUpdates>
         <name>Update_the_IIM</name>
         <label>Update the IIM</label>
-        <locationX>537</locationX>
-        <locationY>566</locationY>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <connector>
+            <targetReference>Create_Log_Entry</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>create_log_entry_failed</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -103,13 +208,13 @@
         <object>Core_Integration_Inbound_Message__c</object>
     </recordUpdates>
     <start>
-        <locationX>543</locationX>
-        <locationY>48</locationY>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Pause_for_breaking_the_transaction</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>InboundMessageId</name>
         <dataType>String</dataType>
@@ -128,8 +233,8 @@
     <waits>
         <name>Pause_for_breaking_the_transaction</name>
         <label>Pause for breaking the transaction</label>
-        <locationX>669</locationX>
-        <locationY>206</locationY>
+        <locationX>446</locationX>
+        <locationY>134</locationY>
         <defaultConnectorLabel>Default Path</defaultConnectorLabel>
         <waitEvents>
             <name>Pause_Path</name>
@@ -141,7 +246,7 @@
             <inputParameters>
                 <name>AlarmTime</name>
                 <value>
-                    <elementReference>ResumeTime</elementReference>
+                    <elementReference>$Flow.CurrentDateTime</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>

@@ -43,7 +43,14 @@
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <column>Contact.Core_IPS_Active__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Contact.Core_AGS_Integration_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -52,11 +59,11 @@
             <value>Pending,Failed</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Contact.Core_AGS_Integration_Message__c</column>
+            <column>Contact.Core_ERPM_Integration_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>If &apos;userName&apos; is not provided the &apos;generateUserName&apos; flag must be set to &apos;true&apos;</value>
+            <operator>equals</operator>
+            <value>Failed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -75,6 +82,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

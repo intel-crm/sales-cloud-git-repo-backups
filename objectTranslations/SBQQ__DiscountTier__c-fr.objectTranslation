@@ -48,6 +48,10 @@
         <label><!-- Upper Bound --></label>
         <name>SBQQ__UpperBound__c</name>
     </fields>
+    <fields>
+        <label><!-- Rebate --></label>
+        <name>core_cpq_Rebate__c</name>
+    </fields>
     <gender>Masculine</gender>
     <nameFieldLabel>Nom du niveau</nameFieldLabel>
     <startsWith>Consonant</startsWith>

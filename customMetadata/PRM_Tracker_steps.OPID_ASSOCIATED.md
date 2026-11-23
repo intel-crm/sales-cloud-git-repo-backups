@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_Milestone_Display_Name__c</field>
-        <value xsi:type="xsd:string">OPID Associated Link(PRM_OPID_account_name__c,PRM_OPID__c)</value>
+        <value xsi:type="xsd:string">OPID AssociatedLink(PRM_OPID_account_name__c,PRM_OPID__c)</value>
     </values>
     <values>
         <field>PRM_Order__c</field>

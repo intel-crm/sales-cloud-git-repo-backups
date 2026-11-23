@@ -1353,9 +1353,11 @@
         </filters>
         <object>Core_MDF_Claim_VAT_Info__c</object>
         <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
+            <frequencyNumber>0</frequencyNumber>
             <startDate>2020-10-20</startDate>
-            <startTime>09:15:00.000Z</startTime>
+            <startTime>06:10:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

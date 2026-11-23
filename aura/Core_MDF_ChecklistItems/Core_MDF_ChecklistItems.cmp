@@ -42,10 +42,10 @@
                         <td>
                             <div class="slds-rich-text-area__content slds-cell-wrap">
                                 {#item.Core_MDF_Checklist_Line_Number__c}. {#item.Core_MDF_Checklist_Item__c} <lightning:helptext content="{!item.Core_MDF_Checklist_Description__c}"/>
-                            <!-- US567200: Violation Message Display-->
-                            <div class="slds-text-align_left italics">
+                                <!-- US567200: Violation Message Display-->
+                                <div class="slds-text-align_left italics">
                                 <ui:outputRichText value="{!item.Core_MDF_Claim_Case_Review_Findings__c}"/>
-                            </div>
+                                </div>
                             </div>
                         </td>
                         <td>
@@ -53,55 +53,55 @@
                             <aura:if isTrue="{!and(v.status == v.underReview, v.editability)}">
                                 <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.Compliant}">
                                     <lightning:input aura:id="compliant" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true"/>
-                                <aura:set attribute="else">
+                                    <aura:set attribute="else">
                                     <lightning:input aura:id="compliant" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}"/>
-                                </aura:set>
-                                </aura:if>   
+                                    </aura:set>
+                                </aura:if>
                             </aura:if>
-                            
+
                             <aura:if isTrue="{!or(v.status != v.underReview, !v.editability)}">
                                 <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.Compliant}">
                                     <lightning:input aura:id="compliant" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true" disabled="true"/>
-                                <aura:set attribute="else">
+                                    <aura:set attribute="else">
                                     <lightning:input aura:id="compliant" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" disabled="true"/>
-                                </aura:set>
-                                </aura:if>   
-                            </aura:if> 
+                                    </aura:set>
+                                </aura:if>
+                            </aura:if>
                         </td>
                         <td>
                             <aura:if isTrue="{!and(v.status == v.underReview, v.editability)}">
                                 <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.NonCompliant}">
                                     <lightning:input aura:id="noncompliant" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true"/>
-                                <aura:set attribute="else">
+                                    <aura:set attribute="else">
                                     <lightning:input aura:id="noncompliant" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}"/>
-                                </aura:set>
-                                </aura:if>   
+                                    </aura:set>
+                                </aura:if>
                             </aura:if>
                             <aura:if isTrue="{!or(v.status != v.underReview, !v.editability)}">
                                 <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.NonCompliant}">
                                     <lightning:input aura:id="noncompliant" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true" disabled="true"/>
-                                <aura:set attribute="else">
+                                    <aura:set attribute="else">
                                     <lightning:input aura:id="noncompliant" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" disabled="true"/>
-                                </aura:set>
-                                </aura:if>   
+                                    </aura:set>
+                                </aura:if>
                             </aura:if>
                         </td>
                         <td>
                             <aura:if isTrue="{!and(v.status == v.underReview, v.editability)}">
                                 <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.NA}">
                                     <lightning:input aura:id="na" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true"/>
-                                <aura:set attribute="else">
+                                    <aura:set attribute="else">
                                     <lightning:input aura:id="na" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}"/>
-                                </aura:set>
-                                </aura:if>   
+                                    </aura:set>
+                                </aura:if>
                             </aura:if>
                             <aura:if isTrue="{!or(v.status != v.underReview, !v.editability)}">
                                 <aura:if isTrue="{!item.Core_MDF_Checklist_Status__c == v.NA}">
                                     <lightning:input aura:id="na" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" checked="true" disabled="true"/>
-                                <aura:set attribute="else">
+                                    <aura:set attribute="else">
                                     <lightning:input aura:id="na" name="{!item.Id}" type="radio" onchange="{!c.recordSelectedValue}" disabled="true"/>
-                                </aura:set>
-                                </aura:if>   
+                                    </aura:set>
+                                </aura:if>
                             </aura:if>
                         </td>
                         <td>
@@ -109,14 +109,18 @@
                             <!--Checklist Enhancements v2 - US497414: [Case: Checklists] Impact Amount Prevention / Requirement - Removed AND condition to enable optional Impact Amount if Checklist item is Compliant-->
                             <aura:if isTrue="{!v.status == v.underReview &amp;&amp; item.Core_MDF_Checklist_Status__c != v.NA &amp;&amp; item.Core_MDF_Checklist_Status__c != v.Compliant &amp;&amp; v.editability}">
                                 <lightning:input aura:id="impactamount" name="{!item.Id}" type="number" placeholder = "Amount can include 2 decimal places" title="Amount can include 2 decimal places" value="{!item.Core_MDF_Impact_Amount__c}" onchange="{!c.recordImpactAmount}"/>
-                            <aura:set attribute="else">
+                                <aura:set attribute="else">
                                 <lightning:input aura:id="impactamount" name="{!item.Id}" type="number" value="{!item.Core_MDF_Impact_Amount__c}" onchange="{!c.recordImpactAmount}" disabled="true"/>
-                            </aura:set>
+                                </aura:set>
                             </aura:if>
                         </td>
                         <td>
-                            <aura:if isTrue="{!v.status == v.underReview &amp;&amp; item.Core_MDF_Checklist_Status__c != v.NA &amp;&amp; v.editability}">
-                                <lightning:textarea aura:id="commentcopy" name="{!item.Id}" type="string" placeholder="Enter optional comments here..." title="Enter optional comments here..." value="{!item.Core_MDF_Comment__c}" onchange="{!c.recordComments}"/>
+                            <aura:if
+                                isTrue="{!v.status == v.underReview &amp;&amp; item.Core_MDF_Checklist_Status__c != v.NA &amp;&amp; v.editability}">
+                                <lightning:textarea aura:id="commentcopy" name="{!item.Id}" type="string"
+                                    placeholder="Enter optional comments here..."
+                                    title="Enter optional comments here..." value="{!item.Core_MDF_Comment__c}"
+                                    onchange="{!c.recordComments}" />
                                 <aura:set attribute="else">
                                     <lightning:textarea aura:id="commentcopy" name="{!item.Id}" type="string"
                                         value="{!item.Core_MDF_Comment__c}" onchange="{!c.recordComments}"

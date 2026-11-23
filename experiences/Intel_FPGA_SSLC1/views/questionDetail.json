@@ -129,6 +129,7 @@
         "id" : "1d7b3b7b-c48d-4259-9d64-efa2f3c7fd43",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "{!Record.Title}"
           }

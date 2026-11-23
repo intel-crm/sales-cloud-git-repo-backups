@@ -2,6 +2,7 @@
                 implements="flexipage:availableForRecordHome,force:lightningQuickAction,flexipage:availableForAllPageTypes,force:hasRecordId,forceCommunity:availableForAllPageTypes"
                 controller="Core_MDF_CustomLayoutConfig_Controller" access="global">
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}" /> <!--TWC3117-19154-->
     
     <aura:attribute name="isNotifyOwner" type="Boolean" default="false" />
     <!-- Design Attribute-->
@@ -42,6 +43,7 @@
     <!--Event Handler - Close Modal event-->
     <aura:handler event="c:Core_MDF_CloseModalAndLogErrorMessageEvent" action="{!c.closeModalAndDisplayErrorMsg}" name="closeModalAndLogErrorMessageEvent" />
     <aura:handler event="c:Core_MDF_closeModalEvent" action="{!c.closeModal}" name="closeModalEvent" />
+	<aura:attribute name="isRecallSaving" type="Boolean" default="false"/> <!--TWC3117-19154-->
 
     <aura:if isTrue="{!(v.isInternalUser)}">
         <article class="slds-card" style="background-color:rgba(243, 243, 243)">
@@ -272,6 +274,19 @@
                     <aura:if isTrue="{!AND((v.openCmp == 'Submit for Payment Clearance'),v.objAPIName == 'PartnerFundClaim')}">
                         <c:Core_MDF_SubmitClaimToPICProcess recordId ="{!v.recordId}" isCustomComp = 'true'/>
                     </aura:if>
+                    <!--TWC3117-19154 start-->
+                    <aura:if isTrue="{!AND(v.openCmp == 'Recall to Payment Clearance',  v.objAPIName == 'PartnerFundClaim')}">
+                        <p>This claim will be recalled to Payment Clearance Processing. Click "Yes" to proceed, if you click on "No", use the "Recall to Payment Clearance" button to recall later.</p>
+                        <aura:if isTrue="{!not(empty(v.errorMessage))}">
+                            <div class="slds-text-color_error slds-m-top_small" role="alert">
+                                {!v.errorMessage}
+                            </div>
+                        </aura:if>
+                        <aura:if isTrue="{!v.isRecallSaving}">
+                            <lightning:spinner alternativeText="Recalling claim" size="small"/>
+                        </aura:if>
+                    </aura:if>
+                    <!--TWC3117-19154 end-->
                     <aura:if isTrue="{!AND((v.openCmp == 'Manual Audit'),v.objAPIName == 'PartnerFundClaim')}">
                         <c:Core_MDF_PFC_Manual_Audit recordId ="{!v.recordId}" isCustomComp = 'true'/>
                     </aura:if>
@@ -279,14 +294,29 @@
                     <aura:if isTrue="{!AND((v.openCmp == 'Complete Payment Clearance Processing'),v.objAPIName == 'PartnerFundClaim')}">
                         <c:core_MDF_PicReviewProcess recordId ="{!v.recordId}"/>
                     </aura:if>
+                    <!-- Roshan - TWC3117-19010 -->
+                    <aura:if isTrue="{!AND((v.openCmp == 'Cancel VAT'),v.objAPIName == 'PartnerFundClaim')}">
+                        <c:core_MDF_PFC_Cancel_VAT recordId ="{!v.recordId}" isCustomComp = 'true' onclosemodal="{!c.closeModal}"/>
+                    </aura:if>
+
 
                 </div>
                 <!--Footer Section-->
                 <aura:if isTrue="{!(v.isShowHeaderFooter)}">
                     <div class="slds-modal__footer">
+                        <!--TWC3117-19154 start-->
+                        <aura:if isTrue="{!v.openCmp == 'Recall to Payment Clearance'}">
+                            <lightning:button label="No" onclick="{!c.closeModal}" disabled="{!v.isRecallSaving}"/>
+                            <lightning:button label="Yes" variant="brand" onclick="{!c.confirmRecall}" disabled="{!v.isRecallSaving}"/>
+                        <aura:set attribute="else">
+                        <!--TWC3117-19154 end-->
                         <span>
-                            <lightning:button label="Cancel" variant="brand" onclick="{!c.closeModal}" />
+                            <lightning:button label="Cancel" variant="brand" onclick="{!c.closeModal}" disabled="{!v.isRecallSaving}" /> <!--TWC3117-19154 added disabled-->
                         </span>
+                        <!--TWC3117-19154 start-->
+                        </aura:set>
+                        </aura:if>
+                        <!--TWC3117-19154 end-->
                     </div>
                 </aura:if>
             </div>

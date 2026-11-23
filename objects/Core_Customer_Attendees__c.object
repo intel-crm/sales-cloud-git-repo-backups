@@ -176,6 +176,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_Title1__c</fullName>
+        <description>used to display the title of the customer attendee.</description>
+        <externalId>false</externalId>
+        <label>Title</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Title__c</fullName>
         <externalId>false</externalId>
         <formula>Core_Customer_Contact__r.Title</formula>

@@ -226,6 +226,7 @@ public class Core_MDF_Tactics_Matric_Controller_Test {
         pfr.amount = 500;
         pfr.Core_MDF_Reimbursement_Rate_txt__c='60%';
         pfr.Core_MDF_Budget_Type_nm__c = budgetType;
+        pfr.Core_MDF_ActivityCategory__c= 'Broadcast (Pre-2025)';
         Database.insert(pfr);
         List<Campaign> campToBeUpdated = new List<Campaign>();
         List<PartnerFundRequest> pfrToBeUpdated = new List<PartnerFundRequest>(); 
@@ -424,6 +425,7 @@ public class Core_MDF_Tactics_Matric_Controller_Test {
             pfr.Core_MDF_BU_Split__c = 'CCG';
             pfr.Core_MDF_BU1_Split_Percent_nbr__c = 100;
             pfr.Core_MDF_Product_Category_txt__c ='Desktop';
+            pfr.Core_MDF_ActivityCategory__c= 'Broadcast (Pre-2025)';
             insert pfr;
             
             // Update Campaign

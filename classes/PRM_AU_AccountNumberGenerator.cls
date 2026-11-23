@@ -24,12 +24,15 @@ public class PRM_AU_AccountNumberGenerator implements UCD_ACM_ServiceContracts.I
     private void AU_AccNumberGenerator_Method(List<Account> accountNewListupdate,Map<Id, Account> oldMap){
         List<Account> accListupdate = new List<Account>(); 
         for (Account acc : accountNewListupdate) {
+            //system.debug('oldMap--->'+oldMap);
+            //system.debug('oldMap.get(acc.Id)'+oldMap.get(acc.Id));
             if (oldMap !=null && oldMap.get(acc.Id).AccountNumber!=acc.AccountNumber &&
                 String.isNotBlank(acc.AccountNumber) && acc.RecordTypeId == accountRecordType) {
                 accListupdate.add(acc);
+                //system.debug('accAccountNumber'+acc.AccountNumber);
                 }
          }
-         System.debug('accListupdate'+accListupdate);
+         //System.debug('accListupdate'+accListupdate);
          if(accListupdate!= null && !accListupdate.isEmpty()) {
              PRM_AccountNumberGenerator.updateAccountNumberCS(accListupdate, oldMap);
              isAccountNumberUpdateCalled = true;

@@ -1,0 +1,49 @@
+<template>
+    <template lwc:if={usePartialLocks}>
+        <div class="slds-form-element">
+            <span class="slds-form-element__label">{addressLabel}</span>
+            <template lwc:if={disableCountry}>
+                <lightning-input label="Country" value={countryDisplay} disabled></lightning-input>
+            </template>
+            <template lwc:else>
+                <lightning-combobox data-field="country" label="Country"
+                    value={selectedCountryCode} options={countryOptions} required={required}
+                    disabled={countryUnavailable} onchange={handleFieldChange}></lightning-combobox>
+            </template>
+            <lightning-textarea data-field="street" label="Street" value={street}
+                required={required} disabled={disableStreet} onchange={handleFieldChange}></lightning-textarea>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3">
+                    <lightning-input data-field="city" label="City" value={city}
+                        required={required} disabled={disableCity} onchange={handleFieldChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                    <template lwc:if={disableProvince}>
+                        <lightning-input label="State/Province" value={provinceDisplay} disabled></lightning-input>
+                    </template>
+                    <template lwc:else>
+                        <lightning-combobox data-field="province" label="State/Province"
+                            value={selectedProvinceCode} options={provinceOptions}
+                            disabled={provinceUnavailable} onchange={handleFieldChange}></lightning-combobox>
+                    </template>
+                </div>
+            </div>
+            <lightning-input data-field="postalCode" label="Zip/Postal Code" value={postalCode}
+                required={required} disabled={disablePostalCode} onchange={handleFieldChange}></lightning-input>
+        </div>
+    </template>
+    <template lwc:else>
+        <lightning-input-address address-label={addressLabel} street-label="Street"
+            city-label="City" country-label="Country" province-label="State/Province"
+            postal-code-label="Zip/Postal Code" street={street} city={city}
+            country={selectedCountryCode} province={selectedProvinceCode} postal-code={postalCode}
+            country-options={countryOptions} province-options={provinceOptions}
+            required={required} disabled={disabled} onchange={handleAddressChange}></lightning-input-address>
+    </template>
+    <template lwc:if={errorMessage}>
+        <p class="slds-text-color_error" role="alert">{errorMessage}</p>
+    </template>
+    <template lwc:if={validationMessage}>
+        <p class="slds-text-color_error" role="alert">{validationMessage}</p>
+    </template>
+</template>

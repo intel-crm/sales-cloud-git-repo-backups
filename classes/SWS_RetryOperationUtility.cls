@@ -21,7 +21,7 @@ public without sharing class SWS_RetryOperationUtility {
                 errorStatusCode = SWS_Utility.getErrorAsString(sr.getErrors(),LOG_ENTRY_ORIGIN);
             }
         }
-        
+        System.debug(errorStatusCode);
         if (updateSuccess) {
             return;
         } else if (retryList.contains(errorStatusCode) && retryCount < MAX_RETRIES) {

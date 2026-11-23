@@ -15,21 +15,6 @@
     <columns>
         <field>Account$Core_Account_Country__c</field>
     </columns>
-    <columns>
-        <field>Account$LastModifiedDate</field>
-    </columns>
-    <columns>
-        <field>Account$LastModifiedBy</field>
-    </columns>
-    <columns>
-        <field>Account$RecordType</field>
-    </columns>
-    <columns>
-        <field>Account$CreatedDate</field>
-    </columns>
-    <columns>
-        <field>Account$CreatedBy</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Account$Owner.Email</column>

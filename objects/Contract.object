@@ -156,11 +156,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Contract_Record_Page2</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -183,6 +186,11 @@
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Sales_Compact_Layout</fullName>
+        <fields>ContractNumber</fields>
+        <label>Sales Compact Layout</label>
+    </compactLayouts>
     <enableFeeds>false</enableFeeds>
     <fieldSets>
         <fullName>SBQQ__ActiveContractLookup</fullName>
@@ -223,7 +231,7 @@
         <fullName>AccountId</fullName>
         <inlineHelpText>This is the Sold To Account.</inlineHelpText>
         <lookupFilter>
-            <active>true</active>
+            <active>false</active>
             <booleanFilter>1 OR 2</booleanFilter>
             <filterItems>
                 <field>Account.RecordTypeId</field>
@@ -306,6 +314,28 @@
     <fields>
         <fullName>CustomerSignedTitle</fullName>
         <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Data_Quality_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Data_Quality_Score__c =100,&quot;All Contract Details Captured&quot;, &quot;Missing: &quot;&amp;IF( LEN( TEXT(MONTH( StartDate ))) = 0, &quot;Contract Start Date, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF(LEN(  TEXT(ContractTerm)) = 0, &quot;Contract Term, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF( LEN( BillingCity ) = 0, &quot;Complete Contract Address, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF(LEN( CustomerSignedId ) = 0, &quot;Customer Signature, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF( ISPICKVAL(  OwnerExpirationNotice ,&quot;&quot;), &quot;Owner Expiration Notice&quot;,&quot;&quot;))</formula>
+        <label>Data Quality Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Quality_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( LEN(TEXT(MONTH(StartDate)))=0, 0,20) + IF( LEN(TEXT( ContractTerm ))=0, 0,20) + IF( LEN( BillingCity ) = 0, 0,20) + IF( LEN( CustomerSignedId) = 0, 0,20) + IF( ISPICKVAL(  OwnerExpirationNotice ,&quot;&quot;), 0,20)</formula>
+        <label>Data Quality Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Description</fullName>
@@ -555,7 +585,7 @@
         <relationshipLabel>Contracts</relationshipLabel>
         <relationshipName>Contracts</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -563,7 +593,7 @@
         <defaultValue>true</defaultValue>
         <deprecated>false</deprecated>
         <description>Select to maintain bundle hierarchy on renewal quotes.</description>
-        <inlineHelpText>Select the checkbox to maintain bundle hierarchy on renewal quotes.</inlineHelpText>
+        <inlineHelpText>Select checkbox to maintain bundle hierarchy on renewal quotes.</inlineHelpText>
         <label>Preserve Bundle Structure</label>
         <trackHistory>false</trackHistory>
         <type>Checkbox</type>
@@ -724,7 +754,7 @@
         <relationshipLabel>Contracts (Amended Quote)</relationshipLabel>
         <relationshipName>Contracts1</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -763,7 +793,7 @@
         <defaultValue>false</defaultValue>
         <description>To identify if Amendment Process is Completed or not</description>
         <label>Is Amendment Completed</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -820,128 +850,18 @@
         <type>Picklist</type>
     </fields>
     <listViews>
-        <fullName>AllActivatedContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>A</value>
-        </filters>
-        <label>All Activated Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
         <fullName>AllContracts</fullName>
         <columns>CONTRACT.CONTRACT_NUMBER</columns>
         <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>Sales_Direct_Pricing_Parent_Id__c</columns>
         <columns>CONTRACT.START_DATE</columns>
         <columns>CONTRACT.END_DATE</columns>
         <columns>CONTRACT.STATUS</columns>
         <columns>CORE.USERS.ALIAS</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>SBQQ__Order__c</columns>
-        <columns>SBQQ__ActiveContract__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>CONTRACT.CONTRACT_NUMBER</field>
-            <operation>contains</operation>
-            <value>00001275</value>
-        </filters>
         <label>All Contracts</label>
-    </listViews>
-    <listViews>
-        <fullName>AllDraftContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>D</value>
-        </filters>
-        <label>All Draft Contracts</label>
         <language>en_US</language>
     </listViews>
-    <listViews>
-        <fullName>AllInApprovalContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>P</value>
-        </filters>
-        <label>All In Approval Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>MyActivatedContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>A</value>
-        </filters>
-        <label>My Activated Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>MyDraftContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>D</value>
-        </filters>
-        <label>My Draft Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>MyInApprovalContracts</fullName>
-        <columns>CONTRACT.CONTRACT_NUMBER</columns>
-        <columns>SALES.ACCOUNT.NAME</columns>
-        <columns>CONTRACT.START_DATE</columns>
-        <columns>CONTRACT.END_DATE</columns>
-        <columns>CONTRACT.STATUS</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>CONTRACT.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>P</value>
-        </filters>
-        <label>My In Approval Contracts</label>
-        <language>en_US</language>
-    </listViews>
-    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Sales_Contract</fullName>
         <active>true</active>
@@ -1003,10 +923,6 @@
             </values>
             <values>
                 <fullName>Amendment Inprogress</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cancelled</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1083,10 +999,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Draft</fullName>
                 <default>false</default>
             </values>
@@ -1128,8 +1040,20 @@ AND(ISCHANGED( EndDate ),OR(EndDate &lt; StartDate ,ISNULL(EndDate), ISBLANK(End
         <fullName>Sales_Contract_Status_change</fullName>
         <active>true</active>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_ContractStatus__c, False,
-AND(ISCHANGED(Status), NOT(Sales_Is_Amendment_Completed__c), NOT( ISPICKVAL( Status , &quot;Cancelled&quot;))))</errorConditionFormula>
+AND(ISCHANGED(Status), NOT(Sales_Is_Amendment_Completed__c) ))</errorConditionFormula>
         <errorMessage>Contract Status cannot be changed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Sales_validateStatus_BeforeAmend</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+ISPICKVAL(Status, &apos;Draft&apos;),
+OR(
+ISPICKVAL(SBQQ__Quote__r.SBQQ__Type__c, &apos;Amendment&apos;),
+ISPICKVAL(SBQQ__Quote__r.SBQQ__Type__c, &apos;Renewal&apos;)
+)
+)</errorConditionFormula>
+        <errorMessage>Please activate the Contract before proceeding.</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>SBQQ__Amend</fullName>

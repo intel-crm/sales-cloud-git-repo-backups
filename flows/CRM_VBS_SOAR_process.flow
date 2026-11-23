@@ -169,13 +169,6 @@
                 <elementReference>$Record.CRM_VBS_Other_Notes__c</elementReference>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>OpportunityRecToBeUpdated.CRM_VBS_Other_Notes__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CRM_VBS_Other_Notes__c</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
             <targetReference>Update_Opportunity_to_Denied</targetReference>
         </connector>
@@ -469,13 +462,6 @@
         <assignmentItems>
             <assignToReference>OpportunityRecToBeUpdated.CRM_VBS_Annual_Recurring_Revenue__c</assignToReference>
             <operator>Assign</operator>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>OpportunityRecToBeUpdated.CRM_VBS_Other_Notes__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CRM_VBS_Other_Notes__c</elementReference>
-            </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>OpportunityRecToBeUpdated.CRM_VBS_Other_Notes__c</assignToReference>

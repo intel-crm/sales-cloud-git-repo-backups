@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Entitlement Detail Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Entitlement Detail Request</value>
+    </caseValues>
+    <fields>
+        <help><!-- If you are not sure about the AGS Role, please enter &quot;TBD&quot;. --></help>
+        <label><!-- AGS Role --></label>
+        <name>Core_AGS_Role_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please enter multiple profile names with Comma separated. --></help>
+        <label><!-- Applicable Profiles --></label>
+        <name>Core_Applicable_Profiles_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Core_Category_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Configure To Order &amp; Configure Price Quote Portals</masterLabel>
+            <translation><!-- Configure To Order &amp; Configure Price Quote Portals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consolidated Co-marketing Platform</masterLabel>
+            <translation><!-- Consolidated Co-marketing Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Partner Alliance (IPA)</masterLabel>
+            <translation><!-- Intel Partner Alliance (IPA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Order Management</masterLabel>
+            <translation><!-- Order Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Portal</masterLabel>
+            <translation><!-- Partner Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing</masterLabel>
+            <translation><!-- Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Solutions Group</masterLabel>
+            <translation><!-- Programmable Solutions Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support</masterLabel>
+            <translation><!-- Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Content &amp; Tools (Resource &amp; Design Center and others)</masterLabel>
+            <translation><!-- Technical Content &amp; Tools (Resource &amp; Design Center and others) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Business Objective &amp; Contact Points --></label>
+        <name>Core_Description_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this checkbox if you want to show the entitlement on Grant Access page for the selected profiles, --></help>
+        <label><!-- Display on UI --></label>
+        <name>Core_DisplayOnUI_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Name of entitlement --></label>
+        <name>Core_Display_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERPM Engagement --></label>
+        <name>Core_ERPM_Engagement_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- ERPM Engagement Type --></help>
+        <label><!-- Engagement Type --></label>
+        <name>Core_Engagement_Type__c</name>
+        <picklistValues>
+            <masterLabel>Secure</masterLabel>
+            <translation><!-- Secure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Simple</masterLabel>
+            <translation><!-- Simple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Soft</masterLabel>
+            <translation><!-- Soft --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Help Text --></label>
+        <name>Core_Help_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Permission Set API Name --></label>
+        <name>Core_Permission_Set_API_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Public Group API Name --></label>
+        <name>Core_Public_Group_API_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the release information. Ex:- IPA October 2020 Release --></help>
+        <label><!-- Release --></label>
+        <name>Core_Release_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Core_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Program --></label>
+        <name>Core_Sub_Category_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund (CCF)</masterLabel>
+            <translation><!-- Client Co-Marketing Fund (CCF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Co-Marketing Fund Boost (CCF Boost)</masterLabel>
+            <translation><!-- Client Co-Marketing Fund Boost (CCF Boost) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Service Provider Benefits</masterLabel>
+            <translation><!-- Cloud Service Provider Benefits --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Communities</masterLabel>
+            <translation><!-- Communities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Co-Marketing Fund (DCF)</masterLabel>
+            <translation><!-- Data Center Co-Marketing Fund (DCF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>File Transfer</masterLabel>
+            <translation><!-- File Transfer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Portal</masterLabel>
+            <translation><!-- Partner Portal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resource and Design Center with Secure Content Sub2</masterLabel>
+            <translation><!-- Resource and Design Center with Secure Content Sub2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider Co-Marketing Fund (SPCF)</masterLabel>
+            <translation><!-- Service Provider Co-Marketing Fund (SPCF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silicon as a Service (SiaaS)</masterLabel>
+            <translation><!-- Silicon as a Service (SiaaS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solutions Marketplace</masterLabel>
+            <translation><!-- Solutions Marketplace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sub Cat1</masterLabel>
+            <translation><!-- Sub Cat1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value Exchange</masterLabel>
+            <translation><!-- Value Exchange --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Order Management (WOM)</masterLabel>
+            <translation><!-- Web Order Management (WOM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web Reporting</masterLabel>
+            <translation><!-- Web Reporting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- ERPM Engg - Technical DeDup Number --></help>
+        <label><!-- Technical DeDup Number --></label>
+        <name>Core_Technical_DeDup_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Engagement Code --></label>
+        <name>Core_Technical_Engagement_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- If you are not sure about the AGS Role/Technical Name, please enter &quot;TBD&quot;. --></help>
+        <label><!-- Technical Name --></label>
+        <name>Core_Technical_Nm__c</name>
+    </fields>
+    <recordTypes>
+        <label><!-- With ERPM Engagement --></label>
+        <name>With_ERPM_Engagement</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Without ERPM Engagement --></label>
+        <name>Without_ERPM_Engagement</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

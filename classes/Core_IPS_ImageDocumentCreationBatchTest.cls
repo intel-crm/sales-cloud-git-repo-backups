@@ -30,7 +30,8 @@ private class Core_IPS_ImageDocumentCreationBatchTest {
             AccountId = portalAccount1.id,
             FirstName = 'portia2',
             LastName  = 'portalTestUser2',
-            Email='babux5x52@intel.com'      
+            Email='babux5x52@intel.com',
+            MailingCountry = 'India'
         );
         Database.insert(contact2);
         
@@ -77,7 +78,8 @@ private class Core_IPS_ImageDocumentCreationBatchTest {
             AccountId = portalAccount1.id,
             FirstName = 'portia2',
             LastName  = 'portalTestUser2',
-            Email='babux5x52@intel.com'      
+            Email='babux5x52@intel.com',
+            MailingCountry = 'India'
         );
         Database.insert(contact2);
         

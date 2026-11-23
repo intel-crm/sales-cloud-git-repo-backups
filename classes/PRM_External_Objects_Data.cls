@@ -83,8 +83,6 @@ public without sharing class  PRM_External_Objects_Data{
             }
         }
         catch(Exception e){
-            System.debug('An Exception occurred'+e);
-            System.debug('An Exception occurred'+e.getMessage());
             totalCredits=0;
         } 
         
@@ -150,7 +148,6 @@ public static List<PRM_WrapperForTrainingDetails> getExternalOPIDTrainingDetails
     if(Test.isRunningTest()){
         kvfTraining = trainingMocked;
     }
-    System.debug('from OPID :'+kvfTraining);
     List<PRM_WrapperForTrainingDetails> wrapper = getWrapperData(kvfTraining, '', '');
     return wrapper;
 }
@@ -195,8 +192,6 @@ public static List<PRM_WrapperForTrainingDetails> getExternalOPIDTrainingDetails
                     }
                 }
             }
-        }else{
-            System.debug('List is Empty...');
         }
         
         PRM_WrapperForTrainingDetails wrpr;
@@ -227,7 +222,7 @@ public static List<PRM_WrapperForTrainingDetails> getExternalOPIDTrainingDetails
     }
     
     public static string getContactId(){
-        User user = [select Id,Name,ContactId from User where Id = :UserInfo.getUserId()];
+        User user = [select Id/*,Name*/,ContactId from User where Id = :UserInfo.getUserId()];//ATHR Fix - TWC729-9556 - SJ
         return user.ContactId;
     }
     
@@ -301,12 +296,11 @@ public static List<PRM_WrapperForTrainingDetails> getExternalOPIDTrainingDetails
         String inv =invoiceNumber;
         Integer pgSize = pageSize+1;
         Map<String, String> mp = new Map<String, String>();
-        List<k_v_f_detail_value_exchange_sfdcs__x> lstVX =  new List<k_v_f_detail_value_exchange_sfdcs__x>();
+        //List<k_v_f_detail_value_exchange_sfdcs__x> lstVX =  new List<k_v_f_detail_value_exchange_sfdcs__x>();
         String query = 'select start_dt__c, value_exchange_period_txt__c,end_dt__c,item_id__c, old_material_id__c, business_organization_party_id__c,business_organization_party_id__r.AccountNumber, disti_nm__c,forecast_product_nbr__c, form_factor_txt__c,intel_brand_nm__c,invoice_nbr__c, product_sold_qty__c, sales_type_cd__c,invoice_dt__c from k_v_f_detail_value_exchange_sfdcs__x' +
         ' where (business_organization_party_id__c in:accountIds or one_partner_customer_aggregation_id__c in:accountIds)';
 
         
-      //  System.debug('Last Invoice Number '+lastInv +'PageSize: '+pageSize+'Start Date :'+startDate+'End date :'+endDate+'Invoice Number :'+invoiceNumber+' Prev Inv'+prevInv+' Prev Inv1'+prevInv1);
         try{
             if(!String.isEmpty(lastInv) && (String.isEmpty(inv) || inv==null) &&!String.isEmpty(startDate) && !String.isEmpty(endDate) && (String.isEmpty(prevInv) && String.isEmpty(prevInv1))){
                 
@@ -401,7 +395,6 @@ public static List<PRM_WrapperForTrainingDetails> getExternalOPIDTrainingDetails
                         for (k_v_f_detail_value_exchange_sfdcs__x kvf: database.query(query)) {
                             kvfQuery.add(kvf);
                         }
-                    system.debug(LoggingLevel.info,'kvfQuerysize'+kvfQuery.size());
                 }else{
                     kvfQuery = database.query(query);
                 }
@@ -429,10 +422,8 @@ public static List<PRM_WrapperForTrainingDetails> getExternalOPIDTrainingDetails
                                                                          mp.put(revenueSource.PRM_Sales_Calculation_Group_Nm__c, revenueSource.PRM_Revenue_Source_Nm__c);
                                                                      }
                                                                  }
-            System.debug(' Map : '+mp);
             
             PRM_WrapperForSalesgDetails salesWrpr;
-            System.debug('>>>lstOfSalesDetails'+lstOfSalesDetails.size());
             if(!lstOfSalesDetails.isEmpty() && lstOfSalesDetails!=null){
 
                 for( k_v_f_detail_value_exchange_sfdcs__x sd : lstOfSalesDetails){

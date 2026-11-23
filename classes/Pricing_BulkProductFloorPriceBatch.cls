@@ -50,7 +50,6 @@ public with sharing class Pricing_BulkProductFloorPriceBatch implements Database
         Messaging.EmailFileAttachment attachFile = new Messaging.EmailFileAttachment();
         blob b;
         b = Blob.valueOf(csvFile);                        
-        
         String emailAddress = UserInfo.getUserEmail();
         String ccemailAddress = Label.Pricing_IQR_Support_Email;
         attachFile.setFileName('Product Floor Price_'+string.valueOf(system.now())+'.csv');

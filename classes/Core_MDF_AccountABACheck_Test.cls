@@ -43,20 +43,8 @@ public class Core_MDF_AccountABACheck_Test {
             ChannelProgram coGTMCP = Core_MDF_CCP_TestDataUtility.createProgram ('Co-GTM','CoGTM', true);
             cpList.add(ipaCP); cpList.add(ccpCP); 
             Database.insert(cpList);
-
-            Id rtId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
-            Account benefitAccount = new Account();
-            benefitAccount.Name = 'BenefitAccount';
-            benefitAccount.RecordTypeId = rtId;
-            benefitAccount.Core_Unified_Global_Customer_BP_Id__c = 'primeId1';
-            insert benefitAccount;
-
-            benefitAccount.Core_IPA_One_Partner_Id__c = benefitAccount.Id;
-            update benefitAccount;
-
             Account ipaUltimateAccount = Core_MDF_CCP_TestDataUtility.createIntelAccount ('IPA Intel Account',Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             ipaUltimateAccount.BillingStateCode = '';
-            ipaUltimateAccount.Core_IPA_One_Partner_Id__c = benefitAccount.Id;
             insert ipaUltimateAccount;
             ipaUltimateAccount.Core_Unified_Global_Customer_BP_Id__c ='primeId1';
             ipaUltimateAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
@@ -260,13 +248,6 @@ public class Core_MDF_AccountABACheck_Test {
         PartnerFundRequest ipaPFR = Core_MDF_CCP_IPA_TestDataUtility.createIPAPartnerFundRequest( Campipa.id,ipaCoMarketingAccount.id,System.today().addDays(1),System.today().addDays(10),false);
         //mdfPFR.Core_MDF_Focus_Area_nm__c ='Client Computing';
         insert ipaPFR;
-
-        List<Core_MDF_BudgetType_Benefit_Mappings__c> budgetBenefitList = new List<Core_MDF_BudgetType_Benefit_Mappings__c>();
-        budgetBenefitList.add(new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Account_Plan', Core_MDF_RecordType__c = 'Account Based',Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Account_Based',Core_MDF_Budget_Type__c = 'Account Plan',Core_MDF_Partner_Benefit__c = 'Account Plan MDF', Core_MDF_IsActive__c = true, Core_MDF_Program_Nm__c = 'Intel Partner Alliance'));
-        budgetBenefitList.add(new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_I_MDF', Core_MDF_RecordType__c = 'Proposal Based',Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based',Core_MDF_Budget_Type__c = 'Proposal I MDF',Core_MDF_Partner_Benefit__c = 'Proposal I MDF', Core_MDF_IsActive__c = true, Core_MDF_Program_Nm__c = 'Intel Partner Alliance'));
-        budgetBenefitList.add(new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_II_MDF', Core_MDF_RecordType__c = 'Proposal Based',Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based',Core_MDF_Budget_Type__c = 'Proposal II MDF',Core_MDF_Partner_Benefit__c = 'Proposal II MDF', Core_MDF_IsActive__c = true, Core_MDF_Program_Nm__c = 'Intel Partner Alliance'));
-        insert budgetBenefitList;
-
         Core_MDF_PartnerFundRequestCreatePage.getBudgetType(ipaCoMarketingAccount.Id,'edit','false', 'Intel Partner Alliance');
         User usr2=[select Id,ProfileId from User where LastName = 'User Test1'];
         

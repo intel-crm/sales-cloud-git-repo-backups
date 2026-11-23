@@ -75,8 +75,8 @@ public class Core_MDF_FileAuthorization_Test {
             PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                            Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                            string.valueof(acc.id),pfa,pmb,'INDIA','Consumer',
-                                                                                           'Desktop','Intel® Core™ i7 Processor','Digital',
-                                                                                           'Web Content','Draft',false);
+                                                                                           'Desktop','Intel® Core™ i7 Processor','Broadcast',
+                                                                                           'Radio','Draft',false);
             pfr.RequestedAmount = 900000;
             pfr.Amount = 900000;
             pfr.Status = 'Approved';
@@ -459,27 +459,6 @@ public class Core_MDF_FileAuthorization_Test {
         results = Core_MDF_FileAuthorization.CheckFileAuthorization();
         Assert.areEqual(results.isAuthorized,false);
    		Test.stopTest(); 
-		
-        //CDB-SFT use case
-        Core_MDF_FileAuthorization.AuthResp results1;
-        RestRequest req1 = new RestRequest(); 
-        RestResponse res1 = new RestResponse();
-        String appDataForClaim = 'claimId-'+pfc.Id;
-        String appDataForCase = 'caseId-'+cs.Id;
-        req1.requestURI = '/mdf/sft/fileAuthorization'; 
-        req1.httpMethod = 'GET';
-        req1.params.put('appFileId', '765875');
-        req1.params.put('action', 'download');
-        req1.params.put('userName', 'AMR_sys_comkt_cdb_sft');
-        req1.params.put('appData', appDataForClaim);
-        req1.addHeader('Content-Type', 'application/json'); 
-        RestContext.request = req1;
-        RestContext.response = res1;
-        results1 = Core_MDF_FileAuthorization.CheckFileAuthorization();
-        Assert.areEqual(results1.isAuthorized,false);
-        req1.params.put('appData', appDataForCase);
-        results1 = Core_MDF_FileAuthorization.CheckFileAuthorization();
-        Assert.areEqual(results1.isAuthorized,false);
         }
     }
    

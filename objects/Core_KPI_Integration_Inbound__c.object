@@ -149,7 +149,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
+    <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
@@ -449,13 +449,7 @@
         <columns>Core_IAH_KPI_Record_ID__c</columns>
         <columns>Core_KPI_Processing_Status__c</columns>
         <columns>Core_IAH_SF_KPI_ID__c</columns>
-        <columns>Core_IAH_KPI_Error_Message__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IAH_SF_KPI_ID__c</field>
-            <operation>equals</operation>
-            <value>2166</value>
-        </filters>
         <label>All</label>
         <language>en_US</language>
     </listViews>

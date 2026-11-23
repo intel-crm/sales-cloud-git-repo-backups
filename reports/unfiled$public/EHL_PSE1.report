@@ -4,34 +4,19 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
-        <field>SUBJECT</field>
-    </columns>
-    <columns>
-        <field>Case.Core_External_Issue_Category__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_External_Issue_Subcategory__c</field>
+        <field>AGE</field>
     </columns>
     <columns>
         <field>Case.Core_CaseType__c</field>
     </columns>
     <columns>
-        <field>Case.Core_Account_Geo__c</field>
+        <field>SUBJECT</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>STATUS</field>
-    </columns>
-    <columns>
-        <field>AGE</field>
+        <field>Case.Core_IPS_Product_name__c</field>
     </columns>
     <columns>
         <field>ACCOUNT.NAME</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Sub_Status__c</field>
     </columns>
     <filter>
         <criteriaItems>

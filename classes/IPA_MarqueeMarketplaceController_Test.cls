@@ -10,10 +10,6 @@
 @isTest
 public class IPA_MarqueeMarketplaceController_Test {
 
-@IsTest static void testDummyMethod() {
-        IPA_MarqueeMarketplaceController.dummyMethod();
-    }
-
    /* static testMethod void getBaseUrlForLaunguageCodePositiveTest(){
         Test.startTest();
         String url = IPA_MarqueeMarketplaceController.getBaseUrlForLaunguageCode('Fr_fr',null);

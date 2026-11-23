@@ -10,7 +10,7 @@ Draco Change		08-12-2021				Added condition to exclude executing createUserFeedb
 *******************************************************************************************************************************/
 public without sharing class Core_UserFieldChangeHistoryTracker {
     
-	static string USER_ROLE_ID_STR = 'UserRoleId';
+    static string USER_ROLE_ID_STR = 'UserRoleId';
     static string Profile_Id_STR = 'ProfileId';
     static string Manager_Id_STR = 'ManagerId';
     static String Approver_Id_STR = 'DelegatedApproverId';
@@ -25,13 +25,13 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
     static String newManagerId;
     static String oldDelegatedApproverId;
     static String newDelegatedApproverId;
-	  /*
+    /*
 * Method name  : createFeed
 * Description  : Handler method for logging history of user fields by creating one record in Core_User_Field_Change_History__c object
 * Return Type  : VOID
 * Parameters   : List<User>, List<User>, map<Id, User>, map<Id, User>
 */
-
+    
     public static void createFeed(List<User> newUsers, List<User> oldUsers, Map<Id,User> oldUserMap, Map<Id,User> newUserMap){
         
         List<Core_User_Field_Change_History__c> ufields = new List<Core_User_Field_Change_History__c>();
@@ -59,7 +59,7 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
         Map<Id,String> oldDelegatedApproverIdToName = new Map<Id,String>();
         Map<Id,String> newDelegatedApproverIdToName = new Map<Id,String>();
         
-       // Loop through all the users who have been modified
+        // Loop through all the users who have been modified
         for (User userDetails : newUsers) { 
             // Assigning UserId to oldUser and newUser list
             User oldUser = oldUserMap.get(userDetails.Id);
@@ -96,141 +96,196 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
             createUserFeedbackRecords(serializableUfields);
         }
     }
-
+    
     //Preparing Role Details with id and name
     private static List<Core_User_Field_Change_History__c> updateWithRoleDetails(List<UserRole> newUserRoleNames , List<UserRole> oldUserRoleNames,
-                                                                   Map<Id,String> oldUserIdToRoleIdMap, Map<Id,String>  newUserIdToRoleIdMap 
+                                                                                 Map<Id,String> oldUserIdToRoleIdMap, Map<Id,String>  newUserIdToRoleIdMap 
                                                                                  ,List<Core_User_Field_Change_History__c> ufields){
-        
-        oldUserRoleNames = [SELECT Id,Name FROM UserRole WHERE Id in :oldUserIdToRoleIdMap.values()];
-        newUserRoleNames = [SELECT Id,Name FROM UserRole WHERE Id in :newUserIdToRoleIdMap.values()]; 
-        
-        //Map of RoleIdToRoleName                                                                            
-        Map<Id, String> roleIdToRoleNameMap = new Map<Id, String>();
-        
-        for(UserRole userRole : oldUserRoleNames){
-            
-            //Mapping old RoleId to RoleName
-            roleIdToRoleNameMap.put(userRole.Id, userRole.Name);
-        }
-        
-        for(UserRole userRole : newUserRoleNames){
-            
-            //Mapping old RoleId to RoleName
-            roleIdToRoleNameMap.put(userRole.Id, userRole.Name);
-        }
                                                                                      
-       	// if map is non-empty role has been changed for some user record(s)
-        for(Id userIdVal : oldUserIdToRoleIdMap.keySet()){ 
-            
-            Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
-            
-            if(oldUserIdToRoleIdMap.get(userIdVal) != null)
-            	userFieldTrackingFields.Core_Previous_Value__c = roleIdToRoleNameMap.get(oldUserIdToRoleIdMap.get(userIdVal))+'('+oldUserRoleId+')';
-            if(newUserIdToRoleIdMap.get(userIdVal) != null)
-            	userFieldTrackingFields.Core_Current_Value__c = roleIdToRoleNameMap.get(newUserIdToRoleIdMap.get(userIdVal))+'('+newUserRoleId+')';
-            userFieldTrackingFields.Core_Modified_User_Field__c = USER_ROLE_ID_STR;
-            userFieldTrackingFields.Core_Impacted_User__c = userIdVal;
-            ufields.add(userFieldTrackingFields);
-        }
-        
-        return ufields; 
-        
-    }
+                                                                                     Set<Id> combinedRoleIds = new Set<Id>();
+                                                                                     for (String roleId : oldUserIdToRoleIdMap.values()) {
+                                                                                         if (String.isNotBlank(roleId)) {
+                                                                                             combinedRoleIds.add((Id) roleId);
+                                                                                         }
+                                                                                     }
+                                                                                     for (String roleId : newUserIdToRoleIdMap.values()) {
+                                                                                         if (String.isNotBlank(roleId)) {
+                                                                                             combinedRoleIds.add((Id) roleId);
+                                                                                         }
+                                                                                     }
+                                                                                     //Map of RoleIdToRoleName
+                                                                                     Map<Id, String> roleIdToRoleNameMap = new Map<Id, String>();
+                                                                                     if (!combinedRoleIds.isEmpty()) {
+                                                                                         for (UserRole userRole : [
+                                                                                             SELECT Id, Name 
+                                                                                             FROM UserRole 
+                                                                                             WHERE Id IN :combinedRoleIds
+                                                                                         ]) {
+                                                                                             roleIdToRoleNameMap.put(userRole.Id, userRole.Name);
+                                                                                         }
+                                                                                     }                                                                                   
+                                                                                     // if map is non-empty role has been changed for some user record(s)
+                                                                                     for(Id userIdVal : oldUserIdToRoleIdMap.keySet()){ 
+                                                                                         
+                                                                                         Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
+                                                                                         
+                                                                                         // Pull the actual ID values from the map into local variables
+                                                                                         String oldRoleId = oldUserIdToRoleIdMap.get(userIdVal);
+                                                                                         String newRoleId = newUserIdToRoleIdMap.get(userIdVal);
+                                                                                         
+                                                                                         if(String.isNotBlank(oldRoleId))
+                                                                                             userFieldTrackingFields.Core_Previous_Value__c = roleIdToRoleNameMap.get((Id)oldRoleId)+'('+oldRoleId+')';
+                                                                                         if(String.isNotBlank(newRoleId))
+                                                                                             userFieldTrackingFields.Core_Current_Value__c = roleIdToRoleNameMap.get((Id)newRoleId)+'('+newRoleId+')';
+                                                                                         userFieldTrackingFields.Core_Modified_User_Field__c = USER_ROLE_ID_STR;
+                                                                                         userFieldTrackingFields.Core_Impacted_User__c = userIdVal;
+                                                                                         ufields.add(userFieldTrackingFields);
+                                                                                     }
+                                                                                     return ufields; 
+                                                                                     
+                                                                                 }
     //Preparing Profile Details with id and name
     private static List<Core_User_Field_Change_History__c> updateWithProfileDetails(List<Profile> newProfileNames , List<Profile> oldProfileNames,
-                                                                   Map<Id,String> oldUserIdToProfileMap, Map<Id,String>  newUserIdToProfileMap
-                                                                                   ,List<Core_User_Field_Change_History__c> ufields){
-          oldProfileNames = [SELECT Id,Name FROM Profile WHERE Id in :oldUserIdToProfileMap.values()]; 
-          newProfileNames = [SELECT Id,Name FROM Profile WHERE Id in :newUserIdToProfileMap.values()];
-                                                                                       
-          //Map of ProfileIdToProfileName
-          Map<Id, String> profileIdToProfileNameMap = new Map<Id, String>();
-          for(Profile profile : oldProfileNames){
-            profileIdToProfileNameMap.put(profile.Id, profile.Name);
-        }
-        for(Profile profile : newProfileNames){
-            profileIdToProfileNameMap.put(profile.Id, profile.Name);
-        }
-                                                                                       
-        // if map is non-empty profile has been changed for some user record(s)
-        for(Id profileIdVal : oldUserIdToProfileMap.keySet()){ 
-            Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
-            if(oldUserIdToProfileMap.get(profileIdVal) != null)
-            	userFieldTrackingFields.Core_Previous_Value__c = profileIdToProfileNameMap.get(oldUserIdToProfileMap.get(profileIdVal))+'('+oldProfileId+')';
-            if(newUserIdToProfileMap.get(profileIdVal) != null)
-            	userFieldTrackingFields.Core_Current_Value__c = profileIdToProfileNameMap.get(newUserIdToProfileMap.get(profileIdVal))+'('+newProfileId+')';
-            userFieldTrackingFields.Core_Modified_User_Field__c = Profile_Id_STR;
-            userFieldTrackingFields.Core_Impacted_User__c = profileIdVal;
-            ufields.add(userFieldTrackingFields);
-        }                                                               
-                                                                       
-         return ufields;           
-                                                                       
-    }
+                                                                                    Map<Id,String> oldUserIdToProfileMap, Map<Id,String>  newUserIdToProfileMap
+                                                                                    ,List<Core_User_Field_Change_History__c> ufields){
+                                                                                        
+                                                                                        Set<Id> combinedProfileIds = new Set<Id>();
+                                                                                        for (String profileId : oldUserIdToProfileMap.values()) {
+                                                                                            if (String.isNotBlank(profileId)) {
+                                                                                                combinedProfileIds.add((Id) profileId);
+                                                                                            }
+                                                                                        }
+                                                                                        for (String profileId : newUserIdToProfileMap.values()) {
+                                                                                            if (String.isNotBlank(profileId)) {
+                                                                                                combinedProfileIds.add((Id) profileId);
+                                                                                            }
+                                                                                        }
+                                                                                        //Map of ProfileIdToProfileName
+                                                                                        Map<Id, String> profileIdToProfileNameMap = new Map<Id, String>();
+                                                                                        if (!combinedProfileIds.isEmpty()) {
+                                                                                            for (Profile profile : [
+                                                                                                SELECT Id, Name
+                                                                                                FROM Profile
+                                                                                                WHERE Id IN :combinedProfileIds
+                                                                                            ]) {
+                                                                                                profileIdToProfileNameMap.put(profile.Id, profile.Name);
+                                                                                            }
+                                                                                        }
+                                                                                        
+                                                                                        // if map is non-empty profile has been changed for some user record(s)
+                                                                                        for(Id profileIdVal : oldUserIdToProfileMap.keySet()){ 
+                                                                                            Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
+                                                                                            
+                                                                                            // Pull actual ID values from the map into local variables
+                                                                                            String oldProfId = oldUserIdToProfileMap.get(profileIdVal);
+                                                                                            String newProfId = newUserIdToProfileMap.get(profileIdVal);
+                                                                                            
+                                                                                            if(String.isNotBlank(oldProfId))
+                                                                                                userFieldTrackingFields.Core_Previous_Value__c = profileIdToProfileNameMap.get((Id)oldProfId)+'('+oldProfId+')';
+                                                                                            if(String.isNotBlank(newProfId))
+                                                                                                userFieldTrackingFields.Core_Current_Value__c = profileIdToProfileNameMap.get((Id)newProfId)+'('+newProfId+')';
+                                                                                            userFieldTrackingFields.Core_Modified_User_Field__c = Profile_Id_STR;
+                                                                                            userFieldTrackingFields.Core_Impacted_User__c = profileIdVal;
+                                                                                            ufields.add(userFieldTrackingFields);
+                                                                                        }                                                    
+                                                                                        
+                                                                                        return ufields;           
+                                                                                        
+                                                                                    }
     //Preparing Manager Details with id and name
     private static List<Core_User_Field_Change_History__c> updateWithManagerDetails(List<User> newManagerNames , List<User> oldManagerNames,
                                                                                     Map<Id,String> oldManagerIdToNameMap, Map<Id,String>  newManagerIdToNameMap
-                                                                                   ,List<Core_User_Field_Change_History__c> ufields){
-           oldManagerNames = [SELECT Id,Name FROM User WHERE Id in :oldManagerIdToNameMap.values()];                                                                             
-           newManagerNames = [SELECT Id,Name FROM User WHERE Id in :newManagerIdToNameMap.values()];
+                                                                                    ,List<Core_User_Field_Change_History__c> ufields){
                                                                                        
-           //Map Of ManagerIdToManagerName                                                                            
-           Map<Id, String> managerIdToManagerNameMap = new Map<Id, String>(); 
-           for(User manager : oldManagerNames){
-            managerIdToManagerNameMap.put(manager.Id, manager.Name);
-           }
-           for(User manager : newManagerNames){
-            managerIdToManagerNameMap.put(manager.Id, manager.Name);
-        }
-                                                                                       
-			for(Id managerIdVal : oldManagerIdToNameMap.keySet()){
-            Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
-            if(oldManagerIdToNameMap.get(managerIdVal) != null)
-            	userFieldTrackingFields.Core_Previous_Value__c = managerIdToManagerNameMap.get(oldManagerIdToNameMap.get(managerIdVal))+'('+oldManagerId+')';
-                
-            if(newManagerIdToNameMap.get(managerIdVal) != null)
-            	userFieldTrackingFields.Core_Current_Value__c = managerIdToManagerNameMap.get(newManagerIdToNameMap.get(managerIdVal))+'('+newManagerId+')';
-            userFieldTrackingFields.Core_Modified_User_Field__c = Manager_Id_STR;
-            userFieldTrackingFields.Core_Impacted_User__c = managerIdVal;
-            ufields.add(userFieldTrackingFields);
-        }                                                                                      
-         return ufields;                                                                               
-       }
+                                                                                        Set<Id> combinedManagerIds = new Set<Id>();
+                                                                                        for (String managerId : oldManagerIdToNameMap.values()) {
+                                                                                            if (String.isNotBlank(managerId)) {
+                                                                                                combinedManagerIds.add((Id) managerId);
+                                                                                            }
+                                                                                        }
+                                                                                        for (String managerId : newManagerIdToNameMap.values()) {
+                                                                                            if (String.isNotBlank(managerId)) {
+                                                                                                combinedManagerIds.add((Id) managerId);
+                                                                                            }
+                                                                                        }
+                                                                                        //Map Of ManagerIdToManagerName 
+                                                                                        Map<Id, String> managerIdToManagerNameMap = new Map<Id, String>();
+                                                                                        if (!combinedManagerIds.isEmpty()) {
+                                                                                            for (User manager : [
+                                                                                                SELECT Id, Name
+                                                                                                FROM User
+                                                                                                WHERE Id IN :combinedManagerIds
+                                                                                            ]) {
+                                                                                                managerIdToManagerNameMap.put(manager.Id, manager.Name);
+                                                                                            }
+                                                                                        }
+                                                                                        
+                                                                                        for(Id managerIdVal : oldManagerIdToNameMap.keySet()){
+                                                                                            Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
+                                                                                            
+                                                                                            // Pull actual ID values from the map into local variables
+                                                                                            String oldMgrId = oldManagerIdToNameMap.get(managerIdVal);
+                                                                                            String newMgrId = newManagerIdToNameMap.get(managerIdVal);
+                                                                                            
+                                                                                            if(String.isNotBlank(oldMgrId))
+                                                                                                userFieldTrackingFields.Core_Previous_Value__c = managerIdToManagerNameMap.get((Id)oldMgrId)+'('+oldMgrId+')';
+                                                                                            if(String.isNotBlank(newMgrId))
+                                                                                                userFieldTrackingFields.Core_Current_Value__c = managerIdToManagerNameMap.get((Id)newMgrId)+'('+newMgrId+')';
+                                                                                            userFieldTrackingFields.Core_Modified_User_Field__c = Manager_Id_STR;
+                                                                                            userFieldTrackingFields.Core_Impacted_User__c = managerIdVal;
+                                                                                            ufields.add(userFieldTrackingFields);
+                                                                                        }                                                                  
+                                                                                        return ufields;                                                                               
+                                                                                    }
     //Preparing DelegatedApprover Details with id and name
     private static List<Core_User_Field_Change_History__c> updateWithDelegatedApproverDetails(List<User> newDelegatedApproverNames , List<User> oldDelegatedApproverNames,
-                                                                                    Map<Id,String> oldDelegatedApproverIdToName, Map<Id,String>  newDelegatedApproverIdToName
-                                                                                             ,List<Core_User_Field_Change_History__c> ufields){
-           oldDelegatedApproverNames = [SELECT Id,Name FROM User WHERE Id in :oldDelegatedApproverIdToName.values()];                                                                          
-           newDelegatedApproverNames = [SELECT Id,Name FROM User WHERE Id in :newDelegatedApproverIdToName.values()];
-                                                                                                 
-           //Map Of ApproverIdToApproverName                                                                                     
-           Map<Id, String> approverIdToApproverNameMap = new Map<Id, String>();
-                                                                                                 
-           for(User approver : oldDelegatedApproverNames){
-            approverIdToApproverNameMap.put(approver.Id, approver.Name);
-           }
-           for(User approver : newDelegatedApproverNames){
-                approverIdToApproverNameMap.put(approver.Id, approver.Name);
-        }
-                                                                                                 
-        //if map is non-empty and delegated approval has been changed for some user record(s)                                                                                
-        for(Id approverIdVal : oldDelegatedApproverIdToName.keySet()){ 
-            Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
-            if(oldDelegatedApproverIdToName.get(approverIdVal) != null)
-            	userFieldTrackingFields.Core_Previous_Value__c = approverIdToApproverNameMap.get(oldDelegatedApproverIdToName.get(approverIdVal))+'('+oldDelegatedApproverId+')';           
-            if(newDelegatedApproverIdToName.get(approverIdVal) != null)
-            	userFieldTrackingFields.Core_Current_Value__c = approverIdToApproverNameMap.get(newDelegatedApproverIdToName.get(approverIdVal))+'('+newDelegatedApproverId+')';
-            userFieldTrackingFields.Core_Modified_User_Field__c = Approver_Id_STR;
-            userFieldTrackingFields.Core_Impacted_User__c = approverIdVal;
-            ufields.add(userFieldTrackingFields);
-        }                                                                                      
-         return ufields;                                                                               
-       }
-
+                                                                                              Map<Id,String> oldDelegatedApproverIdToName, Map<Id,String>  newDelegatedApproverIdToName
+                                                                                              ,List<Core_User_Field_Change_History__c> ufields){
+                                                                                                  
+                                                                                                  Set<Id> combinedApproverIds = new Set<Id>();
+                                                                                                  for (String approverId : oldDelegatedApproverIdToName.values()) {
+                                                                                                      if (String.isNotBlank(approverId)) {
+                                                                                                          combinedApproverIds.add((Id) approverId);
+                                                                                                      }
+                                                                                                  }
+                                                                                                  for (String approverId : newDelegatedApproverIdToName.values()) {
+                                                                                                      if (String.isNotBlank(approverId)) {
+                                                                                                          combinedApproverIds.add((Id) approverId);
+                                                                                                      }
+                                                                                                  }
+                                                                                                  //Map Of ApproverIdToApproverName      
+                                                                                                  Map<Id, String> approverIdToApproverNameMap = new Map<Id, String>();
+                                                                                                  if (!combinedApproverIds.isEmpty()) {
+                                                                                                      for (User approver : [
+                                                                                                          SELECT Id, Name
+                                                                                                          FROM User
+                                                                                                          WHERE Id IN :combinedApproverIds
+                                                                                                      ]) {
+                                                                                                          approverIdToApproverNameMap.put(approver.Id, approver.Name);
+                                                                                                      }
+                                                                                                  }                                                                                                                                                                                                                                                                 
+                                                                                                  //if map is non-empty and delegated approval has been changed for some user record(s)                                                                                
+                                                                                                  for(Id approverIdVal : oldDelegatedApproverIdToName.keySet()){ 
+                                                                                                      Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
+                                                                                                      
+                                                                                                      // Pull actual ID values from the map into local variables
+                                                                                                      String oldAppId = oldDelegatedApproverIdToName.get(approverIdVal);
+                                                                                                      String newAppId = newDelegatedApproverIdToName.get(approverIdVal);
+                                                                                                      
+                                                                                                      if(String.isNotBlank(oldAppId))
+                                                                                                          userFieldTrackingFields.Core_Previous_Value__c = approverIdToApproverNameMap.get((Id)oldAppId)+'('+oldAppId+')';
+                                                                                                      if(String.isNotBlank(newAppId))
+                                                                                                          userFieldTrackingFields.Core_Current_Value__c = approverIdToApproverNameMap.get((Id)newAppId)+'('+newAppId+')';
+                                                                                                      userFieldTrackingFields.Core_Modified_User_Field__c = Approver_Id_STR;
+                                                                                                      userFieldTrackingFields.Core_Impacted_User__c = approverIdVal;
+                                                                                                      ufields.add(userFieldTrackingFields);
+                                                                                                  }                                                                       
+                                                                                                  return ufields;                                                                               
+                                                                                              }
+    
     /*
-     	Performing the dml operations in future method
-    */
+Performing the dml operations in future method
+*/
     @future()
     private static void createUserFeedbackRecords(String strJSON){
         try{
@@ -266,51 +321,51 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
                                             Map<Id,String> oldUserIdToProfileMap, Map<Id,String> newUserIdToProfileMap,
                                             Map<Id,String> oldManagerIdToNameMap, Map<Id,String> newManagerIdToNameMap,
                                             Map<Id,String> oldDelegatedApproverIdToName, Map<Id,String> newDelegatedApproverIdToName) {
-        // Comparing if the value in oldMap and newMap is not equal and field exists
-        Boolean ifFieldExists = newUser.getSobjectType().getDescribe().fields.getMap().keySet().contains(fieldName.toLowercase());
-        if (ifFieldExists == true &&
-            (newUser.get(fieldName) != oldUser.get(fieldName)
-             && !fieldName.equalsIgnoreCase(Last_Modified_By_Id_STR)
-             && !fieldName.equalsIgnoreCase(Last_Modified_Date_STR)
-             && !fieldName.equalsIgnoreCase(System_Mod_Stamp_STR))) {
-            
-            //When UserRole has changed 
-            if(fieldName.contains(USER_ROLE_ID_STR)){ 
-                String newUserRoleIdLocal = String.valueOf(newUser.get(fieldName));
-                newuserIdToRoleIdMap.put((Id)newUser.get('Id') , newUserRoleIdLocal);
-                String oldUserRoleIdLocal = String.valueOf(oldUser.get(fieldName));
-                oldUserIdToRoleIdMap.put((Id)oldUser.get('Id') , oldUserRoleIdLocal);
-                
-            //When Profile has been changed 
-            } else if(fieldName.contains(Profile_Id_STR)){
-                String newProfileIdLocal = String.valueOf(newUser.get(fieldName));
-                newUserIdToProfileMap.put((Id)newUser.get('Id') , newProfileIdLocal);
-                String oldProfileIdLocal = String.valueOf(oldUser.get(fieldName));
-                oldUserIdToProfileMap.put((Id)oldUser.get('Id') , oldProfileIdLocal);
-                
-            //When Manager gets Changed
-            } else if(fieldName.contains(Manager_Id_STR)){
-                String newManagerIdLocal = String.valueOf(newUser.get(fieldName));
-                newManagerIdToNameMap.put((Id)newUser.get('Id') , newManagerIdLocal);
-                String oldManagerIdLocal = String.valueOf(oldUser.get(fieldName));
-                oldManagerIdToNameMap.put((Id)oldUser.get('Id') , oldManagerIdLocal); 
-                
-            //When delegated Approver changed 
-            } else if(fieldName.contains(Approver_Id_STR)){
-                String newDelegatedApproverIdLocal = String.valueOf(newUser.get(fieldName));
-                newDelegatedApproverIdToName.put((Id)newUser.get('Id') , newDelegatedApproverIdLocal);
-                String oldDelegatedApproverIdLocal = String.valueOf(oldUser.get(fieldName));
-                oldDelegatedApproverIdToName.put((Id)oldUser.get('Id') , oldDelegatedApproverIdLocal); 
-                
-            // When Changes made on other userfields which are metadata 
-            } else {
-                Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
-                userFieldTrackingFields.Core_Modified_User_Field__c = fieldName;
-                userFieldTrackingFields.Core_Current_Value__c = String.valueOf(newUser.get(fieldName));
-                userFieldTrackingFields.Core_Previous_Value__c = String.valueOf(oldUser.get(fieldName));
-                userFieldTrackingFields.Core_Impacted_User__c = (Id) oldUser.get('Id');
-                ufields.add(userFieldTrackingFields);
-            }
-        }
-    }
+                                                // Comparing if the value in oldMap and newMap is not equal and field exists
+                                                Boolean ifFieldExists = newUser.getSobjectType().getDescribe().fields.getMap().keySet().contains(fieldName.toLowercase());
+                                                if (ifFieldExists == true &&
+                                                    (newUser.get(fieldName) != oldUser.get(fieldName)
+                                                     && !fieldName.equalsIgnoreCase(Last_Modified_By_Id_STR)
+                                                     && !fieldName.equalsIgnoreCase(Last_Modified_Date_STR)
+                                                     && !fieldName.equalsIgnoreCase(System_Mod_Stamp_STR))) {
+                                                         
+                                                         //When UserRole has changed 
+                                                         if(fieldName.contains(USER_ROLE_ID_STR)){ 
+                                                             String newUserRoleIdLocal = String.valueOf(newUser.get(fieldName));
+                                                             newuserIdToRoleIdMap.put((Id)newUser.get('Id') , newUserRoleIdLocal);
+                                                             String oldUserRoleIdLocal = String.valueOf(oldUser.get(fieldName));
+                                                             oldUserIdToRoleIdMap.put((Id)oldUser.get('Id') , oldUserRoleIdLocal);
+                                                             
+                                                             //When Profile has been changed 
+                                                         } else if(fieldName.contains(Profile_Id_STR)){
+                                                             String newProfileIdLocal = String.valueOf(newUser.get(fieldName));
+                                                             newUserIdToProfileMap.put((Id)newUser.get('Id') , newProfileIdLocal);
+                                                             String oldProfileIdLocal = String.valueOf(oldUser.get(fieldName));
+                                                             oldUserIdToProfileMap.put((Id)oldUser.get('Id') , oldProfileIdLocal);
+                                                             
+                                                             //When Manager gets Changed
+                                                         } else if(fieldName.contains(Manager_Id_STR)){
+                                                             String newManagerIdLocal = String.valueOf(newUser.get(fieldName));
+                                                             newManagerIdToNameMap.put((Id)newUser.get('Id') , newManagerIdLocal);
+                                                             String oldManagerIdLocal = String.valueOf(oldUser.get(fieldName));
+                                                             oldManagerIdToNameMap.put((Id)oldUser.get('Id') , oldManagerIdLocal); 
+                                                             
+                                                             //When delegated Approver changed 
+                                                         } else if(fieldName.contains(Approver_Id_STR)){
+                                                             String newDelegatedApproverIdLocal = String.valueOf(newUser.get(fieldName));
+                                                             newDelegatedApproverIdToName.put((Id)newUser.get('Id') , newDelegatedApproverIdLocal);
+                                                             String oldDelegatedApproverIdLocal = String.valueOf(oldUser.get(fieldName));
+                                                             oldDelegatedApproverIdToName.put((Id)oldUser.get('Id') , oldDelegatedApproverIdLocal); 
+                                                             
+                                                             // When Changes made on other userfields which are metadata 
+                                                         } else {
+                                                             Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
+                                                             userFieldTrackingFields.Core_Modified_User_Field__c = fieldName;
+                                                             userFieldTrackingFields.Core_Current_Value__c = String.valueOf(newUser.get(fieldName));
+                                                             userFieldTrackingFields.Core_Previous_Value__c = String.valueOf(oldUser.get(fieldName));
+                                                             userFieldTrackingFields.Core_Impacted_User__c = (Id) oldUser.get('Id');
+                                                             ufields.add(userFieldTrackingFields);
+                                                         }
+                                                     }
+                                            }
 }

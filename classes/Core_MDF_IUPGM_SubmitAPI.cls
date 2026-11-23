@@ -83,6 +83,15 @@ global without sharing class Core_MDF_IUPGM_SubmitAPI {
             String  newUserEmail         = str(summary, 'newUserEmail');
             if (String.isBlank(newUserEmail)) newUserEmail = str(summary, 'userEmail');
 
+            // Explicit request intent - carried through from validateAccessRequest's
+            // requestSummary. Defaults to GRANT so every existing caller that never
+            // sends this field is completely unaffected.
+            String requestActionRaw = str(summary, 'requestAction');
+            String requestActionNorm = String.isNotBlank(requestActionRaw)
+                ? requestActionRaw.trim().toUpperCase() : null;
+            Boolean isRevokeRequest = requestActionNorm == 'REMOVE' || requestActionNorm == 'REVOKE';
+            String stagingRequestType = isRevokeRequest ? 'REVOKE' : 'GRANT';
+
             Boolean userNeedsCreation = parseBool(summary.get('userNeedsCreation'));
             if (userNeedsCreation && String.isBlank(newUserFederationId)) {
                 newUserFederationId = deriveFederationFromEmail(newUserEmail);
@@ -102,7 +111,10 @@ global without sharing class Core_MDF_IUPGM_SubmitAPI {
                     + 'Please call /access/validateRequest first '
                     + 'and send the returned requestSummary.');
             }
-            String accountValidationError = validateAccountRequirementForSummary(summary);
+            // REVOKE requests never carry account/region/budget fields - this check
+            // only applies to GRANT requests.
+            String accountValidationError = isRevokeRequest
+                ? null : validateAccountRequirementForSummary(summary);
             if (String.isNotBlank(accountValidationError)) {
                 res.statusCode = 400;
                 return err(accountValidationError);
@@ -128,6 +140,7 @@ global without sharing class Core_MDF_IUPGM_SubmitAPI {
                       AND Core_MDF_IUPGM_Program__c  = :program
                       AND Core_MDF_IUPGM_Account__c  = :accountId_Id
                       AND Core_MDF_IUPGM_Region_Sub_Region_nm__c = :geo
+                      AND Core_MDF_Request_Type_nm__c = :stagingRequestType
                       AND Core_MDF_Is_IUPGM_Processed__c = false
                       AND Core_MDF_Request_Status_nm__c NOT IN (
                           'Error', 'Validation_Failed', 'External_User_Blocked', 'AGS_Rejected'
@@ -169,6 +182,7 @@ global without sharing class Core_MDF_IUPGM_SubmitAPI {
             staging.Core_MDF_IUPGM_User__c              = userId_Id;
             staging.Core_MDF_IUPGM_Program__c            = program;
             staging.Core_MDF_Requested_By__c             = UserInfo.getUserId(); // integration/service account
+            staging.Core_MDF_Request_Type_nm__c          = stagingRequestType; // GRANT (default) or REVOKE
             // Prefer explicit requestorEmail from chatbot payload; fall back to the connected user's email.
             staging.Core_MDF_Requestor_Email__c          = String.isNotBlank(requestorEmail)
                 ? requestorEmail : UserInfo.getUserEmail();

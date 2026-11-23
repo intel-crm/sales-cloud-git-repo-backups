@@ -45,6 +45,10 @@
         <name>Pricing_SW_Signature__c</name>
     </fields>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Aktivieren Sie das Kontrollkästchen, wenn alle Paketprodukte auf Angebotsdokumenten ausgegeben werden sollen. Andernfalls werden nur die Produkte ausgegeben, bei denen Werte angegeben wurden.</help>
         <label><!-- Show All Package Product --></label>
         <name>SBQQ__AllPackageProductsShown__c</name>

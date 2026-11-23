@@ -231,7 +231,7 @@
     <fields>
         <fullName>Amount</fullName>
         <inlineHelpText>The Amount that would be reimbursed once the Claim is processed for Payments.</inlineHelpText>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>BudgetId</fullName>
@@ -249,7 +249,7 @@
         <description>Indicates if the claim needs any 3rd party invoice. This is decided based on business rules.</description>
         <inlineHelpText>Third Party documentation is required if the value is selected</inlineHelpText>
         <label>3rd Party POP Documentation Required</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -782,6 +782,14 @@ ISPICKVAL(Core_MDF_Type_Txt__c , &apos;Adjustment&apos;) )</formula>
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Claim_Cancellation_Reason_txt__c</fullName>
+        <description>Holds the Claim Cancellation Reason</description>
+        <label>Claim Cancellation Reason</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Claim_Comments__c</fullName>
         <description>This is to store the comments</description>
         <inlineHelpText>Free text note related to the Claim</inlineHelpText>
@@ -826,7 +834,7 @@ TEXT(FLOOR(MOD((Core_MDF_EndTime_dtm__c - Core_MDF_StartTime_dtm__c)* 24 * 60*60
         <defaultValue>false</defaultValue>
         <description>To be used during the PIC Batch processing</description>
         <label>Claim evaluation in progress</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -1016,7 +1024,7 @@ OR(RecordType.DeveloperName = &apos;Core_MDF_Retail_Marketing_Funds&apos;,Record
         <referenceTo>User</referenceTo>
         <relationshipName>Partner_Fund_Claims</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -1268,7 +1276,7 @@ Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c, IF(Core_MDF_Legacy_Claim_Ind__c = fal
         <defaultValue>false</defaultValue>
         <description>To indicate whether a claim is selected for PIC</description>
         <label>Eligible for PIC</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -1313,7 +1321,7 @@ Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c, IF(Core_MDF_Legacy_Claim_Ind__c = fal
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Currency</type>
     </fields>
     <fields>
@@ -1380,7 +1388,7 @@ Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c, IF(Core_MDF_Legacy_Claim_Ind__c = fal
         <description>Comments entered by internal user when they put the claim on hold</description>
         <label>Intel Manual Hold Comments</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>TextArea</type>
     </fields>
     <fields>
@@ -1445,6 +1453,14 @@ Core_MDF_Doc_Hold_Doc_Sub_Due_Date_Dtm__c, IF(Core_MDF_Legacy_Claim_Ind__c = fal
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Is_Super_Claim__c</fullName>
+        <formula>TEXT(Request.Core_MDF_Activity_Level_nm__c) == &apos;Super Activity&apos;</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Super Claim</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Last_ModifiedBy_Nm__c</fullName>
         <description>The name of the user who modified the claim last</description>
         <externalId>false</externalId>
@@ -1478,7 +1494,7 @@ $Label.Core_MDF_Intel_System_User
         <referenceTo>User</referenceTo>
         <relationshipName>Claims</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -2390,12 +2406,46 @@ $Label.Core_MDF_Intel_System_User
         </valueSet>
     </fields>
     <fields>
+        <fullName>Core_MDF_PaymentType_aft_PaymentRun_nm__c</fullName>
+        <label>Payment Type after Payment Run</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Payment_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Payment_Admin_Reminder_Date_Dtm__c</fullName>
         <description>If the claims is a VAT claim and the VAT invoice is uploaded and not approved yet, then this field indicates the date on which the payment admin should be reminded for approval</description>
         <label>Payment Admin Reminder Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Currency_Txt__c</fullName>
+        <description>To capture the payment currency from bank during the payment process.</description>
+        <externalId>false</externalId>
+        <label>Retail Payment Currency</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_Exchange_Rate_Nbr__c</fullName>
+        <description>To capture the exchange rate during payment based on the bank&apos;s payment currency.</description>
+        <externalId>false</externalId>
+        <label>Retail Payment Exchange Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Payment_Hold_ind__c</fullName>
@@ -2470,6 +2520,16 @@ Text(Request.ChannelPartner.Core_MDF_Payment_Type_NodeLevel_nm__c), IF(Text(Requ
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Payment_lcl_Amount__c</fullName>
+        <description>To capture the converted amount during payment based on the bank&apos;s payment currency.</description>
+        <label>Retail Payment Local Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Percentage_of_Intel_Devices_pct__c</fullName>
@@ -2805,7 +2865,7 @@ NULL
     <fields>
         <fullName>Core_MDF_Region_Cd__c</fullName>
         <description>Stores the Region name for the claim</description>
-        <inlineHelpText>Region Name</inlineHelpText>
+        <inlineHelpText>Country/Region Name</inlineHelpText>
         <label>Region</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -3103,7 +3163,7 @@ NULL
         <defaultValue>false</defaultValue>
         <description>Indicates if the recovery made in this claim is due to a &quot;Settle, then get paid&quot; recovery run</description>
         <label>SurePay Processed Ind</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -3143,6 +3203,14 @@ NULL
         <trackHistory>true</trackHistory>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Third_Party_Ind__c</fullName>
+        <formula>False</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Third Party Ind</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Time_video_to_last_txt__c</fullName>
@@ -3379,10 +3447,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
     <fields>
         <fullName>Core_MDF_VAT_Hold_Ind__c</fullName>
         <defaultValue>false</defaultValue>
-        <description>Indicates if the claim is put on VAT hold</description>
-        <inlineHelpText>Checked when the Claim is selected for Payment Document process</inlineHelpText>
-        <label>Payment Documents Review Hold</label>
-        <trackHistory>true</trackHistory>
+        <description>Indicates if the claim is put on VAT hold Test</description>
+        <inlineHelpText>Checked when the Claim is selected for Payment Document process Test</inlineHelpText>
+        <label>Payment Documents Review Hold Test</label>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -3436,6 +3504,16 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Vat_Payment_lcl_Amount__c</fullName>
+        <description>To capture the converted VAT amount during payment based on the bank&apos;s payment currency.</description>
+        <label>Vat Payment Local Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Where_to_take_place_txt__c</fullName>
@@ -3492,7 +3570,7 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
     <fields>
         <fullName>OwnerId</fullName>
         <description>The Hexadecimal Salesforce generated ID of the user who created the claim</description>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -3519,6 +3597,7 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
         <columns>Core_MDF_Country_Location_nm__c</columns>
         <columns>Core_MDF_Requested_Reimbursement_Amt__c</columns>
         <columns>Core_MDF_Status__c</columns>
+        <columns>Core_MDF_Claim_Hold_Type_txt__c</columns>
         <columns>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</columns>
         <columns>Core_MDF_CreatedBy_Nm__c</columns>
         <columns>CreatedDate</columns>
@@ -3630,6 +3709,51 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             <group>Core_MDF_CCP_Internal_IPA_Geo_Groups</group>
             <group>Core_MDF_CCP_Internal_Retail_Geo_Groups</group>
             <group>Core_MDF_CCP_Retail_EXTERNAL_ALL</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_AGS_CCP_CMDF_Pay_Admin_APJ_PartnerFundClaim</fullName>
+        <filterScope>Queue</filterScope>
+        <label>AGS_CCP CMDF Pay Admin APJ</label>
+        <queue>Core_MDF_AGS_CCP_CMDF_Pay_Admin_APJ</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_AGS_CCP_CMDF_Pay_Admin_ASMO_LAR_PartnerFundClaim</fullName>
+        <filterScope>Queue</filterScope>
+        <label>AGS_CCP CMDF Pay Admin ASMO LAR</label>
+        <queue>Core_MDF_AGS_CCP_CMDF_Pay_Admin_ASMO_LAR</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_AGS_CCP_CMDF_Pay_Admin_ASMO_NAR_PartnerFundClaim</fullName>
+        <filterScope>Queue</filterScope>
+        <label>AGS_CCP CMDF Pay Admin ASMO NAR</label>
+        <queue>Core_MDF_AGS_CCP_CMDF_Pay_Admin_ASMO_NAR</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_AGS_CCP_CMDF_Pay_Admin_EMEA_PartnerFundClaim</fullName>
+        <filterScope>Queue</filterScope>
+        <label>AGS_CCP CMDF Pay Admin EMEA</label>
+        <queue>Core_MDF_AGS_CCP_CMDF_Pay_Admin_EMEA</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_AGS_CCP_CMDF_Pay_Admin_PRC_PartnerFundClaim</fullName>
+        <filterScope>Queue</filterScope>
+        <label>AGS_CCP CMDF Pay Admin PRC</label>
+        <queue>Core_MDF_AGS_CCP_CMDF_Pay_Admin_PRC</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
@@ -3779,7 +3903,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             <value>1</value>
         </filters>
         <label>Claims - Intel hold</label>
-        <language>en_US</language>
         <sharedTo>
             <group>CORE_MDF_CCP_CCFB_All</group>
             <group>CORE_MDF_CCP_CCF_ALL</group>
@@ -4057,18 +4180,11 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
         <columns>Core_MDF_Status__c</columns>
         <columns>Core_MDF_CreatedBy_Nm__c</columns>
         <columns>CreatedDate</columns>
-        <columns>Core_MDF_Claim_Hold_Type_txt__c</columns>
-        <columns>Core_MDF_Activity_Types__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Audit_Hold__c</field>
             <operation>equals</operation>
             <value>1</value>
-        </filters>
-        <filters>
-            <field>ChannelPartner</field>
-            <operation>contains</operation>
-            <value>ibuy</value>
         </filters>
         <label>Claims - On Hold for Review Reason</label>
         <sharedTo>
@@ -4275,6 +4391,7 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
         <columns>Core_MDF_Budget_Type_Options_Nm__c</columns>
         <columns>ChannelPartner</columns>
         <columns>Core_MDF_Country_Location_nm__c</columns>
+        <columns>Core_MDF_Activity_Status_nm__c</columns>
         <columns>Core_MDF_Requested_Reimbursement_Amt__c</columns>
         <columns>Core_MDF_Status__c</columns>
         <columns>Core_MDF_CreatedBy_Nm__c</columns>
@@ -4915,11 +5032,11 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
         <columns>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</columns>
         <columns>Core_MDF_CreatedBy_Nm__c</columns>
         <columns>CreatedDate</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_Type_Txt__c</field>
+            <field>Core_MDF_Program__c</field>
             <operation>equals</operation>
-            <value>Claim</value>
+            <value>co-gtm</value>
         </filters>
         <label>My Claims</label>
     </listViews>
@@ -6874,6 +6991,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Payment_Rollback_Reason_nm__c</picklist>
             <values>
                 <fullName>Business Request</fullName>
@@ -8624,6 +8764,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RWANDA</fullName>
                 <default>false</default>
             </values>
@@ -9217,6 +9361,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Payment_Rollback_Reason_nm__c</picklist>
             <values>
                 <fullName>Business Request</fullName>
@@ -9551,15 +9718,7 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>Content Library</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Demonstration</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Direct Mail</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9584,10 +9743,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Landing Experience</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lead Generation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9680,10 +9835,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Riser</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Kit</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10359,10 +10510,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -10396,6 +10543,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRITISH VIRGIN ISLANDS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10444,10 +10595,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>CHILE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10687,10 +10834,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -10788,10 +10931,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10931,10 +11070,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -11039,10 +11174,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -11052,10 +11183,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11496,6 +11623,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Payment_Rollback_Reason_nm__c</picklist>
             <values>
                 <fullName>Business Request</fullName>
@@ -11614,6 +11764,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Denied</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12138,10 +12292,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Co-Engineering</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core Solutions</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13503,6 +13653,33 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Vistex %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer-NonPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -15249,6 +15426,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RWANDA</fullName>
                 <default>false</default>
             </values>
@@ -15820,6 +16001,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Paid_By_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
             <values>
                 <fullName>Customer</fullName>
                 <default>false</default>
@@ -17280,10 +17484,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -17317,6 +17517,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>BRAZIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BRITISH VIRGIN ISLANDS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -17365,10 +17569,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>CHILE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHINA</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -17608,10 +17808,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -17709,10 +17905,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -17852,10 +18044,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -17960,10 +18148,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -17973,10 +18157,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -18417,6 +18597,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Payment_Rollback_Reason_nm__c</picklist>
             <values>
                 <fullName>Business Request</fullName>
@@ -18703,14 +18906,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             <picklist>Core_MDF_VAT_Opt_In__c</picklist>
             <values>
                 <fullName>No</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Reimbursement Request for 3rd party payment %28NET cost only%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Invoice to Intel %28VAT may apply%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -19175,6 +19370,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Arc%E2%84%A2 GPU</fullName>
                 <default>false</default>
             </values>
@@ -19408,6 +19607,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Intel%C2%AE Gaudi%C2%AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -20940,10 +21143,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
         <picklistValues>
             <picklist>Core_MDF_Legacy_Reminder_txt__c</picklist>
             <values>
-                <fullName>Maximum Attempts Reached</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Reminder 1</fullName>
                 <default>false</default>
             </values>
@@ -20968,6 +21167,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Customer-NonPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21300,19 +21522,11 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>Inside</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Online</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Out of store</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Outside</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -21742,6 +21956,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Arc%E2%84%A2 G3 Processor</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Arc%E2%84%A2 GPU</fullName>
                 <default>false</default>
             </values>
@@ -21975,6 +22193,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Intel%C2%AE Gaudi%C2%AE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -23535,6 +23757,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Customer-NonPO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -25317,6 +25562,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RWANDA</fullName>
                 <default>false</default>
             </values>
@@ -25906,6 +26155,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Payment_Rollback_Reason_nm__c</picklist>
             <values>
                 <fullName>Business Request</fullName>
@@ -26205,6 +26477,10 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <fullName>Out of store</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Outside</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
     </recordTypes>
     <recordTypes>
@@ -26236,15 +26512,7 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
                 <default>false</default>
             </values>
             <values>
-                <fullName>Content Library</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Demonstration</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Direct Mail</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -26269,10 +26537,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Landing Experience</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lead Generation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -26365,10 +26629,6 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
             <values>
                 <fullName>Riser</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Kit</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -28181,6 +28441,29 @@ VALUE( SUBSTITUTE( TEXT(Core_MDF_Applicable_VAT_Percentage_nm__c) , &apos;%&apos
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_PaymentType_aft_PaymentRun_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customer %28Pass Through%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Cash%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Distributor %28Credit Memo%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_Payment_Rollback_Reason_nm__c</picklist>
             <values>
                 <fullName>Business Request</fullName>
@@ -28652,6 +28935,7 @@ TRUE, FALSE
         <active>true</active>
         <description>End date should not be greater than today&apos;s date</description>
         <errorConditionFormula>IF(DATEVALUE(TEXT(Core_MDF_Ad_Run_End_Date__c)) &gt; DATEVALUE(TEXT(NOW())) ,TRUE, FALSE)</errorConditionFormula>
+        <errorDisplayField>Core_MDF_No_of_ActivatedInstance_nbr__c</errorDisplayField>
         <errorMessage>Execution end date cannot be a date in the future</errorMessage>
     </validationRules>
     <validationRules>
@@ -28776,6 +29060,17 @@ Core_MDF_Program__c = $Label.Core_MDF_IPA_Program_Name
         <errorMessage>This user does not have permission to perform this action.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_MDF_Restrict_ClaimCloneAndEdit</fullName>
+        <active>false</active>
+        <description>Restrict Account based users from cloning/editing proposal based claims and vice versa</description>
+        <errorConditionFormula>AND(TEXT($User.UserType)==$Label.Core_MDF_Partner_User_Type,
+Core_MDF_Program__c  == &apos;Intel Partner Alliance&apos;,
+OR(
+AND(RecordType.DeveloperName == $Label.Core_MDF_IPA_AccountBased_RecType_DevName,NOT($Permission.Core_MDF_CCP_External_IPA_Account_Based_User),Core_MDF_Proposal_Based_Ind__c == false),
+AND(RecordType.DeveloperName == $Label.Core_MDF_IPA_RecordType,NOT($Permission.Core_MDF_CCP_External_IPA_Proposal_Based_User),Core_MDF_Proposal_Based_Ind__c == true)))</errorConditionFormula>
+        <errorMessage>This user does not have permission to perform this action</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_MDF_Restrict_Claim_Creation</fullName>
         <active>true</active>
         <description>This validation rule is to restrict claim creation when activity is in the following statuses: In-Progress Pending Review, In-Progress Pending Approval and In-Progress Revision Required.</description>
@@ -28814,56 +29109,56 @@ Core_MDF_Program__c = $Label.Core_MDF_IPA_Program_Name
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Restrict_Status_Update</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>This rule restricts the updating of the claim status to pre-payment status from &apos;paid&apos; and &apos;pending payment&apos;</description>
         <errorConditionFormula>AND(
-ISCHANGED(Core_MDF_Status__c),
-OR(
-AND(
-ISPICKVAl(PRIORVALUE(Core_MDF_Status__c),&apos;Pending Payment&apos;),
-NOT(
-OR(
-AND(
-OR(
-ISPICKVAL(Core_MDF_Status__c,&apos;Paid and PIC Pending&apos;),
-ISPICKVAL(Core_MDF_Status__c,&apos;Paid and Pending Documents&apos;),
-ISPICKVAL(Core_MDF_Status__c,&apos;Paid and Resubmission Required&apos;)
-),
-Core_MDF_Legacy_Claim_Ind__c = true
-),
-ISPICKVAL(Core_MDF_Status__c,&apos;Paid&apos;),
-AND(Core_MDF_Has_Sub_Claims_Ind__c,ISPICKVAL(Core_MDF_Status__c,&apos;Queued for Payment&apos;))
-)
-),
-ISPICKVAL(Core_MDF_Payment_Rollback_Reason_nm__c,&apos;&apos;)
-),
-AND(
-ISPICKVAl(PRIORVALUE(Core_MDF_Status__c),&apos;Paid&apos;),
-NOT(
-AND(
-OR(
-ISPICKVAL(Core_MDF_Status__c,&apos;Paid and PIC Pending&apos;),
-ISPICKVAL(Core_MDF_Status__c,&apos;Paid and Pending Documents&apos;),
-ISPICKVAL(Core_MDF_Status__c,&apos;Paid and Resubmission Required&apos;)
-),
-Core_MDF_Legacy_Claim_Ind__c = true
-)
-)
-)
-
-),
-AND(
-$CustomMetadata.Trigger_Execution__mdt.Core_MDF_RestrictPostPaymentStatusUpdate.Active__c,
-OR(
-(ISBLANK( $CustomMetadata.Trigger_Execution__mdt.Core_MDF_RestrictPostPaymentStatusUpdate.Inactive_for_User__c )),
-AND(
-NOT( ISBLANK( $CustomMetadata.Trigger_Execution__mdt.Core_MDF_RestrictPostPaymentStatusUpdate.Inactive_for_User__c ) ),
-IF(($User.Id &lt;&gt; $CustomMetadata.Trigger_Execution__mdt.Core_MDF_RestrictPostPaymentStatusUpdate.Inactive_for_User__c) ,true,false)
-)
-)
-)
+	ISCHANGED(Core_MDF_Status__c),
+	OR(
+		AND(
+			ISPICKVAl(PRIORVALUE(Core_MDF_Status__c),&apos;Pending Payment&apos;),
+			NOT(
+				OR(
+					AND(
+						OR(
+							ISPICKVAL(Core_MDF_Status__c,&apos;Paid and PIC Pending&apos;),
+							ISPICKVAL(Core_MDF_Status__c,&apos;Paid and Pending Documents&apos;),
+							ISPICKVAL(Core_MDF_Status__c,&apos;Paid and Resubmission Required&apos;)
+						),
+						Core_MDF_Legacy_Claim_Ind__c = true
+					),
+					ISPICKVAL(Core_MDF_Status__c,&apos;Paid&apos;),
+					AND(Core_MDF_Has_Sub_Claims_Ind__c,ISPICKVAL(Core_MDF_Status__c,&apos;Queued for Payment&apos;))
+				)
+			),
+			ISPICKVAL(Core_MDF_Payment_Rollback_Reason_nm__c,&apos;&apos;)
+		),
+		AND(
+			ISPICKVAl(PRIORVALUE(Core_MDF_Status__c),&apos;Paid&apos;),
+			NOT(
+				AND(
+					OR(
+						ISPICKVAL(Core_MDF_Status__c,&apos;Paid and PIC Pending&apos;),
+						ISPICKVAL(Core_MDF_Status__c,&apos;Paid and Pending Documents&apos;),
+						ISPICKVAL(Core_MDF_Status__c,&apos;Paid and Resubmission Required&apos;)
+					),
+					Core_MDF_Legacy_Claim_Ind__c = true
+				)
+			)
+		)
+		
+	),
+	AND(
+		$CustomMetadata.Trigger_Execution__mdt.Core_MDF_RestrictPostPaymentStatusUpdate.Active__c,
+		OR(
+			(ISBLANK( $CustomMetadata.Trigger_Execution__mdt.Core_MDF_RestrictPostPaymentStatusUpdate.Inactive_for_User__c )),
+			AND(
+				NOT( ISBLANK( $CustomMetadata.Trigger_Execution__mdt.Core_MDF_RestrictPostPaymentStatusUpdate.Inactive_for_User__c ) ),
+				IF(($User.Id &lt;&gt; $CustomMetadata.Trigger_Execution__mdt.Core_MDF_RestrictPostPaymentStatusUpdate.Inactive_for_User__c) ,true,false)
+			)
+		)
+	)
 )</errorConditionFormula>
-        <errorDisplayField>Core_MDF_No_of_ActivatedInstance_nbr__c</errorDisplayField>
+        <errorDisplayField>Core_MDF_Number_of_Attendees_Nbr__c</errorDisplayField>
         <errorMessage>Claim Status cannot be updated in its current status</errorMessage>
     </validationRules>
     <validationRules>
@@ -28901,6 +29196,7 @@ AND(ISCHANGED(Amount),Amount &gt; Core_MDF_Escalation_Id__r.Core_MDF_Approved_Am
         <active>true</active>
         <description>Start date should not be greater than today&apos;s date</description>
         <errorConditionFormula>IF(DATEVALUE(TEXT(Core_MDF_Ad_Run_Start_Date__c)) &gt;  DATEVALUE(TEXT(NOW())) ,TRUE, FALSE)</errorConditionFormula>
+        <errorDisplayField>Core_MDF_No_of_ActivatedInstance_nbr__c</errorDisplayField>
         <errorMessage>Execution start date cannot be a date in the future</errorMessage>
     </validationRules>
     <validationRules>
@@ -28916,11 +29212,11 @@ TRUE, FALSE )</errorConditionFormula>
     <validationRules>
         <fullName>Core_MDF_StartDateValidation_Outcome</fullName>
         <active>true</active>
-        <description>Checks if the ad run start date falls in the activity range</description>
+        <description>Checks if the ad run start date falls in the activity range Test</description>
         <errorConditionFormula>IF( AND( Request.Core_MDF_Is_Outcome_Based_Ind__c = true,
 OR( Core_MDF_Ad_Run_Start_Date__c &gt; Core_MDF_Activity_End_Date__c, Core_MDF_Ad_Run_Start_Date__c &lt; Core_MDF_Activity_Start_Date__c ) ),
 TRUE, FALSE )</errorConditionFormula>
-        <errorMessage>Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range.</errorMessage>
+        <errorMessage>Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range. Test</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_StartDate_EndDate_Validation</fullName>

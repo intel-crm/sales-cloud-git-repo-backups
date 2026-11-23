@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PriorityField__c</field>
-        <value xsi:type="xsd:string">Core_Account_Owner__c</value>
+        <value xsi:type="xsd:string">Core_Business_Party_Id__c</value>
     </values>
     <values>
         <field>PriorityNumber__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>isObjectField__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>isSearchScore__c</field>

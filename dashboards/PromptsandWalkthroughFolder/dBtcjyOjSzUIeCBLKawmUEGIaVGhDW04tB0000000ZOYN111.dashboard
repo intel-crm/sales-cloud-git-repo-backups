@@ -10,6 +10,10 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>LAST_N_DAYS:2</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>LAST_N_DAYS:5</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -26,6 +30,22 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>LAST_N_DAYS:28</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_DAYS:365</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_WEEK</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>N_WEEKS_AGO:2</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>LAST_MONTH</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -34,9 +54,44 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>THIS_MONTH</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>THIS_YEAR</values>
         </dashboardFilterOptions>
         <name>Last Result Date</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_DAYS:3000</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_DAYS:7</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_DAYS:30</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_DAYS:60</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_90_DAYS</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_DAYS:365</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_YEAR</values>
+        </dashboardFilterOptions>
+        <name>Active Date</name>
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
@@ -52,6 +107,10 @@
                 <dashboardFilterColumns>
                     <column>PromptAction$LastResultDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>PromptAction$PublishedDate</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <footer>Includes last steps reached after multiple displays</footer>
                 <gaugeMax>100.0</gaugeMax>
@@ -87,6 +146,10 @@
                 <dashboardFilterColumns>
                     <column>PromptAction$LastResultDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>PromptAction$PublishedDate</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -129,6 +192,10 @@
                 <dashboardFilterColumns>
                     <column>PromptAction$LastResultDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>PromptAction$PublishedDate</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>0</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -175,6 +242,10 @@
                 <dashboardFilterColumns>
                     <column>PromptAction$LastResultDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>PromptAction$PublishedDate</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -218,6 +289,10 @@
                 <dashboardFilterColumns>
                     <column>PromptAction$LastResultDate</column>
                 </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>PromptAction$PublishedDate</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -256,8 +331,8 @@
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11723523@intel.com.crm</owner>
-    <runningUser>10681329@intel.com.crm</runningUser>
+    <owner>11633514@intel.com.crm</owner>
+    <runningUser>11633514@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Walkthrough Engagements</title>
     <titleColor>#000000</titleColor>

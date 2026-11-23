@@ -1,0 +1,147 @@
+<!--
+@description       : 
+@author            : ChangeMeIn@UserSettingsUnder.SFDoc
+@group             : 
+@last modified on  : 11-02-2022
+@last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<apex:component access="global" controller="Pricing_QuoteEmailAlertController">
+    
+    <html>
+        <style>
+            /* Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            table {
+            font-family: Intel Clear; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+            
+            h1{
+            font-family: Intel Clear Pro !important;  
+            }
+        </style>
+        
+        <apex:attribute name="quoteLineRecordId" type="Id" description="Tender Quote Line Id" assignTo="{!quoteLineId}"/>
+        <apex:attribute name="quoteLineRecord" type="SBQQ__QuoteLine__c" description="Tender Quote Line Details"/>
+
+        <body>
+            
+            <!-- Header Banner -->
+            <table style="background-color:#0168B5;" width="75%">
+                <tr>
+                    <td style="padding-left:50px;border: 0px;border:none;">
+                        <div style="color:white;"><h1>IQR QUOTE LINE APPROVAL REQUEST</h1></div>
+                    </td>
+                    <td style="border:none;padding-right:20px;" align="right">
+                        <apex:image url="{!headerURL}" width="100" height="80" alt="Intel Logo"/>
+                    </td>
+                </tr>
+            </table>
+            <!-- Header Banner -->
+            <!-- Email Body -->
+            <table width="75%">    
+                <tr>
+                    <td style="padding-left:50px;">
+                        <br/><b><font color="red">Action Required</font></b><br/>
+                        <!--<br/>Hello {!quoteLineRecord.Pricing_Sales_Rep__r.firstName},<br/><br/>-->
+                        <br/>Hello,<br/><br/>
+                        <apex:outputText value="{!currentPrimaryContact}" /> has requested your approval for the following item:<br/> <br/>
+                        
+                        <b>Quote:</b>&nbsp;<apex:outputLink value="{!domainName}/{!quoteLineRecord.SBQQ__Quote__r.Id}" >{!quoteLineRecord.SBQQ__Quote__r.Name}</apex:outputLink><br/>
+                        <b>Quote Line:</b>&nbsp;{!quoteLineRecord.Pricing_Quote_Line_Number__c} : {!IF(quoteLineRecord.SBQQ__ProductName__c == null, quoteLineRecord.Pricing_Other_Product_Nm__c, quoteLineRecord.SBQQ__ProductName__c)}<br/>
+                        <b>End Customer:</b>&nbsp;{!quoteLineRecord.Pricing_EndCustomer_Nm__c}<br/>
+                        <!--<b>End Customer:</b>&nbsp;{!quoteLineRecord.Pricing_End_Customer_Nm__c}<br/>-->
+                        <b>Project:</b>&nbsp;{!quoteLineRecord.Pricing_Project_Nm__c}<br/>
+                        <b>Change Request:</b>&nbsp;{!IF(quoteLineRecord.Pricing_New_Change_Request_cb__c == true, 'Yes', 'No')}<br/>
+                        <apex:outputPanel rendered="{!IF(quoteLineRecord.Pricing_New_Change_Request_cb__c == true,True,False)}">
+                            <b>Change Requested:</b>&nbsp;{!changedFields}<br/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(qlEndDate != null || qlEndDate != '',True,False)}">
+                            <apex:outputText ><b>New Quote Line Pricing End Date:</b>&nbsp;{!qlEndDate}</apex:outputText><br/>
+                        </apex:outputPanel>                         
+                        <apex:outputPanel rendered="{!IF(newQuantity != null || newQuantity != '',True,False)}">
+                            <apex:outputText ><b>New Quantity:</b>&nbsp;{!newQuantity}</apex:outputText><br/>
+                        </apex:outputPanel> 
+                        <apex:outputPanel rendered="{!IF(newRequestedPrice != null || newRequestedPrice != '',True,False)}">
+                            <apex:outputText ><b>New Requested Unit Price:</b>&nbsp;{!newRequestedPrice}</apex:outputText><br/>
+                        </apex:outputPanel><br/> 
+                        
+                        <b>Approval Submitter:</b>&nbsp;{!quoteLineRecord.Pricing_Last_Submitted_By_Id__r.Email}<br/>
+                        <b>Approver(s):</b>&nbsp; 
+                        <apex:repeat value="{!approverEmailList}" var="email" id="theRepeat">
+                            <apex:outputText value="{!email}" id="theValue"/>
+                        </apex:repeat><br/><br/>
+                        
+                        Please click the link below to approve or reject this record.<br/>                
+                        <apex:outputLink value="{!domainName}/{!quoteLineRecord.SBQQ__Quote__r.Id}" >{!domainName}/{!quoteLineRecord.SBQQ__Quote__r.Id}</apex:outputLink><br/><br/>
+                        Thank you,<br/>
+                        Salesforce
+                        
+                        <!-- <b>QuoteLine Name:</b>&nbsp;<apex:outputLink value="{!domainName}/{!quoteLineRecord.SBQQ__Quote__r.Id}" >{!quoteLineRecord.Name}</apex:outputLink><br/> -->
+                    </td>
+                </tr>             
+            </table>
+            <!-- Email Body -->  
+            <!-- Global Footer -->
+            <table width="75%">
+                <tr>    
+                    <td style="text-align:center">
+                        <div style="font-size:10px">
+                            This message was sent to you as an important business communication related to your current relationship with Intel Quote Request (IQR)<br/>
+                            ©{!year(today())} Intel Corporation <br/>
+                            Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.
+                            <apex:outputLink value="www.intel.com" styleClass="intelBlue"> www.intel.com</apex:outputLink><br/>
+                            <apex:outputLink value="www.intel.com/privacy" styleClass="intelBlue">Privacy</apex:outputLink> | &nbsp;
+                            <apex:outputLink value="www.intel.com/cookies" styleClass="intelBlue">Cookies</apex:outputLink>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!-- Global Footer -->
+        </body>
+        
+    </html>
+    
+</apex:component>

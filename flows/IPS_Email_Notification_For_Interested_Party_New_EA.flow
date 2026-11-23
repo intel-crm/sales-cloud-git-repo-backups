@@ -160,5 +160,5 @@ While interested party member add in case team mail will send to Recently Added 
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

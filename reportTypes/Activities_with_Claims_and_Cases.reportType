@@ -198,4 +198,15 @@
         </columns>
         <masterLabel>Case</masterLabel>
     </sections>
+    <sections>
+        <masterLabel>Cases</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Partner_Contact_txt__c</field>
+            <table>PartnerFundRequest</table>
+        </columns>
+        <masterLabel>Co-Marketing Activities</masterLabel>
+    </sections>
 </ReportType>

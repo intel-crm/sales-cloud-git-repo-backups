@@ -2,10 +2,18 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "bfda322d-2a89-4afe-9634-cd3762428239",
+  "id" : "cf7f5849-8c02-4230-ade6-eb87a7cb8869",
   "label" : "Design Registration Product List",
   "regions" : [ {
-    "id" : "867b906e-be53-4868-98dd-1df166e15ce6",
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "aa949a94-f645-4f84-821e-867e45c76827",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5ab4ab5c-b02a-471c-abe7-7d534e2393dd",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -27,16 +35,16 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "023029bb-f4ad-42eb-9607-332c11e7ade9",
+      "id" : "ec496c63-f3e1-4eec-8c41-ce8c18439c33",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "652e9727-bb88-4348-bb82-682684979cc7",
+    "id" : "3c17d198-f328-4394-a24e-8622b2876475",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "fe65d6ab-a8be-4b94-914f-ebe99f094d58",
+    "id" : "bf8a0102-2a33-471e-9a85-1f24e0ea329f",
     "regionName" : "footer",
     "type" : "region"
   } ],

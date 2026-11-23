@@ -4,12 +4,6 @@
         <field>Lead.Core_Partner_Name__c</field>
     </columns>
     <columns>
-        <field>STATUS</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Status__c</field>
-    </columns>
-    <columns>
         <field>FIRST_NAME</field>
     </columns>
     <columns>
@@ -90,7 +84,7 @@
     <scope>org</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CURFY</interval>

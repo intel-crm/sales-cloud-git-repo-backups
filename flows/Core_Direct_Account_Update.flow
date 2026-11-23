@@ -37,6 +37,7 @@
                 <stringValue>OR(
 AND(
 ISNEW(),
+[Account].ParentId &lt;&gt; null,
 [Account].RecordType.Name =&quot;Direct Account&quot;
 ),
 AND(
@@ -55,6 +56,7 @@ ISCHANGED([Account].ParentId),
         <expression>OR(
 AND(
 ISNEW(),
+{!myVariable_current.ParentId} &lt;&gt; null,
 {!myVariable_current.RecordType.Name} =&quot;Direct Account&quot;
 ),
 AND(
@@ -67,7 +69,7 @@ ISCHANGED({!myVariable_current.ParentId}),
 
 )</expression>
     </formulas>
-    <interviewLabel>Core_Direct_Account_Update-7_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_Direct_Account_Update-6_InterviewLabel</interviewLabel>
     <label>Core_Direct_Account_Update</label>
     <processMetadataValues>
         <name>ObjectType</name>

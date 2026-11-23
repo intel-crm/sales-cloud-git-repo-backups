@@ -36,7 +36,7 @@
     </values>
     <values>
         <field>Inbound_staging_field__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Core_IsActive__c</value>
     </values>
     <values>
         <field>Is_L4_Mapping_Field__c</field>

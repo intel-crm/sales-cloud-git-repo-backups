@@ -30,9 +30,10 @@
         </primaryTabComponents>
     </customConsoleComponents>
     <excludeButtons>Clone</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>RequestUpdate</excludeButtons>
-    <excludeButtons>RequestUseSfdc</excludeButtons>
+    <excludeButtons>SmartFillEnrich</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -79,10 +80,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Marketing_Score1__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_IPA_PartnerRole__c</field>
             </layoutItems>
             <layoutItems>
@@ -100,6 +97,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Con_Export_Compliance_Block_Reason__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_AGS_Republish_Signal__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pending_Registration__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -134,6 +139,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Marketing_Do_Not_Contact_Dtm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Marketing_Score1__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -541,24 +550,29 @@
             <sortOrder>14</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>LogACall</actionName>
+            <actionName>Contact.Change_Account</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>15</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewEvent</actionName>
+            <actionName>LogACall</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>16</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>SendEmail</actionName>
+            <actionName>NewEvent</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>17</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Contact.Change_Account</actionName>
+            <actionName>SendEmail</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>18</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Contact.LID__LinkedIn_Message</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>19</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>FeedItem.TextPost</actionName>
@@ -586,6 +600,20 @@
             <quickActionName>SendEmail</quickActionName>
         </quickActionListItems>
     </quickActionList>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>Core_Message_Type__c</fields>
+        <fields>ACM_Integration_Queue__c</fields>
+        <fields>Inbound_Message__c</fields>
+        <fields>Outbound_Message__c</fields>
+        <fields>Core_Inbound_Message_Status__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>LAST_UPDATE</fields>
+        <relatedList>Contact_Message__c.Contact__c</relatedList>
+        <sortField>NAME</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
     <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>
         <fields>CASES.CREATED_DATE_DATE_ONLY</fields>
@@ -634,12 +662,13 @@
         <relatedList>Contact_Business_Types__c.Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_Display_Nm__c</fields>
         <fields>Core_Entitlement_Id__c</fields>
         <fields>Core_Entitlement_Type__c</fields>
         <fields>Core_Category__c</fields>
-        <fields>Core_Entitlement_B2B_B2C_Indicator__c</fields>
+        <fields>Core_Entitlement_Help_Txt__c</fields>
         <fields>Core_Status__c</fields>
         <fields>Core_Selected__c</fields>
         <fields>Core_Update_Reason__c</fields>
@@ -686,6 +715,7 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>PRM_Partner_Subscription_Id__c</fields>
         <fields>CREATED_DATE</fields>
         <fields>PRM_Status_Nm__c</fields>
@@ -695,6 +725,8 @@
         <relatedList>PRM_ContactSubscriptionAssociation__c.PRM_Contact_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Email_Template_Name__c</fields>
         <fields>CREATED_DATE</fields>
@@ -704,20 +736,6 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedEntityHistoryList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>Core_Message_Type__c</fields>
-        <fields>ACM_Integration_Queue__c</fields>
-        <fields>Inbound_Message__c</fields>
-        <fields>Outbound_Message__c</fields>
-        <fields>Core_Inbound_Message_Status__c</fields>
-        <fields>CREATEDBY_USER</fields>
-        <fields>CREATED_DATE</fields>
-        <relatedList>Contact_Message__c.Contact__c</relatedList>
-        <sortField>NAME</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>
@@ -735,6 +753,14 @@
         <relatedList>PRM_Registration_Tracker__c.PRM_contact__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Contact_Consent_Association__c.Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_SBC_Account_Search_Configuration__c.PRM_Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>ER_Customer_Master_File_Group__c</fields>
         <fields>ER_Account__c</fields>
         <fields>NAME</fields>
@@ -742,6 +768,14 @@
         <fields>ER_Active_CMF_Count_Formula__c</fields>
         <fields>ER_End_Date__c</fields>
         <relatedList>ER_ContactGroupAssociation__c.ER_Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Einstein_Recipient_Contact__c.Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_ACM_Integration_Queue__c.Core_Contact__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

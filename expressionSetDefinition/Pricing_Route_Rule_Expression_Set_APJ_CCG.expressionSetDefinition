@@ -11,7 +11,6 @@
         <expressionSetDefinition>Pricing_Route_Rule_Expression_Set_APJ_CCG</expressionSetDefinition>
         <label>Pricing Route Rule Expression Set APJ CCG V1</label>
         <processType>Bre</processType>
-        <rank>1</rank>
         <shouldShowExplExternally>false</shouldShowExplExternally>
         <startDate>2026-05-27T16:31:45.000Z</startDate>
         <status>Active</status>
@@ -173,6 +172,16 @@
             <dataType>Text</dataType>
             <input>true</input>
             <lookupName>Pricing_Route_Rules_APJ_CCG_Quantity_LTE_20000</lookupName>
+            <lookupType>DecisionTable</lookupType>
+            <name>Pricing_End_Customer_Country_Nm__c</name>
+            <output>false</output>
+            <type>Variable</type>
+        </variables>
+        <variables>
+            <collection>false</collection>
+            <dataType>Text</dataType>
+            <input>true</input>
+            <lookupName>Pricing_Route_Rules_APJ_CCG_Quantity_GT_20000</lookupName>
             <lookupType>DecisionTable</lookupType>
             <name>Pricing_Market_Segment_Nm__c</name>
             <output>false</output>

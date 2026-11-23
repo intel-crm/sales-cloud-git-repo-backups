@@ -36,8 +36,8 @@ public without sharing class UCD_ACM_ReltioController {
         Map<String, UCD_ACM_ReltioModels.UpdateRequest> payloadByBPId = new Map<String, UCD_ACM_ReltioModels.UpdateRequest>();
         for(UCD_ACM_ReltioModels.UpdateRequestModel request:lstRequests) {
             if(request.moduleName == 'OPID_UPDATE'){
-            UCD_ACM_ReltioModels.UpdateRequest updateRequest = new UCD_ACM_ReltioModels.UpdateRequest(request.accountId, new UCD_ACM_ReltioModels.OPId(request.onePartnerId), new UCD_ACM_ReltioModels.OPIdActive(request.oPIdActive));
-            payloadByBPId.put(String.format('{0}:{1}', new List<String>{request.bpId, request.accountId}), updateRequest);
+                UCD_ACM_ReltioModels.UpdateRequest updateRequest = new UCD_ACM_ReltioModels.UpdateRequest(request.accountId, new UCD_ACM_ReltioModels.OPId(request.onePartnerId), new UCD_ACM_ReltioModels.OPIdActive(request.oPIdActive));
+                payloadByBPId.put(String.format('{0}:{1}', new List<String>{request.bpId, request.accountId}), updateRequest);
             }
             else if(request.moduleName == 'COVERAGE_UPDATE'){
                 UCD_ACM_ReltioModels.UpdateRequest updateRequest = new UCD_ACM_ReltioModels.updateRequest(request.accountId, new UCD_ACM_ReltioModels.SalesCoverage(request.acctPriCoverage));

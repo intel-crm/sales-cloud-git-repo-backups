@@ -21,9 +21,6 @@
         <scale>1</scale>
     </aggregates>
     <columns>
-        <field>User.Core_User_Geo__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
@@ -80,22 +77,29 @@
     <columns>
         <field>ALIAS</field>
     </columns>
-    <description>RT: Opportunities.  APJ Inside Sales</description>
+    <description>RT: Opportunities.  Just for Erica&apos;s Team and SDR&apos;s</description>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>OSC,INSIDE</value>
+            <operator>equals</operator>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
-            <column>User.Core_User_Geo__c</column>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Erica Tor</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ALIAS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ</value>
+            <value>aliceuye,kevinwei,weilunle,xuanying,ymun</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -129,7 +133,7 @@
     </params>
     <reportType>Opportunity</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>AMOUNT</sortColumn>

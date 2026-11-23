@@ -29,15 +29,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_Approver_9__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_Approver_3__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_Approver_7__c</name>
+                <name>Core_Approver_1__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -45,11 +37,15 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_Approver_8__c</name>
+                <name>Core_Approver_3__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_Approver_1__c</name>
+                <name>Core_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
@@ -61,11 +57,15 @@
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_Approver_5__c</name>
+                <name>Core_Approver_7__c</name>
                 <type>relatedUserField</type>
             </approver>
             <approver>
-                <name>Core_Approver_4__c</name>
+                <name>Core_Approver_8__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_Approver_9__c</name>
                 <type>relatedUserField</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>

@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDRESEND_POR</name>
     <style>none</style>
-    <subject>Complete sua inscrição na Intel® Partner Alliance</subject>
+    <subject>Complete your Intel® Partner Alliance application</subject>
     <textOnly>Você está quase lá!
 
 
@@ -23,8 +23,7 @@ Preencher agora
 
 Não consegue acessar o link acima?
 
-https://www.intel.com/content/www/br/pt/secure/partner/forms/ipa-account-search.html.
-
+https://wcm-ciqa.intel.com/content/www/br/pt/secure/partner/forms/ipa-account-search.html.
 Caso tenha alguma dúvida, entre em contato conosco em programs@intel.com.
 
 Obrigado,
@@ -33,7 +32,7 @@ Sua equipe Intel® Partner Alliance
 
 
 Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacidade | Cookies</textOnly>
     <type>custom</type>

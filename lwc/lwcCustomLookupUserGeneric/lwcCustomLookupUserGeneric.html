@@ -9,7 +9,7 @@
                             role="none">
                             <lightning-input id="searchField" placeholder={label.searchUserLabel}
                                 data-id="userinput" name="searchText" onchange={searchField}
-                                value={selectRecordName} class="leftspace" required={required} message-when-value-missing=""></lightning-input>
+                                value={selectRecordName} class="leftspace" required={required} message-when-value-missing={WarningLabelValue}></lightning-input>
                             <div if:true={iconFlag}>
                                 <span
                                     class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right iconheight">

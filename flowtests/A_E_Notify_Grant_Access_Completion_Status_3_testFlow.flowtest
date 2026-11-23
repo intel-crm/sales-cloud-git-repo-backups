@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>test for flow success status</description>
+    <flowApiName>A_E_Notify_Grant_Access_Completion_Status_3</flowApiName>
+    <label>testFlow</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;AccountId&quot;:&quot;001o000000ORtTDAA1&quot;,&quot;Core_AGS_Inactive__c&quot;:false,&quot;Core_AGS_Integration_Message__c&quot;:&quot;Timestamp: 2023-04-18 12:00:03 GMT\r\nInbound Message ID: a00D3000005AP8TIAW\r\nRole: Sales-PSG(Salesforce)-Licensing User Operation: assignUserRole Status: Success\r\nRole: SFDC Intel Partner External Operation: assignUserRole Status: Success&quot;,&quot;Core_AGS_Integration_Status__c&quot;:&quot;Pending&quot;,&quot;Core_AGS_Republish_Ind__c&quot;:false,&quot;Core_AGS_Republish_Signal__c&quot;:false,&quot;Core_AGS_Retry_Count__c&quot;:0,&quot;Core_AGS_Status_Change_Date_Time__c&quot;:&quot;2023-04-18T12:00:04.000Z&quot;,&quot;Core_Account_Changeable__c&quot;:false,&quot;Core_Central_Block__c&quot;:false,&quot;Core_Contact_B2B_Indicator__c&quot;:false,&quot;Core_Contact_Export_Compliance_Block__c&quot;:false,&quot;Core_Customer_Excellence_Survey__c&quot;:false,&quot;Core_Deactivated__c&quot;:false,&quot;Core_Do_Not_Contact__c&quot;:false,&quot;Core_ERPM_Integration_Message__c&quot;:&quot;Timestamp: 2023-04-18 10:02:12 GMT\r\nInbound Message ID: a00D3000005AOnfIAG&quot;,&quot;Core_ERPM_Integration_Publish_Timestamp__c&quot;:&quot;2023-04-18T10:01:54.000Z&quot;,&quot;Core_ERPM_Integration_Queue_txt__c&quot;:&quot;Empty&quot;,&quot;Core_ERPM_Integration_Status__c&quot;:&quot;Successful&quot;,&quot;Core_ERPM_Status_Change_Date_Time__c&quot;:&quot;2023-04-18T10:01:52.000Z&quot;,&quot;Core_English_Only_First_Name__c&quot;:&quot;Test&quot;,&quot;Core_English_Only_Last_Name__c&quot;:&quot;OktaAdmin&quot;,&quot;Core_Enterprise_Id__c&quot;:&quot;300002880426&quot;,&quot;Core_IPA_Contact__c&quot;:false,&quot;Core_IPS_Email_Opt_Out__c&quot;:false,&quot;Core_IPS_Intel_Support_Owner__c&quot;:&quot;0052i000003vXXoAAM&quot;,&quot;Core_Is_FederationId_Valid_Ind__c&quot;:&quot;false&quot;,&quot;Core_Lead_Conversion_Flag__c&quot;:false,&quot;Core_MINDS__c&quot;:false,&quot;Core_Personal_Email_Indicator__c&quot;:false,&quot;Core_Points_Benefit_Admin__c&quot;:false,&quot;Core_Preferred_Language__c&quot;:&quot;ENG&quot;,&quot;Core_Primary_Contact__c&quot;:false,&quot;Core_Republish_OBM_s__c&quot;:false,&quot;Core_Sales_Do_Not_Contact_Ind__c&quot;:false,&quot;Core_Tokenized__c&quot;:false,&quot;Core_eRPM_Language_Code__c&quot;:&quot;ENG&quot;,&quot;Core_eRPM_Person_Id__c&quot;:&quot;9542850&quot;,&quot;Email&quot;:&quot;testoktaadmin@mail.com&quot;,&quot;FirstName&quot;:&quot;Test&quot;,&quot;LastName&quot;:&quot;OktaAdmin&quot;,&quot;MailingCity&quot;:&quot;Kiev&quot;,&quot;MailingCountry&quot;:&quot;UKR&quot;,&quot;MailingCountryCode&quot;:&quot;UKR&quot;,&quot;MailingPostalCode&quot;:&quot;2002&quot;,&quot;MailingState&quot;:&quot;30&quot;,&quot;MailingStateCode&quot;:&quot;30&quot;,&quot;MailingStreet&quot;:&quot;Ул. Каховская, 60, 2-я Проходная, Оф.14&quot;,&quot;OwnerId&quot;:&quot;0052i000003vXXoAAM&quot;,&quot;PRM_Community_Change_Agent__c&quot;:&quot;rekhax.nandimandalam@intel.com&quot;,&quot;RecordTypeId&quot;:&quot;012o0000000Gn0wAAC&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Core_AGS_Integration_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Successful</stringValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

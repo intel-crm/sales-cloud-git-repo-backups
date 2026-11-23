@@ -15,4 +15,19 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CPT_Quota_Setup_Support</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share all records with Read access.</description>
+        <label>CPT Quota Setup - Support</label>
+        <sharedTo>
+            <group>X_CPT_PG_Commission_Support</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CreatedById</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
 </SharingRules>

@@ -190,6 +190,7 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Is_Active__c</columns>
+        <columns>Business_Type_Code__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>UPDATEDBY_USER</columns>

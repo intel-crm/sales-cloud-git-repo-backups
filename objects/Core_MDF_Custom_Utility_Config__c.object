@@ -164,6 +164,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_App__c</fullName>
+        <externalId>false</externalId>
+        <label>App</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_App_nm__c</fullName>
         <externalId>false</externalId>
         <label>App</label>
@@ -171,6 +181,17 @@
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Batch_Size__c</fullName>
+        <externalId>false</externalId>
+        <label>Batch Size</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -183,6 +204,14 @@
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Column_Headers__c</fullName>
+        <label>Column Headers</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Column_Headers_txt__c</fullName>
@@ -207,6 +236,25 @@
         <type>TextArea</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Ext_Permission_Set_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Ext Permission Set Name</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Filter_Criteria__c</fullName>
+        <inlineHelpText>Filter field label</inlineHelpText>
+        <label>Filter Criteria</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Filter_Criteria_txt__c</fullName>
         <label>Filter Criteria</label>
         <length>131072</length>
@@ -229,6 +277,25 @@
         <type>TextArea</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Int_Permision_Set_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Int Permission Set Name</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Mandatory_Filter_Fields__c</fullName>
+        <description>Mandatory Filter condition for an object</description>
+        <label>Mandatory Filter Fields</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Mandatory_Filter_Fields_txt__c</fullName>
         <label>Mandatory Filter Fields</label>
         <length>32768</length>
@@ -237,10 +304,30 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_MDF_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Name field</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Name_field_nm__c</fullName>
         <externalId>false</externalId>
         <label>Name field</label>
         <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Object_Label__c</fullName>
+        <externalId>false</externalId>
+        <label>Object Label</label>
+        <length>50</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -257,6 +344,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Object__c</fullName>
+        <externalId>false</externalId>
+        <label>Object</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Object_apiName_nm__c</fullName>
         <externalId>false</externalId>
         <label>Object</label>
@@ -267,12 +364,30 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Profiles__c</fullName>
+        <label>Profiles</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Profiles_nm__c</fullName>
         <label>Profiles</label>
         <length>32768</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Program__c</fullName>
+        <externalId>false</externalId>
+        <label>Program</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Program_nm__c</fullName>
@@ -285,11 +400,28 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Record_Type_Ids__c</fullName>
+        <label>Record Type Ids</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Record_Types_nm__c</fullName>
         <label>Record Type Names</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_System_User_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>System User Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_System_User_Name_txt__c</fullName>
@@ -302,8 +434,32 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_Type_of_From_User__c</fullName>
+        <label>Type of From User</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Type_Of_User</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Type_of_From_User_nm__c</fullName>
         <label>Type of From User</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Type_Of_User</valueSetName>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Type_of_To_User__c</fullName>
+        <label>Type of To User</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
@@ -336,9 +492,23 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_MDF_isActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>isActive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_isActive_ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>isActive</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_isProgramApplicable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>isProgramApplicable</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -348,6 +518,14 @@
         <label>isProgramApplicable</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_requiredQueryFields__c</fullName>
+        <label>requiredQueryFields</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_requiredQueryFields_txt__c</fullName>

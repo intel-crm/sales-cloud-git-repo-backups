@@ -9,8 +9,7 @@ Modification Log :
 * Harshith M L             10/12/2014              Original Version
 * Kunal Mehta              10/12/2014              Original Version
 *************************************************************************************/
-@
-isTest
+@isTest
 public class Core_SearchUsersOpportunityRecords_Test {
 
     /*

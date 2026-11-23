@@ -180,7 +180,7 @@ public class Core_OpportunityTeamMemberHandler_Test {
         List<User> emeaUsers = new List<User>();
         List<User> prcUsers = new List<User>();  
         
-        //List<User> allUsers = new List<User>();
+        List<User> allUsers = new List<User>();
         for( user users : [select id,Core_User_Geo__c from user limit 20]) {
             if(users.Core_User_Geo__c == 'APJ')
                 apjUsers.add(users);
@@ -230,8 +230,8 @@ public class Core_OpportunityTeamMemberHandler_Test {
             List<User> emeaUsers = new List<User>();
             List<User> prcUsers = new List<User>();  
             
-            //List<User> allUsers = new List<User>();
-            for( user users : [select id,Core_User_Geo__c from user where Core_User_Geo__c in ('APJ','EMEA','ASMO','PRC') AND IsActive = TRUE limit 200]) {
+            List<User> allUsers = new List<User>();
+            for( user users : [select id,Core_User_Geo__c from user where Core_User_Geo__c <> null limit 100]) {
                 if(users.Core_User_Geo__c == 'APJ')
                     apjUsers.add(users);
                 if(users.Core_User_Geo__c == 'ASMO')
@@ -269,15 +269,15 @@ public class Core_OpportunityTeamMemberHandler_Test {
         }                
     }
     
-   /* static testMethod void testOppWithMultipleAPJAndEMEATMUpdateGeoFlags() {
-        System.runAs(Core_Test_Utility.systemAdminUser) {        
+    static testMethod void testOppWithMultipleAPJAndEMEATMUpdateGeoFlags() {
+        
         List<User> apjUsers = new List<User>();
         List<User> asmoUsers = new List<User>();
         List<User> emeaUsers = new List<User>();
         List<User> prcUsers = new List<User>();  
         
-        //List<User> allUsers = new List<User>();
-        for( user users : [select id,Core_User_Geo__c from user where Core_User_Geo__c in ('APJ','EMEA','ASMO','PRC') AND IsActive = TRUE limit 200]) {
+        List<User> allUsers = new List<User>();
+        for( user users : [select id,Core_User_Geo__c from user where Core_User_Geo__c <> null limit 100]) {
             if(users.Core_User_Geo__c == 'APJ')
                 apjUsers.add(users);
             if(users.Core_User_Geo__c == 'ASMO')
@@ -323,11 +323,11 @@ public class Core_OpportunityTeamMemberHandler_Test {
         
         // Oppty 2: make sure we can insert 100 APJ and 5 ASMO team members and have APJ + EMEA + ASMO set
         // Oppty 3: make sure we can insert 55 PRC team members and have ASMO + PRC set
-        for (Integer i=0; i<5; i++) {
-            oppTMs.add(new OpportunityTeamMember(OpportunityId=testOpps[1].Id, UserId=apjUsers[i].Id, TeamMemberRole='Team Member'));
+        for (Integer i=0; i<10; i++) {
+            oppTMs.add(new OpportunityTeamMember(OpportunityId=testOpps[1].Id, UserId=apjUsers[5+i].Id, TeamMemberRole='Team Member'));
         }
         for (Integer i=0; i<5; i++) {
-            oppTMs.add(new OpportunityTeamMember(OpportunityId=testOpps[1].Id, UserId=asmoUsers[i].Id, TeamMemberRole='Team Member'));
+            oppTMs.add(new OpportunityTeamMember(OpportunityId=testOpps[1].Id, UserId=asmoUsers[1+i].Id, TeamMemberRole='Team Member'));
         }
         for (Integer i=0; i<5; i++) {
             oppTMs.add(new OpportunityTeamMember(OpportunityId=testOpps[2].Id, UserId=prcUsers[i].Id, TeamMemberRole='Team Member'));
@@ -363,9 +363,8 @@ public class Core_OpportunityTeamMemberHandler_Test {
         delete preUpdateOppTMs;
         
         postUpdateFlags = getGeoFlags(testOpps[1].Id);
-        test.stopTest(); 
-        }      
-    }*/
+        test.stopTest();        
+    }
     
     static testMethod void testUpdateOSCType() {
         
@@ -374,37 +373,31 @@ public class Core_OpportunityTeamMemberHandler_Test {
         User oscUser       = users[0];
         oscUser.userName = 'test0'+ oscUser.userName ;
         oscUser.Department = OSC_DEPARTMENT;
-		oscUser.CommunityNickname = 'Test1';
         insert oscUser;
         
         User nonOSCUser       = users[1];
         nonOSCUser.userName =  'test1' + nonOSCUser.userName ;
-        nonOSCUser.Department = '';     
-		nonOSCUser.CommunityNickname = 'Test2';
+        nonOSCUser.Department = '';        
         insert nonOSCUser;
         
         User oscTm       = users[2];
         oscTm.userName = 'test2' + oscTm.userName ;
         oscTm.Department = OSC_DEPARTMENT;
-		oscTm.CommunityNickname = 'Test3';
         insert oscTm;
         
         User nonOSCTm       = users[3];
         nonOSCTm.userName = 'test3' + nonOSCTm.userName ;
-        nonOSCTm.Department = '';   
-		nonOSCTm.CommunityNickname = 'Test4';
+        nonOSCTm.Department = '';        
         insert nonOSCTm;
         
         User oscTo       = users[4];
         oscTo.userName = 'test4'+ oscTo.userName ;
         oscTo.Department = OSC_DEPARTMENT;
-		oscTo.CommunityNickname = 'Test5';
         insert oscTo;
         
         User nonOSCTo       = users[5];
         nonOSCTo.userName = 'test5' + nonOSCTo.userName ;
-        nonOSCTo.Department = '';      
-		nonOSCTo.CommunityNickname = 'Test6';
+        nonOSCTo.Department = '';        
         insert nonOSCTo;
         
         SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
@@ -558,6 +551,7 @@ public class Core_OpportunityTeamMemberHandler_Test {
         cn[0].email = 'test@test1.com';
         cn[0].accountid = AccListList[0].id;
         cn[0].MailingCountry = 'India';
+        cn[0].MailingCountryCode = 'IN';
         insert cn;
         
         
@@ -621,13 +615,14 @@ public class Core_OpportunityTeamMemberHandler_Test {
         cn[0].email = 'test@test1.com';
         cn[0].accountid = AccListList[0].id;
         cn[0].MailingCountry = 'India';
+        cn[0].MailingCountryCode = 'IN';
         insert cn;
         
         
         // Get the profile we'll use for our test users
         Profile p1 = [select Id from Profile where Name = 'IT Admin'];
         
-        //Profile p2 = [select Id from Profile where Name = 'IPS Agent'];
+        Profile p2 = [select Id from Profile where Name = 'IPS Agent'];
         
         // Test users
         User u = new User(Alias = 'Abjklst', Email='test123gfs@apttus.com',
@@ -671,6 +666,7 @@ public class Core_OpportunityTeamMemberHandler_Test {
         cn[0].accountid = AccList[0].id;
         cn[0].FirstName = 'Test contact';
         cn[0].MailingCountry = 'India';
+        cn[0].MailingCountryCode = 'IN';
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert cn;}
         

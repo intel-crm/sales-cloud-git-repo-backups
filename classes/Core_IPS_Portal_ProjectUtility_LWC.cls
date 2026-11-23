@@ -20,7 +20,9 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
     @AuraEnabled
     public static string addOrRemoveProducts(List<ID> initialIds, List<ID> selectedIds, String projID){
         String message;
-       
+        system.debug('initialIds'+initialIds);
+        system.debug('selectedIds'+selectedIds);
+        system.debug('projID'+projID);
         try{
             List<Id> addIdList = new List<Id>();
             List<Id> removeIdList = new List<Id>();
@@ -31,10 +33,10 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                     }
                 }
             }
-           
+            system.debug('addIdList'+addIdList);
             if(addIdList.size()>0){
                 List<Core_IPS_Product__c> addIPSProdList = upsertIPSProducts(addIdList,projID);
-                
+                system.debug('addIPSProdList'+addIPSProdList);
                 if(addIPSProdList.size()>0){
                     message = 'Success';
                 }
@@ -78,7 +80,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
             asstList = (List<Asset>) Core_IPS_QueryService.queryRecords(assetQuery, new Map<String, Object>{ 'selectedIdsInThirdPage' => selectedIdsInThirdPage });
             
         } 
-        
+        system.debug('asstList'+asstList);
         Map<Id,Asset> mapofIdAsset = new Map<Id,Asset>();
         Map<Id,Id> mapOfAstSupProd = new Map<Id,Id>();
         for(Asset ast: asstList){
@@ -87,7 +89,9 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
             mapOfAstSupProd.put(ast.ID, ast.Core_Supported_Product__c);
             
         }
-        
+         system.debug('supProdIDSet'+supProdIDSet);
+         system.debug('mapofIdAsset'+mapofIdAsset);
+         system.debug('mapOfAstSupProd'+mapOfAstSupProd);
         /*FLS Read fix  13/05/2022 */
         List<Core_IPS_Product__c> iPSProdList=new List<Core_IPS_Product__c>();
         if (Schema.sObjectType.Core_IPS_Product__c.isAccessible()){
@@ -95,7 +99,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
             String ipsProdQueryStr = 'SELECT Id, Name, Core_Supported_Product__c FROM Core_IPS_Product__c WHERE Core_Supported_Product__c IN :supProdIDSet AND Core_IPS_Project__c = :ipsProject';
             iPSProdList = (List<Core_IPS_Product__c>) Core_IPS_QueryService.queryRecords(ipsProdQueryStr, new Map<String, Object>{ 'supProdIDSet' => supProdIDSet, 'ipsProject' => ipsProject });
         }
-       
+        system.debug('iPSProdList'+iPSProdList);
         
         /* removal of the exisitng asset from that map.*/
         List<ID> asstIDs = new List<ID>();
@@ -106,7 +110,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                 }
             }
         }
-        
+        system.debug('asstIDs'+asstIDs);
         List<Id> ipsProdTocreateList = new List<Id>();
         if(asstIDs != null){
             for(ID ids2: selectedIdsInThirdPage){
@@ -115,7 +119,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                 }
             }
         }
-       
+        system.debug('ipsProdTocreateList'+ipsProdTocreateList);
         /*id-- FLS Read fix FP 13/05/2022 */
         //added as part of vulnerability niyaz-21-08-2026
         Id iPSProductBasicRecordType = (Id) Core_IPS_QueryService.queryRecords('SELECT Id FROM RecordType WHERE SobjectType = \'Core_IPS_Product__c\' AND DeveloperName = \'Core_IPS_Project_Product\'')[0].get('Id');
@@ -168,12 +172,12 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
                 lIPSProducts.add(iPSProd);
             }
         }
-       
+        system.debug('lIPSProducts'+lIPSProducts);
         if(lIPSProducts != null && lIPSProducts.size()>0){
             // upsert lIPSProducts;
             Core_IPS_QueryService.upsertRecords(lIPSProducts);//added by sabira 21-07-26 
         }
-      
+        system.debug('ipsProject'+ipsProject);
         // if(lIPSProducts.size()!=null){
         if(lIPSProducts.size()>0){ //added by sabira 10-08 as part of vulnerability 
             updateAssertsStatus(lIPSProducts,ipsProject);
@@ -419,13 +423,11 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
         User us;
         /*FLS Read fix  13/05/2022 */
         Core_IPS_Project__c ipsProj=new Core_IPS_Project__c();
-        // Venrublity Fix - Refering query to service class
         ipsProj = (Core_IPS_Project__c)Core_IPS_QueryService.queryRecords(
             'SELECT Owner.ID FROM Core_IPS_Project__c WHERE id = :projId',
             new Map<String, Object>{ 'projId' => projId }
         )[0];
         if(ipsProj.Owner.ID != null || ipsProj.Owner.ID != ''){
-          // Venrublity Fix - Refering query to service class
             us = (User)Core_IPS_QueryService.queryRecords(
                 'SELECT ContactID FROM User WHERE ID = :ownerId',
                 new Map<String, Object>{ 'ownerId' => ipsProj.Owner.ID }
@@ -442,7 +444,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
     //This method get called while Editing Project
     @AuraEnabled(cacheable=true)
     public static  List<Core_IPS_Product__c> existingIPSProducts(String projIdfromJS){
-      
+        System.debug('hk 401===> '+projIdfromJS);
         List<Core_IPS_Product__c> sobjListEprdos = new List<Core_IPS_Product__c>();
         if(projIdfromJS != null && projIdfromJS != '')
         {
@@ -473,7 +475,7 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
     //This method get called while Editing Project
     @AuraEnabled
     public static List<Core_IPS_Project_Member__c> existingProjectMembers(String projIdfromJS){
-        
+        System.debug('hk 428===> '+projIdfromJS);
         List<Core_IPS_Project_Member__c> sobjListPM = new List<Core_IPS_Project_Member__c>();
         if(projIdfromJS != null && projIdfromJS != '')
         {

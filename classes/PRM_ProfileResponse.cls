@@ -131,8 +131,6 @@ false - if profile response is getting created
    /* public static void inactiveBenefit(List<PRM_Profile_Responses__c> newProfileReponse, Map<id, PRM_Profile_Responses__c>oldMap){
         try{
             if(!fromPointsCalculation && fromOPID){
-            System.debug('No of SOQL Executed till at Start of inactiveBenefit-->'+Limits.getQueries());
-            System.debug('called for accounts'+newProfileReponse);
             List<String> questionCodes = label.PRM_Question_code.split(';');  // not eligible      
             set<Id> accountids = new Set<id>(); // to be used as aggregate ids of both acts and opids        
             Map<Id,Id> mapOfActIdOPID = new Map<id,id>();
@@ -143,30 +141,25 @@ false - if profile response is getting created
             for(PRM_Profile_Questions__c pq: [select id from PRM_Profile_Questions__c where PRM_Question_Cd__c in :questionCodes]){
                 pointsNotEligibleIds.add(pq.Id);
             }
-            System.debug('pointsNotEligibleIds -->'+pointsNotEligibleIds);
             
             //there can be multiple account with same profile response
             for(PRM_Profile_Responses__c pr : newProfileReponse){
-                System.debug('newProfileReponse -->'+pr);
                 if(((pr.PRM_Response_Txt__c=='true') || (pr.PRM_Response_Txt__c!='' && pr.PRM_Response_Txt__c!='false')) && pointsNotEligibleIds.contains(pr.PRM_Profile_Questions_Id__c)){
                     accountids.add(pr.PRM_Account_Id__c);     
                 }
             }
             
-            System.debug('accountids -->'+accountids);
             if(accountids.size()>0){
                for(PRM_VXBnftMatrix__c bnftrec : [select PRM_Partner_Role_Nm__c from PRM_VXBnftMatrix__c where PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c='BFTPTSREDM']){
                     bnftmatset.add(bnftrec.PRM_Partner_Role_Nm__c);
                 }
                 
-            System.debug('bnftmatset -->'+bnftmatset);
             if(accountids!=null && !accountids.isEmpty()){
                 for(Account actRec: [select id, Core_IPA_One_Partner_Id__c from Account where id in : accountids]){   //QUERY -1 - Account         
                     mapOfActIdOPID.put(actRec.Id,actRec.Core_IPA_One_Partner_Id__c);
                 }    
             }
             
-            System.debug('mapOfActIdOPID ->'+mapOfActIdOPID);
             // get all the opid ACM's
             
             Map<Id,List<PRM_AccountChannelMembership__c>> opidAcmsListMap = new Map<id, List<PRM_AccountChannelMembership__c>>();        
@@ -199,21 +192,16 @@ false - if profile response is getting created
                     
                 }
                 
-                System.debug('opidAcmsListMap -->'+opidAcmsListMap);
             }
             // set with all one partner id and account id
             if( mapOfActIdOPID != null && !mapOfActIdOPID.isEmpty() && opidAcmsListMap != null && !opidAcmsListMap.isEmpty() ) {
-                System.debug('opidAcmsListMap -->'+ opidAcmsListMap);
-                system.debug('opidChildActIdACMMap'+opidChildActIdACMMap);
                 for(Id actId :opidAcmsListMap.keySet()){
-                    system.debug('The actId is '+actId);
                     if(!(opidAcmsListMap.get(actId).size()>1) && !(opidChildActIdACMMap.get(actId).size()>1 )){
                         accountids.add(actId);                        
                     }
                 }
                 //accountids.addAll(mapOfActIdOPID.values());    
             }        
-            System.debug('accountids -->'+accountids);
             
             Map<Id,List<PRM_AccountBenefitAssociation__c>> actABAtobeUpdated = new Map<Id,List<PRM_AccountBenefitAssociation__c>>();
             
@@ -242,14 +230,11 @@ false - if profile response is getting created
                     }
                 }
                 
-                System.debug('toBeUpdatedABA -->'+toBeUpdatedABA);
                 
                 if(toBeUpdatedABA!=null && !toBeUpdatedABA.isEmpty()){
                     Database.update(toBeUpdatedABA);
                 }
-                system.debug('Inactivdatebenefit accountids-->'+accountids);
                contactIdsForCompPCR=getContactsOfCompStatusPCR(accountids);
-                system.debug('contactIdsForCompPCR--->'+contactIdsForCompPCR);
                
                 for(Core_Contact_Entitlement__c ce : [select id,Core_Contact_Id__r.AccountId from Core_Contact_Entitlement__c where Core_Contact_Id__c in: contactIdsForCompPCR and Core_Selected__c=TRUE and Core_Status__c='Complete' and Core_Contact_Id__r.AccountId in :actABAtobeUpdated.keySet() and Core_Entitlement_Id__r.name in :Label.PRM_EntitlementNamesToInactive.split(';') ]){
                     ce.Core_Selected__c = false;
@@ -259,13 +244,11 @@ false - if profile response is getting created
                 }
                 
                 if(ceList!=null && !ceList.isEmpty()){
-                    system.debug('ceList-->'+ceList);
                     Database.update(ceList);
                 }
                 
           }  
         }  
-            System.debug('No of SOQL Executed at End of inactiveBenefit -->'+Limits.getQueries());        
      }
     }
         catch(DmlException e) {
@@ -275,7 +258,6 @@ false - if profile response is getting created
     public static void activateBenefit(List<PRM_Profile_Responses__c> newProfileReponse, Map<id, PRM_Profile_Responses__c>oldMap){
         try{
             if(!fromPointsCalculation && fromOPID){
-            System.debug('No of SOQL Executed till at Start of inactiveBenefit-->'+Limits.getQueries());
             
             List<String> questionCodes = label.PRM_Question_code.split(';');  // not eligible
             List<String> questionCodesOptIn = label.PRM_Question_Code_OptIn.split(';');  // Opt In   
@@ -292,7 +274,6 @@ false - if profile response is getting created
             OptinAndNotEligPoints.addAll(questionCodes) ; 
             OptinAndNotEligPoints.addAll(questionCodesOptIn) ;  
             
-            system.debug('The combined list is '+OptinAndNotEligPoints);          
             
             set<Id> pointsNotEligibleIds = new set<id>();
             set<Id> pointsOptInIds = new set<id>();    
@@ -305,42 +286,34 @@ false - if profile response is getting created
                     pointsOptInIds.add(pq.Id);                
                 }                       
             }           
-            System.debug('pointsNotEligibleIds -->'+pointsNotEligibleIds);
-            System.debug('pointsOptInIds -->'+pointsOptInIds);
             //there can be multiple account with same profile response
             for(PRM_Profile_Responses__c pr : newProfileReponse){
-                System.debug('newProfileReponse -->'+pr);
                 PRM_Profile_Responses__c PROld ;
                 
                 if(pr.PRM_Question_Display_Text__c  == 'Points Not eligible' && (pr.PRM_Response_Txt__c == 'false' || pr.PRM_Response_Txt__c=='null')){
                     PointNotEligInd = false;
                     FinalId.add(pr.PRM_Account_Id__c);
                 }
-                System.debug('newProfileReponse11 -->'+pr.PRM_Question_Display_Text__c+''+pr.PRM_Response_Txt__c);
                 if(pr.PRM_Question_Display_Text__c  == 'Points Opt-in' && pr.PRM_Response_Txt__c!='false' ){
                     PointOptIn = true;    
                     FinalId.add(pr.PRM_Account_Id__c);
                 }
                 
             }
-            System.debug('val'+PointOptIn);
             if((PointNotEligInd == false && PointOptIn == true) || PointNotEligInd == false) {
                 accountids.addall(FinalId);  
             }
-            System.debug('accountids -->'+accountids);
             if(accountids.size()>0){     
              for(PRM_VXBnftMatrix__c bnftrec : [select PRM_Partner_Role_Nm__c from PRM_VXBnftMatrix__c where PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c='BFTPTSREDM']){
                 bnftmatset.add(bnftrec.PRM_Partner_Role_Nm__c);
             }
             
-            System.debug('bnftmatset -->'+bnftmatset);
             if(accountids!=null && !accountids.isEmpty()){
                 for(Account actRec: [select id, Core_IPA_One_Partner_Id__c from Account where id in : accountids]){   //QUERY -1 - Account         
                     mapOfActIdOPID.put(actRec.Id,actRec.Core_IPA_One_Partner_Id__c);
                 }    
             }
             
-            System.debug('mapOfActIdOPID ->'+mapOfActIdOPID);
             // get all the opid ACM's
             
             Map<Id,List<PRM_AccountChannelMembership__c>> opidAcmsListMap = new Map<id, List<PRM_AccountChannelMembership__c>>();        
@@ -373,11 +346,9 @@ false - if profile response is getting created
                     
                 }
                 
-                System.debug('opidAcmsListMap -->'+opidAcmsListMap);
             }
             // set with all one partner id and account id
             if( mapOfActIdOPID != null && !mapOfActIdOPID.isEmpty() && opidAcmsListMap != null && !opidAcmsListMap.isEmpty() ) {
-                System.debug('opidAcmsListMap -->'+ opidAcmsListMap);
                 for(Id actId :opidAcmsListMap.keySet()){
                     if(!(opidAcmsListMap.get(actId).size()>1) && !(opidChildActIdACMMap.get(actId).size()>1 )){
                         accountids.add(actId);                        
@@ -385,7 +356,6 @@ false - if profile response is getting created
                 }
                 //accountids.addAll(mapOfActIdOPID.values());    
             }        
-            System.debug('accountids -->'+accountids);
             
             Map<Id,List<PRM_AccountBenefitAssociation__c>> actABAtobeUpdated = new Map<Id,List<PRM_AccountBenefitAssociation__c>>();
             
@@ -414,14 +384,11 @@ false - if profile response is getting created
                     }
                 }
                 
-                System.debug('toBeUpdatedABA -->'+toBeUpdatedABA);
                 
                 if(toBeUpdatedABA!=null && !toBeUpdatedABA.isEmpty()){
                     Database.update(toBeUpdatedABA);
                 }
-        system.debug('activdatebenefit accountids-->'+accountids);
         contactIdsForCompPCR=getContactsOfCompStatusPCR(accountids);
-                system.debug('contactIdsForCompPCR--->'+contactIdsForCompPCR);
                 for(Core_Contact_Entitlement__c ce : [select id,Core_Contact_Id__r.AccountId from Core_Contact_Entitlement__c where Core_Contact_Id__c in: contactIdsForCompPCR and Core_Selected__c=FALSE and Core_Status__c='Complete' and Core_Contact_Id__r.AccountId in :actABAtobeUpdated.keySet() and Core_Entitlement_Id__r.name in :Label.PRM_EntitlementNamesToInactive.split(';')  ]){                
                     ce.Core_Selected__c = true;
                     ce.Core_Status__c ='Pending';
@@ -435,7 +402,6 @@ false - if profile response is getting created
                 
             } 
         }   
-            System.debug('No of SOQL Executed at End of inactiveBenefit -->'+Limits.getQueries());
        }
     }
         catch(DmlException e) {
@@ -447,12 +413,10 @@ false - if profile response is getting created
     /*public static void activateInactiveBenefit(List<PRM_Profile_Responses__c> newProfileReponse, Map<id, PRM_Profile_Responses__c>oldMap){
         try{
             if(!fromPointsCalculation && fromOPID){
-            System.debug('No of SOQL Executed till at Start of inactiveBenefit-->'+Limits.getQueries());
             set<id> accountId = new set<id>();
             List<String> questionCodes = label.PRM_Question_code.split(';');  // not eligible
             List<String> questionCodesOptIn = label.PRM_Question_Code_OptIn.split(';');  // Opt In   
             set<Id> accountids = new Set<id>(); // to be used as aggregate ids of both acts and opids
-            System.debug('Inside Method accountids -->'+newProfileReponse);        
             Map<Id,Id> mapOfActIdOPID = new Map<id,id>();
             Map<Id,String> questionIdCodeMap = new Map<Id,String>();
             Map<String,id> questionCodeIdMap = new  Map<String,id>();    
@@ -468,9 +432,7 @@ false - if profile response is getting created
             OptinAndNotEligPoints.addAll(questionCodes) ; 
             OptinAndNotEligPoints.addAll(questionCodesOptIn) ;  
             
-           // system.debug('The combined list is '+OptinAndNotEligPoints);
                       
-            //System.debug('bnftmatset -->'+bnftmatset);
             
             set<Id> pointsNotEligibleIds = new set<id>();
             set<Id> pointsOptInIds = new set<id>();    
@@ -486,16 +448,12 @@ false - if profile response is getting created
                 questionIdCodeMap.put(pq.id,pq.PRM_Question_Cd__c);                   
             }  
             
-            //System.debug('pointsNotEligibleIds -->'+pointsNotEligibleIds);
-            //System.debug('pointsOptInIds -->'+pointsOptInIds);
             //there can be multiple account with same profile response
             for(PRM_Profile_Responses__c pr : newProfileReponse){
-                //System.debug('newProfileReponse -->'+pr);
                 PRM_Profile_Responses__c PROld ;                
                 // from Inactive
                 if(((pr.PRM_Response_Txt__c=='true') || (pr.PRM_Response_Txt__c!='' && pr.PRM_Response_Txt__c!='false')) && pointsNotEligibleIds.contains(pr.PRM_Profile_Questions_Id__c)){
                     PointNotEligInd = true;
-                    System.debug('Inside first If::::'+PointNotEligInd);
                     if(!accountids.contains(pr.PRM_Account_Id__c)){
                         accountids.add(pr.PRM_Account_Id__c);
                     }
@@ -503,21 +461,16 @@ false - if profile response is getting created
                       //  accountids.remove(pr.PRM_Account_Id__c);
                     }   
                 }
-                //System.debug('Inside Method after clean up accountids -->'+accountids);
                 
                 //Active
                 if(pr.PRM_Question_Display_Text__c  == 'Points Not eligible' && (pr.PRM_Response_Txt__c == 'false' || pr.PRM_Response_Txt__c=='null')){
-                    System.debug('Inside Second If::::');
                     PointNotEligInd = false;
                     FinalId.add(pr.PRM_Account_Id__c);
-                    //System.debug('FinalId 1 -->'+FinalId);
                 }
                 
                 if(pr.PRM_Question_Display_Text__c  == 'Points Opt-in' && pr.PRM_Response_Txt__c == 'true' ){
-                    System.debug('Inside third If::::');
                     PointOptIn = true;    
                     FinalId.add(pr.PRM_Account_Id__c);
-                    //System.debug('FinalId 2 -->'+FinalId);
                 }
                 if(oldMap!= null){
                     if(pr.PRM_Response_Txt__c != oldMap.get(pr.id).PRM_Response_Txt__c && (questionIdCodeMap.get(pr.PRM_Profile_Questions_Id__c) == 'PRM_Opt_In' || questionIdCodeMap.get(pr.PRM_Profile_Questions_Id__c) == 'PRM_Point_Not_Eligible'))
@@ -531,19 +484,15 @@ false - if profile response is getting created
             if(accountId.size()>0){
              //  PRM_ProfileResponse.pointsCalculation(accountId,newProfileReponse,questionIdCodeMap,questionCodeIdMap);
             }
-             system.debug ('after for loop '+ accountIds);
             if(PointNotEligInd == true){
-                system.debug ('PNE TRUE ');
                // accountids.addall(FinalId);  
                 inactivate = true;
             }
             else if((PointNotEligInd == false && PointOptIn == true) || PointNotEligInd == false) {
-                //System.debug('Inside forth If::::');
                 accountids.addall(FinalId);  
             }
             
             
-            //System.debug('accountids -->'+accountids);
             if(accountids.size()>0){                 
             for(PRM_VXBnftMatrix__c bnftrec : [select PRM_Partner_Role_Nm__c from PRM_VXBnftMatrix__c where PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c='BFTPTSREDM']){
                 bnftmatset.add(bnftrec.PRM_Partner_Role_Nm__c);
@@ -554,7 +503,6 @@ false - if profile response is getting created
                 }    
             }
             
-            System.debug('mapOfActIdOPID ->'+mapOfActIdOPID);
             // get all the opid ACM's
             
             Map<Id,List<PRM_AccountChannelMembership__c>> opidAcmsListMap = new Map<id, List<PRM_AccountChannelMembership__c>>();        
@@ -587,12 +535,9 @@ false - if profile response is getting created
                     
                 }
                 
-                System.debug('opidAcmsListMap -->'+opidAcmsListMap);
-               // System.debug('accountids--->'+accountids);
             }
             // set with all one partner id and account id
             if( mapOfActIdOPID != null && !mapOfActIdOPID.isEmpty() && opidAcmsListMap != null && !opidAcmsListMap.isEmpty() ) {
-                System.debug('opidAcmsListMap -->'+ opidAcmsListMap);
                 for(Id actId :opidAcmsListMap.keySet()){
                     if(!(opidAcmsListMap.get(actId).size()>1) && !(opidChildActIdACMMap.get(actId).size()>1 )){
                         if(!accountids.contains(actId)){
@@ -605,7 +550,6 @@ false - if profile response is getting created
                 }
                 //accountids.addAll(mapOfActIdOPID.values());    
             }        
-            System.debug('accountids -->'+accountids);
             
             Map<Id,List<PRM_AccountBenefitAssociation__c>> actABAtobeUpdated = new Map<Id,List<PRM_AccountBenefitAssociation__c>>();
             
@@ -618,13 +562,11 @@ false - if profile response is getting created
             if(accountids!=null && !accountids.isEmpty()){
                 List<PRM_AccountBenefitAssociation__c> abaList = new List<PRM_AccountBenefitAssociation__c>();
                 for(PRM_AccountBenefitAssociation__c aba : [select id,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.name from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c in:accountids AND PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c in :System.Label.PRM_benefits_for_point_not_eligible_flag.split(';') ]){//QUERY 3 - ABA
-                    System.debug('AccountBenefitAssociation List -->'+aba);
                     if(!inactivate)
                     {
                     if(aba.PRM_Status_Nm__c=='Inactive'){
                         aba.PRM_Status_Nm__c = System.label.PRM_Status_Active;
                         aba.PRM_Status_Reason_Txt__c ='';
-                        System.debug('Line 591-->'+aba.PRM_Status_Nm__c);
                     }
                    }
                     else if(aba.PRM_Status_Nm__c=='Active'){
@@ -649,14 +591,12 @@ false - if profile response is getting created
                     }
                 }
                 
-                System.debug('toBeUpdatedABA -->'+toBeUpdatedABA);
                 
                 if(toBeUpdatedABA!=null && !toBeUpdatedABA.isEmpty()){
                     Database.update(toBeUpdatedABA);
                 }
                 
                 contactIdsForCompPCR=getContactsOfCompStatusPCR(accountids);
-                system.debug('contactIdsForCompPCR--->'+contactIdsForCompPCR);
 
                 List<Core_Contact_Entitlement__c> ceList = new List<Core_Contact_Entitlement__c>();
                 for(Core_Contact_Entitlement__c ce : [select id,Core_Status__c,Core_Data_Loaded__c,Core_Selected__c,Core_Contact_Id__r.AccountId from Core_Contact_Entitlement__c where Core_Contact_Id__c in:contactIdsForCompPCR and  Core_Contact_Id__r.AccountId in :actABAtobeUpdated.keySet() and Core_Entitlement_Id__r.name in :Label.PRM_EntitlementNamesToInactive.split(';') ]){
@@ -679,7 +619,6 @@ false - if profile response is getting created
                 }
                 
             }    
-            System.debug('No of SOQL Executed at End of inactiveBenefit -->'+Limits.getQueries());
          }
         }
         }
@@ -796,7 +735,6 @@ false - if profile response is getting created
     }
     }
   }catch(Exception e){
-    //System.debug('The following exception has occurred: ' + e.getMessage());
         Core_Log_Entry.logEntryWithException('PRM_ProfileResponse', 'IPA', 'ProfileResponse', 'Medium',logEntryMsg,'' , '', '', '',e);     
   }
 }
@@ -829,7 +767,8 @@ false - if profile response is getting created
                     allAccountIds.put(ipaMemAtt.PRM_Account_Id__c,ipaMemAtt);
                 }
                 if(allAccountIds!=null){
-                    for(PRM_AccountChannelMembership__c acmrecord : [SELECT PRM_Channel_Program_Level_Id__r.name,PRM_Partner_Role__c, PRM_Status_Nm__c, PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c 
+                    //ATHR Fix - TWC729-9556 - JB
+                    for(PRM_AccountChannelMembership__c acmrecord : [SELECT PRM_Account_Id__c/* PRM_Channel_Program_Level_Id__r.name,PRM_Partner_Role__c, PRM_Status_Nm__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c */
                                                                  from PRM_AccountChannelMembership__c 
                                                                  where PRM_Account_Id__c in:allAccountIds.keySet() and PRM_Status_Nm__c='Approved' and PRM_Account_Id__r.RecordType.DeveloperName ='Core_Partner_Account_Group'
                                                                 ]){
@@ -906,7 +845,6 @@ false - if profile response is getting created
                 }
             }    
         }catch(Exception e){
-            //System.debug('The following exception has occurred: ' + e.getMessage());
             Core_Log_Entry.logEntryWithException('PRM_ProfileResponse', 'IPA', 'ProfileResponse', 'Medium',logEntryMsg,'' , '', '', '',e);     
         }
 
@@ -1155,7 +1093,7 @@ false - if profile response is getting created
         }
         // Get all the responses for the OPID 
         if(!locAccountIdsOnCag.IsEmpty()){
-            for(PRM_IPAMembership_Attributes__c locIpaMemAtt: [ SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c where PRM_Account_Id__c in :locAccountIdsOnCag ]){
+            for(PRM_IPAMembership_Attributes__c locIpaMemAtt: [ SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c,PRM_Activity_earning_excluded__c,PRM_Activity_earning_excluded_Start_Date__c,PRM_Client_Business_earning_excluded__c,PRM_ClientBusinessexcluded_StartDate__c,PRM_Ethernet_Business_earning_excluded__c,PRM_Ethernet_BusinessexcludedStartDt__c,PRM_Server_Business_earning_excluded__c,PRM_Server_Business_excluded_Start_Date__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c FROM PRM_IPAMembership_Attributes__c where PRM_Account_Id__c in :locAccountIdsOnCag ]){//varun
                 locAcctIpaMemAttMap.put(locIpaMemAtt.PRM_Account_Id__c,locIpaMemAtt);        
             }
         }         
@@ -1222,6 +1160,14 @@ false - if profile response is getting created
         ipaMemAttReceive.PRM_Branded_Point_earning_excl_Dt__c = ipaMemAttGet.PRM_Branded_Point_earning_excl_Dt__c;
         ipaMemAttReceive.PRM_ODM_whiteboxPointEarning_excl_Ind__c = ipaMemAttGet.PRM_ODM_whiteboxPointEarning_excl_Ind__c;
         ipaMemAttReceive.PRM_ODM_whiteboxPointEarning_excl_Dt__c = ipaMemAttGet.PRM_ODM_whiteboxPointEarning_excl_Dt__c;
+        ipaMemAttReceive.PRM_Activity_earning_excluded__c = ipaMemAttGet.PRM_Activity_earning_excluded__c; //varun
+        ipaMemAttReceive.PRM_Activity_earning_excluded_Start_Date__c = ipaMemAttGet.PRM_Activity_earning_excluded_Start_Date__c;
+        ipaMemAttReceive.PRM_Client_Business_earning_excluded__c = ipaMemAttGet.PRM_Client_Business_earning_excluded__c;
+        ipaMemAttReceive.PRM_ClientBusinessexcluded_StartDate__c = ipaMemAttGet.PRM_ClientBusinessexcluded_StartDate__c;
+        ipaMemAttReceive.PRM_Ethernet_Business_earning_excluded__c = ipaMemAttGet.PRM_Ethernet_Business_earning_excluded__c;
+        ipaMemAttReceive.PRM_Server_Business_earning_excluded__c = ipaMemAttGet.PRM_Server_Business_earning_excluded__c;
+        ipaMemAttReceive.PRM_Server_Business_excluded_Start_Date__c = ipaMemAttGet.PRM_Server_Business_excluded_Start_Date__c;
+        ipaMemAttReceive.PRM_Ethernet_BusinessexcludedStartDt__c = ipaMemAttGet.PRM_Ethernet_BusinessexcludedStartDt__c;
         ipaMemAttReceive.PRM_Registration_Source_Txt__c = ipaMemAttGet.PRM_Registration_Source_Txt__c;
         ipaMemAttReceive.PRM_Points_Opt_in_Ind__c = ipaMemAttGet.PRM_Points_Opt_in_Ind__c;
         ipaMemAttReceive.PRM_Points_Opt_in_Dt__c = ipaMemAttGet.PRM_Points_Opt_in_Dt__c;
@@ -1563,7 +1509,6 @@ false - if profile response is getting created
                 pointsRun=false;
                 fromPointsCalculation = true; 
                 PRM_ProfileResponses_TriggerHandler.fromPoints = true;
-                //system.debug('updated here with '+listProfileResponse);
                 Database.upsert(listProfileResponse,false);
             }
          }
@@ -1601,7 +1546,6 @@ false - if profile response is getting created
                 String answerCode =  s.substringAfter(Label.PRM_ResponseCode+' ').substringBefore(' '+Label.PRM_ResponseValue);
                 String responseValue = s.substringAfter(Label.PRM_ResponseValue+' ').substringBefore('}');
                 String uniqueCodeFromReg = questionCode+'|'+answerCode;
-                System.debug('uniqueCodeFromReg---'+uniqueCodeFromReg);
                 //to create profile response
                 PRM_IPAMembership_Attributes__c profResponse; 
                 if(accList.size() > 0){
@@ -1613,18 +1557,17 @@ false - if profile response is getting created
                         profResponse.PRM_Account_Id__c = accountId;
                         profResponse.RecordTypeId = prLocRecTypeId;
                     }
-                    //  Always re-activate IPA Membership
+                    
+                    // Always re-activate IPA Membership
                     profResponse.PRM_Inactive_ind__c = false;
+
                     //If the codes matches from Registration and the metadata, populate the corresponding responsevalue from Profile Response from Registration
                     Map<String, Object> qstnAnsCodeMap= PRM_IPAR_ProfileResponse_Utility.getProfResponsemdt();
-                    System.debug('qstnAnsCodeMap--'+qstnAnsCodeMap);
                    // for(String key : qstnAnsCodeMap.keySet()) {
                        
                     if(qstnAnsCodeMap.containsKey(uniqueCodeFromReg)){
-                        system.debug('Metadata codes are equal'); 
                         //if(record.get('Question_Code__c')==PRM_ProfileResponse_Utility.IPA_REG_SRC){
                             profResponse.PRM_Registration_Source_Txt__c= responseValue;
-                            system.debug('profResponse----'+profResponse.PRM_Registration_Source_Txt__c);
                         //}
                     }
                     //}

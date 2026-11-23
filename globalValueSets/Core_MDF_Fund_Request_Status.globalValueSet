@@ -61,18 +61,6 @@
         <label>Cancelled</label>
     </customValue>
     <customValue>
-        <fullName>Submitted</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Submitted</label>
-    </customValue>
-    <customValue>
-        <fullName>Rejected</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Rejected</label>
-    </customValue>
-    <customValue>
         <fullName>Pending Action</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -89,6 +77,18 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Returned</label>
+    </customValue>
+    <customValue>
+        <fullName>Rejected</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Rejected</label>
+    </customValue>
+    <customValue>
+        <fullName>Submitted</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Submitted</label>
     </customValue>
     <description>Manage fund request status</description>
     <masterLabel>Fund Request Status</masterLabel>

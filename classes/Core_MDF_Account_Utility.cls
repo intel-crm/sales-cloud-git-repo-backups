@@ -228,7 +228,7 @@ Modified By   :        Date:       Changes:
         //String intelAccountPrimeIdOrUnifiedField = isUnifiedIdEnabled?'Core_Unified_Global_Customer_BP_Id__c':'Core_Prime_Id__c';
         String intelAccountPrimeIdOrUnifiedField = 'Core_Unified_Global_Customer_BP_Id__c';
         String Query = 'SELECT Id, Name,Core_MDF_CoMarketing_Ultimate_Account__c,RecordTypeId,Core_IPA_One_Partner_Id__c,Core_Intel_Partner_Alliance_PartnerGroup__c,Core_MDF_CoMarketingActive__c,'+'Core_MDF_CoMarketingAgency__c,Core_Geo__c,Core_Sub_Geo__c,IsPartner,'+
-       intelAccountPrimeIdOrUnifiedField+','+ultimateAccountPrimeIdOrUnifiedField+' FROM Account WHERE ';
+        intelAccountPrimeIdOrUnifiedField+','+ultimateAccountPrimeIdOrUnifiedField+' FROM Account WHERE ';
         if(String.isNotEmpty(whereClause) && whereClause != null){
             Query += whereClause;
         }

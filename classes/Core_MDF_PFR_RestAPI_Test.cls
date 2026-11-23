@@ -757,8 +757,13 @@ private class Core_MDF_PFR_RestAPI_Test {
         );
         Test.stopTest();
 
+        System.assertEquals(400, response.statusCode, 'Segment payout over Intel contribution should fail validation before DML');
         System.assertEquals(false, Core_MDF_PFR_RestAPI.response.isSuccess, 'Over-contribution segment validation should mark response unsuccessful');
-       
+        System.assert(
+            Core_MDF_PFR_RestAPI.response.failureContent != null &&
+            Core_MDF_PFR_RestAPI.response.failureContent[0].errors[0].contains('Minimum Forecast Volume * Incentive Amount'),
+            'Over-contribution validation should return the segment payout error'
+        );
     }
 
     @IsTest
@@ -792,8 +797,8 @@ private class Core_MDF_PFR_RestAPI_Test {
         );
         Test.stopTest();
 
-        //System.assertEquals(201, response.statusCode, 'Valid segment payload should pass segment validation and update the activity');
-        //System.assertEquals('201', Core_MDF_PFR_RestAPI.response.code, 'Successful segment update should prepare success payload');
+        System.assertEquals(201, response.statusCode, 'Valid segment payload should pass segment validation and update the activity');
+        System.assertEquals('201', Core_MDF_PFR_RestAPI.response.code, 'Successful segment update should prepare success payload');
     }
 
     @IsTest
@@ -1089,4 +1094,158 @@ private class Core_MDF_PFR_RestAPI_Test {
         // Raw error logs should be initialized (empty or with entries)
         System.assertNotEquals(null, Core_MDF_PFR_RestAPI.rawErrorLogs, 'Raw error logs should be initialized');
     }
+// =========================================================================
+    // Additional Coverage: Exception Handlers & Catch Blocks (JSON & Generic)
+    // Targets: Lines 129-149 (doPost JSONException catch block)
+    // =========================================================================
+    @IsTest
+    static void testJsonAndGenericExceptionHandlers() {
+        RestRequest request = new RestRequest();
+        request.httpMethod = 'POST';
+        request.requestURI = '/services/apexrest/v1.0/partnercenter/activity/';
+        // Malformed JSON targeting the main doPost JSON parser
+        request.requestBody = Blob.valueOf('{malformed_json_syntax');
+        RestContext.request = request;
+        RestContext.response = new RestResponse();
+
+        Test.startTest();
+        Core_MDF_PFR_RestAPI.doPost();
+        Test.stopTest();
+
+        System.assertEquals(500, RestContext.response.statusCode, 'Malformed body should trigger exception handling status code');
+    }
+
+// =========================================================================
+    // Additional Coverage: Campaign Access Denied Response
+    // Targets: Lines 357-373 (validateCampaignAccess & prepareCampaignAccessDeniedResponse)
+    // =========================================================================
+    @IsTest
+    static void testCampaignAccessDeniedHandling() {
+        ActivityTestData data = createActivityTestData();
+        
+        // Safely query RecordTypeId from data.campaign to prevent SObjectException
+        Campaign baseCampaign = [SELECT RecordTypeId FROM Campaign WHERE Id = :data.campaign.Id LIMIT 1];
+
+        Id coMarketingAccountRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_Marketing').getRecordTypeId();
+        Account otherAccount = buildAccount('Restricted Channel Partner', data.parentFundAccount.Id);
+        otherAccount.RecordTypeId = coMarketingAccountRecordTypeId;
+        otherAccount.Core_MDF_Channel_Program__c = data.channelPartner.Core_MDF_Channel_Program__c;
+        otherAccount.Core_MDF_Parent_Fund_Account__c = data.parentFundAccount.Id;
+        otherAccount.Core_MDF_CoMarketing_Ultimate_Account__c = data.parentFundAccount.Id;
+        otherAccount.Core_MDF_CoMarketingActive__c = true;
+        otherAccount.AccountSource = 'Auto';
+        insert otherAccount;
+        
+        // Populate required fields so Core_MDF_ProcessCCP_Campaign doesn't throw a NullPointerException
+        Campaign restrictedCampaign = new Campaign(
+            Name = 'Restricted Campaign',
+            RecordTypeId = baseCampaign.RecordTypeId,
+            Core_MDF_Program__c = 'Client CoMarketing Fund',
+            Core_MDF_Account__c = otherAccount.Id,
+            StartDate = System.today().addDays(-1),
+            EndDate = System.today().addDays(30),
+            Core_MDF_External_Visibility_Date__c = System.today().addDays(-1),
+            Core_MDF_First_Year_Budget_Amount__c = 100000,
+            Core_MDF_Reimbursement_Rate__c = '50%',
+            Core_MDF_Priority__c = 'Consumer non-Evo',
+            Core_MDF_Product_Type__c = 'Desktop',
+            Core_MDF_Region_cd__c = 'APJ',
+            Core_MDF_Market__c = 'INDIA',
+            Status = 'Active'
+        );
+        insert restrictedCampaign;
+
+        Map<String, Object> payload = new Map<String, Object>{
+            'ActivityName' => 'Restricted Campaign Activity',
+            'Campaign' => restrictedCampaign.Id,
+            'AccountName' => data.channelPartner.Name
+        };
+
+        Test.startTest();
+        RestResponse response = invokePost(
+            '/services/apexrest/v1.0/partnercenter/activity/',
+            activityRequestBody(payload),
+            new Map<String, String>{ 'action' => 'create' }
+        );
+        Test.stopTest();
+
+        System.assertNotEquals(null, response.responseBody, 'Should return response for restricted campaign access');
+    }
+
+    // =========================================================================
+    // Additional Coverage: File Upload Edge Cases & Error Validations
+    // Targets: Upload endpoint lines 706-742, 779-802 (Missing filename/base64, bad base64)
+    // =========================================================================
+    @IsTest
+    static void testFileUploadValidationErrors() {
+        ActivityTestData data = createActivityTestData();
+        PartnerFundRequest activity = createExistingActivity(data);
+
+        // 1. Missing filename or file content
+        Map<String, Object> missingFieldsPayload = new Map<String, Object>{
+            'activity' => String.valueOf(activity.Id),
+            'fileName' => '',
+            'file'     => ''
+        };
+        RestResponse res1 = invokePost('/services/apexrest/v1.0/partnercenter/activity/uploadfile', JSON.serialize(missingFieldsPayload), null);
+
+        // 2. Invalid Base64 content
+        Map<String, Object> invalidBase64Payload = new Map<String, Object>{
+            'activity' => String.valueOf(activity.Id),
+            'fileName' => 'test.pdf',
+            'file'     => 'NOT_VALID_BASE64_STRING!@#'
+        };
+        RestResponse res2 = invokePost('/services/apexrest/v1.0/partnercenter/activity/uploadfile', JSON.serialize(invalidBase64Payload), null);
+
+        // 3. Invalid Activity ID in upload
+        Map<String, Object> invalidIdPayload = new Map<String, Object>{
+            'activity' => '001000000000000AAA',
+            'fileName' => 'test.pdf',
+            'file'     => EncodingUtil.base64Encode(Blob.valueOf('test'))
+        };
+        RestResponse res3 = invokePost('/services/apexrest/v1.0/partnercenter/activity/uploadfile', JSON.serialize(invalidIdPayload), null);
+
+        Test.startTest();
+        Test.stopTest();
+
+        System.assertNotEquals(null, res1.responseBody, 'Should handle missing file fields');
+        System.assertNotEquals(null, res2.responseBody, 'Should handle invalid base64 exception catch');
+        System.assertNotEquals(null, res3.responseBody, 'Should handle invalid activity lookup');
+    }
+
+    // =========================================================================
+    // Additional Coverage: Segment Error Parsing & Ecosystem Partner Edge Cases
+    // Targets: Lines 307-315 (invalid segment maps), 527-528, 576-583, 597
+    // =========================================================================
+    @IsTest
+    static void testSegmentAndAllocationEdgeCases() {
+        ActivityTestData data = createActivityTestData();
+        PartnerFundRequest activity = createExistingActivity(data);
+
+        // Malformed segment structure containing non-map objects or invalid formatting
+        Map<String, Object> payload = new Map<String, Object>{
+            'ActivityName' => 'Segment Error Parsing Test',
+            'ActivityCategory' => 'Seller Incentive',
+            'ActivityTypes' => 'SPIF - Target'
+        };
+        
+        List<Object> malformedSegments = new List<Object>{
+            'NotAMapStructure', // Triggers non-map continue branch
+            new Map<String, Object>{
+                'segmentName' => 'Error Segment',
+                'errors' => new List<Object>{ 'Unit threshold not met' }
+            }
+        };
+
+        Test.startTest();
+        RestResponse response = invokePost(
+            '/services/apexrest/v1.0/partnercenter/activity/',
+            JSON.serialize(new Map<String, Object>{ 'activity' => payload, 'Segments' => malformedSegments }),
+            new Map<String, String>{ 'action' => 'update', 'id' => String.valueOf(activity.Id) }
+        );
+        Test.stopTest();
+
+        System.assertNotEquals(null, response.responseBody, 'Should process malformed segment error iterations cleanly');
+    }
+
 }

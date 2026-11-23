@@ -31,6 +31,7 @@ public class Core_MergeContactHandler {
             
             List<Core_Contact_Entitlement__c > tobeDeletedCE=new List<Core_Contact_Entitlement__c>();
             List<Core_Contact_Entitlement__c > tobeupdateCE=new List<Core_Contact_Entitlement__c>();
+            //Set<ID> PRM_deletedContact = new Set<Id>();
             Set<ID> deletedContact=Trigger.oldMap.keySet();
             deletedContactIds.addAll(deletedContact);
             List<ID> masterIds=new List<ID>();
@@ -38,6 +39,7 @@ public class Core_MergeContactHandler {
             for(Contact contactObj:contactObjList){
                 if(Trigger.isdelete){
                     mergeContact = true;
+                    //PRM_deletedContact=Trigger.oldMap.keySet();
                     PRM_deletedContactIds.add(contactObj.Id);
                 } else if(Trigger.isupdate && mergeContact){
                     masterIds.add(contactObj.Id);

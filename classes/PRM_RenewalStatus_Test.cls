@@ -8,7 +8,7 @@ public class PRM_RenewalStatus_Test {
 
        
         PMP_Dashboard_Tab__mdt dash=[select PRM_Partner_Role_Txt__c,PRM_Entitlement_Txt__c,PMP_Benefit_Code_Txt__c from PMP_Dashboard_Tab__mdt limit 1];
-        dash.PRM_Partner_Role_Txt__c='Seller';
+        dash.PRM_Partner_Role_Txt__c='Guest';
         dash.PRM_Entitlement_Txt__c='Employee';
         dash.PMP_Benefit_Code_Txt__c='Gold';
         
@@ -40,7 +40,7 @@ public class PRM_RenewalStatus_Test {
         newAccount.BillingState='';
         //newAccount.Core_IPA_Partner_Role__c='Distributor';
         newAccount.Core_IPA_Partner_Role__c='Guest';
-        newAccount.Core_IPA_Badge_Tier__c='member';
+        newAccount.Core_IPA_Badge_Tier__c='Partner';
         newAccount.Core_Account_Type__c='Intel Authorized Distributor (IAD);Intel Approved Device Supplier (IADS)';
         newAccount.Core_OnePartnerID__c=newPagAccount.Id;
         newAccount.Core_User_Defined_Website__c = 'abz.yz';
@@ -92,7 +92,7 @@ public class PRM_RenewalStatus_Test {
         //con2.Phone='9999779791';
         con2.AccountId = newAccount.Id;
         con2.Core_Job_Function__c='Branch Manager';
-        con2.Core_IPA_PartnerRole__c = 'Seller';
+        con2.Core_IPA_PartnerRole__c = 'Guest';
         con2.Core_eRPM_Language_Code__c='Eng';        
         con2.Core_Login_Id__c = 'tuv';
         insert con2;
@@ -132,7 +132,8 @@ public class PRM_RenewalStatus_Test {
             acm.PRM_Channel_Program_Id__c=cp.id;
             acm.PRM_Status_Nm__c='Approved';
         	acm.PRM_Channel_Program_Level_Id__c = cpl2.id;
-            acm.PRM_Partner_Role__c='Seller';
+            acm.PRM_Partner_Role__c='Guest';
+        	acm.PRM_Status_Reason_Txt__c='Test01';
             insert acm;
         
         	PRM_AccountChannelMembership__c acm1=new PRM_AccountChannelMembership__c();
@@ -140,7 +141,8 @@ public class PRM_RenewalStatus_Test {
             acm1.PRM_Channel_Program_Id__c=cp.id;
             acm1.PRM_Status_Nm__c='Approved';
         	acm1.PRM_Channel_Program_Level_Id__c = cpl.id;
-            acm1.PRM_Partner_Role__c='Seller';
+            acm1.PRM_Status_Reason_Txt__c='Test02';
+            acm1.PRM_Partner_Role__c='Guest';
             insert acm1;
         	
         	PRM_ContactRelationships__c contRelation = new PRM_ContactRelationships__c();   //Contact Relationship
@@ -156,6 +158,7 @@ public class PRM_RenewalStatus_Test {
             acctContRel.PRM_Relationship_Id__c=contRelation.Id;
             acctContRel.PRM_InActive_Ind__c=false;
             acctContRel.PRM_Status_Nm__c = 'Complete';
+        	acctContRel.PRM_Status_Reason_Txt__c='Test05';
             insert acctContRel;
             acctContRel.PRM_Status_Nm__c = 'Complete';
 			update acctContRel;
@@ -173,6 +176,7 @@ public class PRM_RenewalStatus_Test {
                     acm2.PRM_Status_Nm__c='Approved';
                     acm2.PRM_Channel_Program_Level_Id__c = null;
                     acm2.PRM_Partner_Role__c=null;
+                    acm2.PRM_Status_Reason_Txt__c='Test03';
                     insert acm2;
                     system.assert(e.getMessage().containsIgnoreCase('false'));
                 }   

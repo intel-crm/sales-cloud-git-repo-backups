@@ -264,7 +264,7 @@
     </fields>
     <fields>
         <fullName>Sales_Contact__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <deleteConstraint>Restrict</deleteConstraint>
         <label>Primary Admin</label>
         <referenceTo>Contact</referenceTo>
         <relationshipLabel>Host Information</relationshipLabel>
@@ -437,6 +437,7 @@
         <columns>Sales_Companion_Server2_Txt__c</columns>
         <columns>Sales_Redundant_Server1_Txt__c</columns>
         <columns>Sales_Redundant_Server2_Txt__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
@@ -459,7 +460,6 @@
     <recordTypes>
         <fullName>Sales_NewHost</fullName>
         <active>true</active>
-        <compactLayoutAssignment>Compact_Layout_for_Lightning</compactLayoutAssignment>
         <label>New Host</label>
         <picklistValues>
             <picklist>Sales_Computer_Type__c</picklist>
@@ -564,6 +564,7 @@ NOT(ISCHANGED( Sales_Primary_Admin_Name__c ))
         <active>true</active>
         <description>This validation rule is created to restrict User in creating Host record from New Button at Lookup field.</description>
         <errorConditionFormula>AND(ISNEW(),NOT(Sales_Host_Is_Created_From_Custom_Page__c),NOT(ISCLONE()))</errorConditionFormula>
+        <errorDisplayField>Sales_Account__c</errorDisplayField>
         <errorMessage>You are not authorized to add a New Host from this screen.</errorMessage>
     </validationRules>
     <validationRules>

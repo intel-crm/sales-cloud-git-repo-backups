@@ -24,7 +24,7 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
     Map<Id, Set<Id>> actIdCtIdMap = new Map<Id, Set<Id>>();
     public Map<Id, String> contactIdRelName = new Map<id, String>();    
     Map<Id, String> actIdRoleTierMap = new Map<Id, String>();
-    map<Id,String> tierIdNames = new Map<Id,String>();    
+    Map<Id,String> tierIdNames = new Map<Id,String>();    
     Map<Id,List<String>> newPartnerRoleMap = new Map<Id, List<String>>();
     List<Core_Contact_Entitlement__c> lstCEEntitlement = new List<Core_Contact_Entitlement__c>();
     public static Map<Id, List<String>> mapConIdtoCommunityName = new Map<Id, List<String>>();
@@ -38,7 +38,7 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
         return lstCEEntitlement;
     }
     
-    public void createEntitlementBasedOnAccountRoleTier(Map<Id, String> actIdRoleTierMap,map<Id,String> tierIdNames,Map<Id, Set<Id>> actIdCtIdMap){   
+    public void createEntitlementBasedOnAccountRoleTier(Map<Id, String> actIdRoleTierMap,Map<Id,String> tierIdNames,Map<Id, Set<Id>> actIdCtIdMap){   
         entitlementMatrixRecordsWrapper entMatWrap = getEntitlementMatrixRecords();//benefitIdVxEntListMap     - partnerRoleTierVxEntListMap    
         Map<id, Set<PRM_VXEnttlmntMatrix__c>> accountIdEntitlementIdMap = new Map<Id, Set<PRM_VXEnttlmntMatrix__c>>();        
         
@@ -123,11 +123,11 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
             uniqueIdLst.add(ce1.Core_Unique_Id__c);
         }       */ 
         Map<Id,Map<Id,Core_Contact_Entitlement__c>> contactEntitlementMp = getContactEntitlements(contactIds);
-        System.debug('contactEntitlementMp -->'+contactEntitlementMp);
+        
         Map<Id, Map<Id,Core_Contact_Entitlement__c>> finalContactEntilementMap = new Map<Id, Map<Id,Core_Contact_Entitlement__c>>();
         Map<Id, Set<PRM_VXEnttlmntMatrix__c>> contactIdEntitlementSetMap = new Map<Id, Set<PRM_VXEnttlmntMatrix__c>>();
         entitlementMatrixRecordsWrapper entMatWrap = getEntitlementMatrixRecords(); 
-        System.debug('entMatWrap>>>> '+entMatWrap.communityVxEntListMap);
+        
 
         Map<Id, Set<PRM_VXEnttlmntMatrix__c>> mapConIdtoEntMatrix = createEntitlementCommunity(entMatWrap.communityVxEntListMap,contactIds);
         for(Id accountId : accountIdEntitlementIdMap.keySet()){
@@ -165,6 +165,7 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
                 system.debug('already exis set#'+uniqConEnt);
                  /subhadeep new chnage END*/
                 Map<Id,Core_Contact_Entitlement__c> ceMap = new Map<Id,Core_Contact_Entitlement__c>();       
+                
                 if(contactIdEntitlementSetMap.get(contactId) != null){
                     for(PRM_VXEnttlmntMatrix__c vxent : contactIdEntitlementSetMap.get(contactId)){                        
                         Core_Contact_Entitlement__c ce;                        
@@ -197,7 +198,7 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
              }
         }
         
-        System.debug('Before inactive finalContactEntilementMap -->\n'+finalContactEntilementMap);
+        
         
         // inactive entitlements which are not required for role/tier
         for(Id contactId : contactEntitlementMp.keySet()){
@@ -227,7 +228,7 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
             }
         }
         
-        System.debug('finalContactEntilementMap -->\n'+finalContactEntilementMap);
+        
         
         List<SObject> recordsToLoad = new List<SObject>();
         Set<Core_Contact_Entitlement__c> recordsSetToLoad = new Set<Core_Contact_Entitlement__c>();//Subhadeep change new
@@ -238,16 +239,12 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
         }
         //recordsToLoad.addAll(recordsSetToLoad);//Subhadeep change new
         Set<Core_Contact_Entitlement__c> uniqConEntlSet = new Set<Core_Contact_Entitlement__c>();
-        system.debug('org data--->'+conEntOrgDataSet);
         for(Core_Contact_Entitlement__c distConEntl :conEntOrgDataSet){
             for(Core_Contact_Entitlement__c setContEntRec :recordsSetToLoad){
                 if(distConEntl.Core_Contact_Id__c+''+distConEntl.Core_Entitlement_Id__c+''+distConEntl.Core_Selected__c != setContEntRec.Core_Contact_Id__c+''+setContEntRec.Core_Entitlement_Id__c+''+setContEntRec.Core_Selected__c)
                     uniqConEntlSet.add(setContEntRec);
             }
         }
-        system.debug(uniqConEntlSet);
-        system.debug('recordsToLoad Set -->'+recordsSetToLoad);
-        System.debug('recordsToLoad -->'+recordsToLoad);
         //lstCEEntitlement = recordsToLoad;  //Subhadeep change new
         lstCEEntitlement = new List <Core_Contact_Entitlement__c>(uniqConEntlSet);
              
@@ -266,7 +263,7 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
                 cntEntlmntIdSetMap.put(ctEntlmntRecord.Core_Contact_Id__c,new Map<Id,Core_Contact_Entitlement__c>{ctEntlmntRecord.Core_Entitlement_Id__c=>ctEntlmntRecord});
             }                
         }
-        system.debug('cntEntlmntIdSetMap--->'+cntEntlmntIdSetMap);
+       
         return cntEntlmntIdSetMap;
     }
     
@@ -292,7 +289,6 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
             }            
         }
         actIdEntIdMp.put(accountId,vxEntRecords);
-        system.debug('actIdEntIdMp without benefit--->'+actIdEntIdMp);
         return actIdEntIdMp;
     }
     
@@ -305,8 +301,7 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
             }
         }
         actIdEntIdMp.put(accountId, vxMat);
-         system.debug('actIdEntIdMp with benefit--->'+actIdEntIdMp);
-        return actIdEntIdMp;
+	return actIdEntIdMp;
     }
 
      /**
@@ -328,11 +323,9 @@ public with sharing class PRM_ACMUpdateAssignEntitlment{
                         }
                     }
                 }
-            }
-            System.debug('commentitlementMap--> '+commentitlementMap);           
+            }         
         }catch (Exception ex) {
             String exceptionMessage = ex.getTypeName() + ': ' + ex.getMessage() + ', ' + ex.getStackTraceString();
-            System.debug('##### Exception: ' + exceptionMessage);
             Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, '', LOG_ENTRY_ERROR,
                                                  'Error', '', '', LOG_ENTRY_OBJECT, '', ex);
         }

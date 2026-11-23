@@ -1,7 +1,7 @@
 @isTest
 public class ER_ProcessAutoApprovedRecordsUtilityTest {
     
-    static testMethod void ABTValidationRuleException() 
+    static testMethod void ABTValidationRuleException()
     {
         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
@@ -75,7 +75,8 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         ER_ProcessAutoApprovedRecordsUtility.AssignABTandCBT(event);
         
         List<PRM_Registration_Request__c> regreq1 = [select Id,Current_Status__c, PRM_Review_Note_txt__c from PRM_Registration_Request__c where PRM_Email_ID__c = 'test1234@testing.com.testsetup'];
-        //System.assertEquals('Open', regreq1[0].Current_Status__c);
+        
+        System.assertEquals('Open', regreq1[0].Current_Status__c);
         Test.stopTest();
         
     }
@@ -143,22 +144,17 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         evn.ContactId__c = regRequest.PRM_Contact_Salesforce_Id__c;
         evn.EntitlementId__c = regRequest.Entitlement_Details__c;
         event.add(evn);
-        
-       
         List<Database.SaveResult> results = EventBus.publish(event);
         
         
-        
         List<PRM_Registration_Request__c> regreq1 = [select Id,Current_Status__c from PRM_Registration_Request__c where PRM_Email_ID__c = 'test1234@testing.com.testsetup'];
-        //System.assertEquals('Open', regreq1[0].Current_Status__c);
+        System.assertEquals('Open', regreq1[0].Current_Status__c);
         Test.stopTest();
-        
     }
     
     static testMethod void UpdateSuccessRegReq()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId,
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                           /*Core_Account_Type__c='Other', // BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
@@ -229,30 +225,25 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         regRequest.RecordTypeId = accCreateRequestId;
         Test.startTest();
         insert regRequest;
-       
         Test.stopTest();
         
-       
-        
         List<PRM_Registration_Request__c> regreq1 = [select Id,Current_Status__c,PRM_Contact_Salesforce_Id__c from PRM_Registration_Request__c where PRM_Email_ID__c = 'test1234@testing.com.testsetup'];
-        //System.assertEquals(regreq1[0].Current_Status__c, 'Open');
+       // System.assertEquals(regreq1[0].Current_Status__c, 'Auto-Approval Pending');
         
         List<Contact_Business_Types__c> cbts = [SELECT Id,Contact__r.Email,Status__c FROM Contact_Business_Types__c WHERE Status__c = 'Approval - Pending' AND Contact__c =: testContact.Id];
-        //System.assertEquals(cbts.size(),0);
-        if(!cbts.isEmpty())
-        {
-        cbts[0].Status__c = 'Approved';
-        //update cbts[0];
-        }
+        //System.assertEquals(cbts.size(),1);
         
+        //cbts[0].Status__c = 'Approved';
+        //update cbts[0];
         
         List<Contact_Business_Types__c> cbts1 = [SELECT Id,Contact__r.Email,Status__c FROM Contact_Business_Types__c WHERE Status__c = 'Approved' AND Contact__c =: testContact.Id];
-        //System.assertEquals(cbts1.size(),0);
+        //System.assertEquals(cbts1.size(),1);
     }
     
     static testMethod void ExceptionMethod()
     {
-         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                          /* Core_Account_Type__c='Other',// BizOrgType code removal*/ Industry='Others',Core_English_Only_Name__c = 'exception',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
@@ -324,11 +315,10 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         ER_ProcessAutoApprovedRecordsUtility.AssignABTandCBT(event);
         
         List<PRM_Registration_Request__c> regreq1 = [select Id,Current_Status__c, PRM_Review_Note_txt__c from PRM_Registration_Request__c where PRM_Email_ID__c = 'test1234@testing.com.testsetup'];
-      
-        //System.assertEquals('Open', regreq1[0].Current_Status__c);
+        
+        //System.assertEquals('Auto-Approval Pending', regreq1[0].Current_Status__c);
         Test.stopTest();
         
-     
     }
     
 }

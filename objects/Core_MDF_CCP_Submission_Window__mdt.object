@@ -1181,6 +1181,11 @@
                     <default>false</default>
                     <label>PRC</label>
                 </value>
+                <value>
+                    <fullName>INDIA</fullName>
+                    <default>false</default>
+                    <label>INDIA</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1305,6 +1310,27 @@
         </valueSet>
     </fields>
     <label>CCP Submission Window</label>
+    <listViews>
+        <fullName>All_Columns</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Core_MDF_Program__c</columns>
+        <columns>Core_MDF_Activity_Auto_Closure_SLA__c</columns>
+        <columns>Core_MDF_Activity_Auto_Closure_Rule__c</columns>
+        <columns>Core_MDF_Geo__c</columns>
+        <columns>Core_MDF_Sub_Geo__c</columns>
+        <columns>Core_MDF_Quarter__c</columns>
+        <columns>DeveloperName</columns>
+        <columns>Core_MDF_Budget_Type__c</columns>
+        <columns>Core_MDF_Case_SLA__c</columns>
+        <columns>Core_MDF_Claim_Submission_Window_days__c</columns>
+        <columns>Core_MDF_Claim_Submission_Window_mnth__c</columns>
+        <columns>Core_MDF_Country__c</columns>
+        <columns>Core_MDF_Doc_Submission_Rule__c</columns>
+        <columns>Core_MDF_Doc_Submission_Window__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Columns</label>
+        <language>en_US</language>
+    </listViews>
     <listViews>
         <fullName>All_Fields</fullName>
         <columns>MasterLabel</columns>

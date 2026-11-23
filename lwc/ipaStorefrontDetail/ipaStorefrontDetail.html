@@ -30,7 +30,11 @@
       <div class={classes.companyInfo}>
         <h2 class="h5 text-normal slds-p-bottom_x-small slds-m-bottom_x-small">{labels.companyInformation}</h2>
         <div class="company-link">
-          <c-ipa-link external-url={data.companyInfo.websiteUrl} label={companyWebsiteLabel} analytics-page={labels.pageName} class-name="link-text"></c-ipa-link>
+          <c-ipa-link external-url={websiteUrl} 
+          label={websiteLabel} 
+          analytics-page={labels.pageName} 
+          class-name="link-text">
+        </c-ipa-link>
         </div>
 
         <c-core-intc-text-block 
@@ -40,8 +44,8 @@
               size={companyInfoTextBlockSize}
               onscrolltextblock={handleScrollTextBlock}
               scroll-to-top='custom'>
-          <p slot='intro'>{data.companyInfo.descriptionShort}</p>
-          <p>{data.companyInfo.description}</p>
+          <p slot='intro'>{descriptionShort}</p>
+          <p>{description}</p>
 
           <template for:each={data.partnerAttributes} for:item="partnerAttribute">
             <section class="sidebar-section" key={partnerAttribute.title}>

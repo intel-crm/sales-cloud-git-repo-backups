@@ -13,11 +13,15 @@
         <name>Evevt_Type__c</name>
     </fields>
     <fields>
-        <label><!-- LicenseId --></label>
-        <name>LicenseId__c</name>
+        <label><!-- Generation Request Month --></label>
+        <name>Generation_Request_Month__c</name>
     </fields>
     <fields>
-        <label>License ID</label>
+        <label><!-- Generation Request Quarter --></label>
+        <name>Generation_Request_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Id --></label>
         <name>License_Id__c</name>
     </fields>
     <fields>

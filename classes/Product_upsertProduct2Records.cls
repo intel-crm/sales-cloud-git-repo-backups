@@ -83,9 +83,11 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
                     productToUpsert.Core_IQR_Visible__c =  stgRec.Core_Is_IQR_Visible__c ;
                     productToUpsert.Core_External_Source_Name__c = Product_Staging_StaticConstants.SourceName;
                     productToUpsert.Core_Item_Standard_Cost_Amt__c = Product_Staging_StaticConstants.StandardCost;
+                  	//Ganesh Start
                     if (Product_Utility.isProductDeprecationDateEnabled() && stgRec.Level__c == '5'&& stgRec.Deactivation_Date__c != null) {
                         productToUpsert.Deactivation_Date__c = stgRec.Deactivation_Date__c;
                     }
+                    //Ganesh End
                     productsToUpsertList.add(productToUpsert); 
                     
                 }
@@ -112,35 +114,73 @@ global with sharing class Product_upsertProduct2Records  implements Database.Bat
         return VPHCondition;
     }
     
-    public Product2 mappingVPHFields(Core_Products_Staging__c stgRec, Map<String, String> fieldMappingTable,Map<String, String> stgToProd_fieldMappingTableL4Only,Map<String, String> stgToProd_fieldMappingTableMMID) {
-        Product2 productToUpsert = new Product2();
-        for (String field : fieldMappingTable.keySet()) {
-            if ((stgToProd_fieldMappingTableL4Only.keyset().contains(field) && !statusCodeFilter.contains(String.valueOf(stgRec.get('Status_Code__c'))))
-                || (stgToProd_fieldMappingTableMMID.keyset().contains(field) && stgRec.Is_MMID_Blank__c == true)
-                || (retainOldValues.contains(field) && String.isBlank(String.valueOf(stgRec.get(fieldMappingTable.get(field)))))){
-                    continue;
-                } 
-            else {
-                productToUpsert.put(field, stgRec.get(fieldMappingTable.get(field)));
-            }
+public Product2 mappingVPHFields(
+    Core_Products_Staging__c stgRec,
+    Map<String, String> fieldMappingTable,
+    Map<String, String> stgToProd_fieldMappingTableL4Only,
+    Map<String, String> stgToProd_fieldMappingTableMMID
+) {
+    Product2 productToUpsert = new Product2();
+
+    for (String field : fieldMappingTable.keySet()) {
+        if (
+            (
+                stgToProd_fieldMappingTableL4Only
+                    .keySet()
+                    .contains(field)
+                && !statusCodeFilter.contains(
+                    String.valueOf(
+                        stgRec.get('Status_Code__c')
+                    )
+                )
+            )
+            || (
+                stgToProd_fieldMappingTableMMID
+                    .keySet()
+                    .contains(field)
+                && stgRec.Is_MMID_Blank__c == true
+            )
+            || (
+                retainOldValues.contains(field)
+                && String.isBlank(
+                    String.valueOf(
+                        stgRec.get(
+                            fieldMappingTable.get(field)
+                        )
+                    )
+                )
+            )
+        ) {
+            continue;
+        } else {
+            productToUpsert.put(
+                field,
+                stgRec.get(
+                    fieldMappingTable.get(field)
+                )
+            );
         }
-        
+    }
+    //Ganesh Start
     if (Product_Utility.isProductDeprecationDateEnabled() && stgRec.Level__c == '5' && stgRec.Deactivation_Date__c != null) {
         productToUpsert.Deactivation_Date__c = stgRec.Deactivation_Date__c;
     }
-    
-        productToUpsert.Core_External_Source_Name__c = Product_Staging_StaticConstants.SourceName;
-        productToUpsert.Core_Item_Standard_Cost_Amt__c = Product_Staging_StaticConstants.StandardCost;
-        return productToUpsert;
-    }
-    
+    //Ganesh End
+    productToUpsert.Core_External_Source_Name__c =
+        Product_Staging_StaticConstants.SourceName;
+
+    productToUpsert.Core_Item_Standard_Cost_Amt__c =
+        Product_Staging_StaticConstants.StandardCost;
+
+    return productToUpsert;
+}
     public boolean isVPLCHRecord(Core_Products_Staging__c stgRec) {
         Boolean VPLCHCondition=false;
         if(stgRec.Core_Unique_ID__c != null && (stgRec.Core_Product_Org__c == Product_Staging_StaticConstants.sales || (stgRec.Core_Product_Org__c == Product_Staging_StaticConstants.ips && !vplchIpsFilter.contains(stgRec.Core_Unique_ID__c) ) ) && stgRec.Core_Hierarchy_ID__c == '59'){
             VPLCHCondition= true;
             
         }
-        return VPLCHCondition; 
+        return VPLCHCondition;
     }
     
     public void upsertProduct2FPHRecords(List<Product2> productsToUpsertList,List<Core_Flat_Product_Hierarchy__c> fphToUpsertList) {

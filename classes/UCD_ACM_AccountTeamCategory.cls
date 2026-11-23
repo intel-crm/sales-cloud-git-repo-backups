@@ -12,11 +12,8 @@ public without sharing class UCD_ACM_AccountTeamCategory {
             return  finalValues;
         }
 
-        if (Schema.sObjectType.Account.fields.Name.isAccessible() &&
-        Schema.sObjectType.Account.fields.Core_Account_Category__c.isAccessible()){
-            lstAccount = [Select id,name,Core_Account_Category__c,(select id,Account.Name,Core_Account_Category__c from AccountTeamMembers  where AccountId =:accountId) from Account where id =:accountId AND recordtypeID =:intelRecordTypeId  AND Core_Account_Category__c != null AND OwnerId !=: unCoveredOwnerId ];
+            lstAccount = [Select id,name,Core_Account_Category__c,(select id,Account.Name,Core_Account_Category__c from AccountTeamMembers  where AccountId =:accountId) from Account where id =:accountId AND recordtypeID =:intelRecordTypeId  AND Core_Account_Category__c != null AND OwnerId !=: unCoveredOwnerId WITH SECURITY_ENFORCED];
 
-        }
 
 
         for(Account accounts:lstAccount){

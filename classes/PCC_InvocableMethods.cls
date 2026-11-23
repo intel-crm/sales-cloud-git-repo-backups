@@ -16,14 +16,14 @@ public with sharing class PCC_InvocableMethods {
     @InvocableMethod(label='Deal Approval Process Actions' description='Approval Process actions' category='PCC')
     public static void approvalProcessActions(list<approvalWrapper> approvalParam){
         String recordId = approvalParam[0].regId; // Pass the Record id
-        ProcessInstanceWorkitem[] Pval = [SELECT Id FROM ProcessInstanceWorkItem WHERE ProcessInstance.TargetObjectId = :recordId AND ProcessInstance.Status = 'Pending'];        
-        Approval.ProcessWorkItemRequest Preq= new Approval.ProcessWorkItemRequest();
-        Preq.setAction(approvalParam[0].action);
-        Preq.setComments(approvalParam[0].comments);
-      if(Pval.size() > 0){   
-         Preq.setWorkItemId(Pval[0].Id);
-         Approval.ProcessResult result = Approval.process(Preq);
-        }
+        ProcessInstanceWorkitem[] Pval = [SELECT Id FROM ProcessInstanceWorkItem WHERE ProcessInstance.TargetObjectId = :recordId AND ProcessInstance.Status = 'Pending']; 
+        if(Pval.size() > 0){   
+            Approval.ProcessWorkItemRequest Preq= new Approval.ProcessWorkItemRequest();
+            Preq.setAction(approvalParam[0].action);
+            Preq.setComments(approvalParam[0].comments);
+            Preq.setWorkItemId(Pval[0].Id);
+            Approval.ProcessResult result = Approval.process(Preq);
+           }
     }
     /******************************************************************************************************************
     *Method Name : isAuthorizedUser

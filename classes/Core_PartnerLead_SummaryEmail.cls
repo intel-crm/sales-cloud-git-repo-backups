@@ -28,7 +28,6 @@ global class Core_PartnerLead_SummaryEmail implements Database.Batchable<sObject
     }
     global Database.QueryLocator start(Database.BatchableContext BC){
         String partnerRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
-        //String testPAGid='0013b00001phGiUAAU';
         String query = 'select id, Name from Account where recordtypeId =: partnerRecTypeId';
         return Database.getQueryLocator(query);
     }

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>CUST_CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Last_Update_Date__c</field>
     </columns>
     <columns>
@@ -14,9 +11,6 @@
     </columns>
     <columns>
         <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Add_Date__c</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE_BY</field>
     </columns>
     <columns>
         <field>CUST_LAST_UPDATE</field>
@@ -68,7 +62,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>CUST_CREATED_DATE</column>
+            <column>Core_Opportunity_KPI__c.Core_Opp_KPI_Last_Update_Date__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

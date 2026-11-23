@@ -1,0 +1,312 @@
+<aura:component controller="EPUM_SearchContact" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"  access='global' >   
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="currentRec" type="String" />
+    <aura:attribute name="rowSelected" type="boolean" default="false" description="Make it true once a row is selected"/>
+    <aura:attribute name="partnerRole" type="String" />
+    
+    <!--Pagination related-->
+    <aura:attribute name="startPage" type="Integer" />
+    <aura:attribute name="endPage" type="Integer"/>
+    <aura:attribute name="totalRecords" type="Integer"/>
+    <aura:attribute name="pageSize" type="Integer" default="10"/>
+    <aura:attribute name="PaginationListrows" type="Object"/>
+    
+    <!-- CREATE ATTRIBUTE/VARIABLE-->
+    <aura:attribute name="searchResult" type="List" description="use for store and display contact list return from server"/>
+    <aura:attribute name="searchKeyword" type="String" description="use for store user search input"/>
+    <aura:attribute name="Message" type="boolean" default="false" description="use for display no record found message"/>
+    <aura:attribute name="TotalNumberOfRecord" type="integer" default="0" description="use for display Number of records"/>
+    <aura:attribute name="OPIDExists" type="boolean" default="false" description="Contact in OPID"/>
+    <aura:attribute name="messageText" type="String" description="Displays error message."/>
+    <aura:attribute name="createNew" type="boolean" default="false" description="Create New Contact"/>
+    
+    <aura:attribute name="accountId" type="String" description="stores loggedin user Intel Account Id"/>
+    <aura:attribute name="onePartnerId" type="String" description="stores loggedin user one Partner Account Id"/>
+    <aura:attribute name="isSearchResult" type="Boolean" default="false" />
+    <aura:handler event="c:EPUM_Contact_Entitlement_Event" action="{!c.validateComponent}"  />
+    
+    <aura:attribute name="showModal" type="Boolean" default="false" />
+    <div class="slds-m-around_small">
+        <!-- start of PAGE HEADER -->
+        <lightning:layout class="slds-page-header slds-page-header--object-home" horizontalAlign="spread" >
+            
+            <lightning:layoutItem padding="horizontal-medium">
+                
+                <!--lightning:icon iconName="standard:people" alternativeText="Contacts"/-->
+                <div class="page-section page-header">
+                    
+                    <div class="slds-text-heading_large">
+                        Contact Roles and Responsibilities
+                    </div>
+                    <div class="slds-text-heading_medium slds-m-top_xx-small">
+                        Partner Role - {!v.partnerRole}
+                    </div>
+                    <!--b><h3 class="slds-text-heading">Contact Roles and Responsibilities</h3></b>
+                    <b><h6 class="slds-text-heading slds-m-top_x-small">Partner Role - {!v.partnerRole}</h6></b-->
+                </div>  
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem padding="horizontal-large">
+                
+                <div class="slds-form-element">
+                    <!--button type="button" onclick="{!c.createNew}" class="slds-button slds-button__brand">New</button>
+                <button type="button" onclick="{!c.searchShow}" class="slds-button slds-button__brand">Search</button-->
+                </div>
+                
+            </lightning:layoutItem>
+            
+        </lightning:layout>
+        <!-- end of PAGE HEADER -->
+        
+        <lightning:card title="">
+            
+            
+            <div class="slds-m-around--large">
+                <form class="slds-form--inline">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="search"></label>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="searchField" size="50" class="slds-input" value="{!v.searchKeyword}" required="true" placeholder="Search by email..."/>
+                        </div>
+                    </div>
+                    
+                    <lightning:button variant="brand" label="Search Contact" title="Search Contact" onclick="{! c.Search }" />
+                    <lightning:button label="Clear Search" title="Clear Search" onclick="{! c.doInit }"/>
+                </form>
+                <br/>
+                
+                <aura:if isTrue="{!v.Message}">
+                    <div class="slds-text-color--error noResultFoundSec"> {!v.messageText}&nbsp;&nbsp; 
+                        <aura:if isTrue="{!v.createNew}">
+                            <lightning:button 
+                            		label="Invite a User" 
+                                	iconName="utility:add" 
+                                	iconPosition="left" 
+                                	variant="brand" 
+                                	onclick="{!c.showModal}"/>
+                        </aura:if>
+                    </div>
+                </aura:if>
+                <br/>
+                
+                <aura:if isTrue="{! !v.Message}">
+                    <div class="slds-scrollable_x" >
+                        <table class="slds-table  slds-table--cell-buffer ">
+                            <thead>
+                                <tr class="slds-text-title--caps">
+                                    <th scope="col" class="slds-col slds-size_1-of-12 ">
+                                        <div class="slds-truncate" title="Radio">SELECT</div>
+                                    </th>
+                                    <th scope="col" class="slds-col slds-size_2-of-12 ">
+                                        <div class="slds-truncate" title="Id">NAME</div>
+                                    </th>
+                                    <th scope="col" class="slds-col slds-size_2-of-12 ">
+                                        <div class="slds-truncate" title="Email">EMAIL ID</div>
+                                    </th>
+                                    <th scope="col" class="slds-col slds-size_2-of-12 ">
+                                        <div class="slds-truncate" title="Last Name">PHONE</div>
+                                    </th>
+                                    <th scope="col" class="slds-col slds-size_4-of-12 ">
+                                        <div class="slds-truncate" title="Phone">ROLE ASSIGNED</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <!--### display all records of searchResult attribute by aura:iteration ###-->
+                                <aura:iteration items="{!v.PaginationListrows}" var="staff">
+                                  <!--aura:iteration items="{!v.searchResult}" var="staff"-->
+                                    
+                                    <tr class="slds-hint-parent" >
+                        						
+                                                <th scope="col">  
+                                                    		<div class="radio" data-myid="{!staff.Id}" onclick="{!c.showRow }">
+                                                        		<label><input type="radio" id='regular' name="optradio"/>
+                                                        		</label>
+                                                    		</div>
+                 									
+                                               	   </th>
+                                                
+                                                <!-- for primary contacts-->
+                                               <aura:if isTrue = "{!or(staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c == 'PRIMARY',staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c == 'PRIMCONTDEL')}">
+														<th scope="col">  
+                                                            <b><div title="{!staff.Name}">{!staff.Name} </div></b>
+                                                		</th>
+                                                		<th scope="col">  
+                                                   
+                                                            <b><div title="{!staff.Email}">{!staff.Email} </div></b>
+                                                		</th>
+                                                		<th scope="col">  
+                                                            <b><div title="{!staff.Phone}">{!staff.Phone}</div></b>
+                                                		</th>
+                                                		<th scope="col">
+                                                            <b>{!staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.Name}</b>
+                                                    
+                                            			</th>                                                	
+                                            	</aura:if>
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                <!-- works for contacts-->
+                                               <aura:if isTrue = "{!staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c == 'WORKSFOR'}">
+                                                
+                                                    <th scope="col">  
+                                                    	<div title="{!staff.Name}">{!staff.Name} </div>
+                                               	 	</th>
+                                                	<th scope="col">  
+                                                    	<div title="{!staff.Email}">{!staff.Email} </div>
+                                                	</th>
+                                                	<th scope="col">  
+                                                    	<div title="{!staff.Phone}">{!staff.Phone}</div>
+                                                	</th>
+                                                	<th scope="col">
+                                                        <!--hellll  {!staff.Contact_Entitlements__r.length}-->
+                                                    	<aura:if isTrue="{!staff.Contact_Entitlements__r}">
+                                                        	<aura:iteration items ="{!staff.Contact_Entitlements__r}" var ="conEnt" indexVar="index">
+                                                                <!--aura:if isTrue="{!index==0}">
+                                                            		<div class="removeExtraSpace">
+                                                                        {!conEnt.Core_Entitlement_Id__r.Name}
+                                                            		</div>
+                                                            	<aura:set attribute="else">
+                                                                	<div class="removeExtraSpace">
+                                                                            , {!conEnt.Core_Entitlement_Id__r.Name}
+                                                                	</div>
+                                                            </aura:set>
+                                                        </aura:if-->
+                                                              
+                                                                <aura:if isTrue="{!and(staff.Contact_Entitlements__r.length==1, conEnt.Core_Entitlement_Id__r.Name=='Employee')}">
+                                                                  
+                                                                		{!conEnt.Core_Entitlement_Id__r.Name}
+                                                                </aura:if>
+                                                                
+                                                                <aura:if isTrue="{!and(staff.Contact_Entitlements__r.length>1, conEnt.Core_Entitlement_Id__r.Name!='Employee')}">
+                                                                    <aura:if isTrue="{!index==0}">
+                                                                        <div class="removeExtraSpace">
+                                                                            {!conEnt.Core_Entitlement_Id__r.Name}
+                                                                        </div>
+                                                            		<aura:set attribute="else">
+                                                                        <div class="removeExtraSpace">
+                                                                                , {!conEnt.Core_Entitlement_Id__r.Name}
+                                                                        </div>
+                                                            		</aura:set>
+                                                                    </aura:if>
+                                                                		<!--{!conEnt.Core_Entitlement_Id__r.Name}-->
+                                                                </aura:if>
+                                                            	<!--{!conEnt.Core_Entitlement_Id__r.Name},-->
+                                                        	</aura:iteration>
+                                                        <!--aura:set attribute="else">
+                                                            Employee
+                                                        </aura:set-->
+                                                    </aura:if>
+                                                    
+                                            	</th>
+                                                    
+                                            </aura:if>
+                                                
+                                                
+                                                
+                                            
+                                        </tr>
+                                            
+                                    <!--tr>
+                                        <td>
+                                            <div class="radio" data-myid="{!staff.Id}" onclick="{!c.showRow }">
+                                                <input type="radio" name="optradio"/>
+                                            </div>
+                                        </td>
+                                        
+                                        <aura:if isTrue = "{!or(con.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.Name == 'Primary Contact',con.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.Name == 'Primary Contact Delegate')}">
+                                        </aura:if>
+                                        <td>
+                                            <div >{!staff.Name} </div>
+                                        </td>
+                                        <td>
+                                            <div >{!staff.Email}</div>
+                                        </td>
+                                        <td>
+                                            <div class="slds-truncate">{!staff.Phone}</div>
+                                        </td>
+                                        <td>
+                                            
+                                            
+                                            <aura:if isTrue = "{!staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.Name == 'Primary Contact'}">
+                                                {!staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.Name}&nbsp;
+                                            </aura:if>
+                                            
+                                            <aura:if isTrue = "{!staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.Name == 'Primary Contact Delegate'}">
+                                                {!staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.Name}&nbsp;
+                                            </aura:if>
+                                            
+                                            <aura:if isTrue = "{!staff.Account_Contact_Relationships__r[0].PRM_Relationship_Id__r.Name == 'Works For'}">
+                                                <aura:if isTrue = "{!staff.Contact_Entitlements__r}">
+                                                    
+                                                    <aura:iteration items ="{!staff.Contact_Entitlements__r}" var ="conEnt" indexVar="index">
+                                                        <aura:if isTrue="{!index==0}">
+                                                            <div class="removeExtraSpace">
+                                                        		{!conEnt.Core_Entitlement_Id__r.Name}
+                                                            </div>
+                                                            <aura:set attribute="else">
+                                                                <div class="removeExtraSpace">
+                                                            		, {!conEnt.Core_Entitlement_Id__r.Name}
+                                                                </div>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                        
+                                                    </aura:iteration>
+                                                    
+                                                    <aura:set attribute="else">
+                                                        Employee
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:if>
+                                        </td>
+                                    </tr-->
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </div>
+                    <footer class="slds-card__footer">
+                        <lightning:buttonGroup>
+                            <lightning:button label="Previous" 
+                                              disabled="{!v.startPage == 0}"  
+                                              onclick="{!c.previousButton}" 
+                                              variant="brand"
+                                              iconName='utility:back'/>
+                            <lightning:button label="Next" 
+                                              disabled="{!v.endPage + 1 >= v.totalRecords}" 
+                                              onclick="{!c.nextButton}" 
+                                              variant="brand"
+                                              iconPosition="right"
+                                              iconName='utility:forward'/>
+                        </lightning:buttonGroup>
+                    </footer>
+                </aura:if>
+            </div>
+            
+        </lightning:card>
+        <aura:if isTrue="{!and(!v.isNew,!v.isView)}">
+            <div class="slds-float_leftsearchFooterSec">
+                
+            </div>
+        </aura:if>
+        
+        <!--aura:if isTrue="{!v.searchResult[0]}">
+            <c:EPUM_ContactEntitlement_load sContactIdStr="{!v.currentRec}" recordNotFound="false" sourceCmp="EPUM_SearchContact"/> 
+        </aura:if-->
+        
+        <aura:if isTrue="{!v.rowSelected}">
+           <c:EPUM_ContactEntitlement_load sContactIdStr="{!v.currentRec}"  recordNotFound="false" sourceCmp="EPUM_SearchContact"/> 
+        </aura:if>
+        
+        <!--Modal For New Contact-->
+        <aura:if isTrue="{!v.showModal}">
+            <c:EPUM_InviteUser showModal = "{!v.showModal}" searchedEmail = "{!v.searchKeyword}"/>
+        </aura:if>
+        <!--Modal For New Contact-->                    
+    </div>
+</aura:component>

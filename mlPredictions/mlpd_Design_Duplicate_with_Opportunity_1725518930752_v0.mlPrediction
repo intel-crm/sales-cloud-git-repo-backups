@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MLPredictionDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiApplicationDeveloperName>Design_Duplicate_with_Opportunity</aiApplicationDeveloperName>
+    <description>Opportunity which is same as deal</description>
+    <developerName>mlpd_Design_Duplicate_with_Opportunity_1725518930752_v0</developerName>
+    <masterLabel>Design Duplicate with Opportunity</masterLabel>
+    <negativeExpression>
+        <filterName>ccd95fe6-161c-4d12-a8dd-94c83aef9610</filterName>
+        <lhPredictionField>Core_Design_Registration__c.Core_End_Customer_Nm__c</lhPredictionField>
+        <operation>IsNull</operation>
+        <rhType>Boolean</rhType>
+        <rhValue>true</rhValue>
+    </negativeExpression>
+    <positiveExpression>
+        <filterName>bc9478fb-46f9-4954-bf0c-3c2dc3ce67fe</filterName>
+        <lhPredictionField>Core_Design_Registration__c.Core_End_Customer_Account_Nm__c</lhPredictionField>
+        <operation>IsNull</operation>
+        <rhType>Boolean</rhType>
+        <rhValue>false</rhValue>
+    </positiveExpression>
+    <status>Draft</status>
+    <type>BinaryClassification</type>
+</MLPredictionDefinition>

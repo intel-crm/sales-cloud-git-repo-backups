@@ -37,7 +37,7 @@
                 <identifier>core_IPS_MAG_Response_LEX</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-31351f74-5af1-48ca-896c-60abf29d437b</name>
+        <name>Facet-872725ce-a5ca-4fb2-be88-b6583be03ab7</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -45,7 +45,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-31351f74-5af1-48ca-896c-60abf29d437b</value>
+                    <value>Facet-872725ce-a5ca-4fb2-be88-b6583be03ab7</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
@@ -59,7 +59,7 @@
                 <identifier>flexipage_accordionSection</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-b8f1026d-cd1c-414e-9b50-26216d303e17</name>
+        <name>Facet-df180ba7-e185-4297-9033-b35be22f1eb5</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -93,7 +93,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>accordionSections</name>
-                    <value>Facet-b8f1026d-cd1c-414e-9b50-26216d303e17</value>
+                    <value>Facet-df180ba7-e185-4297-9033-b35be22f1eb5</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>allowMultipleSectionsOpen</name>
@@ -199,13 +199,7 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>ips_AgentLuncher</componentName>
-                <identifier>c_ips_AgentLuncher</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-dc4a3884-b6d6-4703-9234-b0f3ec359a4c</name>
+        <name>Facet-fd025e41-755b-4cef-91b2-72854a2348d0</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -319,7 +313,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-dc4a3884-b6d6-4703-9234-b0f3ec359a4c</value>
+                    <value>Facet-fd025e41-755b-4cef-91b2-72854a2348d0</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>

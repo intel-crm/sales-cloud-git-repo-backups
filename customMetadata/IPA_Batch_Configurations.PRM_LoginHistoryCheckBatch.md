@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Batch_Size__c</field>
-        <value xsi:type="xsd:string">1</value>
+        <value xsi:type="xsd:string">200</value>
     </values>
     <values>
         <field>PRM_SchedulingTimeMins__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Record_Limit__c</field>
-        <value xsi:type="xsd:string">800</value>
+        <value xsi:type="xsd:string">50000</value>
     </values>
     <values>
         <field>Stage__c</field>

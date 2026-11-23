@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Identifies integration users whose Quote Calculator queueable jobs can be aborted.</description>
+    <isLicensed>false</isLicensed>
+    <label>Pricing Abort Calculator Integration User</label>
+</CustomPermission>

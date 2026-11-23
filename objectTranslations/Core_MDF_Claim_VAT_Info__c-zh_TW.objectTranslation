@@ -29,12 +29,16 @@
         <help>出示與付款文件相關的索賠</help>
         <label>報銷</label>
         <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Payment Documents --></relationshipLabel>
+        <relationshipLabel><!-- Payment Documents (Claim) --></relationshipLabel>
     </fields>
     <fields>
         <help>指出客戶必須上傳的付款文件類型。</help>
         <label>文件類型</label>
         <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Amount --></label>
+        <name>Core_MDF_Invoice_Amt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -101,6 +105,10 @@
         <name>Core_MDF_VAT_Amt__c</name>
     </fields>
     <fields>
+        <label>增值稅註銷備註</label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_VAT_CreatedBy_Nm__c</name>
     </fields>
@@ -126,7 +134,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Submit for Approval Record Type --></description>
-        <label><!-- Submit for Approval --></label>
+        <label>送出審核</label>
         <name>Core_MDF_Submit_for_Approval</name>
     </recordTypes>
     <validationRules>

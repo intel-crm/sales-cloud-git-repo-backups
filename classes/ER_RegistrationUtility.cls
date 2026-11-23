@@ -10,7 +10,7 @@ Modification Log :
 *****************************************************************************************************************************************/
 
 
-public without sharing class ER_RegistrationUtility { 
+public without sharing class ER_RegistrationUtility {
     
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
@@ -28,7 +28,7 @@ public without sharing class ER_RegistrationUtility {
             }
             else {
                 registrationTypes.add(Label.RegistrationTypeGeneric);
-            } 
+            }
         }        
         return registrationTypes;
     }
@@ -48,8 +48,8 @@ public without sharing class ER_RegistrationUtility {
         }
         return businessTypeMap;
     }
-     
-    /*commented as part of EBR framework and implemented this logic with flows
+    
+    /*Commented as part of EBR framework and implemented the logic with Flows
     //Sets EV criteria, language and matching contact
     public static void SetEVAndLanguage(List<PRM_Registration_Request__c> registrationRequests) {
         Set<String> emails = new Set<String>();
@@ -103,7 +103,7 @@ public without sharing class ER_RegistrationUtility {
                         throw new ER_ErrorUtility.CustomException('exception');
                     }
             
-                    if(request.Entitlement_Details__c != null && (request.PRM_Source__c == 'DZP' || request.PRM_Source__c == 'IPA - Portal') && request.Assigned_To__c == null && newReg_AssignTo.size() > 0)
+                    if(request.Entitlement_Details__c != null && newReg_AssignTo.size() > 0)
                     {
                         request.Assigned_To__c = newReg_AssignTo[0];
                     }
@@ -119,6 +119,7 @@ public without sharing class ER_RegistrationUtility {
     {
         string params = '';
         List<PRM_Registration_Request__c> reqToBeUpdated = new List<PRM_Registration_Request__c>();
+        
         try {
             boolean isUpdated = false;           
             for(Contact_Business_Types__c cbt : newCBTs) 
@@ -146,10 +147,13 @@ public without sharing class ER_RegistrationUtility {
                     reqToBeUpdated.add(req);
                 }
                 
+                //if(reqToBeUpdated.size() > 0)
+                //{
                     if(reqToBeUpdated.size() > 0 && Schema.sObjectType.PRM_Registration_Request__c.isUpdateable())
                     {
                         Update reqToBeUpdated;
                     }
+               //}
             }
         }
         catch(Exception ex) 

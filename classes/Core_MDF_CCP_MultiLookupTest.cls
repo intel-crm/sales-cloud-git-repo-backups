@@ -6,7 +6,7 @@ public class Core_MDF_CCP_MultiLookupTest {
             // String objName='Contact';
              String objectName='Campaign';
              List<String> comList =new List<String>();
-            // List<Account> accList = new List<Account>();
+
             
             ChannelProgram cp1 = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', false);
             insert cp1;
@@ -20,7 +20,7 @@ public class Core_MDF_CCP_MultiLookupTest {
                                                                          cp1.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
             ccfacc.Core_MDF_Parent_Fund_Account__c = intacc.Id;
             ccfacc.Core_MDF_CoMarketingActive__c = true;
-            //accList.add(ccfacc);
+
              insert ccfacc;
         
         
@@ -32,7 +32,7 @@ public class Core_MDF_CCP_MultiLookupTest {
          comList.add(campCAP.Id);
         String filterCondition ='Id ='+ '\'' +  campCAP.Id + '\'';
          Test.startTest();
-       // Core_MDF_CCP_MultiLookup.fetchSampleRecs1(objName,comList);
+
         Core_MDF_CCP_MultiLookup.fetchSampleRecs();
            Core_MDF_CCP_MultiLookup.getResult(objectName,filterCondition);
         // Unit Test Method should include System.Assert 

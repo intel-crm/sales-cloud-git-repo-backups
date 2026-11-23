@@ -34,15 +34,16 @@
               let searchInitialValues = { filters: {} };
               
               searchInitialValues.filters = filter;
-               
+                
               helper.dispatch(component, '@SEARCH/setInitialSearchValues', { searchInitialValues }); 
           }
       }
       
        
-        
+         
         //Added as part of DE77473 for checking the http in the URL
-        var url = component.get('v.url') || component.get('v._href');                                                                 
+        var url = component.get('v.url') || component.get('v._href');
+      	
         if (component.get('v.openInBlank')) {
             if (!url.indexOf("http://") == 0 && !url.indexOf("https://") == 0) {
                 url = 'http://' + url;
@@ -62,7 +63,7 @@
             } else {
                	window.location = url;
             }
-       }      	 	
+       }      	
   }
 
 })

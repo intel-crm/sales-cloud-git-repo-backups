@@ -16,7 +16,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
         newAccount.RecordTypeId=intelAccRecTypeId;
         insert newAccount;
-        System.debug('first account'+newAccount);
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
         spec.name='Select Benefits';
@@ -78,7 +77,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
         newAccount.RecordTypeId=intelAccRecTypeId;
         insert newAccount;
-        System.debug('first account'+newAccount);
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
         spec.recordtypeId = specid;
@@ -320,7 +318,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         bg1.name = 'Benefitgroup tryTest';
         insert bg1;
         
-        system.debug('bg========>'+bg);
         
         PRM_Specialty_Benefit_Group_Association__c sbga = new PRM_Specialty_Benefit_Group_Association__c();
         sbga.PRM_Benefit_Group_Id__c=bg.id;
@@ -349,7 +346,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         pb.PRM_Channel_Program_Id__c = cp.id;
         pb.PRM_Benefit_Cd__c = 'BNFTSMBA';
         insert pb;
-        system.debug('pb========>'+pb);
         
         PRM_PartnerBenefit__c pb1 = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb1.Name = 'Points Accruals – View';
@@ -494,7 +490,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         pb.PRM_Benefit_Cd__c = 'BNFTSMBA';
        // pb.PRM_Account_Type_Nm__c='Both'; 
         insert pb;
-        system.debug('pb========>'+pb);
         
         PRM_PartnerBenefit__c pb1 = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb1.Name = 'Points Accruals – View';
@@ -507,11 +502,8 @@ public class PRM_Account_Specialty_Assoc_Test {
         Datetime lastModifyDate;
         String lastModifiedBy;
         acmrecords= [select LastModifiedById,Name,PRM_Status_Change_Dt__c from PRM_AccountChannelMembership__c where PRM_Status_Nm__c='Approved' limit 1];
-        System.debug('acmrecords --->'+acmrecords);
         lastModifyDate = acmrecords[0].PRM_Status_Change_Dt__c;
         lastModifiedBy = acmrecords[0].LastModifiedById;
-        System.debug('LM Date is ' +lastModifyDate);
-        System.debug('LM Id is ' +lastModifiedBy);
         
         PRM_BatchCustomSetting__c bm = new PRM_BatchCustomSetting__c();//Custom Setting Benefit Mapping
         bm.Name='BatchFieldValues';
@@ -695,7 +687,6 @@ public class PRM_Account_Specialty_Assoc_Test {
         PRM_Benefit_Group__c bg= new PRM_Benefit_Group__c();
         bg.name = 'Benefitgroup Test';
         insert bg;
-        system.debug('bg========>'+bg);
         
         PRM_Specialty_Benefit_Group_Association__c sbga = new PRM_Specialty_Benefit_Group_Association__c();
         sbga.PRM_Benefit_Group_Id__c=bg.id;

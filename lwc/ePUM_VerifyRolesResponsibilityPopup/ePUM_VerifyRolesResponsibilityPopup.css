@@ -1,0 +1,23 @@
+.header {
+    background-color: #0e63ac;
+    color: #fff;
+}
+
+.header-text {
+    font-weight: bold;
+    padding-top: 7px;
+}
+
+.close-icon {
+    color: #fff;
+}
+
+.background-white {
+    background-color: #fff;
+}
+
+.slds-modal__container {
+    height: auto;
+    width: 50%;
+    max-width: 70%;
+}

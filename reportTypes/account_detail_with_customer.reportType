@@ -42,11 +42,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Old_Account_Primary_Coverage__c</field>
-            <table>SPM_Account_Detail__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Account_OW_Manager__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
@@ -63,11 +58,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Coverage_Type__c</field>
-            <table>SPM_Account_Detail__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CIM_ID__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
         <columns>
@@ -97,12 +87,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>DR__c</field>
+            <field>Customer_Name__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>DR_Feedback__c</field>
+            <table>SPM_Account_Detail__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DR__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
         <columns>
@@ -118,11 +113,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Feedback_Id__c</field>
-            <table>SPM_Account_Detail__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Old_Account_owner__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
         <columns>
@@ -187,11 +177,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Prime_Name__c</field>
-            <table>SPM_Account_Detail__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>CST_Region__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
@@ -207,6 +192,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Old_Account_Primary_Coverage__c</field>
+            <table>SPM_Account_Detail__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Old_Account_owner__c</field>
+            <table>SPM_Account_Detail__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Category__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
@@ -217,7 +212,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Customer_Name__c</field>
+            <field>Sub_Region__c</field>
+            <table>SPM_Account_Detail__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Old_Sales_Group__c</field>
+            <table>SPM_Account_Detail__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TA_GM__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
         <columns>
@@ -227,12 +232,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Sub_Region__c</field>
-            <table>SPM_Account_Detail__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>TA_GM__c</field>
+            <field>Old_Semi_Annual_Temp_Account_Category__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
         <columns>
@@ -277,22 +277,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Old_Semi_Annual_Temp_Account_Category__c</field>
-            <table>SPM_Account_Detail__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>VP__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>VP_Feedback__c</field>
-            <table>SPM_Account_Detail__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Old_Sales_Group__c</field>
             <table>SPM_Account_Detail__c</table>
         </columns>
         <masterLabel>Account Detail</masterLabel>
@@ -356,6 +346,36 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>All_BUs_Indirect_Branded_Compt_Past_12M__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Amt_of_EndCustomers_Past_Year__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Amt_of_IPA_End_Customers_Past_Year__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_ASP__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Billings_Revenue_Past_QTR__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Billings_Revenue_Past_Year__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Billings_YoY_Growth__c</field>
             <table>SPM_Account_Detail__c.Customer_Categories__r</table>
         </columns>
         <columns>
@@ -505,6 +525,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Sales_Revenue_Past_Year__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_DistiSalesOutPast12_mnt_ofCustomer__c</field>
             <table>SPM_Account_Detail__c.Customer_Categories__r</table>
         </columns>
@@ -531,6 +556,26 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_DistiSalesOutPast_12_monthsOther__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Disti_Sales_out_revenue_past_year__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Disti_sales_out_revenue_YoY__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Region__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sub_Region__c</field>
             <table>SPM_Account_Detail__c.Customer_Categories__r</table>
         </columns>
         <columns>
@@ -625,12 +670,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Opportunities_Revenue_Last_Year__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Owner</field>
             <table>SPM_Account_Detail__c.Customer_Categories__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Primary_Location__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Primary_Location__c</field>
             <table>SPM_Account_Detail__c.Customer_Categories__r</table>
         </columns>
         <columns>
@@ -646,6 +701,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Sales_Group__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Sales_Revenue_Last_QTR__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Sales_Revenue_Last_Year__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Sales_YoY__c</field>
             <table>SPM_Account_Detail__c.Customer_Categories__r</table>
         </columns>
         <columns>
@@ -715,6 +785,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Top_companies_in_vertical__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Total_Direct_Revenue_Past_Year__c</field>
             <table>SPM_Account_Detail__c.Customer_Categories__r</table>
         </columns>
@@ -726,6 +801,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_UCD_Global_Name__c</field>
+            <table>SPM_Account_Detail__c.Customer_Categories__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_YearlyBillings_Weighted_AVG_3_Years__c</field>
             <table>SPM_Account_Detail__c.Customer_Categories__r</table>
         </columns>
         <columns>

@@ -1,53 +1,33 @@
 ({
     doInit: function(component, event, helper) {
-        
-        helper.fetchIPARecordType(component);
-        
-        let action = component.get("c.hasNewCampaignAccess");
-        action.setCallback(this, function(response) {
+        // Fetch user creation permissions first. Only fetch IPA record type when user has IPA permission.
+        var permAction = component.get("c.getUserCreationPermissions");
+        permAction.setCallback(this, function(response) {
             if (response.getState() === "SUCCESS") {
-                component.set("v.showNewButton", response.getReturnValue());
+                var perms = response.getReturnValue() || {};
+                // showNewButton if user has any creation permission
+                component.set("v.showNewButton", !!(perms.hasIPA || perms.hasCCF || perms.hasDCF));
+                // store permissions on component for helper use
+                component.set("v.userCreationPermissions", perms);
+                component.set("v.permsFetched", true);
+
+                // only fetch IPA record type when user has IPA permission; avoid blocking CCF/DCF-only users
+                if (perms.hasIPA) {
+                    helper.fetchIPARecordType(component);
+                } else {
+                    // ensure recordTypesFetched is false so UI doesn't require IPA fetch
+                    component.set("v.recordTypesFetched", false);
+                }
             } else {
-                console.error('Error checking campaign access:', response.getError());
+                console.error('Error fetching creation permissions:', response.getError());
             }
         });
-        $A.enqueueAction(action);
+        $A.enqueueAction(permAction);
     
     },
     
     openModal: function(component, event, helper) {
-
-        var recordTypeId = component.get("v.selrecordtype");
-        var recordTypeName = component.get("v.selrecordtypeName");
-        var recordTypeDeveloperName = component.get("v.selrecordtypeDeveloperName");
-        
-        if (!recordTypeId || !recordTypeName || !recordTypeDeveloperName) {
-            helper.showToast("Error", "Invalid record type data. Please refresh the page.", "error");
-            return;
-        }
-
-        $A.createComponent(
-            "c:Core_MDF_CreateEditOutcomeBasedActivity",
-            {
-                recordId: component.get("v.recordId"),
-                recordtype: recordTypeId,
-                recordtypeName: recordTypeName,
-                recordtypeDeveloperName: recordTypeDeveloperName
-            },
-            function(content, status) {
-                if (status === "SUCCESS") {
-                    
-                    var headerLabel = $A.get("$Label.c.Core_MDF_NewOutcomeBasedCampaign"); 
-                    component.find("overlayLib").showCustomModal({
-                        header: headerLabel,
-                        body: content,
-                        showCloseButton: true,
-                        cssClass: "slds-modal_large"
-                    });
-                } else {
-                    helper.showToast("Error", "Failed to create modal component", "error");
-                }
-            }
-        );
+        // Decide whether to open type selector or open a specific form directly
+        helper.handleOpenModalFlow(component);
     }
 })

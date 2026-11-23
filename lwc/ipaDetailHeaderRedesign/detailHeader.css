@@ -1,0 +1,108 @@
+/* General styling for desktop/tablet for offering and storefront detail header */
+c-ipa-contact-partner-button {
+  --classic-blue: var(--blue-steel-shade2);
+}
+
+c-core-intc-tabset {
+  --intc-tabs-active-bgcolor: var(--white);
+  --intc-tabs-active-bottom-border-color: transparent;
+  --intc-tabs-active-color: var(--black);
+  --intc-tabs-active-weight: 700;
+  --intc-tabs-bottom-border-color: transparent;
+  --intc-tabs-hover-bottom-border-color: transparent;
+  --intc-tabs-inactive-color: var(--white);
+  --intc-tabs-margin-bottom: 0;
+}
+
+.container {
+  padding: 0 1rem;
+}
+
+.detail-marquee {
+  background-color: var(--detail-marquee-background, var(--blue-steel-shade2));
+  color: var(--white);
+}
+
+.h2 {
+  width: 78%;
+}
+
+.h1, .h2, .h3 {
+  color: unset;
+}
+
+.social-share-container {
+  line-height: 2.5rem;
+  text-align: right;
+}
+
+.img-col {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+}
+
+.img-container {
+  background-color: var(--white);
+}
+
+.logo {
+  aspect-ratio: 16/9;
+  object-fit: contain;
+  width: 100%;
+}
+
+.sticky-container {
+  display: flex;
+  max-height: 75px;
+  width: 100%;
+}
+
+.sticky-headline {
+  font-size: 28px;
+  font-weight: 300;
+  height: 35px;
+  line-height: 35px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  max-width: 78%;
+  width: auto;
+}
+
+.sticky-logo {
+  max-height: 100%;
+}
+
+.sticky-logo-container {
+  align-items: center;
+  border: 1px solid var(--lightGray);
+  display: flex;
+  flex-shrink: 0;
+  height: 48px;
+  justify-content: center;
+  margin-left: 20px;
+  width: 48px;
+}
+
+.sticky-social-button {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.sticky-contact-button {
+  flex-shrink: 0;
+}
+
+.storefront-description {
+  --intc-p-line-height: 1.4;
+}
+
+@media (min-width: 1280px) {
+  .h2 {
+    max-width: 88%;
+  }
+}

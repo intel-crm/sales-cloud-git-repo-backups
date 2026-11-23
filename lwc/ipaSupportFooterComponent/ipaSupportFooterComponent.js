@@ -14,8 +14,12 @@ import emailSubHeading from '@salesforce/label/c.PMP_contact_intel_CTA_Email_Sub
 import chatSubHeading2 from '@salesforce/label/c.PMP_contact_intel_CTA_Chat_SubHeading';
 import callSubHeading3 from '@salesforce/label/c.PMP_contact_intel_CTA_Sub_Heading';
 import {getRecord, getFieldValue} from 'lightning/uiRecordApi';
+import OBJ_FIELD from '@salesforce/schema/Contact.Core_Preferred_Language__c';
 import getContacts from '@salesforce/apex/PRM_UserDetail.contactPrefferedLanguage';
-import preferredLang from '@salesforce/label/c.PRM_ENG';
+import CONTACT_ID from "@salesforce/schema/User.ContactId";
+import Id from '@salesforce/user/Id';
+
+import PreferredLangauge from '@salesforce/schema/Contact.Name';
 
 //resource
 
@@ -25,13 +29,18 @@ import resRequestSupport from '@salesforce/resourceUrl/PMP_Contact_us_RequestSup
 
 import resPhone from '@salesforce/resourceUrl/PMP_Contact_us_Phone';
 
+const FIELDS = [CONTACT_ID];
+const preflang = [OBJ_FIELD];
 
 export default class IpaSupportFooterComponent extends LightningElement {
 
-    @track userContactsData = [];
+    @track Ucontactsdata = [];
     @track callContact = true;
     @track footerHeading = intelHeading;
-	_userLanguage;
+	@api recordId = Id;
+    @track Contact;
+    @track paramField1;
+    _userLanguage;
     
     get contactsdata() {
         getContacts().then((result) => {
@@ -49,10 +58,25 @@ export default class IpaSupportFooterComponent extends LightningElement {
                 label: intelEmail,
                 linkUrl: supportUrl,//"https://www.intel.com",
                 linkCopy: emailSubHeading,//"Submit Request"
-            }
-         ];
+            }//,
+            /*{
+				copy: chatSubHeading,//"Chat is available during normal business hours.",
+                imgUrl: resContact,//"chat",
+                label: intelChat,//"Chat",
+                linkUrl: chatUrl,//"https://www.intel.com",
+                linkCopy: chatSubHeading2,//"Chat Now",
+                linkTarget: "_self"
+			},
+            {
+                copy: phoneSubHeading,//"Call us during normal business hours.",
+                imgUrl: resPhone,
+                label: intelPhone,//"Phone",
+                linkUrl: phoneUrl,//"https://www.intel.com",
+                linkCopy: callSubHeading3//"View Phone Directory"
+            }*/
+        ];
 		console.log('this._userLanguage ->',this._userLanguage);
-		if(this._userLanguage != preferredLang){
+		if(this._userLanguage != 'ENG'){
 			contacdata.push({copy: chatSubHeading,//"Chat is available during normal business hours.",
 							imgUrl: resContact,//"chat",
 							label: intelChat,//"Chat",
@@ -67,10 +91,15 @@ export default class IpaSupportFooterComponent extends LightningElement {
 							);
 		}
 		console.log('con>>>' + JSON.stringify(contacdata));
-		if (contacdata.length > 0){
+		
+
+        // contactsdata = contacdata;
+        if (contacdata.length > 0) {
             this.callContact = true;
-            this.userContactsData = contacdata;
+            this.Ucontactsdata = contacdata;
         }
-		return this.userContactsData;
+
+
+		return this.Ucontactsdata;
 	}
 }

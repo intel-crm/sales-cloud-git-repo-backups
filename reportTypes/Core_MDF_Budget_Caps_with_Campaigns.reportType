@@ -241,11 +241,6 @@
             <field>Core_MDF_Host_Region_cd__c</field>
             <table>Core_MDF_Budget_Cap__c.Campaigns__r</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Total_Campaign_Cost_Amt__c</field>
-            <table>Core_MDF_Budget_Cap__c.Campaigns__r</table>
-        </columns>
         <masterLabel>Campaigns</masterLabel>
     </sections>
 </ReportType>

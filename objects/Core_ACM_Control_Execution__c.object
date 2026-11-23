@@ -21,5 +21,17 @@
         <unique>false</unique>
     </fields>
     <label>Core_ACM_Control_Execution</label>
+    <listViews>
+        <fullName>ACM</fullName>
+        <columns>NAME</columns>
+        <columns>IsActive__c</columns>
+        <columns>ProcessName__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>ACM</label>
+        <language>en_US</language>
+    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

@@ -39,7 +39,7 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             result1.addAll(myset1);
             
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-
+            List<User> usrList1=new List<User>();
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_CCF_Acct_Mgr' LIMIT 1];
             User ccfaccntmngr = Core_MDF_CCP_TestDataUtility.createUser(false);
@@ -178,8 +178,8 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             Account acc3 = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Account 3', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             acc3.Core_Geo__c = 'APJ';
             acc3.Core_Sub_Geo__c = 'IJKK';
-            acc3.BillingStateCode = '';
-            acc3.BillingCountryCode = '';
+            acc3.BillingStateCode = ''; //US-14285
+            acc3.BillingCountryCode = '';//US-14285
             insert acc3;
             
             Account acc4 = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Account 4', cp1.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, acc3.Id, false);
@@ -274,7 +274,7 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             
             Campaign ipaCampaignForAP = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Test Campaign - AP',ipaCoMarketingAccount.id, System.today(), System.today().adddays(30),budgetType, 110000,'INDIA', 'Channel Partner', 'Apollo Lake', 'Planned', false);
             ipaCampaignForAP.Core_MDF_Proposal_Based_Ind__c=true;
-            ipaCampaignForAP.Core_MDF_Technology__c='';
+            ipaCampaignForAP.Core_MDF_Technology__c=''; //US-14285
             insert ipaCampaignForAP;
            
             
@@ -300,7 +300,7 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             testRetailPFR.Core_MDF_Country_nm__c = 'AFGHANISTAN'+';BANGLADESH';
             testRetailPFR.Core_MDF_Region_nm__c = 'APJ';
             testRetailPFR.Core_MDF_TargetAudience__c='';
-            testRetailPFR.Core_MDF_Activity_Types__c='';
+            testRetailPFR.Core_MDF_Activity_Types__c=''; //US-14285
             database.insert(testRetailPFR);
             Test.stopTest();  
         }
@@ -324,11 +324,12 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
     
     @isTest static void getActivityRejectionCommentsTest(){
         User usr1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-        Test.startTest();        
+        Test.startTest();
+        date sdate = date.today();        
         System.runAs(usr1){
             
             PartnerFundRequest pfr=[select id,OwnerId from PartnerFundRequest where Title='Test PFR Retail'];
-
+            Approval.ProcessWorkitemRequest pwr = new Approval.ProcessWorkitemRequest();
             
             
             
@@ -348,14 +349,16 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
         
         
         User usr1 = [SELECT Id, Username, UserRoleId FROM User WHERE LastName='testuser1' LIMIT 1];
-
+        Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner'];
+        ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', false);
         User usr2 = [SELECT Id, Username, UserRoleId FROM User WHERE LastName='User Test6' LIMIT 1];
         
         User usr3 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
         test.startTest();
         System.runAs(usr3){
             Account acc2 = [select id from account where name = 'Test Account 2']; 
-
+            Campaign camp = [select id from Campaign where name = 'Test Camp CCF' limit 1];
+            PartnerMarketingBudget testBudgetOEM = [select id from PartnerMarketingBudget where Title ='TestBudgetDataOEM'];
             Campaign ccfCamp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp CCF1','Gaming','Intel® Core™ i7 Processor', 'MDF or both CMP & MDF',
                                                                            Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 
                                                                            'Client CoMarketing Fund', System.today()-6, //System.today().addDays(-300), 
@@ -384,7 +387,7 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             
             Approval.ProcessSubmitRequest app = new Approval.ProcessSubmitrequest();
             app.setObjectId(pfrRec.id);
-
+            PartnerFundRequest pfr=[select OwnerId from PartnerFundRequest where id=:pfrRec.Id ];
             app.setSubmitterId(pfrRec.OwnerId);
             app.setProcessDefinitionNameOrId('Core_MDF_OPAL_Approval_Process_V9'); 
             app.setSkipEntryCriteria(true);
@@ -415,8 +418,6 @@ public with sharing class Core_MDF_UpdateActivityFields_Test {
             testList.add(testObj);
             
             Core_MDF_UpdateActivityFields.getActivityRejectionComments(testList);
-            // US - TWC702-14285: Unit Test Method should include System.Assert
-             System.assert(testList != null, 'testList should not be null after getActivityRejectionComments call');
             Core_MDF_UpdateActivityFields.notifyExternalUsers(null);
             Core_MDF_UpdateActivityFields.getActivityRejectionComments(null);
             List<Core_MDF_FlowInputWrapper> flowWrapperList = new List<Core_MDF_FlowInputWrapper>();

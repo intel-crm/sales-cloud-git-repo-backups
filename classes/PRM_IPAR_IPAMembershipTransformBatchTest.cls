@@ -70,7 +70,7 @@ public class PRM_IPAR_IPAMembershipTransformBatchTest {
             PRM_Account_Id__c = account2.Id,
             PRM_Status_Nm__c = 'Approved',
             PRM_Status_Reason_Txt__c = 'Test class',
-            PRM_Partner_Role__c='Independent Software Vendor'
+            PRM_Partner_Role__c='Builder'
         );
         
         insert new List<PRM_AccountChannelMembership__c>{membership1, membership2};
@@ -221,9 +221,8 @@ public class PRM_IPAR_IPAMembershipTransformBatchTest {
     @isTest
     static void testBatchExecution1() {
         Test.startTest();
-            Account acc= [Select id from Account where name='Test Account 1' limit 1];
-            String accountId = String.valueOf(acc.Id);
-            PRM_IPAR_IPAMembershipTransformBatch batch = new PRM_IPAR_IPAMembershipTransformBatch(accountId);
+        
+            PRM_IPAR_IPAMembershipTransformBatch batch = new PRM_IPAR_IPAMembershipTransformBatch();
             // Run the batch
             Database.executeBatch(batch, 200);
          Test.stopTest();

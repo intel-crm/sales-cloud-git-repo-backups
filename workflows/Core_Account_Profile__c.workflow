@@ -17,7 +17,7 @@
             <name>Core_Capture_Version</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This drives the latest version # of the account profile</description>
         <formula>(TRUE)</formula>
         <triggerType>onCreateOnly</triggerType>

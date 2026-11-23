@@ -68,7 +68,7 @@
         <operator>LessOrEqual</operator>
         <sequenceNumber>1</sequenceNumber>
         <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
-        <value>10000</value>
+        <value>20000</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
@@ -106,7 +106,7 @@
     <isBestFitEnabled>false</isBestFitEnabled>
     <isIncrementalSyncEnabled>false</isIncrementalSyncEnabled>
     <isVersioned>false</isVersioned>
-    <setupName>Pricing Route Rules EMEA CCG Quantity GT 5000 and LTE 10000</setupName>
+    <setupName>Pricing Route Rules EMEA CCG Quantity GT 5000 and LTE 20000</setupName>
     <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>

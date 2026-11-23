@@ -117,7 +117,7 @@ public class Core_MDF_CCP_IPA_TestDataUtility {
        mdtRec.Name = 'Test';
        mdtRec.Core_MDF_Budget_Type__c = 'Business Client Acceleration - MDF';
        insert mdtRec;
-       
+        
         return mdtRec.Core_MDF_Budget_Type__c;
     }
     

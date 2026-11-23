@@ -75,8 +75,4 @@
         <errorMessage><!-- Enter at least 1 row of text when Datatype is &apos;Picklist&apos; or &apos;Multiselect Picklist&apos;. --></errorMessage>
         <name>Core_IPS_Env_Dtls_Master_Ans_No_Blanks</name>
     </validationRules>
-    <webLinks>
-        <label><!-- Core_IPS_Add_To_Products --></label>
-        <name>Core_IPS_Add_To_Products</name>
-    </webLinks>
 </CustomObjectTranslation>

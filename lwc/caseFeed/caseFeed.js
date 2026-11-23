@@ -7,7 +7,6 @@ import getLabel from '@salesforce/apex/core_S2S_CaseExternalFeedController.getLa
 import { refreshApex } from '@salesforce/apex';
 import getContentVersion from '@salesforce/apex/core_S2S_FileDownloadCaseController.getContentVersion';
 import searchUsers from '@salesforce/apex/core_S2S_CaseExternalFeedController.searchUsers';
-import { getRecord } from 'lightning/uiRecordApi';
 
 /** 
  * Since feedElement is read-only and cannot be altered, a copy of each layer is made
@@ -51,9 +50,6 @@ export default class caseFeed extends LightningElement {
 	@track mentionStartIndex = -1;
 	isSearchResult = false;
 	@track taggedUsers = [];
-	@track orginalCaseRecord;
-	@track caseStatus;
-
 	isMentionedComment = false;
 	colorIcon = {}
 	isMentionedComment = false;
@@ -75,28 +71,6 @@ export default class caseFeed extends LightningElement {
 		if (this.post.length === 0) {
 			this.taggedUsers = [];
 			this.isMentioned = false;
-		}
-	}
-
-	@wire(getRecord, { recordId: "$recordId", fields: ['Case__x.Status__c'] })
-	getCaseRecord(result) {
-		this.orginalCaseRecord = result;
-		if (result.error) {
-			let message = "Unknown error";
-			if (Array.isArray(result.error.body)) {
-				message = result.error.body.map((e) => e.message).join(", ");
-			} else if (typeof result.error.body.message === "string") {
-				message = result.error.body.message;
-			}
-			this.dispatchEvent(
-				new ShowToastEvent({
-					title: "Error loading contact",
-					message,
-					variant: "error",
-				}),
-			);
-		} else if (result.data) {
-			this.caseStatus = result.data.fields.Status__c.value;
 		}
 	}
 
@@ -614,6 +588,7 @@ export default class caseFeed extends LightningElement {
 			this.resetMentionPosition();
 			return;
 		}
+		
 		let currentParagraph = '';
 		let orginalPTagContent = '';
 		const parser = new DOMParser();
@@ -864,8 +839,6 @@ export default class caseFeed extends LightningElement {
 		const jsonOutput = [];
 		const regex = /\[(.*?)\]/g;
 
-
-
 		const processNode = (node) => {
 			if (node.nodeType === Node.ELEMENT_NODE) {
 				if (node.tagName === 'P') {
@@ -976,7 +949,6 @@ export default class caseFeed extends LightningElement {
 		const resultString = jsonOutput.map(entry => {
 			return JSON.stringify(entry);
 		}).join(', ');
-
 		return resultString;
 	}
 
@@ -1501,9 +1473,8 @@ export default class caseFeed extends LightningElement {
 	 * @param {messageSegment} JSON - pass the messageSegement JSON Values.
 	*******************************************************************************************/
 	convertMessageSegementInHTML(jsonInput) {
-		refreshApex(this.orginalCaseRecord);
 		let htmlOutput = '';
-		let mentionCount = this.caseStatus === 'New' ? 0 : -1;
+		let mentionCount = -1;
 		jsonInput.forEach(entry => {
 			if (entry.type === 'MarkupBegin') {
 				switch (entry.markupType) {

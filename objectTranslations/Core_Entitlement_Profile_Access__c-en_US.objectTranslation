@@ -76,6 +76,14 @@
             <translation><!-- Auto_Entitlement_Test_053 --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>CCF Account Budget Administrator</masterLabel>
+            <translation><!-- CCF Account Budget Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF Activity Submitter</masterLabel>
+            <translation><!-- CCF Activity Submitter --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>CCF Boost Account Budget Administrator</masterLabel>
             <translation><!-- CCF Boost Account Budget Administrator --></translation>
         </picklistValues>
@@ -108,8 +116,48 @@
             <translation><!-- CCF Boost User Administrator --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>CCF Claim Submitter</masterLabel>
+            <translation><!-- CCF Claim Submitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF External Content Viewer</masterLabel>
+            <translation><!-- CCF External Content Viewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF External View All</masterLabel>
+            <translation><!-- CCF External View All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF Recovery Administrator</masterLabel>
+            <translation><!-- CCF Recovery Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF Special Reports Viewer</masterLabel>
+            <translation><!-- CCF Special Reports Viewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF User</masterLabel>
+            <translation><!-- CCF User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF User Administrator</masterLabel>
+            <translation><!-- CCF User Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>CDM External Submitter</masterLabel>
             <translation><!-- CDM External Submitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CDM IAD - External submitter</masterLabel>
+            <translation><!-- CDM IAD - External submitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CDM OEM Sales - External Submitter</masterLabel>
+            <translation><!-- CDM OEM Sales - External Submitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CDM Retailer - External submitter</masterLabel>
+            <translation><!-- CDM Retailer - External submitter --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CDM Third party Consumption Data Submitter</masterLabel>
@@ -122,6 +170,10 @@
         <picklistValues>
             <masterLabel>CTO_Portal_Reseller</masterLabel>
             <translation><!-- CTO_Portal_Reseller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change Order Report</masterLabel>
+            <translation><!-- Change Order Report --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Channel MDF Activity Submitter</masterLabel>
@@ -240,6 +292,42 @@
             <translation><!-- Customer Sales Order Reporting --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>DCF Account Budget Administrator</masterLabel>
+            <translation><!-- DCF Account Budget Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF Activity Submitter</masterLabel>
+            <translation><!-- DCF Activity Submitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF Claim Submitter</masterLabel>
+            <translation><!-- DCF Claim Submitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF External Content Viewer</masterLabel>
+            <translation><!-- DCF External Content Viewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF External View All</masterLabel>
+            <translation><!-- DCF External View All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF Recovery Administrator</masterLabel>
+            <translation><!-- DCF Recovery Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF Special Reports Viewer</masterLabel>
+            <translation><!-- DCF Special Reports Viewer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF User</masterLabel>
+            <translation><!-- DCF User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF User Administrator</masterLabel>
+            <translation><!-- DCF User Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>DCIF Admin User</masterLabel>
             <translation><!-- DCIF Admin User --></translation>
         </picklistValues>
@@ -282,10 +370,6 @@
         <picklistValues>
             <masterLabel>Deal Incentive User</masterLabel>
             <translation><!-- Deal Incentive User --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Deal Reg Financial Incentive Access</masterLabel>
-            <translation><!-- Deal Reg Financial Incentive Access --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Design Solutions Network</masterLabel>
@@ -380,8 +464,8 @@
             <translation><!-- IPA Titanium User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel Developer Cloud Enterprise</masterLabel>
-            <translation><!-- Intel Developer Cloud Enterprise --></translation>
+            <masterLabel>Intel On Demand Purchase Agent – VLS</masterLabel>
+            <translation><!-- Intel On Demand Purchase Agent – VLS --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel On Demand Purchase Agent – VLS Test</masterLabel>
@@ -406,6 +490,10 @@
         <picklistValues>
             <masterLabel>Intel-Led Co-Marketing Program</masterLabel>
             <translation><!-- Intel-Led Co-Marketing Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Developer Cloud Enterprise</masterLabel>
+            <translation><!-- Intel Developer Cloud Enterprise --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Invoice Only</masterLabel>
@@ -772,10 +860,6 @@
             <translation><!-- Technology Sandbox --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Test Entitlement for Failure</masterLabel>
-            <translation><!-- Test Entitlement for Failure --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>TestEnt01234</masterLabel>
             <translation><!-- TestEnt01234 --></translation>
         </picklistValues>
@@ -833,12 +917,12 @@
         <label><!-- User Type --></label>
         <name>Core_User_Type__c</name>
         <picklistValues>
-            <masterLabel>CCF Boost User Administrator</masterLabel>
-            <translation><!-- CCF Boost User Administrator --></translation>
+            <masterLabel>Activating Partner User Admin</masterLabel>
+            <translation><!-- Activating Partner User Admin --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Channel MDF User Administrator</masterLabel>
-            <translation><!-- Channel MDF User Administrator --></translation>
+            <masterLabel>CCF Boost User Administrator</masterLabel>
+            <translation><!-- CCF Boost User Administrator --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Client User Administrator</masterLabel>
@@ -851,6 +935,10 @@
         <picklistValues>
             <masterLabel>Datacenter User Administrator</masterLabel>
             <translation><!-- Datacenter User Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Primary Partner User Admin</masterLabel>
+            <translation><!-- Primary Partner User Admin --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>RMF External User Administrator</masterLabel>

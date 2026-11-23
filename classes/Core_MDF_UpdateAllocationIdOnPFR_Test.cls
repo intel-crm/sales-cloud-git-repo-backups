@@ -24,14 +24,14 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
             
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             // Creating channel program with utility class
-            ChannelProgram cpCCF = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
+            ChannelProgram cpCCF = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
             //Creating DCF channel program 
-            ChannelProgram cpDCF = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.DCF_PROGRAM,'Data Center CoMarketing Fund', true);
+            ChannelProgram cpDCF = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', true);
             Test.startTest();
             // Creating Intel Account with utility class
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
             acc1.Core_Account_Type__c = 'Reseller';
-            //acc1.Core_Sales_Groups__c = 'CCG Sales Group';
+            acc1.Core_Sales_Groups__c = 'CCG Sales Group';
             acc1.Industry = 'Food & Beverage';
             acc1.Core_MDF_Channel_Program__c = cpCCF.Id;
             insert acc1; 
@@ -58,9 +58,8 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
                                                                            Core_MDF_CCP_TestDataUtility.Campaign_RecordType_DCF, 
                                                                            'Data Center CoMarketing Fund',System.today().addDays(5) , 
                                                                            System.today().addYears(1), 2000, 'Advanced Analytics', 
-                                                                           accDCF.Id,'Server', false);
-            campDcf.Core_MDF_Technology__c = null;
-            insert campDcf;
+                                                                           accDCF.Id,'Server', true);
+            
             
             
             // Creating activity without budget
@@ -83,14 +82,14 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
             PartnerMarketingBudget testBudgetCCF = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetDataCCF',Core_MDF_CCP_TestDataUtility.budget_Record_Type, 
                                                                                           string.valueof(accCCF.id), cpCCF.Id , 10 , System.today() - 25 , 
                                                                                           System.today() + 45 , false);
-            testBudgetCCF.Core_MDF_Budget_Type_Txt__c='OEM CMP';
+            testBudgetCCF.Core_MDF_Budget_Type_Txt__c='CCF 1.0';
             insert testBudgetCCF;
 
             //Creating Budget using utility class
             PartnerMarketingBudget testBudgetDCF = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetDataDCF',Core_MDF_CCP_TestDataUtility.budget_Record_Type, 
                                                                                           string.valueof(accDCF.id), cpDCF.Id , 10 , System.today() - 25 , 
                                                                                           System.today() + 45 , false);
-            testBudgetDCF.Core_MDF_Budget_Type_Txt__c='OEM CMP';
+            testBudgetDCF.Core_MDF_Budget_Type_Txt__c='DCF 1.0';
             insert testBudgetDCF;
             
             
@@ -157,8 +156,8 @@ private class Core_MDF_UpdateAllocationIdOnPFR_Test {
             PartnerFundAllocation testPartnerFundAllocation = new PartnerFundAllocation(Title = 'CCF Allocation',
                                                                                         BudgetId = pmb.Id, 
                                                                                         ChannelPartnerId = accCCF.Id, 
-                                                                                        Amount = 1);
-            //insert testPartnerFundAllocation;
+                                                                                        Amount = 10);
+            insert testPartnerFundAllocation;
             
             Test.startTest();
             

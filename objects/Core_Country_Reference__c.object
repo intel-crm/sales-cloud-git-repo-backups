@@ -39,7 +39,7 @@
         <description>Used to store the Sub-Geography to which the country belongs</description>
         <externalId>false</externalId>
         <label>Sub Geo</label>
-        <length>10</length>
+        <length>25</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>

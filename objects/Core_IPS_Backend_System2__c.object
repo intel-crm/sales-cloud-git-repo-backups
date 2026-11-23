@@ -155,6 +155,17 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Read</externalSharingModel>
     <fields>
+        <fullName>Core_IPS_Backend_Connection_String__c</fullName>
+        <externalId>false</externalId>
+        <label>Backend Connection String</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_IPS_Backend_System_URL__c</fullName>
         <externalId>false</externalId>
         <label>Backend System URL</label>
@@ -177,7 +188,7 @@
         <fullName>Core_IPS_Routing_Technique__c</fullName>
         <label>Routing Technique</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -203,7 +214,7 @@
         <label>SCFT Backend Type</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -214,7 +225,7 @@
         <label>Status</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -248,7 +259,7 @@
         <label>Target System</label>
         <length>250</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -257,7 +268,7 @@
         <fullName>Core_Support_Email__c</fullName>
         <label>Support Email</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -267,7 +278,7 @@
         <label>Last Sync</label>
         <length>100</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -285,38 +296,11 @@
         <defaultValue>false</defaultValue>
         <description>update filed whenver change in child objects</description>
         <label>isDataSync</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <label>Backend_System</label>
-    <listViews>
-        <fullName>All1</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Target_System__c</columns>
-        <columns>Core_IPS_Backend_System_URL__c</columns>
-        <columns>Core_IPS_Deactivated__c</columns>
-        <columns>Core_IPS_Support_Org__c</columns>
-        <columns>Core_IPS_Support_Org_Name__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>HSD_BESs</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Target_System__c</columns>
-        <columns>Core_IPS_Backend_System_URL__c</columns>
-        <columns>Core_IPS_Deactivated__c</columns>
-        <columns>Core_IPS_Support_Org__c</columns>
-        <columns>Core_IPS_Support_Org_Name__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IPS_Backend_System_URL__c</field>
-            <operation>contains</operation>
-            <value>hsd</value>
-        </filters>
-        <label>HSD BESs</label>
-    </listViews>
     <nameField>
         <label>Backend_System</label>
         <trackHistory>true</trackHistory>
@@ -324,18 +308,18 @@
     </nameField>
     <pluralLabel>Backend_Systems</pluralLabel>
     <searchLayouts>
+        <customTabListAdditionalFields>Core_IPS_Backend_Connection_String__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_IPS_Backend_System_URL__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_IPS_Deactivated__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Core_IPS_Backend_Connection_String__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Core_IPS_Backend_Connection_String__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Core_IPS_Deactivated__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Core_IPS_Support_Org__c</lookupPhoneDialogsAdditionalFields>
         <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Core_IPS_Backend_Connection_String__c</searchFilterFields>
         <searchFilterFields>Core_IPS_Deactivated__c</searchFilterFields>
         <searchFilterFields>Core_IPS_Support_Org__c</searchFilterFields>
-        <searchResultsAdditionalFields>Core_IPS_Target_System__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Backend_System_URL__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Deactivated__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Support_Org__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_IPS_Support_Org_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Backend_Connection_String__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
     <visibility>Public</visibility>

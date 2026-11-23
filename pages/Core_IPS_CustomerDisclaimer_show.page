@@ -3,7 +3,7 @@
 <apex:form >
     <apex:pageBlock >
         <apex:pageBlockSection >
-            <apex:outputText value="{!docBody}" escape="false"/> 
+            <apex:outputLabel value="{!docBody}" escape="false"/> 
             <br />
             <br />
             <br />

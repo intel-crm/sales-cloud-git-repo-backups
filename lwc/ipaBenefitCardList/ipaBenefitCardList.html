@@ -13,12 +13,17 @@
     <!-- IPA2.0 TWC727-3135 -->
     <div class="benefits-list">
         <template for:each={benefitsMobileShow} for:item="benefit">
-            <c-ipa-benefit-card benefit={benefit} key={benefit.id}></c-ipa-benefit-card>
+            <c-ipa-benefit-card
+    benefit={benefit}
+    docebo-data={doceboData}
+    key={benefit.id}>
+</c-ipa-benefit-card>
+         <!--  <c-ipa-benefit-card benefit={benefit} key={benefit.id}></c-ipa-benefit-card>-->
         </template>
 
         <div class={classes.mobileContainerClass}>
             <template for:each={benefitsMobileHide} for:item="benefit">
-                <c-ipa-benefit-card benefit={benefit} key={benefit.id}></c-ipa-benefit-card>
+                <c-ipa-benefit-card benefit={benefit} docebo-data={doceboData} key={benefit.id}></c-ipa-benefit-card>
             </template>
         </div>
         <div class={classes.showMoreMobile}>

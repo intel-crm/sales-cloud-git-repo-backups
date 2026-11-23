@@ -27,6 +27,7 @@ public class Pricing_BulkCR_JSONString {
         public String UnifiedEndCustomerGlobalName;
         public Boolean IsUnifiedEndCustomer;
         public String ComplianceWatchList;
+       
         public List<QuoteLine> QuoteLine;
     }
     

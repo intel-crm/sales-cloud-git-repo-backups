@@ -5,8 +5,8 @@
     <decisions>
         <name>Check_Embargo_Countries_And_State</name>
         <label>Check Embargo Countries And State</label>
-        <locationX>182</locationX>
-        <locationY>503</locationY>
+        <locationX>297</locationX>
+        <locationY>492</locationY>
         <defaultConnector>
             <targetReference>Update_Contact_Central_Block</targetReference>
         </defaultConnector>
@@ -44,8 +44,8 @@
     <decisions>
         <name>Embargo_Country_Data_Check</name>
         <label>Embargo Country Data Check</label>
-        <locationX>336</locationX>
-        <locationY>395</locationY>
+        <locationX>451</locationX>
+        <locationY>384</locationY>
         <defaultConnector>
             <targetReference>Update_Contact_Central_Block</targetReference>
         </defaultConnector>
@@ -106,8 +106,8 @@
     <recordLookups>
         <name>get_Embargo_Countries</name>
         <label>get Embargo Countries</label>
-        <locationX>336</locationX>
-        <locationY>287</locationY>
+        <locationX>451</locationX>
+        <locationY>276</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Embargo_Country_Data_Check</targetReference>
@@ -134,8 +134,8 @@
     <recordUpdates>
         <name>Update_Contact_Central_Block</name>
         <label>Update Contact Central Block</label>
-        <locationX>336</locationX>
-        <locationY>995</locationY>
+        <locationX>451</locationX>
+        <locationY>984</locationY>
         <inputAssignments>
             <field>Core_Central_Block__c</field>
             <value>
@@ -147,8 +147,8 @@
     <recordUpdates>
         <name>Update_Contact_field</name>
         <label>Update Contact field</label>
-        <locationX>50</locationX>
-        <locationY>611</locationY>
+        <locationX>165</locationX>
+        <locationY>600</locationY>
         <inputAssignments>
             <field>Core_Central_Block__c</field>
             <value>
@@ -158,11 +158,8 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>210</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
-        <connector>
-            <targetReference>get_Embargo_Countries</targetReference>
-        </connector>
         <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
         <filters>
             <field>MailingCountryCode</field>
@@ -194,9 +191,15 @@
         </filters>
         <object>Contact</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <triggerType>RecordBeforeSave</triggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>get_Embargo_Countries</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>CIMOBMuser</name>
         <dataType>String</dataType>

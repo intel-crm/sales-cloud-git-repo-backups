@@ -33,12 +33,16 @@
         <help>Indica a solicitação associada ao documento de pagamento</help>
         <label>Solicitação</label>
         <name>Core_MDF_Claim_Id__c</name>
-        <relationshipLabel><!-- Payment Documents --></relationshipLabel>
+        <relationshipLabel><!-- Payment Documents (Claim) --></relationshipLabel>
     </fields>
     <fields>
         <help>Indica o tipo do documento de pagamento que precisa ser enviado pelo cliente.</help>
         <label>Tipo de documento</label>
         <name>Core_MDF_Document_Type_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Amount --></label>
+        <name>Core_MDF_Invoice_Amt__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified By --></label>
@@ -105,11 +109,15 @@
         <name>Core_MDF_VAT_Amt__c</name>
     </fields>
     <fields>
+        <label>Comentário de Cancelamento de IVA</label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_VAT_CreatedBy_Nm__c</name>
     </fields>
     <fields>
-        <help>O número da transação/fatura relacionada ao documento de pagamento</help>
+        <help>TO número da transação/fatura relacionada ao documento de pagamento</help>
         <label>Número da fatura fiscal</label>
         <name>Core_MDF_VAT_Invoice_Number_Txt__c</name>
     </fields>
@@ -131,7 +139,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Submit for Approval Record Type --></description>
-        <label><!-- Submit for Approval --></label>
+        <label>Submeter para aprovação</label>
         <name>Core_MDF_Submit_for_Approval</name>
     </recordTypes>
     <validationRules>

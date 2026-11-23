@@ -60,6 +60,7 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
     @track headerTitle;
     @track issdmfastrack = false;
     @track isDataCenterCPU = false;
+    @track isQUoteDataCenter = false;
 
     showSoftWarning = false;
     sftw_Action = '';
@@ -221,6 +222,7 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
         this.selectedData = [];
         this.disabledBtn = true;
         this.showCommentField = false;
+        //this.isBulkCustRevision = false;
         this.showSoftWarning = false;
         this.revisionComments = '';
         this.commentLength = 0;
@@ -278,7 +280,7 @@ export default class Pricing_QuoteLine_BulkSalesRepAction extends LightningEleme
 
         if (action == 'Approved' && (this.selectedData.length > 0) && (this.error.length === 0)) {
             this.selectedData.forEach(element => {
-                if (element.isSelected && (element.Pricing_Program_Type_Nm__c == clientQuoteLine) && (element.Pricing_SIPP_Cb__c == false) && (element.hasOwnProperty('Pricing_Market_Segment_values_Nm__c')) && (element.Pricing_Market_Segment_values_Nm__c == "Corp") && (element.Pricing_Change_Request_cb__c == false) && (element.Pricing_Form_Factor_Nm__c == 'Notebook')) {
+                if (element.isSelected && (element.Pricing_Program_Type_Nm__c == clientQuoteLine) && (element.Pricing_SIPP_Cb__c == false) && (element.hasOwnProperty('Pricing_Market_Segment_values_Nm__c')) && (element.Pricing_Market_Segment_values_Nm__c == "Corp") && (element.Pricing_Change_Request_cb__c == false) && (element.Pricing_Form_Factor_Nm__c == "Notebook")) {
                     this.isSpinner = false;
                     this.showSoftWarning = true;
                     this.sftw_Action = action;

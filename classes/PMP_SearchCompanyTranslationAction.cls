@@ -12,7 +12,10 @@ Description : Class to create of update Company Translation records.
 *************************************************************************************/
 
 public without sharing class PMP_SearchCompanyTranslationAction {
-    
+    //TranslationEOL
+    public static Boolean isWorking() {
+        return true;
+    }
     public static void insertTranslation(Boolean triggerContext, List<PMP_Company__c> newList){
         if (triggerContext)
         {

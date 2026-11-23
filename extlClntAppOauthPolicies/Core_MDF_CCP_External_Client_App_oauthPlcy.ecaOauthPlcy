@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
+    <clientCredentialsFlowUser>iah@intel.com.crm.crmdevint3</clientCredentialsFlowUser>
+    <externalClientApplication>Core_MDF_CCP_External_Client_App</externalClientApplication>
+    <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>
+    <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
+    <isGuestCodeCredFlowEnabled>false</isGuestCodeCredFlowEnabled>
+    <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+    <label>Core_MDF_CCP_External_Client_App_oauthPlcy</label>
+    <permittedUsersPolicyType>AllSelfAuthorized</permittedUsersPolicyType>
+    <refreshTokenPolicyType>Zero</refreshTokenPolicyType>
+    <refreshTokenValidityPeriod>0</refreshTokenValidityPeriod>
+    <requiredSessionLevel>STANDARD</requiredSessionLevel>
+    <startUrl>https://intel--crmdevint3.sandbox.lightning.force.com</startUrl>
+</ExtlClntAppOauthConfigurablePolicies>

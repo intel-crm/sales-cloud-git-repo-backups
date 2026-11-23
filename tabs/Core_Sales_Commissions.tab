@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Web tab used to log into my commissions</description>
+    <frameHeight>800</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>Commissions</label>
+    <motif>Custom41: Stack of Cash</motif>
+    <url>https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d/saml2?SAMLRequest=jZHLasNADEV%2Fxcw%2B9sR2sDvYLs4LAimE9LHobrCVxjAPd6QJ%2FfxOnWZVKNkJIenee1Sh1GoUraezOcKnB6ToSyuDNfPOCCtxQGGkBhTUief2aS%2FSmAsNJHtJkkW7dc22Zb4uy7Jts2Wer%2BbLMs%2BzYtHmmzKd8%2FXDhkVv4HCwpmZhOewgetgZJGkotHg6n%2FFsxhcvvBA8E4s0LrLi%2FWfuIBGHC9TsJBUCi1pEcBQuraxBr8E9g7sMHbwe9zU7E40okmQw1M16uMSdVGroPVrTg5amjzurk9Vv82AdSZUEE46uddzbxxOi3duPIcDAMWhATc4H4YmJmGD9T2Z0lmxnFYu21nUwgb3Zb6opubuHsLwlZc19uarkerypkr8%2Fbb4B</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

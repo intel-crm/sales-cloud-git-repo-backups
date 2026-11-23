@@ -47,10 +47,7 @@ Modification Log :
         ListOfUser.get(2).ProfileID =  profiles.get('IPS Agent');
         ListOfUser.get(3).ProfileID =  profiles.get('IPS Agent');
         //ListOfUser.get(3).ProfileID =  profiles.get('IPS Agent-Partner');
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert ListOfUser;
-        }
+        insert ListOfUser;
         System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
         Core_IPS_Labels__c inActiveErrorMsg= new Core_IPS_Labels__c(Name='Core_IPS_InActiveProdError',Value__c='When initially adding a new Product to a Project, the Product Status must be kept Active.');
         //Creating Custom Settings for search criteria of Accountteammembers
@@ -1228,7 +1225,6 @@ Modification Log :
         Account acc;
         Contact con;
         strProf.add('System Administrator');
-        strProf.add(System.Label.Core_IPS_System_Admin_Profile_Name);
         List<Profile> profileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
@@ -1254,7 +1250,7 @@ Modification Log :
         List<User> listOfUser1;
         System.runAs(ListOfUser[0]){
         ListOfUser1 = new List<User>{userRecord}; //TestUtilities.getListOfUser(1);
-            ListOfUser1.get(0).ProfileID =  profiles.get(System.Label.Core_IPS_System_Admin_Profile_Name);
+            ListOfUser1.get(0).ProfileID =  profiles.get('System Administrator');
             acc=TestUtilities.getListOfAccounts(1).get(0);
             insert acc;
             con = TestUtilities.getListOfContact(1).get(0);
@@ -1416,8 +1412,6 @@ Modification Log :
         } 
         System.runAs(ListOfUser1.get(0)){
             insert ListOfIpsProductsOne;
-            ListOfIpsProductsOne[0].Core_IPS_Product_Status__c = 'Inactive';
-            update ListOfIpsProductsOne;
         }
         System.assert(ListOfIpsProductsOne[0].Id != null, 'Record not created');
         

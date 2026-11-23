@@ -6,11 +6,9 @@
   "label" : "Report List",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : {
-        "menuItems" : "[]"
-      },
+      "componentAttributes" : { },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "71645f9e-a58d-49d4-9e80-9a9ec25b27b4",
+      "id" : "18fad688-4ca5-4153-9635-b32a612c81ae",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -35,7 +33,7 @@
     "regionName" : "footer",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "YKT7Zn6tAHjSVdyTIMFhpZIEtQkAJG",
   "type" : "view",
   "viewType" : "list-00O"
 }

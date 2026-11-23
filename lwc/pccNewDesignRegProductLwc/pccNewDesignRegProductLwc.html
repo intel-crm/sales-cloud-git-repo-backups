@@ -17,10 +17,10 @@
                 <lightning-formatted-text
                     lwc:if={displaySave}
                     class="slds-text-title_bold slds-form-element__label"
-                    value={productSelectionMessage}></lightning-formatted-text>
+                    value="Please select Product or MMID or Ordering code"></lightning-formatted-text>
                 <lightning-input-field field-name="MMID_or_Ordering_code__c" onchange={handleMMIDChange}></lightning-input-field>
                 <lightning-input-field field-name="Core_Full_Year_Qty__c" required="true"></lightning-input-field>
-                <lightning-input-field field-name="PCC_Standard_Distributor_Price__c" style="display:none;" value={sdp}></lightning-input-field>
+                <lightning-input-field field-name="PCC_Standard_Distributor_Price__c"  value={sdp}></lightning-input-field>
                 <lightning-input-field field-name="PCC_Recommended_Customer_Price__c" style="display:none;" value={rcp}></lightning-input-field>
                 <lightning-input-field field-name="PCC_Eligible_for_DDI_Payment__c" style="display:none;" value={ddiEligible}></lightning-input-field>
                 <lightning-input-field field-name="PCC_Payment_Expiration_Date__c" style="display:none;" value={expDate}></lightning-input-field>
@@ -30,10 +30,10 @@
                 <lightning-input-field field-name="Core_Design_Product_Status_Nm__c" disabled="true"></lightning-input-field>
                 <lightning-input-field field-name="Core_Comment_Txt__c"></lightning-input-field>
                 <lightning-input-field field-name="Core_Partner_Tracking_Cd__c"></lightning-input-field>
-                <lightning-input-field field-name="Core_Target_Resale_Amt__c" value={targetResalePrice} disabled="true"></lightning-input-field>
+                <lightning-input-field field-name="Core_Target_Resale_Amt__c" value={targetResalePrice} required="true"></lightning-input-field>
                 <lightning-formatted-text
                     lwc:if={displaySave}
-                    value="Target Resale Price is automatically populated by SDC price Once Product is selected  and is read‑only for distributors. In cases where SDC pricing is not available, the field may remain blank at the time of submission and will be completed by Intel during the design registration review process. The displayed Target Resale Price does not constitute approval, endorsement, or a pricing commitment by Intel."></lightning-formatted-text>
+                    value="Intel will review Target Resale Price as part of the design registration review process, in order to accurately calculate the value of the design registration. Intel will not provide input or guidance on the Target Resale Price, which will/must be inputted by the Distributor registering the design. Submission of the Target Resale Price does not constitute agreement on or endorsement of that price by Intel, and it will not affect the price offered by Intel to the Distributor."></lightning-formatted-text>
             </lightning-layout-item>
         </lightning-layout>
         <template if:true={isLoading}>

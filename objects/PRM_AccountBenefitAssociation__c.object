@@ -257,12 +257,6 @@
                     <isActive>false</isActive>
                     <label>Program Benefit</label>
                 </value>
-                <value>
-                    <fullName>Specialty</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Specialty</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
@@ -364,7 +358,7 @@
         </picklistValues>
     </recordTypes>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
     <validationRules>
         <fullName>PRM_Status_Reason_Removal_Mandatory</fullName>
         <active>true</active>

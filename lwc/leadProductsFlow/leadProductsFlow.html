@@ -1,0 +1,60 @@
+<template>
+    <template for:each={productRows} for:item="row" for:index="idx">
+        <div key={row.id} class="product-row">
+
+            <div class="row-flex">
+                <!-- Product -->
+                <lightning-input
+                    label="Product"
+                    placeholder="Type to search..."
+                    data-index={idx}
+                    value={row.productName}
+                    onkeyup={handleProductInput}
+                    class="product-input">
+                </lightning-input>
+
+                <!-- Quantity -->
+                <lightning-input
+                    type="number"
+                    label="Qty"
+                    min="1"
+                    data-index={idx}
+                    value={row.quantity}
+                    onchange={handleQuantityChange}
+                    class="quantity-input">
+                </lightning-input>
+
+                <!-- Add Product -->
+                <lightning-button
+                    label="Add"
+                    onclick={addRow}
+                    class="add-btn">
+                </lightning-button>
+
+                <!-- Remove -->
+                <lightning-button
+                    label="Remove"
+                    data-index={idx}
+                    onclick={removeRow}
+                    class="remove-btn">
+                </lightning-button>
+            </div>
+
+            <!-- Dropdown -->
+            <template if:true={row.searchResults}>
+                <div class="lookup-dropdown">
+                    <template for:each={row.searchResults} for:item="prod">
+                        <div
+                            key={prod.value}
+                            data-rowid={row.id}
+                            data-id={prod.value}
+                            onclick={selectProduct}>
+                            {prod.label}
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+        </div>
+    </template>
+</template>

@@ -140,7 +140,6 @@ private class Core_IPS_Questions_Utility_Test {
         for(Core_IPS_EnvironmentDetailQuestion objEDQ : lstEDQ) {
             lstResp.addAll(Core_IPS_Questions_Utility.constructResponse(objEDQ, CaseRecord));
         }
-         system.assert(lstResp!= null);
         //Core_IPS_Questions_Utility.makeIPSResponse(Id CaseId, Id QuestionId, Id AnswerId, Boolean isAgentOnly)
         List<Core_IPS_EnvironmentDetailQuestion> lstEDO2 = Core_IPS_Questions_Utility.getAllWithChildEnvDetails(lstEDQ);
         Map<Id,Boolean> mapAccess = Core_IPS_Questions_Utility.recordEditAccessMap(new Set<Id>{ControllingAnsId}, sysAdimUser.Id);

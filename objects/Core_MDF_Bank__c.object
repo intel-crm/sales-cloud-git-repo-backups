@@ -128,14 +128,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Bank_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -797,6 +794,12 @@
                     <label>100</label>
                 </value>
                 <value>
+                    <fullName>102</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>102</label>
+                </value>
+                <value>
                     <fullName>150</fullName>
                     <default>false</default>
                     <label>150</label>
@@ -831,6 +834,22 @@
         <length>100</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Last_Modified_By_nm__c</fullName>
+        <description>This will populate as the First Name and Last Name if First Name is not blank. Otherwise, it will give Last Name only.</description>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL(LastModifiedBy.Profile.UserType,&apos;PowerPartner&apos;),
+LastModifiedBy.FirstName &amp; &apos; &apos; &amp; LastModifiedBy.LastName,
+$Label.Core_MDF_Intel_System_User
+)</formula>
+        <label>Last Modified By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1210,9 +1229,9 @@
         <columns>OWNER.ALIAS</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_Account__c</field>
+            <field>Core_MDF_Intel_Company_Code__c</field>
             <operation>equals</operation>
-            <value>UNISTOP</value>
+            <value>102</value>
         </filters>
         <label>Co-Marketing Bank</label>
     </listViews>
@@ -3332,16 +3351,11 @@ INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;)
         <errorConditionFormula>AND(
   NOT($Permission.Core_MDF_Internal_CSC_User),
   OR(
-    AND(
-      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Co_GTM&quot;),
-      OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin),
-      NOT($Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm)
+AND(
+INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Co_GTM&quot;),
+OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
+$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin),
+NOT($Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm)
     )
   )
 )</errorConditionFormula>
@@ -3397,13 +3411,13 @@ INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Intel_Partner_Alliance&quot;)
         <errorConditionFormula>AND(NOT(Core_MDF_Account__r.Core_MDF_CoMarketingActive__c),
 NOT(Core_MDF_Ineffective_Selection_ind__c),
 OR(ISCHANGED(Core_MDF_Ineffective_Selection_ind__c),
-   ISCHANGED(Core_MDF_Account__c),
-   AND(ISCHANGED(Core_MDF_ESD_Update__c),
-Core_MDF_ESD_Update__c, 
+ISCHANGED(Core_MDF_Account__c),
+AND(ISCHANGED(Core_MDF_ESD_Update__c),
+Core_MDF_ESD_Update__c,
 ISPICKVAL(PRIORVALUE(Core_MDF_Bank_Status__c),&apos;Draft&apos; )),
 AND(Core_MDF_ESD_Update__c,ISPICKVAL(PRIORVALUE(Core_MDF_Bank_Status__c),&apos;Draft&apos; ),
-				OR(ISPICKVAL(Core_MDF_Bank_Status__c,&apos;Active&apos;),
-   ISPICKVAL(Core_MDF_Bank_Status__c,&apos;Hold&apos;)))
+OR(ISPICKVAL(Core_MDF_Bank_Status__c,&apos;Active&apos;),
+ISPICKVAL(Core_MDF_Bank_Status__c,&apos;Hold&apos;)))
 )
 )</errorConditionFormula>
         <errorDisplayField>Core_MDF_Account__c</errorDisplayField>

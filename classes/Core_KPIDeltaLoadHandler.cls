@@ -52,7 +52,7 @@ public without sharing class Core_KPIDeltaLoadHandler {
             Set<Id> allOpportunityId = new Set<Id>();
             Set<Id> allOpportunityLineId = new Set<Id>();            
             oppIdDeleteSet =  new List<Core_Oppty_KPI_New__c>();
-            //List<Core_Oppty_KPI_New__c> oppIdDeleteList =  new List<Core_Oppty_KPI_New__c>();
+            List<Core_Oppty_KPI_New__c> oppIdDeleteList =  new List<Core_Oppty_KPI_New__c>();
             Set<Core_Oppty_KPI_New__c> oppIdKPIDeleteList =  new Set<Core_Oppty_KPI_New__c>();
             for(Core_KPI_Staging__c staging : newList){
                 allOpportunityId.add(staging.Core_Opportunity_ID_Txt__c);
@@ -505,7 +505,7 @@ public without sharing class Core_KPIDeltaLoadHandler {
     */
     public static void seprateRefreshTypes(List<Core_KPI_Staging__c> newList, boolean KPIDeltaLoadCheck , boolean KPIFullLoadCheck ){
         Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
-        //map<String, List<Core_KPI_Staging__c>> fullLoadMap = new map<String, List<Core_KPI_Staging__c>>();
+        map<String, List<Core_KPI_Staging__c>> fullLoadMap = new map<String, List<Core_KPI_Staging__c>>();
         List<Core_KPI_Staging__c> deltaLoadList = new List<Core_KPI_Staging__c>();
         List<Core_KPI_Staging__c> fullLoadList = new List<Core_KPI_Staging__c>();
         List<Core_KPI_Staging__c> syncLoadList = new List<Core_KPI_Staging__c>();

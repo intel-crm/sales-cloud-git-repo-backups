@@ -177,4 +177,7 @@ public class ACM_BU_SetAccountHierarchy_Test {
 		System.assertEquals(countryCustomer[0].RecordTypeId, accountsAfterUpdate[1].RecordTypeId, 'Record Type Assignment is not correct.');
         
     }
+    
+    
+    
 }

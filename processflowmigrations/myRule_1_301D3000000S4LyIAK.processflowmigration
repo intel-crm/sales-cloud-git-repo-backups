@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>PRM_Auto_Record_Submission_2</destinationFlowDefinition>
+    <destinationFlowVersion>PRM_Auto_Record_Submission_2-1</destinationFlowVersion>
+    <developerName>myRule_1_301D3000000S4LyIAK</developerName>
+    <masterLabel>PRM_Auto_Record_Submission_2</masterLabel>
+    <migratedCriteriaLabel>RecordTypeCheck</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>PRM_Auto_Record_Submission-21</processVersion>
+</ProcessFlowMigration>

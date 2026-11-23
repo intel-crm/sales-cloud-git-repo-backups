@@ -15,16 +15,16 @@ public without sharing class Core_MDF_Rules_Engine {
  
    //Generic method to be called by other team members
    public static Map < string, Map < Id, RulesEngineParams >> genericEngineFlow(Map < string, set < Id >> input) {
-	 Map < string, Map < Id, RulesEngineParams >> result = new Map < string, Map < Id, RulesEngineParams >> ();
-	 Map < string, List < Core_MDF_Audit_Rules_Engine__c >> getAuditRulesRecordsres = new Map < string, List < Core_MDF_Audit_Rules_Engine__c >> ();
-	 List < SObject > queryObjectFieldsres = new List < SObject > ();
-	 try {
-	   getAuditRulesRecordsres = getAuditRulesRecords(input);
-	   result = matchTheClaimsAgainstRulesafterinsert(input, getAuditRulesRecordsres);
-	 } catch (exception ex) {
-	   Core_MDF_CCP_UtilityClass.logError(ex);
-	 }
-	 return result;
+	   Map < string, Map < Id, RulesEngineParams >> result = new Map < string, Map < Id, RulesEngineParams >> ();
+	   Map < string, List < Core_MDF_Audit_Rules_Engine__c >> getAuditRulesRecordsres = new Map < string, List < Core_MDF_Audit_Rules_Engine__c >> ();
+	   List < SObject > queryObjectFieldsres = new List < SObject > ();
+	   try {
+		   getAuditRulesRecordsres = getAuditRulesRecords(input);
+		   result = matchTheClaimsAgainstRulesafterinsert(input, getAuditRulesRecordsres);
+	   } catch (exception ex) {
+		   Core_MDF_CCP_UtilityClass.logError(ex);
+	   }
+	   return result;
    }
    public static Map < string, List < Core_MDF_Audit_Rules_Engine__c >> getAuditRulesRecords(Map < string, set < Id >> input) { //Get all the Audit rules based on Rule Type
 	 Map < string, List < Core_MDF_Audit_Rules_Engine__c >> RuleprgmBTToRulesMap = new Map < string, List < Core_MDF_Audit_Rules_Engine__c >> ();
@@ -72,8 +72,8 @@ public without sharing class Core_MDF_Rules_Engine {
 	 }
 	 return RuleprgmBTToRulesMap;
    }
- 
- 
+
+
    //Query based on each Rule type for the fields returned from the object Map<string,List<Id>> input
    public static void queryObjectFields(Map < string, Map < string, set < string >>> RuletyptoFieldMap, Map < string, set < Id >> input) {
 	 Map < string, string > objToApiMap = new Map < string, string > ();
@@ -89,10 +89,7 @@ public without sharing class Core_MDF_Rules_Engine {
 		 for (String InputId: input.keyset()) {
 		   String inpruletyp = InputId;
 		   inpid = input.get(InputId);
-		   for (id singleinpid: inpid) {
-			 actinputid.add(singleinpid);
-		   }
- 
+		   actinputid.addAll(inpid);
 		 }
 		 for (string objectName: objtofields.keyset()) {
 		   Set < string > fields = objtofields.get(objectName);
@@ -161,29 +158,30 @@ public without sharing class Core_MDF_Rules_Engine {
 	   Core_MDF_CCP_UtilityClass.logError(ex);
 	 }
    }
- 
+
    public static Map < string, Map < Id, RulesEngineParams >> matchTheClaimsAgainstRulesafterinsert(Map < string, Set < Id >> input, Map < string, List < Core_MDF_Audit_Rules_Engine__c >> RuleprgmBTToRulesMap) {
-	 List < Core_MDF_Audit_Rules_Engine__c > rulesToBeExecuted = new List < Core_MDF_Audit_Rules_Engine__c > ();
-	 List < Id > cmpClaimIds = new List < Id > ();
-	 PartnerfundRequest pfr;
-	 PartnerfundClaim pfc;
-	 Core_MDF_Claim_Prediction__c cp;
-	 Map < string, Map < Id, RulesEngineParams >> resultMap = new Map < string, Map < Id, RulesEngineParams >> ();
-	 Map < Id, RulesEngineParams > resultMapRE = new Map < Id, RulesEngineParams > ();
-	 Map < Id, RulesEngineParams > result = new Map < Id, RulesEngineParams > ();
- 
-	 string yes = 'Yes';
-	 integer i = 0;
-	 try {
-	   for (string RuleType: input.keyset()) {
-		 set < id > inpId = input.get(RuleType);
-		 for (id sobjId: inpId) {
-		   if (ACT_MAP.containsKey(sobjId)) {
-			 pfr = ACT_MAP.get(sobjId);
+	   List < Core_MDF_Audit_Rules_Engine__c > rulesToBeExecuted = new List < Core_MDF_Audit_Rules_Engine__c > ();
+	   List < Id > cmpClaimIds = new List < Id > ();
+	   PartnerfundRequest pfr;
+	   PartnerfundClaim pfc;
+	   Core_MDF_Claim_Prediction__c cp;
+	   Map < string, Map < Id, RulesEngineParams >> resultMap = new Map < string, Map < Id, RulesEngineParams >> ();
+	   Map < Id, RulesEngineParams > resultMapRE = new Map < Id, RulesEngineParams > ();
+	   Map < Id, RulesEngineParams > result = new Map < Id, RulesEngineParams > ();
+		
+	   string yes = 'Yes';
+	   integer i = 0;
+	   try {
+		   for (string RuleType: input.keyset()) {
+			   set < id > inpId = input.get(RuleType);
+			   for (id sobjId: inpId) {
+				   if (ACT_MAP.containsKey(sobjId)) {
+					   pfr = ACT_MAP.get(sobjId);
                        String programName = Core_MDF_CCP_GenericUtility.getTechnicalProgramName(pfr.Core_MDF_Program__c);
 					   rulesToBeExecuted = RuleprgmBTToRulesMap.get(RuleType + programName + pfr.Core_MDF_Budget_Type_Nm__c);
-		   } else if (claimMAP.containsKey(sobjId)) {
-			 pfc = claimMAP.get(sobjId);
+				   } else if (claimMAP.containsKey(sobjId)) {
+
+					   pfc = claimMAP.get(sobjId);
 					  String programName = Core_MDF_CCP_GenericUtility.getTechnicalProgramName(pfc.Core_MDF_Program__c);
 					   rulesToBeExecuted = RuleprgmBTToRulesMap.get(RuleType + programName + pfc.Core_MDF_Budget_Type_Options_Nm__c);
 		   } else if (claimPred_MAP.containsKey(sobjId)) {
@@ -241,191 +239,191 @@ public without sharing class Core_MDF_Rules_Engine {
 	 return resultMap;
  
    }
- 
+
    /* Match each Claim/Claim Pred record against the corresponding Rules */
    public static Map < Id, RulesEngineParams > runRules(Id input, Core_MDF_Audit_Rules_Engine__c rule) {
-	 boolean resultval = false;
-	 boolean regionCheck = false;
-	 PartnerfundRequest pfr;
-	 PartnerfundClaim pfc;
-	 Map < Id, RulesEngineParams > resultMap = new Map < Id, RulesEngineParams > ();
- 
-	 try {
-	   if (ACT_MAP.containsKey(input)) {
-		 pfr = ACT_MAP.get(input);
-	   } else if (claimMAP.containsKey(input)) {
-		 pfc = claimMAP.get(input);
+	   boolean resultval = false;
+	   boolean regionCheck = false;
+	   PartnerfundRequest pfr;
+	   PartnerfundClaim pfc;
+	   Map < Id, RulesEngineParams > resultMap = new Map < Id, RulesEngineParams > ();
+
+	   try {
+		   if (ACT_MAP.containsKey(input)) {
+			   pfr = ACT_MAP.get(input);
+		   } else if (claimMAP.containsKey(input)) {
+			   pfc = claimMAP.get(input);
+		   }
+
+		   DateTime claimCreatedDate = pfr != null ? pfr.CreatedDate : pfc.CreatedDate;
+
+		   if (rule.Core_MDF_Effective_Dt__c <= claimCreatedDate.date()) {
+
+			   switch on rule.Core_MDF_Object_Nm__c {
+
+				   when 'Core_MDF_Claim_Prediction__c' {
+					   resultMap = executePredictionRule(input, rule);
+				   }
+				   when 'Random' {
+					   resultMap = executeRandomLogic(input, rule);
+
+				   }
+				   when
+				   else {
+					   resultMap = executeThresholdRules(input, rule);
+				   }
+			   }
+		   }
+		   if (!resultMap.isEmpty() && resultMap != null) {
+
+			   RulesEngineParams ruleslinedup = new RulesEngineParams();
+
+			   ruleslinedup = resultMap.get(input);
+			   resultval = ruleslinedup.result;
+			   if (resultval) {
+				   if (rule.Core_MDF_Next_Rule_Id__c != null && GENERIC_RULES_MAP.containsKey(rule.Core_MDF_Next_Rule_Id__c)) {
+					   resultMap = runRules(input, GENERIC_RULES_MAP.get(rule.Core_MDF_Next_Rule_Id__c));
+				   }
+			   } else {
+				   if (rule.Core_MDF_Next_Rule_False_Id__c != null && GENERIC_RULES_MAP.containsKey(rule.Core_MDF_Next_Rule_False_Id__c)) {
+					   resultMap = runRules(input, GENERIC_RULES_MAP.get(rule.Core_MDF_Next_Rule_False_Id__c));
+				   }
+			   }
+
+		   } else {
+			   RulesEngineParams REparam = new RulesEngineParams();
+			   REparam.result = false;
+			   resultMap.put(input, REparam);
+		   }
+
+	   } catch (exception ex) {
+		   Core_MDF_CCP_UtilityClass.logError(ex);
 	   }
- 
-	   DateTime claimCreatedDate = pfr != null ? pfr.CreatedDate : pfc.CreatedDate;
- 
-	   if (rule.Core_MDF_Effective_Dt__c <= claimCreatedDate.date()) {
- 
-		 switch on rule.Core_MDF_Object_Nm__c {
- 
-		   when 'Core_MDF_Claim_Prediction__c' {
-			 resultMap = executePredictionRule(input, rule);
-		   }
-		   when 'Random' {
-			 resultMap = executeRandomLogic(input, rule);
- 
-		   }
-		   when
-		   else {
-			 resultMap = executeThresholdRules(input, rule);
-		   }
-		 }
-	   }
-	   if (!resultMap.isEmpty() && resultMap != null) {
- 
-		 RulesEngineParams ruleslinedup = new RulesEngineParams();
- 
-		 ruleslinedup = resultMap.get(input);
-		 resultval = ruleslinedup.result;
-		 if (resultval) {
-		   if (rule.Core_MDF_Next_Rule_Id__c != null && GENERIC_RULES_MAP.containsKey(rule.Core_MDF_Next_Rule_Id__c)) {
-			 resultMap = runRules(input, GENERIC_RULES_MAP.get(rule.Core_MDF_Next_Rule_Id__c));
-		   }
-		 } else {
-		   if (rule.Core_MDF_Next_Rule_False_Id__c != null && GENERIC_RULES_MAP.containsKey(rule.Core_MDF_Next_Rule_False_Id__c)) {
-			 resultMap = runRules(input, GENERIC_RULES_MAP.get(rule.Core_MDF_Next_Rule_False_Id__c));
-		   }
-		 }
- 
-	   } else {
-		 RulesEngineParams REparam = new RulesEngineParams();
-		 REparam.result = false;
-		 resultMap.put(input, REparam);
-	   }
- 
-	 } catch (exception ex) {
-	   Core_MDF_CCP_UtilityClass.logError(ex);
-	 }
-	 return resultMap;
+	   return resultMap;
    }
    /* Execute the Prediction Rule */
    public static Map < Id, RulesEngineParams > executePredictionRule(Id input, Core_MDF_Audit_Rules_Engine__c rule) {
-	 Map < Id, RulesEngineParams > resultMap = new Map < Id, RulesEngineParams > ();
-	 Core_MDF_Audit_Rules_Engine__c ruleRecord;
-	 boolean result = false;
-	 string predvalue;
-	 Trigger_Execution__mdt switchOnOrOff = Trigger_Execution__mdt.getInstance('Core_MDF_Eintein_API_Call_Switch');
- 
-	 try {
-	   Core_MDF_Claim_Prediction__c cprec = claimPred_MAP.get(input);
-	   //TWC742-358 - Added API call to Model if prediction score is null 
-	   if (switchOnOrOff.Active__c) {
-		 if (string.valueof(cprec.get(rule.Core_MDF_Field_Nm__c)) == null) {
-		   ConnectApi.SmartDataDiscoveryPredictInputRecords predictInput = new ConnectApi.SmartDataDiscoveryPredictInputRecords();
-		   predictInput.predictionDefinition = Label.Core_MDF_Einstein_Model_ID;
-		   predictInput.records = new List < Id > {
-			 cprec.id
-		   };
-		   ConnectApi.SmartDataDiscoveryPrediction response = ConnectApi.SmartDataDiscovery.predict(predictInput);
-		   ConnectApi.SmartDataDiscoveryPredictObject prediction = (ConnectApi.SmartDataDiscoveryPredictObject) response.predictions[0];
-		   predvalue = string.valueof(prediction.prediction.total);
-		 }
+	   Map < Id, RulesEngineParams > resultMap = new Map < Id, RulesEngineParams > ();
+	   Core_MDF_Audit_Rules_Engine__c ruleRecord;
+	   boolean result = false;
+	   string predvalue;
+	   Trigger_Execution__mdt switchOnOrOff = Trigger_Execution__mdt.getInstance('Core_MDF_Eintein_API_Call_Switch');
+
+	   try {
+		   Core_MDF_Claim_Prediction__c cprec = claimPred_MAP.get(input);
+		   //TWC742-358 - Added API call to Model if prediction score is null 
+		   if (switchOnOrOff.Active__c) {
+			   if (string.valueof(cprec.get(rule.Core_MDF_Field_Nm__c)) == null) {
+				   ConnectApi.SmartDataDiscoveryPredictInputRecords predictInput = new ConnectApi.SmartDataDiscoveryPredictInputRecords();
+				   predictInput.predictionDefinition = Label.Core_MDF_Einstein_Model_ID;
+				   predictInput.records = new List < Id > {
+					   cprec.id
+				   };
+				   ConnectApi.SmartDataDiscoveryPrediction response = ConnectApi.SmartDataDiscovery.predict(predictInput);
+				   ConnectApi.SmartDataDiscoveryPredictObject prediction = (ConnectApi.SmartDataDiscoveryPredictObject) response.predictions[0];
+				   predvalue = string.valueof(prediction.prediction.total);
+			   }
+		   }
+		   string fieldType = Core_MDF_Reusable_Code.getDataTypeOfField(rule.Core_MDF_Object_Nm__c, rule.Core_MDF_Field_Nm__c);
+		   Core_MDF_Reusable_Code.ValidateRuleParams inputRecord = new Core_MDF_Reusable_Code.ValidateRuleParams();
+		   inputRecord.recValue = string.valueof(cprec.get(rule.Core_MDF_Field_Nm__c)) == null ? predvalue : string.valueof(cprec.get(rule.Core_MDF_Field_Nm__c));
+		   inputRecord.crtValue = rule.Core_MDF_Value_Txt__c;
+		   inputRecord.operator = rule.Core_MDF_Operator_Nm__c;
+		   inputRecord.fieldType = fieldType;
+		   result = Core_MDF_Reusable_Code.validateRule(inputRecord);
+		   RulesEngineParams REparam = new RulesEngineParams();
+		   if (result) {
+			   REparam.ruleRecord = rule;
+			   REparam.additionalInfo = 'Einstein Prediction';
+		   }
+
+		   REparam.result = result;
+		   resultMap.put(input, REparam);
+	   } catch (exception ex) {
+		   Core_MDF_CCP_UtilityClass.logError(ex);
 	   }
-	   string fieldType = Core_MDF_Reusable_Code.getDataTypeOfField(rule.Core_MDF_Object_Nm__c, rule.Core_MDF_Field_Nm__c);
-	   Core_MDF_Reusable_Code.ValidateRuleParams inputRecord = new Core_MDF_Reusable_Code.ValidateRuleParams();
-	   inputRecord.recValue = string.valueof(cprec.get(rule.Core_MDF_Field_Nm__c)) == null ? predvalue : string.valueof(cprec.get(rule.Core_MDF_Field_Nm__c));
-	   inputRecord.crtValue = rule.Core_MDF_Value_Txt__c;
-	   inputRecord.operator = rule.Core_MDF_Operator_Nm__c;
-	   inputRecord.fieldType = fieldType;
-	   result = Core_MDF_Reusable_Code.validateRule(inputRecord);
-	   RulesEngineParams REparam = new RulesEngineParams();
-	   if (result) {
-		 REparam.ruleRecord = rule;
-		 REparam.additionalInfo = 'Einstein Prediction';
-	   }
- 
-	   REparam.result = result;
-	   resultMap.put(input, REparam);
-	 } catch (exception ex) {
-	   Core_MDF_CCP_UtilityClass.logError(ex);
-	 }
-	 return resultMap;
+	   return resultMap;
    }
- 
+
    /* Execute the Random Logic */
    public static Map < Id, RulesEngineParams > executeRandomLogic(Id input, Core_MDF_Audit_Rules_Engine__c rule) {
- 
-	 Core_MDF_Audit_Rules_Engine__c ruleRecord;
-	 PartnerfundRequest pfr;
-	 PartnerfundClaim pfc;
-	 Map < Id, RulesEngineParams > resultMap = new Map < Id, RulesEngineParams > ();
-	 boolean result = false;
-	 try {
- 
-	   if (ACT_MAP.containsKey(input)) {
-		 pfr = ACT_MAP.get(input);
-	   } else if (claimMAP.containsKey(input)) {
-		 pfc = claimMAP.get(input);
+
+	   Core_MDF_Audit_Rules_Engine__c ruleRecord;
+	   PartnerfundRequest pfr;
+	   PartnerfundClaim pfc;
+	   Map < Id, RulesEngineParams > resultMap = new Map < Id, RulesEngineParams > ();
+	   boolean result = false;
+	   try {
+
+		   if (ACT_MAP.containsKey(input)) {
+			   pfr = ACT_MAP.get(input);
+		   } else if (claimMAP.containsKey(input)) {
+			   pfc = claimMAP.get(input);
+		   }
+
+		   integer randomNoRule = Integer.valueOf(rule.Core_MDF_Value_Txt__c.removeEnd('%'));
+		   decimal randomNo = Math.round(Math.random() * (100 / randomNoRule));
+		   result = randomNo == 1 || randomNoRule == 100 ? true : false;
+		   RulesEngineParams REparam = new RulesEngineParams();
+		   if (result) {
+			   REparam.ruleRecord = rule;
+			   REparam.additionalInfo = 'Random';
+
+		   }
+
+		   REparam.result = result;
+
+		   resultMap.put(input, REparam);
+	   } catch (exception ex) {
+		   Core_MDF_CCP_UtilityClass.logError(ex);
 	   }
- 
-	   integer randomNoRule = Integer.valueOf(rule.Core_MDF_Value_Txt__c.removeEnd('%'));
-	   decimal randomNo = Math.round(Math.random() * (100 / randomNoRule));
-	   result = randomNo == 1 || randomNoRule == 100 ? true : false;
-	   RulesEngineParams REparam = new RulesEngineParams();
-	   if (result) {
-		 REparam.ruleRecord = rule;
-		 REparam.additionalInfo = 'Random';
- 
-	   }
- 
-	   REparam.result = result;
- 
-	   resultMap.put(input, REparam);
-	 } catch (exception ex) {
-	   Core_MDF_CCP_UtilityClass.logError(ex);
-	 }
-	 return resultMap;
+	   return resultMap;
    }
- 
+
    /* Execute the Threshold Rules */
    public static Map < Id, RulesEngineParams > executeThresholdRules(Id input, Core_MDF_Audit_Rules_Engine__c rule) {
- 
-	 Core_MDF_Audit_Rules_Engine__c ruleRecord;
-	 PartnerfundRequest pfr;
-	 PartnerfundClaim pfc;
-	 Id genericid;
-	 Map < Id, RulesEngineParams > resultMap = new Map < Id, RulesEngineParams > ();
-	 boolean result = false;
-	 try {
-	   if (ACT_MAP.containsKey(input)) {
-		 pfr = ACT_MAP.get(input);
-		 genericid = pfr.id;
-	   } else if (claimMAP.containsKey(input)) {
-		 pfc = claimMAP.get(input);
-		 genericid = pfc.id;
+
+	   Core_MDF_Audit_Rules_Engine__c ruleRecord;
+	   PartnerfundRequest pfr;
+	   PartnerfundClaim pfc;
+	   Id genericid;
+	   Map < Id, RulesEngineParams > resultMap = new Map < Id, RulesEngineParams > ();
+	   boolean result = false;
+	   try {
+		   if (ACT_MAP.containsKey(input)) {
+			   pfr = ACT_MAP.get(input);
+			   genericid = pfr.id;
+		   } else if (claimMAP.containsKey(input)) {
+			   pfc = claimMAP.get(input);
+			   genericid = pfc.id;
+		   }
+		   if (pfr == null && rule.Core_MDF_Object_Nm__c == 'PartnerFundRequest') {
+			   for (id actvityid: actIds) {
+				   pfr = ACT_MAP.get(actvityid);
+			   }
+		   }
+
+		   string criteriaValue = rule.Core_MDF_ID_Field_Id__c == null ? rule.Core_MDF_Value_Txt__c : rule.Core_MDF_ID_Field_Id__c;
+		   string fieldType = Core_MDF_Reusable_Code.getDataTypeOfField(rule.Core_MDF_Object_Nm__c, rule.Core_MDF_Field_Nm__c);
+		   Core_MDF_Reusable_Code.ValidateRuleParams inputRecord = new Core_MDF_Reusable_Code.ValidateRuleParams();
+		   inputRecord.recValue = (rule.Core_MDF_Object_Nm__c == 'PartnerFundClaim') ? string.valueof(pfc.get(rule.Core_MDF_Field_Nm__c)) : string.valueof(pfr.get(rule.Core_MDF_Field_Nm__c));
+		   inputRecord.crtValue = criteriaValue;
+		   inputRecord.operator = rule.Core_MDF_Operator_Nm__c;
+		   inputRecord.fieldType = fieldType;
+		   result = Core_MDF_Reusable_Code.validateRule(inputRecord);
+		   RulesEngineParams REparam = new RulesEngineParams();
+		   if (result) {
+			   REparam.ruleRecord = rule;
+			   REparam.additionalInfo = 'Immediate Rules';
+		   }
+
+		   REparam.result = result;
+		   resultMap.put(genericid, REparam);
+	   } catch (exception ex) {
+		   Core_MDF_CCP_UtilityClass.logError(ex);
 	   }
-	   if (pfr == null && rule.Core_MDF_Object_Nm__c == 'PartnerFundRequest') {
-		 for (id actvityid: actIds) {
-		   pfr = ACT_MAP.get(actvityid);
-		 }
-	   }
- 
-	   string criteriaValue = rule.Core_MDF_ID_Field_Id__c == null ? rule.Core_MDF_Value_Txt__c : rule.Core_MDF_ID_Field_Id__c;
-	   string fieldType = Core_MDF_Reusable_Code.getDataTypeOfField(rule.Core_MDF_Object_Nm__c, rule.Core_MDF_Field_Nm__c);
-	   Core_MDF_Reusable_Code.ValidateRuleParams inputRecord = new Core_MDF_Reusable_Code.ValidateRuleParams();
-	   inputRecord.recValue = (rule.Core_MDF_Object_Nm__c == 'PartnerFundClaim') ? string.valueof(pfc.get(rule.Core_MDF_Field_Nm__c)) : string.valueof(pfr.get(rule.Core_MDF_Field_Nm__c));
-	   inputRecord.crtValue = criteriaValue;
-	   inputRecord.operator = rule.Core_MDF_Operator_Nm__c;
-	   inputRecord.fieldType = fieldType;
-	   result = Core_MDF_Reusable_Code.validateRule(inputRecord);
-	   RulesEngineParams REparam = new RulesEngineParams();
-	   if (result) {
-		 REparam.ruleRecord = rule;
-		 REparam.additionalInfo = 'Immediate Rules';
-	   }
- 
-	   REparam.result = result;
-	   resultMap.put(genericid, REparam);
-	 } catch (exception ex) {
-	   Core_MDF_CCP_UtilityClass.logError(ex);
-	 }
-	 return resultMap;
- 
+	   return resultMap;
+
    }
    public class RulesEngineParams {
  
@@ -439,111 +437,111 @@ public without sharing class Core_MDF_Rules_Engine {
    // Input patrameter -> Map<string,List<sobject>> -- Key is Rule Type
    // Map<String,Map<String,RulesEngineParams>> -- first Map , key is Rule Type, key of the first map result is dummy ID
    public static Map < String, Map < String, RulesEngineParams >> executeRulesByObjects(Map < string, List < sobject >> inputMap) {
-	 Map < string, Map < String, RulesEngineParams >> finaResult = new Map < string, Map < String, RulesEngineParams >> ();
-	 Set < String > auditRuleTypeSet = new Set < String > ();
-	 Set < String > objectNameSet = new Set < String > ();
-	 List < sobject > sobjectList = new List < sobject > ();
-	 Map < String, String > RuleTypeSobjectMap = new Map < String, String > ();
-	 Map < string, Set < string >> recMap = new Map < string, Set < string >> ();
-	 if (inputMap != null && inputMap.keySet() != null) {
- 
-	   auditRuleTypeSet = inputMap.keySet();
-	   for (String key: inputMap.keySet()) {
-		 RuleTypeSobjectMap.put(key, getObjectType(inputMap.get(key)[0]));
-		 List < sobject > sObjList = new List < sobject > ();
-		 objectNameSet.add(getObjectType(inputMap.get(key)[0]));
-		 sobjectList.addAll(inputMap.get(key)); //incorrect code -- it is collecting all the object list
-		 if (!recMap.containsKey(key)) {
-		   recMap.put(key, new Set < string > ());
-		 }
-		 recMap.get(key).addAll(objectNameSet);
+	   Map < string, Map < String, RulesEngineParams >> finaResult = new Map < string, Map < String, RulesEngineParams >> ();
+	   Set < String > auditRuleTypeSet = new Set < String > ();
+	   Set < String > objectNameSet = new Set < String > ();
+	   List < sobject > sobjectList = new List < sobject > ();
+	   Map < String, String > RuleTypeSobjectMap = new Map < String, String > ();
+	   Map < string, Set < string >> recMap = new Map < string, Set < string >> ();
+	   if (inputMap != null && inputMap.keySet() != null) {
+
+		   auditRuleTypeSet = inputMap.keySet();
+		   for (String key: inputMap.keySet()) {
+			   RuleTypeSobjectMap.put(key, getObjectType(inputMap.get(key)[0]));
+			   List < sobject > sObjList = new List < sobject > ();
+			   objectNameSet.add(getObjectType(inputMap.get(key)[0]));
+			   sobjectList.addAll(inputMap.get(key)); //incorrect code -- it is collecting all the object list
+			   if (!recMap.containsKey(key)) {
+				   recMap.put(key, new Set < string > ());
+			   }
+			   recMap.get(key).addAll(objectNameSet);
+		   }
 	   }
-	 }
-	 //get the lost of immediate rules and its dependent rules
-	 Map < string, List < Core_MDF_Audit_Rules_Engine__c >> programToRules = Core_MDF_Rules_Engine.getMatchingRules(recMap.keySet(), objectNameSet);
-	 //Start processing the input data
-	 for (String ruleType: inputMap.keyset()) {
-	   Map < String, SObject > newInputMap = new Map < String, SObject > ();
-	   Map < string, Map < String, RulesEngineParams >> resultWrapper = new Map < string, Map < String, RulesEngineParams >> ();
-	   for (Sobject sobj: inputmap.get(ruleType)) {
-		 //Assign Dummy ID to each sboject record input
-		 //added to form map with Existing Id
-		 if (sobj.Id == Null) {
-		   String hashString = '1000' + String.valueOf(Datetime.now().formatGMT('yyyy-MM-dd HH:mm:ss.SSS'));
-		   Blob hash = Crypto.generateDigest('MD5', Blob.valueOf(hashString));
-		   String hexDigest = EncodingUtil.convertToHex(hash);
-		   newInputMap.put(hexDigest, sobj);
-		 } else {
-		   newInputMap.put(sobj.Id, sobj);
-		 }
+	   //get the lost of immediate rules and its dependent rules
+	   Map < string, List < Core_MDF_Audit_Rules_Engine__c >> programToRules = Core_MDF_Rules_Engine.getMatchingRules(recMap.keySet(), objectNameSet);
+	   //Start processing the input data
+	   for (String ruleType: inputMap.keyset()) {
+		   Map < String, SObject > newInputMap = new Map < String, SObject > ();
+		   Map < string, Map < String, RulesEngineParams >> resultWrapper = new Map < string, Map < String, RulesEngineParams >> ();
+		   for (Sobject sobj: inputmap.get(ruleType)) {
+			   //Assign Dummy ID to each sboject record input
+			   //added to form map with Existing Id
+			   if (sobj.Id == Null) {
+				   String hashString = '1000' + String.valueOf(Datetime.now().formatGMT('yyyy-MM-dd HH:mm:ss.SSS'));
+				   Blob hash = Crypto.generateDigest('MD5', Blob.valueOf(hashString));
+				   String hexDigest = EncodingUtil.convertToHex(hash);
+				   newInputMap.put(hexDigest, sobj);
+			   } else {
+				   newInputMap.put(sobj.Id, sobj);
+			   }
+		   }
+		   resultWrapper = Core_MDF_Rules_Engine.matchRecordsAgainstRules(ruleType, RuleTypeSobjectMap.get(ruleType), newInputMap, programToRules);
+
+		   If(resultWrapper != null && resultWrapper.get(ruleType) != null) {
+			   finaResult.put(ruleType, resultWrapper.get(ruleType));
+		   }
 	   }
-	   resultWrapper = Core_MDF_Rules_Engine.matchRecordsAgainstRules(ruleType, RuleTypeSobjectMap.get(ruleType), newInputMap, programToRules);
- 
-	   If(resultWrapper != null && resultWrapper.get(ruleType) != null) {
-		 finaResult.put(ruleType, resultWrapper.get(ruleType));
-	   }
-	 }
-	 return finaResult;
+	   return finaResult;
    }
    public static string getObjectType(sObject obj) {
-	 string objectTypeStr;
-	 Schema.sObjectType objType = obj.getSObjectType();
-	 if (objType != null) {
-	   objectTypeStr = String.valueOf(objType);
-	 }
-	 return objectTypeStr;
-   }
- 
-   public static Map < string, List < Core_MDF_Audit_Rules_Engine__c >> getMatchingRules(Set < string > ruleTypes, Set < String > objectNames) {
-	 Map < string, List < Core_MDF_Audit_Rules_Engine__c >> RuleprgmBTToRulesMap = new Map < string, List < Core_MDF_Audit_Rules_Engine__c >> ();
-	 Map < string, Map < string, set < string >>> RuletyptoFieldMap = new Map < string, Map < string, set < string >>> ();
-	 List < Core_MDF_Audit_Rules_Engine__c > rulesList;
-	 List < String > btList = new List < String > ();
-	 Map < string, set < string >> objectToFieldsMap = new Map < string, set < string >> ();
- 
-	 try {
-	   for (Core_MDF_Audit_Rules_Engine__c rules: [select Name, Core_MDF_Program_Nm__c,
-		   Core_MDF_Budget_Type_Multi_Nm__c, Core_MDF_Region_Cd__c, Core_MDF_Object_Nm__c,
-		   Core_MDF_Field_Nm__c, Core_MDF_Operator_Nm__c, Core_MDF_Value_Txt__c,
-		   Core_MDF_Next_Rule_Id__c, Core_MDF_Immediate_Ind__c, Core_MDF_Next_Rule_False_Id__c,
-		   Core_MDF_ID_Field_Id__c, Core_MDF_Effective_Dt__c, Core_MDF_Rule_Type_Nm__c,
-		   Core_MDF_Rule_Action_on_True_nm__c,
-		   Core_MDF_Rule_Action_on_False_nm__c,
-		   Core_MDF_Approver_Source_on_True_nm__c, Core_MDF_Approver_Source_on_False_nm__c,
-		   Core_MDF_Approver_Source_Value_on_True__c, Core_MDF_Approver_Source_Value_on_False__c,
-		   Core_MDF_Look_Up_Field_Ind__c, Core_MDF_Process_Name__c
- 
-		   from Core_MDF_Audit_Rules_Engine__c
-		   where Core_MDF_Active_Ind__c = true
-		   and Core_MDF_Rule_Type_Nm__c IN: ruleTypes and Core_MDF_Object_Nm__c In: objectNames
-		   order by Core_MDF_Rule_Type_Nm__c, Name
-		 ]) {
-		 if (rules.Core_MDF_Immediate_Ind__c == 'Yes') {
-		   List < String > budgetTypes = new List < String > ();
-		   if (rules.Core_MDF_Budget_Type_Multi_Nm__c != null && rules.Core_MDF_Budget_Type_Multi_Nm__c.contains(';')) {
-			 budgetTypes = rules.Core_MDF_Budget_Type_Multi_Nm__c.split(';');
-		   } else {
-			 budgetTypes.add(rules.Core_MDF_Budget_Type_Multi_Nm__c);
-		   }
-		   for (string btyp: budgetTypes) //swap with immediate rule check
-		   {
-			 {
-			   string key = rules.Core_MDF_Rule_Type_Nm__c + rules.Core_MDF_Program_Nm__c + btyp;
-			   rulesList = RuleprgmBTToRulesMap.get(key) == null ? new List < Core_MDF_Audit_Rules_Engine__c > () : RuleprgmBTToRulesMap.get(key);
-			   rulesList.add(rules);
-			   RuleprgmBTToRulesMap.put(key, rulesList);
-			 }
- 
-		   }
-		 }
-		 GENERIC_RULES_MAP.put(rules.id, rules);
+	   string objectTypeStr;
+	   Schema.sObjectType objType = obj.getSObjectType();
+	   if (objType != null) {
+		   objectTypeStr = String.valueOf(objType);
 	   }
- 
-	 } catch (exception ex) {
-	   Core_MDF_CCP_UtilityClass.logError(ex);
-	 }
-	 return RuleprgmBTToRulesMap;
- 
+	   return objectTypeStr;
+   }
+
+   public static Map < string, List < Core_MDF_Audit_Rules_Engine__c >> getMatchingRules(Set < string > ruleTypes, Set < String > objectNames) {
+	   Map < string, List < Core_MDF_Audit_Rules_Engine__c >> RuleprgmBTToRulesMap = new Map < string, List < Core_MDF_Audit_Rules_Engine__c >> ();
+	   Map < string, Map < string, set < string >>> RuletyptoFieldMap = new Map < string, Map < string, set < string >>> ();
+	   List < Core_MDF_Audit_Rules_Engine__c > rulesList;
+	   List < String > btList = new List < String > ();
+	   Map < string, set < string >> objectToFieldsMap = new Map < string, set < string >> ();
+
+	   try {
+		   for (Core_MDF_Audit_Rules_Engine__c rules: [select Name, Core_MDF_Program_Nm__c,
+				   Core_MDF_Budget_Type_Multi_Nm__c, Core_MDF_Region_Cd__c, Core_MDF_Object_Nm__c,
+				   Core_MDF_Field_Nm__c, Core_MDF_Operator_Nm__c, Core_MDF_Value_Txt__c,
+				   Core_MDF_Next_Rule_Id__c, Core_MDF_Immediate_Ind__c, Core_MDF_Next_Rule_False_Id__c,
+				   Core_MDF_ID_Field_Id__c, Core_MDF_Effective_Dt__c, Core_MDF_Rule_Type_Nm__c,
+				   Core_MDF_Rule_Action_on_True_nm__c,
+				   Core_MDF_Rule_Action_on_False_nm__c,
+				   Core_MDF_Approver_Source_on_True_nm__c, Core_MDF_Approver_Source_on_False_nm__c,
+				   Core_MDF_Approver_Source_Value_on_True__c, Core_MDF_Approver_Source_Value_on_False__c,
+				   Core_MDF_Look_Up_Field_Ind__c, Core_MDF_Process_Name__c
+
+				   from Core_MDF_Audit_Rules_Engine__c
+				   where Core_MDF_Active_Ind__c = true
+				   and Core_MDF_Rule_Type_Nm__c IN: ruleTypes and Core_MDF_Object_Nm__c In: objectNames
+				   order by Core_MDF_Rule_Type_Nm__c, Name
+			   ]) {
+			   if (rules.Core_MDF_Immediate_Ind__c == 'Yes') {
+				   List < String > budgetTypes = new List < String > ();
+				   if (rules.Core_MDF_Budget_Type_Multi_Nm__c != null && rules.Core_MDF_Budget_Type_Multi_Nm__c.contains(';')) {
+					   budgetTypes = rules.Core_MDF_Budget_Type_Multi_Nm__c.split(';');
+				   } else {
+					   budgetTypes.add(rules.Core_MDF_Budget_Type_Multi_Nm__c);
+				   }
+				   for (string btyp: budgetTypes) //swap with immediate rule check
+				   {
+					   {
+						   string key = rules.Core_MDF_Rule_Type_Nm__c + rules.Core_MDF_Program_Nm__c + btyp;
+						   rulesList = RuleprgmBTToRulesMap.get(key) == null ? new List < Core_MDF_Audit_Rules_Engine__c > () : RuleprgmBTToRulesMap.get(key);
+						   rulesList.add(rules);
+						   RuleprgmBTToRulesMap.put(key, rulesList);
+					   }
+
+				   }
+			   }
+			   GENERIC_RULES_MAP.put(rules.id, rules);
+		   }
+
+	   } catch (exception ex) {
+		   Core_MDF_CCP_UtilityClass.logError(ex);
+	   }
+	   return RuleprgmBTToRulesMap;
+
    }
    public static Map < string, Map < String, RulesEngineParams >> matchRecordsAgainstRules(String ruleTypeName, String sObjectName, Map < String, SOBject > recordList, Map < string, List < Core_MDF_Audit_Rules_Engine__c >> RuleprgmBTToRulesMap) {
 	 List < Core_MDF_Audit_Rules_Engine__c > rulesToBeExecuted = new List < Core_MDF_Audit_Rules_Engine__c > ();
@@ -602,7 +600,7 @@ public without sharing class Core_MDF_Rules_Engine {
 	   }
 	   return resultMap;
    }
- 
+
    public static Map < String, RulesEngineParams > runRulesBySObject(String genericId, SObject objRecord, String objTypeName, Core_MDF_Audit_Rules_Engine__c rule) {
 	 boolean resultval = false;
 	 boolean regionCheck = false;

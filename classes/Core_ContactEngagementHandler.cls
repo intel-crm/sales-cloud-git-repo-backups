@@ -6,7 +6,7 @@ Function    : Provides methods for the object Core_Contact_Engagement__c.
 Modification Log :
 * Developer                 Date                    Description
 * ----------------------------------------------------------------------------    
-* Troy Hofeling             04/27/2016              Original version
+* Troy Hofeling             04/27/2016              Original versionhttps://intel--crmdevint3.my.salesforce.com/_ui/common/apex/debug/ApexCSIPage#
 *****************************************************************************************************************************************/
 
 public class Core_ContactEngagementHandler {

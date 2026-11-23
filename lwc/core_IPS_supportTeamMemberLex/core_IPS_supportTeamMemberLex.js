@@ -92,6 +92,7 @@ export default class Core_IPS_supportTeamMemberLex extends NavigationMixin(Light
             projId: this.recordId
         })
         .then(data=>{
+            console.log('data ====== ',data);
             this.existData =data;
             for(let i = 0; i< data.length; i++){
                 let obj = {
@@ -104,6 +105,7 @@ export default class Core_IPS_supportTeamMemberLex extends NavigationMixin(Light
             }
         })
         .catch(error=>{
+            console.log('error occured in fetching team members: '+JSON.stringify(error));
             this.showTable = false;
         })
     }
@@ -148,11 +150,13 @@ export default class Core_IPS_supportTeamMemberLex extends NavigationMixin(Light
             finalStrList = [...finalStrList , JSON.stringify(this.recsToInsert[i])];
         }
         
+        console.log(this.recordId);
         insertTeamMembers({
             inputStrings: finalStrList,
             projId : this.recordId
         })
         .then(data=>{
+            console.log(data);
             if(data === 1){
                 this.dispatchEvent(new ShowToastEvent({
                     message: 'Intel Support Team Member added successfully',

@@ -1,0 +1,10 @@
+<template>
+    <template lwc:if={locationOrCountry}>
+    <lightning-button label="Next" onclick={handleNext} variant="brand">
+    </lightning-button>
+</template>
+<template lwc:else>
+    <lightning-button label="Submit" onclick={handleNext} variant="brand">
+    </lightning-button>  
+</template>
+</template>

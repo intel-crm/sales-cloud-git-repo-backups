@@ -28,7 +28,7 @@
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -122,11 +122,18 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>ACCOUNT_NAME</column>
+            <column>Account.Core_Account_BU_Focus__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>google,google/alphabet,facebook,alibaba,baidu,tencent,amazon</value>
+            <operator>equals</operator>
+            <value>DCG-Cloud</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_DCG_Tier__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DCG-Tier 1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

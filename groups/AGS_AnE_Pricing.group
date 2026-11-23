@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Group xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This public group displays entitlements present in Grant access under &apos;Pricing&apos; category when added in this group</description>
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <name>AGS_AnE -Pricing</name>
+</Group>

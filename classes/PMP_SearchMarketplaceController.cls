@@ -13,7 +13,6 @@ public with sharing class PMP_SearchMarketplaceController extends PMP_SearchWrap
     public static Map<String, List<String>> getSelectedFilters(Id childCatId){ //Changed childCatId from String to Id for getSobjectType()
         
         
-        // System.debug('childCatId : '+childCatId);   //Id of Contextual filter selected.
         Map<String, List<String>> selectedFilters = null;
         //Added by Kartik as part of US598273
         //Checking for Object name to put the correct childCatId
@@ -24,18 +23,14 @@ public with sharing class PMP_SearchMarketplaceController extends PMP_SearchWrap
             
             try{
                 PMP_Category__c childCat = [SELECT id,PMP_Ancestor_Category_Cd__c from PMP_Category__c where id =: childCatId  WITH SECURITY_ENFORCED limit 1];
-                //system.debug('Split : '+ childCat.PMP_Ancestor_Category_Cd__c.split('\\|')[0]);
                 PMP_Category__c parentCat = [SELECT id,PMP_Partner_Product_Category_Cd__c from PMP_Category__c
                                              where PMP_Partner_Product_Category_Cd__c=:childCat.PMP_Ancestor_Category_Cd__c.split('\\|')[0]  WITH SECURITY_ENFORCED ];
                 
-                // System.debug('parentCat.Id : '+parentCat.Id);
                 
                 selectedFilters = new Map<String, List<String>>();
                 List<String> selectedTagIds = new List<String>();
                 selectedTagIds.add(childCatId);
                 
-                // System.debug('parentCat.Id : '+parentCat.Id);
-                // System.debug('Selected Tag Ids : '+selectedTagIds);
                 
                 selectedFilters.put(parentCat.Id, selectedTagIds);
             }catch(Exception e){
@@ -44,19 +39,14 @@ public with sharing class PMP_SearchMarketplaceController extends PMP_SearchWrap
         }else if(sobjectType == 'PMP_Specification__c'){
             try{
                 PMP_Specification__c childSpec = [SELECT id,PMP_Ancestor_Specification_Cd__c from PMP_Specification__c where id =: childCatId   WITH SECURITY_ENFORCED limit 1];
-                //system.debug('Split : '+ childSpec.PMP_Ancestor_Specification_Cd__c.split('\\|')[0]); //Ancestor or root value for regions.
                 PMP_Specification__c parentSpec = [SELECT id,PMP_Product_Parent_Specification_Id__c from PMP_Specification__c
                                                    where PMP_Partner_Product_Specification_Id__c =:childSpec.PMP_Ancestor_Specification_Cd__c.split('\\|')[0]   WITH SECURITY_ENFORCED limit 1];
                 
-                // System.debug('After SOQL Queries');
                 
-                // System.debug('parentSpec.Id = '+parentSpec.Id); //Parent Contextual filter selected.
                 
                 selectedFilters = new Map<String, List<String>>();
                 List<String> selectedTagIds = new List<String>();
                 selectedTagIds.add(childCatId);
-                 //System.debug('Selected Tag Ids : '+selectedTagIds);   //Child Contextual filter selected.
-                 //System.debug('parentSpec.Id = '+parentSpec.Id); 
                 selectedFilters.put(parentSpec.Id, selectedTagIds);
             }catch(Exception e){
                 system.debug('Error in fetching selectedFilters : '+ e.getMessage());
@@ -108,7 +98,8 @@ public with sharing class PMP_SearchMarketplaceController extends PMP_SearchWrap
     @AuraEnabled(cacheable=true)
     public static ArticleData getPartnerArticles(String partnerId, String langCode){
         //return PMP_SearchCompanyArticles.getPartnerArticles(partnerId, langCode);
-        return PMP_CompanyArticles.getArticles(partnerId, langCode);
+       return PMP_CompanyArticles.getArticles(partnerId, langCode);
+      
     }
     
     // @AuraEnabled(cacheable=true)
@@ -209,22 +200,21 @@ public with sharing class PMP_SearchMarketplaceController extends PMP_SearchWrap
         }
         catch(Exception e)
         {
-            //System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
             throw new AuraHandledException(e.getMessage());
         }
         return result;
     }
     //Method to fetch the MS AND OE permission set to hide the lead tab in dashboard - Added by Megha[US528777]
     //Added Employee Permission set as part of requirement - Added by manjula[US613062]    
-    @AuraEnabled
-    public static Boolean isMarketingSpecialistAndOfferingEditor(){
+    /*@AuraEnabled
+    public static Boolean isMarketingSpecialistAndOfferingEditor(){//Offering EOL Sathwika
         
         List<PermissionSetAssignment> permissionSetList = new List<PermissionSetAssignment>();
         Boolean result = false;
         try{
             //Query to fetch MS and OE Permission set
             
-            permissionSetList = [SELECT Id  FROM PermissionSetAssignment WHERE Assignee.Id =: UserInfo.getUserId()
+            //permissionSetList = [SELECT Id  FROM PermissionSetAssignment WHERE Assignee.Id =: UserInfo.getUserId()
             AND (PermissionSet.Name =:PMP_StaticConstants_Partner.MARKETING_SPECIALIST
             OR PermissionSet.Name =:PMP_StaticConstants_Partner.OFFERING_EDITOR
             OR PermissionSet.Name =:PMP_StaticConstants_Partner.EMPLOYEE )];//
@@ -240,12 +230,11 @@ public with sharing class PMP_SearchMarketplaceController extends PMP_SearchWrap
             }
         }
         catch(Exception e){
-            //System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
             throw new AuraHandledException(e.getMessage());
         }
         
         return result;
-    }
+    }*/
     
     @AuraEnabled
     public static boolean isEmployee(){
@@ -301,12 +290,10 @@ public with sharing class PMP_SearchMarketplaceController extends PMP_SearchWrap
                     if(companies.size() > 0) {
                         List<PMP_Company__c> partners = new List<PMP_Company__c>();
                         if(companies[0].PMP_Is_Published_Ind__c) {
-                            partners = [SELECT Id FROM PMP_Company__c WHERE Id = :partnerId AND PMP_Company_Lifecycle_Status_Nm__c = :PMP_StaticConstants_Partner.Published AND PMP_Benefit_Update_Ind__c = FALSE AND PMP_Partner_Benefit_Type__c!='Solutions Marketplace Basic Profile'/*'Solution Marketplace Basic Access'*/];
-                            // system.debug('if Partners: ' +partners);
+                            partners = [SELECT Id FROM PMP_Company__c WHERE Id = :partnerId AND PMP_Company_Lifecycle_Status_Nm__c = :PMP_StaticConstants_Partner.Published AND PMP_Benefit_Update_Ind__c = FALSE AND PMP_Partner_Benefit_Type__c!='Solution Marketplace Basic Access'];
 
                         } else {
-                            partners = [SELECT Id FROM PMP_Company__c WHERE Id = :partnerId AND PMP_Published_Copy_Id__r.PMP_Benefit_Update_Ind__c = FALSE AND PMP_Partner_Benefit_Type__c!='Solutions Marketplace Basic Profile'/*'Solution Marketplace Basic Access'*/];
-                            //system.debug('else partners: ' +partners);
+                            partners = [SELECT Id FROM PMP_Company__c WHERE Id = :partnerId AND PMP_Published_Copy_Id__r.PMP_Benefit_Update_Ind__c = FALSE AND PMP_Partner_Benefit_Type__c!='Solution Marketplace Basic Access'];
 
                         }
                         isActive = partners.size() > 0;                    

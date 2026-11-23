@@ -1,35 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_70194091</developerName>
-        <masterLabel>Prod App Groups</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
-        <useOther>true</useOther>
-        <values>
-            <value>Energy</value>
-        </values>
-        <values>
-            <value>Transportation</value>
-        </values>
-        <values>
-            <value>Industrial</value>
-        </values>
-        <values>
-            <value>Medical</value>
-        </values>
-        <values>
-            <value>Smart Home</value>
-        </values>
-        <values>
-            <value>Retail</value>
-        </values>
-        <values>
-            <value>Emb Other</value>
-        </values>
-    </buckets>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>EXP_PRODUCT_AMOUNT</field>
@@ -54,7 +24,7 @@
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Unified_Global_Customer_Name__c</field>
+        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -64,13 +34,20 @@
         <field>Account.Core_Geo__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5) AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>iotg</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -106,13 +83,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CCG ECG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

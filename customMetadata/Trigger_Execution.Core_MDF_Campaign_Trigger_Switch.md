@@ -8,11 +8,11 @@
     </values>
     <values>
         <field>Class_Name__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Campaign</value>
+        <value xsi:type="xsd:string">Core_MDF_CampaignTriggerHandler</value>
     </values>
     <values>
         <field>Description__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Campaign_Trigger_Switch</value>
+        <value xsi:type="xsd:string">Switch to ON/OFF CCP Campaign Trigger</value>
     </values>
     <values>
         <field>Inactive_for_Profile__c</field>

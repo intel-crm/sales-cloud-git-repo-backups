@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification sent to Deal Win Goal owner on rejection of the approval</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Core_DDR_Email</letterhead>
+    <name>DWG Rejection Notification</name>
+    <style>formalLetter</style>
+    <subject>ALERT: Your Deal Win Goal Has Been Rejected</subject>
+    <textOnly>{!User.Name} has rejected your request for approval on the following Deal Win Goal: 
+
+Deal Win Goal Name: {!Core_Goal__c.Name}
+Category: {!Core_Goal__c.Core_Goal_Category__c}
+BU KPI: {!Core_Goal__c.Core_Goal_BU_Focus_Area__c}
+Rejection Comments: {!ApprovalRequest.Comments} 
+
+Click Here {!Core_Goal__c.Link} to make any necessary changes and resubmit as needed.
+
+_______________________________________________________________________
+This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message. 
+
+Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

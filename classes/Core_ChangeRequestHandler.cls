@@ -260,5 +260,70 @@ public class Core_ChangeRequestHandler
             return baccountTeamMemberCreation;
         }
     }
-
+    
+    public static void accountNameUpdate(Map<Id,Core_Change_Request__c> mapOldChangeRequest, List<Core_Change_Request__c> listNewChangeRequest) {
+        try{
+            Id updateAccountNameRequestId = Schema.SObjectType.Core_Change_Request__c.getRecordTypeInfosByDeveloperName().get('Update_Account_Name_Request').getRecordTypeId();
+            Map<Id,String> mapAccountIdName = new Map<Id,String>();
+            for (Core_Change_Request__c cr : listNewChangeRequest) {
+                if (cr.recordTypeId == updateAccountNameRequestId && cr.Core_Status__c == 'Approved' && mapOldChangeRequest?.get(cr.Id).Core_Status__c != 'Approved')  {
+                    mapAccountIdName.put(cr.Core_Account__c, cr.Core_Account_Name__c);
+                }
+            }
+            
+            List<Account> listUpdateAccounts = [SELECT Id,Name FROM ACCOUNT WHERE Id IN :mapAccountIdName.keySet()];
+            for (Account acc : listUpdateAccounts) {
+                acc.Name = mapAccountIdName.get(acc.Id);        
+            }
+            
+            Database.saveResult[] dsr = Database.update(listUpdateAccounts, false);   
+            UCD_ACM_Logger.error('Core_ChangeRequestHandler','accountNameUpdate',String.join(dsr,';') , null);
+        }catch(Exception e){
+            UCD_ACM_Logger.error('Core_ChangeRequestHandler','accountNameUpdate',e.getMessage() , null);
+        }finally{
+            UCD_ACM_Logger.setLogDetails();   
+        }
+    }
+    
+    public static void accountAddressUpdate(Map<Id,Core_Change_Request__c> mapOldChangeRequest, List<Core_Change_Request__c> listNewChangeRequest) {
+        Id updateAccountAddressRequestId = Schema.SObjectType.Core_Change_Request__c.getRecordTypeInfosByDeveloperName().get('Update_Account_Address_Request').getRecordTypeId();
+        Map<Id,Core_Change_Request__c> mapAccountIdChangeRequest = new Map<Id,Core_Change_Request__c>();
+        for (Core_Change_Request__c cr : listNewChangeRequest) {
+            if (cr.recordTypeId == updateAccountAddressRequestId && cr.Core_Status__c == 'Approved' && mapOldChangeRequest?.get(cr.Id).Core_Status__c != 'Approved') {
+                mapAccountIdChangeRequest.put(cr.Core_Account__c, cr);
+            }
+        }
+        List<Account> listUpdateAccounts = [SELECT Id,Name FROM ACCOUNT WHERE Id IN :mapAccountIdChangeRequest.keySet()];
+        for (Account acc : listUpdateAccounts) {
+            acc.BillingCity = mapAccountIdChangeRequest.get(acc.Id).Core_Requested_Address__City__s;  
+            acc.BillingCountryCode = mapAccountIdChangeRequest.get(acc.Id).Core_Requested_Address__CountryCode__s;
+            acc.BillingStateCode = mapAccountIdChangeRequest.get(acc.Id).Core_Requested_Address__StateCode__s;
+            acc.BillingStreet = mapAccountIdChangeRequest.get(acc.Id).Core_Requested_Address__Street__s;
+            acc.BillingPostalCode = mapAccountIdChangeRequest.get(acc.Id).Core_Requested_Address__PostalCode__s;
+        }
+        
+        Database.saveResult[] dsr = Database.update(listUpdateAccounts, false);   
+        UCD_ACM_Logger.error('Core_ChangeRequestHandler','accountAddressUpdate',String.join(dsr,';') , null);
+        UCD_ACM_Logger.setLogDetails();        
+    }
+    
+    public static void checkRequestor(List<Core_Change_Request__c> listNewChangeRequests) {
+        try{
+            List<Id> listAccountId = new List<Id>();
+            for (Core_Change_Request__c cr : listNewChangeRequests) {
+                listAccountId.add(cr.Core_Account__c);
+            }
+            
+            Map<Id,Account> MapIdAccount = new Map<Id,Account>([SELECT Id,OwnerId FROM ACCOUNT WHERE Id IN :listAccountId]);
+            
+            for (Core_Change_Request__c cr : listNewChangeRequests) {
+                if (UserInfo.getUserId() == MapIdAccount.get(cr.Core_Account__c).OwnerId) {
+                    cr.Core_Status__c = 'Approved';
+                }
+            }
+        }catch(Exception e){
+            UCD_ACM_Logger.error('Core_ChangeRequestHandler','checkRequestor',e.getMessage() , null);
+            UCD_ACM_Logger.setLogDetails();   
+        }
+    } 
 }

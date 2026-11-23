@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>API_Key__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/token</value>
+        <value xsi:type="xsd:string">https://apis-stage.intel.com/v1/auth/token</value>
     </values>
     <values>
         <field>EndPointURL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/m2r/v1/sales-cloud/admin/registration/partners</value>
+        <value xsi:type="xsd:string">https://apis-stage.intel.com/m2r/v1/sales-cloud/admin/registration/partners</value>
     </values>
     <values>
         <field>Password__c</field>

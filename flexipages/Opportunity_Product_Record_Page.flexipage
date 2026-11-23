@@ -36,6 +36,19 @@
             <componentInstance>
                 <componentName>crm_quoteLineRelatedList</componentName>
                 <identifier>c_crm_quoteLineRelatedList</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity.Core_Opportunity_Coverage_Nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Partner-Led Opportunity</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Opportunity.Core_Coverage_Type_Nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Deal Registration</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -67,7 +80,7 @@
         <itemInstances>
             <componentInstance>
                 <componentName>core_ReadOnly_FieldSet_Form</componentName>
-                <identifier>c_core_ReadOnly_FieldSet_Form</identifier>
+                <identifier>c_core_ReadOnly_FieldSet_Form2</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

@@ -14,6 +14,7 @@ global class IPS_APIGEE_Backend_CaseComment_Test {
         Account caseContactAccount = TestUtilities.getAccountRecord();
         caseContactAccount.Name = 'Test Sony Products';
         insert caseContactAccount;
+		System.assert(caseContactAccount.Id != null, 'Record not created');
         
         Contact caseContact = new Contact();
         caseContact.FirstName = 'Test';
@@ -23,7 +24,8 @@ global class IPS_APIGEE_Backend_CaseComment_Test {
         caseContact.AccountId = caseContactAccount.Id;
         caseContact.MailingCountry = 'USA';
         insert caseContact;
-        
+        System.assert(caseContact.Id != null, 'Record not created');
+
         
         // Product2 product = TestUtilities.getProduct();
         // insert product;
@@ -35,6 +37,7 @@ global class IPS_APIGEE_Backend_CaseComment_Test {
         prod.IsActive = true;
         prod.Core_Product_Org__c = 'IPS';//@@New Validation Rule!!!
         insert prod;
+        System.assert(prod.Id != null, 'Record not created');
         
         Core_IPS_Backend_System__c backendSystem = new Core_IPS_Backend_System__c();
         backendSystem.Name = 'Test Backend System';
@@ -42,7 +45,7 @@ global class IPS_APIGEE_Backend_CaseComment_Test {
         backendSystem.Core_IPS_Cloud_Internal_URL__c ='Test.org.com';
         backendSystem.Core_IPS_Deactivated__c = false;
         insert backendSystem;
-        
+        System.assert(backendSystem.Id != null, 'Record not created');
         
         Case caseRecord = new Case();
         caseRecord.Subject = 'Test Subject';
@@ -57,7 +60,7 @@ global class IPS_APIGEE_Backend_CaseComment_Test {
         caseRecord.Core_IPS_Backend_ID__c = '-1';
         caseRecord.Core_IPS_Backend_System__c = backendSystem.Id;
         insert caseRecord;
-        
+        System.assert(caseRecord.Id != null, 'Record not created');
         
         Core_IPS_APIGEE_Custom_Settings__c customSetting = new Core_IPS_APIGEE_Custom_Settings__c();
         customSetting.Name = 'Core_IPS_MyIntel_Integration';
@@ -66,8 +69,9 @@ global class IPS_APIGEE_Backend_CaseComment_Test {
         customSetting.MyIntel_Endpoint_URL__c = 'https://apis.intel.com/m2r/intel-customers/v1/profiles';
         customSetting.MyIntel_GrantType__c = 'client_credentials';
         customSetting.MyIntel_Integration_Class_Name__c = 'IPS_APIGEE_Backend_CaseComment_Test';
-        customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis.intel.com/v1/auth/token';
+        customSetting.MyIntel_Token_Endpoint_URL__c = 'https://apis-sandbox.intel.com/v1/auth/token';
         insert customSetting;
+        System.assert(customSetting.Id != null, 'Record not created');
         List<Core_IPS_Labels__c> IPSLabelList = new List<Core_IPS_Labels__c>();
         
         Core_IPS_Labels__c label0 = new Core_IPS_Labels__c ();
@@ -157,6 +161,7 @@ global class IPS_APIGEE_Backend_CaseComment_Test {
         IPSLabelList.add(label16);
         
         insert IPSLabelList;
+        System.assert(IPSLabelList[0].Id != null, 'Record not created');
         
         Core_IPS_System_Credentails_Apigee__c label17 = new Core_IPS_System_Credentails_Apigee__c();
         label17.Name = 'Core_IPS_CaseComment_Update';

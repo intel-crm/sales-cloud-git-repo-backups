@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Richard Peel</description>
+    <description>EMP of Bartek Piasecki</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11687945_Aneta_Zonengerg</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10101634_Richard_Peel</parentRole>
+    <parentRole>EMP_11633924_Bartek_Piasecki</parentRole>
 </Role>

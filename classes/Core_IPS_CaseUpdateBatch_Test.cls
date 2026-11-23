@@ -18,8 +18,9 @@ private class Core_IPS_CaseUpdateBatch_Test {
         userList[0].profileId=prof.id;
         insert userlist;        
         SystUserRunAs = userList[0];
-        
-        Integer recordLimit = 30;
+        Core_IPS_User_Manager_Tracker__c managerTracker = new Core_IPS_User_Manager_Tracker__c(Name=userList.get(0).Id);
+        insert managerTracker; 
+        Integer recordLimit = 10;
         System.runAs(SystUserRunAs) {
         
             Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
@@ -68,6 +69,7 @@ private class Core_IPS_CaseUpdateBatch_Test {
             for(Case objCase : lstCase) {
                 objCase.accountId = ListOfAccounts.get(i).Id;
                 objCase.ContactId = ListOfContacts.get(i).Id;
+                objCase.Core_IPS_Owner_Manager__c = lstUser[1].Id;
                 i++;
             }            
             insert lstCase; 
@@ -78,7 +80,7 @@ private class Core_IPS_CaseUpdateBatch_Test {
                 else
                     objCase.OwnerId = lstUser[4].Id;
             }           
-            update lstCase;
+            //update lstCase;
         }
     }
     
@@ -91,13 +93,13 @@ private class Core_IPS_CaseUpdateBatch_Test {
     }
     
     static testmethod void TestCore_IPS_ScheduleCaseUpdateBatch() {
-    getRecords();
+    //getRecords();
     
        Test.startTest();        
     
           // Schedule the test job
     
-          String jobId = System.schedule('Core_IPS_ScheduleCaseUpdateBatch', Core_IPS_ScheduleCaseUpdateBatch.CRON_EXP, new Core_IPS_ScheduleCaseUpdateBatch());
+        String jobId = System.schedule('Weekly Case Owners Manager Update', Core_IPS_ScheduleCaseUpdateBatch.CRON_EXP, new Core_IPS_ScheduleCaseUpdateBatch());
     
        Test.stopTest();
 

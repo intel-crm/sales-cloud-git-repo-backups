@@ -1,15 +1,15 @@
 {
   "componentVariants" : [ {
-    "id" : "138d2226-90bc-46cc-8137-ac51294326ae",
+    "id" : "1e4ef97d-fcec-4bc7-8dd4-7ef7406afcfc",
     "propertyOverrides" : {
       "componentAttributes" : {
         "NavigationMenuEditorRefresh" : "External_Menu"
       }
     },
-    "targetId" : "24b01f2a-3375-45fb-9a93-d3749608f345",
+    "targetId" : "c6425982-bf94-4b86-a887-ba23024d5f1d",
     "type" : "componentVariant"
   } ],
   "developerName" : "Default_Navigation_Menu_Component_Properties",
-  "id" : "8af833ee-6a67-4e75-a31f-86ab158a6845",
+  "id" : "3fb0c504-7551-4bbf-8415-1bf2a5bf9eff",
   "type" : "experienceVariation"
 }

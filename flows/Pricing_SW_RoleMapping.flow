@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Apex_Class</name>
+        <label>Apex Class</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <actionName>Pricing_SW_RoleMapping</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Display_Message</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>roleName</name>
+            <value>
+                <elementReference>roleName</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>userId</name>
+            <value>
+                <elementReference>userId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pricing_SW_RoleMapping</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>output</assignToReference>
+            <name>message</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <choices>
+        <name>SoftwareCPQCustomWorkloadApprover</name>
+        <choiceText>Software CPQ Custom Workload Approver</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ Custom Workload Approver</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>SoftwareCPQLevel1Approvers</name>
+        <choiceText>Software CPQ Level1 Approvers</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ Level1 Approvers</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>SoftwareCPQLevel2Approvers</name>
+        <choiceText>Software CPQ Level2 Approvers</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ Level2 Approvers</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>SoftwareCPQLevel3Approvers</name>
+        <choiceText>Software CPQ Level3 Approvers</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ Level3 Approvers</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>SoftwareCPQLevel4Approvers</name>
+        <choiceText>Software CPQ Level4 Approvers</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ Level4 Approvers</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>SoftwareCPQLevel5Approvers</name>
+        <choiceText>Software CPQ Level5 Approvers</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ Level5 Approvers</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>SoftwareCPQRead</name>
+        <choiceText>Software CPQ Read</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ Read</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>SoftwareCPQReadAll</name>
+        <choiceText>Software CPQ Read All</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ Read All</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>SoftwareCPQUser</name>
+        <choiceText>Software CPQ User</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software CPQ User</stringValue>
+        </value>
+    </choices>
+    <environments>Default</environments>
+    <interviewLabel>Pricing_SW_RoleMapping {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pricing_SW_RoleMapping</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Display_Message</name>
+        <label>Display Message</label>
+        <locationX>176</locationX>
+        <locationY>350</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>message</name>
+            <fieldText>&lt;p&gt;{!output}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Input_Varibales</name>
+        <label>Input Varibales</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Apex_Class</targetReference>
+        </connector>
+        <fields>
+            <name>userId</name>
+            <dataType>String</dataType>
+            <fieldText>userId</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>roleName</name>
+            <choiceReferences>SoftwareCPQUser</choiceReferences>
+            <choiceReferences>SoftwareCPQLevel1Approvers</choiceReferences>
+            <choiceReferences>SoftwareCPQLevel2Approvers</choiceReferences>
+            <choiceReferences>SoftwareCPQLevel3Approvers</choiceReferences>
+            <choiceReferences>SoftwareCPQRead</choiceReferences>
+            <choiceReferences>SoftwareCPQReadAll</choiceReferences>
+            <choiceReferences>SoftwareCPQCustomWorkloadApprover</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>roleName</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Input_Varibales</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>output</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>SoftwareApprover</name>
+        <dataType>Picklist</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

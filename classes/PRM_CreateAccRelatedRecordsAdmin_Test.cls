@@ -100,7 +100,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
         c.MailingCountry = 'India';
-        c.Email='hariharasudhan.meiyappan@spamok.com';
+        c.Email='hariharasudhan.meiyappan@mailinator.com';
         c.Core_Preferred_Language__c = '';
         c.Core_eRPM_Language_Code__c = '';
         c.RecordTypeId = contactRecordType;
@@ -112,7 +112,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         Contact c1 = PRM_TestUtility.getContact();
         c1.AccountId = a2.Id;
         c1.MailingCountry = 'India';
-        c1.Email='accountnew_new@spamok.com';
+        c1.Email='accountnew_new@mailinator.com';
         c1.Core_Preferred_Language__c = '';
         c1.Core_eRPM_Language_Code__c = '';
         c1.RecordTypeId = contactRecordType;
@@ -124,7 +124,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         Contact c2 = PRM_TestUtility.getContact();
         c2.AccountId = a3.Id;
         c1.MailingCountry = 'India';
-        c2.Email='accountnew_secondnew@spamok.com';
+        c2.Email='accountnew_secondnew@mailinator.com';
         c2.Core_Preferred_Language__c = '';
         c2.Core_eRPM_Language_Code__c = '';
         c2.RecordTypeId = contactRecordType;
@@ -320,7 +320,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
         c.MailingCountry = 'India';
-        c.Email='hariharasudhan.meiyappan@spamok.com';
+        c.Email='hariharasudhan.meiyappan@mailinator.com';
         c.Core_Preferred_Language__c = 'ENG';
         c.Core_eRPM_Language_Code__c = 'ENG';
         c.RecordTypeId = contactRecordType;
@@ -465,7 +465,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
         c.MailingCountry = 'India';
-        c.Email='hariharasudhan.meiyappan@spamok.com';
+        c.Email='hariharasudhan.meiyappan@mailinator.com';
         c.Core_Preferred_Language__c = 'ENG';
         c.Core_eRPM_Language_Code__c = 'ENG';
         c.RecordTypeId = contactRecordType;
@@ -579,7 +579,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         prmRegRequest.PRM_Partner_Role__c='Service Provider';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
-        prmRegRequest.PRM_Email_ID__c='checkuser@spamok.com';
+        prmRegRequest.PRM_Email_ID__c='checkuser@malinator.com';
         //prmRegRequest.PRM_Job_Function__c='Branch Manager';
         prmRegRequest.PRM_Profession__c='PROFESSOR';
          prmRegRequest.PRM_Contact_Country__c='US';
@@ -626,7 +626,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
-        c.Email='hariharasudhan.meiyappan@spamok.com';
+        c.Email='hariharasudhan.meiyappan@mailinator.com';
         c.MailingCountry='USA';
         c.Core_Preferred_Language__c = 'ENG';
         c.Core_eRPM_Language_Code__c = 'ENG';
@@ -693,7 +693,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         registrationDetailsMap1.put('PartnerSegment','Data Center');
         registrationDetailsMap1.put('ContactFirstName','test_first');
         registrationDetailsMap1.put('ContactLastName','test_last');
-        registrationDetailsMap1.put('ContactEmail','test.meiyappan@spamok.com');
+        registrationDetailsMap1.put('ContactEmail','test.meiyappan@mailinator.com');
         registrationDetailsMap1.put('PreferredLanguage','English');
         registrationDetailsMap1.put('ContactCountry','USA');
 		//registrationDetailsMap1.put('SuppressEmail','false');        
@@ -764,7 +764,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
-        c.Email='hariharasudhan.meiyappan@spamok.com';
+        c.Email='hariharasudhan.meiyappan@mailinator.com';
         c.MailingCountry='USA';
         c.Core_Preferred_Language__c = 'ENG';
         c.Core_eRPM_Language_Code__c = 'ENG';
@@ -781,7 +781,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         prmRegRequest.PRM_Partner_Role__c='Service Provider';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
-        prmRegRequest.PRM_Email_ID__c='checkuser@spamok.com';
+        prmRegRequest.PRM_Email_ID__c='checkuser@malinator.com';
         //prmRegRequest.PRM_Job_Function__c='Branch Manager';
         prmRegRequest.PRM_Profession__c='PROFESSOR';
          prmRegRequest.PRM_Contact_Country__c='US';
@@ -822,7 +822,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
-        c.Email='hariharasudhan.meiyappan@spamok.com';
+        c.Email='hariharasudhan.meiyappan@mailinator.com';
         c.FirstName = 'Polygonst';
         c.LastName = 'User';
         c.MailingCountry='USA';
@@ -871,7 +871,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
        
         
         List<String> contactList = new List<String>();
-        contactList.add('checkuser@spamok.com');
+        contactList.add('checkuser@malinator.com');
         
         PRM_Registration_Request__c prmRegRequest = new PRM_Registration_Request__c();
         prmRegRequest.Name = 'checkuser';
@@ -880,7 +880,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         prmRegRequest.PRM_Partner_Role__c='Service Provider';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
-        prmRegRequest.PRM_Email_ID__c='checkuser@spamok.com';
+        prmRegRequest.PRM_Email_ID__c='checkuser@malinator.com';
         //prmRegRequest.PRM_Job_Function__c='Branch Manager';
         prmRegRequest.PRM_Profession__c='PROFESSOR';
          prmRegRequest.PRM_Contact_Country__c='US';
@@ -941,7 +941,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = a.Id;
-        c.Email='hariharasudhan.meiyappan@spamok.com';
+        c.Email='hariharasudhan.meiyappan@mailinator.com';
         c.MailingCountry='USA';
         c.Core_Preferred_Language__c = 'ENG';
         c.Core_eRPM_Language_Code__c = 'ENG';
@@ -968,7 +968,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         prmRegRequest.PRM_Partner_Role__c='Guest';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
-        prmRegRequest.PRM_Email_ID__c='checkuser@spamok.com';
+        prmRegRequest.PRM_Email_ID__c='checkuser@malinator.com';
         prmRegRequest.PRM_Account_Phone__c = '9000000009';//RT
         //prmRegRequest.PRM_Job_Function__c='Branch Manager';
         prmRegRequest.PRM_Profession__c='PROFESSOR';
@@ -1021,7 +1021,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         
         /*Contact c2 = PRM_TestUtility.getContact();
         c2.AccountId = a2.Id;
-        c2.Email='Accountsecond.second@spamok.com';
+        c2.Email='Accountsecond.second@mailinator.com';
         c2.MailingCountry='IND';
         c2.Core_Preferred_Language__c = 'ENG';
         c2.Core_eRPM_Language_Code__c = 'ENG';

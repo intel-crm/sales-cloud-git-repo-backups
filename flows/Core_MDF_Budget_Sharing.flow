@@ -283,7 +283,7 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>Core_MDF_ClaimActAllocRecTypeMapping__mdt</objectType>
+        <objectType>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</objectType>
     </variables>
     <variables>
         <name>CollPGMRec</name>

@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION_POR</name>
     <style>none</style>
     <subject>Atualização da conta Intel® Partner Alliance</subject>
-    <textOnly>Confirme os detalhes da conta
+    <textOnly>Usuário removido
 
 {!UserName},
 
-Uma pessoa foi adicionada à conta {!Account.Name} do programa Intel® Partner Alliance por um representante da Intel ou por outro contato existente em sua empresa.
+
+Ocorreu uma alteração em sua conta do programa Intel® Partner Alliance. {!ContactEmail} foi removido da conta da sua empresa.
 
 Nome da empresa: {!Account.Name}
 ID da empresa: {!Account.AccountNumber}
 Contato removido: E-mail {!ContactEmail}
 Relação (Função): {!AcrRoles}
 
-Se você não aprovou essa alteração, faça logon para remover o contato.
+Se essa alteração não foi autorizada, faça logon para atualizar sua conta.
+Caso tenha alguma dúvida, entre em contato conosco em https://signin.intel.com/ContactUs?Culture=pt-br.
 
-Se tiver perguntas, entre em contato conosco em Suporte
 
 
 Obrigado,

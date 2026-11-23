@@ -6,7 +6,7 @@
         <name>Error_Message_for_Accepted_Quotes</name>
         <label>Error Message for Accepted Quotes</label>
         <locationX>578</locationX>
-        <locationY>611</locationY>
+        <locationY>719</locationY>
         <customErrorMessages>
             <errorMessage>{!$Label.Pricing_SW_QuoteDeletionAcceptedQuote}</errorMessage>
             <isFieldError>false</isFieldError>
@@ -16,7 +16,7 @@
         <name>Error_Message_for_Approved_Submitted_Opportunity</name>
         <label>Error Message for Approved/Submitted Opportunity</label>
         <locationX>50</locationX>
-        <locationY>611</locationY>
+        <locationY>719</locationY>
         <customErrorMessages>
             <errorMessage>{!$Label.Pricing_SW_QuoteDeletionOppStatus}</errorMessage>
             <isFieldError>false</isFieldError>
@@ -26,7 +26,7 @@
         <name>Error_Message_for_Non_Draft_Quotes</name>
         <label>Error Message for Non Draft Quotes</label>
         <locationX>1106</locationX>
-        <locationY>611</locationY>
+        <locationY>719</locationY>
         <customErrorMessages>
             <errorMessage>{!$Label.Pricing_SW_RestrictQuoteDeletionStatusNotDraft}</errorMessage>
             <isFieldError>false</isFieldError>
@@ -36,7 +36,7 @@
         <name>Error_Message_for_Opp_Product_Status_Lost</name>
         <label>Error Message for Opp Product Status Lost</label>
         <locationX>314</locationX>
-        <locationY>611</locationY>
+        <locationY>719</locationY>
         <customErrorMessages>
             <errorMessage>{!$Label.Pricing_SW_OppProductStatusLostRestrictQuoteDeletion}</errorMessage>
             <isFieldError>false</isFieldError>
@@ -45,9 +45,21 @@
     <decisions>
         <name>Quote_Accepted_or_Opp_Submitted_Approved</name>
         <label>Quote Accepted or Opp Submitted/Approved</label>
-        <locationX>710</locationX>
-        <locationY>503</locationY>
+        <locationX>578</locationX>
+        <locationY>611</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Should_we_need_to_bypass_flow</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_User_Details.Pricing_SW_FlowByPass__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Should we need to bypass flow</label>
+        </rules>
         <rules>
             <name>Design_Win_Approval_Status</name>
             <conditionLogic>(1 OR 2) AND 3</conditionLogic>
@@ -177,7 +189,7 @@
     <recordLookups>
         <name>Get_Number_of_Quotes_from_Opportunity</name>
         <label>Get Number of Quotes from Opportunity</label>
-        <locationX>710</locationX>
+        <locationX>578</locationX>
         <locationY>287</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -212,11 +224,11 @@
     <recordLookups>
         <name>Get_Opportunity_Products_with_Lost_Status</name>
         <label>Get Opportunity Products with Lost Status</label>
-        <locationX>710</locationX>
+        <locationX>578</locationX>
         <locationY>395</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Quote_Accepted_or_Opp_Submitted_Approved</targetReference>
+            <targetReference>Get_User_Details</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -237,11 +249,39 @@
         <object>OpportunityLineItem</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_User_Details</name>
+        <label>Get User Details</label>
+        <locationX>578</locationX>
+        <locationY>503</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Quote_Accepted_or_Opp_Submitted_Approved</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Pricing_SW_FirstNameofUser__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.FirstName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricing_SW_LastNameofUser__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.LastName</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Pricing_SW_ByPassQuoteDeletetionFlow__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>Updating_Software_Flag_to_False</name>
         <label>Updating Software Flag to False</label>
         <locationX>842</locationX>
-        <locationY>611</locationY>
+        <locationY>719</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -259,7 +299,7 @@
         <object>Opportunity</object>
     </recordUpdates>
     <start>
-        <locationX>584</locationX>
+        <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Number_of_Quotes_from_Opportunity</targetReference>

@@ -1231,7 +1231,7 @@
         <defaultConnectorLabel>Record Valid for Approval</defaultConnectorLabel>
         <rules>
             <name>Record_Not_Valid_for_Approval</name>
-            <conditionLogic>(1 OR 2) AND (3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11)</conditionLogic>
+            <conditionLogic>(1 OR 2) AND (3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.PRM_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -1300,13 +1300,6 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Dev_Cloud_Ent</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>IPA - Portal</stringValue>
                 </rightValue>
             </conditions>
             <connector>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>If Vat Info exists</description>
+        <name>If_Vat_Info_exists</name>
+        <label>If Vat Info exists</label>
+        <locationX>468</locationX>
+        <locationY>373</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Vat_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_existing_Vat_Info_if_any</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>isChangeInClaimAmountOrBankField</targetReference>
+            </connector>
+            <label>Vat Exists</label>
+        </rules>
+        <rules>
+            <name>Vat_does_not_exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_existing_Vat_Info_if_any</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Vat_Info</targetReference>
+            </connector>
+            <label>Vat does not exist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isChangeInClaimAmountOrBankField</name>
+        <label>isChangeInClaimAmountOrBankField</label>
+        <locationX>182</locationX>
+        <locationY>493</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>compare_old_claim_Amount_with_current_record</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>CreateVATRecord.Core_MDF_Claim_Id__r.Amount</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Amount</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CreateVATRecord.Core_MDF_Claim_Id__r.Core_MDF_Bank__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Core_MDF_Bank__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Existing_Vat_0</targetReference>
+            </connector>
+            <label>compare old  claim Amount with current record</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Create VAT Record for VAT Eligible {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create VAT Record for VAT Eligible Claim</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create Vat Info</description>
+        <name>Create_Vat_Info</name>
+        <label>Create Vat Info</label>
+        <locationX>490</locationX>
+        <locationY>493</locationY>
+        <inputAssignments>
+            <field>Core_MDF_Claim_Id__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_MDF_Claim_VAT_Info__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get existing Vat Info if any</description>
+        <name>Get_existing_Vat_Info_if_any</name>
+        <label>Get existing Vat Info if any</label>
+        <locationX>468</locationX>
+        <locationY>253</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>If_Vat_Info_exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_Claim_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_MDF_Claim_VAT_Info__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Existing Vat</description>
+        <name>Update_Existing_Vat_0</name>
+        <label>Update Existing Vat</label>
+        <locationX>50</locationX>
+        <locationY>613</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_Claim_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_MDF_Status_Txt__c</field>
+            <value>
+                <stringValue>Pending Documents</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_MDF_Claim_VAT_Info__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>342</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_existing_Vat_Info_if_any</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_VAT_Eligibility_Ind__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_VAT_Hold_Ind__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Status__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Hold</stringValue>
+            </value>
+        </filters>
+        <object>PartnerFundClaim</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>CreateVATRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_MDF_Claim_VAT_Info__c</objectType>
+    </variables>
+    <variables>
+        <description>Existing Vat Info</description>
+        <name>vat_info</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Core_MDF_Claim_VAT_Info__c</objectType>
+    </variables>
+</Flow>

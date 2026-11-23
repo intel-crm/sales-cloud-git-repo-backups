@@ -1,0 +1,45 @@
+<apex:page Controller="seismic.SeismicFolderPageController" action="{!Init}" showHeader="true" sidebar="false" >
+
+<script type="text/javascript" src="{!URLFOR($Resource.jquery_3_6_1_min_js)}"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.jquery_base64_js)}"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.lodash_min_js)}"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.embeddedpage_js)}"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.SeismicIntegratedSDK_js)}"></script>
+<script type="text/javascript" src="{!JSENCODE(CanvasSDKControllerUrlString)}"></script>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Seismic Folder Button</title>
+    <style type="text/css">
+        html, body { height: 100%; margin: 0; padding: 0; }
+        body { background-color: white; font-size: 12px !important; line-height: 1.2 !important; }
+        body #contentWrapper .bodyDiv .outerNoSidebar .noSidebarCell { padding: 0; }
+        body #contentWrapper #bodyTable { padding: 0; }
+        body #contentWrapper #bodyTable #seismicAppContainer { height: 800px !important; }
+        body.sfdcBody { padding: 0 !important; }
+        body.sfdcBody.apexPageInline { margin: 0; }
+    </style>
+</head>
+<body>
+   <apex:pageMessages id="messages" escape="false" rendered="{!HasInvalidSubscription}"/>
+   <apex:canvasApp applicationName="SeismicCanvasApp" namespacePrefix="seismic" developerName="SeismicCanvasApp" parameters="{!CanvasAppParamsString}" width="100%" scrolling="auto" rendered="{!IF(HasInvalidSubscription,false,true)}"/>
+	<script type="text/javascript">
+		function handleOpenDetailRequest(mainPageData){
+      var url = '{!JSENCODE(DetailPageUrl)}' + '#' + $.base64.encode(JSON.stringify(mainPageData));
+      window.top.location.href = encodeURI(url);
+    }
+    
+    Sfdc.canvas.controller.subscribe({name : 'showDetail', onData : function (e) {
+      handleOpenDetailRequest(e.data);
+    }});
+    Sfdc.canvas.controller.subscribe({name : 'goBack', onData : function (e) {
+      handleOpenDetailRequest(e.backUrl);
+    }});
+		
+        function handleGoBackRequest(backUrl){
+            window.top.location.href = encodeURI(backUrl);
+        }
+	</script>
+</body>
+</apex:page>

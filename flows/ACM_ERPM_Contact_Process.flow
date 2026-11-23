@@ -12,18 +12,21 @@
             <name>contactId</name>
             <value>
                 <elementReference>$Record.Id</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <inputParameters>
             <name>priorMobilePhone</name>
             <value>
                 <elementReference>$Record__Prior.MobilePhone</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <inputParameters>
             <name>priorPhone</name>
             <value>
                 <elementReference>$Record__Prior.Phone</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <nameSegment>Core_ERPMFlowRouter</nameSegment>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+	<title>인텔 등록 확인</title>
+	<style>/* Font Definitions */ @font-face { font-family: "Intel Clear"; panose-1: 2 11 5 4 2 2 2 2 2 4; mso-font-charset: 0; mso-generic-font-family: swiss; mso-font-pitch: variable; mso-font-signature: 3 0 0 0 1 0; } /* Style Definitions */ a { color: #003C71; font-family: "Intel Clear","TAHOMA" !important; } p.uppercase { text-transform: uppercase; }</style>
+</head>
+<body style="font-family: 'Intel Clear','TAHOMA'; background-color:#f9f9f9;background: url('https://tstcqcontent-ssl.cps.intel.com/etc/designs/intel/us/en/images/gradiantbg-body.png') repeat-x scroll left top #f9f9f9;      height: 100%;      outline: medium none;">
+<table style="background-color: #ffffff; margin: 0 50px; overflow: hidden; width: 550pt; line-height: 20px; border: 1px solid #E5E5E5;">
+<tbody>
+<tr style="height: 320px;">
+<td colspan="2" style="color: #086db6; font-size: 24pt; padding-top: 50px; padding-bottom: 12px; padding-left: 50px; font-family: 'Intel Clear', TAHOMA; height: 320px;">
+<p style="margin-bottom: 0px; margin-top: 0px; font-family: 'Intel Clear Pro','TAHOMA'; color: #003c71; font-size: 28pt;"><img src="https://messagecenter.intel.com/v1/images/uploads/34749eb0-3742-11ec-9e86-55b8d111e922.png" alt="" title="devzone-premier-header_720x160@2x.png" /></p>
+</td>
+</tr>
+<tr style="height: 17px;">
+<td colspan="2" style="padding-left: 40px; padding-right: 40px; height: 17px;"><hr style="background-color: #e5e5e5; color: #e5e5e5; border: 0 none; height: 1px;" /></td>
+</tr>
+<tr style="height: 20px;">
+<td colspan="2" id="emailMainDiv" style="font-family: 'Intel Clear', TAHOMA; padding-left: 50px; padding-top: 30px; height: 20px;">
+<p style="margin-bottom: 0px; margin-top: 0px;"><b style="font-family: 'Intel Clear','TAHOMA'; color: #086db6; font-size: 10pt;">{!Contact.FirstName} {!Contact.LastName} 님, 안녕하십니까?</b></p>
+</td>
+</tr>
+<tr id="emailBody" style="height: 152px;">
+<td colspan="2" style="padding-left: 50px; padding-top: 15px; padding-right: 50px; height: 152px;">
+<p style="margin-bottom: 0px; margin-top: 0px; font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">인텔의 Developer Zone에 관심을 가져주셔서 감사합니다. 하지만 신청을 검토한 결과 프리미어 계정에 대한 요청이 거부되었음을 알려 드립니다. 요청 거부에 대한 몇몇 이유에는 다음이 포함됩니다.</p>
+<ul>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">신청이 Developer Zone 프리미어 프로그램 기준을 충족하지 않습니다.</li>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;"><span>Developer Zone 프리미어</span> 액세스에 대한 요청에 개인 이메일이 허용되지 않습니다. 요청은 회사 이메일로 제출해야 합니다.</li>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">인텔 <span>Developer Zone</span>에 대한 프리미어 액세스에는 인텔&reg;과 회사 간 기업 비공개 계약(CNDA)이 필요합니다. </li>
+</ul>
+<p style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt; margin-top: 0px; margin-bottom: 0px;">표준 계정을 사용하여 Developer Zone의 공개 콘텐츠를 계속 이용할 수 있습니다. 요청이 실수로 거부되었다고 생각되면 전화나 이메일로 <a href="https://www.intel.co.kr/content/www/kr/ko/forms/support/my-intel-sign-on-support.html">계정 지원에</a> 문의하여 자세한 정보를 확인하십시오.</p>
+</td>
+</tr>
+<tr id="salutationDiv" style="padding-bottom: 5px; height: 52px;">
+<td colspan="2" style="font-family: 'Intel Clear', TAHOMA; font-size: 10pt; color: #666666; padding-left: 50px; padding-top: 14px; line-height: 18px; height: 52px;">감사합니다.<br />등록 관리자<br />개발자 존</td>
+</tr>
+<tr style="height: 52.6667px;">
+<td colspan="2" style="padding-left: 50px; padding-right: 110px; padding-top: 25px; line-height: 18px; height: 52.6667px;">
+<p style="margin-top: 0px; margin-bottom: 0px; font-family: 'Intel Clear','TAHOMA'; font-size: 7.5pt; color: #62686e;"><span style="font-family: calibri; font-size: 11pt;">이 메일에 회신하지 마십시오. 이 메일은 자동 회신된 메일입니다. 이메일을 계속 수신하려면 주소록에 추가해 주십시오.</span><br /><br /><span style="font-family: calibri; font-size: 11pt;">또한 인텔에는 프로젝트 관련 리소스 도움을 받을 수 있는 여러 리셀러가 있습니다. </span><span style="font-family: calibri; font-size: 11pt;"> </span></p>
+<ul>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>인텔 솔루션 문서 라이브러리</em>: <a href="https://builders.intel.com/solutionslibrary">https://builders.intel.com/solutionslibrary</a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>제품과 가격 관련 질문의 경우 마더보드 OEM, 인텔 공인 디스트리뷰터(IAD) 또는 인텔 공인 공급업체(IAS)에 문의하십시오. IAD 또는 IAS 목록:</em> <a href="https://www.intel.com/content/www/us/en/partner/where-to-buy/overview.html">https://www.intel.com/content/www/kr/ko/partner/where-to-buy/overview.html</a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>인텔 프로그램 정보 및 지원:</em> <a href="https://www.intel.co.kr/partner-alliance">https://www.intel.co.kr/partner-alliance</a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>제품 정보:</em> <u></u><a href="https://ark.intel.com/">https://ark.intel.com/</a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>소프트웨어 및 드라이버 다운로드 센터:</em> <strong></strong><a href="https://downloadcenter.intel.com/">https://downloadcenter.intel.com/</a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>Intel Community:</em> <em></em><a href="https://community.intel.com/?profile.language=ko">https://community.intel.com</a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>인텔 솔루션 마켓플레이스 카탈로그:</em> <a href="https://marketplace.intel.com/">https://marketplace.intel.com/</a><a href="https://marketplace.intel.com/"></a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>인텔 고객 지원:</em> <a href="https://www.intel.com/support">https://www.intel.com/support</a></span></li>
+</ul>
+</td>
+</tr>
+<tr style="height: 17px;">
+<td colspan="2" style="padding-left: 40px; padding-right: 40px; padding-top: 15px; height: 17px;" align="center"><hr style="background-color: #e5e5e5; color: #e5e5e5; border: 0 none; height: 1px;" /></td>
+</tr>
+<tr id="emailFooter" style="height: 32px;">
+<td style="padding-left: 50px; font-family: 'Intel Clear', TAHOMA; font-size: 9pt; line-height: 16px; color: #666666; padding-top: 13px; height: 32px;">인텔은 귀하의 개인 정보를 보호하기 위해 노력합니다. 자세한 내용은<br /><a href="http://www.intel.co.kr/content/www/kr/ko/privacy/intel-privacy-notice.html" style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; text-decoration: none; color: #086db6 !important; outline: none;">인텔 개인 정보 취급 방침을</a> 확인해 주십시오. <a href="http://www.intel.co.kr/content/www/kr/ko/privacy/intel-cookie-notice.html" style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; text-decoration: none; color: #086db6 !important; outline: none;">인텔 쿠키 공지</a></td>
+<td rowspan="2" style="font-family: 'Intel Clear', TAHOMA; padding-top: 10px; height: 48px;">
+<div style="margin-right: -20px;"><img hspace="0px;" src="http://www.intel.com/etc/designs/intel/us/en/images/myIntelLogo.jpg" height="62px" /></div>
+</td>
+</tr>
+<tr id="emailFooter2" style="height: 16px;">
+<td style="padding-left: 50px; font-family: 'Intel Clear', TAHOMA; font-size: 9pt; color: #666666; padding-top: 14px; line-height: 16px; height: 16px;"><a href="http://www.intel.co.kr/content/www/kr/ko/legal/terms-of-use.html" style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; text-decoration: none; color: #086db6 !important;">법률 정보</a> &verbar; <a href="http://www.intel.co.kr/content/www/kr/ko/legal/trademarks.html" style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; text-decoration: none; color: #086db6 !important; outline: none;">상표</a> &verbar; <span style="font-size: 10pt; font-family: 'Intel Clear','TAHOMA'; color: #666666;">&copy;</span> <span style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; color: #666666;">인텔사</span></td>
+</tr>
+<tr style="height: 10px;">
+<td style="display: none; height: 10px;"></td>
+</tr>
+<tr style="height: 53px;">
+<td style="border: none; padding: 10.5pt 0.75pt 10.5pt 33pt; height: 53px;">
+<p style="line-height: 15.0pt;"><span style="font-size: 11px;">!%TemplateCode%!</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

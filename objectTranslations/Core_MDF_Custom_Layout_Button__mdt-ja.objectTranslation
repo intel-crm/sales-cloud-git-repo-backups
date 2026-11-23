@@ -13,11 +13,15 @@
         <name>Core_MDF_Button_Name_nm__c</name>
         <picklistValues>
             <masterLabel>Cancel Campaign</masterLabel>
-            <translation>キャンペーンのキャンセル</translation>
+            <translation>キャンペーンをキャンセル</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Cancel Claim</masterLabel>
             <translation>請求のキャンセル</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancel VAT</masterLabel>
+            <translation>VATをキャンセル</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Change Owner</masterLabel>
@@ -33,7 +37,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Close</masterLabel>
-            <translation>終了する</translation>
+            <translation>アクティビティーの終了</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Complete PIC Review</masterLabel>
@@ -70,6 +74,10 @@
         <picklistValues>
             <masterLabel>Notify Partner</masterLabel>
             <translation><!-- Notify Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recall to Payment Clearance</masterLabel>
+            <translation><!-- Recall to Payment Clearance --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Release Hold</masterLabel>
@@ -141,7 +149,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Outcome-Based Campaign</masterLabel>
-            <translation>成果ベースのキャンペーン</translation>
+            <translation><!-- Outcome-Based Campaign --></translation>
         </picklistValues>
     </fields>
 </CustomObjectTranslation>

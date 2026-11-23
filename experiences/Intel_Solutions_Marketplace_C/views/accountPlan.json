@@ -2,7 +2,7 @@
   "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
   "componentName" : "siteforce:sldsTwoCol84SidebarFeaturedLayout",
   "dataProviders" : [ ],
-  "id" : "38e62c89-54d3-4a15-82eb-946f11d81f29",
+  "id" : "571ad918-c871-4378-8f88-47884317f5ed",
   "label" : "Account Plan",
   "regions" : [ {
     "components" : [ {
@@ -10,23 +10,23 @@
         "recordId" : "{!recordId}"
       },
       "componentName" : "forceCommunity:recordHeadline",
-      "id" : "1d1addcc-3306-47b9-af8e-185a19fa2036",
+      "id" : "21b9a650-cd04-4104-b815-266a4fd60902",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     }, {
       "componentAttributes" : { },
       "componentName" : "runtime_sales_accountplan:accountPlanKpiWrapper",
-      "id" : "02128f4a-0779-4057-a4f0-fa0c439b1b44",
+      "id" : "dba2a0ae-5876-4579-ba51-175b339450e1",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "e1bc5963-4671-44dd-a7a5-32a4ec1d8b61",
+    "id" : "a5c1511d-b9ed-4f6c-a95c-e6d42609e116",
     "regionName" : "header",
     "type" : "region"
   }, {
-    "id" : "1b41020a-cd45-4ce8-8271-f3dd11425ffc",
+    "id" : "92327645-5e85-4b8e-aba4-a92ba54afd01",
     "regionName" : "featured",
     "type" : "region"
   }, {
@@ -35,19 +35,19 @@
         "recordId" : "{!recordId}"
       },
       "componentName" : "forceCommunity:recordDetail",
-      "id" : "1901e273-d178-4f3f-a04b-6009df79d152",
+      "id" : "cff412aa-9ff5-4121-88fb-d0b6a28fc445",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "13b31812-d2ff-4523-b862-e7dd7751ee69",
+    "id" : "f3f67193-3c44-49db-a6e6-ee6d7f5cc6e6",
     "regionName" : "content",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "runtime_sales_accountplan:objectivesWrapper",
-      "id" : "e9f02406-b3c3-4684-97af-295cb64985bb",
+      "id" : "539bd9b6-85c9-451d-a470-8c8301172450",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -62,16 +62,16 @@
         "showRowNumbers" : true
       },
       "componentName" : "forceCommunity:relatedList",
-      "id" : "7af4d4d1-7a9a-400b-9fb0-6a63148bd46d",
+      "id" : "1f16898c-c2bd-44fa-9278-3a0301989373",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "54920e1a-1c39-4071-928f-8d1f2115b7f3",
+    "id" : "c9e1fe0a-74a2-4dad-971a-a197f763bacd",
     "regionName" : "sidebar",
     "type" : "region"
   }, {
-    "id" : "191599b8-68e1-42b3-876b-7eb9d7980c00",
+    "id" : "b1aacd89-9553-46a1-98b2-13c3212fdcac",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -82,11 +82,11 @@
         "title" : "{!Record._Object}: {!Record._Title}"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "2d6201e0-c57d-43d0-9512-a20f0974c360",
+      "id" : "3ec679d2-bc1f-46de-81bc-22d9a8c4428a",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "2e996315-f583-48f4-bb50-d555b7a24415",
+    "id" : "fcb9641f-4622-480b-9fa4-7fe986d2e618",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

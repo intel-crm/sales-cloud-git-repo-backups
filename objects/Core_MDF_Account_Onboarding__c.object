@@ -412,39 +412,13 @@
         <columns>Core_MDF_Domains_txt__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>CREATEDBY_USER</columns>
-        <columns>Core_MDF_Payment_Type_nm__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_Account__c</field>
-            <operation>contains</operation>
-            <value>XIAOMI</value>
+            <field>NAME</field>
+            <operation>equals</operation>
+            <value>Test CCP Account 13</value>
         </filters>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>IPA_MDF_Virtual_Accounts</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Core_MDF_Channel_Program__c</columns>
-        <columns>Core_MDF_Type__c</columns>
-        <columns>Core_MDF_Payment_Type_nm__c</columns>
-        <columns>Core_MDF_Host_Region_nm__c</columns>
-        <columns>Core_MDF_Account__c</columns>
-        <columns>Core_MDF_Virtual_Account_Name_txt__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operation>contains</operation>
-            <value>Quentin Faucher</value>
-        </filters>
-        <label>IPA MDF Virtual Accounts</label>
     </listViews>
     <nameField>
         <displayFormat>A-{0000}</displayFormat>
@@ -648,6 +622,70 @@
         </picklistValues>
         <picklistValues>
             <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Intel Account</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Co_Inv</fullName>
+        <active>true</active>
+        <label>Co-Inv</label>
+        <picklistValues>
+            <picklist>Core_MDF_Host_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Partner_Type_nm__c</picklist>
+            <values>
+                <fullName>Activating Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Partner</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
+            <values>
+                <fullName>Customer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-Customer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Technical_Program_nm__c</picklist>
+            <values>
+                <fullName>CoInv</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Type__c</picklist>
+            <values>
+                <fullName>Agency Account</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Intel Account</fullName>
                 <default>false</default>

@@ -2,10 +2,10 @@
   "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "04c18077-7d34-4dcf-bc36-62d5e06a5827",
+  "id" : "73d8d4ab-b6b1-4709-ad91-39d82e063239",
   "label" : "Lead Inspection",
   "regions" : [ {
-    "id" : "f13e77cd-7019-4d86-b581-995fe0d40b13",
+    "id" : "5aa4d9f6-1d28-4123-af67-29695846e8f7",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -14,16 +14,16 @@
         "objectApiName" : "Lead"
       },
       "componentName" : "runtime_pipeline_inspector:pipelineInspectorHomeExperienceContainer",
-      "id" : "447ca782-e298-4484-a325-d265faf4b533",
+      "id" : "dbe88e92-c144-4ef1-96e3-3e6a52b6ebe1",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "1f40eb78-5cef-43b8-bccd-3200362d7433",
+    "id" : "7665d62c-b884-40e9-82ec-6c7de37d9158",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "d312d428-253d-4ba3-b3b7-0c1fcc979793",
+    "id" : "777cab3a-606d-4fcf-9a46-e069f1d3fad6",
     "regionName" : "footer",
     "type" : "region"
   } ],

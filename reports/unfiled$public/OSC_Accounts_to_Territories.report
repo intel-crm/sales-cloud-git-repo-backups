@@ -18,9 +18,6 @@
     <columns>
         <field>Account$Name</field>
     </columns>
-    <columns>
-        <field>Account$Owner</field>
-    </columns>
     <crossFilters>
         <criteriaItems>
             <column>Name</column>

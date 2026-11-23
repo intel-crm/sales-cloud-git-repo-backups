@@ -26,6 +26,7 @@ public class Core_MDF_Account_PGM_Sync {
             if(!requestList.isEmpty()){
                 for(Requests req : requestList){
                     accountPgmSyncPE.add(new Core_MDF_Account_PGM_Sync__e(Core_MDF_DML_Operation_Type_txt__c = req.dmlOperationType, Core_MDF_Object_API_Name__c = req.objectApiName, Core_MDF_JSON_Data__c = JSON.serialize(req.recordDetail)));
+              
                 }
             }
             

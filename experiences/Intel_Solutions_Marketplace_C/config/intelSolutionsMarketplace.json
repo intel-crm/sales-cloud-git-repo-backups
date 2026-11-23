@@ -1,12 +1,17 @@
 {
   "forgotPasswordRouteId" : "92b4a827-4eca-4268-82bc-86d194abc6ee",
-  "isAvailableToGuests" : false,
+  "isAvailableToGuests" : true,
   "isFilteredComponentsView" : false,
   "isProgressiveRenderingEnabled" : true,
   "loginAppPageId" : "20251e1e-7672-451e-8013-b56ac605e9e5",
   "mainAppPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
   "preferredDomain" : "none",
   "selfRegistrationRouteId" : "49ebabce-b98a-40dd-8abc-e6af94d05a0d",
+  "trustedSitesForIFrame" : [ {
+    "id" : "98e826f7-44bf-4249-82f9-2f3ec9e48d30",
+    "trustedDomainsForInlineFrames" : [ ],
+    "type" : "trustedSitesForIFrame"
+  } ],
   "trustedSitesForScript" : [ {
     "id" : "417d3886-869c-41e6-ac1c-8f9fb9609adc",
     "isActive" : true,
@@ -498,18 +503,6 @@
     "isActive" : true,
     "trustedSiteName" : "Maps",
     "trustedSiteUrl" : "https://maps.a.forceusercontent.com",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "6f11fac7-cc02-4121-8c2d-37ca45e463b1",
-    "isActive" : true,
-    "trustedSiteName" : "ContentSquare1",
-    "trustedSiteUrl" : "https://*.contentsquare.net",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "61b44431-e00a-4918-b2f9-0a60f2bd7dd3",
-    "isActive" : true,
-    "trustedSiteName" : "ConatentSquare2",
-    "trustedSiteUrl" : "https://*.contentsquare.com",
     "type" : "trustedSitesForScripts"
   } ],
   "type" : "site"

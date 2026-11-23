@@ -26,6 +26,10 @@
         <name>PRM_Account_Record_Type__c</name>
     </fields>
     <fields>
+        <label><!-- Approval/Rejection Link --></label>
+        <name>PRM_Approve_Reject_Link__c</name>
+    </fields>
+    <fields>
         <label><!-- Notes --></label>
         <name>PRM_Comments__c</name>
     </fields>
@@ -55,6 +59,10 @@
         <relationshipLabel><!-- ACM Change Requests --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Process Instance Work Item --></label>
+        <name>PRM_ProcessInstanceWorkItem_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- Status --></label>
         <name>PRM_Status__c</name>
         <picklistValues>
@@ -73,6 +81,14 @@
             <masterLabel>Pending</masterLabel>
             <translation><!-- Pending --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Suppress Email --></label>
+        <name>PRM_Suppress_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted for Approval --></label>
+        <name>Submitted_for_Approval__c</name>
     </fields>
     <fields>
         <label><!-- Error summary --></label>

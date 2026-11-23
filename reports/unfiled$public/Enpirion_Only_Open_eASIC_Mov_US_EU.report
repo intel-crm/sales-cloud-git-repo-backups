@@ -133,12 +133,12 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA</value>
+            <value>ASMO,EMEA</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Enpirion Only Open+ eASIC &amp; Mov EMEA</name>
+    <name>Enpirion Only Open+ eASIC &amp; Mov US&amp;EU</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -162,7 +162,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2022-03-31</endDate>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2020-01-01</startDate>
     </timeFrameFilter>

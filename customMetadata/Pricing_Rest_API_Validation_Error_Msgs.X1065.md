@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Error_Message__c</field>
-        <value xsi:type="xsd:string">When &apos;Write In End Customer&apos; is selected in the Unified End Customer field, the name of the other end customer must be provided in the &apos;endCustomer&apos; field.</value>
+        <value xsi:type="xsd:string">When &apos;Write In End Customer&apos; is selected in the Unified End Customer field, the name of the end customer must be provided in the &apos;endCustomer&apos; field.</value>
     </values>
 </CustomMetadata>

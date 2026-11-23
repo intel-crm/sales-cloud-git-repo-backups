@@ -34,7 +34,7 @@
         <field>Contact$Email</field>
     </columns>
     <columns>
-        <field>Contact$Account.Core_Account_ID__c</field>
+        <field>Contact$Account.Id</field>
     </columns>
     <columns>
         <field>Contact$Account</field>
@@ -78,34 +78,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value>Partner Admin,Partner Admin Delegate</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Account_Contact_Relationships__r$PRM_InActive_Ind__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Account_Contact_Relationships__r$PRM_Status_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Complete</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact$Account</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Account for Deactivated Contacts</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact$Core_Enterprise_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

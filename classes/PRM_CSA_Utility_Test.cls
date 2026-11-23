@@ -72,7 +72,6 @@ public class PRM_CSA_Utility_Test {
             //System.assert(false, 'Expected error to be thrown due to duplicate subscription');
         } catch (DmlException e) {
             // Print the exception to help debug if something fails
-            System.debug('Error message: ' + e.getMessage());
 
             // Retrieve the errors for the duplicate CSA record
             List<Database.Error> errors = csaDuplicate.getErrors();

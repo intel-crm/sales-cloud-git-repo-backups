@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        <div class="slds-clearfix slds-float_center">
+            <lightning-button name="Update Product Detail" label="Update Product Detail"
+                onclick={handleClick}></lightning-button>
+        </div>
+        <template lwc:if={showRecord}>
+            <c-p-c-c_-create-product-component dr-id={designRegId} record-type-id={recordTypeId} drp-record={drpRecord}
+                row-index={index} competitor-product-name={competitorProductName} dr-name={drName}
+                product-name={dealProductName} onclosecreatescreen={closeCreateScreen} onclose={handleOnClose}
+                onload={handleOnLoad} onreadrecord={handleIncomingRecord}
+                competitor-product-id={drpRecord.PCC_Competitor_Product__c}
+                product-addition-attr-id={drpRecord.PCC_Product_Additional_Attribute__c}></c-p-c-c_-create-product-component>
+        </template>
+    </lightning-card>
+</template>

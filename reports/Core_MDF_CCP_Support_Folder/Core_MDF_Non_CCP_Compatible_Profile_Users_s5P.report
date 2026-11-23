@@ -38,7 +38,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Partner Lead Admin,System Administrator,CCP - Core Access,A&amp;E User,Reporting Admin,Sales Rep-BB,Marketing Development Manager,Sales Manager,Comarketing Support L1,Comarketing Support L2,Data Ops,IPA A&amp;E User,IT Admin,Production Support-Display,Sales Ops,SMG/GMC Read Only,Sales Rep-CW</value>
+            <value>System Administrator,CCP - Core Access,A&amp;E User,Reporting Admin,Sales Rep-BB,Marketing Development Manager,Sales Manager,Comarketing Support L1,Comarketing Support L2,Data Ops,IPA A&amp;E User,IT Admin,Production Support-Display,Sales Ops,SMG/GMC Read Only,Sales Rep-CW</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Internal_Users_Partner_Geo_Mappings__r$Core_MDF_Active_Ind__c</column>

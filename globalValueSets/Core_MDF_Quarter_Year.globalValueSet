@@ -133,11 +133,13 @@
     <customValue>
         <fullName>Q2 2021</fullName>
         <default>false</default>
+        <isActive>false</isActive>
         <label>Q2 2021</label>
     </customValue>
     <customValue>
         <fullName>Q1 2021</fullName>
         <default>false</default>
+        <isActive>false</isActive>
         <label>Q1 2021</label>
     </customValue>
     <masterLabel>Quarter Year</masterLabel>

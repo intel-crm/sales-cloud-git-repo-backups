@@ -5,5 +5,10 @@
         <sharedTo>AllInternalUsers</sharedTo>
         <sharedToType>Organization</sharedToType>
     </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>Core_DDR_Partner_Users</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
     <name>Design Registration Dashboards-Internal</name>
 </DashboardFolder>

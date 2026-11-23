@@ -81,6 +81,7 @@
         <field>SBQQ__Quote__c$Pricing_Intel_Account_Exec_Email_Txt__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$Pricing_On_Hold_Cb__c</field>
     </columns>
     <columns>
@@ -100,6 +101,9 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c$Pricing_AdditionalRecipients__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Integration_Status_Nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Product_Nm__c</field>
@@ -148,13 +152,10 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_pm_approval_comments_nm__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Comments_nm__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_End_Date_dt__c</field>
@@ -173,6 +174,9 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Req_Discounted_Unit_Price__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_CPU_Txt__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Manager__c</field>
@@ -203,6 +207,9 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Reason__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Comments_nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Submitted_By_Id__c</field>
@@ -240,9 +247,6 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Deal_RFQ_Status_Nm__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Integration_Status_Nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Error_Messages__c</field>
@@ -287,7 +291,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Data Center Xeon® CPU,Small Volume Quotes - Data Center Xeon® CPU,Client,Optane™ SSD,Optane™ PMem,Ethernet,Data Center GPU</value>
+            <value>Client,Data Center GPU,Data Center Xeon® CPU,Ethernet,Optane™ PMem,Optane™ SSD,Small Volume Quotes - Data Center Xeon® CPU</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -36,6 +36,7 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
 
     @wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: QUOTE_TYPE, isActive: '$isSVDActive' })
     Values({ error, data }) {
+        console.log('testing:');
         if (data) {
             let quoteOptionType = [];
             let allowSVD = JSON.parse(JSON.stringify(this.isSVDActive.data));
@@ -53,7 +54,9 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
             }
             getAccountId({ userId: USER_ID })
                 .then(result => {
+                    console.log('result:'+result != null);
                     if (result != null) {
+                        console.log('entering:');
                         this.accountId = result;
                         this.getQuoteTypesMethod();
                     }
@@ -73,13 +76,17 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
     getQuoteTypesMethod() {
         getQuoteTypes({ quoteTypeJSON: JSON.stringify(this.quoteTypes), accId: this.accountId })
             .then(result => {
+                console.log('this.quoteTypes:'+JSON.stringify(this.quoteTypes));
                 if (result != null) {
                     this.quoteTypes = result;
                     for (let i = 0; i < this.quoteTypes.length; i++) {
                         if ((this.quoteTypes[i].label === smallVolumeQuote || this.quoteTypes[i].label === 'Client' || this.quoteTypes[i].label === 'Data Center') && this.quoteTypes[i].color !== 'none') {
+                            //this.msgColor = true;
                             if (this.quoteTypes[i].color == 'red') {
+                                //return 'messageColorRed';
                                 this.quoteTypes[i].color = 'red-text'
                             } else if (this.quoteTypes[i].color == 'blue') {
+                                //return 'messageColorBlue';
                                 this.quoteTypes[i].color = 'blue-text'
                             }
                         }
@@ -92,6 +99,20 @@ export default class Pricing_Manage_New_Quote extends NavigationMixin(LightningE
             });
 
     }
+    //Get message color for SVD
+    /*get messageColor() {
+        if (this.quoteTypes != null && this.quoteTypes.length > 0) {
+            for (let i = 0; i < this.quoteTypes.length; i++) {
+                if ((this.quoteTypes[i].label === smallVolumeQuote || this.quoteTypes[i].label === 'Client' || this.quoteTypes[i].label === 'Data Center') && this.quoteTypes[i].color !== 'none') {
+                    if (this.quoteTypes[i].color == 'red') {
+                        return 'messageColorRed';
+                    } else if (this.quoteTypes[i].color == 'blue') {
+                        return 'messageColorBlue';
+                    }
+                }
+            }
+        }
+    }*/
 
     handleChange(event) {
         this.selectedValue = event.target.value;

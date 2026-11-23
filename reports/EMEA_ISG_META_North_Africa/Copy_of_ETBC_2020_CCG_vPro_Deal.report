@@ -145,7 +145,7 @@
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2)</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>

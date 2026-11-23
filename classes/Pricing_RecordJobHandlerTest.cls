@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Sandeep Chamate
  * @group             : 
- * @last modified on  : 03-10-2026
+ * @last modified on  : 03-09-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -14,7 +14,7 @@ public class Pricing_RecordJobHandlerTest {
         Pricing_Test_Utility.createPriceBook();
         System.runAs(adminUserList[0]) {
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Record_Job_Handler_Test');
             User partnerUser = Pricing_Test_Utility.createPartnerAdminUser(acc.Id);
             
             Test.startTest();
@@ -43,26 +43,32 @@ public class Pricing_RecordJobHandlerTest {
                 SBQQ__RecordJob__c recordJob = [SELECT Id FROM SBQQ__RecordJob__c LIMIT 1];
                 update recordJob;
                 System.assertEquals(true ,recordJob != null);
-            }
-
+            } 
             Test.stopTest();
         }
-    static testMethod void testAbortQueuebaledummy() {
-        	Map<Id, SBQQ__RecordJob__c> quoteIdToRecordJobMap = new Map<Id, SBQQ__RecordJob__c>();
-            Set<Id> quoteIds = new Set<Id>();
-            User usr = [Select Id, Email from User Where Email = 'firstName@intel.com' Limit 1];
-            Test.startTest();
-            System.runAs(usr) {
-                SBQQ__QuoteLine__c qli = [SELECT Id,Pricing_Save_After_Calculation_cb__c FROM SBQQ__QuoteLine__c LIMIT 1];
 
-                SBQQ__RecordJob__c recordJob = [SELECT Id,SBQQ__RecordId__c FROM SBQQ__RecordJob__c LIMIT 1];
-                List<String> recordIdList = recordJob.SBQQ__RecordId__c.split('::');
-                quoteIds.add(recordIdList[0]);
-                quoteIdToRecordJobMap.put(recordIdList[0],recordJob);
-                Pricing_RecordJobHandler.checkCalculatorFailure(quoteIds,quoteIdToRecordJobMap);
-                System.assertEquals(true ,recordJob != null);
-            }
-            
-            Test.stopTest();
+        @isTest
+        static void testGetIntegrationUserIds() {
+            User integrationUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
+            PermissionSet integrationPermissionSet = [
+                SELECT Id
+                FROM PermissionSet
+                WHERE Name = 'Pricing_Abort_Calculator_Integration_User'
+                LIMIT 1
+            ];
+            insert new PermissionSetAssignment(
+                AssigneeId = integrationUser.Id,
+                PermissionSetId = integrationPermissionSet.Id
+            );
+
+            Set<Id> integrationUserIds = Pricing_RecordJobHandler.getIntegrationUserIds(
+                new Set<Id>{integrationUser.Id}
+            );
+
+            System.assertEquals(
+                new Set<Id>{integrationUser.Id},
+                integrationUserIds,
+                'Users assigned the integration marker permission set must be identified.'
+            );
         }
 }

@@ -207,10 +207,9 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>Pricing_Account_Nm__c</columns>
+        <columns>Pricing_Active_ind__c</columns>
         <columns>Pricing_Consumption_Type_Nm__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_ACTIVITY</columns>
+        <columns>Pricing_Account_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

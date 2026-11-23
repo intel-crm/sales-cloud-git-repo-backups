@@ -17,5 +17,9 @@
         <label><!-- Offering JSON Txt --></label>
         <name>PMP_Offering_JSON_Txt__c</name>
     </fields>
+    <fields>
+        <label><!-- Test Deployment Error --></label>
+        <name>Test_Deployment_Error__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

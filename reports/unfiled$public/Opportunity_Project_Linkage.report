@@ -12,9 +12,6 @@
             <field>Core_IPS_Project__c.Cases__r$Status</field>
         </columns>
         <columns>
-            <field>Core_IPS_Project__c.Cases__r$Core_IPS_Age__c</field>
-        </columns>
-        <columns>
             <field>Core_IPS_Project__c.Cases__r$Core_IPS_Case_Owner_Groups__c.Core_IPS_Owner_Team_1__c</field>
         </columns>
         <filter>
@@ -56,7 +53,13 @@
             <field>Core_IPS_Opportunity__c$Core_Opportunity__c.Amount</field>
         </columns>
         <columns>
+            <field>Core_IPS_Opportunity__c$Core_Opportunity__c.Owner</field>
+        </columns>
+        <columns>
             <field>Core_IPS_Opportunity__c$Core_Opportunity__c.StageName</field>
+        </columns>
+        <columns>
+            <field>Core_IPS_Opportunity__c$Core_Opportunity__c.Id</field>
         </columns>
         <format>Summary</format>
         <name>Project with Opportunity block 2</name>
@@ -77,6 +80,7 @@
         <blockId xsi:nil="true"/>
         <joinTable>Core_IPS_Project__c</joinTable>
     </blockInfo>
+    <description>Opportunity Project Linkage</description>
     <format>MultiBlock</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

@@ -43,6 +43,7 @@ public class Core_ContactGECBatch_Test {
         RecordType rec = [select Id,Name from RecordType where sObjectType='Account' AND Name = 'Intel Account' LIMIT 1];
         List<Account> lstAccounts = Core_Test_Utility.createAccount(1);
         Account account = lstAccounts[0];
+        System.debug('rec Id '+rec.Id);
         account.RecordTypeId = rec.Id;
         insert account;
         

@@ -107,7 +107,8 @@ public  class Product_Variant_Utility_Test {
         // Create Supported Product NAC
         Core_IPS_Supported_Product__c sp = new Core_IPS_Supported_Product__c();
         // sp.Core_Code_Name__c = 'SKYLAKE';
-        sp.Core_Product__c = '01to0000004pB13';
+        //sp.Core_Product__c = '01to0000004pB13';
+        sp.Core_Product__c =  ListOfProducts.get(1).id;
         sp.Core_Product_EPM_ID__c = '88392';
         sp.Core_Supported_Product_Name__c = '6th Generation Intel® Core™ i7 Processors';
         // sp.Name = ListOfSupportedProduct.get(0).Id;

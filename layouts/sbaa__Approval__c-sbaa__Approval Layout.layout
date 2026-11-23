@@ -47,6 +47,10 @@
                 <behavior>Readonly</behavior>
                 <field>sbaa__DelegatedApprover__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>core_cpq_Distributor__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -116,9 +120,9 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>sbaa__Approval__c.sbaa__ResendRequestMobile</actionName>
+            <actionName>sbaa__Approval__c.sbaa__ApproveMobile</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>sbaa__Approval__c.sbaa__RejectMobile</actionName>
@@ -131,9 +135,9 @@
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>sbaa__Approval__c.sbaa__ApproveMobile</actionName>
+            <actionName>sbaa__Approval__c.sbaa__ResendRequestMobile</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
+            <sortOrder>3</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>

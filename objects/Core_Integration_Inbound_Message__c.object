@@ -268,6 +268,16 @@
                     <default>false</default>
                     <label>Tender</label>
                 </value>
+                <value>
+                    <fullName>Payment</fullName>
+                    <default>false</default>
+                    <label>Payment</label>
+                </value>
+                <value>
+                    <fullName>Role 2.0</fullName>
+                    <default>false</default>
+                    <label>Role 2.0</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -512,12 +522,7 @@
         <filters>
             <field>Core_Message_Type__c</field>
             <operation>equals</operation>
-            <value>Account</value>
-        </filters>
-        <filters>
-            <field>Core_Created_Date_Time__c</field>
-            <operation>equals</operation>
-            <value>TODAY</value>
+            <value>Bank</value>
         </filters>
         <label>All</label>
     </listViews>
@@ -531,6 +536,11 @@
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Processing_Status__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Tags__c</field>
+            <operation>contains</operation>
+            <value>a6ID3000000Ppa3MAC</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -553,7 +563,7 @@
         <filters>
             <field>Core_Source_System__c</field>
             <operation>equals</operation>
-            <value>SAP</value>
+            <value>GLS</value>
         </filters>
         <label>All Messages Today</label>
     </listViews>
@@ -781,6 +791,32 @@
         <label>ERPM Messages Today - Contact</label>
     </listViews>
     <listViews>
+        <fullName>IQR</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_Error_Code__c</columns>
+        <columns>Core_Error_Description__c</columns>
+        <columns>Core_Exception_Message__c</columns>
+        <columns>Core_Log_Entry__c</columns>
+        <columns>Core_Message_Type__c</columns>
+        <columns>Core_Outbound_Message__c</columns>
+        <columns>Core_Payload__c</columns>
+        <columns>Core_Processing_Status__c</columns>
+        <columns>Core_Source_System__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Message_Type__c</field>
+            <operation>equals</operation>
+            <value>Tender</value>
+        </filters>
+        <label>IQR</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
         <fullName>IQR_Pending_Failed_Inbound_Messages</fullName>
         <columns>NAME</columns>
         <columns>Core_Processing_Status__c</columns>
@@ -821,7 +857,12 @@
         <columns>Core_Processing_Status__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Created_Date_Time__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Message_Type__c</field>
+            <operation>equals</operation>
+            <value>Bank</value>
+        </filters>
         <label>My Messages</label>
     </listViews>
     <listViews>

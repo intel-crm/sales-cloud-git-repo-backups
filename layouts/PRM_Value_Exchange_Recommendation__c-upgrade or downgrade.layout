@@ -115,6 +115,10 @@
                 <behavior>Edit</behavior>
                 <field>PRM_Rank_Nbr__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_One_Partner_Name__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

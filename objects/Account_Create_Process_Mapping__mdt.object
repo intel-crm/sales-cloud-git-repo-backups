@@ -56,6 +56,11 @@
                     <label>Other</label>
                 </value>
                 <value>
+                    <fullName>DZP</fullName>
+                    <default>false</default>
+                    <label>DZP</label>
+                </value>
+                <value>
                     <fullName>Access and Entitlement</fullName>
                     <default>false</default>
                     <isActive>false</isActive>

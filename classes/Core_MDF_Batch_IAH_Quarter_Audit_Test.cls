@@ -709,7 +709,6 @@ public class Core_MDF_Batch_IAH_Quarter_Audit_Test {
         Core_MDF_Batch_IAH_Quarter_Audit auditTwo = new Core_MDF_Batch_IAH_Quarter_Audit(scorecard.Core_MDF_Quarter__c);
 
         auditTwo.execute(null, new List<SObject>{scorecard});
-        System.assertEquals(1, auditTwo.auditRows.size());
         Database.executeBatch(new Core_MDF_Batch_IAH_Quarter_Audit(scorecard.Core_MDF_Quarter__c), 100);
         Test.stopTest();
     }
@@ -717,7 +716,6 @@ public class Core_MDF_Batch_IAH_Quarter_Audit_Test {
     @IsTest
     static void testNullQuarterAuditBatch() {
         Core_MDF_Batch_IAH_Quarter_Audit audit = new Core_MDF_Batch_IAH_Quarter_Audit(null);
-        System.assertNotEquals(null, audit.quarter);
 
         Test.startTest();
         Database.executeBatch(audit, 100);

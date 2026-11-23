@@ -108,7 +108,6 @@
             <hasNestedExplainability>false</hasNestedExplainability>
             <label>Pricing Route Rules PRC DCG Application</label>
             <name>PricingRouteRulesPRCDCGApplication</name>
-            <parentStep>IsPricingRouteRulesPRCDCGApplicationhasNoMatchingRules</parentStep>
             <resultIncluded>true</resultIncluded>
             <sequenceNumber>1</sequenceNumber>
             <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
@@ -160,6 +159,7 @@
             <hasNestedExplainability>false</hasNestedExplainability>
             <label>Pricing Route Rules PRC DCG Application And TRQ</label>
             <name>PricingRouteRulesPRCDCGApplicationAndTRQ</name>
+            <parentStep>IsPricingRouteRulesPRCDCGApplicationhasNoMatchingRules</parentStep>
             <resultIncluded>true</resultIncluded>
             <sequenceNumber>1</sequenceNumber>
             <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>

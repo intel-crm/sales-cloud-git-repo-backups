@@ -305,7 +305,7 @@ public without sharing class PRM_IPAPartnerOnboarding_CTRL {
         }
         
         Set<Id> existingContactSub = new Set<Id>();
-        for(PRM_ContactSubscriptionAssociation__c contactSub :[Select Id,PRM_Partner_Subscription_Id__c,PRM_Status_Nm__c 
+        for(PRM_ContactSubscriptionAssociation__c contactSub :[Select Id,PRM_Partner_Subscription_Id__c,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c 
                                                                from PRM_ContactSubscriptionAssociation__c
                                                                where PRM_Contact_Id__c=:contactId
                                                                AND PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c IN:subCodeList]){
@@ -495,9 +495,21 @@ public without sharing class PRM_IPAPartnerOnboarding_CTRL {
             enrolledCommunities = addEnrollmentRequests(enrolledCommunities,loggedInContactId);
             Map<String,String> communityAdminEmail= new Map<String,String>();
             Map<String,Id> communityAdminId= new Map<String,Id>();
-            for(PRM_Partner_Community_Admins__mdt commName:[Select PRM_CommunityAdminEmail__c,Label 
+            /*for(PRM_Partner_Community_Admins__mdt commName:[Select PRM_CommunityAdminEmail__c,Label 
                                                             from PRM_Partner_Community_Admins__mdt ] ){
                 communityAdminEmail.put(commName.Label,commName.PRM_CommunityAdminEmail__c.toLowerCase());   
+            }*/
+            Core_CustomMetadataObjectController controller = new Core_CustomMetadataObjectController('PRM_Partner_Community_Admins__mdt'); 
+            Map<String, Map<String, object>> allMetadata = controller.getAll();
+            for(String developerName : allMetadata.keySet()){
+                Map<String, Object> metadataRecord = allMetadata.get(developerName);
+                if(metadataRecord.containsKey('PRM_CommunityAdminEmail__c') && metadataRecord.containsKey('MasterLabel')){
+                    String email = String.valueOf(metadataRecord.get('PRM_CommunityAdminEmail__c'));
+                    String label = String.valueOf(metadataRecord.get('MasterLabel'));
+                    if(String.isNotBlank(email) && String.isNotBlank(label)){
+                        communityAdminEmail.put(label, email.toLowerCase());
+                    }
+                }
             }
             
             for(User admin :[Select Id,Email from User where Email IN:communityAdminEmail.values()]){

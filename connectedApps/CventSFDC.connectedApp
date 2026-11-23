@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>venu.karumuru@intel.com</contactEmail>
+    <contactEmail>saiful.i.alam@intel.com</contactEmail>
     <description>Provides an ability to use Salesforce API for Cvent app</description>
     <label>Сvent SFDC</label>
     <oauthConfig>
-        <callbackUrl>https://intel--cventevents.visualforce.com/apex/cventevents__oauthcallback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6ic_QS0wlnnzHzAA3rk_4rlskne4u0Ry7BwShfpTGQgDDt6GvfIq7tgzcPsu</consumerKey>
+        <callbackUrl>https://intel--crmdevint3--cventevents.visualforce.com/apex/cventevents__oauthcallback</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDiFQ.OIqttdIeeSt_eIRiTqwtyL17McNjYeqVYQJMY20GUhAisim94WfGcIB</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>

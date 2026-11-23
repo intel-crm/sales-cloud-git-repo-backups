@@ -6,9 +6,7 @@ Disallow: /s/offering-create
 Disallow: /s/offering-edit
 Disallow: /s/offering-submit
 Disallow: /s/offering-preview
-Disallow: /s/partner-edit
-Disallow: /s/partner
-Disallow: /s/offering
+Disallow: /imp/*
 
 Sitemap: https://marketplace.intel.com/s/sitemap.xml
 </apex:page>

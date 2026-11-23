@@ -33,6 +33,7 @@ public without sharing class Core_Contact_Entitlement_Handler extends triggerHan
    }
    //Method includes logic which executes after updation of records
    public override void afterUpdate(){
+       try{
        Map<Id,Core_Contact_Entitlement__c> oldMap = (Map<Id,Core_Contact_Entitlement__c>)Trigger.oldMap;
        List<Core_Contact_Entitlement__c> lstNewList = new List<Core_Contact_Entitlement__c>();      
        //if(Core_ContactEntitlementHelper.triggerAfterMethodFirstEntry){
@@ -46,10 +47,8 @@ public without sharing class Core_Contact_Entitlement_Handler extends triggerHan
            Core_Contact_Entitlement__c conEntRefOld = oldMap.get(conEntRef.Id);
            if(conEntRef.Core_Selected__c != conEntRefOld.Core_Selected__c){
                lstNewList.add(conEntRef);
-           }
-           
        }
-       
+       } 
        //Update PRM_IPA_Integration_Status__c Integration status to Pending whenever Entitlements are added 
        if(mapFunctionalityNameTriggerExecution.containsKey('Core_ContactEntPublishToSvcCld') &&
           mapFunctionalityNameTriggerExecution.get('Core_ContactEntPublishToSvcCld').Core_Active__c)
@@ -68,9 +67,14 @@ public without sharing class Core_Contact_Entitlement_Handler extends triggerHan
        Core_ContactEntitlementHelper.updateIntegrationStatusAfterDataLoad(Trigger.new);
        //Core_ContactEntitlementHelper.updateACR((Map<Id,Core_Contact_Entitlement__c>) Trigger.newMap, (Map<Id,Core_Contact_Entitlement__c>) Trigger.oldMap);     
        Core_ContactEntitlementHelper.updateIPSActiveOnContact(Trigger.new,Trigger.old,Trigger.IsInsert,Trigger.IsUpdate);
+       }  catch(exception e){
+            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'afterUpdate', Core_Project__c = 'Draco' , Core_Details__c = 'Error in class Core_Contact_Entitlement_Handler', Core_Severity__c = 'info', Core_When__c = System.Now());     
+            insert excepLog;          
+       }
    }
    //Method includes logic which executes before updation of records
    public override void beforeUpdate() {
+       try{
        Core_ContactEntitlementHelper.updateStatusofAssign(trigger.new, (Map<Id,Core_Contact_Entitlement__c>)Trigger.oldMap);  //Shashwat Changes 27/4/2022
        Core_ContactEntitlementHelper.updateCEStatusChangeDateTime(Trigger.new, (Map<Id,Core_Contact_Entitlement__c>) Trigger.oldMap,'BEFORE_UPDATE');
        Core_ContactEntitlementValidation.validateB2BFlaggedContactEntitlement(Trigger.new);
@@ -84,6 +88,9 @@ public without sharing class Core_Contact_Entitlement_Handler extends triggerHan
                Core_ContactEntitlementValidation.validateContactEntitlement(Trigger.old, Trigger.new, (Map<Id,Core_Contact_Entitlement__c>) Trigger.oldMap, (Map<Id,Core_Contact_Entitlement__c>) Trigger.newMap);
            }
            Core_ContactEntitlementHelper.triggerMethodFirstEntry=false;
+       } }catch(exception e){
+            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'beforeUpdate', Core_Project__c = 'Draco' , Core_Details__c = 'Error in class Core_Contact_Entitlement_Handler', Core_Severity__c = 'info', Core_When__c = System.Now());     
+            insert excepLog;          
        }
        // Map<Id,Core_Contact_Entitlement__c> oldMap = (Map<Id,Core_Contact_Entitlement__c>)Trigger.oldMap;
        // set<string> conEmails=new set<string>();
@@ -105,6 +112,7 @@ public without sharing class Core_Contact_Entitlement_Handler extends triggerHan
           // system.debug('regids'+regids);
    }
 
+
    public override void beforeInsert() {
        Core_ContactEntitlementHelper.updateStatusofAssign(trigger.new);  //Shashwat changes 12/04/2022 
        Core_ContactEntitlementHelper.updateCEStatusChangeDateTime(trigger.new, null,'BEFORE_INSERT');
@@ -119,7 +127,7 @@ public without sharing class Core_Contact_Entitlement_Handler extends triggerHan
                                                Core_ContactEntitlementValidation.validateContactEntitlement(Trigger.old, Trigger.new, (Map<Id,Core_Contact_Entitlement__c>) Trigger.oldMap, (Map<Id,Core_Contact_Entitlement__c>) Trigger.newMap);
                                            }
            Core_ContactEntitlementHelper.triggerMethodFirstEntry=false;
-       }
+       }  
 }
    //Method includes logic which executes before deletion of records
    public override void beforeDelete(){

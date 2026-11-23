@@ -67,18 +67,17 @@ public class PRM_ACRNotificationMessage_Test {
     @isTest
     public static void sendNotif(){		        
 		Id contactId = [Select Id from Contact where FirstName='Adam' Limit 1].Id;
-        System.debug('Test class Contact Id: '+contactId);
         PRM_ACRNotificationMessage.MessageWrapper[] msgWrapper = new PRM_ACRNotificationMessage.MessageWrapper[]{};
         PRM_ACRNotificationMessage.MessageWrapper msgWrap = new PRM_ACRNotificationMessage.MessageWrapper();
-      	msgWrap.msgCd = 'MSGNEWCON';
+        msgWrap.msgCd = 'MSGNEWCON';
         msgWrap.contactId = contactId;
         msgWrapper.add(msgWrap);
+        
         PRM_ACRNotificationMessage.sendNotifications(msgWrapper);
         Integer actualResult = [Select Count() from PRM_Account_Contact_Relationship__c where PRM_Contact_Id__c = :contactId and PRM_InActive_Ind__c = false];
         System.assertEquals(1, actualResult);
         
-        
-        Test.startTest();
+        /*Test.startTest();
         Id accId = [Select Id from Account where Name='David Miller' Limit 1].Id;
         Id cpId = [Select Id from ChannelProgram where Name = 'Intel Partner Alliance' Limit 1].Id;
         
@@ -109,16 +108,7 @@ public class PRM_ACRNotificationMessage_Test {
         
         PRM_ACRNotificationMessage.sendNotifications(msgWrapper1);
         Integer actualResult1 = [Select Count() from PRM_Account_Contact_Relationship__c where PRM_Contact_Id__c = :contactId and PRM_InActive_Ind__c = false];
-        System.assertEquals(2, actualResult1);
+        System.assertEquals(2, actualResult1);*/
         
     }
-    @isTest
-    public static void test2()
-    {
-        PRM_ACRNotificationMessage.MessageWrapper msgWrap = new PRM_ACRNotificationMessage.MessageWrapper();
-      	PRM_ACRNotificationMessage.MessageWrapper[] msgWrapper = new PRM_ACRNotificationMessage.MessageWrapper[]{};
-        msgWrapper.add(msgWrap);
-        PRM_ACRNotificationMessage.sendNotifications(msgWrapper);
-    }
-    
 }

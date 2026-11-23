@@ -68,7 +68,7 @@
                 recallApprovalIds.add(approval.Id);
             }
 
-            quotesToUpdateMap.put(quote.Id, quote);
+            quotesToUpdateMap.put(quote.Id, quote); 
         }
 
         private static void sendNotifications(

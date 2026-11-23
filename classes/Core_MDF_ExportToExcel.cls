@@ -98,20 +98,7 @@ public with sharing class Core_MDF_ExportToExcel {
             isCSVExportActive   = true; 
             }
             }
-        }
-     catch(Exception e){
-         //Core_MDF_CCP_UtilityClass.logError(e);
-         Core_MDF_Error_Logging__e el = new Core_MDF_Error_Logging__e();
-         el.Core_MDF_Details_txt__c = e.getMessage();
-         el.Core_MDF_Apex_Class_Name_Txt__c = 'Core_MDF_ExportToExcel';
-         el.Core_MDF_Exception_Message_Txt__c = Core_MDF_CCP_UtilityClass.getErrorDetails(e);
-         el.Core_MDF_Severity_txt__c = 'Critical';
-         el.Core_MDF_Project_nm__c = Label.Core_MDF_Program_Name;
-         el.Core_MDF_Tag_txt__c = 'ExportToExcel';
-         el.Core_MDF_Object_Name_Nm__c = e.getStackTraceString().substringBefore(':');
-         EventBus.publish(el);
-         ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage));
-     }
+        } catch(Exception e){ Core_MDF_Error_Logging__e el = new Core_MDF_Error_Logging__e(); el.Core_MDF_Details_txt__c = e.getMessage(); el.Core_MDF_Apex_Class_Name_Txt__c = 'Core_MDF_ExportToExcel'; el.Core_MDF_Exception_Message_Txt__c = Core_MDF_CCP_UtilityClass.getErrorDetails(e); el.Core_MDF_Severity_txt__c = 'Critical'; el.Core_MDF_Project_nm__c = Label.Core_MDF_Program_Name; el.Core_MDF_Tag_txt__c = 'ExportToExcel'; el.Core_MDF_Object_Name_Nm__c = e.getStackTraceString().substringBefore(':'); EventBus.publish(el); ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage)); }
     }    
     public PageReference returnToPage() {   
         PageReference returnPage = new PageReference(sanitizedEndPointUrl);
@@ -123,6 +110,7 @@ public with sharing class Core_MDF_ExportToExcel {
         try{
             List<Object> lstObjPage = new List<Object>();        
             integer counter = 0;
+            if(String.isBlank(strQuery)) {return;}
             for (List<sObject> lstSObj : Database.Query(strQuery)) { 
                 for (sObject sObj : lstSObj) {
                     if (cleanData){ 
@@ -245,9 +233,7 @@ public with sharing class Core_MDF_ExportToExcel {
             if((isVaildSObject && whiteListedObjApiNameList.contains(objName)) /*&& (strfilterId.length() == 15 || strfilterId.length() == 18)*/){
                endpointUrl = domainUrl + Label.Core_MDF_Describe_API_URL4 +objName + Label.Core_MDF_Describe_API_URL2 + strfilterId + Label.Core_MDF_Describe_API_URL3;
             }
-            else{
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_Export_Whitelisting_Error_Message));
-            }
+            else{ ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_Export_Whitelisting_Error_Message)); }
             //SF Fix-Ealisha:end
             if(endpointUrl != ''){
             req.setEndpoint(endpointUrl);
@@ -255,7 +241,10 @@ public with sharing class Core_MDF_ExportToExcel {
             Http h = new Http();
             HttpResponse res = h.send(req);             
             Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody());     
-            strQuery = (String)root.get('query') + string.escapeSingleQuotes(' LIMIT ') + (maxExportRows + 1);        
+            // List view describe query already ends with its own LIMIT; strip it so we don't end up with two LIMIT clauses.
+            String baseQuery = (String)root.get('query');
+            baseQuery = baseQuery.replaceAll('(?i)\\sLIMIT\\s+\\d+\\s*$', '');
+            strQuery = baseQuery + ' LIMIT ' + (maxExportRows + 1);        
                     
             // This HAS to be reset every iteration.
             lstColumn = new List<SingleColumn>();        
@@ -287,18 +276,14 @@ public with sharing class Core_MDF_ExportToExcel {
             }
             }
         }
-        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-                           ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage));
-        }
+        catch(Exception e){ Core_MDF_CCP_UtilityClass.logError(e); ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error,Label.Core_MDF_ApplicationErrorMessage)); }
     }
     
     public PageReference exportToExcel() {        
         try {            
             loadData(false);  // The data DOES NOT have to be "cleaned" for Excel Export                        
         }
-        catch (Exception e) {
-            String consolidatedMessage = e.getTypeName() + ' on line# ' + e.getLineNumber() + ' : ' + e.getMessage();ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, consolidatedMessage);ApexPages.addMessage(myMsg);return null;
-        }
+        catch (Exception e) { String consolidatedMessage = e.getTypeName() + ' on line# ' + e.getLineNumber() + ' : ' + e.getMessage();ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, consolidatedMessage);ApexPages.addMessage(myMsg);return null; }
         contentType = 'application/vnd.ms-excel#' + fileName + '.xls';
         renderType  = '';        
         PageReference excelPage = page.Core_MDF_ListView_Export_Excel;
@@ -311,9 +296,7 @@ public with sharing class Core_MDF_ExportToExcel {
         try {
             loadData(true);  // The data must be "cleaned" for CSV.                                    
         }
-        catch (Exception e) {
-            String consolidatedMessage = e.getTypeName() + ' on line# ' + e.getLineNumber() + ' : ' + e.getMessage();ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, consolidatedMessage);ApexPages.addMessage(myMsg);return null;
-        }        
+        catch (Exception e) { String consolidatedMessage = e.getTypeName() + ' on line# ' + e.getLineNumber() + ' : ' + e.getMessage();ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR, consolidatedMessage);ApexPages.addMessage(myMsg);return null; }        
         // For CSV: \uFEFF
         contentType = 'text/csv#' + fileName + '.csv; charset=UTF-8';
         renderType  = '';        

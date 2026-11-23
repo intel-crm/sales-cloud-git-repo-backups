@@ -87,7 +87,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>AI Edge Healthcare,AI - HDDL,AI - Movidius,CE - Camera,&quot;Computer Vision, Analytics and AI&quot;,Machine Vision,&quot;Studio Cameras, Multi-viewers, Editors&quot;,Video Conferencing,Video IP Cameras,Video NVR / Recorder / Gateway / Server,Video - Other,&quot;Visual Solutions – Computer Vision, Analytics and AI&quot;</value>
+            <value>AI Edge Healthcare,AI - HDDL,AI - Movidius,CE - Camera,&quot;Computer Vision, Analytics and AI&quot;,Machine Vision,Video Conferencing,Video IP Cameras,Video - Other,&quot;Visual Solutions – Computer Vision, Analytics and AI&quot;</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>
@@ -101,7 +101,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

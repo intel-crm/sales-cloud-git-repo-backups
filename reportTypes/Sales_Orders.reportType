@@ -38,11 +38,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Quote__c</field>
-            <table>Order</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Sales_Ship_To_Account__c</field>
             <table>Order</table>
         </columns>
@@ -129,6 +124,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Sales_Sold_To_Account__c.Core_Direct_Account_Id__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SBQQ__Quote__c</field>
             <table>Order</table>
         </columns>
         <masterLabel>Orders</masterLabel>

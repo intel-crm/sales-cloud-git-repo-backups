@@ -4,8 +4,8 @@
     <description>Used by DRD System to send updates on Support Request</description>
     <label>DRD</label>
     <oauthConfig>
-        <callbackUrl>https://intelsoftware.my.salesforce.com/services/authcallback/Connection_To_SMG</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6l3uYRYhcuOsLuo5mDqUBcZ14Z9jggyw1ZeL1V2cSAb.xS7x4h6nllnhlRQ0</consumerKey>
+        <callbackUrl>https://intelsoftware--rnd.sandbox.my.salesforce.com/services/authcallback/Connection_To_SMG</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHnXtkJBm9UdfHs.RBW9tLtMtFRXeLt0rgYizbeVjYx11BhCasTdhziBtSuUTAdQXTb.Q5GR</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -24,6 +24,7 @@
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Full</scopes>
+        <scopes>CustomApplications</scopes>
         <scopes>RefreshToken</scopes>
     </oauthConfig>
     <oauthPolicy>

@@ -1,22 +1,22 @@
 /****************************************************************************************************
 Apex Class Name:  Core_Test_Utility
-Version     : 1.0 
-Created Date: 06 OCT 2014
-Function    : Utility Class for creating data ( used in test classes )
-Modification Log :frecz
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Harshith M L             06/10/2014              Original Version
-* Kunal Mehta              12/12/2014              Methods to create User and Custom Setting instances
-* Brian Matthews           05/27/2015              Added systemAdminUser
-* Nick Krisa               07/28/2015              Added createOpportunityPartners
-* Kalpana Choudhary        09/04/2015              Added createCampaign 
-* Brian Matthews           09/30/2015              Added validateAccountAccess
-*                                                  Added checkRecordsEditAccess
-* Venu Karumuru            02/10/2017              Removed the use of accountTier
-*****************************************************************************************************/
+    Version     : 1.0
+    Created Date: 06 OCT 2014
+    Function    : Utility Class for creating data ( used in test classes )
+    Modification Log :frecz
+     * Developer                   Date                   Description
+ * ----------------------------------------------------------------------------
+ * Harshith M L             06/10/2014              Original Version
+ * Kunal Mehta              12/12/2014              Methods to create User and Custom Setting instances
+ * Brian Matthews           05/27/2015              Added systemAdminUser
+ * Nick Krisa               07/28/2015              Added createOpportunityPartners
+ * Kalpana Choudhary        09/04/2015              Added createCampaign
+ * Brian Matthews           09/30/2015              Added validateAccountAccess
+ *                                                  Added checkRecordsEditAccess
+ * Venu Karumuru            02/10/2017              Removed the use of accountTier
+ *****************************************************************************************************/
 public class Core_Test_Utility {
-
+    
     public static final String sCompany        = 'test';
     public static final String sEmployee       = 'EMP';
     public static final String sFirstName      = 'test';
@@ -25,10 +25,10 @@ public class Core_Test_Utility {
     public static final String sStatus         = 'In Progress';
     public static final String sSystemAdminProfileName = 'System Administrator';
     public static final String sTeamMemberRole = 'Team Member (100%)';
-
+    
     public static final Integer iDurationInMinutes    = 3000;
     public static final Integer iMaxValidationRecords = 200;
-
+    
     public static List<AccountTeamMember> Core_AccountTeamMember(List<User> lstUser) {
         AccountTeamMember acctTeamMember;
         List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
@@ -36,13 +36,13 @@ public class Core_Test_Utility {
         for (User member : lstUser) {
             acctTeamMember = new AccountTeamMember();
             acctTeamMember.UserId = member.Id;
-            acctTeamMember.TeamMemberRole = sTeamMemberRole;        
+            acctTeamMember.TeamMemberRole = sTeamMemberRole;
             lstAccountTeamMember.add(acctTeamMember);
         }
         return lstAccountTeamMember;
     }
-
-
+    
+    
     public static List<Core_Account_Team__c> Core_CustomAccountTeam(List<User> lstUser) {
         Core_Account_Team__c acctTeamMember;
         List<Core_Account_Team__c> lstCustomAccountTeamMember = new List<Core_Account_Team__c>();
@@ -50,13 +50,13 @@ public class Core_Test_Utility {
         for (User member : lstUser) {
             acctTeamMember                     = new Core_Account_Team__c();
             acctTeamMember.Core_Team_member__c = member.Id;
-            acctTeamMember.Core_Team_Role__c   = sTeamMemberRole;        
+            acctTeamMember.Core_Team_Role__c   = sTeamMemberRole;
             lstCustomAccountTeamMember.add(acctTeamMember);
         }
         return lstCustomAccountTeamMember;
     }
-
-
+    
+    
     // Carrying the data as fields assigned from the Account sObject is optimal because there ARE subqueries
     // on the account sObject that can have thousands of records.
     //
@@ -73,22 +73,22 @@ public class Core_Test_Utility {
         public Integer components          { get; set; }
         public Integer componentsUnitCosts { get; set; }
         public String membershipTier       { get; set; }
-
+        
         public boolean isSelected          { get; set; }
         public String  selectedComponent   { get; set; }
         public String  sortOrder           { get; set; }
-
-        // Overload the constructor #1           
-        public TargetAccountRecord(Account acc, String pSelectedComponent, String pSortOrder) {         
+        
+        // Overload the constructor #1
+        public TargetAccountRecord(Account acc, String pSelectedComponent, String pSortOrder) {
             configureProperties(acc);
-
+            
             // Override the defaults from configureProperties
             selectedComponent = pSelectedComponent;
             sortOrder         = pSortOrder;
         }
- 
-        // Overload the constructor #2           
-        public TargetAccountRecord(Account acc) {         
+        
+        // Overload the constructor #2
+        public TargetAccountRecord(Account acc) {
             configureProperties(acc);
         }
         
@@ -103,27 +103,27 @@ public class Core_Test_Utility {
             // This field has been converted from single picklist to multi-picklist as part of PSG onboard
             // accountTier  = acc.Core_Account_Tier__c; // Commented this to support the conversion
             industry     = acc.industry;
-
+            
             isSelected        = false;
             selectedComponent = 'components';
             sortOrder         = Core_SortedGrid_ColumnHeader.ASCENDING_TEXT;
             
-            components          = 0; 
+            components          = 0;
             componentsUnitCosts = 0;
             for(Core_Channel_Salesout__c ccs : acc.Core_Account_Channel_Sales_Out__r){
                 components          = components + Integer.valueof(ccs.Core_Component_Units__c);
                 componentsUnitCosts = componentsUnitCosts + Integer.valueof(ccs.Core_Component__c);
             }
-
+            
             if (acc.Channel_Memberships__r != NULL && acc.Channel_Memberships__r.size() > 0)
                 membershipTier  = acc.Channel_Memberships__r[0].Core_Current_Membership_Tier__c;
-            else        
+            else
                 membershipTier = '';
         }
         
         
-        public Integer compareTo(Object compareTo) 
-        {      
+        public Integer compareTo(Object compareTo)
+        {
             TargetAccountRecord rec = (TargetAccountRecord)compareTo;
             
             // The return value of 0 indicates that both elements are equal.
@@ -136,53 +136,53 @@ public class Core_Test_Utility {
             } else {
                 greaterValue = -1;
                 lesserValue  = 1;
-            }    
+            }
             
             if (rec.selectedComponent == 'components') {
-                if (components > rec.components) 
+                if (components > rec.components)
                     return greaterValue;
-                    
-                if (components < rec.components) 
+                
+                if (components < rec.components)
                     return lesserValue;
-
-                return 0;                   
-            } 
+                
+                return 0;
+            }
             
             if (rec.Selectedcomponent == 'componentsUnitCosts') {
-                if (componentsUnitCosts > rec.componentsUnitCosts) 
+                if (componentsUnitCosts > rec.componentsUnitCosts)
                     return greaterValue;
-                    
+                
                 if (componentsUnitCosts < rec.componentsUnitCosts)
                     return lesserValue;
-
-                return 0;                
-            } 
+                
+                return 0;
+            }
             
             if (rec.Selectedcomponent == 'accountName') {
-                if (name > rec.name) 
+                if (name > rec.name)
                     return greaterValue;
-                    
+                
                 if (name < rec.name)
                     return lesserValue;
-
-                return 0;                
-            } 
+                
+                return 0;
+            }
             
             if (rec.Selectedcomponent == 'membershipTier') {
-                if (membershipTier > rec.membershipTier) 
+                if (membershipTier > rec.membershipTier)
                     return greaterValue;
-                    
+                
                 if (membershipTier < rec.membershipTier)
                     return lesserValue;
-
-                return 0;                
-            }   
+                
+                return 0;
+            }
             
-            return 0;    
-        }                
+            return 0;
+        }
     }
-
-
+    
+    
     // There is NO sObject for Salesout summary
     //
     public class ChannelDataSalesoutSummaryRecord {
@@ -201,14 +201,14 @@ public class Core_Test_Utility {
             component          = pComponent;
             componentUnits     = pComponentUnits;
         }
-    } 
-
-
+    }
+    
+    
     // Carrying the data from the sObject is optimal because there are no subqueries
     //
     public class ChannelDataSalesoutRecord {
-        private Core_Channel_Salesout__c cdsInstance; 
-
+        private Core_Channel_Salesout__c cdsInstance;
+        
         public String  salesType           { get { return cdsInstance.Core_Sales_Type__c;} }
         public Integer invoiceWW           { get { return Integer.valueOf(cdsInstance.Core_Invoice_WW__c);} }
         public Integer invoiceQuarter      { get { return Integer.valueOf(cdsInstance.Core_Invoice_Quarter__c);} }
@@ -228,12 +228,12 @@ public class Core_Test_Utility {
         public ChannelDataSalesoutRecord (Core_Channel_Salesout__c css) {
             cdsInstance = css;
         }
-    } 
-
-
+    }
+    
+    
     public class ChannelDataMembershipRecord {
         private Core_Channel_Membership__c cmInstance;
-         
+        
         public String   currentMembershipTier     { get { return cmInstance.Core_Current_Membership_Tier__c;} }
         public String   businessID                { get { return cmInstance.Core_Business_ID__c;} }
         public DateTime renewalTimestamp          { get { return DateTime.valueOf(cmInstance.Core_Renewal_Timestamp__c);} }
@@ -246,16 +246,16 @@ public class Core_Test_Utility {
         public Integer  salesNeededtoPlatinum     { get { return Integer.valueOf(cmInstance.Core_Sales_Needed_to_Platinum__c);} }
         public Integer  trainingNeededtoGold      { get { return Integer.valueOf(cmInstance.Core_Training_Needed_to_Gold__c);} }
         public Integer  trainingNeededtoPlatinum  { get { return Integer.valueOf(cmInstance.Core_Training_Needed_to_Platinum__c);} }
-
+        
         public ChannelDataMembershipRecord(Core_Channel_Membership__c ccm) {
             cmInstance = ccm;
         }
     }
-
-
+    
+    
     public class ChannelDataTrainingRecord {
         private Core_Training__c ctInstance;
-    
+        
         public String   firstName            { get { return ctInstance.Core_First_Name__c;} }
         public String   lastName             { get { return ctInstance.Core_Last_Name__c;} }
         public String   roleCode             { get { return ctInstance.Core_Role_Code__c;} }
@@ -263,36 +263,36 @@ public class Core_Test_Utility {
         public Integer  trainingCredits      { get { return Integer.valueOf(ctInstance.Core_Training_Credits__c);} }
         public Integer  trainingID           { get { return Integer.valueOf(ctInstance.Core_Training_ID__c);} }
         public String   trainingTitle        { get { return ctInstance.Core_Training_Title__c;} }
-
+        
         public ChannelDataTrainingRecord(Core_Training__c ct) {
             ctInstance = ct;
         }
     }
-
-
+    
+    
     public class ChannelDataPointsRecord {
         private Core_Liability_Points__c clpInstance;
-    
+        
         public Integer totalAvailablePoints { get { return Integer.valueOf(clpInstance.Core_Total_Available_Points__c);} }
         public Integer totalBalancePoints   { get { return Integer.valueOf(clpInstance.Core_Total_Balance_Points__c);} }
         public Integer totalExpiredPoints   { get { return Integer.valueOf(clpInstance.Core_Total_Expired_Points__c);} }
         public Integer totalEarnedPoints    { get { return Integer.valueOf(clpInstance.Core_Total_Earned_Points__c);} }
         public Integer totalRedeemedPoints  { get { return Integer.valueOf(clpInstance.Core_Total_Redeemed_Points__c);} }
-                             
+        
         public ChannelDataPointsRecord(Core_Liability_Points__c clp) {
             clpInstance = clp;
         }
     }
-
-
-    // Checking read/write access to an account will verify territory, account owner, 
+    
+    
+    // Checking read/write access to an account will verify territory, account owner,
     // and any other sharing rule granting account R/W access.
     //
     public static Set<Id> validateAccountAccess(Id userId, Set<Id> setAcctIds)
     {
-        //System.debug('#80 setAcctIds.size(): ' + setAcctIds.size());    
-
-        Set<Id> setTargetId     = new Set<Id>();        
+        //System.debug('#80 setAcctIds.size(): ' + setAcctIds.size());
+        
+        Set<Id> setTargetId     = new Set<Id>();
         Set<Id> setValidationId = new Set<Id>();
         for (Id acctId : setAcctIds)
         {
@@ -300,38 +300,38 @@ public class Core_Test_Utility {
             
             if (setValidationId.size() == iMaxValidationRecords)
             {
-                checkRecordEditAccess(userId, setValidationId, setTargetId);                       
-                setValidationId.clear();            
-            }  
+                checkRecordEditAccess(userId, setValidationId, setTargetId);
+                setValidationId.clear();
+            }
         }
-
-        //System.debug('#81 setValidationId.size(): ' + setValidationId.size());    
-
-        if (setValidationId.size() > 0)        
-            checkRecordEditAccess(userId, setValidationId, setTargetId);       
         
-        setAcctIds.removeAll(setTargetId);    
-        System.debug('#82 setAcctIds.size(): ' + setAcctIds.size());    
-        System.debug('#83 setTargetId.size(): ' + setTargetId.size());    
+        //System.debug('#81 setValidationId.size(): ' + setValidationId.size());
         
-        // Qualify Team Members       
+        if (setValidationId.size() > 0)
+            checkRecordEditAccess(userId, setValidationId, setTargetId);
+        
+        setAcctIds.removeAll(setTargetId);
+        System.debug('#82 setAcctIds.size(): ' + setAcctIds.size());
+        System.debug('#83 setTargetId.size(): ' + setTargetId.size());
+        
+        // Qualify Team Members
         List<AccountTeamMember> lstTeamMembers = [SELECT AccountId
                                                   FROM AccountTeamMember
                                                   WHERE AccountId IN :setAcctIds
                                                     AND UserId = :userId
                                                     AND isDeleted = False];
-
-        //System.debug('#84 lstTeamMembers.size(): ' + lstTeamMembers.size());    
+        
+        //System.debug('#84 lstTeamMembers.size(): ' + lstTeamMembers.size());
         
         for (AccountTeamMember atm : lstTeamMembers)
-            setTargetId.add(atm.AccountId);                     
-
-        //System.debug('#85 setTargetId.size(): ' + setTargetId.size());    
-
+            setTargetId.add(atm.AccountId);
+        
+        //System.debug('#85 setTargetId.size(): ' + setTargetId.size());
+        
         return setTargetId;
     }
-
-
+    
+    
     public static void checkRecordEditAccess(Id userId, Set<Id> inputIds, Set<Id> validatedIds)
     {
         // Need to know if Accounts have Read-Write access.  This goes beyond what "WITH SHARING" offers.
@@ -341,14 +341,14 @@ public class Core_Test_Utility {
                                                    WHERE UserId = :userId
                                                      AND RecordId IN :inputIds
                                                      AND HasEditAccess = TRUE];
-            
-        // Rifle through the Account records and obtain their associated Opportunity_Partner Ids.    
+        
+        // Rifle through the Account records and obtain their associated Opportunity_Partner Ids.
         for (UserRecordAccess recordAccess : lstAccountAccess) // Account Ids
             validatedIds.add(recordAccess.RecordId);
-
+        
     }
-
-
+    
+    
     public static Boolean isUserGroupMember(Id userId, String groupDeveloperName)
     {
         if (String.isblank(groupDeveloperName))
@@ -359,8 +359,8 @@ public class Core_Test_Utility {
         
         List<Group> smgGroups = [SELECT Id 
                                  FROM Group
-                                 WHERE DeveloperName = :groupDeveloperName];    
-            
+                                 WHERE DeveloperName = :groupDeveloperName];
+        
         if (smgGroups.size() == 0)
             return false;
         
@@ -373,26 +373,26 @@ public class Core_Test_Utility {
         
         return countGroupMember > 0;
     }
-
-
+    
+    
     /*
-    * Finds a system Admin User who is not the current user, and return their User sObject
-    */
-    private static user pSystemAdminUser;    
-    public static User systemAdminUser {    
+     * Finds a system Admin User who is not the current user, and return their User sObject
+     */
+    private static user pSystemAdminUser;
+    public static User systemAdminUser {
         get {
-        
+            
             if (pSystemAdminUser == NULL)
             {
                 List <User> usersList = new List <User>();
-    
+                
                 // Fetching a different System admin
                 usersList = [SELECT Id, Name 
                              FROM User 
                              WHERE isActive = TRUE 
                                AND Core_Employee_Type_Code__c = :sEmployee
                                AND Profile.Name = :sSystemAdminProfileName LIMIT 5];
-                               
+                
                 for (User sysAdminUser: usersList) {
                     if (sysAdminUser.Id != UserInfo.getUserId())
                     {
@@ -400,23 +400,23 @@ public class Core_Test_Utility {
                         break;
                     }
                 }
-            }        
+            }
             
             System.Debug('System Admin User: ' + pSystemAdminUser.Name);
             return pSystemAdminUser;
-        }        
+        }
     }
-
-
+    
+    
     public static List<Core_Channel_Salesout__c> Core_Channel_Salesout(Integer size) {
-    
-        String numberString; 
-    
+        
+        String numberString;
+        
         List <Core_Channel_Salesout__c> lstSalesout = new List <Core_Channel_Salesout__c> ();
         For(integer i = 0; i <size; i++) {
             Core_Channel_Salesout__c cs = new Core_Channel_Salesout__c();
             cs.Core_Sales_Type__c             = 'Sales Type ' + i;
-            cs.Core_Business_ID__c            = 'Business ID ' + i;            
+            cs.Core_Business_ID__c            = 'Business ID ' + i;
             cs.Core_Rpt_Parent_Form_Factor__c = 'Form Factor ' + i;
             cs.Core_Rpt_Parent_Form_Factor__c = 'Product Platform ' + i;
             cs.Core_Product_Level_1__c        = 'Product Operation ' + i;
@@ -425,47 +425,46 @@ public class Core_Test_Utility {
             cs.Core_Component_Units__c        = i * 10;
             cs.Core_Component__c              = i * 100;
             cs.Core_Distributor_Name__c       = 'Distributor ' + i;
-
-            numberString                      = '20150' + Math.mod(i, 4); 
+            
+            numberString                      = '20150' + Math.mod(i, 4);
             cs.Core_Invoice_Quarter__c        = Double.ValueOf(numberString);
-
+            
             lstSalesout.add(cs);
         }
         return lstSalesout;
     }
-
-
+    
+    
     public static List<Core_Channel_Membership__c> Core_Channel_Membership(Integer size) {
-    
-        String numberString; 
+        
+        String numberString;
         Integer iTier;
-    
+        
         List <Core_Channel_Membership__c> lstMembership = new List <Core_Channel_Membership__c> ();
-        For(integer i = 0; i <size; i++) { 
+        For(integer i = 0; i <size; i++) {
             Core_Channel_Membership__c cm      = new Core_Channel_Membership__c();
             cm.Core_Business_ID__c             = '10000000' + i;
             
-            iTier = Math.mod(i, 3);            
-            if (iTier == 0)            
+            iTier = Math.mod(i, 3);
+            if (iTier == 0)
                 cm.Core_Current_Membership_Tier__c = 'UNREGISTERED';
-            else if (iTier == 1)                
+            else if (iTier == 1)
                 cm.Core_Current_Membership_Tier__c = 'GOLD';
             else
                 cm.Core_Current_Membership_Tier__c = 'PLATINUM';
-
+            
             cm.Core_Renewal_Status__c          = 'active';
             cm.Core_Status_Date__c             = DateTime.now();
             lstMembership.add(cm);
         }
         return lstMembership;
     }
-
+    
     public static List <Account> createAccount(Integer size) {
         List <Account> accountList = new List <Account> ();
         For(integer i = 0; i <size; i++) {
             Account accountInstance = new Account();
             accountInstance.name = 'Test ' + (Math.random() * 1000);
-            accountInstance.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
             accountInstance.BillingCountryCode = 'USA';
             accountInstance.BIllingStateCode = 'AL';
             accountInstance.BillingCity = 'Alabama';
@@ -477,10 +476,10 @@ public class Core_Test_Utility {
         }
         return accountList;
     }
-
+    
     public static List <Core_Change_Request__c> createChangeRequest(List <Account> accountList) {
         List <Core_Change_Request__c> changeRequestList = new List <Core_Change_Request__c> ();
-
+        
         For(integer i = 0; i <accountList.size(); i++) {
             Core_Change_Request__c changeRequestInstance = new Core_Change_Request__c();
             //Added for covering all required fields -- Ashwin
@@ -495,7 +494,7 @@ public class Core_Test_Utility {
         }
         return changeRequestList;
     }
-
+    
     public static List <Lead> createLead(Integer size) {
         List <Lead> leadList = new List <Lead> ();
         for (integer i = 0; i <size; i++) {
@@ -516,7 +515,7 @@ public class Core_Test_Utility {
         }
         return leadList;
     }
- 
+    
     public static List <Task> createTask(Integer size) {
         List <Task> taskList = new List <Task> ();
         for (integer i = 0; i <size; i++) {
@@ -526,11 +525,11 @@ public class Core_Test_Utility {
             taskInstance.status = sStatus;
             taskInstance.Subject = sSubject;
             taskList.add(taskInstance);
-
+            
         }
         return taskList;
     }
-
+    
     public static List <Event> createEvent(Integer size) {
         List <Event> eventList = new List <Event> ();
         for (integer i = 0; i <size; i++) {
@@ -539,11 +538,11 @@ public class Core_Test_Utility {
             eventInstance.Subject = sSubject;
             eventInstance.DurationInMinutes = iDurationInMinutes;
             eventList.add(eventInstance);
-
+            
         }
         return eventList;
     }
-
+    
     public static List <Opportunity> createOpportunity(Integer size) {
         List <Opportunity> opportunityList = new List <Opportunity> ();
         for (integer i = 0; i <size; i++) {
@@ -552,12 +551,12 @@ public class Core_Test_Utility {
             opportunityInstance.StageName = 'Qualify';
             opportunityInstance.Name = 'Test' + i;
             opportunityList.add(opportunityInstance);
-
+            
         }
         return opportunityList;
     }
-
-
+    
+    
     public static List <Product2> createProduct(Integer size) {
         List <Product2> lstProducts = new List <Product2> ();
         product2 productInstance;
@@ -572,7 +571,7 @@ public class Core_Test_Utility {
         }
         return lstProducts;
     }
-
+    
     public static List <PricebookEntry> createPriceBookEntry(Integer size, List <Product2> lstProducts, Id priceBookInstanceId) {
         List <PricebookEntry> lstPriceBookEntry = new List <PricebookEntry> ();
         PricebookEntry priceBookEntryInstance;
@@ -587,7 +586,7 @@ public class Core_Test_Utility {
         }
         return lstPriceBookEntry;
     }
-
+    
     public static List <OpportunityLineItem> createOpportunityLineItems(Integer size, List <PricebookEntry> lstPriceBookEntry, Opportunity opportunityInstance) {
         List <OpportunityLineItem> lstOpportunityLineItem = new List <OpportunityLineItem> ();
         OpportunityLineItem OpportunityLineItemInstance;
@@ -603,43 +602,44 @@ public class Core_Test_Utility {
             OpportunityLineItemInstance.Core_Division__c = 'Division 1';
             OpportunityLineItemInstance.Core_Group__c = 'Group 1';
             lstOpportunityLineItem.add(OpportunityLineItemInstance);
-
+            
         }
         return lstOpportunityLineItem;
     }
-
+    
     public static List <PriceBook2> createPriceBook(Integer size) {
-
+        
         List <PriceBook2> lstPriceBook = new List <PriceBook2> ();
         PriceBook2 priceBookInstance;
-
+        
         for (Integer i = 0; i <size; i++) {
             priceBookInstance = new PriceBook2();
             priceBookInstance.Name = 'Test' + i;
             priceBookInstance.Description = 'test';
             lstPriceBook.add(priceBookInstance);
         }
-
+        
         return lstPriceBook;
     }
-
-
+    
+    
     public static List <Contact> createContacts(Integer size) {
-
+        
         List <Contact> lstContacts = new List <Contact> ();
         Contact contactInstance;
-
+        
         for (Integer i = 0; i <size; i++) {
             contactInstance = new Contact();
             contactInstance.FirstName = 'test';
             contactInstance.LastName = i + '';
             contactInstance.email = 'test@test' + i + '.com';
+            contactInstance.MailingCountry='USA';
             lstContacts.add(contactInstance);
         }
-
+        
         return lstContacts;
     }
-
+    
     public static List <Account> Core_Account(Integer iNoOfRecords) {
         List <Account> lstAccount = new List <Account> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -653,7 +653,7 @@ public class Core_Test_Utility {
         }
         return lstAccount;
     }
-
+    
     public static List <Lead> Core_Lead(Integer iNoOfRecords) {
         List <Lead> lstLead = new List <Lead> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -664,7 +664,7 @@ public class Core_Test_Utility {
         }
         return lstLead;
     }
-
+    
     public static List <User> Core_User(Integer iNoOfRecords) {
         List <User> lstUser = new List <User> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -685,7 +685,7 @@ public class Core_Test_Utility {
         }
         return lstUser;
     }
-
+    
     public static List <Core_Country_Reference__c> Core_CountryState(Integer iNoOfRecords) {
         List <Core_Country_Reference__c> lstCS = new List <Core_Country_Reference__c> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -695,7 +695,7 @@ public class Core_Test_Utility {
         }
         return lstCS;
     }
-
+    
     public static List <Core_Trigger_Executions__c> Core_TriggerExecution(Integer iNoOfRecords) {
         List <Core_Trigger_Executions__c> lstTrigExecution = new List <Core_Trigger_Executions__c> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -710,7 +710,7 @@ public class Core_Test_Utility {
         }
         return lstTrigExecution;
     }
-
+    
     public static List <Opportunity> Core_Opportunity(Integer iNoOfRecords) {
         List <Opportunity> lstOpportunity = new List <Opportunity> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -724,7 +724,7 @@ public class Core_Test_Utility {
         }
         return lstOpportunity;
     }
-
+    
     public static List <Core_Feature__c> CreateFeature(Integer iNoOfRecords) {
         List <Core_Feature__c> lstFeature = new List <Core_Feature__c> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -737,7 +737,7 @@ public class Core_Test_Utility {
         }
         return lstFeature;
     }
-
+    
     /*
      * Method name  : CreateFeatureHeader
      * Description  : method to return the instances of Core_Feature_Header
@@ -754,7 +754,7 @@ public class Core_Test_Utility {
         }
         return lstFeatureHeader;
     }
-
+    
     /*
      * Method name  : CreateFeatureSet
      * Description  : method to return the instances of Core_Feature_Set
@@ -770,7 +770,7 @@ public class Core_Test_Utility {
         }
         return lstFeatureSet;
     }
-
+    
     /*
      * Method name  : CreateOpportunityFeature
      * Description  : method to return the instances of Core_Opportunity_Features
@@ -786,13 +786,13 @@ public class Core_Test_Utility {
         return lstOpportunityFeature;
     }
     
-   /*
-    * Method name  : createOpportunityPartner 
-    * Description  : method to return test Opportunity Partners
-    * Return Type  : List<Core_Opportunity_Partner__c>
-    * Parameter    : Size of records
-    */
-    public static List<Core_Opportunity_Partner__c> createOpportunityPartners(Integer size, Opportunity oppInstance) 
+    /*
+     * Method name  : createOpportunityPartner
+     * Description  : method to return test Opportunity Partners
+     * Return Type  : List<Core_Opportunity_Partner__c>
+     * Parameter    : Size of records
+     */
+    public static List<Core_Opportunity_Partner__c> createOpportunityPartners(Integer size, Opportunity oppInstance)
     {
         List<Core_Opportunity_Partner__c> lstOppPartner = new List<Core_Opportunity_Partner__c>();
         Core_Opportunity_Partner__c partnerInstance;
@@ -805,7 +805,7 @@ public class Core_Test_Utility {
         }
         return lstOppPartner;
     }
- 
+    
     public static List <Campaign> createCampaign(Integer size) {
         List <Campaign> campaignList = new List <Campaign> ();
         For(integer i = 0; i <size; i++) {
@@ -818,13 +818,13 @@ public class Core_Test_Utility {
     }
     
     @future
-    public static void createEmailTemplate(){      
+    public static void createEmailTemplate(){
         List<EmailTemplate> listEmailTemp = new List<EmailTemplate>();
         EmailTemplate eml1 = new EmailTemplate (developerName = 'DWG_No_Longer_Achieved_Need_to_be_Recalled', FolderId = UserInfo.getUserId() , TemplateType= 'Text', Name = 'DWG_No_Longer_Achieved_Need_to_be_Recalled');
         listEmailTemp.add(eml1);
-        EmailTemplate eml2 = new EmailTemplate (developerName = 'DWG_Ready_to_Submit_Notification', FolderId = UserInfo.getUserId(), TemplateType= 'Text', Name = 'DWG_Ready_to_Submit_Notification'); 
+        EmailTemplate eml2 = new EmailTemplate (developerName = 'DWG_Ready_to_Submit_Notification', FolderId = UserInfo.getUserId(), TemplateType= 'Text', Name = 'DWG_Ready_to_Submit_Notification');
         listEmailTemp.add(eml2);
         insert listEmailTemp;
     }
-   
+    
 }

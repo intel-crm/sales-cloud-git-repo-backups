@@ -1,6 +1,4 @@
 public class PMP_CompanyAutoFill_Helper {
-    
-    private static final String LOGO_KEY = 'logo_document_id';
  
     public static void publishStagedCompanies(List<PMP_CompanyAutoFill__c> stagedCompanies) {
         if (stagedCompanies == null || stagedCompanies.isEmpty()) {
@@ -105,7 +103,6 @@ public class PMP_CompanyAutoFill_Helper {
         Map<Id, List<String>> partnerRegionsMap      = new Map<Id, List<String>>();
         Map<Id, List<String>> partnerIndustriesMap   = new Map<Id, List<String>>();
         Map<Id, List<String>> partnerApplicationsMap = new Map<Id, List<String>>();
-        Map<Id, Id> partnerLogoDocMap = new Map<Id, Id>();
 
         for (Id pid : draftPartnerIds) {
             PMP_CompanyAutoFill__c s = partnerToStageMap.get(pid);
@@ -133,9 +130,6 @@ public class PMP_CompanyAutoFill_Helper {
         
         //SYNC TRANSLATIONS
         syncCompanyTranslationsFromStage(draftPartnerIds, partnerToStageMap);
-        
-        //SYNC RESOURCES
-        syncCompanyResourcesFromStage(draftPartnerIds,partnerToStageMap);
     }
    
     //UPDATE COMPANY
@@ -231,7 +225,7 @@ public class PMP_CompanyAutoFill_Helper {
     }
 
     //SAVE REGIONS
-    /*public static void saveRegionsBulk(Map<Id, List<String>> partnerRegionsMap) {
+    public static void saveRegionsBulk(Map<Id, List<String>> partnerRegionsMap) {
         if (partnerRegionsMap == null || partnerRegionsMap.isEmpty()) return;
 
         Set<String> allNames = new Set<String>();
@@ -288,209 +282,6 @@ public class PMP_CompanyAutoFill_Helper {
             Database.SaveResult[] res = Database.insert(toInsert, false);
             PMP_Utility.logDmlErrors((Object[]) res, 'PMP_CompanyAutoFill_Helper-saveRegionsBulk');
         }
-    }*/
-    public static void saveRegionsBulk(Map<Id, List<String>> partnerRegionsMap) {
-    
-        if (partnerRegionsMap == null || partnerRegionsMap.isEmpty()) return;
-    
-        // -------------------------------
-        // STEP 1: Collect Names
-        // -------------------------------
-        Set<String> allNames = new Set<String>();
-        for (List<String> names : partnerRegionsMap.values()) {
-            allNames.addAll(names);
-        }
-        if (allNames.isEmpty()) return;
-    
-        // -------------------------------
-        // STEP 2: Query Spec VALUES
-        // -------------------------------
-        Map<String, PMP_Specification_Value__c> valByName = new Map<String, PMP_Specification_Value__c>();
-    
-        for (PMP_Specification_Value__c v : [
-            SELECT Id, Name, PMP_Specification_Product_Cd__c
-            FROM PMP_Specification_Value__c
-            WHERE PMP_Active_Ind__c = TRUE
-            AND Name IN :allNames
-        ]) {
-            valByName.put(v.Name, v);
-        }
-    
-        // -------------------------------
-        // STEP 3: Query Specifications (only relevant tree)
-        // -------------------------------
-        Map<String, PMP_Specification__c> specByName = new Map<String, PMP_Specification__c>();
-        Map<String, PMP_Specification__c> specByCode = new Map<String, PMP_Specification__c>();
-    
-        for (PMP_Specification__c s : [
-            SELECT Id, Name,
-                   PMP_Partner_Product_Specification_Id__c,
-                   PMP_Product_Parent_Specification_Id__c
-            FROM PMP_Specification__c
-            WHERE PMP_Active_Ind__c = TRUE
-            AND PMP_Ancestor_Specification_Cd__c LIKE '%NPP_GeographicCoverage%'
-        ]) {
-            if (s.Name != null) {
-                specByName.put(s.Name, s);
-            }
-    
-            if (s.PMP_Partner_Product_Specification_Id__c != null) {
-                specByCode.put(s.PMP_Partner_Product_Specification_Id__c, s);
-            }
-        }
-    
-        // -------------------------------
-        // STEP 4: Existing Records 
-        // -------------------------------
-        Set<Id> companyIds = partnerRegionsMap.keySet();
-        Set<String> existingKeys = new Set<String>();
-    
-        for (PMP_Company_Region__c rec : [
-            SELECT PMP_Company_Id__c,
-                   PMP_Specification_Id__c,
-                   PMP_Specification_Value__c
-            FROM PMP_Company_Region__c
-            WHERE PMP_Company_Id__c IN :companyIds
-        ]) {
-            if (rec.PMP_Specification_Id__c != null) {
-                existingKeys.add(rec.PMP_Company_Id__c + '-S-' + rec.PMP_Specification_Id__c);
-            }
-            if (rec.PMP_Specification_Value__c != null) {
-                existingKeys.add(rec.PMP_Company_Id__c + '-V-' + rec.PMP_Specification_Value__c);
-            }
-        }
-    
-        // -------------------------------
-        // STEP 5: Prepare Inserts
-        // -------------------------------
-        List<PMP_Company_Region__c> toInsert = new List<PMP_Company_Region__c>();
-        Set<String> uniqueKeys = new Set<String>();
-    
-        // -------------------------------
-        // STEP 6: PROCESS
-        // -------------------------------
-        for (Id pid : partnerRegionsMap.keySet()) {
-    
-            for (String name : partnerRegionsMap.get(pid)) {
-    
-                // =========================
-                // 1. VALUE LOGIC
-                // =========================
-                if (valByName.containsKey(name)) {
-    
-                    PMP_Specification_Value__c val = valByName.get(name);
-    
-                    // Insert VALUE
-                    if (val.Id != null) {
-                        String key = pid + '-V-' + val.Id;
-    
-                        if (!uniqueKeys.contains(key) && !existingKeys.contains(key)) {
-                            uniqueKeys.add(key);
-    
-                            toInsert.add(new PMP_Company_Region__c(
-                                PMP_Company_Id__c = pid,
-                                PMP_Specification_Value__c = val.Id
-                            ));
-                        }
-                    }
-    
-                    // VALUE → SPEC → PARENT CHAIN
-                    if (val.PMP_Specification_Product_Cd__c != null &&
-                        specByCode.containsKey(val.PMP_Specification_Product_Cd__c)) {
-    
-                        PMP_Specification__c spec =
-                            specByCode.get(val.PMP_Specification_Product_Cd__c);
-    
-                        Set<String> visited = new Set<String>();
-    
-                        while (spec != null &&
-                               spec.PMP_Partner_Product_Specification_Id__c != null &&
-                               !visited.contains(spec.PMP_Partner_Product_Specification_Id__c)) {
-    
-                            visited.add(spec.PMP_Partner_Product_Specification_Id__c);
-    
-                            // Insert SPEC
-                            if (spec.Id != null) {
-                                String key = pid + '-S-' + spec.Id;
-    
-                                if (!uniqueKeys.contains(key) && !existingKeys.contains(key)) {
-                                    uniqueKeys.add(key);
-    
-                                    toInsert.add(new PMP_Company_Region__c(
-                                        PMP_Company_Id__c = pid,
-                                        PMP_Specification_Id__c = spec.Id
-                                    ));
-                                }
-                            }
-    
-                            // STOP at TOP
-                            if (spec.PMP_Product_Parent_Specification_Id__c == 'NPP_GeographicCoverage') {
-    
-                                if (specByCode.containsKey('NPP_GeographicCoverage')) {
-    
-                                    PMP_Specification__c top =
-                                        specByCode.get('NPP_GeographicCoverage');
-    
-                                    if (top != null && top.Id != null) {
-    
-                                        String key = pid + '-S-' + top.Id;
-    
-                                        if (!uniqueKeys.contains(key) && !existingKeys.contains(key)) {
-                                            uniqueKeys.add(key);
-    
-                                            toInsert.add(new PMP_Company_Region__c(
-                                                PMP_Company_Id__c = pid,
-                                                PMP_Specification_Id__c = top.Id
-                                            ));
-                                        }
-                                    }
-                                }
-                                break;
-                            }
-    
-                            // Move to parent
-                            if (spec.PMP_Product_Parent_Specification_Id__c != null &&
-                                specByCode.containsKey(spec.PMP_Product_Parent_Specification_Id__c)) {
-    
-                                spec = specByCode.get(spec.PMP_Product_Parent_Specification_Id__c);
-                            } else {
-                                break;
-                            }
-                        }
-                    }
-                }
-    
-                // =========================
-                // 2. DIRECT SPEC
-                // =========================
-                if (specByName.containsKey(name)) {
-    
-                    PMP_Specification__c spec = specByName.get(name);
-    
-                    if (spec != null && spec.Id != null) {
-    
-                        String key = pid + '-S-' + spec.Id;
-    
-                        if (!uniqueKeys.contains(key) && !existingKeys.contains(key)) {
-                            uniqueKeys.add(key);
-    
-                            toInsert.add(new PMP_Company_Region__c(
-                                PMP_Company_Id__c = pid,
-                                PMP_Specification_Id__c = spec.Id
-                            ));
-                        }
-                    }
-                }
-            }
-        }
-    
-        // -------------------------------
-        // STEP 7: INSERT
-        // -------------------------------
-        if (!toInsert.isEmpty()) {
-            Database.SaveResult[] res = Database.insert(toInsert, false);
-            PMP_Utility.logDmlErrors((Object[]) res, 'PMP_CompanyAutoFill_Helper-saveRegionsBulk');
-        }
     }
 
     //SAVE PARTNER CATEGORIES
@@ -527,123 +318,6 @@ public class PMP_CompanyAutoFill_Helper {
         if (!toInsert.isEmpty()) {
             Database.SaveResult[] res = Database.insert(toInsert, false);
             PMP_Utility.logDmlErrors((Object[]) res, 'PMP_CompanyAutoFill_Helper-savePartnerCategoriesBulk');
-        }
-    }
-
-	// LOGO PROCESSOR (ENTRY)    
-    public static void processLogos(List<PMP_CompanyAutoFill__c> newList,Map<Id, PMP_CompanyAutoFill__c> oldMap) {
-        if (newList == null || newList.isEmpty()) return;
-    
-        Map<Id, Id> stageToDocMap = new Map<Id, Id>();
-        Map<Id, PMP_CompanyAutoFill__c> stageMap = new Map<Id, PMP_CompanyAutoFill__c>();
-    
-        for (PMP_CompanyAutoFill__c s : newList) {
-    
-            if (s.PMP_Partner_Id__c == null) continue;
-            if (String.isBlank(s.Company_Key_Values__c)) continue;
-    
-            PMP_CompanyAutoFill__c oldRec = oldMap.get(s.Id);
-    
-            if (oldRec != null &&
-                oldRec.Company_Key_Values__c == s.Company_Key_Values__c) {
-                continue;
-            }
-    
-            // SAFE parsing 
-            Id docId = null;
-    
-            for (String pair : s.Company_Key_Values__c.split(';')) {
-    
-                List<String> parts = pair.split(':');
-    
-                if (parts.size() == 2 &&
-                    parts[0] != null &&
-                    parts[0].trim().toLowerCase() == LOGO_KEY) {
-    
-                    try {
-                        docId = (Id) parts[1].trim();
-                    } catch (Exception e) {}
-                }
-            }
-    
-            if (docId != null) {
-                stageToDocMap.put(s.Id, docId);
-                stageMap.put(s.Id, s);
-            }
-        }
-    
-        if (!stageToDocMap.isEmpty()) {
-            linkLogosToRecords(stageToDocMap, stageMap);
-        }
-    }
-    
-    // CORE LOGO LINK
-    private static void linkLogosToRecords(Map<Id, Id> stageToDocMap,Map<Id, PMP_CompanyAutoFill__c> stageMap) {
-    
-        if (stageToDocMap.isEmpty()) return;
-    
-        List<ContentDocumentLink> toInsert = new List<ContentDocumentLink>();
-    
-        for (Id stageId : stageToDocMap.keySet()) {
-    
-            Id docId = stageToDocMap.get(stageId);
-            PMP_CompanyAutoFill__c rec = stageMap.get(stageId);
-    
-            if (docId == null || rec == null) continue;
-    
-            if (rec.PMP_Partner_Id__c != null) {
-                toInsert.add(new ContentDocumentLink(
-                    ContentDocumentId = docId,
-                    LinkedEntityId    = rec.PMP_Partner_Id__c,
-                    ShareType         = 'V',
-                    Visibility        = 'AllUsers'
-                ));
-            }
-    
-            toInsert.add(new ContentDocumentLink(
-                ContentDocumentId = docId,
-                LinkedEntityId    = stageId,
-                ShareType         = 'V',
-                Visibility        = 'AllUsers'
-            ));
-        }
-    
-        if (!toInsert.isEmpty()) {
-            Database.SaveResult[] res = Database.insert(toInsert, false);
-    
-            PMP_Utility.logDmlErrors(
-                (Object[]) res,
-                'PMP_CompanyAutoFill_Helper-linkLogosToRecords'
-            );
-        }
-    }  
-    
-    private static void syncCompanyResourcesFromStage(Set<Id> partnerIds, Map<Id, PMP_CompanyAutoFill__c> partnerToStageMap) {
-        List<PMP_Company_Resource__c> resourcesToInsert = new List<PMP_Company_Resource__c>();
-        for (Id partnerId : partnerIds) {
-            PMP_CompanyAutoFill__c stageRec = partnerToStageMap.get(partnerId);
-            if (stageRec == null || String.isBlank(stageRec.PMP_Resources_JSON__c)) {
-                continue;
-            }
-            try {
-                List<Object> resources = (List<Object>)JSON.deserializeUntyped(stageRec.PMP_Resources_JSON__c);
-                for (Object obj : resources) {
-                    Map<String,Object> resource = (Map<String,Object>)obj;
-                    String resourceName = (String)resource.get('name');
-                    String resourceType = (String)resource.get('type');
-                    String resourceUrl = (String)resource.get('url');
-                    if (String.isBlank(resourceName) || String.isBlank(resourceUrl)) {
-                        continue;
-                    }
-                    resourcesToInsert.add(new PMP_Company_Resource__c(PMP_Company_Id__c = partnerId, Name = resourceName, PMP_Company_Resource_Type_Nm__c = resourceType, PMP_Company_Resource_URL_txt__c = resourceUrl));
-                }
-            } catch (Exception e) {
-                System.debug(LoggingLevel.ERROR, 'Invalid Resource JSON : ' + e.getMessage());
-            }
-        }
-        if (!resourcesToInsert.isEmpty()) {
-            Database.SaveResult[] results = Database.insert(resourcesToInsert, false);
-            PMP_Utility.logDmlErrors((Object[])results, 'PMP_CompanyAutoFill_Helper-syncCompanyResourcesFromStage');
         }
     }
 }

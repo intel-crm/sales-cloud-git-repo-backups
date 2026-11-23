@@ -95,7 +95,7 @@ public class PRM_ABA_Utility_Test {
         spec1.PRM_Description_Txt__c='This is description';
         spec1.PRM_Funding_BU_Nm__c='CCG Sales Group';
         spec1.PRM_Role_Nm__c='Service Provider';
-        spec1.PRM_Tier_Nm__c='Gold'; //'Gold';
+        spec1.PRM_Tier_Nm__c='Gold';
         spec1.PRM_Start_Date_Dt__c= system.today() + 7;
         spec1.PRM_End_Date_Dt__c= spec1.PRM_Start_Date_Dt__c + 5;
         spec1.PRM_Access_Level_Nm__c='Public';
@@ -781,7 +781,7 @@ insert lstOfMssg;  */
         //insert parent2;
         
         insert testAccLst;
-        ////System.debug('Test class - The list of accounts that are created are'+testAccLst);
+        
         
         Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
         coreAccnt.Core_Partner_Account_Id__c = parent1.id;
@@ -1011,18 +1011,17 @@ insert lstOfMssg;  */
         acctContRel.PRM_Status_Nm__c = 'Complete'; 
         update acctContRel;
         
-        ////System.debug('Test Class - List of ACRs created are'+idAcr);
-        //System.debug('Test Class - List of ACRs Ids are'+idAcr);  
+          
          PRM_Account_Contact_Relationship__c acr ;
         if(!idAcr.IsEmpty()){
             acr = [Select id,PRM_Account_Id__r.Name,PRM_Relationship_Id__c, PRM_Account_Id__c, PRM_Contact_Id__c, PRM_InActive_Ind__c,PRM_Status_Nm__c,PRM_Partner_Role__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in :idAcr ];
             
             //AND PRM_InActive_Ind__c!= true AND PRM_Status_Nm__c =:System.Label.PRM_ACR_Status
-                //System.debug('Test class- The value of CAG is '+acr);
+                
         }
         
         test.startTest();
-        //System.debug('No of SOQL Quieries executed at the start of benefitUtility : '+Limits.getQueries());
+        
         Map<Id,PRM_AccountBenefitAssociation__c> oldAbaMap=new Map<Id,PRM_AccountBenefitAssociation__c>(); 
         List<PRM_AccountBenefitAssociation__c> lstOfAba = new List<PRM_AccountBenefitAssociation__c>(); 
         PRM_AccountBenefitAssociation__c abassociationTest1 = new PRM_AccountBenefitAssociation__c();
@@ -1095,9 +1094,9 @@ insert lstOfMssg;  */
         Map<Id,PRM_AccountBenefitAssociation__c> abaMap=new Map<Id,PRM_AccountBenefitAssociation__c>(); 
         //Set<Id> contactsList = new Set<Id>{contactList[0].Id, contactList[1].Id};
         //Set<Id> entitlementsList = new Set<Id>{entitlementList[0].Id, entitlementList[1].Id};
-        //System.debug('The value of old list is' + oldAbaList);
+        
         abaMap.put(oldAbaList[0].id,oldAbaList[0]);
-        //System.debug('The value of old list is - 2' + oldAbaList);
+        
         List<PRM_AccountBenefitAssociation__c> abaList = new List<PRM_AccountBenefitAssociation__c>();
         List<PRM_AccountBenefitAssociation__c> abaListnew = new List<PRM_AccountBenefitAssociation__c>();
           
@@ -1112,9 +1111,9 @@ insert lstOfMssg;  */
         PRM_accBenefitAssociationUtility.duplicateRecordCheck(abaList);
         PRM_accBenefitAssociationUtility.updateSuppressEmail(abaList,abaMap);
         PRM_accBenefitAssociationUtility.opidBenefitInactivation(lstOfAba,oldAbaMap);
-        PRM_accBenefitAssociationUtility.onManualBenefitInsert(lstOfAba,oldAbaMap,false);
+        PRM_accBenefitAssociationUtility.onManualBenefitInsert(lstOfAba,oldAbaMap,false); 
         //PRM_accBenefitAssociationUtility.getActvieBatchEntitlement(entitlementsList, contactsList);
-        //System.debug('No of SOQL Quieries executed at the end of benefitUtility : '+Limits.getQueries());
+        
         Test.stopTest();   
     }
     

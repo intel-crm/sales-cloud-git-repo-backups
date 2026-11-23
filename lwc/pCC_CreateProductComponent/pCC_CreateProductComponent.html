@@ -1,0 +1,355 @@
+<template>
+    <!-- Spinner and Validation Message Overlay -->
+    <div>
+        <div>
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                class="slds-modal slds-fade-in-open slds-modal_full">
+                <div class="slds-modal__container" style="width: 50%; height: auto; max-height: 90%;">
+                    <!-- sldsValidatorIgnoreNextLine -->
+                    <button type="button" title="Close this window"
+                        class="slds-button slds-button_icon slds-modal__close slds-button_icon-bare"
+                        onclick={handleClosePopup}>
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" size="medium"
+                            class="slds-button__icon"></lightning-icon>
+                        <span class="slds-assistive-text">Close this window</span>
+                    </button>
+
+                    <!-- Edit products screen -->
+                    <div class="slds-modal__header">
+                        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">New Product
+                        </h1>
+                    </div>
+
+                    <!-- Create Product Screen -->
+                    <div class="slds-modal__content slds-scrollable_y" style="max-height: 70vh;">
+                        <div class="slds-card slds-is-relative">
+                            <template lwc:if={validate}>
+                                <div class="validation-container">
+                                    <lightning-spinner alternative-text="Loading" data-text="Loading" size="large"
+                                        variant="brand"></lightning-spinner>
+
+                                </div>
+                                <div class="validation-message">
+                                    Validation is in progress
+                                </div>
+                            </template>
+
+                            <template if:false={validate}>
+                                <div class="slds-m-around_medium">
+
+                                    <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId}
+                                        onsuccess={handleSuccess} onerror={handleError} record-type-id={recordTypeId}>
+                                        <!-- Show validation errors -->
+                                        <template lwc:if={unknownerrors}>
+                                            <div data-id="error" class="slds-var-p-left_x-small slds-p-bottom_small">
+
+                                                <div class="slds-box">
+                                                    <ul class="slds-list_dotted">
+                                                        <template for:each={page_errors} for:item="error">
+                                                            <li key={error}
+                                                                class="slds-text-color_destructive slds-has-error slds-p-left_small">
+                                                                {error}
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        <!-- Show validation -->
+                                        <!-- Intel Product Information -->
+                                        <div class="slds-var-p-left_x-small">
+                                            <span style="span-details">Intel Product Information</span>
+                                        </div>
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col slds-size_1-of-2 slds-var-p-around_small">
+                                                <!-- Intel Product Information -->
+                                                <div>
+                                                    <lightning-input-field
+                                                        field-name="PCC_Product_Additional_Attribute__c"
+                                                        value={drpRecord.PCC_Product_Additional_Attribute__c} required
+                                                        variant="label-stacked" onchange={onProductChanged}>
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Product_Additional_Attribute__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Product_Additional_Attribute__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_OEM_Name__c"
+                                                        value={drpRecord.PCC_OEM_Name__c} required
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_OEM_Name__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span class="span-error">{errors.PCC_OEM_Name__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_System_Model__c"
+                                                        value={drpRecord.PCC_System_Model__c} required
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_System_Model__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_System_Model__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field
+                                                        field-name="PCC_Quote_Line_Pricing_Start_Date__c"
+                                                        class="input-error-border"
+                                                        value={drpRecord.PCC_Quote_Line_Pricing_Start_Date__c}
+                                                        variant="label-stacked" required>
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Quote_Line_Pricing_Start_Date__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Quote_Line_Pricing_Start_Date__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-var-p-around_small">
+                                                <!-- Intel Product Information -->
+                                                <div>
+                                                    <lightning-input-field field-name="Core_Full_Year_Qty__c"
+                                                        value={drpRecord.Core_Full_Year_Qty__c} required
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.Core_Full_Year_Qty__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.Core_Full_Year_Qty__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_Write_In_OEM_Name__c"
+                                                        value={drpRecord.PCC_Write_In_OEM_Name__c}
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Write_In_OEM_Name__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Write_In_OEM_Name__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_Form_Factor__c"
+                                                        value={drpRecord.PCC_Form_Factor__c} required
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Form_Factor__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Form_Factor__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field
+                                                        field-name="PCC_Quote_Line_Pricing_End_Date__c"
+                                                        value={drpRecord.PCC_Quote_Line_Pricing_End_Date__c}
+                                                        variant="label-stacked" required>
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Quote_Line_Pricing_End_Date__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Quote_Line_Pricing_End_Date__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-output-field
+                                                        field-name="Core_Design_Product_Status_Nm__c"
+                                                        value={drpRecord.Core_Design_Product_Status_Nm__c}
+                                                        variant="label-stacked">
+                                                    </lightning-output-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-var-p-left_x-small">
+                                            <span style="span-details">Assumed Competitive Offering</span>
+                                        </div>
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col slds-size_1-of-2 slds-var-p-around_small">
+                                                <!-- Assumed Competitive Offering -->
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_Competitor_Name__c"
+                                                        value={drpRecord.PCC_Competitor_Name__c}
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Competitor_Name__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Competitor_Name__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_Competitor_Product__c"
+                                                        value={drpRecord.PCC_Competitor_Product__c} required
+                                                        variant="label-stacked" onchange={onCompetitorChange}>
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Competitor_Product__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Competitor_Product__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_Competitor_OEM_Name__c"
+                                                        value={drpRecord.PCC_Competitor_OEM_Name__c} required
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Competitor_OEM_Name__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Competitor_OEM_Name__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-var-p-around_small">
+                                                <!-- Assumed Competitive Offering -->
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_Competitor_System_Model__c"
+                                                        value={drpRecord.PCC_Competitor_System_Model__c} required
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Competitor_System_Model__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Competitor_System_Model__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field
+                                                        field-name="PCC_Write_In_Competitor_Product__c"
+                                                        value={drpRecord.PCC_Write_In_Competitor_Product__c}
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Write_In_Competitor_Product__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Write_In_Competitor_Product__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field
+                                                        field-name="PCC_Competitor_Write_In_OEM_Name__c"
+                                                        value={drpRecord.PCC_Competitor_Write_In_OEM_Name__c}
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Competitor_Write_In_OEM_Name__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Competitor_Write_In_OEM_Name__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-var-p-left_x-small">
+                                            <span style="span-details">Additional Details</span>
+                                        </div>
+                                        <div class="slds-grid slds-gutters">
+                                            <div class="slds-col slds-size_1-of-2 slds-var-p-around_small">
+                                                <!-- Additional Details -->
+                                                <div>
+                                                    <lightning-input-field field-name="Core_Design_Registration_Id__c"
+                                                        disabled required="false" value={drId} variant="label-stacked">
+                                                    </lightning-input-field>
+                                                </div>
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_Change_Requested__c"
+                                                        value={changeRequested} class="slds-hide"
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <!-- just for read purpose -->
+                                                    <!-- <lightning-input-field field-name="Core_Target_Resale_Amt__c"
+                                                    value={drpRecord.Core_Target_Resale_Amt__c} class="slds-hide"
+                                                    variant="label-stacked">
+                                                </lightning-input-field> -->
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-var-p-around_small">
+                                                <!-- Additional Details -->
+                                                <div>
+                                                    <lightning-input-field field-name="PCC_Additional_Comments__c"
+                                                        value={drpRecord.PCC_Additional_Comments__c}
+                                                        variant="label-stacked">
+                                                    </lightning-input-field>
+                                                    <template lwc:if={pageHasErrors}>
+                                                        <template lwc:if={errors.PCC_Additional_Comments__c}>
+                                                            <div clas="slds-p-left_small">
+                                                                <span
+                                                                    class="span-error">{errors.PCC_Additional_Comments__c}</span>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </lightning-record-edit-form>
+                                </div>
+                            </template>
+                        </div>
+
+                    </div>
+                    <lightning-modal-footer class="my-modal-footer">
+                        <div class="slds-align_absolute-center">
+                            <lightning-button label="Cancel" class="slds-var-p-right_small" variant="neutral"
+                                onclick={handleClosePopup}></lightning-button>
+                            <lightning-button label="Save" variant="brand" onclick={handleSave}></lightning-button>
+                        </div>
+                    </lightning-modal-footer>
+                </div>
+            </section>
+        </div>
+
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+
+    </div>
+</template>

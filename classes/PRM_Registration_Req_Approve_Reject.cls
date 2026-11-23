@@ -26,9 +26,7 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
         Savepoint sp = Database.setSavepoint();
         Boolean doReject = false;
         String errorMsg='';
-        
         isApprovedUsingButton = true;
-        
     try { 
         Id AccountCreateRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Account_Create_Request').getRecordTypeId();
         PRM_Registration_Request__c regReqRecord = [SELECT Id, PRM_Salesforce_ID__c, PRM_Review_Note_txt__c, PRM_Reject_Reason__c, RecordTypeId, Name, PRM_Email_ID__c, PRM_First_Name__c, PRM_Last_Name__c,
@@ -94,7 +92,131 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
         catch (DMLException e) {
             reswrap = new ResponseWrap(false, e.getDmlMessage(0), '', false); 
         }
+        catch(Exception e) {
+            reswrap = new ResponseWrap(false, null, '', false); 
+            throw new AuraHandledException('Exception occured'+ e);
+        }
+        finally{          
+            if(reswrap!=null && !reswrap.flag) {
+                Database.rollback(sp);
+                if(errorMsg==null || String.isBlank(errorMsg)){
+                    reswrap = new ResponseWrap(false, null, '', false); 
+                }
+            }
+            
+        }
+        return reswrap;
+    }
+
+    /*public class regreqApproveRejectNewWrapper{
+         @AuraEnabled public Id regReqId{get;set;}
+         @AuraEnabled public Id approvalInstanceId{get;set;}
+         @AuraEnabled public String aprovalType{get;set;}
+         @AuraEnabled public String reason{get;set;}
+        
+        public regreqApproveRejectNewWrapper() {
+        // this.regReqId = null;
+        // this.approvalInstanceId = null;
+        // this.aprovalType = null;
+        // this.reason = null;
+
+            this.regReqId = regReqId;
+            this.approvalInstanceId = approvalInstanceId;
+            this.aprovalType = aprovalType;
+            this.reason = reason;
+    }
+        
+       
+        public regreqApproveRejectNewWrapper(){//(Id regReqId,Id approvalInstanceId,String aprovalType, String reason) {
+            this.regReqId = regReqId;
+            this.approvalInstanceId = approvalInstanceId;
+            this.aprovalType = aprovalType;
+            this.reason = reason;
+        }
+    }//JB
+    
+    
+    
+   @AuraEnabled
+    public static ResponseWrap regreqApproveRejectNew(regreqApproveRejectNewWrapper att) {
+        
+        System.debug('att from lwc-- ' + JSON.serialize(att));
+        System.debug('regReqId: ' + att.regReqId);
+        System.debug('approvalInstanceId: ' + att.approvalInstanceId);
+        System.debug('aprovalType: ' + att.aprovalType);
+        System.debug('reason: ' + att.reason);
+        if (att == null) {
+            system.debug('Null att');
+        }
+        ResponseWrap reswrap;
+        recordId = att.regReqId;
+        Id accReqQId;
+        Savepoint sp = Database.setSavepoint();
+        Boolean doReject = false;
+        String errorMsg='';
+     try { 
+        Id AccountCreateRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Account_Create_Request').getRecordTypeId();
+        PRM_Registration_Request__c regReqRecord = [SELECT Id, PRM_Salesforce_ID__c, PRM_Review_Note_txt__c, PRM_Reject_Reason__c, RecordTypeId, Name, PRM_Email_ID__c, PRM_First_Name__c, PRM_Last_Name__c,
+                                                    PRM_City__c, PRM_Country__c, PRM_Zip_Postal_Code__c, PRM_Address_Line_1__c, PRM_Address_Line_2__c, PRM_Channel_Program_Level_txt__c, PRM_Account_Name__c,
+                                                    PRM_Account_URL__c, PRM_State_Province__c, PRM_Company_Nm_Eng__c, PRM_Alt_CompanyNameLang__c
+                                                    FROM PRM_Registration_Request__c 
+                                                    WHERE Id =: att.regReqId];
+    
+            List<PRM_Registration_Request__c> regReqUpdateList = new List<PRM_Registration_Request__c>();      
+    
+            if(att.regReqId!= null && att.aprovalType == system.label.PRM_Status) {
+    
+                regReqRecord.PRM_Review_Note_txt__c = att.reason;
+    
+                String reqType = (regReqRecord.PRM_Salesforce_ID__c == null && regReqRecord.RecordTypeId == AccountCreateRT 
+                                 && regReqRecord.PRM_Channel_Program_Level_txt__c == 'Intel Partner Alliance')  //&& regReqRecord.PRM_Status__c == 'New'
+                                 ? 'New Account Creation' : null;
+    
+                updateApprovalProcessWrapper  obj1=new updateApprovalProcessWrapper();
+                obj1.approvalInstanceId=att.approvalInstanceId;
+                obj1.approvalType=att.aprovalType;
+                obj1.reason=att.reason;
+                obj1.reqType=reqType;
+                reswrap=updateApprovalProcess(obj1);//JB
+                //reswrap = updateApprovalProcess(att.approvalInstanceId, att.aprovalType, att.reason, reqType);
+    
+                //set status as 'Pending' while creating new account create request
+                if (reswrap.requestType == 'New Account Creation') {
+                   errorMsg =  handleNewAccountCreationRequest(regReqRecord);
+                } 
+                if(String.IsNotBlank(errorMsg)){
+                    reswrap = new ResponseWrap(false, errorMsg, '', false); 
+                }
+                regReqUpdateList.add(regReqRecord);           
+            }
+            else if(att.regReqId != null && att.aprovalType == system.label.PRM_Status_Rejected && regReqRecord !=null) {
+                regReqRecord.PRM_Reject_Reason__c = att.reason;
+                regReqUpdateList.add(regReqRecord);
+                doReject = true;
+            } 
+            
+    
+            TriggerHandler.bypass('PRM_RegRequest_TriggerHandler');
+            update regReqUpdateList;
+            TriggerHandler.clearBypass('PRM_RegRequest_TriggerHandler');
+    
+            if(doReject) {
+                updateApprovalProcessWrapper  obj2=new updateApprovalProcessWrapper();
+                obj2.approvalInstanceId=att.approvalInstanceId;
+                obj2.approvalType=att.aprovalType;
+                obj2.reason=att.reason;
+                obj2.reqType='';
+                reswrap=updateApprovalProcess(obj2);//JB
+                //reswrap = updateApprovalProcess(att.approvalInstanceId, att.aprovalType, att.reason, '');
+            }
+            
+        }
+        catch (DMLException e) {
+            reswrap = new ResponseWrap(false, e.getDmlMessage(0), '', false); 
+        }
         catch(Exception e) { reswrap = new ResponseWrap(false, null, '', false); 
+              system.debug('98--'+e);
+             system.debug('99--'+e.getMessage());               
             throw new AuraHandledException('Exception occured'+ e);
                             
         }
@@ -109,6 +231,127 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
         }
         return reswrap;
     }
+    
+    /*public class regreqApproveRejectNewWrapper{
+         @AuraEnabled public Id regReqId{get;set;}
+         @AuraEnabled public Id approvalInstanceId{get;set;}
+         @AuraEnabled public String aprovalType{get;set;}
+         @AuraEnabled public String reason{get;set;}
+        
+        public regreqApproveRejectNewWrapper() {
+        // this.regReqId = null;
+        // this.approvalInstanceId = null;
+        // this.aprovalType = null;
+        // this.reason = null;
+
+            this.regReqId = regReqId;
+            this.approvalInstanceId = approvalInstanceId;
+            this.aprovalType = aprovalType;
+            this.reason = reason;
+    }
+        
+       
+        public regreqApproveRejectNewWrapper(){//(Id regReqId,Id approvalInstanceId,String aprovalType, String reason) {
+            this.regReqId = regReqId;
+            this.approvalInstanceId = approvalInstanceId;
+            this.aprovalType = aprovalType;
+            this.reason = reason;
+        }
+    }//JB
+    
+    
+    
+   @AuraEnabled
+    public static ResponseWrap regreqApproveRejectNew(regreqApproveRejectNewWrapper att) {
+        
+        System.debug('att from lwc-- ' + JSON.serialize(att));
+        System.debug('regReqId: ' + att.regReqId);
+        System.debug('approvalInstanceId: ' + att.approvalInstanceId);
+        System.debug('aprovalType: ' + att.aprovalType);
+        System.debug('reason: ' + att.reason);
+        if (att == null) {
+            system.debug('Null att');
+        }
+        ResponseWrap reswrap;
+        recordId = att.regReqId;
+        Id accReqQId;
+        Savepoint sp = Database.setSavepoint();
+        Boolean doReject = false;
+        String errorMsg='';
+     try { 
+        Id AccountCreateRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Account_Create_Request').getRecordTypeId();
+        PRM_Registration_Request__c regReqRecord = [SELECT Id, PRM_Salesforce_ID__c, PRM_Review_Note_txt__c, PRM_Reject_Reason__c, RecordTypeId, Name, PRM_Email_ID__c, PRM_First_Name__c, PRM_Last_Name__c,
+                                                    PRM_City__c, PRM_Country__c, PRM_Zip_Postal_Code__c, PRM_Address_Line_1__c, PRM_Address_Line_2__c, PRM_Channel_Program_Level_txt__c, PRM_Account_Name__c,
+                                                    PRM_Account_URL__c, PRM_State_Province__c, PRM_Company_Nm_Eng__c, PRM_Alt_CompanyNameLang__c
+                                                    FROM PRM_Registration_Request__c 
+                                                    WHERE Id =: att.regReqId];
+    
+            List<PRM_Registration_Request__c> regReqUpdateList = new List<PRM_Registration_Request__c>();      
+    
+            if(att.regReqId!= null && att.aprovalType == system.label.PRM_Status) {
+    
+                regReqRecord.PRM_Review_Note_txt__c = att.reason;
+    
+                String reqType = (regReqRecord.PRM_Salesforce_ID__c == null && regReqRecord.RecordTypeId == AccountCreateRT 
+                                 && regReqRecord.PRM_Channel_Program_Level_txt__c == 'Intel Partner Alliance')  //&& regReqRecord.PRM_Status__c == 'New'
+                                 ? 'New Account Creation' : null;
+    
+                updateApprovalProcessWrapper  obj1=new updateApprovalProcessWrapper();
+                obj1.approvalInstanceId=att.approvalInstanceId;
+                obj1.approvalType=att.aprovalType;
+                obj1.reason=att.reason;
+                obj1.reqType=reqType;
+                reswrap=updateApprovalProcess(obj1);//JB
+                //reswrap = updateApprovalProcess(att.approvalInstanceId, att.aprovalType, att.reason, reqType);
+    
+                //set status as 'Pending' while creating new account create request
+                if (reswrap.requestType == 'New Account Creation') {
+                   errorMsg =  handleNewAccountCreationRequest(regReqRecord);
+                } 
+                if(String.IsNotBlank(errorMsg)){
+                    reswrap = new ResponseWrap(false, errorMsg, '', false); 
+                }
+                regReqUpdateList.add(regReqRecord);           
+            }
+            else if(att.regReqId != null && att.aprovalType == system.label.PRM_Status_Rejected && regReqRecord !=null) {
+                regReqRecord.PRM_Reject_Reason__c = att.reason;
+                regReqUpdateList.add(regReqRecord);
+                doReject = true;
+            } 
+            
+    
+            TriggerHandler.bypass('PRM_RegRequest_TriggerHandler');
+            update regReqUpdateList;
+            TriggerHandler.clearBypass('PRM_RegRequest_TriggerHandler');
+    
+            if(doReject) {
+                updateApprovalProcessWrapper  obj2=new updateApprovalProcessWrapper();
+                obj2.approvalInstanceId=att.approvalInstanceId;
+                obj2.approvalType=att.aprovalType;
+                obj2.reason=att.reason;
+                obj2.reqType='';
+                reswrap=updateApprovalProcess(obj2);//JB
+                //reswrap = updateApprovalProcess(att.approvalInstanceId, att.aprovalType, att.reason, '');
+            }
+            
+        }
+        catch (DMLException e) {
+            reswrap = new ResponseWrap(false, e.getDmlMessage(0), '', false); 
+        }
+        catch(Exception e) { reswrap = new ResponseWrap(false, null, '', false); 
+            throw new AuraHandledException('Exception occured'+ e);
+        }
+        finally{          
+            if(!reswrap.flag) {
+                Database.rollback(sp);
+                if(errorMsg==null || String.isBlank(errorMsg)){
+                    reswrap = new ResponseWrap(false, null, '', false); 
+                }
+            }
+            
+        }
+        return reswrap;
+    }*/
 
     /**
     *  @description      : add pre validation before approval
@@ -127,16 +370,17 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
                                                        PRM_Country__c,PRM_City__c,PRM_State_Province__c, PRM_Address_Line_1__c 
                                                        from PRM_Registration_Request__c WHERE id = :regReqId]
             ) {
+           
                 systemaccountcheck = PRM_IPA_Utility.systemAccountDetails(new List<String>{regreq.PRM_Email_ID__c});
                 if (systemaccountcheck.containsKey(regreq.PRM_Email_ID__c) && systemaccountcheck.get(regreq.PRM_Email_ID__c)) {
                     responseMessage = 'This request cannot be approved as it is associated with a system account';
                     break;
                 }
-                countryCode= Core_Country_Code_Mapping__c.getInstance(regreq.PRM_Country__c)!= null ? Core_Country_Code_Mapping__c.getInstance(regreq.PRM_Country__c).ISO_Code__c : null;
-              	system.debug('countryCode');
+               countryCode= Core_Country_Code_Mapping__c.getInstance(regreq.PRM_Country__c)!= null ? Core_Country_Code_Mapping__c.getInstance(regreq.PRM_Country__c).ISO_Code__c : null;
+              system.debug('countryCode');
                 dupAqrList=UCD_GenericAcctSearch_SBR.checkForDuplicates(
-                   		   regreq.PRM_Company_Nm_Eng__c,regreq.PRM_Alt_CompanyNameLang__c,countryCode,
-						   regreq.PRM_Address_Line_1__c,regreq.PRM_City__c,regreq.PRM_State_Province__c);
+                   	regreq.PRM_Company_Nm_Eng__c,regreq.PRM_Alt_CompanyNameLang__c,countryCode,
+					regreq.PRM_Address_Line_1__c,regreq.PRM_City__c,regreq.PRM_State_Province__c);
 				if(!dupAqrList.isEmpty() && dupAqrList.size()>0){
 				responseMessage='Error! An account matching the customer name & address you entered has been found. You can’t submit this new request as it is a duplicate.';
 				break;
@@ -166,9 +410,8 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
 
         try {
             Id AccountCreateRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Account_Create_Request').getRecordTypeId();
-
-            workItems = [ SELECT Id, ProcessInstanceId,ActorId FROM ProcessInstanceWorkitem WHERE ProcessInstance.TargetObjectId = :regReqId];
-            
+			//ATHR Fix - TWC729-9556 - JB
+            workItems = [ SELECT Id /*, ProcessInstanceId,ActorId*/ FROM ProcessInstanceWorkitem WHERE ProcessInstance.TargetObjectId = :regReqId];
             apWrp.workItemId = workItems.isEmpty()? null : workItems[0].Id;
             PRM_Registration_Request__c regRec = [SELECT Id, PRM_Company_Nm_Eng__c, PRM_Alt_CompanyNameLang__c, PRM_Salesforce_ID__c, PRM_Email_ID__c, Geo_Code__c, PRM_Country__c,
             PRM_Matching_Contact__c,PRM_Matching_Contact__r.email,PRM_Matching_Contact__r.AccountId,RecordTypeId, PRM_Channel_Program_Level_txt__c
@@ -255,10 +498,8 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
                         if (reqType == 'New Account Creation') {
                             res = new ResponseWrap(true, '', 'New Account Creation', true);
                             callApprovalPr = false;
-                            //System.debug('here3');
                         } else {
                             requests.setAction('Approve');
-                            //System.debug('here2');
                         }
                     }
                     else if (approvalType == system.label.PRM_Status_Rejected) {
@@ -491,7 +732,8 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
         CompanyValidationWrap compValidWrap = new CompanyValidationWrap();
         try{
             if (regReqId!=null){
-                for (PRM_Registration_AI_Agent_Info__c agentInfoRec : [Select id,PRM_Status__c from PRM_Registration_AI_Agent_Info__c 
+                //ATHR Fix - TWC729-9556 - JB
+                for (PRM_Registration_AI_Agent_Info__c agentInfoRec : [Select id /*,PRM_Status__c*/ from PRM_Registration_AI_Agent_Info__c 
                                        where PRM_Registration_Request__c =: regReqId and
                                        PRM_Status__c ='In Progress' limit 1]) {
                     isValidationInProgress = true;

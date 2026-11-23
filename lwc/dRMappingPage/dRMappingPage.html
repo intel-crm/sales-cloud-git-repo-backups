@@ -1,0 +1,79 @@
+<template>
+    <div class="slds-grid slds-wrap slds-size_1-of-1">
+        <!-- First Lightning Card: Design Registration Mapping -->
+        <lightning-card title="Design Registration Mapping" class="slds-size_1-of-1 slds-m-bottom_large">
+            <!-- Select Object Combobox -->
+            <div class="slds-align_absolute-center">
+                <lightning-combobox
+                    label="Select Object"
+                    value={selectedObjectDR}
+                    options={objectOptionsDR}
+                    onchange={handleObjectChangeDR}
+                    class="slds-size_large"
+                    typeahead="true"
+                ></lightning-combobox>
+            </div>
+
+            <!-- Two columns for combo boxes -->
+            <div class="slds-grid slds-wrap slds-size_1-of-1">
+                <template for:each={drFields} for:item="field">
+                    <div key={field.value} class="slds-size_1-of-2 slds-align_absolute-center">
+                        <lightning-combobox
+                            label={field.label}
+                            options={fieldOptionsDR}
+                            onchange={handleFieldChangeDR}
+                            data-label={field.label}
+                            class="slds-size_large"
+                            typeahead="true"
+                        ></lightning-combobox>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Button -->
+            <div class="slds-align_absolute-center slds-m-top_medium">
+                <lightning-button label="Save" onclick={handleSaveDR}></lightning-button>
+                <div class="slds-m-left_medium"></div>
+                <lightning-button label="Cancel" onclick={handleCancelDR}></lightning-button>
+            </div>
+        </lightning-card>
+
+        <!-- Second Lightning Card: Design Registration Product Mapping -->
+        <lightning-card title="Design Registration Product Mapping" class="slds-size_1-of-1 slds-m-top_large">
+            <!-- Select Object Combobox -->
+            <div class="slds-align_absolute-center">
+                <lightning-combobox
+                    label="Select Object"
+                    value={selectedObjectDRP}
+                    options={objectOptionsDRP}
+                    onchange={handleObjectChangeDRP}
+                    class="slds-size_large"
+                    typeahead="true"
+                ></lightning-combobox>
+            </div>
+
+            <!-- Two columns for combo boxes -->
+            <div class="slds-grid slds-wrap slds-size_1-of-1">
+                <template for:each={drpFields} for:item="field">
+                    <div key={field.value} class="slds-size_1-of-2 slds-align_absolute-center">
+                        <lightning-combobox
+                            label={field.label}
+                            options={fieldOptionsDRP}
+                            onchange={handleFieldChangeDRP}
+                            data-label={field.label}
+                            class="slds-size_large"
+                            typeahead="true"
+                        ></lightning-combobox>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Button -->
+            <div class="slds-align_absolute-center slds-m-top_medium">
+                <lightning-button label="Save" onclick={handleSaveDRP}></lightning-button>
+                <div class="slds-m-left_medium"></div>
+                <lightning-button label="Cancel" onclick={handleCancelDRP}></lightning-button>
+            </div>
+        </lightning-card>
+    </div>
+</template>

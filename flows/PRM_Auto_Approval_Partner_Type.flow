@@ -123,7 +123,7 @@
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Record Type Changed ?</label>
+            <label>Is Record Type Changed ?</label>
         </rules>
     </decisions>
     <decisions>
@@ -245,10 +245,10 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>NOW() </stringValue>
+                <stringValue>NOW()</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_6385421404</name>
+        <name>formula_2_myRule_1_A1_2199321360</name>
         <dataType>DateTime</dataType>
         <expression>NOW()</expression>
     </formulas>
@@ -301,7 +301,7 @@ AND(ISNEW(),
         <expression>AND({!myVariable_old.PRM_Auto_Approve__c} = TRUE,
 {!myVariable_old.PRM_Channel_Program_Level_txt__c} &lt;&gt; &quot;PSG&quot;, (ISBLANK({!myVariable_old.Entitlement_Details__c})))</expression>
     </formulas>
-    <interviewLabel>PRM_Auto_Approval_Partner_Type-17_InterviewLabel</interviewLabel>
+    <interviewLabel>PRM_Auto_Approval_Partner_Type-16_InterviewLabel</interviewLabel>
     <label>PRM_Auto_Approval_Partner_Type</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -579,7 +579,7 @@ AND(ISNEW(),
             </processMetadataValues>
             <field>PRM_Submitted_Date__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_6385421404</elementReference>
+                <elementReference>formula_2_myRule_1_A1_2199321360</elementReference>
             </value>
         </inputAssignments>
         <object>PRM_Registration_Request__c</object>

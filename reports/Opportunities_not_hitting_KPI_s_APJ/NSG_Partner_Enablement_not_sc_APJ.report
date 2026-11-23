@@ -80,7 +80,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Deal: Scale-enable</value>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Geo__c</column>

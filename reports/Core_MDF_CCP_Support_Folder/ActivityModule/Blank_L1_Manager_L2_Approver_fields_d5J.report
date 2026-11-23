@@ -53,7 +53,7 @@
     </columns>
     <description>Activities stuck in Pending Preview and L1 Manager/L2 Approval steps not triggered due to blank Approver 1/Approver 2 fields</description>
     <filter>
-        <booleanFilter>(12 AND 1 AND ((2 AND 3 AND 4) OR (5 AND 6 AND 10 AND ((2 AND 15) OR 7 OR 8 OR 9)))) OR (11 AND 1 AND 5 AND ((6 OR 14) AND (((2 AND 15) OR 7 OR 8) AND (12 OR 13))))</booleanFilter>
+        <booleanFilter>(12 AND 1 AND ((2 AND 3 AND 4) OR (5 AND 6 AND 10 AND (2 OR 7 OR 8 OR 9)))) OR (11 AND 1 AND 5 AND ((6 OR 14) AND ((2 OR 7 OR 8) AND (12 OR 13))))</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -151,13 +151,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>OEM CMP,Service Provider CMP</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Price_reviewer_check_ind__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

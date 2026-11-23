@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Account.Core_Is_Duplicate__c</field>
+        <field>Account.Core_CIM_ID__c</field>
     </columns>
     <columns>
         <field>ACCOUNT.NAME</field>
@@ -30,28 +30,6 @@
     <columns>
         <field>LAST_UPDATE</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_ID__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_PSG_Account__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_MDF_CoMarketingActive__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_B2B_Entitlement__c</field>
-    </columns>
-    <columns>
-        <field>Account.KCR_Process_Outcome_Temp__c</field>
-    </columns>
     <description>True duplicate CIM Ids</description>
     <filter>
         <criteriaItems>
@@ -78,7 +56,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Account.Core_CIM_ID__c</field>
+        <field>Account.Core_Is_Duplicate__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>DUP Accounts &lt;&gt; Integration User</name>

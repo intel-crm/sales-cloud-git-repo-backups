@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Reminder Email</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Reminder Emails</value>
+    </caseValues>
+    <fields>
+        <label><!-- Failed Contacts --></label>
+        <name>Failed_Contacts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Batch ID --></label>
+        <name>PRM_BatchID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>PRM_Campaign__c</name>
+        <relationshipLabel><!-- Reminder Emails --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Email Template --></label>
+        <name>PRM_Email_Template__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date on which the reminder will be sent --></help>
+        <label><!-- Reminder Date --></label>
+        <name>PRM_Reminder_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Nth reminder --></help>
+        <label><!-- Reminder(nth) --></label>
+        <name>PRM_Reminder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PRM_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reminder Processed</masterLabel>
+            <translation><!-- Reminder Processed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation><!-- Scheduled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turned off</masterLabel>
+            <translation><!-- Turned off --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

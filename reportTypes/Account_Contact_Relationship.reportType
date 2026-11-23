@@ -163,6 +163,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>test_master_branch__c</field>
+            <table>PRM_Account_Contact_Relationship__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>PRM_Contact_Id__c.Email</field>
             <table>PRM_Account_Contact_Relationship__c</table>
         </columns>
@@ -218,7 +223,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Bulk_Data_Upload__c</field>
+            <field>PRM_isACRChanged__c</field>
             <table>PRM_Account_Contact_Relationship__c</table>
         </columns>
         <masterLabel>Account Contact Relationships</masterLabel>

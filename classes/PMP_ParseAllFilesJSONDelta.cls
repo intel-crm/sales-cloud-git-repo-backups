@@ -26,23 +26,28 @@ public with sharing class PMP_ParseAllFilesJSONDelta {
         }
         try{
             jsonFileLines = jsonStr.split('\n'); 
-            for(Integer i=1;i<jsonFileLines.size();i++){  
+            system.debug('jsonStr--'+jsonStr);
+            system.debug('jsonFileLines--'+jsonFileLines);
+            for(Integer i=1;i<jsonFileLines.size();i++){ 
+                system.debug('jsonFileLines[i]--'+jsonFileLines[i]);
                 if(jsonFileLines[i].contains('VPH_L4'))
                 {
                     String[] jsonFileLinesValues = jsonFileLines[i].split('"');
+                    system.debug('jsonFileLinesValues++'+jsonFileLinesValues);
+                    system.debug('jsonFileLinesValues[11]--'+jsonFileLinesValues[11]);
                     if(jsonFileLinesValues[11]=='Launched')
                     {
+                        system.debug('jsonFileLinesValues[3]-'+jsonFileLinesValues[3]);
                         specValuePIMIds.add(jsonFileLinesValues[3]);
                     }          
                 }            
             }
-            //System.debug('specValuePIMIds'+specValuePIMIds);
-            //System.debug('specValuePIMIds Size'+specValuePIMIds.size());
+           
             if(specValuePIMIds.size()>0)
             {
                 List<PMP_Specification_Value__c> specValuesList = [Select Id,PMP_Product_Specification_Value_Key__c,PMP_Product_Status__c,PMP_Product_Restriction_Lvl__c
                                                                    from PMP_Specification_Value__c where PMP_Product_Specification_Value_Key__c in :specValuePIMIds];
-                //System.debug('specValuesList'+specValuesList);
+                
                 for(PMP_Specification_Value__c specValueRecord:specValuesList)
                 {
                     specValueRecord.PMP_Product_Status__c='Launched';   // setting the product status Launched

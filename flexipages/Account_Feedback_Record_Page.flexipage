@@ -154,26 +154,21 @@
                 <fieldItem>Record.New_Sales_Group__c</fieldItem>
                 <identifier>RecordNew_Sales_Group_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Partner</rightValue>
+                        <rightValue>Change to Indirect Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Add to Intel led</rightValue>
+                        <rightValue>Add to Intel Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Uncovered</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Feedback__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Change to Other Led</rightValue>
+                        <rightValue>Change to Not Covered</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -196,7 +191,7 @@
                     <criteria>
                         <leftValue>{!Record.Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Add to Intel led</rightValue>
+                        <rightValue>Add to Intel Covered</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -227,21 +222,16 @@
                 <fieldItem>Record.New_Account_Owner__c</fieldItem>
                 <identifier>RecordNew_Account_Owner_cField2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Partner</rightValue>
+                        <rightValue>Change to Indirect Covered</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Feedback__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Change to Uncovered</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Feedback__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Change to Other Led</rightValue>
+                        <rightValue>Change to Not Covered</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>

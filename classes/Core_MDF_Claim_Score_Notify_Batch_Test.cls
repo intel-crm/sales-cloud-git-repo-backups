@@ -73,7 +73,7 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         
         Test.startTest();
         List<ChannelProgram> cpList = new List<ChannelProgram> ();
-        ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', false);
+        ChannelProgram ccfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', false);
         ChannelProgram rmfCp = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', false);
         cpList.add(ccfCp);
         cpList.add(rmfCp);
@@ -334,7 +334,7 @@ public class Core_MDF_Claim_Score_Notify_Batch_Test {
         cs.Core_MDF_Claim_Lookup_Id__c = claim1.id;
         cs.Origin = 'Manual Selection';
         cs.Status = 'Closed';
-        cs.Core_MDF_Channel_Program_txt__c = 'Client';
+        cs.Core_MDF_Channel_Program_txt__c = 'Client Co-Marketing Fund';
         cs.CreatedDate = system.today()-1;
         cs.ClosedDate = system.today()-1;
         system.runAs(testUser){

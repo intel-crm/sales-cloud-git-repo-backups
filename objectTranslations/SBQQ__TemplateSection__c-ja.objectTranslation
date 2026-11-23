@@ -5,6 +5,10 @@
         <value>テンプレートセクション</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>ドキュメント言語形式を適用する場合は、チェックボックスをオンにします。タイプが [HTML] のテンプレートコンテンツを指し示すセクションにのみ適用されます。</help>
         <label><!-- Apply Document Language Formatting --></label>
         <name>SBQQ__ApplyDocumentLanguageFormatting__c</name>

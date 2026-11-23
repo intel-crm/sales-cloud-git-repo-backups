@@ -717,7 +717,7 @@ Description : Check Wether correct benefit is associated with the account.
                     for(PRM_AccountBenefitAssociation__c abaFinal: [Select id,name,PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Account_Id__r.Recordtypeid,PRM_Partner_Benefit_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Source__c from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c In: setofFinalAccid AND PRM_Status_Nm__c =: System.Label.PRM_Status_Active AND PRM_Partner_Benefit_Id__r.Name IN: setOfFinalBnft]){
                         If(abaFinal.PRM_Partner_Benefit_Id__r.Name == System.Label.PRM_Solution_Marketplace_Basic_Access && setOfChildAccId.contains(abaFinal.PRM_Account_Id__c)){
                             abaFinal.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;abaFinal.PRM_Status_Reason_Txt__c =System.Label.PRM_Aba_Inactive;abaFinal.PRM_Source__c='';
-			    lstOfAba.add(abaFinal);    
+          lstOfAba.add(abaFinal);    
                         }
                         else if(abaFinal.PRM_Partner_Benefit_Id__r.Name == System.Label.PRM_Solutions_Marketplace_Basic_Profile && setOfAccIdForOwnAbaInactivation.contains(abaFinal.PRM_Account_Id__c) && abaFinal.PRM_Account_Id__r.Recordtypeid == OpidAccRecordTypeId){
                             abaFinal.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;
@@ -886,7 +886,7 @@ Description : Check Wether correct benefit is associated with the account.
             if(!ce.Core_Selected__c && contactIdEntIdMap.containsKey(ce.Core_Contact_Id__c) && contactIdEntIdMap.get(ce.Core_Contact_Id__c).contains(ce.Core_Entitlement_Id__c)){ // Updating Contact Entitlement status to pending when entitlement is inactive else status will remain same as previous.                
               PRM_Batch_Entitlement__c be = new PRM_Batch_Entitlement__c();be.PRM_Contact_Id__c = ce.Core_Contact_Id__c;be.PRM_Entitlement_Id__c = ce.Core_Entitlement_Id__c;
               be.PRM_Status_Nm__c = System.label.PRM_Status_New;be.PRM_Status_Reason_Txt__c = 'PRM_accBenefitAssociationUtility : Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ
-	      be.PRM_IsRemove_Ind__c = false;
+        be.PRM_IsRemove_Ind__c = false;
               if(!beListTemp.Contains(be)  && PRM_ProfileResponse.activateInactivateBenefitExecuted == false){beListTemp.add(be);
               }
             }

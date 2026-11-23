@@ -86,7 +86,7 @@ public class PRM_SendDocumentUploadEmail {
                     }else{
                         emailTemp = languageEmailTemplateMap.get(regRequest.PRM_Preferred_Language__c) != null? languageEmailTemplateMap.get(regRequest.PRM_Preferred_Language__c): languageEmailTemplateMap.get('ENG');
                     }                                       
-                    Messaging.SingleEmailMessage mail = createEmailRecord(emailTemp, new List<String>{regRequest.PRM_Email_ID__c}, LabelConfiguration__mdt.getInstance('PRM_Business_File_Upload_Email_Address').Value__c);
+                    Messaging.SingleEmailMessage mail = createEmailRecord(emailTemp, new List<String>{regRequest.PRM_Email_ID__c}, 'intel_partner_alliance_ops@intel.com');
                     if (oweaList.size() > 0 ){
                         mail.setOrgWideEmailAddressId(oweaList.get(0).Id);
                     }

@@ -478,6 +478,7 @@
                                                 <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
                                                     <span>
                                                         <template if:true={caseCategoryReadOnly}>
+                                                            <div class="editCatInput">
                                                             <lightning-combobox class="inputs "
                                                                 variant="label-hidden" name="caseCategory"
                                                                 value={currentCaseData.Core_Case_Issue_Category__c}
@@ -485,6 +486,7 @@
                                                                 options={CaseCategoryoptions}
                                                                 onchange={handleChangeCategory}>
                                                             </lightning-combobox>
+                                                            </div>
                                                         </template>
 
 <template if:false={caseCategoryReadOnly}>
@@ -562,8 +564,10 @@
                                             </template>
 </div>
 <div class="slds-align_absolute-center slds-m-around_medium savebutton">
-    <input onclick={editSaveHandler} type="button" class="newCommentBtn newCommentBtnforsave" value="Save Changes"></input>
-    <input onclick={closeEditModal} type="button" class="caseEditBtncancel" value="Cancel"></input>
+                                            <input onclick={editSaveHandler} type="button"
+                                                class="newCommentBtn newCommentBtnforsave" value="Save Changes"></input>
+                                            <input onclick={closeEditModal} type="button" class="caseEditBtncancel"
+                                                value="Cancel"></input>
 </div>
 </div>
 </div>
@@ -1324,7 +1328,7 @@
                                             <div class="slds-grid slds-wrap editclassalign">
                                                 <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
                                                     <template if:true={CopyPartnerAccountRequired}>
-                                                        <span class="subHeadline">Partner Supported Account</span>
+                                                        <span class="subHeadline">Partner Supported Account(Optional)</span>
                                                         
                                                     </template>
                                                     <template if:false={CopyPartnerAccountRequired}>
@@ -1408,13 +1412,13 @@
                                                 <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
                                                     <!-- {CategoryName} -->
                                                     <span>
-
+                                                        <div class="copyCatInput">
                                                         <lightning-combobox class="inputs" name="caseCategory"
                                                             value={caseIssueCategoryId} options={CaseCategoryoptions}
                                                             onchange={handleChangeCategory} 
                                                             variant='label-hidden'>
                                                         </lightning-combobox>
-
+                                                        </div>
                                                     </span>
                                                 </div>
                                             </div>
@@ -1465,7 +1469,7 @@
 </lightning-accordion>
 
                                 <div class="slds-align_absolute-center slds-m-around_medium editbuttonal">
-                                    <input onclick={saveHandler} type="button"
+                                    <input onclick={copySaveHandler} type="button"
                                         class="newCommentBtn newCommentBtnforsave" value="Save Changes"></input>
                                     <input onclick={gobackToCase} type="button" class="caseEditBtncancel"
                                         value="Cancel"></input>

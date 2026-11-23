@@ -198,7 +198,7 @@
         <label>Activity ID</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -273,7 +273,7 @@
         <description>To store the Brand Value from the Claim</description>
         <label>Brand</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -299,7 +299,7 @@
         <label>Claim Id External</label>
         <length>18</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -339,7 +339,7 @@
         <relationshipLabel>core_mdf_claim_prediction</relationshipLabel>
         <relationshipName>core_mdf_claim_prediction</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -464,7 +464,7 @@ FIND ( &quot;.&quot;, Core_MDF_Claim_id__r.Core_MDF_Claim_Submitter_Id__r.Contac
     <fields>
         <fullName>Core_MDF_Media_Vehicle_Nm__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( ISNULL(Core_MDF_Claim_id__r.Core_MDF_Media_Vehicle__c)  || Core_MDF_Claim_id__r.Core_MDF_Media_Vehicle__c  = &apos;&apos;, &apos;na&apos;, Core_MDF_Claim_id__r.Core_MDF_Media_Vehicle__c)</formula>
+        <formula>Core_MDF_Claim_id__r.Core_MDF_Media_Vehicle__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Media Vehicle</label>
         <required>false</required>
@@ -482,6 +482,20 @@ FIND ( &quot;.&quot;, Core_MDF_Claim_id__r.Core_MDF_Claim_Submitter_Id__r.Contac
         <required>false</required>
         <scale>2</scale>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Prediction_Score_Nbr__c</fullName>
+        <description>Stores the AI Prediction Score by Einstein Discovery</description>
+        <externalId>false</externalId>
+        <isAIPredictionField>true</isAIPredictionField>
+        <label>Prediction Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -600,6 +614,11 @@ FIND ( &quot;.&quot;, Core_MDF_Claim_id__r.Core_MDF_Claim_Submitter_Id__r.Contac
         <columns>Core_MDF_New_Prediction_Score_nbr__c</columns>
         <columns>Core_MDF_Status_txt__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_New_Prediction_Score_nbr__c</field>
+            <operation>equals</operation>
+            <value>20</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

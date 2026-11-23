@@ -567,7 +567,7 @@ Modified By:        Date:       Changes:
         }
         if(rec.Core_MDF_Program__c==IPATechnicalProgram){
             if(programGeoBudgetTypeMap.containsKey(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c+underscore+rec.Core_MDF_Budget_Type_txt__c)){
-                programGeoBudgetTypeMap.get(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c+underscore+rec.Core_MDF_Budget_Type_txt__c).add(rec.Core_MDF_Group_Name__c);
+            	programGeoBudgetTypeMap.get(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c+underscore+rec.Core_MDF_Budget_Type_txt__c).add(rec.Core_MDF_Group_Name__c);
             }else{
                 programGeoBudgetTypeMap.put(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c+underscore+rec.Core_MDF_Budget_Type_txt__c, new List<String>{rec.Core_MDF_Group_Name__c});
             }
@@ -578,7 +578,7 @@ Modified By:        Date:       Changes:
                 programGeoBudgetTypeMapRO.put(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c+underscore+rec.Core_MDF_Budget_Type_txt__c, new List<String>{rec.Core_MDF_Group_Name_RO__c});
             }
             if(programGeoMap.containsKey(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c)){
-                programGeoMap.get(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c).add(rec.Core_MDF_Group_Name__c);
+            	programGeoMap.get(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c).add(rec.Core_MDF_Group_Name__c);
             }else{
                 programGeoMap.put(rec.Core_MDF_Program__c+underscore+rec.Core_MDF_Region__c, new List<String>{rec.Core_MDF_Group_Name__c});
             }

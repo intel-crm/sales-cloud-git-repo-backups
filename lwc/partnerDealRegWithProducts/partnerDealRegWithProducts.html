@@ -1,0 +1,151 @@
+<template>
+    <lightning-card title="Create Partner Deal with Products">
+        <div class="slds-p-around_medium">
+
+            <!-- SECTION 1: Customer Information -->
+            <section class="slds-m-bottom_medium">
+                <h2 class="slds-text-heading_small slds-m-bottom_small">Customer Information</h2>
+                <div class="slds-grid slds-wrap slds-gutters">
+
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="Customer Name" value={customerName} data-id="customerName" onchange={handleInputChange}></lightning-input>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="Website" value={website} data-id="website" onchange={handleInputChange} type="url"></lightning-input>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="Mailing Country" value={country} data-id="country" onchange={handleInputChange}></lightning-input>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label=" Mailing State" value={state} data-id="state" onchange={handleInputChange}></lightning-input>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input label="Who is the decision maker at the end customer?" value={decisionMaker} data-id="decisionMaker" onchange={handleInputChange}></lightning-input>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: Deal Information -->
+            <section class="slds-m-bottom_medium">
+                <h2 class="slds-text-heading_small slds-m-bottom_small">Deal Information</h2>
+                <div class="slds-grid slds-wrap slds-gutters">
+
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="Opportunity Name" value={oppName} data-id="oppName" onchange={handleInputChange}></lightning-input>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-textarea label="Opportunity Summary" value={oppSummary} data-id="oppSummary" onchange={handleInputChange}></lightning-textarea>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="Decision Date" value={decisionDate} data-id="decisionDate" onchange={handleInputChange} type="date"></lightning-input>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-combobox
+                            label="Vertical Market"
+                            value={verticalMarket}
+                            placeholder="Select Vertical"
+                            options={verticalMarketOptions}
+                            onchange={handlePicklistChange}>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="Estimated total budget for project" value={totalBudget} data-id="totalBudget" onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="List of Partner(s) involved in this deal" value={listOfPartners} data-id="listOfPartners" onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="Please provide details on the Intel products associated " value={intelProductsOverview} data-id="intelProductsOverview" onchange={handleInputChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input label="Total quantity of Intel hardware units" value={qtyHardwareUnits} data-id="qtyHardwareUnits" onchange={handleInputChange}></lightning-input>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: Optional Product Lines -->
+            <section class="slds-m-bottom_medium">
+                <lightning-input type="toggle" label="Add Products?" checked={addProducts} onchange={handleToggle}></lightning-input>
+
+                <template if:true={addProducts}>
+                    <template for:each={products} for:item="prod">
+                        <div key={prod.id} class="slds-grid slds-gutters slds-align_absolute-center slds-m-bottom_small">
+
+                            <!-- Product Search -->
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-input
+                                    label="Product"
+                                    type="text"
+                                    value={prod.searchTerm}
+                                    data-id="searchTerm"
+                                    data-index={prod.id}
+                                    placeholder="Search product"
+                                    onchange={handleProductSearch}>
+                                </lightning-input>
+
+                                <template if:true={prod.searchResults}>
+                                    <div class="slds-box slds-box_xx-small slds-m-top_xx-small">
+                                        <template for:each={prod.searchResults} for:item="p">
+                                            <div key={p.Id}
+                                                 class="slds-p-around_xx-small slds-border_bottom slds-truncate"
+                                                 onclick={selectProduct}
+                                                 data-index={prod.id}
+                                                 data-id={p.Id}
+                                                 data-name={p.Name}>
+                                                {p.Name}
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <!-- Quantity -->
+                            <div class="slds-col slds-size_2-of-12">
+                                <lightning-input
+                                    type="number"
+                                    label="Qty"
+                                    value={prod.quantity}
+                                    data-id="quantity"
+                                    data-index={prod.id}
+                                    onchange={handleProductChange}>
+                                </lightning-input>
+                            </div>
+
+                            <!-- Add Button -->
+                            <div class="slds-col slds-size_2-of-12 slds-m-top_large">
+                                <lightning-button
+                                    label="Add"
+                                    variant="brand-outline"
+                                    onclick={addProduct}>
+                                </lightning-button>
+                            </div>
+
+                            <!-- Remove Button -->
+                            <div class="slds-col slds-size_2-of-12 slds-m-top_large">
+                                <lightning-button-icon
+                                    icon-name="utility:delete"
+                                    alternative-text="Remove"
+                                    title="Remove"
+                                    onclick={removeProduct}
+                                    data-index={prod.id}>
+                                </lightning-button-icon>
+                            </div>
+
+                        </div>
+                    </template>
+                </template>
+            </section>
+
+            <!-- Submit Button -->
+            <lightning-button label="Submit" variant="brand" onclick={createDeal} class="slds-m-top_medium"></lightning-button>
+
+        </div>
+    </lightning-card>
+</template>

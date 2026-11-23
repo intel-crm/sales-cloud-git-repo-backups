@@ -2,7 +2,7 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <description>Action for calling ERPM APIGEE api -
-https://apis.intel.com/m2r/erpm/v1/profiles/set-profiles
+https://apis-stage.intel.com/m2r/erpm/v1/profiles/set-profiles
 Dev-https://fmdverpmws.cps.intel.com/erpm-rest/v2/contact/setprofile</description>
         <name>ERPM_API_Action</name>
         <label>ERPM API Action</label>

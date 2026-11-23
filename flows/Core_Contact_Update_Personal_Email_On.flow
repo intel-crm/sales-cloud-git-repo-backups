@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Contact_Update_Personal_Email_On workflow rule
+Workflow rule description: Selects the &quot;Personal Email Indicator&quot; checkbox when a contact&apos;s email address is entered as, or changes to, one containing a domain on our list of custom email domains&quot;</description>
+    <label>Core_Contact_Update_Personal_Email_On</label>
+    <migratedFromWorkflowRuleName>Core_Contact_Update_Personal_Email_On</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Core_Personal_Email_Indicator__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>(ISNEW() ||  ISCHANGED({!$Record.Email})) &amp;&amp;  (CONTAINS({!$Label.Core_Personal_Email_Domains_01},   RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) ||  CONTAINS({!$Label.Core_Personal_Email_Domains_02},   RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) ||  CONTAINS({!$Label.Core_Personal_Email_Domains_03},   RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) ||  CONTAINS({!$Label.Core_Personal_Email_Domains_04},   RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) ||  CONTAINS({!$Label.Core_Personal_Email_Domains_05},   RIGHT({!$Record.Email}, (LEN({!$Record.Email}) - FIND(&apos;@&apos;, {!$Record.Email})) + 1)) )</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

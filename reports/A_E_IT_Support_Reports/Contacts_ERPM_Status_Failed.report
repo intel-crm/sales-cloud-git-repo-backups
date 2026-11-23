@@ -13,9 +13,6 @@
         <field>Contact$Core_ERPM_Integration_Status__c</field>
     </columns>
     <columns>
-        <field>Contact$LastModifiedBy</field>
-    </columns>
-    <columns>
         <field>Contact$Core_ERPM_Integration_Message__c</field>
     </columns>
     <columns>
@@ -59,13 +56,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Account for Deactivated Contacts</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact$LastModifiedBy</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>User1 Eloqua</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

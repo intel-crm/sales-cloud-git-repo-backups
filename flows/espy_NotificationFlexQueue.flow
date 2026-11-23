@@ -71,17 +71,10 @@
             <name>Holding_count_greater_than_limit</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Metadata.espy__Is_Active__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
                 <leftValueReference>HoldingAsyncApexJobCount</leftValueReference>
                 <operator>GreaterThanOrEqualTo</operator>
                 <rightValue>
-                    <elementReference>Parsingtodouble</elementReference>
+                    <numberValue>1.0</numberValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -126,25 +119,12 @@
         <expression>DATEVALUE({!FlowStarDatetime})</expression>
     </formulas>
     <formulas>
-        <name>Parsingtodouble</name>
-        <dataType>Number</dataType>
-        <expression>{!Get_Metadata.espy__Limit__c}</expression>
-        <scale>2</scale>
-    </formulas>
-    <formulas>
         <name>PauseDateTime</name>
         <dataType>DateTime</dataType>
-        <expression>DATETIMEVALUE(FROMUNIXTIME(UNIXTIMESTAMP({!$Flow.CurrentDateTime}) + {!PauseFrequency} * 60 ))</expression>
-    </formulas>
-    <formulas>
-        <name>PauseFrequency</name>
-        <dataType>Number</dataType>
-        <expression>{!Get_Metadata.espy__Timing__c}</expression>
-        <scale>2</scale>
+        <expression>{!CurrentDate}</expression>
     </formulas>
     <interviewLabel>espy__NotificationFlexQueue {!$Flow.CurrentDateTime}</interviewLabel>
     <label>espy_NotificationFlexQueue</label>
-    <overriddenFlow>espy__NotificationFlexQueue</overriddenFlow>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -173,16 +153,8 @@
         <connector>
             <targetReference>Are_there_any_holding</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>espy__Limit__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>espy__NotificationFlexQueue_Confg__mdt</object>
+        <object>Account</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -213,13 +185,15 @@
             <targetReference>Holding_AsyncApexJob</targetReference>
         </connector>
         <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
+            <frequencyNumber>0</frequencyNumber>
             <startDate>2025-01-29</startDate>
             <startTime>00:05:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>FlowStarDatetime</name>
         <dataType>DateTime</dataType>
@@ -237,15 +211,6 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <scale>2</scale>
-    </variables>
-    <variables>
-        <description>Get the Metadata record details</description>
-        <name>NotificationFlexQueueConfig</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <objectType>espy__NotificationFlexQueue_Confg__mdt</objectType>
     </variables>
     <waits>
         <name>Wait_to_recheck_the_holding_state</name>

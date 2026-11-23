@@ -274,7 +274,7 @@ public class Core_IPS_Interested_Party_Ext_Con_Test{
             PageReference pageRef2 = InterestedPartyExtCon.AddSelectedContacts();
             System.assertEquals(null,pageRef2);
             PageReference pageRef3 =InterestedPartyExtCon.Finished();
-            //System.assertEquals('/'+ListOfCases.get(0).id,pageRef3.getUrl());
+            System.assertEquals('/'+ListOfCases.get(0).id,pageRef3.getUrl());
         }
         Test.stopTest();
     }
@@ -325,9 +325,9 @@ public class Core_IPS_Interested_Party_Ext_Con_Test{
             //InterestedPartyExtCon.LinkedExternalParties.get(0).Active__c = false;
             InterestedPartyExtCon.removeSelectedContacts();
            System.assertEquals(true,InterestedPartyExtCon.IPRecordSet.size()>0);
+
             
-            
-            }
+        }
     }
     /*Ashutosh - US103988*/
     static testMethod void testSaveAndRedirect(){

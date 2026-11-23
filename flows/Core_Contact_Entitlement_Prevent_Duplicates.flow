@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Genrates Unique ID field on Contact Entitlement record</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ConcatContactIdEntId</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.Core_Contact_Id__c,15})+LEFT({!$Record.Core_Entitlement_Id__c,15})</expression>
+    </formulas>
+    <interviewLabel>Core_Contact_Entitlement_Prevent_Duplicates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Contact_Entitlement_Prevent_Duplicates</label>
+    <migratedFromWorkflowRuleName>Core_Contact_Entitlement_Prevent_Duplicates</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>UniqueIDUpdate</name>
+        <label>UniqueIDUpdate</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Core_Unique_Id__c</field>
+            <value>
+                <elementReference>Core_Contact_Entitlement_Unique_IDFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>UniqueIDUpdate</targetReference>
+        </connector>
+        <object>Core_Contact_Entitlement__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+</Flow>

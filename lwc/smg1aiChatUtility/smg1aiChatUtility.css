@@ -1,0 +1,50 @@
+/* Styling for the chat popup */
+.chat-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;  /* Ensure it takes up the full height of the screen */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    overflow: hidden;  /* Hide overflow to prevent scrolling within the popup */
+    transition: transform 0.3s ease-in-out;
+    /*transform: translateY(100%);*/
+}
+
+.popup-header {
+    padding: 10px;
+    background-color: #0070d2;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.popup-content {
+    height: 100%;  /* Ensure content area takes up the full height of the popup */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;  /* Remove extra padding */
+    overflow: hidden; /* Prevent scrolling in popup */
+}
+
+.chat-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* Add styles to ensure content inside iframe adjusts properly */
+    min-height: 100%;
+}

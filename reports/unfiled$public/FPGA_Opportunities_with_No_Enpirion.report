@@ -93,7 +93,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>NIC,CPLD,MAX,PAC,software,board,configuration,framework</value>
+            <value>NIC,CPLD,MAX,software,board,configuration,framework</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_Product_Series__c</column>
@@ -143,7 +143,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2017-06-01</startDate>
     </timeFrameFilter>

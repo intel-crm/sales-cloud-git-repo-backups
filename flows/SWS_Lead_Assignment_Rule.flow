@@ -7,6 +7,9 @@
         <label>Lead Assignment Rules</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Rule_1</name>
@@ -352,6 +355,11 @@
             <label>Rule 21</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>Lead Assignment Rule {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead Assignment Rule</label>
@@ -862,6 +870,9 @@
         <label>Update Lead</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -875,6 +886,9 @@
         <label>Update Lead 10</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -888,6 +902,9 @@
         <label>Update Lead 11</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -901,6 +918,9 @@
         <label>Update Lead 12</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -914,6 +934,9 @@
         <label>Update Lead 13</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -927,6 +950,9 @@
         <label>Update Lead 14</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -940,6 +966,9 @@
         <label>Update Lead 15</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -953,6 +982,9 @@
         <label>Update Lead 16</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -966,6 +998,9 @@
         <label>Update Lead 17</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -979,6 +1014,9 @@
         <label>Update Lead 18</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -992,6 +1030,9 @@
         <label>Update Lead 19</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1005,6 +1046,9 @@
         <label>Update Lead 2</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1018,6 +1062,9 @@
         <label>Update Lead 20</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1031,6 +1078,9 @@
         <label>Update Lead 21</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1044,6 +1094,9 @@
         <label>Update Lead 3</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1057,6 +1110,9 @@
         <label>Update Lead 4</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1070,6 +1126,9 @@
         <label>Update Lead 5</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1083,6 +1142,9 @@
         <label>Update Lead 6</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1096,6 +1158,9 @@
         <label>Update Lead 7</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1109,6 +1174,9 @@
         <label>Update Lead 8</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>
@@ -1122,6 +1190,9 @@
         <label>Update Lead 9</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>OwnerId</field>
             <value>

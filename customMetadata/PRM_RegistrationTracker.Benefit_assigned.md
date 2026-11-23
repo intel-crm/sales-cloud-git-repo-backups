@@ -32,11 +32,11 @@
     </values>
     <values>
         <field>MilestoneOrder_Admin__c</field>
-        <value xsi:type="xsd:double">10.0</value>
+        <value xsi:type="xsd:double">11.0</value>
     </values>
     <values>
         <field>MilestoneOrder_Self__c</field>
-        <value xsi:type="xsd:double">13.0</value>
+        <value xsi:type="xsd:double">14.0</value>
     </values>
     <values>
         <field>Related_Object__c</field>

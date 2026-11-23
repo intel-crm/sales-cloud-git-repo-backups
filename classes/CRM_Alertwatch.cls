@@ -102,8 +102,8 @@ global without sharing class CRM_Alertwatch {
             query += ' AND CreatedBy.username NOT IN :excludedUsersList';
         }
         
-        query += ' ORDER BY CreatedDate DESC Limit 45000 ';
-        
+        query += ' ORDER BY CreatedDate DESC ';
+        system.debug(query);
         return query;
     }
     

@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">ASMO</value>
+        <value xsi:type="xsd:string">ASMO Region Test</value>
     </values>
 </CustomMetadata>

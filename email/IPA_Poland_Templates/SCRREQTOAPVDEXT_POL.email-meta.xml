@@ -16,17 +16,20 @@ Identyfikator firmy: {!Account.AccountNumber}
 
 Zaloguj się, aby wyświetlić szczegóły dotyczące Twojego profilu w programie Intel® Partner Alliance.
 
+Zaloguj się na stronie https://crmdevipa-intelcloudcrm.cs45.force.com/ipa/s/post-launch-primary, by wyświetlić swoją rolę.
+
+
 Historia partnerów firmy Intel w zakresie innowacji jest długa. Za pomocą programu Intel® Partner Alliance pomożemy Ci przyspieszyć opracowywanie rozwiązań dla gospodarki opartej na danych. Razem możemy stwarzać nowe, niezwykłe możliwości dzięki połączeniu sił, wprowadzaniu innowacji i wspólnemu rozwojowi.
 
-Odwiedź stronę https://www.intel.com/content/www/pl/pl/partner-alliance/help/overview.html, by uzyskać dalszą pomoc dotyczącą rozpoczęcia korzystania z programu.
+Odwiedź stronę https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html, by uzyskać dalszą pomoc dotyczącą rozpoczęcia korzystania z programu.
 
 Dziękujemy.
 Twój zespół Intel® Partner Alliance
 
 Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Ochrona danych | Pliki cookie</textOnly>
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.pl
+Prywatność | Pliki cookie</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

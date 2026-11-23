@@ -349,10 +349,10 @@ public class Core_DelegateApproverOppShare_Test {
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }
-        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         Opportunity oppForLoss = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
-                                                 AccountId = acct.Id,Core_Approval_Status__c ='Submitted',
-                                                 StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1),Core_Approver_1__c=testUser.Id,
+                                                 AccountId = acct.Id,Core_Approval_Status__c ='Submitted', Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                                 StageName = 'Qualify', CloseDate = System.Date.today().addYears(1),Core_Approver_1__c=testUser.Id,
                                                  Core_Approver_2__c=testUser.Id,Core_Approver_3__c=testUser.Id,Core_Approver_4__c=testUser.Id,Core_Approver_5__c=testUser.Id);
         
         System.runAs(Core_Test_Utility.systemAdminUser) {
@@ -464,10 +464,10 @@ public class Core_DelegateApproverOppShare_Test {
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }
-        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         Opportunity oppForLoss = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
-                                                 AccountId = acct.Id,
-                                                 StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1),	OwnerId=testUser2.id,
+                                                 AccountId = acct.Id,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                                 StageName = 'Qualify', CloseDate = System.Date.today().addYears(1),	OwnerId=testUser2.id,
                                                  Core_Approval_Status__c='Not Submitted');
         
         System.runAs(Core_Test_Utility.systemAdminUser) {
@@ -546,10 +546,10 @@ public class Core_DelegateApproverOppShare_Test {
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }
-        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_New_Opportunity' limit 1][0].Id;
+        Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         Opportunity oppForLoss = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
-                                                 AccountId = acct.Id,
-                                                 StageName = 'Qualifying', CloseDate = System.Date.today().addYears(1),
+                                                 AccountId = acct.Id,Opportunity_Focus__c= 'Core',Core_Opportunity_Type__c ='Design: Original',
+                                                 StageName = 'Qualify', CloseDate = System.Date.today().addYears(1),
                                                  Core_Approval_Status__c='Not Submitted');
         
         System.runAs(Core_Test_Utility.systemAdminUser) {

@@ -5,12 +5,12 @@
         <description>Email Notification of Amend/Renewal Opportunities</description>
         <protected>false</protected>
         <recipients>
-            <recipient>coe-integration-user@intel.com.crm</recipient>
+            <recipient>11823540@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>test/Core_Amend_Renewal_Opportunities_Not_Deleted</template>
+        <template>unfiled$public/Core_Amend_Renewal_Opportunities_Not_Deleted</template>
     </alerts>
     <alerts>
         <fullName>Core_Notify_IOTG_Other_Second_Level_Approvers_Alert_10M_1</fullName>
@@ -18,6 +18,10 @@
         <protected>false</protected>
         <recipients>
             <recipient>10770732@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -39,6 +43,10 @@
             <recipient>10770732@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
+            <type>user</type>
+        </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
@@ -52,6 +60,10 @@
         </recipients>
         <recipients>
             <recipient>11526272@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -77,6 +89,10 @@
             <recipient>11526272@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
+            <type>user</type>
+        </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
@@ -100,6 +116,10 @@
             <recipient>11378482@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
+            <type>user</type>
+        </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
@@ -115,6 +135,10 @@
             <recipient>10642036@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
+            <type>user</type>
+        </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
@@ -128,6 +152,10 @@
         </recipients>
         <recipients>
             <recipient>11525404@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -153,6 +181,10 @@
             <recipient>11525404@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
+            <type>user</type>
+        </recipients>
         <senderType>DefaultWorkflowUser</senderType>
         <template>Core_Opportunity_Management/Core_IOTG_Second_level_approver_notification</template>
     </alerts>
@@ -161,11 +193,11 @@
         <description>Core_Notify IOTG Second Level Approvers Alert_$5M</description>
         <protected>false</protected>
         <recipients>
-            <recipient>10662131@intel.com.crm</recipient>
+            <recipient>11265583@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>11265583@intel.com.crm</recipient>
+            <recipient>vikramx.dharane@intel.com</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -184,11 +216,11 @@
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>10662131@intel.com.crm</recipient>
+            <recipient>11265583@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
         <recipients>
-            <recipient>11265583@intel.com.crm</recipient>
+            <recipient>vikramx.dharane@intel.com</recipient>
             <type>user</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
@@ -203,7 +235,7 @@
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MINDS_Opportunity_Approved</template>
+        <template>unfiled$public/Core_MINDS_Opportunity_Approved</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Fill_Out_Form</fullName>
@@ -214,7 +246,7 @@
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_Fill_Out_Form</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Fill_Out_Form</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_GEC_Needs_Info</fullName>
@@ -225,11 +257,10 @@
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_GEC_Needs_Info</template>
+        <template>unfiled$public/Core_MAG_Opportunity_GEC_Needs_Info</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Governance</fullName>
-        <ccEmails>export.customer@intel.com</ccEmails>
         <description>Core_Opp_MAG_Governance</description>
         <protected>false</protected>
         <recipients>
@@ -237,7 +268,7 @@
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>test/Core_MAG_Opportunity_Email_to_Owner</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Email_to_Owner</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_MAG_Not_Approved</fullName>
@@ -248,7 +279,7 @@
         </recipients>
         <senderAddress>export.customer@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MAG_Opportunity_Not_Approved</template>
+        <template>unfiled$public/Core_MAG_Opportunity_Not_Approved</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_Notify_Manager_On_Risk</fullName>
@@ -281,7 +312,7 @@
             <type>owner</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Rejection_Notification_Opportunity</template>
+        <template>unfiled$public/Core_Rejection_Notification_Opportunity</template>
     </alerts>
     <alerts>
         <fullName>Core_Opp_Send_Production_Win_EmailAlert</fullName>
@@ -322,7 +353,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Uncovered_Account</template>
+        <template>unfiled$public/Core_Uncovered_Account</template>
     </alerts>
     <alerts>
         <fullName>Core_PCC_OpportunityRejection</fullName>
@@ -335,6 +366,20 @@
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_PCC_OpportunityRejectNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>Oppty_PCC_Deal_Won</fullName>
+        <description>PCC Deal Reg Notify the PSAM when Opportunity is Closed Won</description>
+        <protected>false</protected>
+        <recipients>
+            <type>accountOwner</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_Opportunity_Management/Core_Oppty_PCC_Deal_Won</template>
     </alerts>
     <fieldUpdates>
         <fullName>At_Risk_Created_Date_Update</fullName>
@@ -936,6 +981,16 @@ Core_Push_Counter__c + 1
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Core_Opp_Stage_Update</fullName>
+        <field>StageName</field>
+        <literalValue>Cancelled</literalValue>
+        <name>Core_Opp_Stage_Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Core_Opp_Store_Submitter_Email</fullName>
         <description>Update the &quot;System Submitter&quot; field with Submitter&apos;s email</description>
         <field>Core_System_Submitter__c</field>
@@ -1464,6 +1519,21 @@ Core_Push_Counter__c + 1
         <active>false</active>
         <description>Set the stage to design win when approved if the prior stage was not Production Win.</description>
         <formula>AND(ISCHANGED(Core_Approval_Status__c),   ISPICKVAL(Core_Approval_Status__c, &apos;Approved&apos;),   NOT(ISPICKVAL(StageName, &apos;Production Win&apos;)) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Opp_Stage_Update_On_PrimaryQuote</fullName>
+        <actions>
+            <name>Core_Opp_Stage_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.Core_Is_Renewal_Amend_PSG_Quote__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Update the &apos;Stage&apos; as &apos;Cancelled&apos; when primary quote&apos;s &apos;Quote Program&apos; is &apos;PSG&apos; and &apos;Type&apos; is &apos;Renewal/Amendment&apos;.</description>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>

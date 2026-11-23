@@ -12,6 +12,14 @@
         <apexClass>SCRTY_Admin_Permission_Metrics_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_User_With_Activity_Access</name>
+    </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_User_With_Escalation_Access</name>
+    </customPermissions>
     <description>This permission Set grant permission to view Dashboard</description>
     <fieldPermissions>
         <editable>false</editable>
@@ -2543,4 +2551,8 @@
         <tab>SCRTY_Admin_Permission_Metrics__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterEnabledForUser</name>
+    </userPermissions>
 </PermissionSet>

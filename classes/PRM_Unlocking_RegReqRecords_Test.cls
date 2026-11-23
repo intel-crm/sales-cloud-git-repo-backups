@@ -80,7 +80,6 @@ public class PRM_Unlocking_RegReqRecords_Test {
         firstNewRequest.PRM_EmailVerifiedDateTime__c=System.Today();
         insert firstNewRequest;
         rr.add(firstNewRequest);
-        //System.debug('newRequest First approval Scnerio-->'+firstNewRequest);
         
         
         
@@ -101,15 +100,13 @@ public class PRM_Unlocking_RegReqRecords_Test {
         secondNewRequest.PRM_isLocked__c=True;
         insert secondNewRequest;
         rr.add(secondNewRequest);
-        
-        //System.debug('newRequest secondNewRequest approval Scnerio-->'+secondNewRequest);
+
         database.insert(rr,False);
         Approval.ProcessSubmitRequest req1 = new Approval.ProcessSubmitRequest();
         req1.setComments('Submitting request for approval.');
         req1.setObjectId(secondNewRequest.id);
-        //System.debug('rr'+rr);
         //Approval.ProcessResult result = Approval.process(req1);
-        ////System.debug('result'+result);
+        //System.debug('result'+result);
         PRM_Unlocking_RegRecords.unlockRecords(rr);
         System.assertEquals(secondNewRequest.Name, 'First approval Scnerio', 'Value does not match');
         //Subscription__c subOfFirstRequest = new Subscription__c();  

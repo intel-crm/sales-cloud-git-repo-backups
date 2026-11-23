@@ -16,7 +16,7 @@ public without sharing class PRM_CSA_TriggerHandler extends TriggerHandler{
     //Please make use of different variable for before/delete scenarios
     public static boolean firstRun = true;
     public static boolean IPAfirstRun = true;
-    
+
     public override void beforeInsert(){
         
         if(isActive('Contact_Subscription_Association_Switch')) //Retrieved from Custom labels

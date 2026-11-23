@@ -41,7 +41,8 @@
         <name>Notify__c</name>
     </fields>
     <fields>
-        <label><!-- removalRequired --></label>
+        <help><!-- Check this box if Engagement is to be removed upon removal of the Entitlement --></help>
+        <label><!-- Removal Required --></label>
         <name>core_removalRequired__c</name>
     </fields>
     <startsWith>Consonant</startsWith>

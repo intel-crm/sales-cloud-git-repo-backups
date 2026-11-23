@@ -23,6 +23,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Checkbox_Field_10_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Checkbox_Field_1_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -54,6 +59,26 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Checkbox_Field_7_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Checkbox_Field_8_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Checkbox_Field_9_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Date_1_dt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Date_2_dt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -144,6 +169,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Name_Criteria__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_CCP_Custom_Metadata_Utility__c.Core_MDF_Number_1_num__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -358,6 +388,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>User.Partner_License_Reclaimed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>User.Reason_for_Deletion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>User.SBQQ__DefaultProductLookupTab__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -384,11 +424,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>User.SBQQ__Theme__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>User.User_Unique__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <callbackUrl>https://elt.varicent.com/importRedirect</callbackUrl>
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hR0k4ETz9ztdvLkv97oYwLlKvS4AP9cyGT2sQLK9yNqmMnLj3DtqmazFbL3</consumerKey>
+    <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDv6uJ02ToH9yjlWANi4.4Plw.m0vFBoINtxaeA22K99y1iCH3X1kfBDbmZC7</consumerKey>
     <externalClientApplication>Symon_AI</externalClientApplication>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
     <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>

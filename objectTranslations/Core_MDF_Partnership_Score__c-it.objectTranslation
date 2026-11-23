@@ -23,7 +23,7 @@
     </fields>
     <fields>
         <help><!-- Final Recovery Amount - Recovered Amount --></help>
-        <label>Totale guasti non ripristinati</label>
+        <label><!-- Balance Unrecovered --></label>
         <name>Core_MDF_Balance_Amount_Amt__c</name>
     </fields>
     <fields>
@@ -41,7 +41,7 @@
     </fields>
     <fields>
         <help><!-- Channel Program Display only field --></help>
-        <label><!-- Channel Program Display --></label>
+        <label><!-- Channel Program --></label>
         <name>Core_MDF_Channel_Program_Display__c</name>
     </fields>
     <fields>
@@ -51,7 +51,7 @@
     </fields>
     <fields>
         <help><!-- Channel Program Display only field --></help>
-        <label>Programma per il Canale</label>
+        <label><!-- Channel Program --></label>
         <name>Core_MDF_Channel_Program_txt__c</name>
     </fields>
     <fields>
@@ -60,7 +60,7 @@
     </fields>
     <fields>
         <help><!-- Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters --></help>
-        <label>Cifra di recupero finale</label>
+        <label><!-- Final Recovery Amount --></label>
         <name>Core_MDF_Final_Recovery_Amount_Amt__c</name>
     </fields>
     <fields>

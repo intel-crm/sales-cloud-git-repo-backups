@@ -1,0 +1,7 @@
+<apex:page standardController="Contact"> 
+    <apex:form >
+            <apex:outputPanel >
+                <div  style="font-weight:bold;color:red;">Warning: Creating additional contacts for the same external user will impede their ability to set up MFA</div>
+            </apex:outputPanel>
+    </apex:form>
+</apex:page>

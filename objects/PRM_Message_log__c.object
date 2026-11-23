@@ -191,6 +191,34 @@
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
+    <fields>
+        <fullName>PRM_UI_Display_Area_Nm__c</fullName>
+        <label>UI Display Area</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Leads</fullName>
+                    <default>false</default>
+                    <label>Leads</label>
+                </value>
+                <value>
+                    <fullName>Points</fullName>
+                    <default>false</default>
+                    <label>Points</label>
+                </value>
+                <value>
+                    <fullName>Notification Area</fullName>
+                    <default>false</default>
+                    <label>Notification Area</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Message log</label>
     <listViews>
         <fullName>All</fullName>
@@ -199,7 +227,6 @@
         <columns>PRM_Contact_Id__c</columns>
         <columns>PRM_Inactive_Ind__c</columns>
         <columns>PRM_Message_Viewed_Ind__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>

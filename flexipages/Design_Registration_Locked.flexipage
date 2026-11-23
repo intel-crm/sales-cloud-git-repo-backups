@@ -9,10 +9,16 @@
                         <valueListItems>
                             <value>Edit</value>
                             <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.DDR_Read_Only}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>false</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Core_Product_Group_Nm__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -111,7 +117,7 @@
                         <valueListItems>
                             <value>Core_Design_Registration__c.PCC_Set_as_Expired</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2</booleanFilter>
+                                <booleanFilter>1 AND 2 AND 3</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Core_Design_Registration_Status_Nm__c}</leftValue>
                                     <operator>EQUAL</operator>
@@ -121,6 +127,11 @@
                                     <leftValue>{!$Permission.CustomPermission.DDR_Internal_Users}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.Core_Product_Group_Nm__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FPGA/Power</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -148,6 +159,20 @@
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 14px; color: rgb(234, 14, 14);&quot;&gt;There is a planned system upgrade starting Jul 17-28. During this time, you will be able to view your open transactions but will not be able to create or modify transactions. The new system will be available to you on July 28 and you will receive an email with the new URL and instructions. Our apologies for any inconvenience and thank you for your patience.&lt;/strong&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

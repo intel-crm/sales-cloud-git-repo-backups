@@ -17,10 +17,11 @@ public class Core_MDF_Escalation_TriggerHandler extends TriggerHandler{
     boolean shareEscalationWithAccNode = isActive('Core_MDF_Share_Escalations_With_AccNode');
     boolean validateEscAgainstClaims = isActive('Core_MDF_ValidateEscAgainstClaim');
     boolean updatePFRAmtWithEscAmount = isActive('Core_MDF_UpdatePFRAmtWithEscAmt');
+    boolean isOutcomeBasedEscalation = isActive('Core_MDF_OutcomeBasedEscalation');
 
     public override void beforeInsert(){        
         if(initializeEsclations){
-            Core_MDF_Escalation_ServiceHandler.initializeEscalationFields((List<Core_MDF_Escalation__c>) Trigger.new,null,Trigger.isInsert); 
+            Core_MDF_Escalation_ServiceHandler.initializeEscalationFields((List<Core_MDF_Escalation__c>) Trigger.new,null,Trigger.isInsert);  
         }
         // Check Campaign Amount
         if(validateEscAmtWithCampAmt){
@@ -65,19 +66,30 @@ public class Core_MDF_Escalation_TriggerHandler extends TriggerHandler{
     
     public override void afterUpdate(){ 
         if(shareEscalationFlag ){
-       Core_MDF_Escalation_ServiceHandler.shareEscalation((Map<Id,Core_MDF_Escalation__c>) Trigger.newMap,(Map<Id,Core_MDF_Escalation__c>) Trigger.oldMap,Trigger.isInsert);
+	   Core_MDF_Escalation_ServiceHandler.shareEscalation((Map<Id,Core_MDF_Escalation__c>) Trigger.newMap,(Map<Id,Core_MDF_Escalation__c>) Trigger.oldMap,Trigger.isInsert);
         }
         
         /*if(esclationApprovalAction){
             Core_MDF_Escalation_ServiceHandler.approvalAction((List<Core_MDF_Escalation__c>) Trigger.new,(Map<Id,Core_MDF_Escalation__c>) Trigger.oldMap);
         }*/
-        if(shareEscalationWithAccNode){
+		if(shareEscalationWithAccNode){
             Core_MDF_Escalation_ServiceHandler.shareEscalationWithAccNodeGroup((List<Core_MDF_Escalation__c>) Trigger.new, (Map<Id,Core_MDF_Escalation__c>) Trigger.oldMap, Trigger.isInsert);
         }
         if(updatePFRAmtWithEscAmount){
             Core_MDF_Escalation_ServiceHandler.releaseEscalationAmount((List<Core_MDF_Escalation__c>) Trigger.new, (Map<Id, Core_MDF_Escalation__c>) Trigger.oldMap);
         }
-
+        System.debug('enter actual');
+        System.debug('*** CHECKING OUTCOME BASED ESCALATION FLAG ***');
+    System.debug('isOutcomeBasedEscalation variable: ' + isOutcomeBasedEscalation);
+    System.debug('Direct isActive call: ' + isActive('Core_MDF_OutcomeBasedEscalation'));
+        if (isOutcomeBasedEscalation == true) {
+        System.debug('✓ Flag is TRUE - should enter if block');
+    } else {
+        System.debug('✗ Flag is FALSE - will NOT enter if block');
+    }
+	//if(isOutcomeBasedEscalation){
+        System.debug('Engter 81 trigger esc');
         Core_MDF_Escalation_ServiceHandler.distributeEscalationAmountToOutcomeSubActivities((List<Core_MDF_Escalation__c>) Trigger.new, (Map<Id, Core_MDF_Escalation__c>) Trigger.oldMap);
+	//}
     }
 }

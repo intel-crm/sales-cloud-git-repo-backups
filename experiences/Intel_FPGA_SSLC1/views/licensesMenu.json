@@ -8,7 +8,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "8c480e2d-b7d1-44ac-b22c-d6fcaf623023",
+      "id" : "c042150a-3d72-4a68-a1a0-43177b0ef6cc",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -35,7 +35,7 @@
         "showSearchBar" : true
       },
       "componentName" : "forceCommunity:objectHome",
-      "id" : "77a9ff6e-32e9-4243-8bb7-6424b680ee74",
+      "id" : "5159c235-fff0-472b-a3fb-4463f9fb7803",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

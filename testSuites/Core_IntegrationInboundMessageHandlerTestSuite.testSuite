@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_IntegrationInboundMessageAGS_Test</testClassName>
+    <testClassName>Core_MDF_UpdateBankDetails_Test</testClassName>
+    <testClassName>PRM_IPA_TriggerHandler_Test</testClassName>
+</ApexTestSuite>

@@ -21,56 +21,56 @@
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Develop</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Days_in_Current_Stage__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
             <value>90</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Design</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Days_in_Current_Stage__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
             <value>60</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Opportunity.Core_Deal_Opportunity</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Opportunity.Core_Design_Opportunity</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Days_in_Current_Stage__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
             <value>150</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Days_in_Current_Stage__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
             <value>120</value>
         </criteriaItems>

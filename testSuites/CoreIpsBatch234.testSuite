@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_CustomAccountTeamHandler_Test</testClassName>
+    <testClassName>Core_IPS_CaseInterestedPartyHandler_Test</testClassName>
+    <testClassName>Core_IPS_CaseTriggerHandler_Test</testClassName>
+    <testClassName>Core_IPS_CaseUtility_Test</testClassName>
+    <testClassName>Core_IPS_Core_Question_Handler_Test</testClassName>
+    <testClassName>Core_IPS_CustomAccountTeam_Handler_Test</testClassName>
+    <testClassName>Core_IPS_Environment_Details_Test</testClassName>
+    <testClassName>Core_IPS_ExceptionHandling_Test</testClassName>
+    <testClassName>Core_IPS_File_Assignment_Handler_Test</testClassName>
+    <testClassName>Core_IPS_IntelSupportTeam_Handler_Test</testClassName>
+    <testClassName>Core_IPS_MAPAccount_Test</testClassName>
+    <testClassName>Core_IPS_MyIntel_3_0_Test</testClassName>
+    <testClassName>Core_IPS_Opportunity_Test</testClassName>
+    <testClassName>Core_IPS_OpportunityPAR_Controller_Test</testClassName>
+    <testClassName>Core_IPS_Project_Handler_Test</testClassName>
+    <testClassName>Core_IPS_Project_Member_Test</testClassName>
+    <testClassName>Core_IPS_Response_Handler_Test</testClassName>
+    <testClassName>Core_IPS_SSLCCase_HandlerTest</testClassName>
+    <testClassName>Core_IPS_UserTriggerHandler_Test</testClassName>
+    <testClassName>Core_ProductAccess_Product_Test</testClassName>
+</ApexTestSuite>

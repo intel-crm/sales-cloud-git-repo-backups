@@ -176,6 +176,14 @@
         <type>Lookup</type>
     </fields>
     <label>Message Entitlement Association</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Message_Id__c</columns>
+        <columns>PRM_Entitlement_Detail_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>MEA-{0000}</displayFormat>
         <label>Message Entitlement Association Name</label>

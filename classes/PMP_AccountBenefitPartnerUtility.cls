@@ -329,23 +329,7 @@ public without sharing class PMP_AccountBenefitPartnerUtility {
                             else{ 
                                 progMembership = 'Distributor' + ' - ' + bizorgtype;
                             }
-                        }     
-                     /*  else if(eng.PRM_Partner_Role__c == 'Service Provider'){
-                            if(bizorgtype.split('\\;').size() > 1){
-                                for(String biz : bizorgtype.split('\\;')){
-                                    progMembership += 'Cloud & Comms Service Provider' + ' - ' + biz + ';';
-                                }
-                                if(progMembership.endsWith(';')) {
-                                    progMembership = progMembership.substring(0, progMembership.length() - 1);
-                                }
-                            }
-                            else if(String.isEmpty(bizorgtype) && eng.PRM_Account_Id__r.Core_Account_Type__c!=null){
-                                progMembership = eng.PRM_Account_Id__r.Core_Account_Type__c.contains('Service Provider') ? 'Cloud & Comms Service Provider':'';
-                            }
-                            else{ 
-                                progMembership = 'Cloud & Comms Service Provider' + ' - ' + bizorgtype;
-                            }
-                        }   */     
+                        }                          
                         else{
                             progMembership =  eng.PRM_Partner_Role__c + ' - ' + eng.PRM_Channel_Program_Level_Id__r.Name;
                             if(eng.PRM_Account_Id__r.Core_Account_Type__c !=null && eng.PRM_Partner_Role__c == 'Solution Provider' && eng.PRM_Account_Id__r.Core_Account_Type__c.contains('IoT Solution Aggregator')){
@@ -487,15 +471,23 @@ public static void updateUtility(List<PRM_AccountBenefitAssociation__c> updatedL
              }
         }
         //IPA 2.0 simplification TWC729-8060
-        /*if(!activAccIds.isEmpty()) {
-	 for(PMP_OPID_MPI_Rel__c opidmpi:[select Id,PMP_One_Partner_ID__c, PMP_Marketing_Profile_Id__c,
-                                        PMP_Marketing_Profile_Id__r.PMP_Working_Copy_Id__c,Is_Active__c
+       /* if(!activAccIds.isEmpty()) {
+            
+            Map<Id, PMP_OPID_MPI_Rel__c> latestRelPerOpid = new Map<Id, PMP_OPID_MPI_Rel__c>();
+        for(PMP_OPID_MPI_Rel__c opidmpi:[select Id,PMP_One_Partner_ID__c, PMP_Marketing_Profile_Id__c,
+                                        PMP_Marketing_Profile_Id__r.PMP_Working_Copy_Id__c,Is_Active__c,PMP_RelLastDeactivated__c
                                         from PMP_OPID_MPI_Rel__c where PMP_One_Partner_ID__c in :activAccIds 
-                                        and Is_Active__c = false]){
-            opidmpi.Is_Active__c=true;
-            lstOfactiveMPIsToUpdate.add(opidmpi);
-         }*/
-              
+                                        and Is_Active__c = false order by PMP_RelLastDeactivated__c DESC]){
+           
+            if (!latestRelPerOpid.containsKey(opidmpi.PMP_One_Partner_ID__c)) {
+                   latestRelPerOpid.put(opidmpi.PMP_One_Partner_ID__c, opidmpi);
+                }
+         }
+            for (PMP_OPID_MPI_Rel__c rel : latestRelPerOpid.values()) {
+                rel.Is_Active__c = true;
+                lstOfactiveMPIsToUpdate.add(rel);
+            }
+    }*/
     if(!activAccIds.isEmpty()){
     Map<Id,PMP_OPID_MPI_Rel__c> latestRelPerOpid = new Map<Id,PMP_OPID_MPI_Rel__c>();
 
@@ -963,7 +955,7 @@ public static void updateTierOnMPI(set<Id> accountIds){
                 if( eng.PRM_Channel_Program_Level_Id__r.Name != INVALID_TIER ){
                     // String progMembership = eng.PRM_Partner_Role__c + ' - ' + eng.PRM_Channel_Program_Level_Id__r.Name; 
                     // String progMembership = eng.PRM_Partner_Role__c == 'Distributor'? eng.PRM_Partner_Role__c + ' - ' + eng.PRM_Account_Id__r.Core_Account_Type__c:eng.PRM_Partner_Role__c + ' - ' + eng.PRM_Channel_Program_Level_Id__r.Name;
-                                       
+                                            
                 String progMembership = getProgramMembership(eng);    
                 programMembership= formatAndPopulateMultiPicklistForProgramMembership(programMembership,progMembership);
                 partnerProgram = formatAndPopulateMultiPicklist(partnerProgram,eng.PRM_Partner_Role__c);
@@ -1132,10 +1124,7 @@ public static String getProgramMembership(PRM_AccountChannelMembership__c eng){
     }    */                      
    // else{
     if(string.isNotBlank(eng.PRM_Partner_Role__c)){
-        //progMembership =  eng.PRM_Partner_Role__c + ' - ' + eng.PRM_Channel_Program_Level_Id__r.Name;
-         progMembership = eng.PRM_Partner_Role__c == 'Service Provider'? 'Cloud & Comms Service Provider' + ' - ' + eng.PRM_Channel_Program_Level_Id__r.Name:eng.PRM_Partner_Role__c + ' - ' + eng.PRM_Channel_Program_Level_Id__r.Name;
-
-  
+        progMembership =  eng.PRM_Partner_Role__c + ' - ' + eng.PRM_Channel_Program_Level_Id__r.Name;
         if(eng.PRM_Account_Id__r.Core_Account_Type__c !=null){
             if(eng.PRM_Partner_Role__c == 'Solution Provider' && eng.PRM_Account_Id__r.Core_Account_Type__c.contains('IoT Solution Aggregator')){
                 progMembership =  eng.PRM_Partner_Role__c + ' - ' + 'IoT Solution Aggregator';
@@ -2029,6 +2018,70 @@ public static void assignAutoBenefits( Map<Id,String> mapAccountToUpdatedBenefit
             }
             */
     }
+    
+    public static void sendWelcomeEmailForMPTest(Set<Id> setContacIdForIPAWelcomeEmail) {
+    Set<String> setOpidsForMPEmail = new Set<String>();
+    List<PRM_EmailLog__c> existingEmailLogs = new List<PRM_EmailLog__c>();
+
+    if (setContacIdForIPAWelcomeEmail != null && !setContacIdForIPAWelcomeEmail.isEmpty()) {
+        // Fetch Contacts and collect OPIDs
+        for (Contact con : [
+            SELECT Core_IPA_One_Partner_Id__c, Id, Core_AGS_Integration_Status__c
+            FROM Contact
+            WHERE Id IN :setContacIdForIPAWelcomeEmail
+        ]) {
+            setOpidsForMPEmail.add(con.Core_IPA_One_Partner_Id__c);
+        }
+
+        if (setOpidsForMPEmail != null && !setOpidsForMPEmail.isEmpty()) {
+            System.debug('setOpidsForMPEmail: ' + setOpidsForMPEmail);
+
+            List<String> lstCompaniesForWelcomeEmail = new List<String>();
+            Set<String> setCompaniesForWelcomeEmail = new Set<String>();
+
+            // Fetch Companies
+            for (PMP_Company__c comp : [
+                SELECT Id, Name, PMP_Published_Copy_Id__c, PMP_Is_Working_Copy_Ind__c,
+                       PMP_Working_Copy_Id__c, PMP_Company_Lifecycle_Status_Nm__c
+                FROM PMP_Company__c
+                WHERE PMP_Opid_Sfid_Ref_Txt__c IN :setOpidsForMPEmail
+            ]) {
+                if (comp.PMP_Company_Lifecycle_Status_Nm__c == 'Draft' && comp.PMP_Is_Working_Copy_Ind__c == true) {
+                    String key = comp.PMP_Published_Copy_Id__c + '|' + 'New_CompanyInfo_CreationEmail';
+                    lstCompaniesForWelcomeEmail.add(key);
+
+                    if (comp.PMP_Published_Copy_Id__c != null)
+                        setCompaniesForWelcomeEmail.add(comp.PMP_Published_Copy_Id__c);
+                    if (comp.PMP_Working_Copy_Id__c != null)
+                        setCompaniesForWelcomeEmail.add(comp.PMP_Working_Copy_Id__c);
+
+                    System.debug(comp.PMP_Published_Copy_Id__c + ' comp.PMP_Published_Copy_Id__c');
+                }
+            }
+
+            if (!setCompaniesForWelcomeEmail.isEmpty()) {
+                System.debug('setCompaniesForWelcomeEmail: ' + setCompaniesForWelcomeEmail);
+
+                // Fetch existing email logs
+                for (PRM_EmailLog__c eLog : [
+                    SELECT Id, PRM_Subject__c, PRM_Contact__c, PRM_User__c,
+                           PRM_EmailDeliverabilityStatus__c, PRM_ToEmailID__c,
+                           Email_Template_Name__c, PRM_Contact__r.Core_Preferred_Language__c
+                    FROM PRM_EmailLog__c
+                    WHERE PMP_Company__c IN :setCompaniesForWelcomeEmail
+                    AND Email_Template_Name__c = 'PMP_CompanyInfoDraftEmail_Profile'
+                    ORDER BY CreatedDate
+                ]) {
+                    existingEmailLogs.add(eLog);
+                }
+            }
+
+            if (!lstCompaniesForWelcomeEmail.isEmpty() && existingEmailLogs.isEmpty()) {
+                PMP_SendEmailAlertsForCompanyInfo.PMP_SendEmailAlertsForCompanyInfo(lstCompaniesForWelcomeEmail);
+            }
+        }
+     }
+   }
 
    
 }

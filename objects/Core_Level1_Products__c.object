@@ -19,12 +19,14 @@
     </fields>
     <label>Core Level 1 Products</label>
     <listViews>
-        <fullName>Product_Integration</fullName>
+        <fullName>All_New_View</fullName>
         <columns>NAME</columns>
         <columns>Is_Active__c</columns>
         <columns>Level_1_Id__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <label>Product Integration`</label>
+        <label>All New View</label>
         <language>en_US</language>
     </listViews>
     <visibility>Public</visibility>

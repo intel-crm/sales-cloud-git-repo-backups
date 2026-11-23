@@ -190,13 +190,6 @@
     <label>Sales License Group</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Sales_License_Description_dsc__c</columns>
-        <columns>Sales_Legacy_License_Group_Id__c</columns>
-        <columns>Sales_License_Parameter_txt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

@@ -7,16 +7,10 @@
         <field>NAME</field>
     </columns>
     <columns>
-        <field>Product2.Core_Product_Org__c</field>
-    </columns>
-    <columns>
         <field>Product2.Core_Product_Series__c</field>
     </columns>
     <columns>
         <field>Product2.Core_BU_Operation_Code__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Hierarchy_Name__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Avail_for_New_Designs__c</field>
@@ -32,7 +26,7 @@
     </columns>
     <description>List of products that should have the &quot;Design Registration Eligible&quot; flag checked true and &quot;Partner Visible&quot; flag checked true</description>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND 11 AND (4 OR (5 AND 6) OR 7 OR 8 OR 9)) AND 10 AND 12</booleanFilter>
+        <booleanFilter>((((((1 AND 2 AND 3 AND 11 AND ( 4 OR ( 5 AND 6 ) OR 7 OR 8 OR 9))))) ) AND 10)</booleanFilter>
         <criteriaItems>
             <column>Product2.Core_Sales_Visible_Flag__c</column>
             <columnToColumn>false</columnToColumn>
@@ -59,7 +53,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Arria® V FPGAs,Arria® 10 FPGAs,Cyclone® IV FPGAs,Cyclone® V FPGAs,Cyclone® 10 FPGAs,Enpirion® Power Solutions,MAX® V FPGAs,MAX® 10 FPGAs,Stratix® V FPGAs,Stratix® 10 FPGAs,Arria® II FPGAs,Stratix® III FPGAs,Stratix® IV FPGAs</value>
+            <value>Arria® V FPGAs,Arria® 10 FPGAs,Cyclone® IV FPGAs,Cyclone® V FPGAs,Cyclone® 10 FPGAs,Enpirion® Power Solutions,MAX® V FPGAs,MAX® 10 FPGAs,Stratix® V FPGAs,Stratix® 10 FPGAs</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_Product_Series__c</column>
@@ -80,7 +74,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>KW,AM,AO,AR,AS,AY,BL,BM,BP,BY,CF,CJ,CQ,DB,DD,DF,DH,DJ,ES,FF,FP,FT,LD,LF,LK,MN,MX,NB,NI,NO,NZ,TP,WP,ZL,ZO,ZU,DI,DP,NG,PD,EG</value>
+            <value>AM,AO,AR,AS,AY,BL,BM,BP,BY,CF,CJ,CQ,DB,DD,DF,DH,DJ,ES,FF,FP,FT,LD,LF,LK,MN,MX,NB,NI,NO,NZ,TP,WP,ZL,ZO,ZU,DI,DP,NG,PD,EG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_BU_Operation_Code__c</column>
@@ -101,7 +95,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>BD-NVV-10AT1151A,BD-ACD-10AX1152A,BD-NVV-10AT1151AES,EPCQ16SI8N,EPCQ32SI8N,EPCQ64SI16N,EPCQ128SI16N,EN5312QI,EN2360QI,EN2390QI,EN2392QI,EN23F0QI,EN23F2QI,eASIC</value>
+            <value>BD-NVV-10AT1151A,BD-ACD-10AX1152A,BD-NVV-10AT1151AES,EPCQ16SI8N,EPCQ32SI8N,EPCQ64SI16N,EPCQ128SI16N,EN5312QI,EN2360QI,EN2390QI,EN2392QI,EN23F0QI,EN23F2QI</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_Avail_for_New_Designs__c</column>
@@ -109,13 +103,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Product2.Core_Product_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Smart and Connected Home</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

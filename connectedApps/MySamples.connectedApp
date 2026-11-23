@@ -4,10 +4,11 @@
     <label>MySamples</label>
     <oauthConfig>
         <callbackUrl>http://localhost:8081/callback
-https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6ucbpeXLkC6KspPRVb8e2UnpN_cyKYmm.rhCU7RHXyXKQYAIpFf.eSQpbZeT</consumerKey>
-        <isAdminApproved>true</isAdminApproved>
-        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+https://www.getpostman.com/oauth2/callback
+https://oauth.pstmn.io/v1/callback</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHnXtkJBm9UdfINPMY9eEn7nTICiEuYx6QIuA1T8YAVyc1bQu1ErUMClQDkQpZLSS3W3Dozx</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
@@ -20,19 +21,18 @@ https://www.getpostman.com/oauth2/callback</callbackUrl>
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <oauthClientCredentialUser>integration.mysamples@intel.com.crm.crmdevint3</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>Web</scopes>
-        <scopes>Full</scopes>
         <scopes>RefreshToken</scopes>
         <scopes>OpenID</scopes>
     </oauthConfig>
     <oauthPolicy>
         <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
-        <refreshTokenPolicy>zero</refreshTokenPolicy>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>
-    <profileName>Integration</profileName>
 </ConnectedApp>

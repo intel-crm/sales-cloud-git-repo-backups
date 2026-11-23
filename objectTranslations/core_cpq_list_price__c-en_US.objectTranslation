@@ -43,10 +43,6 @@
         <name>core_cpq_product_opn_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Speed --></label>
-        <name>core_cpq_speed_nbr__c</name>
-    </fields>
-    <fields>
         <label><!-- Unique Id --></label>
         <name>core_cpq_unique_id__c</name>
     </fields>

@@ -4,7 +4,7 @@ Version     : 1.0
 Created Date: 6th Nov 2026
 Description : Retry Batch for AGS Integration stuck in-progress contacts
 *************************************************************************************/
-global class Core_AGSRetryBatch implements Database.Batchable<SObject>, Database.AllowsCallouts {
+global class Core_AGSRetryBatch implements Database.Batchable<SObject> {
     
     private Integer retryWindowMinutes;
     private Integer maxRetryCount;
@@ -16,11 +16,16 @@ global class Core_AGSRetryBatch implements Database.Batchable<SObject>, Database
             config.Retry_Window_Minutes__c != null) {                
                 retryWindowMinutes =
                     Integer.valueOf(config.Retry_Window_Minutes__c);                
+            } else {
+                
+                retryWindowMinutes = 15;
             }        
         if (config != null &&
             config.Maximum_Retry_Count__c != null) {                
                 maxRetryCount =
                     Integer.valueOf(config.Maximum_Retry_Count__c);               
+            } else {                
+                maxRetryCount = 2;
             }
     }
     
@@ -60,8 +65,21 @@ global class Core_AGSRetryBatch implements Database.Batchable<SObject>, Database
             }            
             contactsToUpdate.add(con);
         }        
-        if (!contactsToUpdate.isEmpty()) {
-            System.enqueueJob(new Core_AGSRetryQueueable(contactsToUpdate));
+        if (!contactsToUpdate.isEmpty()) {           
+            List<Database.SaveResult> results =
+                Database.update(contactsToUpdate, false);
+            for (Database.SaveResult sr : results) {                
+                if (!sr.isSuccess()) {
+                    List<Core_Log_Entry__c> objCLEList = New List<Core_Log_Entry__c>();
+                    for (Database.Error err : sr.getErrors()) {
+                        Core_Log_Entry__c objCLE = new Core_Log_Entry__c(Core_Origin__c = 'Core_AGSRetryBatch Draco', Core_Project__c = 'Draco',Core_Scope__c = 'Core_AGSRetryBatch Exception', Core_Severity__c = 'Medium', Core_Message__c = err.getMessage(), Core_When__c = system.now(),Core_sObjectId__c = sr.getId(),Core_sObjectType__c = 'Contact');
+                        objCLEList.add(objCLE);
+                    }
+                    if(objCLEList.size() > 0){
+                        database.insert(objCLEList,false);
+                    }
+                }
+            }
         }
     }   
     global void finish(Database.BatchableContext bc) {       

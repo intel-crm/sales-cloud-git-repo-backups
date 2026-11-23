@@ -305,12 +305,24 @@ Specify screens used --></help>
         <label><!-- Resolution Type --></label>
         <name>Core_AAQC_Resolution_Type__c</name>
         <picklistValues>
+            <masterLabel>Access Granted / Access Not Granted</masterLabel>
+            <translation><!-- Access Granted / Access Not Granted --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Access Issue</masterLabel>
             <translation><!-- Access Issue --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Approved / Not Approved</masterLabel>
+            <translation><!-- Approved / Not Approved --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>CE Setup Fixed</masterLabel>
             <translation><!-- CE Setup Fixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change request completed / Change request Deferred</masterLabel>
+            <translation><!-- Change request completed / Change request Deferred --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Completed</masterLabel>
@@ -321,8 +333,16 @@ Specify screens used --></help>
             <translation><!-- Defect Deferred --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Defect Resolved / Defect Deferred</masterLabel>
+            <translation><!-- Defect Resolved / Defect Deferred --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Defect To Be Addressed</masterLabel>
             <translation><!-- Defect To Be Addressed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enhancement Completed / Enhancement Deferred</masterLabel>
+            <translation><!-- Enhancement Completed / Enhancement Deferred --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Enhancement Request Deferred</masterLabel>
@@ -333,6 +353,14 @@ Specify screens used --></help>
             <translation><!-- Enhancement Request to be Addressed --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>HR / Revenue / Onboarding / Payroll / CRC / RPS</masterLabel>
+            <translation><!-- HR / Revenue / Onboarding / Payroll / CRC / RPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Information Provided / Training Provided / Policy Clarified</masterLabel>
+            <translation><!-- Information Provided / Training Provided / Policy Clarified --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Manual Adjustment</masterLabel>
             <translation><!-- Manual Adjustment --></translation>
         </picklistValues>
@@ -341,8 +369,16 @@ Specify screens used --></help>
             <translation><!-- New/Updated Policy --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>No Action</masterLabel>
+            <translation><!-- No Action --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Pay Reconciliation</masterLabel>
             <translation><!-- Pay Reconciliation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payee Setup Fixed</masterLabel>
+            <translation><!-- Payee Setup Fixed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Training</masterLabel>
@@ -366,6 +402,10 @@ Specify screens used --></help>
         <label><!-- Root Cause Category --></label>
         <name>Core_AAQC_Root_Cause_Category__c</name>
         <picklistValues>
+            <masterLabel>Access</masterLabel>
+            <translation><!-- Access --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Change Request</masterLabel>
             <translation><!-- Change Request --></translation>
         </picklistValues>
@@ -374,12 +414,36 @@ Specify screens used --></help>
             <translation><!-- Defect --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Enhancement Request</masterLabel>
+            <translation><!-- Enhancement Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Governance and control</masterLabel>
+            <translation><!-- Governance and control --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>How Do I</masterLabel>
             <translation><!-- How Do I --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Inquiry</masterLabel>
+            <translation><!-- Inquiry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payee Setup</masterLabel>
+            <translation><!-- Payee Setup --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Setup</masterLabel>
             <translation><!-- Setup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upstreams</masterLabel>
+            <translation><!-- Upstreams --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Not Responding</masterLabel>
+            <translation><!-- User Not Responding --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -701,6 +765,10 @@ If you are submitting the case on behalf of another company, please fill in the 
         <name>Core_IPS_Assigned_Queue__c</name>
     </fields>
     <fields>
+        <label><!-- BES Auto Promoted --></label>
+        <name>Core_IPS_BES_Auto_Promoted__c</name>
+    </fields>
+    <fields>
         <label><!-- Promote Status --></label>
         <name>Core_IPS_BES_Promote_Status__c</name>
         <picklistValues>
@@ -737,7 +805,7 @@ If you are submitting the case on behalf of another company, please fill in the 
         <name>Core_IPS_BK_Flds_UpdatedAt__c</name>
     </fields>
     <fields>
-        <label><!-- Backend ID --></label>
+        <label><!-- Backed ID --></label>
         <name>Core_IPS_Backed_ID_URL__c</name>
     </fields>
     <fields>
@@ -799,20 +867,12 @@ If you are submitting the case on behalf of another company, please fill in the 
         <label><!-- Source of Resolution (SOR) --></label>
         <name>Core_IPS_CaseSource_of_Resolution__c</name>
         <picklistValues>
-            <masterLabel>AI Assistant</masterLabel>
-            <translation><!-- AI Assistant --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>ARK/MARK</masterLabel>
             <translation><!-- ARK/MARK --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>BU design review</masterLabel>
             <translation><!-- BU design review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Domain Expert</masterLabel>
-            <translation><!-- Domain Expert --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Engineering</masterLabel>
@@ -825,10 +885,6 @@ If you are submitting the case on behalf of another company, please fill in the 
         <picklistValues>
             <masterLabel>IPS</masterLabel>
             <translation><!-- IPS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ISvC</masterLabel>
-            <translation><!-- ISvC --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>KDB Portal</masterLabel>
@@ -866,6 +922,10 @@ If you are submitting the case on behalf of another company, please fill in the 
             <masterLabel>TNT design review</masterLabel>
             <translation><!-- TNT design review --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Universal search/Coveo</masterLabel>
+            <translation><!-- Universal search/Coveo --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Date/Time Escalated --></label>
@@ -876,7 +936,7 @@ If you are submitting the case on behalf of another company, please fill in the 
         <name>Core_IPS_Case_Owner_Email__c</name>
     </fields>
     <fields>
-        <label><!-- Case Owner Group --></label>
+        <label>Case Owner Groups</label>
         <name>Core_IPS_Case_Owner_Groups__c</name>
         <relationshipLabel><!-- Cases --></relationshipLabel>
     </fields>
@@ -1037,18 +1097,18 @@ If you are submitting the case on behalf of another company, please fill in the 
         <name>Core_IPS_File_Attachment_Flag__c</name>
     </fields>
     <fields>
-        <help><!-- If potential MINDS usage is a concern, check this box to request a GEC review  (MINDS = Military, Intelligence, Nuclear/Biochemical, Defense, or Space) --></help>
-        <label><!-- MINDS Use --></label>
+        <help>For use when manually setting a case to GEC</help>
+        <label>Military, Aerospace, or Gov’mt End Use</label>
         <name>Core_IPS_GEC_Case__c</name>
     </fields>
     <fields>
-        <help><!-- Indicates if the Case has ever gone through a GEC review --></help>
+        <help>This field indicates if a case was routed to GEC for GEC review</help>
         <label><!-- GEC --></label>
         <name>Core_IPS_GEC_Flag__c</name>
     </fields>
     <fields>
         <help><!-- To be edited by the Intel Support Owner. --></help>
-        <label><!-- GEC Review Status --></label>
+        <label>MAG Review Request Status</label>
         <name>Core_IPS_GEC_Request_Status__c</name>
         <picklistValues>
             <masterLabel>MINDS Questionnaire Completed</masterLabel>
@@ -1240,7 +1300,7 @@ If you are submitting the case on behalf of another company, please fill in the 
         <name>Core_IPS_Legacy_IPS_ID__c</name>
     </fields>
     <fields>
-        <label><!-- MINDS Questionnaire --></label>
+        <label>MAG Questionnaire</label>
         <name>Core_IPS_MAG_Questionnaire__c</name>
     </fields>
     <fields>
@@ -1455,12 +1515,12 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
     </fields>
     <fields>
         <help><!-- Timestamp when comment created or updated --></help>
-        <label><!-- Latest Comment Timestamp --></label>
+        <label>Latest Public Comment Time Stamp</label>
         <name>Core_Last_Case_Comment_Timestamp__c</name>
     </fields>
     <fields>
         <help><!-- NOT TO BE VISIBLE ON LAYOUT --></help>
-        <label><!-- Latest Comment --></label>
+        <label>Latest Public Comment</label>
         <name>Core_Last_Case_Comment__c</name>
     </fields>
     <fields>
@@ -1573,11 +1633,11 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         <name>Core_MDF_AddInternalCaseClosureNotes_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Adjustment Amount (Local Currency) --></label>
+        <label><!-- Total Impact Amount (Local Currency) --></label>
         <name>Core_MDF_Adjustment_Amount_Local__c</name>
     </fields>
     <fields>
-        <help>调整金额（本位币）* 兑换率</help>
+        <help>Adjustment Amount (Local) * Exchange rate</help>
         <label>调整金额（美元）</label>
         <name>Core_MDF_Adjustment_Amount_USD_Amt__c</name>
     </fields>
@@ -2213,7 +2273,7 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         </picklistValues>
     </fields>
     <fields>
-        <label>市场推广战略基金</label>
+        <label><!-- Strategic Marketing Fund --></label>
         <name>Core_MDF_Strategic_Marketing_Fund_Ind__c</name>
     </fields>
     <fields>
@@ -2227,6 +2287,11 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
     <fields>
         <label>总金额（本位币）</label>
         <name>Core_MDF_TotalTransactionAmountLocal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total Impact Amount (Local) * Exchange rate --></help>
+        <label><!-- Total Impact Amount (USD) --></label>
+        <name>Core_MDF_Total_Impact_Amt_USD__c</name>
     </fields>
     <fields>
         <help><!-- Amount (USD) reducing ‘Requested Amount (USD)’ due to Adjustment Offsets --></help>
@@ -2405,6 +2470,10 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
             <masterLabel>Waiting for Ingredient*</masterLabel>
             <translation><!-- Waiting for Ingredient* --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>waiting for intel clarification</masterLabel>
+            <translation><!-- waiting for intel clarification --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- System Owner --></label>
@@ -2437,6 +2506,14 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
     <fields>
         <label><!-- UsageAnalytics VisitorId --></label>
         <name>CoveoV2__VisitorId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
     </fields>
     <fields>
         <label><!-- Date Hot Case Enabled --></label>
@@ -2514,7 +2591,7 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Product --></label>
+        <label>CEP Product Graph Color</label>
         <name>MaritzCX__Product__c</name>
         <picklistValues>
             <masterLabel>GC1020</masterLabel>
@@ -2607,12 +2684,20 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         <label><!-- Reason for not providing the SST Log --></label>
         <name>Reason_for_not_providing_the_SST_Log__c</name>
         <picklistValues>
-            <masterLabel>Case Type is not “Debug Request&quot;</masterLabel>
-            <translation><!-- Case Type is not “Debug Request&quot; --></translation>
+            <masterLabel>Intel® SST log file size bigger than Maximum allowed</masterLabel>
+            <translation><!-- Intel® SST log file size bigger than Maximum allowed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Unable to collect Intel® SST log</masterLabel>
-            <translation><!-- Unable to collect Intel® SST log --></translation>
+            <masterLabel>Intel® SST not supported on my platform</masterLabel>
+            <translation><!-- Intel® SST not supported on my platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System hangs while collecting the Intel® SST log</masterLabel>
+            <translation><!-- System hangs while collecting the Intel® SST log --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unable to boot to OS</masterLabel>
+            <translation><!-- Unable to boot to OS --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2796,6 +2881,10 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         <name>Core_MDF_ErrorOnUpdatingClosedCaseStatus</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- More Documents cannot be requested --></errorMessage>
+        <name>Core_MDF_PIC_Review_More_Doc_Reqd</name>
+    </validationRules>
+    <validationRules>
         <errorMessage>案例状态不得重置为“有待文档”两次以上。</errorMessage>
         <name>Core_MDF_Pending_Document_Flag</name>
     </validationRules>
@@ -2844,20 +2933,8 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         <name>Core_AAQC_Back_to_commissions_home_page</name>
     </webLinks>
     <webLinks>
-        <label><!-- Core_Case_List_Export --></label>
-        <name>Core_Case_List_Export</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Core_IPS_Accept_Case --></label>
         <name>Core_IPS_Accept_Case</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Core_IPS_Accept_Case_Portal --></label>
-        <name>Core_IPS_Accept_Case_Portal</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Core_IPS_Agent_Request_Case_Closure --></label>
-        <name>Core_IPS_Agent_Request_Case_Closure</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_IPS_Case_Reopen --></label>
@@ -2872,28 +2949,12 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         <name>Core_IPS_Edit_Environment_Details</name>
     </webLinks>
     <webLinks>
-        <label><!-- Core_IPS_Escalate --></label>
-        <name>Core_IPS_Escalate</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Core_IPS_External_Close_Case --></label>
         <name>Core_IPS_External_Close_Case</name>
     </webLinks>
     <webLinks>
-        <label><!-- Core_IPS_External_New_Comment --></label>
-        <name>Core_IPS_External_New_Comment</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Core_IPS_Invalid --></label>
         <name>Core_IPS_Invalid</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Core_IPS_New_Comment --></label>
-        <name>Core_IPS_New_Comment</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Core_IPS_Request_Case_Closure --></label>
-        <name>Core_IPS_Request_Case_Closure</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_IPS_Sales_Rep_Close_Case --></label>

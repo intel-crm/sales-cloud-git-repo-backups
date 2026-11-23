@@ -8,7 +8,7 @@ public with sharing class CruderCntrl {
     */
     @AuraEnabled
     public static List<DMLOutputWrapper> InsertSObjects( List<SObject> inputSObjectList){
-        
+        system.debug('-->'+inputSObjectList);
         List<DMLOutputWrapper> wrapDMLObjList = new List<DMLOutputWrapper>();
         Map<Id, SObject> sObjMap = new Map<Id, SObject>();
         Boolean success = TRUE;
@@ -36,7 +36,7 @@ public with sharing class CruderCntrl {
             wrapDMLObjList.add(wrapDMLObj);
             
         }
-       
+        system.debug(wrapDMLObjList);
         return wrapDMLObjList;
     }
     /*
@@ -52,7 +52,7 @@ public with sharing class CruderCntrl {
         Id sObjID = null  ;
         
         Database.SaveResult[] srList = Database.update(inputSObjectList, false);
-       
+        system.debug('-->'+srList);
         for(Database.SaveResult sr : srList){
             DMLOutputWrapper wrapDMLObj = new DMLOutputWrapper();
             List<String> errorCodeList = new List<String>();
@@ -78,7 +78,7 @@ public with sharing class CruderCntrl {
     
      @AuraEnabled
     public static OutputWrapper ReadSObjects(String query){
-                 
+                    system.debug('-->query'+query);
         OutputWrapper wrapObj = new OutputWrapper();
         String sObjectApiName='';
         String sObjectLabel='';
@@ -87,9 +87,9 @@ public with sharing class CruderCntrl {
         List<SObject> sObjList = new List<SObject>();
         
         try{
-            
+            //system.debug('-->query1'+querystr);
             sObjList = Database.query(querystr);
-            
+            system.debug('-->sObjList'+sObjList);
             if(!sObjList.isEmpty()){
                 SObjectType type=sObjList[0].getSObjectType();
                 Schema.DescribeSObjectResult sobjectDescribe=type.getDescribe();

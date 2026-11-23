@@ -1,0 +1,25 @@
+<template>
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container modal_class">
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Standardized Address</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <template if:true={cleansedAddress}>
+                        <p>VerificationStatus : {cleansedAddress.verificationStatus}</p>
+                        <p>Country : {cleansedAddress.countryName}</p>
+                        <p>Street : {cleansedAddress.streetName}</p>
+                        <p>City : {cleansedAddress.cityName}</p>
+                        <p>State : {cleansedAddress.stateName}</p>
+                        <p>PostalCode : {cleansedAddress.postalCode}</p>
+                    </template>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Ok" onclick={handleOk}></lightning-button>
+                </footer>
+            </div>
+        </section>
+    </template>
+</template>

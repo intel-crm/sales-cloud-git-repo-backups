@@ -29,7 +29,7 @@ https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_
 英特尔® 合作伙伴联盟团队
 
 本邮件是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} 英特尔公司
+© {!Contact.Core_Current_Year__c} 英特尔公司
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
 隐私&amp;verbar;Cookies</textOnly>
     <type>custom</type>

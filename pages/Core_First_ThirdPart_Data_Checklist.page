@@ -1,0 +1,219 @@
+<!---
+/**************************************************************************************
+Vf page Name: Core_First_ThirdPart_Data_Checklist
+Version     : 1.0 
+Created Date: 6/10/2020
+Description :This vf page is used  in classic and lightning for 1st party and 3rd party data comparission.
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Mahesh            6/10/2020               Original Version
+
+--->
+<apex:page standardController="Account" extensions="Core_First_ThirdParty_Data_Compare_Ctrl" lightningStylesheets="true" showHeader="true" sidebar="false">
+    <apex:includeLightning />
+    
+<style>
+  
+</style>
+    
+    <script type="text/javascript">
+    
+    function closewindow(){
+        self.close();
+    }
+    </script>
+    
+    <apex:slds />
+    
+    <apex:form id="theForm" >  
+        <apex:outputPanel style="float:left">  
+            <apex:image value="{!$Resource.Core_SearchIcon}" width="50px;"/>      
+            
+            <apex:commandLink target="_self"  action="{!cancel}" value="{!Account.Name}" style="font-size:16px;font-weight:bold;text-decoration:underline;"/>  
+        </apex:outputPanel>  
+        <br/>
+        <apex:pageBlock title="First and Third Party Information Checklist">
+            
+            <html>
+                <head>
+                </head>
+                
+                <body>
+                    <table width="75%" style="margin-top: -90px;">
+                        <tr>
+                            <th style="width :200px"><u>Account Field</u></th>
+                            <th style="width :200px"><u>bChannel Data</u></th>
+                            <th style="width :100px"><u>Indicator</u></th>
+                            <th><u>Differences</u></th>
+                        </tr>
+                        
+                        <br/>
+                        <tr class="spaceUnder" >
+                            <td width="15%"><br/><b>Partner Role</b></td>
+                            <td width="15%"><br/><b>bc_Role</b></td>
+                            <td ><br/>
+                                <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18" rendered="{!NOT(RoleIndicator)}"  style="margin-top:-2px; margin-left: 12px;"/>
+                                <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!RoleIndicator}" style="margin-top:-2px; margin-left: 12px;"/>         
+                            </td>
+                            <td  width="660px">
+                                 <apex:outputText rendered="{!NOT(RoleIndicator)}">
+                                <br/>The following differences marked in red were  observed:<br/>
+                                <!--<span style="color:green">{!matchedvalues}</span><br/>
+                                <span style="color:red">{!unmatchedvalues}</span>-->
+								Partner Role =
+                                <apex:repeat value="{!firstPartyList}" var="firstParty">
+                                    <span style="{!'color:'+firstParty.colorValue};font-weight: bold;">{!firstParty.picklistValue}</span>
+                                    <apex:outputText rendered="{!firstParty.picklistValue != firstPartyLastvalue}"> ; </apex:outputText>
+                                </apex:repeat>
+                                <br/>
+								bc_Role=
+                                <apex:repeat value="{!thirdPartyList}" var="thirdParty">
+                                    <span style="{!'color:'+thirdParty.colorValue};font-weight: bold;">{!thirdParty.picklistValue}</span>
+                                    <apex:outputText rendered="{!thirdParty.picklistValue != thirdPartyLastValue}"> ; </apex:outputText>
+                                </apex:repeat>
+                                </apex:outputText>
+                                
+                                 <apex:outputText rendered="{!RoleIndicator}">
+                                     <br/> There were no differences observed <br/>
+                                     Partner Role = <span style="color:green;font-weight: bold;">{!Account.Core_IPA_Partner_Role__c}</span><br/>
+                                      bc_Role = <span style="color:green;font-weight: bold;">{!Account.Core_bC_Role__c}</span><br/>
+
+                                    
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <br/><br/><br/>
+                        <tr class="spaceUnder" >
+                            <td width="10%"><br/><b>Partner Segment</b></td>
+                            <td width="10%"><br/><b>bc_Partner Segment</b></td>
+                            <td ><br/>
+                                <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18" rendered="{!NOT(PartnerSegmentIndicator)}"  style="margin-top:-2px; margin-left: 12px;"/>
+                                <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!PartnerSegmentIndicator}" style="margin-top:-2px; margin-left: 12px;"/>         
+                            </td>
+                            <td  width="660px">
+                                <apex:outputText rendered="{!NOT(PartnerSegmentIndicator)}">
+                               <br/>The following differences marked in red were  observed :<br/>
+                               <!-- <span style="color:green">{!matchedSegmentvalues}</span><br/>
+                                <span style="color:red">{!unmatchedSegmentvalues}</span>-->
+								 Partner Segment =
+								 <apex:repeat value="{!firstPartyListSegment}" var="firstParty">
+                                   <span style="{!'color:'+firstParty.colorValue};font-weight: bold;">{!firstParty.picklistValue}</span>
+                                    <apex:outputText rendered="{!firstParty.picklistValue != firstPartyLastvalue}"> ; </apex:outputText>
+                                </apex:repeat>
+                                <br/>
+								bc_Partner Segment =
+                                <apex:repeat value="{!thirdPartyListSegment}" var="thirdParty">
+                                    <span style="{!'color:'+thirdParty.colorValue};font-weight: bold;">{!thirdParty.picklistValue}</span>
+                                    <apex:outputText rendered="{!thirdParty.picklistValue != thirdPartyLastValue}"> ; </apex:outputText>
+                                </apex:repeat>
+								</apex:outputText>
+                                
+                                 <apex:outputText rendered="{!PartnerSegmentIndicator}">
+                                     <br/> There were no differences observed <br/>
+                                     Partner Segment = <span style="color:green;font-weight: bold;">{!Account.Core_IPA_Partner_Segment__c}</span><br/>
+                                      bc_Partner Segment = <span style="color:green;font-weight: bold;">{!Account.Core_bC_Partner_Segment__c}</span><br/>
+
+                                    
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr class="spaceUnder" >
+                            <td width="10%"><br/><b>Industry</b></td>
+                            <td width="10%"><br/><b>bc_Industry</b></td>
+                            <td ><br/>
+                                <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18" rendered="{!NOT(IndustryIndicator)}"  style="margin-top:-2px; margin-left: 12px;"/>
+                                <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!IndustryIndicator}" style="margin-top:-2px; margin-left: 12px;"/>                
+                            </td>
+                            <td  width="660px">
+                                <apex:outputText rendered="{!NOT(IndustryIndicator)}">
+                                <br/>The following differences marked in red were  observed:<br/>
+                                 Industry =<span style="color:red;font-weight: bold;">{!Account.Industry}</span><br/>
+                                 bc_Industry=<span style="color:red;font-weight: bold;">{!Account.Core_bC_Industry__c}</span>
+                                  </apex:outputText>
+                                <apex:outputText rendered="{!IndustryIndicator}">
+                                    <br/>There were no differences observed :<br/>
+                                Industry=<span style="color:green;font-weight: bold;">{!Account.Industry}</span><br/>
+                                bc_Industry=<span style="color:green;font-weight: bold;">{!Account.Core_bC_Industry__c}</span>
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <br/>
+                        <tr class="spaceUnder" >
+                            <td width="10%"><br/><b>User defined Website</b></td>
+                            <td width="10%"><br/><b>bc_websiteURL</b></td>
+                            <td ><br/>
+                                <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18" rendered="{!NOT(WebsiteIndicator)}"  style="margin-top:-2px; margin-left: 12px;"/>
+                                <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!WebsiteIndicator}" style="margin-top:-2px; margin-left: 12px;"/>                  
+                            </td>
+                            <td  width="660px">
+                               
+                                 <apex:outputText rendered="{!NOT(WebsiteIndicator)}">
+                                <br/>The following differences marked in red were  observed :<br/>
+                                 User Defined Website =<span style="color:red;font-weight: bold;">{!Account.Core_User_Defined_Website__c}</span><br/>
+                                 bc_Website URL=<span style="color:red;font-weight: bold;">{!Account.Core_bC_Website_URL__c}</span>
+                                  </apex:outputText>
+                                <apex:outputText rendered="{!WebsiteIndicator}">
+                                    <br/>There were no differences observed :<br/>
+                                User Defined Website =<span style="color:green;font-weight: bold;">{!Account.Core_User_Defined_Website__c}</span><br/>
+                                bc_Website URL =<span style="color:green;font-weight: bold;">{!Account.Core_bC_Website_URL__c}</span>
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr class="spaceUnder" >
+                            <td width="10%"><br/><b>Address</b></td>
+                            <td width="10%"><br/><b>bc_Address</b></td>
+                            <td ><br/>
+                                <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18" rendered="{!NOT(AddressIndicator)}"  style="margin-top:-2px; margin-left: 12px;"/>
+                                <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!AddressIndicator}" style="margin-top:-2px; margin-left: 12px;"/>               
+                            </td>
+                            <td  width="660px">
+                               
+                                   
+                                 <apex:outputText rendered="{!NOT(AddressIndicator)}">
+                                <br/>The following differences marked in red were  observed :<br/>
+                                 Address =<span style="color:red;font-weight: bold;">{!Account.BillingStreet},{!Account.BillingCity},{!BillingStateName},{!Account.BillingPostalCode},{!BillingCountryName}</span><br/>
+                                 bc_Address=<span style="color:red;font-weight: bold;">{!Account.Core_bC_Address__c}</span>
+                                     
+                                  </apex:outputText>
+                                <apex:outputText rendered="{!AddressIndicator}">
+                                    <br/>There were no differences observed :<br/>
+                                Address =<span style="color:green;font-weight: bold;">{!Account.BillingStreet},{!Account.BillingCity},{!BillingStateName},{!Account.BillingPostalCode},{!BillingCountryName}</span><br/>
+                                bc_Address =<span style="color:green;font-weight: bold;">{!Account.Core_bC_Address__c}</span>
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <br/>
+                        
+                        <tr class="spaceUnder" >
+                            <td width="10%"><br/><b>User Defined Phone</b></td>
+                            <td width="10%"><br/><b>bc_Telephone Number</b></td>
+                            <td ><br/>
+                                <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18" rendered="{!NOT(TelPhoneIndicator)}"  style="margin-top:-2px; margin-left: 12px;"/>
+                                <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!TelPhoneIndicator}" style="margin-top:-2px; margin-left: 12px;"/>                 
+                            </td>
+                            <td  width="660px">
+                                <apex:outputText rendered="{!NOT(TelPhoneIndicator)}">
+                                <br/>The following differences marked in red were  observed :<br/>
+                                 User Defined Phone =<span style="color:red;font-weight: bold;">{!Account.Core_User_Defined_Phone_Number__c}</span><br/>
+                                 bc_Telephone Number=<span style="color:red;font-weight: bold;">{!Account.Core_bC_Telephone_number__c}</span>
+                                  </apex:outputText>
+                                <apex:outputText rendered="{!TelPhoneIndicator}">
+                                    <br/>There were no differences observed :<br/>
+                                User Defined Phone =<span style="color:green;font-weight: bold;">{!Account.Core_User_Defined_Phone_Number__c}</span><br/>
+                                bc_Telephone Number =<span style="color:green;font-weight: bold;">{!Account.Core_bC_Telephone_number__c}</span>
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </body>
+            </html>
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Close"  action="{!cancel}" onclick="closewindow();return false" style="margin-left:-13%;" rendered="{!$User.UIThemeDisplayed=='Theme3'}"/>
+                <apex:commandButton value="Back to Opportunity"  action="{!cancel}" style="margin-left:-55%;" rendered="{!$User.UIThemeDisplayed !='Theme3'}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

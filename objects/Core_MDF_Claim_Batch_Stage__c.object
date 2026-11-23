@@ -842,11 +842,6 @@ $Label.Core_MDF_Intel_System_User
             <operation>equals</operation>
             <value>Failed</value>
         </filters>
-        <filters>
-            <field>Core_MDF_Activity_Nbr__c</field>
-            <operation>equals</operation>
-            <value>68784</value>
-        </filters>
         <label>Claim Batches - Failed</label>
     </listViews>
     <listViews>
@@ -858,7 +853,6 @@ $Label.Core_MDF_Intel_System_User
         <columns>Core_MDF_Total_Amt__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
-        <columns>Core_MDF_Processing_Status_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_MDF_Processing_Status_Nm__c</field>
@@ -3534,10 +3528,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Outcome-Based</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Paid Social Media</fullName>
                 <default>false</default>
             </values>
@@ -4192,10 +4182,6 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
-                <fullName>Outcome-Based</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Personnel</fullName>
                 <default>false</default>
             </values>
@@ -4588,10 +4574,6 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>Out-of-Store Promotion</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Outcome-Based</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6009,7 +5991,19 @@ $Label.Core_MDF_Intel_System_User
         <picklistValues>
             <picklist>Core_MDF_ActivityCategory__c</picklist>
             <values>
+                <fullName>Audio</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Broadcast</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer Incentive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Digital</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6053,6 +6047,10 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Production</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Purchase Incentive</fullName>
                 <default>false</default>
             </values>
@@ -6073,11 +6071,23 @@ $Label.Core_MDF_Intel_System_User
                 <default>false</default>
             </values>
             <values>
+                <fullName>Seller Incentive</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Tech Exploration</fullName>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Technical Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -6943,6 +6953,10 @@ $Label.Core_MDF_Intel_System_User
             </values>
             <values>
                 <fullName>Streaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TV</fullName>
                 <default>false</default>
             </values>
             <values>

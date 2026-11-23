@@ -8,106 +8,132 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Feedback ID</displayNameOverride>
             <field>Id</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Account Feedback ID</displayNameOverride>
             <field>Name</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account ID</displayNameOverride>
             <field>Account_ID__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name (Link)</displayNameOverride>
             <field>Account_Name__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Break from  AI Group</displayNameOverride>
             <field>Break_from_AI_Group__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Category</displayNameOverride>
             <field>Category__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comments</displayNameOverride>
             <field>Comments__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Account Primary Coverage</displayNameOverride>
             <field>Coverage_Type__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
             <field>CreatedBy</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
             <field>CreatedDate</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Name (Link)</displayNameOverride>
             <field>Customer_Name__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Feedback</displayNameOverride>
             <field>Feedback__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Feedback Type</displayNameOverride>
             <field>Feedback_Type__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
             <field>LastModifiedBy</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
             <field>LastModifiedDate</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Merge to AI Group</displayNameOverride>
             <field>Merge_to_AI_Group__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Account Owner</displayNameOverride>
             <field>New_Account_Owner__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>New Sales Group</displayNameOverride>
             <field>New_Sales_Group__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reason for change</displayNameOverride>
             <field>Reason_for_change__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
             <field>RecordType</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Team Members</displayNameOverride>
             <field>Team_Members__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
@@ -143,20 +169,31 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
-            <table>SPM_Account_Feedback__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>SF Account ID</displayNameOverride>
             <field>Account_ID__c.SF_Account__c.Core_Account_ID__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Inactive Planning Period</displayNameOverride>
             <field>CRM_CST_Planning_Period__c</field>
             <table>SPM_Account_Feedback__c</table>
         </columns>
         <masterLabel>Account Feedbacks</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Feedback by RA</displayNameOverride>
+            <field>CRM_CST_Feedback_by_RA__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Feedback Propagated By</displayNameOverride>
+            <field>CST_Feedback_Propagated_By__c</field>
+            <table>SPM_Account_Feedback__c</table>
+        </columns>
+        <masterLabel>Account Feedback</masterLabel>
     </sections>
 </ReportType>

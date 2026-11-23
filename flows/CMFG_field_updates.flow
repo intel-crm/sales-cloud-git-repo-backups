@@ -84,14 +84,21 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.ER_Count_of_Customer_Master_Files__c</leftValueReference>
+                <leftValueReference>$Record.ER_Count_of_Contacts__c</leftValueReference>
                 <operator>IsChanged</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.ER_Count_of_Contacts__c</leftValueReference>
+                <leftValueReference>$Record.ER_Inactive_Contacts__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ER_Count_of_Customer_Master_Files__c</leftValueReference>
                 <operator>IsChanged</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -105,7 +112,14 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.ER_Inactive_Contacts__c</leftValueReference>
+                <leftValueReference>$Record.ER_Active_Account_Business_Partners__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ER_Inactive_Account_Business_Partners__c</leftValueReference>
                 <operator>IsChanged</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>

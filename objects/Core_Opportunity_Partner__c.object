@@ -576,9 +576,19 @@
                     <label>Intel Approved Component Supplier (IACS)</label>
                 </value>
                 <value>
+                    <fullName>Intel Approved Device Supplier (IADS)</fullName>
+                    <default>false</default>
+                    <label>Intel Approved Device Supplier (IADS)</label>
+                </value>
+                <value>
                     <fullName>Intel Authorized Distributor (IAD)</fullName>
                     <default>false</default>
                     <label>Intel Authorized Distributor (IAD)</label>
+                </value>
+                <value>
+                    <fullName>IoT Solution Aggregator</fullName>
+                    <default>false</default>
+                    <label>IoT Solution Aggregator</label>
                 </value>
                 <value>
                     <fullName>Local Original Design Manufacturer (LODM)</fullName>
@@ -604,11 +614,6 @@
                     <fullName>National Solution Provider (NSP)</fullName>
                     <default>false</default>
                     <label>National Solution Provider (NSP)</label>
-                </value>
-                <value>
-                    <fullName>Intel Approved Device Supplier (IADS)</fullName>
-                    <default>false</default>
-                    <label>Intel Approved Device Supplier (IADS)</label>
                 </value>
                 <value>
                     <fullName>Operational Technology System Integrator (OTSI)</fullName>
@@ -646,9 +651,14 @@
                     <label>Retailer</label>
                 </value>
                 <value>
-                    <fullName>Telco Equipment Manufacturer (TEM)</fullName>
+                    <fullName>Sponsor</fullName>
                     <default>false</default>
-                    <label>Telco Equipment Manufacturer (TEM)</label>
+                    <label>Sponsor</label>
+                </value>
+                <value>
+                    <fullName>Telcom Equipment Manufacturer (TEM)</fullName>
+                    <default>false</default>
+                    <label>Telcom Equipment Manufacturer (TEM)</label>
                 </value>
                 <value>
                     <fullName>Value Added Reseller (VAR)</fullName>
@@ -801,6 +811,7 @@
         <fullName>Core_UCD_Partner_Account_Name__c</fullName>
         <externalId>false</externalId>
         <formula>Core_Partner__r.Core_Data_Simplified_Account_Nm__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Unified Partner Account Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -889,7 +900,6 @@ Core_Partner__r.RecordType.DeveloperName != &apos;Mastered_Account&apos;,
 Core_Partner__r.RecordType.DeveloperName != &apos;Core_Partner_Account_Group&apos;
 )
 )</errorConditionFormula>
-        <errorDisplayField>Core_3rd_Party__c</errorDisplayField>
         <errorMessage>The account you are attempting to relate this Opportunity Partner to is not an Intel or Partner Account. Please choose an Intel or Partner Account</errorMessage>
     </validationRules>
     <validationRules>

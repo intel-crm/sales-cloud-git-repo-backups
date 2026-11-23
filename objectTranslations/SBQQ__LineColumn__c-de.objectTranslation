@@ -41,6 +41,10 @@
         <value>Belegpostenspalten</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Bestimmt, wie Spaltenbezeichnung und -werte ausgerichtet werden.</help>
         <label><!-- Alignment --></label>
         <name>SBQQ__Alignment__c</name>

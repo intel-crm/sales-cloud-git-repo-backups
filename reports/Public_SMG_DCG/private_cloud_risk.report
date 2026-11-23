@@ -179,14 +179,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Enterprise Private/Hybrid Cloud,enterprise</value>
+            <value>Enterprise Private/Hybrid Cloud</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>,Data Analytics in Private Cloud,Private Cloud in Enterprise Analytics,DCG Enterprise DC Cloud Modernization Deal #</value>
+            <value>Data Analytics in Private Cloud,Private Cloud in Enterprise Analytics,DCG Enterprise DC Cloud Modernization Deal #</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRODUCT_NAME</column>

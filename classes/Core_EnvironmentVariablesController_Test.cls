@@ -129,7 +129,7 @@ public class Core_EnvironmentVariablesController_Test{
     static testmethod void SupportedProductEnded(){
         getRecords();
         supportedProductRecord.Core_EOIS__c = true;
-        update supportedProductRecord;
+        //update supportedProductRecord;
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
@@ -296,7 +296,7 @@ public class Core_EnvironmentVariablesController_Test{
     static testmethod void SupportedProductEnd(){
         getRecords();
         supportedProductRecord.Core_EOIS__c = true;
-        update supportedProductRecord;
+        //update supportedProductRecord;
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
@@ -312,7 +312,7 @@ public class Core_EnvironmentVariablesController_Test{
     static testmethod void EnvDetMasterStatusInactive(){
         getRecords();
         EnvironmentalDetailMaster1.Core_Status__c = 'Inactive';
-        update EnvironmentalDetailMaster1;
+        //update EnvironmentalDetailMaster1;
         System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
@@ -370,7 +370,7 @@ public class Core_EnvironmentVariablesController_Test{
     Testing Core_IPS_Environment_Details Visualforce Page - Object : Core_Product_Issue_Category__c  
     *************************************************************************************************/
     // Commented by chetan as part of classic EOL 
-  /*static testmethod void getAssignedEnvironmentVariablestest(){
+  static testmethod void getAssignedEnvironmentVariablestest(){
         getRecords();
         System.runAs(userRecord){
         // Testing Visualforce Page
@@ -385,5 +385,5 @@ public class Core_EnvironmentVariablesController_Test{
         pg = AddEnvVarContr.saveEvn();
         Test.stopTest();
         }
-    }*/
+    }
 }

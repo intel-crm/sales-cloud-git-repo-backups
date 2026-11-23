@@ -140,7 +140,7 @@ class IpaTaxonomyList extends LightningElement {
      * @private
      */
     get icon() {
-      if (this.recordId) return this.records[this.recordId].svgIconUrl;
+      if (this.recordId) {return this.records[this.recordId].svgIconUrl;}
       return this.taxonomyData.svgIconUrl;
     }
 
@@ -151,8 +151,8 @@ class IpaTaxonomyList extends LightningElement {
      * @private
      */
     get heading() {
-      if (this.headingOverride) return this.headingOverride;
-      if (this.recordId) return this.records[this.recordId].label;
+      if (this.headingOverride) {return this.headingOverride;}
+      if (this.recordId) {return this.records[this.recordId].label;}
       return this.taxonomyData.label;
     }
 
@@ -176,6 +176,7 @@ class IpaTaxonomyList extends LightningElement {
       return this.recordId ? this.records[this.recordId].viewAllLabel : this.taxonomyData.viewAllLabel;
     }
 
+
     /**
      * Returns array of records to displayed in card list
      *
@@ -189,7 +190,7 @@ class IpaTaxonomyList extends LightningElement {
       } else {
         records = this.taxonomyData.topLevelIds.map((id) => this.records[id]);
       }
-      if (this.showFeaturedOnly) records = records.filter((rec) => rec.featured);
+      if (this.showFeaturedOnly) {records = records.filter((rec) => rec.featured);}
       return this.limitRecordsValue !== 'All' ? records.slice(0, this.limitRecordsValue) : records;
     }
 
@@ -234,7 +235,7 @@ class IpaTaxonomyList extends LightningElement {
      * @private
      */
     get cardListDesktopCols() {
-      if (this.cardStyle === 'Icon Body' || this.cardStyle === 'Icon Horizontal') return 3;
+      if (this.cardStyle === 'Icon Body' || this.cardStyle === 'Icon Horizontal') {return 3;}
       return 5;
     }
 
@@ -252,10 +253,10 @@ class IpaTaxonomyList extends LightningElement {
      * @private
      */
     connectedCallback() {
-      if (!this.taxonomy) throw new Error('Taxonomy is a required design attribute!');
+      if (!this.taxonomy) {throw new Error('Taxonomy is a required design attribute!');}
       this.loading = true;
       this._subscription = subscribeToTaxonomyData((taxonomyData) => {
-        if (taxonomyData.includesBaseList) {
+        if (taxonomyData.includesBaseList /*TWC729-8095*/&& this.taxonomyData!==null && this.taxonomyData!==undefined) {
           this.taxonomyData = taxonomyData.data[this.taxonomy];
           if (!this.taxonomyData) {
             throw new Error(`Taxonomy Data loaded, but missing taxonomy: ${this.taxonomy}`);

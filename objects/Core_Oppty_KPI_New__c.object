@@ -481,6 +481,18 @@
                     <default>false</default>
                     <label>2</label>
                 </value>
+                <value>
+                    <fullName>TIER-1</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TIER-1</label>
+                </value>
+                <value>
+                    <fullName>TIER-2</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TIER-2</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -494,14 +506,22 @@
     </fields>
     <label>Opportunity KPI</label>
     <listViews>
-        <fullName>TODAY</fullName>
+        <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_KPI_Opportunity__c</columns>
+        <columns>Core_KPI_Achieved__c</columns>
+        <columns>Core_KPI_Record_Id__c</columns>
+        <columns>Core_KPI_Opportunity_Product_Name__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <label>TODAY</label>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
     </listViews>
     <nameField>
         <label>Opportunity KPI Name</label>

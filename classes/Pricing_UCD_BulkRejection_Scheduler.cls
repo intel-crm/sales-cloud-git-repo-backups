@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Bharath Chandrashekar
  * @group             : 
- * @last modified on  : 01-20-2025
+ * @last modified on  : 01-24-2025
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_UCD_BulkRejection_Scheduler implements Schedulable{

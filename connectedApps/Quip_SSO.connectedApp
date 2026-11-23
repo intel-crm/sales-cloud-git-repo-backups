@@ -3,13 +3,13 @@
     <contactEmail>lakshman.k.bachu@intel.com</contactEmail>
     <label>Quip SSO</label>
     <samlConfig>
-        <acsUrl>https://quip.com/-/login/saml</acsUrl>
+        <acsUrl>https://intel-salescrm-dev.quip.com/-/login/saml</acsUrl>
         <encryptionType>AES_128</encryptionType>
         <entityUrl>https://quip.com/-/saml</entityUrl>
-        <issuer>https://intel.my.salesforce.com</issuer>
+        <issuer>https://intel--crmdevint3.sandbox.my.salesforce.com</issuer>
         <samlNameIdFormat>Unspecified</samlNameIdFormat>
         <samlSigningAlgoType>SHA1</samlSigningAlgoType>
         <samlSubjectType>Username</samlSubjectType>
     </samlConfig>
-    <startUrl>https://intel.quip.com</startUrl>
+    <startUrl>https://intel-salescrm-dev.quip.com</startUrl>
 </ConnectedApp>

@@ -6,18 +6,6 @@
   "label" : "Record Detail",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_NonEventFeedback",
-      "id" : "4fd4112b-1cdd-4f56-8cd4-00c68b32c7af",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "e7a7135b-cc8e-4ca9-be25-298809622008",
-    "regionName" : "header",
-    "type" : "region"
-  }, {
-    "components" : [ {
       "componentAttributes" : {
         "recordId" : "{!recordId}"
       },
@@ -29,39 +17,39 @@
     }, {
       "componentAttributes" : {
         "tabsetConfig" : {
-          "UUID" : "ad86133a-dcd2-477f-9202-0e94abc3dc56",
+          "UUID" : "96a2fc25-bf15-499f-b5e0-0f5dfe969d89",
           "activeTab" : "",
           "tabs" : [ {
-            "UUID" : "3e7d6973-fb8d-4d3f-bed2-6a888e6af486",
+            "UUID" : "392fdeaf-2149-4c4f-86fa-21c8125d95d0",
             "allowGuestUser" : true,
             "locked" : false,
             "seedComponents" : [ ],
             "tabKey" : "1",
             "tabName" : "Details"
           }, {
-            "UUID" : "ae65a413-0ea4-402a-a992-f4b06f447314",
-            "allowGuestUser" : false,
+            "UUID" : "59fce8cb-f918-45ed-a312-f44a10472118",
+            "allowGuestUser" : true,
             "locked" : false,
             "seedComponents" : [ ],
-            "tabKey" : "b233e",
+            "tabKey" : "b919e",
             "tabName" : "Related"
           } ],
           "useOverflowMenu" : false
         }
       },
       "componentName" : "forceCommunity:tabset",
-      "id" : "ad86133a-dcd2-477f-9202-0e94abc3dc56",
+      "id" : "96a2fc25-bf15-499f-b5e0-0f5dfe969d89",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
             "recordId" : "{!recordId}"
           },
           "componentName" : "forceCommunity:recordDetail",
-          "id" : "ff8d7840-faa5-4a38-8914-1b09102392e1",
+          "id" : "76d45566-e078-4ad2-a51b-ed3326f5f8fb",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "3e7d6973-fb8d-4d3f-bed2-6a888e6af486",
+        "id" : "392fdeaf-2149-4c4f-86fa-21c8125d95d0",
         "regionLabel" : "Details",
         "regionName" : "1",
         "renditionMap" : { },
@@ -73,16 +61,28 @@
             "width" : "MEDIUM"
           },
           "componentName" : "forceCommunity:relatedRecords",
-          "id" : "a3a82642-63a9-40ca-b6f2-fcd443d74fbf",
+          "id" : "757a25b1-7cda-452c-8848-43430b935f54",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "ae65a413-0ea4-402a-a992-f4b06f447314",
+        "id" : "59fce8cb-f918-45ed-a312-f44a10472118",
         "regionLabel" : "Related",
-        "regionName" : "b233e",
+        "regionName" : "b919e",
         "renditionMap" : { },
         "type" : "region"
       } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e7a7135b-cc8e-4ca9-be25-298809622008",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "f639cb67-d808-4bbe-bb57-01297e836a99",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -110,6 +110,7 @@
         "id" : "24e141a9-dc4d-448e-8fa8-20b8b214b208",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "{!Record._Object}: {!Record._Title}"
           }

@@ -132,8 +132,6 @@ private class Core_MDF_BatchScheduler_Test {
             customSch4.Core_MDF_Program_Txt__c = 'CCP';
             customSch4.Core_MDF_GMT_Time__c = dt.time();
             customSch4.Core_MDF_Every_X_Hour_Nbr__c = '2';
-            customSch4.Core_MDF_Enable_Email_Notification__c = true;
-            customSch4.Core_MDF_Include_All_Notifications__c = true;
             BatchSch.add(customSch4);
             
             
@@ -179,11 +177,6 @@ private class Core_MDF_BatchScheduler_Test {
             lineItem2.Core_MDF_Scheduled_Time_Dt__c =customSch3.Scheduled_Time_Dt__c; 
             lineItem2.Core_MDF_Status_Txt__c = 'Scheduled'; 
             schLineList.add(lineItem2);
-            Core_MDF_Batch_Scheduler_Line_Item__c lineItem3 = new Core_MDF_Batch_Scheduler_Line_Item__c();
-            lineItem3.Core_MDF_Batch_Scheduler__c = customSch4.Id;
-            lineItem3.Core_MDF_Scheduled_Time_Dt__c =customSch4.Scheduled_Time_Dt__c; 
-            lineItem3.Core_MDF_Status_Txt__c = 'Pending'; 
-            schLineList.add(lineItem3);
             Database.insert(schLineList);
             
             List<Core_MDF_Configuration__c> configList = new List<Core_MDF_Configuration__c>();

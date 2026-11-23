@@ -3,6 +3,8 @@ public without sharing class Core_MDF_RestAPI_Logger {
     private static final Integer MAX_SHORT_TEXT_LENGTH = 255;
     private static final Integer MAX_LONG_TEXT_LENGTH = 131072;
     private static UserContext cachedUserContext;
+    private static final Map<String, Map<String, ErrorConfig>> cachedErrorConfigsByCategory =
+        new Map<String, Map<String, ErrorConfig>>();
 
     public class LogRequest {
         public String apiName;
@@ -371,5 +373,36 @@ public without sharing class Core_MDF_RestAPI_Logger {
     	genericConfig.message       = System.Label.Core_MDF_ApplicationErrorMessage;
     	genericConfig.httpStatusCode = 500;
     	return genericConfig;
+    }
+    public static ErrorConfig getCachedErrorConfigDetails(String errorCode, String category) {
+        if (String.isBlank(errorCode) || String.isBlank(category)) {
+            return null;
+        }
+        if (!cachedErrorConfigsByCategory.containsKey(category)) {
+            Map<String, ErrorConfig> configsByCode = new Map<String, ErrorConfig>();
+            for (Core_MDF_External_API_Response_Codes__c setting : [
+                SELECT Core_Code__c, Core_Message__c, Core_Http_Status_Code__c
+                FROM Core_MDF_External_API_Response_Codes__c
+                WHERE Core_Category__c = :category
+            ]) {
+                ErrorConfig config = new ErrorConfig();
+                config.code = setting.Core_Code__c;
+                config.message = setting.Core_Message__c;
+                config.httpStatusCode = String.isBlank(setting.Core_Http_Status_Code__c)
+                    ? 500
+                    : Integer.valueOf(setting.Core_Http_Status_Code__c);
+                configsByCode.put(config.code, config);
+            }
+            cachedErrorConfigsByCategory.put(category, configsByCode);
+        }
+        Map<String, ErrorConfig> configsByCode = cachedErrorConfigsByCategory.get(category);
+        if (configsByCode.containsKey(errorCode)) {
+            return configsByCode.get(errorCode);
+        }
+        ErrorConfig genericConfig = new ErrorConfig();
+        genericConfig.code = '9999';
+        genericConfig.message = System.Label.Core_MDF_ApplicationErrorMessage;
+        genericConfig.httpStatusCode = 500;
+        return genericConfig;
     }
 }

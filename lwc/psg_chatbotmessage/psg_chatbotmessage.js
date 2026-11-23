@@ -1,0 +1,89 @@
+import BaseChatMessage from 'lightningsnapin/baseChatMessage';
+import { track } from 'lwc';
+import { loadStyle } from 'lightning/platformResourceLoader';
+import chatMessageStyle from '@salesforce/resourceUrl/chatMessageStyle';
+
+const DEFAULT_MESSAGE_PREFIX = 'PLAIN_TEXT';
+const RICHTEXT_MESSAGE_PREFIX = 'RICH_TEXT';
+const IMAGE_MESSAGE_PREFIX = 'IMAGE';
+const URL_MESSAGE_PREFIX = 'URL'
+const NAVIGATE_MESSAGE_PREFIX = 'NAVIGATE';
+const SUPPORTED_MESSAGE_PREFIX = [DEFAULT_MESSAGE_PREFIX, RICHTEXT_MESSAGE_PREFIX, IMAGE_MESSAGE_PREFIX, URL_MESSAGE_PREFIX, NAVIGATE_MESSAGE_PREFIX];
+
+
+
+export default class ChatMessageDefaultUI extends BaseChatMessage {
+    messageType = DEFAULT_MESSAGE_PREFIX;
+    @track content = '';
+    @track ogpMeta = {};
+    connectedCallback() {
+        if (!this.isAgent) {
+            return;
+        }
+        const messageTypePrefixPosition = SUPPORTED_MESSAGE_PREFIX.indexOf(this.messageContent.value.split(':')[0]);
+        if (messageTypePrefixPosition > -1) {
+            this.messageType = SUPPORTED_MESSAGE_PREFIX[messageTypePrefixPosition];
+        }
+        const contentValue = (this.messageContent.value.split(this.messageType + ':').length === 1) ? this.messageContent.value : this.messageContent.value.split(this.messageType + ':')[1];
+        Promise.all([
+            loadStyle(this, chatMessageStyle + '/style.css')
+        ]);
+        if (this.isPlainText) {
+            this.content = contentValue;
+        } else if (this.isNavigate) {
+            const url = this.extractOriginalUrl(contentValue);
+            window.open(url);
+            this.content = `Opening ${url}`;
+        } else if (this.isImage) {
+            this.content = this.extractOriginalUrl(contentValue);
+        } else {
+            this.content = contentValue
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&quot;/g, '\"')
+                .replace(/<a href='mailto:.*?' target='_blank'>(.*?)<\/a>/g, '$1')
+                .replace(/<a href='/g, '')
+                .replace(/' target='_blank'.*?<\/a>( +)/g, '$1')
+                .replace(/' target='_blank'.*?<\/a>.*?<\/a>/g, '');
+        }
+    }
+
+    extractOriginalUrl(generatedString) {
+        const matched = generatedString.match(/<a href.+>(.*?)<\/a>/);
+        if (matched.length > 1) {
+            return matched[1];
+        }
+        return generatedString;
+    }
+
+    fallback(event) {
+        event.target.onerror = null;
+        event.target.style.display = 'none';
+        event.target.style.height = 0;
+    }
+
+    get isAgent() {
+        return this.userType === 'agent';
+    }
+
+    get isPlainText() {
+        return this.messageType === DEFAULT_MESSAGE_PREFIX;
+    }
+
+    get isRichText() {
+        return this.messageType === RICHTEXT_MESSAGE_PREFIX;
+    }
+
+    get isImage() {
+        return this.messageType === IMAGE_MESSAGE_PREFIX;
+    }
+
+    get isUrl() {
+        return this.messageType === URL_MESSAGE_PREFIX;
+    }
+
+    get isNavigate() {
+        return this.messageType === NAVIGATE_MESSAGE_PREFIX;
+    }
+
+}

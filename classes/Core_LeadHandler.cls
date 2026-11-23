@@ -589,7 +589,16 @@ public without sharing class Core_LeadHandler{
     @InvocableMethod(label='Auto Convert Lead' description='Converts a lead into an existing contact without creating opportunity or account')
     public static void convertLead(List<SWS_LeadWrappers.LeadConvertRequest> requests) {
         List<Database.LeadConvert> conversions = new List<Database.LeadConvert>();
-        
+
+        // Capture Lead Notes per Lead to carry over to the Task comment after conversion
+        Set<Id> leadIds = new Set<Id>();
+        for (SWS_LeadWrappers.LeadConvertRequest req : requests) {
+            leadIds.add(req.leadId);
+        }
+        Map<Id, Lead> mapLeadIdLead = new Map<Id, Lead>(
+            [SELECT Id, Core_Lead_Notes__c FROM Lead WHERE Id IN :leadIds]
+        );
+
         for (SWS_LeadWrappers.LeadConvertRequest req : requests) {
             Database.LeadConvert lc = new Database.LeadConvert();
             lc.setLeadId(req.leadId);
@@ -610,15 +619,39 @@ public without sharing class Core_LeadHandler{
         }
 
         List<Database.LeadConvertResult> results = Database.convertLead(conversions, false);
-        
+
+        List<Task> lstTasksToInsert = new List<Task>();
         for (Database.LeadConvertResult res : results) {
             if (!res.isSuccess()) {
                 for (Database.Error err : res.getErrors()) {
                     System.debug('Lead conversion failed: ' + err.getMessage());
                 }
+                continue;
+            }
+
+            Lead convertedLead = mapLeadIdLead.get(res.getLeadId());
+            // TaskSubtype 'Call' surfaces this record as a logged call in the Contact Activity tab
+            lstTasksToInsert.add(new Task(
+                Subject = 'Lead Conversion Note',
+                TaskSubtype = 'Call',
+                Status = 'Completed',
+                Priority = 'Normal',
+                OwnerId = UserInfo.getUserId(),
+                WhoId = res.getContactId(),
+                WhatId = res.getAccountId(),
+                Description = (convertedLead != null) ? convertedLead.Core_Lead_Notes__c : null
+            ));
+        }
+
+        if (!lstTasksToInsert.isEmpty()) {
+            Database.SaveResult[] taskResults = Database.insert(lstTasksToInsert, false);
+            for (Database.SaveResult sr : taskResults) {
+                if (!sr.isSuccess()) {
+                    for (Database.Error err : sr.getErrors()) {
+                        System.debug('Task creation failed: ' + err.getMessage());
+                    }
+                }
             }
         }
-    }
-
-        
+    }      
 }

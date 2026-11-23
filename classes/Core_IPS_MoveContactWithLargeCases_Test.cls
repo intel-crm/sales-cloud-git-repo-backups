@@ -7,7 +7,6 @@ Description    : This class is Test class for Core_IPS_MoveContactWithLargeCases
 @isTest
 public class Core_IPS_MoveContactWithLargeCases_Test{
     static testMethod void testMoveContactCases(){
-        insert new Core_Contact_Bypass_Validation_Rule__c(SetupOwnerId=UserInfo.getOrganizationId(), Bypass__c=true);
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];//System Administrator
         Core_IPS_Labels__c ipsCS = new Core_IPS_Labels__c(Name = 'IPS Standard Entitlement', Value__c='IPS Standard Entitlement');
         insert ipsCS;
@@ -495,7 +494,6 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
     }
     
         static testMethod void testMoveContactGECHold(){
-             insert new Core_Contact_Bypass_Validation_Rule__c(SetupOwnerId=UserInfo.getOrganizationId(), Bypass__c=true);
              Account testAccount = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts', Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',
                                               BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',
@@ -835,7 +833,6 @@ public class Core_IPS_MoveContactWithLargeCases_Test{
         } 
     }
        static testMethod void testMoveContactCases1(){
-        insert new Core_Contact_Bypass_Validation_Rule__c(SetupOwnerId=UserInfo.getOrganizationId(), Bypass__c=true);
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];//System Administrator
         
         Core_IPS_Labels__c ipsCS = new Core_IPS_Labels__c(Name = 'IPS Standard Entitlement', Value__c='IPS Standard Entitlement');

@@ -1,0 +1,65 @@
+<template>
+    <div class="container">
+        <div class="header">
+            <h1 class="metrics-heading">Account Metrics for {accountName}</h1>
+        </div>
+
+        <div class="content-row">
+            <!-- Donut Chart -->
+            <div class="chart-section">
+                <svg viewBox="0 0 36 36" class="donut">
+                    <template for:each={segments} for:item="segment">
+                        <circle
+                            key={segment.key}
+                            class="donut-segment"
+                            stroke={segment.color}
+                            stroke-dasharray={segment.dasharray}
+                            stroke-dashoffset={segment.dashoffset}
+                        ></circle>
+                    </template>
+                    <text x="18" y="20.35" class="donut-total">{totalOpportunities}</text>
+                </svg>
+            </div>
+
+            <!-- Stages -->
+            <div class="stage-section">
+                <h2>Open Opportunities by Stage ({totalOpportunities})</h2>
+                <div class="stages-container">
+                    <template for:each={processedStages} for:item="stage">
+                        <div key={stage.stage} class="stage-item">
+                            <span class="stage-radio" style={stage.style}></span>
+                            <span class="stage-text">{stage.count} {stage.stage}</span>
+                        </div>
+                    </template>
+                </div>
+                <a href={opportunityLink} class="view-opportunities">🔗 View All Opportunities</a>
+            </div>
+
+            <!-- Account Score + Win Rate -->
+            <div class="right-metrics-wrapper">
+                <!-- Account Score -->
+                <div class="score-section">
+                    <h3>Placeholder (Account Score)</h3>
+                    <div class="metric-item">
+                        <p class="value">20.00</p>
+                    </div>
+                </div>
+
+                <!-- Win Rate -->
+                <div class="metrics-section">
+                    <h3>Opportunity Win Rate</h3>
+                    <div class="metric-values">
+                        <div class="metric-item">
+                            <p class="value">83%</p>
+                            <p class="subtext">Last Quarter</p>
+                        </div>
+                        <div class="metric-item">
+                            <p class="value">0%</p>
+                            <p class="subtext">This Quarter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

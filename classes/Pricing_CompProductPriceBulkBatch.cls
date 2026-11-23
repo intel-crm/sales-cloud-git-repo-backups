@@ -2,10 +2,10 @@
  * @description       : Class to process Competitor Product Price records in batches
  * @author            : Suraj Barade
  * @group             : Accenture
- * @last modified on  : 04-26-2026
+ * @last modified on  : 04-15-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
-public class Pricing_CompProductPriceBulkBatch implements Database.Batchable<SObject>, Database.Stateful{
+public class Pricing_CompProductPriceBulkBatch implements Database.Batchable<sObject>, Database.Stateful{
 
     Map<String, String> resultMap = new Map<String, String>();
     Map<String, Pricing_Competitor_Product_Price_Staging__c> compProductPriceMap = New Map<String, Pricing_Competitor_Product_Price_Staging__c>();
@@ -30,6 +30,7 @@ public class Pricing_CompProductPriceBulkBatch implements Database.Batchable<SOb
         for(String key : resultMap.keySet()){            
             String response = resultMap.get(key);
             String csvRowVal;
+               
             csvRowVal = response; 
             csvRowValues.add(csvRowVal);
         }

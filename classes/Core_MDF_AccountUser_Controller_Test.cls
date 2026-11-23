@@ -249,7 +249,7 @@ private class Core_MDF_AccountUser_Controller_Test {
         PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(string.valueof(camp.Id),
                                                                                        Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,
                                                                                        string.valueof(acc.id),pfaRecord,null,'INDIA','Creator',
-                                                                                       'Desktop','Intel® Core™ i7 Processor','Broadcast (Pre-2025)',
+                                                                                       'Desktop','Intel® Core™ i7 Processor','Broadcast',
                                                                                        'Radio','Draft',false);
         pfr.RequestedAmount = 1200;
         pfr.Amount = 1200;
@@ -458,7 +458,7 @@ private class Core_MDF_AccountUser_Controller_Test {
     @isTest static void deletePNUMRecords(){
         Test.startTest();
         User usr = [SELECT Id,Email FROM User WHERE Email='sysadmin@example.com' LIMIT 1];
-        Core_MDF_Partner_Node_User_Mapping__c pnumRecord = [SELECT ID,Core_MDF_Account__c,Core_MDF_User__c,Core_MDF_Error_Details_txt__c FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__r.Name ='Test Account 1' AND Core_MDF_User__r.Email = 'test1@example.com'];    
+        Core_MDF_Partner_Node_User_Mapping__c pnumRecord = [SELECT ID,Core_MDF_Account__c,Core_MDF_User__c,Core_MDF_Error_Details_txt__c FROM Core_MDF_Partner_Node_User_Mapping__c WHERE Core_MDF_Account__r.Name ='Test Account 1' AND Core_MDF_User__r.Email = 'test1@example.com'];                                             
         // Highlight: Unused Local Variable 
        // List<Id> deleteRecordList = new List<Id>();
         Map<Id, Core_MDF_Partner_Node_User_Mapping__c> newPNUMappingMap = new Map<Id,Core_MDF_Partner_Node_User_Mapping__c>();

@@ -309,7 +309,7 @@ global without sharing class Core_MDF_Batch_IAH_Quarter_Audit implements Databas
                 + '</body></html>';
 
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            mail.setToAddresses(new List<String>{'sushma.hamom@intel.com'});
+            mail.setToAddresses(new List<String>{'roshanx.o.prasad@intel.com'});
             mail.setSubject(Label.Core_MDF_SFDC_Environment + ': IAH Pull audit for ' + quarter + ' - ' + (passed ? 'Passed' : exceptionScorecardCount + ' scorecards with exceptions'));
             mail.setHtmlBody(body);
             mail.setOrgWideEmailAddressId(Label.Core_MDF_OrgWideId);

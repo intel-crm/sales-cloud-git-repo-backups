@@ -2,26 +2,16 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_At_Risk__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>CLOSED</field>
     </columns>
     <columns>
         <field>DUE_DATE</field>
     </columns>
     <columns>
-        <field>Activity.Core_Activity_Type__c</field>
-    </columns>
-    <columns>
-        <field>RECORDTYPE</field>
+        <field>Activity.Core_Task_Type__c</field>
     </columns>
     <columns>
         <field>TASK_SUBTYPE</field>
-    </columns>
-    <columns>
-        <field>Activity.Core_Task_Type__c</field>
     </columns>
     <columns>
         <field>SUBJECT</field>
@@ -44,9 +34,16 @@
     <columns>
         <field>ACTIVITY_ID</field>
     </columns>
-    <description>RT: Activities with Opportunities  For APJ Inside Sales Team =&gt; Open and Closed Activities on active opportunities in the pipeline</description>
+    <description>RT: Activities with Opportunities  Open and Close Activities on active opportunities in the pipeline</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>(1 OR 3) AND 2</booleanFilter>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Erica Tor</value>
+        </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -55,18 +52,11 @@
             <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <column>ASSIGNED_ALIAS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Coverage__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>osc,inside</value>
+            <value>aliceuye,kevinwei,weilunle,xuanying,ymun</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -100,10 +90,10 @@
         <value>0</value>
     </params>
     <reportType>OpportunityActivity</reportType>
-    <scope>team</scope>
+    <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <sortColumn>DUE_DATE</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>

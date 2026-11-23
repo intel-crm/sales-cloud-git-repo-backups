@@ -20,6 +20,14 @@ public with sharing class Core_OppDescriptiveFeaturesController{
     
     // Variable to hold Opportunity Record Id
     public String sOppId;    
+
+     //TWC3123-4019 Redesign Descriptive FeatureVariable to hold Opportunity Product Id
+     public String sOppProdId;
+
+    // Variable to hold Opportunity Product Record  ////TWC3123-4019 Redesign Descriptive Feature 
+    private OpportunityLineItem sObjOppProd;
+
+    private String Type ;  ////TWC3123-4019 Redesign Descriptive Feature
     
     //Added for Consumer Sales System
     public Core_Opportunity_Features__c cSale {get; set;}
@@ -51,7 +59,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
     //START -US103701 Map and select option declared for BU 
     public String PreSelectedBU;
     public Map < String, String> mapPlatformBUString = new Map < String, String> {};
-    public Map<String, String> mapfeatureBULabelValue = new Map<String, String>();     
+    public Map<String, String> mapfeatureBULabelValue = new Map<String, String>();
     public Map<String, String> mapfeatureBUValueLabel = new Map<String, String>();
     public List<SelectOption> platformBULst {get;set;}
     public String selectedPlatformBU{get;set;}
@@ -79,6 +87,8 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         get;
         set;
     }
+
+    public string ProdPlatform;
     
     // Map the selected value to the feature Type
     public Map < String, String > mapSelectedValueToFeatureType {
@@ -120,27 +130,41 @@ public with sharing class Core_OppDescriptiveFeaturesController{
      * Parameter    : ApexPages.StandardController
      */
     public Core_OppDescriptiveFeaturesController(ApexPages.StandardController stdController) {
-        //Initialize the variables for usage
-        lstSelectListWrapper = new List < SelectListWrapper > ();
+      
+        //Initialize the variables for usage        
+        lstSelectListWrapper = new List < SelectListWrapper > ();        
         lstPlatformSelectListWrapper = new List < SelectListWrapper > ();
         lstPlatformBUSelectListWrapper = new List < SelectListWrapper > ();    
         Core_Opportunity_Features__c OppFeature ;
-        //Core_Opportunity_Features__c OppFeatureOnOpp ;
+        Core_Opportunity_Features__c OppFeatureOnOpp ;
         List<Core_Opportunity_Features__c> Oppfeaturelst= new List<Core_Opportunity_Features__c>();
         List<Opportunity> Opplst= new List<Opportunity>();
         showPage = !isBuExeOrProdMgr();//6183 
         //Add the Parent field using the addfields. Escape this code for the test methods to avoid error
         if (!Test.isRunningTest())
             stdController.addFields(new list < String > {
-                'Core_Opportunity__c'
+                'Core_Opportunity__c','Opportunity_Product__c'
             });
         
-        try {
+        //try {
             
             //Get the Opportunity ID from the URL, this in case when the new list button is opened
-            if (ApexPages.currentPage().getParameters().get(System.label.Core_Opportunity_ID) != NULL)
+        
+           if (ApexPages.currentPage().getParameters().get('sOppProdid') != NULL)////TWC3123-4019 Redesign Descriptive Feature
+            {
+                sOppProdId = ApexPages.currentPage().getParameters().get('sOppProdid'); 
+            	
+            	sOppId = [select OpportunityId from OpportunityLineItem where Id =:sOppProdId limit 1].OpportunityId;
+                
+                this.Type='Product';
+            }
+            else{
+                if (ApexPages.currentPage().getParameters().get(System.label.Core_Opportunity_ID) != NULL)////TWC3123-4019 Redesign Descriptive Feature
                 sOppId = ApexPages.currentPage().getParameters().get(System.label.Core_Opportunity_ID);
-               
+                this.Type='Opportunity';
+           }
+
+
             // Get the descriptive feature record from the standard controller
             this.sObjOppFeature = (Core_Opportunity_Features__c) stdController.getRecord();
             
@@ -148,22 +172,30 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             // Get the Opportunity record from the Opportunity ID obtained
             if (sOppId != NULL || sObjOppFeature.Core_Opportunity__c != NULL)
                 sObjOpp = [select Id, Name, Core_Intel_Platform__c, (select   
-                    Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c, Core_Opportunity__c, 
+                    Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c, Core_Opportunity__c,Opportunity_Product__c,  ////TWC3123-4019 Redesign Descriptive Feature
                     Core_Feature_Name__c, Core_Feature_Type__c, Core_Feature_Set__r.Core_Feature__r.Core_Feature_Value__c,Core_Platform_BU__c,
-                    Core_Feature_Set__r.Core_Feature__r.Core_Multi_Select__c,Core_Multi_Select__c from Opportunity_Features__r) from Opportunity 
+                    Core_Feature_Set__r.Core_Feature__r.Core_Multi_Select__c,Core_Multi_Select__c from Opportunity_Features__r),Core_Channel_Opportunity_Ind__c  from Opportunity  //TWC3123-4780
                     where Id = : sOppId or Id = : sObjOppFeature.Core_Opportunity__c];
             
-            List<Schema.PicklistEntry> picklistEntries = Schema.SObjectType.Core_Feature__c.fields.Core_Feature_BU__c.getPicklistValues();
+            if (sOppProdid != NULL)
+                    sObjOppProd = [select id,Product2Id from OpportunityLineItem where Id = : sOppProdid ];   //////TWC3123-4019 Redesign Descriptive Feature
+                   
+                   if(sObjOppProd!=NULL)
+                    ProdPlatform=[select Core_Platform_Name__c from product2 where Id = : sObjOppProd.Product2Id].Core_Platform_Name__c;   //ProdPlatform
+                    
+			List<Schema.PicklistEntry> picklistEntries = Schema.SObjectType.Core_Feature__c.fields.Core_Feature_BU__c.getPicklistValues();
         	for(Schema.PicklistEntry ple :picklistEntries){
             	mapfeatureBULabelValue.put(ple.getLabel(), ple.getValue());
                 mapfeatureBUValueLabel.put(ple.getValue(),ple.getLabel());
             } 
             //Set the BU value  default to Opportunity feature record while edited.
             if(this.sObjOppFeature.Id != null){
-            
+                	
+                	
                     OppFeature = [SELECT Id,Core_Platform_BU__c FROM Core_Opportunity_Features__c where Id=:sObjOppFeature.Id];
                     selectedPlatformBU=mapfeatureBULabelValue.get(OppFeature.Core_Platform_BU__c);
-                    selectedPlatformBULabel = OppFeature.Core_Platform_BU__c;
+                	selectedPlatformBULabel = OppFeature.Core_Platform_BU__c;
+                	
                     //Added for Consumer Sales System
                     //this.cSale =  [Select id,Core_Platform_BU__c, Core_Consumer_Sales_system__c from Core_Opportunity_Features__c where id=:this.sObjOppFeature.Id AND Core_Platform_BU__c =:selectedPlatformBU];
                     
@@ -171,6 +203,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             }
             
             //END - US103701
+            
              if(sOppId !=null){
                 /*
                  Oppfeaturelst = [SELECT Id,Core_Platform_BU__c,Core_Consumer_Sales_system__c,Core_Feature_Name__c,Core_Feature_Type__c FROM Core_Opportunity_Features__c where Core_Opportunity__c =: sOppId AND Core_Feature_Type__c='Consumer Sales system' order by createddate desc limit 1];
@@ -179,34 +212,54 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                      this.consumerSales1=Oppfeaturelst[0].Core_Feature_Name__c;
                  }*/
                  Opplst=[Select id,Core_Consumer_Sales_System__c from Opportunity Where Id =: sOppId];
+                 
                  if(Opplst.size() >0){ 
                      this.consumerSales1=Opplst[0].Core_Consumer_Sales_System__c;
+                    
                  }
                
                  
             }
             
               if(this.sObjOppFeature.Id != null){
+                     
                    Oppfeaturelst = [SELECT Id,Core_Platform_BU__c,Core_Consumer_Sales_system__c,Core_Feature_Name__c,Core_Feature_Type__c FROM Core_Opportunity_Features__c where id =: sObjOppFeature.Id AND Core_Feature_Type__c='Consumer Sales system' order by createddate desc limit 1];
                     if(Oppfeaturelst.size() >0){ 
                      this.consumerSales1=Oppfeaturelst[0].Core_Feature_Name__c;
                  }
                  }
+            
               if(this.sObjOppFeature.Id != null){
-                  //Id descid=this.sObjOppFeature.Id;
+                  Id descid=this.sObjOppFeature.Id;
                    Id OpptyId=this.sObjOppFeature.Core_Opportunity__c;
+                  
                      
                  Opplst=[Select id,Core_Consumer_Sales_System__c from Opportunity Where Id =: OpptyId];
+                 
                  if(Opplst.size() >0){ 
                      this.consumerSales1=Opplst[0].Core_Consumer_Sales_System__c;
+                     
                  }
             }
             
             //If the Opportunity record is not NULL get the platform and Opportunity name
             if (sObjOpp != NULL) {
-                sPlatform = sObjOpp.Core_Intel_Platform__c;
+                sPlatform='';
+                 
+                if (this.Type=='Product' && sObjOpp.Core_Channel_Opportunity_Ind__c ==true ){//Commented as per Vani && sObjOpp.Core_Channel_Opportunity_Ind__c ==true){   //TWC3123-4780
+                   
+                sPlatform = ProdPlatform;  ///TWC3123-4528
                 sOppName = sObjOpp.Name;
+                }
+                else{
+                   
+                    sPlatform = sObjOpp.Core_Intel_Platform__c;
+                sOppName = sObjOpp.Name;
+
+                }
             }
+       
+        
                                 
             //Get the Platfrom based on opportunity header
             getItems();
@@ -223,10 +276,11 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             
             
 
-        } catch (Exception e) {
-            ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.label.Core_Exception+e.getmessage()));
-        }
-	}
+        //} catch (Exception e) {
+            //ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.label.Core_Exception+e.getmessage()));
+        //}
+    }
+    
     /*
      * Method name  : isBuExeOrProdMgr
      * Description  : Checks whether current user is BU Executive or BU Product Manager, writtens error message on vf page and returns true.
@@ -241,9 +295,9 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         else {
             return false;
         }
-		
         //return [select id from permissionSetAssignment where assigneeId =: UserInfo.getUserId() and (permissionset.name = 'Core_BU_Executive' or permissionset.name ='Core_BU_Product_Manager' )limit 1].size() > 0;
     }//6183
+    
     /*
      * Method name  : getFeature
      * Description  : Get the features based on the value of the platform
@@ -251,12 +305,12 @@ public with sharing class Core_OppDescriptiveFeaturesController{
      * Parameter    : NONE
      */
     public void Core_GetFeature() {
-        
+       
         //Declare the variables
         mapStringToLstOption = new map < string, List < SelectOption >> {};
         mapSelectStringToLstOption = new map < string, List < SelectOption >> {};
         lstSelectListWrapper = new List < SelectListWrapper > ();
-        //List < Id > lstCoreOppoFeatureSet = new List < Id > {};
+        List < Id > lstCoreOppoFeatureSet = new List < Id > {};
         mapSelectedValueToFeatureType = new Map < String, String > {};
         mapSelectedNameToFeatureType = new Map < String, String > {};
         mapStringToBool = new Map < String, Boolean > {};
@@ -288,6 +342,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         mapFeatureSetValue.put(objFutSet.Core_Feature__r.Core_Feature_Value__c+objFutSet.Core_Feature__r.Core_Feature_Type__c,objFutSet.Core_Feature__r.Core_Feature_Value__c);
                                              
              }
+             
             //END - US103701, Query on Feature set to filter the opportunity feature existing on opportunity. 
             // If the Opportunity is present and so are its descriptive features any if saved
             if (sObjOpp != NULL && sObjOpp.Opportunity_Features__r != NULL) {
@@ -300,10 +355,10 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         mapSelectedNameToFeatureType.put(sobjOppFeature.Core_Feature_Name__c + sobjOppFeature.Core_Feature_Type__c, 
                             sobjOppFeature.Core_Feature_Type__c);
                     }
-                    
+                   
                     //If the feature is Multilselect, then since we use 2 lists to populate the feature, fill 
                     // the list of selected list with the feature values  
-                    if(sobjOppFeature.Core_Multi_Select__c  == true && sobjOppFeature.Core_Platform_BU__c == selectedPlatformBULabel){
+                    if(sobjOppFeature.Core_Multi_Select__c == true && sobjOppFeature.Core_Platform_BU__c == selectedPlatformBULabel){
                         
                         // If the selected list doesn't contain the feature type, add a feature type with the value added to value list 
                         if (!mapSelectStringToLstOption.containskey(sobjOppFeature.Core_Feature_Type__c)) {
@@ -317,6 +372,8 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         }
                     }
                   }
+                 
+                 
                 //END - US103701, BU filter added  
                 }
             }
@@ -373,6 +430,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         }     
                     }                   
                 }
+                
                 //Use this map to check in the VF page if the feature type is a multi select
                 mapStringToBool.put(sobjFeatureSet.Core_Feature__r.Core_Feature_Type__c, sobjFeatureSet.Core_Feature__r.Core_Multi_Select__c);
                 
@@ -385,12 +443,15 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             lstStringType.addAll(mapStringType.keyset());
             lstStringType.Sort();
             
+
+            
             //iterate the loop for the display order + feature type key
             for (String sobjString: lstStringType) {
                 lstSelectListWrapper.add(new SelectListWrapper(mapStringToLstOption.get(mapStringType.get(sobjString)),
                     mapSelectStringToLstOption.get(mapStringType.get(sobjString)), mapStringType.get(sobjString), 
                         mapStringToBool.get(mapStringType.get(sobjString))));
             }
+            
             // Set the value of the opportunity field using the selected value from the VF page
             for (SelectListWrapper sobjWrapper: lstPlatformSelectListWrapper) {
                 if (sobjWrapper.sSelectedOriginalValue == System.Label.Core_IntelPlatform && sobjWrapper.sSelectedValue != System.Label.Core_IntelPlatform)
@@ -411,28 +472,34 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         // Get the Platfrom based on the records in Future header or the opportunity
         try {
             mapPlatformStringToLstOption = new Map < String, List < SelectOption >> {};
-            
+           
             //Get the values of the feature header type through the feature header object
             //based on the platform name present on the opporunity record
             for (Core_Feature_Header__c sobjFeHeader: [select Core_Header_Type__c, name, Core_Header_Name__c from Core_Feature_Header__c 
                 where Core_Header_Name__c!= :sPlatform ORDER BY Core_Header_Name__c]) {
-                
                 //If the Header type is still not present in the map
                 if (mapPlatformStringToLstOption.get(sobjFeHeader.Core_Header_Type__c) == NULL) {
                     
                     ////If the Header type is still not present in the map
                     if (!mapPlatformStringToLstOption.containsKey(sobjFeHeader.Core_Header_Type__c)) {
                         
-                        if (sobjFeHeader.Core_Header_Type__c != System.Label.Core_IntelPlatform || sPlatform == '' || sPlatform == NULL)
-                            mapPlatformStringToLstOption.put(sobjFeHeader.Core_Header_Type__c, new List < SelectOption > {
+
+                        if (sobjFeHeader.Core_Header_Type__c != System.Label.Core_IntelPlatform || sPlatform == '' || sPlatform == NULL )
+                        {
+                        if (this.Type!='Product'){ //TWC3123-4780
+                           mapPlatformStringToLstOption.put(sobjFeHeader.Core_Header_Type__c, new List < SelectOption > {
                                 new SelectOption(System.label.Core_None_Value, System.label.Core_None_Value),
                                     new SelectOption(sobjFeHeader.Core_Header_Name__c, sobjFeHeader.Core_Header_Name__c)
                             });
-                        else
+                        }
+                        }
+                        else{
+                            
+
                             mapPlatformStringToLstOption.put(sobjFeHeader.Core_Header_Type__c, new List < SelectOption > {
                                 new SelectOption(sPlatform, sPlatform),
                                     new SelectOption(sobjFeHeader.Core_Header_Name__c, sobjFeHeader.Core_Header_Name__c)
-                            });
+                            });}
                     }
                 } else { //If the Header type is present in the map, add the platform values
                     mapPlatformStringToLstOption.get(sobjFeHeader.Core_Header_Type__c).add(new SelectOption(sobjFeHeader.Core_Header_Name__c,sobjFeHeader.Core_Header_Name__c));
@@ -480,9 +547,8 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         if (!mapPlatformBUString.containsKey(mapfeatureBULabels.get(sobjFutSet.Core_Feature_BU__c))) {
                             if(sobjFutSet.Core_Feature_BU__c != null){                                                        
                                 mapPlatformBUString.put(mapfeatureBULabels.get(sobjFutSet.Core_Feature_BU__c), sobjFutSet.Core_Feature_BU__c);
-                                System.debug('mapPlatformBUString487'+mapfeatureBULabels.get(sobjFutSet.Core_Feature_BU__c));
                             }                               
-                        }                 
+                        }                   
                 }
                 //get the set of values of the header type  & sort the values
                 lstStringType.addAll(mapPlatformBUString.values());
@@ -494,8 +560,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 platformBULst.add(new SelectOption(System.label.Core_None_Value, System.label.Core_None_Value));
                 for (String sobjString: mapPlatformBUString.keyset()){
                         platformBULst.add(new SelectOption(mapPlatformBUString.get(sobjString),sobjString));
-                    }
-                
+                    }                
         }
         catch (Exception e) {
                 ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.label.Core_Exception+e.getmessage()));
@@ -512,14 +577,14 @@ public with sharing class Core_OppDescriptiveFeaturesController{
     public pagereference saveUpdatedRecord() {
         //Declare the variables
         List < Core_Opportunity_Features__c > lstOppFeature = new List < Core_Opportunity_Features__c > {};
-        //List < Core_Opportunity_Features__c > lstUpdateOppFeature = new List < Core_Opportunity_Features__c > {};
+        List < Core_Opportunity_Features__c > lstUpdateOppFeature = new List < Core_Opportunity_Features__c > {};
         Map < String, Core_Opportunity_Features__c > mapCheckIfRecordIsPresent = new Map < String, Core_Opportunity_Features__c > {};
         Map < String, Core_Opportunity_Features__c > mapMultiSelectTofeature = new Map < String, Core_Opportunity_Features__c > {};
         Map < String, String > mapSTringTofeatureId = new Map < String, String > {};
         Set < String > setAttributeValue = new Set < String > {};
         Set < String > setDelAttributeValue = new Set < String > {};
         Set < String > setMultiDelAttributeValue = new Set < String > {};
-        //Set < String > setDupliIds = new Set < String > {};
+        Set < String > setDupliIds = new Set < String > {};
         Set < String > setAttributeTypeValue = new Set < String > {};
         List < Core_Opportunity_Features__c > lstDeleteOppFeature = new List < Core_Opportunity_Features__c > {};
         
@@ -555,10 +620,10 @@ public with sharing class Core_OppDescriptiveFeaturesController{
         try {
             
             // Set up the values from the already present Opp features for the opportunity
-            for (Core_Opportunity_Features__c sobjOpportFeature: [select Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c, Core_Opportunity__c, 
+            for (Core_Opportunity_Features__c sobjOpportFeature: [select Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c, Core_Opportunity__c, Opportunity_Product__c,
                     Core_Feature_Name__c, Core_Feature_Type__c, Core_Feature_Set__r.Core_Feature__r.Core_Feature_Value__c, Core_Consumer_Sales_system__c,
-                    Core_Feature_Set__r.Core_Feature__r.Core_Multi_Select__c from Core_Opportunity_Features__c where Core_Opportunity__c = : sObjOpp.Id
-                    And Core_Feature_Set__r.Core_Feature_BU__c=:selectedPlatformBU]) {
+                    Core_Feature_Set__r.Core_Feature__r.Core_Multi_Select__c from Core_Opportunity_Features__c where Core_Opportunity__c = : sObjOpp.Id AND Opportunity_Product__c=:sOppProdId     ////TWC3123-4019 Redesign Descriptive Feature
+                    And Core_Feature_Set__r.Core_Feature_BU__c=:selectedPlatformBU And Type__C=:  this.Type]) {
                 mapCheckIfRecordIsPresent.put(sobjOpportFeature.Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c, sobjOpportFeature);
                 mapMultiSelectTofeature.put(sobjOpportFeature.Core_Feature_Set__r.Core_Feature__r.Core_Feature_Type__c+
                     sobjOpportFeature.Core_Feature_Set__r.Core_Feature__r.Core_Feature_Value__c,sobjOpportFeature);
@@ -592,7 +657,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                         // If the Opp feature is already present
                         if (!mapCheckIfRecordIsPresent.containsKey(sobjFeature.Core_Feature_Type__c)) { 
                             
-                            sobjOpportFeature = new Core_Opportunity_Features__c(Core_Opportunity__c = sObjOpp.Id, Core_Consumer_Sales_system__c=consumerSales1,
+                            sobjOpportFeature = new Core_Opportunity_Features__c(Core_Opportunity__c = sObjOpp.Id,Opportunity_Product__c = sOppProdId, Core_Consumer_Sales_system__c=consumerSales1,   ////TWC3123-4019 Redesign Descriptive Feature
                             Core_Feature_Set__c = mapSTringTofeatureId.get(sobjFeature.Core_Feature_Type__c + sobjFeature.Core_Feature_Value__c));
                             lstOppFeature.add(sobjOpportFeature);
                         } else  {  
@@ -605,7 +670,7 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     }
                     else{//// If the picklist is a multi select picklist
                         if(!mapMultiSelectTofeature.containsKey(sobjFeature.Core_Feature_Type__c+sobjFeature.Core_Feature_Value__c)){
-                            sobjOpportFeature = new Core_Opportunity_Features__c(Core_Opportunity__c = sObjOpp.Id,Core_Consumer_Sales_system__c=consumerSales1,
+                            sobjOpportFeature = new Core_Opportunity_Features__c(Core_Opportunity__c = sObjOpp.Id,Opportunity_Product__c = sOppProdId,Core_Consumer_Sales_system__c=consumerSales1,   ////TWC3123-4019 Redesign Descriptive Feature
                             Core_Feature_Set__c = mapSTringTofeatureId.get(sobjFeature.Core_Feature_Type__c + sobjFeature.Core_Feature_Value__c));
                             lstOppFeature.add(sobjOpportFeature);
                         }
@@ -618,12 +683,16 @@ public with sharing class Core_OppDescriptiveFeaturesController{
             } 
            
             // Carry out the addition & deletion of Opp feature and updation of opportunity
+            
             upsert lstOppFeature;
+            
             delete lstDeleteOppFeature;
+            
             update sObjOpp; 
             
             // Consumer Sales System
             if(!String.isBlank(consumerSales1)){
+                
                 
                 List<Core_Feature__c> flist = [select id from Core_Feature__c where Core_Feature_Type__c = 'Consumer Sales system' and Core_Feature_Value__c =:consumerSales1];
                 Core_Feature__c  feature = new Core_Feature__c();
@@ -636,11 +705,11 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     Core_Feature_Set__c fs = new Core_Feature_Set__c(Core_Feature__c=feature.id,Core_Feature_Header__c= Fh[0].id,Core_Active__c=true);
                     insert fs;
                 
-                    List <Core_Opportunity_Features__c> Oppfeatdel=[Select id from Core_Opportunity_Features__c where Core_Opportunity__c =:sObjOpp.id AND Core_Feature_Type__c='Consumer Sales system'];
+                    List <Core_Opportunity_Features__c> Oppfeatdel=[Select id from Core_Opportunity_Features__c where Core_Opportunity__c =:sObjOpp.id AND Opportunity_Product__c =: sOppProdId AND Core_Feature_Type__c='Consumer Sales system' And Type__c=:  this.Type];  ////TWC3123-4019 Redesign Descriptive Feature
               
                     delete Oppfeatdel;
                
-                    Core_Opportunity_Features__c  Oppfeature = new Core_Opportunity_Features__c (Core_Feature_Set__c=fs.id,Core_Opportunity__c=sObjOpp.Id);
+                    Core_Opportunity_Features__c  Oppfeature = new Core_Opportunity_Features__c (Core_Feature_Set__c=fs.id,Core_Opportunity__c=sObjOpp.Id,Opportunity_Product__c = sOppProdId);  ////TWC3123-4019 Redesign Descriptive Feature
                     insert Oppfeature;
                 }
                 else{
@@ -648,11 +717,11 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                     Core_Feature_Set__c fs = new Core_Feature_Set__c(Core_Feature__c=flist[0].id,Core_Feature_Header__c= Fh[0].id,Core_Active__c=true);
                     insert fs;
                 
-                    List <Core_Opportunity_Features__c> Oppfeatdel=[Select id from Core_Opportunity_Features__c where Core_Opportunity__c =:sObjOpp.id AND Core_Feature_Type__c='Consumer Sales system'];
+                    List <Core_Opportunity_Features__c> Oppfeatdel=[Select id from Core_Opportunity_Features__c where Core_Opportunity__c =:sObjOpp.id AND Opportunity_Product__c =: sOppProdId AND Core_Feature_Type__c='Consumer Sales system' And Type__c=:  this.Type];  ////TWC3123-4019 Redesign Descriptive Feature
               
                     delete Oppfeatdel;
                
-                    Core_Opportunity_Features__c  Oppfeature = new Core_Opportunity_Features__c (Core_Feature_Set__c=fs.id,Core_Opportunity__c=sObjOpp.Id);
+                    Core_Opportunity_Features__c  Oppfeature = new Core_Opportunity_Features__c (Core_Feature_Set__c=fs.id,Core_Opportunity__c=sObjOpp.Id,Opportunity_Product__c = sOppProdId);  ////TWC3123-4019 Redesign Descriptive Feature
                     insert Oppfeature;
                 }
                 /*Core_Feature_Set__c fs = new Core_Feature_Set__c(Core_Feature__c=feature.id,Core_Feature_Header__c= Fh[0].id,Core_Active__c=true);
@@ -661,13 +730,12 @@ public with sharing class Core_OppDescriptiveFeaturesController{
                 insert Oppfeature;*/
             }
             else{
-                List <Core_Opportunity_Features__c> Oppfeatdel=[Select id from Core_Opportunity_Features__c where Core_Opportunity__c =:sObjOpp.id AND Core_Feature_Type__c='Consumer Sales system'];
+                
+                List <Core_Opportunity_Features__c> Oppfeatdel=[Select id from Core_Opportunity_Features__c where Core_Opportunity__c =:sObjOpp.id AND  Opportunity_Product__c =: sOppProdId AND Core_Feature_Type__c='Consumer Sales system'  And Type__c=:  this.Type];  ////TWC3123-4019 Redesign Descriptive Feature
                 delete Oppfeatdel;
-            }
-            
-        
-            
+            }         
         } catch (Exception e) {  
+           
             ApexPages.addmessage(new ApexPages.message(ApexPages.severity.FATAL,System.label.Core_Exception+e.getmessage()));
             
             //Call the method to return the earlier values of the feature & header
@@ -686,7 +754,16 @@ public with sharing class Core_OppDescriptiveFeaturesController{
      * Parameter    : NONE
      */
     public pagereference ReturntoOpp() {
-        PageReference oppViewPage = new ApexPages.StandardController(sObjOpp).view();
+        PageReference oppViewPage;
+        if (ApexPages.currentPage().getParameters().get('sOppProdid') != NULL)////TWC3123-4019 Redesign Descriptive Feature
+        {
+            oppViewPage= new ApexPages.StandardController(sObjOppProd).view();
+            
+        }
+        else{
+
+         oppViewPage = new ApexPages.StandardController(sObjOpp).view();
+        }
         oppViewPage.setRedirect(true);
         return oppViewPage;
     }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <available>true</available>
+    <description>Email template to notify the Approver on creation of Portal Request(Quote Deactivation) from Chatbot</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PSG Disty Quote Deactivation Request From Chatbot</name>
+    <style>none</style>
+    <subject>Disty change request for Request No.-</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

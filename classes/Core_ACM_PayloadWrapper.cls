@@ -97,4 +97,45 @@ public without sharing class Core_ACM_PayloadWrapper {
         public String EnterpriseID {get; set;}
         public String EmailID {get; set;}
     }
+    
+    	//Ganesh Changes
+public class RoleRequestPayload {
+    public Requestee requestee { get; set; }
+    public List<RequestItem> requestItems { get; set; }
+}
+
+public class Requestee {
+    public String enterpriseId { get; set; }
+
+    public Requestee(String enterpriseId) {
+        this.enterpriseId = enterpriseId;
+    }
+}
+
+public class RequestItem {
+    public String operation { get; set; }
+    public Access access { get; set; }
+    public String justification { get; set; }
+
+    public RequestItem(
+        String operation,
+        Access access,
+        String justification
+    ) {
+        this.operation = operation;
+        this.access = access;
+        this.justification = justification;
+    }
+}
+
+public class Access {
+    public String type { get; set; }
+    public String name { get; set; }
+
+    public Access(String type, String name) {
+        this.type = type;
+        this.name = name;
+    }
+}
+//Ganesh Changes End
 }

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>1Avnet, Inc.-- Customer User</description>
+    <description>Avnet Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>1Avnet, Inc.-- Customer User</name>
+    <name>Avnet Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11790630_Matthew_Younan</parentRole>
+    <parentRole>EMP_10661203_Michael_Swain</parentRole>
 </Role>

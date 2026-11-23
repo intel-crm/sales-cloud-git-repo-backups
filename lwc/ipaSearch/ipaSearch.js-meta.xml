@@ -8,5 +8,11 @@
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
-   
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Category Id" description="Use Category Detail Page Record Id: {!recordId}" name="category" type="String"/>
+            <property label="Show Recommended Results?" description="Add 'Recommended Results' to the page. (NOTE: Currently disabled for pages that have grouping, ie. 'Distributor')" name="showRecommendedResults" type="Boolean"/>
+            <property name="analyticsPageType" type="String" default="" label="Analytics data in JSON string format"/>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

@@ -166,37 +166,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Opid_Sfid_Txt__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>PMP_Working_Copy_Id__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Benefit_Update_Ind__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_IPA_Badge_Tier_Txt__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Is_Distributor_Ind__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Partner_Benefit_Type__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Partner_Segment_Nm__c</field>
             <table>PMP_Company__c</table>
         </columns>
         <masterLabel>Marketing  Profile Informations</masterLabel>
@@ -312,36 +282,6 @@
             <field>PMP_Partner_Offering_Start_Dt__c</field>
             <table>PMP_Company__c.Offerings__r</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Is_Published_Ind__c</field>
-            <table>PMP_Company__c.Offerings__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Is_Converted_Ind__c</field>
-            <table>PMP_Company__c.Offerings__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Is_Notified_Ind__c</field>
-            <table>PMP_Company__c.Offerings__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Is_Not_Available_On_MP_Ind__c</field>
-            <table>PMP_Company__c.Offerings__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Pre_Release_Item_Count_Num__c</field>
-            <table>PMP_Company__c.Offerings__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Pre_Release_Check_Nm__c</field>
-            <table>PMP_Company__c.Offerings__r</table>
-        </columns>
         <masterLabel>Partner Offerings</masterLabel>
     </sections>
     <sections>
@@ -396,5 +336,18 @@
             <table>PMP_Company__c.Offerings__r.Offering_Categories__r</table>
         </columns>
         <masterLabel>Partner Offering Categories</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_isEmailDelivered__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_retriggerCount__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <masterLabel>Marketing Profile Information</masterLabel>
     </sections>
 </ReportType>

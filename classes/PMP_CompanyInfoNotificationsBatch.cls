@@ -22,8 +22,6 @@ global class PMP_CompanyInfoNotificationsBatch implements Database.Batchable<sOb
         Return Database.getQueryLocator(query);
     }
     global void execute(Database.BatchableContext bc, List<Core_Apex_EmailNotification__c> records) {
-               
-
         Core_Apex_EmailNotification__c apexEmailRec = records.isEmpty() ? null : records[0];
         if (apexEmailRec != null && apexEmailRec.Core_IsActive_Ind__c) {
             List<String> allowedPermissionSets = apexEmailRec.Core_Allowed_Permission_Nm__c.split(',');
@@ -34,8 +32,6 @@ global class PMP_CompanyInfoNotificationsBatch implements Database.Batchable<sOb
             }
 
             List<PMP_Company__c> compInfo = Database.query(query);
-            System.debug('Number of records retrieved: ' + compInfo.size());
-
             List<PMP_Company__c> companyInfoList = new List<PMP_Company__c>();
             Map<Id, Id> userCompanyMap = new Map<Id, Id>();
 

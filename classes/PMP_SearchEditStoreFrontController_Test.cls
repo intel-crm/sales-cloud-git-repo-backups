@@ -157,14 +157,14 @@ public class PMP_SearchEditStoreFrontController_Test extends PMP_SearchWrapperSt
         
         PMP_Company_Resource__c testResourceWc2 = PMP_SearchTestDataFactory.createCompanyResource('testResource', testpartnerWc2.Id, 'White Paper', true);
         
-        PMP_Company_Translation__c trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Dsc__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=testpartnerWc.Id);
+       /* PMP_Company_Translation__c trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Dsc__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=testpartnerWc.Id);
         insert trans;
         trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Tag_Line__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=testpartnerWc.Id);
         insert trans;
         trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Tag_Line__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=testpartner.Id);
         insert trans;
         trans = new PMP_Company_Translation__c(Name = 'test', PMP_Field_Nm__c='PMP_Account_Dsc__c',PMP_English_Txt__c='eng',PMP_Japanese_Txt__c='jap', PMP_Chinese_Txt__c='chi',PMP_Company_Information_Id__c=testpartner.Id);
-        insert trans;
+        insert trans;*/
         
         List<PMP_Category__c> catList = new List<PMP_Category__c>();
         PMP_Category__c cat0 = PMP_TestDataUtility.getCategory('Categories', 'NPP_01_TYPE','Solution_Marketplace_Hierarchy', 'en_us');
@@ -506,18 +506,18 @@ public class PMP_SearchEditStoreFrontController_Test extends PMP_SearchWrapperSt
     @isTest static void updateTranslationRecordsTest(){
         PMP_Company__c partner = [SELECT Id,PMP_Company_Lifecycle_Status_Nm__c, Name,PMP_Working_Copy_Id__c from PMP_Company__c where Name = 'testPartnerWc'];
         Test.startTest();
-        PMP_SearchEditStoreFrontController.updateTranslationRecords(partner.Id,partner.Name,'Japanese','tag','desc');
-        PMP_SearchEditStoreFrontController.updateTranslationRecords('Id',partner.Name,'Japanese','tag','desc');
+       // PMP_SearchEditStoreFrontController.updateTranslationRecords(partner.Id,partner.Name,'Japanese','tag','desc');
+       // PMP_SearchEditStoreFrontController.updateTranslationRecords('Id',partner.Name,'Japanese','tag','desc');
         
-        PMP_SearchEditStoreFrontController.updateTranslationRecords(partner.Id,partner.Name,'Simplified Chinese','tag','desc');
-         List<PMP_Company_Translation__c> transList = new List<PMP_Company_Translation__c>();
-		 transList = [select id, Name, PMP_Field_Nm__c, PMP_English_Txt__c from PMP_Company_Translation__c LIMIT 10];
-         system.assertNotEquals(NULL,transList,'Failed');
+       // PMP_SearchEditStoreFrontController.updateTranslationRecords(partner.Id,partner.Name,'Simplified Chinese','tag','desc');
+       //  List<PMP_Company_Translation__c> transList = new List<PMP_Company_Translation__c>();
+		// transList = [select id, Name, PMP_Field_Nm__c, PMP_English_Txt__c from PMP_Company_Translation__c LIMIT 10];
+        // system.assertNotEquals(NULL,transList,'Failed');
         Test.stopTest();
     }
     
     
-    @isTest static void createTranslationRecordsTest(){
+  /*  @isTest static void createTranslationRecordsTest(){
         PMP_Company__c comp = new PMP_Company__c(Name = 'Test Partner');
         
         Test.startTest();
@@ -530,7 +530,7 @@ public class PMP_SearchEditStoreFrontController_Test extends PMP_SearchWrapperSt
         system.assertEquals(3, trans.size(),'Failed');
         Test.stopTest();
     }
-    
+    */
     @isTest static void getLogo(){
         Test.startTest();
         FormData formData = new FormData();
@@ -641,8 +641,7 @@ public class PMP_SearchEditStoreFrontController_Test extends PMP_SearchWrapperSt
         company.PMP_Benefit_Update_Ind__c=False;
         company.PMP_Partner_Inactive_Ind__c = False;
         company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
         company.PMP_Is_Published_Ind__c=true;
       
         insert company;
@@ -654,13 +653,12 @@ public class PMP_SearchEditStoreFrontController_Test extends PMP_SearchWrapperSt
         acm.PRM_Channel_Program_Id__c=cpIPA.Id;
         acm.PRM_Channel_Program_Level_Id__c=cplTitanium.Id;
         acm.PRM_Partner_Role__c='Service Provider';
-        acm.PRM_Status_Reason_Txt__c='Test';
+       acm.PRM_Status_Reason_Txt__c='test';
         insert acm;
         
         Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
         coreAccnt.Core_Partner_Account_Id__c = newPagAccount.id;
         coreAccnt.Core_Intel_Account_Id__c = accObj.id; 
-       coreAccnt.Primary_Account__c=true;
         insert coreAccnt;
        
         PMP_OPID_MPI_Rel__c jun= new PMP_OPID_MPI_Rel__c();

@@ -5,9 +5,11 @@
     <name>PTNR - Lead admin queue</name>
     <queueMembers>
         <users>
-            <user>sales.crm.ww.data.operations@intel.com</user>
+            <user>nikitha@intel.com.int</user>
+            <user>10770937@intel.com</user>
             <user>salesforce.system.user@intel.com.crm</user>
             <user>serena@inteliotsolutionsalliance.com.crm</user>
+            <user>test_sales_rep_bb@intel.com.crm</user>
         </users>
     </queueMembers>
     <queueSobject>

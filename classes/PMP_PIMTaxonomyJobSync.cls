@@ -21,15 +21,13 @@ global with sharing class PMP_PIMTaxonomyJobSync {
         Map<Integer,String> orderedStaticResMap = new Map<Integer,String>();
         List<Integer> staticResOrderIndicator = new List<Integer>();
         List<StaticResource> taxonomyStaticResources = new  List<StaticResource>();
-        // System.debug('modifiedFileNames' + modifiedFileNames);
         
         // first process the delta file then process other files received from PIM
-        /*if(modifiedFileNames.contains('Delta_IPA_Products'))
+        if(modifiedFileNames.contains('Delta_IPA_Products'))
         {
             PMP_ParseAllFilesJSONDelta.parseAllFilesJSONDelta('Delta_IPA_Products');
-        }*/
+        }
         List<String> fileNames = modifiedFileNames.split(',');
-        // System.debug('fileNames' + fileNames);
         for(String fileName: fileNames)
         {
             if(fileName!='Delta_IPA_Products')
@@ -37,7 +35,6 @@ global with sharing class PMP_PIMTaxonomyJobSync {
                  uniqueTaxonomyStaticResourceNames.add(fileName); 
             }
         }  
-        //system.debug('uniqueTaxonomyStaticResourceNames' + uniqueTaxonomyStaticResourceNames);
         staticResOrderIndicator = new List<Integer>();
         staticResoucesToBeProcessed = new List<String>();
         if(fileNames.size()>0)
@@ -49,8 +46,6 @@ global with sharing class PMP_PIMTaxonomyJobSync {
                 //Assign the values to map of Static resource name and order
                 processOrderByName.put(StaticResourceExecOrd.Static_Resource_Name__c,StaticResourceExecOrd.Execution_Order__c);
             }
-            //System.debug('processOrderByName-->'+processOrderByName);
-            //System.debug('uniqueTaxonomyStaticResourceNames-->'+uniqueTaxonomyStaticResourceNames);
             // those will be executed to convert into salesforce taxonomy records
             
             if(Test.isRunningTest()) {
@@ -70,8 +65,6 @@ global with sharing class PMP_PIMTaxonomyJobSync {
                     staticResOrderIndicator.add(Integer.valueOf(processOrderByName.get(stat.Name)));
                 }
             }  
-            //System.debug('orderedStaticResMap-->'+orderedStaticResMap);
-            //System.debug('staticResOrderIndicator-->'+staticResOrderIndicator);
             
             if(!orderedStaticResMap.keySet().isEmpty()) { 
                 
@@ -82,7 +75,6 @@ global with sharing class PMP_PIMTaxonomyJobSync {
                     staticResoucesToBeProcessed.add(orderedStaticResMap.get(staticResOrderIndicator[i]));
                 }  
                 
-                //system.debug('###staticResoucesToBeProcessed:->'+staticResoucesToBeProcessed); 
                 if(staticResoucesToBeProcessed.size()>0)
                 {
                   //Calling Taxonomy Job to load static resources

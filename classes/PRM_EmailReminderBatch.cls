@@ -96,7 +96,6 @@ global with sharing class PRM_EmailReminderBatch implements  Database.Batchable<
                             TotalJobItems, CreatedBy.Email 
                             FROM AsyncApexJob 
                             WHERE Id = :bc.getJobId()]; 
-        System.debug('Result'+job);
         logEntryMsg+='\n*1st JOB END*';
     }   
     public static void sendEmailToContacts(Map<id,List<PRM_EmailLog__c>> EmailContactMap, Map<id,contact> ContMap){

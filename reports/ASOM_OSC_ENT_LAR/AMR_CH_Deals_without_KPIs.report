@@ -57,11 +57,18 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Napolitano</value>
+            <value>hain</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

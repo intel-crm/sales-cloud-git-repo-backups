@@ -87,14 +87,15 @@ Modification Log :
             insert ListStdActions;
         }
         ApexPages.StandardController Controller = new ApexPages.StandardController(ListOfCases.get(0));
-        PageReference pageRef = Page.Core_Case_New_LandingPage;
+        /* commented for classic EOL-Rajashekar */
+      /*  PageReference pageRef = Page.Core_Case_New_LandingPage;
         pageRef.getParameters().put('RecordType',rtId);
         pageRef.getParameters().put('cancelURL','abc');
         pageRef.getParameters().put('ent','abc');
         pageRef.getParameters().put('_CONFIRMATIONTOKEN','abc');
         pageRef.getParameters().put('save_new_url','asasas');
         //pageRef.getParameters().put('id', ListOfCases.get(0).id);
-        Test.setCurrentPage(pageRef);
+        Test.setCurrentPage(pageRef); */
         Pagereference ref;
         Core_Case_ActionController pagExt = new Core_Case_ActionController(Controller);
         System.runAs(ListOfUser.get(0)){
@@ -167,14 +168,15 @@ Modification Log :
             insert ListStdActions;
         }
         ApexPages.StandardController Controller = new ApexPages.StandardController(ListOfCases.get(0));
-        PageReference pageRef = Page.Core_Case_New_LandingPage;
+        /* commented for classic EOL-Rajashekar */
+    /*    PageReference pageRef = Page.Core_Case_New_LandingPage;
         //pageRef.getParameters().put('RecordType',rtId);
         pageRef.getParameters().put('cancelURL','abc');
         pageRef.getParameters().put('ent','abc');
         pageRef.getParameters().put('_CONFIRMATIONTOKEN','abc');
         pageRef.getParameters().put('save_new_url','asasas');
         //pageRef.getParameters().put('id', ListOfCases.get(0).id);
-        Test.setCurrentPage(pageRef);
+        Test.setCurrentPage(pageRef); */
         Pagereference ref;
         Core_Case_ActionController pagExt = new Core_Case_ActionController(Controller);
         System.runAs(ListOfUser.get(0)){

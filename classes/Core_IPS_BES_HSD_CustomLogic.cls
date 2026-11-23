@@ -69,11 +69,14 @@ Modification Log :
     public static Map<String, String> getUserDetailsUsingIdSid(Set<String> listIdSId) {
         Map<String, String> mapIdSidToDetails = new Map<String, String>();
         
-        
+        /* Get custom setting record to fetch URLs for User Details Apigee Wrapper */
+        //TWC745-6469//String apigeeWrapCSRec = System.Label.Core_IPS_BES_CSRecForApiWrapper;
+        //Core_IPS_APIGEE_Custom_Settings__c scRecord = Core_IPS_APIGEE_Custom_Settings__c.getInstance(apigeeWrapCSRec);//TWC745-6469-IPS Coveo Named Credentials - Gangadhar
 	String endpoint = 'callout:Core_IPS_HSD_UserDetails_NamedCredential/'; //TWC745-6469-IPS Coveo Named Credentials - Gangadhar
-        
+        /*Get access token */
+        //TWC745-6469//String accessToken = Core_IPS_APIGEE_Utility.generateAccessToken(scRecord.Name);
         for(String idSId : listIdSId){
-            
+            //String userDetail = makeAPICall(accessToken, scRecord.MyIntel_Endpoint_URL__c, idSId);//TWC745-6469-IPS Coveo Named Credentials - Gangadhar
 	    String userDetail = makeAPICall(endpoint, idSId);
             mapIdSidToDetails.put(idSId, userDetail);
         }
@@ -88,21 +91,23 @@ Modification Log :
     * ----------------------------------------------------------------------------                 
     * Tejaswini                     22/02/2024              Created
     ****************************************************************************************************/
-    
-    public static String makeAPICall(String endPointURL, String idSId){ //TWC745-6469-IPS Coveo Named Credentials - Gangadhar
+    //TWC745-6469//public static String makeAPICall(String accessToken,String endPointURL, String idSId){
+	public static String makeAPICall(String endPointURL, String idSId){ //TWC745-6469-IPS Coveo Named Credentials - Gangadhar
+        System.debug('Heapsize at makeAPICall 97: '+ Limits.getHeapSize()); //3.2MB , V2_7.39MB
         String ipsAuthorization = System.Label.IPS_Authorization;
         String userNameEmail = null;
         Http calloutreq = new Http();
         HttpRequest postRequest = new HttpRequest();
         postRequest.setMethod('GET');
-        postRequest.setEndpoint(endPointURL + idSId);
+        postRequest.setEndpoint(endPointURL + idSId);//TWC745-6469-IPS Coveo Named Credentials - Gangadhar
+	System.debug('endPointURL Test 20102024'+endPointURL);
         postRequest.setHeader('content-type', 'application/json');               
-        
+        //TWC745-6469//postRequest.setHeader(ipsAuthorization, 'Bearer ' + accessToken);
         postRequest.setTimeout(Integer.valueOf(System.Label.Core_IPS_BES_APITimeout));
         HttpResponse response = calloutreq.send(postRequest);
         if(response.getStatusCode() == 200){
             Map<string,Object> resultMap = (Map<string,Object>)JSON.deserializeUntyped(response.getBody());
-         
+            System.debug('Response Test 20102024'+response);
             List<Object> obj = (List<Object>)resultMap.get('data');
             Map<String, Object> mapUser = (Map<String, Object>)obj[0];
             userNameEmail = (String)mapUser.get('sys_user.email') + ';' ;

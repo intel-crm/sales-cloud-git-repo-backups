@@ -22,9 +22,6 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$SBQQ__Quote__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c$Pricing_Customer_Reference_Id__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Quote_Line_Number_Txt__c</field>
     </columns>
     <columns>

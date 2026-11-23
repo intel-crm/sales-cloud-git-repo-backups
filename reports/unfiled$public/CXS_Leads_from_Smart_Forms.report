@@ -37,7 +37,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>smart</value>
+            <value>smart form</value>
         </criteriaItems>
         <criteriaItems>
             <column>COUNTRY_CODE</column>
@@ -74,7 +74,7 @@
     </params>
     <reportType>LeadList</reportType>
     <scope>org</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>

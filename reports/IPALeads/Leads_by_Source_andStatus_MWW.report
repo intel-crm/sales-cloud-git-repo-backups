@@ -50,12 +50,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>CDF1</field>
     </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Notes__c</field>
-    </columns>
     <customDetailFormulas>
         <calculatedFormula>IF(ISPICKVAL(Lead.Core_Lead_Status__c, &quot;New&quot;) ,1,0)</calculatedFormula>
         <dataType>Double</dataType>

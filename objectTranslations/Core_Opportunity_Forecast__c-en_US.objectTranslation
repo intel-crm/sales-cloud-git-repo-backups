@@ -14,12 +14,12 @@
         <name>Core_Days_Remains__c</name>
     </fields>
     <fields>
-        <label><!-- Forecast Amount --></label>
-        <name>Core_Forecast_Amount__c</name>
-    </fields>
-    <fields>
-        <label><!-- Forecast Quarter --></label>
-        <name>Core_Forecast_Quarter__c</name>
+        <label><!-- Forecaset Quarter --></label>
+        <name>Core_Forecaset_Quarter__c</name>
+        <picklistValues>
+            <masterLabel>Q1 2023</masterLabel>
+            <translation><!-- Q1 2023 --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>Q1 2024</masterLabel>
             <translation><!-- Q1 2024 --></translation>
@@ -27,6 +27,30 @@
         <picklistValues>
             <masterLabel>Q1 2025</masterLabel>
             <translation><!-- Q1 2025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q1 2026</masterLabel>
+            <translation><!-- Q1 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q1 2027</masterLabel>
+            <translation><!-- Q1 2027 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q1 2028</masterLabel>
+            <translation><!-- Q1 2028 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q1 2029</masterLabel>
+            <translation><!-- Q1 2029 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q1 2030</masterLabel>
+            <translation><!-- Q1 2030 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2023</masterLabel>
+            <translation><!-- Q2 2023 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Q2 2024</masterLabel>
@@ -37,12 +61,124 @@
             <translation><!-- Q2 2025 --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Q2 2026</masterLabel>
+            <translation><!-- Q2 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2027</masterLabel>
+            <translation><!-- Q2 2027 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2028</masterLabel>
+            <translation><!-- Q2 2028 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2029</masterLabel>
+            <translation><!-- Q2 2029 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2030</masterLabel>
+            <translation><!-- Q2 2030 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2023</masterLabel>
+            <translation><!-- Q3 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Q3 2024</masterLabel>
             <translation><!-- Q3 2024 --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Q3 2025</masterLabel>
+            <translation><!-- Q3 2025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2026</masterLabel>
+            <translation><!-- Q3 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2027</masterLabel>
+            <translation><!-- Q3 2027 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2028</masterLabel>
+            <translation><!-- Q3 2028 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2029</masterLabel>
+            <translation><!-- Q3 2029 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2030</masterLabel>
+            <translation><!-- Q3 2030 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2023</masterLabel>
+            <translation><!-- Q4 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Q4 2024</masterLabel>
             <translation><!-- Q4 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2025</masterLabel>
+            <translation><!-- Q4 2025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2026</masterLabel>
+            <translation><!-- Q4 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2027</masterLabel>
+            <translation><!-- Q4 2027 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2028</masterLabel>
+            <translation><!-- Q4 2028 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2029</masterLabel>
+            <translation><!-- Q4 2029 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2030</masterLabel>
+            <translation><!-- Q4 2030 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Forecast Amount --></label>
+        <name>Core_Forecast_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Quarter --></label>
+        <name>Core_Forecast_Quarter__c</name>
+        <picklistValues>
+            <masterLabel>Q1 2023</masterLabel>
+            <translation><!-- Q1 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q1 2024</masterLabel>
+            <translation><!-- Q1 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2023</masterLabel>
+            <translation><!-- Q2 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2 2024</masterLabel>
+            <translation><!-- Q2 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2023</masterLabel>
+            <translation><!-- Q3 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q3 2024</masterLabel>
+            <translation><!-- Q3 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2023</masterLabel>
+            <translation><!-- Q4 2023 --></translation>
         </picklistValues>
     </fields>
     <fields>

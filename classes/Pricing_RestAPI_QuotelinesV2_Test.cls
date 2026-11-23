@@ -16,13 +16,14 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
     private static void createData(){
         Pricing_RestAPI_TestUtility.createRestAPIErrorCodesConfig();
         List<Product2> prodList = new List<Product2>();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         Product2 prod = new Product2();
         prod.Core_Product_Org__c = 'Sales';
         prod.Core_Product_Type__c = 'Processors';
         prod.Core_Sales_Visible_Flag__c  = True;
         prod.IsActive = True;
         prod.Core_Hierarchy_ID__c = '43';
-        prod.Core_Group_Code_Short_Name__c = 'DCG~DCAI';
+        prod.Core_Line_of_Business__c = lobValuesList[0];
         prod.Core_Processor_Number_Nm__c  = '6220';
         prod.Name = 'Product X';
         prodList.add(prod);
@@ -431,13 +432,14 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         system.runAs(adminUser){
             test.startTest();
             product2 prodClient = new product2();
+            List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             prodClient.Core_product_Org__c = 'Sales';
             prodClient.Core_product_Type__c = 'Processors';
             prodClient.Core_Sales_Visible_Flag__c  = True;
             prodClient.IsActive = True;
             prodClient.Core_VerticalSegment__c = 'Desktop';
             prodClient.Core_Hierarchy_ID__c = '43';
-            prodClient.Core_Group_Code_Short_Name__c = 'CCG';
+            prodClient.Core_Line_of_Business__c = lobValuesList[1];
             prodClient.Core_Processor_Number_Nm__c  = '6220';
             prodClient.Name = 'product Y';
             insert prodClient;
@@ -504,13 +506,14 @@ public class Pricing_RestAPI_QuotelinesV2_Test{
         system.runAs(adminUser){
             test.startTest();
             product2 prodClient = new product2();
+            List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             prodClient.Core_product_Org__c = 'Sales';
             prodClient.Core_product_Type__c = 'Processors';
             prodClient.Core_Sales_Visible_Flag__c  = True;
             prodClient.IsActive = True;
             prodClient.Core_VerticalSegment__c = 'Desktop';
             prodClient.Core_Hierarchy_ID__c = '43';
-            prodClient.Core_Group_Code_Short_Name__c = 'CCG';
+            prodClient.Core_Line_of_Business__c = lobValuesList[1];
             prodClient.Core_Processor_Number_Nm__c  = '6220';
             prodClient.Name = 'product Y';
             insert prodClient;

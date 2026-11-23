@@ -11,8 +11,7 @@
         <label>Send Notifications</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>PRM_VXData_SendNotification_Messages</actionName>
-        <actionType>apex</actionType>
+        <actionName>01p2i0000000DAxNotFound</actionName>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -55,7 +54,6 @@
                 <elementReference>myVariable_current</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>PRM_VXData_SendNotification_Messages</nameSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>

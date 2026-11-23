@@ -248,7 +248,7 @@ public without sharing class PRM_OPIDTriggerBatchUtility
     //Method will compare the VXData with VX critreia for Upgrade recommendation on the basis of qualitative and qunatitaive criteria logic 
     private static void upsertRecommendationsForUpgrade(List<PRM_Value_Exchange_Data__c> valueExchangeDataList,Map<String,List<PRM_Value_Exchange_Data__c>> opidVxDataMap, List<PRM_Value_Exchange_Data__c> opidVxDataCompleteList, Set<Id> vxDataForUpgradeIdSet)
     {
-        List<PRM_Value_Exchange_Recommendation__c> valueExchangeRecommendationList = new  List<PRM_Value_Exchange_Recommendation__c>();
+       // List<PRM_Value_Exchange_Recommendation__c> valueExchangeRecommendationList = new  List<PRM_Value_Exchange_Recommendation__c>();
         Set<String> tempRemoveOpidVxDataIDSet = new Set<String>();
         Map<string, string> criteriaVxDataFieldMap = new  Map<string, string>();
         Map<String,CriteriaFulfilledwrapper> criteriaFulfilledMap = new Map<String,CriteriaFulfilledwrapper>();
@@ -259,15 +259,17 @@ public without sharing class PRM_OPIDTriggerBatchUtility
         Map<String,List<PRM_Account_Specialty_Association__c>> mapOfAccAndASA = new Map<String,List<PRM_Account_Specialty_Association__c>>();
         Map<String,Map<Decimal,Boolean>> rankingSatisfiedQuantativeMap = new Map<String,Map<Decimal,Boolean>>();
         set<Id> upgradeAccIds = new set<Id>();
-        list<PRM_Account_Specialty_Association__c> asaList = new list<PRM_Account_Specialty_Association__c>();
-        if(!opidVxDataCompleteList.isEmpty()){
-            for(PRM_Value_Exchange_Data__c upgradeList : opidVxDataCompleteList){
+        //list<PRM_Account_Specialty_Association__c> asaList = new list<PRM_Account_Specialty_Association__c>();
+        //ATHR Fix - TWC729-9556 - JB - start
+        /*if(!opidVxDataCompleteList.isEmpty()){
+            for(PRM_Value_Exchange_Data__c upgradeList : opidVxDatvaCompleteList){
                 upgradeAccIds.add(upgradeList.PRM_Account_Id__c);
             }
         }
         if(!upgradeAccIds.isEmpty()){  
             asaList  = [Select PRM_Account_Id__c,PRM_Partner_Role__c,PRM_Specialty_Id__r.Name,PRM_Specialty_Type__c from PRM_Account_Specialty_Association__c where PRM_Account_Id__c in:upgradeAccIds and  PRM_InActive_Ind__c = false] ;
-        }
+        }*/
+        //ATHR Fix - TWC729-9556 - JB - end
         /*if(!asaList.isEmpty() && (!ipaRefresh  || test.isrunningtest())){ //IPA2.0-TWC727-2861
             for(PRM_Account_Specialty_Association__c asa : asaList){
             if(asa.PRM_Specialty_Type__c.equalsIgnoreCase(System.Label.PRM_Source_Specialty)){//DE80439-Specialty ASA filter
@@ -495,9 +497,6 @@ public without sharing class PRM_OPIDTriggerBatchUtility
                                         
                                     }
                                 }
-                                when else {
-                                    //System.debug('Ignored '+vxCriteria.PRM_Specialty_Criteria_Id__r.Name);
-                                }
                             }
                         }
                     }
@@ -549,7 +548,7 @@ public without sharing class PRM_OPIDTriggerBatchUtility
             else{
                 flag=false;
             }
-            if(flag)
+            /*if(flag)
             {
                 PRM_Value_Exchange_Recommendation__c valueExchangeRecommendation = new  PRM_Value_Exchange_Recommendation__c();
                 valueExchangeRecommendation.RecordTypeId = Schema.SObjectType.PRM_Value_Exchange_Recommendation__c.getRecordTypeInfosByName().get(System.Label.PRM_RecordType_Upgrade_Downgrade).getRecordTypeId();
@@ -600,7 +599,7 @@ public without sharing class PRM_OPIDTriggerBatchUtility
                     //US687613-If criteria is not present
                 }
                 if(wrapperObject.specialtyPresent){
-                    String asaKey=vxData.PRM_Account_Id__c/*+vxData.PRM_Partner_Role_Nm__c*/; //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
+                    String asaKey=vxData.PRM_Account_Id__c/*+vxData.PRM_Partner_Role_Nm__c; //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
                     if(mapOfAccAndASA.containsKey(asaKey)&&mapOfAccAndASA.get(asaKey).size()>0){
                         valueExchangeRecommendation.PRM_Specialty_Present_Nm__c =YES;//US687613-If criteria is present and value is also matching
                     }
@@ -624,7 +623,7 @@ public without sharing class PRM_OPIDTriggerBatchUtility
                 }
                 valueExchangeRecommendationList.add(valueExchangeRecommendation);
             }
-            else{
+            else*/if(!flag){
                 string calculationKey;
                 if(vxData.PRM_Tier_Id__r.Name == System.Label.PRM_Member)
                 {
@@ -653,9 +652,9 @@ public without sharing class PRM_OPIDTriggerBatchUtility
             }
         }
         
-        if(valueExchangeRecommendationList.size()>0){
+        /*if(valueExchangeRecommendationList.size()>0){
             upsertRecommendation(valueExchangeRecommendationList);
-        }
+        }*/
         
         for(PRM_Value_Exchange_Data__c vxData : opidVxDataCompleteList){
             String key=vxData.PRM_One_Partner_Id__c/*+vxData.PRM_Partner_Role_Nm__c*/ + vxData.PRM_Country_Market_Type_Nm__c +vxData.PRM_Tier_Id__r.Name; //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
@@ -680,7 +679,7 @@ public without sharing class PRM_OPIDTriggerBatchUtility
     }
     
     //US570458-Method will upsert the record in Recommendation and in case of failure error log will be generated.
-    private static void upsertRecommendation(List<PRM_Value_Exchange_Recommendation__c> valueExchangeRecommendationList)
+    /*private static void upsertRecommendation(List<PRM_Value_Exchange_Recommendation__c> valueExchangeRecommendationList)
     {
         
         List<PRM_Value_Exchange_Recommendation__c> upsertValueExchangeRecommendationList = new  List<PRM_Value_Exchange_Recommendation__c>();
@@ -762,6 +761,7 @@ public without sharing class PRM_OPIDTriggerBatchUtility
             Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT, 'Message', SEVERITY, ERROR_MESSAGE, '', '', '', '');
         }
     }
+    */
     //US599996-Method will update the processed date in VX Data for every time batch pick the record.
     private static void updateVXData(List<PRM_Value_Exchange_Data__c> vXDataList,Set<Id> vxDataIdSet)
     {

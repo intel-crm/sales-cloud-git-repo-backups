@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_List__c</field>
-        <value xsi:type="xsd:string">Partner Admin,Partner Admin Delegate,Employee,Warranty Requestor,Points Redeem</value>
+        <value xsi:type="xsd:string">Employee</value>
     </values>
     <values>
         <field>PRM_Inactive_Indicator__c</field>

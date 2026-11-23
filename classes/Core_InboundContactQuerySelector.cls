@@ -18,9 +18,11 @@ public without sharing class Core_InboundContactQuerySelector implements Core_In
     */
     public Contact getContact(String erpmPersonId,String erpmEmail,String queryFields){
         List<Contact> contacts = new List<Contact>();
-        String query = 'SELECT '+queryFields+' FROM contact WHERE Core_eRPM_Person_Id__c =:erpmPersonId LIMIT 1';
-        contacts = Database.query(String.escapeSingleQuotes(query));
-        if(contacts.size() == 0) {
+        if(String.isNotBlank(erpmPersonId)) {
+            String query = 'SELECT '+queryFields+' FROM contact WHERE Core_eRPM_Person_Id__c =:erpmPersonId LIMIT 1';
+            contacts = Database.query(String.escapeSingleQuotes(query));
+        }
+        if(contacts.isEmpty() && String.isNotBlank(erpmEmail)) {
             String query1 = 'SELECT '+queryFields+' FROM contact WHERE Email =:erpmEmail LIMIT 1';
             contacts = Database.query(String.escapeSingleQuotes(query1));
         }

@@ -18,7 +18,6 @@ IF(INCLUDES($Record.Core_MDF_Program__c, &quot;Core_MDF_Co_GTM&quot;),&quot;Co-G
     </formulas>
     <interviewLabel>Core_MDF_Update_Bank_Program_Value {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_Update_Bank_Program_Value</label>
-    <migratedFromWorkflowRuleName>Core_MDF_Update_Bank_Program_Value</migratedFromWorkflowRuleName>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

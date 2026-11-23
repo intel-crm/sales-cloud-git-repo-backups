@@ -64,6 +64,8 @@ public without sharing class PRM_Account_Specialty_Assoc_Utility {
   //Commenting down this method as a part of Specialty EOL Story (TWC729-4729 -> Specialty EOL- remove Specialist values from Account)
   /*
     public static void updatePartnerSpecialityOnAccount(list<PRM_Account_Specialty_Association__c> lstOfASA , map<id,PRM_Account_Specialty_Association__c> mapOldASAById){
+        System.debug('Inside updatePartnerSpecialityOnAccount :-');
+        System.debug('Inside updatePartnerSpecialityOnAccount :-'+lstOfASA);
         
         set<String> setOfAccountId = new set<String>();
         set<String> setOfSpecialityId = new set<String>();
@@ -112,20 +114,30 @@ public without sharing class PRM_Account_Specialty_Assoc_Utility {
                     lstOfExsistingASARecord = [Select PRM_Account_Id__c,PRM_Specialty_Id__c,PRM_Specialty_Id__r.Name,PRM_InActive_Ind__c,PRM_Partner_Role__c from PRM_Account_Specialty_Association__c where PRM_Account_Id__c IN: setOfAccountId AND PRM_Specialty_Id__c IN: setOfSpecialityId AND PRM_InActive_Ind__c = False];
                 }
             } 
-
+            
+            System.debug('setOfAccountId :-'+setOfAccountId);
+            System.debug('setOfSpecialityId :-'+setOfSpecialityId);
+            System.debug('mapOfAccountIdToListofSpecialityId :-'+mapOfAccountIdToListofSpecialityId);
+            System.debug('mapOfAccountIdToListofSpecialityIdMadeInactive :-'+mapOfAccountIdToListofSpecialityIdMadeInactive);
+            System.debug('lstOfExsistingASARecord :-'+lstOfExsistingASARecord);
+            
             if(setOfSpecialityId !=null && !setOfSpecialityId.isEmpty()){
                 for(PRM_Specialty__c speciality:[select id,Name from PRM_Specialty__c where id IN: setOfSpecialityId]){
                     mapOfSpecialityIdWithSpeciality.put(speciality.id,speciality);   
                 }
             }
-
+            
+            System.debug('mapOfSpecialityIdWithSpeciality :-'+mapOfSpecialityIdWithSpeciality);
+            
             if(setOfAccountId !=null && !setOfAccountId.isEmpty() && mapOfSpecialityIdWithSpeciality.keyset() !=null && ! mapOfSpecialityIdWithSpeciality.keyset().isEmpty()){
                 for(Account acc:[select id,name,Core_IPA_Partner_Speciality__c from account where Id IN: setOfAccountId]){
                     if(acc.Core_IPA_Partner_Speciality__c != null){
+                        system.debug('acc.Core_IPA_Partner_Speciality__c :-'+acc.Core_IPA_Partner_Speciality__c);
                         for(string str: acc.Core_IPA_Partner_Speciality__c.replace(System.Label.PRM_Specialist,System.Label.PRM_Specialty).replace('High Performance Computing Specialty','High Performance Computing Data Center Specialty').split(';')){ // Changes made for US619513
                             setOfAccountPicklistValues.add(str);
                         }
-
+                        System.debug('setOfAccountPicklistValues :-'+setOfAccountPicklistValues);
+                        
                         //method to add speciality in account if asa record is active 
                         if(mapOfAccountIdToListofSpecialityId.containsKey(acc.Id) && mapOfAccountIdToListofSpecialityId.keySet() !=null && ! mapOfAccountIdToListofSpecialityId.keySet().isEmpty()){
                             for(string specialityId: mapOfAccountIdToListofSpecialityId.get(acc.id)){
@@ -138,6 +150,7 @@ public without sharing class PRM_Account_Specialty_Assoc_Utility {
                         //Method to remove speciality from account if asa is inactive
                         if(mapOfAccountIdToListofSpecialityIdMadeInactive.containsKey(acc.Id) && mapOfAccountIdToListofSpecialityIdMadeInactive.keySet() !=null && ! mapOfAccountIdToListofSpecialityIdMadeInactive.keySet().isEmpty()){
                             for(string specialityId: mapOfAccountIdToListofSpecialityIdMadeInactive.get(acc.id)){
+                                System.debug('checking result of genreic method :-'+DupeSpecialityCheck(acc.id,specialityId,lstOfExsistingASARecord));
                                 if(setOfAccountPicklistValues.contains(mapOfSpecialityIdWithSpeciality.get(specialityId).name) && ! DupeSpecialityCheck(acc.id,specialityId,lstOfExsistingASARecord)){
                                     List<string> lstPicklistValues = acc.Core_IPA_Partner_Speciality__c.replace(System.Label.PRM_Specialist,System.Label.PRM_Specialty).replace('High Performance Computing Specialty','High Performance Computing Data Center Specialty').split(';');// Changes made for US619513
                                     lstPicklistValues.remove(lstPicklistValues.indexOf(mapOfSpecialityIdWithSpeciality.get(specialityId).name));
@@ -156,6 +169,7 @@ public without sharing class PRM_Account_Specialty_Assoc_Utility {
                     // Updated code for US619513
                     
                     if(acc.Core_IPA_Partner_Speciality__c != null){
+                        System.debug('to chck 1 :- '+acc.Core_IPA_Partner_Speciality__c);
                         acc.Core_IPA_Partner_Speciality__c = acc.Core_IPA_Partner_Speciality__c.replace(System.Label.PRM_Specialty,System.Label.PRM_Specialist).replace('High Performance Computing Data Center Specialist','High Performance Computing Specialist'); // added code for US619513
                     }
                     
@@ -163,7 +177,8 @@ public without sharing class PRM_Account_Specialty_Assoc_Utility {
                     setOfAccountPicklistValues.clear();
                 }
             } 
-
+            System.debug('lstOfAccountToUpdate :-'+lstOfAccountToUpdate);
+            
             /*if(lstOfAccountToUpdate !=null && !lstOfAccountToUpdate.isEmpty()){
                 database.update(lstOfAccountToUpdate,false);
             }
@@ -519,6 +534,7 @@ public without sharing class PRM_Account_Specialty_Assoc_Utility {
         if(result != null && !result.isEmpty()){
             for(Database.UpsertResult sr : result){
                 if(sr.isSuccess()){
+                    system.debug('sr id :- '+sr.getId());
                     asaId = sr.getId();
                     if(asaId != null && asaId !=''){
                         setOfOpidAsa.add(asaId);  
@@ -624,15 +640,19 @@ public without sharing class PRM_Account_Specialty_Assoc_Utility {
                 Database.SaveResult[] result;
                 if(updateParentASA != null && !updateParentASA.IsEmpty()){
                     result= Database.update(updateParentASA,false);
+                    //System.debug('afetr update updateParentASA :-'+updateParentASA);
                 }
-
+                System.debug('result :- '+result);
+                
                 set<string> setOfOpidAsa = new set<string>(); 
                 string asaId;
                 list<PRM_Account_Specialty_Association__c> lstOfAsa = new list<PRM_Account_Specialty_Association__c>();
                 
                 if(result != null && !result.isEmpty()){
                     for(Database.SaveResult sr : result){
+                        system.debug('sr :- '+sr);
                         if(sr.isSuccess()){
+                            system.debug('sr id :- '+sr.getId());
                             asaId = sr.getId();
                             if(asaId != null && asaId !=''){
                                 setOfOpidAsa.add(asaId);  
@@ -682,7 +702,7 @@ public without sharing class PRM_Account_Specialty_Assoc_Utility {
                 if(accCon.PRM_Contact_Id__r.Core_IPA_PartnerRole__c != null && asaPartnerrolestring.containsAny(accCon.PRM_Contact_Id__r.Core_IPA_PartnerRole__c)){
                     //contactId.add(accCon.PRM_Contact_Id__c);
                     PRM_Email_Handler__c emailHandler = new PRM_Email_Handler__c();
-                    emailHandler.PRM_Contact__c =accCon.PRM_Contact_Id__c;				  
+                    emailHandler.PRM_Contact__c =accCon.PRM_Contact_Id__c;          
                     emailHandler.PRM_Event__c = 'Specialty Addition';
                     emailHandler.PRM_Email_Handler_Status__c = 'Requested For Suppression';
                     emailHandler.PRM_Suppress_Email__c = true;

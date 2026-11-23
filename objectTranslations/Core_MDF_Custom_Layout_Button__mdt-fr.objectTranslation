@@ -24,6 +24,10 @@
             <translation>Annuler la demande</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Cancel VAT</masterLabel>
+            <translation>Annuler la TVA</translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Change Owner</masterLabel>
             <translation><!-- Change Owner --></translation>
         </picklistValues>
@@ -37,7 +41,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Close</masterLabel>
-            <translation>Fermer</translation>
+            <translation>Fermer l’activité</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Complete PIC Review</masterLabel>
@@ -74,6 +78,10 @@
         <picklistValues>
             <masterLabel>Notify Partner</masterLabel>
             <translation><!-- Notify Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recall to Payment Clearance</masterLabel>
+            <translation><!-- Recall to Payment Clearance --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Release Hold</masterLabel>
@@ -145,7 +153,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Outcome-Based Campaign</masterLabel>
-            <translation>Campagne axée sur les résultats</translation>
+            <translation><!-- Outcome-Based Campaign --></translation>
         </picklistValues>
     </fields>
     

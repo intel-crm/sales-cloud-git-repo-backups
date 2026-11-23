@@ -200,11 +200,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>EVT Exit</masterLabel>
-            <translation>EVT 退出</translation>
+            <translation><!-- EVT Exit --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>First Customer Shipment</masterLabel>
-            <translation>首次客戶發貨</translation>
+            <translation><!-- First Customer Shipment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Lab/Factory prep &amp; tools</masterLabel>
@@ -212,7 +212,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
-            <translation>其他</translation>
+            <translation><!-- Other --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other - Eng Act field</masterLabel>
@@ -290,8 +290,18 @@
         <name>Core_MDF_Activity_Reimbursement_Amt_nbr__c</name>
     </fields>
     <fields>
+        <help><!-- Enter a value if need to change RR for this Activity --></help>
+        <label><!-- Activity Reimbursement Rate --></label>
+        <name>Core_MDF_Activity_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
         <label><!-- Activity Reserved Amount --></label>
         <name>Core_MDF_Activity_Reserved_Amount_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Second Approver --></label>
+        <name>Core_MDF_Activity_Second_Approver_txt__c</name>
+        <relationshipLabel><!-- Co-Marketing Activities (Activity Second Approver) --></relationshipLabel>
     </fields>
     <fields>
         <label>活動零售次要元素</label>
@@ -328,6 +338,10 @@
     <fields>
         <label>活動子類型</label>
         <name>Core_MDF_Activity_SubType_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Subtype old --></label>
+        <name>Core_MDF_Activity_Sub_Type_nm__c</name>
     </fields>
     <fields>
         <label>活動類型</label>
@@ -490,13 +504,17 @@
     </fields>
     <fields>
         <help>如果您輸入美元以外的貨幣，系統會估計相應的美元支出限額。</help>
-        <label>地方活動支出額度</label>
+        <label>總投資（Intel + 合作夥伴）</label>
         <name>Core_MDF_Budget_Amount_Local_amt__c</name>
     </fields>
     <fields>
         <help>預算金額的幣別</help>
         <label>貨幣</label>
         <name>Core_MDF_Budget_Currency_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Budget Type (Reporting Only) --></label>
+        <name>Core_MDF_Budget_Type_Reporting_Only__c</name>
     </fields>
     <fields>
         <label><!-- Budget Type (Reporting Only) --></label>
@@ -524,6 +542,11 @@
         <name>Core_MDF_Campaign_Reimbursement_Amt__c</name>
     </fields>
     <fields>
+        <help><!-- This is the Reimbursement Rate that was selected at Campaign --></help>
+        <label><!-- Campaign Reimbursement Rate --></label>
+        <name>Core_MDF_Campaign_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
         <help>這是行銷活動中選取的報銷率</help>
         <label>行銷活動報銷率</label>
         <name>Core_MDF_Campaign_Reimbursement_Rate_txt__c</name>
@@ -538,7 +561,7 @@
     </fields>
     <fields>
         <help>此活動是否為業界夥伴主導的指標，因此必須受 CP 花費限制規範</help>
-        <label>生態系統夥伴主導？</label>
+        <label>生態系統夥伴主導?</label>
         <name>Core_MDF_Channel_Partner_Led__c</name>
     </fields>
     <fields>
@@ -676,6 +699,10 @@
         <name>Core_MDF_Exchange_Rate_ptc__c</name>
     </fields>
     <fields>
+        <label><!-- Expected Close Date --></label>
+        <name>Core_MDF_Exp_Close_Dt__c</name>
+    </fields>
+    <fields>
         <label>外部核准者註解</label>
         <name>Core_MDF_External_Approval_Comment_txt__c</name>
     </fields>
@@ -722,6 +749,14 @@
         <name>Core_MDF_IPA_Int_Approver_Comment_txt__c</name>
     </fields>
     <fields>
+        <label><!-- Region --></label>
+        <name>Core_MDF_IPA_Region_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Region --></label>
+        <name>Core_MDF_IPA_Sub_Region_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- CoMarketing Activity Incentive Criteria --></label>
         <name>Core_MDF_Incentive_Criteria_Id__c</name>
         <relationshipLabel><!-- Partner Fund Requests --></relationshipLabel>
@@ -757,6 +792,10 @@
     <fields>
         <label>產業</label>
         <name>Core_MDF_Industry_Multi_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Industry Partner --></label>
+        <name>Core_MDF_Industry_Partner_txt__c</name>
     </fields>
     <fields>
         <label><!-- Ineffective Date/Time --></label>
@@ -868,6 +907,11 @@
         <label>會員接受者</label>
         <name>Core_MDF_Member_Acceptor_Id__c</name>
         <relationshipLabel><!-- Co-Marketing Activities (Member Acceptor) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Member Activity Owner --></label>
+        <name>Core_MDF_Member_Activity_Owner_Id__c</name>
+        <relationshipLabel><!-- Co-Marketing Activities (Member Activity Owner) --></relationshipLabel>
     </fields>
     <fields>
         <label>會員擁有者</label>
@@ -1092,7 +1136,7 @@
         <name>Core_MDF_Number_of_Stores_nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Open Rate --></label>
+        <label><!-- # of Emails Opened --></label>
         <name>Core_MDF_Open_Rate_txt__c</name>
     </fields>
     <fields>
@@ -1114,6 +1158,10 @@
     <fields>
         <label>其他活動名稱</label>
         <name>Core_MDF_Other_Event_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Industry Partner --></label>
+        <name>Core_MDF_Other_Industry_Partner_txt__c</name>
     </fields>
     <fields>
         <label>其他測量方法</label>
@@ -1141,6 +1189,18 @@
         <name>Core_MDF_Outcome_Region_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Outcome Type --></label>
+        <name>Core_MDF_Outcome_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help>選擇一個成果。此結果將用來評估企劃案的成效。</help>
         <label>成果指標</label>
         <name>Core_MDF_Outcomes_nm__c</name>
@@ -1162,35 +1222,35 @@
         <name>Core_MDF_POP_Requirement_nm__c</name>
         <picklistValues>
             <masterLabel>Documentation (photographs, printouts, test results)</masterLabel>
-            <translation>文件（照片、列印輸出、測試結果）</translation>
+            <translation><!-- Documentation (photographs, printouts, test results) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Email certifying completion by partner&apos;s senior engineer</masterLabel>
-            <translation>由合作夥伴的高級工程師證明完成的電子郵件</translation>
+            <translation><!-- Email certifying completion by partner&apos;s senior engineer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Live demonstration</masterLabel>
-            <translation>現場演示</translation>
+            <translation><!-- Live demonstration --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in catalog</masterLabel>
-            <translation>目錄中的產品可用性</translation>
+            <translation><!-- Product availability in catalog --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in configuration tool</masterLabel>
-            <translation>配置工具中的產品可用性</translation>
+            <translation><!-- Product availability in configuration tool --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product availability in public catalog</masterLabel>
-            <translation>公共目錄中的產品可用性</translation>
+            <translation><!-- Product availability in public catalog --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product received by Intel</masterLabel>
-            <translation>Intel 收到的產品</translation>
+            <translation><!-- Product received by Intel --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Proof of general availability of product</masterLabel>
-            <translation>產品一般供貨證明</translation>
+            <translation><!-- Proof of general availability of product --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1209,6 +1269,10 @@
     <fields>
         <label>置放</label>
         <name>Core_MDF_Placement_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Place to run --></label>
+        <name>Core_MDF_PlacetoRun_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Price reviewer check --></label>
@@ -1412,7 +1476,7 @@
         <name>Core_MDF_TV_Channel_s_txt__c</name>
     </fields>
     <fields>
-        <help>選擇一個或多個將在此企劃案中使用的內容。提交申請時，系統會要求您為您選擇的每種策略提供指標。</help>
+        <help><!-- Select one or more that will be used within this Campaign. When submitting a claim, you’ll be asked to provide metrics for each Tactic you choose --></help>
         <label>策略</label>
         <name>Core_MDF_Tactics_nm__c</name>
     </fields>
@@ -1537,6 +1601,38 @@
         <label>成員需支付的頁數:</label>
         <name>Core_MDF_pagespayingfor__c</name>
     </fields>
+    <fields>
+        <label><!-- New Channel Partner --></label>
+        <name>New_Channel_Partner__c</name>
+        <picklistValues>
+            <masterLabel>Accenture</masterLabel>
+            <translation><!-- Accenture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RedHat</masterLabel>
+            <translation><!-- RedHat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAP</masterLabel>
+            <translation><!-- SAP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Testing Flow --></label>
+        <name>Testing_Flow_cd__c</name>
+        <picklistValues>
+            <masterLabel>ANZ</masterLabel>
+            <translation><!-- ANZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAIWAN</masterLabel>
+            <translation><!-- TAIWAN --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- test --></label>
+        <name>test__c</name>
+    </fields>
     <recordTypes>
         <description><!-- Channel MDF record type --></description>
         <label><!-- Channel MDF --></label>
@@ -1566,6 +1662,11 @@
         <description><!-- EEF Program Record Type --></description>
         <label><!-- Ecosystem Extension Fund --></label>
         <name>Core_MDF_Ecosystem_Extension_Fund</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Intel MDF Proposal Based Activity --></description>
+        <label><!-- Intel MDF Proposal Based --></label>
+        <name>Core_MDF_Intel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- IPA Program Type --></description>
@@ -1664,7 +1765,7 @@ Start Date, End Date, Campaign, Account --></errorMessage>
         <name>Core_MDF_Restrict_Event_Promotion_type</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This activity type is not available. Contact your Intel Representative for more information. --></errorMessage>
+        <errorMessage>無法提供此活動類型。如需更多資訊，請聯絡您的 Intel 代表。</errorMessage>
         <name>Core_MDF_Restrict_ExternalUserContentAct</name>
     </validationRules>
     <validationRules>
@@ -1690,10 +1791,6 @@ Start Date, End Date, Campaign, Account --></errorMessage>
     <validationRules>
         <errorMessage><!-- Please select an Intel Owner for the activity --></errorMessage>
         <name>Core_MDF_Validate_IntelOwner_Mandate_CMP</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select an Intel Owner for the activity --></errorMessage>
-        <name>Core_MDF_Validate_IntelOwner_Mandate_MDF</name>
     </validationRules>
     <validationRules>
         <errorMessage>請為此活動選擇主要的 Intel 負責人</errorMessage>

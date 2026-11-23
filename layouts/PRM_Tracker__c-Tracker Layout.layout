@@ -75,6 +75,14 @@
                 <behavior>Readonly</behavior>
                 <field>PRM_LOC_account_name__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>prm_skip_tracker__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>prm_entitlement_id__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

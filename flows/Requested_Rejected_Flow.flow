@@ -405,6 +405,7 @@
             <dataType>String</dataType>
             <fieldText>Rejection Reason</fieldText>
             <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <styleProperties>
                 <verticalAlignment>
@@ -429,7 +430,7 @@
     <status>Active</status>
     <textTemplates>
         <name>Request_Rejection_Email_Body</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>&lt;p&gt;Hi {!Get_Account_Request.Requestor_Name__c},&lt;/p&gt;&lt;p&gt;Your&amp;nbsp;new account create request has not been approved due to certain criteria entered is not meeting standards for creation. To view the specific reason for the rejection, review the Account Request URL link below and see the Rejected Reason field.&lt;/p&gt;&lt;p&gt;If you believe this is an error, you can utilize the chatter feature within your account request URL to clarify questions with operations team, OR submit a new account request with revised account information.&lt;/p&gt;&lt;p&gt;{!AccountLink}&lt;/p&gt;
 Regards,&lt;br&gt;Account and Contact Management Team.&lt;/br&gt;</text>
     </textTemplates>

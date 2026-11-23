@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-07-2026
+ * @last modified on  : 03-26-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -31,6 +31,7 @@
                 capSizeRecord.Pricing_Active_cb__c = true;
                 capSizeRecord.Pricing_Small_Deal_CAP_size_Number__c = 24;
                 insert capSizeRecord;
+                //List<User> partnerUser = Pricing_Test_Utility.createExternalUser();
                 System.runAs(user) {
                     Id accId = Pricing_Manage_Small_Volume_Deal.getAccount(user.Id);
                     System.assert(accId != null, 'Account ID should not be null');
@@ -54,6 +55,7 @@
                 User user = [SELECT Id from User where ContactId =:con.Id];
                 Pricing_Systematic_Tender_Limitation__c capSizeRecord = new Pricing_Systematic_Tender_Limitation__c();
                 capSizeRecord.Pricing_Account__c = acc.Id;
+                //capSizeRecord.Name = 'Dell';
                 capSizeRecord.Pricing_Quote_Type__c = 'Client';
                 capSizeRecord.Pricing_Active_cb__c = true;
                 capSizeRecord.Pricing_Exception_Quota__c = 24;
@@ -146,10 +148,13 @@
         SBQQ__QuoteLine__c ql =  [SELECT Id from SBQQ__QuoteLine__c LIMIT 1];
         Pricing_Systematic_Tender_Limitation__c capSizeRecord = new Pricing_Systematic_Tender_Limitation__c();
         capSizeRecord.Pricing_Account__c = acc.Id;
+        //capSizeRecord.Name = 'Dell';
         capSizeRecord.Pricing_Quote_Type__c = 'Client';
         capSizeRecord.Pricing_Active_cb__c = true;
         capSizeRecord.Pricing_Exception_Quota__c = 24;
         insert capSizeRecord;
+        //List<User> partnerUser = Pricing_Test_Utility.createExternalUser();
+        //System.runAs(user) {
             Id accId = Pricing_Manage_Small_Volume_Deal.getAccount(user.Id);
             Map<String,Boolean> isCheckedRecord = Pricing_Manage_Small_Volume_Deal.isRecordTypeSelectionAllow(acc.Id);
             String capSize;
@@ -159,6 +164,8 @@
             update capSizeRecord;
             capSizeCheck = Pricing_Manage_Small_Volume_Deal.capSizeCheckToCreation(new Set<String>{acc.Id}, false);
             system.assert(true, quote != null);
+            
+        //}
         Test.stopTest();
     }
     static testmethod void testgetDataCenter() {
@@ -170,10 +177,13 @@
         SBQQ__QuoteLine__c ql =  [SELECT Id from SBQQ__QuoteLine__c LIMIT 1];
         Pricing_Systematic_Tender_Limitation__c capSizeRecord = new Pricing_Systematic_Tender_Limitation__c();
         capSizeRecord.Pricing_Account__c = acc.Id;
+        //capSizeRecord.Name = 'Dell';
         capSizeRecord.Pricing_Quote_Type__c = 'Data Center';
         capSizeRecord.Pricing_Active_cb__c = true;
         capSizeRecord.Pricing_Exception_Quota__c = 24;
         insert capSizeRecord;
+        //List<User> partnerUser = Pricing_Test_Utility.createExternalUser();
+        //System.runAs(user) {
             Id accId = Pricing_Manage_Small_Volume_Deal.getAccount(user.Id);
             Map<String,Boolean> isCheckedRecord = Pricing_Manage_Small_Volume_Deal.isRecordTypeSelectionAllow(acc.Id);
             String capSize;
@@ -183,6 +193,7 @@
             update capSizeRecord;
             capSizeCheck = Pricing_Manage_Small_Volume_Deal.capSizeCheckToCreation(new Set<String>{acc.Id}, false);
             system.assert(true, quote != null);
+        //}
         Test.stopTest();
     }
     
@@ -193,6 +204,7 @@
         User user = [SELECT Id from User where ContactId =:con.Id];
         Pricing_Systematic_Tender_Limitation__c capSizeRecord = new Pricing_Systematic_Tender_Limitation__c();
         capSizeRecord.Pricing_Account__c = acc.Id;
+        //capSizeRecord.Name = 'Dell';
         capSizeRecord.Pricing_Quote_Type__c = 'Data Center';
         capSizeRecord.Pricing_Active_cb__c = true;
         capSizeRecord.Pricing_Exception_Quota__c = 24;
@@ -212,6 +224,7 @@
         Pricing_QuoteProgram_CAPSize__c capSizeRecord = new Pricing_QuoteProgram_CAPSize__c();
         capSizeRecord.Pricing_Account_Id__c = acc.Id;
         capSizeRecord.Name = 'Dell';
+        // capSizeRecord.Pricing_Quote_Type__c =  Label.Pricing_Tender_CCG_Quote;
         capSizeRecord.Pricing_Active_cb__c = true;
         capSizeRecord.Pricing_Small_Deal_CAP_size_Number__c = 3;
         insert capSizeRecord;

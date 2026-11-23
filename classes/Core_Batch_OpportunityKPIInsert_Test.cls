@@ -99,11 +99,16 @@ public class Core_Batch_OpportunityKPIInsert_Test
     static testMethod void testMethod3() 
     {    
         //setupData();
+        	SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
+        Id recTypeId = r.getDescribe().getRecordTypeInfosByDeveloperName().get(Label.Pricing_Tender_Account_RecordType_IntelAccount).getRecordTypeId();
+
         
         Account acct = new Account(Name = 'Test Account1', BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',RecordTypeId = recTypeId,
                                    BillingPostalCode = '12345',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI(), Industry = 'Agriculture' , Core_Sub_Industry__c ='Animal Production');
+        System.runAs(Core_Test_Utility.systemAdminUser) {
         insert acct;
+            }
         List<PricebookEntry> pbeList = new List<PricebookEntry>();
         
         // Create a new product
@@ -182,11 +187,16 @@ public class Core_Batch_OpportunityKPIInsert_Test
     static testMethod void testMethod4() 
     {    
         //setupData();
-        
+          	SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
+        Id recTypeId = r.getDescribe().getRecordTypeInfosByDeveloperName().get(Label.Pricing_Tender_Account_RecordType_IntelAccount).getRecordTypeId();
+
         Account acct = new Account(Name = 'Test Account1', BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',RecordTypeId = recTypeId,
                                    BillingPostalCode = '12345',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI(), Industry = 'Agriculture' , Core_Sub_Industry__c ='Animal Production');
+          System.runAs(Core_Test_Utility.systemAdminUser) {
+      
         insert acct;
+          }
         List<PricebookEntry> pbeList = new List<PricebookEntry>();
         
         // Create a new product
@@ -263,11 +273,16 @@ public class Core_Batch_OpportunityKPIInsert_Test
     }
     static testMethod void testMethod5() 
     {
-        
+          	SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
+        Id recTypeId = r.getDescribe().getRecordTypeInfosByDeveloperName().get(Label.Pricing_Tender_Account_RecordType_IntelAccount).getRecordTypeId();
+
         Account acct = new Account(Name = 'Test Account1', BillingStreet = '123 Fake St',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',RecordTypeId = recTypeId,
                                    BillingPostalCode = '12345',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI(), Industry = 'Agriculture' , Core_Sub_Industry__c ='Animal Production');
+          System.runAs(Core_Test_Utility.systemAdminUser) {
+      
         insert acct;
+          }
         List<PricebookEntry> pbeList = new List<PricebookEntry>();
         
         // Create a new product
@@ -345,11 +360,16 @@ public class Core_Batch_OpportunityKPIInsert_Test
 
 
     static testMethod void testMethod6() {
+     	SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
+        Id recTypeId = r.getDescribe().getRecordTypeInfosByDeveloperName().get(Label.Pricing_Tender_Account_RecordType_IntelAccount).getRecordTypeId();
 
         Account acct = new Account(Name = 'Test Account1', BillingStreet = '123 Fake St',
-        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',RecordTypeId = recTypeId,
         BillingPostalCode = '12345',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI(), Industry = 'Agriculture' , Core_Sub_Industry__c ='Animal Production');
-                insert acct;
+          System.runAs(Core_Test_Utility.systemAdminUser) {
+              insert acct;
+              
+          }
                 List<PricebookEntry> pbeList = new List<PricebookEntry>();
 
                 // Create a new product
@@ -427,11 +447,17 @@ public class Core_Batch_OpportunityKPIInsert_Test
     }
 
     static testMethod void testMethod7() {
+  	SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
+        Id recTypeId = r.getDescribe().getRecordTypeInfosByDeveloperName().get(Label.Pricing_Tender_Account_RecordType_IntelAccount).getRecordTypeId();
 
         Account acct = new Account(Name = 'Test Account1', BillingStreet = '123 Fake St',
-        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
+        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',RecordTypeId = recTypeId,
         BillingPostalCode = '12345',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI(), Industry = 'Agriculture' , Core_Sub_Industry__c ='Animal Production');
-                insert acct;
+          System.runAs(Core_Test_Utility.systemAdminUser) {
+             
+        insert acct;
+              
+          }
                 List<PricebookEntry> pbeList = new List<PricebookEntry>();
 
                 // Create a new product

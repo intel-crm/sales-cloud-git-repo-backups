@@ -6,7 +6,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Core_MDF_StatusUpdate_Internal</name>
     <style>none</style>
-    <subject>Activity status updated for Outcome-Based Campaign #.</subject>
+    <subject>Activity status updated for Activity #.</subject>
     <type>visualforce</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

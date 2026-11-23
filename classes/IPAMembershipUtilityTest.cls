@@ -112,7 +112,7 @@ private class IPAMembershipUtilityTest {
             PRM_Account_Channel_Membership__c = acm.Id,
             PRM_Partner_Role__c = 'Guest',
             PRM_Partner_Tier__c = levelGold.Id,
-            PRM_Status__c = LABEL_COMPLETE
+            PRM_Status__c = LABEL_CHANGE_REQUEST
         );
 
         PRM_IPA_Membership__c existingChild2 = new PRM_IPA_Membership__c(
@@ -122,8 +122,7 @@ private class IPAMembershipUtilityTest {
             PRM_Status__c = LABEL_PENDING
         );
 
-        insert  existingChild1;
-        insert  existingChild2;
+        insert new List<PRM_IPA_Membership__c>{ existingChild1, existingChild2 };
 
         // Simulate new incoming IPA request (should hit error branches)
         PRM_IPA_Membership__c newMembership = new PRM_IPA_Membership__c(

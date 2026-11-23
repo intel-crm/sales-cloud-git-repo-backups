@@ -33,10 +33,9 @@
             <field>CREATED_DATE</field>
         </columns>
         <columns>
-            <field>CUST_CREATED_NAME</field>
+            <field>CREATED</field>
         </columns>
         <filter>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
             <criteriaItems>
                 <column>PRM_Account_Contact_Relationship__c.PRM_Status_Nm__c</column>
                 <columnToColumn>false</columnToColumn>
@@ -52,25 +51,18 @@
                 <value></value>
             </criteriaItems>
             <criteriaItems>
+                <column>ACCOUNT.NAME</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>notContain</operator>
+                <value>Test</value>
+            </criteriaItems>
+            <criteriaItems>
                 <column>RECORDTYPE</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>false</isUnlocked>
                 <operator>notEqual</operator>
                 <value>Account.Inactive_Account</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>FK_CNTC_EMAIL</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>notContain</operator>
-                <value>mailinator</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>ACCOUNT.NAME</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>notContain</operator>
-                <value>test</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>
@@ -102,7 +94,7 @@
             <field>PRM_AccountChannelMembership__c.PRM_Status_Nm__c</field>
         </columns>
         <columns>
-            <field>CUST_CREATED_NAME</field>
+            <field>CREATED</field>
         </columns>
         <filter>
             <criteriaItems>
@@ -111,6 +103,13 @@
                 <isUnlocked>false</isUnlocked>
                 <operator>equals</operator>
                 <value>Pending</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>ACCOUNT.NAME</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>notContain</operator>
+                <value>Test</value>
             </criteriaItems>
             <criteriaItems>
                 <column>PRM_AccountChannelMembership__c.PRM_Status_Nm__c</column>
@@ -125,13 +124,6 @@
                 <isUnlocked>false</isUnlocked>
                 <operator>notEqual</operator>
                 <value>Account.Inactive_Account</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>ACCOUNT.NAME</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>notContain</operator>
-                <value>test</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>

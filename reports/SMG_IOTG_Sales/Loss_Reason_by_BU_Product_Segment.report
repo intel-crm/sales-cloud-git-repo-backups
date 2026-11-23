@@ -50,7 +50,7 @@
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>IOTG</value>
         </criteriaItems>
         <criteriaItems>
@@ -79,7 +79,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Product_Application__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -87,12 +87,7 @@
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_Loss_Cancel_Reason__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Loss Reason by Product Application</name>
+    <name>Loss Reason by BU Product Segment</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -116,7 +111,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2016-01-01</startDate>
     </timeFrameFilter>

@@ -366,7 +366,7 @@
         <inlineHelpText>Please describe the need for  additional support  and how it will enhance the opportunity</inlineHelpText>
         <label>Additional Support Needed</label>
         <length>2500</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
@@ -374,7 +374,7 @@
     <fields>
         <fullName>Core_Age__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( RecordType.DeveloperName = &apos;Core_Center_of_Excellence_Request&apos;, IF(ISNULL(Core_End_Date__c) || ISBLANK(Core_End_Date__c),ROUND((DATETIMEVALUE(TODAY()) - DATETIMEVALUE(Core_Start_Date__c)),1), ROUND(( DATETIMEVALUE(Core_End_Date__c) - DATETIMEVALUE(Core_Start_Date__c)),1)  ),IF ((ISNULL( Core_Approved_Date__c ) || ISBLANK( Core_Approved_Date__c )),ROUND((TODAY() - DATEVALUE(Core_Submitted_Date__c)),1), ROUND( ( DATEVALUE(Core_Approved_Date__c) - DATEVALUE(Core_Submitted_Date__c)),1) ))</formula>
+        <formula>IF( RecordType.DeveloperName = &apos;Core_Center_of_Excellence_Request&apos;, IF(ISNULL(Core_End_Date__c) || ISBLANK(Core_End_Date__c),ROUND((DATETIMEVALUE(TODAY()) - DATETIMEVALUE(Core_Start_Date__c)),1), ROUND(( DATETIMEVALUE(Core_End_Date__c) - DATETIMEVALUE(Core_Start_Date__c)),1) ),IF ((ISNULL( Core_Approved_Date__c ) || ISBLANK( Core_Approved_Date__c )),ROUND((TODAY() - DATEVALUE(Core_Submitted_Date__c)),1), ROUND( (DATEVALUE(Core_Approved_Date__c) - DATEVALUE(Core_Submitted_Date__c)),1) ))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Age</label>
         <precision>18</precision>
@@ -543,7 +543,7 @@
         <fullName>Core_CoE_Request_Detail__c</fullName>
         <inlineHelpText>CoE Request Detail</inlineHelpText>
         <label>CoE Request Detail</label>
-        <length>32000</length>
+        <length>2500</length>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -565,15 +565,15 @@
         <description>End date will stamp the value when Opportunity Support providing is done</description>
         <label>End Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
         <fullName>Core_Opportunity_Description__c</fullName>
         <label>Opportunity Description</label>
-        <length>32000</length>
-        <trackHistory>false</trackHistory>
+        <length>2500</length>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
@@ -703,7 +703,7 @@
         <description>Start date will stamp time during opportunity submitted</description>
         <label>Start Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -835,7 +835,7 @@
         <inlineHelpText>Please provide the background information on the customers  current architecture</inlineHelpText>
         <label>Background Information On Architecture</label>
         <length>2500</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
@@ -870,7 +870,7 @@
     <nameField>
         <displayFormat>OppSupport-{0000}</displayFormat>
         <label>Opportunity Support Name</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Opportunity Supports</pluralLabel>

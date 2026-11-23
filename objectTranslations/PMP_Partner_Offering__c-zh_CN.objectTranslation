@@ -4,6 +4,10 @@
         <plural>false</plural>
         <value>Partner Offering</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Column_Field_Set --></label>
+        <name>Column_Field_Set</name>
+    </fieldSets>
     <fields>
         <label><!-- Offering Power 1 --></label>
         <name>Offering_Power_1__c</name>
@@ -74,6 +78,10 @@
     <fields>
         <label><!-- Logged in user --></label>
         <name>PMP_Current_User_Offering_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Do Not Contact Enabled ? --></label>
+        <name>PMP_Do_Not_Contact_Enabled__c</name>
     </fields>
     <fields>
         <label><!-- Edit/Clone Offering --></label>
@@ -327,11 +335,11 @@
         <name>PMP_Partner_Offering_Visibility_Nm__c</name>
         <picklistValues>
             <masterLabel>All Access - Available to the Public</masterLabel>
-            <translation>完全访问 - 向公众开放</translation>
+            <translation>公共内容</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Restricted Access - Intel Pre-Release Product</masterLabel>
-            <translation>受限访问 - 英特尔预发布产品</translation>
+            <translation>英特尔内部资料</translation>
         </picklistValues>
     </fields>
     <fields>
@@ -448,6 +456,11 @@
     <recordTypes>
         <label><!-- Default Record Type --></label>
         <name>Default_Record_Type</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- New Record Type --></description>
+        <label><!-- PMP Partner Offering --></label>
+        <name>PMP_Partner_Offering</name>
     </recordTypes>
     <validationRules>
         <errorMessage><!-- An offering can be Rejected only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>

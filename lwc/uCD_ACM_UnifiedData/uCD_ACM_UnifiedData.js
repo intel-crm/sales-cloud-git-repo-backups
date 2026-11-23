@@ -15,7 +15,7 @@ import Requested_Name from '@salesforce/schema/Account.Core_Requested_Name__c';
 import Acct_Unifiedherarchy from '@salesforce/schema/Account.Unified_Hierarchy_View__c';
 import Acct_Website from '@salesforce/schema/Account.Core_MDM_Website__c'
 import Acct_ComplianceWatchList from '@salesforce/schema/Account.Core_Compliance_Watch_List_Type__c';
-import Perform_Screening_From_CWLObject from '@salesforce/label/c.PerformScreeningFromCWLObject';
+//import Perform_Screening_From_CWLObject from '@salesforce/label/c.PerformScreeningFromCWLObject';
 //import Acct_Global from '@salesforce/schema/Account.Core_Unified_Global_Customer__r.Name';
 import Acct_GlobalName from '@salesforce/schema/Account.Core_Unified_Global_Customer_Name__c';
 import Acct_GlobalID from '@salesforce/schema/Account.Core_Unified_Global_Customer_BP_Id__c';
@@ -35,6 +35,7 @@ export default class UCD_ACM_UnifiedData extends LightningElement {
         aggregationType=[];
         isDisplayPage = false;
         apexResponse;
+        //isIaoEnable=true;
 
 
         @wire(getRecord, {
@@ -62,6 +63,7 @@ export default class UCD_ACM_UnifiedData extends LightningElement {
             unifiedDataValues({accountId:this.recordId}).then(response => {
                 this.cpe = response.customerProcessEngg;
                 this.cwl = response.complianceWatchList;
+                console.log('@@cwl ',this.cwl);
                 this.isDisplayPage = true;
                 
             })
@@ -72,9 +74,6 @@ export default class UCD_ACM_UnifiedData extends LightningElement {
             })
         }
 
-        get isPeromScreeingFromCwlObj(){
-            return Perform_Screening_From_CWLObject === 'true';
-        }
         get bpId() {
             console.log('this.account.data--> ',this.account);
             console.log('bpid',getFieldValue(this.account.data, Acct_BPId));

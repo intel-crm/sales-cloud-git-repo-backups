@@ -66,21 +66,14 @@
             <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Risk_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Support_Completed__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_At_Risk_Created_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>4/15/2020</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Products_At_Risk_Count__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -99,7 +92,7 @@
         <field>Opportunity.Core_Risk_Reason__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>My Team @Risk (OLD process)</name>
+    <name>My Team @Risk_Opportunities</name>
     <params>
         <name>terr</name>
         <value>all</value>

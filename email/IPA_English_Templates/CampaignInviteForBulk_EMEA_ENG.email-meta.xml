@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <description>EMEA template for campaign bulk invite</description>
     <encodingKey>UTF-8</encodingKey>
     <name>CampaignInviteForBulk_EMEA_ENG</name>
     <style>none</style>
@@ -32,7 +31,7 @@ This link will expire in 5 days – click the existing ‘Click to Join’ link 
 
 ¹Must be Points eligible to qualify. See eligibility requirements.
 
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 
 Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>

@@ -5,8 +5,9 @@
         <backgroundColor2>#FFFFFF</backgroundColor2>
         <backgroundFadeDir>Diagonal</backgroundFadeDir>
         <chartSummaries>
+            <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>RowCount</column>
+            <column>Core_Contact_Entitlement__c.Core_Selected__c</column>
         </chartSummaries>
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -28,9 +29,6 @@
         <field>CONTACT_ID</field>
     </columns>
     <columns>
-        <field>Contact.Core_Login_Status__c</field>
-    </columns>
-    <columns>
         <field>Contact.Core_Enterprise_Id__c</field>
     </columns>
     <columns>
@@ -49,16 +47,17 @@
         <field>Contact.Core_AGS_Duration__c</field>
     </columns>
     <columns>
-        <field>FK_$Core_Entitlement__c.Core_Sub_Category__c</field>
-    </columns>
-    <columns>
-        <field>CUST_ID</field>
-    </columns>
-    <columns>
         <field>Core_Contact_Entitlement__c.Core_Entitlement_Nm__c</field>
     </columns>
     <columns>
+        <field>FK_$Core_Entitlement__c.Core_Sub_Category__c</field>
+    </columns>
+    <columns>
         <field>Core_Contact_Entitlement__c.Core_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Contact_Entitlement__c.Core_Selected__c</field>
     </columns>
     <columns>
         <field>Core_Contact_Entitlement__c.Core_Update_Reason__c</field>
@@ -69,7 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Order Management,Design and Technology Content (Resource &amp; Design Center),Pricing,Support,Configure To Order,Partner Portal,Consolidated Co-marketing Platform,Intel Partner Alliance (IPA),Intel Quote Request,Data Center Blocks Configurator,Programmable Solutions Group,Technical Content &amp; Tools (Intel Developer Zone &amp; Others)</value>
+            <value>Partner Portal,Intel Partner Alliance (IPA),Programmable Solutions Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Contact_Entitlement__c.Core_Status_of_Assignment_Failure__c</column>
@@ -77,6 +76,13 @@
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Contact_Entitlement__c.Core_Status_of_Assignment_Failure__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Successful</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Contact_Entitlement__c.Core_Status_of_Assignment_Failure__c</column>
@@ -91,62 +97,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value>Successful Assignment</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Core_Email_Domain__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>@mailinator</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Core_Email_Domain__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>@mailosaur</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Core_Email_Domain__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>@dispostable.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Core_Email_Domain__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Core_Email_Domain__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>@ipatest.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Contact.Core_Email_Domain__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>@testexpected.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Export_Compliance_Block__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Contact_Entitlement__c.Core_Status_of_Assignment_Failure__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Successful</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -173,6 +123,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CUST_LAST_UPDATE</dateColumn>
-        <interval>INTERVAL_YESTERDAY</interval>
+        <interval>INTERVAL_LAST7</interval>
     </timeFrameFilter>
 </Report>

@@ -9,7 +9,9 @@
 * Accenture – Batthieni Gayathri        10/03/2024                   To fetch Core_MDF_CCP_Custom_Metadata_Utility__c records.
 *****************************************************************************************************************************************/
 public Without Sharing class Core_MDF_Custom_Metadata_Utility {
-    public static List<sObject> getCustomObjectRecords(String whereClause) {
+    
+	
+	public static List<sObject> getCustomObjectRecords(String whereClause) {
          List<sObject> queryResults = new List<sObject>();
          Set<String> queryStringFields = new Set<String>();
         try{

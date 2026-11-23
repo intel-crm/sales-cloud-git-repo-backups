@@ -7,71 +7,28 @@
     <colorPalette>unity</colorPalette>
     <dashboardChartTheme>light</dashboardChartTheme>
     <dashboardColorPalette>unity</dashboardColorPalette>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Alphabet,Google</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Amazon</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Alibaba</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Tencent</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Baidu</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Facebook</values>
-        </dashboardFilterOptions>
-        <name>Account Name</name>
-    </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
             <colSpan>4</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>Donut</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
+                <componentType>Bar</componentType>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>Opportunity.Core_Pipeline_Heath__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingSortProperties/>
                 <header>Cloud Super 7 - Proactive Past Due</header>
-                <legendPosition>Right</legendPosition>
                 <report>Public_SMG_DCG/DCG_Proactive_Past_Due_Cloud_Top_101</report>
                 <showPercentage>false</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
+                <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <title>True = Unhealthy, False = Unhealthy Soon</title>
-                <useReportChart>false</useReportChart>
+                <useReportChart>true</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -87,9 +44,6 @@
                     <column>RowCount</column>
                 </chartSummary>
                 <componentType>Donut</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -112,7 +66,6 @@
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <title>True = Unhealthy, False = Unhealthy Soon</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -129,9 +82,6 @@
                     <column>RowCount</column>
                 </chartSummary>
                 <componentType>Donut</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
@@ -154,7 +104,6 @@
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <title>True = Unhealthy, False = Unhealthy Soon</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -166,19 +115,10 @@
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>ACCOUNT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>FULL_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
@@ -227,19 +167,10 @@
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>ACCOUNT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>FULL_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
@@ -288,19 +219,10 @@
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
                         <reportColumn>ACCOUNT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>FULL_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
                         <type>detail</type>
@@ -348,54 +270,7 @@
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Account.Core_Prime_Account_Name__c</groupingColumn>
-                <groupingColumn>OWNER_MANAGER</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>DCG Pipeline Health - S7 OEM Opportunities on Poor Health Report</header>
-                <legendPosition>Right</legendPosition>
-                <report>Public_SMG_DCG/DCG_Pipeline_Health_Cloud_S7</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>17</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>12</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
@@ -454,11 +329,11 @@
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
-                <header>DCG Pipeline Health - S7 OEM Opportunities on Poor Health Report</header>
+                <header>DCG Pipeline Health - Poor Health Report</header>
                 <report>Public_SMG_DCG/DCG_Pipeline_Health_Cloud_S7</report>
             </dashboardComponent>
-            <rowIndex>25</rowIndex>
-            <rowSpan>16</rowSpan>
+            <rowIndex>17</rowIndex>
+            <rowSpan>37</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
@@ -467,9 +342,9 @@
     <description>Low Velocity, Inactive, Past Due</description>
     <isGridLayout>true</isGridLayout>
     <owner>11455431@intel.com.crm</owner>
-    <runningUser>10668704@intel.com.crm</runningUser>
+    <runningUser>11455431@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>Cloud Super 7 Proactive Pipeline Reports - Unhealthy Opportunities Listed Below</title>
+    <title>Cloud Super 7 Proactive Pipeline Reports</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

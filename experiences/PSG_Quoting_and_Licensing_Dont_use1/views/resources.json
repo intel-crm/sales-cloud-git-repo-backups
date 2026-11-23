@@ -1,0 +1,99 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "67c2ea32-c264-4bea-af95-acea1ccf2993",
+  "label" : "Resources",
+  "regions" : [ {
+    "id" : "1df3ff29-c7b0-449d-a74b-84a076da11d9",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "librariesHeaderLabel" : "Libraries",
+        "showWorkspaceImage" : true
+      },
+      "componentName" : "forceCommunity:workspacesList",
+      "id" : "efa0b41e-50f3-4dc6-8c37-fcd98b853111",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "24ee0a43-cc7e-49ed-bd6f-d250eb162de0"
+      },
+      "renditions" : [ {
+        "id" : "24ee0a43-cc7e-49ed-bd6f-d250eb162de0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "librariesHeaderLabel" : "Libraries",
+            "showWorkspaceImage" : "true"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "f6627b8b-3ddb-4524-af83-62f87d812d18",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "title" : "Popular Now"
+      },
+      "componentName" : "forceChatter:recommendationsBig",
+      "id" : "775e160f-e97a-471d-a625-ead05101e519",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "7ffe8d03-8963-433a-ade3-af95957edce9"
+      },
+      "renditions" : [ {
+        "id" : "7ffe8d03-8963-433a-ade3-af95957edce9",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "title" : "Popular Now"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "f7392937-d7ac-4eff-b059-ffc6f742d23f",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "e24e5fe5-789e-40d2-98af-97899c958742",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Resources"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1234f488-e862-450d-83d3-75d4150238c4",
+      "renditionMap" : {
+        "zh_cn" : "fab99ebc-7eaf-40ec-a82f-f5e6fc5d9b86"
+      },
+      "renditions" : [ {
+        "id" : "fab99ebc-7eaf-40ec-a82f-f5e6fc5d9b86",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "Resources"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "9347cac7-97eb-4604-9a6a-bd1c6482c1f6",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "files"
+}

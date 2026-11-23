@@ -223,6 +223,7 @@
         <fullName>All</fullName>
         <columns>Load_ID__c</columns>
         <columns>Email__c</columns>
+        <columns>Status__c</columns>
         <columns>Seismic_ID__c</columns>
         <columns>Lessonly_ID__c</columns>
         <columns>Deleted_In_Lessonly__c</columns>
@@ -233,17 +234,12 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
-    <listViews>
-        <fullName>All1</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <label>SeismicUserDeletion_User Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>SeismicUserDeletion_Users</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

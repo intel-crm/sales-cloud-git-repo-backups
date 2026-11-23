@@ -32,7 +32,7 @@
          setup_Common_Test_Data(true, false, true, false, true); 
         sPAccSingleContactRun(true);
         System.AssertNotEquals(2008,System.Today().Year(),'Not Equal');
-    }    
+    }   
 /***************************************************************************************************
 * Method Name:  SPAccSingleUpdateContact
 * Method Type: Test Method
@@ -47,11 +47,11 @@
 ****************************************************************************************************/   
     private static testMethod void sPAccSingleUpdateContact(){
         //Commented bewlow line by rajeswari to remove nullpoint exception on 8 july 22
-      //  setup_Common_Test_Data(true, true, true, false, true); 
+       // setup_Common_Test_Data(true, true, true, false, true); 
         setup_Common_Test_Data(true, false, true, false, true); 
         sPAccSingleContactUpdateRun(true);
         System.assertNotEquals(2008,System.Today().Year(),'Not Equal');
-    }    
+           }   
     
 /***************************************************************************************************
 * Method Name:  SPAccSingleContactWithError

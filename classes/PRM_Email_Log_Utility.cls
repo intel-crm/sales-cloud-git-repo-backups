@@ -8,8 +8,8 @@ Modification Log :
 * Developer                     Date                Description
 * ----------------------------------------------------------------------------------------------------------------------------
 * GopiKrishna Vankadari       01/06/2021          Added publish_Platform_Event method to Publish the Platform Event
-* Neha Sharma                 13/02/2024          Updated the class to reduce cognitive complexity. Divided the method 'publishEmailLogDetails'
-                                                  into smaller methods.
+* Neha Sharma       		  13/02/2024          Updated the class to reduce cognitive complexity. Divided the method 'publishEmailLogDetails'
+												  into smaller methods.
 *******************************************************************************************************************************/
 public with sharing class PRM_Email_Log_Utility{     
    
@@ -56,7 +56,8 @@ private static Boolean shouldPublishEmailLog(PRM_EmailLog__c emaillog, Map<Id, P
     
     try {
         List<Core_Platform_Event_Bus__e> emailEventRecordList = buildEmailEventRecordList(republishList,platformEventLogList);
-       
+      
+        
         List<Database.SaveResult> results = EventBus.publish(emailEventRecordList);
         
         for (Database.SaveResult sr : results) {
@@ -69,7 +70,7 @@ private static Boolean shouldPublishEmailLog(PRM_EmailLog__c emaillog, Map<Id, P
         updatePlatformEventLogs(platformEventLogList,publishStatusList, publishStatus, isRepublish, platFormEventLogidList, attemptList);
     }
 }*/
-        
+		
     public class publish_Platform_EventWrapper{
     public List<PRM_EmailLog__c> republishList{get;set;}
     public boolean isRepublish{get;set;}
@@ -86,10 +87,7 @@ private static Boolean shouldPublishEmailLog(PRM_EmailLog__c emaillog, Map<Id, P
     try {
         List<Core_Platform_Event_Bus__e> emailEventRecordList = buildEmailEventRecordList(att.republishList,platformEventLogList);
         
-        
-       List<Database.SaveResult> results = EventBus.publish(emailEventRecordList);
-    
-       
+        List<Database.SaveResult> results = EventBus.publish(emailEventRecordList);
         
         for (Database.SaveResult sr : results) {
             publishStatusList.add(sr.isSuccess());
@@ -116,7 +114,7 @@ private static List<Core_Platform_Event_Bus__e> buildEmailEventRecordList(List<P
     EmailWrapper updatedwrap = new EmailWrapper();
     for (PRM_EmailLog__c emaillogs : republishList) {
         Core_Platform_Event_Bus__e emailEventRecord = new Core_Platform_Event_Bus__e();
-                String catergoryID =System.Label.PRM_MyIntel_CatergoryID;
+				String catergoryID =System.Label.PRM_MyIntel_CatergoryID;
                 String sourceOfMsg =System.Label.PRM_MyIntel_SourceOfMsg;
                 String EmailContent = emaillogs.PRM_EmailContent__c;
                 String EmailLogId  =emaillogs.Name;
@@ -129,20 +127,12 @@ private static List<Core_Platform_Event_Bus__e> buildEmailEventRecordList(List<P
                 updatedwrap.MessageDt = emaillogs.CreatedDate;
                 updatedwrap.source =sourceOfMsg;
                 updatedwrap.EmailId=emaillogs.PRM_ToEmailID__c;
-                
                 updatedwrap.EnterpriseId=emaillogs.PRM_EnterpriseId__c!=null ?emaillogs.PRM_EnterpriseId__c:null;
                 updatedwrap.MessageDeleteInd=emaillogs.IsDeleted;
                 String emailMsgInJsonFormat = JSON.serialize(updatedwrap);
-                Object obj = JSON.deserializeUntyped(emailMsgInJsonFormat);
-                String cleanJson = JSON.serialize(obj);
-                
-                
-                
-                //emailEventRecord.Core_Message__c = updatedwrap.toString();
-                emailEventRecord.Core_Message__c = cleanJson;
+                emailEventRecord.Core_Message__c = emailMsgInJsonFormat;
                 emailEventRecord.Core_IsActive__c =true;
                 emailEventRecord.Core_Object_Type__c ='PRM_EmailLog__c';
-                
                 emailEventRecordList.add(emailEventRecord);
 
         
@@ -214,7 +204,7 @@ private static Core_Platform_Event_Log__c buildPlatformEventLog(String emailLogI
         sendEmailOnFailure(failedRecordIds, toEmailAddressList);
     }
 }*/
-    
+	
     public class updatePlatformEventLogsWrapper{
         public List<Core_Platform_Event_Log__c> platformEventLogList{get;set;}
         public List<Boolean> publishStatusList{get;set;}
@@ -277,15 +267,9 @@ private static Core_Platform_Event_Log__c buildPlatformEventLog(String emailLogI
     }
     
     //Send Email of Failure Record Id's to Support Team 
-    public static void sendEmailOnFailure(List<Id> failedRecordIds, List<String> toEmailAddressList){   
-		
-		List<OrgWideEmailAddress> owea = new List<OrgWideEmailAddress>();
-        owea = [select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com];
-		
-		
+    public static void sendEmailOnFailure(List<Id> failedRecordIds, List<String> toEmailAddressList){       
         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
         message.toAddresses = toEmailAddressList;
-		message.setOrgWideEmailAddressId(owea.get(0).Id);
         message.optOutPolicy = 'FILTER';
         message.subject = 'SF to iPaaS Failure Record Notification';
         message.plainTextBody = 'Hi Everyone,';
@@ -296,11 +280,6 @@ private static Core_Platform_Event_Log__c buildPlatformEventLog(String emailLogI
         Messaging.SingleEmailMessage[] messages =   new List<Messaging.SingleEmailMessage> {message};
             Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
         
-        if (results[0].success) {
-            //System.debug('The email was sent successfully.');
-        } else {
-            //System.debug('The email failed to send: ' + results[0].errors[0].message);
-        }
         
     }    
     
@@ -313,7 +292,6 @@ private static Core_Platform_Event_Log__c buildPlatformEventLog(String emailLogI
         if(emailTemplateRecords!=null && emailTemplateRecords.size()>0 && emailTemplateRecords[0]!=null && emailTemplateRecords[0].PRM_Email_Template_Names__c!=null){
             IPAEmailtemplateList=(emailTemplateRecords[0].PRM_Email_Template_Names__c).split(',');
         }
-        //System.debug('IPAEmailtemplateList'+IPAEmailtemplateList);
         if(IPAEmailtemplateList.contains(templateName)){
             returnValue =true;
         }  

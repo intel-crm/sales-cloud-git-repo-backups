@@ -24,13 +24,13 @@
         <label>Step 1</label>
         <name>Step_1</name>
     </approvalStep>
-    <emailTemplate>Testt/New_Change_Request_Approval</emailTemplate>
+    <emailTemplate>unfiled$public/New_Change_Request_Approval</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
             <field>Core_Change_Request__c.RecordType</field>
             <operation>equals</operation>
-            <value>Update Account Address,Update Hierarchy,Update Core Attributes</value>
+            <value>Update Account Name Request,Update Account Address Request,Update Core Attributes,Update Hierarchy</value>
         </criteriaItems>
     </entryCriteria>
     <finalApprovalActions>

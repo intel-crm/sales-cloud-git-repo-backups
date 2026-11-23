@@ -58,7 +58,7 @@ global class Core_AandE_Azure_Auth_Provider extends Auth.AuthProviderPluginClass
             //'&code=' + EncodingUtil.urlEncode('code', 'UTF-8');
             '&code=' + EncodingUtil.urlEncode(code, 'UTF-8');
         req.setBody(body);
-        
+        System.debug('Request body'+body);
         String url = accessTokenUrl;
         req.setEndpoint(url);
         req.setHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -85,7 +85,8 @@ global class Core_AandE_Azure_Auth_Provider extends Auth.AuthProviderPluginClass
             '&refresh_token=' + EncodingUtil.urlEncode(refreshToken, 'UTF-8') +
             '&scope=' + EncodingUtil.urlEncode(scopeStr, 'UTF-8') +
             '&grant_type=client_credentials';
-        req.setBody(body);                                           
+        req.setBody(body);  
+        System.debug('Request body2'+body);                                         
         String url = accessTokenUrl;
         req.setEndpoint(url);
         req.setHeader('Content-Type', 'application/x-www-form-urlencoded');

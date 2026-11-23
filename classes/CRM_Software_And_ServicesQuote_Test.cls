@@ -63,7 +63,12 @@ public class CRM_Software_And_ServicesQuote_Test {
         List<Product2> products2 = Core_DDR_Utility.CreateProduct(1);
         insert products2;
         
+        //List<Core_Design_Registration__c> TestDDRlst = Core_DDR_Utility.createDDR(1);
+        //insert TestDDRlst;
         List<Core_Design_Registration__c> TestDDRlst = Core_DDR_Utility.createDDR(1);
+        TestDDRlst[0].Core_Intel_Support_Status__c = 'Disti Design Registration High';
+        TestDDRlst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
+        TestDDRlst[0].Core_Accepted_By_Id__c = UserInfo.getUserId();
         insert TestDDRlst;
         
         List<Core_Design_Registration_Product__c> TestDDRProd = Core_DDR_Utility.CreateDRProduct(1, TestDDRlst, products2);
@@ -92,21 +97,14 @@ public class CRM_Software_And_ServicesQuote_Test {
             DDRLst.Core_Opportunity_Id__c = opp.id;
             update DDRLst;
         }
-         /*Account accountInstance = [select id,name, BillingCountryCode, BIllingStateCode, BillingCity, BillingStreet,            Core_Sales_Groups__c, Industry, Core_Sub_Industry__c 
-                                    from Account where name like '%SWAcct%' limit 1];*/
-        
-         Id accDealID = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        // Create a new account        
-        Account acct = new Account(Name = 'New Test Account1', BillingStreet = '123 Fake St',Industry ='Gaming', Core_Sub_Industry__c   ='eSports',
-                                   BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                   BillingPostalCode = '12345', Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI(), RecordTypeId = accDealID);//Core_CIM_ID__c = '8675309'
-        insert acct;
+         Account accountInstance = [select id,name, BillingCountryCode, BIllingStateCode, BillingCity, BillingStreet,            Core_Sales_Groups__c, Industry, Core_Sub_Industry__c 
+                                    from Account where name like '%SWAcct%' limit 1];
         
         Contact contactInstance = new Contact();
         contactInstance.FirstName = 'test';
         contactInstance.LastName = 'Contact xyz';
         contactInstance.email = 'test@test1.com';
-        contactInstance.AccountId = acct.id;
+        contactInstance.AccountId = accountInstance.id;
         contactInstance.MailingCountry = 'India';
         
         insert contactInstance;

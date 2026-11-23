@@ -76,7 +76,7 @@ global without sharing class Core_OpportunityNameSearch {
             // Search across all opportunities in the system for the given search string.
             // Note: for the Opportunity object, "NAME FIELDS" is only the Name field.
             matchingOpptys = [FIND :searchString IN NAME FIELDS
-                              RETURNING Opportunity(Id, Name, Account.Name,Account.Core_CIM_ID__c, Account.Core_Business_Party_Id__c)][0];
+                              RETURNING Opportunity(Id, Name, Account.Name,Account.Core_CIM_ID__c, Account.Core_Business_Party_Id__c LIMIT 2000)][0];
         }
 
         if (matchingOpptys.size() > 10) {

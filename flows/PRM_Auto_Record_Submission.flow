@@ -173,60 +173,14 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>OR(
-	AND(
-		OR([PRM_Registration_Request__c].RecordType.DeveloperName =  &apos;Add_Membership_Request&apos;, 
-			[PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Add_Contact_Request&apos;, 
-			[PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Account_Create_Request&apos;
-		),
-		[PRM_Registration_Request__c].PRM_isSubmitted__c==False ,
-                ISPICKVAL([PRM_Registration_Request__c].PRM_Status__c, &apos;New&apos;),
-		[PRM_Registration_Request__c].PRM_Auto_Approve__c =False,
-		[PRM_Registration_Request__c].PRM_Channel_Program_Level_txt__c =  &apos;Intel Partner Alliance&apos;,
-		ISBLANK([PRM_Registration_Request__c].Entitlement_Details__c)
-	),
-	AND(
-		OR([PRM_Registration_Request__c].RecordType.DeveloperName =  &apos;Add_Membership_Request&apos;, 
-		[PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Add_Contact_Request&apos;,
-		[PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Account_Create_Request&apos;
-		),
-		[PRM_Registration_Request__c].PRM_isSubmitted__c==False , 
-		[PRM_Registration_Request__c].PRM_Auto_Approve__c =False,
-		ISCHANGED([PRM_Registration_Request__c].PRM_Status__c),
-		ISPICKVAL(PRIORVALUE([PRM_Registration_Request__c].PRM_Status__c), &apos;Rejected&apos;),
-		ISPICKVAL([PRM_Registration_Request__c].PRM_Status__c, &apos;New&apos;),
-		[PRM_Registration_Request__c].PRM_Channel_Program_Level_txt__c =  &apos;Intel Partner Alliance&apos;	
-	)
-)</stringValue>
+                <stringValue>AND(OR([PRM_Registration_Request__c].RecordType.DeveloperName =  &apos;Add_Membership_Request&apos;, [PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Add_Contact_Request&apos;, [PRM_Registration_Request__c].RecordType.DeveloperName =&apos;Account_Create_Request&apos;),[PRM_Registration_Request__c].PRM_isSubmitted__c==False ,
+[PRM_Registration_Request__c].PRM_Auto_Approve__c ==False,[PRM_Registration_Request__c].PRM_Channel_Program_Level_txt__c =  &apos;Intel Partner Alliance&apos;,ISBLANK([PRM_Registration_Request__c].Entitlement_Details__c))</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>OR(
-	AND(
-		OR({!myVariable_current.RecordType.DeveloperName} =  &apos;Add_Membership_Request&apos;, 
-			{!myVariable_current.RecordType.DeveloperName} =&apos;Add_Contact_Request&apos;, 
-			{!myVariable_current.RecordType.DeveloperName} =&apos;Account_Create_Request&apos;
-		),
-		{!myVariable_current.PRM_isSubmitted__c}==False ,
-                ISPICKVAL({!myVariable_current.PRM_Status__c}, &apos;New&apos;),
-		{!myVariable_current.PRM_Auto_Approve__c} =False,
-		{!myVariable_current.PRM_Channel_Program_Level_txt__c} =  &apos;Intel Partner Alliance&apos;,
-		ISBLANK({!myVariable_current.Entitlement_Details__c})
-	),
-	AND(
-		OR({!myVariable_current.RecordType.DeveloperName} =  &apos;Add_Membership_Request&apos;, 
-		{!myVariable_current.RecordType.DeveloperName} =&apos;Add_Contact_Request&apos;,
-		{!myVariable_current.RecordType.DeveloperName} =&apos;Account_Create_Request&apos;
-		),
-		{!myVariable_current.PRM_isSubmitted__c}==False , 
-		{!myVariable_current.PRM_Auto_Approve__c} =False,
-		ISCHANGED({!myVariable_current.PRM_Status__c}),
-		ISPICKVAL(PRIORVALUE({!myVariable_current.PRM_Status__c}), &apos;Rejected&apos;),
-		ISPICKVAL({!myVariable_current.PRM_Status__c}, &apos;New&apos;),
-		{!myVariable_current.PRM_Channel_Program_Level_txt__c} =  &apos;Intel Partner Alliance&apos;	
-	)
-)</expression>
+        <expression>AND(OR({!myVariable_current.RecordType.DeveloperName} =  &apos;Add_Membership_Request&apos;, {!myVariable_current.RecordType.DeveloperName} =&apos;Add_Contact_Request&apos;, {!myVariable_current.RecordType.DeveloperName} =&apos;Account_Create_Request&apos;),{!myVariable_current.PRM_isSubmitted__c}==False ,
+{!myVariable_current.PRM_Auto_Approve__c} ==False,{!myVariable_current.PRM_Channel_Program_Level_txt__c} =  &apos;Intel Partner Alliance&apos;,ISBLANK({!myVariable_current.Entitlement_Details__c}))</expression>
     </formulas>
     <formulas>
         <processMetadataValues>

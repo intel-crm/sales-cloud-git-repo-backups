@@ -346,8 +346,8 @@
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}
-{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/54.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/54.0/apex.js&quot;)}
 
 var records = {!GETRECORDIDS($ObjectType.Core_IPS_Email_Log__c)};
 if (records.length == 0) 

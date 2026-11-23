@@ -4,7 +4,7 @@
     <label>AzureAPI</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6jXdZ4PwGMU.1FaiA22rRACbFpO4sScf_kyNe5AmgmjMmS3HvvISP5R_F0f1</consumerKey>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDmlzMpMMdzMSxBUsVEvQKg.jH0iq9A8TqDhwhM6_6ToFnkWO09mcg6dYJoYt</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -22,7 +22,7 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>azure@intel.com.crm</oauthClientCredentialUser>
+        <oauthClientCredentialUser>azure@intel.com.crm.crmdevint3</oauthClientCredentialUser>
         <scopes>Full</scopes>
     </oauthConfig>
     <oauthPolicy>

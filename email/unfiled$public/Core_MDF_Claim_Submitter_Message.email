@@ -1,0 +1,11 @@
+<messaging:emailTemplate subject="Claim Submitter Message for Case {!RelatedTo.CaseNumber}" recipientType="User" relatedToType="Case">
+    <messaging:htmlEmailBody >
+        <html>
+             <body>  
+                <div style="font-size:17px;font-family:Calibri"> 
+                Claim Submitter submitted message in Case <a href="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!RelatedTo.CaseNumber}</a>.<br/>
+                </div>
+             </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

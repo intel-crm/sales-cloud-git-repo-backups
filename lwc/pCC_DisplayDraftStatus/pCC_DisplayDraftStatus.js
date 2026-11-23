@@ -1,4 +1,4 @@
-import { LightningElement, wire, api, track } from 'lwc';
+import { LightningElement, wire, api,track } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import { refreshApex } from '@salesforce/apex';
 import PCC_DraftStatusMessage from '@salesforce/label/c.PCC_DraftStatusMessage';
@@ -24,13 +24,14 @@ const OPPORTUNITY_FIELDS = [PRODUCT_SEGMENT_FIELD];
 
 export default class pCC_DisplayDraftStatus extends LightningElement {
     @api recordId;
+    @api record;
     @track showWarning = false;
     @track displayText = false;
     @track displayDealStatus = false;
     @track inactivePicklists;
     @track inactivePicklist = false;
-    @track opportunityId;
-    @track productGroup;
+    opportunityId;
+    productGroup;
 
     label = {
         PCC_DraftStatusMessage,
@@ -55,13 +56,20 @@ export default class pCC_DisplayDraftStatus extends LightningElement {
             .then((data) =>{
                 if(data.PCC_Registration_Type__c===DealRegLabel && data.Core_Design_Registration_Status_Nm__c==='Draft'){
                     this.displayDealStatus =true;
-                } 
+                }
                 if(data.PCC_Registration_Type__c===DesignRegLabel){                 
                     if(data.Core_Design_Registration_Status_Nm__c==='Draft'){
                     console.log('Inside Design reg label');
                     this.displayText = true;
                     }this.ValidateInactiveLOVV;
+                    /*if( data.Core_Design_Registration_Status_Nm__c!='Expired' && data.Core_Design_Registration_Status_Nm__c!='Abandoned'
+                        && data.Core_Design_Registration_Status_Nm__c!='Cancelled' && data.Core_Design_Registration_Status_Nm__c!='Rejected'){
+                        console.log('Inside inactive lov-----');
+                            
+                    }*/
                 } 
+                // After fetching user permissions, check design registration
+                refreshApex(this.wiredDesignRegistrationResult);
             })
             .catch((error) => {
                 this.error = error;
@@ -99,8 +107,7 @@ export default class pCC_DisplayDraftStatus extends LightningElement {
             this.productGroup = data.fields.Core_Product_Group_Nm__c.value;
             this.opportunityId = data.fields.Core_Opportunity_Id__c.value;
             if (this.productGroup === 'Embedded/IOT') {
-                // Fetch opportunity data when product group is 'Embedded/IOT'
-                this.fetchOpportunityData();
+                refreshApex(this.wiredOpportunityResult);
             } else {
                 this.showWarning = false;
             }
@@ -114,7 +121,7 @@ export default class pCC_DisplayDraftStatus extends LightningElement {
         if (data) {
             console.log('Opportunity:',data);
             const productSegment = data.fields.Core_Product_Segment__c.value;
-            if (this.productGroup === 'Embedded/IOT' && productSegment !== 'Comms Infra. / Networking' && productSegment !== 'Embedded / IOT') {
+            if (productSegment !== 'Comms Infra. / Networking' && productSegment !== 'Embedded / IOT') {
                 this.showWarning = true;
             } else {
                 this.showWarning = false;
@@ -122,10 +129,5 @@ export default class pCC_DisplayDraftStatus extends LightningElement {
         } else if (error) {
             console.error('Error fetching opportunity data: ', error);
         }
-    }
-
-    fetchOpportunityData() {
-        // Trigger the wired function by updating the opportunityId
-        this.opportunityId = this.opportunityId;
     }
 }

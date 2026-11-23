@@ -139,7 +139,7 @@ public class PRM_AcctContRel_TriggerHandler_Test {
         acctObj.Core_Alternate_Language_Name__c = 'Alternate Name Account';
         acctObj.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
         acctObj.Core_CIM_ID__c = '123456789';
-        acctObj.RecordTypeId=[select Id from RecordType where sObjectType='Account' and Name='Intel Account'].Id;
+        
         insert acctObj;
         
         

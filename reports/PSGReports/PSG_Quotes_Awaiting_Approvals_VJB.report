@@ -25,7 +25,6 @@
         <label>Assigned To</label>
         <scale>2</scale>
     </customDetailFormulas>
-    <description>It gives detailed insights into the approval stage of the quotes and their respective approvers</description>
     <filter>
         <criteriaItems>
             <column>FK_$SBQQ__Quote__c.Pricing_Quote_Program_Nm__c</column>
@@ -37,9 +36,9 @@
         <criteriaItems>
             <column>FK_$SBQQ__Quote__c.SBQQ__Status__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>In Review,Approved</value>
+            <value>Approved,Submitted</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_NAME</column>
@@ -48,20 +47,13 @@
             <operator>contains</operator>
             <value>Q-</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>sbaa__Approval__c.sbaa__AssignedTo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value></value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FK_NAME</field>
-        <sortOrder>Desc</sortOrder>
+        <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>PSG Quotes - Approval Details</name>
     <params>

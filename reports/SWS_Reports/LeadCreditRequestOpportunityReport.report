@@ -29,7 +29,7 @@
         </chartSummaries>
         <chartType>Funnel</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
+        <expandOthers>false</expandOthers>
         <groupingColumn>SWS_Cloud_Credit_Request__c$SWS_Conversion_Status__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
@@ -83,7 +83,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Coupon_Generated</value>
+            <value>Coupon_Generated,Coupon Generated</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

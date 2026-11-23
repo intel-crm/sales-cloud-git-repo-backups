@@ -17,7 +17,7 @@
             <name>Core_Send_email_receipt_to_PAR_Submitter</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_IPS_MAP_PAR__c.RecordTypeId</field>
             <operation>equals</operation>

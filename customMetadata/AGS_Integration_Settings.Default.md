@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Maximum_Retry_Count__c</field>
-        <value xsi:type="xsd:double">1.0</value>
+        <value xsi:type="xsd:double">2.0</value>
     </values>
     <values>
         <field>Retry_Window_Minutes__c</field>

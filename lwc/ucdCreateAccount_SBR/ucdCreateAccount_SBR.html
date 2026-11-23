@@ -1,0 +1,480 @@
+<template>   
+           
+    <lightning-record-edit-form object-api-name='Account'  layout-type="Full" columns="2"
+     onsuccess={handleSuccess} onsubmit={handleSubmit} onerror={handleError}>
+        
+     <div class="slds-text-heading_medium slds-align_absolute-center" style="padding: 5px;">
+        New Account: Intel Account
+    </div>
+<lightning-card>
+    <div class=" slds-theme--shade" style="padding: 5px;">
+        <div class="slds-text-heading_small">
+            <b>Account Information</b>
+        </div>
+    </div>
+     <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+            <lightning-input-field class="Name" field-name="Name" value={acctformdetails.Name}>
+            </lightning-input-field>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+                <lightning-input-field field-name="Core_CNDA_Number__c">
+                </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Prime_Account_Name__c">
+        </lightning-input-field>  
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+                <lightning-input-field field-name="Core_Sales_Groups__c">
+                </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+            <lightning-input-field field-name="Core_Alternate_Language_Name__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+                <lightning-input-field field-name="Core_Account_BU_Focus__c">
+                </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field class="AccType" field-name="Core_Account_Type__c" required>
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+                <lightning-input-field field-name="Core_Account_Tier__c">
+                </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_IPA_Partner_Role__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field class="Industry"  field-name="Industry" required>
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Account_Legal_Name__c" value={acctformdetails.Core_Account_Legal_Name__c}>
+        </lightning-input-field>  
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field class="SubIndustry" field-name="Core_Sub_Industry__c" required>
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+
+    <div class=" slds-theme--shade" style="padding: 5px;">
+        <div class="slds-text-heading_small">
+            <b>Address Information</b>
+        </div>
+    </div>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <div class="slds-text-heading_extrasmall">
+            <b>Primary Address</b>
+        </div>  
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <div class="slds-text-heading_extrasmall">
+                <b>Secondary Address</b>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field class="BillingCountry" field-name="BillingCountryCode" value={acctformdetails.BillingCountryCode}>
+        </lightning-input-field>  
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Secondary_Country__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field class="BillingStreet" field-name="BillingStreet" value={acctformdetails.BillingStreet} required>
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Secondary_Street__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+        small-device-size="12">
+        <lightning-input-field class="BillingCity" field-name="BillingCity" value={acctformdetails.BillingCity} required>
+        </lightning-input-field>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+            small-device-size="12">
+            <lightning-input-field class="BillingState" field-name="BillingStateCode" value={acctformdetails.BillingStateCode} required>
+            </lightning-input-field>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Secondary_City__c" >
+        </lightning-input-field>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="3" large-device-size="3" medium-device-size="3"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Secondary_State__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="BillingPostalCode" value={acctformdetails.postalCode}>
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Secondary_Zip_Code__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Geo__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_User_Defined_Phone_Number__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Sub_Geo__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_User_Defined_Website__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+    
+    <div class=" slds-theme--shade" style="padding: 5px;">
+        <div class="slds-text-heading_small">
+            <b>Alternate Language Address</b>
+        </div>
+    </div>
+        
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Alt_Address_1__c" value={acctformdetails.taddressline1}>
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Alt_Language_State_Province__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>    
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Alt_Address_2__c" value={acctformdetails.taddressline2}>
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Alt_Language_country__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>  
+    
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Alt_Language_City__c" value={acctformdetails.tcity}>
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Alt_Language_Postal_Code__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>  
+        
+   <!-- <div class=" slds-theme--shade" style="padding: 5px;">
+        <div class="slds-text-heading_small">
+            <b>Compliance Information</b>
+        </div>
+    </div>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Military_Aerospace_and_Government__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Export_Compliance_Block__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>  
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Physical_Location__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Export_Compliance_Block_Reason__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>  
+    
+    
+    <div class=" slds-theme--shade" style="padding: 5px;">
+        <div class="slds-text-heading_small">
+            <b>Additional Information</b>
+        </div>
+    </div>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Last_MsgId__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Deactivated__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>  
+    
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_CIM_ID__c" value={acctformdetails.Core_CIM_ID__c}>
+        </lightning-input-field>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Deactivation_Reason__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>  
+           
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Fully_Executed_NDA__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Is_Duplicate__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>   
+        
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_IPS_Active__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_CIM_Intel_Ultimate_ID__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>    
+    
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_B2B_Entitlement__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_English_Only_Name__c" value={acctformdetails.tname}>
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_IsODM__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_B2B_ERPM_Account_Number__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_PSG_Account__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_RDC_Content_Restriction__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Intel_Partner_Alliance_PartnerGroup__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_MDF_CoMarketingActive__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+        
+        
+    <div class=" slds-theme--shade" style="padding: 5px;">
+        <div class="slds-text-heading_small">
+            <b>Partner Program Details</b>
+        </div>
+    </div>     
+        
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_Business_ID__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_Partner_Alliance_Program__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+    
+    <div class=" slds-theme--shade" style="padding: 5px;">
+        <div class="slds-text-heading_small">
+            <b>Partner Profile</b>
+        </div>
+    </div>   
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">
+        <lightning-input-field field-name="Core_User_Defined_Number_of_Employees__c">
+        </lightning-input-field> 
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_IPA_Partner_Segment__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+        small-device-size="12">        
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_IPA_Partner_Speciality__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <div class=" slds-theme--shade" style="padding: 5px;">
+        <div class="slds-text-heading_small">
+            <b>System Information</b>
+        </div>
+    </div> 
+
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+            small-device-size="12">
+            <lightning-input-field field-name="Core_System_Siebel_Account_Row_ID__c">
+            </lightning-input-field>
+        </lightning-layout-item>
+    </lightning-layout>-->
+<div>
+    <div if:true={loaded}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </div>
+<div class="inlineFooter">
+
+    <lightning-button-group>
+
+        <lightning-button
+        variant="brand"
+        type="submit"
+        label="Submit"
+        onclick={handleSubmit}>
+        </lightning-button>    
+              
+        <lightning-button 
+            label="Back"
+            onclick={handleBackButtonClick}></lightning-button> 
+    </lightning-button-group>
+    </div>
+
+</div>
+</lightning-card>
+    </lightning-record-edit-form>
+
+    
+</template>

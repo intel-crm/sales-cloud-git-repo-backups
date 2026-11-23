@@ -327,9 +327,14 @@ public class Core_FeatureHandler_Test {
             Core_Feature_Header__c=featureHeader.Id, Core_Display_Order__c=1);
         insert featureSet;
         
-        
+        /***
         Account accnt = Core_Test_Utility.createAccount(1)[0];
         accnt.Core_Sales_Groups__c = 'PRC Sales Group';
+        ***/
+        
+        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Account accnt = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
+
         insert accnt;
             
         Opportunity opp = Core_Test_Utility.createOpportunity(1)[0];
@@ -388,8 +393,13 @@ public class Core_FeatureHandler_Test {
         insert featureSet2;
         insert featureSet3;
         
+        /***
         Account accnt = Core_Test_Utility.createAccount(1)[0];
         accnt.Core_Sales_Groups__c = 'PRC Sales Group';
+        ***/
+        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Account accnt = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
+
         insert accnt;
         
         Opportunity opp = Core_Test_Utility.createOpportunity(1)[0];
@@ -456,8 +466,15 @@ public class Core_FeatureHandler_Test {
         insert featureSet2;
         insert featureSet3;
         
+        /***
         Account accnt = Core_Test_Utility.createAccount(1)[0];
-        accnt.Core_Sales_Groups__c = 'PRC Sales Group';
+        accnt.Industry = 'Electronics';
+        accnt.Core_Sales_Groups__c = Core_CRM_Utility.getSalesGroupAPI();
+        accnt.Core_Sub_Industry__c= 'Diversified Telecommunications Services';
+        ***/
+		Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Account accnt = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
+    
         insert accnt;
         
         Opportunity opp = Core_Test_Utility.createOpportunity(1)[0];

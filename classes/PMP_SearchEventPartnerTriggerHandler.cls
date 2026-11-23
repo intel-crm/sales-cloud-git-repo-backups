@@ -7,8 +7,9 @@
 * Created By  : Onyx Team (Infosys)
 ********************************************************************************************************************************************************************************************************/
 
-public class PMP_SearchEventPartnerTriggerHandler extends TriggerHandler{
-public static Boolean isWorking() {
+public class PMP_SearchEventPartnerTriggerHandler{// extends TriggerHandler{
+
+	public static Boolean isWorking() {
         return true;
     }
     //IPA2.0:TWC729-8114 Topics Removal/Event Removal

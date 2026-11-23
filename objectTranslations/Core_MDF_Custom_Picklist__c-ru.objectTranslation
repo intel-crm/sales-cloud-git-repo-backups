@@ -97,6 +97,10 @@
         <name>Core_MDF_Camp_IRTI</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- Intel MDF Account Based1 --></label>
+        <name>Core_MDF_Camp_Intel_MDF_Account_Based1</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Iot Premier - MDF Campaign --></label>
         <name>Core_MDF_Camp_Iot_Premier_MDF</name>
     </fieldSets>
@@ -257,6 +261,10 @@
         <name>Core_MDF_Activity_Description__c</name>
     </fields>
     <fields>
+        <label><!-- Activity Reimbursement Rate --></label>
+        <name>Core_MDF_Activity_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
         <label><!-- Activity Subtype --></label>
         <name>Core_MDF_Activity_SubType_nm__c</name>
     </fields>
@@ -315,6 +323,10 @@
         <help>В случае выбора применяется руководство на основе результатов. В случае, если выбор не выбран, применяется стандартное руководство по продажам и маркетингу. Активности в рамках этой кампании должны быть настроены соответствующим образом.</help>
         <label>Кампания на основе результатов</label>
         <name>Core_MDF_CampOutcomeOpt_In_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Reimbursement Rate --></label>
+        <name>Core_MDF_Campaign_Reimbursement_Rate_pct__c</name>
     </fields>
     <fields>
         <label><!-- Campaign Reimbursement Rate --></label>
@@ -479,7 +491,7 @@
     </fields>
     <fields>
         <help>Новые победы клиента</help>
-        <label>Количество развертываний</label>
+        <label><!-- Deployment Quantity --></label>
         <name>Core_MDF_Deployment_Quantity_nbr__c</name>
     </fields>
     <fields>
@@ -599,7 +611,7 @@
     </fields>
     <fields>
         <help>Как будет оцениваться эффективность кампании. Стандартные KPIs включают потенциальных клиентов (новые контакты) и развертываний (новые победы клиентов).</help>
-        <label>Ключевой показатель эфф. Маркетинга</label>
+        <label><!-- Marketing Key Performance Indicator --></label>
         <name>Core_MDF_Key_Marketing_Indicator_nm__c</name>
     </fields>
     <fields>
@@ -608,7 +620,7 @@
     </fields>
     <fields>
         <help>Новые контакты</help>
-        <label>Количество потенциальных клиентов</label>
+        <label><!-- Lead Quantity --></label>
         <name>Core_MDF_Lead_Quantity_nbr__c</name>
     </fields>
     <fields>
@@ -665,6 +677,10 @@
         <name>Core_MDF_Opal_Budget_Type_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Other Outcome Brands/Technologies --></label>
+        <name>Core_MDF_Other_Brands_Technologies_txt__c</name>
+    </fields>
+    <fields>
         <label>Другой партнер по экосистеме</label>
         <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
     </fields>
@@ -682,7 +698,7 @@
         <name>Core_MDF_Other_Outcome_txt__c</name>
     </fields>
     <fields>
-        <label>Другое количество</label>
+        <label><!-- Other Quantity --></label>
         <name>Core_MDF_Other_Quantity_nbr__c</name>
     </fields>
     <fields>
@@ -975,8 +991,8 @@
         <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
     </fields>
     <fields>
-        <help>Выберите пример использования, который наиболее соответствует предложению решения, продвигаемого в рамках этой кампании. Если ни один из перечисленных примеров использования не подходит, выберите «Общего назначения».</help>
-        <label>Пример использования</label>
+        <help><!-- Please choose the Use Case that most closely aligns with the solution offering this campaign will promote. If none of the listed Uses Cases apply, select General purpose. --></help>
+        <label><!-- Use Case --></label>
         <name>Core_MDF_Use_Case_Nm__c</name>
     </fields>
     <fields>
@@ -1012,6 +1028,10 @@
     <recordTypes>
         <label><!-- Channel MDF - Account Based --></label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Channel MDF - Proposal Based --></label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Client --></label>

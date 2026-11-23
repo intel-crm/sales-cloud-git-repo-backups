@@ -200,7 +200,7 @@
     <fields>
         <fullName>Core_Processing_Status__c</fullName>
         <description>Status of the message as it is processed by the Batch Code</description>
-        <externalId>false</externalId>
+        <externalId>true</externalId>
         <label>Processing Status</label>
         <length>255</length>
         <required>false</required>

@@ -2,8 +2,8 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 01-31-2025
-* @last modified by  : Vrushabh Uprikar
+* @last modified on  : 06-18-2026
+* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
 public without sharing class Pricing_Test_Utility {
@@ -41,12 +41,20 @@ public without sharing class Pricing_Test_Utility {
     // This method creates Account Team Members and Account Share Settings
     Public static List<AccountTeamMember> createAccountTeamMember(Id accId, Id userId){
         List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();        
-        AccountShare accShare = new AccountShare(AccountId = accId, AccountAccessLevel ='Edit', OpportunityAccessLevel ='Edit',
-                                                 CaseAccessLevel='Edit', UserOrGroupId = userId);
+        
+        AccountShare accShare = new AccountShare(AccountId = accId,
+                                                 AccountAccessLevel ='Edit',
+                                                 OpportunityAccessLevel ='Edit',
+                                                 CaseAccessLevel='Edit',
+                                                 UserOrGroupId = userId);
         insert accShare;        
-        AccountTeamMember accountTeamMember = new AccountTeamMember(AccountId = accId, TeamMemberRole = 'Team Member (100%)',
-                                                                    AccountAccessLevel ='Edit', OpportunityAccessLevel ='Edit',
-                                                                    CaseAccessLevel='Edit', UserId = userId);
+        
+        AccountTeamMember accountTeamMember = new AccountTeamMember(AccountId = accId,
+                                                                    TeamMemberRole = 'Team Member (100%)',
+                                                                    AccountAccessLevel ='Edit',
+                                                                    OpportunityAccessLevel ='Edit',
+                                                                    CaseAccessLevel='Edit',
+                                                                    UserId = userId);
         lstAccountTeamMember.add(accountTeamMember);
         
         insert lstAccountTeamMember;
@@ -210,13 +218,13 @@ public without sharing class Pricing_Test_Utility {
     
     public static Product2 createWINProduct(){
         try{
+             List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             Product2 product = new Product2(Name = 'Write In Product',
                                             Core_Product_Org__c = 'Sales',
                                             Core_Product_Type__c = 'Processors',
                                             Core_Sales_Visible_Flag__c = true,
-                                            Core_Hierarchy_ID__c = '43',
-                                            Core_Group_Code_Short_Name__c = 'DCG~DCAI',
-                                            IsActive = true); 
+                                            Core_Hierarchy_ID__c = '43',IsActive = true,
+                                            Core_Line_of_Business__c = lobValuesList[0]); 
             insert product;
             return product;
         }catch(Exception exp){
@@ -229,13 +237,14 @@ public without sharing class Pricing_Test_Utility {
     //Quoted Id and Integer value is provided as parameters
     public static List<SBQQ__QuoteLine__c> createQuoteLines(Id quoteId, Integer numquoteLines){
         List<Product2> products = new List<Product2>();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         for(Integer i=0;i<numquoteLines;i++) {
             Product2 prod = new Product2(Name='TestProduct' + i,
                                          Core_Product_Org__c = 'Sales',
                                          Core_Product_Type__c = 'Processors',
                                          Core_Sales_Visible_Flag__c = true,
                                          Core_Hierarchy_ID__c = '43',
-                                         Core_Group_Code_Short_Name__c = 'DCG~DCAI',
+                                         Core_Line_of_Business__c = lobValuesList[0],
                                          Core_Processor_Number_Nm__c = 'P6500',
                                          IsActive = true);
             products.add(prod);
@@ -266,6 +275,8 @@ public without sharing class Pricing_Test_Utility {
             quoteLine.Pricing_Quote_Program_Nm__c = Label.Pricing_Program_Code_Tender;
             quoteLine.Pricing_Status_Nm__c =system.label.Quote_Pricing_Status;
             quoteLine.Pricing_Consumption_Platform__c = 'Test platform 1,test platform 2';
+            //quoteLine.Pricing_Consumption_Sale_Geo__c = 'Test sales Geo,test sales Geo 2';
+            //quoteLine.Pricing_Consumption_Segment__c = 'Test segment,test segment 2';
             quoteLine.Pricing_Consumption_Region__c = 'ASMO';
             quoteLine.Pricing_Project_Nm__c = 'test project';
             quoteLine.Pricing_Ready_for_Review_cb__c = false;
@@ -1272,6 +1283,7 @@ insert et;
             insert partnerGroupList;
             return partnerGroupList;
         }catch(Exception e){
+            System.debug('Exception is: '+e.getMessage());
                         return null;
         }
     }
@@ -1279,24 +1291,29 @@ insert et;
     //methods for Financial Incentive
     public static Product_Additional_Attribute__c createDealRegProduct(){
         try{
+            List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             Product2 prod = new Product2(Name='Deal Reg Product',
                                          Core_Product_Org__c = 'Sales',
                                          Core_Product_Type__c = 'Processors',
                                          Core_Sales_Visible_Flag__c = true,
                                          Core_Hierarchy_ID__c = '43',
-                                         Core_Group_Code_Short_Name__c = 'DCG~DCAI',
+                                         Core_Line_of_Business__c = lobValuesList[0],
                                          Core_Processor_Number_Nm__c = 'P6500',
                                          Core_VerticalSegment__c = 'Mobile',
                                          IsActive = true);
             insert prod;
+            System.debug('After prod creation: 1223'+ prod);
             Product_Additional_Attribute__c dealprod = new Product_Additional_Attribute__c();
             dealprod.Name = 'Deal Reg Product';
             dealprod.Product__c = prod.Id;
             dealprod.Eligible_for_Deal_Reg__c = true;
             dealprod.Programs_Eligible__c = 'PDI';
+            System.debug('After Deal prod creation: 1228' +prod);
             insert dealprod;
+            System.debug('After Insertion: 1230' +dealprod);
             return dealprod;
         }catch(Exception exp){
+System.debug('Exception1233: '+exp.getMessage());
             return null;
         }
     }
@@ -1304,6 +1321,7 @@ insert et;
     public static List<OpportunityLineItem> createOpportunityProduct(Id oppId, Integer noOfRecs){
         try{
             List<OpportunityLineItem> oppItemList = new List<OpportunityLineItem>();
+            System.debug('Inside opp creation method');
             Product_Additional_Attribute__c dealRegProd = createDealRegProduct();
             PricebookEntry testPBE = new PricebookEntry();
             testPBE.UnitPrice = 1;
@@ -1328,9 +1346,13 @@ insert et;
                 //oppRec.TotalPrice = 200;
                 oppItemList.add(oppRec);
             }
+            System.debug('Inside opp creation method 1244');
             insert oppItemList;
+            System.debug('Inside opp creation method 1246');
             return oppItemList;
         }catch(Exception exp) {
+            System.debug('Inside opp creation method catch block');
+            System.debug('Exception: '+exp.getMessage());
             return null;
         }
     }
@@ -1398,13 +1420,14 @@ insert et;
     
     public static List<SBQQ__QuoteLine__c> createFIQuoteLines(Id quoteId, Integer numquoteLines){
         List<Product2> products = new List<Product2>();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         for(Integer i=0;i<numquoteLines;i++) {
             Product2 prod = new Product2(Name='TestProduct' + i,
                                          Core_Product_Org__c = 'Sales',
                                          Core_Product_Type__c = 'Processors',
                                          Core_Sales_Visible_Flag__c = true,
                                          Core_Hierarchy_ID__c = '43',
-                                         Core_Group_Code_Short_Name__c = 'DCG~DCAI',
+                                         Core_Line_of_Business__c = lobValuesList[0],
                                          Core_Processor_Number_Nm__c = 'P6500',
                                          IsActive = true);
             products.add(prod);
@@ -1448,12 +1471,13 @@ insert et;
     }
     public static SBQQ__QuoteLine__c createQuoteLineByStatus(Id quoteId, String quoteLineStatus){
         try{
+            List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             Product2 prod = new Product2(Name='TestProduct',
                                          Core_Product_Org__c = 'Sales',
                                          Core_Product_Type__c = 'Processors',
                                          Core_Sales_Visible_Flag__c = true,
                                          Core_Hierarchy_ID__c = '43',
-                                         Core_Group_Code_Short_Name__c = 'DCG~DCAI',
+                                         Core_Line_of_Business__c = lobValuesList[0],
                                          Core_Processor_Number_Nm__c = 'P6500',
                                          IsActive = true);
             
@@ -1516,12 +1540,13 @@ insert et;
     }
     
     public static Pricing_Product_Floor_Price__c createFloorPriceRec(Id ruleId){
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         Product2 prod = new Product2(Name='TestProduct',
                                      Core_Product_Org__c = 'Sales',
                                      Core_Product_Type__c = 'Processors',
                                      Core_Sales_Visible_Flag__c = true,
                                      Core_Hierarchy_ID__c = '43',
-                                     Core_Group_Code_Short_Name__c = 'DCG~DCAI',
+                                     Core_Line_of_Business__c = lobValuesList[0],
                                      Core_Processor_Number_Nm__c = 'P6500',
                                      IsActive = true);
         

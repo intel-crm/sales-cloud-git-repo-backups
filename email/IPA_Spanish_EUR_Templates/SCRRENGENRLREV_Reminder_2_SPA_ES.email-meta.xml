@@ -4,7 +4,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRRENGENRLREV_Reminder_2_SPA_ES</name>
     <style>none</style>
-    <subject>Recordatorio: verifique su correo electrónico y establezca su contraseña</subject>
+    <subject>Recordatorio: Verifique su dirección de correo electrónico</subject>
     <textOnly>Recordatorio: verifique su correo electrónico y establezca su contraseña
 
 
@@ -22,7 +22,7 @@ Tenga en cuenta que este enlace caducará en 4 horasPara completar el siguiente 
 Nombre de usuario: {!PRM_Registration_Request__c.PRM_Email_ID__c}
 
 ¿No puede acceder al enlace anterior?
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=es&amp;target=https://wcm-ciqa.intel.com/content/www/es/es/secure/partner/forms/ipa-account-search.html
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://wcm-ciqa.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner/forms/ipa-account-search.html
 
 
 ¡Esperamos contar con usted en el programa!
@@ -30,7 +30,7 @@ Atentamente,
 su equipo de la Alianza Intel® para socios
 
 Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 (EE. UU.). www.intel.es
 Privacidad &amp;verbar; Cookies</textOnly>
     <type>custom</type>

@@ -1,0 +1,11 @@
+<p>
+Hello,</br></br>
+
+The following Change request has been submitted<br><br>
+
+Change Request Number: {!PCC_Deal_Change_Request__c.Name}<br><br>
+
+For more details, you can access it by clicking <a href={!PCC_Deal_Change_Request__c.Link }>here</a>.
+</br></br>
+Thank you
+</p>

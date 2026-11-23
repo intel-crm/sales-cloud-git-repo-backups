@@ -16,76 +16,33 @@
         <developerName>BucketField_14107852</developerName>
         <masterLabel>Sales Group Bucketed</masterLabel>
         <nullTreatment>n</nullTreatment>
-        <otherBucketLabel>Other</otherBucketLabel>
         <sourceColumnName>Opportunity.Core_Sales_Groups__c</sourceColumnName>
-        <useOther>true</useOther>
+        <useOther>false</useOther>
         <values>
             <sourceValues>
-                <sourceValue>Americas Brazil Sales Group</sourceValue>
+                <sourceValue>CCG Sales Group</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Americas Canada Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Americas ELAR Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Americas Mexico Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Americas Named Account Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Americas US Sales Group</sourceValue>
-            </sourceValues>
-            <value>Americas</value>
+            <value>CCG</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>EMEA France Sales Group</sourceValue>
+                <sourceValue>DCG Sales Group</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>EMEA Germany Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMEA Named Account Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMEA Russia Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMEA Sales Territory</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>EMEA UK Sales Group</sourceValue>
-            </sourceValues>
-            <value>EMEA</value>
+            <value>DCG</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>APJ India Sales Group</sourceValue>
+                <sourceValue>IOTG Sales Group</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>APJ Japan Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>APJ Korea Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>APJ Named Account Sales Group</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>APJ Sales Territory</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>APJ Taiwan Sales Group</sourceValue>
-            </sourceValues>
-            <value>APJ</value>
+            <value>IOTG</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>PRC Named Account Sales Group</sourceValue>
+                <sourceValue>US Sales Group</sourceValue>
             </sourceValues>
+            <value>US</value>
+        </values>
+        <values>
             <sourceValues>
                 <sourceValue>PRC Sales Group</sourceValue>
             </sourceValues>
@@ -93,9 +50,45 @@
         </values>
         <values>
             <sourceValues>
-                <sourceValue>Global Strategic Account Sales Group</sourceValue>
+                <sourceValue>GMP APJ Sales Territory</sourceValue>
             </sourceValues>
-            <value>GSA</value>
+            <sourceValues>
+                <sourceValue>GMP Americas Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Brazil Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP EMEA Sales Territory</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP France Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Germany Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP India Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Japan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Korea Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Mexico Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Russia Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP Taiwan Sales Group</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>GMP UK Sales Group</sourceValue>
+            </sourceValues>
+            <value>GMP</value>
         </values>
     </buckets>
     <columns>
@@ -127,21 +120,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Last_Activity_Date__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
-        <field>OWNER_EMAIL</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Owner_Manager_Email__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner_Email_Txt__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner_Manager_Email__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -185,7 +163,7 @@
         <field>Opportunity.Core_Pipeline_Heath__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Pipe Quality by Sales Group Bucketed</name>
+    <name>Pipe Quality by Sales Group GMP Bucketed</name>
     <params>
         <name>terr</name>
         <value>all</value>

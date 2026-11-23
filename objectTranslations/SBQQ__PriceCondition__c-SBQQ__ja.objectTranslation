@@ -29,6 +29,10 @@
             <translation><!-- RecordTypeId --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>SBQQ__ListPrice__c</masterLabel>
+            <translation><!-- SBQQ__ListPrice__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>SBQQ__OptionLevel__c</masterLabel>
             <translation><!-- SBQQ__OptionLevel__c --></translation>
         </picklistValues>

@@ -4,51 +4,13 @@
     <customButtons>Core_Product_Recommendations</customButtons>
     <customButtons>Core_Create_Par</customButtons>
     <customButtons>jiffle__Jifflenow_Meetings</customButtons>
-    <customConsoleComponents>
-        <primaryTabComponents>
-            <containers>
-                <isContainerAutoSizeEnabled>true</isContainerAutoSizeEnabled>
-                <region>Right</region>
-                <sidebarComponents>
-                    <componentType>RelatedList</componentType>
-                    <label>Opportunities</label>
-                    <relatedLists>
-                        <hideOnDetail>false</hideOnDetail>
-                        <name>RelatedOpportunityList</name>
-                    </relatedLists>
-                </sidebarComponents>
-                <sidebarComponents>
-                    <componentType>RelatedList</componentType>
-                    <label>Account Team</label>
-                    <relatedLists>
-                        <hideOnDetail>false</hideOnDetail>
-                        <name>RelatedAccountSalesTeam</name>
-                    </relatedLists>
-                </sidebarComponents>
-                <sidebarComponents>
-                    <componentType>RelatedList</componentType>
-                    <label>Contacts</label>
-                    <relatedLists>
-                        <hideOnDetail>false</hideOnDetail>
-                        <name>RelatedContactList</name>
-                    </relatedLists>
-                </sidebarComponents>
-                <sidebarComponents>
-                    <componentType>RelatedList</componentType>
-                    <label>Notes &amp; Attachments</label>
-                    <relatedLists>
-                        <hideOnDetail>false</hideOnDetail>
-                        <name>RelatedNoteList</name>
-                    </relatedLists>
-                </sidebarComponents>
-                <style>Accordion</style>
-                <unit>Percentage</unit>
-                <width>30</width>
-            </containers>
-        </primaryTabComponents>
-    </customConsoleComponents>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>GenerateKnowledge</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -101,6 +63,18 @@
                 <behavior>Readonly</behavior>
                 <field>Unified_Hierarchy_View__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Secondary_Country_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Secondary_State_Cd__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Altera_Acts__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -122,10 +96,6 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_Account_Primary_Coverage__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Account_Category__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -315,6 +285,14 @@
                 <behavior>Edit</behavior>
                 <field>Core_Intel_Partner_Alliance_PartnerGroup__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_CoMarketingActive__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Approved_Sales_Group_Exception__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -356,14 +334,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_RDC_Content_Restriction__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_CoMarketingActive__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Approved_Sales_Group_Exception__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -603,7 +573,25 @@
             <actionType>CustomButton</actionType>
             <sortOrder>13</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.Create_Associate_1PID</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>14</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.Delink_OPID</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>15</sortOrder>
+        </platformActionListItems>
     </platformActionList>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Deal_Opportunity__c.PRM_End_Customer_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Deal_Opportunity__c.PRM_Partner_Account__c</relatedList>
+    </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>OPPORTUNITY.NAME</fields>
@@ -616,6 +604,7 @@
         <relatedList>RelatedOpportunityList</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>Create_new_Contact</customButtons>
         <excludeButtons>NewContact</excludeButtons>
         <fields>FULL_NAME</fields>
         <fields>CONTACT.TITLE</fields>
@@ -624,6 +613,15 @@
         <fields>Core_IPS_Active__c</fields>
         <fields>Core_IPS_Intel_Support_Owner__c</fields>
         <relatedList>RelatedContactList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>AccountTeamMemberMultiAdd</excludeButtons>
+        <excludeButtons>AddAccTeamMember</excludeButtons>
+        <excludeButtons>AddAccountDefaultTeam</excludeButtons>
+        <fields>MEMBER_NAME</fields>
+        <fields>TEAM_MEMBER_ROLE</fields>
+        <fields>Core_Account_Category__c</fields>
+        <relatedList>RelatedAccountSalesTeam</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>NewContact</excludeButtons>
@@ -638,12 +636,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>jiffle__Campaign__c</fields>
-        <fields>jiffle__Meeting_Location__c</fields>
-        <fields>jiffle__Meeting__c</fields>
-        <fields>jiffle__Unique_Name__c</fields>
-        <fields>jiffle__Request_Status__c</fields>
-        <fields>jiffle__Event__c</fields>
         <relatedList>jiffle__Meeting_Relations__c.jiffle__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -651,15 +643,6 @@
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>AccountTeamMemberMultiAdd</excludeButtons>
-        <excludeButtons>AddAccTeamMember</excludeButtons>
-        <excludeButtons>AddAccountDefaultTeam</excludeButtons>
-        <fields>MEMBER_NAME</fields>
-        <fields>TEAM_MEMBER_ROLE</fields>
-        <fields>Core_Account_Category__c</fields>
-        <relatedList>RelatedAccountSalesTeam</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
@@ -730,8 +713,8 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Core_Inactive_Ind__c</fields>
         <fields>Core_Partner_Account_Id__c</fields>
+        <fields>Core_Inactive_Ind__c</fields>
         <relatedList>Core_Account_Group_Member__c.Core_Intel_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -805,14 +788,10 @@
         <fields>CASES.PRIORITY</fields>
         <fields>CASES.CREATED_DATE_DATE_ONLY</fields>
         <fields>CASES.STATUS</fields>
-        <fields>Core_Sub_Status__c</fields>
         <fields>OWNER_NAME</fields>
-        <fields>Core_IPS_Product__c</fields>
-        <fields>Core_Product_Organization__c</fields>
         <relatedList>RelatedCaseList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>ASSET.NAME</fields>
         <fields>Core_Platform__c</fields>
         <fields>Core_Product_Organization__c</fields>
@@ -826,7 +805,7 @@
     </relatedLists>
     <relatedLists>
         <fields>PRM_Contact_Id__c</fields>
-        <fields>PRM_Partner_Role_UI__c</fields>
+        <fields>PRM_Partner_Role__c</fields>
         <fields>PRM_Relationship_Id__c</fields>
         <fields>PRM_Start_Date_Dt__c</fields>
         <fields>PRM_End_Date_Dt__c</fields>
@@ -868,7 +847,6 @@
         <relatedList>PRM_AccountLegalAgreemntAssociation__c.PRM_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_MAP_PAR__c</fields>
         <fields>RECORDTYPE</fields>
@@ -902,14 +880,11 @@
         <relatedList>PRM_AccountBenefitAssociation__c.PRM_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Core_IPS_Project__c</fields>
         <fields>Core_Status__c</fields>
         <relatedList>Core_IPS_Account__c.Core_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>PRM_Specialty_Id__c</fields>
         <fields>CREATED_DATE</fields>
         <fields>PRM_Status_Change_Dt__c</fields>
@@ -941,8 +916,6 @@
         <relatedList>PRM_Partner_Assist_Consent__c.PRM_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>PRM_Engagement__c</fields>
         <fields>PRM_Effective_Tier__c</fields>
@@ -950,11 +923,23 @@
         <relatedList>PRM_Account_ExtSys_Info__c.PRM_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
-        <fields>Core_Account_Status_Name__c</fields>
-        <fields>Status_Update__c</fields>
-        <fields>LAST_UPDATE</fields>
+        <fields>CX_Insight_Report__c</fields>
+        <fields>CX_Insight_Report_Formula__c</fields>
+        <fields>Core_Date__c</fields>
+        <fields>AR_Tracking__c</fields>
         <relatedList>Account_Status__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_ODR_Onboarding_Matrix__c.PCC_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Tracker__c.PRM_Location_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>ER_Account_Business_Partner__c.ER_Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>true</runAssignmentRulesDefault>
@@ -964,7 +949,7 @@
     <showRunAssignmentRulesCheckbox>true</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hD4000001ZwSV</masterLabel>
+        <masterLabel>00hD3000000PrJR</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>2</sizeY>
         <summaryLayoutItems>

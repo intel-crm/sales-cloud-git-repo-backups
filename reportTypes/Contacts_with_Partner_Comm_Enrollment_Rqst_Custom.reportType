@@ -517,6 +517,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Member_Token__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Local_First_Name__c</field>
             <table>Contact</table>
         </columns>
@@ -798,6 +808,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Zip_Code__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Marketo_Email_Invalid__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Marketo_Email_Invalid_Cause__c</field>
             <table>Contact</table>
         </columns>
         <masterLabel>Contacts</masterLabel>

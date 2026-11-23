@@ -34,7 +34,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Accelerated by Intel®</masterLabel>
-        <translation><!-- Accelerated by Intel® --></translation>
+        <translation>Accelerato da Intel®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Altera®</masterLabel>
@@ -142,7 +142,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ G3 Processor</masterLabel>
-        <translation><!-- Intel® Arc™ G3 Processor --></translation>
+        <translation>Processore Intel® Arc™ G3</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ GPU</masterLabel>
@@ -401,6 +401,10 @@
         <translation><!-- Intel® Gaudi® --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Intel® Geti™</masterLabel>
+        <translation><!-- Intel® Geti™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Intel® Infrastructure Power Manager</masterLabel>
         <translation><!-- Intel® Infrastructure Power Manager --></translation>
     </valueTranslation>
@@ -422,11 +426,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Iris® Xe Graphics</masterLabel>
-        <translation>Grafica Intel® Iris® Xe</translation>
+        <translation><!-- Intel® Iris® Xe Graphics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Iris® Xe Max Graphics</masterLabel>
-        <translation>Grafica Intel® Iris® Xe Max</translation>
+        <translation><!-- Intel® Iris® Xe Max Graphics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® MAX®</masterLabel>
@@ -486,7 +490,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Processor (N/U Series)</masterLabel>
-        <translation><!-- Intel® Processor (N/U Series) --></translation>
+        <translation>Processore Intel® (Serie N/U)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® RFP Ready Kits</masterLabel>
@@ -558,11 +562,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® D Processor</masterLabel>
-        <translation>Processore Intel® Xeon® D</translation>
+        <translation><!-- Intel® Xeon® D Processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® E Processor</masterLabel>
-        <translation>Processore Intel® Xeon® E</translation>
+        <translation><!-- Intel® Xeon® E Processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® Gold Processor</masterLabel>
@@ -582,7 +586,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® W processor</masterLabel>
-        <translation>Processore Intel® Xeon® W</translation>
+        <translation><!-- Intel® Xeon® W processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® eASIC</masterLabel>

@@ -56,7 +56,7 @@
     </values>
     <values>
         <field>Security_Query_txt__c</field>
-        <value xsi:type="xsd:string">select id from Account_Revenue__c where Account__c =: recordId</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Security_enforced__c</field>

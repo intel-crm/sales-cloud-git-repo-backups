@@ -15,9 +15,6 @@
     <columns>
         <field>Account$BillingCountryCode</field>
     </columns>
-    <columns>
-        <field>Account$Owner</field>
-    </columns>
     <description>All EMEA covered accounts with no territory assigned</description>
     <filter>
         <criteriaItems>
@@ -33,13 +30,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>EMEA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account$Owner</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>vendor</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -38,8 +38,7 @@ public with sharing class Core_IPS_Case_List_View_Export {
             // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
         //returnURL = ApexPages.currentPage().getParameters().get('retURL').escapeHtml4();
         returnURL = ApexPages.currentPage().getParameters().get('retURL');
-       
-        // For PDF:
+		// For PDF:
         // contentType = 'application/pdf#Export.pdf';
         // renderType  = 'PDF';
 
@@ -69,9 +68,12 @@ public with sharing class Core_IPS_Case_List_View_Export {
         loadFilterFields();
         
         Integer idx = strQuery.indexOf(' FROM ');
-        // TWC745-9117 - ATHR Critical fixed by Tushar
-        Integer limitValue = MAX_EXPORT_ROWS + 1;
-        String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT :limitValue';
+		
+
+        // String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT ' + (MAX_EXPORT_ROWS + 1); // commented by Tushar
+        
+        Integer limitValue = MAX_EXPORT_ROWS + 1; // line added by Tushar
+        String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT :limitValue'; //added by Tushar
         
         List<Object> lstObj = Database.query(strCountQuery);
         if (lstObj.size() > MAX_EXPORT_ROWS) {
@@ -159,7 +161,7 @@ public with sharing class Core_IPS_Case_List_View_Export {
                     strFieldValue = strFieldValue.subString(0, MAX_FIELD_LENGTH) + '...';                
                 
                 strFieldValue = strFieldValue.escapeCSV();        
-                // Avoid Deeply Nested IF Statements Kamala - TWC745-9117              
+                //Avoid Deeply Nested IF Statements Kamala              
                 if ((strFieldValue.length() > 0) && (strFieldValue.charAt(0) != ASCII_FOR_DOUBLE_QUOTE)) {
                         strFieldValue = '"' + strFieldValue + '"';                    
                     }                               
@@ -217,6 +219,8 @@ public with sharing class Core_IPS_Case_List_View_Export {
         req.setMethod('GET');      
         Http h = new Http();
         HttpResponse res = h.send(req);
+        if(res.getStatusCode() == 200){ // Exceptional Handling by Phani
+
         Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(res.getBody()); 
         strQuery = (String)root.get('query');
         strQuery = strQuery.replace('Owner.Alias', 'Owner.Name');
@@ -249,7 +253,7 @@ public with sharing class Core_IPS_Case_List_View_Export {
                 }
             }
          }
-
+        }
     }
     
 

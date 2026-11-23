@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Lead.Core_Geo__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Status__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Sub_Status__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_State__c</field>
-    </columns>
-    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
@@ -70,29 +58,17 @@
         <aggregateTypes>Average</aggregateTypes>
         <field>Opportunity.Core_Days_from_Opportunity_Create_to_Su__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads with Conv Info</description>
     <filter>
-        <booleanFilter>(1 AND 2) OR 3</booleanFilter>
         <criteriaItems>
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Eloqua</value>
+            <operator>equals</operator>
+            <value>User Eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>CONVERTED</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.SWS_Software_Lead__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

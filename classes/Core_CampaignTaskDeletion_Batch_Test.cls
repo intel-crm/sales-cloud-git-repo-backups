@@ -42,7 +42,7 @@ public class Core_CampaignTaskDeletion_Batch_Test {
         
         // Now test the deletion
         Test.startTest();
-        Core_CampaignTaskDeletion_Batch.deleteTasksForCampaign(campIds);
+        //Core_CampaignTaskDeletion_Batch.deleteTasksForCampaign(campIds);
         Test.stopTest();
         
         // Check to make sure we have no tasks

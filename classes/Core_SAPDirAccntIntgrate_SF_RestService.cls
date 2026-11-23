@@ -13,14 +13,19 @@ Modification Log :
 global with sharing class Core_SAPDirAccntIntgrate_SF_RestService {
     @HttpPost
     global static Core_SAPXMLUtility.JsonResponse doPost(){
-        String xmlMessage = RestContext.request.requestBody.toString(); //XML Message from POST API
-        Core_SAPXMLUtility.JsonResponse response = null;
-        List<Core_PSG_SAP_integration__c> psgSAPIntegrationCustomSettingsList = [SELECT Id, isDeactivated__c FROM Core_PSG_SAP_integration__c WITH SECURITY_ENFORCED limit 1];
-       
-        if(psgSAPIntegrationCustomSettingsList!=null && psgSAPIntegrationCustomSettingsList.size()>0 && !psgSAPIntegrationCustomSettingsList[0].isDeactivated__c && !String.isEmpty(xmlMessage)){
-            response = Core_SAPXMLParser.insertXMLData(RestContext.request.requestBody.toString());
-        }
-        
-        return response;
-    }    
+        Map<String, Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
+        if (mapFunctionalityNameTriggerExecution.containsKey('UpdatePrimaryDirectAccount') &&
+            mapFunctionalityNameTriggerExecution.get('UpdatePrimaryDirectAccount').Core_Active__c){
+                String xmlMessage = RestContext.request.requestBody.toString(); //XML Message from POST API
+                Core_SAPXMLUtility.JsonResponse response = null;
+                List<Core_PSG_SAP_integration__c> psgSAPIntegrationCustomSettingsList = [SELECT Id, isDeactivated__c FROM Core_PSG_SAP_integration__c WITH SECURITY_ENFORCED limit 1];
+                
+                if(psgSAPIntegrationCustomSettingsList!=null && psgSAPIntegrationCustomSettingsList.size()>0 && !psgSAPIntegrationCustomSettingsList[0].isDeactivated__c && !String.isEmpty(xmlMessage)){
+                    response = Core_SAPXMLParser.insertXMLData(RestContext.request.requestBody.toString());
+                }
+                
+                return response;
+            }
+        return Null; 
+    }
 }

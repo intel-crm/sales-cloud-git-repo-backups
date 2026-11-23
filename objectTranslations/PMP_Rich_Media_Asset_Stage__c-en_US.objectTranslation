@@ -41,6 +41,10 @@
         <name>PMP_Document_Type_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Is First Run Complete --></label>
+        <name>PMP_Is_First_Run_Complete_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Is Retrieved --></label>
         <name>PMP_Is_Retrieved_Ind__c</name>
     </fields>

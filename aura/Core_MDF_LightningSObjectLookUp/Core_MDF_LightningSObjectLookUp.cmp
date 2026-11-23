@@ -1,5 +1,5 @@
 <aura:component controller="Core_MDF_LookupSObjectController" implements="lightning:availableForFlowScreens" access="global">
-   <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" />
+    <!-- <ltng:require styles="{!$Resource.Core_MDF_SLDS262 + '/styles/salesforce-lightning-design-system.css'}" /> -->
     <!-- Attributes -->
     <aura:attribute name="sObjectAPIName" type="String" required="true" 
                     description="The API name of the SObject to search" />

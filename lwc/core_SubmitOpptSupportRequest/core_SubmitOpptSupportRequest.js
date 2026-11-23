@@ -17,9 +17,9 @@ export default class Core_SubmitOpptSupportRequest extends LightningElement {
     
     @wire(submitApproval, {opptSuppReqId: '$recordId'}) 
     submitApproval({error, data}){
-        console.log('inside line 41'+data);
+     //   console.log('inside line 41'+data);
         if(data != undefined){
-            console.log('inside data@'+data);
+       //     console.log('inside data@'+data);
             this.opptSuppReqs = data;
             if(!data){
                     console.log('inside isThereAnOpenOpptSupportReq  @');
@@ -42,7 +42,7 @@ export default class Core_SubmitOpptSupportRequest extends LightningElement {
                     })
                     .catch(error => {
                         //alert('error ');
-                        console.log('error'+JSON.stringify(error));
+                    //    console.log('error'+JSON.stringify(error));
                         //this.displaymessage('Error while updating Opportunity description',error,'error');                        
                     });               
                 }
@@ -52,7 +52,7 @@ export default class Core_SubmitOpptSupportRequest extends LightningElement {
             }
 
         }else{
-            console.log('inside else @'+JSON.stringify(error));           
+          //  console.log('inside else @'+JSON.stringify(error));           
         }
     }
     handleCancelNew(){

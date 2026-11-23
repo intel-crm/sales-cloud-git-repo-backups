@@ -8,32 +8,39 @@ public class Core_Batch_AccountCoverage_Summary implements Database.Batchable<sO
     
     private String loadType  = '';//FULL or DELTA
     private String query = '';
+    public static Map<String,Core_ACM_Control_Execution__c> mapABatchAccountCoverageSummary = Core_ACM_Control_Execution__c.getAll(); 
     
-  /*  public Core_Batch_AccountCoverage_Summary(){
+    public Core_Batch_AccountCoverage_Summary(){
         //Read the custom setting from Core_AccountCoverage_LoadType__c
-        Map<String, Core_AccountCoverage_LoadType__c> mapCodes = Core_AccountCoverage_LoadType__c.getAll();
-        Core_AccountCoverage_LoadType__c cl = [Select Name, Core_LoadType__c FROM Core_AccountCoverage_LoadType__c];
-        if(cl != null && null != cl.Core_LoadType__c)
-            loadType = cl.Core_LoadType__c;
-        
-        System.debug('+++++++++++++++++ Core_Batch_AccountCoverage_Summary STARTED  -----------------LoadType '+LoadType);
-        //Do Not Run the Summary Batch if LoadType Flag is Blank
-        if(String.isNotBlank(loadType)){
-            query = 'Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c ' + ('DELTA'.equalsIgnoreCase(loadType) ? ' Where Core_Status__c  IN (\'Processed\',\'New\')' : '') ; 
-        }
+        if(mapABatchAccountCoverageSummary.containsKey('BatchAccountCoverageSummary') && mapABatchAccountCoverageSummary.get('BatchAccountCoverageSummary').IsActive__c){
+            Map<String, Core_AccountCoverage_LoadType__c> mapCodes = Core_AccountCoverage_LoadType__c.getAll();
+            Core_AccountCoverage_LoadType__c cl = [Select Name, Core_LoadType__c FROM Core_AccountCoverage_LoadType__c];
+            if(cl != null && null != cl.Core_LoadType__c)
+                loadType = cl.Core_LoadType__c;
+            
+            System.debug('+++++++++++++++++ Core_Batch_AccountCoverage_Summary STARTED  -----------------LoadType '+LoadType);
+            //Do Not Run the Summary Batch if LoadType Flag is Blank
+            if(String.isNotBlank(loadType)){
+                query = 'Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c ' + ('DELTA'.equalsIgnoreCase(loadType) ? ' Where Core_Status__c  IN (\'Processed\',\'New\')' : '') ; 
+            }
+       }
     }
-    */
+
     public Database.QueryLocator  start(Database.BatchableContext batchcontext) {
-        //String query = '';
         // Limit to 1 for Testing.
-      //  query = (Test.isRunningTest() ? ' Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c '  : query);
-     //   System.debug(' Core_Batch_AccountCoverage_Summary Running >>'+query);
-         return Database.getQueryLocator(query );
+        if(mapABatchAccountCoverageSummary.containsKey('BatchAccountCoverageSummary') && mapABatchAccountCoverageSummary.get('BatchAccountCoverageSummary').IsActive__c){
+            query = (Test.isRunningTest() ? ' Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c '  : query);
+            return Database.getQueryLocator(query);
+        }
+        else{
+            query = (Test.isRunningTest() ? ' Select Id, Name, Core_Status__c, Core_Operation__c FROM Core_AccountCoverage_Export__c limit 1 '  : null);
+            return Database.getQueryLocator(query);
+        }
     }
     
     //Process the Core_AccountCoverage_Export__c records 
     public void execute(Database.BatchableContext BC, list<Core_AccountCoverage_Export__c> scope){
-       /* system.debug(' +++++++++++++++++ Core_Batch_AccountCoverage_Summary Execute Method Invoked '+scope.size());
+        system.debug(' +++++++++++++++++ Core_Batch_AccountCoverage_Summary Execute Method Invoked '+scope.size());
         
         for(Core_AccountCoverage_Export__c ac : scope){
             system.debug(' loadType '+loadType);
@@ -69,41 +76,10 @@ public class Core_Batch_AccountCoverage_Summary implements Database.Batchable<sO
     
     //Invokes when the batch finish and post processing is to update the custom setting and sending a notification mail
     public void finish(Database.BatchableContext batchcontext){
-      /*  System.debug('+++++++++++++++++ Core_Batch_AccountCoverage_Summary FINISHED  -----------------');
-        Core_AccountCoverageExportUtil.sendNotification(batchcontext, 'Core_Batch_AccountCoverage_Summary'); 
-
-        //Call the eMule service ..
-        Database.executeBatch(new Core_Batch_AccountCoverage_Mule());*/
-        
+        if(mapABatchAccountCoverageSummary.containsKey('BatchAccountCoverageSummary') && mapABatchAccountCoverageSummary.get('BatchAccountCoverageSummary').IsActive__c){
+            Core_AccountCoverageExportUtil.sendNotification(batchcontext, 'Core_Batch_AccountCoverage_Summary'); 
+            //Call the eMule service ..
+            Database.executeBatch(new Core_Batch_AccountCoverage_Mule());
+        } 
     }
-    
-     public static String dummyMethod1() {
-        return null;
-    } 
-     public static String dummyMethod2() {
-        return null;
-    } 
-     
-     public static String dummyMethod3() {
-        return null;
-    } 
-     public static String dummyMethod4() {
-        return null;
-    } 
-     public static String dummyMethod5() {
-        return null;
-    } 
-     public static String dummyMethod6() {
-        return null;
-    } 
-    public static String dummyMethod7() {
-        return null;
-    } 
-    public static String dummyMethod8() {
-        return null;
-    } 
-    public static String dummyMethod9() {
-        return null;
-    } 
-
 }

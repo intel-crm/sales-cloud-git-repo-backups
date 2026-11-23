@@ -938,30 +938,6 @@
         <name>Core_Solution_Long__c</name>
     </fields>
     <fields>
-        <label><!-- Solution Outcome --></label>
-        <name>Core_Solution_Outcome__c</name>
-        <picklistValues>
-            <masterLabel>Test 1</masterLabel>
-            <translation><!-- Test 1 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test 2</masterLabel>
-            <translation><!-- Test 2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test 3</masterLabel>
-            <translation><!-- Test 3 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test 4</masterLabel>
-            <translation><!-- Test 4 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test 5</masterLabel>
-            <translation><!-- Test 5 --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <label><!-- Solution Partners --></label>
         <name>Core_Solution_Partners_Txt__c</name>
     </fields>
@@ -1329,6 +1305,14 @@
         <label><!-- Mark for Delete --></label>
         <name>isDeleted__c</name>
     </fields>
+    <recordTypes>
+        <label><!-- Approved Solutions --></label>
+        <name>Core_Approved_Solutions</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Requested Solutions --></label>
+        <name>Core_Requested_Solutions</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Solution is already EOL’d. Cannot make further changes. --></errorMessage>

@@ -1,4 +1,4 @@
-global  without sharing class CRM_AlertwatchReminderBatch implements Database.Batchable<Sobject>, Database.Stateful {
+global without sharing class CRM_AlertwatchReminderBatch implements Database.Batchable<Sobject>, Database.Stateful {
     // Start method to define the query to fetch SetupAuditTrail records+
     public  List<SetupAuditTrail> lst_aw_response= new  List<SetupAuditTrail>();
     global List<SetupAuditTrail> start(Database.BatchableContext BC) {

@@ -27,6 +27,7 @@ public without sharing class QuoteBusinessLogic{
     public static Map<Id, Opportunity> quoteIdToOppRecdMap = new Map<Id, Opportunity>();
     public static Map<Id, Set<Id>> quoteIdtoProdMap = new Map<Id, Set<Id>>();
     public static Boolean isVolumeExceptionCheck = false;
+    public static Boolean isQuotFirstSubmission = false;
     public static Boolean skipMethodExecution = false;
     public static Set<Id> quoteIdsWithInvalidEndCustomerOpportunityId = new Set<Id>();
     /**
@@ -61,7 +62,7 @@ public without sharing class QuoteBusinessLogic{
             Set<Id> externalGroupIdSet = new  Set<Id>();
             // Get the Map of Quote and Comments
             Map<Id,SBQQ__Quote__c> mapQuotesWithComments = new Map<Id,SBQQ__Quote__c>([SELECT Id, (SELECT Id FROM Comments__r where recordtypeid =: commentRecordTypeId) from SBQQ__Quote__c WHERE Id IN:pvtMap.keySet()]);
-            for(Core_MDF_Partner_Group_Mapping__c partnerGroup : [select Id,Core_MDF_Account__c,Core_MDF_Channel_Program_Name_Txt__c,Core_MDF_Channel_Program__c,Core_MDF_AccountIdGroupName__c,Core_MDF_Group_Id__c,Core_MDF_Type_of_Access__c from Core_MDF_Partner_Group_Mapping__c where
+            for(Core_MDF_Partner_Group_Mapping__c partnerGroup : [select Id,Core_MDF_Account__c,Core_MDF_Channel_Program_Name_Txt__c,Core_MDF_Group_Id__c,Core_MDF_Type_of_Access__c from Core_MDF_Partner_Group_Mapping__c where
                                                                   Core_MDF_Channel_Program_Name_Txt__c =: Label.Pricing_Tender_PGM_Channel and   Core_MDF_Account__c in : accountIds and Core_MDF_Group_Id__c!=null]){
                                                                       if(!accountToGroupIdMap.containsKey(partnerGroup.Core_MDF_Account__c)){
                                                                           accountToGroupIdMap.put(partnerGroup.Core_MDF_Account__c,new Set<Id>{partnerGroup.Core_MDF_Group_Id__c});
@@ -191,6 +192,7 @@ public without sharing class QuoteBusinessLogic{
             Set<id> userContactIds = new Set<id>();
             List<SBQQ__Quote__c> quoteListWithOwnerChange = new List<SBQQ__Quote__c>();
             Set<Id> quoteSetWithOwnerChange = new Set<Id>();
+            Map<Id,SBQQ__Quote__c> quoteIdToRecMap = new Map<Id,SBQQ__Quote__c>();
             List<SBQQ__Quote__c> quoteListWithPrimaryContactChange = new List<SBQQ__Quote__c>();
             Map<Id,SBQQ__Quote__c> quoteIdToQuoteMap = new Map<Id,SBQQ__Quote__c>();
             Map<Id,Id> quoteCommentShareToDeleteMap = new Map<Id,Id>();
@@ -342,7 +344,7 @@ public without sharing class QuoteBusinessLogic{
                             quoteIdFSEUserIdRemoveQTMMap.put(quote.Id,oldMap.get(quote.id).SBQQ__SalesRep__c);
                         }
                     }
-                    // Citrus: Auto Populate Intel Account Executive and Intel Account Executive Email
+                    // Citrus: Auto Populate Intel Account Executive and Intel Account Executive Email on update
                     if(oldMap.get(quote.id).Pricing_Unified_Global_End_Customer_Nm__c != quote.Pricing_Unified_Global_End_Customer_Nm__c && quote.Pricing_Unified_Global_End_Customer_Nm__c != null){
                         ugEndCustomerChangedQuotes.put(quote.Pricing_Unified_Global_End_Customer_Nm__c, quote);
                     }
@@ -360,9 +362,10 @@ public without sharing class QuoteBusinessLogic{
                         quoteIdForOnHoldUpdate.add(quote.id);
                     }
                 }
-                    if(!insertOnHoldRec.isEmpty()){
-                        insert insertOnHoldRec;
-                    }
+
+                if(!insertOnHoldRec.isEmpty()){
+                    insert insertOnHoldRec;
+                }
                 
                 if(!quotewithOwnerChangeMap.isEmpty()){
                     updateOwneronComments(quotewithOwnerChangeMap);
@@ -823,6 +826,9 @@ public without sharing class QuoteBusinessLogic{
                             isFIQuote = true;
                         }
 
+                        // TWC1972-4065 : Remove special sequence characters in text fields
+                        quote.Pricing_Customer_Nm__c = String.isBlank(quote.Pricing_Customer_Nm__c) ? quote.Pricing_Customer_Nm__c : String.valueOf(quote.Pricing_Customer_Nm__c.unescapeJava()).replaceAll('[\\t\\n\\r]', '').replaceAll( '\\s+', ' ');
+                        quote.Pricing_Project_Name_Nm__c = String.isBlank(quote.Pricing_Project_Name_Nm__c) ? quote.Pricing_Project_Name_Nm__c : String.valueOf(quote.Pricing_Project_Name_Nm__c.unescapeJava()).replaceAll('[\\t\\n\\r]', '').replaceAll( '\\s+', ' ');
                         
                         populatePrimaryContactAndAccount(quote,partnerAccountId,userContactIds,emailToContactIdMap,contactIdToEmailMap);
                         
@@ -949,6 +955,10 @@ public without sharing class QuoteBusinessLogic{
                     List<SBQQ__QuoteLine__c> quoteLineList = new List<SBQQ__QuoteLine__c>();
 
                     for (SBQQ__Quote__c quote : lstquote){
+
+                        // TWC1972-4065 : Remove special sequence characters in text field
+                        quote.Pricing_Customer_Nm__c = (!String.isBlank(quote.Pricing_Customer_Nm__c) && quote.Pricing_Customer_Nm__c != oldMap.get(quote.Id).Pricing_Customer_Nm__c) ? String.valueOf(quote.Pricing_Customer_Nm__c.unescapeJava()).replaceAll('[\\t\\n\\r]', '').replaceAll( '\\s+', ' ') : quote.Pricing_Customer_Nm__c;
+                        quote.Pricing_Project_Name_Nm__c = !String.isBlank(quote.Pricing_Project_Name_Nm__c) && quote.Pricing_Project_Name_Nm__c != oldMap.get(quote.Id).Pricing_Project_Name_Nm__c ? String.valueOf(quote.Pricing_Project_Name_Nm__c.unescapeJava()).replaceAll('[\\t\\n\\r]', '').replaceAll( '\\s+', ' ') : quote.Pricing_Project_Name_Nm__c;
 
                         if(quote.Pricing_My_Deals_Folio_Name_Nm__c != oldMap.get(quote.Id).Pricing_My_Deals_Folio_Name_Nm__c){
                             if(quote.Pricing_Folio_ID_Nm__c != null){
@@ -1087,7 +1097,9 @@ public without sharing class QuoteBusinessLogic{
                         if(!quoteIdsWithInvalidEndCustomerOpportunityId.contains(quote.Id)){
                              validateOpportunity(opportunityDetails, quote);
 			}     
+                        if(!isQuotFirstSubmission){  
                         statusRevertFix( quote,quoteLineNumberToStatusMap,quoteLineNumberToRecordTypeMap,quoteLineNumberToClientRecordTypeMap,quoteLineNumberToFinancialIncentiveRecordTypeMap);
+                        }
                         //Validate Quote Text fields and throw error if Non latin character is present
                         validateQuoteTextFieldsForLatinChars(quote,oldMap,false);
                         

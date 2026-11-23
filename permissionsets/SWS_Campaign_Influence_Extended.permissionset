@@ -34,7 +34,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>CampaignInfluence.RevenueShare</field>
         <readable>true</readable>
     </fieldPermissions>

@@ -205,8 +205,6 @@ private class PCC_Deal_FindRelatedDuplicateDealsTest {
         reg[2].Core_Partner_Account_Id__c = reg[2].Core_End_Customer_Account_Id__c;
         update reg[2];
         
-        System.debug(JSON.serialize([SELECT Id,Name,AccountId, (SELECT Id, Name,product2Id FROM OpportunityLineItems) FROM Opportunity]));
-        System.debug(JSON.serialize([select Core_Opportunity__r.AccountId,Core_Partner__c from Core_Opportunity_Partner__c]));
         
         // Call the method to test
         List<PCC_Deal_FindRelatedDuplicateDeals.RelatedDuplicateWrapper> result = new List<PCC_Deal_FindRelatedDuplicateDeals.RelatedDuplicateWrapper>();

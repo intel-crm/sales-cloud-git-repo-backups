@@ -1,6 +1,17 @@
 @isTest
 public class UCD_AccountModelTest {
     public static testMethod void wrappertest(){
+    
+        UCD_AccountModel.additionalColumns addcol = new UCD_AccountModel.additionalColumns();
+        addcol.ApiName='abc__c';
+        addcol.isCheckbox = true;
+        addcol.UILabel ='abc';
+        addcol.textFieldValue = 'abc';
+        addcol.checkboxFieldValue = true;
+        addcol.showColumn = false;
+        List< UCD_AccountModel.additionalColumns> addcolList = new List< UCD_AccountModel.additionalColumns>();
+        addcolList.add(addcol);
+    
         UCD_AccountModel accmod = new UCD_AccountModel();
         accmod.accName = 'Account Name';
         accmod.accType = 'Distributor';
@@ -24,7 +35,19 @@ public class UCD_AccountModelTest {
         accmod.fullAddress = 'Address Bangalore Karnataka India 342342';
         accmod.salescouldAccount = true;
         accmod.accId = 'sampleid';
-         accmod.accOwner = 'SampleOwner';
+        accmod.accOwner = 'SampleOwner';
+        accmod.relatedContacts = 3;
+        accmod.CountryCode = 'API';
+        accmod.stateCode = 'TN';
+        accmod.SFaccName = 'sdfsd';
+        accmod.RecordTypeId = 'asdfgrtyu';
+        accmod.addColList=addcolList;
+       
+       
+       // UCD_AccountModel.fetchIdentifiers();
+        
+        
+        
      
     }
     
@@ -46,11 +69,11 @@ public class UCD_AccountModelTest {
         List<UCD_AccountModel> testing =  new List<UCD_AccountModel>();
         testing.add(mod1);
         testing.add(mod2);
-        //system.debug('Mod1'+mod1);
-        //system.debug('Mod2'+mod1);
+        //System.debug('Mod1'+mod1);
+        //System.debug('Mod2'+mod1);
         testing.sort();
-        //system.debug('Mod1');
-        //system.debug('Mod2');
+        //System.debug('Mod1');
+        //System.debug('Mod2');
         System.assert(mod2.compareTo(mod1) < 0);
         //testing.clear();
         UCD_AccountModel mod3 = new UCD_AccountModel(acc3.id, 'FullDup');
@@ -86,7 +109,7 @@ public class UCD_AccountModelTest {
         List<UCD_AccountModel> testing =  new List<UCD_AccountModel>();
         Account acc1 = new Account(name='Test Account 1', BillingCity = 'Bangalore', BillingCountry = 'IND', BillingStreet = 'sample street');
         Account acc2 = new Account(name='Test Account 2', BillingCity = 'Bangalore', BillingCountry = 'IND', BillingStreet = 'sample street'); 
-         system.assertEquals('Bangalore', acc1.BillingCity);
+        system.assertEquals('Bangalore', acc1.BillingCity);
         insert acc1;
         insert acc2;
         UCD_AccountModel mod1 = new UCD_AccountModel(acc1.id, 'NoDup');

@@ -37,7 +37,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>pcie,pci express,pci-express,pci-e,peg</value>
+            <value>pcie,pci express,pci-express,pci-e</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Product_name__c</column>

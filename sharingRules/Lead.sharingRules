@@ -60,21 +60,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Core_Partner_Lead_Admin_Leads</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>Share all Partner leads to Partner Lead Admin users..</description>
-        <label>Core - Partner Lead Admin - Leads</label>
-        <sharedTo>
-            <group>Core_PG_Partner_Lead_Admin</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Partner Lead</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Cvent_Integration_User_Leads</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Share all Intel leads to Cvent Integration user.</description>
@@ -99,9 +84,9 @@
         <criteriaItems>
             <field>CreatedById</field>
             <operation>equals</operation>
-            <value>005Ho00000KMIKGIA5</value>
+            <value>005D3000006z7ilIAA</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>SWS_6Sense_Lead_Sharing</fullName>
@@ -115,6 +100,20 @@
             <field>RecordTypeId</field>
             <operation>equals</operation>
             <value>Sales Lead</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SWS_Marketo_Partner_Lead_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>SWS Marketo Partner Lead Access</label>
+        <sharedTo>
+            <group>Marketo_Partner_Access_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Partner Lead</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

@@ -35,10 +35,10 @@
         Asset assetWithNoCategories = allAssets[1];
         
         
-        
+       
         commUser1 = [Select Name FROM User WHERE ContactId IN (Select Id FROM Contact) ];
         
-        //Insert 5 cases for admin User & 5 cases for Community User
+       //Insert 5 cases for admin User & 5 cases for Community User
         System.runAs(adminUser){
             List<Case> caseList = Core_RestAPI_TestUtilities.getListOfCases(10);
             for(Integer i =0;i<caseList.size()/2;i++){
@@ -49,13 +49,20 @@
                 Case c = caseList[i];
                 c.OwnerId = commUser1.Id;
             }
-            insert caseList;
+		//Added by Sowmya - Start - 04/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+         for(Integer i =caseList.size()/2;i<caseList.size();i++){
+                Case c = caseList[i];
+                c.OwnerId = commUser1.Id;
+                c.Core_IPS_Customer_Visible__c = True;
+            }
+            //Sowmya End - 04/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+             insert caseList;
             //Insert environment variables for the case
             List<Core_IPS_Environment_Details__c> envDet = Core_RestAPI_TestUtilities.getEnvironmentDetailResponses(5);
             for(Integer i=0 ;i< envDet.size();i++){
                 Core_IPS_Environment_Details__c env = envDet[i];
                 env.Core_Case__c = caseList[i+5].id;
-            }
+               }
             insert envDet;
         }
         
@@ -116,7 +123,7 @@
         
         
         Test.stopTest();
-    }
+       }
     
     
     
@@ -153,10 +160,10 @@
         If(strVersion == v1_0) {  
             System.assertEquals('200', apiResponse.Code, ' RestAPIResponse Success code 200');
             System.assertNotEquals(null, apiResponse);
-            System.assertEquals(apiResponse.isSuccess != null, true);
+            System.assertEquals(true, apiResponse.isSuccess);
             System.assertNotEquals(null, apiResponse.successContent);
             //Assert all sharing cases are retrieved
-            System.assertEquals(apiResponse.successContent.size() != null, true);
+            System.assertEquals(1, apiResponse.successContent.size(), 'Case Found');
         }
         
         //Common Asserts for all versions
@@ -208,7 +215,7 @@
         RestContext.request = doGet_getCaseDetail_VersionRequest(v1_0, 'invalidCasenumber');
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseDetailV1.doGet();
-        } 
+            } 
         
     }
     

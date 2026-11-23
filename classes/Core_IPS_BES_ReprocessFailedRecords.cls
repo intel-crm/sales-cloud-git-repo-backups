@@ -20,12 +20,12 @@ public class Core_IPS_BES_ReprocessFailedRecords implements Database.Batchable<s
             whereCondition = 'Core_Case__r.Core_IPS_New_Backend_System__c != NULL AND Core_Case__r.Core_IPS_BackendID__c != NULL AND Core_Upload_Status__c = \'Complete\' AND Core_Case__r.Status != \'CLOSED\'';
         }
         String query = 'SELECT Core_IPS_BES_Promote_Status__c FROM ' + objAPIName +' WHERE '+ whereCondition +' AND Core_IPS_BES_Promote_Status__c = \'FAILED\' AND CreatedDate >= LAST_N_DAYS:' + numOfDays + ' ORDER BY CreatedDate ASC';
-        
+        System.debug('queryyy'+query);
         return Database.getQueryLocator(query);
     }
     
     public void execute(Database.BatchableContext BC, List<sObject> reprocessRecords){
-        
+        System.debug('@@ reprocessRecord ' + reprocessRecords);
         List<sObject> finalRecList = new List<sObject>();
         for(sObject rec : reprocessRecords){
             rec.put('Core_IPS_BES_Promote_Status__c','In Progress');
@@ -41,22 +41,19 @@ public class Core_IPS_BES_ReprocessFailedRecords implements Database.Batchable<s
     public void finish(Database.BatchableContext BC){
         AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed,TotalJobItems, CreatedBy.Email
                           FROM AsyncApexJob WHERE Id =:BC.getJobId()];
-        
         // Send an email to the Apex job's submitter notifying of job completion.
-        //Begin-TWC745-9181-Email relay changes-capturing IPS OrgWideEmailAddress -Gangadhar 23042026
-        String orgwideemaillabel= System.label.Core_IPS_Org_Wide_Email_Display_Name;
-        OrgWideEmailAddress orgwideEA = [SELECT Id, Address, DisplayName FROM OrgWideEmailAddress WHERE DisplayName =:orgwideemaillabel LIMIT 1];   
-        //End-TWC745-9181-Email relay changes-capturing IPS OrgWideEmailAddress -Gangadhar 23042026
+        //capturing IPS OrgWideEmailAddress from the org -Email relay changes -Gangadhar 23042026--US-0050977
+		OrgWideEmailAddress orgwideEA = [SELECT Id, Address, DisplayName FROM OrgWideEmailAddress WHERE Address = 'intel.premier.support.qa@intel.com' LIMIT 1];
+        System.debug('Gangadhar Validation4 @@ orgwide email address ' +orgwideEA);
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-        //Begin-TWC745-9181-Email relay changes -Gangadhar 23042026
-        if(orgwideEA != null)
+        if(orgwideEA != null) //Email relay changes -Gangadhar 23042026--US-0050977
         {
     		mail.setOrgWideEmailAddressId(orgwideEA.Id);
-        } //End-TWC745-9181-Email relay changes -Gangadhar 23042026
+            System.debug('Gangadhar Validation4 @@ orgwide email address ' +orgwideEA.Id);
+		}
         String emailIds = System.Label.Core_IPS_BES_Job_EmailIds;
         String[] toAddresses = emailIds.split('\\,');
-        mail.setToAddresses(toAddresses);
-        
+            mail.setToAddresses(toAddresses);
         mail.setSubject('Reprocess IPS Backend System Records - ' + a.Status);
         mail.setPlainTextBody
             ('The batch Apex job processed ' + a.TotalJobItems +

@@ -333,7 +333,7 @@ Modified By:        Date:       Changes:
                     successClaimMap = new Map<Id,PartnerFundClaim>([Select Id,Core_MDF_Claim_Batch_Stage__c, Core_MDF_Claim_Ref_Number__c, RequestId, Request.Status,
                                                                     Request.Core_MDF_Fund_Request_Status__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
                                                                     Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c,
-                                                                    Core_MDF_Activity_Types__c, CreatedDate FROM PartnerFundClaim where ID IN :succesRecordIdSet]);//query updated for AI PIC
+                                                                    Core_MDF_Activity_Types__c, CreatedDate, request.Core_MDF_Activity_Description__c, request.Core_MDF_POP_Requirements_txt__c, request.Core_MDF_Attribution_Requirements_txt__c, Amount FROM PartnerFundClaim where ID IN :succesRecordIdSet]);//query updated for AI PIC
                     
                     for(PartnerFundClaim claim : successClaimMap.values()){
                         successClaimToClaimStageIdMap.put(claim,claim.Core_MDF_Claim_Batch_Stage__c);

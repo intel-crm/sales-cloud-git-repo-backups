@@ -125,7 +125,7 @@ public class PRM_MCGA_Trigger_Test {
         insert mcgaList;
         Test.stopTest();
         List<AggregateResult> countMessageLog= [Select count(Id)Total from PRM_Message_log__c];
-        //System.assertEquals(4, countMessageLog[0].get('Total'));
+        System.assertEquals(4, countMessageLog[0].get('Total'));
     } 
     
      @isTest
@@ -157,6 +157,6 @@ public class PRM_MCGA_Trigger_Test {
         insert mcgaList;
         Test.stopTest();
         List<AggregateResult> countMessageLog= [Select count(Id)Total from PRM_Message_log__c];
-        //System.assertEquals(2, countMessageLog[0].get('Total'));
+        System.assertEquals(2, countMessageLog[0].get('Total'));
     } 
 }

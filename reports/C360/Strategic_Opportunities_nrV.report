@@ -62,7 +62,6 @@
     <columns>
         <field>TYPE</field>
     </columns>
-    <description>**Do not Edit without Approval**</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opp_Strategic_Opportunity__c</column>
@@ -77,6 +76,13 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>THIS_YEAR,NEXT_N_YEARS:2</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>001o000000OSkUo</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

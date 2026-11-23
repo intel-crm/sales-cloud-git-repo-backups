@@ -1,0 +1,37 @@
+<apex:page controller="PRM_VFExternalDataDownload" cache="true" contentType="{!IF(isExport = true, 'application/vnd.ms-excel#report.xls', '')}" readonly="true" language="en-US">
+
+    <apex:form id="f1">
+
+            <apex:pageBlock title="Sales Data">
+
+                <apex:commandbutton id="button" value="Export" action="{!getExport}" reRender=""/>
+
+                <apex:pageBlockTable value="{!salesWrapper}" var="salesData">
+
+                    <apex:column value="{!salesData.account_number}"/>
+
+                    <apex:column value="{!salesData.invoice_number}"/>
+
+                    <apex:column value="{!salesData.invoice_date}"/>
+
+                    <apex:column value="{!salesData.form_factor}"/>
+
+                    <apex:column value="{!salesData.productOrderingCode}"/>
+
+                    <apex:column value="{!salesData.productCodeNumber}"/>
+
+                    <apex:column value="{!salesData.invoice_number}"/>
+
+                    <apex:column value="{!salesData.distributor_name}"/>
+
+                    <apex:column value="{!salesData.sales_type}"/>
+
+                    <apex:column value="{!salesData.Measurement_Period}"/>
+
+                </apex:pageBlockTable>
+
+            </apex:pageBlock>
+
+    </apex:form>
+
+</apex:page>

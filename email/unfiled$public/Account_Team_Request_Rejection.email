@@ -1,0 +1,8 @@
+Hi, <br/>
+<br/>
+{!User.Name} has rejected your request of addition to the Account team of the following: <br/>
+
+Account : <a href={!Core_Change_Request__c.Base_URL__c}/{!Core_Change_Request__c.Core_AccountId__c}> {!Core_Change_Request__c.Core_Account__c}</a><br/>
+<br/>
+
+Thank you!

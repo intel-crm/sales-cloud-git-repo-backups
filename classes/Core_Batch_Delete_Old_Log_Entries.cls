@@ -8,6 +8,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Dave Hood             07/28/2016        Initial version
 * Ashwin Dash           11/24/2017        Added code for performing hard delete on log entries.(US87446)
+* Chintha Nikitha       11/05/2025    Adding the comment to test the PMD setup
 ***************************************************************************************************************/
 global class Core_Batch_Delete_Old_Log_Entries implements Database.Batchable<sObject> {
     

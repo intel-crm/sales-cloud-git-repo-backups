@@ -538,6 +538,6 @@ export default class PRM_SalesDetailsExt extends NavigationMixin(LightningElemen
             this.commonCode();
         }
         console.log('isDownload'+this.isDownload);
-     //   this.downloadUrl = window.location.origin+'/ipa/s/downloads';
+        this.downloadUrl = window.location.origin+'/ipa/s/downloads';
     }
 }

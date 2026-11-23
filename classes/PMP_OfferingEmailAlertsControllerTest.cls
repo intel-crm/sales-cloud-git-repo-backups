@@ -1,7 +1,7 @@
 @isTest
 private class PMP_OfferingEmailAlertsControllerTest{
   
-   /* @testSetup
+  /*  @testSetup
     static void setupSeedData() {
       
         Account acc1 = PMP_TestDataUtility.createIntelAccount('account1',PMP_TestDataUtility.intel_Account_Record_Type,true);

@@ -96,7 +96,7 @@
             component.set("v.exportType",'csv');
         }
         else{
-            component.set("v.exportType",'excel');
+            component.set("v.exportType",'xlsx');
         }        
         //set the loading to tru so that spinner comes up.
         component.set("v.isLoading",'true');

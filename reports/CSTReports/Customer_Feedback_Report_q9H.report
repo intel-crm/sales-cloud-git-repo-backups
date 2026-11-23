@@ -55,7 +55,7 @@
     <name>Customer Feedback Report</name>
     <params>
         <name>co</name>
-        <value>1</value>
+        <value>0</value>
     </params>
     <reportType>Customer_Feedback__c</reportType>
     <scope>organization</scope>
@@ -64,6 +64,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>SPM_Customer_Feedback__c$CreatedDate</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2025-03-29</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-12-29</startDate>
     </timeFrameFilter>
 </Report>

@@ -41,7 +41,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>test/DWG_Rejection_Notification</template>
+        <template>unfiled$public/DWG_Rejection_Notification</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_Goal_CleanOppAtApproval</fullName>
@@ -314,6 +314,16 @@
         </actions>
         <active>false</active>
         <formula>NOT($Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c) &amp;&amp;  Core_Opportunity__c &lt;&gt; null &amp;&amp;  ISCHANGED(Core_MatchOppKPI_Backend__c) &amp;&amp; Core_MatchOppKPI_Backend__c != null</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_OnChange_MatchOppKPI_PrevBackendField</fullName>
+        <actions>
+            <name>Update_MatchOppKPI_2nd_Prev_Field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>NOT($Setup.Core_KPI_FullRefresh_Check__c.IsFullRefresh__c) &amp;&amp;  ISCHANGED(Core_MatchOppKPI_Prev_Backend__c) &amp;&amp; Core_MatchOppKPI_Prev_Backend__c != null</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>

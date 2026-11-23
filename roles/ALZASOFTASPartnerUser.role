@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Alza.cz Partner User</description>
+    <description>ALZASOFT A.S. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Alza.cz Partner User</name>
+    <name>ALZASOFT A.S. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11298993_Martin_Varbuchta</parentRole>
+    <parentRole>EMP_11496896_Barbara_Barusova_Maliszewska</parentRole>
 </Role>

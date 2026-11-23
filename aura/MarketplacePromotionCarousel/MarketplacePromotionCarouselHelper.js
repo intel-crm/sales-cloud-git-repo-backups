@@ -1,6 +1,6 @@
 ({
-    
-    getPromotionData : function(component,helper){
+     //ipa 2.0 priyas change for topic event
+    /*getPromotionData : function(component,helper){
         return new Promise($A.getCallback(function(resolve,reject){
             var action = component.get("c.getPromotionData");
             action.setParams({
@@ -33,7 +33,7 @@
             $A.enqueueAction(action);
         }));
         
-    },
+    },*/ //ipa 2.0 priyas change for topic event
     
     changePage : function(component, helper, page) {
         component.set('v.currentPage', parseInt(page));

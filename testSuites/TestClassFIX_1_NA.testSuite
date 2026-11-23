@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>CMFMappingUtil</testClassName>
+    <testClassName>Core_MDF_Account_Owner_Change_Test</testClassName>
+    <testClassName>Core_MDF_Account_Utility_Test</testClassName>
+    <testClassName>Core_MDF_AccountHierarchyController_Test</testClassName>
+    <testClassName>Core_MDF_AccountOnboardingHelper_test</testClassName>
+    <testClassName>Core_MDF_AccountProductMappingCntrlTest</testClassName>
+    <testClassName>Core_MDF_AccountUser_Controller_Test</testClassName>
+    <testClassName>Core_MDF_ActivitySegmentMappingTest</testClassName>
+    <testClassName>Core_MDF_ActivityStatusTrigger_Test</testClassName>
+    <testClassName>Core_MDF_ApprovalCriteriaHelper_Test</testClassName>
+    <testClassName>Core_MDF_Audit_Document_Trigger_Test</testClassName>
+    <testClassName>Core_MDF_Audit_Rules_Processing_Test</testClassName>
+    <testClassName>Core_MDF_Audit_Rules_Trigger_Test</testClassName>
+    <testClassName>Core_MDF_AuditCaseProcess_Test</testClassName>
+    <testClassName>Core_MDF_BankAccountTriggerHandler_Test</testClassName>
+    <testClassName>Core_MDF_BankJSONParser_Test</testClassName>
+    <testClassName>Core_MDF_BankTrigger_Test</testClassName>
+    <testClassName>Core_MDF_Batch_SendEmailToGSPO_Test</testClassName>
+    <testClassName>Core_MDF_Batch_UpdateClaimstoPaid_Test</testClassName>
+    <testClassName>Core_MDF_Batch_UpdateRecoveryClaimsTest</testClassName>
+    <testClassName>Core_MDF_BatchSchedularArchival_Test</testClassName>
+    <testClassName>Core_MDF_BatchScheduler_Test</testClassName>
+    <testClassName>Core_MDF_BatchShareCampVisibility_Test</testClassName>
+    <testClassName>Core_MDF_Budget_Utility_Test</testClassName>
+</ApexTestSuite>

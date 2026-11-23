@@ -481,12 +481,10 @@
                 var myEvent3 = component.getEvent("displayButtonEvent");
                 myEvent3.setParams({"Button" : "hide"});
                 myEvent3.fire();
-                
-                var msg1 =  $A.get("$Label.c.PRM_BlockedAccountError");
+                var msg1 = 'The Account is blocked for IPA registration';
                 var toastEvent = $A.get("e.force:showToast");
                 toastEvent.setParams({
-                    "type": "error",
-                    "mode": "sticky",
+                    
                     message: msg1,
                     
                 });

@@ -1,0 +1,163 @@
+<aura:component access="global">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="quoteLines" type="SBQQ__QuoteLine__c[]" default="{'sobjectType':'SBQQ__QuoteLine__c'}" />
+    <aura:attribute name="loaded" type="Boolean" default="false" />
+    <aura:attribute name="isOpen" type="boolean" default="true" />
+    <aura:attribute name="isUpdated" type="boolean" default="false" />
+    <aura:attribute name="navigatorCount" type="String" default="0" />
+    <aura:attribute name="noOfQuotelines" type="String" default="" />
+    <aura:attribute name="showConfirmDialog" type="boolean" default="false" />
+
+    <aura:attribute name="navigationButton" type="String" default="" />
+
+    <!--<aura:attribute name="recordFormMap" type="Map" default="{}"/>-->
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div class="slds-m-around_xx-large">
+        <lightning:button variant="brand" onclick="{! c.openModel }" />
+        <aura:if isTrue="{!v.isOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="record-edit-modal-heading" aria-modal="true"
+                aria-describedby="record-edit-modal-content" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+
+                        <h2 id="record-edit-modal-heading" class="slds-text-heading_medium slds-hyphenate">Edit
+                            Quoteline</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="record-edit-modal-content">
+                        <lightning:recordEditForm recordId="{!v.recordId}" objectApiName="SBQQ__QuoteLine__c"
+                            aura:id="recordEditForm">
+                            <aura:if isTrue="{!v.loaded }">
+                                <lightning:spinner alternativeText="Loading" />
+                            </aura:if>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="SBQQ__Quote__c" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Pricing_Quote_Line_Number_Txt__c" />
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Pricing_Product_Nm__c" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:outputField fieldName="Pricing_Competetor_Product__c" />
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Pricing_Systems_qty__c" required="true"
+                                        onchange="{!c.inputValueChange}" aura:id="noOfSystem" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Pricing_CPUs_per_system_qty__c" required="true"
+                                        onchange="{!c.inputValueChange}" aura:id="noOfCpuPerSystem" />
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Pricing_Single_System_Price_Amt__c" required="true"
+                                        onchange="{!c.inputValueChange}" aura:id="singleSystemPrice" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Pricing_OEM_Standard_Unit_Price_Amt__c"
+                                        required="true" onchange="{!c.inputValueChange}"
+                                        aura:id="customerStdUnitPrice" />
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Pricing_Req_Discounted_Unit_Price__c"
+                                        required="true" onchange="{!c.inputValueChange}"
+                                        aura:id="reqDiscountUnitPrice" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                                    <lightning:inputField fieldName="Pricing_Total_Bid_without_Discount_Amt__c"
+                                        disabled="true" aura:id="totalBidWithoutDiscount" />
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning:inputField fieldName="Pricing_Additional_OEM_Discount_Amt__c"
+                                        required="true" onchange="{!c.inputValueChange}" aura:id="additionalDiscount" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                                    <lightning:inputField fieldName="Pricing_Net_IA_Bid_Price_Amt__c" disabled="true"
+                                        aura:id="netIntelBidPrice" />
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                                    <lightning:inputField fieldName="Pricing_Intel_Discount_Pct__c" disabled="true"
+                                        aura:id="intelDiscount" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                                    <lightning:inputField fieldName="Pricing_OEM_Discount_Pct__c" disabled="true"
+                                        aura:id="customerDiscount" />
+                                </div>
+                            </div>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                                    <lightning:inputField fieldName="Pricing_Total_Intel_Discount_Amt__c"
+                                        disabled="true" aura:id="totalIntelDiscount" />
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                                    <lightning:inputField fieldName="Pricing_IA_Bid_Discount_Pct__c" disabled="true"
+                                        aura:id="intelBidDiscount" />
+                                </div>
+                            </div>
+                        </lightning:recordEditForm>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning:buttonIcon iconName="utility:chevronleft" class="leftFloat" variant="brand"
+                            alternativeText="Previous Quoteline" disabled="{!v.navigatorCount == 0}"
+                            onclick="{!c.handlePrevQuoteline}" />
+                        <lightning:buttonIcon iconName="utility:chevronright" class="leftFloat" variant="brand"
+                            alternativeText="Next Quoteline" disabled="{!v.navigatorCount == v.noOfQuotelines}"
+                            onclick="{!c.handleNextQuoteline}" />
+
+                        <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{! c.closeModel }" />
+
+                        <lightning:button variant="brand" type="submit" name="update" label="Update"
+                            onclick="{!c.handleSubmit}" />
+                    </footer>
+                </div>
+            </section>
+            <aura:if isTrue="{!v.showConfirmDialog}">
+                <!--Modal Box Start-->
+                <div role="dialog" class="slds-modal slds-fade-in-open ">
+                    <div class="slds-modal__container">
+                        <!--Modal Box Header Start-->
+                        <header class="slds-modal__header">
+                            <h1 class="slds-text-heading--medium">Confirmation</h1>
+                        </header>
+                        <!--Modal Box Header End-->
+
+                        <!--Modal Box Content Start-->
+                        <div class="slds-modal__content slds-p-around--medium">
+                            <center><b>The changes you have made will be lost. Are you sure you want to proceed?</b>
+                            </center>
+                        </div>
+                        <!--Modal Box Content End-->
+
+                        <!--Modal Box Button Start-->
+                        <footer class="slds-modal__footer">
+                            <lightning:button name='No' label='No' onclick='{!c.handleConfirmDialogNo}' />
+                            <lightning:button variant="brand" name='Yes' label='Yes'
+                                onclick='{!c.handleConfirmDialogYes}' />
+                        </footer>
+                        <!--Modal Box Button End-->
+                    </div>
+                </div>
+                <div class="slds-backdrop slds-backdrop--open"></div>
+            </aura:if>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+</aura:component>

@@ -9,16 +9,6 @@
     "regionName" : "header",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "richTextValue" : "<p class=\"slds-p-around_medium slds-text-align_center\">\n                The page you requested has moved or doesn’t exist. Go to the \n<a href=\"https://marketplace.intel.com/s\" class=\"slds-text-link\">Intel® Partner Showcase</a> \n<br>\n<span class=\"slds-text-color_weak\">If redirected from <b>Offerings/Solutions</b> the support for the Offerings/Solutions has been discontinued. Please <a href=\"https://marketplace.intel.com/s\" class=\"slds-text-link\">click here</a>  to visit the Intel® Partner Showcase homepage. Thank you.</span>\n</p>"
-      },
-      "componentName" : "forceCommunity:htmlBlock",
-      "id" : "ba27db44-363d-4117-bf02-e6c2b62c273f",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "ccaaf740-2cd7-4dbd-8593-08348b08264d",
     "regionName" : "content",
     "type" : "region"

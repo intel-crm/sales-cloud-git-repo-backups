@@ -13,11 +13,15 @@
         <name>Core_MDF_Button_Name_nm__c</name>
         <picklistValues>
             <masterLabel>Cancel Campaign</masterLabel>
-            <translation>取消项目</translation>
+            <translation>取消活动</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Cancel Claim</masterLabel>
             <translation>取消申请</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancel VAT</masterLabel>
+            <translation>取消增值税</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Change Owner</masterLabel>
@@ -33,7 +37,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Close</masterLabel>
-            <translation>关闭</translation>
+            <translation>关闭活动</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Complete PIC Review</masterLabel>
@@ -70,6 +74,10 @@
         <picklistValues>
             <masterLabel>Notify Partner</masterLabel>
             <translation><!-- Notify Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recall to Payment Clearance</masterLabel>
+            <translation><!-- Recall to Payment Clearance --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Release Hold</masterLabel>

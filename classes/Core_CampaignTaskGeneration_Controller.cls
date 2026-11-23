@@ -98,6 +98,7 @@ public without sharing class Core_CampaignTaskGeneration_Controller {
                         campMemberIds.add(campMember.Id);
                     
                     Core_CampaignTaskGeneration_Controller.generateTasksForSpecificMembers(campMemberIds);
+                   
                     
                     // Display useful information about the tasks that were generated, and a link back to the Campaign
                     ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO, generatedTasks.size() + ' ' +

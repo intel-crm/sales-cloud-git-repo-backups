@@ -154,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Read</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>PMP_Active_Ind__c</fullName>
         <defaultValue>true</defaultValue>
@@ -396,6 +396,6 @@ IF(NOT(ISBLANK(PMP_Parent_Specification_Id__r.Name)),PMP_Parent_Specification_Id
     </nameField>
     <pluralLabel>Specifications</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

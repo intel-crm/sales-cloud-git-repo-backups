@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PlatformCachePartition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>To store APIGEE access token</description>
     <isDefaultPartition>false</isDefaultPartition>
     <masterLabel>PRMIPAPartition</masterLabel>
     <platformCachePartitionTypes>
@@ -11,7 +10,7 @@
         <cacheType>Session</cacheType>
     </platformCachePartitionTypes>
     <platformCachePartitionTypes>
-        <allocatedCapacity>0</allocatedCapacity>
+        <allocatedCapacity>5</allocatedCapacity>
         <allocatedPartnerCapacity>0</allocatedPartnerCapacity>
         <allocatedPurchasedCapacity>0</allocatedPurchasedCapacity>
         <allocatedTrialCapacity>0</allocatedTrialCapacity>

@@ -19,10 +19,22 @@
         <field>SBQQ__Quote__c$SBQQ__Distributor__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c$SBQQ__Distributor__c.Id</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c$core_cpq_end_customer_nm__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c$core_cpq_end_customer_nm__c.Id</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c$SBQQ__PriceBook__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$core_cpq_contract_manufacturer_nm__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$core_cpq_contract_manufacturer_nm__c.Id</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Name</field>
@@ -70,7 +82,13 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_intel_margin_pct__c</field>
     </columns>
     <columns>
+        <field>SBQQ__Quote__c$ApprovalStatus__c</field>
+    </columns>
+    <columns>
         <field>SBQQ__Quote__c$core_cpq_approved_on_dt__c</field>
+    </columns>
+    <columns>
+        <field>SBQQ__Quote__c$core_cpq_post_approval_comment_nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_product_nm__c.Core_Product_Series__c</field>
@@ -85,9 +103,11 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_product_nm__c.Core_Product_Density_Value__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_product_family_txt__c</field>
+        <field>SBQQ__Quote__c$core_cpq_cmf_pricing_parent__c</field>
     </columns>
-    <description>Provides end-user with comprehensive Quote header and Quote line attributes.</description>
+    <columns>
+        <field>SBQQ__Quote__c$core_cpq_parent_account_id__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c.SBQQ__LineItems__r$SBQQ__ProductFamily__c</column>
@@ -101,14 +121,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Flat,Prototype,Qty Limited,Time Limited,AVP,Step</value>
+            <value>,Flat,Prototype,Qty Limited,Time Limited,AVP,VTP,Step</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$core_cpq_quote_type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Budgetary,Design Win,Tools,Transfer Pricing,Contract Pricing</value>
+            <value>,Budgetary,CM Bid,CM Buy,Contract Admin,Design Win,Price Request,Tools,Transfer,Transfer Pricing,Contract Pricing</value>
         </criteriaItems>
         <criteriaItems>
             <column>SBQQ__Quote__c$SBQQ__Distributor__c.Core_Geo__c</column>
@@ -116,13 +136,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>,APJ,ASMO,EMEA,PRC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$core_cpq_approved_by_nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -137,8 +150,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>SBQQ__Quote__c$ApprovalStatus__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>SBQQ__Quote__c$core_cpq_approved_on_dt__c</dateColumn>
+        <dateColumn>SBQQ__Quote__c$Pricing_Created_Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

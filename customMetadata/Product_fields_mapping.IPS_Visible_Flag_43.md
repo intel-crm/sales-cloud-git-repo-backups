@@ -72,7 +72,7 @@
     </values>
     <values>
         <field>Product2_field__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Core_IPS_Visible_Flag_External__c</value>
     </values>
     <values>
         <field>Product_Org__c</field>

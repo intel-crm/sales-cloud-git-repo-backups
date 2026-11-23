@@ -46,7 +46,7 @@
            <apex:outputPanel rendered="{!relatedTo.RecordType.DeveloperName = 'Core_Center_of_Excellence_Request'}">
            COE
            </apex:outputPanel> support has been {!CASE(relatedTo.Core_Status__c,
-  'Approved','Approved',
+  'Pending','Approved',
   'Rejected','Rejected',
   '')}
    for the below Opportunity. Please find the link to the Support Request and Opportunity Information below: 

@@ -196,11 +196,6 @@
         <field>Core_RestAPI_Transaction_Entry__c.Core_User__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__QuoteLine__c.Pricing_Quote_Program_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>IQR Usage Analysis</label>
     <objectPermissions>

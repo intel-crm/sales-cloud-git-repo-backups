@@ -26,7 +26,6 @@
     <label>Core Account Umbrella Grouping</label>
     <listViews>
         <fullName>All_New</fullName>
-        <columns>NAME</columns>
         <columns>Core_Group_Name__c</columns>
         <columns>Core_Group_Id__c</columns>
         <filterScope>Everything</filterScope>

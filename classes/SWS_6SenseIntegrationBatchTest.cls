@@ -22,7 +22,7 @@ public class SWS_6SenseIntegrationBatchTest {
             acc.Core_Account_BU_Focus__c='PSG-CM;PSG-DISTI';
             acc.Core_Is_Active__c = true;
             acc.Core_Account_Primary_Coverage__c = 'Intel Covered';
-            acc.Core_Account_Category__c = 'Distributors (IA)';
+            acc.Core_Account_Category__c = 'Distributors';
             acc.Is_6Sense_Integration_Enabled__c = true;
             acc.Core_Export_Compliance_Block__c = false;
             insert acc;
@@ -85,6 +85,7 @@ public class SWS_6SenseIntegrationBatchTest {
     @isTest 
     private static void SWS_6SenseIntegrationTest(){
         User u = [SELECT Id FROM User WHERE UserName='requestoremail@testorg.com'];
+        //User u = SWS_TestUtilty.createUser();
         System.runAs(u){
             List<Account> acc = [SELECT Id FROM Account WHERE Is_6Sense_Integration_Enabled__c = true];
             

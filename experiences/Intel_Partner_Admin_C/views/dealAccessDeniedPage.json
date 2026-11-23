@@ -2,10 +2,10 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "cb1ca04d-b277-41cc-a471-8c81d0234fa4",
+  "id" : "ab4d2b31-381c-443e-bc12-870606bf5725",
   "label" : "Deal_AccessDeniedPage",
   "regions" : [ {
-    "id" : "fb38b576-f86a-4d3e-837d-49cdaebffc57",
+    "id" : "d240e070-9c94-40dc-8e72-eb9f114a91c5",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -14,16 +14,16 @@
         "richTextValue" : "<p><center><h1>You do not have the necessary permissions to view this page. Please contact support.</h1></center></p>"
       },
       "componentName" : "forceCommunity:htmlBlock",
-      "id" : "45055008-8fe3-4373-973b-32d34da1cb2a",
+      "id" : "f48d3597-2f24-40bc-b6b6-fa3adcb22e48",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "d7e9f652-c7ea-44ca-b7e5-1d061a9f3e89",
+    "id" : "3ace27b7-9301-40a5-8eae-f10f98a559cc",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "f4dd3b57-6785-4b70-9530-dc2e6fe0d9c6",
+    "id" : "fc71bc29-b994-4182-a123-c3b6e2c08f09",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -34,11 +34,11 @@
         "title" : "Deal Reg List View"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "757e5050-a81b-4e6e-9b7f-b55ceb02dca4",
+      "id" : "38be237c-8954-475b-9b50-5dd051a1de72",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "7f7b2185-544e-41a9-a3bb-07ac68a2ed5a",
+    "id" : "77dcf99a-3aa9-43d2-b18f-e5d48e14df06",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

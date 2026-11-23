@@ -45,8 +45,7 @@
         <connector>
             <targetReference>Set_Default_to_Marketing_Status</targetReference>
         </connector>
-        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>and</filterLogic>
+        <filterLogic>or</filterLogic>
         <filters>
             <field>Core_Contact_Marketing_Status__c</field>
             <operator>EqualTo</operator>

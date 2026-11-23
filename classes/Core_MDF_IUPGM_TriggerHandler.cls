@@ -9,6 +9,20 @@
                                           object business logic methods.    
 *****************************************************************************************************************************************/
 public class Core_MDF_IUPGM_TriggerHandler extends TriggerHandler {
+
+    private static Boolean shouldBypassDuplicateValidation(){
+        if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_DuplAllAccValidation')){
+            return false;
+        }
+        // Preserve the existing switch-only bypass in test classes.
+        if(Test.isRunningTest()){
+            return true;
+        }
+        Core_MDF_Custom_Label_Configration__mdt bypassUsers =
+            Core_MDF_Custom_Label_Configration__mdt.getInstance('Core_MDF_L3_Bypass_Users');
+        return bypassUsers != null && String.isNotBlank(bypassUsers.Core_MDF_Value_Txt__c) &&
+            bypassUsers.Core_MDF_Value_Txt__c.contains(UserInfo.getUserName());
+    }
     
     public override void beforeInsert(){
         if(isActive('Core_MDF_beforeInsertIUPGM')){ 
@@ -24,7 +38,7 @@ public class Core_MDF_IUPGM_TriggerHandler extends TriggerHandler {
                 Core_MDF_IUPGM_ServiceHandler.validateSelectedAccount((List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.new,
                                                                       (Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.oldMap);
             }
-            if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_DuplAllAccValidation')){
+            if(!shouldBypassDuplicateValidation()){
                 Core_MDF_IUPGM_ServiceHandler.validateDuplicateAccounts((List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.new,
                                                                         (Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.oldMap);
             }
@@ -42,7 +56,7 @@ public class Core_MDF_IUPGM_TriggerHandler extends TriggerHandler {
                 Core_MDF_IUPGM_ServiceHandler.validateSelectedAccount((List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.new,
                                                                       (Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.oldMap);
             }
-            if(!Core_MDF_Utility.byPassFeature('Core_MDF_Bypass_DuplAllAccValidation')){
+            if(!shouldBypassDuplicateValidation()){
                 Core_MDF_IUPGM_ServiceHandler.validateDuplicateAccounts((List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.new,
                                                                         (Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c>) Trigger.oldMap);
             }

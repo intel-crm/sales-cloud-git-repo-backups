@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>67.0</apiVersion>
+    <apiVersion>68.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
         <name>Check_existing_ACM_Integration_Message_Queue_Record_Status</name>
@@ -13,7 +13,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Record_with_success_Status</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Existing_ACM_Integration_Message_Queue_record</leftValueReference>
                 <operator>IsNull</operator>
@@ -26,6 +26,13 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Success</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Existing_ACM_Integration_Message_Queue_record.Message_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Error</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -50,6 +57,9 @@
                     <stringValue>New</stringValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>END_ELEMENT_1</targetReference>
+            </connector>
             <label>Record with New status</label>
         </rules>
     </decisions>
@@ -58,6 +68,9 @@
         <label>Verify Record And Check Business Type</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>IS_Business_Type_And_Account_Exist</name>
@@ -104,6 +117,21 @@
         </rules>
     </decisions>
     <description>Create or Update ACM Integration Message Queue record to publish for Account When WOM Business Type is Added or Removed for the account.</description>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_2</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>ER_Account_Publish_On_BusinessType_Add_Or_Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ER_Account_Publish_On_BusinessType_Add_Or_Update</label>
@@ -131,6 +159,9 @@
         <label>Create ACM Integration Message Queue Record</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
             <targetReference>Log_entry_record_Creation</targetReference>
@@ -179,6 +210,9 @@
         <label>Log entry record Creation</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_2</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -259,6 +293,9 @@
         <label>Update Existing Record Status to New</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <faultConnector>
             <targetReference>Log_entry_record_Creation</targetReference>
         </faultConnector>

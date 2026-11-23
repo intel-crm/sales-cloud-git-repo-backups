@@ -182,12 +182,20 @@ public class Core_MDF_AccountOnboardingHelper_test {
             
             String accountId = '%'+accOnb.Core_MDF_Account__c+'%';
             
+            Group gp = [SELECT Id,Name,DeveloperName FROM Group WHERE Name LIKE :accountId LIMIT 1];
+            
+            String grpDevName = 'Core_MDF_CCP_'+accOnb.Core_MDF_Account__c+'_'+'CCF_EXT';
+            
+            if(gp != NULL){
+                assert.areEqual(grpDevName, gp.DeveloperName);
+            }
+            
             Core_MDF_Partner_Group_Mapping__c pgm = [SELECT Id,Core_MDF_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c,Core_MDF_Type_of_Access__c,Core_MDF_All_Access_Group_Nm__c
                                                      FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c =: accOnb.Core_MDF_Account__c LIMIT 1];
             if(pgm != NULL){
               // Highlight: Unused Local Variable
               // String accId = String.valueOf(pgm.Core_MDF_Account__c);
-                //assert.areEqual(gp.DeveloperName, pgm.Core_MDF_Group_Name__c);
+                assert.areEqual(grpDevName, pgm.Core_MDF_Group_Name__c);
                 assert.areEqual('External', pgm.Core_MDF_Type_of_Access__c);
                 
                 List<Core_MDF_Partner_Group_Domain_Mapping__c> pgdmList = [SELECT Id, Name, Core_MDF_Partner_Group_Mapping_Id__c FROM Core_MDF_Partner_Group_Domain_Mapping__c WHERE Core_MDF_Partner_Group_Mapping_Id__c =: pgm.Id];
@@ -222,7 +230,7 @@ public class Core_MDF_AccountOnboardingHelper_test {
             accOnb.Core_MDF_Technical_Program_nm__c = 'Intel Partner Alliance';
             accOnb.Core_MDF_Type__c = 'Intel Account';
             accOnb.Core_MDF_SubParent_Account_to_be_Created__c = TRUE;
-            accOnb.Core_MDF_Host_Region_nm__c = 'APJ';
+            acconb.Core_MDF_Host_Region_nm__c = 'APJ';
             accOnb.Core_MDF_Virtual_Account_Name_txt__c = 'IPA Virtual Corp Account';
             Database.insert(accOnb);
             
@@ -235,10 +243,18 @@ public class Core_MDF_AccountOnboardingHelper_test {
             
             String accountId = '%'+accOnb.Core_MDF_Account__c+'%';
             
+            Group gp = [SELECT Id,Name,DeveloperName FROM Group WHERE Name LIKE :accountId LIMIT 1];
+            
+            String grpDevName = 'Core_MDF_CCP_'+accOnb.Core_MDF_Account__c+'_'+'IPA_EXT';
+            
+            if(gp != NULL){
+                assert.areEqual(grpDevName, gp.DeveloperName);
+            }
+            
             Core_MDF_Partner_Group_Mapping__c pgm = [SELECT Id,Core_MDF_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c,Core_MDF_Type_of_Access__c
                                                      FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c =: accOnb.Core_MDF_Account__c LIMIT 1];
             if(pgm != NULL){
-                //assert.areEqual(gp.DeveloperName, pgm.Core_MDF_Group_Name__c);
+                assert.areEqual(grpDevName, pgm.Core_MDF_Group_Name__c);
                 assert.areEqual('External', pgm.Core_MDF_Type_of_Access__c);
                 
                 List<Core_MDF_Partner_Group_Domain_Mapping__c> pgdmList = [SELECT Id, Name, Core_MDF_Partner_Group_Mapping_Id__c FROM Core_MDF_Partner_Group_Domain_Mapping__c WHERE Core_MDF_Partner_Group_Mapping_Id__c =: pgm.Id];
@@ -258,8 +274,6 @@ public class Core_MDF_AccountOnboardingHelper_test {
         User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         System.runAs(sysAdminUser){
             Test.startTest();
-            // Prepare bypass toggle in system context to avoid sharing errors
-            System.runAs(new User(Id=UserInfo.getUserId())){}
             Core_Trigger_Executions__c enableIPAMDFAccountOnboarding = new Core_Trigger_Executions__c();
             enableIPAMDFAccountOnboarding.name = 'Bypass_AccountOnboardOPIDValidations';
             enableIPAMDFAccountOnboarding.Core_Object__c = 'Core_MDF_Account_Onboarding__c';
@@ -281,7 +295,7 @@ public class Core_MDF_AccountOnboardingHelper_test {
             accOnb.Core_MDF_Technical_Program_nm__c = 'Intel Partner Alliance';
             accOnb.Core_MDF_Type__c = 'Intel Account';
             accOnb.Core_MDF_SubParent_Account_to_be_Created__c = TRUE;
-            accOnb.Core_MDF_Host_Region_nm__c = 'APJ';
+            acconb.Core_MDF_Host_Region_nm__c = 'APJ';
             accOnb.Core_MDF_Virtual_Account_Name_txt__c = 'IPA Virtual Corp Account';
             Database.insert(accOnb);
             
@@ -294,10 +308,18 @@ public class Core_MDF_AccountOnboardingHelper_test {
             
             String accountId = '%'+accOnb.Core_MDF_Account__c+'%';
             
+            Group gp = [SELECT Id,Name,DeveloperName FROM Group WHERE Name LIKE :accountId LIMIT 1];
+            
+            String grpDevName = 'Core_MDF_CCP_'+accOnb.Core_MDF_Account__c+'_'+'IPA_EXT';
+            
+            if(gp != NULL){
+                assert.areEqual(grpDevName, gp.DeveloperName);
+            }
+            
             Core_MDF_Partner_Group_Mapping__c pgm = [SELECT Id,Core_MDF_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c,Core_MDF_Type_of_Access__c
                                                      FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c =: accOnb.Core_MDF_Account__c LIMIT 1];
             if(pgm != NULL){
-                //assert.areEqual(gp.DeveloperName, pgm.Core_MDF_Group_Name__c);
+                assert.areEqual(grpDevName, pgm.Core_MDF_Group_Name__c);
                 assert.areEqual('External', pgm.Core_MDF_Type_of_Access__c);
                 
                 List<Core_MDF_Partner_Group_Domain_Mapping__c> pgdmList = [SELECT Id, Name, Core_MDF_Partner_Group_Mapping_Id__c FROM Core_MDF_Partner_Group_Domain_Mapping__c WHERE Core_MDF_Partner_Group_Mapping_Id__c =: pgm.Id];
@@ -354,12 +376,19 @@ public class Core_MDF_AccountOnboardingHelper_test {
             }
             
             String accountId = '%'+accOnb.Core_MDF_Account__c+'%';
-            //Group gp = [SELECT Id,Name,DeveloperName FROM Group WHERE Name LIKE :accountId LIMIT 1];
+            
+            Group gp = [SELECT Id,Name,DeveloperName FROM Group WHERE Name LIKE :accountId LIMIT 1];
+            
+            String grpDevName = 'Core_MDF_CCP_'+accOnb.Core_MDF_Account__c+'_'+'CCF_EXT';
+            
+            if(gp != NULL){
+                assert.areEqual(grpDevName, gp.DeveloperName);
+            }
             
             Core_MDF_Partner_Group_Mapping__c pgm = [SELECT Id,Core_MDF_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c,Core_MDF_Type_of_Access__c
                                                      FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c =: agencyAccOnboard.Core_MDF_Account__c LIMIT 1];
             if(pgm != NULL){
-                //assert.areEqual(gp.DeveloperName, pgm.Core_MDF_Group_Name__c);
+                assert.areEqual(grpDevName, pgm.Core_MDF_Group_Name__c);
                 assert.areEqual('External', pgm.Core_MDF_Type_of_Access__c);
                 
                 List<Core_MDF_Partner_Group_Domain_Mapping__c> pgdmList = [SELECT Id, Name, Core_MDF_Partner_Group_Mapping_Id__c FROM Core_MDF_Partner_Group_Domain_Mapping__c WHERE Core_MDF_Partner_Group_Mapping_Id__c =: pgm.Id];
@@ -450,7 +479,7 @@ public class Core_MDF_AccountOnboardingHelper_test {
             accOnb.Core_MDF_Account__c = ipaAcc.Id;
             //accOnb.Core_MDF_Channel_Program__c = ipaCP.Id;
             accOnb.Core_MDF_Technical_Program_nm__c = 'Intel Partner Alliance';
-            accOnb.Core_MDF_Host_Region_nm__c = 'APJ';
+            acconb.Core_MDF_Host_Region_nm__c = 'APJ';
             accOnb.Core_MDF_Type__c = 'Intel Account';
             
             try{
@@ -588,23 +617,18 @@ public class Core_MDF_AccountOnboardingHelper_test {
             
             String accountId = '%'+accOnb.Core_MDF_Account__c+'%';
             
-            Group gp = new Group();
-            gp.Name = accountId;
-            gp.DeveloperName = 'Core_MDF_CCP_'+accOnb.Core_MDF_Account__c+'_'+'CCF_EXT1';
-            Database.insert(gp);
-            
-            //Group gp = [SELECT Id,Name,DeveloperName FROM Group WHERE Name LIKE :accountId LIMIT 1];
+            Group gp = [SELECT Id,Name,DeveloperName FROM Group WHERE Name LIKE :accountId LIMIT 1];
             
             String grpDevName = 'Core_MDF_CCP_'+accOnb.Core_MDF_Account__c+'_'+'CCF_EXT';
             
-           /* if(gp != NULL){
+            if(gp != NULL){
                 assert.areEqual(grpDevName, gp.DeveloperName);
-            }*/
+            }
             
             Core_MDF_Partner_Group_Mapping__c pgm = [SELECT Id,Core_MDF_Account__c,Core_MDF_Channel_Program__c,Core_MDF_Group_Name__c,Core_MDF_Type_of_Access__c
                                                      FROM Core_MDF_Partner_Group_Mapping__c WHERE Core_MDF_Account__c =: accOnb.Core_MDF_Account__c LIMIT 1];
             if(pgm != NULL){
-                //assert.areEqual(gp.DeveloperName, pgm.Core_MDF_Group_Name__c);
+                assert.areEqual(grpDevName, pgm.Core_MDF_Group_Name__c);
                 assert.areEqual('External', pgm.Core_MDF_Type_of_Access__c);
                 
                 List<Core_MDF_Partner_Group_Domain_Mapping__c> pgdmList = [SELECT Id, Name, Core_MDF_Partner_Group_Mapping_Id__c FROM Core_MDF_Partner_Group_Domain_Mapping__c WHERE Core_MDF_Partner_Group_Mapping_Id__c =: pgm.Id];

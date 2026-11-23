@@ -9,17 +9,17 @@
     <allowStandardPortalPages>true</allowStandardPortalPages>
     <allowStandardSearch>false</allowStandardSearch>
     <authorizationRequiredPage>CommunitiesLogin</authorizationRequiredPage>
-    <bandwidthExceededPage>Core_IPS_Community_509_Error</bandwidthExceededPage>
+    <bandwidthExceededPage>core_ips_portal_downPage</bandwidthExceededPage>
     <browserXssProtection>false</browserXssProtection>
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
     <clickjackProtectionLevel>AllowAllFraming</clickjackProtectionLevel>
     <contentSniffingProtection>false</contentSniffingProtection>
     <enableAuraRequests>true</enableAuraRequests>
-    <fileNotFoundPage>Core_IPS_Community_404_Error</fileNotFoundPage>
-    <genericErrorPage>Core_IPS_Community_Generic_Error</genericErrorPage>
+    <fileNotFoundPage>core_ips_portal_downPage</fileNotFoundPage>
+    <genericErrorPage>core_ips_portal_downPage</genericErrorPage>
     <inMaintenancePage>core_ips_portal_downPage</inMaintenancePage>
     <inactiveIndexPage>core_ips_portal_downPage</inactiveIndexPage>
-    <indexPage>CommunitiesLanding</indexPage>
+    <indexPage>core_ips_portal_downPage</indexPage>
     <masterLabel>DDR</masterLabel>
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>false</referrerPolicyOriginWhenCrossOrigin>
@@ -27,13 +27,6 @@
     <serverIsDown>pcc_ddrportalredirection</serverIsDown>
     <siteAdmin>premiercloudsupport@intel.com.crm</siteAdmin>
     <siteGuestRecordDefaultOwner>premiercloudsupport@intel.com.crm</siteGuestRecordDefaultOwner>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/</source>
-        <target>/DDR</target>
-    </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>false</isActive>
@@ -52,22 +45,36 @@
         <action>Permanent</action>
         <isActive>false</isActive>
         <isDynamic>false</isDynamic>
+        <source>/DDR/*</source>
+        <target>/partneradmin/s/</target>
+    </siteRedirectMappings>
+    <siteRedirectMappings>
+        <action>Permanent</action>
+        <isActive>false</isActive>
+        <isDynamic>false</isDynamic>
+        <source>/DDR/a3DD3000001QsRT</source>
+        <target>/partneradmin/s/core-design-registration/a3DD3000001Qt5TMAS</target>
+    </siteRedirectMappings>
+    <siteRedirectMappings>
+        <action>Permanent</action>
+        <isActive>false</isActive>
+        <isDynamic>false</isDynamic>
+        <source>/DDR/home/home.jsp</source>
+        <target>/partneradmin/s/</target>
+    </siteRedirectMappings>
+    <siteRedirectMappings>
+        <action>Permanent</action>
+        <isActive>false</isActive>
+        <isDynamic>false</isDynamic>
+        <source>/DDR/id</source>
+        <target>/partneradmin/s/</target>
+    </siteRedirectMappings>
+    <siteRedirectMappings>
+        <action>Permanent</action>
+        <isActive>false</isActive>
+        <isDynamic>false</isDynamic>
         <source>/_ui/common/setup/PersonalSetup</source>
         <target>/IPS/Core_IPS_CommEmailOpt?s=1</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/partners.intel.com</source>
-        <target>intel.my.site.com/DDR</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/partners.intel.com/DDR/home/home.jsp</source>
-        <target>intel.my.site.com/DDR</target>
     </siteRedirectMappings>
     <siteType>ChatterNetwork</siteType>
     <subdomain>intelcloudcrm</subdomain>

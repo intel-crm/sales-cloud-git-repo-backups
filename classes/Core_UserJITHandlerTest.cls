@@ -30,14 +30,14 @@ public class Core_UserJITHandlerTest {
             insert testContact;
             
             Contact testContact1 = new Contact(FirstName='testFirstName15',LastName='testpartneruser15', Email='testpartneruser15@test.com',
-                                              AccountId=acc1.id,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
-                                              Core_Enterprise_Id__c='23689',Core_AGS_Integration_Status__c='Successful');
+                                               AccountId=acc1.id,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                               Core_Enterprise_Id__c='23689',Core_AGS_Integration_Status__c='Successful');
             
             insert testContact1;
             
             Contact testContact2 = new Contact(FirstName='testFirstName152',LastName='testpartneruser152', Email='testpartneruser152@test.com',
-                                              AccountId=acc1.id,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
-                                              Core_Enterprise_Id__c='236892',Core_AGS_Integration_Status__c='Successful');
+                                               AccountId=acc1.id,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                               Core_Enterprise_Id__c='236892',Core_AGS_Integration_Status__c='Successful');
             
             insert testContact2;
             

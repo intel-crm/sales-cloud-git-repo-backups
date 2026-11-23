@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
@@ -30,6 +32,25 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Account_Type__c</field>
+            </layoutItems>
+            <layoutItems>
+                <height>35</height>
+                <page>Core_First_ThirdParty_Data_Compare</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Secondary_Country_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Secondary_State_Cd__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Altera_Acts__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -104,11 +125,19 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Sub_Geo__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Phone</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>ShippingAddress</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Fax</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -340,24 +369,29 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>FeedItem.ContentNote</actionName>
-            <actionType>QuickAction</actionType>
+            <actionName>CallHighlightAction</actionName>
+            <actionType>ProductivityAction</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewContact</actionName>
+            <actionName>FeedItem.ContentNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>NewTask</actionName>
+            <actionName>NewContact</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>NewTask</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>4</sortOrder>
+            <sortOrder>5</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>LogACall</actionName>
@@ -401,6 +435,7 @@
         <relatedList>Core_Account_ERPM_Engagement__c.Core_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>Create_new_Contact</customButtons>
         <excludeButtons>NewContact</excludeButtons>
         <fields>FULL_NAME</fields>
         <fields>Core_Primary_Contact__c</fields>
@@ -429,6 +464,17 @@
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>PRM_Contact_Id__c</fields>
+        <fields>PRM_Partner_Role_UI__c</fields>
+        <fields>PRM_Relationship_Id__c</fields>
+        <fields>PRM_Start_Date_Dt__c</fields>
+        <fields>PRM_End_Date_Dt__c</fields>
+        <fields>PRM_InActive_Ind__c</fields>
+        <fields>PRM_Status_Nm__c</fields>
+        <fields>PRM_Record_Link__c</fields>
+        <relatedList>PRM_Account_Contact_Relationship__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>Core_Opportunity__c</fields>
         <fields>OpportunityStage__c</fields>
         <fields>Opportunity_Owner_Full_Name__c</fields>
@@ -439,6 +485,79 @@
         <relatedList>Core_Opportunity_Partner__c.Core_Partner__c</relatedList>
         <sortField>Core_Opportunity__c</sortField>
         <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>PRM_Partner_Agreement_Id__c</fields>
+        <fields>PRM_Agreement_Sign_Dt__c</fields>
+        <fields>PRM_Signed_By_Name__c</fields>
+        <fields>PRM_Signed_By_Email__c</fields>
+        <fields>PRM_InActive_Ind__c</fields>
+        <fields>PRM_Record_Link__c</fields>
+        <relatedList>PRM_AccountLegalAgreemntAssociation__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>PRM_Channel_Program_Id__c</fields>
+        <fields>PRM_Channel_Program_Level_Id__c</fields>
+        <fields>PRM_Partner_Role__c</fields>
+        <fields>PRM_Status_Nm__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>PRM_Status_Change_Dt__c</fields>
+        <fields>PRM_Record_Link__c</fields>
+        <relatedList>PRM_AccountChannelMembership__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>PRM_Partner_Benefit_Id__c</fields>
+        <fields>PRM_Status_Nm__c</fields>
+        <fields>PRM_Source__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>PRM_Record_Link__c</fields>
+        <relatedList>PRM_AccountBenefitAssociation__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>PRM_Specialty_Id__c</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>PRM_Status_Change_Dt__c</fields>
+        <fields>PRM_Specialty_Type__c</fields>
+        <fields>PRM_Partner_Role__c</fields>
+        <fields>PRM_InActive_Ind__c</fields>
+        <fields>PRM_Record_Link__c</fields>
+        <relatedList>PRM_Account_Specialty_Association__c.PRM_Account_Id__c</relatedList>
+        <sortField>PRM_Specialty_Type__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_Account_Whitelisted_Domains__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>PRM_Consent_Provided_Ind__c</fields>
+        <fields>PRM_Consent_Provided_By_Id__c</fields>
+        <fields>PRM_Distributor_Id__c</fields>
+        <fields>PRM_Choice_Nm__c</fields>
+        <fields>PRM_Start_Date_Dt__c</fields>
+        <fields>PRM_End_Date_Dt__c</fields>
+        <fields>PRM_InActive_Ind__c</fields>
+        <relatedList>PRM_Partner_Assist_Consent__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <fields>PRM_Builder_Strategy__c</fields>
+        <fields>PRM_Active__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>LAST_UPDATE</fields>
+        <fields>Record_Link__c</fields>
+        <relatedList>PRM_IPA_Affiliation__c.PRM_Account__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_Partner_Account_Id__c</fields>
+        <fields>Core_MDA_Ind__c</fields>
+        <fields>Core_Inactive_Ind__c</fields>
+        <relatedList>Core_Account_Group_Member__c.Core_Intel_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>TERRITORY.NAME</fields>
@@ -452,11 +571,11 @@
         <excludeButtons>NewContact</excludeButtons>
         <fields>CONTACT.FULL_NAME</fields>
         <fields>CONTACT.ACCOUNT_NAME</fields>
-        <fields>CONTACT.TITLE</fields>
+        <fields>ACCCONRELATION.IS_DIRECT</fields>
         <fields>CONTACT.EMAIL</fields>
+        <fields>CONTACT.TITLE</fields>
         <fields>CONTACT.PHONE1</fields>
         <fields>ACCCONRELATION.ROLES</fields>
-        <fields>ACCCONRELATION.IS_DIRECT</fields>
         <relatedList>RelatedAccountContactRelationList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -468,6 +587,7 @@
         <excludeButtons>AddAccountDefaultTeam</excludeButtons>
         <fields>MEMBER_NAME</fields>
         <fields>TEAM_MEMBER_ROLE</fields>
+        <fields>Core_Account_Category__c</fields>
         <relatedList>RelatedAccountSalesTeam</relatedList>
     </relatedLists>
     <relatedLists>
@@ -515,6 +635,14 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Core_Liability_Points__c.Core_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PCC_ODR_Onboarding_Matrix__c.PCC_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>ER_Account_Business_Partner__c.ER_Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>true</runAssignmentRulesDefault>

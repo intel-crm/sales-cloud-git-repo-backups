@@ -118,7 +118,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
-            <value>15</value>
+            <value>15.00</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

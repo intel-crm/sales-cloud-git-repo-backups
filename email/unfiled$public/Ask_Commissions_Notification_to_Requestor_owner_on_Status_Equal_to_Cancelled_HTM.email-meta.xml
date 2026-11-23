@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Ask_Commissions_Letterhead</letterhead>
+    <name>Ask Commissions-Notification to Requestor/owner on Status Equal to Cancelled HTM</name>
+    <style>freeForm</style>
+    <subject>Case Number: {!Case.CaseNumber} - An Ask Commissions Case has been Cancelled</subject>
+    <textOnly>A Commissions case assigned to you has been cancelled by requestor.
+
+Case Number: {!Case.CaseNumber}
+Status: {!Case.Status}
+
+To review the Cancelled case click on the link below:
+
+{!Case.Core_AAQC_Commission_InquiryId_Hyperlink__c}
+
+
+Please login to Ask Commissions for more details.
+
+***NOTE: Do not reply to this mail as there is no inbox being monitored***</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -29,6 +29,14 @@
         <name>Core_End_of_Week_Processed__c</name>
     </fields>
     <fields>
+        <label><!-- LOB Code --></label>
+        <name>Core_LOB_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- LOB Name --></label>
+        <name>Core_LOB_Nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Integration Load ID --></label>
         <name>Core_Load_ID__c</name>
     </fields>

@@ -55,7 +55,7 @@
         <field>Account.Core_Account_Country__c</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7 OR 8) AND 9) AND 10 AND 11</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7 OR 8) AND 9</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -109,8 +109,8 @@
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Bettina Smithson,DJ Gianduso,Daggu Bhargavi,Chloe Steel</value>
+            <operator>equals</operator>
+            <value>Bettina Smithson</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Country__c</column>
@@ -118,20 +118,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Denmark,Finland,Ireland,Iceland,Norway,Sweden</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/3/2022</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>lessThan</operator>
-            <value>12/30/2022</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -175,7 +161,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2024-12-27</endDate>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2017-01-01</startDate>
     </timeFrameFilter>

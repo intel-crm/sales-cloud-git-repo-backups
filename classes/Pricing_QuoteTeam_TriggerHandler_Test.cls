@@ -120,8 +120,10 @@ public class Pricing_QuoteTeam_TriggerHandler_Test {
                                                   Pricing_pm_approval_comments_nm__c 	,SBQQ__Quote__r.SBQQ__SalesRep__r.Name 
                                                   FROM SBQQ__QuoteLine__c LIMIT 1];  
         
+       // User aeUser = [SELECT Id from User where Email= 'firstAE@intel.com'];
         User itsUser = [SELECT Id from User where Email= 'firstAE@intel.com'];
         User aeQuoteUser = [SELECT Id,Email from User where Email= 'firstNameAE@intel.com'];
+        //User primaryContact = [SELECT Id from User where Email= 'Pricing_Quote_Team_Trigger_Handler_Test@noemail.com'];
         User dummyUser = [SELECT Id FROM User WHERE EMail='dummyuser@intel.com' limit 1];
         List<User> fseUser2 = Pricing_Test_Utility.createFSEUser();
         AccountTeamMember act2 =  new AccountTeamMember(AccountId = lstquote[0].SBQQ__Account__c,
@@ -189,6 +191,7 @@ public class Pricing_QuoteTeam_TriggerHandler_Test {
         quoteTeamMemberList.add(qtm2);
         insert quoteTeamMemberList;
         delete qtm1;
+        //SBQQ__Quote__c quote1 = [SELECT Id,SBQQ__SalesRep__c FROM SBQQ__Quote__c WHERE Id= :lstquote[0].Id];
         Test.stopTest();
         system.assert(quoteTeamMemberList.contains(qtm1), 'QuoteTeam did not get deleted.');
     }

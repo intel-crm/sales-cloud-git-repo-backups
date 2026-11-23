@@ -100,7 +100,6 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
                 
             }
             
-            System.debug('mapOfDDRIdtoUserOrGroupIdSet-->'+mapOfDDRIdtoUserOrGroupIdSet);
             
             //fetching list of old PCC_DDR_L5_Product_Mapping__Share records to delete
             for(PCC_DDR_L5_Product_Mapping__Share dlpmShare : [SELECT id, AccessLevel, ParentId, RowCause, UserOrGroupId, UserOrGroup.name 
@@ -139,7 +138,6 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
                 mapOfIdToDlpmShareToInsert.remove(key);
             }
             
-            System.debug('mapOfIdToDlpmShareToDelete.values()-->'+mapOfIdToDlpmShareToDelete.values());
             //Delete listOfDLPMSharingToDelete
             if(!mapOfIdToDlpmShareToDelete.isEmpty() && mapOfIdToDlpmShareToDelete != null){
                 ddrL5DeleteResults = Database.Delete(mapOfIdToDlpmShareToDelete.values(), false);
@@ -148,10 +146,9 @@ public without sharing class PCC_DDRL5ProductMapping_TriggerHandler extends Trig
             //create log entries for DLPM
             createLogEntriesForDLPM(ddrL5DeleteResults, methodOrigin, DeleteError);
             
-           // System.debug('mapOfIdToDlpmShareToInsert.values()-->'+JSON.serialize(mapOfIdToDlpmShareToInsert.values()));
             //Insert ddrL5shareListToInsert
             if(!mapOfIdToDlpmShareToInsert.isEmpty() && mapOfIdToDlpmShareToInsert != null){
-                ddrL5InsertResults = Database.Insert(mapOfIdToDlpmShareToInsert.values(), false); // DINESH UNCOMMENTED as part of Defect fix
+                ddrL5InsertResults = Database.Insert(mapOfIdToDlpmShareToInsert.values(), false);
             }
             
             //create log entries for DLPM

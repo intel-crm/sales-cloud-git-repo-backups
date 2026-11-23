@@ -1251,22 +1251,10 @@
         <label>Czech Republic</label>
     </customValue>
     <customValue>
-        <fullName>Swaziland</fullName>
+        <fullName>Macedonia</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Swaziland</label>
-    </customValue>
-    <customValue>
-        <fullName>Serbia and Montenegr</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Serbia and Montenegr</label>
-    </customValue>
-    <customValue>
-        <fullName>Netherlands Antilles</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Netherlands Antilles</label>
+        <label>Macedonia</label>
     </customValue>
     <customValue>
         <fullName>Turkey</fullName>
@@ -1275,10 +1263,94 @@
         <label>Turkey</label>
     </customValue>
     <customValue>
-        <fullName>Macedonia</fullName>
+        <fullName>Russia</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Macedonia</label>
+        <label>Russia</label>
+    </customValue>
+    <customValue>
+        <fullName>Korea</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Korea</label>
+    </customValue>
+    <customValue>
+        <fullName>Antilles</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Antilles</label>
+    </customValue>
+    <customValue>
+        <fullName>Bosnia And Herzegovina</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Bosnia And Herzegovina</label>
+    </customValue>
+    <customValue>
+        <fullName>British Virgin Islands</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>British Virgin Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>Burma</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Burma</label>
+    </customValue>
+    <customValue>
+        <fullName>Dominican Republic</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Dominican Republic</label>
+    </customValue>
+    <customValue>
+        <fullName>Holland</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Holland</label>
+    </customValue>
+    <customValue>
+        <fullName>N. IRELAND</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>N. IRELAND</label>
+    </customValue>
+    <customValue>
+        <fullName>Scotland</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Scotland</label>
+    </customValue>
+    <customValue>
+        <fullName>West Indies</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>West Indies</label>
+    </customValue>
+    <customValue>
+        <fullName>Serbia and Montenegr</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Serbia and Montenegr</label>
+    </customValue>
+    <customValue>
+        <fullName>Yugoslavia</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Yugoslavia</label>
+    </customValue>
+    <customValue>
+        <fullName>Netherlands Antilles</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Netherlands Antilles</label>
+    </customValue>
+    <customValue>
+        <fullName>Swaziland</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Swaziland</label>
     </customValue>
     <description>Will be used for GEC OverHaul process</description>
     <masterLabel>Country/Region</masterLabel>

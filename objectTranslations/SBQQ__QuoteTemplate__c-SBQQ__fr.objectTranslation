@@ -13,6 +13,10 @@
         <name>Pricing_SW_Signature__c</name>
     </fields>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help><!-- Select the checkbox if all package products should be printed on quote documents; otherwise, only ones that are non-zero are printed. --></help>
         <label>Afficher tous les produits de package</label>
         <name>SBQQ__AllPackageProductsShown__c</name>

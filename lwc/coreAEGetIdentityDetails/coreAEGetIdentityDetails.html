@@ -1,0 +1,159 @@
+<template>
+    <lightning-card >
+        <div class="slds-p-around_medium lgc-bg" style="display: flex; align-items: center;">
+            <lightning-input class="input" type = "text"  placeholder="Email/Enterprise ID" value={searchString} onchange={handleEmailChange}></lightning-input>
+            <lightning-button class="button"  variant="brand-outline" label="Search Identity" onclick={searchIdentity}></lightning-button>
+        </div>
+            
+    <template if:true={showtable}>
+        <div class="spacing">
+           <h2><div><b class ="bold">Salesforce Contact Details</b></div></h2>
+           
+            <div class ="core">
+                    <b>
+                    Name :  {SName}
+                    <br/>
+                    Email : <a href='mailto:${Email}' target="_blank" class="slds-truncate"> {Email}</a>
+                    </b>
+                <br/>
+                
+                <b>
+                <div class = "inlineWidth65">
+                    
+                    ERPM Person Id :           {PersonID}  
+                    <br/>
+                    ERPM Integration Status :  {ERPMStatus}
+                    <br/>
+                    ERPM Integration Message : {ERPMMessage}
+                    <br/>
+                    
+                </div>
+                <div class = "inlineWidth30">
+                    
+                    Enterprise Id :            {EnterpriseID}
+                    <br/>
+                    AGS Integration Status :   {AGSStatus}
+                    <br/>
+                    AGS Integration Message :  {AGSMessage}
+                    <br/>
+                    
+                </div>
+                </b>
+
+                <br/>
+                <br/>
+
+                <b>  Entitlements in Salesforce 
+                <div class="slds-m-around_medium">
+                    <table>
+                    <template if:true={entDetails}>
+                        <template for:each={entDetails} for:item="ent">
+                            <tr key={ent.Name}>
+                                <td>{ent.Name}</td>
+                                <td>{ent.Core_Display_Nm__c}</td>
+                                <td>{ent.Core_Type__c}</td>
+                                <td>{ent.Core_Category__c}</td>
+                                <td>{ent.Core_Status__c}</td>
+                                <td>{ent.Core_Selected__c}</td>
+                                
+                            </tr> 
+                            </template>
+                        </template>
+                    </table>
+                </div>
+                </b>
+           
+        
+            </div>
+            
+            <h2><div><b class ="bold">ERPM Profile Details</b></div></h2>
+            
+            <div class ="core">
+                <b>
+                   
+                    Name : {ERPMName}
+                    <br/>
+                    Email : <a href='mailto:${ERPMEmail}' target="_blank" class="slds-truncate"> {ERPMEmail}</a>
+                    <br/>
+                    ERPM Person Id : {eRPMPersonID}
+                    <br/>
+                    Enterprise Id : {eRPMEnterpriseID}
+                    <br/>
+                    Identity Status : {eRPMIdentityStatus}
+                    <br/>
+                    
+                </b>
+            </div>
+
+            <h2><div><b class ="bold">AGS Identity Details</b></div></h2>
+            <div class ="core">
+                    <b>
+                    Enterprise Id : {AGSEnterpriseID}
+                    <br/>
+                    </b>
+                    <br/>
+                    <b>Entitlements in AGS <br/>{Roles}</b>
+                    
+                </div>
+
+            <h2><div><b class ="bold">Azure B2B Identity Details</b></div></h2>
+            <b>
+            <div class ="core">
+                <div class = "inlineWidth40">
+                       Display Name : {B2BDisplayName}
+                    </div>
+                    <div class = "inlineWidth25">
+                        Given Name : {B2BGivenName} 
+                    </div>
+                    <div class = "inlineWidth25">
+                        Surname : {B2BSurname} 
+                    </div>
+                    <br/>
+                        Email : <a href='mailto:${B2BEmail}' target="_blank" class="slds-truncate"> {B2BEmail}</a>
+                    <br/>
+                    Enterprise Id : {B2BEnterpriseID}
+                    <br/>
+                    Id : {B2Bid}
+                    <br/>
+                    Other Emails : <a href='mailto:{B2BotherEmails}{ERPMEmail}' target="_blank" class="slds-truncate"> {B2BotherEmails}</a>
+                    <br/>
+                    <br/>
+                    Groups in Azure B2B
+                    <br/>
+                    {B2BGroups}
+                
+                </div>
+            </b>
+
+            <h2><div><b class ="bold">Azure B2C Identity Details</b></div></h2>
+            <b>
+            <div class ="core">
+                <div class = "inlineWidth40">
+                    Display Name : {B2CDisplayName}
+                </div>
+                <div class = "inlineWidth25">
+                    Given Name : {B2CGivenName} 
+                </div>
+                <div class = "inlineWidth25">
+                    Surname : {B2CSurname}
+                </div>
+                    <br/>
+                    Email : <a href='mailto:${B2CEmail}' target="_blank" class="slds-truncate"> {B2CEmail}</a>
+                    <br/>
+                    Enterprise Id : {B2CEnterpriseID}
+                    <br/>
+                    Id : {B2Cid}
+                    <br/>
+                    Other Emails : <a href='mailto:${B2CotherEmails}' target="_blank" class="slds-truncate"> {B2CotherEmails}</a>
+                    <br/>
+                    <br/>
+                    Groups in Azure B2C
+                    <br/>
+                    {B2CGroups}
+
+                </div>
+            </b>
+        </div>
+    </template>
+    </lightning-card>
+</template>

@@ -82,14 +82,14 @@
                 <value>PSG</value>
             </criteriaItems>
             <criteriaItems>
-                <field>Lead.Core_Geo__c</field>
-                <operation>equals</operation>
-                <value>PRC</value>
-            </criteriaItems>
-            <criteriaItems>
                 <field>Lead.Status</field>
                 <operation>notEqual</operation>
                 <value>Marketing Engaged Lead</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>PRC</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>

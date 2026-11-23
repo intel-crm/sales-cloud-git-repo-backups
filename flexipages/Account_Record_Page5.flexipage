@@ -121,6 +121,12 @@
                 <identifier>force_relatedListSingleContainer2</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>aCM_CNDANumberMap_ToSF</componentName>
+                <identifier>c_aCM_CNDANumberMap_ToSF</identifier>
+            </componentInstance>
+        </itemInstances>
         <mode>Replace</mode>
         <name>relatedTabContent</name>
         <type>Facet</type>
@@ -284,13 +290,6 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer10</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!$User.PRM_IPA_Refresh__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -684,6 +683,12 @@
                 <identifier>force_relatedListSingleContainer18</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>aCM_CNDANumberMap_ToSF</componentName>
+                <identifier>c_aCM_CNDANumberMap_ToSF2</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-73379ade-6283-4a62-9445-b1b952cc2319</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -923,7 +928,7 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
-                            <value>CustomButton.Contact.Create_new_Contact</value>
+                            <value>NewContact</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -1148,7 +1153,7 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
-                            <value>CustomButton.Contact.Create_new_Contact</value>
+                            <value>NewContact</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>

@@ -1,0 +1,155 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #121E42;
+    color: white;
+    padding: 15px;
+    border: 2px solid #1B9EF5;
+    border-radius: 8px;
+}
+
+.metrics-heading {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.content-row {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.chart-section,
+.stage-section,
+.placeholder-section,
+.metrics-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chart-section {
+    flex: 0 0 100px;
+    align-items: center;
+}
+
+.stage-section {
+    flex: 2;
+    align-items: flex-start;
+}
+
+.placeholder-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 160px;
+    margin-top: 0.5rem;
+}
+
+.placeholder-heading {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    text-align: center;
+}
+
+.centered-score .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* SVG Donut */
+.donut {
+    width: 100px;
+    height: 100px;
+    transform: rotate(-90deg);
+}
+
+.donut-segment {
+    fill: transparent;
+    stroke-width: 3.2;
+    r: 15.9155;
+    cx: 18;
+    cy: 18;
+}
+
+.donut-total {
+    font-size: 6px;
+    font-weight: bold;
+    fill: white;
+    text-anchor: middle;
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
+}
+
+/* Stage Items */
+.stages-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.stage-radio {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    border: 1px solid white;
+}
+
+.view-opportunities {
+    font-size: 12px;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.metric-values {
+    display: flex;
+    gap: 20px;
+}
+
+.value {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.subtext {
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+/* Right Metrics Wrapper */
+.right-metrics-wrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-left: auto;
+}
+
+.score-section {
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-right: 15rem;
+}
+
+.score-section h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    text-align: center;
+}
+
+.metrics-section {
+    flex: 1;
+    align-items: center;
+    text-align: center;
+    margin-left: -5rem; 
+}

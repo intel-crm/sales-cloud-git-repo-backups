@@ -22,7 +22,7 @@ public without sharing class ER_RetriggerEVMail_Utility {
         //Check for request Size before sending the emails
         if(listRegReq.Size()>0){
             retrievalStatus=PRM_Retrigger_EV_Utility.reteriveNewEvToken(listRegReq[0]);
-            if(retrievalStatus ==System.label.PRM_EV_TOKEN_RETERIEVED){
+            if(retrievalStatus ==System.label.PRM_EV_TOKEN_RETERIEVED){  
                 if(evInput.IsProgramBased){
                     message=sendMail(listRegReq[0]); 
                 }

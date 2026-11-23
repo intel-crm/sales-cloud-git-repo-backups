@@ -35,12 +35,6 @@
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Risk_Reason__c</field>
     </columns>
     <columns>
@@ -179,13 +173,13 @@
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <filter>
-        <booleanFilter>(((((1 AND 2 AND 3 AND 4 and 6 and (5 or 10 or (7 and 8))) and 9)) AND 11)) AND 12</booleanFilter>
+        <booleanFilter>((((1 AND 2 AND 3 AND 4 AND 5 and 7 and (6 or 11 or (8 and 9))) and 10)) AND 12)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>loss,lost,production lo</value>
+            <value>loss,lost</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -193,6 +187,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>deal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>INDUSTRY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>consulting</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
@@ -256,13 +257,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
             <value>DCG Enterprise High Perf Compute Deal # (On-Prem),DCG Enterprise High Perf Compute Deal # Workloads (Off-Prem),Enterprise High Perf Compute (On-Prem),Enterprise High Perf Compute (Off-Prem)</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>excludes</operator>
-            <value>DCG-Consulting</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

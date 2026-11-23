@@ -1,0 +1,1098 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Four day weekend MAQL SLA Expired</description>
+        <name>Four_day_weekend_MAQL_SLA_Expired</name>
+        <label>Four day weekend MAQL SLA Expired</label>
+        <locationX>3482</locationX>
+        <locationY>648</locationY>
+        <actionName>Lead.Core_MAQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_MAQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Four day weekend TAL Expired</description>
+        <name>Four_day_weekend_TAL_Expired</name>
+        <label>Four day weekend TAL Expired</label>
+        <locationX>4274</locationX>
+        <locationY>1008</locationY>
+        <actionName>Lead.Core_TAL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TAL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Four days MAQL SLA Expired</description>
+        <name>Four_days_MAQL_SLA_Expired</name>
+        <label>Four days MAQL SLA Expired</label>
+        <locationX>1370</locationX>
+        <locationY>648</locationY>
+        <actionName>Lead.Core_MAQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_MAQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Four days SLA Expired</description>
+        <name>Four_days_SLA_Expired</name>
+        <label>Four days SLA Expired</label>
+        <locationX>2162</locationX>
+        <locationY>1008</locationY>
+        <actionName>Lead.Core_TAL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TAL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>MAQL One Day SLA Expired Email</description>
+        <name>MAQL_One_Day_SLA_Expired_Email</name>
+        <label>MAQL One Day SLA Expired Email</label>
+        <locationX>842</locationX>
+        <locationY>408</locationY>
+        <actionName>Lead.Core_MAQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_MAQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>One day Expired</description>
+        <name>One_day_Expired</name>
+        <label>One day Expired</label>
+        <locationX>1634</locationX>
+        <locationY>768</locationY>
+        <actionName>Lead.Core_TAL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TAL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>One day weekend MAQL SLA Expired</description>
+        <name>One_day_weekend_MAQL_SLA_Expired</name>
+        <label>One day weekend MAQL SLA Expired</label>
+        <locationX>2954</locationX>
+        <locationY>408</locationY>
+        <actionName>Lead.Core_MAQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_MAQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>One day weekend TAL Expired</description>
+        <name>One_day_weekend_TAL_Expired</name>
+        <label>One day weekend TAL Expired</label>
+        <locationX>3746</locationX>
+        <locationY>768</locationY>
+        <actionName>Lead.Core_TAL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TAL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>One day weekend TQL Expired</description>
+        <name>One_day_weekend_TQL_Expired</name>
+        <label>One day weekend TQL Expired</label>
+        <locationX>4538</locationX>
+        <locationY>1128</locationY>
+        <actionName>Lead.Core_TQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>TQL Expired</description>
+        <name>TQL_Expired</name>
+        <label>TQL Expired</label>
+        <locationX>2426</locationX>
+        <locationY>1128</locationY>
+        <actionName>Lead.Core_TQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Two day weekend MAQL SLA Expired</description>
+        <name>Two_day_weekend_MAQL_SLA_Expired</name>
+        <label>Two day weekend MAQL SLA Expired</label>
+        <locationX>3218</locationX>
+        <locationY>528</locationY>
+        <actionName>Lead.Core_MAQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_MAQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Two day weekend TAL Expired</description>
+        <name>Two_day_weekend_TAL_Expired</name>
+        <label>Two day weekend TAL Expired</label>
+        <locationX>4010</locationX>
+        <locationY>888</locationY>
+        <actionName>Lead.Core_TAL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TAL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Two days MAQL SLA Expired</description>
+        <name>Two_days_MAQL_SLA_Expired</name>
+        <label>Two days MAQL SLA Expired</label>
+        <locationX>1106</locationX>
+        <locationY>528</locationY>
+        <actionName>Lead.Core_MAQL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_MAQL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>Two days SLA expired</description>
+        <name>Two_days_SLA_expired</name>
+        <label>Two days SLA expired</label>
+        <locationX>1898</locationX>
+        <locationY>888</locationY>
+        <actionName>Lead.Core_TAL_SLA_Expired_Alert</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Lead.Core_TAL_SLA_Expired_Alert</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Four Buisness Day weekend record TAL SLA</description>
+        <name>Four_Buisness_Day_weekend_record_TAL_SLA_Check</name>
+        <label>Four Buisness Day weekend record TAL SLA Check</label>
+        <locationX>4472</locationX>
+        <locationY>888</locationY>
+        <defaultConnector>
+            <targetReference>One_Buisness_Day_weekend_record_TQL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Four_Buisness_Day_weekend_record_TAL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaFourBuisnessDayweekendrecordTALSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Four_day_weekend_TAL_Expired</targetReference>
+            </connector>
+            <label>Four Buisness Day weekend record TAL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Four Business Day MQL SLA</description>
+        <name>Four_Business_Day_MQL_SLA_Check</name>
+        <label>Four Business Day MQL SLA Check</label>
+        <locationX>1625</locationX>
+        <locationY>528</locationY>
+        <defaultConnector>
+            <targetReference>One_Buisness_Day_TAL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Four_Business_Day_MQL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaFourBusinessDayMQLSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Four_days_MAQL_SLA_Expired</targetReference>
+            </connector>
+            <label>Four Business Day MQL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Four Business Day weekend record MQL SLA</description>
+        <name>Four_Business_Day_weekend_record_MQL_SLA_Check</name>
+        <label>Four Business Day weekend record MQL SLA Check</label>
+        <locationX>3737</locationX>
+        <locationY>528</locationY>
+        <defaultConnector>
+            <targetReference>One_Buisness_Day_weekend_record_TAL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Four_Business_Day_weekend_record_MQL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaFourBusinessDayweekendrecordMQLSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Four_day_weekend_MAQL_SLA_Expired</targetReference>
+            </connector>
+            <label>Four Business Day weekend record MQL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Four Business Days TAL SLA</description>
+        <name>Four_Business_Days_TAL_SLA_Check</name>
+        <label>Four Business Days TAL SLA Check</label>
+        <locationX>2360</locationX>
+        <locationY>888</locationY>
+        <defaultConnector>
+            <targetReference>One_Business_Day_TQL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Four_Business_Days_TAL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaFourBusinessDaysTALSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Four_days_SLA_Expired</targetReference>
+            </connector>
+            <label>Four Business Days TAL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One Buisness Day TAL SLA</description>
+        <name>One_Buisness_Day_TAL_SLA_Check</name>
+        <label>One Buisness Day TAL SLA Check</label>
+        <locationX>1881</locationX>
+        <locationY>648</locationY>
+        <defaultConnector>
+            <targetReference>Two_Business_Day_TAL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Buisness_Day_TAL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaOneBuisnessDayTALSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>One_day_Expired</targetReference>
+            </connector>
+            <label>One Buisness Day TAL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One Buisness Day weekend record SAL SLA</description>
+        <name>One_Buisness_Day_weekend_record_SAL_SLA_Check</name>
+        <label>One Buisness Day weekend record SAL SLA Check</label>
+        <locationX>446</locationX>
+        <locationY>408</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Buisness_Day_weekend_record_SAL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaOneBuisnessDayweekendrecordSALSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SAL_Weekend_Email_Trigger_date_update</targetReference>
+            </connector>
+            <label>One Buisness Day weekend record SAL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One Buisness Day weekend record TAL SLA</description>
+        <name>One_Buisness_Day_weekend_record_TAL_SLA_Check</name>
+        <label>One Buisness Day weekend record TAL SLA Check</label>
+        <locationX>3993</locationX>
+        <locationY>648</locationY>
+        <defaultConnector>
+            <targetReference>Two_Buisness_Day_weekend_record_TAL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Buisness_Day_weekend_record_TAL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaOneBuisnessDayweekendrecordTALSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>One_day_weekend_TAL_Expired</targetReference>
+            </connector>
+            <label>One Buisness Day weekend record TAL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One Buisness Day weekend record TQL SLA</description>
+        <name>One_Buisness_Day_weekend_record_TQL_SLA_Check</name>
+        <label>One Buisness Day weekend record TQL SLA Check</label>
+        <locationX>4670</locationX>
+        <locationY>1008</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Buisness_Day_weekend_record_TQL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaOneBuisnessDayweekendrecordTQLSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>One_day_weekend_TQL_Expired</targetReference>
+            </connector>
+            <label>One Buisness Day weekend record TQL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One Business Day MQL SLA Check</description>
+        <name>One_Business_Day_MQL_SLA_Check</name>
+        <label>One Business Day MQL SLA Check</label>
+        <locationX>1103</locationX>
+        <locationY>288</locationY>
+        <defaultConnector>
+            <targetReference>Two_Business_Day_MQL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Business_Day_MQL_SLA_Check_outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaOneBusinessDayMQLSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MAQL_One_Day_SLA_Expired_Email</targetReference>
+            </connector>
+            <label>One Business Day MQL SLA Check outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One Business Day SAL SLA</description>
+        <name>One_Business_Day_SAL_SLA_Check</name>
+        <label>One Business Day SAL SLA Check</label>
+        <locationX>248</locationX>
+        <locationY>288</locationY>
+        <defaultConnector>
+            <targetReference>One_Buisness_Day_weekend_record_SAL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Business_Day_SAL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaOneBusinessDaySALSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SAL_One_day_SLA_Date</targetReference>
+            </connector>
+            <label>One Business Day SAL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One Business Day TQL SLA</description>
+        <name>One_Business_Day_TQL_SLA_Check</name>
+        <label>One Business Day TQL SLA Check</label>
+        <locationX>2558</locationX>
+        <locationY>1008</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Business_Day_TQL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaOneBusinessDayTQLSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>TQL_Expired</targetReference>
+            </connector>
+            <label>One Business Day TQL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>One Business Day weekend record MQL SLA</description>
+        <name>One_Business_Day_weekend_record_MQL_SLA_Check</name>
+        <label>One Business Day weekend record MQL SLA Check</label>
+        <locationX>3215</locationX>
+        <locationY>288</locationY>
+        <defaultConnector>
+            <targetReference>Two_Business_Day_weekend_record_MQL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>One_Business_Day_weekend_record_MQL_SLA_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaOneBusinessDayweekendrecordMQLSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>One_day_weekend_MAQL_SLA_Expired</targetReference>
+            </connector>
+            <label>One Business Day weekend record MQL SLA Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Two Buisness Day weekend record TAL SLA</description>
+        <name>Two_Buisness_Day_weekend_record_TAL_SLA_Check</name>
+        <label>Two Buisness Day weekend record TAL SLA Check</label>
+        <locationX>4241</locationX>
+        <locationY>768</locationY>
+        <defaultConnector>
+            <targetReference>Four_Buisness_Day_weekend_record_TAL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Two_Buisness_Day_weekend_record_TAL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaTwoBuisnessDayweekendrecordTALSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Two_day_weekend_TAL_Expired</targetReference>
+            </connector>
+            <label>Two Buisness Day weekend record TAL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Two Business Day MQL SLA</description>
+        <name>Two_Business_Day_MQL_SLA_Check</name>
+        <label>Two Business Day MQL SLA Check</label>
+        <locationX>1365</locationX>
+        <locationY>408</locationY>
+        <defaultConnector>
+            <targetReference>Four_Business_Day_MQL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Two_Business_Day_MQL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaTwoBusinessDayMQLSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Two_days_MAQL_SLA_Expired</targetReference>
+            </connector>
+            <label>Two Business Day MQL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Two Business Day TAL SLA</description>
+        <name>Two_Business_Day_TAL_SLA_Check</name>
+        <label>Two Business Day TAL SLA Check</label>
+        <locationX>2129</locationX>
+        <locationY>768</locationY>
+        <defaultConnector>
+            <targetReference>Four_Business_Days_TAL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Two_Business_Day_TAL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaTwoBusinessDayTALSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Two_days_SLA_expired</targetReference>
+            </connector>
+            <label>Two Business Day TAL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Two Business Day weekend record MQL SLA</description>
+        <name>Two_Business_Day_weekend_record_MQL_SLA_Check</name>
+        <label>Two Business Day weekend record MQL SLA Check</label>
+        <locationX>3477</locationX>
+        <locationY>408</locationY>
+        <defaultConnector>
+            <targetReference>Four_Business_Day_weekend_record_MQL_SLA_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Two_Business_Day_weekend_record_MQL_SLA_Check_Outcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>FormulaTwoBusinessDayweekendrecordMQLSLA</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Two_day_weekend_MAQL_SLA_Expired</targetReference>
+            </connector>
+            <label>Two Business Day weekend record MQL SLA Check Outcome</label>
+        </rules>
+    </decisions>
+    <description>Email Alert on Lead SLA Enforcement</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Four Buisness Day weekend record TAL SLA</description>
+        <name>FormulaFourBuisnessDayweekendrecordTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =false,
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;),
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;),
+AND(
+ISCHANGED({!$Record.Status} ), 
+ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;))),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified &apos;)),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Four Business Day MQL SLA</description>
+        <name>FormulaFourBusinessDayMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+{!$Record.Days__c} =true,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;),
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Four Business Days TAL SLA</description>
+        <name>FormulaFourBusinessDaysTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =true,
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;),
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;),
+AND(
+ISCHANGED({!$Record.Status} ), 
+ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;))),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified &apos;)),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Four Business Day weekend record MQL SLA</description>
+        <name>FormulaFourBusinessDayweekendrecordMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;, 
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+
+{!$Record.Days__c} =false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Cold&apos;)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Buisness Day TAL SLA</description>
+        <name>FormulaOneBuisnessDayTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+		{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+		{!$Record.Days__c} =true,
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
+			OR(
+				AND ( 
+					ISCHANGED({!$Record.Status} ), 
+					ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+					ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;)
+					),
+				ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;)),
+		{!$Record.Core_Having_Tasks__c}=false,
+		{!$Record.Core_SLA_Listed_User__c}  =True,
+		{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+		NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;)),
+		OR(
+			ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+			ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+			)
+	)</expression>
+    </formulas>
+    <formulas>
+        <description>One Buisness Day weekend record SAL SLA</description>
+        <name>FormulaOneBuisnessDayweekendrecordSALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =false,
+OR(
+{!$Record.Core_Having_Tasks__c}=false,
+AND(
+ISCHANGED({!$Record.Status} ),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Qualified Lead&quot;))
+),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+{!$Record.Core_SLA_Listed_User__c} =True,
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+NOT (ISPICKVAL({!$Record.Core_Lead_Status__c}, &quot;Converted&quot;)),
+NOT (ISPICKVAL({!$Record.Status}, &quot;Sales Qualified Lead&quot;))
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Buisness Day weekend record TAL SLA</description>
+        <name>FormulaOneBuisnessDayweekendrecordTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;),
+AND(
+ISCHANGED({!$Record.Status} ), 
+ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;))),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;)),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Buisness Day weekend record TQL SLA</description>
+        <name>FormulaOneBuisnessDayweekendrecordTQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =false,
+{!$Record.Core_Having_Tasks_in_TQL__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Qualified Lead&apos;), AND(ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Accepted Lead&quot;),ISPICKVAL({!$Record.Status}, &quot;Tele Qualified Lead&quot;))),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Business Day MQL SLA</description>
+        <name>FormulaOneBusinessDayMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+{!$Record.Days__c} =true,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;),
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Business Day SAL SLA</description>
+        <name>FormulaOneBusinessDaySALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND (
+ISPICKVAL({!$Record.Status}, &apos;Sales Accepted Lead&apos;),
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =true,
+OR(
+{!$Record.Core_Having_Tasks__c}=false,
+AND(
+ISCHANGED({!$Record.Status} ),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Qualified Lead&quot;))
+),
+{!$Record.Core_SLA_Listed_User__c} = True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+NOT (ISPICKVAL({!$Record.Core_Lead_Status__c}, &quot;Converted&quot;)),
+NOT (ISPICKVAL({!$Record.Status}, &quot;Sales Qualified Lead&quot;)))</expression>
+    </formulas>
+    <formulas>
+        <description>One Business Day TQL SLA</description>
+        <name>FormulaOneBusinessDayTQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+AND(
+{!$Record.Core_Having_Tasks_in_TQL__c}=false,
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Days__c} =true,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+ISPICKVAL({!$Record.Status}, &apos;Tele Qualified Lead&apos;),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;)
+)
+),
+AND(
+{!$Record.Days__c} =true,
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+ISCHANGED({!$Record.Status}),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+ISPICKVAL({!$Record__Prior.Status}, &quot;Tele Accepted Lead&quot;),
+ISPICKVAL({!$Record.Status}, &quot;Tele Qualified Lead&quot;),
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Qualified&quot;)
+))
+)</expression>
+    </formulas>
+    <formulas>
+        <description>One Business Day weekend record MQL SLA</description>
+        <name>FormulaOneBusinessDayweekendrecordMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+
+{!$Record.Days__c} =false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Hot&apos;)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>SAL Email Trigger Date</description>
+        <name>FormulaSALEmailTriggerDate</name>
+        <dataType>DateTime</dataType>
+        <expression>DATETIMEVALUE({!$Record.Core_Business_Day_Calculation__c})-1</expression>
+    </formulas>
+    <formulas>
+        <description>SAL Weekend Email Trigger date update</description>
+        <name>FormulaSALWeekendEmailTriggerdateupdate</name>
+        <dataType>DateTime</dataType>
+        <expression>DATETIMEVALUE({!$Record.Core_WeekEnd_SLA_Calculation__c}) -1</expression>
+    </formulas>
+    <formulas>
+        <description>Two Buisness Day weekend record TAL SLA</description>
+        <name>FormulaTwoBuisnessDayweekendrecordTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Days__c} =false,
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
+OR(ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;),
+AND(
+ISCHANGED({!$Record.Status} ), 
+ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;))),
+{!$Record.Core_Having_Tasks__c}=false,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified &apos;)),
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Two Business Day MQL SLA</description>
+        <name>FormulaTwoBusinessDayMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+{!$Record.Days__c} =true,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
+{!$Record.Core_SLA_Listed_User__c}  =True,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Two Business Day TAL SLA</description>
+        <name>FormulaTwoBusinessDayTALSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+		{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+		{!$Record.Days__c} =true,
+		ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;),
+		OR( AND (
+				ISCHANGED({!$Record.Status} ), 
+				ISPICKVAL({!$Record__Prior.Status}, &quot;Marketing Qualified Lead&quot;), 
+				ISPICKVAL({!$Record.Status}, &quot;Tele Accepted Lead&quot;)
+			),			
+			ISPICKVAL({!$Record.Status}, &apos;Tele Accepted Lead&apos;)
+		),
+		{!$Record.Core_Having_Tasks__c}=false,
+		{!$Record.Core_SLA_Listed_User__c}  =True,
+		{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+		NOT( ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Qualified&apos;)),
+		OR(
+			ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;New&quot;),
+			ISPICKVAL({!$Record.Core_Lead_Status__c} , &quot;Accepted&quot;)
+		)
+	)</expression>
+    </formulas>
+    <formulas>
+        <description>Two Business Day weekend record MQL SLA</description>
+        <name>FormulaTwoBusinessDayweekendrecordMQLSLA</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+{!$Record.RecordType.DeveloperName} &lt;&gt; &quot;Partner_Lead&quot;,
+NOT(
+OR(
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Accepted&apos;),
+ISPICKVAL({!$Record.Core_Lead_Status__c} , &apos;Rejected&apos;)
+)
+),
+{!$Record.Days__c} =false,
+{!$Record.Core_Created_Post_NewLead_Process__c}=True,
+{!$Record.Core_SLA_Listed_User__c}  =True,
+ISPICKVAL({!$Record.Status}, &apos;Marketing Qualified Lead&apos;),
+ISPICKVAL({!$Record.Core_Lead_Priority__c}, &apos;Warm&apos;)
+)</expression>
+    </formulas>
+    <interviewLabel>Email Alert on Lead SLA Enforcement {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email Alert on Lead SLA Enforcement</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>SAL Weekend Email Trigger date update</description>
+        <name>SAL_Weekend_Email_Trigger_date_update</name>
+        <label>SAL Weekend Email Trigger date update</label>
+        <locationX>314</locationX>
+        <locationY>528</locationY>
+        <inputAssignments>
+            <field>Core_SAL_Weekend_Email_Trigger_Date__c</field>
+            <value>
+                <elementReference>FormulaSALWeekendEmailTriggerdateupdate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update SAL One day SLA Date</description>
+        <name>Update_SAL_One_day_SLA_Date</name>
+        <label>Update SAL One day SLA Date</label>
+        <locationX>50</locationX>
+        <locationY>408</locationY>
+        <inputAssignments>
+            <field>Core_SAL_Email_Trigger_Date__c</field>
+            <value>
+                <elementReference>FormulaSALEmailTriggerDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1605</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>One_Business_Day_SAL_SLA_Check</targetReference>
+        </connector>
+        <filterFormula>AND({!$Record.RecordType.Name} &lt;&gt; &apos;Partner Lead&apos;,{!$Record.Core_SLA_Listed_User__c})</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>One_Day_Core_Business_Day_Calculation_c</name>
+            <connector>
+                <targetReference>One_Business_Day_MQL_SLA_Check</targetReference>
+            </connector>
+            <label>One Day Core_Business_Day_Calculation__c</label>
+            <maxBatchSize>200</maxBatchSize>
+            <offsetNumber>-1</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_Business_Day_Calculation__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>One_day_before_Weekend_Core_WeekEnd_SLA_Calculation_c</name>
+            <connector>
+                <targetReference>One_Business_Day_weekend_record_MQL_SLA_Check</targetReference>
+            </connector>
+            <label>One day before Weekend Core_WeekEnd_SLA_Calculation__c</label>
+            <maxBatchSize>200</maxBatchSize>
+            <offsetNumber>-1</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Core_WeekEnd_SLA_Calculation__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -45,6 +45,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_Log_Entry__c.Core_When__c</dateColumn>
-        <interval>INTERVAL_CUSTOM</interval>
+        <interval>INTERVAL_TODAY</interval>
     </timeFrameFilter>
 </Report>

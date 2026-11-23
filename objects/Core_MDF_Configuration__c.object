@@ -25,5 +25,22 @@
         <unique>false</unique>
     </fields>
     <label>Core_MDF_Configuration</label>
+    <listViews>
+        <fullName>SFDX</fullName>
+        <columns>NAME</columns>
+        <columns>Core_MDF_Category__c</columns>
+        <columns>Core_MDF_Value__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Category__c</field>
+            <operation>equals</operation>
+            <value>SFDX</value>
+        </filters>
+        <label>SFDX</label>
+        <language>en_US</language>
+    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

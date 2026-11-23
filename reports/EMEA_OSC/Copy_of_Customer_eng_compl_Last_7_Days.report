@@ -37,6 +37,9 @@
     <columns>
         <field>ACTIVITY_ID</field>
     </columns>
+    <columns>
+        <field>Activity.LID__Date_Sent__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>SUBJECT</column>

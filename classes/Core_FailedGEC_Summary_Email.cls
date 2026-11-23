@@ -12,7 +12,7 @@ global class Core_FailedGEC_Summary_Email implements Database.Batchable<sObject>
     public Integer GECFailedRecordsize =0;
     public Integer GECBlockedContactSize=0;
     public Integer GECUnBlockedContactSize=0;
-    public static String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
+    //public static String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
     global Database.QueryLocator start(Database.BatchableContext BC){
          string newStatus='New';
         String query = 'SELECT Id,Core_Status__c,Core_Contact_ID__c from Core_Contact_GEC_Staging__c where CreatedDate = YESTERDAY AND Core_Status__c != :newStatus'; 
@@ -77,7 +77,7 @@ global class Core_FailedGEC_Summary_Email implements Database.Batchable<sObject>
             //mail.setTargetObjectId(conList[0].Id);
             mail.setSaveAsActivity(false); 
             mail.setTreatTargetObjectAsRecipient(false);
-            mail.setOrgWideEmailAddressId(fromEmailAddress);
+            mail.setOrgWideEmailAddressId([Select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com].Id);
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
         }        
     }

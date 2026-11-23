@@ -264,7 +264,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
          Core_Entitlement_Outbound_Integrations.getPersonTitle('Miss');
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
         
         Test.stopTest();
     }
@@ -393,7 +393,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Account acctObj = new Account();
         acctObj.Name = 'Outbound Test Account acc';
         acctObj.Core_CNDA_Number__c = '102233445560';
-        acctObj.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         acctObj.BillingStreet = '1221 Tester Account123456789123456789123456789123456789Account1123456789123456789123456789123456789Account11234567891234567891Account 1123456789123456789';
         acctObj.BillingCity = 'Testing City cty';
         acctObj.BillingStateCode = 'OR';
@@ -480,118 +479,120 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
     }
    @IsTest
-    public static void newtestGenerateAGSOBM2(){
-        
-        Account acctObj = new Account();
-        acctObj.Name = 'Outbound Test Account acc';
-        acctObj.Core_CNDA_Number__c = '102233445560';
-        acctObj.BillingStreet = '1221 Tester Account123456789123456789123456789123456789Account1123456789123456789123456789123456789Account11234567891234567891Account 1123456789123456789';
-        acctObj.BillingCity = 'Testing City cty';
-        acctObj.BillingStateCode = 'OR';
-        acctObj.BillingCountryCode = 'USA';
-        acctObj.BillingPostalCode = '120000';
-        acctObj.ShippingStreet = 'Yemen';
-        acctObj.ShippingCity = 'Testing City cty';
-        acctObj.ShippingStateCode = 'OR';
-        acctObj.ShippingCountryCode = 'USA';
-        acctObj.ShippingPostalCode = '120000';
-        acctObj.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        acctObj.Core_User_Defined_Phone_Number__c = '1234567890';
-        acctObj.Core_User_Defined_Website__c ='www.xyz.com';
-        acctObj.Core_User_Defined_Number_of_Employees__c = '1-9';
-        acctObj.Core_Account_Legal_Name__c = 'Outbound Test Account';
-        acctObj.Core_IsODM__c = false;
-        acctObj.Core_B2B_ERPM_Account_Number__c = 'ERPM1234';
-        acctObj.Core_English_Only_Name__c = 'Outbound Test Account';
-        acctObj.Core_Alternate_Language_Name__c = 'Alternate Name Account';
-        acctObj.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
-        acctObj.Core_CIM_ID__c = '123456789';
-        acctObj.Industry = 'Agriculture';
-        
-        insert acctObj;
-        
-        List<Contact> lstTestContacts = new List<Contact>();
-        //Map<Id,Contact> lstOldTestContacts1 = new Map<Id,Contact>();
-        List<Account> acc = [Select id from Account where name = 'Outbound Test Account acc' limit 1];
-        Contact conObj = new Contact();
-        conObj.AccountId = acc[0].Id;
-        conObj.Core_eRPM_Person_Id__c = '1157651';
-        conObj.Core_Enterprise_Id__c = '123026';
-        conObj.Core_Login_Id__c = '109255';
-        conObj.FirstName = 'Integrations Tester';
-        conObj.LastName = 'Per';
-        conObj.Email = 'OITest123@tester.com';
-        conObj.MailingCountry='USA';
-        conObj.Core_English_Only_First_Name__c = 'Integrations Tester';
-        conObj.Core_English_Only_Last_Name__c = 'Per';
-        conObj.Core_Do_Not_Contact__c = false;
-        conObj.Salutation = 'Mr.';
-        conObj.Title = 'OBM';
-        conObj.Core_Job_Function__c = 'Information Technology';
-        conObj.Core_Preferred_Language__c= 'ENG';
-        conObj.MailingStreet = '12 Test St';
-        conObj.MailingCity = 'Testcity';
-        conObj.MailingStateCode = 'OR';
-        conObj.MailingCountryCode = 'USA';
-        conObj.MailingPostalCode = '10145';
-        conObj.Phone = '35768996';
-        conObj.MobilePhone = '246589';
-        conObj.Core_IPA_PartnerRole__c = 'Service Provider';
-        conObj.Core_ERPM_Integration_Status__c = 'Pending';
-        conObj.Core_AGS_Integration_Status__c = 'Pending';
-        conObj.RecordTypeId= [select Id from RecordType where sObjectType='Contact' and Name=:Label.ERPM_Intel_Contact].Id;
-        insert conObj;
-        //Contact testOldConObj1 = testConObj.clone(true, true, true, true);
-        //testConObj1.Core_Login_Id__c = null;
-        lstTestContacts.add(conObj);
-         List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
-         Core_AGS_Role__c testAGSRole = new Core_AGS_Role__c();
-         testAGSRole.Name = 'Test SMP AGS Role ';
-         testAGSRole.Core_IsActive__c = true;
-         testAGSRole.Core_Technical_Name__c = 'Test SMP AGS Role Tech Name ';
-         insert testAGSRole;
-        User testUser = new User();
-        testUser.LastName = 'User1';
-        testUser.Alias = 'tuser1';
-        testUser.Email = 'test.user1@intel.com';
-        testUser.Username = 'test.user1@intel.com.crm.testclass';
-        testUser.ProfileId = lstProfiles[0].id;
-        testUser.EmailEncodingKey = 'UTF-8';
-        testUser.TimeZoneSidKey = 'America/Los_Angeles';
-        testUser.LocaleSidKey = 'en_US';
-        testUser.ContactId =conObj.Id;
-        testUser.LanguageLocaleKey = 'en_US';
-        testUser.LanguageLocaleKey = 'en_US';
-        //testUser.UserRoleId =usr.id;
-        testUser.IsActive=true;
-		insert testUser;
-        //lstOldTestContacts1.put(testConObj1.Id, testOldConObj1);
-        //Core_Entitlement_Outbound_Integrations.isCallOutboundMsg = false;
-        // createTestContactEntitlement(testConObj, 1);
-       
-        
-        
-        Core_Entitlement__c testEntitlementDetail = new Core_Entitlement__c();
-        testEntitlementDetail.Name = 'Test SMP Entitilement Detail ';
-        testEntitlementDetail.Core_Display_Name__c = 'SMP Entitlement Detail ';
-        testEntitlementDetail.Core_Entitlement_Type__c ='Salesforce';
-        testEntitlementDetail.Entitlement_B2B_B2C_Indicator__c = 'B2C';
-        testEntitlementDetail.Core_AGS_Role_Id__c = testAGSRole.Id;
-        testEntitlementDetail.Core_IsActive__c = true;
-        insert testEntitlementDetail;
-        Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c=lstTestContacts[0].Id, Core_From_Source__c=true, Core_Selected__c=true,Core_Data_Loaded__c= true,
-            Core_Entitlement_Id__c=testEntitlementDetail.id,Core_Status__c ='Pending');
-        insert ce;
-        //testConObj.Core_AGS_Integration_Status__c = 'Pending';
-        //testConObj.Core_Enterprise_Id__c = '1111';
-        //update testConObj;
-       
-        //Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts,lstOldTestContacts);
-        Assert.isnotNull(lstTestContacts);
-        Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
-        
+public static void newtestGenerateAGSOBM2(){
+    
+    Account acctObj = new Account();
+    acctObj.Name = 'Outbound Test Account acc';
+    acctObj.Core_CNDA_Number__c = '102233445560';
+    acctObj.BillingStreet = '1221 Tester Account123456789123456789123456789123456789Account1123456789123456789123456789123456789Account11234567891234567891Account 1123456789123456789';
+    acctObj.BillingCity = 'Testing City cty';
+    acctObj.BillingStateCode = 'OR';
+    acctObj.BillingCountryCode = 'USA';
+    acctObj.BillingPostalCode = '120000';
+    acctObj.ShippingStreet = 'Yemen';
+    acctObj.ShippingCity = 'Testing City cty';
+    acctObj.ShippingStateCode = 'OR';
+    acctObj.ShippingCountryCode = 'USA';
+    acctObj.ShippingPostalCode = '120000';
+    acctObj.Core_User_Defined_Phone_Number__c = '1234567890';
+    acctObj.Core_User_Defined_Website__c ='www.xyz.com';
+    acctObj.Core_User_Defined_Number_of_Employees__c = '1-9';
+    acctObj.Core_Account_Legal_Name__c = 'Outbound Test Account';
+    acctObj.Core_IsODM__c = false;
+    acctObj.Core_B2B_ERPM_Account_Number__c = 'ERPM1234';
+    acctObj.Core_English_Only_Name__c = 'Outbound Test Account';
+    acctObj.Core_Alternate_Language_Name__c = 'Alternate Name Account';
+    acctObj.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
+    acctObj.Core_CIM_ID__c = '123456789';
+    acctObj.Industry = 'Agriculture';
+    insert acctObj;
+    
+    List<Contact> lstTestContacts = new List<Contact>();
+    List<Account> acc = [SELECT id FROM Account WHERE name = 'Outbound Test Account acc' LIMIT 1];
+    
+    Contact conObj = new Contact();
+    conObj.AccountId = acc[0].Id;
+    conObj.Core_eRPM_Person_Id__c = '1157651';
+    conObj.Core_Enterprise_Id__c = '123026';
+    conObj.Core_Login_Id__c = '109255';
+    conObj.FirstName = 'Integrations Tester';
+    conObj.LastName = 'Per';
+    conObj.Email = 'OITest123@tester.com';
+    conObj.MailingCountry = 'USA';
+    conObj.Core_English_Only_First_Name__c = 'Integrations Tester';
+    conObj.Core_English_Only_Last_Name__c = 'Per';
+    conObj.Core_Do_Not_Contact__c = false;
+    conObj.Salutation = 'Mr.';
+    conObj.Title = 'OBM';
+    conObj.Core_Job_Function__c = 'Information Technology';
+    conObj.Core_Preferred_Language__c = 'ENG';
+    conObj.MailingStreet = '12 Test St';
+    conObj.MailingCity = 'Testcity';
+    conObj.MailingStateCode = 'OR';
+    conObj.MailingCountryCode = 'USA';
+    conObj.MailingPostalCode = '10145';
+    conObj.Phone = '35768996';
+    conObj.MobilePhone = '246589';
+    conObj.Core_IPA_PartnerRole__c = 'Service Provider';
+    conObj.Core_ERPM_Integration_Status__c = 'Pending';
+    conObj.Core_AGS_Integration_Status__c = 'Pending';
+    conObj.RecordTypeId = [SELECT Id FROM RecordType WHERE sObjectType = 'Contact' AND Name = :Label.ERPM_Intel_Contact].Id;
+    insert conObj;
+    
+    lstTestContacts.add(conObj);
+    
+    List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
+    
+    Core_AGS_Role__c testAGSRole = new Core_AGS_Role__c();
+    testAGSRole.Name = 'Test SMP AGS Role ';
+    testAGSRole.Core_IsActive__c = true;
+    testAGSRole.Core_Technical_Name__c = 'Test SMP AGS Role Tech Name ';
+    insert testAGSRole;
+    
+    User testUser = new User();
+    testUser.LastName = 'User1';
+    testUser.Alias = 'tuser1';
+    testUser.Email = 'test.user1@intel.com';
+    testUser.Username = 'test.user1@intel.com.crm.testclass';
+    testUser.ProfileId = lstProfiles[0].id;
+    testUser.EmailEncodingKey = 'UTF-8';
+    testUser.TimeZoneSidKey = 'America/Los_Angeles';
+    testUser.LocaleSidKey = 'en_US';
+    testUser.ContactId = conObj.Id;
+    testUser.LanguageLocaleKey = 'en_US';
+    testUser.IsActive = true;
+    
+
+    User adminUser = [SELECT Id FROM User 
+                      WHERE Profile.Name = 'System Administrator' 
+                      AND IsActive = true 
+                      LIMIT 1];
+    System.runAs(adminUser) {
+        insert testUser;
     }
+    
+    Core_Entitlement__c testEntitlementDetail = new Core_Entitlement__c();
+    testEntitlementDetail.Name = 'Test SMP Entitilement Detail ';
+    testEntitlementDetail.Core_Display_Name__c = 'SMP Entitlement Detail ';
+    testEntitlementDetail.Core_Entitlement_Type__c = 'Salesforce';
+    testEntitlementDetail.Entitlement_B2B_B2C_Indicator__c = 'B2C';
+    testEntitlementDetail.Core_AGS_Role_Id__c = testAGSRole.Id;
+    testEntitlementDetail.Core_IsActive__c = true;
+    insert testEntitlementDetail;
+    
+    Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(
+        Core_Contact_Id__c = lstTestContacts[0].Id,
+        Core_From_Source__c = true,
+        Core_Selected__c = true,
+        Core_Data_Loaded__c = true,
+        Core_Entitlement_Id__c = testEntitlementDetail.id,
+        Core_Status__c = 'Pending'
+    );
+    insert ce;
+    
+    Assert.isNotNull(lstTestContacts);
+    Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
+}
    
     //draco
     public static testmethod void testGenerateAGSOBM1() {
@@ -702,65 +703,85 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
     }
     
     public static testmethod void testGenerateAGSOBM4() {
-        List<Account> acc1 = [Select id from Account where name = 'Outbound Test Account acc' limit 1];
-        List<Contact> lstTestContacts = new List<Contact>();
-        Contact testConObj = createTestContact();
-         List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
-         Core_AGS_Role__c testAGSRole = new Core_AGS_Role__c();
-         testAGSRole.Name = 'Test SMP AGS Role ';
-         testAGSRole.Core_IsActive__c = true;
-         testAGSRole.Core_Technical_Name__c = 'Test SMP AGS Role Tech Name ';
-         insert testAGSRole;
-        
-        User testUser = new User();
-        testUser.LastName = 'User1';
-        testUser.Alias = 'tuser1';
-        testUser.Email = 'test.user1@intel.com';
-        testUser.Username = 'test.user1@intel.com.crm.testclass';
-        testUser.ProfileId = lstProfiles[0].id;
-        testUser.EmailEncodingKey = 'UTF-8';
-        testUser.TimeZoneSidKey = 'America/Los_Angeles';
-        testUser.LocaleSidKey = 'en_US';
-        testUser.ContactId =testConObj.Id;
-        testUser.LanguageLocaleKey = 'en_US';
-        testUser.LanguageLocaleKey = 'en_US';
-        testUser.IsActive=false;
-		insert testUser;
-       
-        Core_Entitlement__c testEntitlementDetail = new Core_Entitlement__c();
-        testEntitlementDetail.Name = 'Test SMP Entitilement Detail ';
-        testEntitlementDetail.Core_Display_Name__c = 'SMP Entitlement Detail ';
-        testEntitlementDetail.Core_Entitlement_Type__c ='Salesforce';
-        testEntitlementDetail.Entitlement_B2B_B2C_Indicator__c = 'B2C';
-        testEntitlementDetail.Core_AGS_Role_Id__c = testAGSRole.Id;
-        testEntitlementDetail.Core_IsActive__c = true;
-        insert testEntitlementDetail;
-          
-        Core_Entitlement__c testEntitlementDetail2 = new Core_Entitlement__c();
-        testEntitlementDetail2.Name = 'TestNew SMP Entitilement Detail ';
-        testEntitlementDetail2.Core_Display_Name__c = 'SMPNew Entitlement Detail ';
-        testEntitlementDetail2.Core_Entitlement_Type__c ='AGS';
-        testEntitlementDetail2.Entitlement_B2B_B2C_Indicator__c = 'B2C';
-        testEntitlementDetail2.Core_AGS_Role_Id__c = testAGSRole.Id;
-        testEntitlementDetail2.Core_IsActive__c = true;
-        insert testEntitlementDetail2;
-        Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c=testConObj.Id, Core_From_Source__c=true, Core_Selected__c=true,Core_Data_Loaded__c= true,
-            Core_Entitlement_Id__c=testEntitlementDetail.id,Core_Status__c ='Pending');
-        insert ce;
-           Core_Contact_Entitlement__c ce2 = new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c=testConObj.Id, Core_From_Source__c=true, Core_Selected__c=false,Core_Data_Loaded__c= true,
-            Core_Entitlement_Id__c=testEntitlementDetail2.id,Core_Status__c ='Pending');
-        insert ce2;
-       
-        testConObj.Core_ERPM_Integration_Status__c = 'Successful';
-        testConObj.Core_AGS_Integration_Status__c = 'Pending';
-        lstTestContacts.add(testConObj);
-       
-        Assert.isnotNull(lstTestContacts);
-        Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
-          
+    List<Account> acc1 = [SELECT id FROM Account WHERE name = 'Outbound Test Account acc' LIMIT 1];
+    List<Contact> lstTestContacts = new List<Contact>();
+    Contact testConObj = createTestContact();
+    
+    List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
+    
+    Core_AGS_Role__c testAGSRole = new Core_AGS_Role__c();
+    testAGSRole.Name = 'Test SMP AGS Role ';
+    testAGSRole.Core_IsActive__c = true;
+    testAGSRole.Core_Technical_Name__c = 'Test SMP AGS Role Tech Name ';
+    insert testAGSRole;
+    
+    User testUser = new User();
+    testUser.LastName = 'User1';
+    testUser.Alias = 'tuser1';
+    testUser.Email = 'test.user1@intel.com';
+    testUser.Username = 'test.user1@intel.com.crm.testclass';
+    testUser.ProfileId = lstProfiles[0].id;
+    testUser.EmailEncodingKey = 'UTF-8';
+    testUser.TimeZoneSidKey = 'America/Los_Angeles';
+    testUser.LocaleSidKey = 'en_US';
+    testUser.ContactId = testConObj.Id;
+    testUser.LanguageLocaleKey = 'en_US';
+    testUser.IsActive = false;
+    
+    
+    User adminUser = [SELECT Id FROM User 
+                      WHERE Profile.Name = 'System Administrator' 
+                      AND IsActive = true 
+                      LIMIT 1];
+    System.runAs(adminUser) {
+        insert testUser;
     }
+    
+    Core_Entitlement__c testEntitlementDetail = new Core_Entitlement__c();
+    testEntitlementDetail.Name = 'Test SMP Entitilement Detail ';
+    testEntitlementDetail.Core_Display_Name__c = 'SMP Entitlement Detail ';
+    testEntitlementDetail.Core_Entitlement_Type__c = 'Salesforce';
+    testEntitlementDetail.Entitlement_B2B_B2C_Indicator__c = 'B2C';
+    testEntitlementDetail.Core_AGS_Role_Id__c = testAGSRole.Id;
+    testEntitlementDetail.Core_IsActive__c = true;
+    insert testEntitlementDetail;
+    
+    Core_Entitlement__c testEntitlementDetail2 = new Core_Entitlement__c();
+    testEntitlementDetail2.Name = 'TestNew SMP Entitilement Detail ';
+    testEntitlementDetail2.Core_Display_Name__c = 'SMPNew Entitlement Detail ';
+    testEntitlementDetail2.Core_Entitlement_Type__c = 'AGS';
+    testEntitlementDetail2.Entitlement_B2B_B2C_Indicator__c = 'B2C';
+    testEntitlementDetail2.Core_AGS_Role_Id__c = testAGSRole.Id;
+    testEntitlementDetail2.Core_IsActive__c = true;
+    insert testEntitlementDetail2;
+    
+    Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(
+        Core_Contact_Id__c = testConObj.Id,
+        Core_From_Source__c = true,
+        Core_Selected__c = true,
+        Core_Data_Loaded__c = true,
+        Core_Entitlement_Id__c = testEntitlementDetail.id,
+        Core_Status__c = 'Pending'
+    );
+    insert ce;
+    
+    Core_Contact_Entitlement__c ce2 = new Core_Contact_Entitlement__c(
+        Core_Contact_Id__c = testConObj.Id,
+        Core_From_Source__c = true,
+        Core_Selected__c = false,
+        Core_Data_Loaded__c = true,
+        Core_Entitlement_Id__c = testEntitlementDetail2.id,
+        Core_Status__c = 'Pending'
+    );
+    insert ce2;
+    
+    testConObj.Core_ERPM_Integration_Status__c = 'Successful';
+    testConObj.Core_AGS_Integration_Status__c = 'Pending';
+    lstTestContacts.add(testConObj);
+    
+    Assert.isNotNull(lstTestContacts);
+    Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
+}
     
     public static testmethod void testGenerateAGSOBM5() {
         List<Contact> lstTestContacts = new List<Contact>();
@@ -846,7 +867,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Core_Entitlement_Outbound_Integrations.publishERPMMessage(lstTestContacts, lstOldTestContacts);
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         createTestSMPContactEntitlement(testConObj, 2);
         Test.stopTest();
@@ -948,7 +969,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -982,7 +1003,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -1016,7 +1037,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
 
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -1060,7 +1081,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
          
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -1094,7 +1115,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
             List<PRM_BatchCustomSetting__c> prmbatchsetting= new List<PRM_BatchCustomSetting__c>();
             PRM_BatchCustomSetting__c rec1 = new PRM_BatchCustomSetting__c() ;
             rec1.Name='BatchFieldValues';
@@ -1120,7 +1141,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Core_Entitlement_Outbound_Integrations.publishERPMMessage(lstTestContacts, lstOldTestContacts);
         
          lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
         
         Test.stopTest();
         
@@ -1150,7 +1171,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Core_Entitlement_Outbound_Integrations.publishERPMMessage(lstTestContacts, lstOldTestContacts);
         
                 lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -1765,7 +1786,6 @@ insert acctOldObj;*/
         acctObj.Core_Deactivated__c = false;
         acctObj.Core_CIM_ID__c = '123456789';
         acctObj.Industry = 'Agriculture';
-        acctObj.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         
         insert acctObj;
         

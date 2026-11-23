@@ -31,7 +31,7 @@ public without sharing class UCD_ACM_AccountDeactivation {
                 }
             }
         }
-        cpeRecords = [Select Id,Account__c,Business_Types__c,Effective_End_Date__c from Account_Business_Types__c Where Account__c IN :accountIds AND Business_Types__c IN :accountbusinessTypeIds];
+        cpeRecords = [Select Id,Account__c,Business_Types__c,Effective_End_Date__c from Account_Business_Types__c Where Account__c IN :accountIds AND Business_Types__c IN :accountbusinessTypeIds WITH SECURITY_ENFORCED];
         if(!cpeRecords.isempty()){
             for(Account_Business_Types__c cpe : cpeRecords) {
                 cpetoDelete.add(cpe);

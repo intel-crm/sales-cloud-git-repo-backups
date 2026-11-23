@@ -5,7 +5,7 @@
     <assignments>
         <name>Assign_OO</name>
         <label>Assign OO</label>
-        <locationX>1810</locationX>
+        <locationX>1282</locationX>
         <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>Looping_Manager_Bonus_Task.OwnerId</assignToReference>
@@ -21,7 +21,7 @@
     <assignments>
         <name>Assign_OO_to_list</name>
         <label>Assign OO to list</label>
-        <locationX>1810</locationX>
+        <locationX>1282</locationX>
         <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>StoringOpptyOwner</assignToReference>
@@ -37,7 +37,7 @@
     <assignments>
         <name>Assign_OOM</name>
         <label>Assign OOM</label>
-        <locationX>2162</locationX>
+        <locationX>1634</locationX>
         <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>Loop_1.OwnerId</assignToReference>
@@ -53,7 +53,7 @@
     <assignments>
         <name>Assignment_2</name>
         <label>Assign OOM to list</label>
-        <locationX>2162</locationX>
+        <locationX>1634</locationX>
         <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>MBT</assignToReference>
@@ -69,7 +69,7 @@
     <decisions>
         <name>Check_Stage</name>
         <label>Check Stage</label>
-        <locationX>1326</locationX>
+        <locationX>1062</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -149,7 +149,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Is_Growth_3</targetReference>
+                <targetReference>Create_Tasks_7</targetReference>
             </connector>
             <label>Design to Design Win</label>
         </rules>
@@ -172,7 +172,7 @@
     <decisions>
         <name>InActive</name>
         <label>InActive</label>
-        <locationX>2030</locationX>
+        <locationX>1502</locationX>
         <locationY>539</locationY>
         <defaultConnectorLabel>Default</defaultConnectorLabel>
         <rules>
@@ -213,50 +213,6 @@
             <label>No</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>Is_Growth_2</name>
-        <label>Is Growth?</label>
-        <locationX>710</locationX>
-        <locationY>539</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Yes_2</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Opportunity_Focus__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Growth</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Create_Tasks_5</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Is_Growth_3</name>
-        <label>Is Growth?</label>
-        <locationX>1238</locationX>
-        <locationY>431</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Yes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Opportunity_Focus__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Growth</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Create_Tasks_7</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
     <description>Opportunity Task creation for End User Sales Motion - Opportunity Owner
 Adding changes for Deal: Sell-Through
 Change in Decision criteria &amp; POP Name update
@@ -267,7 +223,8 @@ Complete Case Study Analysis
 Added: Manager Bonus Approval
 [TWC3123-6015] -Replaced Innovation with Growth(4 places - 2 labels and 2 decision)
 [TWC3123-6060] -Added Design Record Type check in entry criteria
-[TWC4767-3185] - Removed Manager Bonus Approval task creation from Define-&gt;Develop stage change</description>
+[TWC4767-3185] - Removed Manager Bonus Approval task creation from Define-&gt;Develop stage change
+[TWC4767-3906] : Removed &apos;opportunity focus = growth&apos; check. creating task without growth check.</description>
     <environments>Default</environments>
     <formulas>
         <name>CheckifISNEW</name>
@@ -279,7 +236,7 @@ Added: Manager Bonus Approval
     <loops>
         <name>Loop_1</name>
         <label>Loop Manager Bonus Task</label>
-        <locationX>2074</locationX>
+        <locationX>1546</locationX>
         <locationY>647</locationY>
         <collectionReference>Get_Manager_Bonus_task</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -293,7 +250,7 @@ Added: Manager Bonus Approval
     <loops>
         <name>Looping_Manager_Bonus_Task</name>
         <label>Looping Manager Bonus Task</label>
-        <locationX>1722</locationX>
+        <locationX>1194</locationX>
         <locationY>647</locationY>
         <collectionReference>Get_Manager_Bonus_task</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -414,10 +371,10 @@ Added: Manager Bonus Approval
     <recordCreates>
         <name>Create_Tasks_4</name>
         <label>Create Tasks</label>
-        <locationX>710</locationX>
+        <locationX>578</locationX>
         <locationY>431</locationY>
         <connector>
-            <targetReference>Is_Growth_2</targetReference>
+            <targetReference>Create_Tasks_5</targetReference>
         </connector>
         <inputAssignments>
             <field>Core_Activity_Source__c</field>
@@ -462,7 +419,7 @@ Added: Manager Bonus Approval
         <name>Create_Tasks_5</name>
         <label>Create Tasks</label>
         <locationX>578</locationX>
-        <locationY>647</locationY>
+        <locationY>539</locationY>
         <inputAssignments>
             <field>Core_Activity_Source__c</field>
             <value>
@@ -505,8 +462,8 @@ Added: Manager Bonus Approval
     <recordCreates>
         <name>Create_Tasks_7</name>
         <label>Create Tasks</label>
-        <locationX>1106</locationX>
-        <locationY>539</locationY>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
         <inputAssignments>
             <field>Core_Activity_Source__c</field>
             <value>
@@ -549,7 +506,7 @@ Added: Manager Bonus Approval
     <recordLookups>
         <name>Get_Manager_Bonus_task</name>
         <label>Get Manager Bonus task</label>
-        <locationX>2030</locationX>
+        <locationX>1502</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -584,30 +541,30 @@ Added: Manager Bonus Approval
     <recordUpdates>
         <name>Update_OO_to_MBT</name>
         <label>Update OO to MBT</label>
-        <locationX>1722</locationX>
+        <locationX>1194</locationX>
         <locationY>1055</locationY>
         <inputReference>StoringOpptyOwner</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>Update_Records_1</name>
         <label>Update OOM to MBT</label>
-        <locationX>2074</locationX>
+        <locationX>1546</locationX>
         <locationY>1055</locationY>
         <inputReference>MBT</inputReference>
     </recordUpdates>
     <start>
-        <locationX>1200</locationX>
+        <locationX>936</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_Stage</targetReference>
         </connector>
-        <filterFormula>(ISPICKVAL({!$Record.Core_Opportunity_Coverage_Nm__c}, &apos;Intel-Led Opportunity&apos;) &amp;&amp; (ISPICKVAL({!$Record.Core_Opportunity_Type__c}, &apos;Deal: Sell-to&apos;) || ISPICKVAL({!$Record.Core_Opportunity_Type__c}, &apos;Deal: Sell-through&apos;) || {!$Record.RecordType.DeveloperName} = &apos;Core_Design_Opportunity&apos; ) &amp;&amp; !ISNULL(TEXT({!$Record.Opportunity_Focus__c})) &amp;&amp; !ISBLANK(TEXT({!$Record.Opportunity_Focus__c}))  &amp;&amp; 
+        <filterFormula>(ISPICKVAL({!$Record.Core_Opportunity_Coverage_Nm__c}, &apos;Intel-Led Opportunity&apos;) &amp;&amp; (ISPICKVAL({!$Record.Core_Opportunity_Type__c}, &apos;Deal: Sell-to&apos;) || ISPICKVAL({!$Record.Core_Opportunity_Type__c}, &apos;Deal: Sell-through&apos;) || {!$Record.RecordType.DeveloperName} = &apos;Core_Design_Opportunity&apos; ) &amp;&amp; 
 (ISNEW() || (!ISNEW() &amp;&amp; ISCHANGED({!$Record.StageName}))) )|| (ISCHANGED({!$Record.OwnerId}))</filterFormula>
         <object>Opportunity</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>MBT</name>
         <dataType>SObject</dataType>

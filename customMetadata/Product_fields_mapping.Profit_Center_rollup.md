@@ -28,11 +28,11 @@
     </values>
     <values>
         <field>Inbound_staging_field_WOR__c</field>
-        <value xsi:type="xsd:string">L5_ProfitCenter_WOR__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Inbound_staging_field_WR__c</field>
-        <value xsi:type="xsd:string">L5_ProfitCenter_WR__c</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Inbound_staging_field__c</field>
@@ -92,7 +92,7 @@
     </values>
     <values>
         <field>Restriction_Code__c</field>
-        <value xsi:type="xsd:string">0</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Sales_Visible__c</field>

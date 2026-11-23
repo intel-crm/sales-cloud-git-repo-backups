@@ -68,38 +68,11 @@
             <value>&gt;72 hrs</value>
         </values>
     </buckets>
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>VerticalColumn</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>PRM_Registration_Request__c$PRM_Request_Duration__c</groupingColumn>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>false</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <field>PRM_Registration_Request__c$Name</field>
     </columns>
     <columns>
         <field>PRM_Registration_Request__c$PRM_Email_ID__c</field>
-    </columns>
-    <columns>
-        <field>PRM_Registration_Request__c$PRM_Pending_Auto_Approval_Criteria__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -136,7 +109,7 @@
         <criteriaItems>
             <column>PRM_Registration_Request__c$PRM_Channel_Program__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Intel Partner Alliance</value>
         </criteriaItems>
@@ -163,8 +136,8 @@
     <reportType>Registrations_with_Tracker__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>false</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>PRM_Registration_Request__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

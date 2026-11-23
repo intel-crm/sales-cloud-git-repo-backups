@@ -1,0 +1,204 @@
+<template>
+    <template if:true={isShow}>
+        <template if:true={isInternalUser}>
+            <article class="slds-card" style="background-color:rgba(243, 243, 243)">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container" title="campaign">
+                                <lightning-icon icon-name={cmptLayoutIcon} class="slds-m-left_x-small" slot="media">
+                                </lightning-icon>
+                                <span class="slds-assistive-text"></span>
+                            </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="header-column">
+                                <p>{objLabel}</p>
+                                <p><Strong>{title}</Strong></p>
+                            </h2>
+                        </div>
+                        <!-- <div class="slds-p-right_xx-small">
+                            <lightning-button-stateful label-when-off="Follow" label-when-on="Following"
+                                label-when-hover="Unfollow" icon-name-when-off="utility:add"
+                                icon-name-when-on="utility:check" icon-name-when-hover="utility:close"
+                                selected={isSelected} onclick={handleClick}>
+                            </lightning-button-stateful>
+                        </div> -->
+                        <template for:each={quickActionsButtons} for:item="quickAction">
+                            <div class="slds-no-flex" key={quickAction.label}>
+                                <button class="slds-button slds-button_neutral" value={quickAction.type}
+                                    data-id={quickAction.label} onclick={handleOnClick}>{quickAction.label}</button>
+                            </div>
+                        </template>
+                        <template if:true={buttonMenu}>
+                            <lightning-button-menu alternative-text="Action" onselect={handleOnselect} class="anyname"
+                                menu-alignment="right">
+                                <template for:each={quickActionsHideButtons} for:item="quickAction">
+                                    <lightning-menu-item value={quickAction.type} label={quickAction.label}
+                                        key={quickAction.label}>
+                                    </lightning-menu-item>
+                                </template>
+                            </lightning-button-menu>
+                        </template>
+                    </header>
+                </div>
+                <footer class="slds-card__footer" style="background-color:white">
+                    <lightning-layout multiple-rows="false">
+                        <template for:each={compactLayoutFields} for:item="fld">
+                            <template if:true={fld.isAccessible}>
+                                <lightning-layout multiple-rows="false" class="slds-p-right_xx-large" key={fld.label}>
+                                    <lightning-layout-item padding="around-small">
+                                        <template if:true={fld.istextField}>
+                                            <div class="header-column">
+                                                <p class="slds-text-align_left slds-p-bottom_xx-small">{fld.label}</p>
+                                                <p class="slds-text-align_left">{fld.value}</p>
+                                            </div>
+                                        </template>
+                                        <!-- <template if:true={fld.isDateField}>
+                                        <p class="slds-text-align_left slds-p-bottom_xx-small">{fld.label}</p>
+                                        <p class="slds-text-align_left">{fld.value.date}</p>
+                                    </template> -->
+                                        <template if:true={fld.isreferenceField}>
+                                            <!--Tooltip-->
+                                            <div style="display:none;position: absolute;opacity:0;margin-top: -28px;margin-left: 132px"
+                                                class="ModelTooltip" data-id={fld.value.index}>
+                                                <c-core_-M-D-F_-Hover-For-Custom-Layout-Config
+                                                    record-id={fld.value.parentObjectId}
+                                                    name={fld.value.parentObjectName} value={fld.value.urlName}
+                                                    tabicon={fld.value.tabIcon}>
+                                                </c-core_-M-D-F_-Hover-For-Custom-Layout-Config>
+                                            </div>
+                                            <p class="slds-text-align_left slds-p-bottom_xx-small">{fld.label}</p>
+                                            <p class="slds-text-align_left">
+                                                <lightning-formatted-url value={fld.value.url} label={fld.value.urlName}
+                                                    target="_blank" onmouseout={handleMouseout}
+                                                    onmouseover={handleMouseover} data-id={fld.value.index}>
+                                                </lightning-formatted-url>
+                                            </p>
+                                        </template>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </template>
+                        </template>
+                    </lightning-layout>
+                </footer>
+            </article>
+        </template>
+        <template if:true={isExternalUser}>
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container" title="campaign">
+                            <lightning-icon icon-name={cmptLayoutIcon} class="slds-m-left_x-small" slot="media">
+                            </lightning-icon>
+                            <span class="slds-assistive-text"></span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="header-column">
+                            <p>{objLabel}</p>
+                            <p><Strong>{title}</Strong></p>
+                        </h2>
+                    </div>
+                    <!-- <div class="slds-p-right_xx-small">
+                        <lightning-button-stateful label-when-off="Follow" label-when-on="Following"
+                            label-when-hover="Unfollow" icon-name-when-off="utility:add"
+                            icon-name-when-on="utility:check" icon-name-when-hover="utility:close" selected={isSelected}
+                            onclick={handleClick}>
+                        </lightning-button-stateful>
+                    </div> -->
+                    <template for:each={quickActionsButtons} for:item="quickAction">
+                        <div class="slds-no-flex" key={quickAction.label}>
+                            <button class="slds-button slds-button_neutral" value={quickAction.subType}
+                                data-id={quickAction.label} onclick={handleOnClick}>{quickAction.label}</button>
+                        </div>
+                    </template>
+                    <template if:true={buttonMenu}>
+                        <lightning-button-menu alternative-text="Action" onselect={handleOnselect} class="anyname"
+                            menu-alignment="right">
+                            <template for:each={quickActionsHideButtons} for:item="quickAction">
+                                <lightning-menu-item value={quickAction.type} label={quickAction.label}
+                                    key={quickAction.label}>
+                                </lightning-menu-item>
+                            </template>
+                        </lightning-button-menu>
+                    </template>
+                </header>
+            </div>
+            <footer class="slds-card__footer" style="background-color:White">
+                <lightning-layout multiple-rows="false">
+                    <template for:each={compactLayoutFields} for:item="fld">
+                        <template if:true={fld.isAccessible}>
+                            <lightning-layout multiple-rows="false" class="slds-p-right_xx-large" key={fld.label}>
+                                <lightning-layout-item padding="around-small">
+                                    <template if:true={fld.istextField}>
+                                        <div class="header-column">
+                                            <p class="slds-text-align_left slds-p-bottom_xx-small">{fld.label}</p>
+                                            <p class="slds-text-align_left">{fld.value}</p>
+                                        </div>
+                                    </template>
+                                    <template if:true={fld.isreferenceField}>
+                                        <!--Tooltip-->
+                                        <div style="display:none;position: absolute;opacity:0;margin-top: -28px;margin-left: 132px"
+                                            class="ModelTooltip" data-id={fld.value.index}>
+                                            <c-core_-M-D-F_-Hover-For-Custom-Layout-Config
+                                                record-id={fld.value.parentObjectId} name={fld.value.parentObjectName}
+                                                value={fld.value.urlName} tabicon={fld.value.tabIcon}>
+                                            </c-core_-M-D-F_-Hover-For-Custom-Layout-Config>
+                                        </div>
+                                        <p class="slds-text-align_left slds-p-bottom_xx-small">{fld.label}</p>
+                                        <p class="slds-text-align_left">
+                                            <lightning-formatted-url value={fld.value.url} label={fld.value.urlName}
+                                                target="_blank" onmouseout={handleMouseout}
+                                                onmouseover={handleMouseover} data-id={fld.value.index}>
+                                            </lightning-formatted-url>
+                                        </p>
+                                    </template>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+                    </template>
+                </lightning-layout>
+            </footer>
+        </template>
+    </template>
+    <template if:true={showLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium" class="spinnerClass"></lightning-spinner>
+    </template>
+    <template if:true={openModal}>
+        <div class="slds-modal slds-fade-in-open slds-backdrop">
+            <div class="slds-modal__container">
+                <!--HEADER Section-->
+                <div class="slds-modal__header">
+                    <lightning-button-icon icon-name="utility:close" alternative-text="Close this window" size="large"
+                        variant="bare-inverse" onclick={closeModal} class="slds-modal__close">
+                    </lightning-button-icon>
+                    <h2 style="font-size: 21px;">{modalHeader}</h2>
+                </div>
+                <!--Body Section-->
+                <template if:true={errorMessage}>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <p class="slds-p-left_small" style="height: 39px;background-color: red;color: white;">Review the
+                            errors on this page.</p>
+                        <p class="slds-p-left_small" style="color:red">{errorMessage}</p>
+                        <p class="slds-p-top_medium slds-border_bottom"></p>
+                    </div>
+                </template>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p class="slds-p-left_small">Alert</p>
+                    <p class="slds-p-left_small">Press “Save” to {modalHeader} or “Cancel” to continue editing the
+                        {modalBody}.</p>
+                </div>
+                <!--Footer Section-->
+                <div class="slds-modal__footer">
+                    <span>
+                        <lightning-button label="Cancel" variant="brand" onclick={closeModal}></lightning-button>
+                    </span>
+                    <span class="slds-p-left_small">
+                        <lightning-button label="Save" variant="brand" onclick={saveModal}></lightning-button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

@@ -56,5 +56,5 @@ Workflow rule description: &quot;</description>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

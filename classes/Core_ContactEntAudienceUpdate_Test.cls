@@ -29,12 +29,14 @@ public class Core_ContactEntAudienceUpdate_Test {
                                               AccountId=testAccount.Id,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= sysAdminUser.Id,
                                               core_audience_list__c ='DCF User');
             insert testContact;
+            System.debug('SA TC testContact:'+testContact);
             Core_ERPM_Engagement__c testERPMEngagement = new Core_ERPM_Engagement__c(Name  ='Partner File Transfer', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='PFT');
             insert testERPMEngagement;   
             Core_Entitlement__c entitle_aud1 =new Core_Entitlement__c (name ='DCF User',Core_ERPM_Engagement_Id__c=testERPMEngagement.id,Core_Display_Name__c='DCF User', Core_IsActive__c=true); 
             insert entitle_aud1;
             Core_Entitlement__c entitle_aud =new Core_Entitlement__c (name ='CCF User',Core_ERPM_Engagement_Id__c=testERPMEngagement.id,Core_Display_Name__c='CCF User',Core_IsActive__c=true); 
             insert entitle_aud;
+            System.debug('SA TC Entitlement:'+entitle_aud);
             Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact.Id,Core_Entitlement_Id__c = entitle_aud.Id,Core_Status__c='Pending', Core_Selected__c=true);	
             insert ce1;
             
@@ -50,6 +52,7 @@ public class Core_ContactEntAudienceUpdate_Test {
             
             // Test removal of CCP DCF USER
             
+            
             Core_Contact_Entitlement__c ce2 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=testContact.Id,Core_Entitlement_Id__c = entitle_aud1.Id,Core_Status__c='Pending',Core_Selected__c=true);	
             insert ce2;
             List<Core_Contact_Entitlement__c> oldList = [SELECT Id, Core_Contact_Id__c,Core_Entitlement_Id__c,Core_Selected__c,Core_Status__c,Core_Type__c FROM Core_Contact_Entitlement__c WHERE Id = :ce2.Id];
@@ -63,7 +66,15 @@ public class Core_ContactEntAudienceUpdate_Test {
             Map<Id, Core_Contact_Entitlement__c> newMap = new Map<Id, Core_Contact_Entitlement__c>(newList);
             Core_ContactEntitlementAudienceUpdate.updateContactAudience(oldList,newList,oldMap,newMap);
             Test.stopTest();
+            //contact audience field should have been updated by the trigger
+            updatedContact=[Select ID,Core_Audience_List__c From Contact
+                            WHERE ID =: testContact.Id];
+            
+            
         }
         
-    }    
+    }
+    
+    
+    
 }

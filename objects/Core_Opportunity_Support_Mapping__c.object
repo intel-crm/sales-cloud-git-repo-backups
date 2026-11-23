@@ -195,12 +195,6 @@
                     <default>false</default>
                     <label>CCG ECG TSS Support</label>
                 </value>
-                <value>
-                    <fullName>NEX TSS Support​</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>NEX TSS Support​</label>
-                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>TSS</controllingFieldValue>
@@ -482,71 +476,12 @@
         <columns>NAME</columns>
         <columns>Geo_Region__c</columns>
         <columns>Core_OSM_Record_Type__c</columns>
-        <columns>Core_Record_Type__c</columns>
-        <columns>Core_Opp_Center_of_Excellence__c</columns>
         <columns>User__c</columns>
         <columns>Core_Opportunity_Support_Is_Active__c</columns>
+        <columns>Core_Opp_Center_of_Excellence__c</columns>
         <columns>Core_BU__c</columns>
-        <columns>OWNER.ALIAS</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>COE_ListView</fullName>
-        <columns>NAME</columns>
-        <columns>Core_OSM_Record_Type__c</columns>
-        <columns>Core_Opp_Center_of_Excellence__c</columns>
-        <columns>User__c</columns>
-        <columns>Core_Opportunity_Support_Is_Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_OSM_Record_Type__c</field>
-            <operation>equals</operation>
-            <value>COE</value>
-        </filters>
-        <filters>
-            <field>Core_Opportunity_Support_Is_Active__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>COE</label>
-    </listViews>
-    <listViews>
-        <fullName>CSA</fullName>
-        <columns>NAME</columns>
-        <columns>Geo_Region__c</columns>
-        <columns>Core_OSM_Record_Type__c</columns>
-        <columns>User__c</columns>
-        <columns>Core_Opportunity_Support_Is_Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_OSM_Record_Type__c</field>
-            <operation>equals</operation>
-            <value>CSA</value>
-        </filters>
-        <label>CSA</label>
-    </listViews>
-    <listViews>
-        <fullName>TSS</fullName>
-        <columns>NAME</columns>
-        <columns>Core_OSM_Record_Type__c</columns>
-        <columns>Core_BU__c</columns>
-        <columns>Geo_Region__c</columns>
-        <columns>User__c</columns>
-        <columns>Core_Opportunity_Support_Is_Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_OSM_Record_Type__c</field>
-            <operation>equals</operation>
-            <value>TSS</value>
-        </filters>
-        <filters>
-            <field>Core_Opportunity_Support_Is_Active__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>TSS</label>
     </listViews>
     <nameField>
         <displayFormat>OSM-{0000}</displayFormat>
@@ -556,5 +491,14 @@
     <pluralLabel>Opportunity Support Mappings</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Users_Not_allowed_to_Edit</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(OR(ISNEW(),ISCHANGED(User__c)),  
+ $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+ NOT(ISBLANK($Label.Bypass_Users)),
+(NOT(CONTAINS ($Label.Bypass_Users,$User.FirstName))))</errorConditionFormula>
+        <errorMessage>Users not allowed to edit the Object</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

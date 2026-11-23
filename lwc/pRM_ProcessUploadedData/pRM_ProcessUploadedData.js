@@ -2,6 +2,7 @@ import {LightningElement, track, api,wire} from 'lwc';
 import { loadScript } from 'lightning/platformResourceLoader';
 import { createRecord } from 'lightning/uiRecordApi';
 import PARSER from '@salesforce/resourceUrl/PapaParse';
+import loadingCss from '@salesforce/resourceUrl/loadingCss';
 import BULK_DATA_UPLOAD_OBJECT from '@salesforce/schema/PRM_Bulk_Data_Upload__c';
 import ACCOUNT_ID from '@salesforce/schema/PRM_Bulk_Data_Upload__c.PRM_AccountId__c';
 import LAST_NAME from '@salesforce/schema/PRM_Bulk_Data_Upload__c.PRM_Last_Name__c';
@@ -362,7 +363,7 @@ if(this.waitStatus=='Success'){
     console.log('isShowModalSuccess:2',this.isShowModalSuccess);
     this.disableButton=false;
     this.isShowModal=false;
-   //this.handleRefreshPage();
+    //this.handleRefreshPage();
 }else if(this.waitStatus=='Failed'){
     
     this.isShowModalFail=true;

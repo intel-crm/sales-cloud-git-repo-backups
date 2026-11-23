@@ -57,9 +57,6 @@
         <useOther>false</useOther>
     </buckets>
     <columns>
-        <field>Account.Core_Account_ID__c</field>
-    </columns>
-    <columns>
         <field>FIRST_NAME</field>
     </columns>
     <columns>

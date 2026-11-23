@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>Core_MDF_Value5_Txt__c</field>
-        <value xsi:type="xsd:string">Core_MDF_Internal_EEF_Activity_POR_Approver;Core_MDF_Internal_EEF_Program_Adm;Core_MDF_Internal_EEF_Escalation_Reviewer;Core_MDF_Internal_EEF_Exception_Reviewer</value>
+        <value xsi:type="xsd:string">Core_MDF_Internal_EEF_Activity_POR_Approver;Core_MDF_Internal_EEF_Program_Adm;Core_MDF_Internal_EEF_Escalation_Reviewer;Core_MDF_Internal_EEF_Exception_Reviewer;Core_MDF_CCP_Internal_Co_GTM_Program_Adm</value>
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>

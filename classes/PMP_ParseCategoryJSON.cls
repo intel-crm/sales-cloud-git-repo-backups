@@ -178,7 +178,6 @@ public with sharing class PMP_ParseCategoryJSON {
             //if the category's PIM Id is partnerSegment's PIM Id, do not insert those records
             if(!partnerSegmentPIMIds.contains(category.PMP_Partner_Product_Category_Cd__c) && category.PMP_Partner_Product_Category_Key__c != null){
                    uploadableCategoriesByExternalKey.put(category.PMP_Partner_Product_Category_Key__c,category);
-                   // System.debug('Test123 '+category.Name+'-->'+category.PMP_Business_Segment_Nm__c);
                }
         }
         
@@ -200,7 +199,6 @@ public with sharing class PMP_ParseCategoryJSON {
                 PMP_Utility.logDmlErrors((Object[]) categoryUpsertResultData, 'PMP_ParseCategoryJSON-parseCategoryJSON');
             }
             catch(Exception exp){
-                //System.debug(PMP_StaticConstants_MasterData.Core_PMP_ParseCategoryJSON_Exception_Message + exp.getMessage());
                 throw exp; // We have to throw the exception so that it will get caught in queable class
             }
             

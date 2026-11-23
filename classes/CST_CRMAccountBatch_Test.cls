@@ -66,13 +66,13 @@ public class CST_CRMAccountBatch_Test {
         insert cd;
           
         SPM_Customer_Detail__c cd2 = new SPM_Customer_Detail__c();
-        cd2.Coverage__c='Intel Led';
+        cd2.Coverage__c='Intel Covered';
         cd2.Core_Regional_Customer_Id__c = rcId;
         cd2.SPM_Customer_Name__c='TestCST2';
         insert cd2;
         
         SPM_Customer_Detail__c cd3 = new SPM_Customer_Detail__c();
-        cd3.Coverage__c='Intel Led';
+        cd3.Coverage__c='Intel Covered';
         cd3.Core_Regional_Customer_Id__c = rcId;
         cd3.SPM_Customer_Name__c='TestCST3';
         insert cd3;
@@ -81,7 +81,7 @@ public class CST_CRMAccountBatch_Test {
         
         SPM_Customer_Category__c cc = new SPM_Customer_Category__c();
         cc.Customer_Detail__c = cstId;
-        cc.Coverage__c = 'Intel Led';
+        cc.Coverage__c = 'Intel Covered';
         insert cc;
         
         
@@ -108,7 +108,7 @@ public class CST_CRMAccountBatch_Test {
         Id sfAcctId = [select id from Account where Name='TestAccount' limit 1][0].Id;
            
         SPM_Account_Detail__c ad = new SPM_Account_Detail__c();
-        ad.Coverage_Type__c='Intel Led';
+        ad.Coverage_Type__c='Intel Covered';
         ad.DR__c = userId;
         ad.VP__c = userId;
         ad.GM__c = userId;
@@ -120,7 +120,7 @@ public class CST_CRMAccountBatch_Test {
        
         
         SPM_Account_Detail__c ad1 = new SPM_Account_Detail__c();
-        ad1.Coverage_Type__c='Intel Led';
+        ad1.Coverage_Type__c='Intel Covered';
         ad1.DR__c = userId;
         ad1.VP__c = userId;
         ad1.GM__c = userId;
@@ -132,7 +132,7 @@ public class CST_CRMAccountBatch_Test {
         Id cst3Id = [select id,SPM_Customer_Name__c from SPM_Customer_Detail__c where SPM_Customer_Name__c='TestCST3' limit 1][0].Id; 
         
         SPM_Account_Detail__c ad3 = new SPM_Account_Detail__c();
-        ad3.Coverage_Type__c='Intel Led';
+        ad3.Coverage_Type__c='Intel Covered';
         ad3.DR__c = userId;
         ad3.VP__c = userId;
         ad3.GM__c = userId;
@@ -153,7 +153,7 @@ public class CST_CRMAccountBatch_Test {
         cstFeedback.Customer_ID__c = cstId;
         cstFeedback.Feedback_By__c = userRec.Id;
         cstFeedback.Feedback_Type__c ='GM';
-        cstFeedback.DR_Feedback__c='Add to Intel Led';
+        cstFeedback.DR_Feedback__c='Add to Intel Covered';//TWC3123-5894
         cstFeedback.Reason_for_change__c ='test';
         cstFeedback.New_Account_Owner__c = userRec.Id;
         cstFeedback.Team_Members__c = userRec.Id;
@@ -165,12 +165,12 @@ public class CST_CRMAccountBatch_Test {
         Id acctId = [select id,SPM_Customer_ID__c from SPM_Account_Detail__c where SPM_Customer_ID__c =:cstId limit 1][0].Id;
         SPM_Account_Feedback__c acctFeedback = new SPM_Account_Feedback__c();
         acctFeedback.Account_ID__c = acctId;
-        acctFeedback.Feedback__c='Add to Intel Led';
+        acctFeedback.Feedback__c='Add to Intel Covered';//TWC3123-5894
         acctFeedback.Reason_for_change__c ='test';
         acctFeedback.New_Account_Owner__c = userRec.Id;
         acctFeedback.Team_Members__c = userRec.Id;
         acctFeedback.New_Sales_Group__c='Americas Brazil Sales Group';
-        //acctFeedback.Coverage_Type__c='Intel Led';
+        //acctFeedback.Coverage_Type__c='Intel Covered';
         Id recordTypeId = Schema.SObjectType.SPM_Account_Feedback__c.getRecordTypeInfosByName().get('DR Feedback').getRecordTypeId();
         acctFeedback.RecordTypeId = recordTypeId;
         insert acctFeedback;
@@ -178,12 +178,12 @@ public class CST_CRMAccountBatch_Test {
            
         SPM_Account_Feedback__c acctFeedback2 = new SPM_Account_Feedback__c();
         acctFeedback2.Account_ID__c = acctId;
-        acctFeedback2.Feedback__c='Add to Intel Led';
+        acctFeedback2.Feedback__c='Add to Intel Covered';//TWC3123-5894
         acctFeedback2.Reason_for_change__c ='test';
         acctFeedback2.New_Account_Owner__c = userRec.Id;
         acctFeedback2.Team_Members__c = userRec.Id;
         acctFeedback2.New_Sales_Group__c='Americas Brazil Sales Group ';
-        //acctFeedback2.Coverage_Type__c='Intel Led';
+        //acctFeedback2.Coverage_Type__c='Intel Covered';
         acctFeedback2.RecordTypeId = recordTypeId;
         insert acctFeedback2;
         system.debug('AF 2 ID IS:'+acctFeedback2.Id);
@@ -196,7 +196,7 @@ public class CST_CRMAccountBatch_Test {
         cstFeedback2.Customer_ID__c = customer2Id;
         cstFeedback2.Feedback_By__c = userRec.Id;
         cstFeedback2.Feedback_Type__c ='GM';
-        cstFeedback2.DR_Feedback__c='Add to Intel Led';
+        cstFeedback2.DR_Feedback__c='Add to Intel Covered';
         cstFeedback2.Reason_for_change__c ='test';
         cstFeedback2.New_Account_Owner__c = userRec.Id;
         cstFeedback2.Team_Members__c = userRec.Id;
@@ -207,12 +207,12 @@ public class CST_CRMAccountBatch_Test {
         
         SPM_Account_Feedback__c acctFeedback3 = new SPM_Account_Feedback__c();
         acctFeedback3.Account_ID__c = acct2Id;
-        acctFeedback3.Feedback__c='Add to Intel Led';
+        acctFeedback3.Feedback__c='Add to Intel Covered';//TWC3123-5894
         acctFeedback3.Reason_for_change__c ='test';
         acctFeedback3.New_Account_Owner__c = userRec.Id;
         acctFeedback3.Team_Members__c = userRec.Id;
         acctFeedback3.New_Sales_Group__c='Americas Brazil Sales Group';
-        //acctFeedback3.Coverage_Type__c='Intel Led';
+        //acctFeedback3.Coverage_Type__c='Intel Covered';
         acctFeedback3.RecordTypeId = recordTypeId;
         insert acctFeedback3;
         system.debug('AF 3 ID IS:'+acctFeedback3.Id);
@@ -222,12 +222,12 @@ public class CST_CRMAccountBatch_Test {
 
         SPM_Account_Feedback__c acctFeedback4 = new SPM_Account_Feedback__c();
         acctFeedback4.Account_ID__c = acct2Id;        
-        acctFeedback4.Feedback__c='Add to Intel Led';
+        acctFeedback4.Feedback__c='Add to Intel Covered';//TWC3123-5894
         acctFeedback4.Reason_for_change__c ='test';
         acctFeedback4.New_Account_Owner__c = userRec.Id;
         acctFeedback4.Team_Members__c = userRec.Id;
         acctFeedback4.New_Sales_Group__c='Americas Canada Sales Group';
-        //acctFeedback4.Coverage_Type__c='Intel Led';
+        //acctFeedback4.Coverage_Type__c='Intel Covered';
         acctFeedback4.RecordTypeId = recordTypeId;
         insert acctFeedback4;
         system.debug('AF 4 ID IS:'+acctFeedback4.Id);

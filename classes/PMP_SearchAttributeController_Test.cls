@@ -12,7 +12,7 @@ public class PMP_SearchAttributeController_Test extends PMP_SearchWrapperStore{
         partner.Name = 'Test_Partner';
         partner.PMP_Partner_Program_nm__c = 'distributor';
         partner.PMP_Account_Id__c = intelAcc.Id;
-        //partner.PMP_Account_Specialty__c = 'Specialty Partner';
+        partner.PMP_Account_Specialty__c = 'Specialty Partner';
         partner.PMP_Is_Published_Ind__c = true;
         //partner.PMP_Disti_Components_Nm__c = 'Client CPUs and NUC';
 		partner.PMP_Disti_Components_Nm__c ='Data Center';
@@ -25,7 +25,7 @@ public class PMP_SearchAttributeController_Test extends PMP_SearchWrapperStore{
         PMP_Company__c partner1 = new PMP_Company__c();
         partner.PMP_Account_Id__c = intelAcc.Id;
         partner1.Name = 'Test_Partner1';
-        //partner1.PMP_Account_Specialty__c = 'Specialty Partner';
+        partner1.PMP_Account_Specialty__c = 'Specialty Partner';
         partner1.PMP_Is_Published_Ind__c = true;
         //partner1.PMP_Disti_Components_Nm__c = 'Client CPUs and NUC';
 		partner1.PMP_Disti_Components_Nm__c ='Data Center';

@@ -1,4 +1,4 @@
-<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+<aura:component implements="forceCommunity:availableForAllPageTypes">
 
   <aura:attribute name="disabled" type="boolean" default="false" />
   <aura:attribute name="name" type="string" />

@@ -3,8 +3,8 @@ public class Core_ERPM_API_Callout_Test {
     
     @testSetup 
     public static void DataSetup() {
-        //Insert Account
 		String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+        //Insert Account
         Account acc = new Account(Name='testAccount123', Core_Sales_Group__c='Global Accounts',Core_IsODM__c = true,
                                               Core_Account_Type__c='Other', Industry='Others', Core_CNDA_Number__c = '12345',Core_English_Only_Name__c = 'samplename',
                                               BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test',RecordTypeId=intelAccRecTypeId,  
@@ -23,6 +23,7 @@ public class Core_ERPM_API_Callout_Test {
         con.Core_Profession__c = 'CONSULTANT';
         con.Core_Job_Function__c = 'CONSLT' ; 
         con.Core_Do_Not_Contact__c = FALSE;
+        con.Core_Login_Status__c = 'Active';
         insert con;
         PRM_Partner_Subscription__c partSub = new PRM_Partner_Subscription__c();
        	partSub.PRM_Subscription_Cd__c = 'PAR';

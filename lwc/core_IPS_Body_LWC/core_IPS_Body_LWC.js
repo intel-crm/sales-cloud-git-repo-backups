@@ -29,45 +29,45 @@ const projectcolumns = [{
     sortable: 'true'
 }];
 const productColumns = [{
-    label: 'New Case',
-    fieldName: 'linkProductNewCase',
-    type: 'url',
-    sortable: true,
-    typeAttributes: {
         label: 'New Case',
-        target: '_self'
+        fieldName: 'linkProductNewCase',
+        type: 'url',
+        sortable: true,
+        typeAttributes: {
+            label: 'New Case',
+            target: '_self'
+        },
+        initialWidth: 75,
     },
-    initialWidth: 75,
-},
-{
-    label: 'Intel Product Name',
-    fieldName: 'linkProduct',
-    type: 'url',
-    sortable: true,
-    typeAttributes: {
-        label: { fieldName: 'Name' },
-        target: '_self'
+    {
+        label: 'Intel Product Name',
+        fieldName: 'linkProduct',
+        type: 'url',
+        sortable: true,
+        typeAttributes: {
+            label: { fieldName: 'Name' },
+            target: '_self'
+        }
     }
-}
 ];
 const productInactiveColumns = [{
-    label: 'Error',
-    fieldName: 'CaseNav',
-    type: 'url',
-    typeAttributes: {
-        label: 'CaseNav',
-        target: '_self'
+        label: 'Error',
+        fieldName: 'CaseNav',
+        type: 'url',
+        typeAttributes: {
+            label: 'CaseNav',
+            target: '_self'
+        }
+    },
+    {
+        label: 'Intel Product Name',
+        fieldName: 'linkProduct',
+        type: 'url',
+        typeAttributes: {
+            label: { fieldName: 'Name' },
+            target: '_self'
+        }
     }
-},
-{
-    label: 'Intel Product Name',
-    fieldName: 'linkProduct',
-    type: 'url',
-    typeAttributes: {
-        label: { fieldName: 'Name' },
-        target: '_self'
-    }
-}
 ];
 const contactColumns = [
     { label: 'Name', fieldName: 'Name', type: 'text', sortable: 'true' },
@@ -90,80 +90,80 @@ const contactColumns = [
     { label: 'Created Date Format', fieldName: 'createdDateFormat', type: 'text', sortable: 'true', }, //new
 ];
 const globalcasecolumns = [{
-    label: 'Action',
-    fieldName: 'linkCaseComment',
-    type: 'url',
-    initialWidth: 77,
-    typeAttributes: {
-        label: 'Comment',
-        target: '_self'
+        label: 'Action',
+        fieldName: 'linkCaseComment',
+        type: 'url',
+        initialWidth: 77,
+        typeAttributes: {
+            label: 'Comment',
+            target: '_self'
+        },
+        wrapText: true,
+        hideDefaultActions: true,
+        }, {
+        label: 'Case',
+        fieldName: 'linkCase',
+        type: 'url',
+        initialWidth: 79,
+        sortable: 'true',
+        typeAttributes: {
+            label: { fieldName: 'CaseNumber' },
+            target: '_self'
+        },
+        wrapText: true,
+        hideDefaultActions: true,
     },
-    wrapText: true,
-    hideDefaultActions: true,
-}, {
-    label: 'Case',
-    fieldName: 'linkCase',
-    type: 'url',
-    initialWidth: 79,
-    sortable: 'true',
-    typeAttributes: {
-        label: { fieldName: 'CaseNumber' },
-        target: '_self'
-    },
-    wrapText: true,
-    hideDefaultActions: true,
-},
-{ label: 'Status', fieldName: 'Status', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 70, },
-{ label: 'Sub Status', fieldName: 'Core_Sub_Status__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 70, },
-{ label: 'Severity', fieldName: 'Core_Severity__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 70, },
-{ label: 'Subject', fieldName: 'Subject', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 250, },
-{ label: 'Product Name', fieldName: 'Core_IPS_Product_name__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 200, },
-{ label: 'Project', fieldName: 'ProjectName', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 150, },
+    { label: 'Status', fieldName: 'Status', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true',initialWidth: 70, },
+    { label: 'Sub Status', fieldName: 'Core_Sub_Status__c', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true', initialWidth: 70, },
+    { label: 'Severity', fieldName: 'Core_Severity__c', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true',initialWidth: 70, },
+    { label: 'Subject', fieldName: 'Subject', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true',initialWidth : 250, },
+    { label: 'Product Name', fieldName: 'Core_IPS_Product_name__c', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true',initialWidth : 200, },
+    { label: 'Project', fieldName: 'ProjectName', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true', initialWidth : 150,},
 
-{ label: 'Contact Name', fieldName: 'Core_Contact_Name__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 150, },
-{ label: 'Opened', fieldName: 'Createddate', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 144, },
-{ label: 'Modified', fieldName: 'LastModifieddate', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 144, },
-{ label: 'Legacy ID', fieldName: 'Core_IPS_Legacy_IPS_ID__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 90, },
-{ label: 'Case Category', fieldName: 'Core_External_Issue_Category__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 90, },
-{ label: 'Case Sub Category', fieldName: 'Core_External_Issue_Subcategory__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 150, },
-{ label: 'Closed', fieldName: 'Closeddate', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 96, },
-{ label: 'Customer Reference ID', fieldName: 'Core_Customer_Reference_ID__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 150, },
+    { label: 'Contact Name', fieldName: 'Core_Contact_Name__c', type: 'text', sortable: 'true', wrapText: 'true',hideDefaultActions: 'true',initialWidth : 150,},
+    { label: 'Opened', fieldName: 'Createddate', type: 'text', sortable: 'true', wrapText: 'true',hideDefaultActions: 'true',initialWidth : 144,},
+    { label: 'Modified', fieldName: 'LastModifieddate', type: 'text', sortable: 'true', wrapText: 'true',hideDefaultActions: 'true',initialWidth : 144,},
+    { label: 'Legacy ID', fieldName: 'Core_IPS_Legacy_IPS_ID__c', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true',initialWidth : 90, },
+    { label: 'Case Category', fieldName: 'Core_External_Issue_Category__c', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true', initialWidth : 90,},
+    { label: 'Case Sub Category', fieldName: 'Core_External_Issue_Subcategory__c', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true',initialWidth : 150, },
+    { label: 'Closed', fieldName: 'Closeddate', type: 'text', sortable: 'true',wrapText: 'true',hideDefaultActions: 'true',initialWidth : 96, },
+    { label: 'Customer Reference ID', fieldName: 'Core_Customer_Reference_ID__c', type: 'text', sortable: 'true', wrapText: 'true',hideDefaultActions: 'true',initialWidth : 150,},
 
-{ label: 'Last Modified DateFormat', fieldName: 'LastModifieddateFormat', type: 'text', sortable: 'true', },
-{ label: 'Date/Time ClosedFormat', fieldName: 'CloseddateFormat', type: 'text', sortable: 'true', },
-{ label: 'Date OpenedFormat', fieldName: 'CreateddateFormat', type: 'text', sortable: 'true', },
-
+    { label: 'Last Modified DateFormat', fieldName: 'LastModifieddateFormat', type: 'text', sortable: 'true', },
+    { label: 'Date/Time ClosedFormat', fieldName: 'CloseddateFormat', type: 'text', sortable: 'true', },
+    { label: 'Date OpenedFormat', fieldName: 'CreateddateFormat', type: 'text', sortable: 'true',},
+    
 ];
 const globalprojectcolumns = [{
-    label: 'Project Name',
-    fieldName: 'linkProj',
-    type: 'url',
-    sortable: 'true',
-    typeAttributes: {
-        label: { fieldName: 'Name' },
-        target: '_self'
+        label: 'Project Name',
+        fieldName: 'linkProj',
+        type: 'url',
+        sortable: 'true',
+        typeAttributes: {
+            label: { fieldName: 'Name' },
+            target: '_self'
+        },
+        wrapText: true,
+        hideDefaultActions: true,
     },
-    wrapText: true,
-    hideDefaultActions: true,
-},
-{ label: 'Description', fieldName: 'Core_Project_Description__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', },
-{ label: 'Status', fieldName: 'Core_Status__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 90, }
+    { label: 'Description', fieldName: 'Core_Project_Description__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', },
+    { label: 'Status', fieldName: 'Core_Status__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 90, }
 ];
 const globalproductColumns = [{
-    label: 'Intel Product Name',
-    fieldName: 'linkProd',
-    type: 'url',
-    sortable: 'true',
-    typeAttributes: {
-        label: { fieldName: 'Name' },
-        target: '_self'
+        label: 'Intel Product Name',
+        fieldName: 'linkProd',
+        type: 'url',
+        sortable: 'true',
+        typeAttributes: {
+            label: { fieldName: 'Name' },
+            target: '_self'
+        },
+        wrapText: true,
+        hideDefaultActions: true,
     },
-    wrapText: true,
-    hideDefaultActions: true,
-},
-{ label: 'Project Id', fieldName: 'Core_IPS_Project_Id__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 90, },
-{ label: 'Premier Support Project', fieldName: 'ProjectName', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', },
-{ label: 'Account Name', fieldName: 'AccountName', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', },
+    { label: 'Project Id', fieldName: 'Core_IPS_Project_Id__c', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', initialWidth: 90, },
+    { label: 'Premier Support Project', fieldName: 'ProjectName', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', },
+    { label: 'Account Name', fieldName: 'AccountName', type: 'text', sortable: 'true', wrapText: 'true', hideDefaultActions: 'true', },
 ];
 export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement) {
     @track userId = uId;
@@ -303,22 +303,22 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
         }
         let cols = this.globalcasecolumns;
         this.globalcasecolumns = cols.filter(c => c.fieldName != 'LastModifieddateFormat' && c.fieldName != 'CloseddateFormat' && c.fieldName != 'CreateddateFormat');
-
+                
     }
 
     @track renderedCount = 0;
     renderedCallback() {
-        loadStyle(this, Custom);
-        if (this.currentContent == '') {
-            this.cases = true;
-            this.selectedItem = 'allCases';
+            loadStyle(this, Custom);
+            if (this.currentContent == '') {
+                this.cases = true;
+                this.selectedItem = 'allCases';
+            }
+            if (this.selectedItem == '') {
+                this.cases = true;
+                this.selectedItem = 'allCases';
+            }
         }
-        if (this.selectedItem == '') {
-            this.cases = true;
-            this.selectedItem = 'allCases';
-        }
-    }
-    //fetching cases
+        //fetching cases
     getCases() {
         getAllCaseRecords({ caseListView: this.casevalue })
             .then(result => {
@@ -381,7 +381,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                     this.projcolumnsResult = projectcolumns.concat(result.prjDataTableColumns);
                     let projcopyresult = [];
                     for (const n of this.projcolumnsResult) {
-                        let copyObj = { ...n };
+                        let copyObj = {...n };
                         copyObj.sortable = true;
                         copyObj.wrapText = true;
                         copyObj.hideDefaultActions = true;
@@ -430,34 +430,34 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
         }
     }
     HeaderColumns = (fieldValue, finalSobjectRow, fieldName) => {
-        let rowIndexes = Object.keys(fieldValue);
-        rowIndexes.forEach((key) => {
-            let finalKey = fieldName + '.' + key;
-            finalSobjectRow[finalKey] = fieldValue[key];
-        })
-    }
-    //Sorting Project Data
+            let rowIndexes = Object.keys(fieldValue);
+            rowIndexes.forEach((key) => {
+                let finalKey = fieldName + '.' + key;
+                finalSobjectRow[finalKey] = fieldValue[key];
+            })
+        }
+        //Sorting Project Data
     doProjectSorting(event) {
         this.sortProjectBy = event.detail.fieldName;
         this.sortProjectDirection = event.detail.sortDirection;
         this.prjsortData(event.detail.fieldName, event.detail.sortDirection)
     }
     prjsortData(fieldname, direction) {
-        let parseData = JSON.parse(JSON.stringify(this.prjRecToDisplay));
-        let keyValue = (a) => {
-            return a[fieldname];
-        };
-        let isReverse = direction === 'asc' ? 1 : -1;
-        parseData.sort((x, y) => {
-            x = keyValue(x) ? keyValue(x) : '';
-            y = keyValue(y) ? keyValue(y) : '';
-            return isReverse * ((x > y) - (y > x));
-        });
-        this.prjRecToDisplay = parseData;
-        this.projpagenation(this.prjRecToDisplay);
-        this.projrefreshPageination();
-    }
-    //fetching products
+            let parseData = JSON.parse(JSON.stringify(this.prjRecToDisplay));
+            let keyValue = (a) => {
+                return a[fieldname];
+            };
+            let isReverse = direction === 'asc' ? 1 : -1;
+            parseData.sort((x, y) => {
+                x = keyValue(x) ? keyValue(x) : '';
+                y = keyValue(y) ? keyValue(y) : '';
+                return isReverse * ((x > y) - (y > x));
+            });
+            this.prjRecToDisplay = parseData;
+            this.projpagenation(this.prjRecToDisplay);
+            this.projrefreshPageination();
+        }
+        //fetching products
     @track storedPdtRecToDisplay;
     getProductsCount = 0;
     prodSearchResults;
@@ -493,30 +493,33 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                     }
                     this.DataTableResponseWrappper = rows;
                     this.pdtRecToDisplay = sObjectRelatedFieldListValues;
+                    console.log('myintel product', this.pdtRecToDisplay);
                     this.storedPdtRecToDisplay = this.pdtRecToDisplay;
                     this.prodcolumnsResult = productColumns.concat(result.prodDataTableColumns);
                     let prodcopyresult = [];
                     for (const n of this.prodcolumnsResult) {
-                        let prodcopyObj = { ...n };
+                        let prodcopyObj = {...n };
                         prodcopyObj.sortable = true;
                         prodcopyObj.wrapText = true;
                         prodcopyObj.hideDefaultActions = true;
                         prodcopyresult.push(prodcopyObj);
                     }
-                   
+                    //console.log('soma 1 '+JSON.stringify(this.pdtRecToDisplay));
                     this.prodcolumnsResult = prodcopyresult;
                     this.pdtRecToDisplay.forEach(record => {
-                      
+                        //let rec = JSON.stringify(record).replace('Core_IPS_Product_Organization__r.Name','ORGNAME');
+                        //let parsedrecord = JSON.parse(rec);
+                        //console.log('parsedrecord '+ JSON.stringify(parsedrecord));
                         record.linkProduct = communityPath + '/product-detail?recordId=' + record.Id;
-                       
+                        //console.log('get record',JSON.stringify(record.Core_Product_Organization__r.Name));
                         if (record.Status == 'Active') {
                             if ((record.Core_IPS_Project__c === undefined || record.Core_IPS_Project__c == undefined) && (record.Core_IPS_Project_Name__c === undefined || record.Core_IPS_Project_Name__c == undefined)) {
                                 record.linkProductNewCase = communityPath + '/new-case?assetId=' + record.Id + '&assetName=' + record.Name + '&mode=' + 'create' + '&supOrgNum=' + record?.Core_Product_Organization__r?.Name;
-                            } else if (record.Core_IPS_Project__c != undefined && record.Core_IPS_Project_Status__c != 'Active') {
+                            }else if (record.Core_IPS_Project__c != undefined && record.Core_IPS_Project_Status__c != 'Active'){
                                 record.linkProductNewCase = communityPath + '/case-error';
                             } else {
 
-                                // Niyaz record.linkProductNewCase = communityPath + '/new-case?assetId=' + record.Id + '&assetName=' + record.Name + '&premiersupprojrojId=' + record.Core_IPS_Project__c + '&premiersupprojrojName=' + record.Core_IPS_Project_Name__c + '&mode=' + 'create'+'&supOrgNum='+record?.Core_Product_Organization__r?.Name;
+                                 // Niyaz record.linkProductNewCase = communityPath + '/new-case?assetId=' + record.Id + '&assetName=' + record.Name + '&premiersupprojrojId=' + record.Core_IPS_Project__c + '&premiersupprojrojName=' + record.Core_IPS_Project_Name__c + '&mode=' + 'create'+'&supOrgNum='+record?.Core_Product_Organization__r?.Name;
                                 /*START Niyaz -- 12/06/2025 --- added as part of vulnerability fix */
                                 record.linkProductNewCase = communityPath + '/new-case?' +
                                     'assetId=' + encodeURIComponent(record.Id) +
@@ -592,35 +595,35 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     @track getCasesCount = 0;
     // This to hide Global search data tables after clicking case vertical navigation
     hideGlobalTables() {
-        this.isAllTablesVisible = false;
-        this.getCasesCount = this.getCasesCount + 1;
-        if (this.selectedItem != "allCases") {
-            this.selectedItem = "allCases";
-            sessionStorage.setItem("selectedItem", this.selectedItem);
+            this.isAllTablesVisible = false;
+            this.getCasesCount = this.getCasesCount + 1;
+            if (this.selectedItem != "allCases") {
+                this.selectedItem = "allCases";
+                sessionStorage.setItem("selectedItem", this.selectedItem);
+            }
         }
-    }
-    //Sorting Product Data
+        //Sorting Product Data
     doProductSorting(event) {
         this.sortProductBy = event.detail.fieldName;
         this.sortProductDirection = event.detail.sortDirection;
         this.prodsortData(event.detail.fieldName, event.detail.sortDirection)
     }
     prodsortData(fieldname, direction) {
-        let parseData = JSON.parse(JSON.stringify(this.pdtRecToDisplay));
-        let keyValue = (a) => {
-            return a[fieldname];
-        };
-        let isReverse = direction === 'asc' ? 1 : -1;
-        parseData.sort((x, y) => {
-            x = keyValue(x) ? keyValue(x) : '';
-            y = keyValue(y) ? keyValue(y) : '';
-            return isReverse * ((x > y) - (y > x));
-        });
-        this.pdtRecToDisplay = parseData;
-        this.pagenation(this.pdtRecToDisplay);
-        this.refreshPageination();
-    }
-    //fetching contacts
+            let parseData = JSON.parse(JSON.stringify(this.pdtRecToDisplay));
+            let keyValue = (a) => {
+                return a[fieldname];
+            };
+            let isReverse = direction === 'asc' ? 1 : -1;
+            parseData.sort((x, y) => {
+                x = keyValue(x) ? keyValue(x) : '';
+                y = keyValue(y) ? keyValue(y) : '';
+                return isReverse * ((x > y) - (y > x));
+            });
+            this.pdtRecToDisplay = parseData;
+            this.pagenation(this.pdtRecToDisplay);
+            this.refreshPageination();
+        }
+        //fetching contacts
     contactCount;
     getContacts() {
         // This to hide Global search data tables after clicking Contacts vertical navigation
@@ -670,20 +673,20 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                     this.concolumnsResult = result.conDataTableColumns;
                     let concopyresult = [];
                     for (const n of this.concolumnsResult) {
-                        let concopyObj = { ...n };
+                        let concopyObj = {...n };
                         concopyObj.sortable = true;
                         concopyObj.wrapText = true;
                         concopyObj.hideDefaultActions = true;
                         concopyresult.push(concopyObj);
                     }
                     this.concolumnsResult = concopyresult;
-
+                  
                     this.contactRecords = rows;
                     this.conRecToDisplay.forEach(record => {
                         if (record.CreatedDate) {
                             let dt = new Date(record.CreatedDate);
-                            record.createdDateFormat = record.CreatedDate;//new
-                            record.CreatedDate = new Intl.DateTimeFormat(locale, options).format(dt);
+                         record.createdDateFormat=record.CreatedDate;//new
+                         record.CreatedDate = new Intl.DateTimeFormat(locale,options).format(dt);
 
                             // record.CreatedDate = new Intl.DateTimeFormat('en-US', { timeZone: timezone, year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }, options).format(dt);
                         }
@@ -719,13 +722,13 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
         }
     }
     conrefreshPageination() {
-        if (this.isContactrefreshPageination == false) {
-            this.isContactrefreshPageination = true;
-        } else {
-            this.isContactrefreshPageination = false;
+            if (this.isContactrefreshPageination == false) {
+                this.isContactrefreshPageination = true;
+            } else {
+                this.isContactrefreshPageination = false;
+            }
         }
-    }
-    //Sorting Contact Data
+        //Sorting Contact Data
     doContactSorting(event) {
         this.sortContactBy = event.detail.fieldName;
         this.sortContactDirection = event.detail.sortDirection;
@@ -734,18 +737,18 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     coltype; //new
     sortContactData(fieldname, direction) {
         //new changes
-        let column = this.concolumnsResult.find(c => c.fieldName === fieldname);
+        let column = this.concolumnsResult.find(c=>c.fieldName===fieldname);
         this.coltype = column.type;
-
-        if (fieldname == 'CreatedDate') {
+    
+        if(fieldname == 'CreatedDate')  {
             fieldname = 'createdDateFormat';
-        }
+        }  
         //new changes end
 
         let parseData = JSON.parse(JSON.stringify(this.conRecToDisplay));
-
-        let keyValue = (a) => {
-            return a[fieldname];
+	
+	let keyValue = (a) => {
+	    return a[fieldname];
         };
 
         let isReverse = direction === 'asc' ? 1 : -1;
@@ -753,18 +756,18 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
             x = keyValue(x) ? keyValue(x) : '';
             y = keyValue(y) ? keyValue(y) : '';
             //changes
-
-            if (fieldname == 'createdDateFormat') {
+         
+            if(fieldname == 'createdDateFormat' ) {
                 var dx = new Date(x);
                 var dy = new Date(y);
-
+                
                 return isReverse * (dx.getTime() - dy.getTime());
-            }
-            else {
+            }  
+            else{
                 return isReverse * ((x > y) - (y > x));
-            }
+            }  
             //changes end
-            // return isReverse * ((x > y) - (y > x));
+           // return isReverse * ((x > y) - (y > x));
         });
         this.conRecToDisplay = parseData;
         this.contactpagenation(this.conRecToDisplay);
@@ -825,37 +828,37 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
         }
     }
     ProductKeyChange(event) {
-        const searchKey = event.target.value.toLowerCase();
-        const searchFieldName = event.target.className;
-        if (searchKey) {
-            if (this.pdtRecToDisplay) {
-                this.prodSearchResults = this.pdtRecToDisplay;
-                let recs = [];
-                for (let key of this.pdtRecToDisplay) {
-                    let valuesArray = Object.values(key);
-                    for (let val of valuesArray) {
-                        if (val) {
-                            if (val.toString().toLowerCase().includes(searchKey)) {
-                                recs.push(key);
-                                break;
+            const searchKey = event.target.value.toLowerCase();
+            const searchFieldName = event.target.className;
+            if (searchKey) {
+                if (this.pdtRecToDisplay) {
+                    this.prodSearchResults = this.pdtRecToDisplay;
+                    let recs = [];
+                    for (let key of this.pdtRecToDisplay) {
+                        let valuesArray = Object.values(key);
+                        for (let val of valuesArray) {
+                            if (val) {
+                                if (val.toString().toLowerCase().includes(searchKey)) {
+                                    recs.push(key);
+                                    break;
+                                }
                             }
                         }
+                        this.pdtRecToDisplay = recs;
+                        if (this.pdtRecToDisplay.length > 0) {
+                            this.prdShowMsg = true;
+                        } else {
+                            this.prdShowMsg = false;
+                        }
                     }
-                    this.pdtRecToDisplay = recs;
-                    if (this.pdtRecToDisplay.length > 0) {
-                        this.prdShowMsg = true;
-                    } else {
-                        this.prdShowMsg = false;
-                    }
+                    this.pagenation(this.pdtRecToDisplay);
+                    this.refreshPageination();
                 }
-                this.pagenation(this.pdtRecToDisplay);
-                this.refreshPageination();
+            } else {
+                this.getProducts();
             }
-        } else {
-            this.getProducts();
         }
-    }
-    //checkTempBoolean = true;
+        //checkTempBoolean = true;
     @track temptotalContactList = [];
     ContactKeyChange(event) {
         this.temptotalContactList = this.conRecToDisplay;
@@ -933,11 +936,11 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
         }
     }
     handleProductNavigation(event) {
-        this.productvalue = event.detail.value;
-        this.getProducts();
+            this.productvalue = event.detail.value;
+            this.getProducts();
 
-    }
-    //Navigate to case create page 
+        }
+        //Navigate to case create page 
     handleNewCaseNavigate() {
         this[NavigationMixin.Navigate]({
             type: 'standard__namedPage',
@@ -958,40 +961,40 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
         });
     }
 
-    doSomething() { }
-    //clicking on previous button this method will be called
+    doSomething() {}
+        //clicking on previous button this method will be called
     previousHandler() {
-        if (this.page > 1) {
-            this.page = this.page - 1; //decrease page by 1
-            this.displayRecordPerPage(this.page);
+            if (this.page > 1) {
+                this.page = this.page - 1; //decrease page by 1
+                this.displayRecordPerPage(this.page);
+            }
         }
-    }
-    //clicking on next button this method will be called
+        //clicking on next button this method will be called
     nextHandler() {
-        if ((this.page < this.totalPage) && this.page !== this.totalPage) {
-            this.page = this.page + 1; //increase page by 1
-            this.displayRecordPerPage(this.page);
+            if ((this.page < this.totalPage) && this.page !== this.totalPage) {
+                this.page = this.page + 1; //increase page by 1
+                this.displayRecordPerPage(this.page);
+            }
         }
-    }
-    //this method displays records page by page
+        //this method displays records page by page
     displayRecordPerPage(page) {
 
-        this.startingRecord = ((page - 1) * this.pageSize);
-        this.endingRecord = (this.pageSize * page);
-        this.endingRecord = (this.endingRecord > this.totalRecountCount) ?
-            this.totalRecountCount : this.endingRecord;
-        this.caseRecords = this.items.slice(this.startingRecord, this.endingRecord);
-        this.startingRecord = this.startingRecord + 1;
-    }
-    // this method validates the data and creates the csv file to download
+            this.startingRecord = ((page - 1) * this.pageSize);
+            this.endingRecord = (this.pageSize * page);
+            this.endingRecord = (this.endingRecord > this.totalRecountCount) ?
+                this.totalRecountCount : this.endingRecord;
+            this.caseRecords = this.items.slice(this.startingRecord, this.endingRecord);
+            this.startingRecord = this.startingRecord + 1;
+        }
+        // this method validates the data and creates the csv file to download
     downloadCSVFile() {
         let rowEnd = '\n';
         let csvString = '';
         // this set elminates the duplicates if have any duplicate keys
         let rowData = new Set();
         // getting keys from data
-        this.caseRecords.forEach(function (record) {
-            Object.keys(record).forEach(function (key) {
+        this.caseRecords.forEach(function(record) {
+            Object.keys(record).forEach(function(key) {
                 rowData.add(key);
             });
         });
@@ -1055,11 +1058,11 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
         this.paginatedProducts = event.detail;
     }
     handlecontPaginatorChange(event) {
-        this.conRecToDisplay = event.detail;
-        this.rowNumberOffset = this.conRecToDisplay[0].rowNumber - 1;
-        this.initialRecords = event.detail;
-    }
-    ///// NewCase button Navigation////
+            this.conRecToDisplay = event.detail;
+            this.rowNumberOffset = this.conRecToDisplay[0].rowNumber - 1;
+            this.initialRecords = event.detail;
+        }
+        ///// NewCase button Navigation////
     @api assetId;
     handleRowActionproducts(event) {
         this.assetId = event.detail.row.Id;
@@ -1069,7 +1072,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     @api caseInfo = 'democheck';
     hanldeProgressValueChange(event) {
         this.searchValue = event.detail;
-        
+        console.log('Ck>> global  search', this.searchValue);
         this.projects = false;
         this.products = false;
         this.contacts = false;
@@ -1103,10 +1106,11 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     //global search js method
     isprojectpagination;
     getSearchResult() {
-       
+        console.log('CK>> JS method called');
+        
         getSearchResult({ searchKey: this.searchValue })
             .then(result => {
-               
+                console.log('CK>> Result fetched');
                 const timezone = TIME_ZONE;
                 const locale = LOCALE;
                 const options = {
@@ -1120,7 +1124,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                 };
                 //Case Data table 
                 //let caseData = JSON.parse(JSON.stringify(result[0]));
-
+                
                 if (result.projlist.length > 0) {
                     this.prjshowmsg = true;
                 } else {
@@ -1134,9 +1138,9 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
 
                 let caseresult = result.caselist;
                 let caseData = JSON.parse(JSON.stringify(caseresult));
-
-                caseData.forEach(function (item) {
-
+                
+                caseData.forEach(function(item) {
+                 
                     item.ProjectName = item.Core_IPS_Project_Case__r != undefined || item.Core_IPS_Project_Case__r != null ? item.Core_IPS_Project_Case__r.Name : '';
                     item.linkCase = communityPath + '/case-detail?recordId=' + item.Id + '&isCase=true';
                     item.linkCaseComment = communityPath + '/case-detail?recordId=' + item.Id + '&isCase=false';
@@ -1165,7 +1169,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                 //Product Data table 
                 let prodresult = result.prodlist;
                 let Data = JSON.parse(JSON.stringify(prodresult));
-                Data.forEach(function (item) {
+                Data.forEach(function(item) {
                     item.AccountName = item.Account != undefined || item.Account != null ? item.Account.Name : '';
                     item.ProjectName = item.Core_IPS_Project__r != undefined || item.Core_IPS_Project__r != null ? item.Core_IPS_Project__r.Name : '';
                     item.linkProd = communityPath + '/product-detail?recordId=' + item.Id;
@@ -1173,16 +1177,16 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                 //Project Data table
 
                 let projresult = result.projlist;
-
+              
                 let projData = JSON.parse(JSON.stringify(projresult));
-
-                projData.forEach(function (item) {
+              
+                projData.forEach(function(item) {
                     item.linkProj = communityPath + '/project-detail?recordId=' + item.Id;
                 });
                 if (caseData.length > 0) {
                     this.caseShowmsg = true;
                     this.globalcaserecordsToDisplay = caseData;
-
+                   
                 } else {
                     this.caseShowmsg = false;
                 }
@@ -1206,7 +1210,7 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
                 this.globalProdrefreshPageination();
             })
             .catch(error => {
-                
+                console.log('Error Message--' + error);
                 const event = new ShowToastEvent({
                     title: 'Error',
                     variant: 'error',
@@ -1230,13 +1234,13 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     }
     refreshCasePageination() {
         if (this.isglobalCaserefreshPageination == false) {
-
+            
             this.isglobalCaserefreshPageination = true;
         } else {
-
+           
             this.isglobalCaserefreshPageination = false;
         }
-
+       
     }
     globalProjpagenation(recordsList) {
         this.globalprjRecToDisplay = recordsList;
@@ -1281,11 +1285,11 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     }
     @track prodPaginationList = [];
     globalPrdPaginatorChange(event) {
-        this.prodPaginationList = event.detail;
-        this.rowNumberOffset = this.globalpdtRecToDisplay[0].rowNumber - 1;
-        this.initialRecords = event.detail;
-    }
-    //sorting Global Search Case Data Table
+            this.prodPaginationList = event.detail;
+            this.rowNumberOffset = this.globalpdtRecToDisplay[0].rowNumber - 1;
+            this.initialRecords = event.detail;
+        }
+        //sorting Global Search Case Data Table
     doGlobalCaseSorting(event) {
         this.GlobalCaseSortBy = event.detail.fieldName;
         this.sortGlobalCaseDirection = event.detail.sortDirection;
@@ -1293,67 +1297,67 @@ export default class Core_IPS_Body_LWC extends NavigationMixin(LightningElement)
     }
     coltype;
     sortGlobalCaseDataData(fieldname, direction) {
-        let parseData = JSON.parse(JSON.stringify(this.globalcaserecordsToDisplay));
-       
-        let column = this.globalcasecolumns.find(c => c.fieldName === fieldname);
-        this.coltype = column.type;
-
-
-        if (fieldname == 'Createddate') {
-            fieldname = 'CreateddateFormat';
-        }
-        else if (fieldname == 'Closeddate') {
-            fieldname = 'CloseddateFormat';
-
-        }
-        else if (fieldname == 'LastModifieddate') {
-            fieldname = 'LastModifieddateFormat';
-        }
-
-        let keyValue = (a) => {
-            return a[fieldname];
-        };
-        let isReverse = direction === 'asc' ? 1 : -1;
-        parseData.sort((x, y) => {
-            x = keyValue(x) ? keyValue(x) : '';
-            y = keyValue(y) ? keyValue(y) : '';
-
-            if (fieldname === 'CreateddateFormat' || fieldname === 'CloseddateFormat' || fieldname === 'LastModifieddateFormat') {
-                var dx = new Date(x);
-                var dy = new Date(y);
-                return isReverse * (dx.getTime() - dy.getTime());
+            let parseData = JSON.parse(JSON.stringify(this.globalcaserecordsToDisplay));
+            //console.log('parsedata--'+parseData.length);
+            let column = this.globalcasecolumns.find(c=>c.fieldName===fieldname);
+            this.coltype = column.type;
+            
+            
+            if(fieldname == 'Createddate')  {
+                fieldname = 'CreateddateFormat';
             }
-            else {
-                return isReverse * ((x > y) - (y > x));
+            else if(fieldname == 'Closeddate'){
+                fieldname = 'CloseddateFormat';
+               
             }
-        });
-        this.globalcaserecordsToDisplay = parseData;
-        this.globalCasepagenation(this.globalcaserecordsToDisplay);
-        this.refreshCasePageination();
-    }
-    //Sorting for Global Search Project Data table
+            else if(fieldname == 'LastModifieddate'){
+                fieldname = 'LastModifieddateFormat';
+            }
+            
+            let keyValue = (a) => {
+                return a[fieldname];
+            };
+            let isReverse = direction === 'asc' ? 1 : -1;
+            parseData.sort((x, y) => {
+                x = keyValue(x) ? keyValue(x) : '';
+                y = keyValue(y) ? keyValue(y) : '';
+              
+                if(fieldname==='CreateddateFormat' || fieldname==='CloseddateFormat' || fieldname === 'LastModifieddateFormat') {
+                    var dx = new Date(x);
+                    var dy = new Date(y);
+                    return isReverse * (dx.getTime() - dy.getTime());
+                }  
+                else{
+                    return isReverse * ((x > y) - (y > x));
+                }    
+            });
+            this.globalcaserecordsToDisplay = parseData;
+            this.globalCasepagenation(this.globalcaserecordsToDisplay);
+            this.refreshCasePageination();
+        }
+        //Sorting for Global Search Project Data table
     doGlobalProjectSorting(event) {
         this.GlobalProjectSortBy = event.detail.fieldName;
         this.sortGlobalProjectDirection = event.detail.sortDirection;
         this.sortGlobalProjectDataData(event.detail.fieldName, event.detail.sortDirection)
     }
     sortGlobalProjectDataData(fieldname, direction) {
-        let parseData = JSON.parse(JSON.stringify(this.globalprjRecToDisplay));
-        let keyValue = (a) => {
-            return a[fieldname];
-        };
-        let isReverse = direction === 'asc' ? 1 : -1;
-        parseData.sort((x, y) => {
-            x = keyValue(x) ? keyValue(x) : '';
-            y = keyValue(y) ? keyValue(y) : '';
-            return isReverse * ((x > y) - (y > x));
-        });
-        this.globalprjRecToDisplay = parseData;
+            let parseData = JSON.parse(JSON.stringify(this.globalprjRecToDisplay));
+            let keyValue = (a) => {
+                return a[fieldname];
+            };
+            let isReverse = direction === 'asc' ? 1 : -1;
+            parseData.sort((x, y) => {
+                x = keyValue(x) ? keyValue(x) : '';
+                y = keyValue(y) ? keyValue(y) : '';
+                return isReverse * ((x > y) - (y > x));
+            });
+            this.globalprjRecToDisplay = parseData;
 
-        this.globalProjpagenation(this.globalprjRecToDisplay);
-        this.globalProjrefreshPageination();
-    }
-    //sorting for Global Search Product Data Table
+            this.globalProjpagenation(this.globalprjRecToDisplay);
+            this.globalProjrefreshPageination();
+        }
+        //sorting for Global Search Product Data Table
     doGlobalProductSorting(event) {
         this.GlobalProductSortBy = event.detail.fieldName;
         this.sortGlobalProductDirection = event.detail.sortDirection;

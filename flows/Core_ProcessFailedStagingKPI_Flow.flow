@@ -15,6 +15,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_KPIRetryMechanism</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Send_Email</name>
@@ -31,6 +32,7 @@
             </value>
         </inputParameters>
         <nameSegment>Core_KPI_Staging__c.KPIfailedRecordsEmail</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>

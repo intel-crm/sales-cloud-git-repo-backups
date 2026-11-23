@@ -54,9 +54,9 @@
         <div if:true={blockedDomain} class="slds-text-color_error validationmsg" style="margin-top:auto;"> 
             {label.PRM_BlockedDomainError}<a href={label.IPA_Request_Support_URL}> {label.PRM_BlockedDomainErrorLabel}</a>
         </div>
-        <div if:true={blockedContact} class="slds-text-color_error validationmsg" style="margin-top:auto;"> 
+        <!-- <div if:true={blockedContact} class="slds-text-color_error validationmsg" style="margin-top:auto;"> 
            <p>blocked</p>
-        </div>
+        </div> -->
         <div if:true={message} class="slds-m-left--large slds-grid slds-wrap slds-m-right--large">
             <template if:true={getValidationMsg}>
                 <div
@@ -72,15 +72,15 @@
                     </lightning-formatted-rich-text>
                 </div>
             </template>
-            <!-- <div if:true={isDisplayChatWithIntelLink}
-                class="slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+            <!-- <div if:true={isDisplayChatWithIntelLink} class="slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                
                 <a href={label.EPUM_ChatWithIntelLink} target="_blank"
                     class="slds-text-heading_medium slds-p-right_x-small slds-m-bottom_medium parRole validationMsg"><u>{label.EPUM_ChatWithIntel}</u></a>
-            </div> -->
+        </div> -->
             <div if:true={createNew}
                 class=" slds-m-bottom_medium inviteUserDiv slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
                 <button class="slds-button slds-button_brand inviteAUserClass" onclick={showInviteUser}>
-                    <lightning-icon size="x-small" class="slds-p-right_x-small" 
+                    <lightning-icon size="x-small" class="slds-p-right_x-small" variant="inverse"
                         icon-name="utility:add">
                     </lightning-icon>
                     {label.EPUM_InviteAUser}
@@ -94,12 +94,11 @@
                 <!--lightning-button variant="brand" label={label.EPUM_SendInvite} onclick={sendInviteToUser}></lightning-button-->
             </div>
         </div>
-       
         <hr>
         <div class="slds-grid slds-wrap slds-m-left_large">
             <h3 class="icon-container">
                 <span class="fa-users-1 icon slds-m-right_medium"></span>
-            </h3>   
+            </h3>
             <h3 class="label">{label.PRM_Invite_Member_Title}</h3>
             <c-prm_bulk-Invite-Parent></c-prm_bulk-Invite-Parent> 
             <p style="font-weight: bold;">For any issues, please contact <a href={label.PRM_Customer_support_link} target="_blank"> support</a></p>
@@ -124,7 +123,7 @@
                     class=" slds-m-bottom_medium inviteUserDiv slds-size_2-of-12 slds-small-size_2-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12">
                     <button class="slds-button slds-button_brand inviteAUserClass slds-float_right"
                         onclick={showInviteUser}>
-                        <lightning-icon size="x-small" class="slds-p-right_x-small" 
+                        <lightning-icon size="x-small" class="slds-p-right_x-small" variant="inverse"
                             icon-name="utility:add"></lightning-icon>
                         {label.EPUM_InviteAUser}
                     </button>
@@ -246,7 +245,7 @@
                             <header class="slds-modal__header">
                                 <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
                                     title="Close" onclick={closeModal} id="clModal">
-                                    <lightning-icon icon-name="utility:close" alternative-text="close"
+                                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
                                         size="small">
                                     </lightning-icon>
                                     <span class="slds-assistive-text">{label.EPUM_Close}</span>
@@ -405,7 +404,7 @@
     <div if:true={createNew}
         class=" slds-m-bottom_medium inviteUserDiv slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
         <button class="slds-button slds-button_brand inviteAUserClass" onclick={showInviteUser}>
-            <lightning-icon size="x-small" class="slds-p-right_x-small" icon-name="utility:add">
+            <lightning-icon size="x-small" class="slds-p-right_x-small" variant="inverse" icon-name="utility:add">
             </lightning-icon>
             {label.EPUM_InviteAUser}
         </button>
@@ -450,7 +449,7 @@
                         variant="bare-inverse" alternative-text="Ascending" title="Ascending"
                         onclick={handleStatusSort}></lightning-button-icon>
                 </lightning-layout-item>
-                <lightning-layout-item size="2" padding="around-small" title='Contact Country'>
+                <lightning-layout-item size="2" padding="around-small" title='Contact Country'> 
                     <b>{label.PRM_Country}</b>
                     <lightning-button-icon class="slds-m-left_xx-small" icon-name="utility:arrowup"
                         variant="bare-inverse" alternative-text="Ascending" title="Ascending" onclick={handleOPIDSort}>
@@ -544,7 +543,7 @@
                         </span>
                     </template>
                     <template if:false={validFirst}>
-                        <lightning-icon size="x-small" class="slds-p-right_x-small"
+                        <lightning-icon size="x-small" variant="inverse" class="slds-p-right_x-small"
                             icon-name="utility:arrow_left">
                         </lightning-icon>
                     </template>
@@ -557,7 +556,7 @@
                         </span>
                     </template>
                     <template if:false={validPrevious}>
-                        <lightning-icon size="x-small" class="slds-p-right_x-small"
+                        <lightning-icon size="x-small" variant="inverse" class="slds-p-right_x-small"
                             icon-name="utility:back">
                         </lightning-icon>
                     </template>
@@ -581,7 +580,7 @@
                         </lightning-icon>
                     </template>
                     <template if:false={validNext}>
-                        <lightning-icon size="x-small" class="slds-p-left_x-small"
+                        <lightning-icon size="x-small" class="slds-p-left_x-small" variant="inverse"
                             icon-name="utility:forward">
                         </lightning-icon>
                     </template>

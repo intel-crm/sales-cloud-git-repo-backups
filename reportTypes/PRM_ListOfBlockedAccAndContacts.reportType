@@ -33,7 +33,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Comments__c</field>
+            <field>Contact_Email__c</field>
             <table>PRM_SBC_Account_Search_Configuration__c</table>
         </columns>
         <masterLabel>IPA Admin Configurations</masterLabel>

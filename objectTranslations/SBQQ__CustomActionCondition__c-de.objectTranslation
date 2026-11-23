@@ -47,9 +47,13 @@
         <relationshipLabel><!-- Custom Action Conditions --></relationshipLabel>
     </fields>
     <fields>
-        <help>Wählen Sie ein Feld im Zielobjekt.</help>
+        <help>Wählen Sie das Feld, das den Wert enthalten soll, den Sie im Feld &quot;Wert&quot; eingeben.</help>
         <label><!-- Field --></label>
         <name>SBQQ__Field__c</name>
+        <picklistValues>
+            <masterLabel>PSG_Restricted_Product__c</masterLabel>
+            <translation><!-- PSG_Restricted_Product__c --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>Pricing_SW_Custom_Action__c</masterLabel>
             <translation><!-- Pricing_SW_Custom_Action__c --></translation>
@@ -65,6 +69,14 @@
         <picklistValues>
             <masterLabel>Quote Status</masterLabel>
             <translation><!-- Quote Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_PSG_Restricted_Product_Check__c</masterLabel>
+            <translation><!-- core_cpq_PSG_Restricted_Product_Check__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>core_cpq_PSG_Restricted_Product__c</masterLabel>
+            <translation><!-- core_cpq_PSG_Restricted_Product__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>core_cpq_quote_type_nm__c</masterLabel>

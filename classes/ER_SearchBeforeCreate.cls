@@ -5,12 +5,15 @@ Modification Log :
 *Harshitha/Manjunatha(Quest)       25/06/2021               Apex Class for Search Before Create functionality for B2B Programs
 *********************************************************************************************************************/
 @RestResource(urlMapping='/Account/V2/SearchAccount-old')
+
 global without sharing class ER_SearchBeforeCreate {
+     public static Set<Id> sbrAccountIds = new Set<Id>();
     global class SearchResults{
         List<ER_SBCAccountSearchResponse> SearchResults = new List<ER_SBCAccountSearchResponse>();
         SearchResults(List<ER_SBCAccountSearchResponse> listOfAccountSearch){
             if(listOfAccountSearch != null){
                 SearchResults = listOfAccountSearch;
+                
             }
         }
     }
@@ -30,10 +33,12 @@ global without sharing class ER_SearchBeforeCreate {
     //global static void doPost(String AccountName,Address AccountAddress, String AccountURL, String EmailAddress, String SearchLimit, String MinimumSearchScore,String AccountType) {		
     global static void doPost(ER_SearchBeforeCreate.CIMSearchBeforeCreate SearchAccount){
         RestResponse res = RestContext.response;
+        
       //  Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
         try{
             List<ER_SearchAccounts> lstSearchAccountObj = new List<ER_SearchAccounts>();
             List<PRM_CIMSearchResults__c> listOfCimResult = null;
+            Set<Id> setOfAccId = new Set<Id>();
             Set<Id> setOfAccountId = new Set<Id>();
             String AccountType = '';
             
@@ -82,23 +87,56 @@ global without sharing class ER_SearchBeforeCreate {
             if(String.isNotBlank(SearchAccount.SearchLimit))
             {
                 
-                //ER_SearchCIMAccounts erCIMCallout = new ER_SearchCIMAccounts();
+                //ER_SearchCIMAccounts erCIMCallout = new ER_SearchCIMAccounts();  
                 if(String.IsNotBlank(SearchAccount.AccountAddress.AddressLine2)){
                     SearchAccount.AccountAddress.AddressLine1 = SearchAccount.AccountAddress.AddressLine1 +' '+ SearchAccount.AccountAddress.AddressLine2;
                 }
                 
+                
                 //Calling CIM API to get Matching Account Score Results                
-                listOfCimResult = new ER_SearchCIMAccounts().getCimResults(SearchAccount.AccountName, SearchAccount.AccountAddress.AddressLine1, SearchAccount.AccountAddress.PostalCode,SearchAccount.AccountAddress.City,billingCountryForAPI,SearchAccount.AccountAddress.StateCode2,SearchAccount.SearchLimit,SearchAccount.MinimumSearchScore,SearchAccount.AccountURL,SearchAccount.EmailAddress,AccountType, true);
-               
-            }
+                //listOfCimResult = new ER_SearchCIMAccounts().getCimResults(SearchAccount.AccountName, SearchAccount.AccountAddress.AddressLine1, SearchAccount.AccountAddress.PostalCode,SearchAccount.AccountAddress.City,billingCountryForAPI,SearchAccount.AccountAddress.StateCode2,SearchAccount.SearchLimit,SearchAccount.MinimumSearchScore,SearchAccount.AccountURL,SearchAccount.EmailAddress,AccountType, true);
+				//System.debug('listOfCimResult size : '+listOfCimResult.size());
+				 
             
+            List<UCD_GenericAcctSearch_SBR.fieldsetwrapper> fDetailsList  = new List<UCD_GenericAcctSearch_SBR.fieldsetwrapper>();
+        	PRM_AdminRegistrationDuplicateDetails.ucdErrorhandlingWrapper ucdErrWrp = new PRM_AdminRegistrationDuplicateDetails.ucdErrorhandlingWrapper();  
+            PRM_AdminRegistrationDuplicateDetails.CountryStateWrapperForSBR csWrp = new PRM_AdminRegistrationDuplicateDetails.CountryStateWrapperForSBR();
+            csWrp = PRM_AdminRegistrationDuplicateDetails.getCountryOrStateForSBR (SearchAccount.AccountAddress.CountryCode2, SearchAccount.AccountAddress.StateCode2);
+            //create wrapper to search matching account results
+            fDetailsList = PRM_AdminRegistrationDuplicateDetails.createFDetailsList (SearchAccount.AccountName, csWrp.country, csWrp.state, SearchAccount.AccountURL);
+			 //List<ER_SearchAccounts> lstSearchAccountObj = new List<ER_SearchAccounts>();
+            //call reltio API to get matching accounts
+             UCD_GenericAcctSearch_SBR.AccountSearchDataModelWithError accFinalDetails = UCD_GenericAcctSearch_SBR.getAcctResults (fDetailsList, 'Partner');
+            //get only account details
+            List<UCD_GenericAcctSearch_SBR.AccountSearchDataModel> accDetails = accFinalDetails.accountSearchModel;
+            if (accDetails != null && !accDetails.isEmpty()) {
+                getUcdAccDetailsMap(accDetails);
+            }
+            List<Account> accList = [SELECT Id, Name,Core_CIM_ID__c, Unified_Hierarchy_View__c,Core_Customer_Aggregation_Type__c,Core_Business_Party_Id__c, Core_Address_Details__c, 
+                                Core_Intel_Partner_Alliance_PartnerGroup__c, /*Core_Account_Type__c, // BizOrgType code removal*/ toLabel(Core_IPA_Partner_Role__c), Core_Export_Compliance_Block__c, 
+                                RecordType.name, Owner.name, BillingCity, BillingStateCode, BillingCountryCode, BillingStreet,BillingPostalCode,
+                                Core_Unified_Global_Customer_Name__c,Core_CNDA_Number__c,Core_Covered_Account__c
+                                FROM Account WHERE Id IN: sbrAccountIds];
+            for(Account acc :accList)
+                {	
+                    setOfAccId.add(acc.Id);
+                    ER_SearchAccounts accSearchObj = new ER_SearchAccounts(acc.id,acc.Core_CIM_ID__c, acc, 0); 
+                    lstSearchAccountObj.add(accSearchObj);
+                } 
+				
+                
+            }
+            List<ER_SBC_PriorityMatrix__mdt> priorityMatrix = [SELECT AccountType__c,PriorityField__c,PriorityNumber__c,isObjectField__c,PriorityValue__c,isSearchScore__c
+                                                               FROM ER_SBC_PriorityMatrix__mdt WHERE AccountType__c ='RDC' ORDER by PriorityNumber__c]; 
             // Sorting the Accounts based on Priority Logic
-            lstSearchAccountObj = ER_SearchSalesCloudAccounts.getSortedAccountsCim(listOfCimResult,setOfAccountId,AccountType,SearchAccount.SearchLimit);
+           // lstSearchAccountObj = ER_SearchSalesCloudAccounts.getSortedAccountsCim(listOfCimResult,setOfAccountId,AccountType,SearchAccount.SearchLimit);
+            //System.debug('lstSearchAccountObj size : '+lstSearchAccountObj.size());
+            List<ER_SearchAccounts> accoutSortedList = ER_SearchSalesCloudAccounts.sortIdBasedOnSortingCriteria(lstSearchAccountObj,setOfAccId,priorityMatrix,SearchAccount.SearchLimit);
             
             List<ER_SBCAccountSearchResponse> cimAccountsList = new List<ER_SBCAccountSearchResponse>();
             if(lstSearchAccountObj != null){
                 //Formatting the Response from CIM
-                cimAccountsList.addAll(getResponseJSON(lstSearchAccountObj,countryMap));
+                cimAccountsList.addAll(getResponseJSON(accoutSortedList,countryMap));
             }
             
             
@@ -162,12 +200,34 @@ global without sharing class ER_SearchBeforeCreate {
     global class CIMSearchBeforeCreate
     {
         public String AccountName { get; set; }
-        public Address AccountAddress { get; set; }
+        public Address AccountAddress { get; set; } 
         public String AccountURL { get; set; }
         public String EmailAddress { get; set; }
+        public String BizOrgType{ get; set;}
         public String SearchLimit { get; set; }
         public String MinimumSearchScore { get; set; }
         public String EntitlementName { get; set; }
+   
     }
+ 
+
+    @Testvisible     
+    private static void getUcdAccDetailsMap(List<UCD_GenericAcctSearch_SBR.AccountSearchDataModel> accDetails) {
+        List<UCD_GenericAcctSearch_SBR.AccountSearchDataModel> sbrChildAcc = new List<UCD_GenericAcctSearch_SBR.AccountSearchDataModel>();
+
+        //store parent account ids in set
+        for (UCD_GenericAcctSearch_SBR.AccountSearchDataModel adm : accDetails) {
+            sbrAccountIds.add(adm.accId);
+            if(adm.childAccounts != null && !adm.childAccounts.isEmpty()) {
+                sbrChildAcc.addAll(adm.childAccounts); 
+            }
+        }
+
+        //if any child account present call that same method again to store the accIds and to get child accounts if present
+        if(!sbrChildAcc.isEmpty() && sbrChildAcc != null) {
+            getUcdAccDetailsMap(sbrChildAcc);
+        }
+    }
+    
     
 }

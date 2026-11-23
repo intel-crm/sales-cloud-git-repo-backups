@@ -9,6 +9,10 @@
         <value>Tenders Comments</value>
     </caseValues>
     <fields>
+        <label><!-- Answer --></label>
+        <name>Pricing_Answer__c</name>
+    </fields>
+    <fields>
         <label><!-- Business Unit --></label>
         <name>Pricing_Business_Unit_Pkl__c</name>
         <picklistValues>

@@ -1,10 +1,13 @@
 ({
     editRecord: function (component, event, helper, quoteLineId) {
+        console.log('quoteLineId::'+quoteLineId);
+       
         const editRecordEvent = $A.get("e.force:editRecord");
         editRecordEvent.setParams({
             navigationLocation: "RELATED_LIST_ROW",
             recordId: quoteLineId
         });
+        console.log('editRecordEvent.fire():'+editRecordEvent);
         editRecordEvent.fire();
     },
     deleteRecord: function (component, event, helper, quoteLineId) {

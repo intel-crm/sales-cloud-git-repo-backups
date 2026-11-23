@@ -2,7 +2,7 @@
  * @description       : Handler Class for Record Job object Trigger
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 05-13-2026
+ * @last modified on  : 05-11-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_RecordJobHandler extends TriggerHandler {
@@ -12,6 +12,7 @@ public without sharing class Pricing_RecordJobHandler extends TriggerHandler {
     * @author Sandeep Chamate | 06-13-2024 
     **/
     public static Boolean isStopCalculatorForBulkWon = false;
+    private static final String INTEGRATION_JOB_PERMISSION_SET = 'Pricing_Abort_Calculator_Integration_User';
     public override void beforeUpdate() {
 
         Set<Id> quoteIds = new Set<Id>();
@@ -57,25 +58,50 @@ public without sharing class Pricing_RecordJobHandler extends TriggerHandler {
                 if(quoteIdToQLIMap.size() > 0 && quoteIdToQLIMap.get(qId) != null){
                 for(SBQQ__QuoteLine__c qli: quoteIdToQLIMap.get(qId)) {
                     if(!qli.Pricing_Save_After_Calculation_cb__c) {
+                        system.debug('isCalculationPending:'+isCalculationPending);
                         isCalculationPending = true;
                         }
                     }
                 }
+                system.debug('isCalculationPendingiff:'+isCalculationPending);
                 if(!isCalculationPending) {
                     apexJobIds.add(quoteIdToRecordJobMap.get(qId).SBQQ__JobId__c);
                 }
             }
 
-            for(AsyncApexJob queue: [Select Id,CreatedBy.Profile.Name,Status,ApexClass.Name from AsyncApexJob WHERE Id IN: apexJobIds AND Status NOT IN ('Aborted','Completed') and JobType = 'Queueable']) {
-                if(queue.CreatedBy.Profile.Name == 'Integration' || isStopCalculatorForBulkWon){
-                	System.AbortJob(queue.Id);
-                }
+            system.debug('apexJobIds:'+apexJobIds);
+            system.debug('isStopCalculatorForBulkWon:'+isStopCalculatorForBulkWon);
+            List<AsyncApexJob> queueableJobs = [SELECT Id, CreatedById, Status, ApexClass.Name FROM AsyncApexJob WHERE Id IN: apexJobIds AND Status NOT IN ('Aborted','Completed') AND JobType = 'Queueable'];
+            Set<Id> jobCreatorIds = new Set<Id>();
+            for(AsyncApexJob queue : queueableJobs) {
+               jobCreatorIds.add(queue.CreatedById);
             }
-            isStopCalculatorForBulkWon = false;
+            Set<Id> integrationUserIds = getIntegrationUserIds(jobCreatorIds);
+            for(AsyncApexJob queue : queueableJobs) {
+               system.debug('enter#:'+isStopCalculatorForBulkWon);
+               if(integrationUserIds.contains(queue.CreatedById) || isStopCalculatorForBulkWon){
+                   system.debug('if entering');
+                	System.AbortJob(queue.Id);
+               }
+            }
         }
         catch(Exception ex) {
             Pricing_Tender_Utility.logError(ex);
         }
 
+    }
+
+    @TestVisible
+    private static Set<Id> getIntegrationUserIds(Set<Id> userIds) {
+        Set<Id> integrationUserIds = new Set<Id>();
+        for(PermissionSetAssignment assignment : [
+            SELECT AssigneeId
+            FROM PermissionSetAssignment
+            WHERE AssigneeId IN :userIds
+            AND PermissionSet.Name = :INTEGRATION_JOB_PERMISSION_SET
+        ]) {
+            integrationUserIds.add(assignment.AssigneeId);
+        }
+        return integrationUserIds;
     }
 }

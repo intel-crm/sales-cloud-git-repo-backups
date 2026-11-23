@@ -158,9 +158,6 @@
         <field>SUBJECT</field>
     </columns>
     <columns>
-        <field>Case.Core_End_Customer__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_IPS_Escalated_Level__c</field>
     </columns>
     <columns>
@@ -176,11 +173,11 @@
             <value>Low</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Case.Core_Sub_Status__c</column>
+            <column>STATUS</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Closed,GEC Hold,Close-Pending,Invalid</value>
+            <value>Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>

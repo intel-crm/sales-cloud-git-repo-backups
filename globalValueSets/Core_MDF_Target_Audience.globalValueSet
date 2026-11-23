@@ -286,10 +286,10 @@
         <label>Unmanaged Small Business</label>
     </customValue>
     <customValue>
-        <fullName>Large Business (1000 + Employees)</fullName>
+        <fullName>Mid Market / Large Enterprise</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Large Business (1000 + Employees)</label>
+        <label>Mid Market / Large Enterprise</label>
     </customValue>
     <customValue>
         <fullName>Small Business (1 - 1000 Employees)</fullName>
@@ -298,10 +298,16 @@
         <label>Small Business (1 - 1000 Employees)</label>
     </customValue>
     <customValue>
-        <fullName>LOB</fullName>
+        <fullName>Large Business (1000 + Employees)</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>LOB</label>
+        <label>Large Business (1000 + Employees)</label>
+    </customValue>
+    <customValue>
+        <fullName>Business Owners/SMB </fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Business Owners/SMB </label>
     </customValue>
     <customValue>
         <fullName>ITDM</fullName>
@@ -310,16 +316,10 @@
         <label>ITDM</label>
     </customValue>
     <customValue>
-        <fullName>Mid Market / Large Enterprise</fullName>
+        <fullName>LOB</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Mid Market / Large Enterprise</label>
-    </customValue>
-    <customValue>
-        <fullName>Business Owners/SMB </fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Business Owners/SMB </label>
+        <label>LOB</label>
     </customValue>
     <description>Store Target Audience values</description>
     <masterLabel>Target Audience</masterLabel>

@@ -67,13 +67,7 @@ public with sharing class Core_IPS_DeflectedObject_LWC_Ctrl {
             	deflectedObj.Core_IPS_Product__c = caseInfoJSON.Product;
         	}
         }
-        //upsert deflectedObj;
-// Niyaz -vulnerability fix-refering to service class
-       List<Core_IPS_Deflected_Object__c> deflectedObjList = new List<Core_IPS_Deflected_Object__c>{ deflectedObj };
-Core_IPS_QueryService.upsertRecords(deflectedObjList);
-deflectedObj = deflectedObjList[0];
-//return deflectedObj.Id;
- 
+        upsert deflectedObj;
         return deflectedObj.Id; 
     }
     

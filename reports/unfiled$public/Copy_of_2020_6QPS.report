@@ -151,7 +151,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>NSG</value>
+            <value>CCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Product2.Core_Product_Type__c</column>

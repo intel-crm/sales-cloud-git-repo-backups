@@ -1,111 +1,111 @@
 <template>
-  <lightning-card title={headerLbl} class="slds-card__header" icon-name="custom:custom63">
-      <!-- Layout STarts here -->
-      <div class="slds-box slds-m-around_medium slds-m-top_small">
-          <lightning-layout multiple-rows='true' vertical-align="start">
-              <!-- invoice number filter -->
-              <lightning-layout-item>
-                  <div class="slds-grid slds-wrap alignGrid">
-                      <div class="slds-p-left_xx-small">
-                          <lightning-input type="text" label={invoiceNumberLbl}
-                              placeholder={invoiceNumberPlaceholderLbl} value={StartDate} onchange={setInvoiceNumber}>
-                          </lightning-input>
-                      </div>
-                  </div>
-              </lightning-layout-item>
-              <!-- Invoice number filter end -->
-              <lightning-layout-item>
-                  <div class="slds-grid slds-wrap alignGrid">
-                      <div class="slds-p-left_x-small slds-p-right_x-small slds-m-top_large">
-                          {lblOR}
-                      </div>
-                  </div>
-              </lightning-layout-item>
-              <lightning-layout-item>
-                  <div class="slds-grid slds-wrap alignGrid">
-                      <div class="slds-p-left_xx-small">
-                          <lightning-input type="date" label={dtFrom} placeholder={startDatePlaceHolderlbl}
-                              value={StartDate} onchange={setStartDate}></lightning-input>
-                      </div>
-                  </div>
-              </lightning-layout-item>
-              <lightning-layout-item>
-                  <div class="slds-grid slds-wrap alignGrid">
-                      <div class="slds-p-left_xx-small">
-                          <lightning-input type="date" label={dtTo} placeholder={endDatePlaceHolderlbl}
-                              value={endDate} onchange={setEndDate}>
-                          </lightning-input>
-                      </div>
-                  </div>
-              </lightning-layout-item>
-              <lightning-layout-item>
-                  <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
-                      <div class="slds-p-left_xx-small">
-                          <lightning-button-icon alternative-text={filterBtnLbl} icon-name="utility:filterList"
-                              variant="brand" onclick={criteriaSearch}>
-                          </lightning-button-icon>
-                      </div>
-                  </div>
-              </lightning-layout-item>
-              <lightning-layout-item>
-                  <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
-                      <div class="slds-p-left_xx-small">
-                          <lightning-button-icon variant="brand" icon-name="utility:download"
-                              alternative-text={exportBtnLbl} onclick={handleExport} disabled={isDataAvailable}
-                              class="slds-button">
-                          </lightning-button-icon>
-                      </div>
-                  </div>
-              </lightning-layout-item>
-              <!-- <lightning-layout-item>
-              <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
-              <div class="slds-p-left_xx-small">
-                      <div class="slds-clearfix">
-                          <a class="link-text" href={downloadUrl} target="_blank" >Downloaded_Files</a>   
-                      </div>
-                  </div>
-              </div>
-          </lightning-layout-item> -->
-          </lightning-layout>
-      </div>
-      <div dir="auto" class="myUniqueTable slds-m-around_medium slds-box">
-          <div if:true={spinner} class="slds-spinner_inline spinner-padding">
-              <lightning-spinner variant="brand" alternative-text="Loading Data" size="medium">
-              </lightning-spinner>
-          </div>
-          <template if:true={isData}>
-              <div class="slds-p-around_small slds-align_absolute-center">
-                  <lightning-button variant="brand" value={prevBtnLbl} label={prevBtnLbl} onclick={handlePrev}
-                      disabled={loadPrev} style=" background-color: white; padding-right: 2px;">
-                  </lightning-button>
-                  <lightning-button variant="brand" value={nextBtnLbl} label={nextBtnLbl} onclick={handlNext}
-                      disabled={loadMore} style="background-color: white;">
-                  </lightning-button>
-              </div>
-              <div class="slds-m-around_medium slds-box">
-                  <lightning-datatable key-field="id" data={records} hide-checkbox-column="true"
-                      show-row-number-column="true" row-number-offset='true' columns={columns}
-                      class="slds-p-left_large">
-                  </lightning-datatable>
-                  <p></p>
-                  <p></p>
-              </div>
-              <template if:true={showBtmButton}>
-                  <div class="slds-p-around_small slds-align_absolute-center">
-                      <lightning-button variant="brand" value={prevBtnLbl} label={prevBtnLbl} onclick={handlePrev}
-                          disabled={loadPrev} style=" background-color: white; padding-right: 2px;">
-                      </lightning-button>
-                      <lightning-button variant="brand" value={nextBtnLbl} label={nextBtnLbl} onclick={handlNext}
-                          disabled={loadMore} style="background-color: white;">
-                      </lightning-button>
-                  </div>
-              </template>
-          </template>
-          <template if:false={spinner}>
-              <template if:false={isData}>
-                  <p class="slds-align_absolute-center">{salesRecordErrorLbl}</p>
-              </template>
-          </template>
-      </div>
-  </lightning-card>
+    <lightning-card title={headerLbl} class="slds-card__header" icon-name="custom:custom63">
+        <!-- Layout STarts here -->
+        <div class="slds-box slds-m-around_medium slds-m-top_small">
+            <lightning-layout multiple-rows='true' vertical-align="start">
+                <!-- invoice number filter -->
+                <lightning-layout-item>
+                    <div class="slds-grid slds-wrap alignGrid">
+                        <div class="slds-p-left_xx-small">
+                            <lightning-input type="text" label={invoiceNumberLbl}
+                                placeholder={invoiceNumberPlaceholderLbl} value={StartDate} onchange={setInvoiceNumber}>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <!-- Invoice number filter end -->
+                <lightning-layout-item>
+                    <div class="slds-grid slds-wrap alignGrid">
+                        <div class="slds-p-left_x-small slds-p-right_x-small slds-m-top_large">
+                            {lblOR}
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <div class="slds-grid slds-wrap alignGrid">
+                        <div class="slds-p-left_xx-small">
+                            <lightning-input type="date" label={dtFrom} placeholder={startDatePlaceHolderlbl}
+                                value={StartDate} onchange={setStartDate}></lightning-input>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <div class="slds-grid slds-wrap alignGrid">
+                        <div class="slds-p-left_xx-small">
+                            <lightning-input type="date" label={dtTo} placeholder={endDatePlaceHolderlbl}
+                                value={endDate} onchange={setEndDate}>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
+                        <div class="slds-p-left_xx-small">
+                            <lightning-button-icon alternative-text={filterBtnLbl} icon-name="utility:filterList"
+                                variant="brand" onclick={criteriaSearch}>
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
+                        <div class="slds-p-left_xx-small">
+                            <lightning-button-icon variant="brand" icon-name="utility:download"
+                                alternative-text={exportBtnLbl} onclick={handleExport} disabled={isDataAvailable}
+                                class="slds-button">
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                <div class="slds-grid slds-wrap alignGrid slds-m-top_large">
+                <div class="slds-p-left_xx-small">
+                        <div class="slds-clearfix">
+                            <a class="link-text" href={downloadUrl} target="_blank" >Downloaded_Files</a>   
+                        </div>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <div dir="auto" class="myUniqueTable slds-m-around_medium slds-box">
+            <div if:true={spinner} class="slds-spinner_inline spinner-padding">
+                <lightning-spinner variant="brand" alternative-text="Loading Data" size="medium">
+                </lightning-spinner>
+            </div>
+            <template if:true={isData}>
+                <div class="slds-p-around_small slds-align_absolute-center">
+                    <lightning-button variant="brand" value={prevBtnLbl} label={prevBtnLbl} onclick={handlePrev}
+                        disabled={loadPrev} style=" background-color: white; padding-right: 2px;">
+                    </lightning-button>
+                    <lightning-button variant="brand" value={nextBtnLbl} label={nextBtnLbl} onclick={handlNext}
+                        disabled={loadMore} style="background-color: white;">
+                    </lightning-button>
+                </div>
+                <div class="slds-m-around_medium slds-box">
+                    <lightning-datatable key-field="id" data={records} hide-checkbox-column="true"
+                        show-row-number-column="true" row-number-offset='true' columns={columns}
+                        class="slds-p-left_large">
+                    </lightning-datatable>
+                    <p></p>
+                    <p></p>
+                </div>
+                <template if:true={showBtmButton}>
+                    <div class="slds-p-around_small slds-align_absolute-center">
+                        <lightning-button variant="brand" value={prevBtnLbl} label={prevBtnLbl} onclick={handlePrev}
+                            disabled={loadPrev} style=" background-color: white; padding-right: 2px;">
+                        </lightning-button>
+                        <lightning-button variant="brand" value={nextBtnLbl} label={nextBtnLbl} onclick={handlNext}
+                            disabled={loadMore} style="background-color: white;">
+                        </lightning-button>
+                    </div>
+                </template>
+            </template>
+            <template if:false={spinner}>
+                <template if:false={isData}>
+                    <p class="slds-align_absolute-center">{salesRecordErrorLbl}</p>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
 </template>

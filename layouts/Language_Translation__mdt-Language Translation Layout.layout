@@ -86,6 +86,10 @@
                 <behavior>Edit</behavior>
                 <field>ENU__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FRC__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -2,7 +2,7 @@
 Apex Class Name:  RelatedACMRecords
 Version     : 1.0 
 Created Date: 28 Jan 2020
-Function    : It act as wrapper class for to hold Related ACM records for the Account
+Function    : It act as wrapper class for to hold Related ACM records for the Account 
 Modification Log :
 * Developer             Date              Description
 * ----------------------------------------------------------------------------                 

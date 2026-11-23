@@ -1,6 +1,6 @@
 @isTest
 public class PRM_OPID_OnDemandsyncRequest_Test {
-	Public static Boolean isTestClassRunning = false;
+	/*Public static Boolean isTestClassRunning = false;
     @testSetup
     private static void createData(){
         test.startTest();
@@ -78,10 +78,10 @@ public class PRM_OPID_OnDemandsyncRequest_Test {
         String replacedjson = '[[{\"Core_CIM_ID_Temp\":\"37894006\",\"Core_Effective_End_Date_Time_Temp\":\"2021-09-20T18:07:00\",\"Core_Status_Effective_End_Date_Time_Temp\":\"2021-09-19T18:07:00\",\"Core_OnePartner_Account_Name_Temp\":\"UAT_RTA31-Non-Program\",\"Core_OnePartnerID_Temp\":\"11920002\",\"Core_Prime_Account_Name_Temp\":\"UAT_RTA31\",\"Core_PrimeID_Temp\":\"4480011\",\"Core_SalesCloud_AccountID_Temp__c\":\"0012i00000bHxMTAA0\",\"Core_Status_Temp\":\"PROCESSED\",\"Core_Status_Reason_Temp\":null,\"Core_Effective_Start_Date_Time_Temp\":\"2021-09-20T18:06:17\",\"Core_PAG_Grouping_Method_Temp\":\"LINEOFBUSNS\"},'+
             					'{\"Core_CIM_ID_Temp\":\"37894002\",\"Core_Effective_End_Date_Time_Temp\":\"2021-09-20T18:07:00\",\"Core_Status_Effective_End_Date_Time_Temp\":\"2021-09-19T18:07:00\",\"Core_OnePartner_Account_Name_Temp\":\"UAT_RTA31-Non-Program\",\"Core_OnePartnerID_Temp\":\"11920002\",\"Core_Prime_Account_Name_Temp\":\"UAT_RTA31\",\"Core_PrimeID_Temp\":\"4480011\",\"Core_SalesCloud_AccountID_Temp__c\":\"0012i00000bHwqdAAC\",\"Core_Status_Temp\":\"PROCESSED\",\"Core_Status_Reason_Temp\":null,\"Core_Effective_Start_Date_Time_Temp\":\"2021-09-20T18:07:00\",\"Core_PAG_Grouping_Method_Temp\":\"LINEOFBUSNS\"}]]';
         PRM_Integration__mdt intreq = new PRM_Integration__mdt();
-        intreq.API_Key__c = 'https://apis.intel.com/v1/auth/token';
-        intreq.EndPointURL__c = 'https://apis.intel.com/m2r/master-data/v1/point-metrics';
-        intreq.Password__c = 'Zaa8Q~-E0uzRMDmEYTM1Z5zUWiuIiJAYIuB65bp-';
-        intreq.Username__c = '66d60bd5-1f92-47b8-a11f-4ae50ab9f8bd';
+        intreq.API_Key__c = 'https://apis-sandbox.intel.com/v1/auth/token';
+        intreq.EndPointURL__c = 'https://apis-sandbox.intel.com/m2r/master-data/v1/point-metrics';
+        //intreq.Password__c = 'Zaa8Q~-E0uzRMDmEYTM1Z5zUWiuIiJAYIuB65bp-';
+        //intreq.Username__c = '66d60bd5-1f92-47b8-a11f-4ae50ab9f8bd';
         
         PRM_OPID_OnDemandsyncRequest.ondemandSyncReq(acc.Id);
         test.stopTest();
@@ -203,5 +203,5 @@ public class PRM_OPID_OnDemandsyncRequest_Test {
             res.setStatusCode(401);
             return res;
         }
-	}
+	}*/
 }

@@ -38,7 +38,7 @@ public with sharing class Core_OpportunityContactRoleHandler {
             map<Id,Opportunity> OpptyMap = new map<Id,Opportunity>([SELECT Id, name, Core_IsClone__c, Core_Renewed_Opportunity_Ind__c,Core_Lead_Conversion_Flag__c FROM Opportunity WHERE Id IN:oppIds]); 
             for(OpportunityContactRole ocr:newOCRList) {
                 boolean bypass = (ocr.Role==null && OpptyMap.get(ocr.OpportunityId).Core_IsClone__c == true || OpptyMap.get(ocr.OpportunityId).Core_Renewed_Opportunity_Ind__c == true ||OpptyMap.get(ocr.OpportunityId).Core_Lead_Conversion_Flag__c == true );
-                if(ocr.Role <> 'Business Decision Maker' && !bypass && !Test.isRunningTest() )
+                if(ocr.Role <> 'Business Decision Maker' && !bypass && !Test.isRunningTest())
                     ocr.adderror(Core_CRM_Utility.getCRMLabel('CRM_PrimConRole_NoBusDecMaker_ErrMsg'));
             }
         }

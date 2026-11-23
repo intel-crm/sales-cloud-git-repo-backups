@@ -18,6 +18,10 @@
         <relationshipLabel><!-- Account Status --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- CX Insight Report --></label>
+        <name>CX_Insight_Report_Formula__c</name>
+    </fields>
+    <fields>
         <label><!-- CX Report URL --></label>
         <name>CX_Insight_Report__c</name>
     </fields>

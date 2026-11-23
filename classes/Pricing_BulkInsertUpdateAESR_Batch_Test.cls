@@ -2,7 +2,7 @@
  * @description       :
  * @author            : Vrushabh
  * @group             :
- * @last modified on  : 04-07-2026
+ * @last modified on  : 03-31-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
  **/
 @isTest
@@ -51,6 +51,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeam;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,salesRepUserList[0].Email,oldAEUserListForBulkUpdate[0].Email);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
             //inp.oldAEEmailInput = UserInfo.getUserEmail();
@@ -89,6 +90,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeamLst;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,oldAEUserListForBulkUpdate[0].Email,null);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
             //inp.oldFSEEmailInput = oldAEUserListForBulkUpdate[0].email;
@@ -119,6 +121,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeam;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,salesRepUserList[0].Email,oldAEUserListForBulkUpdate[0].email);
+           // List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
             //inp.oldAEEmailInput = oldAEUserListForBulkUpdate[0].email;
@@ -157,6 +160,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeamLst;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,oldAEUserListForBulkUpdate[0].Email,null);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
             //inp.oldFSEEmailInput = oldAEUserListForBulkUpdate[0].email;
@@ -195,6 +199,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeamLst;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,oldAEUserListForBulkUpdate[0].Email,null);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
             inp.oldFSEEmailInput = oldAEUserListForBulkUpdate[0].email;
@@ -248,6 +253,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeam;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,salesRepUserList[0].Email,oldAEUserListForBulkUpdate[0].email);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
             //inp.oldAEEmailInput = oldAEUserListForBulkUpdate[0].email;
@@ -285,6 +291,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeamLst;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,oldAEUserListForBulkUpdate[0].Email,null);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
             //inp.oldAEEmailInput = oldAEUserListForBulkUpdate[0].email;
@@ -314,6 +321,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeam;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,salesRepUserList[0].Email,oldAEUserListForBulkUpdate[0].email);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             Pricing_UnifiedEndCustomerAccountMapping__c l1Record = [SELECT Id,Pricing_Unified_EndCustomer_Id__c FROM Pricing_UnifiedEndCustomerAccountMapping__c WHERE Id =: lstquote[0].Pricing_End_Customer__c LIMIT 1];
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
@@ -347,6 +355,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeam;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,salesRepUserList[0].Email,oldAEUserListForBulkUpdate[0].email);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             Pricing_UnifiedEndCustomerAccountMapping__c l1Record = [SELECT Id,Pricing_Unified_EndCustomer_Id__c FROM Pricing_UnifiedEndCustomerAccountMapping__c WHERE Id =: lstquote[0].Pricing_End_Customer__c LIMIT 1];
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
             Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs inp = new Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs();
@@ -392,6 +401,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeamLst;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,oldAEUserListForBulkUpdate[0].Email,null);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             lstquote[0].Pricing_On_Hold_Cb__c = false;
             update lstquote;
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();
@@ -441,6 +451,7 @@ public class Pricing_BulkInsertUpdateAESR_Batch_Test {
             insert accTeamLst;
             Test.startTest();
             List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 2,oldAEUserListForBulkUpdate[0].Email,null);
+            //List<SBQQ__QuoteLine__c> lstquoteLines = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 1);
             lstquote[0].Pricing_On_Hold_Cb__c = false;
             update lstquote;
             List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs> flowInputs = new List<Pricing_BulkInsertUpdateAESalesRep_Batch.FlowInputs>();

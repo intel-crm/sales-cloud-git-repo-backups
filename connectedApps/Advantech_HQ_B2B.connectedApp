@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>sridhar.swaminathan@intel.com</contactEmail>
+    <label>Advantech HQ B2B</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>MIIEpTCCA42gAwIBAgIOAY7fnkaqAAAAAB0+FMIwDQYJKoZIhvcNAQELBQAwgY4xJjAkBgNVBAMMHUludGVsX0ludGVncmF0aW9uX0NlcnRpZmljYXRlMRgwFgYDVQQLDA8wMERJcDAwMDAwMDhhSm4xFzAVBgNVBAoMDlNhbGVzZm9yY2UuY29tMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQswCQYDVQQIDAJDQTEMMAoGA1UEBhMDVVNBMB4XDTI0MDQxNTAyMzc1NVoXDTI1MDQxNTAwMDAwMFowgY4xJjAkBgNVBAMMHUludGVsX0ludGVncmF0aW9uX0NlcnRpZmljYXRlMRgwFgYDVQQLDA8wMERJcDAwMDAwMDhhSm4xFzAVBgNVBAoMDlNhbGVzZm9yY2UuY29tMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQswCQYDVQQIDAJDQTEMMAoGA1UEBhMDVVNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAonrzBl/4EIAw+TTlMSHfhbW0QYK4fUDkZKr80s4ozIsWA5jQNmF9mwRl7xsc4FcDAh6vNBQ+fGc503yDrjPls5OnqeWmnc2G4K0QXi8OEuxU9NY/7SLW9p0tQgyhwUe6bXwMJ2JgPHq8tP35zVUhEcvMy3jQmqEp9NYBF00UFQpa9n3oZKwauoT80fVWMPUWkMGZ0BAnfqEag7HXwswHn+m+fkQW1ah9Jcx1hPpl5N9bpejjL/hsPl6ilyK9JC1OqS+BB9uznZwbsN1MW47K5dgKzAEzP93zA46DJpyZ5ikwfIe0fxvKrt/3vgFutDBOy7YXKtof2VPW1OIbYJy+tQIDAQABo4H+MIH7MB0GA1UdDgQWBBSBMysSR4hD1vxPqwOBXgi4JwsQRjAPBgNVHRMBAf8EBTADAQH/MIHIBgNVHSMEgcAwgb2AFIEzKxJHiEPW/E+rA4FeCLgnCxBGoYGUpIGRMIGOMSYwJAYDVQQDDB1JbnRlbF9JbnRlZ3JhdGlvbl9DZXJ0aWZpY2F0ZTEYMBYGA1UECwwPMDBESXAwMDAwMDA4YUpuMRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExDDAKBgNVBAYTA1VTQYIOAY7fnkaqAAAAAB0+FMIwDQYJKoZIhvcNAQELBQADggEBAEkA/LwHy5d7vfOojx90FYY9RKLjKMk7EGKxF34DWZA7O3AogxZGKa12zrA0QTolzC5Cl/H1c1+Edvd6n+q184oyhSOZyDZqbkvE+9VjAKDQNvVg3BwvNb9SCjj9QaM+Rjgi3WRP1LWqyCraPfwxW4T1O44smqiVVceO8wEIAT9hMNk+lf/St99iyPhb3oWmNO+5GOr1JtHYPW9FU48e4qtCuwHy73Av721aRjLVvZ50N0il7hczrpJJYlPiy+UJJ/98TEOR+85HGZ9OdQeF+GY1bicHYJtEgNLtXJJ+fM1jGQCRwdv0fCv4tm8VReUIRBX8oDBHBtG7zgUulii6gVo=</certificate>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDnSyirF6VMwUNov0eermYqdHRuR_29lCTzIZG31No5Abo3kv8yEhzOqtVjJJ</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>PCC Advantech</permissionSetName>
+    <profileName>B2B API Partner</profileName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

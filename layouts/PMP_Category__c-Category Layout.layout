@@ -166,6 +166,9 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>PMP_Offering_Id__c</fields>
+        <fields>PMP_Offering_Category_External_Key__c</fields>
+        <fields>PMP_Ancestor_Category_Cd__c</fields>
         <relatedList>PMP_Partner_Offering_Category__c.PMP_Category_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -178,7 +181,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0n000000FiDv</masterLabel>
+        <masterLabel>00h3b00000eyf4V</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

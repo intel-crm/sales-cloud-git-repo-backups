@@ -11,7 +11,7 @@ Description : Marketplace logic for helper for Marketplace Topic Record
 
 public with sharing class PMP_Marketplace_Topic_Helper {
     public static Boolean isWorking() {
-        boolean flag=true;
+       boolean flag=true;
         return flag;
     }
     //IPA2.0:TWC729-8114 Topics Removal/Event Removal

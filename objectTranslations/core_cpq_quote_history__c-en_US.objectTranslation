@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Status History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Status History</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approval --></label>
+        <name>core_cpq_approval__c</name>
+        <relationshipLabel><!-- Status History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approval Chain --></label>
+        <name>core_cpq_approval_chain__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Level --></label>
+        <name>core_cpq_bm_level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is DPA/ALN? --></label>
+        <name>core_cpq_check_dpa_aln__c</name>
+    </fields>
+    <fields>
+        <label><!-- DPA &amp; ALN --></label>
+        <name>core_cpq_dpa_aln__c</name>
+        <relationshipLabel><!-- Status History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Duration  (Days) --></label>
+        <name>core_cpq_duration_days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duration (Hours) --></label>
+        <name>core_cpq_duration_hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duration (Minutes) --></label>
+        <name>core_cpq_duration_minutes__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>core_cpq_end_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- End User --></label>
+        <name>core_cpq_end_user__c</name>
+        <relationshipLabel><!-- Status History (End User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- From Assigned By --></label>
+        <name>core_cpq_from_assigned_by_nm__c</name>
+        <relationshipLabel><!-- Status History (From Assigned By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- From Assigned on --></label>
+        <name>core_cpq_from_assigned_on_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- From Assigned to --></label>
+        <name>core_cpq_from_assigned_to_nm__c</name>
+        <relationshipLabel><!-- Status History (From Assigned to) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Old Value --></label>
+        <name>core_cpq_prev_status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quote --></label>
+        <name>core_cpq_quote__c</name>
+        <relationshipLabel><!-- Status History --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote Number --></label>
+        <name>core_cpq_quote_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>core_cpq_start_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start User --></label>
+        <name>core_cpq_start_user__c</name>
+        <relationshipLabel><!-- Status History (Start User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- New Value --></label>
+        <name>core_cpq_status__c</name>
+    </fields>
+    <fields>
+        <label><!-- To Assigned By --></label>
+        <name>core_cpq_to_assigned_by_nm__c</name>
+        <relationshipLabel><!-- Status History (To Assigned By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- To Assigned on --></label>
+        <name>core_cpq_to_assigned_on_dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- To Assigned to --></label>
+        <name>core_cpq_to_assigned_to_nm__c</name>
+        <relationshipLabel><!-- Status History (To Assigned to) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

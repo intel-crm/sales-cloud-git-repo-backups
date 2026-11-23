@@ -2,7 +2,7 @@
  * @description       :
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             :
- * @last modified on  : 04-07-2026
+ * @last modified on  : 09-26-2024
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
  **/
 @isTest
@@ -69,6 +69,10 @@ public class Pricing_QuoteLineStatusAgeTest {
             
             List<Contact> drLimitedConList = Pricing_Test_Utility.createDrafterLimitedContact(acc.Id,1);
             List<SBQQ__Quote__c> quoteNewList= Pricing_Test_Utility.createQuoteWithParam(acc.Id, drLimitedConList[0].Id,1,salesRepUserList[0].Email,'');
+            //SBQQ__QuoteLine__c quoteLine = Pricing_Test_Utility.createWINQuoteLines(quoteNewList[0].Id);
+            
+            //Test.stopTest();
+            //The setUpData covers 54% for quote creation
         }
     }
     
@@ -99,6 +103,7 @@ public class Pricing_QuoteLineStatusAgeTest {
         insert partnerGroupList;
         System.assert(partnerGroupList.size() > 0, 'Partner Group Mapping list should not be empty');
         System.assert(partnerGroupList[0].Id != null, 'Partner Group Mapping should be created successfully');
+        
         SBQQ__QuoteLine__c QL2= [Select Id from SBQQ__QuoteLine__c where SBQQ__Quote__c =:lstquote[0].Id Limit 1];
         
         Pricing_Quote_Line_Status_Age__c ql=New Pricing_Quote_Line_Status_Age__c();

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Country__c</fullName>
+        <description>Maintenance of Whitelist &amp; Blacklist domains</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Country</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>EmailDomain__c</fullName>
+        <description>Maintanence of whitelist blacklist domain</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>EmailDomain</label>
+        <length>50000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Geo__c</fullName>
+        <description>Maintanence of whitelist and blacklisted domain</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Geo</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>IsInactive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Maintainance of Whitelist &amp; Blacklist domains</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IsInactive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsWhitelist__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Maintainance of Whitelist &amp; Blacklist domains</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>IsWhitelist</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ProgramCode__c</fullName>
+        <description>Maintainance of Whitelist &amp; Blacklist domains</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>ProgramCode</label>
+        <length>10</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Maintainance of Whitelist &amp; Blacklist domains</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Type</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>true</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Account</fullName>
+                    <default>false</default>
+                    <label>Account</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>ER_AcceptableDomainList</label>
+    <pluralLabel>ER_AcceptableDomainLists</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

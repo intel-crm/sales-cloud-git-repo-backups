@@ -4,8 +4,8 @@
     <label>IQR HPI B2B</label>
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <certificate>MIIDfjCCAmagAwIBAgIQCVbjBHJHTVaY9UiXvXYR+TANBgkqhkiG9w0BAQsFADA8MQ8wDQYDVQQKEwZIUCBJbmMxETAPBgNVBAsTCFNURiBUb29sMRYwFAYDVQQDEw1TVEYgVG9vbCBDZXJ0MB4XDTI2MDkxNTA1NTQxNFoXDTI3MDkxNTA2MDQxNFowPDEPMA0GA1UEChMGSFAgSW5jMREwDwYDVQQLEwhTVEYgVG9vbDEWMBQGA1UEAxMNU1RGIFRvb2wgQ2VydDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANb+5Eu4mWhjnJvuawNoBiGvl9sJV5p8hycaHU/xBPQFPVOjJceMu8bnHhT0jlixPKcTpOydms0tNDOwJUBPWyjWc2Z+L0neYqAbQ3F0eiwJ4aSmXuS1U4HDYhz+N2NK4LhcfdUKhKGXmgOdtiqJX6JTgBvV/eWSfyD/jGY9LRfJsr2dDOllDnilRq2H49RNQWWFsrRJewVXMfV/RhcQ36/7ja5+uQzZRyOEVsXJQf8dHFvYgHShWXE2LXCCpYpLBIMTLEIb7pnX+ybabpTWyDX7QJkRK+16YG7gKZo5qmg8l7pNho8gU3+zZBuhNKXQR0KPq6kJhaijlQ0KehQL/aECAwEAAaN8MHowDgYDVR0PAQH/BAQDAgWgMAkGA1UdEwQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFEb9y10/3Ey4AtjyBHcZXpD9ta19MB0GA1UdDgQWBBRG/ctdP9xMuALY8gR3GV6Q/bWtfTANBgkqhkiG9w0BAQsFAAOCAQEAfiLmoAPm5/mif9UNUNDrPzJHE6d1+swFcXja76wDKwElBSx2qrO27vsy3G4KIeQi+ttUqzUFZjpbR9+Oi8/5HzvadviR+TB6fXfhiN+VIv4/L8eDNQl5STXc6QpFj6nRDl9S5ZQUmJRX7zLWtu1l3JzEgFxEGZclp54Uv8X8axSiiUjQsvVJgaqlaZaXssO5UkudcUvqJFL7+Vnp7E1elblP2XOlS7NjujI2ky1GVwfYtJjEntbXwzlrnJ1w0i9u4BzQ2PeF61kGgYvtwzMUOpRppZzP63NU1cXp0VUuvxR/g0Hu/92Mr3+JCpYpiMsXUJOdVYHgX4Bhn//lqFLMfQ==</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6rT6ZeduUa182g9HRk14bZSLvb.OFLK.5C_eaOlM5MCNVnZPdyr9cO4i3dxT</consumerKey>
+        <certificate>MIIC9DCCAdygAwIBAgIEYynJozANBgkqhkiG9w0BAQsFADA8MQ8wDQYDVQQKDAZIUCBJbmMxETAPBgNVBAsMCFNURiBUb29sMRYwFAYDVQQDDA1TVEYgVG9vbCBDZXJ0MB4XDTIyMDkyMDE0MDkzOVoXDTIzMDkyMDE0MDkzOVowPDEPMA0GA1UECgwGSFAgSW5jMREwDwYDVQQLDAhTVEYgVG9vbDEWMBQGA1UEAwwNU1RGIFRvb2wgQ2VydDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRYA3EoqoE8ZclKkuli1yAiziFsD2nbdpb/yS9f+Msr54ALeDGxHGqcTh+7KwFd7KCrlRUvVs0cmnQxbK4m8L0PfGi9ZgGfv39/MjqhioGppg4HGAXLDfRh4GFFKkoc54g0ICt12zMUvIkqDKc3UTIVR1BGN8GpsfdgIPuDCYRzqG4cOFZpTxTKrlcToYLuS0Z9vPAkuOTFX4zMTETnwwv2g9SK11S8MmYROiRn+eSh+8KR/LcVuYXW1P6uhLDILkaY9LYagqnY3EZJZOB626siVvLlcGn6QI4Aqah9M9f0PmHpHtDIzVKIpP9J7r1qClAn5hyIxMNebnAASyMxIj0CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAg6ShpkflOXhlveSTwaIR1yGzjo5Jtrqlqqpd/4J+GiQeqEv4PiMTdBpyDWaIWn1kRJtiVPIh+RhGPPiMNSsI4vxtwxtcUnieVBEguhJplKVCbkf22FwWnFPc2TzzUR8Pq9lz3uuhhYemc0rh8Ps0zx3aUVdthHK/CEeZ0i6kMK+vxC0bCASBgtbDleSdag0povhb6gjZglf9PnlY4r89u1mSwe/mt4adGBJrIExjhUAKsp51fLPqVoHveJntIXLOPRThYMlOV5QIwQvJvFacJ9WlNm8XS4ognMOKb2PxV5Ub42RDLapRs0GGNgBIkYiQHxvLGBzkuDCrbdPbAJYhoA==</certificate>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDgcljuWzZu7JNB_zFeHxFzh_RiH1xEiIq2dWdrglO0DVcSETnXQS8jSOX.99</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -20,7 +20,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>

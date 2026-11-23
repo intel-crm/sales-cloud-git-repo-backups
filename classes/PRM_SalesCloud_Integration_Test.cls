@@ -1,5 +1,5 @@
 @isTest
-public class PRM_SalesCloud_Integration_Test{
+public class PRM_SalesCloud_Integration_Test {
     
     @TestSetup
     private static void createData(){
@@ -295,14 +295,11 @@ public class PRM_SalesCloud_Integration_Test{
         
                
         Test.startTest(); 
-        List<Core_Contact_Entitlement__c> lstContactEntitlement = new List<Core_Contact_Entitlement__c>();
         Core_Contact_Entitlement__c contEntitlement = new Core_Contact_Entitlement__c();
         contEntitlement.Core_Contact_Id__c = cnt.Id;
         contEntitlement.Core_Entitlement_Id__c = coreEntitlement.Id;
         contEntitlement.Core_Unique_Id__c = 'TESTENTITLEMENT';
-        insert contEntitlement;
-        lstContactEntitlement.add(contEntitlement);
-        PRM_SalesCloudContactIntStatus_Handler.setContactIPAIntegrationStatusToPendingContEnt(lstContactEntitlement);
+        //insert contEntitlement;
         
         PRM_Account_Contact_Relationship__c acr  = new PRM_Account_Contact_Relationship__c();
         acr.PRM_Account_Id__c = partnerAccount1.Id;
@@ -428,22 +425,16 @@ public class PRM_SalesCloud_Integration_Test{
         Account acct = new Account(Name ='Account No Address',Core_Account_Type__c = 'Distributor', /*Core_Sales_Groups__c= 'PRC Sales Group',*/
                                    Industry='Agriculture',RecordTypeId=partnerAccRecTypeId,Core_Intel_Partner_Alliance_PartnerGroup__c=True,OwnerId=UserInfo.getUserId());
         test.startTest();
-        insert acct;
-        List<Contact> contList = new List<Contact>();
-        Map<Id,Contact> cntMap = new Map<Id,Contact>();
+        insert acct;        
         Set<Id> idSet = new Set<Id>();
         idSet.add(acct.Id); 
         Id IntelContRecTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Intel Contact').getRecordTypeId();
-        Contact cnt = new Contact(FirstName='NoAddress',LastName='Check',Email='noaddresscheck@spamok.com',PRM_IPA_Integration_Status__c = 'Successful',AccountId=acct.Id,RecordTypeId=IntelContRecTypeId,MailingCountry='IND');
+        Contact cnt = new Contact(FirstName='NoAddress',LastName='Check',Email='noaddresscheck@spamok.com',AccountId=acct.Id,RecordTypeId=IntelContRecTypeId,MailingCountry='IND');
         insert cnt;       
         idSet.add(cnt.Id);
-        contList.add(cnt);
-        cntMap.put(cnt.Id,cnt);
         PRM_SalesCloud_Integration.GenerateContactOBM(idSet);
         //PRM_SalesCloud_Integration_ForTesting salesCloudInteg = new PRM_SalesCloud_Integration_ForTesting();
         Contact cont = [SELECT id,Name,PRM_IPA_Integration_Status__c FROM Contact WHERE id= :cnt.Id];
-        PRM_SalesCloudContactIntStatus_Handler.setContactIPAIntegrationStatusToPendingOnUpdate(contList,cntMap);
-        //PRM_SalesCloudContactIntStatus_Handler.updateContactIPAIntegrationStatus(idSet);
         //system.assertEquals('Successful', cont.PRM_IPA_Integration_Status__c);
         test.stopTest();
     }
@@ -451,7 +442,7 @@ public class PRM_SalesCloud_Integration_Test{
     private static void Eexception_Test(){
         test.startTest();
         
-        /*PRM_SalesCloud_Integration_Model.AEAccountInformation aeAccountInformation = new PRM_SalesCloud_Integration_Model.AEAccountInformation();
+        PRM_SalesCloud_Integration_Model.AEAccountInformation aeAccountInformation = new PRM_SalesCloud_Integration_Model.AEAccountInformation();
         aeAccountInformation.name = 'AEInfoTest';
         aeAccountInformation.AccountNo = '12345';
         aeAccountInformation.PrimeAccountName = '12345';
@@ -481,30 +472,30 @@ public class PRM_SalesCloud_Integration_Test{
         aeAccountInformation.DeactivatedReason = 'NA';
         aeAccountInformation.IsIPA = false;
         aeAccountInformation.IsODM = false;
-        aeAccountInformation.PAGAccountId = '12345';*/
+        aeAccountInformation.PAGAccountId = '12345';
 
-        /*PRM_SalesCloud_Integration_Model.AccountBasicInformation accbasicinfo = new PRM_SalesCloud_Integration_Model.AccountBasicInformation();
+        PRM_SalesCloud_Integration_Model.AccountBasicInformation accbasicinfo = new PRM_SalesCloud_Integration_Model.AccountBasicInformation();
         accbasicinfo.Name = 'AccBasicInfoTest';
         accbasicinfo.AccountNo = '12345';
         accbasicinfo.PrimeAccountName = 'AccBasicInfoTest';
         accbasicinfo.BusinessPartnerId = '12345';
-        accbasicinfo.BusinessId = '12345';*/
+        accbasicinfo.BusinessId = '12345';
 
-        /*PRM_SalesCloud_Integration_Model.AccountAEPayload accAEPayload = new PRM_SalesCloud_Integration_Model.AccountAEPayload();
+        PRM_SalesCloud_Integration_Model.AccountAEPayload accAEPayload = new PRM_SalesCloud_Integration_Model.AccountAEPayload();
         accAEPayload.MessageType = 'NA';
         accAEPayload.AccountId = '12345';
         accAEPayload.AccountStatus = 'NA';
         accAEPayload.LastModifiedBy = 'NA';
-        accAEPayload.CreatedBy = 'NA';*/
+        accAEPayload.CreatedBy = 'NA';
 
-        /*PRM_SalesCloud_Integration_Model.DSAPayload dsapay = new PRM_SalesCloud_Integration_Model.DSAPayload();
+        PRM_SalesCloud_Integration_Model.DSAPayload dsapay = new PRM_SalesCloud_Integration_Model.DSAPayload();
         dsapay.AccountId = '12345';
         dsapay.AccountStatus = 'NA';
         dsapay.ContactStatus = 'NA';
         dsapay.DeletionReason = 'NA';
-        dsapay.MessageType = 'NA';*/
+        dsapay.MessageType = 'NA';
 
-        /*PRM_SalesCloud_Integration_Model.cmfWrapper cmfwrap = new PRM_SalesCloud_Integration_Model.cmfWrapper();
+        PRM_SalesCloud_Integration_Model.cmfWrapper cmfwrap = new PRM_SalesCloud_Integration_Model.cmfWrapper();
         cmfwrap.GroupName = 'NA';
         cmfwrap.GroupId = 'NA';
         cmfwrap.Description = 'NA';
@@ -527,9 +518,9 @@ public class PRM_SalesCloud_Integration_Test{
         cmfwrapane.ActiveContactCount = 'NA';
         cmfwrapane.InActiveContactCount = 'NA';
         cmfwrapane.LastModifiedBy = 'NA';
-        cmfwrapane.CreatedBy = 'NA';*/
+        cmfwrapane.CreatedBy = 'NA';
 
-        /*PRM_SalesCloud_Integration_Model.cmfData cmfd = new PRM_SalesCloud_Integration_Model.cmfData();
+        PRM_SalesCloud_Integration_Model.cmfData cmfd = new PRM_SalesCloud_Integration_Model.cmfData();
         cmfd.CMFID = 'NA';
         cmfd.Name = 'NA';
         cmfd.SalesOrgCode = 'NA';
@@ -539,9 +530,9 @@ public class PRM_SalesCloud_Integration_Test{
         cmfd.Address = 'NA';
         cmfd.AccountGroup = 'NA';
         cmfd.DirectCustomerRoleName = 'NA';
-        cmfd.DirectCustomerRoleCode = 'NA';*/
+        cmfd.DirectCustomerRoleCode = 'NA';
 
-        /*PRM_SalesCloud_Integration_Model.ContactBasicInfoAE contbasicinfae = new PRM_SalesCloud_Integration_Model.ContactBasicInfoAE();
+        PRM_SalesCloud_Integration_Model.ContactBasicInfoAE contbasicinfae = new PRM_SalesCloud_Integration_Model.ContactBasicInfoAE();
         contbasicinfae.FirstName = 'NA';
         contbasicinfae.LastName  = 'NA';
         contbasicinfae.AccountName  = 'NA';
@@ -549,23 +540,23 @@ public class PRM_SalesCloud_Integration_Test{
         contbasicinfae.Email  = 'NA';
         contbasicinfae.EnterpriseId  = 'NA';
         contbasicinfae.LastModifiedBy  = 'NA';
-        contbasicinfae.CreatedBy  = 'NA';*/
+        contbasicinfae.CreatedBy  = 'NA';
 
-        /*PRM_SalesCloud_Integration_Model.ContactBusinessType contbis = new PRM_SalesCloud_Integration_Model.ContactBusinessType();
+        PRM_SalesCloud_Integration_Model.ContactBusinessType contbis = new PRM_SalesCloud_Integration_Model.ContactBusinessType();
         contbis.Name = 'NA';
         contbis.BusinessTypeCode  = 'NA';
         contbis.BusinessTypeCategory = 'NA';
         contbis.IsActive  = false;
         contbis.Status  = 'NA';
         contbis.StatusReason  = 'NA';
-        contbis.PendingRegistration = false;*/
+        contbis.PendingRegistration = false;
 
-        /*PRM_SalesCloud_Integration_Model.AccountBusinessType accbis = new PRM_SalesCloud_Integration_Model.AccountBusinessType();
+        PRM_SalesCloud_Integration_Model.AccountBusinessType accbis = new PRM_SalesCloud_Integration_Model.AccountBusinessType();
         accbis.Name = 'NA';
         accbis.BusinessTypeCode  = 'NA'; 
         accbis.IsActive  = false;
         accbis.Status  = 'NA';
-        accbis.StatusReason  = 'NA';*/
+        accbis.StatusReason  = 'NA';
 
         PRM_SalesCloud_Integration_Model.ContactEntitlement content = new PRM_SalesCloud_Integration_Model.ContactEntitlement();
         content.Name = 'NA';
@@ -573,11 +564,11 @@ public class PRM_SalesCloud_Integration_Test{
         content.Status = 'NA';
         content.IsSelected = false;
 
-        /*PRM_SalesCloud_Integration_Model.ContactEntitlementAnE contentae = new PRM_SalesCloud_Integration_Model.ContactEntitlementAnE();
+        PRM_SalesCloud_Integration_Model.ContactEntitlementAnE contentae = new PRM_SalesCloud_Integration_Model.ContactEntitlementAnE();
         contentae.Name = 'NA';
         contentae.Type = 'NA';
         contentae.Status = 'NA';
-        contentae.IsSelected = false;*/
+        contentae.IsSelected = false;
 
         PRM_SalesCloud_Integration_Model.WarrantyOld oldwarranty = new PRM_SalesCloud_Integration_Model.WarrantyOld('NA','NA');
         

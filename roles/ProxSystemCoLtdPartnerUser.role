@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Prox Systems Co., Ltd. Partner User</description>
+    <description>Prox System Co. Ltd. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Prox Systems Co., Ltd. Partner User</name>
+    <name>Prox System Co. Ltd. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12136737_Yalena_Lee</parentRole>
+    <parentRole>EMP_11379961_Chia_Hoey_Oon</parentRole>
 </Role>

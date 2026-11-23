@@ -42,7 +42,7 @@ ChannelProgram cp = new ChannelProgram(); //Channel Program
 cp.Name='Intel Partner Alliance';
 cp.PRM_programCode__c='IPA';
 insert cp;
-System.debug('CP Insertion done');
+
 
 PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
 pb.Name = 'Points Redeem';
@@ -828,7 +828,7 @@ insert response2;*/
         Contact con = new contact();
         con.FirstName='Samuel';
         con.LastName='Johnson';
-        con.Email='samueldsaiodada@outlook.com';
+        con.Email='samueldsaiodada@spamok.com';
         con.AccountId=testAccount22.Id;
         con.MailingCountry='USA';
         insert con;
@@ -1846,7 +1846,7 @@ prList.add(pr3); */
         acr.PRM_Status_Reason_Txt__c = 'test';
         acr.PRM_CampaignId__c=null;
         insert acr;
-        System.debug('@Nj'+newAccount.id);
+        
 
         Core_Account_Group_Member__c cag = new Core_Account_Group_Member__c();
         cag.Core_Intel_Account_Id__c= newAccount.id;

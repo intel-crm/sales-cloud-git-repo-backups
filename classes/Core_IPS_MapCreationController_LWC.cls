@@ -173,8 +173,9 @@ public with sharing class Core_IPS_MapCreationController_LWC {
                     litem.selected=true;
                     litem.prodOrgId = prodOrg.id;  //prod.selectedProductOrganization
                     litem.prodOrgName = prodOrg.Core_IPS_Support_Org_Name__c;
-                    
-                    litem.FlagStatus = mapProdToSupProd1.get(prod.prod.id).Core_Flag_Status__c;
+                    if(mapProdToSupProd1 != null && mapProdToSupProd1.get(prod.prod.id) != null){ // US-0049537 Hercules_IPS_UnhandledExp_P2
+                    	litem.FlagStatus = mapProdToSupProd1.get(prod.prod.id).Core_Flag_Status__c;
+                    }
                     for(Asset a: assetlist){                   
                         if(a.accountid==acc.id && a.product2id==prod.prod.id && a.Core_Product_Organization__c == prodOrg.id ){                        
                             litem.color='background-color:gold';

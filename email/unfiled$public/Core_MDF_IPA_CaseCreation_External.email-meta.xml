@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Email will be sent to IPA Claim Submitters when Claim is selected for Audit</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_IPA_CaseCreation_External</name>
+    <style>none</style>
+    <subject>Case review created for Claim #</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

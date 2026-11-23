@@ -1,14 +1,14 @@
 @isTest
 private class PRM_RegReqProcessingQueueable_Test {
 	static @isTest void checkRegReqProcessingQueueable() {
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
+        acc.RecordTypeId=recordTypeIdAccount;
         acc.BillingCountry='India';
         acc.BillingStreet='4th Floor,ITPL,Brookfield';
         acc.BillingPostalCode='560037';
-        acc.RecordTypeId=intelAccRecTypeId;
-        insert(acc);
+        insert(acc);  
         
         List<Account> accountList = new List<Account>();
         accountList.add(acc);
@@ -16,7 +16,6 @@ private class PRM_RegReqProcessingQueueable_Test {
         Contact con = PRM_TestUtility.getContact();
         con.Email='testrequest@mailinator.com';
         con.AccountId = acc.Id;
-        con.MailingCountry='USA';
         insert con;
         
         List<Contact> contactList = new List<Contact>();
@@ -45,7 +44,8 @@ private class PRM_RegReqProcessingQueueable_Test {
         membership.PRM_Channel_Program_Id__c=cprogram.Id;
         membership.PRM_Account_Id__c=acc.Id;
         membership.PRM_Status_Nm__c = 'Approved';
-        membership.PRM_Partner_Role__c='Seller';
+        membership.PRM_Partner_Role__c='Service Provider';
+        membership.PRM_Status_Reason_Txt__c='Test01';
         insert(membership);  
         
         
@@ -82,18 +82,7 @@ private class PRM_RegReqProcessingQueueable_Test {
         newAdminRequest.RecordTypeId=Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId();
         newAdminRequest.PRM_Profile_Response__c = '{QuestionCode : CSPx2_ServicePlanTodayOrNext | ResponseCode : CSPx2_ServicePlanTodayOrNext_AIAAS | ResponseValue : CSPx2_ServicePlanTodayOrNext_AIAAS}{QuestionCode : CSPx2_ServicePlanTodayOrNext | ResponseCode : CSPx2_ServicePlanTodayOrNext_FnAAS | ResponseValue : CSPx2_ServicePlanTodayOrNext_FnAAS}{QuestionCode : CSPx2_ServicePlanTodayOrNext_Others | ResponseCode : CSPx2_ServicePlanTodayOrNext_Others | ResponseValue : TESTING}';
         insert(newAdminRequest);
-                
-        
-		
-        /*Test.startTest();
-       List<PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper> regRequestProcessQueueableList = new List<PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper>();
-       regRequestProcessQueueableList.add(new PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper(accountList,contactList,True,'businessEvent',newAdminRequest,true));
-        regRequestProcessQueueableList.add(new PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper(accountList,contactList,False,'businessEvent',newAdminRequest,true));
-        regRequestProcessQueueableList.add(new PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper(accountList,contactList,True,'businessEvent',newAdminRequest,false));
-        regRequestProcessQueueableList.add(new PRM_CreateAccountAndRelatedRecords.PRM_RegReqProcessingQueueableWrapper(accountList,contactList,False,'businessEvent',newAdminRequest,false));
-        System.enqueueJob(new PRM_RegReqProcessingQueueable(regRequestProcessQueueableList));
-        Test.stopTest();
-        System.assertEquals(newAdminRequest.PRM_Partner_Role__c, 'Service Provider', 'Value does not match'); */
+
         Test.startTest();
         System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,True,'businessEvent',newAdminRequest,true));
         System.enqueueJob( new PRM_RegReqProcessingQueueable(accountList,contactList,False,'businessEvent',newAdminRequest,true));

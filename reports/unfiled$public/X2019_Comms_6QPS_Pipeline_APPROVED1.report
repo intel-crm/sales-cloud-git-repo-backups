@@ -184,7 +184,7 @@
         <field>Opportunity.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020-Comms 6QPS Pipeline APPROVED</name>
+    <name>2019-Comms 6QPS Pipeline APPROVED</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -208,6 +208,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_PREVFY</interval>
     </timeFrameFilter>
 </Report>

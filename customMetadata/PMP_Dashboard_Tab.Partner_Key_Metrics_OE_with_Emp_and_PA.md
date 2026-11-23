@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PMP_Benefit_Code_Txt__c</field>
-        <value xsi:type="xsd:string">BFTMKTPLED</value>
+        <value xsi:type="xsd:string">BFTMKTPLBC</value>
     </values>
     <values>
         <field>PMP_Is_Active_Ind__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Partner Admin,Employee,Offering Editor</value>
     </values>
     <values>
         <field>PRM_Partner_Role_Txt__c</field>

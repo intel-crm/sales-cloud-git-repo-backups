@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Core_Error_Text__c</field>
-        <value xsi:type="xsd:string">is disabled</value>
+        <value xsi:type="xsd:string">Identity: &lt;Enterprise_Id&gt; is disabled</value>
     </values>
     <values>
         <field>Core_Is_Active__c</field>

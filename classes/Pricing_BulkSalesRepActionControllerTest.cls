@@ -109,8 +109,11 @@ public with sharing class Pricing_BulkSalesRepActionControllerTest {
 
         system.runAs(adminUserList[0]) {
             Test.startTest();
+            
             String msg = Pricing_BulkSalesRepActionController.bulkApprovalRejectionQuoteLineRPM(lstquoteLinesFI, 'Approved', Label.Pricing_Tender_FinancialIncentive_Quote);
+            
             Assert.isTrue(msg.length() >= 0, 'Error in bulkApprovalRejectionQuoteLineRPMTest');
+          
             Test.stopTest();
         } 
     }

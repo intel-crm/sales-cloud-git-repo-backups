@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>this is used to store records having data issues</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PMP_External_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>External Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Issue_Dsc_Txt__c</fullName>
+        <label>Issue Description</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Issue_Sub_Type_Nm__c</fullName>
+        <label>Issue Sub Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>PMP_Issue_Type_Nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Specialty Mismatch</fullName>
+                    <default>false</default>
+                    <label>Specialty Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Role Mismatch</fullName>
+                    <default>false</default>
+                    <label>Role Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Tier Mismatch</fullName>
+                    <default>false</default>
+                    <label>Tier Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Segment Mismatch</fullName>
+                    <default>false</default>
+                    <label>Segment Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Benefit Mismatch</fullName>
+                    <default>false</default>
+                    <label>Benefit Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Benefit Revoked Flag Mismatch</fullName>
+                    <default>false</default>
+                    <label>Benefit Revoked Flag Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Offering Image</fullName>
+                    <default>false</default>
+                    <label>Offering Image</label>
+                </value>
+                <value>
+                    <fullName>Storefront Input Language Mismatch</fullName>
+                    <default>false</default>
+                    <label>Storefront Input Language Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Offering Input Language Mismatch</fullName>
+                    <default>false</default>
+                    <label>Offering Input Language Mismatch</label>
+                </value>
+                <value>
+                    <fullName>Storefront Image</fullName>
+                    <default>false</default>
+                    <label>Storefront Image</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Coveo</controllingFieldValue>
+                <valueName>Specialty Mismatch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Coveo</controllingFieldValue>
+                <valueName>Role Mismatch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Coveo</controllingFieldValue>
+                <controllingFieldValue>OPID</controllingFieldValue>
+                <valueName>Tier Mismatch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Coveo</controllingFieldValue>
+                <valueName>Segment Mismatch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>OPID</controllingFieldValue>
+                <valueName>Benefit Mismatch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>OPID</controllingFieldValue>
+                <valueName>Benefit Revoked Flag Mismatch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GLS Translation</controllingFieldValue>
+                <valueName>Storefront Input Language Mismatch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>GLS Translation</controllingFieldValue>
+                <valueName>Offering Input Language Mismatch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Image Missing</controllingFieldValue>
+                <valueName>Offering Image</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Image Missing</controllingFieldValue>
+                <valueName>Storefront Image</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Issue_Type_Nm__c</fullName>
+        <label>Issue Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Coveo</fullName>
+                    <default>false</default>
+                    <label>Coveo</label>
+                </value>
+                <value>
+                    <fullName>OPID</fullName>
+                    <default>false</default>
+                    <label>OPID</label>
+                </value>
+                <value>
+                    <fullName>GLS Translation</fullName>
+                    <default>false</default>
+                    <label>GLS Translation</label>
+                </value>
+                <value>
+                    <fullName>Image Missing</fullName>
+                    <default>false</default>
+                    <label>Image Missing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PMP_Marketing_Profile_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Marketing Profile Information</label>
+        <referenceTo>PMP_Company__c</referenceTo>
+        <relationshipLabel>Marketplace DQ Monitors</relationshipLabel>
+        <relationshipName>Marketplace_DQ_Monitors</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Offering_Id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Partner Offering</label>
+        <referenceTo>PMP_Partner_Offering__c</referenceTo>
+        <relationshipLabel>Marketplace DQ Monitors</relationshipLabel>
+        <relationshipName>Marketplace_DQ_Monitors</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Status_Nm__c</fullName>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Open</fullName>
+                    <default>true</default>
+                    <label>Open</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+                <value>
+                    <fullName>ReOpened</fullName>
+                    <default>false</default>
+                    <label>ReOpened</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Marketplace DQ Monitor</label>
+    <nameField>
+        <displayFormat>DQ-{0000000000}</displayFormat>
+        <label>Marketplace DQ Monitor Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Marketplace DQ Monitors</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

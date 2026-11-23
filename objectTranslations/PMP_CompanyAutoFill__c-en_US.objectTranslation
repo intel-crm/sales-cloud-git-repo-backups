@@ -62,10 +62,6 @@
         <name>PMP_Regions__c</name>
     </fields>
     <fields>
-        <label><!-- Resources JSON --></label>
-        <name>PMP_Resources_JSON__c</name>
-    </fields>
-    <fields>
         <label><!-- Tagline --></label>
         <name>PMP_Tagline__c</name>
     </fields>

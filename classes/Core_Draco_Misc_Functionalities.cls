@@ -41,13 +41,11 @@ public without sharing  class Core_Draco_Misc_Functionalities {
                     b2bAccount = true;
                 }
             }
-            
             //If there are no contacts with Core_Contact_B2B_Indicator__c = TRUE, then mark Core_B2B_Entitlement__c = FALSE on Account
             if(!b2bAccount){
                 acc.Core_B2B_Entitlement__c = false;
                 accList.add(acc);
             }
-            
         }
         
         //Prepare a sub-list of accounts with total size as specified in Core_Account_B2B_Flag_Update_Batch_Size custom label. This is because CPU time out exception
@@ -66,7 +64,6 @@ public without sharing  class Core_Draco_Misc_Functionalities {
     
     /************************** This method will create Integration Monitoring Log entries for the Reports and Dashboards ***************************/
     public static void createIntgrationMonitoringLog(String IntgScr, String ErrDetail, Id ContactId, Id IIMid, Integer IntgDuration, String IntgLogTags){
-        
         Boolean errorCategorised = false;
         Core_AE_Integration_Log__c intgLog = new Core_AE_Integration_Log__c();
         

@@ -38,6 +38,7 @@ public without sharing class PicklistManager {
             if(pwcParams.objectName !='' && pwcParams.fieldName !='' && 
                pwcParams.fieldAPIName != '' && pwcParams.picklistValues.size() > 0){
                    plValues = upsertPLV(pwcParams);
+                   system.debug('PLVALUES:'+plValues);
                    if(backfill){
                        /* Backfill code WIP
 PicklistManagerBackFillBatch queJob = new PicklistManagerBackFillBatch(plValues,'PL');
@@ -51,8 +52,15 @@ result.put(false, 'There has been an error');
                    else {
                        PicklistManagerMetadataService.MetadataPort service = createService();
                        List<PicklistManagerMetadataService.SaveResult> saveResults = service.updateMetadata(new PicklistManagerMetadataService.CustomField[] { plValues });
-                       if(saveResults[0].success) { result.put(true,'Sucess!'); } 
-                       else { result.put(false,saveResults[0].errors[0].message); }   
+                       system.debug('UPDATE METADATA RESULT:'+saveResults);
+                       if(saveResults[0].success) { 
+                           system.debug('Apex Inside save result success');
+                           result.put(true,'Sucess!'); 
+                       } 
+                       else { 
+                           system.debug('Apex Inside save false');
+                           result.put(false,saveResults[0].errors[0].message); 
+                       }   
                    }
                }   
         }
@@ -70,11 +78,10 @@ result.put(false, 'There has been an error');
             string objectName = pwcParams.objectName;
             string fieldAPIName = pwcParams.fieldAPIName;
             newPicklistValues = pwcParams.picklistValues;
-            
+            system.debug('APEX NEW PICKLIST VALUES:'+newPicklistValues);
             customField.fullName = objectName  + '.' + fieldAPIName;
             customField.label = pwcParams.fieldName;
             customField.type_x = 'Picklist';
-            
             //system.debug('customField: '+customField);
             
             // Define the Value Set and Value Set Definitions
@@ -92,6 +99,7 @@ result.put(false, 'There has been an error');
                 cv.default_x = false;
                 customValues.add(cv);   
             }
+            system.debug('CUSTOM VALUES ARE:'+customValues.size()+' '+customValues);
             
             vd.value = customValues;
             vd.sorted = pwcParams.sorted;
@@ -130,8 +138,10 @@ result.put(false, 'There has been an error');
                 else{
                     PicklistManagerMetadataService.MetadataPort service = createService();
                     List<PicklistManagerMetadataService.SaveResult> saveResults = service.updateRTMetadata(new PicklistManagerMetadataService.RecordType[] { rtValues });
+                    system.debug('APEX RECORDTYPE RES:'+saveResults);
                     if(saveResults[0].success) { result.put(true,'Sucess!'); } 
-                    else { result.put(false,saveResults[0].errors[0].message); }   
+                    else { result.put(false,saveResults[0].errors[0].message); } 
+                    system.debug('APEX RECORDTYPE RESult'+result);
                 }
             }   
         }
@@ -149,8 +159,8 @@ result.put(false, 'There has been an error');
             mdRecordTypes.label= rtwcParams.recordTypeName;
             mdRecordTypes.fullName= rtwcParams.recordTypeFullName;
             mdRecordTypes.active = true;
-            
-            //system.debug('mdRecordTypes: '+mdRecordTypes);
+            mdRecordTypes.businessProcess =rtwcParams.businessProcess;//POC added
+            system.debug('mdRecordTypes: '+mdRecordTypes);
             PicklistManagerMetadataService.RecordTypePicklistValue pV1 = new PicklistManagerMetadataService.RecordTypePicklistValue();
             List<PicklistManagerMetadataService.PicklistValue> pLVal = new List<PicklistManagerMetadataService.PicklistValue>();
             
@@ -308,6 +318,8 @@ system.debug('result: '+result);
         public String recordTypeFullName { get; set; }
         @AuraEnabled
         public PicklistWrapperClass pLWrapperParams {get; set;}
+        @AuraEnabled
+        public String businessProcess { get; set; }//POC added
     }
     
     public class PickListWrapper {

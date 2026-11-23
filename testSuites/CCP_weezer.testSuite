@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_MDF_checkSObjectCRUDPermission_Test</testClassName>
+    <testClassName>Core_MDF_CloseActivity_Test</testClassName>
+    <testClassName>Core_MDF_CustomLabelConfig_Test</testClassName>
+    <testClassName>Core_MDF_CustomLayoutConfig_Contrl_Test</testClassName>
+    <testClassName>Core_MDF_CustomMultiSelectPicklist_test</testClassName>
+    <testClassName>Core_MDF_DetermineEmailRecipients_Test</testClassName>
+    <testClassName>Core_MDF_EmailTemplateTranslation_Test</testClassName>
+    <testClassName>Core_MDF_ExtendedDataTable_Test</testClassName>
+    <testClassName>Core_MDF_FileUploadController_Test</testClassName>
+    <testClassName>Core_MDF_GeneralPurpose_UI_Utility_Test</testClassName>
+    <testClassName>Core_MDF_GenericApprovalProcess_Test</testClassName>
+    <testClassName>Core_MDF_GenericClassRecordTracking_Test</testClassName>
+    <testClassName>Core_MDF_GeoBasedGenericSharing_Test</testClassName>
+    <testClassName>Core_MDF_IUPGM_ServiceHandler_Test</testClassName>
+    <testClassName>Core_MDF_KPI_FieldsTest</testClassName>
+    <testClassName>Core_MDF_KPIDetailPage_test</testClassName>
+    <testClassName>Core_MDF_OPAL_Budget_Validation_Test</testClassName>
+    <testClassName>Core_MDF_PartnerFundReq_Controller_Test</testClassName>
+    <testClassName>Core_MDF_PFR_Approval_Test</testClassName>
+    <testClassName>Core_MDF_PFR_RecordTypeSelector_Test</testClassName>
+    <testClassName>Core_MDF_PFR_Reimbursement_Handler_Test</testClassName>
+    <testClassName>Core_MDF_POP_Details_test</testClassName>
+    <testClassName>Core_MDF_ProcessCCP_PFR_Test</testClassName>
+    <testClassName>Core_MDF_RecallApprovalHandler_Test</testClassName>
+    <testClassName>Core_MDF_Rules_Engine_Test</testClassName>
+    <testClassName>Core_MDF_ShareRecordToGeoGroup_Test</testClassName>
+    <testClassName>Core_MDF_ShareRecordToGeoGrp_Test</testClassName>
+</ApexTestSuite>

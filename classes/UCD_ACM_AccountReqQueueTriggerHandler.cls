@@ -2,7 +2,7 @@ public without sharing class UCD_ACM_AccountReqQueueTriggerHandler {
     private static UCD_ACM_SelectorContracts.IAccountQuerySelector accountQuerySelectorInstance = UCD_ACM_AccountQuerySelector.getInstance();
     
     /** 
-    * description : process Account Request Queue after update. 
+    * description : process Account Request cvfQueue after update. 
     * params : List<Account_Create_Request__c>, Map<Id,Account_Create_Request__c>
     * return : void
     * author and date : yenugantix.tejasri@intel.com, ajayx.gat@intel.com 04/01/2024.
@@ -41,7 +41,7 @@ public without sharing class UCD_ACM_AccountReqQueueTriggerHandler {
         Map<Id,ACM_Integration_Message_Queue__c> integrationMessageQueueByArqId = new Map<Id,ACM_Integration_Message_Queue__c>(); 
         
         try{
-            List<ACM_Integration_Message_Queue__c> integrationMessages = [SELECT Id,Content__c,Content_Type__c,Message_Status__c,Module_Name__c,Queue_Type__c,Source_System__c,Custom_Filter__c, Retry_Count__c FROM ACM_Integration_Message_Queue__c WHERE Custom_Filter__c IN: arqIds AND Content_Type__c = 'ARQId' AND Module_Name__c = 'SBR' AND Queue_Type__c = 'Outbound'];
+            List<ACM_Integration_Message_Queue__c> integrationMessages = [SELECT Id,Content__c,Content_Type__c,Message_Status__c,Module_Name__c,Queue_Type__c,Source_System__c,Custom_Filter__c, Retry_Count__c FROM ACM_Integration_Message_Queue__c WHERE Custom_Filter__c IN: arqIds AND Content_Type__c = 'ARQId' AND Module_Name__c = 'SBR' AND Queue_Type__c = 'Outbound' WITH SECURITY_ENFORCED];
             
             for(ACM_Integration_Message_Queue__c integrationMessage : integrationMessages) {
                 integrationMessageQueueById.put(integrationMessage.Id, integrationMessage);
@@ -94,7 +94,7 @@ public without sharing class UCD_ACM_AccountReqQueueTriggerHandler {
         try{
             for(Account_Create_Request__c accReq:accountRequestQueueRecords){
                 if((accReqName.contains(accReq.Account_Name__c) || (accReq.Core_Alternate_Language_Name__c!=null && alternateLangName.contains(accReq.Core_Alternate_Language_Name__c))) && primaryCountry.contains(accReq.Address__CountryCode__s) && primaryStreet.contains(accReq.Address__Street__s) && primaryCity.contains(accReq.Address__City__s) && primaryState.contains(accReq.Address__StateCode__s) ){
-                    accReq.addError('Error! An account matching the customer name & address you entered has been found. You can’t submit this new request as it is a duplicate.');
+                    accReq.addError(System.Label.UCD_ACM_DuplicateAccount);
                 }
                 else{
                     accReqName.add(accReq.Account_Name__c);
@@ -143,14 +143,14 @@ public without sharing class UCD_ACM_AccountReqQueueTriggerHandler {
                 if(!existingRequestQueueRecord.isEmpty()){
                     for(Account_Create_Request__c dupaccReq:existingRequestQueueRecord){
                         if((accRequest.Account_Name__c==dupaccReq.Account_Name__c || (accRequest.Core_Alternate_Language_Name__c==dupaccReq.Core_Alternate_Language_Name__c)) && (accRequest.Address__CountryCode__s==dupaccReq.Address__CountryCode__s && accRequest.Address__Street__s==dupaccReq.Address__Street__s && accRequest.Address__City__s==dupaccReq.Address__City__s && accRequest.Address__StateCode__s==dupaccReq.Address__StateCode__s)){
-                            accRequest.addError('Error! An account matching the customer name & address you entered has been found. You can’t submit this new request as it is a duplicate.');
+                            accRequest.addError(System.Label.UCD_ACM_DuplicateAccount);
                         }
                     }
                 }
                 if(!existingAccountRecord.isEmpty()){
                     for(Account acc:existingAccountRecord){
                         if((accRequest.Account_Name__c==acc.Name || accRequest.Core_Alternate_Language_Name__c==acc.Core_Alternate_Language_Name__c) && (accRequest.Address__CountryCode__s==acc.BillingCountry && accRequest.Address__Street__s==acc.BillingStreet && accRequest.Address__City__s==acc.BillingCity && accRequest.Address__StateCode__s==acc.BillingState)){
-                            accRequest.addError('Error! An account matching the customer name & address you entered has been found. You can’t submit this new request as it is a duplicate.');
+                            accRequest.addError(System.Label.UCD_ACM_DuplicateAccount);
                         }
                     }
                 }

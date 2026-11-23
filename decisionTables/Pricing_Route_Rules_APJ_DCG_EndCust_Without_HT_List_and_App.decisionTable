@@ -55,6 +55,12 @@
         <usage>OUTPUT</usage>
     </decisionTableParameters>
     <decisionTableSourceCriterias>
+        <operator>IsNull</operator>
+        <sequenceNumber>5</sequenceNumber>
+        <sourceFieldName>Pricing_Application_Nm__c</sourceFieldName>
+        <valueType>Literal</valueType>
+    </decisionTableSourceCriterias>
+    <decisionTableSourceCriterias>
         <operator>Equals</operator>
         <sequenceNumber>1</sequenceNumber>
         <sourceFieldName>Pricing_Region_Nm__c</sourceFieldName>
@@ -63,28 +69,22 @@
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>3</sequenceNumber>
+        <sequenceNumber>2</sequenceNumber>
         <sourceFieldName>Pricing_Program_Type_Nm__c</sourceFieldName>
         <value>Data Center</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>4</sequenceNumber>
+        <sequenceNumber>3</sequenceNumber>
         <sourceFieldName>Pricing_Is_Routing_Rule_Active_Ind__c</sourceFieldName>
-        <value>true</value>
+        <value>True</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>IsNotNull</operator>
-        <sequenceNumber>2</sequenceNumber>
+        <sequenceNumber>4</sequenceNumber>
         <sourceFieldName>Pricing_End_Customer_Country_Nm__c</sourceFieldName>
-        <valueType>Literal</valueType>
-    </decisionTableSourceCriterias>
-    <decisionTableSourceCriterias>
-        <operator>IsNull</operator>
-        <sequenceNumber>5</sequenceNumber>
-        <sourceFieldName>Pricing_Application_Nm__c</sourceFieldName>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <doesConsiderNullValue>false</doesConsiderNullValue>
@@ -98,5 +98,4 @@
     <sourceConditionLogic>1 AND 2 AND 3 AND 4 AND 5</sourceConditionLogic>
     <sourceObject>Pricing_Routing_Rules__c</sourceObject>
     <status>Active</status>
-    <usageType>Bre</usageType>
 </DecisionTable>

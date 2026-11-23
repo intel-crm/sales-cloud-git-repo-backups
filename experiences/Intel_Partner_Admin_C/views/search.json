@@ -10,7 +10,7 @@
         "menuItems" : "[]"
       },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "5c829e24-fd92-4de5-bd7a-529f04bdd523",
+      "id" : "5f17e1b4-4c7e-4104-a629-2153419ea829",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -30,12 +30,9 @@
         }, {
           "isPublic" : true,
           "name" : "Opportunity"
-        }, {
-          "isPublic" : true,
-          "name" : "PCC_DDR_L5_Product_Mapping__c"
         } ],
         "searchResultFiltering" : true,
-        "searchTerm" : "{!term}",
+        "searchTerm" : "{!searchString}",
         "showTopResults" : true
       },
       "componentName" : "forceCommunity:search",
@@ -52,7 +49,7 @@
     "regionName" : "footer",
     "type" : "region"
   } ],
-  "themeLayoutType" : "Inner",
+  "themeLayoutType" : "D9gihoBcrVmPnDirmD7WyT5a9SjrsS",
   "type" : "view",
   "viewType" : "global-search"
 }

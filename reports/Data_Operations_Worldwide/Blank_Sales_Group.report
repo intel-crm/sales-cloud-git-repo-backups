@@ -10,19 +10,10 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>ADDRESS1_COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>LAST_STAGE_CHANGE_DATE</field>
     </columns>
     <columns>
         <field>AMOUNT</field>
@@ -43,10 +34,22 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
+        <field>NEXT_STEP</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Approved_Sales_Group__c</field>
     </columns>
     <columns>
-        <field>LAST_UPDATE_BY</field>
+        <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <filter>
         <booleanFilter>1 AND (2 OR 3)</booleanFilter>

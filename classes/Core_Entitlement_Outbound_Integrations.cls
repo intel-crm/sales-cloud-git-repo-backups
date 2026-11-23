@@ -152,26 +152,26 @@ global without sharing class Core_Entitlement_Outbound_Integrations
             Set <Contact> lstInterContactsAGSUpdate = new Set <Contact>();
             if (onlyInternalEntPendingContacts != null && !onlyInternalEntPendingContacts.isEmpty()){
                 userListInterEntContacts = [SELECT Id, ContactId, IsActive, Core_License_Reclaimed_on_Creation__c FROM User WHERE ContactId IN :onlyInternalEntPendingContacts];
-                  
+                
                 for(User usr : userListInterEntContacts){
                     if(usr.Core_License_Reclaimed_on_Creation__c){
                         InternalContWithUser.put(usr.ContactId, usr.Core_License_Reclaimed_on_Creation__c);
                     } else {
                         InternalContWithUser.put(usr.ContactId, usr.IsActive);
                     }
-            }
+                }
             }
             
             /* Following cases will be considered as Successful and Failed:
-            IF: Just Internal Entitlements are Pending AND
-                CASE 1.1: Successful Assignment/Removal --> If the User record is there and is Active
-                CASE 1.2: Successful Removal --> If User record is there and is InActive, but Entitlement is for Removal
-                CASE 1.3: Successful Removal --> If User record is not there, but Entitlement is for Removal
-            ELSE IF: Just Internal Entitlements are Pending AND 
-                CASE 2.1: Failed Assignemnt --> If User record is there and is InActive and Entitlement is for Assignment
-            ELSE IF: Just Internal Entitlements are Pending AND 
-                CASE 3.1: Failed Assignemnt --> If User record is not there and Entitlement is for Assignment
-            */
+IF: Just Internal Entitlements are Pending AND
+CASE 1.1: Successful Assignment/Removal --> If the User record is there and is Active
+CASE 1.2: Successful Removal --> If User record is there and is InActive, but Entitlement is for Removal
+CASE 1.3: Successful Removal --> If User record is not there, but Entitlement is for Removal
+ELSE IF: Just Internal Entitlements are Pending AND 
+CASE 2.1: Failed Assignemnt --> If User record is there and is InActive and Entitlement is for Assignment
+ELSE IF: Just Internal Entitlements are Pending AND 
+CASE 3.1: Failed Assignemnt --> If User record is not there and Entitlement is for Assignment
+*/
             Set<Id> successfulAssignedContacts = new Set<Id>();
             Set<Id> successfulRemovedContacts = new Set<Id>();
             Set<Id> userInactiveFailedConts = new Set<Id>();
@@ -180,45 +180,45 @@ global without sharing class Core_Entitlement_Outbound_Integrations
             for(Core_Contact_Entitlement__c ce : lstContEnt){
                 String IntgLogTags = ce.Core_Display_Nm__c + ';' + ce.Core_Contact_Id__c + ';' + ce.Core_Contact_Id__r.Core_Enterprise_Id__c +';' + ce.Core_Contact_Id__r.Email;
                 if((onlyInternalEntPendingContacts.contains(ce.Core_Contact_Id__c) && ce.Core_Status__c == 'Pending' && ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'Salesforce') && 
-                ((InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && InternalContWithUser.get(ce.Core_Contact_Id__c)) ||
-                (InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && !InternalContWithUser.get(ce.Core_Contact_Id__c) && !ce.Core_Selected__c) ||
-                (!InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && !ce.Core_Selected__c))){
-                    ce.Core_Status__c = 'Complete';
-                    ce.Core_Update_Reason__c='';
-                    if(ce.Core_Selected__c){
-                        ce.Core_Status_of_Assignment_Failure__c = 'Successful Assignment';
-                        successfulAssignedContacts.add(ce.Core_Contact_Id__c);
+                   ((InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && InternalContWithUser.get(ce.Core_Contact_Id__c)) ||
+                    (InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && !InternalContWithUser.get(ce.Core_Contact_Id__c) && !ce.Core_Selected__c) ||
+                    (!InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && !ce.Core_Selected__c))){
+                        ce.Core_Status__c = 'Complete';
+                        ce.Core_Update_Reason__c='';
+                        if(ce.Core_Selected__c){
+                            ce.Core_Status_of_Assignment_Failure__c = 'Successful Assignment';
+                            successfulAssignedContacts.add(ce.Core_Contact_Id__c);
+                        }
+                        else if(!ce.Core_Selected__c) {
+                            ce.Core_Status_of_Assignment_Failure__c = 'Successful Removal';
+                            successfulRemovedContacts.add(ce.Core_Contact_Id__c);
+                        }
+                        CEtoUpdate.add(ce);
+                        conEntName.add(ce.Core_Display_Nm__c);
+                        //lstInterContactsAGSUpdate.add(new Contact(Id = ce.Core_Contact_Id__c, Core_AGS_Integration_Status__c = 'Successful'));
+                        //successfulContacts.add(ce.Core_Contact_Id__c);
+                        Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','Success',ce.Core_Contact_Id__c, null, 0,IntgLogTags);
+                    } else if(onlyInternalEntPendingContacts.contains(ce.Core_Contact_Id__c) && ce.Core_Status__c == 'Pending' && ce.Core_Selected__c && InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && !InternalContWithUser.get(ce.Core_Contact_Id__c) && ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'Salesforce'){
+                        ce.Core_Status__c = 'Complete';
+                        ce.Core_Selected__c = false;
+                        ce.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
+                        ce.Core_Update_Reason__c='User record Inactive';
+                        CEtoUpdate.add(ce);
+                        conEntName.add(ce.Core_Display_Nm__c);
+                        //lstInterContactsAGSUpdate.add(new Contact(Id = ce.Core_Contact_Id__c, Core_AGS_Integration_Status__c = 'Failed', Core_AGS_Integration_Message__c = 'User record Inactive while assigning Internal Entitlements'));
+                        userInactiveFailedConts.add(ce.Core_Contact_Id__c);
+                        Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','User Record Inactive',ce.Core_Contact_Id__c, null, 0,IntgLogTags);
+                    } else if(onlyInternalEntPendingContacts.contains(ce.Core_Contact_Id__c) && ce.Core_Status__c == 'Pending' && ce.Core_Selected__c && !InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'Salesforce'){
+                        ce.Core_Status__c = 'Complete';
+                        ce.Core_Selected__c = false;
+                        ce.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
+                        ce.Core_Update_Reason__c='User record not Available';
+                        CEtoUpdate.add(ce);
+                        conEntName.add(ce.Core_Display_Nm__c);
+                        //lstInterContactsAGSUpdate.add(new Contact(Id = ce.Core_Contact_Id__c, Core_AGS_Integration_Status__c = 'Failed', Core_AGS_Integration_Message__c = 'User record not available while assigning Internal Entitlements'));
+                        userUnavailableFailedConts.add(ce.Core_Contact_Id__c);
+                        Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','User Record Not Available',ce.Core_Contact_Id__c, null, 0,IntgLogTags);
                     }
-                    else if(!ce.Core_Selected__c) {
-                        ce.Core_Status_of_Assignment_Failure__c = 'Successful Removal';
-                        successfulRemovedContacts.add(ce.Core_Contact_Id__c);
-                    }
-                    CEtoUpdate.add(ce);
-                    conEntName.add(ce.Core_Display_Nm__c);
-                    //lstInterContactsAGSUpdate.add(new Contact(Id = ce.Core_Contact_Id__c, Core_AGS_Integration_Status__c = 'Successful'));
-                    //successfulContacts.add(ce.Core_Contact_Id__c);
-                    Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','Success',ce.Core_Contact_Id__c, null, 0,IntgLogTags);
-                } else if(onlyInternalEntPendingContacts.contains(ce.Core_Contact_Id__c) && ce.Core_Status__c == 'Pending' && ce.Core_Selected__c && InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && !InternalContWithUser.get(ce.Core_Contact_Id__c) && ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'Salesforce'){
-                    ce.Core_Status__c = 'Complete';
-                    ce.Core_Selected__c = false;
-                    ce.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
-                    ce.Core_Update_Reason__c='User record Inactive';
-                    CEtoUpdate.add(ce);
-                    conEntName.add(ce.Core_Display_Nm__c);
-                    //lstInterContactsAGSUpdate.add(new Contact(Id = ce.Core_Contact_Id__c, Core_AGS_Integration_Status__c = 'Failed', Core_AGS_Integration_Message__c = 'User record Inactive while assigning Internal Entitlements'));
-                    userInactiveFailedConts.add(ce.Core_Contact_Id__c);
-                    Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','User Record Inactive',ce.Core_Contact_Id__c, null, 0,IntgLogTags);
-                } else if(onlyInternalEntPendingContacts.contains(ce.Core_Contact_Id__c) && ce.Core_Status__c == 'Pending' && ce.Core_Selected__c && !InternalContWithUser.containsKey(ce.Core_Contact_Id__c) && ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'Salesforce'){
-                    ce.Core_Status__c = 'Complete';
-                    ce.Core_Selected__c = false;
-                    ce.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
-                    ce.Core_Update_Reason__c='User record not Available';
-                    CEtoUpdate.add(ce);
-                    conEntName.add(ce.Core_Display_Nm__c);
-                    //lstInterContactsAGSUpdate.add(new Contact(Id = ce.Core_Contact_Id__c, Core_AGS_Integration_Status__c = 'Failed', Core_AGS_Integration_Message__c = 'User record not available while assigning Internal Entitlements'));
-                    userUnavailableFailedConts.add(ce.Core_Contact_Id__c);
-                    Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','User Record Not Available',ce.Core_Contact_Id__c, null, 0,IntgLogTags);
-                }
             }
             allContactsSet.addAll(successfulAssignedContacts);
             allContactsSet.addAll(successfulRemovedContacts);
@@ -233,9 +233,9 @@ global without sharing class Core_Entitlement_Outbound_Integrations
                     lstInterContactsAGSUpdate.add(new Contact(Id = conId, Core_AGS_Integration_Status__c = 'Failed', Core_Entitlement_Assignment_Status__c = 'Failed', Core_Entitlement_Assignment_Message__c ='Timestamp: ' + System.now() + ' GMT'+'\n' +'Entitlement: ' + conEntDisplayName + '\n' + 'Operation: Assign Entitlement; Status: Failed;' + '\n' + 'User Record Not Available' + '\n', Core_AGS_Integration_Message__c ='Timestamp: ' + System.now() + ' GMT'+'\n' +'Entitlement: ' + conEntDisplayName + '\n' + 'Operation: Assign Entitlement; Status: Failed;' + '\n' + 'User Record Not Available' + '\n'));
                 }
                 else if(successfulAssignedContacts.contains(conId) && successfulRemovedContacts.contains(conId)){
-                  lstInterContactsAGSUpdate.add(new Contact(Id = conId, Core_AGS_Integration_Status__c = 'Successful', Core_Entitlement_Assignment_Status__c = 'Successful', Core_Entitlement_Assignment_Message__c ='Timestamp: ' + System.now() + ' GMT'+'\n'+ 'Entitlement: ' + conEntDisplayName + '\n' + 'Operation: Assign/Remove Entitlement;  Status: Success' + '\n'));  
+                    lstInterContactsAGSUpdate.add(new Contact(Id = conId, Core_AGS_Integration_Status__c = 'Successful', Core_Entitlement_Assignment_Status__c = 'Successful', Core_Entitlement_Assignment_Message__c ='Timestamp: ' + System.now() + ' GMT'+'\n'+ 'Entitlement: ' + conEntDisplayName + '\n' + 'Operation: Assign/Remove Entitlement;  Status: Success' + '\n'));  
                 }
-                 else if(successfulAssignedContacts.contains(conId)){
+                else if(successfulAssignedContacts.contains(conId)){
                     lstInterContactsAGSUpdate.add(new Contact(Id = conId, Core_AGS_Integration_Status__c = 'Successful', Core_Entitlement_Assignment_Status__c = 'Successful', Core_Entitlement_Assignment_Message__c ='Timestamp: ' + System.now() + ' GMT'+'\n'+ 'Entitlement: ' + conEntDisplayName + '\n' + 'Operation: Assign Entitlement;  Status: Success' + '\n'));  //Incase of only Internal Entitlement Successfully Added on existing User-Contact
                 }
                 else if(successfulRemovedContacts.contains(conId)){
@@ -253,7 +253,14 @@ global without sharing class Core_Entitlement_Outbound_Integrations
             Map<id,Core_Integration_Outbound_Message__c> mapMsg = new Map<id,Core_Integration_Outbound_Message__c>();
             List <Contact> lstContactsInProgress = new List <Contact> ();
             Map<String,String> lstCountryPhonePrefixMapping = new Map<String,String>();
-            List<Core_Country_Phone_Prefix_Mapping__c>countryPhonePrefix=[SELECT Id, Core_Country_Name__c, Core_Phone_Prefix__c, Core_Country_Code__c FROM Core_Country_Phone_Prefix_Mapping__c];
+            Set<String> setCountryCodes = new Set<String>();
+            for(Contact c : lstcontactsWithAGSPending){
+                if(c.Core_Account_Primary_Country__c != null){
+                    setCountryCodes.add(c.Core_Account_Primary_Country__c);
+                }
+            }
+            List<Core_Country_Phone_Prefix_Mapping__c>countryPhonePrefix=[SELECT Id, Core_Country_Name__c, Core_Phone_Prefix__c, Core_Country_Code__c FROM Core_Country_Phone_Prefix_Mapping__c WHERE Core_Country_Code__c IN :setCountryCodes
+                                                                          LIMIT 1000];
             for(Core_Country_Phone_Prefix_Mapping__c rec:countryPhonePrefix){
                 lstCountryPhonePrefixMapping.put(rec.Core_Country_Code__c,rec.Core_Phone_Prefix__c);
             }
@@ -301,14 +308,14 @@ tags += addTag(cObj.Core_Login_Id__c);*/
                     }
                     
                     String PhoneNumberPrefix = null;
-                        // List<Core_Country_Phone_Prefix_Mapping__c> lstCountryPhonePrefix = new List<Core_Country_Phone_Prefix_Mapping__c>([SELECT Id, Core_Country_Name__c, Core_Phone_Prefix__c, Core_Country_Code__c FROM Core_Country_Phone_Prefix_Mapping__c WHERE Core_Country_Code__c =: c.Core_Account_Primary_Country__c]);
-                         
-                        if((c.Core_Account_Primary_Country__c != null) && lstCountryPhonePrefixMapping.get(c.Core_Account_Primary_Country__c) != null && PhoneNumber != null){
-                            PhoneNumberPrefix = lstCountryPhonePrefixMapping.get(c.Core_Account_Primary_Country__c);
-                        } else if(c.Core_Account_Primary_Country__c != null){
-                            PhoneNumberPrefix = null;
-                        }
-                     
+                    // List<Core_Country_Phone_Prefix_Mapping__c> lstCountryPhonePrefix = new List<Core_Country_Phone_Prefix_Mapping__c>([SELECT Id, Core_Country_Name__c, Core_Phone_Prefix__c, Core_Country_Code__c FROM Core_Country_Phone_Prefix_Mapping__c WHERE Core_Country_Code__c =: c.Core_Account_Primary_Country__c]);
+                    
+                    if((c.Core_Account_Primary_Country__c != null) && lstCountryPhonePrefixMapping.get(c.Core_Account_Primary_Country__c) != null && PhoneNumber != null){
+                        PhoneNumberPrefix = lstCountryPhonePrefixMapping.get(c.Core_Account_Primary_Country__c);
+                    } else if(c.Core_Account_Primary_Country__c != null){
+                        PhoneNumberPrefix = null;
+                    }
+                    
                     
                     // AGS_Outbound_Msg_Wrapper2 agsOMW2 = new AGS_Outbound_Msg_Wrapper2(c.Core_Enterprise_Id__c, Label.Core_Contact_Ent_AGS_Justification, c.FirstName, c.LastName, c.Email, (c.Core_Preferred_Language__c == null) ? 'ENG' : c.Core_Preferred_Language__c, B2CLanguageCode, c.Core_Account_Primary_Country__c, CountryCodeISO2, PhoneNumberPrefix, PhoneNumber, (c.Core_Login_Id__c == null) ? c.Email : c.Core_Login_Id__c);
                     AGS_Outbound_Msg_Wrapper2 agsOMW2 = new AGS_Outbound_Msg_Wrapper2(c.Core_Enterprise_Id__c, Label.Core_Contact_Ent_AGS_Justification, c.FirstName, c.LastName, c.Email, (c.Core_Preferred_Language__c == null) ? 'en-US' : LanguageCodeISO4, /*B2CLanguageCode, c.Core_Account_Primary_Country__c,*/  CountryCodeISO2, PhoneNumberPrefix, PhoneNumber /*c.Email*/);                    
@@ -323,36 +330,36 @@ tags += addTag(cObj.Core_Login_Id__c);*/
                     outboundMsg.Core_Payload__c = '<![CDATA[' +  JSON.serialize(agsOMW2) + ']]>';
                     outboundMsg.Core_Tags__c = tags == null || tags.length() <= 255 ? tags : tags.substring(0, 255);
                     lstOutboundMsg.add(outBoundMsg);
-                     
+                    
                     //Contact cTemp = new Contact(id = c.Id, Core_AGS_Integration_Status__c = 'In-Progress');
                     if(setConIdInternalEnt.contains(c.Id)){
                         lstContactsInProgress.Add(new Contact(id = c.Id, Core_AGS_Integration_Status__c = 'In-Progress', Core_Entitlement_Assignment_Status__c = 'Pending'));
                     } else {
                         lstContactsInProgress.Add(new Contact(id = c.Id, Core_AGS_Integration_Status__c = 'In-Progress'));
                     }
-                        mapMsg.put(c.Id, outBoundMsg);
+                    mapMsg.put(c.Id, outBoundMsg);
                     tags = ''; // DRACO CHANGE [07/07/2022] ---- Added bug fix for AGS OBM tags mismatch in case of Data load [TWC1811-2597]
                     //------------------------------- Draco changes for A&E 2.0 :: END --------------------------------------//
                 }
             }
             if(lstOutboundMsg != null && lstOutboundMsg.size()>0) {
-                 insert lstOutboundMsg;
-     
-     // Add contact message entries for each of the messages
+                insert lstOutboundMsg;
+                
+                // Add contact message entries for each of the messages
                 List<Contact_Message__c> lstContactMsg = new List<Contact_Message__c>();
-                  for(Id cid : mapMsg.keySet())
-                      lstContactMsg.add(new Contact_Message__c(Contact__c = cid, Outbound_Message__c = mapMsg.get(cid).id));
+                for(Id cid : mapMsg.keySet())
+                    lstContactMsg.add(new Contact_Message__c(Contact__c = cid, Outbound_Message__c = mapMsg.get(cid).id));
                 insert lstContactMsg;
             }
             if(!lstInterContactsAGSUpdate.isEmpty()){
                 lstContactsInProgress.addall(lstInterContactsAGSUpdate);
-                 
+                
             }
             if (!lstContactsInProgress.isEmpty())
-                 update lstContactsInProgress;
+                update lstContactsInProgress;
             
         } catch(Exception ex) {
-          
+            
             Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_AGS_SCOPE, LOG_ENTRY_ERROR,
                                                  'Error generating AGS OBM', '', currentContactId, LOG_ENTRY_OBJECT, tags, ex);
         }
@@ -432,7 +439,7 @@ return responses;
     
     // ----------- #REGION :: eRPM Code Changes :: END ------------- //
     
-                        
+    
     /*****************************************************************************************************
 Method Name:                                             generateOBMOnCIMUpdate
 @return  :                                               Void
@@ -441,7 +448,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
 ******************************************************************************************************/
     //Commented lines to avoid Account Flow to ERPM for IPA Accounts (mainly CSP & DSN enggs) - hsk
     public static void generateOBMOnCIMUpdate(List<Account> lNewAccounts, Map<Id, Account> lOldAccounts) {
-         
+        
         List<Contact> contactsToUpdate = new List<Contact>();
         Set<Id> CIMUpdatedAcctIds = new Set<Id>();
         if(!runOnce)
@@ -474,7 +481,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
                 if(acctObj.RecordTypeId != coMarketingRecordTypeId && acctObj.RecordTypeId != pAGRecordTypeId && acctObj.RecordTypeId != DirectAccRecTypeId) //Added by Accenture - VD -> Check if the record type is not Co-Marketing
                     //End of Changes - To check if the record type is not Core_Partner_Account_Group - US408340 - by Accenture
                 {
-                     
+                    
                     if((acctIdContactMap.containsKey(acctObj.Id)) && (acctObj.Core_B2B_Entitlement__c == true )
                        // || (acctObj.Core_Account_Type__c!=null && acctObj.Core_Account_Type__c.Contains(Label.PRM_Cloud_Service_Provider_CSP)))
                        && (acctObj.Core_Account_Legal_Name__c != lOldAccounts.get(acctObj.Id).Core_Account_Legal_Name__c
@@ -497,7 +504,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
 || acctObj.Core_User_Defined_Phone_Number__c != lOldAccounts.get(acctObj.Id).Core_User_Defined_Phone_Number__c
 || acctObj.Core_User_Defined_Website__c != lOldAccounts.get(acctObj.Id).Core_User_Defined_Website__c*/
                            || acctObj.Core_English_Only_Name__c != lOldAccounts.get(acctObj.Id).Core_English_Only_Name__c)) {
-                              
+                               
                                
                                Contact lCont = acctIdContactMap.containsKey(acctObj.Id) ? acctIdContactMap.get(acctObj.Id) : null ;
                                // TO check if the contact has atleast one relationship
@@ -517,7 +524,14 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
             
             if(CIMUpdatedAcctIds.size() > 0) {
                 Core_ERPM_Outbound_Integration.updateContIPAIntStsOnCIMChange = true;
-                Core_ERPM_Outbound_Integration.contactsToUpdateOnCIMChange = [SELECT id, PRM_IPA_Integration_Status__c from Contact WHERE AccountId IN :CIMUpdatedAcctIds AND PRM_IPA_Integration_Status__c!=null AND PRM_IPA_Integration_Status__c!='Pending'];
+                Set<String> setValidStatuses = new Set<String>{
+                    'Complete', 
+                        'In-Progress', 
+                        'Successful', 
+                        'Failed'
+                        };
+                            
+                            Core_ERPM_Outbound_Integration.contactsToUpdateOnCIMChange = [SELECT id, PRM_IPA_Integration_Status__c from Contact WHERE AccountId IN :CIMUpdatedAcctIds AND PRM_IPA_Integration_Status__c IN : setValidStatuses];
                 
             }
             
@@ -587,17 +601,17 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
                     Integer iPendingEntCntNew = 0;
                     Integer iPendingEngCntNew = 0;
                     List<Core_Contact_Entitlement__c> lstContEntNew = new List<Core_Contact_Entitlement__c>();
-                   
+                    
                     for(Core_Contact_Entitlement__c cEnt : cObj.Contact_Entitlements__r){
                         lstContEntNew.add(cEnt);
                         
-                            
-                            if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Status__c == 'Pending'){
-                                iPendingEntCntNew ++;
-                            }
-                            if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c != null && cEnt.Core_Status__c == 'Pending'){
-                                iPendingEngCntNew ++;
-                            }
+                        
+                        if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Status__c == 'Pending'){
+                            iPendingEntCntNew ++;
+                        }
+                        if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c != null && cEnt.Core_Status__c == 'Pending'){
+                            iPendingEngCntNew ++;
+                        }
                         
                     }
                     if(iPendingEntCntNew != 0 && iPendingEngCntNew == 0 && !Core_Contact_EmailChange_Handler.initiatedAsEmailChange) //Team Draco Change [22/12/2022]
@@ -614,7 +628,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
         //*********************************** DRACO- A&E 2.0 -fresh contact- ERPm Bypass -End ***********************************//
         for(Contact cObj : lstNewContacts)
         {
-             
+            
             if((cObj.Core_ERPM_Integration_Status__c == 'Successful' && cObj.Core_AGS_Integration_Status__c == 'Pending'
                 && (mapContIdOldContacts.get(cObj.Id).Core_AGS_Integration_Status__c != 'Pending' || mapContIdOldContacts.get(cObj.Id).Core_ERPM_Integration_Status__c != 'Successful'))
                ||(mapContactsNotToPublishERPMNew.containsKey(cObj.Id))) //Added by DRACO as part of ERPM Bypass
@@ -649,7 +663,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
                     {
                         //Prepare list of contacts that we need to process in ERPM
                         if(cObj.Core_ERPM_Integration_Status__c == 'Pending' && cObj.Core_ERPM_Integration_Queue_txt__c != 'Full'
-                        && !cObj.Core_IPS_Employee_Customer__c)
+                           && !cObj.Core_IPS_Employee_Customer__c)
                         {
                             lstcontactsWithPending.add(cObj);
                         }
@@ -666,20 +680,20 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
                     Map<Id, Contact> lstcontactsWithPendingMap = new Map<Id, Contact>(lstcontactsWithPending);
                     if(lstcontactsWithPending != null && !lstcontactsWithPending.isEmpty()) {
                         lstCont = [SELECT id, Core_eRPM_Person_Id__c, Core_Enterprise_Id__c, FirstName, LastName,Core_Profession__c,
-                                Email, Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, Core_Sales_Do_Not_Contact_Ind__c, Core_Do_Not_Contact_Dtm__c, Core_Do_Not_Contact__c, Core_Marketing_Do_Not_Contact_Dtm__c, Salutation,
-                                Core_Job_Function_Code__c, MailingStreet, MailingCity, MailingStateCode, MailingCountryCode,
-                                MailingPostalCode, Phone, MobilePhone, Core_Preferred_Language__c, Account.Name, Account.Core_CNDA_Number__c, Account.Id,
-                               Account.BillingStreet, Account.BillingCity, Account.BillingStateCode, Account.BillingCountryCode,/*Account.Core_CIM_ID__c,*/
-                                Account.BillingPostalCode, Account.ShippingStreet, Account.ShippingCity, Account.ShippingStateCode, Account.ShippingCountryCode,
-                               Account.ShippingPostalCode, Account.Core_User_Defined_Phone_Number__c, /*Account.Core_Account_Legal_Name__c,*/ Account.Core_IsODM__c,
-                               MailingCountry, Account.BillingCountry,Account.ShippingCountry, /*Account.Core_B2B_ERPM_Account_Number__c,*/ Account.Core_English_Only_Name__c,
-                                Account.Core_Alternate_Language_Name__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_User_Defined_Website__c, Account.Core_User_Defined_Number_of_Employees__c,
-                                (SELECT Id,PRM_Status_Nm__c, PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.Name,PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r  WHERE PRM_Relationship_Id__r.Name = :Label.PRM_Entitlement_Employee),
-                                (SELECT PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c,PRM_Partner_Subscription_Id__r.Name,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c FROM Contact_Subscription_Associations__r where PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c != true),
-                                (Select id, Core_Selected__c,Core_DontNotify__c,Core_Status__c,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_Entitlement_Id__r.Name,Core_Contact_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Engagement_Type__c FROM Contact_Entitlements__r),
-                                (SELECT Id, Contact__c, Status__c, Business_Types__c FROM Contact_Business_Types__r WHERE Business_Types__r.Name =: Label.DZP_Business_Type)
-                                FROM Contact
-                                WHERE id IN :lstcontactsWithPendingMap.keySet()];
+                                   Email, Core_English_Only_First_Name__c, Core_English_Only_Last_Name__c, Core_Sales_Do_Not_Contact_Ind__c, Core_Do_Not_Contact_Dtm__c, Core_Do_Not_Contact__c, Core_Marketing_Do_Not_Contact_Dtm__c, Salutation,
+                                   Core_Job_Function_Code__c, MailingStreet, MailingCity, MailingStateCode, MailingCountryCode,
+                                   MailingPostalCode, Phone, MobilePhone, Core_Preferred_Language__c, Account.Name, Account.Core_CNDA_Number__c, Account.Id,
+                                   Account.BillingStreet, Account.BillingCity, Account.BillingStateCode, Account.BillingCountryCode,/*Account.Core_CIM_ID__c,*/
+                                   Account.BillingPostalCode, Account.ShippingStreet, Account.ShippingCity, Account.ShippingStateCode, Account.ShippingCountryCode,
+                                   Account.ShippingPostalCode, Account.Core_User_Defined_Phone_Number__c, /*Account.Core_Account_Legal_Name__c,*/ Account.Core_IsODM__c,
+                                   MailingCountry, Account.BillingCountry,Account.ShippingCountry, /*Account.Core_B2B_ERPM_Account_Number__c,*/ Account.Core_English_Only_Name__c,
+                                   Account.Core_Alternate_Language_Name__c, Core_Set_ERPM_Status_Bypass__c, Account.Core_User_Defined_Website__c, Account.Core_User_Defined_Number_of_Employees__c,
+                                   (SELECT Id,PRM_Status_Nm__c, PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.Name,PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r  WHERE PRM_Relationship_Id__r.Name = :Label.PRM_Entitlement_Employee),
+                                   (SELECT PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c,PRM_Partner_Subscription_Id__r.Name,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c FROM Contact_Subscription_Associations__r where PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c != true),
+                                   (Select id, Core_Selected__c,Core_DontNotify__c,Core_Status__c,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_Entitlement_Id__r.Name,Core_Contact_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Engagement_Type__c FROM Contact_Entitlements__r),
+                                   (SELECT Id, Contact__c, Status__c, Business_Types__c FROM Contact_Business_Types__r WHERE Business_Types__r.Name =: Label.DZP_Business_Type)
+                                   FROM Contact
+                                   WHERE id IN :lstcontactsWithPendingMap.keySet()];
                         
                         
                         logEntryMsgString+='\nContact Records with Pending Integration Status: '+lstCont;
@@ -688,18 +702,18 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
                             Integer iPendingEntCnt = 0;
                             Integer iPendingEngCnt = 0;
                             List<Core_Contact_Entitlement__c> lstContEnt = new List<Core_Contact_Entitlement__c>();
-                    
+                            
                             for(Core_Contact_Entitlement__c cEnt : cObj.Contact_Entitlements__r){
                                 lstContEnt.add(cEnt);
                                 //if(cEnt.Core_Contact_Id__c == cObj.Id){
-                                    //String status = cEnt.Core_Status__c;
-                                    //String engCode = cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c;
-                                    if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Status__c == 'Pending'){
-                                        iPendingEntCnt ++;
-                                    }
-                                    if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c != null && cEnt.Core_Status__c == 'Pending'){
-                                        iPendingEngCnt ++;
-                                    }
+                                //String status = cEnt.Core_Status__c;
+                                //String engCode = cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c;
+                                if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Status__c == 'Pending'){
+                                    iPendingEntCnt ++;
+                                }
+                                if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c != null && cEnt.Core_Status__c == 'Pending'){
+                                    iPendingEngCnt ++;
+                                }
                                 //}
                             }
                             
@@ -872,7 +886,7 @@ pAcctProf.DoNotContactFlag = 'N';
                         }
                         acctProf.AccountPhysicalAddresses.add(new AccountPhysicalAddresses(addressLine1, addressLine2, cObj.Account.ShippingCity, cObj.Account.ShippingStateCode, getISO2CountryCode(cObj.Account.ShippingCountry), cObj.Account.ShippingPostalCode,'MAIL'));
                     }
-                  
+                    
                     
                     // ------------------------------ ERPM Changes : BEGIN -------------------------------- //
                     if(cObj.Account.Core_User_Defined_Phone_Number__c != null)
@@ -894,53 +908,53 @@ pAcctProf.DoNotContactFlag = 'N';
                             if(cEnt.Core_Entitlement_Id__r.Core_IsActive__c)
                             {
                                 String engCode = cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c;
-                             
+                                
                                 //Boolean selected = cEnt.Core_Selected__c;
                                 String action = (cEnt.Core_Selected__c) ? 'ENGSTSAPRD' : 'ENGSTSRJTD';
-                                   
-                                    if(engCode!= null && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Engagement_Type__c == 'SEC')
+                                
+                                if(engCode!= null && cEnt.Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__r.Core_Engagement_Type__c == 'SEC')
+                                {
+                                    if(!mEngCodes.containsKey(engCode))
                                     {
-                                        if(!mEngCodes.containsKey(engCode))
-                                        {
+                                        mEngCodes.put(engCode, action);
+                                    }
+                                    else
+                                    {
+                                        if(mEngCodes.get(engCode).equals('ENGSTSRJTD')) {
                                             mEngCodes.put(engCode, action);
                                         }
-                                        else
-                                        {
-                                            if(mEngCodes.get(engCode).equals('ENGSTSRJTD')) {
-                                                mEngCodes.put(engCode, action);
-                                            }
-                                        }
                                     }
-                                    else if(engCode!= null)
+                                }
+                                else if(engCode!= null)
+                                {
+                                    if(!mSoftEngCodes.containsKey(engCode))
                                     {
-                                        if(!mSoftEngCodes.containsKey(engCode))
+                                        mSoftEngCodes.put(engCode, action);
+                                        
+                                    }
+                                    else
+                                    {
+                                        if(mSoftEngCodes.get(engCode).equals('ENGSTSRJTD'))
                                         {
                                             mSoftEngCodes.put(engCode, action);
                                             
                                         }
-                                        else
-                                        {
-                                            if(mSoftEngCodes.get(engCode).equals('ENGSTSRJTD'))
-                                            {
-                                                mSoftEngCodes.put(engCode, action);
-                                                
-                                            }
-                                        }
                                     }
+                                }
                             }
                         }
                     } //END : Contact_Entitlement loop
                     
-                   
+                    
                     pAcctProf.Subscriptions = GetSubscriptions(cObj);
-                  
+                    
                     
                     acctProf.ExternalSystems.add(new ExternalSystems('SLSCLDID', cObj.Account.Id));
                     acctProf.ExternalSystems.add(new ExternalSystems('CIM', null));
                     // Adding null checks until validation rules are complete
                     // 2/10/2017 Adding truncated fields check
                     //if(cObj.Account.Core_Account_Legal_Name__c != null && !String.isBlank(cObj.Account.Core_Account_Legal_Name__c))
-                        acctProf.AccountNameCollections.add(new AccountNameCollections(null, 'ACTNMTYLGL'));
+                    acctProf.AccountNameCollections.add(new AccountNameCollections(null, 'ACTNMTYLGL'));
                     
                     if(cObj.Account.Core_English_Only_Name__c != null && !String.isBlank(cObj.Account.Core_English_Only_Name__c))
                         acctProf.AccountNameCollections.add(new AccountNameCollections(cObj.Account.Core_English_Only_Name__c, 'ACTNMTYENG'));
@@ -962,11 +976,11 @@ pAcctProf.DoNotContactFlag = 'N';
                             membership.EngagementCode=key;
                             membership.EnggStatus = mEngCodes.get(key);
                             acctProf.MembershipCollections.add(membership);
-                         
+                            
                         }
                     }
                     
-                   
+                    
                     // ------------------------------ ERPM Changes : START -------------------------------- //
                     if(acctProf !=null && (acctProf.MembershipCollections != null && acctProf.MembershipCollections.size() >0))
                         pAcctProf.AccountProfiles.add(acctProf);
@@ -983,7 +997,7 @@ pAcctProf.Memberships.add(new Memberships(System.Label.PRM_IPACRMCNTCSENGG, (cOb
                     //Add DZS engagement in Approve/Rejected based on contact business type(DZP) status
                     
                     if(cObj.Contact_Business_Types__r.Size() > 0 && String.isNotBlank(cObj.Core_Enterprise_Id__c)) {
-						pAcctProf.Memberships.add(new Memberships(Label.UDE_Standard_Engg_Code, (cObj.Contact_Business_Types__r[0].Status__c == 'Approved') ? 'ENGSTSAPRD' : 'ENGSTSRJTD'));
+                        pAcctProf.Memberships.add(new Memberships(Label.UDE_Standard_Engg_Code, (cObj.Contact_Business_Types__r[0].Status__c == 'Approved') ? 'ENGSTSAPRD' : 'ENGSTSRJTD'));
                     }
                     // ------------------------------ ERPM Changes : END -------------------------------- //
                     // Always add Sales Soft engagement
@@ -991,16 +1005,16 @@ pAcctProf.Memberships.add(new Memberships(System.Label.PRM_IPACRMCNTCSENGG, (cOb
                     String ChngAgentLoginId;
                     boolean isPSG = false;
                     
-                        if((mSoftEngCodes.size() > 0) && mSoftEngCodes.containsKey('PSG_Basic'))
-                        {
-                            ChngAgentLoginId =(org.IsSandbox)?Label.ERPM_Change_Agent_ID_Pre_Prod_PSG:Label.ERPM_Change_Agent_ID_Prod_PSG;
-                            isPSG = true;
-                        }
-                                                                                      if(mSoftEngCodes.size() > 0){
+                    if((mSoftEngCodes.size() > 0) && mSoftEngCodes.containsKey('PSG_Basic'))
+                    {
+                        ChngAgentLoginId =(org.IsSandbox)?Label.ERPM_Change_Agent_ID_Pre_Prod_PSG:Label.ERPM_Change_Agent_ID_Prod_PSG;
+                        isPSG = true;
+                    }
+                    if(mSoftEngCodes.size() > 0){
                         for(String key : mSoftEngCodes.keySet()) {
                             pAcctProf.Memberships.add(new Memberships(key, mSoftEngCodes.get(key)));
                         }
-                                                                                      }
+                    }
                     
                     
                     ERPM_Outbound_Msg_Wrapper outboundMsgWrapper = new ERPM_Outbound_Msg_Wrapper();
@@ -1062,7 +1076,7 @@ mapContactsToBeUpdated.put(cont.Id, cont);
             update lstupdateContacts;
         }
         catch(Exception ex) {
-           
+            
             Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_ERPM_SCOPE, LOG_ENTRY_ERROR,
                                                  'Error generating ERPM OBM', '', currentContactId, LOG_ENTRY_OBJECT, tags, ex);
             logEntryMsgString+='\nException occurred in generateErpmOutboundMessage method:'+ex.getTypeName() + ': ' + ex.getMessage() + ', ' + ex.getStackTraceString();    
@@ -1294,8 +1308,8 @@ PostalCode = pCode;
         {
             CompanySize = null;
             /*CompanySize = String.isNotBlank(noOfEmp) ? [SELECT eRPM_KeyValue__c FROM SF_ERPM_MAPPING_SETTING__mdt
-                                                        WHERE Mapping_Type__c =: Label.PRM_CompanySize AND eRPMEngagementCode__c =: Label.PRM_CSPx2EngagementCode
-                                                        AND SF_KeyValue__c =: noOfEmp LIMIT 1].eRPM_KeyValue__c : null;*/
+WHERE Mapping_Type__c =: Label.PRM_CompanySize AND eRPMEngagementCode__c =: Label.PRM_CSPx2EngagementCode
+AND SF_KeyValue__c =: noOfEmp LIMIT 1].eRPM_KeyValue__c : null;*/
             CompanySizeGroup = String.isNotBlank(noOfEmp) ? noOfEmp : null;
             AcctNumber = null;
             if(aName.length() > 129) {              // 2/10/2017 Adding truncated fields check

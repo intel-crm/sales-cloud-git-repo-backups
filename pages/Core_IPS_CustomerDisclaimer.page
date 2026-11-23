@@ -1,9 +1,33 @@
 <apex:page Controller="Core_IPS_ContactloginDisclaimer" action="{!redirectAutomate}" showHeader="false" sidebar="false" contentType="text/html; charset=utf-8">
-        
+ <head>
+   <script type="text/javascript" src="https://www.intel.com/content/dam/www/global/wap/performance-config.js" ></script> 
+   </head>
+    
+    <body>  
+    <script type="text/javascript">
+    //configure tms
+    var wapLocalCode = 'us-en'; //dynamically set per localized site, see mapping table for values
+    var wapSection = "ips-portal";
+    var wa_env = "dev"; //set to “prod” when implementing on production site.
+    var wapSinglePage = true; // Include this variable if your application comes under single page ,otherwise don’t include
+    //load tms
+    (function() {
+        var url = "https://www.intel.com/content/dam/www/global/wap/tms-loader.js"; //wap file url
+        var po = document.createElement('script'); 
+            po.type = 'text/javascript'; 
+            po.async = true;  
+            po.src = url;
+        var s = document.getElementsByTagName('script')[0]; 
+            s.parentNode.insertBefore(po, s);
+    })();
+    </script>
+
+  
+  
 <apex:form >
     <apex:pageBlock >
         <apex:pageBlockSection >
-            <apex:outputText value="{!docBody}" escape="false"/> 
+            <apex:outputText escape="false" value="{!docBody}"></apex:outputText>
             <br />
             <br />
             <br />
@@ -17,4 +41,5 @@
       </apex:pageBlockButtons>
     </apex:pageBlock>
 </apex:form>
+</body>
 </apex:page>

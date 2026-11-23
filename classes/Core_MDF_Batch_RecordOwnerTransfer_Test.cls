@@ -98,11 +98,11 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         insert aba;
         
         insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_I_MDF_Benefit', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'MDFPRPCCP', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
-		insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_II_MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Proposal II MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal II MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
-		insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_II_MDF_Benefit', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'MDFPRPCCP', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal II MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
-		insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Account_Plan_MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Account Plan MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Account_Based', Core_MDF_Budget_Type__c = 'Account Plan', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Account Based');
-		insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Account_Plan_MDF_Benefit', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'MDFACCCCP', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Account_Based', Core_MDF_Budget_Type__c = 'Account Plan', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Account Based');
-		insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_I_MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Proposal I MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
+    insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_II_MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Proposal II MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal II MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
+    insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_II_MDF_Benefit', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'MDFPRPCCP', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal II MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
+    insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Account_Plan_MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Account Plan MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Account_Based', Core_MDF_Budget_Type__c = 'Account Plan', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Account Based');
+    insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Account_Plan_MDF_Benefit', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'MDFACCCCP', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Account_Based', Core_MDF_Budget_Type__c = 'Account Plan', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Account Based');
+    insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Proposal_I_MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Proposal I MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
 
         Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount('[Prime] Intel Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
         acc1.Core_MDF_CoMarketingActive__c = false;
@@ -146,7 +146,7 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         acm.PRM_Status_Reason_Txt__c ='Test';
         acm.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acm.PRM_Channel_Program_Level_Id__c=cplTest.Id;
-		listAcm.add(acm);
+    listAcm.add(acm);
         PRM_AccountChannelMembership__c acm1 = new PRM_AccountChannelMembership__c();
         acm1.PRM_Account_Id__c = acc3.Id;
         acm1.PRM_Status_Nm__c = 'Approved';
@@ -154,7 +154,7 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         acm1.PRM_Status_Reason_Txt__c ='Test';
         acm1.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acm1.PRM_Channel_Program_Level_Id__c=cplTest.Id;
-		listAcm.add(acm1);
+    listAcm.add(acm1);
         PRM_AccountChannelMembership__c acm2 = new PRM_AccountChannelMembership__c();
         acm2.PRM_Account_Id__c = acc4.Id;
         acm2.PRM_Status_Nm__c = 'Approved';
@@ -162,7 +162,7 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         acm2.PRM_Status_Reason_Txt__c ='Test';
         acm2.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acm2.PRM_Channel_Program_Level_Id__c=cplTest.Id;
-		listAcm.add(acm2);
+    listAcm.add(acm2);
         PRM_AccountChannelMembership__c acm3 = new PRM_AccountChannelMembership__c();
         acm3.PRM_Account_Id__c = acc1.Id;
         acm3.PRM_Status_Nm__c = 'Approved';
@@ -170,7 +170,7 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         acm3.PRM_Status_Reason_Txt__c ='Test';
         acm3.PRM_Channel_Program_Id__c=cpIPATest.Id;
         acm3.PRM_Channel_Program_Level_Id__c=cplTest.Id;
-		listAcm.add(acm3);
+    listAcm.add(acm3);
         insert listAcm;
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
@@ -229,7 +229,7 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
 
         insert conEntitlmentList;
 
-		Test.startTest();
+    Test.startTest();
         Id profileId = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1].Id;
 
         List<User> userList = new List<User>();
@@ -269,7 +269,7 @@ public class Core_MDF_Batch_RecordOwnerTransfer_Test {
         }
 
         ChannelProgram ipaProgram = Core_MDF_CCP_TestDataUtility.createProgram('Intel Partner Alliance','Intel Partner Alliance', true);
-		Id accOnboard_RecordType_IPA = Schema.SObjectType.Core_MDF_Account_Onboarding__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
+    Id accOnboard_RecordType_IPA = Schema.SObjectType.Core_MDF_Account_Onboarding__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
         List<Core_MDF_Account_Onboarding__c> accOnboardingList = new List<Core_MDF_Account_Onboarding__c>();
 
         Core_MDF_Account_Onboarding__c accOnboard1 = new Core_MDF_Account_Onboarding__c();

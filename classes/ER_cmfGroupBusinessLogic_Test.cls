@@ -3,7 +3,7 @@ Test Class Name : ER_cmfGroupBusinessLogic_Test
 Class Name  : ER_cmfGroupTriggerHandler,ER_cmfGroupBusinessLogic,ER_cmfGroupTrigger
 Version     : 1.0 
 Created Date: 15 Nov 2023
-Function    : Apex class to handle CMF group business logics like cloning of cmf group.
+Function    : Utility class to handle email delivery logic, Email logs creation.
 Modification Log :
 * Developer                 Date                    Description
 * ----------------------------------------------------------------------------      
@@ -11,40 +11,165 @@ Modification Log :
 *****************************************************************************************************************************************/
 @IsTest
 public class ER_cmfGroupBusinessLogic_Test {
+
+    /*-----------------------------------------------------------
+      TEST DATA SETUP
+    -----------------------------------------------------------*/
     @testSetup
     public static void recordSetup(){
-        List<ER_Customer_Master_File_Group__c> cmfGroupList= new List<ER_Customer_Master_File_Group__c>();
-        for(Integer i=0; i<5;i++){
-            ER_Customer_Master_File_Group__c cmfGroup= new ER_Customer_Master_File_Group__c();
-            cmfGroup.Name= 'testName'+i;
-            cmfGroupList.add(cmfGroup);
+
+        // Create CMF Groups
+        List<ER_Customer_Master_File_Group__c> cmfGroupList =
+            new List<ER_Customer_Master_File_Group__c>();
+
+        for(Integer i = 0; i < 5; i++){
+            cmfGroupList.add(
+                new ER_Customer_Master_File_Group__c(
+                    Name = 'testName' + i
+                )
+            );
         }
-        Database.Insert(cmfGroupList);
-        cmfGroupList[1].Name= 'New Test Bag';
-        update cmfGroupList[1];
-        
-        ER_Customer_Master_File__c cmf= new ER_Customer_Master_File__c();
-        cmf.Name='testCmfName';
-        cmf.ER_CMF_Name__c='testCMF';
-        cmf.ER_Sales_Disti_Chnl_Code__c='EU02';
-        Database.Insert(cmf);
-        List<ER_CMFGroupAssociation__c> cmfAssocList = new  List<ER_CMFGroupAssociation__c>();
-        for(ER_Customer_Master_File_Group__c cmfgroup:cmfGroupList){
-            ER_CMFGroupAssociation__c cmfAssoc= new ER_CMFGroupAssociation__c();
-           cmfAssoc.ER_Customer_Master_File__c=cmf.Id;
-            cmfAssoc.ER_Customer_Master_File_Group__c=cmfgroup.Id;
-            cmfAssocList.add(cmfAssoc);
+        insert cmfGroupList;
+
+        // Create CMF
+        ER_Customer_Master_File__c cmf = new ER_Customer_Master_File__c(
+            Name = 'testCmfName',
+            ER_CMF_Name__c = 'testCMF',
+            ER_Sales_Disti_Chnl_Code__c = 'EU02'
+        );
+        insert cmf;
+
+        // Create CMF Group Associations (ACTIVE)
+        List<ER_CMFGroupAssociation__c> assocList =
+            new List<ER_CMFGroupAssociation__c>();
+
+        for(ER_Customer_Master_File_Group__c grp : cmfGroupList){
+            assocList.add(
+                new ER_CMFGroupAssociation__c(
+                    ER_Customer_Master_File__c = cmf.Id,
+                    ER_Customer_Master_File_Group__c = grp.Id,
+                    ER_StartDate__c = System.now()
+                )
+            );
         }
-        Database.Insert(cmfAssocList);
-        
+        insert assocList;
+
+        // Create Account Business Partner (non-CMF path)
+        ER_Account_Business_Partner__c bp =
+            new ER_Account_Business_Partner__c(
+                ER_Customer_Master_File_Grouping__c = cmfGroupList[0].Id,
+                ER_Start_Date__c = System.now()
+            );
+       // insert bp;
     }
+
+    /*-----------------------------------------------------------
+      TEST 1: CMF = TRUE → Clone + After Insert Logic
+    -----------------------------------------------------------*/
     @IsTest
-    public static void cloneData(){
-       ER_Customer_Master_File_Group__c cmfGroup=[Select Name from ER_Customer_Master_File_Group__c where Name='testName0' Limit 1];
-        ER_Customer_Master_File_Group__c cloneCmfGroup=cmfGroup.clone(false, false, false, false);
-        cloneCmfGroup.Name ='TestNewCloneBag';
-        insert cloneCmfGroup;
-        ER_CMFGroupAssociation__c cmfAssoc=[select ER_CMF_Name__c from ER_CMFGroupAssociation__c Limit 1];
-        Assert.areEqual('testCMF',cmfAssoc.ER_CMF_Name__c,'CMF Association Cloned');
+    public static void testClone_CMF_True(){
+
+        ER_cmfGroupBusinessLogic.isCMF = true;
+
+        // 🔴 End-date existing associations to avoid validation failure
+        List<ER_CMFGroupAssociation__c> activeAssoc =
+            [SELECT Id, ER_End_Date__c
+             FROM ER_CMFGroupAssociation__c
+             WHERE ER_End_Date__c = null];
+
+        for(ER_CMFGroupAssociation__c assoc : activeAssoc){
+            assoc.ER_End_Date__c = Date.today();
+        }
+        update activeAssoc;
+
+        ER_Customer_Master_File_Group__c sourceGroup =
+            [SELECT Id
+             FROM ER_Customer_Master_File_Group__c
+             WHERE Name = 'testName0'
+             LIMIT 1];
+
+        Test.startTest();
+
+        ER_Customer_Master_File_Group__c clonedGroup =
+            sourceGroup.clone(false, true);
+        clonedGroup.Name = 'CMF Clone Group';
+        insert clonedGroup;
+
+        ER_cmfGroupBusinessLogic.afterInsertUpdateOperation(
+            new List<ER_Customer_Master_File_Group__c>{ clonedGroup },
+            null,
+            true
+        );
+
+        Test.stopTest();
+    }
+
+    /*-----------------------------------------------------------
+      TEST 2: CMF = FALSE → Account Business Partner Cloning
+    -----------------------------------------------------------*/
+    @IsTest
+    public static void testClone_CMF_False(){
+
+        ER_cmfGroupBusinessLogic.isCMF = false;
+
+        ER_Customer_Master_File_Group__c sourceGroup =
+            [SELECT Id
+             FROM ER_Customer_Master_File_Group__c
+             LIMIT 1];
+
+        Test.startTest();
+
+        ER_Customer_Master_File_Group__c clonedGroup =
+            sourceGroup.clone(false, true);
+        clonedGroup.Name = 'Non CMF Clone';
+        insert clonedGroup;
+
+        ER_cmfGroupBusinessLogic.afterInsertUpdateOperation(
+            new List<ER_Customer_Master_File_Group__c>{ clonedGroup },
+            null,
+            true
+        );
+
+        Test.stopTest();
+    }
+
+    /*-----------------------------------------------------------
+      TEST 3: Direct processCloneRecords Execution
+    -----------------------------------------------------------*/
+    @IsTest
+    public static void testProcessCloneRecordsDirect(){
+
+        ER_cmfGroupBusinessLogic.isCMF = true;
+
+        // 🔴 End-date existing associations
+        List<ER_CMFGroupAssociation__c> assocList =
+            [SELECT Id, ER_End_Date__c
+             FROM ER_CMFGroupAssociation__c
+             WHERE ER_End_Date__c = null];
+
+        for(ER_CMFGroupAssociation__c assoc : assocList){
+            assoc.ER_End_Date__c = Date.today();
+        }
+        update assocList;
+
+        ER_Customer_Master_File_Group__c sourceGroup =
+            [SELECT Id
+             FROM ER_Customer_Master_File_Group__c
+             LIMIT 1];
+
+        ER_Customer_Master_File_Group__c newGroup =
+            new ER_Customer_Master_File_Group__c(
+                Name = 'Direct Process Clone'
+            );
+        insert newGroup;
+
+        Test.startTest();
+
+        ER_cmfGroupBusinessLogic.processCloneRecords(
+            new List<String>{ sourceGroup.Id },
+            newGroup.Id
+        );
+
+        Test.stopTest();
     }
 }

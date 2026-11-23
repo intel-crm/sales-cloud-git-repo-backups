@@ -2,6 +2,7 @@
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Core_Opportunity_Clone_Button</customButtons>
     <customButtons>Core_Sales_Support</customButtons>
+    <customButtons>jiffle__Jifflenow_Meetings</customButtons>
     <customConsoleComponents>
         <primaryTabComponents>
             <containers>
@@ -56,7 +57,6 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>OpenSlackRecordChannel</excludeButtons>
-    <excludeButtons>SmartFillEnrich</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -89,12 +89,20 @@
                 <field>Amount</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>IqScore</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Competitive_Architecture__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Architecture_Conversion__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IOGM_Opportunity__c</field>
             </layoutItems>
             <layoutItems>
                 <height>35</height>
@@ -104,7 +112,7 @@
                 <width>100%</width>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_Loss_Cancel_Reason__c</field>
             </layoutItems>
             <layoutItems>
@@ -163,6 +171,10 @@
                 <showLabel>false</showLabel>
                 <showScrollbars>false</showScrollbars>
                 <width>100%</width>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>CampaignId</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -314,6 +326,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Core_PW_Approval_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>RecordTypeId</field>
             </layoutItems>
             <layoutItems>
@@ -434,6 +450,16 @@
             <actionType>QuickAction</actionType>
             <sortOrder>12</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>jiffle__Jifflenow_Meetings</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>13</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Opportunity.Renew_Opportunity</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>14</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <relatedLists>
         <fields>MemberName</fields>
@@ -461,6 +487,15 @@
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>Core_Partner__c</fields>
+        <fields>Core_Partner_Type__c</fields>
+        <fields>Core_Partner_Role__c</fields>
+        <fields>Core_Partner_Salesperson__c</fields>
+        <fields>Core_Partner_Program__c</fields>
+        <relatedList>Core_Opportunity_Partner__c.Core_Opportunity__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <customButtons>Refresh_KPIs</customButtons>
         <customButtons>Core_Opportunity_Credit</customButtons>
         <fields>NAME</fields>
@@ -476,15 +511,6 @@
         <relatedList>Core_Oppty_KPI_New__c.Core_KPI_Opportunity__c</relatedList>
         <sortField>Core_IsActive__c</sortField>
         <sortOrder>Desc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Core_Partner__c</fields>
-        <fields>Core_Partner_Type__c</fields>
-        <fields>Core_Partner_Role__c</fields>
-        <fields>Core_Partner_Salesperson__c</fields>
-        <fields>Core_Partner_Program__c</fields>
-        <relatedList>Core_Opportunity_Partner__c.Core_Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
@@ -590,23 +616,32 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>jiffle__Account__c</fields>
+        <fields>jiffle__Campaign__c</fields>
+        <fields>jiffle__Event__c</fields>
         <fields>jiffle__Meeting__c</fields>
         <fields>jiffle__Meeting_ID__c</fields>
+        <fields>jiffle__Meeting_Location__c</fields>
         <fields>jiffle__Request_Status__c</fields>
-        <fields>jiffle__Event__c</fields>
-        <fields>CREATEDBY_USER</fields>
-        <fields>CREATED_DATE</fields>
         <relatedList>jiffle__Meeting_Relations__c.jiffle__Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
         <fields>Pricing_Name__c</fields>
         <fields>SBQQ__Version__c</fields>
         <fields>CREATED_DATE</fields>
         <fields>Pricing_View_Download__c</fields>
         <relatedList>SBQQ__QuoteDocument__c.SBQQ__Opportunity__c</relatedList>
+        <sortField>SBQQ__Version__c</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <fields>NAME</fields>
+        <fields>UniTag__Tag__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>UniTag__Tagging__c.Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
@@ -615,13 +650,6 @@
         <fields>CRM_Link_Reason__c</fields>
         <fields>CRM_Link_Description__c</fields>
         <relatedList>CRM_Linked_Opportunities__c.CRM_Linked_Opportunity__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>UniTag__Tag__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>CREATEDBY_USER</fields>
-        <relatedList>UniTag__Tagging__c.Opportunity__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>

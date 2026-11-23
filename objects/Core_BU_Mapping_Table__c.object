@@ -152,14 +152,14 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_BU_Segment__c</fullName>
         <externalId>false</externalId>
         <label>BU Segment</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -170,7 +170,7 @@
         <label>BU Shortname</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -207,6 +207,28 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_LOB_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>LOB Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_LOB_Nm__c</fullName>
+        <externalId>false</externalId>
+        <label>LOB Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Load_ID__c</fullName>
         <externalId>false</externalId>
         <label>Integration Load ID</label>
@@ -231,7 +253,7 @@
         <label>Owning BU Short Name</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -250,7 +272,7 @@
         <label>Product Application</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -261,7 +283,7 @@
         <label>Product Segment</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -272,7 +294,7 @@
         <label>Product Type</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -293,6 +315,7 @@
     <listViews>
         <fullName>All</fullName>
         <columns>Core_Code__c</columns>
+        <columns>Core_Processed__c</columns>
         <columns>Core_Product_Type__c</columns>
         <columns>Core_Division_Shortname__c</columns>
         <columns>Core_Product_Segment__c</columns>

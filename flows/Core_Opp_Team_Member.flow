@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>For sending the email for this workflow  &quot; Core_OppTeamMember_Notify_Member_On_Addition &quot;</description>
+        <name>OpportunityTeamMember_Core_Opp_Notify_TeamMember_On_Addition</name>
+        <label>OpportunityTeamMember.Core_Opp_Notify_TeamMember_On_Addition</label>
+        <locationX>584</locationX>
+        <locationY>1061</locationY>
+        <actionName>OpportunityTeamMember.Core_Opp_Notify_TeamMember_On_Addition</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>OpportunityTeamMember.Core_Opp_Notify_TeamMember_On_Addition</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>for &quot; Core_OppTeamMember_Notify_Member_On_Addition &quot; workflow</description>
+        <name>Core_OppTeamMember_Notify_Member_On_Addition</name>
+        <label>Core_OppTeamMember_Notify_Member_On_Addition</label>
+        <locationX>577</locationX>
+        <locationY>795</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Record_CreadtedBy_Id_and_Record_Id_don_t_match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_OppTeamMember_Notify_Member_On_Addition</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OpportunityTeamMember_Core_Opp_Notify_TeamMember_On_Addition</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Yes --&gt; Record CreadtedBy Id and Record Id don&apos;t match</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the workflow &quot; Core_OppTeamMember_OSC_Update &quot;</description>
+        <name>Core_OppTeamMember_OSC_Update</name>
+        <label>Core_OppTeamMember_OSC_Update</label>
+        <locationX>575</locationX>
+        <locationY>567</locationY>
+        <defaultConnector>
+            <targetReference>Core_OppTeamMember_Notify_Member_On_Addition</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>yes_Snapshot_is_null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_OppTeamMember_OSC_Update</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Core_OSC_Snapshot_c</targetReference>
+            </connector>
+            <label>yes Snapshot is null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for this &quot; Core_OppTM_Set_Values_Upon_Creation &quot;</description>
+        <name>Core_OppTM_Set_Values_Upon_Creation</name>
+        <label>Core_OppTM_Set_Values_Upon_Creation</label>
+        <locationX>573</locationX>
+        <locationY>390</locationY>
+        <defaultConnector>
+            <targetReference>Core_OppTeamMember_OSC_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>When_user_is_Active</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>set_Opportunity_Team_Member_Org</targetReference>
+            </connector>
+            <label>When  user is  Active</label>
+        </rules>
+    </decisions>
+    <description>has all the Workflows of Opp Team Member:
+1. Core_OppTM_Set_Values_Upon_Creation                                      [ 1st decision block ]
+2.Core_OppTeamMember_OSC_Update                                              [ 2nd decision block ]
+3. Core_OppTeamMember_Notify_Member_On_Addition                   [ 3rd decision block ]</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>formula for field update of &quot; Core_OppTeamMember_OSC_Update &quot;</description>
+        <name>F_Core_Opp_TM_OSC_UpdateFormula</name>
+        <dataType>Number</dataType>
+        <expression>IF($Record.User.Core_Is_OSC__c , 1,0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>formula for &quot; Core_OppTeamMember_Notify_Member_On_Addition &quot;</description>
+        <name>F_Core_OppTeamMember_Notify_Member_On_Addition</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.CreatedById}  &lt;&gt;  {!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <description>has the formula for &quot;Core_OppTeamMember_OSC_Update&quot;</description>
+        <name>F_Core_OppTeamMember_OSC_Update</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNULL( {!$Record.Core_OSC_Snapshot__c} )</expression>
+    </formulas>
+    <interviewLabel>Core_Opp_Team_Member {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Opp_Team_Member</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Sets the Org on the Opportunity Team Member as the value of the Department on the User field</description>
+        <name>set_Opportunity_Team_Member_Org</name>
+        <label>set Opportunity Team Member: Org</label>
+        <locationX>304</locationX>
+        <locationY>399</locationY>
+        <connector>
+            <targetReference>Core_OppTeamMember_OSC_Update</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Org__c</field>
+            <value>
+                <elementReference>$User.Department</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Core_OSC_Snapshot_c</name>
+        <label>Update Core_OSC_Snapshot__c</label>
+        <locationX>312</locationX>
+        <locationY>646</locationY>
+        <connector>
+            <targetReference>Core_OppTeamMember_Notify_Member_On_Addition</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_OSC_Snapshot__c</field>
+            <value>
+                <elementReference>F_Core_Opp_TM_OSC_UpdateFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>454</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Core_OppTM_Set_Values_Upon_Creation</targetReference>
+        </connector>
+        <object>OpportunityTeamMember</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

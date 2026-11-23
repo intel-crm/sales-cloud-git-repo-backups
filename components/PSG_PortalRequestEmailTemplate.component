@@ -1,0 +1,64 @@
+<!--****************************************************************************************************
+VF Component Name : PSG_PortalRequestEmailTemplate
+Version         : 1.0 
+Created Date    : 12/19/2022
+Function        : Email Template for Portal Request.
+Modifications   :
+*****************************************************************************************************
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Ranjit                     12/19/2022               Created
+*****************************************************************************************************-->
+<apex:component controller="PSG_Chatbot_CRUDClass" access="global">
+    <apex:attribute name="Request" type="Id" description="Request id of the PR" assignTo="{!Requestid}"/>
+    <apex:attribute name="RequestType" type="String" description="Change Request Type"/>
+    <apex:outputPanel rendered="{!If(RequestType =='Field Update',true,false)}">
+        <table class="t">
+           
+            <tr>
+                <th class="t2">Request Type</th>
+                <th class="t2">Object</th>
+                <th class="t2">Record #</th>
+                <th class="t2">Field</th>
+                <th class="t2">Value</th>
+                <th class="t2">Requestor</th>
+            </tr>
+            <apex:repeat value="{!Requestlist}" var="PR">                
+                <tr>
+                    <td class="t1">{!PR.core_cpq_request_type__c}</td>
+                    <td class="t1">{!PR.core_cpq_bot_Object_Name__c}</td>
+                    <td class="t1">{!PR.core_cpq_record_number__c}</td>
+                    <td class="t1">{!PR.core_cpq_bot_field_name__c}</td>
+                    <td class="t1">{!PR.core_cpq_value__c}</td>
+                    <td class="t1">{!PR.core_cpq_Requested_By__r.name}</td>
+                </tr>
+            </apex:repeat>
+            
+            
+        </table>
+    
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!If(RequestType =='Quote Deactivation',true,false)}">
+        <table class="t">
+           
+            <tr>
+                <th class="t2">Request Type</th>
+                <th class="t2">Quote #</th>
+                <th class="t2">Requestor</th>
+            </tr>
+            <apex:repeat value="{!Requestlist}" var="PR">                
+                <tr>
+                    <td class="t1">{!PR.core_cpq_request_type__c}</td>
+                    <td class="t1">{!PR.core_cpq_record_number__c}</td>
+                    <td class="t1">{!PR.core_cpq_Requested_By__r.name}</td>
+                </tr>
+            </apex:repeat>
+            
+            
+        </table>
+    
+    </apex:outputPanel>
+
+
+</apex:component>

@@ -187,12 +187,12 @@
             </connector>
             <label>After 5 Min IPA</label>
             <maxBatchSize>1</maxBatchSize>
-            <offsetNumber>3</offsetNumber>
+            <offsetNumber>5</offsetNumber>
             <offsetUnit>Minutes</offsetUnit>
             <recordField>LastModifiedDate</recordField>
             <timeSource>RecordField</timeSource>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>

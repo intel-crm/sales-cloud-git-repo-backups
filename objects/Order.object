@@ -241,7 +241,7 @@
         <fullName>AccountId</fullName>
         <lookupFilter>
             <active>false</active>
-            <errorMessage>On Account Field on Order, For Partner/Evaluation License Order, you can use only an Active Intel Account &amp; For other order types, Please check if the Sold To(Stocking) / End Customer(Non-Stocking) Account&apos;s Parent Account is an Active Intel Account.</errorMessage>
+            <errorMessage>On Account Field on Order, For Partner/Evaluation License Order, you can use only an Active Intel Account and For other order types, Please check if the Sold To(Stocking) / End Customer(Non-Stocking) Account&apos;s Parent Account is an Active Intel Account.</errorMessage>
             <filterItems>
                 <field>Account.RecordTypeId</field>
                 <operation>equals</operation>
@@ -292,11 +292,84 @@
     </fields>
     <fields>
         <fullName>ContractId</fullName>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>ContractName</fullName>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Sold_To_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Sold To Account DEL</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Account.Core_CMF_Account_Type_Nm__c</field>
+                <operation>equals</operation>
+                <value>Sold To</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_PSG_Account__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Orders</relationshipLabel>
+        <relationshipName>Orders</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Stage__c</fullName>
+        <label>Stage</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>false</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Reviewed</fullName>
+                    <default>false</default>
+                    <label>Reviewed</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Acknowledged</fullName>
+                    <default>false</default>
+                    <label>Acknowledged</label>
+                </value>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>New</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_PSG_Total_Order_Price_Amt__c</fullName>
+        <label>Total Order Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>CustomerAuthorizedById</fullName>
@@ -359,11 +432,16 @@
     </fields>
     <fields>
         <fullName>PoNumber</fullName>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>Pricebook2Id</fullName>
         <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>QuoteId</fullName>
+        <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -581,34 +659,16 @@
                     <label>PSG SMG SR 150 SNM</label>
                 </value>
                 <value>
-                    <fullName>SAP Samples-AETC 185</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SAP Samples-AETC 185</label>
-                </value>
-                <value>
                     <fullName>SAP Samples-AETC EU02</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>SAP Samples-AETC EU02</label>
                 </value>
                 <value>
-                    <fullName>SAP Samples-AHK 175</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SAP Samples-AHK 175</label>
-                </value>
-                <value>
                     <fullName>SAP Samples-AHK AP01</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>SAP Samples-AHK AP01</label>
-                </value>
-                <value>
-                    <fullName>SAP Samples-AJP 187</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SAP Samples-AJP 187</label>
                 </value>
                 <value>
                     <fullName>SAP Samples-AJP JP01</fullName>
@@ -770,6 +830,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sales_End_Customer_State_Code_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer State Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sales_End_Customer_State_Txt__c</fullName>
         <externalId>false</externalId>
         <label>State</label>
@@ -820,6 +890,79 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetName>Core_Direct_Incoterms</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Sales_Incoterms__c</fullName>
+        <label>Incoterms</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Costs, insurance &amp; freight</fullName>
+                    <default>false</default>
+                    <label>Costs, insurance &amp; freight</label>
+                </value>
+                <value>
+                    <fullName>Free on board</fullName>
+                    <default>false</default>
+                    <label>Free on board</label>
+                </value>
+                <value>
+                    <fullName>Internal code to allow CI outp</fullName>
+                    <default>false</default>
+                    <label>Internal code to allow CI outp</label>
+                </value>
+                <value>
+                    <fullName>Seller pays frt + insurance</fullName>
+                    <default>false</default>
+                    <label>Seller pays frt + insurance</label>
+                </value>
+                <value>
+                    <fullName>Seller pays freight, not risk</fullName>
+                    <default>false</default>
+                    <label>Seller pays freight, not risk</label>
+                </value>
+                <value>
+                    <fullName>Seller pays frt not duty Place</fullName>
+                    <default>false</default>
+                    <label>Seller pays frt not duty Place</label>
+                </value>
+                <value>
+                    <fullName>Seller pays frt not duty Trmnl</fullName>
+                    <default>false</default>
+                    <label>Seller pays frt not duty Trmnl</label>
+                </value>
+                <value>
+                    <fullName>Seller pays frt, customs+duty</fullName>
+                    <default>false</default>
+                    <label>Seller pays frt, customs+duty</label>
+                </value>
+                <value>
+                    <fullName>Buyer pays from seller dock</fullName>
+                    <default>false</default>
+                    <label>Buyer pays from seller dock</label>
+                </value>
+                <value>
+                    <fullName>Buyer pays from export port</fullName>
+                    <default>false</default>
+                    <label>Buyer pays from export port</label>
+                </value>
+                <value>
+                    <fullName>NOT APPLICABLE / SERVICES</fullName>
+                    <default>false</default>
+                    <label>NOT APPLICABLE / SERVICES</label>
+                </value>
+                <value>
+                    <fullName>Per Contract Term</fullName>
+                    <default>false</default>
+                    <label>Per Contract Term</label>
+                </value>
+            </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
@@ -884,7 +1027,7 @@
                 <sorted>false</sorted>
                 <value>
                     <fullName>Non Stocking Order</fullName>
-                    <default>true</default>
+                    <default>false</default>
                     <label>Non Stocking Order</label>
                 </value>
                 <value>
@@ -1388,6 +1531,27 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Sales_SoldTo_ShipTo_Acc__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>ShipTo Account by SoldTo</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>ShipTo account not applicable for selected SolTo account.</errorMessage>
+            <filterItems>
+                <field>Core_Account_SoldTo_ShipTo_Rel__c.Core_Sold_To_Account__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Sales_Sold_To_Account__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Core_Account_SoldTo_ShipTo_Rel__c</referenceTo>
+        <relationshipLabel>Orders</relationshipLabel>
+        <relationshipName>Orders</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Sales_SoldTo_State_Txt__c</fullName>
         <externalId>false</externalId>
         <label>State</label>
@@ -1477,6 +1641,29 @@
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_State__c</fullName>
+        <label>State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>true</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Sales_Sync_Comments_Txt__c</fullName>
@@ -1578,26 +1765,6 @@
         <type>Picklist</type>
     </fields>
     <listViews>
-        <fullName>AllActivatedOrders</fullName>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>A</value>
-        </filters>
-        <label>All Activated Orders</label>
-    </listViews>
-    <listViews>
-        <fullName>AllDraftOrders</fullName>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.STATUS_CODE</field>
-            <operation>equals</operation>
-            <value>D</value>
-        </filters>
-        <label>All Draft Orders</label>
-    </listViews>
-    <listViews>
         <fullName>AllOrders</fullName>
         <columns>ORDERS.ORDER_NUMBER</columns>
         <columns>ORDERS.STATUS</columns>
@@ -1607,7 +1774,6 @@
         <columns>ORDERS.TYPE</columns>
         <columns>Sales_PO_Number_Txt__c</columns>
         <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
         <columns>Sales_ERP_SO_Txt__c</columns>
         <columns>Sales_Order_Reason__c</columns>
         <columns>SBQQ__Quote__c</columns>
@@ -1615,106 +1781,12 @@
         <columns>ORDERS.CREATED_DATE</columns>
         <columns>CREATEDBY_USER.ALIAS</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Sales_status__c</field>
+            <operation>equals</operation>
+            <value>Order created successfully</value>
+        </filters>
         <label>All Orders</label>
-    </listViews>
-    <listViews>
-        <fullName>All_Commercial_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Licensed Tool Order</value>
-        </filters>
-        <label>All Commercial Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Non_commercial_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Non Commercial Order</value>
-        </filters>
-        <label>All Non-commercial Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Sample_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Sample Order</value>
-        </filters>
-        <label>All Sample Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>My_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <label>My Orders</label>
-        <language>en_US</language>
     </listViews>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
@@ -1723,6 +1795,25 @@
         <compactLayoutAssignment>Sales_Compact_Layout</compactLayoutAssignment>
         <description>Default Record type for all Order Records</description>
         <label>Order Record</label>
+        <picklistValues>
+            <picklist>Core_PSG_Stage__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>SBQQ__ContractingMethod__c</picklist>
             <values>
@@ -1806,43 +1897,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>CIP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CPT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Costs and freight</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DAP</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>DAT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DDP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Deliverd at Place</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Delivered Duty Unpaid</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Delivered ex quay %28duty paid%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Delivered ex ship</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1854,19 +1909,62 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>FOB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Hand Carry</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>N%2FA</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>PCT</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_Incoterms__c</picklist>
+            <values>
+                <fullName>Buyer pays from export port</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer pays from seller dock</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Costs%2C insurance %26 freight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Free on board</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal code to allow CI outp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NOT APPLICABLE %2F SERVICES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Per Contract Term</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays freight%2C not risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays frt %2B insurance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays frt not duty Place</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays frt not duty Trmnl</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays frt%2C customs%2Bduty</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2866,6 +2964,17 @@
             </values>
             <values>
                 <fullName>ZZZ DEFAULT FREIGHT METHOD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_State__c</picklist>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2930,6 +3039,25 @@
         <description>When Order Activated or Cancelled, then Record type of Order will change to this Record type.</description>
         <label>Read Only Record</label>
         <picklistValues>
+            <picklist>Core_PSG_Stage__c</picklist>
+            <values>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>SBQQ__ContractingMethod__c</picklist>
             <values>
                 <fullName>By Subscription End Date</fullName>
@@ -2937,7 +3065,7 @@
             </values>
             <values>
                 <fullName>Single Contract</fullName>
-                <default>true</default>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -3077,6 +3205,57 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Sales_Incoterms__c</picklist>
+            <values>
+                <fullName>Buyer pays from export port</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Buyer pays from seller dock</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Costs%2C insurance %26 freight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Free on board</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal code to allow CI outp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NOT APPLICABLE %2F SERVICES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Per Contract Term</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays freight%2C not risk</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays frt %2B insurance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays frt not duty Place</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays frt not duty Trmnl</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller pays frt%2C customs%2Bduty</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Sales_Order_Reason__c</picklist>
             <values>
                 <fullName>Non Stocking Order</fullName>
@@ -3125,15 +3304,7 @@
         <picklistValues>
             <picklist>Sales_Payment_Terms__c</picklist>
             <values>
-                <fullName>1%25 30%2C 30 days Due NET</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>125</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>30 days due net at End of Mth</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3145,43 +3316,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>ALL CREDIT CARDS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Baseline date- End of month</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CIA CASHIERS CHECK</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>DBB</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>F</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>G</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>I</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>I55</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3205,10 +3344,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>N</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>N31</fullName>
                 <default>false</default>
             </values>
@@ -3221,31 +3356,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>N38</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>N39</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>N41</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>N42</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>N43</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>N44</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>N46</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3297,67 +3412,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>NET 15 DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 30DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 41DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 45DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 47DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 48DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 53DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 60 DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 75 DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NET 90 DAYS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pay immediately w%2Fo deduction</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>R</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>S</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>U</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>X</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Y</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4072,6 +4131,17 @@
             </values>
             <values>
                 <fullName>ZZZ DEFAULT FREIGHT METHOD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Sales_State__c</picklist>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -4185,6 +4255,15 @@ ISBLANK(Sales_End_Customer_Province_Txt__c)
         <errorMessage>Cannot activate non stocking order without providing End Customer Account and Address details.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_PSG_Log</fullName>
+        <active>false</active>
+        <description>If Order Type is &apos;ARM License Order&apos;  and Order reason Stocking order then order placed by Disti/OEM allowed.</description>
+        <errorConditionFormula>AND( ISPICKVAL( Status , &apos;Activated&apos;) , 
+ ! ISBLANK(Sales_ERP_SO_Txt__c ))</errorConditionFormula>
+        <errorDisplayField>Sales_SoldTo_Account_2_Txt__c</errorDisplayField>
+        <errorMessage>When status is activated ERP so# should not be blank</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_PSG_Mandatory_Fields</fullName>
         <active>false</active>
         <description>Mandatory fields according to order types</description>
@@ -4281,8 +4360,19 @@ ISBLANK(TEXT(Sales_Order_Sub_Type__c))
 2. Price Book</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Core_PSG_RestrictFieldForSubmittedOrder</fullName>
+        <active>false</active>
+        <description>Validation rule to prevent order editing once submitted to SAP ie.Stage of Order is Activated or Acknowledged or the order is cancelled i.e. Status is Cancelled</description>
+        <errorConditionFormula>IF( $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
+IF( OR(ISPICKVAL( PRIORVALUE(Status), &quot;Activated&quot;),(ISPICKVAL( PRIORVALUE(Status), &quot;Acknowledged&quot;))),
+IF(Ischanged(SBQQ__Contracted__c),false, IF(ISNEW(), FALSE, TRUE)),false))  || 
+
+(IF( ISPICKVAL( PRIORVALUE(Sales_status__c), &quot;Order Cancelled&quot;), true,false))</errorConditionFormula>
+        <errorMessage>You can&apos;t edit the fields on Activated Orders or Cancelled Orders</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Core_PSG_Valid_Quote_Filter_On_Order</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>This Validation rule which check quote selected on order should be active ,approved and  should have quote type as non non-budgetary. Else it will not allow to save record with non satisfying quotes.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,AND( NOT(ISBLANK(SBQQ__Quote__c)) ,
 OR( NOT(SBQQ__Quote__r.core_cpq_active_cb__c),
@@ -4452,7 +4542,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
     </validationRules>
     <validationRules>
         <fullName>Sales_Cannot_Activate_Order_Manually</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Once Order pushed to SAP and order creation failed, It cannot be Activated manually.(Except for Non-Commercial Order)</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 OR(
@@ -4485,16 +4575,29 @@ OrderItemCount__c = 0
         <errorMessage>Order should have atleast one Order Product inorder to Submit to SAP.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Sales_Check_PriceBook</fullName>
+        <active>false</active>
+        <description>If the Pricebook at the Quote is not the same as the one in the Order details then the user should get a validation error stopping the addition of the Quote. </description>
+        <errorConditionFormula>AND(
+NOT( ISPICKVAL( Type , &quot;Sample Order&quot;) ),
+NOT( ISBLANK( SBQQ__Quote__c ) ),
+NOT(ISBLANK( Pricebook2Id )),
+NOT(ISBLANK( SBQQ__Quote__r.SBQQ__PriceBook__c )),
+NOT(  SBQQ__Quote__r.SBQQ__PriceBook__c  =  Pricebook2Id )
+)</errorConditionFormula>
+        <errorMessage>Pricebook at the Quote is not the same as the one in the Order details.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Sales_Corporate_Reason_Default</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>when order type is &quot;Licensed Tool Order&quot; and Sub Type is Corporate Order then Order reason is defaulted to &quot;Non Stocking&quot; and cannot be changed</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, IF(ISPICKVAL(Type,&apos;Licensed Tool Order&apos;) &amp;&amp; ISPICKVAL(Sales_Order_Sub_Type__c,&apos;Corporate Order&apos;)
- &amp;&amp; ISPICKVAL(Sales_Order_Reason__c , &quot;Stocking Order&quot;) &amp;&amp; (OR(  Sales_Is_Verified__c , NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))), true, false))</errorConditionFormula>
+&amp;&amp; ISPICKVAL(Sales_Order_Reason__c , &quot;Stocking Order&quot;) &amp;&amp; (OR( Sales_Is_Verified__c , NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))), true, false))</errorConditionFormula>
         <errorMessage>Corporate Order cannot have Stocking Order Reason</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Sales_EC_Validation_External_Account</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>If Sold to account is an External account(Disti channel 01/02), You can&apos;t use Ship to account as an EC account for non-stocking order.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
 ISPICKVAL( Sales_Order_Reason__c , &apos;Non Stocking Order&apos;),
@@ -4513,7 +4616,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
     </validationRules>
     <validationRules>
         <fullName>Sales_EC_Validation_Internal_Account</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>If the sold to account is an internal account (Disti Channel 04) and order reason is non-stocking, you can use only Internal Ship to accounts as an end customer account</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
 ISPICKVAL( Sales_Order_Reason__c , &apos;Non Stocking Order&apos;),
@@ -4588,7 +4691,7 @@ ISBLANK(Sales_Ship_To_Account__c)
     </validationRules>
     <validationRules>
         <fullName>Sales_OrderCreation_SoldToAcc_Reqd</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Sold To Account field is mandatory for Licensed tool order and Sample order in-order to create a order.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 AND(
@@ -4634,8 +4737,8 @@ AND((ISPICKVAL( Status , &quot;Activated&quot;)),
 NOT(ISPICKVAL (Sales_status__c, &quot;Order Cancelled by SAP&quot;))),
 NOT(ISPICKVAL (Sales_status__c, &quot;Order Cancelled&quot;))
 ),
-ISPICKVAL( Sales_Order_Sub_Type__c , &quot;Corporate Order&quot;),
-ISBLANK( SBQQ__Quote__c ),
+ ISPICKVAL( Sales_Order_Sub_Type__c , &quot;Corporate Order&quot;),
+ ISBLANK( SBQQ__Quote__c ),
 ISBLANK(Sales_Cancelled_Quote_No__c )
 )
 )</errorConditionFormula>
@@ -4659,7 +4762,7 @@ ISCHANGED( OrderItemCount__c )
     </validationRules>
     <validationRules>
         <fullName>Sales_Restrict_Non_Commercial_Status</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>If Order type is &apos;Non Commercial Order&apos; user not allowed to set status as a &apos;SAP Order Creation Failed&apos;.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
 ISPICKVAL(Type, &apos;Non Commercial Order&apos;),
@@ -4688,7 +4791,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))
     </validationRules>
     <validationRules>
         <fullName>Sales_Validation_Shipping_Instruction</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>The Shipping instruction of sample order should be defaulted from the ship to account but should be editable.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, FALSE,
 AND(
@@ -4699,6 +4802,7 @@ NOT( ISPICKVAL( Type ,&apos;Sample Order&apos;) ),
 ISCHANGED( Sales_Shipping_Instructions_Dsc__c )
 ),
 AND(
+ISPICKVAL( PRIORVALUE(Type) ,&apos;Sample Order&apos;),
 OR( ISPICKVAL( Type ,&apos;Licensed Tool Order&apos;), ISPICKVAL( Type ,&apos;Non Commercial Order&apos;) ),
 Sales_Shipping_Instructions_Dsc__c != Sales_Ship_To_Account__r.Core_Direct_Shipping_Instruction_Txt__c
 )
@@ -4729,6 +4833,13 @@ NOT( ISBLANK( Sales_Cancelled_Reason_Dsc__c ) )
   (OR(  Sales_Is_Verified__c ,ISPICKVAL( PRIORVALUE(Status) , &apos;Activated&apos;) )) 
 ))</errorConditionFormula>
         <errorMessage>Can not select an Inactive Pricebook</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>test</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISPICKVAL(Sales_status__c,&apos;Order Cancelled by SAP&apos;) , Sales_Req_Ship_Date_Dt__c &lt;= TODAY())</errorConditionFormula>
+        <errorDisplayField>Sales_SoldTo_Account_2_Txt__c</errorDisplayField>
+        <errorMessage>order cannot be cancle</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>SBQQ__EditOrderProducts</fullName>

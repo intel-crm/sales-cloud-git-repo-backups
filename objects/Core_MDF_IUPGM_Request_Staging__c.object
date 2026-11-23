@@ -148,7 +148,7 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
@@ -185,13 +185,16 @@
                     <default>false</default>
                     <label>PERMISSION_SET_REQUEST</label>
                 </value>
+                <value>
+                    <fullName>PERMISSION_SET_REMOVAL</fullName>
+                    <default>false</default>
+                    <label>PERMISSION_SET_REMOVAL</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_AGS_Role_Comments__c</fullName>
-        <description>Optional user-provided approver comments / justification for the AGS role request.</description>
-        <inlineHelpText>Optional approver comments provided by the requester for the AGS role request.</inlineHelpText>
         <label>AGS Role Comments</label>
         <length>500</length>
         <trackHistory>false</trackHistory>
@@ -359,6 +362,27 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_MDF_Copy_Operation_Id__c</fullName>
+        <description>Correlation id shared by every role-assignment staging record created from a single Copy User Access; chatbot operation. Null for ordinary GRANT/REVOKE requests.Used to group and roll up the individual per-role outcomes (approved/denied/pending/skipped)
+        back into one overall result for the source/target copy operation.</description>
+        <externalId>false</externalId>
+        <label>Copy Operation Id</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Copy_Source_User_txt__c</fullName>
+        <label>Copy Source User Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Error_Message_txt__c</fullName>
         <label>Error Message</label>
         <length>32768</length>
@@ -452,11 +476,6 @@
                     <fullName>WW-&gt;Proposal II MDF</fullName>
                     <default>false</default>
                     <label>WW-&gt;Proposal II MDF</label>
-                </value>
-                <value>
-                    <fullName>WW-&gt;Co-Engineering</fullName>
-                    <default>false</default>
-                    <label>WW-&gt;Co-Engineering</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -567,9 +586,7 @@
     </fields>
     <fields>
         <fullName>Core_MDF_New_User_Email__c</fullName>
-        <description>Stores the requested new user email for IUPGM/AGS user creation flows instead of packing it into the error field.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Requested email for a new Salesforce user when the user does not yet exist in Salesforce.</inlineHelpText>
         <label>New User Email</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -579,9 +596,7 @@
     </fields>
     <fields>
         <fullName>Core_MDF_New_User_Federation_Id__c</fullName>
-        <description>Stores the requested new user federation identifier (WWID) for IUPGM/AGS user creation flows instead of packing it into the error field.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Requested federation identifier / WWID for a new Salesforce user when the user does not yet exist in Salesforce.</inlineHelpText>
         <label>New User Federation Id</label>
         <length>10</length>
         <required>false</required>
@@ -592,9 +607,7 @@
     </fields>
     <fields>
         <fullName>Core_MDF_New_User_Name__c</fullName>
-        <description>Stores the requested new user full name for IUPGM/AGS user creation flows instead of packing it into the error field.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Requested full name for a new Salesforce user when the user does not yet exist in Salesforce.</inlineHelpText>
         <label>New User Name</label>
         <length>255</length>
         <required>false</required>
@@ -602,6 +615,17 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Pending_Dependent_Role_txt__c</fullName>
+        <description>Internal only. GRANT: JSON describing a dependent role, submitted after a Core-Access prerequisite completes (see TriggerHandler.afterUpdate). Copy User Access: JSON {eligibleRoles} on a Copy_Pending preview row, submitted by the next plain &quot;yes&quot; and then deleted.</description>
+        <inlineHelpText>Internal use only - JSON payload describing a dependent role to submit once this Core-Access request completes. See field description.</inlineHelpText>
+        <label>Pending Dependent Role (JSON)</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Core_MDF_Request_Status_nm__c</fullName>
@@ -679,6 +703,11 @@
                     <default>false</default>
                     <label>Submitted</label>
                 </value>
+                <value>
+                    <fullName>Copy_Pending</fullName>
+                    <default>false</default>
+                    <label>Copy_Pending</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -702,6 +731,16 @@
                     <fullName>REVOKE</fullName>
                     <default>false</default>
                     <label>REVOKE</label>
+                </value>
+                <value>
+                    <fullName>COPY</fullName>
+                    <default>false</default>
+                    <label>COPY</label>
+                </value>
+                <value>
+                    <fullName>LIST_ACCESS</fullName>
+                    <default>false</default>
+                    <label>LIST_ACCESS</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

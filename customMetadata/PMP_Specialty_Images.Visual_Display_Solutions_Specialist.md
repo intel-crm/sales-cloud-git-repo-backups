@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Grey_Image_URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000005K8trAAC</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>PMP_Account_Specialty_Name__c</field>
@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>PMP_Specialty_Name_Chinese__c</field>
-        <value xsi:type="xsd:string">视觉显示解决方案专家</value>
+        <value xsi:type="xsd:string">视觉显示解决方案专属优势</value>
     </values>
     <values>
         <field>PMP_Specialty_Name_Japanese__c</field>
@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000004Pg4u</value>
+        <value xsi:type="xsd:string">/imp/servlet/servlet.ImageServer?id=0153b000004Pg4u&amp;oid=00D2i0000008d6j&amp;lastMod=1570256505000</value>
     </values>
 </CustomMetadata>

@@ -165,5 +165,5 @@ public without sharing class PRM_WeChat_Link_Utility {
         public Integer lineNumber {set;get;}
         public String stackTraceString {set;get;}
         public String typeName {set;get;}
-    }
+    }   
 }

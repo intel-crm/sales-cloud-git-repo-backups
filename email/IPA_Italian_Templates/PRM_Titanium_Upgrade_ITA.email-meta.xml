@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>PRM_Titanium_Upgrade_ITA</name>
     <style>none</style>
@@ -8,49 +8,31 @@
     <textOnly>Intel® Partner Alliance Titanium
 
 
-
 {!Contact.FirstName},
 
-Abbiamo apportato alcuni fantastici cambiamenti e modificato i criteri del programma Intel® Partner Alliance migliorando i vantaggi per i clienti aziendali. Per questo, la tua azienda è passata al livello Titanium dell&apos;Intel® Partner Alliance. Congratulazioni!
+Congratulazioni! La tua azienda è stata aggiornata a Intel® Partner Alliance Titanium. Usufruisci di questi vantaggi riservati ai membri:
 
-Ecco alcuni vantaggi incrementali per il livello Titanium:
+Guadagnare più punti sia sui componenti che sui sistemi
+Invito all&apos;Intel® Partner Connect, il principale evento dell&apos;anno per i partner Intel
+Lettera di presentazione Titanium da parte del management Intel per potenziali clienti
 
-Il badge Titanium
-Un maggior numero di Advanced Warranty Replacements
-Un limite di punti più alto
+Effettua il login per avere accesso a strumenti e risorse.
 
-
-Inoltre, la nuova esperienza Intel® Partner University è ricca di entusiasmanti novità, tra cui:
-
-Un aggiornamento completo dell&apos;esperienza digitale
-Percorsi di formazione personalizzati
-Un nuovo sistema di valutazione dei contenuti per aiutare i partner a trovare e seguire i contenuti meglio valutati da colleghi e colleghe.
+Iniziate oggi stesso
 
 
-Inoltre, ora forniamo ai nostri partner una selezione di trend e novità del settore, appositamente curata dai data scientist del team Intel&apos;s Market Sizing and Forecasting.
+I partner di Intel hanno una lunga tradizione di innovazione e con Intel® Partner Alliance saremo in grado di aiutarti a realizzare più rapidamente soluzioni per l&apos;economia incentrata sui dati. Insieme possiamo collaborare, incentivare innovazione e sviluppo e cogliere opportunità straordinarie.
 
-Non perderti le novità e i miglioramenti dell&apos;esperienza utente dell&apos;Intel® Solutions Marketplace:
-
-Un nuovo aspetto e una navigazione del sito più semplice
-Un&apos;esperienza migliorata per la creazione di connessioni e lead tra i partner
-Funzionalità di ricerca complessive migliorate
+Visita intel.com/partnerhelp per ottenere assistenza e orientamento sull&apos;ottimizzazione della tua iscrizione.
 
 
-Con Intel® Partner Alliance cerchiamo costantemente di fornire più valore e vantaggi per consentire alla tua azienda di crescere nell&apos;ambiente odierno. Scopri di più Intel® Partner Alliance e fai progredire la tua azienda.
-
-
-Inizia oggi stesso
-
-
-
-Grazie,
+Grazie.
 Il tuo team Intel® Partner Alliance
 
-
 Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
-© 2023 Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy &amp;verbar; Cookies</textOnly>
+Privacy | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

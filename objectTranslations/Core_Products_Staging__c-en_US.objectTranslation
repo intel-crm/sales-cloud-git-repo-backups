@@ -85,10 +85,6 @@
         <name>Core_IsActive__c</name>
     </fields>
     <fields>
-        <label><!-- IsLatest --></label>
-        <name>Core_IsLatest__c</name>
-    </fields>
-    <fields>
         <label><!-- Custom Indicator --></label>
         <name>Core_Is_Custom_Ind__c</name>
     </fields>

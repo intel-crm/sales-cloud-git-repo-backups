@@ -41,6 +41,10 @@
         <value>Vorlageninhalten</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>URL zu einer VisualForce-Seite, die Inhalt generiert, wenn der Typ auf &quot;Benutzerdefiniert&quot; eingestellt ist.</help>
         <label><!-- Custom Source --></label>
         <name>SBQQ__CustomSource__c</name>

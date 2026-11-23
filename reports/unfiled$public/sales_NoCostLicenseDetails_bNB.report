@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Sales_NoCostLicense__x.generatedtime__c</field>
+    </columns>
+    <columns>
+        <field>Sales_NoCostLicense__x.hostid__c</field>
+    </columns>
+    <columns>
+        <field>Sales_NoCostLicense__x.hosttype__c</field>
+    </columns>
+    <columns>
+        <field>Sales_NoCostLicense__x.productid__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>sales_NoCostLicenseDetails</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Sales_NoCostLicense__x</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Sales_NoCostLicense__x.generatedtime__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

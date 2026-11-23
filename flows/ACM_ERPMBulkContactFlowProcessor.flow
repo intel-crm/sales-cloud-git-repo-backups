@@ -12,18 +12,21 @@
             <name>contactIdsJson</name>
             <value>
                 <elementReference>$Record.Contact_Ids__c</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <inputParameters>
             <name>oldContactMapJson</name>
             <value>
                 <elementReference>$Record.Old_Contact_Map__c</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <inputParameters>
             <name>operationType</name>
             <value>
                 <elementReference>$Record.Operation_Type__c</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
             </value>
         </inputParameters>
         <nameSegment>Core_BulkContactFlowProcessor</nameSegment>

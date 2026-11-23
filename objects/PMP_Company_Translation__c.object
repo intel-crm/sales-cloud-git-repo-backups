@@ -231,16 +231,10 @@
         <fullName>PMP_Marketing_Profile_Articles</fullName>
         <columns>OBJECT_ID</columns>
         <columns>PMP_Company_Information_Id__c</columns>
-        <columns>NAME</columns>
         <columns>PMP_English_Txt__c</columns>
         <columns>PMP_Chinese_Txt__c</columns>
         <columns>PMP_Japanese_Txt__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Field_Nm__c</field>
-            <operation>equals</operation>
-            <value>StreamId</value>
-        </filters>
         <label>Marketing Profile Articles</label>
         <sharedTo>
             <group>PMP_All_Intel_Admin_Users</group>

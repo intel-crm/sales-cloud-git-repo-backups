@@ -15,4 +15,19 @@
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_AAQC_Commissions_Inquiry_Details_Sharing_with_Non_Admins</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Commissions Inquiry Details object Sharing with Non Admins with R/W access</description>
+        <label>Commissions Inquiry Details Sharing with Non Admins</label>
+        <sharedTo>
+            <group>Core_AAQC_Ask_Commissions_Elevated_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_AAQC_Subject__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
 </SharingRules>

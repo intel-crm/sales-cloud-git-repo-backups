@@ -7,6 +7,9 @@
         <publicGroups>
             <publicGroup>Core_MDF_CCF_FCC_Approvers_Group</publicGroup>
         </publicGroups>
+        <users>
+            <user>testccf_fin_mgr_exception_approvers_queue@intel.com.crm</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_MDF_Exception__c</sobjectType>

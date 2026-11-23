@@ -9,9 +9,6 @@
     <columns>
         <field>Account.Core_PAG_Grouping_Method__c</field>
     </columns>
-    <columns>
-        <field>Account.UCD_Primary_Account__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_Account_Record_Type__c</column>

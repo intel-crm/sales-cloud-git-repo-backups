@@ -156,12 +156,12 @@ public without sharing class PRM_PartnerDealOpportunitySharingService {
             if (remainingAccounts != null) {
                 if (opp.PRM_Partner_Account__c != null && remainingAccounts.contains(opp.PRM_Partner_Account__c)
                 ) {
-                    //stillHasAccountTeamAccess = true;
+                    stillHasAccountTeamAccess = true;
                 }
 
                 if (opp.PRM_End_Customer_Account__c != null &&remainingAccounts.contains(opp.PRM_End_Customer_Account__c)
                 ) {
-                    //stillHasAccountTeamAccess = true;
+                    stillHasAccountTeamAccess = true;
                 }
             }
             if (!stillHasAccountTeamAccess) {sharesToDelete.add(share);
@@ -381,6 +381,7 @@ public without sharing class PRM_PartnerDealOpportunitySharingService {
         Set<Id> partnerAccountIds = new Set<Id>();
         Set<Id> partnerUsers = new Set<Id>();
         Set<Id> usersToRemove = new Set<Id>();
+        List<Account> accListToUpdate = new List<Account>();
         List<OpportunityShare> opportunitySharesToDelete = new List<OpportunityShare>();
         List<PRM_Partner_Deal_Opportunity__Share> pdoSharesToDelete = new List<PRM_Partner_Deal_Opportunity__Share>();
 
@@ -393,15 +394,28 @@ public without sharing class PRM_PartnerDealOpportunitySharingService {
                 }
             }
         }
+        system.debug('oldEndCustomerAccountIds-->'+oldEndCustomerAccountIds);
         if (pdoIds.isEmpty() || oldEndCustomerAccountIds.isEmpty()) {
             return;
         }
         
+        // Update end customer flag on account if end customer changes on PDO.
+        for(Account acc : [Select id,name,PRM_Is_Deal_End_Customer_Account__c from Account where Id IN :oldEndCustomerAccountIds]){
+            if(acc.PRM_Is_Deal_End_Customer_Account__c == true){
+                acc.PRM_Is_Deal_End_Customer_Account__c = false;
+                accListToUpdate.add(acc);
+            }
+        }
+        system.debug('accListToUpdate--->'+accListToUpdate);
+        Database.update(accListToUpdate, false);
+        
         for (AccountTeamMember teamMember : [SELECT AccountId,UserId FROM AccountTeamMember WHERE AccountId IN :oldEndCustomerAccountIds AND UserId != null]) {
+            system.debug('came here--->'+accountToUsers);
             if (!accountToUsers.containsKey(teamMember.AccountId)) {
                 accountToUsers.put(teamMember.AccountId,new Set<Id>());
             }
             accountToUsers.get(teamMember.AccountId).add(teamMember.UserId);
+            system.debug('came here--->'+accountToUsers);
         }
 
         for (Set<Id> users : accountToUsers.values()) {
@@ -416,6 +430,7 @@ public without sharing class PRM_PartnerDealOpportunitySharingService {
             if (pdo.PRM_Partner_Account__c != null) {
                 partnerAccountIds.add(pdo.PRM_Partner_Account__c);
             }
+            system.debug('came here 1--->'+partnerAccountIds);
         }
         if (!partnerAccountIds.isEmpty()) {
             for (AccountTeamMember teamMember : [SELECT UserId FROM AccountTeamMember WHERE AccountId IN :partnerAccountIds
@@ -437,6 +452,10 @@ public without sharing class PRM_PartnerDealOpportunitySharingService {
             pdoSharesToDelete.add(shareRecord);
         }
         try{
+            
+            if (!accListToUpdate.isEmpty()) {
+                //Database.update(accListToUpdate, false);
+            }
             if (!pdoSharesToDelete.isEmpty()) {
             Database.delete(pdoSharesToDelete, false);
             }
@@ -465,9 +484,25 @@ public without sharing class PRM_PartnerDealOpportunitySharingService {
         catch(Exception ex){
             logEntryMsgString += '\n[PDO sharing failed] ' + ex.getMessage();
         }
+        // Update end customer flag on account if end customer changes on PDO.
+        /*for(Account acc : [Select id,name,PRM_Is_Deal_End_Customer_Account__c from Account where Id IN :oldEndCustomerAccountIds]){
+            if(acc.PRM_Is_Deal_End_Customer_Account__c == true){
+                acc.PRM_Is_Deal_End_Customer_Account__c = false;
+                accListToUpdate.add(acc);
+            }
+        }
+        system.debug('accListToUpdate--->'+accListToUpdate);
+        try{
+            if (!accListToUpdate.isEmpty()) {
+                Database.update(accListToUpdate, false);
+            }
+        }
+        catch(Exception ex){
+            logEntryMsgString += '\n[Account update failed] ' + ex.getMessage();
+        }
         finally{
             createLogEntry(logEntryMsgString);
-        }
+        }*/
     }
     
     /* Method to remove PDO record share when opportunity removes from PDO.*/

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
+        <fullName>Pricing_SW_10DaysRemainder</fullName>
+        <description>Pricing_SW_10DaysRemainder</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Pricing_SW_Email_Templates/Pricing_SW_ExpiryIn10days</template>
+    </alerts>
+    <alerts>
         <fullName>Pricing_SW_14DaysRemainder</fullName>
         <description>Pricing_SW_14DaysRemainder</description>
         <protected>false</protected>

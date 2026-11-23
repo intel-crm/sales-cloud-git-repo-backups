@@ -63,7 +63,6 @@ Public class PRM_ProfileResponseCtlr_Test{
         
         Contact con = PRM_TestUtility.getContact();
         con.AccountId = acc.Id;
-        con.MailingCountry='USA';
         insert con;
         
         ChannelProgram cp = new ChannelProgram();
@@ -71,7 +70,6 @@ Public class PRM_ProfileResponseCtlr_Test{
         cp.PRM_programCode__c='IPA';
         insert cp;
         
-        //System.debug('cp-->'+cp);
         
         ChannelProgramLevel cpl = new ChannelProgramLevel(); 
         cpl.Name='Titanium';
@@ -83,10 +81,10 @@ Public class PRM_ProfileResponseCtlr_Test{
         acctChnlMem.PRM_Channel_Program_Id__c=cp.Id;
         acctChnlMem.PRM_Channel_Program_Level_Id__c=cpl.Id;
         acctChnlMem.PRM_Status_Nm__c = 'Approved';
-        acctChnlMem.PRM_Partner_Role__c='Seller';
+        acctChnlMem.PRM_Partner_Role__c='Guest';
+        acctChnlMem.PRM_Status_Reason_Txt__c='Test01';
         insert acctChnlMem;
         
-        //System.debug('acctChnlMem-->'+acctChnlMem);
         
         PRM_PartnerType__c pt = new PRM_PartnerType__c();
         pt.Name = 'Cloud Service Provider (CSP)';

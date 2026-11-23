@@ -77,6 +77,7 @@
                 
                 var selected = this.element.children( ":selected" ),
                     value = selected.val() ? selected.text() : "";
+                console.log({!JSENCODE('value')});               
                 
                 this.input = $( "<input>" )
                 .appendTo( this.wrapper )

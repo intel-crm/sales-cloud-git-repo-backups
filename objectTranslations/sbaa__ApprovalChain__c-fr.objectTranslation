@@ -16,6 +16,10 @@
             <masterLabel>Opportunity</masterLabel>
             <translation>Opportunité</translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__Quote__c</masterLabel>
+            <translation><!-- SBQQ__Quote__c --></translation>
+        </picklistValues>
     </fields>
     <gender>Feminine</gender>
     <nameFieldLabel>Nom de la chaîne</nameFieldLabel>

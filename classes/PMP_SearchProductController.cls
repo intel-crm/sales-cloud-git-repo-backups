@@ -15,7 +15,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
     @AuraEnabled(cacheable=true)
     public static List<String> getOfferingIds(String keyword, List<String> offerings) {
         keyword = PMP_SearchUtilityController.escapeSosl(keyword);
-        // system.debug(keyword);
         List<String> offIdsFound = new List<String>();
         Set<String>  offIds = new Set<String>();
         boolean isIntelEmployee = PMP_Utility.isIntelEmployee();
@@ -54,7 +53,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
                     ORDER BY PMP_Partner_Offering_Id__r.PMP_Offering_Status_Update_Dt__c DESC NULLS LAST)];
                 } 
             } catch(Exception e){
-                //System.debug('Error occured while searching the keyword in traslation object :'+ e);
                 //throw e;//error handling
             }
             for (List<SObject> listObj : pubTransList)
@@ -107,7 +105,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
                     }             
                 }
             }catch(Exception e){
-                //System.debug('Error occured while searching the keyword in traslation object :'+ e);
                // throw e; //error handling
             }
             for(PMP_Partner_Offering__c off :pubOffList)
@@ -232,7 +229,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
             sortBy = PMP_StaticConstants_Partner.sortByTierOffering ;
         else
             sortBy = PMP_StaticConstants_Partner.sortByMostRecentOffering;
-        // System.debug('$$sortBy-->'+sortBy);
         //Sort logic End
         //Fetch Sorted Offering
         //Check for Is Intel Employee
@@ -258,7 +254,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
         String finalOfferingList = offeringList + sortBy;
         //Calculate Offset
         Integer offset = (currentPage-1)*pageSize;
-        // system.debug('offset' + offset);
         
         List<PMP_Partner_Offering__c> offList = new List<PMP_Partner_Offering__c>();
         
@@ -291,11 +286,9 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
             else {
                 finalOfferingList+=' LIMIT 12 ';
             }
-            // system.debug('finalOfferingList'+finalOfferingList);
             offList = Database.query(String.escapeSingleQuotes(finalOfferingList));
         }
         
-        // system.debug('..offList..'+offList.Size());
         //Logic END
         Map<String, String> offL2CatIdMap = new Map<String, String>();
         Map<String,String> OffL3CatIdMap = new Map<String,String>();
@@ -327,7 +320,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
 
         }
         
-        //System.debug('..OffL3CatIdMap..'+OffL3CatIdMap);
         OffIdWithL3Cat.addAll(OffL3CatIdMap.keySet());
         //OffL3Categories.addAll(OffL3CatIdMap.values());
         Map<String,String> L3Values=new Map<String, String>();
@@ -335,7 +327,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
         List<PMP_Partner_Offering_Category__c> L3Categories=[select id,name, PMP_Ancestor_Category_Cd__c, PMP_Category_Id__r.name,
                                                              PMP_Category_Id__r.PMP_Ancestor_Category_Nm__c,PMP_Offering_Id__c from PMP_Partner_Offering_Category__c 
                                                              where PMP_Offering_Id__c IN:OffIdWithL3Cat and PMP_Category_Id__r.PMP_Ancestor_Category_Nm__c LIKE:'Categories%'];
-        // System.debug('.....L3Categories.....'+L3Categories);
         
         for(PMP_Partner_Offering_Category__c poc:L3Categories){
             String str= poc.PMP_Category_Id__r.PMP_Ancestor_Category_Nm__c;
@@ -349,7 +340,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
                    L3Values.put(poc.PMP_Offering_Id__c,poc.name); 
             }
         }
-        //System.debug('....L3Values...'+L3Values);
         categoryListForL1L2L3.addAll(L3Values.values());
         List<PMP_Category__c> catL1L2L3List = [SELECT id, Name,PMP_Parent_Category_Id__r.Name,PMP_Category_Chinese_Nm__c, PMP_Category_Japanese_Nm__c from PMP_Category__c where Name IN:categoryListForL1L2L3];
         Map<String,String> catL1L2L3NameIdMap= new Map<String,String>();
@@ -364,8 +354,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
             catL1L2L3NameTrans.put(cat.Name, PMP_SearchUtilityController.getLocalisedName(cat, PMP_StaticConstants_Partner.CAT_NAME_FIELD,langCode)); 
            // PMP_SearchUtilityController.getLocalisedName(cat, PMP_StaticConstants_Partner.CAT_NAME_FIELD, langCode);
         }
-        //system.debug('..Language inside the product controller...'+langCode);
-        //system.debug('..Language inside the product controller...'+catL1L2L3NameTrans);
 
         //Logic End
         
@@ -506,7 +494,6 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
             
         if(offDescMap.containsKey(off.Id)){ 
                             
-            //system.debug('userLanguage'+userLanguage +'static constant'+PMP_StaticConstants_Partner.JA);
             //US959732 : added userLanguage == 'zh-Hans-CN'
             if (userLanguage == PMP_StaticConstants_Partner.ZH_CN || userLanguage == PMP_StaticConstants_Partner.ZH_HANS_CN  && offDescMap.get(off.Id).PMP_Chinese_Txt__c != null){ 
                 temp = offDescMap.get(off.Id).PMP_Chinese_Txt__c;   
@@ -685,16 +672,13 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
             //Logic to filter offerings based on selected specialty
             offIds = PMP_SearchContextualFilterController.getOfferingSpecialtyResults(selectedFilters.get('Specialty_Offering'));                  
             filteredOff.retainAll(offIds);
-            //system.debug('specialities select list :'+ selectedFilters.get('Specialty_Offering'));
         }
         
         
         //To filter offerings based on selected partner program
         if(selectedFilters.get('Partner_Program_Offering')!=null && !selectedFilters.get('Partner_Program_Offering').isEmpty()){
-            //system.debug('option'+ selectedFilters.get('Partner_Program_Offering'));
             offIds =  PMP_SearchContextualFilterController.getOfferingPartnerProgramResults(selectedFilters.get('Partner_Program_Offering'));                 
             filteredOff.retainAll(offIds);  //Retains elements in filteredOff set that are contained in offIds list.
-            //system.debug('Partner_Program_Offering select list :'+ selectedFilters.get('Partner_Program_Offering'));
         }
         
         //To get filtered results of offerings based on events
@@ -742,15 +726,12 @@ public with sharing class PMP_SearchProductController extends PMP_SearchWrapperS
         
     public static Map<String,Integer> getCount(List<String> offerings){ //4
         Map<String,Integer> countMap = new Map<String,Integer>();
-        // System.debug('cat count bef'+ Limits.getQueryRows());
         List<AggregateResult> offCats = [select COUNT(PMP_Offering_Id__c)cnt, PMP_Category_Id__c from PMP_Partner_Offering_Category__c 
                                          where PMP_Offering_Id__c IN :offerings 
                                          and PMP_Category_Id__c !=null AND PMP_Category_Id__r.PMP_Active_Ind__c = true GROUP BY PMP_Category_Id__c ];
         for(AggregateResult offCat: offCats){
             countMap.put((String)offCat.get('PMP_Category_Id__c'),(Integer)offCat.get('cnt'));
         }
-        // System.debug('cat count after'+ Limits.getQueryRows());
-        //system.debug('countMap' + countMap);
         return countMap;
     }
     

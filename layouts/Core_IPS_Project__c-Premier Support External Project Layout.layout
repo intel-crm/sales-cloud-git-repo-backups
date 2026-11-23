@@ -70,8 +70,6 @@
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
-        <customButtons>Add_Products_for_External_Customers</customButtons>
-        <customButtons>Remove_Products</customButtons>
         <fields>ASSET.NAME</fields>
         <fields>ASSET.STATUS</fields>
         <fields>core_Product_Application__c</fields>
@@ -79,8 +77,6 @@
         <relatedList>Asset.Core_IPS_Project__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>Add_Members_For_External_Customers</customButtons>
-        <customButtons>Remove_Members</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>Core_IPS_Contact__c</fields>
         <fields>Core_IPS_Contact_Account__c</fields>
@@ -97,8 +93,6 @@
         <fields>CASES.PRIORITY</fields>
         <fields>CASES.CREATED_DATE</fields>
         <relatedList>Case.Core_IPS_Project_Case__c</relatedList>
-        <sortField>CASES.CREATED_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

@@ -169,6 +169,17 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Core_MDF_Account_txt_del__c</fullName>
+        <externalId>false</externalId>
+        <formula>&apos;&apos;</formula>
+        <label>Account</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Activity_Name_url__c</fullName>
         <externalId>false</externalId>
         <formula>HYPERLINK(
@@ -809,12 +820,12 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Escalation_Name_txt__c</columns>
-        <columns>Core_MDF_Budget_Type_txt__c</columns>
         <columns>Core_MDF_Total_Dollar_Impact_amt__c</columns>
         <columns>Core_MDF_Escalation_Status_nm__c</columns>
         <columns>Core_MDF_Root_Cause_nm__c</columns>
         <columns>RECORDTYPE</columns>
         <columns>Core_MDF_Channel_Program_id__c</columns>
+        <columns>Core_MDF_Budget_Type_txt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -1076,6 +1087,15 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_CCF_Prog_Admin_Escl_L3_Grp</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Core_MDF_CCP_CCRM_Queue_Core_MDF_Escalation</fullName>
+        <filterScope>Queue</filterScope>
+        <label>CCP Claim Case Reviewer Managers Queue</label>
+        <queue>Core_MDF_CCP_CCRM_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
@@ -1576,7 +1596,6 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
             <value>Pending Review</value>
         </filters>
         <label>CCP SPCF Prog Admin Escalations L3 Que</label>
-        <language>en_US</language>
         <sharedTo>
             <group>Core_MDF_CCP_SPCF_Prog_Admin_Escl_L3_Grp</group>
         </sharedTo>
@@ -1613,6 +1632,10 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Escalations</pluralLabel>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <profileName>Comarketing Support L2</profileName>
+    </profileSearchLayouts>
     <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Core_MDF_Budget</fullName>
@@ -1728,6 +1751,13 @@ IF(RecordType.DeveloperName =$Label.Core_MDF_LateClaim_RecordType, (IF( ISBLANK(
     </recordTypes>
     <searchLayouts>
         <listViewButtons>Core_MDF_Export_List_View</listViewButtons>
+        <searchResultsAdditionalFields>Core_MDF_Total_Dollar_Impact_amt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Escalation_Name_txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Escalation_Status_nm__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>UPDATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
         <searchResultsCustomButtons>Core_MDF_Export_List_View</searchResultsCustomButtons>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
@@ -1807,6 +1837,20 @@ ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Expired&apos;)
 ISCHANGED(Core_MDF_Approved_Amount_amt__c)
 )</errorConditionFormula>
         <errorMessage>Approved amount cannot be edited in this status.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_MDF_ErrorOnEditing_Checkbox</fullName>
+        <active>true</active>
+        <description>Do not Auto Create Claim checkbox can be edited only for Pending Review status.</description>
+        <errorConditionFormula>AND(
+OR(
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Approved&apos;),
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Denied&apos;),
+ISPICKVAL( Core_MDF_Escalation_Status_nm__c , &apos;Cancelled&apos;)
+),
+ISCHANGED(Core_MDF_Do_not_Auto_Create_Claim_Ind__c)
+)</errorConditionFormula>
+        <errorMessage>Do not Auto Create Claim can be edited only for Pending Review status.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_LateClaim_ClaimSubUserCheck</fullName>

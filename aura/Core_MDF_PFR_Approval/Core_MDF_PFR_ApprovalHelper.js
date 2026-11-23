@@ -293,6 +293,8 @@
         $A.enqueueAction(action);
     },
 
+    // ========== NEW AI RECOMMENDATION TRACKING METHODS ==========
+    
     /**
      * Store AI recommendation when it's first generated
      */
@@ -325,6 +327,8 @@
         
         $A.enqueueAction(action);
     },
+
+    // ========== END AI RECOMMENDATION TRACKING METHODS ==========
 
     // NEW: Parse and format the actual AI response content
     parseAndFormatAIResponse: function(aiContent, decision) {

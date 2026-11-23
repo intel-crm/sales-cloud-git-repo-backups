@@ -16,38 +16,16 @@
     <apiVersion>55.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <name>IsStartedToday</name>
-        <label>IsStartedToday</label>
-        <locationX>959</locationX>
-        <locationY>307</locationY>
-        <defaultConnectorLabel>StartedYesterday</defaultConnectorLabel>
-        <rules>
-            <name>StartedToday</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>FlowStartDateOnly</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Flow.CurrentDate</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Send_Proactive_Alert</targetReference>
-            </connector>
-            <label>StartedToday</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Send_Proactive_Alert</name>
         <label>Send Proactive Alert</label>
-        <locationX>671</locationX>
-        <locationY>318</locationY>
+        <locationX>669</locationX>
+        <locationY>324</locationY>
         <defaultConnector>
             <targetReference>Pause_for_required_time</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>IsActive False</defaultConnectorLabel>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>IsActive_True</name>
+            <name>Send_Alert</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>SendAlertBoolean</leftValueReference>
@@ -59,7 +37,7 @@
             <connector>
                 <targetReference>Call_Proactive_Alert_Method</targetReference>
             </connector>
-            <label>IsActive True</label>
+            <label>Send Alert</label>
         </rules>
     </decisions>
     <description>This flow triggers the Proactive Alerts when A&amp;E flow is broken due to any external system issue.</description>
@@ -73,11 +51,6 @@
         <name>AlertPauseDateTimeNew</name>
         <dataType>DateTime</dataType>
         <expression>now()-((60-{!SendAlertFrequency})/1440)</expression>
-    </formulas>
-    <formulas>
-        <name>FlowStartDateOnly</name>
-        <dataType>Date</dataType>
-        <expression>DATEVALUE({!FlowStartDateTime})</expression>
     </formulas>
     <formulas>
         <name>SendAlertBoolean</name>
@@ -118,34 +91,24 @@
             <targetReference>Send_Proactive_Alert</targetReference>
         </connector>
         <schedule>
-            <frequency>Daily</frequency>
-            <startDate>2022-08-10</startDate>
-            <startTime>00:15:00.000Z</startTime>
+            <frequency>Once</frequency>
+            <startDate>2022-07-14</startDate>
+            <startTime>22:15:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
     <status>Active</status>
-    <variables>
-        <name>FlowStartDateTime</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Flow.InterviewStartTime</elementReference>
-        </value>
-    </variables>
     <waits>
         <name>Pause_for_required_time</name>
         <label>Pause for required time</label>
-        <locationX>968</locationX>
-        <locationY>525</locationY>
+        <locationX>982</locationX>
+        <locationY>325</locationY>
         <defaultConnectorLabel>Default Path</defaultConnectorLabel>
         <waitEvents>
             <name>Pause_Element</name>
             <conditionLogic>and</conditionLogic>
             <connector>
-                <targetReference>IsStartedToday</targetReference>
+                <targetReference>Send_Proactive_Alert</targetReference>
             </connector>
             <eventType>AlarmEvent</eventType>
             <inputParameters>

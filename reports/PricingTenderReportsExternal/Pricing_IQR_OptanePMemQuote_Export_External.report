@@ -152,9 +152,6 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_ReqDiscUnitPricePerGB_Amt__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_CPU_Txt__c</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_CPU_Quantity_per_System_qty__c</field>
     </columns>
     <columns>

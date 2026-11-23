@@ -8,7 +8,7 @@
             <field>Core_Opportunity_Owner_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderAddress>ddr.admin@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Tech_Owner_On_Product_Rejection</template>
     </alerts>
@@ -919,7 +919,7 @@
     </rules>
     <rules>
         <fullName>KPI CPU Update</fullName>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Product_Type__c</field>
             <operation>equals</operation>

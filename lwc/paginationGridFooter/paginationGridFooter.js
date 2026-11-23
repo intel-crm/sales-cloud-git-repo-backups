@@ -138,7 +138,7 @@ export default class PaginationGridFooter extends LightningElement {
 		} else {
 			this.pageSize = pageSize;
 			this.controlPagination = showIt;
-			this.SearchRecords = data;
+			this.SearchRecords = this.records;
 			this.setRecordsToDisplay();
 		}
 	}

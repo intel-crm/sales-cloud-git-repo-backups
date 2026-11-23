@@ -20,6 +20,10 @@
     </fields>
     <fields>
         <label><!-- Title --></label>
+        <name>Core_Title1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
         <name>Core_Title__c</name>
     </fields>
     <startsWith>Consonant</startsWith>

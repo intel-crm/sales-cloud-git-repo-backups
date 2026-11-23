@@ -41,6 +41,22 @@
         <name>Core_MDF_AI_Comments_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- AI Compliant Status --></label>
+        <name>Core_MDF_AI_Compliant_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>AI Compliant</masterLabel>
+            <translation><!-- AI Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Non-Compliant</masterLabel>
+            <translation><!-- AI Non-Compliant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI Processing Failed</masterLabel>
+            <translation><!-- AI Processing Failed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- AI Generated Engagement Comments --></label>
         <name>Core_MDF_AI_Engagement_Comments_Txt__c</name>
     </fields>
@@ -199,7 +215,7 @@
     </fields>
     <fields>
         <help>Montant de récupération manuelle (MR). Ce que cela signifie pour vous : ce montant sera récupéré.</help>
-        <label>Montant de récupération manuelle (USD)</label>
+        <label>Montant de la récupération manuelle(USD)</label>
         <name>Core_MDF_Manual_Recovery_Amount_USD_Amt__c</name>
     </fields>
     <fields>

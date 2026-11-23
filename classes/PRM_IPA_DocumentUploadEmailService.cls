@@ -21,9 +21,7 @@ public with sharing class PRM_IPA_DocumentUploadEmailService implements Messagin
         Messaging.InboundEmailResult result = new Messaging.InboundEmailresult();
         result.success = true;
         try {
-             
-            if(email != null && checkEmailSubject(email.Subject)){
-                
+            if(email != null && email.Subject.contains(LabelConfiguration__mdt.getInstance('IPA_File_Upload_Email_Subject').Value__c)){
                 String emailId = email.fromAddress;
                 List<PRM_Registration_Request__c> regRequestList;
                 
@@ -125,8 +123,8 @@ public with sharing class PRM_IPA_DocumentUploadEmailService implements Messagin
             String sfdcBaseURL = URL.getOrgDomainUrl().toExternalForm();
             String hyperlink;
             List<String> toAddresses = new List<String>();
-            for(GroupMember gm: [Select UserOrGroup.email from GroupMember where Group.DeveloperName = :LabelConfiguration__mdt.getInstance('IPA_All_Admin_Group_Name').Value__c and UserOrGroup.isActive = true]){
-            	if(String.IsNotBlank(gm.UserOrGroup.email) && toAddresses.size() < Integer.valueOf(LabelConfiguration__mdt.getInstance('PRM_IPA_Admin_Group_Users_Limit').Value__c))
+            for(GroupMember gm: [Select UserOrGroup.email from GroupMember where Group.DeveloperName = :LabelConfiguration__mdt.getInstance('IPA_All_Admin_Group_Name').Value__c]){
+            	if(String.IsNotBlank(gm.UserOrGroup.email))
 	                toAddresses.add(gm.UserOrGroup.email);    
             }
             for(PRM_Registration_Request__c req: reqList){
@@ -143,16 +141,5 @@ public with sharing class PRM_IPA_DocumentUploadEmailService implements Messagin
             } 
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});
         }	    
-    }
-    
-    private boolean checkEmailSubject(String receivedEmailSubject){
-        boolean isSubMatching = false;
-        for(String uploadEmailSubject: System.label.PRM_IPA_File_Upload_Email_Subject.split(';')){
-            if(receivedEmailSubject.contains(uploadEmailSubject)){
-            	isSubMatching = true;    
-            }    
-        }
-        
-        return isSubMatching;
     }
 }

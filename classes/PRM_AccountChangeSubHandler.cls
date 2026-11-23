@@ -44,7 +44,7 @@ public class PRM_AccountChangeSubHandler {
         if (!workItemReqList.isEmpty() 
             && workItemReqList !=null
         ) {
-    logEntryMsg+='\nEntering into approveRegRequests Method: below are the list of workItemReqList Ids'+workItemReqList;
+		logEntryMsg+='\nEntering into approveRegRequests Method: below are the list of workItemReqList Ids'+workItemReqList;
             approveRegRequests(workItemReqList);
         }
     }
@@ -61,9 +61,9 @@ public class PRM_AccountChangeSubHandler {
         String strDetailsAndEx;  
         String errMsg = 'Error occured while updating approval process';
         String methodOrigin = 'updateApprovalProcess';
-    logEntryMsg+='\nEntered into approveRegRequests Method: below are the list of workItemReqList Ids'+workItemReqList;
+		logEntryMsg+='\nEntered into approveRegRequests Method: below are the list of workItemReqList Ids'+workItemReqList;
         for (Approval.ProcessResult result : Approval.process(workItemReqList, false)) {
-    
+		
             if (!result.isSuccess() 
                 || Test.isRunningTest()
             ) {                    
@@ -72,8 +72,8 @@ public class PRM_AccountChangeSubHandler {
                 }
                 //to get coverage moving code in single line
                 listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = errMsg, Core_Origin__c = methodOrigin, Core_Details__c = strDetailsAndEx, Core_Severity__c = SEVERITY, Core_When__c = System.Now(), Core_Project__c = PROJECT));
-        logEntryMsg+='\nEncoured error while approving the request:'+strDetailsAndEx;
-        //listOfLogEntries.add(logEntryMsg);
+				logEntryMsg+='\nEncoured error while approving the request:'+strDetailsAndEx;
+				//listOfLogEntries.add(logEntryMsg);
             }
         }
            listOfLogEntries.add(new Core_Log_Entry__c(Core_Message__c = 'PRM_AccountChangeSubHandler', Core_Origin__c = methodOrigin, Core_Details__c = logEntryMsg, Core_Severity__c = SEVERITY, Core_When__c = System.Now(), Core_Project__c = PROJECT));

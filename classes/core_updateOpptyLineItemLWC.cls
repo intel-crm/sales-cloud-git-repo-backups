@@ -8,16 +8,15 @@
 public without sharing class core_updateOpptyLineItemLWC { //TWC3123-5759 Added without sharing keyword to fix code scan issue
     @AuraEnabled
     public static OpportunityLineItem updateOpptyLineItemRecord(ID recordId, String wipname, String groupname, String status, Decimal qty, Decimal pwqty, Decimal unitprice, Decimal pwsalesprice, String losscancelreason, String losscanceldetails, ID vendor, /*String advtech,*/ String competitor, String compprodval, String othercompprod, ID bumappingrec,Boolean isUserChangedNull , Boolean isUserChangedNullPW){
-        
-        
-        OpportunityLineItem oli = [Select Id,OpportunityId, Product2Id, ProductCode, Name, Quantity, TotalPrice, UnitPrice, ListPrice, ServiceDate, Description, Core_At_Risk_Status__c, Core_Claim_Date__c, Core_Competitor_Product__c, Core_Competitor__c, Core_Division__c, Core_Group__c, Core_Lost_Sales_Price__c, Core_Lost_Total_Price__c, Core_Lost_to_Open_Flag__c, Core_OEM_LOEM_Other__c, Core_OEM_LOEM__c, Core_Product_Type__c, Core_Status__c, Core_Write_In_Product_Name__c, Core_Loss_Cancel_Reason__c, Core_Approved_Commissionable__c, Core_System_Commissionable__c, Core_System_Competitor_Empty_Flag__c, Core_Production_Claim_Date__c,  Core_Production_Cancelled_Sales_Price__c, Core_Production_Lost_Sales_Price__c, Core_Approved_User_Id__c, Core_SPG_Planning_Segment_Legacy__c, Core_BU_Mapping_record__c, Core_Opportunity_Product_ID__c, Core_Product2_Division__c, Core_Write_In_Product_Flag__c, Core_Opp_Approved_Oppty_Coverage__c, Core_Opp_Approved_Sales_Group__c, Core_Design_Registration_Product_Id__c, Core_Technical_Owner_Email_Txt__c, Core_Available_for_New_Designs__c, Core_Approved_KPI_Product_Group__c, CRM_DW_App_UCD_Customer_Name__c, Core_Vendor__c, Core_Vendor_Group__c, Core_Opp_OpportunityType__c, Core_Design_Product_Category__c, Core_Approved_BU_Product_Segment__c, Core_Approved_BU_Short_Name__c, Core_Account_Name__c, Core_Product_Application__c, Core_Product_Segment__c, Core_Software_Stack__c, Core_Vertical_Market__c, Core_UCD_Global_Account_Name__c, Core_Approved_Opp_Product_Segment__c, Core_Opp_Product_Segment__c, /*Core_Advanced_Technology__c,*/ Core_At_Risk__c, Core_Risk_Category__c, Core_Risk_Priority__c, Core_Risk_Reason1__c, Core_Risk_Reason2__c, Core_OtherCompetitor_Product_Txt__c, Core_UCD_Opportunity_Product_Vendor__c, Core_Intel_vPro_Platform_Eligibility__c, Core_Product_Risk_Owner__c, Core_Loss_Cancel_Details__c, Core_Approved_Opportunity_Product_App__c, Core_Is_Product_EOL__c, Core_Owning_BU_ShortName__c, Core_BU_Short_Name__c, Core_BU_Product_Segment__c, Core_Vendor_InActive__c, Core_Owning_BU_Short_Name_New__c, Core_BypassFlow__c, Failed_DDR_RecordID__c, Core_PW_Quantity__c, Core_PW_Sales_Price__c, Core_PW_Approved_By__c, Core_PW_Manager_Approved_Date__c, Core_PW_Approved_Quantity__c, Core_PW_Approved_Sales_Price__c, Core_PW_Approved_Total_Price__c, Core_Production_Win_Total_Price__c, Core_PW_Lost_Price__c, Core_PW_Approved_BU_Short_Name__c, Core_PW_Approved_Sales_Group__c, Core_PW_Approved_BU_Product_Segment__c, Core_PW_Approved_KPI_Product_Group__c, CRM_PW_App_UCD_Customer_Name__c, Core_PW_Approved_Commissionable__c
+        OpportunityLineItem oli;
+        try{
+            oli = [Select Id,OpportunityId, Product2Id, ProductCode, Name, Quantity, TotalPrice, UnitPrice, ListPrice, ServiceDate, Description, Core_At_Risk_Status__c, Core_Claim_Date__c, Core_Competitor_Product__c, Core_Competitor__c, Core_Division__c, Core_Group__c, Core_Lost_Sales_Price__c, Core_Lost_Total_Price__c, Core_Lost_to_Open_Flag__c, Core_OEM_LOEM_Other__c, Core_OEM_LOEM__c, Core_Product_Type__c, Core_Status__c, Core_Write_In_Product_Name__c, Core_Loss_Cancel_Reason__c, Core_Approved_Commissionable__c, Core_System_Commissionable__c, Core_System_Competitor_Empty_Flag__c, Core_Production_Claim_Date__c,  Core_Production_Cancelled_Sales_Price__c, Core_Production_Lost_Sales_Price__c, Core_Approved_User_Id__c, Core_SPG_Planning_Segment_Legacy__c, Core_BU_Mapping_record__c, Core_Opportunity_Product_ID__c, Core_Product2_LOB_Code__c, Core_Write_In_Product_Flag__c, Core_Opp_Approved_Oppty_Coverage__c, Core_Opp_Approved_Sales_Group__c, Core_Design_Registration_Product_Id__c, Core_Technical_Owner_Email_Txt__c, Core_Available_for_New_Designs__c, Core_Approved_KPI_Product_Group__c, CRM_DW_App_UCD_Customer_Name__c, Core_Vendor__c, Core_Vendor_Group__c, Core_Opp_OpportunityType__c, Core_Design_Product_Category__c, Core_Approved_BU_Product_Segment__c, Core_Approved_BU_Short_Name__c, Core_Account_Name__c, Core_Product_Application__c, Core_Product_Segment__c, Core_Software_Stack__c, Core_Vertical_Market__c, Core_UCD_Global_Account_Name__c, Core_Approved_Opp_Product_Segment__c, Core_Opp_Product_Segment__c, /*Core_Advanced_Technology__c,*/ Core_At_Risk__c, Core_Risk_Category__c, Core_Risk_Priority__c, Core_Risk_Reason1__c, Core_Risk_Reason2__c, Core_OtherCompetitor_Product_Txt__c, Core_UCD_Opportunity_Product_Vendor__c, Core_Intel_vPro_Platform_Eligibility__c, Core_Product_Risk_Owner__c, Core_Loss_Cancel_Details__c, Core_Approved_Opportunity_Product_App__c, Core_Is_Product_EOL__c, Core_Owning_BU_ShortName__c, Core_BU_Short_Name__c, Core_BU_Product_Segment__c, Core_Vendor_InActive__c, Core_Owning_BU_Short_Name_New__c, Core_BypassFlow__c, Failed_DDR_RecordID__c, Core_PW_Quantity__c, Core_PW_Sales_Price__c, Core_PW_Approved_By__c, Core_PW_Manager_Approved_Date__c, Core_PW_Approved_Quantity__c, Core_PW_Approved_Sales_Price__c, Core_PW_Approved_Total_Price__c, Core_Production_Win_Total_Price__c, Core_PW_Lost_Price__c, Core_PW_Approved_BU_Short_Name__c, Core_PW_Approved_Sales_Group__c, Core_PW_Approved_BU_Product_Segment__c, Core_PW_Approved_KPI_Product_Group__c, CRM_PW_App_UCD_Customer_Name__c, Core_PW_Approved_Commissionable__c
                                    FROM OpportunityLineItem 
                                    WHERE ID =: recordId 
-                                   LIMIT 1
-                                  ];
+                                    /*WITH SECURITY_ENFORCED*/ LIMIT 1 ];
         
         Boolean isFieldUpdated= false;
-        
+            if(oli <> null){
         if(wipname!=null)
         {
             oli.Core_Write_In_Product_Name__c = wipname;
@@ -100,6 +99,12 @@ public without sharing class core_updateOpptyLineItemLWC { //TWC3123-5759 Added 
             oli.Core_BU_Mapping_record__c = bumappingrec;
         }
         update oli;
+                
+            }
+        }catch(Exception e){
+            Core_Log_Entry__c logEntry =new Core_Log_Entry__c(Core_Message__c = 'An exception has been thrown for:Class.core_updateOpptyLineItemLWC.updateOpptyLineItemRecord',Core_Details__c = e.getMessage(), Core_Origin__c='core_updateOpptyLineItemLWC', Core_Severity__c='Info', Core_When__c=System.Now(), Core_Project__c = 'Unicorn');
+                    Database.insert(logEntry, false);
+        }
         return oli;
     }
     

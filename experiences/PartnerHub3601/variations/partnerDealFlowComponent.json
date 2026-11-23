@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "4b4b1ddf-c49f-4ca1-a539-3057c2b0c022",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "70b30fb7-129b-47f9-b07a-1d44f33f47c0",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Partner_Deal_Flow_Component",
+  "id" : "6d59be92-ac93-4b69-922e-09c0e4290195",
+  "type" : "experienceVariation"
+}

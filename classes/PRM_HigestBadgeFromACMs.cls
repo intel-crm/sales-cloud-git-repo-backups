@@ -27,11 +27,9 @@ global without sharing class PRM_HigestBadgeFromACMs implements Comparable{
             
             String acmTierName = acm.PRM_Channel_Program_Level_Id__r.name;
             Integer acmTierValue = ipaBadgeMap.get(acmTierName);
-            System.debug('Badge One : '+acmTierName);
             
             String acmObjTierName = acmObj.PRM_Channel_Program_Level_Id__r.name;
             Integer acmObjTierValue = ipaBadgeMap.get(acmObjTierName);
-            System.debug('Badge Two : '+acmObjTierName);
             
             return acmTierValue < acmObjTierValue ? -1 : (acmTierValue > acmObjTierValue ? 1 : 0);            
         }    
@@ -47,7 +45,6 @@ global without sharing class PRM_HigestBadgeFromACMs implements Comparable{
                 mapOfIPABadge.put(progTier[0],Integer.valueOf(progTier[1])); 
             }
         }
-        System.debug('mapOfIPABadge called from static variable '+mapOfIPABadge);
         return mapOfIPABadge;
     } 
 

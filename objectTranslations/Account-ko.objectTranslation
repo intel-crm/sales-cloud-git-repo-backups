@@ -17,6 +17,30 @@
         <name>Account_Note__c</name>
     </fields>
     <fields>
+        <label><!-- Account Ownership Transfer Requested --></label>
+        <name>Account_Ownership_Transfer_Requested__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account team wwids --></label>
+        <name>Account_team_wwids__c</name>
+    </fields>
+    <fields>
+        <label><!-- Accountid_prod --></label>
+        <name>Accountid_prod__c</name>
+    </fields>
+    <fields>
+        <label><!-- Active Associations --></label>
+        <name>Active_Associations__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Allow Check --></label>
+        <name>Activity_Allow_Check__c</name>
+    </fields>
+    <fields>
+        <label><!-- CPE --></label>
+        <name>CPE__c</name>
+    </fields>
+    <fields>
         <label><!-- Channel Program ID --></label>
         <name>Channel_Partner_Referance__c</name>
     </fields>
@@ -209,7 +233,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Multi-select field indicates BU Focus Area(s) and/or ABM (Account Based Marketing) account. To request change in BU value(s), log an AAQ (Ask A Question) and select topic &apos;Sales CRM&apos;. --></help>
+        <help>BU product sales focus of this account</help>
         <label><!-- Account BU Focus --></label>
         <name>Core_Account_BU_Focus__c</name>
         <picklistValues>
@@ -296,10 +320,6 @@
             <masterLabel>PSG-DISTI</masterLabel>
             <translation><!-- PSG-DISTI --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Sovereign Cloud</masterLabel>
-            <translation><!-- Sovereign Cloud --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Account CCG Tier --></label>
@@ -323,6 +343,50 @@
         <picklistValues>
             <masterLabel>CCG-Tier 5</masterLabel>
             <translation><!-- CCG-Tier 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Category Backup --></label>
+        <name>Core_Account_Category_Backup__c</name>
+        <picklistValues>
+            <masterLabel>Distributors</masterLabel>
+            <translation><!-- Distributors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Branded Disti</masterLabel>
+            <translation><!-- Region Branded Disti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Direct OxM Accts (non-T30)</masterLabel>
+            <translation><!-- Region Direct OxM Accts (non-T30) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Named B2B End User</masterLabel>
+            <translation><!-- Region Named B2B End User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Region Named Billings Accts</masterLabel>
+            <translation><!-- Region Named Billings Accts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Co-Sell Partners</masterLabel>
+            <translation><!-- Regional Co-Sell Partners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional GSI/ISV/MSP</masterLabel>
+            <translation><!-- Regional GSI/ISV/MSP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Retailer</masterLabel>
+            <translation><!-- Regional Retailer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategic Acct/Country Opportunity</masterLabel>
+            <translation><!-- Strategic Acct/Country Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Top 30 Global Billings</masterLabel>
+            <translation><!-- Top 30 Global Billings --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -675,8 +739,8 @@
             <translation><!-- Cyprus --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Czechia</masterLabel>
-            <translation><!-- Czechia --></translation>
+            <masterLabel>Czech Republic</masterLabel>
+            <translation><!-- Czech Republic --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Dem. Rep. Congo</masterLabel>
@@ -721,10 +785,6 @@
         <picklistValues>
             <masterLabel>Estonia</masterLabel>
             <translation><!-- Estonia --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Eswatini</masterLabel>
-            <translation><!-- Eswatini --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Ethiopia</masterLabel>
@@ -959,6 +1019,10 @@
             <translation><!-- Macao SAR China --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Macedonia</masterLabel>
+            <translation><!-- Macedonia --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Madagascar</masterLabel>
             <translation><!-- Madagascar --></translation>
         </picklistValues>
@@ -1091,16 +1155,16 @@
             <translation><!-- Niue --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Norfolk Islands</masterLabel>
             <translation><!-- Norfolk Islands --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>North Korea</masterLabel>
             <translation><!-- North Korea --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>North Macedonia</masterLabel>
-            <translation><!-- North Macedonia --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Norway</masterLabel>
@@ -1299,6 +1363,10 @@
             <translation><!-- Svalbard &amp; JM --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Swaziland</masterLabel>
+            <translation><!-- Swaziland --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Sweden</masterLabel>
             <translation><!-- Sweden --></translation>
         </picklistValues>
@@ -1351,8 +1419,8 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkiye</masterLabel>
-            <translation><!-- Turkiye --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Turkmenistan</masterLabel>
@@ -1753,6 +1821,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- CoMarketing --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>DZP</masterLabel>
+            <translation><!-- DZP --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>IQR</masterLabel>
             <translation><!-- IQR --></translation>
         </picklistValues>
@@ -1818,6 +1890,18 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Account Requester Email --></label>
+        <name>Core_Account_Requester_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Requester Name --></label>
+        <name>Core_Account_Requester_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Requester WWID --></label>
+        <name>Core_Account_Requester_WWID__c</name>
+    </fields>
+    <fields>
         <label><!-- Account State/Province --></label>
         <name>Core_Account_State_Province__c</name>
     </fields>
@@ -1832,6 +1916,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Account Team Audit Due Date --></label>
         <name>Core_Account_Team_Audit_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Team Member Email --></label>
+        <name>Core_Account_Team_Member_Email__c</name>
     </fields>
     <fields>
         <label><!-- Account Tier --></label>
@@ -1906,8 +1994,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Multi-select field refers to company purpose; how THEY define themselves in market. Field populated during Account Creation, Lead Conversion &amp; by IPA Program. Future classifications/value changes managed by IPA team. Available LOVs at goto/bizorgtypeLOV --></help>
-        <label><!-- Biz Org Type --></label>
+        <help><!-- Formerly Account Type, indicates the company purpose, how they define themselves in the market. If you need to update this multi-select field, please log an AAQ and provide your value(s). The available LOVs are posted at goto/bizorgtypeLOV. --></help>
+        <label>Account Type</label>
         <name>Core_Account_Type__c</name>
         <picklistValues>
             <masterLabel>Academia &amp; research institutions</masterLabel>
@@ -1930,8 +2018,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Contract Manufacturer (CM) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Digital Services (Social Media, Streaming, eWallet)</masterLabel>
-            <translation><!-- Digital Services (Social Media, Streaming, eWallet) --></translation>
+            <masterLabel>Digital Enterprises (e.g. Media, Financial)</masterLabel>
+            <translation><!-- Digital Enterprises (e.g. Media, Financial) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Distributor</masterLabel>
@@ -1954,8 +2042,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- End Customer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Enterprise Influencer</masterLabel>
-            <translation><!-- Enterprise Influencer --></translation>
+            <masterLabel>Enterprise Influencer*</masterLabel>
+            <translation><!-- Enterprise Influencer* --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>FPGA Design Services</masterLabel>
@@ -2040,6 +2128,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>Retailer</masterLabel>
             <translation><!-- Retailer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sponsor</masterLabel>
@@ -2366,12 +2458,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Chiga --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Chinese Simplified</masterLabel>
-            <translation><!-- Chinese Simplified --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chinese Traditional</masterLabel>
-            <translation><!-- Chinese Traditional --></translation>
+            <masterLabel>Chinese</masterLabel>
+            <translation><!-- Chinese --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Chinook jargon</masterLabel>
@@ -3984,17 +4072,25 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_B2B_Entitlement__c</name>
     </fields>
     <fields>
+        <label><!-- BVD9 ID --></label>
+        <name>Core_BVD9_ID__c</name>
+    </fields>
+    <fields>
         <label><!-- Account Clean Up Batch Run Date --></label>
         <name>Core_Batch_Run_Date__c</name>
     </fields>
     <fields>
-        <help><!-- System ID generated for Intel&apos;s membership program by Intel&apos;s profile registration system, Enterprise Registration &amp; Profile Management (ERPM). For questions, use AAQ and select Access &amp; Entitlement. --></help>
+        <help>This is the system id generated by Intel’s Profile Registration system (ERPM) as part of Intel’s membership program</help>
         <label><!-- Business ID --></label>
         <name>Core_Business_ID__c</name>
     </fields>
     <fields>
         <label><!-- Business Partner Id --></label>
         <name>Core_Business_Partner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Id Old --></label>
+        <name>Core_Business_Party_Id_Old__c</name>
     </fields>
     <fields>
         <help><!-- Mastered Id --></help>
@@ -4022,6 +4118,41 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_CIM_Intel_Ultimate_Name__c</name>
     </fields>
     <fields>
+        <label><!-- CMF Account Type --></label>
+        <name>Core_CMF_Account_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>End Customer</masterLabel>
+            <translation><!-- End Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End Customer Parent</masterLabel>
+            <translation><!-- End Customer Parent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ship To</masterLabel>
+            <translation><!-- Ship To --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sold To</masterLabel>
+            <translation><!-- Sold To --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- 01(Direct)
+02(Disti)
+04(Internal) --></help>
+        <label><!-- CMF Distributor Channel --></label>
+        <name>Core_CMF_Distributor_Channel_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMF Ship To - End Customer --></label>
+        <name>Core_CMF_Ship_To_End_Customer_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Train Station Id --></label>
+        <name>Core_CMF_Train_Station_Id__c</name>
+    </fields>
+    <fields>
         <label><!-- CNDA Number --></label>
         <name>Core_CNDA_Number__c</name>
     </fields>
@@ -4046,12 +4177,36 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Calculated_Sales_Group__c</name>
     </fields>
     <fields>
+        <label><!-- Can View Activity --></label>
+        <name>Core_Can_View_Activity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Review POC --></label>
+        <name>Core_Change_Review__c</name>
+    </fields>
+    <fields>
         <label><!-- Closed Revenue For Account --></label>
         <name>Core_Closed_Revenue_For_Account__c</name>
     </fields>
     <fields>
         <label><!-- Comment Preview --></label>
         <name>Core_Comment_Preview__c</name>
+    </fields>
+    <fields>
+        <label><!-- Compliance Status --></label>
+        <name>Core_Compliance_Status__c</name>
+        <picklistValues>
+            <masterLabel>Blocked</masterLabel>
+            <translation><!-- Blocked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Released</masterLabel>
+            <translation><!-- Released --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Review is pending</masterLabel>
+            <translation><!-- Review is pending --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Compliance Watch List Type --></label>
@@ -4132,6 +4287,27 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>Unified Location Customer</masterLabel>
             <translation><!-- Unified Location Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Customer Business Process Usage --></help>
+        <label><!-- Customer Process Engagement --></label>
+        <name>Core_Customer_Process_Engg__c</name>
+        <picklistValues>
+            <masterLabel>Direct Price Exception</masterLabel>
+            <translation><!-- Direct Price Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor Price Exception</masterLabel>
+            <translation><!-- Distributor Price Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Pipeline</masterLabel>
+            <translation><!-- Sales Pipeline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supply Demand Revenue</masterLabel>
+            <translation><!-- Supply Demand Revenue --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -4263,8 +4439,16 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
             <translation><!-- Ship To --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Ship-to Party</masterLabel>
+            <translation><!-- Ship-to Party --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Sold To</masterLabel>
             <translation><!-- Sold To --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sold-to Party</masterLabel>
+            <translation><!-- Sold-to Party --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -4356,6 +4540,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Direct_Shipping_Instruction_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Disposition as PLCL --></label>
+        <name>Core_Disposition_as_PLCL__c</name>
+    </fields>
+    <fields>
         <label><!-- Domestic Ultimate DUNS --></label>
         <name>Core_Domestic_Ultimate_DUNS__c</name>
     </fields>
@@ -4364,16 +4552,44 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_ERPM_IsB2B__c</name>
     </fields>
     <fields>
+        <label><!-- Account Group --></label>
+        <name>Core_ER_Account_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Central block --></label>
+        <name>Core_ER_Central_block__c</name>
+    </fields>
+    <fields>
+        <label><!-- Direct Customer Relationship Code --></label>
+        <name>Core_ER_Direct_CustomerRelationship_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Area Order Block Code --></label>
+        <name>Core_ER_Sales_Area_Order_Block_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Area Order Block Name --></label>
+        <name>Core_ER_Sales_Area_Order_Block_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Disti Chnl Name --></label>
+        <name>Core_ER_Sales_Disti_Chnl_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Org Name --></label>
+        <name>Core_ER_Sales_Org_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- English Only Name --></label>
         <name>Core_English_Only_Name__c</name>
     </fields>
     <fields>
-        <help><!-- Indicates why Intel is not conducting transactions with the party listed on the account. Questions? Contact export.customer@intel.com --></help>
+        <help>Reason for blocking transactions on account by global compliance team.</help>
         <label><!-- Export Compliance Block Reason --></label>
         <name>Core_Export_Compliance_Block_Reason__c</name>
     </fields>
     <fields>
-        <help><!-- A check in this box indicates that Intel is not conducting transactions with the denied, restricted, or sanctioned party listed on the account. Questions? Contact export.customer@intel.com --></help>
+        <help>If this field is checked ,it means global compliance team has blocked transactions for this account because of it being on denied party list or embargoed country list or high risk customer.</help>
         <label><!-- Export Compliance Block --></label>
         <name>Core_Export_Compliance_Block__c</name>
     </fields>
@@ -5597,7 +5813,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- One Partner Id --></label>
+        <label><!-- Sfdc One Partner Id --></label>
         <name>Core_IPA_One_Partner_Id__c</name>
     </fields>
     <fields>
@@ -5717,7 +5933,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Is_Active__c</name>
     </fields>
     <fields>
-        <help><!-- System generated field that displays an account with the same name and address as the created account at the time of creation.  This field does not get updated after account create. --></help>
+        <help>Use this field to identify an account that may be a duplicate of this account.</help>
         <label><!-- Duplicate Account --></label>
         <name>Core_Is_Duplicate__c</name>
         <relationshipLabel><!-- Accounts --></relationshipLabel>
@@ -5737,6 +5953,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Is Pricing Parent --></label>
         <name>Core_Is_Pricing_Parent_ChkBox__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is User In Account Team --></label>
+        <name>Core_Is_User_In_Account_Team__c</name>
     </fields>
     <fields>
         <label><!-- Last MsgId --></label>
@@ -5833,6 +6053,18 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_MDF_Payment_Type_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Source --></label>
+        <name>Core_MDF_Source_nm__c</name>
+        <picklistValues>
+            <masterLabel>Auto</masterLabel>
+            <translation><!-- Auto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual</masterLabel>
+            <translation><!-- Manual --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Corp Virtual Account --></label>
         <name>Core_MDF_Virtual_Corp_Account_Id__c</name>
         <relationshipLabel><!-- Accounts (Virtual Corp Account Id) --></relationshipLabel>
@@ -5844,6 +6076,14 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- MDM Address Usage Type --></label>
         <name>Core_MDM_Address_Usage_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDM CPEs --></label>
+        <name>Core_MDM_CPEs_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDM Deactivated --></label>
+        <name>Core_MDM_Deactivated__c</name>
     </fields>
     <fields>
         <help><!-- Reltio HQ Address Country Name --></help>
@@ -5891,9 +6131,40 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_MDM_Website__c</name>
     </fields>
     <fields>
-        <help><!-- Indicates Military, Aerospace or Government account; use of Intel products &amp; solutions for military, intelligence, nuclear/biochemical, defense, &amp; space items and applications is managed at OPPORTUNITY level. Questions?  Contact export.customer@intel.com. --></help>
+        <label><!-- Marked for Deletion --></label>
+        <name>Core_Marked_for_Deletion__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mastered Business Physical Address Country Code --></help>
+        <label><!-- Mastered Country Code --></label>
+        <name>Core_Mastered_Country_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mastered Business Physical Address Country Name --></help>
+        <label><!-- Mastered Country Name --></label>
+        <name>Core_Mastered_Country_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- Mastered Name of type Simplified --></help>
+        <label><!-- Mastered Simplified Account Name --></label>
+        <name>Core_Mastered_Simplified_Account_Nm__c</name>
+    </fields>
+    <fields>
+        <help>Please check the field for  Military , Aerospace &amp; Government account</help>
         <label><!-- Military Aerospace and Government --></label>
         <name>Core_Military_Aerospace_and_Government__c</name>
+    </fields>
+    <fields>
+        <label><!-- Need Parent Update ? --></label>
+        <name>Core_Need_Parent_Update__c</name>
+        <picklistValues>
+            <masterLabel>Parent Update</masterLabel>
+            <translation><!-- Parent Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Child</masterLabel>
+            <translation><!-- Update Child --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Nielsen ID --></label>
@@ -5934,6 +6205,18 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Not on Denied Persons List --></label>
         <name>Core_Not_on_Denied_Persons_List__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Partner --></label>
+        <name>Core_Notify_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner ID --></label>
+        <name>Core_OPID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old ParentId --></label>
+        <name>Core_Old_ParentId__c</name>
     </fields>
     <fields>
         <label><!-- One Partner ID --></label>
@@ -5994,6 +6277,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Parent_Business_Party_Id__c</name>
     </fields>
     <fields>
+        <label><!-- Parent Customer Aggregation Type --></label>
+        <name>Core_Parent_Customer_Aggregation_Type__c</name>
+    </fields>
+    <fields>
         <label><!-- Parent Simplified Account Name --></label>
         <name>Core_Parent_Data_Simplified_Account_Nm__c</name>
     </fields>
@@ -6007,7 +6294,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Partner_Alliance_Program_Member__c</name>
     </fields>
     <fields>
-        <help><!-- This field will eventually be retired, in concert with new fields to support Intel Partner Alliance (IPA).  No changes are required at this time. --></help>
+        <help>Select all programs where this account is member other than ITP.</help>
         <label><!-- Partner Program --></label>
         <name>Core_Partner_Alliance_Program__c</name>
         <picklistValues>
@@ -6044,9 +6331,21 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Provide the street address, city, state or province, and country of the party listed on the account. Questions? Contact export.customer@intel.com --></help>
+        <help>Please provide physical location of the customer where you are doing the business  like country , city etc.</help>
         <label><!-- Physical Location --></label>
         <name>Core_Physical_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Global Customer ID --></label>
+        <name>Core_Previous_Global_Customer_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Simplified Name --></label>
+        <name>Core_Previous_Simplified_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Unified ID --></label>
+        <name>Core_Previous_Unified_Id__c</name>
     </fields>
     <fields>
         <label><!-- PrimaryAccountCalucationLogic --></label>
@@ -6081,7 +6380,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Private__c</name>
     </fields>
     <fields>
-        <help><!-- If checked, Contacts entitled to Resource &amp; Design Center (RDC) privileged access under this account have access to specifically targeted content, but are prevented from viewing standard CNDA content. For questions, use AAQ and select Access &amp; Entitlement --></help>
+        <help>For any Contacts entitled to RDC privileged access under this account, selection of this field prevents access to standard CNDA content but allows access to content specifically targeted to this account.</help>
         <label><!-- RDC Content Restriction --></label>
         <name>Core_RDC_Content_Restriction__c</name>
     </fields>
@@ -6120,6 +6419,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Requested Parent Business Party ID --></label>
         <name>Core_Requested_Parent_BP_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Click here to submit new account request --></label>
+        <name>Core_SBR_URL__c</name>
     </fields>
     <fields>
         <help><!-- Sales Assist Count --></help>
@@ -6220,6 +6523,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- 2017 Sales Group --></label>
         <name>Core_Sales_Group__c</name>
+        <picklistValues>
+            <masterLabel>CCG Sales Group</masterLabel>
+            <translation><!-- CCG Sales Group --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>Global Accounts</masterLabel>
             <translation><!-- Global Accounts --></translation>
@@ -6436,6 +6743,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>IJKK</masterLabel>
             <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>KOREA</masterLabel>
@@ -7056,6 +7367,11 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Unified_Global_Customer_Name__c</name>
     </fields>
     <fields>
+        <label><!-- Unified Global Customer --></label>
+        <name>Core_Unified_Global_Customer_del__c</name>
+        <relationshipLabel><!-- Accounts (Unified Global Customer) --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- Intermediate Level2 Customer&apos;s Business Party Identifier --></help>
         <label><!-- Unified Intermediate Level2 ID --></label>
         <name>Core_Unified_Intermdt_Customer_2_BP_Id__c</name>
@@ -7074,6 +7390,11 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <help><!-- Intermediate Customer&apos;s Simplified Name --></help>
         <label><!-- Unified Intermediate Level1 Name --></label>
         <name>Core_Unified_Intermediate_Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unified Intermediate Customer --></label>
+        <name>Core_Unified_Intermediate_Customer_del__c</name>
+        <relationshipLabel><!-- Accounts (Unified Intermediate Customer) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Back end field used for Reltio mapping and Address translation for Country/Location customer Aggregation type --></help>
@@ -7141,12 +7462,200 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Year_Started__c</name>
     </fields>
     <fields>
+        <label><!-- bC_Address --></label>
+        <name>Core_bC_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- bC_Industry --></label>
+        <name>Core_bC_Industry__c</name>
+        <picklistValues>
+            <masterLabel>Accommodation and Food Services</masterLabel>
+            <translation><!-- Accommodation and Food Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arts, Entertainment and Recreation</masterLabel>
+            <translation><!-- Arts, Entertainment and Recreation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive (Non Manufacturing)</masterLabel>
+            <translation><!-- Automotive (Non Manufacturing) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction</masterLabel>
+            <translation><!-- Construction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consulting</masterLabel>
+            <translation><!-- Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defense and Space</masterLabel>
+            <translation><!-- Defense and Space --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy and Utilities</masterLabel>
+            <translation><!-- Energy and Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance and Insurance</masterLabel>
+            <translation><!-- Finance and Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming</masterLabel>
+            <translation><!-- Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare</masterLabel>
+            <translation><!-- Healthcare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not For Profit</masterLabel>
+            <translation><!-- Not For Profit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Professional and Business Services</masterLabel>
+            <translation><!-- Professional and Business Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate, Rental and Leasing</masterLabel>
+            <translation><!-- Real Estate, Rental and Leasing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software and Services</masterLabel>
+            <translation><!-- Software and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecommunications</masterLabel>
+            <translation><!-- Telecommunications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>To Be Defined</masterLabel>
+            <translation><!-- To Be Defined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation, Travel and Warehousing</masterLabel>
+            <translation><!-- Transportation, Travel and Warehousing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- bC_Partner Segment --></label>
+        <name>Core_bC_Partner_Segment__c</name>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center</masterLabel>
+            <translation><!-- Data Center --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet of Things and Embedded</masterLabel>
+            <translation><!-- Internet of Things and Embedded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Programmable Logic</masterLabel>
+            <translation><!-- Programmable Logic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage and Memory</masterLabel>
+            <translation><!-- Storage and Memory --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- bC_Role --></label>
+        <name>Core_bC_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- bC_Telephone number --></label>
+        <name>Core_bC_Telephone_number__c</name>
+    </fields>
+    <fields>
+        <label><!-- bC_Trading Name / Doing business as --></label>
+        <name>Core_bC_Trading_Name_Doing_business_as__c</name>
+    </fields>
+    <fields>
+        <label><!-- bC_Website URL --></label>
+        <name>Core_bC_Website_URL__c</name>
+    </fields>
+    <fields>
         <label><!-- The Fortune 1000 Rank --></label>
         <name>Core_global_1000__c</name>
     </fields>
     <fields>
         <label><!-- The Fortune 500 Rank --></label>
         <name>Core_global_500__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
     </fields>
     <fields>
         <label><!-- Internal Comments --></label>
@@ -7163,6 +7672,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Is 6Sense Integration Enabled --></label>
         <name>Is_6Sense_Integration_Enabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Partner Admin Exist --></label>
+        <name>Is_Partner_Admin_Exist__c</name>
     </fields>
     <fields>
         <label><!-- Share with Unrival --></label>
@@ -7241,6 +7754,14 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <label><!-- KCR Target Intermediate Name --></label>
         <name>KCR_Target_Intermediate_Name__c</name>
         <relationshipLabel><!-- Accounts (KCR Target Intermediate Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Reminder Sent --></label>
+        <name>Last_Reminder_Sent__c</name>
     </fields>
     <fields>
         <label><!-- Lead to Account on Contact_NoOpportunity --></label>
@@ -7323,6 +7844,38 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- New Business Partner Id --></label>
+        <name>New_Business_Partner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Owner --></label>
+        <name>New_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Simplified Account Name --></label>
+        <name>New_Simplified_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Simplified Local Language Name --></label>
+        <name>New_Simplified_Local_Language_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- New Unified Customer Type --></label>
+        <name>New_Unified_Customer_Type__c</name>
+        <picklistValues>
+            <masterLabel>Unified Country Customer</masterLabel>
+            <translation><!-- Unified Country Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Global Customer</masterLabel>
+            <translation><!-- Unified Global Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Intermediate Customer</masterLabel>
+            <translation><!-- Unified Intermediate Customer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- OPID Hierarchy --></label>
         <name>OPID_Hierarchy__c</name>
     </fields>
@@ -7331,12 +7884,20 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>PRM_AccountNumberFormula__c</name>
     </fields>
     <fields>
+        <label><!-- Account Number --></label>
+        <name>PRM_Account_Number__c</name>
+    </fields>
+    <fields>
         <label><!-- Active Associations --></label>
         <name>PRM_Active_Associations__c</name>
     </fields>
     <fields>
         <label><!-- Altera Account --></label>
         <name>PRM_Altera_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Altera_Acts --></label>
+        <name>PRM_Altera_Acts__c</name>
     </fields>
     <fields>
         <label><!-- Count IPA Terms And Conditions --></label>
@@ -7385,6 +7946,30 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <fields>
         <label><!-- Pre-consolidation Account Name --></label>
         <name>Pre_consolidation_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reltio Integration Status --></label>
+        <name>Reltio_Integration_Status__c</name>
+        <picklistValues>
+            <masterLabel>Child Update</masterLabel>
+            <translation><!-- Child Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parent Update</masterLabel>
+            <translation><!-- Parent Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- Option to combine quantities of multiple assets for the same product into one line when renewal quote is generated. --></help>
@@ -7619,6 +8204,14 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <label><!-- Sales Last Replied --></label>
         <name>mkto_si__Sales_Last_Replied__c</name>
     </fields>
+    <fields>
+        <label><!-- payload --></label>
+        <name>payload__c</name>
+    </fields>
+    <fields>
+        <label><!-- signedIPAggrement --></label>
+        <name>signedIPAggrement_tobedeleted__c</name>
+    </fields>
     <recordTypes>
         <description><!-- This record type is to identify the account as CMF Groups/Business Partners --></description>
         <label><!-- Business Partner --></label>
@@ -7673,8 +8266,12 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>ACM_ExportCompliance_Edit_Access</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Umbrella Group Name is Mandatory when Industry is Government --></errorMessage>
-        <name>ACM_UmbrellaGroupRequired</name>
+        <errorMessage><!-- Invalid change Country should be same as reqeusted for ECD accounts --></errorMessage>
+        <name>Check_AccountCountryForECD</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot inactivate unified account with active child account reference --></errorMessage>
+        <name>Child_Account_is_Present</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please enter a deactivation reason. --></errorMessage>
@@ -7695,6 +8292,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <validationRules>
         <errorMessage><!-- You can&apos;t update the Account Owner --></errorMessage>
         <name>Core_Account_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Account Owner Preview can be edited by Data Ops. --></errorMessage>
+        <name>Core_Account_Owner_Prvw_DataOps_Editable</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You do not have enough permission to edit this field. --></errorMessage>
@@ -7761,8 +8362,12 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_MDF_Auto_Transfer_Validation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>채널 프로그램을 선택하십시오.</errorMessage>
+        <errorMessage><!-- Please select Channel Program. --></errorMessage>
         <name>Core_MDF_Channel_Program_NotNull</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please reach out to support team Virtual Corp Account creation --></errorMessage>
+        <name>Core_MDF_Check_VirtualCorpAcc_Creation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Payment Type and Payment Type Node level with value &apos;Customer - NonPO&apos; is not applicable --></errorMessage>
@@ -7793,7 +8398,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_MDF_Parent_Hierarchy_Account</name>
     </validationRules>
     <validationRules>
-        <errorMessage>상위 기금 계정을 선택하십시오.</errorMessage>
+        <errorMessage><!-- Please select Parent Fund Account. --></errorMessage>
         <name>Core_MDF_PartnerFundAccount_NotNull</name>
     </validationRules>
     <validationRules>
@@ -7809,7 +8414,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_MDF_PreventInactiveAccountAsPFA</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You cannot disable this Flag, please contact your Salesforce Admin. --></errorMessage>
+        <errorMessage><!-- You cannot disable this Flag, please contact your Salesforce Admin.ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo --></errorMessage>
         <name>Core_MDF_PreventUncheckCCPFlag</name>
     </validationRules>
     <validationRules>
@@ -7827,6 +8432,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <validationRules>
         <errorMessage><!-- Virtual Corp node&apos;s Parent Fund Account cannot be edited. --></errorMessage>
         <name>Core_MDF_Virtual_Corp_ParentNotEditable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have access to edit this field. Please create a Change Request --></errorMessage>
+        <name>Core_Name_And_Address_Edit_Access</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please fill in an Industry value apart from &quot;To Be Defined&quot; before changing the ownership of this account --></errorMessage>
@@ -7847,6 +8456,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <validationRules>
         <errorMessage><!-- You cannot edit PSG data --></errorMessage>
         <name>Core_Prevent_Non_PSG_Usr_Account_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit PSG data --></errorMessage>
+        <name>Core_Prevent_Non_PSG_Usr_IAccount_Fields</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You cannot edit non-PSG records, Please contact the support team for any access related help --></errorMessage>
@@ -7873,8 +8486,28 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Restrict_PSG_Downstream</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Sales Group Preview can be edited by Data Ops. --></errorMessage>
+        <name>Core_Sales_Grp_Preview_DataOps_Editable</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country.For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
         <name>Embargo_country_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Test POC Account Validation --></errorMessage>
+        <name>LeadAccountPOC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sales Group value must be &quot;Undefined&quot; for creating an Intel Account. --></errorMessage>
+        <name>Restrict_Creating_Opport_Mgmt_Account</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Account cannot be deactivated if previous reactivation is in CCDO queue in Requested state. --></errorMessage>
@@ -7895,6 +8528,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <validationRules>
         <errorMessage><!-- Account Category is mandatory for Intel Covered, please select appropriately --></errorMessage>
         <name>UCD_Account_Category_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot Select Multiple Values --></errorMessage>
+        <name>UCD_Restrict_MutiSelect_Of_AccntCategory</name>
     </validationRules>
     <webLinks>
         <label><!-- AltavistaNews --></label>
@@ -7949,22 +8586,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <name>Core_Sales_Support</name>
     </webLinks>
     <webLinks>
-        <label><!-- InviteAccountToEvent --></label>
-        <name>CventEvents__InviteAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelAccountToEvent --></label>
-        <name>CventEvents__ModifyCancelAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateAccountToEvent --></label>
-        <name>CventEvents__NominateAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterAccountToEvent --></label>
-        <name>CventEvents__RegisterAccountToEvent</name>
-    </webLinks>
-    <webLinks>
         <label><!-- GoogleMaps --></label>
         <name>GoogleMaps</name>
     </webLinks>
@@ -7987,6 +8608,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <webLinks>
         <label><!-- Billing --></label>
         <name>MaritzCX__Billing</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Account_SBR --></label>
+        <name>New_Account_SBR</name>
     </webLinks>
     <webLinks>
         <label><!-- Request_Product_Access_Lex --></label>

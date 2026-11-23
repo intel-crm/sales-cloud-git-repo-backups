@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <label><!-- Customer frght collect account --></label>
-        <name>PSG_Customer_frght_collect_account__c</name>
+        <label><!-- Maint Exp --></label>
+        <name>Core_PSG_Maint_Exp_Dt__c</name>
     </fields>
     <fields>
         <help>注文商品が有効かどうかを示します。</help>
@@ -366,6 +366,10 @@
             <translation><!-- New --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Shipped</masterLabel>
+            <translation><!-- Shipped --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Verified</masterLabel>
             <translation><!-- Verified --></translation>
         </picklistValues>
@@ -383,8 +387,22 @@
         <name>UnitPriceForceOverride__c</name>
     </fields>
     <validationRules>
+        <errorMessage><!-- This Product is not available for Tools Order Entry. --></errorMessage>
+        <name>Adding_a_Product_to_OrderLineItem</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Contact is mandatory for corporate OPN. --></errorMessage>
         <name>Contact_mandatory_on_orderproduct</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Your are seeing this error because it is not matching below conditions - 
+Contact should be part of  related Account OR
+Check if Account is Partner Account --></errorMessage>
+        <name>Contact_should_part_of_related_account</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot add intel product, for ARM License Order Type --></errorMessage>
+        <name>Intel_product_for_ARM_license_Order</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please use edit Order Product button to create Products from Quote --></errorMessage>

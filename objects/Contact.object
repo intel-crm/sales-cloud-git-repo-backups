@@ -268,9 +268,9 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Contact_Record_Page1</content>
-        <formFactor>Large</formFactor>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>Outlook_Contact_Record_Page</content>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -280,7 +280,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -452,6 +452,11 @@
                 <operation>notEqual</operation>
                 <value>Direct Account, Rejected Account, Requested Account, End Customer Deal Account</value>
             </filterItems>
+            <filterItems>
+                <field>Account.Core_Export_Compliance_Block__c</field>
+                <operation>notEqual</operation>
+                <value>True</value>
+            </filterItems>
             <isOptional>true</isOptional>
         </lookupFilter>
         <trackFeedHistory>true</trackFeedHistory>
@@ -497,6 +502,30 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Contact_Valid_for_Deactivation__c</fullName>
+        <label>Contact Valid for Deactivation</label>
+        <summaryFilterItems>
+            <field>Core_Contact_Entitlement__c.Name</field>
+            <operation>contains</operation>
+            <value>Disti Management File Transfer,Intel Premier Support</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Core_Contact_Entitlement__c.Core_Contact_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Contactid_prod__c</fullName>
+        <externalId>true</externalId>
+        <label>ContactId Prod</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Contacts_Fields_Merged__c</fullName>
         <externalId>false</externalId>
         <formula>&quot;Email - &quot;+Email+&quot; &amp; Account - &quot;+Account.Name</formula>
@@ -532,7 +561,7 @@ IF
         <description>Today when AGS deletes a user, it updates a field &quot;Inactive&quot; on the User record directly in Salesforce. We can use this update as a trigger point to set the checkbox flag &quot;AGS Inactive&quot; on the associated Contact of the User record.</description>
         <label>AGS Inactive</label>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -596,6 +625,14 @@ AND(
         <defaultValue>false</defaultValue>
         <description>This flag is set to TRUE when new Entitlements are added while the current AGS outbound message is being processed. If this is set to TRUE, a second message is sent to AGS once the response comes back from the current message.</description>
         <label>AGS Re-publish Ind</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_AGS_Republish_Signal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>AGS Re-publish Signal</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Checkbox</type>
@@ -978,6 +1015,16 @@ AND(
                     <label>RMF External View Only</label>
                 </value>
                 <value>
+                    <fullName>Intel Partner FAE</fullName>
+                    <default>false</default>
+                    <label>Intel Partner FAE</label>
+                </value>
+                <value>
+                    <fullName>Partner Portal - Leads</fullName>
+                    <default>false</default>
+                    <label>Partner Portal - Leads</label>
+                </value>
+                <value>
                     <fullName>Configure Price Quote-Basic Disti User</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -1002,22 +1049,10 @@ AND(
                     <label>Configure Price Quote-Reseller User</label>
                 </value>
                 <value>
-                    <fullName>Intel Partner FAE</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel Partner FAE</label>
-                </value>
-                <value>
                     <fullName>Partner Portal - DDR</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Partner Portal - DDR</label>
-                </value>
-                <value>
-                    <fullName>Partner Portal - Leads</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Partner Portal - Leads</label>
                 </value>
                 <value>
                     <fullName>QUOTE User</fullName>
@@ -1139,7 +1174,7 @@ IF(INCLUDES(Core_Audience_List__c,&quot;IPA User&quot;),&quot;IPA User;&quot;,nu
         <defaultValue>false</defaultValue>
         <label>Export Compliance Block</label>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -1172,6 +1207,7 @@ IF(INCLUDES(Core_Audience_List__c,&quot;IPA User&quot;),&quot;IPA User;&quot;,nu
     <fields>
         <fullName>Core_Contacts_for_Marketing__c</fullName>
         <defaultValue>false</defaultValue>
+        <description>This field is an indicator for Eloqua, if this is checked for a contact then Eloqua imports that contact.</description>
         <label>Contacts for Marketing</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -2340,9 +2376,9 @@ IF(INCLUDES(Core_Audience_List__c,&quot;IPA User&quot;),&quot;IPA User;&quot;,nu
                     <label>Tunisia</label>
                 </value>
                 <value>
-                    <fullName>Turkiye</fullName>
+                    <fullName>Turkey</fullName>
                     <default>false</default>
-                    <label>Turkiye</label>
+                    <label>Turkey</label>
                 </value>
                 <value>
                     <fullName>Turkmenistan</fullName>
@@ -2446,6 +2482,17 @@ IF(INCLUDES(Core_Audience_List__c,&quot;IPA User&quot;),&quot;IPA User;&quot;,nu
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_Current_Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( YEAR( TODAY() ) )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Current Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Customer_Excellence_Survey__c</fullName>
@@ -2658,7 +2705,7 @@ ROUND((NOW()- DATETimeVALUE(Core_ERPM_Status_Change_Date_Time__c))*24*60,0)
         <label>Core ERPM Integration Queue txt</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
@@ -2797,6 +2844,23 @@ TEXT( Core_ERPM_Integration_Status__c ) = &apos;Pending&apos;),
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Entitlement_Assignment_Duration__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+(ISNULL(ROUND((NOW()- DATETimeVALUE(Core_Entitlement_Status_Change_Date_Time__c))*24*60,0))),
+ROUND((NOW()- DATETimeVALUE(LastModifiedDate))*24*60,0),
+ROUND((NOW()- DATETimeVALUE(Core_Entitlement_Status_Change_Date_Time__c))*24*60,0)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Entitlement Assignment Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Entitlement_Assignment_Message__c</fullName>
         <label>Entitlement Assignment Message</label>
         <length>10000</length>
@@ -2843,6 +2907,14 @@ TEXT( Core_ERPM_Integration_Status__c ) = &apos;Pending&apos;),
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Core_IPA_Contact_Assignment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IsBulkLoadedContact</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_IPA_Contact_Segment__c</fullName>
         <label>Contact Segment</label>
         <required>false</required>
@@ -2882,12 +2954,20 @@ TEXT( Core_ERPM_Integration_Status__c ) = &apos;Pending&apos;),
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_IPA_Contact__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>IPA Contact</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_IPA_Email_Verification_Date__c</fullName>
         <description>Field to be added to the user record since that is already integrated with AGS and then display them on the Contact using the data from the user record.</description>
         <label>Email Verification Date</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>DateTime</type>
     </fields>
     <fields>
@@ -2916,7 +2996,7 @@ TEXT( Core_ERPM_Integration_Status__c ) = &apos;Pending&apos;),
         <label>Partner Role</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
@@ -3062,7 +3142,7 @@ TEXT( Core_ERPM_Integration_Status__c ) = &apos;Pending&apos;),
     <fields>
         <fullName>Core_IPA_Partner_Role__c</fullName>
         <description>The primary function a Partner typically plays relative to its engagement with Intel. For example: Seller, Manufacturer, etc.</description>
-        <label>Partner Role Old</label>
+        <label>Partner Role_Old</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -3119,7 +3199,7 @@ TEXT( Core_ERPM_Integration_Status__c ) = &apos;Pending&apos;),
                 <value>
                     <fullName>Solution Integrator</fullName>
                     <default>false</default>
-                    <label>Service Integrator</label>
+                    <label>Service  Integrator</label>
                 </value>
                 <value>
                     <fullName>Sponsor</fullName>
@@ -3568,8 +3648,8 @@ True))</formula>
     </fields>
     <fields>
         <fullName>Core_Is_FederationId_Valid_Ind__c</fullName>
-        <description>Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same, otherwise returns FALSE.</description>
-        <inlineHelpText>Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same, otherwise returns FALSE.</inlineHelpText>
+        <description>Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same OR if Enterprise Id is empty, otherwise returns FALSE.</description>
+        <inlineHelpText>Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same OR if Enterprise Id is empty, otherwise returns FALSE.</inlineHelpText>
         <label>Is FederationId Valid</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -3606,6 +3686,7 @@ True))</formula>
     </fields>
     <fields>
         <fullName>Core_Job_Function__c</fullName>
+        <inlineHelpText>This field is inactive. Please use Profession field. Contact AAQ for questions.</inlineHelpText>
         <label>Job Function</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -4154,6 +4235,13 @@ True))</formula>
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_Mailing_Address__c</fullName>
+        <label>Mailing Address1</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Address</type>
+    </fields>
+    <fields>
         <fullName>Core_Marketing_Do_Not_Contact_Dtm__c</fullName>
         <description>This field will be stamped with the current date when a user checks the ‘Marketing Do Not Contact’ field on a contact record, date will be removed if user unchecks the box</description>
         <label>Marketing - Do Not Contact Date</label>
@@ -4381,11 +4469,6 @@ True))</formula>
                     <label>Indonesian</label>
                 </value>
                 <value>
-                    <fullName>ITA</fullName>
-                    <default>false</default>
-                    <label>Italian</label>
-                </value>
-                <value>
                     <fullName>JPN</fullName>
                     <default>false</default>
                     <label>Japanese</label>
@@ -4399,11 +4482,6 @@ True))</formula>
                     <fullName>POL</fullName>
                     <default>false</default>
                     <label>Polish</label>
-                </value>
-                <value>
-                    <fullName>RUS</fullName>
-                    <default>false</default>
-                    <label>Russian</label>
                 </value>
                 <value>
                     <fullName>SPA</fullName>
@@ -4454,6 +4532,16 @@ True))</formula>
                     <fullName>FRC</fullName>
                     <default>false</default>
                     <label>French (Canada)</label>
+                </value>
+                <value>
+                    <fullName>ITA</fullName>
+                    <default>false</default>
+                    <label>Italian</label>
+                </value>
+                <value>
+                    <fullName>RUS</fullName>
+                    <default>false</default>
+                    <label>Russian</label>
                 </value>
                 <value>
                     <fullName>ARA</fullName>
@@ -4948,15 +5036,36 @@ True))</formula>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>CventEvents__ContactStub__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>true</externalId>
-        <label>Cvent Contact Stub</label>
-        <length>36</length>
+        <fullName>Current_Year__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( YEAR( TODAY()))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Current Year</label>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Quality_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Data_Quality_Score__c =100,&quot;All Contact Details Captured&quot;, &quot;Missing: &quot;&amp;IF( LEN( Phone ) = 0, &quot;Phone, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF(LEN( Email) = 0, &quot;Email, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF( LEN( MailingStreet ) = 0, &quot;Complete Address, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF( LEN(Title) = 0, &quot;Job Title, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF( ISPICKVAL( Salutation,&quot;&quot;), &quot;Salutation&quot;,&quot;&quot;))</formula>
+        <label>Data Quality Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Quality_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( LEN( Phone) = 0, 0,20) + IF( LEN( Email) = 0, 0,20) + IF( LEN(MailingStreet) = 0, 0,20) + IF( LEN(Title) = 0, 0,20) + IF( ISPICKVAL(Salutation,&quot;&quot;), 0,20)</formula>
+        <label>Data Quality Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -4983,6 +5092,17 @@ True))</formula>
         <fullName>Email</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Email_Verification_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>If( Isnull(Core_IPA_Email_Verification_Date__c), &quot;Pending&quot;,&quot;Complete&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Email Verification Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>External_User_State_Change_Date_Times__c</fullName>
@@ -5056,6 +5176,112 @@ True))</formula>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
+        <fullName>LID__Languages__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Languages</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__Level__c</fullName>
+        <deprecated>false</deprecated>
+        <label>Level</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Secondary</fullName>
+                    <default>false</default>
+                    <label>Secondary</label>
+                </value>
+                <value>
+                    <fullName>Tertiary</fullName>
+                    <default>false</default>
+                    <label>Tertiary</label>
+                </value>
+                <value>
+                    <fullName>Primary</fullName>
+                    <default>false</default>
+                    <label>Primary</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LID__LinkedIn_Company_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>LinkedIn Id of the company</description>
+        <externalId>false</externalId>
+        <label>LinkedIn Company Id</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__LinkedIn_Member_Token__c</fullName>
+        <deprecated>false</deprecated>
+        <description>LinkedIn Id of the contact</description>
+        <externalId>false</externalId>
+        <label>LinkedIn Member Token</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LID__No_longer_at_Company__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <deprecated>false</deprecated>
+        <inlineHelpText>Field automatically updated by LinkedIn Sales Navigator Data Validation. “Not at Company” means Contact is not with associated Account based on LinkedIn profile. No value indicates LinkedIn has no feedback to share.</inlineHelpText>
+        <label>Not at Company Flag</label>
+        <required>false</required>
+        <securityClassification>Public</securityClassification>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not at Company</fullName>
+                    <default>false</default>
+                    <label>Not at Company</label>
+                </value>
+                <value>
+                    <fullName>Ignore</fullName>
+                    <default>false</default>
+                    <label>Ignore</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LID__Session_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>$Api.Session_ID</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Session Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>LastCURequestDate</fullName>
     </fields>
     <fields>
@@ -5092,7 +5318,7 @@ True))</formula>
         <length>100</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -5168,7 +5394,7 @@ True))</formula>
         <length>200</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -5274,6 +5500,27 @@ True))</formula>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Marketo_Email_Invalid_Cause__c</fullName>
+        <description>Email Invalid Cause from Marketo</description>
+        <externalId>false</externalId>
+        <label>Marketo Email Invalid Cause</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SWS_Marketo_Email_Invalid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Email Invalid flag from Marketo</description>
+        <label>Marketo Email Invalid</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Title</fullName>
@@ -5530,13 +5777,29 @@ True))</formula>
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>pocQuest_tobedeleted__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/lightning/cmp/c__viewCmfAssociations?c__recordId=&quot;+Id, &quot;Label for link&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>pocQuest</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <listViews>
         <fullName>All_IPS_Customer_contact2</fullName>
         <columns>FULL_NAME</columns>
+        <columns>CONTACT.CREATED_DATE</columns>
+        <columns>CONTACT.LAST_UPDATE</columns>
+        <columns>CONTACT.FIRST_NAME</columns>
+        <columns>CONTACT.LAST_NAME</columns>
+        <columns>CONTACT.RECORDTYPE</columns>
         <columns>CONTACT.EMAIL</columns>
         <columns>ACCOUNT.NAME</columns>
-        <columns>CONTACT.CREATED_DATE</columns>
-        <columns>Core_Primary_Contact__c</columns>
+        <columns>Core_IPA_Partner_Role__c</columns>
+        <columns>Core_IPA_PartnerRole__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Contacts</label>
         <sharedTo>
@@ -5574,37 +5837,16 @@ True))</formula>
         <columns>Core_IPA_Intel_Last_Login_Date__c</columns>
         <columns>Core_IPA_PartnerRole__c</columns>
         <columns>Core_IPA_Contact_Segment__c</columns>
-        <columns>Core_Login_Status__c</columns>
-        <columns>Account.Channel_Partner_Referance__c</columns>
-        <columns>Account.Core_MDF_CoMarketingActive__c</columns>
-        <columns>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</columns>
-        <columns>Account.Core_MDF_Parent_Fund_Account__c</columns>
-        <columns>Account.Core_Partner_Alliance_Program__c</columns>
-        <columns>Account.Core_MDF_Channel_Program__c</columns>
-        <columns>Account.Core_IPA_Partner_Speciality__c</columns>
-        <columns>Account.Core_Partner_Alliance_Program_Member__c</columns>
-        <columns>Account.Core_Prime_Account_Name__c</columns>
+        <columns>Core_Contact_B2B_Indicator__c</columns>
+        <columns>Core_IPS_Intel_Support_Owner__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_IPA_Partner_Community__c</field>
-            <operation>equals</operation>
-        </filters>
-        <filters>
-            <field>Core_Login_Status__c</field>
-            <operation>notEqual</operation>
-            <value>Disabled,Deleted,Expired,Downgrade to B2C</value>
-        </filters>
-        <filters>
-            <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <filters>
-            <field>Account.Core_IPA_Partner_Role__c</field>
-            <operation>equals</operation>
-            <value>Independent Software Vendor,Service Provider,Solution Integrator</value>
+            <field>ACCOUNT.NAME</field>
+            <operation>contains</operation>
+            <value>Congatec,Beckhoff</value>
         </filters>
         <label>Copy of IPA Contacts</label>
+        <language>en_US</language>
         <sharedTo>
             <role>EMP_10673092_Vladimir_Bykovnikov</role>
         </sharedTo>
@@ -5613,9 +5855,11 @@ True))</formula>
         <fullName>Core_My_Contacts</fullName>
         <columns>FULL_NAME</columns>
         <columns>ACCOUNT.NAME</columns>
+        <columns>Core_Marketing_Score1__c</columns>
         <columns>CONTACT.EMAIL</columns>
         <columns>CONTACT.PHONE1</columns>
         <columns>CONTACT.PHONE3</columns>
+        <columns>CONTACT.CREATED_DATE</columns>
         <filterScope>Mine</filterScope>
         <label>My Contacts</label>
     </listViews>
@@ -5627,21 +5871,14 @@ True))</formula>
         <columns>CONTACT.EMAIL</columns>
         <columns>CONTACT.TITLE</columns>
         <columns>CORE.USERS.ALIAS</columns>
+        <columns>CONTACT.CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CONTACT.EMAIL</field>
-            <operation>contains</operation>
-            <value>intel.com</value>
-        </filters>
-        <filters>
-            <field>ACCOUNT.NAME</field>
-            <operation>contains</operation>
-            <value>Intel</value>
+            <field>Core_Login_Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
         </filters>
         <label>Intel Contacts</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
     </listViews>
     <listViews>
         <fullName>NewThisWeek</fullName>
@@ -5664,28 +5901,15 @@ True))</formula>
     </listViews>
     <listViews>
         <fullName>PRM_IPA_Contacts</fullName>
-        <booleanFilter>1 AND 2</booleanFilter>
         <columns>FULL_NAME</columns>
-        <columns>CONTACT.EMAIL</columns>
+        <columns>Core_IPA_PartnerRole__c</columns>
         <columns>Core_Enterprise_Id__c</columns>
         <columns>ACCOUNT.NAME</columns>
         <columns>Core_Preferred_Language__c</columns>
-        <columns>Core_Job_Function__c</columns>
-        <columns>Core_IPA_Intel_Last_Login_Date__c</columns>
-        <columns>Core_IPA_PartnerRole__c</columns>
+        <columns>Core_IPA_Email_Verification_Date__c</columns>
         <columns>Core_IPA_Contact_Segment__c</columns>
         <columns>CONTACT.CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <filters>
-            <field>Core_IPA_PartnerRole__c</field>
-            <operation>contains</operation>
-            <value>Distributor,FPGA Design Services,Guest,Independent Software Vendor,Manufacturer,Original Equipment Manufacturer (OEM),Solution Provider,Cloud &amp; Comms Service Provider</value>
-        </filters>
         <label>IPA Contacts</label>
     </listViews>
     <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
@@ -5801,7 +6025,15 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel Partner FAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Partner Portal - IPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Portal - Leads</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -6791,7 +7023,7 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Turkiye</fullName>
+                <fullName>Turkey</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7021,10 +7253,6 @@ True))</formula>
             </values>
             <values>
                 <fullName>Service Provider</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Solution Integrator</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -7488,6 +7716,10 @@ True))</formula>
                 <fullName>D4</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Preferred_Communication__c</picklist>
@@ -7543,10 +7775,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>ITA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>JPN</fullName>
                 <default>false</default>
             </values>
@@ -7556,10 +7784,6 @@ True))</formula>
             </values>
             <values>
                 <fullName>POL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -7753,6 +7977,32 @@ True))</formula>
             </values>
             <values>
                 <fullName>Pending Acceptance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__Level__c</picklist>
+            <values>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__No_longer_at_Company__c</picklist>
+            <values>
+                <fullName>Ignore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not at Company</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -8975,7 +9225,15 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel Partner FAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Partner Portal - IPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Portal - Leads</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -9965,7 +10223,7 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Turkiye</fullName>
+                <fullName>Turkey</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10238,10 +10496,6 @@ True))</formula>
             </values>
             <values>
                 <fullName>NA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Ambassador</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -10769,10 +11023,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>ITA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>JPN</fullName>
                 <default>false</default>
             </values>
@@ -10786,10 +11036,6 @@ True))</formula>
             </values>
             <values>
                 <fullName>POR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10999,6 +11245,32 @@ True))</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>LID__Level__c</picklist>
+            <values>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__No_longer_at_Company__c</picklist>
+            <values>
+                <fullName>Ignore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not at Company</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Eloqua Scoring Model</fullName>
@@ -11014,10 +11286,6 @@ True))</formula>
             </values>
             <values>
                 <fullName>Intel Customer Support</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LinkedIn Sales Navigator</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -12221,7 +12489,15 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel Partner FAE</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Partner Portal - IPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Portal - Leads</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13211,7 +13487,7 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Turkiye</fullName>
+                <fullName>Turkey</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13431,6 +13707,10 @@ True))</formula>
         </picklistValues>
         <picklistValues>
             <picklist>Core_IPA_PartnerRole__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Distributor</fullName>
                 <default>false</default>
@@ -14003,10 +14283,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>ITA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>JPN</fullName>
                 <default>false</default>
             </values>
@@ -14016,10 +14292,6 @@ True))</formula>
             </values>
             <values>
                 <fullName>POL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14225,6 +14497,32 @@ True))</formula>
             </values>
             <values>
                 <fullName>Pending Acceptance</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__Level__c</picklist>
+            <values>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__No_longer_at_Company__c</picklist>
+            <values>
+                <fullName>Ignore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not at Company</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -16381,7 +16679,7 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Turkiye</fullName>
+                <fullName>Turkey</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -16597,6 +16895,10 @@ True))</formula>
         </picklistValues>
         <picklistValues>
             <picklist>Core_IPA_PartnerRole__c</picklist>
+            <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Distributor</fullName>
                 <default>false</default>
@@ -17137,10 +17439,6 @@ True))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>ITA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>JPN</fullName>
                 <default>false</default>
             </values>
@@ -17150,10 +17448,6 @@ True))</formula>
             </values>
             <values>
                 <fullName>POL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUS</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -17363,6 +17657,32 @@ True))</formula>
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>LID__Level__c</picklist>
+            <values>
+                <fullName>Primary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Secondary</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tertiary</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LID__No_longer_at_Company__c</picklist>
+            <values>
+                <fullName>Ignore</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not at Company</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Eloqua Scoring Model</fullName>
@@ -17378,10 +17698,6 @@ True))</formula>
             </values>
             <values>
                 <fullName>Intel Customer Support</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LinkedIn Sales Navigator</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -18472,6 +18788,7 @@ True))</formula>
         <customTabListAdditionalFields>CONTACT.EMAIL</customTabListAdditionalFields>
         <customTabListAdditionalFields>CONTACT.PHONE1</customTabListAdditionalFields>
         <customTabListAdditionalFields>CONTACT.PHONE3</customTabListAdditionalFields>
+        <excludedStandardButtons>IntelligenceView</excludedStandardButtons>
         <lookupDialogsAdditionalFields>FULL_NAME</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CONTACT.EMAIL</lookupDialogsAdditionalFields>
@@ -18492,11 +18809,26 @@ True))</formula>
         <searchResultsAdditionalFields>CONTACT.EMAIL</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CONTACT.PHONE1</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CONTACT.PHONE3</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_IPS_Active__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account.MaritzCX__Active__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <validationRules>
-        <fullName>Core_Account_Name_Cannot_Update</fullName>
+        <fullName>ACM_Stop_Contact_Creation_With_ECB_Acct</fullName>
         <active>true</active>
+        <errorConditionFormula>IF($Setup.Core_Contact_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+    AND(
+        IF( ISNEW() ,Account.Core_Export_Compliance_Block__c = true ,
+             False
+         )
+     )
+)</errorConditionFormula>
+        <errorMessage>You Can Not Create Contact With ECB Flagged Account</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Account_Name_Cannot_Update</fullName>
+        <active>false</active>
         <errorConditionFormula>IF($Setup.Core_Contact_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 AND(
 IF(AccountId !=null, if( PRIORVALUE(AccountId) != AccountId,true,false ) , false),
@@ -18706,8 +19038,7 @@ OR(
 Account.Core_Export_Compliance_Block__c = TRUE,
 Account.Core_Deactivated__c = TRUE
 ),
-AND(NOT(ISNEW()),OR(ISNULL(TEXT(Core_IPA_PartnerRole__c)),
-isChanged(Core_IPA_PartnerRole__c) &amp;&amp; NOT(ispickval(Core_IPA_PartnerRole__c,&apos;&apos;)))),
+AND(ISCHANGED(Core_IPA_PartnerRole__c), NOT(OR(ISBLANK(TEXT(Core_IPA_PartnerRole__c)),ISNULL(TEXT(Core_IPA_PartnerRole__c)),ispickval(Core_IPA_PartnerRole__c,&apos;&apos;)))),
 NOT(isChanged(PRM_IPA_Integration_Status__c) &amp;&amp; ispickval(PRM_IPA_Integration_Status__c,&apos;Successful&apos;)),
 AND(
 NOT($Profile.Name = $Label.Core_Integration_Profile_Name),
@@ -18761,6 +19092,16 @@ AND(
         <errorMessage>You don&apos;t have permission to uncheck the Deactivation flag</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Country_validation_for_new_Contacts</fullName>
+        <active>false</active>
+        <description>This validation rule ensures that Country field is mandatory for new contacts</description>
+        <errorConditionFormula>AND(
+ISNEW(),ISBLANK(MailingCountry), OR(RecordType.DeveloperName  =  &quot;Core_Intel_Contact&quot; ,RecordType.DeveloperName = &quot;Standard&quot;)
+)</errorConditionFormula>
+        <errorDisplayField>MailingCountry</errorDisplayField>
+        <errorMessage>Please Provide Country</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Email_ID_Character_Restriction</fullName>
         <active>true</active>
         <errorConditionFormula>IF($Setup.Core_Contact_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
@@ -18774,13 +19115,36 @@ LEN( Email ) &gt; 64
         <active>true</active>
         <errorConditionFormula>IF(($Setup.Core_Contact_Bypass_Validation_Rule__c.Bypass__c=TRUE || $Setup.Core_Account_Bypass_Validation_Rule__c.Bypass_Flow__c=TRUE),False,
 Core_Central_Block__c = true)</errorConditionFormula>
-        <errorMessage>This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info</errorMessage>
+        <errorMessage>This registration was denied because the registrant identified their location as an embargoed country. For more information please visit 
+https://goto.intel.com/gec-sanctioned-country-info</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LID__Check_CompanyId_Value</fullName>
+        <active>true</active>
+        <description>Throws an exception message if the company id contains non-numerics</description>
+        <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+        <errorMessage>CompanyId should be a numeric value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LID__Check_Company_Id_Value</fullName>
+        <active>false</active>
+        <description>Throws an exception message if the company id contains non-numerics</description>
+        <errorConditionFormula>AND(
+	(LID__LinkedIn_Company_Id__c &lt;&gt; NULL),
+	NOT(ISNUMBER(LID__LinkedIn_Company_Id__c))
+)</errorConditionFormula>
+        <errorDisplayField>LID__LinkedIn_Company_Id__c</errorDisplayField>
+        <errorMessage>CompanyId should be a numeric value</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Mailing_Country_cannot_be_blank</fullName>
         <active>true</active>
         <description>Mailing Country/ Region field cannot be blank</description>
-        <errorConditionFormula>IF($Setup.Core_Contact_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,(ISBLANK(MailingCountry)))</errorConditionFormula>
+        <errorConditionFormula>(ISBLANK(MailingCountry))</errorConditionFormula>
         <errorDisplayField>MailingCountry</errorDisplayField>
         <errorMessage>Mailing Country/Region signifies where the Contact currently resides and is mandatory</errorMessage>
     </validationRules>
@@ -18789,7 +19153,7 @@ Core_Central_Block__c = true)</errorConditionFormula>
         <availability>online</availability>
         <displayType>button</displayType>
         <linkType>page</linkType>
-        <masterLabel>Change Account</masterLabel>
+        <masterLabel>Change Account Old</masterLabel>
         <openType>replace</openType>
         <page>Core_IPS_MoveContactWithCases</page>
         <protected>false</protected>
@@ -18831,7 +19195,7 @@ Core_Central_Block__c = true)</errorConditionFormula>
         <protected>false</protected>
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
-        <url>https://myapps.microsoft.com/signin/a6e0cc35-264c-4660-8354-a6aad0d02a13?tenantId=46c98d88-e344-4ed4-8496-4ed7712e255d&amp;RelayState=ReturnUrl%3dapps%2FsalesTools%2Fprofiler%3FemailAddress%3D{!Contact.Email}</url>
+        <url>https://sfederation.intel.com/federation/eloqua.asp?RelayState=ReturnUrl%3dapps%2FsalesTools%2Fprofiler%3FemailAddress%3D{!Contact.Email}</url>
     </webLinks>
     <webLinks>
         <fullName>Core_Export_List_View</fullName>
@@ -18894,78 +19258,6 @@ Account.Id
 }</url>
     </webLinks>
     <webLinks>
-        <fullName>CventEvents__InviteContactToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Invite</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__ContactInviteExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__ModifyCancelContactToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Modify/Cancel</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__ContactModifyCancelExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__NominateContactToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Nominate</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__ContactNominateExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__RegisterContactToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Register</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__ContactRegisterExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
         <fullName>GoogleMaps</fullName>
         <availability>online</availability>
         <displayType>link</displayType>
@@ -19002,18 +19294,6 @@ Account.Id
         <showsLocation>false</showsLocation>
         <showsStatus>false</showsStatus>
         <url>http://www.google.com/search?q={!Contact_FirstName} {!Contact_LastName}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>Remove_PSOs</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Remove PSOs</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <url>/apex/RemovePSO?id={!Contact.Id}</url>
     </webLinks>
     <webLinks>
         <fullName>SendGmail</fullName>

@@ -174,6 +174,8 @@ public with sharing class Core_MDF_AiFieldSuggestions {
             HttpRequest req = buildAIRequest(systemMessage, prompt, endpoint, maxTokens, temperature, timeoutMs);
             Http http = new Http();
             HttpResponse res = http.send(req);
+            system.debug('@@@res'+res.getBody());
+			system.debug('@@@res1'+req.getBody());
             if (res.getStatusCode() == 200) {
                 Map<String, Object> responseBody = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
                 result = parseAIResponse(responseBody);
@@ -397,7 +399,7 @@ public with sharing class Core_MDF_AiFieldSuggestions {
         };
         Map<String, String> focusAreaPatterns = new Map<String, String>{
             'Client Computing'   => '(?i)\\bclient\\s+computing\\b|\\bclient-computing\\b|\\bclientcomputing\\b',
-            'Data Center'        => '(?i)\\bdata\\s+center\\b|\\bdatacenter\\b|\\bdata-center\\b',
+            'Data Center'        => '(?i)\\bdata\\s+cent(?:er|re)\\b|\\bdatacent(?:er|re)\\b|\\bdata-cent(?:er|re)\\b',
             'Networking & Telco' => '(?i)\\bnetworking\\s*&\\s*telco\\b|\\bnetworking\\s+and\\s+telco\\b',
             'Edge'               => '(?i)\\bedge\\b'
         };
@@ -666,10 +668,7 @@ public with sharing class Core_MDF_AiFieldSuggestions {
             rulesRec.Core_MDF_Field_3_txt__c, rulesRec.Core_MDF_Field_4_txt__c,
             rulesRec.Core_MDF_Field_5_txt__c, rulesRec.Core_MDF_Field_6_txt__c,
             rulesRec.Core_MDF_Field_7_txt__c, rulesRec.Core_MDF_Field_8_txt__c,
-            rulesRec.Core_MDF_Field_9_txt__c, rulesRec.Core_MDF_Field_10_txt__c,
-            rulesRec.Core_MDF_Field_11_txt__c, rulesRec.Core_MDF_Field_12_txt__c,
-            rulesRec.Core_MDF_Field_13_txt__c, rulesRec.Core_MDF_Field_14_txt__c,
-            rulesRec.Core_MDF_Field_15_txt__c, rulesRec.Core_MDF_Field_16_txt__c
+            rulesRec.Core_MDF_Field_9_txt__c, rulesRec.Core_MDF_Field_10_txt__c
         };
         Integer ruleNum = 1;
         for (String rule : ruleFields) {

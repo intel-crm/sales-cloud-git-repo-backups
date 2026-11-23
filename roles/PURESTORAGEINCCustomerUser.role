@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Everpure (formerly Pure Storage) Customer User</description>
+    <description>PURE STORAGE, INC. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Everpure (formerly Pure Storage) Customer User</name>
+    <name>PURE STORAGE, INC. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12211806_Megan_Banister</parentRole>
+    <parentRole>Admin</parentRole>
 </Role>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnimationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <animationFrequency>often</animationFrequency>
+    <developerName>DDR_Opportunity_Path</developerName>
+    <isActive>true</isActive>
+    <masterLabel>DDR Opportunity Path</masterLabel>
+    <recordTypeContext>Master</recordTypeContext>
+    <recordTypeName>__MASTER__</recordTypeName>
+    <sobjectType>PRM_Partner_Deal_Opportunity__c</sobjectType>
+    <targetField>Partner_Deal_Stage__c</targetField>
+    <targetFieldChangeToValues>Stage 3: Closed Won,Closed Won</targetFieldChangeToValues>
+</AnimationRule>

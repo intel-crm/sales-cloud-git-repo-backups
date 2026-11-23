@@ -50,7 +50,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_Status_of_Assignment_Failure__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_Retrigger_Attempt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Entitlement_B2B_B2C_Indicator__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Entitlement_Type__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -85,10 +97,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Data_Loaded__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Status_of_Assignment_Failure__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

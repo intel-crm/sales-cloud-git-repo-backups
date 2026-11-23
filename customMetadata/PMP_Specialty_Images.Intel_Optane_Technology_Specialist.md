@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>Grey_Image_URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000005K8tpAAC</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>PMP_Account_Specialty_Name__c</field>
-        <value xsi:type="xsd:string">Intel® Optane™ Technology Specialist</value>
+        <value xsi:type="xsd:string">Intel Optane Technology Specialist</value>
     </values>
     <values>
         <field>PMP_Specialty_Name_Chinese__c</field>
@@ -16,10 +16,10 @@
     </values>
     <values>
         <field>PMP_Specialty_Name_Japanese__c</field>
-        <value xsi:type="xsd:string">インテル® Optane™ テクノロジー・スペシャリスト</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000004gRQV</value>
+        <value xsi:type="xsd:string">/imp/servlet/servlet.FileDownload?file=0152i0000000WDP</value>
     </values>
 </CustomMetadata>

@@ -22,9 +22,6 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>AGE</field>
-    </columns>
-    <columns>
         <field>AMOUNT</field>
     </columns>
     <columns>
@@ -32,6 +29,9 @@
     </columns>
     <columns>
         <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>

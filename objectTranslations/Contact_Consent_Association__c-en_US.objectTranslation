@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contact Consent Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contact Consent Associations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Consent Code --></label>
+        <name>Consent_Code__c</name>
+        <picklistValues>
+            <masterLabel>Consent_Share</masterLabel>
+            <translation><!-- Consent_Share --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consent_Transfer</masterLabel>
+            <translation><!-- Consent_Transfer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Share &amp; Transfer</masterLabel>
+            <translation><!-- Share &amp; Transfer --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Consent Value --></label>
+        <name>Consent_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consent date --></label>
+        <name>Consent_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Staging Id --></label>
+        <name>Contact_Staging_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Contact Consent Associations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

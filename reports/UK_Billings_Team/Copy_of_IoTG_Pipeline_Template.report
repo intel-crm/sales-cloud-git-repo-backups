@@ -67,8 +67,8 @@
             <column>CREATED_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>5/18/2020 12:00 AM</value>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2020 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -173,7 +173,7 @@
         <fullName>Core_Description_of_Contribution__c</fullName>
         <label>Description of Contribution</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>TextArea</type>
     </fields>
     <fields>
@@ -193,7 +193,7 @@
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -350,6 +350,24 @@ ISCHANGED(Core_Production_Win_Member_Role__c ),
 ISPICKVAL(Core_Production_Win_Member_Role__c , &quot;&quot;)
 )</errorConditionFormula>
         <errorMessage>Please assign the Production Win Member Role for all the Team Members.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Restrict_OTM_Addition_DW</fullName>
+        <active>true</active>
+        <description>Restricts users from adding or updating DW team members to 100% team role</description>
+        <errorConditionFormula>IF(
+$Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,
+FALSE,
+AND(
+ISPICKVAL(Opportunity.StageName, &quot;Design Win&quot;),
+OR(
+ISNEW(),
+ISCHANGED(TeamMemberRole)
+),
+ISPICKVAL(TeamMemberRole, &quot;Team Member (100%)&quot;)
+)
+)</errorConditionFormula>
+        <errorMessage>You can not add or update team members with role Team member (100% commitment over the lifetime of the opportunity) once opportunity is in Design Win stage.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_validation_For_SAM_TeamMember</fullName>

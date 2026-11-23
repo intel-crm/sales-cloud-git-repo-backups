@@ -115,7 +115,7 @@ public With Sharing virtual class PMP_CustomPermissionsReader {
             customPermissionNamesById.put(customPermission.Id, customPermission.DeveloperName);
         }
         
-        //System.debug('customPermissionNamesById = '+ customPermissionNamesById);
+        
 
         // Query to determine which of these custome settings are assigned to this user
         List<SetupEntityAccess> setupEntities = 

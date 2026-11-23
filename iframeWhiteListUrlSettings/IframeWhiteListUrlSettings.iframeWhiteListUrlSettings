@@ -14,6 +14,26 @@
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
+        <url>https://intel--crmdevint3--c.visualforce.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmdevint3.lightning.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmdevint3--c.sandbox.vf.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmdevint3.sandbox.lightning.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmdevint3.sandbox.my.salesforce.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
         <url>https://intel--c.na104.visual.force.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
@@ -22,19 +42,15 @@
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel--gblite.vf.force.com</url>
+        <url>*.salesforce.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel--c.vf.force.com</url>
+        <url>smg-1ai-dev.intel.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel--gblite.visualforce.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--c.visualforce.com</url>
+        <url>https://consumer.intel.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>LightningOut</context>

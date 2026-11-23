@@ -9,6 +9,10 @@
         <value>Contenus du modèle</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>URL vers une page VisualForce qui génère un contenu lorsque le type défini sur « Personnalisé ».</help>
         <label><!-- Custom Source --></label>
         <name>SBQQ__CustomSource__c</name>

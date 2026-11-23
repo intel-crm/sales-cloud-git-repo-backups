@@ -36,6 +36,11 @@ public class ACM_BU_SetAttributesOnMDMUpdate_Test {
         intelAccount.Core_MDM_Location_Country_Nm__c='India';
         insert intelAccount;
 
+        /*Account addIntlAccount=UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('AccountTest5','Intel Account','UNFD_GLBL_CUST');
+        addIntlAccount.Core_MDM_Location_Country_Nm__c='India';
+        addIntlAccount.Core_Account_Reference_Source_Name__c = 'Opportunity Management';
+        insert addIntlAccount;*/
+        
         /*Account_Create_Process_Mapping__mdt metadatarec = new Account_Create_Process_Mapping__mdt();
         metadatarec.Set_MDM_Name__c = true;
         metadatarec.Core_Account_Reference_Source_Name__c = 'IQR';
@@ -63,6 +68,8 @@ public class ACM_BU_SetAttributesOnMDMUpdate_Test {
         dealAccount[0].Core_Geo__c = 'APJ';
         
         List<Account> intelAccount = [Select Id,Core_Business_Party_Id__c,BillingCountryCode,Core_Geo__c,Core_Sub_Geo__c,RecordTypeId,Core_Data_Simplified_Account_Nm__c,Core_Account_Reference_Source_Name__c,Core_Customer_Aggregation_Type__c,Core_MDM_Location_Country_Nm__c,Core_MDM_Location_State_Nm__c,Core_Unified_Customer_Address__CountryCode__s,Core_Unified_Customer_Address__StateCode__s  from account where (Name =  'Account4')];
+
+        //List<Account> intlAcct=[Select Id,Core_Business_Party_Id__c,BillingCountryCode,Core_Geo__c,Core_Sub_Geo__c,RecordTypeId,Core_Data_Simplified_Account_Nm__c,Core_Account_Reference_Source_Name__c,Core_Customer_Aggregation_Type__c,Core_MDM_Location_Country_Nm__c,Core_MDM_Location_State_Nm__c  from account where (Name =  'AccountTest5')];
 
         List<Account> requestedAccount = [Select Id,BillingCountryCode,Name,Core_MDM_Status__c,RecordTypeId,Core_Data_Simplified_Account_Nm__c,Core_Account_Reference_Source_Name__c,Core_Customer_Aggregation_Type__c,Core_MDM_Location_Country_Nm__c,Core_MDM_Location_State_Nm__c,Core_Unified_Customer_Address__CountryCode__s,Core_Unified_Customer_Address__StateCode__s  from account where (Name = 'AccountReq')];
 

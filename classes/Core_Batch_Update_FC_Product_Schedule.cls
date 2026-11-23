@@ -1,3 +1,13 @@
+/**************************************************************************************
+Apex Class Name: Core_Batch_Update_FC_Product_Schedule
+Version     : 1.0 
+Created Date: 22 Nov 2024
+Function    : Batch class to delete 6QPs records which are not getting deleted post Opportunity product deletion.
+Modification Log :
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Vishal Goud( Accenture)     22/11/20224           Original Version               
+*************************************************************************************/
 global without sharing class Core_Batch_Update_FC_Product_Schedule implements Database.Batchable<sObject> {
     public list<Id> oppProductIds = new list<id>();
     global Core_Batch_Update_FC_Product_Schedule(list<id> oppProductIdList ){

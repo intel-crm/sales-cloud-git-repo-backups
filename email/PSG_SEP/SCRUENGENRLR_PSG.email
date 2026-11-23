@@ -87,7 +87,7 @@ div.WordSection1
 </tr>
 <tr>
 <td style="border: none; padding: 10.5pt 45.0pt .75pt 33.0pt;">
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;"><b style="mso-bidi-font-weight: normal;"> <b>E-mail Address:</b></b> {!Contact.Email}</span></p>
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;"><b style="mso-bidi-font-weight: normal;"> <b style="mso-bidi-font-weight: normal;"><b>E-mail Address:</b></b> {!Contact.Email}</span></p>
 </td>
 </tr>
 <tr>
@@ -97,7 +97,7 @@ div.WordSection1
 </tr>
 <tr>
 <td style="border: none; padding: 10.5pt 45.0pt .75pt 33.0pt;">
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Visit this <a href="https://www.intel.com/content/www/us/en/secure/my-intel/profile.html"> link</a> any time to manage your profile.</span></p>
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Visit this <a href="https://!%tst_us_en%!"> link</a> any time to manage your profile.</span></p>
 </td>
 </tr>
 <tr id="disclaimer">

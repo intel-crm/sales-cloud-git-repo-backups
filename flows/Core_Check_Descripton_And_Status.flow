@@ -230,6 +230,7 @@
             <label>Initial Checks</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <formulas>
         <description>if the opportunity is newly created this formula evaluates to true</description>
         <name>isNew</name>

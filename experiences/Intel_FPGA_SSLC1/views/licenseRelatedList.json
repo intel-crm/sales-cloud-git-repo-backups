@@ -8,7 +8,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "faf1ba68-5811-4502-990c-05e819923c43",
+      "id" : "80c5938a-f932-4e0c-a87b-b1d7e439e1db",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -43,5 +43,5 @@
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "relatedlist-aBv"
+  "viewType" : "relatedlist-aAK"
 }

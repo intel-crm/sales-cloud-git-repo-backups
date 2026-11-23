@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Christine Harrison</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_10696237_Catherine_Bell</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10664346_Christine_Harrison</parentRole>
+</Role>

@@ -310,9 +310,9 @@ public class EPUM_SearchContact_Test{
         acm1.PRM_Status_Nm__c = 'Approved';
         acm1.PRM_Status_Reason_Txt__c = 'Test class';
         insertAcms.add(acm1);
-        Account opidAcc = [Select id from Account where name='PartnerAccount1' limit 1];
+        
         PRM_AccountChannelMembership__c acm2 = new PRM_AccountChannelMembership__c();
-        acm2.PRM_Account_Id__c = opidAcc.id;
+        acm2.PRM_Account_Id__c = con1.Core_IPA_One_Partner_Id__c;
         acm2.PRM_Partner_Role__c = 'Distributor';
         acm2.PRM_Status_Nm__c = 'Approved';
         acm2.PRM_Status_Reason_Txt__c = 'Test class';

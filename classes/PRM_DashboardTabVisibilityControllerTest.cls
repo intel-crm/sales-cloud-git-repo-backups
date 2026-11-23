@@ -19,9 +19,9 @@ public class PRM_DashboardTabVisibilityControllerTest{
         dtList.add(new PMP_Dashboard_Tab__mdt(Label='Lead',DeveloperName='Lead_Enhanced_Benefit',PRM_Entitlement_Txt__c='Employee,Lead Development Representative,Marketing Specialist,Partner Admin,Offering Editor',PMP_Benefit_Code_Txt__c='BFTMKTPLED',PMP_Permission_Set_Name_Txt__c ='PMP_Internal_Intel_Admin,PMP_Internal_Intel_Read_Only'));
         dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Offerings_OE_Enhanced_Benefit',PRM_Entitlement_Txt__c='Employee,Lead Development Representative,Marketing Specialist,Partner Admin',PMP_Benefit_Code_Txt__c='BFTMKTPLED',PMP_Permission_Set_Name_Txt__c ='PMP_Internal_Intel_Admin,PMP_Internal_Intel_Read_Only'));
         dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Offerings_OE_Basic_Profile_Benefit',PRM_Entitlement_Txt__c='',PMP_Benefit_Code_Txt__c='BFTMKTPLBC',PMP_Permission_Set_Name_Txt__c ='PMP_Internal_Intel_Admin,PMP_Internal_Intel_Read_Only'));
-        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Sales_Tab',PRM_Entitlement_Txt__c='Partner Admin,Partner Admin Delegate ',PRM_Partner_Role_Txt__c='Distributor,Service Provider'));
-        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Training',PRM_Entitlement_Txt__c='Partner Admin,Employee',PRM_Partner_Role_Txt__c='Solution Integrator,Distributor'));
-        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Renewal',PRM_Entitlement_Txt__c='Partner Admin,Employee,Partner Admin Delegate',PRM_Partner_Role_Txt__c='Builder;Distributor;Solution Integrator',PMP_Benefit_Code_Txt__c='Partner;Prestige'));
+        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Sales_Tab',PRM_Entitlement_Txt__c='Partner Admin,Partner Admin Delegate ',PRM_Partner_Role_Txt__c='FPGA Designer,Service Provider'));
+        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Training',PRM_Entitlement_Txt__c='Partner Admin,Employee',PRM_Partner_Role_Txt__c='FPGA Designer,Distributor'));
+        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Renewal',PRM_Entitlement_Txt__c='Partner Admin,Employee,Partner Admin Delegate',PRM_Partner_Role_Txt__c='Original Equipment Manufacturer (OEM);Builder;Solution Integrator',PMP_Benefit_Code_Txt__c='Partner;Prestige'));
         
         
         PMP_Dashboard_Tab__mdt metadata = [Select PRM_Entitlement_Txt__c, PMP_Permission_Set_Name_Txt__c from PMP_Dashboard_Tab__mdt where MasterLabel ='Lead' AND PMP_Benefit_Code_Txt__c='BFTMKTPLBC' AND PMP_Is_Active_Ind__c=True];          
@@ -1100,8 +1100,8 @@ public class PRM_DashboardTabVisibilityControllerTest{
         psa.PermissionSetId = ps.Id;
         insert psa;
         
-       // user.Email = 'TestUtility1@example.com';
-       // update user;
+        user.Email = 'TestUtility1@example.com';
+        update user;
         
         PMP_Dashboard_Tab__mdt metadata = [Select PRM_Entitlement_Txt__c, PMP_Permission_Set_Name_Txt__c from PMP_Dashboard_Tab__mdt where MasterLabel ='Lead' AND PMP_Benefit_Code_Txt__c='BFTMKTPLBC' AND PMP_Is_Active_Ind__c=True];
         PRM_DashboardTabVisibilityController.benefitCode.add('BFTMKTPLBC');
@@ -1913,7 +1913,7 @@ public class PRM_DashboardTabVisibilityControllerTest{
         dt.PRM_Profile_Txt__c = 'System Administrator,IT Admin';
         dt.PRM_Entitlement_Txt__c = 'Partner Admin Delegate,Partner Admin';
         dtList.add(dt);
-        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Renewal',PRM_Entitlement_Txt__c='Partner Admin,Employee,Partner Admin Delegate',PRM_Partner_Role_Txt__c='Builder;Distributor;Solution Integrator',PMP_Benefit_Code_Txt__c='Partner;Prestige'));
+        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Renewal',PRM_Entitlement_Txt__c='Partner Admin,Employee,Partner Admin Delegate',PRM_Partner_Role_Txt__c='Original Equipment Manufacturer (OEM);Distributor;Solution Integrator',PMP_Benefit_Code_Txt__c='Partner;Prestige'));
         
         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         
@@ -1967,5 +1967,68 @@ public class PRM_DashboardTabVisibilityControllerTest{
         Test.stopTest();
     
     
+}
+@isTest
+    public static void testisStepOneCompleted(){
+        boolean isStepOneCompleted=false;
+         List<PMP_Dashboard_Tab__mdt> dtList = new List<PMP_Dashboard_Tab__mdt>();
+        PMP_Dashboard_Tab__mdt dt = new PMP_Dashboard_Tab__mdt();
+        dt.DeveloperName = 'Account_Activity';
+        dt.PRM_Profile_Txt__c = 'System Administrator,IT Admin';
+        dt.PRM_Entitlement_Txt__c = 'Partner Admin Delegate,Partner Admin';
+        dtList.add(dt);
+        dtList.add(new PMP_Dashboard_Tab__mdt(DeveloperName='Renewal',PRM_Entitlement_Txt__c='Partner Admin,Employee,Partner Admin Delegate',PRM_Partner_Role_Txt__c='Original Equipment Manufacturer (OEM);Distributor;Solution Integrator',PMP_Benefit_Code_Txt__c='Partner;Prestige'));
+        
+        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        
+        
+        Id opidAccRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
+        Account parent1 = new Account();
+        parent1.RecordTypeId = opidAccRecordTypeId;
+        parent1.Name='Cello Ltdq123';
+        parent1.BillingCity='New City';
+        parent1.BillingStreet='New Street';
+        parent1.BillingCountry='India';
+        parent1.BillingPostalCode='999992';
+        parent1.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
+        parent1.Core_Intel_Partner_Alliance_PartnerGroup__c=true;
+        parent1.Industry='Construction';
+        parent1.Core_User_Defined_Website__c='www.abc.com';
+        Parent1.Core_Geo__c='ASMO';
+        insert parent1;
+        
+        Account testAccount = new Account();
+        testAccount.RecordTypeId = recordTypeIdAccount;
+        testAccount.Name='John WickTest 123';
+        testAccount.BillingCity='City';
+        testAccount.BillingStreet='Street';
+        testAccount.BillingCountry='India';
+        testAccount.BillingPostalCode='123214';
+        testAccount.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
+        testAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
+        testAccount.Industry='Construction';
+        testAccount.OwnerId = UserInfo.getUserId();
+        testAccount.Core_User_Defined_Website__c = 'www.abc.com';
+        testAccount.Core_IPA_One_Partner_Id__c=parent1.id;
+        testAccount.Core_Geo__c = 'ASMO';
+        insert testAccount;
+        
+        Contact cont = new Contact();  //Contact
+        cont.AccountId=testAccount.Id;
+        cont.lastName='GrillTest';
+        cont.FirstName='Adam';
+        cont.email='AdamGrill@rediff123.com';
+        cont.Core_Job_Function__c='Branch Manager';
+        cont.Core_IPA_PartnerRole__c='Distributor';
+        cont.Core_eRPM_Language_Code__c='Eng';
+        cont.MailingCountry='India';
+        insert cont;
+        user u = [select id,FirstName, AccountId,Email, contactId, Core_IPA_One_Partner_Id__c from user where email='testUsercoreMDM@intel.com' limit 1];
+        Test.startTest();
+        system.runAs(u){
+            isStepOneCompleted= PRM_DashboardTabVisibilityController.isStepOneCompleted ();
+        }
+        Test.stopTest();
+         
 }
 }

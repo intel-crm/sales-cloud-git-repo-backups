@@ -248,21 +248,21 @@ private class Core_MDF_AI_Integration_Outbound_Test {
         insert doc;
         
         Test.startTest();
-            system.runAs(usr){
-                 Map<Id, PartnerFundClaim> newMapInput = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
+        system.runAs(usr){
+            Map<Id, PartnerFundClaim> newMapInput = new Map<Id, PartnerFundClaim>{ claim.Id => claim };
                 Core_MDF_AI_Integration_Outbound.generateAIResponseForPICProcess(newMapInput, 'insert');
-                }
-                Test.stopTest();
-                // Validate PIC Review staged and outbound queued via makeCDBCallout
-                Core_MDF_PIC_Review__c createdReview = [SELECT Id, Core_MDF_Claim_ID_id__c, Core_MDF_AI_PIC_Review_Ind__c, Core_MDF_AI_CycleNumber_nbr__c, Core_MDF_CycleNumber_nbr__c
-                                                        FROM Core_MDF_PIC_Review__c
-                                                        WHERE Core_MDF_Claim_ID_id__c = :claim.Id
-                                                        ORDER BY CreatedDate DESC
-                                                        LIMIT 1];
-                System.assertEquals(true, createdReview.Core_MDF_AI_PIC_Review_Ind__c, 'AI review indicator should be true for staged review');
-                System.assertNotEquals(null, createdReview.Core_MDF_AI_CycleNumber_nbr__c, 'AI cycle should be computed');
-                System.assertNotEquals(null, createdReview.Core_MDF_CycleNumber_nbr__c, 'Manual cycle should be computed');
-            
+        }
+        Test.stopTest();
+        // Validate PIC Review staged and outbound queued via makeCDBCallout
+        Core_MDF_PIC_Review__c createdReview = [SELECT Id, Core_MDF_Claim_ID_id__c, Core_MDF_AI_PIC_Review_Ind__c, Core_MDF_AI_CycleNumber_nbr__c, Core_MDF_CycleNumber_nbr__c
+                                                FROM Core_MDF_PIC_Review__c
+                                                WHERE Core_MDF_Claim_ID_id__c = :claim.Id
+                                                ORDER BY CreatedDate DESC
+                                                LIMIT 1];
+        System.assertEquals(true, createdReview.Core_MDF_AI_PIC_Review_Ind__c, 'AI review indicator should be true for staged review');
+        System.assertNotEquals(null, createdReview.Core_MDF_AI_CycleNumber_nbr__c, 'AI cycle should be computed');
+        System.assertNotEquals(null, createdReview.Core_MDF_CycleNumber_nbr__c, 'Manual cycle should be computed');
+        
     }
     
     @IsTest
@@ -270,7 +270,7 @@ private class Core_MDF_AI_Integration_Outbound_Test {
         // Query for the IDs needed for the test
         List<PartnerFundRequest> pfrList = [SELECT Id FROM PartnerFundRequest ORDER BY CreatedDate DESC LIMIT 1];
         List<Core_MDF_Bank__c> bankList = [SELECT Id FROM Core_MDF_Bank__c ORDER BY CreatedDate DESC LIMIT 1];
-         User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
+        User usr = [SELECT Id,Name FROM User where Email = 'sysadmin@example.com' LIMIT 1];
         
         Id pfrId = pfrList[0].Id;
         Id bankId = bankList[0].Id;

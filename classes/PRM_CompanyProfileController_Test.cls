@@ -21,7 +21,7 @@ public class PRM_CompanyProfileController_Test {
         
         List<Account> updatedAcct= new List<Account>();
         for(Account acc:[SELECT ID,NAME,Core_Account_Type__c,Core_IPA_Partner_Role__c,Core_User_Defined_Website__c FROM ACCOUNT]){
-            //System.debug('acc ='+acc);
+            
             acc.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
             acc.Core_IPA_Partner_Role__c = 'Service Provider';
             acc.Core_CIM_ID__c='12345';
@@ -78,7 +78,7 @@ public class PRM_CompanyProfileController_Test {
         specialty.Name = 'Cloud Data Center Specialty';        
         specialty.PRM_Access_Level_Nm__c = 'Public';
         specialty.PRM_Role_Nm__c = 'Service Provider';
-        specialty.PRM_Tier_Nm__c = 'Gold'; //'Gold';
+        specialty.PRM_Tier_Nm__c = 'Gold';
         specialty.PRM_Description_Txt__c = 'Test';
         specialty.PRM_Funding_BU_Nm__c = 'CCG Sales Group';
         specialty.PRM_Start_Date_Dt__c = system.Today();
@@ -162,7 +162,7 @@ public class PRM_CompanyProfileController_Test {
     }    
     /* private static testMethod void saveWhitelistedDomains_NewList_Test(){ 
 test.startTest();
-system.debug('start ==> saveWhitelistedDomains_NewList_Test');
+
 Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
 Account intelAccount1 = [SELECT id FROM Account WHERE RecordTypeId=:intelAccRecTypeId LIMIT 1];
 ChannelProgram cp = [SELECT id FROM ChannelProgram LIMIT 1];
@@ -180,7 +180,7 @@ system.runAs([SELECT id FROM User WHERE Email='testcontact1@spamok.com'][0]){
 PRM_CompanyProfileController.saveWhitelistedDomains(intelAccount1.Id,'test.com,test1.com');  
 system.assertEquals('test.com,test1.com', PRM_CompanyProfileController.getWhitelistedDomains(intelAccount1.Id));
 }
-system.debug('End ==> saveWhitelistedDomains_NewList_Test');
+
 test.stopTest();        
 } */
     public static testMethod void getCompanyAndRoleInfo_Test(){
@@ -200,7 +200,7 @@ test.stopTest();
         
         List<Account> updatedAcct= new List<Account>();
         for(Account acc:[SELECT ID,NAME,Core_Account_Type__c,Core_IPA_Partner_Role__c,Core_User_Defined_Website__c FROM ACCOUNT]){
-            //System.debug('acc ='+acc);
+           
             acc.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
             acc.Core_IPA_Partner_Role__c = 'Service Provider';
             acc.Core_CIM_ID__c='12345';

@@ -33,10 +33,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PSG_Customer_frght_collect_account__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Sales_RU_Guard_Id_Txt__c</field>
             </layoutItems>
             <layoutItems>
@@ -142,17 +138,17 @@
         <fields>UnitPrice</fields>
         <fields>Quantity</fields>
     </miniLayout>
-    <multilineLayoutFields>OrderItemNumber</multilineLayoutFields>
     <multilineLayoutFields>Product2Id</multilineLayoutFields>
+    <multilineLayoutFields>OrderId</multilineLayoutFields>
+    <multilineLayoutFields>OrderItemNumber</multilineLayoutFields>
     <multilineLayoutFields>Quantity</multilineLayoutFields>
-    <multilineLayoutFields>Sales_Contact__c</multilineLayoutFields>
-    <multilineLayoutFields>UnitPrice</multilineLayoutFields>
     <multilineLayoutFields>UnitPriceForceOverride__c</multilineLayoutFields>
+    <multilineLayoutFields>UnitPrice</multilineLayoutFields>
+    <multilineLayoutFields>Sales_Contact__c</multilineLayoutFields>
+    <multilineLayoutFields>ListPrice</multilineLayoutFields>
     <multilineLayoutFields>Description</multilineLayoutFields>
     <multilineLayoutFields>SBQQ__QuotedQuantity__c</multilineLayoutFields>
     <multilineLayoutFields>SBQQ__QuoteLine__c</multilineLayoutFields>
-    <multilineLayoutFields>PSG_Customer_frght_collect_account__c</multilineLayoutFields>
-    <multilineLayoutFields>OrderId</multilineLayoutFields>
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>SBQQ__Subscription__c.SBQQ__OrderProduct__c</relatedList>

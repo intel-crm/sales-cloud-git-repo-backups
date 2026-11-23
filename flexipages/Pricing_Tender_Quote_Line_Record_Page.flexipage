@@ -228,7 +228,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>mainTitle</name>
-                    <value>Win Prediction</value>
+                    <value>Win Predictor</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>negativePred</name>
@@ -242,7 +242,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>predDef</name>
-                    <value>DISCOVERY:IQR_Win_Prediction_RF</value>
+                    <value>DISCOVERY:Predicted_Win_True</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>recommendationThreshold</name>
@@ -254,7 +254,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showModelCardLink</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showPredDefLabel</name>
@@ -282,7 +282,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showWarning</name>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>timePeriod</name>
@@ -295,16 +295,11 @@
                 <componentName>runtime_einstein_discovery:einsteinDiscoveryPanel</componentName>
                 <identifier>runtime_einstein_discovery_einsteinDiscoveryPanel</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <leftValue>{!$Permission.CustomPermission.Pricing_Tender_Regional_Pricing_Manager}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>System Administrator</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>IT Admin</rightValue>
+                        <rightValue>true</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.SBQQ__ProductName__c}</leftValue>
@@ -390,6 +385,279 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>calcDate</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>collapseDetail</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>dateDisplayType</name>
+                    <value>specificDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>historyRefPoint</name>
+                    <value>weekAgo</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>isUnitLeft</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mainTitle</name>
+                    <value>Binary Classification (Random Forest)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>negativePred</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numRecommendation</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>positivePred</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>predDef</name>
+                    <value>DISCOVERY:Predicted_Quote_Line_Status</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recommendationThreshold</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>refDate</name>
+                    <value>CreatedDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showModelCardLink</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showPredDefLabel</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRankedList</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRecommendation</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTitle</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTopFactor</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showValue</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showWarning</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>timePeriod</name>
+                    <value>days</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>unit</name>
+                </componentInstanceProperties>
+                <componentName>runtime_einstein_discovery:einsteinDiscoveryPanel</componentName>
+                <identifier>runtime_einstein_discovery_einsteinDiscoveryPanel2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>calcDate</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>collapseDetail</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>dateDisplayType</name>
+                    <value>specificDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>historyRefPoint</name>
+                    <value>lastChange</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>isUnitLeft</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mainTitle</name>
+                    <value>Quote Line Status (Manual Selection)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>negativePred</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numRecommendation</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>positivePred</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>predDef</name>
+                    <value>DISCOVERY:Predicted_Quote_Line_Status1</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recommendationThreshold</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>refDate</name>
+                    <value>CreatedDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showModelCardLink</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showPredDefLabel</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRankedList</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRecommendation</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTitle</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTopFactor</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showValue</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showWarning</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>timePeriod</name>
+                    <value>days</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>unit</name>
+                </componentInstanceProperties>
+                <componentName>runtime_einstein_discovery:einsteinDiscoveryPanel</componentName>
+                <identifier>runtime_einstein_discovery_einsteinDiscoveryPanel3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>calcDate</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>collapseDetail</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>dateDisplayType</name>
+                    <value>specificDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>historyRefPoint</name>
+                    <value>lastChange</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>isUnitLeft</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>mainTitle</name>
+                    <value>Binary Classification (GBM)</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>negativePred</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numRecommendation</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>positivePred</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>predDef</name>
+                    <value>DISCOVERY:Predicted_Quote_Line_Status_GBM</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>recommendationThreshold</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>refDate</name>
+                    <value>CreatedDate</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showModelCardLink</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showPredDefLabel</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRankedList</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showRecommendation</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTitle</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTopFactor</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showValue</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showWarning</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>timePeriod</name>
+                    <value>days</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>unit</name>
+                </componentInstanceProperties>
+                <componentName>runtime_einstein_discovery:einsteinDiscoveryPanel</componentName>
+                <identifier>runtime_einstein_discovery_einsteinDiscoveryPanel4</identifier>
             </componentInstance>
         </itemInstances>
         <name>rightcol</name>

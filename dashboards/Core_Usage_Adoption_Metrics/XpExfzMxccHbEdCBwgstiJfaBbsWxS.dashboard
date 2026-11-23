@@ -29,63 +29,11 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>A&amp;E User,A&amp;E User (Read Only)</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>CCP - Core Access</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Comarketing Support L1,Comarketing Support L2</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Data Ops</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>IPA A&amp;E User</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>IPS Agent,IPS Agent Enhanced,IPS Support Org Admin</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>IT @ Intel</values>
+            <values>PT1,System Administrator</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>IT Admin</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Partner Admin,Partner Lead Admin</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Production Release and Checkout</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Production Support,Production Support-Display,Production Support-IPS</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Program Core Team</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Reporting Admin</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Sales Manager</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Sales Ops</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -97,11 +45,11 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Sales Rep-BB,Sales Rep-BB-Dual IPS,Sales Rep-CW,Sales Manager,Sales Ops,Marketing Development Manager</values>
+            <values>Sales Manager</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Support Core Team</values>
+            <values>Sales Rep-BB,Sales Rep-CW,Sales Manager,Sales Insights Integration User</values>
         </dashboardFilterOptions>
         <name>Profile</name>
     </dashboardFilters>
@@ -125,9 +73,9 @@
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Integer</displayUnits>
                 <groupingSortProperties/>
-                <header>Total Licenses in Org</header>
-                <indicatorBreakpoint1>1.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.0</indicatorBreakpoint2>
+                <header>Total Licenses</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
@@ -218,6 +166,7 @@
                 </groupingSortProperties>
                 <header>Daily Unique Users by Region</header>
                 <legendPosition>Bottom</legendPosition>
+                <maxValuesDisplayed>50</maxValuesDisplayed>
                 <report>Core_Usage_Adoption_Metrics/User_Login_Daily_Unique_kSW</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
@@ -271,7 +220,7 @@
                 <report>Core_Usage_Adoption_Metrics/User_Login_Leaderboard_JCL</report>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>12</rowSpan>
+            <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -292,8 +241,8 @@
                 <displayUnits>Integer</displayUnits>
                 <groupingSortProperties/>
                 <header>Assigned Licenses</header>
-                <indicatorBreakpoint1>1.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.0</indicatorBreakpoint2>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
@@ -322,8 +271,8 @@
                 <displayUnits>Integer</displayUnits>
                 <groupingSortProperties/>
                 <header>Logged in Last 30 Days</header>
-                <indicatorBreakpoint1>1.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>2.0</indicatorBreakpoint2>
+                <indicatorBreakpoint1>3000.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>7000.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
@@ -370,6 +319,7 @@
                 </groupingSortProperties>
                 <header>Weekly Unique Users by Region</header>
                 <legendPosition>Bottom</legendPosition>
+                <maxValuesDisplayed>50</maxValuesDisplayed>
                 <report>Core_Usage_Adoption_Metrics/User_Login_Weekly_Unique_by_Region_NuX</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
@@ -465,7 +415,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Last Login by Emp Type</header>
+                <header>Last Login by Employee Type</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>Core_Usage_Adoption_Metrics/User_Login_Last_30_Int_Emp_Type_LNv</report>
                 <showPercentage>false</showPercentage>
@@ -612,7 +562,7 @@
                     <axisBinding>y</axisBinding>
                     <column>RowCount</column>
                 </chartSummary>
-                <componentType>BarStacked100</componentType>
+                <componentType>BarStacked</componentType>
                 <dashboardFilterColumns>
                     <column>User.Core_User_Geo__c</column>
                 </dashboardFilterColumns>
@@ -687,10 +637,10 @@
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11227352@intel.com.crm</owner>
+    <owner>10557526@intel.com.crm</owner>
     <runningUser>10557526@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>User Adoption Dashboard - Login Data</title>
+    <title>User Adoption Dashboard Prototype</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

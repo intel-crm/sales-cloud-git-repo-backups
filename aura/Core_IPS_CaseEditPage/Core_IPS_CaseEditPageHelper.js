@@ -1,18 +1,18 @@
 ({
     helperMethod : function(component, event, helper) {
-        //console.log('minhaj inside helper');
+        console.log('minhaj inside helper');
         var action = component.get("c.getCaseRecordTypeID");
         action.setParams({ recId : component.get('v.recordId') });
         action.setCallback(this, function(response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-                //console.log('minhaj status success')
+                console.log('minhaj status success')
                 //alert(response.getReturnValue());
                 var rTypeIdNameMap = response.getReturnValue();
-                //console.log('record selected', response.getReturnValue());
+                console.log('record selected', response.getReturnValue());
                 component.set('v.recordTypeName', response.getReturnValue());
                 if(rTypeIdNameMap !== undefined && rTypeIdNameMap !== null  && ('IPS_Case_Create' == rTypeIdNameMap  || 'Core_IPS_Case_Create_Self_Assigned' == rTypeIdNameMap  || 'IPS_GEC_ReadOnly' == rTypeIdNameMap || 'IPS_Closed_Case' == rTypeIdNameMap )) {
-                    //console.log('inside if minhaj');
+                    console.log('inside if minhaj');
                     const evt = $A.get("e.force:navigateToComponent");
                     evt.setParams({
                         componentDef : "c:core_IPS_CreateCase",
@@ -23,7 +23,7 @@
                     });
                     evt.fire();
                 }else{
-                      //console.log('minhaj inside else');
+                      console.log('minhaj inside else');
                     //event.preventDefault();
                    /* var editRecordEvent = $A.get("e.force:editRecord");
                     editRecordEvent.setParams({
@@ -48,7 +48,7 @@
                     actionNav.setCallback(this, function(res){
                         let state = res.getState();
                         if(state === "SUCCESS"){
-                            //console.log('minhaj vf res', res.getReturnValue());
+                            console.log('minhaj vf res', res.getReturnValue());
                            // component.set("v.pageReference", res.getReturnValue());
                            // navService.navigate(res.getReturnValue());
                             var urlEvent = $A.get("e.force:navigateToURL");
@@ -56,10 +56,10 @@
                                 "url": res.getReturnValue()
                             });
                             urlEvent.fire();
-                            //console.log('minhaj vf page state success');
+                            console.log('minhaj vf page state success');
                             
                         }else{
-                            //console.log('minhaj vf page state fail');
+                            console.log('minhaj vf page state fail');
                         }
                     })
                     $A.enqueueAction(actionNav);

@@ -2,91 +2,98 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "c:PCC_DDRLayout",
   "dataProviders" : [ ],
-  "id" : "4ddaeb31-6f2e-46bd-9014-1d46baf3962e",
+  "id" : "de941f78-c7b5-4831-93a8-286eab8c2c18",
   "label" : "DDR",
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
-        "alignment" : "center",
-        "backgroundVariant" : "mosaic-l2",
-        "recordId" : "{!recordId}",
-        "subtitle" : "",
-        "title" : "Intel Design Registration"
-      },
-      "componentName" : "c:ipaMarqueeLeads",
-      "id" : "1dea56ea-66ae-4771-b6e7-f97daf948a19",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "4e295e75-bc70-4ec1-9909-695bf490c541",
-    "regionName" : "marquee",
-    "type" : "region"
-  }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "menuItems" : "[]"
-      },
-      "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "fe82263d-c5ef-4fbd-a585-f1d7b63c1832",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "disableManageEvents" : true,
-        "disableManageLeads" : true,
-        "disableManageOfferings" : true,
-        "disableManageStorefront" : true,
-        "disableManagedMPPartners" : true,
-        "disableViewDashboard" : true,
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
         "fullWidth" : true,
         "portal" : "Partner Admin",
         "showAllButtons" : false
       },
       "componentName" : "c:MarketplaceNavigationBar",
-      "id" : "8be3ea6e-9f89-4071-8e04-91bc236dcd4e",
+      "id" : "98db329c-998f-4b02-8792-10ab53079da2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "backgroundVariant" : "classic-blue-gradient",
+        "recordId" : "{!recordId}",
+        "subtitle" : "",
+        "title" : "Intel Design Registration"
+      },
+      "componentName" : "c:ipaMarqueeLeads",
+      "id" : "13ff55c4-0735-47f0-afa3-70fd9d805210",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "7dcc0f4c-5836-4951-8650-b7c255265fab",
+    "id" : "938484e6-3669-4bec-8d5c-1ee816fa7087",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p style=\"text-align: center;\"><strong style=\"color: rgb(230, 0, 0);\"><em>There is a planned system upgrade starting Jul 17-28. During this time, you will be able to view your open transactions but will not be able to create or modify transactions. The new system will be available to you on July 28 and you will receive an email with the new URL and instructions. Our apologies for any inconvenience and thank you for your patience.</em></strong></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "851c11bc-c434-403e-8d89-f770be7803e7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "a01fcd5c-bd67-4ce4-b8a9-811d1e2701ea",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "71d5fc2e-8f9b-4766-992f-b3a4452d35da",
     "regionName" : "navigationMenu",
     "type" : "region"
   }, {
-    "id" : "f7e8ac22-246d-4ff1-a93c-cd280fa014e1",
+    "id" : "9362fe31-414b-429d-aa2b-d5fed5d7c222",
     "regionName" : "mainFullWidth",
     "type" : "region"
   }, {
-    "id" : "14ebb182-953b-45be-975d-acce6cc0946a",
+    "id" : "77c4e84b-6a85-49e7-85fa-16441ea36063",
     "regionName" : "main",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
         "tabsetConfig" : {
-          "UUID" : "697e457a-40a9-4e6b-9970-120acfe74215",
+          "UUID" : "0c955e21-2fa6-44df-b2d0-795205c95ccf",
           "activeTab" : "",
           "tabs" : [ {
-            "UUID" : "0753c238-60b3-4a92-881e-8537d694bbe8",
+            "UUID" : "0996e5da-be18-423b-9ccb-9fb935a86959",
             "allowGuestUser" : false,
             "locked" : false,
             "seedComponents" : [ ],
             "tabKey" : "1",
             "tabName" : "Design-Opportunity"
           }, {
-            "UUID" : "947326a8-d2f4-4bd2-8baa-bd3ba2ac5a72",
+            "UUID" : "889af2c5-9437-4eb8-a8c1-4aa5bb43f9a6",
             "allowGuestUser" : false,
             "locked" : false,
             "seedComponents" : [ ],
-            "tabKey" : "2",
-            "tabName" : "Design Registration"
+            "tabKey" : "6cf38",
+            "tabName" : "Design-Registration"
           } ],
           "useOverflowMenu" : false
         }
       },
       "componentName" : "forceCommunity:tabset",
-      "id" : "697e457a-40a9-4e6b-9970-120acfe74215",
+      "id" : "0c955e21-2fa6-44df-b2d0-795205c95ccf",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
@@ -94,20 +101,11 @@
             "recordId" : "Core_DDR_External_Design_Opportunity_Dashboard"
           },
           "componentName" : "forceCommunity:dashboard",
-          "id" : "6437bfa6-26d7-4577-860c-e6fe159c67b6",
-          "renditionMap" : { },
-          "type" : "component"
-        }, {
-          "componentAttributes" : {
-            "height" : "485",
-            "recordId" : "Trailhead_Overview"
-          },
-          "componentName" : "forceCommunity:dashboard",
-          "id" : "00395e82-59ca-4cb0-be55-55102ecc064d",
+          "id" : "89a66494-3ccf-433b-8e56-f28436c536e2",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "0753c238-60b3-4a92-881e-8537d694bbe8",
+        "id" : "0996e5da-be18-423b-9ccb-9fb935a86959",
         "regionLabel" : "Design-Opportunity",
         "regionName" : "1",
         "renditionMap" : { },
@@ -115,17 +113,17 @@
       }, {
         "components" : [ {
           "componentAttributes" : {
-            "height" : "850",
+            "height" : "485",
             "recordId" : "lMnRRmQzGUhCMscCETYQinISGqUFet"
           },
           "componentName" : "forceCommunity:dashboard",
-          "id" : "290aee0c-52bf-483d-a14a-c1bd52f72bc4",
+          "id" : "fffbc487-2767-4650-b141-d0d634a5dfb1",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "947326a8-d2f4-4bd2-8baa-bd3ba2ac5a72",
-        "regionLabel" : "Design Registration",
-        "regionName" : "2",
+        "id" : "889af2c5-9437-4eb8-a8c1-4aa5bb43f9a6",
+        "regionLabel" : "Design-Registration",
+        "regionName" : "6cf38",
         "renditionMap" : { },
         "type" : "region"
       } ],
@@ -133,57 +131,57 @@
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "b07c3f06-8ff0-4306-8617-e8cc3d8431f0",
+    "id" : "6493fbac-5ce9-438b-828e-341de4b40ef6",
     "regionName" : "leftSection",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "richTextValue" : "<div>\n\n    <div style = \"padding: 15px;\"></div>\n\n    <div style=\"background-color: #ffffff; border-radius:3px;border-style: solid;border-color: #d6d6d6;border-width: 0.1px\">\n\n        <h2>Intel Design Registration</h2>\n\n        <ul>\n            <li><a href=\"https://www.intel.com/content/www/us/en/secure/content-details/846887/content-details.html\">Design Registration Training</a></li>\n\t\t\t<li><a href=\"https://www.intel.com/content/www/us/en/secure/content-details/846891/content-details.html\">Bulk Upload References</a></li>            \n\t\t\t<li><a href=\"mailto:smg.customer.support@intel.com\">Design Registration Support</a></li>\n            <li><a href=\"https://partner-admin.intel.com/s/report/00O3b000007pjdnEAA/tool-registerable-product-list?queryScope=everything\">Tool Registerable product list - Embedded IOT</a></li>\n        </ul>\n        <h2>\n            Intel Premier Support</h2>\n        <ul>\n            <li><a href=\"https://premiersupport.intel.com/IPS\">Click here for IPS Portal</a></li>\n        </ul>\n\n\n        <h2>Other Links</h2>\n\n        <ul>\n            <li><a href=\"https://www-ssl.intel.com/content/www/us/en/secure/profile/my-intel.html#/myapps\">My Intel Business Applications & Tools</a></li>\n        </ul>\n\n    </div>\n\n</div>"
+        "richTextValue" : "<div>\n    <div style = \"padding: 15px;\"></div>\n<div style=\"background-color: #ffffff; border-radius:3px;border-style: solid;border-color: #d6d6d6;border-width: 0.1px\">\n\n<h2>Intel Design Registration</h2>\n\n\t<ul>\n            <li><a href=\"https://www.intel.com/content/www/us/en/partner-alliance/distributor/ddr-training/ddr-registration.html\">Design Registration Training</a></li>\n\t\t\t<li><a href=\"https://www.intel.com/content/www/us/en/partner-alliance/distributor/ddr-training/ddr-overview.html\">Bulk Upload References</a></li>            \n\t    \n\t\t\t<li><a href=\"mailto:smg.customer.support@intel.com\">Design Registration Support</a></li>\n            <li><a href=\"https://intel--crmdevint3.sandbox.my.site.com/partneradmin/s/report/00OD3000000ZPIhMAO/embedded-product-mapping-report?queryScope=everything\">Tool Registerable product list - Embedded IOT</a></li>\n        </ul>\n        <h2>\n            Intel Premier Support</h2>\n        <ul>\n            <li><a href=\"https://premiersupport.intel.com/IPS\">Click here for IPS Portal</a></li>\n        </ul>\n\n\n        <h2>Other Links</h2>\n\n        <ul>\n            <li><a href=\"https://www-ssl.intel.com/content/www/us/en/secure/profile/my-intel.html#/myapps\">My Intel Business Applications & Tools</a></li>\n\t\t\n\t</ul>\n    </div>\n\n</div>"
       },
       "componentName" : "forceCommunity:htmlBlock",
-      "id" : "787a1f5c-cae9-434e-a929-4d5a2ec8bf82",
+      "id" : "dc987cdd-2554-4573-8036-11d0610e72bd",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "a3a371a9-4b07-4110-a62c-2f677f10982b",
+    "id" : "384e99ce-3866-4fb5-93b2-3857b287be33",
     "regionName" : "rightSection",
     "type" : "region"
   }, {
-    "id" : "dcb2ad15-ee57-4f15-8fa5-ce000f544ae8",
+    "id" : "767f1d79-735f-439e-951e-29775fed2daa",
     "regionName" : "tab3",
     "type" : "region"
   }, {
-    "id" : "45ae8b65-7260-4449-b8a2-fa88c70fbcf7",
+    "id" : "22c027a8-d3cc-4255-8b4a-2d27315cd729",
     "regionName" : "blade1",
     "type" : "region"
   }, {
-    "id" : "885e399d-15d9-4103-bd17-45d4f7abf7b0",
+    "id" : "dae704e0-83c0-4355-a85e-8654b386954f",
     "regionName" : "blade1white",
     "type" : "region"
   }, {
-    "id" : "9872c2c6-0452-49b4-b79a-056e9a21032c",
+    "id" : "4afc7fd0-fc2d-42e8-b103-55c0ffe81b91",
     "regionName" : "blade2",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:IntelContact",
-      "id" : "51a2dd6e-71fc-45f4-ad6b-c9ad6057670a",
+      "id" : "0f197ed9-e919-4ab1-9070-bba027c34877",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "ef11588c-3a51-422c-a822-47bba14482ea",
+    "id" : "0a799766-3f39-4657-bec0-bb50fb1bfe76",
     "regionName" : "blade3",
     "type" : "region"
   }, {
-    "id" : "c5cff14b-8f9e-4bbb-a32a-df49a1d20361",
+    "id" : "7ec75d17-dc33-467b-9710-8026df37b318",
     "regionName" : "blade4",
     "type" : "region"
   }, {
-    "id" : "3de86da1-c96c-40dc-9eba-1f21684dd946",
+    "id" : "99a8cfe3-3508-4b61-a231-06d2ac8841b1",
     "regionName" : "blade5",
     "type" : "region"
   }, {
@@ -194,15 +192,15 @@
         "title" : "Design Registration"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "500556db-f441-4ba1-8e7a-a8b24d989854",
+      "id" : "d1b668cd-8537-41d7-b5f7-b0acd7c835b2",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "8450c4b4-e3ea-42a8-af7c-d945658d9a4d",
+    "id" : "806013aa-35f3-4728-a503-93b98c082f23",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "YKT7Zn6tAHjSVdyTIMFhpZIEtQkAJG",
   "type" : "view",
   "viewType" : "custom-ddr"
 }

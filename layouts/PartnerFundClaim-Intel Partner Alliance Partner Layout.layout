@@ -403,6 +403,7 @@
         <fields>NAME</fields>
         <fields>Core_MDF_VAT_Amt__c</fields>
         <fields>Core_MDF_Status_Txt__c</fields>
+        <fields>Core_MDF_VAT_Comments_txt__c</fields>
         <relatedList>Core_MDF_Claim_VAT_Info__c.Core_MDF_Claim_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -439,6 +440,15 @@
         <fields>Core_MDF_BU_Split_Percent__c</fields>
         <fields>Core_MDF_BU_Amount_Nbr__c</fields>
         <relatedList>Core_MDF_Claim_BU_Split__c.Core_MDF_Claim__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>ChannelPartner</fields>
+        <fields>Core_MDF_Status__c</fields>
+        <fields>Core_MDF_Requested_Reimbursement_Amt__c</fields>
+        <fields>Core_MDF_Bank__c</fields>
+        <fields>Core_MDF_VAT_Opt_In__c</fields>
+        <relatedList>PartnerFundClaim.Core_MDF_Claim_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>

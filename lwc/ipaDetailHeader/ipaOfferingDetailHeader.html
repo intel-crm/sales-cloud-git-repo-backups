@@ -1,80 +1,80 @@
 <template>
-    <!-- <c-ipa-sticky full-width start="bottom" preview-mode={previewMode}>
-      <div slot="sticky">
-      Sticky outline 
-        <div class="sticky-container">
-          <div class="slds-m-left_x-small slds-m-right_medium slds-m-vertical_x-small sticky-logo-container">
-            <img src={logoUrl} alt={logoAlt} class="sticky-logo"></img>
+  <c-ipa-sticky full-width start="bottom" preview-mode={previewMode}>
+    <div slot="sticky">
+      <!-- Sticky outline -->
+      <div class="sticky-container">
+        <div class="slds-m-left_x-small slds-m-right_medium slds-m-vertical_x-small sticky-logo-container">
+          <img src={logoUrl} alt={logoAlt} class="sticky-logo"></img>
+        </div>
+        <template if:true={contactPartnerVisible}>
+          <div class="sticky-contact-button slds-p-top_small slds-p-bottom_small slds-m-right_medium">
+            <c-ipa-contact-partner-button
+              analytics-details={contactPartnerAnalyticsDetails}
+              modal-data={contactPartnerModalData}
+            ></c-ipa-contact-partner-button>
           </div>
-          <template if:true={contactPartnerVisible}>
-            <div class="sticky-contact-button slds-p-top_small slds-p-bottom_small slds-m-right_medium">
-              <c-ipa-contact-partner-button
-                analytics-details={contactPartnerAnalyticsDetails}
-                modal-data={contactPartnerModalData}
-              ></c-ipa-contact-partner-button>
-            </div>
-          </template>
-          <h1 class="sticky-headline slds-m-right_medium truncate-1 h3">
-            {headline}
-          </h1>
-          <div class="sticky-social-button">
-            <c-ipa-share show-label email-body={headline}></c-ipa-share>
-          </div>
+        </template>
+        <h1 class="sticky-headline slds-m-right_medium truncate-1 h3">
+          {headline}
+        </h1>
+        <div class="sticky-social-button">
+          <c-ipa-share show-label email-body={headline}></c-ipa-share>
         </div>
       </div>
+    </div>
 
-      <div slot="content">
-        <div class="slds-grid slds-wrap slds-grid_pull-padded-medium header">
-          <div class="header-content">
-            <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_3-of-12 slds-p-horizontal_medium slds-p-bottom_medium img-col">
-              <div class="img-container">
-                <img src={logoUrl} alt={logoAlt} class="logo"></img>
-              </div>
-              <template if:true={contactPartnerVisible}>
-                <div class="slds-m-top_medium">
-                  <c-ipa-contact-partner-button
-                    preview-mode={previewMode}
-                    analytics-details={contactPartnerAnalyticsDetails}
-                    modal-data={contactPartnerModalData}
-                  >
-                  </c-ipa-contact-partner-button>
-                </div>
-              </template>
+    <div slot="content">
+      <div class="slds-grid slds-wrap slds-grid_pull-padded-medium header">
+        <div class="header-content">
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_3-of-12 slds-p-horizontal_medium slds-p-bottom_medium img-col">
+            <div class="img-container">
+              <img src={logoUrl} alt={logoAlt} class="logo"></img>
             </div>
-            <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_9-of-12 header-wrapper slds-p-horizontal_medium slds-p-bottom_small">
-              <div class="header-title">
-                <h1 class="h2">{headline}</h1>
-                <div class="social-share-container">
-                  <div class="slds-show_x-large">
-                    <c-ipa-share show-label email-body={headline} preview-mode={previewMode}></c-ipa-share>
-                  </div>
-                  <div class="slds-hide_x-large">
-                    <c-ipa-share email-body={headline} preview-mode={previewMode}></c-ipa-share>
-                  </div>
+            <template if:true={contactPartnerVisible}>
+              <div class="slds-m-top_medium">
+                <c-ipa-contact-partner-button
+                  preview-mode={previewMode}
+                  analytics-details={contactPartnerAnalyticsDetails}
+                  modal-data={contactPartnerModalData}
+                >
+                </c-ipa-contact-partner-button>
+              </div>
+            </template>
+          </div>
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_9-of-12 header-wrapper slds-p-horizontal_medium slds-p-bottom_small">
+            <div class="header-title">
+              <h1 class="h2">{headline}</h1>
+              <div class="social-share-container">
+                <div class="slds-show_x-large">
+                  <c-ipa-share show-label email-body={headline} preview-mode={previewMode}></c-ipa-share>
+                </div>
+                <div class="slds-hide_x-large">
+                  <c-ipa-share email-body={headline} preview-mode={previewMode}></c-ipa-share>
                 </div>
               </div>
-              <div class="slds-text-heading_small offering-link-wrapper slds-m-top_medium"> {labels.by} <c-ipa-link object-page="PMP_Company__c" record-id={offeringOwnerId} label={offeringOwner} preview={previewMode}></c-ipa-link></div>
-              <div class="slds-text-heading_small tagline slds-m-top_x-small slds-m-bottom_x-small">{tagline}</div>
+            </div>
+            <div class="slds-text-heading_small offering-link-wrapper slds-m-top_medium"> {labels.by} <c-ipa-link object-page="PMP_Company__c" record-id={offeringOwnerId} label={offeringOwner} preview={previewMode}></c-ipa-link></div>
+            <div class="slds-text-heading_small tagline slds-m-top_x-small slds-m-bottom_x-small">{tagline}</div>
+            <div class="last-modified"> 
+              {labels.lastUpdated}:&nbsp;
+              <lightning-formatted-date-time value={lastModified} year="numeric" month="numeric" day="numeric" hour="2-digit"
+              minute="2-digit" time-zone-name="short" hour12="true"></lightning-formatted-date-time>
+            </div>
+            <template if:true={internalAdmin}>
+              <template if:true={cacheTime}>
               <div class="last-modified"> 
-                {labels.lastUpdated}:&nbsp;
-                <lightning-formatted-date-time value={lastModified} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                {labels.cacheTimelabel}:&nbsp;
+                <lightning-formatted-date-time value={cacheTime} year="numeric" month="numeric" day="numeric" hour="2-digit"
                 minute="2-digit" time-zone-name="short" hour12="true"></lightning-formatted-date-time>
               </div>
-              <template if:true={internalAdmin}>
-                <template if:true={cacheTime}>
-                <div class="last-modified"> 
-                  {labels.cacheTimelabel}:&nbsp;
-                  <lightning-formatted-date-time value={cacheTime} year="numeric" month="numeric" day="numeric" hour="2-digit"
-                  minute="2-digit" time-zone-name="short" hour12="true"></lightning-formatted-date-time>
-                </div>
-                </template>
-              <template if:false={cacheTime}>
-                <div class="last-modified">{labels.noCachedDatalabel}</div>
               </template>
-             </template>
-            </div>
+            <template if:false={cacheTime}>
+              <div class="last-modified">{labels.noCachedDatalabel}</div>
+            </template>
+           </template>
           </div>
         </div>
       </div>
-    </c-ipa-sticky> -->
-  </template>
+    </div>
+  </c-ipa-sticky>
+</template>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Invoke Apex method to process the Retry for CDB Outbound Log records</description>
+        <name>Call_Apex_Method_for_CDB_Outbound_Retry</name>
+        <label>Call Apex Method for CDB Outbound Retry</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>01pD3000002YrFfNotFound</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>retryCDBLogList</name>
+            <value>
+                <elementReference>Core_MDF_Log_Records</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assigns the CDB Log Period from Metadata Utility</description>
+        <name>Core_MDF_Assign_CDB_Log_Period</name>
+        <label>Assign CDB Log Period</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Core_MDF_Log_Period</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Core_Traverse_Metadata_Utility_Records_for_CDB.Core_MDF_Value__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_Traverse_Metadata_Utility_Records_for_CDB</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assigns the CDB Retry Counter value</description>
+        <name>Core_MDF_Assign_CDB_Retry_Counter</name>
+        <label>Assign CDB Retry Counter</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Core_MDF_Retry_Number</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Core_Traverse_Metadata_Utility_Records_for_CDB.Core_MDF_Value__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_Traverse_Metadata_Utility_Records_for_CDB</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Decision which checks if CDB Integration Log Records exists</description>
+        <name>Core_Does_CDB_Log_Records_Exist</name>
+        <label>Does CDB Log Records Exist?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_CDB_Log_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Core_MDF_Log_Records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Call_Apex_Method_for_CDB_Outbound_Retry</targetReference>
+            </connector>
+            <label>CDB Log Exists?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if Metadata Utility records exists for CDB</description>
+        <name>Core_MDF_Check_if_Metadata_Utility_Records_exists_for_CDB</name>
+        <label>Check if Metadata Utility Records exists for CDB</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_Does_Records_exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Core_MDF_CDB_Metadata_Utility_Records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Traverse_Metadata_Utility_Records_for_CDB</targetReference>
+            </connector>
+            <label>Does Records exist?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if Sub-Category value is CDB Retry Counter</description>
+        <name>Core_MDF_Is_Sub_Category_CDB_Retry_Counter_Log_Period</name>
+        <label>Is Sub-Category CDB Retry Counter or CDB Log Period?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Core_Traverse_Metadata_Utility_Records_for_CDB</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_Is_Sub_Category_CDB_Retry</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Core_Traverse_Metadata_Utility_Records_for_CDB.Core_MDF_Sub_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CDB Retry Counter</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Assign_CDB_Retry_Counter</targetReference>
+            </connector>
+            <label>Is Sub-Category CDB Retry?</label>
+        </rules>
+        <rules>
+            <name>Core_MDF_Is_Sub_Category_CDB_Log_Period</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Core_Traverse_Metadata_Utility_Records_for_CDB.Core_MDF_Sub_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CDB Log Period</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Assign_CDB_Log_Period</targetReference>
+            </connector>
+            <label>Is Sub-Category CDB Log Period?</label>
+        </rules>
+    </decisions>
+    <description>Flow used for Outbound re-processing of the CDB Integration Log records</description>
+    <formulas>
+        <name>Core_CDB_Logging_Period</name>
+        <dataType>DateTime</dataType>
+        <expression>DATETIMEVALUE(TODAY() - (VALUE({!Core_MDF_Log_Period})))</expression>
+    </formulas>
+    <formulas>
+        <name>Core_MDF_Retry_Number_Value</name>
+        <dataType>Number</dataType>
+        <expression>VALUE({!Core_MDF_Retry_Number})</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Retry CDB AI Outbound {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Retry CDB AI Outbound</label>
+    <loops>
+        <description>Traverses Metadata Utility Records for CDB</description>
+        <name>Core_Traverse_Metadata_Utility_Records_for_CDB</name>
+        <label>Traverse Metadata Utility Records for CDB</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Core_MDF_CDB_Metadata_Utility_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Core_MDF_Is_Sub_Category_CDB_Retry_Counter_Log_Period</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Core_Get_Failed_CDB_Records</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Fetches the MDF CDB Integration Log Records that are in Failed status with a retry counter &lt; 3 which are created in the last 7 days.</description>
+        <name>Core_Get_Failed_CDB_Records</name>
+        <label>Get Failed CDB Records</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Core_Does_CDB_Log_Records_Exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Retry_Number_Nbr__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Retry_Number_Nbr__c</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>Core_MDF_Retry_Number_Value</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <elementReference>Core_CDB_Logging_Period</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Integration_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>MDF AI PIC Review</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Log_Status_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed</stringValue>
+            </value>
+        </filters>
+        <object>Core_CDB_Integration_Log__c</object>
+        <outputReference>Core_MDF_Log_Records</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Core_Record_Id__c</queriedFields>
+        <queriedFields>Core_Integration_Type__c</queriedFields>
+        <queriedFields>Core_Retry_Number_Nbr__c</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <description>Fetches the CDB Metadata Utility Records required for Retry Counter and Log Period</description>
+        <name>Core_MDF_Get_Metadata_Utility_CDB_Records</name>
+        <label>Get Metadata Utility records for CDB Retry and Log Period</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Core_MDF_Check_if_Metadata_Utility_Records_exists_for_CDB</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_Category__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>MDF AI PIC Review</stringValue>
+            </value>
+        </filters>
+        <object>Core_MDF_CCP_Custom_Metadata_Utility__c</object>
+        <outputReference>Core_MDF_CDB_Metadata_Utility_Records</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Core_MDF_Category__c</queriedFields>
+        <queriedFields>Core_MDF_Sub_Category__c</queriedFields>
+        <queriedFields>Core_MDF_Value__c</queriedFields>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Core_MDF_Get_Metadata_Utility_CDB_Records</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Core_MDF_CDB_Metadata_Utility_Records</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_MDF_CCP_Custom_Metadata_Utility__c</objectType>
+    </variables>
+    <variables>
+        <name>Core_MDF_Log_Period</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Core_MDF_Log_Records</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Core_CDB_Integration_Log__c</objectType>
+    </variables>
+    <variables>
+        <name>Core_MDF_Retry_Number</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

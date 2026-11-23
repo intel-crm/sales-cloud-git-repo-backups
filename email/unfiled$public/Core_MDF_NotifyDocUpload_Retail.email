@@ -1,0 +1,30 @@
+<messaging:emailTemplate subject="{!IF(NOW() - RelatedTo.Core_MDF_Document_Requested_Date_dtm__c < 11,
+                                    $Label.Core_MDF_Audit_Creation_SubjectBody2,
+                                    $Label.Core_MDF_Audit_Creation_SubjectBody_Retail_1)}{!RelatedTo.Core_MDF_Claim_Number__c}"  recipientType="User" relatedToType="Case" language="{!relatedTo.Core_MDF_Claim_Submitter_Language__c}">
+<messaging:htmlEmailBody >
+<html>
+<body>
+     <p>{!IF(relatedTo.Core_MDF_Claim_Submitter__r.UserType == 'PowerPartner',$Label.Core_MDF_EmailTemp_StatusUpdate_DearMember,$Label.Core_MDF_EmailTemp_DearIntelemployee)}<br/><br/>
+     {!$Label.Core_MDF_Audit_Creation_Retail_Body_1}<b> {!$Label.Core_MDF_Audit_Creation_Retail_Body}</b><br/><br/>   
+        {!$Label.Core_MDF_Audit_Creation_Field1} {!RelatedTo.Core_MDF_Claim_Number__c}
+    <br/>{!$Label.Core_MDF_Audit_Creation_Field2} {!RelatedTo.Core_MDF_ActivityName__c} 
+    <br/>{!$Label.Core_MDF_Audit_Creation_Field3} {!RelatedTo.Core_MDF_CampaignName__c } 
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field4} {!RelatedTo.Core_MDF_Activity_Type__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field5} {!RelatedTo.Core_MDF_Country_Region__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_Field6} {!RelatedTo.Core_MDF_Document_Submission_DueDate_dtm__c}
+      <br/>{!$Label.Core_MDF_Audit_Creation_BodyLink+' '} 
+      <apex:outputLink rendered="{!IF(relatedTo.Core_MDF_Claim_Submitter__r.UserType == 'PowerPartner',true,false)}"
+                                value="{!$Label.Core_MDF_PFRCommunityLink+RelatedTo.Id}">{!RelatedTo.CaseNumber}<br/> 
+      </apex:outputLink>
+      <apex:outputLink rendered="{!IF(relatedTo.Core_MDF_Claim_Submitter__r.UserType != 'PowerPartner',true,false)}"
+                                value="{!$Label.Core_MDF_PFRDetailLink+RelatedTo.Id}">{!RelatedTo.CaseNumber}<br/>                     
+      </apex:outputLink></p>
+          
+     
+     <p> {!$Label.Core_MDF_EmailTemp_StatusUpdate_Body7}<br/>
+      {!$Label.Core_MDF_Audit_Creation_Retail_Body_2}</p>
+      </body>
+    
+</html>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

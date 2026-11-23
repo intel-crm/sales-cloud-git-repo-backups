@@ -2,6 +2,21 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>50</locationX>
+        <locationY>276</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>314</locationX>
+        <locationY>384</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>578</locationX>
+        <locationY>492</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>UCD ACM Create Account Staging For ECD Rejected {!$Flow.CurrentDateTime}</interviewLabel>
     <label>UCD ACM Create Account Staging For ECD Rejected Account</label>
@@ -27,8 +42,14 @@
     <recordCreates>
         <name>Create_ECD_Deactivation_Record</name>
         <label>Create ECD Deactivation Record</label>
-        <locationX>308</locationX>
+        <locationX>314</locationX>
         <locationY>276</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>AccountId__c</field>
             <value>
@@ -56,9 +77,65 @@
         <object>Core_ACM_Account_Staging__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
+    <recordCreates>
+        <name>Create_log_entry</name>
+        <label>Create log entry</label>
+        <locationX>578</locationX>
+        <locationY>384</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>UCD ACM Create Account Staging For ECD Rejected Account flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Update Account</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <start>
-        <locationX>50</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>and</filterLogic>
         <filters>

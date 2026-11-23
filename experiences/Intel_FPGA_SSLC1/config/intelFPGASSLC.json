@@ -7,6 +7,11 @@
   "mainAppPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
   "preferredDomain" : "none",
   "selfRegistrationRouteId" : "57de924b-3d15-4b4c-b4a2-194ee6349857",
+  "trustedSitesForIFrame" : [ {
+    "id" : "7309bae3-9954-430d-9b07-2d4b2ecd0f21",
+    "trustedDomainsForInlineFrames" : [ ],
+    "type" : "trustedSitesForIFrame"
+  } ],
   "trustedSitesForScript" : [ {
     "id" : "f1bfc225-977c-4718-a6d6-e8625d2af651",
     "isActive" : true,
@@ -50,34 +55,16 @@
     "trustedSiteUrl" : "https://www.intel.co.cn",
     "type" : "trustedSitesForScripts"
   }, {
-    "id" : "3f04a187-1a54-405b-a08f-d574a2489f52",
+    "id" : "4c47322b-90d7-4765-8eca-af2ab744890a",
     "isActive" : true,
-    "trustedSiteName" : "ChatBot",
-    "trustedSiteUrl" : "https://d.la3-c1-ia7.salesforceliveagent.com/chat/rest/",
+    "trustedSiteName" : "Chatbot endpoint",
+    "trustedSiteUrl" : "https://d.la3-c1cs-ia7.salesforceliveagent.com/chat/rest/",
     "type" : "trustedSitesForScripts"
   }, {
-    "id" : "815af4d2-3ac6-4ff0-96b7-0eec84ecc3d3",
+    "id" : "8816fb16-b579-43a5-8879-359e8521eab5",
     "isActive" : true,
-    "trustedSiteName" : "chatbotjs",
-    "trustedSiteUrl" : "https://c.la3-c1-ia7.salesforceliveagent.com/content/g/js/60.0/deployment.js",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "1352276d-f37d-45cc-92af-3d6b0f8521e8",
-    "isActive" : true,
-    "trustedSiteName" : "csp",
-    "trustedSiteUrl" : "https://d.la3-c1-ia6.salesforceliveagent.com/",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "90d4c113-ad3c-42eb-b971-38c37865b851",
-    "isActive" : true,
-    "trustedSiteName" : "Chatbotia6",
-    "trustedSiteUrl" : "https://d.la3-c1-ia6.salesforceliveagent.com/chat/rest/",
-    "type" : "trustedSitesForScripts"
-  }, {
-    "id" : "ce035e76-cdde-436b-94c8-428f857c9572",
-    "isActive" : true,
-    "trustedSiteName" : "chatbotia6js",
-    "trustedSiteUrl" : "https://d.la3-c1-ia6.salesforceliveagent.com/content/g/js/60.0/deployment.js",
+    "trustedSiteName" : "chatbot",
+    "trustedSiteUrl" : "https://c.la3-c1cs-ia7.salesforceliveagent.com/content/g/js/57.0/deployment.js",
     "type" : "trustedSitesForScripts"
   } ],
   "type" : "site"

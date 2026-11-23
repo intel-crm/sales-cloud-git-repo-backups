@@ -41,6 +41,7 @@ Modified By:        Date:       Changes:
         List<AccountShare> accShareListToBeDlt = new List<AccountShare>();
         Savepoint sp = Database.setSavepoint();
         try{
+            shareWithExternalCoMarketingCreators(listOfAccounts);
             //To Save Values of ProgramID and Program Name for Each Program in Map
             if(metadataRecordsList!=null && metadataRecordsList.size()>0){
                 for (Core_MDF_ChannelProgram__mdt metadataRec : metadataRecordsList){
@@ -78,4 +79,37 @@ Modified By:        Date:       Changes:
             }
         }catch(Exception e) {Core_MDF_CCP_UtilityClass.logError(e); Database.rollback(sp); throw e;}
     }    
+    
+    private static void shareWithExternalCoMarketingCreators(List<Account> listOfAccounts) {
+        if (listOfAccounts == null || listOfAccounts.isEmpty()) {
+            return;
+        }
+		Map<Id, Id> creatorByAccountId = new Map<Id, Id>();
+        for (Account accountRecord : listOfAccounts){
+			if (accountRecord.OwnerId != accountRecord.CreatedById && accountRecord.OwnerId == System.Label.Core_MDF_Dummy_Account_Owner_Id) {
+                creatorByAccountId.put(accountRecord.Id, accountRecord.CreatedById);
+            }
+        }
+
+        if (creatorByAccountId.isEmpty()) {
+            return;
+        }
+
+        List<AccountShare> sharesToInsert = new List<AccountShare>();
+        for (Id accountId : creatorByAccountId.keySet()) {
+            Id creatorId = creatorByAccountId.get(accountId);
+                sharesToInsert.add(new AccountShare(
+                    AccountId = accountId,
+                    UserOrGroupId = creatorId,
+                    AccountAccessLevel = 'Read',
+                    OpportunityAccessLevel = 'None',
+                    CaseAccessLevel = 'None',
+                    RowCause = Schema.AccountShare.RowCause.Manual
+                ));
+        }
+
+        if (!sharesToInsert.isEmpty()) {
+            insert sharesToInsert;
+        }
+    }
 }

@@ -9,15 +9,19 @@
         <name>Evevt_Type__c</name>
     </fields>
     <fields>
-        <label><!-- LicenseId --></label>
-        <name>LicenseId__c</name>
+        <label><!-- Generation Request Month --></label>
+        <name>Generation_Request_Month__c</name>
     </fields>
     <fields>
-        <label>许可 ID</label>
+        <label><!-- Generation Request Quarter --></label>
+        <name>Generation_Request_Quarter__c</name>
+    </fields>
+    <fields>
+        <label><!-- License Id --></label>
         <name>License_Id__c</name>
     </fields>
     <fields>
-        <label>联系人电子邮件地址</label>
+        <label><!-- Contact&apos;s Email Address --></label>
         <name>Sales_Contact_Email_Address__c</name>
     </fields>
     <fields>

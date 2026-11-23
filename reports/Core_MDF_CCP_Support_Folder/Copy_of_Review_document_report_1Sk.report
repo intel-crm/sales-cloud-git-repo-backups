@@ -36,7 +36,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>2/2/2023 12:00 AM</value>
+            <value>TODAY</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

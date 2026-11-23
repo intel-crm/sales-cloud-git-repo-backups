@@ -9,4 +9,5 @@
 *****************************************************************************************************************************************/
 global class Core_RestAPI_CC_CreateV1_Wrapper extends Core_RestAPI_Request{
     public String comment{get;set;}
+    public String contactId{get;set;}
 }

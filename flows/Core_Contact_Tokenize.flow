@@ -37,10 +37,23 @@
                     <stringValue>deleted</stringValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>END_ELEMENT_2</targetReference>
+            </connector>
             <label>Is Email Contain Deleted</label>
         </rules>
     </decisions>
     <description>Triggered from a checkbox field, this will &quot;tokenize&quot; a contact - replace their name &amp; email with junk characters and blank out their phone numbers</description>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>528</locationX>
+        <locationY>863</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_2</name>
+        <locationX>176</locationX>
+        <locationY>1079</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>calcEmail</name>
@@ -73,6 +86,9 @@
         <label>Create Log Entry Record</label>
         <locationX>528</locationX>
         <locationY>755</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -155,6 +171,9 @@
         <label>Update Contact Fields</label>
         <locationX>264</locationX>
         <locationY>647</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_2</targetReference>
+        </connector>
         <faultConnector>
             <targetReference>Create_Log_Entry_Record</targetReference>
         </faultConnector>

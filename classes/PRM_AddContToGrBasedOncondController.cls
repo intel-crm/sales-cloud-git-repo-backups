@@ -65,7 +65,7 @@ public without sharing class PRM_AddContToGrBasedOncondController {
             }             
         }
         catch(DmlException e) {
-            System.debug('The following exception has occurred: ' + e.getMessage());
+            //System.debug('The following exception has occurred: ' + e.getMessage());
         }
         return finallstOfContact;
     }
@@ -167,7 +167,7 @@ public without sharing class PRM_AddContToGrBasedOncondController {
               result = PRM_AddContactsToGroupController.getResult(successRecList);
             }
         }catch(DmlException e) {
-            System.debug('The following exception has occurred: ' + e.getMessage());
+            //System.debug('The following exception has occurred: ' + e.getMessage());
         } 
         return result;        
     }

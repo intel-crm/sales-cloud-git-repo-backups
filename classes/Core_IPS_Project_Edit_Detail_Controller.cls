@@ -23,6 +23,10 @@ public with sharing class Core_IPS_Project_Edit_Detail_Controller{
     String partnerProfileId = System.Label.Core_IPS_Partner_Profile_Id;
     String agentPartnerProfileId=System.Label.Core_IPS_Partner_AE_Profile_Id; 
     string projectId=ApexPages.currentPage().getParameters().get('id').escapeHtml4();
+     // SOQL Injection Fix  -  Shipra
+     Map<String, Object> bindMap1 = new Map<String, Object>{'status' => 'Active','projectId'  => projectId , 'FAEPermissionSetId' => FAEPermissionSetId, 'PartnerProfileId' => PartnerProfileId};
+     Map<String, Object> bindMap2 = new Map<String, Object>{'status' => 'Active','projectId'  => projectId , 'agentPartnerProfileId' => agentPartnerProfileId};
+
     String status = 'Active';
      String userQuery1 = 'SELECT Id,Core_User__c,Core_User__r.Name, Core_User__r.profileid FROM Core_IPS_Project_Member__c' + 
             ' WHERE Core_Status__c=:status AND Core_IPS_Contact__r.Core_IPS_Active__c=true AND Core_User__r.isActive=true AND Core_IPS_Project__c=:projectId  AND Core_User__c IN  (SELECT AssigneeId FROM PermissionSetAssignment WHERE PermissionSetId =:FAEPermissionSetId AND Assignee.ProfileId =:PartnerProfileId)  ORDER BY Core_User__r.Name';
@@ -67,8 +71,8 @@ public with sharing class Core_IPS_Project_Edit_Detail_Controller{
     {
         get
         {  
-            usersList1= Database.query(userQuery1.escapeHtml4());
-             usersList2= Database.query(userQuery2.escapeHtml4());
+            usersList1=  Database.queryWithBinds(userQuery1.escapeHtml4(), bindMap1,AccessLevel.USER_MODE);
+             usersList2= Database.queryWithBinds(userQuery2.escapeHtml4(), bindMap2,AccessLevel.USER_MODE);
              userList = new List<SelectOption>();
              userList.add(new SelectOption('', '--None--'));    
             for(Core_IPS_Project_Member__c temp : usersList1)

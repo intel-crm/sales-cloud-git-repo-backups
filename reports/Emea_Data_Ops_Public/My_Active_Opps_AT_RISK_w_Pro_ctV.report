@@ -16,10 +16,6 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Products_At_Risk_Count__c</field>
-    </columns>
-    <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
@@ -30,10 +26,19 @@
         <field>QUANTITY</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_At_Risk__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_At_Risk__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Risk_Create_Date__c</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Products_At_Risk_Count__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Reason1__c</field>
@@ -48,44 +53,26 @@
         <field>OpportunityLineItem.Core_Risk_Category__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Support_Requested__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Detail__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Product_Risk_Owner__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CDF1</field>
-    </columns>
-    <customDetailFormulas>
-        <calculatedFormula>IF(ISNULL(OpportunityLineItem.Core_Risk_End_Date__c), TODAY()-DATEVALUE(OpportunityLineItem.Core_Risk_Create_Date__c), DATEVALUE(OpportunityLineItem.Core_Risk_End_Date__c)-DATEVALUE(OpportunityLineItem.Core_Risk_Create_Date__c))</calculatedFormula>
-        <dataType>Double</dataType>
-        <developerName>CDF1</developerName>
-        <label>Risk Duration</label>
-        <scale>0</scale>
-    </customDetailFormulas>
     <description>My Salesforce Data</description>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk__c</column>
+            <column>Opportunity.Core_At_Risk__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_At_Risk_Status__c</column>
+            <column>Opportunity.Core_Products_At_Risk_Count__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>New,In-Progress</value>
+            <operator>greaterThan</operator>
+            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -113,7 +100,7 @@
         <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
-    <scope>team</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

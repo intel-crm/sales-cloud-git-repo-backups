@@ -32,12 +32,14 @@ public with sharing class  Core_RestAPI_ProductDetailV1_Handler{
         this.entryTime = currTime;
         this.apiName= APIname;
         response.successContent = new List<ProductWrapper>();
+        System.debug('Core_RestAPI_ProductDetailV1_Handler  URI '+RestContext.request.requestURI  );
     }
     
     
     //Retrieve product for the logged in User
     public Core_RestAPI_Response getProducts(){
         
+        System.debug(' Core_RestAPI_ProductDetailV1_Handler getProducts Entered  \n ');
         try{
                   
             boolean isRequestValid = doValidations();
@@ -49,22 +51,26 @@ public with sharing class  Core_RestAPI_ProductDetailV1_Handler{
               //  Core_RestAPI_Util.processException(null ,MALFORMED_INPUT_9011, response, apiName, entryTime);   
             
         }catch(Exception e){
+            System.debug(' Core_RestAPI_ProductDetailV1_Handler Exception '+e.getStackTraceString()+' message '+e.getMessage());
             String errMessage = e.getMessage();
             if(errMessage != null && errMessage.contains('invalid ID field'))
                 Core_RestAPI_Util.processException(e, MALFORMED_INPUT_9011, response, apiName, entryTime);    
             else 
                 Core_RestAPI_Util.processException(e, ERROR_CODE_500, response, apiName, entryTime);    
         }finally{
+            System.debug('Core_RestAPI_ProductDetailV1_Handler Logging transaction and returning the response '+response);
             if(String.isBlank(response.code))
                 response.code = SUCCESS_CODE_200;
             Core_RestAPI_LoggingUtil.logTransaction(entryTime, response);
         }       
+        System.debug(' Core_RestAPI_ProductDetailV1_Handler getProducts Exiting ');
         return response;
     } 
     
     //Validate the data , Incase of error set the error code to 
     @testVisible private Boolean doValidations(){
         
+        System.debug('Core_RestAPI_ProductDetailV1_Handler doValidations Invoked '+PRODUCT_ID);
         Boolean isRequestValid = true;
         if(Core_RestAPI_Util.isRequestURIValid('/v1.0/products/*') == false){
             //TODO Move to constant after the code review
@@ -74,6 +80,7 @@ public with sharing class  Core_RestAPI_ProductDetailV1_Handler{
             Core_RestAPI_Util.processException(null ,MALFORMED_INPUT_9011, response, apiName, entryTime);
             isRequestValid = false;
         }
+        system.debug('inside doValidations ==>> '+isRequestValid );        
         return isRequestValid;
     }
     
@@ -81,6 +88,7 @@ public with sharing class  Core_RestAPI_ProductDetailV1_Handler{
     //Executing SOQL to get all the products for the logged in user and which is not a public product
     public void processRequest()
     { 
+        System.debug(' Core_RestAPI_ProductDetailV1_Handler processRequest Entering SOQL  \n '+GET_PRODUCTS_SOQL);
         List<Asset> lstAsset= new List<Asset>();
         lstAsset= Database.Query(GET_PRODUCTS_SOQL);
         if(lstAsset!=null && !lstAsset.isEmpty()){
@@ -97,6 +105,7 @@ public with sharing class  Core_RestAPI_ProductDetailV1_Handler{
         else{
             Core_RestAPI_Util.processException(null, MALFORMED_INPUT_9011 , response, apiName, entryTime); 
         }
+        System.debug('processRequest response.successContent '+response.successContent);
     }
     
     //IMPORTANT : Wrapper class must implement the interface Core_RestAPI_SuccessContent

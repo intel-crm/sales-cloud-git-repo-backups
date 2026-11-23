@@ -20,12 +20,15 @@
             <translation><!-- CREATE_USER --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PERMISSION_SET_REMOVAL</masterLabel>
+            <translation><!-- PERMISSION_SET_REMOVAL --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PERMISSION_SET_REQUEST</masterLabel>
             <translation><!-- PERMISSION_SET_REQUEST --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Optional approver comments provided by the requester for the AGS role request. --></help>
         <label><!-- AGS Role Comments --></label>
         <name>Core_MDF_AGS_Role_Comments__c</name>
     </fields>
@@ -122,6 +125,14 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Copy Operation Id --></label>
+        <name>Core_MDF_Copy_Operation_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Copy Source User Name --></label>
+        <name>Core_MDF_Copy_Source_User_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Error Message --></label>
         <name>Core_MDF_Error_Message_txt__c</name>
     </fields>
@@ -181,10 +192,6 @@
             <translation><!-- WW-&gt;Account Plan --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>WW-&gt;Co-Engineering</masterLabel>
-            <translation><!-- WW-&gt;Co-Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>WW-&gt;Proposal I MDF</masterLabel>
             <translation><!-- WW-&gt;Proposal I MDF --></translation>
         </picklistValues>
@@ -237,19 +244,21 @@
         <name>Core_MDF_Is_IUPGM_Processed__c</name>
     </fields>
     <fields>
-        <help><!-- Requested email for a new Salesforce user when the user does not yet exist in Salesforce. --></help>
         <label><!-- New User Email --></label>
         <name>Core_MDF_New_User_Email__c</name>
     </fields>
     <fields>
-        <help><!-- Requested federation identifier / WWID for a new Salesforce user when the user does not yet exist in Salesforce. --></help>
         <label><!-- New User Federation Id --></label>
         <name>Core_MDF_New_User_Federation_Id__c</name>
     </fields>
     <fields>
-        <help><!-- Requested full name for a new Salesforce user when the user does not yet exist in Salesforce. --></help>
         <label><!-- New User Name --></label>
         <name>Core_MDF_New_User_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Internal use only - JSON payload describing a dependent role to submit once this Core-Access request completes. See field description. --></help>
+        <label><!-- Pending Dependent Role (JSON) --></label>
+        <name>Core_MDF_Pending_Dependent_Role_txt__c</name>
     </fields>
     <fields>
         <label><!-- Request Status --></label>
@@ -277,6 +286,10 @@
         <picklistValues>
             <masterLabel>Completed</masterLabel>
             <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy_Pending</masterLabel>
+            <translation><!-- Copy_Pending --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Error</masterLabel>
@@ -311,8 +324,16 @@
         <label><!-- Request Type --></label>
         <name>Core_MDF_Request_Type_nm__c</name>
         <picklistValues>
+            <masterLabel>COPY</masterLabel>
+            <translation><!-- COPY --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>GRANT</masterLabel>
             <translation><!-- GRANT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LIST_ACCESS</masterLabel>
+            <translation><!-- LIST_ACCESS --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>REVOKE</masterLabel>

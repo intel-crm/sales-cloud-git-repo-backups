@@ -175,7 +175,7 @@
         <defaultValue>false</defaultValue>
         <description>If Team User from Opportunity Team member</description>
         <label>Is Copy OTM</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>

@@ -24,9 +24,8 @@ th.slds-has-focus, td.slds-has-focus{
 
 
 .slds-table_edit thead th:first-child{
-    width: 60px !important;
+    width: 60px;
 }
-
 
 
 

@@ -165,6 +165,19 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>Channel_Program_id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to Program to get the Program Id</description>
+        <label>Channel Program</label>
+        <referenceTo>ChannelProgram</referenceTo>
+        <relationshipLabel>Partnership Score Details</relationshipLabel>
+        <relationshipName>Partnership_Score_Details</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Account_Id__c</fullName>
         <description>Account Id from Parent</description>
         <externalId>false</externalId>
@@ -219,7 +232,7 @@
         <fullName>Core_MDF_Budget_Type_Nm__c</fullName>
         <label>Budget Type</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -254,7 +267,7 @@
         <label>External ID</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
@@ -290,7 +303,7 @@
         <relationshipLabel>Partnership Score Details</relationshipLabel>
         <relationshipName>Partnership_Score_Details</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -302,7 +315,7 @@
         <relationshipName>Partnership_Score_Details</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -345,7 +358,7 @@
     <fields>
         <fullName>Core_MDF_Recovery_Account_nm__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( NOT(ISBLANK(Core_MDF_Node_Account_Id__c)), Core_MDF_Node_Account_Id__r.Name, Core_MDF_Account_nm__c)</formula>
+        <formula>IF( NOT(ISBLANK(Core_MDF_Node_Account_Id__c)), Core_MDF_Node_Account_Id__r.Name, Core_MDF_Account_nm__c  )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Recovery Account Name</label>
         <required>false</required>
@@ -557,13 +570,34 @@
         <columns>Core_MDF_Balance_Amount_Amt__c</columns>
         <columns>Core_MDF_Program_Nm__c</columns>
         <columns>Core_MDF_Account_Id__c</columns>
+        <columns>Core_MDF_Quarter_Year_Nm__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Program_Nm__c</field>
+            <operation>contains</operation>
+            <value>Retail Marketing Funds</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Account_Id__c</field>
+            <operation>contains</operation>
+            <value>Yandex</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Budget_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>RSA MD</value>
+        </filters>
+        <filters>
+            <field>Core_MDF_Region_Cd__c</field>
+            <operation>equals</operation>
+            <value>PRC</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>PS - Detail {0000000}</displayFormat>
         <label>PS Detail</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Partnership Score Details</pluralLabel>

@@ -51,7 +51,7 @@ export default class Pricing_BulkUploadFile extends LightningElement {
     @track uploadMetaData = {};
     @track objMetadataValues = {};
     @track validateBtnLabel = 'Validate';
-    @track showOptions;
+    @track showOptions = false;
 
     @track lostReasonValues = [];
 

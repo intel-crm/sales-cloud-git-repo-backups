@@ -37,9 +37,6 @@
         <field>Account_Create_Request__c.Global_Account__c</field>
     </columns>
     <columns>
-        <field>Account_Create_Request__c.Core_Geo__c</field>
-    </columns>
-    <columns>
         <field>Account_Create_Request__c.Dataops_SLA__c</field>
     </columns>
     <columns>

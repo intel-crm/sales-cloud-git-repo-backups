@@ -1,0 +1,23 @@
+<!---
+/**************************************************************************************
+Vf page Name: Core_First_ThirdParty_Data_Compare
+Version     : 1.0 
+Created Date: 6/10/2020
+Description :This vf page is used  in classic and lightning for 1st party and 3rd party data comparission.
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Mahesh            6/10/2020               Original Version
+
+--->
+<apex:page standardController="Account" extensions="Core_First_ThirdParty_Data_Compare_Ctrl" lightningStylesheets="true" showHeader="false"  applyHtmlTag="false" >
+    
+    <apex:form id="theForm" > 
+        <apex:outputPanel rendered="{!IF(AND($User.UIThemeDisplayed == 'Theme3',Account.Core_Intel_Partner_Alliance_PartnerGroup__c), TRUE, FALSE)}"> 
+            <apex:outputLink target="_blank"   value="{!$Page.Core_First_ThirdPart_Data_Checklist}?id={!Account.id}"  title="Link to check any differences between account data and bChannels data" style="font-weight:bold;color:black;margin-left:0%">bChannels Data Comparission</apex:outputLink>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!IF(AND($User.UIThemeDisplayed != 'Theme3',Account.Core_Intel_Partner_Alliance_PartnerGroup__c), TRUE, FALSE)}">
+            <br/>
+            <apex:outputLink target="_blank"   value="{!$Page.Core_First_ThirdPart_Data_Checklist}?id={!Account.id}"  title="Link to check any differences between account data and bChannels data" style="font-weight:bold;color:black;margin-left:0%">bChannels Data Comparission</apex:outputLink>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,31 @@
+<apex:page standardController="OpportunityLineItem" showHeader="false" sidebar="false" title="Opportunity Product">
+	<GBLite:TabbedPageComponent pageAPIName="GBTabs_Opportunity_Product" customJsIds="" customCssIds="">
+	<GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+		<script>
+			var pageDefinition = {
+	"name": "Opportunity Product",
+	"tabs": [
+		{
+			"name": " Opportunity Product",
+			"content": "/apex/gblite__Grid?gname=Opportunity Products",
+			"id": 1729503984130
+		},
+		{
+			"name": "Partner Led Design Opp Products",
+			"content": "/apex/gblite__Grid?gname=Partner Led Design Opp Products",
+			"id": 1729504005620
+		}
+	],
+	"id": 1729503984129,
+	"selectedCustomCSSIds": [],
+	"selectedCustomJSIds": [],
+	"description": "",
+	"globalButtons": true,
+	"object": "OpportunityLineItem",
+	"height": "730",
+	"showHeader": false,
+	"showSidebar": false
+};
+		</script>
+	</GBLite:TabbedPageComponent>
+</apex:page>

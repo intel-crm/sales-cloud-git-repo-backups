@@ -242,6 +242,28 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Opportunity_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Opportunity Product</label>
+        <referenceTo>OpportunityLineItem</referenceTo>
+        <relationshipLabel>Descriptive Features</relationshipLabel>
+        <relationshipName>Descriptive_Features</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(not(isblank(Opportunity_Product__c)),&apos;Product&apos;,&apos;Opportunity&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Descriptive Feature</label>
     <nameField>
         <displayFormat>DF-{00000000}</displayFormat>
@@ -264,5 +286,18 @@
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
         <url>/apex/Core_OppDescriptiveFeatures?sOppid={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_EditDescriptiveFeaturesForProduct</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Edit Descriptive Features</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Core_OppDescriptiveFeatures?sOppProdid={!OpportunityLineItem.Id}</url>
     </webLinks>
 </CustomObject>

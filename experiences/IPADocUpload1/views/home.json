@@ -1,0 +1,239 @@
+{
+  "appPageId" : "b15e9917-f493-45ed-b1ab-63ce77cdadfa",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "c258356c-dad4-472e-951e-c4039e494c4a",
+  "label" : "Home",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "9996d2e9-3281-4809-bc79-244846b4a614",
+          "columns" : [ {
+            "UUID" : "25405b79-449e-4e8e-9f15-8d44dadefbdc",
+            "columnKey" : "col1",
+            "columnName" : "Header Column",
+            "columnWidth" : "12",
+            "seedComponents" : [ {
+              "attributes" : {
+                "richTextValue" : "                <h2 class=\"quickLinksTitle\">                    Quick Links                </h2>            ",
+                "sfdc:identifier" : "quickLinks_htmlBlock"
+              },
+              "fqn" : "forceCommunity:htmlBlock"
+            }, {
+              "attributes" : {
+                "sfdc:identifier" : "forceCommunity_tileMenu",
+                "titleFontSize" : "12"
+              },
+              "fqn" : "runtime_sales_prm:tileMenuWrapperPRM"
+            } ]
+          } ]
+        },
+        "sectionHeight" : 32
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "9996d2e9-3281-4809-bc79-244846b4a614",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "richTextValue" : "                <h2 class=\"quickLinksTitle\">                    Quick Links                </h2>            "
+          },
+          "componentName" : "forceCommunity:htmlBlock",
+          "id" : "5d8c6c6e-f318-45d5-8dbe-50116e397fb7",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "NavigationMenuEditorRefresh" : "Default_Tile_Menu",
+            "titleOnTop" : false
+          },
+          "componentName" : "runtime_sales_prm:tileMenuWrapperPRM",
+          "id" : "ee03eca4-feca-4e1f-b537-9b50476e5887",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "25405b79-449e-4e8e-9f15-8d44dadefbdc",
+        "regionLabel" : "Header Column",
+        "regionName" : "col1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "a1644911-dc71-4fd2-bdfc-e9d15e228835",
+          "columns" : [ {
+            "UUID" : "eff30d55-d734-4626-b60c-cf56d9f10b08",
+            "columnKey" : "col1",
+            "columnName" : "Main Content",
+            "columnWidth" : "8",
+            "seedComponents" : [ {
+              "attributes" : {
+                "height" : "1065",
+                "recordId" : "CompanyPerformanceDashboard",
+                "sfdc:identifier" : "runtime_sales_prm_dashboard"
+              },
+              "fqn" : "forceCommunity:dashboard"
+            }, {
+              "attributes" : {
+                "ctaAlignment" : "left",
+                "ctaLabel" : "View More",
+                "ctaMode" : "query-more",
+                "ctaTarget" : "_self",
+                "ctaUrl" : "",
+                "defaultFilter" : "AvailableForSelfEnrollment",
+                "displayAsCard" : "false",
+                "layout" : "list",
+                "limit" : "3",
+                "pageSize" : "3",
+                "sfdc:identifier" : "runtime_ses_ext_programCollectionCard2",
+                "showAllFilter" : "true",
+                "showAssignedFilter" : "true",
+                "showAvailableForSelfEnrollmentFilter" : "true",
+                "showCompletedFilter" : "true",
+                "showDescription" : "true",
+                "showDueDate" : "false",
+                "showFilters" : "false",
+                "showIcon" : "true",
+                "showInProgressFilter" : "true",
+                "showSelfEnrolledFilter" : "true",
+                "title" : "Available Programs",
+                "titleHeadingLevel" : "h2",
+                "titleStyle" : "medium"
+              },
+              "fqn" : "runtime_ses_ext:programCollectionCard"
+            } ]
+          }, {
+            "UUID" : "c9f70e90-d986-46d8-a8cf-234defd464bf",
+            "columnKey" : "col2",
+            "columnName" : "Sidebar",
+            "columnWidth" : "4",
+            "seedComponents" : [ {
+              "attributes" : {
+                "sfdc:identifier" : "forceCommunity_leadInbox"
+              },
+              "fqn" : "forceCommunity:leadInbox"
+            }, {
+              "attributes" : {
+                "sfdc:identifier" : "runtime_sales_prm_channelProgramDetailsWrapper"
+              },
+              "fqn" : "runtime_sales_prm:channelProgramDetailsWrapper"
+            } ]
+          } ]
+        },
+        "sectionHeight" : 32
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "a1644911-dc71-4fd2-bdfc-e9d15e228835",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "height" : "1065",
+            "recordId" : "CompanyPerformanceDashboard"
+          },
+          "componentName" : "forceCommunity:dashboard",
+          "id" : "2ef58e1b-7d2d-40aa-b896-0a4c40d3f534",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "eff30d55-d734-4626-b60c-cf56d9f10b08",
+        "regionLabel" : "Main Content",
+        "regionName" : "col1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : {
+            "listViewIdForNavigation" : "Core_ALL_GLOBAL_Catch_All_Lead",
+            "navigateToListView" : true,
+            "pageSize" : 5,
+            "sortBy" : "CreatedDate",
+            "title" : "Lead Inbox"
+          },
+          "componentName" : "forceCommunity:leadInbox",
+          "id" : "a58a0a31-2600-4898-be3a-d8a2a89110cf",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : { },
+          "componentName" : "runtime_sales_prm:channelProgramDetailsWrapper",
+          "id" : "0ecd0cc6-3d35-44ba-9605-f5788402758d",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "c9f70e90-d986-46d8-a8cf-234defd464bf",
+        "regionLabel" : "Sidebar",
+        "regionName" : "col2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "9c432e23-9e4c-43d1-885d-85f1b1fde8bb",
+          "columns" : [ {
+            "UUID" : "bae2c306-c44e-42ba-acb8-7f0657ad81c4",
+            "columnKey" : "col1",
+            "columnName" : "Footer Column",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 32
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "9c432e23-9e4c-43d1-885d-85f1b1fde8bb",
+      "regions" : [ {
+        "id" : "bae2c306-c44e-42ba-acb8-7f0657ad81c4",
+        "regionLabel" : "Footer Column",
+        "regionName" : "col1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "37989d11-ae49-4bd6-9d7d-8b6112b554b4",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "e07f55ec-3724-4e2c-bf4c-c957ea31b405",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "5e4e4008-f3a7-4c29-b85e-d8a49c0cad3d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Home",
+  "type" : "view",
+  "viewType" : "home"
+}

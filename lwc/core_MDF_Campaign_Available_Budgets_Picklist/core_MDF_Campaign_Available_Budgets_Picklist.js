@@ -9,6 +9,7 @@ export default class Core_MDF_Campaign_Available_Budgets_Picklist extends Lightn
     selectedvalues = [];
     @track budgetValues = [];
     @track selectionFlagFromPicklistComponent;
+    availableBudgetsError = false;
     @api required;
 
     @api
@@ -27,13 +28,11 @@ export default class Core_MDF_Campaign_Available_Budgets_Picklist extends Lightn
     }
 
     connectedCallback(){
-        console.log('Core_MDF_Campaign_Available_Budgets_Picklist called');
-        this.values.forEach(element => element.selected 
-                            ? this.selectedvalues.push(element.value) : '');
+        
+	this.values.forEach(element => element.selected?this.selectedvalues.push(element.value) : '');
     }
 
-    fetchSelectedValues() {
-        
+    @api fetchSelectedValues() {
         this.selectedvalues = [];
         this.budgetValues = [];
 
@@ -41,7 +40,6 @@ export default class Core_MDF_Campaign_Available_Budgets_Picklist extends Lightn
         this.template.querySelectorAll('c-core_-m-d-f_-campaign_-picklist_-selection').forEach(
             element => {
                 if(element.selected){
-                    //console.log('Awesome' + element.label);
                     let obj = {label : element.label, value: element.value };
                     this.budgetValues = [... this.budgetValues, obj];
                     this.selectedvalues.push(element.value);
@@ -50,6 +48,7 @@ export default class Core_MDF_Campaign_Available_Budgets_Picklist extends Lightn
         );
         //refresh original list
         this.refreshOrginalList();
+        return this.selectedvalues;
     }
 
     refreshOrginalList() {
@@ -68,7 +67,7 @@ export default class Core_MDF_Campaign_Available_Budgets_Picklist extends Lightn
 
     handleShowdropdown(){
         let sdd = this.showdropdown;
-        console.log('this.showdropdown' + this.showdropdown);
+        
         if(sdd){
             this.showdropdown = false;
             this.fetchSelectedValues();
@@ -87,20 +86,12 @@ export default class Core_MDF_Campaign_Available_Budgets_Picklist extends Lightn
             detail:{recordId:this.budgetValues} 
         });
        this.dispatchEvent(passEvent);
+       this.availableBudgetsError = false;
     }
 
     @api isValid() {
-        let availableBudgetsCmp = this.template.querySelector(".availableBudgetsCmp");
-        if(this.selectedvalues.length > 0){
-            console.log('Thisn12');
-            availableBudgetsCmp.setCustomValidity("");
-            availableBudgetsCmp.reportValidity();
-            return true;
-        }
-        else{
-            availableBudgetsCmp.setCustomValidity("Complete this field.");
-            availableBudgetsCmp.reportValidity();
-            return false;
-        }
+    
+        this.availableBudgetsError = this.selectedvalues.length > 0? false : true;
+        return !this.availableBudgetsError ;
     }
 }

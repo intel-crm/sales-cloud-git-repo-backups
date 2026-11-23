@@ -109,7 +109,7 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
             ccfgrp.Name = 'CCP TESTACCTTEMP CCF EMEA INTERNAL';
             ccfgrp.DeveloperName = 'Core_MDF_CCP_TESTACCTTEMP_CCF_EMEA_INTERNAL';
             Database.insert(ccfgrp);
-            Test.startTest();  // 14285 Indira
+            
             Core_MDF_Partner_Group_Mapping__c ccfPgm = new Core_MDF_Partner_Group_Mapping__c();
             ccfPgm.Core_MDF_Account__c = testAcctTemp.Id;
             ccfPgm.Core_MDF_Group_Name__c = 'Core_MDF_CCP_TESTACCTTEMP_CCF_EMEA_INTERNAL';
@@ -402,14 +402,12 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
             iupgmPgrAdm2.Core_MDF_Budget_Type_nm__c = 'Data Centric Acceleration - MDF';//Client Specialties MDF;Optane Specialties MDF';
             iupgmPgrAdm2.Core_MDF_GeoSubGeo_Budget_Type_nm__c = 'APJ->Data Centric Acceleration - MDF;PRC->Data Centric Acceleration - MDF';
             Database.insert(iupgmPgrAdm2);
-            
-            Test.stopTest();  // 14285 Indira
         }
-        
     }
     
     @isTest
     static void pgmExists(){
+        test.startTest();
         Account acc = [SELECT Id FROM Account WHERE Name = 'CCPTestAccountTemp'];
         ChannelProgram cp = [SELECT Id FROM ChannelProgram WHERE Name = 'Client'];
         //ChannelProgram cpcmdf = [SELECT Id FROM ChannelProgram WHERE Name = 'Channel MDF'];
@@ -421,7 +419,8 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
         User pausr = [SELECT Id FROM User WHERE LastName = 'Prog Adm Usr'];
         User escReviewerIPA = [SELECT Id FROM User WHERE LastName = 'Escalation Reviewer' LIMIT 1];
         Group groupId = [SELECT Id FROM Group WHERE DeveloperName = 'Core_MDF_CCP_TESTACCTTEMP_CCF_EMEA_INTERNAL'];
-        test.startTest();
+        Group IPAEscGroupId = [SELECT Id FROM Group WHERE DeveloperName = 'Core_MDF_CCP_IPA_APJ_Escltns_L1_Apr_Grp'];
+
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
         List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmUpdateList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>();
         
@@ -802,8 +801,9 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
         
         try{
             Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmListMap = new Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c>(iupgmList);
-            Core_MDF_IUPGM_ServiceHandler.checkPGM(iupgmListMap);
-            Core_MDF_IUPGM_ServiceHandler.checkPGM(null);
+           // Core_MDF_IUPGM_ServiceHandler.checkPGM(iupgmListMap);
+            Map<String,List<GroupMember>> newGroupMemberMap  = Core_MDF_IUPGM_ServiceHandler.addRoleSpecificIUPGMGroupMember(iupgmList);
+           // Core_MDF_IUPGM_ServiceHandler.checkPGM(null);
             Core_MDF_IUPGM_ServiceHandler.checkUserPermission(null,null,null,null);
             Core_MDF_IUPGM_ServiceHandler.deleteGroupMember(' ');
             Core_MDF_IUPGM_ServiceHandler.removeGroupMember(null, null);
@@ -1098,6 +1098,67 @@ public class Core_MDF_IUPGM_ServiceHandler_Test{
             Core_MDF_IUPGM_ServiceHandler.getAccProgramGeoSubGeo(geoSubGeoList5, null, null, null);
         System.assertNotEquals(null, result5, 'Result should not be null');
         
+        test.stopTest();
+    }
+
+    @isTest
+    static void testLoggingMethods(){
+        test.startTest();
+        Core_MDF_IUPGM_ServiceHandler.LogEntryDetailsWrapper logWrapper = new Core_MDF_IUPGM_ServiceHandler.LogEntryDetailsWrapper();
+        logWrapper.origin = 'Test Origin';
+        logWrapper.successIds = new Set<Id>{UserInfo.getUserId()};
+        logWrapper.errorMsg = 'Test Error';
+        
+        Core_Log_Entry__c logEntry = Core_MDF_IUPGM_ServiceHandler.createLogInstance(logWrapper);
+        System.assertNotEquals(null, logEntry);
+        
+        List<Core_Log_Entry__c> logEntryList = new List<Core_Log_Entry__c>{logEntry};
+        List<Core_MDF_Bulk_Transaction__e> peList = Core_MDF_IUPGM_ServiceHandler.createBulkTransactionPlatEventInstance(logEntryList);
+        System.assertNotEquals(0, peList.size());
+        test.stopTest();
+    }
+
+    @isTest
+    static void testDeleteGroupMember(){
+        test.startTest();
+        Group grp = [SELECT Id FROM Group WHERE DeveloperName = 'Core_MDF_CCP_TESTACCTTEMP_CCF_EMEA_INTERNAL' LIMIT 1];
+        User usr = [SELECT Id FROM User WHERE LastName = 'CCF Acc Manager' LIMIT 1];
+        GroupMember gm = new GroupMember(GroupId = grp.Id, UserOrGroupId = usr.Id);
+        insert gm;
+        
+        List<GroupMember> gmList = new List<GroupMember>{gm};
+        String jsonString = JSON.serialize(gmList);
+        Core_MDF_IUPGM_ServiceHandler.deleteGroupMember(jsonString);
+        test.stopTest();
+        
+        List<GroupMember> result = [SELECT Id FROM GroupMember WHERE Id = :gm.Id];
+        System.assertEquals(0, result.size());
+    }
+
+    @isTest
+    static void testGetGeoBudgetMapForUser(){
+        test.startTest();
+        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = [SELECT Id, Core_MDF_User_id__c, Core_MDF_Region_Sub_Region_nm__c, Core_MDF_Budget_Type_nm__c 
+                                                           FROM Core_MDF_Int_Users_Partner_Geo_Mapping__c LIMIT 1];
+        Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c> oldMap = new Map<Id, Core_MDF_Int_Users_Partner_Geo_Mapping__c>{iupgm.Id => iupgm};
+        Core_MDF_IUPGM_ServiceHandler.ExistingIupgmUserGeoBudgetMap result = Core_MDF_IUPGM_ServiceHandler.getGeoBudgetMapForUser(oldMap);
+        System.assertNotEquals(null, result);
+        test.stopTest();
+    }
+
+    @isTest
+    static void testCheckSelectedAccountIsValidForRole(){
+        test.startTest();
+        Account acc = [SELECT Id FROM Account WHERE Name = 'CCPTestAccountTemp'];
+        User user = [SELECT Id FROM User WHERE LastName = 'CCF Acc Manager'];
+        Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm = new Core_MDF_Int_Users_Partner_Geo_Mapping__c(
+            Core_MDF_Account_id__c = acc.Id,
+            Core_MDF_Program_nm__c = 'Client CoMarketing Fund',
+            Core_MDF_User_id__c = user.Id,
+            Core_MDF_Role_nm__c = 'Core_MDF_CCP_Internal_CCF_Acct_Mgr'
+        );
+        List<Core_MDF_Int_Users_Partner_Geo_Mapping__c> iupgmList = new List<Core_MDF_Int_Users_Partner_Geo_Mapping__c>{iupgm};
+        Core_MDF_IUPGM_ServiceHandler.checkSelectedAccountIsValidForRole(iupgmList, null);
         test.stopTest();
     }
 }

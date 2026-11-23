@@ -4,15 +4,8 @@
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>Migrated from the: Core_OppProd_Update_Approved_User_Id workflow rule
 Workflow rule description: Update Approver Id of opportunity product&quot;</description>
-    <environments>Default</environments>
     <label>Core_OppProd_Update_Approved_User_Id</label>
     <migratedFromWorkflowRuleName>Core_OppProd_Update_Approved_User_Id</migratedFromWorkflowRuleName>
-    <processMetadataValues>
-        <name>BuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
@@ -24,8 +17,8 @@ Workflow rule description: Update Approver Id of opportunity product&quot;</desc
         <description>Approved User Id is set when someone approves opportunity record</description>
         <name>mainUpdate</name>
         <label>mainUpdate</label>
-        <locationX>176</locationX>
-        <locationY>311</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <inputAssignments>
             <field>Core_Approved_User_Id__c</field>
             <value>
@@ -35,7 +28,7 @@ Workflow rule description: Update Approver Id of opportunity product&quot;</desc
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>mainUpdate</targetReference>

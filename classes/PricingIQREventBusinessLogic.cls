@@ -24,6 +24,9 @@ public without sharing class PricingIQREventBusinessLogic {
             recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_Tender_Quote_RecordType_Create));
             recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_Tender_Quote_RecordType_Submitted));
             recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_Small_Volume_Quote_Create));
+           // recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_SSD_Quote_Create));
+           // recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_PMem_Quote_Create));
+           // recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_NIC_Quote_Create));
             recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_Tender_Client_Quote_RecordType_Create));
             recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_Tender_Client_Quote_RecordType_Edit));
             recordTypeId.add(Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c', Label.Pricing_Tender_Client_Quote_RecordType_ReadOnly));
@@ -53,6 +56,9 @@ public without sharing class PricingIQREventBusinessLogic {
                     quoteLineIds.addAll((iqrEventRec.Pricing_QuoteLineId_Txt__c).split(','));
                 }
             }
+            /*for(Id quoteLineId : quoteLineIds){
+                quoteLineIdToActionMap.put(quoteLineId,Label.Pricing_Tender_Integration_Header_Action_UpdateStatus);
+            }*/
             
             Map<Id,SBQQ__QuoteLine__c> quoteLineMap;
             quoteLineMap = new Map<Id,SBQQ__QuoteLine__c>([SELECT Id, SBQQ__Quote__c,SBQQ__Quote__r.Pricing_My_Deals_Folio_Name_Nm__c,SBQQ__Quote__r.Id, 

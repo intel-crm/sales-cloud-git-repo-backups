@@ -106,6 +106,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Core_MDF_Check_If_Co_Inv_Program</name>
+        <label>Check If Co-Inv Program</label>
+        <locationX>182</locationX>
+        <locationY>1931</locationY>
+        <defaultConnector>
+            <targetReference>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Other Programs (Create Allocation)</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_IsCoInvProgram</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Program__r.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_program_name</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Update_Budget_Amount_For_CoInv</targetReference>
+            </connector>
+            <label>Co-Inv Program (Skip Allocation, Update Budget Only)</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Core_MDF_Just_execute_when_a_Budget_record_of_type_CoMarketing_is_updated</name>
         <label>Just execute when a Budget record of type CoMarketing is updated</label>
         <locationX>226</locationX>
@@ -116,7 +141,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_CallingSubFlowIfRecordUpdated</name>
-            <conditionLogic>((1 AND (2 AND 3 AND 4) OR (5 AND (6 OR 7))) OR (8 AND (9 AND 10 AND 11 AND 12) OR (13 AND (14 OR 15 OR 16))) OR (17 AND 18) OR ((19 OR 20) AND 21) OR (22 AND 23 AND 24) OR (35 AND 36) OR (37 AND 38)) AND 25 AND (26 OR 27 OR 28 OR (29 AND 30)) AND (31 OR 32 OR 33 OR 34 OR 39)</conditionLogic>
+            <conditionLogic>((1 AND (2 AND 3 AND 4) OR (5 AND (6 OR 7))) OR (8 AND (9 AND 10 AND 11 AND 12) OR (13 AND (14 OR 15 OR 16))) OR (17 AND 18) OR ((19 OR 20) AND 21) OR (22 AND 23 AND 24) OR (35 AND 36) OR (37 AND 38) OR (40 AND 41)) AND 25 AND (26 OR 27 OR 28 OR (29 AND 30)) AND (31 OR 32 OR 33 OR 34 OR 39 OR 42)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Program_Nm__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -390,6 +415,27 @@
                     <elementReference>$Label.Core_MDF_Co_GTM_RecordType</elementReference>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_MDF_Program_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_program_name</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Permission.Core_MDF_CCP_Internal_Co_Inv_Budget_Loader</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_RecordType</elementReference>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Core_MDF_Update_BudgetStatus_to_Pending_review_and_call_Approval_Process</targetReference>
             </connector>
@@ -407,7 +453,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_CallingSubFlowIfNewRecordOfCoMarketingCreated</name>
-            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7)</conditionLogic>
+            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</conditionLogic>
             <conditions>
                 <leftValueReference>IsNew</leftValueReference>
                 <operator>EqualTo</operator>
@@ -455,6 +501,13 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>$Label.Core_MDF_Co_GTM_RecordType</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_RecordType</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -524,7 +577,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_CallFlowToUpdateStatus</name>
-            <conditionLogic>1 AND ((2 AND (3 OR 4 OR 5 OR 6 OR 10) AND 7) OR (8 AND 9))</conditionLogic>
+            <conditionLogic>1 AND ((2 AND (3 OR 4 OR 5 OR 6 OR 10 OR 11) AND 7) OR (8 AND 9))</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Budget_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -595,8 +648,15 @@
                     <elementReference>$Label.Core_MDF_Co_GTM_RecordType</elementReference>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_RecordType</elementReference>
+                </rightValue>
+            </conditions>
             <connector>
-                <targetReference>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased</targetReference>
+                <targetReference>Core_MDF_Check_If_Co_Inv_Program</targetReference>
             </connector>
             <label>CallFlowToUpdateStatus</label>
         </rules>
@@ -612,6 +672,12 @@
         <name>IsNew</name>
         <dataType>Boolean</dataType>
         <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>vReduceBudgetAmount_CoInv</name>
+        <dataType>Number</dataType>
+        <expression>IF(AND(NOT(ISNULL({!$Record.Core_MDF_Decrease_Budget_Amount_Amt__c})),{!$Record.Core_MDF_Decrease_Budget_Amount_Amt__c}&gt;0,{!$Record.Amount}&gt;={!$Record.Core_MDF_Decrease_Budget_Amount_Amt__c}), {!$Record.Amount}-{!$Record.Core_MDF_Decrease_Budget_Amount_Amt__c}, {!$Record.Amount})</expression>
+        <scale>2</scale>
     </formulas>
     <interviewLabel>Core_MDF_FL_Budget_Status_Update_Sharing_Create_Update_Allocation {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_FL_Budget_Status_Update_Sharing_Create_Update_Allocation</label>
@@ -634,6 +700,34 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update Budget Amount and reset Decrease Amount for Co-Inv Program (no allocation creation)</description>
+        <name>Core_MDF_Update_Budget_Amount_For_CoInv</name>
+        <label>Update Budget Amount For Co-Inv</label>
+        <locationX>50</locationX>
+        <locationY>2039</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Amount</field>
+            <value>
+                <elementReference>vReduceBudgetAmount_CoInv</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_MDF_Decrease_Budget_Amount_Amt__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <object>PartnerMarketingBudget</object>
+    </recordUpdates>
     <start>
         <locationX>100</locationX>
         <locationY>0</locationY>

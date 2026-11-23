@@ -3045,6 +3045,7 @@ var totalInvestmentChanged =
                 component.set("v.showKPISpinner", true);
             }
             helper.getKPIAttributes(component);
+            window.setTimeout($A.getCallback(function(){ component.set("v.showKPISpinner", false); }), 3000); // Indu ipa load issue
         }
     },
     

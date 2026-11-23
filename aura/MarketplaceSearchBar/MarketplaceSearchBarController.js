@@ -32,15 +32,14 @@
     
     handleSearch: function(component, event, helper) {
         helper.setPageName(component);
-        //console.log('page name : ' , component.get('v.page'));
-        console.log(":::handleSearch fn called:::");
+        
         var category = {
             id: component.get('v.state.selectedCategoryId'),
             title: component.get('v.state.selectedCategoryTitle'),
             description: component.get('v.state.selectedCategoryDescription')
         }
         var searchType = event.currentTarget.dataset.searchtype;
-        console.log(":::searchType:::", searchType, ':::category:::', category, ':::', component.get('v.searchQuery'));
+        
         helper.performSearch(component, helper, searchType, category, component.get('v.searchQuery'));
         if(component.get('v.page') == 'home'){
             //Analytics code for search
@@ -161,7 +160,7 @@
         if (recordId && (recordId != "null")) {
             helper.navigateToRecord(component, recordId);
                 //Analytics code for search
-                console.log('type ahead clicked');
+                
                 var analyticsData = component.find("analyticsData");
                 var type = 'click';
                 var element = 'search';

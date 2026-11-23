@@ -8,7 +8,7 @@
 * Ganapati                    22/11/2019              Modified for US517859 
   Prasad                      23/04/2020              Fix pmd issues     
 ****************************************************************************************************/
-
+ 
 public class Core_ProductAccess_Product_Dispatcher{
     
     public static boolean mAPProducttLineItemCreate = true;
@@ -36,10 +36,12 @@ public class Core_ProductAccess_Product_Dispatcher{
          }
          if(trigger.isUpdate){
              //use Core_ProductAccess_Product_Handler class for your business logic for IPS specific code, others can use their own handler
-             Core_ProductAccess_Product_Handler.setAccessFlagOnMAP(newList);    // Added by Ganapati for - US517859
+             //commented by ranjini for US767983 
+
+           // Core_ProductAccess_Product_Handler.setAccessFlagOnMAP(newList);    // Added by Ganapati for - US517859
          }
          if(trigger.isDelete){
-             Core_ProductAccess_Product_Handler.setAccessFlagOnMAP(oldList);    // Added by Ganapati for - US517859
+             //Core_ProductAccess_Product_Handler.setAccessFlagOnMAP(oldList);    // Added by Ganapati for - US517859
              //Core_ProductAccess_Product_Handler.getMapProdChangeCount(oldList);
              //use Core_ProductAccess_Product_Handler class for your business logic for IPS specific code, others can use their own handler
          }

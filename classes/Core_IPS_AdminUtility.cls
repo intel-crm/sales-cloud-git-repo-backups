@@ -302,7 +302,6 @@ Public with sharing class Core_IPS_AdminUtility
         try{
             if(prodId != null || prodId != ''){
                 List<sObject> listprod = new List<sObject>();
-//Syed Vulnerability fix-- query refering to the service class
                 assetList = (List<Asset>) Core_IPS_QueryService.queryRecords(
                     'select id, Name, Core_Product_Organization__c, core_supported_product__c, core_supported_product__r.Core_IPS_Is_Show_Variant__c, Core_IPS_Project__c, Core_Product_EPM_ID__c from asset where id = :productId',
                     new Map<String, Object>{ 'productId' => productId }
@@ -310,7 +309,6 @@ Public with sharing class Core_IPS_AdminUtility
                 if(!assetList.isEmpty() || assetList.size() > 0){
                     if(assetList[0].core_supported_product__r.Core_IPS_Is_Show_Variant__c== true){
                         if (Schema.sObjectType.Core_Flat_Product_Hierarchy__c.isAccessible()) {
-                           //Syed Vulnerability fix-- query refering to the service class
                             String hierarchyFilter = '%' + assetList[0].Core_Product_EPM_ID__c + '%';
                             prodHierarchyList = (List<Core_Flat_Product_Hierarchy__c>) Core_IPS_QueryService.queryRecords(
                                 'select id, Core_EPM_Hierarchy_Name__c, Core_L1_EPM_ID__c, Core_L1_EPM_Name__c, Core_L2_EPM_ID__c, Core_L2_EPM_Name__c, Core_Unique_ID__c from Core_Flat_Product_Hierarchy__c where Core_Unique_ID__c LIKE :hierarchyFilter',
@@ -358,7 +356,6 @@ Public with sharing class Core_IPS_AdminUtility
         return null;
     }
     public static Case createCase(Case caseDetails){
-//Syed Vulnerability fix-- query refering to the service class
          List<SObject> caseDetailsList = Core_IPS_QueryService.upsertRecords(new List<SObject>{ caseDetails });
                 if(!caseDetailsList.isEmpty()){
                     caseDetails = (Case) caseDetailsList[0];

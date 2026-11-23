@@ -4,10 +4,17 @@
         <description>This method from apex class &apos;Core_Contact_Business_Type_Handler&apos; to remove ABT upon last removal of CBT</description>
         <name>aBTRemovalValidationOnCBTRemoval_Apex_Call</name>
         <label>aBTRemovalValidationOnCBTRemoval Apex Call</label>
-        <locationX>842</locationX>
+        <locationX>1634</locationX>
         <locationY>431</locationY>
         <actionName>Core_Contact_Business_Type_Handler</actionName>
         <actionType>apex</actionType>
+        <connector>
+            <targetReference>END_ELEMENT_7</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>cbtIdssList</name>
@@ -16,13 +23,14 @@
             </value>
         </inputParameters>
         <nameSegment>Core_Contact_Business_Type_Handler</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>61.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Assign_Status_to_Approved</name>
         <label>Assign Status to Approved</label>
-        <locationX>314</locationX>
+        <locationX>842</locationX>
         <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>Query_Account_Business_Type.Status__c</assignToReference>
@@ -38,7 +46,7 @@
     <assignments>
         <name>Assign_Values_to_New_ABT</name>
         <label>Assign Values to New ABT</label>
-        <locationX>50</locationX>
+        <locationX>314</locationX>
         <locationY>647</locationY>
         <assignmentItems>
             <assignToReference>newAccountBusinessType.Account__c</assignToReference>
@@ -68,8 +76,11 @@
     <decisions>
         <name>CBT_Status_Check</name>
         <label>CBT Status Check</label>
-        <locationX>644</locationX>
+        <locationX>1436</locationX>
         <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_8</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>CBT_Approved</name>
@@ -105,8 +116,11 @@
     <decisions>
         <name>Verify_Account_Business_Types_Status</name>
         <label>Verify Account Business Types Status</label>
-        <locationX>182</locationX>
+        <locationX>710</locationX>
         <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_10</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>ABT_Approved</name>
@@ -118,6 +132,9 @@
                     <stringValue>Approved</stringValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>END_ELEMENT_9</targetReference>
+            </connector>
             <label>ABT Approved</label>
         </rules>
         <rules>
@@ -159,6 +176,41 @@
         </rules>
     </decisions>
     <description>This flow creates/approve/remove an Account Business Type once Contact Business type is approved/removed.</description>
+    <ends>
+        <name>END_ELEMENT_10</name>
+        <locationX>1370</locationX>
+        <locationY>647</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_11</name>
+        <locationX>314</locationX>
+        <locationY>863</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_12</name>
+        <locationX>842</locationX>
+        <locationY>863</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_13</name>
+        <locationX>578</locationX>
+        <locationY>971</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_7</name>
+        <locationX>1634</locationX>
+        <locationY>539</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_8</name>
+        <locationX>2162</locationX>
+        <locationY>431</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_9</name>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>Approve Remove Account Business Type for CBT Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Approve Remove Account Business Type for CBT Flow</label>
@@ -184,14 +236,73 @@
     <recordCreates>
         <name>Create_ABT</name>
         <label>Create ABT</label>
-        <locationX>50</locationX>
+        <locationX>314</locationX>
         <locationY>755</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_11</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputReference>newAccountBusinessType</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_log_entry</name>
+        <label>Create log entry</label>
+        <locationX>578</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_13</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Details__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>ER_Approve_Remove_Account_Business_Type_for_CBT_Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Project__c</field>
+            <value>
+                <stringValue>ACM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Scope__c</field>
+            <value>
+                <stringValue>Update Contact Business Types</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Error</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Tags__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
         <name>Query_Account_Business_Type</name>
         <label>Query Account Business Type</label>
-        <locationX>182</locationX>
+        <locationX>710</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -219,12 +330,19 @@
     <recordUpdates>
         <name>Update_ABT_to_Approved</name>
         <label>Update ABT to Approved</label>
-        <locationX>314</locationX>
+        <locationX>842</locationX>
         <locationY>755</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_12</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_log_entry</targetReference>
+        </faultConnector>
         <inputReference>Query_Account_Business_Type</inputReference>
     </recordUpdates>
     <start>
-        <locationX>518</locationX>
+        <locationX>1310</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>CBT_Status_Check</targetReference>

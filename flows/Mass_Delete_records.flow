@@ -5,7 +5,7 @@
     <assignments>
         <name>Assign_record_Count</name>
         <label>Assign record Count</label>
-        <locationX>314</locationX>
+        <locationX>380</locationX>
         <locationY>134</locationY>
         <assignmentItems>
             <assignToReference>recordCount</assignToReference>
@@ -21,7 +21,7 @@
     <decisions>
         <name>Check_Object_Type</name>
         <label>Check Object Type</label>
-        <locationX>578</locationX>
+        <locationX>710</locationX>
         <locationY>350</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -54,11 +54,26 @@
             </connector>
             <label>Contact Association</label>
         </rules>
+        <rules>
+            <name>Account_Business_Partner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>firstrecordofList</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.ER_AccountBusinessPartner_ObjectId_Prefix</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Query_Account_Business_Partner_Records</targetReference>
+            </connector>
+            <label>Account Business Partner</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Copy_1_of_How_many_records_were_selected</name>
         <label>Copy 1 of How many records were selected</label>
-        <locationX>578</locationX>
+        <locationX>710</locationX>
         <locationY>866</locationY>
         <defaultConnector>
             <targetReference>Success_Message</targetReference>
@@ -83,7 +98,7 @@
     <decisions>
         <name>How_many_records_were_selected</name>
         <label>How many records were selected</label>
-        <locationX>314</locationX>
+        <locationX>380</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Check_Object_Type</targetReference>
@@ -138,6 +153,27 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordLookups>
+        <name>Query_Account_Business_Partner_Records</name>
+        <label>Query Account Business Partner Records</label>
+        <locationX>842</locationX>
+        <locationY>458</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Confirmation_screen_Account_Business_Partner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ids</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>ER_Account_Business_Partner__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Query_CMF_Assoc_Records</name>
         <label>Query CMF Assoc Records</label>
         <locationX>314</locationX>
@@ -179,6 +215,37 @@
         <object>ER_ContactGroupAssociation__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <description>Updating Account Business Partner End Date</description>
+        <name>Update_Account_Business_Partner_Records</name>
+        <label>Update Account Business Partner Records</label>
+        <locationX>842</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>Copy_1_of_How_many_records_were_selected</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ids</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>ER_Active__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ER_End_Date__c</field>
+            <value>
+                <elementReference>currentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ER_Account_Business_Partner__c</object>
+    </recordUpdates>
     <recordUpdates>
         <name>Update_CMF_Records</name>
         <label>Update CMF Records</label>
@@ -240,6 +307,90 @@
         </inputAssignments>
         <object>ER_ContactGroupAssociation__c</object>
     </recordUpdates>
+    <screens>
+        <name>Confirmation_screen_Account_Business_Partner</name>
+        <label>Confirmation screen Account Business Partner</label>
+        <locationX>842</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Update_Account_Business_Partner_Records</targetReference>
+        </connector>
+        <fields>
+            <name>confirmationTextABP</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;You have selected below &lt;/span&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!recordCount} &lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;records to delete. Click &apos;Yes&apos; if you want to proceed&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>AccountBusinessPartnerTable</name>
+            <dataTypeMappings>
+                <typeName>T</typeName>
+                <typeValue>ER_Account_Business_Partner__c</typeValue>
+            </dataTypeMappings>
+            <extensionName>flowruntime:datatable</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Data Table</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>selectionMode</name>
+                <value>
+                    <stringValue>NO_SELECTION</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>minRowSelection</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>tableData</name>
+                <value>
+                    <elementReference>Query_Account_Business_Partner_Records</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>maxRowSelection</name>
+                <value>
+                    <numberValue>0.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>columns</name>
+                <value>
+                    <stringValue>[{&quot;apiName&quot;:&quot;Name&quot;,&quot;guid&quot;:&quot;column-383a&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Name&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;ER_Account__c&quot;,&quot;guid&quot;:&quot;column-df27&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Account&quot;,&quot;type&quot;:&quot;customRichText&quot;},{&quot;apiName&quot;:&quot;ER_Customer_Master_File_Grouping__c&quot;,&quot;guid&quot;:&quot;column-219e&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;label&quot;:&quot;Customer Master File Grouping&quot;,&quot;type&quot;:&quot;customRichText&quot;}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>Yes</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
     <screens>
         <name>Confirmation_screen_CMF_Assoc</name>
         <label>Confirmation screen CMF Assoc</label>
@@ -411,7 +562,7 @@
     <screens>
         <name>Copy_1_of_Success_Message</name>
         <label>Copy 1 of Success Message</label>
-        <locationX>446</locationX>
+        <locationX>578</locationX>
         <locationY>974</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -459,7 +610,7 @@
     <screens>
         <name>Success_Message</name>
         <label>Success Message</label>
-        <locationX>710</locationX>
+        <locationX>842</locationX>
         <locationY>974</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -481,7 +632,7 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>188</locationX>
+        <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Assign_record_Count</targetReference>

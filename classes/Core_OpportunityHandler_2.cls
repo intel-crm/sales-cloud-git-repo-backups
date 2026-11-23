@@ -134,7 +134,7 @@ public without sharing class Core_OpportunityHandler_2{
             List<Opportunity> opportunities = [
                 SELECT Id, AccountId, StageName, OwnerId, Account.OwnerId,IsClosed,Core_Technical_Owner__c,Core_Opportunity_Coverage_Nm__c,Core_Coverage_Type_Nm__c,RecordTypeId,Core_Design_Registration_Id__r.Core_Partner_Account_Id__r.OwnerId,Core_OpportunityTeamMembers__c,CRM_SW_Flag_Ind__c
                 FROM Opportunity 
-                WHERE AccountId =:accountId AND OwnerId =:accountOwnerId 
+                WHERE AccountId =:accountId AND OwnerId =:accountOwnerId
                 AND StageName IN ('Qualify', 'Define', 'Design', 'Develop') AND IsClosed = false
             ];
             List<Opportunity> opportunitiesId = new List<Opportunity>();
@@ -142,9 +142,8 @@ public without sharing class Core_OpportunityHandler_2{
                 opportunitiesId.add(opp);
             }
             
-            if(opportunitiesId.size() > 0 || opportunitiesId != null){
-                
-                Database.executeBatch(new CRM_OpportunityOwnerUpdate(opportunitiesId,priorAccOwnerId), 50);
+            if((opportunitiesId.size() > 0 || opportunitiesId != null)){
+               	Database.executeBatch(new CRM_OpportunityOwnerUpdate(opportunitiesId,priorAccOwnerId), 50);
             }
         }
     }

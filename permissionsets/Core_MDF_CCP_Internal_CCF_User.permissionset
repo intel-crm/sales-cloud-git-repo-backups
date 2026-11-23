@@ -16,8 +16,4 @@
         <recordType>Core_MDF_Target_Setting__c.Core_MDF_Client_Co_Marketing_Fund</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>PartnerFundAllocation.Core_MDF_Client_CoMarketing_Fund</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
 </PermissionSet>

@@ -114,9 +114,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>EXP_AMOUNT</field>
     </columns>
-    <columns>
-        <field>LAST_UPDATE</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>FK_$Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</column>
@@ -157,7 +154,7 @@
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2021 Approved DDR/Open Opps</name>
+    <name>2020+ Approved DDR/Open Opps</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -183,8 +180,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-12-26</endDate>
+        <endDate>2025-12-27</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-12-27</startDate>
+        <startDate>2019-12-29</startDate>
     </timeFrameFilter>
 </Report>

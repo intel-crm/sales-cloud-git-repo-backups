@@ -1,6 +1,6 @@
 public without sharing class Core_MDF_Payment_FileHelper {
     
-     
+    
     
     public static Core_MDF_CCP_Payment_File_Particulars__mdt fileParticulars;
     public static Map<String, Core_MDF_Geo_code_Mapping__mdt>  geoMapping;
@@ -16,7 +16,7 @@ public without sharing class Core_MDF_Payment_FileHelper {
     public static Decimal nonVatLineCounter = 0;
     public static Boolean isVatFile;
     public static String budgetType='';
-    public static String programName=''; 
+    public static String programName='';
     public static String subGeo='';
     public final static String VAT='VAT';
     public final static string MDF = 'MDF';
@@ -1650,7 +1650,7 @@ Modified By:        Date:       Changes:
 
                         //Activity Product Type
                         line1.add(getValidFieldValue(!isCoGTMVistexClaim ? claim.Request.Core_MDF_ProductType__c : claim.Request.Campaign.Core_MDF_Product_Type__c));
- 
+
                         //Activity Target Audience
                         line1.add(getValidFieldValue(!isCoGTMVistexClaim ? claim.Request.Core_MDF_TargetAudience__c : Core_MDF_PaymentUtility.blank));
 

@@ -18,6 +18,10 @@
         <relationshipLabel><!-- OPID Recommendation --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Account Coverage Indicator Not Needed --></label>
+        <name>PRM_Account_Coverage_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- Account Coverage Indicator --></label>
         <name>PRM_Account_Coverage_Nm__c</name>
         <picklistValues>
@@ -51,6 +55,10 @@
         <name>PRM_Account_Plan_Ind__c</name>
     </fields>
     <fields>
+        <label><!-- CNDA Indicator Not Needed --></label>
+        <name>PRM_CNDA_Ind__c</name>
+    </fields>
+    <fields>
         <label><!-- CNDA Indicator --></label>
         <name>PRM_CNDA_Indicator_Nm__c</name>
         <picklistValues>
@@ -67,11 +75,15 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Training Competency --></label>
+        <name>PRM_Competency_Achieved_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Design Registration Count --></label>
         <name>PRM_Design_Registration_Count_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Duration (In Days) --></label>
+        <label><!-- Duration ( In Days) --></label>
         <name>PRM_Duration_In_Days__c</name>
     </fields>
     <fields>
@@ -105,6 +117,10 @@
         <relationshipLabel><!-- OPID Recommendation (One Partner Id) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- One Partner Id Name --></label>
+        <name>PRM_One_Partner_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Partner Role --></label>
         <name>PRM_Partner_Role_Nm__c</name>
     </fields>
@@ -132,24 +148,24 @@
             <translation><!-- OPID Created --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>OPID association- Failed in CIM</masterLabel>
-            <translation><!-- OPID association- Failed in CIM --></translation>
+            <masterLabel>OPID association -Failed in CIM</masterLabel>
+            <translation><!-- OPID association -Failed in CIM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>OPID association- WIP in CIM</masterLabel>
-            <translation><!-- OPID association- WIP in CIM --></translation>
+            <masterLabel>OPID association -WIP in CIM</masterLabel>
+            <translation><!-- OPID association -WIP in CIM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Prime- Completed</masterLabel>
-            <translation><!-- Prime- Completed --></translation>
+            <masterLabel>Prime -Completed</masterLabel>
+            <translation><!-- Prime -Completed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Prime- Failed</masterLabel>
-            <translation><!-- Prime- Failed --></translation>
+            <masterLabel>Prime -Failed</masterLabel>
+            <translation><!-- Prime -Failed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Prime- In Progress</masterLabel>
-            <translation><!-- Prime- In Progress --></translation>
+            <masterLabel>Prime -In Progress</masterLabel>
+            <translation><!-- Prime -In Progress --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Processed</masterLabel>
@@ -207,6 +223,10 @@
     <fields>
         <label><!-- Select Benefit --></label>
         <name>PRM_Select_Benefit_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty Present Not Needed --></label>
+        <name>PRM_Specialty_Present_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Specialty Present --></label>
@@ -269,6 +289,14 @@
     <validationRules>
         <errorMessage><!-- You can not edit any other field except Grouping Method --></errorMessage>
         <name>PRM_Restrict_Field_Edit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please specify the Grouping Method for the record/s --></errorMessage>
+        <name>PRM_Restrict_Grouping_Method</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is a status the system automatically sets, not to be selected by user. --></errorMessage>
+        <name>PRM_Restrict_Status_Field</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Upgrade or Downgrade Recommendations cannot be created --></errorMessage>

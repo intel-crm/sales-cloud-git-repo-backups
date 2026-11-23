@@ -123,8 +123,20 @@
             <translation><!-- Active --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Core_Family_Nm__c</masterLabel>
+            <translation><!-- Core_Family_Nm__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Group_Code__c</masterLabel>
+            <translation><!-- Core_Group_Code__c --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Core_IQR_Visible__c</masterLabel>
             <translation><!-- Core_IQR_Visible__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_Product_Org__c</masterLabel>
+            <translation><!-- Core_Product_Org__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Core_Product_Series__c</masterLabel>
@@ -133,6 +145,10 @@
         <picklistValues>
             <masterLabel>Name</masterLabel>
             <translation>Nombre</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Orderable</masterLabel>
+            <translation><!-- Orderable --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Product Code</masterLabel>

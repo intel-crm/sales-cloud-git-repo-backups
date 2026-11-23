@@ -13,6 +13,10 @@
         <name>Pricing_SW_Signature__c</name>
     </fields>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Seleccione la casilla de verificación si se deben imprimir los productos de todo el paquete en documentos de presupuesto; en caso contrario, solo se imprimen los que no son cero.</help>
         <label><!-- Show All Package Product --></label>
         <name>SBQQ__AllPackageProductsShown__c</name>

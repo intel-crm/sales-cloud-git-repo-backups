@@ -1,0 +1,78 @@
+<template>
+    <lightning-card title="Add IPA Lead">
+        <!-- Customer Info -->
+        <div class="slds-p-around_medium">
+            <h3 class="slds-text-heading_small">Customer Information</h3>
+            <div class="slds-grid slds-wrap slds-gutters_small">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input name="customerName" label="Customer Name" value={customerName} onchange={handleChange} required></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input name="website" label="Website" value={website} onchange={handleChange}></lightning-input>
+                </div>
+                <!-- <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox name="country" label="Country" value={country} options={countryOptions} onchange={handleChange}></lightning-combobox>
+                </div> -->
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input name="decisionMaker" label="Decision Maker" value={decisionMaker} onchange={handleChange}></lightning-input>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opportunity Info -->
+        <div class="slds-p-around_medium">
+            <h3 class="slds-text-heading_small">Opportunity Information</h3>
+            <div class="slds-grid slds-wrap slds-gutters_small">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input name="oppName" label="Opportunity Name" value={oppName} onchange={handleChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input name="oppSummary" label="Opportunity Summary" value={oppSummary} onchange={handleChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input name="decisionDate" type="date" label="Estimated Decision Date" value={decisionDate} onchange={handleChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input name="budget" label="Budget" value={budget} onchange={handleChange}></lightning-input>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Products Toggle -->
+        <div class="slds-p-around_medium">
+            <lightning-input type="toggle" label="Add Product Series?" checked={addProducts} onchange={handleToggle}></lightning-input>
+        </div>
+
+        <!-- Products Section -->
+        <template if:true={addProducts}>
+            <div class="slds-p-around_medium">
+                <template for:each={productRows} for:item="row" for:index="idx">
+                    <div key={row.id} class="slds-box slds-m-bottom_small slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input label="Product" data-index={idx} value={row.productName} onkeyup={handleProductInput}></lightning-input>
+                            <template if:true={row.searchResults}>
+                                <div class="lookup-dropdown">
+                                    <template for:each={row.searchResults} for:item="p">
+                                        <div key={p.value} data-index={idx} data-id={p.value} onclick={selectProduct}>{p.label}</div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4">
+                            <lightning-input label="Qty" type="number" data-index={idx} value={row.quantity} onchange={handleQuantity}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-4 slds-text-align_right">
+                            <lightning-button label="Add" onclick={addRow} class="slds-m-right_small"></lightning-button>
+                            <lightning-button label="Remove" data-index={idx} onclick={removeRow}></lightning-button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <!-- Save / Finish Button -->
+        <div class="slds-p-around_medium slds-text-align_right">
+            <lightning-button variant="brand" label={buttonLabel} onclick={handleSave}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

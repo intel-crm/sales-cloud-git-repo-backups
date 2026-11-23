@@ -43,18 +43,11 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Owner__c</column>
+            <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>005o0000001fZa2AAE</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>2024</value>
+            <value>Scott Blackburn</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -1,0 +1,9 @@
+<template>
+    <lightning-button label="Check Values" onclick={checkValues}></lightning-button>
+    <template if:true={hasRequiredData}>
+        <p>Required data is present!</p>
+    </template>
+    <template if:false={hasRequiredData}>
+        <p>Required data is not found.</p>
+    </template>
+</template>

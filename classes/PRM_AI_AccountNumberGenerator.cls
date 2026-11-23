@@ -29,7 +29,6 @@ public class PRM_AI_AccountNumberGenerator implements UCD_ACM_ServiceContracts.I
                   accList.add(acc);
                 }
               }
-              System.debug('accList'+accList);
               if(accList!= null && !accList.isEmpty()) {
                PRM_AccountNumberGenerator.updateAccountNumberCS(accList, null);
                isAccountNumberInsertCalled = true;

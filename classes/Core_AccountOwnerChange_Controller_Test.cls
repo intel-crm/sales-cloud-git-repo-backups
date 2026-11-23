@@ -91,6 +91,7 @@ private class Core_AccountOwnerChange_Controller_Test {
             
             if(account.Core_Sales_Groups__c == ' ' && account.Core_Covered_Account__c == False){
                 mymsg = Label.Core_Acc_SalesGroup_WarningMsg;
+                System.debug(+mymsg);
                 System.assertEquals(mymsg, mymsg);
             }
             try{
@@ -136,6 +137,7 @@ private class Core_AccountOwnerChange_Controller_Test {
             userList = [SELECT Name, Email, IsActive 
                         FROM User 
                         WHERE Id = :UserInfo.getUserId()];
+            System.debug('Inactive Id'+userList);
             System.runAs(userList[0]) 
             {    
                 // Change User to inactive

@@ -23,15 +23,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_At_Risk__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Products_At_Risk_Count__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Support_Completed__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Risk_Reason__c</field>
@@ -43,14 +35,14 @@
 (if YOU do not find any oppties in this report then all your oppties are in new format and you&apos;re done! THANKS!)</description>
     <filter>
         <criteriaItems>
-            <column>Opportunity.Core_Support_Requested__c</column>
+            <column>Opportunity.Core_Risk_Reason__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value></value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Products_At_Risk_Count__c</column>
+            <column>Opportunity.Core_At_Risk__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -97,6 +89,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2020-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

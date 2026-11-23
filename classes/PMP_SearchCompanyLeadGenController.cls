@@ -9,7 +9,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
         PMP_Company__c partner;
         List<PMP_Company__c> partnerList = new List<PMP_Company__c>();
         //JB start
-        System.debug('12::'+partnerId);
         if(Schema.sObjectType.PMP_Company__c.isAccessible() ){  //PMD Fixes
          
             if(partnerId!=NULL)
@@ -78,7 +77,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
                 
             } 
         }
-        // system.debug(leadGenSettings);
         return leadGenSettings;
     }
     
@@ -131,7 +129,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             
             partnerList[0].PMP_Company_Lead_Gen_Language_Nm__c = '';
             
-            // system.debug('pref'+ saveRequest.languagePreference);
             for(Options lang : saveRequest.languagePreference){
                 if(lang.selected == true){
                     partnerList[0].PMP_Company_Lead_Gen_Language_Nm__c+= lang.value+ ';';
@@ -177,7 +174,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             if(user1!=null && (!String.isBlank(user1.ContactId))) {
                 if(Schema.sObjectType.Contact.isAccessible()){
                     con = [select id,AccountId, FirstName, LastName, Email,Phone,Title,Core_Job_Function__c,Core_Profession__c,MailingCountry,MailingState  from Contact where id=: user1.ContactId]; 
-                    // system.debug('contact Info'+con);
                     
                 }
                    if(con!=null && (!String.isBlank(con.AccountId)) && Schema.sObjectType.Account.isAccessible()){
@@ -199,7 +195,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             user.email = con.Email;
             user.partnerProgramSegment = null;    
             //user.preferredContact = PMP_StaticConstants_Partner.PreferredContact_CTA;
-            // system.debug('user-->'+user);
         }    
         return user;
     }
@@ -246,7 +241,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
         List<JsonSerializer> JsonSerializerList = new List<JsonSerializer>();
         Map<String, Core_Eloqua_Integration_Setting__mdt> eloquaIntMap = new Map<String, Core_Eloqua_Integration_Setting__mdt>();
         List<Core_Eloqua_Integration_Setting__mdt> eloquaIntList = [select Id, MasterLabel, DeveloperName, Core_Value__c from Core_Eloqua_Integration_Setting__mdt where DeveloperName != null];
-        //system.debug('eloquaIntList '+eloquaIntList);
         for(Core_Eloqua_Integration_Setting__mdt eloquaInt : eloquaIntList){
             eloquaIntMap.put(eloquaInt.DeveloperName, eloquaInt);
         }
@@ -410,8 +404,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
         httpReq.setBody(userDetailsBody);
         httpResp = http.send(httpReq);
         sendEmailNotification(formType,leadStageObj,offeringName,partnerName);
-        //system.debug('Response body '+httpResp.getBody());
-        //System.debug('*STATUS_CODE:'+httpResp.getStatusCode());
         if(httpResp.getStatusCode() == 201){
             leadStageObj.Core_Status__c = 'Success';
         }else{
@@ -446,12 +438,10 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
         //        pagMemberOPIDList = [SELECT id, PMP_One_Partner_ID__c from PMP_OPID_MPI_Rel__c Where Is_Active__c = true AND PMP_Marketing_Profile_Id__c =:pagMemberMPI.PMP_Marketing_Profile_Id__c];
         //    if(pagMemberOPIDList != null && !pagMemberOPIDList.isEmpty()){
         //        for(PMP_OPID_MPI_Rel__c singlerecord :pagMemberOPIDList){
-        //        system.debug('OPIDList:::'+singlerecord.PMP_One_Partner_ID__c);    
         //        pagMemberOPIDListids.add(singlerecord.PMP_One_Partner_ID__c);
         //        }
         //    }
         //        pagMemberList = [SELECT id, Core_Intel_Account_Id__c, Core_Partner_Account_Id__c from Core_Account_Group_Member__c where Core_Partner_Account_Id__c in:pagMemberOPIDListids];
-        //        system.debug('pagMemberList:::'+pagMemberList);
         //    }catch(Exception e){
         //        System.debug('No PAG Records found : ' + e.getMessage());
         //    }
@@ -464,7 +454,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
         //    List<Contact> partnerUserList = [Select id, Name from Contact where Account.id in: intelAccountIds ];
            
         //    for(Contact u : partnerUserList){
-        //        system.debug('partnerUserList:::'+ u.id);
         //        partnerUserIds.add(u.id);
         //    }
            
@@ -472,16 +461,13 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
          
            
         //    for(Core_Contact_Entitlement__c pa : partnerAdminAssignmentList){
-        //        system.debug('partnerAdminAssignmentList:::'+pa.Core_Contact_Id__r.Id);
         //        partnerAdminUserIds.add(pa.Core_Contact_Id__r.Id);
         //    }
                
         //    List<Contact> partnerAdminUserList = [SELECT id,Name,Email,Phone from Contact where id in:partnerAdminUserIds];
-        //    system.debug('partnerAdminUserList:::'+partnerAdminUserList);
         //    return partnerAdminUserList;
        
         List<Contact> partnerAdminUserList = PMP_PartnerAdminAccounts.getPartnerAdminAccounts();
-        //system.debug('partnerAdminUserList Called:::'+partnerAdminUserList);
         return partnerAdminUserList;
     
     }
@@ -587,7 +573,6 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             '              </table>  '  + 
             '           </body>  '  + 
             '      </html>  ' ; 
-        //system.debug(' quote template emailbody---->'+emailBody);
         return emailBody;
     }
     

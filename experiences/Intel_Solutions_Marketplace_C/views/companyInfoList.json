@@ -1,0 +1,120 @@
+{
+  "appPageId" : "faab079b-da30-4950-9474-83b3e47e8ec6",
+  "componentName" : "c:MarketplaceProductListLayout",
+  "dataProviders" : [ ],
+  "id" : "aaf9f85d-4261-43c7-936e-5bd9817c3630",
+  "label" : "company info list",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:PMP_ExportListView",
+      "id" : "c310a60b-5206-48f5-afbb-5a61d06cabbd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "70e6beed-b3c6-4d5c-b844-030ddd08fd1d",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "objectInfo" : "PMP_Company__c"
+      },
+      "componentName" : "c:PSS_SolutionListView",
+      "id" : "2dfa5266-8f54-4e41-98dc-294ccfbe8f3b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c02254ef-18fe-4559-9388-4240bc06121a",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "2ac28f38-9b4b-4e41-bd04-e54e6a9a70c4",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "daf790de-a936-4030-8c94-3b202ccfff90",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "250e6c8c-f278-432a-b0b6-b66df99f3526",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "id" : "380d8145-6956-4bbb-a09c-0773db5bb4c9",
+    "regionName" : "blade6",
+    "type" : "region"
+  }, {
+    "id" : "7f18170e-8c63-4967-84cd-6137ec28b992",
+    "regionName" : "blade7",
+    "type" : "region"
+  }, {
+    "id" : "555659b7-869f-4a21-b542-cf0970e56f18",
+    "regionName" : "blade8",
+    "type" : "region"
+  }, {
+    "id" : "3cc3a0ad-3446-4456-9920-4bf902576dab",
+    "regionName" : "blade9",
+    "type" : "region"
+  }, {
+    "id" : "4444755c-029a-41ae-b412-e13619cb051c",
+    "regionName" : "blade10",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : true,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace",
+        "showAllButtons" : true
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "51b0e443-bb0e-4030-b7ba-b4d01e77596f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "72da59ac-eb2c-437e-bbb2-a3ba84b2d41e",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "analyticsPageType" : "",
+        "backgroundVariant" : "blue-steel-solid",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "",
+        "ctaLabel" : "",
+        "doAnalytics" : false,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : false,
+        "isPartnerPage" : false,
+        "pageType" : "Partner",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "",
+        "title" : "All Partners"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "0be3f25f-4212-435c-8c70-e606c6822e1f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "018cb14c-2fe8-4fbc-9d9d-4cf4d7792de2",
+    "regionName" : "recordList",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-a5S"
+}

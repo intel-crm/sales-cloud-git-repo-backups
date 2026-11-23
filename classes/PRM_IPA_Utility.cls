@@ -24,7 +24,6 @@
             intLog.PRM_Response_Code__c = respCode;
             intLog.PRM_System_Name__c = systemName;
             intLog.PRM_Class__c = className;
-            //System.debug('>>>'+PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger);
             if(!(System.isBatch() && (PRM_Contact_Bulk_DataLoad_Utility.contactBulkLoad || PRM_Contact_Bulk_DataLoad_Utility.isAGSTrigger))){
                 insert intLog;
             }
@@ -128,10 +127,9 @@
                     sysAccIdSet.add(mapSysAcc.get(keySetString).AccountId__c);
                 }        
                 if(sysAccIdSet != null){
-                    for(Contact cons : [SELECT Id,AccountId,Account.Name,Email FROM Contact WHERE Email IN: regReqEmails AND AccountId IN: sysAccIdSet]){
+                    for(Contact cons : [SELECT Id,AccountId,/*Account.Name,*/Email FROM Contact WHERE Email IN: regReqEmails AND AccountId IN: sysAccIdSet]){//ATHR Fix - TWC729-9556 - SJ
                         if(cons.Email != null){
                             returnSysAccMap.put(cons.Email, True);
-                            //System.debug('ReturnSysAccMap-->'+returnSysAccMap);
                         }
                     }
                 }

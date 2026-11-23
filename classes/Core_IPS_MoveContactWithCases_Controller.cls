@@ -4,6 +4,7 @@ Test Class : Core_IPS_MoveContactWithCases_Ctrlr_Test
 Version     : 1.0 
 Created Date: Dec 2016
 Description : For moving the contact from one account to another account along with the cases and entitlements
+
 * Modification Log :
 * Developer                   Date                   Description
 * ------------------------------------------------------------------------------------
@@ -16,8 +17,8 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
     private static final String SUCCESS = 'Success';
     private static final String UPDATE_REASON_CHANGE_ACCOUNT = 'Change Account';
     
-    // Added by Ganapati for US436541 - start
     public static  final String ipsAssetRecTypeId = schema.sobjecttype.Asset.getrecordtypeinfosbyname().get('IPS Asset').getRecordTypeId();
+    // Added by Ganapati for US436541 - start
     public static boolean checkRecursion = false;	 
     public static List<Case> finalLstUpdateCase = new List<Case>();
     // Added by Ganapati for US436541 - end
@@ -71,13 +72,18 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
     private Account getTargetAccountObj(){
         if(targetAccountObj == null){
             try{
-                targetAccountObj = [select Id, Name, Core_IsODM__c, Core_CNDA_Number__c, Core_CIM_ID__c,Core_Business_Party_Id__c, Core_English_Only_Name__c, Core_Export_Compliance_Block__c , 
+                 //FLS Check Added - Akhil
+                if(Account.SObjectType.getDescribe().isAccessible()){
+                    targetAccountObj = [select Id, Name, Core_IsODM__c, Core_CNDA_Number__c, Core_CIM_ID__c,Core_Business_Party_Id__c, Core_English_Only_Name__c, Core_Export_Compliance_Block__c , 
                                     Core_IPS_Active__c, Core_B2B_Entitlement__c, Core_Export_Compliance_Block_Reason__c, Owner.UserRole.Name, Core_PSG_Account__c
-                                    FROM Account where ID =: targetAccount.AccountId Limit 1];
+                                    FROM Account where ID =:targetAccount.AccountId Limit 1];
+                }
+                
             }catch(Exception e){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO,' Account : INVALID ACCOUNT ')); // '+tg.Name+' removed by prem
             }
         }
+        
         return targetAccountObj;
         
     }
@@ -190,6 +196,7 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         boolean noEntitlements = ((entitlements != null && entitlements.size() == 0) || entitlements == null || hasSelectedEntitlements == false);
         boolean noCases = ((casesWithOUTprojectId != null && casesWithOUTprojectId.size() == 0) || casesWithOUTprojectId == null );
         if(noEntitlements && noCases){
+            
             hasAccessToAcctSelection = Schema.sObjectType.Contact.isUpdateable() ;
         }else if(!noEntitlements || !noCases){
             if(userAuthorized == true){
@@ -322,10 +329,10 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
             return flag;
         }*/
         
-	if(String.isBlank(targetAccountObj.Core_Business_Party_Id__c)  && keepEntitlements == true ){
+		if(String.isBlank(targetAccountObj.Core_Business_Party_Id__c)  && keepEntitlements == true ){
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Unified Id must be filled manually by the user on the Account record : '+targetAccountObj.Name));
             return flag;
-        }
+        }        
         
         if(String.isBlank(targetAccountObj.Core_English_Only_Name__c) && keepEntitlements == true ){
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'English Only Name must be filled manually by the user on the Account record : '+targetAccountObj.Name));
@@ -417,7 +424,10 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         	List<Case> lCaseToUpdateAccount = new List<Case>();
             for(CaseWrapper cseWOutPrjt : casesWithOUTprojectId){
                 if(cseWOutPrjt.keepCase == true && contactLookUp.contactid !=null){
+                    /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
+                   // if (Schema.sObjectType.Case.fields.contactid.isUpdateable()) {
                     cseWOutPrjt.cs.contactid = contactLookUp.contactid;
+                   // }
                     lCaseToUpdateContact.add(cseWOutPrjt.cs); 
                     
                 }else if(cseWOutPrjt.keepCase == false){
@@ -435,14 +445,18 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
                 if(Contact.SObjectType.getDescribe().isAccessible()){
                  currContact1 = [Select Id,Name,Core_ERPM_Integration_Status__c,Core_AGS_Integration_Status__c,AccountId,Core_Account_Changeable__c,Core_IPS_Active__c from contact where id =: currContact.id limit 1];
                 }
-                if(keepEntitlements == false){
-                    currContact1.Core_AGS_Integration_Status__c = PENDING;
-                }
-                
+               // if (Schema.sObjectType.Contact.fields.Core_ERPM_Integration_Status__c.isUpdateable()) {
                 currContact1.Core_ERPM_Integration_Status__c = PENDING;
-                //currContact1.Core_AGS_Integration_Status__c = PENDING;
+                //}
+                //if (Schema.sObjectType.Contact.fields.Core_AGS_Integration_Status__c.isUpdateable()) {
+                currContact1.Core_AGS_Integration_Status__c = PENDING;
+                //}
+                //if (Schema.sObjectType.Contact.fields.AccountId.isUpdateable()) {
                 currContact1.AccountId = targetAccount.accountId;
+                //}
+                //if (Schema.sObjectType.Contact.fields.Core_Account_Changeable__c.isUpdateable()) {
                 currContact1.Core_Account_Changeable__c= true;
+                //}
                 Core_Contact_AccountChange_Handler.IS_CHANGE_ACCOUNT = true;
                 update currContact1;
     
@@ -473,13 +487,19 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         //Code to update IPS flag in account if the contact IPS flag is true
         if(curCont.Core_IPS_Active__c == true && contactref.Account.Core_IPS_Active__c == false && keepEntitlements == true && contactref != null ){
             acc.Id = contactref.Accountid;
+            
+            //if (Schema.sObjectType.Account.fields.Core_IPS_Active__c.isUpdateable()) {
             acc.Core_IPS_Active__c = true;
+            //}
         }
         
         //Set the Account.B2b indicator to true if it is false when the current contact B2B indicator is true
         if(currContact.Core_Contact_B2B_Indicator__c == true && targetAccountObj.Core_B2B_Entitlement__c == false && keepEntitlements == true && contactref != null ){
             acc.Id = contactref.Accountid;
+            
+            //if (Schema.sObjectType.Account.fields.Core_B2B_Entitlement__c.isUpdateable()) {
             acc.Core_B2B_Entitlement__c = true;
+            //}
         }
         
         //Update acc Only if IPSFlag or B2B flag is set.
@@ -510,14 +530,34 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
         
         if(lCaseToUpdateContact.size()>0){
             try{
-                update lCaseToUpdateContact;
+                //update lCaseToUpdateContact;
+                string cstoUpdateContact=JSON.serialize(lCaseToUpdateContact);
+                if(String.isNotBlank(cstoUpdateContact)) { // Added by Ganapati
+                    futurelCaseToUpdateContact(cstoUpdateContact);
+                }
             }catch(Exception e){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, 'Error Occured while filtering Selected cases'));
+
                 throw e;
             }
         }
         
         return lCaseToUpdateAccount;
+    }
+    
+    // Added by Ganapati
+    @future
+    public static void futurelCaseToUpdateContact(string strList){
+        try{
+            List<Case> newCsList = (List<Case>)JSON.deserialize(strList, List<Case>.class);
+            if(newCsList !=null && newCsList.size()>0){
+                database.update(newCsList); 
+            }
+            
+        } catch(Exception e){ 
+            Core_IPS_ExceptionHandling.logEntryWithException(e, 'Case', 'Core_IPS_MoveContactWithCases_Controller');
+
+        }
     }*/
     
     public PageReference cancelPage(){
@@ -538,7 +578,6 @@ public without sharing class  Core_IPS_MoveContactWithCases_Controller {
                 ceObject.Core_Selected__c = false;
                 ceObject.Core_Status__c = PENDING;
                 ceObject.Core_Update_Reason__c = UPDATE_REASON_CHANGE_ACCOUNT;
-                ceObject.Core_Status_of_Assignment_Failure__c = 'Pending Removal';
                 //ceList.add(ceObject);
             }
             
@@ -651,11 +690,15 @@ Modification Log :
         }
         
         for(Case objCaseRef : lstCases){
+            if (Schema.sObjectType.Case.fields.AccountId.isUpdateable()) {
             objCaseRef.AccountId = accId;
+            }
             if(objCaseRef.Core_IPS_Project_Case__c == null && objCaseRef.AccountID != null && objCaseRef.Core_IPS_Product_Org1__c !=null && objCaseRef.Core_IPS_Supported_Product__c!= null && objCaseRef.Asset.recordtypeid!=assetPublicRecordId){
                 string strKey_Asset = string.valueof(objCaseRef.AccountID) + string.valueof(objCaseRef.Core_IPS_Product_Org1__c)  +  string.valueof(objCaseRef.Core_IPS_Supported_Product__c) ;
                 if(!mapAsset.isEmpty() && mapAsset.containsKey(strKey_Asset)) {
+                   // if (Schema.sObjectType.Case.fields.AssetId.isUpdateable()) {
                     objCaseRef.AssetId = mapAsset.get(strKey_Asset).id;
+                   // }
                     // Added by Ganapati for US436541 - start
                     if(checkRecursion == false) {
                         lstUpdateCase.add(objCaseRef);
@@ -666,22 +709,45 @@ Modification Log :
                 } else {
                     if(objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c!=null && !stTobeUpdatedAsset.contains(strKey_Asset)){
                         Asset objAsset = new Asset();
+                        /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
+                      //  if (Schema.sObjectType.Asset.fields.Name.isCreateable()) {  
                         objAsset.Name = objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c;
+                       // }
+                      //  if (Schema.sObjectType.Asset.fields.Product2Id.isCreateable()) {
                         objAsset.Product2Id=objCaseRef.Core_IPS_Supported_Product__r.Core_Product__c;
+                        //}
+                      //  if (Schema.sObjectType.Asset.fields.Core_IPS_Asset__c.isCreateable()) {
                         objAsset.Core_IPS_Asset__c=true;
+                       // }
+                       // if (Schema.sObjectType.Asset.fields.core_alias__c.isCreateable()) {
                         objAsset.core_alias__c=objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Alias__c;
+                        //}
+                      //  if (Schema.sObjectType.Asset.fields.recordtypeid.isCreateable()) {
                         objAsset.recordtypeid = ipsAssetRecTypeId;
+                      //  }
+                        if (Schema.sObjectType.Asset.fields.AccountId.isCreateable()) {
                         objAsset.AccountId = objCaseRef.AccountId;
+                        }
+                       // if (Schema.sObjectType.Asset.fields.Core_Product_Organization__c.isCreateable()) {
                         objAsset.Core_Product_Organization__c = objCaseRef.Core_IPS_Product_Org1__c;
+                       // }
+                      //  if (Schema.sObjectType.Asset.fields.Core_Supported_Product__c.isCreateable()) {
                         objAsset.Core_Supported_Product__c = objCaseRef.Core_IPS_Supported_Product__c;
+                      //  }
+                       // if (Schema.sObjectType.Asset.fields.Status.isCreateable()) {
                         objAsset.Status = 'Inactive';
+                       // }
                         /* Commented by Ganapati for US436541
                         objAsset.InstallDate = system.today()-1; 
                         objAsset.UsageEndDate = system.today();
                          Commented by Ganapati for US436541 - end */
                         // Added by Ganapati for US436541 -start
+                     //   if (Schema.sObjectType.Asset.fields.InstallDate.isCreateable()) {
                         objAsset.InstallDate = todayDate - 1; 
+                      //  }
+                       // if (Schema.sObjectType.Asset.fields.UsageEndDate.isCreateable()) {
                         objAsset.UsageEndDate = todayDate;
+                       // }
                         // Added by Ganapati for US436541 -end
                         lstCreateAsset.add(objAsset);
                         stTobeUpdatedAsset.add(strKey_Asset);
@@ -727,8 +793,12 @@ Modification Log :
                     } else if(Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('ActiveOrDeactiveCaseUpdateBatch')) {
 
                         Core_IPS_Account_Change_Status__c accChangeSts = new Core_IPS_Account_Change_Status__c();
+                        if (Schema.sObjectType.Core_IPS_Account_Change_Status__c.fields.Core_IPS_Contact__c.isCreateable()) {
                         accChangeSts.Core_IPS_Contact__c = currContact.Id;
+                        }
+                        //if (Schema.sObjectType.Core_IPS_Account_Change_Status__c.fields.Core_IPS_Status__c.isCreateable()) {
                         accChangeSts.Core_IPS_Status__c = 'In Progress';
+                        //}
                         insert accChangeSts;
                         Core_IPS_MoveContactWithCases_Batch moveContactsBatch = new Core_IPS_MoveContactWithCases_Batch(finalLstUpdateCase, accId, targetAccountObj, currContact);  
                         Database.executeBatch(moveContactsBatch, Integer.valueOf(Label.Core_IPS_caseUpdateBatchSize));   

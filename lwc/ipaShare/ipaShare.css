@@ -44,6 +44,7 @@
   background-color: inherit;
   border: none;
   border-bottom: 1px solid var(--carbon-tint1);
+  color: var(--carbon-shade2);
   padding: .5rem;
   text-align: right;
   width: 100%;

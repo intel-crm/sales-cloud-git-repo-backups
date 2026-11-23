@@ -78,6 +78,15 @@
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>PRM_BatchID__c</fields>
+        <fields>PRM_Reminder_Date__c</fields>
+        <fields>PRM_Reminder__c</fields>
+        <fields>PRM_Status__c</fields>
+        <fields>PRM_Email_Template__c</fields>
+        <relatedList>PRM_Reminder_Email__c.PRM_Campaign__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

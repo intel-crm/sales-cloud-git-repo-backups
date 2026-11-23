@@ -12,6 +12,7 @@ public without sharing class Account360_SharingUtility {
         }
         List<sObject> dynObjectList = new List<sObject>();
         Boolean hasUserId = false;
+        Map<Schema.SObjectType,list<sObject>> dynObjectListmap  = new Map<Schema.SObjectType,list<sObject>>();
         List<Core_Log_Entry__c> logEntries = new List<Core_Log_Entry__c>();
         Map<String, Core_LogEntry_Switch__c> logSwitch = Core_LogEntry_Switch__c.getall();
         try{
@@ -39,19 +40,40 @@ public without sharing class Account360_SharingUtility {
                                     dynObject.put(Label.Core_MDF_UserOrGroupId_Label, userGroupId); //Add the UserOrGroupId field
                                     dynObject.put('RowCause', recordManualShare.rowCauseStr); //Add the RowCause field
                                     dynObjectList.add(dynObject); //Add it to the List
+                                    List<sObject> dynSObjectList = new List<sObject>();
+                                    if(dynObjectListmap.containsKey(objToken)){
+                                        dynSObjectList = dynObjectListmap.get(objToken);
+                                        dynSObjectList.add(dynObject);
+                                    }
+                                    else{
+                                        dynSObjectList.add(dynObject);  
+                                    }
+                                    dynObjectListmap.put(objToken, dynSObjectList);
                                 }
                             }
                         }                                
                     }
                 }
             }
-            if(dynObjectList.size() > 0)
+            system.debug(dynObjectListmap);
+            if(dynObjectListmap != null)
+            {
+                for(Schema.SObjectType shareUpdate : dynObjectListmap.KeySet()){
+                    List<Database.SaveResult> saveResultList = Database.insert(dynObjectListmap.get(shareUpdate)); //insert the record
+                    if(saveResultList != NULL){
+                        dynObjectList.addAll(dynObjectListmap.get(shareUpdate));
+                    }
+                }
+                return dynObjectList; //return the list of Share records
+            }
+            system.debug(dynObjectList.size());
+            /*if(dynObjectList.size() > 0)
             {
                 List<Database.SaveResult> saveResultList = Database.insert(dynObjectList); //insert the record
                 if(saveResultList != NULL){
                     return dynObjectList; //return the list of Share records
                 }
-            }
+            }*/
         }catch(Exception e){  
             logEntries.add(new Core_Log_Entry__c(Core_Message__c ='Error',Core_Details__c = e.getMessage(), Core_Origin__c='Account360_SharingUtility.createShareRecordList', Core_Severity__c='High', Core_When__c=System.Now(), Core_Project__c = 'Sales Evolve'));
             if(!logEntries.isEmpty() && !logSwitch.isEmpty()){

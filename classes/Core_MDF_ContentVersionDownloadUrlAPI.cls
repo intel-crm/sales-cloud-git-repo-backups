@@ -119,6 +119,7 @@ global with sharing class Core_MDF_ContentVersionDownloadUrlAPI {
         for (String fileId : appFileIds) {
             filesMap.put(fileId, 'Document not found');
         }
+        System.debug('print appFileIds '+appFileIds);
          // Bulk query for all requested appFileIds within the claim and process in single loop
         // Audit change included Core_MDF_Audit__c in query 
         for (Core_MDF_Audit_Document__c auditDoc : [

@@ -12,8 +12,8 @@ public without sharing class EPUM_ContactEntitlement_Util{
     public static String sContactIdStr;
     public static Contact objContact;
     private final static String RICHTEXT='richtext';
-	// ADDED NEW
-	private static final String PAD_ENTITLEMENT = 'Partner Admin Delegate';
+    // ADDED NEW
+    private static final String PAD_ENTITLEMENT = 'Partner Admin Delegate';
     private static final String STATUS_PENDING = 'Pending';
     
     public static Contact getContact(){
@@ -58,8 +58,8 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         Core_Contact_Entitlement__c objConEnt;
         List<Core_Contact_Entitlement__c> lstCoreContactEntitlements = new List<Core_Contact_Entitlement__c>();
         Contact ContactForPAD = new Contact();
-		if(objContact == null){
-			getContact();
+        if(objContact == null){
+            getContact();
         }
         for(Object entWrap : lstContactEntWrap){
             EPUM_ContactEntitlement_Wrapper objConEntWrapper = (EPUM_ContactEntitlement_Wrapper)JSON.deserialize(JSON.serialize(entWrap) , EPUM_ContactEntitlement_Wrapper.class);
@@ -81,22 +81,29 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                         lstCoreContactEntitlements.add(objConEnt);
                     }
                 }
-				if(objConEntWrapper.entitlementNameStr == PAD_ENTITLEMENT && objContact != null){
-
+                if(objConEntWrapper.entitlementNameStr == PAD_ENTITLEMENT && objContact != null){
+                    
                     ContactForPAD = objContact;
                 }
-
+                
+                /*if(objConEnt.Core_Entitlement_Id__r.name == 'Partner Admin Delegate'){
+ContactForPAD = objConEnt.Core_Contact_Id__r;
+}*/
+                
             }else if(objConEntWrapper.isSelected){
                 objConEnt = new Core_Contact_Entitlement__c(Core_Contact_Id__c=sContactIdStr, 
                                                             Core_Entitlement_Id__c=objConEntWrapper.entitlementId,Core_Status__c='Pending',
                                                             Core_Selected__c=true);
                 objConEnt.Core_Source__c = updateReasonEPUM;                        
                 lstCoreContactEntitlements.add(objConEnt);  
-				if(objConEntWrapper.entitlementNameStr == PAD_ENTITLEMENT && objContact != null){
-
+                if(objConEntWrapper.entitlementNameStr == PAD_ENTITLEMENT && objContact != null){
+                    
                     ContactForPAD = objContact;
                 }
                 
+                /*if(objConEnt.Core_Entitlement_Id__r.name == 'Partner Admin Delegate'){
+ContactForPAD = objConEnt.Core_Contact_Id__r;
+}*/
             }
         }
         System.debug('#55 lstCoreContactEntitlements: ' + lstCoreContactEntitlements);
@@ -116,16 +123,18 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         }
         if(updated) {
             System.debug('objContact:'+objContact);
-			if(objContact != null){
-				objContact.Core_ERPM_Integration_Status__c = 'Pending';
-				objContact.Core_AGS_Integration_Status__c = 'Pending';
-				update objContact;
-			}
+            if(objContact != null){
+                objContact.Core_ERPM_Integration_Status__c = 'Pending';
+                objContact.Core_AGS_Integration_Status__c = 'Pending';
+                update objContact;
+            }
+            System.debug('@RRT contact for pad:'+ContactForPAD);
             if(ContactForPAD != null  && ContactForPAD.Id != null && ContactForPAD.AccountId != null){
+                System.debug('@RRT contact for pad inside if:'+ContactForPAD);
                 EPUM_ContactEntitlement_Util.updateACR(ContactForPAD);
             }
         }
-
+        
         
         //return false;
         return updated;
@@ -166,7 +175,14 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         
         
         Map<String,EPUM_ContactEntitlement_Wrapper> mapEntIdWithContEntWrap = new Map<String,EPUM_ContactEntitlement_Wrapper>();
-        List<Core_Entitlement_SubCategory_HelpText__c> schelp  = [Select Name, Core_Help_Text__c ,Core_SubCategory_Name__c  FROM Core_Entitlement_SubCategory_HelpText__c ];
+        Set<String> setSubCategories = new Set<String>();
+        for(Core_Entitlement__c entObj : lstCoreEntitlements){
+            if(entObj.Core_Sub_Category__c != null){
+                setSubCategories.add(entObj.Core_Sub_Category__c);
+            }
+        }
+        List<Core_Entitlement_SubCategory_HelpText__c> schelp  = [Select Name, Core_Help_Text__c ,Core_SubCategory_Name__c  FROM Core_Entitlement_SubCategory_HelpText__c WHERE Core_SubCategory_Name__c IN :setSubCategories 
+                                                                  LIMIT 1000 ];
         for(Core_Entitlement_SubCategory_HelpText__c schelptext: schelp){
             helpText.put(schelptext.Core_SubCategory_Name__c ,schelptext.Core_Help_Text__c ); 
         }
@@ -246,7 +262,7 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                                                           intTierRank = acmObj.PRM_Channel_Program_Level_Id__r.Rank;
                                                           setPartnerTierIds.add(acmObj.PRM_Channel_Program_Level_Id__c);
                                                       }
-       
+        
         System.debug('---setPartnerTierIds---'+setPartnerTierIds);
         //If one partner Id belong to non member tier
         if(setPartnerTierIds.size() > 0){
@@ -261,6 +277,15 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                                                            ] ) {
                                                                setPartnerBenfitIds.add(abaObj.PRM_Partner_Benefit_Id__c);
                                                            }
+            Set<Id> setNonPrimaryRelationshipIds = new Set<Id>();
+            for(PRM_ContactRelationships__c rel : [
+                SELECT Id 
+                FROM PRM_ContactRelationships__c 
+                WHERE PRM_Contact_Relationship_Cd__c != 'PRIMARY' 
+                AND PRM_InActive_Ind__c = false
+            ]){
+                setNonPrimaryRelationshipIds.add(rel.Id);
+            }
             System.debug('setPartnerBenfitIds$$$$'+setPartnerBenfitIds);
             //Verify if Account have benefits, If benefit exists then 
             if (setPartnerBenfitIds.size()>0) {
@@ -268,18 +293,18 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                 //Find benefit Id from benefit Matrix table
                 //Commented by Manikanta To remove dependency on benefit matrix-US860385
                 /*set<Id> setBenefitIds = new set<Id>();
-                for(PRM_VXBnftMatrix__c benefitMatrixObj : [SELECT PRM_Partner_Benefit_Id__c FROM PRM_VXBnftMatrix__c 
-                                                            WHERE PRM_IsActive_Ind__c = true and 
-                                                            PRM_Partner_Role_Nm__c =: pcPartnerRoleStr and 
-                                                            PRM_Channel_Program_Id__r.Name =: IPA_PART_PROGRAM_STR and 
-                                                            //PRM_Channel_Program_Level_Id__c =: setPartnerTierIds and 
-                                                            PRM_Channel_Program_Level_Id__r.Rank <=: intTierRank and
-                                                            PRM_Partner_Benefit_Id__c IN: setPartnerBenfitIds 
-                                                            LIMIT 1000
-                                                           ]){
-                                                               setBenefitIds.add(benefitMatrixObj.PRM_Partner_Benefit_Id__c);                                                                    
-                                                           }  
-                System.debug('---setBenefitIds241---'+setBenefitIds);*/
+for(PRM_VXBnftMatrix__c benefitMatrixObj : [SELECT PRM_Partner_Benefit_Id__c FROM PRM_VXBnftMatrix__c 
+WHERE PRM_IsActive_Ind__c = true and 
+PRM_Partner_Role_Nm__c =: pcPartnerRoleStr and 
+PRM_Channel_Program_Id__r.Name =: IPA_PART_PROGRAM_STR and 
+//PRM_Channel_Program_Level_Id__c =: setPartnerTierIds and 
+PRM_Channel_Program_Level_Id__r.Rank <=: intTierRank and
+PRM_Partner_Benefit_Id__c IN: setPartnerBenfitIds 
+LIMIT 1000
+]){
+setBenefitIds.add(benefitMatrixObj.PRM_Partner_Benefit_Id__c);                                                                    
+}  
+System.debug('---setBenefitIds241---'+setBenefitIds);*/
                 for (PRM_VXEnttlmntMatrix__c entitleMatrixObj : [SELECT PRM_Entitlement_Id__c 
                                                                  FROM PRM_VXEnttlmntMatrix__c 
                                                                  WHERE PRM_Approval_Type_Nm__c = 'Manual' and
@@ -287,17 +312,17 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                                                                  PRM_Partner_Benefit_Id__c IN: setPartnerBenfitIds and 
                                                                  PRM_IPA_Partner_Role_Nm__c =:pcPartnerRoleStr and
                                                                  RecordType.DeveloperName =:ENT_WITH_BENEFITS_RT and 
-                                                                 PRM_Contact_Relationship_Id__r.PRM_Contact_Relationship_Cd__c != 'PRIMARY']){
+                                                                 PRM_Contact_Relationship_Id__c IN :setNonPrimaryRelationshipIds]){
                                                                      setEntitlementIds.add(entitleMatrixObj.PRM_Entitlement_Id__c);
                                                                  }
-                                System.debug('---setEntitlementIds---'+setEntitlementIds);
-
+                System.debug('---setEntitlementIds---'+setEntitlementIds);
+                
             }
             else{
                 //If no benefits then entitlements are based on Partner Role , Tier and Contact Relationship
                 for (PRM_VXEnttlmntMatrix__c entitleMatrixObj : [SELECT PRM_Entitlement_Id__c FROM PRM_VXEnttlmntMatrix__c 
                                                                  WHERE PRM_Approval_Type_Nm__c = 'Manual' and
-                                                                 PRM_Contact_Relationship_Id__r.PRM_Contact_Relationship_Cd__c !=: 'PRIMARY' and
+                                                                 PRM_Contact_Relationship_Id__c IN :setNonPrimaryRelationshipIds and
                                                                  PRM_IsActive_Ind__c = true and
                                                                  PRM_IPA_Partner_Role_Nm__c =:pcPartnerRoleStr and
                                                                  //PRM_Channel_Program_Level_Id__c IN: setPartnerTierIds and
@@ -305,8 +330,8 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                                                                  RecordType.DeveloperName =:ENT_WITHOUT_BENEFITS_RT]){
                                                                      setEntitlementIds.add(entitleMatrixObj.PRM_Entitlement_Id__c);
                                                                  }  
-                                                System.debug('---setEntitlementIds else---'+setEntitlementIds);
-
+                System.debug('---setEntitlementIds else---'+setEntitlementIds);
+                
             }
         }
         //}
@@ -378,9 +403,9 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         String partnerRoleIStr  = loggedUserInfo.Contact.Core_IPA_PartnerRole__c;
         //list<Core_Entitlement__c> lstEntitlements = EPUM_ContactEntitlement_Util.getCoreEntitlements();
         String query = 'SELECT Id,Name,phone,(SELECT Core_Contact_Id__c,Core_Entitlement_Id__r.Core_Display_Name__c,Core_Entitlement_Id__c FROM Contact_Entitlements__r WHERE Core_Selected__c =true AND Core_Status__c =\'Complete\' and Core_Category__c=\'Intel Partner Alliance (IPA)\'),(SELECT Id , PRM_Contact_Id__c,PRM_Relationship_Id__r.Name,PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c FROM Account_Contact_Relationships__r WHERE PRM_Status_Nm__c =\'Complete\' and  PRM_InActive_Ind__c = false) FROM Contact WHERE Core_IPA_PartnerRole__c =:partnerRoleIStr and';
-     query += '( AccountID =:intelAccountOfPC';
-    if(onePartnerIdOfPC != null && onePartnerIdOfPC !='')
-      query += ' OR Core_IPA_One_Partner_Id__c  =:onePartnerIdOfPC'; 
+        query += '( AccountID =:intelAccountOfPC';
+        if(onePartnerIdOfPC != null && onePartnerIdOfPC !='')
+            query += ' OR Core_IPA_One_Partner_Id__c  =:onePartnerIdOfPC'; 
         query+=')';
         
         return Database.query(query);
@@ -390,7 +415,7 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                 FROM User  
                 WHERE Id =:userinfo.getUserId() limit 1 ];  
     }
-
+    
     @AuraEnabled(cacheable=true)  
     public static list<String> getAvailableRoles(){  
         user loggedUserInfo = EPUM_ContactEntitlement_Util.getUserInformation();  
@@ -423,7 +448,7 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
     
     @AuraEnabled(cacheable=true)
     public static String getLogoUrl(){  
-      user loggedUserInfo = EPUM_ContactEntitlement_Util.getUserInformation();
+        user loggedUserInfo = EPUM_ContactEntitlement_Util.getUserInformation();
         String strApproved = 'Approved';
         String strProgram = 'Intel Partner Alliance';
         String tierName = '';
@@ -434,30 +459,30 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
             accId = loggedUserInfo.AccountId;
         }
         if(accId != ''){
-           List<PRM_AccountChannelMembership__c> acmObj = [SELECT PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Level_Id__r.Name 
-                                                           FROM PRM_AccountChannelMembership__c 
-                                                           WHERE PRM_Channel_Program_Id__r.Name =: strProgram 
-                                                           AND PRM_Account_Id__c=:accId 
-                                                           AND PRM_Partner_Role__c =: loggedUserInfo.Contact.Core_IPA_PartnerRole__c 
-                                                           AND PRM_Status_Nm__c =: strApproved  
-                                                           ORDER BY PRM_Channel_Program_Level_Id__r.Rank DESC LIMIT 1];
+            List<PRM_AccountChannelMembership__c> acmObj = [SELECT PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Level_Id__r.Name 
+                                                            FROM PRM_AccountChannelMembership__c 
+                                                            WHERE PRM_Channel_Program_Id__r.Name =: strProgram 
+                                                            AND PRM_Account_Id__c=:accId 
+                                                            AND PRM_Partner_Role__c =: loggedUserInfo.Contact.Core_IPA_PartnerRole__c 
+                                                            AND PRM_Status_Nm__c =: strApproved  
+                                                            ORDER BY PRM_Channel_Program_Level_Id__r.Rank DESC LIMIT 1];
             if(acmObj.size() > 0){
-              tierName = (String)acmObj[0].PRM_Channel_Program_Level_Id__r.Name; 
+                tierName = (String)acmObj[0].PRM_Channel_Program_Level_Id__r.Name; 
             }
         }        
         return tierName;
     }
-
+    
     @AuraEnabled(cacheable=true)  
     public static String getResponsibilitiesConfirmationData(){
         PRM_ResponsibilitiesDataWrapper responsibilitesDataWrapper = new PRM_ResponsibilitiesDataWrapper();
         responsibilitesDataWrapper.title = System.Label.EPUM_VerifyrolesandrespTitle;
         responsibilitesDataWrapper.imageUrl = getLogoUrl();
         String roleName = '';
-
+        
         List<PRM_ResponsibilitiesDataWrapper.cls_tableData> tableData = new List<PRM_ResponsibilitiesDataWrapper.cls_tableData>();
         //tableData.add(new PRM_ResponsibilitiesDataWrapper.cls_tableData(true, System.Label.EPUM_Responsibilities, System.Label.EPUM_Employee));
-
+        
         System.debug('getAvailableRoles'+getAvailableRoles());
         
         for(String role : getAvailableRoles()) {
@@ -474,16 +499,16 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                 tableData.add(new PRM_ResponsibilitiesDataWrapper.cls_tableData(false, role, empName));
             }
         }
-
+        
         responsibilitesDataWrapper.tableData = tableData;
-
+        
         String stepMessage = System.Label.EPUM_RolesResPopupMsg.replace('{role}',roleName);
         responsibilitesDataWrapper.content.add(new PRM_ResponsibilitiesDataWrapper.cls_content(RICHTEXT,stepMessage));
         PRM_ResponsibilitiesDataWrapper.cls_closeModalAndRedrirectLinkData closeModalAndRedrirectLinkData = new PRM_ResponsibilitiesDataWrapper.cls_closeModalAndRedrirectLinkData();
         closeModalAndRedrirectLinkData.label = System.Label.EPUM_Close;
         closeModalAndRedrirectLinkData.externalUrl = System.Label.EPUM_Manage_Personnel;//'#closeFormAndRedirectLinkData';
         responsibilitesDataWrapper.closeModalAndRedrirectLinkData = closeModalAndRedrirectLinkData;
-
+        
         PRM_ResponsibilitiesDataWrapper.cls_footerLinkData footerLinkData = new PRM_ResponsibilitiesDataWrapper.cls_footerLinkData();
         footerLinkData.label = System.Label.EPUM_ManagePersonnel;
         footerLinkData.externalUrl = System.Label.PRM_EPUM_Redirect_Link;
@@ -492,58 +517,63 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         footerLinkData.objectPage = '';
         footerLinkData.recordId = '';
         responsibilitesDataWrapper.footerLinkData = footerLinkData;
-
+        
         return JSON.serialize(responsibilitesDataWrapper);
     }
-
+    
     public static void updateACR(Contact contid){
-            
-                String STR_ELIGIBLE_ENTITLEMENT = 'Partner Admin Delegate';
-
-                Id contactid = contid.Id;
-				// Step 1: Get the Relationship Id safely
-				List<PRM_ContactRelationships__c> rels = [SELECT Id FROM PRM_ContactRelationships__c WHERE Name = :STR_ELIGIBLE_ENTITLEMENT AND PRM_InActive_Ind__c = false LIMIT 1];
-    
-				if(rels.isEmpty()){
-					System.debug('PAD relationship metadata not found for ' + STR_ELIGIBLE_ENTITLEMENT);
-					return; // Exit safely if metadata missing
-				}
-    
-				Id relationId = rels[0].Id;
-		
-
-                List<PRM_Account_Contact_Relationship__c> existingContEnt = [SELECT id,PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.name,PRM_Status_Nm__c,PRM_Start_Date_Dt__c,PRM_InActive_Ind__c,PRM_Status_Reason_Txt__c FROM PRM_Account_Contact_Relationship__c WHERE /*PRM_Relationship_Id__r.name = :STR_ELIGIBLE_ENTITLEMENT*/ PRM_Relationship_Id__c = :relationId AND PRM_Contact_Id__c = :contactid];
-
-
-                list<PRM_Account_Contact_Relationship__c> acrForPAD = new list<PRM_Account_Contact_Relationship__c>();
-
-                if(existingContEnt != null && !existingContEnt.isEmpty()){
-                    for(PRM_Account_Contact_Relationship__c acr : existingContEnt){
-                        if(acr.PRM_InActive_Ind__c == true){
-                            acr.PRM_Status_Nm__c = 'Complete';
-                            acr.PRM_InActive_Ind__c = false;
-                            acr.PRM_Start_Date_Dt__c = Date.today();
-                            acr.PRM_Status_Reason_Txt__c = 'ACR activated due to assignment of PAD from Manage personnel';
-                        }
-                        acrForPAD.add(acr);
-                    }
+        
+        System.debug('@RRT contid'+contid);
+        String STR_ELIGIBLE_ENTITLEMENT = 'Partner Admin Delegate';
+        
+        Id contactid = contid.Id;
+        // Step 1: Get the Relationship Id safely
+        List<PRM_ContactRelationships__c> rels = [SELECT Id FROM PRM_ContactRelationships__c WHERE Name = :STR_ELIGIBLE_ENTITLEMENT AND PRM_InActive_Ind__c = false LIMIT 1];
+        
+        if(rels.isEmpty()){
+            System.debug('PAD relationship metadata not found for ' + STR_ELIGIBLE_ENTITLEMENT);
+            return; // Exit safely if metadata missing
+        }
+        
+        Id relationId = rels[0].Id;
+        
+        
+        List<PRM_Account_Contact_Relationship__c> existingContEnt = [SELECT id,PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.name,PRM_Status_Nm__c,PRM_Start_Date_Dt__c,PRM_InActive_Ind__c,PRM_Status_Reason_Txt__c FROM PRM_Account_Contact_Relationship__c WHERE /*PRM_Relationship_Id__r.name = :STR_ELIGIBLE_ENTITLEMENT*/ PRM_Relationship_Id__c = :relationId AND PRM_Contact_Id__c = :contactid];
+        
+        //Id RelationId= [SELECT Id FROM PRM_ContactRelationships__c WHERE name = :STR_ELIGIBLE_ENTITLEMENT AND PRM_InActive_Ind__c = false LIMIT 1].Id;
+        
+        /*for(PRM_ContactRelationships__c pcr : [SELECT Id FROM PRM_ContactRelationships__c WHERE name =: STR_ELIGIBLE_ENTITLEMENT AND PRM_InActive_Ind__c = false LIMIT 1]){
+RelationId = pcr.id;
+}*/
+        System.debug('@RRT existingContEnt'+existingContEnt);
+        list<PRM_Account_Contact_Relationship__c> acrForPAD = new list<PRM_Account_Contact_Relationship__c>();
+        
+        if(existingContEnt != null && !existingContEnt.isEmpty()){
+            for(PRM_Account_Contact_Relationship__c acr : existingContEnt){
+                if(acr.PRM_InActive_Ind__c == true){
+                    acr.PRM_Status_Nm__c = 'Complete';
+                    acr.PRM_InActive_Ind__c = false;
+                    acr.PRM_Start_Date_Dt__c = Date.today();
+                    acr.PRM_Status_Reason_Txt__c = 'ACR activated due to assignment of PAD from Manage personnel';
                 }
-                else{
-                    acrForPAD.add(new PRM_Account_Contact_Relationship__c (
-                                    PRM_Account_Id__c = contid.AccountId,
-                                    PRM_Contact_Id__c = contid.Id,
-                                    PRM_Relationship_Id__c =  relationId,
-                                    PRM_Status_Reason_Txt__c = 'ACR activated due to assignment of PAD from Manage personnel',
-                                    PRM_Start_Date_Dt__c = Date.today(),
-                                    PRM_Status_Nm__c = 'Complete'
-                                    ));
-                }
-
-
-                    if(!acrForPAD.isEmpty()){
-
-                        Database.UpsertResult[] results = Database.upsert(acrForPAD, false);
-                    }
-                
+                acrForPAD.add(acr);
             }
+        }
+        else{
+            acrForPAD.add(new PRM_Account_Contact_Relationship__c (
+                PRM_Account_Id__c = contid.AccountId,
+                PRM_Contact_Id__c = contid.Id,
+                PRM_Relationship_Id__c =  relationId,
+                PRM_Status_Reason_Txt__c = 'ACR activated due to assignment of PAD from Manage personnel',
+                PRM_Start_Date_Dt__c = Date.today(),
+                PRM_Status_Nm__c = 'Complete'
+            ));
+        }
+        System.debug('@RRT acrForPAD'+acrForPAD);
+        
+        if(!acrForPAD.isEmpty()){
+            
+            Database.UpsertResult[] results = Database.upsert(acrForPAD, false);
+        }                
+    }
 }

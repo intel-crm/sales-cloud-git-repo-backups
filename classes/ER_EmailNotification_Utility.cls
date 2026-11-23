@@ -54,7 +54,6 @@ public Without Sharing class ER_EmailNotification_Utility
         set<String> emailSet= new set<String>();
         Map<EmailNotification,ContactTemplateWrapper> conWrappMap= new Map<EmailNotification,ContactTemplateWrapper>();
         Map<EmailNotification,Map<String,SObject>> objDetailsMapEmailNot= new Map<EmailNotification,Map<String,SObject>>();
-        if(objEmailNotifList != Null && !objEmailNotifList.isEmpty()){
         for(EmailNotification objEmailNotifValue : objEmailNotifList)
         {
             for(ER_Email_Configuration__mdt emailConfig: objEmailNotifValue.emailConfigMapValue.get(objEmailNotifValue)){
@@ -90,10 +89,8 @@ public Without Sharing class ER_EmailNotification_Utility
                         }
                     }
                 }
-                
             }  
-        }
-        }
+        } 
         List<PRM_Registration_Request__c> prmList = new List<PRM_Registration_Request__c>();
         for(EmailNotification emailNoti: objEmailNotifList){
             prmEmailLogMap=processEmailLogs(conWrappMap.get(emailNoti),objDetailsMapEmailNot.get(emailNoti));
@@ -118,7 +115,8 @@ public Without Sharing class ER_EmailNotification_Utility
                 
             } 
         }
-        if(prmList.size() > 0 && Schema.sObjectType.PRM_Registration_Request__c.isAccessible() && Schema.sObjectType.PRM_Registration_Request__c.isUpdateable()){    
+ 
+        if(Schema.sObjectType.PRM_Registration_Request__c.isAccessible() && Schema.sObjectType.PRM_Registration_Request__c.isUpdateable()){    
             update prmList;
         }
          

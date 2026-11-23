@@ -158,6 +158,18 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Pricing_Unique_Migration_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>A unique id assigned to the record. This will be used to migrate the data from one environment to another using Copado or other data tools.</description>
+        <externalId>true</externalId>
+        <label>Unique Migration Id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>SBQQ__Active__c</fullName>
         <defaultValue>false</defaultValue>
         <deprecated>false</deprecated>
@@ -357,9 +369,20 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>core_cpq_Quote_Term_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Quote Term Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Quote Term</label>
     <listViews>
         <fullName>SBQQ__All</fullName>
+        <columns>core_cpq_Quote_Term_Name__c</columns>
         <columns>NAME</columns>
         <columns>SBQQ__PrintOrder__c</columns>
         <columns>SBQQ__Active__c</columns>
@@ -387,6 +410,7 @@
         <lookupDialogsAdditionalFields>SBQQ__Body__c</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>SBQQ__Status__c</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>SBQQ__Type__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>core_cpq_Quote_Term_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__Active__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__Status__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>SBQQ__Type__c</searchResultsAdditionalFields>

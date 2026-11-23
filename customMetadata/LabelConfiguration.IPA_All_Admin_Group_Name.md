@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">PRM_IPA_Registration_Approvers</value>
+        <value xsi:type="xsd:string">IPA_All_Intel_Admin_Users</value>
     </values>
 </CustomMetadata>

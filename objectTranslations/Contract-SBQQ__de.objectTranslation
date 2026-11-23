@@ -21,6 +21,14 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
         <help><!-- Determines if this contract is in effect. --></help>
         <label>Aktiver Vertrag</label>
         <name>SBQQ__ActiveContract__c</name>
@@ -120,7 +128,7 @@
         <relationshipLabel>Verträge</relationshipLabel>
     </fields>
     <fields>
-        <help><!-- Select the checkbox to maintain bundle hierarchy on renewal quotes. --></help>
+        <help><!-- Select checkbox to maintain bundle hierarchy on renewal quotes. --></help>
         <label>Paketstruktur beibehalten</label>
         <name>SBQQ__PreserveBundleStructureUponRenewals__c</name>
     </fields>
@@ -237,6 +245,10 @@
     <validationRules>
         <errorMessage><!-- Contract Status cannot be changed. --></errorMessage>
         <name>Sales_Contract_Status_change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please activate the Contract before proceeding. --></errorMessage>
+        <name>Sales_validateStatus_BeforeAmend</name>
     </validationRules>
     <webLinks>
         <label>Ändern</label>

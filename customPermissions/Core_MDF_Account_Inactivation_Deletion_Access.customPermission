@@ -2,5 +2,5 @@
 <CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>This Custom permission will grant inactive or delete permission to Account Budget admin, payment admin and program admin</description>
     <isLicensed>false</isLicensed>
-    <label>AccountInactivationDeletionAccess</label>
+    <label>AccountInactivationDeletionAccessTest</label>
 </CustomPermission>

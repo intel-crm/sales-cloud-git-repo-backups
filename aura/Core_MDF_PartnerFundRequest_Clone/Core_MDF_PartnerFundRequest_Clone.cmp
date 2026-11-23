@@ -56,7 +56,12 @@
                     <!-- EOL - Commented below condition associated to Channel MDF Program and added updated condition -->
             <!--      <aura:if isTrue="{!and(v.recordtypeDeveloperName != $Label.c.Core_MDF_Channel_MDF,v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType)}"> -->
                       <aura:if isTrue="{!(v.recordtypeDeveloperName != $Label.c.Core_MDF_IPA_RecordType)}">
-                        <c:Core_Intel_createEditPFR checkCloneAttribute ="{!v.cloneAttribute}"  checkCloneRecordId ="{!v.recordId}"/>
+                        <aura:if isTrue="{!and(v.isOutcomeBased, or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF, v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF))}">
+                            <c:Core_MDF_CreateEditCCFDCFOutcomeBasedActivity checkCloneAttribute ="{!v.cloneAttribute}"  checkCloneRecordId ="{!v.recordId}"/>
+                            <aura:set attribute="else">
+                                <c:Core_Intel_createEditPFR checkCloneAttribute ="{!v.cloneAttribute}"  checkCloneRecordId ="{!v.recordId}"/>
+                            </aura:set>
+                        </aura:if>
                     </aura:if>  
                 </div>
             </aura:if>

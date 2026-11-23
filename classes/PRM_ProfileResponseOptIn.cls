@@ -29,7 +29,6 @@ public without sharing class PRM_ProfileResponseOptIn {
          Id profAnsId;
          final String APPROVED_VALUE = 'Approved';
          partnerRoleArray = accList[0].Core_IPA_Partner_Role__c.split(';');
-         //system.debug(' Partner roles array :'+partnerRoleArray);
          List<String> existingPRListOfQuesIds = new List<String>();
          List<PRM_Profile_Responses__c> proResToUpdateNotEligible= new List<PRM_Profile_Responses__c>();
          for(PRM_Profile_Answer__c profAns : [Select Id,PRM_Answer_Cd__c,PRM_Profile_Questions_Id__r.id,PRM_Answer_Display_Txt__c from PRM_Profile_Answer__c where PRM_Answer_Cd__c=: Label.PRM_Points_Not_Eligible_True OR  PRM_Answer_Cd__c=: Label.PRM_Points_Not_Eligible_False ]){
@@ -38,8 +37,6 @@ public without sharing class PRM_ProfileResponseOptIn {
          
          if(partnerRoleArray.contains(System.Label.PRM_Service_Provider) || partnerRoleArray.contains(System.Label.PRM_Seller) || partnerRoleArray.contains(System.Label.PRM_OEM) || partnerRoleArray.contains(System.Label.PRM_Independent_Software_Vendor) || partnerRoleArray.contains(System.Label.PRM_Solution_Integrator) )
          {
-             //system.debug('@@ Partner Roles in the account : '+partnerRoleArray);
-             //system.debug('Required Partner Role found !!');
              
              if(accList != null && accList.size()>0)
              {
@@ -53,9 +50,6 @@ public without sharing class PRM_ProfileResponseOptIn {
                      existingPRListOfQuesIds.add(String.valueOf(profResp.PRM_Profile_Questions_Id__c));
                  }
              }
-             //system.debug('@@ Profile Response Question Ids : '+existingPRListOfQuesIds);
-             //system.debug('@@ List of Accounts received : '+accList);
-             //system.debug('@@ List of Contacts received : '+contList);
              //US856784: Updating existing point eligble flag to false if OPT In eligible Partner role comes through registration approval for account.
              if(proResToUpdateNotEligible.size()>0){
                  update proResToUpdateNotEligible;
@@ -65,26 +59,20 @@ public without sharing class PRM_ProfileResponseOptIn {
              for(PRM_Profile_Answer__c profAns : [Select Id,PRM_Answer_Cd__c,PRM_Profile_Questions_Id__r.id,PRM_Answer_Display_Txt__c from PRM_Profile_Answer__c where PRM_Answer_Cd__c=:System.Label.PRM_Answer_Code_OptInTrue  ]){
                  profAnsMap.put(profAns.PRM_Answer_Cd__c,profAns);
              }
-             //system.debug('@@@'+profAnsMap);
              
              for(String str : profAnsMap.keyset())
              {
                  profQuesId = profAnsMap.get(str).PRM_Profile_Questions_Id__r.id;
                  profAnsId = profAnsMap.get(str).id;
-                 //system.debug('Question id'+profQuesId);
-                 //system.debug('Answer id'+profAnsId);
              }
              for(String str1 : existingPRListOfQuesIds)
              {
-                 //system.debug('@@ Existing Question Id : '+str1);
                  if(str1 == profQuesId)
                  {
                      shouldInsert = false;
-                     //system.debug('Code Terminated !!');
                      return;
                  }
              }
-             //system.debug('@@ Profile Answer Id : '+profAnsId);
              PRM_Profile_Responses__c profResponse = new PRM_Profile_Responses__c();
              if(profQuesId != null){
                  profResponse.PRM_Profile_Questions_Id__c = profQuesId;
@@ -100,17 +88,13 @@ public without sharing class PRM_ProfileResponseOptIn {
              }
              profResponse.PRM_Response_Txt__c = System.Label.PRM_Response_Text_True;
              profResponse.PRM_InActive_Ind__c = false;
-             //system.debug('@@ Profile response record to be inserted : '+profResponse);
              
              if(profResponse != null && shouldInsert == true){
                  insert profResponse;
-                 //system.debug('Profile Response successfully inserted !!');
              }
          }
          //US856784: Set the point not eligible flag for Partner roles that are not eligible for Points opt in.
          else if(partnerRoleArray.contains(Label.PRM_Distributor_Partner_Role) || partnerRoleArray.contains(Label.PRM_FPGA_Designer_Partner_role) || partnerRoleArray.contains(Label.PRM_Manufacturer_Partner_Role)|| partnerRoleArray.contains(Label.PRM_Guest_Partner_Role)|| partnerRoleArray.contains(Label.PRM_Sponsor_Partner_Role)){
-             //system.debug('@@ Partner Roles in the account : '+partnerRoleArray);
-             //system.debug('Required Partner Role found !!');
              if(accList != null && accList.size()>0)
              {
                  for(PRM_Profile_Responses__c profResp : [Select Id,PRM_Account_Id__c,PRM_Profile_Questions_Id__c from PRM_Profile_Responses__c where PRM_Account_Id__c =: accList[0].Id])
@@ -123,9 +107,6 @@ public without sharing class PRM_ProfileResponseOptIn {
                      existingPRListOfQuesIds.add(String.valueOf(profResp.PRM_Profile_Questions_Id__c));
                  }
              }
-             //system.debug('@@ Profile Response Question Ids : '+existingPRListOfQuesIds);
-             //system.debug('@@ List of Accounts received : '+accList);
-             //system.debug('@@ List of Contacts received : '+contList);
              
              if(proResToUpdateNotEligible.size()>0){
                  update proResToUpdateNotEligible;
@@ -135,26 +116,20 @@ public without sharing class PRM_ProfileResponseOptIn {
                  profAnsMap.put(profAns.PRM_Answer_Cd__c,profAns);
              }  
              
-             //system.debug('@@@'+profAnsMap);
              for(String str : profAnsMap.keyset())
              {
                  profQuesId = profAnsMap.get(str).PRM_Profile_Questions_Id__r.id;
                  profAnsId = profAnsMap.get(str).id;
-                 //system.debug('Question id'+profQuesId);
-                 //system.debug('Answer id'+profAnsId);
              }
              
              
              //if the existing record have points not eligible then it will not insert new record for the same
              for(String str1 : existingPRListOfQuesIds){
-                //system.debug('@@ Existing Question Id : '+str1);
                  if(str1 == profQuesId){   
                      shouldInsert = false;
-                     //system.debug('Code Terminated !!');
                      return;
                  }
              }
-             //system.debug('@@ Profile Answer Id : '+profAnsId);
              PRM_Profile_Responses__c profResponse = new PRM_Profile_Responses__c();
              if(profQuesId != null){
                  profResponse.PRM_Profile_Questions_Id__c = profQuesId;
@@ -170,11 +145,9 @@ public without sharing class PRM_ProfileResponseOptIn {
              }
              profResponse.PRM_Response_Txt__c = System.Label.PRM_Response_Text_True;
              profResponse.PRM_InActive_Ind__c = false;
-             //system.debug('@@ Profile response record to be inserted : '+profResponse);
              
              if(profResponse != null && shouldInsert == true){
                  insert profResponse;//inserting profile response with Profile Question as Points Not Eligible as true for account.
-                 //system.debug('Profile Response successfully inserted !!');
              }
          }
      } */
@@ -254,7 +227,6 @@ public without sharing class PRM_ProfileResponseOptIn {
              Id profQuesId;
              Id profAnsId;
                  List<String> partnerRoleArray  = (eachAcc.Core_IPA_Partner_Role__c.split(';'));
-                 //system.debug('Each Acc --'+eachAcc);
                  if(partnerRoleArray.contains(System.Label.PRM_Service_Provider) || partnerRoleArray.contains(System.Label.PRM_Seller) || partnerRoleArray.contains(System.Label.PRM_OEM) || partnerRoleArray.contains(System.Label.PRM_Independent_Software_Vendor) || partnerRoleArray.contains(System.Label.PRM_Solution_Integrator)){
                      profQuesId = profAnsPointsOptInTrue.PRM_Profile_Questions_Id__r.id;
                      profAnsId = profAnsPointsOptInTrue.id;
@@ -280,9 +252,7 @@ public without sharing class PRM_ProfileResponseOptIn {
                      profResponse.PRM_Contact_Id__c = contactList[0];    
                  }
              }
-             //system.debug('Account List--->'+accList);
              if(accList.size() > 0){
-                 //system.debug('Each Acc Id--->'+eachAcc.Id);
                  profResponse.PRM_Account_Id__c = eachAcc.Id;
              }
              //profResponse.PRM_Response_Txt__c = System.Label.PRM_Response_Text_True;
@@ -293,7 +263,6 @@ public without sharing class PRM_ProfileResponseOptIn {
                  proResListInsert.add(profResponse);
              }  
          }
-         //system.debug('ProREsList--->'+proResListInsert);
          if(proResListInsert.size() > 0){
              Insert proResListInsert;
              
@@ -709,7 +678,8 @@ public without sharing class PRM_ProfileResponseOptIn {
     public static List<Core_Account_Group_Member__c> getCAGList(Set<Id> accIdSet){
         List<Core_Account_Group_Member__c> cagList = new List<Core_Account_Group_Member__c>();
         if(accIdSet!= null && !accIdSet.isEmpty()){
-          cagList = [SELECT Id, Name, Core_Partner_Account_Id__c, Core_Partner_Account_Id__r.Core_Account_Type__c,  Core_Partner_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c,Core_Intel_Partner_Alliance_PartnerGroup__c from Core_Account_Group_Member__c WHERE Core_Intel_Account_Id__c in :accIdSet  AND Core_Inactive_Ind__c != true];    
+            //ATHR Fix - TWC729-9556 - JB
+          cagList = [SELECT Id, Name, Core_Partner_Account_Id__c, Core_Partner_Account_Id__r.Core_Account_Type__c,  Core_Partner_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c,Core_Intel_Partner_Alliance_PartnerGroup__c from Core_Account_Group_Member__c WHERE Core_Intel_Account_Id__c in :accIdSet  AND  /* Core_Inactive_Ind__c != true*/ Core_Inactive_Ind__c=false];    
         }
         return cagList;
     }
@@ -749,7 +719,7 @@ public without sharing class PRM_ProfileResponseOptIn {
             
             if(!opidAccIdWithApprovedPartnerRole.isEmpty()){   
                 
-                List<PRM_IPAMembership_Attributes__c> profResList = [SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c,lastmodifieddate, PRM_Inactive_ind__c from PRM_IPAMembership_Attributes__c where PRM_Account_Id__c IN :opidAccIdWithApprovedPartnerRole.keyset()  order by PRM_Account_Id__c];
+                List<PRM_IPAMembership_Attributes__c> profResList = [SELECT Id,RecordTypeId, PRM_Points_Not_Eligible_Reason_Txt__c, PRM_Points_Not_Eligible_Ind__c, PRM_Points_Not_Eligible_Dt__c, PRM_Component_Point_earning_excl_Ind__c, PRM_Component_Point_earning_excl_Dt__c, PRM_Branded_Point_earning_excl_Ind__c, PRM_Branded_Point_earning_excl_Dt__c, PRM_ODM_whiteboxPointEarning_excl_Ind__c, PRM_ODM_whiteboxPointEarning_excl_Dt__c,PRM_Activity_earning_excluded__c,PRM_Activity_earning_excluded_Start_Date__c,PRM_Client_Business_earning_excluded__c,PRM_ClientBusinessexcluded_StartDate__c,PRM_Ethernet_Business_earning_excluded__c,PRM_Ethernet_BusinessexcludedStartDt__c,PRM_Server_Business_earning_excluded__c,PRM_Server_Business_excluded_Start_Date__c, PRM_Registration_Source_Txt__c, PRM_Points_Opt_in_Ind__c, PRM_Points_Opt_in_Dt__c, PRM_Point_Status_Txt__c, PRM_Point_Status_Dt__c, PRM_Point_Status_Reason_Txt__c, PRM_Account_Id__c,lastmodifieddate, PRM_Inactive_ind__c from PRM_IPAMembership_Attributes__c where PRM_Account_Id__c IN :opidAccIdWithApprovedPartnerRole.keyset()  order by PRM_Account_Id__c];
                 logEntryMsg+='\nprofResList:'+profResList;
                 Map<Id, List<PRM_IPAMembership_Attributes__c>> opidAccIdProdRespMap = new Map<Id, List<PRM_IPAMembership_Attributes__c>>();//check if its list or single record
         Map<String, String> fieldLabelsMap = PRM_IPAR_ProfileResponse_Utility.getProfResFieldNames();
@@ -757,7 +727,7 @@ public without sharing class PRM_ProfileResponseOptIn {
                 for(PRM_IPAMembership_Attributes__c  prodRes: profResList){
                                         
                     //BYPASS any IPA record flagged as inactive
-                    if(prodRes.PRM_Inactive_ind__c== false){
+                    if(prodRes.PRM_Inactive_ind__c== true){
                         opidProfRespSet.add(prodRes);
                         accountMap.remove(opidaccIdLocAccIdMap.get(prodRes.PRM_Account_Id__c));
                         continue;
@@ -874,7 +844,7 @@ public without sharing class PRM_ProfileResponseOptIn {
             for(PRM_IPAMembership_Attributes__c pr : [select id,PRM_Account_Id__c,PRM_Points_Not_Eligible_Ind__c,PRM_Points_Not_Eligible_Dt__c,PRM_Points_Opt_in_Ind__c,PRM_Points_Opt_in_Dt__c, PRM_Inactive_ind__c from PRM_IPAMembership_Attributes__c where PRM_Account_Id__c IN:accList]) { 
                 exisitngPRMap.put(pr.PRM_Account_Id__c , pr);
             }
-            for(PRM_AccountChannelMembership__c acm:[select id, PRM_Status_Nm__c, PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Account_Id__c, PRM_Channel_Program_Level_Id__c, PRM_Partner_Role__c,PRM_Account_Id__r.RecordType.DeveloperName 
+            for(PRM_AccountChannelMembership__c acm:[select id, PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Role__c /*PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Channel_Program_Level_Id__c, ,PRM_Account_Id__r.RecordType.DeveloperName */ //ATHR Fix - TWC729-9556 - JB
                                                     from PRM_AccountChannelMembership__c where PRM_Account_Id__c in: accList]){
                 if(acm.PRM_Status_Nm__c=='Inactive' ){
                     if (!accIdACMRecMap.containsKey(acm.PRM_Account_Id__c)) {

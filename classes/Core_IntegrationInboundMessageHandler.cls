@@ -156,7 +156,7 @@ public without sharing class Core_IntegrationInboundMessageHandler {
         List<A_E_Integration_Status_Detail__c> IntegrtionStatusDetailList=new List<A_E_Integration_Status_Detail__c>();
         List<A_E_Integration_Status_Detail__c> IntegrtionStatusDetailDeleteList=new List<A_E_Integration_Status_Detail__c>(); //Draco Change [END] - 22-02-2022 ------- Delete previous integration status detail record if there is no error in the new Inbound
         Map<string,Id> ErrorMapping = new Map<string,Id>();
-        for(A_E_Error_Mapping__c errorcde:[Select id,A_E_Error_Code_Txt__c from A_E_Error_Mapping__c ])
+        for(A_E_Error_Mapping__c errorcde:[Select id,A_E_Error_Code_Txt__c from A_E_Error_Mapping__c LIMIT 100]) //Ganesh Changes
         {
             ErrorMapping.put(errorcde.A_E_Error_Code_Txt__c,errorcde.id); 
         }
@@ -282,7 +282,8 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                         mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesERPM')) 
                         && newList[0].Core_Message_Type__c == ERPM_MSG_ACCOUNT) {
                         Core_IntInboundMsgERPM_Account.processAccountMessages(newList);
-                }*/else if ((newList[0].Core_Source_System__c == SOURCE_ERPM) && (!mapFunctionalityNameTriggerExecution.isEmpty() &&
+                        }*/
+                    	else if ((newList[0].Core_Source_System__c == SOURCE_ERPM) && (!mapFunctionalityNameTriggerExecution.isEmpty() &&
                                                                   mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesERPM')) &&
             (mapFunctionalityNameTriggerExecution.get('processInboundMessagesERPM').Core_Active__c)
             && newList[0].Core_Message_Type__c == ERPM_MSG_BLACKBOX) {
@@ -295,76 +296,78 @@ public without sharing class Core_IntegrationInboundMessageHandler {
                            Core_IntegrationInboundMessageAGS.processMessages2_0(newList);
                        }
                 }
-            //for bank and payment handling
+                //for bank and payment handling, marketplace translation, and tender processing
                 if(newList != NULL && newList.size() > 0){
-                Map<Id,Core_Integration_Inbound_Message__c> newMapToBeProcessed = new Map<Id,Core_Integration_Inbound_Message__c>();
-                Map<Id,Core_Integration_Inbound_Message__c> newMapToBeProcessedForPayments = new Map<Id,Core_Integration_Inbound_Message__c>();
-                for(Core_Integration_Inbound_Message__c iMessageRecord : newList){
-                    if(SOURCE_SYSTEMS.contains(iMessageRecord.Core_Source_System__c.toUpperCase())){
-                        if(('Bank').equalsIgnoreCase(iMessageRecord.Core_Message_Type__c)){
-                            newMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
-                        }
-                        if(('Payment').equalsIgnoreCase(iMessageRecord.Core_Message_Type__c)){
-                            newMapToBeProcessedForPayments.put(iMessageRecord.Id, iMessageRecord);
-                        }
-                    }
-                }
-                if(newMapToBeProcessed.size() > 0){
-                    Core_MDF_UpdateBankDetails.updateBankRecords(newMapToBeProcessed);
-                }
-                if(newMapToBeProcessedForPayments.size() > 0){
-                    Core_MDF_PaymentServiceHandler.updatePaymentRecords(newMapToBeProcessedForPayments);
-                }
-            }   
-            
-            //Added by Onyx Team to process GLS Marketplace Translation messages
-            if(newList.size() > 0){
-                Map<Id,Core_Integration_Inbound_Message__c> MapToBeProcessed = new Map<Id,Core_Integration_Inbound_Message__c>();
-                for(Core_Integration_Inbound_Message__c iMessageRecord : newList){
-                    if (iMessageRecord.Core_Message_Type__c == MSG_TYPE_MP_TRANSLATION) 
-                    {
-                        MapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
-                    }
-                }
-                /*if(MapToBeProcessed.size() > 0){
-                    PMP_Locale_Inbound_Msg.updateLocaleDetails(MapToBeProcessed);
-                }*/ //Commented as part of IPA2.0 EOL'ing
-            }
-            
-            //Added by Tanzanite Team to process GLS Partner Marketplace Translation messages
-            if(newList.size() > 0){
-                Map<Id,Core_Integration_Inbound_Message__c> newMapToBeProcessed = new Map<Id,Core_Integration_Inbound_Message__c>();
-                
-                for(Core_Integration_Inbound_Message__c iMessageRecord : newList){          
-                    if (iMessageRecord.Core_Message_Type__c == MSG_TYPE_MP_TRANSLATION_PARTNER){  
-                        //              if (iMessageRecord.Core_Message_Type__c == MSG_TYPE_MP_TRANSLATION){
-                        newMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
-                    }
-                }
-                //Commented for TranslationEOL
-                /*if(newMapToBeProcessed.size() > 0){
-                    PMP_Partner_Locale_Inbound_Msg.updateLocaleDetails(newMapToBeProcessed);
-                }*/
-            }
-            List<Core_Integration_Inbound_Message__c> tenderInboundMsgList = new List<Core_Integration_Inbound_Message__c>();
-            List<Core_Integration_Inbound_Message__c> tenderClaimsInboundMsgList = new List<Core_Integration_Inbound_Message__c>();
-            List<Core_Integration_Inbound_Message__c> tenderConsumptionInboundMsgList = new List<Core_Integration_Inbound_Message__c>();
-            //Process IIM only on Insert
-            if (!mapFunctionalityNameTriggerExecution.isEmpty() &&
-                mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesIQR') &&
-                mapFunctionalityNameTriggerExecution.get('processInboundMessagesIQR').Core_Active__c) {
+                    Map<Id,Core_Integration_Inbound_Message__c> bankMapToBeProcessed = new Map<Id,Core_Integration_Inbound_Message__c>();
+                    Map<Id,Core_Integration_Inbound_Message__c> paymentMapToBeProcessed = new Map<Id,Core_Integration_Inbound_Message__c>();
+                    Map<Id,Core_Integration_Inbound_Message__c> mpTranslationMapToBeProcessed = new Map<Id,Core_Integration_Inbound_Message__c>();
+                    Map<Id,Core_Integration_Inbound_Message__c> mpPartnerTranslationMapToBeProcessed = new Map<Id,Core_Integration_Inbound_Message__c>();
+                    List<Core_Integration_Inbound_Message__c> tenderInboundMsgList = new List<Core_Integration_Inbound_Message__c>();
+                    List<Core_Integration_Inbound_Message__c> tenderClaimsInboundMsgList = new List<Core_Integration_Inbound_Message__c>();
+                    List<Core_Integration_Inbound_Message__c> tenderConsumptionInboundMsgList = new List<Core_Integration_Inbound_Message__c>();
                     
-                    for(Core_Integration_Inbound_Message__c inboundMsg : newList){
-                        if (oldMap == null && inboundMsg.Core_Source_System__c == SOURCE_MYDEALS && inboundMsg.Core_Message_Type__c == MSG_TYPE_TENDER){ //Check if IIM inserted
-                            tenderInboundMsgList.add(inboundMsg);
-                        }else if(inboundMsg.Core_Source_System__c == SOURCE_MYDEALS && inboundMsg.Core_Message_Type__c == MSG_TYPE_TENDER && inboundMsg.Core_Processing_Status__c == MSG_PENDING_STATUS){ //Check if IIM updated
-                            tenderInboundMsgList.add(inboundMsg);
-                        }else if(oldMap == null && inboundMsg.Core_Source_System__c == SOURCE_MYDEALS && inboundMsg.Core_Message_Type__c == MSG_TYPE_TENDER_CLAIMS){
-                            tenderClaimsInboundMsgList.add(inboundMsg);
-                        }else if(oldMap == null && inboundMsg.Core_Source_System__c == SOURCE_MYDEALS && inboundMsg.Core_Message_Type__c == MSG_TYPE_TENDER_CONSUMPTION){
-                            tenderConsumptionInboundMsgList.add(inboundMsg);
+                    // Single loop to handle all processing
+                    for(Core_Integration_Inbound_Message__c iMessageRecord : newList){
+                        // Bank and Payment handling
+                        /*if(SOURCE_SYSTEMS.contains(iMessageRecord.Core_Source_System__c.toUpperCase())){
+                        if(('Bank').equalsIgnoreCase(iMessageRecord.Core_Message_Type__c)){
+                        bankMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
                         }
+                        else if(('Payment').equalsIgnoreCase(iMessageRecord.Core_Message_Type__c)){
+                        paymentMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
+                        }
+                        }*/
+                        
+                        String src = iMessageRecord.Core_Source_System__c;
+                        if(src != null && SOURCE_SYSTEMS.contains(src.toUpperCase())){
+                            String msgType = iMessageRecord.Core_Message_Type__c;
+                            if(msgType != null && ('Bank').equalsIgnoreCase(msgType)){
+                                bankMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
+                            }
+                            if(msgType != null && ('Payment').equalsIgnoreCase(msgType)){
+                                paymentMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
+                            }
+                        }
+                        
+                        
+                        //Added by Onyx Team to process GLS Marketplace Translation messages
+                        if (iMessageRecord.Core_Message_Type__c == MSG_TYPE_MP_TRANSLATION) {
+                            mpTranslationMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
+                        }
+                        //Added by Tanzanite Team to process GLS Partner Marketplace Translation messages
+                        else if (iMessageRecord.Core_Message_Type__c == MSG_TYPE_MP_TRANSLATION_PARTNER) {
+                            mpPartnerTranslationMapToBeProcessed.put(iMessageRecord.Id, iMessageRecord);
+                        }
+                        
+                        if (!mapFunctionalityNameTriggerExecution.isEmpty() &&
+                            mapFunctionalityNameTriggerExecution.containsKey('processInboundMessagesIQR') &&
+                            mapFunctionalityNameTriggerExecution.get('processInboundMessagesIQR').Core_Active__c) {
+                                
+                                if (oldMap == null && iMessageRecord.Core_Source_System__c == SOURCE_MYDEALS && iMessageRecord.Core_Message_Type__c == MSG_TYPE_TENDER){//check if IIM Inserted
+                                    tenderInboundMsgList.add(iMessageRecord);
+                                }else if(iMessageRecord.Core_Source_System__c == SOURCE_MYDEALS && iMessageRecord.Core_Message_Type__c == MSG_TYPE_TENDER && iMessageRecord.Core_Processing_Status__c == MSG_PENDING_STATUS){//Check if IIM Updated
+                                    tenderInboundMsgList.add(iMessageRecord);
+                                }else if(oldMap == null && iMessageRecord.Core_Source_System__c == SOURCE_MYDEALS && iMessageRecord.Core_Message_Type__c == MSG_TYPE_TENDER_CLAIMS){
+                                    tenderClaimsInboundMsgList.add(iMessageRecord);
+                                }else if(oldMap == null && iMessageRecord.Core_Source_System__c == SOURCE_MYDEALS && iMessageRecord.Core_Message_Type__c == MSG_TYPE_TENDER_CONSUMPTION){
+                                    tenderConsumptionInboundMsgList.add(iMessageRecord);
+                                }
+                            }
                     }
+                    
+                    if(bankMapToBeProcessed.size() > 0){
+                        Core_MDF_UpdateBankDetails.updateBankRecords(bankMapToBeProcessed);
+                    }
+                    if(paymentMapToBeProcessed.size() > 0){
+                        Core_MDF_PaymentServiceHandler.updatePaymentRecords(paymentMapToBeProcessed);
+                    }
+                    /*  if(mpTranslationMapToBeProcessed.size() > 0){
+                    PMP_Locale_Inbound_Msg.updateLocaleDetails(mpTranslationMapToBeProcessed);
+                    } */ //Commented as part of IPA2.0 EOL'ing
+                                        //Commented for TranslationEOL
+                                        /* if(mpPartnerTranslationMapToBeProcessed.size() > 0){
+                    PMP_Partner_Locale_Inbound_Msg.updateLocaleDetails(mpPartnerTranslationMapToBeProcessed);
+                    }*/
                     if(!tenderInboundMsgList.isEmpty()){
                         Pricing_IntegrationSFDCToPricingSystems integrationSystem = new Pricing_IntegrationSFDCToPricingSystems();
                         integrationSystem.processMessages(tenderInboundMsgList);

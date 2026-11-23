@@ -15,6 +15,7 @@ public without sharing class Pricing_QuoteCloneController {
         sObjectId =  String.escapeSingleQuotes(String.valueOf(sObjectId));
         GlobalVariables globalVar = new GlobalVariables();
         
+        Boolean loggedInAEUser = false;
         List<SBQQ__Quote__c> parentSObjects;
         SBQQ__Quote__c parent;
         String query;
@@ -27,6 +28,9 @@ public without sharing class Pricing_QuoteCloneController {
         // STORE CURRENT USER'S PERMISSION SETS IN A LIST
         Boolean isQuoteCloneAllowed = false;
         for (PermissionSetAssignment psa : lstcurrentUserPerSet) {
+            if(psa.PermissionSet.Name == Label.Pricing_Tender_PermissionSets_TenderAccountExecutive){
+                loggedInAEUser = true;
+            }
             if(cloneAllowedPersonaPS.contains(psa.PermissionSet.Name)){
                 isQuoteCloneAllowed = true;
                 break;
@@ -157,7 +161,7 @@ public without sharing class Pricing_QuoteCloneController {
             } catch (Exception error) {
                 //Create Error Log when an Exception Occurs
                 Pricing_Tender_Utility.logError(error, sObjectId);
-                globalVar.messageResult = JSON.serialize(error.getMessage());
+                globalVar.messageResult = JSON.serialize(error.getMessage()).contains(Label.Pricing_Duplicate_FSE_Error) ? Label.Pricing_Duplicate_FSE_Error : JSON.serialize(error.getMessage());
                 globalVar.quoteId = null;
                 globalVar.isSuccess = false;
                 return globalVar;
@@ -299,6 +303,7 @@ public without sharing class Pricing_QuoteCloneController {
                 newQuoteLine.Pricing_Lost_Reason_Nm__c = null;
                 newQuoteLine.Pricing_SDM_Fast_Track__c = false;
                 newQuoteLine.Pricing_Change_Request_Type__c = null;
+
                 //TPT
                 newQuoteLine.Pricing_Original_Submitted_By_Id__c = null;
                 newQuoteLine.Pricing_Original_Submitted_Date_dt__c = null;
@@ -336,7 +341,8 @@ public without sharing class Pricing_QuoteCloneController {
                     newQuoteLine.Pricing_Intel_SKU_Performance_Nbr__c = null;
                     newQuoteLine.Pricing_Performance_Metric_Nm__c = null;
                     newQuoteLine.Pricing_Write_In_Performance_Metric_Nm__c = null;
-
+                    //newQuoteLine.Pricing_Market_Segment_Nm__c = null;
+                    //newQuoteLine.Pricing_Market_Segment_values_Nm__c = null;
                 }
                 else{
                     newQuoteLine.Pricing_Market_Segment_Nm__c = Label.Pricing_Tender_Market_Segment_Default;
@@ -351,12 +357,10 @@ public without sharing class Pricing_QuoteCloneController {
                 newQuoteLine.Pricing_Previous_Inbound_Msg_Number__c = null;
                 
                 //blank out AI fields on clone, OEM CR, RPM CR
-                newQuoteLine.Pricing_Reason_for_FeedBack_Txt__c = null;
+               
                 newQuoteLine.Pricing_Recommendation_FeedBack_Nm__c = null;  
                 newQuoteLine.Pricing_Recommended_Price_Amt__c   = null;
-          	    newQuoteLine.Pricing_Price_Interval_Txt__c = null;
-                newQuoteLine.Pricing_Discount_Pct__c = null;
-                newQuoteLine.Pricing_Tentative_ECAP_Price_Amt__c = null;
+          		newQuoteLine.Pricing_Price_Interval_Txt__c = null;
                 newQuoteLine.Pricing_HPC_Eligible_Pricing_Envelope__c = null;//PAA V2
                 newQuoteLine.Pricing_Rationale_for_Pricing__c = null;//citrus change
                 newQuoteLine.Pricing_Application_Agent_Status__c = null;//citrus change
@@ -365,7 +369,6 @@ public without sharing class Pricing_QuoteCloneController {
                 newQuoteLine.Pricing_Last_Credit_Debit_Date_Dt__c = null;
                 newQuoteLine.Pricing_Credit_Volume_qty__c = null;
                 newQuoteLine.Pricing_Credit_Dollars_Amt__c = null;
-		
                 //insert newQuoteLine;
                 quoteLineList.add(newQuoteLine);
                 //Database.insert(newQuoteLine);
@@ -444,7 +447,10 @@ public without sharing class Pricing_QuoteCloneController {
         Id recordTypeId;
         String recordTypeDeveloperName = '';
         recordTypeDeveloperName = (quoteType == Label.Pricing_Tender_Standard_Quote) ? Label.Pricing_Tender_Quote_RecordType_Create
-            :(quoteType == Label.Pricing_Tender_Small_Volume_Quote) ? Label.Pricing_Small_Volume_Quote_Create : Label.Pricing_Tender_Quote_RecordType_Create;
+            :(quoteType == Label.Pricing_Tender_Small_Volume_Quote) ? Label.Pricing_Small_Volume_Quote_Create
+                //:(quoteType == Label.Pricing_Tender_SSD_Quote) ? Label.Pricing_SSD_Quote_Create
+                    //:(quoteType == Label.Pricing_Tender_PMem_Quote) ? Label.Pricing_PMem_Quote_Create
+                        : Label.Pricing_Tender_Quote_RecordType_Create;
         
         if(recordTypeDeveloperName!= null){
             recordTypeId = Pricing_Tender_Utility.getRecordTypeId('SBQQ__Quote__c',recordTypeDeveloperName);

@@ -109,7 +109,7 @@ public class Core_Opp_KPI_Handler_Test {
             oldKPIMap.put(OppKPI1.Id, OppKPI1);      
             Database.SaveResult[] srList = Database.update(GoalLst, false);
             //Core_Opp_KPI_Handler.updDWGonInstUpdtKPI(newKPIList,oldKPIMap,true);        
-            Test.stopTest(); 
+            Test.stopTest();
             system.assertEquals(Goal.Core_Goal_KPI_Match_Flag__c,true); 
            //}catch(Exception e){System.debug('Exception from Test class-->'+e.getMessage()+' @ Line Number'+e.getLinenumber());}
     }
@@ -183,7 +183,7 @@ public class Core_Opp_KPI_Handler_Test {
             oldKPIMap.put(OppKPI.Id, OppKPI);
             oldKPIMap.put(OppKPI1.Id, OppKPI1);
             //Core_Opp_KPI_Handler.updDWGonInstUpdtKPI(newKPIList,oldKPIMap,true);          
-            Test.stopTest();            
+            Test.stopTest();
             system.assertEquals(false, OppKPI.Core_Opp_KPI_Achieved__c);            
         //}catch(Exception e){System.debug('Exception from Test class-->'+e.getMessage()+' @ Line Number'+e.getLinenumber());}
         

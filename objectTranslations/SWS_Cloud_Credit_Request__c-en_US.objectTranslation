@@ -13,6 +13,35 @@
         <name>SWS_Additional_Event_Information__c</name>
     </fields>
     <fields>
+        <label><!-- Approval Required For Product --></label>
+        <name>SWS_ApprovalRequiredForProduct_fm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>SWS_Approval_status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recalled</masterLabel>
+            <translation><!-- Recalled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approver --></label>
+        <name>SWS_Approver__c</name>
+        <relationshipLabel><!-- Cloud Credit Requests (Approver) --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- SATG and Community and Academic Outreach programs may request the following types of cloud coupons. --></help>
         <label><!-- Community Program – Coupon Type --></label>
         <name>SWS_Community_Program_Coupon_Type__c</name>
@@ -206,6 +235,7 @@ Intel program not listed? Contact the AI Cloud IDC.Getting.Started@intel.com -->
         <name>SWS_Event_Start_Date__c</name>
     </fields>
     <fields>
+        <help><!-- This field specifies end date of the coupon in UTC. By default, the coupon end time will be 11:59 PM of the selected date --></help>
         <label><!-- End Date --></label>
         <name>SWS_Expiry_Date__c</name>
     </fields>
@@ -249,6 +279,11 @@ Intel program not listed? Contact the AI Cloud IDC.Getting.Started@intel.com -->
             <masterLabel>Other</masterLabel>
             <translation><!-- Other --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- HW Compute Platform (Not Used) --></label>
+        <name>SWS_HW_Compute_Platform__c</name>
+        <relationshipLabel><!-- Cloud Credit Requests --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Visit https://console.cloud.intel.com/ &gt; Hardware Catalogue for more information. State whether your customer will need VM Small/Med/Large/Bare Metal, how many machines/instances and for how long (Start and End Date). 
@@ -329,6 +364,10 @@ HW reservations are not guaranteed with this Request Form. --></help>
         <name>SWS_Last_redeemed_date__c</name>
     </fields>
     <fields>
+        <label><!-- Lead Stage --></label>
+        <name>SWS_Lead_Stage__c</name>
+    </fields>
+    <fields>
         <label><!-- Lead --></label>
         <name>SWS_Lead__c</name>
         <relationshipLabel><!-- Cloud Credit Requests --></relationshipLabel>
@@ -338,7 +377,11 @@ HW reservations are not guaranteed with this Request Form. --></help>
         <name>SWS_Locked__c</name>
     </fields>
     <fields>
-        <label><!-- Number of users --></label>
+        <label><!-- SWS_LogoUrl --></label>
+        <name>SWS_LogoUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Users --></label>
         <name>SWS_No_Of_User__c</name>
     </fields>
     <fields>
@@ -437,7 +480,6 @@ HW reservations are not guaranteed with this Request Form. --></help>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Select the type or reason you are requesting a cloud coupon. --></help>
         <label><!-- Request Type --></label>
         <name>SWS_Request_Type__c</name>
         <picklistValues>
@@ -487,6 +529,10 @@ HW reservations are not guaranteed with this Request Form. --></help>
         <name>SWS_Start_Date__c</name>
     </fields>
     <fields>
+        <label><!-- Start Date --></label>
+        <name>SWS_Start_Datetime__c</name>
+    </fields>
+    <fields>
         <label><!-- Submitted By --></label>
         <name>SWS_Submitted_By__c</name>
         <relationshipLabel><!-- Cloud Credit Requests (Submitted By) --></relationshipLabel>
@@ -494,6 +540,15 @@ HW reservations are not guaranteed with this Request Form. --></help>
     <fields>
         <label><!-- Submitted On --></label>
         <name>SWS_Submitted_On__c</name>
+    </fields>
+    <fields>
+        <label><!-- Submitted By for Approval --></label>
+        <name>SWS_Submitted_by_for_approval__c</name>
+        <relationshipLabel><!-- Cloud Credit Requests (Submitted By for Approval) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Submitted for Approval On --></label>
+        <name>SWS_Submitted_for_Approval_On__c</name>
     </fields>
     <fields>
         <help><!-- Submitter email will be cc&apos;d in the coupon email --></help>
@@ -589,12 +644,20 @@ HW reservations are not guaranteed with this Request Form. --></help>
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage><!-- Select an approver --></errorMessage>
+        <name>Approver_not_blank_for_Gaudi2_product</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- This is required field --></errorMessage>
         <name>Community_Program_Coupon_cannot_blank</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This is required field --></errorMessage>
         <name>Company_Name_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Compute_Platform_cannot_be_empty</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This is required field --></errorMessage>
@@ -625,6 +688,14 @@ HW reservations are not guaranteed with this Request Form. --></help>
         <name>End_Date_Greater_than_Current_Date</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- End date cannot be less than start date --></errorMessage>
+        <name>End_Date_Greater_than_Start_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>End_Date_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- End date cannot exceed 1 year + 1 day from today. --></errorMessage>
         <name>End_date_not_exceeds_more_than_1_year</name>
     </validationRules>
@@ -649,7 +720,7 @@ HW reservations are not guaranteed with this Request Form. --></help>
         <name>Event_country_name_cannot_be_blank</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Expiry date cannot be less than current date --></errorMessage>
+        <errorMessage><!-- Expiry date cannot be less than start date --></errorMessage>
         <name>Expiry_Date_Greater_than_Start_date</name>
     </validationRules>
     <validationRules>
@@ -667,6 +738,10 @@ HW reservations are not guaranteed with this Request Form. --></help>
     <validationRules>
         <errorMessage><!-- This is required field --></errorMessage>
         <name>HW_Compute_Quantity_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select a different value, as this is not a Giveaway coupon. --></errorMessage>
+        <name>Incorrect_value_for_Cloud_Coupon_Type</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Select a different value, as this is not a Giveaway coupon. --></errorMessage>
@@ -714,6 +789,10 @@ HW reservations are not guaranteed with this Request Form. --></help>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This is required field --></errorMessage>
+        <name>Processing_Team_cannot_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
         <name>Program_name_cannot_be_blank</name>
     </validationRules>
     <validationRules>
@@ -739,6 +818,10 @@ HW reservations are not guaranteed with this Request Form. --></help>
     <validationRules>
         <errorMessage><!-- You can&apos;t change this value --></errorMessage>
         <name>SW_Lead_creation_validation_rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This is required field --></errorMessage>
+        <name>Salesforce_Opportunity_ID_cannot_blank</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- This is required field --></errorMessage>

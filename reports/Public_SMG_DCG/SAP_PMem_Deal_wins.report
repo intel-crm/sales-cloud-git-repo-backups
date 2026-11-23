@@ -79,7 +79,7 @@
         <field>Opportunity.Core_ISV_OSV__c</field>
     </columns>
     <filter>
-        <booleanFilter>(((1 AND 2 AND (3 or 9) AND 5 AND 6 AND 7 and (4 or 8)))) AND 10</booleanFilter>
+        <booleanFilter>((1 AND 2 AND (3 or 9) AND 5 AND 6 AND 7 and (4 or 8)))</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -92,7 +92,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>win approved,won,production</value>
+            <value>win approved,won,production win,production lost,production cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_KPI_Product_Group__c</column>
@@ -142,13 +142,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Intel® Optane™ Persistent Memory</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>sap</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

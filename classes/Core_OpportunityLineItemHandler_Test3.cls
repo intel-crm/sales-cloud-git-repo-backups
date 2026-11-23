@@ -126,7 +126,6 @@ public class Core_OpportunityLineItemHandler_Test3 {
         //System.assertEquals('Description', oppProdHistory[7].Core_Field__c);
         //System.assertEquals('Test 12', oppProdHistory[7].Core_Old_Value__c);
         //System.assertEquals(null, oppProdHistory[7].Core_New_Value__c);
-	System.assertEquals(true,true);
     }
     
     // Test a simple delete of a few line items
@@ -156,7 +155,6 @@ public class Core_OpportunityLineItemHandler_Test3 {
         //System.assertEquals('Core_BU_Short_Name__c', oppProdHistory[0].Core_Field__c);
         //System.assertEquals('T11', oppProdHistory[0].Core_Old_Value__c);
         //System.assertEquals(null, oppProdHistory[0].Core_New_Value__c);
-	System.assertEquals(true,true);
     }
     
     // Test a bulk update of many line items
@@ -182,7 +180,9 @@ public class Core_OpportunityLineItemHandler_Test3 {
         Test.startTest();
         update testOppLineItems;
         Test.stopTest();
-        System.assertEquals(true,true);
+        
+        // Make sure we now have the expected amount of field history entries
+        //System.assertEquals(300, [select count() from Core_Opportunity_Product_History__c]);
     }
     
     // Test a bulk delete of many line items
@@ -197,6 +197,8 @@ public class Core_OpportunityLineItemHandler_Test3 {
         Test.startTest();
         delete testOppLineItems;
         Test.stopTest();
-        System.assertEquals(true,true);
+        
+        // Make sure we now have the expected amount of field history entries
+        //System.assertEquals(400, [select count() from Core_Opportunity_Product_History__c]);
     }
 }

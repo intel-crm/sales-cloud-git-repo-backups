@@ -237,13 +237,13 @@
     <multilineLayoutFields>Product2Id</multilineLayoutFields>
     <multilineLayoutFields>Quantity</multilineLayoutFields>
     <multilineLayoutFields>Core_Status__c</multilineLayoutFields>
-    <multilineLayoutFields>Core_Write_In_Product_Name__c</multilineLayoutFields>
     <multilineLayoutFields>UnitPrice</multilineLayoutFields>
+    <multilineLayoutFields>Core_Write_In_Product_Name__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Loss_Cancel_Reason__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Competitor__c</multilineLayoutFields>
-    <multilineLayoutFields>Core_Vendor__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Competitor_Product__c</multilineLayoutFields>
     <multilineLayoutFields>OpportunityId</multilineLayoutFields>
+    <multilineLayoutFields>Core_Vendor__c</multilineLayoutFields>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

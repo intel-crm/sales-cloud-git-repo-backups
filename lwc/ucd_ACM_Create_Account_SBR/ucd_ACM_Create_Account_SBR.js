@@ -24,8 +24,7 @@ import WarningLabel from "@salesforce/label/c.UCD_UserSearchError";
 import UCD_ACM_Intel_Covered_Undefined_SalesGroup from '@salesforce/label/c.UCD_ACM_Intel_Covered_Undefined_SalesGroup';
 import UCD_ACM_Intel_Covered_NotPartnerLed_SalesGroup from '@salesforce/label/c.UCD_ACM_Intel_Covered_NotPartnerLed_SalesGroup';
 import UCD_ACM_Intel_Covered_PartnerLed_SalesGroup from '@salesforce/label/c.UCD_ACM_Intel_Covered_PartnerLed_SalesGroup';
-import getCountryRegion from '@salesforce/apex/ACM_CountryReferenceController.getCountryRegion';
-
+import getCountryRegion from '@salesforce/apex/CountryReferenceController.getCountryRegion';
 
 const accRequestColumns = [
     { label: 'ARQ ID', fieldName: 'recordUrl', type: 'url', typeAttributes: { label: { fieldName: 'acctRequestId' }, target: '_blank' } },
@@ -201,11 +200,6 @@ export default class ucd_ACM_Create_Account_SBR extends NavigationMixin(Lightnin
             });
             getCountryRegion({ isoCode: countryIsoCode }).then(result => {
                 this.template.querySelector('.Region').value = result.Core_Geo__c ? result.Core_Geo__c : null;
-                if (result.Core_Geo__c === 'PRC') {
-                    this.isUmbrellaGroupRequired = false;
-                    this.disableUmbrellaGroup = true;
-                    this.template.querySelector('.UmbrellaGrp').value = '';
-                }
             }).catch(error => {
                 console.log(error);
             });
@@ -312,10 +306,9 @@ export default class ucd_ACM_Create_Account_SBR extends NavigationMixin(Lightnin
             console.log('Industry--> ' + event.target.value);
             this.industry = event.target.value;
             // Check if Umbrella Group should be required
-            const requiredIndustries = ['Government'];
+            const requiredIndustries = ['Defense and Space', 'Education', 'Government'];
             this.isUmbrellaGroupRequired = requiredIndustries.includes(event.target.value);
-            var Regiontemp = this.template.querySelector('.Region').value;
-            if (((Regiontemp && Regiontemp != 'PRC') || Regiontemp == null) && requiredIndustries.includes(event.target.value)) {
+            if (requiredIndustries.includes(event.target.value)) {
                 this.disableUmbrellaGroup = false;
                 this.isUmbrellaGroupRequired = true;
             } else {
@@ -424,6 +417,7 @@ export default class ucd_ACM_Create_Account_SBR extends NavigationMixin(Lightnin
     handleError(event) {
         this.isOpenModal = false
         console.log('Inside handle error' + JSON.stringify(event.detail));
+        console.log('event' + event, detail.detail);
         this.loaded = false;
         this.spinLoad = false;
         if (JSON.stringify(event.detail.detail) === '""') {
@@ -583,6 +577,7 @@ export default class ucd_ACM_Create_Account_SBR extends NavigationMixin(Lightnin
                     this.spinLoad = false;
                 });
             this.fields = event.detail.fields;
+
         }
         else {
             this.spinLoad = false;

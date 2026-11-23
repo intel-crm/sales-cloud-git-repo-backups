@@ -3,8 +3,8 @@
     <contactEmail>divyax.gangasaram@intel.com</contactEmail>
     <label>IQR Einstein</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/authcallback/IQR_Einstien_Salesforce</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6pWEh_P9Gff3jGpeei5Ac80xxZ9qL1VzeXvARvMqFAgpdmyA1jqymYQTkKHx</consumerKey>
+        <callbackUrl>https://intel--crmdevint3.sandbox.my.salesforce.com/services/authcallback/IQR_Einstien_Salesforce</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDvkfBh.o_Ga8TeoD9ctyWbSIEBO0X3.0nw3wD4BbwnpV6eQyzjW_oV8fc_uQ</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -28,8 +28,8 @@
         <scopes>Wave</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>BYPASS</ipRelaxation>
+        <ipRelaxation>ENFORCE</ipRelaxation>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
-        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
 </ConnectedApp>

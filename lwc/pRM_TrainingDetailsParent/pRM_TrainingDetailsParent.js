@@ -1,10 +1,8 @@
 import { LightningElement, track, api } from 'lwc';
 import pgSize from '@salesforce/label/c.PRM_SOD_Training_Page_Size';
-import PRM_SalesDetailsExt_Style from '@salesforce/resourceUrl/PRM_SalesDetailsExt_Style'
-import { loadStyle } from 'lightning/platformResourceLoader'
 export default class PRM_TrainingDetails extends LightningElement {
     @api page = 1;
-    @api totalrecords = 0;
+    @api totalrecords;
     @api _pagesize = pgSize;
     get pagesize() {
         return this._pagesize;
@@ -33,18 +31,5 @@ export default class PRM_TrainingDetails extends LightningElement {
     }
     handlePageChange(event) {
         this.page = event.detail;
-    }
-    renderedCallback() {
-        if (this.isCssLoaded)
-        return
-        this.isCssLoaded = true
-            loadStyle(this, PRM_SalesDetailsExt_Style)
-            // loadStyle(this, Core_INTC + '/theme/styles/corebundle.min.css')
-        .then(() => {
-        console.log("Loaded Successfully")
-        })
-        .catch(error => {
-            console.error("Error in loading the colors")
-        })
     }
 }

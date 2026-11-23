@@ -94,7 +94,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Incentive - # of Design Wins</masterLabel>
-            <translation>인센티브 - 설계 승리 수</translation>
+            <translation><!-- Incentive - # of Design Wins --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Incentive - # of Units Sold</masterLabel>
@@ -158,7 +158,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Deal Wins</masterLabel>
-            <translation>기술 활성화 - 거래 승리 수</translation>
+            <translation><!-- Technical Activation - # of Deal Wins --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Deployments</masterLabel>
@@ -166,7 +166,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Design Wins</masterLabel>
-            <translation>기술 활성화 - 설계 승리 수</translation>
+            <translation><!-- Technical Activation - # of Design Wins --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Activation - # of Downloads</masterLabel>

@@ -81,6 +81,21 @@
         <unique>false</unique>
     </fields>
     <label>CCP Country Geo Mapping</label>
+    <listViews>
+        <fullName>QA_SA_List_View</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Core_MDF_Geo__c</columns>
+        <columns>Core_MDF_Sub_Geo__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_MDF_Geo__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </filters>
+        <label>QA_SA List View</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>CCP Country Geo Mappings</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

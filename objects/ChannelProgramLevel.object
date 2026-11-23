@@ -182,6 +182,17 @@
         <fullName>Rank</fullName>
         <trackHistory>false</trackHistory>
     </fields>
+    <listViews>
+        <fullName>All_Channel_Program_Levels</fullName>
+        <columns>Name</columns>
+        <columns>Program</columns>
+        <columns>Rank</columns>
+        <columns>Description</columns>
+        <columns>PRM_inactind__c</columns>
+        <columns>PRM_Partner_Tier_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Channel Program Levels</label>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>Program</customTabListAdditionalFields>
         <customTabListAdditionalFields>Rank</customTabListAdditionalFields>

@@ -1,10 +1,8 @@
 <apex:page standardController="Account" extensions="Core_IPS_AccountTeam_Calculation" action="{!calculateTeam}">
-<apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
 <apex:includeScript value="{!URLFOR($Resource.CKeditor, '/ckeditor/ckeditor.js')}"/>
 <script>
 $( document ).ready(function() { 
     var status = new Boolean('{!JSENCODE(successStatus)}'); /*--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability */
-    //console.log(status);
     if(status)
     {
         window.location.href ='/{!JSENCODE(accId)}';  

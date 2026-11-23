@@ -23,7 +23,7 @@ https://signindev.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM
 ทีม Intel® Partner Alliance ของคุณ
 
 ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
 ความเป็นส่วนตัว | คุ้กกี้</textOnly>
     <type>custom</type>

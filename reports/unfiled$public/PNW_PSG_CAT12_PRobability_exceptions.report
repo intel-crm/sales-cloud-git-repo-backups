@@ -159,7 +159,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>0</value>
+            <value>0.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -173,7 +173,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>25,50,100</value>
+            <value>25.00,50.0,100.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -187,7 +187,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>25,75</value>
+            <value>25.00,75.00</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -201,7 +201,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>100</value>
+            <value>100.0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

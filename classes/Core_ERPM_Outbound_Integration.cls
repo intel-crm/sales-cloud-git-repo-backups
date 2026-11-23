@@ -13,6 +13,8 @@ public without sharing class Core_ERPM_Outbound_Integration {
         if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
             Map<id,Contact> contactsMap = new Map<Id,Contact>();
             Map<Id,Contact> contactsToBeUpdated = new Map<Id,Contact>();
+        List<string> communityEntitlements = System.Label.PRM_CommunityEntitlement.split(';') ;  // TWC729-3874
+        set<id> contactsWithCommunityEnt = new set<id>();                                       // TWC729-3874
             if((contactList != null && contactList.size() > 0) || (contactIdList != null && contactIdList.size() > 0)){
                 /*List<Id> contactIdList = new List<Id>();
     for(Contact contact : contactList) {
@@ -35,12 +37,12 @@ public without sharing class Core_ERPM_Outbound_Integration {
                 //[SELECT Id, Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__c FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c =: contactIdList AND Core_Status__c = 'Pending'])
                 
                 for(Contact contact : [SELECT Id,Core_AGS_Integration_Status__c,Core_AGS_Republish_Ind__c,Core_ERPM_Integration_Queue_txt__c,Core_ERPM_Integration_Status__c,PRM_IPA_Integration_Status__c,Core_Login_Status__c,LastModifiedById,
-                                    (SELECT Id,Core_Entitlement_Id__c, Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__c,Core_Entitlement_Id__r.name,/*Core_Entitlement_Id__r.Core_Entitlement_Type__c,*/Core_Status__c FROM Contact_Entitlements__r) FROM Contact WHERE Id IN : contactIdList]) {  //TWC729-3874
+                                   (SELECT Id,Core_Entitlement_Id__c, Core_Entitlement_Id__r.Core_ERPM_Engagement_Id__c,Core_Entitlement_Id__r.name,Core_Entitlement_Id__r.Core_Entitlement_Type__c,Core_Status__c FROM Contact_Entitlements__r) FROM Contact WHERE Id IN : contactIdList]) {  //TWC729-3874
                                         
                                         
                                         boolean addedToContactList = false;
                                         for(Core_Contact_Entitlement__c contEnt: contact.Contact_Entitlements__r){
-                                            if(contEnt.Core_Status__c == 'Pending' /*&& contEnt.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'AGS'*/){
+                                           if(contEnt.Core_Status__c == 'Pending' && contEnt.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'AGS'){
                                                 UpdateAGSStatus = true;
                                             }
                                         }
@@ -150,20 +152,20 @@ public without sharing class Core_ERPM_Outbound_Integration {
             }
             
             if(!contactsToUpdateNew.isEmpty()){
-                try {
+               try {
                     update contactsToUpdateNew;
                 } catch (Exception e) {
                     // Log error instead of failing the transaction
                     Core_Log_Entry__c logEntry = new Core_Log_Entry__c( Core_Message__c = 'Error while updating contacts',Core_Project__c = 'ERPM Outbound Integration',Core_Origin__c = 'ERPM Outbound Integration',Core_Details__c = e.getMessage(),Core_Severity__c = 'info',Core_When__c = System.now());
             		Database.insert(logEntry, false);
                 }
-                
             }  
         }     
     }
     
     public static void forceSetERPMOutboundIntegrationStatus(List<Contact> contactList) {
         Map<String,Integer> contactEntitilementCountMapping = new Map<String,Integer>();
+        Map<Id,String> contactEntitilementStatusMap = new Map<Id,String>();
         Set<Id> contactIdSet= new Set<id>();
         for(Contact contact : contactList){
             contactIdSet.add(contact.id);

@@ -48,5 +48,5 @@ ISPICKVAL( {!$Record.Core_Promote_Status__c} , &apos;In Progress&apos; )),
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

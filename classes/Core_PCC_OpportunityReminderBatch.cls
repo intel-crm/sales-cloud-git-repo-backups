@@ -9,7 +9,7 @@ Modification Log :
 * ----------------------------------------------------------------------------
 * Chowdary Jahnavi 30/04/2024 Original Version developed
 *******************************************************************************************************************************************************************/
-public without sharing class Core_PCC_OpportunityReminderBatch implements Database.Batchable<sObject>, Database.AllowsCallouts {
+public class Core_PCC_OpportunityReminderBatch implements Database.Batchable<sObject>, Database.AllowsCallouts {
     public static String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
     public static List<EmailTemplate> emailTemplate = [SELECT id,DeveloperName FROM EMailTemplate WHERE DeveloperName= 'Core_PCC_OppReminder30daysBeforeCloseDt'];
     public Database.QueryLocator start(Database.BatchableContext BC) {

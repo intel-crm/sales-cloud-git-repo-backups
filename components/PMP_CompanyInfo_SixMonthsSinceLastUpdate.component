@@ -71,9 +71,8 @@
                         <br/>Hello<br/><br/>
                         We want to ensure your Intel® Partner Showcase {!partnerType} gets the attention it deserves from our global audience.<br/><br/>
                         We’ve noticed you haven’t updated your <span style ="text-transform:lowercase">{!partnerType} </span> in the past six months.
-                        Please take a moment to review and update your company information and offerings with any necessary updates, revisions, or additions. 
+                        Please take a moment to review and update your company information <!--and offerings--><!--IPA 2.0-->with any necessary updates, revisions, or additions. 
                         <br/>
-                        <!--Partners who keep their <span style ="text-transform:lowercase">{!partnerType} </span> updated with their latest company and solution information tend to see more traffic, giving them the ability to garner more page views, leads, customers, and strategic partnerships.-->
                     </td>
                 </tr>
                       <!-- CTA -->

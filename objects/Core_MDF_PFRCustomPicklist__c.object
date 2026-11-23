@@ -612,6 +612,12 @@
                     <label>Mechanical Development</label>
                 </value>
                 <value>
+                    <fullName>Other – Eng Act field</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other – Eng Act field</label>
+                </value>
+                <value>
                     <fullName>Plan Exit</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -1204,52 +1210,6 @@
                 <valueName>Affiliate</valueName>
             </valueSettings>
             <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <valueName>Connected IPOS</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <valueName>End Cap</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
-                <controllingFieldValue>Collateral</controllingFieldValue>
-                <valueName>Giveaway</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <valueName>IPOS/ePOS</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
-                <valueName>Promoter</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <valueName>Riser</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
-                <valueName>Signage</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <controllingFieldValue>NonPartner.com</controllingFieldValue>
-                <valueName>Video</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
-                <valueName>Zone</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
-                <valueName>Other (In-Store Promotion)</valueName>
-            </valueSettings>
-            <valueSettings>
                 <controllingFieldValue>Joint Event</controllingFieldValue>
                 <valueName>Demonstration</valueName>
             </valueSettings>
@@ -1353,6 +1313,11 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>NonPartner.com</controllingFieldValue>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <valueName>Video</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NonPartner.com</controllingFieldValue>
                 <valueName>Lead Generation</valueName>
             </valueSettings>
             <valueSettings>
@@ -1362,6 +1327,47 @@
             <valueSettings>
                 <controllingFieldValue>NonPartner.com</controllingFieldValue>
                 <valueName>DCF SMF</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <valueName>Connected IPOS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <valueName>End Cap</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
+                <controllingFieldValue>Collateral</controllingFieldValue>
+                <valueName>Giveaway</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <valueName>IPOS/ePOS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
+                <valueName>Promoter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <valueName>Riser</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
+                <valueName>Signage</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
+                <valueName>Zone</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>In-Store Promotion</controllingFieldValue>
+                <valueName>Other (In-Store Promotion)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Out-of-Store Promotion</controllingFieldValue>
@@ -1659,10 +1665,28 @@
                     <label>Zone</label>
                 </value>
                 <value>
+                    <fullName>Other (In-Store Promotion)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other (In-Store Promotion)</label>
+                </value>
+                <value>
+                    <fullName>Other (Out-Of-Store Promotion)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other (Out-Of-Store Promotion)</label>
+                </value>
+                <value>
                     <fullName>Searchandizing - Banner/Display</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Searchandizing - Banner/Display</label>
+                </value>
+                <value>
+                    <fullName>Traffic Driver + Landing Page</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Traffic Driver + Landing Page</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
@@ -1693,6 +1717,18 @@
                 <valueName>Search</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Joint Event</controllingFieldValue>
+                <valueName>Demonstration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Joint Event</controllingFieldValue>
+                <valueName>Other (Joint Event)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Joint Event</controllingFieldValue>
+                <valueName>Sales Onsite</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Direct Mail</controllingFieldValue>
                 <controllingFieldValue>Collateral</controllingFieldValue>
                 <valueName>Catalog/Brochure</valueName>
@@ -1710,18 +1746,6 @@
             <valueSettings>
                 <controllingFieldValue>Direct Mail</controllingFieldValue>
                 <valueName>Other (Direct Mail)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Joint Event</controllingFieldValue>
-                <valueName>Demonstration</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Joint Event</controllingFieldValue>
-                <valueName>Other (Joint Event)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Joint Event</controllingFieldValue>
-                <valueName>Sales Onsite</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Member.com</controllingFieldValue>
@@ -3729,6 +3753,12 @@
                     <fullName>Intel® Optane™ Solid State Drives</fullName>
                     <default>false</default>
                     <label>Intel® Optane™ Solid State Drives</label>
+                </value>
+                <value>
+                    <fullName>Intel® Optane™ Solid State Drives  </fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel® Optane™ Solid State Drives  </label>
                 </value>
                 <value>
                     <fullName>Intel® Pentium ®</fullName>
@@ -6513,6 +6543,108 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>Core_MDF_Outcome_Region_nm__c</fullName>
+        <label>Region</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Geo</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Outcome_Type_nm__c</fullName>
+        <label>Outcome Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Marketing</fullName>
+                    <default>false</default>
+                    <label>Marketing</label>
+                </value>
+                <value>
+                    <fullName>Business</fullName>
+                    <default>false</default>
+                    <label>Business</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Outcomes_nm__c</fullName>
+        <label>Outcome Metric</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Core_MDF_Outcome_Type_nm__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetName>Core_MDF_Outcomes_nm</valueSetName>
+            <valueSettings>
+                <controllingFieldValue>Marketing</controllingFieldValue>
+                <valueName>Brand Awareness</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Marketing</controllingFieldValue>
+                <valueName>Consideration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Marketing</controllingFieldValue>
+                <valueName>Purchase Intent</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Marketing</controllingFieldValue>
+                <valueName>Preference</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Marketing</controllingFieldValue>
+                <valueName>Share of Voice</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Revenue - Billings</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Revenue - Pipelines/Opportunities</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Revenue - Deal Wins</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Revenue - Consumption / ARR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Volume - Units</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Volume - Leads</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Volume - Pipeline/Opportunities</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Volume - Deal Wins</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Business</controllingFieldValue>
+                <valueName>Design Wins</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_MDF_POP_Requirement_nm__c</fullName>
         <label>POP Requirement</label>
         <required>false</required>
@@ -7157,6 +7289,12 @@
                     <label>Technical Influencer</label>
                 </value>
                 <value>
+                    <fullName>Test LOV Target Audience</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Test LOV Target Audience</label>
+                </value>
+                <value>
                     <fullName>Unmanaged Small Business</fullName>
                     <default>false</default>
                     <label>Unmanaged Small Business</label>
@@ -7183,7 +7321,7 @@
     <pluralLabel>PartnerFundRequest Picklist</pluralLabel>
     <recordTypes>
         <fullName>Core_MDF_Channel_MDF_Account_Based</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Channel MDF - Account based Record type</description>
         <label>Channel MDF- Account Based</label>
         <picklistValues>
@@ -7361,10 +7499,6 @@
             </values>
             <values>
                 <fullName>Tech Exploration-%3EDemo Hardware</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Exploration-%3EDemo Hardware%2FCloud Instance</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10504,10 +10638,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Supercomputing %28SC%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VMware Explore EU</fullName>
                 <default>false</default>
             </values>
@@ -10620,6 +10750,10 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Others</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10753,15 +10887,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>AI Inference %E2%80%93 Datacenter</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>AI Inferencing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AI Inferencing %E2%80%93 Edge</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -10901,10 +11027,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Solution Scale %28IPA Accelerators%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Solution Scale %28MRS%2FRRK and AI ISV PW%29</fullName>
                 <default>false</default>
             </values>
@@ -10938,6 +11060,99 @@
             </values>
             <values>
                 <fullName>vRAN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -11385,7 +11600,7 @@
     </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Channel_MDF_Proposal_Based</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Channel MDF - Proposal based Record type</description>
         <label>Channel MDF- Proposal Based</label>
         <picklistValues>
@@ -11803,10 +12018,6 @@
             </values>
             <values>
                 <fullName>Tech Exploration-%3EDemo Hardware</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Exploration-%3EDemo Hardware%2FCloud Instance</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14718,10 +14929,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Supercomputing %28SC%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VMware Explore EU</fullName>
                 <default>false</default>
             </values>
@@ -14834,6 +15041,10 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Others</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -14967,15 +15178,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>AI Inference %E2%80%93 Datacenter</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>AI Inferencing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AI Inferencing %E2%80%93 Edge</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15115,10 +15318,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Solution Scale %28IPA Accelerators%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Solution Scale %28MRS%2FRRK and AI ISV PW%29</fullName>
                 <default>false</default>
             </values>
@@ -15152,6 +15351,99 @@
             </values>
             <values>
                 <fullName>vRAN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -15270,6 +15562,10 @@
             </values>
             <values>
                 <fullName>Edge</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edge Computing</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -15540,6 +15836,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Edge Computing</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Extend Platform Leadership</fullName>
                 <default>false</default>
             </values>
@@ -15756,6 +16056,10 @@
             </values>
             <values>
                 <fullName>Digital Workplace</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Edge Computing</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -20245,6 +20549,99 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_POP_Requirement_nm__c</picklist>
             <values>
                 <fullName>Documentation %28photographs%2C printouts%2C test results%29</fullName>
@@ -20426,6 +20823,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -20463,6 +20864,14 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -20801,6 +21210,18 @@
             </values>
             <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -24275,6 +24696,99 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_POP_Requirement_nm__c</picklist>
             <values>
                 <fullName>Documentation %28photographs%2C printouts%2C test results%29</fullName>
@@ -25671,18 +26185,6 @@
         <picklistValues>
             <picklist>Core_MDF_Activity_Category_Type__c</picklist>
             <values>
-                <fullName>Audio 2025-%3EOther %28Audio%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Audio 2025-%3EPodcast</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Audio 2025-%3ERadio</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Broadcast-%3EOther %28Broadcast%29</fullName>
                 <default>false</default>
             </values>
@@ -25703,67 +26205,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Buyer Incentive 2025-%3EOffer - Bundle</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive 2025-%3EOffer - Contest</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive 2025-%3EOffer - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive 2025-%3EOffer - Rewards</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive 2025-%3EOffer - Sweepstakes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Buyer Incentive 2025-%3EOffer - Target</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital 2025-%3EDisplay%2FVideo Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital 2025-%3EEmail</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital 2025-%3EOther %28Digital%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital 2025-%3ESearch %28SEM%29 Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital 2025-%3ESocial Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital 2025-%3ESocial Post</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital 2025-%3EWeb Content</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Digital Media-%3EChannel Partner Website Online Ad</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Digital Media-%3EContent Creation</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Media-%3EEcosystemPartner%2Ecom</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -25792,18 +26238,6 @@
             </values>
             <values>
                 <fullName>Digital Media-%3EText Ad</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Event 2025-%3EJoint Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Event 2025-%3EOther %28Event%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Event 2025-%3EThird Party Event</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -25887,10 +26321,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Innovation -%3EEngineering</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Lead Management-%3ELead Generation</fullName>
                 <default>false</default>
             </values>
@@ -25920,22 +26350,6 @@
             </values>
             <values>
                 <fullName>Other-%3EOther</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home 2025-%3EBillboard%2FTransit</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home 2025-%3ECinema</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home 2025-%3EOther %28Out Of Home%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Out of Home 2025-%3EVideo Screen</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -25979,18 +26393,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Print 2025-%3ECollateral</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Print 2025-%3EMagazine%2FNewspaper</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Print 2025-%3EOther %28Print%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Print Media-%3ECatalog%2FBrochure</fullName>
                 <default>false</default>
             </values>
@@ -26023,14 +26425,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Production 2025-%3EContent</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Production 2025-%3EOther %28Production%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Purchase Incentive-%3EBuyer - Bundle Offer</fullName>
                 <default>false</default>
             </values>
@@ -26052,10 +26446,6 @@
             </values>
             <values>
                 <fullName>Sales Incentive-%3ESeller - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Incentive-%3ESeller - Per Instance SPIF</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -26088,34 +26478,6 @@
             </values>
             <values>
                 <fullName>Sales Incentives-%3ESweepstakes</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness 2025-%3ECollateral</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness 2025-%3EOther %28Sales Readiness%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness 2025-%3EPersonnel</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness 2025-%3EPromotion - Non-Retail</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness 2025-%3EPromotion - Retail</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness 2025-%3ETraining Incentive</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sales Readiness 2025-%3ETraining%2FMeeting</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -26191,47 +26553,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Seller Incentive 2025-%3ESPIF - Contest</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller Incentive 2025-%3ESPIF - Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller Incentive 2025-%3ESPIF - Target</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller Incentive 2025-%3ESPIF - Volume</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Exploration-%3EBenchmarks</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Tech Exploration-%3ECase Study</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Tech Exploration-%3ECloud%2FPlatform Trial</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Exploration-%3EDeal Investment</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Tech Exploration-%3EDemo Hardware</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Exploration-%3EDemo Hardware%2FCloud Instance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Exploration-%3EJoint Engineering%2FOptimization</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -26244,62 +26570,6 @@
             </values>
             <values>
                 <fullName>Tech Exploration-%3ESeed Unit</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tech Exploration-%3ESolution Development</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3EBenchmarking</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3ECase Study</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3EMigration</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3EOther %28Technical Sales%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3EProof of Concept</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3ESales Event</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3ESeed Unit</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3ESystem Demo</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3ETelemarketing</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Technical Sales 2025-%3ETrial Instance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video 2025-%3EOther %28Video%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video 2025-%3EStreaming</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Video 2025-%3ETelevision</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -27730,10 +28000,6 @@
             </values>
             <values>
                 <fullName>Intel%C2%AE Core%E2%84%A2 7 Processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Core%E2%84%A2 9 Processor</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -30797,6 +31063,99 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_POP_Requirement_nm__c</picklist>
             <values>
                 <fullName>Documentation %28photographs%2C printouts%2C test results%29</fullName>
@@ -31023,10 +31382,6 @@
             </values>
             <values>
                 <fullName>Design Win vs%2E Comp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Transformation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -31509,10 +31864,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Digital Transformation</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Digital Workplace</fullName>
                 <default>false</default>
             </values>
@@ -31989,10 +32340,6 @@
             </values>
             <values>
                 <fullName>Design Win vs%2E Comp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Digital Transformation</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -32481,19 +32828,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Original project was cancelled by mistake</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Other</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Project was discussed with Intel but not recorded in tool on time</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Project was left as draft but never submitted</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -33237,10 +33572,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Panther Lake</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Parker Ridge - Atom C5xxx</fullName>
                 <default>false</default>
             </values>
@@ -33389,23 +33720,11 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Wi-Fi 6</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wi-Fi 7</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Wifi6</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Wifi7</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Wildcat Lake</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37530,6 +37849,99 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_POP_Requirement_nm__c</picklist>
             <values>
                 <fullName>Documentation %28photographs%2C printouts%2C test results%29</fullName>
@@ -37612,6 +38024,10 @@
             </values>
             <values>
                 <fullName>Cloud Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commercial Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -38109,11 +38525,19 @@
         <picklistValues>
             <picklist>Core_MDF_Priority__c</picklist>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Enterprise AI</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Infrastructure Optimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -42132,6 +42556,99 @@
             </values>
             <values>
                 <fullName>vRAN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -47498,6 +48015,99 @@
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Core_MDF_POP_Requirement_nm__c</picklist>
             <values>
                 <fullName>Documentation %28photographs%2C printouts%2C test results%29</fullName>
@@ -51398,6 +52008,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RWANDA</fullName>
                 <default>false</default>
             </values>
@@ -52200,6 +52814,99 @@
             </values>
             <values>
                 <fullName>Win Volume</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -56618,6 +57325,99 @@
             </values>
             <values>
                 <fullName>vRAN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcome_Type_nm__c</picklist>
+            <values>
+                <fullName>Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Outcomes_nm__c</picklist>
+            <values>
+                <fullName>Brand Awareness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchase Intent</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Billings</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Consumption %2F ARR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revenue - Pipelines%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Share of Voice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Deal Wins</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Leads</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Pipeline%2FOpportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Volume - Units</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

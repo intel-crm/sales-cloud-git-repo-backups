@@ -2,7 +2,6 @@
 <ExtlClntAppConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
     <externalClientApplication>IPS_AI_Agent_Integration</externalClientApplication>
     <isEnabled>true</isEnabled>
-    <isOauthPluginEnabled>true</isOauthPluginEnabled>
     <label>IPS_AI_Agent_Integration_defaultPolicy</label>
     <startPage>None</startPage>
 </ExtlClntAppConfigurablePolicies>

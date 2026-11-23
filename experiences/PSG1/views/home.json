@@ -1,0 +1,138 @@
+{
+  "appPageId" : "643f101e-1dcc-48e4-87fe-0d23f449e403",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "7dad802f-a23f-41ad-a6c8-d5b4799d8962",
+  "label" : "Home",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "062a299e-9d70-4922-88c9-8edf63259217",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "e8219c48-7b2e-48d8-bde4-2ae920ce1da8",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Quote"
+          }, {
+            "UUID" : "988ac1f5-0b12-42ca-8398-ba5b69c99266",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "ALN"
+          }, {
+            "UUID" : "2cebfdd5-5339-4ad9-8568-ed1ba504eca6",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "3",
+            "tabName" : "DPA"
+          }, {
+            "UUID" : "b7aa4649-ce6b-4db5-a7db-2163d46775ba",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "d90c4",
+            "tabName" : "Reports"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "062a299e-9d70-4922-88c9-8edf63259217",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:psg_quoteRequestButton",
+          "id" : "b9466b87-1e1e-405b-8e46-a9a226607403",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "enableInlineEdit" : true,
+            "filterName" : "00B2D0000035QScUAM",
+            "layout" : "FULL",
+            "pageSize" : 25,
+            "scope" : "SBQQ__Quote__c",
+            "showActionBar" : true,
+            "showChartsPanel" : true,
+            "showDisplay" : "showall",
+            "showFilterPanel" : true,
+            "showImageIcon" : true,
+            "showManualRefreshButton" : true,
+            "showObjectName" : true,
+            "showPinnedList" : true,
+            "showSearchBar" : true
+          },
+          "componentName" : "forceCommunity:objectHome",
+          "id" : "f9d35040-df4f-4d97-89a4-44f01bf1cda6",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "e8219c48-7b2e-48d8-bde4-2ae920ce1da8",
+        "regionLabel" : "Quote",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "id" : "988ac1f5-0b12-42ca-8398-ba5b69c99266",
+        "regionLabel" : "ALN",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "id" : "2cebfdd5-5339-4ad9-8568-ed1ba504eca6",
+        "regionLabel" : "DPA",
+        "regionName" : "3",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "id" : "b7aa4649-ce6b-4db5-a7db-2163d46775ba",
+        "regionLabel" : "Reports",
+        "regionName" : "d90c4",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c2c4c9e9-30d4-4f7a-81e2-935c3336ce83",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "d7efa040-0b6c-48b1-a742-0f5ef77f0d4f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "2bbfa0c1-f5f6-46f7-87e9-cc5cac231dfd",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c820bd89-fbea-4f98-ae42-e93664815941",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "329d3315-8264-4422-b34b-fe0d68a1f9e0",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "88749400-27a3-4bd8-84da-2d2dbdc0f2f3",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

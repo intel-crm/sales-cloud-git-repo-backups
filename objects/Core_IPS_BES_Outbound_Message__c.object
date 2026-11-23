@@ -224,7 +224,7 @@
         <fullName>Status__c</fullName>
         <label>Status</label>
         <length>131072</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>2</visibleLines>
@@ -249,13 +249,10 @@
         <columns>LAST_UPDATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>Comment_Id__c</columns>
-        <columns>Status__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>Core_IPS_BES_Depromote_Id__c</columns>
         <columns>Core_IPS_Attachment_ID__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>BES OB-{0}</displayFormat>

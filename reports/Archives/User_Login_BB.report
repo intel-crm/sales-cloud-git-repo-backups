@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_25332621</developerName>
+        <masterLabel>Last Logged In</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Core_User_Login_Snapshot__c.Core_Last_Login_Duration__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>-1</to>
+            </sourceValues>
+            <value>N/A</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-1</from>
+                <to>7</to>
+            </sourceValues>
+            <value>Last Week</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>7</from>
+                <to>30</to>
+            </sourceValues>
+            <value>8-30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>30</from>
+                <to>60</to>
+            </sourceValues>
+            <value>&gt; 30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>60</from>
+            </sourceValues>
+            <value>&gt; 60 Days</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_9228302</developerName>
+        <masterLabel>PRC Biz Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>CUST_OWNER_ROLE</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Howard Chang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Karl Meng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Yimin Gong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Qingchun Huang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Otto Chow</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Wenkang Li</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Weichen Ye</sourceValue>
+            </sourceValues>
+            <value>ISG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Gary Gao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Hao H Zhang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Ji Pang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Michael Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Sonny Jin</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Liu Rong</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Yibin Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Wilson Guo</sourceValue>
+            </sourceValues>
+            <value>TSG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Guoji Chang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Wei Guo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Michael Tan</sourceValue>
+            </sourceValues>
+            <value>Client &amp; IoT</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Eric Tang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Yong SZ Li</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Sheng Jin</sourceValue>
+            </sourceValues>
+            <value>DCG</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Dennis Iun</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Arthur Fang</sourceValue>
+            </sourceValues>
+            <value>Huawei</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Charles Y Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Monica Livingston</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Haritha Yalavarthi</sourceValue>
+            </sourceValues>
+            <value>Lenovo</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Bill Liu</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Wanda Jiang</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Xiaohua Chen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Yiping Liu</sourceValue>
+            </sourceValues>
+            <value>PMO</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Enoch Chao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Kit Ho Chee</sourceValue>
+            </sourceValues>
+            <value>Internet</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Yuxin He</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Michael Deng</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Yidong Wang</sourceValue>
+            </sourceValues>
+            <value>Ecosystem</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Gerry Mao</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Employee of Kitty Wei</sourceValue>
+            </sourceValues>
+            <value>MNC</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Full_Name__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_9228302</field>
+    </columns>
+    <columns>
+        <field>BucketField_25332621</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Profile__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Last_Login__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Last_Login_Duration__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Role__c</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_ROLE</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Department__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>PRC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Profile__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Manager</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>BucketField_9228302</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Other</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_User_Login_Snapshot__c.Core_Geo__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>User Login BB</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_User_Login_Snapshot__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_LAST7</interval>
+    </timeFrameFilter>
+</Report>

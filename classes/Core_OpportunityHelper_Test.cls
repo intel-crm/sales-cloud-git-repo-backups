@@ -5,7 +5,7 @@ public class Core_OpportunityHelper_Test {
     static void setupTestData() {   
         
         // Enable the Trigger execution
-        List<Core_Trigger_Executions__c> ToClearlist = [Select id from Core_Trigger_Executions__c LIMIT 2000];
+        List<Core_Trigger_Executions__c> ToClearlist = [Select id from Core_Trigger_Executions__c LIMIT 20000];
         delete ToClearlist;
         List<Core_Trigger_Executions__c> triggerExecList = new List<Core_Trigger_Executions__c>();
         Core_Trigger_Executions__c triggerExec25 = new Core_Trigger_Executions__c();
@@ -320,9 +320,9 @@ public class Core_OpportunityHelper_Test {
         insert oppList;
         
           
-        User usr2 = [select id from User where IsActive =true and profile.name = 'Sales Manager' order by FirstName limit 1];
+         User usr2 = [select id from User where IsActive =true and Core_User_Type__c = 'Internal User'  order by FirstName  limit 1];
         
-         User usr3 = [select id from User where IsActive =true and profile.name = 'Sales Manager' order by LastName  limit 1];
+         User usr3 = [select id from User where IsActive =true and Core_User_Type__c = 'Internal User'  order by LastName  limit 1];
          
        
          opp.Core_Technical_Owner__c = usr3.id;
@@ -404,9 +404,9 @@ public class Core_OpportunityHelper_Test {
         insert oppList;
         
          
-         User usr2 = [select id from User where IsActive =true and profile.name = 'Sales Manager' order by FirstName limit 1];
+         User usr2 = [select id from User where IsActive =true and Core_User_Type__c = 'Internal User'  order by FirstName  limit 1];
         
-         User usr3 = [select id from User where IsActive =true and profile.name = 'Sales Manager' order by LastName  limit 1];
+         User usr3 = [select id from User where IsActive =true and Core_User_Type__c = 'Internal User' order by LastName  limit 1];
          
        
          opp.Core_Technical_Owner__c = usr3.id;

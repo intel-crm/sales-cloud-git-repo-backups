@@ -13,10 +13,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>Pricing_RestAPI_ChangeRequestQuoteLine</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>Pricing_RestAPI_ErrorContent</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -90,6 +86,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Pricing_RestAPI_Util</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Pricing_RunExportController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <customPermissions>
@@ -570,6 +570,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.Pricing_ShipmentStDate_Dt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.SBQQ__Opportunity2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

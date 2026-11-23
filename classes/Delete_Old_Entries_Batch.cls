@@ -55,6 +55,6 @@ global class Delete_Old_Entries_Batch implements Database.Batchable<sObject> {
             '</td></tr> </tbody></table></body></html>';
             mail.setHtmlBody(messageBody);
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
-            System.debug('********* batch finish method sent an email ****************');
+        System.debug('********* batch finish method sent an email ****************');
  }
 }

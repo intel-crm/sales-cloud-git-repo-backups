@@ -30,6 +30,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_Retry_Counter__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ACM_Account_Staging_Name__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

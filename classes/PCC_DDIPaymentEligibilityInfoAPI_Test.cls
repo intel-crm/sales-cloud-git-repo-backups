@@ -20,11 +20,10 @@ public class PCC_DDIPaymentEligibilityInfoAPI_Test {
             Product_MM_Attribute_Mapping__c pmam = new Product_MM_Attribute_Mapping__c();
             pmam.Ordering_Code__c = 'QQ80723058DB';
             pmam.Name = '99APD0'; 
-            pmam.MMID__c = '949344QQ80723058DB Q 47W';
+            //pmam.MMID__c = '949344QQ80723058DB Q 47W';
             pmam.L4_Product__c = pr.Id;
             pmam.Eligible_for_DDI_Payment__c ='Yes';
             pmam.DDI_focused__c = 'Tier 1';
-            pmam.PCC_DDI_Program_Pay_Rate_APJ_PRC__c = 'Tier 1';
             pmam.Payment_Expiration_Date__c = System.today();
             //Assert.isNotNull(pmam);
             insert pmam;
@@ -79,7 +78,7 @@ public class PCC_DDIPaymentEligibilityInfoAPI_Test {
         
         req.requestUri = '/services/apexrest/ddr-payment-eligibility'; // Replace with your actual endpoint
         req.httpMethod = 'GET';
-        req.addParameter('oldmmid', 'QQ80723058DB Q 47W');
+        req.addParameter('orderingCd', 'QQ80723058DB');
         
         RestContext.request = req;
         RestContext.response = res; 

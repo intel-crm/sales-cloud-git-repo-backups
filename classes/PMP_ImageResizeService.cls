@@ -7,20 +7,15 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Prakash                         Aug-01-2019                    implementation class for Image resize service
 * ****************************************************************************************************************************************/
-public without sharing class PMP_ImageResizeService {
-    
-    public static Boolean isWorking() {
-        return true;
-    }
-    
-    /*implements PMP_RetryCalloutInterface {
+public without sharing class PMP_ImageResizeService implements PMP_RetryCalloutInterface {
+
     public Boolean retryCallout(Id recordId){
        return generateThumbnailImage(recordId); 
     }
     
     public map<Id,Boolean> retryCallout(List<Id> recordIds){
         return null;
-    }*/
+    }
     
    /**
     * @description generate thumbnail images from PIM and will store in SFDC
@@ -28,7 +23,7 @@ public without sharing class PMP_ImageResizeService {
     * @return void
     * Method Parameters - Id
     */
-    /*public Boolean generateThumbnailImage (Id recordId){
+    public Boolean generateThumbnailImage (Id recordId){
        
        List<PMP_Partner_Offering_Resource__c> offeringResources = new List<PMP_Partner_Offering_Resource__c>(); 
        Boolean isCalloutSuccess = false;
@@ -36,7 +31,7 @@ public without sharing class PMP_ImageResizeService {
        String contentAssetURL = '';
        String questionMarkSymbol = '?';       
        
-       // system.debug('recordId:->'+recordId);
+       
        
        if(Schema.sObjectType.PMP_Partner_Offering_Resource__c.isAccessible()){ 
        		offeringResources = [SELECT Id,
@@ -65,7 +60,7 @@ public without sharing class PMP_ImageResizeService {
              if(string.isNotEmpty(contentAssetName)) {
                  contentAssetURL =  baseCommunityUrl+staticFileAsset+contentAssetName+questionMarkSymbol;
                  response = PMP_ImageResizeService.makeCalloutToPIM(contentAssetURL);// make a call out to PIM
-                 //System.debug(response.getBody());
+                 
              }
              
              
@@ -84,7 +79,7 @@ public without sharing class PMP_ImageResizeService {
                isCalloutSuccess = true;
              }
              return isCalloutSuccess;
-    }*/
+    }
 
          
    /**
@@ -95,7 +90,7 @@ public without sharing class PMP_ImageResizeService {
     * @return void
     * Method Parameters - ContentDistribution , Id, Integer
     */
-    /*public static void createThumbnailOfferingResource (ContentVersion content,Id offeringId,Integer imgSequence) {
+    public static void createThumbnailOfferingResource (ContentVersion content,Id offeringId,Integer imgSequence) {
 
         id documentId = [Select ContentDocumentId FROM ContentVersion WHERE Id =:content.Id].ContentDocumentId;
 
@@ -110,7 +105,7 @@ public without sharing class PMP_ImageResizeService {
         	insert offeringResource; // insert offering resource
         }    
             
-    }*/
+    }
     
    /**
     * @description create content asset with thumbnail image data
@@ -119,7 +114,7 @@ public without sharing class PMP_ImageResizeService {
     * @return void
     * Method Parameters - ContentDistribution , Id, Integer
     */
-    /*public static ContentVersion createContentAssetVersion (String resourceAssetId, Blob thumbNailImage) {
+    public static ContentVersion createContentAssetVersion (String resourceAssetId, Blob thumbNailImage) {
         //Network Id of Partner Solutions Market place community
         Network psmNetwork;
        
@@ -140,7 +135,7 @@ public without sharing class PMP_ImageResizeService {
         insert contentVersion; // insert content version
           
         return ContentVersion;
-    }*/
+    }
 
 
 
@@ -152,7 +147,7 @@ public without sharing class PMP_ImageResizeService {
     * Method Parameters - String , Integer
     */
 
-    /*public static HTTPResponse makeCalloutToPIM(String contentURL){
+    public static HTTPResponse makeCalloutToPIM(String contentURL){
 
         // create http request instance
         HttpRequest request = new HttpRequest();
@@ -161,20 +156,19 @@ public without sharing class PMP_ImageResizeService {
     	request.setMethod('GET'); // set the http method as 'GET'
         request.setTimeout(60000);
 
-        //system.debug('###contentURL:->'+contentURL);
-        //system.debug('###endPointURL:->'+endPointURL);
+        
 
         Http h = new Http();//http instance variable to make http callout
 
         HTTPResponse response = new  HTTPResponse(); // variable to store http response
 
-        //system.debug('###request:->'+request);
+        
 
         // sending the request using http instance
         response = h.send(request);
-    	//system.debug('response::'+response);
+    	
         return response;
-    }*/
+    }
    
      /**
     * @description make an http call out to PIM
@@ -184,7 +178,7 @@ public without sharing class PMP_ImageResizeService {
     * Method Parameters - String , Integer
     */
 
-    /*public static HTTPResponse makeCalloutToPIM(String imageContentAssetURL,Integer retryCount){
+    public static HTTPResponse makeCalloutToPIM(String imageContentAssetURL,Integer retryCount){
 
         // create http request instance
         HttpRequest request = new HttpRequest(); 
@@ -207,7 +201,7 @@ public without sharing class PMP_ImageResizeService {
         response = h.send(request);
 
         return response;
-    }*/
+    }
 
       
 }

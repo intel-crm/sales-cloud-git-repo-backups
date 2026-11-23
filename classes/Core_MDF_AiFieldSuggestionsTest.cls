@@ -53,8 +53,8 @@ public class Core_MDF_AiFieldSuggestionsTest {
         // Basic test files with minimal content - ensuring all have valid VersionData
         testFiles.add(createContentVersion('Test Campaign Document', 'test.txt', 'Test campaign content'));
         testFiles.add(createContentVersion('Client Computing Campaign', 'client.txt', 'AI PC laptop solutions'));
-        testFiles.add(createContentVersion('Data Center Infrastructure', 'datacenter.txt', 'enterprise server datacenter Xeon processor infrastructure'));
-        testFiles.add(createContentVersion('Networking Campaign', 'network.txt', '5G telecommunications networking telco wireless'));
+        testFiles.add(createContentVersion('Data Center Infrastructure', 'datacenter.txt', 'Xeon server solutions'));
+        testFiles.add(createContentVersion('Networking Campaign', 'network.txt', '5G telecommunications'));
         testFiles.add(createContentVersion('Edge Computing Campaign', 'edge.txt', 'IoT edge computing'));
         testFiles.add(createContentVersion('Generic Campaign', 'generic.txt', 'Generic campaign'));
         testFiles.add(createContentVersion('Test CSV File', 'test.csv', 'Campaign,Priority\nTest,High'));
@@ -354,8 +354,8 @@ public class Core_MDF_AiFieldSuggestionsTest {
         );
         Test.stopTest();
         
-        System.assertNotEquals(null, result.get('focusArea'), 'Should return some focus area');
-    	System.assertNotEquals('', result.get('focusArea'), 'Focus area should not be empty');
+        System.assertEquals(true, result.get('success'));
+        System.assertEquals('Data Center', result.get('focusArea'));
     }
     
     @isTest
@@ -368,8 +368,8 @@ public class Core_MDF_AiFieldSuggestionsTest {
         );
         Test.stopTest();
         
-         System.assertNotEquals(null, result.get('focusArea'), 'Should return some focus area');
-   		 System.assertNotEquals('', result.get('focusArea'), 'Focus area should not be empty');
+        System.assertEquals(true, result.get('success'));
+        System.assertEquals('Networking & Telco', result.get('focusArea'));
     }
     
     @isTest
@@ -497,9 +497,14 @@ public class Core_MDF_AiFieldSuggestionsTest {
             'Test', 'TestRecordType', getStandardPicklistValues()
         );
         Test.stopTest();
-         System.assertEquals(false, result.get('success'), 'Should return failure when config is missing');
-    	System.assertNotEquals(null, result.get('error'), 'Should return an error message');
-    	System.assertNotEquals('', result.get('error'), 'Error message should not be empty');
+        
+        System.assertEquals(false, result.get('success'));
+        System.assertEquals(false, result.get('success'), 'Should return failure when config is missing');
+        String errorMessage = (String)result.get('error');
+    	System.assert(errorMessage != null && 
+                 (errorMessage.contains('An error occurred during AI analysis') || 
+                  errorMessage.contains('List has no rows for assignment')), 
+                 'Should contain appropriate error message: ' + errorMessage);
     }
     
     @isTest

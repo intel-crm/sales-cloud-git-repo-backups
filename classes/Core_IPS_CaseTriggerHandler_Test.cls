@@ -24,13 +24,6 @@ public class Core_IPS_CaseTriggerHandler_Test{
     static Core_IPS_Product_Issue_Category__c caseCat = new Core_IPS_Product_Issue_Category__c();
     static  Core_IPS_Product_Issue_Category__c subCategory = new Core_IPS_Product_Issue_Category__c();
     public static Id slaprocessId = [Select Id, Name, NameNorm, IsActive, VersionNumber from SlaProcess Where Name = 'IPS Standard SLA Entitlement' and IsActive=true].Id;
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
     
     
     /***************************************************************************************************
@@ -57,7 +50,7 @@ Modification Log :
         for(User usr : listOfUser){
             usr.ProfileID =  profiles.get('System Administrator');
         }
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.runAs(listOfUser.get(0)){
             //Create Group
@@ -95,7 +88,7 @@ Modification Log :
             lablesList.add(labels3);
             // Avoid Hardcoding Id Fix - Start - Shipra
             Core_ERPM_Engagement__c cee=new Core_ERPM_Engagement__c(Name  ='Partner File Transfer', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='PFT',Core_Technical_DeDup_Number__c='B2B');
-            insert cee;
+        	insert cee;
             Core_Entitlement__c entitle=new Core_Entitlement__c (name ='Advanced Shipment and Invoice Notification', Core_Category__c='Order Management',Core_Sub_Category__c='Web Reporting',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='test dup',Core_IsActive__c=true);
             insert entitle;
             Core_IPS_Labels__c labels4 = new Core_IPS_Labels__c(Name = 'SelfAssignedCaseEntitlementId',Value__c = entitle.Id);
@@ -429,6 +422,326 @@ System.assert(listOfCaseDelete.isEmpty(), 'Record not deleted');
         }
     } 
     
+    /***************************************************************************************************
+Method Name:  assignCaseInformation_Test
+Method Type: Test Method
+Version     : 1.0 
+Created Date: 06 Nov 2015
+Description:  Testing "assignCaseInformation" method. "assignCaseInformation" method invokes "getCaseInformationByAssetOrSuppProd" method. And hence "getCaseInformationByAssetOrSuppProd" method is also covered in this test class.
+Scenario Type:  Positive
+Modification Log :
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Syed Moosa Nazir TN       11/06/2015                Created
+* Deepak Jetty              25/01/2016                Modified
+***************************************************************************************************/
+    static testmethod void assignCaseInformationTest(){
+        
+        getRecords();
+        // Get intelSupportOwner Id (User Id)
+        Id intelSupportOwner = listOfUser.get(0).id;
+        System.runAs(listOfUser.get(1)){ 
+            // Create Accounts
+            List<Account> listOfAccounts = TestUtilities.getListOfAccounts(2);
+            for(Account acc: listOfAccounts){
+                acc.Core_CNDA_Number__c='123';
+            }
+            insert listOfAccounts;
+            System.assert(listOfAccounts[0].Id != null, 'Record not created');
+            // Create Contact
+            List<Contact> listOfContacts = TestUtilities.getListOfContact(1);
+            for(Contact contactRec : listOfContacts){
+                contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+                contactRec.core_ips_Active__c=true;
+                contactRec.Accountid = listOfAccounts.get(0).Id;
+                contactRec.MailingCountry = 'India';
+            }
+            insert listOfContacts;
+            System.assert(listOfContacts[0].Id != null, 'Record not created');
+            
+            //Insert Custom Setting
+            Core_IPS_Labels__c setting = new Core_IPS_Labels__c();
+            List<RecordType> settingID = [SELECT Id, Name, DeveloperName, Description, SobjectType FROM RecordType where SobjectType  ='Case' AND Name = 'IPS GEC ReadOnly' Limit 1];
+            setting.Name = 'GEC Record Type Id';
+            setting.Value__c = settingID[0].id;
+            insert setting;
+            
+            // Create Support Org
+            List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+            insert listOfSupportOrg;
+            System.assert(listOfSupportOrg != null, 'Record not created');
+            integer counter = 0;
+            // Create Product
+            List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
+            for(Product2 product : listOfProducts){
+                if(counter==0){
+                    product.Core_Hierarchy_ID__c = '43';
+                    product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
+                    product.Core_Unique_ID__c = 'product12345';
+                    product.Core_Code_Name__c = 'ProductCoreCodeName';
+                }else{
+                    product.Core_Hierarchy_ID__c = '59';
+                    product.Core_Hierarchy_Name__c = 'ProdHierarchyName59';
+                    product.Core_Unique_ID__c = 'Product59';
+                    product.Core_Code_Name__c = 'ProductCoreCodeName59';
+                    
+                }
+                counter++;
+            }
+            insert listOfProducts;
+            
+            System.assert(listOfProducts[0].id != null,'Record not created');
+            counter = 0;
+            // Create Supported product
+            List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+            for(Core_IPS_Supported_Product__c supportedProduct : listOfSupportedProduct){
+                if(counter==0){
+                    supportedProduct.Core_Product__c = listOfProducts.get(0).id;
+                    supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(0).id;
+                }else{
+                    supportedProduct.Core_Product__c = listOfProducts.get(1).id;
+                    supportedProduct.Core_Product_Organization__c = listOfSupportOrg.get(1).id;
+                }
+                counter++;
+            }
+            
+            insert listOfSupportedProduct;
+            System.assert(listOfSupportedProduct[0].id != null,'Record not created');
+            counter = 0;
+            // Create Flat Product Hierarchy
+            List<Core_Flat_Product_Hierarchy__c> listOfFlatProductHierarchy = TestUtilities.getListOfFlatProductHierarchy(10);
+            for(Core_Flat_Product_Hierarchy__c flatProductHierarchy : listOfFlatProductHierarchy){
+                if(counter < 5){
+                    flatProductHierarchy.Core_EPM_Hierarchy_ID__c = listOfProducts.get(0).Core_Hierarchy_ID__c;
+                    flatProductHierarchy.Core_EPM_Hierarchy_Name__c = listOfProducts.get(0).Core_Hierarchy_Name__c;
+                    flatProductHierarchy.Core_L5_EPM_ID__c = listOfProducts.get(0).Core_Unique_ID__c;
+                }
+                else{
+                    flatProductHierarchy.Core_EPM_Hierarchy_ID__c = listOfProducts.get(1).Core_Hierarchy_ID__c;
+                    flatProductHierarchy.Core_EPM_Hierarchy_Name__c = listOfProducts.get(1).Core_Hierarchy_Name__c;
+                    flatProductHierarchy.Core_L4_EPM_ID__c = listOfProducts.get(1).Core_Unique_ID__c;
+                }
+                counter++;
+            }
+            
+            insert listOfFlatProductHierarchy;
+            System.assert(listOfFlatProductHierarchy[0].id != null,'Record not created');
+            counter = 0;
+            // Create Asset
+            list<Asset> assetList = TestUtilities.getAssetList(2);
+            for(Asset asst : assetList){
+                asst.accountId = listOfAccounts.get(0).Id;
+                asst.Contactid = listOfContacts.get(0).id;
+                if(counter==0){
+                    asst.core_product_organization__c = listOfSupportOrg.get(0).id;
+                    asst.core_supported_product__c = listOfSupportedProduct.get(0).id;
+                    asst.product2Id = listOfProducts.get(0).id;
+                }else{
+                    asst.core_product_organization__c = listOfSupportOrg.get(1).id;
+                    asst.core_supported_product__c = listOfSupportedProduct.get(1).id;
+                    asst.product2Id = listOfProducts.get(1).id;
+                }
+                counter++;
+            }
+            insert assetList;
+            System.assert(assetList[0].Id != null, 'Record not created');
+            counter = 0;
+            // Create Ips Project
+            List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
+            
+            insert listOfIpsProjects;
+            //added by chiru 
+            Core_IPS_CaseCreateHelper.getContactListFromProject(listOfIpsProjects[0].Id);
+            System.assert(listOfIpsProjects[0].Id != null, 'Record not created');
+            // Create Ips Account
+            Counter=0;
+            List<Core_IPS_Account__c> listOfIpsAccounts = TestUtilities.getListOfIpsAccounts(2);
+            for(Core_IPS_Account__c ipsAcc : listOfIpsAccounts){
+                if(counter<1){
+                    ipsAcc.Core_Account__c = listOfAccounts.get(0).Id;
+                    ipsAcc.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
+                } else {
+                    ipsAcc.Core_Account__c = listOfAccounts.get(0).Id;
+                    ipsAcc.Core_IPS_Project__c = listOfIpsProjects.get(1).Id;
+                }
+                counter++;
+            }
+            counter = 0;
+            
+            insert listOfIpsAccounts;
+            System.assert(listOfIpsAccounts[0].Id != null, 'Record not created');
+            // Create Project Member
+            List<Core_IPS_Project_Member__c> listOfProjectMembers = TestUtilities.getListOfProjectMembers(5);
+            for(Core_IPS_Project_Member__c projMem : listOfProjectMembers){
+                If(counter<3){
+                    projMem.Core_IPS_Contact__c = listOfContacts.get(0).Id;
+                    projMem.Core_IPS_Project__c = listOfIpsProjects.get(0).Id;
+                    projMem.Core_User__c = intelSupportOwner;
+                }else{
+                    projMem.Core_IPS_Contact__c = listOfContacts.get(0).Id;
+                    projMem.Core_IPS_Project__c = listOfIpsProjects.get(1).Id;
+                    projMem.Core_User__c = intelSupportOwner;
+                }
+                
+            }
+            insert listOfProjectMembers;
+            
+            System.assert(listOfProjectMembers[0].Id != null, 'Record not created');
+            // Create Case
+            counter=0;
+            //Id ipsRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('IPS Case Create').getRecordTypeId();
+            
+            //Hassan Start
+            Core_IPS_Backend_System2__c backendSystem = new Core_IPS_Backend_System2__c();
+            backendSystem.Name = 'HSDES-PSG01';
+            
+            backendSystem.Core_IPS_Target_System__c = 'hsdes:fpga:bug';
+            insert backendSystem;
+            Core_IPS_Backend_System2__c backendSystem1 = new Core_IPS_Backend_System2__c();
+            backendSystem1.Name = 'DCG - HSDES Server Platforms';
+            
+            backendSystem1.Core_IPS_Target_System__c = 'hsdes:fpga:bug';
+            insert backendSystem1;
+            Core_IPS_Backend_System2__c backendSystem2 = new Core_IPS_Backend_System2__c();
+            backendSystem2.Name = 'CC - HSDES Client Platform';
+            
+            backendSystem2.Core_IPS_Target_System__c = 'hsdes:fpga:bug';
+            insert backendSystem2;
+            
+            
+            List<Case> listOfCases = TestUtilities.getListOfCases(5);
+            
+            for(Case caseRec : listOfCases){
+                //caseRec.recordtypeid =ipsRecordTypeId;
+                caseRec.ContactId = listOfContacts.get(0).id;
+                caseRec.accountId = listOfAccounts.get(0).Id;
+                caseRec.Core_Issue_Description__c ='testing cases ';
+                caseRec.Description='testing cases';
+                caseRec.status='closed';
+                caseRec.Core_IPS_Is_Notification_Active__c =true;
+                caseRec.Core_IPS_GEC_Flag__c = true;
+                //Hassan 
+                caseRec.Core_IPS_New_Backend_System__c = backendSystem.id;
+                caseRec.core_IPS_BES_promote_status__c = 'In Progress';
+                caseRec.Core_Request_Case_Close__c ='Close Case';
+                caseRec.Core_IPS_Backend_ID__c='764734674';
+                caseRec.Core_IPS_EDQ_Filtering_Question__c='Ques-000163|Ques-000162|Ques-000161|Ques-000110|Ques-000109';
+                // END
+                
+                if(counter < 2){
+                    caseRec.assetId = assetList.get(0).Id;
+                    // caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(0).id;
+                    caseRec.Core_IPS_Supported_Product__c = listOfSupportedProduct.get(0).id; 
+                }
+                else if(counter>=2 && counter <5){
+                    caseRec.assetId = assetList.get(1).Id;
+                    caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(0).id;
+                }
+                else{
+                    caseRec.assetId = assetList.get(1).Id;
+                    caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(0).id;
+                    caseRec.Core_IPS_Supported_Product__c = listOfSupportedProduct.get(1).id; 
+                }
+                
+                counter++;
+            }
+            
+            //get Business Hours
+            List<BusinessHours> bhs=[select id from BusinessHours where IsDefault=true];
+            //Create Queue Business Hours
+            Core_IPS_Q_Biz_hours_mapping__c queueXBizHours = TestUtilities.getQueueXBizHours();
+            queueXBizHours.Business_Hours_ID__c = bhs.get(0).id;
+            queueXBizHours.Business_Hours_Name__c = 'Ashok_Test';
+            queueXBizHours.Queue_ID__c = grp.Id;
+            queueXBizHours.Queue_Name__c = grp.Name;
+            Test.startTest();
+            //insert Queue Business Hours
+            insert queueXBizHours;
+            // added by chiru
+            Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
+            TriggerExecution.Name = 'executeCaseAssignmentRule';
+            TriggerExecution.Core_Active__c = true;
+            TriggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
+            TriggerExecution.Core_Description__c = 'MethodDescription';
+            TriggerExecution.Core_Object__c = 'Case';
+            TriggerExecution.Core_Trigger_Events__c = 'Before Insert';
+            insert TriggerExecution;
+            listOfCases[0].Core_Issue_Description__c = '<h1>Code Refactor </h1>';
+            insert listOfCases;
+            Case CaseRecord = new Case();
+            caseRecord.AccountId = null;
+            caseRecord.id = listOfCases[0].Id;
+            caseRecord.Core_IPS_Private_Project__c = true; // added by chiru to cover validateCaseowner method
+            caserecord.OwnerId = UserInfo.GetUserId();
+            update caseRecord;
+            List<case> lst = new List<case>();
+            lst.add(caseRecord);
+            Core_Ips_caseTriggerHandler.assignMigratedCaseInformation(lst);
+            
+            // Test.startTest();
+            System.assert(listOfCases[0].Id != null, 'Record not created');
+            counter = 0;
+            List<Case> backendCaseList = new List<Case>();
+            Map<Id,Boolean> backendCaseMap = new Map<Id,Boolean>();
+            for(Case caseRec1 : listOfCases){
+                caseRec1.status='Open';
+                caseRec1.Core_Issue_Description__c ='testing cases update ';
+                caseRec1.Description='testing cases update';
+                caseRec1.Core_IPS_New_Backend_System__c = backendSystem1.Id;
+                caseRec1.core_IPS_BES_promote_status__c = 'Not Yet Promoted';
+                caseRec1.Core_IPS_Backend_ID__c='45243563';
+                caseRec1.Core_IPS_EDQ_Filtering_Question__c='Ques-000163|Ques-000162|Ques-000161|Ques-000110|Ques-000109';
+                backendCaseList.add(caseRec1);
+                backendCaseMap.put(caseRec1.Id,false);
+                if(counter < 2){
+                    caseRec1.Core_IPS_GEC_Case__c=true;
+                    //caseRec1.Core_IPS_GEC_Status__c = 'Approved';
+                    //caseRec1.Core_IPS_Project_Case__c = listOfIpsProjects.get(1).id;
+                }                         
+                else if(counter>=2 && counter <5){
+                    caseRec1.assetId = assetList.get(1).Id;
+                    caseRec1.Core_IPS_Project_Case__c = null;
+                }
+                else{
+                    // caseRec.Core_IPS_Project_Case__c = listOfIpsProjects.get(1).id;
+                    caseRec1.AccountId = listOfAccounts.get(1).id;
+                }
+                //if( counter == 9)
+                //    caseRec1.Core_IPS_GEC_Flag__c = true;
+                
+                counter++;
+            }
+            
+            for(Case caseRec2 : listOfCases){
+                caseRec2.status='Open';             
+                caseRec2.Core_Sub_Status__c='Close-Pending';
+                caseRec2.Core_IPS_New_Backend_System__c=backendSystem2.Id;
+                caseRec2.core_IPS_BES_promote_status__c='Done';
+                caseRec2.Core_IPS_Backend_ID__c='7657346734';
+                caseRec2.Core_IPS_EDQ_Filtering_Question__c='Ques-000163|Ques-000162|Ques-000161|Ques-000110|Ques-000109';
+                if(counter < 2){
+                    caseRec2.Core_IPS_Date_Time_Close_Pending__c =Date.valueOf('2017-06-05 00:00:00');
+                }
+                counter++;
+            }
+            
+            counter = 0;
+            //Core_CaseTrigger_Dispatcher.recursivetrigger=true;
+            Core_CaseTrigger_Dispatcher.recursivetrigger1=true;            
+            //update listOfCases;
+            
+            List<Case> listOfCase = [select id from case where id IN: listOfCases];
+            // System.assert(listOfCase[0].id != null, 'Record not updated');
+            // delete listOfCase;
+            List<Case> listOfCaseDelete = [select id from case where id IN: listOfCase];
+            //System.assert(listOfCaseDelete.isEmpty(), true);
+            // undelete listOfCase;
+            
+            //List<Case> listOfCaseUnDelete = [select id from case where id IN: listOfCase];
+            //System.assert(listOfCase[0].id != null, 'Record not Undelete');
+            Test.stopTest();
+        }
+    } 
     
     /***************************************************************************************************
 Method Name:  caseSLAManagement_Test
@@ -667,7 +980,7 @@ Modification Log :
         List<user> ipsuserList = new List<user>();
         ipsuserList = TestUtilities.getListOfUser(1);
         ipsuserList[0].profileId=prof1.id;
-        insertUsersWithValidationBypass(ipsuserList);
+        insert ipsuserList[0];  
         Id intelSupportOwner = listOfUser.get(0).id;
         System.runAs(listOfUser.get(1)){
             // Create Accounts
@@ -960,7 +1273,7 @@ Modification Log :
             listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         listOfUser.get(1).ProfileID =  profiles.get('IPS Data Migration');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.assertEquals(listOfUser.get(1).profileid, profiles.get('IPS Data Migration'), 'IPS Data Migration');
         System.runAs(listOfUser.get(0)){
@@ -1188,7 +1501,7 @@ Modification Log :
         listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         listOfUser.get(1).ProfileID =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.assertEquals(listOfUser.get(1).profileid, profiles.get('System Administrator'), 'System Admin');
         System.runAs(listOfUser.get(0)){
@@ -1409,7 +1722,7 @@ Modification Log :
         listOfUser = TestUtilities.getListOfUser(2);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         listOfUser.get(1).ProfileID =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'), 'System Admin');
         System.assertEquals(listOfUser.get(1).profileid, profiles.get('System Administrator'), 'System Admin');
         System.runAs(listOfUser.get(0)){
@@ -1792,7 +2105,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
@@ -2060,7 +2373,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         //List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
@@ -2335,7 +2648,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
@@ -2642,7 +2955,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1); 
         listOfUser.get(0).ProfileId =  profiles.get('System Administrator');
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser.get(0);
         
         //Custom Setting - Trigger Executions
         List<Core_Trigger_Executions__c> triggerExecutionList= new List<Core_Trigger_Executions__c>();
@@ -3586,7 +3899,7 @@ Modification Log :
             listOfUser1.get(0).ProfileID =  profiles.get('System Administrator');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
         System.runAs(listOfUser.get(0)){
@@ -3777,7 +4090,7 @@ insert listOftriggerExecutions;
         listOfUser1.get(1).ProfileID =  profiles.get('Sales Rep-BB-Dual IPS');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         /* List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
 System.runAs(listOfUser.get(0)){
@@ -4008,7 +4321,7 @@ update  c2;
         listOfUser1.get(1).ProfileID =  profiles.get('Sales Rep-BB-Dual IPS');
         //listOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1; 
         
         /* List<Core_IPS_Labels__c> listofIpsLables = TestUtilities.getIPSLabel();
 System.runAs(listOfUser.get(0)){
@@ -4323,7 +4636,7 @@ Modification Log :
         userRecord.UserName = 'newuser22' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId();
         userRecord.isActive = true;
         userRecord.ProfileID =  profileList[0].Id;  
-        insertUsersWithValidationBypass(new List<User>{userRecord});
+        insert userRecord;
         
         Map<String, Id> caseRecordtype = new Map<String, Id>();
         

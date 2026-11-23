@@ -32,7 +32,7 @@
    </apex:pageblock>
    
    <apex:panelGrid columns="2" rendered="{!(ErrorMessage == null)}">
-       <apex:inputText value="{!searchText}"/>
+       <apex:inputText value="{!searchText}" rendered="{!$ObjectType.Core_IPS_Question__c.fields.Core_IPS_Question__c.Accessible}"/> <!-- US1021251-- 06/07/2021 -- Niyazuddin -- FLS check for appsec security vulnerability -->
        <apex:commandButton value="Search" action="{!getEnvironmentVariables_CaseCat}" rerender="form"  status="status"/>
        <apex:actionStatus id="status" startText="loading.."> 
             <apex:facet name="start" >

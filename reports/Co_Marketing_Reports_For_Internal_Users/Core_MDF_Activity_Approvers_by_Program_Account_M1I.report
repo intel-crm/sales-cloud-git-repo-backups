@@ -4,16 +4,7 @@
         <field>Core_MDF_Criteria__c.Approvers__r$Core_MDF_Approver_Type__c</field>
     </columns>
     <columns>
-        <field>Core_MDF_Criteria__c.Approvers__r.Criteria_Rules__r$Core_MDF_Field_Name__c</field>
-    </columns>
-    <columns>
-        <field>Core_MDF_Criteria__c.Approvers__r.Criteria_Rules__r$Core_MDF_Operator__c</field>
-    </columns>
-    <columns>
         <field>Core_MDF_Criteria__c.Approvers__r.Criteria_Rules__r$Core_MDF_Value__c</field>
-    </columns>
-    <columns>
-        <field>Core_MDF_Criteria__c.Approvers__r$Name</field>
     </columns>
     <columns>
         <field>Core_MDF_Criteria__c.Approvers__r$Core_MDF_Approver_1__c</field>
@@ -61,13 +52,6 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_MDF_Criteria__c$Core_MDF_Object_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>PartnerFundRequest</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -78,7 +62,12 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Core_MDF_Criteria__c$Core_MDF_Approval_Criteria_Description__c</field>
+        <field>Core_MDF_Criteria__c$Core_MDF_Sub_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_MDF_Criteria__c.Approvers__r$Name</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Activity Approvers by Program &amp; Account</name>

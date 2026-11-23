@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core Draco AGS Error Message</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core Draco AGS Error Messages</value>
+    </caseValues>
+    <fields>
+        <label><!-- AGS Error Message --></label>
+        <name>AGS_Error_Message__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -351,7 +351,7 @@
     </fields>
     <fields>
         <fullName>PRM_ToEmailID__c</fullName>
-        <externalId>true</externalId>
+        <externalId>false</externalId>
         <label>ToEmailID</label>
         <length>255</length>
         <required>false</required>
@@ -402,33 +402,13 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PRM_Subject__c</columns>
+        <columns>PRM_Contact__c</columns>
         <columns>PRM_ToEmailID__c</columns>
         <columns>PRM_Email_API_Response__c</columns>
         <columns>PRM_Timestamp__c</columns>
+        <columns>Email_Template_Name__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Subject__c</field>
-            <operation>contains</operation>
-            <value>expire</value>
-        </filters>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Lead_Email</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Subject__c</columns>
-        <columns>PRM_User__c</columns>
-        <columns>PRM_EmailDeliverabilityStatus__c</columns>
-        <columns>PRM_Email_API_Response__c</columns>
-        <columns>PRM_Timestamp__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Subject__c</field>
-            <operation>contains</operation>
-            <value>lead</value>
-        </filters>
-        <label>Lead Email</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>PCC_Deal_Reg_Email_Logs</fullName>
@@ -454,6 +434,15 @@
         <label>Deal Reg Email Logs</label>
         <sharedTo>
             <group>PCC_Deal_Internal_Users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PRM_IPAAdminsListForEPUM_PRM_EmailLog</fullName>
+        <filterScope>Queue</filterScope>
+        <label>PRM_IPAAdminsListForEPUM</label>
+        <queue>PRM_IPAAdminsListForEPUM</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <nameField>

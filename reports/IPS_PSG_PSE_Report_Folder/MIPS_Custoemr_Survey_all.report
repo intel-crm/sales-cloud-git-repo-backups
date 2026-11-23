@@ -40,16 +40,25 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>PSG-EMEA-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>PSG-EMEA-Enpirion</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>PSG-EMEA-unassigned</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-EMEA-IP/Embedded</sourceValue>
             </sourceValues>
             <value>EURAE</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>PSG-AP-Component/HSIO/IP</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-AP-Software/EMIF/Embedded</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>PSG-AP-unassigned</sourceValue>
@@ -74,9 +83,6 @@
             </sourceValues>
             <sourceValues>
                 <sourceValue>PSG-GAE-unassigned</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-APJ-MAG</sourceValue>
             </sourceValues>
             <value>PGGAE</value>
         </values>
@@ -220,28 +226,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Admin,PRISM,CSTOOLS,eASIC,DTC,cqe,JP-CAT2,enpiri,zbb,IR</value>
+            <value>cqe,empiri,asic,zbb,IR</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Assigned_Queue__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG</value>
+            <operator>notContain</operator>
+            <value>Enpirion</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,intel</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>BucketField_87973423</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>AE,MAG,APPS</value>
+            <value>altima,arrow,macnica,digi-key</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -256,7 +255,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>MIPS Custoemr Survey all - Obsolete</name>
+    <name>MIPS Custoemr Survey all</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -272,8 +271,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2022-03-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

@@ -86,6 +86,10 @@
             <translation><!-- APJ-&gt;Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>APJ-&gt;Co-Investment</masterLabel>
+            <translation><!-- APJ-&gt;Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>APJ-&gt;Data Centric Acceleration - MDF</masterLabel>
             <translation><!-- APJ-&gt;Data Centric Acceleration - MDF --></translation>
         </picklistValues>
@@ -136,6 +140,10 @@
         <picklistValues>
             <masterLabel>ASMO-&gt;Co-Engineering</masterLabel>
             <translation><!-- ASMO-&gt;Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-&gt;Co-Investment</masterLabel>
+            <translation><!-- ASMO-&gt;Co-Investment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ASMO-&gt;Data Centric Acceleration - MDF</masterLabel>
@@ -190,6 +198,10 @@
             <translation><!-- EMEA-&gt;Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>EMEA-&gt;Co-Investment</masterLabel>
+            <translation><!-- EMEA-&gt;Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>EMEA-&gt;Data Centric Acceleration - MDF</masterLabel>
             <translation><!-- EMEA-&gt;Data Centric Acceleration - MDF --></translation>
         </picklistValues>
@@ -242,6 +254,10 @@
             <translation><!-- PRC-&gt;Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PRC-&gt;Co-Investment</masterLabel>
+            <translation><!-- PRC-&gt;Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC-&gt;Data Centric Acceleration - MDF</masterLabel>
             <translation><!-- PRC-&gt;Data Centric Acceleration - MDF --></translation>
         </picklistValues>
@@ -292,6 +308,10 @@
         <picklistValues>
             <masterLabel>WW-&gt;Co-Engineering</masterLabel>
             <translation><!-- WW-&gt;Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WW-&gt;Co-Investment</masterLabel>
+            <translation><!-- WW-&gt;Co-Investment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>WW-&gt;Data Centric Acceleration - MDF</masterLabel>
@@ -376,6 +396,394 @@
         <relationshipLabel><!-- Internal Users Partner Geo Mappings --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Region SubRegion - Budget Type_NR --></label>
+        <name>Core_MDF_channel_MDF_GeoSubGeo_Bdgt_Type__c</name>
+        <picklistValues>
+            <masterLabel>APJ-&gt;Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- APJ-&gt;Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ-&gt;Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- APJ-&gt;Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ-&gt;Intel MDF Account Based2</masterLabel>
+            <translation><!-- APJ-&gt;Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ-&gt;Intel MDF Proposal Based2</masterLabel>
+            <translation><!-- APJ-&gt;Intel MDF Proposal Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ-&gt;Optane Specialties MDF</masterLabel>
+            <translation><!-- APJ-&gt;Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ-&gt;Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- APJ-&gt;Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ-&gt;SOEM Client MDF</masterLabel>
+            <translation><!-- APJ-&gt;SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ-&gt;SOEM Data Center MDF</masterLabel>
+            <translation><!-- APJ-&gt;SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APJ-&gt;VMWare Amplify - MDF</masterLabel>
+            <translation><!-- APJ-&gt;VMWare Amplify - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Client Specialties MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Data Center Specialties MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Intel MDF Account Based2</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Intel MDF Proposal Based2</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Intel MDF Proposal Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Optane Specialties MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;SOEM Client MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;SOEM Data Center MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-LAR-&gt;VMWare Amplify - MDF</masterLabel>
+            <translation><!-- ASMO-LAR-&gt;VMWare Amplify - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Client Specialties MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Data Center Specialties MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Intel MDF Account Based2</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Intel MDF Proposal Based2</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Intel MDF Proposal Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Optane Specialties MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;SOEM Client MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;SOEM Data Center MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-NAR-&gt;VMWare Amplify - MDF</masterLabel>
+            <translation><!-- ASMO-NAR-&gt;VMWare Amplify - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Client Specialties MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Data Center Specialties MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Intel MDF Account Based2</masterLabel>
+            <translation><!-- EMEA-&gt;Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Intel MDF Proposal Based2</masterLabel>
+            <translation><!-- EMEA-&gt;Intel MDF Proposal Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Optane Specialties MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;SOEM Client MDF</masterLabel>
+            <translation><!-- EMEA-&gt;SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;SOEM Data Center MDF</masterLabel>
+            <translation><!-- EMEA-&gt;SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA-&gt;VMWare Amplify - MDF</masterLabel>
+            <translation><!-- EMEA-&gt;VMWare Amplify - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based1</masterLabel>
+            <translation><!-- Intel MDF Account Based1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based2</masterLabel>
+            <translation><!-- Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Proposal Based1</masterLabel>
+            <translation><!-- Intel MDF Proposal Based1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Business Client Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Business Client Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Client Specialties MDF</masterLabel>
+            <translation><!-- PRC-&gt;Client Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Data Center Specialties MDF</masterLabel>
+            <translation><!-- PRC-&gt;Data Center Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Data Centric Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Data Centric Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- PRC-&gt;ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Intel MDF Account Based2</masterLabel>
+            <translation><!-- PRC-&gt;Intel MDF Account Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Intel MDF Proposal Based2</masterLabel>
+            <translation><!-- PRC-&gt;Intel MDF Proposal Based2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Optane Specialties MDF</masterLabel>
+            <translation><!-- PRC-&gt;Optane Specialties MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- PRC-&gt;Red Hat &quot;Amplify&quot; - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;SOEM Client MDF</masterLabel>
+            <translation><!-- PRC-&gt;SOEM Client MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;SOEM Data Center MDF</masterLabel>
+            <translation><!-- PRC-&gt;SOEM Data Center MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC-&gt;VMWare Amplify - MDF</masterLabel>
+            <translation><!-- PRC-&gt;VMWare Amplify - MDF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Is User Active --></label>
         <name>Core_MDF_is_User_Active_ind__c</name>
     </fields>
@@ -394,6 +802,10 @@
     <recordTypes>
         <label><!-- Co-GTM --></label>
         <name>Core_MDF_Co_GTM</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Co-Inv --></label>
+        <name>Core_MDF_Co_Inv</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Datacenter --></label>
@@ -423,6 +835,10 @@
     <validationRules>
         <errorMessage><!-- For CCF/DCF Budget Loader and Approver, &apos;WW&apos; region has to be selected --></errorMessage>
         <name>Core_MDF_CCFDCF_Region_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only WW for this role. --></errorMessage>
+        <name>Core_MDF_COINV_Region_Validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Cannot Update Account/Program/Role/User/All Accounts. Please deactivate and create new. --></errorMessage>

@@ -12,7 +12,6 @@ public without sharing class  Core_UtilityController {
     
     public static final String PMP_INTERNAL_ADMIN_STR = '%PMP_Internal_Intel_Admin%';
     public static final String ACTIVE_STATUS = 'Active';
-    
     @AuraEnabled 
     public static user fetchUser(){
         // query current user information  

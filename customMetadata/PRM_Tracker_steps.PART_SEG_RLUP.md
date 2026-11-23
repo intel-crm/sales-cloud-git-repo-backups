@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>PRM_Order__c</field>
-        <value xsi:type="xsd:double">7.0</value>
+        <value xsi:type="xsd:double">1.0</value>
     </values>
     <values>
         <field>PRM_Skippable_step__c</field>

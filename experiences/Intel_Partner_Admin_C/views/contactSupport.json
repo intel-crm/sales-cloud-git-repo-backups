@@ -9,36 +9,6 @@
     "regionName" : "header",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "allowAttachments" : true,
-        "attachmentLabel" : "Upload File",
-        "buttonAlignment" : "center",
-        "buttonBgColor" : "",
-        "buttonBgHoverColor" : "",
-        "buttonBorderColor" : "",
-        "buttonMaxWidth" : "",
-        "buttonRadius" : 0,
-        "buttonTextColor" : "",
-        "buttonTextHoverColor" : "",
-        "callToAction" : false,
-        "callToActionButtonText" : "",
-        "callToActionText" : "",
-        "callToActionUrl" : "",
-        "confirmationSubtext" : "We’ll get back to you soon.",
-        "confirmationText" : "Your case was created.",
-        "guestQuickActionName" : "Select or configure a global action",
-        "headerSubtitle" : "Tell us how we can help.",
-        "headerTitle" : "Contact Customer Support",
-        "quickActionName" : "",
-        "requestSummaryText" : "Case summary"
-      },
-      "componentName" : "forceCommunity:contactSupportForm",
-      "id" : "afb69f3e-1a05-482d-b96b-1c52e78b748d",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "944d90bb-e557-469b-b5e0-f51c87e41a60",
     "regionName" : "content",
     "type" : "region"

@@ -56,7 +56,7 @@
     </values>
     <values>
         <field>PRM_TemplateName__c</field>
-        <value xsi:type="xsd:string">SPECIALTY_MANAGED_SERVICES_FRA</value>
+        <value xsi:type="xsd:string">SPECIALTY_MANAGED_SERVICES_FRENCH</value>
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>

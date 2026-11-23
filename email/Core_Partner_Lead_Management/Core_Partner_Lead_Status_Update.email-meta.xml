@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Partner Lead Status Update</name>
+    <style>none</style>
+    <subject>Status Requested on Accepted and Contacted Leads</subject>
+    <textOnly>LEAD STATUS UPDATE REQUESTED
+
+Hello:
+
+We are pleased that you have Accepted {!User.Core_Leads_Accepted_Current_Year__c} new leads and have Contacted {!User.Core_Leads_Contacted_Current_Year__c} of those this year generated through our Intel® Partner Alliance program.
+
+As we’re continually improving our lead generation tactics, we’d love to learn more about the status of these leads!
+
+If you could please log in and update the status of your leads to reflect the current state we will leverage that information to learn and adjust our lead gen tactics moving forward.
+
+Wishing you continued success,
+
+Intel® Partner Alliance
+
+YOUR LEADS YEAR TO DATE
+
+Leads Generated – {!User.Core_Leads_Generated_Current_Year__c}
+
+Leads Accepted – {!User.Core_Leads_Accepted_Current_Year__c}
+
+Leads Contacted – {!User.Core_Leads_Contacted_Current_Year__c}
+
+Leads Qualified – {!User.Core_Leads_Qualified_Current_Year__c}
+
+Leads Rejected – {!User.Core_Leads_Rejected_Current_Year__c}
+
+Click here to disposition your leads
+Can’t access the link above?
+View Help for processing Intel leads
+
+Questions? Let our Intel® Partner Alliance Team help:
+programs@intel.com
+
+Note : Please don&apos;t reply to this mail as this is an auto generated mail, any reply to this email will not be monitored.
+
+This message was sent to you as an important business communication related to your current relationship with Intel Corporation
+© {! YEAR( TODAY() )} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.
+www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

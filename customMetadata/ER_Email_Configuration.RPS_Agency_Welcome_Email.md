@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>BusinessType__c</field>
-        <value xsi:type="xsd:string">RPS_Agency(Marketing Studio)</value>
+        <value xsi:type="xsd:string">RPS_Agency</value>
     </values>
     <values>
         <field>Business_Event__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Entitlements__c</field>
-        <value xsi:type="xsd:string">RPS_Agency(Marketing Studio)</value>
+        <value xsi:type="xsd:string">RPS_Agency</value>
     </values>
     <values>
         <field>Folder_Name__c</field>

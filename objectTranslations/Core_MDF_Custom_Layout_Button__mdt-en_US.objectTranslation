@@ -24,6 +24,10 @@
             <translation><!-- Cancel Claim --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Cancel VAT</masterLabel>
+            <translation><!-- Cancel VAT --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Change Owner</masterLabel>
             <translation><!-- Change Owner --></translation>
         </picklistValues>
@@ -74,6 +78,10 @@
         <picklistValues>
             <masterLabel>Notify Partner</masterLabel>
             <translation><!-- Notify Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recall to Payment Clearance</masterLabel>
+            <translation><!-- Recall to Payment Clearance --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Release Hold</masterLabel>

@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_Country__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">GBR</value>
     </values>
     <values>
         <field>PRM_Culture__c</field>

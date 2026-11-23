@@ -15,7 +15,7 @@ public without sharing class ER_SearchCIMAccounts {
     public list<PRM_CIMSearchResults__c> getCimResults(String accName,String accAddr,String accPostalCode,String accCity,String accCountry,String accStateProvince,String rcdLimit,String searchScore,String companyWebsite,String regEmail,String AccountType, Boolean fetchEmailDomainBasedAccts)
     {
         if(!String.isEmpty(regEmail)){
-            ER_SearchSalesCloudAccounts.strCountryCode = accCountry;
+            ER_SearchSalesCloudAccounts.strCountryCode = accCountry;  
         }
         
         //Response from CIM system is stored in cimResults
@@ -63,13 +63,7 @@ public without sharing class ER_SearchCIMAccounts {
         if(searchScore==null){
             searchScore=string.valueof(cimMdt.PRM_Min_Score__c);   
         }
-        // added on 18/01/2022 for entitlement based records
-        if(AccountType != null){
-            requestDetail.MaximumNumberOfRecordsToReturn = System.Label.DZP_AccountSearchLimit;
-        }else{
-            requestDetail.MaximumNumberOfRecordsToReturn = rcdLimit;
-        }
-        
+        requestDetail.MaximumNumberOfRecordsToReturn = rcdLimit;
         requestDetail.CallingSourceSystem = cimMdt.PRM_Calling_System__c;
         requestDetail.MandatoryFieldRestrictionLevel = Integer.valueOf(cimMdt.PRM_Restriction_Level__c);
         requestDetail.MinimumSearchScore = Integer.valueOf(searchScore);
@@ -142,7 +136,7 @@ public without sharing class ER_SearchCIMAccounts {
         return cimResults;
     }
     
-    // Mapping CIM results to PRM_CIMSearchResults__c Object 
+    // Mapping CIM results to PRM_CIMSearchResults__c Object  
     public list<PRM_CIMSearchResults__c> handleResponse(PRM_CIMWrapper wrapResp){
         list<PRM_CIMSearchResults__c> cimResultsList = new list<PRM_CIMSearchResults__c>();
         PRM_CIMWrapper respWrap = new PRM_CIMWrapper();
@@ -347,7 +341,7 @@ public without sharing class ER_SearchCIMAccounts {
         return cimResultsList;
     }
     
-    private list<PRM_CIMSearchResults__c> insertCimSearchResults(ER_cimDataWrap cimDataWrap){
+    private list<PRM_CIMSearchResults__c> insertCimSearchResults(ER_cimDataWrap cimDataWrap){ 
         list<PRM_CIMSearchResults__c> searchResultsList = new list<PRM_CIMSearchResults__c>();
         list<PRM_CIMSearchResults__c> sortedSearchResultsList = new list<PRM_CIMSearchResults__c>();
         map<string,PRM_CIMSearchResults__c> accountCimMapUnSorted = new map<string,PRM_CIMSearchResults__c>();

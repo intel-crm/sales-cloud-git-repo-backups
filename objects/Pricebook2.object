@@ -146,6 +146,50 @@
         <trackHistory>true</trackHistory>
     </fields>
     <fields>
+        <fullName>Type__c</fullName>
+        <description>Price book type</description>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Price Book - APAC</fullName>
+                    <default>false</default>
+                    <label>Price Book - APAC</label>
+                </value>
+                <value>
+                    <fullName>Price Book - JP</fullName>
+                    <default>false</default>
+                    <label>Price Book - JP</label>
+                </value>
+                <value>
+                    <fullName>Price Book - EU</fullName>
+                    <default>false</default>
+                    <label>Price Book - EU</label>
+                </value>
+                <value>
+                    <fullName>Price Book - NA</fullName>
+                    <default>false</default>
+                    <label>Price Book - NA</label>
+                </value>
+                <value>
+                    <fullName>Price Book - OEM</fullName>
+                    <default>false</default>
+                    <label>Price Book - OEM</label>
+                </value>
+                <value>
+                    <fullName>Price Book – ZER</fullName>
+                    <default>false</default>
+                    <label>Price Book – ZER</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>core_cpq_program__c</fullName>
         <description>Used to define the type of price book</description>
         <label>Program</label>

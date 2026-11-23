@@ -32,7 +32,6 @@ public without sharing class PMP_SendEmailAlertsForPartners {
         //domainName = String.valueOf(URL.getSalesforceBaseUrl().toExternalForm());
         //below line added as part of the logo issue in email template - by priyanka 
         domainName=String.valueOf(System.Url.getOrgDomainUrl().toExternalForm());
-        //System.debug('....domainName.....'+domainName);
         orgId = UserInfo.getOrganizationId();
         
         if(document!=Null){
@@ -56,8 +55,6 @@ public without sharing class PMP_SendEmailAlertsForPartners {
     
     @InvocableMethod(label='Send Emails for Partners' description='Sends the email to recent submitter of Partner')
     public static void sendPartnerEmailNotifications(List<SendEmailRequestWrapper> partnerAndSubmitterDetails) {
-        //System.debug('sendPartnerEmailNotifications--> ids recieved from process builder:'+partnerAndSubmitterDetails);
-        // system.debug('Inside Partner method');
         //fetch the template name
         String templateName=partnerAndSubmitterDetails[0].templateName;
         
@@ -81,13 +78,10 @@ public without sharing class PMP_SendEmailAlertsForPartners {
         for(SendEmailRequestWrapper req: partnerAndSubmitterDetails){
             partnerIds.add(req.partnerId);
         }
-        //system.debug('partnerIds'+partnerIds);
         List<PMP_Company__c> partnersList= new List<PMP_Company__c>();
         if(PMP_Company__c.SObjectType.getDescribe().isAccessible()){
              partnersList=[SELECT id,PMP_Partner_Submitter_UserId__c,PMP_Account_Id__c from PMP_Company__c  WHERE Id IN:partnerIds ];
             }
-            //system.debug('partnerId===='+partnersList[0].Id+' '+templateName);
-        //system.debug(' partnersList'+  partnersList);
         //form the submitter and partner id map , and submitterPartnerIdMap is send to the sendEmailAndLogData method
         for(PMP_Company__c partner:partnersList){
             if(partner.PMP_Partner_Submitter_UserId__c!=null){
@@ -96,7 +90,6 @@ public without sharing class PMP_SendEmailAlertsForPartners {
             }
         }
         
-        //System.debug('....submitterPartnerIdMap...'+submitterPartnerIdMap);
         
         If(!submitterPartnerIdMap.keySet().isEmpty()){ //check if map is not empty
             //all submitters including inactive users
@@ -108,7 +101,6 @@ public without sharing class PMP_SendEmailAlertsForPartners {
             //remove inactive users from submitterPartnerIdMap which will be send to sendEmailAndLogData for  sending email.
             for(Id userId:userIds){
                 if(!activeUsers.contains(userId)){
-                     //System.debug('###InactiveUsers:->');
                     inActivatedUsersAndPartnerMap.put(userId,submitterPartnerIdMap.get(userId));
                     submitterPartnerIdMap.remove(userId);
                 }
@@ -116,7 +108,6 @@ public without sharing class PMP_SendEmailAlertsForPartners {
             
             // to send the email to recent submitter and log the email to associated offering.
             if(!submitterPartnerIdMap.keySet().isEmpty()){
-                 //System.debug('submitterPartnerIdMap'+submitterPartnerIdMap);
 
                 PMP_Utility.sendEmailAndLogData(templateName, submitterPartnerIdMap);
                 
@@ -138,32 +129,26 @@ public without sharing class PMP_SendEmailAlertsForPartners {
             
             //querying apexEmail to get the permission sets required on user to send email
             apexEmailRec = PMP_Utility.getApexEmailRecord(apexEmailRecName);
-            //System.debug('..apexEmailRec..'+apexEmailRec);
             
             //fetch permission set to send email for users of those permissionset 
             List<string> allowedPermissionSets = New List<string>(); //allowed permission sets are stored in the apexEmailRec  as comma seperate values    
             allowedPermissionSets = apexEmailRec.Core_Allowed_Permission_Nm__c.split(',');
-            //System.debug('..allowedPermissionSets..'+allowedPermissionSets);
             List<PMP_Company__c> comInfoList= new List<PMP_Company__c>();
             
             //add all companies for which email has to be send to all PA's
             for(Id partnerId:inActivatedUsersAndPartnerMap.values()){
                 comInfoList.add(partnerIdAndPartnerMap.get(partnerId));
             }
-            //System.debug('..comInfoList..'+comInfoList);
             
             //fetch users to send the email
             userCompanyMap = PMP_Utility.fetchUsersMapFromPagMember(comInfoList, allowedPermissionSets);
-            //system.debug('.....userCompanyMap.....'+userCompanyMap.keySet().size()+''+userCompanyMap);
             
             //Filter Inactive PA's
             userCompanyMap = PMP_Utility.removeInactiveUsers(userCompanyMap);
-            // system.debug('.....After removing the inactive users-->userCompanyMap.....'+userCompanyMap.keySet().size()+''+userCompanyMap);
             
             
             //Send emails to all actives PA's
             if(!userCompanyMap.keySet().isEmpty()){
-                //system.debug('Inside Active PA---'+userCompanyMap.keySet());
                 PMP_Utility.sendEmailAndLogData(templateName, userCompanyMap);  
             }  
         }

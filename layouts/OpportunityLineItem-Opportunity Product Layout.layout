@@ -58,10 +58,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_Prime_Account_Name__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
                 <field>Core_UCD_Global_Account_Name__c</field>
             </layoutItems>
             <layoutItems>
@@ -128,11 +124,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_Opportunity_Product_Vendor_Prime__c</field>
+                <field>Core_UCD_Opportunity_Product_Vendor__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_UCD_Opportunity_Product_Vendor__c</field>
+                <field>Core_Opportunity_Product_Vendor_Prime__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -340,6 +336,19 @@
     <multilineLayoutFields>Core_Competitor__c</multilineLayoutFields>
     <multilineLayoutFields>Core_Competitor_Product__c</multilineLayoutFields>
     <multilineLayoutFields>OpportunityId</multilineLayoutFields>
+    <relatedLists>
+        <customButtons>Core_EditDescriptiveFeaturesForProduct</customButtons>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>Core_Feature_Type__c</fields>
+        <fields>Core_Feature_Name__c</fields>
+        <fields>Core_Platform_BU__c</fields>
+        <relatedList>Core_Opportunity_Features__c.Opportunity_Product__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_Oppty_KPI_New__c.Core_Opportunity_Product__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

@@ -5,7 +5,7 @@
         <value>価格条件</value>
     </caseValues>
     <fields>
-        <help>対象オブジェクトで項目を選択します。</help>
+        <help>[値] 項目に入力した値が含まれる項目を選択します。</help>
         <label><!-- Field --></label>
         <name>SBQQ__Field__c</name>
         <picklistValues>
@@ -27,6 +27,10 @@
         <picklistValues>
             <masterLabel>RecordTypeId</masterLabel>
             <translation><!-- RecordTypeId --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__ListPrice__c</masterLabel>
+            <translation><!-- SBQQ__ListPrice__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SBQQ__OptionLevel__c</masterLabel>

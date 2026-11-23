@@ -401,6 +401,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_SW_Lic_Group_Id_DoNotUse__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>This field is requires to associate the product to a specific license group.</description>
+        <label>License Group Do not use</label>
+        <referenceTo>License_Group__c</referenceTo>
+        <relationshipLabel>Core_Product_Ext_Attributes_DoNotUse</relationshipLabel>
+        <relationshipName>Product_Ext_Attribute_Lic_Grp_DoNotUse</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_SW_Lic_Group_Id__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <description>This field is requires to associate the product to a specific license group.</description>
@@ -421,6 +434,20 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Core_SW_Lic_Maintenance_Duration_Nbr__c</fullName>
+        <description>Value stored as Number of months.
+Drives Renewal availability (Product is available for renewal if the Maintenance date is &gt;= Current Date - Renewal Grace Period</description>
+        <externalId>false</externalId>
+        <label>Maintenance Duration (In Months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_SW_Lic_Rehostable_Ind__c</fullName>
@@ -652,9 +679,14 @@ If the product is unavailable to TOE it is not visible in Tools Order Entry&quot
         <columns>Core_Prod_QTE_Alt_LGSTS_NW_Enabled_Ind__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_Product_Id__c</field>
+            <field>Core_Prod_Tool_Type_Nm__c</field>
             <operation>equals</operation>
-            <value>1SA28SAN1F50I1VG</value>
+            <value>RENEWAL</value>
+        </filters>
+        <filters>
+            <field>Core_Prod_Tool_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>RENEWAL</value>
         </filters>
         <label>All</label>
     </listViews>
@@ -712,7 +744,7 @@ ischanged(Core_SW_Prod_Max_Rehost_Cnt__c)
         <fullName>PSG_Restrict_Ext_Attr_On_InactiveProduct</fullName>
         <active>true</active>
         <description>Restrict creating Extended attribute records for Inactive Products</description>
-        <errorConditionFormula>AND( ISNEW() , Core_Product_Id__r.IsActive = false, Core_Product_Id__r.Core_Hierarchy_ID__c ==&apos;59&apos;)</errorConditionFormula>
+        <errorConditionFormula>AND( ISNEW() , Core_Product_Id__r.IsActive = false)</errorConditionFormula>
         <errorMessage>Creation of Extended Attribute record is restricted for Pre-Release(Inactive) Products.</errorMessage>
     </validationRules>
     <validationRules>

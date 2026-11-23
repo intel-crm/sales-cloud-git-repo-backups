@@ -1,10 +1,3 @@
-/**
- * @description       : 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : 
- * @last modified on  : 03-16-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
 @isTest
 public class Pricing_PerformanceMetricsControllerTest {
     //Method to setup test data
@@ -22,14 +15,14 @@ public class Pricing_PerformanceMetricsControllerTest {
                 List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
                 List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();
                 AccountTeamMember accTeam = new AccountTeamMember(AccountId = acc.Id,
-                                                                  TeamMemberRole = 'Technical Sales',UserId = salesRepUserList[0].Id);
+                TeamMemberRole = 'Technical Sales',UserId = salesRepUserList[0].Id);
                 insert accTeam;
                 List<SBQQ__Quote__c> lstquote = Pricing_Test_Utility.createQuoteWithParam(acc.Id, con.Id, 1,salesRepUserList[0].Email,accountExecutiveUserList[0].Email);
                 List<SBQQ__QuoteLine__c> qliLst;
                 if(!lstquote.isEmpty()){
                     qliLst = Pricing_Test_Utility.createQuoteLines(lstquote[0].id, 2);
                 }
-                 List <Pricing_Performance_Metric__c> lstPerformanceMatric = Pricing_Test_Utility.createPerformanceMetrics(qliLst[0].id);
+                List <Pricing_Performance_Metric__c> lstPerformanceMatric = Pricing_Test_Utility.createPerformanceMetrics(qliLst[0].id);
                 insert lstPerformanceMatric ;
                 Test.stopTest();
             }
@@ -55,7 +48,7 @@ public class Pricing_PerformanceMetricsControllerTest {
             }
         }
         Test.stopTest();
-    } 
+    }
     
     static testmethod void PerformanceMetricsControllerTestPickVal(){
         List<User> lstUsers = new List<User>([select id from User WHERE IsActive = TRUE Limit 1]);
@@ -76,7 +69,7 @@ public class Pricing_PerformanceMetricsControllerTest {
             }
         }
         Test.stopTest();
-    } 
+    }
     static testmethod void PerformanceMetricsControllerTestWithRPM(){
         List<User> pmUser = Pricing_Test_Utility.createPricingMangerUser();
         List<SBQQ__QuoteLine__c> quoteLineList = new List<SBQQ__QuoteLine__c>([select id,Pricing_Status_Nm__c,SBQQ__Quote__c from SBQQ__QuoteLine__c]);
@@ -98,6 +91,7 @@ public class Pricing_PerformanceMetricsControllerTest {
                     System.assert(readOnly2 != null, 'isReadOnlyPageLayout should not return null for second quote line');
                     Boolean readOnly3 = Pricing_PerformanceMetricsController.isReadOnlyPageLayout(quoteLineList[1].id);
                     System.assert(readOnly3 != null, 'isReadOnlyPageLayout should not return null for third quote line');
+                    // Validate that the quote line statuses were updated correctly
                     Set<Id> quoteLineIds = new Set<Id>();
                     for(SBQQ__QuoteLine__c qli : quoteLineList) {
                         quoteLineIds.add(qli.Id);
@@ -109,14 +103,16 @@ public class Pricing_PerformanceMetricsControllerTest {
             }
         }
         
-    } 
+    }
     
     static testmethod void testShowQliDtls(){
         List<SBQQ__QuoteLine__c> quoteLineList = new List<SBQQ__QuoteLine__c>([select id,Pricing_Status_Nm__c,SBQQ__Quote__c from SBQQ__QuoteLine__c]);
         Test.startTest();
         Boolean  result = Pricing_PerformanceMetricsController.showQuoteLineDetail(quoteLineList[0].id);
         Test.stopTest();
+        // Validate that the method returns a non-null result
         System.assert(result != null, 'showQuoteLineDetail should return a non-null result');
+        // Validate that the result has the expected structure
         System.assert(result != null, 'Result should not be null');
     }
 }

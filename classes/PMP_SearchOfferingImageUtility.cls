@@ -26,7 +26,7 @@ public without sharing class PMP_SearchOfferingImageUtility {
 	// 	//if(Schema.sObjectType.ContentDistribution.isAccessible()){
 	//         try{
 	//             cdList = [SELECT Id,ContentDocumentId, ContentDownloadUrl from ContentDistribution Where ContentDocumentId in: conDocIdList ];
-    //             system.debug('CDLIST :'+ cdList);
+    
 	//         }catch(Exception e){
 	//             system.debug('Error in ContentDistribution '+ e.getMessage() );
 	//         }			
@@ -94,7 +94,7 @@ public without sharing class PMP_SearchOfferingImageUtility {
                 recordIdAssetNameMap.put(oRes.PMP_Offering_Id__c, assetUrl);
             }
         }
-        system.debug('Asset Map : ' + recordIdAssetNameMap);
+        
         return recordIdAssetNameMap;
     } */
 }

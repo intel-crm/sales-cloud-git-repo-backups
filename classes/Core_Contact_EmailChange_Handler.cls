@@ -10,7 +10,7 @@ Modification Log :
 * Popcornapps              6/05/2017               Fixed the bug -- Dataops not able to change email address in production if there is no entitlement associated with contact
 * Team Draco                 22/12/2022            Added logic to stop call to AGS due to ERPM By-pass logic upon Email change
 *************************************************************************************/
-public class Core_Contact_EmailChange_Handler{
+public without sharing class Core_Contact_EmailChange_Handler{
     private static final String UPDATE_REASON_EMAIL_CHANGE = 'Email Change';
     public static boolean initiatedAsEmailChange = false; //Team Draco Change [22/12/2022]
     
@@ -33,9 +33,6 @@ public class Core_Contact_EmailChange_Handler{
 
         Profile userProfileName = [Select Name from Profile where Id = : UserInfo.getProfileId() limit 1];
 
-        System.debug('==='+userProfileName.Name);
-        System.debug('==='+mapContactAcessProfiles.keyset());
-
         if(!mapContactAcessProfiles.isEmpty() && mapContactAcessProfiles.containsKey(userProfileName.Name)){
             blnProfileAccess = false;
         }  
@@ -53,14 +50,11 @@ public class Core_Contact_EmailChange_Handler{
 
         String excludedIds=System.Label.core_accountMailExcludedIds;
         Set<ID> excludedIdsSet=new set<ID>((List<ID>)(excludedIds.split(',')));
-        system.debug('excludedIdsSet :: '+excludedIdsSet);
         for(Id conId : mapContactConEnt.keyset()){
             Boolean blnRemovedAccess = false;
             String AllEntitlementName='<table>';
             
             for(Core_Contact_Entitlement__c ceObject : mapContactConEnt.get(conId)){
-                    System.debug('===updatedContactEmail.get(conId)==>'+updatedContactEmail.get(conId));
-                    System.debug('===blnProfileAccess==>'+blnProfileAccess);
                     if(updatedContactEmail.get(conId) && blnProfileAccess){
                         if(ceObject.Core_Selected__c){
                             ceObject.Core_Selected__c=false;    
@@ -90,9 +84,7 @@ public class Core_Contact_EmailChange_Handler{
             Contact c = mapConIdConObj.get(conId);
             String targetObjectID=(!excludedIdsSet.contains(c.ownerID))?c.ownerID:((c.Core_IPS_Intel_Support_Owner__c != null))?c.Core_IPS_Intel_Support_Owner__c:(!excludedIdsSet.contains(c.account.ownerID))?c.account.ownerID:null;
             // Update Id with 18digit ID type
-            system.debug('targetObjectID '+targetObjectID);
             
-            system.debug('Email : : '+oldContact.get(conId).Email+'::'+c.email);
             
             if(targetObjectID!=null){
                 mapConIDTargetId.put(conId,targetObjectID);
@@ -100,15 +92,12 @@ public class Core_Contact_EmailChange_Handler{
         }
 
         if(lstToUpdateConEnt.size()>0){
-            system.debug('== in update==lstToUpdateConEnt==>'+lstToUpdateConEnt);
             initiatedAsEmailChange = true; //Team Draco Change [22/12/2022]
             update lstToUpdateConEnt;
-            system.debug('== after update==');
         } 
         if(lstConToUpdate.size()>0){
             //update lstConToUpdate;
             //eRPM - trigger logic - atb
-            system.debug('email change');
             Core_ERPM_Outbound_Integration.evaluateAndSetERPMOutboundIntegrationStatus(lstConToUpdate, null, true);
         }
        
@@ -117,7 +106,6 @@ public class Core_Contact_EmailChange_Handler{
         String  sQuery = 'Select id from user where id = : stUsers';
         if (Boolean.valueOf(Label.Core_Send_Mail_Profile_Based))
             sQuery = sQuery + ' and profileID IN (select id from profile where name IN : sProfile)';
-        System.debug(sQuery);     
         Map<Id,User> lstUser = new Map<Id,User>();
         for (User u: (Database.query(sQuery)))
         {
@@ -125,7 +113,6 @@ public class Core_Contact_EmailChange_Handler{
         }
         for(Contact newCons : mapConIdConObj.values()){
             if(lstUser.get(mapConIDTargetId.get(newCons.id))!=null){
-                System.debug('Sent mail');
                 sendSingleMail(newCons,template,mapConIDTargetId.get(newCons.id),mapAllEntitlements.get(newCons.id),oldContact.get(newCons.id).Email);
               }
          }
@@ -134,7 +121,6 @@ public class Core_Contact_EmailChange_Handler{
    
 /*This method is to send email to contact owner*/
     public static void sendSingleMail(Contact contactObj, EmailTemplate emailTemplateRec, String targetObjectID, String AllEntitlementName, String fromEmail){
-        System.debug('==in sendSingleMail===');
         String subject = emailTemplateRec.Subject;
         subject = subject.replace('{!Contact.Email}', fromEmail);
 

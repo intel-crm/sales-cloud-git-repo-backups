@@ -39,7 +39,6 @@ public class Core_MDF_Reopen_Activity_Test {
         List<String> result1 = new List<String>();
         myset1.addAll(bypassFunctionKeys);
         result1.addAll(myset1);
-        
         List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
         
         profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' limit 1];
@@ -927,25 +926,6 @@ public static void validateActivityCMPTest2(){
     
     
     
-    /*@isTest
-public static void ValidateATFActivity(){
-test.startTest();
-User usr2 = [select Id,email from user where email = 'rmfaccntmngr@example.com' LIMIT 1];
-PartnerFundRequest pfr1 = [select id,Core_MDF_Program__c,Core_MDF_Proposal_Based_Ind__c,Core_MDF_ToBeClosedDate__c,Core_MDF_Budget_Type_nm__c,CreatedDate,Core_MDF_End_Date__c,Core_MDF_End_Date_Is_Changed_ind__c,Core_MDF_PriorValueOfStatus__c from PartnerFundRequest where title='Retail RSA MD Activity' LIMIT 1];
-pfr1.Core_MDF_Start_Date__c=system.today()-95;
-pfr1.Core_MDF_End_Date__c=system.today()-95;
-pfr1.Core_MDF_ATF_Flag_nm__c='ATF date and claim window closed';
-pfr1.Core_MDF_ToBeClosedDate__c=System.today()-10;
-System.runAs(usr2){
-update pfr1;
-Core_MDF_Reopen_Activity.validateActivity(pfr1.id);
-Core_MDF_Reopen_Activity.reOpenActivity(pfr1.id);
-Core_MDF_Reopen_Activity.getActClosureDate(null);
-Core_MDF_Reopen_Activity.validateActivity(null);
-}
-Assert.isNotNull(pfr1.id);
-test.stopTest();
-}*/ 
     @isTest
     public static void ValidateCatchBlock(){
         test.startTest();
@@ -1787,7 +1767,41 @@ public static void testValidateOutcomeBasedSubActivityScenarios(){
     }
     Test.stopTest();			
 }
-
+    @IsTest
+    static void testhasAnySubActivityWithZeroAllocation(){
+        User usr = [select id from User where lastname='Budget Loader CCPTest' limit 1];
+    User user1 = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
+    
+    System.runAs(usr){
+        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_CCF_Field_Acct_Mgr' LIMIT 1];
+        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = psFinance.Id);
+    }
+	//PartnerFundRequest subActivity;
+ Account acc = [select id from Account where Core_MDF_Parent_Fund_Account__c != null limit 1];
+        Campaign camp = [select id from Campaign limit 1];
+        PartnerMarketingBudget budget = [select id from PartnerMarketingBudget limit 1];
+        PartnerFundAllocation allocation = [select id from PartnerFundAllocation limit 1];
+		List<String> claimCloseStatus = new List<String>{'Closed'};
+        // Create sub-activity
+        PartnerFundRequest subActivity = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc.Id,allocation,
+                                                                                              budget,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Event',
+                                                                                              'Member Participation in Third-Party Event','Draft',false);
+        subActivity.RequestedAmount = 50;
+        subActivity.Title='TESTHandleOutcomeBasedSub';
+        subActivity.Core_MDF_Fund_Request_Status__c = 'Closed';
+        subActivity.Core_MDF_Budget_Type_nm__c = 'CCF 1.0';
+        subActivity.Core_MDF_Activity_Closure_Type__c = 'Manual';
+        subActivity.Core_MDF_Is_Outcome_Based_Ind__c = true;
+        subActivity.Core_MDF_Activity_Level_nm__c = 'Sub Activity';
+        //subActivity.Core_MDF_Parent_Activity_Id__c = parentActivity.Id;
+        subActivity.Core_MDF_ToBeClosedDate__c = System.today()-5;
+        subActivity.Core_MDF_Activity_Types__c = '';
+        insert subActivity;
+        Test.startTest();
+        Id parentId = subActivity.Core_MDF_Parent_Activity_Id__c;
+        List<Core_MDF_Reopen_Activity.SubActivityValidationResult> Sbvr = Core_MDF_Reopen_Activity.validateOutcomeBasedSubActivities(parentId,Null,Null);
+        Test.stopTest();
+    }
     
     @isTest
     static void testSubActivityValidationResultWrapperCoverage() {

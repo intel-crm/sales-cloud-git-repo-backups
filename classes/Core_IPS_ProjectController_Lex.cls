@@ -252,7 +252,7 @@ return isAccntMemTypeAll;
         List<Core_IPS_Project_Member__c> existingMembers = new List<Core_IPS_Project_Member__c>();
         List <IPSMemberWrapper> wrapperInContext = new List <IPSMemberWrapper> ();      
         if(core_ips_account__c.SObjectType.getDescribe().isQueryable())
-           existingAccounts = [select id, core_account__r.OwnerId, core_account__c from core_ips_account__c where core_ips_project__c =: projectId and Core_Status__c='Active' and(core_members__c = 'Selective' OR core_members__c = 'All')];//added Core_Status__c='Active' by sabira  as part of TWC745-9522                     
+        existingAccounts = [select id, core_account__r.OwnerId, core_account__c from core_ips_account__c where core_ips_project__c =: projectId and Core_Status__c='Active' and(core_members__c = 'Selective' OR core_members__c = 'All')];//added Core_Status__c='Active' by sabira 30-10-2026 as part of TWC745-9522    
         for (Core_ips_account__c ipsAct: existingAccounts) {
             setAcctIds.add(ipsAct.core_account__c); 
             if(ipsAct.core_account__r.OwnerId == userinfo.getUserId()){

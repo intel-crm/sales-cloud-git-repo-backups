@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="IUPGM Discrepancy Monitor"
+                         recipientType="User" 
+                         relatedToType="Core_MDF_Record_Tracking__c">
+<messaging:htmlEmailBody >
+
+<html>
+<body>
+</body>
+<p>Dear Intel employee,</p>
+
+<p>Please <strong><a href="{!$Label.Core_MDF_PFRDetailLink}{!relatedTo.Id}">{!$Label.Core_MDF_Click_here}</a></strong> to find the attached CSV files that contains list of IUPGM Discrepancies. </p>
+
+<div>Thank you,</div>
+<div>Intel® Partner Investment Center</div>
+
+</html>    
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

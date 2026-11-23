@@ -60,7 +60,7 @@
                                                 </td>
                                                 <td scope="row">
                                                     <div class="slds-truncate" title="{!ew.exceptionRecord.Core_MDF_Name_of_Exception_nm__c}">
-                                                        <a href = "{!ew.exceptionRecordLink}">
+                                                        <a href = "{!ew.exceptionRecordLink}" rel="noopener noreferrer">
                                                             {!ew.exceptionRecord.Core_MDF_Name_of_Exception_nm__c}
                                                         </a>
                                                     </div>

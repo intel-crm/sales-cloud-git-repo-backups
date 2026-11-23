@@ -31,7 +31,7 @@ global Class Core_Batch_BUMapOpportunityLine_EOW implements Database.Batchable<s
         List<String> ProdType = new List<String>();
         System.debug('StartDate::'+StartDate);
         System.debug('EndDate::'+EndDate);
-        Bmt = [select id,Core_Product_Segment__c, Core_Product_Application__c, Core_Mid_Week_Processed__c, Core_Division_Shortname__c, Core_Product_Type__c from Core_BU_Mapping_Table__c where Core_End_of_Week_Processed__c = false];
+        Bmt = [select id,Core_Product_Segment__c, Core_Product_Application__c, Core_Mid_Week_Processed__c, Core_LOB_Code__c, Core_Product_Type__c from Core_BU_Mapping_Table__c where Core_End_of_Week_Processed__c = false];
         /*System.debug('BU Map Table List #31::'+Bmt);
         System.debug('BU Map Table List Size #32::'+Bmt.size());*/
        for(Core_BU_Mapping_Table__c bm: Bmt){
@@ -40,7 +40,7 @@ global Class Core_Batch_BUMapOpportunityLine_EOW implements Database.Batchable<s
              ProdType.add(bm.Core_Product_Type__c);
         }
 		//TWC4767-465        
-        String query = 'SELECT Core_product2_division__c,Core_BU_Product_Segment__c,Core_BU_ShortName__c,Core_BU_Short_Name__c,Core_Division__c,Core_Product_Application__c,Core_Product_Segment__c,Core_Product_Type__c,Id,OpportunityId FROM OpportunityLineItem where  (Core_Product_Application__c != null OR Core_Product_Segment__c != null) AND Core_Product_Segment__c IN:ProdSegment AND Core_Product_Type__c IN:ProdType AND Opportunity.StageName IN (\'Design Win\',\'Production Win\',\'Lost\',\'Cancelled\',\'Production Lost\',\'Production Cancelled\') AND Opportunity.CloseDate <='+EndDate+'AND Opportunity.CloseDate >='+StartDate+' ORDER BY Opportunity.AccountId';
+        String query = 'SELECT Core_Product2_LOB_Code__c,Core_BU_Product_Segment__c,Core_BU_ShortName__c,Core_BU_Short_Name__c,Core_Division__c,Core_Product_Application__c,Core_Product_Segment__c,Core_Product_Type__c,Id,OpportunityId FROM OpportunityLineItem where  (Core_Product_Application__c != null OR Core_Product_Segment__c != null) AND Core_Product_Segment__c IN:ProdSegment AND Core_Product_Type__c IN:ProdType AND Opportunity.StageName IN (\'Design Win\',\'Production Win\',\'Lost\',\'Cancelled\',\'Production Lost\',\'Production Cancelled\') AND Opportunity.CloseDate <='+EndDate+'AND Opportunity.CloseDate >='+StartDate+' ORDER BY Opportunity.AccountId';
         //System.debug('Oppo Line Item List #40::'+query);
         return Database.getQueryLocator(query);
     }

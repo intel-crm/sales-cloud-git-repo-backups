@@ -1,5 +1,5 @@
 <apex:page applyHtmlTag="true" applyBodyTag="true" tabStyle="Core_Pipeline_Management__tab" 
            controller="Core_WavePipelineAnalysis_Controller" action="{!init}" 
            title="Pipeline Management Dashboard" lightningStylesheets="true">
-     
+    
 </apex:page>

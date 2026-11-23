@@ -38,7 +38,7 @@ public class PRM_ProfileResponses_TriggerHandler extends TriggerHandler{
          
             boolean isUpdated = false;             
             //List<PRM_Profile_Responses__c> newProfileresponses = Trigger.New;
-            //system.debug('Equals check next');
+            system.debug('Equals check next');
             for(PRM_Profile_Responses__c newPrRes : (List<PRM_Profile_Responses__c>)Trigger.New) {
                 PRM_Profile_Responses__c oldPrRes = (PRM_Profile_Responses__c)Trigger.oldMap.get(newPrRes.Id); 
                 if(newPrRes.PRM_Profile_Questions_Id__c != oldPrRes.PRM_Profile_Questions_Id__c
@@ -54,7 +54,7 @@ public class PRM_ProfileResponses_TriggerHandler extends TriggerHandler{
                 
             }
             if(isUpdated) {
-               // system.debug('Before update -'+isUpdated);
+                system.debug('Before update -'+isUpdated);
                 if(system.isBatch() || System.isQueueable()){
                     new ContactERPMIntegrationStatusHandler((List<PRM_Profile_Responses__c>)Trigger.new,  Trigger.new.getSObjectType());
                 }

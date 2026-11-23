@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Developer Zone 프리미어 계정 승인</title>
+	<meta charset="utf-8">
+	<style type ="text/css">/* IE8 COMPENSATE FOR HTML5 COMPATIBILITY */ article, aside, figure, caption, figcaption, footer, header, main, nav, section, summary { display: block; } /* STRUCTURE */ body { -webkit-text-size-adjust: none; background-color:#f9f9f9; background: url('https://tstcqcontent-ssl.cps.intel.com/etc/designs/intel/us/en/images/gradiantbg-body.png') repeat-x scroll left top #f9f9f9; height: 100%; outline: medium none; } #container { /* "Container" contains all the layout code, sets page width in (pixels), and easily centers page. */ width: 600px; /* Good width of the vast majority of computer screens - 960px is standard because most users have 1024×768 resolution or higher */ margin-top: 10px; /* Outside the container line */ margin-right: auto; /* "auto" centers horizontally: tells the web browser to automatically calculate the space that is left over at the left and right of the #container */ margin-bottom: 10px; margin-left: auto; /* "auto" centers horizontally: tells the web browser to automatically calculate the space that is left over at the left and right of the #container */ position: relative; /* "relative" because using things called floats */ /* position options {"relative", "absolute"} */ background-color: #FFFFFF; border-color: #E5E5E5; border-style: solid; padding: 25px 50px 0px 50px; /*top right bottom left -- Inside the container line */ border-width: 1px; overflow: hidden; line-height: 1.5em; } hr { background-color: #E5E5E5; color:#E5E5E5; border: 0 none; height: 1px; } img.floating { /* image with text around it */ float: right; padding: 4px 0px 0px 50px; /** top right bottom left **/ } /* TEXT STYLES */ body { font-family: "Intel Clear", Verdana, Helvetica, sans-serif; font-weight: normal; font-size: 10pt; color: #666666; } header { font-family: "Intel Clear Pro", Verdana, Helvetica, sans-serif; font-weight: normal; font-size: 1.1em; color: #003C71; line-height: 2em; } section { font-size: 0.8em; font-style: italic; color: black; line-height: 1.4em; } footer { font-size: 0.9em; line-height: 1.4em; } footer a { text-decoration: none; } a { color: #086DB6; } .intelBlueTextStyle { color: #086DB6; } .subjectTextStyle { font-size: 1.2em; font-weight: bold; color: #086DB6; line-height: 1.4em; }</style>
+</head>
+
+
+<body>
+<div id="container"><header>
+<h1><img src="https://messagecenter-cons.intel.com/v1/images/uploads/5104bda0-0fc2-11ec-901e-3750230d5760.png" alt="" title="devzone-premier-header_720x160@2x.png" /></h1>
+<hr /><span style="font-family: 'intel clear', sans-serif;"><!-- horizontal line --></span></header><main>
+<p class="subjectTextStyle"><span style="font-family: 'intel clear', sans-serif;">Developer Zone 프리미어에 오신 것을 환영합니다.</span></p>
+<p><br /><span style="font-family: 'intel clear', sans-serif;">{!Contact.FirstName} {!Contact.LastName}님, 안녕하십니까?</span></p>
+<p><span style="font-family: 'intel clear', sans-serif;">Developer Zone 프리미어 계정에 대한 요청이 승인되었습니다. 아래 나와 있는 자격 증명을 사용해 인텔의 <a href="https://www.intel.com/content/www/us/en/my-intel/developer-sign-in.html" class="external-link" rel="nofollow">Developer Zone</a>에 로그인하십시오.</span></p>
+<p><span style="font-family: 'intel clear', sans-serif;"><b>사용자 이름:</b> <span class="intelBlueTextStyle">{!Contact.Name}</span></span><br /><span style="font-family: 'intel clear', sans-serif;"><b>이메일 주소:</b> <span class="intelBlueTextStyle">{!Contact.Email}</span></span></p>
+</main>
+<p><span style="font-family: 'intel clear', sans-serif;">향후 참조를 위해 이 이메일을 보관하십시오.</span></p>
+<p><span style="font-family: 'intel clear', sans-serif;">비밀번호는 기밀로 보호해야 합니다. 비밀번호와 인텔 웹 사이트 사용에는 인텔의 이용 약관이 적용됩니다. 이 이용 약관에는 각 해당 사이트의 웹 페이지 하단에 있는 링크를 통해 연결할 수 있습니다.</span></p>
+<p><span style="font-family: 'intel clear', sans-serif;">문의 사항이 있는 경우 <a href="https://www.intel.co.kr/content/www/kr/ko/forms/support/my-intel-sign-on-support.html" class="external-link" rel="nofollow">당사에 문의</a>해주십시오.</span></p>
+<p><span style="font-family: 'intel clear', sans-serif;">사용 가능한 마케팅 구독을 포함해 프로필을 관리하려면 <a href="https://www.intel.co.kr/content/www/kr/ko/secure/my-intel/profile.html" class="external-link" rel="nofollow">My Intel</a>에 방문하십시오.</span></p>
+<main>
+<p><span style="font-family: 'intel clear', sans-serif;">이 메일에 회신하지 마십시오. 이 메일은 자동 회신된 메일입니다. 이메일을 계속 수신하려면 주소록에 추가해 주십시오.</span></p>
+</main>
+<section>
+<p style="text-align: right;"></p>
+</section>
+<hr /><footer><span style="font-family: 'intel clear', sans-serif;"><img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png" alt="인텔 로고" height="42" width="64" />인텔은 귀하의 개인 정보를 보호하기 위해 노력합니다. 자세한 내용은 <a href="http://www.intel.co.kr/content/www/kr/ko/privacy/intel-privacy-notice.html">인텔 개인정보 보호 공지</a>를 참조하십시오. <a href="http://www.intel.co.kr/content/www/kr/ko/privacy/intel-cookie-notice.html">인텔 쿠키 공지</a></span><br /><br /><span style="font-family: 'intel clear', sans-serif;"><a href="http://www.intel.co.kr/content/www/kr/ko/legal/terms-of-use.html">법률 정보</a> &verbar; <a href="http://www.intel.co.kr/content/www/kr/ko/legal/trademarks.html">상표</a> &verbar; <span style="font-size: 1em;">&copy;</span> 인텔사</span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;">!%TemplateCode%!</span><br /><br /></footer></div>
+<p><span style="font-family: 'intel clear', sans-serif;"></span></p>
+</body>
+</html>

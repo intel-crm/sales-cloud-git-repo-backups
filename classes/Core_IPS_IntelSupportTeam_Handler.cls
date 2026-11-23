@@ -162,7 +162,7 @@ Modification Log :
                         }
                     }
                 } 
-                // TWC745-9117 - Avoid Deeply Nested IF Statements Kamala
+                //Avoid Deeply Nested IF Statements Kamala
                 if((projId!=null && projId.size()>0) &&(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible())){
                         projMap = new Map<Id,Core_IPS_Project__c>([Select id,name,Core_IPS_InternalGroupId__c,Core_IPS_Unique_Project_Number__c from Core_IPS_Project__c where id IN: projId ]);
                 }   
@@ -559,14 +559,13 @@ Modification Log :
                 }
             }
             if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
-                // APEX GURU - SOQL FIX
+                //  Added by Chiru - 20-08-24 - APEX GURU - SOQL FIX
                 Map<Id, case> caseListMap = new Map<Id, case>();
                 if(caseList!=null && caseList.size()>0){
                     caseListMap = new Map<Id, case>(caseList);
                 }
-               // for(Core_IPS_Case_Interested_Party__c objIP : [SELECT Id,User__c,Case__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c IN :caseList]) {
-                  for(Core_IPS_Case_Interested_Party__c objIP : [SELECT Id,User__c,Case__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c IN :caseListMap.keyset()]) {
-               setExistingIP.add(objIP.User__c + ';' + objIP.Case__c);
+                for(Core_IPS_Case_Interested_Party__c objIP : [SELECT Id,User__c,Case__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c IN :caseListMap.keyset()]) {
+            setExistingIP.add(objIP.User__c + ';' + objIP.Case__c);
                 }
             }
             for(Id projId: projIdSet){

@@ -1,0 +1,24 @@
+<template>
+    <div style="background: rgb(255, 255, 255); padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;" >
+      
+        <table style="width:100%">
+            <tr>
+                <td style="width: 400px"><lightning-input type="Search" label="Search for user(s) to delete from Seismic and Lessonly" onchange={handleSearch} style="width: 390px"></lightning-input></td>
+                <td style="text-align: right;"><lightning-button label="Load Users" onclick={loadUsers}></lightning-button>
+               <lightning-button label="Delete Selected Users" onclick={getSelectedName}></lightning-button>
+               <lightning-button label="Clear Previous Load" onclick={clearLastLoad}></lightning-button></td>
+            </tr>
+        </table>
+      
+        <template if:true={data}>      
+            <lightning-datatable data={data} columns={columns} key-field="Id" selected-rows={selectedRows}>
+            </lightning-datatable>
+        </template>      
+        <template if:true={error}>  
+            {error}>                  
+        </template>  
+        <template if:false={isLoaded}>
+            <lightning-spinner variant="brand" alternative-text="Loading..."></lightning-spinner>
+        </template>
+    </div>
+</template>

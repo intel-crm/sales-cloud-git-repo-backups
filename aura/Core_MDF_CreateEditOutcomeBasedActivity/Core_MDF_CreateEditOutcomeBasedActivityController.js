@@ -141,10 +141,10 @@ handleApplySuggestions: function(component, event, helper) {
             component.set('v.showAccountSuggestion', false);
             component.set('v.extractedAccountName', accountRecord.Name || '');
             component.set('v.aiAccountSuggestion', '');
-            component.set("v.partnerContactDomainsLoaded", false);
+            /*component.set("v.partnerContactDomainsLoaded", false);
             helper.loadPartnerContactDomains(component, function() {
                 helper.validatePartnerContactEmails(component);
-            });
+            });*/
             return true;
         };
 
@@ -1041,18 +1041,19 @@ getSmartAISuggestions: function(component, event, helper) {
     },
 
     handleEmailValidation: function(component, event, helper) {
-        if (!component.get("v.partnerContactDomainsLoaded")) {
+        /*Ramapriya - Commented as part of TWC702-16422
+	if (!component.get("v.partnerContactDomainsLoaded")) {
             helper.loadPartnerContactDomains(component, function() {
                 helper.validatePartnerContactEmails(component);
             });
             return;
-        }
+        }*/
 
         helper.validatePartnerContactEmails(component);
     },
 
     handleEmailKeyup: function(component, event, helper) {
-        var partnerContactValue = component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c");
+        /*var partnerContactValue = component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c");
 
         if (!partnerContactValue || !String(partnerContactValue).trim()) {
             helper.resetPartnerContactValidation(component);
@@ -1064,7 +1065,7 @@ getSmartAISuggestions: function(component, event, helper) {
                 helper.validatePartnerContactEmails(component);
             });
             return;
-        }
+        }*/
 
         helper.validatePartnerContactEmails(component);
     },
@@ -1174,9 +1175,9 @@ getSmartAISuggestions: function(component, event, helper) {
         var intelContri = component.get("v.maxIntelInvestment");
         var selectedCountry = component.get("v.selectedCountryOptions");
         var actStatus = component.get("v.CurrentStatus");
-		var partnerContactValueForValidation = component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c");
+		/*var partnerContactValueForValidation = component.get("v.newPFR.Core_MDF_Partner_Contact_txt__c");
 		var selectedPartnerContactAccount = component.get("v.selectedAccount");
-		var partnerContactAccountId = selectedPartnerContactAccount && selectedPartnerContactAccount.Id ? selectedPartnerContactAccount.Id : component.get("v.newPFR.ChannelPartnerId");
+		var partnerContactAccountId = selectedPartnerContactAccount && selectedPartnerContactAccount.Id ? selectedPartnerContactAccount.Id : component.get("v.newPFR.ChannelPartnerId");*/
 		
 		if(component.get("v.showErrorMsgForMaxIntelInvest")){
             validData = false; 
@@ -1319,12 +1320,12 @@ getSmartAISuggestions: function(component, event, helper) {
             localmsg = localmsg + $A.get("$Label.c.Core_MDF_Empty_Field_Error") + '\n';
         }
 
-        if (partnerContactValueForValidation && String(partnerContactValueForValidation).trim() && partnerContactAccountId && !component.get("v.partnerContactDomainsLoaded")) {
+        /*if (partnerContactValueForValidation && String(partnerContactValueForValidation).trim() && partnerContactAccountId && !component.get("v.partnerContactDomainsLoaded")) {
             helper.loadPartnerContactDomains(component, function() {
                 helper.validatePartnerContactEmails(component);
             });
             return;
-        }
+        }*/
 
         if(!helper.validatePartnerContactEmails(component)){
             validData = false;
@@ -1976,9 +1977,9 @@ resetAccountattributes : function(component, event, helper){
     //Populate BudgetType field based on ABA
     if(selectedAccount && selectedAccount.Id){
         helper.fetchBudgetTypesBasedOnBenefits(component);
-        helper.loadPartnerContactDomains(component, function() {
+        /*helper.loadPartnerContactDomains(component, function() {
             helper.validatePartnerContactEmails(component);
-        });
+        });*/
     }else{//Reset BudgetType if the account is Removed
         var budgetTypeOptionList = [];
         budgetTypeOptionList.push({label: "---None---", value: "" });
@@ -1986,8 +1987,8 @@ resetAccountattributes : function(component, event, helper){
         component.set("v.newPFR.Core_MDF_Budget_Type_nm__c", '');
         component.set("v.selBudgetType", '');
         component.set("v.showBudgetTypeError", false);
-        component.set("v.allowedPartnerContactDomains", []);
-        component.set("v.partnerContactDomainsLoaded", false);
+        /*component.set("v.allowedPartnerContactDomains", []);
+        component.set("v.partnerContactDomainsLoaded", false);*/
         helper.resetPartnerContactValidation(component);
     }
     

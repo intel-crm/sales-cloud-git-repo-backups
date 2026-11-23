@@ -228,6 +228,7 @@
         <columns>PSS_Survey_Result_Field_Name__c</columns>
         <columns>PSS_Weightage__c</columns>
         <columns>PSS_Is_Active__c</columns>
+        <columns>PSS_Solution_Category__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
         <language>en_US</language>

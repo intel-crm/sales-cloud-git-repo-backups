@@ -108,6 +108,15 @@
         <fullName>UsageType</fullName>
         <trackHistory>false</trackHistory>
     </fields>
+    <listViews>
+        <fullName>All_ExpressionSets</fullName>
+        <columns>Name</columns>
+        <columns>ApiName</columns>
+        <columns>CreatedBy</columns>
+        <columns>UsageType</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Expression Sets</label>
+    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>ApiName</customTabListAdditionalFields>
         <customTabListAdditionalFields>CreatedBy</customTabListAdditionalFields>

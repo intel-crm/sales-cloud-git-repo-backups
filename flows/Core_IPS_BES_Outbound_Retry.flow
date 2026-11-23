@@ -89,7 +89,7 @@
             </value>
         </processMetadataValues>
         <name>myRule_5_A1</name>
-        <label>To Support Team</label>
+        <label>Support Email</label>
         <locationX>500</locationX>
         <locationY>200</locationY>
         <actionName>Core_IPS_BES_Error_Log__c.Core_IPS_BES_Support_Notification</actionName>
@@ -111,7 +111,7 @@
             </value>
         </processMetadataValues>
         <name>myWaitEvent_myWait_myRule_3_event_0_SA1</name>
-        <label>Core_IPS_BES_JSONTriggerHandler</label>
+        <label>call JSON Handler</label>
         <locationX>300</locationX>
         <locationY>200</locationY>
         <actionName>Core_IPS_BES_JSONTriggerHandler</actionName>
@@ -458,7 +458,7 @@
             <connector>
                 <targetReference>myRule_5_A1</targetReference>
             </connector>
-            <label>Emil send to support team</label>
+            <label>Email send to support Team</label>
         </rules>
     </decisions>
     <decisions>
@@ -636,19 +636,19 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>Not(CONTAINS([Core_IPS_BES_Error_Log__c].Core_IPS_Error_Description__c , &quot;Class.&quot;))</stringValue>
+                <stringValue>(NOT(CONTAINS([Core_IPS_BES_Error_Log__c].Core_IPS_Error_Description__c, &quot;request_end_time_utc&quot;)) &amp;&amp; NOT(CONTAINS([Core_IPS_BES_Error_Log__c].Core_IPS_Error_Description__c, &quot;Class.&quot;)))</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_5</name>
         <dataType>Boolean</dataType>
-        <expression>Not(CONTAINS({!myVariable_event_context.Core_IPS_Error_Description__c} , &quot;Class.&quot;))</expression>
+        <expression>(NOT(CONTAINS({!myVariable_event_context.Core_IPS_Error_Description__c}, &quot;request_end_time_utc&quot;)) &amp;&amp; NOT(CONTAINS({!myVariable_event_context.Core_IPS_Error_Description__c}, &quot;Class.&quot;)))</expression>
     </formulas>
     <formulas>
         <name>OrganizationName</name>
         <dataType>String</dataType>
         <expression>{!$Organization.Name}</expression>
     </formulas>
-    <interviewLabel>Core_IPS_BES_Outbound_Retry-51_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_IPS_BES_Outbound_Retry-48_InterviewLabel</interviewLabel>
     <label>BES Outbound Retry</label>
     <loops>
         <name>eventContextCheckLoop</name>
@@ -746,7 +746,7 @@
         <queriedFields>Core_IPS_Error_Description__c</queriedFields>
     </recordLookups>
     <startElementReference>myEventContextRecordLookup</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <description>text template for when multiple records are records found</description>
         <name>multipleRecordsFoundTextTemplate</name>

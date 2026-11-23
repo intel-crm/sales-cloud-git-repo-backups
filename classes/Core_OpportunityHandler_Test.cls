@@ -1912,7 +1912,7 @@ public without sharing class Core_OpportunityHandler_Test {
         Test.stopTest();
     }
     static testMethod void testCRMoptyHandler5(){
-        Test.startTest();
+        
         List<Opportunity> NewOppList = new List<Opportunity>();
         
        	Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
@@ -1931,7 +1931,7 @@ public without sharing class Core_OpportunityHandler_Test {
         System.runAs(Core_Test_Utility.systemAdminUser) {
             insert acct;
         }
-        
+        Test.startTest();
         Opportunity opps = new Opportunity(Name = 'Opportunity to Lose 03-24-2015', RecordTypeId = newOppRecTypeId,
                                            AccountId = acct.Id,
                                            StageName = 'Design Win', CloseDate = System.Date.today(),

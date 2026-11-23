@@ -1,0 +1,55 @@
+<template>
+    <div if:true={showData}>
+        <div class="slds-align_absolute-center" style="background-color:#5875aa; height:50px;">
+            <h1 style="color:white; font-size:1.5rem;"><b>Add Environment Detail Question's Case SubCategory</b></h1>
+        </div>
+        <div class="slds-p-around_small" style="background-color:white;">
+            <div class="slds-p-around_small" >
+                <lightning-input type="search" onchange={edqsearchbox}
+                    class="slds-m-bottom_small attachmentSearch" placeholder="Search EDQ's" maxlength="70"
+                    style="width: 300px;"></lightning-input>
+                <div class="slds-align_absolute-center">
+                    <lightning-button label="Add Environmental Details" onclick={addEdqs}></lightning-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-button label="Exit" onclick={goTOCaseCatRecordPage}></lightning-button>
+                </div>
+            </div>
+            <div class="slds-p-around_small" >
+                <div if:true={switchView} style="height: 16rem;">
+                    <lightning-datatable 
+                        key-field="Id" data={updatedTabledata} 
+                        columns={columns} onrowselection={handleRowActions}
+                        onsave={saveHandleAction} draft-values={fldsItemValues} min-column-width="200px"
+                        enable-infinite-loading ={isloading} onloadmore={handleLoadMore}>
+                    </lightning-datatable>
+            </div>
+            <div if:false={switchView} style="height: 16rem;">
+                    <lightning-datatable 
+                        key-field="Id" 
+                        data={searchResult} 
+                        columns={columns}
+                        onrowselection={handleRowActions}
+                        onsave={saveHandleActionSearchResult} draft-values={searchFldsItemValues}
+                        ></lightning-datatable>
+            </div>
+            </div>
+            <div if:true={spinner}>
+                <lightning-spinner alternative-text="Loading" size="Medium"></lightning-spinner>
+            </div>
+        </div>
+    </div>
+    <div if:false={showData}>
+        <div class="slds-align_absolute-center" style="background-color:#5875aa; height:50px;">
+            <h1 style="color:white; font-size:1.5rem;"><b>Add Environment Detail Question's To Case SubCategory</b></h1>
+        </div>
+        <div style="background-color:white;">
+            <br/>
+            <div class="slds-align_absolute-center" >
+                <lightning-button label="Exit" onclick={goTOCaseCatRecordPage}></lightning-button>
+            </div><br/>
+            <div class="slds-align_absolute-center" style="font-size: 1.5rem;">
+                <h1><b>{Message}</b></h1>
+            </div>
+        </div>
+        
+    </div>
+</template>

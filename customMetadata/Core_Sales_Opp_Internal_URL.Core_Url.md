@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>Core_Opp_URLValue__c</field>
-        <value xsi:type="xsd:string">https://intel.my.salesforce.com</value>
+        <value xsi:type="xsd:string">https://intel--crmdevint3.sandbox.my.salesforce.com</value>
     </values>
 </CustomMetadata>

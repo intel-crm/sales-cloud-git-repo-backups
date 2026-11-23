@@ -189,7 +189,7 @@
         <fullName>Country__c</fullName>
         <label>Country</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -203,7 +203,7 @@
         <label>Email Domain</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -283,41 +283,42 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>Contact_Email__c</columns>
+        <columns>Email_Domain__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>BlockedAccountContacts</fullName>
+        <fullName>BlockedAccoutContacts</fullName>
         <columns>NAME</columns>
         <columns>Account__c</columns>
         <columns>PRM_Contact__c</columns>
-        <columns>PRM_Type__c</columns>
         <columns>PRM_isActive__c</columns>
-        <columns>PRM_Comments__c</columns>
+        <columns>PRM_Type__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
             <operation>equals</operation>
             <value>PRM_SBC_Account_Search_Configuration__c.PRM_BlockedAccountContacts</value>
         </filters>
-        <label>BlockedAccountContacts</label>
+        <label>BlockedAccoutContacts</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+            <group>A_E_Admins</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>SBC_Accounts</fullName>
         <columns>NAME</columns>
         <columns>Account__c</columns>
-        <columns>CREATEDBY_USER</columns>
         <columns>Country__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <columns>Email_Domain__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
             <operation>equals</operation>
-            <value>PRM_SBC_Account_Search_Configuration__c.PRM_SBC_Top_Accounts</value>
         </filters>
-        <label>SBC_Accounts</label>
+        <label>SBC Accounts</label>
     </listViews>
     <nameField>
         <displayFormat>ABC-{0000000}</displayFormat>
@@ -330,6 +331,7 @@
     <recordTypes>
         <fullName>PRM_BlockedAccountContacts</fullName>
         <active>true</active>
+        <compactLayoutAssignment>Blocked_contact_compactlayout</compactLayoutAssignment>
         <label>BlockedAccountContacts</label>
         <picklistValues>
             <picklist>Country__c</picklist>
@@ -518,10 +520,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>China</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Christmas Islnd</fullName>
                 <default>false</default>
             </values>
@@ -567,14 +565,6 @@
             </values>
             <values>
                 <fullName>Cyprus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1349,6 +1339,7 @@
     <recordTypes>
         <fullName>PRM_SBC_Top_Accounts</fullName>
         <active>true</active>
+        <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
         <label>SBC Top Accounts</label>
         <picklistValues>
             <picklist>Country__c</picklist>
@@ -1537,10 +1528,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>China</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Christmas Islnd</fullName>
                 <default>false</default>
             </values>
@@ -1586,14 +1573,6 @@
             </values>
             <values>
                 <fullName>Cyprus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
                 <default>false</default>
             </values>
             <values>

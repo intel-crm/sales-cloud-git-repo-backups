@@ -20,7 +20,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Requestor_owner_when_status_changes_HTML</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Requestor_owner_when_status_changes_HTML</template>
     </alerts>
     <alerts>
         <fullName>Ask_Commissions_Notification_to_Manager_when_assigned_by_Direct</fullName>
@@ -32,31 +32,27 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Manager_when_assigned_by_Direct_HTML</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Manager_when_assigned_by_Direct_HTML</template>
     </alerts>
     <alerts>
         <fullName>CEP_Case_Assignment</fullName>
-        <ccEmails>customer.excellence@intel.com</ccEmails>
-        <ccEmails>venu.karumuru@intel.com</ccEmails>
         <description>CEP Case Assignment - New</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CEP_Email_Templates/Core_CEP_Case_Assignment</template>
     </alerts>
     <alerts>
         <fullName>CEP_Case_Reminder</fullName>
-        <ccEmails>customer.excellence@intel.com</ccEmails>
-        <ccEmails>venu.karumuru@intel.com</ccEmails>
         <description>CEP Case Reminder - New</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CEP_Email_Templates/Core_CEP_Case_Reminder</template>
     </alerts>
@@ -67,13 +63,12 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/CEP_Case_Assignment</template>
+        <template>unfiled$public/CEP_Case_Assignment</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_on_Status_Equal_to_Awaiting_Requestor_s_Info</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Requestor on Status Equal to Awaiting Requestor’s Info</description>
         <protected>false</protected>
         <recipients>
@@ -90,11 +85,10 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Requester_on_Status_Awaiting_Requestor_s_Info_H</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Requester_on_Status_Awaiting_Requestor_s_Info_H</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_on_Status_Equal_to_Awaiting_resolution_Confirmation</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Requester on Status Equal to Awaiting resolution confirmation</description>
         <protected>false</protected>
         <recipients>
@@ -111,11 +105,10 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Alert_to_Requester_on_Status_Awaiting_resoluton_Confirmation_HT</template>
+        <template>unfiled$public/Ask_Commissions_Alert_to_Requester_on_Status_Awaiting_resoluton_Confirmation_HT</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_on_Status_Equal_to_Cancelled</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Requestor/owner  on Status Equal to Cancelled</description>
         <protected>false</protected>
         <recipients>
@@ -132,11 +125,10 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Requestor_owner_on_Status_Equal_to_Cancelled_HTM</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Requestor_owner_on_Status_Equal_to_Cancelled_HTM</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_to_Owner_Requester_on_New_case</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Owner/Requester on New case</description>
         <protected>false</protected>
         <recipients>
@@ -156,7 +148,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Owner_Requester_on_New_case_HTML</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Owner_Requester_on_New_case_HTML</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_to_Owner_on_case_Re_assignment</fullName>
@@ -178,11 +170,10 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_AAQC_Notification_to_Owner_on_case_Re_assignment_HTML</template>
+        <template>unfiled$public/Core_AAQC_Notification_to_Owner_on_case_Re_assignment_HTML</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_to_Requestor_on_Status_Equal_to_Closed</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Requestor on Status Equal to Closed</description>
         <protected>false</protected>
         <recipients>
@@ -199,7 +190,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Requestor_on_Status_Equal_to_Closed_HTML</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Requestor_on_Status_Equal_to_Closed_HTML</template>
     </alerts>
     <alerts>
         <fullName>Core_IPS_Case_Close_Notif_For_No_Assigned_Conact_Case</fullName>
@@ -208,7 +199,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -235,7 +226,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -265,7 +256,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -277,7 +268,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -292,7 +283,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -319,7 +310,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -338,7 +329,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -354,7 +345,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -365,7 +356,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -380,7 +371,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Agent</template>
     </alerts>
@@ -392,7 +383,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Close</template>
     </alerts>
@@ -416,7 +407,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_No_Update</template>
     </alerts>
@@ -440,7 +431,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_Close_Pending</template>
     </alerts>
@@ -452,7 +443,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Update</template>
     </alerts>
@@ -468,7 +459,7 @@
             <field>Core_IPS_Supported_Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -484,7 +475,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -496,7 +487,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Attachment</template>
     </alerts>
@@ -508,7 +499,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Close_Survey</template>
     </alerts>
@@ -520,7 +511,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Create</template>
     </alerts>
@@ -532,7 +523,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Reopen</template>
     </alerts>
@@ -544,7 +535,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Update</template>
     </alerts>
@@ -564,7 +555,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -580,7 +571,7 @@
             <field>Core_IPS_Supported_Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -592,7 +583,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_Partner</template>
     </alerts>
@@ -604,7 +595,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Reopen</template>
     </alerts>
@@ -616,7 +607,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -628,7 +619,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Ext_Close_Survey</template>
     </alerts>
@@ -640,7 +631,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_GEC</template>
     </alerts>
@@ -652,7 +643,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -663,7 +654,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
     </alerts>
@@ -686,7 +677,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Close</template>
     </alerts>
@@ -709,7 +700,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -721,7 +712,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_GEC</template>
     </alerts>
@@ -733,7 +724,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Create</template>
     </alerts>
@@ -748,7 +739,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Attachment</template>
     </alerts>
@@ -771,7 +762,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -794,7 +785,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Reopen</template>
     </alerts>
@@ -809,7 +800,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Request_Close</template>
     </alerts>
@@ -824,7 +815,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Request_Reopen</template>
     </alerts>
@@ -835,7 +826,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Attachment</template>
     </alerts>
@@ -846,7 +837,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Close</template>
     </alerts>
@@ -857,7 +848,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Create</template>
     </alerts>
@@ -868,7 +859,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Reopen</template>
     </alerts>
@@ -879,7 +870,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -902,7 +893,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -929,7 +920,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -956,7 +947,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Partner</template>
     </alerts>
@@ -983,7 +974,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1010,7 +1001,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1025,7 +1016,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_SLA_Overdue</template>
     </alerts>
@@ -1040,7 +1031,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1055,7 +1046,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_SLA_Reminder</template>
     </alerts>
@@ -1070,7 +1061,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1082,7 +1073,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1093,7 +1084,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1108,7 +1099,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1119,7 +1110,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1128,13 +1119,9 @@
         <description>Core IPS MAG Questionnaire Completed Notif</description>
         <protected>false</protected>
         <recipients>
-            <field>ContactEmail</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -1160,7 +1147,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUploadBefore15Days</template>
+        <template>unfiled$public/Core_MDF_NotifyDocUploadBefore15Days</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Email_Alert_Before_5_Days_of_Document_Submission_Deadline_Date</fullName>
@@ -1172,7 +1159,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUploadBefore5Days</template>
+        <template>unfiled$public/Core_MDF_NotifyDocUploadBefore5Days</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Email_Alert_Retail</fullName>
@@ -1184,7 +1171,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUpload_Retail</template>
+        <template>unfiled$public/Core_MDF_NotifyDocUpload_Retail</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Email_Alert_Retail_RSA_MD</fullName>
@@ -1196,7 +1183,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocumentUpload_Retail_RSA</template>
+        <template>unfiled$public/Core_MDF_NotifyDocumentUpload_Retail_RSA</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_IPA_Case_Cancel_External</fullName>
@@ -1208,7 +1195,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyOnIPACaseCancel_External</template>
+        <template>unfiled$public/Core_MDF_NotifyOnIPACaseCancel_External</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_IPA_Email_Alert_1</fullName>
@@ -1220,7 +1207,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUpload_IPA_External</template>
+        <template>unfiled$public/Core_MDF_NotifyDocUpload_IPA_External</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_IPA_Email_Alert_2</fullName>
@@ -1232,7 +1219,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUpload_IPA_External</template>
+        <template>unfiled$public/Core_MDF_NotifyDocUpload_IPA_External</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_IPA_Immediate_Email_Alert</fullName>
@@ -1244,7 +1231,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Imm_NotifyDocUpload_IPA_Ext</template>
+        <template>unfiled$public/Core_MDF_Imm_NotifyDocUpload_IPA_Ext</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Immediate_Email_Alert</fullName>
@@ -1256,7 +1243,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocumentUpload</template>
+        <template>unfiled$public/Core_MDF_NotifyDocumentUpload</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_NotifyCaseOwnersOnMessage</fullName>
@@ -1267,7 +1254,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Claim_Submitter_Message</template>
+        <template>unfiled$public/Core_MDF_Claim_Submitter_Message</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_NotifyClaimCaseReviewerOnMessage</fullName>
@@ -1279,7 +1266,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Claim_Submitter_Message</template>
+        <template>unfiled$public/Core_MDF_Claim_Submitter_Message</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_NotifyRetailClaimSubmitterOnCaseClosure</fullName>
@@ -1291,7 +1278,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyOnRetailCaseClosure</template>
+        <template>unfiled$public/Core_MDF_NotifyOnRetailCaseClosure</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Claim_Submitter_on_Case_cancellation</fullName>
@@ -1303,7 +1290,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyonCaseCancellation</template>
+        <template>unfiled$public/Core_MDF_NotifyonCaseCancellation</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_IPA_Claim_Submitter_On_Case_Closure</fullName>
@@ -1315,7 +1302,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyOnIPACaseClosure_External</template>
+        <template>unfiled$public/Core_MDF_NotifyOnIPACaseClosure_External</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_IPA_Claim_Submitter_On_Case_Creation</fullName>
@@ -1327,7 +1314,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_IPA_CaseCreation_External</template>
+        <template>unfiled$public/Core_MDF_IPA_CaseCreation_External</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notifying_Partner_for_Claim_Review_Status_Notice</fullName>
@@ -1339,7 +1326,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Email_for_Claim_Review_Notice</template>
+        <template>unfiled$public/Core_MDF_Email_for_Claim_Review_Notice</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notifying_Partner_on_Case_creation_with_Under_Review_Status</fullName>
@@ -1351,7 +1338,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyonCaseCreation</template>
+        <template>unfiled$public/Core_MDF_NotifyonCaseCreation</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Retail_Immediate_Email_Alert</fullName>
@@ -1363,7 +1350,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUpload_ImmediateRetail</template>
+        <template>unfiled$public/Core_MDF_NotifyDocUpload_ImmediateRetail</template>
     </alerts>
     <alerts>
         <fullName>Email_Case_Owner</fullName>
@@ -1372,9 +1359,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>intel.premier.support.qa@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/CEP_Case_Assignment</template>
+        <template>unfiled$public/CEP_Case_Assignment</template>
     </alerts>
     <alerts>
         <fullName>Notification_to_the_Owner_created_by_when_the_Case_comment_is_added</fullName>
@@ -1385,7 +1372,19 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commission_Notification_Case_Comment_is_Updated_HTML</template>
+        <template>unfiled$public/Ask_Commission_Notification_Case_Comment_is_Updated_HTML</template>
+    </alerts>
+    <alerts>
+        <fullName>Test_Email_Alert</fullName>
+        <description>Test Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Core_MDF_Claim_Submitter__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Test_Email_Template</template>
     </alerts>
     <fieldUpdates>
         <fullName>Ask_Commissions_Assigning_Case_to_Triage</fullName>
@@ -2134,7 +2133,7 @@ null
     <outboundMessages>
         <fullName>Core_IPS_CaseFieldUpdate_Backend_OutMsg</fullName>
         <apiVersion>35.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseObjectUpdate</endpointUrl>
+        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2-dev.cloudhub.io/smit/api/ips/NewIPSCaseObjectUpdate</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Id</fields>
@@ -2147,7 +2146,7 @@ null
     <outboundMessages>
         <fullName>Core_IPS_CaseStatusUpdate_Backend_OutMsg</fullName>
         <apiVersion>38.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2-dev.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Core_IPS_Backend_Previous_Status__c</fields>
@@ -2164,7 +2163,7 @@ null
         <fullName>Core_IPS_Case_Backend_OutMsg</fullName>
         <apiVersion>34.0</apiVersion>
         <description>Backend Case Outbound Message</description>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCasePromote</endpointUrl>
+        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2-dev.cloudhub.io/smit/api/ips/NewIPSCasePromote</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Id</fields>
@@ -2178,7 +2177,7 @@ null
         <fullName>Core_IPS_Case_Depromote_Backend_OutMsg</fullName>
         <apiVersion>41.0</apiVersion>
         <description>Backend depromotion outbound messages</description>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseDePromote</endpointUrl>
+        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2-dev.cloudhub.io/smit/api/ips/NewIPSCaseDePromote</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_Previous_Status__c</fields>
         <fields>Id</fields>
@@ -2342,7 +2341,7 @@ null
             <name>Core_IPS_Case_Escalated_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Case Escalated Date value needs to be stamped with Escalated Level changes</description>
         <formula>AND(ISCHANGED( Core_IPS_Escalated_Level__c ),OR(ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Level 2&quot;),			ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Level 3&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Domain Expert&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Engineering&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Level 1 / Front Line&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Level 2&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Level 3&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Domain Expert&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Engineering&quot;)))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2369,7 +2368,7 @@ null
             <name>Core_IPS_Updates_the_GEC_Flag_to_true</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Case.Core_IPS_GEC_Case__c</field>
             <operation>equals</operation>
@@ -2394,7 +2393,7 @@ null
             <name>Core_IPS_Case_Promote_Count</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This WF capture the outbound case promotion details</description>
         <formula>AND(Core_IPS_Backend_System__c &lt;&gt; null, Core_IPS_Backend_ID__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false ,Core_IPS_BK_Flds_UpdatedAt__c &lt;&gt; Core_IPS_BK_Flds_UpdatedAt_PreVal__c , NOT(ISPICKVAL( Status , &apos;Closed&apos;)), ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;) )  || AND(Core_IPS_Backend_System__c &lt;&gt; null, Core_IPS_Backend_ID__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false , Core_IPS_Backend_Previous_Status__c &lt;&gt; null, Core_IPS_Backend_Previous_Status__c &lt;&gt; &apos;&apos;, OR(ISCHANGED(Core_IPS_Backend_Previous_Status__c), ISCHANGED(Core_Sub_Status__c)) , ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2409,7 +2408,7 @@ null
             <name>Core_IPS_Case_Promote_Inbound_Count</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This WF capture case promotion success details</description>
         <formula>ISCHANGED( Core_Promote_Status__c ) &amp;&amp; ISPICKVAL(Core_Promote_Status__c , &apos;DONE&apos;)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2424,7 +2423,7 @@ null
             <name>Core_IPS_BK_Promote_Start_DateTime</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This WF capture the case promotion details</description>
         <formula>AND( (($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;)|| CONTAINS($User.Username, &apos;ips.file.integrationuser&apos;)),Core_IPS_Backend_ID__c == null,  Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Deactivated__c  = false,  ISPICKVAL( Core_Promote_Status__c , &apos;In Progress&apos;) , NOT(ISPICKVAL( Status , &apos;Closed&apos;)), ( ISBLANK(TEXT(Core_IPS_GEC_Status__c)) || ISPICKVAL( Core_IPS_GEC_Status__c, &apos;Approved&apos;) || ISPICKVAL( Core_IPS_GEC_Status__c, &apos;Approved with Guardrails&apos;))  )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2435,10 +2434,10 @@ null
             <name>Core_IPS_Case_Backend_OutMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This work rule sends outbound message for a Case required to be promoted to backend System (JIRA, HSD ES..etc)</description>
         <formula>AND( (($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;)|| CONTAINS($User.Username, &apos;ips.file.integrationuser&apos;)),Core_IPS_Backend_ID__c == null,  Core_IPS_Backend_System__c !=null,  ISPICKVAL( Core_Promote_Status__c , &apos;In Progress&apos;) , NOT(ISPICKVAL( Status , &apos;Closed&apos;)), ( ISBLANK(TEXT(Core_IPS_GEC_Status__c)) || ISPICKVAL( Core_IPS_GEC_Status__c, &apos;Approved&apos;) || ISPICKVAL( Core_IPS_GEC_Status__c, &apos;Approved with Guardrails&apos;))  )</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_IPS_Case_Backend_depromotion_WF</fullName>
@@ -2446,7 +2445,7 @@ null
             <name>Core_IPS_Case_Depromote_Backend_OutMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This work rule sends outbound message for a Case when product and org got changed</description>
         <formula>AND( (CONTAINS( Core_IPS_Backend_Previous_Status__c ,&apos;disassociate&apos;)) ,(($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;)||(CONTAINS($User.Username, &apos;ips.file.integrationuser&apos;))))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2457,7 +2456,7 @@ null
             <name>Core_IPS_CaseFieldUpdate_Backend_OutMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This workflow triggers the outbound message to send backed relevant case fields updates including environmental details</description>
         <formula>AND(Core_IPS_Backend_System__c &lt;&gt; null,   Core_IPS_Backend_ID__c &lt;&gt; null,   Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null,  Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false ,Core_IPS_BK_Flds_UpdatedAt__c &lt;&gt;  Core_IPS_BK_Flds_UpdatedAt_PreVal__c , NOT(ISPICKVAL( Status , &apos;Closed&apos;)), ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;)  )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2468,7 +2467,7 @@ null
             <name>Core_IPS_Update_Custom_Case_Queue_Field</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>rule to auto-populate the Last Assigned Queue field on case.  Only assigns a value when case owner is set to a queue and then again anytime the owner changes to a different queue.</description>
         <formula>AND(Owner:Queue.Id &lt;&gt; NULL, CONTAINS(RecordType.DeveloperName, &quot;IPS_&quot;),Or(ISCHANGED(OwnerId), Isnew()))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2479,14 +2478,14 @@ null
             <name>Core_IPS_CaseStatusUpdate_Backend_OutMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This workflow triggers the outbound message to send backed relevant case status field updates</description>
         <formula>AND(Core_IPS_Backend_System__c &lt;&gt; null, Core_IPS_Backend_ID__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false , Core_IPS_Backend_Previous_Status__c  &lt;&gt; null, Core_IPS_Backend_Previous_Status__c  &lt;&gt; &apos;&apos;, OR(ISCHANGED(Core_IPS_Backend_Previous_Status__c), ISCHANGED(Core_Sub_Status__c)) , ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_IPS_Set_Status_Closed_after_20Days_ClosePending</fullName>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Case.Core_Sub_Status__c</field>
             <operation>equals</operation>
@@ -2527,7 +2526,7 @@ null
             <name>Core_IPS_Uncheck_Customer_Visible</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Case.RecordTypeId</field>
             <operation>equals</operation>
@@ -2535,6 +2534,78 @@ null
         </criteriaItems>
         <description>Uncheck Customer Visible checkbox if case created of type No Assigned Case</description>
         <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_MDF Notifications to Partner of Documents Required Retail RSA MD v1</fullName>
+        <actions>
+            <name>Core_MDF_Retail_Immediate_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>This workflow rule is used to send notifications to claim submitter to upload documents before the due date</description>
+        <formula>AND((RecordType.DeveloperName==&apos;Core_MDF_Audit&apos;),   (ISPICKVAL(Core_MDF_Status__c, &apos;Pending Documents&apos;)) , (Core_MDF_Channel_Program_txt__c ==  &apos;Retail Marketing Funds&apos;), (ISPICKVAL(Core_MDF_Budget_Type_Txt__c, &apos;RSA MD&apos;)), Core_MDF_More_Documentation_Required__c )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Change_status_to_Non_Compliant</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Email_Alert_Retail_RSA_MD</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_MDF_RSA_Update_Reminder_Notif_2</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
+            <timeLength>-8</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Email_Alert_Retail_RSA_MD</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_MDF_RSA_Update_Reminder_Notif_1</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
+            <timeLength>-9</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Email_Alert_Retail_RSA_MD</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_MDF_RSA_Update_Reminder_Notif_3</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
+            <timeLength>-6</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Email_Alert_Retail_RSA_MD</name>
+                <type>Alert</type>
+            </actions>
+            <actions>
+                <name>Core_MDF_RSA_Update_Reminder_Notif_4</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
+            <timeLength>-3</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
     </rules>
     <rules>
         <fullName>Core_MDF Notifications to Partner of Documents Required v2</fullName>

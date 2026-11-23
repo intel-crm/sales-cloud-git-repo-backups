@@ -1,0 +1,13 @@
+<template>
+    <div style="font: size 40px;">
+        <h2>List of deleted users from Seismic and Lessonly</h2></div>
+    <template if:true={lessonlyusers.data}>
+        <lightning-datatable data={lessonlyusers.data} 
+                            columns={columns} 
+                            key-field="Id">
+        </lightning-datatable>
+    </template>
+    <template if:true={error}>
+        {error}
+    </template>
+</template>

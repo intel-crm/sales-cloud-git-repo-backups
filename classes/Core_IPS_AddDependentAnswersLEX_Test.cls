@@ -16,11 +16,7 @@ public class Core_IPS_AddDependentAnswersLEX_Test {
     userRecord = TestUtilities.getUser();
     userRecord.username = 'TestUserTest@intel.com';
     userRecord.ProfileID = ProfileRec.Id;
-	User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-             insert userRecord;
-        }
-   
+    insert userRecord;
         
     // Creating Queue
     QueueRecord = new Group(Name='SupportOrgQueue', 

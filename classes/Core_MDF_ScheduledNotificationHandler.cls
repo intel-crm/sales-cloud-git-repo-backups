@@ -262,7 +262,7 @@ public Without Sharing class Core_MDF_ScheduledNotificationHandler {
     }
    
     if(emailTosendList != NULL && !emailTosendList.isEmpty()) {
-List<Messaging.SendEmailResult> res= Core_MDF_GenericClassToSendMail.sendEmails(emailTosendList);
+        Core_MDF_GenericClassToSendMail.sendEmails(emailTosendList);
     }
     
 }

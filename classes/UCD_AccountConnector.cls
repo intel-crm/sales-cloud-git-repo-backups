@@ -309,7 +309,7 @@ return accResults;
 */
     
     public static string getOwnerName(id ownerId){
-        User usr=[select id,Name from User where id=:ownerId];
+        User usr=[select id,Name from User where id=:ownerId WITH SECURITY_ENFORCED];
         String ownerName=usr.Name;
         return ownerName;
     }
@@ -634,11 +634,11 @@ billing address (US740756) */
         Id logged = UserInfo.getUserId();
         String uncovered = Label.ucdUncoveredOwner;
         Integer scc = [select count() from Account where Core_CIM_ID__c =: cimf WITH SECURITY_ENFORCED ];
-        Integer countOfAcc = [select count() from Account where Core_CIM_ID__c =: cimf AND Owner.Name =: uncovered];
+        Integer countOfAcc = [select count() from Account where Core_CIM_ID__c =: cimf AND Owner.Name =: uncovered WITH SECURITY_ENFORCED];
 
         if(scc == 0 || scc == countOfAcc){
                 objAcc = new Account(Id = acc,OwnerId = userInfo.getUserId());
-                if(Account.SObjectType.getDescribe().isAccessible()){                    
+                if(Schema.sObjectType.Account.isUpdateable()){                    
                     update objAcc;
                 } 
         }

@@ -43,7 +43,6 @@
 
   <c:IntelCoreCommunity />
   <c:coreIntcErrorHandler config="{!v.coreIntcErrorConfig}" />
-
   <aura:if isTrue="{!v.showSearch}">
     <div class="searchRegion">
       {!v.search}

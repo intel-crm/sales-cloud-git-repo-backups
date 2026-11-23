@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <aggregates>
-        <calculatedFormula>Account.Core_Account_Cnt__c:SUM/User.User_Unique__c:SUM</calculatedFormula>
-        <datatype>number</datatype>
-        <developerName>FORMULA1</developerName>
-        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Ratio</masterLabel>
-        <scale>2</scale>
-    </aggregates>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -70,10 +60,6 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>User.User_Unique__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Account.Core_Account_Cnt__c</field>
     </columns>
     <columns>
@@ -86,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMP of Adrian Criddle,EMP of Graham Palmer,EMP of Iain Beckingham,EMP of Ian Jones,EMP of Jennifer Shileika,EMP of Graham Copperwheat,EMP of Jas Bhogal,EMP of Nina Woolvett,EMP of Richard George,emp of Christine Harrison</value>
+            <value>EMP of Adrian Criddle,EMP of Graham Palmer,EMP of Iain Beckingham,EMP of Ian Jones,EMP of Jennifer Shileika,EMP of Graham Copperwheat,EMP of Jas Bhogal,EMP of Nina Woolvett,EMP of Richard George</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>

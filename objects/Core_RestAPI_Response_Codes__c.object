@@ -4,6 +4,17 @@
     <description>Rest Api response status codes, status messages, error messages</description>
     <enableFeeds>false</enableFeeds>
     <fields>
+        <fullName>Core_Category__c</fullName>
+        <description>Rest API Category</description>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Code__c</fullName>
         <description>RestAPI custom code</description>
         <externalId>false</externalId>

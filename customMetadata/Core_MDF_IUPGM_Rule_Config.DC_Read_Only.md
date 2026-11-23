@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Core_MDF_AGS_Role_Name__c</field>
-        <value xsi:type="xsd:string">Co-Marketing(Salesforce)-Read Only</value>
+        <value xsi:type="xsd:string">Co-Marketing(Salesforce)- Read Only</value>
     </values>
     <values>
         <field>Core_MDF_Account_Required__c</field>

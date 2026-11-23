@@ -74,6 +74,7 @@
         <field>SBQQ__Quote__c$Pricing_Intel_Account_Exec_Email_Txt__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$Pricing_On_Hold_Cb__c</field>
     </columns>
     <columns>
@@ -93,9 +94,6 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c$Pricing_Program_Type_Nm__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Name</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Product_Nm__c</field>
@@ -157,10 +155,10 @@
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Comments_nm__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Won_Lost_Comments_Txt__c</field>
+        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Lost_Reason_Nm__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_End_Date_dt__c</field>
@@ -275,9 +273,6 @@
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Approved_Date_dt__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Rejection_Reason__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Submitted_By_Id__c</field>

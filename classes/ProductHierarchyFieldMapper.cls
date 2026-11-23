@@ -40,39 +40,46 @@ public class ProductHierarchyFieldMapper {
         pis.level_4_epm_id__c = ph.l4;
         pis.level_4_epm_name__c = ph.l4Name;
         pis.level_5_epm_id__c = ph.l5;
-        pis.level_5_epm_name__c = ph.l5Name != Null? ph.l5name : ph.l5_name;
-		if (Product_Utility.isProductDeprecationDateEnabled()) {
-    		pis.Deactivation_Date__c = parseDeactivationDate(ph.L5DeprecationDate);
-		}
+        pis.level_5_epm_name__c = ph.l5Name;
+        //Ganesh Start
+if (Product_Utility.isProductDeprecationDateEnabled() && String.isNotBlank(ph.l5) && String.isNotBlank(ph.L5DeprecationDate)) {
+    pis.Deactivation_Date__c = parseDeactivationDate(ph.L5DeprecationDate);
+}
+//Ganesh End
+
         pis.Core_IsActive__c = ph.l5_is_active == 0 ? False : True;
         pis.Core_Unique_ID__c = ph.l5 + ';' + ph.l4 + ';' + ph.l3 + ';' + ph.l2 + ';' + ph.l1;
         pis.Core_Hierarchy_ID__c = productType == 'VPH' ? '43' : '59';
         pis.Core_Hierarchy_Name__c = productType == 'VPH' ? 'Valid Product Hierarchy' : 'Valid Platform CodeName Hierarchy';
+        
         mapAttributes(pis, ph);
         return pis;
     }
     
-	public static Date parseDeactivationDate(String dateValue) {
-    	if (String.isBlank(dateValue)) {
+//Ganesh Start
+private static Date parseDeactivationDate(String dateValue) {
+    if (String.isBlank(dateValue)) {
         return null;
-    	}
-        
-    	try {
+    }
+
+    try {
         String normalizedDate = dateValue.trim();
 
         if (normalizedDate.contains('T')) {
             normalizedDate = normalizedDate.substringBefore('T');
-        } else if (normalizedDate.contains(' ')) {
+        } 
+        else if (normalizedDate.contains(' ')) {
             normalizedDate = normalizedDate.substringBefore(' ');
         }
+
         return Date.valueOf(normalizedDate);
-            
     } catch (Exception ex) {
-        System.debug(LoggingLevel.WARN, 'Unable to parse product deactivation date: ' + dateValue);
+        System.debug(LoggingLevel.WARN,'Unable to parse L5 deprecation date: ' + dateValue);
         return null;
     }
 }
-    
+//Ganesh End
+
     private void mapAttributes(Product_Inbound_Staging__c pis, ProductHierarchyWrapper.HierarchyItem ph) {
         if (ph.attributes == null || ph.attributes.isEmpty()) {
             return;
@@ -93,7 +100,7 @@ public class ProductHierarchyFieldMapper {
         pis.L4_ProductGroup_rawValue__c = ph.attributes.get('ProductGroup-rawvalue') != null ? ph.attributes.get('ProductGroup-rawvalue') : '';
         pis.L4_Restriction_Level__c = ph.L4RestrictionLevel != null ? String.valueOf(ph.L4RestrictionLevel) : '';
         pis.L4_VProTechnology__c = ph.attributes.get('VProTechnology-rawvalue') != null && ph.attributes.get('VProTechnology-rawvalue') == 'True' ? True : False;
-        pis.L4_StatusCode__c = ph.attributes.get('StatusCodeText-rawvalue') != null ? ph.attributes.get('StatusCodeText-rawvalue') : '';
+        pis.L4_StatusCode__c = ph.attributes.get('StatusCodeText-value') != null ? ph.attributes.get('StatusCodeText-value') : '';
         pis.L4_StableImagePlatformProgramVersion__c = ph.attributes.get('StableImagePlatformProgramVersion-rawvalue') != null && ph.attributes.get('StableImagePlatformProgramVersion-rawvalue') == 'true' ? True : False;
     }
     
@@ -191,7 +198,7 @@ public class ProductHierarchyFieldMapper {
             setCustomIndicator.remove(null);
             if (pm.attributes.get('Division') != null) {
                 setDivision_withBracket.add(pm.attributes.get('Division').subStringBetween('(', ')'));
-                setDivision_withoutBracket.add(pm.attributes.get('Division').subStringBefore('(').trim());
+                setDivision_withoutBracket.add(pm.attributes.get('Division').subStringBefore('('));
             }
             setFamilyName.add(pm.attributes.get('FamilyName'));
             setFamilyName.remove(null);

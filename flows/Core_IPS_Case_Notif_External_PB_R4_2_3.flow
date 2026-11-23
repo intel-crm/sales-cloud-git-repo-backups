@@ -687,6 +687,7 @@ IF(ISBLANK({!$Record.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!$Record.Core_IPS
 
 )</expression>
     </formulas>
+    <interviewLabel>Core IPS Case Notif External PB R4.2_3 {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core IPS Case Notif External PB R4.2_3</label>
     <processMetadataValues>
         <name>BuilderType</name>

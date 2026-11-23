@@ -5,7 +5,7 @@ public class Pricing_QuoteTeamQuoteSharingBatch_Test {
         system.runAs(lstUsers[0]){
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
-            Contact con = Pricing_Test_Utility.createPrimaryContact(acc.Id);
+            Contact con = Pricing_Test_Utility.createPrimaryContactWithParam(acc.Id,'Quote_Team_Quote_Sharing_Batch_Test');
             Pricing_Test_Utility.createTemplate(lstUsers[0].id);
             List<User> accountExecutiveUserList = Pricing_Test_Utility.createAEUser();
             List<User> salesRepUserList = Pricing_Test_Utility.createSalesRepUser();

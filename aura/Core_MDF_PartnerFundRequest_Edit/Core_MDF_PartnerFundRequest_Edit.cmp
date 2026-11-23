@@ -61,8 +61,13 @@
                         </aura:if> 
                      
                     </aura:if>
-                   <aura:if isTrue="{!or(or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF),or(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType, v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail))}">
-                   <c:Core_Intel_createEditPFR recordId ="{!v.recordId}"/>
+                  <aura:if isTrue="{!and(v.isOutcomeBased, or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF, v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF))}">
+                  <c:Core_MDF_CreateEditCCFDCFOutcomeBasedActivity recordId ="{!v.recordId}"/>
+                  <aura:set attribute="else">
+                      <aura:if isTrue="{!or(or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_DCF),or(v.recordtypeDeveloperName == $Label.c.Core_MDF_EEF_RecordType, v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_Retail))}">
+                      <c:Core_Intel_createEditPFR recordId ="{!v.recordId}"/>
+                     </aura:if>
+                  </aura:set>
                   </aura:if>
                   <aura:if isTrue="{!(v.recordtypeDeveloperName == $Label.c.Core_MDF_Co_GTM_RecordType)}">
                         <c:Core_MDF_Create_Activity recordId ="{!v.recordId}"/>

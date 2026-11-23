@@ -60,11 +60,6 @@
         <name>Core_IPS_Is_Show_Variant__c</name>
     </fields>
     <fields>
-        <label><!-- Opportunity PAR --></label>
-        <name>Core_IPS_Opportunity_PAR__c</name>
-        <relationshipLabel><!-- Supported Products --></relationshipLabel>
-    </fields>
-    <fields>
         <help><!-- This field if checked indicates that the product is a public product;
 This field value cannot be changed once checked as Public Product. --></help>
         <label><!-- Public Product? --></label>
@@ -119,6 +114,10 @@ This field value cannot be changed once checked as Public Product. --></help>
         <name>Core_Support_Org_Name__c</name>
     </fields>
     <fields>
+        <label><!-- Support Org and Product Name --></label>
+        <name>Core_Support_Org_and_Product_Name__c</name>
+    </fields>
+    <fields>
         <help><!-- Shown on Save. Copied from the Product Master Data name. Cannot be edited. --></help>
         <label><!-- Supported Product Name DO NOT USE --></label>
         <name>Core_Supported_Prod_Name__c</name>
@@ -141,6 +140,11 @@ This field value cannot be changed once checked as Public Product. --></help>
     <fields>
         <label><!-- Unique Supported Product --></label>
         <name>Core_Unique_Supported_Product__c</name>
+    </fields>
+    <fields>
+        <help><!-- Created as part of Taurus POC. please ignore --></help>
+        <label><!-- Enabled For Subscriptions --></label>
+        <name>IPS_Enabled_For_Subscriptions__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>
@@ -188,16 +192,8 @@ This field value cannot be changed once checked as Public Product. --></help>
         <name>Copy_Categories_EDQ_Lex</name>
     </webLinks>
     <webLinks>
-        <label><!-- Core_Add_Issue_categories --></label>
-        <name>Core_Add_Issue_categories</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Core_EDO_under_Sub_Cat --></label>
         <name>Core_EDO_under_Sub_Cat</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Core_IPS_Copy_Categories_EnvironmentDetails --></label>
-        <name>Core_IPS_Copy_Categories_EnvironmentDetails</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_IPS_Set_to_General --></label>

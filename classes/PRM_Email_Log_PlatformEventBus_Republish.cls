@@ -51,7 +51,6 @@ global class PRM_Email_Log_PlatformEventBus_Republish implements  Database.Batch
                 platformEventLogId.add(eventLog1.Id);
             }
             update eventLogList;   
-            System.debug('record ID'+recordId);
             List<PRM_EmailLog__c> emailList =[SELECT Name, PRM_Subject__c, PRM_Read__c, PRM_EmailContent__c, CreatedDate FROM PRM_EmailLog__c WHERE Name =: recordId];
             PRM_Email_Log_Utility.publish_Platform_EventWrapper wrapperInstance = new PRM_Email_Log_Utility.publish_Platform_EventWrapper();
             wrapperInstance.republishList = emailList;
@@ -64,7 +63,7 @@ global class PRM_Email_Log_PlatformEventBus_Republish implements  Database.Batch
         }        
         catch(Exception e)
         {            
-            //system.debug('#ex:Message:'+e.getMessage());
+            system.debug('#ex:Message:'+e.getMessage());
             system.debug('#ex:LineNumber:'+e.getLineNumber());
         }
         

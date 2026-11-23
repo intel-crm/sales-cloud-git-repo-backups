@@ -40,13 +40,6 @@
             <operator>notEqual</operator>
             <value>Account.Core_MDF_Co_Marketing,Account.Core_Partner_Account_Group,Account.Inactive_Account</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_IPA_Partner_Role__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>Service Provider</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -55,7 +48,7 @@
         <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>CSP Accounts Without CIM IDs</name>
+    <name>Accounts Without CIM IDs</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -67,6 +60,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CUSTOM</interval>
+        <interval>INTERVAL_LAST7</interval>
     </timeFrameFilter>
 </Report>

@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 03-31-2026
+ * @last modified on  : 06-18-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -16,14 +16,14 @@ public class Pricing_RestAPI_ClaimsData_Test {
         List<User> accountExecutiveUserList;
         List<User> salesRepUserList;
         System.runAs(adminUser[0]){
-            
+            List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             Product2 prod = new Product2();
             prod.Core_Product_Org__c = 'Sales';
             prod.Core_Product_Type__c = 'Processors';
             prod.Core_Sales_Visible_Flag__c  = True;
             prod.IsActive = True;
             prod.Core_Hierarchy_ID__c = '43';
-            prod.Core_Group_Code_Short_Name__c = 'CCG';
+            prod.Core_Line_of_Business__c = lobValuesList[1];
             prod.Name = 'Product X';
             
             Pricing_Competitor_Product__c cp = new Pricing_Competitor_Product__c(
@@ -33,6 +33,7 @@ public class Pricing_RestAPI_ClaimsData_Test {
             insert prod;
             insert cp;
             
+            //List<User> fseUserList = Pricing_Test_Utility.createFSEUser();
             Pricing_Test_Utility.createPriceBook();
             Account acc = Pricing_Test_Utility.createAccount();
             con = Pricing_Test_Utility.createPrimaryContact(acc.Id);

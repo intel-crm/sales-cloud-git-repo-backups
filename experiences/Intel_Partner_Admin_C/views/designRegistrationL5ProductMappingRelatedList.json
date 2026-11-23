@@ -2,10 +2,10 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "d4d144c4-8793-42c1-aae0-5eb635a42714",
+  "id" : "d363e1f9-909e-4c7b-bc60-023d9ec0ec25",
   "label" : "Design Registration L5 Product Mapping Related List",
   "regions" : [ {
-    "id" : "fd41179c-f972-4d30-8f46-f39e4842e522",
+    "id" : "8803136f-40d1-4f7e-bc08-c4215ad80a76",
     "regionName" : "header",
     "type" : "region"
   }, {
@@ -20,20 +20,20 @@
         "showRowNumbers" : true
       },
       "componentName" : "forceCommunity:relatedList",
-      "id" : "2bd4c433-e4b6-4fb2-bef5-dbd8943ef984",
+      "id" : "27e1aca5-2ddc-44ef-911c-ec7d8c83dc0e",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "f0c66a65-21cd-4359-a4b1-1d20a3697c7a",
+    "id" : "732141a5-b14e-4141-901a-03de732dce92",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "99960700-f9ad-430f-b679-d923e6914fb0",
+    "id" : "c3a890b8-a0ad-45af-94f5-0f86c10f9e0b",
     "regionName" : "footer",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "relatedlist-a4c"
+  "viewType" : "relatedlist-a9r"
 }

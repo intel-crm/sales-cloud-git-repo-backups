@@ -106,7 +106,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Opportunity_Product_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -114,7 +114,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Opportunity_Product_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -124,6 +124,521 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
+    <fieldSets>
+        <fullName>Deal_Approval_Internal</fullName>
+        <description>Used to create dynamic page layout</description>
+        <displayedFields>
+            <field>Core_Approved_By__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_Sales_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Claim_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_Total_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_BU_Product_Segment__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_Commissionable__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_BU_Short_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_KPI_Product_Group__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opp_Approved_Sales_Group__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_Opp_Product_Segment__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_Prime_Account_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Approved_Opportunity_Product_App__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Deal-Approval-Internal</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Default_Deal_Internal</fullName>
+        <description>Used to create dynamic page layout</description>
+        <displayedFields>
+            <field>OpportunityId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Product2Id</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Quantity</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Write_In_Product_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>ListPrice</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Product_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>UnitPrice</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Group__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>TotalPrice</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Division__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Owning_BU_ShortName__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_KPI_Product_Group__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Prime_Account_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Loss_Cancel_Reason__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opp_Product_Segment__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Loss_Cancel_Details__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Product_Application__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opportunity_Product_ID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Intel_vPro_Platform_Eligibility__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Vendor__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Is_Product_EOL__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opportunity_Product_Vendor_Prime__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_BU_Short_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_BU_Product_Segment__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Competitor__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Vendor_InActive__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Competitor_Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Owning_BU_Short_Name_New__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_OtherCompetitor_Product_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_BU_Mapping_record__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opportunity_Type_RecordId__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Advanced_Technology__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Default-Deal-Internal</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Default_Design_Internal</fullName>
+        <description>Used to create dynamic page layout</description>
+        <displayedFields>
+            <field>OpportunityId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Product2Id</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Quantity</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Write_In_Product_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Product_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>ListPrice</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Group__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>UnitPrice</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Division__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Sales_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Owning_BU_ShortName__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>TotalPrice</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_KPI_Product_Group__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Production_Win_Total_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Prime_Account_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Loss_Cancel_Reason__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opp_Product_Segment__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Loss_Cancel_Details__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Product_Application__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opportunity_Product_ID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Intel_vPro_Platform_Eligibility__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Vendor__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Is_Product_EOL__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opportunity_Product_Vendor_Prime__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_BU_Short_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_BU_Product_Segment__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Competitor__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Vendor_InActive__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Competitor_Product__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Owning_BU_Short_Name_New__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_OtherCompetitor_Product_Txt__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_BU_Mapping_record__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Opportunity_Type_RecordId__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Advanced_Technology__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Default-Design-Internal</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Default_System_Internal</fullName>
+        <description>Used to create dynamic page layout</description>
+        <displayedFields>
+            <field>CreatedById</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastModifiedById</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Design_Registration_Product_Id__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Default-System-Internal</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Design_Approval_Internal</fullName>
+        <description>Used to create dynamic page layout</description>
+        <displayedFields>
+            <field>Core_PW_Approved_By__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_Quantity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Manager_Approved_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_Sales_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_Production_Claim_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_Total_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_BU_Product_Segment__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_Commissionable__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_BU_Short_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_KPI_Product_Group__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_Sales_Group__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Core_PW_Approved_Prime_Account_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Design-Approval-Internal</label>
+    </fieldSets>
     <fieldSets>
         <fullName>sbaa__DealDesk</fullName>
         <description>Fields displayed on Deal Desk page.</description>
@@ -460,6 +975,15 @@
         <formula>PricebookEntry.Product2.Core_Avail_for_New_Designs__c</formula>
         <label>Available for New Designs</label>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_BU_Mapping_Key__c</fullName>
+        <externalId>false</externalId>
+        <formula>Core_Opp_Product_Segment__c &amp; &quot;;&quot; &amp; Core_Product2_Division__c &amp; &quot;;&quot; &amp;Core_Product_Type__c &amp; &quot;;&quot; &amp; Core_Product_Application__c</formula>
+        <label>BU Mapping Key</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_BU_Mapping_record__c</fullName>
@@ -3141,8 +3665,9 @@
                 <controllingFieldValue>Tencent</controllingFieldValue>
                 <controllingFieldValue>Unknown At This Time</controllingFieldValue>
                 <controllingFieldValue>XILINX</controllingFieldValue>
-                <controllingFieldValue>Qualcomm</controllingFieldValue>
                 <controllingFieldValue>Ampere</controllingFieldValue>
+                <controllingFieldValue>Qualcomm</controllingFieldValue>
+                <controllingFieldValue>Indigenous</controllingFieldValue>
                 <controllingFieldValue>MACOM</controllingFieldValue>
                 <controllingFieldValue>Cisco</controllingFieldValue>
                 <controllingFieldValue>HPE/Cray</controllingFieldValue>
@@ -3151,7 +3676,6 @@
                 <controllingFieldValue>e-Auction</controllingFieldValue>
                 <controllingFieldValue>Ericsson</controllingFieldValue>
                 <controllingFieldValue>Fujitsu</controllingFieldValue>
-                <controllingFieldValue>Indigenous</controllingFieldValue>
                 <controllingFieldValue>Acer</controllingFieldValue>
                 <controllingFieldValue>Apple</controllingFieldValue>
                 <controllingFieldValue>Asus</controllingFieldValue>
@@ -3237,9 +3761,10 @@
                 <controllingFieldValue>Tencent</controllingFieldValue>
                 <controllingFieldValue>Unknown At This Time</controllingFieldValue>
                 <controllingFieldValue>XILINX</controllingFieldValue>
-                <controllingFieldValue>Qualcomm</controllingFieldValue>
-                <controllingFieldValue>Marvell Technology</controllingFieldValue>
                 <controllingFieldValue>Ampere</controllingFieldValue>
+                <controllingFieldValue>Qualcomm</controllingFieldValue>
+                <controllingFieldValue>Indigenous</controllingFieldValue>
+                <controllingFieldValue>Marvell Technology</controllingFieldValue>
                 <controllingFieldValue>MACOM</controllingFieldValue>
                 <controllingFieldValue>MediaTek</controllingFieldValue>
                 <controllingFieldValue>Hygon</controllingFieldValue>
@@ -3250,7 +3775,6 @@
                 <controllingFieldValue>e-Auction</controllingFieldValue>
                 <controllingFieldValue>Ericsson</controllingFieldValue>
                 <controllingFieldValue>Fujitsu</controllingFieldValue>
-                <controllingFieldValue>Indigenous</controllingFieldValue>
                 <controllingFieldValue>Acer</controllingFieldValue>
                 <controllingFieldValue>Apple</controllingFieldValue>
                 <controllingFieldValue>Asus</controllingFieldValue>
@@ -3340,8 +3864,9 @@
                 <controllingFieldValue>Tencent</controllingFieldValue>
                 <controllingFieldValue>Unknown At This Time</controllingFieldValue>
                 <controllingFieldValue>None</controllingFieldValue>
-                <controllingFieldValue>Qualcomm</controllingFieldValue>
                 <controllingFieldValue>Ampere</controllingFieldValue>
+                <controllingFieldValue>Qualcomm</controllingFieldValue>
+                <controllingFieldValue>Indigenous</controllingFieldValue>
                 <controllingFieldValue>MACOM</controllingFieldValue>
                 <controllingFieldValue>Cisco</controllingFieldValue>
                 <controllingFieldValue>HPE/Cray</controllingFieldValue>
@@ -3350,7 +3875,6 @@
                 <controllingFieldValue>e-Auction</controllingFieldValue>
                 <controllingFieldValue>Ericsson</controllingFieldValue>
                 <controllingFieldValue>Fujitsu</controllingFieldValue>
-                <controllingFieldValue>Indigenous</controllingFieldValue>
                 <controllingFieldValue>Acer</controllingFieldValue>
                 <controllingFieldValue>Apple</controllingFieldValue>
                 <controllingFieldValue>Asus</controllingFieldValue>
@@ -7353,12 +7877,20 @@
                 <valueName>FPGA-Zynq UltraScale+ XCZU9EG</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Ampere</controllingFieldValue>
+                <valueName>Ampere A1</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Qualcomm</controllingFieldValue>
                 <valueName>Centriq</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Qualcomm</controllingFieldValue>
                 <valueName>Firetail</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Indigenous</controllingFieldValue>
+                <valueName>Indigenous</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Marvell Technology</controllingFieldValue>
@@ -7371,10 +7903,6 @@
             <valueSettings>
                 <controllingFieldValue>Marvell Technology</controllingFieldValue>
                 <valueName>ThunderX2 (Vulcan)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Ampere</controllingFieldValue>
-                <valueName>Ampere A1</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>MediaTek</controllingFieldValue>
@@ -7395,10 +7923,6 @@
             <valueSettings>
                 <controllingFieldValue>Hygon</controllingFieldValue>
                 <valueName>Hygon 7100 (2S)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Indigenous</controllingFieldValue>
-                <valueName>Indigenous</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Apple</controllingFieldValue>
@@ -8768,6 +9292,7 @@
     <fields>
         <fullName>Core_Design_Registration_Product_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
         <label>Design/Deal Registration Product</label>
         <referenceTo>Core_Design_Registration_Product__c</referenceTo>
         <relationshipLabel>Opportunity Product</relationshipLabel>
@@ -9609,6 +10134,16 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_Is_Renewal_Amend_PSG_Quote__c</fullName>
+        <formula>AND(
+Opportunity.Core_Is_Renewal_Amend_PSG_Quote__c,
+ISPICKVAL(Opportunity.StageName, &apos;Cancelled&apos;)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Renewal/Amend PSG Quote</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Core_KPI_Business_Industry_Function__c</fullName>
         <description>INF KPI Business Industry function</description>
         <externalId>false</externalId>
@@ -9654,11 +10189,11 @@ IF(
     <fields>
         <fullName>Core_KPI_Date__c</fullName>
         <description>The KPI Date provides a SINGLE, Unified date field that is used to report the results for any status.  This date combines the Claim Date when there is a Claim Date otherwise for pending products, the Opportunity Decision Date is used.</description>
-        <formula>IF(OR(ISPICKVAL(Core_Status__c, &quot;Win Approved&quot;), ISPICKVAL(Core_Status__c, &quot;Production Win&quot;),ISPICKVAL(Core_Status__c, &quot;Production Win Submitted&quot;),ISPICKVAL(Core_Status__c, &quot;Production Win Approved&quot;),
-ISPICKVAL(Core_Status__c,&quot;Production Lost&quot;), ISPICKVAL(Core_Status__c,&quot;Production Cancelled&quot;),
+        <formula>IF(OR(ISPICKVAL(Core_Status__c, &quot;Win Approved&quot;), 
+ISPICKVAL(Core_Status__c,&quot;Production Lost&quot;), ISPICKVAL(Core_Status__c,&quot;Production Cancelled&quot;), 
 ISPICKVAL(Core_Status__c,&quot;Lost&quot;), ISPICKVAL(Core_Status__c,&quot;Cancelled&quot;), ISPICKVAL(Core_Status__c,&quot;Win Submitted&quot;)),
-DATEVALUE(Core_Claim_Date__c),
-Opportunity.CloseDate)</formula>
+	DATEVALUE(Core_Claim_Date__c),
+	 IF(OR(ISPICKVAL(Core_Status__c, &quot;Production Win Submitted&quot;),ISPICKVAL(Core_Status__c, &quot;Production Win Approved&quot;),ISPICKVAL(Core_Status__c, &quot;Production Win&quot;)),  DATEVALUE(Core_Production_Claim_Date__c) , Opportunity.CloseDate))</formula>
         <inlineHelpText>The KPI Date provides a SINGLE, Unified date field that is used to report the results for any status.  This date combines the Claim Date when there is a Claim Date otherwise for pending products, the Opportunity Decision Date is used.</inlineHelpText>
         <label>KPI - Date</label>
         <required>false</required>
@@ -9704,9 +10239,9 @@ Opportunity.CloseDate)</formula>
     <fields>
         <fullName>Core_KPI_Production_Date__c</fullName>
         <description>The date the status moved to production or the first customer ship date</description>
-        <formula>IF(OR(ISPICKVAL(Core_Status__c, &quot;Production Win Approved&quot;),ISPICKVAL(Core_Status__c, &quot;Production Win&quot;), ISPICKVAL(Core_Status__c, &quot;Production Win Submitted&quot;),ISPICKVAL(Core_Status__c,&quot;Production Lost&quot;), ISPICKVAL(Core_Status__c,&quot;Production Cancelled&quot;)),
-Core_Production_Claim_Date__c,
-DATETIMEVALUE(Opportunity.Core_First_Customer_Ship_Date__c))</formula>
+        <formula>IF(OR(ISPICKVAL(Core_Status__c, &quot;Production Win Approved&quot;), ISPICKVAL(Core_Status__c, &quot;Production Win Submitted&quot;),ISPICKVAL(Core_Status__c,&quot;Production Lost&quot;), ISPICKVAL(Core_Status__c,&quot;Production Cancelled&quot;)),
+	Core_Production_Claim_Date__c,
+	DATETIMEVALUE(Opportunity.Core_First_Customer_Ship_Date__c))</formula>
         <label>KPI - Production Date</label>
         <required>false</required>
         <type>DateTime</type>
@@ -9788,62 +10323,62 @@ TotalPrice)))</formula>
                 <value>
                     <fullName>Another IA Bid Selected</fullName>
                     <default>false</default>
-                    <label>Another IA Bid Selected </label>
+                    <label>Another IA Bid Selected</label>
                 </value>
                 <value>
                     <fullName>Feature/Performance</fullName>
                     <default>false</default>
-                    <label>Feature/Performance </label>
+                    <label>Feature/Performance</label>
                 </value>
                 <value>
                     <fullName>Intel No Longer Pursuing</fullName>
                     <default>false</default>
-                    <label>Intel No Longer Pursuing </label>
+                    <label>Intel No Longer Pursuing</label>
                 </value>
                 <value>
                     <fullName>Other (refer to Loss Details)</fullName>
                     <default>false</default>
-                    <label>Other (refer to Loss Details) </label>
+                    <label>Other (refer to Loss Details)</label>
                 </value>
                 <value>
                     <fullName>Price</fullName>
                     <default>false</default>
-                    <label>Price </label>
+                    <label>Price</label>
                 </value>
                 <value>
                     <fullName>Product Schedule</fullName>
                     <default>false</default>
-                    <label>Product Schedule </label>
+                    <label>Product Schedule</label>
                 </value>
                 <value>
                     <fullName>Supply</fullName>
                     <default>false</default>
-                    <label>Supply </label>
+                    <label>Supply</label>
                 </value>
                 <value>
                     <fullName>Customer Discontinued Project</fullName>
                     <default>false</default>
-                    <label>Customer Discontinued Project </label>
+                    <label>Customer Discontinued Project</label>
                 </value>
                 <value>
                     <fullName>Design Reg. Product Swap</fullName>
                     <default>false</default>
-                    <label>Design Reg. Product Swap </label>
+                    <label>Design Reg. Product Swap</label>
                 </value>
                 <value>
                     <fullName>Entered in Error</fullName>
                     <default>false</default>
-                    <label>Entered in Error </label>
+                    <label>Entered in Error</label>
                 </value>
                 <value>
                     <fullName>Failed Audit</fullName>
                     <default>false</default>
-                    <label>Failed Audit </label>
+                    <label>Failed Audit</label>
                 </value>
                 <value>
                     <fullName>POP Unobtainable</fullName>
                     <default>false</default>
-                    <label>POP Unobtainable </label>
+                    <label>POP Unobtainable</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
@@ -10630,6 +11165,16 @@ TotalPrice)))</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Opportunity_Type_RecordId__c</fullName>
+        <description>Stores the Opportunity Record Type of the parent Opportunity</description>
+        <externalId>false</externalId>
+        <formula>Opportunity.RecordTypeId</formula>
+        <label>Opportunity Type RecordId</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_OtherCompetitor_Product_Txt__c</fullName>
         <description>Use this field to provide details If you have selected ‘Other’ for either Competitor or Product.   The information you provide will be used to inform future additions to the lists.</description>
         <externalId>false</externalId>
@@ -10803,6 +11348,15 @@ TotalPrice)))</formula>
         <formula>IF(CONTAINS( Lower( PricebookEntry.Product2.Name ), &apos;write in product&apos;),&apos;Write In Product&apos;,IF( OR(ISBLANK(PricebookEntry.Product2.Core_Division_Code_Short_Name__c), ISNULL(PricebookEntry.Product2.Core_Division_Code_Short_Name__c) ) ,&apos;NA&apos;, PricebookEntry.Product2.Core_Division_Code_Short_Name__c))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Product2 Division</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Product2_LOB_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS( Lower( PricebookEntry.Product2.Name ), &apos;write in product&apos;),&apos;Write In Product&apos;,IF( OR(ISBLANK(PricebookEntry.Product2.Core_Line_of_Business__c), ISNULL(PricebookEntry.Product2.Core_Line_of_Business__c) ) ,&apos;NA&apos;, PricebookEntry.Product2.Core_Line_of_Business__c))</formula>
+        <label>Product2 LOB Code</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -11048,6 +11602,12 @@ SBQQ__QuoteLine__r.Pricing_Total_Volume_Qty__c
                     <label>3 - Medium – Vital for Opportunity – Action Required</label>
                 </value>
                 <value>
+                    <fullName>4 - Medium – Necessary for Opportunity</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>4 - Medium – Necessary for Opportunity</label>
+                </value>
+                <value>
                     <fullName>5 - Low – No immediate impact</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -11256,6 +11816,23 @@ if( Contains(Core_KPI_Business_Industry_Function__c, &quot;SP/Telco&quot;),&quot
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Solution_Area_Product_Id__c</fullName>
+        <inlineHelpText>Field update only after product add</inlineHelpText>
+        <label>Solution Area Product Id</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Core_Status__c</fullName>
         <description>Status of the Opportunity Product (e.g., open, won, lost)</description>
         <label>Status</label>
@@ -11410,7 +11987,7 @@ ISPICKVAL(Core_Status__c, &quot;Production Win Submitted&quot;),
 ISPICKVAL(Core_Status__c, &quot;Production Win Approved&quot;),
 ISPICKVAL(Core_Status__c, &quot;Production Win&quot;)
 )
-), 
+),
 TotalPrice,
 
 IF(
@@ -11427,9 +12004,9 @@ ISPICKVAL(Core_Status__c,&quot;Production Lost&quot;),
 ISPICKVAL(Core_Status__c,&quot;Lost&quot;),
 ISPICKVAL(Core_Status__c, &quot;Cancelled&quot;)
 )
-), 
-Core_Lost_Total_Price__c, 
-0) 
+),
+Core_Lost_Total_Price__c,
+0)
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <inlineHelpText>This field will be used to calculate Opportunity Revenue ( CRM_Opportunity_Revenue__c ) on Opportunity Object</inlineHelpText>
@@ -11459,6 +12036,14 @@ Core_Lost_Total_Price__c,
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Vendor_Active__c</fullName>
+        <formula>AND(IF(Core_Vendor__r.RecordType.DeveloperName = &apos;Inactive_Account&apos;,FALSE,TRUE),
+(Core_Vendor__c &lt;&gt; NULL))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Vendor Active</label>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_Vendor_Group__c</fullName>
@@ -11705,8 +12290,22 @@ IF((( ISPICKVAL(Opportunity.Core_Opportunity_Coverage_Nm__c, &apos;Intel-Led Opp
         <description>Users are prevented from changing the Status of a Opportunity Product to Lost, Cancelled, Production Lost, Production Cancelled, Deleted or Production Win if the product is flagged at risk with the Risk Status = &apos;New&apos; or &apos;In Progress&apos;.</description>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE, AND(
 ISChanged(Core_Status__c),
-OR(  ISPICKVAL(Core_Status__c, &apos;Lost&apos;) ,  ISPICKVAL(Core_Status__c, &apos;Cancelled&apos;), ISPICKVAL(Core_Status__c, &apos;Deleted&apos;), ISPICKVAL(Core_Status__c, &apos;Production Lost&apos;),  ISPICKVAL(Core_Status__c, &apos;Production Win&apos;) , ISPICKVAL(Core_Status__c, &apos;Production Cancelled&apos;)) , AND( Core_At_Risk__c = true,  OR(ISPICKVAL(Core_At_Risk_Status__c, &apos;New&apos;),ISPICKVAL(Core_At_Risk_Status__c, &apos;In-Progress&apos;)))))</errorConditionFormula>
+OR(  ISPICKVAL(Core_Status__c, &apos;Lost&apos;) ,  ISPICKVAL(Core_Status__c, &apos;Cancelled&apos;), ISPICKVAL(Core_Status__c, &apos;Deleted&apos;), ISPICKVAL(Core_Status__c, &apos;Production Lost&apos;),  ISPICKVAL(Core_Status__c, &apos;Production Win Approved&apos;) , ISPICKVAL(Core_Status__c, &apos;Production Cancelled&apos;)) , AND( Core_At_Risk__c = true,  OR(ISPICKVAL(Core_At_Risk_Status__c, &apos;New&apos;),ISPICKVAL(Core_At_Risk_Status__c, &apos;In-Progress&apos;)))))</errorConditionFormula>
         <errorMessage>Product status cannot be updated as specified as the product is flagged at risk. Please navigate to the At Risk tab to either uncheck the At Risk checkbox or disposition the Risk Status to a “Closed” state.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_At_Risk_Checks</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+ AND(
+  Core_At_Risk__c = true,
+  OR(Core_Risk_Detail__c = &apos;&apos;,
+   TEXT(Core_Risk_Priority__c) = &apos;&apos;,
+   TEXT(Core_Risk_Reason1__c) = &apos;&apos;
+  )
+ )
+)</errorConditionFormula>
+        <errorMessage>Risk Details, Risk Reason, Risk Priority is required.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Cannot_Recall_Cancel_Failed_Audit</fullName>
@@ -11756,13 +12355,37 @@ ISPICKVAL(Core_Status__c, &apos;Production Cancelled&apos;)
         <fullName>Core_DesignFlag_True_For_OppType_Design</fullName>
         <active>true</active>
         <description>if the opportunity type is &quot; Design&quot; and  throw error if the product  &quot;New Available design flag&quot;  is false.</description>
-        <errorConditionFormula>AND( 
-CONTAINS( TEXT(Opportunity.Core_Opportunity_Type__c) , &quot;Design&quot;), 
+        <errorConditionFormula>AND(
+CONTAINS( TEXT(Opportunity.Core_Opportunity_Type__c) , &quot;Design&quot;),
 NOT( Product2.Core_Avail_for_New_Designs__c ),
 Core_Design_Registration_Product_Id__c = &apos;&apos;,
 ISNEW()
 )</errorConditionFormula>
         <errorMessage>Product not available for new designs.  Please select a product that is marked available for new designs on the selection page.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Core_Lock_Field_After_Opp_Approval</fullName>
+        <active>false</active>
+        <description>Throws an error message when a user try to edit some fields of opportunity products after opportunity is approved</description>
+        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
+AND( 
+ OR(
+ Opportunity.RecordType.DeveloperName=&apos;Core_Design_Opportunity&apos;,
+ Opportunity.RecordType.DeveloperName = &apos;Core_Deal_Opportunity&apos;,
+ Opportunity.RecordType.DeveloperName = &apos;Core_Opportunity&apos;),
+ AND(
+ ISPICKVAL(Opportunity.Core_Approval_Status__c, &apos;Approved&apos;),
+ ISPICKVAL(Core_Status__c, &apos;Win Approved&apos;)),
+ OR(
+ ISCHANGED( Core_Write_In_Product_Name__c ),
+ ISCHANGED( Quantity ),
+ ISCHANGED( UnitPrice ))  
+ )
+ )</errorConditionFormula>
+        <errorMessage>These fields can&apos;t be changed after approval:
+1. Write In Product Name
+2. Quantity
+3. Sales Price</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_Lock_Field_After_Opp_ApprovalDesign</fullName>
@@ -11775,7 +12398,7 @@ AND(
 ISPICKVAL(Opportunity.Core_Approval_Status__c, &apos;Approved&apos;),
  OR(
 ISPICKVAL(Core_Status__c, &apos;Win Approved&apos;),
-ISPICKVAL(Core_Status__c, &apos;Production Win&apos;),
+ISPICKVAL(Core_Status__c, &apos;Production Win Approved&apos;),
 ISPICKVAL(Core_Status__c, &apos;Production Lost&apos;),
 ISPICKVAL(Core_Status__c, &apos;Production Cancelled&apos;))),
 ISCHANGED( Core_Write_In_Product_Name__c )
@@ -11992,7 +12615,7 @@ NOT(ISCHANGED(Core_BypassFlow__c))
     <validationRules>
         <fullName>Core_OppProd_Production_Cancelled</fullName>
         <active>true</active>
-        <description>Allows only the person who approved the product win to change to a status which is prior to approval, except admin users.</description>
+        <description>Allows only the person who approved the product win to change to a status which is prior to approval, except admin users. Deactivate /bypass for Demo</description>
         <errorConditionFormula>AND(
 Opportunity.CRM_IsLowTouchAdmin_Chk__c==false,
 NOT($Setup.Core_Opp_LineItem_Recall_Access__c.Core_Recall_Access__c),
@@ -12010,7 +12633,7 @@ AND(TEXT(Core_Status__c) = &apos;Pending&apos;, TEXT(Opportunity.Core_Approval_S
 ))
 )</errorConditionFormula>
         <errorDisplayField>Core_Status__c</errorDisplayField>
-        <errorMessage>Only the person who approved the product win can change to a status which is prior to approval.</errorMessage>
+        <errorMessage>Only the person who approved the product win can change to a status which is prior to approval</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_OppProd_Production_Lost</fullName>
@@ -12084,7 +12707,7 @@ $Profile.Name = $Label.Core_IT_Admin_Profile_Name
     </validationRules>
     <validationRules>
         <fullName>Core_OppProd_Production_Win</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Allows only the person who approved the product win to change to a status which is prior to approval, except admin users.</description>
         <errorConditionFormula>AND(
 NOT($Setup.Core_Opp_LineItem_Recall_Access__c.Core_Recall_Access__c),
@@ -12101,7 +12724,7 @@ AND(TEXT(Core_Status__c) = &apos;Pending&apos;, TEXT(Opportunity.Core_Approval_S
 AND(TEXT(Core_Status__c) = &apos;Pending&apos;, Opportunity.CRM_IsLowTouchAdmin_Chk__c = true))
 ))</errorConditionFormula>
         <errorDisplayField>Core_Status__c</errorDisplayField>
-        <errorMessage>When Product Status is Changed from PW Approved to any other before approval Status(i.e OnHold, Pending, Lost, Cancelled) - Production Win stage can be only reversed to Design Win Stage.</errorMessage>
+        <errorMessage>When Product Status is Changed from PW Approved to any other before approval Status(i.e OnHold, Pending, Lost, Cancelled) - Production Win stage can be only reversed to Design Win Stage.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_OppProd_Reason_if_Lost</fullName>
@@ -12224,7 +12847,7 @@ AND(
 $Profile.Name &lt;&gt; $Label.Core_System_Admin_Profile_Name,
 $Profile.Name &lt;&gt; $Label.Core_IT_Admin_Profile_Name,
 OR(
-Text(PRIORVALUE(Core_Status__c)) = &quot;Production Win&quot;,
+Text(PRIORVALUE(Core_Status__c)) = &quot;Production Win Approved&quot;,
 Text(PRIORVALUE(Core_Status__c)) = &quot;Production Lost&quot;,
 Text(PRIORVALUE(Core_Status__c)) = &quot;Production Cancelled&quot;,
 Text(PRIORVALUE(Core_Status__c)) = &quot;Win Approved&quot;,
@@ -12275,7 +12898,7 @@ TEXT(Core_Status__c) = &quot;Pending&quot;
 		)
 	)</errorConditionFormula>
         <errorDisplayField>Core_Status__c</errorDisplayField>
-        <errorMessage>Only the person who approved the product win can change to a status which is prior to approval</errorMessage>
+        <errorMessage>Only the person who approved the product win can change to a status which is prior to approval - 1</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_OppProd_Write_In_Name</fullName>
@@ -12301,7 +12924,7 @@ ISPICKVAL(PRIORVALUE(Core_Status__c),&quot;Delete In Progress (&lt;15 min)&quot;
 )
 )
 )</errorConditionFormula>
-        <errorMessage>You are not allowed to edit the Opportunity Product after it is marked for Delete In Progress (&lt;15 min).
+        <errorMessage>You are not allowed to edit the Opportunity Product after it is marked for To Be Deleted.
 Please add a new product.</errorMessage>
     </validationRules>
     <validationRules>
@@ -12317,7 +12940,7 @@ OR (
 ISPICKVAL(Core_Status__c,&apos;Delete In Progress (&lt;15 min)&apos;),
 ISPICKVAL(Core_Status__c,&apos;Lost&apos;),
 ISPICKVAL(Core_Status__c,&apos;Cancelled&apos;),
-ISPICKVAL(Core_Status__c,&apos;Production Win&apos;),
+ISPICKVAL(Core_Status__c,&apos;Production Win Approved&apos;),
 ISPICKVAL(Core_Status__c,&apos;Production Lost&apos;),
 ISPICKVAL(Core_Status__c,&apos;Production Cancelled&apos;),
 ISPICKVAL(Core_Status__c,&apos;Win Approved&apos;),
@@ -12433,7 +13056,6 @@ ISPICKVAL( PRIORVALUE(Core_Status__c) , &apos;Cancelled&apos;)
 )
 )
 )</errorConditionFormula>
-        <errorDisplayField>Core_Advanced_Technology__c</errorDisplayField>
         <errorMessage>Opportunity product status cannot be reversed to open stages from Lost/Cancelled</errorMessage>
     </validationRules>
     <validationRules>
@@ -12619,10 +13241,10 @@ ISCHANGED(Quantity)
         <description>Validation For PW Approved status changes</description>
         <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
 IF(Opportunity.CRM_IsLowTouchAdmin_Chk__c = true,
-FALSE, 
+FALSE,
 (IF(AND( TEXT(Opportunity.Core_PW_Approval_Status__c) &lt;&gt; &apos;Approved&apos;,
-        ISCHANGED(Core_Status__c), 
-		TEXT(Core_Status__c) = &apos;Production Win Approved&apos;),TRUE,FALSE))
+ISCHANGED(Core_Status__c),
+TEXT(Core_Status__c) = &apos;Production Win Approved&apos;),TRUE,FALSE))
 )
 )</errorConditionFormula>
         <errorDisplayField>Core_Status__c</errorDisplayField>

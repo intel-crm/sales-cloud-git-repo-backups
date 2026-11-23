@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>RTX Corporation Customer User</description>
+    <description>RAYTHEON Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>RTX Corporation Customer User</name>
+    <name>RAYTHEON Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10716919_Steve_Taylor</parentRole>
+    <parentRole>EMP_10533960_John_Kaufman</parentRole>
 </Role>

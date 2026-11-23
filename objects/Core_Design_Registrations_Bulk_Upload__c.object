@@ -6,12 +6,14 @@
     <fields>
         <fullName>Core_Active_Ind__c</fullName>
         <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
         <label>Active</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_CSV_Column_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>CSV Column Name</label>
         <length>255</length>
@@ -22,6 +24,7 @@
     </fields>
     <fields>
         <fullName>Core_Design_API_Field_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Design API Field Name</label>
         <length>255</length>
@@ -33,12 +36,14 @@
     <fields>
         <fullName>Core_Design_Required_Ind__c</fullName>
         <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
         <label>Design Required</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_Field_Data_Type_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Field Data Type</label>
         <length>100</length>
@@ -49,6 +54,7 @@
     </fields>
     <fields>
         <fullName>Core_Header_Or_Product_Ind__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Header/ Product</label>
         <length>255</length>
@@ -59,6 +65,7 @@
     </fields>
     <fields>
         <fullName>Core_Stage_API_Field_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Stage API Field Name</label>
         <length>255</length>
@@ -70,6 +77,7 @@
     <fields>
         <fullName>Core_Stage_Required_Ind__c</fullName>
         <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
         <description>During csv or json import, for staging object, is this field value is required or not.</description>
         <inlineHelpText>During csv or json import, for staging object, is this field value is required or not.</inlineHelpText>
         <label>Stage Required</label>
@@ -92,6 +100,23 @@
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Recprds</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Active_Ind__c</columns>
+        <columns>Core_Header_Or_Product_Ind__c</columns>
+        <columns>Core_Field_Data_Type_Txt__c</columns>
+        <columns>Core_CSV_Column_Nm__c</columns>
+        <columns>Core_Stage_API_Field_Nm__c</columns>
+        <columns>Core_Design_API_Field_Nm__c</columns>
+        <columns>Core_Stage_Required_Ind__c</columns>
+        <columns>Core_Design_Required_Ind__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Recprds</label>
         <language>en_US</language>
     </listViews>
     <visibility>Public</visibility>

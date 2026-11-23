@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div style=""><div style=""><font face="arial">{!Core_MDF_Escalation__c.OwnerFullName} has requested your approval for the following {!Core_MDF_Escalation__c.Core_MDF_Escalation_Type_nm__c} Escalation ID <a href="{!Core_MDF_Escalation__c.Core_MDF_Escalation_Detail_Link_txt__c}">{!Core_MDF_Escalation__c.Name}</a>&nbsp;&nbsp;</font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial">Click on the link to approve or reject this record.</font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial">&nbsp;</font></div><div style=""><font face="arial"><br></font></div><div style=""><font face="arial">Thank you,</font></div><div style=""><font face="arial">Intel® Partner Investment Center</font></div></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[]]></td>
+</tr>
+</table>

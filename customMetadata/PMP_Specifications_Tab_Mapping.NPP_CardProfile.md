@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>is_Inline_Radio__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
 </CustomMetadata>

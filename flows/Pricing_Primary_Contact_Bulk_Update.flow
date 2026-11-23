@@ -24,7 +24,6 @@
             </value>
         </inputParameters>
         <nameSegment>Pricing_BulkUpdatePrimarycontact_Batch</nameSegment>
-        <offset>0</offset>
         <outputParameters>
             <assignToReference>Pricing_Error_Msg</assignToReference>
             <name>output</name>
@@ -96,7 +95,6 @@
             <dataType>String</dataType>
             <fieldText>Provide the old Primary Contact Email to be replaced</fieldText>
             <fieldType>InputField</fieldType>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <styleProperties>
                 <verticalAlignment>
@@ -108,7 +106,7 @@
             </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;{!Pricing_Email_Validation_Msg}&lt;/p&gt;</errorMessage>
-                <formulaExpression>AND(REGEX( {!Pricing_Old_Primary_Contact_Email} , &quot;(\\s*[a-zA-Z0-9+._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)(;\\s*[a-zA-Z0-9+._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)*&quot;))</formulaExpression>
+                <formulaExpression>AND(REGEX( {!Pricing_Old_Primary_Contact_Email} , &quot;(\\s*[a-zA-Z0-9+._-]+@[a-zA-Z]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)(;\\s*[a-zA-Z0-9+._-]+@[a-zA-Z]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)*&quot;))</formulaExpression>
             </validationRule>
         </fields>
         <fields>
@@ -116,7 +114,6 @@
             <dataType>String</dataType>
             <fieldText>Provide the new Primary Contact Email to be updated</fieldText>
             <fieldType>InputField</fieldType>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <styleProperties>
                 <verticalAlignment>
@@ -128,7 +125,7 @@
             </styleProperties>
             <validationRule>
                 <errorMessage>&lt;p&gt;{!Pricing_Email_Validation_Msg}&lt;/p&gt;</errorMessage>
-                <formulaExpression>AND(REGEX( {!Pricing_New_Primary_Contact_Email} , &quot;(\\s*[a-zA-Z0-9+._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)(;\\s*[a-zA-Z0-9+._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)*&quot;))</formulaExpression>
+                <formulaExpression>AND(REGEX( {!Pricing_New_Primary_Contact_Email} , &quot;(\\s*[a-zA-Z0-9+._-]+@[a-zA-Z]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)(;\\s*[a-zA-Z0-9+._-]+@[a-zA-Z]+\\.[a-zA-Z]{2,3}(\\.[a-zA-Z]{2,2})?\\s*)*&quot;))</formulaExpression>
             </validationRule>
         </fields>
         <nextOrFinishButtonLabel>Perform Bulk Action</nextOrFinishButtonLabel>

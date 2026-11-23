@@ -170,7 +170,10 @@
         <fullName>PMP_PAG_ID__c</fullName>
         <description>This Field Checks if the User belongs to the same One Partner Group ( used primarily for Dashboard Runtime User)</description>
         <externalId>false</externalId>
-        <formula>IF(OR($Profile.Name = &quot;System Administrator&quot;,$Profile.Name = &quot;IT Admin&quot;),&apos;TRUE&apos;, IF ($User.Core_IPA_One_Partner_Id__c  ==  PMP_Rpt_MP_Partner_ID__r.PMP_One_Partner_ID__c , &apos;TRUE&apos;,IF ($User.Core_IPA_One_Partner_Id__c == &quot;&quot;, &apos;TRUE&apos;, &apos;FALSE&apos;)))</formula>
+        <formula>IF(OR
+($Profile.Name = &quot;System Administrator&quot;,$Profile.Name = &quot;IT Admin&quot;),&apos;TRUE&apos;,
+IF ($User.Core_IPA_One_Partner_Id__c == PMP_Rpt_MP_Partner_ID__r.PMP_One_Partner_ID__c , &apos;TRUE&apos;,
+ IF ($User.Core_IPA_One_Partner_Id__c == &quot;&quot;, &apos;TRUE&apos;, &apos;FALSE&apos;)))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>PAG ID</label>
         <required>false</required>

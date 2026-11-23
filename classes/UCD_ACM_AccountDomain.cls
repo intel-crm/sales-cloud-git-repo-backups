@@ -145,6 +145,7 @@ public without sharing class UCD_ACM_AccountDomain implements UCD_ACM_DomainCont
         for (Account account : accounts) {
             duplicateInfoByAccountId.put(account.Id, mapAccountResponseModel(account,parentAccountById,businessTypesByAccountId));
         }
+        System.debug('$$duplicateInfoByAccountId '+duplicateInfoByAccountId);
         return duplicateInfoByAccountId;
     }
 
@@ -202,9 +203,9 @@ public without sharing class UCD_ACM_AccountDomain implements UCD_ACM_DomainCont
                 if (businessTypesByAccountId != null && businessTypesByAccountId.containsKey(account.Id)) {
                     model.mapBusinessTypesToModel(mappedResponse, businessTypesByAccountId.get(account.Id));
                 }
-            }
 
-            finalResponse.Account = mappedResponse;
+                finalResponse.Account = mappedResponse;
+            }
                         
         } catch (exception ex) {
             UCD_ACM_Logger.error('UCD_ACM_AccountDomain','mapAccountRequestQueueResponseModel','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString(),'Account Request Queue Id: ' + acrRecord.Id);

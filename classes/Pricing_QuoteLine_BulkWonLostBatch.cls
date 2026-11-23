@@ -2,7 +2,7 @@
  * @description       : Class to process bulk won/lost records in batches
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 04-26-2026
+ * @last modified on  : 04-23-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sObject>, Database.Stateful{
@@ -12,6 +12,17 @@ public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sO
 
     public Pricing_QuoteLine_BulkWonLostBatch(Map<String,SBQQ__QuoteLine__c> newQLMapBatch){
         quoteLineNumberMap = new Map<String,SBQQ__QuoteLine__c>(newQLMapBatch);
+        system.debug('newQLMapBatch:'+newQLMapBatch);
+       Set<String> keysToRemove = new Set<String>();
+        for (String key : quoteLineNumberMap.keySet()) {
+            system.debug('key:'+key);
+            if (key.contains('" "') || key.contains('""') || string.isblank(key)) { 
+                    keysToRemove.add(key);
+            }
+        }
+        system.debug('keysToRemove:'+keysToRemove);
+        quoteLineNumberMap.keySet().removeAll(keysToRemove);
+        system.debug('newQLMapBatch:'+quoteLineNumberMap.keyset());
     }
 
     /**
@@ -33,7 +44,9 @@ public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sO
     **/
     public void execute(Database.BatchableContext bc, List<SBQQ__QuoteLine__c> quoteLineList){
         Map<String, String> quoteLineSuccessErrorMap = new Map<String, String>();
+        system.debug('quoteLineList:'+quoteLineList);
         quoteLineSuccessErrorMap = Pricing_QuoteLine_BulkWonLost.validateWonLostQuoteLines(quoteLineNumberMap, quoteLineList);
+        system.debug('quoteLineSuccessErrorMap:'+quoteLineSuccessErrorMap);
         resultMap.putAll(quoteLineSuccessErrorMap);
     }
 
@@ -52,6 +65,7 @@ public class Pricing_QuoteLine_BulkWonLostBatch implements Database.Batchable<sO
             csvRowVal = response; 
             csvRowValues.add(csvRowVal);
         }
+        system.debug('csvRowValues:'+csvRowValues);
         List<OrgWideEmailAddress> orgWideEmailAdd = [SELECT Id from OrgWideEmailAddress where Address=:Label.Pricing_OrgWideEmailAddress];
         Id orgWideEmailAddId = orgWideEmailAdd[0].id;
         csvColumnHeader = 'Quote Line Number, Quote Line Status, Deal ID, Result\n';

@@ -13,6 +13,7 @@
         //var lookupPill = cmp.find("lookup-pill"); 
         // Clear any errors and destroy the old lookup items container
         inputElement.set('v.errors', null);
+        //console.log('Inside doSearch:::');
         // We need at least 2 characters for an effective search
         if (typeof searchString === 'undefined' || searchString.length < 2)
         {
@@ -38,6 +39,7 @@
 
         // Mark the action as abortable, this is to prevent multiple events from the keyup executing
         action.setAbortable();
+        //console.log('Parameters are ::::'+searchString + ' '+sObjectAPIName + ' '+returnFields + ' '+filterCriteria);
         // Set the parameters
         action.setParams({ "searchString" : searchString, 
                            "sObjectAPIName" : sObjectAPIName,
@@ -66,6 +68,7 @@
             else if (state === "ERROR") // Handle any error by reporting it
             {
                 var errors = response.getError();
+                //console.log("errors:::",errors);
                 if (errors) 
                 {
                     if (errors[0] && errors[0].message) 
@@ -94,7 +97,11 @@
         // The Object label is the inner text)
         var objectLabel = event.currentTarget.innerText;
 
-        // Log the Object Id and Label to the console        
+        // Log the Object Id and Label to the console
+        //console.log('event.currentTarget=' ,event.currentTarget);
+        //console.log('objectId=' + objectId);
+        //console.log('objectLabel=' + objectLabel);
+                
         // Create the UpdateLookupId event
         var updateEvent = cmp.getEvent("updateLookupIdEvent");
         
@@ -281,7 +288,8 @@
         var clearIcon = cmp.find("clearIcon");
         $A.util.addClass(clearIcon, 'slds-hide');
         $A.util.removeClass(clearIcon, 'slds-show');
-       
+        //console.log('here');
+        
         var inputElement = cmp.find('lookup-div');
         $A.util.addClass(inputElement, 'slds-has-selection');
 

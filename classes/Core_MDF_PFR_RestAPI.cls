@@ -109,7 +109,8 @@ global without sharing class Core_MDF_PFR_RestAPI extends TriggerHandler {
                 program,
                 campaignId,
                 budgetId,
-                channelPartnerId
+                channelPartnerId,
+                (String) requestMap.get('ActivityTypes')
             );
             if (Boolean.valueOf(validationResult.get('isSuccess')) == true) {
                 restResponse.statusCode = 200;
@@ -294,8 +295,17 @@ global without sharing class Core_MDF_PFR_RestAPI extends TriggerHandler {
             pfr.Core_MDF_Program__c,
             String.valueOf(pfr.CampaignId),
             String.valueOf(pfr.BudgetId),
-            String.valueOf(pfr.ChannelPartnerId)
+            String.valueOf(pfr.ChannelPartnerId),
+            pfr.Core_MDF_Activity_Types__c
         );
+
+        if (validationResult.get('stopValidation') == true) {
+            failures.add(Core_MDF_PFR_RestAPI_Utility.buildValidationFailure(
+                pfr, new List<String>{ String.valueOf(validationResult.get('message')) }
+            ));
+            pfrs.clear();
+            return;
+        }
 
         List<String> errors = new List<String>();
         if (Boolean.valueOf(validationResult.get('isSuccess')) != true && validationResult.containsKey('message')) {
@@ -386,6 +396,11 @@ global without sharing class Core_MDF_PFR_RestAPI extends TriggerHandler {
             }
             Decimal minimumForecastVolume = decimalFromObject(segmentMap.get('MinimumForecastVolume'));
             Decimal incentiveAmountPerUnit = decimalFromObject(segmentMap.get('IncentiveAmountPerUnit'));
+            Boolean isBundle = segmentMap.get('MaximumBundledVolume') != null || segmentMap.get('MaximumCostOfBundle') != null;
+            if (isBundle) {
+                minimumForecastVolume = decimalFromObject(segmentMap.get('MaximumBundledVolume'));
+                incentiveAmountPerUnit = decimalFromObject(segmentMap.get('MaximumCostOfBundle'));
+            }
             if (minimumForecastVolume == null || incentiveAmountPerUnit == null) {
                 continue;
             }
@@ -393,7 +408,9 @@ global without sharing class Core_MDF_PFR_RestAPI extends TriggerHandler {
             Decimal segmentPayout = (minimumForecastVolume * incentiveAmountPerUnit).setScale(2, System.RoundingMode.HALF_UP);
             if (segmentPayout > intelContribution) {
                 String segmentName = segmentMap.containsKey('SegmentName') ? String.valueOf(segmentMap.get('SegmentName')) : 'Segment';
-                errors.add(segmentName + ': Minimum Forecast Volume * Incentive Amount $/U should less than intel contribution.');
+                errors.add(segmentName + (isBundle
+                    ? ': Maximum Bundled Volume * Maximum Cost of Bundle should less than intel contribution.'
+                    : ': Minimum Forecast Volume * Incentive Amount $/U should less than intel contribution.'));
             }
         }
         return errors;

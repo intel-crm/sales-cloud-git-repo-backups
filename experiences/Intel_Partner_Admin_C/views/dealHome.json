@@ -2,10 +2,17 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "c:PCC_DDRLayout",
   "dataProviders" : [ ],
-  "id" : "e474c1da-9a85-4487-912c-2c423e6e4736",
+  "id" : "dd7445f6-70bf-4759-ac60-6998e82a3971",
   "label" : "Deal Home",
   "regions" : [ {
     "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pCC_RecordNewDeal",
+      "id" : "5bbc23ec-045d-4921-a8f2-515300238ddf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
       "componentAttributes" : {
         "alignment" : "center",
         "backgroundColor" : "blue-steel-solid",
@@ -13,12 +20,12 @@
         "title" : "Intel® Deal Registration"
       },
       "componentName" : "c:ipaMarqueeDefault",
-      "id" : "7d02cd71-10dd-49e1-8072-e319ad303814",
+      "id" : "0757735b-24de-41d4-a671-473011aadfc4",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "9ca375a4-35da-4638-96d9-704410bbcfa1",
+    "id" : "e26f4894-d924-4865-b68c-f007116d4b16",
     "regionName" : "marquee",
     "type" : "region"
   }, {
@@ -27,85 +34,94 @@
         "menuItems" : "[]"
       },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "397fc7e9-b13a-4ba1-abdf-a786c4d4674c",
+      "id" : "039fecc6-e31d-477f-898f-3caafbd40d96",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "5f79661c-1dc5-4a8b-a58f-81be64e47de7",
+    "id" : "a2152b75-c0a3-4bd7-86fc-45faa1908232",
     "regionName" : "navigationMenu",
     "type" : "region"
   }, {
-    "id" : "5d68ad68-1eef-4904-a12e-fe3de119ae99",
+    "id" : "c906153d-1b7e-4a6f-89f5-980cc8d308ce",
     "regionName" : "mainFullWidth",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "richTextValue" : "<div id=\"QL\" style=\"margin-top:1rem;padding:0.5rem;border: 1px solid #d7d7d7;border-radius: 0.25rem\">\n<h2 style=\"padding-bottom:0.5rem\">Quick Links</h2>\n\t<div style=\" display: flex;  justify-content: space-between;\">\n\t\t<span><a href=\"https://www.intel.com/content/www/us/en/secure/partner-alliance/help/overview.html\">Training for Partners</a></span>\n\t    <span><a href=\"report/00OHo0000063MpHMAU\" target=\"_blank\">Deal Eligible Products</a></span>\n        <span><a href=\"deal-terms-and-conditions\" target=\"_blank\">Terms & Conditions</a></span>\n\t</div>\n</div>"
-      },
-      "componentName" : "forceCommunity:htmlBlock",
-      "id" : "65ba415f-2e3e-46bc-88a1-8c289d573f7d",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "99300cfb-6dac-46c9-b304-179db08cf831",
+    "id" : "82666530-cbea-4d9f-aa11-fae6bef6f3df",
     "regionName" : "main",
     "type" : "region"
   }, {
-    "id" : "e274be57-7deb-478e-91f9-9d4fc476491a",
+    "id" : "86d46803-c121-4334-bdce-835db63a1a03",
     "regionName" : "leftSection",
     "type" : "region"
   }, {
-    "id" : "834860c2-18e7-4243-b12f-8b96e4440345",
+    "id" : "d73a94c5-9d89-4051-be8d-82bd0dcf64bb",
     "regionName" : "rightSection",
     "type" : "region"
   }, {
-    "id" : "48853758-f1da-4ac4-81ba-f46f00d657fd",
+    "id" : "c9215743-9920-4459-895d-c627d1079c8a",
     "regionName" : "tab3",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
+        "richTextValue" : "<div id=\"QL\" style=\"margin-top:1rem;padding:0.5rem;border: 1px solid #d7d7d7;border-radius: 0.25rem\">\n<h2 style=\"padding-bottom:0.5rem\">Quick Links</h2>\n\t<div style=\" display: flex;  justify-content: space-between;\">\n\t\t<span><a href=\"https://www.intel.com/content/www/us/en/secure/partner-alliance/help/overview.html\">Training for Partners</a></span>\n\t    <span><a href=\"report/00OD3000000MBP2MAO\" target=\"_blank\">Deal Eligible Products</a></span>\n        <span><a href=\"deal-terms-and-conditions\" target=\"_blank\">Terms & Conditions</a></span>\n\t</div>\n</div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "c4b744e4-c69a-4a8a-b151-ef759b9d4e5b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
         "height" : "545",
         "recordId" : "SJBSKRUPYCxyiJcmPUjPxFHAJUMGgy"
       },
       "componentName" : "forceCommunity:dashboard",
-      "id" : "3da25788-3147-413a-b169-69cb9bd38bd8",
+      "id" : "b0b6e1a6-f2e1-42ce-83d3-bfa51f38c097",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "height" : "900",
+        "recordId" : "vOFBCCRGFaZhUepCwXWCiVYHBYgINd1"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "def9f2d4-5757-45ba-b3e3-c8028ff51756",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "cf669dfc-e43a-47f5-8cca-06fc61341d85",
+    "id" : "8510515d-cceb-4796-bc3d-f46ea9753c6d",
     "regionName" : "blade1",
     "type" : "region"
   }, {
-    "id" : "d1c2df26-88b8-4206-98b6-ec67ad50ef31",
+    "id" : "9af9bca8-f59d-4aff-8297-7b81c5b637d9",
     "regionName" : "blade1white",
     "type" : "region"
   }, {
-    "id" : "1c444f8b-d6f3-4295-8c68-3a77d4f0f6e2",
+    "id" : "fc89b228-c062-4d04-a05f-0e2cd5b5acd8",
     "regionName" : "blade2",
     "type" : "region"
   }, {
-    "id" : "1ad98ede-7e4a-4bfe-96de-c0343d7904a2",
+    "id" : "a9e40eb5-d094-42d2-b357-ce842c411bad",
     "regionName" : "blade3",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:ipaSupportFooterComponent",
-      "id" : "0b294c30-b701-4821-8b2b-13dac3b7fe91",
+      "id" : "a0974374-10db-44a3-b709-7eabd08a060a",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "eed0409b-d8ba-4de2-b5f3-d65f44f8be89",
+    "id" : "94d9eecd-70f8-4c80-96ab-39b2b635f546",
     "regionName" : "blade4",
     "type" : "region"
   }, {
-    "id" : "69b5d16e-c5a4-47f1-99ad-e32abbfb656a",
+    "id" : "9cfef8f8-0c9d-4588-96af-bcc567aeb93b",
     "regionName" : "blade5",
     "type" : "region"
   }, {
@@ -116,15 +132,15 @@
         "title" : "Deal Home"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "e8f6defd-3ed5-4491-9b8d-200b1e71c6a3",
+      "id" : "6225f562-619f-4966-b94c-ea533c039f50",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "b7d3b800-38dd-4ee1-b166-a40b9cde7dda",
+    "id" : "b09e4f62-e7e9-4410-a905-473a3eae6848",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "YKT7Zn6tAHjSVdyTIMFhpZIEtQkAJG",
   "type" : "view",
   "viewType" : "custom-deal"
 }

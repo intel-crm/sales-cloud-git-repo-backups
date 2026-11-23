@@ -422,6 +422,7 @@ Modification Log :
             for(Core_IPS_Project__c proj:ListOfIpsProjects){
                 proj.Core_Status__c = 'Active';
             }
+            System.debug('>>ListOfIpsProjects>>'+ListOfIpsProjects);
             Update ListOfIpsProjects;
              Test.startTest();
       
@@ -1237,8 +1238,10 @@ Modification Log :
                 insert triggerExecutionList;
                 insert ListOfIpsProjects;
             }
+        System.debug('-------------------->**Project owner:'+ListOfIpsProjects.get(0).OwnerId);
         Core_IPS_Intel_Support_Team__c istInsertRec = new Core_IPS_Intel_Support_Team__c();
         for(Core_IPS_Project__c proj:ListOfIpsProjects){
+            System.debug('-------------------->Project owner:'+proj.OwnerId);
                       istInsertRec.Core_IPS_Project__c  = proj.id;
                       istInsertRec.Core_IPS_User__c = proj.OwnerId;
                       istInsertRec.Status__c = 'Inactive';
@@ -1246,6 +1249,7 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
                 insert istInsertRec;
             }
+        System.debug('-------------------->IST Rec:'+istInsertRec.Id+istInsertRec.Status__c);
         List<Core_IPS_Project__c> listOfIpsProjects1 = new List<Core_IPS_Project__c>();
         //Update Ips Project
         for(Core_IPS_Project__c proj: ListOfIpsProjects){

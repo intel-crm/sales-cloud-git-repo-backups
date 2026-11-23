@@ -16,6 +16,26 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Report_Frequency__c</fullName>
+        <description>This field will hold the frequency with which we want to generate report for AGS and ERPM Integration Failures</description>
+        <externalId>false</externalId>
+        <label>Report Frequency (in days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Send_Integration_Report__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This checkbox will control the Activation and Inactivation of AGS/ERPM Integration Failure Report feature</description>
+        <label>Send Integration Report</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Send_Proactive_Alert__c</fullName>
         <defaultValue>true</defaultValue>
         <label>Send Proactive Alert</label>

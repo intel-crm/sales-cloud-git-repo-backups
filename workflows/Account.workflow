@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>CIM_Outbound_Notification_Email</fullName>
-        <description>CIM Outbound Notification Email</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>11636835@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>Testt/CIM_Outbound_Message</template>
-    </alerts>
-    <alerts>
-        <fullName>CIM_Outbound_Notification_Email1</fullName>
-        <description>CIM Outbound Notification Email</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>11636835@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>Testt/CIM_Outbound_Message</template>
-    </alerts>
-    <alerts>
         <fullName>Core_Account_Creation_to_Data_Ops</fullName>
-        <ccEmails>intel.covered.accounts@intel.com</ccEmails>
         <description>Core_Account_Creation_to_Data_Ops</description>
         <protected>false</protected>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/New_Account_Creation_Data_Ops</template>
+        <template>unfiled$public/New_Account_Creation_Data_Ops</template>
     </alerts>
     <alerts>
         <fullName>Core_Account_Export_Compliance_Block_Alert</fullName>
@@ -42,7 +19,6 @@
     </alerts>
     <alerts>
         <fullName>Core_Account_MAG_Governance</fullName>
-        <ccEmails>export.customer@intel.com</ccEmails>
         <description>Core_Account_MAG_Governance</description>
         <protected>false</protected>
         <senderType>DefaultWorkflowUser</senderType>
@@ -56,7 +32,7 @@
             <type>accountOwner</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/New_Private_Account</template>
+        <template>unfiled$public/New_Private_Account</template>
     </alerts>
     <alerts>
         <fullName>Core_Account_Owner_Deactivation_Notification</fullName>
@@ -67,8 +43,29 @@
         </recipients>
         <senderAddress>crm.acm.system.user@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Account_Owner_Deactivation_Notification</template>
+        <template>unfiled$public/Account_Owner_Deactivation_Notification</template>
     </alerts>
+    <alerts>
+        <fullName>outbound_message_sent</fullName>
+        <description>outbound message sent</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>12065807@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Account_Request_Creation</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Approved_Ownership_Transfer_Request</fullName>
+        <field>Account_Ownership_Transfer_Requested__c</field>
+        <literalValue>1</literalValue>
+        <name>Approved Ownership Transfer Request</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_Account_Address_Concatenate</fullName>
         <description>To concatenate primary address into a field to check for duplicates</description>
@@ -201,6 +198,16 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Rejected_Ownership_Transfer_Request</fullName>
+        <field>Account_Ownership_Transfer_Requested__c</field>
+        <literalValue>0</literalValue>
+        <name>Rejected Ownership Transfer Request</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Update_Sales_Group</fullName>
         <field>Core_Opportunity_Sales_Group_Txt__c</field>
         <formula>TEXT(Core_Sales_Groups__c)</formula>
@@ -214,7 +221,7 @@
         <fullName>Core_Intmsg_Account_New</fullName>
         <apiVersion>32.0</apiVersion>
         <description>Send new account to integration server</description>
-        <endpointUrl>https://8cc1c347-4525-4627-b9d8-0adb19ccbcbe:XHW8Q~ICPFmAqGH__wfPZ~MbLXSUdLthpuyMUduG@apis.intel.com/m2r/sales-cloud/v1/accounts</endpointUrl>
+        <endpointUrl>https://8cc1c347-4525-4627-b9d8-0adb19ccbcbe:XHW8Q~ICPFmAqGH__wfPZ~MbLXSUdLthpuyMUduG@apis-sandbox.intel.com/m2r/sales-cloud/v1/accounts</endpointUrl>
         <fields>BillingCity</fields>
         <fields>BillingCountry</fields>
         <fields>BillingCountryCode</fields>
@@ -244,7 +251,7 @@
         <fullName>Core_Intmsg_Account_PSG</fullName>
         <apiVersion>38.0</apiVersion>
         <description>Send PSG account to Siebel System (using integration server)</description>
-        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy.cloudhub.io/smit/api/eip-crm-sls-siebel/account</endpointUrl>
+        <endpointUrl>https://proxy_user3:j5s$S$Xo!s9w@eip-crm-proxy-dev.cloudhub.io/smit/api/eip-crm-sls-siebel/account</endpointUrl>
         <fields>BillingCity</fields>
         <fields>BillingCountryCode</fields>
         <fields>BillingPostalCode</fields>
@@ -260,6 +267,20 @@
         <includeSessionId>false</includeSessionId>
         <integrationUser>integration.user@intel.com.crm</integrationUser>
         <name>Send PSG Account to Integration</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <outboundMessages>
+        <fullName>Core_Intmsg_Account_Updated_CIM_ID</fullName>
+        <apiVersion>34.0</apiVersion>
+        <description>Send updated CIM ID to integration server</description>
+        <endpointUrl>https://8cc1c347-4525-4627-b9d8-0adb19ccbcbe:XHW8Q~ICPFmAqGH__wfPZ~MbLXSUdLthpuyMUduG@apis-sandbox.intel.com/m2r/sales-cloud/v1/accounts</endpointUrl>
+        <fields>Core_CIM_ID_Old__c</fields>
+        <fields>Core_CIM_ID__c</fields>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>10557526@intel.com.crm</integrationUser>
+        <name>Send Updated CIM ID to Integration</name>
         <protected>false</protected>
         <useDeadLetterQueue>false</useDeadLetterQueue>
     </outboundMessages>
@@ -376,7 +397,7 @@
             <name>Core_Intmsg_Account_PSG</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Sends the PSG Account info to PSG Siebel System (using outbound message to IPass).</description>
         <formula>AND((RecordType.DeveloperName &lt;&gt; &apos;Core_MDF_Co_Marketing&apos; || RecordType.DeveloperName &lt;&gt;&apos;Core_Partner_Account_Group&apos;), OR ( AND(ISNEW(), Core_PSG_Account__c), AND(Core_PSG_Account__c, (ISCHANGED(BillingStreet) || ISCHANGED(BillingCity) || ISCHANGED(BillingPostalCode) || ISCHANGED(BillingCountryCode)|| ISCHANGED(BillingStateCode) || ISCHANGED(Core_CIM_ID__c) || ISCHANGED(Core_Export_Compliance_Block__c) || ISCHANGED(Name) || ISCHANGED(Core_PSG_Account__c) || ISCHANGED(Core_Account_Tier__c) || ISCHANGED(Core_Partner_Alliance_Program__c) || ISCHANGED(Core_Military_Aerospace_and_Government__c) ) ) ))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -458,6 +479,16 @@
         <active>false</active>
         <formula>AND (   ISBLANK(TEXT(Core_Account_PSG_Tier__c)),Core_PSG_Account__c = true)</formula>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>test</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Account.Name</field>
+            <operation>equals</operation>
+            <value>dnyanada</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <tasks>
         <fullName>Core_Account_Change_Owner</fullName>

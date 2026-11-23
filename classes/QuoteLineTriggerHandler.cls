@@ -121,11 +121,11 @@ public without sharing class QuoteLineTriggerHandler extends TriggerHandler {
             //PSG_CPQuoteLinesBusinessLogic.afterInsertUpdateOperations(psgTriggerCPNewList,Trigger.isInsert,psgTriggerCPOldMap,psgTriggerNewMap);
         }
         system.debug('PSGQuoteLine afterInsert End 125 ***NARA*** '+Limits.getCpuTime());
-        //Citrus changes - AI Integration for Pricing Application
+         //Citrus changes - AI Integration for Pricing Application
         if(isActive('Pricing_Application_AI_Integration') && iqrTriggerNewList.size() > 0){
+             system.debug('INSIDE QUOTELINETRIGGERHANDLER INSERT handleAIIntegrationForPricing METHOD CALL'+iqrTriggerNewList);
             QuoteLineBusinessLogic.handleAIIntegrationForPricing(iqrTriggerNewList, iqrTriggerOldMap,Trigger.isInsert);
         }
-        //Citrus changes end
     }
     public override void beforeInsert() {
         system.debug('PSGQuoteLine BeforeInsert Start 128 ***NARA*** '+Limits.getCpuTime());

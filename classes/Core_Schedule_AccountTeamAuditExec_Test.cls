@@ -15,7 +15,7 @@ private class Core_Schedule_AccountTeamAuditExec_Test {
 	// CRON expression
    	// Because this is a test, job executes
    	// immediately after Test.stopTest().
-	public static String CRON_EXP = '0 0 0 15 3 ? 2028';
+	public static String CRON_EXP = '0 0 0 15 * ? 2025';
 	static List<Account>								lstAccount;
 	static Core_Batch_Header__c    						batchHeader;
 

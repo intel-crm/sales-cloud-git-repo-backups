@@ -214,6 +214,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_first_bm_approver__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>SubmittedUser__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -430,11 +435,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_first_bm_approver__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_disty_name_for_dpa__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -572,6 +572,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_quote_rejected_date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Account_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_is_Budgetary_cb__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <masterLabel>Quotes</masterLabel>
@@ -929,7 +944,32 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_product_nm__c.Core_Product_Ext_Attribute_Id__c.PSG_Restricted_Product__c</field>
+            <field>Predict_Won_Status_Percent__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predict_Won_Status_Percentage__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series_Name__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Product_Series__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Rationale_for_Pricing__c</field>
+            <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Application_Agent_Status__c</field>
             <table>SBQQ__Quote__c.SBQQ__LineItems__r</table>
         </columns>
         <masterLabel>Quote Lines</masterLabel>

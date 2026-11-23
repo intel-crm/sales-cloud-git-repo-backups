@@ -19,6 +19,7 @@
 		//Check if the logged in user is a Claim Case Reviewer / Manager [Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users]
         helper.callServer(component, "c.checkEditability", (response) => {component.set('v.isAClaimCaseReviewerOrManager',response);},{}, helper,event);
         helper.callServer(component, "c.calculateChecklistCompletion", (response) => {component.set('v.checklistCompletionPer',response);}, {caseRecord : caseId}, helper,event);
+
     },
     //This method is called to record the checklist inputs to the DB
     updateChecklistRecords: function (component,event, helper) {
@@ -74,6 +75,7 @@
                	else if(result.scorecardRec.Core_MDF_AI_Processing_Status_Nm__c =='AI Processing Failed'){
                 	component.set("v.aiStatusMessage", 'AI Response not available. Please continue with review.');
                 }
+       console.log('CHECKLIST AI STATUS MESSAGE:'+component.get("v.aiStatusMessage"));
              }
         }, {caseRecordId : caseId}, helper, event);
     },

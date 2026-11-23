@@ -32,5 +32,15 @@
         <type>Checkbox</type>
     </fields>
     <label>Grant Access Page Validation Control</label>
+    <listViews>
+        <fullName>Popup_View</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Entitlement_Display_Name__c</columns>
+        <columns>Suppress_Popup__c</columns>
+        <columns>cCore_Suppress_Hard_Validation__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Popup View</label>
+        <language>en_US</language>
+    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

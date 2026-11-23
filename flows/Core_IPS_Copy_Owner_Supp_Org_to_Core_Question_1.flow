@@ -43,7 +43,7 @@ Copy owner from Support Org to related Core Question</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>ListOfEnvironmentDetailQuestion</name>
         <dataType>SObject</dataType>

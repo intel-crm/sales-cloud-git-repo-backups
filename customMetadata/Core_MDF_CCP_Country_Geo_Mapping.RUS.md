@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Core_MDF_Blocked_in_UI_ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Core_MDF_Code_2_Digits__c</field>

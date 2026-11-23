@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>300002940865@intel.com.crm.crmdevint3</contactEmail>
+    <label>PCC Test JWT app</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>MIIDizCCAnMCFClZ5Ml8kW2z4M3UvmyJ3pCPLCv0MA0GCSqGSIb3DQEBCwUAMIGBMQswCQYDVQQGEwJJTjEMMAoGA1UECAwDS0FSMQ4wDAYDVQQHDAVCTE9SRTEMMAoGA1UECgwDTEVOMQwwCgYDVQQLDANMRU4xDzANBgNVBAMMBkxFTk9WTzEnMCUGCSqGSIb3DQEJARYYdGVzdGxlbm92b3VzZXIwMUBsZW4uY29tMB4XDTIzMDgwMTA3MTI1OFoXDTI0MDczMTA3MTI1OFowgYExCzAJBgNVBAYTAklOMQwwCgYDVQQIDANLQVIxDjAMBgNVBAcMBUJMT1JFMQwwCgYDVQQKDANMRU4xDDAKBgNVBAsMA0xFTjEPMA0GA1UEAwwGTEVOT1ZPMScwJQYJKoZIhvcNAQkBFhh0ZXN0bGVub3ZvdXNlcjAxQGxlbi5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDQF+gBGRgM0i+oq9eZVHPYuNBF59I5AdB/LB0Hxmkj40UyFyiQSQL26YeZiCvODLOCIN2XQmLf0tduon5maYUGmgNWlUvEMLsLC8z/ZDw5LOcv0k3sj/Y0icQVUO3Iy4vMcEOgB9shDnzzQ4NKWwTnL24DsPqmlsYUuKuKZoOxGFE8pyRkYq34iz1dKPuL14IUBIsD+p17D4Gh1Bbop3ZdaIAJ6Sk6QgH80UlvRP1z9/gIfSbIgVkH1V8huzp9lI5QmYyd1lE+cNJ4JRtknmM+QdtKyjNqUMPA60Y7PF+ZpObv27ivfNpjtIiTmUepQAi+yzWjjEMz9QlhUNaD8+V9AgMBAAEwDQYJKoZIhvcNAQELBQADggEBAL4PdD3HpBB+wxS+jnA9TgI4hM78IukCjvw5R0g62x3VxRXlXwaMnnLZSqMe6db7kHbbHu18LXBMVWW48YJf6Z7vv1SUlpJNGxNCoitqtbfR5s5YlCinUROQtffvaFS2B2liOcn220J1P5W5a9VTRtcfBLtvrgDui9SjHJi2q9ow7ZpbH1832ouVIiefo0ZEmyDLdohYpP6SDjCPjTki4F6cSozXLM5WwOeWIl2EHvT6D5HFWRHUQGvlhqsRw648ytkHPAgfdY/b+mFZKfMOP2qbf8jwhxTZn+WYvHPnboy6lfjhgbINkBGS1HKYllgWxkS6v/wlyGv4Pjn8/UcFTBQ=</certificate>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDooqdWk1FULVzMj6_t_tyU1AeutDkZ9cm4aXRdePQbpB2AmwkAf2wOsfkAdZ</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>PCC EBV</permissionSetName>
+    <profileName>B2B API Partner</profileName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

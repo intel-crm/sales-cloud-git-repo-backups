@@ -125,6 +125,7 @@ public without sharing class Core_IPS_File_Assignment_Handler{
         List<User> SupportedProdUserLst = new List<User>();
         List<Group> RoleGroupLst = new List<Group>();
         List<User> UserRoleLst = new List<User>();
+        System.debug('SupportedProdIDSet = '+ SupportedProdIDSet);
         //Get Assets associated to the Supported Products
         if(SupportedProdIDSet != null && SupportedProdIDSet.size()> 0 ){
             //FLS check added-Venugopal
@@ -157,7 +158,7 @@ public without sharing class Core_IPS_File_Assignment_Handler{
         }
         //Fill up GroupMember List     
         if(SupportedProdGroupIDSet != null && SupportedProdGroupIdSet.size() > 0){
-            GroupmemberLst = [select userorgroupid from groupmember where UserOrGroup.IsActive =true and groupid in :SupportedProdGroupIDSet]; // added UserOrGroup.IsActive =true -for optimization -gangadhar
+            GroupmemberLst = [select userorgroupid from groupmember where groupid in :SupportedProdGroupIDSet];
         }
         //Get Users from the Group Member List
         for(GroupMember GroupMemberObj : GroupmemberLst){
@@ -168,13 +169,16 @@ public without sharing class Core_IPS_File_Assignment_Handler{
         //Check whether Group is of type Role or Role Subordinate
         //Get Related Role Id's and then Related Users
         if(SupportedProdGroupIDSet != null && SupportedProdGroupIdSet.size() > 0){
-            RoleGroupLst = [select id, RelatedId, Type from Group where  type in ('Role','roleAndSubordinatesInternal') and Id in :SupportedProdGroupIDSet]; //RoleAndSubordinates to roleAndSubordinatesInternal change US-0049835
+            System.debug('if condition 1 '+ SupportedProdGroupIDSet);
+            RoleGroupLst = [select id, RelatedId, Type from Group where  type in ('Role','RoleAndSubordinates','roleAndSubordinatesInternal') 
+                            and Id in :SupportedProdGroupIDSet]; //RoleAndSubordinates to roleAndSubordinatesInternal change US-0048819
+            system.debug('RoleGroupLst = '+ RoleGroupLst);
             for(Group RLGrpObj : RoleGroupLst ){
                 UserRoleIdSet.add(RLGrpObj.RelatedId);
             }    
             if(UserRoleIdSet != null && UserRoleIdSet.size() > 0){
                 //Get All Users for the Role Id's   
-                UserRoleLst = [select id from User where IsActive =true and UserRoleid in :UserRoleIdSet]; // added UserOrGroup.IsActive =true -for optimization -gangadhar
+                UserRoleLst = [select id from User where UserRoleid in :UserRoleIdSet];
                 for (User UsrObj : UserRoleLst)  {
                     SupportedProdUserIDSet.add(UsrObj.Id);
                 }  
@@ -265,7 +269,7 @@ public without sharing class Core_IPS_File_Assignment_Handler{
             EmailTemplateObj = [select id, name from EmailTemplate where DeveloperName = :system.label.Core_IPS_File_ExtDownlNotif_Email_Templ];
             //FLS check added -Venugopal
             if(OrgWideEmailAddress.SObjectType.getDescribe().isAccessible()){
-            for(OrgWideEmailAddress OrgWideEmailObj : [select id, Address, DisplayName from OrgWideEmailAddress Limit 49999]) { // Added By Tushar
+            for(OrgWideEmailAddress OrgWideEmailObj : [select id, Address, DisplayName from OrgWideEmailAddress Limit 49999]) { //Limit Added by Tushar
                 if(OrgWideEmailObj.DisplayName == system.label.Core_IPS_Org_Wide_Email_Display_Name) {
                     OWEmailId = OrgWideEmailObj.Id;
                     break;

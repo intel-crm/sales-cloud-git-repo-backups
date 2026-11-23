@@ -386,10 +386,10 @@
                 <controllingFieldValue>CCG Commercial Deal Revenue $</controllingFieldValue>
                 <controllingFieldValue>CCG Strategic Next Gen Design #</controllingFieldValue>
                 <controllingFieldValue>CCG vPro Platform Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
                 <controllingFieldValue>DC Growth Deal $</controllingFieldValue>
-                <controllingFieldValue>DC Strategic Next Gen Design #</controllingFieldValue>
+                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
                 <controllingFieldValue>NEX Deal (Sell-To) $</controllingFieldValue>
+                <controllingFieldValue>DC Strategic Next Gen Design #</controllingFieldValue>
                 <valueName>Please refer to criteria on https://saleskpi.intel.com/</valueName>
             </valueSettings>
         </valueSet>
@@ -694,7 +694,7 @@
         <label>Core_MatchOppKPI_2ndPrev_Backend</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -707,7 +707,7 @@ Do not add it in the layout.</description>
         <label>Core_MatchOppKPI_Backend</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -720,7 +720,7 @@ Do not add it in the layout.</description>
         <label>Core_MatchOppKPI_Prev_Backend</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -740,7 +740,7 @@ Do not add it in the layout.</description>
         <fullName>Core_Recall_Reason__c</fullName>
         <label>Recall Comments</label>
         <length>131072</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>

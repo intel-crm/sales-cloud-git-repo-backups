@@ -23,6 +23,7 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
         }
         if(accids.isEmpty()){ 
             return Database.getQueryLocator('SELECT Id FROM Contact WHERE Id = null and Core_IPS_Active__c = true ');
+            
         }
         return Database.getQueryLocator('select Id from Contact where Core_IPS_Active__c = true and AccountId IN : accids');
     } 
@@ -80,6 +81,7 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
                 }
             }
             
+			//new code 19092025 -Dont delete -end
         } 
         List<Contact> consupdate = new List<Contact>();
         for(Contact conlst : conchunk){
@@ -89,6 +91,7 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
         }
         if(!consupdate.isEmpty()){ 
             Core_IPS_SkipTriggerHandler.skipQueueable=true;
+             //new code 19092025 -Dont delete -begin
             List<Database.SaveResult> consupdateList = Database.update(consupdate, false);
 			for (Database.SaveResult result : consupdateList) {
                 if (!result.isSuccess()) {
@@ -97,6 +100,7 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
                     }  
                 }
             }
+			//new code 19092025 -Dont delete -end
         } 
     }//execute method end
     
@@ -108,19 +112,20 @@ global class Core_IPS_ECB_Updates_Batch implements Database.Batchable<sObject>, 
             System.debug('Skipped ProjectMemberQueueable because queueable job limit reached or no records found');
         }
         AsyncApexJob job;
-        if(!Test.isrunningTest() && jobId!=null){ //CoreIPSECBUpdateBatch Error Fix        
+        if(!Test.isrunningTest()){        
         job = [
             SELECT Id, Status, NumberOfErrors, ExtendedStatus
             FROM AsyncApexJob
             WHERE Id = :jobId
         ];
-		 } 
+		 }        
+        //System.debug('Queueable Status: ' + job.Status);
         List<Core_ACM_Account_Staging__c> stgaccsList = new List<Core_ACM_Account_Staging__c>();
         for(Core_ACM_Account_Staging__c stgaccs: [select AccountId__c,Core_Status__c 
                                                   from Core_ACM_Account_Staging__c 
                                                   where Core_Action__c = 'IPSECBFlagCheck' 
                                                   and AccountId__c=:accidsForUpdate order by CreatedDate desc limit 1]){
-            if(job!=null && job.Status == 'Queued'){
+            if(job!=null && job.Status=='Queued'){
                 stgaccs.Core_Status__c='Completed';
             }else{
                 stgaccs.Core_Status__c='Failed';

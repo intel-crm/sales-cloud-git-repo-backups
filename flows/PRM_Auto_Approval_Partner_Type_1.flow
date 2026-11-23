@@ -71,6 +71,13 @@
                 </rightValue>
             </conditions>
             <conditions>
+                <leftValueReference>NewRegistration</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
                 <leftValueReference>$Record.PRM_Submitted_Date__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
@@ -82,13 +89,6 @@
                 <operator>NotEqualTo</operator>
                 <rightValue>
                     <stringValue>PSG</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>NewRegistration</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>

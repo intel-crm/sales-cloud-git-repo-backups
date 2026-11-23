@@ -29,6 +29,7 @@ public class PRM_TestUtility{
         regRequest.PRM_City__c='Las Vegas';
         regRequest.PRM_State_Province__c='NY';
         regRequest.PRM_Country__c='US';
+        regRequest.PRM_Profile_Response__c ='{QuestionCode : IPA_Registration_Source | ResponseCode : IPA_Registration_Source_Web | ResponseValue : Web}';
         return regRequest;
     } 
     
@@ -68,6 +69,8 @@ public class PRM_TestUtility{
     
     /*Method to get 'Account' object */
      public static Account getAccount(){
+         
+         
         Account a = new Account();
         a.Name='Intel';
         a.Core_Account_Type__c ='Distributor';

@@ -4,10 +4,6 @@
     <category>other</category>
     <deployed>true</deployed>
     <description>Enables reports for Cvent event nominations for Leads (not for Contacts)</description>
-    <join>
-        <outerJoin>false</outerJoin>
-        <relationship>CventEvents__Nominations__r</relationship>
-    </join>
     <label>Cvent Nominations - Leads</label>
     <sections>
         <columns>
@@ -78,6 +74,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>City</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Sales_Engagement_Sequence__c</field>
             <table>Lead</table>
         </columns>
         <columns>
@@ -197,17 +198,32 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Marketing_Do_Not_Contact_Dtm__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Marketing_Do_Not_Contact_Ind__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Lead_Source_First_Touch__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CreatedDate</field>
             <table>Lead</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Confirmed_Authority__c</field>
+            <field>Core_Current_Architecture__c</field>
             <table>Lead</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Current_Architecture__c</field>
+            <field>Core_Do_Not_Contact_Dtm__c</field>
             <table>Lead</table>
         </columns>
         <columns>
@@ -222,12 +238,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Do_Not_Contact_Dtm__c</field>
+            <field>Core_Sales_Engagement_Sequenc_Entnc_Date__c</field>
             <table>Lead</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Confirmed_Budget_Amount__c</field>
+            <field>Core_Lead_Conversion_Point_First_Touch__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Pain_Point__c</field>
             <table>Lead</table>
         </columns>
         <columns>
@@ -242,57 +263,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sales_Engagement_Sequenc_Entnc_Date__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Marketing_Tactic_ID_First_Touch__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Qualification_Notes__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__ContactStub__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sales_Engagement_Sequence__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Lead_Source_First_Touch__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Confirmed_Pain_Point__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Confirmed_Budget__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Pain_Point__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Confirmed_Product_of_Interest__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Lead_Conversion_Point_First_Touch__c</field>
             <table>Lead</table>
         </columns>
         <columns>
@@ -302,17 +273,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Confirmed_Project_Timeframe__c</field>
+            <field>Core_Confirmed_Budget_Amount__c</field>
             <table>Lead</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Marketing_Do_Not_Contact_Ind__c</field>
+            <field>Core_Marketing_Tactic_ID_First_Touch__c</field>
             <table>Lead</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Marketing_Do_Not_Contact_Dtm__c</field>
+            <field>Core_Confirmed_Budget__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Confirmed_Authority__c</field>
             <table>Lead</table>
         </columns>
         <columns>
@@ -322,7 +298,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Groove_Convert_Lead_Lightning__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Confirmed_Pain_Point__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Sent_to_Partner_Contact_Name__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Days_in_MAQL__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Confirmed_Product_of_Interest__c</field>
             <table>Lead</table>
         </columns>
         <columns>
@@ -332,7 +328,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_Sent_to_Partner_Account_Name__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Days_in_SAL__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Confirmed_Project_Timeframe__c</field>
             <table>Lead</table>
         </columns>
         <columns>
@@ -733,6 +739,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Lead_to_Opportunity_Conversion_flag__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Company_Id__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LID__LinkedIn_Member_Token__c</field>
             <table>Lead</table>
         </columns>
         <columns>
@@ -1465,114 +1481,81 @@
             <field>PostalCode</field>
             <table>Lead</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Storefront_Name__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Non_Partner_Lead__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Customer_Name__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Who_is_the_decision_maker_at_the_end_cus__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity_Name__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity_Summary__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Estimated_Decision_date__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Vertical_Market__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Estimated_software_value__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Estimated_total_budget_for_the_project__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_Account__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Lead_Deletion__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Email_Invalid_Cause__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Marketo_Email_Invalid__c</field>
+            <table>Lead</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SWS_Marketo_Email_Invalid_Cause__c</field>
+            <table>Lead</table>
+        </columns>
         <masterLabel>Leads</masterLabel>
-    </sections>
-    <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__ApproverComment__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Attendee__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__AttendeeName__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Contact__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__CurrentApproverName__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__CurrentApprover__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__EventTitle__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Event__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__InvitationConfigurationStub__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__InvitationConfigurationName__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>Name</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Requester__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Comment__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__SendInviteOnApprove__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__SendInviteOnBehalfOfRequester__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Status__c</field>
-            <table>Lead.CventEvents__Nominations__r</table>
-        </columns>
-        <masterLabel>Nominations</masterLabel>
     </sections>
 </ReportType>

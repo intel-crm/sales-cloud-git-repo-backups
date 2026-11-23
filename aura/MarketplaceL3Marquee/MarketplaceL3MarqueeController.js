@@ -5,12 +5,12 @@
             helper.gotoTermsAndCondition(component);
         }
         
-        var showSignIn = false;
-        var loginUrl = '';
+        let showSignIn = false;
+        let loginUrl = '';
 
         // Determine if need to display the Sign In Link
-        var ssoLibrary = component.find('ssoLibrary');
-        var ssoSettings = ssoLibrary.getSSOSettings();
+        const ssoLibrary = component.find('ssoLibrary');
+        const ssoSettings = ssoLibrary.getSSOSettings();
         if (ssoSettings) {
           showSignIn = !!parseInt(ssoSettings.showSignIn);
           loginUrl = ssoSettings.ighf.loginUrl;
@@ -53,7 +53,7 @@
     
     handleBookmark: function(component, event, helper) {
         if (!component.get("v.bookmarkCopied")) {
-            var copyText = component.find("bookmarkUrl").getElement();
+            const copyText = component.find("bookmarkUrl").getElement();
             copyText.select();
             document.execCommand("copy");
             component.set("v.bookmarkCopied", true);
@@ -68,12 +68,12 @@
     
     handleClickCategory: function(component, event, helper) {
         event.preventDefault();
-        var urlParams = {
+        const urlParams = {
             type: "partner",
             cat: event.currentTarget.dataset.id
         };
-        var pageName = "search";
-        var searchUrlParams = encodeURIComponent(JSON.stringify(urlParams));
+        const pageName = "search";
+        const searchUrlParams = encodeURIComponent(JSON.stringify(urlParams));
         
         if (component.get("v.debugMode")) {
             console.log(
@@ -85,7 +85,7 @@
             );
             console.log("DEBUG: URL Length: " + searchUrlParams.length);
         } else {
-            var urlEvent = $A.get("e.force:navigateToURL");
+            const urlEvent = $A.get("e.force:navigateToURL");
             urlEvent.setParams({
                 url: "/" + pageName + "?search=" + searchUrlParams
             });
@@ -96,8 +96,8 @@
     
     handleSignIn : function(component, event, helper) {
       // Create URL so that the user is returned to the page they are on after logging in
-      var ssoLibrary = component.find('ssoLibrary');
-      var ssoSettings = ssoLibrary.getSSOSettings();
+      const ssoLibrary = component.find('ssoLibrary');
+      const ssoSettings = ssoLibrary.getSSOSettings();
       if (ssoSettings && ssoSettings.ighf && ssoSettings.ighf.loginUrl) {
         event.preventDefault();
         event.stopPropagation();
@@ -112,7 +112,7 @@
     
     openEditStoreModal: function(component, event, helper) {
         
-        var appEvent = $A.get("e.c:MarketplacePageEvent");
+        const appEvent = $A.get("e.c:MarketplacePageEvent");
         appEvent.setParams({
                 type: 'openEditStoreFrontFromDraft',
                 payload: { 

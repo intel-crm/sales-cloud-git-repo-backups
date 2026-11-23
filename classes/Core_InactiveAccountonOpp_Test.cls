@@ -82,7 +82,7 @@ public class Core_InactiveAccountonOpp_Test{
         Core_InactiveAccountonOpp.getData(opp.Id);
         accountList[0].Core_Deactivated__c = true;
         accountList[0].Core_Deactivation_Reason__c = 'dd';
-       // update accountList[0];
+        update accountList;
         Core_InactiveAccountonOpp.getData(opp.Id);
         Test.stopTest();
     }
@@ -134,6 +134,7 @@ public class Core_InactiveAccountonOpp_Test{
         System.runAs(Core_Test_Utility.systemAdminUser) {
             Test.StartTest();
             Boolean Flag=Core_InactiveAccountonOpp.get6QPSData(opps.Id);
+            System.debug('&&Flag'+Flag);
             system.assertEquals(true,Flag);
             opps.Core_First_Customer_Ship_Date__c=System.today();
             update fcRec;

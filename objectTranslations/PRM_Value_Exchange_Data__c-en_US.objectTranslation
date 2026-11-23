@@ -18,12 +18,20 @@
         <name>PRM_Change_Date_Dt__c</name>
     </fields>
     <fields>
+        <label><!-- Competency Achieved --></label>
+        <name>PRM_Competency_Achieved_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Country Market Type --></label>
         <name>PRM_Country_Market_Type_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Design Registration Count --></label>
         <name>PRM_Design_Registration_Count_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPGA Project Registration Count --></label>
+        <name>PRM_FPGA_Project_Registration_Count_Nbr__c</name>
     </fields>
     <fields>
         <label><!-- From --></label>
@@ -63,6 +71,10 @@
         <name>PRM_Percent_to_next_tier_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Previous One Partner Account ID --></label>
+        <name>PRM_Previous_One_Partner_Account_ID__c</name>
+    </fields>
+    <fields>
         <label><!-- Processed Date Time --></label>
         <name>PRM_Processed_Date_Time_Dt__c</name>
     </fields>
@@ -89,6 +101,10 @@
     <fields>
         <label><!-- Sales To Next Tier --></label>
         <name>PRM_Sales_To_Next_Tier_Report_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales to next tier - -  to be deleted --></label>
+        <name>PRM_Sales_To_Next_Tier__c</name>
     </fields>
     <fields>
         <label><!-- Sales to next tier percent --></label>
@@ -146,6 +162,10 @@
     <fields>
         <label><!-- Training credits to next tier --></label>
         <name>PRM_Training_Credits_to_Next_Tier_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training credits to next tier - -  to be d --></label>
+        <name>PRM_Training_Credits_to_Next_Tier__c</name>
     </fields>
     <fields>
         <label><!-- Training credits to next tier percent --></label>

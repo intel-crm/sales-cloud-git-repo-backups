@@ -52,7 +52,14 @@ return outputLinkURL ;
 
     public PMP_Company__c getPartnerData() {
         partnerDataToBeDisplayed = [select Id,Name,PMP_Published_Copy_Id__r.Name,PMP_Published_Copy_Id__c,PMP_Partner_Submitter_UserId__c,PMP_Partner_Submitter_UserId__r.IsActive,PMP_Partner_Submitter_UserId__r.Partner_License_Reclaimed__c from PMP_Company__c WHERE Id =:partnerId  LIMIT 1];//PMP_Partner_Submitter_UserId__c,PMP_Partner_Submitter_UserId__r.IsActive is added as part of the email story US847712
-        // System.debug('getPartnerData'+partnerDataToBeDisplayed);
+       /* if (Schema.sObjectType.User.fields.Partner_License_Reclaimed__c.isAccessible()) {
+                            System.debug('PMP_Partner_Submitter_UserId__r.Partner_License_Reclaimed__c: ' +  partnerDataToBeDisplayed[0].PMP_Partner_Submitter_UserId__r.Partner_License_Reclaimed__c);
+                        } */
+        Schema.DescribeFieldResult fieldDesc = User.UserInfo.fields.Partner_License_Reclaimed__c.getDescribe();
+        
+        if (fieldDesc.isAccessible()){
+             System.debug('PMP_Partner_Submitter_UserId__r.Partner_License_Reclaim');
+        }
         if(!partnerDataToBeDisplayed.isEmpty()){
             partnerData = partnerDataToBeDisplayed[0];
         }

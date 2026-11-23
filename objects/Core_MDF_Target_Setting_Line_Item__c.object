@@ -209,6 +209,7 @@
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Account</referenceTo>
+        <relationshipLabel>Target Setting Line Items</relationshipLabel>
         <relationshipName>Forecast_Line_Items</relationshipName>
         <required>false</required>
         <trackHistory>true</trackHistory>
@@ -630,10 +631,22 @@
                     <label>AI PC - Commercial</label>
                 </value>
                 <value>
+                    <fullName>AI PC – Commercial</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>AI PC – Commercial</label>
+                </value>
+                <value>
                     <fullName>AI PC - Consumer</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>AI PC - Consumer</label>
+                </value>
+                <value>
+                    <fullName>AI PC – Consumer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>AI PC – Consumer</label>
                 </value>
                 <value>
                     <fullName>Apple Compete Commercial</fullName>
@@ -827,7 +840,6 @@
         <deleteConstraint>Restrict</deleteConstraint>
         <label>Spending Targets</label>
         <referenceTo>Core_MDF_Target_Setting__c</referenceTo>
-        <relationshipLabel>Spending Targets Line Items</relationshipLabel>
         <relationshipName>Forecast_Line_Items</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>

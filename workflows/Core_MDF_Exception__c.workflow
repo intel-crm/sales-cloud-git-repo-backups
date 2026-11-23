@@ -9,7 +9,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_ExceptionApprovalStatusUpdate</template>
+        <template>unfiled$public/Core_MDF_ExceptionApprovalStatusUpdate</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_MDF_Update_Status_to_Approved</fullName>

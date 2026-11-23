@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <columns>
-        <field>FK_$Core_Design_Registration__c.Core_End_Customer_Account_Id__c</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <field>FK_$Core_Design_Registration__c.DDR_Partner_FAE_Email__c</field>
-    </columns>
-    <columns>
-        <field>FK_$Core_Design_Registration__c.Core_Partner_FAE_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Products__c</field>
-    </columns>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>TOTAL_PRICE</column>
+        </chartSummaries>
+        <chartType>VerticalColumnStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>FK_$Core_Design_Registration__c.Core_Partner_Account_Region_Cd__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>FK_$Core_Design_Registration__c.Core_Partner_Account_Nm__c</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>ADDRESS1_CITY</field>
     </columns>
@@ -31,6 +43,12 @@
         <field>FK_NAME</field>
     </columns>
     <columns>
+        <field>FK_$Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
@@ -38,6 +56,9 @@
     </columns>
     <columns>
         <field>FK_$Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Core_Design_Registration__c.Core_Partner_FAE_Nm__c</field>
     </columns>
     <columns>
         <field>FK_$Core_Design_Registration__c.Core_Partner_FSR_Nm__c</field>
@@ -95,9 +116,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>EXP_AMOUNT</field>
     </columns>
-    <columns>
-        <field>FK_$Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>FK_$Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</column>
@@ -110,15 +128,15 @@
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Cancelled,Lost</value>
+            <operator>equals</operator>
+            <value>Pending</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
-            <value>Cisneros</value>
+            <operator>equals</operator>
+            <value>Ralph Cisneros</value>
         </criteriaItems>
         <criteriaItems>
             <column>Product2.Core_Product_Type__c</column>
@@ -133,6 +151,13 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Core_Design_Registration__c.Core_Partner_Account_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Arrow</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Business_Unit_Territory__c</column>
@@ -159,7 +184,7 @@
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2024 Approved DDR Open Opps Report</name>
+    <name>2020 Approved DDR Open Opps Report SD</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -181,12 +206,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>FK_$Core_Design_Registration__c.Core_Partner_FAE_Nm__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortColumn>TOTAL_PRICE</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2024-12-30</endDate>
+        <endDate>2020-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2024-01-01</startDate>
+        <startDate>2019-12-29</startDate>
     </timeFrameFilter>
 </Report>

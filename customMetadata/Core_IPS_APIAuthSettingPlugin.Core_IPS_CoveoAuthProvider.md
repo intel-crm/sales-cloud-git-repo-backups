@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Consumer_Secret__c</field>
-        <value xsi:type="xsd:string">vwA8Q~Vy55.jZfRVtTb0RQ0-espzGhlA6J75Lap-</value>
+        <value xsi:type="xsd:string">JeI8Q~WRoWsalXMrI7OHqHFBEvJeKXub7fCPPbNp</value>
     </values>
     <values>
         <field>Redirect_Url_Suffix__c</field>

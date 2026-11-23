@@ -306,7 +306,7 @@ private class Core_MDF_Bulk_ReleaseBankDocHold_Test {
             }
             catch(exception ex){
             }
-         }  
+         }       
         // Unit Test Method should include System.Assert 
         System.assertNotEquals(null, pfr.Id, 'PartnerFundRequest Id should not be null');
     }

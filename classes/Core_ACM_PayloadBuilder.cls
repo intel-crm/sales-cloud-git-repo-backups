@@ -90,4 +90,64 @@ public without sharing class Core_ACM_PayloadBuilder {
         }
         return iso2ToCountryCodeMap.get(countrycode);
     }
+    
+    //Ganesh Changes
+	public static Core_ACM_PayloadWrapper.RoleRequestPayload buildRoleRequestPayload(
+    Contact contact
+) {
+
+    Core_ACM_PayloadWrapper.RoleRequestPayload payload =
+        new Core_ACM_PayloadWrapper.RoleRequestPayload();
+
+    payload.requestee =
+        new Core_ACM_PayloadWrapper.Requestee(
+            contact.Core_Enterprise_Id__c
+        );
+
+    payload.requestItems =
+        new List<Core_ACM_PayloadWrapper.RequestItem>();
+
+    List<Core_Contact_Entitlement__c> entitlements = [
+        SELECT Core_Selected__c,
+               Core_Status__c,
+               Core_Entitlement_Id__r.Entitlement_B2B_B2C_Indicator__c,
+               Core_Entitlement_Id__r.Core_AGS_Role_Id__r.Core_Technical_Name__c
+        FROM Core_Contact_Entitlement__c
+        WHERE Core_Contact_Id__c = :contact.Id
+        AND Core_Entitlement_Id__r.Core_AGS_Role_Id__c != NULL
+    ];
+
+    System.debug('Total Entitlements Found: ' + entitlements.size());
+
+    for(Core_Contact_Entitlement__c ce : entitlements){
+
+        if(ce.Core_Status__c != 'Pending'){
+            continue;
+        }
+
+        // Process ONLY B2B Entitlements
+        if(
+            ce.Core_Entitlement_Id__r.Entitlement_B2B_B2C_Indicator__c !=
+            'B2B'
+        ){
+            continue;
+        }
+
+        payload.requestItems.add(
+            new Core_ACM_PayloadWrapper.RequestItem(
+                ce.Core_Selected__c ? 'Add' : 'Remove',
+                new Core_ACM_PayloadWrapper.Access(
+                    'Role',
+                    ce.Core_Entitlement_Id__r
+                        .Core_AGS_Role_Id__r
+                        .Core_Technical_Name__c
+                ),
+                'SF API Request'
+            )
+        );
+    }
+
+    return payload;
+}
+//Ganesh Changes End
 }

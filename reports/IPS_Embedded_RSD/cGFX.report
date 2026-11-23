@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_8673756</developerName>
+        <masterLabel>Support Level</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>William Handley</sourceValue>
+            </sourceValues>
+            <value>L1 - Support</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Gustav Stedje</sourceValue>
+            </sourceValues>
+            <value>L2 - Support</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CASE_NUMBER</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>LAST_UPDATEONLY</field>
+    </columns>
+    <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <columns>
+        <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Sub_Status__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Product_name__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_External_Issue_Subcategory__c</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
+    </columns>
+    <description>Core Graphics Issues</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <criteriaItems>
+            <column>Case.Core_Product_Organization__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Embedded Products</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Aava,ACTINEON,AEWIN,AOPEN,ASL,Bluebird,CLIENTRON,COMPULAB,Dell,Diebold,ENNOCONN,Fan Yongning,FLYTECH,Fujitsu,GES (SINGAPORE),Giga-byte,Gigabyte,HITACHI,INNES,Innowi,International Business Machines,Inventec,JWIPC,LG Electronics,Micros Systems,MICRO-STAR INTERNATIONAL,MITAC,NCR Corporation,NEC CORPORATION,Orr John,Partech,Pinnacle Data Systems,POSIFLEX TECHNOLOGY,QNAP,Samsung,Seavo,SECO,Seneca Data,Stratacache,TABLETOP MEDIA,TOKYO ELECTRON DEVICE,Toshiba Corporation,Toshiba Global Commerce Solutions,TOSHIBA TEC,Trimble Mobile,UNIVERSAL SCIENTIFIC INDUSTRIAL,VENTURE CORPORATION,Verifone,Vista Control,WINCOR NIXDORF,WISTRON,Zebra,ZIOSK INC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Arrandale,Broadwell H,Broadwell U,Calistoga,Cantiga,Carlow,Clarkdale,Cougar Point,Eaglelake,Eagle Lake,Haswell DC ULT BGA,Haswell DT,Haswell M,Ibex Peak,ICH8,Ivy Bridge,Ivy Bridge DT,Lynnfield,Lynx Point,Lynx Point M,Panther Point,Penryn,Sandy Bridge DT,Sandy Bridge QC SV BGA,Skylake H CPU,Skylake PCH,Skylake S CPU,Skylake U CPU,Wolfdale,Yorkfield</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Subcategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Graphics</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>cGFX</name>
+    <params>
+        <name>units</name>
+        <value>h</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CaseList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>AGE</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATEONLY</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -128,6 +128,26 @@
         <unique>false</unique>
     </fields>
     <label>Core_MDF_PFR_Event_Rule</label>
+    <listViews>
+        <fullName>All_Fields</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>Core_MDF_Activity_Category__c</columns>
+        <columns>Core_MDF_Activity_Types__c</columns>
+        <columns>Core_MDF_Amount_Operator__c</columns>
+        <columns>Core_MDF_Day_Difference__c</columns>
+        <columns>Core_MDF_Days_Difference__c</columns>
+        <columns>Core_MDF_Days_Difference_Operator__c</columns>
+        <columns>Core_MDF_Error_Message__c</columns>
+        <columns>Core_MDF_PFR_RecordType__c</columns>
+        <columns>Core_MDF_PFR_RecordType_Id__c</columns>
+        <columns>Core_MDF_PFR_StartDate__c</columns>
+        <columns>Core_MDF_Requested_Amount__c</columns>
+        <columns>Core_MDF_Country_Picklist_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Fields</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>Core_MDF_PFR_Event_Rules</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

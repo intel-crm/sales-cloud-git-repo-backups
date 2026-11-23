@@ -99,6 +99,7 @@ public class PRM_RegReqProcessingQueueable implements Queueable{
             if(!logEntryToUpdate.isEmpty() && logEntryToUpdate != null){
                 update logEntryToUpdate;
             }
+            
         }
     }
 }

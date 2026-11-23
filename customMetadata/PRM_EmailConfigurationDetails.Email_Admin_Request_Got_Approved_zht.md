@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>PRM_InputParameter__c</field>
-        <value xsi:type="xsd:string">Account_ID;Registration_Request_ID;LanguageCulture_MDT</value>
+        <value xsi:type="xsd:string">Account_ID;Registration_Request_ID</value>
     </values>
     <values>
         <field>PRM_Language__c</field>
@@ -56,10 +56,10 @@
     </values>
     <values>
         <field>PRM_TemplateName__c</field>
-        <value xsi:type="xsd:string">SCRREQTOAPVDNEW_ZHT</value>
+        <value xsi:type="xsd:string">SCRREQTOAPVDNEW</value>
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">SCRREQTOAPVDNEW_ZHT</value>
+        <value xsi:type="xsd:string">SCRREQTOAPVDNEW</value>
     </values>
 </CustomMetadata>

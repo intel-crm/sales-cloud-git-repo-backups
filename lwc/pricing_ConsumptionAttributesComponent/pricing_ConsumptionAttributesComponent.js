@@ -205,7 +205,6 @@ export default class Pricing_ConsumptionAttributesComponent extends NavigationMi
 
     @wire(getParentQuoteLine, { quoteLineId: '$chainQuoteLineId' })
     parentQuoteLineDetails({ error, data }) {
-        console.log('parentQuoteLineDetails ' + JSON.stringify(data));
         if (data != null && data != undefined && data != []) {
             this.parentQuoteLine = JSON.parse(JSON.stringify(data));
         }

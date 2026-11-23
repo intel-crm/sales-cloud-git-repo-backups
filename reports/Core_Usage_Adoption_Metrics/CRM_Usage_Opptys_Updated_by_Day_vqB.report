@@ -1,37 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_26674976</developerName>
-        <masterLabel>Opportunity Type</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Deal: Partner Scale-enable</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-through</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-to</sourceValue>
-            </sourceValues>
-            <value>Deal</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Design: Original</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design: Secondary</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design: Software-enable</sourceValue>
-            </sourceValues>
-            <value>Design</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -41,13 +9,11 @@
             <axisBinding>y</axisBinding>
             <column>Opportunity.Core_Opportunity_Count__c</column>
         </chartSummaries>
-        <chartType>LineGrouped</chartType>
+        <chartType>Line</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>CREATED_DATE</groupingColumn>
-        <legendPosition>Bottom</legendPosition>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>BucketField_26674976</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -93,24 +59,17 @@
             <operator>greaterOrEqual</operator>
             <value>LAST_N_DAYS:21</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>BucketField_26674976</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Deal,Design</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_26674976</field>
+        <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>CREATED_DATE</field>
+        <field>OPPORTUNITY_ID</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>CRM Usage - Opptys Updated by Day</name>

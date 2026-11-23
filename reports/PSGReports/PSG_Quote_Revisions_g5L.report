@@ -20,7 +20,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$core_cpq_active_cb__c</field>
     </columns>
-    <description>It gives an high-level idea about the number of quote revisions and their state- Active vs Inactive</description>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c$Pricing_Quote_Program_Nm__c</column>

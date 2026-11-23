@@ -7,48 +7,65 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
-        "analyticsPageType" : "",
-        "heading" : "The Intel® Solutions Marketplace website is currently unavailable due to scheduled maintenance. Marketplace will be available again on the 10th January at 4pm Pacific Standard Time.",
-        "showBreadcrumbs" : false,
-        "showSignIn" : false,
-        "size" : "short",
-        "text" : "",
-        "type" : "generic"
+        "disableManageEvents" : false,
+        "disableManageLeads" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Marketplace",
+        "showAllButtons" : true
       },
-      "componentName" : "c:IntelMarquee",
-      "id" : "081ef643-d89f-4aa2-b925-6305b75f5349",
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "a35aac51-2dd4-4fd6-b4a6-2754bc9996e2",
       "renderPriority" : "NEUTRAL",
-      "renditionMap" : {
-        "ja" : "29af066c-915e-44c3-bf08-88194092e8a6",
-        "zh_cn" : "4bb3702a-d533-47ef-b106-339d2a990e70"
-      },
-      "renditions" : [ {
-        "id" : "4bb3702a-d533-47ef-b106-339d2a990e70",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "heading" : "由于计划性维护的原因，英特尔® 解决方案市场网站目前无法使用。市场将于太平洋标准时间 1 月 10 日下午 4 点恢复使用。"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "29af066c-915e-44c3-bf08-88194092e8a6",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "heading" : "現在、インテル® ソリューション・マーケットプレースのウェブサイトは、定期メンテナンスのため利用できません。マーケットプレースは、1月10日午後4時 (太平洋標準時) に再び利用できるようになります。"
-          }
-        },
-        "type" : "renditionComponent"
-      } ],
+      "renditionMap" : { },
       "type" : "component"
     } ],
     "id" : "37ff44fb-03db-401b-8c87-bae0e59f3fbb",
     "regionName" : "header",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "alignment" : "left",
+        "analyticsPageType" : "",
+        "backgroundVariant" : "classic-blue-gradient",
+        "ctaCommPage" : "",
+        "ctaExternalUrl" : "www.intel.com",
+        "ctaLabel" : "Intel Home",
+        "doAnalytics" : true,
+        "dynamicMarquee" : false,
+        "isHomePage" : false,
+        "isOfferingPage" : true,
+        "isPartnerPage" : false,
+        "pageType" : "Home",
+        "showCaret" : false,
+        "showSearch" : false,
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Lorem Ipsum Title"
+      },
+      "componentName" : "c:ipaMarqueeMarketplace",
+      "id" : "92426566-0d14-4b50-88ee-3e553b8605e7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "aeecc648-0379-4099-9506-e96c72c61dfb",
     "regionName" : "content",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<strong>Upcoming downtime: Due to system maintenance, partners will not be able to login to the portal during <u>October 5th, 2024 from 8:00 AM to 12:00 PM</u> Pacific Time.</strong>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "43bf5e1a-6708-4c63-b6a4-763c40a921bf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "90cd23b4-d0c3-42e7-9ed3-6ec55bc19de4",
     "regionName" : "footer",
     "type" : "region"

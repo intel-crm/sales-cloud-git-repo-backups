@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 12-22-2025
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class Core_MDF_CustomLayout_ServiceHandler {
     public static void validRecord(List<Core_MDF_Custom_Layout_Configurations__c> customLayoutNewList, Boolean isInsert, Boolean isUpdate, List<Core_MDF_Custom_Layout_Configurations__c> customLayoutOldList){
         Map<String, Schema.SObjectType> objMap = Schema.getGlobalDescribe();//ATHR fix
@@ -42,6 +49,7 @@ public without sharing class Core_MDF_CustomLayout_ServiceHandler {
                             isError = false;
                         }
                     }
+                    
             errorMsg = errorMsg.removeEnd(',');
             If(isError == false){
                 customLayoutNewList[i].Id.addError(errorMsg);

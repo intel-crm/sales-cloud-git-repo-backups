@@ -5,33 +5,28 @@
     <name>SCRRENGENRLREV_Reminder_TUR</name>
     <style>none</style>
     <subject>Anımsatıcı: Doğrulamayı Unutmayın</subject>
-    <textOnly>Hatırlatıcı: E-posta Adresinizi Doğrulayın ve Parolanızı Belirleyin
-
+    <textOnly>Eylem Gerekli
 
 
 {!PRM_Registration_Request__c.PRM_First_Name__c},
 
-Intel® Ortağı İş Birliği kayıt sürecinizi başlattığınız için teşekkür ederiz!
-Devam etmek için lütfen aşağıdaki bağlantıya tıklayın
+Intel® Ortağı İş Birliği üyeliğinizin avantajlarından yararlanabilmeniz için e-posta adresinizin doğrulanması gerekiyor.
 
 
-E-posta Adresinizi Doğrulayın ve Parolanızı Belirleyin
-
-Bir sonraki adımı tamamlayıp Parolanızı Belirlemek için lütfen aşağıda belirtilen kullanıcı adını kullanın
-Kullanıcı adı: {!PRM_Registration_Request__c.PRM_Email_ID__c}
+Şimdi doğrulayın
 
 Yukarıdaki bağlantıya erişemiyor musunuz?
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=tr&amp;target=	 https://wcm-ciqa.intel.com/content/www/tr/tr/secure/partner/forms/ipa-account-search.html
+https://signindev.intel.com/PasswordReset?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;target=https://ciqa.intel.com/content/www/us/en/secure/partner/forms/ipa-account-search.html
+Sorularınız varsa veya bu mesajı yanlışlıkla aldığınızı düşünüyorsanız lütfen şu adresten bizimle iletişime geçin:  https://signin.intel.com/ContactUs?Culture=en-US.
 
 
-Sizi programda görmek için sabırsızlanıyoruz!
-Saygılarımızla,
+Teşekkür ederiz,
 Intel® Ortağı İş Birliği ekibiniz
 
 Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com.tr
-Gizlilik&amp;verbar;Çerezler</textOnly>
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Gizlilik | Çerezler</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

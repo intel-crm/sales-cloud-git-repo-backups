@@ -1,20 +1,24 @@
-import {api, LightningElement} from 'lwc';
-
+import LOCALE from '@salesforce/i18n/locale';
 import inLabel from '@salesforce/label/c.quantic_InLabel';
+import inclusionFilter from '@salesforce/label/c.quantic_InclusionFilter';
+import inclusionFilter_plural from '@salesforce/label/c.quantic_InclusionFilter_plural';
+import inclusionFilter_zero from '@salesforce/label/c.quantic_InclusionFilter_zero';
+import {I18nUtils} from 'c/quanticUtils';
+import {api, LightningElement} from 'lwc';
 
 /** @typedef {import("coveo").CategoryFacetValue} CategoryFacetValue */
 
 /**
  * The `QuanticCategoryFacetValue` component is used by a `QuanticCategoryFacet` component to display a formatted facet value, path to that value and the number of results with that value.
- * @fires CustomEvent#selectvalue
+ * @fires CustomEvent#quantic__selectvalue
  * @category Search
  * @category Insight Panel
  * @example
- * <c-quantic-category-facet-value onselectvalue={onSelect} item={result} is-search-result active-parent></c-quantic-category-facet-value>
+ * <c-quantic-category-facet-value onquantic__selectvalue={onSelect} item={result} is-search-result active-parent></c-quantic-category-facet-value>
  */
 export default class QuanticCategoryFacetValue extends LightningElement {
   /**
-   * The [facet value](https://docs.coveo.com/en/headless/latest/reference/search/controllers/category-facet/#categoryfacetvalue) to display.
+   * The [facet value](https://docs.coveo.com/en/headless/latest/reference/interfaces/Search.CategoryFacetValue.html) to display.
    * @api
    * @type {CategoryFacetValue} */
   @api item;
@@ -40,6 +44,14 @@ export default class QuanticCategoryFacetValue extends LightningElement {
    */
   @api nonActiveParent = false;
   /**
+   * A function used to format the displayed value.
+   * @api
+   * @type {Function}
+   * @defaultValue `undefined`
+   */
+  @api formattingFunction;
+
+  /**
    * A function used to set focus to the value.
    * @api
    * @type {VoidFunction}
@@ -54,6 +66,9 @@ export default class QuanticCategoryFacetValue extends LightningElement {
 
   labels = {
     inLabel,
+    inclusionFilter,
+    inclusionFilter_plural,
+    inclusionFilter_zero,
   };
 
   get categoryFacetLiClass() {
@@ -61,11 +76,25 @@ export default class QuanticCategoryFacetValue extends LightningElement {
   }
 
   get facetValue() {
-    return this.item.value;
+    return this.formattingFunction
+      ? this.formattingFunction(this.item)
+      : this.item.value;
+  }
+
+  get numberOfResults() {
+    return new Intl.NumberFormat(LOCALE).format(this.item.numberOfResults);
   }
 
   get ariaLabelValue() {
-    return `Inclusion filter on ${this.facetValue}`;
+    const labelName = I18nUtils.getLabelNameWithCount(
+      'inclusionFilter',
+      this.numberOfResults
+    );
+    return I18nUtils.format(
+      this.labels[labelName],
+      this.facetValue,
+      this.numberOfResults
+    );
   }
 
   get isPressed() {
@@ -84,7 +113,7 @@ export default class QuanticCategoryFacetValue extends LightningElement {
   onSelect(evt) {
     evt.preventDefault();
     this.dispatchEvent(
-      new CustomEvent('selectvalue', {
+      new CustomEvent('quantic__selectvalue', {
         detail: {
           value: this.facetValue,
         },
@@ -99,7 +128,7 @@ export default class QuanticCategoryFacetValue extends LightningElement {
     if (evt.code === 'Enter' || evt.code === 'Space') {
       evt.preventDefault();
       this.dispatchEvent(
-        new CustomEvent('selectvalue', {
+        new CustomEvent('quantic__selectvalue', {
           detail: {
             value: this.facetValue,
           },

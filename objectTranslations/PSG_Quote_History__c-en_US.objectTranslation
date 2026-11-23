@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG Quote History</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG Quotes History</value>
+    </caseValues>
+    <fields>
+        <label><!-- From Assigned By --></label>
+        <name>PSG_From_Assigned_By_nm__c</name>
+        <relationshipLabel><!-- PSG Quotes History (From Assigned By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- From Assigned on --></label>
+        <name>PSG_From_Assigned_on__c</name>
+    </fields>
+    <fields>
+        <label><!-- From Assigned to --></label>
+        <name>PSG_From_Assigned_to_nm__c</name>
+        <relationshipLabel><!-- PSG Quotes History (From Assigned to) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quote Number --></label>
+        <name>PSG_Quote_Number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- To Assigned By --></label>
+        <name>PSG_To_Assigned_By_nm__c</name>
+        <relationshipLabel><!-- PSG Quotes History (To Assigned By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- To Assigned on --></label>
+        <name>PSG_To_Assigned_on__c</name>
+    </fields>
+    <fields>
+        <label><!-- To Assigned to --></label>
+        <name>PSG_To_Assigned_to_nm__c</name>
+        <relationshipLabel><!-- PSG Quotes History (To Assigned to) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

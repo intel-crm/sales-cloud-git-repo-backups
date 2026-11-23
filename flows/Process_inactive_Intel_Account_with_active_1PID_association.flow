@@ -19,6 +19,7 @@
             </value>
         </inputParameters>
         <nameSegment>PRM_AccChange_ResponseParser</nameSegment>
+        <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <apiVersion>62.0</apiVersion>
@@ -62,6 +63,13 @@
                 <elementReference>loop_affiliations_for_OPID</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>loop_affiliations_for_OPID.PRM_Notes__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>opidAffiliationInactivationReason</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>loop_affiliations_for_OPID</targetReference>
         </connector>
@@ -97,6 +105,13 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>Acm_to_Inactive.PRM_Account_Id__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Acm_to_Inactive.PRM_Status_Reason_Txt__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>acmInactivationReason</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -144,6 +159,13 @@
             <operator>Add</operator>
             <value>
                 <elementReference>loop_affliliations_for_strategyname_of_intel</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>loop_affliliations_for_strategyname_of_intel.PRM_Notes__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ipaAffiliationreasonText</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -1244,6 +1266,21 @@ Core_Effective_End_Date_Time__c = Now</description>
         <triggerType>PlatformEvent</triggerType>
     </start>
     <status>Active</status>
+    <textTemplates>
+        <name>acmInactivationReason</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Inactivated as account is inactive&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ipaAffiliationreasonText</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Inactivated as account is inactive&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>opidAffiliationInactivationReason</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Inactivated as affiliation inactivated on intel account&lt;/p&gt;</text>
+    </textTemplates>
     <variables>
         <name>accountsToUpdate</name>
         <dataType>SObject</dataType>

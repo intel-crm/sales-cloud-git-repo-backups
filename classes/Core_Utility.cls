@@ -179,15 +179,25 @@ public class Core_Utility{
     * Parameter    : 
     */
     public static String replaceSpecialCharacWithUnderscore(String sStringToBeReplaced){
-        //Run the loop for the special characters
-        for(String sSpecialCharc : System.Label.Core_SpecialCharacter.Split(';')){
-            //if(String.isNotBlank(sStringToBeReplaced))
-                sStringToBeReplaced = sStringToBeReplaced.replace(sSpecialCharc,'_');  
-        }
-        sStringToBeReplaced = sStringToBeReplaced.replace('__','_');
-        sStringToBeReplaced = sStringToBeReplaced.removeEnd('_');
-        
-        return sStringToBeReplaced;
+        // Exception Handling fix: Regex too complicated
+        try
+        {
+                //Run the loop for the special characters
+                for(String sSpecialCharc : System.Label.Core_SpecialCharacter.Split(';')){
+                    //if(String.isNotBlank(sStringToBeReplaced))
+                        sStringToBeReplaced = sStringToBeReplaced.replace(sSpecialCharc,'_');  
+                }
+                sStringToBeReplaced = sStringToBeReplaced.replace('__','_');
+                sStringToBeReplaced = sStringToBeReplaced.removeEnd('_');
+                
+                return sStringToBeReplaced;
+      	}
+        catch(exception ex)
+        {
+            system.debug('Unsucessful send email :::: ' + ex.getMessage());
+            
+        }        
+        return null;         
     }
     
     //Variable to store the User record

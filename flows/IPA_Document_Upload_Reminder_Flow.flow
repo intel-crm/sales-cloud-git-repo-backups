@@ -161,8 +161,8 @@
                 <targetReference>Is_Status_Pending_with_Partner</targetReference>
             </connector>
             <label>Send Reminder Email to Partner for Document Upload after 3 days</label>
-            <offsetNumber>3</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
+            <offsetNumber>5</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
             <timeSource>RecordTriggerEvent</timeSource>
         </scheduledPaths>
         <scheduledPaths>
@@ -171,8 +171,8 @@
                 <targetReference>Is_Registration_still_Pending_with_Partner</targetReference>
             </connector>
             <label>Reject registration Request after 7 days</label>
-            <offsetNumber>7</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
+            <offsetNumber>10</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
             <timeSource>RecordTriggerEvent</timeSource>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>

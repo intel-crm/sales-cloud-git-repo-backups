@@ -11,7 +11,7 @@ public without sharing class UCD_ACM_AccountMerge {
 
         List<Account_Business_Types__c> cpeRecords = [
             SELECT Id, Account__c FROM Account_Business_Types__c
-            WHERE Account__c IN :accountIds
+            WHERE Account__c IN :accountIds WITH SECURITY_ENFORCED
         ];
 
         for (Account_Business_Types__c cpe : cpeRecords) {

@@ -19,9 +19,13 @@ public class Core_Oppty_LastActivityUpdate_Batch_Test {
     
     static void testData(){
         // Create a new account        
+        /***
         Account acct = new Account(Name = 'Test Account1', BillingStreet = '123 Fake St',
                                    BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                   BillingPostalCode = '12345', /*Core_CIM_ID__c = '8675309',*/Core_Sales_Groups__c='Americas Brazil Sales Group',Industry ='Agriculture', Core_Sub_Industry__c='Forestry');
+                                   BillingPostalCode = '12345', /*Core_CIM_ID__c = '8675309',*//***Core_Sales_Groups__c='Americas Brazil Sales Group',Industry ='Agriculture', Core_Sub_Industry__c='Forestry');
+        ***/
+        Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
         insert acct;
         
         // Create a new product

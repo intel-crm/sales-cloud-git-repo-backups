@@ -31,7 +31,7 @@ public with sharing Class PCC_DealTermsAndConditions
         List<PRM_AccountLegalAgreemntAssociation__c> dealLegalAgreement = new List<PRM_AccountLegalAgreemntAssociation__c>();
         // IPA 2.0 -TWC729-7874 
         dealLegalAgreement = [Select Id, Name, PRM_Signed_By_Email__c, PRM_Signed_By_Name__c,PRM_Partner_Agreement_Id__c From PRM_AccountLegalAgreemntAssociation__c where PRM_Signed_By_Email__c=:userValues.Contact.Email AND PRM_Partner_Agreement_Id__c =:partnerAgreement.Id];
-        //dealLegalAgreement = [Select Id, Name, PRM_Contact__c,PRM_Partner_Agreement_Id__c From PRM_AccountLegalAgreemntAssociation__c where PRM_Contact__c=:userValues.ContactId AND PRM_Partner_Agreement_Id__c =:partnerAgreement.Id];
+       // dealLegalAgreement = [Select Id, Name, PRM_Contact__c,PRM_Partner_Agreement_Id__c From PRM_AccountLegalAgreemntAssociation__c where PRM_Contact__c=:userValues.ContactId AND PRM_Partner_Agreement_Id__c =:partnerAgreement.Id];
         
         system.debug('dealLegalAgreement-->'+dealLegalAgreement);
         if(dealLegalAgreement.size() == 0){
@@ -54,7 +54,7 @@ public with sharing Class PCC_DealTermsAndConditions
             }
         // IPA 2.0 -TWC729-7874  
         return [Select Id,PRM_Account_Id__c,PRM_Agreement_Sign_Dt__c,PRM_Partner_Agreement_Id__c,PRM_Signed_By_Email__c,PRM_Signed_By_Name__c From PRM_AccountLegalAgreemntAssociation__c Where CreatedDate>=:Date.TODAY()];
-        //return [Select Id,PRM_Account_Id__c,PRM_Agreement_Sign_Dt__c,PRM_Partner_Agreement_Id__c,PRM_Contact__c From PRM_AccountLegalAgreemntAssociation__c Where CreatedDate>=:Date.TODAY()];
+      //  return [Select Id,PRM_Account_Id__c,PRM_Agreement_Sign_Dt__c,PRM_Partner_Agreement_Id__c,PRM_Contact__c From PRM_AccountLegalAgreemntAssociation__c Where CreatedDate>=:Date.TODAY()];
         
     }
 }

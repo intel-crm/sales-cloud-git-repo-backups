@@ -38,7 +38,7 @@ private class Core_IntegrationQueueServiceTest {
         insert new PRM_ContactSubscriptionAssociation__c(
             PRM_Contact_Id__c = contact.Id,
             PRM_Partner_Subscription_Id__c = subscription.Id,
-            PRM_Status_Nm__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.ACTIVE_STATUS),
+            PRM_Status_Nm__c = Core_ACM_Constants.STATUS_ACTIVE,
             PRM_Status_Reason_Txt__c = 'Test association'
         );
 
@@ -75,14 +75,14 @@ private class Core_IntegrationQueueServiceTest {
         List<Core_ACM_Integration_Queue__c> queueRecords = Core_IntegrationQueueService.createQueueRecords(
             new List<Contact>{ contact },
             oldContactMap,
-            Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.LIVE)
+            Core_ACM_Constants.PROCESS_TYPE_LIVE
         );
         Test.stopTest();
 
         System.assertEquals(1, queueRecords.size());
         System.assertNotEquals(null, queueRecords[0].Id);
         System.assertEquals(Core_ACM_Constants.MESSAGE_TYPE_ERPM, queueRecords[0].Core_Message_Type__c);
-        System.assertEquals(Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.NEW_STATUS), queueRecords[0].Core_Status__c);
+        System.assertEquals(Core_ACM_Constants.STATUS_NEW, queueRecords[0].Core_Status__c);
         System.assert(queueRecords[0].Core_Payload__c.contains('PersonAccountProfile'));
         System.assert(queueRecords[0].Core_Payload__c.contains('INTCLDCOM'));
         System.assert(queueRecords[0].Core_Payload__c.contains('SOFT-001'));
@@ -100,7 +100,7 @@ private class Core_IntegrationQueueServiceTest {
             FROM Contact
             WHERE Id = :contact.Id
         ];
-        System.assertEquals(Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.IN_PROGRESS_STATUS), updatedContact.Core_ERPM_Integration_Status__c);
+        System.assertEquals(Core_ACM_Constants.STATUS_IN_PROGRESS, updatedContact.Core_ERPM_Integration_Status__c);
     }
 
     @IsTest
@@ -109,7 +109,7 @@ private class Core_IntegrationQueueServiceTest {
         List<Core_ACM_Integration_Queue__c> queueRecords = Core_IntegrationQueueService.createQueueRecords(
             new List<Contact>(),
             new Map<Id, Contact>(),
-            Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.BULK_MODE)
+            Core_ACM_Constants.PROCESS_TYPE_BULK
         );
         Test.stopTest();
 
@@ -133,155 +133,15 @@ private class Core_IntegrationQueueServiceTest {
 
         System.assertEquals(Core_ACM_Constants.CHANGE_AGENT, payload.ChangeAgent);
         System.assertEquals(Core_ACM_Constants.CHANGE_AGENT_LOGIN_ID, payload.ChgAgtLoginId);
-        System.assertEquals(Core_ACM_Constants.getFlagValue(Core_ACM_Constants.Flag.NO), payload.PersonAccountProfile.DoNotContactFlag);
-        System.assertEquals(Core_ACM_Constants.getFlagValue(Core_ACM_Constants.Flag.NO), payload.PersonAccountProfile.SalesDoNotContactFlag);
+        System.assertEquals(Core_ACM_Constants.FLAG_NO, payload.PersonAccountProfile.DoNotContactFlag);
+        System.assertEquals(Core_ACM_Constants.FLAG_NO, payload.PersonAccountProfile.SalesDoNotContactFlag);
+        System.assertEquals(2, payload.PersonAccountProfile.PersonElectronicAddresses.size());
+        System.assertEquals('', payload.PersonAccountProfile.PersonElectronicAddresses[0].ElectronicAddressText);
+        System.assertEquals('', payload.PersonAccountProfile.PersonElectronicAddresses[1].ElectronicAddressText);
+        System.assertEquals(1, payload.PersonAccountProfile.Subscriptions.size());
+        System.assertEquals('INTCLDCOM', payload.PersonAccountProfile.Subscriptions[0].SubscriptionCode);
+        System.assertEquals(2, payload.PersonAccountProfile.Memberships.size());
     }
-
-    @IsTest
-    static void testGetSoftEngagementCode_Rejected() {
-
-        Contact con = Core_IntegrationQueueServiceTest.getContactForPayload();
-
-        Core_Contact_Entitlement__c ent =
-            [SELECT Id, Core_Selected__c
-            FROM Core_Contact_Entitlement__c
-            LIMIT 1];
-
-        ent.Core_Selected__c = false;
-        update ent;
-
-        con = Core_IntegrationQueueServiceTest.getContactForPayload();
-
-        Test.startTest();
-        Map<String,String> result =
-            Core_ACM_ContactDataProcessor.getSoftEngagementCode(con);
-        Test.stopTest();
-
-        System.assertEquals(1, result.size());
-        System.assert(
-            result.containsKey('SOFT-001')
-        );
-    }
-
-    @IsTest
-    static void testGetSubscriptions_DoNotContact() {
-
-        Contact con =
-            [SELECT Id,
-                    Core_Do_Not_Contact__c,
-                    (SELECT Id,
-                            PRM_Status_Nm__c,
-                            PRM_Status_Reason_Txt__c,
-                            PRM_Partner_Subscription_Id__r.Name,
-                            PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c
-                    FROM Contact_Subscription_Associations__r)
-            FROM Contact
-            LIMIT 1];
-
-        con.Core_Do_Not_Contact__c = true;
-
-        Test.startTest();
-        List<Core_ACM_PayloadWrapper.Subscription> subs =
-            Core_ACM_ContactDataProcessor.getSubscriptions(con);
-        Test.stopTest();
-
-        System.assertEquals(1, subs.size());
-
-        System.assertEquals(
-            Core_ACM_Constants.getSubscriptionStatusValue(
-                Core_ACM_Constants.SubscriptionStatus.UNSUBSCRIBED
-            ),
-            subs[0].SubscriptionStatusCode
-        );
-    }
-
-    /*@IsTest
-    static void testGetMemberships_WithBusinessType() {
-
-        Contact con =
-            [SELECT Id,
-                    Core_Enterprise_Id__c,
-                    (SELECT Id, Status__c
-                    FROM Contact_Business_Types__r)
-            FROM Contact
-            LIMIT 1];
-
-        Contact_Business_Types__c bt =
-            new Contact_Business_Types__c(
-                Contact__c = con.Id,
-                Status__c = Core_ACM_Constants.getStatusValue(
-                    Core_ACM_Constants.Status.APPROVED_STATUS
-                )
-            );
-
-        insert bt;
-
-        con =
-            [SELECT Id,
-                    Core_Enterprise_Id__c,
-                    (SELECT Id, Status__c
-                    FROM Contact_Business_Types__r)
-            FROM Contact
-            WHERE Id = :con.Id];
-
-        Test.startTest();
-
-        List<Core_ACM_PayloadWrapper.Membership> memberships =
-            Core_ACM_ContactDataProcessor.getMemberShips(
-                con,
-                new Map<String,String>{
-                    'SOFT-001' =>
-                        Core_ACM_Constants.getEngagementStatusValue(
-                            Core_ACM_Constants.EngagementStatus.APPROVED
-                        )
-                }
-            );
-
-        Test.stopTest();
-
-        System.assert(memberships.size() >= 2);
-   }*/
-
-   @IsTest
-    static void testGetSoftEngagementCode_SECBranch() {
-
-        Contact con = [SELECT Id FROM Contact LIMIT 1];
-
-        Core_ERPM_Engagement__c secEng =
-            new Core_ERPM_Engagement__c(
-                Name='SEC ENG',
-                Core_Technical_Engagement_Code__c='SEC001',
-                Core_Engagement_Type__c=
-                    Core_ACM_Constants.ENGAGEMENT_TYPE_SEC
-            );
-        insert secEng;
-
-        Core_Entitlement__c ent = new Core_Entitlement__c(
-            Name='SEC ENT',
-            Core_Display_Name__c='SEC ENT',
-            Core_IsActive__c=true,
-            Core_ERPM_Engagement_Id__c=secEng.Id
-        );
-        insert ent;
-
-        insert new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c=con.Id,
-            Core_Entitlement_Id__c=ent.Id,
-            Core_Selected__c=true
-        );
-
-        Contact refreshed =
-            Core_IntegrationQueueServiceTest.getContactForPayload();
-
-        Test.startTest();
-        Map<String,String> result =
-            Core_ACM_ContactDataProcessor.getSoftEngagementCode(refreshed);
-        Test.stopTest();
-
-        // SEC engagement goes to mEngCodes
-        // so should NOT be returned.
-        System.assert(!result.containsKey('SEC001'));
-  }
 
     private static Contact getContactForPayload() {
         return [

@@ -51,6 +51,10 @@
         <name>Core_Solution_Owner_Email__c</name>
     </fields>
     <fields>
+        <label><!-- Solution Title --></label>
+        <name>Core_Solution_Title__c</name>
+    </fields>
+    <fields>
         <label><!-- Technology Enabled --></label>
         <name>Core_Technology_Enabled__c</name>
     </fields>

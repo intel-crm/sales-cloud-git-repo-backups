@@ -8,6 +8,7 @@ import isLoggedInUserPAOrPAD from '@salesforce/apex/EPUM_SearchContact.isLoggedI
 import Id from '@salesforce/user/Id';
 import {exportCSV} from 'c/exportToExcelUtils';
 import PRM_BlockedContactError from  '@salesforce/label/c.PRM_BlockedContactError'
+import PRM_BlockedAccountError from  '@salesforce/label/c.PRM_BlockedAccountError'
 import PAGE_SIZE from '@salesforce/label/c.EPUM_PageSize';
 import EPUM_AreYouSure from '@salesforce/label/c.EPUM_AreYouSure';
 import EPUEPUM_DoYouWantToSave from '@salesforce/label/c.EPUM_DoYouWantToSave';
@@ -173,7 +174,8 @@ export default class EPUM_SearchContactLWC extends LightningElement {
 	IPA_Request_Support_URL,
 	PRM_BlockedDomainErrorLabel,
     PRM_Bulk_Invite_Process,
-    PRM_BlockedContactError
+    PRM_BlockedContactError,
+    PRM_BlockedAccountError
     };
 
 
@@ -207,7 +209,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
     blockedDomain = false;
     isSearch = false;
     @track BlockedContact=false;
-
+    @track BlockedAccount=false;
     selectedContactIdWrap = {};
     selectedContactId = '';
     sameOPID = true;
@@ -379,7 +381,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
                 conData.Account_Name = this.contacts[con].Account.Name;
                 conData.ContactOPID_Id = this.contacts[con].Core_IPA_One_Partner_Id__c;
                // conData.OPIDCountry = this.contacts[con].Account.BillingCountry; //Akshay Change
-                conData.OPIDCountry = this.contacts[con].MailingCountry; //UAT issue >> Country should get fetched from contact 
+               conData.OPIDCountry = this.contacts[con].MailingCountry; //UAT issue >> Country should get fetched from contact 
                 if (this.contacts[con].Users) conData.ContactUser_Id = this.contacts[con].Users[0].Id;
                 if(conData.ContactOPID_Id == null) conData.ContactOPID_Id = conData.Account_Id;
                 conData.ContactPartnerRole = this.contacts[con].Core_IPA_PartnerRole__c;
@@ -558,7 +560,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
 
     get getValidationMsg() {
         if ((this.message === this.label.EPUM_isSendInviteMsgNew || this.message === this.label.EPUM_isSendInviteMsgNew 
-            || this.message === this.label.EPUM_isContactExitssWithSameRoleMsg) && !this.BlockedContact) {
+            || this.message === this.label.EPUM_isContactExitssWithSameRoleMsg)) {
             return true;
         } else {
             return false;
@@ -762,7 +764,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
             }
             
             var intelDomain = false;
-            if (domainCheck.toLowerCase()===('intel.com'.toLowerCase())){ 
+            if (domainCheck.toLowerCase().includes('intel.com'.toLowerCase())){ 
                intelDomain = true;
                this.validationmsg = this.label.EPUM_IntelDomainMail;
                 return false;
@@ -800,6 +802,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
                         if(result.acrActive){
                         this.message = this.label.EPUM_ActiveIPAContact;
                         this.isDisplayChatWithIntelLink = true;
+                        
                         }
                         else if(result.isContactDeleted){
                             this.sendInvite = true;
@@ -829,6 +832,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
                         } else if (result.isPendingContact) {
                             this.message = this.label.EPUM_isPendingContactMsg;
                             this.isDisplayChatWithIntelLink = true;
+                           
                         }
                         // For LoginDeleted - start
                         /*else if (result.isContactDeleted) {
@@ -839,20 +843,25 @@ export default class EPUM_SearchContactLWC extends LightningElement {
                         else if(result.isExistingIPASelfRegistration) {
                             this.message = this.label.EPUM_isExistingIPASelfRegistration;
                             this.isDisplayChatWithIntelLink = true;
+                           
+                            
                         }
                         //For contacts with existing self registration - END
 
                         else if (!result.isContactExistsinOnePartnerAcc) {
                             this.message = this.label.EPUM_isContactExistsinOnePartnerAccMsg;
                             this.isDisplayChatWithIntelLink = true;
+                           
                             console.log('1')
                         } else if (!result.isContactExitssWithSameRole) {
                             this.message = this.label.EPUM_isContactExitssWithSameRoleMsg;
                             this.isDisplayChatWithIntelLink = true;
+                            
                             console.log('2')
                         }else if(!result.isSendInvite){
                             this.message = this.label.EPUM_isContactExitssWithSameRoleMsg;
                             this.isDisplayChatWithIntelLink = true;
+                           
                             console.log('non ipa--non match PR in account');
                         }
 
@@ -866,15 +875,26 @@ export default class EPUM_SearchContactLWC extends LightningElement {
                     }
     }
     if(result.BlockedContact){
-       // this.ValidationMsg='This contact is blocked for Intel Partner Alliance registration. Please contact support for further information'
+       // this.ValidationMsg='This contact is blocked for IPA registration. Please contact support for further information'
         this.createNew=false;
         this.sendInvite=false;
         this.message=this.label.PRM_BlockedContactError;
         this.getValidationMsg=false;
         this.BlockedContact=true;
+        this.isDisplayChatWithIntelLink = false;
         console.log('validationmsg' + this.validationmsg );
         console.log('result.BlockedContact' + result.BlockedContact );
     }
+    // if(result.BlockedAccount){
+    //     // this.ValidationMsg='This contact is blocked for IPA registration. Please contact support for further information'
+    //      this.createNew=false;
+    //      this.sendInvite=false;
+    //      this.message=this.label.PRM_BlockedAccountError;
+    //      this.getValidationMsg=false;
+    //      this.BlockedAccount=true;
+    //      console.log('validationmsg' + this.validationmsg );
+    //      console.log('result.BlockedContact' + result.BlockedContact );
+    //  }
                 }).catch(error => {
                     console.log('LWC search error' + JSON.stringify(error));
                     this.isLoading = false;
@@ -1012,7 +1032,7 @@ export default class EPUM_SearchContactLWC extends LightningElement {
     }
 
     showInviteUser() {
-        if (this.searchKeyword.toLowerCase()===('intel.com'.toLowerCase())){ 
+        if (this.searchKeyword.toLowerCase().includes('intel.com'.toLowerCase())){ 
             this.validationmsg = this.label.EPUM_IntelDomainMail;
             this.message = '';
             this.sendInvite = false;

@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Platform Event In LWC Techdicer">
+        <div class="slds-m-around_medium">
+            <p>Status : {resultEvent}</p>
+            <p>isShowModalSuccess : {isShowModalSuccess}</p>
+            <p>isShowModalFail : {isShowModalFail}</p>
+        </div>
+    </lightning-card>
+      <!--progress bar-->
+      <lightning-card title="Please wait we are processing your records" icon-name="custom:custom18" size="small">  
+        <div class="slds-p-around--medium">        
+    
+            <div class="slds-col slds-size_9-of-12 slds-m-bottom--medium">
+                <lightning-progress-bar value={progress}></lightning-progress-bar>
+            </div>
+            <div class="slds-col slds-size_9-of-12 slds-text-align_center slds-m-top_large">
+               <lightning-button variant="brand" label={computedLabel} onclick={actionToggleBar} class="slds-m-top_medium"></lightning-button>
+            </div> 
+        </div>
+    <br/><br/>
+       <!--Start RelatedTopics Section-->
+        
+      <!--End RelatedTopics Section-->
+        </lightning-card>  
+</template>

@@ -48,13 +48,13 @@
 
 			const checkHasUpdateAccess = component.get('c.isUpdateable');
 			checkHasUpdateAccess.setCallback(this, function (response) {
-				component.set('v.hasUpdateAccess', response.getReturnValue());
+				component.set('v.hasUpdateAccessPf', response.getReturnValue());
 			});
 			$A.enqueueAction(checkHasUpdateAccess);
 
 			const checkHasDeleteAccess = component.get('c.isDeletable');
 			checkHasDeleteAccess.setCallback(this, function (response) {
-				component.set('v.hasDeleteAccess', response.getReturnValue());
+				component.set('v.hasDeleteAccessPf', response.getReturnValue());
 			});
 			$A.enqueueAction(checkHasDeleteAccess);
 		}

@@ -29,7 +29,8 @@ public with sharing class Core_IPS_BES_InboundMessage {
         try{
             if(attachment.SObjectType.getDescribe().isQueryable()){
                 // Heapsize Change
-                
+                //attachmentList = [SELECT parentId, Name, Id, Body, BodyLength from attachment WHERE parentId IN: recordIdList];
+                //System.debug('heap size attachment size : '+Limits.getHeapSize());// 1.6MB, V2_3.6MB
                 for(attachment att: [SELECT parentId, Name, Id, Body, BodyLength from attachment WHERE parentId IN: recordIdList]){
                     backendJSONMap = (Map<string,Object>) JSON.deserializeUntyped(att.body.toString());
                     
@@ -54,7 +55,10 @@ public with sharing class Core_IPS_BES_InboundMessage {
                         //Minhaj 
                          Map<string,Object> systemDetailMap = (Map<string,Object>) JSON.deserializeUntyped(JSON.serialize(backendJSONMap.get('system_details')));
                         //String sourceSystem = (String)systemDetailMap.get('source_system'); //client_platf
+                        system.debug('COG Issue Validation---- inboundmessage strt before revmap--'+Core_IPS_BES_InboundMessage.revisionMap);
+                system.debug('COG Issue Validation---- inboundmessage strt before srcMap--'+Core_IPS_BES_InboundMessage.sourceDetailsMap);
                         if(!sourceDetailsMap.containskey((String)systemDetailMap.get('target_id'))){
+                            system.debug('COG Issue Validation----  inboundmessage Inside srcMap');
                             sourceDetailsMap.put((String)systemDetailMap.get('target_id'),(String)systemDetailMap.get('source_id')); }
                         systemDetailMap.clear();
                             Map<string,Object> issueInfoMap = (Map<string,Object>) JSON.deserializeUntyped(JSON.serialize(backendJSONMap.get('issue_information')));
@@ -120,10 +124,10 @@ public with sharing class Core_IPS_BES_InboundMessage {
 		
 		
 		            }
-            Boolean updateCalled = false; //added as part of code refactor
+            Boolean updateCalled = false; //added as art of code refactor
             if(caseCommentUpdateList.size()>0) {
                 /* Tejaswini Harpanhalli  - Line 112 updated to match changed signature of the method - DCG Custom Logic */
-                updateCalled = true; //added as part of code refactor
+                updateCalled = true; 
                 Core_IPS_BES_UpdateCase.updateCase(caseCommentUpdateList, userDetailsMap);
                 //Minhaj - clearing memoery
                 caseCommentUpdateList.clear();
@@ -132,16 +136,25 @@ public with sharing class Core_IPS_BES_InboundMessage {
             if (!updateCalled) {
                 setjsoncasedml();
             }
+            system.debug('COG Issue Validation---- inboundmessage before revmap--'+revisionMap);
+                system.debug('COG Issue Validation---- inboundmessage before srcMap--'+sourceDetailsMap);
             if(revisionMap != null){
-              
+                //system.debug('Debugg24 -- '+revisionMap);
+                system.debug('COG Issue Validation---- inboundmessage Inside revmap');
                 Core_IPS_BES_InboundMessage.updateRevision(revisionMap,sourceDetailsMap); 
             }
+            system.debug('COG Issue Validation---- inboundmessage after revmap--'+revisionMap);
+            system.debug('COG Issue Validation---- inboundmessage after srcMap--'+sourceDetailsMap);
             revisionMap.clear();
+            //sourceDetailsMap.clear();
+            system.debug('COG Issue Validation---- inboundmessage after clear revmap--'+revisionMap);
+            system.debug('COG Issue Validation---- inboundmessage after clear srcMap--'+sourceDetailsMap);
+            
             if(commentImageInboundList.size()>0){
-                
+                System.debug('heap size  24 : '+ Limits.getHeapSize());
                 Core_IPS_BES_AddImageCommentBatch addImageComment = new Core_IPS_BES_AddImageCommentBatch(commentImageInboundList,userDetailsMap,sourceDetailsMap);
                 Database.executeBatch(addImageComment,1);
-                
+                System.debug('heap size  25 : '+ Limits.getHeapSize());
             }
                
         } catch(Exception e) {
@@ -149,7 +162,7 @@ public with sharing class Core_IPS_BES_InboundMessage {
         }
     }
     //FLS Added as Part of code refactor
-    
+    //Added as art of code refactor
     public static void setjsoncasedml(){
         if(Core_IPS_BES_UpdateBackendID.caseList!=null && !Core_IPS_BES_UpdateBackendID.caseList.isEmpty() && Schema.sObjectType.Case.isUpdateable()){
         		update Core_IPS_BES_UpdateBackendID.caseList;

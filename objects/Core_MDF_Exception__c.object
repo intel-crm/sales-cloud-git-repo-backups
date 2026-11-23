@@ -321,6 +321,11 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Core_MDF_Client_CoMarketing_Fund</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
+                <valueName>Outcome-Based-&gt;Outcome-Based</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Client_CoMarketing_Fund</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Data_Center_CoMarketing_Fund</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Retail_Marketing_Funds</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
@@ -1217,43 +1222,11 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
-                <valueName>Business Client Acceleration - MDF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
-                <valueName>Client Specialties MDF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
-                <valueName>Data Centric Acceleration - MDF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
-                <valueName>IoT Premier - MDF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
-                <valueName>IoT Targeted - MDF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
-                <valueName>ODM Growth Plan - Client MDF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
                 <valueName>Proposal II MDF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
                 <valueName>Proposal I MDF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
-                <valueName>SOEM Client MDF</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
-                <valueName>SOEM Data Center MDF</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Core_MDF_Co_GTM</controllingFieldValue>
@@ -2321,6 +2294,13 @@
                 <controllingFieldValue>Core_MDF_Data_Center_CoMarketing_Fund</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Retail_Marketing_Funds</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
+                <valueName>RUSSIAN FEDERATION</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Client_CoMarketing_Fund</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Data_Center_CoMarketing_Fund</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Retail_Marketing_Funds</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
                 <valueName>RWANDA</valueName>
             </valueSettings>
             <valueSettings>
@@ -2848,12 +2828,33 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_Technical_Program_Name_txt__c</fullName>
+        <description>To store Program Name</description>
+        <externalId>false</externalId>
+        <formula>IF(
+    ISPICKVAL(Core_MDF_Program_nm__c, &apos;Core_MDF_Intel_Partner_Alliance&apos;),
+    &apos;Intel Partner Alliance&apos;,
+    IF(
+        ISPICKVAL(Core_MDF_Program_nm__c, &apos;Core_MDF_Ecosystem_Extension_Fund&apos;),
+        &apos;Ecosystem Extension Fund&apos;,
+        &apos;&apos;
+    )
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Technical Program Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_MDF_Total_Dollar_Impact_amt__c</fullName>
         <description>Physical Column to store the Amount which got impacted due to Exception</description>
         <label>Total Dollar Impact (USD)</label>
         <precision>18</precision>
         <required>false</required>
-        <scale>0</scale>
+        <scale>2</scale>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
@@ -2946,6 +2947,7 @@
         <columns>Core_MDF_Exception_Status_nm__c</columns>
         <filterScope>Everything</filterScope>
         <label>Exceptions List View</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>E-{00000000}</displayFormat>
@@ -3063,6 +3065,7 @@ AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Client_CoMarketing_Fund&qu
 OR($Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ,
+$Permission.Core_MDF_Internal_IPA_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer ),
 NOT( $Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer )
 ),
@@ -3071,7 +3074,8 @@ AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Data_Center_CoMarketing_Fu
 OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
 $Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer,
 $Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ,
-$Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer  ),
+$Permission.Core_MDF_Internal_IPA_Exception_Reviewer ,
+$Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer ),
 NOT($Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer )
 ),
 
@@ -3079,7 +3083,8 @@ AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Service_Provider_CoMarketi
 OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
 $Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ,
-$Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer  ),
+$Permission.Core_MDF_Internal_IPA_Exception_Reviewer ,
+$Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer ),
 NOT($Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer)
 ),
 
@@ -3087,6 +3092,7 @@ AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Client_CoMarketing_Fund_Bo
 OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
 $Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer ,
+$Permission.Core_MDF_Internal_IPA_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer ),
 NOT($Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer )
 ),
@@ -3094,8 +3100,17 @@ AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Retail_Marketing_Funds&quo
 OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
 $Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer ,
+$Permission.Core_MDF_Internal_IPA_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ),
 NOT($Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer )
+),
+AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Intel_Partner_Alliance&quot;),
+OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
+$Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
+$Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer ,
+$Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer,
+$Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ),
+NOT($Permission.Core_MDF_Internal_IPA_Exception_Reviewer )
 ),
 AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Ecosystem_Extension_Fund&quot;),
 OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
@@ -3105,6 +3120,7 @@ $Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer,
 $Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ,
 $Permission.Core_MDF_Internal_IPA_Exception_Reviewer ),
 NOT($Permission.Core_MDF_Internal_EEF_Exception_Reviewer ))
+
 ))</errorConditionFormula>
         <errorMessage>User doesn’t have access to edit this program.</errorMessage>
     </validationRules>
@@ -3112,8 +3128,8 @@ NOT($Permission.Core_MDF_Internal_EEF_Exception_Reviewer ))
         <fullName>Core_MDF_CheckUserPermission</fullName>
         <active>true</active>
         <description>Validates the Program selected in exception with the user permission.</description>
-        <errorConditionFormula>OR(
-	AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Client_CoMarketing_Fund&quot;), 
+        <errorConditionFormula>AND(OR(
+AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Client_CoMarketing_Fund&quot;),
 OR($Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ,
@@ -3156,6 +3172,15 @@ $Permission.Core_MDF_Internal_IPA_Exception_Reviewer ,
 $Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ),
 NOT($Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer )
 ),
+AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Intel_Partner_Alliance&quot;),
+OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
+$Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
+$Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer ,
+$Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer,
+$Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ),
+NOT($Permission.Core_MDF_Internal_IPA_Exception_Reviewer )
+),
+
 AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Ecosystem_Extension_Fund&quot;),
 OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
 $Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
@@ -3164,18 +3189,8 @@ $Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer,
 $Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ),
 $Permission.Core_MDF_Internal_IPA_Exception_Reviewer ,
 NOT($Permission.Core_MDF_Internal_EEF_Exception_Reviewer)
-),
-AND( ISPICKVAL(Core_MDF_Program_nm__c ,&quot;Core_MDF_Intel_Partner_Alliance&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Exception_Reviewer,
-$Permission.Core_MDF_CCP_Internal_DCF_Exception_Reviewer ,
-$Permission.Core_MDF_CCP_Internal_SPCF_Exception_Reviewer ,
-$Permission.Core_MDF_CCP_Internal_RMF_Exception_Reviewer,
-$Permission.Core_MDF_CCP_Internal_CCF_Boost_Exception_Reviewer ),
-NOT($Permission.Core_MDF_Internal_IPA_Exception_Reviewer )
-	)
-
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account_id__c</errorDisplayField>
+)
+))</errorConditionFormula>
         <errorMessage>Cannot create an exception for this Program.</errorMessage>
     </validationRules>
     <validationRules>
@@ -3231,7 +3246,6 @@ NOT($Permission.Core_MDF_Internal_IPA_Exception_Reviewer )
 		ISCHANGED( Core_MDF_Select_All_Accounts_ind__c )
 	)
 )</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account_id__c</errorDisplayField>
         <errorMessage>Cannot edit Exception in this status.</errorMessage>
     </validationRules>
     <validationRules>

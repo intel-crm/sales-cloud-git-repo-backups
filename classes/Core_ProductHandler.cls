@@ -303,10 +303,10 @@ objectsToDelete.clear();
         
         
     }
-   
-    //Sandhya : US1014012 - To restrict Integration from editting Sales Visible flag after User edit
+     //Sandhya : US1014012 - To restrict Integration from editting Sales Visible flag after User edit
    public static void updateSalesVisibleFlagForPSG(List<Product2> newProdList,Map<Id,Product2> oldProdMap){
         System.debug('Inside updateFlag');
+         System.debug('Inside updateSalesVisibleFlagForPSG start');
         List<Product2> prodUpdateList = new List<Product2>();
        //Get the Integration Profile Name
         Id profileId= userinfo.getProfileId();
@@ -314,24 +314,31 @@ objectsToDelete.clear();
 		//Get the Profile name from Label     
         String integrationProfile = Label.PSG_Integration_Profile;
        
-        //Check if the User has editted field, DO not change it via Integration
         for(Product2 psgProdRecord : newProdList){
+             
+            //Check if the User has editted field, DO not change it via Integration
            If (loggedInProfileName.equals(integrationProfile) && psgProdRecord.Core_Sales_Visible_Flag_User_Edit__c==true 
-                && oldProdMap.get(psgProdRecord.Id).Core_Sales_Visible_Flag__c !=psgProdRecord.Core_Sales_Visible_Flag__c )
+                && oldProdMap.get(psgProdRecord.Id).Core_Sales_Visible_Flag__c !=psgProdRecord.Core_Sales_Visible_Flag__c 
+           && oldProdMap.get(psgProdRecord.Id).Core_OPN__c ==psgProdRecord.Core_OPN__c )
            {
+               
                 //if there is user edit change, then retain the older value without overriding the value through Integration.
                 psgProdRecord.Core_Sales_Visible_Flag__c = oldProdMap.get(psgProdRecord.Id).Core_Sales_Visible_Flag__c;
-                               
+                psgProdRecord.Core_Sales_Visible_Flag_User_Edit__c = oldProdMap.get(psgProdRecord.Id).Core_Sales_Visible_Flag_User_Edit__c;  
+              
+
             }
-        }
+          
+          }
        
-	}
-    
+	}    
 	//Gireesh:Update SalesVisibleFlag and DesignRegistrationEligibleFlags as false when Status = OB for an active PSG product
     public static void updateSalesVisibleDesignRegistrationFlags(List<Product2> newProdList){
         for(Product2 newProduct: newProdList){
+            
             if(newProduct.Core_Product_Status__c!=null && newProduct.Core_Product_Status__c=='OB' && newProduct.IsActive && newProduct.Core_Product_Type_Nm__c!=Null 
                && (newProduct.Core_Product_Type_Nm__c=='Tool' || newProduct.Core_Product_Type_Nm__c=='Component')){
+                   
                 newProduct.Core_Sales_Visible_Flag__c = False;
                 newProduct.Core_Design_Registration_Eligible_Ind__c = False;                
             }

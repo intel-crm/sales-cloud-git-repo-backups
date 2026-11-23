@@ -49,7 +49,7 @@ public class EPUM_ContactEntitlement_Test {
             cont.Core_IPA_PartnerRole__c = 'Service Provider';
             cont.Core_Login_Id__c = 'xyz';
             cont.Mailing_Country_Region__c = 'USA';
-            cont.MailingCountry='India';
+          	cont.MailingCountry='India';
             con.add(cont);
             
             Contact cont1 = new Contact();  //Contact

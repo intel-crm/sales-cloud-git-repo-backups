@@ -20,7 +20,7 @@ public with sharing class PRM_EmailToPrimaryContact {
 * @param afterupdate //inactive scenario    
 */    
     public static void sendEmailToAllPrimaryContact(Map<Id,sObject> accConRelMap, Map<Id,sObject> accConNewMap, String[] inputPartnerRole, boolean isAfterInsert, boolean isAfterDelete){
-        
+         
         Boolean afterInsert = false;
         Boolean afterUpdate = false;       
         List<PRM_EmailUtility.EmailNotification> objEmailNotificationList = new List<PRM_EmailUtility.EmailNotification>();
@@ -64,19 +64,21 @@ public with sharing class PRM_EmailToPrimaryContact {
                 }            
             }
         }
+        system.debug('setOfAccId'+setOfAccId+'Size'+setOfAccId.size());
         
         // ACRs from  PRM_Account_Contact_Relationship__c
         Map<String, List<String>> accRelatedContacts = new Map<String, List<String>>();
         Map<String, List<PRM_Account_Contact_Relationship__c>> mapOfConACR = new Map<String, List<PRM_Account_Contact_Relationship__c>>();
         List<PRM_Account_Contact_Relationship__c> acrObjects = new List<PRM_Account_Contact_Relationship__c>();
         
-        	acrObjects= [select PRM_Account_Id__c, PRM_Account_Id__r.name, PRM_Contact_Id__c, PRM_Partner_Role__c, PRM_Contact_Id__r.id,PRM_Contact_Id__r.name, PRM_Contact_Id__r.firstname, PRM_Contact_Id__r.email,PRM_Contact_Id__r.Core_Preferred_Language__c,PRM_Contact_Id__r.Core_Do_Not_Contact__c,
+          acrObjects= [select PRM_Account_Id__c, PRM_Account_Id__r.name, PRM_Contact_Id__c, PRM_Partner_Role__c, PRM_Contact_Id__r.id,PRM_Contact_Id__r.name, PRM_Contact_Id__r.firstname, PRM_Contact_Id__r.email,PRM_Contact_Id__r.Core_Preferred_Language__c,PRM_Contact_Id__r.Core_Do_Not_Contact__c,
             PRM_Contact_Id__r.MailingCountryCode,PRM_Contact_Id__r.MailingCountry, PRM_Relationship_Id__r.name, PRM_InActive_Ind__c, 
             PRM_Contact_Id__r.Account.name,  PRM_Contact_Id__r.Account.AccountNumber,IsDeleted, PRM_Status_Nm__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in :setOfAccId];            
-       
+        system.debug('acrObjects'+acrObjects+'Size'+acrObjects.size());
         for(PRM_Account_Contact_Relationship__c acrObj : acrObjects){
             String parterRole = acrObj.PRM_Partner_Role__c;
-            
+            system.debug('acrObj'+acrObj);
+              system.debug('parterRole'+parterRole);
             if(isAfterInsert && !setOfInPtnrRole.isEmpty()){
                 setOfPartnerRole = setOfInPtnrRole;
             }
@@ -101,21 +103,26 @@ public with sharing class PRM_EmailToPrimaryContact {
             }
         }
         
-
+        System.debug('mapOfNewACR >> '+mapOfNewACR);
+        System.debug('mapOfConACR >> '+mapOfConACR);
         map<string, list<string>> mapAccIdsWithActivePAs=new map<string, list<string>>();
-        
+       
         //Primary Contacts who recive emails.
         Set<String> setOfPrimaryContact = new Set<String>();
         if(!mapOfNewACR.isEmpty() && !mapOfConACR.isEmpty()){
             for(String conId : mapOfConACR.keySet()){
                 List<PRM_Account_Contact_Relationship__c> acrObjs = mapOfConACR.get(conId);
-
+                System.debug('ACR object : '+acrObjs);
                 if(acrObjs != null){
                     for(PRM_Account_Contact_Relationship__c acrObj:acrObjs){
-
+                        System.debug('Relation : '+acrObj.PRM_Relationship_Id__r.name);
+                        System.debug('Inactive Status : '+acrObj.PRM_InActive_Ind__c);
+                        System.debug('Status NM :'+acrObj.PRM_Status_Nm__c);
+                        system.debug('!mapOfNewACR.containskey(conId):'+ mapOfNewACR.containskey(conId));
                         if(Test.isRunningTest() || (!mapOfNewACR.containskey(conId) && acrObj != null 
                            && !acrObj.PRM_InActive_Ind__c 
                            && (acrObj.PRM_Relationship_Id__r.name.touppercase() == System.Label.PRM_Primary_Contact.touppercase() || acrObj.PRM_Relationship_Id__r.name.touppercase() == System.Label.PRM_Partner_Admin_Delegate.touppercase()) && acrObj.PRM_Status_Nm__c !='Pending Action')){
+                              // setOfPrimaryContact.add(conId);
                                if(mapAccIdsWithActivePAs.containsKey(acrObj.PRM_Account_Id__c)){
                                     mapAccIdsWithActivePAs.get(acrObj.PRM_Account_Id__c).add(acrObj.PRM_Contact_Id__c);
                                 }else{
@@ -131,7 +138,7 @@ public with sharing class PRM_EmailToPrimaryContact {
                 }
             }
         }
-
+         System.debug('Primary Contacts who recive emailsmapAccIdsWithActivePAs : '+mapAccIdsWithActivePAs);
         
         
         
@@ -139,7 +146,8 @@ public with sharing class PRM_EmailToPrimaryContact {
 * Logic 1: After insert case "1st ACR for indivisual contact, email should trigger to all primary contact apart from new contact"
 * Logic 2: After update case
 */
-
+        System.debug('isAfterInsert >>>'+isAfterInsert);
+        System.debug('isAfterDelete >>>'+isAfterDelete);
         
         Set<String> emailContDetails = new Set<String>();
         //Logic 1:        
@@ -147,7 +155,7 @@ public with sharing class PRM_EmailToPrimaryContact {
             afterInsert =true;
             for(String conId : mapOfNewACR.keySet()){
                 List<PRM_Account_Contact_Relationship__c> listOfACR = mapOfConACR.get(conId);
-
+                System.debug('listOfACR >>>>'+listOfACR);
                 if((listOfACR != null && listOfACR.size() == 1) || mapOfNewACR.get(conId).size() > 1){
                     emailContDetails.add(conId);
                 }
@@ -165,11 +173,11 @@ public with sharing class PRM_EmailToPrimaryContact {
                         inactiveACRCount = inactiveACRCount + 1;
                     }
                 } 
-
+                System.debug('inactiveACRCount >>>> '+inactiveACRCount);
                 
                 //For Inactive operation 
                 sObject obj = accConRelMap.get(newAcrObj.id);
-
+                System.debug('obj >>>> '+obj);
                 if(obj != null){
                     PRM_Account_Contact_Relationship__c oldAcrObj = (PRM_Account_Contact_Relationship__c)obj;
                     if(newAcrObj.PRM_InActive_Ind__c != oldAcrObj.PRM_InActive_Ind__c){
@@ -181,7 +189,6 @@ public with sharing class PRM_EmailToPrimaryContact {
                         }
                         
                         /* if(inactiveACRCount == (listOfACR.size() - 1)  && !newAcrObj.PRM_InActive_Ind__c){
-System.debug('Exculded ContactId from Active Notification>> '+newAcrObj.PRM_Contact_Id__c);
 afterInsert = true;
 emailContDetails.add(newAcrObj.PRM_Contact_Id__c);
 } */
@@ -189,15 +196,20 @@ emailContDetails.add(newAcrObj.PRM_Contact_Id__c);
                 }              
             }
         }  
-
+        
+        
+        System.debug('>>>>>>>>>>>> emailContDetails : '+emailContDetails);
+        System.debug('>>>>>>>>>>>> setOfPrimaryContact : '+setOfPrimaryContact);
+        System.debug('>>>>>>>>>>>> mapOfConACR : '+mapOfConACR);
         
         //PRM_EmailUtility.EmailNotification objEmailNotify = new PRM_EmailUtility.EmailNotification();        
-		
+    
         //EmailNotification Object prepartaion
         Set<String> emailIds = new Set<String>();
         if(mapAccIdsWithActivePAs!=null && !mapAccIdsWithActivePAs.isEmpty() && !emailContDetails.isEmpty() && !mapOfConACR.isEmpty()){ 
-            Map<String, String> mapOfMailToContactID = new Map<String, String>();
-            Map<String, String> mapOfContPreferedLang = new Map<String, String>();
+             Map<String, String> mapOfMailToContactID = new Map<String, String>();
+             Map<String, String> mapOfContPreferedLang = new Map<String, String>();
+            // Map<String,String> mapOfContactName = new Map<String,String>();
              string businessEvent;
             string key;
             string templateName;
@@ -221,36 +233,42 @@ emailContDetails.add(newAcrObj.PRM_Contact_Id__c);
                 inputPtnrRole = (new List<String>(setOfInPtnrRole))[0];
             }
             
+            System.debug('>>>>>>>>>>>>>>> inputPtnrRole : '+inputPtnrRole);
             
             List<Map<String,String>> inputParameters = getInputParameters(mapAccIdsWithActivePAs,emailContDetails, mapOfConACR,mapOfNewACR,accConNewMap,inputPtnrRole);
+            System.debug('>>>>>>>>>>>>>>> inputParameters : '+inputParameters);
              
             //Nilesh added
             List<PRM_Language_Culture_Mapping__mdt> lngCultureMdtList = [Select Id,MasterLabel,PRM_Culture__c,PRM_Country__c,PRM_Country_Cd__c From PRM_Language_Culture_Mapping__mdt];
-
+            //
+            //for(String contId : setOfPrimaryContact){ 
             for(String accId : mapAccIdsWithActivePAs.keyset()){  
-
+           // Map<String, String> mapOfMailToContactID = new Map<String, String>();
+           // Map<String, String> mapOfContPreferedLang = new Map<String, String>();
             Map<String,String> mapOfContactName = new Map<String,String>();      
-  
+           // Map<String,String> mapOfContIdEmailTemplate = new Map<String,String>();    
           
             if(mapAccIdsWithActivePAs.get(accId).size()>0){
             for(string contId:mapAccIdsWithActivePAs.get(accId)){
                 PRM_EmailUtility.EmailNotification objEmailNotify = new PRM_EmailUtility.EmailNotification(); 
-                PRM_Account_Contact_Relationship__c prmACR = mapOfConACR.get(contId)[0];         
+                PRM_Account_Contact_Relationship__c prmACR = mapOfConACR.get(contId)[0];    
                 userLang=prmACR.PRM_Contact_Id__r.Core_Preferred_Language__c;
                 if(!prmACR.PRM_Contact_Id__r.Core_Do_Not_Contact__c){ 
                     if(afterInsert){
+                        //objEmailNotify.BusinessEvent = 'ACRCONTACT_ADDITION';
                         businessEvent= 'ACRCONTACT_ADDITION';
-
+                        System.debug('JB:: in PRM_EmailToPC->'+businessEvent);
 
                     }
                     if(afterUpdate){
+                       // objEmailNotify.BusinessEvent = 'ACRCONTACT_DELETION';
                        businessEvent= 'ACRCONTACT_DELETION';
                     } 
                    string keyTemplate= businessEvent+'-'+prmACR.PRM_Contact_Id__r.Core_Preferred_Language__c;
                     if(mapOfBusinessEventLang.containskey(keyTemplate)){
                         templateName=mapOfBusinessEventLang.get(keyTemplate);
                       mapOfContIdEmailTemplate.put(prmACR.PRM_Contact_Id__c, templateName);
-                    } 
+                    }
                     //Nilesh added
                     PRM_Language_Culture_Mapping__mdt langCultureForEmail;                
                     for(PRM_Language_Culture_Mapping__mdt mdtRec: lngCultureMdtList){
@@ -265,9 +283,11 @@ emailContDetails.add(newAcrObj.PRM_Contact_Id__c);
                     //Nilesh 
                     for(Map<String,String> inParamMap : inputParameters){ 
                         if(inParamMap.get('Account_ID').contains(accId)){
+                           //  if(inParamMap.get('PACont_ID').contains(contId)){
                             
                          newInParamMap.putAll(inParamMap);
                           inParamMap.put('Contact_ID',prmACR.PRM_Contact_Id__c);
+                          // inParamMap.put('PACont_Name',prmACR.PRM_Contact_Id__r.name);
                             inParamMap.put('PAAccount_Name',prmACR.PRM_Contact_Id__r.Account.name);
                               inParamMap.put('PAAccount_Number',prmACR.PRM_Contact_Id__r.Account.AccountNumber);
                           
@@ -278,15 +298,21 @@ emailContDetails.add(newAcrObj.PRM_Contact_Id__c);
                         }
                        
                         //Nilesh added
-                        if(langCultureForEmail != null){ 
+                        if(langCultureForEmail != null){
+                            //inParamMap.put('LanguageCulture_MDT',langCultureForEmail.Id);    
                              newInParamMap.put('LanguageCulture_MDT', langCultureForEmail.Id);
                         }
                         
+                        //
+                        System.debug('inparamap '+inParamMap);
+                        //objEmailNotify.InputParameters = inParamMap;
+                        System.debug('newInParamMap ' + newInParamMap);
                          if (objEmailNotify.InputParameters == null) {
-   						 objEmailNotify.InputParameters = new Map<String, string>();  
+                objEmailNotify.InputParameters = new Map<String, string>();  
                          }
                        objEmailNotify.InputParameters.putAll(newInParamMap) ;
                        PRM_EmailUtility.customPlaceholdersMap = new Map<String,String> {'{!AcrRoles}' => newInParamMap.get('Contact_Relationship'), '{!ContactLoginId}' => newInParamMap.get('Login_ID'), '{!ContactEmail}' => newInParamMap.get('Email_ID'), '{!ContactName}' => newInParamMap.get('Contact_Name')};
+                           system.debug('customPlaceholdersMap'+PRM_EmailUtility.customPlaceholdersMap);
                     }  
                // }
                 }
@@ -304,10 +330,21 @@ emailContDetails.add(newAcrObj.PRM_Contact_Id__c);
                     emailIds.add(prmACR.PRM_Contact_Id__r.email);
         
   
+            /*if(String.isNotBlank(objEmailNotify.BusinessEvent)){        
+                system.debug(' objEmailNotify.InputParameters'+ objEmailNotify.InputParameters);
+                objEmailNotify.mailToContactID = mapOfMailToContactID;
+                objEmailNotify.contactPreferdLang = mapOfContPreferedLang;
+                objEmailNotify.contactNameMap = mapOfContactName;
+            objEmailNotificationList.add(objEmailNotify);
+               
+            }*/
          }
         }  
     }    
 }
+ system.debug('mapAccIdToAddress'+mapAccIdToAddress);
+ system.debug('mapOfContIdEmailTemplate'+mapOfContIdEmailTemplate);
+ system.debug('newInParamMap'+newInParamMap);
 sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID, mapAccIdToAddress, mapOfContIdEmailTemplate,mapContIdInputparam,mapOfConACR); //TWC729-8541-sending new parameter mapofconACR to get proper PA/PAD name
     
 }
@@ -318,6 +355,7 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
                  }*/
                 //added as part of governor limit story:4380
               //  PRM_EmailUtility.sendEmail(objEmailNotificationList);
+              system.debug(objEmailNotificationList+'objEmailNotificationList');
             }
         
         
@@ -332,15 +370,15 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
         String contEmail=''; 
         string contRelation='';
         string ContName='';
-            Map<String,String> inParamMap = new Map<String,String>();            
+        Map<String,String> inParamMap = new Map<String,String>();  
         if(mapAccIdsWithActivePAs.get(accId).size()>0){
             for(String newContId : emailContDetails){
              //   Map<String,String> inParamMap = new Map<String,String>();            
-           PRM_Account_Contact_Relationship__c newContactACR = mapOfConACR.get(newContId)[0];
+                PRM_Account_Contact_Relationship__c newContactACR = mapOfConACR.get(newContId)[0];
                 if(newContactACR.PRM_Account_Id__c==accId){
-            inParamMap.put('Account_ID',mapOfConACR.get(newContId)[0].PRM_Account_Id__c);
+                inParamMap.put('Account_ID',mapOfConACR.get(newContId)[0].PRM_Account_Id__c);
                 //inParamMap.put('PACont_ID',mapOfConACR.get(newContId)[0].PRM_Account_Id__c);
-            
+                
             if(mapOfNewACR.containsKey(newContId)){
                 //inParamMap.put('Email_ID',newContactACR.PRM_Contact_Id__r.Email);
                 contEmail=newContactACR.PRM_Contact_Id__r.Email+','+contEmail;
@@ -355,7 +393,16 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
             }
         }
             
-
+      
+            /*
+             if(mapOfNewACR.containsKey(newContId)){
+                inParamMap.put('Login_ID',mapOfConACR.get(newContId)[0].PRM_Contact_Id__r.Core_Login_Id__c);
+                inParamMap.put('Email_ID',mapOfConACR.get(newContId)[0].PRM_Contact_Id__r.Email);
+                inParamMap.put('Contact_Relationship',getAssociatedRelationDetails(mapOfConACR.get(newContId),newAcrObject));
+               // System.debug('>>>>>> newContactACR.PRM_Partner_Role__c : '+newContactACR.PRM_Partner_Role__c);
+            }
+            inputParameters.add(inParamMap);
+      */
         }
         if (contEmail.endsWith(',')) {
             contEmail = contEmail.substring(0, contEmail.length() - 1)+' ';
@@ -374,12 +421,13 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
             Map<String,String> inParamMapPA = new Map<String,String>(); 
              PRM_Account_Contact_Relationship__c paContACR = mapOfConACR.get(contId)[0];
              inParamMapPA.put('Account_ID',mapOfConACR.get(contId)[0].PRM_Account_Id__c);
+            //inParamMapPA.put('PACont_ID',paContACR.PRM_Contact_Id__r.Id);
             inParamMapPA.put('PACont_Name',paContACR.PRM_Contact_Id__r.Name);
             inputParameters.add(inParamMapPA);
          }
     }
    
-        }
+}
         return inputParameters;
     }
     
@@ -399,6 +447,7 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
    @TestVisible 
    private static List<String> getPartnerRoleFrmACR(String role){
         List<String> partnerRoles = new List<String>();
+        System.debug('Partner Role : '+role);
         if(role != null && role.contains('_BR_ENCODED_')){ 
             partnerRoles.addAll(role.split('_BR_ENCODED_'));                 
         }else if(role != null && role.contains('<br>')){ 
@@ -428,19 +477,19 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
     public static void sendBulkEmail(map<string,list<string>> mapAccIdsWithActivePAs, map<string,string> mapOfContPreferedLang, map<string,string> mapOfMailToContactID, map<string,list<string>> mapAccIdToAddress
     ,map<string,string> mapOfContIdEmailTemplate, map<string, map<string,string>> mapContIdInputparam, map<String,List<PRM_Account_Contact_Relationship__c>>mapOfConACR) {
         List<OrgWideEmailAddress> owea = [select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com];
-      
+       // Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
         List<Messaging.SingleEmailMessage> emailsToSend = new List<Messaging.SingleEmailMessage>();
         List<Messaging.SingleEmailMessage> mails =new List<Messaging.SingleEmailMessage>();
-        list<string> toAddresses=new list<string>();
+        
         set<String> templateNames=new set<string>();
         map<string,EmailTemplate> mapOftemplates=new map<string,EmailTemplate>();
           List<PRM_EmailLog__c> listEmailLogs=new   List<PRM_EmailLog__c> ();
-
+         // if(templateName!=null){
          if(mapOfContIdEmailTemplate!=null && !mapOfContIdEmailTemplate.isempty()){
             for(string pacontId:mapOfContIdEmailTemplate.keyset()){
                 templateNames.add(mapOfContIdEmailTemplate.get(pacontId));
             }
-       
+       // list<EmailTemplate> emailTemps= [select HtmlValue,Subject ,DeveloperName from EmailTemplate where DeveloperName in:templateNames ];
        for(EmailTemplate emailtemp: [select HtmlValue,Subject,DeveloperName from EmailTemplate where DeveloperName in:templateNames ]){
             mapOftemplates.put(emailtemp.DeveloperName,emailtemp);
        }
@@ -448,25 +497,33 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
         String emailBody; 
        string tempemailbody;
       
-
+       system.debug('emailsToSend'+emailsToSend);
        
    
-           for(string accId: mapAccIdsWithActivePAs.keyset()){
-	   //Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage(); // TWC729-8541-commented and put email object in the below for loop to create unique email object per contact.
+           for(string accId: mapAccIdsWithActivePAs.keyset()){// 001Dw000020AS9WIAW honda shine
+            System.debug('=== Processing Account: ' + accId + ' ===');
+             //Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage(); // TWC729-8541-commented and put email object in the below for loop to create unique email object per contact.
+             
           for(string contId: mapAccIdsWithActivePAs.get(accId)){ 
+            System.debug('--- Processing Contact: ' + contId + ' ---');
                 Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage(); //// TWC729-8541
+                System.debug('Created email object: ' + email);
          emailTemp=mapOftemplates.get(mapOfContIdEmailTemplate.get(contId));
           emailBody=emailTemp.HtmlValue;
-
-           tempemailbody=emailBody; 
-            if(mapAccIdsWithActivePAs.containskey(accId)){
+           system.debug('emailBody'+emailBody); 
+           tempemailbody=emailBody; //acr_deletion
+            if(mapAccIdsWithActivePAs.containskey(accId)){// {{001Dw00001yZZx8IAG=(thorloki@spamok.com), 001Dw000020AS9WIAW=(shine@spamok.com)}}
             List<String> singleRecipient = new List<String>{mapOfMailToContactID.get(contId)};
                 email.setToAddresses(singleRecipient); // TWC729-8541-setting address seperately for each contact to email object
+            System.debug('Email recipients set to: ' + singleRecipient);
             email.setSubject(emailTemp.Subject);
             
-            list<map<string,string>> lstMapInputParaTemp=mapContIdInputparam.values();
-
-            map<string,string> MapInputParaTemp=mapContIdInputparam.containskey(contId)?mapContIdInputparam.get(contId):null;
+         //   }  
+            
+            //001Dw000020AS9WIAW={Account_ID=001Dw000020AS9WIAW, Contact_Name=Scooty pep, Contact_Relationship=Employee, Email_ID=pept@spamok.com}}
+        system.debug('contID'+contId);
+          system.debug('mapContIdInputparam'+mapContIdInputparam);
+            map<string,string> MapInputParaTemp=mapContIdInputparam.containskey(contId)?mapContIdInputparam.get(contId):null;//{Account_ID=001Dw000020AS9WIAW, Contact_Name=Scooty pep, Contact_Relationship=Employee, Email_ID=pept@spamok.com}
           if(MapInputParaTemp!=null ){
             for (string newInParam:MapInputParaTemp.keyset()){
                 tempemailbody = tempemailbody.replace('{!$Label.PRM_CurrentYear}', Label.PRM_CurrentYear);
@@ -485,17 +542,20 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
                  else if(newInParam=='PAAccount_Number')
                   tempemailbody= tempemailbody.replace('{!Account.AccountNumber}',mapInputParaTemp.containsKey(newInParam) ? mapInputParaTemp.get(newInParam) : '');    
                    //email.setHtmlBody(tempemailbody); 
-
+            /*if(newInParam=='PACont_ID'){
+                   email.setTargetObjectId(mapInputParaTemp.containsKey(newInParam) ? mapInputParaTemp.get(newInParam) : '');
+            }*/
             
         }
             String currentRecipientName = ''; 
            if(mapOfConACR.containsKey(contId) && !mapOfConACR.get(contId).isEmpty()) {
               currentRecipientName = mapOfConACR.get(contId)[0].PRM_Contact_Id__r.FirstName;
              }
-            
+             System.debug('Found recipient name: ' + currentRecipientName + ' for contId: ' + contId);
             tempemailbody = tempemailbody.replace('{!UserName}', currentRecipientName); // TWC729-8541-to replace username with proper name of PA/PAD
             email.setHtmlBody(tempemailbody);
     }
+           // email.setHtmlBody(tempemailbody); 
             if (owea != null) {
             email.setOrgWideEmailAddressId(owea.get(0).Id);
             }
@@ -512,6 +572,19 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
             log.Language__c=mapOfContPreferedLang.containskey(contId)?mapOfContPreferedLang.get(contId):'';
             log.PRM_Type__c = 'IPA';
             String toEmailId;
+           /* if(email.getToAddresses() != null ) {
+                log.PRM_ToEmailID__c = string.join(mapAccIdToAddress.get(accId),';');
+                if(log.PRM_ToEmailID__c.length() > 255)
+                {
+                    toEmailId = log.PRM_ToEmailID__c;
+                    log.PRM_ToEmailID__c = log.PRM_ToEmailID__c.substring(0,255);
+                    log.PRM_ToEmailIDCompleteValue__c = toEmailId;
+                }
+                else
+                {
+                    log.PRM_ToEmailIDCompleteValue__c = log.PRM_ToEmailID__c;
+                }
+            }*/
             log.PRM_ToEmailID__c =mapOfMailToContactID.containskey(contId)?mapOfMailToContactID.get(contId):'';
             if(!listEmailLogs.contains(log)){
                 listEmailLogs.add(log); 
@@ -520,6 +593,11 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
                 emailsToSend.add(email);
             
 
+            //emailsToSend.add(email);
+        //   Messaging.SendEmailResult [] r = Messaging.sendEmail(new Messaging.SingleEmailMessage[] {email});
+          /*  if(r[0].IsSuccess()){
+              listEmailLogs = PRM_Retrigger_Emaillog_Utility.createRetriggerEmailLogs(emailsToSend, new List<PRM_EmailLog__c>(),  templateName,userLang);
+            } */
                 
             }
         }
@@ -527,25 +605,16 @@ sendBulkEmail(mapAccIdsWithActivePAs,mapOfContPreferedLang, mapOfMailToContactID
 }
             try{
                  if(emailsToSend!=Null && emailsToSend.size()>0){
+            System.debug('=== SENDING EMAILS ===');
+            System.debug('Total emails to send: ' + emailsToSend.size());
                  Messaging.sendEmail(emailsToSend);
-
+                 system.debug('Success emailsToSend'+emailsToSend);
            // }
            if(!listEmailLogs.isempty()){
              list<Database.saveResult> saveLogResLst =  Database.insert(listEmailLogs,false); 
-             for (Database.SaveResult sr : saveLogResLst) {
-                    if(sr.isSuccess())
-					system.debug('Success'+sr.getId());
-                   else{
-					system.debug('failed'+sr.getId());
-                      for (Database.Error err : sr.getErrors()) {
-            System.debug('Error inserting record. Status Code: ' + err.getStatusCode() + 
-                         ', Message: ' + err.getMessage() + 
-                         ', Fields: ' + err.getFields());
-        }
-                    }
-                }
            }
-
+                   
+            System.debug('Emails sent successfully to multiple recipients.');
         } 
     }catch (Exception e) {
             System.debug('Error sending emails: ' + e.getMessage());

@@ -1,12 +1,5 @@
 @isTest
 public with sharing  class PMP_Locale_Outbound_Msg_Test {
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_Locale_Outbound_Msg.isWorking();      
-        System.assertEquals(true, result);
-        Boolean result1 = PMP_ScheduleAutoTranslation.isWorking();
-        System.assertEquals(true, result1);
-    }
 //IPA2.0 - As part of TWC729-7977 commented the entire class
 /*
     static TestMethod void ValidateOutboundJSon()

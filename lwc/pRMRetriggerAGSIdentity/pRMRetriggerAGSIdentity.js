@@ -80,8 +80,7 @@ export default class PRMRetriggerAGSIdentity extends LightningElement {
             this.dispatchEvent(new CloseActionScreenEvent());
         })
         .catch(error => {  
-
-            console.log('Error occured while calling createIdentityInAGSSync'+JSON.stringify(error));
+            console.log('Error occured while calling createIdentityInAGSSync');
         });
         }else if(!this.enterpriseCheck && this.acrList !=null){
             SendEmailVerificationAndCreateIdentityInAGS({accConRelList : this.acrList})

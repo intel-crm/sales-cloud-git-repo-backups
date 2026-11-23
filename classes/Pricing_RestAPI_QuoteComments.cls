@@ -132,7 +132,7 @@ global without sharing class Pricing_RestAPI_QuoteComments {            //change
     //-----------------------------------------------------------------------------------------------------------------------------
      @HttpGet
     global static Pricing_RestAPI_Response doGet(){
-    user currentUser = [Select Id,ContactId, AccountId from User where Id = :UserInfo.getUserId()];
+    user currentUser = [Select Id, AccountId from User where Id = :UserInfo.getUserId()];
         try{
             RestRequest restReq = RestContext.request;
             if(restReq.params.containsKey('id')){   

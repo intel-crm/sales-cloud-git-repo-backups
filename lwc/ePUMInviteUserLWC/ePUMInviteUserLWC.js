@@ -247,7 +247,7 @@ export default class EPUMInviteUserLWC extends LightningElement {
                             this.errMessage = this.label.EPUM_WebsiteMandatory;
                         } 
                         else if(this.apexErrMessage.includes("This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country.")){
-                            this.errMessage = this.label.EPUM_RestrctdContriesErrmsg;
+                            this.errMessage = this.label.EPUM_RestrictedCountriesErrMsg;
                         }else{
                             this.errMessage = result.message;
                         }

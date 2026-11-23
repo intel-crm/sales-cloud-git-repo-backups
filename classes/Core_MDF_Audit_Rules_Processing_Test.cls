@@ -40,7 +40,7 @@ public class Core_MDF_Audit_Rules_Processing_Test {
         claimFunctionalityNameTriggerExecution3.Core_Description__c = 'test';
         Database.insert(claimFunctionalityNameTriggerExecution3);
         
-        ChannelProgram ccfCP = Core_MDF_CCP_TestDataUtility.createProgram ('Client','Client CoMarketing Fund', true);
+        ChannelProgram ccfCP = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
 
         Account arpIntelAcc = Core_MDF_CCP_TestDataUtility.createAccount ('ARP Test Account', NULL, Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);   
         arpIntelAcc.BillingCity = 'ARP City';         

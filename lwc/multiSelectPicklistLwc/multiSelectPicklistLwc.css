@@ -1,0 +1,31 @@
+.verticalAlign {
+    cursor: pointer;
+    padding: 0px 5px !important;
+}
+
+.slds-dropdown {
+    padding: 0px !important;
+}
+
+.slds-listbox li {
+    padding: .4rem 0.5rem !important;
+    display: flex;
+}
+
+.inputBox input {
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.eachItem:hover {
+    background-color: #F1F1F1;
+    cursor: pointer;
+}
+
+.slds-dropdown_fluid {
+    margin-top: 0px;
+}
+
+.buttonPadding {
+    padding-left: 10px;
+}

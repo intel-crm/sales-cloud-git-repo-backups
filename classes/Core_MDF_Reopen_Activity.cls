@@ -24,7 +24,7 @@ public without sharing class Core_MDF_Reopen_Activity {
         Boolean hasPermission = false;
         string budgetType,program;
         
-       Date activityCloseDate;
+        Date activityCloseDate;
         Decimal claimedAmount = 0.0;
         Decimal escAmount = 0.0;
         Decimal totalConsumedAmt = 0.0;
@@ -50,6 +50,17 @@ public without sharing class Core_MDF_Reopen_Activity {
             if(pfrList != null && !pfrList.isEmpty()){
                 budgetType =  pfrList[0].Core_MDF_Budget_Type_nm__c;
                 program = pfrList[0].Core_MDF_Is_Outcome_Based_Ind__c == true ? pfrList[0].Core_MDF_Program__c : pfrList[0].campaign.Core_MDF_Program__c; // Rishabh
+
+                // Outcome-based CCF/DCF store the short program name on the PFR, while
+                // Core_MDF_Program_Budget_RecordType__mdt is keyed on the technical name.
+                //Akash-CCF/DCF
+                if (pfrList[0].Core_MDF_Is_Outcome_Based_Ind__c == true) {
+                    if (program == Core_MDF_CCP_ConstantClass.CCF_PROGRAM) {
+                        program = Core_MDF_CCP_ConstantClass.CCF_TECHNICAL_PROGRAM_NAME;
+                    } else if (program == Core_MDF_CCP_ConstantClass.DCF_PROGRAM) {
+                        program = Core_MDF_CCP_ConstantClass.DCF_TECHNICAL_PROGRAM_NAME;
+                    }
+                }
                 
                 if(pfrList[0].Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Retail_Program_Name')){
                     accIdRegMap.put(pfrList[0].ChannelPartnerId,pfrList[0].ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__r.Core_Geo__c);
@@ -144,7 +155,7 @@ public without sharing class Core_MDF_Reopen_Activity {
                 }         
                 //Check if Activity Close Date is past
                 else if(activityCloseDate < System.today()){
-                    returnMsg = System.Label.Core_MDF_Claiming_Window_Closed;
+                   //returnMsg = System.Label.Core_MDF_Claiming_Window_Closed;
                 }
                 //Check if Budget is expired
                 else if(pfrList[0].Budget.EndDate < System.today()){
@@ -360,7 +371,7 @@ public without sharing class Core_MDF_Reopen_Activity {
         string returnMsg = '';
 
         List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
- 
+
         
         try{
             String reopenStatus = System.Label.Core_MDF_ATF_Reopen_Status;

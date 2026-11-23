@@ -21,6 +21,7 @@ global class ACM_DeleteDuplicatesOnAccountMerge implements Database.Batchable<sO
     global void execute(Database.BatchableContext bc, List<AccountHistory> accountHistory) {
         Set<String> accountIds= new Set<String>();
         for(AccountHistory ah:accountHistory) {
+            System.debug('accountIds'+accountIds);
             accountIds.add(ah.AccountId);
         }
         if(!accountIds.isEmpty()) {

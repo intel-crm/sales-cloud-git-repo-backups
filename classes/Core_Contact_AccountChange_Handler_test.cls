@@ -80,6 +80,7 @@ private class Core_Contact_AccountChange_Handler_test {
             objCon.Core_Enterprise_Id__c='12345';
             objCon.Core_ERPM_Integration_Status__c = 'Pending';
             objCon.Core_eRPM_Person_Id__c = '111111';
+            objCon.Core_Mailing_Address__CountryCode__s='USA';
             conlist.add(objCon);
             
             insert conlist;
@@ -336,14 +337,14 @@ private class Core_Contact_AccountChange_Handler_test {
         List<Contact> lstCon=new List<Contact>();
         Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='test', Email='test123@testing.com.test',
                                            AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,MailingCountry='USA',
-                                         Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+                                         Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111',Core_Mailing_Address__CountryCode__s='USA');
         insert testContact1;
         System.assert(true,testContact1.Core_Personal_Email_Indicator__c!= null);
         lstCon.add(testContact1);
         
         Contact testContact2 = new Contact(FirstName='testFirstName1234', LastName='test', Email='test1234@testing.com.test',
                                            AccountId=testAccount3.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,MailingCountry='USA',
-                                         Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+                                         Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111',Core_Mailing_Address__CountryCode__s='USA');
         insert testContact2;
         system.assertequals(testContact2.FirstName,'testFirstName1234');
         lstCon.add(testContact2);
@@ -467,7 +468,7 @@ private class Core_Contact_AccountChange_Handler_test {
                   
                  Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='test', Email='test123@testing.com.test',
                                            AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,
-                                           MailingCountry='USA',Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+                                           MailingCountry='USA',Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111',Core_Mailing_Address__CountryCode__s='USA');
                 insert testContact1;
                 System.assert(true,testContact1.Core_Personal_Email_Indicator__c!= null);
                 // Create Case
@@ -567,7 +568,7 @@ private class Core_Contact_AccountChange_Handler_test {
                  Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='test', Email='test123@testing.com.test',
                                            AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true,Core_ERPM_Integration_Status__c ='Failed',Core_AGS_Integration_Status__c='Failed', Core_Entitlement_Assignment_Status__c='Failed',
                                            MailingCountry='USA',
-                                         Core_Enterprise_Id__c='12345',Core_eRPM_Person_Id__c = '111111');
+                                         Core_Enterprise_Id__c='12345',Core_eRPM_Person_Id__c = '111111',Core_Mailing_Address__CountryCode__s='USA');
                 insert testContact1;
                 System.assert(true,testContact1.Core_Personal_Email_Indicator__c!= null);
                 try{

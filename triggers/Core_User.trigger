@@ -89,7 +89,13 @@ trigger Core_User on User(before insert, before update, after insert, after upda
             
             //Create Contact from USer if Internal Employess as Customer
             Core_IPS_UserTriggerHandler.createContactForEAC(Trigger.New);                    
-                       
+            
+            //Method to create IPA users with employee entitlements with inactive status. 
+            boolean createInactiveIPAUserActive = mapFunctionalityNameTriggerExecution.containsKey('createInactiveIPAUser') &&
+                mapFunctionalityNameTriggerExecution.get('createInactiveIPAUser').Core_Active__c;
+            if (createInactiveIPAUserActive){
+                Core_UserHandler.createInactiveIPAUser(Trigger.new); 
+            }           
         } 
         
         if (Trigger.isUpdate) {

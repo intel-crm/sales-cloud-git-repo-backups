@@ -398,8 +398,7 @@
                 //Gets value from dependent picklist field 
                 var sFieldValues = result.picklistFieldValues[pickListFields[i]].values;
                 // Constructing the Options for the picklist field
-                this.initActcategoryandType(component, pickListFields[i], sControllingFieldValues, sFieldValues);
-                
+                this.initActcategoryandType(component, pickListFields[i], sControllingFieldValues, sFieldValues);   
             }
             }else{
                 var errorMessage = $A.get("$Label.c.Core_MDF_ApplicationErrorMessage");
@@ -7571,6 +7570,7 @@ else {
                     valueFromCampaign[picklistFields[i]] = true;
                     }
                     component.set("v.FieldValuesFromCampaign",valueFromCampaign);
+                    
                 }
                 
             }

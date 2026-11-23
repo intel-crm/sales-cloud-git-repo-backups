@@ -34,7 +34,6 @@ public class PRM_BulkInviteApexTest {
         con1.Core_Enterprise_Id__c = '463179832';
         con1.MailingCountry='USA';
         insert con1;
-        System.debug(con1);
         
         Contact con2 = new Contact();
         con2.FirstName='Mathewsam';
@@ -79,7 +78,6 @@ public class PRM_BulkInviteApexTest {
         cont4.Core_Enterprise_Id__c = '77665544';
         cont4.MailingCountry='USA';
         insert cont4;
-        System.debug(cont4);
         
         Profile profile1 = [Select Id from Profile where name = 'System Administrator'];
         
@@ -133,7 +131,6 @@ public class PRM_BulkInviteApexTest {
         con1.Core_Enterprise_Id__c = '463179832';
         con1.MailingCountry='USA';
         insert con1;
-        System.debug(con1);
         
         Contact con2 = new Contact();
         con2.FirstName='Mathewsam';
@@ -178,7 +175,6 @@ public class PRM_BulkInviteApexTest {
         cont4.Core_Enterprise_Id__c = '77665544';
         cont4.MailingCountry='USA';
         insert cont4;
-        System.debug(cont4);
         
         User testUser = new User(Alias = String.valueOf(datetime.now()).substring(0,8), Email='testUsercoreMPM@intel.com',
                                  EmailEncodingKey='UTF-8', LastName='User'+String.valueOf(date.today()), LanguageLocaleKey='en_US',
@@ -334,7 +330,6 @@ public class PRM_BulkInviteApexTest {
         con1.Core_Enterprise_Id__c = '463179832';
         con1.MailingCountry='USA';
         insert con1;
-        System.debug(con1);
         
         Contact con2 = new Contact();
         con2.FirstName='Mathewsam';
@@ -379,7 +374,6 @@ public class PRM_BulkInviteApexTest {
         cont4.Core_Enterprise_Id__c = '77665544';
         cont4.MailingCountry='USA';
         insert cont4;
-        System.debug(cont4);
         
         Contact con = new Contact();
         con.AccountId = acc.Id;
@@ -575,7 +569,6 @@ String status = PRM_BulkInviteApex.getStatus();*/
         con1.Core_Enterprise_Id__c = '463179832';
         con1.MailingCountry='USA';
         insert con1;
-        System.debug(con1);
         
         Contact con2 = new Contact();
         con2.FirstName='Mathewsam';
@@ -620,7 +613,6 @@ String status = PRM_BulkInviteApex.getStatus();*/
         cont4.Core_Enterprise_Id__c = '77665544';
         cont4.MailingCountry='USA';
         insert cont4;
-        System.debug(cont4);
         
         Contact con = new Contact();
         con.AccountId = acc.Id;
@@ -812,7 +804,6 @@ String status = PRM_BulkInviteApex.getStatus();*/
         con1.Core_Enterprise_Id__c = '463179832';
         con1.MailingCountry='USA';
         insert con1;
-        System.debug(con1);
         
         Contact con2 = new Contact();
         con2.FirstName='Mathewsam';
@@ -857,7 +848,6 @@ String status = PRM_BulkInviteApex.getStatus();*/
         cont4.Core_Enterprise_Id__c = '77665544';
         cont4.MailingCountry='USA';
         insert cont4;
-        System.debug(cont4);
         
         User testUser = new User(Alias = String.valueOf(datetime.now()).substring(0,8), Email='testUsercoreMPM@intel.com',
                                  EmailEncodingKey='UTF-8', LastName='User'+String.valueOf(date.today()), LanguageLocaleKey='en_US',

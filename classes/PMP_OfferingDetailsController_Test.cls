@@ -12,7 +12,7 @@
 @isTest
 public class PMP_OfferingDetailsController_Test {
     
-   /*@testSetup static void setup() {
+  /* @testSetup static void setup() {
         // Create common test accounts
         
         Account acc1 = PMP_TestDataUtility.createIntelAccount('TestAccount1', PMP_TestDataUtility.intel_Account_Record_Type, true);
@@ -585,7 +585,7 @@ public class PMP_OfferingDetailsController_Test {
         
         PMP_Partner_Offering_Specification__c offSpecs = [select id,PMP_Offering_Id__c from PMP_Partner_Offering_Specification__c where PMP_Offering_Id__c=:offering1.Id];
         
-        list<contentDocument> contentDocument = PMP_TestDataUtility.createContentDocument(true);
+/*        list<contentDocument> contentDocument = PMP_TestDataUtility.createContentDocument(true);
         
         PMP_Partner_Offering_Resource__c getResources = PMP_TestDataUtility.getResources(contentDocument[0].id, offering1.id);
         
@@ -611,9 +611,8 @@ public class PMP_OfferingDetailsController_Test {
         //Id offeringId, Boolean bEditOffering, Boolean bViewOffering, Boolean bCompareOffering,string language, String langCode,boolean isPreview
         //System.assertNotEquals(offerings,'');
         
-        //PMP_ProductPartnerDetailsController.getPartnerDetails(offering1.Id,offering1.PMP_Company_Id__c,null,true,'en_US');
-        PMP_ProductPartnerDetailsController.getPartnerDetails(offering1.PMP_Company_Id__c,null,true,'en_US');
-       
+        PMP_ProductPartnerDetailsController.getPartnerDetails(offering1.Id,offering1.PMP_Company_Id__c,null,true,'en_US');
+        
         List<Id> offeringIds = new List<Id>();
         offeringIds.add(offering1.Id);
         Id profileId = [SELECT Id FROM Profile WHERE Name = 'Intel® Solutions Marketplace Profile'].Id;
@@ -1156,7 +1155,7 @@ public class PMP_OfferingDetailsController_Test {
         
         ptnrCat2 = new PMP_Partner_Category__c();
         ptnrCat2.PMP_Category_Id__c = ind2.Id;
-        ptnrCat2.PMP_Partner_Id__c = partner1.Id;
+   /*     ptnrCat2.PMP_Partner_Id__c = partner1.Id;
         insert ptnrCat2;
         
         //Test.startTest();
@@ -1207,7 +1206,7 @@ public class PMP_OfferingDetailsController_Test {
         offeringIds.add(offering1.Id);
         Id profileId = [SELECT Id FROM Profile WHERE Name = 'Intel® Solutions Marketplace Profile'].Id;
         //  PMP_StaticConstants_Offering.guestProfiles = new String[]{'Intel® Solutions Marketplace Profile'};                  
-       /* User usr = new User(LastName = 'LIVESTON',
+        User usr = new User(LastName = 'LIVESTON',
                             FirstName='JASON',
                             Alias = 'jliv',
                             Email = 'jason1@gmail.com',

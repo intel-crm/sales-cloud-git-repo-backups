@@ -2,7 +2,6 @@
 <ExtlClntAppConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
     <externalClientApplication>Keren_App</externalClientApplication>
     <isEnabled>true</isEnabled>
-    <isOauthPluginEnabled>true</isOauthPluginEnabled>
     <label>Keren_App_defaultPolicy</label>
     <startPage>None</startPage>
 </ExtlClntAppConfigurablePolicies>

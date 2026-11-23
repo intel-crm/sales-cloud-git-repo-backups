@@ -302,7 +302,7 @@
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
-            <colSpan>2</colSpan>
+            <colSpan>3</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -335,8 +335,8 @@
             <rowSpan>2</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>2</colSpan>
-            <columnIndex>2</columnIndex>
+            <colSpan>3</colSpan>
+            <columnIndex>3</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
@@ -371,14 +371,8 @@
             <colSpan>3</colSpan>
             <columnIndex>6</columnIndex>
             <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
-                </chartSummary>
-                <componentType>ColumnStacked</componentType>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Metric</componentType>
                 <dashboardFilterColumns>
                     <column>ROLLUP_DESCRIPTION</column>
                 </dashboardFilterColumns>
@@ -388,37 +382,21 @@
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Owner__c</column>
                 </dashboardFilterColumns>
-                <displayUnits>Millions</displayUnits>
-                <drillEnabled>true</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>true</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-                <groupingColumn>STAGE_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <title>Oppty Revenue by Quarter by Status</title>
-                <useReportChart>false</useReportChart>
+                <displayUnits>Integer</displayUnits>
+                <groupingSortProperties/>
+                <header>PENDING OPPORTUNITY REVENUE</header>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <metricLabel>Pending Deal Win Revenue</metricLabel>
+                <report>unfiled$public/AE_Revenue_Pending_Report</report>
+                <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>4</rowSpan>
+            <rowSpan>2</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>2</colSpan>
+            <colSpan>3</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -449,10 +427,95 @@
             <rowSpan>2</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>2</colSpan>
-            <columnIndex>2</columnIndex>
+            <colSpan>3</colSpan>
+            <columnIndex>3</columnIndex>
             <dashboardComponent>
-                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>ColumnStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Owner__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Owner__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <drillEnabled>true</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>CLOSE_DATE</groupingColumn>
+                <groupingColumn>STAGE_NAME</groupingColumn>
+                <groupingSortProperties/>
+                <legendPosition>Bottom</legendPosition>
+                <report>ASMO_ISG_Operations/USBC_Pending_Oppty_by_BU_and_Stage</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>Oppty Count by Quarter by Status</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>2</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+                </chartSummary>
+                <componentType>ColumnStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Owner__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Owner__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Millions</displayUnits>
+                <drillEnabled>true</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
+                <groupingColumn>STAGE_NAME</groupingColumn>
+                <groupingSortProperties/>
+                <legendPosition>Bottom</legendPosition>
+                <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>Oppty Revenue by Quarter by Status</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>2</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
                     <column>ROLLUP_DESCRIPTION</column>
@@ -465,15 +528,14 @@
                 </dashboardFilterColumns>
                 <displayUnits>Integer</displayUnits>
                 <groupingSortProperties/>
-                <header>PENDING OPPORTUNITY REVENUE</header>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
-                <metricLabel>Pending Deal Win Revenue</metricLabel>
-                <report>unfiled$public/AE_Revenue_Pending_Report</report>
+                <metricLabel>YTD Lost &amp; Canceled Opportunities</metricLabel>
+                <report>ASMO_ISG_Operations/USCB_Lost_Canceled_Opportunites</report>
                 <showRange>false</showRange>
             </dashboardComponent>
-            <rowIndex>2</rowIndex>
+            <rowIndex>4</rowIndex>
             <rowSpan>2</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -513,7 +575,7 @@
                 <showPicturesOnTables>true</showPicturesOnTables>
                 <title>Revenue Won YTD by Account</title>
             </dashboardComponent>
-            <rowIndex>4</rowIndex>
+            <rowIndex>6</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -523,8 +585,9 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
+                    <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
+                    <column>Opportunity.Core_Oppty_Count__c</column>
                 </chartSummary>
                 <componentType>ColumnStacked</componentType>
                 <dashboardFilterColumns>
@@ -539,30 +602,21 @@
                 <displayUnits>Integer</displayUnits>
                 <drillEnabled>true</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>true</enableHover>
+                <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
-                <groupingColumn>STAGE_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+                <groupingSortProperties/>
                 <legendPosition>Bottom</legendPosition>
-                <report>ASMO_ISG_Operations/USBC_Pending_Oppty_by_BU_and_Stage</report>
+                <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
-                <title>Oppty Count by Quarter by Status</title>
+                <title>Oppty Count by Quarter by BU</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>4</rowIndex>
+            <rowIndex>6</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -593,16 +647,7 @@
                 <expandOthers>false</expandOthers>
                 <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
                 <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingSortProperties/>
                 <legendPosition>Bottom</legendPosition>
                 <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>
                 <showPercentage>false</showPercentage>
@@ -612,7 +657,7 @@
                 <title>Oppty Revenue by Quarter by BU</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>4</rowIndex>
+            <rowIndex>6</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -657,96 +702,7 @@
                 <showPicturesOnTables>true</showPicturesOnTables>
                 <title>Top 20 Current Quarter Wins</title>
             </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>3</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>Opportunity.Core_Oppty_Count__c</column>
-                </chartSummary>
-                <componentType>ColumnStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <displayUnits>Integer</displayUnits>
-                <drillEnabled>true</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <legendPosition>Bottom</legendPosition>
-                <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <title>Oppty Count by Quarter by BU</title>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
-                <componentType>Table</componentType>
-                <dashboardFilterColumns>
-                    <column>ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardTableColumn>
-                    <column>OpportunityLineItem.Core_KPI_Product_Group__c</column>
-                </dashboardTableColumn>
-                <dashboardTableColumn>
-                    <aggregateType>Sum</aggregateType>
-                    <calculatePercent>false</calculatePercent>
-                    <column>Opportunity.Core_Opportunity_Count__c</column>
-                    <showTotal>false</showTotal>
-                </dashboardTableColumn>
-                <displayUnits>Integer</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>true</drillToDetailEnabled>
-                <groupingSortProperties/>
-                <indicatorHighColor>#54C254</indicatorHighColor>
-                <indicatorLowColor>#C25454</indicatorLowColor>
-                <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-                <maxValuesDisplayed>20</maxValuesDisplayed>
-                <report>ASMO_ISG_Operations/AE_Opportunities_with_KPIs_Only</report>
-                <showPicturesOnTables>true</showPicturesOnTables>
-                <title>Oppty with Product Group</title>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
+            <rowIndex>10</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -791,7 +747,86 @@
                 <showPicturesOnTables>true</showPicturesOnTables>
                 <title>Top 20 Current Quarter Pending Oppty</title>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
+            <rowIndex>10</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Table</componentType>
+                <dashboardFilterColumns>
+                    <column>ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Owner__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Owner__c</column>
+                </dashboardFilterColumns>
+                <dashboardTableColumn>
+                    <column>OpportunityLineItem.Core_KPI_Product_Group__c</column>
+                </dashboardTableColumn>
+                <dashboardTableColumn>
+                    <aggregateType>Sum</aggregateType>
+                    <calculatePercent>false</calculatePercent>
+                    <column>Opportunity.Core_Opportunity_Count__c</column>
+                    <showTotal>false</showTotal>
+                </dashboardTableColumn>
+                <displayUnits>Integer</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>true</drillToDetailEnabled>
+                <groupingSortProperties/>
+                <indicatorHighColor>#54C254</indicatorHighColor>
+                <indicatorLowColor>#C25454</indicatorLowColor>
+                <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+                <maxValuesDisplayed>20</maxValuesDisplayed>
+                <report>ASMO_ISG_Operations/AE_Opportunities_with_KPIs_Only</report>
+                <showPicturesOnTables>true</showPicturesOnTables>
+                <title>Oppty with Product Group</title>
+            </dashboardComponent>
+            <rowIndex>10</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>3</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>ColumnStacked</componentType>
+                <dashboardFilterColumns>
+                    <column>ROLLUP_DESCRIPTION</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Owner__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Owner__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <drillEnabled>true</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>CLOSE_DATE</groupingColumn>
+                <groupingColumn>STAGE_NAME</groupingColumn>
+                <groupingSortProperties/>
+                <legendPosition>Bottom</legendPosition>
+                <report>ASMO_ISG_Operations/USBC_Pending_Oppty_Pipeline</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>Current Year Pending Monthly Pipeline</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>14</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -829,56 +864,7 @@
                 <showPicturesOnTables>true</showPicturesOnTables>
                 <title>Oppty with Solution Areas</title>
             </dashboardComponent>
-            <rowIndex>12</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>3</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>ColumnStacked</componentType>
-                <dashboardFilterColumns>
-                    <column>ROLLUP_DESCRIPTION</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <displayUnits>Integer</displayUnits>
-                <drillEnabled>true</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>true</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
-                <groupingColumn>STAGE_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <legendPosition>Bottom</legendPosition>
-                <report>ASMO_ISG_Operations/USBC_Pending_Oppty_Pipeline</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <title>Current Year Pending Monthly Pipeline</title>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>16</rowIndex>
+            <rowIndex>14</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -908,13 +894,7 @@
                 <enableHover>true</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!Opportunity.Core_Oppty_Count__c</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingSortProperties/>
                 <legendPosition>Bottom</legendPosition>
                 <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>
                 <showPercentage>false</showPercentage>
@@ -925,7 +905,7 @@
                 <title>Pending Deal Wins by BU</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>20</rowIndex>
+            <rowIndex>18</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -976,7 +956,7 @@
                 <showPicturesOnTables>true</showPicturesOnTables>
                 <title>Next FQ Top 10 Pending Opportunities</title>
             </dashboardComponent>
-            <rowIndex>24</rowIndex>
+            <rowIndex>22</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -1006,16 +986,7 @@
                 <expandOthers>false</expandOthers>
                 <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
                 <groupingColumn>STAGE_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <inheritedReportGroupingSort>r</inheritedReportGroupingSort>
-                    </groupingSorts>
-                </groupingSortProperties>
+                <groupingSortProperties/>
                 <legendPosition>Bottom</legendPosition>
                 <report>unfiled$public/AE_Revenue_NFY_Report</report>
                 <showPercentage>false</showPercentage>
@@ -1025,7 +996,7 @@
                 <title>Next Year Quarterly Pipeline</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>28</rowIndex>
+            <rowIndex>26</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>9</numberOfColumns>

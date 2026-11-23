@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Celestica Electronics Co. Ltd. Customer User</description>
+    <description>Celestica Electronics (Shanghai) Co. Ltd. Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Celestica Electronics Co. Ltd. Customer User</name>
+    <name>Celestica Electronics (Shanghai) Co. Ltd. Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>A_E_Users_do_not_nest_users</parentRole>
+    <parentRole>EMP_10688941_hang_cheng</parentRole>
 </Role>

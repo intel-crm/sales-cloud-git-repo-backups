@@ -45,10 +45,7 @@ Modification Log :
         for(User usr : listOfUser){
             usr.ProfileID =  profiles.get('System Administrator');
         }
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert listOfUser;
-        }
+        insert listOfUser;
         System.assertEquals(listOfUser.get(0).profileid, profiles.get('System Administrator'));     
     }
     /***************************************************************************************************
@@ -1360,9 +1357,8 @@ Modification Log :
         List<Id> idList = new List<Id> ();
         getRecords();
         // Account
-        List<Account> listOfAccounts;
+        List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
         System.RunAs(listOfUser[0]){
-            listOfAccounts = TestUtilities.getListOfAccounts(1);
             insert listOfAccounts;
         }
         System.Assert(listOfAccounts[0].Id != null, 'Record not created');
@@ -1452,9 +1448,8 @@ Modification Log :
         List<Id> idList = new List<Id> ();
         getRecords();
         // Account
-        List<Account> listOfAccounts;
+        List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
         System.RunAs(listOfUser[0]){
-            listOfAccounts = TestUtilities.getListOfAccounts(1);
             insert listOfAccounts;
         }
         System.Assert(listOfAccounts[0].Id != null, 'Record not created');

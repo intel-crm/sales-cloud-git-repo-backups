@@ -392,11 +392,6 @@
     <label>Solution Partner</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Solution_Partner__c</columns>
-        <columns>Solution_Partner_Type__c</columns>
-        <columns>Core_Solution_Area__c</columns>
-        <columns>Core_Solution_Partner_Role__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

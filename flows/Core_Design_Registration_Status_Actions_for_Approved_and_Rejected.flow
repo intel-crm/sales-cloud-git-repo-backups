@@ -54,7 +54,7 @@
         <name>Send_Email</name>
         <label>Send Email</label>
         <locationX>50</locationX>
-        <locationY>1271</locationY>
+        <locationY>1163</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -210,7 +210,7 @@
         <name>SendEmailOnExpiry</name>
         <label>SendEmailOnExpiry</label>
         <locationX>754</locationX>
-        <locationY>1271</locationY>
+        <locationY>1163</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -266,7 +266,7 @@
         <name>SendEmailOnRejection</name>
         <label>SendEmailOnRejection</label>
         <locationX>402</locationX>
-        <locationY>1271</locationY>
+        <locationY>1163</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -429,7 +429,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_external_link</targetReference>
+            <targetReference>Send_Email</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -445,7 +445,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>get_link_external</targetReference>
+            <targetReference>SendEmailOnExpiry</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -461,7 +461,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>get_external_link_record</targetReference>
+            <targetReference>SendEmailOnRejection</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -909,7 +909,7 @@
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!Iterate_Over_DRP.Core_Design_Product_Status_Nm__c})+ 
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!Iterate_Over_DRP.Core_Comment_Txt__c}+
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!Iterate_Over_DRP.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!Iterate_Over_DRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://intel--devint3.sandbox.my.site.com/partneradmin/s/core-design-registration-product/&apos; + {!Iterate_Over_DRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
 &apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
     </formulas>
     <formulas>
@@ -921,7 +921,7 @@
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDRPS.Core_Design_Product_Status_Nm__c})+ 
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRPS.Core_Comment_Txt__c}+
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDRPS.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!IterateOverDRPS.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://intel--crmdevint3.sandbox.my.site.com/partneradmin/s/core-design-registration-product/&apos; + {!IterateOverDRPS.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
 &apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
     </formulas>
     <formulas>
@@ -933,7 +933,7 @@
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + TEXT({!IterateOverDRP.Core_Design_Product_Status_Nm__c})+ 
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; + {!IterateOverDRP.Core_Comment_Txt__c}+
 &apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px ; width:150px;&quot;&gt;&apos; + TEXT({!IterateOverDRP.CreatedDate})+ 
-&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://partner-admin.intel.com/s/core-design-registration-product/&apos; + {!IterateOverDRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
+&apos;&lt;/td&gt;&lt;td style =&quot;padding: 10px;&quot;&gt;&apos; +&apos;&lt;a href=&quot;https://intel--crmdevint3.sandbox.my.site.com/partneradmin/s/core-design-registration-product/&apos; + {!IterateOverDRP.Id} + &apos;&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&apos; +
 &apos;&lt;/td&gt;&lt;/tr&gt;&apos;</expression>
     </formulas>
     <formulas>
@@ -1284,48 +1284,6 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_external_link</name>
-        <label>Get external link</label>
-        <locationX>50</locationX>
-        <locationY>1163</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Send_Email</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>PCC_External_Link</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>LabelConfiguration__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>get_external_link_record</name>
-        <label>get external link record</label>
-        <locationX>402</locationX>
-        <locationY>1163</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>SendEmailOnRejection</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>PCC_External_Link</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>LabelConfiguration__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>get_external_record_link</name>
         <label>get external record link</label>
         <locationX>1612</locationX>
@@ -1382,27 +1340,6 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>PCC_Internal_Record_Link</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>LabelConfiguration__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>get_link_external</name>
-        <label>get link external</label>
-        <locationX>754</locationX>
-        <locationY>1163</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>SendEmailOnExpiry</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>PCC_External_Link</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -1493,17 +1430,17 @@
     <textTemplates>
         <name>emailBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Approved&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;&quot;&gt;Opportunity:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 16px; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Click&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!Get_external_link.Value__c}opportunity/{!$Record.Core_Opportunity_Id__c}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; font-family: Arial, sans-serif;&quot;&gt;to view&lt;/span&gt;.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;It is the Intel Partner&apos;s responsibility to understand the export, customs, and sanction controls applicable to Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!Get_external_link.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Approved&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;&quot;&gt;Opportunity:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: arial;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 16px; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Click&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://intel--crmdevint3.sandbox.my.site.com/partneradmin/s/opportunity/{!$Record.Core_Opportunity_Id__c}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;&amp;nbsp;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 16px; font-family: Arial, sans-serif;&quot;&gt;to view&lt;/span&gt;.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;It is the Intel Partner&apos;s responsibility to understand the export, customs, and sanction controls applicable to Intel Partner&apos;s company, project, and product and take all actions necessary to ensure compliance.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://intel--crmdevint3.sandbox.my.site.com/partneradmin/s/core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>EmailBodyforExpiry</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Expired&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!get_link_external.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Expired&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://intel--devint3.sandbox.my.site.com/partneradmin/s/core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>EmailBodyForRejection</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Rejected&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-size: 12pt;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;{!get_external_link_record.Value__c}core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0);&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
+        <text>&lt;p&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Hello {!$Record.Owner:User.FirstName},&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;The following Design Registration has been&amp;nbsp;&lt;/span&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(0, 0, 0); font-family: Arial, sans-serif; background-color: rgb(255, 255, 255);&quot;&gt;Rejected&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Registration Number:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;{!$Record.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Design Registration Name:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;{!$Record.Core_Design_Registration_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;End Customer Name:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;{!EndCustomerName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Rejection Reason:&lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt; {!$Record.Core_Rejection_Reason_Nm__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Rejection Comments: &lt;/strong&gt;&lt;span style=&quot;font-size: 12pt; color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;{!$Record.Core_Rejection_Comment_Txt__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!table}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;For more details, you can access it by clicking on this&lt;/span&gt;&lt;span style=&quot;font-family: Arial, sans-serif;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://intel--devint3.sandbox.my.site.com/partneradmin/s/core-design-registration/{!$Record.Id}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-family: Arial, sans-serif;&quot;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Arial, sans-serif;&quot;&gt;Thank you.&lt;/span&gt;&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>PCC_EmailBodyforDealRejectionApprover</name>

@@ -229,6 +229,171 @@
     <enableFeeds>true</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fieldSets>
+        <fullName>BT_User_EPIM</fullName>
+        <description>Fieldset for BT_User_EPIM Field Masking</description>
+        <displayedFields>
+            <field>AboutMe</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FederationIdentifier</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Alias</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>State</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Department</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Country</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>EmployeeNumber</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>PostalCode</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>GeocodeAccuracy</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Title</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Email</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Fax</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Username</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CreatedById</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SenderName</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SenderEmail</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CompanyName</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>City</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Latitude</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>ManagerId</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Division</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Longitude</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>BadgeText</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>MobilePhone</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastModifiedById</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Signature</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Extension</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Street</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>BT_User_EPIM</label>
+    </fieldSets>
+    <fieldSets>
         <fullName>CPQ_Lookup</fullName>
         <description>User Lookup</description>
         <displayedFields>
@@ -262,7 +427,67 @@
         <fullName>PersonalInfo_EPIM</fullName>
         <description>Fieldset for User Field Masking</description>
         <displayedFields>
+            <field>Street</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>PostalCode</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Fax</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>City</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Latitude</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>SenderEmail</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Longitude</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>BadgeText</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>State</field>
             <isFieldManaged>true</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -272,22 +497,37 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Alias</field>
+            <field>CompanyName</field>
             <isFieldManaged>true</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>LastName</field>
+            <field>ManagerId</field>
             <isFieldManaged>true</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>FirstName</field>
+            <field>MobilePhone</field>
             <isFieldManaged>true</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
             <field>Username</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Alias</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>AboutMe</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FederationIdentifier</field>
             <isFieldManaged>true</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -302,7 +542,7 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>FederationIdentifier</field>
+            <field>GeocodeAccuracy</field>
             <isFieldManaged>true</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -317,12 +557,22 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
+            <field>Country</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
             <field>Extension</field>
             <isFieldManaged>true</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Name</field>
+            <field>Email</field>
+            <isFieldManaged>true</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>SenderName</field>
             <isFieldManaged>true</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -336,12 +586,12 @@
     <fields>
         <fullName>Address</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>Alias</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>CallCenterId</fullName>
@@ -351,17 +601,17 @@
     <fields>
         <fullName>CommunityNickname</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>CompanyName</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>ContactId</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -522,7 +772,7 @@
         <length>25</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -724,7 +974,7 @@ TRUE, FALSE)</formula>
         <length>25</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -734,7 +984,7 @@ TRUE, FALSE)</formula>
         <label>User Coverage</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
@@ -839,7 +1089,7 @@ TRUE, FALSE)</formula>
         <length>10</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -872,7 +1122,7 @@ TRUE, FALSE)</formula>
         <length>10</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -905,7 +1155,7 @@ TRUE, FALSE)</formula>
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -916,13 +1166,13 @@ TRUE, FALSE)</formula>
     </fields>
     <fields>
         <fullName>DelegatedApproverId</fullName>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Department</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>DigestFrequency</fullName>
@@ -932,12 +1182,12 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>Division</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>Email</fullName>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>EmailEncodingKey</fullName>
@@ -967,7 +1217,7 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>FederationIdentifier</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>ForecastEnabled</fullName>
@@ -993,7 +1243,7 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>LanguageLocaleKey</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>LocaleSidKey</fullName>
@@ -1003,18 +1253,18 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>ManagerId</fullName>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Hierarchy</type>
     </fields>
     <fields>
         <fullName>MobilePhone</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>Name</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>PMP_One_Partner_ID__c</fullName>
@@ -1050,7 +1300,7 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>Phone</fullName>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>PortalRole</fullName>
@@ -1060,8 +1310,20 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>ProfileId</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Deletion__c</fullName>
+        <description>This formula field will show the result of deletion of identities in AGS</description>
+        <externalId>false</externalId>
+        <formula>IF(((IsActive=False) &amp;&amp; ( Contact.Core_Enterprise_Id__c =null) &amp;&amp; (Contact.Core_Login_Id__c =null)), &apos;Identity Deleted&apos;, &apos;Identity is not properly deleted&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reason for Deletion</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>ReceivesAdminInfoEmails</fullName>
@@ -1204,17 +1466,17 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>TimeZoneSidKey</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>Title</fullName>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>UserRoleId</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -1237,7 +1499,7 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>User_loggedIN__c</fullName>
         <description>This field will check if the logged in user is same as that of user in the org.</description>
-        <formula>IF( Email = $User.Email, true, false)</formula>
+        <formula>IF( Id = $User.Id, true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>User_loggedIN</label>
         <trackHistory>false</trackHistory>
@@ -1246,7 +1508,7 @@ TRUE, FALSE)</formula>
     <fields>
         <fullName>Username</fullName>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
     </fields>
     <fields>
         <fullName>WorkspaceId</fullName>
@@ -1455,22 +1717,33 @@ TRUE, FALSE)</formula>
         <label>A&amp;E Users</label>
     </listViews>
     <listViews>
-        <fullName>ActiveUsers</fullName>
+        <fullName>Aggregated_Users</fullName>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.SAML_SUBJECT</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.PROFILE.NAME</columns>
-        <columns>Core_Employee_Type_Code__c</columns>
+        <columns>MANAGER</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.USERS.EMAIL</field>
             <operation>contains</operation>
-            <value>larsen@assmann-wsw.com</value>
+            <value>nishithax.tirunagari@intel.com</value>
         </filters>
-        <label>Email Search</label>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>Aggregated_Users</label>
         <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>Aggregated_Users2</fullName>
@@ -1486,18 +1759,120 @@ TRUE, FALSE)</formula>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.USERS.EMAIL</field>
+            <field>CORE.USERS.ACTIVE</field>
             <operation>equals</operation>
-            <value>jafetx.esquivel@intel.com</value>
+            <value>0</value>
         </filters>
         <label>Aggregated_Users2</label>
-        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
         <fullName>AllUserLoginAs</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.COMPANY_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>SALES.CONTACT.NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.EMAIL</field>
+            <operation>equals</operation>
+            <value>shijas.km@intel.com</value>
+        </filters>
+        <label>All Login As Users</label>
+    </listViews>
+    <listViews>
+        <fullName>AllUser_PSG_Business</fullName>
+        <booleanFilter>1 AND ( 2 OR 3 OR 4 or 5 )</booleanFilter>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.COMPANY_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>SALES.CONTACT.NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>SOS1</value>
+        </filters>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>BO10</value>
+        </filters>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>BM10</value>
+        </filters>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>test_psg_main</value>
+        </filters>
+        <label>All Users - PSG test ( Business )</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AllUser_PSG_Solution</fullName>
+        <booleanFilter>1 AND ( 2 OR 3 OR 4 )</booleanFilter>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.COMPANY_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>SALES.CONTACT.NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>SOS5</value>
+        </filters>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>BO5</value>
+        </filters>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>BM5</value>
+        </filters>
+        <label>All Users - PSG test ( Sol team )</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AllUsersDataOps</fullName>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.COMPANY_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
@@ -1508,34 +1883,11 @@ TRUE, FALSE)</formula>
         <columns>CORE.PROFILE.NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>FULL_NAME</field>
-            <operation>contains</operation>
-            <value>Narahari</value>
-        </filters>
-        <label>All Login As Users</label>
-    </listViews>
-    <listViews>
-        <fullName>AllUsersDataOps</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CORE.USERS.COMPANY_NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USER_ROLE.NAME</columns>
-        <columns>CORE.USERS.ACTIVE</columns>
-        <columns>CORE.PROFILE.NAME</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CORE.USERS.EMAIL</field>
+            <field>CORE.PROFILE.NAME</field>
             <operation>equals</operation>
-            <value>salvadorx.miguel.lacra@intel.com</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.FIRST_NAME</field>
-            <operation>equals</operation>
-            <value>daniela</value>
+            <value>Data Ops</value>
         </filters>
         <label>All Users -Data Ops</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>AllUsersProdSuppDisp</fullName>
@@ -1580,18 +1932,26 @@ TRUE, FALSE)</formula>
         <columns>CORE.USERS.EMAIL</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USERS.LAST_LOGIN</columns>
         <columns>CORE.USER_ROLE.NAME</columns>
         <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.PROFILE.NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CORE.PROFILE.NAME</field>
-            <operation>startsWith</operation>
+            <operation>contains</operation>
             <value>Sales Rep</value>
         </filters>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>FULL_NAME</field>
+            <operation>contains</operation>
+            <value>Test</value>
+        </filters>
         <label>All Users -Sales Rep</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>AllUsersTest</fullName>
@@ -1632,6 +1992,7 @@ TRUE, FALSE)</formula>
             <value>IT Admin</value>
         </filters>
         <label>All Users - IT Admins</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>AllUsers_SysAdmins</fullName>
@@ -1650,26 +2011,12 @@ TRUE, FALSE)</formula>
             <operation>equals</operation>
             <value>System Administrator</value>
         </filters>
-        <label>All Users - System Admins</label>
-    </listViews>
-    <listViews>
-        <fullName>AllUsers_SystemAdmin</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CORE.PROFILE.NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USERS.EMAIL</columns>
-        <columns>CORE.USERS.LAST_LOGIN</columns>
-        <columns>CORE.USER_ROLE.NAME</columns>
-        <columns>CORE.USERS.ACTIVE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.PROFILE.NAME</field>
+            <field>CORE.USERS.ACTIVE</field>
             <operation>equals</operation>
-            <value>System Adminstrator</value>
+            <value>1</value>
         </filters>
-        <label>All Users - Syetem Admins</label>
+        <label>All Users - System Admins</label>
         <language>en_US</language>
     </listViews>
     <listViews>
@@ -1695,48 +2042,6 @@ TRUE, FALSE)</formula>
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>All_Users_Cvent</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CORE.PROFILE.NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USERS.EMAIL</columns>
-        <columns>CREATED_BY_ALIAS</columns>
-        <columns>CORE.USERS.LAST_LOGIN</columns>
-        <columns>CORE.USER_ROLE.NAME</columns>
-        <columns>CORE.USERS.ACTIVE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CORE.USERS.LAST_NAME</field>
-            <operation>equals</operation>
-            <value>Cvent</value>
-        </filters>
-        <label>All Users - Cvent</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>Aris_View</fullName>
-        <columns>FULL_NAME</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <columns>CORE.USERS.USERNAME</columns>
-        <columns>CORE.USER_ROLE.NAME</columns>
-        <columns>CORE.USERS.ACTIVE</columns>
-        <columns>CORE.PROFILE.NAME</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>CORE.USERS.SAML_SUBJECT</field>
-            <operation>equals</operation>
-            <value>300010530861</value>
-        </filters>
-        <filters>
-            <field>CORE.USERS.EMAIL</field>
-            <operation>equals</operation>
-            <value>de.yoon@samsung.com</value>
-        </filters>
-        <label>Aris_View</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
         <fullName>Core_Frozen_Users</fullName>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.EMAIL</columns>
@@ -1760,6 +2065,25 @@ TRUE, FALSE)</formula>
             <value>1</value>
         </filters>
         <label>Frozen Users</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Cvent_Users</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>MANAGER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.LAST_NAME</field>
+            <operation>contains</operation>
+            <value>devaughn</value>
+        </filters>
+        <label>Cvent Users</label>
         <language>en_US</language>
     </listViews>
     <listViews>
@@ -1825,47 +2149,62 @@ TRUE, FALSE)</formula>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
         <columns>CORE.USERS.EMAIL</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
         <columns>CORE.PROFILE.NAME</columns>
-        <columns>Core_Federation_ID__c</columns>
-        <columns>CORE.USERS.LAST_LOGIN</columns>
-        <columns>CREATED_BY_NAME</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>Core_Employee_Type_Code__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>FULL_NAME</field>
             <operation>contains</operation>
             <value>integration</value>
         </filters>
-        <filters>
-            <field>CORE.PROFILE.USERTYPE</field>
-            <operation>equals</operation>
-            <value>S</value>
-        </filters>
         <label>Integration Users</label>
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>KTBR_L1_User_List_View</fullName>
+        <fullName>P2P_Refresh_Integration_users</fullName>
         <columns>FULL_NAME</columns>
-        <columns>CORE.USERS.EMAIL</columns>
-        <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
         <columns>CORE.USERS.LAST_LOGIN</columns>
-        <columns>CORE.USER_ROLE.NAME</columns>
         <columns>CORE.USERS.ACTIVE</columns>
         <columns>CORE.PROFILE.NAME</columns>
-        <columns>MANAGER</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>IS_FROZEN</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER.NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CORE.USERS.EMAIL</field>
-            <operation>contains</operation>
-            <value>user@intel.com</value>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>equals</operation>
+            <value>Integration</value>
         </filters>
-        <label>KTBR L1 User List View</label>
+        <label>P2P Refresh - Integration users</label>
         <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>P2P_Refresh_Test_ids</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CREATED_BY_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>LAST_UPDATE</field>
+            <operation>equals</operation>
+            <value>6/2/2020 9:26 PM</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>P2P Refresh - Test ids</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>PSG_Users</fullName>
@@ -2195,7 +2534,7 @@ NOT ( Id = $User.Id )</errorConditionFormula>
     </validationRules>
     <validationRules>
         <fullName>Core_Lock_CDIS_Fields</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Prevents updates to CDIS fields by non-Integration, non-System Administrator users</description>
         <errorConditionFormula>AND(
   OR(ISCHANGED(Email),
@@ -2217,7 +2556,6 @@ NOT ( Id = $User.Id )</errorConditionFormula>
   ($Profile.Name &lt;&gt; $Label.Core_Integration_Profile_Name),
   ($Profile.Name &lt;&gt; $Label.Core_Okta_Admin_Profile_Name)
 )</errorConditionFormula>
-        <errorDisplayField>EmailPreferences</errorDisplayField>
         <errorMessage>The following fields are sourced from CDIS and cannot be updated: Email Address, Alias (IDSID), First Name, Last Name, Phone, Mobile Phone, Manager, Department, Intel Site Code, User Country Code, Employee Type Code,Employee Status Code and Country.</errorMessage>
     </validationRules>
     <validationRules>
@@ -2235,8 +2573,8 @@ NOT ( Id = $User.Id )</errorConditionFormula>
         <fullName>Core_User_Validation</fullName>
         <active>true</active>
         <errorConditionFormula>OR(
-AND(
-OR(ISNEW(),
+ AND(  
+  OR(ISNEW(),
 
 ISCHANGED(City),
 ISCHANGED(CommunityNickname),
@@ -2273,9 +2611,9 @@ ISCHANGED(UserType)
 Id&lt;&gt;$User.Id
 ),
 AND(
-ISCHANGED(UserRoleId),
-
-($Profile.Name &lt;&gt; $Label.Core_System_Admin_Profile_Name),
+ ISCHANGED(UserRoleId),
+ 
+ ($Profile.Name &lt;&gt; $Label.Core_System_Admin_Profile_Name),
 ($Profile.Name &lt;&gt; $Label.Core_Data_Ops_Profile_Name),
 ($Profile.Name &lt;&gt; $Label.Core_Production_Support_Profile_Name),
 ($Profile.Name &lt;&gt; $Label.Core_Integration_Profile_Name),
@@ -2295,6 +2633,7 @@ $User.Id &lt;&gt; $Label.Core_MDF_Bypass_FLAO_UserIsactive,
 Id&lt;&gt;$User.Id
 )
 )</errorConditionFormula>
+        <errorDisplayField>EmailPreferences</errorDisplayField>
         <errorMessage>The User fields are sourced from CDIS and cannot be updated.Please contact your administrator for further help.</errorMessage>
     </validationRules>
     <webLinks>

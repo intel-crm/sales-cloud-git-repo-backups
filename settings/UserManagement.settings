@@ -3,7 +3,7 @@
     <enableCanAnswerContainUsername>true</enableCanAnswerContainUsername>
     <enableEnhancedConcealPersonalInfo>true</enableEnhancedConcealPersonalInfo>
     <enableEnhancedConcealPersonalInfoForGuest>false</enableEnhancedConcealPersonalInfoForGuest>
-    <enableEnhancedPermsetMgmt>false</enableEnhancedPermsetMgmt>
+    <enableEnhancedPermsetMgmt>true</enableEnhancedPermsetMgmt>
     <enableEnhancedProfileMgmt>true</enableEnhancedProfileMgmt>
     <enableEnhcUiUserAccessPolicies>false</enableEnhcUiUserAccessPolicies>
     <enableNewProfileUI>true</enableNewProfileUI>
@@ -19,5 +19,5 @@
     <psaExpirationUIEnabled>true</psaExpirationUIEnabled>
     <restrictedProfileCloning>false</restrictedProfileCloning>
     <userAccessPoliciesEnabled>false</userAccessPoliciesEnabled>
-    <userFieldHistoryTracking>false</userFieldHistoryTracking>
+    <userFieldHistoryTracking>true</userFieldHistoryTracking>
 </UserManagementSettings>

@@ -173,7 +173,9 @@ public with sharing class Core_MDF_KPIDetailPage {
             Boolean isPfrIpaProgram = (strProgramName == Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM);
             Boolean isPropBased = (strPropBasedInd == 'true');
             if (isPfrIpaProgram) {
-                String fieldName = isPropBased ? 'Core_MDF_Checkbox_Field_2_Ind__c' : 'Core_MDF_Checkbox_Field_5_Ind__c';
+                String fieldName = isPropBased 
+                    ? 'Core_MDF_Checkbox_Field_2_Ind__c' 
+                    : 'Core_MDF_Checkbox_Field_5_Ind__c';
                 propStr = fieldName + ' = ' + true;
             }
 
@@ -196,7 +198,9 @@ public with sharing class Core_MDF_KPIDetailPage {
                 for(Core_MDF_CCP_Custom_Metadata_Utility__c kpiVal: kpiVals) {
                         //Avoid Deeply Nested IF Statements
                         String fieldValue = kpiVal.Core_MDF_Field_4_txt__c;
-                        String mapValue = kpiVal.Core_MDF_Checkbox_Field_1_Ind__c ? 'toLabel(' + fieldValue + ')': fieldValue;
+                        String mapValue = kpiVal.Core_MDF_Checkbox_Field_1_Ind__c
+                            ? 'toLabel(' + fieldValue + ')'
+                            : fieldValue;
                         kpimVal.put(fieldValue, mapValue);
                 }
             }
@@ -213,9 +217,13 @@ public with sharing class Core_MDF_KPIDetailPage {
     Vivek K                      02/16/2020        Created.
     *****************************************************************************************************************************************/ 
     private static SObject fetchsavedValues(List<String> lstKPImdata) {
-        SObject pfObj;String strfield = '';String strQuery = ''; strfield = String.join(lstKPImdata,',');           
+        SObject pfObj;
+        String strfield = '';
+        String strQuery = '';            
+        strfield = String.join(lstKPImdata,',');           
         strQuery = 'SELECT id, ' + strfield + ' FROM ' + sanitizedObjname + ' WHERE Id=: sanitizeRecdId';
-        pfObj = Database.query(strQuery); return pfObj;
+        pfObj = Database.query(strQuery); 
+        return pfObj;
     } 
     
     /****************************************************************************************************************************************

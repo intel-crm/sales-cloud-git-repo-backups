@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send email to the claim owners</description>
+        <name>Core_MDF_Sending_Email_to_claim_batch_record</name>
+        <label>Sending Email to claim batch record</label>
+        <locationX>308</locationX>
+        <locationY>288</locationY>
+        <actionName>Core_MDF_Claim_Batch__c.Core_MDF_Notify_Claim_Submitter_On_Status_Of_Bulk_Claim</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Core_MDF_Update_Claim_Batch_Record</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Core_MDF_Claim_Batch__c.Core_MDF_Notify_Claim_Submitter_On_Status_Of_Bulk_Claim</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>test bulk notification {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>test bulk notification</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update send email field to false</description>
+        <name>Core_MDF_Update_Claim_Batch_Record</name>
+        <label>Update Claim Batch Record</label>
+        <locationX>308</locationX>
+        <locationY>408</locationY>
+        <inputAssignments>
+            <field>Core_MDF_Send_Email__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_MDF_Send_Email__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Core_MDF_Claim_Batch__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>send_notification_mail</name>
+            <connector>
+                <targetReference>Core_MDF_Sending_Email_to_claim_batch_record</targetReference>
+            </connector>
+            <label>send notification mail</label>
+            <offsetNumber>0</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -362,6 +362,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Third_Party_Ind__c</field>
+            <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Document_Submission_Missed_Ind__c</field>
             <table>Core_MDF_Payment__c.Partner_Fund_Claims__r</table>
         </columns>

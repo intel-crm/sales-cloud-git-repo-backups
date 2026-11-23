@@ -10,9 +10,6 @@
         <field>Lead.PMP_Partner_Offering_Nm__c</field>
     </columns>
     <columns>
-        <field>Lead.PMP_Offering_Feature_Tag__c</field>
-    </columns>
-    <columns>
         <field>Lead.PMP_MktProfile_BizSegment__c</field>
     </columns>
     <columns>

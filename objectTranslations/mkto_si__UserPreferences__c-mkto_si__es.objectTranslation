@@ -21,10 +21,6 @@
         <name>mkto_si__Deactivate_trigger__c</name>
     </fields>
     <fields>
-        <label><!-- Hide Sales Qualifier Banner --></label>
-        <name>mkto_si__HideSalesQualifierBanner__c</name>
-    </fields>
-    <fields>
         <label>Última versión de novedades</label>
         <name>mkto_si__LastWhatIsNewVersion__c</name>
     </fields>

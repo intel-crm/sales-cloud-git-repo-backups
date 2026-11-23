@@ -2,7 +2,7 @@
   <div class="video-container">
     <template if:false={errors}>
       <template if:true={videoTypes.isBrightcove}>
-        <iframe src={brightcoveIFrameSrc} allow={iframeAllow} title={title}></iframe>
+        <iframe src={brightcoveIFrameSrc} allow ={iframeAllow} title={title} ></iframe>
       </template>
   
       <template if:true={videoTypes.isYouTube}>

@@ -13,6 +13,11 @@
         <name>ER_Account_Group__c</name>
     </fields>
     <fields>
+        <label><!-- Account --></label>
+        <name>ER_Account__c</name>
+        <relationshipLabel><!-- Account Customer Master Files --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Active --></label>
         <name>ER_Active__c</name>
     </fields>
@@ -65,6 +70,11 @@
         <name>ER_End_Date__c</name>
     </fields>
     <fields>
+        <label><!-- Post Delete Association --></label>
+        <name>ER_Post_Delete_Association__c</name>
+        <relationshipLabel><!-- Account Customer Master Files (Post Delete Association) --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Sales Area Order Block Code --></label>
         <name>ER_SalesAreaOrderBlockCd__c</name>
     </fields>
@@ -91,6 +101,10 @@
     <fields>
         <label><!-- Start Date --></label>
         <name>ER_StartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>ER_Start_Date__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <webLinks>

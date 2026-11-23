@@ -1,11 +1,9 @@
 @isTest
 private class PRM_BenefitAssignment_Batch_Test {
     
-    public static boolean ipaRefresh = boolean.valueOf(label.PRM_IPARefresh);
     @isTest static void testBatchExecution() {
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Intel Account').getRecordTypeId();
         Id recordTypeIdEM = Schema.SObjectType.PRM_VXEnttlmntMatrix__c.getRecordTypeInfosByName().get('EntitlementWithoutBenefits').getRecordTypeId();
-        Id recordTypeIdEMB = Schema.SObjectType.PRM_VXEnttlmntMatrix__c.getRecordTypeInfosByName().get('EntitlementWithBenefits').getRecordTypeId();
         Id recordTypeIdPartnerGrp = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
 
         // Step 1: Create test data
@@ -115,6 +113,31 @@ private class PRM_BenefitAssignment_Batch_Test {
         
         insert conRelLst;
 
+        PRM_Account_Contact_Relationship__c acctContRelEmp=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
+        acctContRelEmp.PRM_Account_Id__c=newAccount1.Id;
+        acctContRelEmp.PRM_Contact_Id__c=cont1.Id;
+        acctContRelEmp.PRM_Relationship_Id__c=employee.Id;
+        acctContRelEmp.PRM_InActive_Ind__c=false;
+        acctContRelEmp.PRM_Status_Nm__c = 'Complete';
+        
+        insert acctContRelEmp;
+        PRM_Account_Contact_Relationship__c acctContRelEmp1=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
+        acctContRelEmp1.PRM_Account_Id__c=newAccount.Id;
+        acctContRelEmp1.PRM_Contact_Id__c=cont.Id;
+        acctContRelEmp1.PRM_Relationship_Id__c=employee.Id;
+        acctContRelEmp1.PRM_InActive_Ind__c=false;
+        acctContRelEmp1.PRM_Status_Nm__c = 'Complete';
+        
+        insert acctContRelEmp1;
+        PRM_Account_Contact_Relationship__c acctContRelEmp2=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
+        acctContRelEmp2.PRM_Account_Id__c=newAccount.Id;
+        acctContRelEmp2.PRM_Contact_Id__c=cont.Id;
+        acctContRelEmp2.PRM_Relationship_Id__c=admin.Id;
+        acctContRelEmp2.PRM_InActive_Ind__c=false;
+        acctContRelEmp2.PRM_Status_Nm__c = 'Complete';
+        
+        insert acctContRelEmp;
+
        
 
         ChannelProgramLevel cpl = new ChannelProgramLevel();
@@ -166,16 +189,6 @@ private class PRM_BenefitAssignment_Batch_Test {
 
         insert listPB;
 
-        PRM_AccountChannelMembership__c acm = new PRM_AccountChannelMembership__c();
-        acm.PRM_Account_Id__c = newAccount.Id;
-        acm.PRM_Status_Nm__c = 'Approved';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
-        acm.PRM_Channel_Program_Id__c = cp.Id;
-        acm.PRM_Channel_Program_Level_Id__c = cpl1.Id;
-        acm.PRM_Partner_Role__c = 'Service Provider';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
-        insert acm;
-
         PRM_AccountChannelMembership__c acm1 = new PRM_AccountChannelMembership__c();
         acm1.PRM_Account_Id__c = newAccount1.Id;
         acm1.PRM_Status_Nm__c = 'Approved';
@@ -220,49 +233,7 @@ private class PRM_BenefitAssignment_Batch_Test {
         pt.PRM_channelprogram__c = cp.Id;
         insert pt;
 
-         Core_Entitlement__c ed=new Core_Entitlement__c(); //Entitlement
-        ed.Name='Points Redeem';
-        ed.Core_Display_Name__c='Points Redeem';
-        insert ed;
-         Core_Entitlement__c ed1=new Core_Entitlement__c(); //Entitlement
-        ed1.Name='Points View';
-        ed1.Core_Display_Name__c='Points View';
-        insert ed1;
-        
-
         Test.startTest();
-        
-        List<PRM_Account_Contact_Relationship__c> acrList = new List<PRM_Account_Contact_Relationship__c>();
-        PRM_Account_Contact_Relationship__c acctContRelEmp=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
-        acctContRelEmp.PRM_Account_Id__c=newAccount1.Id;
-        acctContRelEmp.PRM_Contact_Id__c=cont1.Id;
-        acctContRelEmp.PRM_Relationship_Id__c=employee.Id;
-        acctContRelEmp.PRM_InActive_Ind__c=false;
-        acctContRelEmp.PRM_Status_Nm__c = 'Complete';
-        acctContRelEmp.PRM_Status_Reason_Txt__c='Test';
-        acrList.add(acctContRelEmp);
-
-        PRM_Account_Contact_Relationship__c acctContRelEmp1=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
-        acctContRelEmp1.PRM_Account_Id__c=newAccount.Id;
-        acctContRelEmp1.PRM_Contact_Id__c=cont.Id;
-        acctContRelEmp1.PRM_Relationship_Id__c=employee.Id;
-        acctContRelEmp1.PRM_InActive_Ind__c=false;
-        acctContRelEmp1.PRM_Status_Nm__c = 'Complete';
-        acctContRelEmp1.PRM_Status_Reason_Txt__c='Test';
-        acrList.add(acctContRelEmp1);
-
-        PRM_Account_Contact_Relationship__c acctContRelEmp2=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
-        acctContRelEmp2.PRM_Account_Id__c=newAccount.Id;
-        acctContRelEmp2.PRM_Contact_Id__c=cont.Id;
-        acctContRelEmp2.PRM_Relationship_Id__c=admin.Id;
-        acctContRelEmp2.PRM_InActive_Ind__c=false;
-        acctContRelEmp2.PRM_Status_Nm__c = 'Complete';
-        acctContRelEmp2.PRM_Status_Reason_Txt__c='Test';
-        acrList.add(acctContRelEmp2);
-        Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
-        insert acrList;
-        Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
-
         List<PRM_VXBnftMatrix__c> listVXB = new List<PRM_VXBnftMatrix__c>();
         PRM_VXBnftMatrix__c bem = new PRM_VXBnftMatrix__c();
         bem.PRM_Approval_Type_Nm__c = 'Automatic';
@@ -328,34 +299,7 @@ private class PRM_BenefitAssignment_Batch_Test {
         abaList.add(aba1);
         abaList.add(aba3);
         abaList.add(aba4);
-        Triggerhandler.bypass('PRM_aba_TriggerHandler');
         insert abaList;
-        Triggerhandler.clearbypass('PRM_aba_TriggerHandler');
-
-        
-        PRM_VXEnttlmntMatrix__c em= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
-        em.RecordTypeId = recordTypeIdEM;
-        em.PRM_Entitlement_Id__c = ed.id;
-        em.PRM_Contact_Relationship_Id__c = conRelLst[1].Id;
-        em.PRM_Channel_Program_Level_Id__c = cpl1.Id;
-        em.PRM_Approval_Type_Nm__c='Automatic';
-        em.PRM_IPA_Partner_Role_Nm__c='Service Provider';   
-        em.PRM_Partner_Benefit_Id__c = pb.id;
-        em.PRM_IPARefreshCheck__c = ipaRefresh;
-        em.PRM_Channel_Program_Id__c = cp.id;
-        em.PRM_IsActive_Ind__c = true;
-        insert em;
-        PRM_VXEnttlmntMatrix__c em1= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
-        em1.RecordTypeId = recordTypeIdEMB;
-        em1.PRM_Entitlement_Id__c = ed1.id;
-        em1.PRM_Contact_Relationship_Id__c = conRelLst[1].Id;
-        em1.PRM_Channel_Program_Level_Id__c = cpl1.Id;
-        em1.PRM_Approval_Type_Nm__c='Automatic';
-        em1.PRM_IPA_Partner_Role_Nm__c='Service Provider';   
-        em1.PRM_IPARefreshCheck__c = ipaRefresh;
-        em1.PRM_Channel_Program_Id__c = cp.id;
-        em1.PRM_IsActive_Ind__c = true;
-        insert em1;
 
         List<String> partnerIds = new List<String>{ opidAcc.Id };
 

@@ -107,6 +107,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Pricing_Competitor_Product__c.Pricing_Active_cb__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Pricing_Competitor_Product__c.Pricing_Competitor_Product_Provider_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1157,10 +1162,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>SBQQ__QuoteLine__c.Pricing_SSD_Quote_Line_Create</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>SBQQ__QuoteLine__c.Pricing_SVD_Quote_Line_Create</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

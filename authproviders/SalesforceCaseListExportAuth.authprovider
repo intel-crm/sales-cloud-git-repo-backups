@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
-    <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6neSQDDa10OqOYsXKrjwOk0KNPoJUHj3tia29RhthNrbyZiHA_DXrshj0HPL</consumerKey>
+    <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDukrK4iOBbgCc8UaNchYb2M8YIM6c.pjCj.LAycnUEpcqmBo21XkhdYRyA40</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
     <defaultScopes>refresh_token api</defaultScopes>
     <friendlyName>SalesforceCaseListExportAuth</friendlyName>

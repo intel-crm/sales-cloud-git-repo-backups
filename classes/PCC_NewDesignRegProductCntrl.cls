@@ -87,7 +87,7 @@ public with sharing class PCC_NewDesignRegProductCntrl {
         if (String.isNotBlank(prodId) && Product2.SObjectType.getDescribe().isAccessible()) {
             List<Product2> prd = [SELECT Id, Core_Product_Type__c FROM Product2 WHERE Id = :prodId];
 
-            if (!prd.isEmpty() && String.isNotBlank(prd[0].Core_Product_Type__c) && !(prd[0].Core_Product_Type__c).contains('FPGA')) {
+            if (!prd.isEmpty() && String.isNotBlank(prd[0].Core_Product_Type__c)){ //&& !(prd[0].Core_Product_Type__c).contains('FPGA')) {
                 productType = LabelConfiguration__mdt.getInstance('PCC_Product_Group_Embedded').Value__c;
             }
         }

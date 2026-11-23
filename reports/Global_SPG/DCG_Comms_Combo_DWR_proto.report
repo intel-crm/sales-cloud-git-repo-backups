@@ -49,14 +49,13 @@
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
-    <description>commissionable DWR KPI combined report</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_BU_Focus__c</column>
@@ -105,14 +104,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>Solution Integration (SI/ITO/bVAR),Independent Software Vendor (ISV),Telco Equipment Manufacturer (TEM)</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opportunity_KPI__c.Core_Opp_KPI_Achieved__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
+            <value>Solution Integration (SI/ITO/bVAR),Independent Software Vendor (ISV),Telco Equipment Manufacturer (TEM),Other</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

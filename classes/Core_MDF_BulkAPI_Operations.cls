@@ -39,6 +39,7 @@ public without sharing class Core_MDF_BulkAPI_Operations {
                         ' WHERE ' +  fieldName + ' IN : ' + 'dynObjectList'  + ' AND UserOrGroupId IN : '+ 'groupIds' + ' AND RowCause =: rowCause';
 
         List<Sobject> results = new List<Sobject>(Database.query(String.escapeSingleQuotes(sQuery)));
+        system.debug('results: '+ results);
 
          for(Sobject shareRecords : results)
          {
@@ -60,6 +61,7 @@ public without sharing class Core_MDF_BulkAPI_Operations {
 
                 requestString += '"'+sOb +'"'+'\r\n';
             }
+             system.debug('requestString: ' + requestString);
         
         
         HttpRequest request = new HttpRequest();

@@ -200,7 +200,7 @@ DRLI - Design Registration Line Item (DR Product)
                 if (newRecord.MMID_or_Ordering_code__c != oldRecord.MMID_or_Ordering_code__c || (newRecord.Core_Opportunity_Product_Id__c!= oldRecord.Core_Opportunity_Product_Id__c && newRecord.Core_Opportunity_Product_Id__c!=null)) {
                     drpIdsForTransactionalRec.add(newRecord.id);
                 }
-         if(newRecord.Core_Design_Product_Status_Nm__c == DR_STATUS_EXPIRED && oldRecord.Core_Design_Product_Status_Nm__c != DR_STATUS_EXPIRED && !newRecord.Core_Comment_Txt__c.contains('Expired from Design Registration Record')) {
+				 if(newRecord.Core_Design_Product_Status_Nm__c == DR_STATUS_EXPIRED && oldRecord.Core_Design_Product_Status_Nm__c != DR_STATUS_EXPIRED && !newRecord.Core_Comment_Txt__c.contains('Expired from Header')) {
                     drId.add(newRecord.Core_Design_Registration_Id__c);
                 } 
             }
@@ -278,7 +278,7 @@ DRLI - Design Registration Line Item (DR Product)
         }
         
         for (Core_Design_Registration_Product__c iDRLI : newUpdateList) {
-            //iDRLI.Core_Target_Resale_Amt__c = (iDRLI.Core_Target_Resale_Amt__c == null ? (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c)) : iDRLI.Core_Target_Resale_Amt__c); //TWC729-9048 
+            iDRLI.Core_Target_Resale_Amt__c = (iDRLI.Core_Target_Resale_Amt__c == null ? (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c)) : iDRLI.Core_Target_Resale_Amt__c);
             iDRLI.Core_Product_List_Price_Amt__c = (ListPriceMap.get(iDRLI.Core_Product_Id__c) == null ? 0 : ListPriceMap.get(iDRLI.Core_Product_Id__c));
            
         }
@@ -335,12 +335,12 @@ DRLI - Design Registration Line Item (DR Product)
         //List<Core_Design_Registration__c> regToUpdate = new List<Core_Design_Registration__c>();
         Core_Design_Registration__c drInstance = new Core_Design_Registration__c(id = drRecId);
         String prodType =  drProdMap.get(drRecId).Core_Product_Id__c!= null ? drProdMap.get(drRecId).Core_Product_Id__r.Core_Product_Type__c : null;
-        if (prodType.contains('FPGA')|| Test.isRunningTest()) {/*LabelConfiguration__mdt.getInstance('DDR_Product_Group_FPGA').Value__c*/
+        //if (prodType.contains('FPGA')|| Test.isRunningTest()) {/*LabelConfiguration__mdt.getInstance('DDR_Product_Group_FPGA').Value__c*/
             //Core_Design_Registration__c drInstance = new Core_Design_Registration__c(id = drRecId);
-            drInstance.Core_Product_Group_Nm__c = LabelConfiguration__mdt.getInstance('DDR_Product_Group_FPGA').Value__c;
+           // drInstance.Core_Product_Group_Nm__c = LabelConfiguration__mdt.getInstance('DDR_Product_Group_FPGA').Value__c;
             //regToUpdate.add(drInstance);
-        }
-        else if (drProdMap.get(drRecId).Core_Design_Registration_Id__r.Core_DDR_Partner_Type_Txt__c != 'ODM') {
+       // }else 
+        if (drProdMap.get(drRecId).Core_Design_Registration_Id__r.Core_DDR_Partner_Type_Txt__c != 'ODM') {
            // Core_Design_Registration__c drInstance = new Core_Design_Registration__c(id = drRecId);
             drInstance.Core_Product_Group_Nm__c = LabelConfiguration__mdt.getInstance('PCC_Product_Group_Embedded').Value__c;
             //regToUpdate.add(drInstance);
@@ -391,7 +391,7 @@ DRLI - Design Registration Line Item (DR Product)
                 dpm.PCC_Product_MM_Attribute_Mapping__c = drp.MMID_or_Ordering_code__c;
                 dpm.PCC_MM_ID__c = drp.MMID_or_Ordering_code__r.Name;
                 dpm.PCC_Ordering_Cd__c = drp.MMID_or_Ordering_code__r.Ordering_Code__c;
-                dpm.PCC_Old_MM_Id__c = drp.MMID_or_Ordering_code__r.MMID__c;
+                //dpm.PCC_Old_MM_Id__c = drp.MMID_or_Ordering_code__r.MMID__c;/*TWC727-2709 - PCC: Remove all references from old MMID*/
                 dpm.PCC_Opportunity_Product_Id__c = drp.Core_Opportunity_Product_Id__c; // added by DINESH | 31/1/2024
                 DDRProductMappingsToInsert.add(dpm);
             }
@@ -434,7 +434,7 @@ DRLI - Design Registration Line Item (DR Product)
         List<Core_Log_Entry__c> logEntriesDRP = new List<Core_Log_Entry__c>();
         
         Core_Design_Registration_Product__c drp;
-        for (PCC_DDR_L5_Product_Mapping__c dlpm : [SELECT id, PCC_Design_Registration__c, PCC_Design_Registration_Product__c,PCC_Product_MM_Attribute_Mapping__c, PCC_Old_MM_Id__c,
+        for (PCC_DDR_L5_Product_Mapping__c dlpm : [SELECT id, PCC_Design_Registration__c, PCC_Design_Registration_Product__c,PCC_Product_MM_Attribute_Mapping__c,
                                                    PCC_MM_ID__c, PCC_Ordering_Cd__c, PCC_Design_Registration_Product__r.Id ,PCC_Opportunity__c
                                                    FROM PCC_DDR_L5_Product_Mapping__c 
                                                    WHERE PCC_Design_Registration_Product__c IN:mapOfDRPRecords.keySet()]) {
@@ -444,7 +444,7 @@ DRLI - Design Registration Line Item (DR Product)
             dpm.PCC_Product_MM_Attribute_Mapping__c = drp.MMID_or_Ordering_code__c;
             dpm.PCC_MM_ID__c = drp.MMID_or_Ordering_code__r.Name;
             dpm.PCC_Ordering_Cd__c = drp.MMID_or_Ordering_code__r.Ordering_Code__c;
-            dpm.PCC_Old_MM_Id__c = drp.MMID_or_Ordering_code__r.MMID__c;
+               // dpm.PCC_Old_MM_Id__c = drp.MMID_or_Ordering_code__r.MMID__c;/*TWC727-2709 - PCC: Remove all references from old MMID*/
             dpm.PCC_Opportunity__c = drp.Core_Design_Registration_Id__r.Core_Opportunity_Id__c;
             dpm.PCC_Opportunity_Product_Id__c = drp.Core_Opportunity_Product_Id__c; // added by DINESH | 31/1/2024
             DDRProductMappingsToUpdate.add(dpm);

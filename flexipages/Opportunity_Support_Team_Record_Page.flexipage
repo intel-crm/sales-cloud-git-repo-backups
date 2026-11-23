@@ -74,21 +74,10 @@
                 <fieldItem>Record.Core_Status__c</fieldItem>
                 <identifier>RecordCore_Status_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_Status__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Pending</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Accepted</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Denied</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -102,21 +91,10 @@
                 <fieldItem>Record.Core_Approval_Comment_History__c</fieldItem>
                 <identifier>RecordCore_Approval_Comment_History_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_Status__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Pending</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Accepted</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Denied</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -144,21 +122,10 @@
                 <fieldItem>Record.Core_Approval_Comment__c</fieldItem>
                 <identifier>RecordCore_Approval_Comment_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_Status__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Pending</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Accepted</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Denied</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>

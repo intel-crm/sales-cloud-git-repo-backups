@@ -5,8 +5,6 @@ import getLWCBody from '@salesforce/apex/Tooling_CustomLabelCntrl.getLWCResource
 import getApexTriggerBody from '@salesforce/apex/Tooling_CustomLabelCntrl.getApexTriggerBody';
 import getApexPageBody from '@salesforce/apex/Tooling_CustomLabelCntrl.getApexPageBody';
 import getAuraCmpBody from '@salesforce/apex/Tooling_CustomLabelCntrl.getAuraCmpBody';
-import getApexClassNames from '@salesforce/apex/Tooling_CustomLabelCntrl.getApexClassNames';
-import getLWCNames from '@salesforce/apex/Tooling_CustomLabelCntrl.getLWCNames';
 import tableSize from '@salesforce/label/c.Tooling_Table_Size';
 
 //Unsed Attributes table columns
@@ -44,186 +42,136 @@ export default class Tooling_UnusedCustomLabels extends LightningElement {
     @track nameLabelMap = new Map();
     @track referenceData = [];
     @track referencecolumns = REFERENCE_COLUMNS;
-    @track apexclassNamesLst;
-
-
 
     connectedCallback() {
         // Fetch Apex classes and LWC resources
-        getApexClassNames().then(classnames => {
-            this.apexclassNamesLst = classnames;
-            const batchSize = 1000;
-            const batches = Math.ceil(this.apexclassNamesLst.length / batchSize);
+        getApexClasses().then(result => {
+            console.log('result : ', result);
+            this.apexClassesBody = result;
+            getApexTriggerBody().then(triggerResult => {
+                console.log('result : ', triggerResult);
+                this.apexClassesBody = this.apexClassesBody.concat(triggerResult);
+                getApexPageBody().then(apexPageBody => {
+                    console.log('result : ', apexPageBody);
+                    this.apexClassesBody = this.apexClassesBody.concat(apexPageBody);
+                    getAuraCmpBody().then(auraCmpBody => {
+                        console.log('result : ', auraCmpBody);
+                        this.apexClassesBody = this.apexClassesBody.concat(auraCmpBody);
 
-            for (let counter = 1; counter <= batches; counter++) {
-                const startIndex = (counter - 1) * batchSize;
-                const endIndex = Math.min(counter * batchSize, this.apexclassNamesLst.length-1);
-                const batchClassNames = this.apexclassNamesLst.slice(startIndex, endIndex);
+                        getLWCBody().then(lwcresult => {
+                            this.apexClassesBody = this.apexClassesBody.concat(lwcresult);
 
-                getApexClasses({ classNames: batchClassNames[0] })
-                    .then(result => {
-                        console.log('result: ', result);
-                        // Handle the result for each batch (this.apexClassesBody = result;)
-                        if(this.apexClassesBody === undefined || this.apexClassesBody === null){
-                            this.apexClassesBody = [...result];
-                        }else{
-                            this.apexClassesBody =  [...this.apexClassesBody, ...result];
-                        }
-                        console.log('Counter -->',counter ,' Size ==>',this.apexClassesBody.length);
-                        // this.apexClassesBody = this.apexClassesBody.concat(result);
-                        if (counter == batches) {
+                            console.log('apexClassesBody : ', this.apexClassesBody);
 
-                            getApexTriggerBody().then(triggerResult => {
-                                console.log('result : ', triggerResult);
-                                this.apexClassesBody = [...this.apexClassesBody, ...triggerResult];
-                                console.log('getApexTriggerBody Size ==>',this.apexClassesBody.length);
-                                getApexPageBody().then(apexPageBody => {
-                                    console.log('result : ', apexPageBody);
-                                    this.apexClassesBody = [...this.apexClassesBody,...apexPageBody];
-                                    console.log('getApexPageBody Size ==>',this.apexClassesBody.length);
-                                    getAuraCmpBody().then(auraCmpBody => {
-                                        console.log('result : ', auraCmpBody);
-                                        this.apexClassesBody = [...this.apexClassesBody,...auraCmpBody];
-                                        console.log('getAuraCmpBody Size ==>',this.apexClassesBody.length);
-                                        getLWCNames().then(lwcnamesresult => {
-                                            const lwcnamebatchsize = 200;
-                                            const lwcnamebatches = Math.ceil(lwcnamesresult.length / lwcnamebatchsize);
+                            // Extract custom labels from Apex class and LWC resources
 
-                                            for (let jcounter = 1; jcounter <= lwcnamebatches; jcounter++) {
-                                                const jstartIndex = (jcounter - 1) * lwcnamebatchsize;
-                                                const jendIndex = Math.min(jcounter * lwcnamebatchsize, lwcnamesresult.length);
-                                                const lwcnames = lwcnamesresult.slice(jstartIndex, jendIndex);
-                                                getLWCBody({lwcNames:lwcnames}).then(lwcresult => {
-                                                    this.apexClassesBody =[...this.apexClassesBody,...lwcresult];
+                            // Regular expression to match 'Label.' followed by any characters until the first whitespace or end of line
+                            const labelRegex = /@salesforce\/label\/c\.(\w+)|\blabel(?:\.c)?\.(\w+)|System\.Label\.(\w+)/g; ///\b(label\.c|c)\.(\w+)/g;
 
-                                                    console.log('getLWCBody Size ==>',this.apexClassesBody.length);
-                                                    if (jcounter == lwcnamebatches) {
-                                                        // Extract custom labels from Apex class and LWC resources
+                            // Loop through each apex class in the result
+                            this.apexClassesBody.forEach(apexClass => {
+                                // Extracting labels from the apexbody of the current class
+                                //const apexbody = apexClass.toLowerCase();
+                                const labels = apexClass.Source.match(labelRegex);
+                                const resourceName = apexClass.MetadataComponentName + '-' + apexClass.MetadataComponentType;
 
-                                                        // Regular expression to match 'Label.' followed by any characters until the first whitespace or end of line
-                                                        const labelRegex = /@salesforce\/label\/c\.(\w+)|\blabel(?:\.c)?\.(\w+)|System\.Label\.(\w+)/g;
+                                if (labels && labels.length > 0) {
+                                    // If labels are found, add them to the labelsArray after removing any characters at the end (including special characters and newlines)
+                                    labels.forEach(label => {
+                                        const cleanedLabel = label.trim().replace(/[^a-zA-Z0-9_]+$/, ''); // Removes non-alphanumeric characters from the end of the label
+                                        console.log('cleanedLabel : ', cleanedLabel);
+                                        //labelsArray.push(cleanedLabel); // labels
+                                        if (this.nameLabelMap.has(cleanedLabel)) {
 
-                                                        // Loop through each apex class in the result
-                                                        const apexclassdata = JSON.parse(JSON.stringify(this.apexClassesBody));
-                                                        console.log('apexclassdata : ', apexclassdata);
-                                                        apexclassdata.forEach(apexClass => {
-                                                            // Extracting labels from the apexbody of the current class
-                                                            //const apexbody = apexClass.toLowerCase();
-                                                            const labels = apexClass.Source.match(labelRegex);
-                                                            const resourceName = apexClass.MetadataComponentName + '-' + apexClass.MetadataComponentType;
-
-                                                            if (labels && labels.length > 0) {
-                                                                // If labels are found, add them to the labelsArray after removing any characters at the end (including special characters and newlines)
-                                                                labels.forEach(label => {
-                                                                    const cleanedLabel = label.trim().replace(/[^a-zA-Z0-9_]+$/, ''); // Removes non-alphanumeric characters from the end of the label
-                                                                    //labelsArray.push(cleanedLabel); // labels
-                                                                    if (this.nameLabelMap.has(cleanedLabel)) {
-
-                                                                        let resourceNames = this.nameLabelMap.get(cleanedLabel);
-                                                                        if (!resourceNames.includes(resourceName)) {
-                                                                            resourceNames.push(resourceName);
-                                                                        }
-                                                                        this.nameLabelMap.set(cleanedLabel, resourceNames);
-                                                                    } else {
-                                                                        let resourceNames = [];
-                                                                        resourceNames.push(resourceName);
-                                                                        this.nameLabelMap.set(cleanedLabel, resourceNames);
-                                                                    }
-
-                                                                });
-                                                            }
-                                                        });
-                                                    }
-
-                                                    console.log('nameLabelMap  : ', this.nameLabelMap.keys());
-                                                    // Fetch unused custom labels and filter them
-                                                    if (result) {
-                                                        getUnusedCustomLables().then(result => {
-                                                            if (result) {
-                                                                let parseddata = JSON.parse(JSON.stringify(result));
-                                                                // this.Loading = true;
-                                                                let newData = [];
-                                                                //let containsInApex = false;
-
-                                                                parseddata.forEach(item => {
-                                                                    const keysToCheck = [
-                                                                        'label.' + item.labelName.toLowerCase(),
-                                                                        'label.c.' + item.labelName.toLowerCase(),
-                                                                        '@salesforce/label/c.' + item.labelName.toLowerCase()
-                                                                    ];
-                                                                    // Check if the label is unused
-
-                                                                    if (keysToCheck.every(key => !this.nameLabelMap.has(key))) {
-                                                                        item.labelURL = '/' + item.Id;
-                                                                        newData.push(item);
-                                                                    }
-
-                                                                });
-
-                                                                // Update data and pagination properties
-
-                                                                this.data = newData;
-                                                                this.noOfPages = Math.ceil(this.data.length / this.pagesize);
-                                                                if (this.data.length > 0) {
-                                                                    this.coundOfLables = this.data.length;
-                                                                    this.hasData = true;
-                                                                    this.Loading = false;
-                                                                } else {
-                                                                    this.hasData = false;
-                                                                    this.Loading = false;
-                                                                }
-                                                                console.log('Result ==>', result);
-                                                                this.getCurrentPageRecords();
-                                                            }
-                                                        })
-                                                            .catch(error => {
-                                                                this.Loading = false;
-                                                                console.log('Error in getUnusedCustomLables ', error);
-                                                            })
-                                                    } else {
-                                                        // Handle error if getApexClasses fails
-
-                                                    }
-                                                }).catch(error => {
-                                                    this.Loading = false;
-                                                    console.log('error in getLWCBody: ', error);
-                                                })
+                                            let resourceNames = this.nameLabelMap.get(cleanedLabel);
+                                            if (!resourceNames.includes(resourceName)) {
+                                                resourceNames.push(resourceName);
                                             }
-                                        })
-                                            .catch(error => {
-                                                this.Loading = false;
-                                                console.log('error in getLWCNames: ', error);
-                                            })
+                                            this.nameLabelMap.set(cleanedLabel, resourceNames);
+                                        } else {
+                                            let resourceNames = [];
+                                            resourceNames.push(resourceName);
+                                            this.nameLabelMap.set(cleanedLabel, resourceNames);
+                                        }
 
+                                    });
+                                }
+                            });
 
-                                    })
-                                        .catch(error => {
+                            console.log('nameLabelMap  : ', this.nameLabelMap.keys());
+                            // Fetch unused custom labels and filter them
+                            if (result) {
+                                getUnusedCustomLables().then(result => {
+                                    if (result) {
+                                        let parseddata = JSON.parse(JSON.stringify(result));
+                                        // this.Loading = true;
+                                        let newData = [];
+                                        //let containsInApex = false;
+
+                                        parseddata.forEach(item => {
+                                            const keysToCheck = [
+                                                'label.' + item.labelName.toLowerCase(),
+                                                'label.c.' + item.labelName.toLowerCase(),
+                                                '@salesforce/label/c.' + item.labelName.toLowerCase()
+                                            ];
+                                            // Check if the label is unused
+
+                                            if (keysToCheck.every(key => !this.nameLabelMap.has(key))) {
+                                                item.labelURL = '/' + item.Id;
+                                                newData.push(item);
+                                            }
+
+                                        });
+
+                                        // Update data and pagination properties
+
+                                        this.data = newData;
+                                        this.noOfPages = Math.ceil(this.data.length / this.pagesize);
+                                        if (this.data.length > 0) {
+                                            this.coundOfLables = this.data.length;
+                                            this.hasData = true;
                                             this.Loading = false;
-                                            console.log('error in getAuraCmpBody: ', error);
-                                        })
+                                        } else {
+                                            this.hasData = false;
+                                            this.Loading = false;
+                                        }
+                                        console.log('Result ==>', result);
+                                        this.getCurrentPageRecords();
+                                    }
                                 })
                                     .catch(error => {
                                         this.Loading = false;
-                                        console.log('error in getApexPageBody: ', error);
+                                        console.log('Error in getUnusedCustomLables ', error);
                                     })
-                            })
-                                .catch(error => {
-                                    this.Loading = false;
-                                    console.log('error in getApexTriggerBody: ', error);
-                                })
-                        }
+                            } else {
+                                // Handle error if getApexClasses fails
+
+                            }
+                        }).catch(error => {
+                            this.Loading = false;
+                            console.log('error in getLWCBody: ', error);
+                        })
+
                     })
+                        .catch(error => {
+                            this.Loading = false;
+                            console.log('error in getAuraCmpBody: ', error);
+                        })
+                })
                     .catch(error => {
                         this.Loading = false;
-                        console.log('error in getApexClasses: ', error);
-                    });
-            }
+                        console.log('error in getApexPageBody: ', error);
+                    })
+            })
+                .catch(error => {
+                    this.Loading = false;
+                    console.log('error in getApexTriggerBody: ', error);
+                })
         })
             .catch(error => {
-                console.log('connectedCallback.getApexClassNames.Error ==>', error);
+                this.Loading = false;
+                console.log('error in getApexClasses: ', error);
             })
-        //add this code inside promise
-
 
     }
 

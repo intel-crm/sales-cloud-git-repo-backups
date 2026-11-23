@@ -203,7 +203,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Account Plan,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Cloud,DCF 1.0,Data Center Market Accelerate,Data Centric Acceleration - MDF,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,ODM Growth Plan - Client MDF,OEM CMP,Proposal I MDF,Proposal II MDF,RSA MD,Retail MDF,SOEM Client MDF,SOEM Data Center MDF,Service Provider CMP,Co-Engineering</value>
+            <value>,Account Plan,Business Client Acceleration - MDF,CCF 1.0,Client Market Accelerate,Client Specialties MDF,Cloud,Co-Engineering,Data Center Market Accelerate,Data Centric Acceleration - MDF,DCF 1.0,Intel Rise Technology Initiative,IoT Premier - MDF,IoT Targeted - MDF,MDF,MDF+,ODM Growth Plan - Client MDF,OEM CMP,Proposal II MDF,Proposal I MDF,Retail MDF,RSA MD,Service Provider CMP,SOEM Client MDF,SOEM Data Center MDF</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest.PartnerFundClaims$Core_MDF_Activity_Start_Date__c</column>

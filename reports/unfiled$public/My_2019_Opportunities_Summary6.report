@@ -51,23 +51,6 @@
         <field>AMOUNT</field>
     </columns>
     <description>Summary report of opportunities that &apos;I&apos; own in sf.com</description>
-    <filter>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Data Center Computing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Application__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Server - On Prem</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -79,7 +62,12 @@
         <field>Opportunity.Core_Opportunity_Type__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>My 2023 Opportunities Summary</name>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Product_Segment__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>My 2020 Opportunities Summary</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -97,7 +85,7 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <scope>salesteamteam</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
@@ -105,8 +93,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2023-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-01-01</startDate>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

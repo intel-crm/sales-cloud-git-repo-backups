@@ -22,7 +22,7 @@ const checkContext = () => {
 
 export default async (params = {}) => {
   let response = {};
-
+	console.log('params123::',params);
   await search({
     requestJSON: JSON.stringify({
       ...params,

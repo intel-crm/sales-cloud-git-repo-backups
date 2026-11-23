@@ -4,35 +4,19 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>EXP_AMOUNT</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Low_Quality__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Past_Due__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Low_Velocity__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Inactive__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Approved_Date__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Commissionable__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Intel_Platform__c</field>
@@ -53,10 +37,10 @@
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
+        <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <field>EXP_AMOUNT</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
@@ -71,7 +55,49 @@
         <field>Opportunity.Core_Chipset__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Form_Factor__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Operating_System__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Entry_SPP_US__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Screen_Size__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Z_Height__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Camera_3D__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Display_Resolution__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Thunderbolt__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_vPro__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Ultrabook__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Wireless_WAN__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_SSD__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_OEM__c</field>
+    </columns>
+    <columns>
         <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Volume__c</field>
     </columns>
     <columns>
         <field>AMOUNT</field>
@@ -92,13 +118,20 @@
         <field>Opportunity.Core_Technical_Owner_Manager__c</field>
     </columns>
     <filter>
-        <booleanFilter>1</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Yue Li</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>PRC Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -126,7 +159,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>OPPORTUNITY_NAME</sortColumn>
+    <sortColumn>Opportunity.Core_Wireless_WAN__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>

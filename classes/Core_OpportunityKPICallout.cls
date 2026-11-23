@@ -25,11 +25,11 @@ public class Core_OpportunityKPICallout {
             req.setHeader('Content-Type', contentType);
             req.setHeader('Host', host);
             
-            req.setBody(reqBody);
+            req.setBody(reqBody);            
            
            
             Http http = new Http();
-            HTTPResponse res = http.send(req);
+            HTTPResponse res = http.send(req);            
             
            
             

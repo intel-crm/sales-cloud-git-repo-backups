@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/CIM_Invalid_Records</template>
+        <template>unfiled$public/CIM_Invalid_Records</template>
     </alerts>
     <alerts>
         <fullName>CIMtoSFfailedRecordsEmail</fullName>
@@ -22,6 +22,6 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/CIM_Failure_Records</template>
+        <template>unfiled$public/CIM_Failure_Records</template>
     </alerts>
 </Workflow>

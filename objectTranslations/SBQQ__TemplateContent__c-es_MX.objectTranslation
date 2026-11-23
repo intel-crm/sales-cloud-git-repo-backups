@@ -9,6 +9,10 @@
         <value>Contenido de plantilla</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>URL a una página de VisualForce que genera contenido cuando el tipo está establecido en &quot;Personalizado&quot;.</help>
         <label><!-- Custom Source --></label>
         <name>SBQQ__CustomSource__c</name>

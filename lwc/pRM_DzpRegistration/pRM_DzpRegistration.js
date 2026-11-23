@@ -39,12 +39,16 @@ export default class PRM_DzpRegistration extends LightningElement {
             // Handle success or show a toast message
             if(result){
                 this.showDZPPopup = true;
+                console.log("If block executed!!!!---RRT");
             }else{
                 window.open(DZPEnrollementForm, '_blank');
+                console.log("else block executed!!!!----RRT");
             }
+            console.log("Check DZP entry executed!!!!!");
         })
         .catch(error => {
                 this.showToast(ErrorMsg, this.insertErr, 'error');
+                console.log("Error occurred here!!!!!");
         });
         this.showSpinner = false;
     }

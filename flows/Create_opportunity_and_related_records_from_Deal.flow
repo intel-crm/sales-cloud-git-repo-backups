@@ -48,7 +48,6 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Approver_Email_for_Partner</name>
@@ -98,7 +97,6 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Process_Deal_Lines</name>
@@ -122,7 +120,6 @@
             </value>
         </inputParameters>
         <nameSegment>PCC_FlowApexActionCntroller</nameSegment>
-        <offset>0</offset>
         <outputParameters>
             <assignToReference>DrpsFromApex</assignToReference>
             <name>drpList</name>
@@ -310,7 +307,7 @@
     <decisions>
         <name>Create_opportunity</name>
         <label>Create opportunity</label>
-        <locationX>4062</locationX>
+        <locationX>3864</locationX>
         <locationY>170</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
@@ -371,7 +368,7 @@
     <decisions>
         <name>Is_retry</name>
         <label>Is retry?</label>
-        <locationX>3058</locationX>
+        <locationX>2926</locationX>
         <locationY>494</locationY>
         <defaultConnector>
             <isGoTo>true</isGoTo>
@@ -1079,38 +1076,6 @@ TODAY()
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
-        <name>Publish_failure_event_for_opportunity_creation</name>
-        <label>Publish failure event for opportunity creation</label>
-        <locationX>4538</locationX>
-        <locationY>1034</locationY>
-        <inputAssignments>
-            <field>PCC_Error_Message__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>PCC_Object__c</field>
-            <value>
-                <stringValue>Opportunity</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>PCC_Record_ID__c</field>
-            <value>
-                <elementReference>$Record.PCC_Record_ID__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>PCC_Type__c</field>
-            <value>
-                <stringValue>Failure</stringValue>
-            </value>
-        </inputAssignments>
-        <object>PCC_Deal_Approval_Process_Communication__e</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
         <name>Publish_failure_event_to_deal</name>
         <label>Publish failure event to deal</label>
         <locationX>4274</locationX>
@@ -1337,7 +1302,7 @@ TODAY()
     <recordLookups>
         <name>Get_deal_details</name>
         <label>Get deal details</label>
-        <locationX>3058</locationX>
+        <locationX>2926</locationX>
         <locationY>386</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1364,9 +1329,6 @@ TODAY()
         <connector>
             <targetReference>Create_opportunity_record</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Publish_failure_event_for_opportunity_creation</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>DeveloperName</field>
@@ -1494,7 +1456,7 @@ TODAY()
     <recordLookups>
         <name>Get_partner_price_book_id</name>
         <label>Get partner price book id</label>
-        <locationX>3058</locationX>
+        <locationX>2926</locationX>
         <locationY>278</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1681,7 +1643,7 @@ TODAY()
         <object>TPT_Tracker__c</object>
     </recordUpdates>
     <start>
-        <locationX>3936</locationX>
+        <locationX>3738</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Create_opportunity</targetReference>
@@ -1768,17 +1730,14 @@ TODAY()
  Hello {!Get_deal_details.Core_Intel_Technical_Owner_Id__r.FirstName},
 &lt;br&gt;
 &lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;  
-An &lt;b&gt;Opportunity has been created &lt;/b&gt;for your deal registration.
-&lt;br&gt;
-&lt;br&gt;
-&lt;i&gt;Please note that this email confirms only the creation of the opportunity and not the incentive approval.&lt;/i&gt;
+The following Deal Registraion has been &lt;b&gt;Approved.&lt;/b&gt;
 &lt;br&gt;
 &lt;br&gt;
 &lt;b&gt;Registration Number: &lt;/b&gt;{!Get_deal_details.Name} 
 &lt;br&gt;
 &lt;b&gt;Deal Registration Name: &lt;/b&gt;{!Get_deal_details.Core_Design_Registration_Nm__c}
 &lt;br&gt;
-&lt;b&gt;External ID: &lt;/b&gt;{!Get_deal_details.PCC_Partner_Reference_ID__c}
+&lt;b&gt;Partner Reference ID: &lt;/b&gt;{!Get_deal_details.PCC_Partner_Reference_ID__c}
 &lt;br&gt;
 &lt;b&gt;End Customer Account: &lt;/b&gt;{!Get_deal_details.Core_End_Customer_Account_Id__r.Name}  
 &lt;br&gt;
@@ -1786,8 +1745,7 @@ An &lt;b&gt;Opportunity has been created &lt;/b&gt;for your deal registration.
 &lt;br&gt;
 {!table}
 &lt;br&gt;
-&lt;b&gt;You will receive a separate notification once the incentive approval is completed.&lt;/b&gt;
-&lt;br&gt;
+If you have requested a financial incentive, you will receive a seperate notification regarding your request.
 &lt;br&gt;
 For more details, you can access the opportunity record &lt;a href={!get_internal_record_link.Value__c}{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt;.
 &lt;br&gt;
@@ -1965,28 +1923,24 @@ It is the Intel Partner&apos;s responsibility to understand the export, customs 
  Hello {!Get_deal_details.Owner:User.Name},
 &lt;br&gt;
 &lt;p style=&quot;margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 14px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;&quot;&gt;  
-An &lt;b&gt;Opportunity has been created &lt;/b&gt;for your deal registration.
-&lt;br&gt;
-&lt;br&gt;
-&lt;i&gt;Please note that this email confirms only the creation of the opportunity and not the incentive approval.&lt;/i&gt;
+The following Deal Registraion has been &lt;b&gt;Approved.&lt;/b&gt;
 &lt;br&gt;
 &lt;br&gt;
 &lt;b&gt;Registration Number: &lt;/b&gt;{!Get_deal_details.Name} 
 &lt;br&gt;
 &lt;b&gt;Deal Registration Name: &lt;/b&gt;{!Get_deal_details.Core_Design_Registration_Nm__c}
 &lt;br&gt;
-&lt;b&gt;External ID: &lt;/b&gt;{!Get_deal_details.PCC_Partner_Reference_ID__c}
+&lt;b&gt;Partner Reference ID: &lt;/b&gt;{!Get_deal_details.PCC_Partner_Reference_ID__c}
 &lt;br&gt;
 &lt;b&gt;End Customer Account: &lt;/b&gt;{!Get_deal_details.Core_End_Customer_Account_Id__r.Name}  
 &lt;br&gt;
-&lt;b&gt;Opportunity: &lt;/b&gt; Click &lt;a href={!get_external_record_link.Value__c}opportunity/{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt; to view
+&lt;b&gt;Opportunity: &lt;/b&gt; Click &lt;a href={!get_external_record_link.Value__c}{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt; to view
 &lt;br&gt;
 {!table}
 &lt;br&gt;
-&lt;b&gt;You will receive a separate notification once the incentive approval is completed.&lt;/b&gt;
+If you have requested a financial incentive, you will receive a seperate notification regarding your request.
 &lt;br&gt;
-&lt;br&gt;
-For more details, you can access the opportunity record &lt;a href={!get_external_record_link.Value__c}opportunity/{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt;.
+For more details, you can access the opportunity record &lt;a href={!get_external_record_link.Value__c}{!Get_deal_details.Core_Opportunity_Id__c}&gt;here&lt;/a&gt;.
 &lt;br&gt;
 This email was sent from an unmonitored mailbox. For questions,please contact your Intel Partner Sales Account Manager or utilize the Chatter feature on the Opportunity.
 &lt;br&gt;

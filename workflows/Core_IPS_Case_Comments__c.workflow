@@ -23,7 +23,7 @@
     <outboundMessages>
         <fullName>Core_IPS_RTF_CaseComment_Backend_OutMsg</fullName>
         <apiVersion>35.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2-dev.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>Core_IPS_Case__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
@@ -38,7 +38,7 @@
             <name>Core_IPS_RTF_CaseComment_Backend_OutMsg</name>
             <type>OutboundMessage</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;), Core_IPS_Case__r.Core_IPS_Backend_ID__c &lt;&gt; null ,  Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null , Core_IPS_Case__r.Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false,  OR(ISPICKVAL(Core_Promote_Status__c, &apos;&apos;), ISPICKVAL(Core_Promote_Status__c, &apos;In Progress&apos;) ), OR( Core_IPS_Comment_Attachment_Id__c == null, Core_IPS_Comment_Attachment_Id__c == &apos;&apos;)  )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

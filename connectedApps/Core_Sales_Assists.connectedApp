@@ -7,7 +7,7 @@
     <oauthConfig>
         <callbackUrl>https://assists.ai4sales.com/sfdcTokens
 https://preprod-assists.ai4sales.com/sfdcTokens</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6tdLdH4pY25ZVZffOgPsO5ivcerfgQR8kd5ib9FJCUc76w.faZTtFRyV1X_k</consumerKey>
+        <consumerKey>3MVG9ysJNY7CaIHnXtkJBm9UdfINPMY9eEn7nIz06OhsTr3AI1ZZkAs_HKkdGWvrvmOSjTF1W.XOn8XslAbnP</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -37,7 +37,18 @@ https://preprod-assists.ai4sales.com/sfdcTokens</callbackUrl>
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>specific_lifetime:1:DAYS</refreshTokenPolicy>
     </oauthPolicy>
+    <permissionSetName>IPA System Permission set</permissionSetName>
+    <permissionSetName>Sales CRM API Permission Set</permissionSetName>
+    <profileName>Draco Automation Test</profileName>
     <profileName>Production Release and Checkout</profileName>
+    <profileName>Account_SBR_Del_Test</profileName>
+    <profileName>SBR_Test</profileName>
+    <profileName>IPA System Profile</profileName>
+    <profileName>Test Data Ops</profileName>
+    <profileName>Vega Test Profile R</profileName>
+    <profileName>Vega Test Profile new</profileName>
+    <profileName>Sales Rep Dual Altera</profileName>
+    <profileName>Data Ops Test UCD</profileName>
     <profileName>Data Ops</profileName>
     <profileName>IT Admin</profileName>
     <profileName>Production Support-Display</profileName>
@@ -45,6 +56,7 @@ https://preprod-assists.ai4sales.com/sfdcTokens</callbackUrl>
     <profileName>Sales Manager</profileName>
     <profileName>Sales Ops</profileName>
     <profileName>Sales Rep-BB</profileName>
+    <profileName>Production Support</profileName>
     <profileName>Sales Rep-BB-Dual IPS</profileName>
     <profileName>System Administrator</profileName>
 </ConnectedApp>

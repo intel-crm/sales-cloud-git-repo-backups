@@ -44,6 +44,7 @@ class IpaQuickSearch extends NavigationMixin(LightningElement) {
   @api paddingAbove;
 
   @api paddingBelow;
+ 
 
   /**
    * custom labels
@@ -106,10 +107,14 @@ class IpaQuickSearch extends NavigationMixin(LightningElement) {
           options: [],
         };
       }
+    let  taxonomy;
+    if(this.taxonomyData!==null && this.taxonomyData!==undefined){
+      taxonomy  = this.taxonomyData[filter];
+       //if (!taxonomy) throw new Error(`Missing Taxonomy Data for: ${filter}`);
 
-      const taxonomy = this.taxonomyData[filter];
-      if (!taxonomy) throw new Error(`Missing Taxonomy Data for: ${filter}`);
-
+      }
+     
+      
       // Dependency on Categories
       const selectedPrimary = this.searchValues[this.filterStructure[0]];
       const disabled = idx > 0 && !selectedPrimary;

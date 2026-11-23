@@ -29,7 +29,6 @@
         <aggregateTypes>Average</aggregateTypes>
         <field>SBQQ__Quote__c$core_cpq_inprogress_days__c</field>
     </columns>
-    <description>It gives an overview of quotes in &apos;In Progress&apos; status across geos over a time period.</description>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c$SubmittedDate__c</column>
@@ -37,34 +36,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$CreatedDate</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$core_cpq_quote_type_nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Budgetary,Design Win,Tools,Transfer Pricing,Contract Pricing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$CreatedDate</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$core_cpq_active_cb__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

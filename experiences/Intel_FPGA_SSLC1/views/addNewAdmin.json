@@ -7,8 +7,8 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : { },
-      "componentName" : "c:sales_AddNewLicenseAdmin",
-      "id" : "0224e1d4-edc9-41db-9e63-581c43685a0c",
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "0144d957-5d43-4959-92db-4d04a5ce3601",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -17,6 +17,14 @@
     "regionName" : "header",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_AddNewLicenseAdmin",
+      "id" : "0224e1d4-edc9-41db-9e63-581c43685a0c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "eba9c99d-fb75-49ae-97df-490a0e8399c0",
     "regionName" : "content",
     "type" : "region"

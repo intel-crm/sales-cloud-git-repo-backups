@@ -12,11 +12,11 @@ public class Core_Asset_Dispatcher{
          
          if(trigger.isInsert){
              if(ipsNewRecordList <> null && ipsNewRecordList.size() > 0){
-                 //newListStr = JSON.serialize(ipsNewRecordList);   //commented by Aayushi DE40248
+                 //newListStr = JSON.serialize(ipsNewRecordList);    					//commented by Aayushi DE40248
                  Core_Asset_Handler.changeAssetOwner(ipsNewRecordList);
-                 //Core_Asset_Handler.updateProductInformationOnAsset(newListStr); //commented by Aayushi DE40248
+                 //Core_Asset_Handler.updateProductInformationOnAsset(newListStr); 		//commented by Aayushi DE40248
                  Core_Asset_Handler.updateProductInformationOnAsset(ipsNewRecordList); 
-				 Core_Asset_Handler.updateProjectInformationOnAsset(ipsNewRecordList); 	//added by Aayushi US113701
+				 Core_Asset_Handler.updateProjectInformationOnAsset(ipsNewRecordList); 		//added by Aayushi US113701
              }
          }
          if(trigger.isUpdate){                            

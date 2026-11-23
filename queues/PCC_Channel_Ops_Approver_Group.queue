@@ -7,6 +7,11 @@
         <publicGroups>
             <publicGroup>AGS_Channel_Ops_Approver_Group</publicGroup>
         </publicGroups>
+        <users>
+            <user>dprea@intel.com</user>
+            <user>iqrtest_channelopsuser@intel.com.crm</user>
+            <user>peddinenix.likhitha.choudary@intel.com</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_Design_Registration__c</sobjectType>

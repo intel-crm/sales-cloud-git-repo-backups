@@ -1145,6 +1145,7 @@
 					label: item.label.replace(/&#39;/g, "'"),
 					value: item.value.replace(/&#39;/g, "'")
 				}));
+                
                 component.set("v.POPRequirementValuesMap", modifiedArray);
                 
             }

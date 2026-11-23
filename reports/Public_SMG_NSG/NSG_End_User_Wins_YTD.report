@@ -92,7 +92,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Sell-to,Deal: Sell-through,Deal: Scale-enable</value>
+            <value>Deal: Sell-to,Deal: Sell-through</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>

@@ -66,8 +66,8 @@ private class Core_MDF_Bulk_Transaction_Test {
             Core_ERPM_Engagement__c erpmEngagementRMF = Core_MDF_CCP_TestDataUtility.createErpmEngagement('RPS_Retailer', 'RPS_Retailer', 'DEDUPGPRET', 'SEC', true, true);
             
             //Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('CCF User',agsRoleCCF.Id ,'Consolidated Co-marketing Platform','CCF User',erpmEngagementCCF.Id , true,'Client Co-Marketing Fund (CCF)',true);
-            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Support','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
-            Core_Entitlement__c entitlementRMF_CS= Core_MDF_CCP_TestDataUtility.createEntitlement('RMF External Claim Submitter',agsRoleRMF_CS.Id ,'Support','RMF External Claim Submitter',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            Core_Entitlement__c entitlementRMF = Core_MDF_CCP_TestDataUtility.createEntitlement('RMF User',agsRoleRMF.Id ,'Consolidated Co-marketing Platform','RMF User',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
+            Core_Entitlement__c entitlementRMF_CS= Core_MDF_CCP_TestDataUtility.createEntitlement('RMF External Claim Submitter',agsRoleRMF_CS.Id ,'Consolidated Co-marketing Platform','RMF External Claim Submitter',erpmEngagementRMF.Id , true,'Retail Marketing Funds (RMF)',true);
             
             //Core_Contact_Entitlement__c contactEntitlementCCF = Core_MDF_CCP_TestDataUtility.createContactEntitlement(con.Id,entitlementCCF.Id ,true,'Complete', true);
             // Highlight: Unused Local Variable 
@@ -161,7 +161,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                          Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                          string.valueof(intelRetail.id),pfa,NULL,
                                                                                                          'AFGHANISTAN','Business','Workstation',
-                                                                                                         'EVO','Broadcast (Pre-2025)',
+                                                                                                         'EVO','Broadcast',
                                                                                                          'Podcast','Draft',false);
             
             currentQuarterPfr.Title ='RSA MD Activity';
@@ -183,7 +183,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                       Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                       string.valueof(intelRetail.id),pfa,NULL,
                                                                                                       'AFGHANISTAN','Business','Workstation',
-                                                                                                      'EVO','Broadcast (Pre-2025)',
+                                                                                                      'EVO','Broadcast',
                                                                                                       'Podcast','Draft',false);
             
             lastQuarterPfr.Title ='RSA MD Activity';
@@ -206,7 +206,7 @@ private class Core_MDF_Bulk_Transaction_Test {
                                                                                                       Core_MDF_CCP_TestDataUtility.partnerFund_RecordType_Retail,
                                                                                                       string.valueof(intelRetail.id),pfa,NULL,
                                                                                                       'AFGHANISTAN','Business','Workstation',
-                                                                                                      'EVO','Broadcast (Pre-2025)',
+                                                                                                      'EVO','Broadcast',
                                                                                                       'Podcast','Draft',false);
             
             escPfr.Title ='RSA MD Activity';

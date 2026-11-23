@@ -21,7 +21,7 @@ global without sharing class PMP_NavigationBarAPIDetails {
         Boolean showManageSolutions= false; // to store manage offerings button visibility
         Boolean showManageStorefront = false; // to store manage storefront button visibility
         Boolean showManagePartners = false; // to store manage partners button visibility
-        //IPA 2.0 TWC729-7887  
+        //IPA 2.0 TWC729-7887	
        // Boolean isBasicAccess = false; 
        //Boolean isEnhanced = false;
         map<String,NavBarButtonAttributes> navigationBarButtons= new map<String,NavBarButtonAttributes>();
@@ -46,17 +46,21 @@ global without sharing class PMP_NavigationBarAPIDetails {
             boolean is_PMP_Manage_storefront=false;
             if (isMarketplaceUser){ //if user is MP partner user
                 String benefitName = checkBenefitLevel(usr); 
-                 //IPA 2.0 TWC729-7887  
+                 //IPA 2.0 TWC729-7887	
                 //isBasicAccess= benefitName == PMP_StaticConstants_Partner.Solution_Marketplace_Basic_Access? true:false;
                 //isEnhanced = benefitName == PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced? true:false;
-                 //IPA 2.0 TWC729-7887  
+                 //IPA 2.0 TWC729-7887	
                 //showManageOfferings = /*isEnhanced &&*/ customPermissions.contains('PMP_Manage_Offerings')? true: false;
               //IPA 2.0 TWC729-7887
              //   showManageStorefront= benefitName!=Null  /*&& !isBasicAccess*/? true:false;
-            
-      showManageStorefront=customPermissions.contains('PMP_Manage_Storefront');
-      system.debug('showManageStorefront'+showManageStorefront);
-                 //IPA 2.0 TWC729-7887  
+			 Map<String, Boolean> mapPermmision = Core_UtilityController.checkForCustomPermission();
+			 if(mapPermmision.containsKey('PMP_Manage_Storefront') && mapPermmision.get('PMP_Manage_Storefront') != null){
+			  is_PMP_Manage_storefront = true;
+			}
+			showManageStorefront=is_PMP_Manage_storefront?true:false;
+			system.debug('mapPermmision'+mapPermmision);
+			system.debug('is_PMP_Manage_storefront'+is_PMP_Manage_storefront);
+                 //IPA 2.0 TWC729-7887	
                showManageLeads = customPermissions.contains('PMP_Manage_Leads') /*&& benefitName!=Null && !isBasicAccess*/ ;
                 showDashboard= customPermissions.contains('PMP_View_Dashboard') /*&& benefitName!=Null && !isBasicAccess*/;
                 //showManageSolutions= customPermissions.contains('PMP_Manage_Solutions');
@@ -234,7 +238,7 @@ global without sharing class PMP_NavigationBarAPIDetails {
                 assignedPermissions.add(customPermissionName); 
             }
         }
-        system.debug('assignedPermissions'+assignedPermissions);
+        
         return assignedPermissions;//return the user custom permissions
     }
     

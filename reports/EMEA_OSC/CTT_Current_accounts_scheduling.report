@@ -10,14 +10,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>2020</value>
+            <value>2019</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_CIM_ID__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>11462499,11816561,12744522,11463194,28323677,11421708,11994868,11519830,11497874,11479704,22594605,30415992,14111937,13345126,11561496,14099677,11291836,11455389,25643747,11042747,14271164,20585113,11010901,23893982,12674615,26054183,12865649,32928025,11479408,11188774,12715163,21463803,11803907,14252112,13476450</value>
+            <value>12715163,11042747,11463194,22870836,11462499,19754852,11421708,11291836,14252112,11455389,11638402,11010901</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

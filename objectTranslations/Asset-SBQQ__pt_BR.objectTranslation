@@ -460,12 +460,4 @@
         <label><!-- IPS Public Product --></label>
         <name>Core_IPS_Public_Product</name>
     </recordTypes>
-    <webLinks>
-        <label><!-- Add_Products_for_External_Customers --></label>
-        <name>Add_Products_for_External_Customers</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Remove_Products --></label>
-        <name>Remove_Products</name>
-    </webLinks>
 </CustomObjectTranslation>

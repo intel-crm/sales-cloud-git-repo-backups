@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>PSG_Internal_Edit_Host_Information_Sharing</fullName>
+        <fullName>PSGInternal_ReadEdit_Host_Information</fullName>
         <accessLevel>Edit</accessLevel>
-        <label>PSG Internal Edit Host Information Sharing</label>
+        <label>PSGInternal_ReadEdit_Host_Information</label>
         <sharedTo>
-            <group>ags_internal_users</group>
+            <group>AGS_PSG_Internal_Users_ReadEdit</group>
         </sharedTo>
         <criteriaItems>
             <field>CreatedById</field>

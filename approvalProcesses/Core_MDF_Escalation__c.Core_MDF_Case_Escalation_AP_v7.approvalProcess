@@ -610,7 +610,7 @@
         </rejectBehavior>
     </approvalStep>
     <description>Escalation Approval flow for Claim Case Review Result Record Type</description>
-    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
@@ -647,7 +647,7 @@
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Escalation Approval for Case</label>
-    <processOrder>2</processOrder>
+    <processOrder>3</processOrder>
     <recallActions>
         <action>
             <name>Core_MDF_Cancel_Status</name>

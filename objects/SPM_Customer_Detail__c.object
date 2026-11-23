@@ -261,21 +261,26 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Intel Led</fullName>
+                    <fullName>Intel Covered</fullName>
                     <default>false</default>
-                    <label>Intel-led Account</label>
+                    <label>Intel Covered</label>
                 </value>
                 <value>
-                    <fullName>Partner Led</fullName>
+                    <fullName>Indirect Covered</fullName>
                     <default>false</default>
-                    <label>Partner-led Account</label>
+                    <label>Indirect Covered</label>
+                </value>
+                <value>
+                    <fullName>Not Covered</fullName>
+                    <default>false</default>
+                    <label>Not Covered</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Customer_Category__c</fullName>
-        <label>Semi-Annual Temp Account Category</label>
+        <label>Account Category</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -308,9 +313,57 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Device_Builder_MNC__c</fullName>
+        <externalId>false</externalId>
+        <label>Device Builder - MNC#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Device_Builder_Regional_OxM__c</fullName>
+        <externalId>false</externalId>
+        <label>Device Builder - Regional OxM#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Distributors_IA__c</fullName>
+        <externalId>false</externalId>
+        <label>Distributors (IA)#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Distributors__c</fullName>
         <externalId>false</externalId>
         <label>Distributors#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>End_Customer__c</fullName>
+        <externalId>false</externalId>
+        <label>End Customer#</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -327,6 +380,18 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Hyperscaler_AWS_Azure_GCP__c</fullName>
+        <externalId>false</externalId>
+        <label>Hyperscaler (AWS, Azure, GCP)#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Inactive__c</fullName>
@@ -351,7 +416,7 @@
     <fields>
         <fullName>Number_Of_Accounts__c</fullName>
         <externalId>false</externalId>
-        <formula>B2B__c + Distributors__c + Indirect_Billing__c + Regional_GSI_ISV_MSP__c + Regional_Retailer__c + Region_Branded_Disti__c + Region_Direct_OxMs__c + Regional_Co_Sell_Partners__c+ Top_Global__c</formula>
+        <formula>Device_Builder_MNC__c + Hyperscaler_AWS_Azure_GCP__c + Reseller_Named_Billing_Accounts__c + End_Customer__c + Device_Builder_Regional_OxM__c + Reseller_Branded_Disti__c + Reseller_Retailers__c + Solution_Enabler_SI_ISV_CSP_MSP__c + Distributors_IA__c + Regional_Co_Sell_Partners__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label># of Accounts</label>
         <precision>18</precision>
@@ -433,6 +498,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Delete:Region</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Regional_Co_Sell_Partners__c</fullName>
         <externalId>false</externalId>
         <label>Regional Co-Sell Partners#</label>
@@ -460,6 +536,42 @@
         <fullName>Regional_Retailer__c</fullName>
         <externalId>false</externalId>
         <label>Regional Retailer#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reseller_Branded_Disti__c</fullName>
+        <externalId>false</externalId>
+        <label>Reseller - Branded Disti#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reseller_Named_Billing_Accounts__c</fullName>
+        <externalId>false</externalId>
+        <label>Reseller - Named Billing Accounts#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reseller_Retailers__c</fullName>
+        <externalId>false</externalId>
+        <label>Reseller - Retailers#</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -499,6 +611,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Solution_Enabler_SI_ISV_CSP_MSP__c</fullName>
+        <externalId>false</externalId>
+        <label>Solution Enabler (SI, ISV, CSP, MSP)#</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -557,14 +681,28 @@
         <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
-        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>PrintableListView</excludedStandardButtons>
+        <listViewButtons>CRM_Update</listViewButtons>
         <searchResultsAdditionalFields>Customer_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Number_Of_Accounts__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>CRM_Update</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>10</height>
+        <linkType>url</linkType>
+        <masterLabel>CRM Update</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/flow/CST_Account_Update</url>
+    </webLinks>
 </CustomObject>

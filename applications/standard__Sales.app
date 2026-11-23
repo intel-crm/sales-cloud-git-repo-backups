@@ -36,13 +36,25 @@
     <tabs>standard-WaveHome</tabs>
     <tabs>Ask_a_Question</tabs>
     <tabs>Core_BU_Mapping_Table__c</tabs>
-    <tabs>Core_Prospect__c</tabs>
-    <tabs>SeismicUserDeletion_Config__c</tabs>
+    <tabs>PMP_Partner_Program__c</tabs>
+    <tabs>SBQQ__ProductOption__c</tabs>
+    <tabs>Core_KPI_Staging__c</tabs>
+    <tabs>Core_Oppty_KPI_New__c</tabs>
+    <tabs>standard-Quote</tabs>
+    <tabs>PMP_OPID_MPI_Rel__c</tabs>
+    <tabs>LessonlyUser__c</tabs>
+    <tabs>SeismicUserManagement_Temp__c</tabs>
+    <tabs>Core_Account_Compliance_Watch_List__c</tabs>
     <tabs>SeismicUserDeletion_User__c</tabs>
-    <tabs>Account_Create_Request__c</tabs>
-    <tabs>Seismic_PIMConfig__c</tabs>
-    <tabs>Seismic_DOV__c</tabs>
-    <tabs>Seismic_PIMActiveHierarchy__c</tabs>
+    <tabs>SeismicUserDeletion_Config__c</tabs>
+    <tabs>Core_AE_Integration_Log__c</tabs>
     <tabs>Account_Plan__c</tabs>
     <tabs>Executive_Meeting_Brief__c</tabs>
+    <tabs>Seismic_DOV__c</tabs>
+    <tabs>Core_Design_Registration_Stage__c</tabs>
+    <tabs>DZP_Registration_Request__c</tabs>
+    <tabs>Core_MDF_Account_Info__c</tabs>
+    <tabs>SMG1AI</tabs>
+    <tabs>PIM_Products__x</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
 </CustomApplication>

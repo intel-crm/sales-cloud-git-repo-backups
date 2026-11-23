@@ -45,6 +45,13 @@
             <operator>equals</operator>
             <value>Submitted</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundAllocation.PartnerFundRequests.PartnerFundClaims$Core_MDF_Type_Txt__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Claim</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

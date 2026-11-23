@@ -121,15 +121,15 @@
             <column>Opportunity.Core_Days_from_Opportunity_Create_to_Su__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>60</value>
+            <operator>lessOrEqual</operator>
+            <value>90</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Named Account Sales Group,APJ Sales Territory,APJ Taiwan Sales Group</value>
+            <value>GMP APJ Sales Territory,GMP India Sales Group,GMP Japan Sales Group,GMP Korea Sales Group,GMP Taiwan Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -149,7 +149,7 @@
         <field>Account.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>60 day analysis (list) - APJ</name>
+    <name>90 day analysis (list) - APJ</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -175,6 +175,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Date_Submitted_for_Approval__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

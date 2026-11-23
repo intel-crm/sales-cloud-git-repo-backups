@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <entityName>Core_Design_Registration_Product__c</entityName>
+    <fieldName>PCC_Competitor_OEM_Name__c</fieldName>
+    <masterLabel>test</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Core_Active_Status__c</fieldNames>
+        <fieldNames>PCC_Change_Request_Line_Item__c</fieldNames>
+        <info>&lt;p&gt;test&lt;/p&gt;</info>
+        <picklistValueName>Acer</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>PCC_Deal_Registration_Product_Intel</recordTypeName>
+</PathAssistant>

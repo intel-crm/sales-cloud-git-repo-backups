@@ -20,8 +20,9 @@ public without sharing class PSS_StaticConstants{
     public static final String REVIEW_SCHEDULED = 'Review Scheduled';
     public static final String RETIRED='Retired';
     public static final String SOLUTION_WORKFLOW_REJECT_STATUS = 'Reject';
-    public static final String SOLUTIONS_MARKETPLACE_ENHANCED='Solutions Marketplace Enhanced';
+    //public static final String SOLUTIONS_MARKETPLACE_ENHANCED='Solutions Marketplace Enhanced';
     public static final String SOLUTIONS_CONVERSION_RESOURCEOBJECT_NAME = 'Partner Offering Resource';
+    public static final String SOLUTIONS_IOTG_CONVERSION_RESOURCEOBJECT_NAME = 'IOTG Offering Resource';
     public static final String SURVEY_QUESTION_DISPLAY_ORDER = '001';
     public static final String SURVEY_QUESTION_RADIO_DISPLAY = 'Vertical Radio';
     public static final String SURVEY_SECTION_SHORT_TITLE = 'WLC';
@@ -37,7 +38,7 @@ public without sharing class PSS_StaticConstants{
     public static Boolean opIDTriggerLogicStop = True;
     public static Boolean intelProductsTriggerLogicStop = True;
     public static Boolean questionResultTriggerFlag = True;
-    public static final List<String> PARTNER_LISTVIEW = new List<String> {'All','Admin_Review_Queue'};
+    public static final List<String> PARTNER_LISTVIEW = new List<String> {'All','Admin_Review_Queues'};// changed Admin_Review_Queue to Admin_Review_Queues as list view api name is Admin_Review_Queues in devint-Lata fix for admin review queue in portal
     //public static final List<String> PARTNER_OFFERING_LISTVIEW = new List<String> {'All_Offerings','Retired_Offerings'};//IPA 2.0 OFFERING EOL
     /*public static final List<String> ADMIN_REVIEW_LISTVIEW_OFFERING = new List<String> {'Admin_Review_Queue','All_Offerings','Retired_Offerings',
                                                                         'Draft_Offerings_for_Last_6_Months','Draft_Offerings_Before_6_Months','Retired_Offerings_for_MP_Admins','Expired_Offerings_for_MP_Admins','Offering_Sub_Category_Partner_Solution', 'Offering_Sub_Category_MRS', 'Offering_Sub_Category_RRK'};*/ //IPA 2.0 OFFERING EOL

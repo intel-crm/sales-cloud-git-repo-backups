@@ -21,7 +21,7 @@
         <label>Core_Inquiry_Asked_For_Lead_Follow_Up</label>
         <locationX>120</locationX>
         <locationY>963</locationY>
-        <actionName>Core_Inquiry__c.EA_Core_Inquiry_Asked_For_Lead_Follow_Up</actionName>
+        <actionName>Core_Inquiry__c.Core_Inquiry_Asked_For_Lead_Follow_Up</actionName>
         <actionType>emailAlert</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -30,7 +30,7 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>Core_Inquiry__c.EA_Core_Inquiry_Asked_For_Lead_Follow_Up</nameSegment>
+        <nameSegment>Core_Inquiry__c.Core_Inquiry_Asked_For_Lead_Follow_Up</nameSegment>
     </actionCalls>
     <actionCalls>
         <name>Core_Inquiry_CNDA_Request_Contact</name>
@@ -76,8 +76,8 @@
     <decisions>
         <name>Check_if_Lead_Contact_email_is_updated</name>
         <label>Check if Lead/Contact email is updated</label>
-        <locationX>413</locationX>
-        <locationY>414</locationY>
+        <locationX>395</locationX>
+        <locationY>376</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>If_Lead_Contact_owner_Email_is_not_there</name>
@@ -209,7 +209,7 @@
         <defaultConnectorLabel>No Criteria was met.</defaultConnectorLabel>
         <rules>
             <name>Send_Email_for_Followup</name>
-            <conditionLogic>(1 OR 2 OR 3) AND 4</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_Inquiry_Type_Pkt__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -231,13 +231,6 @@
                     <stringValue>Sales Approved</stringValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_Lead_Inquiries__r.OwnerId</leftValueReference>
-                <operator>StartsWith</operator>
-                <rightValue>
-                    <stringValue>005</stringValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>Core_Inquiry_Asked_For_Lead_Follow_Up</targetReference>
             </connector>
@@ -252,13 +245,6 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>CNDA Request</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_Lead_Inquiries__r.OwnerId</leftValueReference>
-                <operator>StartsWith</operator>
-                <rightValue>
-                    <stringValue>005</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -340,7 +326,7 @@ ISPICKVAL({!$Record.Core_Inquiry_Type_Pkt__c} ,  &apos;Sales Approved&apos;  )
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>v_LeadContactOwnerEmail</name>
         <dataType>String</dataType>

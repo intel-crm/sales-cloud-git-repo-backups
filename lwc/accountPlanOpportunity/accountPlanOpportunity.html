@@ -1,0 +1,121 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <section class="slds-section">
+          <div class="slds-section__title">
+            <button class="slds-button slds-section__title-action" onclick={toggleSection}>
+              <lightning-icon icon-name={iconName} alternative-text="Toggle" size="x-small"></lightning-icon>
+              <span class="slds-truncate" title=" Transformational Opportunity">Transformational Opportunity</span>
+            </button>
+          </div>
+    
+        <template if:false={isCollapsed}>
+           
+                    <template if:false={isCardVisible}>
+                        <div class="slds-grid slds-wrap slds-p-horizontal_medium slds-p-vertical_small">
+
+                            <!-- Opportunities Section -->
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_small">
+                                <lightning-layout vertical-align="start">
+                                    <lightning-layout-item class="slds-size_1-of-1">
+                                        <div class="slds-grid slds-grid_align-spread">
+                                            <p class="slds-text-title_bold slds-m-bottom_xx-small">Opportunities</p>
+                                            <lightning-button-icon 
+                                                icon-name="utility:edit" 
+                                                alternative-text="Edit"
+                                                onclick={handleToggle}
+                                                variant="bare"
+                                                class="slds-m-bottom_xx-small">
+                                            </lightning-button-icon>
+                                        </div>
+                                        <div class="long-text-box">
+                                            <lightning-formatted-rich-text 
+                                                value={transformationalOpportunity}>
+                                            </lightning-formatted-rich-text >
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                        
+                            <!-- Comments Section -->
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-around_small">
+                                <lightning-layout vertical-align="start">
+                                    <lightning-layout-item class="slds-size_1-of-1">
+                                        <div class="slds-grid slds-grid_align-spread">
+                                            <p class="slds-text-title_bold slds-m-bottom_xx-small">Comments</p>
+                                            <lightning-button-icon 
+                                                icon-name="utility:edit" 
+                                                alternative-text="Edit"
+                                                onclick={handleToggle}
+                                                variant="bare"
+                                                class="slds-m-bottom_xx-small">
+                                            </lightning-button-icon>
+                                        </div>
+                                        <div class="long-text-box" style="height: 200px; overflow: auto; border: 1px solid #ccc; padding: 0.5rem; border-radius: 4px;">
+                                            <lightning-formatted-rich-text 
+                                                value={transformationalOpportunityComment}>
+                                            </lightning-formatted-rich-text>
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                        
+                        </div>
+                        
+                    </template>
+     
+                    <template if:true={isCardVisible}>
+                    
+                        <template if:true={opportunities}>
+                        
+                            <div class="header-container">
+                                <lightning-input
+                                    type="search"
+                                    label="Search Opportunities"
+                                    placeholder="Search..."
+                                    onchange={handleSearchChange}
+                                    class="slds-size_small">
+                                    </lightning-input>
+                            </div>
+                            <div class="slds-box slds-box_xx-small">
+                                <div class="custom-scroll" >
+                                        <lightning-datatable
+                                            key-field="Id"
+                                            data={opportunities}
+                                            columns={columns}
+                                            onrowselection={handleRowSelection}
+                                            selected-rows = {preselectedIds}>
+                                        </lightning-datatable>
+                                    </div>
+                                </div>
+                        
+                            <div class = "slds-p-top_medium">
+                                <lightning-input-rich-text
+                                label="Comment for selected opportunities"
+                                value={sharedComment}
+                                onchange={handleCommentChange}>
+                            </lightning-input-rich-text>
+                            </div>
+                            <div class="button-group">
+                                <lightning-button 
+                                    label="Cancel" 
+                                    variant="neutral" 
+                                    onclick={handleCancel}>
+                                </lightning-button>
+                
+                                <lightning-button 
+                                    label="Save" 
+                                    variant="brand" 
+                                    class="slds-m-left_small"
+                                    onclick={handleSave}>
+                                </lightning-button>
+                            </div>
+                        
+                    </template>
+                </template>
+                
+        </template>
+    </section>
+  </div>
+
+    
+</template>

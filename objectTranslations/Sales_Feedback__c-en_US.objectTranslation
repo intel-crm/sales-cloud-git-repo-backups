@@ -44,8 +44,8 @@
             <translation><!-- New License Request --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Re-host</masterLabel>
@@ -75,14 +75,6 @@
     <fields>
         <label><!-- Feedback Date --></label>
         <name>Feedback_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Feedback Month --></label>
-        <name>Feedback_Month__c</name>
-    </fields>
-    <fields>
-        <label><!-- Feedback Quarter --></label>
-        <name>Feedback_Quarter__c</name>
     </fields>
     <fields>
         <label><!-- Feedback Text --></label>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DR field mapping stored</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DR field mappings stored</value>
+    </caseValues>
+    <fields>
+        <label><!-- DR Are Intel items used mapped with --></label>
+        <name>DR_Are_Intel_items_used_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR City mapped with --></label>
+        <name>DR_City_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Country mapped with --></label>
+        <name>DR_Country_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Decision Date mapped with --></label>
+        <name>DR_Decision_Date_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Description mapped with --></label>
+        <name>DR_Description_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR End Customer Name mapped with --></label>
+        <name>DR_End_Customer_Name_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR External Id mapped with --></label>
+        <name>DR_External_Id_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR First Customer Ship Date mapped with --></label>
+        <name>DR_First_Customer_Ship_Date_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Mapped to Rec Id --></label>
+        <name>DR_Mapped_to_Rec_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Name mapped with --></label>
+        <name>DR_Name_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Opportunity Volume mapped with --></label>
+        <name>DR_Opportunity_Volume_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Partner FAE Email mapped with --></label>
+        <name>DR_Partner_FAE_Email_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Partner FAE mapped with --></label>
+        <name>DR_Partner_FAE_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Product Application mapped with --></label>
+        <name>DR_Product_Application_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Product Segment mapped with --></label>
+        <name>DR_Product_Segment_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Production End Date mapped with --></label>
+        <name>DR_Production_End_Date_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR State/Province mapped with --></label>
+        <name>DR_State_Province_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Street1 mapped with --></label>
+        <name>DR_Street1_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Vertical Market mapped with --></label>
+        <name>DR_Vertical_Market_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Zip/Postal Code mapped with --></label>
+        <name>DR_Zip_Postal_Code_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object to be mapped --></label>
+        <name>Object_to_be_mapped__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

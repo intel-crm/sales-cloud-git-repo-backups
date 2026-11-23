@@ -42,8 +42,8 @@
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>DCG,NSG</value>
+            <operator>equals</operator>
+            <value>NSG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Consumption_Market__c</column>
@@ -58,13 +58,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>00 series</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>SSD</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

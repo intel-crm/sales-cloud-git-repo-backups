@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>INSIDE PRC Qual</name>
+    <queueMembers>
+        <users>
+            <user>11578472@intel.com.crm</user>
+            <user>11751496@intel.com.crm</user>
+            <user>11821650@intel.com.crm</user>
+            <user>11675711@intel.com.crm</user>
+            <user>11675713@intel.com.crm</user>
+            <user>10719822@intel.com.crm</user>
+            <user>11752491@intel.com.crm</user>
+            <user>11909955@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template used in email which IPA admins will receive after OPID association/creation.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>IPA_OPID_ADMIN_Association_Creation</name>
+    <style>none</style>
+    <subject>OPID with active location account</subject>
+    <textOnly>Hello,  
+
+This is to inform that for the 1PID(s) listed below there are active account associated with it. If this is not expected, please raise a ticket in production support. 
+
+%AccountNames%</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -135,6 +135,11 @@
     <description>Escalation Reviewer permission for NRE Program</description>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_Escalation__c.Core_MDF_Account_txt_del__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_Escalation__c.Core_MDF_Approval_Flag_ind__c</field>
         <readable>true</readable>
     </fieldPermissions>

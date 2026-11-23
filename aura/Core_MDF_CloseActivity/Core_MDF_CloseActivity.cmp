@@ -30,7 +30,7 @@
                 <lightning:button aura:id="yesButton" variant="brand" label="{!$Label.c.Core_MDF_DQYes}"
                   title="{!$Label.c.Core_MDF_DQYes}" onclick="{!c.activityEligibiltyForClose}" />
                 <lightning:button aura:id="noButton" variant="neutral" label="{!$Label.c.Core_MDF_DQNo}"
-                  title="{!$Label.c.Core_MDF_DQNo}" onclick="{!c.closeModel }" />
+                  title="{!$Label.c.Core_MDF_DQNo}" onclick="{!c.closeModel}" />
               </div>
             </div>
           </div>

@@ -28,14 +28,18 @@ import ipaMarketplaceChannel from '@salesforce/messageChannel/ipaMarketplace__c'
  *
  * @augments LightningElement
  * @property {boolean} autoScroll scrolls elements into view on open/close
+ * @property {string} [buttonClass=''] CSS class to add to the lightning-button (not used by the menu)
  * @property {boolean} isMenu determines if a single button or "button menu" is shown
  * @property {ModalData} modalData data for the Contact Partner Form
  * @property {string[]} analyticsDetails details for the analytics call
  * @property {boolean} [previewMode] preview mode (disable button action)
+ * @property {string} [variant='brand'] variant for the button (not used by the menu)
  * @fires action when an menu item is activated
  */
 class IpaContactPartnerButton extends LightningElement {
   @api autoScroll;
+
+  @api buttonClass = '';
 
   @api isMenu
 
@@ -44,6 +48,8 @@ class IpaContactPartnerButton extends LightningElement {
   @api analyticsDetails = [];
 
   @api previewMode;
+
+  @api variant = 'brand';
 
   // To pass scope, you must get a message context.
   @wire(MessageContext)
@@ -55,6 +61,16 @@ class IpaContactPartnerButton extends LightningElement {
    * @private
    */
   contactPartnerLabel = contactPartner;
+
+  /**
+   * Returns the CSS class to use for the lightning-button
+   *
+   * @returns {string} CSS class for the lightning-button
+   * @private
+   */
+  get buttonCssClass() {
+    return `button-full-width ${this.buttonClass}`;
+  }
 
   /** formats link objects for template
    *

@@ -179,6 +179,59 @@
         <visibleLines>5</visibleLines>
     </fields>
     <fields>
+        <fullName>SWS_ApprovalRequiredForProduct_fm__c</fullName>
+        <formula>IF(FIND(TEXT(SWS_HW_Compute_Platform_PL__c), $Label.SWS_NeedApprovalForProduct) = 0, false, true)</formula>
+        <label>Approval Required For Product</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Approval_status__c</fullName>
+        <label>Approval Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Approved</fullName>
+                    <default>false</default>
+                    <label>Approved</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>Rejected</label>
+                </value>
+                <value>
+                    <fullName>Recalled</fullName>
+                    <default>false</default>
+                    <label>Recalled</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Cloud_Credit_Requests3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>SWS_Community_Program_Coupon_Type__c</fullName>
         <inlineHelpText>SATG and Community and Academic Outreach programs may request the following types of cloud coupons.</inlineHelpText>
         <label>Community Program – Coupon Type</label>
@@ -334,7 +387,6 @@ Intel program not listed? Contact the AI Cloud IDC.Getting.Started@intel.com</in
         <fullName>SWS_Coupon_Created_On_fm__c</fullName>
         <externalId>false</externalId>
         <formula>IF(NOT(ISBLANK(SWS_Coupon_Created_On__c)),MID(TEXT(SWS_Coupon_Created_On__c),6,2)+&apos;/&apos;+MID(TEXT(SWS_Coupon_Created_On__c),9,2)+&apos;/&apos;+MID(TEXT(SWS_Coupon_Created_On__c),1,4)+&apos;, &apos;+IF(VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))&gt;12,IF((VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))-12)&lt;10,&apos;0&apos;+TEXT(VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))-12),TEXT(VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))-12)),MID(TEXT(SWS_Coupon_Created_On__c),12,2))+&apos;:&apos;+MID(TEXT(SWS_Coupon_Created_On__c),15,2)+&apos; &apos;+IF(VALUE(MID(TEXT(SWS_Coupon_Created_On__c),12,2))&gt;12,&apos;PM&apos;,&apos;AM&apos;), &apos;&apos;)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Coupon Created On</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -376,7 +428,7 @@ Intel program not listed? Contact the AI Cloud IDC.Getting.Started@intel.com</in
     <fields>
         <fullName>SWS_Coupon_Status__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(  NOT(ISBLANK( SWS_Coupon_Code__c )) , IF(  DATEVALUE(SWS_Coupon_Expiration_Date__c) &gt;=  TODAY() , &apos;Active&apos;, &apos;Expired&apos;), &apos;&apos; )</formula>
+        <formula>IF(  NOT(ISBLANK( SWS_Coupon_Code__c )) , IF(  DATETIMEVALUE(SWS_Coupon_Expiration_Date__c) &gt;  NOW() , &apos;Active&apos;, &apos;Expired&apos;), &apos;&apos; )</formula>
         <label>Coupon Status</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -643,6 +695,7 @@ IMAGE(&apos;/resource/Checklist_Green&apos;, &quot;Verified&quot;,20,20) &amp; &
     </fields>
     <fields>
         <fullName>SWS_Expiry_Date__c</fullName>
+        <inlineHelpText>This field specifies end date of the coupon in UTC. By default, the coupon end time will be 11:59 PM of the selected date</inlineHelpText>
         <label>End Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -774,6 +827,27 @@ IMAGE(&apos;/resource/Checklist_Green&apos;, &quot;Verified&quot;,20,20) &amp; &
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>SWS_HW_Compute_Platform__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>HW Compute Platform (Not Used)</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>SWS_IDC_Product_List__c.SWS_Product_is_active__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>SWS_IDC_Product_List__c</referenceTo>
+        <relationshipLabel>Cloud Credit Requests</relationshipLabel>
+        <relationshipName>Cloud_Credit_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>SWS_HW_Compute_Quantity__c</fullName>
@@ -933,6 +1007,17 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>SWS_Lead_Stage__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( NOT(ISNULL(SWS_Lead__c)) ,  TEXT(SWS_Lead__r.Status)   , &apos;&apos;)</formula>
+        <label>Lead Stage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SWS_Lead__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Lead</label>
@@ -953,9 +1038,21 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>SWS_LogoUrl__c</fullName>
+        <externalId>false</externalId>
+        <formula>$Label.PSG_IntelLogo</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SWS_LogoUrl</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>SWS_No_Of_User__c</fullName>
         <externalId>false</externalId>
-        <label>Number of users</label>
+        <label>Number of Users</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -1078,7 +1175,7 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
         <referenceTo>User</referenceTo>
         <relationshipName>Cloud_Credit_Requests1</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1107,7 +1204,6 @@ HW reservations are not guaranteed with this Request Form.</inlineHelpText>
 &quot;Coupon_Generation_in_Progress&quot;,3,
 &quot;Coupon_Generated&quot;,4,
 null)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>SWS_RequestStatus_fm</label>
         <precision>18</precision>
         <required>false</required>
@@ -1129,7 +1225,7 @@ null)</formula>
         <fullName>SWS_Request_Status__c</fullName>
         <label>Request Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1194,14 +1290,12 @@ null)</formula>
     </fields>
     <fields>
         <fullName>SWS_Request_Type__c</fullName>
-        <inlineHelpText>Select the type or reason you are requesting a cloud coupon.</inlineHelpText>
         <label>Request Type</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
@@ -1305,19 +1399,46 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>SWS_Start_Datetime__c</fullName>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>SWS_Submitted_By__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Submitted By</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Cloud_Credit_Requests</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>SWS_Submitted_On__c</fullName>
         <label>Submitted On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Submitted_by_for_approval__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Submitted By for Approval</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Cloud_Credit_Requests2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SWS_Submitted_for_Approval_On__c</fullName>
+        <label>Submitted for Approval On</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1508,6 +1629,11 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             <operation>equals</operation>
             <value>SWS_Cloud_Credit_Request__c.SWS_Cloud_Credit_Request</value>
         </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>greaterThan</operation>
+            <value>1/1/2024 12:00 AM</value>
+        </filters>
         <label>All Cloud Credit Requests</label>
         <sharedTo>
             <group>SWS_Credit_request_listview</group>
@@ -1522,7 +1648,7 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <columns>SWS_Request_Type__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <filters>
             <field>SWS_Request_Status__c</field>
             <operation>equals</operation>
@@ -1545,11 +1671,11 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <columns>SWS_Coupon_Value__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <filters>
             <field>SWS_Request_Status__c</field>
             <operation>equals</operation>
-            <value>Coupon_Generated</value>
+            <value>Coupon_Generated,Coupon Generated</value>
         </filters>
         <label>Coupon Generated</label>
         <sharedTo>
@@ -1675,6 +1801,25 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <fullName>SWS_Cloud_Credit_Request</fullName>
         <active>true</active>
         <label>Cloud Credit Request</label>
+        <picklistValues>
+            <picklist>SWS_Approval_status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>SWS_Community_Program_Coupon_Type__c</picklist>
             <values>
@@ -1933,14 +2078,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Cyprus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2966,14 +3103,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Cyprus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3882,6 +4011,25 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <compactLayoutAssignment>Inquiry_Layout</compactLayoutAssignment>
         <label>Inquiry</label>
         <picklistValues>
+            <picklist>SWS_Approval_status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Recalled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>SWS_Community_Program_Coupon_Type__c</picklist>
             <values>
                 <fullName>Innovator coupon %E2%80%93 Intended for an individual user and covers approximately 7 days of bare-metal access%2E</fullName>
@@ -4139,14 +4287,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>Cyprus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5175,14 +5315,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
-                <fullName>Czech Republic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czechia</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Dem%2E Rep%2E Congo</fullName>
                 <default>false</default>
             </values>
@@ -5942,19 +6074,7 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <picklistValues>
             <picklist>SWS_HW_Compute_Platform_PL__c</picklist>
             <values>
-                <fullName>Intel%C2%AE Gaudi Learning Server</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Intel%C2%AE Max Series GPU</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE Xeon%C2%AE Scalable processor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Jupyter Notebook</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5963,10 +6083,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
             </values>
             <values>
                 <fullName>N%2FA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Other</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -6077,10 +6193,6 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
                 <default>false</default>
             </values>
             <values>
-                <fullName>N%2FA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Other</fullName>
                 <default>false</default>
             </values>
@@ -6092,6 +6204,13 @@ IF(TEXT(SWS_Request_Type__c) = &quot;One_time_external_event&quot;,
         <listViewButtons>Submit_Coupon_for_Multiple_Requests</listViewButtons>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Approver_not_blank_for_Gaudi2_product</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( SWS_ApprovalRequiredForProduct_fm__c, ISBLANK( SWS_Approver__c ) )</errorConditionFormula>
+        <errorDisplayField>SWS_Approver__c</errorDisplayField>
+        <errorMessage>Select an approver</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Community_Program_Coupon_cannot_blank</fullName>
         <active>true</active>
@@ -6106,6 +6225,13 @@ NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)
         <active>true</active>
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(SWS_Company_Name__c), NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;External_Customer&apos;)))</errorConditionFormula>
         <errorDisplayField>SWS_Company_Name__c</errorDisplayField>
+        <errorMessage>This is required field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Compute_Platform_cannot_be_empty</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_HW_Compute_Platform_PL__c)), NOT(ISNEW()),OR(ISPICKVAL(SWS_Request_Type__c,&apos;Intel_Internal_Use&apos;),ISPICKVAL(SWS_Request_Type__c,&apos;One_time_external_event&apos;),ISPICKVAL(SWS_Request_Type__c,&apos;External_Customer&apos;)))</errorConditionFormula>
+        <errorDisplayField>SWS_HW_Compute_Platform_PL__c</errorDisplayField>
         <errorMessage>This is required field</errorMessage>
     </validationRules>
     <validationRules>
@@ -6154,11 +6280,26 @@ NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)
     </validationRules>
     <validationRules>
         <fullName>End_Date_Greater_than_Current_Date</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>End date should be greater than current date</description>
         <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),SWS_Expiry_Date__c &lt; TODAY())</errorConditionFormula>
         <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
         <errorMessage>End date cannot be less than current date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>End_Date_Greater_than_Start_date</fullName>
+        <active>false</active>
+        <description>End date should be greater than start date</description>
+        <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),SWS_Expiry_Date__c &lt; SWS_Start_Date__c)</errorConditionFormula>
+        <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
+        <errorMessage>End date cannot be less than start date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>End_Date_cannot_be_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Expiry_Date__c)), NOT(ISNEW()))</errorConditionFormula>
+        <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
+        <errorMessage>This is required field</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>End_date_not_exceeds_more_than_1_year</fullName>
@@ -6204,16 +6345,16 @@ NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)
     </validationRules>
     <validationRules>
         <fullName>Expiry_Date_Greater_than_Start_date</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Expiry date should be greater than start date</description>
-        <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),SWS_Expiry_Date__c &lt; TODAY())</errorConditionFormula>
+        <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),SWS_Expiry_Date__c &lt; SWS_Start_Date__c)</errorConditionFormula>
         <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
-        <errorMessage>Expiry date cannot be less than current date</errorMessage>
+        <errorMessage>Expiry date cannot be less than start date</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Expiry_Date_cannot_be_blank</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Expiry_Date__c)), NOT(ISNEW()))</errorConditionFormula>
+        <active>false</active>
+        <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Expiry_Date__c)), NOT(ISNEW()))</errorConditionFormula>
         <errorDisplayField>SWS_Expiry_Date__c</errorDisplayField>
         <errorMessage>This is required field</errorMessage>
     </validationRules>
@@ -6239,6 +6380,13 @@ ISBLANK(TEXT(SWS_HW_Compute_Platform_PL__c)), NOT(ISNEW()), NOT(ISPICKVAL(SWS_Re
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(SWS_HW_Compute_Quantity__c), NOT(ISNEW()), NOT(ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)))</errorConditionFormula>
         <errorDisplayField>SWS_HW_Compute_Quantity__c</errorDisplayField>
         <errorMessage>This is required field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Incorrect_value_for_Cloud_Coupon_Type</fullName>
+        <active>false</active>
+        <errorConditionFormula>(SWS_Is_Giveaway__c=false)&amp;&amp;(ISPICKVAL(SWS_Coupon_Type__c ,&quot;N/A&quot;))&amp;&amp;((ISPICKVAL(SWS_Request_Type__c,&quot;External_Customer&quot;))||(ISPICKVAL(SWS_Request_Type__c,&quot;Intel_Internal_Use&quot;)))</errorConditionFormula>
+        <errorDisplayField>SWS_Coupon_Type__c</errorDisplayField>
+        <errorMessage>Select a different value, as this is not a Giveaway coupon.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Incorrect_value_for_HW_Compute_Platform</fullName>
@@ -6415,6 +6563,13 @@ NOT(SWS_No_Of_User__c=0)
         <errorMessage>Number cannot exceed 50 per request.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Processing_Team_cannot_be_blank</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(SWS_Processing_Team__c), NOT(ISNEW()))</errorConditionFormula>
+        <errorDisplayField>SWS_Processing_Team__c</errorDisplayField>
+        <errorMessage>This is required field</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Program_name_cannot_be_blank</fullName>
         <active>true</active>
         <errorConditionFormula>AND(SWS_Is_Submitted_For_Coupon__c,NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(TEXT(SWS_Community_Program_Name__c)), NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;Research_and_education&apos;)))</errorConditionFormula>
@@ -6505,6 +6660,13 @@ NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c)
 ISCHANGED(SWS_Create_Lead__c))</errorConditionFormula>
         <errorDisplayField>SWS_Create_Lead__c</errorDisplayField>
         <errorMessage>You can&apos;t change this value</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Salesforce_Opportunity_ID_cannot_blank</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(NOT($Setup.SWS_Bypass_Validation_Rule__c.Bypass__c),ISBLANK(SWS_Salesforce_Opportunity_ID__c), NOT(ISNEW()), (ISPICKVAL(SWS_Request_Type__c,&apos;External_Customer&apos;)))</errorConditionFormula>
+        <errorDisplayField>SWS_Salesforce_Opportunity_ID__c</errorDisplayField>
+        <errorMessage>This is required field</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Start_date_is_required</fullName>

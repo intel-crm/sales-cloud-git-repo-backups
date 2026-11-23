@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Migrated from the: Core_Account_Stamp_First_Revenue_Date_Only_Once workflow rule
+Workflow rule description: Update First Revenue Date only when the approved revenue has changed, and the first revenue date is null to begin with.&quot;</description>
+    <formulas>
+        <name>Core_Account_First_Revenue_DateFormula</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <label>Core_Account_Stamp_First_Revenue_Date_Only_Once_2</label>
+    <migratedFromWorkflowRuleName>Core_Account_Stamp_First_Revenue_Date_Only_Once</migratedFromWorkflowRuleName>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update First Revenue Date only when the approved revenue has changed, and the first revenue date is null to begin with.</description>
+        <name>mainUpdate</name>
+        <label>mainUpdate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Core_First_Revenue_Date__c</field>
+            <value>
+                <elementReference>Core_Account_First_Revenue_DateFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>mainUpdate</targetReference>
+        </connector>
+        <filterFormula>AND(ISCHANGED({!$Record.Core_Total_Approved_Revenue_Amount__c}), ISNULL({!$Record.Core_First_Revenue_Date__c}))</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

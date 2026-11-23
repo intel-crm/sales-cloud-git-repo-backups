@@ -165,7 +165,7 @@ private class PRM_ProfileResponseOptIn_Test {
         
         
         insert profQuesList;
-        //System.debug('Profile qus ids :'+[select id,PRM_Question_Cd__c  from PRM_Profile_Questions__c]);
+        
         
         PRM_Profile_Answer__c profileAns = new PRM_Profile_Answer__c();
         profileAns.PRM_Answer_Cd__c = 'PRM_Opt_In_True';
@@ -854,5 +854,203 @@ private class PRM_ProfileResponseOptIn_Test {
         Test.stopTest();
         
     }
-  
+    
+    //Test Data Helper Methods
+    //Simple Account factory
+    private static Account makeAccount(String name){
+        
+        Id accountRecordTypePartner = Schema.SobjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
+		              
+        Account acc1234 = PRM_TestUtility.getAccount();
+        acc1234.AccountNumber = '435766123';
+        acc1234.RecordTypeId = accountRecordTypePartner;
+        acc1234.Name='New Accounttest12344';
+        acc1234.Core_Account_Type__c ='Distributor';
+        acc1234.Industry='Agriculture1231';
+        acc1234.BillingCity='New Delhi1';
+        acc1234.BillingCountryCode='IND';
+        acc1234.BillingStreet='24th Floor,New Road';
+        acc1234.BillingPostalCode='1111371';
+        acc1234.BillingStateCode='KA';
+        acc1234.Core_IPA_Partner_Role__c = 'Distributor';
+        insert acc1234;
+        return acc1234;
+        
+    }
+    
+    // Create IPA record for an account
+    private static PRM_IPAMembership_Attributes__c makeIPA(Id accountId,Boolean inactive,Boolean optIn,Boolean notEligible,Date optInDate,Date neDate){
+        
+        PRM_IPAMembership_Attributes__c ipa = new PRM_IPAMembership_Attributes__c(
+            PRM_Account_Id__c = accountId,
+            PRM_Inactive_ind__c = inactive,
+            PRM_Points_Opt_in_Ind__c = optIn,
+            PRM_Points_Opt_in_Dt__c = optInDate,
+            PRM_Points_Not_Eligible_Ind__c = notEligible,
+            PRM_Points_Not_Eligible_Dt__c = neDate
+        );
+        insert ipa;
+        return ipa;
+    }
+          
+	@isTest
+    static void test_pointStatusCalc_activeOptIn_withTnC_signed(){
+    
+        // --- Arrange ---
+        // If any other test populated this map, it can block processing.
+        try {
+            if (PRM_ProfileResponse.opidtoLocRDMap != null) {
+                PRM_ProfileResponse.opidtoLocRDMap.clear();
+            }
+    	}catch (Exception ignore) {
+        // Safe ignore if class/static not accessible in test context
+    }
+        
+        Id accountRecordTypePartner = Schema.SobjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
+        
+        // Test Account
+        Account acc1234 = PRM_TestUtility.getAccount();
+        acc1234.AccountNumber = '435766123';
+        acc1234.RecordTypeId = accountRecordTypePartner;
+        acc1234.Name='New Accounttest12344';
+        acc1234.Core_Account_Type__c ='Distributor';
+        acc1234.Industry='Agriculture1231';
+        acc1234.BillingCity='New Delhi1';
+        acc1234.BillingCountryCode='IND';
+        acc1234.BillingStreet='24th Floor,New Road';
+        acc1234.BillingPostalCode='1111371';
+        acc1234.BillingStateCode='KA';
+        acc1234.Core_IPA_Partner_Role__c = 'Distributor';
+        insert acc1234;
+        
+        Date today = Date.today();
+        
+        ChannelProgram cpNew = new ChannelProgram();
+        cpNew.Name = 'Intel Partner Alliance';
+        insert cpNew;
+        
+        // 2) Partner Agreement linked to the Program
+        PRM_PartnerAgreement__c partnerAgr1 = new PRM_PartnerAgreement__c();
+        partnerAgr1.Name = 'IPA Terms & Condition';
+        partnerAgr1.PRM_Agreement_Cd__c = 'IPA_TANDC';              // use any valid code in your org
+        partnerAgr1.PRM_Channel_Program_Id__c = cpNew.Id;            // link to program
+        insert partnerAgr1;
+        
+        // 3) Legal Agreement association (T&C) for the same Account
+        //    Must be ACTIVE (PRM_InActive_Ind__c = false) to be picked up.
+        PRM_AccountLegalAgreemntAssociation__c legalAgreement1 = new PRM_AccountLegalAgreemntAssociation__c(
+            PRM_Account_Id__c          = acc1234.Id,
+            PRM_Partner_Agreement_Id__c = partnerAgr1.Id,
+            PRM_InActive_Ind__c        = false,
+            PRM_Agreement_Sign_Dt__c   = System.today()
+        );
+        insert legalAgreement1;
+        
+        // 4) IPA row (ACTIVE + Opt-in true). Leave status blank so calc sets it to 'Active'.
+        PRM_IPAMembership_Attributes__c ipa = new PRM_IPAMembership_Attributes__c(
+            PRM_Account_Id__c         = acc1234.Id,
+            PRM_Inactive_ind__c       = false,  // not inactive
+            PRM_Points_Opt_in_Ind__c  = true,
+            PRM_Points_Opt_in_Dt__c   = today
+            // Do not preset PRM_Point_Status_Txt__c to let calc set it
+        );
+        insert ipa;
+        
+        // Build the input list referencing the same record id/account
+        List<PRM_IPAMembership_Attributes__c> input = new List<PRM_IPAMembership_Attributes__c>{
+            new PRM_IPAMembership_Attributes__c(
+                Id                       = ipa.Id,
+                PRM_Account_Id__c        = acc1234.Id,
+                PRM_Points_Opt_in_Ind__c = true,
+                PRM_Points_Opt_in_Dt__c  = today
+            )
+        };
+        
+        // --- Act ---
+        Test.startTest();
+        List<PRM_IPAMembership_Attributes__c> out =
+            PRM_ProfileResponseOptIn.pointStatusCalc_IPAR(input, null);
+        Test.stopTest();
+        
+        // --- Assert ---
+        System.assertNotEquals(null, out, 'Expected non-null result from pointStatusCalc_IPAR.');
+    	System.assert(out.size() > 0, 'Expected at least one record to be updated when Opt-in + T&C.');
+        
+        PRM_IPAMembership_Attributes__c updated = null;
+        for (PRM_IPAMembership_Attributes__c r : out) {
+        if (r.PRM_Account_Id__c == acc1234.Id) {
+            updated = r;
+            break;
+        }
+    }
+        
+        System.assertNotEquals(null, updated, 'Output must contain our account record.');
+        System.assertEquals('Active', updated.PRM_Point_Status_Txt__c,
+            'Status should be Active when Opt-in true and T&C signed.');
+        System.assertNotEquals(null, updated.PRM_Point_Status_Dt__c,
+            'Status date should be set.');
+	     
+    } 
+     
+    @isTest
+    static void test_Bypass_When_OPID_IPA_IsInactive_Skips_Location_Response(){
+        
+        // 1) Create OPID (parent) and Location (child) accounts
+        Account opidAcc = makeAccount('OPID Account - Test');
+        
+        Account locAcc = makeAccount('Location Account - Test');
+        
+        // 2) Link OPID -> Location in Core_Account_Group_Member__c
+        //    Only fields used by the method are Partner (OPID) and Intel (Location).
+        Core_Account_Group_Member__c cag = new Core_Account_Group_Member__c(
+            Core_Partner_Account_Id__c = opidAcc.Id,
+            Core_Intel_Account_Id__c   = locAcc.Id
+            // Add any required fields for your org here.
+        );
+        insert cag;
+        
+        // 3) Create an Approved ACM on OPID so the method sees the account as "Approved"
+        PRM_AccountChannelMembership__c acm = new PRM_AccountChannelMembership__c(
+            PRM_Account_Id__c   = opidAcc.Id,
+            PRM_Status_Nm__c    = 'Approved',    // method queries this literal
+            PRM_Partner_Role__c = 'Distributor',
+            PRM_Status_Reason_Txt__c = 'Test Class'
+            
+        );
+        insert acm;
+        
+        // 4) Create IPA Membership Attribute on OPID **inactive = true**
+        //    This is what triggers the BYPASS branch.
+        PRM_IPAMembership_Attributes__c opidIPA = new PRM_IPAMembership_Attributes__c(
+            PRM_Account_Id__c   = opidAcc.Id,
+            PRM_Inactive_ind__c = true
+            // Add any required fields for your org here.
+        );
+        insert opidIPA;
+        
+        // Baseline count of IPA records for the LOCATION account (should be 0 normally).
+        Integer beforeLocIPA = [
+            SELECT COUNT() 
+            FROM PRM_IPAMembership_Attributes__c 
+            WHERE PRM_Account_Id__c = :locAcc.Id
+        ];
+        
+         Test.startTest();
+         PRM_ProfileResponseOptIn.checkExtProfRespOnOPIDAndCreateResp_IPAR( new List<Account>{ locAcc }, new List<Contact>(), new List<Core_Account_Group_Member__c>{ cag },new List<PRM_Registration_Request__c>());
+         Test.stopTest();
+        
+         Integer afterLocIPA = [
+            SELECT COUNT() 
+            FROM PRM_IPAMembership_Attributes__c 
+            WHERE PRM_Account_Id__c = :locAcc.Id
+        ];
+        
+        System.assertEquals(
+            beforeLocIPA, 
+            afterLocIPA, 
+            'Location account should NOT receive a new IPA Membership Attribute when OPID IPA is inactive (bypass path).'
+        );
+        
+    }
+    
 }

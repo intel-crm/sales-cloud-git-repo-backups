@@ -1,0 +1,15 @@
+:host {
+  --sds-c-card-color-background: #407288;
+  --slds-c-button-brand-color-background: #407288;
+  --slds-c-button-radius-border: 0;
+}
+
+.img1 {
+  height: auto;
+  width: 10rem;
+}
+
+.bg {
+  background-color: #407288;
+  padding: .5rem;
+}

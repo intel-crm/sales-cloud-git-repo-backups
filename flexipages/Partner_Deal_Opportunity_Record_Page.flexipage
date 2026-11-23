@@ -63,7 +63,7 @@
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Opportunity_Name__c</fieldItem>
-                <identifier>RecordOpportunity_Name__cField</identifier>
+                <identifier>RecordPRM_Opportunity_Name_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -851,6 +851,28 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>sourceCountryFieldApiName</name>
+                    <value>PRM_End_Customer_Country__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sourceNameFieldApiName</name>
+                    <value>PRM_End_Customer_Name__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sourceWebsiteFieldApiName</name>
+                    <value>PRM_End_Customer_Website__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>targetAccountLookupFieldApiName</name>
+                    <value>PRM_End_Customer_Account__c</value>
+                </componentInstanceProperties>
+                <componentName>coreEndCustomerAccountSearch</componentName>
+                <identifier>c_coreEndCustomerAccountSearch</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

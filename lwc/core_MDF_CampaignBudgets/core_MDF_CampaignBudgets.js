@@ -189,6 +189,10 @@ export default class Core_MDF_CampaignBudgets extends LightningElement {
             this.displayMode = true;
             this.requiredFields = false;
         }
+        console.log('in campaign budgets cmp campaignBudgets ' + JSON.stringify(this.campaignBudgets));
+        console.log('in campaign budgets cmp old campaignBudgets ' + JSON.stringify(this.oldCampaignBudgets));
+        console.log('in campaign budgets cmp mode ' + this.recMode);
+        console.log('in campaign budgets cmp status ' + this.recStatus);
 
         if (this.recMode === 'edit' && this.recStatus !== 'Cancelled' && this.recStatus !== 'Completed') {
             this.enableBudgetAmountEdit = true;

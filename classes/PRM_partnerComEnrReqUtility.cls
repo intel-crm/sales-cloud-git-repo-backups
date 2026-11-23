@@ -20,11 +20,11 @@ public with sharing class PRM_partnerComEnrReqUtility {
     
     public static void autoApproveCommunityRequest(List<PRM_Partner_Community_Enrollment_Request__c> lstPartComEnrolReq){               
         List<String> autoApprovePartCom = LabelConfiguration__mdt.getInstance('Auto_Approve_Partner_Communities').Value__c.split(';');
-        //System.debug('Auto Approve Partner Communities List'+autoApprovePartCom);        
+        
         for(PRM_Partner_Community_Enrollment_Request__c eachParComEnrReq :lstPartComEnrolReq){            
             ////System.debug('eachParComEnrReq'+eachParComEnrReq);
          if(eachParComEnrReq.PRM_Status_Nm__c !=PRM_Status_Rejected && autoApprovePartCom.contains(eachParComEnrReq.PRM_Partner_Community_Nm__c)){
-                //System.debug('Inside If Condition');              
+                           
                 eachParComEnrReq.PRM_Status_Nm__c = PRM_Status_Approved;  
                 requestedInitiatedByCommunity =true;
             }           
@@ -64,10 +64,10 @@ public with sharing class PRM_partnerComEnrReqUtility {
         Set<Id> contactIdSet = new Set<Id>();
         
         List<String> autoApprovePartCom = LabelConfiguration__mdt.getInstance('Auto_Approve_Partner_Communities').Value__c.split(';');
-        //System.debug('Auto Approve Partner Communities List'+autoApprovePartCom);
+       
         
         for(PRM_Partner_Community_Enrollment_Request__c eachParComEnrReq :lstPartComEnrolReq){            
-            //System.debug('eachParComEnrReq'+eachParComEnrReq);
+            
             contactIdSet.add(eachParComEnrReq.PRM_Contact_Id__c);
             if(eachParComEnrReq.PRM_Status_Nm__c !='Rejected'&& autoApprovePartCom.contains(eachParComEnrReq.PRM_Partner_Community_Nm__c)){
                 //System.debug('Inside If Condition');
@@ -87,8 +87,7 @@ public with sharing class PRM_partnerComEnrReqUtility {
             }
         }   
         
-        //System.debug('contactParComMap====>'+contactParComMap);
-        //System.debug('OptOutcontactParComMap'+OptOutcontactParComMap);
+       
  		Map<id,Contact> contactsToUpdate = new Map<Id,Contact>();        
         Map<Id,Contact> contactMap = new Map<Id,Contact>([Select Id,Core_IPA_Partner_Community__c from Contact where id in:contactIdSet]);
         
@@ -97,8 +96,7 @@ public with sharing class PRM_partnerComEnrReqUtility {
             if(eachCon.Core_IPA_Partner_Community__c != null){
                 existingContactComm.addAll(eachCon.Core_IPA_Partner_Community__c.split(';'));
             }
-            //System.debug('eachCon'+eachCon);
-            //System.debug('existingContactComm'+existingContactComm);
+            
             for(String community :autoApprovePartCom){
                 if(contactParComMap.containsKey(eachCon.Id) ){
                     if((contactParComMap.get(eachCon.Id)).contains(community)){
@@ -110,13 +108,13 @@ public with sharing class PRM_partnerComEnrReqUtility {
                         existingContactComm.remove(community);    
                     }
                 }
-                //System.debug('existingContactComm'+existingContactComm);
+              
                 
                 List<String> commList = new List<String>();
                 commList.addAll(existingContactComm);
-                //System.debug('commList'+commList);
+               
                 eachCon.Core_IPA_Partner_Community__c = String.join(commList, ';'); 
-                ////System.debug('Core_IPA_Partner_Community__c'+eachCon.Core_IPA_Partner_Community__c);
+                
                 if(eachCon.Core_IPA_Partner_Community__c!=null)  {              
                     contactsToUpdate.put(eachCon.id,eachCon);
                 }

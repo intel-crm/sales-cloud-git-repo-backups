@@ -66,7 +66,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Atom®</masterLabel>
-        <translation>Intel Atom®</translation>
+        <translation><!-- Intel Atom® --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Celeron</masterLabel>
@@ -401,6 +401,10 @@
         <translation><!-- Intel® Gaudi® --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Intel® Geti™</masterLabel>
+        <translation><!-- Intel® Geti™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Intel® Infrastructure Power Manager</masterLabel>
         <translation><!-- Intel® Infrastructure Power Manager --></translation>
     </valueTranslation>
@@ -422,11 +426,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Iris® Xe Graphics</masterLabel>
-        <translation>인텔® Iris® Xe 그래픽</translation>
+        <translation><!-- Intel® Iris® Xe Graphics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Iris® Xe Max Graphics</masterLabel>
-        <translation>인텔® Iris® Xe Max 그래픽</translation>
+        <translation><!-- Intel® Iris® Xe Max Graphics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® MAX®</masterLabel>
@@ -486,7 +490,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Processor (N/U Series)</masterLabel>
-        <translation><!-- Intel® Processor (N/U Series) --></translation>
+        <translation>인텔® 프로세서 (N/U 시리즈)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® RFP Ready Kits</masterLabel>
@@ -530,7 +534,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Tiber™</masterLabel>
-        <translation><!-- Intel® Tiber™ --></translation>
+        <translation>인텔® Tiber™</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Tofino™</masterLabel>
@@ -558,11 +562,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® D Processor</masterLabel>
-        <translation>인텔® 제온® D 프로세서</translation>
+        <translation><!-- Intel® Xeon® D Processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® E Processor</masterLabel>
-        <translation>인텔® 제온® E 프로세서</translation>
+        <translation><!-- Intel® Xeon® E Processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® Gold Processor</masterLabel>
@@ -582,7 +586,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® W processor</masterLabel>
-        <translation>인텔® 제온® W 프로세서</translation>
+        <translation><!-- Intel® Xeon® W processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® eASIC</masterLabel>

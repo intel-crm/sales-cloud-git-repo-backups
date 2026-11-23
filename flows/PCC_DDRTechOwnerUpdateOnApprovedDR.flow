@@ -7,6 +7,9 @@
         <label>Check if DR owner is changed</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>DR_owner_changed</name>
@@ -52,6 +55,11 @@
             <label>DR owner changed</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>PCC_DDRTechOwnerUpdateOnApprovedDR {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PCC_DDRTechOwnerUpdateOnApprovedDR</label>
@@ -79,6 +87,9 @@
         <label>update technical owner on the associated opportunity</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Design_Registration_Id__c</field>

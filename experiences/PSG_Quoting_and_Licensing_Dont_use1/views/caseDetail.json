@@ -1,0 +1,101 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "4ef9fbc6-1c6a-406a-9634-9fba4e19a0a9",
+  "label" : "Case Detail",
+  "regions" : [ {
+    "id" : "6120950e-7419-47c2-a959-615d81c9d385",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "e31d62c5-eb7a-4f87-9a1e-c10500cbf224",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "d0afc987-3a5d-419a-b476-bdc5edbec0ab"
+      },
+      "renditions" : [ {
+        "id" : "d0afc987-3a5d-419a-b476-bdc5edbec0ab",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "tab1Type" : "details",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "d356a97a-799d-400f-9a63-274bf80f234b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "12c24889-a4b8-4618-b104-fc15685c8f1f"
+      },
+      "renditions" : [ {
+        "id" : "12c24889-a4b8-4618-b104-fc15685c8f1f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "detailsTabLabel" : "Details",
+            "discussionsTabLabel" : "Feed",
+            "relatedTabLabel" : "Related",
+            "timelineTabLabel" : "Activity"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "a5db3b52-0785-4b1f-a06a-313cc59b6189",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e361d3aa-9036-4683-9189-112656385b2f",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "01f32fbf-9523-491a-a7d0-40bf79348096",
+      "renditionMap" : {
+        "zh_cn" : "7e2d2948-bc14-4e64-b72d-0cab5bb6985a"
+      },
+      "renditions" : [ {
+        "id" : "7e2d2948-bc14-4e64-b72d-0cab5bb6985a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "a98a2318-0d7c-4ebb-9f58-5452d33b77e3",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-500"
+}

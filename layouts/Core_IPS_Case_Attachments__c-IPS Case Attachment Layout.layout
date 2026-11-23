@@ -48,12 +48,12 @@
                 <behavior>Edit</behavior>
                 <field>Core_File_URL__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_BES_Promote_Status__c</field>
             </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Name</field>
@@ -89,6 +89,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Promote_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_IPS_BES_BackendType__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

@@ -1,0 +1,23 @@
+<apex:page controller="LessonlyUserCallouts">
+    <apex:form >
+
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!makeGetCallout}" value="Search User" reRender="detail"/>
+            </apex:pageBlockButtons>
+
+            <apex:PageBlockSection id="detail">     
+                {!result }
+                 <apex:pageBlockTable value="{!users}" var="us">
+                     <apex:column headerValue="UserId" value="{!us}"/>
+                     <apex:column headerValue="Email" value="{!us}"/>
+                 </apex:pageBlockTable>
+            </apex:PageBlockSection>
+        
+              
+        </apex:pageBlock>
+    
+    </apex:form>
+
+
+</apex:page>

@@ -45,6 +45,8 @@ public class Core_IPS_Project_Dispatcher{
             Core_IPS_Project_Handler.addInternalProjOwnerToIST(newList,oldMap); 
             //US250915
 			Core_IPS_Project_Handler.addDefaultCaseOwnerToIST(newList,oldMap);
+             
+           
          }
          if(trigger.isDelete){
          }

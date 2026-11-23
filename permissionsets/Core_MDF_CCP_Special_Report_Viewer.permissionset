@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_CCP_Special_Report_Viewer</name>
+    </customPermissions>
+    <description>This Permission set is for all CCP external users to get access to Special reports.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>CCP Special Report Viewer</label>
+    <license>Partner Community</license>
+</PermissionSet>

@@ -154,7 +154,7 @@ public class PRM_IPADQFixBatch implements  Database.Batchable<sObject>,Database.
             
             // Fallback to default message if no scenario found
             if(String.isEmpty(scenarioDescription)){
-                scenarioDescription = 'Scenario description not found.';
+                scenarioDescription = 'Exception Unknown';
             }
             
             // Prepare placeholder map similar to opidAssociationEmail

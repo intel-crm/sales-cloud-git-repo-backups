@@ -14,16 +14,9 @@
                 <elementReference>get_account_id.Field_2__c</elementReference>
             </value>
         </assignmentItems>
-    </assignments>
-    <assignments>
-        <name>Clear_ODM_Account_lookup</name>
-        <label>Clear ODM Account lookup</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.PCC_ODM_Board_Partner_Account__c</assignToReference>
-            <operator>Assign</operator>
-        </assignmentItems>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
     </assignments>
     <decisions>
         <name>check_first_picklist_value</name>
@@ -31,7 +24,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>Clear_ODM_Account_lookup</targetReference>
+            <targetReference>END_ELEMENT_1</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -57,6 +50,11 @@
             <label>is board based?</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>PCC ODM Update Account Lookup {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PCC ODM Update Account Lookup</label>
@@ -113,7 +111,6 @@
         <connector>
             <targetReference>check_first_picklist_value</targetReference>
         </connector>
-        <filterFormula>{!$Permission.PCC_Bypass_Automation} = False</filterFormula>
         <object>Core_Design_Registration__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

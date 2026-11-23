@@ -92,7 +92,7 @@
     </values>
     <values>
         <field>Restriction_Code__c</field>
-        <value xsi:type="xsd:string">0</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Sales_Visible__c</field>

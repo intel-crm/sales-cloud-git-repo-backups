@@ -1,8 +1,8 @@
 /****************************************************************************************************************************************
-* Trigger Name 		: Core_MDF_CustomLayoutConfig_Trigger 
-* Version     		: 1.0 
-* Created Date 		: 12/13/2021
-* Modification Log 	: 
+* Trigger Name      : Core_MDF_CustomLayoutConfig_Trigger 
+* Version           : 1.0 
+* Created Date      : 12/13/2021
+* Modification Log  : 
 * Developer            Date(MM/DD/YYYY)  Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture - VD       12/13/2021        Trigger on Custom Layout Configuration object.

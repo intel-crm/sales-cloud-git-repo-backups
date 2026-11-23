@@ -3,6 +3,10 @@
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP SPCF USER</label>
     <license>Partner Community</license>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundRequest.Core_MDF_Service_Provider_CoMarketing_Fund</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <userPermissions>
         <enabled>true</enabled>
         <name>ChatterEnabledForUser</name>

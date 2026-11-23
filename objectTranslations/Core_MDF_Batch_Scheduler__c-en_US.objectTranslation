@@ -326,6 +326,14 @@
             <translation><!-- IPS --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PCC</masterLabel>
+            <translation><!-- PCC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PMP</masterLabel>
+            <translation><!-- PMP --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Sales Pipeline</masterLabel>
             <translation><!-- Sales Pipeline --></translation>
         </picklistValues>

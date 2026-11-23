@@ -22,7 +22,7 @@ Added By:           Accenture - NK  01-04-2022
             if(accountIdsList.size() > 0 ) {
                 List<Account> accList = [Select Id,Core_MDF_External_Group_Id__c from  Account where id in: accountIdsList ];
                 Map<Id,List<Id>> accIdToGrpIdLstMap = new Map<Id,List<Id>>();
-                
+                system.debug('accList::'+accList);
                 for(account acc : accList){
                     accIdToGrpIdLstMap.put(acc.Id,new List<Id>{acc.Core_MDF_External_Group_Id__c});
                 }

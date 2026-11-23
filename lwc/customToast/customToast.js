@@ -1,5 +1,5 @@
 import { LightningElement,api,track } from 'lwc';
-export default class CustomToast extends LightningElement {
+export default class customToast extends LightningElement {
     @api messageList = [];
     @api timeOut = 8000; //default close after 3 secs
     @track type = 'dismissible'; //default dismissible

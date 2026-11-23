@@ -16,8 +16,8 @@ public class Core_OpptySupportServiceHandlerTest {
     @testSetup
     static void setupTestData() { 
         Profile pro = [SELECT id, Name FROM Profile WHERE Name='CCP - Core Access'];
-        //User usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE ProfileId = :pro.Id AND isActive = true LIMIT 1];
-   		//PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
+        User usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE ProfileId = :pro.Id AND isActive = true LIMIT 1];
+   		PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='SalesRepBB' LIMIT 1];
 	//	User usr1 = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1];     
         List<Core_Trigger_Executions__c> triggercontroller = new List<Core_Trigger_Executions__c>();
         /* test data creation for Opportunity support team addtion*/
@@ -402,10 +402,10 @@ public class Core_OpptySupportServiceHandlerTest {
     static testMethod void createOpportunitySupportRequest1() {
         List<Core_Opportunity_Support__c> opp_supp = new List<Core_Opportunity_Support__c>();
          string recordtypeCSAId = recordTypeMap.get('Core_CSA_RecordType').getRecordTypeId();
-        //string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
-        //string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
+        string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
+        string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
         test.starttest();
-        // List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
+         List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
 		
         Opportunity opportunity1 = [select Id, Name, Amount, RecordTypeId, Description,StageName,Core_Opportunity_Owner_Geo__c,Core_Opportunity_Owner__c  FROM Opportunity WHERE Name='Test Opportunity1'];
         Id recordTypeId = Schema.getGlobalDescribe().get('Core_Opportunity_Support__c').getDescribe().getRecordTypeInfosByDeveloperName().get('Core_CSA_RecordType').getRecordTypeId();
@@ -444,9 +444,9 @@ public class Core_OpptySupportServiceHandlerTest {
             Core_OpportunitySupport.wrapperOpptSupportRequest obj = new Core_OpportunitySupport.wrapperOpptSupportRequest();
             
             
-            /*Core_Opportunity_Support__c opptSuppReq = [Select Id from Core_Opportunity_Support__c 
+            Core_Opportunity_Support__c opptSuppReq = [Select Id from Core_Opportunity_Support__c 
                                                        where Core_Status__c='Submitted' 
-                                                       and Opportunity__c =:opportunity2.Id];*/
+                                                       and Opportunity__c =:opportunity2.Id];
             Id recordTypeId = Schema.getGlobalDescribe().get('Core_Opportunity_Support__c').getDescribe().getRecordTypeInfosByDeveloperName().get('Core_CSA_RecordType').getRecordTypeId();
 
             obj = Core_OpportunitySupport.getOpportunityDetails(opportunity1.Id,recordTypeId,'');
@@ -462,8 +462,8 @@ public class Core_OpptySupportServiceHandlerTest {
     static testMethod void createOpportunitySupportRequest2() {
         List<Core_Opportunity_Support__c> opp_supp2 = new List<Core_Opportunity_Support__c>();
          string recordtypeCSAId = recordTypeMap.get('Core_CSA_RecordType').getRecordTypeId();
-        //string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
-        //string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
+        string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
+        string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
         test.starttest();
         List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
         
@@ -495,8 +495,8 @@ public class Core_OpptySupportServiceHandlerTest {
     static testMethod void createOpportunitySupportRequest3() {
         List<Core_Opportunity_Support__c> opp_supp2 = new List<Core_Opportunity_Support__c>();
          string recordtypeCSAId = recordTypeMap.get('Core_CSA_RecordType').getRecordTypeId();
-        //string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
-        //string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
+        string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
+        string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
         test.starttest();
         List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
         
@@ -527,8 +527,8 @@ public class Core_OpptySupportServiceHandlerTest {
     
         static testMethod void createOpportunitySupportRequestASMO() {
              string recordtypeCSAId = recordTypeMap.get('Core_CSA_RecordType').getRecordTypeId();
-        //string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
-        //string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
+        string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
+        string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
         List<Core_Opportunity_Support__c> opp_supp3 = new List<Core_Opportunity_Support__c>();
         test.starttest();
         List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
@@ -558,8 +558,8 @@ public class Core_OpptySupportServiceHandlerTest {
     static testMethod void createOpportunitySupportRequestPRC() {
         List<Core_Opportunity_Support__c> opp_supp4 = new List<Core_Opportunity_Support__c>();
         string recordtypeCSAId = recordTypeMap.get('Core_CSA_RecordType').getRecordTypeId();
-        //string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
-        //string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
+        string recordtypeTSSId = recordTypeMap.get('Core_TSS_Request').getRecordTypeId();
+        string recordtypeCOEId = recordTypeMap.get('Core_Center_of_Excellence_Request').getRecordTypeId();
         test.starttest();
         List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com','testuser4@intel.com')];
         

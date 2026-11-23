@@ -56,7 +56,7 @@ public with sharing class Core_MDF_LookupSObjectController {
         }
         searchQuery += ' Limit 100';
         
-        
+        System.debug('searchQuery'+searchQuery);
         // Execute the Query
         String searchTerm = '%' + sanitizedSearchString + '%';
         List<SObject> searchList = Database.query(searchQuery);

@@ -67,7 +67,7 @@ public class ProcessLevel1ProductsQueueable implements Queueable, Database.Allow
                 rc.method,
                 new Map<String,String>(),
                 '',
-                rc.timeoutMs == null ? 30000 : rc.timeoutMs
+                rc.timeoutMs == null ? Core_ACM_Constants.API_TIMEOUT : rc.timeoutMs
             );
             HttpResponse response = restClient.invokeAPI();
             //HttpResponse response = apiService.getHierarchyCategories(currentOffset, currentLimit);

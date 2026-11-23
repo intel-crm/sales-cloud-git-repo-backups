@@ -25,7 +25,7 @@ public without sharing class Core_MDF_EmailToGSPO {
         List<PartnerFundClaim> vatClaimList = new List<PartnerFundClaim>();
         //Querying Vat claims for given Payment Run
     	vatClaimList = [Select Id, Core_MDF_Payment_Id__r.Core_MDF_Payment_Run_Id__c from PartnerFundClaim Where Core_MDF_Payment_Id__r.Core_MDF_Payment_Run_Id__c IN: paymentRunId AND Core_MDF_VAT_Eligibility_Ind__c = true];
-       
+       	system.debug('vatClaimList::'+vatClaimList);
 		if(vatClaimList.size() > 0){
             // Invoke Batch Class to Send Email to GSPO
             Core_MDF_Batch_SendEmailToGSPO sendEmailToGSPOBatch = new Core_MDF_Batch_SendEmailToGSPO(vatClaimList);

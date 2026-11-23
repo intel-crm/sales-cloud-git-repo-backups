@@ -57,7 +57,7 @@ Modification Log :
                 
                 var selected = this.element.children( ":selected" ),
                     value = selected.val() ? selected.text() : "";
-                
+                console.log({!JSENCODE('value')});
                 this.input = $( "<input>" )
                 .appendTo( this.wrapper )
                 .val( {!JSENCODE('value')} )  //Added by Nagendra for client potential xss 14/11/22

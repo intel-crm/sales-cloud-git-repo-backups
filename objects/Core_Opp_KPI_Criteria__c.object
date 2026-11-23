@@ -187,8 +187,11 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_Opp_KPI_Description__c</columns>
+        <columns>Core_Opp_KPI_BU_Owner__c</columns>
+        <columns>Core_Opp_Threshold_Requirement__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <label>KPI Name</label>

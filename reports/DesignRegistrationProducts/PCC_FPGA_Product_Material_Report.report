@@ -4,19 +4,22 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
-        <field>Product_MM_Attribute_Mapping__c.MMID__c</field>
-    </columns>
-    <columns>
         <field>Product_MM_Attribute_Mapping__c.Ordering_Code__c</field>
-    </columns>
-    <columns>
-        <field>FK_NAME</field>
     </columns>
     <columns>
         <field>Product_MM_Attribute_Mapping__c.Level_5_EPM_Name__c</field>
     </columns>
     <columns>
-        <field>Product_MM_Attribute_Mapping__c.Level_4_EPM_Name__c</field>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Product_MM_Attribute_Mapping__c.L4_Product__c</field>
+    </columns>
+    <columns>
+        <field>Product_MM_Attribute_Mapping__c.Custom_Indicator__c</field>
+    </columns>
+    <columns>
+        <field>Product_MM_Attribute_Mapping__c.Custom_Customer_Code__c</field>
     </columns>
     <columns>
         <field>FK_$Product2.Core_Design_Registration_Eligible_Ind__c</field>
@@ -49,7 +52,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>1</value>
+            <value>0</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Product2.Core_Avail_for_New_Designs__c</column>
@@ -80,7 +83,7 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Product_MM_Attribute_Mapping__c.Custom_Indicator__c</column>
+            <column>FK_$Product2.Core_Is_Custom_Ind__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>

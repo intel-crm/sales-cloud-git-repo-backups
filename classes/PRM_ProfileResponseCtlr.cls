@@ -57,14 +57,14 @@ public without sharing class PRM_ProfileResponseCtlr {
         Map<Id,List<PRM_Profile_Answer__c>> mapQuesToAns = new  Map<Id,List<PRM_Profile_Answer__c>>();
         Map<Id,PRM_Profile_Responses__c> mapQuesToRes = new  Map<Id,PRM_Profile_Responses__c>();
         Map<Id,List<PRM_Profile_Responses__c>> mapQuesToMulti = new  Map<Id,List<PRM_Profile_Responses__c>>();
-            for(PRM_Profile_Answer__c objAns : [select id,PRM_Answer_Display_Txt__c,PRM_Answer_Cd__c,PRM_Profile_Questions_Id__c from PRM_Profile_Answer__c where PRM_Profile_Questions_Id__c in: setQuesId]){
-                if(mapQuesToAns.containsKey(objAns.PRM_Profile_Questions_Id__c)) {List<PRM_Profile_Answer__c> ansList = mapQuesToAns.get(objAns.PRM_Profile_Questions_Id__c);
-                    ansList.add(objAns);
-                    mapQuesToAns.put(objAns.PRM_Profile_Questions_Id__c, ansList);
-                } else {
-                    mapQuesToAns.put(objAns.PRM_Profile_Questions_Id__c, new List<PRM_Profile_Answer__c> { objAns});
-                }
+        for(PRM_Profile_Answer__c objAns : [select id,PRM_Answer_Display_Txt__c,PRM_Answer_Cd__c,PRM_Profile_Questions_Id__c from PRM_Profile_Answer__c where PRM_Profile_Questions_Id__c in: setQuesId]){
+            if(mapQuesToAns.containsKey(objAns.PRM_Profile_Questions_Id__c)) {List<PRM_Profile_Answer__c> ansList = mapQuesToAns.get(objAns.PRM_Profile_Questions_Id__c);
+                ansList.add(objAns);
+                mapQuesToAns.put(objAns.PRM_Profile_Questions_Id__c, ansList);
+            } else {
+                mapQuesToAns.put(objAns.PRM_Profile_Questions_Id__c, new List<PRM_Profile_Answer__c> { objAns});
             }
+        }
             if(accId != null){
               /*  List<PRM_Profile_Responses__c> listResponse = [select id,PRM_Account_Id__c,PRM_Profile_Answer_Id__c,PRM_Profile_Questions_Id__c,PRM_Response_Txt__c,PRM_Profile_Questions_Id__r.PRM_Question_Type_Nm__c,PRM_Profile_Questions_Id__r.PRM_Question_Display_Txt__c,LastModifiedDate,LastModifiedBy.Name,PRM_View_History__c,PRM_InActive_Ind__c,PRM_Reason_Text__c,PRM_Profile_Questions_Id__r.PRM_Question_Cd__c from PRM_Profile_Responses__c Where PRM_Account_Id__c =:accId and PRM_Profile_Questions_Id__c in :setQuesId and PRM_Profile_Questions_Id__r.PRM_Question_Type_Nm__c != 'Multiselect'];
 
@@ -74,22 +74,24 @@ public without sharing class PRM_ProfileResponseCtlr {
                 }*/
 
                 for(PRM_Profile_Responses__c objResp : [select id,PRM_Account_Id__c,PRM_Profile_Answer_Id__c,PRM_Profile_Questions_Id__c,PRM_Response_Txt__c,PRM_Profile_Questions_Id__r.PRM_Question_Type_Nm__c,PRM_Profile_Questions_Id__r.PRM_Question_Display_Txt__c,LastModifiedDate,LastModifiedBy.Name,PRM_View_History__c,PRM_InActive_Ind__c,PRM_Reason_Text__c,PRM_Profile_Questions_Id__r.PRM_Question_Cd__c from PRM_Profile_Responses__c Where PRM_Account_Id__c =:accId and PRM_Profile_Questions_Id__c in :setQuesId order by LastModifiedDate desc,CreatedDate desc,Id desc] ){
-                    if(objResp.PRM_Profile_Questions_Id__r.PRM_Question_Type_Nm__c != 'Multiselect' &&
-                    !mapQuesToRes.containsKey(objResp.PRM_Profile_Questions_Id__c)){
-                     
-               mapQuesToRes.put(objResp.PRM_Profile_Questions_Id__c,objResp);
-               
-                       
-                    }else{
-                        if(mapQuesToMulti.containsKey(objResp.PRM_Profile_Questions_Id__c)) {List<PRM_Profile_Responses__c> respList = mapQuesToMulti.get(objResp.PRM_Profile_Questions_Id__c);
-                            respList.add(objResp);
-                            mapQuesToMulti.put(objResp.PRM_Profile_Questions_Id__c, respList);
-                        } else {mapQuesToMulti.put(objResp.PRM_Profile_Questions_Id__c, new List<PRM_Profile_Responses__c> { objResp});
-                        }
-                    }
-                    
+                   /* if(objResp.PRM_Response_Txt__c=='false'){
+                        objResp.PRM_Response_Txt__c='';
+                    }*/
+            if(objResp.PRM_Profile_Questions_Id__r.PRM_Question_Type_Nm__c != 'Multiselect' &&
+            !mapQuesToRes.containsKey(objResp.PRM_Profile_Questions_Id__c)){
+                
+            mapQuesToRes.put(objResp.PRM_Profile_Questions_Id__c,objResp);
+        
+                
+            }else{
+                if(mapQuesToMulti.containsKey(objResp.PRM_Profile_Questions_Id__c)) {List<PRM_Profile_Responses__c> respList = mapQuesToMulti.get(objResp.PRM_Profile_Questions_Id__c);
+                    respList.add(objResp);
+                    mapQuesToMulti.put(objResp.PRM_Profile_Questions_Id__c, respList);
+                } else {mapQuesToMulti.put(objResp.PRM_Profile_Questions_Id__c, new List<PRM_Profile_Responses__c> { objResp});
                 }
             }
+           } 
+        }
         responseWrapper obj1=new responseWrapper();
         obj1.lstQues=lstQues;
         obj1.mapQuesToAns=mapQuesToAns;
@@ -99,8 +101,7 @@ public without sharing class PRM_ProfileResponseCtlr {
         return  generateResponseWrapper(obj1);//Athr fixes
         //return  generateResponseWrapper(lstQues,mapQuesToAns,mapQuesToRes,mapQuesToMulti,accId);
     }
-    /*
-    public static List<FormWrapper> generateResponseWrapper(List<PRM_Profile_Questions__c> lstQues,Map<Id,List<PRM_Profile_Answer__c>> mapQuesToAns, Map<Id,PRM_Profile_Responses__c> mapQuesToRes, Map<Id,List<PRM_Profile_Responses__c>> mapQuesToMulti, Id accId){
+    /*public static List<FormWrapper> generateResponseWrapper(List<PRM_Profile_Questions__c> lstQues,Map<Id,List<PRM_Profile_Answer__c>> mapQuesToAns, Map<Id,PRM_Profile_Responses__c> mapQuesToRes, Map<Id,List<PRM_Profile_Responses__c>> mapQuesToMulti, Id accId){
         //Id userId = UserInfo.getUserId();
         List<FormWrapper> returnList = new List<FormWrapper>();
         List<UserRecordAccess> userRecordAccess= [SELECT RecordId, HasEditAccess FROM UserRecordAccess WHERE UserId=:UserInfo.getUserId() AND RecordId =: accId];
@@ -117,18 +118,17 @@ public without sharing class PRM_ProfileResponseCtlr {
                 returnWrap.lstMultiResponse = mapQuesToMulti.get(objQues.Id);
             }
             if(accId != null){
-                returnWrap.accountId = accId;
+                returnWrap.accountId = accId;       
             }
-                for(UserRecordAccess accShare :userRecordAccess){
+            for(UserRecordAccess accShare :userRecordAccess){
                     returnWrap.isNotAccess = !accShare.HasEditAccess;
-            }
+                }  
             returnList.add(returnWrap);
         }
         return returnList;
-    } 
-*/
+    }*/
 
-     public class responseWrapper{
+    public class responseWrapper{
         public List<PRM_Profile_Questions__c> lstQues{get;set;}
         public Map<Id,List<PRM_Profile_Answer__c>> mapQuesToAns{get;set;}
         public Map<Id,PRM_Profile_Responses__c> mapQuesToRes{get;set;}
@@ -165,9 +165,9 @@ public without sharing class PRM_ProfileResponseCtlr {
     
     @AuraEnabled 
     public static void saveResponse(List<PRM_Profile_Responses__c> lstResp,List<PRM_Profile_Responses__c> delResp,Id accId){
-       /* List<PRM_Profile_Responses__c> reponseList = new List<PRM_Profile_Responses__c>();
+        /*(List<PRM_Profile_Responses__c> reponseList = new List<PRM_Profile_Responses__c>();
         List<PRM_Profile_Responses__c> updateRes1 = new List<PRM_Profile_Responses__c>();
-        List<PRM_Profile_Responses__c> updateRes2 = new List<PRM_Profile_Responses__c>();	*/
+        List<PRM_Profile_Responses__c> updateRes2 = new List<PRM_Profile_Responses__c>();*/
        
         if(!delResp.isEmpty()){
             update delResp;                      
@@ -191,7 +191,7 @@ public without sharing class PRM_ProfileResponseCtlr {
         return false;
     }
     
-   /* public class ProfileReponseWrapper{
+   /* public class ProfileReponseWrapper{ 
         public string pointNE{get; set { pointNE ='Null';}}
         public string optin{get;set { optin ='Null';}}
         public boolean TnCSigned{get;set{ TnCSigned=False;}}
@@ -215,7 +215,6 @@ public without sharing class PRM_ProfileResponseCtlr {
         boolean TnCSigned=False;
         string optInDate;
         string NEDate;
-        system.debug('listresponse'+responseList);
         List<String> pointsQ = new List<String>{'PRM_Status_date','PRM_Status'};
         for(PRM_Profile_Questions__c qstn:[select id,PRM_Question_Cd__c from PRM_Profile_Questions__c]){
             qstnMap.put(qstn.PRM_Question_Cd__c,qstn.id);
@@ -230,7 +229,6 @@ public without sharing class PRM_ProfileResponseCtlr {
         else{
             accid=acntId;
         }
-        System.debug('here at historic response');
         Map<id,PRM_Profile_Responses__c> lstResp = new Map<id,PRM_Profile_Responses__c>();
       //  List<PRM_Profile_Responses__c> prevResp =;
         for(PRM_Profile_Responses__c oldData:[select id,PRM_Account_Id__c,PRM_Profile_Answer_Id__c,PRM_Profile_Questions_Id__c,PRM_Profile_Questions_Id__r.PRM_Question_Cd__c,PRM_Response_Txt__c,PRM_Profile_Questions_Id__r.PRM_Question_Type_Nm__c,PRM_Profile_Questions_Id__r.PRM_Question_Display_Txt__c,LastModifiedDate,LastModifiedBy.Name,PRM_View_History__c,PRM_InActive_Ind__c,PRM_Reason_Text__c,PRM_ResponseDate__c from PRM_Profile_Responses__c Where PRM_Account_Id__c =:accid order by LastModifiedDate ASC])
@@ -241,8 +239,6 @@ public without sharing class PRM_ProfileResponseCtlr {
         {
             lstResp.put(lstRespnew.PRM_Profile_Questions_Id__c,lstRespnew);
         }
-       System.debug('values'+lstResp.values());
-       System.debug('values1111'+questionCodeMap);
         for(PRM_Profile_Responses__c pr: lstResp.values()){
             if(questionCodeMap.get(pr.PRM_Profile_Questions_Id__c) == 'PRM_Opt_In'){
             if( !(String.isEmpty(pr.PRM_Response_Txt__c)) && (pr.PRM_Response_Txt__c.toUppercase()!='FALSE')){
@@ -263,7 +259,6 @@ public without sharing class PRM_ProfileResponseCtlr {
             }
            
         }
-        System.debug('Existing recs '+ updateRes);
         if([Select COUNT() from PRM_AccountLegalAgreemntAssociation__c where PRM_Account_Id__c =:accid and PRM_InActive_Ind__c=FALSE and PRM_Partner_Agreement_Id__r.PRM_Channel_Program_Id__r.Name ='Intel Partner Alliance'] >0)
         {
             TnCSigned = True;
@@ -281,14 +276,12 @@ public without sharing class PRM_ProfileResponseCtlr {
             queryMdt+='Opt_In__c=:optin and Points_Not_eligible__c=:pointNE and T_C_Signed__c=:TnCSigned';
         }
         pointsMdt= database.query(queryMdt);        
-        System.debug('MDT '+pointsMdt.Points_Status__c+' date '+pointsMdt.Status_Date__c);
         for(PRM_Profile_Responses__c oldResp:[select id,PRM_Account_Id__c,PRM_Profile_Questions_Id__r.PRM_Question_Cd__c,PRM_Response_Txt__c from PRM_Profile_Responses__c where PRM_Account_Id__c =:accid and (PRM_Profile_Questions_Id__r.PRM_Question_Cd__c = 'PRM_Status' OR PRM_Profile_Questions_Id__r.PRM_Question_Cd__c = 'PRM_Status_date')])
         {
             if((oldResp.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c == 'PRM_Status') ||(oldResp.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c == 'PRM_Status_date')){
             oldPointsMap.put(oldResp.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c,oldresp);
             }
         }
-       System.debug(oldPointsMap);
         Boolean toChange=true;
         if(updateRes.size()>0){
         for(PRM_Profile_Responses__c prUpdate:updateRes){
@@ -312,7 +305,6 @@ public without sharing class PRM_ProfileResponseCtlr {
                 updatePoints.add(prUpdate);
             }
             else if(prUpdate.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c == 'PRM_Status_date'){
-                system.debug(toChange+' help+');
                 if(pointsMdt.Status_Date__c == 'Opt In Date' && toChange){
                    
                 prUpdate.PRM_Response_Txt__c = optInDate;
@@ -323,10 +315,7 @@ public without sharing class PRM_ProfileResponseCtlr {
                 else if(pointsMdt.Status_Date__c == 'Points NE Date' && toChange) {
                 prUpdate.PRM_Response_Txt__c =NEDate;
                 }
-                system.debug( prUpdate.PRM_Response_Txt__c +' here '+(oldPointsMap.get(prUpdate.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c).PRM_Response_Txt__c));
                 //if(oldPointsMap.get(prUpdate.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c)!=null && prUpdate.PRM_Response_Txt__c!=(oldPointsMap.get(prUpdate.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c)).PRM_Response_Txt__c)
-                system.debug(oldPointsMap.get(prUpdate.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c));
-                system.debug( prUpdate.PRM_Response_Txt__c +' here '+(oldPointsMap.get(prUpdate.PRM_Profile_Questions_Id__r.PRM_Question_Cd__c).PRM_Response_Txt__c));
                 updatePoints.add(prUpdate);   
             }
         }
@@ -367,6 +356,4 @@ public without sharing class PRM_ProfileResponseCtlr {
                 return updatePoints;
         }
        }*/
-       
-    
 }

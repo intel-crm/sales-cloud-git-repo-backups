@@ -53,12 +53,12 @@
     <caseValues>
         <caseType>Prepositional</caseType>
         <plural>false</plural>
-        <value>Восстановление</value>
+        <value>Recovery</value>
     </caseValues>
     <caseValues>
         <caseType>Prepositional</caseType>
         <plural>true</plural>
-        <value>Восстановление</value>
+        <value>Recoveries</value>
     </caseValues>
     <fields>
         <label>Сумма (долл. США)</label>
@@ -79,7 +79,7 @@
         <name>Core_MDF_Recovered_Budget_Nm__c</name>
     </fields>
     <fields>
-        <label>Урегулирование &gt; получение оплаты</label>
+        <label><!-- Settle, then get paid? --></label>
         <name>Core_MDF_Sure_Pay_Ind__c</name>
     </fields>
     <gender>Neuter</gender>

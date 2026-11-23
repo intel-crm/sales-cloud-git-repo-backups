@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>To Store the extended/Licensing atrributes for PSG Products</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>PSG_ALN_Enabled_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Licensing-ALN Enable is the same as &apos;License Additional Switch&apos; which is used in license generation.</description>
+        <label>PSG ALN Enabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Additional_Description__c</fullName>
+        <description>To be Update Manualy by Product marketing team in SFDC</description>
+        <label>PSG Additional Description</label>
+        <length>4000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSG_AuthCode_Product_Txt__c</fullName>
+        <description>A string passed to the license server which determines a number of the attributes that are sent to the license generator.</description>
+        <externalId>false</externalId>
+        <label>PSG AuthCode Product</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Available_In_Opportunities_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If this is meant for opportunity tracking.</description>
+        <label>PSG Available In Opportunities</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Available_to_TOE_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>&quot;Used to control whether a product may be ordered or not
+If the product is unavailable to TOE it is not visible in Tools Order Entry&quot;</description>
+        <label>PSG Available to TOE</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Companion_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To indicate whether a product can be issued a companion license</description>
+        <label>PSG Companion</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_DES_Parameter__c</fullName>
+        <description>Specifies level of security (single/triple DES) for license file encryption.</description>
+        <label>PSG DES Parameter</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1DES</fullName>
+                    <default>false</default>
+                    <label>1DES</label>
+                </value>
+                <value>
+                    <fullName>3DES</fullName>
+                    <default>false</default>
+                    <label>3DES</label>
+                </value>
+                <value>
+                    <fullName>BOTH</fullName>
+                    <default>false</default>
+                    <label>BOTH</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSG_Enforcement_Method__c</fullName>
+        <description>&quot;Specifies whether the license will be enforced via license file or download or not enforced (products unavailable to TOE)
+• If the Enforcement Method is &quot;&quot;FILE&quot;&quot;, it is a licensed product, and it will generate license file.
+• Product with [Enforcement Method] = ’FILE’ MUST have a [AuthCode Product] value&quot;</description>
+        <label>PSG Enforcement Method</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>File</fullName>
+                    <default>false</default>
+                    <label>File</label>
+                </value>
+                <value>
+                    <fullName>Download</fullName>
+                    <default>false</default>
+                    <label>Download</label>
+                </value>
+                <value>
+                    <fullName>N-A</fullName>
+                    <default>false</default>
+                    <label>N-A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSG_Foundation_Product_Nm__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Base Product</description>
+        <label>PSG Foundation Product</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>PSG Licenses (PSG Foundation Product)</relationshipLabel>
+        <relationshipName>PSG_Licenses1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PSG_License_Comments_Txt__c</fullName>
+        <description>This value is displayed on top of feature line in the license file.</description>
+        <label>PSG License Comments</label>
+        <length>4000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSG_License_Group_Nm__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>This field is requires to associate the product to a specific license group.</description>
+        <label>PSG License Group</label>
+        <referenceTo>License_Group__c</referenceTo>
+        <relationshipLabel>PSG Licenses</relationshipLabel>
+        <relationshipName>PSG_Licenses</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PSG_License_Parameter_Txt__c</fullName>
+        <description>•	License parameters associated with the License Group
+•	License parameters are applied to the product during license generation.</description>
+        <externalId>false</externalId>
+        <label>PSG License Parameter</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Linux_Download_URL__c</fullName>
+        <description>URL text to show the Linux installer icons at SSLC (Self-Service Licensing Center) for customer to download</description>
+        <label>PSG Linux Download URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Maintenance_Duration_Nbr__c</fullName>
+        <description>Value stored as Number of months.
+Drives Renewal availability (Product is available for renewal if the Maintenance date is &gt;= Current Date - Renewal Grace Period</description>
+        <externalId>false</externalId>
+        <label>PSG Maintenance Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Max_Rehost_Nbr__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>• To define the default number of times that a product can be rehosted.
+• This is set for each entitlement at order entry.</description>
+        <externalId>false</externalId>
+        <label>PSG Max Rehost</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Non_Commercial_Purpose__c</fullName>
+        <description>Used to identify Non Commercial Products</description>
+        <label>PSG Non-Commercial Purpose</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Partner</fullName>
+                    <default>false</default>
+                    <label>Partner</label>
+                </value>
+                <value>
+                    <fullName>Employee</fullName>
+                    <default>false</default>
+                    <label>Employee</label>
+                </value>
+                <value>
+                    <fullName>Evaluation</fullName>
+                    <default>false</default>
+                    <label>Evaluation</label>
+                </value>
+                <value>
+                    <fullName>University</fullName>
+                    <default>false</default>
+                    <label>University</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSG_ProductId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>PSG Product</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>PSG Licenses</relationshipLabel>
+        <relationshipName>PSG_Licenses</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Product_Expiration_Duration_Nbr__c</fullName>
+        <description>Value maintained as Number of Days (if 12 months = 365 days)</description>
+        <externalId>false</externalId>
+        <label>PSG Product Expiration Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_Registerable_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Whether a component product is registerable</description>
+        <label>PSG Registerable</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Rehostable_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>&quot;•To allow rehost of license (moving license from one host to other)&quot;</description>
+        <label>PSG Rehostable</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Renewal_Grace_Period_Nbr__c</fullName>
+        <description>Value maintained as Number of Days 
+•Additional number of Days post maintenance date to renew a license</description>
+        <externalId>false</externalId>
+        <label>PSG Renewal Grace Period</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PSG_SMI_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Slow Movement Inventory - Manually entered by Product Marketing team and Customer Operational Service</description>
+        <label>PSG SMI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Temporary_License_Allowed_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To indicate whether a product can be included in a temporary license</description>
+        <label>PSG Temporary License Allowed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Tool_License_Type__c</fullName>
+        <description>Defines the license type for a licensed product
+•	Fixed: Supports a single user on a single machine
+•	Float: Supports multiple users on multiple machines or in a server environment
+•	Neutral: Supports both Single/Multi machines&quot;</description>
+        <label>PSG Tool License Type</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FIXED</fullName>
+                    <default>false</default>
+                    <label>FIXED</label>
+                </value>
+                <value>
+                    <fullName>FLOAT</fullName>
+                    <default>false</default>
+                    <label>FLOAT</label>
+                </value>
+                <value>
+                    <fullName>NEUTRAL</fullName>
+                    <default>false</default>
+                    <label>NEUTRAL</label>
+                </value>
+                <value>
+                    <fullName>N-A</fullName>
+                    <default>false</default>
+                    <label>N-A</label>
+                </value>
+                <value>
+                    <fullName>TRAINING CREDIT</fullName>
+                    <default>false</default>
+                    <label>TRAINING CREDIT</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSG_Tool_Type__c</fullName>
+        <description>Defines how products are licensed together
+•	Base: Used for base or foundation product
+•	IP: Used for IP Products
+•	Software: Used for Software Products
+•	Renewal: Used for ordering Base Product Renewal as part of Base Product maintenance.&quot;</description>
+        <label>PSG Tool Type</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BASE</fullName>
+                    <default>false</default>
+                    <label>BASE</label>
+                </value>
+                <value>
+                    <fullName>IP</fullName>
+                    <default>false</default>
+                    <label>IP</label>
+                </value>
+                <value>
+                    <fullName>SOFTWARE</fullName>
+                    <default>false</default>
+                    <label>SOFTWARE</label>
+                </value>
+                <value>
+                    <fullName>RENEWAL</fullName>
+                    <default>false</default>
+                    <label>RENEWAL</label>
+                </value>
+                <value>
+                    <fullName>ADD SEAT</fullName>
+                    <default>false</default>
+                    <label>ADD SEAT</label>
+                </value>
+                <value>
+                    <fullName>BUNDLE</fullName>
+                    <default>false</default>
+                    <label>BUNDLE</label>
+                </value>
+                <value>
+                    <fullName>CORPORATE</fullName>
+                    <default>false</default>
+                    <label>CORPORATE</label>
+                </value>
+                <value>
+                    <fullName>PACKAGE</fullName>
+                    <default>false</default>
+                    <label>PACKAGE</label>
+                </value>
+                <value>
+                    <fullName>N-A</fullName>
+                    <default>false</default>
+                    <label>N-A</label>
+                </value>
+                <value>
+                    <fullName>TRAINING CREDIT</fullName>
+                    <default>false</default>
+                    <label>TRAINING CREDIT</label>
+                </value>
+                <value>
+                    <fullName>SOC</fullName>
+                    <default>false</default>
+                    <label>SOC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PSG_Web_Description__c</fullName>
+        <description>•&quot;Web friendly” name for every product.
+•The web description is used in all customer-facing views (SSLC/SRs) to identify the product associated with an entitlement, as opposed to Part #&quot;</description>
+        <label>PSG Web Description</label>
+        <length>4000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSG_Web_Displayable_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Limits visibility in SSLC (Self-Service Licensing Center)</description>
+        <label>PSG Web Displayable</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PSG_Windows_Download_URL__c</fullName>
+        <description>URL text to show the Windows installer icons at SSLC (Self-Service Licensing Center) for customer to download</description>
+        <label>PSG Windows Download URL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <label>PSG License</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>PSG License Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>PSG Licenses</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

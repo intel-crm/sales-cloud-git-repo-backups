@@ -294,7 +294,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>EmailSent</name>
-            <fieldText>&lt;p&gt;An email with the generated Brief document attached has been sent to the Executive Brief Requestor.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;An email with the generated Brief document attached has been sent to the Executive Brief Requestor&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>

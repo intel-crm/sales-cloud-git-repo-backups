@@ -157,7 +157,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Account Plan</value>
+            <value>Account Plan,MDF,MDF+,OEM CMP,Service Provider CMP</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Is_Outcome_Based_Ind__c</column>
@@ -178,7 +178,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Intel Partner Alliance</value>
+            <value>Intel Partner Alliance,Client,Datacenter</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Tactics_nm__c</column>

@@ -29,8 +29,9 @@ public without sharing class ACM_AI_PublishAccount implements UCD_ACM_ServiceCon
                 }
             }
         }
-        if(accountIds.size()>0)
-        updateACMIntegrationMessage(unitOfWork, accountIds);
+        if(accountIds.size()>0){
+            UCD_ACM_Common.updateACMIntegrationMessage(unitOfWork, accountIds);
+        }
     }
 
          
@@ -39,7 +40,7 @@ public without sharing class ACM_AI_PublishAccount implements UCD_ACM_ServiceCon
     * original author and date : harshalx.sunil.gosavi@intel.com 08/02/2022.
     * Moved to ACM_AI_PublishAccount by Tejasri as part of refactoring
     */
-    private void updateACMIntegrationMessage(UCD_ACM_UnitOfWork unitOfWork, Set<Id> accountIds) {
+    /*private void updateACMIntegrationMessage(UCD_ACM_UnitOfWork unitOfWork, Set<Id> accountIds) {
         Map<Id,ACM_Integration_Message_Queue__c> integrationMessageQueueById = accountQuerySelectorInstance.getIntegrationMessageQueueByAccountId(accountIds);
         List<ACM_Integration_Message_Queue__c> insertIntegrationMessages = new List<ACM_Integration_Message_Queue__c>();
         Map<Id,ACM_Integration_Message_Queue__c> integrationMessageQueueByAccountId = new Map<Id,ACM_Integration_Message_Queue__c>(); 
@@ -73,6 +74,6 @@ public without sharing class ACM_AI_PublishAccount implements UCD_ACM_ServiceCon
         if(insertIntegrationMessages.size() > 0) {
             unitOfWork.registerNew(insertIntegrationMessages);
         }
-    }
+    }*/
             
 }

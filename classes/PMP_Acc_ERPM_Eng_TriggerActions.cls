@@ -1,7 +1,7 @@
 public class PMP_Acc_ERPM_Eng_TriggerActions {
     
     final static String[] PROGRAMS = new String[]{'ISA', 'CSPx2'};
-     final static String NO_TIER = 'ODM-LOEM';    
+   	final static String NO_TIER = 'ODM-LOEM';    
     final static String INVALID_TIER = 'UNDETERMND';
     static Id PARTNER_RECTYPEID = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
     static Id INTEL_RECTYPEID = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
@@ -117,8 +117,23 @@ public class PMP_Acc_ERPM_Eng_TriggerActions {
 
 
 
+    private static void updatePartnerProgramMembership(PMP_Company__c partner, Core_Account_ERPM_Engagement__c engagement) {
+        if (engagement.Core_ERPM_Business_Attributes__c != INVALID_TIER) {
+            String progMembership = engagement.Core_ERPM_Engagement_Id__r.Name + ' - ' + engagement.Core_ERPM_Business_Attributes__c;
+            if (!partner.PMP_Account_Program_Membership__c.contains(progMembership)) {
+                partner.PMP_Account_Program_Membership__c += ';' + progMembership;
+            }
+            if (!partner.PMP_Partner_Program_nm__c.contains(engagement.Core_ERPM_Engagement_Id__r.Name)) {
+                partner.PMP_Partner_Program_nm__c += ';' + engagement.Core_ERPM_Engagement_Id__r.Name;
+            }
+        } else {
+            if (!partner.PMP_Partner_Program_nm__c.contains(engagement.Core_ERPM_Engagement_Id__r.Name)) {
+                partner.PMP_Partner_Program_nm__c += ';' + engagement.Core_ERPM_Engagement_Id__r.Name;
+            }
+        }
+    }
+
     private static void handleException(Exception ex) {
-        //System.debug('Error : ' + ex.getMessage() + ' Cause : ' + ex.getCause() + ' Line : ' + ex.getLineNumber());
         throw new AuraHandledException(ex.getMessage() + ' ' + ex.getCause() + ' ' + ex.getLineNumber());
     }   
 }

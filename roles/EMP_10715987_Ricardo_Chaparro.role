@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Nicole Burton</description>
+    <description>EMP of Ricardo Barriga Navarro</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10715987_Ricardo_Chaparro</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11129624_Nicole_Burton</parentRole>
+    <parentRole>EMP_11270881_Ricardo_Barriga_Navarro</parentRole>
 </Role>

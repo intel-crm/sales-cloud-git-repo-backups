@@ -129,7 +129,7 @@
         <connector>
             <targetReference>Create_Log_Entry</targetReference>
         </connector>
-        <filterLogic>(2 OR 3 OR 4 OR 7 OR 8) AND (1 AND (5 OR 6))</filterLogic>
+        <filterLogic>(2 OR 3 OR 4 OR 5 OR 8) AND (1 AND (6 OR 7))</filterLogic>
         <filters>
             <field>Core_Status__c</field>
             <operator>EqualTo</operator>
@@ -159,6 +159,13 @@
             </value>
         </filters>
         <filters>
+            <field>Core_Display_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>EPS Verified Company</stringValue>
+            </value>
+        </filters>
+        <filters>
             <field>Core_Status__c</field>
             <operator>IsChanged</operator>
             <value>
@@ -170,13 +177,6 @@
             <operator>IsChanged</operator>
             <value>
                 <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Display_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>EPS Verified Company</stringValue>
             </value>
         </filters>
         <filters>

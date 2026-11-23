@@ -175,7 +175,9 @@ public without sharing class Pricing_Manage_Small_Volume_Deal  extends TriggerHa
                             quoteType.message= '(0' + msg ;
                             quoteType.color = 'red';
                         }
-                  
+                        System.debug('KD Client Error' +quoteType.message);  
+                        System.debug('KD Client Error' +quoteType.color);
+                        System.debug('KD Client Error' +remQuoteClientInt);                   
                     }
                     quoteType.checked = false;
 
@@ -192,7 +194,10 @@ public without sharing class Pricing_Manage_Small_Volume_Deal  extends TriggerHa
                         } else{
                             quoteType.message= msg + '0)';
                             quoteType.color = 'red';
-                        }              
+                        }
+                        System.debug('KD SVD Error' +quoteType.message);  
+                        System.debug('KD SVD Error' +quoteType.color);
+                        System.debug('KD SVD Error' +remQuoteInt);               
                     }
                     quoteType.checked = false;
                     
@@ -209,7 +214,10 @@ public without sharing class Pricing_Manage_Small_Volume_Deal  extends TriggerHa
                         } else{
                             quoteType.message= '(0' + msg ;
                             quoteType.color = 'red';
-                        }               
+                        }
+                        System.debug('KD Data Center Error' +quoteType.message);  
+                        System.debug('KD Data Center Error' +quoteType.color);
+                        System.debug('KD Data Center Error' +remDataCenterQuoteInt);               
                     }
                     quoteType.checked = false;
                 }

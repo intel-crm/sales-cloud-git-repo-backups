@@ -4,7 +4,7 @@
     <containerType>Network</containerType>
     <label>PSG Menu</label>
     <navigationMenuItem>
-        <label>Quotes</label>
+        <label>Quote</label>
         <position>1</position>
         <publiclyAvailable>false</publiclyAvailable>
         <target>SBQQ__Quote__c</target>
@@ -22,8 +22,8 @@
         <label>Download Center</label>
         <position>3</position>
         <publiclyAvailable>false</publiclyAvailable>
-        <target>https://www.intel.com/content/www/us/en/programmable/sep/pricing/price-lists.html</target>
-        <type>ExternalLink</type>
+        <target>/psg-download-price-books</target>
+        <type>InternalLink</type>
     </navigationMenuItem>
     <navigationMenuItem>
         <label>Get Help</label>

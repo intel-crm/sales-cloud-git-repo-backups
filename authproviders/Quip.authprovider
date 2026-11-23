@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <authorizeUrl>https://platform.quip.com/1/oauth/login</authorizeUrl>
-    <consumerKey>SGYAcAeQ3MN-4f9d832093b24060aece19a3bdd9192c</consumerKey>
+    <consumerKey>LeBAcAV5lmX-9d99752729d945a8ad0237f38dc70750</consumerKey>
     <consumerSecret>Placeholder_Value</consumerSecret>
     <friendlyName>Quip</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>

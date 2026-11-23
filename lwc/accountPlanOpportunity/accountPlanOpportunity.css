@@ -1,0 +1,61 @@
+.scroll-container {
+    height: 200px;
+    overflow-y: auto;
+}
+.long-text-box {
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #d8dde6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #f3f2f2;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.custom-scroll {
+    max-height: 215px; 
+    max-width: 100%;
+    overflow-y: auto;
+    overflow-x: auto; 
+    border: 2px solid #c0baba;
+    border-radius: 0.25rem; 
+    padding: 0.5rem;
+}
+
+.custom-scroll lightning-datatable {
+    min-width: 1555px; 
+}
+.custom-scroll lightning-datatable::part(column-header) {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: white;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 300px;
+    margin-left: 10px;
+}
+
+.button-group {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem; /* adds space from top */
+}
+
+.button-spacing {
+    margin-right: 5px;
+}

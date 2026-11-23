@@ -7,8 +7,8 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : { },
-      "componentName" : "c:coreAPIDocumentationViewer",
-      "id" : "ae3e3d11-9c04-413f-8238-f3c9de84fabd",
+      "componentName" : "c:coreMDFAPIDocumentationViewer",
+      "id" : "f19ba100-123b-42e0-b47c-94fbab83204a",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

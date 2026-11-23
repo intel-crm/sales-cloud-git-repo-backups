@@ -21,9 +21,6 @@
     <columns>
         <field>LAST_UPDATE</field>
     </columns>
-    <columns>
-        <field>Account.Core_CNDA_Number__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>USERS.NAME</column>
@@ -31,13 +28,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>A&amp;E account owner</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_CNDA_Number__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

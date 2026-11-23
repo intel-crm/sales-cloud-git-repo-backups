@@ -52,7 +52,7 @@
     </values>
     <values>
         <field>Core_MDF_Keywords__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">activity</value>
     </values>
     <values>
         <field>Core_MDF_Permission_Set_Name__c</field>
@@ -76,7 +76,7 @@
     </values>
     <values>
         <field>Core_MDF_Role_Purpose__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Allows user to approve/reject activity for RMF Program</value>
     </values>
     <values>
         <field>Core_MDF_Skip_PS_Check__c</field>
@@ -84,7 +84,7 @@
     </values>
     <values>
         <field>Core_MDF_Use_Cases__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Use when: Approve/Reject activity that are in L2 Approver queue</value>
     </values>
     <values>
         <field>Core_MDF_WW_Only__c</field>

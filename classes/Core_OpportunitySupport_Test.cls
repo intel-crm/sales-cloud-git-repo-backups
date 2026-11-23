@@ -15,8 +15,8 @@ public class Core_OpportunitySupport_Test {
     static void setupTestData() { 
         Profile pro = [SELECT id, Name FROM Profile WHERE Name='CCP - Core Access'];
         //User usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE ProfileId = :pro.Id AND isActive = true LIMIT 1];
-        PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='Core_CRM_Special_Access' and Assignee.IsActive = true LIMIT 1];
-		//User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1];
+        PermissionSetAssignment psa = [SELECT Id, PermissionSet.Name,PermissionSetId, AssigneeId from PermissionSetAssignment  where PermissionSet.Name='Core_CRM_Special_Access' LIMIT 1];
+		User usr = [SELECT id, Name, isActive FROM User WHERE Id = :psa.AssigneeId AND isActive = true LIMIT 1];
         List<Core_Trigger_Executions__c> triggercontroller = new List<Core_Trigger_Executions__c>();
         /* test data creation for Opportunity support team addtion*/
         Core_Trigger_Executions__c triggerSetting = new Core_Trigger_Executions__c();
@@ -174,7 +174,7 @@ public class Core_OpportunitySupport_Test {
     static testMethod void createOpportunitySupportRequest1() {
         List<Core_Opportunity_Support__c> opp_supp = new List<Core_Opportunity_Support__c>();
         test.starttest();
-         //List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
+         List<User> usr1 = [SELECT id, Name, isActive,Core_User_Geo__c FROM User WHERE Email IN ('testuser@intel.com','testuser1@intel.com','testuser2@intel.com','testuser3@intel.com')];
 		
         Opportunity opportunity1 = [select Id, Name, Amount, RecordTypeId, Description,StageName,Core_Opportunity_Owner_Geo__c,Core_Opportunity_Owner__c  FROM Opportunity WHERE Name='Test Opportunity1'];
         
@@ -299,7 +299,7 @@ public class Core_OpportunitySupport_Test {
     }
     
     static testMethod void testOppTeamShare() {
-        //List<Core_Opportunity_Support__c> opp_supp = new List<Core_Opportunity_Support__c>();
+        List<Core_Opportunity_Support__c> opp_supp = new List<Core_Opportunity_Support__c>();
         Opportunity opportunity1 = [select Id, Name, Amount, Core_Approved_Opportunity_Region__c, RecordTypeId, Description,StageName 
                                     FROM Opportunity WHERE Name='Test Opportunity1'];
         opportunity1.Core_Approved_Opportunity_Region__c = 'APJ';

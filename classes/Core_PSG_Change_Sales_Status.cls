@@ -10,11 +10,11 @@ Modification Log :
 * 
 to Signal Code and differentiate the products based on its Type
 ************************************************************************************************************************/
-@isTest
+
 public  with sharing class Core_PSG_Change_Sales_Status {
    
     //Gireesh K:To Stamp ProductRecord with PSG Extended Attribute Id
-    /*Public static void updateProductRecord(List<Core_Product_Ext_Attribute__c> updatedExtendedAttributeList){
+    Public static void updateProductRecord(List<Core_Product_Ext_Attribute__c> updatedExtendedAttributeList){
         try{
             List<Product2> updateProductRecordList = new List<Product2>();
             for(Core_Product_Ext_Attribute__c updatedExtendedAttribute: updatedExtendedAttributeList){
@@ -37,7 +37,7 @@ public  with sharing class Core_PSG_Change_Sales_Status {
     }
     
     //Gireesh K: Update Orderable,Shippable, Quotable for Tools and Component Products
-    Public static void updateSalesStatus(List<Product2> updatedProductList, Map<Id,Product2> oldMap){
+    /*Public static void updateSalesStatus(List<Product2> updatedProductList, Map<Id,Product2> oldMap){
         try{           
             
             final String TOOL = 'Tool';

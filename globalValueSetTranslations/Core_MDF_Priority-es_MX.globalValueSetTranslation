@@ -109,6 +109,10 @@
         <translation>Comercial - Pequeñas y medianas empresas</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Commercial Client</masterLabel>
+        <translation>Cliente comercial</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Commercial Evo (non-vPro)</masterLabel>
         <translation>Evo comercial (no vPro)</translation>
     </valueTranslation>
@@ -206,7 +210,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Computing</masterLabel>
-        <translation><!-- Edge Computing --></translation>
+        <translation>Informática en el borde</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Edge Infrastructure Platforms/MEC</masterLabel>
@@ -305,6 +309,10 @@
         <translation><!-- Machine Learning --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Mainstream Client</masterLabel>
+        <translation>Cliente principal</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Mainstream PCs</masterLabel>
         <translation>PC de uso masivo</translation>
     </valueTranslation>
@@ -379,6 +387,14 @@
     <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation>Otros</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Physical AI</masterLabel>
+        <translation>IA Física</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Premium Client</masterLabel>
+        <translation>Cliente Premium</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Private Wireless Networks</masterLabel>

@@ -53,7 +53,7 @@ global static void emailLogCallbackHandler() {
             obj.isMessageRead=isMessageRead;
             obj.isMessageDelete=isMessageDelete;
             obj.jsonInput=jsonInput;
-            processEmailLogs(obj);//JB
+            processEmailLogs(obj);//Athr fixes
             //processEmailLogs(emailLogIds, isMessageRead, isMessageDelete, jsonInput);
         } else {
             responseMessage('Invalid Request', false, new List<String>());
@@ -153,7 +153,7 @@ global static void emailLogCallbackHandler() {
         public Boolean isMessageDelete{get;set;}
         public List<PRM_EmailLog__c> emailLogList{get;set;}
         public Set<String> successRecordId{get;set;}
-    }//Athr fixes
+    }
 
     private static void processEmailLogRecord(processEmailLogRecordWrapper att) {
         if (att.isMessageRead != null) {
@@ -162,7 +162,7 @@ global static void emailLogCallbackHandler() {
             obj.eLog=att.eLog;
             obj.emailLogList=att.emailLogList;
             obj.successRecordId=att.successRecordId;
-            updateEmailLogReadStatus(obj);
+            updateEmailLogReadStatus(obj);//Athr fixes
             //updateEmailLogReadStatus(att.isMessageRead, att.eLog, att.emailLogList, att.successRecordId);
         } else if (att.isMessageDelete != null) {
             updateEmailLogDeleteStatusWrapper obj=new updateEmailLogDeleteStatusWrapper();
@@ -201,7 +201,7 @@ global static void emailLogCallbackHandler() {
         } else {
             att.successRecordId.add(att.eLog.Name);
         }
-    }
+    }//Athr fixes
     	
     /*private static void updateEmailLogDeleteStatus(Boolean isMessageDelete, PRM_EmailLog__c eLog,
             List<PRM_EmailLog__c> emailLogList, Set<String> successRecordId) {
@@ -252,7 +252,7 @@ global static void emailLogCallbackHandler() {
         public List<String> failedIdList{get;set;}
         public Set<String> emailLogIds{get;set;}
         public String jsonInput{get;set;}
-    }//Athr fixes
+    }//
     
     private static void updateEmailLogRecords(updateEmailLogRecordsWrapper att) {
         if (!att.emailLogList.isEmpty()) {
@@ -273,7 +273,7 @@ global static void emailLogCallbackHandler() {
             obj.failedIdList=att.failedIdList;
             obj.emailLogIds=att.emailLogIds;
             obj.jsonInput=att.jsonInput;
-            handleResponse(obj);
+            handleResponse(obj);//Athr fixes
             //handleResponse(att.successRecordId, att.failedIdList, att.emailLogIds, att.jsonInput);
         } else {
             responseMessage('Records Updated Successfully', true, att.failedIdList);
@@ -310,7 +310,7 @@ global static void emailLogCallbackHandler() {
             errorMsg = (errorMsg == '') ? errorMsg + ', ' + error.getMessage() : error.getMessage();
         }
         createLogEntryWrapper obj=new createLogEntryWrapper();
-        obj.message=errorMsg;
+        obj.message=errorMsg; 
         obj.detail=errorMsg;
         obj.severity=LOG_ENTRY_ERROR;
         obj.inputRequest=jsonInput;
@@ -331,7 +331,7 @@ global static void emailLogCallbackHandler() {
         public List<String> failedIdList{get;set;}
         public Set<String> emailLogIds{get;set;}
         public String jsonInput{get;set;}
-    }
+    }//Athr fixes
     
     private static void handleResponse(handleResponseWrapper att) {
         if (att.successRecordId.size() == att.emailLogIds.size()) {
@@ -389,7 +389,7 @@ global static void emailLogCallbackHandler() {
                         : att.inputRequest.substring(0, 255)));
         insert objCLE;
     }
-    
+
     // Wrapper class to store EmailLog record details
     public class EmailLogDetails {
         public Boolean MessageReadInd;

@@ -25,65 +25,12 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordCreates>
-        <name>Core_Log_entry</name>
-        <label>Core Log entry</label>
-        <locationX>572</locationX>
-        <locationY>384</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>ACM_Core_Account_AddressConcatenate</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>ACM</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Scope__c</field>
-            <value>
-                <stringValue>Update address</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Error</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Tags__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
     <recordUpdates>
         <description>To concatenate primary address into a field to check for duplicates</description>
         <name>Field_Update</name>
         <label>Field Update</label>
-        <locationX>308</locationX>
-        <locationY>276</locationY>
-        <faultConnector>
-            <targetReference>Core_Log_entry</targetReference>
-        </faultConnector>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
         <inputAssignments>
             <field>Core_Address_Details__c</field>
             <value>
@@ -95,51 +42,13 @@
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
-        <filterLogic>or</filterLogic>
-        <filters>
-            <field>BillingStreet</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>BillingCountry</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>BillingState</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>BillingCity</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>BillingPostalCode</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
+        <connector>
+            <targetReference>Field_Update</targetReference>
+        </connector>
+        <filterFormula>ISCHANGED({!$Record.BillingStreet}) || ISCHANGED({!$Record.BillingState}) || ISCHANGED({!$Record.BillingCity}) ||  ISCHANGED({!$Record.BillingCountry})  ||  ISCHANGED({!$Record.BillingPostalCode})</filterFormula>
         <object>Account</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <scheduledPaths>
-            <connector>
-                <targetReference>Field_Update</targetReference>
-            </connector>
-            <pathType>AsyncAfterCommit</pathType>
-        </scheduledPaths>
-        <triggerType>RecordAfterSave</triggerType>
+        <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>
 </Flow>

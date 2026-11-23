@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_DDR_Accept_Approve_Reject_Test</testClassName>
+    <testClassName>Core_DRR_ApproveAllPendingProducts_Test</testClassName>
+    <testClassName>Core_Reject_Products_Pending_CtrlTest</testClassName>
+    <testClassName>Core_SalesSupportHomeController_Test</testClassName>
+    <testClassName>Core_SalesSupportPSGQuote_Test</testClassName>
+    <testClassName>PCC_CreateDesignRegistration_Test</testClassName>
+    <testClassName>PCC_updateOppLineItemTest</testClassName>
+    <testClassName>PRM_IPA_Utility_Test</testClassName>
+</ApexTestSuite>

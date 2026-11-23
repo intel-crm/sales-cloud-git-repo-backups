@@ -220,17 +220,17 @@ Accenture – VD        3-28-2019                 Created.
         List<PartnerFundClaim> pfclist = new List<PartnerFundClaim>();
         List<PartnerFundClaim> pfcUpdateList = new List<PartnerFundClaim>();
         
-        PartnerFundClaim pfc = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim',Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,pfr.Id,System.today().addDays(-3),System.today().addDays(-2),5000,System.today().addDays(-3),bank.Id,false);
+        PartnerFundClaim pfc = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim',Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,pfr.Id,System.today().addDays(-3),System.today(),5000,System.today().addDays(-3),bank.Id,false);
         pfc.Core_MDF_Country_Location_nm__c ='INDIA';
         pfc.Core_MDF_Currency__c = 'USD';
         pfclist.add(pfc);
         
-        PartnerFundClaim pfcPaid = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim',Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,pfr.Id,System.today().addDays(-3),System.today().addDays(-2),4000,System.today().addDays(-3),bank.Id,false);
+        PartnerFundClaim pfcPaid = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim',Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,pfr.Id,System.today().addDays(-3),System.today(),4000,System.today().addDays(-3),bank.Id,false);
         pfcPaid.Core_MDF_Country_Location_nm__c ='INDIA';
         pfcPaid.Core_MDF_Currency__c = 'USD'; 
         pfclist.add(pfcPaid);      
         //creating claim and making to paid for inactivating node
-        PartnerFundClaim pfcPaid2 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim2',Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,pfr2.Id,System.today().addDays(-3),System.today().addDays(-2),100,System.today().addDays(-3),bank.Id,false);
+        PartnerFundClaim pfcPaid2 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim2',Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF,pfr2.Id,System.today().addDays(-3),System.today(),100,System.today().addDays(-3),bank.Id,false);
         pfcPaid2.Core_MDF_Country_Location_nm__c ='INDIA';
         pfcPaid2.Core_MDF_Currency__c = 'USD';
         pfclist.add(pfcPaid2);

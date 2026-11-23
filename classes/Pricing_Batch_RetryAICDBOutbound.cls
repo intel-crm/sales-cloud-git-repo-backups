@@ -18,8 +18,11 @@ global without sharing class Pricing_Batch_RetryAICDBOutbound implements Databas
     
     public Pricing_Batch_RetryAICDBOutbound(){}
     
+ 
+    
  // Parameterized constructor to accept execution context
  public Pricing_Batch_RetryAICDBOutbound(String executionContext) {
+    
       
      Datetime fromDt = System.now().addDays(-PERIOD_DAYS);
      
@@ -43,7 +46,6 @@ global without sharing class Pricing_Batch_RetryAICDBOutbound implements Databas
     
     global Database.QueryLocator start(Database.BatchableContext context) {
         try {
-            
             Datetime fromDt = System.now().addDays(-PERIOD_DAYS);
             String convertFromDte = fromDt.formatGmt('yyyy-MM-dd\'T\'HH:mm:ss\'Z\'');
             String soql = queryString; 
@@ -56,7 +58,7 @@ global without sharing class Pricing_Batch_RetryAICDBOutbound implements Databas
 
         }
     }
-    
+
     global void execute(Database.BatchableContext bc, List<SObject> scope) {
         Map<String,Integer> cdbLogMap= new Map<String,Integer>();
         List<Id> quoteLineIds = new List<Id>();
@@ -71,12 +73,13 @@ global without sharing class Pricing_Batch_RetryAICDBOutbound implements Databas
         if (cdbLogs.isEmpty()) {
             return;
         }
-        
+      
         for(Core_CDB_Integration_Log__c logRec:cdbLogs){
             cdbLogMap.put(logRec.Core_Record_Id__c,Integer.valueOf(logRec.Core_Retry_Number_Nbr__c));
             quoteLineIds.add(logRec.Core_Record_Id__c);
         }
         quoteLineList = [SELECT Id,Pricing_Integration_Status_Nm__c,Pricing_Status_Nm__c FROM SBQQ__QuoteLine__c WHERE Id IN:quoteLineIds];
+       
              if(quoteLineList.size()>0){
                  for(SBQQ__QuoteLine__c qlRecord:quoteLineList){
                      if(qlRecord.Pricing_Status_Nm__c == 'Pending Further Intel Review' && String.isBlank(qlRecord.Pricing_Integration_Status_Nm__c)){
@@ -84,7 +87,8 @@ global without sharing class Pricing_Batch_RetryAICDBOutbound implements Databas
                      }
                  }
              }
-            
+         
+           
             if(pricingAgentQuoteLineIds.size()>0){
             	Pricing_Application_Agent_AI_Integration.populateJSON(pricingAgentQuoteLineIds,cdbLogMap);
             }

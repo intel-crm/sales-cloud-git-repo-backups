@@ -238,7 +238,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_Year__c</field>
+            <field>PMP_External_ID__c</field>
             <table>PMP_Marketplace_Dashboard__c</table>
         </columns>
         <masterLabel>Marketplace Dashboards</masterLabel>

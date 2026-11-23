@@ -1196,16 +1196,26 @@
         <label>Intel® Xeon® 6 W Processors</label>
     </customValue>
     <customValue>
+        <fullName>Series 4 Intel® Core™ Ultra (Nova Lake)</fullName>
+        <default>false</default>
+        <label>Series 4 Intel® Core™ Ultra (Nova Lake)</label>
+    </customValue>
+    <customValue>
+        <fullName>Series 4 Intel® Core™ (Wildcat Lake Refresh)</fullName>
+        <default>false</default>
+        <label>Series 4 Intel® Core™ (Wildcat Lake Refresh)</label>
+    </customValue>
+    <customValue>
         <fullName>Intel® OptaneTM DC Persistent Memory</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Intel® OptaneTM DC Persistent Memory</label>
     </customValue>
     <customValue>
-        <fullName>Arrow Lake (ARL) Intel Core Ultra Series 2</fullName>
+        <fullName>Raptor Lake – U (RPL)  </fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Arrow Lake (ARL) Intel Core Ultra Series 2</label>
+        <label>Raptor Lake – U (RPL)  </label>
     </customValue>
     <customValue>
         <fullName>Lunar Lake (LNL) Intel Core Ultra Series 2</fullName>
@@ -1214,10 +1224,16 @@
         <label>Lunar Lake (LNL) Intel Core Ultra Series 2</label>
     </customValue>
     <customValue>
-        <fullName>Raptor Lake – U (RPL)  </fullName>
+        <fullName>Arrow Lake (ARL) Intel Core Ultra Series 2</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Raptor Lake – U (RPL)  </label>
+        <label>Arrow Lake (ARL) Intel Core Ultra Series 2</label>
+    </customValue>
+    <customValue>
+        <fullName>Razon Lake</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Razon Lake</label>
     </customValue>
     <customValue>
         <fullName>Intel® OptaneTM DC SSDs</fullName>
@@ -1227,5 +1243,5 @@
     </customValue>
     <description>Technology Picklist values</description>
     <masterLabel>Technology</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

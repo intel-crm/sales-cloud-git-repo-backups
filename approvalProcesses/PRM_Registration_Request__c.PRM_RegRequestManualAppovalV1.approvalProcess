@@ -5,10 +5,6 @@
     <allowedSubmitters>
         <type>owner</type>
     </allowedSubmitters>
-    <allowedSubmitters>
-        <submitter>ipa_registration_integration.user@intel.com.crm</submitter>
-        <type>user</type>
-    </allowedSubmitters>
     <approvalPageFields>
         <field>Name</field>
         <field>PRM_Email_ID__c</field>
@@ -51,7 +47,7 @@
         <name>PRM_Registration_Request_Steps</name>
     </approvalStep>
     <description>Based On Field Values regRequest Record  will be submitted For approval</description>
-    <emailTemplate>test/Registration_Request_Requested_Approval</emailTemplate>
+    <emailTemplate>unfiled$public/Registration_Request_Requested_Approval</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
@@ -77,7 +73,7 @@
             <type>FieldUpdate</type>
         </action>
     </finalRejectionActions>
-    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <finalRejectionRecordLock>true</finalRejectionRecordLock>
     <initialSubmissionActions>
         <action>
             <name>PRM_Update_Record_Lock</name>

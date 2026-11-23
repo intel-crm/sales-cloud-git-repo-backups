@@ -6,10 +6,10 @@ public class Core_ToastMessageControllerTest {
         Profile p = [select Id from Profile where Name = 'IT Admin'];
         
         // Test users
-        User u = new User(Alias = 'estABcds', Email='standarduser12@intel.com',
-            EmailEncodingKey='UTF-8', LastName='Testingtest', LanguageLocaleKey='en_US',
+        User u = new User(Alias = 'standt', Email='standarduser@intel.com', 
+            EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US', 
             LocaleSidKey='en_US', ProfileId = p.Id, 
-            TimeZoneSidKey='America/Los_Angeles', UserName='standarduseranbdggdd@mail.com');
+            TimeZoneSidKey='America/Los_Angeles', UserName='standarduser@mail.com');
      insert u;
         
          List <Account> AccListList = new List <Account> ();

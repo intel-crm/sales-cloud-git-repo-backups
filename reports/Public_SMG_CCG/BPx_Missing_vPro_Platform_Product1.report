@@ -119,13 +119,6 @@
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Develop,Design,Design Win</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

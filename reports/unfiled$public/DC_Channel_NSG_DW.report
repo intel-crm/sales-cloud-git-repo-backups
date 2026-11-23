@@ -28,10 +28,6 @@
         <field>Opportunity.Core_Commissionable__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Exclude_From_KPIs__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>

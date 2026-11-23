@@ -122,20 +122,25 @@ public without sharing class PRM_ProfileResponseOPIDCtlr {
                     }
                 }           
             }
-            returnList.add(returnWrap);
+            returnList.add(returnWrap);  
         }
         return returnList;
     } 
     @AuraEnabled 
     public static void saveResponse(List<PRM_Profile_Responses__c> lstResp,List<PRM_Profile_Responses__c> delResp,id accId){
         /*List<PRM_Profile_Responses__c> updateRes = new List<PRM_Profile_Responses__c>();
-		List<PRM_Profile_Responses__c> updateRes1 = new List<PRM_Profile_Responses__c>();
-		List<PRM_Profile_Responses__c> updateRes2 = new List<PRM_Profile_Responses__c>();*/
+        List<PRM_Profile_Responses__c> updateRes1 = new List<PRM_Profile_Responses__c>();
+        List<PRM_Profile_Responses__c> updateRes2 = new List<PRM_Profile_Responses__c>();*/
+        
+        
         if(!delResp.isEmpty()){
-            update delResp;
+           
+             update delResp;
         }
         if(!lstResp.isEmpty()){
             upsert lstResp;
-        }
     }
+    
+}
+        
 }

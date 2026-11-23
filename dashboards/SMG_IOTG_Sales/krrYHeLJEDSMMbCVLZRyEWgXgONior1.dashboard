@@ -10,6 +10,37 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>IoT-VMC</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-ASD</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-TSD</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-Ind/Energy</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-eODM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-RBHE</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IoT-Unknown</values>
+        </dashboardFilterOptions>
+        <name>BU Product Segment</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>Accepted - Co-Dev</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -41,88 +72,9 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>1</values>
+            <values>Application Enablement/Software Tuning,Competition,Legal,MAG Account Escalation,Other,Pricing,Product Mod/Special SKU,PRT,Roadmap,Supply,Supply with adjacency impact,Technical Expertise</values>
         </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>0</values>
-        </dashboardFilterOptions>
-        <name>Product At Risk</name>
-    </dashboardFilters>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>eMMC</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>SDIO</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>UFS</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>TCC</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>TSN</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Camera (USB)</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Camera (MIPI)</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>PSE - Sensor Hub</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>PSE - EC Lite</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>PSE - Network Proxy</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>PSE - Real Time</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>PSE - OOB Manageability</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Funct Safety Essential Design Pkg</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>GbE</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>FuSa</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Deep Learning Boost (VNNI/Int8)</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>ECC / In-Band ECC</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Discrete Graphics</values>
-        </dashboardFilterOptions>
-        <name>Product Capability/Technology</name>
+        <name>Risk Reason</name>
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
@@ -138,13 +90,13 @@
                 </chartSummary>
                 <componentType>ColumnStacked</componentType>
                 <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
                     <column>Opportunity.Core_Early_Access_Status__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_At_Risk__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Capability_Technology__c</column>
+                    <column>Opportunity.Core_Risk_Reason__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -183,24 +135,18 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
                     <column>Opportunity.Core_Early_Access_Status__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_At_Risk__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Capability_Technology__c</column>
+                    <column>Opportunity.Core_Risk_Reason__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
-                        <reportColumn>Account.Core_Unified_Global_Customer_Name__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>ACCOUNT_NAME</reportColumn>
+                        <reportColumn>OpportunityLineItem.Core_Account_Name__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
@@ -212,19 +158,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>PRODUCT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Opportunity.Core_At_Risk__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Product_At_Risk__c</reportColumn>
+                        <reportColumn>STAGE_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
@@ -236,26 +170,32 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Opportunity_Count__c</reportColumn>
+                        <reportColumn>FULL_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Early_Access_Status__c</reportColumn>
+                        <reportColumn>Opportunity.Core_Last_Activity_Date__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Product_Capability_Technology__c</reportColumn>
+                        <reportColumn>Opportunity.Core_Risk_Reason__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.Core_Support_Requested__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
                         <sortColumn>OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
-                        <sortOrder>1</sortOrder>
+                        <sortOrder>2</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
@@ -280,13 +220,13 @@
                 </chartSummary>
                 <componentType>ColumnStacked</componentType>
                 <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
                     <column>Opportunity.Core_Early_Access_Status__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_At_Risk__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Capability_Technology__c</column>
+                    <column>Opportunity.Core_Risk_Reason__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -325,22 +265,16 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
                     <column>Opportunity.Core_Early_Access_Status__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_At_Risk__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Capability_Technology__c</column>
+                    <column>Opportunity.Core_Risk_Reason__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>Account.Core_Unified_Global_Customer_Name__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>ACCOUNT_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
@@ -354,19 +288,7 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>PRODUCT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Opportunity.Core_At_Risk__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>true</showTotal>
-                        <type>detail</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Product_At_Risk__c</reportColumn>
+                        <reportColumn>STAGE_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
@@ -378,26 +300,32 @@
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Opportunity_Count__c</reportColumn>
+                        <reportColumn>FULL_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Early_Access_Status__c</reportColumn>
+                        <reportColumn>Opportunity.Core_Last_Activity_Date__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>Opportunity.Core_Product_Capability_Technology__c</reportColumn>
+                        <reportColumn>Opportunity.Core_Risk_Reason__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.Core_Support_Requested__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>true</showTotal>
                         <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
                         <sortColumn>OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
-                        <sortOrder>1</sortOrder>
+                        <sortOrder>2</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
@@ -422,13 +350,13 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
                     <column>Opportunity.Core_Early_Access_Status__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_At_Risk__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Capability_Technology__c</column>
+                    <column>Opportunity.Core_Risk_Reason__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -470,13 +398,13 @@
                 </chartSummary>
                 <componentType>Donut</componentType>
                 <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
                     <column>Opportunity.Core_Early_Access_Status__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_At_Risk__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Core_Product_Capability_Technology__c</column>
+                    <column>Opportunity.Core_Risk_Reason__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>

@@ -16,7 +16,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>100</value>
+            <value>100.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>MEMBER_NAME</column>

@@ -2,7 +2,7 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "1161eddb-228d-459d-ab83-eebaec19d3c3",
+  "id" : "ace7f316-9680-4ef1-ac39-c5128cf02b93",
   "label" : "User Preferences",
   "regions" : [ {
     "components" : [ {
@@ -10,28 +10,28 @@
         "menuItems" : "[]"
       },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "15216535-fb37-4301-8057-f1738ef49a82",
+      "id" : "6fdbfcb3-46eb-49e1-bfaf-b0f0579f4017",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "d4092de9-42ca-4798-a084-0342bab5a6be",
+    "id" : "0258105a-cfab-4c7a-9ab1-ae2a29e64be0",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:pCC_User_Details",
-      "id" : "dc12535a-5c55-4727-9b1e-78fea2747eb2",
+      "id" : "8a170ad9-b086-4d54-8a98-d3aa5288bcb4",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "b00caf18-5c1a-4741-a10c-c51d0d84e957",
+    "id" : "3c348314-b5c4-47d4-a69d-7f01b32a2f01",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "7bc356d5-0abd-48ef-99dc-5562200b1a6e",
+    "id" : "5c393ad1-62b2-43bf-8bb0-974c431f2103",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -42,15 +42,15 @@
         "title" : "User Preferences"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "4d519b0d-e7d8-4d4e-ad35-f64ef6ed603a",
+      "id" : "7a5243b9-2521-4b56-b2b5-f4a5ec32a50c",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "b3ee5692-2bfc-4ce6-9b9a-92bab9d567a8",
+    "id" : "37adbdda-3655-42cd-b1b1-3589268584ea",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "YKT7Zn6tAHjSVdyTIMFhpZIEtQkAJG",
   "type" : "view",
   "viewType" : "custom-user-preferences"
 }

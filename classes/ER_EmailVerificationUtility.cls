@@ -60,9 +60,8 @@ public with Sharing class ER_EmailVerificationUtility {
                         if(mdtRec.PRM_Country_Cd__c != null && mdtRec.PRM_Country_Cd__c.equalsIgnoreCase(req.PRM_Contact_Country__c) && mdtRec.MasterLabel == req.PRM_Preferred_Language__c){
                             langCultureForEmail = mdtRec;
                         }
-                    } 
-                    //This line is commented as it is not beign used anywhere and we are deleting unused class-ER_EmailNotificationUtility
-                   /*ER_EmailNotificationUtility.EmailNotification objEmailNotif = new ER_EmailNotificationUtility.EmailNotification();
+                    }                
+                    ER_EmailNotificationUtility.EmailNotification objEmailNotif = new ER_EmailNotificationUtility.EmailNotification();
                     objEmailNotif.EmailID= req.PRM_Email_ID__c ;
                     objEmailNotif.Language = string.isNotBlank(req.PRM_Preferred_Language__c) ? req.PRM_Preferred_Language__c : 'ENG' ;
                     Map<String,String> paramMap = new Map<String,String>();
@@ -74,7 +73,7 @@ public with Sharing class ER_EmailVerificationUtility {
                     objEmailNotif.BusinessEvent=System.label.PRM_Registration_request_for_new_User_EV;        
                     objEmailNotif.Entitlements= enttlMap.get(req.Entitlement_Details__c);
                     objEmailNotif.BusinessType = businessType;
-                    ER_EmailNotificationUtility.sendEmail(objEmailNotif); */       
+                    ER_EmailNotificationUtility.sendEmail(objEmailNotif);        
                 } 
             }
         }catch(Exception ex){           

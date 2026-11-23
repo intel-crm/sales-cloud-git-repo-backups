@@ -36,8 +36,8 @@ public without sharing class UCD_ACM_ReltioService implements UCD_ACM_ServiceCon
 */
     private Core_RestClient callAPI(String request, String endPoint,string HTTP){
         Map<String,String> mapofHader = new Map<String,String> { 'Content-Type' => 'application/json' };
-            List<Object> endPointParams = new List<Object> { endPoint };
-                String apiURI = String.format('callout:SalesCRM_Apigee{0}', endPointParams);
+        List<Object> endPointParams = new List<Object> { endPoint };
+        String apiURI = String.format('callout:SalesCRM_UCD_App{0}', endPointParams);
         UCD_ACM_Logger.information('UCD_ACM_ReltioService', 'callAPI', 'Reltio API Payload - '+request, 'SBR');
         Core_RestClient restClient = new Core_RestClient(apiURI, HTTP, mapofHader, request, Integer.valueOf(System.Label.Reltio_Timeout));
         restClient.invokeAPI();

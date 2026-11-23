@@ -19,7 +19,7 @@
     <aura:attribute name="accessErrorMsg" type="String"/>
     <aura:attribute name="maxRecordWarning" type="String"/>
     <aura:attribute name="buttonList" type="List"/>
-    <aura:attribute name="selectedButton" type="String" default="{!$Label.c.Core_Lead_ExportButton}"/>
+    <aura:attribute name="selectedButton" type="String" default="{!$Label.c.Core_Lead_ExportReportButton}"/>
     
     <div style="text-align: right;">
         <lightning:button class="ExportListButton" label="Lead Export" title="Lead Export" onclick="{!c.handleShowModal}"/>

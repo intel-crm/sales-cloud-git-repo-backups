@@ -40,6 +40,12 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
         public String  clientAuthentication  { get; set; }
         public String  tokenName             { get; set; }
         public Integer timeout               { get; set; }
+        // Resource endpoints for configs that call something other than the
+        // AGS role-assignment/status endpoints hardcoded as ENDPOINT/STATUS_ENDPOINT
+        // below (e.g. the IDS_OAuth_Config entry used by fetchUserAccessFromIds()).
+        // Unused by the default AGS_OAuth_Config entry today.
+        public String  getEndpointPath       { get; set; }
+        public String  postEndpointPath      { get; set; }
 
         public OAuthConfig(String configName) {
             Core_MDF_AGS_OAuth_Configuration__mdt cfg =
@@ -57,6 +63,8 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
             this.tokenName            = cfg.Token_Name__c;
             this.timeout              = cfg.Timeout__c != null
                                         ? Integer.valueOf(cfg.Timeout__c) : 60000;
+            this.getEndpointPath      = cfg.Get_Endpoint_Path__c;
+            this.postEndpointPath     = cfg.Post_Endpoint_Path__c;
         }
 
         public OAuthConfig() { this('AGS_OAuth_Config'); }
@@ -74,7 +82,8 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
             return [
                 SELECT Grant_Type__c, Client_Authentication__c, Client_Id__c,
                        Client_Secret__c, Access_Token_Url__c, Scope__c,
-                       Token_Name__c, Timeout__c
+                       Token_Name__c, Timeout__c, Get_Endpoint_Path__c,
+                       Post_Endpoint_Path__c
                 FROM Core_MDF_AGS_OAuth_Configuration__mdt
                 WHERE DeveloperName = :configName
                 LIMIT 1
@@ -151,6 +160,19 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
     ) {
         this.stagingIds  = stagingIds;
         this.calloutType = calloutType;
+        this.config      = new OAuthConfig(configName);
+    }
+
+    /**
+     * Creates a lightweight instance for ad-hoc, non-staging callouts (e.g. IDS
+     * "copy user access" lookups) that only need token handling + get()/post(),
+     * never System.enqueueJob()'d, and never touch Core_MDF_IUPGM_Request_Staging__c.
+     * Kept in this same class per request, rather than a separate IDS class,
+     * since it reuses 100% of the existing OAuth/token/get/post plumbing.
+     */
+    public Core_MDF_AGS_CalloutQueueable(String configName) {
+        this.stagingIds  = null;
+        this.calloutType = null;
         this.config      = new OAuthConfig(configName);
     }
     /******************************************************************************************************
@@ -628,12 +650,63 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
     /** Retrieves or refreshes the OAuth token used for AGS callouts. */
     public TokenResponse getAccessToken() {
         try {
+            System.debug('=== TOKEN RETRIEVAL START ===');
+            System.debug('Checking if token is still valid...');
+            
             if (isTokenValid()) {
+                System.debug('Using cached token (still valid)');
                 TokenResponse cached = new TokenResponse();
                 cached.access_token = this.cachedAccessToken;
                 cached.token_type   = 'Bearer';
                 return cached;
             }
+
+            System.debug('Token not cached or expired, fetching new token');
+            
+            // ISSUE #3 FIX: Validate OAuth configuration before making request
+            if (config == null) {
+                System.debug('ERROR: config is null!');
+                TokenResponse errResp = new TokenResponse();
+                errResp.error = 'configuration_error';
+                errResp.error_description = 'OAuth configuration not initialized';
+                return errResp;
+            }
+            
+            System.debug('Config initialized: ' + config);
+            System.debug('Config.clientId: ' + config.clientId);
+            String secretLength = String.isBlank(config.clientSecret) ? 'BLANK' : String.valueOf(config.clientSecret.length());
+            System.debug('Config.clientSecret length: ' + secretLength);
+            System.debug('Config.accessTokenUrl: ' + config.accessTokenUrl);
+            System.debug('Config.grantType: ' + config.grantType);
+            
+            if (String.isBlank(config.clientId)) {
+                System.debug('ERROR: clientId is blank!');
+                TokenResponse errResp = new TokenResponse();
+                errResp.error = 'configuration_error';
+                errResp.error_description = 'OAuth Client ID is blank in configuration';
+                return errResp;
+            }
+            
+            if (String.isBlank(config.clientSecret)) {
+                System.debug('ERROR: clientSecret is blank!');
+                TokenResponse errResp = new TokenResponse();
+                errResp.error = 'configuration_error';
+                errResp.error_description = 'OAuth Client Secret is blank in configuration. '
+                    + 'Verify Core_MDF_AGS_OAuth_Configuration__mdt metadata.';
+                return errResp;
+            }
+            
+            if (String.isBlank(config.accessTokenUrl)) {
+                System.debug('ERROR: accessTokenUrl is blank!');
+                TokenResponse errResp = new TokenResponse();
+                errResp.error = 'configuration_error';
+                errResp.error_description = 'OAuth Access Token URL is blank in configuration';
+                return errResp;
+            }
+            
+            System.debug('All config validations passed');
+
+            System.debug('All config validations passed');
 
             HttpRequest req = new HttpRequest();
             req.setEndpoint(config.accessTokenUrl);
@@ -660,23 +733,72 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
             req.setBody(reqBody);
             req.setTimeout(config.timeout);
 
+            System.debug('=== SENDING TOKEN REQUEST ===');
+            System.debug('Token endpoint URL: ' + config.accessTokenUrl);
+            System.debug('Request method: POST');
+            System.debug('Request body (sanitized): grant_type=' + config.grantType + '&client_id=***&client_secret=***');
+            System.debug('Timeout: ' + config.timeout + 'ms');
+            
             HttpResponse res = new Http().send(req);
-            TokenResponse tokenResp = (TokenResponse) JSON.deserialize(
-                res.getBody(), TokenResponse.class);
+            
+            System.debug('=== RECEIVED TOKEN RESPONSE ===');
+            System.debug('Response status code: ' + res.getStatusCode());
+            System.debug('Response body (first 500 chars): ' + res.getBody().abbreviate(500));
+            
+            if (String.isBlank(res.getBody())) {
+                System.debug('ERROR: Response body is empty!');
+                TokenResponse errResp = new TokenResponse();
+                errResp.error = 'empty_response';
+                errResp.error_description = 'Token endpoint returned empty response (status: ' + res.getStatusCode() + ')';
+                return errResp;
+            }
+            
+            System.debug('Attempting to deserialize response JSON...');
+            TokenResponse tokenResp;
+            try {
+                tokenResp = (TokenResponse) JSON.deserialize(
+                    res.getBody(), TokenResponse.class);
+                System.debug('Deserialization successful');
+                System.debug('TokenResponse.error: ' + tokenResp.error);
+                System.debug('TokenResponse.error_description: ' + tokenResp.error_description);
+                String tokenLength = String.isBlank(tokenResp.access_token) ? 'BLANK' : String.valueOf(tokenResp.access_token.length());
+                System.debug('TokenResponse.access_token (length): ' + tokenLength);
+            } catch (JSONException je) {
+                System.debug('ERROR during JSON deserialization: ' + je.getMessage());
+                System.debug('Deserialization stack: ' + je.getStackTraceString());
+                TokenResponse errResp = new TokenResponse();
+                errResp.error = 'parse_error';
+                errResp.error_description = 'Failed to parse token response: ' + je.getMessage();
+                return errResp;
+            }
 
             if (tokenResp.isSuccess()) {
+                System.debug('Token successfully retrieved. Caching...');
                 this.cachedAccessToken = tokenResp.access_token;
                 Integer expiresIn = tokenResp.expires_in != null
                     ? tokenResp.expires_in - 60 : 3540;
                 this.tokenExpiryTime = DateTime.now().addSeconds(expiresIn);
+                System.debug('Token will expire in ' + expiresIn + ' seconds');
+            } else {
+                // FIX: Ensure error_description is never null for error responses
+                if (String.isBlank(tokenResp.error_description)) {
+                    tokenResp.error_description = 'Token endpoint returned error [' + tokenResp.error + ']. '
+                        + 'No detailed error message was provided by the endpoint.';
+                }
+                System.debug('Token endpoint returned error: ' + tokenResp.error_description);
             }
 
+            System.debug('=== TOKEN RETRIEVAL END ===');
             return tokenResp;
 
         } catch (Exception e) {
+            System.debug('=== TOKEN RETRIEVAL EXCEPTION ===');
+            System.debug('Exception type: ' + e.getTypeName());
+            System.debug('Exception message: ' + e.getMessage() 
+                + ' | Stack: ' + e.getStackTraceString());
             TokenResponse errResp = new TokenResponse();
             errResp.error             = 'request_failed';
-            errResp.error_description = e.getMessage();
+            errResp.error_description = 'Token retrieval failed: ' + e.getMessage();
             return errResp;
         }
     }
@@ -693,8 +815,11 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
     ) {
         TokenResponse tokenResp = getAccessToken();
         if (!tokenResp.isSuccess()) {
+            String errorMsg = String.isNotBlank(tokenResp.error_description) 
+                ? tokenResp.error_description 
+                : 'Token endpoint returned error: ' + tokenResp.error;
             throw new CalloutException(
-                'Failed to obtain access token: ' + tokenResp.error_description);
+                'Failed to obtain access token: ' + errorMsg);
         }
         
 
@@ -721,8 +846,11 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
     public HttpResponse get(String endpoint, Map<String, String> headers) {
         TokenResponse tokenResp = getAccessToken();
         if (!tokenResp.isSuccess()) {
+            String errorMsg = String.isNotBlank(tokenResp.error_description) 
+                ? tokenResp.error_description 
+                : 'Token endpoint returned error: ' + tokenResp.error;
             throw new CalloutException(
-                'Failed to obtain access token: ' + tokenResp.error_description);
+                'Failed to obtain access token: ' + errorMsg);
         }
         HttpRequest req = new HttpRequest();
         req.setEndpoint(endpoint);
@@ -734,6 +862,157 @@ public class Core_MDF_AGS_CalloutQueueable implements Queueable, Database.Allows
         req.setTimeout(config.timeout);
         return new Http().send(req);
     }
+
+    /******************************************************************************************************
+    Method Name:        IdsRoleAssignment
+    Description:        One deduplicated role currently assigned to a user, as returned by the IDS
+                         "identity-role-entitlement-mappings" GET endpoint. CONFIRMED against a real
+                         sample response. The raw IDS response contains ONE ROW PER ENTITLEMENT, so a
+                         single role with 3 entitlements produces 3 rows sharing the same RoleId -
+                         parseIdsRoleAssignments() collapses those down to exactly one IdsRoleAssignment
+                         per unique RoleId before returning.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    public class IdsRoleAssignment {
+        public String roleId;          // IDS "RoleId" - unique per role, used as the dedup key
+        public String roleName;        // IDS "RoleSystemNm" (falls back to "RoleDisplayNm") - matches
+                                        // the Core_MDF_AGS_Role_Name__c convention already used
+                                        // throughout Core_MDF_IUPGM_Rule_Config__mdt
+        public String programName;     // not provided by IDS - left null; callers resolve program via
+                                        // Core_MDF_IUPGM_RequestAPI.findRuleConfigByAnyRoleName(roleName)
+        public String rawJson;         // raw JSON of the first (non-disabled) row seen for this RoleId
+    }
+
+    // Static query parameters required by the IDS endpoint - identical in sandbox and production,
+    // confirmed against real endpoint URLs for both environments. Only the base host+path (stored in
+    // Get_Endpoint_Path__c on the IDS_OAuth_Config metadata record, per environment) and EnterpriseId
+    // (per user, resolved dynamically) differ.
+    private static final String IDS_FORMAT             = 'JSON';
+    private static final String IDS_ROLE_FILTER         = '"RoleId" is not null';
+    private static final String IDS_TARGET_APPLICATION  = 'Salesforce-SalesCloud';
+
+    /******************************************************************************************************
+    Method Name:        fetchUserAccessFromIds
+    Description:        Calls the IDS identity-role-entitlement-mappings GET endpoint for one user (by
+                         EnterpriseId/WWID) and returns the deduplicated list of currently assigned roles.
+                         Reuses the same OAuth token/get() plumbing as AGS, but against the IDS_OAuth_Config
+                         metadata record (separate Client Id/Secret, same
+                         Core_MDF_AGS_OAuth_Configuration__mdt type). Throws ConfigurationException - never
+                         fabricates data - when IDS is not yet configured, so callers (Copy User Access,
+                         List Access) can degrade to a clear "not available yet" message.
+                         Get_Endpoint_Path__c is expected to hold ONLY the base URL up to and including
+                         "identity-role-entitlement-mappings" (no query string) - e.g.
+                         sandbox: https://apis.sandbox.intel.com/security/v1/identitydataservice/identity-role-entitlement-mappings
+                         prod:    https://apis.intel.com/security/v1/identitydataservice/identity-role-entitlement-mappings
+                         The $format/$filter/TargetApplication/EnterpriseId query string is always
+                         appended here in code, since it is identical across environments.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    /** Retrieves one user's current, deduplicated IDS role assignments. Instance must use the IDS config. */
+    public List<IdsRoleAssignment> fetchUserAccessFromIds(String enterpriseId) {
+
+        if (String.isBlank(enterpriseId)) {
+            throw new ConfigurationException(
+                'fetchUserAccessFromIds requires a non-blank enterpriseId/WWID.');
+        }
+        if (config == null
+            || String.isBlank(config.accessTokenUrl)
+            || String.isBlank(config.clientId)
+            || String.isBlank(config.clientSecret)
+            || String.isBlank(config.getEndpointPath)) {
+            // IDS application/endpoint not approved & configured yet. Surface a clear, actionable
+            // error instead of calling an incomplete/placeholder URL.
+            throw new ConfigurationException(
+                'IDS integration is not configured yet. Populate Access_Token_URL__c, '
+                + 'Client_ID__c, Client_Secret__c and Get_Endpoint_Path__c on the '
+                + 'IDS_OAuth_Config Core_MDF_AGS_OAuth_Configuration__mdt record before '
+                + 'Copy User Access can call IDS.');
+        }
+
+        String baseEndpoint = config.getEndpointPath.contains('?')
+            ? config.getEndpointPath.substringBefore('?')
+            : config.getEndpointPath;
+
+        String endpoint = baseEndpoint
+            + '?$format=' + IDS_FORMAT
+            + '&EnterpriseId=' + EncodingUtil.urlEncode(enterpriseId, 'UTF-8')
+            + '&$filter=' + EncodingUtil.urlEncode(IDS_ROLE_FILTER, 'UTF-8')
+            + '&TargetApplication=' + EncodingUtil.urlEncode(IDS_TARGET_APPLICATION, 'UTF-8');
+
+        HttpResponse res = get(endpoint, new Map<String, String>{
+            'Accept' => 'application/json'
+        });
+
+        if (res.getStatusCode() != 200) {
+            throw new CalloutException(
+                'IDS user access lookup failed: HTTP ' + res.getStatusCode()
+                + ' ' + res.getBody());
+        }
+
+        return parseIdsRoleAssignments(res.getBody());
+    }
+
+    /******************************************************************************************************
+    Method Name:        parseIdsRoleAssignments
+    Description:        Parses the IDS GET response body - {"name":"IdentityRoleEntitlementMapping",
+                         "elements":[ {one row per role+entitlement pair, with RoleId/RoleSystemNm/
+                         RoleDisplayNm/Disabled fields}, ... ], "links":[...]} - confirmed against a real
+                         sample response. Each role appears once per entitlement under it, so this method
+                         deduplicates by RoleId (the unique, stable identifier for the role itself) and
+                         returns exactly one IdsRoleAssignment per currently-assigned role. Rows whose
+                         "Disabled" field is the string "True" are skipped entirely, so a role is only
+                         reported as currently assigned if it has at least one active (non-disabled)
+                         entitlement row.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    @TestVisible
+    private List<IdsRoleAssignment> parseIdsRoleAssignments(String responseBody) {
+        List<IdsRoleAssignment> results = new List<IdsRoleAssignment>();
+        if (String.isBlank(responseBody)) return results;
+
+        Object parsed = JSON.deserializeUntyped(responseBody);
+        if (!(parsed instanceof Map<String, Object>)) {
+            return results;
+        }
+        Map<String, Object> root = (Map<String, Object>) parsed;
+        Object elementsObj = root.get('elements');
+        if (!(elementsObj instanceof List<Object>)) {
+            return results;
+        }
+
+        // Keyed by RoleId so repeated entitlement rows for the same role collapse into one
+        // entry - this is the dedup step called out explicitly: RoleId is unique per role,
+        // while a role can have many entitlement rows underneath it.
+        Map<String, IdsRoleAssignment> byRoleId = new Map<String, IdsRoleAssignment>();
+
+        for (Object item : (List<Object>) elementsObj) {
+            if (!(item instanceof Map<String, Object>)) continue;
+            Map<String, Object> m = (Map<String, Object>) item;
+
+            String roleId = (String) m.get('RoleId');
+            if (String.isBlank(roleId) || byRoleId.containsKey(roleId)) continue;
+
+            String disabled = (String) m.get('Disabled');
+            if (disabled != null && disabled.equalsIgnoreCase('True')) {
+                // Skip disabled/revoked entitlement rows - do not report a role as currently
+                // assigned based solely on a disabled entry. If a later, active row for the
+                // same RoleId appears further down, it will still be picked up normally.
+                continue;
+            }
+
+            IdsRoleAssignment dto = new IdsRoleAssignment();
+            dto.roleId = roleId;
+            String roleSystemNm  = (String) m.get('RoleSystemNm');
+            String roleDisplayNm = (String) m.get('RoleDisplayNm');
+            dto.roleName = String.isNotBlank(roleSystemNm) ? roleSystemNm : roleDisplayNm;
+            dto.rawJson = JSON.serialize(item);
+            byRoleId.put(roleId, dto);
+        }
+
+        results.addAll(byRoleId.values());
+        return results;
+    }
+
     /******************************************************************************************************
     Method Name:        checkRequestStatus
     Description:        Polls AGS for the current approval/provisioning status of a previously submitted

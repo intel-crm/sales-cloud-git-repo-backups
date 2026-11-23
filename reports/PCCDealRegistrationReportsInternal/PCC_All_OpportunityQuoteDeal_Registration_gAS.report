@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Core_Design_Registration__c$Name</field>
+        <field>FK_NAME</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c$Core_Design_Registration_Nm__c</field>
+        <field>FK_$Core_Design_Registration__c.Core_Design_Registration_Nm__c</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c$Core_Partner_Account_Id__c</field>
+        <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Id__c</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.Opportunities__r$Name</field>
+        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.Opportunities__r$StageName</field>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Design_Registration__c.Opportunities__r$Amount</field>
+        <field>AMOUNT</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r$core_cpq_name_nm__c</field>
+        <field>QUOTE_NAME</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.Opportunities__r.SBQQ__Quotes2__r$Name</field>
+        <field>QUOTE_NUMBER</field>
     </columns>
     <filter>
         <criteriaItems>
-            <column>Core_Design_Registration__c$PCC_Registration_Type__c</column>
+            <column>FK_$Core_Design_Registration__c.PCC_Registration_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
@@ -38,16 +38,28 @@
     <format>Tabular</format>
     <name>All Opportunity/Quote/Deal Registration</name>
     <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>Deal_with_Opportunities_Quotes_Quote_line__c</reportType>
+    <reportType>QuoteProduct@Opportunity.Core_Design_Registration_Id__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Core_Design_Registration__c$Core_Opportunity_Decision_Dt__c</dateColumn>
+        <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

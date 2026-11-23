@@ -181,9 +181,7 @@
     <sortColumn>OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

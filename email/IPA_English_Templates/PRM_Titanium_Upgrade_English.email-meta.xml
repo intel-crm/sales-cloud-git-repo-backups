@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>PRM_Titanium_Upgrade_English</name>
     <style>none</style>
@@ -8,45 +8,29 @@
     <textOnly>Intel® Partner Alliance Titanium
 
 
-
 {!Contact.FirstName},
 
-We have made some exciting changes and have modified the Intel® Partner Alliance program criteria and enhanced the benefits that support your business needs. As a result, your company has been upgraded to Intel Partner Alliance Titanium. Congratulations!
+Congratulations! Your company has been upgraded to Intel® Partner Alliance Titanium. Take advantage of these membership benefits:
 
-Here are some incremental benefits for Titanium:
+Earn more points on both components and systems
+Invitation to the premier Intel partner event of the year: Intel® Partner Connect
+Titanium letter of introduction from Intel management to your prospective customers
 
-Titanium Badge
-Higher number of Advanced Warranty Replacements
-Highest points cap
-
-
-There is much to be excited about with the new Intel Partner University experience, including:
-
-A complete upgrade to the digital experience
-Personalized training pathways
-And a new content rating system to help partners find and consume the highest peer-rated content.
-
-
-In addition, we are now providing our partners with curated industry trends and insights, brought to you by the data scientist in the Intel’s Market Sizing and Forecasting team.
-
-Be sure to look forward to a new and improved Intel® Solutions Marketplace user experience:
-
-A new look and feel and easier site navigation
-An improved experience for generating connections and leads between partners
-Improved overall search functionality
-
-
-Intel Partner Alliance is constantly striving to provide more value and benefits so your business can thrive in today&apos;s environment. Find out more about what Intel Partner Alliance provides to help you advance your business.
+Log in to access tools and resources.
 
 Get started today
 
+
+Intel partners have a long history of innovation, and with Intel Partner Alliance, we’ll help you accelerate building solutions for the data centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
+
+Visit intel.com/partnerhelp for help and guidance on optimizing your membership.
 
 
 Thank you,
 Your Intel® Partner Alliance team
 
 This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© 2020 Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>
     <type>custom</type>

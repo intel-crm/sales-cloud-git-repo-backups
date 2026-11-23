@@ -1,11 +1,12 @@
-public with sharing class PRM_OPID_OnDemandsyncRequest {
+public with sharing class PRM_OPID_OnDemandsyncRequest { 
     
-    public static final String LOG_ENTRY_ERROR    = 'error';
+    /*public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_ORIGIN   = 'PRM_OPID_OnDemandsyncRequest';
     public static final String LOG_ENTRY_PROJECT  = 'On Demand Sync';
     public static final String LOG_ENTRY_SCOPE    = 'PRM_OPID_OnDemandsyncRequest';
     public static final String LOG_ENTRY_SEVERITY = 'Medium';
+    
     @AuraEnabled
     public static void ondemandSyncReq(Id recordId){
         if(recordId!=null) {
@@ -73,7 +74,7 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
             httpReq.setHeader('content-type', 'application/x-www-form-urlencoded');
             
             //string gType = EncodingUtil.urlEncode('client_credentials','UTF-8');
-            String payLoad = 'grant_type=client_credentials&client_id=' + EncodingUtil.urlEncode(agsAPIDetails.Username__c,'UTF-8') +'&client_secret=' + EncodingUtil.urlEncode(agsAPIDetails.Password__c, 'UTF-8');    
+            String payLoad = 'grant_type=client_credentials&client_id=' + EncodingUtil.urlEncode(agsAPIDetails.Username__c,'UTF-8') +'&client_secret=' + EncodingUtil.urlEncode(agsAPIDetails.Password__c, 'UTF-8');
             httpReq.setBody(payLoad);
             HttpResponse response = new Http().send(httpReq);
             if(response.getStatusCode() == 200 ) {
@@ -143,6 +144,7 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
     }
     
     public static void createOPIDSyncReqRecord(String msg, Account acc){
+        system.debug('msg-->'+msg+'Account-->'+acc);
         try{ 
             Id recId,syncObjRecId; 
             //String strDetailsAndEx = '';
@@ -163,7 +165,7 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                 //List<Core_Account_Group_Member__c> cagSFRecsList = [SELECT Id, Name, Core_Partner_Account_Id__c, Core_Intel_Account_Id__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c from Core_Account_Group_Member__c WHERE Core_Partner_Account_Id__c =:recId AND Core_Inactive_Ind__c != true];
                 //Map<Id, Core_Account_Group_Member__c> existingCAGMap = new Map<Id, Core_Account_Group_Member__c>([SELECT Id, Name, Core_Partner_Account_Id__c, Core_Intel_Account_Id__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c,Core_Partner_Account_Id__r.Name, from Core_Account_Group_Member__c WHERE Core_Partner_Account_Id__c =:recId AND Core_Inactive_Ind__c != true]);
                 Map<Id, Core_Account_Group_Member__c> existingCAGMap = new Map<Id, Core_Account_Group_Member__c>([SELECT Id, Name, Core_Partner_Account_Id__c, Core_Intel_Account_Id__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c,Core_Partner_Account_Id__r.Name,Core_Partner_Account_Id__r.Core_Prime_Account_Name__c,
-                                                                           Core_Partner_Account_Id__r.Core_PAG_Grouping_Method__c,Core_Intel_Account_Id__r.Core_CIM_ID__c from Core_Account_Group_Member__c WHERE Core_Partner_Account_Id__c =:recId AND Core_Inactive_Ind__c != true]);
+                                                                           Core_Partner_Account_Id__r.Core_PAG_Grouping_Method__c,Core_Intel_Account_Id__r.Core_Business_Party_Id__c from Core_Account_Group_Member__c WHERE Core_Partner_Account_Id__c =:recId AND Core_Inactive_Ind__c != true]);
 
                 Set<Id> locationAccIds = new Set<Id>();
                 Map<String, Set<Id>> locationSFAccMap = new Map<String,Set<Id>>();
@@ -202,12 +204,10 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                 
                 for(cimRecsMappingwrapper wrap :inboundwrapRecsList){
                     Core_OnePartner_Inbound_Message__c inboundRecord = new Core_OnePartner_Inbound_Message__c();
-                    inboundRecord.Core_CIM_ID__c = decimal.valueOf(wrap.Core_CIM_ID_Temp);
                     inboundRecord.Core_Effective_End_Date_Time__c=wrap.Core_Effective_End_Date_Time_Temp;
                     inboundRecord.Core_OnePartner_Account_Name__c = wrap.Core_OnePartner_Account_Name_Temp;
                     inboundRecord.Core_OnePartnerID__c = decimal.valueOf(wrap.Core_OnePartnerID_Temp);
-                    inboundRecord.Core_Prime_Account_Name__c=wrap.Core_Prime_Account_Name_Temp;
-                    inboundRecord.Core_PrimeID__c = decimal.valueOf(wrap.Core_PrimeID_Temp); 
+                    inboundRecord.Core_PrimeID__c = wrap.Core_PrimeID_Temp != null? decimal.valueOf(wrap.Core_PrimeID_Temp.trim()): null; 
                     inboundRecord.Core_SalesCloud_AccountID__c = wrap.Core_SalesCloud_AccountID_Temp;   
                     inboundRecord.Core_Status__c= 'NEW'; 
                     inboundRecord.Core_Status_Reason__c = wrap.Core_Status_Reason_Temp;
@@ -286,11 +286,10 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                            	//Checking the Name Difference from CIM and SF
                              List<Core_OnePartner_Inbound_Message__c> cimRecsList  = cimRecordDetailsMap.get(cagSFRecs.Core_Partner_Account_Id__r.Core_OnePartnerID__c);
                              for(Core_OnePartner_Inbound_Message__c cimRecs :cimRecsList){  
-                             if(cagSFRecs.Core_Partner_Account_Id__c != null && ((cimRecs.Core_Prime_Account_Name__c != null && cimRecs.Core_Prime_Account_Name__c != cagSFRecs.Core_Partner_Account_Id__r.Core_Prime_Account_Name__c) || (cimRecs.Core_PAG_Grouping_Method__c != null && cimRecs.Core_PAG_Grouping_Method__c != cagSFRecs.Core_Partner_Account_Id__r.Core_PAG_Grouping_Method__c)|| (cimRecs.Core_OnePartner_Account_Name__c != null && cimRecs.Core_OnePartner_Account_Name__c != cagSFRecs.Core_Partner_Account_Id__r.Name)) || (cimRecs.Core_Status_Effective_End_Date_Time__c != null && (acc.Core_Deactivated__c == false))){
+                             if(cagSFRecs.Core_Partner_Account_Id__c != null && ((cimRecs.Core_PAG_Grouping_Method__c != null && cimRecs.Core_PAG_Grouping_Method__c != cagSFRecs.Core_Partner_Account_Id__r.Core_PAG_Grouping_Method__c)|| (cimRecs.Core_OnePartner_Account_Name__c != null && cimRecs.Core_OnePartner_Account_Name__c != cagSFRecs.Core_Partner_Account_Id__r.Name)) || (cimRecs.Core_Status_Effective_End_Date_Time__c != null && (acc.Core_Deactivated__c == false))){
                                       Account updateAcc = new Account();
                                       updateAcc.id = cagSFRecs.Core_Partner_Account_Id__c; 
                                   	  updateAcc.Name = cimRecs.Core_OnePartner_Account_Name__c;
-                                      updateAcc.Core_Prime_Account_Name__c = cimRecs.Core_Prime_Account_Name__c;
                                       updateAcc.Core_PAG_Grouping_Method__c = cimRecs.Core_PAG_Grouping_Method__c;
                                       if(cimRecs.Core_Status_Effective_End_Date_Time__c != null && (acc.Core_Deactivated__c == false))
                                       {
@@ -307,7 +306,8 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
 
             List<PRM_AccountBenefitAssociation__c> updateBenefitList = new  List<PRM_AccountBenefitAssociation__c>();
             for(PRM_AccountBenefitAssociation__c aba : [Select Id,Name,PRM_Account_Id__c,PRM_Partner_Benefit_Id__c,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c From PRM_AccountBenefitAssociation__c Where PRM_Account_Id__c IN :accountIdPAG]){
-                aba.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;    
+                aba.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;   
+                aba.PRM_Status_Reason_Txt__c ='Inactivated as 1PID is deactivated';//TWC729-8089 : Adding reason text : NJ 
                 updateBenefitList.add(aba);                   
             }
             if((updateBenefitList != null && !updateBenefitList.IsEmpty())){
@@ -339,7 +339,7 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                             inbMsg.Core_Effective_End_Date_Time__c = DateTime.now().addDays(-1);
                             detachmentRecsInsertList.add(inbMsg);
                         }*/
-                    }
+                    /*}
                 }
                 if(detachmentrecsSet != null){
                     for(Core_Account_Group_Member__c cagRecords: existingCAGMap.values()){
@@ -349,11 +349,9 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                             inboundRecord.Core_Status__c ='NEW';
                             inboundRecord.Core_Status_Reason__c ='Detach request created by SF - On Demand Sync Detachment Process';
                             inboundRecord.Core_OnePartner_Account_Name__c = cagRecords.Core_Partner_Account_Id__r.Name;
-                            inboundRecord.Core_Prime_Account_Name__c = cagRecords.Core_Partner_Account_Id__r.Core_Prime_Account_Name__c;      
                             inboundRecord.Core_PAG_Grouping_Method__c = cagRecords.Core_Partner_Account_Id__r.Core_PAG_Grouping_Method__c;
                             inboundRecord.Core_Effective_End_Date_Time__c = DateTime.now().addDays(-1);
                             inboundRecord.Core_OnePartnerID__c = Integer.valueOf(cagRecords.Core_Partner_Account_Id__r.Core_OnePartnerID__c);
-                            inboundRecord.Core_CIM_ID__c = Integer.valueOf(cagRecords.Core_Intel_Account_Id__r.Core_CIM_ID__c);
 							inboundRecord.OPID_Sync_Request__c = syncObjRecId;
                             inboundrecsInsertList.add(inboundRecord);
                         }
@@ -383,12 +381,13 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
         
     }
     
-    public static String replaceJsonString(String jsonStr){    
-       jsonStr= jsonStr.replace('Core_CIM_ID__c','Core_CIM_ID_Temp');
+    public static String replaceJsonString(String jsonStr){   
+        //TWC729-7726 : Cim Prime EOL start 
+        jsonStr=jsonStr.replace('Core_Business_Party_ID__c','Core_Business_Party_ID_Temp');
+        //TWC729-7726 : Cim Prime EOL end
        jsonStr=jsonStr.replace('Core_Effective_End_Date_Time__c','Core_Effective_End_Date_Time_Temp');
        jsonStr=jsonStr.replace('Core_OnePartner_Account_Name__c','Core_OnePartner_Account_Name_Temp');
        jsonStr=jsonStr.replace('Core_OnePartnerID__c','Core_OnePartnerID_Temp');
-       jsonStr=jsonStr.replace('Core_Prime_Account_Name__c','Core_Prime_Account_Name_Temp');
        jsonStr=jsonStr.replace('Core_PrimeID__c','Core_PrimeID_Temp');
        jsonStr=jsonStr.replace('Core_SalesCloud_AccountID__c','Core_SalesCloud_AccountID_Temp');
        jsonStr=jsonStr.replace('Core_Status_Reason__c','Core_Status_Reason_Temp');
@@ -414,6 +413,7 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
    //Wrapper for creating SF core inbound msg records
    public class cimRecsMappingwrapper {
     public String Core_CIM_ID_Temp;
+    public String Core_Business_Party_ID_Temp;
     public DateTime Core_Effective_End_Date_Time_Temp;
     public String Core_OnePartner_Account_Name_Temp;
     public String Core_OnePartnerID_Temp;
@@ -429,5 +429,5 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
     }
     public static List<List<cimRecsMappingwrapper>> parse(String json) {
             return (List<List<cimRecsMappingwrapper>>) System.JSON.deserialize(json, List<List<cimRecsMappingwrapper>>.class);
-    }
+    }*/
 }

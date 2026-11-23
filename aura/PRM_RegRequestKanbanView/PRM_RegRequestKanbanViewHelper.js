@@ -40,16 +40,25 @@
 								displayFields = {name: entry,label: labelsMap[entry], result: result.PRM_Email_Verification_Criteria__c};
 							} 
 							else */
+                            console.log('Entry value is--'+entry);
                             if(entry == 'PRM_DeDup_Criteria__c'){
+                                console.log('If 1--');
 								displayFields = {name: entry, label: labelsMap[entry], result: result.PRM_DeDup_Criteria__c};
+                                console.log('If 1 values--'+JSON.stringify(displayFields));
 							}
 							else if(entry == 'PRM_Legal_Agreement_Criteria__c'){
+                                console.log('If 2--');
 							    displayFields = {name: entry, label: labelsMap[entry], result: result.PRM_Legal_Agreement_Criteria__c};
+                                console.log('If 2 values--'+JSON.stringify(displayFields));
 							}
                             else if(entry == 'PRM_Matching_Contact__c'){
+                                console.log('If 3--');
                                 displayFields = {name: entry, label: labelsMap[entry], result: result.PRM_Matching_Contact__c};   
+                                console.log('If 3 values--'+JSON.stringify(displayFields));
                             }
+                            console.log('Log 1--'+JSON.stringify(displayFieldsList));
 							displayFieldsList.push(displayFields);
+                            
 						});
                         displayFieldsList.sort((a, b) => (a.result < b.result) ? 1 : -1);
 						component.set("v.fieldList", displayFieldsList);

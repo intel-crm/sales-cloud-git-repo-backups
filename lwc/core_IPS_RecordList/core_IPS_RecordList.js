@@ -11,7 +11,7 @@ export default class Core_IPS_RecordList extends LightningElement {
   @api extraField2Label;
   @api extraField2;
   @track extraField2Value;
-  //Added by Chetan on 16-10-2024 -(TWC745-5178) As Part of Adding Account id to Account search  
+  //Added by chetan As Part of Account MAP 
   @api extraField3Label;
   @api extraField3;
   @track extraField3Value
@@ -69,7 +69,7 @@ export default class Core_IPS_RecordList extends LightningElement {
         }
       }
 
-      //Added by Chetan on 16-10-2024 -(TWC745-5178) As Part of Adding Account id to Account search  
+      // Added by chetan 
       if(this.extraField3Label !== undefined && this.extraField3Label !== null && this.extraField3Label !== '' ) {
         let splittedText3 = [];
         splitResult = this.record;
@@ -113,7 +113,7 @@ export default class Core_IPS_RecordList extends LightningElement {
         }
       }
 
-      //Added by Chetan on 16-10-2024 -(TWC745-5178) As Part of Adding Account id to Account search  
+      // Added by chetan 
       if(this.extraField2Labe3 !== undefined && this.extraField2Labe3 !== null && this.extraField2Labe3 !== '' ) {
         let splittedText3 = [];
         splitResult = this.record;

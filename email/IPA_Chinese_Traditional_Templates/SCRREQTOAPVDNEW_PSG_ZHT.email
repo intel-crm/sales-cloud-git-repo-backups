@@ -66,7 +66,7 @@
 <member>{!Contact.FirstName}，</member>
 <br>
 <br>歡迎來到 Intel&reg; FPGA 自助服務授權中心（SSLC）。您現在可以查看、管理，並於必要時啟動您的 Intel PSG 軟體和 IP 授權權利。<br>SSLC 會以引導的方式，協助您執行基本授權權利功能。我們也提供了影片和文件供您參考。<br><br>請儲存您的登入資訊以供日後參考：<br><br><b>電子郵件地址：</b>{!Contact.Email}<br><br>請確實保護您的密碼，不要外洩。在 Intel 網站上使用此密碼必須遵守 Intel 的使用條款與細則，您可透過個別網站網頁最下方的連結進入閱覽。</p>
-<br>請登入 <a href= "https://licensing.intel.com/psg/s">licensing.intel.com</a> 查看與管理您的 Intel&reg; PSG 軟體和 IP 授權權利。<br>
+<br>請登入 <a href= "https://crmqa3-intelcloudcrm.cs37.force.com/psg">intel.com/sslc</a> 查看與管理您的 Intel&reg; PSG 軟體和 IP 授權權利。<br>
 </p>
 <br>謝謝您，<br>您的 Intel&reg; PSG SSLC 團隊</td></tr></p> 
 </th>
@@ -107,7 +107,7 @@
 <td class="auto-style1" valign="top" style="font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;">此訊息為業務訊息，對於您與 Intel&reg; 可程式化解決方案事業群的 FPGA 軟體和/或 IP 授權權利關係密切。</td>
 </tr>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px;border: #d3d3d3;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">&copy; {!$Label.PRM_CurrentYear} Intel 公司</td>
+<td class="auto-style1" valign="top" style="font-size: 10px;border: #d3d3d3;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">&copy; {!Contact.Core_Current_Year__c} Intel 公司</td>
 </tr>
 <tr>
 <td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。<span class="Apple-converted-space"></span><a style="color: #ffffff; text-decoration: none;" href="http://www.intel.com.tw/" target="_blank" _rte_href="http://www.intel.com.tw/"><u>www.intel.com.tw</u></a></td>

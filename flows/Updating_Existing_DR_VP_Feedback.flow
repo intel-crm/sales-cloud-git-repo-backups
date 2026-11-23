@@ -5,7 +5,7 @@
     <assignments>
         <name>Retain_existing_Value_for_Change_Ownership_If_value_exist</name>
         <label>Retain existing Value for Change Ownership If value exist</label>
-        <locationX>1106</locationX>
+        <locationX>842</locationX>
         <locationY>395</locationY>
         <assignmentItems>
             <assignToReference>NewAccountPrimaryCoverage</assignToReference>
@@ -19,15 +19,31 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Update_Coverage_as_Intel_led</name>
-        <label>Update Coverage as Intel led</label>
+        <name>Update_Coverage_as_Indirect_Covered</name>
+        <label>Update Coverage as Indirect Covered</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>NewAccountPrimaryCoverage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Indirect Covered</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Feedback_type</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Coverage_as_Intel_Covered</name>
+        <label>Update Coverage as Intel Covered</label>
         <locationX>314</locationX>
         <locationY>395</locationY>
         <assignmentItems>
             <assignToReference>NewAccountPrimaryCoverage</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Intel Led</stringValue>
+                <stringValue>Intel Covered</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -43,39 +59,7 @@
             <assignToReference>NewAccountPrimaryCoverage</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Uncovered</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Feedback_type</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Update_Coverage_as_Other_led</name>
-        <label>Update Coverage as Other led</label>
-        <locationX>842</locationX>
-        <locationY>395</locationY>
-        <assignmentItems>
-            <assignToReference>NewAccountPrimaryCoverage</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Other-led Account</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Feedback_type</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Update_Coverage_as_Partner_led</name>
-        <label>Update Coverage as Partner led</label>
-        <locationX>50</locationX>
-        <locationY>395</locationY>
-        <assignmentItems>
-            <assignToReference>NewAccountPrimaryCoverage</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Partner Led</stringValue>
+                <stringValue>Not Covered</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -85,71 +69,56 @@
     <decisions>
         <name>Check_Feedback_and_Assign_the_Coverage</name>
         <label>Check Feedback and Assign the Coverage</label>
-        <locationX>710</locationX>
+        <locationX>578</locationX>
         <locationY>287</locationY>
         <defaultConnector>
             <targetReference>Feedback_type</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>If_Feedback_is_Change_to_Partner</name>
+            <name>If_Feedback_is_Change_to_Indirect_Covered</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Partner</stringValue>
+                    <stringValue>Change to Indirect Covered</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Coverage_as_Partner_led</targetReference>
+                <targetReference>Update_Coverage_as_Indirect_Covered</targetReference>
             </connector>
-            <label>If Feedback is Change to Partner</label>
+            <label>If Feedback is Change to Indirect Covered</label>
         </rules>
         <rules>
-            <name>If_Feedback_is_Add_to_Intel_Led</name>
+            <name>If_Feedback_is_Add_to_Intel_Covered</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Add to Intel led</stringValue>
+                    <stringValue>Add to Intel Covered</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Coverage_as_Intel_led</targetReference>
+                <targetReference>Update_Coverage_as_Intel_Covered</targetReference>
             </connector>
-            <label>If Feedback is Add to Intel Led</label>
+            <label>If Feedback is Add to Intel Covered</label>
         </rules>
         <rules>
-            <name>If_Feedback_is_Change_to_Uncovered</name>
+            <name>If_Feedback_is_Change_to_Not_Covered</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Feedback__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Change to Uncovered</stringValue>
+                    <stringValue>Change to Not Covered</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Update_Coverage_as_Not_Covered</targetReference>
             </connector>
-            <label>If Feedback is Change to Uncovered</label>
-        </rules>
-        <rules>
-            <name>If_Feedback_is_Change_to_Other_Led</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Feedback__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Change to Other Led</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Coverage_as_Other_led</targetReference>
-            </connector>
-            <label>If Feedback is Change to Other Led</label>
+            <label>If Feedback is Change to Not Covered</label>
         </rules>
         <rules>
             <name>If_Feedback_is_Change_Ownership_and_has_Prior_Value</name>
@@ -177,7 +146,7 @@
     <decisions>
         <name>Feedback_type</name>
         <label>Feedback type</label>
-        <locationX>710</locationX>
+        <locationX>578</locationX>
         <locationY>587</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -212,7 +181,9 @@
         </rules>
     </decisions>
     <description>Added Change to Other led in Decision
-Added Change Ownership to retain existing value</description>
+Added Change Ownership to retain existing value
+Updated Feedback Type and Coverage Type
+Removed &apos;Change to Other Led&apos; decision and outcome</description>
     <environments>Default</environments>
     <interviewLabel>Updating Existing DR/VP Feedback {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Updating Existing DR/VP Feedback</label>
@@ -238,7 +209,7 @@ Added Change Ownership to retain existing value</description>
     <recordUpdates>
         <name>Update_Existing_Record_for_DR</name>
         <label>Update Existing  Record for DR</label>
-        <locationX>446</locationX>
+        <locationX>314</locationX>
         <locationY>695</locationY>
         <inputAssignments>
             <field>CRM_CST_DR_Feedback__c</field>
@@ -257,7 +228,7 @@ Added Change Ownership to retain existing value</description>
     <recordUpdates>
         <name>Update_Existing_Record_for_VP</name>
         <label>Update Existing  Record for VP</label>
-        <locationX>710</locationX>
+        <locationX>578</locationX>
         <locationY>695</locationY>
         <inputAssignments>
             <field>CRM_CST_VP_Feedback__c</field>
@@ -274,7 +245,7 @@ Added Change Ownership to retain existing value</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>584</locationX>
+        <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_Feedback_and_Assign_the_Coverage</targetReference>

@@ -1409,6 +1409,11 @@
                     <label>Turkey</label>
                 </value>
                 <value>
+                    <fullName>Turkiye</fullName>
+                    <default>false</default>
+                    <label>Turkiye</label>
+                </value>
+                <value>
                     <fullName>Turkmenistan</fullName>
                     <default>false</default>
                     <label>Turkmenistan</label>
@@ -1568,26 +1573,6 @@
                     <default>false</default>
                     <label>Yugoslavia</label>
                 </value>
-                <value>
-                    <fullName>Czechia</fullName>
-                    <default>false</default>
-                    <label>Czechia</label>
-                </value>
-                <value>
-                    <fullName>North Macedonia</fullName>
-                    <default>false</default>
-                    <label>North Macedonia</label>
-                </value>
-                <value>
-                    <fullName>Eswatini</fullName>
-                    <default>false</default>
-                    <label>Eswatini</label>
-                </value>
-                <value>
-                    <fullName>Turkiye</fullName>
-                    <default>false</default>
-                    <label>Turkiye</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1655,6 +1640,11 @@ INCLUDES(Pricing_Compliance_Watch_List__c ,&apos;BLK&apos;)),true, false)</formu
         <unique>false</unique>
     </fields>
     <label>Unified End Customer Country Mapping</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <listViews>
         <fullName>Pricing_L1_L2_Owner_Queue_Pricing_UnifiedEndCustomerCountryMapping</fullName>
         <filterScope>Queue</filterScope>

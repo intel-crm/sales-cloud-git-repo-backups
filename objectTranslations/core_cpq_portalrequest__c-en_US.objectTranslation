@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Portal Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Portal Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Field Type --></label>
+        <name>core_cpq_Field_Type__c</name>
+        <picklistValues>
+            <masterLabel>Boolean</masterLabel>
+            <translation><!-- Boolean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Currency</masterLabel>
+            <translation><!-- Currency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Date</masterLabel>
+            <translation><!-- Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Double</masterLabel>
+            <translation><!-- Double --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percent</masterLabel>
+            <translation><!-- Percent --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Record # --></label>
+        <name>core_cpq_Record__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requested By --></label>
+        <name>core_cpq_Requested_By__c</name>
+        <relationshipLabel><!-- Portal Requests (Requested By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>core_cpq_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approver --></label>
+        <name>core_cpq_approver__c</name>
+        <relationshipLabel><!-- Portal Requests (Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Object Name --></label>
+        <name>core_cpq_bot_Object_Name__c</name>
+        <picklistValues>
+            <masterLabel>DPA &amp; ALN</masterLabel>
+            <translation><!-- DPA &amp; ALN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DPA &amp; ALN Line</masterLabel>
+            <translation><!-- DPA &amp; ALN Line --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote</masterLabel>
+            <translation><!-- Quote --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quote Line</masterLabel>
+            <translation><!-- Quote Line --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field Name --></label>
+        <name>core_cpq_bot_field_name__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disty Margin</masterLabel>
+            <translation><!-- Disty Margin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quantity</masterLabel>
+            <translation><!-- Quantity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Qty</masterLabel>
+            <translation><!-- Requested Qty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Resale</masterLabel>
+            <translation><!-- Requested Resale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ship End Date</masterLabel>
+            <translation><!-- Ship End Date --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>core_cpq_pr_comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Id --></label>
+        <name>core_cpq_record_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Number --></label>
+        <name>core_cpq_record_number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Type --></label>
+        <name>core_cpq_request_type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>core_cpq_value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

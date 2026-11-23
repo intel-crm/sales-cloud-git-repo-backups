@@ -499,8 +499,8 @@ public class Core_OppApproval_Test {
 
             List<Opportunity> lstOppty1 = [SELECT id, Core_Approver_1__c, Core_Approver_2__c, Core_Approver_3__c, Core_Approver_4__c, Core_Approver_5__c FROM Opportunity WHERE id IN :lstOppty];
             // Check to make sure the manager wasn't given access
-            //List<OpportunityShare> oppShare1 = [select UserOrGroupId, OpportunityId, OpportunityAccessLevel from OpportunityShare
-            //where OpportunityId = :lstOppty1[0].Id and UserOrGroupId = :users[5].Id];
+            List<OpportunityShare> oppShare1 = [select UserOrGroupId, OpportunityId, OpportunityAccessLevel from OpportunityShare
+            where OpportunityId = :lstOppty1[0].Id and UserOrGroupId = :users[5].Id];
             //System.assertEquals(0, oppShare1.size());
             
             // Test: Opportunity owner's manager is inactive, and technical owner's manager is inactive (should fail)
@@ -773,6 +773,7 @@ public class Core_OppApproval_Test {
             for(Core_Design_Registration__c iDR : TestDDRlst)
             {
                 iDR.Core_Approver_Grp_Nm__c = 'Core_DDR_Approver_PSG_USA_Oregon';
+                iDR.Core_Product_Group_Nm__c = 'Embedded/IOT';
                 iDR.Core_Partner_Account_Id__c = lstAcc[0].Id;
             }        
             insert TestDDRlst;
@@ -1065,6 +1066,7 @@ public class Core_OppApproval_Test {
             for(Core_Design_Registration__c iDR : TestDDRlst)
             {
                 iDR.Core_Approver_Grp_Nm__c = 'Core_DDR_Approver_PSG_USA_Oregon';
+                iDR.Core_Product_Group_Nm__c = 'Embedded/IOT';
                 iDR.Core_Partner_Account_Id__c = lstAcc[0].Id;
             }        
             insert TestDDRlst;

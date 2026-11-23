@@ -85,6 +85,7 @@ export default class ucd_ACM_AccountRecordType_SBR extends NavigationMixin(Light
             },
            
         });
+
     }
 
     handleCancel() {

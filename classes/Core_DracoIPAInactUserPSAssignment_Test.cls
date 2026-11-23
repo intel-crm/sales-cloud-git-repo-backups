@@ -4,9 +4,9 @@ public class Core_DracoIPAInactUserPSAssignment_Test {
     static void createTestData(){ 
         Profile p = [SELECT Id FROM Profile WHERE Name='IT Admin' LIMIT 1];
         User testUser1 = new User(
-            Username = 'testuser1_IPA@intel.com',
+            Username = 'testuser1@intel.com',
             Alias = 'test1',
-            Email = 'testuser1479@intel.com',
+            Email = 'testuser1@intel.com',
             TimeZoneSidKey = 'America/Los_Angeles',
             LocaleSidKey = 'en_US',
             EmailEncodingKey = 'UTF-8',

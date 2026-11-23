@@ -16,15 +16,18 @@ ID doanh nghiệp: {!Account.AccountNumber}
 
 Đăng nhập để xem chi tiết hồ sơ của bạn trong Liên minh Đối tác Intel®.
 
+Đăng nhập vào https://crmdevipa-intelcloudcrm.cs45.force.com/ipa/s/post-launch-primary để xem vai trò của bạn.
+
+
 Các đối tác của Intel đã có một lịch sử đổi mới lâu dài. Nay với Liên minh Đối tác Intel®, chúng tôi sẽ giúp bạn tăng tốc xây dựng các giải pháp cho nền kinh tế tập trung vào dữ liệu. Cùng nhau, chúng ta có thể kết nối, đổi mới và phát triển, tạo ra những cơ hội có tính khả thi cao.
 
-Truy cập https://www.intel.com/content/www/vn/vi/partner-alliance/help/overview.html để giúp bạn bắt đầu.
+Truy cập https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html để giúp bạn bắt đầu.
 
 Xin cám ơn bạn!
 Nhóm Liên minh Đối tác Intel® của bạn
 
 Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Quyền riêng tư | Cookies</textOnly>
     <type>custom</type>

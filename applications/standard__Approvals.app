@@ -8,8 +8,24 @@
     <label>Approvals</label>
     <navType>Console</navType>
     <tabs>standard-ApprovalsHome</tabs>
+    <tabs>DZP_Registration_Request__c</tabs>
+    <tabs>SMG1AI</tabs>
+    <tabs>PIM_Products__x</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>DZP_Registration_Request__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PIM_Products__x</tab>
+        </mappings>
+        <mappings>
+            <tab>PMP_CompanyAutoFill__c</tab>
+        </mappings>
+        <mappings>
+            <tab>SMG1AI</tab>
+        </mappings>
         <mappings>
             <tab>standard-ApprovalsHome</tab>
         </mappings>

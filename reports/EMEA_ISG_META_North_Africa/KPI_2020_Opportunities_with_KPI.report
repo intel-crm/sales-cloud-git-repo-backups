@@ -106,7 +106,7 @@
         <field>BucketField_25346800</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 2) AND 3</booleanFilter>
+        <booleanFilter>(1 AND 2) AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
@@ -126,7 +126,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Eeckhout,Beckmann,Raitio,Spalevic,Garea</value>
+            <value>Spalevic</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>CCG Partner Enablement Deal #</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Milan Spalevic</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

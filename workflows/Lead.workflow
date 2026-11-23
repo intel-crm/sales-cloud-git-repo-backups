@@ -41,7 +41,7 @@
             <type>owner</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/LeadsNewassignmentnotificationSAMPLE</template>
+        <template>unfiled$public/LeadsNewassignmentnotificationSAMPLE</template>
     </alerts>
     <alerts>
         <fullName>Core_MAQL_SLA_Expired_Alert</fullName>
@@ -49,6 +49,18 @@
         <protected>false</protected>
         <recipients>
             <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>11983792@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>12139184@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
+            <type>user</type>
         </recipients>
         <senderAddress>lms.admin@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
@@ -72,20 +84,37 @@
         <recipients>
             <type>owner</type>
         </recipients>
+        <recipients>
+            <recipient>11983792@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>12139184@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>vikramx.dharane@intel.com</recipient>
+            <type>user</type>
+        </recipients>
         <senderAddress>lms.admin@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/TAL_SLA_Expired</template>
+        <template>unfiled$public/TAL_SLA_Expired</template>
     </alerts>
     <alerts>
         <fullName>Core_TQL_SLA_Expired_Alert</fullName>
+        <ccEmails>navitax.junghare@intel.com,vikramx.dharane@intel.com</ccEmails>
         <description>Core_TQL_SLA_Expired Alert</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
+        <recipients>
+            <recipient>12139184@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
         <senderAddress>lms.admin@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/TQL_SLA_Expired</template>
+        <template>unfiled$public/TQL_SLA_Expired</template>
     </alerts>
     <alerts>
         <fullName>MQL_In_Contact_SLA</fullName>
@@ -142,15 +171,6 @@
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/SGL_Not_Converted_in_30_days</template>
     </alerts>
-    <fieldUpdates>
-        <fullName>Clear_One_Partner_Id</fullName>
-        <field>Core_One_Partner_Id__c</field>
-        <name>Clear One Partner Id</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Null</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_Clear_Lead_Share_Error</fullName>
         <field>Core_Lead_Sharing_Error__c</field>
@@ -836,6 +856,16 @@ AND(
         <name>Lead_to_Opportunity_flag</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Core_Previous_Revive_Date</fullName>
+        <field>Core_Lead_Revive_Date_Most_Recent__c</field>
+        <formula>PRIORVALUE(Core_Lead_Revive_Date_Original__c)</formula>
+        <name>Core_Previous_Revive_Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
@@ -1798,7 +1828,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_MQL_Entrance_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( ISNULL(Core_Entrance_Date_MQL__c), ISPICKVAL( Core_Lead_Status__c ,&quot;New&quot;), ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;),  RecordType.Name  &lt;&gt;  &apos;Partner Lead&apos;)</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1982,7 +2012,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_MQL_Entrance_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(ISNULL(Core_Entrance_Date_MQL__c), ISPICKVAL(Status,&quot;Marketing Qualified Lead&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2099,7 +2129,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_TQL_Entrance_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND ( ISNULL(Core_Entrance_Date_TQL__c),  ISPICKVAL(Status,&quot;Tele Qualified Lead&quot;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2398,6 +2428,10 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
     <rules>
         <fullName>Core_Reject_flag_update</fullName>
         <actions>
+            <name>Core_Previous_Revive_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
             <name>Core_Rejected_Flag</name>
             <type>FieldUpdate</type>
         </actions>
@@ -2408,10 +2442,6 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
     <rules>
         <fullName>Core_Remove_Current_Lead_Sharing</fullName>
         <actions>
-            <name>Clear_One_Partner_Id</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
             <name>Core_Clear_Lead_Share_Error</name>
             <type>FieldUpdate</type>
         </actions>
@@ -2421,10 +2451,6 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
         </actions>
         <actions>
             <name>Core_Clear_MPI_Id</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
-            <name>Core_Clear_Public_Group</name>
             <type>FieldUpdate</type>
         </actions>
         <actions>

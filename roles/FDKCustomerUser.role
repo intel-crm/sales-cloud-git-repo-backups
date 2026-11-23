@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>FDK Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>FDK Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11646371_Ryosuke_Aminaka</parentRole>
+</Role>

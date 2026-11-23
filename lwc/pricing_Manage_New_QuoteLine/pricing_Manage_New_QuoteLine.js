@@ -260,7 +260,7 @@ export default class Pricing_Manage_New_QuoteLine extends NavigationMixin(Lightn
                 navigationLocation: 'RELATED_LIST',
             }
         };
-        this[NavigationMixin.Navigate](recordPage);
+            this[NavigationMixin.Navigate](recordPage);
         this.disableNext = true;
     }
 

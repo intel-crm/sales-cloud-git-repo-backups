@@ -146,7 +146,7 @@ public class Core_RestAPI_Opportunities_Test {
     }
     
     @isTest static void testDoPut_OpportunityValidationsSuccess() {
-        List<Opportunity> lstOpp = [select id,Name from Opportunity Where Name='OpportunityGetAPITest' limit 1];
+        List<Opportunity> lstOpp = [select id,Name,Core_Design_Registration_Id__c from Opportunity Where Name='OpportunityGetAPITest' limit 1];
         List<OpportunityLineItem> lstOppItms = [select id from OpportunityLineItem Where OpportunityId =: lstOpp[0].Id];
         DateTime dt = Date.Today().addDays(10);
 		String dateStr = dt.format('MM/dd/yyyy') ;

@@ -25,5 +25,5 @@
         <type>TextArea</type>
     </fields>
     <label>Core PartnerLicense PermissionSet</label>
-    <visibility>Public</visibility>
+    <visibility>Protected</visibility>
 </CustomObject>

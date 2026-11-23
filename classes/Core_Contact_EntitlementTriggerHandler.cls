@@ -22,13 +22,13 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
             IPAfirstRunInsert = false;
         }
         //Added by Sai As part of EBR development
-          if (isActive('ER_Update_Contact_Business_Type_Check')){
+        if (isActive('ER_Update_Contact_Business_Type_Check')){
             Core_Contact_Ent_BT_Handler.upsertContactBusinessTypes((List<Core_Contact_Entitlement__c>) Trigger.new);
                 
         }
         //Added by Gaurav - Quest for Creation on CBT from Grant Access
         //Commented by Sai As part of EBR development
-      /*  if (
+        /*  if (
             isActive('ER_Update_Contact_Business_Type_Check') && isFirstRun_RDC
         ) {
             Set<Id> entIds = new Set<Id>();
@@ -82,13 +82,13 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
     }
     
     public override void afterUpdate() {
-	logEntryMsg += '\nTotal records: ' + Trigger.new;
+        logEntryMsg += '\nTotal records: ' + Trigger.new;
         //Added by Sai As part of EBR development
         if (isActive('ER_Update_Contact_Business_Type_Check')) {
             Core_Contact_Ent_BT_Handler.upsertContactBusinessTypes((List<Core_Contact_Entitlement__c>) Trigger.New);
         }
         //Commented by Sai As part of EBR development
-      /*  if (
+        /*  if (
             isActive('ER_Update_Contact_Business_Type_Check') && isFirstRun_RDC
         ) {
             boolean isUpdated = false;
@@ -110,14 +110,6 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
             }
         } */
 
-       
-        if (isActive('Core_ContactEntitlementAudienceUpdate')) {
-            //  Core_ContactEntitlementAudienceUpdate.updateContactAudience((List<Core_Contact_Entitlement__c>)Trigger.old,
-            //  (List<Core_Contact_Entitlement__c>)Trigger.new,
-            // (Map<Id,Core_Contact_Entitlement__c>)Trigger.oldMap,
-            // (Map<Id, Core_Contact_Entitlement__c>)Trigger.newMap);
-        }
-        
         // IPA Integration Update Logic
         if (!isActive('ContEnt_Update_IPA_Integration_Trigger') || !IPAfirstRunUpdate) {
             // Early return to reduce nesting
@@ -129,14 +121,12 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
                 boolean hasSelectedChanged = newContEnt.Core_Selected__c != oldContEnt.Core_Selected__c;
                 boolean hasStatusChanged = newContEnt.Core_Status__c != oldContEnt.Core_Status__c;
                 boolean isEntitlementType = newContEnt.Core_Type__c == 'Entitlement';
-		
-				logEntryMsg += '\nProcessing record: ' + newContEnt.Id;
-				logEntryMsg += '\nStatusChanged: ' + hasStatusChanged;
-				logEntryMsg += '\nSelectedChanged: ' + hasSelectedChanged;
-
                 
+                logEntryMsg += '\nProcessing record: ' + newContEnt.Id;
+                logEntryMsg += '\nStatusChanged: ' + hasStatusChanged;
+                logEntryMsg += '\nSelectedChanged: ' + hasSelectedChanged;
+
                 if ((hasSelectedChanged || hasStatusChanged) && isEntitlementType) {
-		    
                     logEntryMsg += '\nRecord eligible for IPA update: ' + newContEnt.Id;
                     isUpdated = true;
                     break;
@@ -153,11 +143,8 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
         
         // Welcome Email Processing
         if (!isActive('WelcomeEmailUponEntitlementCompletion')) {
-			logEntryMsg += '\nWelcome Email disabled';
-			PRM_RegistrationApprovalEmail.createLogEntry(logEntryMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
-
-    	
-
+            logEntryMsg += '\nWelcome Email disabled';
+            PRM_RegistrationApprovalEmail.createLogEntry(logEntryMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
             return; // Early return to reduce complexity
         }
         
@@ -174,6 +161,7 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
         Map<Id, Core_Contact_Entitlement__c> mapOldContactEnt = (Map<Id, Core_Contact_Entitlement__c>) Trigger.oldMap;
         Set<Id> setContacIdForIPAWelcomeEmail = new Set<Id>();
         Set<Id> setContacIdForMpWelcomeEmail = new Set<Id>();
+
         for (Core_Contact_Entitlement__c contactEnt : (List<Core_Contact_Entitlement__c>) Trigger.new) {
             Core_Contact_Entitlement__c oldContactEnt = mapOldContactEnt.containsKey(contactEnt.id) 
                 ? mapOldContactEnt.get(contactEnt.id) 
@@ -183,20 +171,23 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
             boolean hasStatusChanged = isValidOldRecord && oldContactEnt.Core_Status__c != contactEnt.Core_Status__c;
             boolean isCompleteStatus = contactEnt.Core_Status__c == 'Complete';
             boolean hasContactId = contactEnt.Core_Contact_Id__c != null;
-         
+            system.debug('contactEnt.name---'+contactEnt.name);
+
             if (isValidOldRecord && hasStatusChanged && isCompleteStatus && hasContactId) {
                 setContacIdForIPAWelcomeEmail.add(contactEnt.Core_Contact_Id__c);
                 logEntryMsg += '\nContact eligible for IPA welcome email: ' + contactEnt.Core_Contact_Id__c;
             }
-           if (isValidOldRecord && hasStatusChanged && isCompleteStatus && hasContactId && 
-               (contactEnt.Core_Display_Nm__c == system.label.PRM_Partner_Admin || contactEnt.Core_Display_Nm__c == system.label.PRM_Partner_Admin_Delegate || contactEnt.Core_Display_Nm__c == system.label.PRM_MarketingSpecialist)) {
+            if (isValidOldRecord && hasStatusChanged && isCompleteStatus && hasContactId && 
+               (contactEnt.Core_Display_Nm__c == system.label.PRM_Partner_Admin || 
+                contactEnt.Core_Display_Nm__c == system.label.PRM_Partner_Admin_Delegate || 
+                contactEnt.Core_Display_Nm__c == system.label.PRM_MarketingSpecialist)) {
                 setContacIdForMpWelcomeEmail.add(contactEnt.Core_Contact_Id__c);
                 logEntryMsg += '\nContact eligible for MP welcome email: ' + contactEnt.Core_Contact_Id__c;
             }
         }
         
         // MP logic
-		logEntryMsg += '\nTotal contacts for MP email: ' + setContacIdForMpWelcomeEmail.size();
+        logEntryMsg += '\nTotal contacts for MP email: ' + setContacIdForMpWelcomeEmail.size();
         if (setContacIdForMpWelcomeEmail != null && !setContacIdForMpWelcomeEmail.isEmpty()) {
             PMP_Utility.sendWelcomeEmailForMP(setContacIdForMpWelcomeEmail);
             logEntryMsg += '\nPMP welcome email triggered';
@@ -207,33 +198,40 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
 
         //rrt - Welcome email Fix --
         for (PRM_Account_Contact_Relationship__c acr : [
-            SELECT id,PRM_Account_Id__c,PRM_Contact_Id__c 
+            SELECT id, PRM_Account_Id__c, PRM_Contact_Id__c 
             FROM PRM_Account_Contact_Relationship__c 
             WHERE PRM_Status_Nm__c = 'Complete' 
             AND PRM_InActive_Ind__c = FALSE 
             AND PRM_Contact_Id__c IN: setContacIdForIPAWelcomeEmail
         ]) {
-            if (!AccountContactMap.containskey(acr.PRM_Account_Id__c)) { Set<Id> ContactSet = new Set<Id>();ContactSet.add(acr.PRM_Contact_Id__c);AccountContactMap.put(acr.PRM_Account_Id__c, ContactSet);
-            } else { Set<Id> contids = AccountContactMap.get(acr.PRM_Account_Id__c);
-                if (!contids.contains(acr.PRM_Contact_Id__c)) {contids.add(acr.PRM_Contact_Id__c);AccountContactMap.put(acr.PRM_Account_Id__c, contids);
+            if (!AccountContactMap.containskey(acr.PRM_Account_Id__c)) {
+                Set<Id> ContactSet = new Set<Id>();
+                ContactSet.add(acr.PRM_Contact_Id__c);
+                AccountContactMap.put(acr.PRM_Account_Id__c, ContactSet);
+            } else {
+                Set<Id> contids = AccountContactMap.get(acr.PRM_Account_Id__c);
+                if (!contids.contains(acr.PRM_Contact_Id__c)) {
+                    contids.add(acr.PRM_Contact_Id__c);
+                    AccountContactMap.put(acr.PRM_Account_Id__c, contids);
                 }
             }
         }
         
+        // Fix: Removed unused fields PRM_Partner_Role__c and PRM_Channel_Program_Level_Id__r.name
         for (PRM_AccountChannelMembership__c acm : [
-            SELECT id,PRM_Account_Id__c,PRM_Partner_Role__c,PRM_Channel_Program_Level_Id__r.name 
+            SELECT id, PRM_Account_Id__c
             FROM PRM_AccountChannelMembership__c 
             WHERE PRM_Status_Nm__c = 'Approved' 
             AND PRM_Account_Id__c in: AccountContactMap.keySet()
         ]) {
-            Set<Id> contids = AccountContactMap.get(acm.PRM_Account_Id__c);FinalContactsSet.addAll(contids);
+            Set<Id> contids = AccountContactMap.get(acm.PRM_Account_Id__c);
+            FinalContactsSet.addAll(contids);
         }
         //rrt-welcome email fix - end
 
         if (FinalContactsSet.isEmpty()) {
-			logEntryMsg += '\nNo contacts available for EmailQueue';
-    	    PRM_RegistrationApprovalEmail.createLogEntry(logEntryMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
-    	    
+            logEntryMsg += '\nNo contacts available for EmailQueue';
+            PRM_RegistrationApprovalEmail.createLogEntry(logEntryMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
             return; // Early return if no contacts to process
         }
         
@@ -280,11 +278,8 @@ public without sharing class Core_Contact_EntitlementTriggerHandler extends Trig
         //     Core_ContactEntitlementHelper.IPAfirstentUpdate = false;
         // }
         //Updated code by Draco - according to new A&E trigger framework, added new helper class reference - END
-	
-		logEntryMsg += '\n*** AFTER UPDATE END ***';
-		PRM_RegistrationApprovalEmail.createLogEntry(logEntryMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
-		
 
-    
+        logEntryMsg += '\n*** AFTER UPDATE END ***';
+        PRM_RegistrationApprovalEmail.createLogEntry(logEntryMsg,LOG_ENTRY_ORIGIN,LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY);
     }
 }

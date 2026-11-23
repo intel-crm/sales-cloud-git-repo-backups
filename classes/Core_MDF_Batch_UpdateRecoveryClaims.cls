@@ -185,6 +185,7 @@ public without sharing class Core_MDF_Batch_UpdateRecoveryClaims implements Data
             //PAF
             if(!mapOfPAFClaim.isempty()){
                 Core_MDF_ProcessCCP_Claim.fundReservation(mapOfPAFClaim,true);
+		System.debug('claimList in batch 235435 '+mapOfPAFClaim.values());
                 updateResults.addAll(Database.update(mapOfPAFClaim.values(),false));
             }
             //Update failed claims, recoveries are removed for insert 

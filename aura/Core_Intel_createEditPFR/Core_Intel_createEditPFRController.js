@@ -2,6 +2,9 @@
     // Function Called On Change of the date fields on the Form to construct campaign lookup filter
     createAdditionalfilter : function(component, event, helper) {
         //Variable Reimbursement Rate changes
+        // Akash CCF DCF - Validate the selected start date
+        var startDate = event.getSource().get("v.value");
+        helper.validateStartDate(component, startDate);
         helper.resetHelper(component);
         var checkStartDate = component.get("v.newPFR.Core_MDF_Start_Date__c");
         var recordTypeDeveloperName = component.get("v.recordtypeDeveloperName");
@@ -34,6 +37,23 @@
        component.set("v.startDate", component.get("v.newPFR.Core_MDF_Start_Date__c"));
        
     } ,
+    // Akash CCF DCF - Navigate to the Outcome Based Campaigns page
+    openOutcomeBasedCampaign: function(component, event, helper) {
+        var navService = component.find("navService");
+        var communityUrl = component.get("v.externalper");
+        var pageReference = communityUrl ? {
+            type: 'comm__namedPage',
+            attributes: {
+                name: 'Outcomebased_Campaigns_list_view__c'
+            }
+        } : {
+            type: 'standard__navItemPage',
+            attributes: {
+                apiName: 'Core_MDF_Outcome_Based_Campaigns'
+            }
+        };
+        navService.navigate(pageReference);
+    },
     //Test code start
         
     //Function called for filtering country values

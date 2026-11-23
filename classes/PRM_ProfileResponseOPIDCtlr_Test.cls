@@ -30,15 +30,12 @@ Public class PRM_ProfileResponseOPIDCtlr_Test{
         
         Contact con = PRM_TestUtility.getContact();
         con.AccountId = acc.Id;
-        con.MailingCountry='USA';
         insert con;
         
         ChannelProgram cp = new ChannelProgram();
         cp.Name = 'Intel Partner Alliance';
         cp.PRM_programCode__c='IPA';
         insert cp;
-        
-        //System.debug('cp-->'+cp);
         
         ChannelProgramLevel cpl = new ChannelProgramLevel(); 
         cpl.Name='Titanium';
@@ -52,8 +49,6 @@ Public class PRM_ProfileResponseOPIDCtlr_Test{
         acctChnlMem.PRM_Status_Nm__c = 'Approved';
         acctChnlMem.PRM_Partner_Role__c='Seller';
         insert acctChnlMem;
-        
-        //System.debug('acctChnlMem-->'+acctChnlMem);
         
         PRM_PartnerType__c pt = new PRM_PartnerType__c();
         pt.Name = 'Cloud Service Provider (CSP)';

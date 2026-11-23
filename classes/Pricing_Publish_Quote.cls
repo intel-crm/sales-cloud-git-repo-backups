@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : Accenture
 * @group             : 
-* @last modified on  : 06-27-2025
+* @last modified on  : 11-10-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_Publish_Quote { 
@@ -295,7 +295,9 @@ public without sharing class Pricing_Publish_Quote {
                 messageResult = quantityError.replace('{{QuoteQuantity}}',String.valueOf(quoteLineRec.SBQQ__Quote__r.Pricing_Overall_Quote_Quantity__c));
                 populateGlobalVarErrorMsg(globalVar);
             }
-
+            if(lstQuoteLine[0].Pricing_Original_Submitted_Date_dt__c == null && lstQuoteLine[0].SBQQ__Quote__r.SBQQ__Status__c == Label.Pricing_Tender_Quote_Status_Draft){
+                QuoteBusinessLogic.isQuotFirstSubmission = true;
+            }
             //on Quote First submission if overall qty is less than min qty then if quota got completed will not allow quote submission and throw error.
             if(lstQuoteLine[0].Pricing_Original_Submitted_Date_dt__c == null && lstQuoteLine[0].SBQQ__Quote__r.SBQQ__Status__c == Label.Pricing_Tender_Quote_Status_Draft && ((quoteLineRec.SBQQ__Quote__r.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Standard_Quote && quoteLineRec.SBQQ__Quote__r.Pricing_Overall_Quote_Quantity_CPU__c != 0 && quoteLineRec.SBQQ__Quote__r.Pricing_Overall_Quote_Quantity_CPU__c < Integer.valueOf(Label.Pricing_DataCenterCPU_Overall_Quantity_Min)) || (quoteLineRec.SBQQ__Quote__r.Pricing_Program_Type_Nm__c == 'Client' && quoteLineRec.SBQQ__Quote__r.Pricing_Market_Segment_values_Nm__c != 'Consumer Retail Pull' && quoteLineRec.SBQQ__Quote__r.Pricing_Overall_Quote_Quantity__c < Integer.valueOf(Label.Pricing_Client_Overall_Quantity_Min)))){
                 //QuoteBusinessLogic.isVolumeExceptionCheck = true;

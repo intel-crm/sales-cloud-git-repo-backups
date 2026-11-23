@@ -122,7 +122,7 @@ wiredPicklistLabels({ data, error }) {
                 });
 
                 // Load localized data if in edit/clone mode
-                if (this.recordId && this.mode !== '' && !this.ipaclone) {
+                if (this.recordId && this.mode !== '' && !this.ipaclone ) {
                     this.loadSavedKpiData();
                 }
 

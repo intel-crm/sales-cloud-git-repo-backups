@@ -1,4 +1,4 @@
-/********************************************* 
+/*********************************************
 * Name : Core_IPS_HSD_CreateJSON 
 * Author : Sriranjini J N
 * Date Created : 20/08/2020
@@ -13,19 +13,22 @@ public with sharing class Core_IPS_BES_UpdateComment {
         List<String> stringCaseList = new List<String>();
         //String caseIdRecList='';
         try{
-              
+            System.debug('heap size batchclass 21 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
             Map<String,JSONGenerator> commentJSONMap = Core_IPS_BES_BuildCommentJSON.updateComment(responseList, userDetailsMap);
+            System.debug('heap size batchclass 22 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
             List<Core_IPS_Case_Comments__c> commentList = new list<Core_IPS_Case_Comments__c>();
             List<Case> caseIdList = new List<Case>();
             List<Id> caseIds= new List<Id>();
            // List<Case> caseDataForBackend = new List<Case>();
             for(String caseId: commentJSONMap.keySet()){
+                System.debug('heap size batchclass 23 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
                //Map<String, Object> commentresponseMap = (Map<String, Object>)JSON.deserializeUntyped(commentJSONMap.get(caseId).getAsString()); 
 		//List<Object> reqs = (List<Object>) CommentresponseMap.values(); 
-               
-                
+		
+        System.debug('heap size batchclass 24 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
                 //for(Object a: ((List<Object>) CommentresponseMap.values())){
                 for(Object a: ((List<Object>) (((Map<String, Object>)JSON.deserializeUntyped(commentJSONMap.get(caseId).getAsString())).values()))){
+                    System.debug('heap size batchclass 25 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
                     Map<String, Object> commentreqMap = (Map<String, Object>)(a);
                     
                     Core_IPS_Case_Comments__c newComment = new Core_IPS_Case_Comments__c();
@@ -82,10 +85,16 @@ public with sharing class Core_IPS_BES_UpdateComment {
                     if((String)commentreqMap.get('backend_rev') != ''){
                         //caseIdList.add(new Case(Id=caseId, Core_IPS_Backend_Rev__c = String.valueof(commentreqMap.get('backend_rev'))));
                          caseIdList.add(new Case(Id=caseId.subStringBefore(','), Core_IPS_Backend_Rev__c = String.valueof(commentreqMap.get('backend_rev'))));
-                    }       
+                    }  
+                    System.debug('heap size batchclass 26 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());     
                 }
+                System.debug('heap size batchclass 27 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize()); 
             }
             commentJSONMap.clear();
+            /*if(!stringCaseList.isEmpty()){
+            caseIdRecList = String.join(stringCaseList, ',');
+            stringCaseList.clear();
+            }  */ 
             if(Case.SObjectType.getDescribe().isAccessible()){
            // caseDataForBackend=[select id,CaseNumber,Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c,Core_IPS_BackendID__c, Core_IPS_BES_Promote_Status__c,Core_IPS_New_Backend_System__c from case where Id IN: caseIds];
            // }
@@ -93,17 +102,21 @@ public with sharing class Core_IPS_BES_UpdateComment {
             for(Case caseData :[select id,CaseNumber,Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c,Core_IPS_BackendID__c, Core_IPS_BES_Promote_Status__c,Core_IPS_New_Backend_System__c from case where Id IN: caseIds]){
                 //Ajith added this logic to restrict the Case Update, when Backend system is deactivated
                 if(caseData.Core_IPS_New_Backend_System__c == null || caseData.Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c ==true || caseData.Core_IPS_BES_Promote_Status__c !='Done' || caseData.Core_IPS_BackendID__c== null || caseData.Core_IPS_BackendID__c !=sourceDetailsMap.get(caseData.CaseNumber)){
-                         commentList.clear();
+                         
+                    commentList.clear();
                    }
             }
             }
+            
             if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isCreateable()){
 		//This is called from batch class with size 1 to process the images containing comment individually
                 if(commentList!=null &&commentList.size()>0){
                     insert commentList;
                 }                    
             }
+            System.debug('heap size batchclass 28 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
             commentList.clear();
+            System.debug('heap size batchclass 29 : '+Limits.getHeapSize()+'&&&&ts--'+Limits.getLimitHeapSize());
             if(caseIdList.size() > 0){
                 Database.update(caseIdList);    
             }   

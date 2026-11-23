@@ -2,10 +2,6 @@
 Apex Class Name : Core_Account_B2B_Flag_Cleanup_BatchTest 
 Created Date: 4th Oct 2024
 Description : Test class to check Account B2B Flag removal functionality
-* Modification Log :
-* Developer                 Date               		Description
-* ----------------------------------------------------------------------------
-* Sharmila                 4th-Oct-2024             	Original Version
 *************************************************************************************/
 @isTest
 public class Core_Account_B2B_Flag_Cleanup_BatchTest {
@@ -109,7 +105,7 @@ public class Core_Account_B2B_Flag_Cleanup_BatchTest {
         conObj2.Core_English_Only_Last_Name__c = 'Test Con3';
         conObj2.MailingStreet = 'Test Main St';
         conObj2.MailingCity = 'TestcityTX';
-        conObj2.MailingStateCode = 'TX';
+        conObj2.MailingStateCode = 'NY';
         conObj2.MailingCountryCode = 'USA';
         conObj2.MailingPostalCode = '76558';
         conObj2.Core_Contact_B2B_Indicator__c = false;
@@ -162,7 +158,7 @@ public class Core_Account_B2B_Flag_Cleanup_BatchTest {
         conObj4.Core_English_Only_Last_Name__c = 'Test Con5';
         conObj4.MailingStreet = 'Test Main St2';
         conObj4.MailingCity = 'TestcityTX';
-        conObj4.MailingStateCode = 'TX';
+        conObj4.MailingStateCode = 'NY';
         conObj4.MailingCountryCode = 'USA';
         conObj4.MailingPostalCode = '76558';
         conObj4.Core_Contact_B2B_Indicator__c = false;
@@ -179,7 +175,7 @@ public class Core_Account_B2B_Flag_Cleanup_BatchTest {
         conObj5.Core_English_Only_Last_Name__c = 'Test Con6';
         conObj5.MailingStreet = 'Test Main St3';
         conObj5.MailingCity = 'TestcityTX';
-        conObj5.MailingStateCode = 'TX';
+        conObj5.MailingStateCode = 'NY';
         conObj5.MailingCountryCode = 'USA';
         conObj5.MailingPostalCode = '76558';
         conObj5.Core_Contact_B2B_Indicator__c = false;

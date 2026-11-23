@@ -42,9 +42,6 @@
     <columns>
         <field>FK_ACC_OWNER_NAME</field>
     </columns>
-    <columns>
-        <field>FK_$Account.Core_IPA_Partner_Speciality__c</field>
-    </columns>
     <description>Marketplace Accounts ALL</description>
     <filter>
         <criteriaItems>

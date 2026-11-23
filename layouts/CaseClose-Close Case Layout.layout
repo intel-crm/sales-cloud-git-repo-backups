@@ -22,10 +22,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Closed_Case_Migration__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>

@@ -4,16 +4,10 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Backend_ID_URL__c</field>
-    </columns>
-    <columns>
         <field>ALIAS</field>
     </columns>
     <columns>
         <field>Case.Core_Case_Co_Owner__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_External_Issue_Category__c</field>
     </columns>
     <columns>
         <field>Case.Core_External_Issue_Subcategory__c</field>

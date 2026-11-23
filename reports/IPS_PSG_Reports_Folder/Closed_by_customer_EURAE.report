@@ -712,28 +712,16 @@
         <field>ACCOUNT_RECORDTYPE</field>
     </columns>
     <columns>
-        <field>ACCOUNT.SITE</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_RATING</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_INDUSTRY</field>
     </columns>
     <columns>
         <field>SALES</field>
     </columns>
     <columns>
-        <field>SIC</field>
-    </columns>
-    <columns>
         <field>TICKER</field>
     </columns>
     <columns>
         <field>EMPLOYEES</field>
-    </columns>
-    <columns>
-        <field>OWNERSHIP</field>
     </columns>
     <columns>
         <field>ACCOUNT_NUMBER</field>
@@ -829,6 +817,9 @@
         <field>Case.MaritzCX__ALG_Response_Id__c</field>
     </columns>
     <columns>
+        <field>Case.Core_AAQC_Allow_My_Manager_to_See__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_IPS_BK_Flds_UpdatedAt__c</field>
     </columns>
     <columns>
@@ -856,10 +847,19 @@
         <field>Case.Core_AAQC_Cancellation_Reason__c</field>
     </columns>
     <columns>
+        <field>Case.Core_AAQC_Case_Age__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Case_Auto_Close__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_External_Issue_Category__c</field>
     </columns>
     <columns>
         <field>Case.Core_Case_Issue_Category__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Case_Close_VF_Page_Hyperlink__c</field>
     </columns>
     <columns>
         <field>Case.Core_Case_Closure__c</field>
@@ -868,7 +868,13 @@
         <field>Case.Core_Case_Resolution_Reason__c</field>
     </columns>
     <columns>
+        <field>Case.Core_AAQC_Case_Comment_Id__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_Case_Co_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Case_Created_by_s_Profile__c</field>
     </columns>
     <columns>
         <field>Case.Core_Issue_Description__c</field>
@@ -916,6 +922,9 @@
         <field>Case.Core_IPS_Comment__c</field>
     </columns>
     <columns>
+        <field>Case.Core_AAQC_Commission_InquiryId_Hyperlink__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_AAQC_Commissions_Age_in_days__c</field>
     </columns>
     <columns>
@@ -941,6 +950,12 @@
     </columns>
     <columns>
         <field>Case.Core_IPS_Country_Region__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Created_By_FullName__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Created_by_s_Manager_Email__c</field>
     </columns>
     <columns>
         <field>Case.Core_Hot_Issues_qts_2__c</field>
@@ -1001,6 +1016,9 @@
     </columns>
     <columns>
         <field>Case.Core_Hot_Issue__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Initial_Response_Date_Time__c</field>
     </columns>
     <columns>
         <field>Case.Core_AAQC_F_Inquiry_Details__c</field>
@@ -1102,10 +1120,19 @@
         <field>Case.Core_IPS_Self_Assigned__c</field>
     </columns>
     <columns>
+        <field>Case.Core_AAQC_OBO_My_Cases_View__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_On_Behalf_Of__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_IPS_Owner_2nd_Manager__c</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Owner_Manager__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Owner_Updated__c</field>
     </columns>
     <columns>
         <field>Case.Core_Partner_Supported_Account__c</field>
@@ -1171,10 +1198,19 @@
         <field>Case.Core_AAQC_Requested_for__c</field>
     </columns>
     <columns>
+        <field>Case.Core_AAQC_Resolution_CE_Sub_type__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Resolution_Training_Sub_Type__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_AAQC_Resolution_Type__c</field>
     </columns>
     <columns>
         <field>Case.MaritzCX__Response_Deleted_From_MaritzCX__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_AAQC_Root_Cause_Category__c</field>
     </columns>
     <columns>
         <field>Case.Core_Severity__c</field>
@@ -1328,6 +1364,12 @@
     </columns>
     <columns>
         <field>Contact.Core_LinkedIN__c</field>
+    </columns>
+    <columns>
+        <field>Contact.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
+        <field>Contact.LID__LinkedIn_Member_Token__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Local_First_Name__c</field>
@@ -1613,6 +1655,9 @@
     </columns>
     <columns>
         <field>Account.Lead_to_Account_on_Contact_NoOpportunity__c</field>
+    </columns>
+    <columns>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
     </columns>
     <columns>
         <field>Account.Core_MAG_Value__c</field>

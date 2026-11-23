@@ -193,15 +193,15 @@ public class Core_MDF_checkSObjectCRUDPermission_Test {
     @isTest
     static void getActRecordTypeDevNamePropIndTest(){
         
-        PartnerFundRequest pfr=new PartnerFundRequest();
+        Map<String, boolean> result=new Map<String, boolean>();
         test.startTest();
         User usr = [select id,email from User where email='cogtmaccntmngr@example.com' limit 1];
         PartnerFundRequest pfrNew=[Select id,Title from PartnerFundRequest where Title = 'Test CoGTM PFR'];
         System.runAs(usr){
-			pfr=Core_MDF_checkSObjectCRUDPermission.getActRecordTypeDevNamePropInd(pfrNew.Id);            
+			result=Core_MDF_checkSObjectCRUDPermission.getActRecordTypeDevNamePropInd(pfrNew.Id);            
         }
         test.stopTest();
-        Assert.areEqual('Core_MDF_Co_GTM', pfr.RecordType.DeveloperName);
+        Assert.isTrue(result.containsKey('Core_MDF_Co_GTM'));
     }
     
     @isTest 

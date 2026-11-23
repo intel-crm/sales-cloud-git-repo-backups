@@ -9,6 +9,10 @@
         <value>Colunas de linha</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Determina como o rótulo e os valores da coluna são alinhados.</help>
         <label><!-- Alignment --></label>
         <name>SBQQ__Alignment__c</name>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>PRM_Titanium_Upgrade_ENG</name>
     <style>none</style>
@@ -11,7 +11,7 @@
 {!Contact.FirstName},
 
 We have made some exciting changes and have modified the Intel® Partner Alliance program criteria and enhanced the benefits that support your business needs. As a result, your company has been upgraded to Intel Partner Alliance Titanium. Congratulations!
- 
+
 Here are some incremental benefits for Titanium:
 •	Titanium Badge
 •	Higher number of Advanced Warranty Replacements

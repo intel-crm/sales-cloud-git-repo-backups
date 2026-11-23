@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomSite xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>true</active>
+    <active>false</active>
     <allowGuestPaymentsApi>false</allowGuestPaymentsApi>
     <allowHomePage>false</allowHomePage>
     <allowStandardAnswersPages>false</allowStandardAnswersPages>
@@ -23,7 +23,7 @@
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_Intel_FPGA_SSLC1_sf_edge_OVWQW</serverIsDown>
+    <serverIsDown>SNA_Intel_FPGA_SSLC1_sf_default_cdn_64D6A</serverIsDown>
     <siteAdmin>11615861@intel.com.crm</siteAdmin>
     <siteGuestRecordDefaultOwner>11615861@intel.com.crm</siteGuestRecordDefaultOwner>
     <siteRedirectMappings>
@@ -31,35 +31,35 @@
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
         <source>/?r=1617866734000&amp;navi=8</source>
-        <target>https://licensing.intel.com/psg/s/sales-signup-evaluationlicenses</target>
+        <target>https://crmdevint3-intelcloudcrm.cs37.force.com/psg/s/sales-signup-evaluationlicenses</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
         <source>/contact-customer-service</source>
-        <target>https://licensing.intel.com/psg/s/contact-customer-service</target>
+        <target>https://crmdevint3-intelcloudcrm.cs37.force.com/psg/s/contact-customer-service</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
         <source>/emp-licenses</source>
-        <target>https://licensing.intel.com/psg/s/sales-sign-up-employeefreelicences</target>
+        <target>https://crmdevint3-intelcloudcrm.cs37.force.com/psg/s/sales-sign-up-employeefreelicences</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
         <source>/eval-free-licenses</source>
-        <target>https://licensing.intel.com/psg/s/sales-signup-evaluationlicenses</target>
+        <target>https://crmdevint3-intelcloudcrm.cs37.force.com/psg/s/sales-signup-evaluationlicenses</target>
     </siteRedirectMappings>
     <siteRedirectMappings>
         <action>Permanent</action>
         <isActive>true</isActive>
         <isDynamic>false</isDynamic>
         <source>/get-legacy-license</source>
-        <target>https://licensing.intel.com/psg/s/get-legacy-license</target>
+        <target>https://crmdevint3-intelcloudcrm.cs37.force.com/psg/s/get-legacy-license</target>
     </siteRedirectMappings>
     <siteType>ChatterNetwork</siteType>
     <subdomain>intelcloudcrm</subdomain>

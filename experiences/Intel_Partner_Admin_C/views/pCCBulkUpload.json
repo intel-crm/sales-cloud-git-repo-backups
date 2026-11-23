@@ -2,7 +2,7 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "bb31ac21-75c2-4f75-876d-e287d42b3008",
+  "id" : "87bee650-83a3-45b4-9e24-24db9ac7acde",
   "label" : "PCC_BulkUpload",
   "regions" : [ {
     "components" : [ {
@@ -10,28 +10,28 @@
         "menuItems" : "[]"
       },
       "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "14e2ab42-ad8a-4fcc-a54d-06ce1e40594e",
+      "id" : "f35fa36b-c736-4b0b-8696-e7306df6ec78",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "ea42f1dd-c20e-4592-bf46-f67378dbf070",
+    "id" : "2dff6325-679d-4128-91a7-9bdad5266917",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:pCC_DownloadBulkUploadTemplate",
-      "id" : "5326acba-3f7d-4208-81c0-edd97ea203b2",
+      "id" : "4a7e3f87-29a2-4f2f-8548-a0f6b22d2856",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "ba5fa48e-9240-4ab2-afd9-951c527a550c",
+    "id" : "359a1522-6665-4fc3-9905-d6345fe19d16",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "f3d6271a-27d9-4c2c-b4a5-675c50abc610",
+    "id" : "ef696f7d-d0d0-4f80-a0f6-de8bb41b538b",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -42,15 +42,15 @@
         "title" : "PCC_BulkUpload"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "5ace677a-dd9d-47f9-bb2c-037dc6e0ca3c",
+      "id" : "7edc1075-687f-4223-a0f2-b22eb3502c3e",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "ef9b6e2d-6d4e-48ea-8e6e-4faca5ee7cd5",
+    "id" : "1b688f3a-9f6c-4414-a13c-7ab7accfdaca",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "YKT7Zn6tAHjSVdyTIMFhpZIEtQkAJG",
   "type" : "view",
   "viewType" : "custom-pcc-bulkupload"
 }

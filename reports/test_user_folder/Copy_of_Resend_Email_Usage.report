@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Full_Name__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Email__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Coupon_Code__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Submitted_On__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Resend_Email_Timestamp__c</field>
+    </columns>
+    <columns>
+        <field>SWS_Cloud_Credit_Request__c$SWS_Resend_Email_User_Name__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>SWS_Cloud_Credit_Request__c$SWS_resend_email_click_count__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Copy of Resend Email Usage</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Credit_requests_with_lead_and_opportunities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>SWS_Cloud_Credit_Request__c$SWS_resend_email_click_count__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>SWS_Cloud_Credit_Request__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

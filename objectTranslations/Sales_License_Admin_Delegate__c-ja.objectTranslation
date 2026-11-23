@@ -5,12 +5,8 @@
         <value>License Admin Delegate</value>
     </caseValues>
     <fields>
-        <label><!-- Legacy Delegate Contact Id --></label>
-        <name>Sales_Legacy_DelegateContact_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Legacy Primary Contact Id --></label>
-        <name>Sales_Legacy_PrimaryContact_Id__c</name>
+        <label><!-- Legacy License Admin Delegate Id --></label>
+        <name>Sales_Legacy_License_Admin_Delegate_Id__c</name>
     </fields>
     <fields>
         <label>代表管理者連絡先</label>
@@ -38,20 +34,20 @@
         <name>Sales_License_Dlg_Adm_FullName__c</name>
     </fields>
     <fields>
-        <label>主要管理担当者</label>
+        <label>プライマリー管理担当者</label>
         <name>Sales_License_PrimaryAdmin_Contact__c</name>
         <relationshipLabel><!-- License Primary Admin --></relationshipLabel>
     </fields>
     <fields>
-        <label>プライマリー管理者のメールアドレス</label>
+        <label><!-- Primary Admin Email Address --></label>
         <name>Sales_License_PrimaryAdmin_Email_Txt__c</name>
     </fields>
     <fields>
-        <label>主要管理者名</label>
+        <label><!-- Primary Admin First Name --></label>
         <name>Sales_License_PrimaryAdmin_FirstName_Txt__c</name>
     </fields>
     <fields>
-        <label>主要管理者の姓</label>
+        <label><!-- Primary Admin Last Name --></label>
         <name>Sales_License_PrimaryAdmin_LastName_Txt__c</name>
     </fields>
     <fields>
@@ -63,6 +59,10 @@
         <name>Sales_LoggedInUserPrimaryAdmin__c</name>
     </fields>
     <nameFieldLabel>代表管理者ナンバー</nameFieldLabel>
+    <recordTypes>
+        <label><!-- License Admin Delegate Record Type --></label>
+        <name>Sales_License_All_Internal_Users</name>
+    </recordTypes>
     <validationRules>
         <errorMessage><!-- Delegate Admin Contact and Primary Admin Contact cannot be same. --></errorMessage>
         <name>Sales_Same_Primary_Delegate_NotAllowed</name>

@@ -1,0 +1,158 @@
+<!--<template>
+    <div>
+
+        <lightning-card title='Claims to Recover From'>
+       
+            <template if:true={hasData}>
+                <lightning-button variant="brand"
+                label="Export to CSV"
+                onclick={exportToCSV}
+                slot="actions"></lightning-button>
+            </template>
+
+            <div style="height:500px;">
+                <lightning-datatable data-id='dataRow'
+                    selected-rows={preSelectedRows}
+                    key-field="Id" 
+                    data={claimList}
+                    columns={columns}
+                    onrowselection={getSelectedRows}
+                    oncellchange={checkCellValue}
+                    draft-values={draftValues}
+                    errors={errors}
+                    show-row-number-column
+                    suppress-bottom-bar>
+                </lightning-datatable>
+
+            </div>
+            <div class="slds-text-align_center">
+                <template if:true={hasData}>
+                    <lightning-button label="First" icon-name="utility:left" icon-position="left"
+                        onclick={onFirst} disabled={disablePreviousButtom}></lightning-button>
+                    <lightning-button label="Previous" icon-name="utility:chevronleft"
+                        icon-position="left" onclick={onPrevious} disabled={disablePreviousButtom}>
+                    </lightning-button>
+                    <span class="slds-var-p-horizontal_x-small">
+                        Page {currentPageNumber} of {totalPages}
+                    </span>
+                </template>
+                <span class="slds-var-p-horizontal_x-small">
+                    Number of records: {totalNoOfRecords}
+                </span>
+                <template if:true={hasData}>
+                    <lightning-button label="Next" icon-name="utility:chevronright"
+                        icon-position="right" onclick={onNext} disabled={disableNextButtom}>
+                    </lightning-button>
+                    <lightning-button label="Last" icon-name="utility:right" icon-position="right"
+                        onclick={onLast} disabled={disableNextButtom}></lightning-button>
+                </template>
+            </div>
+    </lightning-card>
+    </div>
+    
+</template>-->
+
+
+
+<template>
+    <lightning-card title="Claims to Recover From">   
+        <template if:true={hasData}>
+            <lightning-button variant="brand"
+            label="Export to CSV"
+            onclick={exportToCSV}
+            slot="actions"></lightning-button>
+        </template> 
+        <div class="slds-p-around_x-small">
+            <template if:true={hasData}>
+                <div class="slds-scrollable" style="height:500px;">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <tr class="">
+                                <th class="slds-size_1-of-10" scope="col">
+                                    <lightning-input onchange={allSelected} type="checkbox"></lightning-input>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Claim #">Claim #</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Budget Type">Budget Type</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Geo">Geo</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Country">Country</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Claim Status">Claim Status</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Activity Category">Activity Category</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Activity Type">Activity Type</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Claim Amount">Claim Amount</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Recovery Amount">Recovery Amount</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="Balance Amount">Balance Amount</div>
+                                </th>
+                                <th class="slds-size_3-of-10" scope="col">
+                                    <div class="slds-truncate" title="CommentsCountry">Comments</div>
+                                </th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <template for:each = {resultList} for:item = "con">
+                            <tr key={con.Id} class="slds-hint-parent">                                
+                                <td class="slds-size_1-of-10">
+                                    <div>
+                                        <lightning-input type="checkbox" value={con.claimID} data-id={con.Id}></lightning-input>
+                                    </div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.claimID}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.budgetType}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.geo}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.country}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.clmStatus}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.actCategory}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.actType}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.claimAmt}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input type="number" key={con.key} data-id={con.Id} name="input1" label="Name" value={con.recoveryAmount} variant="label-hidden"></lightning-input>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <div>{con.balanceAmt}</div>
+                                </td>
+                                <td class="slds-size_3-of-10">
+                                    <lightning-input key={con.key} data-id={con.Id} name="input1" label="Name" value={con.comments} variant="label-hidden"></lightning-input>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                </div>                
+            </template>               
+        </div>
+</lightning-card>
+</template>

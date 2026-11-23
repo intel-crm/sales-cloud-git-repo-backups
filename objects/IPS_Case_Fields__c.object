@@ -62,5 +62,20 @@
         <unique>false</unique>
     </fields>
     <label>IPS_Case_Field_Mapping</label>
+    <listViews>
+        <fullName>AllValues</fullName>
+        <columns>JSON_Field_Name__c</columns>
+        <columns>Object_Name__c</columns>
+        <columns>NAME</columns>
+        <columns>API_Name__c</columns>
+        <columns>Field_Type__c</columns>
+        <columns>Order__c</columns>
+        <columns>Additional_Info__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>AllValues</label>
+        <language>en_US</language>
+    </listViews>
     <visibility>Public</visibility>
 </CustomObject>

@@ -13,4 +13,11 @@
     <tabs>LEXMAGICMOVER__LatestFilesNotes</tabs>
     <tabs>LEXMAGICMOVER__Attachments</tabs>
     <tabs>LEXMAGICMOVER__Configuration</tabs>
+    <tabs>SeismicUserDeletion_User__c</tabs>
+    <tabs>SeismicUserDeletion_Config__c</tabs>
+    <tabs>Core_Design_Registration_Stage__c</tabs>
+    <tabs>DZP_Registration_Request__c</tabs>
+    <tabs>SMG1AI</tabs>
+    <tabs>PIM_Products__x</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
 </CustomApplication>

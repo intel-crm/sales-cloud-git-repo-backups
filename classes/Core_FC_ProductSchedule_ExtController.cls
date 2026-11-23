@@ -238,9 +238,10 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
             obj.Core_FC_Recall_Count__c = opptyObj1.Core_FC_Recall_Count__c + 1;
         }
         update obj;
+        String escapedId = String.escapeSingleQuotes(String.valueOf(obj.Id));
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
         PageReference pgRef;
-        pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+obj.Id+'&isNew=TRUE');
+        pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+escapedId+'&isNew=TRUE');
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -354,8 +355,9 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     public pageReference editAllMethod(){
         //editAll = true;
         //START : Changes for US229893 : LEx Enhancements open Edit in fresh page - Ashwin
+        String escapedId = String.escapeSingleQuotes(String.valueOf(opptyObj.Id));
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&edit=true&isNew=TRUE');
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+escapedId+'&edit=true&isNew=TRUE');
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -396,8 +398,9 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     
     public PageReference cancelMethod(){
         cancelQuarter();
+        String escapedId = String.escapeSingleQuotes(String.valueOf(opptyObj.Id));
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=true');
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+escapedId+'&isNew=true');
         pgRef.setRedirect(true);
         return pgRef;
     }
@@ -553,8 +556,9 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         forecastTable = getDispWrapperTableMethod(psFCMap, qtrNameList);
         //System.debug('### New Table Values - '+forecastTable);  
         //PageReference pgRef = ApexPages.CurrentPage();
+        String escapedId = String.escapeSingleQuotes(String.valueOf(opptyObj.Id));
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+escapedId+'&isNew=TRUE');
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -834,8 +838,9 @@ appRejObj.insertOpptyShare(opptyShareList);
                 return null;
             }
         }
+        String escapedId = String.escapeSingleQuotes(String.valueOf(opptyObj.Id));
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+escapedId+'&isNew=TRUE');
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -847,7 +852,7 @@ appRejObj.insertOpptyShare(opptyShareList);
     
     public void sendEmail(List<String> toAddList, List<String> ccAddList, Opportunity opptyObj, String qtrSubmitted){
         String[] toAdd = new String[]{};
-        String[] ccAdd = new String[]{};
+            String[] ccAdd = new String[]{};
         String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
                 for(String str : toAddList){
                     toAdd.add(str);
@@ -898,17 +903,10 @@ appRejObj.insertOpptyShare(opptyShareList);
             obj.Core_FC_Recall_Count__c = 0;
             update obj;
         }
+        String escapedId = String.escapeSingleQuotes(String.valueOf(opptyObj.Id));
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        // PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        //US664677-Security Scan Fix Startes
-        PageReference pgRef;
-        if(opptyObj.Id !=null && String.valueOf(opptyObj.Id).startsWith('006') && !String.valueOf(opptyObj.Id).contains('/')){
-                  pgRef = new PageReference('/'+'apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        }
-         //US664677-Security Scan Fix Ends
-            pgRef.setRedirect(true);
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+escapedId+'&isNew=TRUE');
+        pgRef.setRedirect(true);
         if(isClassic){
             return null;
         }else{
@@ -935,16 +933,9 @@ appRejObj.insertOpptyShare(opptyShareList);
             //update tobeRejectedList;
             appRejObj.reject(tobeRejectedList);
         }
-      //  String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-       // PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        //US664677-Security Scan Fix Startes
-        PageReference pgRef;
-        if(opptyObj.Id !=null && String.valueOf(opptyObj.Id).startsWith('006') && !String.valueOf(opptyObj.Id).contains('/')){
-                  pgRef = new PageReference('/'+'apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        }
-         //US664677-Security Scan Fix Ends
+        String escapedId = String.escapeSingleQuotes(String.valueOf(opptyObj.Id));
+        String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+escapedId+'&isNew=TRUE');
         pgRef.setRedirect(true);
         if(isClassic){
             return null;

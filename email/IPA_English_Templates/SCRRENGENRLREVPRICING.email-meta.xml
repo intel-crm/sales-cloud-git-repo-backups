@@ -6,28 +6,30 @@
     <name>SCRRENGENRLREVPRICING</name>
     <style>none</style>
     <subject>Verify your email address</subject>
-    <textOnly>Verify Your Email Address
+    <textOnly>Welcome to Intel Quote Request (IQR)
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+A profile has been created for you to use the Intel Quote Request tool to submit
+tender requests to Intel Corporation. Please bookmark
+{!$Label.Pricing_Tender_PartnerUser_URL}
 
-Thank you for registering for access to Intel® Quote Request.
-Before we can process it, we need to make sure this email address is yours.
-This link will expire in 5 days and will require you to trigger another email verification using your Login ID and password.
+E-mail Address: {!Contact.Email}
+Intel Business Account Name: {!Account.Name}
+Please follow this link to complete your set up.
+If you have any questions, refer to the IQR Help Page. If you feel you have received
+this e-mail in error, please contact us here.
 
 
-Verify now
-
-Can&apos;t access the link above?
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://wcm-qa.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner/forms/ipa-account-search.html
-
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
 
 Thank you,
 Your Intel® Quote Request team
 
-This message was sent to you as an important business communication related to your current relationship with Intel® Quote Request.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+Intel is committed to protecting your privacy. For more information,
+please see the Intel Privacy Notice.
+Legal Information | Trademarks © Intel Corporation. All rights reserved.
+*Other names and brands may be claimed as the property of others.
+**Intel is not responsible for content of sites outside our intranet.</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

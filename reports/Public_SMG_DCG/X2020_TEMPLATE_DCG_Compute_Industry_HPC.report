@@ -79,7 +79,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Won,Win Approved,Production Win,pending,submit</value>
+            <value>Won,Win Approved,Production Win,pending,submit,lost</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRODUCT_NAME</column>

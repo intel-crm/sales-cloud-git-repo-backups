@@ -40,24 +40,20 @@
         <label><!-- Account Primary Coverage --></label>
         <name>Coverage__c</name>
         <picklistValues>
-            <masterLabel>Intel-led Account</masterLabel>
-            <translation><!-- Intel-led Account --></translation>
+            <masterLabel>Indirect Covered</masterLabel>
+            <translation><!-- Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not Covered Account</masterLabel>
-            <translation><!-- Not Covered Account --></translation>
+            <masterLabel>Intel Covered</masterLabel>
+            <translation><!-- Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other-led Account</masterLabel>
-            <translation><!-- Other-led Account --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner-led Account</masterLabel>
-            <translation><!-- Partner-led Account --></translation>
+            <masterLabel>Not Covered</masterLabel>
+            <translation><!-- Not Covered --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Semi-Annual Temp Account Category --></label>
+        <label><!-- Account Category --></label>
         <name>Customer_category__c</name>
     </fields>
     <fields>

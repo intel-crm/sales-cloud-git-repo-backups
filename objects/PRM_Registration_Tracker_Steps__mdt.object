@@ -129,6 +129,25 @@
         <unique>false</unique>
     </fields>
     <label>Registration Tracker Steps</label>
+    <listViews>
+        <fullName>Self</fullName>
+        <columns>DeveloperName</columns>
+        <columns>PRM_Previous_Step__c</columns>
+        <columns>PRM_Current_Step__c</columns>
+        <columns>PRM_Registration_Type__c</columns>
+        <columns>PRM_Revise__c</columns>
+        <columns>PRM_Revise_Step__c</columns>
+        <columns>PRM_Display_Step_No__c</columns>
+        <columns>PRM_Auto_Approved__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Registration_Type__c</field>
+            <operation>equals</operation>
+            <value>Self</value>
+        </filters>
+        <label>Self</label>
+        <language>en_US</language>
+    </listViews>
     <pluralLabel>Registration Tracker Steps</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

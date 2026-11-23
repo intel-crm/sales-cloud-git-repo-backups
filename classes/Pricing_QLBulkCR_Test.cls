@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 06-18-2026
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 @isTest
 public class Pricing_QLBulkCR_Test {
     
@@ -9,6 +16,7 @@ public class Pricing_QLBulkCR_Test {
     @testSetup
     static void dataSetup(){
       //  Pricing_RestAPI_TestUtility.createRestAPIErrorCodesConfig();
+      List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         List<Product2> prodList = new List<Product2>();
         Product2 prod = new Product2();
         prod.Core_Product_Org__c = 'Sales';
@@ -16,7 +24,7 @@ public class Pricing_QLBulkCR_Test {
         prod.Core_Sales_Visible_Flag__c  = True;
         prod.IsActive = True;
         prod.Core_Hierarchy_ID__c = '43';
-        prod.Core_Group_Code_Short_Name__c = 'CCG';
+        prod.Core_Line_of_Business__c = lobValuesList[0];
         prod.Name = 'Product X';
         prod.Core_Processor_Number_Nm__c = 'i7-8705G';
         prodList.add(prod);
@@ -27,7 +35,7 @@ public class Pricing_QLBulkCR_Test {
         prod1.Core_Sales_Visible_Flag__c  = True;
         prod1.IsActive = True;
         prod1.Core_Hierarchy_ID__c = '43';
-        prod1.Core_Group_Code_Short_Name__c = 'CCG';
+        prod1.Core_Line_of_Business__c = lobValuesList[1];
         prod1.Name = 'Product1';
         prodList.add(prod1);
         
@@ -37,7 +45,7 @@ public class Pricing_QLBulkCR_Test {
         prod2.Core_Sales_Visible_Flag__c  = True;
         prod2.IsActive = True;
         prod2.Core_Hierarchy_ID__c = '43';
-        prod2.Core_Group_Code_Short_Name__c = 'CCG';
+        prod2.Core_Line_of_Business__c = lobValuesList[1];
         prod2.Name = 'Write In Product';
         prodList.add(prod2);
         insert prodList;

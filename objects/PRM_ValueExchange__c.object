@@ -618,9 +618,21 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PRM_Partner_Role_Nm__c</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>PRM_InActive_Ind__c</columns>
         <columns>PRM_Country_Market_Type_Nm__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_InActive_Ind__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>PRM_Partner_Role_Nm__c</field>
+            <operation>equals</operation>
+            <value>Manufacturer,Seller,Original Equipment Manufacturer (OEM)</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>

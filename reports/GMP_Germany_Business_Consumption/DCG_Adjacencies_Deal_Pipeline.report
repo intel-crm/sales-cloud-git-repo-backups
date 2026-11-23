@@ -29,14 +29,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>DCG Adjacency Deal</value>
+            <value>DCG Adjacencies Deal</value>
         </criteriaItems>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMP of Sonja Pierer</value>
+            <value>EMP of Dieter Hoffend</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

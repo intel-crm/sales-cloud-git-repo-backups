@@ -100,10 +100,8 @@ public without sharing class Core_ERPMFlowRouter {
                    (SELECT Id, PRM_Status_Nm__c, PRM_Status_Reason_Txt__c,
                            PRM_Partner_Subscription_Id__r.Name,
                            PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c
-                    FROM Contact_Subscription_Associations__r 
-                    WHERE PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c != true),
-                   (SELECT Id, Status__c FROM Contact_Business_Types__r
-                    WHERE Business_Types__r.Name = :Label.DZP_Business_Type)
+                    FROM Contact_Subscription_Associations__r),
+                   (SELECT Id, Status__c FROM Contact_Business_Types__r)
             FROM Contact
             WHERE Id IN :contactIds
         ];

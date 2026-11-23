@@ -290,7 +290,7 @@
                         <apex:commandButton value="{!$Label.Core_FC_SubmitForecast}" id="submitBtn" action="{!submitForApproval}" oncomplete="redirect()" onclick="if(!confirm('{!qtrSubmitMsg[0]}')){return false;}" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" status="status1" rerender="out,errMsg" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!isSubmitChk || isAllZero}" />
                     </apex:outputPanel>
                     
-                    <apex:outputPanel id="render2" rendered="{!(isManager)}">
+                    <apex:outputPanel id="render2" rendered="{!(isManager) || (isTechOwnerManager)}">
                         <apex:commandButton value="{!$Label.Core_FC_Approve}" id="apprvBtn" action="{!approvalMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
                         
                         <apex:commandButton value="{!$Label.Core_FC_Reject}" id="rejectBtn" action="{!rejectionMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>

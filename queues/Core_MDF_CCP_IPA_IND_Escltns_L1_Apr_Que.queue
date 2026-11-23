@@ -8,6 +8,9 @@
         <publicGroups>
             <publicGroup>Core_MDF_CCP_IPA_INDIA_Escltns_L1_Apr_Grp</publicGroup>
         </publicGroups>
+        <users>
+            <user>wwescalationreviewerl1@intel.com.crm.crmqa3</user>
+        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_MDF_Escalation__c</sobjectType>

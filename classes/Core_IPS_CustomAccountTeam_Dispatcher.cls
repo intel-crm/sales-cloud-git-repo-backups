@@ -36,7 +36,6 @@ public class Core_IPS_CustomAccountTeam_Dispatcher{
              if(ipsNewRecordList <> null && ipsNewRecordList.size() > 0){
                  Core_IPS_CustomAccountTeam_Handler.manageSharing(ipsNewRecordList);
              }
-            
             Core_CustomAccountTeamHandler.manageSharing(newList);
          }
          if(trigger.isUpdate){             
@@ -50,7 +49,6 @@ public class Core_IPS_CustomAccountTeam_Dispatcher{
              if(ipsOldRecordList <> null && ipsOldRecordList.size() > 0){
                  Core_IPS_CustomAccountTeam_Handler.revokeAccessForDelete(ipsOldRecordList);
              }
-             
             Core_CustomAccountTeamHandler.revokeAccessForDelete(oldList);
 
             // Synchronize deletes to Standard Account Team object.

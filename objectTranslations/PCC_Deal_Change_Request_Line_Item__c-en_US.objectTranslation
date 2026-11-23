@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Change Request Line Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Change Request Line Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>PCC_Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved- RPM Cancelled</masterLabel>
+            <translation><!-- Approved- RPM Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved- RPM Complete</masterLabel>
+            <translation><!-- Approved- RPM Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved- RPM Pending</masterLabel>
+            <translation><!-- Approved- RPM Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved- RPM Rejected</masterLabel>
+            <translation><!-- Approved- RPM Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approved Pricing End Date --></label>
+        <name>PCC_Approved_Pricing_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Pricing Start Date --></label>
+        <name>PCC_Approved_Pricing_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approved Quantity --></label>
+        <name>PCC_Approved_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- History --></label>
+        <name>PCC_Change_History__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change Request Quote Line --></label>
+        <name>PCC_Change_Request_Quote_Line__c</name>
+        <relationshipLabel><!-- Change Request Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Change Request --></label>
+        <name>PCC_Change_Request__c</name>
+        <relationshipLabel><!-- Change Request Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deal Product --></label>
+        <name>PCC_Deal_Product__c</name>
+        <relationshipLabel><!-- Change Request Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Design-Deal Registration Product --></label>
+        <name>PCC_Design_Deal_Registration_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PCC_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- FI Eligible --></label>
+        <name>PCC_FI_Eligible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Product --></label>
+        <name>PCC_Opportunity_Product_Id__c</name>
+        <relationshipLabel><!-- Change Request Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- PSAM Comment --></label>
+        <name>PCC_PSAM_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Comment --></label>
+        <name>PCC_Partner_Comment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product JSON --></label>
+        <name>PCC_Product_JSON__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>PCC_Product__c</name>
+        <relationshipLabel><!-- Change Request Line Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>PCC_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Line Status --></label>
+        <name>PCC_RequestLineStatus__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entered in Error</masterLabel>
+            <translation><!-- Entered in Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Request Line Status Response --></label>
+        <name>PCC_Request_Line_Status_Response__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Type --></label>
+        <name>PCC_Request_Type__c</name>
+        <picklistValues>
+            <masterLabel>Add</masterLabel>
+            <translation><!-- Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancel</masterLabel>
+            <translation><!-- Cancel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Change</masterLabel>
+            <translation><!-- Change --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PCC_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- View Details --></label>
+        <name>PCC_View_Details__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

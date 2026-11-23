@@ -49,12 +49,20 @@
         <translation>Il progetto originale è stato annullato per errore</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Original project was cancelled by mistake.</masterLabel>
+        <translation>Il progetto originale è stato annullato per errore.</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project was discussed with Intel but not recorded in tool on time</masterLabel>
         <translation>Il progetto è stato discusso con Intel ma non registrato nello strumento in tempo</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Project was discussed with Intel but not recorded in tool on time.</masterLabel>
+        <translation>Il progetto è stato discusso con Intel ma non registrato nello strumento in tempo.</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project was left as draft but never submitted</masterLabel>

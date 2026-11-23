@@ -1,11 +1,11 @@
-public with sharing class ER_ProcessAutoApprovedRecordsUtility 
+public without sharing class ER_ProcessAutoApprovedRecordsUtility 
 {
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_SCOPE    = 'ER_ProcessAutoApprovedRecordsUtility';
     public static void AssignABTandCBT(List<ProcessAutoApprovedRecords__e> evtobjList)
     {
-       
+        
         //List<Id> requestIds = new List<Id>();
         Set<Id> entIds = new Set<Id>();
         Map<Id,Id> entBusinessTypeMap = new Map<Id,Id>();
@@ -70,6 +70,7 @@ public with sharing class ER_ProcessAutoApprovedRecordsUtility
                 {
                     updateFailedRegistrationRequests(failedreqIdMap);
                 }
+
             }
         }
         catch(Exception ex) {

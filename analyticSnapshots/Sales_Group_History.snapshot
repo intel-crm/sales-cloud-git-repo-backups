@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnalyticSnapshot xmlns="http://soap.sforce.com/2006/04/metadata">
+    <mappings>
+        <sourceField>ACCOUNT_ID</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Core_Sales_Group_History__c.Account_Id__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>ACCOUNT.NAME</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Core_Sales_Group_History__c.Account_Name__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>Account.Core_Sales_Groups__c</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Core_Sales_Group_History__c.Sales_Group__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>Account.Core_Sales_Group_Preview__c</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Core_Sales_Group_History__c.Sales_Group_Preview__c</targetField>
+    </mappings>
+    <name>Sales Group History</name>
+    <runningUser>11970263@intel.com.crm</runningUser>
+    <sourceReport>DQReports/Sales_Group_History_Tracking_Report_54I</sourceReport>
+    <targetObject>Core_Sales_Group_History__c</targetObject>
+</AnalyticSnapshot>

@@ -5,7 +5,7 @@
     <alertText>A contact with this email already exist. Please use the existing contact. If you do not see the existing contact listed, it belongs to an account to which you do not have access. Please log a request via ‘Ask A Question’ and select the topic ‘Sales CRM’.</alertText>
     <description xsi:nil="true"/>
     <duplicateRuleFilter>
-        <booleanFilter xsi:nil="true"/>
+        <booleanFilter>1 AND 2</booleanFilter>
         <duplicateRuleFilterItems>
             <field>Core_Lead_Conversion_Flag__c</field>
             <operation>equals</operation>

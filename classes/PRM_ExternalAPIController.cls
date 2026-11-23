@@ -187,6 +187,8 @@ public without sharing class PRM_ExternalAPIController {
         PowerBiReport powerBiReport = (PowerBiReport)JSON.deserialize(responseJson, PowerBiReport.class);
         
         // Send report info to debug window
+        system.debug('here'+powerBiReport);
+        system.debug('here'+responseJson);
         // Call Power BI Service API to get embed token for report
         HttpRequest reqGetEmbedToken = new HttpRequest();
         reqGetEmbedToken.setMethod('POST');
@@ -205,9 +207,10 @@ public without sharing class PRM_ExternalAPIController {
            
             PowerBiReportData getEmbedTokenError = new PowerBiReportData();
             getEmbedTokenError.error = 'Get Embed Token Error: '+powerBiReport.datasetId+' ' + response.getStatus();
-            
+              System.debug('here'+response.getBody());
             return getEmbedTokenError;
         }
+       System.debug('here'+response.getBody());
         // Extract Power BI embed token and expiration
         PowerBiEmbedToken embedToken = (PowerBiEmbedToken)JSON.deserialize(responseEmbedToken.getBody(), PowerBiEmbedToken.class);
                       

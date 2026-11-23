@@ -2,7 +2,7 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
-    <name>SRVPLT - AURORA GENERAL QS</name>
+    <name>SRVPLT - AURORA GENERAL QS   Help for th</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>Core_IPS_Org_011_AURORA_GENERAL_QS</publicGroup>

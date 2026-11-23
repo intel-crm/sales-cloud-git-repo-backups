@@ -19,10 +19,10 @@ public class InsertDeltaProductsBatch implements Database.batchable<Product_Inbo
     
     public void execute(Database.BatchableContext bc, List<Product_Inbound_Staging__c> listPisToInsertUpsert) {
         DataBase.Error[] listError = new List<DataBase.Error>();
-        Schema.SObjectField externalId = Product_Inbound_Staging__c.Fields.Core_Unique_ID__c;
-        DataBase.UpsertResult[] listResult = DataBase.upsert(listPisToInsertUpsert, externalId, false);
+        //Schema.SObjectField externalId = Product_Inbound_Staging__c.Fields.Core_Unique_ID__c;
+        DataBase.saveResult[] listResult = DataBase.Insert(listPisToInsertUpsert, false);
        
-        for (DataBase.UpsertResult dsr : listResult) {
+        for (DataBase.saveResult dsr : listResult) {
             if (!dsr.isSuccess()) {
                 listError.addAll(dsr.getErrors());
             }

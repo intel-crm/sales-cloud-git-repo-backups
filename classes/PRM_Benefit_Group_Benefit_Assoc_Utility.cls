@@ -91,7 +91,9 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 }
             }  
             
-           
+            system.debug('setOfBenifitId :- '+setOfBenifitId);
+            system.debug('setOfBGId :- '+setOfBGId);
+            system.debug('c '+mapOfBgIdAndSetOfBenifitId);
             
             if(setOfBGId!= null && !setOfBGId.isEmpty()){
                 for(PRM_Specialty_Benefit_Group_Association__c  sbga: [Select id,name,PRM_Specialty_Id__c,PRM_Benefit_Group_Id__c from PRM_Specialty_Benefit_Group_Association__c where PRM_Benefit_Group_Id__c IN: setOfBGId AND PRM_InActive_Ind__c = false]){
@@ -101,12 +103,15 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                         setOfTempBGId.add(sbga.PRM_Benefit_Group_Id__c);
                         mapOfSpecialityIdAndBgId.put(sbga.PRM_Specialty_Id__c,setOfTempBGId);
                     }else{
+                        System.debug('In 106:'+ sbga.PRM_Specialty_Id__c);
                         mapOfSpecialityIdAndBgId.put(sbga.PRM_Specialty_Id__c, new Set<string> {sbga.PRM_Benefit_Group_Id__c});
                     }
                 }
             }
             
- 
+            System.debug('setOfSpecialityId :-'+setOfSpecialityId);
+        	System.debug('mapOfSpecialityIdAndBgId::'+mapOfSpecialityIdAndBgId);
+            System.debug('mapOfSpecialityIdAndBgIdSize :-'+mapOfSpecialityIdAndBgId.size());
        /* if(setOfSpecialityId!=Null && setOfSpecialityId.size()>0 && (!ipaRefresh  || test.isrunningtest())){ //IPA2.0-TWC727-2861
             //iterating asa to fetch associated account
             for(PRM_Account_Specialty_Association__c asaRecord: [Select id,name,PRM_Account_Id__c,PRM_Specialty_Id__c,PRM_InActive_Ind__c from PRM_Account_Specialty_Association__c where PRM_Specialty_Id__c IN:setOfSpecialityId AND PRM_InActive_Ind__c = false]){
@@ -121,7 +126,8 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 }
             } }*/ // IPA Switch Removal
             
-      
+            System.debug('setOfAccountId :-'+setOfAccountId);
+            System.debug('mapOfAccountIdAndSpecialityId :-'+mapOfAccountIdAndSpecialityId);
         	
             // Associating speciality with benefits.
             if(mapOfSpecialityIdAndBgId.keyset() != null && !mapOfSpecialityIdAndBgId.keyset().isEmpty()){
@@ -134,14 +140,16 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                             }   
                         }
                     }
-
+                    System.debug('LISTOFINNER:'+listOfBenifit.size() );
+                    System.debug('LISTOFSizeINNER:'+listOfBenifit);
                     if(listOfBenifit != null && !listOfBenifit.IsEmpty()){
                         mapOfSpecialityIdAndBenifitId.put(str,listOfBenifit);
                     }
                 }  
             }
         	
-      
+            System.debug('mapOfSpecialityIdAndBenifitId :-'+mapOfSpecialityIdAndBenifitId);
+        	System.debug('SIZE150: '+ mapOfSpecialityIdAndBenifitId.size());
             
             // Associating account with benefits.
             /*if(mapOfAccountIdAndSpecialityId.keyset() !=null && !mapOfAccountIdAndSpecialityId.keyset().isEmpty()){
@@ -159,7 +167,7 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                     }
                 }    
             }*/
-          
+            System.debug('mapOfAccountIdAndBenifitId :-'+mapOfAccountIdAndBenifitId);
            /* if(setOfAccountId!=Null && setOfAccountId.size()>0  && setOfBenifitId!=Null && setOfBenifitId.size()>0){
             //Fetch ABA RECORD If Exsist
             listOfExsistingABARecord = [Select id,PRM_Account_Id__c,PRM_Partner_Benefit_Id__c,PRM_Source__c,PRM_Status_Nm__c from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c IN: setOfAccountId AND PRM_Partner_Benefit_Id__c IN: setOfBenifitId];
@@ -196,12 +204,13 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 }
             }*/
             
-           
+            System.debug('newAbaRecord :-'+newAbaRecord);
             List<PRM_AccountBenefitAssociation__c> listOfNewAbaRecord;
         /*try{   
             listOfNewAbaRecord = new List<PRM_AccountBenefitAssociation__c>(newAbaRecord);
             If(listOfNewAbaRecord !=null && !listOfNewAbaRecord.isEmpty()){
                 database.UpsertResult[] result = database.upsert(listOfNewAbaRecord,false);
+                System.debug('result :-'+result);
             }
             
         }Catch(exception ex){
@@ -248,7 +257,7 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 benefitEntitlementMap.put(em1.PRM_Partner_Benefit_Id__c,entitlements);
             }
         }*/
-        
+        System.debug('benefitEntitlementMap-->'+benefitEntitlementMap);
         
         Map<Id,Set<PRM_VXEnttlmntMatrix__c>> accEntitlementsMap= new Map<Id,Set<PRM_VXEnttlmntMatrix__c>>();
         /*for(Account acc :accList){
@@ -351,7 +360,9 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 } 
             }
         }*/
-        
+        System.debug('conId-->'+conId);
+        System.debug('entId-->'+entId);
+        System.debug('ceList-->'+ceList);
         List<Id> beCon = new List<Id>();
         List<Id> beEnt = new List<Id>();
         List<Core_Contact_Entitlement__c> contactEntList = new List<Core_Contact_Entitlement__c>();
@@ -405,7 +416,7 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 }
             }
         }*/
-        
+        System.debug('finalCEList-->'+finalCEList);
         /*if((beCon != null && !beCon.IsEmpty()) && (beEnt != null && !beEnt.IsEmpty())){ // Updating batch entitlement records.
             for(PRM_Batch_Entitlement__c batchEntitlements :[Select Id, Name, PRM_Contact_Id__c,PRM_Entitlement_Id__c,PRM_Status_Nm__c,PRM_IsRemove_Ind__c From PRM_Batch_Entitlement__c Where PRM_Status_Nm__c = 'New' AND PRM_Contact_Id__c IN:beCon AND PRM_Entitlement_Id__c IN :beEnt]){
                 if(batchEntitlements.PRM_IsRemove_Ind__c == true){
@@ -442,8 +453,8 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
 * Return:      Boolean
 * Description: This is a generic method to check for if a aba record exsist or not. 
 ****************************************************************************************************************************************** */
-    
-    Public Static boolean duplicateRecordCheck(string accountId, string benefitId, List<PRM_AccountBenefitAssociation__c> lstOfABARecord){
+     //ATHR Fix - TWC729-9556 - JB
+    /*Public Static boolean duplicateRecordCheck(string accountId, string benefitId, List<PRM_AccountBenefitAssociation__c> lstOfABARecord){
         boolean result = false;
         for(PRM_AccountBenefitAssociation__c aBARecord: lstOfABARecord){
             if(aBARecord.PRM_Account_Id__c == accountId && aBARecord.PRM_Partner_Benefit_Id__c == benefitId){
@@ -452,7 +463,7 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
             }
         }
         return result;
-    }
+    }*/
     //Sheetal Changes End 
     
     /* *****************************************************************************************************************************************
@@ -464,7 +475,9 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
 ****************************************************************************************************************************************** */
     
     public static void benefitRemovalFromAccount(list<PRM_Benefit_Group_Benefit_Association__c> lstOfBGBA , map<id,PRM_Benefit_Group_Benefit_Association__c> mapOfOldBGBA){
-       
+        system.debug('Inside benefitRemovalFromAccount');
+        system.debug('Inside benefitRemovalFromAccount lstOfBGBA :-'+lstOfBGBA);
+        system.debug('Inside benefitRemovalFromAccount mapOfOldBGBA :-'+mapOfOldBGBA);
         Set<string> setOfBenifitId = new Set<string>(); 
         Set<string> setOfBGId = new Set<string>();
         Map<string,set<String>> mapOfBgIdAndSetOfBenifitId = new Map<string,set<String>>();
@@ -494,7 +507,9 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 }
             }
             
-           
+            system.debug('setOfBenifitId :- '+setOfBenifitId);
+            system.debug('setOfBGId :- '+setOfBGId);
+            system.debug('mapOfBgIdAndSetOfBenifitId :- '+mapOfBgIdAndSetOfBenifitId);
             
             if(setOfBGId!= null && !setOfBGId.isEmpty()){
                 for(PRM_Specialty_Benefit_Group_Association__c  sbga: [Select id,name,PRM_Specialty_Id__c,PRM_Benefit_Group_Id__c from PRM_Specialty_Benefit_Group_Association__c where PRM_Benefit_Group_Id__c IN: setOfBGId AND PRM_InActive_Ind__c = false]){
@@ -509,7 +524,8 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 }
             }
             
-          
+            System.debug('setOfSpecialityId :-'+setOfSpecialityId);
+            System.debug('mapOfSpecialityIdAndBgId :-'+mapOfSpecialityIdAndBgId); 
            /* if(setOfSpecialityId.size()>0 && setOfSpecialityId!=Null && (!ipaRefresh  || test.isrunningtest())){ //IPA2.0-TWC727-2861
             //iterating asa to fetch associated account
             for(PRM_Account_Specialty_Association__c asaRecord: [Select id,name,PRM_Account_Id__c,PRM_Specialty_Id__c,PRM_InActive_Ind__c from PRM_Account_Specialty_Association__c where PRM_Specialty_Id__c IN:setOfSpecialityId AND PRM_InActive_Ind__c = false]){
@@ -524,7 +540,8 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                 }
             } } */ // IPA Switch Removal
             
-    
+            System.debug('setOfAccountId :-'+setOfAccountId);
+            System.debug('mapOfAccountIdAndSpecialityId :-'+mapOfAccountIdAndSpecialityId);
             
             // Associating speciality with benefits.
             if(mapOfSpecialityIdAndBgId.keyset() != null && !mapOfSpecialityIdAndBgId.keyset().isEmpty()){
@@ -542,7 +559,7 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                     }
                 }  
             }
-          
+            System.debug('mapOfSpecialityIdAndBenifitId :-'+mapOfSpecialityIdAndBenifitId);
             
             // Associating account with benefits.
             /*if(mapOfAccountIdAndSpecialityId.keyset() !=null && !mapOfAccountIdAndSpecialityId.keyset().isEmpty()){
@@ -560,7 +577,7 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
                     }
                 }    
             }*/
-            
+            System.debug('mapOfAccountIdAndBenifitId :-'+mapOfAccountIdAndBenifitId);
             /*if(setOfAccountId!=Null && setOfAccountId.size()>0  && setOfBenifitId!=Null && setOfBenifitId.size()>0){
             //Fetch ABA RECORD If Exsist
             listOfExsistingABARecord = [Select id,PRM_Account_Id__c,PRM_Partner_Benefit_Id__c,PRM_Source__c,PRM_Status_Nm__c from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c IN: setOfAccountId AND PRM_Partner_Benefit_Id__c IN: setOfBenifitId AND PRM_Status_Nm__c ='Active' AND PRM_Source__c INCLUDES ('Specialty')];
@@ -582,8 +599,10 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
             }*/ 
             // calling Generic method 
             /*finalListOfAbaToUpdate = processingAba(setOfTempABARecord,setOfExsistingABARecord);
+            System.debug('finalListOfAbaToUpdate :-'+finalListOfAbaToUpdate);
             if(finalListOfAbaToUpdate !=null && !finalListOfAbaToUpdate.isEmpty()){
                 database.SaveResult[] result = database.update(finalListOfAbaToUpdate,false);
+                System.debug('result :-'+result);
             }*/
         }catch(exception ex){
             system.debug('error in Class :- PRM_Benefit_Group_Benefit_Assoc_Utility in Method :-benefitRemovalFromAccount :'+ex.getMessage() +'On Line number :-'+ex.getLineNumber());
@@ -597,14 +616,15 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
 * Return:      List<PRM_AccountBenefitAssociation__c>
 * Description: This is a generic method to check for if a aba record exsist and then process it for inactivation. 
 ****************************************************************************************************************************************** */
-    public static List<PRM_AccountBenefitAssociation__c> processingAba(Set<PRM_AccountBenefitAssociation__c> tempAbaRecord,Set<PRM_AccountBenefitAssociation__c> exsistingAbaRecord){
+     //ATHR Fix - TWC729-9556 - JB
+    /*public static List<PRM_AccountBenefitAssociation__c> processingAba(Set<PRM_AccountBenefitAssociation__c> tempAbaRecord,Set<PRM_AccountBenefitAssociation__c> exsistingAbaRecord){
         Set<PRM_AccountBenefitAssociation__c> setOfAbaToProcess = new Set<PRM_AccountBenefitAssociation__c>();
         List<PRM_AccountBenefitAssociation__c> listOfFinalAbaToProcess = new list<PRM_AccountBenefitAssociation__c>();
         
         if(tempAbaRecord !=null && !tempAbaRecord.isEmpty() && exsistingAbaRecord != null && !exsistingAbaRecord.isEmpty()){
             for(PRM_AccountBenefitAssociation__c aba: exsistingAbaRecord){
                 for(PRM_AccountBenefitAssociation__c tempAba: tempAbaRecord){
-                    if(/*(tempAba.PRM_Account_Id__c == aba.PRM_Account_Id__c)*/ //added as a fix for ww31
+                    //if((tempAba.PRM_Account_Id__c == aba.PRM_Account_Id__c) //added as a fix for ww31
                     (tempAba.PRM_Account_Id__c == aba.PRM_Account_Id__c || tempAba.PRM_Account_Id__c==aba.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c)
                      && (tempAba.PRM_Partner_Benefit_Id__c == aba.PRM_Partner_Benefit_Id__c)){
                         setOfAbaToProcess.add(aba); 
@@ -627,7 +647,7 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
             }
         }
         return listOfFinalAbaToProcess;
-    }
+    }*/
 
     
 }

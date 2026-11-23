@@ -1,3 +1,10 @@
+/**
+ * @description       : Class invoked from cst_feedback LWC
+ * @author            : 
+ * @group             : 
+ * @last modified on  : 11-04-2024
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+**/
 public without sharing class CST_CreateFeedback {
     
     public class CustomerFeedBackFields    {
@@ -179,14 +186,14 @@ public without sharing class CST_CreateFeedback {
             cf.Feedback_By__c = feedbackById;
             
             Database.SaveResult srList = Database.insert(cf, false);
-            if(srList.isSuccess() && (customerFeedback.Feedback=='Change Ownership' || customerFeedback.Feedback=='Partial' || customerFeedback.Feedback=='Add to Intel led')){
+
+            if(srList.isSuccess() && (customerFeedback.Feedback=='Change Ownership' || customerFeedback.Feedback=='Partial' || customerFeedback.Feedback=='Add to Intel Covered')){//TWC3123-5894
                 success.put(true,Core_CRM_Utility.getCRMLabel('CST_Nonpropogated_Feedback_Error'));
             }
-            else if (srList.isSuccess() && (customerFeedback.Feedback=='Change to Partner' || customerFeedback.Feedback=='Change to Uncovered' || customerFeedback.Feedback=='Change to Other Led')){
+            else if (srList.isSuccess() && (customerFeedback.Feedback=='Change to Indirect Covered' || customerFeedback.Feedback=='Change to Not Covered' /*|| customerFeedback.Feedback=='Change to Other Led'*/)){//TWC3123-5894
                 success.put(true,'');
             }
             else{
-                system.debug('error:'+srList.getErrors());
                 success.put(false,Core_CRM_Utility.getCRMLabel('CST_Save_Error'));
                 //added for testing
                 for(Database.Error err : srList.getErrors()) {
@@ -383,11 +390,11 @@ public without sharing class CST_CreateFeedback {
         for (Schema.PicklistEntry entry : fieldDescribe.getPicklistValues()) {
             feedbackOptions.add(entry.getLabel()+'|'+ entry.getLabel());
         }
-        if(cd.Coverage__c=='Intel-led Account'){
-            ff.coverage = 'Intel Led';
+        if(cd.Coverage__c==' Intel Covered'){
+             ff.coverage = 'Intel Covered';//TWC3123-5894
         }
         else{
-            ff.coverage = 'Partner Led';
+             ff.coverage = 'Indirect Covered';//TWC3123-5894
         }
         ff.objectName = 'SPM_Account_Detail__c';
         

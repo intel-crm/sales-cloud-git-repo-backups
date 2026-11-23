@@ -31,7 +31,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyOnTerminalRejection</template>
+        <template>unfiled$public/Core_MDF_NotifyOnTerminalRejection</template>
     </alerts>
     <fieldUpdates>
         <fullName>Business_Approver_Completed_Level</fullName>
@@ -52,6 +52,25 @@
         <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_ApprovalStage</fullName>
+        <field>Core_MDF_Approval_Stage_nm__c</field>
+        <name>Clear ApprovalStage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_Approval_Stage</fullName>
+        <description>Clear Approval Stage after PCT Approval</description>
+        <field>Core_MDF_Approval_Stage_nm__c</field>
+        <name>Clear Approval Stage</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Clear_IPA_Approval_status</fullName>
@@ -364,6 +383,16 @@
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Core_MDF_Step_Count_to_Zero_PR</fullName>
+        <field>Core_MDF_Approval_Step_Counter_nbr__c</field>
+        <formula>0</formula>
+        <name>Step Count to Zero</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Core_MDF_Update_Approval_Stage</fullName>
         <description>Update Approval Stage to Price Review</description>
         <field>Core_MDF_Approval_Stage_nm__c</field>
@@ -401,7 +430,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_MDF_Update_IntelMDF_Approval_Status</fullName>

@@ -6,18 +6,6 @@
   "label" : "License Detail",
   "regions" : [ {
     "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:sales_NonEventFeedback",
-      "id" : "f967c105-2008-4008-b189-c62a3fec6ac8",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "a5a31306-3ad8-49ee-bc44-0fde102cadb1",
-    "regionName" : "header",
-    "type" : "region"
-  }, {
-    "components" : [ {
       "componentAttributes" : {
         "recordId" : "{!recordId}"
       },
@@ -48,11 +36,11 @@
             "tabKey" : "1",
             "tabName" : "DETAILS"
           }, {
-            "UUID" : "3101bc6c-1f75-4e2e-81dc-4a4e5a3d92af",
-            "allowGuestUser" : false,
+            "UUID" : "da4e436d-1037-4bfa-ae07-3e7a7323700b",
+            "allowGuestUser" : true,
             "locked" : false,
             "seedComponents" : [ ],
-            "tabKey" : "5604d",
+            "tabKey" : "54287",
             "tabName" : "Related"
           } ],
           "useOverflowMenu" : false
@@ -79,16 +67,28 @@
         "components" : [ {
           "componentAttributes" : { },
           "componentName" : "c:salesLicenseRelatedList",
-          "id" : "8b3161ec-0210-4cc9-b003-6cd3a013b4dc",
+          "id" : "a9f87acf-f376-42bf-9121-1044175c66fd",
           "renditionMap" : { },
           "type" : "component"
         } ],
-        "id" : "3101bc6c-1f75-4e2e-81dc-4a4e5a3d92af",
+        "id" : "da4e436d-1037-4bfa-ae07-3e7a7323700b",
         "regionLabel" : "Related",
-        "regionName" : "5604d",
+        "regionName" : "54287",
         "renditionMap" : { },
         "type" : "region"
       } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a5a31306-3ad8-49ee-bc44-0fde102cadb1",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "d002832c-42a4-4c53-ac63-5c36216ed74d",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -116,6 +116,7 @@
         "id" : "6d8a2a28-77b6-491c-8666-74ff23109e09",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -134,5 +135,5 @@
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "detail-aBv"
+  "viewType" : "detail-aAK"
 }

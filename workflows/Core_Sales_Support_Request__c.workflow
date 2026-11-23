@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>unfiled$public/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_Email_IT_Intel_ASMO_Email_List</fullName>
@@ -22,7 +22,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>unfiled$public/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_Email_IT_Intel_EMEA_Email_List</fullName>
@@ -34,7 +34,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>unfiled$public/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_Email_IT_Intel_PRC_Email_List</fullName>
@@ -46,7 +46,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>unfiled$public/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Intel_Mgr_Assignment</fullName>
@@ -58,7 +58,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_IT_Intel_Mgr_Assignment</template>
+        <template>unfiled$public/Core_IT_Intel_Mgr_Assignment</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Send_e_mail_to_APJ_Queue</fullName>
@@ -69,7 +69,7 @@
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>unfiled$public/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Send_e_mail_to_ASMO_Queue</fullName>
@@ -80,7 +80,7 @@
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>unfiled$public/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Send_e_mail_to_EMEA_Queue</fullName>
@@ -91,7 +91,7 @@
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>unfiled$public/Core_IT_at_Intel_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_IT_Send_e_mail_to_PRC_Queue</fullName>
@@ -102,7 +102,7 @@
             <type>group</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>Testt/Core_IT_at_Intel_Approval</template>
+        <template>unfiled$public/Core_IT_at_Intel_Approval</template>
     </alerts>
     <fieldUpdates>
         <fullName>Add_IT_Geo_Manager</fullName>

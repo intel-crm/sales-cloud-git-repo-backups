@@ -17,9 +17,11 @@
       if (cmp.get("v.required") && !cmp.get("v.value")) {
         cmp.set("v.valid", false);
       } else {
+        // Adding the change to let the description field allow paragraphs
         cmp.set("v.valid", true);
-        var textValue = cmp.get("v.value").replace(/<[^>]+>/g, '');
-        cmp.set('v.value',textValue);  
+      //  var textValue = cmp.get("v.value").replace(/<[^>]+>/g, '');
+      var textValue = cmp.get("v.value");
+cmp.set('v.value', textValue);
       }
       // IPA2.0 + US TWC4497-1631
       // if (cmp.get('v.fieldName') == 'PMP_Partner_Offering_Dsc__c' && !cmp.get("v.value")) {
@@ -58,7 +60,14 @@
       if (cmp.get("v.required")){		
         // strip off html tags
         if(cmp.get("v.value"))		
-        textValue = cmp.get("v.value").replace(/<[^>]+>/g, '');		
+        // Check for actual content, not just HTML tags
+        textValue = cmp.get("v.value")
+            .replace(/<\/p><p>/g, '\n')     // Preserve paragraph breaks
+            .replace(/<p>/g, '')            // Remove opening <p>
+            .replace(/<\/p>/g, '\n')        // Convert closing </p> to line break
+            .replace(/<br\s*\/?>/gi, '\n')  // Convert <br> to line breaks
+            .replace(/<[^>]+>/g, '')        // Strip remaining HTML
+            .trim();                        // Remove extra whitespace		
         valid = textValue.length > 0;		
       }
       cmp.set("v.valid", valid);
@@ -160,8 +169,15 @@
         //     	helper.checkGarbageValue(cmp,helper);
         //     }
         // }
-       	var textInput = cmp.get("v.value").replace(/<[^>]+>/g, '');
-       	cmp.set('v.value',textInput);
-    }
-
+       /*	var textInput = cmp.get("v.value").replace(/<[^>]+>/g, '');
+       	cmp.set('v.value',textInput);*/
+       
+        // check for existing checks and also the plain text now.
+         var plain = (cmp.get("v.value") || '').replace(/<[^>]+>/g, '');
+         cmp.set("v.showInvalid", cmp.get("v.required") && plain.length === 0);
+        
+      /*  var textInput = cmp.get("v.value");
+       cmp.set('v.value',textInput);*/
+      
+   }
   })

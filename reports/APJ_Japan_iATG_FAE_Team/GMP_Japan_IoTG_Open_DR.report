@@ -4,6 +4,9 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
+        <field>Core_Design_Registration__c.Core_Partner_Account_Nm__c</field>
+    </columns>
+    <columns>
         <field>Core_Design_Registration__c.Core_Owner_Nm__c</field>
     </columns>
     <columns>
@@ -31,10 +34,28 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Design_Registration_Product__c.Core_Full_Year_Value_Amt__c</field>
     </columns>
-    <columns>
-        <field>Core_Design_Registration_Product__c.Core_End_Customer_Nm__c</field>
-    </columns>
     <filter>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_Partner_Account_Country_Cd__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>JPN</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_Product_Group_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Embedded/IOT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_Accepted_By_Id__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
         <criteriaItems>
             <column>Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c</column>
             <columnToColumn>false</columnToColumn>
@@ -47,21 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Abandoned,Approved,Cancelled,Rejected</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration__c.Core_End_Customer_Country_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Japan</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Product_Group_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Embedded/IOT,Embedded/IOT Boards &amp; Systems</value>
+            <value>Rejected,Abandoned</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

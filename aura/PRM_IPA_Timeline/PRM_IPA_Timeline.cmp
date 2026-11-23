@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global"  controller="PRM_TimelineController" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute name="mydata" type="String"/>
+    <aura:attribute name="contactData" type="String"/>
+    
+    <div class="slds-box slds-theme_default">
+        <div class="slds-scrollable_y"  style="height:20rem;">
+            <aura:iteration items="{!v.mydata}" var="item">
+                <c:PRM_IPA_Timeline_Activity activity="{!item}"/>
+            </aura:iteration>
+        </div>  
+    </div>  
+</aura:component>

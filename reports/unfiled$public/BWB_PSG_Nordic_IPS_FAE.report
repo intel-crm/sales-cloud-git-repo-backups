@@ -16,6 +16,9 @@
         <field>SUBJECT</field>
     </columns>
     <columns>
+        <field>CLOSED_DATEONLY</field>
+    </columns>
+    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
@@ -24,36 +27,20 @@
     <columns>
         <field>OPEN</field>
     </columns>
+    <columns>
+        <field>CLOSED</field>
+    </columns>
     <filter>
         <criteriaItems>
-            <column>OPEN</column>
+            <column>Case.Core_Intel_Sup_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Account_Sub_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>NEUR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG</value>
+            <value>Mark Connor</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Case.Core_Intel_Sup_Owner__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>BWB PSG Nordic IPS (FAE)</name>
     <params>
         <name>units</name>
@@ -68,10 +55,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>AGE</sortColumn>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
+        <endDate>2019-11-29</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

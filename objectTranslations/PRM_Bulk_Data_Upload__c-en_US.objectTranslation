@@ -171,6 +171,10 @@
             <translation><!-- English --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>English(UK)</masterLabel>
+            <translation><!-- English(UK) --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>French</masterLabel>
             <translation><!-- French --></translation>
         </picklistValues>
@@ -231,6 +235,10 @@
             <translation><!-- Spanish --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Spanish(EMEA)</masterLabel>
+            <translation><!-- Spanish(EMEA) --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Swedish</masterLabel>
             <translation><!-- Swedish --></translation>
         </picklistValues>
@@ -250,6 +258,22 @@
             <masterLabel>Vietnamese</masterLabel>
             <translation><!-- Vietnamese --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Registration Type --></label>
+        <name>PRM_RegistrationType__c</name>
+        <picklistValues>
+            <masterLabel>Admin Invite</masterLabel>
+            <translation><!-- Admin Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Invite</masterLabel>
+            <translation><!-- Partner Invite --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Send Reminders --></label>
+        <name>PRM_Send_Reminders__c</name>
     </fields>
     <fields>
         <label><!-- Stack Trace --></label>
@@ -284,11 +308,15 @@
         <name>PRM_Suppress_Email__c</name>
     </fields>
     <fields>
+        <label><!-- Suppress Reminders --></label>
+        <name>PRM_Suppress_Reminders__c</name>
+    </fields>
+    <fields>
         <label><!-- Upload Type --></label>
         <name>PRM_Upload_Type__c</name>
         <picklistValues>
-            <masterLabel>Auto Granted IPA for DZP</masterLabel>
-            <translation><!-- Auto Granted IPA for DZP --></translation>
+            <masterLabel>Auto DZP Enrollment</masterLabel>
+            <translation><!-- Auto DZP Enrollment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Bulk Add</masterLabel>
@@ -298,6 +326,14 @@
             <masterLabel>Bulk Invite</masterLabel>
             <translation><!-- Bulk Invite --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- isRetrying --></label>
+        <name>PRM_isRetrying__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_isSuccess --></label>
+        <name>PRM_isSuccess__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
     <validationRules>

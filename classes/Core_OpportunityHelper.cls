@@ -110,10 +110,10 @@ public class Core_OpportunityHelper extends TriggerHandler {
            Core_OpportunityHandler.updatePWFieldsonProduct(Trigger.New);
         }
         
-        /*if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityKPIfieldRefresh') &&
+        if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityKPIfieldRefresh') &&
             mapFunctionalityNameTriggerExecution.get('OpportunityKPIfieldRefresh').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
                 Core_OpportunityHandler.OpportunityKPIBatchUpdate(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
-            }*/
+            }
         
         if(mapFunctionalityNameTriggerExecution.containsKey('PCCDealRegOwnerOptyQuoteSync') && mapFunctionalityNameTriggerExecution.get('PCCDealRegOwnerOptyQuoteSync').Core_Active__c && !opp.Core_Created_from_CPQ__c){
             Core_OpportunityHandler.syncOwner_Opportunity_Quote(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
@@ -122,11 +122,15 @@ public class Core_OpportunityHelper extends TriggerHandler {
         if(mapFunctionalityNameTriggerExecution.containsKey('ILO_syncStatus_Opportunity_IQRQuote') && mapFunctionalityNameTriggerExecution.get('ILO_syncStatus_Opportunity_IQRQuote').Core_Active__c && !opp.Core_Created_from_CPQ__c){
             Core_OpportunityHandler.syncStatus_Opportunity_IQRQuote(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
         }
-        /*Utkarsh - Start - IPA Changes - Partner Deal Registration*/
+        /*Utkarsh - Start - IPA Change - Partner Deal Registration*/
         if(mapFunctionalityNameTriggerExecution.containsKey('PRM_PartnerDealSharing') && mapFunctionalityNameTriggerExecution.get('PRM_PartnerDealSharing').Core_Active__c){
             Core_OpportunityHandler_2.sharePRMDealOpptyToOpptyOwner(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
         }
-        /*Utkarsh - End - IPA Changes - Partner Deal Registration*/
+        /*Utkarsh - End - IPA Change - Partner Deal Registration*/
+        if (mapFunctionalityNameTriggerExecution.containsKey('auditStatusCommissionGeneration') &&
+        mapFunctionalityNameTriggerExecution.get('auditStatusCommissionGeneration').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
+            Core_OpportunityHandler.generateCommissionOnAuditStatusChange(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
+        }
     }
     
     public override void beforeInsert() {
@@ -194,7 +198,11 @@ public class Core_OpportunityHelper extends TriggerHandler {
             mapFunctionalityNameTriggerExecution.get('smgApprovalReversalSwitch').Core_Active__c){
                 Core_OppApproval.smgGmcCheckApprovalRejection(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
             }// Added this switch logic as part of TWC3123-5580
-        
+        //Vidyadhar
+        if (mapFunctionalityNameTriggerExecution.containsKey('blockApprovalPartnerled') &&
+            mapFunctionalityNameTriggerExecution.get('blockApprovalPartnerled').Core_Active__c){
+                Core_OppApproval.blockApprovalPartnerLed(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
+            }
         //DE63809 : Not getting an error message when user tries to update an historical data with old Solution area field LOV's
         if (mapFunctionalityNameTriggerExecution.containsKey('RestrictSolutionAreaInactiveLOV') &&
             mapFunctionalityNameTriggerExecution.get('RestrictSolutionAreaInactiveLOV').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
@@ -235,10 +243,10 @@ public class Core_OpportunityHelper extends TriggerHandler {
             }
         
          //Refreshing PW KPI field on Opportunity - Added by Hira(Accenture Team)
-        /* if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityKPIfieldRefresh') &&
+        if (mapFunctionalityNameTriggerExecution.containsKey('OpportunityKPIfieldRefresh') &&
             mapFunctionalityNameTriggerExecution.get('OpportunityKPIfieldRefresh').Core_Active__c && !opp.Core_Created_from_CPQ__c) {
                 Core_OpportunityHandler.OpportunityKPIfieldRefresh(Trigger.New, (Map<Id,Opportunity>)Trigger.oldMap);
-            }*/
+            }
 
         //Storing the Description Of Contribution of Technical owner and Partner account owner into field whenever Opportunity Owner changed -TWC3123-4957
         if (mapFunctionalityNameTriggerExecution.containsKey('storeOppTeamMemDescription') &&

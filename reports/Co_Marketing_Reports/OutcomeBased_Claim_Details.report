@@ -187,7 +187,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,ANZ,CEE,CER,IJKK,KOREA,LAR,META,NAR,NEUR,RCIS,ROA,SA,SEA,SEUR,TAIWAN,WEUR</value>
+            <value>ANZ,CEE,CER,IJKK,KOREA,LAR,META,NAR,NEUR,RCIS,ROA,SA,SEA,SEUR,TAIWAN,WEUR</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$ChannelPartner.Core_MDF_Channel_Program__c.Core_MDF_Technical_Program_Name__c</column>

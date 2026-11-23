@@ -58,6 +58,28 @@ global class Core_IPS_CoveoPageController_Test {
        }
     }
     
+    public static testMethod void testCatchBlock() {
+        // Create test case record
+        Case cs = new Case(
+            Subject = 'Test Case',
+            Status = 'New',
+            Origin = 'Phone'
+        );
+        insert cs;
+        // Set mock
+        Test.setMock(HttpCalloutMock.class, new NoRolesMock());
+        Test.startTest();
+        // Initialize controller
+        ApexPages.StandardController std = new ApexPages.StandardController(cs);
+        Core_IPS_CoveoPageController ctrl = new Core_IPS_CoveoPageController(std);
+        // Call method → this will hit catch
+        ctrl.coveoPagePanel();
+        Test.stopTest();
+        // Optional assertion (just to ensure execution)
+        System.assert(true);
+    }
+    
+    
      public static testMethod void testMethod2(){
           Case cs = TestUtilities.getCase();
          Test.setMock(HttpCalloutMock.class, new OnlyRDCMock());
@@ -105,6 +127,7 @@ global class Core_IPS_CoveoPageController_Test {
        global HTTPResponse respond(HTTPRequest request) {
             // Create a fake response
            //String responseBody ='{"access_token":"some sample access token"}';      
+           //
            String responseBody = 
     						'[{' +
     							'"id":"12345",' +

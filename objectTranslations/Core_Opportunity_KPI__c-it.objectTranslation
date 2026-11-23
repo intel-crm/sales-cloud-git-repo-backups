@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Opportunity KPI --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Opportunity KPI --></value>
+    </caseValues>
+    <fields>
+        <label><!-- IAH KPI Record ID --></label>
+        <name>Core_IAH_KPI_Record_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Checked if Opportunity Stage = Design Win OR Opportunity Products corresponding to the KPI are WIN APPROVED.  If not checked, confirm at least 24 hours have passed since approval, and if so, log an AAQ. --></help>
+        <label><!-- KPI Achieved? --></label>
+        <name>Core_Opp_KPI_Achieved__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date the KPI was first populated on the opportunity --></help>
+        <label><!-- KPI Added Date --></label>
+        <name>Core_Opp_KPI_Add_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- SMG BU employee managing the KPI --></help>
+        <label><!-- KPI BU Owner --></label>
+        <name>Core_Opp_KPI_BU_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Batch Time --></label>
+        <name>Core_Opp_KPI_BatchTime__c</name>
+    </fields>
+    <fields>
+        <help><!-- Detailed description of the KPI and KPI criteria --></help>
+        <label><!-- KPI Description --></label>
+        <name>Core_Opp_KPI_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- KPI Integration Record Id --></label>
+        <name>Core_Opp_KPI_IntRecord_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date the KPI was last updated --></help>
+        <label><!-- KPI Last Updated Date --></label>
+        <name>Core_Opp_KPI_Last_Update_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Core_Opp_KPI_Opportunity__c</name>
+        <relationshipLabel><!-- Opportunity KPIs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- KPI Quantity --></label>
+        <name>Core_Opp_KPI_Quantity__c</name>
+    </fields>
+    <fields>
+        <help><!-- This checkbox field indicates if the Opportunity meets the pre-defined minimum to achieve the KPI; checked indicates the threshold is met, unchecked indicates it does not.  If no KPI threshold applies, ‘N/A’ will be displayed --></help>
+        <label><!-- Threshold Met? --></label>
+        <name>Core_Opp_KPI_Threshold_Met__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes*</masterLabel>
+            <translation><!-- Yes* --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Threshold Requirement --></label>
+        <name>Core_Opp_KPI_Threshold_Req__c</name>
+    </fields>
+    <fields>
+        <label>KPI Total Price</label>
+        <name>Core_Opp_KPI_Total_Price__c</name>
+    </fields>
+    <fields>
+        <help><!-- Defines if the KPI tracks revenue ($) or count (#) --></help>
+        <label><!-- KPI Type --></label>
+        <name>Core_Opp_KPI_Type__c</name>
+        <picklistValues>
+            <masterLabel>Salesforce Opp KPI Product Group Count</masterLabel>
+            <translation><!-- Salesforce Opp KPI Product Group Count --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Pipeline $</masterLabel>
+            <translation><!-- Salesforce Pipeline $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Pipeline Opp Count</masterLabel>
+            <translation><!-- Salesforce Pipeline Opp Count --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Pipeline Units</masterLabel>
+            <translation><!-- Salesforce Pipeline Units --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Production Win $</masterLabel>
+            <translation><!-- Salesforce Production Win $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Production Win Opp Count</masterLabel>
+            <translation><!-- Salesforce Production Win Opp Count --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Volume --></label>
+        <name>Core_Opp_KPI_Volume__c</name>
+    </fields>
+    <fields>
+        <label><!-- Threshold Met? --></label>
+        <name>Core_Opp_Threshold_Met__c</name>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    
+    <nameFieldLabel><!-- KPI Name --></nameFieldLabel>
+    
+</CustomObjectTranslation>

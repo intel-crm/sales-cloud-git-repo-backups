@@ -44,10 +44,6 @@
         <field>Contact$Email</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Contact$Core_ERPM_Duration__c</field>
-    </columns>
-    <columns>
         <field>Contact$Core_ERPM_Integration_Status__c</field>
     </columns>
     <columns>
@@ -59,9 +55,6 @@
     <columns>
         <field>Contact$Account</field>
     </columns>
-    <columns>
-        <field>Contact$LastModifiedBy</field>
-    </columns>
     <description>List of contacts with ERPM status as pending.</description>
     <filter>
         <criteriaItems>
@@ -69,7 +62,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Pending,In-Progress</value>
+            <value>Pending</value>
         </criteriaItems>
         <criteriaItems>
             <column>Contact$LastModifiedDate</column>
@@ -110,8 +103,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Contact$LastModifiedBy</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Contact$LastModifiedDate</dateColumn>
         <interval>INTERVAL_LAST7</interval>

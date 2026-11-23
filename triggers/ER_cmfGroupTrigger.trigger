@@ -3,7 +3,7 @@ Class Name  : ER_cmfGroupTrigger
 Test Class Name : ER_cmfGroupBusinessLogic_Test, Coverage:93%
 Version     : 1.0 
 Created Date: 15 Nov 2023
-Function    : Trigger to handle CMF group business logics.
+Function    : Utility class to handle email delivery logic, Email logs creation.
 Modification Log :
 * Developer                 Date                    Description
 * ----------------------------------------------------------------------------      

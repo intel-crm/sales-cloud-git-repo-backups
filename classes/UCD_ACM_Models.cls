@@ -291,6 +291,9 @@ public without sharing class UCD_ACM_Models {
         public string BusinessPartyIdentifier {
             get; set;
         }
+        public string ComplianceStatus {
+            get; set;
+        }
         public string MasteredSimplifiedAccountName {
             get; set;
         }
@@ -350,7 +353,7 @@ public without sharing class UCD_ACM_Models {
 
         // This method used to return query to get parent account details.
         public String getParentAccountQueryForEvent() {
-            return 'Id,Name,RecordTypeId,Core_Business_Party_Id__c, Core_Compliance_Watch_List_Type__c, Core_Data_Simplified_Account_Nm__c,Core_Parent_Data_Simplified_Account_Nm__c,ParentId,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Global_Customer_BP_Id__c,Core_Account_Reference_Source_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c,Core_Survivor_Account_Id__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,BillingCountry,BillingCountryCode,ShippingCountry,ShippingCountryCode,Core_Data_Country_Nm__c,Core_Parent_Business_Party_Id__c';        
+            return 'Id,Name,RecordTypeId,Core_Business_Party_Id__c, Core_Compliance_Watch_List_Type__c, Core_Compliance_Status__c, Core_Data_Simplified_Account_Nm__c,Core_Parent_Data_Simplified_Account_Nm__c,ParentId,Parent.Core_Customer_Aggregation_Type__c,Core_Customer_Aggregation_Type__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Global_Customer_BP_Id__c,Core_Account_Reference_Source_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c,Core_Survivor_Account_Id__c,Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,BillingCountry,BillingCountryCode,ShippingCountry,ShippingCountryCode,Core_Data_Country_Nm__c,Core_Parent_Business_Party_Id__c';        
         }
 
         // This method used to return query to get customerProcessEngagement details.
@@ -374,14 +377,27 @@ public without sharing class UCD_ACM_Models {
             AccountAddress address = new AccountAddress();
             AccountResponseModel responseModel = new AccountResponseModel();
             String objectName = 'Account';
-            List<UCD_ACM_Models.ComplianceWatchList> complianceWatchLists = new List<UCD_ACM_Models.ComplianceWatchList>();
-            if(account.Core_Compliance_Watch_List_Type__c!=null){
-                List<String> complianceWatchListValues=account.Core_Compliance_Watch_List_Type__c.split(';');
-                for(String cwlValue : complianceWatchListValues){
-                    complianceWatchLists.add(new UCD_ACM_Models.ComplianceWatchList(cwlValue,UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue)));
+            if(Label.UCD_ACM_Switch_IAO_Change == 'true'){
+                List<UCD_ACM_Models.ComplianceWatchList> complianceWatchLists = new List<UCD_ACM_Models.ComplianceWatchList>();
+                if(account.Core_Compliance_Watch_List_Type__c!=null){
+                    List<String> complianceWatchListValues=account.Core_Compliance_Watch_List_Type__c.split(';');
+                    for(String cwlValue : complianceWatchListValues){
+                        complianceWatchLists.add(new UCD_ACM_Models.ComplianceWatchList(cwlValue,UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue)));
+                    }
                 }
+                responseModel.ComplianceWatchList=complianceWatchLists;
+                responseModel.ComplianceStatus = String.isNotBlank(account.Core_Compliance_Status__c) ? account.Core_Compliance_Status__c : '';
             }
-            responseModel.ComplianceWatchList=complianceWatchLists;
+            else{
+                List<UCD_ACM_Models.ComplianceWatchList> complianceWatchLists = new List<UCD_ACM_Models.ComplianceWatchList>();
+                if(account.Core_Compliance_Watch_List_Type__c!=null){
+                    List<String> complianceWatchListValues=account.Core_Compliance_Watch_List_Type__c.split(';');
+                    for(String cwlValue : complianceWatchListValues){
+                        complianceWatchLists.add(new UCD_ACM_Models.ComplianceWatchList(cwlValue,UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue)));
+                    }
+                }
+                responseModel.ComplianceWatchList=complianceWatchLists;
+            }
             responseModel.accountId = account.Id;
             responseModel.accountName = String.isNotBlank(account.Name)?account.Name:'';
             responseModel.SurvivorAccountId = String.isNotBlank(account.Core_Survivor_Account_Id__c) ? account.Core_Survivor_Account_Id__c : null;
@@ -418,7 +434,7 @@ public without sharing class UCD_ACM_Models {
                 responseModelForParent.MasteredSimplifiedAccountName = account.Core_Parent_Data_Simplified_Account_Nm__c;
                 responseModel.parentAccount = responseModelForParent;
             }
-
+           	System.debug('###Check responseModel : '+responseModel);
             return responseModel;
         }
         /*

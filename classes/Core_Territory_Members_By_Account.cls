@@ -1,4 +1,4 @@
-public class Core_Territory_Members_By_Account 
+public without sharing class Core_Territory_Members_By_Account 
 {
     //added an instance varaible for the standard controller
     private ApexPages.StandardController controller {get; set;}

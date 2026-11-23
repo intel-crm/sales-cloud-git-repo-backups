@@ -83,13 +83,15 @@ public class QuickActionsController_Test {
         QuickActionsController.getCaseActionList();
         QuickActionsController.getCaseRecordTypeID(ListOfCases[0].id);
         ApexPages.StandardController Controller = new ApexPages.StandardController(ListOfCases.get(0));
-        PageReference pageRef = Page.Core_Case_New_LandingPage;
+        /* commented for classic EOL-Rajashekar
+        PageReference pageRef = Page.Core_Case_New_LandingPage; */
         System.debug('rtId *** '+rtId);
-        pageRef.getParameters().put('RecordType',rtId);
-        pageRef.getParameters().put('cancelURL','abc');
-        pageRef.getParameters().put('ent','abc');
-        pageRef.getParameters().put('_CONFIRMATIONTOKEN','abc');
-        pageRef.getParameters().put('save_new_url','asasas');
+        ApexPages.currentPage().getParameters().put('RecordType',rtId);
+        ApexPages.currentPage().getParameters().put('cancelURL','abc');
+        ApexPages.currentPage().getParameters().put('ent','abc');
+        ApexPages.currentPage().getParameters().put('_CONFIRMATIONTOKEN','abc');
+        ApexPages.currentPage().getParameters().put('save_new_url','asasas');
+        PageReference pageRef = ApexPages.currentPage();
         //pageRef.getParameters().put('id', ListOfCases.get(0).id);
         Test.setCurrentPage(pageRef);
         String ref;
@@ -153,15 +155,17 @@ public class QuickActionsController_Test {
             insert ListStdActions;
         }
         QuickActionsController.getCaseActionList();
-         QuickActionsController.getCaseRecordTypeID(ListOfCases[0].id);
+        QuickActionsController.getCaseRecordTypeID(ListOfCases[0].id);
         ApexPages.StandardController Controller = new ApexPages.StandardController(ListOfCases.get(0));
-        PageReference pageRef = Page.Core_Case_New_LandingPage;
+        /* commented for classic EOL-Rajashekar
+        PageReference pageRef = Page.Core_Case_New_LandingPage; */
         //pageRef.getParameters().put('RecordType',rtId);
-        pageRef.getParameters().put('cancelURL','abc');
-        pageRef.getParameters().put('ent','abc');
-        pageRef.getParameters().put('_CONFIRMATIONTOKEN','abc');
-        pageRef.getParameters().put('save_new_url','asasas');
+        ApexPages.currentPage().getParameters().put('cancelURL','abc');
+        ApexPages.currentPage().getParameters().put('ent','abc');
+        ApexPages.currentPage().getParameters().put('_CONFIRMATIONTOKEN','abc');
+        ApexPages.currentPage().getParameters().put('save_new_url','asasas');
         //pageRef.getParameters().put('id', ListOfCases.get(0).id);
+        PageReference pageRef = ApexPages.currentPage();
         Test.setCurrentPage(pageRef);
         String ref;
         QuickActionsController pagExt = new QuickActionsController();

@@ -461,40 +461,42 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>PRM_Entitlement_Id__c</columns>
         <columns>PRM_Partner_Benefit_Id__c</columns>
+        <columns>PRM_Entitlement_Id__c</columns>
         <columns>PRM_AGS_Role__c</columns>
         <columns>PRM_Contact_Relationship_Id__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>PRM_Approval_Type_Nm__c</columns>
         <columns>PRM_IsActive_Ind__c</columns>
         <columns>RECORDTYPE</columns>
         <columns>PRM_Channel_Program_Id__c</columns>
         <columns>PRM_Channel_Program_Level_Id__c</columns>
         <columns>PRM_IPA_Partner_Role_Nm__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>Entitlement_Matrix_IPA_Refresh</fullName>
+        <fullName>Entitilement_Matrix_IPA_Refresh</fullName>
         <columns>NAME</columns>
-        <columns>PRM_AGS_Role__c</columns>
-        <columns>PRM_Approval_Type_Nm__c</columns>
-        <columns>PRM_Contact_Relationship_Id__c</columns>
-        <columns>PRM_Entitlement_Id__c</columns>
-        <columns>PRM_IsActive_Ind__c</columns>
         <columns>PRM_Partner_Benefit_Id__c</columns>
-        <columns>PRM_Channel_Program_Id__c</columns>
-        <columns>PRM_IPA_Partner_Role_Nm__c</columns>
-        <columns>PRM_Channel_Program_Level_Id__c</columns>
+        <columns>PRM_Entitlement_Id__c</columns>
+        <columns>PRM_AGS_Role__c</columns>
+        <columns>PRM_Contact_Relationship_Id__c</columns>
+        <columns>PRM_Approval_Type_Nm__c</columns>
+        <columns>PRM_IsActive_Ind__c</columns>
         <columns>RECORDTYPE</columns>
+        <columns>PRM_IPA_Partner_Role_Nm__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>PRM_Channel_Program_Id__c</columns>
+        <columns>PRM_IPARefreshCheck__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PRM_IPARefreshCheck__c</field>
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Entitlement Matrix - IPA Refresh</label>
+        <label>Entitilement Matrix - IPA Refresh</label>
     </listViews>
     <listViews>
         <fullName>IQR_Entitlements</fullName>
@@ -510,9 +512,9 @@
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>PRM_Channel_Program_Id__c</field>
+            <field>RECORDTYPE</field>
             <operation>equals</operation>
-            <value>Intel Quote Request</value>
+            <value>0122i000000CzKG</value>
         </filters>
         <label>IQR Entitlements</label>
     </listViews>
@@ -526,9 +528,9 @@
         <columns>PRM_Approval_Type_Nm__c</columns>
         <columns>PRM_IsActive_Ind__c</columns>
         <columns>RECORDTYPE</columns>
+        <columns>PRM_IPA_Partner_Role_Nm__c</columns>
         <columns>PRM_Channel_Program_Level_Id__c</columns>
         <columns>PRM_Channel_Program_Id__c</columns>
-        <columns>PRM_IPA_Partner_Role_Nm__c</columns>
         <filterScope>Everything</filterScope>
         <label>Entitlements With Benefits</label>
     </listViews>
@@ -545,24 +547,20 @@
         <columns>PRM_IPA_Partner_Role_Nm__c</columns>
         <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_IPA_Partner_Role_Nm__c</field>
-            <operation>equals</operation>
-            <value>Original Equipment Manufacturer (OEM)</value>
-        </filters>
-        <filters>
-            <field>PRM_Contact_Relationship_Id__c</field>
-            <operation>equals</operation>
-            <value>Employee</value>
-        </filters>
         <label>Entitlements Without Benefits</label>
     </listViews>
     <listViews>
         <fullName>Partner_Community_Entitlements</fullName>
         <columns>NAME</columns>
+        <columns>Communities__c</columns>
         <columns>PRM_Approval_Type_Nm__c</columns>
         <columns>PRM_Entitlement_Id__c</columns>
-        <filterScope>Everything</filterScope>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Communities__c</field>
+            <operation>equals</operation>
+            <value>Intel® Cloud Insider Partner,Intel® FPGA Partner,Intel® IOT Solution Partner</value>
+        </filters>
         <label>Partner Community Entitlements</label>
     </listViews>
     <nameField>
@@ -603,10 +601,6 @@
         </picklistValues>
         <picklistValues>
             <picklist>PRM_IPA_Partner_Role_Nm__c</picklist>
-            <values>
-                <fullName>Builder</fullName>
-                <default>false</default>
-            </values>
             <values>
                 <fullName>Distributor</fullName>
                 <default>false</default>
@@ -677,108 +671,6 @@
         <active>true</active>
         <description>To configure entitlements for Entitlements based programs based on business types and accounts</description>
         <label>EBR Entitlements</label>
-        <picklistValues>
-            <picklist>Communities__c</picklist>
-            <values>
-                <fullName>Intel%C2%AE Cloud Insider Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE FPGA Partner</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel%C2%AE IOT Solution Partner</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Approval_Type_Nm__c</picklist>
-            <values>
-                <fullName>Automatic</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Manual</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_IPA_Partner_Role_Nm__c</picklist>
-            <values>
-                <fullName>Builder</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Distributor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guest</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Independent Software Vendor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Solution Integrator</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>PRM_Partner_Role_Nm__c</picklist>
-            <values>
-                <fullName>Distributor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>FPGA Designer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Guest</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Independent Software Vendor</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Manufacturer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Original Equipment Manufacturer %28OEM%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Seller</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Solution Integrator</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Sponsor</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>IQR_Entitlements</fullName>
-        <active>true</active>
-        <description>To configure entitlements for IQR program based on email domains and accounts</description>
-        <label>IQR Entitlements</label>
         <picklistValues>
             <picklist>Communities__c</picklist>
             <values>

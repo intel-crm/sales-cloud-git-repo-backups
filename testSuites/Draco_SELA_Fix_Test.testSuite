@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_A_E_Notify_Requester_Test</testClassName>
+    <testClassName>Core_Batch_A_E_PermSet_Mgmt_Test</testClassName>
+    <testClassName>Core_Contact_Ent_Controller_Test</testClassName>
+    <testClassName>Core_ContactEntVal_Test</testClassName>
+    <testClassName>Core_Entitlement_Out_Int_Test</testClassName>
+    <testClassName>Core_HttpCallouts_Handler_Test</testClassName>
+    <testClassName>Core_ProactiveAlertAandEFailures_Test</testClassName>
+    <testClassName>Core_UserFieldChangeHistoryTrackerTest</testClassName>
+    <testClassName>Core_UserHandler_Test</testClassName>
+</ApexTestSuite>

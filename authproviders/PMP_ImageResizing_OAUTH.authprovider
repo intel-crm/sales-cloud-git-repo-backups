@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <customMetadataTypeRecord>API_M_Auth_Provider__mdt.PMP_ImageResizing_OAUTH</customMetadataTypeRecord>
-    <executionUser>ipa-system-user@intel.com.crm</executionUser>
+    <executionUser>11753773@intel.com.crm.crmdevint3</executionUser>
     <friendlyName>PMP_ImageResizing_OAUTH</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>

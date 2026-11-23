@@ -52,7 +52,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                              PMP_Account_Program_Membership__c, PMP_Account_Specialty__c,PMP_Is_Distributor_Ind__c,toLabel(PMP_Company_Lead_Gen_Language_Nm__c)
                              FROM PMP_Company__c where id=:partnerId LIMIT 1];
 					*/
-                    // system.debug('Company*****'+company);
                 }         
             }
             else{//if received company info is not null then use that info to populate partner
@@ -204,7 +203,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                     }
                 }
             }
-            //System.debug(':::programs:::' + programs);
             
             /*
             if(company.PMP_Partner_Program_nm__c!=null && company.PMP_Account_Program_Membership__c!=null){//if program name and membership is not null,splitting it and adding them to the list
@@ -219,33 +217,25 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                 if(String.isEmpty(partnerProgName)){
                     partnerProgName = 'PMP_Partner_Program_Name__c';
                 }
-                system.debug('##123'+partner_progs);
                 for (PMP_SearchPartnerProgram_Config__mdt prog: [select PMP_Partner_Program_Name__c,PMP_Partner_Program_Value__c,
                                                                  PMP_Partner_Program_Name_Chinese__c, PMP_Partner_Program_Name_Japanese__c
                                                                  from PMP_SearchPartnerProgram_Config__mdt where
                                                                  PMP_Partner_Program_Value__c in :partner_progs]){
-                                                                     System.debug('###Tier program NameBy Value '+prog.PMP_Partner_Program_Name__c);
                                                                      if(String.isEmpty((String)prog.get(partnerProgName))){
                                                                          programNameByValue.put(prog.PMP_Partner_Program_Value__c, prog.PMP_Partner_Program_Name__c);
-                                                                          System.debug('###Tier program NameBy Value '+prog.PMP_Partner_Program_Name__c);
                                                                      }
                                                                      else{
                                                                           programNameByValue.put(prog.PMP_Partner_Program_Value__c, (String)prog.get(partnerProgName));
-                                                                          System.debug('###Tier programNameByValue '+(String)prog.get(partnerProgName));
                                                                      }
                                                                      
                                                                  }
                 
                 //populating partner program attributes for partner card
-                System.debug('###Tier programNameByValue '+programNameByValue);
                
                 for(Integer i = 0; i < partner_tiers.size(); i++){
-                    system.debug('--###partner_tiers*--'+partner_tiers[i].split('-')[0]);
                     Types type=new Types();
                     //if company membership contains '-' populate Program membership attribute as : for 'ITP - Gold' membership 'Program Membership' attribute should be 'Intel® Technology Provider Program - GOLD'
                     if(partner_tiers[i].contains('-')){
-                        system.debug('###partner_tiers'+partner_tiers[i]);
-                        system.debug('programNameByValue map'+programNameByValue);
                         
                         type.id = programNameByValue.get(partner_tiers[i].split('-')[0].trim()) + ' - ' + partner_tiers[i].split('-')[1].trim().capitalize();
                        // type.name = programNameByValue.get(partner_tiers[i].split('-')[0].replace(' ','')) + ' - ' + partner_tiers[i].split('-')[1].replace(' ','').capitalize();  
@@ -253,7 +243,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                         
                         programs.types.add(type);
                     }else{
-                         system.debug('--###partner_tiers*--'+partner_tiers[i].split('-')[0]);
                         type.id = programNameByValue.get(partner_tiers[i]);
                         type.name = programNameByValue.get(partner_tiers[i]);
                         programs.types.add(type);
@@ -492,7 +481,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                     String key = ppName.contains('manufacturer') ? 'manufacturer' : (ppName.contains('solution') ? 'solution' : (ppName.contains('fpga') ? 'fpga' : 'distributor'));
                     ppNameAndppId.put(key, ppgm.Id);
                 }
-                //System.debug(':::ppNameAndppId:::' + ppNameAndppId);
                                 
                 if(String.isNotBlank(pp)) {
                     pp = pp.toLowerCase();
@@ -508,7 +496,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                     }
                     ppId = (pp.contains('manufacturer') && mftFlag) ? ppNameAndppId.get('manufacturer') : (pp.contains('solution') || pp.contains('provider') || pp.contains('software') || (pp.contains('manufacturer') && !mftFlag) ? ppNameAndppId.get('solution') : (pp.contains('fpga') ? ppNameAndppId.get('fpga') : ppNameAndppId.get('solution')));
                 }  
-                //System.debug(':::ppId::' + ppId + ':::' + isProductDetail);
                 if(String.isBlank(ppId)) ppId = ppNameAndppId.get('solution');
                 
                 if(!isProductDetail){
@@ -561,7 +548,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                         Types type = new Types();
                         type.name = PMP_SearchUtilityController.getLocalisedName(reg, '', langCode);
                         type.Id = reg.PMP_Specification_Id__c;
-                        // System.debug('Specifictaion Id'+reg.PMP_Specification_Id__c);
                         SearchParams params = new SearchParams();
                         params.selectedFilters = new Map<String,List<String>>();
                         params.type = 'partner';    
@@ -574,7 +560,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                         
                         params.selectedFilters.put(parent.Id, filterList);
                         type.searchParams=params;   
-                        //System.debug('::params:::' + params);
                         regTypeMap.get(reg.PMP_Specification_Id__r.PMP_Parent_Specification_Id__c).types.add(type);
                         regTypeMap.put(reg.PMP_Specification_Id__c,null);   //Adding id of subreg to avoide duplicate values
                         
@@ -590,7 +575,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                         type.name = reg.PMP_Specification_Value__r.Name;
                         type.name= userLang == 'en_US' ? reg.PMP_Specification_Value__r.Name : userLang=='zh_CN' ? reg.PMP_Specification_Value__r.PMP_Specification_Value_Chinese_Cd__c : reg.PMP_Specification_Value__r.PMP_Specification_Value_Japanese_Cd__c;
                         type.Id = reg.PMP_Specification_Value__c;
-                        // System.debug('Specifictaion Id'+reg.PMP_Specification_Id__c);
                         SearchParams params = new SearchParams();
                         params.selectedFilters = new Map<String,List<String>>();
                         params.type = 'partner';    
@@ -603,7 +587,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
                         
                         params.selectedFilters.put(parent.Id, filterList);
                         type.searchParams=params;   
-                        //System.debug('::params:::' + params);//pimIdSpecIdMap.get(specVal.PMP_Specification_Product_Cd__c)
                         regTypeMap.get(pimIdSpecIdMap.get(reg.PMP_Specification_Value__r.PMP_Specification_Product_Cd__c)).types.add(type);
                         
                         if(mapIdToSectionVal.containskey(reg.PMP_Specification_Value__r.PMP_Specification_id__c)){
@@ -617,7 +600,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
             }
             return att;
         }catch(Exception e){
-            //system.debug('Error while fetching region attribute for Partner Card : '+ e.getMessage()+ '' + e.getLineNumber());
             throw new AuraHandledException('Error while fetching region attribute for Partner Card : '+ e.getMessage()+ '' + e.getLineNumber());
         }
     }
@@ -709,7 +691,6 @@ public with sharing class PMP_ProductPartnerDetailsController extends PMP_Search
             }
             
         }catch(Exception e){
-            //system.debug('Error while fetching Industry/Application attribute for Partner Card : '+ e.getMessage()+ '' + e.getLineNumber());
             throw new AuraHandledException('Error while fetching Industry/Application attribute for Partner Card : '+ e.getMessage()+ '' + e.getLineNumber());
         }
         return att;   

@@ -43,7 +43,7 @@ Called on   :   After Insert
         List<Core_MDF_Target_Setting_Line_Item__c> lineItemsList= new List<Core_MDF_Target_Setting_Line_Item__c>();
         List<Core_MDF_Target_Setting_LineItem_Config__c> LineItemConfigList = new List<Core_MDF_Target_Setting_LineItem_Config__c>();
         List<String> TopAccEnabledBudgetTypes = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_TrgtStngTopAccEnabledBdgtTypes').split(';');
-
+        Map<Id, String> accIdToGeoMap = new Map<Id,String>();
         Map<String, List<Core_MDF_Target_Setting_LineItem_Config__c>> programToLineItemListMap = new Map<String, List<Core_MDF_Target_Setting_LineItem_Config__c>>();
         Map<String, List<Account>> programToAccListMap = new Map<String, List<Account>>();
         Set<String> programIdSet = new Set<String>();
@@ -161,7 +161,7 @@ Called on   :   Before Insert, Before Update
             Set<String> programSet = new Set<String>();
             Integer recordIdCount = 1;
             Map<String,Core_MDF_Target_Setting__c> idToTargetSetRecMap = new Map<String,Core_MDF_Target_Setting__c>();
-
+            Set<String> executedRecId = new Set<String>();
             Map<String,Core_MDF_Target_Setting__c> draftTargetSettingMap = new Map<String,Core_MDF_Target_Setting__c>();
             set<String> duplicateRecIdSet = new set<String>();
             Map<String,Core_MDF_Target_Setting__c> subDraftTargetSetMap = new Map<String,Core_MDF_Target_Setting__c>();
@@ -350,7 +350,7 @@ Called on   :   Before Insert
         Set<String> programIdSet = new Set<String>();
         Map<String,String> idToProgramMap = new Map<String,String>();
         
-
+        Map<String, Schema.SObjectField> fieldsMap = Schema.getGlobalDescribe().get('Core_MDF_Target_Setting__c').getDescribe().Fields.getMap();
         try{
 
             for(Core_MDF_Target_Setting__c targetSettingRecord : newTargetSettingList){

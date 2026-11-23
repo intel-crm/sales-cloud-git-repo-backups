@@ -29,17 +29,22 @@ public with Sharing class ER_ABT_TriggerHandler_Utility {
             for (PRM_Registration_Request__c req : regReqs) 
             {
                 reqAcctIdMap.put(req.PRM_Salesforce_ID__c,req.Id);
+                //Retrive validation to be skipped from metadata
+                //ER_skipValidation__mdt skipV = [Select ValidationFields__c from ER_skipValidation__mdt where ProgramCode__c = 'IPA'];
                 //Check if ABT is already added in approved status, if yes ignore else add new ABT
+                //String skipV=system.label.ER_IPA_Skip_Validation;
                 if(abtApprovedMap.get(req.PRM_Salesforce_ID__c) == null)
                 {
-                    Account_Business_Types__c abt = new Account_Business_Types__c(Account__c = req.PRM_Salesforce_ID__c,
-                                                                                  Business_Types__c = entBusinessTypeMap.get(req.Entitlement_Details__c),
+                    Account_Business_Types__c abt = new Account_Business_Types__c(Account__c = req.PRM_Salesforce_ID__c, 
+                                                                                  Business_Types__c = entBusinessTypeMap.get(req.Entitlement_Details__c), 
                                                                                   Status__c = 'Approved',
                                                                                   skipValidation__c = system.label.ER_IPA_Skip_Validation);
-                                                                                                                                              
                     abtToBeInserted.add(abt);
                 }
             }
+           
+            //if(abtToBeInserted.size() > 0)
+            //{
                 if(Schema.sObjectType.Account_Business_Types__c.isCreateable() && abtToBeInserted.size() > 0)
                 {
                     Database.SaveResult[] srList = Database.insert(abtToBeInserted, false);
@@ -67,6 +72,7 @@ public with Sharing class ER_ABT_TriggerHandler_Utility {
 						failedReqIdMap.put(reqAcctIdMap.get(abt.Account__c),'ABT insertion failed due to insufficient access');
 					}
 				}
+            //}
         }
         catch(Exception ex)
         {
@@ -127,9 +133,12 @@ public with Sharing class ER_ABT_TriggerHandler_Utility {
                     throw new ER_ErrorUtility.CustomException('exception');
                 }
             }
+            //if(cbtsToUpdate.size() > 0){
                 if(Schema.sObjectType.Contact_Business_Types__c.isUpdateable() && cbtsToUpdate.size() > 0){
                     update cbtsToUpdate;
                 }
+                
+            //}
             
         }
         catch(Exception ex) {

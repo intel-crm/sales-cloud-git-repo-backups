@@ -128,7 +128,7 @@
                 <identifier>force_detailPanel2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-36aff17b-ca1b-43f8-b892-223f0f48ec12</name>
+        <name>Facet-ab3b631d-7921-46d9-805c-e0360a6e265a</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -136,7 +136,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-36aff17b-ca1b-43f8-b892-223f0f48ec12</value>
+                    <value>Facet-ab3b631d-7921-46d9-805c-e0360a6e265a</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -146,7 +146,7 @@
                 <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-93d94163-66f1-44b9-976d-7d2058389974</name>
+        <name>Facet-ba6cab3e-b6e6-4652-a5d3-176f846a6ad9</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -154,7 +154,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-93d94163-66f1-44b9-976d-7d2058389974</value>
+                    <value>Facet-ba6cab3e-b6e6-4652-a5d3-176f846a6ad9</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>

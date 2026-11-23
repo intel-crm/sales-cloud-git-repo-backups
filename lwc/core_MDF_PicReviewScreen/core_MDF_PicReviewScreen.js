@@ -61,7 +61,6 @@ import outComeBasedCampaignName from '@salesforce/label/c.Core_MDF_OutcomeBasedC
 import picReviewScreenAccordionTitleOutcomeBased from '@salesforce/label/c.Core_MDF_PIC_Review_Accordion_Title_Outcome_Based';
 import OutcomeBasedInternalLink from '@salesforce/label/c.Core_MDF_Outcome_Internal_Link';  
 
-
 export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningElement) {
     @api claimRecordData;
     @api recordId;
@@ -233,6 +232,7 @@ export default class Core_MDF_PicReviewScreen extends NavigationMixin(LightningE
         refreshApex(this.completeClaimResponse);
         this.isClaimRefreshed = true;
     }
+    
 
     //To get Claim and activity details to display in the expandable section
     getClaimAndActivityDetails() {

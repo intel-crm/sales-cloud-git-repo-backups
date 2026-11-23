@@ -83,7 +83,7 @@
             <column>Name</column>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Anthony,Liu</value>
+            <value>Bosset,Liu</value>
         </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
@@ -132,14 +132,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Anthony,Jerry Liu</value>
+            <value>Bosset,Jerry Liu</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Anthony,Liu</value>
+            <value>Bosset,Liu</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

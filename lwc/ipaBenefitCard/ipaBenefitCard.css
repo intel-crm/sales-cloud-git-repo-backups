@@ -5,6 +5,16 @@
 .ipabenefit-card-container {
     background: var( --white)
 }
+.docebo-section {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+.docebo-loading {
+    position: relative;
+    min-height: 120px;
+    width: 100%;
+}
 
 .accordionClass{
     --sds-c-accordion-heading-font-size:1.076rem;

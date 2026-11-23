@@ -106,6 +106,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>CRM_VBS_SOAR__c.CRM_VBS_Other_Notes__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>CRM_VBS_SOAR__c.CRM_VBS_Primary_Lawyer__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -171,4 +176,8 @@
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>UseAnyApiAuth</name>
+    </userPermissions>
 </PermissionSet>

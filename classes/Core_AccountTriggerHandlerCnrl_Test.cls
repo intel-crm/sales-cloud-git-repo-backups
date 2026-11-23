@@ -348,7 +348,7 @@ public with sharing class Core_AccountTriggerHandlerCnrl_Test {
                 Test.stopTest();
         }
 
-        /*@isTest
+        @isTest
         private static void whenmembershipFlagUpdate(){
                 List<Account> oldAccount = [Select Id,Name,Core_Survivor_Account_Id__c,Core_Business_Party_Id__c,Core_Data_Simplified_Account_Nm__c,Core_Data_Country_Nm__c,Core_Prime_Account_Name__c,ParentId,RecordTypeId,BillingCountryCode,BillingCountry,ShippingCountryCode,ShippingCountry,OwnerId from Account where Name = 'TestParentAccount'];
                 oldAccount[0].ownerId = UserInfo.getUserId();
@@ -365,9 +365,9 @@ public with sharing class Core_AccountTriggerHandlerCnrl_Test {
                 
                 Map<Id,Account> newMapAccount = new Map<Id,Account> (newAccount);
                 Test.startTest();
-                Core_AccountTriggerHandlerController.membershipFlagUpdate(oldAccount,newAccount,oldMapAccount,newMapAccount);
+                //Core_AccountTriggerHandlerController.membershipFlagUpdate(oldAccount,newAccount,oldMapAccount,newMapAccount);
                 Test.stopTest();
-        }*/
+        }
 
 
         @isTest
@@ -741,6 +741,11 @@ public with sharing class Core_AccountTriggerHandlerCnrl_Test {
             List<ACM_Integration_Message_Queue__c> intMessageQueue = [SELECT ID FROM ACM_Integration_Message_Queue__c];
             System.assert(intMessageQueue.size()>0,'size should be greater then zero');
         }
+    	
+ 		
+
+
+
         
 
 

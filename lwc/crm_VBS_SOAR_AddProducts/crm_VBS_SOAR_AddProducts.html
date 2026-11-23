@@ -27,7 +27,7 @@
           <div if:true={rowSelerror} data-id="focusOnErrorBannerId" style="color:crimson;">{rowSelerror}</div>
           <div if:false={showBackToResultsButton}>
             <button class="slds-button" disabled={disableButton} onclick={showSelectedRecords}>
-              <div class="itemColor slds-p-bottom_xx-small" style="font-size: 13px;">Show Selected ({rowCount})</div>
+             <div class="itemColor slds-p-bottom_xx-small" style="font-size: 13px;">Show Selected ({rowCount})</div>
             </button> 
             <div if:true={hasData} class="slds-table_bordered slds-is-relative" style="height:400px;">
               <!--<div if:true={spinner} class="slds-align_absolute-center">
@@ -52,12 +52,12 @@
                             max-column-width="1000px"
                             >
                 </lightning-datatable>
-              </div>
+            </div>
             </div>
             <div if:false={hasData} class="box">
               <div if:true={noData} class="box">
-                  No items to display.
-              </div>
+              No items to display.
+            </div>
               <div if:false={noData} class="box">
               </div>
             </div>

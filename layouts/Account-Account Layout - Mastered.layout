@@ -47,9 +47,13 @@
             </containers>
         </primaryTabComponents>
     </customConsoleComponents>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>GenerateKnowledge</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
+    <excludeButtons>SmartFillEnrich</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -93,6 +97,18 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Unified_Hierarchy_View__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Location_State_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Business_Party_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Altera_Acts__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -249,6 +265,14 @@
                 <behavior>Edit</behavior>
                 <field>Core_Physical_Location__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Compliance_Status__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Compliance_Watch_List_Type__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -268,10 +292,6 @@
         <editHeading>true</editHeading>
         <label>Additional Information</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Business_Party_Id__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Fully_Executed_NDA__c</field>
@@ -334,10 +354,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_CoMarketingActive__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_CoMarketingAgency__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -390,30 +406,11 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Partner Program Details</label>
+        <layoutColumns/>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Partner_Alliance_Program__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns/>
-        <style>TwoColumnsTopToBottom</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Partner Profile</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_User_Defined_Number_of_Employees__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPA_Partner_Segment__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -575,46 +572,67 @@
             <sortOrder>11</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_Product_Recommendations</actionName>
-            <actionType>CustomButton</actionType>
+            <actionName>Account.Create_Associate_1PID</actionName>
+            <actionType>QuickAction</actionType>
             <sortOrder>12</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_Lex_Account_Sharing</actionName>
+            <actionName>Core_Product_Recommendations</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>13</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_IPS_PAR_Lex</actionName>
+            <actionName>Core_Lex_Account_Sharing</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>14</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>EnableAsPartner</actionName>
-            <actionType>StandardButton</actionType>
+            <actionName>Core_IPS_PAR_Lex</actionName>
+            <actionType>CustomButton</actionType>
             <sortOrder>15</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Account.Create_ICS_Case_LWC</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>16</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Account.View_ICS_Cases_LWC</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>17</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Account.Create_Associate_1PID</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>18</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Account.Delink_OPID</actionName>
             <actionType>QuickAction</actionType>
+            <sortOrder>16</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>EnableAsPartner</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>17</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.Create_ICS_Case_LWC</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>18</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.View_ICS_Cases_LWC</actionName>
+            <actionType>QuickAction</actionType>
             <sortOrder>19</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SalesAIRelationshipGraph</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>20</sortOrder>
+        </platformActionListItems>
     </platformActionList>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Deal_Opportunity__c.PRM_End_Customer_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Deal_Opportunity__c.PRM_Partner_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Account_Specialty_Association__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_AccountBenefitAssociation__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
     <relatedLists>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
@@ -637,10 +655,6 @@
         <relatedList>RelatedContactList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>UniTag__Tag__c</fields>
-        <relatedList>UniTag__Tagging__c.UniTag__Account__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
@@ -652,6 +666,19 @@
         <fields>PRM_Point_Status_Dt__c</fields>
         <fields>PRM_Record_Link__c</fields>
         <relatedList>PRM_IPAMembership_Attributes__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>PRM_Field__c</fields>
+        <fields>PRM_User__c</fields>
+        <fields>PRM_Old_Value__c</fields>
+        <fields>PRM_New_Value__c</fields>
+        <fields>PRM_Date__c</fields>
+        <relatedList>PRM_IPA_Attribute_History__c.PRM_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>UniTag__Tag__c</fields>
+        <relatedList>UniTag__Tagging__c.UniTag__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>NewContact</excludeButtons>
@@ -694,10 +721,6 @@
         <fields>RECORDTYPE</fields>
         <fields>CREATED_DATE</fields>
         <fields>LAST_UPDATE</fields>
-        <fields>CRM_Start_Date__c</fields>
-        <fields>CRM_Start_Time__c</fields>
-        <fields>CRM_Scheduled_End_Date__c</fields>
-        <fields>CRM_Scheduled_End_Time_Only__c</fields>
         <relatedList>Executive_Meeting_Brief__c.Account__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -746,6 +769,7 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>Core_Partner_Account_Id__c</fields>
+        <fields>Core_MDA_Ind__c</fields>
         <fields>Core_Inactive_Ind__c</fields>
         <relatedList>Core_Account_Group_Member__c.Core_Intel_Account_Id__c</relatedList>
     </relatedLists>
@@ -882,14 +906,6 @@
         <relatedList>PRM_AccountChannelMembership__c.PRM_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>PRM_Partner_Benefit_Id__c</fields>
-        <fields>PRM_Status_Nm__c</fields>
-        <fields>PRM_Source__c</fields>
-        <fields>CREATED_DATE</fields>
-        <fields>PRM_Record_Link__c</fields>
-        <relatedList>PRM_AccountBenefitAssociation__c.PRM_Account_Id__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <fields>NAME</fields>
         <fields>Core_Status__c</fields>
         <relatedList>Core_IPS_Account__c.Core_Account__c</relatedList>
@@ -928,6 +944,7 @@
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>PRM_Builder_Strategy__c</fields>
         <fields>PRM_Active__c</fields>
         <fields>CREATEDBY_USER</fields>
@@ -944,6 +961,17 @@
         <fields>Status_Update__c</fields>
         <fields>LAST_UPDATE</fields>
         <relatedList>Account_Status__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>Status</fields>
+        <fields>StartDate</fields>
+        <fields>EndDate</fields>
+        <relatedList>AccountPlans</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>ER_Account_Business_Partner__c.ER_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>CAMPAIGN.NAME</fields>

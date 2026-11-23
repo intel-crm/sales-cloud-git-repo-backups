@@ -38,23 +38,33 @@ public class PRM_BenefitAssignment_Batch implements Database.Batchable<SObject>,
         // Prepare Account -> ACM mapping
         Map<Id, List<PRM_AccountChannelMembership__c>> accountIdAcmMap = new Map<Id, List<PRM_AccountChannelMembership__c>>();
         Set<Id> accIds = new Set<Id>();
+        Map<Id, String> accChMemMap = new Map<Id, String>();
 
-        
+        Map<Id, String> actIdRoleTierMap = new Map<Id, String>(); 
+        Map<Id,Id> actToOPIDMap = new Map<Id,Id>();
 
         for (Account acc : scope) {
             if (acc.Channel_Memberships1__r != null && acc.Channel_Memberships1__r.size() > 0) {
                 accIds.add(acc.Id);
                 accountIdAcmMap.put(acc.Id, acc.Channel_Memberships1__r);
-                
-                
-                //PRM_AccountChannelMembership__c acm = new PRM_AccountChannelMembership__c();
-                //acm = acc.Channel_Memberships1__r;
-
-                //actIdRoleTierMap.put(acc.Id, acm.PRM_Partner_Role__c+'-'+acm.PRM_Channel_Program_Level_Id__c);
             }
         }
 
-        
+        Set<Id> IntelAccs = new Set<Id>();
+        for(Core_Account_Group_Member__c cag : [SELECT id,Core_Intel_Account_Id__c,Core_Partner_Account_Id__c FROM Core_Account_Group_Member__c WHERE Core_Inactive_Ind__c = false AND Core_Partner_Account_Id__c IN: accIds]){
+            IntelAccs.add(cag.Core_Intel_Account_Id__c);
+        }
+
+        for(Account intelacc : [SELECT Id, Core_IPA_One_Partner_Id__c,(SELECT Id, PRM_Partner_Role__c, PRM_Channel_Program_Level_Id__r.Name, PRM_Status_Nm__c FROM Channel_Memberships1__r WHERE PRM_Status_Nm__c='Approved') FROM Account WHERE RecordType.Name = 'Intel Account' AND Core_Deactivated__c = false and ID IN: IntelAccs]){
+            //For ent wrapper
+                PRM_AccountChannelMembership__c acm = new PRM_AccountChannelMembership__c();
+                acm = intelacc.Channel_Memberships1__r;
+
+                accChMemMap.put(intelacc.id,acm.PRM_Partner_Role__c);
+                actIdRoleTierMap.put(intelacc.Id, acm.PRM_Partner_Role__c+'-'+acm.PRM_Channel_Program_Level_Id__c);
+                actToOPIDMap.put(intelacc.Id,intelacc.Core_IPA_One_Partner_Id__c);
+        }
+
         // Fetch existing ABA records
         Map<String, Set<PRM_AccountBenefitAssociation__c>> accBenMap = new Map<String, Set<PRM_AccountBenefitAssociation__c>>();
         try {
@@ -211,243 +221,35 @@ public class PRM_BenefitAssignment_Batch implements Database.Batchable<SObject>,
 
         //--------------------------------------------Entitlement records retrieval code-------------------------------------------------
 
-
-        Map<Id, List<PRM_VXEnttlmntMatrix__c>> benefitIdVxEntListMap  = new Map<Id, List<PRM_VXEnttlmntMatrix__c>>();
-        Map<String, List<PRM_VXEnttlmntMatrix__c>> partnerRoleTierVxEntListMap  = new Map<String, List<PRM_VXEnttlmntMatrix__c>>();
-
-        //get the entitlement matrix for IPA refresh and classify as benefit based entitlement and entitlements without benefits
-        for(PRM_VXEnttlmntMatrix__c vxEntlmnMatRec :[select name,Account__r.name,PRM_AGS_Role__c,PRM_Channel_Program_Level_Id__c,PRM_IsActive_Ind__c,PRM_Channel_Program_Level_Id__r.name,
-                                                    PRM_Contact_Relationship_Id__r.name,PRM_Entitlement_Id__c,PRM_IPA_Partner_Role_Nm__c,Communities__c, PRM_Partner_Benefit_Id__c, RecordType.DeveloperName
-                                                    from PRM_VXEnttlmntMatrix__c where /*PRM_Approval_Type_Nm__c =:Label.PRM_ApprovalType  and*/ PRM_IsActive_Ind__c = True
-                                                    and PRM_Channel_Program_Id__r.name='Intel Partner Alliance' and PRM_IPARefreshCheck__c = True]){
-            if(vxEntlmnMatRec.RecordType.DeveloperName==Label.PRM_EntitlementWithBenefits){
-                if(benefitIdVxEntListMap!=null && !benefitIdVxEntListMap.isEmpty() && benefitIdVxEntListMap.containsKey(vxEntlmnMatRec.PRM_Partner_Benefit_Id__c)){                   
-                    benefitIdVxEntListMap.get(vxEntlmnMatRec.PRM_Partner_Benefit_Id__c).add(vxEntlmnMatRec);                       
-                }else{
-                    benefitIdVxEntListMap.put(vxEntlmnMatRec.PRM_Partner_Benefit_Id__c,new List<PRM_VXEnttlmntMatrix__c>{vxEntlmnMatRec});
-                }
-            }else if(vxEntlmnMatRec.RecordType.DeveloperName==Label.PRM_EntitlementWithoutBenefits){               
-                if(partnerRoleTierVxEntListMap!=null && !partnerRoleTierVxEntListMap.isEmpty() && partnerRoleTierVxEntListMap.containsKey(vxEntlmnMatRec.PRM_IPA_Partner_Role_Nm__c+'-'+vxEntlmnMatRec.PRM_Channel_Program_Level_Id__r.name)){
-                    List<PRM_VXEnttlmntMatrix__c> vxMatRec = partnerRoleTierVxEntListMap.get(vxEntlmnMatRec.PRM_IPA_Partner_Role_Nm__c+'-'+vxEntlmnMatRec.PRM_Channel_Program_Level_Id__r.name);
-                    vxMatRec.add(vxEntlmnMatRec);
-                    partnerRoleTierVxEntListMap.put(vxEntlmnMatRec.PRM_IPA_Partner_Role_Nm__c+'-'+vxEntlmnMatRec.PRM_Channel_Program_Level_Id__r.name,vxMatRec);
-                }else{
-                    partnerRoleTierVxEntListMap.put(vxEntlmnMatRec.PRM_IPA_Partner_Role_Nm__c+'-'+vxEntlmnMatRec.PRM_Channel_Program_Level_Id__r.name,new List<PRM_VXEnttlmntMatrix__c>{vxEntlmnMatRec});
-                }
-            }
-        }
-
-        Set<Id> IntelAccs = new Set<Id>();
-        //get all intel accs
-        for(Core_Account_Group_Member__c cag : [SELECT id,Core_Intel_Account_Id__c,Core_Partner_Account_Id__c FROM Core_Account_Group_Member__c WHERE Core_Inactive_Ind__c = false AND Core_Partner_Account_Id__c IN: accIds]){
-            IntelAccs.add(cag.Core_Intel_Account_Id__c);
-        }
-        Map<Id, List<String>> accChnMemMap = new Map<Id, List<String>>();
-        Map<Id,List<Id>> opidIntelMap = new Map<Id,List<Id>>();
-
-        //get the intel accs and related ACM records for role and tier value
-        for(Account intelacc : [SELECT Id, Core_IPA_One_Partner_Id__c,(SELECT Id, PRM_Partner_Role__c, PRM_Channel_Program_Level_Id__r.Name, PRM_Status_Nm__c FROM Channel_Memberships1__r WHERE PRM_Status_Nm__c='Approved') FROM Account WHERE RecordType.Name = 'Intel Account' AND Core_Deactivated__c = false AND ID IN: IntelAccs AND ID IN (SELECT PRM_Account_Id__c FROM PRM_AccountChannelMembership__c WHERE PRM_Status_Nm__c = 'Approved' )]){
-            //For ent wrapper
-                List<PRM_AccountChannelMembership__c> acmList = new List<PRM_AccountChannelMembership__c>();
-                acmList = intelacc.Channel_Memberships1__r;
-                for(PRM_AccountChannelMembership__c acm: acmList){
-                    if(accChnMemMap.containsKey(intelacc.Id)){
-                        accChnMemMap.get(intelacc.id).add(acm.PRM_Partner_Role__c+'-'+acm.PRM_Channel_Program_Level_Id__r.Name);
-                    }else{
-                        accChnMemMap.put(intelacc.Id,new List<String>{acm.PRM_Partner_Role__c+'-'+acm.PRM_Channel_Program_Level_Id__r.Name});
-                    }
-                }
-                if(opidIntelMap.containsKey(intelacc.Core_IPA_One_Partner_Id__c)){
-                    List<Id> intaccs = opidIntelMap.get(intelacc.Core_IPA_One_Partner_Id__c);
-                    intaccs.add(intelacc.Id);
-                    opidIntelMap.put(intelacc.Core_IPA_One_Partner_Id__c,intaccs);
-
-                }else{
-                    opidIntelMap.put(intelacc.Core_IPA_One_Partner_Id__c,new List<Id>{intelacc.Id});
-                }
+        Map<Id, String> tierIdNames = new Map<Id, String>();
+        for(ChannelProgramLevel record : [SELECT Id, Name FROM ChannelProgramLevel WHERE Program.PRM_programCode__c = 'IPA']) {
+            tierIdNames.put(record.Id, record.Name);
         }
 
         Map<Id, Set<Id>> actIdCtIdMap = new Map<Id, Set<Id>>();
-        Map<Id, List<String>> contactIdRelName = new Map<Id, List<String>>(); 
-        Map<Id,String> conRoleMap = new Map<Id,String>();
-
-        //get the acr of the intel account to get the contacts and contact relationship and contact role
-        for(PRM_Account_Contact_Relationship__c acrRec : [SELECT id,PRM_Relationship_Id__r.name,PRM_Account_Id__r.Core_IPA_Partner_Segment__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c, PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, 
-                                                        PRM_Contact_Id__c, PRM_Contact_Id__r.Core_IPA_PartnerRole__c , PRM_Partner_Role__c,PRM_Account_Id__c,PRM_Contact_Id__r.Core_IPA_Contact_Segment__c FROM PRM_Account_Contact_Relationship__c 
-                                                        WHERE PRM_Account_Id__c in: accChnMemMap.keySet() AND PRM_Account_Id__r.RecordType.DeveloperName =:  Label.PRM_Intel_Account AND PRM_InActive_Ind__c=false AND PRM_Status_Nm__c='Complete' ]){
-            if(actIdCtIdMap!=null && !actIdCtIdMap.isEmpty() &&actIdCtIdMap.containsKey(acrRec.PRM_Account_Id__c)){
-                actIdCtIdMap.get(acrRec.PRM_Account_Id__c).add(acrRec.PRM_Contact_Id__c);
-            }else{
-                actIdCtIdMap.put(acrRec.PRM_Account_Id__c, new Set<Id>{acrRec.PRM_Contact_Id__c});
-            }    
-            if(contactIdRelName!=null && !contactIdRelName.isEMpty() && contactIdRelName.containsKey(acrRec.PRM_Contact_Id__c)){
-                contactIdRelName.get(acrRec.PRM_Contact_Id__c).add(acrRec.PRM_Relationship_Id__r.name);
-            }else{
-                contactIdRelName.put(acrRec.PRM_Contact_Id__c,new List<String>{acrRec.PRM_Relationship_Id__r.name});
-            }
-            if(!conRoleMap.containsKey(acrRec.PRM_Contact_Id__c)){
-                conRoleMap.put(acrRec.PRM_Contact_Id__c,acrRec.PRM_Contact_Id__r.Core_IPA_PartnerRole__c);
-            }
-        }
-
-        Map<Id,Set<Id>> contEntMap = new Map<Id,Set<Id>>();
-        //Logic for entitlementwithoutbenefits
-        for(Id acc: accChnMemMap.keySet()){
-            List<PRM_VXEnttlmntMatrix__c> entMatList = new List<PRM_VXEnttlmntMatrix__c>();
-            //first filtering based on role tier combination
-            for(String roleTier: accChnMemMap.get(acc)){
-                if(partnerRoleTierVxEntListMap.containsKey(roleTier)){
-                    entMatList = partnerRoleTierVxEntListMap.get(roleTier);
-                }
-            }
-            Set<Id> contSet = actIdCtIdMap.containsKey(acc)?actIdCtIdMap.get(acc):null;
-            //2nd filtering based on contact role and relationships
-            if(contSet!=null){
-                for(Id cont: contSet){
-                    List<String> contreltns =contactIdRelName.containsKey(cont)? contactIdRelName.get(cont):null;
-                    if(entMatList!=null){  
-                        for(PRM_VXEnttlmntMatrix__c entMat: entMatList){
-                            if(conRoleMap!=null && !conRoleMap.isEmpty() && conRoleMap.containsKey(cont)&& conRoleMap.get(cont)==entMat.PRM_IPA_Partner_Role_Nm__c){
-                                if(contreltns!=null && !contreltns.isEmpty() && contreltns.contains(entMat.PRM_Contact_Relationship_Id__r.Name)){
-                                    if(contEntMap.containsKey(cont)){
-                                        contEntMap.get(cont).add(entMat.PRM_Entitlement_Id__c);
-                                    }else{
-                                        contEntMap.put(cont,new Set<Id>{entMat.PRM_Entitlement_Id__c});
-                                    }            
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-
-        Map<Id,List<Id>> opidBenefitsMap = new Map<Id,List<Id>>();
-        //get OPID benefits
-        for(PRM_AccountBenefitAssociation__c aba: [Select Id, Name,PRM_Partner_Benefit_Id__c,PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Status_Nm__c,PRM_Account_Id__r.Name From PRM_AccountBenefitAssociation__c 
-                                                    Where PRM_Account_Id__c IN : accountIdAcmMap.keySet() AND PRM_Status_Nm__c =:System.Label.PRM_Status_Active]){
-            if(opidBenefitsMap.containsKey(aba.PRM_Account_Id__c)){
-                opidBenefitsMap.get(aba.PRM_Account_Id__c).add(aba.PRM_Partner_Benefit_Id__c);
-            }else{
-                opidBenefitsMap.put(aba.PRM_Account_Id__c,new List<Id>{aba.PRM_Partner_Benefit_Id__c});
-            }
-        }
-        Map<Id,List<PRM_VXEnttlmntMatrix__c>> opidBenefitEntMap = new Map<Id,List<PRM_VXEnttlmntMatrix__c>>();
-        //Logic for benefit based entitlement
-        if(opidBenefitsMap!=null && !opidBenefitsMap.isEmpty()){
-            for(Id acc: opidBenefitsMap.keySet()){
-                List<String> benefitIdList = opidBenefitsMap.get(acc);
-                List<PRM_VXEnttlmntMatrix__c> benefitEntList = new List<PRM_VXEnttlmntMatrix__c>();
-                //filtering benefit based entitlements
-                for(String benefitId: benefitIdList){
-                    if(benefitIdVxEntListMap.containsKey(benefitId)){
-                        benefitEntList.addAll(benefitIdVxEntListMap.get(benefitId));
-                    }
-                }
-                opidBenefitEntMap.put(acc,benefitEntList);
-            }
-        }
-        Map<Id,Set<Id>> opidConMap = new Map<Id,Set<Id>>();
-        
-        if(opidBenefitEntMap!=null && !opidBenefitEntMap.isEmpty()){
-            //getting contacts for the OPID
-            for(Id acc: opidBenefitEntMap.keySet()){
-                List<Id> intelAccList = opidIntelMap.containsKey(acc)?opidIntelMap.get(acc):null;
-                Set<Id> conList = new Set<Id>();
-                if(intelAccList!=null){
-                    for(Id intelAcc: intelAccList){
-                        if(actIdCtIdMap.containsKey(intelAcc)){
-                            conList.addAll(actIdCtIdMap.get(intelAcc));
-                        }
-                    }   
-                }
-                if(conList!=null){
-                    opidConMap.put(acc,conList);
-                }
-            }
-
-            //filtering based on contact relationship
-            for(Id acc: opidBenefitEntMap.keySet()){
-                Set<Id> conSet = opidConMap.containsKey(acc)?opidConMap.get(acc):null;
-                List<PRM_VXEnttlmntMatrix__c> benefitEntList = opidBenefitEntMap.get(acc);
-                if(conSet!=null){
-                    for(Id con: conSet){
-                        List<String> reltns = contactIdRelName.containsKey(con)?contactIdRelName.get(con):null;
-                        if(reltns!=null){
-                            for(PRM_VXEnttlmntMatrix__c entmat:benefitEntList){
-                                if(reltns.contains(entmat.PRM_Contact_Relationship_Id__r.Name)){
-                                    if(contEntMap.containsKey(con)){
-                                        contEntMap.get(con).add(entmat.PRM_Entitlement_Id__c);
-                                    }else{
-                                        contEntMap.put(con,new Set<Id>{entmat.PRM_Entitlement_Id__c});
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        //getting existing entitlements for the contacts
-        Map<Id,Map<Id,Core_Contact_Entitlement__c>> cntEntlmntIdSetMap = new Map<Id,Map<Id,Core_Contact_Entitlement__c>>();
-        for(Core_Contact_Entitlement__c ctEntlmntRecord : [select id,Core_Source__c, Core_Status__c, Core_Contact_Id__c,Core_Contact_Id__r.Core_IPA_Partner_Community__c,Core_Entitlement_Id__c,Core_Entitlement_Id__r.name, Core_Selected__c, Core_Entitlement_Type__c 
-                                                            from Core_Contact_Entitlement__c where Core_Contact_Id__c in :contEntMap.keySet() and Core_Type__c='Entitlement' and Core_Category__c = 'Intel Partner Alliance (IPA)' and
-                                                            (NOT Core_Entitlement_Id__r.Name in :Label.PRM_Employee_Bundle_Entitlements.split(';') )]){
-            if(cntEntlmntIdSetMap!=null && !cntEntlmntIdSetMap.isEmpty() && cntEntlmntIdSetMap.containsKey(ctEntlmntRecord.Core_Contact_Id__c)){              
-                cntEntlmntIdSetMap.get(ctEntlmntRecord.Core_Contact_Id__c).put(ctEntlmntRecord.Core_Entitlement_Id__c,ctEntlmntRecord);                
-            }else{
-                cntEntlmntIdSetMap.put(ctEntlmntRecord.Core_Contact_Id__c,new Map<Id,Core_Contact_Entitlement__c>{ctEntlmntRecord.Core_Entitlement_Id__c=>ctEntlmntRecord});
-            }                
-        }
-
-        //if entitlement matches entitlement matrix then update as complete selected , if doesnt match then make it inactive selected and if no existing record create new one with complete selected
-        if(contEntMap!=null && !contEntMap.isEmpty()){
-            for(Id con: contEntMap.keySet()){
-                Set<Id> entSet = contEntMap.get(con);
-                if(cntEntlmntIdSetMap.containsKey(con)){
-                    for(Id ent: entSet){
-                        if(!cntEntlmntIdSetMap.get(con).containsKey(ent)){
-                            Core_Contact_Entitlement__c ctEnt = new Core_Contact_Entitlement__c();
-                            ctEnt.Core_Contact_Id__c = con;
-                            ctEnt.Core_Entitlement_Id__c = ent;
-                            ctEnt.Core_Selected__c = true;
-                            ctEnt.Core_Status__c = 'Complete';
-                            allCEsToUpsert.add(ctEnt);
+            Map<Id,List<String>> newPartnerRoleMap = new Map<Id, List<String>>();
+            Map<Id, String> contactIdRelName = new Map<id, String>(); 
+            for(PRM_Account_Contact_Relationship__c acrRec : [SELECT id,PRM_Relationship_Id__r.name,PRM_Account_Id__r.Core_IPA_Partner_Segment__c,PRM_Account_Id__r.Core_IPA_Partner_Role__c, PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Contact_Id__c, PRM_Contact_Id__r.Core_IPA_PartnerRole__c , PRM_Partner_Role__c,PRM_Account_Id__c,PRM_Contact_Id__r.Core_IPA_Contact_Segment__c FROM PRM_Account_Contact_Relationship__c WHERE PRM_Account_Id__c in: accChMemMap.keySet() AND PRM_Account_Id__r.RecordType.DeveloperName =:  Label.PRM_Intel_Account AND PRM_InActive_Ind__c=false AND PRM_Status_Nm__c='Complete' AND  PRM_Partner_Role__c in: accChMemMap.values()]){
+                    if(accChMemMap.get(acrRec.PRM_Account_Id__c) == acrRec.PRM_Partner_Role__c)
+                    {
+                        if(actIdCtIdMap!=null && !actIdCtIdMap.isEmpty() &&actIdCtIdMap.containsKey(acrRec.PRM_Account_Id__c)){
+                          actIdCtIdMap.get(acrRec.PRM_Account_Id__c).add(acrRec.PRM_Contact_Id__c);
                         }else{
-                            Core_Contact_Entitlement__c cntEnt = cntEntlmntIdSetMap.get(con).get(ent);
-                            if(cntEnt!=null){
-                                if(cntEnt.Core_Selected__c!=true || cntEnt.Core_Status__c!='Complete'){
-                                    cntEnt.Core_Selected__c = true;
-                                    cntEnt.Core_Status__c = 'Complete';
-                                    allCEsToUpsert.add(cntEnt);
-                                }
-                            }
+                            actIdCtIdMap.put(acrRec.PRM_Account_Id__c, new Set<id>{acrRec.PRM_Contact_Id__c});
                         }
-                    }
-                    Map<Id,Core_Contact_Entitlement__c> cntEntMap = cntEntlmntIdSetMap.get(con);
-                    for(Id entId: cntEntMap.keySet()){
-                        if(!entSet.contains(entId)){
-                            Core_Contact_Entitlement__c cntEnt = cntEntMap.get(entId);
-                            if(cntEnt!=null){
-                                cntEnt.Core_Selected__c = false;
-                                cntEnt.Core_Status__c = 'Complete';
-                                allCEsToUpsert.add(cntEnt);
-                            }
+                    
+                      if(contactIdRelName!=null && !contactIdRelName.isEMpty() && contactIdRelName.containsKey(acrRec.PRM_Contact_Id__c)){
+                            String str = contactIdRelName.get(acrRec.PRM_Contact_Id__c);
+                            str+=acrRec.PRM_Relationship_Id__r.name;
+                            contactIdRelName.put(acrRec.PRM_Contact_Id__c, str);
+                        }else{
+                            contactIdRelName.put(acrRec.PRM_Contact_Id__c, acrRec.PRM_Relationship_Id__r.name + '-');
                         }
                     }
                 }
-            }
-        }
 
-  
 
-        
-
-       
-
-       /* PRM_EntitlementResponseWrapper entWrap = new PRM_EntitlementResponseWrapper();
+        PRM_EntitlementResponseWrapper entWrap = new PRM_EntitlementResponseWrapper();
         //entWrap.accountIdRecTypemap = accountIdRecTypemap;
         entWrap.actIdCtIdMap = actIdCtIdMap;
         entWrap.actIdRoleTierMap = actIdRoleTierMap;
@@ -457,7 +259,7 @@ public class PRM_BenefitAssignment_Batch implements Database.Batchable<SObject>,
         entWrap.newPartnerRoleMap = newPartnerRoleMap;
 
         PRM_IPAR_ACMUpdateAssignEntitlment assignEnt = new PRM_IPAR_ACMUpdateAssignEntitlment();
-        allCEsToUpsert = assignEnt.AssignEntitlements(entWrap);*/
+        allCEsToUpsert = assignEnt.AssignEntitlements(entWrap);
 
         System.debug('Just before insertion--Contact entitlements-----allCEsToUpsert>>'+allCEsToUpsert);
 

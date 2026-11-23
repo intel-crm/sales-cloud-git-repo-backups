@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 07-29-2026
+* @last modified on  : 04-10-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHandler  {
@@ -71,6 +71,7 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
         Set<Id> userIds = new Set<Id>();
         Map<Id,Id> quoteIdtoUpdateFSEUserIdMap = new Map<Id,Id>();
         Map<String,Pricing_Quote_Team_Role_Access_Mapping__mdt> roleMappings = getRolesMappingMdt();
+        //Map<String,Pricing_Quote_Team_Role_AccessMapping__c> roleMappings = getRolesMappingMdt();
         Id commentRecordTypeId = Pricing_Tender_Utility.getRecordTypeId('Pricing_Comments__c',Label.Pricing_Tender_Comment_RecordType_QuoteComment);
         try{
             for(Pricing_Quote_Team__c qtm : quoteTeamMembersMap.values()){
@@ -91,7 +92,7 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
             List<Pricing_Comments__Share> commentShares = new List<Pricing_Comments__Share>();
             Set<Id> quoteIdsForCommentShare = new Set<Id>();
             //Pricing_Tender_PermissionSets_TenderAccountExecutive
-            for(Pricing_Quote_Team__c qtm : [SELECT id,Pricing_Role_Nm__c,Pricing_Quote_Team_Member_Id__c,Pricing_Quote_Id__c,Pricing_Grant_Access_Ind__c,Pricing_Quote_Team_Member_Id__r.Email,Pricing_Quote_Id__r.Pricing_Account_Executive_Nm__r.Email,Pricing_Quote_Id__r.Pricing_Intel_Account_Exec_Email_Txt__c 
+            for(Pricing_Quote_Team__c qtm : [SELECT id,Pricing_Role_Nm__c,Pricing_Quote_Team_Member_Id__c,Pricing_Quote_Id__c,Pricing_Grant_Access_Ind__c,Pricing_Quote_Team_Member_Id__r.Email,Pricing_Quote_Id__r.Pricing_Account_Executive_Nm__r.Email,Pricing_Quote_Id__r.Pricing_Intel_Account_Exec_Email_Txt__c,  Pricing_Quote_Id__r.SBQQ__SalesRep__c  
                                              FROM Pricing_Quote_Team__c WHERE Id IN :quoteTeamMembersMap.keySet() and Pricing_Quote_Team_Member_Id__r.isActive = true]){
                                                  if(userPermSetAssignmentMap.containsKey(qtm.Pricing_Quote_Team_Member_Id__c) 
                                                     && roleMappings.containsKey(qtm.Pricing_Role_Nm__c) &&
@@ -221,17 +222,15 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
         Set<Id> fseDeletedQuotes = new Set<Id>();
         
         for(Pricing_Quote_Team__c qtm: quoteTeamMembersList) {   
-            quoteIds.add(qtm.Pricing_Quote_Id__c);
-            
+            quoteIds.add(qtm.Pricing_Quote_Id__c);            
             qtmIds.add(qtm.Id);
-        }       
-        
+        }
         List<Pricing_Quote_Team__c> quoteTeamLst = [Select id,Pricing_Quote_Id__r.OwnerId,Pricing_Quote_Id__r.SBQQ__SalesRep__c,Pricing_Quote_Id__r.Pricing_Account_Executive_Nm__c,
                                                     Pricing_Quote_Id__r.Pricing_Intel_Account_Exec_Email_Txt__c,Pricing_Quote_Team_Member_Id__c,Pricing_Quote_Team_Member_Id__r.Email,
                                                     Pricing_Role_Nm__c,Pricing_Grant_Access_Ind__c from Pricing_Quote_Team__c where Id IN :qtmIds];
         
         List<SBQQ__Quote__share> quoteSharesToBeDeleted = new List<SBQQ__Quote__share>(); 
-        List<Pricing_Comments__Share> commentsSharesToBeDeleted = new List<Pricing_Comments__Share>();   // vru               
+        List<Pricing_Comments__Share> commentsSharesToBeDeleted = new List<Pricing_Comments__Share>();            
         for(Pricing_Quote_Team__c qtm : quoteTeamLst){
             //to check weather the removing user is a sales rep or owner
             if(qtm.Pricing_Quote_Team_Member_Id__c != qtm.Pricing_Quote_Id__r.SBQQ__SalesRep__c && qtm.Pricing_Quote_Team_Member_Id__c != qtm.Pricing_Quote_Id__r.OwnerId && qtm.Pricing_Role_Nm__c!=Label.Pricing_Quote_Team_Role_FSE){ //
@@ -357,6 +356,17 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
         }       
     } 
     
+    /*private static Map<String,Pricing_Quote_Team_Role_AccessMapping__c> getRolesMappingMdt(){  
+        
+        Map<String,Pricing_Quote_Team_Role_AccessMapping__c> rolesMap = new Map<String,Pricing_Quote_Team_Role_AccessMapping__c>();
+        for(Pricing_Quote_Team_Role_AccessMapping__c mdt : [SELECT Pricing_Role_Nm__c,Pricing_Access_Level_Nm__c,Permission_Set_API_Nm__c
+                                                               FROM Pricing_Quote_Team_Role_AccessMapping__c WHERE Pricing_IsActive_Ind__c=True]){
+                                                                   rolesMap.put(mdt.Pricing_Role_Nm__c, mdt);
+                                                               }
+        return rolesMap;
+    }*/  
+    
+
     private static Map<String,Pricing_Quote_Team_Role_Access_Mapping__mdt> getRolesMappingMdt(){  
         
         Map<String,Pricing_Quote_Team_Role_Access_Mapping__mdt> rolesMap = new Map<String,Pricing_Quote_Team_Role_Access_Mapping__mdt>();
@@ -371,17 +381,13 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
         if(quoteTeam.size() > 0){   
             Set<Id> qtmIds = new Set<Id>();
             for(Pricing_Quote_Team__c qtm : quoteTeam){
+                if(qtm.Pricing_Role_Nm__c != Label.Pricing_Quote_Team_Role_FSE){
                 qtmIds.add(qtm.Id);
+                }
             }
             if(qtmIds.size()>0){
-                if(!System.isFuture() && !System.isBatch()){
-                    Pricing_EmailUtility.sendEmail(qtmIds,Label.Pricing_QuoteTeam_EmailNotification_Template,true);
-                }
-                else{
-                    // Avoid calling @future sendEmail() when already executing in an async context (Batch/Future)
-                    Pricing_EmailUtility.sendEmailInAsyncContext(qtmIds,Label.Pricing_QuoteTeam_EmailNotification_Template,true);
-                }   
-            }    
+                Pricing_EmailUtility.sendEmail(qtmIds,Label.Pricing_QuoteTeam_EmailNotification_Template);
+            }     
         }
     }
     
@@ -426,7 +432,7 @@ public without sharing class Pricing_QuoteTeam_Trigger_Handler extends TriggerHa
     }
 
     public static void getUserPSMap(Set<Id> userIds,Map<Id,List<String>> userPermSetAssignmentMap){
-        for(PermissionSetAssignment psa :[SELECT Id, PermissionSetId, PermissionSet.Name, PermissionSet.ProfileId, PermissionSet.Profile.Name, AssigneeId, Assignee.Name FROM PermissionSetAssignment WHERE AssigneeId IN :userIds]){
+        for(PermissionSetAssignment psa :[SELECT AssigneeId, PermissionSet.Name FROM PermissionSetAssignment WHERE AssigneeId IN :userIds]){
             if(userPermSetAssignmentMap.containsKey(psa.AssigneeId)){
                 userPermSetAssignmentMap.get(psa.AssigneeId).add(psa.PermissionSet.Name);
             }else{

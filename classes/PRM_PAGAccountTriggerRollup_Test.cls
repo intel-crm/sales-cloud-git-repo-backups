@@ -162,7 +162,6 @@ public class PRM_PAGAccountTriggerRollup_Test {
                                                                         Core_Trigger_Events__c = 'after update',
                                                                         Core_Description__c = 'roll up child accounts biz org type and partner segment');
         insert cs;
-        System.debug(cs);
         
         Account a = new Account();
         a.Name = 'Pag Account';

@@ -60,7 +60,6 @@
         }
         
         $('[id$=chkbxKeepCases]').each(function(){
-            console.log(this.checked);
             if(this.checked == true){
                 keepCaseExists = true;
             }
@@ -69,7 +68,6 @@
             }
         });
         $('[id$=chkbxKeepCasesRows]').each(function(){
-            console.log(this.checked);
             if(this.checked == true){
                 keepCaseExists = true;
             }
@@ -111,13 +109,11 @@
         if(lookupType == "003"){
             
             var urlArr = baseURL.split("&");
-            console.log('==urlArr='+urlArr);
             var txtId = '';
             if(urlArr.length > 2) {
                 urlArr = urlArr[1].split('=');
                 txtId = urlArr[1];
             }
-            console.log('===came here==='+lookupType);
             // Following is the url of Custom Lookup page. You need to change that accordingly
             baseURL = "/apex/Core_CustomContactLookup?txt=" + txtId+'&conaccid='+'{!JSENCODE(currContact.Accountid)}';
             
@@ -128,7 +124,6 @@
             }
             
             // Following is the ID of inputField that is the lookup to be customized as custom lookup
-            console.log(txtId.indexOf('conId'));
             if(txtId.indexOf('conId') > -1 ){
                 isCustomLookup = true;
             }

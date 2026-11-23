@@ -679,9 +679,8 @@ query += f.getFieldPath() + ', ';
         catch(Exception e){
             //Utility.addError('There is error while Fetching existing Question using Dynamic SOQL in Field Set. Error Detail - '+e.getMessage()); //This is Utility Method to display error message on VF Page
             //return null;
-            throw new AuraHandledException(e.getMessage());// ATHR fix Gangadhar
         }
-        //return null;
+        return null;
     }
     
     public PageReference cancelCaseDetails(){

@@ -334,13 +334,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_IsLatest__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>IsLatest</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_Is_Custom_Ind__c</fullName>
         <externalId>false</externalId>
         <label>Custom Indicator</label>
@@ -948,12 +941,6 @@
         <unique>false</unique>
     </fields>
     <label>Products Staging</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>ProdSTG-{0000000000}</displayFormat>
         <label>Core Products Staging Name</label>

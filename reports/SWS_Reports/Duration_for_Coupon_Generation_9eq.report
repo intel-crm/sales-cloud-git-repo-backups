@@ -75,7 +75,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Coupon_Generated</value>
+            <value>Coupon_Generated,Coupon Generated</value>
         </criteriaItems>
         <criteriaItems>
             <column>SWS_Cloud_Credit_Request__c$RecordType</column>

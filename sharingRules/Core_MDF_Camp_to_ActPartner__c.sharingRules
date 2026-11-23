@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>EEF_Activating_Partner_CCR</fullName>
+        <fullName>Core_MDF_EEF_Activating_Partner_CCR</fullName>
         <accessLevel>Read</accessLevel>
-        <description>Activating partner share to Claim Case Reviewer Manager group</description>
         <label>EEF Activating Partner CCR</label>
         <sharedTo>
             <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
@@ -13,6 +12,6 @@
             <operation>notEqual</operation>
             <value>[empty]</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

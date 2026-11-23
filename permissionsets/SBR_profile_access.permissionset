@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>UCD_GenericAcctSearch_SBR</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>SBR_Profile_Access</name>
+    </customPermissions>
+    <description>adding profiles which can access only other button</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>SBR profile access</label>
+</PermissionSet>

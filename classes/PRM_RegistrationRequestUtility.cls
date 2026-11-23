@@ -322,12 +322,12 @@ public without sharing class PRM_RegistrationRequestUtility {
             Name,
             PRM_Channel_Program_Id__c,
             PRM_Language_Codes__c,
-            PRM_Partner_Role__c,
+            /*PRM_Partner_Role__c,*/
             PRM_InActive_Ind__c,
             PRM_Agreement_Cd__c
             FROM PRM_PartnerAgreement__c
             WHERE PRM_InActive_Ind__c = FALSE
-        ]) {
+        ]) {//ATHR Fix - TWC729-9556 - SJ
             //Set Without language field
             if (String.isBlank(pa.PRM_Language_Codes__c)) {
                 allPASetWithoutLanguage.add(
@@ -403,7 +403,7 @@ public without sharing class PRM_RegistrationRequestUtility {
         }
     }
     
-    public static void partnerrelationship(
+    /*public static void partnerrelationship(
         List<PRM_Registration_Request__c> regReqList,
         Map<Id, List<PRM_Account_Contact_Relationship__c>> mapAccountIdTOListACR,
         //Map<Id, Account> accMap,
@@ -412,6 +412,25 @@ public without sharing class PRM_RegistrationRequestUtility {
         Map<Id, list<string>>  mapOfAccIdPartnerRole
     ) {
         Set<Id> existingAccFromReqIds = new Set<Id>();
+        Set<Id> accIdsOnRegReq = new Set<Id>(); //varun PA
+        for (PRM_Registration_Request__c reg : regReqList) {
+            if(reg.PRM_Salesforce_ID__c!= null){
+                accIdsOnRegReq.add(reg.PRM_Salesforce_ID__c);
+            }
+        }
+        Map<id,id> intelOpidMap = new Map<id,id>();
+        for(Account acc : [select id,Core_IPA_One_Partner_Id__c from account where id in: accIdsOnRegReq and Core_IPA_One_Partner_Id__c!=null]){
+            intelOpidMap.put(acc.id,acc.Core_IPA_One_Partner_Id__c);
+        }
+        Map<Id,List<id>> opidIntelAccMap = new Map<Id,List<id>>();
+        Set<Id> intelAccIds = new Set<Id>();
+        for(Core_Account_Group_Member__c cag: [select id,Core_Intel_Account_Id__c,Core_Partner_Account_Id__c from Core_Account_Group_Member__c where Core_Partner_Account_Id__c in: intelOpidMap.values() and Core_Intel_Partner_Alliance_PartnerGroup__c=true]){
+            intelAccIds.add(cag.Core_Intel_Account_Id__c);
+        }
+        Map<Id,Boolean> adminAcrInOpid = new Map<Id,Boolean>();
+        for(PRM_Account_Contact_Relationship__c acr:[ select id,PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in: intelAccIds and PRM_Partner_Role__c = 'Partner Admin' and PRM_Status_Nm__c = 'Complete' and PRM_InActive_Ind__c = false]){
+            adminAcrInOpid.put(acr.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, true);
+        }
         for (PRM_Registration_Request__c reg : regReqList) {
             if (
                 (reg.recordTypeId ==
@@ -424,7 +443,9 @@ public without sharing class PRM_RegistrationRequestUtility {
                 boolean isACRActive = null;
                 if (reg.PRM_Salesforce_ID__c != null && mapOfAccIdPartnerRole.containsKey(reg.PRM_Salesforce_ID__c)) {
                     partnerRoleArray = mapOfAccIdPartnerRole.get(reg.PRM_Salesforce_ID__c);
-                    if (mapAccountIdTOListACR.containsKey(reg.PRM_Salesforce_ID__c)) {
+                    if(intelOpidMap.containsKey(reg.PRM_Salesforce_ID__c) && adminAcrInOpid.containsKey(intelOpidMap.get(reg.PRM_Salesforce_ID__c))){
+                        isACRActive = true; //varun PA
+                    }else if (mapAccountIdTOListACR.containsKey(reg.PRM_Salesforce_ID__c)) {
                         for (PRM_Account_Contact_Relationship__c acr : mapAccountIdTOListACR.get(reg.PRM_Salesforce_ID__c)
                             ) {
                                 if (acr.PRM_Partner_Role__c == reg.PRM_Partner_Role__c && acr.PRM_Status_Nm__c == System.label.PRM_ACR_Status &&
@@ -471,7 +492,347 @@ public without sharing class PRM_RegistrationRequestUtility {
                     }
             }
         }
+    }*/
+
+   /*
+    * Kept for backward compatibility; resolves no OPID data (no accountMap).
+    */
+   public static void partnerrelationship(
+    List<PRM_Registration_Request__c> regReqList,
+    Map<Id, List<PRM_Account_Contact_Relationship__c>> mapAccountIdTOListACR,
+    Map<Id, Contact> contMap,
+    Map<Id, PRM_Registration_Request__c> regReqOldMap,
+    Map<Id, List<String>> mapOfAccIdPartnerRole
+) {
+    partnerrelationship(regReqList, mapAccountIdTOListACR, contMap, regReqOldMap, mapOfAccIdPartnerRole, null);
+}
+
+   public static void partnerrelationship(
+    List<PRM_Registration_Request__c> regReqList,
+    Map<Id, List<PRM_Account_Contact_Relationship__c>> mapAccountIdTOListACR,
+    Map<Id, Contact> contMap,
+    Map<Id, PRM_Registration_Request__c> regReqOldMap,
+    Map<Id, List<String>> mapOfAccIdPartnerRole,
+    Map<Id, Account> accountMap
+) {
+    Set<Id> existingAccFromReqIds = new Set<Id>();
+
+    /*
+     * OPID and Partner Admin state come from the group memberships already loaded with
+     * accountMap (no SOQL). Works for non-IPA accounts.
+     */
+    for (PRM_Registration_Request__c reg : regReqList) {
+        if (
+            (
+                reg.RecordTypeId ==
+                    PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT ||
+                Test.isRunningTest()
+            ) &&
+            reg.PRM_Channel_Program_Level_txt__c != 'PSG'
+        ) {
+            List<String> partnerRoleArray =
+                new List<String>();
+
+            Boolean isACRActive = null;
+
+            /*
+             * Check whether the registration Account's OPID already
+             * has an active and complete Partner Admin relationship.
+             *
+             * This check is intentionally outside
+             * mapOfAccIdPartnerRole because the account registering
+             * into IPA may currently be non-IPA.
+             */
+            Account registrationAccount =
+                (accountMap == null || reg.PRM_Salesforce_ID__c == null)
+                ? null
+                : accountMap.get(reg.PRM_Salesforce_ID__c);
+
+            Id registrationAccountOpid =
+                PRM_OpidPartnerAdminFlagService.resolveOpid(registrationAccount);
+
+            // A PA assigned to this request in an earlier transaction must not be stripped by its own claim.
+            Boolean paAlreadyAssigned =
+                regReqOldMap != null &&
+                regReqOldMap.containsKey(reg.Id) &&
+                regReqOldMap.get(reg.Id).PRM_Salesforce_ID__c == reg.PRM_Salesforce_ID__c &&
+                String.isNotBlank(regReqOldMap.get(reg.Id).PRM_Partner_Relationship__c) &&
+                regReqOldMap.get(reg.Id).PRM_Partner_Relationship__c.contains(System.Label.PRM_Primary_Contact);
+
+            Boolean hasPartnerAdminInOnePid =
+                !paAlreadyAssigned &&
+                PRM_OpidPartnerAdminFlagService.hasPartnerAdmin(registrationAccount);
+
+            System.debug(
+                LoggingLevel.ERROR,
+                'PA_OPID_DEBUG 10 - Registration Request ID: ' +
+                reg.Id +
+                ', Registration Account ID: ' +
+                reg.PRM_Salesforce_ID__c +
+                ', Registration Account OPID: ' +
+                registrationAccountOpid +
+                ', hasPartnerAdminInOnePid: ' +
+                hasPartnerAdminInOnePid
+            );
+
+            /*
+             * Existing account-level Partner Role and ACR logic.
+             */
+            if (
+                reg.PRM_Salesforce_ID__c != null &&
+                mapOfAccIdPartnerRole != null &&
+                mapOfAccIdPartnerRole.containsKey(
+                    reg.PRM_Salesforce_ID__c
+                )
+            ) {
+                partnerRoleArray =
+                    mapOfAccIdPartnerRole.get(
+                        reg.PRM_Salesforce_ID__c
+                    );
+
+                if (
+                    mapAccountIdTOListACR != null &&
+                    mapAccountIdTOListACR.containsKey(
+                        reg.PRM_Salesforce_ID__c
+                    )
+                ) {
+                    for (
+                        PRM_Account_Contact_Relationship__c acr :
+                        mapAccountIdTOListACR.get(
+                            reg.PRM_Salesforce_ID__c
+                        )
+                    ) {
+                        if (
+                            acr.PRM_Partner_Role__c ==
+                                reg.PRM_Partner_Role__c &&
+                            acr.PRM_Status_Nm__c ==
+                                System.Label.PRM_ACR_Status &&
+                            acr.PRM_InActive_Ind__c == false &&
+                            acr.PRM_Status_Nm__c !=
+                                'Pending Action' &&
+                            acr.PRM_Relationship_Id__r.Name ==
+                                System.Label.PRM_Primary_Contact
+                        ) {
+                            isACRActive = true;
+                        }
+                    }
+
+                    if (isACRActive != true) {
+                        isACRActive = false;
+                    }
+                } else if (
+                    mapAccountIdTOListACR == null ||
+                    mapAccountIdTOListACR.isEmpty()
+                ) {
+                    // No ACR
+                    isACRActive = false;
+                }
+            } else if (
+                reg.PRM_Matching_Contact__c != null
+            ) {
+                Contact contactRec = new Contact();
+
+                if (
+                    contMap != null &&
+                    contMap.containsKey(
+                        reg.PRM_Matching_Contact__c
+                    )
+                ) {
+                    contactRec = contMap.get(
+                        reg.PRM_Matching_Contact__c
+                    );
+                }
+
+                /*
+                 * AccountId is used instead of contactRec.Account.Id
+                 * to avoid depending on the Account relationship
+                 * being queried on the Contact.
+                 */
+                if (
+                    contactRec != null &&
+                    contactRec.AccountId != null &&
+                    mapOfAccIdPartnerRole != null &&
+                    mapOfAccIdPartnerRole.containsKey(
+                        contactRec.AccountId
+                    )
+                ) {
+                    partnerRoleArray =
+                        mapOfAccIdPartnerRole.get(
+                            contactRec.AccountId
+                        );
+                }
+            }
+
+            System.debug(
+                LoggingLevel.ERROR,
+                'PA_OPID_DEBUG 11 - Registration Request ID: ' +
+                reg.Id +
+                ', Partner Role Array: ' +
+                partnerRoleArray +
+                ', Requested Partner Role: ' +
+                reg.PRM_Partner_Role__c +
+                ', isACRActive: ' +
+                isACRActive +
+                ', Existing Partner Relationship before assignment: ' +
+                reg.PRM_Partner_Relationship__c
+            );
+
+            Boolean accountChanged =
+                regReqOldMap != null &&
+                regReqOldMap.containsKey(reg.Id) &&
+                regReqOldMap.get(reg.Id)
+                    .PRM_Salesforce_ID__c !=
+                reg.PRM_Salesforce_ID__c;
+
+            if (
+                String.isBlank(
+                    reg.PRM_Partner_Relationship__c
+                ) ||
+                accountChanged
+            ) {
+                /*
+                 * Scenario 2:
+                 *
+                 * A Partner Admin already exists on an Intel account
+                 * under the same OPID.
+                 *
+                 * Assign Employee only.
+                 */
+                if (hasPartnerAdminInOnePid) {
+                    reg.PRM_Partner_Relationship__c =
+                        System.Label.PRM_WorksFor;
+
+                    System.debug(
+                        LoggingLevel.ERROR,
+                        'PA_OPID_DEBUG 12 - EMPLOYEE ONLY branch selected.' +
+                        ' Registration Request ID: ' +
+                        reg.Id +
+                        ', Account ID: ' +
+                        reg.PRM_Salesforce_ID__c +
+                        ', OPID: ' +
+                        registrationAccountOpid +
+                        ', Final Relationship: ' +
+                        reg.PRM_Partner_Relationship__c
+                    );
+                }
+
+                /*
+                 * Scenario 1:
+                 *
+                 * No Partner Admin exists under the same OPID.
+                 *
+                 * Retain the existing behavior and assign
+                 * Partner Admin + Employee when applicable.
+                 */
+                else if (
+                    (
+                        !partnerRoleArray.contains(
+                            reg.PRM_Partner_Role__c
+                        ) ||
+                        isACRActive == false
+                    ) &&
+                    !existingAccFromReqIds.contains(
+                        reg.PRM_Salesforce_ID__c
+                    )
+                ) {
+                    existingAccFromReqIds.add(
+                        reg.PRM_Salesforce_ID__c
+                    );
+
+                    reg.PRM_Partner_Relationship__c =
+                        System.Label.PRM_Primary_Contact +
+                        ';' +
+                        System.Label.PRM_WorksFor;
+
+                    PRM_OpidPartnerAdminFlagService.claim(registrationAccountOpid);
+
+                    System.debug(
+                        LoggingLevel.ERROR,
+                        'PA_OPID_DEBUG 13 - PARTNER ADMIN + EMPLOYEE branch selected.' +
+                        ' Registration Request ID: ' +
+                        reg.Id +
+                        ', Account ID: ' +
+                        reg.PRM_Salesforce_ID__c +
+                        ', OPID: ' +
+                        registrationAccountOpid +
+                        ', hasPartnerAdminInOnePid: ' +
+                        hasPartnerAdminInOnePid +
+                        ', Final Relationship: ' +
+                        reg.PRM_Partner_Relationship__c
+                    );
+                } else {
+                    reg.PRM_Partner_Relationship__c =
+                        System.Label.PRM_WorksFor;
+
+                    System.debug(
+                        LoggingLevel.ERROR,
+                        'PA_OPID_DEBUG 14 - EXISTING EMPLOYEE branch selected.' +
+                        ' Registration Request ID: ' +
+                        reg.Id +
+                        ', Account ID: ' +
+                        reg.PRM_Salesforce_ID__c +
+                        ', Final Relationship: ' +
+                        reg.PRM_Partner_Relationship__c
+                    );
+                }
+            } else {
+                System.debug(
+                    LoggingLevel.ERROR,
+                    'PA_OPID_DEBUG 15 - Relationship assignment skipped.' +
+                    ' Registration Request ID: ' +
+                    reg.Id +
+                    ', Existing Relationship: ' +
+                    reg.PRM_Partner_Relationship__c +
+                    ', accountChanged: ' +
+                    accountChanged
+                );
+            }
+
+            /*
+             * Partner Admin already exists in the OPID hierarchy: drop Partner Admin
+             * and keep/add Employee, even when the relationship was already
+             * populated (e.g. non-IPA -> IPA registration).
+             */
+            if (hasPartnerAdminInOnePid
+                && String.isNotBlank(reg.PRM_Partner_Relationship__c)) {
+                List<String> keptRelationships = new List<String>();
+                for (String value : reg.PRM_Partner_Relationship__c.split(';')) {
+                    value = value.trim();
+                    if (String.isNotBlank(value)
+                        && value != System.Label.PRM_Primary_Contact
+                        && !keptRelationships.contains(value)) {
+                        keptRelationships.add(value);
+                    }
+                }
+                if (!keptRelationships.contains(System.Label.PRM_WorksFor)) {
+                    keptRelationships.add(System.Label.PRM_WorksFor);
+                }
+                reg.PRM_Partner_Relationship__c = String.join(keptRelationships, ';');
+
+                System.debug(
+                    LoggingLevel.ERROR,
+                    'PA_OPID_DEBUG 12b - Partner Admin removed (OPID already has PA).' +
+                    ' Registration Request ID: ' +
+                    reg.Id +
+                    ', Final Relationship: ' +
+                    reg.PRM_Partner_Relationship__c
+                );
+            }
+
+            System.debug(
+                LoggingLevel.ERROR,
+                'PA_OPID_DEBUG 16 - End of method processing.' +
+                ' Registration Request ID: ' +
+                reg.Id +
+                ', Final Relationship value: ' +
+                reg.PRM_Partner_Relationship__c
+            );
+        }
     }
+
+    PRM_OpidPartnerAdminFlagService.flushClaims();
+}
+
     
     //to store registration profile response
     //Rahul added as part of US407894
@@ -1535,24 +1896,26 @@ public without sharing class PRM_RegistrationRequestUtility {
         Id blockedAccContRT = Schema.getGlobalDescribe().get('PRM_SBC_Account_Search_Configuration__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_BlockedAccountContacts').getRecordTypeId();
         Set<Id> blockedAccountIds = new Set<Id>();
         Set<String> blockedContactEmails = new Set<String>();
-
-        for (PRM_SBC_Account_Search_Configuration__c ipaAdminConfig : [
-            SELECT Account__c, PRM_Contact__r.Email, PRM_Type__c
-            FROM PRM_SBC_Account_Search_Configuration__c
-            WHERE RecordTypeId = :blockedAccContRT
-            AND PRM_isActive__c = true
-            AND (
-                (PRM_Type__c = 'Account_Blocked' AND Account__c IN :accountIds)
-                OR (PRM_Type__c = 'Contact_Blocked' AND PRM_Contact__r.Email IN :emailIds)
-            )
-        ]) {
-            if (ipaAdminConfig.PRM_Type__c == 'Account_Blocked' && ipaAdminConfig.Account__c != null) {
-                blockedAccountIds.add(ipaAdminConfig.Account__c);
-            } else if (ipaAdminConfig.PRM_Type__c == 'Contact_Blocked' && String.isNotBlank(ipaAdminConfig.PRM_Contact__r.Email)) {
-                blockedContactEmails.add(ipaAdminConfig.PRM_Contact__r.Email);
+		
+        if(!accountIds.isEmpty() || !emailIds.isEmpty())
+        {
+            for (PRM_SBC_Account_Search_Configuration__c ipaAdminConfig : [
+                SELECT Account__c, PRM_Contact__r.Email, PRM_Type__c
+                FROM PRM_SBC_Account_Search_Configuration__c
+                WHERE RecordTypeId = :blockedAccContRT
+                AND PRM_isActive__c = true
+                AND (
+                    (PRM_Type__c = 'Account_Blocked' AND Account__c IN :accountIds)
+                    OR (PRM_Type__c = 'Contact_Blocked' AND PRM_Contact__r.Email IN :emailIds)
+                )
+            ]) {
+                if (ipaAdminConfig.PRM_Type__c == 'Account_Blocked' && ipaAdminConfig.Account__c != null) {
+                    blockedAccountIds.add(ipaAdminConfig.Account__c);
+                } else if (ipaAdminConfig.PRM_Type__c == 'Contact_Blocked' && String.isNotBlank(ipaAdminConfig.PRM_Contact__r.Email)) {
+                    blockedContactEmails.add(ipaAdminConfig.PRM_Contact__r.Email);
+                }
             }
-        }
-
+    }
         for (PRM_Registration_Request__c regRequest : regRequestList) {
             blockedRegRequestMap.put(
                 regRequest.Id,

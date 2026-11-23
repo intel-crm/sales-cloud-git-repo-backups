@@ -15,7 +15,7 @@ global class PRM_BenefitDQFixBatch implements Database.Batchable<sObject>,Databa
     public String logEntryMsgString = '';
     public List<PRM_AccountBenefitAssociation__c> abasToUpdate = new List<PRM_AccountBenefitAssociation__c>();
     public Set<PRM_AccountBenefitAssociation__c> abasToUpsert = new Set<PRM_AccountBenefitAssociation__c>();
-    //public List<Core_Account_Group_Member__c> cagsToUpdate = new List<Core_Account_Group_Member__c>();
+    public List<Core_Account_Group_Member__c> cagsToUpdate = new List<Core_Account_Group_Member__c>();
     public List<PRM_IPA_DQ_Logs__c> dqLogList = new List<PRM_IPA_DQ_Logs__c>();
     
     global Database.QueryLocator start(Database.BatchableContext bc) {

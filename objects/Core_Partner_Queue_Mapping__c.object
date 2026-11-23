@@ -245,7 +245,6 @@
         <columns>PMP_MDA_BizOrg_Id__c</columns>
         <columns>Core_Storefront_Id__c</columns>
         <columns>Core_Storefront_Name__c</columns>
-        <columns>RECORDTYPE</columns>
         <columns>Core_Active__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
@@ -266,20 +265,13 @@
         <fullName>All_Active_Records</fullName>
         <columns>NAME</columns>
         <columns>Core_Partner_Name__c</columns>
-        <columns>PMP_MDA_BizOrg_Id__c</columns>
-        <columns>Core_Storefront_Id__c</columns>
-        <columns>Core_Storefront_Name__c</columns>
         <columns>Core_Queue_Name__c</columns>
+        <columns>PMP_MDA_BizOrg_Id__c</columns>
         <columns>Core_Active__c</columns>
         <columns>Core_Disposition_Reminder_Email_Opt_In__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>Core_Partner_Queue_Mapping__c.Core_PartnerQueueMapping</value>
-        </filters>
         <filters>
             <field>Core_Active__c</field>
             <operation>equals</operation>
@@ -297,7 +289,6 @@
         <columns>PMP_MDA_BizOrg_Id__c</columns>
         <columns>Core_Storefront_Id__c</columns>
         <columns>Core_Storefront_Name__c</columns>
-        <columns>RECORDTYPE</columns>
         <columns>Core_Active__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
@@ -315,8 +306,6 @@
         <columns>Core_Partner_Name__c</columns>
         <columns>Core_Queue_Name__c</columns>
         <columns>PMP_MDA_BizOrg_Id__c</columns>
-        <columns>Core_Storefront_Id__c</columns>
-        <columns>Core_Storefront_Name__c</columns>
         <columns>Core_Active__c</columns>
         <columns>Core_Disposition_Reminder_Email_Opt_In__c</columns>
         <columns>CREATED_DATE</columns>
@@ -328,6 +317,7 @@
             <value>0</value>
         </filters>
         <label>All Inactive Records</label>
+        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

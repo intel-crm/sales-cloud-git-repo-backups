@@ -243,7 +243,7 @@ console.log('onHoldProducts--'+this.onHoldProducts);
 
 	
 	} else if((this.selectedComp != '' || this.selectedComp != undefined ) && 
-	(this.selectedCompProd != '' || this.selectedCompProd != undefined) && (this.competitorCount == true) 
+	(this.selectedCompProd != '' || this.selectedCompProd != undefined) && (this.competitorCount == true) && !this.isPartnerDealOppty
 		){
 			console.log('inside saving');
 		this.bypassExecuting = true;

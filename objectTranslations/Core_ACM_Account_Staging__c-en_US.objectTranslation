@@ -9,12 +9,20 @@
         <value>ACM Account Staging</value>
     </caseValues>
     <fields>
+        <label><!-- ACM Account Staging Name --></label>
+        <name>ACM_Account_Staging_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Account Id --></label>
         <name>AccountId__c</name>
     </fields>
     <fields>
         <label><!-- Account Action Refrence --></label>
         <name>Account_Action_Refrence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Primary Coverage --></label>
+        <name>Core_Account_PrimaryCoverage__c</name>
     </fields>
     <fields>
         <label><!-- Action --></label>
@@ -34,6 +42,10 @@
         <picklistValues>
             <masterLabel>MDMUpdate</masterLabel>
             <translation><!-- MDMUpdate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NAME UPDATE</masterLabel>
+            <translation><!-- NAME UPDATE --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>REMOVE_MPSHARE</masterLabel>

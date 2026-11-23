@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CAMPAIGN_NAME</field>
+    </columns>
+    <columns>
+        <field>CAMPAIGN_STATUS</field>
+    </columns>
+    <columns>
+        <field>Campaign.Core_MDF_Budget_Type_txt__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Campaign.Core_MDF_Total_Campaign_Cost_Amt__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Campaign.Core_MDF_Budget_Amount_amt__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Campaign.Core_MDF_First_Year_Budget_Amount__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Campaign.Core_MDF_Second_Year_Budget_Amount__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(Campaign.Core_MDF_First_Year_Budget_Amount__c&gt;0 || Campaign.Core_MDF_Second_Year_Budget_Amount__c&gt;0,Campaign.Core_MDF_First_Year_Budget_Amount__c+Campaign.Core_MDF_Second_Year_Budget_Amount__c,IF(Campaign.Core_MDF_Budget_Amount_amt__c&gt;0,Campaign.Core_MDF_Budget_Amount_amt__c,Campaign.Core_MDF_Total_Campaign_Cost_Amt__c))</calculatedFormula>
+        <dataType>Double</dataType>
+        <description>Amount</description>
+        <developerName>CDF1</developerName>
+        <label>Amount</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>Campaign Transaction Report</description>
+    <filter>
+        <criteriaItems>
+            <column>Campaign.Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Client CoMarketing Fund,Data Center CoMarketing Fund,Service Provider CoMarketing Fund,Retail Marketing Funds,Client CoMarketing Fund Boost,Intel Partner Alliance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CAMPAIGN_STATUS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>In Progress,Planned</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Campaign.Core_MDF_Program__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Campaign Transaction Report</name>
+    <params>
+        <name>scopeid</name>
+        <value></value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CampaignList</reportType>
+    <scope>orgAll</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CDF1</sortColumn>
+    <sortOrder>Asc</sortOrder>
+</Report>

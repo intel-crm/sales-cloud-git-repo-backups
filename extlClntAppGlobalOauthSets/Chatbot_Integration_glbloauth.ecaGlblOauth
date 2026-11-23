@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>http://localhost:33418/</callbackUrl>
+    <certificate>MIICwzCCAaugAwIBAgIJALCQA/gFel9WMA0GCSqGSIb3DQEBCwUAMCExHzAdBgNV
+BAMTFkNSTSBEZXYgTUNQIEpXVCBCZWFyZXIwHhcNMjYwOTAxMTI1NjExWhcNMjcw
+OTAxMTMwMTExWjAhMR8wHQYDVQQDExZDUk0gRGV2IE1DUCBKV1QgQmVhcmVyMIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuwS1I1htLw2X++EIvsZ1bmMA
+GHUqkBuKskSfFSkpSSDQm+xekW1HmqLtWukl79mLdTztYPnbosA2o1s3oDmcYVZw
+gg2K15mfCGwMOQ3VH4lF9/4gSQe6/CBPtu35tsiJ+RY32E61/rG3fTeYagYXYZ8q
+vmBJOtsD9k+EAhl/UiJYDu53w30N8l2u4F9glGvdgd/fIPBB1bQMUbl3kYaEnJO2
+Jbnv2aloo9gSKCmNtA79Wt+/Iy4P8xzFpgQkKXxdyMuumhXyfUlG1wVlhEHyRqsL
+oCx3sc4F+PKFD5zH9I7hg0NL7DID+vqrbuLMyCxmQhugz3A/dMlPVR6cfF0XYQID
+AQABMA0GCSqGSIb3DQEBCwUAA4IBAQBgU2afbDB5pKzBJgfE7LZozThBWT6cA4k6
+7emi+trsXVYRi9ngzRAP+CfZbEHPljUi12COuaugYsTviEqFP1pKkdUyMqwZI4p+
+7a7mHsVmKNwos9F3gLXlmeMklURilbL3a0/JZ7bsKXqgbn5h9s/OuMoqyeyUeDvh
+bLf4y4VdspeCKbBkg85OTK2vBvI3OkcT/BgIrpInAMGf+5YXO68tHuQ5ZPcVMpPj
+h0giPL0dAqqHeE0jVuEuB8/MAln2AeV2bvK62p6k6YBkLTknjdQPV0LTfULIw8L3
+SrL8MeygDPDXUbfVrt7a329cwyyrB1GpwYLje05VricHodqqrr8g</certificate>
+    <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDu4HH5uP5RlEYSQtIcnjU_mCP4YZEm6hZC1rGoxNaea3kNIdco4qnqwaqEQV</consumerKey>
+    <externalClientApplication>Chatbot_Integration</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>true</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>Chatbot_Integration_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

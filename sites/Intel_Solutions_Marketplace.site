@@ -14,11 +14,6 @@
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
-    <customWebAddresses>
-        <certificate>marketplace_intel_com5</certificate>
-        <domainName>marketplace.intel.com</domainName>
-        <primary>false</primary>
-    </customWebAddresses>
     <enableAuraRequests>true</enableAuraRequests>
     <favoriteIcon>favicon</favoriteIcon>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
@@ -28,39 +23,11 @@
     <masterLabel>Intel® Solutions Marketplace</masterLabel>
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
-    <robotsTxtPage>Marketplace_Robots_Txt</robotsTxtPage>
+    <robotsTxtPage>Robots_MP</robotsTxtPage>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_Intel_Solutions_Marketplace_C_sf_default_cdn_2PCfA</serverIsDown>
+    <serverIsDown>SNA_Intel_Solutions_Marketplace_C_sf_default_cdn_dXTuW</serverIsDown>
     <siteAdmin>11034919@intel.com.crm</siteAdmin>
     <siteGuestRecordDefaultOwner>salesforce.system.user@intel.com.crm</siteGuestRecordDefaultOwner>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/</source>
-        <target>https://www.intel.com/content/www/us/en/partner/showcase/overview.html</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/login</source>
-        <target>https://www.intel.com/content/www/us/en/partner/showcase/overview.html</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/s</source>
-        <target>https://www.intel.com/content/www/us/en/partner/showcase/overview.html</target>
-    </siteRedirectMappings>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>true</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/s/</source>
-        <target>https://www.intel.com/content/www/us/en/partner/showcase/overview.html</target>
-    </siteRedirectMappings>
     <siteType>ChatterNetwork</siteType>
     <subdomain>intelcloudcrm</subdomain>
     <urlPathPrefix>imp</urlPathPrefix>

@@ -276,25 +276,6 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Design-Deal Registration Product Mapping</pluralLabel>
-    <profileSearchLayouts>
-        <fields>NAME</fields>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_L4_Product_Name__c</fields>
-        <fields>PCC_Design_Registration_Product__c</fields>
-        <fields>PCC_Design_Registration__c</fields>
-        <profileName>IT Admin</profileName>
-    </profileSearchLayouts>
-    <profileSearchLayouts>
-        <fields>NAME</fields>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_Design_Registration_Product__c</fields>
-        <fields>PCC_Design_Registration__c</fields>
-        <profileName>Partner</profileName>
-    </profileSearchLayouts>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>

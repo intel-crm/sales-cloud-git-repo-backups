@@ -209,11 +209,6 @@
                     <default>false</default>
                     <label>Core_SW_Prod_Non_Commercial_Purpose_Nm__c</label>
                 </value>
-                <value>
-                    <fullName>Core_Item_Orderable_Ind__c</fullName>
-                    <default>false</default>
-                    <label>Orderable</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

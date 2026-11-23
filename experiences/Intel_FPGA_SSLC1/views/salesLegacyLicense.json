@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "508ff553-55f2-4f31-adca-517c26345794",
+  "label" : "SalesLegacyLicense",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "Sales_Legacy_Licenses_ext",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : false,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "7b5eceea-8e61-4df9-8b4d-1dab3dcdb31c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7b5304c7-b440-40b9-b8b4-9f6f092e1b8d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "SalesLegacyLicense"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "75c04a6f-0f60-4240-b1b0-8624221db85c",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4d41b579-dae0-4b01-b472-64856911f1a0",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "fc83e70f-e216-4459-9363-da1e7a33958f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d2fea69d-215d-4a80-a914-d217e06f83ae",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "b68d0f55-5636-4afe-b2e7-d80812615d40",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-saleslegacylicense"
+}

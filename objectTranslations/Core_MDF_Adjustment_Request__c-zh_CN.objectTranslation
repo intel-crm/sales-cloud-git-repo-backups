@@ -2,7 +2,7 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value><!-- Claim Adjustment Request --></value>
+        <value>Adjustment Request Number</value>
     </caseValues>
     <fields>
         <label><!-- Account Node --></label>

@@ -10,9 +10,6 @@
         <field>FK_$Core_IPS_Supported_Product__c.Core_Supported_Product_Name__c</field>
     </columns>
     <columns>
-        <field>FK_$Core_IPS_Supported_Product__c.Core_EOIS__c</field>
-    </columns>
-    <columns>
         <field>NAME</field>
     </columns>
     <columns>
@@ -30,16 +27,6 @@
     <columns>
         <field>FK_$Core_IPS_Supported_Product__c.Core_Flag_Status__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>FK_$Core_IPS_Supported_Product__c.Core_Support_Org_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>home</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>Products_IPS_SupportedProducts_Assets</name>
     <params>
@@ -50,7 +37,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>STATUS</sortColumn>
+    <sortColumn>FK_$Core_IPS_Supported_Product__c.Core_Flag_Status__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>INSTALL_DATE</dateColumn>

@@ -24,17 +24,21 @@
     <columns>
         <field>CLOSE_DATE</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
     <description>Opportunities that are submitted and not approved within 3 weeks</description>
     <filter>
         <criteriaItems>
-            <column>Account.Core_Account_ID__c</column>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>001o000000O66iOAAR</value>
+            <value>Qualify,Define,Develop,Design</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Dee Hackett</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -51,7 +55,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>

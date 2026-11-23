@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Vrushabh 
  * @group             : 
- * @last modified on  : 05-05-2026
+ * @last modified on  : 03-16-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 
@@ -116,7 +116,6 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
             
             List<Id> quoteLineIdWithQuoteDoc = new List<Id>();
             for(SBQQ__QuoteLine__c ql : eligibleQuoteLines){
-                if(quoteIdToDocList.containskey(ql.SBQQ__Quote__c)){
                     DateTime quotelineLastApprovedDate = ql.Pricing_Last_Approved_Date_dt__c;
                     for(SBQQ__QuoteDocument__c  docs : quoteIdToDocList.get(ql.SBQQ__Quote__c)){
                         DateTime docCreateDate = docs.CreatedDate;
@@ -125,8 +124,8 @@ public without sharing class Pricing_QuoteLetterGenerate_Batch extends TriggerHa
                             quoteLineIdWithQuoteDoc.add(ql.Id);
                         }
                     }
-                }
             }
+            
             List<Id> finalQuoteLineId = new List<Id>();
             //Excluding quoteLines where quoted document is created from eligible quote Lines.
             for(SBQQ__QuoteLine__c ql : eligibleQuoteLines){

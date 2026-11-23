@@ -111,6 +111,9 @@
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Commissionable__c</field>
     </columns>
     <filter>
@@ -148,6 +151,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Submitted,Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>DCG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -189,8 +199,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

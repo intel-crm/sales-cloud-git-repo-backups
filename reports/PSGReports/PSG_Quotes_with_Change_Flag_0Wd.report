@@ -39,7 +39,6 @@
     <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_distributor_margin_pct__c</field>
     </columns>
-    <description>It gives insights about quotes with quote lines that have $ Change Flag</description>
     <filter>
         <criteriaItems>
             <column>SBQQ__Quote__c.SBQQ__LineItems__r$core_cpq_dollar_change_flag_cb__c</column>

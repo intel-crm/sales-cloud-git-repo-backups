@@ -134,14 +134,6 @@ public class PMP_Company_Info_Handler_Test {
                                                                         Core_Trigger_Events__c = 'After Insert, After Update',
                                                                         Core_Description__c = 'Update and create Offering');
         insert cs5;
-        
-         Core_Trigger_Executions__c cs6 = new Core_Trigger_Executions__c (Name = 'Company_Autofill_Handler',
-                                                                        Core_Active__c = true,
-                                                                        Core_Class_Name__c = 'AI Test',
-                                                                        Core_Object__c = 'PMP_CompanyAutofill__c',
-                                                                        Core_Trigger_Events__c = 'After Insert, After Update',
-                                                                        Core_Description__c = 'Update and create AI data');
-        insert cs6;
             
         Account partnerAccount1 = new Account(Name ='PartnerAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Group_New__c= 'CCG Sales Group',
                                       Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi');

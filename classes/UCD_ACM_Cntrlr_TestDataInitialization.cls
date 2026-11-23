@@ -90,4 +90,13 @@ public class UCD_ACM_Cntrlr_TestDataInitialization {
         }
         return accountCreateRequest;
     }
+    
+    /*public static Core_Account_Compliance_Watch_List__c createComplianceWatchList(Id accId, String coreType){
+        Core_Account_Compliance_Watch_List__c cwl = new Core_Account_Compliance_Watch_List__c();
+        cwl.Core_Effective_Start_Date__c = Date.Today();
+        cwl.Core_Effective_End_Date__c = Date.Today().addDays(1);
+        cwl.Core_Type__c = coreType;
+        cwl.Core_Account_Id__c = accId;
+        return cwl;
+    }*/
 }

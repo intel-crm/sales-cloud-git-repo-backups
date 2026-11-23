@@ -17,7 +17,6 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler event="c:MarketplacePageEvent" action="{!c.handlePageEvent}" />
     <aura:handler event="c:PSS_HandleAdminReview" action="{!c.handleAdminEvent}"/>
-    
     <div>
       <div class="bannerBlade">
           <div class="banner">

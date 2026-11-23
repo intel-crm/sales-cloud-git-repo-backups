@@ -19,49 +19,49 @@ public class PMP_Marketplace_Metric_Test {
         String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;
         //Id pagDashboardRecTypeId = Schema.SObjectType.PMP_Marketplace_Metric__c.getRecordTypeInfosByName().get('Pag Dashboards').getRecordTypeId();
         List<Account> accList = new List<Account>();
-        Account partnerAccount1 = new Account(Name ='PartnerAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'CCG Sales Group',
+        Account partnerAccount1 = new Account(Name ='PartnerAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'India Sales Group',
                                           Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='Ind',
                                               BillingStreet='abc chowk delhi');
         accList.add(partnerAccount1);
-        Account partnerAccount2 = new Account(Name ='PartnerAccount2',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'CCG Sales Group',
+        Account partnerAccount2 = new Account(Name ='PartnerAccount2',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'India Sales Group',
                                           Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='Ind',
                                               BillingStreet='abc chowk delhi');
         accList.add(partnerAccount2);
         //Database.insert(accList);
         
-        Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'CCG Sales Group',
+        Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'India Sales Group',
                                           Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
         accList.add(intelAccount1);
-        Account intelAccount2 = new Account(Name ='IntelAccount2',Core_Account_Type__c = 'System Integrator',Core_Sales_Groups__c= 'CCG Sales Group',
+        Account intelAccount2 = new Account(Name ='IntelAccount2',Core_Account_Type__c = 'System Integrator',Core_Sales_Groups__c= 'India Sales Group',
                                           Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
         accList.add(intelAccount2);
-        Account intelAccount3 = new Account(Name ='IntelAccount3',Core_Account_Type__c = 'System Integrator',Core_Sales_Groups__c= 'CCG Sales Group',
+        Account intelAccount3 = new Account(Name ='IntelAccount3',Core_Account_Type__c = 'System Integrator',Core_Sales_Groups__c= 'India Sales Group',
                                                 Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
         accList.add(intelAccount3);
         Database.insert(accList);
 		
 		
 		List<Contact> allContacts = new List<Contact>();
-            Contact contact1 = new Contact(firstname='Intel', 
+            Contact contact1 = new Contact(firstname='Intel', MailingCountry='IND',
                     lastname='Contact1', accountId=intelAccount1.id,Email='dellco1234@dell.com',Core_IPA_Contact_Segment__c ='Client Computing');
             allContacts.add(contact1);
-            Contact contact2 = new Contact(firstname='Intel', 
+            Contact contact2 = new Contact(firstname='Intel', MailingCountry='IND',
                     lastname='Contact2', accountId=intelAccount1.id, Core_IPA_Contact_Segment__c ='Internet of Things and Embedded;Client Computing;Data Center',
                                            Email='dellco12345@dell.com');
             allContacts.add(contact2);
             
             
-            Contact contact3 = new Contact(firstname='Intel', 
+            Contact contact3 = new Contact(firstname='Intel', MailingCountry='IND',
                     lastname='Contact3', accountId=intelAccount2.Id, Core_IPA_Contact_Segment__c ='Internet of Things and Embedded;Client Computing;Data Center',
                                            Email='dellco12345@dell.com');
             allContacts.add(contact3);
         	
-        	Contact contact4 = new Contact(firstname='Intel', 
+        	Contact contact4 = new Contact(firstname='Intel', MailingCountry='IND',
                     lastname='Contact4', accountId=intelAccount1.Id,
                                            Email='dellco12345@dell.com');
             allContacts.add(contact4);
 			
-			Database.insert(allContacts,false);
+			Database.insert(allContacts,true);
         
         	User currentUser = [select Id from User where Id = :UserInfo.getUserId()];
         	List<User> userList = new List<User>();
@@ -110,10 +110,6 @@ public class PMP_Marketplace_Metric_Test {
                 Database.insert(userList);
                 
             }
-			System.debug('1. usercon12='+userList[0].lastname);
-			System.debug('2. usercon12='+userList[1].lastname);
-			System.debug('3. usercon13='+userList[2].lastname);
-			System.debug('4. usercon14='+userList[3].lastname);
 			/****** Creating ERPM_Engagement record*****/
             Core_ERPM_Engagement__c erpmEng1 =new Core_ERPM_Engagement__c(Name  ='Intel Premier Support',Core_IsActive__c=true);
             Database.insert(erpmEng1);
@@ -157,7 +153,6 @@ public class PMP_Marketplace_Metric_Test {
         String grpName = 'PMP_'+partnerAccount1.Id;
         String leadGroupName = 'PMP_'+partnerAccount1.Id+'_Leads';
         String segmentGroup = 'PMP_'+partnerAccount1.Id+'_'+contact1.Core_IPA_Contact_Segment__c;
-        System.debug('grpName ='+grpName);
         Group grp = new Group(Name =grpName);
         Group grp1 = new Group(Name =leadGroupName);
         Group grp2 = new Group(Name =segmentGroup);
@@ -185,8 +180,6 @@ public class PMP_Marketplace_Metric_Test {
         
         Database.insert(groupMembers,false);
             
-        System.debug('userorgroup id ='+gm4.UserOrGroupId);
-        System.debug('group id ='+gm4.GroupId);
         
     }
         

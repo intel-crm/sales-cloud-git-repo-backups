@@ -359,7 +359,7 @@ public class PRM_IPA_TriggerHandler_Test {
         System.assertEquals('Successful', cnt.PRM_IPA_Integration_Status__c);
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Test.stopTest();        
     }
     
@@ -404,8 +404,8 @@ public class PRM_IPA_TriggerHandler_Test {
         ContactERPMIntegrationStatusHandler cntsts1 = new ContactERPMIntegrationStatusHandler(prflReslst, prflReslst.getSObjectType());
         cntsts1.execute(null);
         
-        cnt=[SELECT Id, Core_ERPM_Integration_Status__c,Core_ERPM_Integration_Queue_txt__c,PRM_IPA_Integration_Status__c FROM Contact where id=: testConObj.Id];
-        //System.assertEquals('In-Progress', cnt.Core_ERPM_Integration_Status__c); 
+  		cnt=[SELECT Id, Core_ERPM_Integration_Status__c,Core_ERPM_Integration_Queue_txt__c,PRM_IPA_Integration_Status__c FROM Contact where id=: testConObj.Id];
+        System.assertEquals('In-Progress', cnt.Core_ERPM_Integration_Status__c); 
         System.assertEquals('Empty', cnt.Core_ERPM_Integration_Queue_txt__c);
         //System.assertEquals('Pending', cnt.PRM_IPA_Integration_Status__c); 
         
@@ -524,14 +524,14 @@ public class PRM_IPA_TriggerHandler_Test {
         PRM_Account_Specialty_Association__c asa = CreateAccountSplAssociation(testConObj.AccountId);
         
         Account act = [SELECT Id, PRM_IPA_Integration_Status__c FROM Account WHERE Id =: testConObj.AccountId];
-        //System.assertEquals('Pending', act.PRM_IPA_Integration_Status__c);
+        System.assertEquals(null, act.PRM_IPA_Integration_Status__c);
         
         asa.PRM_InActive_Ind__c = true;
         PRM_Account_Specialty_Assoc_Handler.IPAfirstRun = true;
         //act.PRM_IPA_Integration_Status__c = 'Successful';
         update asa;
         
-        //System.assertEquals('Pending', act.PRM_IPA_Integration_Status__c);   
+        System.assertEquals(null, act.PRM_IPA_Integration_Status__c);   
         
         Test.stopTest();
     }
@@ -545,11 +545,11 @@ public class PRM_IPA_TriggerHandler_Test {
         Account partnerAccount1 = new Account(Name ='PartnerAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'PRC Sales Group',
                                               Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='USA',BillingStreet='abc chowk delhi',BillingState='FL',
                                               ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True,OwnerId=UserInfo.getUserId());
-        
+		
        Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',
                                             Industry='Agriculture', BillingCity='delhi',BillingCountry='USA',BillingStreet='cbc chowk delhi',
                                             ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True);
-        
+		
         List<Account> partnerAccts = new List<Account>();
         partnerAccts.add(partnerAccount1);
         partnerAccts.add(intelAccount1);

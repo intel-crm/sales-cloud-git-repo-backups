@@ -7,12 +7,13 @@
 *   
 ************************************************/
 
-public class IPS_APIGEE_Backend_System_CaseAttachment implements System.Queueable, Database.AllowsCallouts { //TWC745-9117 - ATHR Critical fixed by Tushar
+public without sharing class IPS_APIGEE_Backend_System_CaseAttachment implements System.Queueable, Database.AllowsCallouts { // 'without sharing' added by Tushar
     
     set<Id> caseAttachmentIds= new set<Id>();
     
     public IPS_APIGEE_Backend_System_CaseAttachment(set<Id> ids){
-        caseAttachmentIds= ids ;
+        if(ids!=null)
+            caseAttachmentIds= ids ;
     } 
     
     public void execute(System.QueueableContext ctx) {
@@ -22,24 +23,30 @@ public class IPS_APIGEE_Backend_System_CaseAttachment implements System.Queueabl
         
         List<Core_IPS_Case_Attachments__c> CaseAttachmentToProcess;
         //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
-        
+        //endPointUrl = Core_IPS_System_Credentails_Apigee__c.getInstance('Core_IPS_CaseComment_Update').Core_IPS_EndPointURL__c;
         endPointUrl= 'callout:Core_IPS_Case_Create_Update_Comment_Attachment_Promote_Depromote'+'?action=attachmentupdate';
+        System.debug('<<<<<<<<<<ASPN-PAM Case Attachment TEST1>>>>>>>>>'+endPointUrl);
+	if(Core_IPS_Case_Attachments__c.SObjectType.getDescribe().isAccessible()){
         CaseAttachmentToProcess =[SELECT Id,Core_Case__c FROM Core_IPS_Case_Attachments__c where id IN:caseAttachmentIds];
-        
-        for(Core_IPS_Case_Attachments__c ca :CaseAttachmentToProcess ){
-            try{
-                //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
-                //XML Generation
-                xmlbody=generateCaseAttachment(ca.Id,ca.Core_Case__c);
-                //Sending HttpRequest
-                sendXMLRequest(xmlbody,endPointUrl); 
-            }
-            catch(System.CalloutException ex){
-                strDetails += '\n A callout Exception Occurred While sending request \n';
-                Core_Log_Entry.logEntryWithException('SFDC','IPS',null,'warn','IPS JIRA,HSD,RTC Integration issue',strDetails,null,'CaseAttachment',null,ex);
-            }
         }
-        
+        if(CaseAttachmentToProcess!=null){
+            for(Core_IPS_Case_Attachments__c ca :CaseAttachmentToProcess ){
+            try{
+                	//string caseAttachmentIntegrationName = Core_IPS_System_Credentails_Apigee__c.getInstance('Core_IPS_CaseComment_Update').Name;
+                	System.debug('<<<<<<<<<<ASPN-PAM Case Attachment TEST2>>>>>>>>>');
+                    //Generating access token
+                	//string accesstoken = Core_IPS_APIGEE_Utility.generateAccessToken1(caseAttachmentIntegrationName);
+                    //XML Generation
+                    xmlbody=generateCaseAttachment(ca.Id,ca.Core_Case__c);
+                    //Sending HttpRequest
+                	sendXMLRequest(xmlbody,endPointUrl); //TWC745-6310-Implement Privileged Access Management (PAM)-custom setting to Named credential change
+                }
+                catch(System.CalloutException ex){
+                    strDetails += '\n A callout Exception Occurred While sending request \n';
+                    Core_Log_Entry.logEntryWithException('SFDC','IPS',null,'warn','IPS JIRA,HSD,RTC Integration issue',strDetails,null,'CaseAttachment',null,ex);
+                }
+            }
+        }  
     }
     
     
@@ -92,16 +99,16 @@ public class IPS_APIGEE_Backend_System_CaseAttachment implements System.Queueabl
         String ipsAuthorization = System.Label.IPS_Authorization; 
 
         try{
-            
+            System.debug('<<<<<<<<<<ASPN-PAM Case Attachment TEST3>>>>>>>>>');
             //Sending XML request
             HttpRequest req = new HttpRequest();
             req.setEndpoint(endPointUrl);
             req.setMethod('POST');
             req.setHeader('Content-Type','application/xml');
-            
+            //req.setHeader(ipsAuthorization,'Bearer ' + accesstoken);
             req.setBody(body);
             HTTPResponse response =  new Http().send(req);
-            
+            System.debug('<<<<<<<<<<ASPN-PAM Case Attachment TEST3>>>>>>>>>'+response.getStatusCode());
             // If error occured creating log 
             if(response.getStatusCode()!=200){
                 String strDetails= 'Call out Service Name : '+'IPS_APIGEE_Backend_System_CaseAttachment'+'\n Trace Information : '+'STATUS:'+ response.getStatus() + '\nSTATUS_CODE:' + response.getStatusCode() + '\n Message:' + response.toString()+ '\n CaseAttachment Ids ';

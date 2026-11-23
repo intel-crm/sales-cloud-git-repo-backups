@@ -38,9 +38,22 @@
         <label><!-- Platform BU --></label>
         <name>Core_Platform_BU__c</name>
     </fields>
+    <fields>
+        <label><!-- Opportunity Product --></label>
+        <name>Opportunity_Product__c</name>
+        <relationshipLabel><!-- Descriptive Features --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
     <webLinks>
         <label><!-- Core_EditDescriptiveFeatures --></label>
         <name>Core_EditDescriptiveFeatures</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_EditDescriptiveFeaturesForProduct --></label>
+        <name>Core_EditDescriptiveFeaturesForProduct</name>
     </webLinks>
 </CustomObjectTranslation>

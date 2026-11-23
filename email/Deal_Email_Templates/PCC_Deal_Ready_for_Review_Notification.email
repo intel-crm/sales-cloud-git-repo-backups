@@ -1,0 +1,26 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<p class="MsoNormal">Hello<o:p></o:p></p>
+
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal">The following Deal Registration has been <b>Assigned</b> to
+you.<b><o:p></o:p></b></p>
+
+<p class="MsoNormal"><b><o:p>&nbsp;</o:p></b></p>
+
+<p class="MsoNormal"><b>Registration Number: </b>{!Core_Design_Registration__c.Name}<o:p></o:p></p>
+
+<p class="MsoNormal"><b>Deal Registration Name:</b> {!Core_Design_Registration__c.Core_Design_Registration_Nm__c}<b><o:p></o:p></b></p>
+
+<p class="MsoNormal"><b>Partner Account: </b>{!Core_Design_Registration__c.Core_Partner_Account_Id__c}<o:p></o:p></p>
+
+<p class="MsoNormal"><b>End Customer Account:</b> {!Core_Design_Registration__c.Core_End_Customer_Account_Id__c}<o:p></o:p></p>
+
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal"><span style="background:yellow;mso-highlight:yellow">For
+more details, you can access the deal registration record <u><span style="color:#0070C0"><a href="{!Core_Design_Registration__c.Link}">here</a></span></u>&nbsp;</span><o:p></o:p></p>]]></td>
+</tr>
+</table>

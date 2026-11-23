@@ -11,7 +11,6 @@
     </formulas>
     <interviewLabel>Core_MDF_Channel_Program_UniqueId_Field_Auto_Populate {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_Channel_Program_UniqueId_Field_Auto_Populate</label>
-    <migratedFromWorkflowRuleName>Core_MDF_Channel_Program_UniqueId_Field_Auto_Populate</migratedFromWorkflowRuleName>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

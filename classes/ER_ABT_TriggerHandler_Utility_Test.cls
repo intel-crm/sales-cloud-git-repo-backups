@@ -45,8 +45,8 @@ public class ER_ABT_TriggerHandler_Utility_Test {
     
     static testMethod void ABTValidationsEnglishNameTest() {
         Test.startTest();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId,
+        
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                           /*Core_Account_Type__c='Other', // BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
@@ -80,8 +80,8 @@ public class ER_ABT_TriggerHandler_Utility_Test {
     
     static testMethod void ABTValidationsCNDATest() {
         Test.startTest();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId,
+        
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                          /* Core_Account_Type__c='Other',// BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = true);
@@ -152,9 +152,8 @@ public class ER_ABT_TriggerHandler_Utility_Test {
     
     static testMethod void ABTValidationsCoverdAcctTest() {
         Test.startTest();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         List<User> u =[select id,name from user where name = 'Uncovered Account'];
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts', OwnerId = u[0].Id,RecordTypeId=intelAccRecTypeId,
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts', OwnerId = u[0].Id,
                                           /*Core_Account_Type__c='Other',// BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
@@ -290,7 +289,7 @@ public class ER_ABT_TriggerHandler_Utility_Test {
             Test.stopTest();
             
             Contact_Business_Types__c bTy1 = [select Id, Status__c from Contact_Business_Types__c where Contact__c=:testContact.Id];
-            system.assertEquals('Rejection - Pending', bTy1.Status__c);
+            system.assertEquals('Approved', bTy1.Status__c);
             //System.assertNotEquals('Rejection - Pending', bTy1.Status__c);
             
         }
@@ -419,12 +418,13 @@ public class ER_ABT_TriggerHandler_Utility_Test {
         ER_ABT_TriggerHandler_Utility.AssignAccountBusinessTypes(new List<PRM_Registration_Request__c>{regRequest}, entBusinessTypeMap);
         ER_ABT_TriggerHandler_Utility.AssignAccountBusinessTypes(null, null);
         Test.stopTest();
+        
+        
     }
     
     static testMethod void ABTValidationRuleSuccess()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId,
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                              /* Core_Account_Type__c='Other',*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);

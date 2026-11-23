@@ -35,8 +35,8 @@ Modification Log :
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
         strProf.add('System Administrator');
-        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
-        for(Profile prf : profileList){
+        List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
+        for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         //Create Role
@@ -48,10 +48,7 @@ Modification Log :
         ListOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         ListOfUser.get(1).ProfileID =  profiles.get('System Administrator');
         ListOfUser.get(1).UserRoleID = role.id;
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert ListOfUser;
-        }
+        insert ListOfUser;
         System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
         System.assertEquals(ListOfUser.get(1).profileid, profiles.get('System Administrator'));
     }
@@ -75,89 +72,89 @@ Modification Log :
         List<String> strProf = new List<String>();
         User portalUser = new User();
         // Create Accounts
-        List<Account> accounts = TestUtilities.getListOfAccounts(2);
+        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(2);
         System.runAs(ListOfUser.get(0)){
-            insert accounts;
+            insert ListOfAccounts;
         }
-        System.assert(accounts[0].Id != null, 'Record not created');
-        Integer counter=0;
+        System.assert(ListOfAccounts[0].Id != null, 'Record not created');
+        Integer Counter=0;
         // Create Contact
-        List<Contact> contacts = TestUtilities.getListOfContact(2);
-        for(Contact contactRec : contacts){
-            contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-            contactRec.Accountid = accounts.get(counter).Id;
-            contactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
-            counter++;
+        List<Contact> ListOfContacts = TestUtilities.getListOfContact(2);
+        for(Contact ContactRec : ListOfContacts){
+            ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+            ContactRec.Accountid = ListOfAccounts.get(Counter).Id;
+            ContactRec.Core_IPS_Active__c = true;
+            ContactRec.MailingCountry ='ARE';
+            Counter++;
         }
-        counter=0;
+        Counter=0;
         System.runAs(ListOfUser.get(0)){
-            insert contacts;
+            insert ListOfContacts;
         }
-        System.assert(contacts[0].Id != null, 'Record not created');
+        System.assert(ListOfContacts[0].Id != null, 'Record not created');
         // Customer Profile Query
-        Profile customerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
+        Profile CustomerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
         // Creating Customer User
-        List<User> customerUsers = TestUtilities.getListOfUser(1);
-        for(user ur:customerUsers){
+        List<User> ListOfCustomerUsr = TestUtilities.getListOfUser(1);
+        for(user ur:ListOfCustomerUsr){
             ur.UserName = 'TestCustomerUsr@intel.com';
-            ur.ProfileID = customerProfile.id;
-            ur.contactId = contacts.get(0).id;
+            ur.ProfileID = CustomerProfile.id;
+            ur.contactId = ListOfContacts.get(0).id;
         }
         System.runAs(listofuser[0]){
-            insert customerUsers;
+            insert ListOfCustomerUsr;
         }
-        System.assertEquals(customerUsers[0].ProfileID, customerProfile.id);
+        System.assertEquals(ListOfCustomerUsr[0].ProfileID, CustomerProfile.id);
         // Create Ips Project
-        List<Core_IPS_Project__c> ipsProjects = TestUtilities.getListOfIpsProjects(3);
-        ipsProjects[2].Core_MPNDA__c='123';
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(3);
+        ListOfIpsProjects[2].Core_MPNDA__c='123';
         // Create Ips Labels added by Aayushi for US79852
-        List<Core_IPS_Labels__c> ipsLabels = TestUtilities.getIPSLabel();
-        for(Core_IPS_Labels__c ipsLabel: ipsLabels){
-            if(ipsLabel.name=='ProjectGroupPrefix'){
-                ipsLabel.Value__c = 'IPS_Proj_';
+        List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
+        for(Core_IPS_Labels__c IL: IPSLabels){
+            if(IL.name=='ProjectGroupPrefix'){
+                IL.Value__c = 'IPS_Proj_';
             }
-             if(ipsLabel.name=='CoreStatus_SPtoActive_Error'){
-                ipsLabel.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
+             if(IL.name=='CoreStatus_SPtoActive_Error'){
+                IL.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
             }
-             if(ipsLabel.name=='Core_OneProjProdMem_Error'){
-                ipsLabel.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
+             if(IL.name=='Core_OneProjProdMem_Error'){
+                IL.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
             }
-            if(ipsLabel.name=='CoreStatus_Draft'){
-               ipsLabel.Value__c = 'Draft'; 
+            if(IL.name=='CoreStatus_Draft'){
+               IL.Value__c = 'Draft'; 
             }
-            if(ipsLabel.name=='CoreStatus_Active'){
-               ipsLabel.Value__c = 'Active' ;
+            if(IL.name=='CoreStatus_Active'){
+               IL.Value__c = 'Active' ;
             }
-            if(ipsLabel.name=='CoreStatus_Inactive'){
-               ipsLabel.Value__c = 'Inactive' ;
+            if(IL.name=='CoreStatus_Inactive'){
+               IL.Value__c = 'Inactive' ;
             }
-            if(ipsLabel.name=='CoreStatus_SP'){
-               ipsLabel.Value__c = 'Submitted Pending' ;
+            if(IL.name=='CoreStatus_SP'){
+               IL.Value__c = 'Submitted Pending' ;
             }
-            if(ipsLabel.name=='Core_IPS_DuplicateAccount_Error'){
-                ipsLabel.Value__c = 'Account already exists';
+            if(IL.name=='Core_IPS_DuplicateAccount_Error'){
+                IL.Value__c = 'Account already exists';
             }
-            if(ipsLabel.name=='Core_IPS_MPNDAValue_Error'){
-                ipsLabel.Value__c='You cannot enter an MPNDA value if an Account on the Project does not have a CNDA.';
+            if(IL.name=='Core_IPS_MPNDAValue_Error'){
+                IL.Value__c='You cannot enter an MPNDA value if an Account on the Project does not have a CNDA.';
             }
         }
         
         System.runAs(ListOfUser.get(0)){
-            insert ipsLabels;
-            insert ipsProjects;
+            insert IPSLabels;
+            insert ListOfIpsProjects;
         }
         
-        System.assert(ipsProjects[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Ips Account
          ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(2);
-        for(Core_IPS_Account__c ipsAccount : ListOfIpsAccounts){
+        for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
             if(counter<1){
-                ipsAccount.Core_Account__c = accounts.get(0).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(0).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             } else {
-                ipsAccount.Core_Account__c = accounts.get(1).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(1).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(1).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(1).Id;
             }
             counter++;
         }
@@ -170,38 +167,38 @@ Modification Log :
         System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
         
         List<Core_Trigger_Executions__c> lstTriggerExecution  = new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'checkDuplicateAccount';
-        triggerExecution.Core_Active__c = true;
-        triggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
-        triggerExecution.Core_Description__c = 'prevent duplicate account addition to project';
-        triggerExecution.Core_Object__c = 'Core_IPS_Account__c';
-        triggerExecution.Core_Trigger_Events__c = 'before insert';
-        lstTriggerExecution.add(triggerExecution);
+        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
+        TriggerExecution.Name = 'checkDuplicateAccount';
+        TriggerExecution.Core_Active__c = true;
+        TriggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
+        TriggerExecution.Core_Description__c = 'prevent duplicate account addition to project';
+        TriggerExecution.Core_Object__c = 'Core_IPS_Account__c';
+        TriggerExecution.Core_Trigger_Events__c = 'before insert';
+        lstTriggerExecution.add(TriggerExecution);
         
-        Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
-        triggerExecution1.Name = 'preventMPNDAforNonNDAAccount';
-        triggerExecution1.Core_Active__c = true;
-        triggerExecution1.Core_Class_Name__c ='Core_IPS_Account_Handler';
-        triggerExecution1.Core_Description__c = 'Not be able to add/save an MPNDA value on a Project if the Account has no CNDA on its Account Record';
-        triggerExecution1.Core_Object__c = 'Core_IPS_Account__c';
-        triggerExecution1.Core_Trigger_Events__c = 'after insert';
-        lstTriggerExecution.add(triggerExecution1);
+        Core_Trigger_Executions__c  TriggerExecution1 = new Core_Trigger_Executions__c();
+        TriggerExecution1.Name = 'preventMPNDAforNonNDAAccount';
+        TriggerExecution1.Core_Active__c = true;
+        TriggerExecution1.Core_Class_Name__c ='Core_IPS_Account_Handler';
+        TriggerExecution1.Core_Description__c = 'Not be able to add/save an MPNDA value on a Project if the Account has no CNDA on its Account Record';
+        TriggerExecution1.Core_Object__c = 'Core_IPS_Account__c';
+        TriggerExecution1.Core_Trigger_Events__c = 'after insert';
+        lstTriggerExecution.add(TriggerExecution1);
         
         System.runAs(ListOfUser.get(0)){
             insert lstTriggerExecution;
         } 
         //start add duplicate account on a project DE37603
-        List<Core_IPS_Account__c> duplicateIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
-        for(Core_IPS_Account__c ipsAccount : duplicateIpsAccounts){
-            ipsAccount.Core_Account__c = accounts.get(0).Id;
-            ipsAccount.Core_IPS_Project__c = ipsProjects.get(0).Id;
+        List<Core_IPS_Account__c> ListOfIpsAccountsDup = TestUtilities.getListOfIpsAccounts(1);
+        for(Core_IPS_Account__c IpsAcc : ListOfIpsAccountsDup){
+                IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
         }
         System.runAs(ListOfUser.get(0)){
             try{
-            insert duplicateIpsAccounts;
+            insert ListOfIpsAccountsDup;
                 try{
-            Map<Id,Core_IPS_Account__c> oldMap = new Map<Id,Core_IPS_Account__c>(duplicateIpsAccounts);
+            Map<Id,Core_IPS_Account__c> oldMap = new Map<Id,Core_IPS_Account__c>(ListOfIpsAccountsDup);
            Core_IPS_Account_Handler.addProjectMembersOnchangeOfAccount(ListOfIpsAccounts,oldMap);
             }catch(exception ex){}
             }catch(Exception ex){
@@ -212,14 +209,14 @@ Modification Log :
         //end
         //
         //start prevent MPNDA value on project for Non NDA Account US103460
-        List<Core_IPS_Account__c> testIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
-        for(Core_IPS_Account__c ipsAccount : testIpsAccounts){
-            ipsAccount.Core_Account__c = accounts.get(0).Id;
-            ipsAccount.Core_IPS_Project__c = ipsProjects.get(2).Id;
+        List<Core_IPS_Account__c> ListOfIpsAccountsTest = TestUtilities.getListOfIpsAccounts(1);
+        for(Core_IPS_Account__c IpsAcc : ListOfIpsAccountsTest){
+            IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+            IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(2).Id;
         }
         System.runAs(ListOfUser.get(0)){
             try{
-                insert testIpsAccounts;
+                insert ListOfIpsAccountsTest;
             }catch(Exception ex){
                 Boolean expectedExceptionThrown =  ex.getMessage().contains('You cannot enter an MPNDA value if an Account on the Project does not have a CNDA.') ? true : false;
                 System.assertEquals(expectedExceptionThrown, true);}
@@ -248,88 +245,88 @@ Modification Log :
         List<String> strProf = new List<String>();
         User portalUser = new User();
         // Create Accounts
-        List<Account> accounts = TestUtilities.getListOfAccounts(2);
+        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(2);
         System.runAs(ListOfUser.get(0)){
-            insert accounts;
-            for(Account accountRecord : accounts){
-                accountRecord.ownerid = ListOfUser.get(1).id;
+            insert ListOfAccounts;
+            for(Account Acc : ListOfAccounts){
+                Acc.ownerid = ListOfUser.get(1).id;
             }
-            update accounts;
-            List<AccountShare> accountShares = [select UserOrGroupId,rowcause,CaseAccessLevel from AccountShare where AccountId =:accounts];
-            for(AccountShare accountShare : accountShares){
-                accountShare.CaseAccessLevel = 'Edit';
+            update ListOfAccounts;
+            List<AccountShare> ListOfAccountShare = [select UserOrGroupId,rowcause,CaseAccessLevel from AccountShare where AccountId =:ListOfAccounts];
+            for(AccountShare Share : ListOfAccountShare){
+                Share.CaseAccessLevel = 'Edit';
             }
             //update ListOfAccountShare;
         }
         
-        System.assert(accounts[0].Id != null, 'Record not created');
+        System.assert(ListOfAccounts[0].Id != null, 'Record not created');
         // Create Contact
-        Integer counter=0;
-        List<Contact> contacts = TestUtilities.getListOfContact(1);
-        for(Contact contactRec : contacts){
-            contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-            contactRec.Accountid = accounts.get(counter).Id;
-            contactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
-            counter++;
+        Integer Counter=0;
+        List<Contact> ListOfContacts = TestUtilities.getListOfContact(1);
+        for(Contact ContactRec : ListOfContacts){
+            ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+            ContactRec.Accountid = ListOfAccounts.get(Counter).Id;
+            ContactRec.Core_IPS_Active__c = true;
+            ContactRec.MailingCountry ='ARE';
+            Counter++;
         }
-        counter=0;
+        Counter=0;
         System.runAs(ListOfUser.get(0)){
-            insert contacts;
+            insert ListOfContacts;
         }
-        System.assert(contacts[0].Id != null, 'Record not created');
+        System.assert(ListOfContacts[0].Id != null, 'Record not created');
         // Customer Profile Query
-        Profile customerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
+        Profile CustomerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
         // Creating Customer User
-        List<User> customerUsers = TestUtilities.getListOfUser(1);
-        customerUsers.get(0).UserName = 'TestCustomerUsr@intel.com';
-        customerUsers.get(0).ProfileID = customerProfile.id;
-        customerUsers.get(0).contactId = contacts.get(0).id;
+        List<User> ListOfCustomerUsr = TestUtilities.getListOfUser(1);
+        ListOfCustomerUsr.get(0).UserName = 'TestCustomerUsr@intel.com';
+        ListOfCustomerUsr.get(0).ProfileID = CustomerProfile.id;
+        ListOfCustomerUsr.get(0).contactId = ListOfContacts.get(0).id;
         System.runAs(listofuser[0]){
-            insert customerUsers;
+            insert ListOfCustomerUsr;
         }
-        System.assertEquals(customerUsers[0].ProfileID, customerProfile.id);
+        System.assertEquals(ListOfCustomerUsr[0].ProfileID, CustomerProfile.id);
         // Create Ips Project
-        List<Core_IPS_Project__c> ipsProjects = TestUtilities.getListOfIpsProjects(2);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
         // Create Ips Labels added by Aayushi for US79852
-        List<Core_IPS_Labels__c> ipsLabels = TestUtilities.getIPSLabel();
-        for(Core_IPS_Labels__c ipsLabel: ipsLabels){
-            if(ipsLabel.name=='ProjectGroupPrefix'){
-                ipsLabel.Value__c = 'IPS_Proj_';
+        List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
+        for(Core_IPS_Labels__c IL: IPSLabels){
+            if(IL.name=='ProjectGroupPrefix'){
+                IL.Value__c = 'IPS_Proj_';
             }
-                 if(ipsLabel.name=='CoreStatus_SPtoActive_Error'){
-                     ipsLabel.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
+             if(IL.name=='CoreStatus_SPtoActive_Error'){
+                IL.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
             }
-                 if(ipsLabel.name=='Core_OneProjProdMem_Error'){
-                     ipsLabel.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
+             if(IL.name=='Core_OneProjProdMem_Error'){
+                IL.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
             }
-                if(ipsLabel.name=='CoreStatus_Draft'){
-                    ipsLabel.Value__c = 'Draft'; 
+            if(IL.name=='CoreStatus_Draft'){
+               IL.Value__c = 'Draft'; 
             }
-                if(ipsLabel.name=='CoreStatus_Active'){
-                    ipsLabel.Value__c = 'Active' ;
+            if(IL.name=='CoreStatus_Active'){
+               IL.Value__c = 'Active' ;
             }
-                if(ipsLabel.name=='CoreStatus_Inactive'){
-                    ipsLabel.Value__c = 'Inactive' ;
+            if(IL.name=='CoreStatus_Inactive'){
+               IL.Value__c = 'Inactive' ;
             }
-                if(ipsLabel.name=='CoreStatus_SP'){
-                    ipsLabel.Value__c = 'Submitted Pending' ;
+            if(IL.name=='CoreStatus_SP'){
+               IL.Value__c = 'Submitted Pending' ;
             }
         }
         System.runAs(ListOfUser.get(0)){
-            insert ipsLabels;
-            insert ipsProjects;
+            insert IPSLabels;
+            insert ListOfIpsProjects;
         }
-        System.assert(ipsProjects[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Ips Account
-        List<Core_IPS_Account__c> ipsAccounts = TestUtilities.getListOfIpsAccounts(2);
-        for(Core_IPS_Account__c ipsAccount : ipsAccounts){
+        List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(2);
+        for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
             if(counter<1){
-                ipsAccount.Core_Account__c = accounts.get(0).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(0).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             } else {
-                ipsAccount.Core_Account__c = accounts.get(0).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(1).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(1).Id;
             }
             counter++;
         }
@@ -342,9 +339,9 @@ Modification Log :
         System.assert(IPSLables[0].Id != null, 'Record not created');*/
         Test.startTest();
         System.runAs(ListOfUser.get(0)){
-            insert ipsAccounts;
+            insert ListOfIpsAccounts;
         }
-        System.assert(ipsAccounts[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
         Test.stopTest();
     }
 /***************************************************************************************************
@@ -361,103 +358,103 @@ Modification Log :
 ****************************************************************************************************/ 
     static testmethod void DeleteIPSAccountNotNew_test(){
         getrecords();
-        String exceptionError;
+        String ExceptionError;
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(1).id;
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
         User portalUser = new User();
         // Create Accounts
-        List<Account> accounts = TestUtilities.getListOfAccounts(2);
+        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(2);
         System.runAs(ListOfUser.get(0)){
-            insert accounts;
-            for(Account accountRecord : accounts){
-                accountRecord.ownerid = ListOfUser.get(1).id;
+            insert ListOfAccounts;
+            for(Account Acc : ListOfAccounts){
+                Acc.ownerid = ListOfUser.get(1).id;
             }
-            update accounts;
-            List<AccountShare> accountShares = [select UserOrGroupId,rowcause,CaseAccessLevel from AccountShare where AccountId =:accounts];
-            for(AccountShare accountShare : accountShares){
-                accountShare.CaseAccessLevel = 'Edit';
+            update ListOfAccounts;
+            List<AccountShare> ListOfAccountShare = [select UserOrGroupId,rowcause,CaseAccessLevel from AccountShare where AccountId =:ListOfAccounts];
+            for(AccountShare Share : ListOfAccountShare){
+                Share.CaseAccessLevel = 'Edit';
             }
             //update ListOfAccountShare;
         }
         
-        System.assert(accounts[0].Id != null, 'Record not created');
-        Integer counter=0;
+        System.assert(ListOfAccounts[0].Id != null, 'Record not created');
+        Integer Counter=0;
         // Create Contact
-        List<Contact> contacts = TestUtilities.getListOfContact(2);
-        for(Contact contactRec : contacts){
-            contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-            contactRec.Accountid = accounts.get(counter).Id;
-            contactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
-            counter++;
+        List<Contact> ListOfContacts = TestUtilities.getListOfContact(2);
+        for(Contact ContactRec : ListOfContacts){
+            ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+            ContactRec.Accountid = ListOfAccounts.get(Counter).Id;
+            ContactRec.Core_IPS_Active__c = true;
+            ContactRec.MailingCountry ='ARE';
+            Counter++;
         }
-        counter=0;
+        Counter=0;
         System.runAs(ListOfUser.get(0)){
-            insert contacts;
+            insert ListOfContacts;
         }
-        System.assert(contacts[0].Id != null, 'Record not created');
+        System.assert(ListOfContacts[0].Id != null, 'Record not created');
         // Customer Profile Query
-        Profile customerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
+        Profile CustomerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
         // Creating Customer User
-        List<User> customerUsers = TestUtilities.getListOfUser(1);
-        for(User ur:customerUsers){
+        List<User> ListOfCustomerUsr = TestUtilities.getListOfUser(1);
+        for(User ur:ListOfCustomerUsr){
         ur.UserName = 'TestCustomerUsr@intel.com';
-        ur.ProfileID = customerProfile.id;
-        ur.contactId = contacts.get(0).id;
+        ur.ProfileID = CustomerProfile.id;
+        ur.contactId = ListOfContacts.get(0).id;
         }
         System.runAs(listofuser[0]){
-            insert customerUsers;
+            insert ListOfCustomerUsr;
         }
-        System.assertEquals(customerUsers[0].ProfileID, customerProfile.id);
+        System.assertEquals(ListOfCustomerUsr[0].ProfileID, CustomerProfile.id);
         // Create Ips Project
-        List<Core_IPS_Project__c> ipsProjects = TestUtilities.getListOfIpsProjects(2);
-        for(Core_IPS_Project__c proj:ipsProjects){
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
+        for(Core_IPS_Project__c proj:ListOfIpsProjects){
             //status changed to Draft for US79852
             proj.Core_Status__c = 'Draft';
         }
         List<Core_Trigger_Executions__c> lstTriggerExecution  = new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'PreventDelete';
-        triggerExecution.Core_Active__c = true;
-        triggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
-        triggerExecution.Core_Description__c = 'Prevent Delete';
-        triggerExecution.Core_Object__c = 'Core_IPS_Account__c';
-        triggerExecution.Core_Trigger_Events__c = 'after update';
-        lstTriggerExecution.add(triggerExecution);
+        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
+        TriggerExecution.Name = 'PreventDelete';
+        TriggerExecution.Core_Active__c = true;
+        TriggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
+        TriggerExecution.Core_Description__c = 'Prevent Delete';
+        TriggerExecution.Core_Object__c = 'Core_IPS_Account__c';
+        TriggerExecution.Core_Trigger_Events__c = 'after update';
+        lstTriggerExecution.add(TriggerExecution);
        
         System.runAs(ListOfUser.get(0)){
             insert lstTriggerExecution;
         } 
         // Create Ips Labels added by Aayushi for US79852
-        List<Core_IPS_Labels__c> ipsLabels = TestUtilities.getIPSLabel();
-        for(Core_IPS_Labels__c ipsLabel: ipsLabels){
-            if(ipsLabel.name=='ProjectGroupPrefix'){
-                ipsLabel.Value__c = 'IPS_Proj_';
+        List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
+        for(Core_IPS_Labels__c IL: IPSLabels){
+            if(IL.name=='ProjectGroupPrefix'){
+                IL.Value__c = 'IPS_Proj_';
             }
-                 if(ipsLabel.name=='CoreStatus_SPtoActive_Error'){
-                     ipsLabel.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
+             if(IL.name=='CoreStatus_SPtoActive_Error'){
+                IL.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
             }
-                 if(ipsLabel.name=='Core_OneProjProdMem_Error'){
-                     ipsLabel.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
+             if(IL.name=='Core_OneProjProdMem_Error'){
+                IL.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
             }
-                if(ipsLabel.name=='CoreStatus_Draft'){
-                    ipsLabel.Value__c = 'Draft'; 
+            if(IL.name=='CoreStatus_Draft'){
+               IL.Value__c = 'Draft'; 
             }
-                if(ipsLabel.name=='CoreStatus_Active'){
-                    ipsLabel.Value__c = 'Active' ;
+            if(IL.name=='CoreStatus_Active'){
+               IL.Value__c = 'Active' ;
             }
-                if(ipsLabel.name=='CoreStatus_Inactive'){
-                    ipsLabel.Value__c = 'Inactive' ;
+            if(IL.name=='CoreStatus_Inactive'){
+               IL.Value__c = 'Inactive' ;
             }
-                if(ipsLabel.name=='CoreStatus_SP'){
-                    ipsLabel.Value__c = 'Submitted Pending' ;
+            if(IL.name=='CoreStatus_SP'){
+               IL.Value__c = 'Submitted Pending' ;
             }
         }
         System.runAs(ListOfUser.get(0)){
-            insert ipsLabels;
-            insert ipsProjects;
+            insert IPSLabels;
+            insert ListOfIpsProjects;
             //added by Aayushi to accomodate changes made in
             // US79853
           /*  TestUtilities.addAccMemProdToProject(ListOfIpsProjects);
@@ -467,16 +464,16 @@ Modification Log :
             }
             Update ListOfIpsProjects;*/
         }
-        System.assert(ipsProjects[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Ips Account
-        List<Core_IPS_Account__c> ipsAccounts = TestUtilities.getListOfIpsAccounts(2);
-        for(Core_IPS_Account__c ipsAccount : ipsAccounts){
+        List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(2);
+        for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
             if(counter<1){
-                ipsAccount.Core_Account__c = accounts.get(0).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(0).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             } else {
-                ipsAccount.Core_Account__c = accounts.get(0).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(1).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(1).Id;
             }
             counter++;
         }
@@ -488,15 +485,15 @@ Modification Log :
         }
         System.assert(IPSLables[0].Id != null, 'Record not created');*/
         System.runAs(ListOfUser.get(0)){
-            insert ipsAccounts;
+            insert ListOfIpsAccounts;
         }
-        System.assert(ipsAccounts[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
         Test.startTest();
         System.runAs(ListOfUser.get(0)){
             try{
-                Delete ipsAccounts;
+                Delete ListOfIpsAccounts;
             } Catch (Exception e){
-                exceptionError = e.getMessage();
+                ExceptionError = e.getMessage();
             }
         }
       //System.assert(ExceptionError.contains('Cannot delete this Account when status is either Submitted or Active'),'Prevent Delete Error not occured');
@@ -516,112 +513,112 @@ Modification Log :
 ****************************************************************************************************/ 
     static testmethod void DeleteIPSAccountNew_test(){
         getrecords();
-        String exceptionError;
+        String ExceptionError;
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(1).id;
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
         User portalUser = new User();
         // Create Accounts
-        List<Account> accounts = TestUtilities.getListOfAccounts(2);
+        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(2);
         System.runAs(ListOfUser.get(0)){
-            insert accounts;
-            for(Account accountRecord : accounts){
-                accountRecord.ownerid = ListOfUser.get(1).id;
+            insert ListOfAccounts;
+            for(Account Acc : ListOfAccounts){
+                Acc.ownerid = ListOfUser.get(1).id;
             }
-            update accounts;
-            List<AccountShare> accountShares = [select UserOrGroupId,rowcause,CaseAccessLevel from AccountShare where AccountId =:accounts];
-            for(AccountShare accountShare : accountShares){
-                accountShare.CaseAccessLevel = 'Edit';
+            update ListOfAccounts;
+            List<AccountShare> ListOfAccountShare = [select UserOrGroupId,rowcause,CaseAccessLevel from AccountShare where AccountId =:ListOfAccounts];
+            for(AccountShare Share : ListOfAccountShare){
+                Share.CaseAccessLevel = 'Edit';
             }
             //update ListOfAccountShare;
         }
-        System.assert(accounts[0].Id != null, 'Record not created');
-        Integer counter=0;
+        System.assert(ListOfAccounts[0].Id != null, 'Record not created');
+        Integer Counter=0;
         // Create Contact
-        List<Contact> contacts = TestUtilities.getListOfContact(2);
-        for(Contact contactRec : contacts){
-            contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-            contactRec.Accountid = accounts.get(counter).Id;
-            contactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
-            counter++;
+        List<Contact> ListOfContacts = TestUtilities.getListOfContact(2);
+        for(Contact ContactRec : ListOfContacts){
+            ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+            ContactRec.Accountid = ListOfAccounts.get(Counter).Id;
+            ContactRec.Core_IPS_Active__c = true;
+            ContactRec.MailingCountry ='ARE';
+            Counter++;
         }
         System.runAs(ListOfUser.get(0)){
-            insert contacts;
+            insert ListOfContacts;
         }
-        counter=0;
-        System.assert(contacts[0].Id != null, 'Record not created');
+        Counter=0;
+        System.assert(ListOfContacts[0].Id != null, 'Record not created');
         // Customer Profile Query
-        Profile customerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
+        Profile CustomerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
         // Creating Customer User
-        List<User> customerUsers = TestUtilities.getListOfUser(1);
-        for(User ur:customerUsers){
+        List<User> ListOfCustomerUsr = TestUtilities.getListOfUser(1);
+        for(User ur:ListOfCustomerUsr){
             ur.UserName = 'TestCustomerUsr@intel.com';
-            ur.ProfileID = customerProfile.id;
-            ur.contactId = contacts.get(0).id;
+            ur.ProfileID = CustomerProfile.id;
+            ur.contactId = ListOfContacts.get(0).id;
         }
         System.runAs(listofuser[0]){
-            insert customerUsers;
+            insert ListOfCustomerUsr;
         }
-        System.assertEquals(customerUsers[0].ProfileID, customerProfile.id);
+        System.assertEquals(ListOfCustomerUsr[0].ProfileID, CustomerProfile.id);
         // Create Ips Project
-        List<Core_IPS_Project__c> ipsProjects = TestUtilities.getListOfIpsProjects(2);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
         List<Core_Trigger_Executions__c> lstTriggerExecution  = new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'PreventDelete';
-        triggerExecution.Core_Active__c = true;
-        triggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
-        triggerExecution.Core_Description__c = 'Prevent Delete';
-        triggerExecution.Core_Object__c = 'Core_IPS_Account__c';
-        triggerExecution.Core_Trigger_Events__c = 'after update';
-        lstTriggerExecution.add(triggerExecution);
+        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
+        TriggerExecution.Name = 'PreventDelete';
+        TriggerExecution.Core_Active__c = true;
+        TriggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
+        TriggerExecution.Core_Description__c = 'Prevent Delete';
+        TriggerExecution.Core_Object__c = 'Core_IPS_Account__c';
+        TriggerExecution.Core_Trigger_Events__c = 'after update';
+        lstTriggerExecution.add(TriggerExecution);
         
         System.runAs(ListOfUser.get(0)){
             insert lstTriggerExecution;
         } 
         // Create Ips Labels added by Aayushi for US79852
-        List<Core_IPS_Labels__c> ipsLabels = TestUtilities.getIPSLabel();
-        for(Core_IPS_Labels__c ipsLabel: ipsLabels){
-            if(ipsLabel.name=='ProjectGroupPrefix'){
-                ipsLabel.Value__c = 'IPS_Proj_';
+        List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
+        for(Core_IPS_Labels__c IL: IPSLabels){
+            if(IL.name=='ProjectGroupPrefix'){
+                IL.Value__c = 'IPS_Proj_';
             }
-                 if(ipsLabel.name=='CoreStatus_SPtoActive_Error'){
-                     ipsLabel.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
+             if(IL.name=='CoreStatus_SPtoActive_Error'){
+                IL.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
             }
-                 if(ipsLabel.name=='Core_OneProjProdMem_Error'){
-                     ipsLabel.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
+             if(IL.name=='Core_OneProjProdMem_Error'){
+                IL.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
             }
-                if(ipsLabel.name=='CoreStatus_Draft'){
-                    ipsLabel.Value__c = 'Draft'; 
+            if(IL.name=='CoreStatus_Draft'){
+               IL.Value__c = 'Draft'; 
             }
-                if(ipsLabel.name=='CoreStatus_Active'){
-                    ipsLabel.Value__c = 'Active' ;
+            if(IL.name=='CoreStatus_Active'){
+               IL.Value__c = 'Active' ;
             }
-                if(ipsLabel.name=='CoreStatus_Inactive'){
-                    ipsLabel.Value__c = 'Inactive' ;
+            if(IL.name=='CoreStatus_Inactive'){
+               IL.Value__c = 'Inactive' ;
             }
-                if(ipsLabel.name=='CoreStatus_SP'){
-                    ipsLabel.Value__c = 'Submitted Pending' ;
+            if(IL.name=='CoreStatus_SP'){
+               IL.Value__c = 'Submitted Pending' ;
             }
         }
         System.runAs(ListOfUser.get(0)){
-            Insert ipsLabels;
-            insert ipsProjects;
+            Insert IPSLabels;
+            insert ListOfIpsProjects;
         }
        
         
         
-        System.assert(ipsProjects[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Ips Account
-        List<Core_IPS_Account__c> ipsAccounts = TestUtilities.getListOfIpsAccounts(2);
-        for(Core_IPS_Account__c ipsAccount : ipsAccounts){
+        List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(2);
+        for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
             if(counter<1){
-                ipsAccount.Core_Account__c = accounts.get(0).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(0).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             } else {
-                ipsAccount.Core_Account__c = accounts.get(1).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(1).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(1).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(1).Id;
             }
             counter++;
         }
@@ -633,16 +630,16 @@ Modification Log :
         }
         System.assert(IPSLables[0].Id != null, 'Record not created');*/
         System.runAs(ListOfUser.get(0)){
-            insert ipsAccounts;
+            insert ListOfIpsAccounts;
         }
-        System.assert(ipsAccounts[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
         Test.startTest();
         System.runAs(ListOfUser.get(0)){
-            Core_IPS_Account_Handler.PreventDelete(ipsAccounts);
-            Delete ipsAccounts;
+            Core_IPS_Account_Handler.PreventDelete(ListOfIpsAccounts);
+            Delete ListOfIpsAccounts;
         }
-        List<Core_IPS_Account__c> deletedIpsAccounts = [select id from Core_IPS_Account__c where id IN: ipsAccounts];
-        System.assert(deletedIpsAccounts.isEmpty(), 'Record not deleted');
+        List<Core_IPS_Account__c> ListOfIPSAccounts_Delete = [select id from Core_IPS_Account__c where id IN: ListOfIpsAccounts];
+        System.assert(ListOfIPSAccounts_Delete.isEmpty(), 'Record not deleted');
         Test.stopTest();
     }
     
@@ -662,130 +659,130 @@ Modification Log :
         getrecords();
         
         List<Core_Trigger_Executions__c> lstTriggerExecution  = new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-        triggerExecution.Name = 'ActivateOrDeactivateProjectMembers';
-        triggerExecution.Core_Active__c = true;
-        triggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
-        triggerExecution.Core_Description__c = 'Activate Or Deactivate Project Members';
-        triggerExecution.Core_Object__c = 'Core_IPS_Account__c';
-        triggerExecution.Core_Trigger_Events__c = 'after update';
-        lstTriggerExecution.add(triggerExecution);
+        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
+        TriggerExecution.Name = 'ActivateOrDeactivateProjectMembers';
+        TriggerExecution.Core_Active__c = true;
+        TriggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
+        TriggerExecution.Core_Description__c = 'Activate Or Deactivate Project Members';
+        TriggerExecution.Core_Object__c = 'Core_IPS_Account__c';
+        TriggerExecution.Core_Trigger_Events__c = 'after update';
+        lstTriggerExecution.add(TriggerExecution);
         
         System.runAs(ListOfUser.get(0)){
             insert lstTriggerExecution;
         } 
         
-        String exceptionError;
+        String ExceptionError;
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser.get(1).id;
         Map<String,ID> profiles = new Map<String,ID>();
         List<String> strProf = new List<String>();
         User portalUser = new User();
         // Create Accounts
-        List<Account> accounts = TestUtilities.getListOfAccounts(2);
+        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(2);
         System.runAs(ListOfUser.get(0)){
-            insert accounts;
-            for(Account accountRecord : accounts){
-                accountRecord.ownerid = ListOfUser.get(1).id;
+            insert ListOfAccounts;
+            for(Account Acc : ListOfAccounts){
+                Acc.ownerid = ListOfUser.get(1).id;
             }
-            update accounts;
-            List<AccountShare> accountShares = [select UserOrGroupId,rowcause,CaseAccessLevel from AccountShare where AccountId =:accounts];
-            for(AccountShare accountShare : accountShares){
-                accountShare.CaseAccessLevel = 'Edit';
+            update ListOfAccounts;
+            List<AccountShare> ListOfAccountShare = [select UserOrGroupId,rowcause,CaseAccessLevel from AccountShare where AccountId =:ListOfAccounts];
+            for(AccountShare Share : ListOfAccountShare){
+                Share.CaseAccessLevel = 'Edit';
             }
             //update ListOfAccountShare;
         }
-        System.assert(accounts[0].Id != null, 'Record not created');
-        Integer counter=0;
+        System.assert(ListOfAccounts[0].Id != null, 'Record not created');
+        Integer Counter=0;
         // Create Contact
-        List<Contact> contacts = TestUtilities.getListOfContact(2);
-        for(Contact contactRec : contacts){
-            contactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-            contactRec.Accountid = accounts.get(counter).Id;
-            contactRec.Core_IPS_Active__c = true;
-            contactRec.MailingCountry ='India';
-            counter++;
+        List<Contact> ListOfContacts = TestUtilities.getListOfContact(2);
+        for(Contact ContactRec : ListOfContacts){
+            ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
+            ContactRec.Accountid = ListOfAccounts.get(Counter).Id;
+            ContactRec.Core_IPS_Active__c = true;
+            ContactRec.MailingCountry ='ARE';
+            Counter++;
         }
         System.runAs(ListOfUser.get(0)){
-            insert contacts;
+            insert ListOfContacts;
         }
-        counter=0;
-        System.assert(contacts[0].Id != null, 'Record not created');
+        Counter=0;
+        System.assert(ListOfContacts[0].Id != null, 'Record not created');
         // Customer Profile Query
-        Profile customerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
+        Profile CustomerProfile = [select Id,name from Profile where UserType = 'PowerCustomerSuccess' limit 1];
         // Creating Customer User
-        List<User> customerUsers = TestUtilities.getListOfUser(1);
-        for(User ur:customerUsers){
+        List<User> ListOfCustomerUsr = TestUtilities.getListOfUser(1);
+        for(User ur:ListOfCustomerUsr){
             ur.UserName = 'TestCustomerUsr@intel.com';
-            ur.ProfileID = customerProfile.id;
-            ur.contactId = contacts.get(0).id;
+            ur.ProfileID = CustomerProfile.id;
+            ur.contactId = ListOfContacts.get(0).id;
         }
         System.runAs(listofuser[0]){
-            insert customerUsers;
+            insert ListOfCustomerUsr;
         }
-        System.assertEquals(customerUsers[0].ProfileID, customerProfile.id);
+        System.assertEquals(ListOfCustomerUsr[0].ProfileID, CustomerProfile.id);
         // Create Ips Project
-        List<Core_IPS_Project__c> ipsProjects = TestUtilities.getListOfIpsProjects(2);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
         // Create Ips Labels added by Aayushi for US79852
-        List<Core_IPS_Labels__c> ipsLabels = TestUtilities.getIPSLabel();
-        for(Core_IPS_Labels__c ipsLabel: ipsLabels){
-            if(ipsLabel.name=='ProjectGroupPrefix'){
-                ipsLabel.Value__c = 'IPS_Proj_';
+        List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
+        for(Core_IPS_Labels__c IL: IPSLabels){
+            if(IL.name=='ProjectGroupPrefix'){
+                IL.Value__c = 'IPS_Proj_';
             }
-                 if(ipsLabel.name=='CoreStatus_SPtoActive_Error'){
-                     ipsLabel.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
+             if(IL.name=='CoreStatus_SPtoActive_Error'){
+                IL.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
             }
-                 if(ipsLabel.name=='Core_OneProjProdMem_Error'){
-                     ipsLabel.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
+             if(IL.name=='Core_OneProjProdMem_Error'){
+                IL.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
             }
-                if(ipsLabel.name=='CoreStatus_Draft'){
-                    ipsLabel.Value__c = 'Draft'; 
+            if(IL.name=='CoreStatus_Draft'){
+               IL.Value__c = 'Draft'; 
             }
-                if(ipsLabel.name=='CoreStatus_Active'){
-                    ipsLabel.Value__c = 'Active' ;
+            if(IL.name=='CoreStatus_Active'){
+               IL.Value__c = 'Active' ;
             }
-                if(ipsLabel.name=='CoreStatus_Inactive'){
-                    ipsLabel.Value__c = 'Inactive' ;
+            if(IL.name=='CoreStatus_Inactive'){
+               IL.Value__c = 'Inactive' ;
             }
-                if(ipsLabel.name=='CoreStatus_SP'){
-                    ipsLabel.Value__c = 'Submitted Pending' ;
+            if(IL.name=='CoreStatus_SP'){
+               IL.Value__c = 'Submitted Pending' ;
             }
         }
         System.runAs(ListOfUser.get(0)){
-            Insert ipsLabels;
-            insert ipsProjects;
+            Insert IPSLabels;
+            insert ListOfIpsProjects;
         }
-        System.assert(ipsProjects[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
         // Create Ips Account
-        List<Core_IPS_Account__c> ipsAccounts = TestUtilities.getListOfIpsAccounts(2);
-        for(Core_IPS_Account__c ipsAccount : ipsAccounts){
+        List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(2);
+        for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
             if(counter<1){
-                ipsAccount.Core_Account__c = accounts.get(0).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(0).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             } else {
-                ipsAccount.Core_Account__c = accounts.get(1).Id;
-                ipsAccount.Core_IPS_Project__c = ipsProjects.get(1).Id;
+                IpsAcc.Core_Account__c = ListOfAccounts.get(1).Id;
+                IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(1).Id;
             }
             counter++;
         }
         counter = 0;
 
         System.runAs(ListOfUser.get(0)){
-            insert ipsAccounts;
+            insert ListOfIpsAccounts;
         }
-        System.assert(ipsAccounts[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
         Test.startTest();
-        for(Core_IPS_Account__c objProjAcc : ipsAccounts) {
+        for(Core_IPS_Account__c objProjAcc : ListOfIpsAccounts) {
             objProjAcc.Core_Status__c = 'Inactive';
         }
         System.runAs(ListOfUser.get(0)){
-            update ipsAccounts;
+            update ListOfIpsAccounts;
         }
-        for(Core_IPS_Account__c objProjAcc : ipsAccounts) {
+        for(Core_IPS_Account__c objProjAcc : ListOfIpsAccounts) {
             objProjAcc.Core_Status__c = 'Active';
         }
         System.runAs(ListOfUser.get(0)){
-            update ipsAccounts;
+            update ListOfIpsAccounts;
         }
         Test.stopTest();
     }
@@ -793,32 +790,32 @@ Modification Log :
        Test.startTest();
         getRecords();
 
-            Account accountRecord;
+         Account acc;
 
         System.runAs(ListOfUser.get(1)){
-                accountRecord = TestUtilities.getAccountRecord();
-                accountRecord.Core_CNDA_Number__c = 'cnda011172';
-                insert accountRecord;
+            acc = TestUtilities.getAccountRecord();
+            acc.Core_CNDA_Number__c = 'cnda011172';
+            insert acc;
          }
         List<Contact> contact1 = TestUtilities.getListOfContact(100);
         List<Contact> contact2 = TestUtilities.getListOfContact(100);
         Integer i =0;
         for(contact con: contact1){
            
-            con.AccountId  = accountRecord.Id;
+            con.AccountId  = acc.Id;
             con.Email = con.Email+i;
             con.Core_IPS_Active__c = true;
-            con.MailingCountry ='India';
+            con.MailingCountry ='ARE';
             i++;
         }
         System.runAs(ListOfUser.get(1)){
         insert contact1;
         }
         for(contact con: contact2){
-            con.AccountId  = accountRecord.Id;
+            con.AccountId  = acc.Id;
             con.Core_IPS_Active__c = true;
              con.Email = con.Email+i;
-            con.MailingCountry ='India';
+            con.MailingCountry ='ARE';
             i++;
         }
         System.runAs(ListOfUser.get(1)){
@@ -835,7 +832,7 @@ Modification Log :
             Core_IPS_Account__c projAccount = new Core_IPS_Account__c();
             projAccount.Core_IPS_Project__c = project.Id;
             projAccount.Core_Members__c = 'All';
-            projAccount.Core_Account__c = accountRecord.Id;
+            projAccount.Core_Account__c = acc.Id;
             insert projAccount;
         System.assert(projAccount.Id!=null);
        }
@@ -858,7 +855,7 @@ Modification Log :
             );
         insert ipsAccountRecord;
         newList.add(ipsAccountRecord);
-         System.AssertEquals(project.Id !=null , true);
+         
           Core_IPS_Account__c ipsAccountRecord1 = new Core_IPS_Account__c(
                 Core_Status__c = 'Active',
                 Core_Members__c='Selective',
@@ -867,13 +864,11 @@ Modification Log :
         insert ipsAccountRecord1;
         newList.add(ipsAccountRecord1);
         Map<Id,Core_IPS_Account__c> oldMap = new  Map<Id,Core_IPS_Account__c>(newList1);
-        System.AssertEquals(project.Id !=null , true);
     }
     
     @IsTest
 static void testAddProjectMembersOnchangeOfAccount() {
     user u = [Select id from user where profile.name like '%Admin%' and isactive = true limit 1];
-      System.assertEquals(u.Id != null,true);
     System.runas(u){
       Account testAccount = new Account(
             recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId(),
@@ -922,7 +917,7 @@ static void testAddProjectMembersOnchangeOfAccount() {
     
     oldMap.get(accountRecord1.Id).core_members__c = 'None';
     oldMap.get(accountRecord2.Id).core_members__c = 'None';
-    System.assertEquals(accountRecord1.Id != null,true);
+    
     // Step 5: Call the method to test
     Test.startTest();
     Core_IPS_Account_Handler.addProjectMembersOnchangeOfAccount(newList, oldMap);
@@ -935,7 +930,7 @@ static void testAddProjectMembersOnchangeOfAccount() {
             projectIds.add(acc.Core_IPS_Project__c);
         }
     }
-    
+
     List<Core_IPS_Project_Member__c> projectMembers = [
         SELECT Id, Core_IPS_Contact__c, Core_IPS_Project__c, Core_Status__c 
         FROM Core_IPS_Project_Member__c 

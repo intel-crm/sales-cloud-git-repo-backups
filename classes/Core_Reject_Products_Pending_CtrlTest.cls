@@ -25,11 +25,12 @@ public class Core_Reject_Products_Pending_CtrlTest {
         usrs.LastName = 'System Adm';
         usrs.ProfileId = sysAdminProfile.Id;
         usrs.IsActive = true;
-        usrs.Email = 'sysadmin@example.com';
+        usrs.Email = 'sysadminabc@example.com';
         insert usrs;
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name='PCC_Deal_Reg_Internal_Admin' LIMIT 1];
         PermissionSetAssignment psa = new PermissionSetAssignment(AssigneeId = usrs.Id,PermissionSetId = ps.Id);
         insert psa;
+         
 
     }
 
@@ -241,8 +242,7 @@ public class Core_Reject_Products_Pending_CtrlTest {
      }
     
     public static testmethod void deal_Product_test() {
-
-        Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();     
+Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();     
         List<account> LstAcc2 = Core_Test_Utility.createAccount(1);
         
         for(Account accountInstance : LstAcc2){
@@ -256,14 +256,15 @@ public class Core_Reject_Products_Pending_CtrlTest {
             accountInstance.BillingStreet = 'test jkhl';
         }
         insert LstAcc2;
-        Contact testContact = new Contact(FirstName='testFirstName12345', LastName='testLastName', Email='test123456@testing.com.test',AccountId=LstAcc2[0].Id,Core_IPS_Active__c =false);
+        Contact testContact = new Contact(FirstName='testFirstName12345', LastName='testLastName', Email='test123456@testing.com.test',AccountId=LstAcc2[0].Id,Core_IPS_Active__c =false,Core_Mailing_Address__CountryCode__s='USA');
         insert testContact;
         Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' LIMIT 1];
         
-        User u1 = new User( email='partneruser1@example.com',profileid = partnerProfile.id,UserName='partneruser1@example.com',Alias = 'PDS',TimeZoneSidKey='America/New_York',
+        User u1 = new User( email='partneruser11@example.com',profileid = partnerProfile.id,UserName='partneruser11@example.com',Alias = 'PDS',TimeZoneSidKey='America/New_York',
                            EmailEncodingKey='ISO-8859-1',LocaleSidKey='en_US', LanguageLocaleKey='en_US',ContactId = testContact.Id,PortalRole = 'Manager',FirstName = 'Genea',LastName = 'Dsouz');
         
-        Database.insert(u1);
+        insert u1;
+        //user u1 = [select id from user where Email='partneruser11@example.com'];
         Id DealProductRecordTypeid = Schema.SObjectType.Core_Design_Registration_Product__c.getRecordTypeInfosByDeveloperName().get('PCC_Deal_Registration_Product_Partner').getRecordTypeId();
         Id DealRecordTypeid = Schema.SObjectType.Core_Design_Registration__c.getRecordTypeInfosByDeveloperName().get('Deal_Registration_Draft').getRecordTypeId();
         system.runas(u1){
@@ -312,7 +313,6 @@ public class Core_Reject_Products_Pending_CtrlTest {
                                                    Core_End_Customer_City_Nm__c,Core_End_Customer_Contact_Title_Txt__c,Core_End_Customer_Contact_Phone_Txt__c,Core_End_Customer_Contact_Nm__c,Core_End_Customer_Contact_Email_Txt__c,Core_End_Customer_URL__c,Core_Manufacturing_Region_Cd__c,DDR_Partner_FAE_Email__c,
                                                    Core_Opportunity_Decision_Dt__c,Core_Accepted_By_Id__c,PCC_Registration_Type__c,RecordType.DeveloperName,Core_First_Customer_Ship_Dt__c,Core_Production_End_Dt__c,Core_Intel_Platform_Nm__c, Core_Design_Registration_Status_Nm__c
                                                    FROM Core_Design_Registration__c where Core_External_Id__c='abczd001'];
-system.debug('ddrlistt'+DDRLst);
         
          List<Product2> newprod = new List<Product2>();
         product2 prod1 = new product2();    
@@ -346,7 +346,7 @@ system.debug('ddrlistt'+DDRLst);
         DRPLst.add(DRproducts1);
        insert DRPLst;
         
-        User usrs = [select id from User where Email='sysadmin@example.com' limit 1];
+        User usrs = [select id from User where Email='sysadminabc@example.com' limit 1];
         DDRLst[0].Core_Accepted_By_Id__c=usrs.id;
         update DDRLst;
         Test.startTest();

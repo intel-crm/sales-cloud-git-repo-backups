@@ -16,8 +16,8 @@ public class Core_IPS_BES_ReprocessFailed_Test {
         cs.Core_IPS_BES_Promote_Status__c = 'FAILED';
         insert cs;
         Core_IPS_BES_ReProcessFailedHandler.executeBatch('Case', 1);
-        // Database.executeBatch(new Core_IPS_BES_ReprocessFailedRecords('Case', 1),1);
+                // Database.executeBatch(new Core_IPS_BES_ReprocessFailedRecords('Case', 1),1);
          System.assert(cs.Id!=null);
     }
-    
+  
 }

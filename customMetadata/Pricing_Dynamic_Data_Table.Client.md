@@ -24,6 +24,6 @@
     </values>
     <values>
         <field>Pricing_Where_Clause__c</field>
-        <value xsi:type="xsd:string">WHERE ((IsActive = true AND Core_Product_Org__c = &apos;Sales&apos; AND Core_Sales_Visible_Flag__c = true AND Core_Hierarchy_ID__c = &apos;43&apos; AND (Core_VerticalSegment__c = &apos;Mobile&apos; or Core_VerticalSegment__c = &apos;Desktop&apos; or Core_VerticalSegment__c = &apos;Workstation&apos; or Core_VerticalSegment__c = &apos;Embedded&apos; or Core_Cross_Selling_Product_Type_Nm__c = &apos;Client&apos;) AND Core_Processor_Number_Nm__c != null) OR Name = &apos;Write In Product&apos;)</value>
+        <value xsi:type="xsd:string">WHERE ( ( IsActive = true  AND Core_Product_Org__c = &apos;Sales&apos;  AND Core_Sales_Visible_Flag__c = true  AND Core_Hierarchy_ID__c = &apos;43&apos;  AND (Core_VerticalSegment__c = &apos;Mobile&apos;  or Core_VerticalSegment__c = &apos;Desktop&apos;  or Core_VerticalSegment__c = &apos;Workstation&apos;  or Core_VerticalSegment__c = &apos;Embedded&apos;  or Core_Cross_Selling_Product_Type_Nm__c = &apos;Client&apos;)  AND Core_Processor_Number_Nm__c != null )  OR Name = &apos;Write In Product&apos;  )</value>
     </values>
 </CustomMetadata>

@@ -5,34 +5,6 @@
     <dataSourceType>SingleSobject</dataSourceType>
     <decisionTableParameters>
         <dataType>String</dataType>
-        <fieldName>Pricing_Form_Factor__c</fieldName>
-        <fieldPath>Pricing_Form_Factor__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>false</isRequired>
-        <operator>Equals</operator>
-        <sequence>3</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
-        <fieldName>Pricing_Market_Segment_values_Nm__c</fieldName>
-        <fieldPath>Pricing_Market_Segment_values_Nm__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>false</isRequired>
-        <operator>Equals</operator>
-        <sequence>2</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
-        <fieldName>Pricing_RPM_Email__c</fieldName>
-        <fieldPath>Pricing_RPM_Email__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>false</isRequired>
-        <usage>OUTPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
         <fieldName>Pricing_Minimum_Quantity__c</fieldName>
         <fieldPath>Pricing_Minimum_Quantity__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -49,16 +21,6 @@
         <isRequired>false</isRequired>
         <operator>LessOrEqual</operator>
         <sequence>6</sequence>
-        <usage>INPUT</usage>
-    </decisionTableParameters>
-    <decisionTableParameters>
-        <dataType>String</dataType>
-        <fieldName>Pricing_Account__c</fieldName>
-        <fieldPath>Pricing_Account__c</fieldPath>
-        <isGroupByField>false</isGroupByField>
-        <isRequired>false</isRequired>
-        <operator>Equals</operator>
-        <sequence>5</sequence>
         <usage>INPUT</usage>
     </decisionTableParameters>
     <decisionTableParameters>
@@ -101,6 +63,44 @@
     </decisionTableParameters>
     <decisionTableParameters>
         <dataType>String</dataType>
+        <fieldName>Pricing_Form_Factor__c</fieldName>
+        <fieldPath>Pricing_Form_Factor__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>false</isRequired>
+        <operator>Equals</operator>
+        <sequence>3</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_Market_Segment_values_Nm__c</fieldName>
+        <fieldPath>Pricing_Market_Segment_values_Nm__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>false</isRequired>
+        <operator>Equals</operator>
+        <sequence>2</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_RPM_Email__c</fieldName>
+        <fieldPath>Pricing_RPM_Email__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>false</isRequired>
+        <usage>OUTPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
+        <fieldName>Pricing_Account__c</fieldName>
+        <fieldPath>Pricing_Account__c</fieldPath>
+        <isGroupByField>false</isGroupByField>
+        <isRequired>false</isRequired>
+        <operator>Equals</operator>
+        <sequence>5</sequence>
+        <usage>INPUT</usage>
+    </decisionTableParameters>
+    <decisionTableParameters>
+        <dataType>String</dataType>
         <fieldName>Pricing_Maximum_Quantity__c</fieldName>
         <fieldPath>Pricing_Maximum_Quantity__c</fieldPath>
         <isGroupByField>false</isGroupByField>
@@ -121,21 +121,21 @@
     </decisionTableParameters>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>1</sequenceNumber>
+        <sequenceNumber>2</sequenceNumber>
         <sourceFieldName>Pricing_Quote_Type__c</sourceFieldName>
         <value>Client</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>2</sequenceNumber>
+        <sequenceNumber>3</sequenceNumber>
         <sourceFieldName>Pricing_Is_Active__c</sourceFieldName>
         <value>true</value>
         <valueType>Literal</valueType>
     </decisionTableSourceCriterias>
     <decisionTableSourceCriterias>
         <operator>Equals</operator>
-        <sequenceNumber>3</sequenceNumber>
+        <sequenceNumber>1</sequenceNumber>
         <sourceFieldName>Pricing_Approval_Status__c</sourceFieldName>
         <value>Approved</value>
         <valueType>Literal</valueType>

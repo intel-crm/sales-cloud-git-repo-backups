@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>UCD ACM Switch IAO Change</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>UCD ACM Switch IAO Change</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>UCD_ACM_Active__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

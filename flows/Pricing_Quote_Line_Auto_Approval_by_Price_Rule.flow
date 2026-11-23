@@ -53,6 +53,13 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Pricing_Additional_Comments_Txt__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>#autoapprove</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Create_Deal_for_PIFR</targetReference>
             </connector>

@@ -178,7 +178,6 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>Account$Owner</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -241,7 +240,7 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <description>Data Quality Dashboard</description>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
+    <owner>11581644@intel.com.crm</owner>
     <runningUser>10642423@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>DQ Monitors</title>

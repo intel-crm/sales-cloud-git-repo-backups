@@ -4,13 +4,13 @@
         <field>CASE_NUMBER</field>
     </columns>
     <columns>
-        <field>SUBJECT</field>
+        <field>CREATED_DATEONLY</field>
     </columns>
     <columns>
         <field>CONTACT.NAME</field>
     </columns>
     <columns>
-        <field>CREATED_DATEONLY</field>
+        <field>SUBJECT</field>
     </columns>
     <columns>
         <field>ALIAS</field>
@@ -19,34 +19,28 @@
         <field>LAST_UPDATEONLY</field>
     </columns>
     <columns>
-        <field>STATUS</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Sub_Status__c</field>
+        <field>LAST_UPDATE_BY_ALIAS</field>
     </columns>
     <columns>
         <field>Case.Core_Next_Response_Due_Date__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Private_Case_Comment__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Case_Comment_Timestamp__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Case_Comment_Submitter__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_Last_Case_Comment__c</field>
     </columns>
     <columns>
         <field>Case.Core_Severity__c</field>
     </columns>
     <columns>
         <field>PRIORITY</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Last_Case_Comment__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Last_Case_Comment_Timestamp__c</field>
-    </columns>
-    <columns>
-        <field>LAST_UPDATE_BY_ALIAS</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Last_Private_Case_Comment__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Last_Case_Comment_Submitter__c</field>
     </columns>
     <filter>
         <criteriaItems>

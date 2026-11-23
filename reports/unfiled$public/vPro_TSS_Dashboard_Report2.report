@@ -42,34 +42,13 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Oppty_Count__c</field>
     </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>OWNER_MANAGER</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>CCG</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>AMT,Unite,Optane,TXT,Transparent</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Application__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Workstation</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -84,7 +63,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>vPro TSS Product Report</name>
+    <name>vPro TSS Dashboard Report</name>
     <params>
         <name>terr</name>
         <value>all</value>

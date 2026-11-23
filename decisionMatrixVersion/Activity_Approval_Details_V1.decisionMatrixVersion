@@ -44,18 +44,18 @@
     </columns>
     <columns>
         <columnType>Input</columnType>
-        <dataType>NumberRange</dataType>
-        <displaySequence>8</displaySequence>
-        <isWildcardColumn>false</isWildcardColumn>
-        <name>AmountRange</name>
-        <rangeValue>0,25000,50000,150000,250000,1000000</rangeValue>
-    </columns>
-    <columns>
-        <columnType>Input</columnType>
         <dataType>Boolean</dataType>
         <displaySequence>8</displaySequence>
         <isWildcardColumn>false</isWildcardColumn>
         <name>AdditionalReview</name>
+    </columns>
+    <columns>
+        <columnType>Input</columnType>
+        <dataType>NumberRange</dataType>
+        <displaySequence>8</displaySequence>
+        <isWildcardColumn>false</isWildcardColumn>
+        <name>AmountRange</name>
+        <rangeValue>0,25000,50000,50500,51500,125000,150000,250000,1000000</rangeValue>
     </columns>
     <columns>
         <columnType>Input</columnType>
@@ -150,7 +150,6 @@
     </columns>
     <decisionMatrixDefinition>Activity_Approval_Details</decisionMatrixDefinition>
     <label>Activity Approval Details V1</label>
-    <rank>1</rank>
     <startDate>2024-04-03T09:57:01.000Z</startDate>
     <status>Active</status>
     <versionNumber>1</versionNumber>

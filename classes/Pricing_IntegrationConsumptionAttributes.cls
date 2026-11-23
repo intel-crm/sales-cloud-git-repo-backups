@@ -2,7 +2,7 @@
  * @description       : Class to process Inbound record and add data to Consumption Account Mapping Object
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 12-07-2023
+ * @last modified on  : 12-20-2023
  * @last modified by  : Sandeep Chamate
 **/
 public without sharing class Pricing_IntegrationConsumptionAttributes {
@@ -45,7 +45,7 @@ public without sharing class Pricing_IntegrationConsumptionAttributes {
             for(String recId: cimIdtoRecordMap.keySet()) {
                 String cimId = recId.split('-')[0];
                 String accId = cimIdtoAccountIdMap.get(cimId);
-                Boolean isActive = (cimIdtoRecordMap.get(recId).isActive == '0')? false :true;
+                Boolean isActive = (cimIdtoRecordMap.get(recId).isActive == '0' || cimIdtoRecordMap.get(recId).isActive == 'false')? false :true;
                 Pricing_ConsumptionAccountMapping__c consumptionRec = new Pricing_ConsumptionAccountMapping__c();
                     String key = accId + '-' + cimIdtoRecordMap.get(recId).value;
                     if(validAccountIdSet.contains(accId) && consumptionNametoRecMap.containsKey(key) && consumptionNametoRecMap.get(key).Pricing_Consumption_Type_Nm__c == cimIdtoRecordMap.get(recId).consumptionType) {

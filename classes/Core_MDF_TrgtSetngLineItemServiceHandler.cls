@@ -243,6 +243,8 @@ Modified By   :        Date:           Changes:
 
         for (Core_MDF_Target_Setting_Line_Item__c trgtSettingLineItemRec : newTargetSettingLineItemList) {
             if(trgtSettingLineItemRec.RecordTypeId != lineItemIPARecTypeId){
+                system.debug('@@trgtSettingLineItemRec -> '+trgtSettingLineItemRec);
+                system.debug('@@trgtSettingLineItemRec.country -> '+trgtSettingLineItemRec.Core_MDF_Country_Name_nm__c);
                 List<string> countryList = trgtSettingLineItemRec.Core_MDF_Country_Name_nm__c.split(';');
                 if((countryList.contains(Core_MDF_CCP_ConstantClass.Trgt_Setting_Line_Item_All_Other_EMEA)
                     || countryList.contains(Core_MDF_CCP_ConstantClass.Trgt_Setting_Line_Item_All_Other_ASMO)

@@ -25,6 +25,6 @@
                 	<!--<iframe src="{!v.urlParams}" width="100%" height="400px;" />-->
                 </aura:if>
             </p>
-        </lightning:card>
+           </lightning:card>
     </div>
 </aura:component>

@@ -36,7 +36,7 @@
            <apex:outputPanel rendered="{!relatedTo.Core_Opportunity_Support__r.RecordType.DeveloperName = 'Core_Center_of_Excellence_Request'}">
            COE ,
            </apex:outputPanel> <br/><br/>
-     You have been assigned to support the Opportunity below. Please Accept or Reject the assignment by clicking the link to the Opportunity Support Request below. 
+     You have been assigned to support the Opportunity below. 
      <br/>
      <br/>
      </td>
@@ -46,7 +46,7 @@
   <tr>
     <td>
        <p>
-       <a href="{!LEFT($Api.Partner_Server_URL_290,FIND('services',$Api.Partner_Server_URL_290)-1)}" style="font-size: 14px"> Click Here</a>
+       <a href="{!LEFT($Api.Partner_Server_URL_290,FIND('services',$Api.Partner_Server_URL_290)-1)}{!relatedTo.Core_Opportunity_Support__r.Id}" style="font-size: 14px"> Click Here</a>
 
        to see additional information on this Opportunity Support Request.<br /><br /></p>
      </td>

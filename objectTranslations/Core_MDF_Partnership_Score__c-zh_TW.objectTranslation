@@ -19,7 +19,7 @@
     </fields>
     <fields>
         <help><!-- Final Recovery Amount - Recovered Amount --></help>
-        <label>餘額未回收</label>
+        <label><!-- Balance Unrecovered --></label>
         <name>Core_MDF_Balance_Amount_Amt__c</name>
     </fields>
     <fields>
@@ -37,7 +37,7 @@
     </fields>
     <fields>
         <help><!-- Channel Program Display only field --></help>
-        <label><!-- Channel Program Display --></label>
+        <label><!-- Channel Program --></label>
         <name>Core_MDF_Channel_Program_Display__c</name>
     </fields>
     <fields>
@@ -47,7 +47,7 @@
     </fields>
     <fields>
         <help><!-- Channel Program Display only field --></help>
-        <label>通路計畫</label>
+        <label><!-- Channel Program --></label>
         <name>Core_MDF_Channel_Program_txt__c</name>
     </fields>
     <fields>
@@ -56,7 +56,7 @@
     </fields>
     <fields>
         <help><!-- Total Recovery Amount for the Quarter + Carry Over Amount of Previous Quarters --></help>
-        <label>最終回收金額</label>
+        <label><!-- Final Recovery Amount --></label>
         <name>Core_MDF_Final_Recovery_Amount_Amt__c</name>
     </fields>
     <fields>
@@ -168,7 +168,7 @@
     </fields>
     <fields>
         <help><!-- Recovery Amount for the Quarter + Manual Recovery Amount for the Quarter. Applies Petty Rule logic to reduce nonmaterial recoveries on Partial Value claims. --></help>
-        <label>總回收金額</label>
+        <label><!-- Total Recovery Amount --></label>
         <name>Core_MDF_Total_Recovery_Amount_Amt__c</name>
     </fields>
     <fields>

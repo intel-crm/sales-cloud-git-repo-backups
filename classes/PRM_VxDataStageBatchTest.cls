@@ -121,7 +121,7 @@ public class PRM_VxDataStageBatchTest {
         vxStage.PRM_From_Dt__c = Date.Today().addDays(-20);
         vxStage.PRM_To_Dt__c =Date.Today();
         vxStage.PRM_Value_Exchange_ext_id__c='0024478123';
-        vxStage.PRM_Time_Period__c='Q4 2024 - Q3 2025';
+        vxStage.PRM_Time_Period__c='Q4 2026 - Q3 2027';
         insert vxStage;
         
         PRM_Value_Exchange_UCD_Stage__c  vxStage1 = new PRM_Value_Exchange_UCD_Stage__c();        
@@ -141,7 +141,7 @@ public class PRM_VxDataStageBatchTest {
         vxStage1.PRM_From_Dt__c = Date.Today().addDays(-2);
         vxStage1.PRM_To_Dt__c =Date.Today();
         vxStage1.PRM_Value_Exchange_ext_id__c='0035478124';
-        vxStage1.PRM_Time_Period__c='Q4 2024 - Q3 2025';
+        vxStage1.PRM_Time_Period__c='Q4 2026 - Q3 2027';
         insert vxStage1;
         system.debug('Log 1--'+vxStage1);
         
@@ -161,7 +161,7 @@ public class PRM_VxDataStageBatchTest {
         vxStage2.PRM_From_Dt__c = Date.Today().addDays(-2);
         vxStage2.PRM_To_Dt__c =Date.Today();
         vxStage2.PRM_Change_Date_Dt__c = System.today();
-        vxStage2.PRM_Time_Period__c='Q4 2024 - Q3 2025';
+        vxStage2.PRM_Time_Period__c='Q4 2026 - Q3 2027';
         insert vxStage2;
         
         PRM_Value_Exchange_Data__c vxData11 = new PRM_Value_Exchange_Data__c();
@@ -175,7 +175,7 @@ public class PRM_VxDataStageBatchTest {
         vxData11.PRM_Change_Date_Dt__c = System.today();
         vxData11.PRM_From_Dt__c = Date.Today().addDays(-2);
         vxData11.PRM_To_Dt__c =Date.Today();
-        vxData11.PRM_TimePeriod_Nm__c = 'Q4 2024 - Q3 2025';  
+        vxData11.PRM_TimePeriod_Nm__c = 'Q4 2026 - Q3 2027';  
         insert vxData11;
         
     }

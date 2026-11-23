@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <description>campaign invite for APJ EDM3</description>
     <encodingKey>UTF-8</encodingKey>
     <name>CampaignInviteForBulk_APJEDM3_ENG</name>
     <style>none</style>
@@ -29,7 +28,7 @@ Join Intel® Partner Alliance Now
 Please visit the support page for assistance required while registering for Intel® Partner Alliance.
 *Terms &amp; Conditions apply. Promotion expires on October 7, 2022. Stand a chance to win USD 50 when you Join Intel® Partner Alliance.
 
-© Intel Corporation. Intel, the Intel logo, and other Intel marks are trademarks of Intel Corporation or its subsidiaries.
+© {!Contact.Core_Current_Year__c} Intel Corporation. Intel, the Intel logo, and other Intel marks are trademarks of Intel Corporation or its subsidiaries.
 Other names and brands may be claimed as the property of others.</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>

@@ -4,6 +4,9 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
+        <field>Core_Design_Registration__c.Core_End_Customer_Account_Id__c</field>
+    </columns>
+    <columns>
         <field>Core_Design_Registration__c.Core_End_Customer_Country_Subdivision_Nm__c</field>
     </columns>
     <columns>
@@ -30,30 +33,24 @@
     <columns>
         <field>CUST_LAST_UPDATE</field>
     </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_Design_Registration_Nm__c</field>
-    </columns>
     <filter>
         <criteriaItems>
-            <column>CUST_CREATED_DATE</column>
+            <column>Core_Design_Registration__c.Core_Partner_Account_Region_Cd__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>LAST_FISCAL_YEAR</value>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_Design_Registration__c.Core_End_Customer_Country_Subdivision_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>OH,Ohio,PA,Pennsylvania</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>FiscalQuarter</dateGranularity>
-        <field>CUST_CREATED_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>New Design Registration History Report</name>
     <params>
         <name>co</name>
@@ -64,6 +61,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDRESEND_ES</name>
     <style>none</style>
-    <subject>Complete la solicitud para la Alianza Intel® para socios</subject>
+    <subject>¡Ya casi ha terminado!</subject>
     <textOnly>¡Ya casi ha terminado!
 
 
@@ -23,8 +23,7 @@ Completar ahora
 
 ¿No puede acceder al enlace anterior?
 
-https://www.intel.com/content/www/es/es/secure/partner/forms/ipa-account-search.html.
-
+https://wcm-ciqa.intel.com/content/www/es/es/secure/partner/forms/ipa-account-search.html.
 Si tiene alguna duda, póngase en contacto con nosotros en programs@intel.com.
 
 Gracias,
@@ -33,7 +32,7 @@ su equipo de la Alianza Intel® para socios
 
 
 Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacidad | Cookies</textOnly>
     <type>custom</type>

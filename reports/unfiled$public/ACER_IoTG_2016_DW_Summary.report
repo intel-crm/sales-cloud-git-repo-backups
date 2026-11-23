@@ -34,7 +34,7 @@
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
                 <operator>equals</operator>
-                <value>Energy - Command &amp; Controls,Energy - Home Energy Management,Energy - Other,Energy - Smart Appliances,Energy - Smart Meters,Energy - Turbine Controls &amp; Comms,Industrial - Automation,Industrial - HMI,Industrial - Other,Industrial - PC-Base Design,Industrial - PLC &amp; PAC,Industrial - Robotics,Industrial - Ruggedized/Indu PC</value>
+                <value>Energy - Command &amp; Controls,Energy - Home Energy Management,Energy - Smart Appliances,Energy - Smart Meters,Energy - Turbine Controls &amp; Comms,Industrial - Automation,Industrial - HMI,Industrial - Other,Industrial - PC-Base Design,Industrial - PLC &amp; PAC,Industrial - Robotics,Industrial - Ruggedized/Indu PC</value>
             </criteriaItems>
         </filter>
         <format>Tabular</format>
@@ -167,7 +167,7 @@
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
                 <operator>equals</operator>
-                <value>Smart Building,Smart Home</value>
+                <value>Smart Building</value>
             </criteriaItems>
         </filter>
         <format>Tabular</format>
@@ -233,7 +233,7 @@
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
                 <operator>equals</operator>
-                <value>Automotive Controls,Automotive - Other,In-vehicle Infotainment,Transportation</value>
+                <value>Automotive Controls,In-vehicle Infotainment,Transportation</value>
             </criteriaItems>
         </filter>
         <format>Tabular</format>
@@ -286,7 +286,7 @@
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
                 <operator>notEqual</operator>
-                <value>Automotive Controls,Automotive - Other,Energy - Command &amp; Controls,Energy - Home Energy Management,Energy - Other,Energy - Smart Appliances,Energy - Smart Meters,Energy - Turbine Controls &amp; Comms,Industrial - Automation,Industrial - HMI,Industrial - Other,Industrial - PC-Base Design,Industrial - PLC &amp; PAC,Industrial - Robotics,Industrial - Ruggedized/Indu PC,In-vehicle Infotainment,Retail - ATM,Retail - Digital Signage,Retail - Intelligent Vending,Retail - Kiosk,Retail - PC Cash Register,Retail - Point of Sale,Retail - Thin Client,Smart Building,Smart Home,Transportation</value>
+                <value>Automotive Controls,Energy - Command &amp; Controls,Energy - Home Energy Management,Energy - Smart Appliances,Energy - Smart Meters,Energy - Turbine Controls &amp; Comms,Industrial - Automation,Industrial - HMI,Industrial - Other,Industrial - PC-Base Design,Industrial - PLC &amp; PAC,Industrial - Robotics,Industrial - Ruggedized/Indu PC,In-vehicle Infotainment,Retail - ATM,Retail - Digital Signage,Retail - Intelligent Vending,Retail - Kiosk,Retail - PC Cash Register,Retail - Point of Sale,Retail - Thin Client,Smart Building,Transportation</value>
             </criteriaItems>
             <criteriaItems>
                 <column>ACCOUNT_NAME</column>

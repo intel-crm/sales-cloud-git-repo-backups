@@ -138,4 +138,8 @@
         <relationshipLabel><!-- Opportunity Support Mappings --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Users not allowed to edit the Object --></errorMessage>
+        <name>Users_Not_allowed_to_Edit</name>
+    </validationRules>
 </CustomObjectTranslation>

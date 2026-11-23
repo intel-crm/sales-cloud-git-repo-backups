@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject></baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Value Exchange External</description>
+    <label>Value Exchange External Custom</label>
+    <sections>
+        <masterLabel>k_v_f_training_detail_sfdcs</masterLabel>
+    </sections>
+</ReportType>

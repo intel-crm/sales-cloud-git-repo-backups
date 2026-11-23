@@ -12,6 +12,10 @@ trigger UCD_ACM_AccountRequestQueueTrigger on Account_Create_Request__c (before 
             mapFunctionalityNameTriggerExecution.get('UCD_ACM_ExecutePlatformEvent').Core_Active__c)){
                 UCD_ACM_AccountReqQueueTriggerHandler.processAccountRequestQueueAfterUpdate(Trigger.new,Trigger.oldMap);
            }
+
+           //TWC729-6912 : non ipa inbound Start
+           //PRM_AccountChangeEventSubscriber.opidAssociationForNonIpaIntelAccount(Trigger.new,Trigger.oldMap);
+           //TWC729-6912 : non ipa inbound End
         }
     }
 }

@@ -17,6 +17,14 @@
         <name>Contact_ID__c</name>
     </fields>
     <fields>
+        <label><!-- Contact Valid for Deactivation --></label>
+        <name>Contact_Valid_for_Deactivation__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactId Prod --></label>
+        <name>Contactid_prod__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact Details --></label>
         <name>Contacts_Fields_Merged__c</name>
     </fields>
@@ -56,6 +64,10 @@
     <fields>
         <label><!-- AGS Re-publish Ind --></label>
         <name>Core_AGS_Republish_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- AGS Re-publish Signal --></label>
+        <name>Core_AGS_Republish_Signal__c</name>
     </fields>
     <fields>
         <help><!-- Number of retry attempts made upon failure on AGS Integration. --></help>
@@ -220,8 +232,16 @@
             <translation><!-- IPA User --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Intel Partner FAE</masterLabel>
+            <translation><!-- Intel Partner FAE --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Partner Portal - IPS</masterLabel>
             <translation><!-- Partner Portal - IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Portal - Leads</masterLabel>
+            <translation><!-- Partner Portal - Leads --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>RMF External Activity Approver</masterLabel>
@@ -1246,8 +1266,8 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkiye</masterLabel>
-            <translation><!-- Turkiye --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Turkmenistan</masterLabel>
@@ -1329,6 +1349,10 @@
             <masterLabel>Zimbabwe</masterLabel>
             <translation><!-- Zimbabwe --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Current Year --></label>
+        <name>Core_Current_Year__c</name>
     </fields>
     <fields>
         <label><!-- Candidate for Customer Excellence Survey --></label>
@@ -1503,6 +1527,10 @@
         <name>Core_Enterprise_Id__c</name>
     </fields>
     <fields>
+        <label><!-- Entitlement Assignment Duration --></label>
+        <name>Core_Entitlement_Assignment_Duration__c</name>
+    </fields>
+    <fields>
         <label><!-- Entitlement Assignment Message --></label>
         <name>Core_Entitlement_Assignment_Message__c</name>
     </fields>
@@ -1527,6 +1555,10 @@
         <name>Core_Entitlement_Status_Change_Date_Time__c</name>
     </fields>
     <fields>
+        <label><!-- IsBulkLoadedContact --></label>
+        <name>Core_IPA_Contact_Assignment__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact Segment --></label>
         <name>Core_IPA_Contact_Segment__c</name>
         <picklistValues>
@@ -1549,6 +1581,10 @@
             <masterLabel>Storage and Memory</masterLabel>
             <translation><!-- Storage and Memory --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IPA Contact --></label>
+        <name>Core_IPA_Contact__c</name>
     </fields>
     <fields>
         <label><!-- Email Verification Date --></label>
@@ -1623,7 +1659,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Partner Role Old --></label>
+        <label><!-- Partner Role_Old --></label>
         <name>Core_IPA_Partner_Role__c</name>
         <picklistValues>
             <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
@@ -1658,8 +1694,8 @@
             <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Service Integrator</masterLabel>
-            <translation><!-- Service Integrator --></translation>
+            <masterLabel>Service  Integrator</masterLabel>
+            <translation><!-- Service  Integrator --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solution Provider</masterLabel>
@@ -1858,7 +1894,7 @@
         <name>Core_Import_ID__c</name>
     </fields>
     <fields>
-        <help><!-- Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same, otherwise returns FALSE. --></help>
+        <help><!-- Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same OR if Enterprise Id is empty, otherwise returns FALSE. --></help>
         <label><!-- Is FederationId Valid --></label>
         <name>Core_Is_FederationId_Valid_Ind__c</name>
         <picklistValues>
@@ -1875,6 +1911,7 @@
         <name>Core_Job_Function_Code__c</name>
     </fields>
     <fields>
+        <help><!-- This field is inactive. Please use Profession field. Contact AAQ for questions. --></help>
         <label><!-- Job Function --></label>
         <name>Core_Job_Function__c</name>
         <picklistValues>
@@ -2194,6 +2231,10 @@
         <help><!-- By selecting this checkbox, you are confirming that Cases submitted on Intel® Premier Support are related to the use of Intel Products regarding military, intelligence, nuclear/biochemical, defense, or space items. --></help>
         <label><!-- MINDS --></label>
         <name>Core_MINDS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mailing Address1 --></label>
+        <name>Core_Mailing_Address__c</name>
     </fields>
     <fields>
         <label><!-- Marketing - Do Not Contact Date --></label>
@@ -2636,8 +2677,20 @@
         <name>Core_isEmailBounced_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Contact Stub --></label>
-        <name>CventEvents__ContactStub__c</name>
+        <label><!-- Current Year --></label>
+        <name>Current_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Verification Status --></label>
+        <name>Email_Verification_Status__c</name>
     </fields>
     <fields>
         <label><!-- External User State Change Date/Time --></label>
@@ -2654,6 +2707,51 @@
             <masterLabel>Pending Acceptance</masterLabel>
             <translation><!-- Pending Acceptance --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Languages --></label>
+        <name>LID__Languages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>LID__Level__c</name>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tertiary</masterLabel>
+            <translation><!-- Tertiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field automatically updated by LinkedIn Sales Navigator Data Validation. “Not at Company” means Contact is not with associated Account based on LinkedIn profile. No value indicates LinkedIn has no feedback to share. --></help>
+        <label><!-- Not at Company Flag --></label>
+        <name>LID__No_longer_at_Company__c</name>
+        <picklistValues>
+            <masterLabel>Ignore</masterLabel>
+            <translation><!-- Ignore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not at Company</masterLabel>
+            <translation><!-- Not at Company --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Session Id --></label>
+        <name>LID__Session_Id__c</name>
     </fields>
     <fields>
         <label><!-- Mailing Country/Region --></label>
@@ -2727,6 +2825,14 @@
             <masterLabel>Yes</masterLabel>
             <translation><!-- Yes --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid Cause --></label>
+        <name>SWS_Marketo_Email_Invalid_Cause__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid --></label>
+        <name>SWS_Marketo_Email_Invalid__c</name>
     </fields>
     <fields>
         <label><!-- Username --></label>
@@ -2812,6 +2918,10 @@
         <label>In Marketo anzeigen</label>
         <name>mkto_si__View_in_Marketo__c</name>
     </fields>
+    <fields>
+        <label><!-- pocQuest --></label>
+        <name>pocQuest_tobedeleted__c</name>
+    </fields>
     <recordTypes>
         <description><!-- If Do Not Contact flag is selected --></description>
         <label><!-- Contact Layout – Do Not Contact --></label>
@@ -2832,6 +2942,10 @@
         <label><!-- Standard --></label>
         <name>Standard</name>
     </recordTypes>
+    <validationRules>
+        <errorMessage><!-- You Can Not Create Contact With ECB Flagged Account --></errorMessage>
+        <name>ACM_Stop_Contact_Creation_With_ECB_Acct</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Use  &quot;Change Account&quot; button to Update Account --></errorMessage>
         <name>Core_Account_Name_Cannot_Update</name>
@@ -2918,12 +3032,25 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>Core_Prevent_Deactivation_Request_Unchec</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please Provide Country --></errorMessage>
+        <name>Country_validation_for_new_Contacts</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Email ID length exceeds 64 characters --></errorMessage>
         <name>Email_ID_Character_Restriction</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
+        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country. For more information please visit 
+https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
         <name>Embargoed_Country</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Mailing Country/Region signifies where the Contact currently resides and is mandatory --></errorMessage>
@@ -2958,32 +3085,12 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>Create_new_Contact</name>
     </webLinks>
     <webLinks>
-        <label><!-- InviteContactToEvent --></label>
-        <name>CventEvents__InviteContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelContactToEvent --></label>
-        <name>CventEvents__ModifyCancelContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateContactToEvent --></label>
-        <name>CventEvents__NominateContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterContactToEvent --></label>
-        <name>CventEvents__RegisterContactToEvent</name>
-    </webLinks>
-    <webLinks>
         <label><!-- GoogleMaps --></label>
         <name>GoogleMaps</name>
     </webLinks>
     <webLinks>
         <label><!-- GoogleSearch --></label>
         <name>GoogleSearch</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Remove_PSOs --></label>
-        <name>Remove_PSOs</name>
     </webLinks>
     <webLinks>
         <label><!-- SendGmail --></label>

@@ -165,10 +165,22 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>ER_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Customer Master Files</relationshipLabel>
+        <relationshipName>Account_Customer_Master_Files</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>ER_Active__c</fullName>
         <defaultValue>true</defaultValue>
         <label>Active</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -180,7 +192,7 @@
         <referenceTo>ER_Customer_Master_File_Group__c</referenceTo>
         <relationshipName>Customer_Master_Files_Audit</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -237,7 +249,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Customer_Master_Files</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -291,9 +303,21 @@
         <fullName>ER_End_Date__c</fullName>
         <label>End Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>ER_Post_Delete_Association__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is created to track the deleted records in a new related list of CMF group</description>
+        <label>Post Delete Association</label>
+        <referenceTo>ER_Customer_Master_File_Group__c</referenceTo>
+        <relationshipName>Customer_Master_Files_Delete</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>ER_SalesAreaOrderBlockCd__c</fullName>
@@ -371,6 +395,15 @@
         <fullName>ER_StartDate__c</fullName>
         <label>Start Date</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>ER_Start_Date__c</fullName>
+        <formula>CreatedDate</formula>
+        <label>Start Date</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
@@ -381,8 +414,6 @@
         <columns>NAME</columns>
         <columns>ER_Customer_Master_File__c</columns>
         <columns>ER_Customer_Master_File_Group__c</columns>
-        <columns>ER_Active__c</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -405,7 +436,7 @@
     <nameField>
         <displayFormat>CGA -{0000000}</displayFormat>
         <label>CMFGroupAssociation Name</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Account Customer Master Files</pluralLabel>

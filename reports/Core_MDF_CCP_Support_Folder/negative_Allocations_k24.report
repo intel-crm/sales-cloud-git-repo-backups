@@ -14,7 +14,7 @@
     </columns>
     <description>Allocations with -ve Amount</description>
     <filter>
-        <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>PartnerMarketingBudget.PartnerFundAllocations$Amount</column>
             <columnToColumn>false</columnToColumn>
@@ -28,27 +28,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
             <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerMarketingBudget$Id</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>0Cw1J000000Kymy</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerMarketingBudget$Id</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>0Cw3b000000GmwF</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerMarketingBudget$Id</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>0Cw3b000000Gmw5</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

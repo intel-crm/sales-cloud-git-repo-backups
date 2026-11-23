@@ -48,6 +48,15 @@ Purpose:   Restricts inactivation of Employee relationship of the contact if it 
     //Start of Changes by Anupam Agarwal on 06-Dec-2018 for mandatory relationship check    
     public static void mandatoryRelationshipCheck(List<PRM_Account_Contact_Relationship__c> acctContRelNewList, List<PRM_Account_Contact_Relationship__c> acctContRelOldList, Map<Id, PRM_Account_Contact_Relationship__c> acctContRelOldMap)
     {  
+        	System.debug('ENTERED mandatoryRelationshipCheck');
+        	System.debug('acr new:PRM_Relationship_Id__c::'+acctContRelNewList[0].PRM_Relationship_Id__c);
+        	System.debug('acr New:Inactive::'+acctContRelNewList[0].PRM_InActive_Ind__c);     
+        	PRM_Account_Contact_Relationship__c acrOldValue1 = acctContRelOldMap.get(acctContRelNewList[0].Id);	
+        	System.debug('acr Old:PRM_Relationship_Id__c::'+acrOldValue1.PRM_Relationship_Id__c);
+        	System.debug('acr Old:Inactive::'+acrOldValue1.PRM_InActive_Ind__c);
+
+        
+			//System.assert(false, 'Reached mandatoryRelationshipCheck');
             Set<String> accountIds = new Set<String>();
             Set<String> contactIds = new Set<String>();
             Set<String> activecontactIds = new Set<String>();
@@ -60,7 +69,13 @@ Purpose:   Restricts inactivation of Employee relationship of the contact if it 
         try{
             for(PRM_Account_Contact_Relationship__c acr:acctContRelNewList){
                 PRM_Account_Contact_Relationship__c acrOldValue = acctContRelOldMap.get(acr.Id);
+                System.debug('acr Old:PRM_Relationship_Id__c::'+acrOldValue.PRM_Relationship_Id__c);
+                System.debug('acr new:PRM_Relationship_Id__c::'+acr.PRM_Relationship_Id__c);
+                System.debug('acr Old:Inactive::'+acrOldValue.PRM_InActive_Ind__c);
+                System.debug('acr New:Inactive::'+acr.PRM_InActive_Ind__c);
+				System.debug('JB Condn::'+(acr.PRM_Contact_Id__c != acrOldValue.PRM_Contact_Id__c));
                 if(acrOldValue.PRM_InActive_Ind__c!=true && (acr.PRM_Relationship_Id__c != acrOldValue.PRM_Relationship_Id__c || acr.PRM_Contact_Id__c != acrOldValue.PRM_Contact_Id__c || acrOldValue.PRM_InActive_Ind__c!= acr.PRM_InActive_Ind__c)){
+                    System.debug('***** ENTERED TARGET BLOCK *****');
                     if(acr.PRM_Status_Nm__c == 'Complete')
                     {
                         acrList.add(acr);
@@ -135,6 +150,8 @@ if(acrRecordList.size()<=1 && idSet.contains(acrRecord.id) && activeACMList.cont
                 }
             } 
          }catch(Exception e){
+             System.debug('ERROR JB::'+e.getMessage());
+             System.debug(LoggingLevel.ERROR, 'Stack Trace: JB' + e.getStackTraceString());
              PRM_ErrorUtilityClass.logError(e);
          }
         //Ended by teja
@@ -167,11 +184,25 @@ Purpose:   1. Whenever duplicate acr is inserted with same relationship it retur
             Set<String> regReqEmailSet = new Set<String>();
         try{
             //check if current user is Partner
+            System.debug('ENTER duplicateRecordCheck');
             User CurrentUser=[select id,isportalenabled from User where id=:userinfo.getuserid()];
             
+            System.debug('After ENTER duplicateRecordCheck');
+            
+            System.debug('oldMap null = ' + (oldMap == null));
+            System.debug('newList null = ' + (acctContRelNewList == null));
+
             for(PRM_Account_Contact_Relationship__c acr: acctContRelNewList){
+                            
+                System.debug('Inside for loop');
+                System.debug('ACR Id=' + acr.Id);
+                
+                System.debug('Contains Key=' + oldMap.keySet().contains(acr.Id));
+
                 if(oldMap!=null && oldMap.keyset().contains(acr.Id)){
                     PRM_Account_Contact_Relationship__c acrOldValue = oldMap.get(acr.Id);
+                    System.debug('OLD inactive=' + acrOldValue.PRM_InActive_Ind__c);
+					System.debug('NEW inactive=' + acr.PRM_InActive_Ind__c);
                     if(acrOldValue.PRM_InActive_Ind__c!=acr.PRM_InActive_Ind__c && acr.PRM_InActive_Ind__c==false){
 		    	acr.PRM_Initiated_By__c=CurrentUser.Id;
                         acr.PRM_Activated_Date__c=SYSTEM.NOW();
@@ -234,7 +265,11 @@ Purpose:   1. Whenever duplicate acr is inserted with same relationship it retur
             }
             
             
-        }catch(Exception e){PRM_ErrorUtilityClass.logError(e);        
+        }catch(Exception e){
+            System.debug('DUP ERROR=' + e.getMessage());
+            System.debug(e.getStackTraceString());
+            PRM_ErrorUtilityClass.logError(e);       
+            throw e;            
         }
     } 
     

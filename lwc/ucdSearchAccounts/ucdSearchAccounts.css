@@ -1,0 +1,52 @@
+.colum-Title {
+    padding: 7px;
+    border-radius: 5px;
+}
+.thead_height{
+    height: 40px;
+}
+.radiocolum_width{
+    width: 50px;
+}
+
+.multiselect {
+    width: 200px;
+  }
+  
+  .selectBox {
+    position: relative;
+  }
+  
+  .selectBox select {
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+  }
+  .showdropbox {
+    display: block;
+    border: 1px #dadada solid;
+  }
+  
+  .checkboxes label {
+    display: block;
+  }
+  
+  .checkboxes label:hover {
+    background-color: #1e90ff;
+  }
+
+  input[type="checkbox"][readonly] {
+    pointer-events: none;
+  }

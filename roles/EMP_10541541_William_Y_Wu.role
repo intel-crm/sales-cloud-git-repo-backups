@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Yue Liu</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_10541541_William_Y_Wu</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Role_Users_With_No_Manager</parentRole>
+</Role>

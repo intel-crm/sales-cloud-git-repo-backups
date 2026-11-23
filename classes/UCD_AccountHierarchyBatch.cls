@@ -219,7 +219,7 @@ public without sharing class UCD_AccountHierarchyBatch implements Database.Batch
                 if(childAcctMap != null && childAcctMap.get(result.getId()).ParentId != null){
                     resultMap.put(childAcctMap.get(result.getId()).ParentId,'COMPLETED');
                 }else{
-                    if(childAcctMap != null && childAcctMap.get(result.getId()).ParentId == null && childAcctMap.get(result.getId()).Core_Reltio_Integration_Status__c != null && childAcctMap.get(result.getId()).Core_Reltio_Integration_Status__c == 'REPROCESS'){
+                    if(childAcctMap != null && childAcctMap.get(result.getId()).ParentId == null && childAcctMap.get(result.getId()).Core_Reltio_Integration_Status__c != null && childAcctMap.get(result.getId()).Core_Reltio_Integration_Status__c == 'PARENT_UPDATE REPROCESS'){
                        continue;
                     } else
                     resultMap.put(result.getId(),'COMPLETED');
@@ -232,7 +232,7 @@ public without sharing class UCD_AccountHierarchyBatch implements Database.Batch
                 }
                 String ErrorMsgs;
                 String ErrorFields;
-                for(Database.Error err : result.getErrors()) {
+                for(Database.Error err : result.getErrors()) {                   
                     ErrorMsgs += err.getMessage() + '|';
                     ErrorFields += err.getFields() + '|';
 

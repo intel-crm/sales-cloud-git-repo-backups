@@ -65,7 +65,7 @@
         <usage>OUTPUT</usage>
     </decisionTableParameters>
     <decisionTableSourceCriterias>
-        <operator>GreaterOrEqual</operator>
+        <operator>GreaterThan</operator>
         <sequenceNumber>3</sequenceNumber>
         <sourceFieldName>Pricing_Overall_Quote_Quantity_Nbr__c</sourceFieldName>
         <value>20000</value>

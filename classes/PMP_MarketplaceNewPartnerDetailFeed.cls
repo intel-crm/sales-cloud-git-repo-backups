@@ -1,79 +1,83 @@
-public with sharing class PMP_MarketplaceNewPartnerDetailFeed{ //extends PMP_SearchWrapperStore{
+public with sharing class PMP_MarketplaceNewPartnerDetailFeed extends PMP_SearchWrapperStore{
     
-    public static Boolean isWorking() {
-        //Boolean flag = true;
-        return true;
-    }
+    public static Map<Id, FilterData> mapParentToChildFilterData = new Map<Id, FilterData>();
+    public static Map<String,CardData> offeringMap = new Map<String,CardData>();
+    public static Map<String, Integer> mapCategoryIdToSeq = new Map<String, Integer>(); //new enhancement in feed card - Categories
     
-    // public static Map<Id, FilterData> mapParentToChildFilterData = new Map<Id, FilterData>();
-    // public static Map<String,CardData> offeringMap = new Map<String,CardData>();
-    // public static Map<String, Integer> mapCategoryIdToSeq = new Map<String, Integer>(); //new enhancement in feed card - Categories
-    
-    // @AuraEnabled(cacheable=true)
-    // public static StorefrontFeedItem getStorefrontFeedDetails(String partnerId, String langCode){
-    //     StorefrontFeedItem item = new StorefrontFeedItem();
+    @AuraEnabled(cacheable=true)
+    public static StorefrontFeedItem getStorefrontFeedDetails(String partnerId, String langCode){
+        StorefrontFeedItem item = new StorefrontFeedItem();
         
-    //     //Get the company information
-    //     PMP_Company__c company = new PMP_Company__c();
-    //     if(Schema.sObjectType.PMP_Company__c.isAccessible()){
-    //         //as part of new OPID structure, added new field PMP_Partner_Benefit_Type__c in the query
-    //         company=[SELECT Id,Name,PMP_Partner_Benefit_Type__c,PMP_Is_Working_Copy_Ind__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c, PMP_Account_Dsc__c, PMP_Account_Address_Txt__c,
-    //                  PMP_Account_Industry__c, PMP_Account_Application__c,PMP_Account_Region__c, PMP_Account_Program_Membership__c,PMP_Company_Lifecycle_Status_Nm__c, 
-    //                  PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c, PMP_Account_Specialty__c,PMP_Account_Website__c,
-    //                  PMP_Account_Tag_Line__c,PMP_Working_Copy_Id__c,PMP_Working_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,
-    //                  PMP_Working_Copy_Id__r.PMP_Company_Status_Update_Dt__c,PMP_Working_Copy_Id__r.PMP_Is_Updated_Ind__c,
-    //                  PMP_Working_Copy_Id__r.PMP_Initial_Storefront_Submit_Date_Dt__c,PMP_Published_Copy_Id__c,
-    //                  PMP_Published_Copy_Id__r.PMP_Company_Status_Update_Dt__c,PMP_Published_Copy_Id__r.PMP_Is_Updated_Ind__c,
-    //                  PMP_Published_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,PMP_Is_Published_Ind__c,
-    //                  PMP_Published_Copy_Id__r.PMP_Initial_Storefront_Submit_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Enhanced_Login_Users_Txt__c,
-    //                  toLabel(PMP_Disti_Components_Nm__c),toLabel(PMP_Disti_Sys_Solutions_Nm__c),PMP_Is_Distributor_Ind__c,PMP_Company_Status_Published_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Company_Status_Published_Date_Dt__c
-    //                  FROM PMP_Company__c where id=:partnerId LIMIT 1];
-    //     }
-    //     if(company.PMP_Is_Working_Copy_Ind__c == true){
-    //         try{
-    //             if(Schema.sObjectType.PMP_Company__c.isAccessible()){
-    //                 //as part of new OPID structure, added new field PMP_Partner_Benefit_Type__c in the query
-    //                 company=[SELECT Id,Name,PMP_Partner_Benefit_Type__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c, PMP_Account_Dsc__c, PMP_Account_Address_Txt__c,PMP_Company_Lifecycle_Status_Nm__c,
-    //                          PMP_Account_Industry__c, PMP_Account_Application__c,PMP_Account_Region__c, PMP_Account_Program_Membership__c, 
-    //                          PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c, PMP_Account_Specialty__c,PMP_Account_Website__c,
-    //                          PMP_Account_Tag_Line__c,PMP_Working_Copy_Id__c,PMP_Working_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,
-    //                          PMP_Working_Copy_Id__r.PMP_Company_Status_Update_Dt__c,PMP_Working_Copy_Id__r.PMP_Is_Updated_Ind__c,
-    //                          PMP_Published_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,PMP_Is_Published_Ind__c,
-    //                          PMP_Working_Copy_Id__r.PMP_Initial_Storefront_Submit_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Enhanced_Login_Users_Txt__c,
-    //                          toLabel(PMP_Disti_Components_Nm__c),toLabel(PMP_Disti_Sys_Solutions_Nm__c),PMP_Is_Distributor_Ind__c,PMP_Published_Copy_Id__r.PMP_Company_Status_Published_Date_Dt__c,PMP_Company_Status_Published_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Company_Status_Published_Date_Dt__c
-    //                          FROM PMP_Company__c where PMP_Working_Copy_Id__c =: partnerId LIMIT 1];
-    //             }
-    //             partnerId = company.Id;
-    //         }catch(Exception e){
-    //             system.debug('error while fetching company records' + e);
-    //         }
-    //     }
+        //Get the company information
+        PMP_Company__c company = new PMP_Company__c();
+        try{
+        if(Schema.sObjectType.PMP_Company__c.isAccessible()){
+            //as part of new OPID structure, added new field PMP_Partner_Benefit_Type__c in the query
+            company=[SELECT Id,Name,PMP_Partner_Benefit_Type__c,PMP_Is_Working_Copy_Ind__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c, PMP_Account_Dsc__c, PMP_Account_Address_Txt__c,
+                     PMP_Account_Industry__c, PMP_Account_Application__c,PMP_Account_Region__c, PMP_Account_Program_Membership__c,PMP_Company_Lifecycle_Status_Nm__c, 
+                     PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c, PMP_Account_Specialty__c,PMP_Account_Website__c,
+                     PMP_Account_Tag_Line__c,PMP_Working_Copy_Id__c,PMP_Working_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,
+                     PMP_Working_Copy_Id__r.PMP_Company_Status_Update_Dt__c,PMP_Working_Copy_Id__r.PMP_Is_Updated_Ind__c,
+                     PMP_Working_Copy_Id__r.PMP_Initial_Storefront_Submit_Date_Dt__c,PMP_Published_Copy_Id__c,
+                     PMP_Published_Copy_Id__r.PMP_Company_Status_Update_Dt__c,PMP_Published_Copy_Id__r.PMP_Is_Updated_Ind__c,
+                     PMP_Published_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,PMP_Is_Published_Ind__c,
+                     PMP_Published_Copy_Id__r.PMP_Initial_Storefront_Submit_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Enhanced_Login_Users_Txt__c,
+                     toLabel(PMP_Disti_Components_Nm__c),toLabel(PMP_Disti_Sys_Solutions_Nm__c),PMP_Is_Distributor_Ind__c,PMP_Company_Status_Published_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Company_Status_Published_Date_Dt__c
+                     FROM PMP_Company__c where id=:partnerId LIMIT 1];
+        }
+        }catch(Exception e){
+           // system.debug('error while fetching company records' + e);
+           PMP_Utility.logError(e, 'PMP_MarketplaceNewPartnerDetailFeed');
+            //Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT, SCOPE, SEVERITY, e.getMessage(), e.getStackTraceString(), '', '', '');
+       
+           
+        }
+        if(company.PMP_Is_Working_Copy_Ind__c == true){
+            try{
+                if(Schema.sObjectType.PMP_Company__c.isAccessible()){
+                    //as part of new OPID structure, added new field PMP_Partner_Benefit_Type__c in the query
+                    company=[SELECT Id,Name,PMP_Partner_Benefit_Type__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c, PMP_Account_Dsc__c, PMP_Account_Address_Txt__c,PMP_Company_Lifecycle_Status_Nm__c,
+                             PMP_Account_Industry__c, PMP_Account_Application__c,PMP_Account_Region__c, PMP_Account_Program_Membership__c, 
+                             PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c, PMP_Account_Specialty__c,PMP_Account_Website__c,
+                             PMP_Account_Tag_Line__c,PMP_Working_Copy_Id__c,PMP_Working_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,
+                             PMP_Working_Copy_Id__r.PMP_Company_Status_Update_Dt__c,PMP_Working_Copy_Id__r.PMP_Is_Updated_Ind__c,
+                             PMP_Published_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,PMP_Is_Published_Ind__c,
+                             PMP_Working_Copy_Id__r.PMP_Initial_Storefront_Submit_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Enhanced_Login_Users_Txt__c,
+                             toLabel(PMP_Disti_Components_Nm__c),toLabel(PMP_Disti_Sys_Solutions_Nm__c),PMP_Is_Distributor_Ind__c,PMP_Published_Copy_Id__r.PMP_Company_Status_Published_Date_Dt__c,PMP_Company_Status_Published_Date_Dt__c,PMP_Working_Copy_Id__r.PMP_Company_Status_Published_Date_Dt__c
+                             FROM PMP_Company__c where PMP_Working_Copy_Id__c =: partnerId LIMIT 1];
+                }
+                partnerId = company.Id;
+            }catch(Exception e){
+                PMP_Utility.logError(e, 'PMP_MarketplaceNewPartnerDetailFeed');
+            //Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT, SCOPE, SEVERITY, e.getMessage(), e.getStackTraceString(), '', '', '');
+            }
+        }
         
-    //     item.cardData=new List<cardData>(); 
-    //     item.filterStructure = new List<FilterStructure>(); 
-    //     item.filterData = new Map<id,FilterData>();
-    //     //as part of new OPID structure, commented below part query and added below
+        item.cardData=new List<cardData>(); 
+        item.filterStructure = new List<FilterStructure>(); 
+        item.filterData = new Map<id,FilterData>();
+        //as part of new OPID structure, commented below part query and added below
 
-    //     //List<String> benCode = new List<String>();
-    //     /*for (PRM_AccountBenefitAssociation__c accBen:[SELECT PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c FROM PRM_AccountBenefitAssociation__c 
-    //                                                   WHERE PRM_Account_Id__c =:company.PMP_Account_Id__c AND PRM_Status_Nm__c = 'Active'])
-    //     {
-    //         benCode.add(accBen.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c);
-    //     }
-    //     if (benCode.contains(PMP_StaticConstants_Partner.BENEFIT_ENHANCED_CODE)){*/
-    //     if(company.PMP_Partner_Benefit_Type__c==PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced){
-    //         //To get offerings related to company
-    //         getPartnerOfferings(item, partnerId, company.Name, langCode);
-    //         //To get filter data and filter structure of the offerings 
-    //         getFilterData(item, offeringMap.keySet(), langCode);
-    //     }
-    //     //To get articles related to the company
-    //     getArticles(item, partnerId, langCode);
-    //     //Get total items count
-    //     item.totalItems = item.cardData.size();
+        //List<String> benCode = new List<String>();
+        /*for (PRM_AccountBenefitAssociation__c accBen:[SELECT PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c FROM PRM_AccountBenefitAssociation__c 
+                                                      WHERE PRM_Account_Id__c =:company.PMP_Account_Id__c AND PRM_Status_Nm__c = 'Active'])
+        {
+            benCode.add(accBen.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c);
+        }
+        if (benCode.contains(PMP_StaticConstants_Partner.BENEFIT_ENHANCED_CODE)){*/
+        if(company.PMP_Partner_Benefit_Type__c==PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced){
+            //To get offerings related to company
+            //getPartnerOfferings(item, partnerId, company.Name, langCode);
+            //To get filter data and filter structure of the offerings 
+            //getFilterData(item, offeringMap.keySet(), langCode);
+        }
+        //To get articles related to the company
+        //getArticles(item, partnerId, langCode); need check
+        //Get total items count
+        item.totalItems = item.cardData.size();
         
-    //     return item;
-    // }
+        return item;
+    }
     
     // public static void getPartnerOfferings(StorefrontFeedItem item, String partnerId, String partnerName, String langCode){
         
@@ -400,6 +404,6 @@ public with sharing class PMP_MarketplaceNewPartnerDetailFeed{ //extends PMP_Sea
     //     }
     //     return count;
     // }
-    //public PMP_MarketplaceNewPartnerDetailFeed(){
-    //}
+    public PMP_MarketplaceNewPartnerDetailFeed(){
+    }
 }

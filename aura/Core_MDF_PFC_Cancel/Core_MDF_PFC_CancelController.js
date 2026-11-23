@@ -5,8 +5,18 @@
     },
     // method called on click of cancel claim button
     cancelClaim : function(component, event, helper) {
+        var reason = component.get("v.cancellationReason") || "";
+        var reasonRequired = component.get("v.reasonRequired");
+        var reasonInput = component.find("reasonInput");
+        
+        if (reasonRequired && !reason.trim()) {
+            if (reasonInput) {
+                reasonInput.reportValidity();
+            }
+            return;
+        }
         component.set("v.Spinner",true);
-        helper.cancelClaim(component, event, helper);
+        helper.cancelClaim(component, event, helper, reason.trim());        
     },
     CloseToast: function(component, event, helper) {
         var cmpTarget = component.find('toast');

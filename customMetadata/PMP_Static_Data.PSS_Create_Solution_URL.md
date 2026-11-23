@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">/partner-solution-list</value>
+        <value xsi:type="xsd:string">/Solutions/ArdiraSurvey__Survey_Result__c/Default</value>
     </values>
 </CustomMetadata>

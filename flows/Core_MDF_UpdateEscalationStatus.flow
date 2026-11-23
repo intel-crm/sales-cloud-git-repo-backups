@@ -1580,7 +1580,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_MDF_Retail_Program</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Core_MDF_Channel_Program_id__r.Core_MDF_Technical_Program_Name__c</leftValueReference>
                 <operator>EqualTo</operator>

@@ -14,12 +14,13 @@ public class Pricing_RestAPI_QuotesV2_Test{
     private static void createData(){
         Pricing_RestAPI_TestUtility.createRestAPIErrorCodesConfig();
         List<Product2> prodList = new List<Product2>();
+        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
         Product2 prod = new Product2();
         prod.Core_Product_Org__c = 'Sales';
         prod.Core_Product_Type__c = 'Processors';
         prod.Core_Sales_Visible_Flag__c  = True;
         prod.IsActive = True;
-        prod.Core_Group_Code_Short_Name__c = 'DCG~DCAI';
+        prod.Core_Line_of_Business__c = lobValuesList[0];
         prod.Core_Hierarchy_ID__c = '43';
         prod.Name = 'Product X';
         prod.Core_Processor_Number_Nm__c = 'test';
@@ -367,6 +368,7 @@ public class Pricing_RestAPI_QuotesV2_Test{
         product2 prodClient = new product2();
         Pricing_Competitor_Product__c cp1 = new Pricing_Competitor_Product__c();
         system.runAs(adminUser){
+            List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             test.startTest();
             prodClient.Core_product_Org__c = 'Sales';
             prodClient.Core_product_Type__c = 'Processors';
@@ -374,7 +376,7 @@ public class Pricing_RestAPI_QuotesV2_Test{
             prodClient.IsActive = True;
             prodClient.Core_VerticalSegment__c = 'Desktop';
             prodClient.Core_Hierarchy_ID__c = '43';
-            prodClient.Core_Group_Code_Short_Name__c = 'CCG';
+            prodClient.Core_Line_of_Business__c = lobValuesList[1];
             prodClient.Name = 'product Y';
             prodClient.Core_Processor_Number_Nm__c  = '6220';
             insert prodClient;
@@ -439,6 +441,7 @@ public class Pricing_RestAPI_QuotesV2_Test{
         product2 prodClient = new product2();
         Pricing_Competitor_Product__c cp1 = new Pricing_Competitor_Product__c();
         system.runAs(adminUser){
+            List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             test.startTest();
             prodClient.Core_product_Org__c = 'Sales';
             prodClient.Core_product_Type__c = 'Processors';
@@ -446,7 +449,7 @@ public class Pricing_RestAPI_QuotesV2_Test{
             prodClient.IsActive = True;
             prodClient.Core_VerticalSegment__c = 'Desktop';
             prodClient.Core_Hierarchy_ID__c = '43';
-            prodClient.Core_Group_Code_Short_Name__c = 'CCG';
+            prodClient.Core_Line_of_Business__c = lobValuesList[1];
             prodClient.Name = 'product Y';
             prodClient.Core_Processor_Number_Nm__c  = '6220';
             insert prodClient;

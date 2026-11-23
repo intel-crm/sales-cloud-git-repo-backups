@@ -41,7 +41,7 @@
                         <valueListItems>
                             <value>Opportunity.Core_Submit_for_Approval_LWC</value>
                             <visibilityRule>
-                                <booleanFilter>((1 AND 2 AND 3 AND (NOT(4 AND 5))) AND 6  AND 7) OR((1 AND 2 AND 3 AND 4 AND 5) AND 6 AND 7)</booleanFilter>
+                                <booleanFilter>((1 AND 2 AND 3 AND (NOT(4 AND 5))) AND 6 ) OR((1 AND 2 AND 3 AND 4 AND 5) AND 6)</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Core_Approval_Status__c}</leftValue>
                                     <operator>NE</operator>
@@ -72,17 +72,12 @@
                                     <operator>NE</operator>
                                     <rightValue>SMG/GMC Read Only</rightValue>
                                 </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>Commissions Office Inquiries Admin User</rightValue>
-                                </criteria>
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
                             <value>Opportunity.Core_Submit_for_PW_Approval</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+                                <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.StageName}</leftValue>
                                     <operator>EQUAL</operator>
@@ -108,11 +103,6 @@
                                     <operator>NE</operator>
                                     <rightValue>SMG/GMC Read Only</rightValue>
                                 </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>Commissions Office Inquiries Admin User</rightValue>
-                                </criteria>
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
@@ -137,7 +127,7 @@
                         <valueListItems>
                             <value>Opportunity.Core_OpportunitySupport</value>
                             <visibilityRule>
-                                <booleanFilter>(1 AND 4) OR (2 AND 3 AND 4)</booleanFilter>
+                                <booleanFilter>1 OR (2 AND 3)</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
                                     <operator>EQUAL</operator>
@@ -152,11 +142,6 @@
                                     <leftValue>{!Record.Core_Coverage_Type_Nm__c}</leftValue>
                                     <operator>NE</operator>
                                     <rightValue>Deal Registration</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$Permission.CustomPermission.Access_Opportunity_Details}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>false</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -512,7 +497,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_Design_Type__c</fieldItem>
                 <identifier>RecordCore_Design_Type_cField</identifier>
@@ -1094,7 +1079,7 @@
                 <fieldItem>Record.Core_VBS_Potential__c</fieldItem>
                 <identifier>RecordCore_VBS_Potential_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -1108,11 +1093,6 @@
                     <criteria>
                         <leftValue>{!Record.CreatedBy.FirstName}</leftValue>
                         <operator>NE</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_VBS_Potential__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -1126,11 +1106,11 @@
                 <fieldItem>Record.Core_VBS_Potential__c</fieldItem>
                 <identifier>RecordCore_VBS_Potential_cField3</identifier>
                 <visibilityRule>
-                    <booleanFilter>((1 AND 4 ) OR 5) AND 2 AND 3</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Data_Ops_Elevated_Access}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
+                        <rightValue>false</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
@@ -1140,16 +1120,6 @@
                     <criteria>
                         <leftValue>{!Record.CreatedBy.FirstName}</leftValue>
                         <operator>NE</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_VBS_Potential__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Data_Ops_Elevated_Access}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -3150,9 +3120,6 @@
                     <name>relatedListFieldAliases</name>
                     <valueList>
                         <valueListItems>
-                            <value>Core_Opportunity_Product_Name__c</value>
-                        </valueListItems>
-                        <valueListItems>
                             <value>Core_Field__c</value>
                         </valueListItems>
                         <valueListItems>
@@ -3190,9 +3157,9 @@
                 <visibilityRule>
                     <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
-                        <leftValue>{!Record.RecordType.Name}</leftValue>
+                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Deal Opportunity</rightValue>
+                        <rightValue>Core_Deal_Opportunity</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.Core_Opportunity_Coverage_Nm__c}</leftValue>
@@ -5088,21 +5055,79 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>appContainerHeight</name>
+                    <value>450</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>applicationName</name>
+                    <value>Opportunity</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>detailRedirectionPage</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>environmentType</name>
+                    <value>Standard</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideHeader</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>openContentInline</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>seismic:SeismicEmbeddedApplication</componentName>
+                <identifier>seismic_SeismicEmbeddedApplication</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>decorate</name>
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Important: Seismic EOL effective January 31, 2025&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Intel’s contract with Seismic ends January 31, 2025. Please visit &lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/SMR&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;&lt;strong&gt;Sales and Marketing Resources (SMR)&lt;/strong&gt;&lt;/a&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt; to access your content needs.&amp;nbsp;For questions about SMR, please visit &lt;/span&gt;&lt;a href=&quot;https://salescrmtraining.intel.com/sales-tools/smr/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;the SMR Training page&lt;/a&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Please bookmark these resource links: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/SMR&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/SMR&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/CCGresources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/CCGresources&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/DCAIResources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/DCAIresources&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Symbol; font-size: 16px;&quot;&gt;·&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 16px;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://goto.intel.com/AIresources&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: 16px;&quot;&gt;goto/AIresources&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;The&lt;b&gt; Content&lt;/b&gt; tab is enabled for sellers to view Seismic Predictive content delivery. It appears you do not have appropriate permissions to view content.&lt;/p&gt;&lt;p&gt;For more information and how to request access, please visit &lt;a href=&quot;https://salescrm.intel.com/seismic/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Sales Content Enablement with Seismic&lt;/a&gt; site.&lt;/p&gt;&lt;p&gt;If you need additional support in accessing content through Seismic, please submit a ticket through &lt;a href=&quot;https://intel--crmdevint3.lightning.force.com/lightning/n/Ask_a_Question&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Ask a Question&lt;/a&gt;.&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.Seismic_User}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-eb6562a7-d75b-4c02-a729-a9098ea93c03</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>height</name>
+                    <value>200</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Marketo Sales Insight</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>pageName</name>
+                    <value>mkto_si__Opportunity</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showLabel</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:visualforcePage</componentName>
+                <identifier>flexipage_visualforcePage3</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -5132,6 +5157,76 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-9c48da09-6420-4744-9bdb-f797b85d8d21</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Opportunity.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Change_Requesst__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>NAME</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>PCC_Approval_Status__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CREATED_DATE</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CREATEDBY_USER</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>PCC Change Requests</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>__DEFAULT__</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-c6b03e4d-fe98-41e2-9d96-74d20c74daeb</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -5178,7 +5273,7 @@
                     <value>Support Status</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab38</identifier>
+                <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -5295,6 +5390,27 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>collaborateTab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-c6b03e4d-fe98-41e2-9d96-74d20c74daeb</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Change Request</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab3</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Core_Coverage_Type_Nm__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Deal Registration</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -5980,10 +6096,10 @@
                             <value>NAME</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>PRM_Partner_Account__c</value>
+                            <value>PRM_End_Customer_Account__c</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>PRM_End_Customer_Account__c</value>
+                            <value>PRM_Partner_Account__c</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -6004,7 +6120,13 @@
                     <value>Default</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
-                <identifier>lst_dynamicRelatedList3</identifier>
+                <identifier>lst_dynamicRelatedList11</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>crm_OpptyTeamWarningMessage</componentName>
+                <identifier>c_crm_OpptyTeamWarningMessage</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

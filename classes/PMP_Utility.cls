@@ -2165,126 +2165,66 @@ this method can be reused.
 * Description : this method will send welcome email for New Storefront after Entilement is approved.
 ********/  
     public static void sendWelcomeEmailForMP(Set<Id> setContacIdForIPAWelcomeEmail) {
-        Set<String> setOpidsForMPEmail = new Set<String>();
-        Map<Id, Id> intelAccCompInfoMap = new Map<Id, Id>();
-        List<PRM_EmailLog__c> existingEmailLogs = new List<PRM_EmailLog__c>();
-        list<id> setallcontactsunderopid = new list<id>();
-        List<id> intelAccountIds = new list<id>();
-        set<id> finalcontactswithoutemail = new set<id>();
-        Map<Id, Id> accIdCompInfoMap = new Map<Id, Id>();
-        Map<Id, Id> userCompanyMap = new Map<Id, Id>();
-        
-            List<id> contactsWithEmail = new list<id>();
-        
-        
-        if (setContacIdForIPAWelcomeEmail != null && !setContacIdForIPAWelcomeEmail.isEmpty()) {
-            for (Contact con : [SELECT Core_IPA_One_Partner_Id__c, Id, Core_AGS_Integration_Status__c FROM Contact WHERE Id IN :setContacIdForIPAWelcomeEmail]) {
-                setOpidsForMPEmail.add(con.Core_IPA_One_Partner_Id__c);
+    Set<String> setOpidsForMPEmail = new Set<String>();
+    List<PRM_EmailLog__c> existingEmailLogs = new List<PRM_EmailLog__c>();
+
+    if (setContacIdForIPAWelcomeEmail != null && !setContacIdForIPAWelcomeEmail.isEmpty()) {
+        // Fetch Contacts and collect OPIDs
+        for (Contact con : [
+            SELECT Core_IPA_One_Partner_Id__c, Id, Core_AGS_Integration_Status__c
+            FROM Contact
+            WHERE Id IN :setContacIdForIPAWelcomeEmail
+        ]) {
+            setOpidsForMPEmail.add(con.Core_IPA_One_Partner_Id__c);
+        }
+
+        if (setOpidsForMPEmail != null && !setOpidsForMPEmail.isEmpty()) {
+            System.debug('setOpidsForMPEmail: ' + setOpidsForMPEmail);
+
+            List<String> lstCompaniesForWelcomeEmail = new List<String>();
+            Set<String> setCompaniesForWelcomeEmail = new Set<String>();
+
+            // Fetch Companies
+            for (PMP_Company__c comp : [
+                SELECT Id, Name, PMP_Published_Copy_Id__c, PMP_Is_Working_Copy_Ind__c,
+                       PMP_Working_Copy_Id__c, PMP_Company_Lifecycle_Status_Nm__c
+                FROM PMP_Company__c
+                WHERE PMP_Opid_Sfid_Ref_Txt__c IN :setOpidsForMPEmail
+            ]) {
+                if (comp.PMP_Company_Lifecycle_Status_Nm__c == 'Draft' && comp.PMP_Is_Working_Copy_Ind__c == true) {
+                    String key = comp.PMP_Published_Copy_Id__c + '|' + 'New_CompanyInfo_CreationEmail';
+                    lstCompaniesForWelcomeEmail.add(key);
+
+                    if (comp.PMP_Published_Copy_Id__c != null)
+                        setCompaniesForWelcomeEmail.add(comp.PMP_Published_Copy_Id__c);
+                    if (comp.PMP_Working_Copy_Id__c != null)
+                        setCompaniesForWelcomeEmail.add(comp.PMP_Working_Copy_Id__c);
+
+                    System.debug(comp.PMP_Published_Copy_Id__c + ' comp.PMP_Published_Copy_Id__c');
+                }
             }
-            
-            if (setOpidsForMPEmail != null && !setOpidsForMPEmail.isEmpty()) {
-                System.debug('setOpidsForMPEmail: ' + setOpidsForMPEmail);
-                List<String> lstCompaniesForWelcomeEmail = new List<String>();
-                Set<String> setCompaniesForWelcomeEmail = new Set<String>();
-                //fetch pags and then query active contacts where accts in intelaccs
-                
-                
-                for (PMP_Company__c comp : [
-                    SELECT Id, Name, PMP_Published_Copy_Id__c, PMP_Is_Working_Copy_Ind__c,PMP_Opid_Sfid_Txt__c,
-                    PMP_Working_Copy_Id__c, PMP_Company_Lifecycle_Status_Nm__c
-                    FROM PMP_Company__c
-                    WHERE PMP_Opid_Sfid_Ref_Txt__c IN :setOpidsForMPEmail
-                    AND PMP_Benefit_Update_Ind__c =false
+
+            if (!setCompaniesForWelcomeEmail.isEmpty()) {
+                System.debug('setCompaniesForWelcomeEmail: ' + setCompaniesForWelcomeEmail);
+
+                // Fetch existing email logs
+                for (PRM_EmailLog__c eLog : [
+                    SELECT Id, PRM_Subject__c, PRM_Contact__c, PRM_User__c,
+                           PRM_EmailDeliverabilityStatus__c, PRM_ToEmailID__c,
+                           Email_Template_Name__c, PRM_Contact__r.Core_Preferred_Language__c
+                    FROM PRM_EmailLog__c
+                    WHERE PMP_Company__c IN :setCompaniesForWelcomeEmail
+                    AND Email_Template_Name__c = 'PMP_CompanyInfoDraftEmail_Profile'
+                    ORDER BY CreatedDate
                 ]) {
-                    if (comp.PMP_Company_Lifecycle_Status_Nm__c == 'Draft' && comp.PMP_Is_Working_Copy_Ind__c == true) {
-                        String key = comp.PMP_Published_Copy_Id__c + '|' + 'New_CompanyInfo_CreationEmail';
-                        lstCompaniesForWelcomeEmail.add(key);
-                        
-                        if (comp.PMP_Published_Copy_Id__c != null)
-                            setCompaniesForWelcomeEmail.add(comp.PMP_Published_Copy_Id__c);
-                        if (comp.PMP_Working_Copy_Id__c != null)
-                            setCompaniesForWelcomeEmail.add(comp.PMP_Working_Copy_Id__c);
-                        
-                        System.debug(comp.PMP_Published_Copy_Id__c + ' comp.PMP_Published_Copy_Id__c');
-                    }
-                    
-                    if(comp.PMP_Opid_Sfid_Txt__c!=null){
-                        List<String> listAccounts = comp.PMP_Opid_Sfid_Txt__c.split(';');
-                        for(String acc : listAccounts){
-                             if (comp.PMP_Published_Copy_Id__c != null)
-                            accIdCompInfoMap.put(acc,comp.PMP_Published_Copy_Id__c);
-                        }
-                    }    
-                    
-                }
-                // Fetch Contacts and collect OPIDs
-                List<Core_Account_Group_Member__c> pagMemberList = [SELECT Core_Intel_Account_Id__c, Core_Partner_Account_Id__c 
-                                                                    FROM Core_Account_Group_Member__c 
-                                                                    WHERE Core_Partner_Account_Id__c IN :setOpidsForMPEmail 
-                                                                    AND Core_Inactive_Ind__c = false];
-                system.debug('pagMemberList--'+pagMemberList);
-                for(Core_Account_Group_Member__c mem : pagMemberList){
-                    intelAccountIds.add(mem.Core_Intel_Account_Id__c);
-                    // accIdCompInfoMap.put(acc,comp.id);//accid,compid
-                    intelAccCompInfoMap.put(mem.Core_Intel_Account_Id__c, accIdCompInfoMap.get(mem.Core_Partner_Account_Id__c));
-                }
-                for(PRM_Account_Contact_Relationship__c acr: [select PRM_Contact_Id__c from PRM_Account_Contact_Relationship__c where PRM_Account_Id__c in: intelAccountIds and PRM_InActive_Ind__c=false and PRM_Status_Nm__c='Complete']){
-                    setallcontactsunderopid.add(acr.PRM_Contact_Id__c);
-                }				
-                // Fetch Companies
-                
-                if (!setCompaniesForWelcomeEmail.isEmpty()) {
-                    System.debug('setCompaniesForWelcomeEmail: ' + setCompaniesForWelcomeEmail);
-                    
-                    // Fetch existing email logs
-                    for (PRM_EmailLog__c eLog : [
-                        SELECT Id, PRM_Subject__c, PRM_Contact__c, PRM_User__c,
-                        PRM_EmailDeliverabilityStatus__c, PRM_ToEmailID__c,
-                        Email_Template_Name__c, PRM_Contact__r.Core_Preferred_Language__c
-                        FROM PRM_EmailLog__c
-                        WHERE PMP_Company__c IN :setCompaniesForWelcomeEmail
-                        AND PRM_Contact__c IN : setallcontactsunderopid
-                        //and contact in : setContacIdForIPAWelcomeEmail
-                        AND Email_Template_Name__c ='PMP_CompanyInfoDraftEmail_Profile'
-                        ORDER BY CreatedDate
-                    ]) {
-                       // if(!setallcontactsunderopid.contains(elog.PRM_Contact__c)){
-                          //  finalcontactswithoutemail.add(elog.PRM_Contact__c);
-                       // }	
-                       contactsWithEmail.add(eLog.PRM_Contact__c);				
-                        existingEmailLogs.add(eLog);
-                        //contactswithemails.add(log.con)
-                    }
-                   // Set<Id> finalcontactswithoutemail = new Set<Id>();
-finalcontactswithoutemail.addAll(setallcontactsunderopid);
-finalcontactswithoutemail.removeAll(contactsWithEmail);
+                    existingEmailLogs.add(eLog);
                 }
             }
-        }
-        if(finalcontactswithoutemail!=null){
-            
-            List<User> userContactList = [SELECT Id, ContactId,AccountId, Contact.Core_Do_Not_Contact__c, Contact.Core_isEmailBounced_Ind__c,IsActive
-                                          FROM User WHERE ContactId IN :finalcontactswithoutemail and IsActive = True];
-            system.debug('userContactList++'+userContactList);
-            for (user u:userContactList){               
-                userCompanyMap.put(u.id, intelAccCompInfoMap.get(u.AccountId) );//u.contactid.accountid
+
+            if (!lstCompaniesForWelcomeEmail.isEmpty() && existingEmailLogs.isEmpty()) {
+                PMP_SendEmailAlertsForCompanyInfo.PMP_SendEmailAlertsForCompanyInfo(lstCompaniesForWelcomeEmail);
             }
-            
-            /* if(!allowedPermissionSets.isEmpty()){
-List<PermissionSetAssignment> permissionAssignmentList = [SELECT AssigneeId, Assignee.AccountId 
-FROM PermissionSetAssignment 
-WHERE Assignee.AccountId IN :intelAccountIds 
-AND PermissionSet.Name IN :allowedPermissionSets];
-for(PermissionSetAssignment pa : permissionAssignmentList){
-userIds.add(pa.AssigneeId);
-}
-}*/
-            //this might be having working copy id - so on the top when filtering with published copy id , existing email logs not coming
-            if(!userCompanyMap.isempty())
-            PMP_Utility.sendEmailAndLogData('PMP_CompanyInfoDraftEmail_Profile', userCompanyMap);  
-            /* if (!lstCompaniesForWelcomeEmail.isEmpty() && existingEmailLogs.isEmpty()) {
-PMP_SendEmailAlertsForCompanyInfo.PMP_SendEmailAlertsForCompanyInfo(lstCompaniesForWelcomeEmail);
-}*/
         }
-    }
+     }
+   }
 }

@@ -1321,19 +1321,28 @@
         <field>Case.Core_MDF_SLA_Days_Nbr__c</field>
     </columns>
     <columns>
-        <field>Case.Core_MDF_Audit_Reversal_Count_Nbr__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_MDF_Activity_Sub_Type_nm__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_MDF_Document_Requested_Date_dtm__c</field>
     </columns>
     <columns>
         <field>Case.Core_MDF_PGM_Internal_Group_Id_txt__c</field>
     </columns>
     <columns>
+        <field>Case.Core_IPS_Backend_Rev__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_MDF_Audit_Reversal_Count_Nbr__c</field>
+    </columns>
+    <columns>
+        <field>Case.CoveoV2__VisitId__c</field>
+    </columns>
+    <columns>
+        <field>Case.CoveoV2__VisitorId__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_MDF_isClaimCaseReviewer_ind__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_MDF_Activity_Sub_Type_nm__c</field>
     </columns>
     <columns>
         <field>Case.Core_MDF_Ad_Run_End_Date_dt__c</field>
@@ -1348,13 +1357,16 @@
         <field>Case.Core_MDF_Reminder_Notification_Nbr__c</field>
     </columns>
     <columns>
+        <field>Case.Core_IPS_BackendID__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_New_Backend_System__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_IPS_CaseSource_of_Resolution__c</field>
     </columns>
     <columns>
-        <field>Case.CoveoV2__VisitId__c</field>
-    </columns>
-    <columns>
-        <field>Case.CoveoV2__VisitorId__c</field>
+        <field>Case.Core_IPS_BES_Promote_Status__c</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Problem_Statement__c</field>
@@ -1363,7 +1375,19 @@
         <field>Case.Core_MDF_CalcReimbursableAmountLocal_amt__c</field>
     </columns>
     <columns>
+        <field>Case.Data_Quality_Description__c</field>
+    </columns>
+    <columns>
+        <field>Case.Data_Quality_Score__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Backed_ID_URL__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_MDF_Budget_Type_nm__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_Case_Owner__c</field>
     </columns>
     <columns>
         <field>Case.Core_MDF_AuditType_nm__c</field>
@@ -1372,25 +1396,31 @@
         <field>Case.Core_MDF_Strategic_Marketing_Fund_Ind__c</field>
     </columns>
     <columns>
+        <field>Case.Core_MDF_Doc_Hold_to_Review_Hold_Ind__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_MDF_Claim_Lookup_Id__c</field>
     </columns>
     <columns>
         <field>Case.Core_MDF_PIC_Review_Completed_Ind__c</field>
     </columns>
     <columns>
-        <field>Case.Core_MDF_Doc_Hold_to_Review_Hold_Ind__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_MDF_Manual_Recovery_Amount_USD_Amt__c</field>
+        <field>Case.Core_IPS_Case_URL__c</field>
     </columns>
     <columns>
         <field>Case.Core_MDF_Scorecard_Score_Nbr__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Case_URL__c</field>
+        <field>Case.Core_MDF_Right_to_Recover_Amt__c</field>
     </columns>
     <columns>
-        <field>Case.Core_MDF_Right_to_Recover_Amt__c</field>
+        <field>Case.Core_MDF_Manual_Recovery_Amount_USD_Amt__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_IPS_BES_Auto_Promoted__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_MDF_Total_Impact_Amt_USD__c</field>
     </columns>
     <columns>
         <field>Case.Core_MDF_Brand_nm__c</field>
@@ -1405,25 +1435,13 @@
         <field>Case.Core_Record_Type_Bucket__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_Case_Owner__c</field>
-    </columns>
-    <columns>
         <field>Case.Core_MDF_Earlier_Quarter_Closed_Dt__c</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Resolution__c</field>
     </columns>
     <columns>
-        <field>Case.Core_IPS_BES_Promote_Status__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_BackendID__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Backend_Rev__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_New_Backend_System__c</field>
+        <field>Case.Core_IPS_Category_and_Subcategory__c</field>
     </columns>
     <columns>
         <field>Case.HSD_Mirror_Reason__c</field>
@@ -1436,12 +1454,6 @@
     </columns>
     <columns>
         <field>Case.IPS_Mirror_SubStatus__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Backed_ID_URL__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Category_and_Subcategory__c</field>
     </columns>
     <columns>
         <field>Case.Core_IPS_Embargoed_State__c</field>
@@ -1462,12 +1474,6 @@
         <field>Case.Core_MDF_Product_Type__c</field>
     </columns>
     <columns>
-        <field>Case.Core_MDF_AddClaimReviewClosure_Note_txt__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_MDF_AddInternalCaseClosureNotes_txt__c</field>
-    </columns>
-    <columns>
         <field>Case.ImpartnerPRM__NotifyPartner__c</field>
     </columns>
     <columns>
@@ -1480,13 +1486,19 @@
         <field>Case.ImpartnerPRM__PartnerLastModifiedDate__c</field>
     </columns>
     <columns>
+        <field>Case.Core_MDF_AddClaimReviewClosure_Note_txt__c</field>
+    </columns>
+    <columns>
+        <field>Case.Core_MDF_AddInternalCaseClosureNotes_txt__c</field>
+    </columns>
+    <columns>
         <field>Case.Core_MDF_ClaimReviewClosureHistory_txt__c</field>
     </columns>
     <columns>
         <field>Contact.Core_AGS_Integration_Message__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_IPA_One_Partner_Id__c</field>
+        <field>Contact.Core_Deletion_Reason__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Country_Region__c</field>
@@ -1735,10 +1747,10 @@
         <field>Contact.Core_Audience__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__Add_to_Marketo_Campaign__c</field>
+        <field>Contact.LID__LinkedIn_Company_Id__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__Current_Sales_Campaign__c</field>
+        <field>Contact.LID__LinkedIn_Member_Token__c</field>
     </columns>
     <columns>
         <field>Contact.Core_MINDS__c</field>
@@ -1762,22 +1774,10 @@
         <field>Contact.Core_Preferred_Language__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_Marketing_Score1__c</field>
+        <field>Contact.PRM_Wechat_Union_Id__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_IPA_Partner_Community__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_We_Chat_Id__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_IPA_PartnerRole__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_AGS_Inactive__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_AGS_Republish_Ind__c</field>
+        <field>Contact.Core_IPA_One_Partner_Id__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Email_Verification_Token__c</field>
@@ -1789,13 +1789,34 @@
         <field>Contact.PRM_IPA_Integration_Status__c</field>
     </columns>
     <columns>
-        <field>Contact.PRM_Wechat_Union_Id__c</field>
+        <field>Contact.Core_IPA_Partner_Community__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__HideDate__c</field>
+        <field>Contact.Core_Marketing_Score1__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_Deletion_Reason__c</field>
+        <field>Contact.Core_We_Chat_Id__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_IPA_Contact__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Profession__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_AGS_Inactive__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_IPA_PartnerRole__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_AGS_Republish_Ind__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_AGS_Republish_Signal__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Pending_Registration__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Pronouns__c</field>
@@ -1807,28 +1828,31 @@
         <field>Contact.Core_IPS_State__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_Contacts_for_Marketing__c</field>
+        <field>Contact.Contacts_Fields_Merged__c</field>
     </columns>
     <columns>
         <field>Contact.Core_LS_Best_Profile_Fit__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_LS_Company_Description__c</field>
+        <field>Contact.LID__Languages__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_LS_Company_Industry__c</field>
+        <field>Contact.LID__Level__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__Last_Activity_By_Sales__c</field>
+        <field>Contact.LID__No_longer_at_Company__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__Last_Interesting_Moment_Date__c</field>
-    </columns>
-    <columns>
-        <field>Contact.CventEvents__ContactStub__c</field>
+        <field>Contact.mkto_si__Add_to_Marketo_Campaign__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Account_Primary_Name__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Data_Quality_Description__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Data_Quality_Score__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Do_Not_Contact_Dtm__c</field>
@@ -1840,31 +1864,28 @@
         <field>Contact.Core_Sales_Do_Not_Contact_Ind__c</field>
     </columns>
     <columns>
-        <field>Contact.mkto_si__Last_Interesting_Moment_Desc__c</field>
+        <field>Contact.LID__Session_Id__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_LS_Company_Name__c</field>
+        <field>Contact.Core_LS_Company_Description__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_Profession__c</field>
+        <field>Contact.Core_IPA_Contact_Assignment__c</field>
     </columns>
     <columns>
-        <field>Contact.Username__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_Contact_Export_Compliance_Block__c</field>
+        <field>Contact.Core_Suppress_IPA_Email__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Con_Export_Compliance_Block_Reason__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_Is_FederationId_Valid_Ind__c</field>
+        <field>Contact.Core_Contact_Export_Compliance_Block__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_User_Status__c</field>
+        <field>Contact.Username__c</field>
     </columns>
     <columns>
-        <field>Contact.Pending_Registration__c</field>
+        <field>Contact.Email_Verification_Status__c</field>
     </columns>
     <columns>
         <field>Contact.Core_isEmailBounced_Ind__c</field>
@@ -1876,22 +1897,40 @@
         <field>Contact.PRM_Community_History__c</field>
     </columns>
     <columns>
-        <field>Contact.External_User_State_Change_Date_Times__c</field>
+        <field>Contact.Core_Is_FederationId_Valid_Ind__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_User_Status__c</field>
     </columns>
     <columns>
         <field>Contact.External_User_State__c</field>
     </columns>
     <columns>
+        <field>Contact.Contactid_prod__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Current_Year__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Current_Year__c</field>
+    </columns>
+    <columns>
         <field>Contact.Core_AGS_Retry_Count__c</field>
+    </columns>
+    <columns>
+        <field>Contact.External_User_State_Change_Date_Times__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_LS_Company_Industry__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_LS_Company_Name__c</field>
     </columns>
     <columns>
         <field>Contact.Core_LS_Company_Revenue__c</field>
     </columns>
     <columns>
         <field>Contact.Core_LS_Company_Size_Employees__c</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_LS_Company_Size_Range_Employees__c</field>
     </columns>
     <columns>
         <field>Contact.Core_LS_Company_Website__c</field>
@@ -1918,19 +1957,25 @@
         <field>Contact.Core_LS_Title__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_Entitlement_Assignment_Message__c</field>
+        <field>Contact.Core_Entitlement_Status_Change_Date_Time__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Entitlement_Assignment_Status__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_Entitlement_Status_Change_Date_Time__c</field>
+        <field>Contact.Core_Entitlement_Assignment_Message__c</field>
     </columns>
     <columns>
-        <field>Contact.Contacts_Fields_Merged__c</field>
+        <field>Contact.Core_Entitlement_Assignment_Duration__c</field>
     </columns>
     <columns>
-        <field>Contact.Mailing_Country_Region__c</field>
+        <field>Contact.Core_LS_Company_Size_Range_Employees__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Contacts_for_Marketing__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Contact_Valid_for_Deactivation__c</field>
     </columns>
     <columns>
         <field>Contact.PIPL_Consent_Date__c</field>
@@ -1939,10 +1984,52 @@
         <field>Contact.Core_Contact_Marketing_Status__c</field>
     </columns>
     <columns>
-        <field>Contact.Core_Suppress_IPA_Email__c</field>
+        <field>Contact.pocQuest_tobedeleted__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__Current_Sales_Campaign__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__HideDate__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__Last_Activity_By_Sales__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__Last_Interesting_Moment_Date__c</field>
+    </columns>
+    <columns>
+        <field>Contact.mkto_si__Last_Interesting_Moment_Desc__c</field>
     </columns>
     <columns>
         <field>Contact.mkto_si__Last_Interesting_Moment_Source__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Mailing_Country_Region__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Mailing_Address__Street__s</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Mailing_Address__City__s</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Mailing_Address__PostalCode__s</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Mailing_Address__StateCode__s</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Mailing_Address__CountryCode__s</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Mailing_Address__Latitude__s</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Mailing_Address__Longitude__s</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_Mailing_Address__GeocodeAccuracy__s</field>
     </columns>
     <columns>
         <field>Contact.mkto_si__Last_Interesting_Moment_Type__c</field>
@@ -1985,6 +2072,12 @@
     </columns>
     <columns>
         <field>Contact.PRM_Impartner_Deal_Sync__c</field>
+    </columns>
+    <columns>
+        <field>Contact.SWS_Marketo_Email_Invalid__c</field>
+    </columns>
+    <columns>
+        <field>Contact.SWS_Marketo_Email_Invalid_Cause__c</field>
     </columns>
     <columns>
         <field>Account.Core_B2B_ERPM_Account_Number__c</field>
@@ -2284,7 +2377,7 @@
         <field>Account.Core_ITP_Membership_Status__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Last_MsgId__c</field>
+        <field>Account.Core_Marked_for_Deletion__c</field>
     </columns>
     <columns>
         <field>Account.Core_Recommendations_Indicator__c</field>
@@ -2446,7 +2539,7 @@
         <field>Account.Core_MDF_Parent_Fund_Account__c</field>
     </columns>
     <columns>
-        <field>Account.Core_IPA_Partner_Role_History__c</field>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
     </columns>
     <columns>
         <field>Account.Core_Lead_to_Account_Conversion__c</field>
@@ -2509,7 +2602,43 @@
         <field>Account.Core_Sub_Industry__c</field>
     </columns>
     <columns>
+        <field>Account.Core_OPID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Last_MsgId__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_One_Partner_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Closed_Revenue_For_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.PRM_IPA_Integration_Status__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_Opportunity_Sales_Group_Txt__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_bC_Address__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_bC_Industry__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_bC_Partner_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_bC_Role__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_bC_Telephone_number__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_bC_Trading_Name_Doing_business_as__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_bC_Website_URL__c</field>
     </columns>
     <columns>
         <field>Account.SBQQ__AssetQuantitiesCombined__c</field>
@@ -2548,31 +2677,49 @@
         <field>Account.Core_IPA_Badge_Tier__c</field>
     </columns>
     <columns>
-        <field>Account.Core_OnePartnerID__c</field>
+        <field>Account.PRM_AccountNumberFormula__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Closed_Revenue_For_Account__c</field>
+        <field>Account.PRM_IPA_Row_Level_Security__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_OnePartnerID__c</field>
     </columns>
     <columns>
         <field>Account.Core_Open_Revenue_For_Account__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Owner_Changed_From_Uncovered__c</field>
-    </columns>
-    <columns>
         <field>Account.Core_MDF_Group_Id__c</field>
     </columns>
     <columns>
-        <field>Account.Core_IPA_One_Partner_Id__c</field>
+        <field>Account.Core_Owner_Changed_From_Uncovered__c</field>
     </columns>
     <columns>
-        <field>Account.PRM_AccountNumberFormula__c</field>
+        <field>Account.Core_ERPM_IsB2B__c</field>
     </columns>
     <columns>
-        <field>Account.PRM_IPA_Integration_Status__c</field>
+        <field>Account.Core_MDF_Account_Node_Attribute_Id__c</field>
     </columns>
     <columns>
-        <field>Account.PRM_IPA_Row_Level_Security__c</field>
+        <field>Account.Core_Account_Primary_Coverage__c</field>
+    </columns>
+    <columns>
+        <field>Account.signedIPAggrement_tobedeleted__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Parent_Data_Simplified_Account_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Owner_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Group_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDF_Virtual_Corp_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.PRM_IPA_Badge_Tier_Date__c</field>
     </columns>
     <columns>
         <field>Account.Core_Account_Owner_Department__c</field>
@@ -2590,49 +2737,16 @@
         <field>Account.Core_Account_Owner_Manager__c</field>
     </columns>
     <columns>
-        <field>Account.Core_MDF_Account_Node_Attribute_Id__c</field>
+        <field>Account.Core_CMF_Account_Type_Nm__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Parent_Data_Simplified_Account_Nm__c</field>
+        <field>Account.Core_CMF_Train_Station_Id__c</field>
     </columns>
     <columns>
-        <field>Account.PRM_IPA_Badge_Tier_Date__c</field>
+        <field>Account.Core_CMF_Distributor_Channel_Txt__c</field>
     </columns>
     <columns>
-        <field>Account.Core_MDF_Virtual_Corp_Account_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Owner_Preview__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Primary_Coverage__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sales_Group_Preview__c</field>
-    </columns>
-    <columns>
-        <field>Account.Account_Note__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_CRM_Approver_Additional_Info__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_MDM_Address_Location_Type__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_MDM_Address_Usage_Type__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Unified_Intermdt_Customer_2_BP_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Unified_Intermdt_Customer_2_Name__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_ERPM_IsB2B__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Direct_Account_Active_Ind__c</field>
+        <field>Account.Core_CMF_Ship_To_End_Customer_Txt__c</field>
     </columns>
     <columns>
         <field>Account.Core_Direct_Account_Id__c</field>
@@ -2665,7 +2779,7 @@
         <field>Account.Core_Direct_Pricing_Parent_Id__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Direct_Primary_Account_Details__c</field>
+        <field>Account.Core_ShipTo_Zip_Postal_Code__c</field>
     </columns>
     <columns>
         <field>Account.Core_Direct_Primary_Account_Id__c</field>
@@ -2683,10 +2797,25 @@
         <field>Account.Core_Direct_Shipping_Instruction_Txt__c</field>
     </columns>
     <columns>
+        <field>Account.Data_Quality_Description__c</field>
+    </columns>
+    <columns>
+        <field>Account.Data_Quality_Score__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Direct_Account_Active_Ind__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_Is_Pricing_Parent_ChkBox__c</field>
     </columns>
     <columns>
         <field>Account.External_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Direct_Primary_Account_Details__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Shipo_City__c</field>
     </columns>
     <columns>
         <field>Account.Core_PrimaryAccountCalucationLogic__c</field>
@@ -2695,13 +2824,13 @@
         <field>Account.Core_Account_City_State_nm__c</field>
     </columns>
     <columns>
+        <field>Account.Core_Notify_Owner__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_Nielsen_ID__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Approved_Sales_Group_Exception__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_System_Account__c</field>
+        <field>Account.Active_Associations__c</field>
     </columns>
     <columns>
         <field>Account.PRM_Active_Associations__c</field>
@@ -2710,7 +2839,76 @@
         <field>Account.Core_Account_Request_Rejection_Notes__c</field>
     </columns>
     <columns>
+        <field>Account.Core_Approved_Sales_Group_Exception__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Business_Party_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Location_Country_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Customer_Aggregation_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Data_Country_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Mastered_Country_Cd__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Mastered_Country_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Mastered_Simplified_Account_Nm__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_Account_Request_Rejection_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Group_New__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_System_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Data_Simplified_Account_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Intel_Requester_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Survivor_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Reltio_Integration_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Global_Customer_del__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Intermediate_Customer_del__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Requester_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Requester_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Requester_WWID__c</field>
+    </columns>
+    <columns>
+        <field>Account.OPID_Hierarchy__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Intel_Requester_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Intel_Requester_WWID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_2022_Sales_Group__c</field>
     </columns>
     <columns>
         <field>Account.Core_MDF_External_Group_Id__c</field>
@@ -2719,13 +2917,10 @@
         <field>Account.Core_Reltio_Address_Status__c</field>
     </columns>
     <columns>
+        <field>Account.Core_BVD9_ID__c</field>
+    </columns>
+    <columns>
         <field>Account.KCR_Consolidated_Target_Account_Temp__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Business_Party_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Customer_Aggregation_Type__c</field>
     </columns>
     <columns>
         <field>Account.KCR_Global_Account_Name_Temp__c</field>
@@ -2737,58 +2932,16 @@
         <field>Account.KCR_Process_Outcome_Temp__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Survivor_Account_Id__c</field>
+        <field>Account.KCR_Target_Business_Party_Id_Temp__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Reltio_Integration_Status__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Level__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Category__c</field>
-    </columns>
-    <columns>
-        <field>Account.OPID_Hierarchy__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_2022_Sales_Group__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sales_Group_New__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_MDF_Partner_Type_nm__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Data_Country_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Data_Simplified_Account_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Intel_Requester_Email__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Intel_Requester_Name__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Intel_Requester_WWID__c</field>
+        <field>Account.Core_Parent_Customer_Aggregation_Type__c</field>
     </columns>
     <columns>
         <field>Account.Core_Account_Record_Type_Dup_Check__c</field>
     </columns>
     <columns>
         <field>Account.KCR_Is_Completed_Ind_Temp__c</field>
-    </columns>
-    <columns>
-        <field>Account.KCR_Target_Business_Party_Id_Temp__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_ShipTo_Zip_Postal_Code__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Shipo_City__c</field>
     </columns>
     <columns>
         <field>Account.Core_Account_Reference_Source_ID__c</field>
@@ -2803,13 +2956,25 @@
         <field>Account.Core_Data_Simplified_Local_Language_Nm__c</field>
     </columns>
     <columns>
-        <field>Account.Core_MDM_Website__c</field>
+        <field>Account.Core_Disposition_as_PLCL__c</field>
+    </columns>
+    <columns>
+        <field>Account.PRM_Account_Number__c</field>
+    </columns>
+    <columns>
+        <field>Account.New_Simplified_Account_Name__c</field>
     </columns>
     <columns>
         <field>Account.KCR_Target_Intermediate_BP_Id__c</field>
     </columns>
     <columns>
+        <field>Account.Core_Alternate_Name_Language__c</field>
+    </columns>
+    <columns>
         <field>Account.KCR_Target_Intermediate_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Customer_Process_Engg__c</field>
     </columns>
     <columns>
         <field>Account.Core_Unified_Global_Customer_BP_Id__c</field>
@@ -2824,10 +2989,10 @@
         <field>Account.Core_Unified_Intermediate_Customer_Name__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Prime_Id__c</field>
+        <field>Account.Core_Headquarter_Tax_Id__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Alternate_Name_Language__c</field>
+        <field>Account.Core_Prime_Id__c</field>
     </columns>
     <columns>
         <field>Account.Pre_consolidation_Account_Name__c</field>
@@ -2836,19 +3001,10 @@
         <field>Account.core_2023_Sales_Group__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Headquarter_Tax_Id__c</field>
+        <field>Account.Core_ER_Central_block__c</field>
     </columns>
     <columns>
-        <field>Account.Unified_Hierarchy_View__c</field>
-    </columns>
-    <columns>
-        <field>Account.Is_6Sense_Integration_Enabled__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_MDM_Status__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Parent_Business_Party_Id__c</field>
+        <field>Account.Core_IPA_Partner_Role_History__c</field>
     </columns>
     <columns>
         <field>Account.mkto_si__Current_Sales_Campaign__c</field>
@@ -2869,22 +3025,70 @@
         <field>Account.PRM_Impartner_Deal_Sync__c</field>
     </columns>
     <columns>
+        <field>Account.Last_Reminder_Sent__c</field>
+    </columns>
+    <columns>
         <field>Account.PRM_Is_Deal_End_Customer_Account__c</field>
     </columns>
     <columns>
         <field>Account.PRM_Is_Deal_Partner_Account__c</field>
     </columns>
     <columns>
+        <field>Account.Core_Account_Team_Member_Email__c</field>
+    </columns>
+    <columns>
+        <field>Account.Unified_Hierarchy_View__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDF_Source_nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.payload__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Change_Review__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Deactivated__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_CPEs_del__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Parent_Business_Party_Id__c</field>
+    </columns>
+    <columns>
         <field>Account.PRM_Count_IPA_Terms_And_Conditions__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Website__c</field>
     </columns>
     <columns>
         <field>Account.Core_WeChatId__c</field>
     </columns>
     <columns>
+        <field>Account.New_Simplified_Local_Language_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.New_Business_Partner_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Accountid_prod__c</field>
+    </columns>
+    <columns>
+        <field>Account.New_Unified_Customer_Type__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_1H_2023_Sales_Group__c</field>
     </columns>
     <columns>
-        <field>Account.Core_MDF_Is_Top_Account_Ind__c</field>
+        <field>Account.CPE__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
         <field>Account.Core_MDF_Payment_Type_NodeLevel_nm__c</field>
@@ -2893,25 +3097,22 @@
         <field>Account.Core_MDF_Payment_Type_nm__c</field>
     </columns>
     <columns>
-        <field>Account.Core_MDM_Secondary_Country_Nm__c</field>
+        <field>Account.Core_Is_Opportunity_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_SBR_URL__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDF_Is_Top_Account_Ind__c</field>
     </columns>
     <columns>
         <field>Account.Core_Allow_Opportunity_Account_Edit__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Is_Opportunity_Account__c</field>
+        <field>Account.Account_Note__c</field>
     </columns>
     <columns>
         <field>Account.Core_Requested_Name__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Opportunity_Count__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_MDM_Location_Country_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_MDM_Location_State_Nm__c</field>
     </columns>
     <columns>
         <field>Account.Core_Unified_Customer_Address__Street__s</field>
@@ -2938,10 +3139,49 @@
         <field>Account.Core_Unified_Customer_Address__GeocodeAccuracy__s</field>
     </columns>
     <columns>
-        <field>Account.Core_Group_Id__c</field>
+        <field>Account.Core_MDM_Location_State_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Address_Usage_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Address_Location_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Intermdt_Customer_2_BP_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Unified_Intermdt_Customer_2_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Account_Ownership_Transfer_Requested__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_CRM_Approver_Additional_Info__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Previous_Unified_Id__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Previous_Simplified_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Previous_Global_Customer_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.UCD_Primary_Account__c</field>
     </columns>
     <columns>
         <field>Account.Core_Group_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDF_Partner_Type_nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.New_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Group_Id__c</field>
     </columns>
     <columns>
         <field>Account.Core_Compliance_Watch_List_Type__c</field>
@@ -2950,7 +3190,13 @@
         <field>Account.Core_Account_Primary_Coverage_Preview__c</field>
     </columns>
     <columns>
-        <field>Account.Core_MDM_Secondary_State_Cd__c</field>
+        <field>Account.Core_Business_Party_Id_Old__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Old_ParentId__c</field>
+    </columns>
+    <columns>
+        <field>Account.Account_ISvC_Match__c</field>
     </columns>
     <columns>
         <field>Account.Exception_Comments__c</field>
@@ -2959,7 +3205,49 @@
         <field>Account.Exception_Opid__c</field>
     </columns>
     <columns>
-        <field>Account.UCD_Primary_Account__c</field>
+        <field>Account.Core_Need_Parent_Update__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Level__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Reltio_Integration_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Is_6Sense_Integration_Enabled__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category_Backup__c</field>
+    </columns>
+    <columns>
+        <field>Account.Is_Shared_With_Unrival__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category__c</field>
+    </columns>
+    <columns>
+        <field>Account.PRM_Altera_Acts__c</field>
+    </columns>
+    <columns>
+        <field>Account.PRM_Altera_Account__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Is_User_In_Account_Team__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Direct_CustomerRelationship_Code__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Sales_Org_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_ER_Sales_Disti_Chnl_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Secondary_Country_Nm__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_MDM_Secondary_State_Cd__c</field>
     </columns>
     <columns>
         <field>Account.Core_Unified_Secondary_Address__Street__s</field>
@@ -2986,22 +3274,37 @@
         <field>Account.Core_Unified_Secondary_Address__GeocodeAccuracy__s</field>
     </columns>
     <columns>
-        <field>Account.Account_ISvC_Match__c</field>
+        <field>Account.Core_ER_Account_Group__c</field>
     </columns>
     <columns>
-        <field>Account.Is_Shared_With_Unrival__c</field>
+        <field>Account.Core_ER_Sales_Area_Order_Block_Code__c</field>
     </columns>
     <columns>
-        <field>Account.PRM_Altera_Account__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Category_Preview__c</field>
+        <field>Account.Core_ER_Sales_Area_Order_Block_Name__c</field>
     </columns>
     <columns>
         <field>Account.Core_Account_Level_Preview__c</field>
     </columns>
     <columns>
         <field>Account.Core_Comment_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Category_Preview__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Compliance_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Can_View_Activity__c</field>
+    </columns>
+    <columns>
+        <field>Account.Activity_Allow_Check__c</field>
+    </columns>
+    <columns>
+        <field>Account.Account_team_wwids__c</field>
+    </columns>
+    <columns>
+        <field>Account.Is_Partner_Admin_Exist__c</field>
     </columns>
     <description>This is a placeholder report to link to A&amp;E dashboard</description>
     <filter>

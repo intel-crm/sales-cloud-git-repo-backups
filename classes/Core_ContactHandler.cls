@@ -223,7 +223,7 @@ update lstContacts;
             for (Contact contact : mapNew.values()) {
                 if (mapOld.get(contact.Id).Core_IPA_Contact_Segment__c != contact.Core_IPA_Contact_Segment__c) {
                     updatedContactIds.add(contact.Id);
-                }   
+                }	
             }
             if (updatedContactIds != null && !updatedContactIds.isEmpty()) {
                 if (Schema.sObjectType.Core_Contact_Entitlement__c.fields.Name.isAccessible()) {
@@ -523,7 +523,7 @@ Upsert IntegrtionStatusDetailList;
                                                                  acr.PRM_End_Date_Dt__c = System.today();
                                                                  //TWC729-9097 - Add login status as status reason on ACR where deletion reason is blank on contact 
                                                                  if(String.isNotBlank(newMap.get(acr.PRM_Contact_Id__c).Core_Deletion_Reason__c)){
-                                                                 acr.PRM_Status_Reason_Txt__c = deletionreasonValeLabelMap.get(newMap.get(acr.PRM_Contact_Id__c).Core_Deletion_Reason__c);
+                                                                    acr.PRM_Status_Reason_Txt__c = deletionreasonValeLabelMap.get(newMap.get(acr.PRM_Contact_Id__c).Core_Deletion_Reason__c);
                                                                  }
                                                                  else{
                                                                     acr.PRM_Status_Reason_Txt__c = newMap.get(acr.PRM_Contact_Id__c).Core_Login_Status__c;
@@ -560,7 +560,7 @@ update acrEmployeeFinalList;
         }
     }  
     //Added by Agate Team
-   /* public static void assignPartnerCommunityContactEntitlements(map<Id,Contact> cntMapOld, List<Contact> conList) {    
+    /* public static void assignPartnerCommunityContactEntitlements(map<Id,Contact> cntMapOld, List<Contact> conList) {    
         Map<id, List<String>> contactIdCommunitymap = new Map<Id, List<String>>();        
         Map<id, List<String>> newConComMap = new Map<Id, List<String>>();
         Set<String> communitiesAvailable = new Set<String>();
@@ -625,7 +625,7 @@ update acrEmployeeFinalList;
             //Logic ending for userstory TWC729-2033
             
             /****************************** Create Contact Subscription starts - TWC729-2258 *************************************/
-           /* if(contactIdCommunitymap.size()>0 || noComOptOut.size()>0){
+    /* if(contactIdCommunitymap.size()>0 || noComOptOut.size()>0){
                 //get values from Subscription MetaData            
                 for(PRM_Partner_Subscription__c PSub :[select id,Name,PRM_Community__c from PRM_Partner_Subscription__c where PRM_Community__c in :communitiesAvailable and PRM_InActive_Ind__c = false]){
                     subMap.put(PSub.PRM_Community__c, string.valueof(PSub.Id));
@@ -713,7 +713,7 @@ update acrEmployeeFinalList;
             //Logic ending for userstory TWC729-2033
             
             // get contact Entitlement records 
-           /* if(contactIdCommunitymap!=Null && contactIdCommunitymap.size()>0 && contactIdCommunitymap.keySet()!=null){      
+    /* if(contactIdCommunitymap!=Null && contactIdCommunitymap.size()>0 && contactIdCommunitymap.keySet()!=null){      
                 Map<id, Map<String,Core_Contact_Entitlement__c>> contactIdEntitlementsMap = new Map<Id, Map<String,Core_Contact_Entitlement__c>>();        
                 for(Core_Contact_Entitlement__c ce : [Select ID,Core_Contact_Id__c,Core_Selected__c,Core_Entitlement_Id__c,Core_Entitlement_Id__r.Name,Core_Status__c  from Core_Contact_Entitlement__c where Core_Entitlement_Id__r.Name in :Label.PRM_Commuinty_Entitlements.split(';') and Core_Contact_Id__c in :contactIdCommunitymap.keySet()]){
                     contactEntilementList.add(ce);
@@ -856,7 +856,7 @@ update acrEmployeeFinalList;
             }
         }
     }
-    */
+*/
     //Below code is added as part of userstory TWC729-2033, This will create enrollment request record when contact IPA Community is updated
     public static PRM_Partner_Community_Enrollment_Request__c createEnrollmentRequest(Id conId, String ctcomm, String Status){
         PRM_Partner_Community_Enrollment_Request__c newRequest = new PRM_Partner_Community_Enrollment_Request__c();
@@ -967,7 +967,9 @@ update acrEmployeeFinalList;
         }
         // get the registration record for this contacts
         if(updatedContactsMap!=null && !updatedContactsMap.isEmpty()){
-            for(PRM_Registration_Request__c regrec : [select id, PRM_Email_ID__c, RecordType.DeveloperName from PRM_Registration_Request__c where PRM_Channel_Program_Level_txt__c = 'Intel Partner Alliance' and PRM_Email_ID__c in :updatedContactsMap.keySet() order by createddate desc]){
+            //for(PRM_Registration_Request__c regrec : [select id, PRM_Email_ID__c, RecordType.DeveloperName from PRM_Registration_Request__c where PRM_Channel_Program_Level_txt__c = 'Intel Partner Alliance' and PRM_Email_ID__c in :updatedContactsMap.keySet() order by createddate desc]){
+            //Ganesh Changes
+            for(PRM_Registration_Request__c regrec : [select id, PRM_Email_ID__c from PRM_Registration_Request__c where PRM_Channel_Program_Level_txt__c = 'Intel Partner Alliance' and PRM_Email_ID__c in :updatedContactsMap.keySet() order by createddate desc]){    
                 if(!contactIdRegReqMp.containsKey(regrec.PRM_Email_ID__c.toLowerCase())){
                     contactIdRegReqMp.put(regrec.PRM_Email_ID__c.toLowerCase(),regrec.Id);
                 }
@@ -1086,8 +1088,7 @@ update acrEmployeeFinalList;
             UCD_ACM_Logger.setLogDetails();
         }
     }
-
-    public static void erpmProcessFlow(List<Contact> newContacts, Map<Id, Contact> oldContactMap){
+     public static void erpmProcessFlow(List<Contact> newContacts, Map<Id, Contact> oldContactMap){
         Integer processLimit=Integer.valueOf(Label.Contact_Process_Limit);
         List<Contact> contactsToProcess = new List<Contact>();
         if(!newContacts.isEmpty()){
@@ -1097,7 +1098,7 @@ update acrEmployeeFinalList;
                 }
             }
         }
-        if(!contactsToProcess.isEmpty() && contactsToProcess.size() <= processLimit  && !System.isBatch() && !System.isFuture()){
+        if(!contactsToProcess.isEmpty() && contactsToProcess.size() <= processLimit && !System.isBatch() && !System.isFuture()){
             processLiveFlow(contactsToProcess, oldContactMap);
         }
         else if(!contactsToProcess.isEmpty() && contactsToProcess.size() > processLimit){
@@ -1159,6 +1160,340 @@ update acrEmployeeFinalList;
             UCD_ACM_Logger.setLogDetails();
         }
     }
+    //Ganesh Changes
+    public static void agsProcessFlow(
+        List<Contact> newContacts,
+        Map<Id, Contact> oldContactMap
+    ){
+        Integer AgsprocessLimit =
+            Integer.valueOf(Label.AGS_Contact_Process_Limit);
+        
+        List<Contact> contactsToProcess = new List<Contact>();
+        
+        Set<Id> candidateContactIds = new Set<Id>();
+        Map<Id, Contact> contactMap = new Map<Id, Contact>();
+        
+        if(!newContacts.isEmpty()){
+            
+            // Get eligible contacts
+            for(Contact con : newContacts){
+                
+                if(
+                    con.Core_Erpm_Integration_Status__c == 'Successful' &&
+                    con.Core_AGS_Integration_Status__c == 'Pending'
+                ){
+                    candidateContactIds.add(con.Id);
+                    contactMap.put(con.Id, con);
+                }
+            }
+            
+            // Only continue if we found candidates
+            if(!candidateContactIds.isEmpty()){
+                
+                Set<Id> setConIdExternalEnt = new Set<Id>();
+                Set<Id> setConIdInternalEnt = new Set<Id>();
+                
+                List<Core_Contact_Entitlement__c> lstContEnt = [
+                    SELECT Id,
+                    Core_Contact_Id__c,
+                    Core_Selected__c,
+                    Core_Status__c,
+                    Core_Retrigger_Attempt__c,
+                    Core_Update_Reason__c,
+                    Core_Status_of_Assignment_Failure__c,
+                    Core_Entitlement_Id__r.Core_Entitlement_Type__c,
+                    Core_Entitlement_Id__r.Core_AGS_Role_Id__c
+                    FROM Core_Contact_Entitlement__c
+                    WHERE Core_Contact_Id__c IN :candidateContactIds
+                    AND Core_Entitlement_Id__r.Core_AGS_Role_Id__c != NULL
+                ];
+                
+                // Split AGS and Salesforce entitlements
+                for(Core_Contact_Entitlement__c ce : lstContEnt){
+                    
+                    if(
+                        ce.Core_Status__c == 'Pending' &&
+                        (
+                            ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'AGS' ||
+                            String.isBlank(
+                                ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c
+                            )
+                        )
+                    ){
+                        setConIdExternalEnt.add(
+                            ce.Core_Contact_Id__c
+                        );
+                    }
+                    else if(
+                        ce.Core_Status__c == 'Pending' &&
+                        ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'Salesforce'
+                    ){
+                        setConIdInternalEnt.add(
+                            ce.Core_Contact_Id__c
+                        );
+                    }
+                }
+                
+                // Process Salesforce-only entitlements
+                processInternalSalesforceEntitlements(
+                    lstContEnt,
+                    setConIdExternalEnt,
+                    setConIdInternalEnt
+                );
+                
+                // Add AGS entitlement contacts to processing list
+                for(Id contactId : setConIdExternalEnt){
+                    
+                    if(contactMap.containsKey(contactId)){
+                        contactsToProcess.add(
+                            contactMap.get(contactId)
+                        );
+                    }
+                }
+            }
+        }
+        
+        // Existing AGS processing
+        if(
+            !contactsToProcess.isEmpty() &&
+            contactsToProcess.size() <= AgsprocessLimit
+        ){
+            processAgsLiveFlow(
+                contactsToProcess,
+                oldContactMap
+            );
+        }
+        else if(
+            !contactsToProcess.isEmpty() &&
+            contactsToProcess.size() > AgsprocessLimit
+        ){
+            processAgsBulkFlow(
+                contactsToProcess,
+                oldContactMap
+            );
+        }
+    }
+    
+    public static void processAgsLiveFlow(List<Contact> newContacts, Map<Id, Contact> oldContactMap){
+        try{
+            List<Core_ACM_Integration_Queue__c> queueRecords = Core_IntegrationQueueService.createQueueRecords(newContacts, oldContactMap, 'LIVE');
+            if(!queueRecords.isEmpty()){	
+                Core_ACM_AGSAPIBatchProcessor liveBatch=new Core_ACM_AGSAPIBatchProcessor('LIVE');
+                Database.executeBatch(liveBatch,10);
+            }
+        }
+        catch(Exception ex) {
+            UCD_ACM_Logger.error('Core_ContactHandler','processLiveFlow','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+        } 
+        finally {
+            UCD_ACM_Logger.setLogDetails();
+        }
+    }
+    
+    public static void processAgsBulkFlow(List<Contact> newContacts, Map<Id, Contact> oldContactMap){
+        try{
+            BulkIdentityAgs__e platformevent = new BulkIdentityAgs__e();
+            Set<Id> contactIds = new Set<Id>();
+            for(Contact con : newContacts){
+                contactIds.add(con.Id);
+            }
+            platformEvent.Contact_Ids__c = JSON.serialize(contactIds);
+            platformEvent.Old_Contact_Map__c = JSON.serialize(oldContactMap);
+            platformEvent.Operation_Type__c = 'Bulk';
+            Database.SaveResult sr = EventBus.publish(platformevent);
+            if(!sr.isSuccess()){
+                for (Database.Error error : sr.getErrors()) {
+                    UCD_ACM_Logger.error('Core_ContactHandler', 'processBulkFlow', 'Platform Event Publish Error: ' + error.getMessage(),NULL);
+                }
+            }
+            
+        }
+        catch(Exception ex) {
+            UCD_ACM_Logger.error('Core_ContactHandler','processBulkFlow','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+        } 
+        finally {
+            UCD_ACM_Logger.setLogDetails();
+        }
+    }
+    
+    private static void processInternalSalesforceEntitlements(
+        List<Core_Contact_Entitlement__c> lstContEnt,
+        Set<Id> setConIdExternalEnt,
+        Set<Id> setConIdInternalEnt
+    ){
+        Set<Id> onlyInternalEntPendingContacts = new Set<Id>();
+        
+        for(Id conId : setConIdInternalEnt){
+            if(!setConIdExternalEnt.contains(conId)){
+                onlyInternalEntPendingContacts.add(conId);
+            }
+        }
+        
+        if(onlyInternalEntPendingContacts.isEmpty()){
+            return;
+        }
+        
+        Map<Id, Boolean> internalContWithUser = new Map<Id, Boolean>();
+        
+        for(User usr : [
+            SELECT Id,
+            ContactId,
+            IsActive,
+            Core_License_Reclaimed_on_Creation__c
+            FROM User
+            WHERE ContactId IN :onlyInternalEntPendingContacts
+        ]){
+            if(usr.Core_License_Reclaimed_on_Creation__c){
+                internalContWithUser.put(
+                    usr.ContactId,
+                    usr.Core_License_Reclaimed_on_Creation__c
+                );
+            }else{
+                internalContWithUser.put(
+                    usr.ContactId,
+                    usr.IsActive
+                );
+            }
+        }
+        
+        Integer maxRetryAttempt =
+            Integer.valueOf(Label.Max_Entitlement_Retry_Attempt);
+        
+        List<Core_Contact_Entitlement__c> CEtoUpdate =
+            new List<Core_Contact_Entitlement__c>();
+        
+        List<Contact> contactsToUpdate =
+            new List<Contact>();
+        
+        for(Core_Contact_Entitlement__c ce : lstContEnt){
+            
+            if(
+                !onlyInternalEntPendingContacts.contains(ce.Core_Contact_Id__c) ||
+                ce.Core_Status__c != 'Pending' ||
+                ce.Core_Entitlement_Id__r.Core_Entitlement_Type__c != 'Salesforce'
+            ){
+                continue;
+            }
+            
+            Boolean hasUser =
+                internalContWithUser.containsKey(
+                    ce.Core_Contact_Id__c
+                );
+            
+            Boolean activeUser =
+                hasUser &&
+                internalContWithUser.get(
+                    ce.Core_Contact_Id__c
+                );
+            
+            // SUCCESS
+            if(
+                activeUser ||
+                (!activeUser && !ce.Core_Selected__c)
+            ){
+                
+                ce.Core_Status__c = 'Complete';
+                ce.Core_Update_Reason__c = '';
+                
+                if(ce.Core_Selected__c){
+                    ce.Core_Status_of_Assignment_Failure__c =
+                        'Successful Assignment';
+                }else{
+                    ce.Core_Status_of_Assignment_Failure__c =
+                        'Successful Removal';
+                }
+                
+                CEtoUpdate.add(ce);
+            }
+            
+            // USER EXISTS BUT INACTIVE
+            else if(
+                ce.Core_Selected__c &&
+                hasUser &&
+                !activeUser
+            ){
+                
+                ce.Core_Status__c = 'Complete';
+                ce.Core_Selected__c = false;
+                
+                ce.Core_Status_of_Assignment_Failure__c =
+                    'Failed Assignment';
+                
+                ce.Core_Update_Reason__c =
+                    'User record Inactive';
+                
+                CEtoUpdate.add(ce);
+                
+                contactsToUpdate.add(
+                    new Contact(
+                        Id = ce.Core_Contact_Id__c,
+                        Core_AGS_Integration_Status__c = 'Failed'
+                    )
+                );
+            }
+            
+            // USER NOT FOUND
+            else if(
+                ce.Core_Selected__c &&
+                !hasUser
+            ){
+                
+                if(
+                    ce.Core_Retrigger_Attempt__c == null ||
+                    ce.Core_Retrigger_Attempt__c < maxRetryAttempt
+                ){
+                    
+                    ce.Core_Retrigger_Attempt__c =
+                        ce.Core_Retrigger_Attempt__c == null
+                        ? 1
+                        : ce.Core_Retrigger_Attempt__c + 1;
+                    
+                    ce.Core_Status__c = 'Pending';
+                    
+                    ce.Core_Update_Reason__c =
+                        'Retry (User Unavailable) Attempt ' +
+                        ce.Core_Retrigger_Attempt__c;
+                    
+                    contactsToUpdate.add(
+                        new Contact(
+                            Id = ce.Core_Contact_Id__c,
+                            Core_AGS_Integration_Status__c = 'Pending',
+                            Core_Entitlement_Assignment_Status__c = 'Pending'
+                        )
+                    );
+                }
+                else{
+                    
+                    ce.Core_Status__c = 'Complete';
+                    ce.Core_Selected__c = false;
+                    
+                    ce.Core_Status_of_Assignment_Failure__c =
+                        'Failed Assignment';
+                    
+                    ce.Core_Update_Reason__c =
+                        'User record not Available - Max Retries Exhausted';
+                    
+                    contactsToUpdate.add(
+                        new Contact(
+                            Id = ce.Core_Contact_Id__c,
+                            Core_AGS_Integration_Status__c = 'Failed'
+                        )
+                    );
+                }
+                
+                CEtoUpdate.add(ce);
+            }
+        }
+        
+        if(!CEtoUpdate.isEmpty()){
+            update CEtoUpdate;
+        }
+        
+        if(!contactsToUpdate.isEmpty()){
+            update contactsToUpdate;
+        }
+    }
+    //Ganesh Changes End
     
     //rohitx.podder@intel.com 30/09/2026 -- START
     public static void countryCodeConversion(List<Contact> listContacts) {
@@ -1169,7 +1504,7 @@ update acrEmployeeFinalList;
         }
         
         for (Contact con : listContacts) {
-            if (con.MailingCountryCode!=null && con.MailingCountryCode.length() == 2) {
+            if (con.MailingCountryCode != Null && con.MailingCountryCode.length() == 2) {
                 con.MailingCountryCode = mapCountryCodeIsoCode.get(con.MailingCountryCode);
             }
         } 

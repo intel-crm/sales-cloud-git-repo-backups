@@ -57,11 +57,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Approved_Total_Amount__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Approver_1__c</field>
             <table>Opportunity</table>
         </columns>
@@ -78,11 +73,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Approver_4__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Design_Type__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -463,11 +453,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Intel_Authenicate__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Opportunity_Focus__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>

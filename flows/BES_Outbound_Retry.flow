@@ -191,5 +191,5 @@ CONTAINS({!$Record.Core_IPS_Error_Description__c},&apos;Class&apos;),
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

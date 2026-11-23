@@ -1,14 +1,11 @@
 @isTest()
-public class PRM_Retrigger_Emaillog_Test{
+public class PRM_Retrigger_Emaillog_Test {
     static testMethod void testSendEmail2(){
          List<PRM_ContactRelationships__c> crList = new List<PRM_ContactRelationships__c>();
-        
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
- 
-        
+          Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account testAccount = new Account(); //Account
         testAccount.Name='Big Net';
-    testAccount.RecordTypeId = recordTypeIdAccount;
+        testAccount.RecordTypeId = recordTypeIdAccount;
         testAccount.Core_Intel_Partner_Alliance_PartnerGroup__c= true;
         testAccount.Core_Account_BU_Focus__c= 'CCG';
         testAccount.Core_IPA_Partner_Role__c='Service Provider';
@@ -19,9 +16,7 @@ public class PRM_Retrigger_Emaillog_Test{
         testAccount.BillingPostalCode='Postal code';
         testAccount.Core_Account_Tier__c = 'Tier1';
         insert testAccount;
-        //System.debug('TestACC'+ testAccount.Id);
-        PMP_Company__c cmp1=PMP_TestDataUtility.createCompanyInformation('TestCompny1',testAccount.Id,true);
-
+        
         Contact cont1 = new Contact();  //Contact
         cont1.AccountId=testAccount.Id;
         cont1.lastName='Ebert';
@@ -30,8 +25,7 @@ public class PRM_Retrigger_Emaillog_Test{
         cont1.Core_Job_Function__c='Branch Manager';
         cont1.Core_eRPM_Language_Code__c='Eng';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
-        cont1.MailingCountry='USA';
-        cont1.MailingCountryCode = 'USA';
+        cont1.MailingCountryCode = 'IND';
         cont1.Core_Do_Not_Contact__c = false; 
         cont1.Core_Enterprise_Id__c = '300000551648';
         cont1.Core_Preferred_Language__c = 'ENG';
@@ -57,9 +51,9 @@ public class PRM_Retrigger_Emaillog_Test{
        PRM_AccountChannelMembership__c approvedAcm =  new PRM_AccountChannelMembership__c();
         approvedAcm.PRM_Account_Id__c = testAccount.Id;
         approvedAcm.PRM_Status_Nm__c = 'Approved';
-        approvedAcm.PRM_Partner_Role__c = 'Distributor';
-        approvedAcm.PRM_Status_Reason_Txt__c ='Approved';
+        approvedAcm.PRM_Partner_Role__c = 'Guest';
         approvedAcm.PRM_Channel_Program_Id__c = cprogram.id;
+        approvedAcm.PRM_Status_Reason_Txt__c='Test00';
         insert approvedAcm;
         
         ChannelProgram cp = [Select Id,name,PRM_programCode__c from ChannelProgram where name='Intel Partner Alliance' Limit 1];
@@ -89,8 +83,7 @@ public class PRM_Retrigger_Emaillog_Test{
         acr.PRM_Status_Nm__c = System.label.Pending_Action  ;
         acr.PRM_execute_trigger__c=true;
         acr.PRM_Start_Date_Dt__c= system.today()-2; 
-        acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1;
-        acr.PRM_Status_Reason_Txt__c = 'Test';  
+        acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1;  
         insert acr;
         
         Campaign campg = new Campaign();
@@ -110,22 +103,23 @@ public class PRM_Retrigger_Emaillog_Test{
         emaillog1.PRM_ToEmailID__c='we233ffg@mailinator.com';
         emaillog1.PRM_EmailContent__c='htmlbodyvar=EVVV256012UjVvhkwf826270target=wcm-ciqa.com';
         emaillog1.PRM_Contact__c=cont1.id;
-        emaillog1.PMP_Company__c=cmp1.id;
         emaillog1.Language__c='ENG';
-        emaillog1.Email_Template_Name__c ='ADMINREG_English';
-       
-        try{      
-            insert emaillog1;            
-            PRM_Retrigger_Emaillog_Utility.sendMail(true, emaillog1.id);
+        emaillog1.Email_Template_Name__c ='ADMINREG';
+        
+        OrgWideEmailAddress owa = new OrgWideEmailAddress ();    
+        owa.Address = 'PMP_Intel_partner_Alliance_Address';
+        //insert owa;
+        try{   
+            //insert emaillog1;            
+            //PRM_Retrigger_Emaillog_Utility.sendMail(true, emaillog1.id);
             PRM_Retrigger_Emaillog_Utility.sendMail(false, emaillog1.id);
-        }catch(Exception ex){
+         }catch(Exception ex){
             //System.debug(ex.getMessage());
         }
     }
-    static testMethod void testSendEmail(){       
+    static testMethod void testSendEmail(){
          List<PRM_ContactRelationships__c> crList = new List<PRM_ContactRelationships__c>();
          Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
- 
         Account testAccount = new Account(); //Account
         testAccount.Name='Big Net';
         testAccount.RecordTypeId = recordTypeIdAccount;
@@ -139,20 +133,17 @@ public class PRM_Retrigger_Emaillog_Test{
         testAccount.BillingPostalCode='Postal code';
         testAccount.Core_Account_Tier__c = 'Tier1';
         insert testAccount;
-        //System.debug('TestACC'+ testAccount.Id);
         
-        //PMP_Company__c cmp1=PMP_TestDataUtility.createCompanyInformation('TestCompny1',testAccount.Id,true);
         
         Contact cont = new Contact();  //Contact
         cont.AccountId=testAccount.Id;
         cont.lastName='Ebert';
         cont.FirstName='Adam';
         cont.email='ebert123@mailinator.com';
-        cont.MailingCountry='USA';
-        cont.MailingCountryCode = 'USA';
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
+        cont.MailingCountryCode = 'IND';
         cont.Core_Do_Not_Contact__c = false;
         cont.Core_IPA_Email_Verification_Date__c =System.today();
         cont.Core_Enterprise_Id__c = '300000551648';
@@ -167,11 +158,10 @@ public class PRM_Retrigger_Emaillog_Test{
         cont1.Core_Job_Function__c='Branch Manager';
         cont1.Core_eRPM_Language_Code__c='Eng';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
+        cont1.MailingCountry='USA';
         cont1.Core_Do_Not_Contact__c = false;  
         cont1.Core_Enterprise_Id__c = '300000551644';
         cont1.Core_Preferred_Language__c = 'ENG';
-        cont1.MailingCountry='USA';
-        cont1.MailingCountryCode = 'USA';
         insert cont1;
         
         ChannelProgram cprogram = new ChannelProgram();
@@ -189,9 +179,9 @@ public class PRM_Retrigger_Emaillog_Test{
          PRM_AccountChannelMembership__c approvedAcm =  new PRM_AccountChannelMembership__c();
         approvedAcm.PRM_Account_Id__c = testAccount.Id;
         approvedAcm.PRM_Status_Nm__c = 'Approved';
-        approvedAcm.PRM_Status_Reason_Txt__c ='Approved';
-        approvedAcm.PRM_Partner_Role__c = 'Distributor';
+        approvedAcm.PRM_Partner_Role__c = 'Guest';
         approvedAcm.PRM_Channel_Program_Id__c = cprogram.id;
+        approvedAcm.PRM_Status_Reason_Txt__c='Test01';
         insert approvedAcm;
         ChannelProgram cp = [Select Id,name,PRM_programCode__c from ChannelProgram where name='Intel Partner Alliance' Limit 1];
         
@@ -220,8 +210,7 @@ public class PRM_Retrigger_Emaillog_Test{
         acr.PRM_Status_Nm__c = System.label.Pending_Action  ;
         acr.PRM_execute_trigger__c=true;
         acr.PRM_Start_Date_Dt__c= system.today()-2; 
-        acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-        acr.PRM_Status_Reason_Txt__c= 'Test'; 
+        acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1;  
         insert acr;
         
        
@@ -277,11 +266,11 @@ public class PRM_Retrigger_Emaillog_Test{
         PRM_EmailLog__c emaillog = new PRM_EmailLog__c();
         emaillog.PRM_Subject__c = 'Submitted: Your Testoffering Offering';
         emaillog.PRM_User__c = UserInfo.getUserId();
-       // emaillog.PMP_Partner_Offering__c = offering.id;
+        //emaillog.PMP_Partner_Offering__c = offering.id;
         emaillog.Language__c = 'ENG';
         emaillog.Email_Template_Name__c = 'PMP OfferingSubmittedNotification';
         emaillog.PRM_ToEmailID__c = 'we233ffg@mailinator.com';
-        insert emaillog;
+        //insert emaillog;
         
         test.startTest();
         try{            
@@ -294,14 +283,12 @@ public class PRM_Retrigger_Emaillog_Test{
     }
     
     static testMethod void testSendEmailCidaasFalse(){
-               
-         List<PRM_ContactRelationships__c> crList = new List<PRM_ContactRelationships__c>();
         
-         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
- 
+         List<PRM_ContactRelationships__c> crList = new List<PRM_ContactRelationships__c>();
+          Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account testAccount = new Account(); //Account
+        testAccount.RecordTypeId = recordTypeIdAccount;
         testAccount.Name='Big Net';
-    testAccount.RecordTypeId = recordTypeIdAccount;
         testAccount.Core_Intel_Partner_Alliance_PartnerGroup__c= true;
         testAccount.Core_Account_BU_Focus__c= 'CCG';
         testAccount.Core_IPA_Partner_Role__c='Service Provider';
@@ -312,16 +299,14 @@ public class PRM_Retrigger_Emaillog_Test{
         testAccount.BillingPostalCode='Postal code';
         testAccount.Core_Account_Tier__c = 'Tier1';
         insert testAccount;
-        //System.debug('TestACC'+ testAccount.Id);
-        
+         
         Contact cont1 = new Contact();  //Contact
         cont1.AccountId=testAccount.Id;
         cont1.lastName='Ebert';
         cont1.FirstName='Adam';
         cont1.email='we233ffg@mailinator.com';
-        cont1.MailingCountry='USA';
-        cont1.MailingCountryCode = 'USA';
         cont1.Core_Job_Function__c='Branch Manager';
+        cont1.MailingCountry='USA';
         cont1.Core_eRPM_Language_Code__c='Eng';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
         cont1.Core_Do_Not_Contact__c = false;   
@@ -368,9 +353,9 @@ public class PRM_Retrigger_Emaillog_Test{
          PRM_AccountChannelMembership__c approvedAcm =  new PRM_AccountChannelMembership__c();
         approvedAcm.PRM_Account_Id__c = testAccount.Id;
         approvedAcm.PRM_Status_Nm__c = 'Approved';
-        approvedAcm.PRM_Status_Reason_Txt__c ='Approved';
-        approvedAcm.PRM_Partner_Role__c = 'Distributor';
+        approvedAcm.PRM_Partner_Role__c = 'Guest';
         approvedAcm.PRM_Channel_Program_Id__c = cprogram.id;
+        approvedAcm.PRM_Status_Reason_Txt__c='Tes02';
         insert approvedAcm;
         
         Campaign campg = new Campaign();
@@ -382,31 +367,68 @@ public class PRM_Retrigger_Emaillog_Test{
         campg.PRM_Bulk_Add_Invite_Email_Template__c = 'CampaignInviteForBulk';
         insert campg;
         
-
-        
         PRM_EmailLog__c emaillog1 = new PRM_EmailLog__c();
         emaillog1.PRM_Subject__c='Congratulations on Your New Intel® Cloud Insider Status';
         emaillog1.PRM_ToEmailID__c='we233ffg@mailinator.com';
-        emaillog1.PRM_EmailContent__c='htmlbodyvar=EVVV256012UjVvhkwf826270target=wcm-ciqa.com';
+        emaillog1.PRM_EmailContent__c='htmlbodyvar=EVVV256012UjVvhkwf826270&target=wcm-ciqa.com';
         emaillog1.PRM_Contact__c=cont1.id;
         emaillog1.Language__c='ENG';
-        emaillog1.Email_Template_Name__c ='ADMINREG';
+        emaillog1.Email_Template_Name__c ='ADMINREG_English';
+        
+        String emailHTMLContent = emaillog1.PRM_EmailHTMLContent__c != null ? emaillog1.PRM_EmailHTMLContent__c : emaillog1.PRM_EmailContent__c;
+        String AfterString=emailHTMLContent.substringAfter(System.Label.PRM_EV_TOKEN_Start_String);
+        String newEVToken; 
+        String OldToken;
+        OldToken = AfterString.substringBefore(System.Label.PRM_EV_TOKEN_End_String);
+        newEVToken = OldToken;
+        system.debug('OldToken-->'+OldToken);
+        system.debug('newEVToken-->'+newEVToken);
+        
+        
+        
        
-        try{      
-            insert emaillog1;            
+             
+            insert emaillog1;
+            List<PRM_EmailLog__c> logList = new List<PRM_EmailLog__c>();
+            logList.add(emaillog1);
             PRM_Retrigger_Emaillog_Utility.sendMail(true, emaillog1.id);
-        }catch(Exception ex){
-            //System.debug(ex.getMessage());
-        }
+            Messaging.SingleEmailMessage emailMsg = PRM_Retrigger_Emaillog_Utility.createEmailInstances(emaillog1.Email_Template_Name__c, cont1.id,testAccount.Id);
+            
+            EmailTemplate template = [SELECT Id,Name,
+                                        Subject,
+                                        Body 
+                                        FROM EmailTemplate 
+                                        WHERE Name = 'ADMINREG_English'];
+            
+            Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+            
+            
+            
+            emailMsg.setSubject('Test Subject');
+            emailMsg.setPlainTextBody('This is a test email');
+            emailMsg.setToAddresses(new String[] { 'test@example.com' });
+            emailMsg.setWhatId(testAccount.Id);
+            emailMsg.setTargetObjectId(cont1.id);//user or contact id
+            emailMsg.setTemplateId(template.Id);
+            emailMsg.setSaveAsActivity(false);
+            emailMsg.setHtmlBody('Email Body content for TestClass');
+            
+            Messaging.SingleEmailMessage[] messages ;
+            Messaging.SendEmailResult[] results ;
+            messages = new List<Messaging.SingleEmailMessage> {emailMsg};
+            results = Messaging.sendEmail(messages);
+        
+            List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>{emailMsg};
+            List<PRM_EmailLog__c> result = PRM_Retrigger_Emaillog_Utility.createRetriggerEmailLogs(emails,logList,emaillog1.Email_Template_Name__c,emaillog1.Language__c);
+        
     }
     
      static testMethod void testSendEmailCidaasFalseTwo(){
-                
+        
          List<PRM_ContactRelationships__c> crList = new List<PRM_ContactRelationships__c>();
-         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-  
+          Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account testAccount = new Account(); //Account
-    testAccount.RecordTypeId = recordTypeIdAccount;
+          testAccount.RecordTypeId = recordTypeIdAccount;
         testAccount.Name='Big Net';
         testAccount.Core_Intel_Partner_Alliance_PartnerGroup__c= true;
         testAccount.Core_Account_BU_Focus__c= 'CCG';
@@ -418,17 +440,16 @@ public class PRM_Retrigger_Emaillog_Test{
         testAccount.BillingPostalCode='Postal code';
         testAccount.Core_Account_Tier__c = 'Tier1';
         insert testAccount;
-        //System.debug('TestACC'+ testAccount.Id);
+        
         
         Contact cont1 = new Contact();  //Contact
         cont1.AccountId=testAccount.Id;
         cont1.lastName='Ebert';
         cont1.FirstName='Adam';
         cont1.email='we233ffg@mailinator.com';
-        cont1.MailingCountry='USA';
-        cont1.MailingCountryCode = 'USA';
         cont1.Core_Job_Function__c='Branch Manager';
         cont1.Core_eRPM_Language_Code__c='Eng';
+        cont1.MailingCountry='USA';
         cont1.Core_IPA_PartnerRole__c = 'Service Provider';
         cont1.Core_Do_Not_Contact__c = false;   
         cont1.Core_IPA_Email_Verification_Date__c = system.today();
@@ -449,9 +470,9 @@ public class PRM_Retrigger_Emaillog_Test{
          PRM_AccountChannelMembership__c approvedAcm =  new PRM_AccountChannelMembership__c();
         approvedAcm.PRM_Account_Id__c = testAccount.Id;
         approvedAcm.PRM_Status_Nm__c = 'Approved';
-        approvedAcm.PRM_Status_Reason_Txt__c ='Approved';
-        approvedAcm.PRM_Partner_Role__c = 'Distributor';
+        approvedAcm.PRM_Partner_Role__c = 'Guest';
         approvedAcm.PRM_Channel_Program_Id__c = cprogram.id;
+        approvedAcm.PRM_Status_Reason_Txt__c='Test03';
         insert approvedAcm;
         
         Campaign campg = new Campaign();
@@ -480,5 +501,4 @@ public class PRM_Retrigger_Emaillog_Test{
             //System.debug(ex.getMessage());
         }
     }
-    
 }

@@ -33,7 +33,6 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
     public static final String STRING_TOO_LONG = PCC_Constants.STRING_TOO_LONG;
     public static final String INVALID_CROSS_REFERENCE_KEY = PCC_Constants.INVALID_CROSS_REFERENCE_KEY;
     public static final String DUPLICATE_VALUE = PCC_Constants.DUPLICATE_VALUE;
-    public static final Boolean mmidSwitch = Boolean.valueOf(System.Label.DDR_MMID_switch); // TWC729-8985 - Add switch for Old MMID based changes
     
     public static map<string,string> returnCountryMappings() {
         Map<string,string> countryMap = new map<string,string>();
@@ -163,7 +162,6 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
             }
         } catch (Exception ex) { Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_1, LOG_ENTRY_SEVERITY,'', '' ,'' ,'PCC_CreateDDRUtilityHandler_V2.getDependentFields' ,'' ,ex); 
                                }
-        //System.debug('dependentPicklistValues'+dependentPicklistValues);
         return dependentPicklistValues;
     }
     
@@ -234,7 +232,6 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
         Map<String, Map<String, Object>> mapOfExtIdtoValidDDR = new Map<String, Map<String, Object>>();
         List<String> requiredFields = Label.PCC_Create_DDR_Required_Fields.split(',');
         Map<Object, Database.SaveResult> mapDrRecordSaveResult = new Map<Object, Database.SaveResult>();  
-        //System.debug('ListOfPayload--> '+listOfPayloads);
         Map<Id,Core_Design_Registration__c> mapExistingDDR = new Map<Id,Core_Design_Registration__c>();
         List<String> partnerFAEMailToCheck = new List<String>();
         Map<String, String> partnerFAEtoUser = new Map<String, String>();
@@ -308,7 +305,6 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
                 ddrListToInsert = mapExtIdToValidDr.values();
             }
             
-            //System.debug('mapExtIdToValidDr--->'+mapExtIdToValidDr);
             //insert records from payload that have an external id's
             // Vinita's Changes -- for adding DR/DRP Name in response
             List<Id> drids=new List<Id>();
@@ -326,7 +322,6 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
             Map<Id,String> namesDr = new Map<Id,String> ();
             if( drids.size() >0){
                 namesDr= getNameDDR(drids);
-                system.debug(namesDr);
             }
             
             //get response of records that are successfully inserted and the records that have errors
@@ -391,9 +386,9 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
                        
                      if(!unExpValues.isEmpty()){
                             mapIdTounexpected.put(recid,unExpValues);
-                     }/*else{
+                     }else{
                         mapIdToExpWrapMap.put((String)drMap.get('recordId'),drMap);                       
-                    }*/
+                    }
                     }
                 }
             }
@@ -449,13 +444,11 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
                     }
                 }    
             }
-            //System.debug('mapValidIdToWrap----> '+mapValidIdToWrap);
             if(!mapValidIdToWrap.isEmpty()){
                 mapOfIdToInstance = PCC_CreateDDRUtilityHandler_V2.createDRInstance(mapValidIdToWrap,UPDATE_ACTION,existingDDR, partnerFAEtoUser, null);
                 drProductListToUpdate = mapOfIdToInstance.values();
             }
             
-            //System.debug('mapOfIdToInstance----> '+mapOfIdToInstance);
             // Vinita's Changes -- for adding DR/DRP Name in response
             List<Id> drids=new List<Id>();
             if (!drProductListToUpdate.isEmpty()) {
@@ -606,7 +599,6 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
                     }
                     
                     Core_Design_Registration__c drRec = new Core_Design_Registration__c();
-                    //System.debug('drRec.Core_External_Id__c--> '+drRec.Core_External_Id__c);
                     
                     if(partnerFAEtoUser!=null && partnerFAEEmail!=null){
                         String FAEEmailtoLowerCase = partnerFAEEmail.toLowerCase();
@@ -629,7 +621,6 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
                     if(verticalMarket != null){
                         drRec.Core_Vertical_Market_Nm__c = verticalMarket;
                     }
-                    //System.debug('EXTID----> '+externalId);
                     if(Action == INSERT_ACTION){
                         // Default Design Type only for M2M Create
                   if (String.isBlank(designType)) {
@@ -656,38 +647,34 @@ public with sharing class PCC_CreateDDRUtilityHandler_V2 {
                    }
                         if(externalId!=null){
                             if (processedExternalIds.contains(externalId)) { //if the external id is used in the payload by more than 1 record.
-                                //System.debug('inside1stIF-->');
                                 String errMsg = LabelConfiguration__mdt.getInstance('PCC_RepeatingExtIdSamePayload_PostDDR').Value__c.replace('{1}',externalId);
                                 mapExtIdtoInvalidValMsg.put(str, errMsg);
                                 continue;
                             }
                             
                             if (validExternalIdValue != null && validExternalIdValue.contains(externalId)) {
-                                //System.debug('inside2ndIF-->');
                                 // Processed external IDs are added to the set here
                                 processedExternalIds.add(externalId);
                                 drRec.Core_External_Id__c = (String)mapOfExtIdtoValidDDR.get(str).get('externalId');
                             } else {
-                                //System.debug('insideELSEEEE-->');
                                 String errMsg = LabelConfiguration__mdt.getInstance('PCC_NonUniqueExtId_PostDDR').Value__c.replace('{1}',externalId);
                                 mapExtIdtoInvalidValMsg.put(str, errMsg);
                                 continue;
                             }
-                            //System.debug('processedExternalIds----> '+processedExternalIds);
                         }
                         if(productSegment != null){                             
                              if(mailsId.contains(partnerFAEEmail)){// odr
-                  if(productSegment == 'Embedded / IOT' || productSegment == 'Comms Infra. / Networking'){
-                                  drRec.Core_Product_Segment_Nm__c = productSegment;
+    							if(productSegment == 'Embedded / IOT' || productSegment == 'Comms Infra. / Networking'){
+                           			 drRec.Core_Product_Segment_Nm__c = productSegment;
                                 }
-                else{
-                  mapExtIdtoInvalidValMsg.put(str,'Please update Product Segment. Product segment can be either Embedded/IOT or Comms Infra. / Networking');
+								else{
+									mapExtIdtoInvalidValMsg.put(str,'Please update Product Segment. Product segment can be either Embedded/IOT or Comms Infra. / Networking');
                                     continue;
-                }
-               }
-               else{// non odr
-                  drRec.Core_Product_Segment_Nm__c = productSegment;
-               }
+								}
+							 }
+							 else{// non odr
+    							drRec.Core_Product_Segment_Nm__c = productSegment;
+							 }
                         }
                         if(productApplication != null){
                             drRec.Core_Product_Application_Nm__c = productApplication;
@@ -847,7 +834,6 @@ if (mapOfExtIdtoValidDDR.get(str).containsKey('odmBoardPartner')) {
                             }else if(!drRecToStatusMap.isEmpty() && drRecToStatusMap.get(drRec.Id) == 'Draft' && (Date.valueOf(designDecisionDate) < System.today()
                                                                                                                   || (!drRecToFrstCustShipDateMap.isEmpty() && Date.valueOf(designDecisionDate) >= drRecToFrstCustShipDateMap.get(drRec.Id)) 
                                                                                                                   || (!drRecToProdEndDateMap.isEmpty() && Date.valueOf(designDecisionDate) >= drRecToProdEndDateMap.get(drRec.Id)))){
-                                                                                                                      System.debug('Inside elseif-->');
                                                                                                                       mapExtIdtoInvalidValMsg.put(drRec.Id,LabelConfiguration__mdt.getInstance('PCC_DecisionEndDate_PutDDR').Value__c);
                                                                                                                       continue;
                                                                                                                   }
@@ -1046,7 +1032,6 @@ if (mapOfExtIdtoValidDDR.get(str).containsKey('odmBoardPartner')) {
                 irWrp.ExternalId = extId;
                 //return error if the required fields are missing in payload
                 /* if (mapExtIdToMissingFld != null && !mapExtIdToMissingFld.isEmpty() && mapExtIdToMissingFld.containsKey(uniqueExtId)) {
-//System.debug('mapExtIdToMissingFld--> '+mapExtIdToMissingFld);
 failedRecordCount++;
 irWrp.Message =  LabelConfiguration__mdt.getInstance('PCC_ReqFieldMissing').Value__c+ mapExtIdToMissingFld.get(uniqueExtId) +'.';
 respList.add(setJsonResponseBody(400, 'FAILURE', 9002, irWrp, recordId));
@@ -1054,7 +1039,6 @@ respList.add(setJsonResponseBody(400, 'FAILURE', 9002, irWrp, recordId));
                 if(uniqueExtId!=null && !mapIdTounexpected.isEmpty() && mapIdTounexpected.containsKey(uniqueExtId) &&
                    !((mapIdTounexpected.get(uniqueExtId)).isEmpty())){
                        failedRecordCount++; 
-                       system.debug('mapIdTounexpected.get(uniqueExtId)'+mapIdTounexpected.get(uniqueExtId));
                        irWrp.Message = 'Unexpected fields in payload : '+ String.join(mapIdTounexpected.get(uniqueExtId), ',');
                        respList.add(setJsonResponseBody(400, 'FAILURE', 9002, irWrp, recordId,nameofdr));
                    }
@@ -1082,7 +1066,6 @@ respList.add(setJsonResponseBody(400, 'FAILURE', 9002, irWrp, recordId));
 }*/
                 else if((objectName == DESIGN_REG_PROD && (Action != UPDATE_ACTION || mapExtIdToValidDr.containsKey(uniqueExtId))) 
                         || (objectName == DESIGN_REG && mapExtIdToValidDr.containsKey(uniqueExtId))){
-                            System.debug(objectName);
                             PCC_Wrapper.PCC_DRDetailsWrapper resp = getSuccessFailureResp(mapDrRecordSaveResult,mapExtIdToValidDr,uniqueExtId,extId,successMsg,drMap,namesDr);
                             successfulRecordCount+= resp.successfulRecordCount;
                             failedRecordCount+=resp.failedRecordCount;
@@ -1417,9 +1400,7 @@ errorMsgForLogEntry += extId+' - '+err.getMessage()+'\n';
                     PCC_DDR_L5_Product_Mapping__c ddrL5Product = drProduct.DDR_Product_Mappings__r;
                     ddrProductWrp.orderingId = ddrL5Product.PCC_Ordering_Cd__c;
                     ddrProductWrp.mmId = ddrL5Product.PCC_MM_ID__c;
-                    if(mmidSwitch){ // TWC729-8985 - Add switch for Old MMID based changes
-                    ddrProductWrp.oldMMId = ddrL5Product.PCC_Old_MM_Id__c ; ///*TWC727-2709 - PCC: Remove all references from old MMID*/
-                    }
+                    //ddrProductWrp.oldMMId = ddrL5Product.PCC_Old_MM_Id__c ; ///*TWC727-2709 - PCC: Remove all references from old MMID*/
                     ddrProductWrp.l4ProductName = ddrL5Product.PCC_L4_Product_Name__c;
                     ddrProductWrp.l5ProductName = ddrL5Product.PCC_L5_Product_Name__c; 
                 }
@@ -1582,14 +1563,12 @@ List<Core_Design_Registration_Product__c> DRName1= [Select Name from Core_Design
         else if(statusCode == INVALID_CROSS_REFERENCE_KEY){
             errMessage =    LabelConfiguration__mdt.getInstance('PCC_IncorrectDesignReg').Value__c;      
         }else if(statusCode == DUPLICATE_VALUE){
-            //System.debug('err.getMessage()'+err.getMessage());
             String badValue, existingRecId;
             List<String> messageParts = err.getMessage().split(':');
             if (messageParts.size() > 1) {
                 badValue = messageParts[1].trim().substringBefore(' ');
                 existingRecId = messageParts[2].trim();
             }
-            //System.debug('badValue'+badValue);
             errMessage = LabelConfiguration__mdt.getInstance('PCC_BadValue_ErrMsg').Value__c.replace('{1}',drProductApiToLabelMap.get(badValue)).replace('{2}',existingRecId);
         }
         else{

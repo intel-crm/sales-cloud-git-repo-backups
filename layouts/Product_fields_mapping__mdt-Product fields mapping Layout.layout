@@ -88,6 +88,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Allow_empty_MMID_records__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>IPS_Visible_Flag_External__c</field>
             </layoutItems>
             <layoutItems>
@@ -100,15 +104,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Allow_empty_MMID_records__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Inbound_staging_field_WR__c</field>
+                <field>Is_MMID_Blank__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Inbound_staging_field_WOR__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Inbound_staging_field_WR__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -158,7 +162,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hDf000004Bcwc</masterLabel>
+        <masterLabel>00hD3000000LdQg</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

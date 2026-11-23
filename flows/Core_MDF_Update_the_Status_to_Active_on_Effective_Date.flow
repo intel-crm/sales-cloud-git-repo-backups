@@ -7,7 +7,6 @@ This will call the Time based action to make the Bank as Active on the Effective
     <environments>Default</environments>
     <interviewLabel>Core_MDF_Update_the_Status_to_Active_on_Effective_Date {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_Update_the_Status_to_Active_on_Effective_Date</label>
-    <migratedFromWorkflowRuleName>Core_MDF_Update_the_Status_to_Active_on_Effective_Date</migratedFromWorkflowRuleName>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

@@ -57,9 +57,13 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:PMP_ExportListView",
-      "id" : "a108ce46-46ee-4b85-8e03-a62beff3647b",
+      "componentAttributes" : {
+        "showEditPencil" : true,
+        "showLeadGeneration" : true,
+        "showManageOffering" : true
+      },
+      "componentName" : "c:MarketplacePartnerDetail",
+      "id" : "ac2844b5-be39-44b5-95c7-38b6621109ad",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -68,16 +72,6 @@
     "regionName" : "blade1",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "objectInfo" : "PMP_Company__c"
-      },
-      "componentName" : "c:PSS_SolutionListView",
-      "id" : "545d2b21-53af-431d-aa1b-31382b623059",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "dce15783-44f5-450d-8ad0-b719d600c6bd",
     "regionName" : "blade2",
     "type" : "region"
@@ -162,25 +156,10 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "alignment" : "center",
-        "analyticsPageType" : "",
-        "backgroundVariant" : "blue-steel-solid",
-        "ctaCommPage" : "",
-        "ctaExternalUrl" : "",
-        "ctaLabel" : "",
-        "doAnalytics" : false,
-        "dynamicMarquee" : false,
-        "isHomePage" : false,
-        "isOfferingPage" : false,
-        "isPartnerPage" : false,
-        "pageType" : "Partner",
-        "showCaret" : false,
-        "showSearch" : false,
-        "subtitle" : "",
-        "title" : "All Partners"
+        "objectInfo" : "PMP_Company__c"
       },
-      "componentName" : "c:ipaMarqueeMarketplace",
-      "id" : "34b7eb0d-2f91-40db-a269-dabcfab754bd",
+      "componentName" : "c:PSS_SolutionListView",
+      "id" : "3e7ab92f-f1ec-42a0-9d77-04687b27b538",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

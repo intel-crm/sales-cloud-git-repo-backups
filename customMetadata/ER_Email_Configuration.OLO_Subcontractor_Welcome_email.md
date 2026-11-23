@@ -36,6 +36,6 @@
     </values>
     <values>
         <field>Template_Name__c</field>
-        <value xsi:type="xsd:string">SCRREQTOAPVDNEW_OLOSUB</value>
+        <value xsi:type="xsd:string">SCRREQTOAPVDNEW_OLO</value>
     </values>
 </CustomMetadata>

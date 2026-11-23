@@ -143,6 +143,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <description>Object to store the list of Design Registration Eligible Products.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -157,6 +158,7 @@
     <fields>
         <fullName>Core_Active_Ind__c</fullName>
         <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
         <description>Indicates if the record is Active.</description>
         <label>Active</label>
         <trackHistory>false</trackHistory>
@@ -199,6 +201,7 @@
     <fields>
         <fullName>Core_Design_Product_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
         <description>The Id of the product from the product table.</description>
         <label>Design Product Id</label>
         <referenceTo>Product2</referenceTo>
@@ -211,6 +214,7 @@
     </fields>
     <fields>
         <fullName>Core_Design_Product_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <description>The Name of the product from the product table.</description>
         <externalId>false</externalId>
         <label>Design Product Name</label>
@@ -223,6 +227,7 @@
     </fields>
     <fields>
         <fullName>Core_Design_Product_Status_Ind__c</fullName>
+        <deprecated>false</deprecated>
         <description>The Status (Active/Inactive) of the product from the product table.</description>
         <formula>Core_Design_Product_Id__r.IsActive</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

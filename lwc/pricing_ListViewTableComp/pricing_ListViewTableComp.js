@@ -1,6 +1,8 @@
 import { LightningElement, wire, track, api } from 'lwc';
 import { getListUi } from 'lightning/uiListApi';
 export default class Pricing_ListViewTableCom extends LightningElement {
+
+
     @track isLoadingTable = true;
     @track url = window.location.origin;
     @track dataList = [];
@@ -13,8 +15,6 @@ export default class Pricing_ListViewTableCom extends LightningElement {
     @api objectAPIName;
     @api selectedListView;
 
-    @track str='';
-
     @wire(getListUi, {
         listViewId: '$selectedListView',
         pageSize: 5
@@ -22,10 +22,10 @@ export default class Pricing_ListViewTableCom extends LightningElement {
     getListUi({ error, data }) {
         if (data) {
             this.isLoadingTable = true;
-            let dataTable = [];
-            let cols = [];
+            var dataTable = [];
+            var cols = [];
             data.info.displayColumns.forEach(ele => {
-                let col = {};
+                var col = {};
                 if (ele.fieldApiName?.includes('.') || ele.fieldApiName == 'Name') {
                     col.label = ele.label;
                     col.fieldName = ele.fieldApiName.split('.')[0];
@@ -42,11 +42,10 @@ export default class Pricing_ListViewTableCom extends LightningElement {
             });
 
             this.col = cols;
-            let urlColSetup = [];
 
             data.records.records.forEach(element => {
 
-                let any = {};
+                var any = {};
 
                 for (let i = 0; i < this.col.length; i++) {
 
@@ -63,23 +62,22 @@ export default class Pricing_ListViewTableCom extends LightningElement {
                         any[this.col[i].fieldName] = element.fields[this.col[i].fieldName].value.hasOwnProperty('fields') ? this.url + '/' + element.fields[this.col[i].fieldName].value.fields.Id.value : '';
                     }
                     else {
-                        this.str = JSON.stringify(element.fields[this.col[i].fieldName]?.value);
-                        if (this.str.includes('target=')) {
-                            any[this.col[i].fieldName] = this.url + '/' + this.str.slice(12, 27);
-                            any[this.col[i].fieldName + 'Name'] = this.str.slice(47, -5);
-                            urlColSetup.push(i);
+                        var str = JSON.stringify(element.fields[this.col[i].fieldName]?.value);
+
+                        if (str?.includes('a href=')) {
+                            any[this.col[i].fieldName] = this.url + '/' + str.slice(12, 27);
+                            any[this.col[i].fieldName + 'Name'] = str.slice(47, -5);
+                            this.col[i].type = 'url';
                             this.col[i].typeAttributes = { 'label': { 'fieldName': this.col[i].fieldName + 'Name' }, 'target': '_blank' };
-                        } else {
+
+                        } else if (str) {
                             any[this.col[i].fieldName] = element.fields[this.col[i].fieldName].value;
                         }
                     }
                 }
 
                 dataTable.push(any);
-            });
 
-            urlColSetup.forEach(ele =>{
-                this.col[ele].type = 'url';
             });
 
             this.dataList = dataTable;

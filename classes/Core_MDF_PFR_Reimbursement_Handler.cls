@@ -17,7 +17,7 @@ public without sharing class Core_MDF_PFR_Reimbursement_Handler {
         Set<String> activityCategorySet = new Set<String>();
         Set<String> activityTypeSet = new Set<String>();
         Set<String> brandSet = new Set<String>();
-        Set<String> productTypeSet = new Set<String>(); 
+        Set<String> productTypeSet = new Set<String>();
         Set<Id> programSet = new Set<Id>();
         Set<String> technologySet = new Set<String>();
         Core_MDF_VRQuestionsWrapper.vrQuestionWrap holdVRQuestn = new Core_MDF_VRQuestionsWrapper.vrQuestionWrap();
@@ -40,14 +40,14 @@ public without sharing class Core_MDF_PFR_Reimbursement_Handler {
                     List<string> brandlst=new List<string>();
                     String brandVal=pfr.Core_MDF_Brand_nm__c;
                     //Avoid Deeply Nested IF Statements
-                     brandlst = brandVal.contains(';') ? brandVal.split(';') : new List<String>{brandVal};
+                    brandlst = brandVal.contains(';') ? brandVal.split(';') : null;
                     for(String x:brandlst){
                         brandSet.add(x);
                     }
                 }
-               /* if(pfr.Core_MDF_ProductType__c != NULL){
+                if(pfr.Core_MDF_ProductType__c != NULL){
                     productTypeSet.add(pfr.Core_MDF_ProductType__c);
-                }*/
+                }
                 if(channelProgramId != NULL){
                    
                     programSet.add(channelProgramId);
@@ -146,7 +146,7 @@ public without sharing class Core_MDF_PFR_Reimbursement_Handler {
                         && (activityCatStrSet.isEmpty() || (newPFR.Core_MDF_ActivityCategory__c != NULL && activityCatStrSet.contains(newPFR.Core_MDF_ActivityCategory__c)))
                         && (activityTypeStrSet.isEmpty() || (newPFR.Core_MDF_Activity_Types__c != NULL && activityTypeStrSet.contains(newPFR.Core_MDF_Activity_Types__c)))
                         //&& (brandStrSet.isEmpty() || (newPFR.Core_MDF_Brand__c != NULL && brandStrSet.contains(newPFR.Core_MDF_Brand__c)))
-                      //  && (productTypeStrSet.isEmpty() || (newPFR.Core_MDF_ProductType__c != NULL && productTypeStrSet.contains(newPFR.Core_MDF_ProductType__c)))
+                        && (productTypeStrSet.isEmpty() || (newPFR.Core_MDF_ProductType__c != NULL && productTypeStrSet.contains(newPFR.Core_MDF_ProductType__c)))
                         && (incentiveRule.Core_MDF_Channel_Program_Id__c == NULL || pfrCPIdMap.get(newPFR) == NULL || (pfrCPIdMap.get(newPFR) != NULL && pfrCPIdMap.get(newPFR) == incentiveRule.Core_MDF_Channel_Program_Id__c))
                         && isTechnologyMatched && (brandStrSet.isEmpty() || isBrandMatched)
                     ){

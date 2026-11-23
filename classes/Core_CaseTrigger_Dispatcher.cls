@@ -236,33 +236,4 @@ Modification Log :
                     
         }                 
     }  
-// Addes By Shubham 10/Oct/20205 Hercules Team workflow to Apex trigger ---------Start---------------
-    public static void UpdateLastAssignQueufield(List<Case> caselist){
-        // Map<Id,String> groupIdMap = new Map<Id,String>();
-        List<Case> caseUpsert = new List<Case>();
-		Set<Id> caseid = new Set<Id>();
-        for(Case ca:caselist){
-            if(String.valueOf(ca.OwnerId).startsWith('00G')){
- 				caseid.add(ca.Id);          
-}		
-		} 
-        if(!caseid.isEmpty()){
-List<Case> casel = [Select Id,Owner.Name,recordtype.DeveloperName from case where Id In:caseid];
-     for(Case cc : casel){
-	 Case oldCase = Trigger.isUpdate? (Case) Trigger.oldMap.get(cc.id): null;
-     string recordtypedevelopername = cc.recordtype.DeveloperName;
-         if(recordtypedevelopername.contains('IPS_') &&(cc.OwnerId != oldCase?.OwnerId || Trigger.isInsert)){
-          Case c = new Case();
-			c.Id= cc.Id;
-          c.Core_IPS_Assigned_Queue__c=cc.Owner.Name;
-          caseUpsert.add(c);   
-}
-     
-     }}
-     if(!caseUpsert.isEmpty()){
-  update caseUpsert;
- }
-        
-    }
-    //-----------END--------------
 }

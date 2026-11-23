@@ -1,23 +1,22 @@
-.picklist-container{
-    width : 90%;
-    margin: 0 auto;
+.slds-grid .slds-hyphenate {
+    width: 100%
 }
 
-.picklist-container .slds-dropdown{
-    position: relative !important;
-    z-index: 99 !important;
+.slds-grid .slds-truncate {
+    width: 100%
+}
+
+.picklist-container,
+.lookup-container{
+    margin-top: -1rem;
+    margin-left: -0.5rem;
+    position: absolute !important;
+}
+
+.picklist-container .slds-dropdown,
+.lookup-container .slds-dropdown{
+    position: fixed !important;
     max-height: 120px;
-    overflow: scroll;
-}
-
-[lightning-combobox_combobox-host]{
-    margin-bottom: 17px;
-}
-
-th.slds-has-focus, td.slds-has-focus{
-    box-shadow: none !important;
-}
-
-.slds-table_edit thead th:first-child{
-    width: 60px;
+    max-width: fit-content;
+    overflow: auto;
 }

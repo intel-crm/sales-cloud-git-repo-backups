@@ -2,30 +2,27 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
         <fullName>Core_Entitlement_RDC_Added_E_Moss_EA</fullName>
-        <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Added E Moss EA</description>
         <protected>false</protected>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Added_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Added_E_Moss_Role</template>
     </alerts>
     <alerts>
         <fullName>Core_Entitlement_RDC_Removed_E_Moss_EA</fullName>
-        <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Removed E Moss EA</description>
         <protected>false</protected>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Removed_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Removed_E_Moss_Role</template>
     </alerts>
     <alerts>
         <fullName>Core_Entitlement_RDC_Updated_E_Moss_EA</fullName>
-        <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Updated E Moss EA</description>
         <protected>false</protected>
         <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Updated_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Updated_E_Moss_Role</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_Capture_Status_Change_DateTime</fullName>

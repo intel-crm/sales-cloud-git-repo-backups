@@ -11,7 +11,7 @@
     padding-right: 7px;
     border: none !important;
 }
-.quanticInput .slds-form-element .slds-input {
+.quanticInput.slds-form-element .slds-input {
     padding-left: 0;
     padding-right: 0;
 }

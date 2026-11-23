@@ -53,7 +53,7 @@ public class Core_IPS_Project_Member_Dispatcher{
              if(!ProjMemUpdatedfromProject){
                  Core_IPS_Project_Member_Handler.interestedParties_ProjectMembers(newList,oldMap);}
              Core_IPS_Project_Member_Handler.RemovePSO(newList, oldMap);
-              if(Core_IPS_SkipTriggerHandler.skipQueueable){//US-0050009 Hercules_IPS_ECBFlagIssueFix
+              if(Core_IPS_SkipTriggerHandler.skipQueueable){
                  return;
              }
              Core_IPS_Project_Member_Handler.RemoveorReaddProjMember(oldMap,oldList, newList);

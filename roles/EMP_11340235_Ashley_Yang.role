@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of David Kim</description>
+    <description>EMP of Sharad Parmar</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11340235_Ashley_Yang</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10672688_David_Kim</parentRole>
+    <parentRole>EMP_10567998_Sharad_Parmar</parentRole>
 </Role>

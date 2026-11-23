@@ -283,7 +283,7 @@
     </fields>
     <fields>
         <fullName>Category__c</fullName>
-        <label>Semi-Annual Temp Account Category</label>
+        <label>Account Category</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -343,6 +343,68 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_ASP__c</fullName>
+        <externalId>false</externalId>
+        <label>ASP</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Amt_of_EndCustomers_Past_Year__c</fullName>
+        <label>Amount of End Customers (Past Year)?</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Amt_of_IPA_End_Customers_Past_Year__c</fullName>
+        <label>Amount of IPA End Customers (Past Year)?</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Billings_Revenue_Past_QTR__c</fullName>
+        <label>Billings Revenue Past QTR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Billings_Revenue_Past_Year__c</fullName>
+        <label>Billings Revenue Past Year</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Billings_YoY_Growth__c</fullName>
+        <externalId>false</externalId>
+        <label>Billings YoY Growth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Branded_Revenue_Past_Year__c</fullName>
@@ -440,6 +502,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Core_Direct_Sales_Revenue_Past_Year__c</fullName>
+        <label>Direct Sales Revenue (Past Year)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_DistiSalesOutPast12_mnt_ofCustomer__c</fullName>
         <label>DistiSalesOut(Past 12 mnt) - #OfCustomer</label>
         <precision>18</precision>
@@ -498,6 +570,27 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Disti_Sales_out_revenue_past_year__c</fullName>
+        <label>Disti Sales out revenue (past year)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Disti_sales_out_revenue_YoY__c</fullName>
+        <externalId>false</externalId>
+        <label>Disti sales out revenue (YoY)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Explanation__c</fullName>
@@ -631,6 +724,16 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_Opportunities_Revenue_Last_Year__c</fullName>
+        <label>Opportunities Revenue ​Last Year​</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>Core_Per_ofRevenueOutOfRegionRevenue__c</fullName>
         <externalId>false</externalId>
         <label>% of revenue out of region revenue</label>
@@ -640,6 +743,17 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Primary_Location__c</fullName>
+        <externalId>false</externalId>
+        <formula>Customer_Detail__r.Primary_Location__c</formula>
+        <label>Primary Location</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -738,12 +852,6 @@
                     <fullName>Recommended for Intel Led by COE HLS, Recommended for Intel Led by BU DCAI</fullName>
                     <default>false</default>
                     <label>Recommended for Intel Led by COE HLS, Recommended for Intel Led by BU DCAI</label>
-                </value>
-                <value>
-                    <fullName>Consider for Intel led, Recommended for Intel Led by COE HLS, Recommended for Intel Led by BU DCAI</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Consider for Intel led, Recommended for Intel Led by COE HLS, Recommended for Intel Led by BU DCAI</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -881,6 +989,37 @@
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_Sales_Revenue_Last_QTR__c</fullName>
+        <label>Sales Revenue Last QTR​</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Sales_Revenue_Last_Year__c</fullName>
+        <label>Sales Revenue ​Last Year​</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Sales_YoY__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales YoY %​</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Core_Silicon_Spend__c</fullName>
         <label>Silicon TAM</label>
         <precision>18</precision>
@@ -889,6 +1028,17 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Top_companies_in_vertical__c</fullName>
+        <externalId>false</externalId>
+        <label>Top companies in vertical</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Total_Direct_Revenue_Past_Year__c</fullName>
@@ -908,6 +1058,16 @@
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_YearlyBillings_Weighted_AVG_3_Years__c</fullName>
+        <label>Yearly Billings (Weighted AVG 3 Years)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>Core_YearlyDesignWin_opps_Weighted_AVG_3__c</fullName>
@@ -980,24 +1140,31 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Intel Led</fullName>
-                    <default>false</default>
-                    <label>Intel-led Account</label>
+                    <fullName>Intel Covered</fullName>
+                    <default>true</default>
+                    <label>Intel Covered</label>
                 </value>
                 <value>
-                    <fullName>Partner led</fullName>
+                    <fullName>Indirect Covered</fullName>
                     <default>false</default>
-                    <label>Partner-led Account</label>
+                    <label>Indirect Covered</label>
                 </value>
                 <value>
-                    <fullName>Uncovered</fullName>
+                    <fullName>Not Covered</fullName>
                     <default>false</default>
-                    <label>Not Covered Account</label>
+                    <label>Not Covered</label>
                 </value>
                 <value>
-                    <fullName>Other-led Account</fullName>
+                    <fullName>Altera Account</fullName>
                     <default>false</default>
-                    <label>Other-led Account</label>
+                    <isActive>false</isActive>
+                    <label>Altera Account</label>
+                </value>
+                <value>
+                    <fullName>Indirect-Covered Account</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Indirect-Covered Account</label>
                 </value>
                 <value>
                     <fullName>Intel led​</fullName>
@@ -1006,10 +1173,34 @@
                     <label>Intel led​</label>
                 </value>
                 <value>
+                    <fullName>Intel Led</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel-led Account</label>
+                </value>
+                <value>
                     <fullName>Intel-led​</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Intel-led​</label>
+                </value>
+                <value>
+                    <fullName>Uncovered</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Not Covered Account</label>
+                </value>
+                <value>
+                    <fullName>Other-led Account</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Other-led Account</label>
+                </value>
+                <value>
+                    <fullName>Partner led</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Partner-led Account</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1132,15 +1323,16 @@
         <fullName>Number_of_Accounts__c</fullName>
         <externalId>false</externalId>
         <formula>CASE(Category__c ,
-&apos;B2B End-user&apos;, Customer_Detail__r.B2B__c ,
-&apos;Distributors&apos;, Customer_Detail__r.Distributors__c,
-&apos;Indirect Billings&apos;, Customer_Detail__r.Indirect_Billing__c,
+&apos;Distributors (IA)&apos;, Customer_Detail__r.Distributors_IA__c ,
+&apos;Solution Enabler (SI, ISV, CSP, MSP)&apos;, Customer_Detail__r.Solution_Enabler_SI_ISV_CSP_MSP__c,
+&apos;Reseller - Retailers&apos;, Customer_Detail__r.Reseller_Retailers__c,
+&apos;Reseller - Branded Disti&apos;, Customer_Detail__r.Reseller_Branded_Disti__c,
+&apos;Device Builder - Regional OxM&apos;, Customer_Detail__r.Device_Builder_Regional_OxM__c,
+&apos;End Customer&apos;, Customer_Detail__r.End_Customer__c,
+&apos;Reseller - Named Billing Accounts&apos;, Customer_Detail__r.Reseller_Named_Billing_Accounts__c,
+&apos;Hyperscaler (AWS, Azure, GCP)&apos;, Customer_Detail__r.Hyperscaler_AWS_Azure_GCP__c,
+&apos;Device Builder - MNC&apos;, Customer_Detail__r.Device_Builder_MNC__c,
 &apos;Regional Co-Sell Partners&apos;, Customer_Detail__r.Regional_Co_Sell_Partners__c,
-&apos;Regional GSI ISV MSP&apos;, Customer_Detail__r.Regional_GSI_ISV_MSP__c,
-&apos;Regional Retailer&apos;, Customer_Detail__r.Regional_Retailer__c,
-&apos;Region Branded Disti&apos;, Customer_Detail__r.Region_Branded_Disti__c,
-&apos;Region Direct OxMs&apos;, Customer_Detail__r.Region_Direct_OxMs__c,
-&apos;Top Global&apos;, Customer_Detail__r.Top_Global__c,
 0)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label># of Accounts</label>
@@ -1164,12 +1356,34 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Region__c</fullName>
+        <externalId>false</externalId>
+        <label>DNR:Region</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sales_Group__c</fullName>
         <label>Sales Group</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sub_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>DNR:Sub-Region</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>UCD_Global_Name__c</fullName>
@@ -1193,7 +1407,7 @@
     <label>Customer Category</label>
     <listViews>
         <fullName>All</fullName>
-        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+        <booleanFilter>( 1 OR 2 ) AND 3</booleanFilter>
         <columns>Customer_Detail__c</columns>
         <columns>Category__c</columns>
         <columns>Number_of_Accounts__c</columns>
@@ -1221,152 +1435,56 @@
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>B2B_End_users</fullName>
+        <fullName>Device_Builder_MNC</fullName>
         <columns>Customer_Detail__c</columns>
         <columns>Account_Owners__c</columns>
         <columns>Number_of_Accounts__c</columns>
         <columns>Core_Geo__c</columns>
         <columns>Core_Region__c</columns>
         <columns>Countries__c</columns>
-        <columns>Core_Recommendation__c</columns>
-        <columns>Core_Explanation__c</columns>
         <columns>Industry__c</columns>
         <columns>Manager_Name__c</columns>
         <columns>X2nd_Level_Manager_Name__c</columns>
         <columns>Sales_Group__c</columns>
         <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Category__c</field>
             <operation>equals</operation>
-            <value>B2B End-user</value>
+            <value>Device Builder - MNC</value>
         </filters>
         <filters>
             <field>CRM_CST_Is_Active_Planning_Period__c</field>
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>B2B End-users</label>
+        <label>Device Builder-MNC</label>
     </listViews>
     <listViews>
-        <fullName>Core_B2B_End_users_Financial_Data</fullName>
+        <fullName>Device_Builder_MNC_Financial_Data</fullName>
         <columns>Customer_Detail__c</columns>
         <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
-        <columns>Core_Recommendation__c</columns>
-        <columns>Core_Explanation__c</columns>
-        <columns>Core_Yearly_Revenue_5_Years_AVG__c</columns>
-        <columns>Core_Open_Opps_Weighted_Revenue__c</columns>
-        <columns>Core_Silicon_Spend__c</columns>
-        <columns>Core_Forbes_2000_Rank__c</columns>
-        <columns>Core_Fortune_500_Rank__c</columns>
-        <columns>Core_Number_of_employees__c</columns>
-        <columns>Core_Company_Revenue__c</columns>
-        <columns>Core_Yearly_Contract_Revenue__c</columns>
-        <columns>Countries__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Category__c</field>
-            <operation>equals</operation>
-            <value>B2B End-user</value>
-        </filters>
-        <filters>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>B2B End users - Financial Data</label>
-    </listViews>
-    <listViews>
-        <fullName>Core_Distributors_Financial_Data</fullName>
-        <columns>Customer_Detail__c</columns>
-        <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
-        <columns>Core_Direct_Revenue_Past_12_months_CCG__c</columns>
-        <columns>Core_Direct_Revenue_Past_12_months_DCAI__c</columns>
-        <columns>Core_Direct_Revenue_Past_12_months_NEX__c</columns>
-        <columns>CCG_Indirect_Branded_Revenue_Past_12M__c</columns>
-        <columns>DCAI_Indirect_Branded_Revenue_Past_12M__c</columns>
-        <columns>CCG_Indirect_Component_Revenue_Past_12M__c</columns>
-        <columns>DCAI_Indirect_Compt_Revenue_Past_12M__c</columns>
-        <columns>NEX_Indirect_Component_Revenue_Past_12M__c</columns>
-        <columns>Countries__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Category__c</field>
-            <operation>equals</operation>
-            <value>Distributors</value>
-        </filters>
-        <filters>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Distributors - Financial Data</label>
-    </listViews>
-    <listViews>
-        <fullName>Core_Indirect_Billing_Financial_Data</fullName>
-        <columns>Customer_Detail__c</columns>
-        <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
-        <columns>Core_Recommendation__c</columns>
-        <columns>Core_Explanation__c</columns>
         <columns>BU__c</columns>
-        <columns>Compt_Co_Sell_Design_Win_Weighted_AVG_3Y__c</columns>
-        <columns>Component_Co_Sell_Revenue_Last_QTR__c</columns>
-        <columns>Component_Revenue_Past_Year__c</columns>
-        <columns>Co_Sell_Revenue_Past_Year__c</columns>
-        <columns>Core_Design_Wins_Revenue_Past_Year__c</columns>
-        <columns>Core_Open_Opps_Weighted_Revenue__c</columns>
+        <columns>Direct_Revenue_NGRP_12_months__c</columns>
         <columns>Core_Company_Revenue__c</columns>
-        <columns>Component_Co_Sell_YoY_Growth__c</columns>
         <columns>Countries__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Category__c</field>
             <operation>equals</operation>
-            <value>Indirect Billings</value>
+            <value>Device Builder - MNC</value>
         </filters>
         <filters>
             <field>CRM_CST_Is_Active_Planning_Period__c</field>
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Indirect Billing - Financial Data</label>
+        <label>Device Builder-MNC - Financial Data</label>
     </listViews>
     <listViews>
-        <fullName>Core_Region_Branded_Disti_Financial_Data</fullName>
+        <fullName>Device_Builder_Reg_OxM_Financial_Data</fullName>
         <columns>Customer_Detail__c</columns>
         <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
-        <columns>Core_Direct_Revenue_Past_12_months_CCG__c</columns>
-        <columns>Core_Direct_Revenue_Past_12_months_DCAI__c</columns>
-        <columns>Core_Direct_Revenue_Past_12_months_NEX__c</columns>
-        <columns>CCG_Indirect_Branded_Revenue_Past_12M__c</columns>
-        <columns>DCAI_Indirect_Branded_Revenue_Past_12M__c</columns>
-        <columns>CCG_Indirect_Component_Revenue_Past_12M__c</columns>
-        <columns>DCAI_Indirect_Compt_Revenue_Past_12M__c</columns>
-        <columns>NEX_Indirect_Component_Revenue_Past_12M__c</columns>
-        <columns>Countries__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Category__c</field>
-            <operation>equals</operation>
-            <value>Region Branded Disti</value>
-        </filters>
-        <filters>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Region Branded Disti - Financial Data</label>
-    </listViews>
-    <listViews>
-        <fullName>Core_Region_Branded_OxM_s_Financial_Data</fullName>
-        <columns>Customer_Detail__c</columns>
-        <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
         <columns>BU__c</columns>
         <columns>Direct_Revenue_NGRP_12_months__c</columns>
         <columns>Compt_Co_Sell_Design_Win_Weighted_AVG_3Y__c</columns>
@@ -1382,44 +1500,17 @@
         <filters>
             <field>Category__c</field>
             <operation>equals</operation>
-            <value>Region Direct OxMs</value>
+            <value>Device Builder - Regional OxM</value>
         </filters>
         <filters>
             <field>CRM_CST_Is_Active_Planning_Period__c</field>
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Region Direct OxM&apos;s - Financial Data</label>
+        <label>Device Builder-Reg OxM - Financial Data</label>
     </listViews>
     <listViews>
-        <fullName>Core_Regional_GSI_ISV_MSP_Financial_Data</fullName>
-        <columns>Customer_Detail__c</columns>
-        <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
-        <columns>BU__c</columns>
-        <columns>Core_Nationals_Revenue_Past_Year__c</columns>
-        <columns>Core_Branded_Revenue_Past_Year__c</columns>
-        <columns>Core_bVAR_Revenue_Past_Year__c</columns>
-        <columns>Core_QPS_Revenue_Summary_Past_Year__c</columns>
-        <columns>Core_Open_Opps_Weighted_Revenue__c</columns>
-        <columns>Core_Design_win_opps_past_year__c</columns>
-        <columns>Core_Deal_win_opps_past_year__c</columns>
-        <columns>Countries__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Category__c</field>
-            <operation>equals</operation>
-            <value>Regional GSI ISV MSP</value>
-        </filters>
-        <filters>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Regional GSI ISV MSP - Financial Data</label>
-    </listViews>
-    <listViews>
-        <fullName>Distributors</fullName>
+        <fullName>Device_Builder_Regional_OxM</fullName>
         <columns>Customer_Detail__c</columns>
         <columns>Account_Owners__c</columns>
         <columns>Number_of_Accounts__c</columns>
@@ -1431,22 +1522,78 @@
         <columns>X2nd_Level_Manager_Name__c</columns>
         <columns>Sales_Group__c</columns>
         <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Category__c</field>
             <operation>equals</operation>
-            <value>Distributors</value>
+            <value>Device Builder - Regional OxM</value>
+        </filters>
+        <filters>
+            <field>BU__c</field>
+            <operation>equals</operation>
+            <value>All</value>
         </filters>
         <filters>
             <field>CRM_CST_Is_Active_Planning_Period__c</field>
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Distributors</label>
+        <label>Device Builder-Reg OxM</label>
     </listViews>
     <listViews>
-        <fullName>Indirect_Billings</fullName>
+        <fullName>Distributors_IA</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Account_Owners__c</columns>
+        <columns>Number_of_Accounts__c</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_Region__c</columns>
+        <columns>Countries__c</columns>
+        <columns>Industry__c</columns>
+        <columns>Manager_Name__c</columns>
+        <columns>X2nd_Level_Manager_Name__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Coverage__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>Distributors (IA)</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Distributors (IA)</label>
+    </listViews>
+    <listViews>
+        <fullName>Distributors_IA_Financial_Data</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Coverage__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_CCG__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_DCAI__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_NEX__c</columns>
+        <columns>CCG_Indirect_Branded_Revenue_Past_12M__c</columns>
+        <columns>DCAI_Indirect_Branded_Revenue_Past_12M__c</columns>
+        <columns>CCG_Indirect_Component_Revenue_Past_12M__c</columns>
+        <columns>DCAI_Indirect_Compt_Revenue_Past_12M__c</columns>
+        <columns>NEX_Indirect_Component_Revenue_Past_12M__c</columns>
+        <columns>Countries__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>Distributors (IA)</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Distributors (IA) - Financial Data</label>
+    </listViews>
+    <listViews>
+        <fullName>End_Customers</fullName>
         <columns>Customer_Detail__c</columns>
         <columns>Account_Owners__c</columns>
         <columns>Number_of_Accounts__c</columns>
@@ -1460,12 +1607,226 @@
         <columns>X2nd_Level_Manager_Name__c</columns>
         <columns>Sales_Group__c</columns>
         <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Category__c</field>
             <operation>equals</operation>
-            <value>Indirect Billings</value>
+            <value>End Customer</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>End Customer</label>
+    </listViews>
+    <listViews>
+        <fullName>End_Customers_Financial_Data</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Coverage__c</columns>
+        <columns>Core_Recommendation__c</columns>
+        <columns>Core_Explanation__c</columns>
+        <columns>Core_Yearly_Revenue_5_Years_AVG__c</columns>
+        <columns>Core_Open_Opps_Weighted_Revenue__c</columns>
+        <columns>Core_Silicon_Spend__c</columns>
+        <columns>Core_Forbes_2000_Rank__c</columns>
+        <columns>Core_Fortune_500_Rank__c</columns>
+        <columns>Core_Number_of_employees__c</columns>
+        <columns>Core_Company_Revenue__c</columns>
+        <columns>Core_Yearly_Contract_Revenue__c</columns>
+        <columns>Countries__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>End Customer</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>End Customer - Financial Data</label>
+    </listViews>
+    <listViews>
+        <fullName>Hyperscaler</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Account_Owners__c</columns>
+        <columns>Number_of_Accounts__c</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_Region__c</columns>
+        <columns>Countries__c</columns>
+        <columns>Industry__c</columns>
+        <columns>Manager_Name__c</columns>
+        <columns>X2nd_Level_Manager_Name__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Coverage__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>&quot;Hyperscaler (AWS, Azure, GCP)&quot;</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Hyperscaler</label>
+    </listViews>
+    <listViews>
+        <fullName>Hyperscaler_Financial_Data</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>NAME</columns>
+        <columns>Coverage__c</columns>
+        <columns>Core_Recommendation__c</columns>
+        <columns>Core_Explanation__c</columns>
+        <columns>Core_Yearly_Revenue_5_Years_AVG__c</columns>
+        <columns>Core_Open_Opps_Weighted_Revenue__c</columns>
+        <columns>Core_Silicon_Spend__c</columns>
+        <columns>Core_Forbes_2000_Rank__c</columns>
+        <columns>Core_Fortune_500_Rank__c</columns>
+        <columns>Core_Number_of_employees__c</columns>
+        <columns>Core_Company_Revenue__c</columns>
+        <columns>Core_Yearly_Contract_Revenue__c</columns>
+        <columns>Countries__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>&quot;Hyperscaler (AWS, Azure, GCP)&quot;</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Hyperscaler - Financial Data</label>
+    </listViews>
+    <listViews>
+        <fullName>Regional_Co_Sell_Partners</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Account_Owners__c</columns>
+        <columns>Number_of_Accounts__c</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_Region__c</columns>
+        <columns>Countries__c</columns>
+        <columns>Industry__c</columns>
+        <columns>Manager_Name__c</columns>
+        <columns>X2nd_Level_Manager_Name__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Coverage__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>Regional Co-Sell Partners</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Regional Co-Sell Partners</label>
+    </listViews>
+    <listViews>
+        <fullName>Regional_Co_Sell_Partners_Financial_Data</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Coverage__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_CCG__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_DCAI__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_NEX__c</columns>
+        <columns>CCG_Indirect_Branded_Revenue_Past_12M__c</columns>
+        <columns>DCAI_Indirect_Branded_Revenue_Past_12M__c</columns>
+        <columns>CCG_Indirect_Component_Revenue_Past_12M__c</columns>
+        <columns>DCAI_Indirect_Compt_Revenue_Past_12M__c</columns>
+        <columns>NEX_Indirect_Component_Revenue_Past_12M__c</columns>
+        <columns>Countries__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>Regional Co-Sell Partners</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Regional Co-Sell Partners-Financial Data</label>
+    </listViews>
+    <listViews>
+        <fullName>Reseller_Branded_Disti</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Account_Owners__c</columns>
+        <columns>Number_of_Accounts__c</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_Region__c</columns>
+        <columns>Countries__c</columns>
+        <columns>Industry__c</columns>
+        <columns>Manager_Name__c</columns>
+        <columns>X2nd_Level_Manager_Name__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Coverage__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>Reseller - Branded Disti</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Reseller-Branded Disti</label>
+    </listViews>
+    <listViews>
+        <fullName>Reseller_Branded_Disti_Financial_Data</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Coverage__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_CCG__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_DCAI__c</columns>
+        <columns>Core_Direct_Revenue_Past_12_months_NEX__c</columns>
+        <columns>CCG_Indirect_Branded_Revenue_Past_12M__c</columns>
+        <columns>DCAI_Indirect_Branded_Revenue_Past_12M__c</columns>
+        <columns>CCG_Indirect_Component_Revenue_Past_12M__c</columns>
+        <columns>DCAI_Indirect_Compt_Revenue_Past_12M__c</columns>
+        <columns>NEX_Indirect_Component_Revenue_Past_12M__c</columns>
+        <columns>Countries__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>Reseller - Branded Disti</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Reseller-Branded Disti - Financial Data</label>
+    </listViews>
+    <listViews>
+        <fullName>Reseller_Named_Billing_Accounts</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Account_Owners__c</columns>
+        <columns>Number_of_Accounts__c</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_Region__c</columns>
+        <columns>Countries__c</columns>
+        <columns>Core_Recommendation__c</columns>
+        <columns>Core_Explanation__c</columns>
+        <columns>Industry__c</columns>
+        <columns>Manager_Name__c</columns>
+        <columns>X2nd_Level_Manager_Name__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Coverage__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>Reseller - Named Billing Accounts</value>
         </filters>
         <filters>
             <field>BU__c</field>
@@ -1477,10 +1838,39 @@
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Indirect Billings</label>
+        <label>Reseller-Named Billing</label>
     </listViews>
     <listViews>
-        <fullName>Region_Branded_Disti</fullName>
+        <fullName>Reseller_Named_Billing_Financial_Data</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Coverage__c</columns>
+        <columns>Core_Recommendation__c</columns>
+        <columns>Core_Explanation__c</columns>
+        <columns>BU__c</columns>
+        <columns>Compt_Co_Sell_Design_Win_Weighted_AVG_3Y__c</columns>
+        <columns>Component_Co_Sell_Revenue_Last_QTR__c</columns>
+        <columns>Component_Revenue_Past_Year__c</columns>
+        <columns>Co_Sell_Revenue_Past_Year__c</columns>
+        <columns>Core_Design_Wins_Revenue_Past_Year__c</columns>
+        <columns>Core_Open_Opps_Weighted_Revenue__c</columns>
+        <columns>Core_Company_Revenue__c</columns>
+        <columns>Component_Co_Sell_YoY_Growth__c</columns>
+        <columns>Countries__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>Reseller - Named Billing Accounts</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Reseller-Named Billing - Financial Data</label>
+    </listViews>
+    <listViews>
+        <fullName>Reseller_Retailers</fullName>
         <columns>Customer_Detail__c</columns>
         <columns>Account_Owners__c</columns>
         <columns>Number_of_Accounts__c</columns>
@@ -1492,113 +1882,21 @@
         <columns>X2nd_Level_Manager_Name__c</columns>
         <columns>Sales_Group__c</columns>
         <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Category__c</field>
             <operation>equals</operation>
-            <value>Region Branded Disti</value>
+            <value>Reseller - Retailers</value>
         </filters>
         <filters>
             <field>CRM_CST_Is_Active_Planning_Period__c</field>
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Region Branded Disti</label>
+        <label>Reseller-Retailers</label>
     </listViews>
     <listViews>
-        <fullName>Region_Direct_OxMs</fullName>
-        <columns>Customer_Detail__c</columns>
-        <columns>Account_Owners__c</columns>
-        <columns>Number_of_Accounts__c</columns>
-        <columns>Core_Geo__c</columns>
-        <columns>Core_Region__c</columns>
-        <columns>Countries__c</columns>
-        <columns>Industry__c</columns>
-        <columns>Manager_Name__c</columns>
-        <columns>X2nd_Level_Manager_Name__c</columns>
-        <columns>Sales_Group__c</columns>
-        <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Category__c</field>
-            <operation>equals</operation>
-            <value>Region Direct OxMs</value>
-        </filters>
-        <filters>
-            <field>BU__c</field>
-            <operation>equals</operation>
-            <value>All</value>
-        </filters>
-        <filters>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Region Direct OxMs</label>
-    </listViews>
-    <listViews>
-        <fullName>Regional_GSI_ISV_MSP</fullName>
-        <columns>Customer_Detail__c</columns>
-        <columns>Account_Owners__c</columns>
-        <columns>Number_of_Accounts__c</columns>
-        <columns>Core_Geo__c</columns>
-        <columns>Core_Region__c</columns>
-        <columns>Countries__c</columns>
-        <columns>Industry__c</columns>
-        <columns>Manager_Name__c</columns>
-        <columns>X2nd_Level_Manager_Name__c</columns>
-        <columns>Sales_Group__c</columns>
-        <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Category__c</field>
-            <operation>equals</operation>
-            <value>Regional GSI ISV MSP</value>
-        </filters>
-        <filters>
-            <field>BU__c</field>
-            <operation>equals</operation>
-            <value>All</value>
-        </filters>
-        <filters>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Regional GSI ISV MSP​</label>
-    </listViews>
-    <listViews>
-        <fullName>Regional_Retailer</fullName>
-        <columns>Customer_Detail__c</columns>
-        <columns>Account_Owners__c</columns>
-        <columns>Number_of_Accounts__c</columns>
-        <columns>Core_Geo__c</columns>
-        <columns>Core_Region__c</columns>
-        <columns>Countries__c</columns>
-        <columns>Industry__c</columns>
-        <columns>Manager_Name__c</columns>
-        <columns>X2nd_Level_Manager_Name__c</columns>
-        <columns>Sales_Group__c</columns>
-        <columns>Coverage__c</columns>
-        <columns>GTM_Model__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Category__c</field>
-            <operation>equals</operation>
-            <value>Regional Retailer</value>
-        </filters>
-        <filters>
-            <field>CRM_CST_Is_Active_Planning_Period__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Regional Retailer</label>
-    </listViews>
-    <listViews>
-        <fullName>Regional_Retailer_Financial_Data</fullName>
+        <fullName>Reseller_Retailers_Financial_Data</fullName>
         <columns>Customer_Detail__c</columns>
         <columns>Core_SO_gross_platform_revenue__c</columns>
         <columns>Core_SO_gross_platform_revenue_YoY__c</columns>
@@ -1618,14 +1916,71 @@
         <filters>
             <field>Category__c</field>
             <operation>equals</operation>
-            <value>Regional Retailer</value>
+            <value>Reseller - Retailers</value>
         </filters>
         <filters>
             <field>CRM_CST_Is_Active_Planning_Period__c</field>
             <operation>equals</operation>
             <value>1</value>
         </filters>
-        <label>Regional Retailer - Financial Data</label>
+        <label>Reseller-Retailers - Financial Data</label>
+    </listViews>
+    <listViews>
+        <fullName>Solution_Enabler</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Account_Owners__c</columns>
+        <columns>Number_of_Accounts__c</columns>
+        <columns>Core_Geo__c</columns>
+        <columns>Core_Region__c</columns>
+        <columns>Countries__c</columns>
+        <columns>Industry__c</columns>
+        <columns>Manager_Name__c</columns>
+        <columns>X2nd_Level_Manager_Name__c</columns>
+        <columns>Sales_Group__c</columns>
+        <columns>Coverage__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>&quot;Solution Enabler (SI, ISV, CSP, MSP)&quot;</value>
+        </filters>
+        <filters>
+            <field>BU__c</field>
+            <operation>equals</operation>
+            <value>All</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Solution Enabler</label>
+    </listViews>
+    <listViews>
+        <fullName>Solution_Enabler_Financial_Data</fullName>
+        <columns>Customer_Detail__c</columns>
+        <columns>Coverage__c</columns>
+        <columns>BU__c</columns>
+        <columns>Core_Nationals_Revenue_Past_Year__c</columns>
+        <columns>Core_Branded_Revenue_Past_Year__c</columns>
+        <columns>Core_bVAR_Revenue_Past_Year__c</columns>
+        <columns>Core_QPS_Revenue_Summary_Past_Year__c</columns>
+        <columns>Core_Open_Opps_Weighted_Revenue__c</columns>
+        <columns>Core_Design_win_opps_past_year__c</columns>
+        <columns>Core_Deal_win_opps_past_year__c</columns>
+        <columns>Countries__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>&quot;Solution Enabler (SI, ISV, CSP, MSP)&quot;</value>
+        </filters>
+        <filters>
+            <field>CRM_CST_Is_Active_Planning_Period__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Solution Enabler - Financial Data</label>
     </listViews>
     <nameField>
         <displayFormat>CC-{0000}</displayFormat>
@@ -1638,10 +1993,10 @@
         <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>NewFromDocument</excludedStandardButtons>
-        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>Import</excludedStandardButtons>
-        <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
         <searchResultsAdditionalFields>Customer_Detail__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Category__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Number_of_Accounts__c</searchResultsAdditionalFields>

@@ -51,9 +51,6 @@
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
-    <columns>
-        <field>CREATED_DATE</field>
-    </columns>
     <filter>
         <booleanFilter>1 AND (2 OR 15 OR ((12 OR 13 OR 14) AND 15) OR (3 AND 10) OR 4 OR 9 OR (5 AND 10 AND (6 OR 7 OR 8))) AND 11</booleanFilter>
         <criteriaItems>
@@ -186,7 +183,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>false</showGrandTotal>
     <showSubTotals>false</showSubTotals>
-    <sortColumn>CREATED_DATE</sortColumn>
+    <sortColumn>ACCOUNT_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>

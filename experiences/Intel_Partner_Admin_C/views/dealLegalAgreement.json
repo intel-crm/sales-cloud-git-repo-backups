@@ -2,26 +2,26 @@
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
-  "id" : "f841be62-58e1-47b8-a081-5b7e5e2de925",
+  "id" : "8039d072-d67a-4a9f-af7c-82b320ede69b",
   "label" : "Deal Legal Agreement",
   "regions" : [ {
-    "id" : "bc423201-59fc-4f33-85d0-31f424c8fb99",
+    "id" : "a815715a-99a9-4ceb-8ebc-67cca8bd47a7",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:pCC_DealReg_TermsAndConditions",
-      "id" : "4719a85f-b4ea-4d1d-a1dc-1718f5f18e95",
+      "id" : "a5c71593-dc64-45a9-9966-95e36a9d0b9d",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "fa99ced7-91d5-44f4-b1b0-7e56256cc945",
+    "id" : "6deb1b11-ae32-4a9d-a2c1-d8bfbf684ca7",
     "regionName" : "content",
     "type" : "region"
   }, {
-    "id" : "6da42922-1c31-4d1b-8eea-4039f275070f",
+    "id" : "2794d235-098c-4624-aa79-804f20155f37",
     "regionName" : "footer",
     "type" : "region"
   }, {
@@ -32,11 +32,11 @@
         "title" : "Deal Legal Agreement"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "e6477fda-bf95-4f52-b914-e2f8e2bc4e37",
+      "id" : "4b6dc767-5a05-4670-84c2-50946365e346",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "1b42de0b-3a62-4cdd-839f-874628f3549d",
+    "id" : "ebcf8a65-5c4a-4701-b119-5e8395e03ae7",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],

@@ -30,6 +30,16 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Pricing_Quote_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Quote Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Pricing_Small_Deal_CAP_size_Number__c</fullName>
         <externalId>false</externalId>
         <label>Small Deal CAP size</label>

@@ -297,7 +297,7 @@ Modification Log :
     
     static void insertCoreResponse(Id caseId) {
         List<Core_IPS_Response__c> lstResponse = new List<Core_IPS_Response__c>();
-        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c]) {
+        for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c LIMIT 999]) { //ATHR Query limit fix
             for(Core_IPS_Answer__c objAns : objQues.Core_Answers__r) {
                 Core_IPS_Response__c objResponse = new Core_IPS_Response__c();
                 objResponse.Core_IPS_Case__c = caseId;
@@ -1087,14 +1087,13 @@ update ListOfUser;
     //Asset Page Init Test Method
     static testmethod void pageInitAssetTest(){
         getRecords(2);
-        ID recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId(); // added to fix Account recordtype related error : Tejaswini
+        
         //Create account
         Account portalAccount1 = new Account(
             Name = 'newAcc3',
             BillingCity = 'folsom',
             BillingCountry = 'USA',
-            BillingStreet = 'Creek Side Dr',
-            RecordTypeId = recordTypeId
+            BillingStreet = 'Creek Side Dr'    
         );
         Database.insert(portalAccount1);
         //Create contact

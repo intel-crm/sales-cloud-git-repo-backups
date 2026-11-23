@@ -116,6 +116,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_Profit_Center__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Deactivation_Date__c</field>
             </layoutItems>
         </layoutColumns>

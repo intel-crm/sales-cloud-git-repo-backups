@@ -102,14 +102,14 @@ export default class Prm_salesAndTrainingCmp extends LightningElement {
             if (result != null) {
                 this.isLoaded = true;
                 console.log('result -->' + JSON.stringify(result));
-				this.total_PointsBalancenbr = this.convertNumber(result.totalPointsBalance, false);
-                this.total_SalesDatanbr = this.convertNumber(result.totalSalesData, false,2);//utkarsh - passed false as a parameter while calling convertNumber method because we need to show actual sales data.
-                this.total_TrainingCreditsnbr = this.convertNumber(result.totalTrainingCredits, false);//utkarsh - passed false as a parameter while calling convertNumber method because we need to show actual training data.
-                this.total_PointsExpirednbr = this.convertNumber(result.totalPointsExpired, false);
+				this.total_PointsBalancenbr = this.convertNumber(result.totalPointsBalance, true);
+                this.total_SalesDatanbr = this.convertNumber(result.totalSalesData, true);
+                this.total_TrainingCreditsnbr = this.convertNumber(result.totalTrainingCredits, true);
+                this.total_PointsExpirednbr = this.convertNumber(result.totalPointsExpired, true);
                 this.total_AWR_allocatednbr = this.convertNumber(result.totalAWRallocated, true);
                 this.total_AWR_remainingnbr = this.convertNumber(result.totalAWRremaining, true);
-                this.total_SalesDatanbrPrev=this.convertNumber(result.totalSalesDataPrevPeriod, false,2);//utkarsh - passed false as a parameter while calling convertNumber method because we need to show actual sales data.
-                this.total_TrainingCreditsnbrPrev=this.convertNumber(result.totalTrainingCreditsPrevPeriod, false);//utkarsh - passed false as a parameter while calling convertNumber method because we need to show actual training data.
+                this.total_SalesDatanbrPrev=this.convertNumber(result.totalSalesDataPrevPeriod, true);
+                this.total_TrainingCreditsnbrPrev=this.convertNumber(result.totalTrainingCreditsPrevPeriod, true);
                 this.totalTrainedResourcesnbr = this.convertNumber(result.totalTrainedResources, true);
                 //IPA2.0 TWC727-3228 starts here
                 //this.totalApprovedOffering = this.convertNumber(result.totalApprovedOffering, true);
@@ -141,10 +141,10 @@ export default class Prm_salesAndTrainingCmp extends LightningElement {
      * @returns {object} The number data object returning properties for how decimal points should be
      * displayed, if a "K" or "M" should be displayed, and the actual value to display.
      */
-    convertNumber(value, convert, decimalPrecision = 0) {//Utkarsh - Added extra default parameter to display decimal value only for sales data.
+    convertNumber(value, convert) {
       // Default is no conversion
       const converted = {
-        decimals: decimalPrecision,//utkarsh - added to display decimal value for sales data
+        decimals: 0,
         text: '',
         value,
       };

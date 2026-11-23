@@ -24,7 +24,7 @@ public with sharing class Core_AAQC_Case_Comment_Controller{
     public String profileName;                                                                      // variable to store logged in users profile name part of US:110974
     public Profile objProfile;                                                                      // variable to store logged in users profil part of US:110974
     public List<PermissionSetAssignment> lstcurrentUserPerSet;
-    public String permissionSetName='';
+    public String permissionSetName;
     
     public Core_AAQC_Case_Comment_Controller(ApexPages.StandardController controller) {
         
@@ -103,12 +103,12 @@ public with sharing class Core_AAQC_Case_Comment_Controller{
     *   Description : This method will check whether logged in user is belog to IT ADMIN Group or not
     */
     private void setProfileName(){
-    
+        
         
         objProfile = [Select Name from Profile where Id =: UserInfo.getProfileId() LIMIT 1];
         lstcurrentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId FROM PermissionSetAssignment
                                 WHERE AssigneeId = :Userinfo.getUserId() ];
-         
+        
         if (lstcurrentUserPerSet.size()>0)
         {
             for (PermissionSetAssignment psa: lstcurrentUserPerSet)
@@ -148,7 +148,6 @@ public with sharing class Core_AAQC_Case_Comment_Controller{
             }
             
         }
-        
     }
     
 }

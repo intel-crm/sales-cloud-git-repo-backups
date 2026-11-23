@@ -28,7 +28,7 @@ public class Core_OpportunityDataFetcherTest {
             User testUser = [SELECT Id FROM User WHERE Profile.Name = 'Standard User' LIMIT 1];
             
             // Create test Opportunity
-            //Id newOppRecTypeId = [SELECT Id FROM RecordType WHERE DeveloperName = 'Core_Design_Opportunity' LIMIT 1][0].Id;
+            Id newOppRecTypeId = [SELECT Id FROM RecordType WHERE DeveloperName = 'Core_Design_Opportunity' LIMIT 1][0].Id;
             Opportunity testOpportunity = new Opportunity(
                 Name = 'Test Opportunity',
                 StageName = 'Qualify',

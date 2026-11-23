@@ -63,9 +63,10 @@
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
+    <description>Design-Registration Dashboard for Partner</description>
     <isGridLayout>true</isGridLayout>
     <owner>10560180@intel.com.crm</owner>
-    <runningUser>12082064@intel.com.crm</runningUser>
+    <runningUser>12090672@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Design-Opportunity Dashboard</title>
     <titleColor>#000000</titleColor>

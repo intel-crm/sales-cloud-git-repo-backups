@@ -33,6 +33,7 @@ export default class Pricing_Edit_FieldSet_Form extends LightningElement {
     getFieldSetFormDetails() {
         getFormDetails({ recordId: this.recordId })
             .then(result => {
+                console.log('Raw result- pricing_edit_Fieldset_Form.js :'+JSON.stringify(result));
                 let formDetails = JSON.parse(JSON.stringify(result));
                 var fieldList = readOnlyFields + ',' + readOnlyDateFields;
                 let fieldArray = fieldList.split(',');

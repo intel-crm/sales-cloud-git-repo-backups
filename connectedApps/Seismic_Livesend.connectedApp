@@ -3,8 +3,9 @@
     <contactEmail>hemanta.k.patra@intel.com</contactEmail>
     <label>Seismic_Livesend</label>
     <oauthConfig>
-        <callbackUrl>https://intel.seismic.com/Integration/SalesforceOauth.aspx</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6nPqQvTEixuIbwYfGrrlRueByJje2rImIAo3P17WuFwVB_ttKe0PZQfLK5pK</consumerKey>
+        <callbackUrl>https://inteldev.seismic.com/Integration/SalesforceOauth.aspx
+https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDgZIA3txqUNZvKXAqMZm2bo94Choytax_jNyOt3ATR2RGh9p_55v7q4dljMu</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -30,6 +31,5 @@
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>
-    <permissionSetName>Minimum Access Integration Profile Permission Set</permissionSetName>
     <permissionSetName>Seismic Integration User</permissionSetName>
 </ConnectedApp>

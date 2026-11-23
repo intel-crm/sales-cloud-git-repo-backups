@@ -34,6 +34,13 @@
     <description>The Report Contains all of the opps with EU tagged as the opp owner, tech owner, team member, and viewer and value 50K and below</description>
     <filter>
         <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>alvarez,gianduso,nandini Ruhomutally,Lola Claesson,Vladimir Efimov</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -41,18 +48,11 @@
             <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
+            <column>AMOUNT</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>EU</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Products__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>FPGA</value>
+            <operator>lessOrEqual</operator>
+            <value>50000</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

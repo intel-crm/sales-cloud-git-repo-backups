@@ -1,0 +1,441 @@
+<aura:component >
+     <aura:attribute name="activity" type="string" description="to store single activity (task/event) record data"/> 
+    
+    <ul class="slds-timeline">
+        
+        <li>
+            <aura:if isTrue="{!v.activity.objectname == 'PRM_Account_Contact_Relationship__c'  }">
+                <aura:iteration items="{!v.activity.acrHistory}" var="arc">
+                    
+                    <aura:if isTrue="{!and((arc.Field == 'PRM_Relationship_Id__c') , or(arc.NewValue == 'Primary Contact',arc.NewValue == 'Works for')) }"> 
+                        
+                        <div class="slds-timeline__item_expandable slds-timeline__item_call">
+                            <span class="slds-assistive-text">log_a_call</span>
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <button class="slds-button slds-button_icon" title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base">
+                                        <!-- <svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg>   ,or(v.activity.newvalue == 'Primary Contact',v.activity.newvalue == 'Works for') -->
+                                        <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                        <span class="slds-assistive-text">Toggle details for Mobile conversation on Monday</span>
+                                    </button>
+                                    <div class="slds-icon_container slds-icon-standard-log-a-call slds-timeline__icon" title="call">
+                                        <!-- <svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#log_a_call"></use>
+        </svg> -->
+                                        <lightning:icon iconName="utility:adduser" alternativeText="down" size="small" variant="border-filled"/>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body">
+                                    <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                            <h3 class="slds-truncate" title="{!'Contact '+v.activity.contactName+' is changed from '+arc.OldValue+' to '+arc.NewValue+' by '+arc.CreatedBy.Name}">
+                                                <!--<a href="javascript:void(0);"> v.activity.objectname == 'Contact' ||-->
+                                                
+                                                
+                                                <strong>Contact <a href="{!'/lightning/r/PRM_Account_Contact_Relationship__c/'+arc.ParentId+'/view'}" target="_blank">{!v.activity.contactName}</a> is changed from '{!arc.OldValue}' to '{!arc.NewValue}' by {!arc.CreatedBy.Name} </strong>
+                                                <!-- </a> -->
+                                            </h3>
+                                        </div>
+                                        <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                            <p class="slds-timeline__date"><lightning:formattedDateTime value="{!arc.CreatedDate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/></p>
+                                            <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                                <!--<svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                                <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                                <span class="slds-assistive-text">More Options for this item</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--<p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> logged a call with
+        <a href="javascript:void(0);">Adam Chan</a>
+        </p> -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!or(and(arc.Field == 'PRM_InActive_Ind__c',arc.NewValue==true),arc.Field=='created')}">
+                                <!-- <aura:if isTrue="{!and((arc.NewValue == true),(arc.Field=='PRM_InActive_Ind__c'))}">-->
+                                <div class="slds-timeline__item_expandable slds-timeline__item_call">
+                                    <span class="slds-assistive-text">log_a_call</span>
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <button class="slds-button slds-button_icon" title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base">
+                                                <!-- <svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg> -->
+                                                <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                                <span class="slds-assistive-text">Toggle details for Mobile conversation on Monday</span>
+                                            </button>
+                                            <div class="slds-icon_container slds-icon-standard-log-a-call slds-timeline__icon" title="call">
+                                                <!-- <svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#log_a_call"></use>
+        </svg> -->
+                                                <lightning:icon iconName="utility:adduser" alternativeText="down" size="small" variant="border-filled"/>
+                                            </div>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                                <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                                    
+                                                    <!--<a href="javascript:void(0);"> -->
+                                                    <aura:if isTrue="{!and((arc.NewValue == true),(arc.Field=='PRM_InActive_Ind__c'))}">
+                                                        <h3 class="slds-truncate" title="{!'Contact '+v.activity.contactName+' is removed as '+v.activity.contactRelation+' from the account by '+arc.CreatedBy.Name}">
+                                                            
+                                                            <strong>Contact <a href="{!'/lightning/r/PRM_Account_Contact_Relationship__c/'+arc.ParentId+'/view'}" target="_blank">{!v.activity.contactName}</a> is removed as '{!v.activity.contactRelation}' from the account by {!arc.CreatedBy.Name}</strong>
+                                                        </h3>
+                                                    </aura:if> 
+                                                    
+                                                    <aura:if isTrue="{!arc.Field=='created'}">
+                                                        
+                                                        <h3 class="slds-truncate" title="{!'Contact '+v.activity.contactName+' is added as '+v.activity.contactRelation+' to the Account by '+arc.CreatedBy.Name}">
+                                                            <strong>Contact <a href="{!'/lightning/r/PRM_Account_Contact_Relationship__c/'+arc.ParentId+'/view'}" target="_blank">{!v.activity.contactName}</a> is added as '{!v.activity.contactRelation}' to the Account by {!arc.CreatedBy.Name}</strong>
+                                                        </h3>
+                                                    </aura:if>  
+                                                    <!-- </a> -->
+                                                    
+                                                </div>
+                                                <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                                    <p class="slds-timeline__date"><lightning:formattedDateTime value="{!arc.CreatedDate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/></p>
+                                                    <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                                        <!--<svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                                        <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                                        <span class="slds-assistive-text">More Options for this item</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!--<p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> logged a call with
+        <a href="javascript:void(0);">Adam Chan</a>
+        </p> -->
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </aura:if>   
+                            
+                        </aura:set>                        
+                    </aura:if>
+                    
+                </aura:iteration>               
+            </aura:if>
+        </li>
+        <li>
+            <aura:if isTrue="{!v.activity.objectname == 'PRM_AccountBenefitAssociation__c'}">
+                <aura:iteration items="{!v.activity.abaHistory}" var="aba">
+                    <aura:if isTrue="{!aba.Field == 'created'}">
+                        <div class="slds-timeline__item_expandable slds-timeline__item_email">
+                            <span class="slds-assistive-text">email</span>
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <button class="slds-button slds-button_icon" title="Toggle details for Re: Mobile conversation on Monday with the new global team" aria-controls="email-item-base">
+                                        <!--<svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg> -->
+                                        <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                        <span class="slds-assistive-text">Toggle details for Re: Mobile conversation on Monday with the new global team</span>
+                                    </button>
+                                    <div class="slds-icon_container slds-icon-standard-email slds-timeline__icon" title="email">
+                                        <!--<svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#email"></use>
+        </svg> -->
+                                        <lightning:buttonicon iconName="utility:jump_to_top" alternativeText="Mail" size="small" variant="border-filled"/>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body">
+                                    <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                            <h3 class="slds-truncate" title="{!'Account got a new Benefit-'+v.activity.benefitName+' by '+aba.CreatedBy.Name+'.'}">
+                                                <!--<a href="javascript:void(0);"> -->
+                                                <strong>Account got a new  Benefit- <a href="{!'/lightning/r/PRM_AccountBenefitAssociation__c/'+aba.ParentId+'/view'}" target="_blank">'{!v.activity.benefitName}'</a> by {!aba.CreatedBy.Name}</strong>
+                                                <!-- <strong>  <a href="{!'/lightning/r/PRM_AccountBenefitAssociation__c/'+v.activity.id+'/view'}" target="_blank">'Benefit'</a> is added</strong>-->
+                                                <!-- </a> -->
+                                            </h3>
+                                            <div class="slds-no-flex">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                            <p class="slds-timeline__date"><lightning:formattedDateTime value="{!aba.CreatedDate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/></p>
+                                            <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                                <!-- <svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                                <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                                <span class="slds-assistive-text">More Options for this item</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--<p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> emailed
+        <a href="javascript:void(0);">Lea Chan</a>
+        </p> -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!and(aba.Field == 'PRM_Status_Nm__c' , aba.NewValue == 'Inactive') }">
+                                <div class="slds-timeline__item_expandable slds-timeline__item_email">
+                                    <span class="slds-assistive-text">email</span>
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <button class="slds-button slds-button_icon" title="Toggle details for Re: Mobile conversation on Monday with the new global team" aria-controls="email-item-base">
+                                                <!--<svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg> -->
+                                                <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                                <span class="slds-assistive-text">Toggle details for Re: Mobile conversation on Monday with the new global team</span>
+                                            </button>
+                                            <div class="slds-icon_container slds-icon-standard-email slds-timeline__icon" title="email">
+                                                <!--<svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#email"></use>
+        </svg> -->
+                                                <lightning:buttonicon iconName="utility:jump_to_top" alternativeText="Mail" size="small" variant="border-filled"/>
+                                            </div>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                                <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                                    <h3 class="slds-truncate" title="{!'Benefit'+v.activity.benefitName+' is removed from the account by '+aba.CreatedBy.Name}">
+                                                        <!--<a href="javascript:void(0);"> -->
+                                                        <strong>Benefit <a href="{!'/lightning/r/PRM_AccountBenefitAssociation__c/'+aba.ParentId+'/view'}" target="_blank">'{!v.activity.benefitName}'</a> is removed from the account by {!aba.CreatedBy.Name}</strong>
+                                                        <!-- </a> -->
+                                                    </h3>
+                                                    <div class="slds-no-flex">
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                                    <p class="slds-timeline__date"><lightning:formattedDateTime value="{!aba.CreatedDate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/></p>
+                                                    <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                                        <!-- <svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                                        <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                                        <span class="slds-assistive-text">More Options for this item</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!--<p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> emailed
+        <a href="javascript:void(0);">Lea Chan</a>
+        </p> -->
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </aura:if>         
+                        </aura:set>
+                    </aura:if>
+                </aura:iteration>
+                
+            </aura:if>
+        </li>
+        <li>
+            <aura:if isTrue="{!v.activity.objectname == 'PRM_AccountChannelMembership__c'}">
+                <aura:iteration items="{!v.activity.acmHistory}" var="acm">
+                    <aura:if isTrue="{!acm.Field == 'created'}">
+                        
+                        <div class="slds-timeline__item_expandable slds-timeline__item_event">
+                            <span class="slds-assistive-text">event</span>
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <button class="slds-button slds-button_icon" title="Toggle details for EBC Follow up call" aria-controls="event-item-base">
+                                        <!--<svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg> -->
+                                        <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                        <span class="slds-assistive-text">Toggle details for EBC Follow up call</span>
+                                    </button>
+                                    <div class="slds-icon_container slds-icon-standard-event slds-timeline__icon" title="event">
+                                        <!--<svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#event"></use>
+        </svg> -->
+                                        <lightning:icon iconName="utility:ribbon" alternativeText="down" size="small" variant="border-filled"/>
+                                    </div>
+                                </div>
+                                <div class="slds-media__body">
+                                    <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                            <h3 class="slds-truncate" title="{!'IPA Membership is added to Account in '+v.activity.partnerRoleName+' role by '+acm.CreatedBy.Name}">
+                                                <!-- <a href="javascript:void(0);"> -->
+                                                <strong><a href="{!'/lightning/r/PRM_AccountChannelMembership__c/'+acm.ParentId+'/view'}" target="_blank">'IPA Membership'</a> is added to Account in '{!v.activity.partnerRoleName}' role by {!acm.CreatedBy.Name}</strong>
+                                                <!-- </a> -->
+                                            </h3>
+                                            <div class="slds-no-flex">
+                                                <!-- <span class="slds-icon_container slds-icon-utility-world" title="Public sharing"> -->
+                                                <!--<svg class="slds-icon slds-icon_xx-small slds-icon-text-default slds-m-left_x-small" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#world"></use>
+        </svg> -->
+                                                <!--<lightning:icon iconName="utility:world" alternativeText="down" size="x-small" variant="border-filled"/>
+        <span class="slds-assistive-text">Public sharing</span>
+        </span> -->
+                                            </div>
+                                        </div>
+                                        <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                            <p class="slds-timeline__date"><lightning:formattedDateTime value="{!acm.CreatedDate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/></p>
+                                            <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                                <!--<svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                                <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                                <span class="slds-assistive-text">More Options for this item</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- <p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> created an event with
+        <a href="javascript:void(0);">Aida Lee</a> and 5 others</p> -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!and(acm.Field == 'PRM_Channel_Program_Level_Id__c',or(acm.NewValue == 'Titanium',acm.NewValue == 'Gold',acm.NewValue == 'Platinum'))}">
+                                
+                                <div class="slds-timeline__item_expandable slds-timeline__item_event">
+                                    <span class="slds-assistive-text">event</span>
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <button class="slds-button slds-button_icon" title="Toggle details for EBC Follow up call" aria-controls="event-item-base">
+                                                <!--or(v.activity.newvalue == 'Gold',v.activity.newvalue == 'Platinum',v.activity.newvalue == 'Titanium')    <svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg> -->
+                                                <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                                <span class="slds-assistive-text">Toggle details for EBC Follow up call</span>
+                                            </button>
+                                            <div class="slds-icon_container slds-icon-standard-event slds-timeline__icon" title="event">
+                                                <!--<svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#event"></use>
+        </svg> -->
+                                                <lightning:icon iconName="utility:ribbon" alternativeText="down" size="small" variant="border-filled"/>
+                                            </div>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                                <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                                    <h3 class="slds-truncate" title="{!'Account got upgraded to '+acm.NewValue+' Tier in '+v.activity.partnerRoleName+' role by '+acm.CreatedBy.Name}">
+                                                        <!-- <a href="javascript:void(0);"> -->
+                                                        <strong>Account got upgraded to <a href="{!'/lightning/r/PRM_AccountChannelMembership__c/'+acm.ParentId+'/view'}" target="_blank">'{!acm.NewValue}'</a> Tier in '{!v.activity.partnerRoleName}' role by {!acm.CreatedBy.Name}</strong>
+                                                        <!-- <strong><a href="{!'/lightning/r/PRM_AccountChannelMembership__c/'+v.activity.id+'/view'}" target="_blank">'Tier'</a> is change to {!v.activity.newvalue}</strong>-->
+                                                        <!-- </a> -->
+                                                    </h3>
+                                                    <div class="slds-no-flex">
+                                                        <!-- <span class="slds-icon_container slds-icon-utility-world" title="Public sharing"> -->
+                                                        <!--<svg class="slds-icon slds-icon_xx-small slds-icon-text-default slds-m-left_x-small" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#world"></use>
+        </svg> -->
+                                                        <!--<lightning:icon iconName="utility:world" alternativeText="down" size="x-small" variant="border-filled"/>
+        <span class="slds-assistive-text">Public sharing</span>
+        </span> -->
+                                                    </div>
+                                                </div>
+                                                <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                                    <p class="slds-timeline__date"><lightning:formattedDateTime value="{!acm.CreatedDate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/></p>
+                                                    <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                                        <!--<svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                                        <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                                        <span class="slds-assistive-text">More Options for this item</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- <p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> created an event with
+        <a href="javascript:void(0);">Aida Lee</a> and 5 others</p> -->
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                    
+                </aura:iteration>
+            </aura:if>
+        </li>
+        
+        <li>
+            <aura:if isTrue="{!v.activity.objectname == 'Account'}">
+                
+                <div class="slds-timeline__item_expandable slds-timeline__item_task">
+                    <span class="slds-assistive-text">task</span>
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <button class="slds-button slds-button_icon" title="Toggle details for Review proposals for EBC deck with larger team and have marketing review this" aria-controls="task-item-base">
+                                <!-- <svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg> -->
+                                <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                <span class="slds-assistive-text">Toggle details for Review proposals for EBC deck with larger team and have marketing review this</span>
+                            </button>
+                            <div class="slds-icon_container slds-icon-standard-task slds-timeline__icon" title="task">
+                                <!--<svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#task"></use>
+        </svg> -->
+                                <lightning:icon iconName="utility:record_create" alternativeText="down" size="small" variant="border-filled"/>
+                            </div>
+                        </div>
+                        <div class="slds-media__body">
+                            <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                    <!-- <div class="slds-checkbox">
+        <input type="checkbox" name="options" id="checkbox-unique-id-17" value="checkbox-unique-id-17" />
+        <label class="slds-checkbox__label" for="checkbox-unique-id-17">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-form-element__label slds-assistive-text">Mark Review proposals for EBC deck with larger team and have marketing review this complete</span>
+        </label>
+        </div> -->
+                                    <h3 class="slds-truncate" title="{!'Account- '+v.activity.recordName+' is created by '+v.activity.accountUserName+'.'}">
+                                        <!-- <a href="javascript:void(0);"> -->
+                                        <strong>{!v.activity.objectname} - '{!v.activity.recordName}' is created by {!v.activity.accountUserName}.</strong>
+                                        <!-- </a> -->
+                                    </h3>
+                                    <div class="slds-no-flex">
+                                        <!-- <span class="slds-icon_container slds-icon-utility-rotate" title="Recurring Task">-->
+                                        <!-- <svg class="slds-icon slds-icon_xx-small slds-icon-text-default slds-m-left_x-small" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#rotate"></use>
+        </svg> -->
+                                        <!--<lightning:icon iconName="utility:rotate" alternativeText="down" size="x-small" variant="border-filled"/>  
+        <span class="slds-assistive-text">Recurring Task</span>
+        </span> -->
+                                    </div>
+                                </div>
+                                <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                    <p class="slds-timeline__date"><lightning:formattedDateTime value="{!v.activity.createddate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/></p>
+                                    <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                        <!--  <svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                        <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                        <span class="slds-assistive-text">More Options for this item</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- <p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> created a task with
+        <a href="javascript:void(0);">Charlie Gomez</a>
+        </p> -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </aura:if>
+            
+        </li>
+    </ul>
+    
+	
+</aura:component>

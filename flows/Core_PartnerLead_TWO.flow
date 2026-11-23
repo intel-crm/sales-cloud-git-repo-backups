@@ -54,8 +54,8 @@ Core_Reject_flag_update</description>
 &apos;Core_SetReminderDays&apos;</description>
         <name>FieldUpdates_Core_SetReminderDays</name>
         <label>FieldUpdates Core_SetReminderDays</label>
-        <locationX>588</locationX>
-        <locationY>377</locationY>
+        <locationX>586</locationX>
+        <locationY>378</locationY>
         <inputAssignments>
             <field>Core_1st_Reminder__c</field>
             <value>
@@ -93,6 +93,12 @@ Core_Reject_flag_update</description>
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Core_Partner_Lead_Owner__c</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Status</field>
             <value>
                 <stringValue>PRL</stringValue>
@@ -111,5 +117,5 @@ Core_Reject_flag_update</description>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>

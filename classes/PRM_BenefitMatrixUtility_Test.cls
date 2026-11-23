@@ -6,24 +6,28 @@ public class PRM_BenefitMatrixUtility_Test {
         cp.Name='Intel Partner Alliance';
         cp.PRM_programCode__c='IPA';
         insert cp;
+        //system.debug('CP Insertion done');
                 
         ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
         //cpl.PRM_programlevelcode__c=
         cpl.Name='Member';
         cpl.ProgramId=cp.Id;
         insert cpl;
+        //system.debug('CPL Insertion done');
         
         ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
         //cpl.PRM_programlevelcode__c=
         cpl2.Name='Titanium';
         cpl2.ProgramId=cp.Id;
         insert cpl2;
+        //system.debug('CPL2 Insertion done');
         
         PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb.Name='Partner University';
         pb.PRM_Benefit_Cd__c = 'BFTTRGUNI';
         pb.PRM_Channel_Program_Id__c = cp.id;
         insert pb;
+        //system.debug('PB Insertion done');
        
         
         PRM_PartnerType__c pt = new PRM_PartnerType__c(); //Partner Type
@@ -32,6 +36,7 @@ public class PRM_BenefitMatrixUtility_Test {
         pt.PRM_PartnerRoleCode__c = 'SPR';
         pt.PRM_channelprogram__c = cp.id;
         insert pt;
+        //system.debug('PT Insertion done');
         
         PRM_VXBnftMatrix__c bm = new PRM_VXBnftMatrix__c(); //Benefit Matrix 
         bm.PRM_Partner_Benefit_Id__c = pb.id;
@@ -42,6 +47,7 @@ public class PRM_BenefitMatrixUtility_Test {
         bm.PRM_Approval_Type_Nm__c = 'Manual';
         
         insert bm;//Benefit Matrix insertion with Member as CPL
+        //system.debug('bm Insertion done'+bm);
        
               
         PRM_VXBnftMatrix__c bm1 = new PRM_VXBnftMatrix__c(); //Benefit Matrix
@@ -53,6 +59,7 @@ public class PRM_BenefitMatrixUtility_Test {
         bm1.PRM_Approval_Type_Nm__c = 'Manual';
         
         insert bm1;//Benefit Matrix insertion with Titanium as CPL
+        //system.debug('bm1 Insertion done'+bm1);
             
         
         Test.startTest();
@@ -70,15 +77,15 @@ public class PRM_BenefitMatrixUtility_Test {
         bmlist.add(bm1);
         bmlist.add(bm2);
         
-        try
-        { 
+        try{ 
             database.insert(bmlist,false);//Benefit Matrix insertion with Member as CPL, as it is a duplicate it should throw error
+            //system.debug('bm2 Insertion done'+bm2);
         }
         catch(Exception e)
         {
             //Boolean expectedExceptionThrown =  (e.getMessage().contains(System.label.PRM_BenfitMatrix_Error1)) ? true : false;
             PRM_ErrorUtilityClass.logError(e);
-        }     
+        }  
         Test.stopTest();
         System.assertEquals(bm2.PRM_Approval_Type_Nm__c,'Manual','Value does not match');
     }
@@ -88,24 +95,28 @@ public class PRM_BenefitMatrixUtility_Test {
         cp.Name='Intel Partner Alliance';
         cp.PRM_programCode__c='IPA';
         insert cp;
+        //system.debug('CP Insertion done');
                 
         ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
         //cpl.PRM_programlevelcode__c=
         cpl.Name='Member';
         cpl.ProgramId=cp.Id;
         insert cpl;
+        //system.debug('CPL Insertion done');
         
         ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
         //cpl.PRM_programlevelcode__c=
         cpl2.Name='Titanium';
         cpl2.ProgramId=cp.Id;
         insert cpl2;
+        //system.debug('CPL2 Insertion done');
         
         PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb.Name='Partner University';
         pb.PRM_Benefit_Cd__c = 'BFTTRGUNI';
         pb.PRM_Channel_Program_Id__c = cp.id;
         insert pb;
+        //system.debug('PB Insertion done');
        
         
         PRM_PartnerType__c pt = new PRM_PartnerType__c(); //Partner Type
@@ -114,6 +125,7 @@ public class PRM_BenefitMatrixUtility_Test {
         pt.PRM_PartnerRoleCode__c = 'SPR';
         pt.PRM_channelprogram__c = cp.id;
         insert pt;
+        //system.debug('PT Insertion done');
         
         PRM_VXBnftMatrix__c bm = new PRM_VXBnftMatrix__c(); //Benefit Matrix 
         bm.PRM_Partner_Benefit_Id__c = pb.id;
@@ -124,6 +136,7 @@ public class PRM_BenefitMatrixUtility_Test {
         bm.PRM_Approval_Type_Nm__c = 'Manual';
         
         insert bm;//Benefit Matrix insertion with Member as CPL
+        //system.debug('bm Insertion done'+bm);
        
               
         PRM_VXBnftMatrix__c bm1 = new PRM_VXBnftMatrix__c(); //Benefit Matrix
@@ -135,6 +148,7 @@ public class PRM_BenefitMatrixUtility_Test {
         bm1.PRM_Approval_Type_Nm__c = 'Manual';
         
         insert bm1;//Benefit Matrix insertion with Titanium as CPL
+        //system.debug('bm1 Insertion done'+bm1);
             
         PRM_VXBnftMatrix__c[] bmlist=new List<PRM_VXBnftMatrix__c>();
         bmlist.add(bm);
@@ -150,7 +164,7 @@ public class PRM_BenefitMatrixUtility_Test {
         }
         catch(Exception e)
         {
-            Boolean expectedExceptionThrown =  (e.getMessage().contains(System.label.PRM_BenfitMatrix_Error1)) ? true : false;
+            //Boolean expectedExceptionThrown =  (e.getMessage().contains(System.label.PRM_BenfitMatrix_Error1)) ? true : false;
             PRM_ErrorUtilityClass.logError(e);
         }
         

@@ -2,7 +2,7 @@
 * Class Name        :  Core_MDF_DeletePNUM_Batch
 * Created Date      :  7/14/2020
 * Modification Log
-* Developer               Date               Description
+* Developer           	  Date               Description
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture - Varun       7/14/2020          Batch class to delete PNUM for users who are not part of the Acc-Program specific group
 *****************************************************************************************************************************************/
@@ -54,7 +54,7 @@ public without sharing class Core_MDF_DeletePNUM_Batch implements Database.Batch
     @parameters :   Database.BatchableContext
     Description :   Collects all the PNUM records to be deleted
     Added By    :   Accenture - Varun - 7/14/2020 
-    Modified By :                               Date:               Changes:
+    Modified By :                               Date:         		Changes:
     **********************************************************************************************************/  
     public void execute(Database.BatchableContext bc, List<Core_MDF_Partner_Node_User_Mapping__c> scope) {
         
@@ -76,7 +76,7 @@ public without sharing class Core_MDF_DeletePNUM_Batch implements Database.Batch
     @parameters :   Database.BatchableContext
     Description :   deletes all the PNUM records
     Added By    :   Accenture - Varun - 7/14/2020 
-    Modified By :                               Date:               Changes:
+    Modified By :                               Date:         		Changes:
     **********************************************************************************************************/ 
     public void finish(Database.BatchableContext bc) {
         
@@ -93,7 +93,7 @@ public without sharing class Core_MDF_DeletePNUM_Batch implements Database.Batch
     @parameters :   Set of group ids
     Description :   Prepares a Map of PGM groups and the users associated to that group
     Added By    :   Accenture - Varun - 7/14/2020 
-    Modified By :                               Date:               Changes:
+    Modified By :                               Date:         		Changes:
     **********************************************************************************************************/ 
     public void initializeBatch(Set<Id> groupIdSet){
         

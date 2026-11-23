@@ -3,22 +3,6 @@
     <apiVersion>61.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Assign_IPA</name>
-        <label>Assign IPA</label>
-        <locationX>1326</locationX>
-        <locationY>782</locationY>
-        <assignmentItems>
-            <assignToReference>IsIPA</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>IPA_ACM_ID</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>CE_Record_output</name>
         <label>CE Record output</label>
         <locationX>182</locationX>
@@ -30,38 +14,6 @@
                 <elementReference>Get_Contact_Entitlement_Records</elementReference>
             </value>
         </assignmentItems>
-    </assignments>
-    <assignments>
-        <name>IPA_ACM_ID</name>
-        <label>IPA ACM ID</label>
-        <locationX>1326</locationX>
-        <locationY>890</locationY>
-        <assignmentItems>
-            <assignToReference>ACM_recordid</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_over_ACM.PRM_Account_Id__r.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Partner_Role</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Partner_Role</name>
-        <label>Partner Role</label>
-        <locationX>1326</locationX>
-        <locationY>998</locationY>
-        <assignmentItems>
-            <assignToReference>PartnerRole</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Loop_over_ACM.PRM_Partner_Role__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Loop_over_ACM</targetReference>
-        </connector>
     </assignments>
     <decisions>
         <name>CE_Record_status</name>
@@ -100,35 +52,10 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_if_IPA_ACM</name>
-        <label>Check if IPA ACM</label>
-        <locationX>1458</locationX>
-        <locationY>674</locationY>
-        <defaultConnector>
-            <targetReference>Loop_over_ACM</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Assign_IPA_Check</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Loop_over_ACM.PRM_Channel_Program_Id__r.Name</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Intel Partner Alliance</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_IPA</targetReference>
-            </connector>
-            <label>Assign IPA Check</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>DZP_Contact_Entitlement_added</name>
         <label>DZP Contact Entitlement added</label>
         <locationX>974</locationX>
-        <locationY>1490</locationY>
+        <locationY>782</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Create_IPA_Entitlement</name>
@@ -150,13 +77,13 @@
         <name>IPA_Account</name>
         <label>IPA Account?</label>
         <locationX>1238</locationX>
-        <locationY>1274</locationY>
+        <locationY>566</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Create</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>IsIPA</leftValueReference>
+                <leftValueReference>Get_Account_Details.Core_Intel_Partner_Alliance_PartnerGroup__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -196,20 +123,6 @@
     <environments>Default</environments>
     <interviewLabel>EBR Framework Upsert Contact Entitlement {!$Flow.CurrentDateTime}</interviewLabel>
     <label>EBR Framework Upsert Contact Entitlement</label>
-    <loops>
-        <name>Loop_over_ACM</name>
-        <label>Loop over ACM</label>
-        <locationX>1238</locationX>
-        <locationY>566</locationY>
-        <collectionReference>Get_Account_Details</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Check_if_IPA_ACM</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>IPA_Account</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -322,7 +235,7 @@
         <name>Create_IPA_Employee_Entitlement</name>
         <label>Create IPA Employee Entitlement</label>
         <locationX>710</locationX>
-        <locationY>1814</locationY>
+        <locationY>1106</locationY>
         <faultConnector>
             <isGoTo>true</isGoTo>
             <targetReference>Create_Core_log_Entry_Rec_for_CE_records</targetReference>
@@ -330,13 +243,13 @@
         <inputAssignments>
             <field>PRM_AccountId__c</field>
             <value>
-                <elementReference>ACM_recordid</elementReference>
+                <elementReference>Get_Account_Details.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>PRM_Comments__c</field>
             <value>
-                <stringValue>Auto Granted IPA for DZP</stringValue>
+                <stringValue>Auto Grated IPA for DZP</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -366,7 +279,7 @@
         <inputAssignments>
             <field>PRM_IPA_Partner_Role__c</field>
             <value>
-                <elementReference>PartnerRole</elementReference>
+                <elementReference>Get_Account_Details.Core_IPA_Partner_Role__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -408,7 +321,7 @@
         <inputAssignments>
             <field>PRM_Status_Reason__c</field>
             <value>
-                <stringValue>Auto Granted IPA for DZP</stringValue>
+                <stringValue>Auto Grated IPA for DZP</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -420,13 +333,13 @@
         <inputAssignments>
             <field>PRM_Suppress_Email__c</field>
             <value>
-                <booleanValue>true</booleanValue>
+                <booleanValue>false</booleanValue>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>PRM_Upload_Type__c</field>
             <value>
-                <stringValue>Auto Granted IPA for DZP</stringValue>
+                <stringValue>Bulk Add</stringValue>
             </value>
         </inputAssignments>
         <object>PRM_Bulk_Data_Upload__c</object>
@@ -439,27 +352,18 @@
         <locationY>458</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Loop_over_ACM</targetReference>
+            <targetReference>IPA_Account</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>PRM_Account_Id__c</field>
+            <field>Id</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>contactInput.Account.Id</elementReference>
             </value>
         </filters>
-        <filters>
-            <field>PRM_Status_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Approved</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>PRM_AccountChannelMembership__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Asc</sortOrder>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -498,7 +402,7 @@
         <name>Get_Contact_Entitlement_Records_DZP</name>
         <label>Get Contact Entitlement Records DZP</label>
         <locationX>974</locationX>
-        <locationY>1382</locationY>
+        <locationY>674</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>DZP_Contact_Entitlement_added</targetReference>
@@ -526,7 +430,7 @@
         <name>Get_Contact_relationship</name>
         <label>Get Contact relationship</label>
         <locationX>710</locationX>
-        <locationY>1706</locationY>
+        <locationY>998</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Create_IPA_Employee_Entitlement</targetReference>
@@ -547,7 +451,7 @@
         <name>Get_IPA_Entitlement</name>
         <label>Get IPA Entitlement</label>
         <locationX>710</locationX>
-        <locationY>1598</locationY>
+        <locationY>890</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Contact_relationship</targetReference>
@@ -625,13 +529,6 @@
     </start>
     <status>Active</status>
     <variables>
-        <name>ACM_recordid</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
         <name>BilkDataLoadRecords</name>
         <dataType>SObject</dataType>
         <isCollection>true</isCollection>
@@ -654,20 +551,6 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>Contact</objectType>
-    </variables>
-    <variables>
-        <name>IsIPA</name>
-        <dataType>Boolean</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>PartnerRole</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>RegRecordInput</name>

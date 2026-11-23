@@ -27,7 +27,6 @@ public without sharing class MarketplaceImageUploader {
         // Network myNetwork = [SELECT Id FROM Network WHERE Name ='Intel Style Guide' ];
         // ConnectApi.Community myCommunity = ConnectApi.Communities.getCommunity(myNetwork.id);
         // String baseUrl = myCommunity.siteUrl;
-        //System.debug('inside servers get image');
         GalleryWrapper offeringGallery = new GalleryWrapper();
         String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
         List<ImageWrapper> images = new List<ImageWrapper>();

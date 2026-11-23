@@ -300,6 +300,7 @@ check if its a valid productType and to check if rowsLimit/rowsOffset are invali
                                        FROM Pricing_Dynamic_Data_Table__mdt WHERE DeveloperName IN: (Label.Pricing_AllProducts_Param.split(','))];
             if(productTypeMetadataList.size() > 0) {
                 for(Pricing_Dynamic_Data_Table__mdt mdt : productTypeMetadataList ) {
+                    system.debug('mdt:'+mdt.Pricing_Record_Type_Pkl__c);
                     if(String.isNotBlank(mdt.Pricing_Where_Clause__c)) {
                         whereClause =  mdt.Pricing_Where_Clause__c.replace('where','WHERE');
                         whereClause = whereClause.replace('WHERE', 'OR');
@@ -307,8 +308,10 @@ check if its a valid productType and to check if rowsLimit/rowsOffset are invali
                     }
                 }
             }
+            system.debug('whereClauseList:'+whereClauseList.size());
             whereClause = whereClauseList[0]+ ' ' + whereClauseList[1]+ ' ' + whereClauseList[2] + whereClauseList[3];
             whereClauseWithSearchCol.add(whereClause);
+            system.debug('whereClauseWithSearchCol:'+whereClauseWithSearchCol.size());
         }
         else{
             // NIC is Same as Ethernet
@@ -318,12 +321,23 @@ check if its a valid productType and to check if rowsLimit/rowsOffset are invali
                         : productType == Label.Pricing_Tender_Graphics_Product ? Label.Pricing_AllProducts_Param.split(',')[4]
                         : productType == Label.Pricing_Tender_CCG_Quote ? Label.Pricing_AllProducts_Param.split(',')[3] //CH - Added condition for 'Client' productType
                             : productType;
+                            system.debug('prodType:'+prodType);
             productTypeMetadataList = [SELECT Id, Pricing_Query__c, Pricing_Record_Type_Pkl__c, Pricing_Where_Clause__c, 
                                        Pricing_SearchColumn_Field__c FROM Pricing_Dynamic_Data_Table__mdt 
                                        WHERE DeveloperName =: prodType];
             if(productTypeMetadataList.size() > 0) {
                 for(Pricing_Dynamic_Data_Table__mdt mdt : productTypeMetadataList ) {
+                    system.debug('Pricing_Record_Type_Pkl__c::'+mdt.Pricing_Record_Type_Pkl__c);
                     if(String.isNotBlank(mdt.Pricing_Where_Clause__c)) {
+
+                    /*if(mdt.Pricing_Record_Type_Pkl__c == 'Data Center Xeon® CPU' || mdt.Pricing_Record_Type_Pkl__c == 'Small Volume Quotes - Data Center Xeon® CPU') { 
+                        List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
+                        String additionalCondition = ' AND (Core_Line_of_Business__c IN (\'' + String.join(lobValuesList, '\',\'') + '\') OR Name Like \'%' + String.escapeSingleQuotes('Intel® Xeon®') + '%\')) OR Name = \'' + String.escapeSingleQuotes('Write In Product') + '\'';
+                        system.debug('additionalCondition:'+additionalCondition);
+                        whereClause =  mdt.Pricing_Where_Clause__c + additionalCondition + ') ';
+                    }else{
+                       whereClause =  mdt.Pricing_Where_Clause__c;
+                    }*/
                         whereClause =  mdt.Pricing_Where_Clause__c;
                         searchColumn = mdt.Pricing_SearchColumn_Field__c;
                         whereClauseWithSearchCol.add(whereClause);
@@ -332,7 +346,8 @@ check if its a valid productType and to check if rowsLimit/rowsOffset are invali
                 }
             }
         }
-                return whereClauseWithSearchCol;
+        System.debug(whereClauseWithSearchCol);
+        return whereClauseWithSearchCol;
     }
     
     //Wrapper that is used for the Response of the Product GET API containing the product fields

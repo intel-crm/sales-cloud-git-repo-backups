@@ -23,11 +23,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_account_name_nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_account_program__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -59,11 +54,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Server_Deal_Type_Nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_approval_status_txt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -188,11 +178,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_cmf_pricing_parent__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_sap_ecp_nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -244,11 +229,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__ContractingMethod__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_contract_manufacturer_disty_nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -378,11 +358,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_ecp_id_id__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__EmailTemplateId__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -398,27 +373,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_end_customer_list_view__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_end_customer_nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_end_customer_city__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_end_customer_city_disty_nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_end_customer_city_nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -443,11 +403,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_end_customer_country_nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_End_Customer_Name__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -464,11 +419,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Region_Nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_end_customer_State__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -523,6 +473,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_Intel_Response_Requested_By_Date__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Pricing_Intel_Sales_Rep_Email_Txt__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -543,7 +498,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_dup_invalid_OPNs__c</field>
+            <field>core_cpq_iscloned_revised__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -773,11 +728,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>core_cpq_parentaccount__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_original_quote__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -979,11 +929,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>core_cpq_quote_type_nm__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Pricing_Program_Type_Nm__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -1255,6 +1200,51 @@
             <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Quotes: Distributor: Geo</displayNameOverride>
             <field>SBQQ__Distributor__c.Core_Geo__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_extended_cp_quote_cb__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_invalid_opns_dup__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_siebel_quote_no_txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_siebel_rfq_num_txt__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_AdditionalRecipients__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_invalid_opn_ta__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_SW_Account_Name__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pricing_sw_Quote_Owner__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>core_cpq_is_Budgetary_cb__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <masterLabel>Quotes</masterLabel>

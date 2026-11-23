@@ -27,7 +27,7 @@
         <name>Core_MDF_Recovered_Budget_Nm__c</name>
     </fields>
     <fields>
-        <label>Risolvi, poi ricevi il pagamento</label>
+        <label><!-- Settle, then get paid? --></label>
         <name>Core_MDF_Sure_Pay_Ind__c</name>
     </fields>
     <gender>Masculine</gender>

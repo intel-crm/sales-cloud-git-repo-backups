@@ -9,7 +9,7 @@
          </div>
         </td>
         <td style="border: none; padding-right: 20px;" align="right">
-        <apex:image url="https://intel.my.salesforce.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" /> 
+        <apex:image url="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" /> 
         </td>
         </tr>
         </tbody>
@@ -92,7 +92,7 @@
    </tr>
    </tbody>
    </table>
-      
+       <c:Core_oppty_fetchLineItems opportunityIDForController="{!relatedTo.Opportunity__r.Id}"/>  
     <table style="border: 1px solid #d3d3d3;padding-left:50px;padding-top:5px;padding-bottom:5px;font-size: 20px;" width="100%">
   <tr>
     <td>

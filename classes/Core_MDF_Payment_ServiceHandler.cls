@@ -28,7 +28,7 @@ public without sharing class Core_MDF_Payment_ServiceHandler {
     public static Boolean isPaymentUpdated(Map<Id,Core_MDF_Payment__c> oldPaymentMap, Core_MDF_Payment__c paymentRecord) {
 
         Boolean isUpdated = false;
-		
+		System.debug('@@@RecType: '+paymentRecord.recordTypeId);
         if (isNotEmpty(oldPaymentMap) && oldPaymentMap.containsKey(paymentRecord.Id) && oldPaymentMap.get(paymentRecord.Id).Core_MDF_Payment_Status_Txt__c != paymentRecord.Core_MDF_Payment_Status_Txt__c && paymentRecord.Core_MDF_Payment_Status_Txt__c == paymentStatus 
 			
             && (FeatureManagement.checkPermission('Core_MDF_CCP_Internal_Payment_Admin_Manager') //Tejaswini
@@ -49,8 +49,12 @@ public without sharing class Core_MDF_Payment_ServiceHandler {
         return isUpdated;
     }
     //checks if EFT Number on payment is updated and payment status is paid
+    /* Any intermediate updates on payment, won't be reflect on claim=> because of multiple(2) DML updates.
+       EFT Number will be synchronized from payment to claim only when payment status is 'paid'
+    */
     public static boolean isEFTNbrUpdated(Core_MDF_Payment__c oldPmtRec, Core_MDF_Payment__c newPmtRec) {
         Boolean isUpdated = false;
+
         if(oldPmtRec.Core_MDF_EFT_Nbr__c != newPmtRec.Core_MDF_EFT_Nbr__c && newPmtRec.Core_MDF_Payment_Status_Txt__c == paymentStatus
             && oldPmtRec.Core_MDF_Payment_Status_Txt__c == newPmtRec.Core_MDF_Payment_Status_Txt__c) {
             isUpdated = true;

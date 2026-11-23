@@ -39,9 +39,17 @@ public without sharing class Core_IntegrationQueueService {
             Core_ACM_Integration_Queue__c queueRecord = new Core_ACM_Integration_Queue__c();
             queueRecord.Core_Contact__c = contact.Id;
             queueRecord.Core_Process_Type__c = processType;
-            queueRecord.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_ERPM;
             queueRecord.Core_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.NEW_STATUS);
-            queueRecord.Core_Payload__c = createERPMPayloadJSON(contact, oldContactMap);
+            //Ganesh Changes
+			if(contact.Core_Erpm_Integration_Status__c == 'Successful' && contact.Core_AGS_Integration_Status__c == 'Pending'){
+			queueRecord.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_AGS;
+			queueRecord.Core_Payload__c = createRoleRequestPayloadJSON(contact, oldContactMap);
+			}
+			else{
+            queueRecord.Core_Message_Type__c = Core_ACM_Constants.MESSAGE_TYPE_ERPM;
+			queueRecord.Core_Payload__c = createERPMPayloadJSON(contact, oldContactMap);
+			}
+			//Ganesh Change Ends
             queueRecords.add(queueRecord);
         }
         return queueRecords;
@@ -55,11 +63,14 @@ public without sharing class Core_IntegrationQueueService {
                 contMsg.Contact__c = queueRecords[i].Core_Contact__c;
                 contMsg.ACM_Integration_Queue__c = queueRecords[i].Id;
                 contactMessages.add(contMsg);
+                //Ganesh Changes
+                Contact cTemp = new Contact(Id = queueRecords[i].Core_Contact__c);
+				if(queueRecords[i].Core_Message_Type__c == Core_ACM_Constants.MESSAGE_TYPE_AGS) {
+					cTemp.Core_AGS_Integration_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.IN_PROGRESS_STATUS);}
+				else{
+					cTemp.Core_ERPM_Integration_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.IN_PROGRESS_STATUS);}
 
-                Contact cTemp = new Contact(
-                    Id = queueRecords[i].Core_Contact__c,
-                    Core_ERPM_Integration_Status__c = Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.IN_PROGRESS_STATUS)
-                );
+				//Ganesh Changes End
                 lstToUpdateContacts.add(cTemp);
             }
         }
@@ -77,7 +88,21 @@ public without sharing class Core_IntegrationQueueService {
         }
         return payloadJson;
     }
-
+	
+    //Ganesh Changes
+	private static String createRoleRequestPayloadJSON(Contact contact, Map<Id, Contact> oldContactMap) {
+    String payloadJson;
+    try {
+        Core_ACM_PayloadWrapper.RoleRequestPayload payload = Core_ACM_PayloadBuilder.buildRoleRequestPayload(contact);
+        payloadJson = JSON.serialize(payload);
+    } catch (Exception e) {
+        UCD_ACM_Logger.error(Core_ACM_Constants.CLASS_INTEGRATION_QUEUE_SERVICE, 'createRoleRequestPayloadJSON',
+            'Message: ' + e.getMessage() + '. StackTrace: ' + e.getStackTraceString(), contact.Id);
+        throw e;
+    }
+    return payloadJson;
+}
+	//Ganesh Changes End  
     private static void handleInsertResults(Database.SaveResult[] results, List<Core_ACM_Integration_Queue__c> queueRecords) {
         for (Integer i = 0; i < results.size(); i++) {
             if (!results[i].isSuccess()) {

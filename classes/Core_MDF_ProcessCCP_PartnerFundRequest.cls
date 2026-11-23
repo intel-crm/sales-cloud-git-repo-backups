@@ -80,7 +80,7 @@ Modified By :                      Date:03/29/2021                     Changes:N
                 sendEmailToReviewer.sendDiff = false;
                 inputList.add(sendEmailToReviewer);  
             }
-	    if(pfr != NULL && pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM && pfr.Core_MDF_L1_Primary_Approver_Id__c!=NULL ){ 
+        if(pfr != NULL && pfr.Core_MDF_Program__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM && pfr.Core_MDF_L1_Primary_Approver_Id__c!=NULL ){ 
                     Core_MDF_GenericClassToSendMail.MailParams sendEmailToReviewer = new Core_MDF_GenericClassToSendMail.MailParams();
                     sendEmailToReviewer.recordId = pfr.Id;
                     sendEmailToReviewer.templateName = 'Core_MDF_Internal_Status_Change';
@@ -306,7 +306,7 @@ Modified By :                      Date:21/06/2022                     Changes:N
         Map<String,Object> programNameByRecNameMap = Core_MDF_GeneralPurpose_UI_Utility.getProgramNameByRecName(); 
 
             for(PartnerFundRequest pfr : pfrList){
-		//Akash - Latest Changes for KIIT
+        //Akash - Latest Changes for KIIT
                 String program = '';
                 String ultimateAccId = '';
                 Map<string, List<Id>> resultsubMap;
@@ -535,7 +535,7 @@ Modified By :                      Date:21/06/2022                     Changes:N
                               
                           }
                    }
-			   }
+               }
                 // For EEF External Primary Partner 
             if(pfr.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_EEF_Program_Name')
                    && accIdSet.contains(pfr.Core_MDF_Campaign_Account_Id__c) && accIdUserIdSetMap.containsKey(pfr.Core_MDF_Campaign_Account_Id__c) 
@@ -553,7 +553,7 @@ Modified By :                      Date:21/06/2022                     Changes:N
                         }
                 }
             
-		}
+        }
             if(inputList != NULL && inputList.size() >0 && sendEmailOnce){
                 Core_MDF_GenericClassToSendMail.sendEmailMethod(inputList);
                 sendEmailOnce = false;
@@ -695,6 +695,24 @@ Modified By   :        Date:          Changes:
 Shivaprasad            08/29/2019     Added condition to check closed status PFR records to avoid unnecessary excecution.
 ******************************************************************************************************/
     public static void shareActivityWithInternalUsers(Map<Id,PartnerFundRequest> oldActivityMap, Map<Id,PartnerFundRequest> newActivityMap){
+        //Processing closed activities unnecessarily
+    // Early return when all activities are CLOSED
+        if(oldActivityMap == null || newActivityMap == null || newActivityMap.isEmpty()) {
+            return;
+        }
+        
+        // Skip sharing operations for activities being closed (batch closure optimization)
+        boolean hasActiveChanges = false;
+        for(PartnerFundRequest pfr : newActivityMap.values()) {
+            if(pfr.Core_MDF_Fund_Request_Status__c != 'Closed') {
+                hasActiveChanges = true;
+                break;
+            }
+        }
+        if(!hasActiveChanges) { return; }
+        
+        
+
         Map<Id,PartnerFundRequest> updatedActivityMap = new Map<Id,PartnerFundRequest>();
        
         Set<String> accountIdProgramIdGeoSubGeoStringSet = new Set<String>();
@@ -736,12 +754,17 @@ Shivaprasad            08/29/2019     Added condition to check closed status PFR
         string new_region_sub='';
         string new_regn_sub='';
         //Put one Map instead of 3 Maps
-       
-        //US1098882
-        for(PartnerFundRequest pfr : [SELECT Id, ChannelPartnerId,Core_MDF_Program__c, ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Region_nm__c,
+       System.debug('map size===='+newActivityMap.size());
+        //US1098882//// Execute query ONCE before loop (gets all 200 records)
+        List<PartnerFundRequest> pfrQueryList = [SELECT Id, ChannelPartnerId,Core_MDF_Program__c, ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c,Core_MDF_Region_nm__c,
                                       ChannelPartner.Core_MDF_Channel_Program__c,ChannelPartner.Core_MDF_Channel_Program__r.Name,Core_MDF_Sub_Region_nm__c,
                                       ChannelPartner.Core_MDF_Group_Id__c, ChannelPartner.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c
-                                      FROM PartnerFundRequest WHERE Id IN :newActivityMap.keySet()]){
+                                      FROM PartnerFundRequest WHERE Id IN :newActivityMap.keySet()];
+          System.debug('map size====count');                            
+        //Convert to Map for instant lookups
+        Map<Id, PartnerFundRequest> pfrQueryMap = new Map<Id, PartnerFundRequest>(pfrQueryList);
+        
+        for(PartnerFundRequest pfr : pfrQueryList){
                                           accountIdSet.add(oldAccountMap.get(pfrIdAccountIdMap.get(pfr.Id)).Core_MDF_CoMarketing_Ultimate_Account__c);
                                           programIdSet.add(oldAccountMap.get(pfrIdAccountIdMap.get(pfr.Id)).Core_MDF_Channel_Program__c);
                                           programStrSet.add(oldActivityMap.get(pfr.Id).Core_MDF_Program__c);
@@ -950,17 +973,17 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
     for(PartnerFundRequest pfr : newList){
         if(programsForActBudgetAmtCheck.contains(pfr.Core_MDF_Program__c)){
            
-	    
-	    if(isAllocationAmountValidationRequired(oldMap, pfr)){
+        
+        if(isAllocationAmountValidationRequired(oldMap, pfr)){
           
-		
-		if(opalBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)){
+        
+        if(opalBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)){
                     isOpal = true;
                     String campaignIdBudgetType = string.valueOf(pfr.CampaignId) + pfr.Core_MDF_Budget_Type_nm__c;
                     campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
                     String cmpIdBudgetIdBudgetType = String.ValueOf(pfr.CampaignId) + string.valueOf(pfr.BudgetId) + pfr.Core_MDF_Budget_Type_nm__c;
                     
-		    campaignIdSet.add(pfr.CampaignId);
+            campaignIdSet.add(pfr.CampaignId);
                     checkCampaignError = true;
                     if(budgetTypeReqAllocationValidationList.contains(pfr.Core_MDF_Budget_Type_nm__c)){
                         allocationIdSet.add(pfr.AllocationId);
@@ -968,12 +991,12 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                 }
                     else if(isRetailAccountBasedOrEEF(pfr)){
                     
-		    Decimal campAmount = 0;
+            Decimal campAmount = 0;
                     String campaignIdBudgetType = string.valueOf(pfr.CampaignId) + pfr.Core_MDF_Budget_Type_nm__c;
                     campaignIdBudgetTypeToBudgetIdMap.put(campaignIdBudgetType, pfr.BudgetId);
                     
                     
-		    campAmount =  pfr.Core_MDF_Campaign_Amount__c != null ? pfr.Core_MDF_Campaign_Amount__c : campAmount;
+            campAmount =  pfr.Core_MDF_Campaign_Amount__c != null ? pfr.Core_MDF_Campaign_Amount__c : campAmount;
                         if(!cmpIdBudgetIdBudgetTypeToAmountMap.containsKey(campaignIdBudgetType)){
                             cmpIdBudgetIdBudgetTypeToAmountMap.put(campaignIdBudgetType, campAmount);
                         }//Creating map with camp+budgettype as key and camp amount as value,budget not considered
@@ -1017,7 +1040,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
            
         if(isOpal){  
             
-	    for(Core_MDF_Campaign_Budgets__c campBudget : [SELECT Id, Core_MDF_Reimbursement_Amt__c,                    Core_MDF_Budget_Type_Nm__c,Core_MDF_Campaign_Id__c,Core_MDF_Budget_Name_Id__c
+        for(Core_MDF_Campaign_Budgets__c campBudget : [SELECT Id, Core_MDF_Reimbursement_Amt__c,                    Core_MDF_Budget_Type_Nm__c,Core_MDF_Campaign_Id__c,Core_MDF_Budget_Name_Id__c
                                                            FROM Core_MDF_Campaign_Budgets__c
                                                            WHERE Core_MDF_Budget_Name_Id__c IN: campaignIdBudgetTypeToBudgetIdMap.values() 
                                                            AND Core_MDF_Campaign_Id__c IN: campaignIdSet]){
@@ -1034,7 +1057,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                                           // Looping through other activities of the campaign
                 String cmpIdBudgetIdBudgetType = String.ValueOf(pfr.CampaignId) + String.ValueOf(pfr.BudgetId) + pfr.Core_MDF_Budget_Type_nm__c;
                 String campaignIdBudgetType = string.valueOf(pfr.CampaignId) + pfr.Core_MDF_Budget_Type_nm__c;
-	    Boolean isCmpOrEEFBudget = false;
+        Boolean isCmpOrEEFBudget = false;
             //Avoid Deeply Nested IF Statements
             Boolean isTargetBudget = (cmpBudgetTypeList != null && cmpBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)) || pfr.Core_MDF_Program__c == EEF_PROGRAM;
             if (isTargetBudget) {
@@ -1046,10 +1069,10 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                                           
                 if((budgetAgainstAmountMap.containsKey(cmpIdBudgetIdBudgetType) || budgetAgainstAmountMap.containsKey(campaignIdBudgetType))
                     && pfr.Amount != null){
-		    
+            
                     decimal amount = 0;
                     amount += isRetailOrAccountBased(pfr) ? budgetAgainstAmountMap.get(campaignIdBudgetType) : budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
-		if(isCmpOrEEFBudget){
+        if(isCmpOrEEFBudget){
                     if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){ 
                         amount += pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
                     }
@@ -1064,7 +1087,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
             }else{
                 if(pfr.Amount != null){
                     decimal amount = 0;
-		   
+           
                     if(isCmpOrEEFBudget){
                         if(pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CLOSED_STATUS && pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c != null){ 
                             amount += pfr.Core_MDF_Activity_Reimbursement_Amt_nbr__c;
@@ -1118,7 +1141,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                     } else{
                             budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, amount); }}}}
        
-	for(PartnerFundRequest pfr : newList){
+    for(PartnerFundRequest pfr : newList){
             Boolean addError = FALSE;
             //Allocation Amount Validation
                 if(pfr.Core_MDF_Program__c!=EEF_PROGRAM && (budgetTypeReqAllocationValidationList.contains(pfr.Core_MDF_Budget_Type_nm__c) || (pfr.Core_MDF_Program__c == 'Intel Partner Alliance' && pfr.Core_MDF_Proposal_Based_Ind__c == false))){
@@ -1130,7 +1153,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                         pfrsUsingAllocation = finalAllocationAmountMap.get(pfr.AllocationId);
                     }
                 
-		if(allocationIdToAllocatedAmountMap.containsKey(pfr.AllocationId) &&
+        if(allocationIdToAllocatedAmountMap.containsKey(pfr.AllocationId) &&
                     allocationIdToAllocatedAmountMap.get(pfr.AllocationId) != NULL){
                     allocationAmount = allocationIdToAllocatedAmountMap.get(pfr.AllocationId);
                 }
@@ -1146,7 +1169,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                 
                     totalPfrAmountUsingAllocation = pfrsUsingAllocation + currentActivityAmount;
                    
-		// Added this flag to stop recursion when there's a Status change. Since Amount was getting added twice in Transaction
+        // Added this flag to stop recursion when there's a Status change. Since Amount was getting added twice in Transaction
                 if(!stopRecursion){
                     stopRecursion = true;
                     if(allocationAmount < totalPfrAmountUsingAllocation && pfr.Core_MDF_Fund_Request_Status__c != Core_MDF_CCP_ConstantClass.PFR_CANCELLED_STATUS){
@@ -1172,7 +1195,7 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                             amountOnBudget += cmpIdBudgetIdBudgetTypeToAmountMap.get(cmpIdBudgetIdBudgetType);
                         }
                     }
-		    //Get sum of all existing activities amount
+            //Get sum of all existing activities amount
                     if(isRetailOrAccountBased(pfr) && budgetAgainstAmountMap.containsKey(campaignIdBudgetType)){
                             existingPfrAmount += budgetAgainstAmountMap.get(campaignIdBudgetType);//sum of amount for existing activities
                     } else {
@@ -1180,21 +1203,21 @@ public static void validateActivityWithCampaign(Map<Id,PartnerFundRequest> oldMa
                             existingPfrAmount += budgetAgainstAmountMap.get(cmpIdBudgetIdBudgetType);
                         }
                     }
-		
+        
         if(pfr.RequestedAmount != NULL && pfr.Core_MDF_Reimbursement_Rate_txt__c != NULL && pfr.Core_MDF_Reimbursement_Rate_txt__c != ''){
                     activityReimbursementAmount = ((pfr.RequestedAmount * decimal.valueOf(pfr.Core_MDF_Reimbursement_Rate_txt__c.removeEnd('%')))/100).setScale(2,RoundingMode.HALF_UP);
                 }
                
-		//Get current activity amount
+        //Get current activity amount
                            Decimal currentActivityAmount = ((cmpBudgetTypeList != null && cmpBudgetTypeList.contains(pfr.Core_MDF_Budget_Type_nm__c)) || 
                                                             pfr.Core_MDF_Program__c == EEF_PROGRAM) ? activityReimbursementAmount : pfr.Amount; 
                 //Total amount to be inserted/updated
                 finalAmountForCompare = existingPfrAmount + currentActivityAmount;
       
-	//Check if total amount is exceeding Campaign Budget's amount
+    //Check if total amount is exceeding Campaign Budget's amount
                 if(finalAmountForCompare > amountOnBudget && checkCampaignError && pfr.Core_MDF_Fund_Request_Status__c != 'Cancelled' ){
                   
-		    //Sum of all activities cannot exceed Campaign Amount.	
+            //Sum of all activities cannot exceed Campaign Amount.  
                     pfr.addError(Label.Core_MDF_OPAL_Amount_Validation_Error);
                 } else { 
                     budgetAgainstAmountMap.put(cmpIdBudgetIdBudgetType, finalAmountForCompare);
@@ -1253,7 +1276,7 @@ Modified By :   NZ                   Date:07/26/2021                    Changes:
       set<Id> setCampId = new set<Id>();
     Map<Id, Set<PartnerFundRequest>> campActivitiesSetMap = new Map<Id, Set<PartnerFundRequest>>();
      Map<Id,PartnerFundRequest> pfrMap = new Map<Id,PartnerFundRequest>();
-  	Map<Id,String> campaignStatusMap = new Map<Id,String>();
+    Map<Id,String> campaignStatusMap = new Map<Id,String>();
         for(PartnerFundRequest pfr : newList){
             
             if(isAfter && ((Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_IPA').equalsIgnoreCase(pfr.Core_MDF_Program__c) && pfr.Core_MDF_Proposal_Based_Ind__c == true) || (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Co_GTM_program_name').equalsIgnoreCase(pfr.Core_MDF_Program__c)))){
@@ -1269,7 +1292,7 @@ Modified By :   NZ                   Date:07/26/2021                    Changes:
                             campActivitiesSetMap.put(pfr.CampaignId, new Set<PartnerFundRequest>{pfr}); 
                         }
                         if(!campaignStatusMap.containsKey(pfr.CampaignId)){
-                      		campaignStatusMap.put(pfr.CampaignId,pfr.Core_MDF_Campaign_Status_nm__c); 
+                            campaignStatusMap.put(pfr.CampaignId,pfr.Core_MDF_Campaign_Status_nm__c); 
                         }
                             
                 }               
@@ -1309,9 +1332,9 @@ Modified By :   NZ                   Date:07/26/2021                    Changes:
                    for(Id campId : campActivitiesSetMap.keySet()){
                        if(!setCampId.contains(campId)){                          
                            String campaignStatus;
-						   if(campaignStatusMap !=null && campaignStatusMap.containsKey(campId)){
-								campaignStatus = campaignStatusMap.get(campId);  
-							}						   
+                           if(campaignStatusMap !=null && campaignStatusMap.containsKey(campId)){
+                                campaignStatus = campaignStatusMap.get(campId);  
+                            }                          
                            if(String.isNotBlank(campaignStatus) && campaignStatus != 'Cancelled'){
                                Campaign cmpObj = new Campaign();
                                cmpObj.Id = campId;
@@ -1456,7 +1479,7 @@ public static void shareActivityWithAccNodeGroupMethod(Map<Id,PartnerFundRequest
             ((pfr.Core_MDF_Fund_Request_Status__c != 'Cancelled') || oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c != 'Cancelled')) 
             || oldPfrMap == NULL 
             || (oldPfrMap != null 
-	    /* Below condition is just to ensure that this method should not be excuted when the activities are closed(Manual/Auto) */
+        /* Below condition is just to ensure that this method should not be excuted when the activities are closed(Manual/Auto) */
             && !(pfr.Core_MDF_Activity_Closure_Type__c != oldPfrMap.get(pfr.Id).Core_MDF_Activity_Closure_Type__c)
                 && ((oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c != pfr.Core_MDF_Fund_Request_Status__c 
                 && Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Activity_Cancelled_Status').equalsIgnoreCase(pfr.Core_MDF_Fund_Request_Status__c))

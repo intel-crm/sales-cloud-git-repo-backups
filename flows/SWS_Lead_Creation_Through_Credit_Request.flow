@@ -225,10 +225,10 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.SWS_HW_Compute_Platform_PL__c</leftValueReference>
+                <leftValueReference>$Record__Prior.SWS_HW_Compute_Platform_PL__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference>$Record__Prior.SWS_HW_Compute_Platform_PL__c</elementReference>
+                    <elementReference>$Record.SWS_HW_Compute_Platform_PL__c</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
@@ -248,6 +248,7 @@
             <connector>
                 <targetReference>Sync_Up_Lead_With_Credit_Request</targetReference>
             </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
             <label>Sync Lead With Credit Request</label>
         </rules>
         <rules>
@@ -552,7 +553,7 @@ TEXT({!$Record.SWS_Request_Status__c}) = &quot;Coupon_Generated&quot;,
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>Country_Code_Stored</name>
         <dataType>String</dataType>

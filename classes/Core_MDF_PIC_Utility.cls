@@ -91,7 +91,7 @@ public without sharing class Core_MDF_PIC_Utility {
             Core_MDF_Claim_VAT_Process.updateclaimVATInfo(vatClaims);
         }
     }
-    
+
 	//Roshan - Super Claim PIC 
     public static boolean isHoldApplicable(PartnerFundClaim newclaim)
     {
@@ -131,7 +131,7 @@ public without sharing class Core_MDF_PIC_Utility {
         }
         return isHold;
     }
-      
+    
     public static boolean isLegacy(PartnerFundClaim claim)
     {
         if(((claim.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_CCF_Program_Name') || claim.Core_MDF_Program__c == Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_DCF_Program_Name'))

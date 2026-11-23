@@ -3,8 +3,12 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
     @testSetup
     //test data creation
     static void setupDataCreation(){  
+        
+        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+        
         List<Account> lstAccs = new List<Account>();
         Account acc = new Account();
+        acc.RecordTypeId=intelAccRecTypeId;
         acc.Name ='Intel';
         acc.Core_Account_Type__c ='Distributor';
         acc.Industry ='Agriculture';
@@ -125,6 +129,7 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
         membership1.PRM_Status_Nm__c = 'Approved';
         membership1.PRM_Channel_Program_Id__c=cp.Id;
         membership1.PRM_Partner_Role__c='Service Provider';
+        membership1.PRM_Status_Reason_Txt__c='Test';
         lstchannelmemberships.add(membership1);
 
         PRM_AccountChannelMembership__c membership2 = new PRM_AccountChannelMembership__c();
@@ -132,6 +137,7 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
         membership2.PRM_Status_Nm__c = 'Inactive';
         membership2.PRM_Channel_Program_Id__c=cp.Id;
         membership2.PRM_Partner_Role__c='Service Provider';
+        membership2.PRM_Status_Reason_Txt__c='Test';
         lstchannelmemberships.add(membership2);
 
         PRM_AccountChannelMembership__c membership3 = new PRM_AccountChannelMembership__c();
@@ -139,6 +145,7 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
         membership3.PRM_Status_Nm__c = 'Inactive';
         membership3.PRM_Channel_Program_Id__c=cp.Id;
         membership3.PRM_Partner_Role__c='Service Provider';
+        membership3.PRM_Status_Reason_Txt__c='Test';
         lstchannelmemberships.add(membership3);
 
         if(lstchannelmemberships.size()>0){
@@ -180,6 +187,7 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
         acr.PRM_Account_Id__c = acc.Id;
         acr.PRM_Contact_Id__c = con.Id;
         acr.PRM_InActive_Ind__c= true;
+        acr.PRM_Status_Reason_Txt__c='Test';
         lstACRs.add(acr);
         
         PRM_Account_Contact_Relationship__c acrEmp = new PRM_Account_Contact_Relationship__c();
@@ -187,6 +195,7 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
         acrEmp.PRM_Account_Id__c = acc.Id;
         acrEmp.PRM_Contact_Id__c = con2.Id;
         acrEmp.PRM_InActive_Ind__c= true;
+        acrEmp.PRM_Status_Reason_Txt__c='Test';
         lstACRs.add(acrEmp);
         
         PRM_Account_Contact_Relationship__c acrEmp1 = new PRM_Account_Contact_Relationship__c();
@@ -195,6 +204,7 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
         acrEmp1.PRM_Contact_Id__c = con1.Id;
         acrEmp1.PRM_InActive_Ind__c= true;
         acrEmp1.PRM_Status_Nm__c = 'Pending Action';
+        acrEmp1.PRM_Status_Reason_Txt__c='Test';
         lstACRs.add(acrEmp1);
 
         PRM_Account_Contact_Relationship__c acrEmp2 = new PRM_Account_Contact_Relationship__c();
@@ -203,6 +213,7 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
         acrEmp2.PRM_Contact_Id__c = con3.Id;
         acrEmp2.PRM_InActive_Ind__c= false;
         acrEmp2.PRM_Status_Nm__c = 'Pending Action';
+        acrEmp2.PRM_Status_Reason_Txt__c='Test';
         lstACRs.add(acrEmp2);
 
         PRM_Account_Contact_Relationship__c acrEmp3 = new PRM_Account_Contact_Relationship__c();
@@ -211,6 +222,7 @@ public class PRM_Bulk_DataLoad_TriggerHandler_Test {
         acrEmp3.PRM_Contact_Id__c = con4.Id;
         acrEmp3.PRM_InActive_Ind__c= false;
         acrEmp3.PRM_Status_Nm__c = 'Complete';
+        acrEmp3.PRM_Status_Reason_Txt__c='Test';
         lstACRs.add(acrEmp3);
 
         if(lstACRs.size()>0){

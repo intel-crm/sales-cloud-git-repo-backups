@@ -111,7 +111,7 @@ ISPICKVAL({!$Record.Core_AGS_Integration_Status__c} , &apos;Successful&apos;)
 ))</expression>
     </formulas>
     <interviewLabel>A&amp;E Notify Grant Access Completion Status_2 {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>A&amp;E Notify Grant Access Completion Status_Final</label>
+    <label>A&amp;E Notify Grant Access Completion Status_FinalPending10min</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -139,8 +139,8 @@ ISPICKVAL({!$Record.Core_AGS_Integration_Status__c} , &apos;Successful&apos;)
                 <targetReference>AGS_Integration_Status_Update</targetReference>
             </connector>
             <label>A&amp;E Notify Grant Access Completion Status Scheduled</label>
-            <offsetNumber>5</offsetNumber>
-            <offsetUnit>Hours</offsetUnit>
+            <offsetNumber>10</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
             <recordField>Core_AGS_Status_Change_Date_Time__c</recordField>
             <timeSource>RecordField</timeSource>
         </scheduledPaths>

@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDRESEND_RUS</name>
     <style>none</style>
-    <subject>Заполните заявку на регистрацию в Intel® Partner Alliance</subject>
+    <subject>Complete your Intel® Partner Alliance application</subject>
     <textOnly>Вы почти у цели!
 
 
@@ -23,8 +23,7 @@
 
 Не удается получить доступ к приведенной выше ссылке?
 
-https://www.intel.com/content/www/ru/ru/secure/partner/forms/ipa-account-search.html.
-
+https://wcm-ciqa.intel.com/content/www/ru/ru/secure/partner/forms/ipa-account-search.html.
 Если у вас возникли какие-либо вопросы, свяжитесь с нами по адресу programs@intel.com.
 
 С уважением,
@@ -33,7 +32,7 @@ https://www.intel.com/content/www/ru/ru/secure/partner/forms/ipa-account-search.
 
 
 Это сообщение было отправлено в качестве важного делового письма и связано с вашими текущими отношениями с Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Конфиденциальность | Файлы cookies</textOnly>
     <type>custom</type>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DRP field mapping stored</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DRP field mappings stored</value>
+    </caseValues>
+    <fields>
+        <label><!-- DRP Design Registration ID mapped with --></label>
+        <name>DRP_Design_Registration_ID_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DRP MMID mapped with --></label>
+        <name>DRP_MMID_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DRP Mapped to Rec Id --></label>
+        <name>DRP_Mapped_to_Rec_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- DRP Name mapped with --></label>
+        <name>DRP_Name_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DRP Old MMID mapped with --></label>
+        <name>DRP_Old_MMID_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DRP Ordering Code mapped with --></label>
+        <name>DRP_Ordering_Code_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DRP Quantity mapped with --></label>
+        <name>DRP_Quantity_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- DRP Target Resale Price mapped with --></label>
+        <name>DRP_Target_Resale_Price_mapped_with__c</name>
+    </fields>
+    <fields>
+        <label><!-- Object to be mapped --></label>
+        <name>Object_to_be_mapped__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

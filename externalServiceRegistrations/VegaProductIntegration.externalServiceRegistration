@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>VegaProductIntegration</label>
+    <namedCredentialReference>PIM_Api</namedCredentialReference>
+    <operations>
+        <active>true</active>
+        <name>gethierarchies</name>
+    </operations>
+    <registrationProviderType>Custom</registrationProviderType>
+    <schema>openapi: 3.0.0
+x-navigateMethodsByName: true
+x-sortMethodsBy:
+  - summary
+  - operation
+info:
+  title: Product Related Hierarchy data
+  description: &quot;This API product contains the resources required to pull details of a hierarchy modeled in PIM. &lt;br&gt;&lt;br&gt;In order to access the API in documentation portal, click on authorize and provide the credentials provided. To access the endpoints via Postman or other development tools, pass the token received from the &lt;a href=\&quot;/docs/authorization/1/overview\&quot;&gt;authorization endpoints&lt;/a&gt; as Bearer Token in the Authorization header.&lt;br&gt;&lt;br&gt;If you have any queries or problems regarding this API, please contact: &lt;a href=\&quot;mailto:pim360.apigeesupport@intel.com?subject=API - Intel public product data support\&quot;&gt;pim360.apigeesupport@intel.com&lt;/a&gt;.&quot;
+  version: &quot;1.0&quot;
+tags:
+  - name: hierarchies
+    description: &quot;This endpoint supports two types of operations:
+
+       **Standard Hierarchy Query**: Use parameters like `filters`, `sort`, `limit`, `offset` for paginated hierarchy data from PIM.
+
+       **OneBOM API**: Use parameters such as `parentId`, and `keyword` to retrieve products under a parentId and MM details under L4s.&quot;
+paths:
+  &quot;/hierarchies&quot;:
+    get:
+      summary: Find details of a hierarchy.
+      description: Use this to get paginated details of a hierarchy modeled in PIM.
+      tags:
+        - hierarchies
+      parameters:
+        - name: localeGeoId
+          in: query
+          description: Locale and Geo code used to get localised &amp; geo specific data.
+          required: true
+          schema:
+            type: string
+            enum: [zh-TW, de-DE, en-US, es-ES, fr-FR, it-IT, ja-JP, ko-KR, nl-NL, pl-PL, pt-BR, ru-RU, sv-SE, th-TH, tr-TR, ur-PK, id-ID, uk-UA, vi-VN, si-LK, en-NE, zh-CN, en-UK, es-MX, pt-PT, bn-BD, en-EG, en-AU, en-CA, en-NZ, en-IE, es-VE, es-CO, es-PE, es-AR, en-PH, es-CL, en-HK, en-IN, en-MY, en-SG, en-ZA, es-XL, fr-CA, en-XR, en-XA]
+        - name: hierarchyName
+          in: query
+          description: &quot;To specify the hierarchy name. Required for both PIM and OneBOM API. For OneBOM, allowed value: `VPH_Hierarchy`.&quot;
+          required: true
+          schema:
+            type: string
+            enum: [Marketing_Product_Hierarchy, Product_Application_Hierarchy, Solution_Marketplace_Hierarchy, Usecase, Valid_Brand_Hierarchy, Primary_Product_Content_Tagging_Hierarchy, UET_Technologies, UET_Operating_System, Software_Hierarchy, ARK_Hierarchy, VPLCH_Hierarchy, VPH_Hierarchy]
+        - name: filters
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: parentId
+          description: &quot;For OneBOM API&quot;
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: keyword
+          description: &quot;For OneBOM API&quot;
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        &quot;200&quot;:
+          description: successful operation
+          content:
+            &quot;*/*&quot;:
+              schema:
+                oneOf:
+                  - $ref: &apos;#/components/schemas/DefaultHierarchyResponse&apos;
+                  - $ref: &apos;#/components/schemas/OneBOMHierarchyResponse&apos;
+        &apos;400&apos;:
+          description: Bad Request
+        &apos;401&apos;:
+          description: Unauthorized access
+        &apos;500&apos;:
+          description: Internal Server Error
+      security:
+        - oauth2ClientCreds: []
+servers:
+  - url: https://apis.intel.com/pim/v1/services
+components:
+  securitySchemes:
+    oauth2ClientCreds:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://apis.intel.com/v1/auth/token
+          scopes: {}
+  schemas:
+    DefaultHierarchyResponse:
+      type: object
+      properties:
+        _metadata:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 99
+              description: Total number of products in result.
+            limit:
+              type: integer
+              example: 1
+              description: No of results returned in the response.
+            offset:
+              type: integer
+              example: 1
+              description: Offset from where results need to be retrieved.
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                example: &quot;2000000015&quot;
+              parentId:
+                type: string
+                example: &quot;root&quot;
+              sourceId:
+                type: string
+                example: &quot;2000000015&quot;
+              active:
+                type: boolean
+                example: true
+              name:
+                type: string
+                example: &quot;Laptops&quot;
+              rawName:
+                type: string
+                example: &quot;Laptops&quot;
+              localizedName:
+                type: string
+                example: &quot;笔记本电脑&quot;
+              description:
+                type: string
+                example: &quot;A laptop is a small, portable computer...&quot;
+              order:
+                type: integer
+                example: 2147483647
+              thumbnail:
+                type: string
+                example: null
+              guid:
+                type: string
+                example: &quot;etm-2477640B-F18B-485F-9775-B7C145CAF675&quot;
+    OneBOMHierarchyResponse:
+      type: object
+      properties:
+        rowCount:
+          type: integer
+          example: 52
+          description: Total no of products in result.
+        terms:
+          type: array
+          items:
+            type: object
+            properties:
+              level:
+                type: string
+                example: &quot;L2&quot;
+                description: &quot;Term level&quot;
+              epmid:
+                type: string
+                example: &quot;243696&quot;
+              name:
+                type: string
+                example: &quot;Intel® AI Edge Systems&quot;
+              parentId:
+                type: string
+                example: &quot;67709&quot;
+              published:
+                type: boolean
+                example: true
+        MM_Details:
+          type: array
+          items:
+            type: object
+            properties:
+              mmid:
+                type: string
+                example: &quot;M959021&quot;
+              name:
+                type: string
+                example: &quot;Intel® AI Edge Systems&quot;
+              parentId:
+                type: string
+                example: &quot;67709&quot;
+              published:
+                type: boolean
+                example: true
+              PMEVisibility:
+                type: string
+                example: &quot;Show and Ad Hoc Sampleable&quot;
+              OpCode:
+                type: string
+                example: &quot;JW&quot;</schema>
+    <schemaType>OpenApi3</schemaType>
+    <schemaUrl>/pim/v1/services/hierarchyLevels?limit=50000&amp;hierarchyName=VPLCH_Hierarchy</schemaUrl>
+    <serviceBinding>{&quot;host&quot;:&quot;apis.intel.com&quot;,&quot;basePath&quot;:&quot;/pim/v1/services&quot;,&quot;allowedSchemes&quot;:[&quot;HTTPS&quot;],&quot;requestMediaTypes&quot;:[],&quot;responseMediaTypes&quot;:[],&quot;compatibleMediaTypes&quot;:{},&quot;integrationFlags&quot;:null,&quot;extensions&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>8</systemVersion>
+</ExternalServiceRegistration>

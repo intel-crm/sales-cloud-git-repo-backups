@@ -11,7 +11,7 @@
         <inputParameters>
             <name>accountId</name>
             <value>
-                <elementReference>AccountID</elementReference>
+                <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
         <nameSegment>SWS_6SenseIntegrationBatch</nameSegment>
@@ -55,9 +55,9 @@
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>AccountPrimaryCoverage</leftValueReference>
-                <operator>Contains</operator>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>$Record.Core_Account_Primary_Coverage__c</elementReference>
+                    <elementReference>AccountPrimaryCoverage</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
@@ -81,6 +81,13 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Export_Compliance_Block__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Update_6Sense_as_Valid</targetReference>
             </connector>
@@ -88,12 +95,40 @@
         </rules>
         <rules>
             <name>Unshare_the_Record</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Is_6Sense_Integration_Enabled__c</leftValueReference>
+                <leftValueReference>$Record.Core_Export_Compliance_Block__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Deactivated__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Industry</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Government</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Industry</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Defense and Space</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>AccountPrimaryCoverage</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>AccountPrimaryCoverage</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -163,31 +198,13 @@
         <connector>
             <targetReference>Is_It_Valid_Sharing</targetReference>
         </connector>
-        <filterFormula>AND ( 
-   OR(  
-            ISCHANGED({!$Record.Industry}),
-            ISCHANGED({!$Record.Is_6Sense_Integration_Enabled__c}),
-            ISCHANGED({!$Record.Core_Account_Primary_Coverage__c}),
-            ISCHANGED({!$Record.Core_Deactivated__c}),
-            ISNEW()
-    ),
-    {!$Record.Core_Export_Compliance_Block__c} = false
- )</filterFormula>
+        <filterFormula>AND ( OR(ISCHANGED({!$Record.Industry}),ISCHANGED({!$Record.Is_6Sense_Integration_Enabled__c}),ISCHANGED({!$Record.Core_Account_Primary_Coverage__c}),ISCHANGED({!$Record.Core_Deactivated__c}),ISNEW(), ISCHANGED({!$Record.Core_Export_Compliance_Block__c})),
+(ISPICKVAL({!$Record.Core_Account_Primary_Coverage__c},&apos;Intel Covered&apos;)) )</filterFormula>
         <object>Account</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <variables>
-        <name>AccountID</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Record.Id</elementReference>
-        </value>
-    </variables>
     <variables>
         <name>AccountPrimaryCoverage</name>
         <dataType>String</dataType>
@@ -195,7 +212,7 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <value>
-            <stringValue>Intel-led Account,Intel Covered</stringValue>
+            <stringValue>Intel Covered</stringValue>
         </value>
     </variables>
 </Flow>

@@ -1932,40 +1932,4 @@
         <searchResultsAdditionalFields>Core_IPS_Project__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
-    <webLinks>
-        <fullName>Add_Products_for_External_Customers</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <linkType>javascript</linkType>
-        <masterLabel>Add Products</masterLabel>
-        <openType>onClickJavaScript</openType>
-        <protected>false</protected>
-        <requireRowSelection>false</requireRowSelection>
-        <url>{!REQUIRESCRIPT($Site.Prefix+&quot;/soap/ajax/35.0/connection.js&quot;)} 
-{!REQUIRESCRIPT($Site.Prefix+&quot;/support/console/35.0/integration.js&quot;)} 
-
-var querystatus = sforce.connection.query(&quot;SELECT id,Core_Status__c from Core_IPS_Project__c where id=&apos;{!Core_IPS_Project__c.Id}&apos;&quot;); 
-
-var records = querystatus.getArray(&quot;records&quot;); 
-
-if(&quot;{!Core_IPS_Project__c.Core_Status__c}&quot;!=&quot;Active&quot;){
-alert(&apos;You cannot add products to an inactive project. If you want to add a new product, please set the project to Active&apos;); 
-}
-else{
-window.location =&quot;/IPS/Core_ExternalUser_IPS_Project?id={!Core_IPS_Project__c.Id}&amp;stepIndex=2&amp;modeStr=add&amp;editProj=true&quot;
-}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>Remove_Products</fullName>
-        <availability>online</availability>
-        <description>Functionality to remove Products from Projects ,Visible to IPS External Users</description>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <linkType>url</linkType>
-        <masterLabel>Remove Products</masterLabel>
-        <openType>replace</openType>
-        <protected>false</protected>
-        <requireRowSelection>false</requireRowSelection>
-        <url>/IPS/Core_ExternalUser_IPS_Project?id={!Core_IPS_Project__c.Id}&amp;stepIndex=2&amp;modeStr=remove&amp;editProj=true</url>
-    </webLinks>
 </CustomObject>

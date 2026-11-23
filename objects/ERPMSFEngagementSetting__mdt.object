@@ -67,7 +67,8 @@
         <fullName>core_removalRequired__c</fullName>
         <defaultValue>false</defaultValue>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>removalRequired</label>
+        <inlineHelpText>Check this box if Engagement is to be removed upon removal of the Entitlement</inlineHelpText>
+        <label>Removal Required</label>
         <type>Checkbox</type>
     </fields>
     <label>ERPMSFEngagementSetting</label>

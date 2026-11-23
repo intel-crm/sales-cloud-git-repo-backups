@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>FK_OPP_OWNER_MANAGER</field>
-    </columns>
-    <columns>
         <field>FK_OPP_OWNER_NAME</field>
     </columns>
     <columns>
@@ -44,25 +41,18 @@
             <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FK_OPP_CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>6/30/2017</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Core_Opportunity_Partner__c.Core_Partner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>HP</value>
+            <value>Dell,adlink,advantech,BCM</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FK_$Account.Core_Account_Owner__c</column>
+            <column>FK_OPP_CLOSE_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>uriah,hannah freimark,melissa gonzalez,cooper prescott,angela baroni,matthew harrison,david nguyen,kimberly kelly</value>
+            <operator>equals</operator>
+            <value>THIS_FISCAL_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -79,7 +69,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FK_$Account.Core_Account_Owner__c</field>
+        <field>FK_OPP_OWNER_MANAGER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Opportunity Partner</name>

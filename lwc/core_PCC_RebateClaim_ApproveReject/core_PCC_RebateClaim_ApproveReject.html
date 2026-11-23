@@ -1,0 +1,101 @@
+<template>
+    <c-custom-toast
+        message-list={errorList}
+        notification-type="error"
+        time-out="1000"
+        header-message="Can't save records with errors."
+        ></c-custom-toast>
+    <div if:true={isLoading} class="slds-align_absolute-center" >
+        <lightning-spinner alternative-text="Loading" variant="brand" size="medium" style="height:400px;top:20%;bottom:30%;text-align: center;"></lightning-spinner>
+    </div> 
+    <template if:true={hasData} class="container">    
+        <header class="slds-modal__header">
+             <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Approve/Reject Rebate Claim Line Items</h2>
+        </header>
+        <div if:true={lineItems} class="slds-modal__content" id="modal-content-id-1">
+            <div class="slds-is-relative slds-scrollable_x scrollable-modal-content" style='height:400px;'>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" style='padding : 0;'>
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col"><div class="slds-truncate" title="SerialNo">#</div></th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Approve" style="width:80px">
+                                        <lightning-input data-id="allApprove" type="checkbox" label="Approve" onchange={handleAllApproveChange} checked={AllApprovechecking} disabled={AllRejectchecking}></lightning-input>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Reject" style="width:80px">
+                                        <lightning-input data-id="allReject" type="checkbox" label="Reject" onchange={handleAllRejectChange} checked={AllRejectchecking} disabled={AllApprovechecking}></lightning-input>
+                                    </div>
+                                </th>
+                                <th scope="col"><div class="slds-truncate" title="Opportunity">Opportunity</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Quote Line Number">Quote Line Number</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Product">Product</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Consumption Countries">Consumption Countries</div></th>
+                                <th scope="col"><div class="slds-truncate" title="OEM Name">OEM Name</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Approved Quote Line Quantity">Approved Quote Line Quantity</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Quantity">Quantity</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Approved Pricing Start Date">Approved Pricing Start Date</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Approved Pricing End Date">Approved Pricing End Date</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Invoice Number">Invoice Number</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Invoice Date">Invoice Date</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Submitted Claim Rebate Amount">Submitted Claim Rebate Amount</div></th>
+                                <th scope="col"><div class="slds-truncate slds-p-horizontal_small" title="Rejection Code">Rejection Code</div></th>
+                                <th scope="col"><div class="slds-truncate" title="Rejection Comments">Rejection Comments</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template if:true={lineItems}>
+                                <template for:each={lineItems} for:item="item" for:index="index">
+                                    <tr key={item.Id}>
+                                        <td>{item.serialNumber}</td>
+                                        <td><lightning-input type="checkbox" name={index} data-id="approve" checked={item.approve} onchange={handleSingleApproveChange} disabled={item.reject}></lightning-input></td>
+                                        <td><lightning-input type="checkbox" name={index} data-id="reject" checked={item.reject} onchange={handleSingleRejectChange} disabled={item.approve}></lightning-input></td>
+                                        <td><a href={item.oppURL} target="_blank">{item.PCC_Opportunity__r.Name}</a></td>
+                                        <td><a href={item.qliURL} target="_blank">{item.PCC_Quote_Line_Number__r.Pricing_Quote_Line_Number__c}</a></td>
+                                        <td><a href={item.prodURL} target="_blank">{item.PCC_Product__r.Name}</a></td>
+                                        <td>{item.PCC_Country__c}</td>
+                                        <td>{item.PCC_OEM_Name__c}</td>
+                                        <td class="qty">{item.PCC_Approved_Quote_Line_Quantity__c}</td>
+                                        <td class="qty">{item.PCC_Quantity__c}</td>
+                                        <td class="qty"><lightning-formatted-date-time value={item.PCC_Approved_Pricing_Start_Date__c} year="numeric" month="numeric" day="numeric" ></lightning-formatted-date-time></td>
+                                        <td class="qty"><lightning-formatted-date-time value={item.PCC_Approved_Pricing_End_Date__c} year="numeric" month="numeric" day="numeric" ></lightning-formatted-date-time></td>
+                                        <td class="qty">{item.PCC_Invoice__c}</td>
+                                        <td class="qty"><lightning-formatted-date-time value={item.PCC_Invoice_Date__c} year="numeric" month="numeric" day="numeric" ></lightning-formatted-date-time></td>
+                                        <td class="qty"><div if:true={item.PCC_Claimed_Rebate_Amount__c}> ${item.PCC_Claimed_Rebate_Amount__c}</div></td>
+                                        <td>
+                                            <lightning-combobox name={index} options={picklistOptions} value={item.rejectionCode} variant="label-hidden" onchange={handleRejCodeChange} disabled={item.disableFields}></lightning-combobox>
+                                        </td>
+                                        <td>
+                                            <lightning-input type="text" name={index} value={item.rejectionComment} data-id={item.Id} onchange={handleRejCommChange} variant="label-hidden" disabled={item.disableFields} max-length="255" message-when-too-long = "Limit is 255 characters."></lightning-input>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </template>
+                        </tbody>
+                    </table>
+                <!--</div>-->
+            </div>
+        </div>    
+        <footer class="slds-modal__footer" style="height:70px;">
+            <div slot="actions">
+                <lightning-button-group class="slds-float_left slds-p-bottom_small">
+                    <lightning-button data-id="pgnBtn" variant="neutral" title="previous" label="Previous" icon-name="utility:chevronleft" icon-position="left" onclick={handleClick}></lightning-button>
+                    <lightning-button data-id="pgnBtn" variant="neutral" title="next" label="Next" icon-name="utility:chevronright" icon-position="right" onclick={handleClick}></lightning-button>
+                </lightning-button-group>
+                <div class="slds-p-left_small slds-p-top_xx-small slds-float_left">Showing Records ({endRecord} of {totalRecordCount}) | Page ({pageNumber} of {totalPageCount}) | Selected Items : {selectedItems}</div>
+                <lightning-button class="slds-p-left_xx-small slds-p-bottom_small slds-float_right" variant="neutral" label="Cancel" onclick={closeModal}></lightning-button>
+                <lightning-button data-id="saveBtn" class="slds-p-left_xx-small slds-p-bottom_small slds-float_right" variant="brand" label="Save" onclick={handleSave} disabled={disableButton}></lightning-button>
+            </div>
+        </footer>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+ <!-- modal end -->
+   <!--<template if:false={hasData}>
+         <div class="slds-box slds-theme_shade slds-theme_alert-texture" role="alert">
+            <span class="slds-assistive-text">Warning</span>
+            <lightning-icon class="slds-p-right_small" icon-name="utility:info" size="small"></lightning-icon>
+            <strong> {errormsg} </strong>
+        </div>
+    </template>-->
+ </template>

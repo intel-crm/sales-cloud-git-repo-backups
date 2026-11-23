@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <description>Demo component of multi select combo box</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__Tab</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="PIMidList" description="Use PIM Id in a comma seperated format." name="taxonomy" type="String"/>
+            <property label="Add Separator Above Component" name="separatorAbove" type="Boolean"/>
+            <property label="Add Separator Below Component" name="separatorBelow" type="Boolean"/>
+            <property label="Add Padding Above Component" name="paddingAbove" type="Boolean"/>
+            <property label="Add Padding Below Component" name="paddingBelow" type="Boolean"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

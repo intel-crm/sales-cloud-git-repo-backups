@@ -86,21 +86,9 @@
             <operator>equals</operator>
             <value>ISA Co-Selling</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opportunity_Partner__c.Core_Partner_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Distributor,Intel Authorized Distributor (IAD)</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Year</dateGranularity>
-        <field>FK_OPP_CLOSE_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FK_ACC_ADDR1_COUNTRY_CODE</field>
@@ -111,7 +99,12 @@
         <field>FK_OPP_OWNER_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>ISA Cosell APJT 2017+ (Production W)</name>
+    <groupingsDown>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>FK_OPP_CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ISA Cosell APJT 2017-2020 (Production W)</name>
     <params>
         <name>co</name>
         <value>0</value>

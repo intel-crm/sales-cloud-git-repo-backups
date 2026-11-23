@@ -245,14 +245,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>PROBABILITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>50</value>
+            <value>50.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
@@ -266,7 +266,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Alastair Duncan,Jodie Frew,Elise Stanberg,Andrew Ridley,Nileshni Santiago,Siew May Cheow,HC Hwang,Vineet Giri,Sachin Anand,Swee Hoon Chan,Fransiskus Leonardus,Paul Haines,Jovern Lim,Patricia Lee,Duc Dang,Hung Choong Hwang,Albert WANG</value>
+            <value>Alastair Duncan,Jodie Frew,Elise Stanberg,Andrew Ridley,Nileshni Santiago,Siew May Cheow,HC Hwang,Vineet Giri,Sachin Anand,Swee Hoon Chan,Fransiskus Leonardus,Paul Haines,Jovern Lim,Patricia Lee,Duc Dang,Hung Choong Hwang</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_72264943</column>

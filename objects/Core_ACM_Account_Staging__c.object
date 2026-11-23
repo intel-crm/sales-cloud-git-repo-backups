@@ -154,6 +154,17 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>ACM_Account_Staging_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>ACM Account Staging Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>AccountId__c</fullName>
         <externalId>false</externalId>
         <label>Account Id</label>
@@ -169,6 +180,17 @@
         <externalId>false</externalId>
         <label>Account Action Refrence</label>
         <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_PrimaryCoverage__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Primary Coverage</label>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -220,6 +242,11 @@
                     <fullName>REMOVE_MPSHARE</fullName>
                     <default>false</default>
                     <label>REMOVE_MPSHARE</label>
+                </value>
+                <value>
+                    <fullName>NAME_UPDATE</fullName>
+                    <default>false</default>
+                    <label>NAME UPDATE</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

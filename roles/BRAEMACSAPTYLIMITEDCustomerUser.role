@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Braemac Pty Ltd Customer User</description>
+    <description>BRAEMAC (S.A.) PTY. LIMITED Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Braemac Pty Ltd Customer User</name>
+    <name>BRAEMAC (S.A.) PTY. LIMITED Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12029194_Naomi_Ooi</parentRole>
+    <parentRole>EMP_11529280_Chee_Mei_Gan</parentRole>
 </Role>

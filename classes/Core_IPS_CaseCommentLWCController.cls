@@ -5,7 +5,7 @@ public with sharing class Core_IPS_CaseCommentLWCController {
    public static  case currentcase ;
     // Niyaz -- 12/06/2025 --- added as part of vulnerability fix, removed CreatedBy.Email from all the below queries as it is not used in any return value
     @AuraEnabled
-    public static void initialize(string caseId){ 
+    public static void initialize(string caseId){
         currentcase = [select id,subject,Core_IPS_Comment__c,RecordType.Name,AccountId,Core_Sub_Status__c,status,contactid,Core_IPS_Date_Time_Close_Pending__c from Case where id =:caseId ];
       
     }

@@ -41,7 +41,7 @@ private class Core_AGSRetryBatchTest {
             Core_Enterprise_Id__c = '100001',
             Core_AGS_Integration_Status__c = 'In-Progress',
             Core_ERPM_Integration_Status__c = 'Successful',
-            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-120),
+            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-30),
             Core_Republish_OBM_s__c = false
         ));
 
@@ -56,7 +56,7 @@ private class Core_AGSRetryBatchTest {
             Core_Enterprise_Id__c = '100002',
             Core_AGS_Integration_Status__c = 'In-Progress',
             Core_ERPM_Integration_Status__c = 'Successful',
-            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-120),
+            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-30),
             Core_AGS_Retry_Count__c = 1,
             Core_Republish_OBM_s__c = false
         ));
@@ -72,7 +72,7 @@ private class Core_AGSRetryBatchTest {
             Core_Enterprise_Id__c = '100003',
             Core_AGS_Integration_Status__c = 'In-Progress',
             Core_ERPM_Integration_Status__c = 'Successful',
-            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-120),
+            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-5),
             Core_AGS_Retry_Count__c = 0,
             Core_Republish_OBM_s__c = false
         ));
@@ -88,7 +88,7 @@ private class Core_AGSRetryBatchTest {
             Core_Enterprise_Id__c = '100004',
             Core_AGS_Integration_Status__c = 'Successful',
             Core_ERPM_Integration_Status__c = 'Successful',
-            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-120),
+            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-30),
             Core_AGS_Retry_Count__c = 0,
             Core_Republish_OBM_s__c = false
         ));
@@ -104,7 +104,7 @@ private class Core_AGSRetryBatchTest {
             Core_Enterprise_Id__c = '100005',
             Core_AGS_Integration_Status__c = 'In-Progress',
             Core_ERPM_Integration_Status__c = 'Successful',
-            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-120),
+            Core_AGS_Status_Change_Date_Time__c = System.now().addMinutes(-30),
             Core_AGS_Retry_Count__c = 2,
             Core_Republish_OBM_s__c = false
         ));
@@ -120,7 +120,7 @@ private class Core_AGSRetryBatchTest {
     static void testBatchExecution() {
 
         Test.startTest();
-        Database.executeBatch(new Core_AGSRetryBatch(), 10);
+        Database.executeBatch(new Core_AGSRetryBatch(), 200);
         Test.stopTest();
 
         Map<String, Contact> contactMap = new Map<String, Contact>();
@@ -136,20 +136,20 @@ private class Core_AGSRetryBatchTest {
         }
 
         // RetryNull : null -> 0
-       /* System.assertEquals(
+        System.assertEquals(
             true,
             contactMap.get('RetryNull').Core_Republish_OBM_s__c
-        ); */
+        );
 
-      /*  System.assertEquals(
+        System.assertEquals(
             0,
             Integer.valueOf(
                 contactMap.get('RetryNull').Core_AGS_Retry_Count__c
             )
-        ); */
+        );
 
         // RetryOne : 1 -> 2
-      /*  System.assertEquals(
+        System.assertEquals(
             true,
             contactMap.get('RetryOne').Core_Republish_OBM_s__c
         );
@@ -184,7 +184,7 @@ private class Core_AGSRetryBatchTest {
             Integer.valueOf(
                 contactMap.get('MaxRetry').Core_AGS_Retry_Count__c
             )
-        ); */
+        );
     }
 
     @IsTest

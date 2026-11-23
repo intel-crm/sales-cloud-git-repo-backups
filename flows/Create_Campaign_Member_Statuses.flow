@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Record_Type_Check</name>
+        <label>Record Type Check</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Marketing_Campaign</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Core_Marketing_Campaign</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Executive_Event_Attended</targetReference>
+            </connector>
+            <label>Marketing Campaign</label>
+        </rules>
+    </decisions>
+    <description>TWC3123-5661 Campaign Member Status needs to populate all the Campaign Member Status picklists when a Marketing Campaign is created</description>
+    <environments>Default</environments>
+    <interviewLabel>Create Campaign Member Statuses {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Campaign Member Statuses</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Clicked_Email</name>
+        <label>Clicked Email</label>
+        <locationX>50</locationX>
+        <locationY>1403</locationY>
+        <connector>
+            <targetReference>WeChat_Scan_Code</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Clicked Email</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Demo_Attended</name>
+        <label>Demo Attended</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Visited_Booth</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Demo Attended</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Events_Attended</name>
+        <label>Events Attended</label>
+        <locationX>50</locationX>
+        <locationY>971</locationY>
+        <connector>
+            <targetReference>Events_Registered</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Events Attended</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Events_Registered</name>
+        <label>Events Registered</label>
+        <locationX>50</locationX>
+        <locationY>1079</locationY>
+        <connector>
+            <targetReference>Webinar_Registered</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Events Registered</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Executive_Event_Attended</name>
+        <label>Executive Event Attended</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Webinar_Attended</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Executive Event Attended</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Form_Submitted</name>
+        <label>Form Submitted</label>
+        <locationX>50</locationX>
+        <locationY>1295</locationY>
+        <connector>
+            <targetReference>Clicked_Email</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Form Submitted</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Visited_Booth</name>
+        <label>Visited Booth</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>Webinar_On_Demand_Viewed</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Visited Booth</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Webinar_Attended</name>
+        <label>Webinar Attended</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Demo_Attended</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Webinar Attended</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Webinar_On_Demand_Viewed</name>
+        <label>Webinar On Demand Viewed</label>
+        <locationX>50</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>Events_Attended</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Webinar On Demand Viewed</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Webinar_Registered</name>
+        <label>Webinar Registered</label>
+        <locationX>50</locationX>
+        <locationY>1187</locationY>
+        <connector>
+            <targetReference>Form_Submitted</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>Webinar Registered</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>WeChat_Scan_Code</name>
+        <label>WeChat Scan Code</label>
+        <locationX>50</locationX>
+        <locationY>1511</locationY>
+        <inputAssignments>
+            <field>CampaignId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Label</field>
+            <value>
+                <stringValue>WeChat Scan Code</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CampaignMemberStatus</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Record_Type_Check</targetReference>
+        </connector>
+        <object>Campaign</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

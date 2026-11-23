@@ -44,13 +44,13 @@ Modified By:        Date:       Changes:
                 when 'update'{sResults = Database.update(sObjectList, this.allOrNone);}
                 when 'upsert'{uResults = Database.upsert(sObjectList, this.allOrNone);}  
                 when else{sResults = Database.insert(sObjectList, this.allOrNone);}
-            }
+            }            
         } catch (DmlException e) {
             Core_MDF_CCP_UtilityClass.logError(e);
         }
     }
 
     public void finish(Database.BatchableContext bc) {
-
+        
     }
 }

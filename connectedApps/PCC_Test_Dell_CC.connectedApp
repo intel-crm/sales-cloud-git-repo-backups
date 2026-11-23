@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>pcctestdell@ccdell.com</contactEmail>
+    <label>PCC Test Dell JWT</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback
+https://oauth.pstmn.io/v1/callback</callbackUrl>
+        <certificate>MIIDlTCCAn0CFFxpn2/ipWoWIj+kItrv75X+MNQ7MA0GCSqGSIb3DQEBCwUAMIGGMQswCQYDVQQGEwJJTjEMMAoGA1UECAwDS0FSMQ4wDAYDVQQHDAVCTE9SRTENMAsGA1UECgwEREVMTDENMAsGA1UECwwEREVMTDELMAkGA1UEAwwCREwxLjAsBgkqhkiG9w0BCQEWH3BjY3Rlc3RkZWxsQG1hcmNvY29uc3VsdG9yYS5jb20wHhcNMjMwODIzMDk0OTQ1WhcNMjQwODIyMDk0OTQ1WjCBhjELMAkGA1UEBhMCSU4xDDAKBgNVBAgMA0tBUjEOMAwGA1UEBwwFQkxPUkUxDTALBgNVBAoMBERFTEwxDTALBgNVBAsMBERFTEwxCzAJBgNVBAMMAkRMMS4wLAYJKoZIhvcNAQkBFh9wY2N0ZXN0ZGVsbEBtYXJjb2NvbnN1bHRvcmEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArff8K5ruvy+odl5cVtJkvqyLVq3qPbMW/ZgBBiBWcRQBcH56FZCuA/Is1aBGsyBy/9KKKz8fzzK10PuBk0KwKyvW9N69FXvBniYf8UaGOfjhwoYzMN3CcuwLIzf4xLDAzQmbaJX4LNlKKLkvPvmBne9TdaUEpzuVVcbSygQ5z7KuaxP01plAdOWvesj1gJjYjH/AvZP9Bb/VnNQHg8EDdLBg9eqg5oTW9/81CFtQxUkQEUbIUyarPB15nM/YaI7o5QZ+yY84VrLxUquiX6/VgAv888fGpvl4UynqaN5OfREaytuSWHZHmebUqG7YQAU1vtvoXp1NyO9NnPrz4AEHgQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBrDbenWOZAdY8+k/lVQRVq/OudPY1vD1lLC8eWWytOfdqLp+uM/DjKWpoElhW4yEGhx8IbZ9AeCSRMPvYS+Q0HTRqPqtVvp8fotgnr9vmaodPRPJ/UMPtfG1ZRnTho+g/jv5Prb/Xl8mh0LcZUwYAfW3zq+njeh3C1qRZBT/veOcI1IotqrBNFLHypK0TkJhQmUg0pK3RFvY8PK1kL1L4LA+ePo0iMdwDpjwW0qStET0Nv65OlBFVKW7RKZQFaBYzZWarTcCgy/MKqoVnpQnxzxL8UmEZYJKmMnLa2PqsmhVqHAGxHpWcURkC09TSAwKphozUlwCKCY0ZX7lpMwe7W</certificate>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDnXeXUJNp6Vlx9udzM0bcb0t6FVF2uOdajZCZZ2NuSAID0MEPIdZkoffRQAo</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>PCC Arrow Electronics</permissionSetName>
+    <profileName>B2B API Partner</profileName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

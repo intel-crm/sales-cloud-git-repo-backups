@@ -356,7 +356,7 @@
         <description>To store entitlement ids for creating tracker records</description>
         <externalId>false</externalId>
         <label>entitlementIds</label>
-        <length>200</length>
+        <length>30</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>

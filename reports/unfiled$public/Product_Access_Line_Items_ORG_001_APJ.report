@@ -13,9 +13,6 @@
         <field>CUST_LAST_UPDATE</field>
     </columns>
     <columns>
-        <field>CUST_CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>CHILD_NAME</field>
     </columns>
     <columns>
@@ -104,7 +101,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CUST_CREATED_DATE</sortColumn>
+    <sortColumn>CUST_LAST_UPDATE</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>

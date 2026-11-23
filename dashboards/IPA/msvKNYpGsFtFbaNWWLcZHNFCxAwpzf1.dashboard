@@ -14,7 +14,7 @@
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
-                    <aggregate>Maximum</aggregate>
+                    <aggregate>Sum</aggregate>
                     <column>PRM_Points_Data__c.PRM_Points_Balance__c</column>
                 </chartSummary>
                 <componentType>Metric</componentType>
@@ -27,7 +27,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPACommunityDashboardReports/Account_Points_Overview_YcP</report>
+                <report>IPAReports/Account_Points_Overview_YcP</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -46,13 +46,13 @@
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>Points Due To Expire</header>
+                <header>Points Due to Expire</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPACommunityDashboardReports/Account_Points_Overview_YcP</report>
+                <report>IPAReports/Account_Points_Overview_YcP</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -63,8 +63,8 @@
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>12016311@intel.com.crm</runningUser>
+    <owner>11943423@intel.com.crm</owner>
+    <runningUser>12004852@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Points</title>
     <titleColor>#000000</titleColor>

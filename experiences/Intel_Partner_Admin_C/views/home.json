@@ -200,12 +200,15 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
+        "disableManageEvents" : true,
         "disableManageLeads" : true,
-        "disableManageOfferings" : false,
-        "disableManagedMPPartners" : false,
-        "disableViewDashboard" : false,
+        "disableManageOfferings" : true,
+        "disableManageStorefront" : true,
+        "disableManagedMPPartners" : true,
+        "disableViewDashboard" : true,
         "fullWidth" : true,
-        "portal" : "Partner Admin"
+        "portal" : "Partner Admin",
+        "showAllButtons" : true
       },
       "componentName" : "c:MarketplaceNavigationBar",
       "id" : "b180f00d-c6c0-43df-9728-2cec401323c5",
@@ -262,6 +265,14 @@
     "regionName" : "blade1",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceSiteMap",
+      "id" : "534311a7-6df7-437c-a75e-4fd451dfc173",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "5792ca55-9a16-44e1-b97b-c8eea47bbba0",
     "regionName" : "blade2",
     "type" : "region"
@@ -278,6 +289,14 @@
     "regionName" : "blade3",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceSiteMap",
+      "id" : "29f98f62-9da2-415f-bb92-79ded62214b4",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "615d891f-2945-4934-a138-5836aadce504",
     "regionName" : "blade4",
     "type" : "region"
@@ -333,11 +352,9 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : {
-        "richTextValue" : "<p>&nbsp;</p>"
-      },
-      "componentName" : "forceCommunity:richTextInline",
-      "id" : "fc584615-67b8-4070-8e18-0164b354a2ed",
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceSiteMap",
+      "id" : "0c6eae8e-5ae8-4160-a725-e9af1fce855e",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -375,6 +392,14 @@
     "regionName" : "recordList",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:MarketplaceSiteMap",
+      "id" : "770ada8b-ac18-4d4c-b25c-6108bc062ba5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "14720c18-873e-469a-a9cb-eeb8f8b25171",
     "regionName" : "createOfferingButton",
     "type" : "region"

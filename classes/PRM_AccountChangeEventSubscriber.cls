@@ -17,8 +17,8 @@ public without sharing class PRM_AccountChangeEventSubscriber {
     public static final String PROJECT = 'IPA Registrations';  
     /*to create log entry*/
     public static final string SCOPE = 'PRM_AccountChangeEventSubscriber';
-  public static String logEntryMsg='';
-  public static List<Core_Log_Entry__c> listOfLogEntries = new List<Core_Log_Entry__c>();
+	public static String logEntryMsg='';
+	public static List<Core_Log_Entry__c> listOfLogEntries = new List<Core_Log_Entry__c>();
 /*****************************************************************************************************************
 * Method Name: processACMResponseForPlatformEvents
 * Date: 04/2024
@@ -28,7 +28,7 @@ public without sharing class PRM_AccountChangeEventSubscriber {
 ******************************************************************************************************************/
     @InvocableMethod(label='SubscribeToARQEvents')
     public static void processACMResponseForPlatformEvents(List<ACM_Account_Request_Event__e> acmAccChangeEventList) {
-  logEntryMsg+='Entered processACMResponseForPlatformEvents: acmAccChangeEventList'+acmAccChangeEventList;
+	logEntryMsg+='Entered processACMResponseForPlatformEvents: acmAccChangeEventList'+acmAccChangeEventList;
         processACMResponseForRegistration(acmAccChangeEventList);
     }
     
@@ -40,7 +40,7 @@ public without sharing class PRM_AccountChangeEventSubscriber {
 * Return: void
 ******************************************************************************************************************/
     public static void processACMResponseForRegistration(List<ACM_Account_Request_Event__e> acmAccChangeEventList) {
-  logEntryMsg+='Entered processACMResponseForRegistration: acmAccChangeEventList'+acmAccChangeEventList;
+	logEntryMsg+='Entered processACMResponseForRegistration: acmAccChangeEventList'+acmAccChangeEventList;
         List<PRM_UCD_ResponseWrapper.arqResponseData> ucdResList = new List<PRM_UCD_ResponseWrapper.arqResponseData>(); 
         
         try {
@@ -60,7 +60,7 @@ public without sharing class PRM_AccountChangeEventSubscriber {
                 
                 if (!ucdResList.isEmpty()) {
                     processUCDResponses(ucdResList);
-          logEntryMsg+='Entering processUCDResponses: ucdResList'+ucdResList;
+					logEntryMsg+='Entering processUCDResponses: ucdResList'+ucdResList;
                 }
             }
         }
@@ -103,25 +103,25 @@ public without sharing class PRM_AccountChangeEventSubscriber {
                        //for approval
                        String approverComment = String.isNotBlank(regReq.PRM_Review_Note_txt__c) ? regReq.PRM_Review_Note_txt__c : '';
                        regReqIdToCommentMap.put(req.Id, approverComment);
-             logEntryMsg+='Updated PRM_Salesforce_ID__c'+acc.AccountId+ 'on registration request: '+req.id;
+					   logEntryMsg+='Updated PRM_Salesforce_ID__c'+acc.AccountId+ 'on registration request: '+req.id;
                    }
                    else if (acc.RecordType == 'Rejected Account') {
                        req.PRM_Rejected_By__c = 'MDM';
                        req.PRM_MDM_Rejection_Reason__c = String.isNotBlank(ucdResponseData.RejectionReason) 
                            ? ucdResponseData.RejectionReason : LabelConfiguration__mdt.getInstance('PRM_UCD_Rejection').Value__c;
-                logEntryMsg+='Updated rejection details on registration'+req.id;
+						    logEntryMsg+='Updated rejection details on registration'+req.id;
                    }
                    else if (acc.RecordType == 'Intel Account' && ucdResponseData.RejectionReason.contains('Reuse Account')) {
                        req.PRM_Rejected_By__c = 'Data Ops';
                        req.PRM_MDM_Rejection_Reason__c = String.isNotBlank(ucdResponseData.RejectionReason) 
                            ? ucdResponseData.RejectionReason : LabelConfiguration__mdt.getInstance('PRM_DataOps_Rejection').Value__c;
                        req.PRM_Suggested_Account__c = acc.AccountId;
-              logEntryMsg+='Updated PRM_Suggested_Account__c'+acc.AccountId+ 'on registration request: '+req.id;
+					    logEntryMsg+='Updated PRM_Suggested_Account__c'+acc.AccountId+ 'on registration request: '+req.id;
                    }
                    else if (ucdResponseData.Status == 'Rejected' && String.isNotBlank(ucdResponseData.RejectionReason) && acc.AccountId == null) {
                         req.PRM_Rejected_By__c = 'Data Ops';
                         req.PRM_MDM_Rejection_Reason__c = ucdResponseData.RejectionReason;
-            logEntryMsg+='Updated rejection details on registration'+req.id;
+						logEntryMsg+='Updated rejection details on registration'+req.id;
                    }
                    listOfRegReqToUpdate.add(req);
                }
@@ -129,7 +129,7 @@ public without sharing class PRM_AccountChangeEventSubscriber {
                 
         //update listOfRegReqToUpdate
         if (!listOfRegReqToUpdate.isEmpty() && listOfRegReqToUpdate!= null) {
-    logEntryMsg+='Updated listOfRegReqToUpdate line 133'+listOfRegReqToUpdate;
+		logEntryMsg+='Updated listOfRegReqToUpdate line 133'+listOfRegReqToUpdate;
           List<Database.SaveResult> listOfRegReqResult=  Database.Update(listOfRegReqToUpdate, false);
                     for (Database.SaveResult sr: listOfRegReqResult) {
                         if (!sr.isSuccess()) {
@@ -137,21 +137,21 @@ public without sharing class PRM_AccountChangeEventSubscriber {
                             for (Database.Error err: sr.getErrors()) {
                                 errorMsg = errorMsg +' **** '+ err.getStatusCode()+'- '+err.getMessage()+ 'Fields- '+err.getFields();                               
                             }
-              logEntryMsg+='Error Occured while updating registrations'+errorMsg;
-          } 
-        }
-      
-      }
+							logEntryMsg+='Error Occured while updating registrations'+errorMsg;
+					} 
+				}
+			
+			}
         
         //fetch approval record realted to registration request
         if (!regReqIdToCommentMap.isEmpty() && regReqIdToCommentMap!= null) {
-      logEntryMsg+='Calling fetchApprovalRecords line 138: regReqIdToCommentMap'+regReqIdToCommentMap;
+			logEntryMsg+='Calling fetchApprovalRecords line 138: regReqIdToCommentMap'+regReqIdToCommentMap;
             workItemIdToCommentMap = fetchApprovalRecords(regReqIdToCommentMap);
         }
                 
         //update approval record realted to registration request
         if (!workItemIdToCommentMap.isEmpty() && workItemIdToCommentMap!= null) {
-    logEntryMsg+='Calling updateApprovalProcess line 144: workItemIdToCommentMap'+workItemIdToCommentMap;
+		logEntryMsg+='Calling updateApprovalProcess line 144: workItemIdToCommentMap'+workItemIdToCommentMap;
             PRM_AccountChangeSubHandler.updateApprovalProcess(workItemIdToCommentMap);
         }
         
@@ -181,8 +181,8 @@ public without sharing class PRM_AccountChangeEventSubscriber {
                                                Core_Severity__c = SEVERITY, Core_When__c = System.Now(), 
                                                Core_Project__c = PROJECT));
     }
-  
-  // insert a log entry for 
+	
+	// insert a log entry for 
     if (!listOfLogEntries.isEmpty() && listOfLogEntries !=null) { Core_Log_Entry.createLogEntries(listOfLogEntries);
    }
         return workItemIdToCommentMap;

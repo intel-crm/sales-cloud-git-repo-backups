@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <available>true</available>
+    <description>RMF Internal Approvers will be notified</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_NotifyActivityApprovers_v1</name>
+    <style>none</style>
+    <subject>Proposal Status Updated</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

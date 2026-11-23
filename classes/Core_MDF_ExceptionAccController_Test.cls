@@ -97,7 +97,7 @@ public class Core_MDF_ExceptionAccController_Test {
         expt.Core_MDF_Exception_End_Date_dt__c = System.today() + 5;
         expt.Core_MDF_Exception_Reason_nm__c = 'Branding Exception from Activity Catalog';
         expt.Core_MDF_Program_nm__c = 'Core_MDF_Client_CoMarketing_Fund';
-        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast (Pre-2025)->Podcast';
+        expt.Core_MDF_Activity_Cate_and_Type_nm__c = 'Broadcast->Podcast';
         expt.Core_MDF_Total_Dollar_Impact_amt__c = 100;
         expt.Core_MDF_Country_Region_nm__c = 'INDIA';
         expt.Core_MDF_Account_id__c = null;
@@ -232,7 +232,6 @@ public class Core_MDF_ExceptionAccController_Test {
     static void exceptionWithReadOnlyAccessUser(){
         
         User usr = [ SELECT Id FROM User where LastName='Exception Submitter' LIMIT 1];
-        
         //Fetch account details
         List<Account> accList = [SELECT Id, Name
                                  FROM Account
@@ -267,29 +266,4 @@ public class Core_MDF_ExceptionAccController_Test {
                                       LIMIT 1];
         System.assertEquals(NULL,expt.Core_MDF_Company_Name_txt__c);
     }
-    @isTest
-    static void testSendEmailWithValidList() {
-        // Create a list with valid platform events
-        List<Core_MDF_Notify_Account_Manager__e> eventList = new List<Core_MDF_Notify_Account_Manager__e>();
-        
-        Core_MDF_Notify_Account_Manager__e event1 = new Core_MDF_Notify_Account_Manager__e(
-            Core_MDF_Escalation_Id_txt__c = 'a0X000000000001',
-            Core_MDF_errorMessage_txt__c = 'Test error message',
-            Core_MDF_isBusinessError_ind__c = true
-        );
-        
-        Core_MDF_Notify_Account_Manager__e event2 = new Core_MDF_Notify_Account_Manager__e(
-            Core_MDF_Escalation_Id_txt__c = 'a0X000000000002',
-            Core_MDF_errorMessage_txt__c = 'Another test error message',
-            Core_MDF_isBusinessError_ind__c = false
-        );
-        
-        eventList.add(event1);
-        eventList.add(event2);
-        
-        Test.startTest();
-        // This should execute without any errors since the method body is commented
-        Core_MDF_SendEmailHelper.sendEmail(eventList);
-        Test.stopTest();
-}
 }

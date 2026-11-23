@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Marketing_Support_Request_Submitted</template>
+        <template>unfiled$public/Marketing_Support_Request_Submitted</template>
     </alerts>
     <alerts>
         <fullName>Core_Email_on_Rejection_Opportunity_Support</fullName>
@@ -43,7 +43,7 @@
             <type>userLookup</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/Core_Opportunity_Support_Rejection_Email_Template</template>
+        <template>unfiled$public/Core_Opportunity_Support_Rejection_Email_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_Opportunity_Approval_Email</fullName>

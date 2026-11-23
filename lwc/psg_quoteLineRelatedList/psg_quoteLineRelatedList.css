@@ -1,0 +1,38 @@
+.customActions{
+    padding-top:7px;
+}
+
+.slds-col{
+    padding-right:0px;
+    padding-left: 0px;
+}
+
+.slds-form-element__icon{
+    display: none;
+}
+
+.slds-table td{
+    padding: 0.4rem;
+    width: 0rem;
+}
+
+.customInput{
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+}
+
+.slds-button__icon{
+    display:none;
+}
+
+.slds-form-element__icon .slds-button_icon{
+    display:none !important;
+}
+
+.slds-box{
+    border:none;
+}
+
+.footer-btn{
+    padding:5px;
+  }

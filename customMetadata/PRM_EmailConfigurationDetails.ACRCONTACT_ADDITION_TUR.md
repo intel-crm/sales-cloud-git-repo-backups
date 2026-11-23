@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">ACR_CONTACT_ADDITION</value>
+        <value xsi:type="xsd:string">ACR_CONTACT_ADDITION_TUR</value>
     </values>
 </CustomMetadata>

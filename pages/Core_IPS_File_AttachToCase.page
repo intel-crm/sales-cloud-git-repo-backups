@@ -24,7 +24,7 @@ Modification Log :
         var newUrl = url.replace(/&inline=1/, '');
         window.top.location=newUrl;
     }
-    </script>
+</script>
  
   
 <style>
@@ -51,8 +51,8 @@ Modification Log :
                 <div class="center">
                     <apex:commandButton value="{!$Label.Core_IPS_File_CSAttachPgRetBtnTxt}" action="{!saveAndReturn}" onclick="alert('{!$Label.Core_IPS_File_CSAttachPgRetBtnMsg}')" />
                 </div>
-            </apex:pageBlockButtons> 
-          </apex:pageBlock>
+            </apex:pageBlockButtons>               
+            </apex:pageBlock>
            
             
             <!--start added by Orion--vamsi on 09/10/2018 for US182118 --->
@@ -65,7 +65,11 @@ Modification Log :
                 <!--added by Aparna on 19/4/2017 for partner changes for US104151 R4.3-->
                 <apex:outputText value="{!$Label.Core_IPS_Partner_Attachment_Message}" rendered="{!partnerFiles}" styleClass="displayStyle"></apex:outputText>
                 <!--end by Aparna for US104151-->
-           </apex:outputPanel>     
+                
+                <apex:outputText value="<br/><br/>{!$Label.Core_IPS_File_CSAttachPtoCMsg}" escape="false" rendered="{!publicFiles}" styleClass="messageStyle"/>
+                <a href="mailto:export.customer@intel.com"><font color="blue"><apex:outputText value="{!$Label.Core_IPS_File_CSAttachPtoCMsg1}<br/><br/>" escape="false" rendered="{!publicFiles}" styleClass="messageStyle"></apex:outputText></font></a>
+                
+           </apex:outputPanel>
             <!--End --- Orion--vamsi on 09/10/2018 for US182118 ---> 
            <div align="center">
                <apex:outputText value="<br/>{!$Label.Core_IPS_File_CSAttachPtoCMsg}" escape="false" rendered="{!publicFiles}" styleClass="messageStyle"/>
@@ -100,7 +104,7 @@ Modification Log :
             </apex:pageblock>     
             <!-- END ---------> 
                             
-    <apex:iframe width="100%" height="600px" frameborder="true" scrolling="false" src="{!URL}"/>
+        <apex:iframe width="100%" height="600px" frameborder="true" scrolling="false" src="{!URL}"/>
    
 </apex:form>
 </apex:page>

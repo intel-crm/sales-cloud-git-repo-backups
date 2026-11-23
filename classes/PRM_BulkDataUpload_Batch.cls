@@ -19,7 +19,7 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
     global static List<Messaging.SingleEmailMessage> mapEmailMessaging = new List<Messaging.SingleEmailMessage>();
 
     public static String sanitizedSearchKey = String.escapeSingleQuotes(UserInfo.getUserId());
-    public static User user = [select Id,IsPortalEnabled, username,Core_IPA_One_Partner_Id__c,Core_IPS_AccountId__c,Email from User where Id = :sanitizedSearchKey];//where Id =: currentUserId  
+    public static User user = [select Id,IsPortalEnabled, username,Core_IPA_One_Partner_Id__c,Core_IPS_AccountId__c,Email from User where Id = :sanitizedSearchKey];//where Id =: currentUserId  
     public static string userEmail=string.valueOf(user.email);
     public static boolean isExtPartnerInvite=false;
     public static boolean IsPortalUser=user.IsPortalEnabled;
@@ -51,7 +51,6 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
             + ' FROM PRM_Bulk_Data_Upload__c'
             + ' Where PRM_Status__c=:status'
             + ' and createdBy.Email=:userEmail'
-            + ' and PRM_Upload_Type__c!=\'Auto Granted IPA for DZP\''
             + ' ORDER BY PRM_BatchID__c,createdDate '
             + ' LIMIT :batchLimit';
         
@@ -100,11 +99,17 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
                 
                 if(bulkDataUpload.PRM_OperationType__c == 'Insert'){
                     insertContacts.put(bulkDataUpload.PRM_ContactEmail__c, emailType != null 
-                        ? emailType+'_'+bulkDataUpload.PRM_Preferred_Language__c: languageToDefaultTemplateMap.containsKey(bulkDataUpload.PRM_Preferred_Language__c)? languageToDefaultTemplateMap.get(bulkDataUpload.PRM_Preferred_Language__c): languageToDefaultTemplateMap.get('ENG'));
+                        ? emailType+'_'+bulkDataUpload.PRM_Preferred_Language__c
+                        : languageToDefaultTemplateMap.containsKey(bulkDataUpload.PRM_Preferred_Language__c)
+                            ? languageToDefaultTemplateMap.get(bulkDataUpload.PRM_Preferred_Language__c)
+                            : languageToDefaultTemplateMap.get('ENG'));
                 } 
                 else{
                     updateContacts.put(bulkDataUpload.PRM_ContactEmail__c, emailType != null 
-                        ? emailType+'_'+bulkDataUpload.PRM_Preferred_Language__c : languageToDefaultTemplateMap.containsKey(bulkDataUpload.PRM_Preferred_Language__c)? languageToDefaultTemplateMap.get(bulkDataUpload.PRM_Preferred_Language__c): languageToDefaultTemplateMap.get('ENG'));
+                        ? emailType+'_'+bulkDataUpload.PRM_Preferred_Language__c 
+                        : languageToDefaultTemplateMap.containsKey(bulkDataUpload.PRM_Preferred_Language__c)
+                            ? languageToDefaultTemplateMap.get(bulkDataUpload.PRM_Preferred_Language__c)
+                            : languageToDefaultTemplateMap.get('ENG'));
                 }                             
             }
             if(mapContactEmailToBDU.size()>0){
@@ -186,10 +191,12 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
             List<PRM_Bulk_Data_Upload__c> bulkFailLstUpdate= new list<PRM_Bulk_Data_Upload__c>();
         if(!listAcrUpdateMulefailure.isEmpty()){
             upsert listAcrUpdateMulefailure;
+                system.debug('listAcrUpdateMulefailure'+listAcrUpdateMulefailure);
                 for(PRM_Account_Contact_Relationship__c acr:listAcrUpdateMulefailure){
                     conEmails.add(acr.PRM_Contact_Id__r.Email); 
                    
                 }
+                // system.debug('conEmails'+conEmails);
                 // bulkListFailure =[select id, PRM_Status__c,PRM_First_Name__c, PRM_Last_Name__c,  PRM_ContactEmail__c,PRM_Comments__c 
                 // from PRM_Bulk_Data_Upload__c where PRM_ContactEmail__c in: conEmails  and PRM_Status__c ='Completed' ];
             }
@@ -197,7 +204,10 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
                 for(PRM_Account_Contact_Relationship__c acr1:listAcrUpdateAGSfailure){
                     if(acr1.PRM_AGS_Response_Status__c==System.Label.PRM_retry){
                         conEmails.add(acr1.PRM_Contact_Id__r.Email);
-                    }}}
+                    }
+            }
+        }
+        system.debug('conEmails'+conEmails);
         if(!conEmails.isEmpty()){
             for(PRM_Bulk_Data_Upload__c bulkFailRec:[select id, PRM_Status__c,PRM_First_Name__c, PRM_Last_Name__c,  PRM_ContactEmail__c,PRM_Comments__c,PRM_Mailing_Country__c 
                                                     from PRM_Bulk_Data_Upload__c where PRM_ContactEmail__c in: conEmails  and 
@@ -206,9 +216,12 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
                     bulkFailRec.PRM_Status__c=System.Label.PRM_Discarded;
                     bulkFailRec.PRM_Comments__c=System.Label.PRM_Integration_Fail_Bulk;
                     bulkFailLstUpdate.add(bulkFailRec);
-                }}}
+                }
+               }
+            }
        
             if(!bulkFailLstUpdate.isEmpty()){
+                system.debug('bulkFailLstUpdate'+bulkFailLstUpdate);
                 update bulkFailLstUpdate;
             }
         if(!listIntegrationLogs.isEmpty()){
@@ -381,6 +394,7 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
             
             catch(Exception e){
                 Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '',e);  
+                System.debug('Exception Occured: '+e);
          }      
     }
 }
@@ -645,7 +659,7 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
                     }
                     
                 String Buttontext;
-                String Warning_Placeholder = '';
+                String Warning_Placeholder='';
                 
                 Buttontext = (String) dynamicTranslations.get('Complete_Now_Button_Name').get(cont.Core_Preferred_Language__c + '__c');
                         Warning_Placeholder = '';  
@@ -821,6 +835,8 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
             WHERE DeveloperName =:templateName limit 1].HtmlValue;
         emailBody = emailBody.replace('{!job_subject}',jobSubject);//'Batch Execution started'
         emailBody= emailBody.replace('{!JOB_MESSAGE}',jobStatusMessage);// 'Batch Execution is progress for Bulk Data Upload Batch'
+        emailBody = emailBody.replace('{!$Label.PRM_CurrentYear}', Label.PRM_CurrentYear);//IPA2.0 TWC727-3232
+        
         mail.setSubject('Bulk Data Upload completed Successfully');
         mail.setHtmlBody(emailBody);               
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });

@@ -12,7 +12,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_SSLCHomePageHeading",
-      "id" : "13545bb2-b587-45b8-b7ce-613728911be8",
+      "id" : "67f95b5b-9c08-4748-a11c-3161b0687564",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -24,7 +24,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_SSLCHomePageGIF",
-      "id" : "f1b5e987-5b0a-4494-a52c-9f71e0c3f2ad",
+      "id" : "e1847a69-d60b-4b98-ba23-906b3f634724",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -52,6 +52,7 @@
         "id" : "f66d3a45-78e6-45b0-891f-ed0b25be20cc",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
             "description" : "市场推广基金",
             "title" : "Home"
           }

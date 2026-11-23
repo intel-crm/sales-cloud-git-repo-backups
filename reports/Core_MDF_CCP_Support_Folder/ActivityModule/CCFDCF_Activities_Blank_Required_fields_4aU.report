@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>PartnerFundRequest$Id</field>
+        <field>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Core_MDF_Ultimate_Account_Id__c</field>
     </columns>
     <columns>
         <field>PartnerFundRequest$Name</field>
@@ -16,7 +19,7 @@
         <field>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</field>
     </columns>
     <columns>
-        <field>PartnerFundRequest$Core_MDF_Program__c</field>
+        <field>PartnerFundRequest$Campaign.Core_MDF_Program__c</field>
     </columns>
     <columns>
         <field>PartnerFundRequest$Core_MDF_CreatedBy__c</field>
@@ -42,18 +45,29 @@
     <columns>
         <field>PartnerFundRequest$Core_MDF_Activity_Types__c</field>
     </columns>
-    <columns>
-        <field>PartnerFundRequest$Core_MDF_BU_Percent_txt__c</field>
-    </columns>
-    <description>CCF &amp; DCF OPAL &amp; IPA Activities with Blank Required fields</description>
+    <description>CCF &amp; DCF OPAL Activities with Blank Required fields</description>
     <filter>
-        <booleanFilter>((1 AND 10) AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9)) OR (11 AND (12 OR 13 OR 14 OR 15 OR 16))</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 16 OR 17 OR 18 OR 19)</booleanFilter>
+        <criteriaItems>
+            <column>PartnerFundRequest$Campaign.Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Client CoMarketing Fund,Data Center CoMarketing Fund</value>
+        </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Business Client Acceleration - MDF,Client Specialties MDF,Data Centric Acceleration - MDF,IoT Premier - MDF,IoT Targeted - MDF,ODM Growth Plan - Client MDF,MDF,MDF+,OEM CMP,SOEM Data Center MDF</value>
+            <value>MDF,MDF+,OEM CMP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Activity_Description__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Start_Date__c</column>
@@ -70,7 +84,28 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
+            <column>PartnerFundRequest$Campaign</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <column>PartnerFundRequest$ChannelPartner</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Priorities__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -84,48 +119,6 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Country_nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_ActivityCategory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Activity_Types__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Reimbursement_Rate__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Ultimate_Account_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Bristal org_CCPTest,A&amp;E Test Account JJ</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>MDF,MDF+,OEM CMP,Service Provider CMP</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_TargetAudience__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -133,7 +126,7 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Priorities__c</column>
+            <column>PartnerFundRequest$Core_MDF_Country_nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -154,7 +147,35 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_ActivityCategory__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Activity_Types__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Channel_Partner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Country_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Reimbursement_Rate__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -163,7 +184,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Activities Blank Required Fields</name>
+    <name>CCF/DCF Activities Blank Required fields</name>
     <params>
         <name>co</name>
         <value>1</value>

@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Dear Account Manager,<br />
+<br />
+&nbsp;<br />
+We noticed that the latest documents under "Notes &amp; Attachments" for&nbsp;<a href="{{{Account.Link}}}">{{{Account.Name}}}</a> (Account ID: <strong>{{{Account.Id}}}</strong>) in Salesforce were uploaded more than 12 months ago.<br />
+<br />
+To maintain compliance, please update the Customer Due Diligence File in Salesforce at your earliest convenience.<br />
+<br />
+For detailed guidelines and requirements, please click <a href="https://intel.sharepoint.com/sites/SMG-GPS/SitePages/Project-Dawn.aspx">here</a> to refer to the Customer and Deal Due Diligence Policy.<br />
+<br />
+&nbsp;<br />
+Thank you for your cooperation!<br />
+<br />
+&nbsp;<br />
+Best regards,<br />
+Intel SalesForce Team</p>
+</body>
+</html>

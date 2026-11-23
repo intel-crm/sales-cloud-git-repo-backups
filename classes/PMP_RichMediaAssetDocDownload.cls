@@ -111,8 +111,6 @@ public with sharing class PMP_RichMediaAssetDocDownload{
                    update casset;
                 }
             }
-        } else {
-            //System.debug('No Response file from the API Call');
         }
     }
 }

@@ -1,0 +1,49 @@
+.slds-card {
+    width: 60px;
+    margin: 20px auto;
+}
+h2 {
+    border: 1px solid #0c0909; 
+    padding: 7px; margin-right: 10px; 
+    margin-left: 10px; 
+    background-color:rgb(1, 118, 211); 
+}
+.core{
+    border: 1px solid #0c0909; 
+    padding: 10px; 
+    border-radius: 10px; 
+    margin: 10px 10px 10px; 
+    margin-bottom: 25px;
+}
+.spacing{
+    margin-right: 10px; 
+    margin-left: 10px;
+    justify-content: space-between;
+}
+.inlineWidth40{
+    width:40%; 
+    display:inline-block;
+}
+.inlineWidth25{
+    width:25%;
+    display:inline-block;
+}
+.inlineWidth65{
+    width:65%; 
+    display:inline-block;
+}
+.inlineWidth30{
+    width:30%; 
+    display:inline-block;
+}
+.input{
+    margin-right: 10px;
+    width: 350px;
+}
+.button{
+    margin-top: 22px;
+    color: black;
+}
+.bold{
+    color: white;
+}

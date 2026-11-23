@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>Core_AccChangeReq_SubmitForApproval_1</destinationFlowDefinition>
+    <destinationFlowVersion>Core_AccChangeReq_SubmitForApproval_1-3</destinationFlowVersion>
+    <developerName>myRule_1_301D3000000SELMIA4</developerName>
+    <masterLabel>Core_AccChangeReq_SubmitForApproval_1</masterLabel>
+    <migratedCriteriaLabel>Select only Unsubmitted Records</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>Core_AccChangeReq_SubmitForApproval-1</processVersion>
+</ProcessFlowMigration>

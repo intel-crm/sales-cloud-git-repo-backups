@@ -62,7 +62,7 @@ global class Core_postOpportunityShareBatch_Test {
         //Database.SaveResult delegateResults= new Database.SaveResult();
           System.runAs(Core_Test_Utility.systemAdminUser) {
                Database.SaveResult delegateResults=DataBase.insert(oppShare,false);
-              oppShareId.add(delegateResults.getId());
+               oppShareId.add(delegateResults.getId());
           } 
         Map<Id,opportunity> opp=new Map<Id,opportunity>();
         opp.put(testUser.Id,oppForLoss);
@@ -73,6 +73,7 @@ global class Core_postOpportunityShareBatch_Test {
         
         
         database.executebatch(new Core_postOpportunityShareBatch (opp,oppShareId,userId),50);
+        
         Test.stopTest(); 
     }
 }

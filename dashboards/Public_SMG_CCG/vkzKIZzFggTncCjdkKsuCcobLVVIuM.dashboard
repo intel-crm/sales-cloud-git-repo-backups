@@ -18,7 +18,7 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>contains</operator>
-            <values>karim Ghatwary,Susan Mbogo,Adib Rajji,Ahmad Alqabbat,Hannes Steyn,Joao Fidalgo,Nawras Sawsou,Sameh Helmy,KARIM BIBI TRIKI,Ahmad Alabduljabbar</values>
+            <values>karim Ghatwary,N/A,Susan Mbogo,Adib Rajji,Ahmad Alqabbat,Hannes Steyn,Joao Fidalgo,Nawras Sawsou,Sameh Helmy,KARIM BIBI TRIKI,Ahmad Alabduljabbar</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>contains</operator>
@@ -62,7 +62,7 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>contains</operator>
-            <values>Matt Harrison,Angela Baroni,Cooper Prescott,Melissa Gonzalez,David Nguyen,Hannah Freimark,Kimberly Kelly</values>
+            <values>Matt Harrison,Hugh O&apos;Neill,Chris Lesko,Angela Baroni,Cooper Prescott,Melissa Gonzalez,Matt Gunsul,Juan Tobon</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>contains</operator>
@@ -72,30 +72,7 @@
             <operator>contains</operator>
             <values>Alaor Neto,Ana Varandas,Barbara Grunert,Belu Ramirez - Temp,Claudia Zurita,David Rodriguez,Hernan Muhafara,Juan Casal,Marco Demaria,Martin Suarez,Maximiliano Lopez,Mercedes Tessary,Nadia Correia,Romina Arias</values>
         </dashboardFilterOptions>
-        <name>Select TSS Name</name>
-    </dashboardFilters>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>GMP Americas Sales Territory,GMP Brazil Sales Group,GMP Mexico Sales Group</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>GMP APJ Sales Territory,GMP India Sales Group,GMP Japan Sales Group,GMP Korea Sales Group,GMP Taiwan Sales Group</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>GMP EMEA Sales Territory,GMP France Sales Group,GMP Germany Sales Group,GMP Russia Sales Group,GMP UK Sales Group</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>US Sales Group</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>PRC Sales Group</values>
-        </dashboardFilterOptions>
-        <name>Select Region</name>
+        <name>TSS Name</name>
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
@@ -110,9 +87,6 @@
                 <componentType>Metric</componentType>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -137,9 +111,6 @@
                 <componentType>FlexTable</componentType>
                 <dashboardFilterColumns>
                     <column>Opportunity.Core_Opportunity_Owner__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
@@ -216,15 +187,15 @@
                 <report>unfiled$public/vPro_TSS_Dashboard_Report2</report>
             </dashboardComponent>
             <rowIndex>4</rowIndex>
-            <rowSpan>15</rowSpan>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>10642423@intel.com.crm</owner>
-    <runningUser>10642423@intel.com.crm</runningUser>
+    <owner>10552739@intel.com.crm</owner>
+    <runningUser>10552739@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>vPro TSS Dashboard</title>
     <titleColor>#000000</titleColor>

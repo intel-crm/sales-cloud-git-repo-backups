@@ -1,0 +1,5 @@
+<apex:page contentType="text/plain">
+    User-agent: *
+    Disallow: /   
+    Sitemap: https://intel--crmdevint3.sandbox.my.site.com/imp/s/sitemap.xml
+</apex:page>

@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Resubmission Required;Paid and Resubmission Required;Pending Documents;Paid and Pending Documents;Pending Account Manager Clarification</value>
+        <value xsi:type="xsd:string">Resubmission Required;Paid and Resubmission Required;Pending Documents;Paid and Pending Documents;Pending Account Manager Clarification;Payment Clearance Processing</value>
     </values>
 </CustomMetadata>

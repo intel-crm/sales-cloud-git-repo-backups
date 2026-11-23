@@ -847,7 +847,218 @@ public class PRM_ACMUpdateBatchUtility_Test {
         opidacmmem.PRM_Status__c='In Progress';
         
         insert opidacmmem;
+        
+        /*//JB -- start
+                        
+        PRM_AccountChannelMembership__c opidCoverageACM = new PRM_AccountChannelMembership__c();       
+        opidCoverageACM.PRM_Account_Id__c = opidAcc.Id;
+        opidCoverageACM.PRM_Status_Nm__c = 'Inactive';
+        opidCoverageACM.PRM_Channel_Program_Id__c = cp.Id;
+        opidCoverageACM.PRM_Channel_Program_Level_Id__c = cpl.Id;
+        opidCoverageACM.PRM_Partner_Role__c = 'Service Provider';
+        opidCoverageACM.PRM_Status_Reason_Txt__c = 'Test Coverage';
+        insert opidCoverageACM;
+        
+        
+        PRM_AccountBenefitAssociation__c activeCoverageABA =new PRM_AccountBenefitAssociation__c();
+        activeCoverageABA.PRM_Account_Id__c = opidAcc.Id;
+        activeCoverageABA.PRM_Partner_Benefit_Id__c = pb.Id;
+        activeCoverageABA.PRM_Status_Nm__c = 'Active';
+        activeCoverageABA.PRM_Source__c = 'Tier';
+        activeCoverageABA.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
+        insert activeCoverageABA;
+        
+        
+        PRM_AccountBenefitAssociation__c inactiveCoverageABA =new PRM_AccountBenefitAssociation__c();
+        inactiveCoverageABA.PRM_Account_Id__c = opidAcc.Id;
+        inactiveCoverageABA.PRM_Partner_Benefit_Id__c = pb2.Id;
+        inactiveCoverageABA.PRM_Status_Nm__c = 'Inactive';
+        inactiveCoverageABA.PRM_Source__c = 'Tier';
+        inactiveCoverageABA.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
+        insert inactiveCoverageABA;
+        
+        // JB --end
+        */
         Database.executeBatch(new PRM_ACMUpdateBatchUtility());
         
     }
+    
+    @isTest
+static void testOPIDInactiveACMActivationCoverage() {
+
+    Id pagRtId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
+	Id intelRtId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+
+    ChannelProgram cp = new ChannelProgram(
+        Name = 'Intel Partner Alliance',
+        PRM_programCode__c = 'IPA'
+    );
+    insert cp;
+
+    ChannelProgramLevel cpl = new ChannelProgramLevel(
+        Name = 'Prestige',
+        ProgramId = cp.Id
+    );
+    insert cpl;
+	
+    ChannelProgramLevel partnerCpl = new ChannelProgramLevel(
+        Name = 'Partner',
+        ProgramId = cp.Id
+    );
+    insert partnerCpl;
+        
+    Account opid = new Account(
+        Name='Test Coverage OPID',
+        RecordTypeId=pagRtId,
+        BillingCountry='India',
+        BillingCity='BLR',
+        BillingStreet='Street9',
+        BillingPostalCode='456182',
+        Core_Account_Type__c='Cloud Service Provider (CSP)',
+        Core_Intel_Partner_Alliance_PartnerGroup__c=true,
+        Core_IPA_Partner_Role__c='Service Provider',
+        Industry = 'Agriculture');
+    insert opid;
+	
+    Account checkAcct = [
+            SELECT Id,
+                   Core_IPA_Partner_Role__c
+            FROM Account
+            WHERE Id = :opid.Id
+        ];
+        
+        System.debug(checkAcct.Core_IPA_Partner_Role__c);
+            
+    PRM_AccountChannelMembership__c sourceACM =
+        new PRM_AccountChannelMembership__c(
+            PRM_Account_Id__c = opid.Id,
+            PRM_Channel_Program_Id__c = cp.Id,
+            PRM_Channel_Program_Level_Id__c = cpl.Id,
+            PRM_Status_Nm__c = 'Approved',
+            PRM_Partner_Role__c = 'Service Provider',
+            PRM_Status_Reason_Txt__c='Test01'
+        );
+    insert sourceACM;
+
+    PRM_AccountChannelMembership__c inactiveACM =
+        new PRM_AccountChannelMembership__c(
+            PRM_Account_Id__c = opid.Id,
+            PRM_Channel_Program_Id__c = cp.Id,
+            PRM_Channel_Program_Level_Id__c = cpl.Id,
+            PRM_Status_Nm__c = 'Inactive',
+            PRM_Partner_Role__c = 'Distributor',
+            PRM_Status_Reason_Txt__c='Test02'
+        );
+    insert inactiveACM;
+    
+    /*PRM_AccountChannelMembership__c approvedACM2 =
+        new PRM_AccountChannelMembership__c(
+                PRM_Account_Id__c = opid.Id,
+                PRM_Channel_Program_Id__c = cp.Id,
+                PRM_Channel_Program_Level_Id__c = cpl.Id,
+                PRM_Status_Nm__c = 'Approved',
+                PRM_Partner_Role__c = 'Service Provider',
+                PRM_Status_Reason_Txt__c = 'Test03'
+            );
+        insert approvedACM2;
+	*/
+
+     PRM_PartnerBenefit__c pbTe = new PRM_PartnerBenefit__c(); //Partner Benefit
+        pbTe.Name = 'Partner University1';
+        pbTe.PRM_Channel_Program_Id__c = cp.id;
+        pbTe.PRM_Benefit_Cd__c = 'BFTMKTPLBC';
+        pbTe.PRM_Account_Type_Nm__c = 'Both'; 
+    insert pbTe;
+    
+     PRM_PartnerType__c pt=new PRM_PartnerType__c(); // Partner type
+        pt.Name='Cloud Service Provider (CSP)';
+        pt.PRM_Role_Name__c='Distributor';
+        pt.PRM_PartneryTypeCode__c='CSP';
+        pt.PRM_PartnerRoleCode__c='SPR';
+        pt.PRM_channelprogram__c=cp.Id;
+        insert pt;
+
+    PRM_VXBnftMatrix__c matrix =
+        new PRM_VXBnftMatrix__c(
+            PRM_Channel_Program_Id__c = cp.Id,
+            PRM_Channel_Program_Level_Id__c = cpl.Id,
+            PRM_Partner_Type_Id__c = pt.Id,
+            PRM_Partner_Benefit_Id__c = pbTe.Id,
+            PRM_Approval_Type_Nm__c='Automatic',
+            PRM_IsActive_Ind__c=true,
+            PRM_Covered_Account_Ind__c=true,
+            PRM_Partner_Role_Nm__c='Distributor'
+        );
+    insert matrix;
+    
+    PRM_VXBnftMatrix__c partnerMatrix =
+    new PRM_VXBnftMatrix__c(
+        PRM_Channel_Program_Id__c = cp.Id,
+        PRM_Channel_Program_Level_Id__c = partnerCpl.Id,
+        PRM_Partner_Type_Id__c = pt.Id,
+        PRM_Partner_Benefit_Id__c = pbTe.Id,
+        PRM_Approval_Type_Nm__c = 'Automatic',
+        PRM_IsActive_Ind__c = true,
+        PRM_Covered_Account_Ind__c = true,
+        PRM_Partner_Role_Nm__c = 'Distributor'
+    );
+	insert partnerMatrix;
+
+    PRM_AccountBenefitAssociation__c aba =
+        new PRM_AccountBenefitAssociation__c(
+            PRM_Account_Id__c = opid.Id,
+            PRM_Partner_Benefit_Id__c = pbTe.Id,
+            PRM_Status_Nm__c='Inactive',
+            PRM_Source__c='Tier',
+            PRM_Status_Reason_Txt__c=Label.PRM_ACM_ABA_Automation_Reason
+        );
+    insert aba;
+	
+    PRM_PartnerBenefit__c orphanBenefit =
+    new PRM_PartnerBenefit__c(
+        Name = 'Coverage Orphan Benefit',
+        PRM_Channel_Program_Id__c = cp.Id,
+        PRM_Benefit_Cd__c = 'COVORPHAN',
+        PRM_Account_Type_Nm__c = 'Both'
+    );
+    insert orphanBenefit;
+    
+    PRM_AccountBenefitAssociation__c orphanABA =
+        new PRM_AccountBenefitAssociation__c(
+            PRM_Account_Id__c = opid.Id,
+            PRM_Partner_Benefit_Id__c = orphanBenefit.Id,
+            PRM_Status_Nm__c = 'Active',
+            PRM_Source__c = 'Tier',
+            PRM_Status_Reason_Txt__c = 'Coverage'
+        );
+    insert orphanABA;
+    
+    PRM_IPA_Membership__c mem =
+        new PRM_IPA_Membership__c(
+            PRM_Account_Channel_Membership__c = sourceACM.Id,
+            PRM_Old_Partner_Role__c='Service Provider',
+            PRM_Old_Partner_Tier__c='Prestige',
+            PRM_Partner_Role__c='Distributor',
+            PRM_Partner_Tier__c = cpl.Id,
+            PRM_Status__c='In Progress'
+        );
+    insert mem;
+    
+    PRM_IPA_Membership__c checkMem =
+    [
+        SELECT Id,
+               PRM_Account_Id__c,
+               PRM_Account_Channel_Membership__c,
+               PRM_Partner_Role__c,
+               PRM_Old_Partner_Role__c
+        FROM PRM_IPA_Membership__c
+        WHERE Id = :mem.Id
+    ];
+    
+    System.debug('### Membership=' + checkMem);
+
+    Test.startTest();
+    Database.executeBatch(new PRM_ACMUpdateBatchUtility(),1);
+    Test.stopTest();
+	}
 }

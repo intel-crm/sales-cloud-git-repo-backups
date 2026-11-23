@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>AccountType__c</field>
-        <value xsi:type="xsd:string">Intel Developer Cloud Enterprise</value>
+        <value xsi:type="xsd:string">Intel Developer Cloud Enterprise</value>
     </values>
     <values>
         <field>PriorityField__c</field>

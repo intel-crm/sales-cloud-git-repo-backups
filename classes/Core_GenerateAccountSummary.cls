@@ -17,6 +17,7 @@ public class Core_GenerateAccountSummary {
    
     @AuraEnabled(cacheable=true)
     public static Boolean makePostRequest(String recordId, String userId, String action, String userWWID) {
+        system.debug('Core_GenerateAccountSummary class entry');
       	Boolean showValue = false;
         Core_GenerateAccountSummaryJson Top3;
         
@@ -63,6 +64,7 @@ public class Core_GenerateAccountSummary {
                 }}
         }
         system.debug('showvalue'+showvalue);
+        system.debug('Core_GenerateAccountSummary class exit');
        return showValue;
     }
 }

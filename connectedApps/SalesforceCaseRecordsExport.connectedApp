@@ -3,8 +3,8 @@
     <contactEmail>minhajx.ameen@intel.com</contactEmail>
     <label>SalesforceCaseRecordsExport</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/authcallback/SalesforceCaseListExportAuth</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6neSQDDa10OqOYsXKrjwOk0KNPoJUHj3tia29RhthNrbyZiHA_DXrshj0HPL</consumerKey>
+        <callbackUrl>https://intel--crmdevint3.sandbox.my.salesforce.com/services/authcallback/SalesforceCaseListExportAuth</callbackUrl>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDukrK4iOBbgCc8UaNchYb2M8YIM6c.pjCj.LAycnUEpcqmBo21XkhdYRyA40</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>

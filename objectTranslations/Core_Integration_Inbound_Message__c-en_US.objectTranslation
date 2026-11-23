@@ -57,12 +57,20 @@
             <translation><!-- Contact --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Payment</masterLabel>
+            <translation><!-- Payment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Quote</masterLabel>
             <translation><!-- Quote --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Role</masterLabel>
             <translation><!-- Role --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Role 2.0</masterLabel>
+            <translation><!-- Role 2.0 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SSG Support Request</masterLabel>

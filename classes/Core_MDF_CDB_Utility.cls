@@ -169,5 +169,5 @@ public static void updateRecordsList(List<sObject> recordsList, String keyField,
         Core_MDF_CDB_Utility.collectAndLogDbErrors(keyToUpdateErrors, keyToBaseMessage, objectName);
     }
 }
-     
+   
 }

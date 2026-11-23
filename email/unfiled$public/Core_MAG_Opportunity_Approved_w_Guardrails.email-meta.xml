@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to owner when MAG opportunity is approved with guardrails</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>MAG Opportunity Approved with Guardrails</name>
+    <style>none</style>
+    <subject>GEC Approved with Guardrails - your SFDC Opportunity ID {!Opportunity.Id} Account Name {!Account.Name}</subject>
+    <textOnly>Hello {!Opportunity.OwnerFullName},
+
+Based on our review of the Export questionnaire that you completed for your MAG opportunity/opportunities referenced in this email, you have approval with conditions to proceed provided you stay within the guardrails below:
+
+· Do not provide any technical advice or assistance including code or SW optimization that supports a defense, space, or military related end use or end items
+
+· Do not provide training that relates to any military, defense, or space-related requirements or a defense article
+
+· Do not provide information or technology relating to the production, development or use of Intel products in a defense, space, or military end item or application (beyond information required to ensure safe operation of our products).
+
+If the customer wants more information or assistance that goes beyond these guidelines or if requirements for military, defense, or space articles are later introduced by the customer, please contact Intel’s Trade Department immediately before proceeding further. If you understand your responsibility and can comply with the guidelines above, please reply with &quot;Yes&quot; in the body of your email. If you are unable to comply with the guidelines above, please reply with &quot;No&quot; in the body of your email; GEC will follow up with you to discuss the opportunity or opportunities.
+
+Following are examples of information that CAN be shared with the customer:
+
+· Basic marketing material
+
+· Product roadmap
+
+· Product samples
+
+· Electronic design kits
+
+· Marketing information about product capabilities, features, and how to use them.
+
+Following are examples of activities that are outside the guardrails above, can NOT be shared, and will require prior GEC notification/approval:
+
+· Facilitate design-in services on the Customer’s board modified for MAG customers
+
+· Facilitate co–development solutions with Customers supporting MAG defense end items
+
+· General consensus is that Intel does not assist the Customer on Co-Development solutions; however, it is possible for Intel technicians to provide co-development support.
+
+· Facilitate the development of working prototypes in response to any specific capabilities or markets Provide POCs (Proof of Concept) in response to any specific defense capabilities or markets
+
+· General consensus is that Intel does not assist the Customer on working prototypes; however, it is possible for Intel technicians to build prototypes with the Customer’s design information.
+
+· Facilitate design reviews of Customer’s MAG board design (schematics and layouts)
+
+· Schematic review – Input/Outputs (I/Os, connectivity issues, interfaces, components
+
+· Layout review – Board construction, Layer builds, interconnect guidelines, voltage evaluation, or evaluating against topology conditions provided.
+
+· Create a custom designed microprocessors for a defense/aerospace end item
+
+· Perform technical support or military training for any defense/aerospace end item
+
+· Discuss missile technology
+
+· Enable or support the development of weapons systems
+
+· Reference or perform comparison to US Government systems, programs or operations
+
+· Discuss, offer or release US Government tactics, doctrine, rules of engagement or employment methods
+
+IMPORTANT:
+
+- Should any of your previous responses change, the approval status may change accordingly.  Please contact GEC as soon as you determine your prior response needs updating.
+
+- The scope of this approval is limited to GEC’s review of the opportunity based on your responses and the relationship to a military, aerospace or government project.  All the other requirements, internal and external, beyond export controls must be met according to the specific policies, rules and regulations (if applicable) prior to moving forward with the opportunity.
+
+Please let us know if you have any questions or concerns.
+
+Best regards,
+
+Global Export Compliance / Global Tax &amp; Trade
+Export.customer@intel.com</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

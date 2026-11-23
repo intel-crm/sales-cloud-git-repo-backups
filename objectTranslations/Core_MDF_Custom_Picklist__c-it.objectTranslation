@@ -45,6 +45,10 @@
         <name>Core_MDF_Camp_IRTI</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- Intel MDF Account Based1 --></label>
+        <name>Core_MDF_Camp_Intel_MDF_Account_Based1</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Iot Premier - MDF Campaign --></label>
         <name>Core_MDF_Camp_Iot_Premier_MDF</name>
     </fieldSets>
@@ -205,6 +209,10 @@
         <name>Core_MDF_Activity_Description__c</name>
     </fields>
     <fields>
+        <label><!-- Activity Reimbursement Rate --></label>
+        <name>Core_MDF_Activity_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
         <label><!-- Activity Subtype --></label>
         <name>Core_MDF_Activity_SubType_nm__c</name>
     </fields>
@@ -263,6 +271,10 @@
         <help>Se selezionata, si applica la Guida basata sui risultati. Se questa opzione non è selezionata, si applica la Guida standard alle vendite e al marketing. Le attività nell&apos;ambito di questa campagna devono essere impostate di conseguenza.</help>
         <label>Campagna basata sui risultati</label>
         <name>Core_MDF_CampOutcomeOpt_In_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Reimbursement Rate --></label>
+        <name>Core_MDF_Campaign_Reimbursement_Rate_pct__c</name>
     </fields>
     <fields>
         <label><!-- Campaign Reimbursement Rate --></label>
@@ -613,6 +625,10 @@
         <name>Core_MDF_Opal_Budget_Type_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Other Outcome Brands/Technologies --></label>
+        <name>Core_MDF_Other_Brands_Technologies_txt__c</name>
+    </fields>
+    <fields>
         <label>Altri partner dell&apos;ecosistema</label>
         <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
     </fields>
@@ -960,6 +976,10 @@
     <recordTypes>
         <label><!-- Channel MDF - Account Based --></label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Channel MDF - Proposal Based --></label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Client --></label>

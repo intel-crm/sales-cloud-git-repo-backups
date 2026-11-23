@@ -47,15 +47,22 @@ public with sharing class Core_IPS_ContactloginDisclaimerCtrl_LWC {// Changed by
     @AuraEnabled
     public static string redirectAutomate(){
         try {
-            Boolean flag=true;    
-            List<User> u = [select Id, ContactId,userType from User where Id = :UserInfo.getUserId()];        
-            List<Contact> con = [select id, Core_IPS_NDA_Acceptance_Date__c from Contact where id=:u[0].ContactId limit 1];
-            for(user us : u){
-                
-            }
+            Boolean flag=true; 
+             /*kalyani - Commented List<Contact> con query, just added extra field for below query i.e., Core_IPS_NDA_Acceptance_Date__c; this is part of code optimization.*/
+            // Venrublity Fix - Refering query to service class
+            // List<User> u = [select Id, ContactId,userType, Contact.Core_IPS_NDA_Acceptance_Date__c from User where Id = :UserInfo.getUserId()];   
+            List<User> u = (List<User>) Core_IPS_QueryService.queryRecords(
+                'select Id, ContactId,userType, Contact.Core_IPS_NDA_Acceptance_Date__c from User where Id = :userId',
+                new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
+            );
+            // List<Contact> con = [select id, Core_IPS_NDA_Acceptance_Date__c from Contact where id=:u[0].ContactId limit 1];
+            /*kalyani - Commented below for loop, it is not in use; this is part of code optimization.*/
+            // for(user us : u){
+            // }
+            /*kalyani - replaced con[0].Core_IPS_NDA_Acceptance_Date__c with u[0].Contact.Core_IPS_NDA_Acceptance_Date__c.*/
             if(u[0].userType=='PowerCustomerSuccess' || u[0].userType=='PowerPartner'){            
-                if(con[0].Core_IPS_NDA_Acceptance_Date__c != null){
-                    if(con[0].Core_IPS_NDA_Acceptance_Date__c >= System.today().adddays(-Integer.valueOf(System.Label.NDA_Acceptance_Time)) ){
+                if(u[0].Contact.Core_IPS_NDA_Acceptance_Date__c != null){
+                    if(u[0].Contact.Core_IPS_NDA_Acceptance_Date__c >= System.today().adddays(-Integer.valueOf(System.Label.NDA_Acceptance_Time)) ){
                         flag = true;  
                     }else{
                         flag = false;            

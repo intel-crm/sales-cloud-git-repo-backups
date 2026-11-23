@@ -32,7 +32,7 @@ public class CIDAAS_ERPM_Callout_Test {
         regRequest.PRM_Address_Line_1__c= '470 Potrero Ave';
         regRequest.PRM_City__c= 'Bangalore';
         regRequest.PRM_Country__c= 'IN';
-        regRequest.PRM_Subscriptions__c = 'IDEV_sub1';
+        regRequest.PRM_Subscriptions__c = 'Dev_edu_training';
         
         Test.startTest();
         insert regRequest;

@@ -21,6 +21,10 @@
         <name>Core_Category__c</name>
     </fields>
     <fields>
+        <label><!-- Core_Contact_Entitlement_cid_prod --></label>
+        <name>Core_Contact_Entitlement_cid_prod__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact --></label>
         <name>Core_Contact_Id__c</name>
         <relationshipLabel><!-- Contact Entitlements --></relationshipLabel>
@@ -89,7 +93,7 @@
         <name>Core_Ops_Status__c</name>
     </fields>
     <fields>
-        <help><!-- The number of retrigger attempts made to make the assignment successful --></help>
+        <help><!-- No.of retries made for successful assignment on maximum threshold of 3 --></help>
         <label><!-- Retrigger Attempt --></label>
         <name>Core_Retrigger_Attempt__c</name>
     </fields>

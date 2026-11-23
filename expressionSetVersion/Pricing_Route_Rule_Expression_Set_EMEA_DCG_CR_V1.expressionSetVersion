@@ -8,6 +8,106 @@
     <startDate>2026-06-02T04:39:34.000Z</startDate>
     <status>Active</status>
     <steps>
+        <advancedCondition>
+            <conditionLogic>1 AND 2 AND 3 AND 4 AND 5</conditionLogic>
+            <criteria>
+                <operator>Equals</operator>
+                <sequenceNumber>1</sequenceNumber>
+                <sourceFieldName>Pricing_Routing_RPM_Email</sourceFieldName>
+                <value>&apos;&apos;</value>
+                <valueType>Literal</valueType>
+            </criteria>
+            <criteria>
+                <operator>Equals</operator>
+                <sequenceNumber>2</sequenceNumber>
+                <sourceFieldName>Pricing_RouteRule_Name</sourceFieldName>
+                <value>&apos;&apos;</value>
+                <valueType>Literal</valueType>
+            </criteria>
+            <criteria>
+                <operator>Equals</operator>
+                <sequenceNumber>3</sequenceNumber>
+                <sourceFieldName>Pricing_RouteRule_Id</sourceFieldName>
+                <value>&apos;&apos;</value>
+                <valueType>Literal</valueType>
+            </criteria>
+            <criteria>
+                <operator>Equals</operator>
+                <sequenceNumber>4</sequenceNumber>
+                <sourceFieldName>Pricing_Routing_Output_Criteria_Nm</sourceFieldName>
+                <value>&apos;&apos;</value>
+                <valueType>Literal</valueType>
+            </criteria>
+            <criteria>
+                <operator>Equals</operator>
+                <sequenceNumber>5</sequenceNumber>
+                <sourceFieldName>Pricing_Routing_RPM_Group</sourceFieldName>
+                <value>&apos;&apos;</value>
+                <valueType>Literal</valueType>
+            </criteria>
+            <resultParameter>condition_output__1</resultParameter>
+        </advancedCondition>
+        <hasNestedExplainability>false</hasNestedExplainability>
+        <label>Is Pricing Route Rules EMEA DCG Change Request has No Matching Rules ?</label>
+        <name>IsPricingRouteRulesEMEADCGChangeRequesthasNoMatchingRules</name>
+        <resultIncluded>false</resultIncluded>
+        <sequenceNumber>2</sequenceNumber>
+        <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
+        <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
+        <shouldShowExplExternally>false</shouldShowExplExternally>
+        <stepType>AdvancedCondition</stepType>
+    </steps>
+    <steps>
+        <hasNestedExplainability>false</hasNestedExplainability>
+        <label>Pricing Route Rule Expression Set EMEA DCG No CR</label>
+        <name>PricingRouteRuleExpressionSetEMEADCGNoCR</name>
+        <parentStep>IsPricingRouteRulesEMEADCGChangeRequesthasNoMatchingRules</parentStep>
+        <resultIncluded>true</resultIncluded>
+        <sequenceNumber>1</sequenceNumber>
+        <shouldExposExecPathMsgOnly>true</shouldExposExecPathMsgOnly>
+        <shouldExposeConditionDetails>false</shouldExposeConditionDetails>
+        <shouldShowExplExternally>false</shouldShowExplExternally>
+        <stepType>SubExpression</stepType>
+        <subExpression>
+            <expressionSet>Pricing_Route_Rule_Expression_Set_EMEA_DCG_No_CR</expressionSet>
+            <mappings>
+                <input>false</input>
+                <name>Pricing_Routing_Output_Criteria_Nm</name>
+                <output>true</output>
+                <type>Parameter</type>
+                <value>Pricing_Routing_Output_Criteria_Nm</value>
+            </mappings>
+            <mappings>
+                <input>false</input>
+                <name>Pricing_Routing_RPM_Group</name>
+                <output>true</output>
+                <type>Parameter</type>
+                <value>Pricing_Routing_RPM_Group</value>
+            </mappings>
+            <mappings>
+                <input>false</input>
+                <name>Pricing_RouteRule_Name</name>
+                <output>true</output>
+                <type>Parameter</type>
+                <value>Pricing_RouteRule_Name</value>
+            </mappings>
+            <mappings>
+                <input>false</input>
+                <name>Pricing_RouteRule_Id</name>
+                <output>true</output>
+                <type>Parameter</type>
+                <value>Pricing_RouteRule_Id</value>
+            </mappings>
+            <mappings>
+                <input>false</input>
+                <name>Pricing_Routing_RPM_Email</name>
+                <output>true</output>
+                <type>Parameter</type>
+                <value>Pricing_Routing_RPM_Email</value>
+            </mappings>
+        </subExpression>
+    </steps>
+    <steps>
         <actionType>GetOutputsFromDecisionTable</actionType>
         <decisionTable>
             <decisionTableName>Pricing_Route_Rules_EMEA_DCG_Change_Request</decisionTableName>
@@ -62,8 +162,8 @@
         <collection>false</collection>
         <dataType>Text</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_EMEA_DCG_Change_Request</lookupName>
-        <lookupType>DecisionTable</lookupType>
+        <lookupName>Pricing_Route_Rule_Expression_Set_EMEA_DCG_No_CR</lookupName>
+        <lookupType>SubExpression</lookupType>
         <name>Pricing_Application_Nm__c</name>
         <output>false</output>
         <type>Variable</type>
@@ -81,8 +181,9 @@
     <variables>
         <collection>false</collection>
         <dataType>Boolean</dataType>
-        <description>Pricing_EndCust_Exclusion_List_Ind__c</description>
-        <input>false</input>
+        <input>true</input>
+        <lookupName>Pricing_Route_Rule_Expression_Set_EMEA_DCG_No_CR</lookupName>
+        <lookupType>SubExpression</lookupType>
         <name>Pricing_EndCust_Exclusion_List_Ind__c</name>
         <output>false</output>
         <type>Variable</type>
@@ -90,8 +191,9 @@
     <variables>
         <collection>false</collection>
         <dataType>Text</dataType>
-        <description>Pricing_End_Customer_Country_Nm__c</description>
-        <input>false</input>
+        <input>true</input>
+        <lookupName>Pricing_Route_Rule_Expression_Set_EMEA_DCG_No_CR</lookupName>
+        <lookupType>SubExpression</lookupType>
         <name>Pricing_End_Customer_Country_Nm__c</name>
         <output>false</output>
         <type>Variable</type>
@@ -148,6 +250,7 @@
         <input>false</input>
         <name>condition_output__1</name>
         <output>false</output>
+        <resultStep>IsPricingRouteRulesEMEADCGChangeRequesthasNoMatchingRules</resultStep>
         <type>Variable</type>
         <value>False</value>
     </variables>

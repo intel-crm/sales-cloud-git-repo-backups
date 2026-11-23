@@ -414,11 +414,13 @@ public without sharing class Core_MDF_ClaimReviewChecklist {
         } catch(exception ex) { Core_MDF_CCP_UtilityClass.logError(ex); }
         return caseId;
     }  
-
+    
+    
     //Audit functionality Method to get AI Status from Scorecard for displaying appropriate message
     @AuraEnabled
    public static Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper  getAIAuditStatusFromScorecard(Id caseRecordId){
         Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper  aiWrapper = Core_MDF_Scorecard_Helper.getScoreCardDetailsAndAccess(caseRecordId);
+        system.debug('CHECKLIST AI STATUS:' + aiWrapper);
         return aiWrapper;
     }
 }

@@ -52,9 +52,6 @@
             <sourceValues>
                 <sourceValue>PSG-SJ-Software!</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-SH-Board-Design</sourceValue>
-            </sourceValues>
             <value>SJ-APPS</value>
         </values>
         <values>
@@ -345,7 +342,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR  EAST,intel</value>
+            <value>altima,arrow,macnica,digi-key,GALAXY FAR  EAST</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_5799852</column>
@@ -372,7 +369,7 @@
         <field>BucketField_63472740</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obso - Customer Survey NPS all</name>
+    <name>Customer Survey NPS all</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -388,8 +385,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <endDate>2022-03-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

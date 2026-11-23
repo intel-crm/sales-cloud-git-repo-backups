@@ -55,7 +55,7 @@
             <operation>notEqual</operation>
             <value>NULL</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_All_Fin_Inctv_TPT_Record_Sharing_for_Read_only_All</fullName>
@@ -74,7 +74,7 @@
             <operation>equals</operation>
             <value>Financial Incentive</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_Manager_Group</fullName>

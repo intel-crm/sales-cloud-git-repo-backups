@@ -781,21 +781,21 @@
           if (result.accountList.Owner.Name != undefined) {
             component.set("v.accOwner", result.accountList.Owner.Name);
           }
-          if (result.accountList.Core_CIM_ID__c != undefined) {
-            component.set("v.accCim", result.accountList.Core_CIM_ID__c);
+          if (result.accountList.Core_Business_Party_ID__c != undefined) {
+            component.set("v.accCim", result.accountList.Core_Business_Party_ID__c);
           }
         }
 
         var accountListData = {
           Name: component.get("v.accName"),
-          Core_CIM_ID__c: component.get("v.accCim"),
+          Core_Business_Party_ID__c: component.get("v.accCim"),
           BillingCountry: component.get("v.accCountry"),
           Owner: component.get("v.accOwner")
         };
         console.log("accountListData" + JSON.stringify(accountListData));
         component.set("v.accountTableColumns", [
           { label: "Account Name", fieldName: "Name", type: "text" },
-          { label: "Account CIM", fieldName: "Core_CIM_ID__c", type: "text" },
+          { label: "Account CIM", fieldName: "Core_Business_Party_ID__c", type: "text" },
           {
             label: "Account Country",
             fieldName: "BillingCountry",

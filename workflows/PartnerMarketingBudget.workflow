@@ -10,7 +10,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_CCF_Budget_Email_Alert</fullName>
@@ -22,7 +22,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_DCF_Budget_Email_Alert</fullName>
@@ -34,7 +34,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_RMF_APJ_Budget_Email_Alert</fullName>
@@ -46,7 +46,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_RMF_ASMO_LAR_Budget_Email_Alert</fullName>
@@ -58,7 +58,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_RMF_ASMO_NAR_Budget_Email_Alert</fullName>
@@ -70,7 +70,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_RMF_EMEA_Email_Alert</fullName>
@@ -82,7 +82,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_RMF_PRC_Budget_Email_Alert</fullName>
@@ -94,7 +94,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_SPCF_Budget_Email_Alert</fullName>
@@ -106,7 +106,7 @@
         </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyBudgetApprovers</template>
+        <template>unfiled$public/Core_MDF_NotifyBudgetApprovers</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_MDF_Status_Change_to_Approved</fullName>

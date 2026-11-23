@@ -8,7 +8,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "11a8ee6f-c9ea-4a26-b2a7-6e974d8a040d",
+      "id" : "1f27ec07-5eef-4d36-9152-0b9a5b1c2ca8",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -54,19 +54,19 @@
         "defaultMinimizedText" : "License Assistant",
         "displayHelpButton" : true,
         "eswConfigurationJSON" : {
-          "baseCoreURL" : "https://intel.my.salesforce.com",
-          "baseLiveAgentContentURL" : "https://c.la3-c1-ia2.salesforceliveagent.com/content",
-          "baseLiveAgentURL" : "https://d.la3-c1-ia2.salesforceliveagent.com/chat",
-          "buttonId" : "5733b000000TQ0r",
-          "deploymentId" : "5723b000000TPyN",
+          "baseCoreURL" : "https://intel--crmdevint3.my.salesforce.com",
+          "baseLiveAgentContentURL" : "https://c.la3-c1cs-ia2.salesforceliveagent.com/content",
+          "baseLiveAgentURL" : "https://d.la3-c1cs-ia2.salesforceliveagent.com/chat",
+          "buttonId" : "5732i000000CaVx",
+          "deploymentId" : "5722i000000CaVT",
           "enabledFeatures" : [ "LiveAgent" ],
           "entryFeature" : "LiveAgent",
           "eswConfigDevName" : "PSG_Sales_Chat_Group",
-          "eswConfigId" : "04I3b000000CaVYEA0",
-          "eswLiveAgentDevName" : "EmbeddedServiceLiveAgent_Parent04I3b000000CaVYEA0_17ca28289d4",
+          "eswConfigId" : "04I2i000000CaXoEAK",
+          "eswLiveAgentDevName" : "PSG_Sales_Chat_Group",
           "gslbBaseURL" : "https://service.force.com",
           "isOfflineCasesEnabled" : "0",
-          "orgId" : "00Do0000000aRcf"
+          "orgId" : "00D2i0000008d6j"
         },
         "externalScripts" : "",
         "externalStyles" : "",
@@ -81,7 +81,7 @@
         "waitingStateBackgroundImgURL" : ""
       },
       "componentName" : "forceCommunity:embeddedService",
-      "id" : "12ad07ae-46b9-4826-b90b-38f5ae3a0b1c",
+      "id" : "893ed981-1bc1-4a13-b695-6f617dfc1a5a",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

@@ -171,7 +171,13 @@
     <label>Email Template</label>
     <listViews>
         <fullName>sbaa__All</fullName>
+        <columns>NAME</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>equals</operation>
+            <value>ACM Document Reminder Notification Template</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

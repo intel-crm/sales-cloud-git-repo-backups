@@ -174,6 +174,20 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Entitlement_Category__c</fullName>
+        <label>Entitlement Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Entitlement_Name__c</fullName>
+        <label>Entitlement Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Field_1_Text_Area_Long__c</fullName>
         <label>Field 1 (Text Area Long)</label>
         <length>32768</length>
@@ -329,9 +343,8 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_IPA_Affiliation__c</fullName>
-        <description>This Field contains IPA Affiliations.</description>
-        <label>IPA Affiliation</label>
+        <fullName>Permission_Set_API_Name__c</fullName>
+        <label>Permission Set API Name</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
@@ -418,6 +431,42 @@
         <label>DDR Integration Master Data</label>
     </listViews>
     <listViews>
+        <fullName>DQ_Objects_mdt</fullName>
+        <columns>NAME</columns>
+        <columns>MasterLabel__c</columns>
+        <columns>Field_1__c</columns>
+        <columns>Field_2__c</columns>
+        <columns>Field_3__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Metadata_Name__c</field>
+            <operation>equals</operation>
+            <value>DQ_Objects_mdt</value>
+        </filters>
+        <label>DQ_Objects_mdt</label>
+    </listViews>
+    <listViews>
+        <fullName>IPA_MetaData</fullName>
+        <columns>NAME</columns>
+        <columns>Header_row__c</columns>
+        <columns>MasterLabel__c</columns>
+        <columns>DeveloperName__c</columns>
+        <columns>Field_1__c</columns>
+        <columns>Field_2__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Program__c</field>
+            <operation>equals</operation>
+            <value>IPA</value>
+        </filters>
+        <filters>
+            <field>Category__c</field>
+            <operation>equals</operation>
+            <value>IPA Downtime</value>
+        </filters>
+        <label>IPA MetaData</label>
+    </listViews>
+    <listViews>
         <fullName>Lex_AlertMessages</fullName>
         <columns>NAME</columns>
         <columns>Header_row__c</columns>
@@ -431,6 +480,37 @@
             <value>Core_Lex_AlertMessage__mdt</value>
         </filters>
         <label>Lex AlertMessages</label>
+    </listViews>
+    <listViews>
+        <fullName>PCC_ODM_Board_Partner_Mapping</fullName>
+        <columns>NAME</columns>
+        <columns>Field_1__c</columns>
+        <columns>Field_2__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Metadata_Name__c</field>
+            <operation>equals</operation>
+            <value>PCC_ODM_Board_Partner_Mapping</value>
+        </filters>
+        <label>PCC_ODM_Board_Partner_Mapping</label>
+    </listViews>
+    <listViews>
+        <fullName>PMP_ListViewMapping_Metadata</fullName>
+        <columns>NAME</columns>
+        <columns>Header_row__c</columns>
+        <columns>MasterLabel__c</columns>
+        <columns>DeveloperName__c</columns>
+        <columns>Field_1__c</columns>
+        <columns>Field_1_Text_Area_Long__c</columns>
+        <columns>Field_2__c</columns>
+        <columns>Field_3__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Metadata_Name__c</field>
+            <operation>equals</operation>
+            <value>PMP_ListViewMapping__mdt</value>
+        </filters>
+        <label>PMP ListViewMapping Metadata</label>
     </listViews>
     <listViews>
         <fullName>PRM_Auto_Approval_Switch_mdt</fullName>
@@ -453,7 +533,6 @@
         <columns>NAME</columns>
         <columns>MasterLabel__c</columns>
         <columns>DeveloperName__c</columns>
-        <columns>Header_row__c</columns>
         <columns>Field_1__c</columns>
         <columns>Field_2__c</columns>
         <columns>Field_3__c</columns>
@@ -461,16 +540,17 @@
         <filterScope>Everything</filterScope>
         <filters>
             <field>Metadata_Name__c</field>
-            <operation>contains</operation>
-            <value>PRM</value>
+            <operation>equals</operation>
+            <value>PRM_CtaPriorities__mdt</value>
         </filters>
         <label>PRM_CtaPriority__mdt</label>
     </listViews>
     <listViews>
         <fullName>PRM_Tracker_Steps</fullName>
         <columns>NAME</columns>
+        <columns>Header_row__c</columns>
+        <columns>MasterLabel__c</columns>
         <columns>DeveloperName__c</columns>
-        <columns>Metadata_Name__c</columns>
         <columns>Field_1__c</columns>
         <columns>Field_2__c</columns>
         <columns>Field_3__c</columns>
@@ -479,11 +559,6 @@
         <columns>Field_6__c</columns>
         <columns>Field_7__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Program__c</field>
-            <operation>equals</operation>
-            <value>IPA</value>
-        </filters>
         <filters>
             <field>Metadata_Name__c</field>
             <operation>equals</operation>
@@ -495,18 +570,30 @@
         <fullName>PRM_Warranty_Benefits_Configuration_mdt</fullName>
         <columns>NAME</columns>
         <columns>Metadata_Name__c</columns>
-        <columns>MasterLabel__c</columns>
-        <columns>DeveloperName__c</columns>
         <columns>Field_1__c</columns>
         <columns>Field_2__c</columns>
         <columns>Field_3__c</columns>
+        <columns>Header_row__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Metadata_Name__c</field>
             <operation>equals</operation>
             <value>PRM_Warranty_Benefits_Configuration__mdt</value>
         </filters>
-        <label>PRM_Warranty_Benefits_Configuration__mdt</label>
+        <label>PRM_Warranty_Benefits_Configuration_mdt</label>
+    </listViews>
+    <listViews>
+        <fullName>custom_domain_bypass</fullName>
+        <columns>NAME</columns>
+        <columns>Field_1__c</columns>
+        <columns>Field_1_Text_Area_Long__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Metadata_Name__c</field>
+            <operation>equals</operation>
+            <value>Country_Level_Domain_Bypass</value>
+        </filters>
+        <label>custom domain bypass</label>
     </listViews>
     <nameField>
         <displayFormat>CMO-{00000}</displayFormat>

@@ -27,16 +27,6 @@
     <columns>
         <field>Core_IPS_Supported_Product__c.Core_Flag_Status__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>Core_IPS_Supported_Product__c.Core_EOIS__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Tabular</format>
     <name>IPS Products - ALL POSSIBLE PARs</name>
     <params>

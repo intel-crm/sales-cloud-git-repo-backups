@@ -21,6 +21,14 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Account Name(Current) --></label>
+        <name>Core_Account_Name_Current__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Core_Account_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>Core_Account_Owner__c</name>
         <relationshipLabel><!-- Change Requests (Account) --></relationshipLabel>
@@ -1297,6 +1305,10 @@
         <name>Core_Phone__c</name>
     </fields>
     <fields>
+        <label><!-- Requested Address --></label>
+        <name>Core_Requested_Address__c</name>
+    </fields>
+    <fields>
         <label><!-- Requester --></label>
         <name>Core_Requestor__c</name>
         <relationshipLabel><!-- Change Requests --></relationshipLabel>
@@ -1361,8 +1373,13 @@
     </recordTypes>
     <recordTypes>
         <description><!-- Request an update to the account primary address --></description>
-        <label><!-- Update Account Address --></label>
-        <name>Update_Account</name>
+        <label><!-- Update Account Address Request --></label>
+        <name>Update_Account_Address_Request</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Request an update to Account Name --></description>
+        <label><!-- Update Account Name Request --></label>
+        <name>Update_Account_Name_Request</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Request to update core D&amp;B attributes --></description>

@@ -1,25 +1,22 @@
-import {LightningElement, api, track, wire} from 'lwc';
-import {CurrentPageReference, NavigationMixin} from 'lightning/navigation';
 import {
   registerComponentForInit,
   initializeWithHeadless,
   getHeadlessBindings,
   destroyEngine,
 } from 'c/quanticHeadlessLoader';
-import {STANDALONE_SEARCH_BOX_STORAGE_KEY, keys} from 'c/quanticUtils';
-
-import search from '@salesforce/label/c.quantic_Search';
-import clear from '@salesforce/label/c.quantic_Clear';
-
-const CLASS_WITH_SUBMIT =
-  'slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right slds-input-has-fixed-addon';
-const CLASS_WITHOUT_SUBMIT =
-  'slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right';
+import {STANDALONE_SEARCH_BOX_STORAGE_KEY} from 'c/quanticUtils';
+import {CurrentPageReference, NavigationMixin} from 'lightning/navigation';
+import {LightningElement, api, track, wire} from 'lwc';
+// @ts-ignore
+import errorTemplate from './templates/errorTemplate.html';
+// @ts-ignore
+import standaloneSearchBox from './templates/standaloneSearchBox.html';
 
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 /** @typedef {import("coveo").StandaloneSearchBoxState} StandaloneSearchBoxState */
 /** @typedef {import("coveo").StandaloneSearchBox} StandaloneSearchBox */
 /** @typedef {import("c/quanticSearchBoxSuggestionsList").default} quanticSearchBoxSuggestionsList */
+/** @typedef {import("c/quanticSearchBoxInput").default} quanticSearchBoxInput */
 /** @typedef {{key: number, value: string}} Suggestion */
 
 /**
@@ -27,16 +24,11 @@ const CLASS_WITHOUT_SUBMIT =
  * See [Use a Standalone Search Box](https://docs.coveo.com/en/quantic/latest/usage/ssb-usage/).
  * @category Search
  * @example
- * <c-quantic-standalone-search-box engine-id={engineId} placeholder="Enter a query..." without-submit-button number-of-suggestions="8" redirect-url="/my-search-page/%40uri" search-hub="myhub" pipeine="mypipeline"></c-quantic-standalone-search-box>
+ * <c-quantic-standalone-search-box engine-id={engineId} placeholder="Enter a query..." without-submit-button number-of-suggestions="8" redirect-url="/my-search-page/%40uri" search-hub="myhub" pipeline="mypipeline"></c-quantic-standalone-search-box>
  */
 export default class QuanticStandaloneSearchBox extends NavigationMixin(
   LightningElement
 ) {
-  labels = {
-    search,
-    clear,
-  };
-
   /**
    * The ID of the engine instance the component registers to.
    * @api
@@ -47,9 +39,8 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
    * The placeholder text to display in the search box input area.
    * @api
    * @type {string}
-   * @defaultValue 'Search...'
    */
-  @api placeholder = `${this.labels.search}`;
+  @api placeholder = null;
   /**
    * Whether not to render a submit button.
    * @api
@@ -64,6 +55,13 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
    * @defaultValue 5
    */
   @api numberOfSuggestions = 5;
+  /**
+   * Whether to keep all active query filters when the end user submits a new query from the standalone search box.
+   * @api
+   * @type {boolean}
+   * @defaultValue false
+   */
+  @api keepFiltersOnSearch = false;
   /**
    * The url of the search page to redirect to when a query is made.
    * The target search page should contain a `QuanticSearchInterface` with the same engine ID as the one specified for this component.
@@ -90,6 +88,14 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
    * @defaultValue `undefined`
    */
   @api pipeline;
+  /**
+   * Whether to render the search box using a [textarea](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) element.
+   * The resulting component will expand to support multi-line queries.
+   * @api
+   * @type {boolean}
+   * @defaultValue false
+   */
+  @api textarea = false;
 
   /** @type {boolean} */
   @track isStandalone = true;
@@ -99,6 +105,7 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
       cause: '',
       metadata: null,
     },
+    searchBoxId: '',
     redirectTo: null,
     suggestions: [],
     value: '',
@@ -111,16 +118,11 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
   /** @type {Function} */
   unsubscribe;
   /** @type {boolean} */
-  isInitialized;
+  isInitialized = false;
   /** @type {Suggestion[]} */
   suggestions = [];
-  get suggestions() {
-    return this.state.suggestions.map((s, index) => ({
-      key: index,
-      rawValue: s.rawValue,
-      value: s.highlightedValue,
-    }));
-  }
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   /** @type {string} */
   get standaloneEngineId() {
@@ -129,16 +131,25 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
 
   connectedCallback() {
     registerComponentForInit(this, this.standaloneEngineId);
+
     this.addEventListener(
-      'suggestionlistrender',
-      this.handleSuggestionListEvent
+      'quantic__inputvaluechange',
+      this.handleInputValueChange
     );
+    this.addEventListener('quantic__submitsearch', this.handleSubmit);
+    this.addEventListener('quantic__showsuggestions', this.showSuggestions);
+    this.addEventListener('quantic__selectsuggestion', this.selectSuggestion);
   }
 
   renderedCallback() {
     initializeWithHeadless(this, this.standaloneEngineId, this.initialize);
-    if (!this.isInitialized && !!this.standaloneSearchBox && !!this.input) {
-      this.input.setAttribute('is-initialized', 'true');
+    if (
+      !this.isInitialized &&
+      !!this.standaloneSearchBox &&
+      !!this.quanticSearchBoxInput
+    ) {
+      // The is-initialized attribute is set to true for E2E tests
+      this.quanticSearchBoxInput.setAttribute('is-initialized', 'true');
       this.isInitialized = true;
     }
   }
@@ -167,6 +178,7 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
             close: '</b>',
           },
         },
+        clearFilters: !this.keepFiltersOnSearch,
         redirectionUrl: 'http://placeholder.com',
       },
     });
@@ -178,17 +190,25 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
 
   disconnectedCallback() {
     this.unsubscribe?.();
+
     this.removeEventListener(
-      'suggestionlistrender',
-      this.handleSuggestionListEvent
+      'quantic__inputvaluechange',
+      this.handleInputValueChange
+    );
+    this.removeEventListener('quantic__submitsearch', this.handleSubmit);
+    this.removeEventListener('quantic__showsuggestions', this.showSuggestions);
+    this.removeEventListener(
+      'quantic__selectsuggestion',
+      this.selectSuggestion
     );
   }
 
+  get searchBoxValue() {
+    return this.standaloneSearchBox?.state.value || '';
+  }
+
   updateStandaloneState() {
-    if (this.state.value !== this.standaloneSearchBox.state.value) {
-      this.input.value = this.standaloneSearchBox.state.value;
-    }
-    this.state = this.standaloneSearchBox.state;
+    this.state = this.standaloneSearchBox?.state;
     this.suggestions =
       this.state?.suggestions?.map((s, index) => ({
         key: index,
@@ -212,101 +232,6 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
     this.navigateToSearchPage();
   }
 
-  get searchBoxContainerClass() {
-    if (this.withoutSubmitButton) {
-      this.input?.setAttribute('aria-labelledby', 'fixed-text-label');
-      return CLASS_WITHOUT_SUBMIT;
-    }
-    this.input?.setAttribute(
-      'aria-labelledby',
-      'fixed-text-label fixed-text-addon-post'
-    );
-    return CLASS_WITH_SUBMIT;
-  }
-
-  get searchBoxInputClass() {
-    return this.withoutSubmitButton
-      ? 'slds-input searchbox__input'
-      : 'slds-input searchbox__input searchbox__input-with-button';
-  }
-
-  showSuggestions() {
-    this.standaloneSearchBox?.showSuggestions();
-    this.combobox?.classList.add('slds-is-open');
-    this.combobox?.setAttribute('aria-expanded', 'true');
-  }
-
-  hideSuggestions() {
-    this.combobox?.classList.remove('slds-is-open');
-    this.combobox?.setAttribute('aria-expanded', 'false');
-    this.suggestionList?.resetSelection();
-  }
-
-  handleHighlightChange(event) {
-    this.input.value = event.detail?.rawValue;
-  }
-
-  handleEnter() {
-    const selectedSuggestion = this.suggestionList?.getCurrentSelectedValue();
-    if (this.suggestionsOpen && selectedSuggestion) {
-      this.standaloneSearchBox.selectSuggestion(selectedSuggestion.rawValue);
-    } else {
-      this.standaloneSearchBox.submit();
-    }
-    this.input.blur();
-  }
-
-  onSubmit(event) {
-    event.stopPropagation();
-    if (this.standaloneSearchBox.state.value !== this.input.value) {
-      this.standaloneSearchBox.updateText(this.input.value);
-    }
-    this.standaloneSearchBox.submit();
-    this.input.blur();
-  }
-
-  handleKeyValues() {
-    if (this.standaloneSearchBox.state.value !== this.input.value) {
-      this.suggestionList?.resetSelection();
-      this.standaloneSearchBox.updateText(this.input.value);
-    }
-  }
-
-  onKeyup(event) {
-    switch (event.key) {
-      case keys.ENTER:
-        this.handleEnter();
-        break;
-      case keys.ARROWUP:
-        this.suggestionList.selectionUp();
-        break;
-      case keys.ARROWDOWN:
-        this.suggestionList.selectionDown();
-        break;
-      default:
-        this.handleKeyValues();
-    }
-  }
-
-  onFocus() {
-    this.showSuggestions();
-  }
-
-  onBlur() {
-    this.hideSuggestions();
-  }
-
-  clearInput() {
-    this.input.value = '';
-    this.standaloneSearchBox.updateText(this.input.value);
-    this.input.focus();
-  }
-
-  handleSuggestionSelection(event) {
-    const textValue = event.detail;
-    this.standaloneSearchBox.selectSuggestion(textValue);
-  }
-
   resetStandaloneSearchboxState() {
     const engine = getHeadlessBindings(this.standaloneEngineId)?.engine;
     if (!engine) {
@@ -319,13 +244,14 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
 
   navigateToSearchPage() {
     const value = this.standaloneSearchBox.state.value;
-
     this.resetStandaloneSearchboxState();
     this[NavigationMixin.Navigate](
       {
         type: 'standard__webPage',
         attributes: {
-          url: `${this.redirectUrl}#q=${value}`,
+          url: `${this.redirectUrl}${
+            value ? `#q=${encodeURIComponent(value)}` : ''
+          }`,
         },
       },
       false
@@ -333,44 +259,59 @@ export default class QuanticStandaloneSearchBox extends NavigationMixin(
   }
 
   /**
-   * @returns {HTMLInputElement}
+   * Updates the input value.
    */
-  get input() {
-    return this.template.querySelector('input');
-  }
-
-  /**
-   * @returns {HTMLElement}
-   */
-  get combobox() {
-    return this.template.querySelector('.slds-combobox');
-  }
-
-  /**
-   * @returns {quanticSearchBoxSuggestionsList}
-   */
-  get suggestionList() {
-    // @ts-ignore
-    return this.template.querySelector('c-quantic-search-box-suggestions-list');
-  }
-
-  /**
-   * @returns {boolean}
-   */
-  get isQueryEmpty() {
-    return !this.input?.value?.length;
-  }
-
-  /**
-   * @returns {boolean}
-   */
-  get suggestionsOpen() {
-    return this.combobox?.classList.contains('slds-is-open');
-  }
-
-  handleSuggestionListEvent = (event) => {
+  handleInputValueChange = (event) => {
     event.stopPropagation();
-    const id = event.detail;
-    this.input.setAttribute('aria-controls', id);
+    const newValue = event.detail.value;
+    if (this.standaloneSearchBox?.state?.value !== newValue) {
+      this.standaloneSearchBox.updateText(newValue);
+    }
   };
+
+  /**
+   * Submits a search.
+   * @returns {void}
+   */
+  handleSubmit = (event) => {
+    event.stopPropagation();
+    this.standaloneSearchBox?.submit();
+  };
+
+  /**
+   * Shows the suggestions.
+   * @returns {void}
+   */
+  showSuggestions = (event) => {
+    event.stopPropagation();
+    this.standaloneSearchBox?.showSuggestions();
+  };
+
+  /**
+   * Handles the selection of a suggestion.
+   */
+  selectSuggestion = (event) => {
+    event.stopPropagation();
+    const {value} = event.detail.selectedSuggestion;
+    this.standaloneSearchBox?.selectSuggestion(value);
+  };
+
+  /**
+   * @return {quanticSearchBoxInput}
+   */
+  get quanticSearchBoxInput() {
+    // @ts-ignore
+    return this.template.querySelector('c-quantic-search-box-input');
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
+  }
+
+  render() {
+    return this.hasInitializationError ? errorTemplate : standaloneSearchBox;
+  }
 }

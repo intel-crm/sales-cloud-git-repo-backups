@@ -1,4 +1,4 @@
-global class Core_IPS_BES_Delete_All_Old_Logs_Batch implements Database.Batchable<sObject>{  
+global class Core_IPS_BES_Delete_All_Old_Logs_Batch implements Database.Batchable<sObject>{ 
 	global String objectName;
     global Boolean isSingleObject;
     global List<sObject> scope = new List<sObject>();

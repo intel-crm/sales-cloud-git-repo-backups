@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Move Contact With Cases" icon-name="standard:contact">
+        <div class="slds-p-around_medium">
+            <lightning-input 
+                label="Current Account"
+                value={currentContact.AccountName} 
+                readonly>
+            </lightning-input>
+
+            <lightning-input 
+                label="Current Contact"
+                value={currentContact.Name} 
+                readonly>
+            </lightning-input>
+
+            <lightning-combobox 
+                label="Select Target Account" 
+                options={accountOptions} 
+                value={targetAccountId} 
+                onchange={handleAccountChange}>
+            </lightning-combobox>
+
+            <lightning-combobox 
+                label="Select Target Contact" 
+                options={contactOptions} 
+                value={targetContactId} 
+                onchange={handleContactChange}>
+            </lightning-combobox>
+
+            <div class="slds-m-top_medium">
+                <lightning-button label="Save" variant="brand" onclick={handleSave}></lightning-button>
+                <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+            </div>
+
+            <template if:true={errorMessage}>
+                <div class="slds-text-color_error slds-m-top_small">{errorMessage}</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

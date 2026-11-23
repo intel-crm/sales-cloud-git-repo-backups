@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Task_email_from_Marketo</fullName>
+        <description>Task email alert notification from marketo</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Task_notification_from_marketo</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Keep_Call_Result_Updated</fullName>
         <description>Field update to keep the call result field updated after Log a Call action is used</description>

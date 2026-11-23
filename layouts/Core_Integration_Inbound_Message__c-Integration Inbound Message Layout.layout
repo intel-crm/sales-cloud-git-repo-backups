@@ -39,10 +39,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_Publish_Timestamp__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Retry_Counter__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

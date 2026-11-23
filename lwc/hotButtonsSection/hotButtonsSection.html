@@ -1,0 +1,64 @@
+<template>
+    <div class="slds-card">
+        <header class="slds-card__header slds-grid slds-p-around_small">
+            <div class="slds-media slds-media_center slds-has-flexi-truncate">
+                <lightning-icon icon-name="standard:goal" size="small" class="slds-m-right_small"></lightning-icon>
+                <h2 class="slds-card__header-title">
+                    <span class="slds-text-heading_small">Hot Buttons</span>
+                </h2>
+            </div>
+        </header>
+
+        <div class="slds-card__body slds-card__body_inner">
+            <template if:true={hotButtons.length}>
+                <div style="width: 100%; max-height: 400px; overflow-y: auto;">
+                    <lightning-datatable
+                        key-field="Id"
+                        data={hotButtons}
+                        columns={columns}
+                        draft-values={draftValues}
+                        onsave={handleSave}
+                        onrowaction={handleRowAction}
+                        hide-checkbox-column
+                        wrap-text-max-lines="50">
+                    </lightning-datatable>
+                </div>
+            </template>
+
+            <template if:false={hotButtons.length}>
+                <p class="slds-p-around_medium">No hot buttons found.</p>
+            </template>
+
+            <div class="slds-m-top_medium slds-p-horizontal_medium">
+                <lightning-button label="New Hot Button" onclick={openNewModal} variant="brand"></lightning-button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Create/Edit -->
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-modal__title slds-hyphenate">{modalTitle}</h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-textarea
+                        label="Description"
+                        value={modalDescription}
+                        onchange={handleModalDescriptionChange}>
+                    </lightning-textarea>
+
+                    
+                </div>
+
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Cancel" onclick={closeModal}></lightning-button>
+                    <lightning-button variant="brand" label="Save" onclick={handleModalSave}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

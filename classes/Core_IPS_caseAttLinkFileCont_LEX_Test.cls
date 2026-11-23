@@ -81,7 +81,6 @@ public class Core_IPS_caseAttLinkFileCont_LEX_Test {
         Core_IPS_caseAttLinkFileCont_LEX.getattachments(cs.Id,1,1,'All Data');
         Core_IPS_caseAttLinkFileCont_LEX.showButtons(cs.Id);
         Core_IPS_caseAttLinkFileCont_LEX.getCurrentCase(cs.Id);
-	//Core_IPS_caseAttLinkFileCont_LEX.getCaseProjectName(Project.Id);
         Core_IPS_caseAttLinkFileCont_LEX.errorMessage('test');
         test.stopTest();
         system.assert(cs.Id!=null);
@@ -103,39 +102,30 @@ public class Core_IPS_caseAttLinkFileCont_LEX_Test {
     }
     @isTest
     static void getAttachmentTest() {
-        User validationBypassUser = [
-            SELECT Id
-            FROM User
-            WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name
-                AND IsActive = true
-            LIMIT 1
-        ];
-        System.runAs(validationBypassUser) {
-            Case cs = TestUtilities.getCase();
-            insert cs;
+        Case cs = TestUtilities.getCase();
+        insert cs;
 
-            Core_Trigger_Executions__c setting = new Core_Trigger_Executions__c();
-		    setting.Name = 'InsertCaseCommentForAttach';
-            setting.Core_Active__c = false;
-            setting.Core_Class_Name__c = 'de2d2d';
-            setting.Core_Trigger_Events__c = 'f34f4 f43f43 f423f4 f42f4';
-            setting.Core_Object__c = 'Core_IPS_Case_Attachments__c';
-            setting.Core_Description__c = 'fd2f42 f342f42 f342f42f42 f423f42';
-            insert setting;
+        Core_Trigger_Executions__c setting = new Core_Trigger_Executions__c();
+		setting.Name = 'InsertCaseCommentForAttach';
+        setting.Core_Active__c = false;
+        setting.Core_Class_Name__c = 'de2d2d';
+        setting.Core_Trigger_Events__c = 'f34f4 f43f43 f423f4 f42f4';
+        setting.Core_Object__c = 'Core_IPS_Case_Attachments__c';
+        setting.Core_Description__c = 'fd2f42 f342f42 f342f42f42 f423f42';
+        insert setting;
 
-            List<Core_IPS_Case_Attachments__c> attachments = new List<Core_IPS_Case_Attachments__c>();
-            attachments.add(new Core_IPS_Case_Attachments__c(
-	        					    Core_Upload_Status__c = 'Pending',
-	        					    Core_Case__c = cs.Id));
-       	    attachments.add(new Core_IPS_Case_Attachments__c(
-	        					    Core_Upload_Status__c = 'Complete',
-	        					    Core_Case__c = cs.Id));
-            insert attachments;
+		List<Core_IPS_Case_Attachments__c> attachments = new List<Core_IPS_Case_Attachments__c>();
+        attachments.add(new Core_IPS_Case_Attachments__c(
+        					Core_Upload_Status__c = 'Pending',
+        					Core_Case__c = cs.Id));
+       	attachments.add(new Core_IPS_Case_Attachments__c(
+        					Core_Upload_Status__c = 'Complete',
+        					Core_Case__c = cs.Id));
+        insert attachments;
 
-            List<Core_IPS_Case_Attachments__c> attachList = Core_IPS_caseAttLinkFileCont_LEX.getattachments(cs.Id, 100, 0, 'Load Data');
-            System.assert(attachList.size() == 2);
-            List<Core_IPS_Case_Attachments__c> attachList2 = Core_IPS_caseAttLinkFileCont_LEX.getattachments(cs.Id, 100, 0, 'All Data');
-            System.assert(attachList2.size() == 2);
-        }
+        List<Core_IPS_Case_Attachments__c> attachList = Core_IPS_caseAttLinkFileCont_LEX.getattachments(cs.Id, 100, 0, 'Load Data');
+        System.assert(attachList.size() == 2);
+        List<Core_IPS_Case_Attachments__c> attachList2 = Core_IPS_caseAttLinkFileCont_LEX.getattachments(cs.Id, 100, 0, 'All Data');
+        System.assert(attachList2.size() == 2);
     }
 }

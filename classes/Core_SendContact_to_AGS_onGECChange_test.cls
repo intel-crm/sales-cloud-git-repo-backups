@@ -57,11 +57,11 @@ public class Core_SendContact_to_AGS_onGECChange_test {
         gec.Core_Class_name__c='Core_SendContact_to_AGS_onGECChange';
         gec.Core_Client_Id__c='ec3dc7a0-5f81-4846-8b34-d288386dc520 ';
         gec.Core_Client_Secret__c='6Cr7Q~j1Zbsw3psK8K_xlqcSll7CZlx0n7a7l';
-        gec.Core_EndPoint_Url__c='https://apis.intel.com/m2r/global-export-compliance/v1/identities/';
+        gec.Core_EndPoint_Url__c='https://apis-sandbox.intel.com/m2r/global-export-compliance/v1/identities/';
         //gec.Core_Grant_Type__c='client_credentials';
         gec.Core_Grant_Type__c='ccc';
         
-        gec.Core_Token_EndPoint_URL__c='https://apis.intel.com/v1/auth/token';
+        gec.Core_Token_EndPoint_URL__c='https://apis-sandbox.intel.com/v1/auth/token';
         GECCred.add(gec);
         insert GECCred;
         Test.startTest();
@@ -70,7 +70,7 @@ public class Core_SendContact_to_AGS_onGECChange_test {
         
         
         
-    Account account = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccount','Intel Account','UNFD_GLBL_CUST');
+		Account account = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestParentAccount','Intel Account','UNFD_GLBL_CUST');
         
         insert account;
         
@@ -79,7 +79,6 @@ public class Core_SendContact_to_AGS_onGECChange_test {
         Contact contact = lstContacts[0];
         contact.AccountId = account.id;
         contact.Core_Enterprise_Id__c='300002753379';
-        contact.MailingCountry='USA';
         
         insert lstContacts;
         contact.FirstName = 'test test test ';
@@ -111,7 +110,6 @@ public class Core_SendContact_to_AGS_onGECChange_test {
         Contact contact = lstContacts[0];
         contact.AccountId = account.id;
         contact.Core_Enterprise_Id__c='300002753379';
-        contact.MailingCountry='USA';
         
         insert lstContacts;
         
@@ -146,7 +144,6 @@ public class Core_SendContact_to_AGS_onGECChange_test {
         Contact contact = lstContacts[0];
         contact.AccountId = account.id;
         contact.Core_Enterprise_Id__c='300002753379';
-        contact.MailingCountry='USA';
         insert lstContacts;
         account.Core_Export_Compliance_Block__c=true;
         account.Core_Export_Compliance_Block_Reason__c='Global Export Compliance Block';
@@ -173,6 +170,9 @@ public class Core_SendContact_to_AGS_onGECChange_test {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
             res.setBody('{"access_token": "' + accessToken + '", "token_type": "Bearer","expires_in": "3599", "ext_expires_in": "3599"}');
+            
+            // res.setBody(' "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imwzc1EtNTBjQ0g0eEJWWkxIVEd3blNSNzY4MCJ9.eyJhdWQiOiJhMDExOTc4Yy04MGYzLTRlMmUtOWJmNS02NmM1MzM2MjQ3YTEiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNDZjOThkODgtZTM0NC00ZWQ0LTg0OTYtNGVkNzcxMmUyNTVkL3YyLjAiLCJpYXQiOjE2MzM2NzQ1NzYsIm5iZiI6MTYzMzY3NDU3NiwiZXhwIjoxNjMzNjc4NDc2LCJhaW8iOiJFMlpnWURpaHdIWm4vc3AvcDluKy9Wa3czYUttRGdBPSIsImF6cCI6ImEwMTE5NzhjLTgwZjMtNGUyZS05YmY1LTY2YzUzMzYyNDdhMSIsImF6cGFjciI6IjEiLCJvaWQiOiI3ZmE4ZDQ3Ni1iNjFkLTRmMDgtOGI4YS0xZjY5MzdkZWJkMTkiLCJyaCI6IjAuQVEwQWlJM0pSa1RqMUU2RWxrN1hjUzRsWFl5WEVhRHpnQzVPbV9WbXhUTmlSNkVOQUFBLiIsInJvbGVzIjpbIkRhYVNfU3VwcGxpZXJfUl9OUCIsIkVEVlBfUFJPRF9JUEFfVVNFUiIsIkVEVlBfREVWX1JGUEVHQV9VU0VSIiwiRURWUF9ERVZfVVNFUl9TTFNfT1BJRCIsIkVEVlBfUFJPRF9QUE1fVVNFUiIsIkVEVlBfUFJFUFJPRF9QUE1fVVNFUiIsIkVEVlBfREVWX1VTRVJfUEVHQV9DSVJBIiwiRURWUF9QUk9EX1VTRVJfUEVHQV9DSVJBIiwiRURWUF9QUk9EX1JGUEVHQV9VU0VSIiwiRGFhU19TdXBwbGllcl9SX1BSRCIsIkVEVlBfREVWX0lQQV9VU0VSIiwiRURWUF9QUk9EX1VTRVJfU0xTX09QSUQiXSwic3ViIjoiN2ZhOGQ0NzYtYjYxZC00ZjA4LThiOGEtMWY2OTM3ZGViZDE5IiwidGlkIjoiNDZjOThkODgtZTM0NC00ZWQ0LTg0OTYtNGVkNzcxMmUyNTVkIiwidXRpIjoiQUtYcUxzNGRmRXVkZmhUMmZBRGlBQSIsInZlciI6IjIuMCJ9.JSZtueEotliWf3h4_ZzGH4qPSJFCHluDQ5XD6lERLF5sn-bEiFUA7RJCIngkQVrnJ2lNAT4md5s6_s4HBgiuZbWa0n0rHfmNT4bgKTxpkcY1tuRaSpUo96Tzkm7OvD9BZMLu511RMccns2vam9ToFYRGBvvz23eoEs-Rf1uvhxorb6bOUjUTBcIy5LwhL0krqzgYwi18FQH-OPL-KFT4NX0EsfctG9ANup7wTaxwtZWMf9s0hjGWwKCnl8UB_71WbuaEreNiOE8Y6OW0DvkzQ9fUAX-lNg70KwGoabqiGw1Ogtg9l5GqyHo5UIRfBvo2rqansU2JqkhM7Oo-mVUoE,
+            
             res.setStatusCode(200);
             return res;
         }
@@ -188,14 +188,12 @@ public class Core_SendContact_to_AGS_onGECChange_test {
             HttpResponse res = new HttpResponse();
             res.setHeader('Content-Type', 'application/json');
             res.setBody('{"access_token":"' + accessToken + '", "token_type": "Bearer","expires_in": "3599", "ext_expires_in": "3599"}');
+            
+            // res.setBody(' "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imwzc1EtNTBjQ0g0eEJWWkxIVEd3blNSNzY4MCJ9.eyJhdWQiOiJhMDExOTc4Yy04MGYzLTRlMmUtOWJmNS02NmM1MzM2MjQ3YTEiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNDZjOThkODgtZTM0NC00ZWQ0LTg0OTYtNGVkNzcxMmUyNTVkL3YyLjAiLCJpYXQiOjE2MzM2NzQ1NzYsIm5iZiI6MTYzMzY3NDU3NiwiZXhwIjoxNjMzNjc4NDc2LCJhaW8iOiJFMlpnWURpaHdIWm4vc3AvcDluKy9Wa3czYUttRGdBPSIsImF6cCI6ImEwMTE5NzhjLTgwZjMtNGUyZS05YmY1LTY2YzUzMzYyNDdhMSIsImF6cGFjciI6IjEiLCJvaWQiOiI3ZmE4ZDQ3Ni1iNjFkLTRmMDgtOGI4YS0xZjY5MzdkZWJkMTkiLCJyaCI6IjAuQVEwQWlJM0pSa1RqMUU2RWxrN1hjUzRsWFl5WEVhRHpnQzVPbV9WbXhUTmlSNkVOQUFBLiIsInJvbGVzIjpbIkRhYVNfU3VwcGxpZXJfUl9OUCIsIkVEVlBfUFJPRF9JUEFfVVNFUiIsIkVEVlBfREVWX1JGUEVHQV9VU0VSIiwiRURWUF9ERVZfVVNFUl9TTFNfT1BJRCIsIkVEVlBfUFJPRF9QUE1fVVNFUiIsIkVEVlBfUFJFUFJPRF9QUE1fVVNFUiIsIkVEVlBfREVWX1VTRVJfUEVHQV9DSVJBIiwiRURWUF9QUk9EX1VTRVJfUEVHQV9DSVJBIiwiRURWUF9QUk9EX1JGUEVHQV9VU0VSIiwiRGFhU19TdXBwbGllcl9SX1BSRCIsIkVEVlBfREVWX0lQQV9VU0VSIiwiRURWUF9QUk9EX1VTRVJfU0xTX09QSUQiXSwic3ViIjoiN2ZhOGQ0NzYtYjYxZC00ZjA4LThiOGEtMWY2OTM3ZGViZDE5IiwidGlkIjoiNDZjOThkODgtZTM0NC00ZWQ0LTg0OTYtNGVkNzcxMmUyNTVkIiwidXRpIjoiQUtYcUxzNGRmRXVkZmhUMmZBRGlBQSIsInZlciI6IjIuMCJ9.JSZtueEotliWf3h4_ZzGH4qPSJFCHluDQ5XD6lERLF5sn-bEiFUA7RJCIngkQVrnJ2lNAT4md5s6_s4HBgiuZbWa0n0rHfmNT4bgKTxpkcY1tuRaSpUo96Tzkm7OvD9BZMLu511RMccns2vam9ToFYRGBvvz23eoEs-Rf1uvhxorb6bOUjUTBcIy5LwhL0krqzgYwi18FQH-OPL-KFT4NX0EsfctG9ANup7wTaxwtZWMf9s0hjGWwKCnl8UB_71WbuaEreNiOE8Y6OW0DvkzQ9fUAX-lNg70KwGoabqiGw1Ogtg9l5GqyHo5UIRfBvo2rqansU2JqkhM7Oo-mVUoE,
+            
             res.setStatusCode(400);
             return res;
         }
     }
-    
-   static testMethod void dummyTest(){
-        Core_SendContact_to_AGS_onGECChange.dummyMethod();
-    }
-    
     
 }

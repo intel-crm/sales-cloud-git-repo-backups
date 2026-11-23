@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Email will be sent to Claim owners(In case of Legacy Claims post paid, when PIC is failed after 3 attempts)</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core MDF Legacy Post Max Attempt Reached</name>
+    <style>none</style>
+    <subject>Please upload Proof of Performance for Claim #</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

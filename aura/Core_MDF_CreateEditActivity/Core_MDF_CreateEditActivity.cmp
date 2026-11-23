@@ -3,7 +3,7 @@
                 access="global" 
                 Controller="Core_MDF_PartnerFundRequestCreatePage">
     
-    <aura:html tag="style">
+    <aura:html tag="style">        
         .slds-modal__container{
         max-width: 70rem !important;
         width:95% !important;

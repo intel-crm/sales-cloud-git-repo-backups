@@ -12,6 +12,11 @@
             <operation>equals</operation>
             <value>Client</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Activity_Level_nm__c</field>
+            <operation>notEqual</operation>
+            <value>Sub Activity</value>
+        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -39,6 +44,11 @@
             <field>RecordTypeId</field>
             <operation>equals</operation>
             <value>Datacenter</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Activity_Level_nm__c</field>
+            <operation>notEqual</operation>
+            <value>Sub Activity</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -112,6 +122,11 @@
             <field>Core_MDF_Activity_Level_nm__c</field>
             <operation>equals</operation>
             <value>Sub Activity</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Budget_Type_nm__c</field>
+            <operation>equals</operation>
+            <value>Account Plan</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

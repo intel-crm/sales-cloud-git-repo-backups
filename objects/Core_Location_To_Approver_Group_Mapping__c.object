@@ -6,12 +6,14 @@
     <fields>
         <fullName>Core_Active_Ind__c</fullName>
         <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
         <label>Active</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_Approver_Group_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Approver Group Name</label>
         <length>100</length>
@@ -22,6 +24,7 @@
     </fields>
     <fields>
         <fullName>Core_Country_Cd__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Country Code</label>
         <length>100</length>
@@ -32,6 +35,7 @@
     </fields>
     <fields>
         <fullName>Core_Product_Group_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Product Group</label>
         <length>100</length>
@@ -42,6 +46,7 @@
     </fields>
     <fields>
         <fullName>Core_State_Cd__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>State Code</label>
         <length>100</length>
@@ -81,8 +86,10 @@
         <columns>Core_Active_Ind__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
+        <columns>Country__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
+        <language>en_US</language>
     </listViews>
     <visibility>Public</visibility>
 </CustomObject>

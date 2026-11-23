@@ -13,8 +13,11 @@ public class Core_IPS_AccountTeam_DeletedRecSch_Test {
    // CRON expression: midnight on March 15.
    // Because this is a test, job executes
    // immediately after Test.stopTest().
-   public static String CRON_EXP = '0 0 0 15 3 ? 2032';
- 
+    
+   //Updated the Year by Sowmya - Start - 10/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+   public static String CRON_EXP = '0 0 0 15 10 ? 2042';
+ 	//Sowmya -End - 10/10/2024 - TWC745-6800 - Fix test coverage for all failed classes 
+    		
    static Core_Batch_Header__c batchHeader;
  
    static testmethod void test() {
@@ -43,7 +46,7 @@ public class Core_IPS_AccountTeam_DeletedRecSch_Test {
       System.assertEquals(0, ct.TimesTriggered);
  
       // Verify the next time the job will run
-      System.assertEquals('2032-03-15 00:00:00', String.valueOf(ct.NextFireTime));
+      System.assertEquals('2042-10-15 00:00:00', String.valueOf(ct.NextFireTime));
          
       Test.stopTest(); 
    }

@@ -824,12 +824,10 @@ public class PRM_OPIDTriggerBatch_Test {
         Test.stopTest();
         
         List<Core_Log_Entry__c> logs = [SELECT Id, Core_Origin__c FROM Core_Log_Entry__c LIMIT 1];
-        if (logs.isEmpty()) {
-            System.debug('No Core_Log_Entry__c found');
-    } else {
-            Core_Log_Entry__c logEntry = logs[0];
-        System.assertEquals(PRM_OPIDTriggerBatchUtility.ORIGIN, logEntry.Core_Origin__c);
-    }
+        if(!logs.isEmpty())
+        { Core_Log_Entry__c logEntry = logs[0];
+          System.assertEquals(PRM_OPIDTriggerBatchUtility.ORIGIN, logEntry.Core_Origin__c);
+        }
     }
     //Positive:Test Method for Upgrade Recommendation Insert/Update qualified VX Data
     public static testMethod void recommendationsUpgradeTestMethod(){

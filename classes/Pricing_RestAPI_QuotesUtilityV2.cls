@@ -2,7 +2,7 @@
 * @description       : Class containing all the validation related to Ver>2 API
 * @author            : Accenture
 * @group             : Gravity
-* @last modified on  : 03-09-2026
+* @last modified on  : 11-10-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHandler {
@@ -344,6 +344,17 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                     }
                 }
                 
+                /* 
+                //validate End Customer URL using Regex
+                String regexendCustomerUrl = '^(https?://)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+(/.*)?$';
+                if(!String.isBlank(quoteDetails.endCustomerUrl)){
+                    if(!Pattern.matches(regexendCustomerUrl, quoteDetails.endCustomerUrl.trim()) ){
+                    addValidationError( quoteMsgs.quoteErrors, 'endCustomerUrl', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1102, null);
+                    isValid = false;
+                    }
+                }
+                */
+
                 if(isSubmit){
                     //validate quotelines and quote comments if isSubmit is true(submit quote API-action=submit)
                     quoteMsgs.quoteLineErrorMsgs = new List<QuoteLineErrorMsg>();
@@ -975,7 +986,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
             }
             else if(Pricing_RestAPI_QuotelinesV2.isChangeReq ){
                 qErrorMsg.quoteErrors = new Map<String, ErrorMsg>(); 
-                Set<Id> qliAPIIds = new Set<Id>();
+                List<Id> qliAPIIds = new List<Id>();
                 if(quoteLineWrapper.quoteId == null || String.isEmpty(quoteLineWrapper.quoteId.trim())){
                     addValidationError(qErrorMsg.quoteErrors, 'quoteId', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1008, null);
                     isValid = false;
@@ -1015,26 +1026,25 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                         for(SBQQ__QuoteLine__c qli: hasCR){
                             hasCRMap.put(qli.Pricing_Reference_Quote_Line_Nbr__c,qli.Pricing_Quote_Line_Number__c);
                         }   
-                        Map<Id,SBQQ__QuoteLine__c> quotelineMap = new Map<Id,SBQQ__QuoteLine__c>([Select Id,Pricing_Status_Nm__c,Pricing_Quote_Line_Number__c,SBQQ__Quote__c,SBQQ__Quote__r.SBQQ__Account__c,SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_ECAP_Price_Amt__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Consumption_Platform__c ,Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Country__c,Pricing_Consumption_Region__c,Pricing_Consumption_Segment__c from SBQQ__QuoteLine__c where Id IN :qliAPIIds and SBQQ__Quote__r.SBQQ__Account__c = :currentUser.AccountId]);
-                        
-                        for(QLICRWonLost quoteline: quoteLineWrapper.quoteLines){
-                            validateChangeReqQuoteline(quoteline,qErrorMsg.quoteLineErrorMsgs, sObjQuoteLineFieldMap,quotelineMap,hasCRMap);
+                        Map<Id,SBQQ__QuoteLine__c> quotelineMap = new Map<Id,SBQQ__QuoteLine__c>([Select Id,Pricing_Status_Nm__c,Pricing_Quote_Line_Number__c,SBQQ__Quote__c,SBQQ__Quote__r.SBQQ__Account__c,SBQQ__Quote__r.Pricing_ShipmentStDate_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Approved_Unit_Qty__c,Pricing_ECAP_Price_Amt__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Consumption_Platform__c ,Pricing_Consumption_Sale_Geo__c,Pricing_Consumption_Country__c,Pricing_Consumption_Region__c,Pricing_Consumption_Segment__c,Pricing_Program_Type_Nm__c,SBQQ__Quote__r.Pricing_Program_Type_Nm__c from SBQQ__QuoteLine__c where Id IN :qliAPIIds and SBQQ__Quote__r.SBQQ__Account__c = :currentUser.AccountId]);
+                                for(QLICRWonLost quoteline: quoteLineWrapper.quoteLines){
+                                    validateChangeReqQuoteline(quoteline,qErrorMsg.quoteLineErrorMsgs, sObjQuoteLineFieldMap,quotelineMap,hasCRMap);
+                                }
                         }
+                        else{
+                            addValidationError(qErrorMsg.quoteErrors, 'quoteId', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1007, null);
+                            isValid = false; 
+                        }       
                     }
-                    else{
-                        addValidationError(qErrorMsg.quoteErrors, 'quoteId', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1007, null);
-                        isValid = false; 
-                    }       
                 }
-            }
-            if(qErrorMsg.quoteErrors.isEmpty() && qErrorMsg.quoteLineErrorMsgs.isEmpty() ){
-                return true;
-            }else{
-                if(qErrorMsg.quoteErrors.isEmpty()){
-                    qErrorMsg.quoteErrors=null;
-                }
-                return false;
-            }
+                    if(qErrorMsg.quoteErrors.isEmpty() && qErrorMsg.quoteLineErrorMsgs.isEmpty() ){
+                        return true;
+                    }else{
+                        if(qErrorMsg.quoteErrors.isEmpty()){
+                            qErrorMsg.quoteErrors=null;
+                        }
+                        return false;
+                    }
         }
         catch(Exception ex){
             qErrorMsg.quoteLineErrorMsgs = null;
@@ -1050,7 +1060,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         List<String> compProductNameList = new List<String>();
         List<String> compProductClientNameList = new List<String>();
         List<String> quotelinesIds = new List<String>();
-        Set<String> quotelineIdsSet = new Set<String>(); 
+        Set<String> quotelineIdsSet = new Set<String>();
         if(quoteLines!=null && !((quoteLines.DataCenterCPU == null || quoteLines.DataCenterCPU.isEmpty()) && (quoteLines.OptaneSSD == null || quoteLines.OptaneSSD.isEmpty()) && (quoteLines.OptanePMem == null || quoteLines.OptanePMem.isEmpty()) && (quoteLines.Ethernet == null || quoteLines.Ethernet.isEmpty()) && (quoteLines.Client == null || quoteLines.Client.isEmpty()) && (quoteLines.DataCenterGPU == null || quoteLines.DataCenterGPU.isEmpty()))){
             quoteLines.DataCenterCPU = quoteLines.DataCenterCPU != null && !isClient ? quoteLines.DataCenterCPU : new List<QuotelineCPU>();
             quoteLines.OptaneSSD = quoteLines.OptaneSSD != null && !isSvd && !isClient ? quoteLines.OptaneSSD : new List<QuotelineSSD>();
@@ -2490,8 +2500,60 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         return isCurrencyValid;
     }
     
-      
-    public static Boolean validatePicklistValues(Map<String, Schema.SObjectField> objectMap,String fieldName,String fldValue,Boolean isMandatory,Map<String, ErrorMsg> errorMsgs,String jsonLabel) {
+   /* public static boolean validatePicklistValues(Map<String,Schema.SObjectField> objectMap, String fieldName, String fldValue, boolean isMandatory, Map<String,ErrorMsg> errorMsgs, String jsonLabel){
+        boolean isFldValid = false;
+        boolean isEmpty = false;
+        if(!isMandatory && String.isBlank(fldValue)){
+            isFldValid = true;
+            //do nothing - value can be blank if the field is not mandatory
+        }else{
+            Schema.DescribeFieldResult fldRes = objectMap.get(fieldName).getDescribe();
+            List<Schema.PicklistEntry> ple = fldRes.getPicklistValues();
+            if(!String.isBlank(fldValue) && !fldValue.contains(',')){               
+                for( Schema.PicklistEntry f : ple)
+                {
+                    if(f.isActive() && f.getValue() == fldValue){
+                        isFldValid =  true; 
+                        break;
+                    }
+                }
+            }
+            //For checking Multi Picklist values for consumption country and region.
+            else if(!String.isBlank(fldValue) && fldValue.contains(',')){
+                List<String> multiFldValue = fldValue.split(',');
+                integer count = 0;
+                for( Schema.PicklistEntry f : ple)
+                {
+                    if(f.isActive() && multiFldValue.contains(f.getValue())){
+                        count++;
+                    }
+                }
+                if(count == multiFldValue.size()){
+                    isFldValid =  true;
+                }
+                else{
+                    isFldValid = false;
+                }  
+            }
+            else {
+                isEmpty = true;
+                addValidationError(errorMsgs, jsonLabel, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1020, null);
+            }
+            if(!isEmpty && !isFldValid){
+                addValidationError(errorMsgs, jsonLabel, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1026, 
+                                   new Map<String,String>{'{{fieldValue}}' => fldValue});
+            }
+        }
+        return isFldValid;
+    }*/
+    public static Boolean validatePicklistValues(
+    Map<String, Schema.SObjectField> objectMap,
+    String fieldName,
+    String fldValue,
+    Boolean isMandatory,
+    Map<String, ErrorMsg> errorMsgs,
+    String jsonLabel
+) {
     Boolean isFldValid = false;
     Boolean isEmpty = false;
     Map<String, String> consumptionCountryStoreMap = new Map<String, String>();
@@ -2499,8 +2561,9 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
     if (!isMandatory && String.isBlank(fldValue)) {
         isFldValid = true;
     } else {
-        Schema.DescribeFieldResult fldRes = objectMap.get(fieldName).getDescribe();
-	List<Schema.PicklistEntry> ple = fldRes.getPicklistValues();
+        Schema.DescribeFieldResult fldRes =
+            objectMap.get(fieldName).getDescribe();
+        List<Schema.PicklistEntry> ple = fldRes.getPicklistValues();
  
         if (String.isBlank(fldValue)) {
             isEmpty = true;
@@ -2731,7 +2794,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         }
         for(String fseEmail : validFSEEmailIdMap.keySet()){
             Id userId = validFSEEmailIdMap.get(fseEmail);
-            if(!userIds.contains(userId) && !primaryFSEEmail.equalsIgnoreCase(fseEmail)){
+            if(!userIds.contains(userId) && (String.isblank(primaryFSEEmail) || !primaryFSEEmail.equalsIgnoreCase(fseEmail))){
                 userIds.add(userId);
                 fseQTM.add(new Pricing_Quote_Team__c(Pricing_Quote_Id__c=newQuoteId, Pricing_Quote_Team_Member_Id__c=userId, 
                                                      Pricing_Role_Nm__c = Label.Pricing_Quote_Team_Role_FSE,
@@ -3073,7 +3136,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                 
                 //checking if quotelines are not auto rejected.
                 Set<Id> pifrQuoteLineId = new Set<Id>();
-                for(SBQQ__QuoteLine__c qli: [select id,Pricing_Status_Nm__c from SBQQ__QuoteLine__c where id In :quoteLineIds and Pricing_Status_Nm__c =:Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview]){
+                for(SBQQ__QuoteLine__c qli: [select id from SBQQ__QuoteLine__c where id In :quoteLineIds and Pricing_Status_Nm__c =:Label.Pricing_Tender_QuoteLine_Status_PendingIntelFieldReview]){
                     pifrQuoteLineId.add(qli.Id);
                 }
                 //call submit for approval method here 
@@ -3588,7 +3651,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
                                             addValidationError(qle.quoteLineErrors, 'newRequestedPrice', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
                                             addValidationError(qle.quoteLineErrors, 'newQuantity', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
                                             addValidationError(qle.quoteLineErrors, 'quoteLinePricingEndDate', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
-                                                // Consumption error added.
+                                            // Consumption error added.
                                             addValidationError(qle.quoteLineErrors, 'consumptionPlatform', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
                                             addValidationError(qle.quoteLineErrors, 'consumptionSalesGeo', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
                                             addValidationError(qle.quoteLineErrors, 'consumptionCountry', Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1061, new Map<String, String>{'{{newRequestedType}}' => newRequestedType});
@@ -3707,7 +3770,7 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         Map<String, boolean> fldValidMap = new Map<String, boolean>();
         if (quotelineMap.get(quotelineId).Pricing_Approved_End_Date_Dt__c<System.today() && fieldValue != null)
         {
-            addValidationError(quoteLineErrors, fieldName, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1060, new Map<String, String>{'{{newRequestedType}}' => 'newRequestedPrice'});
+            addValidationError(quoteLineErrors, fieldName, Pricing_RestAPI_ResponseCodes.VALID_ERROR_CODE_1060, new Map<String, String>{'{{newRequestedType}}' => 'New Requested Price'});
         }
         else{
             
@@ -3728,12 +3791,12 @@ global without sharing class Pricing_RestAPI_QuotesUtilityV2 extends TriggerHand
         for(Pricing_ConsumptionAccountMapping__c rec : [SELECT Id,Name,Pricing_Active_ind__c, Pricing_Consumption_Type_Nm__c,Pricing_Account_Nm__r.Name 
                                                         FROM Pricing_ConsumptionAccountMapping__c 
                                                         WHERE Pricing_Account_Nm__c =: currentUser.AccountId AND Pricing_Active_ind__c = true]){
-            if(consumptionTypeToValueMap.containsKey(rec.Pricing_Consumption_Type_Nm__c)){
-                consumptionTypeToValueMap.get(rec.Pricing_Consumption_Type_Nm__c).add(rec.Name);
-            } else{
-                consumptionTypeToValueMap.put(rec.Pricing_Consumption_Type_Nm__c,new List<String>{rec.Name});
-            }
-        }
+                                                            if(consumptionTypeToValueMap.containsKey(rec.Pricing_Consumption_Type_Nm__c)){
+                                                                consumptionTypeToValueMap.get(rec.Pricing_Consumption_Type_Nm__c).add(rec.Name);
+                                                            } else{
+                                                                consumptionTypeToValueMap.put(rec.Pricing_Consumption_Type_Nm__c,new List<String>{rec.Name});
+                                                            }
+                                                        }
     }    
     /***********************************************************************************************/
     

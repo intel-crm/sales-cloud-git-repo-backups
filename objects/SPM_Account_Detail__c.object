@@ -1407,31 +1407,6 @@
                     <default>false</default>
                     <label>Location: Slovakia</label>
                 </value>
-                <value>
-                    <fullName>Location: Turkiye</fullName>
-                    <default>false</default>
-                    <label>Location: Turkiye</label>
-                </value>
-                <value>
-                    <fullName>Location: Colombia</fullName>
-                    <default>false</default>
-                    <label>Location: Colombia</label>
-                </value>
-                <value>
-                    <fullName>Location: Australia</fullName>
-                    <default>false</default>
-                    <label>Location: Australia</label>
-                </value>
-                <value>
-                    <fullName>Location: Denmark</fullName>
-                    <default>false</default>
-                    <label>Location: Denmark</label>
-                </value>
-                <value>
-                    <fullName>Location: Hungary</fullName>
-                    <default>false</default>
-                    <label>Location: Hungary</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1448,7 +1423,7 @@
     </fields>
     <fields>
         <fullName>Category__c</fullName>
-        <label>Semi-Annual Temp Account Category</label>
+        <label>Account Category</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1499,24 +1474,49 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Intel Led</fullName>
-                    <default>false</default>
-                    <label>Intel-led Account</label>
+                    <fullName>Intel Covered</fullName>
+                    <default>true</default>
+                    <label>Intel Covered</label>
                 </value>
                 <value>
-                    <fullName>Partner Led</fullName>
+                    <fullName>Indirect-Covered</fullName>
                     <default>false</default>
-                    <label>Partner-led Account</label>
+                    <label>Indirect-Covered</label>
+                </value>
+                <value>
+                    <fullName>Not Covered</fullName>
+                    <default>false</default>
+                    <label>Not Covered</label>
+                </value>
+                <value>
+                    <fullName>Altera Account</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Altera Account</label>
+                </value>
+                <value>
+                    <fullName>Intel Led</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel-Led Account</label>
                 </value>
                 <value>
                     <fullName>Uncovered</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Not Covered Account</label>
                 </value>
                 <value>
                     <fullName>Other-led Account</fullName>
                     <default>false</default>
+                    <isActive>false</isActive>
                     <label>Other-led Account</label>
+                </value>
+                <value>
+                    <fullName>Partner Led</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Partner-led Account</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1525,7 +1525,7 @@
         <fullName>Customer_Name__c</fullName>
         <externalId>false</externalId>
         <formula>SPM_Customer_ID__r.SPM_Customer_Name__c</formula>
-        <label>SPM_Customer_ID__c</label>
+        <label>Customer Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1557,7 +1557,7 @@
         <fullName>DR_Feedback__c</fullName>
         <externalId>false</externalId>
         <formula>IF( ISPICKVAL( DR_FeedbackId__r.Feedback_Type__c , &apos;DR&apos;) ,   TEXT(DR_FeedbackId__r.Feedback__c) , &apos;&apos;)</formula>
-        <label>DR Feedback</label>
+        <label>Delete: DR Feedback</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1719,7 +1719,7 @@
         <fullName>Old_Semi_Annual_Temp_Account_Category__c</fullName>
         <description>This Field is used to track the original value of the record</description>
         <externalId>false</externalId>
-        <label>Old Semi-Annual Temp Account Category</label>
+        <label>Old Account Category</label>
         <length>40</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -1777,7 +1777,7 @@
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Account Detail</relationshipLabel>
         <relationshipName>Account_Detail</relationshipName>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -2001,8 +2001,16 @@
         <searchResultsAdditionalFields>Sales_Group__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Region__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CST_Region__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Industry__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Country__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>check_New_Account_Creation</fullName>
+        <active>true</active>
+        <description>only DR and VP can create New account</description>
+        <errorConditionFormula>AND ( ISNEW() ,$Profile.Name &lt;&gt; $Label.Core_System_Admin_Profile_Name,
+$Profile.Name &lt;&gt; $Label.Core_IT_Admin_Profile_Name,$Profile.Name &lt;&gt; &apos;Sales_CRM_CST_Director&apos;, $Profile.Name &lt;&gt; &apos;Sales_CRM_CST_Vice_President&apos;)</errorConditionFormula>
+        <errorMessage>Access is denied to create a new Account</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

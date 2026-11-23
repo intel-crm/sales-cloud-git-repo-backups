@@ -11,10 +11,10 @@ Modification Log :
 
 *********************************************************************************************************************/
 @isTest
-public class PRM_CIMAccountSearchHttpResponse implements HttpCalloutMock {
+public class PRM_CIMAccountSearchHttpResponse /*implements HttpCalloutMock*/ {
     
     // Implement this interface method
-    public HTTPResponse respond(HTTPRequest request) {
+    /*public HTTPResponse respond(HTTPRequest request) {
         // Create a fake response         
         HttpResponse res = new HttpResponse();
         res.setHeader('Content-Type', 'application/json');
@@ -22,5 +22,5 @@ public class PRM_CIMAccountSearchHttpResponse implements HttpCalloutMock {
             res.setBody(str);
             res.setStatuscode(200);           
         return res; 
-    }
+    }*/
 }

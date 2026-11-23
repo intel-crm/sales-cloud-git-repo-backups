@@ -9,7 +9,6 @@
 public class Pricing_FieldSetFormControllerTest {
 	@testSetUp
     public static void setUpData() {
-        Pricing_Test_Utility.createPriceBook();
         List<User> adminUserList = Pricing_Test_Utility.createAdminUser();
         System.runAs(adminUserList[0]) {
             Test.startTest();

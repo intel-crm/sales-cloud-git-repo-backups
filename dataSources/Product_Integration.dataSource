@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalDataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authProvider>Product_Integration_Credentials1</authProvider>
+    <customConfiguration>{&quot;inlineCountEnabled&quot;:&quot;true&quot;,&quot;requestCompression&quot;:&quot;false&quot;,&quot;pagination&quot;:&quot;CLIENT&quot;,&quot;errorMessagingStrategy&quot;:&quot;OBFUSCATED&quot;,&quot;noIdMapping&quot;:&quot;false&quot;,&quot;format&quot;:&quot;JSON&quot;,&quot;searchFunc&quot;:&quot;&quot;,&quot;compatibility&quot;:&quot;DEFAULT&quot;,&quot;timeout&quot;:&quot;120&quot;,&quot;searchEnabled&quot;:&quot;true&quot;}</customConfiguration>
+    <endpoint>https://apis-sandbox.intel.com/pim/v1/services/hierarchies?localeGeoId=en-US&amp;hierarchyName=VPH_Hierarchy&amp;offset=1</endpoint>
+    <isWritable>false</isWritable>
+    <label>Product Integration</label>
+    <principalType>NamedUser</principalType>
+    <protocol>Oauth</protocol>
+    <type>OData</type>
+</ExternalDataSource>

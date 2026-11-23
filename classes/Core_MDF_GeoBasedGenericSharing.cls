@@ -90,7 +90,7 @@ Modified By   :        Date:       Changes:
                                         recordGeoShareList.add(new Core_MDF_RecordGeoShare(pfr.Id, region, subRegion, pfr.ChannelPartner.Core_MDF_Channel_Program__r.Name, pfr.Core_MDF_Budget_Type_nm__c));
                                                          
                                                           
-                                                          recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, region,pfr.Core_MDF_Sub_Region_nm__c,pfr.Core_MDF_Program__c,pfr.Core_MDF_Budget_Type_nm__c,
+                                        recordPGMShareList.add(new Core_MDF_RecordPGMShareWrapper(pfr.id, region,pfr.Core_MDF_Sub_Region_nm__c,pfr.Core_MDF_Program__c,pfr.Core_MDF_Budget_Type_nm__c,
                                                                                                                     pfr.ChannelPartner.Core_MDF_CoMarketing_Ultimate_Account__c));
                                                            
                                         //Share the activity with Primary Account users (Campaign Account)
@@ -134,8 +134,8 @@ Modified By   :        Date:       Changes:
             	}
             	if(recordGeoShareList != NULL && recordGeoShareList.size() >0){ 
                                      
-                Core_MDF_ShareRecordToGeoGroup.shareRecordToGeoGroup('PartnerFundRequest',recordGeoShareList);
-            }
+                	Core_MDF_ShareRecordToGeoGroup.shareRecordToGeoGroup('PartnerFundRequest',recordGeoShareList);
+            	}
             
         }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}

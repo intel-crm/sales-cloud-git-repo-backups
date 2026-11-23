@@ -1,0 +1,36 @@
+<template>
+    <div class="smg-pricing-agent__launcher-wrap">
+        <button class="smg-pricing-agent__launcher" type="button" onclick={openChat} aria-label="Open SMG Pricing Agent chat">
+            <span class="smg-pricing-agent__launcher-icon" aria-hidden="true">AI</span>
+            <span class="smg-pricing-agent__launcher-text">SMG Pricing Agent</span>
+        </button>
+    </div>
+
+    <template if:true={isChatOpen}>
+        <section
+            role="dialog"
+            tabindex="-1"
+            class="smg-pricing-agent__backdrop"
+            aria-modal="true"
+            aria-labelledby="smg-pricing-agent-title"
+            onkeydown={handleKeydown}
+            onclick={handleOverlayClick}
+        >
+            <div class="smg-pricing-agent__modal" role="document">
+                <header class="smg-pricing-agent__modal-header">
+                    <div>
+                        <p class="smg-pricing-agent__eyebrow">OneAI chatbot</p>
+                        <h2 id="smg-pricing-agent-title" class="smg-pricing-agent__title">SMG Pricing Agent</h2>
+                    </div>
+                    <button class="smg-pricing-agent__close" type="button" onclick={closeChat} aria-label="Close chat window">
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                    </button>
+                </header>
+
+                <div class="smg-pricing-agent__modal-body">
+                    <iframe class="smg-pricing-agent__iframe" src={chatUrl} title={iframeTitle}></iframe>
+                </div>
+            </div>
+        </section>
+    </template>
+</template>

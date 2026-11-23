@@ -2,7 +2,7 @@
 public class PRM_ErrorMonitor_Batch_Test {
     @TestSetup
     //test data creation
-    static void setupData(){  
+    static void setupData(){   
         
         List<Account> listacc=new List<Account>();
         List<PRM_Value_Exchange_Recommendation__c> listrecom = new List<PRM_Value_Exchange_Recommendation__c>();

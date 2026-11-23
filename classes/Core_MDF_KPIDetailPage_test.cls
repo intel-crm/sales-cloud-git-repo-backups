@@ -190,7 +190,7 @@ public class Core_MDF_KPIDetailPage_test {
             pfr1.Core_MDF_Reimbursement_Rate_pct__c = '100%';
             pfr1.Core_MDF_Reimbursement_Rate_txt__c = '100%';
             pfr1.Core_MDF_Budget_Currency_cd__c='USD';
-            pfr1.Core_MDF_ActivityCategory__c = '';
+            pfr1.Core_MDF_ActivityCategory__c = 'Digital Media';
             pfr1.Core_MDF_Activity_Types__c ='';  // 14285 Indira
             pfr1.Core_MDF_Activity_SubType_nm__c = ''; // 14285 Indira
             pfr1.Core_MDF_Metrics_txt__c = '123';
@@ -287,7 +287,7 @@ static void testFetchActCatTypeWithIPAProgram(){
         // Test IPA program with multiple subtypes - covers IPA specific logic
         PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createRetailActivity(
             String.valueOf(camp.Id), String.valueOf(acc.Id), System.today()+1, System.today()+2, false);
-        pfr.Core_MDF_ActivityCategory__c = '';
+        pfr.Core_MDF_ActivityCategory__c = 'Digital Media';
         pfr.Core_MDF_Activity_Types__c = ''; // 14285 Indira
        pfr.Core_MDF_Activity_SubType_nm__c = ''; // 14285 Indira
         insert pfr;
@@ -351,8 +351,8 @@ static void testFetchMetadataPrivateMethod(){
         // Test PFR with Planned_Metrics and proposal based = true
         PartnerFundRequest pfr1 = Core_MDF_CCP_TestDataUtility.createRetailActivity(
             String.valueOf(camp.Id), String.valueOf(acc.Id), System.today()+1, System.today()+2, false);
-        pfr1.Core_MDF_ActivityCategory__c = '';
-        pfr1.Core_MDF_Activity_Types__c = '';
+        pfr1.Core_MDF_ActivityCategory__c = 'Print';
+        pfr1.Core_MDF_Activity_Types__c = 'Magazine/Newspaper';
         insert pfr1;
         
         // This covers the first if condition in fetchMetadata
@@ -361,7 +361,7 @@ static void testFetchMetadataPrivateMethod(){
         // Test PFR with Actual_Metrics and proposal based = false
         PartnerFundRequest pfr2 = Core_MDF_CCP_TestDataUtility.createRetailActivity(
             String.valueOf(camp.Id), String.valueOf(acc.Id), System.today()+1, System.today()+2, false);
-        pfr2.Core_MDF_ActivityCategory__c = '';
+        pfr2.Core_MDF_ActivityCategory__c = 'Digital Media';
         pfr2.Core_MDF_Activity_Types__c = '';  // 14285 Indira
         insert pfr2;
         

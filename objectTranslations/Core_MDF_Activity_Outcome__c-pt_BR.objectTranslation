@@ -42,16 +42,64 @@
         <name>Core_MDF_Baseline_Value_nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Brand --></label>
+        <name>Core_MDF_Brand_nm__c</name>
+    </fields>
+    <fields>
         <label><!-- Goal Value --></label>
         <name>Core_MDF_Goal_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Outcome Brands/Technologies --></label>
+        <name>Core_MDF_Other_Brands_Technologies_txt__c</name>
     </fields>
     <fields>
         <label><!-- Outcome Metric --></label>
         <name>Core_MDF_Outcome_Metric_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Outcome Type --></label>
+        <name>Core_MDF_Outcome_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>Business</masterLabel>
+            <translation><!-- Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Result value --></label>
         <name>Core_MDF_Result_Value_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Result Value (DNU) --></label>
+        <name>Core_MDF_Result_Value_nm__c</name>
+        <picklistValues>
+            <masterLabel>Increase by X (% or *allow negatives) Year over Year (YoY)</masterLabel>
+            <translation><!-- Increase by X (% or *allow negatives) Year over Year (YoY) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Increase by X Quarter over Quarter (QoQ)</masterLabel>
+            <translation><!-- Increase by X Quarter over Quarter (QoQ) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Increase by X from end of previous Activity</masterLabel>
+            <translation><!-- Increase by X from end of previous Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Increase by X from prior half (HoH)</masterLabel>
+            <translation><!-- Increase by X from prior half (HoH) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Increase by X from same period prior year</masterLabel>
+            <translation><!-- Increase by X from same period prior year --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Technology --></label>
+        <name>Core_MDF_Technology_txt__c</name>
     </fields>
     
     <nameFieldLabel><!-- Activity Outcome Name --></nameFieldLabel>

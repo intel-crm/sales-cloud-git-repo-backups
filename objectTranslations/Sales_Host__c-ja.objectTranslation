@@ -2,7 +2,7 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>ホスト情報</value>
+        <value><!-- Host Information --></value>
     </caseValues>
     <fields>
         <label><!-- Account --></label>
@@ -57,7 +57,7 @@
         <name>Sales_IsTemporaryLicense__c</name>
     </fields>
     <fields>
-        <label>コンピューター ID</label>
+        <label>プライマリー・コンピューター ID</label>
         <name>Sales_Legacy_Host_Id__c</name>
     </fields>
     <fields>
@@ -110,7 +110,7 @@
         <label>臨時 NIC ID</label>
         <name>Temporary_NIC_ID__c</name>
     </fields>
-    <nameFieldLabel>主要コンピューター ID</nameFieldLabel>
+    <nameFieldLabel><!-- Primary Computer ID --></nameFieldLabel>
     <recordTypes>
         <label>新しいコンピューター</label>
         <name>Sales_NewHost</name>
@@ -132,7 +132,7 @@
         <name>Sales_Float_HOST_NIC_Allowed</name>
     </validationRules>
     <validationRules>
-        <errorMessage>双方のリダンダント・サーバー ID を指定する必要があります。</errorMessage>
+        <errorMessage>FLOAT ライセンスタイプの場合、リダンダント・サーバーは、両方ともホストに追加する、または、どちらも追加しない、のいずれかにする必要があります。また、FLOAT ライセンスタイプではコンパニオン・コンピューターは追加できません。</errorMessage>
         <name>Sales_Float_Lic_NoneorBoth_RedServer_Req</name>
     </validationRules>
     <validationRules>

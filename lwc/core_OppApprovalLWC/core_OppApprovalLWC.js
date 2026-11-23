@@ -10,6 +10,7 @@ import customCSS from '@salesforce/resourceUrl/toastCSS';
 import { loadStyle } from 'lightning/platformResourceLoader';
 
 const dataTableColumns = [
+    //{ label: 'Product Id', fieldName: 'Id',initialWidth: 100,sortable: "true" },
     { label: 'Product Name', fieldName: 'productNames',initialWidth: 400,sortable: "true" },
     { label: 'Quote#', fieldName: 'quoteNumbers' ,initialWidth: 90},
     { label: 'Quote Line#', fieldName: 'quoteLineNumbers' ,initialWidth: 125,sortable: "true" },
@@ -215,7 +216,7 @@ export default class Core_OppApprovalLWC extends NavigationMixin(LightningElemen
             }*/
             
             this.dataList = result.quoteLineData ;
-           
+           console.log('data'+this.dataList);
             if(this.dataList != undefined && this.dataList.length >0){
                 this.showEPACData = true;
                 this.showHideTab = true;
@@ -256,6 +257,7 @@ export default class Core_OppApprovalLWC extends NavigationMixin(LightningElemen
         .then(result =>{
             
             eval("$A.get('e.force:refreshView').fire();");
+          // window.location.reload();
             this.dispatchEvent(new CloseActionScreenEvent());
             if(this.auraInvoke){
                 const toastEvent = new ShowToastEvent({

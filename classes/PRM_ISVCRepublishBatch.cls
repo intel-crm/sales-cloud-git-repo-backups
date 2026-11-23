@@ -25,9 +25,9 @@ global class PRM_ISVCRepublishBatch implements Database.Batchable<SObject>, Data
         List<AsyncApexJob> lastBatchRun = [SELECT CompletedDate FROM AsyncApexJob WHERE ApexClass.Name = 'PRM_ISVCRepublishBatch' AND Status = :System.Label.PRM_AsyncStatus ORDER BY CompletedDate DESC LIMIT 1];
         if(!lastBatchRun.isEmpty()) {
             lastSuccessfulRun = lastBatchRun[0].CompletedDate;
-            return Database.getQueryLocator([SELECT ID,Name,Core_Status__c,Core_MessageType__c,Core_Tags__c,CreatedDate,LastModifiedDate,PRM_Account_Id__c FROM Core_Integration_Outbound_Message__c WHERE Core_MessageType__c IN ('Account Integration','Contact Integration') AND Core_Status__c IN ('Pending','Successful') AND (LastModifiedDate > :batchExecutionHours OR LastModifiedDate > :lastSuccessfulRun) AND CreatedDate < :startOfToday]);
+            return Database.getQueryLocator([SELECT ID,Name,Core_Status__c,Core_MessageType__c,Core_Tags__c,CreatedDate,PRM_Account_Id__c FROM Core_Integration_Outbound_Message__c WHERE Core_MessageType__c IN ('Account Integration','Contact Integration') AND Core_Status__c IN ('Pending','Successful') AND (LastModifiedDate > :batchExecutionHours OR LastModifiedDate > :lastSuccessfulRun) AND CreatedDate < :startOfToday]);
         }
-        return Database.getQueryLocator([SELECT ID,Name,Core_Status__c,Core_MessageType__c,Core_Tags__c,CreatedDate,LastModifiedDate,PRM_Account_Id__c FROM Core_Integration_Outbound_Message__c WHERE Core_MessageType__c IN ('Account Integration','Contact Integration') AND Core_Status__c IN ('Pending','Successful') AND LastModifiedDate > :batchExecutionHours AND CreatedDate < :startOfToday]);
+        return Database.getQueryLocator([SELECT ID,Name,Core_Status__c,Core_MessageType__c,Core_Tags__c,CreatedDate,PRM_Account_Id__c FROM Core_Integration_Outbound_Message__c WHERE Core_MessageType__c IN ('Account Integration','Contact Integration') AND Core_Status__c IN ('Pending','Successful') AND LastModifiedDate > :batchExecutionHours AND CreatedDate < :startOfToday]);
     }
     global void execute(Database.BatchableContext bc,List<Core_Integration_Outbound_Message__c> scope) {
         List<Core_Integration_Outbound_Message__c> pendingList =new List<Core_Integration_Outbound_Message__c>();

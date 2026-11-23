@@ -9,11 +9,11 @@
         //alert('minhaj core_ipslandingpage');
         //console.log('minhaj', pageReference);
         var mode = pageReference.state.c__mode;
-        //console.log('mode of page', mode);
+        console.log('mode of page', mode);
         if(mode=='asset'){
             component.set("v.recTypeId", pageReference.state.c__recordTypeId); 
             component.set("v.retURL",'/lightning/r/Asset/'+pageReference.state.c__productId+'/view');
-           // console.log('minhaj asset inside assist mode of if');
+           //console.log('minhaj asset inside assist mode of if');
         }    
         else{
             //console.log('inside else of assist');
@@ -26,7 +26,7 @@
             const state = response.getState();
             //console.log('response of getcaserecordtypeids', response.getReturnValue());
             if (state === "SUCCESS") {
-                //console.log('checking state of getCaseRecordTypesIds');
+                console.log('checking state of getCaseRecordTypesIds');
                 rTypeIdNameMap = response.getReturnValue();
                 if(rTypeIdNameMap !== undefined && rTypeIdNameMap !== null  && ('IPS_Case_Create' === rTypeIdNameMap[pageReference.state.recordTypeId]  || 'Core_IPS_Case_Create_Self_Assigned' === rTypeIdNameMap[pageReference.state.recordTypeId]  || 'IPS_GEC_ReadOnly' === rTypeIdNameMap[pageReference.state.recordTypeId]  || 'IPS_Closed_Case' === rTypeIdNameMap[pageReference.state.recordTypeId]  )) {
                     component.set("v.recTypeName", rTypeIdNameMap[pageReference.state.recordTypeId]);
@@ -36,7 +36,7 @@
                 } 
                 else if(rTypeIdNameMap !== undefined && rTypeIdNameMap !== null  && mode=='asset' && ('IPS_Case_Create' === rTypeIdNameMap[pageReference.state.c__recordTypeId]  || 'Core_IPS_Case_Create_Self_Assigned' === rTypeIdNameMap[pageReference.state.c__recordTypeId] || 'IPS_GEC_ReadOnly' === rTypeIdNameMap[pageReference.state.recordTypeId]  || 'IPS_Closed_Case' === rTypeIdNameMap[pageReference.state.recordTypeId] )) {
                     component.set("v.recTypeName", rTypeIdNameMap[pageReference.state.c__recordTypeId]);
-                    //console.log('internalcase true11');
+                    console.log('internalcase true11');
                     component.set("v.InternalCaseCreate", true);
                 } else if(pageReference.state.recordTypeId == undefined){
                    // console.log('internalcase true22');

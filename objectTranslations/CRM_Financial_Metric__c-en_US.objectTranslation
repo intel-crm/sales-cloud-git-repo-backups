@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Financial Metric</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Financial Metrics</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Plan --></label>
+        <name>CRM_Account_Plan__c</name>
+        <relationshipLabel><!-- Financial Metrics --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Metric --></label>
+        <name>CRM_Metric__c</name>
+        <picklistValues>
+            <masterLabel>Cash &amp; Investments</masterLabel>
+            <translation><!-- Cash &amp; Investments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debt Long Term</masterLabel>
+            <translation><!-- Debt Long Term --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employees</masterLabel>
+            <translation><!-- Employees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gross Margin</masterLabel>
+            <translation><!-- Gross Margin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Market Cap</masterLabel>
+            <translation><!-- Market Cap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net Income</masterLabel>
+            <translation><!-- Net Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price/Earnings</masterLabel>
+            <translation><!-- Price/Earnings --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Revenue</masterLabel>
+            <translation><!-- Revenue --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>CRM_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Year --></label>
+        <name>CRM_Year__c</name>
+        <picklistValues>
+            <masterLabel>FY 2021</masterLabel>
+            <translation><!-- FY 2021 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FY 2022</masterLabel>
+            <translation><!-- FY 2022 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FY 2023</masterLabel>
+            <translation><!-- FY 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FY 2024</masterLabel>
+            <translation><!-- FY 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FY 2025</masterLabel>
+            <translation><!-- FY 2025 --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

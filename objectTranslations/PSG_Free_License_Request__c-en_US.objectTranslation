@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PSG Free License Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PSG Free License Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Host Id --></label>
+        <name>Host_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Computer Name --></label>
+        <name>Primary_Computer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- PSG Free License Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Requester Email --></label>
+        <name>Requester_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- # of Seats --></label>
+        <name>of_Seats__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,70 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "9971d79b-e9a0-4c7e-8858-fb85c66e16ef",
+  "label" : "Report Detail",
+  "regions" : [ {
+    "id" : "aac45158-10d9-418c-84d4-b66beaecd301",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:reportPage",
+      "id" : "8391a8ec-e097-46ab-b7a5-1b8bd0fe2afd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "9dbba979-462d-4578-ae18-0cab64a9e37e"
+      },
+      "renditions" : [ {
+        "id" : "9dbba979-462d-4578-ae18-0cab64a9e37e",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "a3e783b9-2ae6-4cf1-823e-4d72b609ffbd",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "ea63e96b-8a90-42ed-96fa-fd445350001b",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "cb545220-f02f-46a6-ac72-b0f2e987767a",
+      "renditionMap" : {
+        "zh_cn" : "e74535d6-b08e-44a8-8c67-2dac265a6237"
+      },
+      "renditions" : [ {
+        "id" : "e74535d6-b08e-44a8-8c67-2dac265a6237",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "customHeadTags" : "市场推广基金",
+            "description" : "市场推广基金",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "13e84e3b-c900-44b5-a665-6af359c15bca",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-00O"
+}

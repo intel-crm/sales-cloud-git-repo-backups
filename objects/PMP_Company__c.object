@@ -198,7 +198,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <fullName>PMP_Account_Application__c</fullName>
         <label>Application</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -268,7 +268,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <fullName>PMP_Account_Dsc__c</fullName>
         <label>Description</label>
         <length>131072</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Html</type>
         <visibleLines>25</visibleLines>
@@ -281,7 +281,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <relationshipLabel>Marketing Profile Information</relationshipLabel>
         <relationshipName>Company_Informations</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -290,7 +290,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>(Temporary Pick-list for partner&apos;s Industry till the Partner design and implementation gets closed.)</description>
         <label>Industry</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -466,7 +466,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>Contains Information about the Program Membership of the Partners</description>
         <label>Program Membership</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -540,6 +540,96 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
+                    <fullName>Specialty Partner</fullName>
+                    <default>false</default>
+                    <label>Specialty Partner</label>
+                </value>
+                <value>
+                    <fullName>Specialty Benefits</fullName>
+                    <default>false</default>
+                    <label>Specialty Benefits</label>
+                </value>
+                <value>
+                    <fullName>Enthusiast PC Specialist</fullName>
+                    <default>false</default>
+                    <label>Enthusiast PC Specialist</label>
+                </value>
+                <value>
+                    <fullName>Cloud Data Center Specialist</fullName>
+                    <default>false</default>
+                    <label>Cloud Data Center Specialist</label>
+                </value>
+                <value>
+                    <fullName>Artificial Intelligence Specialist</fullName>
+                    <default>false</default>
+                    <label>Artificial Intelligence Specialist</label>
+                </value>
+                <value>
+                    <fullName>Industrial Solutions Builder Specialist</fullName>
+                    <default>false</default>
+                    <label>Industrial Solutions Builder Specialist</label>
+                </value>
+                <value>
+                    <fullName>LOEM-ODM Partner Program</fullName>
+                    <default>false</default>
+                    <label>LOEM-ODM Partner Program</label>
+                </value>
+                <value>
+                    <fullName>High Performance Computing Specialist</fullName>
+                    <default>false</default>
+                    <label>High Performance Computing Specialist</label>
+                </value>
+                <value>
+                    <fullName>Visual Display Solutions Specialty</fullName>
+                    <default>false</default>
+                    <label>Visual Display Solutions Specialty</label>
+                </value>
+                <value>
+                    <fullName>Visual Display Solutions Specialist</fullName>
+                    <default>false</default>
+                    <label>Visual Display Solutions Specialist</label>
+                </value>
+                <value>
+                    <fullName>Device as a Service Specialist</fullName>
+                    <default>false</default>
+                    <label>Device as a Service Specialist</label>
+                </value>
+                <value>
+                    <fullName>Managed Services Specialist</fullName>
+                    <default>false</default>
+                    <label>Managed Services Specialist</label>
+                </value>
+                <value>
+                    <fullName>Optane Client Specialist</fullName>
+                    <default>false</default>
+                    <label>Intel® Optane™ Client Specialist</label>
+                </value>
+                <value>
+                    <fullName>Optane Data Center Specialist</fullName>
+                    <default>false</default>
+                    <label>Intel® Optane™ Data Center Specialist</label>
+                </value>
+                <value>
+                    <fullName>Optane Data Center Specialty</fullName>
+                    <default>false</default>
+                    <label>Intel® Optane™ Data Center Specialty</label>
+                </value>
+                <value>
+                    <fullName>Optane Client Specialty</fullName>
+                    <default>false</default>
+                    <label>Intel® Optane™ Client Speciality</label>
+                </value>
+                <value>
+                    <fullName>Optane Technology Specialty</fullName>
+                    <default>false</default>
+                    <label>Intel® Optane™ Technology Specialty</label>
+                </value>
+                <value>
+                    <fullName>Optane Technology Specialist</fullName>
+                    <default>false</default>
+                    <label>Intel® Optane™ Technology Specialist</label>
+                </value>
+                <value>
                     <fullName>None</fullName>
                     <default>false</default>
                     <label>None</label>
@@ -549,12 +639,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Artificial Intelligence</label>
-                </value>
-                <value>
-                    <fullName>Artificial Intelligence Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Artificial Intelligence Specialist</label>
                 </value>
                 <value>
                     <fullName>Artificial Intelligence Specialty</fullName>
@@ -569,34 +653,16 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <label>Cloud Data Center</label>
                 </value>
                 <value>
-                    <fullName>Cloud Data Center Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Cloud Data Center Specialist</label>
-                </value>
-                <value>
                     <fullName>Cloud Data Center Specialty</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Cloud Data Center Specialty</label>
                 </value>
                 <value>
-                    <fullName>Device as a Service Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Device as a Service Specialist</label>
-                </value>
-                <value>
                     <fullName>Enthusiast PC</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Enthusiast PC</label>
-                </value>
-                <value>
-                    <fullName>Enthusiast PC Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Enthusiast PC Specialist</label>
                 </value>
                 <value>
                     <fullName>Enthusiast PC Specialty</fullName>
@@ -623,22 +689,16 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <label>High Performance Computing Data Center Specialty</label>
                 </value>
                 <value>
-                    <fullName>High Performance Computing Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>High Performance Computing Specialist</label>
-                </value>
-                <value>
-                    <fullName>Industrial Solutions Builder Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Industrial Solutions Builder Specialist</label>
-                </value>
-                <value>
                     <fullName>Industrial Solutions Builder Specialty</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Industrial Solutions Builder Specialty</label>
+                </value>
+                <value>
+                    <fullName>Intel Optane Technology Specialty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Intel Optane Technology Specialty</label>
                 </value>
                 <value>
                     <fullName>Intel(R) Optane Client Specialist</fullName>
@@ -683,48 +743,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <label>Intel® LOEM and ODM Partners</label>
                 </value>
                 <value>
-                    <fullName>Optane Client Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Optane™ Client Specialist</label>
-                </value>
-                <value>
-                    <fullName>Optane Client Specialty</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Optane™ Client Speciality</label>
-                </value>
-                <value>
-                    <fullName>Optane Data Center Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Optane™ Data Center Specialist</label>
-                </value>
-                <value>
-                    <fullName>Optane Data Center Specialty</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Optane™ Data Center Specialty</label>
-                </value>
-                <value>
-                    <fullName>Intel Optane Technology Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Optane™ Technology Specialist</label>
-                </value>
-                <value>
-                    <fullName>Intel Optane Technology Specialty</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Optane™ Technology Specialty</label>
-                </value>
-                <value>
-                    <fullName>LOEM-ODM Partner Program</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>LOEM-ODM Partner Program</label>
-                </value>
-                <value>
                     <fullName>Machine Builder</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -735,12 +753,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Machine Builder Specialist</label>
-                </value>
-                <value>
-                    <fullName>Managed Services Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Managed Services Specialist</label>
                 </value>
                 <value>
                     <fullName>Networking Specialist</fullName>
@@ -761,18 +773,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <label>Retail Visual Solutions Specialty</label>
                 </value>
                 <value>
-                    <fullName>Specialty Benefits</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Specialty Benefits</label>
-                </value>
-                <value>
-                    <fullName>Specialty Partner</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Specialty Partner</label>
-                </value>
-                <value>
                     <fullName>Video</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -789,18 +789,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Video Specialty</label>
-                </value>
-                <value>
-                    <fullName>Visual Display Solutions Specialist</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Visual Display Solutions Specialist</label>
-                </value>
-                <value>
-                    <fullName>Visual Display Solutions Specialty</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Visual Display Solutions Specialty</label>
                 </value>
                 <value>
                     <fullName>Visual Retail</fullName>
@@ -931,7 +919,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <label>Tag Line</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -941,7 +929,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>Contain Information about the Web-Address of the Partner</description>
         <label>Website</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
@@ -987,12 +975,6 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <default>false</default>
                     <label>LLM_Knowledge</label>
                 </value>
-                <value>
-                    <fullName>Not Processed</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Not Processed</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -1015,7 +997,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <defaultValue>false</defaultValue>
         <description>Field used for benefit downgrade/removal scenario. This Inactive flag will make sure such records are only accessible by MP admins and not appearing in search</description>
         <label>MP Benefit Revoked?</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -1046,7 +1028,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <fullName>PMP_Company_Information_Language_Nm__c</fullName>
         <label>Input Language</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1076,7 +1058,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>Language Preference which the partner want&apos;s to be contacted in.</description>
         <label>Lead Generation Language Preference</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -1107,7 +1089,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>Status of Company Information before being shown in storefront</description>
         <label>Transaction Lifecycle Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1181,7 +1163,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <fullName>PMP_Company_Resource__c</fullName>
         <label>Company Resource</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1212,7 +1194,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <inlineHelpText>This field capture comments for approval</inlineHelpText>
         <label>Add Review Comments</label>
         <length>32768</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -1222,7 +1204,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>This is to store published status date of storefront</description>
         <label>Last Status Published Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -1230,7 +1212,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <fullName>PMP_Company_Status_Update_Dt__c</fullName>
         <label>Last Status Update Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -1241,7 +1223,19 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <label>PMP Data Load Identifier</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Data_Load_Identifier__c</fullName>
+        <description>To populate text required for data load activity</description>
+        <externalId>false</externalId>
+        <label>PMP Data Load Identifier</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1264,9 +1258,9 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <label>Data Center</label>
                 </value>
                 <value>
-                    <fullName>Internet of Things and Embedded</fullName>
+                    <fullName>Internet of Things</fullName>
                     <default>false</default>
-                    <label>Internet of Things and Embedded</label>
+                    <label>Internet of Things</label>
                 </value>
                 <value>
                     <fullName>Field Programmable Gate Array</fullName>
@@ -1290,10 +1284,28 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <label>Client CPUs and NUC</label>
                 </value>
                 <value>
+                    <fullName>Internet of Things and Embedded</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Internet of Things and Embedded</label>
+                </value>
+                <value>
                     <fullName>NAND Storage and Memory</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>NAND Storage and Memory</label>
+                </value>
+                <value>
+                    <fullName>Nand Storage &amp; Memory</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Nand Storage &amp; Memory</label>
+                </value>
+                <value>
+                    <fullName>Optane Storage &amp; Memory</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Optane Storage &amp; Memory</label>
                 </value>
                 <value>
                     <fullName>Optane Storage and Memory</fullName>
@@ -1316,7 +1328,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>Used to store distributor country values</description>
         <label>Distributor Country Coverage</label>
         <length>10000</length>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -1380,13 +1392,22 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>PMP_Do_Not_Contact_Enabled__c</fullName>
+        <description>Field returns false if the solution owner has marked &apos;Marketing - Do Not Contact&apos; as true in their contact, Otherwise returns true.</description>
+        <formula>IF( PMP_Partner_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c == false, true, false)</formula>
+        <label>Do Not Contact Enabled ?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PMP_Enhanced_Login_Users_Txt__c</fullName>
         <description>It stores user Ids for newly upgraded popup shown</description>
         <externalId>false</externalId>
         <label>Enhanced Login Users</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1399,7 +1420,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <referenceTo>User</referenceTo>
         <relationshipName>Company_Informations</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1410,7 +1431,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <label>IPA Badge Tier</label>
         <length>25</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1420,7 +1441,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>To store the date when the first time changes are submitted in Storefront.</description>
         <label>Initial Storefront Changes Submitted</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -1445,7 +1466,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <referenceTo>User</referenceTo>
         <relationshipName>Company_Informations1</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1476,7 +1497,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>Contains Information regarding the enabling of Lead Generation for a Partner</description>
         <label>Enable Lead Generation</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1501,7 +1522,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>Contains information if the lead generation is limited to intel partners</description>
         <label>Limit Lead Generation to Intel Partners</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1525,7 +1546,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <fullName>PMP_Is_Published_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Is Published</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -1534,7 +1555,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <defaultValue>false</defaultValue>
         <description>True if record is updated for the second time</description>
         <label>Is Updated</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -1542,7 +1563,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <fullName>PMP_Is_Working_Copy_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Is Working Copy</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -1551,7 +1572,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>This field will store last updated date of company details</description>
         <label>Last Updated Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -1605,7 +1626,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>Contain the Benefit assigned to the partner’s account</description>
         <label>Marketplace Partner Benefit Type</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -1637,7 +1658,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <label>City</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1649,7 +1670,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <label>Country</label>
         <length>100</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1659,7 +1680,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <defaultValue>false</defaultValue>
         <description>UI field for Inactivating the MP profile/storefront for MP Admins. This will take care of scenario where MP Benefit exists at OPID level, but for any reason we don’t want to display the Partner. This Inactive flag will make sure such records are only accessible by MP admins and not appearing in search. MP Admins can activate later if needed and that should set the Account back to its earlier state as is.</description>
         <label>Marketplace Partner Inactive</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -1700,7 +1721,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <label>Primary Street</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1709,7 +1730,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <fullName>PMP_Partner_Program_nm__c</fullName>
         <label>Partner Program</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -1750,14 +1771,19 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
                     <default>false</default>
                     <label>Additional Partners</label>
                 </value>
-                <value>
-                    <fullName>Distributor</fullName>
-                    <default>false</default>
-                    <label>Distributor</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PMP_Partner_Role__c</fullName>
+        <description>To Store Account Partner Role Field Value</description>
+        <formula>IF(INCLUDES( PMP_Account_Id__r.Core_IPA_Partner_Role__c, &apos;Distributor&apos;), True, False)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Partner Role</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PMP_Partner_Secondary_Street_Txt__c</fullName>
@@ -1766,7 +1792,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <label>Secondary Street</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1776,7 +1802,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <description>This field holds the partner segment value.</description>
         <label>Partner Segment</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -1820,12 +1846,12 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
     </fields>
     <fields>
         <fullName>PMP_Partner_State_Txt__c</fullName>
-        <description>Used to store Partner&apos;s State Details</description>
+        <description>Used to store Partner&apos;s State Detail</description>
         <externalId>false</externalId>
         <label>State/province</label>
         <length>100</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1838,7 +1864,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <referenceTo>User</referenceTo>
         <relationshipName>Marketing_Profile_Informations</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1849,7 +1875,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <label>Zipcode</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -1861,7 +1887,7 @@ IF(NOT(ISBLANK(PMP_Partner_Country_Txt__c)),             PMP_Partner_Country_Txt
         <referenceTo>PMP_Company__c</referenceTo>
         <relationshipName>Company_Informations1</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1918,7 +1944,7 @@ $Label.PMP_PartnerURL &amp; PMP_Published_Copy_Id__c,
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -1957,7 +1983,7 @@ $Label.PMP_PartnerURL &amp; PMP_Published_Copy_Id__c,
         <fullName>PMP_Translated_Languages__c</fullName>
         <label>Language Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <valueSet>
@@ -1987,7 +2013,7 @@ $Label.PMP_PartnerURL &amp; PMP_Published_Copy_Id__c,
         <fullName>PMP_Translation_Lifecycle_Status_nm__c</fullName>
         <label>Translation Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -2022,11 +2048,11 @@ $Label.PMP_PartnerURL &amp; PMP_Published_Copy_Id__c,
         <description>Checking for translated languages and highlighting the translated ones.</description>
         <externalId>false</externalId>
         <formula>IF(AND(($Profile.Name=&quot;Partner&quot;), NOT(ISPICKVAL( PMP_Company_Lifecycle_Status_Nm__c, &quot;Approved&quot;))), &quot;ENG, CHN, JPN&quot;,
-(IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;English&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?language=en_US&quot;, &quot;ENG&quot;) , &quot;ENG&quot;)
+(IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;English&quot;), HYPERLINK(&quot;/imp/&quot;&amp; Id &amp;&quot;?language=en_US&quot;, &quot;ENG&quot;) , &quot;ENG&quot;)
 &amp; &quot;, &quot; &amp;
-IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;Simplified Chinese&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?language=zh_CN&quot;, &quot;CHN&quot;) , &quot;CHN&quot;)
+IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;Simplified Chinese&quot;), HYPERLINK(&quot;/imp/&quot;&amp; Id &amp;&quot;?language=zh_CN&quot;, &quot;CHN&quot;) , &quot;CHN&quot;)
 &amp; &quot;, &quot; &amp;
-IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;Japanese&quot;), HYPERLINK(&quot;/&quot;&amp; Id &amp;&quot;?language=JA&quot;, &quot;JPN&quot;) , &quot;JPN&quot;)))</formula>
+IF (INCLUDES(PMP_Translated_Languages_Txt__c , &quot;Japanese&quot;), HYPERLINK(&quot;/imp/&quot;&amp; Id &amp;&quot;?language=JA&quot;, &quot;JPN&quot;) , &quot;JPN&quot;)))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>View Partners</label>
         <required>false</required>
@@ -2098,22 +2124,42 @@ CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
         <referenceTo>PMP_Company__c</referenceTo>
         <relationshipName>Company_Informations</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
+    <fields>
+        <fullName>PMP_isEmailDelivered__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>isEmailDelivered</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PMP_retriggerCount__c</fullName>
+        <externalId>false</externalId>
+        <label>retriggerCount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
     <label>Marketing Profile Information</label>
     <listViews>
-        <fullName>Admin_Review_Queue</fullName>
+        <fullName>Admin_Review_Queues</fullName>
         <columns>NAME</columns>
         <columns>PMP_Company_Lifecycle_Status_Nm__c</columns>
         <columns>PMP_Intel_Admin_Nm__c</columns>
         <columns>PMP_View_Partners_Txt__c</columns>
         <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>CREATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
+        <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PMP_Is_Working_Copy_Ind__c</field>
@@ -2147,7 +2193,7 @@ CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
         <columns>PMP_Company_Information_Language_Nm__c</columns>
         <columns>PMP_Account_Address_Txt__c</columns>
         <columns>PMP_View_Partners_Txt__c</columns>
-        <columns>PMP_Company_Status_Published_Date_Dt__c</columns>
+        <columns>PMP_Translation_Lifecycle_Status_nm__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PMP_Is_Working_Copy_Ind__c</field>
@@ -2202,10 +2248,10 @@ CASE(MOD(PMP_Company_Status_Update_Dt__c-DATE(1900,1,7),7),
     <searchLayouts>
         <excludedStandardButtons>OpenListInQuip</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
-        <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>

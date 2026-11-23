@@ -4,7 +4,7 @@
     <label>Azure Data Factory</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6rEX7wVdAJgqvHmyciCtwhZ0ykqxfiSwMGXoC.u6zCMHTpk.zkW3_42YvAyk</consumerKey>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDhAcNBzmkY5zoED84_Ego_uWEFCDSFLRO_bRwe9sbAdsrdAJWsbmBVRYL3v2</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>true</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -22,7 +22,6 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>coreintegration-user@intel.com.crm</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
     </oauthConfig>

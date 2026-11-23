@@ -24,10 +24,15 @@ public without sharing class Core_ACM_Constants {
     public static final String CHANGE_AGENT = 'SalesCloud';
     public static final String CHANGE_AGENT_LOGIN_ID = 'MAD\\testuser';
 
-    // Message types
     public static final String MESSAGE_TYPE_ERPM = 'ERPM Contact Entitlement';
     public static final String MESSAGE_TYPE_BLACKBOX = 'Blackbox';
     public static final String SOURCE_ERPM = 'ERPM';
+    public static final String SOURCE_ERPM_SET_PROFILES='ERPM_SET_PROFILES';
+    //Ganesh Changes
+	public static final String SOURCE_AGS = 'AGS';
+	public static final String MESSAGE_TYPE_AGS = 'Role 2.0';
+	//Ganesh Changes End
+
 
     public enum EngagementStatus {
         APPROVED,

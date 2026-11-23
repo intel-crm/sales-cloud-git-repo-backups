@@ -60,6 +60,16 @@
     </steps>
     <variables>
         <collection>false</collection>
+        <dataType>Boolean</dataType>
+        <input>true</input>
+        <lookupName>Pricing_Route_Rules_ASMO_EMEA_CCG_Retail</lookupName>
+        <lookupType>DecisionTable</lookupType>
+        <name>Pricing_Change_Request_Ind__c</name>
+        <output>false</output>
+        <type>Variable</type>
+    </variables>
+    <variables>
+        <collection>false</collection>
         <dataType>Text</dataType>
         <input>true</input>
         <lookupName>Pricing_Route_Rules_ASMO_EMEA_CCG_Retail</lookupName>

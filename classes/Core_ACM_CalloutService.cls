@@ -36,7 +36,12 @@ public without sharing class Core_ACM_CalloutService {
             );
             HttpResponse httpResponse = restClient.invokeAPI();
             responseBody = httpResponse.getBody();
-            System.debug('@@Response Body: ' + responseBody);
+            Integer statusCode = httpResponse.getStatusCode();
+            System.debug('Response Status Code: ' + statusCode);
+            System.debug('Response Body: ' + responseBody);
+            if (statusCode < 200 || statusCode >= 300) {
+                throw new CalloutException('API call failed with status Failure: ' + responseBody);
+            }
         }catch (Exception e) {
             UCD_ACM_Logger.error(Core_ACM_Constants.CLASS_BATCH_PROCESSOR, 'executeAPICall',
                 'Callout error for queue record ' + queueRecord.Id + ': ' + e.getMessage() + '. StackTrace: ' + e.getStackTraceString(), queueRecord.Id);
@@ -56,8 +61,8 @@ public without sharing class Core_ACM_CalloutService {
             return new RequestConfig(
                 configRecord.Endpoint__c,
                 configRecord.Http_Method__c,
-                configRecord.Timeout_Ms__c == null ? 30000 : configRecord.Timeout_Ms__c.intValue(),
-                String.isBlank(configRecord.Content_Type__c) ? 'application/json' : configRecord.Content_Type__c
+                configRecord.Timeout_Ms__c == null ? Core_ACM_Constants.API_TIMEOUT : configRecord.Timeout_Ms__c.intValue(),
+                String.isBlank(configRecord.Content_Type__c) ? Core_ACM_Constants.API_CONTENT_TYPE : configRecord.Content_Type__c
             );
         }
         throw new CalloutException('No callout configuration found for integration: ' + integrationName);

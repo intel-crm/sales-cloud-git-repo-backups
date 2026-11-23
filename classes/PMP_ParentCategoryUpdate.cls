@@ -40,9 +40,8 @@ public with sharing class PMP_ParentCategoryUpdate
                         String key = (cat.PMP_Partner_Product_Parent_Category_Cd__c).toLowerCase();
                         cat.PMP_Parent_Category_Id__c= mapParentCategory.get(key);
                         updateCatList.add(cat);
-                        // System.debug(updateCatList);
                     }
-                    else
+                    else 
                     {
                         cat.PMP_Parent_Category_Id__c = null;
                         updateCatList.add(cat); //Setting the parent category to null for all the inactive categories 

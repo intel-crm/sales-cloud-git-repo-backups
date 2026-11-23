@@ -1,0 +1,39 @@
+<apex:component access="global" controller="PMP_SendTranslationExceptionEmail">
+    <html>
+        <head>
+            <style>
+                table, th {
+                  border: 1px solid black;
+                }
+            </style>
+        </head>
+        <body>  
+            
+            <p>Hi Team</p>
+            <p>This is to inform that an Exception has been ocurred during Translation Process.</p>
+            <p>The Offerings are stuck in Translation Queue.</p>
+            <p>The job has been terminated by the GLS System due to data issue for below data: </p>
+             <table width="75%">
+                <tr>
+                    <th>Outbound Message Id</th>
+                    <th>Exception</th>
+                </tr>
+               
+                
+                <apex:repeat var="cx" value="{!tableData}">
+
+                
+                    <tr>
+                 
+                        <th>{!cx.id}</th>
+                        <th>{!cx.Core_Exception_Message__c}</th>
+                    </tr>
+                  </apex:repeat>
+            </table> 
+            
+            
+            
+            <p>Thank You</p>
+        </body>
+    </html>
+</apex:component>

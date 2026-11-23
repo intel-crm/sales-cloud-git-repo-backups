@@ -11,7 +11,7 @@
         <nameSegment>Core_Integration_Outbound_Message__c.Core_IntegrationERPMOutboundMsg</nameSegment>
         <offset>0</offset>
     </actionCalls>
-    <apiVersion>62.0</apiVersion>
+    <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Core_IntegrationERPMOutboundMsgV2 {!$Flow.CurrentDateTime}</interviewLabel>

@@ -56,6 +56,14 @@ global class Core_IPS_MoveContactWithCases_Batch implements Database.Batchable<s
     }    
     
     global void finish(Database.BatchableContext bc){
+		// currContact.AccountId =  targetAccountObj.Id;
+        // currContact.Core_ERPM_Integration_Status__c = 'PENDING';
+        // currContact.Core_Account_Changeable__c= true;
+        // Core_Contact_AccountChange_Handler.IS_CHANGE_ACCOUNT = true;
+        // Core_ContactHandler.isCommunityUpdated = true;
+        // update currContact;
+        //System.enqueueJob(new UCD_ACM_UpdateContactQueueable(currContact, targetAccountObj.Id));
+
         String htmlBody= 'Hi '+ UserInfo.getFirstName() +'<br /><br/>The Change Account on Contact Batch for contact Name: ' + currContact.Name + ' to Account Name: ' +targetAccountObj.Name + ' ';
         emailSubject += ' for Contact : ' +  currContact.Name;
         List<Core_IPS_Account_Change_Status__c> accChangeStsLst = [SELECT Id, Core_IPS_Contact__c, Core_IPS_Status__c FROM Core_IPS_Account_Change_Status__c WHERE Core_IPS_Contact__c = :currContact.Id LIMIT 1];
@@ -96,6 +104,7 @@ global class Core_IPS_MoveContactWithCases_Batch implements Database.Batchable<s
     }
     
     public void sendEmailToUser(String htmlBody, String subject,Id usrId, List<Messaging.EmailFileAttachment> attachmentLst) {
+        System.debug('send email insert');
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         mail.setSubject(subject);
         mail.setTargetObjectId(usrId);
@@ -104,9 +113,7 @@ global class Core_IPS_MoveContactWithCases_Batch implements Database.Batchable<s
         if(attachmentLst!= null && !attachmentLst.isEmpty()) {
             mail.setFileAttachments(attachmentLst);    
         }
-        if(!Test.isRunningTest()) {
         mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
         Messaging.sendEmail(new Messaging.Email[] { mail });
-        }
     }
 }

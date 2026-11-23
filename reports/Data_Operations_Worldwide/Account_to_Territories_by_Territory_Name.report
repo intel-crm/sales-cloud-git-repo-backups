@@ -16,9 +16,6 @@
         <field>Account$Name</field>
     </columns>
     <columns>
-        <field>Account$Owner</field>
-    </columns>
-    <columns>
         <field>Account$Core_Geo__c</field>
     </columns>
     <columns>

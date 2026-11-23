@@ -36,5 +36,7 @@ export default class PCC_ApprovalPageMessage extends LightningElement {
             this.error = error;
 
         }
-    }    
+    }
+
+    
         }

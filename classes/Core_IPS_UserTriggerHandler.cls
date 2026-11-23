@@ -300,7 +300,7 @@ Modification Log :
                         if (string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){//RK add
                             objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email, MailingCountry='USA');//Tejaswini: Added MailingCountry='USA'to consider MailingCountry validation rule
                             //AccountID: 0013F0000052PUp
-                            //Profile ID:  00eo0000000f7GOAAY
+                            //Profile ID:  00eo0000000f7GOAAY changed to 00eo00000013vj6
                         }else if(string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_Partner_AE_Profile_Id)){//RK add
                             objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_Partner_Agent_Holding_Account ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);//RK Changes
                             //AccountID: 0014F000004C9FOQA0
@@ -444,8 +444,8 @@ Modification Log :
                 if(mapProfileIdGroupId.containsKey(user.ProfileId) ){
                     Id groupId = mapProfileIdGroupId.get(user.ProfileId);
                 
-                    if (groupId != null) {// User has a ProfileId that has a matching groupId
-                        /*added by Tejaswini for Employee as Customer profil migration to Partner */
+                    if (groupId != null) // User has a ProfileId that has a matching groupId
+                         /*added by Tejaswini for Employee as Customer profil migration to Partner */
                        if(user.Email!=null && user.Email.Contains('@intel.com') && string.valueof(user.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){
                            mapUserIdGroupId.put(user.Id, Label.Core_IPS_Employee_As_Customer_PG_Id);
                         } else {
@@ -453,7 +453,7 @@ Modification Log :
                         }
                     	/*End of code by Tejaswini */ 
 
-                    }
+                     //   mapUserIdGroupId.put(user.Id, groupId);
                 }
                 
             }

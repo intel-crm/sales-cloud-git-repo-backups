@@ -44,6 +44,10 @@
                 <behavior>Edit</behavior>
                 <field>EndDate</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_PSG_Stage__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -182,8 +186,6 @@
         <fields>SBQQ__OrderedQuantity__c</fields>
         <fields>SBQQ__QuotedQuantity__c</fields>
         <fields>SBQQ__QuoteLine__c</fields>
-        <fields>SBQQ__RevisedOrderProduct__c</fields>
-        <fields>SBQQ__ContractAction__c</fields>
         <relatedList>RelatedOrderItemList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -240,7 +242,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h5000000V0Hw6</masterLabel>
+        <masterLabel>00h2D000000kBVZ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

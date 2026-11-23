@@ -217,9 +217,9 @@ public class Core_MDF_PaymentServiceHandler_Test {
             Database.insert(erpmEngagementList);
             
             List<Core_Entitlement__c> entitlementList = new List<Core_Entitlement__c>();
-            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Support','CCF User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF = Core_MDF_CCP_TestDataUtility.createEntitlement('Client User',agsRoleCCF.Id ,'Consolidated Co-marketing Platform','CCF User',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
             entitlementList.add(entitlementCCF);
-            Core_Entitlement__c entitlementCCF_ABA= Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator',agsRoleCCF_ABA.Id ,'Support','CCF Account Budget Administrator',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
+            Core_Entitlement__c entitlementCCF_ABA= Core_MDF_CCP_TestDataUtility.createEntitlement('Client Account Budget Administrator',agsRoleCCF_ABA.Id ,'Consolidated Co-marketing Platform','CCF Account Budget Administrator',erpmEngagementCCF.Id , true,Core_MDF_CCP_ConstantClass.CCF_PROGRAM,false);
             entitlementList.add(entitlementCCF_ABA);
             Database.insert(entitlementList);
             

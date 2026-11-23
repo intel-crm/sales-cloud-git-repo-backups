@@ -91,7 +91,7 @@
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
             <columnToColumn>false</columnToColumn>
@@ -119,13 +119,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Not Applicable</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Develop,Design,Design Win</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

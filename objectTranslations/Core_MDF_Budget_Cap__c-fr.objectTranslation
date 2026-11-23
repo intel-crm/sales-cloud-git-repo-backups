@@ -145,6 +145,14 @@
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage><!-- Budget Type cannot be changed. --></errorMessage>
+        <name>Core_MDF_BudgetTypeCap_cannotbeEdited</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type Caps can&apos;t be Inactive during creation --></errorMessage>
+        <name>Core_MDF_BudgetTypeCaps_ActiveValidation</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Budget cap can’t be created on Rejected budget --></errorMessage>
         <name>Core_MDF_CheckBudgetStatusEqualsRejected</name>
     </validationRules>
@@ -179,6 +187,22 @@
     <validationRules>
         <errorMessage><!-- Requested Cap Amount is mandatory --></errorMessage>
         <name>Core_MDF_IPA_Mandatory_ReqCapAmt</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective Start Date is mandatory --></errorMessage>
+        <name>Core_MDF_MandatoryEffectiveStartDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Budget Type is mandatory --></errorMessage>
+        <name>Core_MDF_Mandatory_BudgetType</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Effective End Date is mandatory --></errorMessage>
+        <name>Core_MDF_Mandatory_EffectiveEndDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Requested Cap Amount is mandatory --></errorMessage>
+        <name>Core_MDF_Mandatory_ReqCapAmt</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- The revised Requested Cap Amount cannot be lesser than Claimed Cap Amount. --></errorMessage>

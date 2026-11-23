@@ -69,11 +69,11 @@ div.WordSection1
 </head>
 <body lang="EN-US" link="blue" vlink="purple" style='tab-interval: .5in'>
 <div class="WordSection1">
-<table class="MsoNormalTable" border="1" cellpadding="0" width="720" style="width: 8.5in; mso-cellspacing: 1.5pt; background: white; border: solid #E5E5E5 1.0pt; mso-border-alt: solid #E5E5E5 .75pt; mso-yfti-tbllook: 1184; mso-padding-alt: 10.5pt 5.4pt 0in 5.4pt;">
+<table class="MsoNormalTable" border="1" cellpadding="0" width="720" style="width: 7.5in; mso-cellspacing: 1.5pt; background: white; border: solid #E5E5E5 1.0pt; mso-border-alt: solid #E5E5E5 .75pt; mso-yfti-tbllook: 1184; mso-padding-alt: 10.5pt 5.4pt 0in 5.4pt;">
 <tbody>
 <tr style="height: 38px;">
 <td style="border: none; padding: 9pt 0.75pt 3.75pt 35.25pt; height: 38px;">
-<p class="MsoNormal"><span style="font-size: 24.0pt; font-family: 'Tahoma','sans-serif'; color: #086db6;"> INTEL® ON DEMAND WEB SERVICES</span></p>
+<p class="MsoNormal"><span style="font-size: 24.0pt; font-family: 'Tahoma','sans-serif'; color: #086db6;"> Verify your e-mail </span></p>
 </td>
 </tr>
 <tr style="height: 16px;">
@@ -81,32 +81,52 @@ div.WordSection1
 <div class="MsoNormal" align="center" style="text-align: center; line-height: 15.0pt;"><hr size="1" width="100%" noshade="noshade" style="color: #e5e5e5;" align="center" /></div>
 </td>
 </tr>
+<tr style="height: 20px;">
+<td style="border: none; padding: 10.5pt 0.75pt 0.75pt 33pt; height: 20px;" id="emailMainDiv">
+<p class="MsoNormal" style="line-height: 15.0pt;"><b style="mso-bidi-font-weight: normal;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Action Required </span></b></p>
+</td>
+</tr>
 <tr style="height: 75px;">
 <td style="border: none; padding: 10.5pt 45pt 0.75pt 33pt; height: 75px;">
-
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:115%;font-size:16px;font-family:"Aptos",sans-serif;'><strong><span style="color:#4C94D8;">Access granted, Welcome to the Intel© On Demand web services revenue environment!</span></strong></p>
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Dear <span style="color:#4C94D8;"> {!Contact.Name},</span></p>
-</br>
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">This notice is to inform you that you have been granted access to Intel® On Demand web services revenue environment (LIV). Use your login credentials listed below to log into the<a href="https://api-portal.intelondemand.intel.com/"> Intel® On Demand API Portal.</a></p>
-</br>
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;"><strong>E-mail Address: <span style="color:#4C94D8;">{!Contact.Email}</span></strong></p>
-<ul style="font-family: 'Tahoma','sans-serif'; color: #666666; list-style-type: disc;">
-    <li>Retain this email for future reference.</li>
-    <li>Your use of Intel&rsquo;s websites are governed by Intel&rsquo;s Terms of Use linked from the bottom of each respective site&rsquo;s web pages.</li>
-    <li>If you have questions, did not request this update, or feel you have received this email in error, please <span style="color:red;"><a href="http://www.intel.com/p/en_US/support" >contact us.</a></span></li>
-    <li>To manage your profile, including available marketing subscriptions, please visit <a href="https://consumer.intel.com/intelcorpb2c.onmicrosoft.com/B2C_1A_UnifiedLogin_SISU_CML_SAML/generic/login?entityId=www.intel.com&ui_locales=en">My Intel</a>.</li>
-</ul>
-
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Sincerely,</p>
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Registration Administrator</p>
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Intel&copy; On Demand Team</p>
-
-</td></tr>
-
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">This notice is to inform you that a profile has been created for you by an Intel Representative because of your interest in </span><span style="font-family: 'Tahoma','sans-serif'; color: #0070c0;"> Intel® On Demand - Revenue API.</span></p>
+<br />
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Please retain this e-mail for future reference. </span></p>
+</td>
+</tr>
+<tr style="height: 20.3333px;">
+<td style="border: none; padding: 10.5pt 45pt 0.75pt 33pt; height: 20.3333px;">
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;"><b style="mso-bidi-font-weight: normal;">E-mail Address:</b> </span><span style="font-family: 'Tahoma','sans-serif'; color: #0070c0;">{!Contact.Email}</span></p>
+</td>
+</tr>
+<tr style="height: 20px;">
+<td style="border: none; padding: 10.5pt 0.75pt 0.75pt 33pt; height: 20px;">
+<p class="MsoNormal" style="line-height: 15.0pt;"><b style="mso-bidi-font-weight: normal;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">What you need to do </span></b></p>
+</td>
+</tr>
+<tr style="height: 41px;">
+<td style="border: none; padding: 10.5pt 45pt 0.75pt 33pt; height: 41px;">
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;"><span style="font-family: Tahoma, 'sans-serif';">Please<span> </span><span data-scheme-color="@666666,," data-usefontface="true" data-contrast="none" class="TextRun  BCX0 SCXP82704730" xml:lang="EN-US" lang="EN-US"><span class="NormalTextRun  BCX0 SCXP82704730">follow this <span style="color: #0070c0;"><a href="https://api-portal.intelondemand.intel.com/" style="color: #0070c0;">link</a></span> to complete your account set up</span></span><span data-scheme-color="@666666,," data-usefontface="true" data-contrast="none" class="TextRun  BCX0 SCXP82704730" xml:lang="EN-US" lang="EN-US"><span class="NormalTextRun  BCX0 SCXP82704730"> or<span> </span></span></span><span data-scheme-color="@666666,," data-usefontface="true" data-contrast="none" class="TextRun  BCX0 SCXP82704730" xml:lang="EN-US" lang="EN-US"><span class="NormalTextRun  BCX0 SCXP82704730">copy the URL into your browser</span></span></span>.<br /> <!-- <a href="!%ActivationURL%!"><span style='text-decoration: none; text-underline: none'>
+                                    !%ActivationURL%!</span></a> --> </span></p>
+</td>
+</tr>
+<tr style="height: 62px;">
+<td style="border: none; padding: 10.5pt 45pt 0.75pt 33pt; height: 62px;">
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Your <span data-scheme-color="@666666,," data-usefontface="true" data-contrast="none" class="TextRun  BCX0 SCXP219678066" xml:lang="EN-US" lang="EN-US"><span class="NormalTextRun  BCX0 SCXP219678066">use of Intel's websites are governed by Intel's Terms and Conditions of Use<span> </span></span></span><span data-scheme-color="@666666,," data-usefontface="true" data-contrast="none" class="TextRun  BCX0 SCXP219678066" xml:lang="EN-US" lang="EN-US"><span class="NormalTextRun  BCX0 SCXP219678066">linked from the bottom of each respective</span></span> site's web pages. </span></p>
+</td>
+</tr>
+<tr style="height: 20px;">
+<td style="border: none; padding: 10.5pt 45pt 0.75pt 33pt; height: 20px;">
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">If you feel you have received this e-mail in error, please contact us <span style="color: #0070c0;"><a href="http://www.intel.com/p/en_US/support" style="color: #0070c0;"> here</a></span>.</span></p>
+</td>
+</tr>
+<tr style="height: 20px;">
+<td style="border: none; padding: 10.5pt 45pt 0.75pt 33pt; height: 20px;">
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;">Visit this <span style="color: #0070c0;"><a href="https://www-ssl.intel.com/content/www/us/en/secure/profile/myprofile.html" style="color: #0070c0;"> link</a> </span>any time to manage your profile.</span></p>
+</td>
 </tr>
 <tr style="height: 41px;">
 <td style="border: none; padding: 10.5pt 0.75pt 0.75pt 33pt; height: 41px;">
-<p class="MsoNormal" style="line-height: 15.0pt;"><b style="mso-bidi-font-weight: normal;"><span style="font-family: 'Tahoma','sans-serif'; color: #62686e;"><i>Please DO NOT reply to this e-mail message. This is an automated response.<br /> To ensure that you continue receiving our e-mails, please add us to your address book. </i></span></p>
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #62686e;">Please DO NOT reply to this e-mail message. This is an automated response.<br /> To ensure that you continue receiving our e-mails, please add us to your address book. </span></p>
 </td>
 </tr>
 <tr style="height: 16px;">
@@ -114,7 +134,7 @@ div.WordSection1
 <div class="MsoNormal" align="center" style="text-align: center; line-height: 15.0pt;"><hr size="1" width="100%" noshade="noshade" style="color: #e5e5e5;" align="center" /></div>
 </td>
 </tr>
-<tr >
+<tr>
 <tr>
 <td style="border: none; text-align: right;"><footer><span style="font-family: 'intel clear', sans-serif;"> <img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png"   height="42" width="64" /></span>
 </tr>
@@ -124,7 +144,7 @@ div.WordSection1
 </tr>
 <tr style="height: 62px;">
 <td style="border: none; padding: 10.5pt 0.75pt 10.5pt 33pt; height: 62px;">
-<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;"><span style="color: #0070c0;"><a href="http://www.intel.com/content/www/us/en/legal/terms-of-use.html?iid=ftr%20terms" style="color: #0070c0;"> <span style="text-decoration: none; text-underline: none;">Legal Information</span></a> | <a href="http://www.intel.com/sites/corporate/tradmarx.htm" style="color: #0070c0;"><span style="text-decoration: none; text-underline: none;">Trademarks</span></a></span> © Intel Corporation. All rights reserved.<br /> *Other names and brands may be claimed as the property of others.<br /> **Intel is not responsible for content of sites outside our intranet sites. </span></p>
+<p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;"><span style="color: #0070c0;"><a href="http://www.intel.com/content/www/us/en/legal/terms-of-use.html?iid=ftr%20terms" style="color: #0070c0;"> <span style="text-decoration: none; text-underline: none;">Legal Information</span></a> | <a href="http://www.intel.com/sites/corporate/tradmarx.htm" style="color: #0070c0;"><span style="text-decoration: none; text-underline: none;">Trademarks</span></a></span> © Intel Corporation. All rights reserved.<br /> *Other names and brands may be claimed as the property of others.<br /> **Intel is not responsible for content of sites outside our intranet. </span></p>
 </td>
 </tr>
 </tbody>

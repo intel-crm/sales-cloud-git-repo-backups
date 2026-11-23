@@ -111,12 +111,6 @@
                     <label>I can&apos;t see/find the product for Add Seats</label>
                 </value>
                 <value>
-                    <fullName>I can&apos;t update License User</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>I can&apos;t update License User</label>
-                </value>
-                <value>
                     <fullName>I need to merge licenses/seats</fullName>
                     <default>false</default>
                     <isActive>false</isActive>

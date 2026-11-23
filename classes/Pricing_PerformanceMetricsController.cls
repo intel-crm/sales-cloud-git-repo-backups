@@ -21,11 +21,13 @@ public without sharing class Pricing_PerformanceMetricsController {
                 }
                 if(!perfMetricsToUpdate.isEmpty())
                 {
-                    update perfMetricsToUpdate;
+                    //update perfMetricsToUpdate
+                    Pricing_DatabaseOperation.performUpdate(perfMetricsToUpdate,true,false);
                 }
                 if(!perfMetricsToInsert.isEmpty())
                 {
-                    insert perfMetricsToInsert;
+                    //insert perfMetricsToInsert;
+                    Pricing_DatabaseOperation.performInsert(perfMetricsToInsert,true,false);
                 }
                 return true;
             }else{
@@ -170,7 +172,8 @@ public without sharing class Pricing_PerformanceMetricsController {
             List<Pricing_Performance_Metric__c> data = new List<Pricing_Performance_Metric__c>();
             data= [Select Id FROM Pricing_Performance_Metric__c where Id =:recordId];
             if(data.size() > 0){
-                delete data;
+                //delete data;
+                Pricing_DatabaseOperation.performDelete(data,true,false);
             }  
         }
         catch(Exception e){

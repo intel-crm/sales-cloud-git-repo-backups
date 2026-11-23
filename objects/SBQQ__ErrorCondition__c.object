@@ -363,6 +363,26 @@
                     <label>Unit Price</label>
                 </value>
                 <value>
+                    <fullName>PSG_Suggested_Resale_Amt__c</fullName>
+                    <default>false</default>
+                    <label>PSG_Suggested_Resale_Amt__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_opn__c</fullName>
+                    <default>false</default>
+                    <label>core_cpq_opn__c</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_PSG_Restricted_Product__c</fullName>
+                    <default>false</default>
+                    <label>PSG Restricted Product</label>
+                </value>
+                <value>
+                    <fullName>core_cpq_PSG_Restricted_Product_Check__c</fullName>
+                    <default>false</default>
+                    <label>PSG Restricted Product Check</label>
+                </value>
+                <value>
                     <fullName>SBQQ__ProductName__c</fullName>
                     <default>false</default>
                     <label>SBQQ__ProductName__c</label>
@@ -379,7 +399,23 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Quote</controllingFieldValue>
+                <valueName>core_cpq_PSG_Restricted_Product_Check__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote</controllingFieldValue>
                 <valueName>Pricing_Quote_Program_Nm__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote Line</controllingFieldValue>
+                <valueName>PSG_Suggested_Resale_Amt__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote Line</controllingFieldValue>
+                <valueName>core_cpq_opn__c</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Quote Line</controllingFieldValue>
+                <valueName>core_cpq_PSG_Restricted_Product__c</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Product Option</controllingFieldValue>

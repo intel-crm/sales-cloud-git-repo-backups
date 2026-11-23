@@ -14,7 +14,15 @@
                 <booleanValue>true</booleanValue>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
     </assignments>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>Enable Marketing User Checkbox for User {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Enable Marketing User Checkbox for User</label>

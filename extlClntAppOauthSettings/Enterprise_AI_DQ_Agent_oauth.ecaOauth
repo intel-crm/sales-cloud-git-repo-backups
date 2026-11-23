@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <commaSeparatedOauthScopes>Api</commaSeparatedOauthScopes>
+    <externalClientApplication>Enterprise_AI_DQ_Agent</externalClientApplication>
+    <isFirstPartyAppEnabled>false</isFirstPartyAppEnabled>
+    <label>Enterprise_AI_DQ_Agent_oauth</label>
+    <oauthLink>00D2i0000008d6j:888TH000001CbMb</oauthLink>
+</ExtlClntAppOauthSettings>

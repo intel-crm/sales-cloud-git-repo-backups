@@ -16,7 +16,7 @@ public without sharing class Core_UtilityControllerTest{
         // Create common test user
         User poeUser= PMP_TestDataUtility.createUser(True);
         poeUser.Alias = ALIAS_NAME;
-      //  update poeUser;
+        update poeUser;
 
         User usr = [select Id, Core_IPA_One_Partner_Id__c, name, AccountID from User where Id=:poeUser.id limit 1];
        system.debug('usr:'+usr);

@@ -37,7 +37,7 @@ public class Pricing_PriceComparisionController_Test {
     }
     
     static testMethod void testgetQuoteLineDataforComparision(){
-        String searchText;
+        //SBQQ__Quote__c quote = [SELECT Id from SBQQ__Quote__c LIMIT 1];
         List<SBQQ__QuoteLine__c> quoteLineList =  [SELECT Id,Name,Pricing_Quote_Line_Number__c,Pricing_Product_Nm__r.Name,Pricing_Status_Nm__c,Pricing_Product_Nm__c,Pricing_Approved_Start_Date_Dt__c,Pricing_Approved_End_Date_Dt__c,Pricing_Program_Type_Nm__c,
                                                    Pricing_Quote_Program_Nm__c from SBQQ__QuoteLine__c LIMIT 2];
         User adminUser = [Select id from User where Email='firstName@intel.com'];
@@ -51,7 +51,7 @@ public class Pricing_PriceComparisionController_Test {
             quoteLineList[1].Pricing_Product_Nm__c = quoteLineList[0].Pricing_Product_Nm__c;
             update quoteLineList;
         }
-        quoteLineDetailsList = Pricing_PriceComparisionController.getQuoteLineDataforComparision(quoteLineList[0].Pricing_Quote_Line_Number__c,searchText);
+        quoteLineDetailsList = Pricing_PriceComparisionController.getQuoteLineDataforComparision(quoteLineList[0].Pricing_Quote_Line_Number__c, 'product');
         Boolean var = quoteLineDetailsList.size() > 0;
         System.assertEquals(var, true);
         Test.stopTest();
@@ -62,6 +62,14 @@ public class Pricing_PriceComparisionController_Test {
         Test.startTest();
         String qliNumber = Pricing_PriceComparisionController.getQuoteLineNumber(qli.Id);
         System.assertEquals(qliNumber, qli.Pricing_Quote_Line_Number__c);
+        Test.stopTest();
+    }
+    
+    static testMethod void getEstimatedECAPfromDiscovery(){
+        SBQQ__QuoteLine__c qli = [SELECT Id,Pricing_Quote_Line_Number__c FROM SBQQ__QuoteLine__c LIMIT 1];
+        Test.startTest();
+        Decimal predictedValue = Pricing_PriceComparisionController.getEstimatedECAPfromDiscovery(qli.Pricing_Quote_Line_Number__c);
+        System.assertEquals(predictedValue, null);
         Test.stopTest();
     }
 }

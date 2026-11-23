@@ -407,4 +407,119 @@ public class Core_MDF_Ecosystem_Partner_Handler_Test {
         Test.stopTest();
     }
     
+    private static Core_MDF_Ecosystem_Partner_Handler.EcosystemPartnerAllocationWrapper buildWrapper(String partner, Decimal pct) {
+        Core_MDF_Ecosystem_Partner_Handler.EcosystemPartnerAllocationWrapper w = 
+            new Core_MDF_Ecosystem_Partner_Handler.EcosystemPartnerAllocationWrapper();
+        w.ecosystemPartner = partner;
+        w.percent = pct;
+        return w;
+    }
+    
+    @isTest
+    static void testSaveUpdatesAndDeactivatesAllocations() {
+        PartnerFundRequest testActivity = [SELECT Id FROM PartnerFundRequest WHERE Title = 'Test Ecosystem Partner Activity' LIMIT 1];
+        
+        {
+            Test.startTest();
+            Core_MDF_Ecosystem_Partner_Handler.saveEcosystemPartnerAllocations(testActivity.Id, 
+                new List<Object>{ buildWrapper('Oracle', 60), buildWrapper('SAP', 40) });
+            
+            // Update Oracle, ignore blank partner, drop SAP
+            Core_MDF_Ecosystem_Partner_Handler.saveEcosystemPartnerAllocations(testActivity.Id, 
+                new List<Object>{ buildWrapper('Oracle', 100), buildWrapper('', 10) });
+            
+            // Second pass leaves already inactive SAP untouched
+            Core_MDF_Ecosystem_Partner_Handler.saveEcosystemPartnerAllocations(testActivity.Id, 
+                new List<Object>{ buildWrapper('Oracle', 100) });
+            Test.stopTest();
+            
+            Map<String, Core_MDF_Ecosystem_Partner_Allocation__c> byName = new Map<String, Core_MDF_Ecosystem_Partner_Allocation__c>();
+            for (Core_MDF_Ecosystem_Partner_Allocation__c a : [
+                SELECT Core_MDF_Ecosystem_Partner_txt__c, Core_MDF_Percentage_pct__c, Core_MDF_Active_Ind__c
+                FROM Core_MDF_Ecosystem_Partner_Allocation__c WHERE Core_MDF_Activity_Id__c = :testActivity.Id
+            ]) {
+                byName.put(a.Core_MDF_Ecosystem_Partner_txt__c, a);
+            }
+            Assert.areEqual(2, byName.size(), 'Blank partner should not be saved');
+            Assert.areEqual(100, byName.get('Oracle').Core_MDF_Percentage_pct__c, 'Oracle should be updated');
+            Assert.isTrue(byName.get('Oracle').Core_MDF_Active_Ind__c, 'Oracle should be active');
+            Assert.isFalse(byName.get('SAP').Core_MDF_Active_Ind__c, 'SAP should be deactivated');
+        }
+    }
+    
+    @isTest
+    static void testSaveWithNullAndEmptyValues() {
+        PartnerFundRequest testActivity = [SELECT Id FROM PartnerFundRequest WHERE Title = 'Test Ecosystem Partner Activity' LIMIT 1];
+        
+        {
+            Test.startTest();
+            Core_MDF_Ecosystem_Partner_Handler.saveEcosystemPartnerAllocations(testActivity.Id, null);
+            Core_MDF_Ecosystem_Partner_Handler.saveEcosystemPartnerAllocations(testActivity.Id, new List<Object>());
+            Test.stopTest();
+            
+            Assert.areEqual(0, [SELECT COUNT() FROM Core_MDF_Ecosystem_Partner_Allocation__c WHERE Core_MDF_Activity_Id__c = :testActivity.Id],
+                'No records should be created');
+        }
+    }
+    
+    @isTest
+    static void testSaveThrowsAuraHandledExceptionOnInvalidInput() {
+        PartnerFundRequest testActivity = [SELECT Id FROM PartnerFundRequest WHERE Title = 'Test Ecosystem Partner Activity' LIMIT 1];
+        Boolean thrown = false;
+        
+        {
+            Test.startTest();
+            try {
+                Core_MDF_Ecosystem_Partner_Handler.saveEcosystemPartnerAllocations(testActivity.Id, 'not a list');
+            } catch (AuraHandledException e) {
+                thrown = true;
+            }
+            Test.stopTest();
+        }
+        Assert.isTrue(thrown, 'AuraHandledException should be thrown for invalid input');
+    }
+    
+    @isTest
+    static void testGetAllocations() {
+        PartnerFundRequest testActivity = [SELECT Id FROM PartnerFundRequest WHERE Title = 'Test Ecosystem Partner Activity' LIMIT 1];
+        
+        {
+            Test.startTest();
+            Assert.isTrue(Core_MDF_Ecosystem_Partner_Handler.getAllocations(null).isEmpty(), 'Null set returns empty map');
+            Assert.isTrue(Core_MDF_Ecosystem_Partner_Handler.getAllocations(new Set<Id>()).isEmpty(), 'Empty set returns empty map');
+            
+            Core_MDF_Ecosystem_Partner_Handler.saveEcosystemPartnerAllocations(testActivity.Id, 
+                new List<Object>{ buildWrapper('Oracle', 70), buildWrapper('Inactive', 30) });
+            Core_MDF_Ecosystem_Partner_Handler.saveEcosystemPartnerAllocations(testActivity.Id, 
+                new List<Object>{ buildWrapper('Oracle', 70) });
+            
+            Map<Id, List<Object>> result = Core_MDF_Ecosystem_Partner_Handler.getAllocations(new Set<Id>{ testActivity.Id });
+            Test.stopTest();
+            
+            Assert.areEqual(1, result.get(testActivity.Id).size(), 'Only active allocation expected');
+            Map<String, Object> row = (Map<String, Object>) result.get(testActivity.Id)[0];
+            Assert.areEqual('Oracle', row.get('Ecosystem Partner'), 'Partner name should match');
+            Assert.areEqual(70, (Decimal) row.get('Percentage (%)'), 'Percentage should match');
+        }
+    }
+    
+    @isTest
+    static void testGetStoredAllocationsNullPercent() {
+        PartnerFundRequest testActivity = [SELECT Id FROM PartnerFundRequest WHERE Title = 'Test Ecosystem Partner Activity' LIMIT 1];
+        
+        {
+            insert new Core_MDF_Ecosystem_Partner_Allocation__c(
+                Core_MDF_Activity_Id__c = testActivity.Id,
+                Core_MDF_Ecosystem_Partner_txt__c = 'NoPercent',
+                Core_MDF_Active_Ind__c = true
+            );
+            Test.startTest();
+            List<Core_MDF_Ecosystem_Partner_Handler.EcosystemPartnerAllocationWrapper> results = 
+                Core_MDF_Ecosystem_Partner_Handler.getStoredEcosystemPartnerAllocations(testActivity.Id);
+            Test.stopTest();
+            Assert.areEqual(1, results.size(), 'One active record expected');
+            Assert.areEqual(0, results[0].percent, 'Null percent should map to 0');
+        }
+    }
+    
 }

@@ -261,7 +261,7 @@
             <operation>equals</operation>
             <value>Financial Incentive</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_Manager</fullName>
@@ -308,7 +308,7 @@
             <operation>equals</operation>
             <value>In Review,Approved,Rejected</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_SW_CPQ_Custom_workload_Approver</fullName>
@@ -341,7 +341,7 @@
             <operation>equals</operation>
             <value>Software &amp; Services</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Pricing_Share_Quotes_To_CDB_Intg_User</fullName>

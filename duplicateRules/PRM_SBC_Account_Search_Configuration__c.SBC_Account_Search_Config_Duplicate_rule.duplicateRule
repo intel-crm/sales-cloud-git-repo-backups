@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <actionOnInsert>Block</actionOnInsert>
-    <actionOnUpdate>Block</actionOnUpdate>
+    <actionOnInsert>Allow</actionOnInsert>
+    <actionOnUpdate>Allow</actionOnUpdate>
     <alertText>There is a duplicate record with same Account, Country and Email domain. Please use the existing record.</alertText>
     <description xsi:nil="true"/>
     <duplicateRuleFilter xsi:nil="true"/>
@@ -12,6 +12,10 @@
     </duplicateRuleMatchRules>
     <isActive>true</isActive>
     <masterLabel>SBC Account Search Config Duplicate rule</masterLabel>
+    <operationsOnInsert>Alert</operationsOnInsert>
+    <operationsOnInsert>Report</operationsOnInsert>
+    <operationsOnUpdate>Alert</operationsOnUpdate>
+    <operationsOnUpdate>Report</operationsOnUpdate>
     <securityOption>EnforceSharingRules</securityOption>
     <sortOrder>1</sortOrder>
 </DuplicateRule>

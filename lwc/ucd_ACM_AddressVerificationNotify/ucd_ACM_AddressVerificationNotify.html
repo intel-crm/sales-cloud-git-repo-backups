@@ -1,0 +1,16 @@
+<template>
+    <div if:true={isShowModal} class="slds-notify slds-notify_toast slds-theme_success slds-size_1-of-1" role="alert">
+        <span class="slds-assistive-text">success</span>
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div style="flex: 1; text-align: center;">
+                <h2 style="font-size: revert; font-weight: revert; margin: 0;">{message}</h2>
+            </div>
+        <div class="slds-notify__close">
+        <button class="slds-button slds-button_icon slds-button_icon-small slds-button_icon-inverse" title="Close" onclick={closeModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close!" variant="inverse" size="small"></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+        </button>
+        </div>
+        </div>
+    </div>   
+</template>

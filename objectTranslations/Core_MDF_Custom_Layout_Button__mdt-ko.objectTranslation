@@ -20,6 +20,10 @@
             <translation>청구 취소</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Cancel VAT</masterLabel>
+            <translation>부가가치세 취소</translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Change Owner</masterLabel>
             <translation><!-- Change Owner --></translation>
         </picklistValues>
@@ -33,7 +37,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Close</masterLabel>
-            <translation>닫기</translation>
+            <translation>활동 닫기</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Complete PIC Review</masterLabel>
@@ -70,6 +74,10 @@
         <picklistValues>
             <masterLabel>Notify Partner</masterLabel>
             <translation><!-- Notify Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recall to Payment Clearance</masterLabel>
+            <translation><!-- Recall to Payment Clearance --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Release Hold</masterLabel>
@@ -141,7 +149,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Outcome-Based Campaign</masterLabel>
-            <translation>결과 기반 캠페인</translation>
+            <translation><!-- Outcome-Based Campaign --></translation>
         </picklistValues>
     </fields>
 </CustomObjectTranslation>

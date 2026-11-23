@@ -38,8 +38,6 @@
     function  verifyAndRedirect()
     {         
         if(confirm('The changes to the interested party list have been made on this case.')){
-            //console.log(JSON.stringify(sforce.console));        
-            //alert("{HTMLENCODE(JSENCODE(!$CurrentPage.parameters.IsConsole))}");
             if("{HTMLENCODE(JSENCODE(!$CurrentPage.parameters.IsConsole))}"==true)
             {
                 FinishRedirect();

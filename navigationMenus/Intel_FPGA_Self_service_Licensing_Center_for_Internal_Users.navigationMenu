@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NavigationMenu xmlns="http://soap.sforce.com/2006/04/metadata">
+    <container>Intel® FPGA SSLC</container>
+    <containerType>Network</containerType>
+    <label>Intel FPGA Self-service Licensing Center for Internal Users</label>
+    <navigationMenuItem>
+        <label>Sign up for Evaluation or No-Cost Licenses</label>
+        <position>1</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>/sales-signup-evaluationlicenses</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Sign up for Employee Licenses</label>
+        <position>2</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>/sales-sign-up-employeefreelicences</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Help</label>
+        <position>3</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Frequently Asked Questions</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>https://www.altera.com/support/support-resources/download/licensing/q-and-a.html</target>
+                <type>ExternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Learn More About Licensing</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>https://www.intel.com/content/www/us/en/support/programmable/licensing/support-center.html</target>
+                <type>ExternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Using the Intel FPGA SSLC</label>
+                <position>2</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>https://www.intel.com/content/www/us/en/docs/programmable/683472/23-2/using-the-intel-fpga-self-service-licensing.html</target>
+                <type>ExternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Installation &amp; Licensing Support Center</label>
+                <position>3</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>https://www.intel.com/content/www/us/en/programmable/support/support-resources/design-software/licensing.html</target>
+                <type>ExternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Software Licensing Troubleshooter</label>
+                <position>4</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>https://www.intel.com/content/www/us/en/programmable/support/support-resources/knowledge-base/ts-index/lic.html?fn=lic</target>
+                <type>ExternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+</NavigationMenu>

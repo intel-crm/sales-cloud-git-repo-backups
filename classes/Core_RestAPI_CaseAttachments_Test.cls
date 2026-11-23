@@ -64,7 +64,7 @@ public class Core_RestAPI_CaseAttachments_Test {
             }
             update allAccounts;
         //Sowmya end
-       
+        
         commUser1 = allCommUsers[0];
         commUser2 = allCommUsers[1];
         
@@ -199,7 +199,7 @@ public class Core_RestAPI_CaseAttachments_Test {
         request.httpMethod = 'POST';
         if(v1_0.equals(version)){
             caseObj = [Select CaseNumber FROM Case where OwnerId =: commUser1.Id Limit 1];
-        	request.requestUri ='/v1.0/cases/'+caseNbr+'/attachments'; 
+           	request.requestUri ='/v1.0/cases/'+caseNbr+'/attachments'; 
             request.resourcePath ='/services/apexrest/v1.0/cases/'+caseNbr+'/attachments';
 
 	        requestParams.filename = 'filename';
@@ -262,7 +262,7 @@ public class Core_RestAPI_CaseAttachments_Test {
        	Test.startTest();
         System.runAs(commUser1){
             Core_RestAPI_Response apiResponse = Core_RestAPI_CaseAttachmentsV1.doPost(requestParams);
-        }
+          }
         Test.stopTest();
     }
     //Sowmya end

@@ -163,7 +163,7 @@ public without sharing class core_S2S_CaseExternalFeedController {
     *Author      : Bishal Singh
     *Description : Method to searh mention user in chatter.
     ************************************************************************************************************/
-    @AuraEnabled(cacheable=false)
+    @AuraEnabled(cacheable=true)
     public static List<User__x> searchUsers(String searchTerm) {
         return [SELECT Id, Name__c, Email__c,ExternalId FROM User__x WHERE Name__c LIKE :('%' + searchTerm + '%') OR Email__c LIKE :('%' + searchTerm + '%') WITH SECURITY_ENFORCED LIMIT 10 ];
     }

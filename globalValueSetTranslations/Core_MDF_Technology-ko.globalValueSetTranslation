@@ -62,7 +62,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Arrow Lake (ARL) Intel Core Ultra (Series 2)</masterLabel>
-        <translation>Arrow Lake(ARL) 인텔 Core Ultra(시리즈 2)</translation>
+        <translation><!-- Arrow Lake (ARL) Intel Core Ultra (Series 2) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Arrow Lake (ARL) Series 2</masterLabel>
@@ -346,7 +346,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ graphics</masterLabel>
-        <translation><!-- Intel® Arc™ graphics --></translation>
+        <translation>인텔® Arc™ 그래픽</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Aria® 10 PFGAs</masterLabel>
@@ -426,7 +426,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Data Center GPU Flex</masterLabel>
-        <translation><!-- Intel® Data Center GPU Flex --></translation>
+        <translation>인텔® Data Center GPU Flex</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Dynamic Device Personalization (DDP)</masterLabel>
@@ -614,7 +614,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Lunar Lake (LNL) Intel Core Ultra (Series 2)</masterLabel>
-        <translation>Lunar Lake(LNL) 인텔 Core Ultra(시리즈 2)</translation>
+        <translation><!-- Lunar Lake (LNL) Intel Core Ultra (Series 2) --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Lunar Lake (LNL) Series 2</masterLabel>
@@ -774,7 +774,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Rendering Toolkit &amp; Deep Neural Network Library </masterLabel>
-        <translation>렌더링 툴킷 및 심층 신경망 라이브러리 </translation>
+        <translation><!-- Rendering Toolkit &amp; Deep Neural Network Library  --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Retail Edge</masterLabel>
@@ -815,6 +815,14 @@
     <valueTranslation>
         <masterLabel>Scalable Video Technology (SVT)</masterLabel>
         <translation>Scalable Video Technology(SVT)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Series 4 Intel® Core™ (Wildcat Lake Refresh)</masterLabel>
+        <translation>시리즈 4 인텔® 코어™ (Wildcat Lake Refresh)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Series 4 Intel® Core™ Ultra (Nova Lake)</masterLabel>
+        <translation>시리즈 4 인텔® 코어™ Ultra (노바 레이크)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>SigOpt</masterLabel>

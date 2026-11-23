@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Deal Prediction Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Deal Prediction Stages</value>
+    </caseValues>
+    <fields>
+        <label><!-- Deal Created Date --></label>
+        <name>PCC_Deal_Created_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Name --></label>
+        <name>PCC_Deal_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design-Deal Registration --></label>
+        <name>PCC_Design_Deal_Registration__c</name>
+        <relationshipLabel><!-- Deal Prediction Stages --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Customer --></label>
+        <name>PCC_End_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Duplicate --></label>
+        <name>PCC_Is_Duplicate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account --></label>
+        <name>PCC_Partner_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quantity --></label>
+        <name>PCC_Quantity__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

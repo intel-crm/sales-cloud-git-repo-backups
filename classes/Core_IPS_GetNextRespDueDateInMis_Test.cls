@@ -1,28 +1,46 @@
-// TWC745-9117 - ATHR Critical fixed by Rakshitha
 @isTest(SeeAllData=false)
 private class Core_IPS_GetNextRespDueDateInMis_Test {
 @testsetup
     public static void setupData(){
-
+      /*  List<Core_IPS_Product_Organization__c> prodOrg = new List<Core_IPS_Product_Organization__c>();
+        Core_IPS_Product_Organization__c org = new Core_IPS_Product_Organization__c();
+        org.name = 'Org-001';
+        Core_IPS_Product_Organization__c org1 = new Core_IPS_Product_Organization__c();
+        org.name = 'Org-002';
+        prodOrg.add(org);
+        prodOrg.add(org1);
+        insert prodOrg;*/
 		List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
-        insert listOfSupportOrg;
+            insert listOfSupportOrg;
         List<Account> acc = TestUtilities.getAccountsList(1);
         insert acc;
-        List<Core_IPS_Labels__c> lablesList = new List<Core_IPS_Labels__c>();
-		Core_IPS_Labels__c labels1 = new Core_IPS_Labels__c();
-		labels1.name= 'IPS Standard Entitlement Process ID';
-		labels1.value__c='5521J000000Jdcy';
-		lablesList.add(labels1);
+         List<Core_IPS_Labels__c> lablesList = new List<Core_IPS_Labels__c>();
+            Core_IPS_Labels__c labels1 = new Core_IPS_Labels__c();
+            labels1.name= 'IPS Standard Entitlement Process ID';
+            labels1.value__c='5521J000000Jdcy';
+            lablesList.add(labels1);
         insert lablesList;
     }
-   
+   /* public static testmethod void getActiveMileStone_Test1() {
+        List<CaseMilestone> lstCaseMilestone = [SELECT CaseId FROM CaseMilestone WHERE BusinessHoursId != NULL AND isCompleted=False LIMIT 1];                                                        
+        Id caseId = lstCaseMilestone[0].CaseId;
+        Core_IPS_GetNextResponseDueDateInMis nextResp = new Core_IPS_GetNextResponseDueDateInMis();
+        Integer timeInMins = nextResp.calculateMilestoneTriggerTime(caseId,'IPS Next Response');
+    }
+    public static testmethod void getActiveMileStone_Test2() {
+        List<CaseMilestone> lstCaseMilestone = [SELECT CaseId FROM CaseMilestone WHERE isCompleted = False AND StartDate != NULL AND case.Core_Next_Response_Due_Date__c != NULL LIMIT 1];                                                        
+        Id caseId = lstCaseMilestone[0].CaseId;
+        Core_IPS_GetNextResponseDueDateInMis nextResp = new Core_IPS_GetNextResponseDueDateInMis();
+        Integer timeInMins = nextResp.calculateMilestoneTriggerTime(caseId,'IPS Next Response');
+    }
+    */
     public static testmethod void getActiveMileStone_Test3() {
         Profile prof = [select id,Name from profile where name = 'System Administrator' limit 1];
         List<User> userList = TestUtilities.getListOfUser(1);
         userList[0].profileId=prof.id;
         insert userlist;
         User SystUserRunAs = userList[0];
-	    SlaProcess sla = [SELECT Id FROM SlaProcess WHERE Name = 'IPS Standard SLA Entitlement' AND IsActive = true LIMIT 1];
+	SlaProcess sla = [SELECT Id FROM SlaProcess WHERE Name = 'IPS Standard SLA Entitlement' AND IsActive = true LIMIT 1];
         List<case> csLst = new List<case>();
         List<Entitlement> entLst = new List<Entitlement>();
         Id intelSupportOwner =  UserInfo.getUserId();//systUserRunAs.Id;
@@ -31,16 +49,14 @@ private class Core_IPS_GetNextRespDueDateInMis_Test {
         List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = [select Id,Core_IPS_Support_Org_Name__c from Core_IPS_Product_Organization__c where Core_IPS_Support_Org_Name__c = 'TestName 1' limit 1];
         List<Core_IPS_Product_Organization__c> ListOfSupportOrg1  = [select Id,Core_IPS_Support_Org_Name__c from Core_IPS_Product_Organization__c where Core_IPS_Support_Org_Name__c != 'TestName 1' limit 1];
         List<Asset> AssetList = TestUtilities.getAssetList(2);
-    	Recordtype Rtype = [select id from  recordtype where Name ='IPS case create'];
+    Recordtype Rtype = [select id from  recordtype where Name ='IPS case create'];
         Test.startTest();
         System.runAs(systUserRunAs) {
-            
             for(Contact ContactRec : ListOfContacts){
                 ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
                 ContactRec.Accountid = ListOfAccounts.get(0).Id;
             }
             //insert ListOfContacts;
-            
             for(Asset Asst : AssetList){
                 Asst.accountId = ListOfAccounts.get(0).Id;
                 Asst.Contactid = ListOfContacts.get(0).id;
@@ -48,7 +64,6 @@ private class Core_IPS_GetNextRespDueDateInMis_Test {
             }
             AssetList[1].Core_Product_Organization__c = ListOfSupportOrg1.get(0).id;
             insert AssetList;
-            
             Entitlement ent = TestUtilities.getEntitlementRecord();
             ent.accountid = ListOfAccounts.get(0).Id;
             ent.AssetId = AssetList.get(0).id;
@@ -56,7 +71,6 @@ private class Core_IPS_GetNextRespDueDateInMis_Test {
             ent.endDate = system.today()+760;
             ent.SlaProcessId = Core_IPS_Labels__c.getValues('IPS Standard Entitlement Process ID').Value__c;
             entLst.add(ent);
-            
             Entitlement ent1 = TestUtilities.getEntitlementRecord();
             ent1.accountid = ListOfAccounts.get(0).Id;
             ent1.AssetId = AssetList.get(1).id;
@@ -64,15 +78,13 @@ private class Core_IPS_GetNextRespDueDateInMis_Test {
             ent1.endDate = system.today()+760;
             ent1.SlaProcessId = Core_IPS_Labels__c.getValues('IPS Standard Entitlement Process ID').Value__c;
             entLst.add(ent1);
-            
             Entitlement ent2 = TestUtilities.getEntitlementRecord();
             ent2.accountid = ListOfAccounts.get(0).Id;
             ent2.startdate = System.today()-1;
             ent2.endDate = system.today()+760;
-            ent2.SlaProcessId = sla.Id;
+        	ent2.SlaProcessId = sla.Id;
             entLst.add(ent2);
             insert entLst;
-            
             Case cs = new Case();
             cs.accountId = ListOfAccounts.get(0).Id;
             cs.ContactId = ListOfContacts.get(0).id;
@@ -88,7 +100,6 @@ private class Core_IPS_GetNextRespDueDateInMis_Test {
             cs.Core_Latest_Comment_Time_Stamp__c = System.now()+1;
             cs.SlaStartDate = System.now() - 1;
             csLst.add(cs);
-            
             Case cs1 = new Case();
             cs1.accountId = ListOfAccounts.get(0).Id;
             cs1.ContactId = ListOfContacts.get(0).id;
@@ -104,7 +115,6 @@ private class Core_IPS_GetNextRespDueDateInMis_Test {
             cs1.Core_Latest_Comment_Time_Stamp__c = System.now()+1;
             cs1.SlaStartDate = System.now() - 1;
             csLst.add(cs1);
-            
             Case CaseRecord = new Case(
                 Status = 'New',
                 Origin = 'Web',

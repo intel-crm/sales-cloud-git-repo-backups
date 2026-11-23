@@ -28,16 +28,15 @@ public class ProductHierarchyWrapper {
         public Integer l4RestrictionLevel;
         public String l5;
         public String l5name;
-        public String l5_name;
         public Integer l5_is_active;
+        //Ganesh Start
 		public String L5DeprecationDate;
-        
+		//Ganesh End
         public Map<String, String> attributes;
         
         // mm_details is a list of materials
         public List<MmDetail> mm_details;
         public String dataSource;
-       
     }
     
     public class MmDetail {

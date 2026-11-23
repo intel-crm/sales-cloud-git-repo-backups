@@ -33,7 +33,7 @@ public without sharing class ER_CheckAutoapprovalCriteria
             //Retrive Account,ACM and Legal agreement information for auto approval criteria check 
             List<Account> accounts = [SELECT Id,Core_CNDA_Number__c,
                                       (Select PRM_Account_Id__c from Channel_Memberships1__r WHERE PRM_Status_Nm__c = 'Approved' AND
-                                       //Added as part of IPA refresh -2025
+                                       //Added as part of IPA refresh-2025
                                        ((PRM_Partner_Role__c != 'Guest') AND (PRM_Channel_Program_Level_Id__r.Name =: System.Label.PRM_Tier_Partner OR PRM_Channel_Program_Level_Id__r.Name =: System.Label.PRM_Tier_Prestige))),
                                        // ((PRM_Channel_Program_Level_Id__r.Name = 'Gold' OR PRM_Channel_Program_Level_Id__r.Name = 'Titanium') OR (PRM_Channel_Program_Level_Id__r.Name = 'Member' AND PRM_Partner_Role__c = 'Distributor'))),
                                       (SELECT PRM_Account_Id__c FROM AccountLegalAgreementAssociations__r where PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c =: System.Label.PRM_IPATNCCode)

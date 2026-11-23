@@ -5,10 +5,8 @@ import header from '@salesforce/label/c.PRM_Training_Dashboard_Label';
 import measurementPeriodheader from '@salesforce/label/c.PRM_Measurement_Period';
 import currentMeasurementPeriod from '@salesforce/label/c.PRM_Current_measurement_period';
 import previousMeasurementPeriod from '@salesforce/label/c.PRM_Previous_Measurement_Period';
-//import dashcurrMeasurementPeriod from '@salesforce/label/c.PRM_Dash_MeasurementPeriod_Current';
-//import dashprevMeasurementPeriod from '@salesforce/label/c.PRM_Dash_MeasurementPeriod_Prev';
-import dashcurrMeasurementPeriod from '@salesforce/label/c.Prm_Company_Training_curr';
-import dashprevMeasurementPeriod from '@salesforce/label/c.Prm_Company_Training_prev';
+import dashcurrMeasurementPeriod from '@salesforce/label/c.PRM_Dash_MeasurementPeriod_Current';
+import dashprevMeasurementPeriod from '@salesforce/label/c.PRM_Dash_MeasurementPeriod_Prev';
 import link from '@salesforce/label/c.PRM_Training_Report_Link';
 export default class PRM_Contact_Training_Credits extends LightningElement {
     headerLbl = header;

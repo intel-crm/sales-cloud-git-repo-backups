@@ -11,7 +11,7 @@ public without sharing class Core_BUMapping_Retry {
         for(Core_Exceptions__c Exp : ExpList){
             FailedOppLineItemRecordIds.add(Exp.Core_Record_Id__c); 
         }
-        FailedOppLineItemLst=[SELECT Core_product2_division__c,Core_BU_Product_Segment__c,Core_BU_Short_Name__c,Core_Division__c,Core_Product_Application__c,Core_Product_Segment__c,Core_Product_Type__c,Id,OpportunityId,Core_BU_Mapping_record__c FROM OpportunityLineItem Where ID IN:FailedOppLineItemRecordIds];
+        FailedOppLineItemLst=[SELECT Core_Product2_LOB_Code__c,Core_BU_Product_Segment__c,Core_BU_Short_Name__c,Core_Division__c,Core_Product_Application__c,Core_Product_Segment__c,Core_Product_Type__c,Id,OpportunityId,Core_BU_Mapping_record__c FROM OpportunityLineItem Where ID IN:FailedOppLineItemRecordIds];
         
         Core_BU_Mapping_Table__c finalBuMap;
         for(OpportunityLineItem oppLineItem : FailedOppLineItemLst){

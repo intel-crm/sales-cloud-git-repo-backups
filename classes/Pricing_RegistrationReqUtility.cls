@@ -4,9 +4,13 @@ public without sharing class Pricing_RegistrationReqUtility {
         if(iqrProgram.size() > 0){
             try{
                 List<PRM_Registration_Request__c> iqrReqsTobeAutoApproved = new List<PRM_Registration_Request__c>();
-                Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
-                Id emailVerificationRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
-                
+ 				//Ganesh Changes
+                //Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
+                //Id emailVerificationRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
+                Id accCreateRequestId = PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
+				Id emailVerificationRT = PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
+				//Ganesh Changes End
+				
                 for(PRM_Registration_Request__c req : newReqs){
                     if(req.PRM_Channel_Program__c==iqrProgram[0].Id /*&& oldMap.get(req.Id).RecordTypeId!=req.RecordTypeId 
                        && oldMap.get(req.Id).RecordTypeId==emailVerificationRT*/ //Commented as part od CidaaS requirments -atb
@@ -132,12 +136,21 @@ public without sharing class Pricing_RegistrationReqUtility {
                 system.debug('contList==>'+contList.size());
                 Set<Id> contactIds = new Set<Id>();               
                 if(contList.size() > 0){				 
-                    insert contList; 
-                    //contList.addAll(existingConts);                
-                    for(Contact cont: contList){
+                    insert contList;
+                    
+                    //contList.addAll(existingConts); 
+                    //Ganesh Changes               
+                    /*for(Contact cont: contList){
                         contactIds.add(cont.Id);
                         PRM_CreateAccountAndRelatedRecords.linkEmailLogToContact(cont.Email);
-                    }                             
+                    }*/
+                    List<String> emailList = new List<String>();
+    				for(Contact cont: contList){
+        				contactIds.add(cont.Id);
+        				emailList.add(cont.Email); // collect emails first
+    				}
+    				PRM_createAccountandRelatedRecords.linkBulkEmailLogToContact(emailList);
+                    //Ganesh Changes End
                 }
                 for(Contact cont: existingConts){
                     contactIds.add(cont.Id); 

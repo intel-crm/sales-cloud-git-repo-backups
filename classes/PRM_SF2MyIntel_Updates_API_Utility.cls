@@ -99,8 +99,8 @@ public class PRM_SF2MyIntel_Updates_API_Utility {
         List<PRM_Partner_Community_Enrollment_Request__c> enrollmentRequestsToUpdate = new List<PRM_Partner_Community_Enrollment_Request__c>();
         Set<String> newEnrolledCommunities = communitesToUpdate.keySet();     
         Set<String> updatedEnrollments = new Set<String>();
-        List<PRM_Partner_Community_Enrollment_Request__c>existingEnrollments=[Select PRM_Partner_Community_Nm__c,PRM_Contact_Id__r.Email from PRM_Partner_Community_Enrollment_Request__c where PRM_Contact_Id__c = :loggedInContactId And (PRM_Status_Nm__c =:STATUS_PENDING OR PRM_Status_Nm__c=:STATUS_APPROVED OR PRM_Status_Nm__c=:STATUS_REJECTED)];
-        if(existingEnrollments.size()>0 && !existingEnrollments.isEmpty()){ 
+        List<PRM_Partner_Community_Enrollment_Request__c>existingEnrollments=[Select PRM_Partner_Community_Nm__c from PRM_Partner_Community_Enrollment_Request__c where PRM_Contact_Id__c = :loggedInContactId And (PRM_Status_Nm__c =:STATUS_PENDING OR PRM_Status_Nm__c=:STATUS_APPROVED OR PRM_Status_Nm__c=:STATUS_REJECTED)];
+        if(existingEnrollments.size()>0 && !existingEnrollments.isEmpty()){                           
             processEnrollmentRequests(existingEnrollments, communitesToUpdate, 'Integration User', 'ERPM.OBM Integration', 'IPA Registration Integration User', 'STATUS_APPROVED', 'STATUS_REJECTED', userInfo.getUserEmail(), updatedEnrollments, enrollmentRequestsToUpdate);                                                    
             /*for(PRM_Partner_Community_Enrollment_Request__c enrollmentRequest: existingEnrollments){
                 if(communitesToUpdate.containsKey(enrollmentRequest.PRM_Partner_Community_Nm__c)){

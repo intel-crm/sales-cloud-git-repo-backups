@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Core_MDF_Claim_VAT_Info__c</entityName>
+    <fieldName>Core_MDF_Status_Txt__c</fieldName>
+    <masterLabel>VAT Path Sts for Submit For Document</masterLabel>
+    <pathAssistantSteps>
+        <picklistValueName>Pending Documents</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Core_MDF_Submit_for_Approval</recordTypeName>
+</PathAssistant>

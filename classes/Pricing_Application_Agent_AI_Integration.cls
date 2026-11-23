@@ -295,7 +295,7 @@ public class Pricing_Application_Agent_AI_Integration {
         
         try {
             // Get Quote data
-            List<SBQQ__Quote__c> listofQuote = [
+            quoteIdToQuoteMap =  new Map<Id,SBQQ__Quote__c>([
                 SELECT Id,Pricing_Market_Segment_values_Nm__c,Pricing_Account_Name__c,SBQQ__PrimaryContact__r.Name,
                 Pricing_End_Customer__r.Name,Pricing_Customer_Nm__c,Pricing_Unified_Global_End_Customer_Nm__r.Name,Pricing_IsUnifiedCustomer__c,
                 Pricing_Project_Name_Nm__c,Pricing_Server_Deal_Type_Nm__c,Pricing_Intel_Response_Requested_By_Date__c,
@@ -307,12 +307,12 @@ public class Pricing_Application_Agent_AI_Integration {
                 Pricing_Auto_generate_Quote_Letter__c,Pricing_Is_Sanctioned__c,Pricing_AdditionalRecipients__c
                 FROM SBQQ__Quote__c 
                 WHERE Id IN :quoteIds
-            ];
+              ]);
             
             // Populate the map with Quote Id as key and Quote record as value
-            for(SBQQ__Quote__c quote : listofQuote) {
+            /*for(SBQQ__Quote__c quote : listofQuote) {
                 quoteIdToQuoteMap.put(quote.Id, quote);
-            }
+            }*/
              
         } catch (Exception exp) {       
             Core_Log_Entry__c logEntry = new Core_Log_Entry__c(Core_Message__c = 'Error',Core_Details__c = exp.getMessage(), Core_Origin__c='Pricing_Application_Agent_AI_Integration.fetchQuoteDetails', Core_Severity__c='Low', Core_When__c=System.Now(), Core_Project__c = 'IQR');          

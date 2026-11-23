@@ -5,10 +5,13 @@
     <name>PSG BUSOPS ASMO</name>
     <queueMembers>
         <publicGroups>
-            <publicGroup>ags_busops_asmo</publicGroup>
+            <publicGroup>ags_busops_na</publicGroup>
         </publicGroups>
     </queueMembers>
     <queueSobject>
         <sobjectType>SBQQ__Quote__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>core_cpq_dpa_aln__c</sobjectType>
     </queueSobject>
 </Queue>

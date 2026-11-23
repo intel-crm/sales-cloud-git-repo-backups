@@ -10,21 +10,22 @@
 *****************************************************************************************************************************************/
 public without sharing class Core_MDF_ClaimReviewCaseProcess {
     /****************************************************************************************************************************************
-    Method Name:                                             processClaimReviewCases
-    @return  :                                               Void
-    @parameters:                                             newClaimList and oldClaimMap
-    Description:                                             Update claim review cases when there is change in Claim information
-                                                             for which Claim records are passed as parameter or create new Claim review case 
-                                                             if Claim is flagged for audit
-    Modified By:                  Date:                      Changes: 
-    Accenture  K Alka             03/26/2019                 Created.
-    *****************************************************************************************************************************************/ 
+Method Name:                                             processClaimReviewCases
+@return  :                                               Void
+@parameters:                                             newClaimList and oldClaimMap
+Description:                                             Update claim review cases when there is change in Claim information
+for which Claim records are passed as parameter or create new Claim review case 
+if Claim is flagged for audit
+Modified By:                  Date:                      Changes: 
+Accenture  K Alka             03/26/2019                 Created.
+*****************************************************************************************************************************************/ 
     public static void processClaimReviewCases(List<PartnerFundClaim> newClaimList, Map<Id,PartnerFundClaim> oldClaimMap){ 
         
         //variable declarations
         List<PartnerFundClaim> pfcListForNewCases = new List<PartnerFundClaim>();
         List<PartnerFundClaim> pfcListToBeUpdated = new List<PartnerFundClaim>();
-        //Map<Id,PartnerFundRequest> pfrIdMap; //Highlight Unused Local Variable - TWC3117-18226
+       // Highlight Unused Local Variable - TWC3117-18226
+       // Map<Id,PartnerFundRequest> pfrIdMap;
         List<Id> caseOwnerIdList = new List<Id>();
         
         // Added to fetch all the co-marketing record types
@@ -47,8 +48,8 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
                        && pfc.Core_MDF_FlaggedForAudit__c == true
                        && pfc.Core_MDF_Claim_Review_Case__c == NULL
                        && pfc.Core_MDF_Audit_Type__c  == 'Manual'){
-                           pfcListForNewCases.add(pfc);
-                       }
+                        pfcListForNewCases.add(pfc);
+                    }
                     
                     // checking whether the below fields are updated or not
                     // added a line to check whether Core_MDF_Total_Claim_Offsets__c is updated or not
@@ -97,7 +98,7 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
             }
             
             // calling the method for case creation
-            if(pfcListForNewCases.size()>0) {               
+            if(pfcListForNewCases.size()>0) {       
                 Id batchInstanceId = Database.executeBatch(new Core_MDF_ClaimReviewCaseProcessHelper(pfcListForNewCases,'CreateCases'),Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Case_Process_Batch_Size')));
                 //insertAudHoldClaimsForCaseRetry(pfcListForNewCases);//Added by Ealisha    
             }
@@ -111,39 +112,39 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}    
     }
-
+    
     //US700310: Added checkForActivityUpdates() to update the Activity changes on Case
     public static void checkForActivityUpdates(Map<Id,PartnerFundRequest> newPfrMap, Map<Id,PartnerFundRequest> oldPfrMap){ 
-
+        
         List<PartnerFundClaim> toBeUpdatedClaims = new List<PartnerFundClaim>();
         List<Id> caseOwnerIdList = new List<Id>();
-        set<String> fieldSet = new Set<String>();
+        set<String> fieldSet = new Set<String>();        
 
         try{
             //Query if the Activities have Claims and Cases on it
             List<PartnerFundClaim> pfcList = [select id,RequestId
-                                            from PartnerFundClaim where RequestId in: oldPfrMap.keyset()
-                                            and Core_MDF_FlaggedForAudit__c = true
-                                            and Core_MDF_Claim_Review_Case__c !=NULL];
+                                              from PartnerFundClaim where RequestId in: oldPfrMap.keyset()
+                                              and Core_MDF_FlaggedForAudit__c = true
+                                              and Core_MDF_Claim_Review_Case__c !=NULL];
             
             for(Schema.FieldSetMember fields :Schema.SObjectType.PartnerFundRequest.fieldSets.getMap().get('Core_MDF_Activity_Case_Sync_Fields').getFields()){
                 fieldSet.add(fields.getFieldPath());
             }
             
             if(pfcList.size()>0){
-            for(PartnerFundClaim pfc: pfcList){
-                //Check if the following fields on Activity are changed
-                for(string s: fieldSet){
+                for(PartnerFundClaim pfc: pfcList){
+                    //Check if the following fields on Activity are changed
+                    for(string s: fieldSet){
                     if(oldPfrMap.get(pfc.RequestId).get(s) != newPfrMap.get(pfc.RequestId).get(s)){toBeUpdatedClaims.add(pfc); } 
+                        } 
+                    }
                 }
-            }
-            }
-
+            
             //Send Claims to update the respective Cases
             if(toBeUpdatedClaims.size()>0){
-            Id batchInstanceId = Database.executeBatch(new Core_MDF_ClaimReviewCaseProcessHelper(toBeUpdatedClaims,'UpdateCases',caseOwnerIdList),Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Case_Process_Batch_Size')));
+                Id batchInstanceId = Database.executeBatch(new Core_MDF_ClaimReviewCaseProcessHelper(toBeUpdatedClaims,'UpdateCases',caseOwnerIdList),Integer.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Case_Process_Batch_Size')));
             }
-
+            
         }
         catch(exception ex) {Core_MDF_CCP_UtilityClass.logError(ex);}
     }
@@ -163,38 +164,38 @@ public without sharing class Core_MDF_ClaimReviewCaseProcess {
     
     //Added by Ealisha-Retry Case creation-US518106
     /*public static void insertAudHoldClaimsForCaseRetry(List<PartnerFundClaim> pfcListForNewCases){           
-                List<Core_MDF_Audit_Hold_Claim__c> claimsForCaseGen = new List<Core_MDF_Audit_Hold_Claim__c>();
-                // Modifications by JV- Accenture:
-                Map<String,Core_MDF_Audit_Hold_Claim__c> existingClaimIdToAHCMap = new Map<String,Core_MDF_Audit_Hold_Claim__c>();
-                List<String> claimIds = new List<String>();
+        List<Core_MDF_Audit_Hold_Claim__c> claimsForCaseGen = new List<Core_MDF_Audit_Hold_Claim__c>();
+        // Modifications by JV- Accenture:
+        Map<String,Core_MDF_Audit_Hold_Claim__c> existingClaimIdToAHCMap = new Map<String,Core_MDF_Audit_Hold_Claim__c>();
+        List<String> claimIds = new List<String>();
         try{        
-        for(PartnerFundClaim claim : pfcListForNewCases){ claimIds.add(claim.id);}
-                for(Core_MDF_Audit_Hold_Claim__c existingAHC : [SELECT Id,Core_MDF_Claim_Id__c,
-                                                                Name,Core_MDF_Status__c,Core_MDF_Retry_Indicator__c
-                                                                FROM Core_MDF_Audit_Hold_Claim__c 
-                                                                WHERE Core_MDF_Claim_Id__c IN:claimIds])
-                {
-                     existingClaimIdToAHCMap.put(existingAHC.Core_MDF_Claim_Id__c,existingAHC);                                                  
-                }
-                // checking review case on claim is null
-                for(PartnerFundClaim pfc: pfcListForNewCases){
-                    // Modified by JV- Accenture : modified the upsert logic incase the AHC already exists
-                    Core_MDF_Audit_Hold_Claim__c ahc;
-                    if(existingClaimIdToAHCMap != null && existingClaimIdToAHCMap.size() > 0){
-                       ahc = existingClaimIdToAHCMap.containsKey(pfc.Id) ? existingClaimIdToAHCMap.get(pfc.Id) : new Core_MDF_Audit_Hold_Claim__c();    
-                    }else{
-                      ahc = new Core_MDF_Audit_Hold_Claim__c();  
-                      ahc.Core_MDF_Claim_Id__c=pfc.Id;
-                      ahc.Name=pfc.Core_MDF_Claim_Ref_Number__c;
-                      ahc.Core_MDF_Status__c='Pending';
-                      ahc.Core_MDF_Retry_Indicator__c = 0;
-                    }                   
-                    claimsForCaseGen.add(ahc);                                    
-                }
+            for(PartnerFundClaim claim : pfcListForNewCases){ claimIds.add(claim.id);}
+            for(Core_MDF_Audit_Hold_Claim__c existingAHC : [SELECT Id,Core_MDF_Claim_Id__c,
+                                                            Name,Core_MDF_Status__c,Core_MDF_Retry_Indicator__c
+                                                            FROM Core_MDF_Audit_Hold_Claim__c 
+                                                            WHERE Core_MDF_Claim_Id__c IN:claimIds])
+            {
+                existingClaimIdToAHCMap.put(existingAHC.Core_MDF_Claim_Id__c,existingAHC);                                                  
+            }
+            // checking review case on claim is null
+            for(PartnerFundClaim pfc: pfcListForNewCases){
+                // Modified by JV- Accenture : modified the upsert logic incase the AHC already exists
+                Core_MDF_Audit_Hold_Claim__c ahc;
+                if(existingClaimIdToAHCMap != null && existingClaimIdToAHCMap.size() > 0){
+                    ahc = existingClaimIdToAHCMap.containsKey(pfc.Id) ? existingClaimIdToAHCMap.get(pfc.Id) : new Core_MDF_Audit_Hold_Claim__c();    
+                }else{
+                    ahc = new Core_MDF_Audit_Hold_Claim__c();  
+                    ahc.Core_MDF_Claim_Id__c=pfc.Id;
+                    ahc.Name=pfc.Core_MDF_Claim_Ref_Number__c;
+                    ahc.Core_MDF_Status__c='Pending';
+                    ahc.Core_MDF_Retry_Indicator__c = 0;
+                }                   
+                claimsForCaseGen.add(ahc);                                    
+            }
                 if(claimsForCaseGen != null && claimsForCaseGen.size() > 0){
-                    Database.upsertResult[] ahcLst = Database.upsert(claimsForCaseGen, false);
+                Database.upsertResult[] ahcLst = Database.upsert(claimsForCaseGen, false);                    
 
-                }
+            }
         }
         catch(exception ex){Core_MDF_CCP_UtilityClass.logError(ex);}
     }*/

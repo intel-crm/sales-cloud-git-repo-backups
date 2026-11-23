@@ -105,4 +105,7 @@
         </columns>
         <masterLabel>Partner Fund Claims</masterLabel>
     </sections>
+    <sections>
+        <masterLabel>Claims</masterLabel>
+    </sections>
 </ReportType>

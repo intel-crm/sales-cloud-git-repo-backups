@@ -8,8 +8,8 @@ Description : Marketplace logic for handler for Marketplace Topic Record
 * ----------------------------------------------------------------------------
 * Sathish                  03/Aug/2022               Original Version
 *************************************************************************************/
-public class PMP_Marketplace_Topic_Handler  extends TriggerHandler {
- public static Boolean isWorking() {
+public class PMP_Marketplace_Topic_Handler{ //extends TriggerHandler {
+    public static Boolean isWorking() {
         boolean flag=true;
         return flag;
     }

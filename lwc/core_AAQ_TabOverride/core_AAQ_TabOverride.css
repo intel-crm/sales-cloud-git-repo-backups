@@ -258,6 +258,99 @@ tr td, th {
   cursor: pointer;
   justify-content: center;
 }
+
+  .smg-floating-launcher {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 3000;
+  }
+
+  .smg-floating-launcher__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem 0.85rem 0.85rem;
+    border: 0;
+    border-radius: 999px;
+    background: #1797c0;
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .smg-floating-launcher__button:hover,
+  .smg-floating-launcher__button:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+    outline: none;
+  }
+
+  .smg-floating-launcher__image {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .smg-floating-launcher__label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .smg-floating-launcher {
+      right: 1rem;
+      bottom: 1rem;
+    }
+
+    .smg-floating-launcher__button {
+      padding-right: 0.85rem;
+    }
+
+    .smg-floating-launcher__label {
+      display: none;
+    }
+  }
+
+.aaq-image-label-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  flex-shrink: 0;
+  gap: 0.5rem;
+}
+
+.aaq-image-label-button {
+  border: 0;
+  max-width: 195px;
+  height: 45px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.aaq-pricing-agent-text {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  color: #16325c;
+  line-height: 1.2;
+}
 .oneai-chat-btn-img {
   height: 45px;
   width: 195px;
@@ -374,6 +467,8 @@ tr td, th {
 .oneai-tooltip-container {
   position: relative;
   display: inline-block;
+  overflow: visible;
+  z-index: 2;
 }
 .oneai-tooltip-text {
   visibility: hidden;
@@ -385,7 +480,7 @@ tr td, th {
   border-radius: 2px;
   padding: 10px 16px;
   position: absolute;
-  z-index: 100;
+  z-index: 9999;
   bottom: 120%;
   left: 50%;
   transform: translateX(-50%);

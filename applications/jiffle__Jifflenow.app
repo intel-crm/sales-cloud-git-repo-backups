@@ -26,4 +26,8 @@
     <tabs>jiffle__Group_Registration__c</tabs>
     <tabs>jiffle__Registration__c</tabs>
     <tabs>jiffle__Batch_Settings</tabs>
+    <tabs>DZP_Registration_Request__c</tabs>
+    <tabs>SMG1AI</tabs>
+    <tabs>PIM_Products__x</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
 </CustomApplication>

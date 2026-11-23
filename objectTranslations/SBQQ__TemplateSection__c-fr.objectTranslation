@@ -9,6 +9,10 @@
         <value>Sections du modèle</value>
     </caseValues>
     <fields>
+        <label><!-- Unique Migration Id --></label>
+        <name>Pricing_Unique_Migration_Id__c</name>
+    </fields>
+    <fields>
         <help>Sélectionnez cette case à cocher pour appliquer la mise en forme de la langue du document. Applicable uniquement aux sections qui pointent vers un contenu de modèle de type « HTML ».</help>
         <label><!-- Apply Document Language Formatting --></label>
         <name>SBQQ__ApplyDocumentLanguageFormatting__c</name>

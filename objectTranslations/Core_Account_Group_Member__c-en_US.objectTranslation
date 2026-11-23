@@ -75,6 +75,10 @@
         <label><!-- UCD Hierarchy --></label>
         <name>UCD_Hierarchy__c</name>
     </fields>
+    <fields>
+        <label><!-- ActivationEmailSent --></label>
+        <name>uCD_ActivationEmailSent__c</name>
+    </fields>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

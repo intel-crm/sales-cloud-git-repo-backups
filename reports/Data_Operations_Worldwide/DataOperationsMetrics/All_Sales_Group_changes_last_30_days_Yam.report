@@ -46,13 +46,6 @@
             <operator>notEqual</operator>
             <value>A&amp;E Account Owner,uncovered account</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>CREATED</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Sales.CRM.WW. Data.Operations,Salesforce System User</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

@@ -47,7 +47,7 @@ global class PRM_PointsRedeemBenAssignBatch implements Database.Batchable<sObjec
         PRM_PointsRedeemBenAssignUtility.pointsBenefitEligibility(scope);
     }
     global void finish(Database.BatchableContext context){
-        String body = 'Points Redemption Benefit Assignment for Member Tier OPID Accounts is successful';
+        String body = 'Points Redemption Benefit Assignment for Partner Tier OPID Accounts is successful';
         if(String.isNotBlank(body)){
             sendMail('BATCH_JOB_NOTIFICATION', body ,'Points Redemption Benefit Assignment Completed Successfully'); //Calling Send Email Method to send batch completion email 
         }

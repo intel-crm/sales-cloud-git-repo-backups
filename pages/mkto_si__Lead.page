@@ -1,7 +1,5 @@
 <apex:page standardController="Lead" extensions="mkto_si.ObjectProxyController" tabStyle="Marketo__tab" showHeader="false">
 
-  <c:SalesQualifierBanner rendered="{!errorMessage == null}" />
-
   <c:MSITabsGlobal rendered="{!errorMessage == null}"
     mTabSObjectType="{!currentSObjectType}"
     mTabSObjectId="{!sObjectId}"

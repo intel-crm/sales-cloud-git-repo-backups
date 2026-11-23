@@ -220,6 +220,27 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>PSG-GAE-Comps</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-EA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-PG</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-System</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PSG-GAE-unassigned</sourceValue>
+            </sourceValues>
+            <value>PGGAE</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>PSG-SJ-CQE!</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -296,27 +317,6 @@
             </sourceValues>
             <value>MAG</value>
         </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PSG-GAE-Comps</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-EA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-PG</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-Software/Embedded</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-System</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>PSG-GAE-unassigned</sourceValue>
-            </sourceValues>
-            <value>GAE</value>
-        </values>
     </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
@@ -339,7 +339,7 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Obsoleted-Cases Opened by Category by We</title>
+        <title>Cases Opened by Category by Week</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -418,13 +418,6 @@
             <operator>notContain</operator>
             <value>-</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -438,7 +431,7 @@
         <field>BucketField_57505999</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsoleted-Cases Opened Quarterly JP by G</name>
+    <name>Cases Opened Quarterly JP by Group - PSG</name>
     <params>
         <name>units</name>
         <value>d</value>

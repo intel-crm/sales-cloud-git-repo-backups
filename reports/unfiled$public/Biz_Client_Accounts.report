@@ -39,20 +39,6 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_BU_Focus__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Coverage__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>IS_PARTNER</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Account_Owner_Active__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_Deactivated__c</column>
@@ -67,6 +53,20 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>US Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Allison Gordon</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

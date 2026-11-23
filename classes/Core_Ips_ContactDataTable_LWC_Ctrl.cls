@@ -10,7 +10,12 @@ public with sharing class Core_Ips_ContactDataTable_LWC_Ctrl { // Changed by tus
         List<string> columnList = new List<string>();
         List<string> fieldAPINameList = new List<string>();
         if (Schema.sObjectType.Core_Ips_ContactListView_LWC__mdt.isAccessible()) {
-            TableComponentMetadata =  [SELECT Id,FieldValue__c,HeaderValue__c,DeveloperName FROM Core_Ips_ContactListView_LWC__mdt WHERE DeveloperName=:contactListView];
+            // Venrublity Fix - Refering query to service class
+             TableComponentMetadata =  [SELECT Id,FieldValue__c,HeaderValue__c,DeveloperName FROM Core_Ips_ContactListView_LWC__mdt WHERE DeveloperName=:contactListView];
+            /*TableComponentMetadata = (List<Core_Ips_ContactListView_LWC__mdt>) Core_IPS_QueryService.queryRecords(
+                'SELECT Id,FieldValue__c,HeaderValue__c,DeveloperName FROM Core_Ips_ContactListView_LWC__mdt WHERE DeveloperName = :contactListView',
+                new Map<String, Object>{ 'contactListView' => contactListView }
+            );*/
         }
         
         for(Core_Ips_ContactListView_LWC__mdt mdt :TableComponentMetadata){
@@ -39,11 +44,23 @@ public with sharing class Core_Ips_ContactDataTable_LWC_Ctrl { // Changed by tus
         
         
         if(contactListView=='MyContacts'){
-            loggedInUser = [Select Id, Name,profileId, ContactId, Contact.AccountId From User where Id =: UserInfo.getUserId()];
+            // Venrublity Fix - Refering query to service class
+             loggedInUser = [Select Id, Name,profileId, ContactId, Contact.AccountId From User where Id =: UserInfo.getUserId()];
+            /*List<User> loggedInUserList = (List<User>) Core_IPS_QueryService.queryRecords(
+                'Select Id, Name,profileId, ContactId, Contact.AccountId From User where Id = :userId',
+                new Map<String, Object>{ 'userId' => UserInfo.getUserId() }
+            );
+            if(!loggedInUserList.isEmpty()){
+                loggedInUser = loggedInUserList[0];
+            }*/
             String loggedInUserAcctId = loggedInUser.Contact.AccountId;
             String loggedInUserContId = loggedInUser.ContactId ;
             // Venrublity Fix - Refering query to service class
             List<Contact> contactList = [Select id,Name,LastName, FirstName,Core_Status__c, Email, Account.Name, Core_IPS_Active__c, CreatedDate,AccountId From Contact Where AccountId =:loggedInUserAcctId AND Core_IPS_Active__c  = true   limit 50];
+            /*List<Contact> contactList = (List<Contact>) Core_IPS_QueryService.queryRecords(
+                'Select id,Name,LastName, FirstName,Core_Status__c, Email, Account.Name, Core_IPS_Active__c, CreatedDate,AccountId From Contact Where AccountId = :loggedInUserAcctId AND Core_IPS_Active__c = true limit 50',
+                new Map<String, Object>{ 'loggedInUserAcctId' => loggedInUserAcctId }
+            );*/
             for( Contact con:contactList ){
                 conDataTableData.add(con);
             }

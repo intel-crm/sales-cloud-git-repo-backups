@@ -15,9 +15,9 @@ trigger Core_CaseTrigger on Case (before insert, before update, before delete, a
 	    Core_CaseTrigger_Dispatcher.afterMethod(trigger.oldMap, trigger.newMap, trigger.old, trigger.new);  
     }
   // Addes By Shubham 10/Oct/20205 Hercules Team workflow to Apex trigger
-    if((trigger.isinsert || trigger.isupdate) && Trigger.isAfter){
+    /*if((trigger.isinsert || trigger.isupdate) && Trigger.isAfter){
         Core_CaseTrigger_Dispatcher.UpdateLastAssignQueufield(trigger.new);     
-}
+}*/
     
     /*
     // Below lines of Code written for Ask Commission Project

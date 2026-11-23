@@ -159,11 +159,7 @@ public class Core_IPS_CaseCreate_Test {
         sysAdimUser.ProfileId = ps.id;
         sysAdimUser.userroleid=role.id;
         
-       
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-             insert sysAdimUser;
-        }
+        insert sysAdimUser;
         System.runAs(sysAdimUser){
             List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
             insert listOfAccounts;

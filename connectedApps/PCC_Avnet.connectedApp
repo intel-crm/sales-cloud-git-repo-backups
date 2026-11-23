@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>sushmitax.sen.sharma@intel.com</contactEmail>
+    <label>PCC Avnet</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>MIIDETCCAfkCFAWW3hDuRs3jVbQAZXWLHehYKlMmMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNVBAYTAklOMQswCQYDVQQIDAJLUjELMAkGA1UEBwwCQkwxDDAKBgNVBAoMA0FWTjEOMAwGA1UECwwFQVZORVQwHhcNMjQwMTE5MTA1MzQ5WhcNMjUwMTE4MTA1MzQ5WjBFMQswCQYDVQQGEwJJTjELMAkGA1UECAwCS1IxCzAJBgNVBAcMAkJMMQwwCgYDVQQKDANBVk4xDjAMBgNVBAsMBUFWTkVUMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA00invfpkCLR6mFViIaK5YtXJ4kX4MEc2+mELdmZz2I10940ExK5fiaVnSlOGqZqpOobkBu//2M2f9TraqXxrZH+yYA8iouRDVHHET+8gy3bEzuKMbSCy4LL4PzD4DdUXwyvDPlN9F9tt3jojsiAzQFi1doiCCKy27/5ORbKQPdoOorIQELm373nIfqvu53Xo8lFU5r0kdPJ7WmBDVT+MgaEcauqY/nUz92kLbz4Ijd2bvL60vrulDMsMvNIbbpwDDdIufPMdE8atHdLRx4Qnep5eL7C/nA0jPHg81SFh3xLYi4vkGiE96Md0USe9CGsy5HQbsOKQDz8+dwsvUP2yGwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCsVH9Ub1m6Ro6gwgvM++CtIhTwcEFylaWk75knNcXgGx0/GPUrEkda+CY7ybp95oBWy4LF8rML2fBHctQdl4doq/j0dV0B+U7DCyYqI4zLpGEcay6sOjTc4NT94vdzCfjag+aFFzWkstoRxSfRihAOceqJHGb6sUzM2X/eDEksvGbkgLOcis454XetYOJnIWImIKaZLsfhtZLmY+rh/U3kd3Pmky9z+KKHXFJXkfOLCeGsjJsIu+7fcGd7JgUP57+oB+Dp3KBVEDpE8Yxo4XtT7njorek45y0zh9RTQWpVQIIusXRor7R256kXddPAMNRAJBzhrshMLxSVmXQOUyfH</certificate>
+        <consumerKey>3MVG9ysJNY7CaIHmfWttUndboDuMD5RLn6qDj68uo7QU.nCjgJTQN5mT8Q0d1ROnlk_Gbo7wVeYsA6SmkOe4I</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>PCC Avnet</permissionSetName>
+    <profileName>B2B API Partner</profileName>
+    <sessionPolicy>
+        <sessionTimeout>60</sessionTimeout>
+    </sessionPolicy>
+</ConnectedApp>

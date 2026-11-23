@@ -33,6 +33,7 @@
         
          public override void afterUpdate() {
              if(isActive('PRM_Benefit_Group_Benefit_Assoc')) {     //Retrieved from Custom Metadata 
+                 system.debug('Inside After Update loop :-');                 
                  PRM_Benefit_Group_Benefit_Assoc_Utility.updateBenefitOnAccount(Trigger.new,(Map<Id,PRM_Benefit_Group_Benefit_Association__c>) Trigger.oldMap);
                  PRM_Benefit_Group_Benefit_Assoc_Utility.benefitRemovalFromAccount(Trigger.new,(Map<Id,PRM_Benefit_Group_Benefit_Association__c>) Trigger.oldMap);
                //  PRM_EmailUtility.sendBenefitsEmailNotification(Trigger.new,(Map<Id,PRM_Benefit_Group_Benefit_Association__c>) Trigger.oldMap);

@@ -32,6 +32,7 @@
         description="Boolean flag to show Tax under mandatory fields based on program" />
     <aura:attribute name="vatOptInMandatory" type="String" />
     <aura:attribute name="bankMandatory" type="String" />
+    <!--to display the info message-->
     <aura:attribute name="infoMessageInd" type="Boolean" default="false"/>
     <aura:attribute name="taxMandatory" type="String" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
@@ -106,6 +107,7 @@
                                             <li>{!$Label.c.Core_MDF_Total_Invoice_Amount_Local}</li>
                                             <li>{!$Label.c.Core_MDF_OtherCostsnotReimbursable_Local}</li>
                                             <li>{!v.vatOptInMandatory}</li>
+                                           <!-- <li>{!$Label.c.Core_MDF_RMF_Applicable_VAT_Percentage_Required}</li> -->
                                             <aura:set attribute="else">
                                                 <li>{!$Label.c.Core_MDF_Title}</li>
                                                 <li>{!$Label.c.Core_MDF_ActivityNumber}</li>
@@ -142,11 +144,11 @@
                                             <li>{!$Label.c.Core_MDF_BulkClaimGuidelines3_RMF}</li>
                                         </aura:set>
                                     </aura:if>
-                                    <li>{!$Label.c.Core_MDF_BulkClaimGuidelines6}</li>		 
+                                    <li>{!$Label.c.Core_MDF_BulkClaimGuidelines6}</li>
+				    <li>{!$Label.c.Core_MDF_BulkClaimGuidelines7}</li>
                                     <aura:if isTrue="{!v.showMetricsGuideline}">
                                         <li>{!$Label.c.Core_MDF_RMF_IPA_Metrics_Message}</li>
                                     </aura:if>
-				    <li>{!$Label.c.Core_MDF_BulkClaimGuidelines7}</li>
                                 </ul>
                                 </p>
                                 <div class="slds-var-p-around_medium"/>

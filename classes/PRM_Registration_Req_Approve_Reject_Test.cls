@@ -223,5 +223,42 @@ public class PRM_Registration_Req_Approve_Reject_Test {
         Test.stopTest();
         System.assert(prmRegRequest != null);
     }
+    
+    //JB
+    @isTest
+    static void testCheckCompanyValidationStatus() {
+        
+        ChannelProgram channelPrg = [SELECT Id FROM ChannelProgram LIMIT 1];
+        
+        PRM_Registration_Request__c req = new PRM_Registration_Request__c(
+            Name = 'Test Req01',
+            PRM_Partner_Role__c = 'Distributor',
+            PRM_First_Name__c = 'Test1',
+            PRM_Last_Name__c = 'User01',
+            PRM_Email_ID__c = 'test172@spamok.com',
+            PRM_Contact_Country__c = 'US',
+            PRM_Legal_Agreements__c = 'IPA_TANDC',
+            PRM_Status__c = 'New',
+            PRM_Country__c = 'US',
+            PRM_Channel_Program__c = channelPrg.Id,
+            RecordTypeId = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId()
+        );
+        insert req;
+        
+        PRM_Registration_AI_Agent_Info__c agentInfo =new PRM_Registration_AI_Agent_Info__c(
+                PRM_Registration_Request__c = req.Id,
+                PRM_Status__c = 'In Progress'
+            );
+        insert agentInfo;
+        
+        Test.startTest();
+        
+        PRM_Registration_Req_Approve_Reject.CompanyValidationWrap result = PRM_Registration_Req_Approve_Reject.checkCompanyValidationStatus(req.Id);
+        
+        Test.stopTest();
+        
+        System.assertEquals(true, result.isValidationInProgress);
+    }
+    
 
 }

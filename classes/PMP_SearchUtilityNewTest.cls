@@ -222,7 +222,7 @@ public class PMP_SearchUtilityNewTest extends PMP_SearchWrapperStore {
         comp.PMP_Account_Dsc__c = 'test Desc';
         comp.PMP_Company_Lifecycle_Status_Nm__c = 'Published';
         comp.PMP_Account_Tag_Line__c = 'test tagline';
-        //comp.PMP_Account_Specialty__c = 'Cloud Data Center Specialist';
+        comp.PMP_Account_Specialty__c = 'Cloud Data Center Specialist';
         comp.PMP_Partner_Benefit_Type__c = 'Solutions Marketplace Basic Profile';
         comp.PMP_Partner_Segment_Nm__c = 'Client Computing';
         comp.PMP_Partner_Program_nm__c = 'Manufacturer';

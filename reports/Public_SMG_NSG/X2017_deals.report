@@ -4,18 +4,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_KPI_Date__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
@@ -30,7 +18,7 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>TOTAL_PRICE</field>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <description>Used for NSM Update</description>
     <filter>
@@ -39,7 +27,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
+            <value>,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -54,6 +42,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>nsg</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>NSG-Data Center</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -85,8 +80,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2020-09-17</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2016-12-26</startDate>
+        <interval>INTERVAL_AGO2FY</interval>
     </timeFrameFilter>
 </Report>

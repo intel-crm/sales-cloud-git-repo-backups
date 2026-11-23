@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>Core_IPS_CaseInterestedPartyHandler_Test</testClassName>
+    <testClassName>Core_IPS_CaseUpdateQueueable_Test</testClassName>
+    <testClassName>Core_IPS_IntelSupportTeam_Handler_Test</testClassName>
+    <testClassName>Core_IPS_Interested_Party_Ext_Con_Test</testClassName>
+    <testClassName>Core_IPS_MyIntel_3_0_Test</testClassName>
+    <testClassName>Core_IPS_ProductTriggerHandler_Test</testClassName>
+</ApexTestSuite>

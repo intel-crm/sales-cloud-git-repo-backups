@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="accountRequestId" type="String"/>
+    <lightning:button label="Refresh" onclick="{!c.updateAccountRequestField}"/>
+</aura:component>

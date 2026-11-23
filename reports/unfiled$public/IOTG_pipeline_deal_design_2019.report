@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Opportunity.Core_Opportunity_ID__c</field>
-    </columns>
-    <columns>
-        <field>FULL_NAME</field>
-    </columns>
-    <columns>
-        <field>ROLLUP_DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>OWNER_MANAGER</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>Opportunity.Core_First_Customer_Ship_Date__c</field>
@@ -41,6 +29,9 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Sales_Segments__c</field>
     </columns>
     <columns>
@@ -56,13 +47,16 @@
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
         <field>DESCRIPTION</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
@@ -75,9 +69,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -108,7 +99,7 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <scope>organization</scope>
+    <scope>salesteam</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
@@ -116,8 +107,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2021-03-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2019-10-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -77,7 +77,10 @@ webservice static String reProcessRecords(Id[] logEntries) {
              {
                 caseobj = new Case();
                 caseobj.id = logEntry.Core_sObjectId__c;
+                /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
+                if (Schema.sObjectType.Core_Log_Entry__c.fields.Core_severity__c.isUpdateable()) {
                 logEntry.Core_severity__c = 'Processed';
+                }
                 if(logEntry.Core_Origin__c !=null && logEntry.Core_Origin__c == 'PromoteCase')
                 {  
                     mapCaseIds.put(caseobj.id, caseobj); 
@@ -179,7 +182,7 @@ webservice static String reProcessRecords(Id[] logEntries) {
          }         
       }
       catch(Exception e)
-      {   }      
+      {  }      
       return listLogEntries;
    } //End of method: "List<Core_Log_entry__c> getLogEntries()"
 
@@ -259,6 +262,7 @@ webservice static String reProcessRecords(Id[] logEntries) {
                csCommIds = [SELECT id, Core_Promote_Status__c from Core_IPS_Case_Comments__c WHERE ID IN :caseCommIDs AND Core_Promote_Status__c = 'Failed'];  
            }
         //Filter out the Case comment objects which are not valid and update the status for only valid ones. Update the log entries for the attachment proomote failure       
+         
           for(Core_IPS_Case_Comments__c csComm:csCommIds)
           {
               csComm.Core_Promote_Status__c = 'In Progress';
@@ -270,7 +274,7 @@ webservice static String reProcessRecords(Id[] logEntries) {
           database.update(i_caseCommentLogIds);  
        }
        catch(Exception e)
-       {  }          
+       {}          
     } //End of Method: "void reProcessCaseComments(Map<Id, CaseComment> mapCaseCommentIds, List<Core_Log_Entry__c> i_caseCommentLogIds")
     
 //This method reprocesses the case attachments objects which are promote failed. it accepts unique Case attachments IDs 
@@ -290,6 +294,7 @@ webservice static String reProcessRecords(Id[] logEntries) {
                csAttIds = [SELECT id, Core_Promote_Status__c from Core_IPS_Case_Attachments__c WHERE ID IN :caseAttIDs AND Core_Promote_Status__c = 'Failed'];  
            }
            //Filter out the Att objects which are not valid and update the status for only valid ones. Update the log entries for the attachment proomote failure       
+           
            for(Core_IPS_Case_Attachments__c csAtt:csAttIds)
            {
                csAtt.Core_Promote_Status__c = 'In Progress';
@@ -332,7 +337,10 @@ webservice static String reProcessRecords(Id[] logEntries) {
         //start--Case promote status updation
         try{
             for(Case caseRecord: casesToBeUpdated){
-             caseRecord.Core_Promote_Status__c = 'Promote';
+               /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
+               //if (Schema.sObjectType.Case.fields.Core_Promote_Status__c.isUpdateable()) {
+                  caseRecord.Core_Promote_Status__c = 'Promote';
+               //}
              finalCsList.add(caseRecord); 
              //Database.update(caseRecord);
             }

@@ -123,7 +123,7 @@ public without sharing class Core_DescriptiveFeatureHandler {
        if(!lstOpportunityFact.isEmpty()){
            List<Database.upsertResult> uResults = Database.upsert(lstOpportunityFact,false);
            for (Database.upsertResult sr : uResults){
-               //If there are failed result             
+               //If there are failed result               
                if (!sr.isSuccess() || Test.isRunningTest()) {
                    for(Database.Error err : sr.getErrors()) {
                        //Get the instance of the opprtunity fact to throw up error
@@ -248,7 +248,7 @@ public without sharing class Core_DescriptiveFeatureHandler {
             // Field name should be what the field is called in Opportunity Facts, e.g. Core_Screen_Size__c for a
             // Feature Type of Screen Size
             fieldName = 'Core_' + Core_Utility.replaceSpecialCharacWithUnderscore(descFeature.Core_Feature_Type__c) + '__c';
-           
+            
             //TWC3123-6620 PCI Express field issue
             if(fieldName == Core_CRM_Utility.getCRMLabel('PCI_Express')){
                 fieldName = Core_CRM_Utility.getCRMLabel('If_PCI_Express');

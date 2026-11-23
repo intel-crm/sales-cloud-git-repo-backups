@@ -664,6 +664,41 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Allocated__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Allowed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Deal_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Deal_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Design_Assigned__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>CPT_Quota_Setup__c.CPT_Wins_Design_Quota__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>CPT_Quota_Setup__c.XX_CPT_Complete__c</field>
         <readable>true</readable>
@@ -939,11 +974,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>CPT_Territory_Target__c.CPT_CR_CCG_One_Intel_OEM_Target__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>CPT_Territory_Target__c.CPT_Quota_Period__c</field>
         <readable>true</readable>
@@ -1046,6 +1076,10 @@
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <recordTypeVisibilities>
+        <recordType>CPT_Quota_Setup__c.Quota_Setup_Default</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabSettings>
         <tab>CPT_Employee__c</tab>
         <visibility>Visible</visibility>

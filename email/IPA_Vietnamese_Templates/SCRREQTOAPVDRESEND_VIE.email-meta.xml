@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDRESEND_VIE</name>
     <style>none</style>
-    <subject>Hoàn thành Đơn xin tham gia Liên minh Đối tác Intel® của bạn</subject>
+    <subject>Complete your Intel® Partner Alliance application</subject>
     <textOnly>Bạn đã gần đến đích rồi!
 
 
@@ -23,8 +23,7 @@ Hoàn thành ngay
 
 Không thể truy cập liên kết trên?
 
-https://www.intel.com/content/www/vn/vi/secure/partner/forms/ipa-account-search.html.
-
+https://wcm-ciqa.intel.com/content/www/vn/vi/secure/partner/forms/ipa-account-search.html.
 Nếu bạn có bất cứ câu hỏi nào, hãy liên hệ với chúng tôi theo địa chỉ programs@intel.com.
 
 Xin cám ơn bạn!
@@ -33,7 +32,7 @@ Nhóm Liên minh Đối tác Intel® của bạn
 
 
 Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Bảo mật | Cookies</textOnly>
     <type>custom</type>

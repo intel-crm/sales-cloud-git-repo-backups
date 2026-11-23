@@ -57,6 +57,7 @@ public without sharing class Core_MDF_PartnerShipScore_to_Detail {
         //Swati - exclude RSA MD         
         String RSA_MDbudget = Core_MDF_CCP_ConstantClass.RMF_RSA_MD_BUDGET_TYPE;
         Date excludeDate = Date.valueOf(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Exclude_RSA_MD'));
+
         try{
             String query1 = 'select id,Core_MDF_Score_Nbr__c,Core_MDF_Case_Id__r.Core_MDF_Budget_Type_nm__c,Core_MDF_Case_Id__r.Core_MDF_Region_SubRegion_txt__c,Core_MDF_Case_Id__r.Core_Account_Geo__c,Core_MDF_Manual_Recovery_Amount_USD_Amt__c,Core_MDF_Claim_Amt__c,Core_MDF_Case_Id__r.Core_MDF_Channel_Program_txt__c, Core_MDF_Case_Id__r.Account.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c, Core_MDF_Case_Id__r.AccountId,Core_MDF_Case_Id__r.Account.Core_MDF_CoMarketing_Ultimate_Account__r.name,Core_MDF_Quarter__c, Core_MDF_Case_Id__r.Account.Core_MDF_Virtual_Corp_Account_Id__c,Core_MDF_Virtual_Corp_Account_Id__c,Core_MDF_Case_Id__r.ClosedDate FROM Core_MDF_Scorecard__c where Core_MDF_Case_Id__r.Core_MDF_Status__c =\'Review Completed\' AND Core_MDF_Score_Nbr__c <> null AND ( Core_MDF_Case_Id__r.Core_MDF_Budget_Type_nm__c != :RSA_MDbudget OR ( Core_MDF_Case_Id__r.Core_MDF_Budget_Type_nm__c = :RSA_MDbudget AND DAY_ONLY(Core_MDF_Case_Id__r.ClosedDate) <= :excludeDate ))';
             String query2 = '';

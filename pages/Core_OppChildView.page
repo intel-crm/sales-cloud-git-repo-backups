@@ -30,6 +30,7 @@
             <apex:outputPanel id="RecordTypeSelect" styleClass="customPopup" layout="block" rendered="{!isNewOppClicked}">
             
             <apex:pageBlock title="Select a Record Type">
+                <apex:outputText value="{!selectedRecordType2}" />
             <apex:pageBlockSection columns="2">
             <apex:selectList value="{!selectedRecordType}"  multiselect="false" size="1" styleClass="sbox ">
                 <apex:actionSupport event="onchange" action="{!setSelectedRecordType2}"/> 
@@ -37,7 +38,7 @@
             </apex:selectList> <br/>
            <apex:pageBlockSection columns="1"> 
            <apex:pageblockSectionItem >
-           <apex:commandButton action="{!newOpp}" value="Ok" id="selectRecordType" onclick="LightningPageInvoke('{!solutionGroup}','{!accId}','{!selectedRecordType2}');" styleClass="slds-button slds-m-left_medium slds-button_neutral"/>
+           <apex:commandButton action="{!newOpp}" value="Ok" id="selectRecordType" onclick="LightningPageInvoke('{!solutionGroup}','{!JSENCODE(accId)}','{!JSENCODE(selectedRecordType2)}');" styleClass="slds-button slds-m-left_medium slds-button_neutral"/>
            <apex:commandButton value="Cancel" action="{!newOpp}" styleClass="slds-button slds-button_neutral"/>
         </apex:pageblockSectionItem>
         </apex:pageBlockSection> 

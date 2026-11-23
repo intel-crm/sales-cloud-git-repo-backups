@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-07-2026
+ * @last modified on  : 03-09-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class Pricing_FieldSetFormController {
@@ -105,7 +105,7 @@ public with sharing class Pricing_FieldSetFormController {
                                               Pricing_Revised_Pricing_Start_Date_D_dt__c,Pricing_Deal_RFQ_Id__c,Pricing_Reference_Quote_Line_Nbr__r.Pricing_Deal_RFQ_Id__c,
                                               Pricing_Deal_RFQ_Status_Nm__c,Pricing_Change_Request_cb__c,Pricing_Reference_Quote_Line_Nbr__c,Pricing_Reference_Quote_Line_Nbr__r.SBQQ__ProductName__c,
                                               SBQQ__ProductName__c,Pricing_Other_Competitor_Product_Nm__c,Pricing_Other_Product_Nm__c,
-                                              Pricing_Status_Nm__c,Pricing_Integration_Status_Nm__c,Pricing_Tentative_ECAP_Price_Amt__c,
+                                              Pricing_Status_Nm__c,Pricing_Integration_Status_Nm__c,
                                               Pricing_Meet_Comp_Price_Amt__c,SBQQ__Quote__c,Pricing_Program_Type_Nm__c,Pricing_ECAP_Price_Amt__c
                                               From SBQQ__QuoteLine__c WHERE Id = : quoteLineId LIMIT 1];
         return quoteLineRecord;

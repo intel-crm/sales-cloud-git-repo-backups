@@ -5,28 +5,64 @@
 <body>
 <p> <img src="https://messagecenter.intel.com/v1/images/uploads/8741e3d0-e5e3-11e9-9d1b-2714d6c6e1fe.PNG" alt="" title="1.PNG" /></p>
 <p></p>
-<table width="720" class="MsoNormalTable" style="width: 741px; background: white; border: 1pt solid #e5e5e5;" border="1" cellpadding="0">
+<table width="900" class="MsoNormalTable" style="width: 741px; background: white; border: 1pt solid #e5e5e5;" border="1" cellpadding="0">
 <tbody>
 <tr style="height: 11px;">
 <td id="emailMainDiv" style="border: none; padding: 10.5pt 0.75pt 0.75pt 33pt; height: 11px; width: 720.619px;"></td>
 </tr>
 <tr style="height: 11.8625px;">
 <td style="border: none; padding: 10.5pt 45pt 0.75pt 33pt; height: 11.8625px; width: 661.612px;">
-<p>Welcome to Intel® Partner Marketing Studio</p>
+<p><strong>Welcome to Intel® Partner Marketing Studio</strong></p>
 <p></p>
-<p>Action Required</p>
+<p><strong> Action Required</strong></p>
 <p></p>
-<p>This notice is to inform you that you have been registered as a representative of <span style="font-family: 'Tahoma','sans-serif'; color: #0070c0;"> {!Account.Name} </span> by an Intel Representative.</p>
-<p>An account has been generated that will allow you to access the Intel® Partner Marketing Studio web portal at <span><u><a href="https://marketingstudio.intel.com">https://marketingstudio.intel.com</a></u></span>. Please follow the instructions below to get started. </p>
+<p>This notice is to inform you that you have been registered as a representative of <span>{!Account.Name} </span>by an Intel Representative.</p>
+<p>An account has been generated that will allow you to access the Intel® Partner Marketing Studio web portal at <span><a href="https://marketingstudio.intel.com">https://marketingstudio.intel.com</a></span>. Please follow the instructions below to get started. </p>
 <p></p>
 <p>Please retain this e-mail for future reference.</p>
+</td>
+</tr>
+<tr style="height: 58px;">
+<td style="border: none; padding: 10.5pt 45pt 0.75pt 33pt; height: 58px; width: 661.612px;">
 <p class="MsoNormal" style="line-height: 15.0pt;"><span style="font-family: 'Tahoma','sans-serif'; color: #666666;"><b style="mso-bidi-font-weight: normal;">E-mail Address:</b> </span><span style="font-family: 'Tahoma','sans-serif'; color: #0070c0;">{!Contact.Email}</span></p>
-<p>Your use of the Intel® Partner Marketing Studio is subject to the terms of your company’s Trademark Licensing Agreement with Intel.</p>
-<p>What you need to do</p>
-<p>Please follow this <u><a href="https://www.intel.com/content/www/us/en/secure/my-intel/dashboard.html">link</a></u> to complete your account set up or  copying the URL into your browser.</p>
+</td>
+</tr>
+<tr style="height: 274px;">
+<td style="border: none; padding: 10.5pt 0.75pt 0.75pt 33pt; height: 274px; width: 720.619px;">Your use of the Intel® Partner Marketing Studio is subject to the terms of your company’s Trademark Licensing Agreement with Intel.
+<table width="720">
+<tbody>
+<tr>
+<td>
+<p><strong>What you need to do</strong></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Please follow this <u><a href=" https://preview-marketingstudio.intel.com/homepage">link</a></u> to complete your account set up or  copying the URL into your browser.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
 <p>If you feel you have received this e-mail in error, please contact us <u><a href="https://www.intel.com/content/www/us/en/my-intel/marketing-studio-sign-in-help.html">here</a></u>.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p>Visit this <u><a href="https://www-ssl.intel.com/content/www/us/en/secure/my-intel/profile.html">link</a></u> any time to manage your profile.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p>Please DO NOT reply to this e-mail message. This is an automated response.<br /> To ensure that you continue receiving our e-mails, please add us to your address book.</p>
+</td>
+</tr>
+<tr>
+<td>
 <p>Your use of the Intel® Partner Marketing Studio is subject to the terms of your company’s Trademark Licensing Agreement with Intel.</p>
 </td>
 </tr>
@@ -39,8 +75,8 @@
 <div class="MsoNormal" align="center" style="text-align: center; line-height: 15.0pt;"><hr size="1" width="100%" noshade="noshade" style="color: #e5e5e5;" align="center" /></div>
 </td>
 </tr>
-<tr style="height: 15px;">
-<td style="border: none; padding: 9pt 0.75pt 0.75pt 33pt; height: 15px;">
+<tr style="height: 53px;">
+<td style="border: none; padding: 9pt 0.75pt 0.75pt 33pt; height: 53px;">
 <p class="MsoNormal" style="line-height: 15.0pt;"></p>
 </td>
 </tr>

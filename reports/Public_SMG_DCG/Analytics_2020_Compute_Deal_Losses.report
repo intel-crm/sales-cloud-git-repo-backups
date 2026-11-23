@@ -28,14 +28,7 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_Lost_Total_Price__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>

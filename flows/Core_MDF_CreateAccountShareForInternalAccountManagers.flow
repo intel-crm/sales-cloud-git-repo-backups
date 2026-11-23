@@ -2,157 +2,231 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Core_MDF_Add_it_to_AccountShare_Record</name>
+        <label>Add it to AccountShare Record</label>
+        <locationX>739</locationX>
+        <locationY>280</locationY>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>vAccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.UserOrGroupId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>sPGM.Core_MDF_Group_Id__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.AccountAccessLevel</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Edit</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.CaseAccessLevel</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>None</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.OpportunityAccessLevel</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>None</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_MDF_Add_vAccountShareTemp_to_sCollAccountShareToBeInserted</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Core_MDF_Add_it_to_AccountShare_Record_0</name>
+        <label>Add it to AccountShare Record</label>
+        <locationX>513</locationX>
+        <locationY>392</locationY>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.UserOrGroupId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.AccountAccessLevel</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.CaseAccessLevel</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>sAccountShareTemp.OpportunityAccessLevel</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_MDF_Loop_through_sCollPGMList</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Core_MDF_Add_vAccountShareTemp_to_sCollAccountShareToBeInserted</name>
+        <label>Add vAccountShareTemp to sCollAccountShareToBeInserted</label>
+        <locationX>739</locationX>
+        <locationY>392</locationY>
+        <assignmentItems>
+            <assignToReference>sCollAccountShareToBeInserted</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>sAccountShareTemp</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Core_MDF_Add_it_to_AccountShare_Record_0</targetReference>
+        </connector>
+    </assignments>
     <decisions>
-        <name>Core_MDF_Is_Program_Retail</name>
-        <label>Is SubGeo Present</label>
-        <locationX>786</locationX>
-        <locationY>371</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <name>Core_MDF_Check_if_sCollAccountShareToBeInserted_has_values</name>
+        <label>Check if sCollAccountShareToBeInserted has values</label>
+        <locationX>89</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
-            <name>If_GeoBased_Sharing_Not_Required</name>
+            <name>Core_MDF_sCollAccountShareToBeInserted_is_NOT_EMPTY</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>IsGeoBasedReq</leftValueReference>
+                <leftValueReference>sCollAccountShareToBeInserted</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Insert_sCollAccountShareToBeInserted</targetReference>
+            </connector>
+            <label>sCollAccountShareToBeInserted is NOT EMPTY</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_MDF_Check_if_sCollPGMList_is_NOT_NULL</name>
+        <label>Check if sCollPGMList is NOT NULL</label>
+        <locationX>514</locationX>
+        <locationY>164</locationY>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_sCollPGMList_is_NOT_NULL</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>sCollPGMList</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Loop_through_sCollPGMList</targetReference>
+            </connector>
+            <label>sCollPGMList is NOT NULL</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_MDF_Check_if_the_Record_Type_of_the_Parent_Fund_Account_is_Co_Marketing</name>
+        <label>Check if the Record Type of the Parent Fund Account is Co-Marketing</label>
+        <locationX>94</locationX>
+        <locationY>46</locationY>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Core_MDF_if_RT_is_Co_Marketing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>vCoMarketingRecordTypeBln</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>vCoMarketingUltimateAccount</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_MDF_Fetch_the_PGM_records</targetReference>
+            </connector>
+            <label>if RT is Co-Marketing</label>
+        </rules>
+        <rules>
+            <name>Core_MDF_if_RT_is_Intel</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>vCoMarketingRecordTypeBln</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Core_MDF_Fetch_the_PGM_record</targetReference>
+                <targetReference>Core_MDF_Fetch_the_PGM_records_0</targetReference>
             </connector>
-            <label>If GeoBased Sharing Not Required</label>
-        </rules>
-        <rules>
-            <name>If_GeoBased_Sharing_Required</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>IsGeoBasedReq</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Core_MDF_Check_for_SubGeo</targetReference>
-            </connector>
-            <label>If GeoBased Sharing Required</label>
+            <label>if RT is Intel</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>Core_MDF_SubGeo_Check</name>
-        <label>SubGeo Check</label>
-        <locationX>1422</locationX>
-        <locationY>134</locationY>
-        <defaultConnector>
-            <targetReference>Core_MDF_Fetch_the_PGM_records</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>If_SubGeo</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>ClaimActivityAllocationRecordtypeMappingRecord.Core_MDF_Region_cd__c</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <elementReference>vRegionv</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_PGM_Records</targetReference>
-            </connector>
-            <label>If SubGeo</label>
-        </rules>
-    </decisions>
-    <description>To Share Account with Account Managers, if Geo is populated, then share with geo group and ww group for the account else share with all geo and ww groups  for that account</description>
     <interviewLabel>Core_MDF_CreateAccountShareForInternalAccountManagers {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_CreateAccountShareForInternalAccountManagers</label>
-    <processMetadataValues>
-        <name>BuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
-        <name>CanvasMode</name>
-        <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
-        </value>
-    </processMetadataValues>
+    <loops>
+        <name>Core_MDF_Loop_through_sCollPGMList</name>
+        <label>Loop through sCollPGMList</label>
+        <locationX>513</locationX>
+        <locationY>276</locationY>
+        <assignNextValueToReference>sPGM</assignNextValueToReference>
+        <collectionReference>sCollPGMList</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Core_MDF_Add_it_to_AccountShare_Record</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Core_MDF_Check_if_sCollAccountShareToBeInserted_has_values</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Core_MDF_Check_for_SubGeo</name>
-        <label>Check for SubGeo</label>
-        <locationX>1149</locationX>
-        <locationY>134</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Core_MDF_SubGeo_Check</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_MDF_Channel_Program_Name_txt__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Core_MDF_ProgramName</elementReference>
-            </value>
-        </filters>
-        <object>Core_MDF_ClaimActAllocRecTypeMapping__mdt</object>
-        <outputReference>ClaimActivityAllocationRecordtypeMappingRecord</outputReference>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Region_cd__c</queriedFields>
-    </recordLookups>
-    <recordLookups>
-        <name>Core_MDF_Fetch_the_PGM_record</name>
-        <label>Fetch the PGM record</label>
-        <locationX>793</locationX>
-        <locationY>652</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Core_MDF_PGMIterater</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vCoMarketingUltimateAccount</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Channel_Program__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vProgram</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Group_Id__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Type_of_Access__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Internal</stringValue>
-            </value>
-        </filters>
-        <object>Core_MDF_Partner_Group_Mapping__c</object>
-        <outputReference>sCollectionPGMList</outputReference>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Group_Id__c</queriedFields>
-    </recordLookups>
+    <recordCreates>
+        <name>Core_MDF_Insert_sCollAccountShareToBeInserted</name>
+        <label>Insert sCollAccountShareToBeInserted</label>
+        <locationX>90</locationX>
+        <locationY>403</locationY>
+        <inputReference>sCollAccountShareToBeInserted</inputReference>
+    </recordCreates>
     <recordLookups>
         <name>Core_MDF_Fetch_the_PGM_records</name>
         <label>Fetch the PGM records</label>
-        <locationX>1569</locationX>
-        <locationY>372</locationY>
+        <locationX>516</locationX>
+        <locationY>46</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Iterator</targetReference>
+            <targetReference>Core_MDF_Check_if_sCollPGMList_is_NOT_NULL</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -177,13 +251,6 @@
             </value>
         </filters>
         <filters>
-            <field>Core_MDF_Region_cd__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vRegionv</elementReference>
-            </value>
-        </filters>
-        <filters>
             <field>Core_MDF_Type_of_Access__c</field>
             <operator>EqualTo</operator>
             <value>
@@ -191,48 +258,24 @@
             </value>
         </filters>
         <object>Core_MDF_Partner_Group_Mapping__c</object>
-        <outputReference>PGMList</outputReference>
-        <queriedFields>Id</queriedFields>
+        <outputReference>sCollPGMList</outputReference>
         <queriedFields>Core_MDF_Group_Id__c</queriedFields>
     </recordLookups>
     <recordLookups>
-        <name>Core_MDF_GetMetadataRecords</name>
-        <label>GetMetadataRecords</label>
-        <locationX>794</locationX>
-        <locationY>47</locationY>
+        <name>Core_MDF_Fetch_the_PGM_records_0</name>
+        <label>Fetch the PGM records</label>
+        <locationX>92</locationX>
+        <locationY>164</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Core_MDF_Is_Program_Retail</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_MDF_Technical_Program_Name__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Core_MDF_ProgramName</elementReference>
-            </value>
-        </filters>
-        <object>Core_MDF_ChannelProgram__mdt</object>
-        <outputAssignments>
-            <assignToReference>IsGeoBasedReq</assignToReference>
-            <field>Geo_Based_Sharing_Required__c</field>
-        </outputAssignments>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_PGM_Records</name>
-        <label>Get PGM Records</label>
-        <locationX>1310</locationX>
-        <locationY>379</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>PGMIteration</targetReference>
+            <targetReference>Core_MDF_Check_if_sCollPGMList_is_NOT_NULL</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Core_MDF_Account__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>vCoMarketingUltimateAccount</elementReference>
+                <elementReference>vParentFundAccountId</elementReference>
             </value>
         </filters>
         <filters>
@@ -250,20 +293,6 @@
             </value>
         </filters>
         <filters>
-            <field>Core_MDF_Region_cd__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vRegionv</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Sub_Region_cd__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vSubRegion</elementReference>
-            </value>
-        </filters>
-        <filters>
             <field>Core_MDF_Type_of_Access__c</field>
             <operator>EqualTo</operator>
             <value>
@@ -271,175 +300,13 @@
             </value>
         </filters>
         <object>Core_MDF_Partner_Group_Mapping__c</object>
-        <outputReference>sPGMCollList</outputReference>
-        <queriedFields>Id</queriedFields>
+        <outputReference>sCollPGMList</outputReference>
         <queriedFields>Core_MDF_Group_Id__c</queriedFields>
     </recordLookups>
-    <start>
-        <locationX>341</locationX>
-        <locationY>48</locationY>
-        <connector>
-            <targetReference>Core_MDF_GetMetadataRecords</targetReference>
-        </connector>
-    </start>
+    <startElementReference>Core_MDF_Check_if_the_Record_Type_of_the_Parent_Fund_Account_is_Co_Marketing</startElementReference>
     <status>Obsolete</status>
-    <subflows>
-        <name>Core_MDF_PGMIterater</name>
-        <label>PGMIterater</label>
-        <locationX>794</locationX>
-        <locationY>934</locationY>
-        <flowName>Core_MDF_PGMIteration</flowName>
-        <inputAssignments>
-            <name>Core_MDF_AccId</name>
-            <value>
-                <elementReference>vAccountId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>Core_MDF_PGMList</name>
-            <value>
-                <elementReference>sCollectionPGMList</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <subflows>
-        <name>Iterator</name>
-        <label>Iterator</label>
-        <locationX>1570</locationX>
-        <locationY>628</locationY>
-        <flowName>Core_MDF_PGMIteration</flowName>
-        <inputAssignments>
-            <name>Core_MDF_AccId</name>
-            <value>
-                <elementReference>vAccountId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>Core_MDF_PGMList</name>
-            <value>
-                <elementReference>PGMList</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <subflows>
-        <name>PGMIteration</name>
-        <label>PGMIteration</label>
-        <locationX>1309</locationX>
-        <locationY>628</locationY>
-        <flowName>Core_MDF_PGMIteration</flowName>
-        <inputAssignments>
-            <name>Core_MDF_AccId</name>
-            <value>
-                <elementReference>vAccountId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>Core_MDF_PGMList</name>
-            <value>
-                <elementReference>sPGMCollList</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <variables>
-        <name>ClaimActivityAllocationRecordtypeMappingRecord</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_ClaimActAllocRecTypeMapping__mdt</objectType>
-    </variables>
-    <variables>
-        <name>Core_MDF_FlagForSubRegion</name>
-        <dataType>Boolean</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <booleanValue>false</booleanValue>
-        </value>
-    </variables>
-    <variables>
-        <name>Core_MDF_FlagSubRegionCheck</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>Core_MDF_ProgNames</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>Core_MDF_ProgramName</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <stringValue></stringValue>
-        </value>
-    </variables>
-    <variables>
-        <name>Core_MDF_ReturnList</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>Core_MDF_ReturnText</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>IsGeoBasedReq</name>
-        <dataType>Boolean</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <booleanValue>false</booleanValue>
-        </value>
-    </variables>
-    <variables>
-        <name>PGMList</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>PGMRecTemp</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>sAccntShareTemp</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>AccountShare</objectType>
-    </variables>
     <variables>
         <name>sAccountShareTemp</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>AccountShare</objectType>
-    </variables>
-    <variables>
-        <name>sAcctShareTemp</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
@@ -454,38 +321,6 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>AccountShare</objectType>
-    </variables>
-    <variables>
-        <name>sCollAcctShareToBeInserted</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>AccountShare</objectType>
-    </variables>
-    <variables>
-        <name>sCollectionAccountShareToBeInserted</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>AccountShare</objectType>
-    </variables>
-    <variables>
-        <name>sCollectionPGMList</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>true</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>sCollPGMappingList</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
     </variables>
     <variables>
         <description>This will contain the PGM records list fetched.</description>
@@ -505,80 +340,12 @@
         <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
     </variables>
     <variables>
-        <name>sPGMCollectionList</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>sPGMCollList</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>sPGMRec</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>sPGMRecord</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>sRecPGM</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>sRecPGM1</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
-    </variables>
-    <variables>
-        <name>SubGeo_Present</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <stringValue></stringValue>
-        </value>
-    </variables>
-    <variables>
-        <name>SubGeoCheck</name>
-        <dataType>Boolean</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <booleanValue>false</booleanValue>
-        </value>
-    </variables>
-    <variables>
         <description>This will contain the Id of the account.</description>
         <name>vAccountId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
-        <isOutput>true</isOutput>
+        <isOutput>false</isOutput>
         <value>
             <stringValue></stringValue>
         </value>
@@ -633,27 +400,6 @@
         <value>
             <stringValue></stringValue>
         </value>
-    </variables>
-    <variables>
-        <name>vRegion</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>vRegionv</name>
-        <dataType>Picklist</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>vSubRegion</name>
-        <dataType>Picklist</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
     </variables>
     <variables>
         <description>This will contain the top Co-Marketing Account Id.</description>

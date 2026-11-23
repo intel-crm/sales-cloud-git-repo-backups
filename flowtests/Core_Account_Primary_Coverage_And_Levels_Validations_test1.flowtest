@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Core_Account_Primary_Coverage_And_Levels_Validations</flowApiName>
+    <label>test1</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;Account_Ownership_Transfer_Requested__c&quot;:false,&quot;BillingCity&quot;:&quot;Indore&quot;,&quot;BillingCountry&quot;:&quot;IND&quot;,&quot;BillingCountryCode&quot;:&quot;IND&quot;,&quot;BillingPostalCode&quot;:&quot;452001&quot;,&quot;BillingState&quot;:&quot;MP&quot;,&quot;BillingStateCode&quot;:&quot;MP&quot;,&quot;BillingStreet&quot;:&quot;,15, Sikh Mohalla, Shop No 124,prime Trade Center&quot;,&quot;Core_Account_Country__c&quot;:&quot;India&quot;,&quot;Core_Account_State_Province__c&quot;:&quot;Indore&quot;,&quot;Core_Account_Team_Audit_Complete__c&quot;:true,&quot;Core_Address_Details__c&quot;:&quot;,15, Sikh Mohalla, Shop No 124,prime Trade CenterMPIndoreIND452001&quot;,&quot;Core_Allow_Opportunity_Account_Edit__c&quot;:false,&quot;Core_B2B_Entitlement__c&quot;:false,&quot;Core_Business_Party_Id__c&quot;:&quot;1000830845&quot;,&quot;Core_CIM_ID__c&quot;:&quot;13364502&quot;,&quot;Core_Change_Review__c&quot;:false,&quot;Core_Customer_Aggregation_Type__c&quot;:&quot;UNFD_CTRY_CUST&quot;,&quot;Core_Data_Country_Nm__c&quot;:&quot;Afghanistan&quot;,&quot;Core_Data_Simplified_Account_Nm__c&quot;:&quot;test_201&quot;,&quot;Core_Deactivated__c&quot;:false,&quot;Core_Direct_Account_Active_Ind__c&quot;:false,&quot;Core_Disposition_as_PLCL__c&quot;:false,&quot;Core_ERPM_IsB2B__c&quot;:false,&quot;Core_Export_Compliance_Block__c&quot;:false,&quot;Core_Fully_Executed_NDA__c&quot;:false,&quot;Core_Geo__c&quot;:&quot;INDIA&quot;,&quot;Core_High_Priority_Account__c&quot;:false,&quot;Core_IPS_Active__c&quot;:false,&quot;Core_Intel_Partner_Alliance_PartnerGroup__c&quot;:false,&quot;Core_IsODM__c&quot;:false,&quot;Core_Is_Active__c&quot;:false,&quot;Core_Is_Opportunity_Account__c&quot;:false,&quot;Core_Is_PAG_Member_Ind__c&quot;:false,&quot;Core_Is_Pricing_Parent_ChkBox__c&quot;:false,&quot;Core_Lead_Conversion_Flag__c&quot;:false,&quot;Core_MDF_CoMarketingActive__c&quot;:false,&quot;Core_MDF_CoMarketingAgency__c&quot;:false,&quot;Core_MDF_Enabled_Auto_Transfer__c&quot;:false,&quot;Core_MDF_Is_Top_Account_Ind__c&quot;:false,&quot;Core_MDM_Deactivated__c&quot;:false,&quot;Core_MDM_Status__c&quot;:&quot;APRV&quot;,&quot;Core_Marked_for_Deletion__c&quot;:false,&quot;Core_Military_Aerospace_and_Government__c&quot;:false,&quot;Core_Not_an_Embargoed_Country__c&quot;:false,&quot;Core_Not_on_Denied_Persons_List__c&quot;:false,&quot;Core_Notify_Owner__c&quot;:false,&quot;Core_Owner_Changed_From_Uncovered__c&quot;:false,&quot;Core_PMP_Membership_Change_Ind__c&quot;:false,&quot;Core_PSG_Account__c&quot;:false,&quot;Core_Partner_Account__c&quot;:false,&quot;Core_PrimaryAccountCalucationLogic__c&quot;:false,&quot;Core_Private__c&quot;:false,&quot;Core_RDC_Content_Restriction__c&quot;:false,&quot;Core_Sub_Geo__c&quot;:&quot;INDIA&quot;,&quot;Core_Sys_Next_Account__c&quot;:true,&quot;Core_System_Siebel_Account_Matched__c&quot;:false,&quot;Core_Uncover_Marked_for_Clean_Up__c&quot;:false,&quot;Exception_Opid__c&quot;:false,&quot;HG_Insights__HG_Id__c&quot;:&quot;10BBBBC1A6162052B01348525608A827&quot;,&quot;HG_Insights__HG_Match_Status__c&quot;:&quot;Matched&quot;,&quot;HG_Insights__HG_Matched_Date__c&quot;:&quot;2024-12-10&quot;,&quot;Is_6Sense_Integration_Enabled__c&quot;:false,&quot;KCR_Is_Completed_Ind_Temp__c&quot;:false,&quot;Lead_to_Account_on_Contact_NoOpportunity__c&quot;:false,&quot;Name&quot;:&quot;IT SERVICES&quot;,&quot;OwnerId&quot;:&quot;005o0000001zEZiAAM&quot;,&quot;RecordTypeId&quot;:&quot;012o0000000GlzTAAS&quot;,&quot;SBQQ__AssetQuantitiesCombined__c&quot;:false,&quot;SBQQ__CoTermedContractsCombined__c&quot;:false,&quot;SBQQ__IgnoreParentContractedPrices__c&quot;:false,&quot;SBQQ__PreserveBundle__c&quot;:false,&quot;Unified_Hierarchy_View__c&quot;:&quot;Afghanistan&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.AccountNumber</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

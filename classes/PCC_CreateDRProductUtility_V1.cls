@@ -17,7 +17,7 @@ Global with sharing class PCC_CreateDRProductUtility_V1 {
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_SEVERITY = 'Medium';
     public static final String LOG_ENTRY_INFO     = 'info'; 
-    
+    //public static final Id cpId = [SELECT id FROM ChannelProgram where Name='Partner Covers Customer (PCC)' LIMIT 1].Id;
     //public static final List<Id> cpList = new List<Id>{Label.PCC_ChannelProgramId};
     
 /*****************************************************************************************************************

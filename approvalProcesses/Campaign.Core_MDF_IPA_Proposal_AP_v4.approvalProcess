@@ -68,7 +68,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>ccp.l1.approverqueue@intel.com.crm</name>
+                <name>ccp.l1.approverqueue@devintcrm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -125,7 +125,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>program.officereviewer.queue@intel.com.crm</name>
+                <name>program.officereviewer.queue@devintcrm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -254,7 +254,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>l2.regional.marketingqueue@intel.com.crm</name>
+                <name>l2.regional.marketingqueue@devintcrm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
@@ -334,7 +334,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>l2.regional.salesqueue@intel.com.crm</name>
+                <name>l2.regional.salesqueue@devintcrm.intel.com</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>

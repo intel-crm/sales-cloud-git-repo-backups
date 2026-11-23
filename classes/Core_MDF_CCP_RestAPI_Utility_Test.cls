@@ -546,7 +546,7 @@ private class Core_MDF_CCP_RestAPI_Utility_Test {
                 Core_MDF_User_Type_nm__c = 'External User',
                 Core_MDF_Field_API_Name_txt__c = Core_MDF_Campaign_APIConstants.LEGACY_CAMPAIGN_PROGRAM_FIELD,
                 Core_MDF_Field_Label_txt__c = 'Program Name',
-                //API_Visibility__c = true,
+                API_Visibility__c = true,
                 Core_MDF_Section_id__c=sec1.id
             ),
             new Core_MDF_Custom_Layout_Configurations__c(
@@ -555,7 +555,7 @@ private class Core_MDF_CCP_RestAPI_Utility_Test {
                 Core_MDF_User_Type_nm__c = 'External User',
                 Core_MDF_Field_API_Name_txt__c = 'Name',
                 Core_MDF_Field_Label_txt__c = 'Campaign Name',
-                //API_Visibility__c = true,
+                API_Visibility__c = true,
                 Core_MDF_Section_id__c=sec1.id
             )
         };
@@ -577,9 +577,9 @@ private class Core_MDF_CCP_RestAPI_Utility_Test {
             'Master'
         );
         Test.stopTest();
-		System.assertNotEquals(null, fields);
-        //System.assert(fields.contains('Core_MDF_Channel_Program__r.Name'));
-        //System.assertEquals('Program Name', normalizedFieldLabel);
-        //System.assertEquals('Campaign Name', standardFieldLabel);
+
+        System.assert(fields.contains('Core_MDF_Channel_Program__r.Name'));
+        System.assertEquals('Program Name', normalizedFieldLabel);
+        System.assertEquals('Campaign Name', standardFieldLabel);
     }
 }

@@ -52,7 +52,7 @@
     </values>
     <values>
         <field>Core_MDF_Keywords__c</field>
-        <value xsi:type="xsd:string">budget, budgets, partner marketing budget, fund, loader, create, ipa</value>
+        <value xsi:type="xsd:string">budget, budgets, partner marketing budget, fund, loader, create, transfer, move, reallocate, ipa</value>
     </values>
     <values>
         <field>Core_MDF_Permission_Set_Name__c</field>
@@ -84,7 +84,7 @@
     </values>
     <values>
         <field>Core_MDF_Use_Cases__c</field>
-        <value xsi:type="xsd:string">Use when: creating budgets for IPA Program</value>
+        <value xsi:type="xsd:string">Use when: creating, loading, or transferring budget for IPA Program</value>
     </values>
     <values>
         <field>Core_MDF_WW_Only__c</field>

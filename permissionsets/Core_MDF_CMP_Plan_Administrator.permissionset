@@ -137,6 +137,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Target_Setting_Line_Item__c.Core_MDF_Ultimate_Account_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Target_Setting__c.Core_MDF_Description_txt__c</field>
         <readable>true</readable>

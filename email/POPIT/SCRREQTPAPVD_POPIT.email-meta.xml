@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>Status Change- Requested to Approved</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTPAPVD_POPIT</name>
+    <style>none</style>
+    <subject>Intel Enrollment Confirmation</subject>
+    <textOnly>Intel Registration Confirmation
+
+Verify your email address
+
+Action Required
+
+Welcome {!Contact.FirstName} {!Contact.LastName},
+
+Thank you for your interest! Please follow this link to complete your set up.
+
+Email ID:  {!Contact.Email}
+
+
+If you have questions, contact Intel Customer Support.
+
+
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving our e-mails, please add us to your address book.
+Visit My Intel any time to manage your profile.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

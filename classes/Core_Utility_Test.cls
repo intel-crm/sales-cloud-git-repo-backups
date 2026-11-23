@@ -16,7 +16,7 @@ public class Core_Utility_Test {
     * Return Type  : None
     * Parameter    : None
     */
-   /** static testMethod void testUtilitymethods() {
+    static testMethod void testUtilitymethods() {
     
         //Declare/Initialize the Variables
         List<Lead> lstLead = new List<Lead>();
@@ -139,7 +139,7 @@ public class Core_Utility_Test {
           System.debug(System.Label.Core_Exception+e.getMessage());
         }    
     }
-    **/
+    
     static testMethod void testUtilitymethods3() {
     
         //Declare/Initialize the Variables
@@ -329,11 +329,11 @@ public class Core_Utility_Test {
         SelectOption option4 = new SelectOption('D','D');
         options.add(option4);
         Core_Utility.FieldToSort sortField=null;
-         List<string>  str = new List<string>();
-         str.add('00eo0000000f7Gd');
-          str.add('00eo0000000f7GT');
-           str.add('00eo0000000TVVi');
-        String userId = '00eo0000000TVVi';
+        List<string>  str = new List<string>();
+        str.add('00eo0000000f7Gd');
+        str.add('00eo0000000f7GT');
+        str.add('00eo0000000TVVi');
+        String userId = '005o0000000TVVi';
         Core_Utility.getPartnerUserType(userId);
         Core_Utility.isSupOrgAdmPermUser(userId);
         Core_Utility.stripandunescapeHtmlTags(userId);

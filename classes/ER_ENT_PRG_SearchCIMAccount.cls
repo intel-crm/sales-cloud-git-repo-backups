@@ -1,13 +1,13 @@
 public without sharing class ER_ENT_PRG_SearchCIMAccount {
-    ER_CIM_Request__mdt cimMdt = [Select Id, MasterLabel,API_Key__c, PRM_Async_Id__c, PRM_Calling_System__c, PRM_Restriction_Level__c, PRM_Max_Records__c, PRM_Max_Score__c, PRM_Min_Score__c from ER_CIM_Request__mdt where MasterLabel =: System.Label.PRM_Dupe_Scores];
+    PRM_CIM_Request__mdt cimMdt = [Select Id, MasterLabel,API_Key__c, PRM_Async_Id__c, PRM_Calling_System__c, PRM_Restriction_Level__c, PRM_Max_Records__c, PRM_Max_Score__c, PRM_Min_Score__c from PRM_CIM_Request__mdt where MasterLabel =: System.Label.PRM_Dupe_Scores];
     public map<id,contact> acctCont = new map<id,contact>();
     public string accCountry;
     
     //PRM_CIMSearchResults__c is a generic object to Capture the cim response
-    //Use Object(Data contract) Instead of so many parameters
+    //Use Object(Data contract) Instead of so many parameters  
     public list<PRM_CIMSearchResults__c> getCimResults(String accName,String accAddr,String accPostalCode,String accCity,String accCountry,String accStateProvince,String rcdLimit,String searchScore,String companyWebsite,String regEmail,String AccountType, Boolean fetchEmailDomainBasedAccts,set<id> accountsSfdc,String partnerRole,Boolean isProgramBased)
     {
-        
+          
         if(!isProgramBased)
         {
             ER_SearchSalesCloudAccounts.strCountryCode = accCountry;
@@ -51,17 +51,17 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         }
         requestDetail.BusinessOrganization = busOrg;
         if (rcdLimit==null){
-            rcdLimit= cimMdt.PRM_Max_Records__c;
+            rcdLimit=String.valueOf(20);
         }
         if(searchScore==null){
-            searchScore=string.valueof(cimMdt.PRM_Min_Score__c);   
+            searchScore=string.valueof(10);   
         }
-		requestDetail.MaximumNumberOfRecordsToReturn = rcdLimit;
-        requestDetail.CallingSourceSystem = cimMdt.PRM_Calling_System__c;
-        requestDetail.MandatoryFieldRestrictionLevel = Integer.valueOf(cimMdt.PRM_Restriction_Level__c);
+        requestDetail.MaximumNumberOfRecordsToReturn = rcdLimit;
+        requestDetail.CallingSourceSystem = 'SLSCLD';
+        requestDetail.MandatoryFieldRestrictionLevel = Integer.valueOf(20);
         requestDetail.MinimumSearchScore = Integer.valueOf(searchScore);
         requestDetail.IncludeDefaultAttributesForSourceTypes = False;
-        requestDetail.AsynchronousRequestId = cimMdt.PRM_Async_Id__c;
+        requestDetail.AsynchronousRequestId = Null;
         
         //Building http Request for CIM Callout
         HttpRequest req = new HttpRequest();
@@ -174,7 +174,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
             cimResults = null;
         }
         return cimResults;
-    }
+    } 
     
     // Mapping CIM results to PRM_CIMSearchResults__c Object 
     public list<PRM_CIMSearchResults__c> handleResponse(PRM_CIMWrapper wrapResp,set<id> accountsSfdc,String regEmail,String partnerRole,Boolean isProgramBased){
@@ -283,7 +283,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                     if(validCimAccountMap.containsKey(respWrap.organization[i].sourceRecords.SourceRecord[j].SourceBusinessOrganization.BusinessOrganizationPartyId) || validCimAccountMap.values().contains(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId)){
                        
                         //if(respWrap.organization[i].searchScore > maxVal && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD'){
-                        if(respWrap.organization[i].searchScore >= Integer.valueOf(cimMdt.PRM_Max_Score__c) && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD'){
+                        if(respWrap.organization[i].searchScore >= Integer.valueOf(82) && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD'){
                             maxVal = respWrap.organization[i].searchScore;
                             counterMax = counterMax + 1;
                             // Get the map for the organization searchscore and source records
@@ -295,8 +295,8 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                             // }
                         } else
                             // Get the map for the organization searchscore and source records
-                            //if((respWrap.organization[i].searchScore >= Integer.valueOf(cimMdt.PRM_Min_Score__c) && respWrap.organization[i].searchScore < Integer.valueOf(cimMdt.PRM_Max_Score__c)) && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD' && counterMax == 0){
-                            if((respWrap.organization[i].searchScore >= Integer.valueOf(cimMdt.PRM_Min_Score__c) && respWrap.organization[i].searchScore < Integer.valueOf(cimMdt.PRM_Max_Score__c)) && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD'){
+                            //if((respWrap.organization[i].searchScore >= Integer.valueOf(10) && respWrap.organization[i].searchScore < Integer.valueOf(82)) && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD' && counterMax == 0){
+                            if((respWrap.organization[i].searchScore >= Integer.valueOf(10) && respWrap.organization[i].searchScore < Integer.valueOf(82)) && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD'){
                                 maxVal = respWrap.organization[i].searchScore;
                                 cimSearchScoreMap.put(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId,respWrap.organization[i].searchScore);
                                 cimSourceRecordsMap.put(respWrap.organization[i].sourceRecords.SourceRecord[j],respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId);
@@ -391,7 +391,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         list<PRM_CIMSearchResults__c> sortedSearchResultsList = new list<PRM_CIMSearchResults__c>();
         map<string,PRM_CIMSearchResults__c> accountCimMapUnSorted = new map<string,PRM_CIMSearchResults__c>();
         
-        // Get the values from wrapper 
+        // Get the values from wrapper  
         map<PRM_CIMWrapper.SourceRecord,string> cimSourceRecordsMap=cimDataWrap.cimSourceRecordsMap;
         map<string,PRM_CIMWrapper.Organization> cimOrganizationMap=cimDataWrap.cimOrganizationMap;
         map<string,integer> cimSearchScoreMap=cimDataWrap.cimSearchScoreMap;

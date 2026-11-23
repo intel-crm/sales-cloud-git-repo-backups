@@ -3,39 +3,10 @@
     <apiVersion>57.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <name>ISO_field_Check</name>
-        <label>ISO field Check</label>
-        <locationX>545</locationX>
-        <locationY>323</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Contact_valid_for_ISO_assignment</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_IPS_Intel_Support_Owner__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Core_IPS_Intel_Support_Owner__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Label.PRM_IPARegistration_Integration_UserId</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_1</targetReference>
-            </connector>
-            <label>Contact valid for ISO assignment</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>myRule_1</name>
         <label>Update ISO as Owner for Intel Contact</label>
         <locationX>248</locationX>
-        <locationY>431</locationY>
+        <locationY>335</locationY>
         <defaultConnector>
             <targetReference>myRule_5</targetReference>
         </defaultConnector>
@@ -60,7 +31,7 @@
         <name>myRule_5</name>
         <label>Check for IPA User</label>
         <locationX>446</locationX>
-        <locationY>539</locationY>
+        <locationY>455</locationY>
         <defaultConnectorLabel>FALSE_Check for IPA User</defaultConnectorLabel>
         <rules>
             <name>TRUE_myRule_5</name>
@@ -123,7 +94,7 @@ Actions for Contact Creation</description>
         <name>myRule_1_A1</name>
         <label>Core_Update_ISO_to_ContactOwner</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>455</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>OwnerId</field>
@@ -144,7 +115,7 @@ Actions for Contact Creation</description>
         <name>myRule_5_A1</name>
         <label>Remove ISO</label>
         <locationX>314</locationX>
-        <locationY>647</locationY>
+        <locationY>575</locationY>
         <inputAssignments>
             <field>Core_IPS_Intel_Support_Owner__c</field>
             <value>
@@ -154,10 +125,10 @@ Actions for Contact Creation</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>419</locationX>
+        <locationX>122</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>ISO_field_Check</targetReference>
+            <targetReference>myRule_1</targetReference>
         </connector>
         <object>Contact</object>
         <recordTriggerType>Create</recordTriggerType>

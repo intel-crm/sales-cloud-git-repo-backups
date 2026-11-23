@@ -8,7 +8,7 @@ public with sharing class Core_DDR_Batch_Handler{
         
         //Create a set for Roles
         Set<id> userRoleSet = new Set<id>();
-        List<Core_Design_Registration_Batch__c> designRegBatchRoleList = [select id, Core_Partner_Account_Id__c from Core_Design_Registration_Batch__c where id IN: newDR_Stagelst with USER_MODE];
+        List<Core_Design_Registration_Batch__c> designRegBatchRoleList = [select id, Core_Partner_Account_Id__c, owner.UserRoleId from Core_Design_Registration_Batch__c where id IN: newDR_Stagelst];
         
         Set<Id> setPartnerAccIds = new Set<Id>();
         for(Core_Design_Registration_Batch__c iDesign : designRegBatchRoleList)

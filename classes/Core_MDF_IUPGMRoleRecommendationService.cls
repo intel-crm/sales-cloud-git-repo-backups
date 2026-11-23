@@ -1,7 +1,44 @@
 /******************************************************************************************************
 * Class Name  : Core_MDF_IUPGMRoleRecommendationService
 * Description : AI-assisted (RAG) role recommendation for the IUPGM chatbot flow.
-* Called From :    Core_MDF_IUPGM_RequestAPI 
+*
+*               RETRIEVAL     - Deterministic MDT metadata/keyword pre-filtering happens in the CALLER
+*                                (Core_MDF_IUPGM_RequestAPI) before this class is ever invoked. This
+*                                class never queries the full Rule Config MDT itself - it only ever
+*                                works off the short, already-narrowed candidate list it is given.
+*               AUGMENTATION  - Each candidate role is expanded into a rich contextual document
+*                                (label, program, purpose, keywords, use cases, access requirements)
+*                                and injected directly into the prompt sent to the existing CCP
+*                                Generative AI chat endpoint. NO NEW ENDPOINT OR NAMED CREDENTIAL IS
+*                                INTRODUCED - this reuses the exact same "callout:Core_MDF_CCP_GenAI"
+*                                Named Credential + GPT-4o deployment already used by
+*                                Core_MDF_GenAIProcessing / Core_MDF_AiFieldSuggestions.
+*               GENERATION    - The model ranks/explains the candidates and returns confidence scores
+*                                as strict JSON (one callout, both query-understanding and reranking
+*                                are done together to keep governor-limit usage minimal).
+*               GUARDRAIL     - Every role label the model returns is verified against the real MDT
+*                                candidate map before it is ever surfaced. A hallucinated/unknown/
+*                                misspelled role is silently dropped - never shown to the user. This
+*                                mirrors the anti-hallucination sanitizer pattern already used in
+*                                Core_MDF_AiFieldSuggestions.sanitizePicklistFields() and preserves the
+*                                "AI recommends, Salesforce validates" principle.
+*
+*               OPTIONAL PLATFORM RAG HOOK - if the CCP Generative AI platform already has (or later
+*                                gets) a managed knowledge base / Azure AI Search index wired to the
+*                                same chat deployment, set the Custom Label
+*                                Core_MDF_IUPGM_RoleReco_DataSource_Index to that index name and this
+*                                class will automatically include a "data_sources" grounding block on
+*                                the SAME request (Azure OpenAI "on your data" pattern) - still no new
+*                                endpoint. Until that label is populated, the class relies purely on
+*                                the in-context grounding described above, which already produces
+*                                correct, independently-verified results on its own.
+*
+*               RESILIENCE    - The public entry point never throws. Any internal failure (callout
+*                                error, timeout, malformed response) results in a RecommendationResult
+*                                with success = false so the caller can fall back to its own
+*                                deterministic keyword scoring without interrupting the request.
+*
+* Called From :    Core_MDF_IUPGM_RequestAPI (role disambiguation branch only - no new REST endpoint)
 * Created By  :    Ramapriya
 ******************************************************************************************************/
 public without sharing class Core_MDF_IUPGMRoleRecommendationService {

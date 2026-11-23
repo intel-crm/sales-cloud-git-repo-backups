@@ -2,15 +2,15 @@
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
     <canvasConfig>
         <accessMethod>Get</accessMethod>
-        <canvasUrl>https://goto/eot</canvasUrl>
+        <canvasUrl>https://goto/eottest</canvasUrl>
         <locations>Aura</locations>
         <samlInitiationMethod>None</samlInitiationMethod>
     </canvasConfig>
-    <contactEmail>anupamx.agarwal@intel.com</contactEmail>
+    <contactEmail>lakshman.k.bachu@intel.com</contactEmail>
     <label>Intel IT</label>
     <oauthConfig>
         <callbackUrl>https://localhost:8443/sdk/callback.html</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6rrsz1KmC8koqD9nCTl0szHT4doKzrzVJhY7fxpHrNSROA3se9C5CBKzEBDz</consumerKey>
+        <consumerKey>3MVG9ysJNY7CaIHnXtkJBm9UdfINPMY9eEn7ns7Z_Dmg5eu1C6qUPIlPo.70RX85nMRSPRU__SC04c5q9s0Dh</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>

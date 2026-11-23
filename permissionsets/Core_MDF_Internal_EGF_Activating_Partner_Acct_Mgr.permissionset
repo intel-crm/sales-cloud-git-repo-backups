@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Activating Partner Account Manager permission for EGF</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>CCP Internal EGF Activating Partner Account Manager</label>
+    <license>Salesforce</license>
+</PermissionSet>

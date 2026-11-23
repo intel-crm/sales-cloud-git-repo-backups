@@ -49,7 +49,7 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
             batchProcessing.Core_Start_Date_Time__c = jobStartTime; 
             insert batchProcessing;
         
-            //system.debug('###batchProcessing:->'+batchProcessing);
+           
             batchProcessingLineItem = new Batch_Processing_Line_Item__c(Batch_Processing__c = batchProcessing.id);
             
             List<Database.UpsertResult> totalRecords = new List<Database.UpsertResult>(); // Total no of records processed 
@@ -58,11 +58,11 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
             if(!staticResourceNames.isEmpty()) {
                 
                 currentFileNameToProcess = staticResourceNames[0]; // current processing file name
-                //System.debug('currentFileNameToProcess = '+currentFileNameToProcess);
+                
                 
                 //preparing the class name dynamically based on current staticresource file name
                 className = 'PMP_'+currentFileNameToProcess;
-                //System.debug('className = '+className);
+                
         
                 //instantiating processing class name dynamically
                 Type t = Type.forName(className);
@@ -73,7 +73,7 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
         
                 //inserting processed results info
                 abortProcess = createBatchProcessingLineItem(totalRecords,batchProcessingLineItem,currentFileNameToProcess);
-                //system.debug('##abortProcess:->'+abortProcess);
+                
                 
                 //Send email about the success/failure records information
                 sendEmailNotification();
@@ -101,8 +101,7 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
             }           
         }
         catch(Exception e) {
-            // system.debug('## Entering exception:->'+e);
-            // system.debug('## batchProcessing :->'+batchProcessing);
+            
             //update batch processing data 
             /*batchProcessing.Core_Email_Distribution_List__c = batchHeader.Email_Distribution_List__c;
             batchProcessing.Core_Salesforce_Job_Id__c = context.getJobId();
@@ -151,7 +150,7 @@ public with sharing class PMP_TaxonomyUploadQueueable implements Queueable {
                 errorOccured = true;
                 // Operation failed, so get all errors                
                 for(Database.Error err : saveResult.getErrors()) { 
-                    //system.debug('###err:->'+err);
+                    
                     errorString=errorString + err.getStatusCode() + ': ' + err.getMessage();                       
                 } 
                 //If any error on category English file the process should get aborted 

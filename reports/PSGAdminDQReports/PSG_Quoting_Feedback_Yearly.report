@@ -55,7 +55,7 @@
         <criteriaItems>
             <column>Sales_Feedback__c.User__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>External,Internal</value>
         </criteriaItems>

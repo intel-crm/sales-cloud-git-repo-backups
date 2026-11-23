@@ -96,7 +96,9 @@ public without sharing class UCD_ACM_CPEManage_Batch implements Database.Batchab
             update failedStagingRecMap.values();
         }
         if(!accStagtoUpdate.isEmpty()){
+            if(Schema.sObjectType.Core_ACM_Account_Staging__c.fields.Core_Status__c.isUpdateable() && Schema.sObjectType.Core_ACM_Account_Staging__c.fields.Core_Retry_Counter__c.isUpdateable()){
                 update accStagtoUpdate;
+            }
         }
         if(!stagingToCancel.isEmpty()){
             update stagingToCancel;

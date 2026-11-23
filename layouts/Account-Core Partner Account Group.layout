@@ -4,7 +4,6 @@
     <excludeButtons>DataDotComAccountInsights</excludeButtons>
     <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <layoutSections>
@@ -41,6 +40,18 @@
                 <behavior>Edit</behavior>
                 <field>Exception_Comments__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Secondary_Country_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDM_Secondary_State_Cd__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Altera_Acts__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -58,6 +69,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>PRM_IPA_Badge_Tier_Date__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Notify_Owner__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -144,7 +159,7 @@
         <relatedList>Core_Account_Group_Member__c.Core_Partner_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
+        <excludeButtons>New</excludeButtons>
         <fields>PRM_Partner_Agreement_Id__c</fields>
         <fields>PRM_Agreement_Sign_Dt__c</fields>
         <fields>PRM_Signed_By_Name__c</fields>
@@ -181,12 +196,21 @@
         <relatedList>PRM_AccountChannelMembership__c.PRM_Account_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
         <fields>PRM_Partner_Benefit_Id__c</fields>
         <fields>PRM_Status_Nm__c</fields>
         <fields>PRM_Source__c</fields>
         <fields>CREATED_DATE</fields>
         <fields>PRM_Record_Link__c</fields>
         <relatedList>PRM_AccountBenefitAssociation__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Account_Specialty_Association__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Registration_Tracker__c.PRM_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
@@ -213,6 +237,10 @@
         <fields>PRM_Point_Status_Dt__c</fields>
         <fields>PRM_Record_Link__c</fields>
         <relatedList>PRM_IPAMembership_Attributes__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>ER_Account_Business_Partner__c.ER_Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>true</runAssignmentRulesDefault>

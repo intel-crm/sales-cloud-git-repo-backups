@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>for the LEAD WF 
+
+&apos;Core_Lead_Lead Rating &apos;</description>
+        <name>Core_Lead_Lead_Rating</name>
+        <label>Core_Lead_Lead Rating</label>
+        <locationX>1024</locationX>
+        <locationY>327</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>CNDARequest</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_Conversion_Point__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>cNDA Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_fields_for_Core_Lead_Lead_Rating</targetReference>
+            </connector>
+            <label>CNDA Request</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the WF 
+
+&apos; Core_Lead_Update_Country_From_Existing_Account &apos;</description>
+        <name>Core_Lead_Update_Country_From_Existing_Account</name>
+        <label>Core_Lead_Update_Country_From_Existing_Account</label>
+        <locationX>810</locationX>
+        <locationY>329</locationY>
+        <defaultConnector>
+            <targetReference>Core_Lead_Lead_Rating</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_Country_From_Existing_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>F_Core_Lead_Update_Country_From_Existing_Account</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Country_Address</targetReference>
+            </connector>
+            <label>Update_Country_From_Existing_Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Core_Lead_Update_State_Changed_Date_Time</name>
+        <label>Core_Lead_Update_State_Changed_Date_Time</label>
+        <locationX>323</locationX>
+        <locationY>325</locationY>
+        <defaultConnector>
+            <targetReference>Core_Lead_Update_State_On_Conversion</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_State_Changed_Date_Time</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lead_State__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Lead_Update_State_Change_Date_Time</targetReference>
+            </connector>
+            <label>Update_State_Changed_Date_Time</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>for the WF&apos; Core_Lead_Update_State_On_Conversion &apos;</description>
+        <name>Core_Lead_Update_State_On_Conversion</name>
+        <label>Core_Lead_Update_State_On_Conversion</label>
+        <locationX>586</locationX>
+        <locationY>329</locationY>
+        <defaultConnector>
+            <targetReference>Core_Lead_Update_Country_From_Existing_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_State_On_Conversion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsConverted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Core_Lead_Update_State_To_Converted</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Update_State_On_Conversion</label>
+        </rules>
+    </decisions>
+    <description>---for the WFs ---
+
+1.Core_Lead_Lead Rating
+2.Core_Lead_Update_State_Changed_Date_Time
+3.Core_Lead_Update_State_On_Conversion
+4.Core_Lead_Update_Country_From_Existing_Account
+5.Core_Lead_Update_Address_From_Existing_Account</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>for the Workflow 
+
+&apos; Core_Lead_Update_Country_From_Existing_Account &apos;</description>
+        <name>F_Core_Lead_Update_Country_From_Existing_Account</name>
+        <dataType>Boolean</dataType>
+        <expression>OR (  AND ( ISNEW(),  NOT (ISBLANK({!$Record.Core_Existing_Covered_Account__c})) ), AND ( ISCHANGED({!$Record.Core_Existing_Covered_Account__c}),  NOT (ISBLANK({!$Record.Core_Existing_Covered_Account__c})) ) )</expression>
+    </formulas>
+    <interviewLabel>Core_Lead_Update_Stage_State_ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Core_Lead_Update_Stage_State_Address</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Core_Lead_Update_State_Change_Date_Time</name>
+        <label>Core_Lead_Update_State_Change_Date_Time</label>
+        <locationX>333</locationX>
+        <locationY>544</locationY>
+        <connector>
+            <targetReference>Core_Lead_Update_State_On_Conversion</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State_Change_Date_Time__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Core_Lead_Update_State_To_Converted</name>
+        <label>Core_Lead_Update_State_To_Converted</label>
+        <locationX>601</locationX>
+        <locationY>544</locationY>
+        <connector>
+            <targetReference>Core_Lead_Update_Country_From_Existing_Account</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Lead_State__c</field>
+            <value>
+                <stringValue>Converted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Address Flag To True
+Update Country</description>
+        <name>Update_Country_Address</name>
+        <label>Update Country_Address</label>
+        <locationX>816</locationX>
+        <locationY>547</locationY>
+        <connector>
+            <targetReference>Core_Lead_Lead_Rating</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>City</field>
+            <value>
+                <elementReference>$Record.Core_Existing_Covered_Account__r.BillingCity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Company</field>
+            <value>
+                <elementReference>$Record.Core_Existing_Covered_Account__r.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Country</field>
+            <value>
+                <elementReference>$Record.Core_Existing_Covered_Account__r.BillingCountry</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PostalCode</field>
+            <value>
+                <elementReference>$Record.Core_Existing_Covered_Account__r.BillingPostalCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>State</field>
+            <value>
+                <elementReference>$Record.Core_Existing_Covered_Account__r.BillingState</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Street</field>
+            <value>
+                <elementReference>$Record.Core_Existing_Covered_Account__r.BillingStreet</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_fields_for_Core_Lead_Lead_Rating</name>
+        <label>Update fields for &apos;Core_Lead_Lead Rating&apos;</label>
+        <locationX>1035</locationX>
+        <locationY>537</locationY>
+        <inputAssignments>
+            <field>Rating</field>
+            <value>
+                <stringValue>Hot</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Core_Lead_Update_State_Changed_Date_Time</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

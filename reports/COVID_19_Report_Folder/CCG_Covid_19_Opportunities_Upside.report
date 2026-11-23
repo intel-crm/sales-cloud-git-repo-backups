@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_37422631</developerName>
-        <masterLabel>Oppty Type</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Opportunity.Core_Opportunity_Type__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Design: Original</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Design: Secondary</sourceValue>
-            </sourceValues>
-            <value>Design</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Deal: Sell-through</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Deal: Sell-to</sourceValue>
-            </sourceValues>
-            <value>Deal</value>
-        </values>
-    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -75,9 +49,6 @@
     </columns>
     <columns>
         <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
@@ -142,9 +113,6 @@
     <columns>
         <field>OpportunityLineItem.Core_Vendor__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-    </columns>
     <description>grouped on Sales Group and BU Short Name and Stage</description>
     <filter>
         <booleanFilter>(1 OR 2 OR 3) AND 4</booleanFilter>
@@ -191,7 +159,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_37422631</field>
+        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Covid-19 Opportunities - Upside</name>
@@ -218,8 +186,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

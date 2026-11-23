@@ -74,7 +74,7 @@
         <name>CRM_CST_Planning_Period__c</name>
     </fields>
     <fields>
-        <label><!-- Semi-Annual Temp Account Category --></label>
+        <label><!-- Account Category --></label>
         <name>Category__c</name>
     </fields>
     <fields>
@@ -96,6 +96,30 @@
     <fields>
         <label><!-- Compt Co-Sell Design Win Weighted AVG 3Y --></label>
         <name>Compt_Co_Sell_Design_Win_Weighted_AVG_3Y__c</name>
+    </fields>
+    <fields>
+        <label><!-- ASP --></label>
+        <name>Core_ASP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount of End Customers (Past Year)? --></label>
+        <name>Core_Amt_of_EndCustomers_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amount of IPA End Customers (Past Year)? --></label>
+        <name>Core_Amt_of_IPA_End_Customers_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billings Revenue Past QTR --></label>
+        <name>Core_Billings_Revenue_Past_QTR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billings Revenue Past Year --></label>
+        <name>Core_Billings_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billings YoY Growth --></label>
+        <name>Core_Billings_YoY_Growth__c</name>
     </fields>
     <fields>
         <label><!-- Branded Revenue (Past Year)​ --></label>
@@ -134,6 +158,10 @@
         <name>Core_Direct_Revenue_Past_12_months_NEX__c</name>
     </fields>
     <fields>
+        <label><!-- Direct Sales Revenue (Past Year) --></label>
+        <name>Core_Direct_Sales_Revenue_Past_Year__c</name>
+    </fields>
+    <fields>
         <label><!-- DistiSalesOut(Past 12 mnt) - #OfCustomer --></label>
         <name>Core_DistiSalesOutPast12_mnt_ofCustomer__c</name>
     </fields>
@@ -156,6 +184,14 @@
     <fields>
         <label><!-- Disti Sales Out (Past 12 months) - NEX --></label>
         <name>Core_Disti_Sales_Out_Past_12_months_NEX__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti Sales out revenue (past year) --></label>
+        <name>Core_Disti_Sales_out_revenue_past_year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disti sales out revenue (YoY) --></label>
+        <name>Core_Disti_sales_out_revenue_YoY__c</name>
     </fields>
     <fields>
         <label><!-- AI / BU / COE Reasoning --></label>
@@ -206,8 +242,16 @@
         <name>Core_Open_Opps_Weighted_Revenue__c</name>
     </fields>
     <fields>
+        <label><!-- Opportunities Revenue ​Last Year​ --></label>
+        <name>Core_Opportunities_Revenue_Last_Year__c</name>
+    </fields>
+    <fields>
         <label><!-- % of revenue out of region revenue --></label>
         <name>Core_Per_ofRevenueOutOfRegionRevenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Location --></label>
+        <name>Core_Primary_Location__c</name>
     </fields>
     <fields>
         <label><!-- 6QPS Revenue (Past Year) --></label>
@@ -322,8 +366,24 @@
         <name>Core_SO_gross_platform_revenue__c</name>
     </fields>
     <fields>
+        <label><!-- Sales Revenue Last QTR​ --></label>
+        <name>Core_Sales_Revenue_Last_QTR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Revenue ​Last Year​ --></label>
+        <name>Core_Sales_Revenue_Last_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales YoY %​ --></label>
+        <name>Core_Sales_YoY__c</name>
+    </fields>
+    <fields>
         <label><!-- Silicon TAM --></label>
         <name>Core_Silicon_Spend__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top companies in vertical --></label>
+        <name>Core_Top_companies_in_vertical__c</name>
     </fields>
     <fields>
         <label><!-- Total Direct Revenue (Past Year) --></label>
@@ -332,6 +392,10 @@
     <fields>
         <label><!-- Unified Global Customer Name --></label>
         <name>Core_UCD_Global_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yearly Billings (Weighted AVG 3 Years) --></label>
+        <name>Core_YearlyBillings_Weighted_AVG_3_Years__c</name>
     </fields>
     <fields>
         <label><!-- Yearly Design win opps​(Weighted AVG 3) --></label>
@@ -361,20 +425,16 @@
         <label><!-- Account Primary Coverage --></label>
         <name>Coverage__c</name>
         <picklistValues>
-            <masterLabel>Intel-led Account</masterLabel>
-            <translation><!-- Intel-led Account --></translation>
+            <masterLabel>Indirect Covered</masterLabel>
+            <translation><!-- Indirect Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Not Covered Account</masterLabel>
-            <translation><!-- Not Covered Account --></translation>
+            <masterLabel>Intel Covered</masterLabel>
+            <translation><!-- Intel Covered --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other-led Account</masterLabel>
-            <translation><!-- Other-led Account --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner-led Account</masterLabel>
-            <translation><!-- Partner-led Account --></translation>
+            <masterLabel>Not Covered</masterLabel>
+            <translation><!-- Not Covered --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -431,8 +491,16 @@
         <name>Primary_Location__c</name>
     </fields>
     <fields>
+        <label><!-- DNR:Region --></label>
+        <name>Region__c</name>
+    </fields>
+    <fields>
         <label><!-- Sales Group --></label>
         <name>Sales_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- DNR:Sub-Region --></label>
+        <name>Sub_Region__c</name>
     </fields>
     <fields>
         <label><!-- UCD Global Name --></label>

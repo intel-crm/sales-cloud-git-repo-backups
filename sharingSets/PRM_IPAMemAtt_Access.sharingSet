@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessMappings>
+        <accessLevel>Edit</accessLevel>
+        <object>PRM_IPAMembership_Attributes__c</object>
+        <objectField>PRM_Account_Id__c</objectField>
+        <userField>Account</userField>
+    </accessMappings>
+    <description>give access to partner user for IPA membership attribute</description>
+    <name>PRM IPAMemAtt Access</name>
+    <profiles>partner community login user</profiles>
+</SharingSet>

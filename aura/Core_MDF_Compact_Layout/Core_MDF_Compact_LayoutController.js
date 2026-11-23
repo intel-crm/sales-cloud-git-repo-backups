@@ -181,6 +181,11 @@
     },
 
     closeModal: function (component, event, helper) {
+        //TWC3117-19154
+        if (component.get("v.isRecallSaving")) {
+            return;
+        }
+        //TWC3117-19154
         component.set("v.openModalForUpdateButton", false);
         component.set("v.openModalForLtCmp", false);
         component.set("v.isNotifyOwner", false);
@@ -242,5 +247,43 @@
         let errorMessage = event.getParam('errorLog');
         let objName = component.get("v.objAPIName");
         helper.logErrors(component, errorMessage, objName);
-    },    
+    }, 
+    //TWC3117-19154 start
+    confirmRecall: function (component, event, helper) {
+        if (component.get("v.isRecallSaving")) {
+            return;
+        }
+        component.set("v.isRecallSaving", true);
+        component.set("v.errorMessage", "");
+        var action = component.get("c.recallToPaymentClearance");
+        action.setParams({
+            claimId: component.get("v.recordId")
+        });
+        action.setCallback(this, function (response) {
+            if (!component.isValid()) {
+                return;
+            }
+            component.set("v.isRecallSaving", false);
+            if (response.getState() === "SUCCESS") {
+                component.set("v.openModalForLtCmp", false);
+                component.set("v.openCmp", "");
+
+                var toast = $A.get("e.force:showToast");
+                toast.setParams({
+                    title: "Success",
+                    message: "Claim recalled successfully and sent back for review.",
+                    type: "success"
+                });
+                toast.fire();
+                $A.get("e.force:refreshView").fire();
+            } else {
+                var errors = response.getError();
+                console.error("Core_MDF_Compact_Layout.confirmRecall", errors);
+                var message = errors && errors.length && errors[0].message ? errors[0].message : "Unable to recall the claim. Refresh and try again.";
+                component.set("v.errorMessage", message);
+            }
+        });
+        $A.enqueueAction(action);
+    },
+    //TWC3117-19154 end
 })

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Welcome email for RDC Privilege with Email Verification</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEWEVRDC_PRIV</name>
+    <style>none</style>
+    <subject>Welcome to RDC Privilege</subject>
+    <textOnly>Welcome to RDC Privilege
+
+
+Welcome {!Contact.Core_Login_Id__c}
+
+This notice is to inform you that a profile has been created for you on the RDC Privilege Tool to submit price quote requests to Intel Corporation. You are able to access {{RDCPRIVTOOLLINK}}. Please bookmark this URL.
+
+Please retain this e-mail for future reference.
+
+Login Id: {!Contact.Core_Login_Id__c}
+E-mail Address: {!Contact.Email}
+Intel Business Account Name: {{ACCOUNTNAME}}
+
+Your password should be protected as confidential. Your use of the password and Intel’s website are governed by Intel’s Terms of Use linked from the bottom of each respective site’s web pages.
+
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving your e-mails, please add us to your address book.
+
+Kind Regards,
+RDC Privilege Team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Quote Request.
+© 2020 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

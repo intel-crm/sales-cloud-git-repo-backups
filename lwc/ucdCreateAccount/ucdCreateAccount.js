@@ -19,6 +19,8 @@ export default class UcdCreateAccount extends NavigationMixin(LightningElement) 
     @track detailid;
    
     handleSubmit(event) {
+        //console.log('--> ',this.template.querySelector(".RecordTypeId").value);
+        //this.template.querySelector(".RecordTypeId").value = '0122i000000D9IoAAK';
         if(this.permissionErrorCode!=1){
           this.validateFields();
         }

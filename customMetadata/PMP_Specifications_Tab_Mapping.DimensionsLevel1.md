@@ -32,7 +32,7 @@
     </values>
     <values>
         <field>PMP_Filter_Sequence__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:double">30.0</value>
     </values>
     <values>
         <field>PMP_Is_Create_Offering_Ind__c</field>

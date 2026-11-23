@@ -63,7 +63,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Licensed,Unlicensed</value>
+            <value>,Licensed,Unlicensed,Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

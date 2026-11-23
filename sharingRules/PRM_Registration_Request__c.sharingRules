@@ -7,18 +7,12 @@
         <sharedTo>
             <group>ER_DZP_Admin</group>
         </sharedTo>
-        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>PRM_Source__c</field>
             <operation>equals</operation>
             <value>DZP</value>
         </criteriaItems>
-        <criteriaItems>
-            <field>PRM_Source__c</field>
-            <operation>equals</operation>
-            <value>IPA - Portal</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_Dev_Cloud_Ent_Admin</fullName>
@@ -32,7 +26,7 @@
             <operation>equals</operation>
             <value>Dev_Cloud_Ent</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_EPS_Verified_C_Admin</fullName>
@@ -46,7 +40,7 @@
             <operation>equals</operation>
             <value>EPS_Verified_C</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_ESR_Admin</fullName>
@@ -60,7 +54,7 @@
             <operation>equals</operation>
             <value>ESR</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_IBR_Admin</fullName>
@@ -74,7 +68,7 @@
             <operation>equals</operation>
             <value>IBR</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_IIPAM_Admin</fullName>
@@ -88,7 +82,7 @@
             <operation>equals</operation>
             <value>IIPAM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_IPS_Admin</fullName>
@@ -102,7 +96,7 @@
             <operation>equals</operation>
             <value>IPS</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_IQR_Admin</fullName>
@@ -116,7 +110,7 @@
             <operation>equals</operation>
             <value>IQR</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_ISvC_Auth_Cntct_Admin</fullName>
@@ -130,7 +124,7 @@
             <operation>equals</operation>
             <value>ISvC_Auth_Cntct</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_OnDemand_Rev_Admin</fullName>
@@ -144,7 +138,7 @@
             <operation>equals</operation>
             <value>OnDemand_Rev</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_PFT_Admin</fullName>
@@ -158,7 +152,7 @@
             <operation>equals</operation>
             <value>PFT</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_PSG_Admin</fullName>
@@ -172,7 +166,7 @@
             <operation>equals</operation>
             <value>PSG</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_PSG_SEP_Admin</fullName>
@@ -186,7 +180,7 @@
             <operation>equals</operation>
             <value>PSG_SEP</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_QDMS_Admin</fullName>
@@ -200,7 +194,7 @@
             <operation>equals</operation>
             <value>QDMS</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_RPS_Agency_Admin</fullName>
@@ -214,7 +208,7 @@
             <operation>equals</operation>
             <value>RPS_Agency</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_RPS_Retailer_Admin</fullName>
@@ -228,7 +222,7 @@
             <operation>equals</operation>
             <value>RPS_Retailer</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_Siaas_Service_Admin</fullName>
@@ -242,7 +236,7 @@
             <operation>equals</operation>
             <value>Siaas_Service</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_Tend_Mgmt_Admin</fullName>
@@ -256,7 +250,7 @@
             <operation>equals</operation>
             <value>Tend_Mgmt</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_WOM_Admin</fullName>
@@ -270,7 +264,7 @@
             <operation>equals</operation>
             <value>WOM</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
         <fullName>Share_to_WebQuote_Admin</fullName>
@@ -284,6 +278,6 @@
             <operation>equals</operation>
             <value>WebQuote</value>
         </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

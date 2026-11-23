@@ -199,6 +199,9 @@
             console.log(component.get("v.localUserDetails.deliveryDate"));
             if( component.get("v.localUserDetails.deliveryDate") == null || (component.get("v.localUserDetails.deliveryDate") != '' && component.get("v.localUserDetails.deliveryDate") < todayFormattedDate)){         
                 isValidDate = false;
+            }
+            if(component.get("v.localUserDetails.deliveryDate") != '' && component.get("v.localUserDetails.deliveryDate") < todayFormattedDate ){         
+                isValidDate = false;
             }else{
                 isValidDate = true;
             }

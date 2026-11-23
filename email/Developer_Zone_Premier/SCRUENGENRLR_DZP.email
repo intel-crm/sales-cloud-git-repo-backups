@@ -13,7 +13,7 @@
 <hr style="background-color: #E5E5E5;color: #E5E5E5;border: 0 none;height: 1px;"><span style="font-family: 'intel clear', sans-serif;"></span></header><main style="display: block;">
 </main><p class="subjectTextStyle" style="font-size: 1.2em;font-weight: bold;color: #086DB6;line-height: 1.4em;"><span face="intel clear, sans-serif" style="font-family: 'intel clear', sans-serif; font-size: 18pt;">Your Application is Pending Approval</span></p>
 <p><br><span style="font-family: 'intel clear', sans-serif;">Welcome {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},</span></p>
-<p><span>Thank you for requesting a Developer Zone Premier account. It may take up to ten business days to review your request. </span></p>
+<p><span>Thank you for requesting a Developer Zone Premier account. If you don’t yet have a Corporate Non-Disclosure Agreement (CNDA) signed with Intel, it may take up to ten business days to review your request. You will receive a status update within three business days.</span></p>
 <p><span>While your application is pending, you can engage with the Developer Zone in the following ways:</span></p>
 
 <ol>

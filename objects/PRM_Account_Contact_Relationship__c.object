@@ -178,7 +178,7 @@
         <fullName>PRM_AGS_Identity_Creation_Fail__c</fullName>
         <defaultValue>false</defaultValue>
         <label>AGS Identity Creation Fail</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -395,13 +395,13 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
     </fields>
     <fields>
         <fullName>PRM_Relationship_Id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <deleteConstraint>Restrict</deleteConstraint>
         <inlineHelpText>Please select either &apos;Primary Contact&apos; or &apos;Works For&apos;</inlineHelpText>
         <label>Relationship</label>
         <referenceTo>PRM_ContactRelationships__c</referenceTo>
         <relationshipLabel>Partner Contact Relationship</relationshipLabel>
         <relationshipName>Account_Contact_Relationships</relationshipName>
-        <required>false</required>
+        <required>true</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -416,6 +416,14 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Send_Reminders__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Send Reminders</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PRM_SkipValidation__c</fullName>
@@ -474,14 +482,9 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
                     <label>External Partner Invite</label>
                 </value>
                 <value>
-                    <fullName>Auto Granted IPA for DZP</fullName>
+                    <fullName>Auto DZP Enrollment</fullName>
                     <default>false</default>
-                    <label>Auto Granted IPA for DZP</label>
-                </value>
-                <value>
-                    <fullName>Admin Partner Invite</fullName>
-                    <default>false</default>
-                    <label>Admin Partner Invite</label>
+                    <label>Auto DZP Enrollment</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -517,6 +520,11 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
                     <label>Complete</label>
                 </value>
                 <value>
+                    <fullName>AGS Identity Creation Failed</fullName>
+                    <default>false</default>
+                    <label>AGS Identity Creation Failed</label>
+                </value>
+                <value>
                     <fullName>Pending Invite</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -546,6 +554,14 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>PRM_Suppress_Reminders__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Suppress Reminders</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PRM_Unique_Combination__c</fullName>
         <description>Gets the Account, Contact and Account channel membership and Relationship IDs and creates a Unique field.</description>
         <externalId>false</externalId>
@@ -568,12 +584,32 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>PRM_isACRChanged__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>isACRChanged</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PRM_isActive__c</fullName>
         <defaultValue>false</defaultValue>
         <label>isActive</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>test_master_branch__c</fullName>
+        <description>this field is created to test Copado issue where master branch is getting automatically updated when changes are deployed to QA. This field should NOT be migrated and need to be deleted once tests complete.Additional text via Git</description>
+        <externalId>false</externalId>
+        <label>test - master branch autogetting updated</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <label>Account Contact Relationship</label>
     <listViews>
@@ -589,9 +625,9 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
         <columns>PRM_Status_Reason_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>NAME</field>
+            <field>PRM_Account_Id__c</field>
             <operation>equals</operation>
-            <value>ACR-248845</value>
+            <value>Booleeds Inc</value>
         </filters>
         <label>All</label>
     </listViews>
@@ -662,28 +698,28 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
         <active>false</active>
         <description>The Account Contact Relationship can&apos;t be active for blocked domains for Intel Partner Alliance Program.</description>
         <errorConditionFormula>AND(
-	AND($User.FirstName &lt;&gt; &quot;IPA&quot;, $User.LastName &lt;&gt; &quot;Data Migration User &quot;),
-	NOT(PRM_InActive_Ind__c),
-	PRM_Contact_Id__r.RecordType.Name = &quot;Intel Contact&quot;,
-	OR(
-		/* PRC Logic */
-			AND(
-			ISPICKVAL(PRM_Account_Id__r.Core_Geo__c, &quot;PRC&quot;),
-			OR(
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Prc1 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Prc2 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;)
-			)
-			),
-			/* Non-PRC Logic */
-			AND(
-			NOT(ISPICKVAL(PRM_Account_Id__r.Core_Geo__c, &quot;PRC&quot;)),
-			OR(
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc1 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc2 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
-			CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc3 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;)
-			)
-			)
-	)
+AND($User.FirstName &lt;&gt; &quot;IPA&quot;, $User.LastName &lt;&gt; &quot;Data Migration User &quot;),
+NOT(PRM_InActive_Ind__c),
+PRM_Contact_Id__r.RecordType.Name = &quot;Intel Contact&quot;,
+OR(
+/* PRC Logic */
+AND(
+ISPICKVAL(PRM_Account_Id__r.Core_Geo__c, &quot;PRC&quot;),
+OR(
+CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Prc1 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
+CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Prc2 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;)
+)
+),
+/* Non-PRC Logic */
+AND(
+NOT(ISPICKVAL(PRM_Account_Id__r.Core_Geo__c, &quot;PRC&quot;)),
+OR(
+CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc1 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
+CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc2 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;),
+CONTAINS(&quot;;&quot; &amp; $Label.Blocked_Domains_Non_Prc3 &amp; &quot;;&quot;, &quot;;&quot; &amp; RIGHT(PRM_Contact_Id__r.Email, LEN(PRM_Contact_Id__r.Email) - FIND(&quot;@&quot;, PRM_Contact_Id__r.Email)) &amp; &quot;;&quot;)
+)
+)
+)
 )</errorConditionFormula>
         <errorMessage>This email domain is not allowed for Intel Partner Alliance program. Please register with corporate email domain</errorMessage>
     </validationRules>
@@ -691,7 +727,6 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
         <fullName>PRM_Contact_Embargoed_Country_Check</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
-$Permission.PCC_Bypass_Automation = false,
 PRM_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c = TRUE,
 PRM_InActive_Ind__c = FALSE,
 OR(
@@ -699,17 +734,11 @@ CONTAINS($Label.PRM_Embargoed_country , PRM_Contact_Id__r.MailingCountry),
 CONTAINS($Label.PRM_Embargoed_country , PRM_Account_Id__r.BillingCountry)
 ),
 NOT(ISBLANK(PRM_Contact_Id__r.MailingCountry)),
-NOT(ISBLANK(PRM_Account_Id__r.BillingCountry))
+NOT(ISBLANK(PRM_Account_Id__r.BillingCountry)),
+NOT(PRM_InActive_Ind__c)
 )</errorConditionFormula>
         <errorDisplayField>PRM_Contact_Id__c</errorDisplayField>
         <errorMessage>This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>PRM_Contact_Relationship_Check</fullName>
-        <active>true</active>
-        <errorConditionFormula>IF( ISBLANK( PRM_Relationship_Id__c ) , true, false)</errorConditionFormula>
-        <errorDisplayField>PRM_Relationship_Id__c</errorDisplayField>
-        <errorMessage>Contact Relationship is required</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PRM_WebsiteCheck</fullName>
@@ -720,4 +749,20 @@ AND(NOT( ISNEW()) ,PRM_Relationship_Id__r.Name =&quot;Employee&quot;,AND(ISCHANG
         <errorMessage>Website is mandatory for extending invite</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Create_new_Contact</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Create new Contact</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/lightning/o/Contact/new?count=2&amp;nooverride=1&amp;useRecordTypeCheck=1&amp;navigationLocation=RELATED_LIST&amp;backgroundContext=%2Flightning%2Fr%2FAccount%2F{!
+Account.Id
+}%2Fview&amp;defaultFieldValues=AccountId={!
+Account.Id
+}</url>
+    </webLinks>
 </CustomObject>

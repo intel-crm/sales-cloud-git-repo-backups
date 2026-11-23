@@ -28,35 +28,7 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.Core_Design_Registration_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_End_Customer_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_End_Customer_City_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_End_Customer_Country_Subdivision_Nm__c</field>
-    </columns>
-    <columns>
         <field>Core_Design_Registration__c.PCC_End_Customer_Country__c</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_Opportunity_Id__c</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_Owner_Nm__c</field>
-    </columns>
-    <columns>
-        <field>CUST_LAST_UPDATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Design_Registration__c.Core_Opportunity_Volume_Cnt__c</field>
     </columns>
     <description>USED IN DASHBOARD: User Adoption Dashboard Prototype - CRM Data</description>
     <filter>
@@ -73,7 +45,7 @@
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
         <field>CUST_CREATED_DATE</field>
-        <sortOrder>Asc</sortOrder>
+        <sortOrder>Desc</sortOrder>
     </groupingsDown>
     <name>CRM Usage - Design Regs Created by Month</name>
     <params>
@@ -82,11 +54,11 @@
     </params>
     <reportType>CustomEntity$Core_Design_Registration__c</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Core_Design_Registration__c.Core_Opportunity_Decision_Dt__c</dateColumn>
+        <dateColumn>Core_Design_Registration__c.core_cpq_approved_date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

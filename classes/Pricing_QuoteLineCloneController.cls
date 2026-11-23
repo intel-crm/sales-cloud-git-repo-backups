@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 09-08-2026
+* @last modified on  : 04-28-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class Pricing_QuoteLineCloneController {   
@@ -191,8 +191,8 @@ public without sharing class Pricing_QuoteLineCloneController {
         
         //blank out AI fields on clone, OEM CR, RPM CR
         parent.Pricing_Reason_for_FeedBack_Txt__c = null;
-        parent.Pricing_Recommendation_FeedBack_Nm__c = null;	
-        parent.Pricing_Recommended_Price_Amt__c	= null;
+        parent.Pricing_Recommendation_FeedBack_Nm__c = null;  
+        parent.Pricing_Recommended_Price_Amt__c  = null;
         parent.Pricing_Price_Interval_Txt__c = null;
         parent.Pricing_Discount_Pct__c = null;
         parent.Pricing_Tentative_ECAP_Price_Amt__c = null;
@@ -338,7 +338,7 @@ public without sharing class Pricing_QuoteLineCloneController {
     public static Date fetchDate(){
         return System.today();
     } 
-
+    
     public static void rpmCRAutoPopulation(SBQQ__QuoteLine__c parentQL ,SBQQ__QuoteLine__c parent, SBQQ__QuoteLine__c quoteLine){
          parent.Pricing_Change_Request_Type__c = populateChangeRequestType(parent,quoteLine,false);
         if((parent.SBQQ__ProductName__c == Label.Pricing_Tender_Write_In_Product && String.isBlank(parent.Pricing_Deal_RFQ_Id__c) && parent.Pricing_Product_Nm__c == quoteLine.Pricing_Product_Nm__c) || parent.Pricing_Quote_Program_Nm__c == Label.Pricing_Tender_FinancialIncentive_Quote){
@@ -411,6 +411,7 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.RecordTypeId =quoteLine.Pricing_Program_Type_Nm__c == Label.Pricing_Tender_Small_Volume_Quote ?  Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_SVD_Quote_Line_Submitted) : Pricing_Tender_Utility.getRecordTypeId('SBQQ__QuoteLine__c', Label.Pricing_Tender_QuoteLine_RecordType_Submitted);
         // Values entered by Change Request
         parent.Pricing_Change_Request_cb__c = true;
+        //parent.Pricing_Deal_Description__c=null;
         parent.Pricing_Additional_Comments_Txt__c = quoteLine.Pricing_Additional_Comments_Txt__c;
         parent.Pricing_New_Quantity_qty__c = quoteLine.Pricing_New_Quantity_qty__c;
         parent.Pricing_End_Date_dt__c = quoteLine.Pricing_End_Date_dt__c;
@@ -474,7 +475,6 @@ public without sharing class Pricing_QuoteLineCloneController {
         parent.Pricing_Last_Submitted_By_Id__c = null;
         parent.Pricing_Last_Submitted_Date_dt__c = null;
         parent.Pricing_Start_Date_dt__c = null;
-       
         
         parent.Pricing_RegionQL_Nm__c = Label.Pricing_Tender_Default_Region_Worldwide;
         parent.Pricing_Deal_RFQ_Id__c = null;
@@ -684,16 +684,15 @@ Modified By:        Date:       Changes:
     }
    
     private static Boolean hasConsumptionFieldChanged(String a, String b) {
-        
         String valA = String.isBlank(a) ? '' : a.trim();
         String valB = String.isBlank(b) ? '' : b.trim();
         
-        if (!String.isBlank(b)) {
+        if (!String.isBlank(a) && !String.isBlank(b)) {
             return valA != valB;
         }
         
         return false;
-        
+     
     }
     
     

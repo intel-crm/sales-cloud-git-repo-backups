@@ -398,7 +398,7 @@ public without sharing class Core_Opportunity_Clone_Controller {   //TWC3123-531
         OppRec.Core_IsClone__c = true; // added for TWC3123-2361
         oppRec.Opportunity_Focus__c = '';   
         oppRec.CRM_Opportunity_Revenue__c = 0;
-        oppRec.Core_Opportunity_Products__c = null;//added forr TWC4767-5208
+		oppRec.Core_Opportunity_Products__c = null;//added forr TWC4767-5208
         //TWC4767-4391------START------------
         oppRec.CRM_Audit_Close_Date__c = null;
         oppRec.CRM_Audit_Fail_Reason__c = null;

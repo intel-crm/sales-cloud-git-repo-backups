@@ -152,7 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>PRM_Account__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
@@ -193,30 +193,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Builder__c</fullName>
-        <label>Builder</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>AI Builders</fullName>
-                    <default>false</default>
-                    <label>AI Builders</label>
-                </value>
-                <value>
-                    <fullName>Network Builders</fullName>
-                    <default>false</default>
-                    <label>Network Builders</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>PRM_Notes__c</fullName>
@@ -264,33 +240,11 @@
         <fullName>Intel_Account_Affiliation</fullName>
         <active>true</active>
         <label>Intel Account Affiliation</label>
-        <picklistValues>
-            <picklist>PRM_Builder__c</picklist>
-            <values>
-                <fullName>AI Builders</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Network Builders</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Partner_Account_Group_Affiliation</fullName>
         <active>true</active>
         <label>Partner Account Group Affiliation</label>
-        <picklistValues>
-            <picklist>PRM_Builder__c</picklist>
-            <values>
-                <fullName>AI Builders</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Network Builders</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <searchLayouts>
         <excludedStandardButtons>New</excludedStandardButtons>

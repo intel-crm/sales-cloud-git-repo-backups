@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Approval Request: IQR Quote Line" recipientType="User" relatedToType="SBQQ__QuoteLine__c" renderUsingSystemContextWithoutSharing="True">
+    <messaging:htmlEmailBody >
+        <c:Pricing_QuoteLineApprovalInitialDummy quoteLineRecord="{!relatedTo}" quoteLineRecordId="{!relatedTo.id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

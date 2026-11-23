@@ -146,7 +146,7 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
+    <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
@@ -161,16 +161,14 @@
         <relationshipLabel>BES Error Logs</relationshipLabel>
         <relationshipName>BES_Error_Logs</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Core_IPS_Eligible_for_retry__c</fullName>
-        <formula>if(AND(Core_IPS_Error_Code__c &lt;&gt; 200, Core_IPS_Error_Code__c &lt;&gt; 400, Core_IPS_Error_Code__c &lt;&gt; 500, Core_IPS_Error_Code__c &lt;&gt; 0), true, false)</formula>
+        <formula>if(AND(Core_IPS_Error_Code__c != 200, Core_IPS_Error_Code__c != 400), true, false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Eligible for retry</label>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -181,7 +179,6 @@
         <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -190,7 +187,6 @@
         <fullName>Core_IPS_Error_Description__c</fullName>
         <label>Error Description</label>
         <length>131072</length>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -201,7 +197,6 @@
         <label>Object Id (S)</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -214,7 +209,6 @@
         <relationshipLabel>BES Error Logs</relationshipLabel>
         <relationshipName>BES_Error_Logs</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -226,18 +220,16 @@
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_IPS_Schedule_Time__c</fullName>
-        <formula>CreatedDate - 55 * (1/24/60)</formula>
+        <formula>Now() - 59 * (1/24/60)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Schedule Time</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -247,7 +239,6 @@
         <label>Status</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -256,7 +247,6 @@
         <fullName>Transaction_Track_Status__c</fullName>
         <label>Transaction Track Status</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -277,26 +267,9 @@
         </valueSet>
     </fields>
     <label>BES Error Log</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Core_BES_Inbound_Message__c</columns>
-        <columns>Core_IPS_Eligible_for_retry__c</columns>
-        <columns>Core_IPS_Error_Code__c</columns>
-        <columns>Core_IPS_Error_Description__c</columns>
-        <columns>Core_IPS_Outbound_Message_Id__c</columns>
-        <columns>Core_IPS_Retry_Count__c</columns>
-        <columns>Core_IPS_Schedule_Time__c</columns>
-        <columns>Core_IPS_Status__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>ERR-{000}</displayFormat>
         <label>Name</label>
-        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>BES Error Logs</pluralLabel>

@@ -7,6 +7,9 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Opportunity_Products__c</field>
+    </columns>
+    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
@@ -63,14 +66,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Uriah Edmunds,David Nguyen,Hannah Freimark,Angela Baroni,Kimberly Kelly,Matthew Harrison,Cooper Prescott,Melissa Gonzalez</value>
+            <value>Cooper Prescott,Matthew Harrison,Angela Baroni</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

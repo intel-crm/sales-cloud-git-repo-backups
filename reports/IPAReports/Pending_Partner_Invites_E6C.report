@@ -7,6 +7,9 @@
         <field>Account.Contacts$LastName</field>
     </columns>
     <columns>
+        <field>Account.Contacts$Core_Login_Id__c</field>
+    </columns>
+    <columns>
         <field>Account.Contacts$Email</field>
     </columns>
     <columns>

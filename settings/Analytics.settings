@@ -22,7 +22,7 @@
     <enableCioHistoryReportingPref>false</enableCioHistoryReportingPref>
     <enableCreateLegacyDataflows>true</enableCreateLegacyDataflows>
     <enableCrmaSubsForExpCloud>false</enableCrmaSubsForExpCloud>
-    <enableCrtSetupLightningUiPref>true</enableCrtSetupLightningUiPref>
+    <enableCrtSetupLightningUiPref>false</enableCrtSetupLightningUiPref>
     <enableCurrencySupportInDCRPref>false</enableCurrencySupportInDCRPref>
     <enableDashboardComponentSnapshot>false</enableDashboardComponentSnapshot>
     <enableDashboardFlexiTable>true</enableDashboardFlexiTable>
@@ -64,7 +64,7 @@
     <enableReportInlineEditPref>false</enableReportInlineEditPref>
     <enableReportNotificationsEnable>true</enableReportNotificationsEnable>
     <enableReportRecordPreviewOrgPref>false</enableReportRecordPreviewOrgPref>
-    <enableReportSubOrgEmailPref>true</enableReportSubOrgEmailPref>
+    <enableReportSubOrgEmailPref>false</enableReportSubOrgEmailPref>
     <enableReportTypeSearchPref>false</enableReportTypeSearchPref>
     <enableReportingOnSDMPref>false</enableReportingOnSDMPref>
     <enableRequestPrioritySchdl>false</enableRequestPrioritySchdl>
@@ -93,7 +93,7 @@
     <enableWaveIndexMVDimV2>false</enableWaveIndexMVDimV2>
     <enableWaveRecordNavigation>false</enableWaveRecordNavigation>
     <enableWaveReplication>true</enableWaveReplication>
-    <enableWaveSharingInheritance>true</enableWaveSharingInheritance>
+    <enableWaveSharingInheritance>false</enableWaveSharingInheritance>
     <enableWaveSqlCFIndexing>false</enableWaveSqlCFIndexing>
     <enableWaveTrendedDatasetCleanup>true</enableWaveTrendedDatasetCleanup>
     <enableWriteToDataCloud>false</enableWriteToDataCloud>

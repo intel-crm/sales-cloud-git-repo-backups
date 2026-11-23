@@ -152,10 +152,6 @@
         <enabled>true</enabled>
         <name>Core_MDF_ExceptionReviewer</name>
     </customPermissions>
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>Core_MDF_Internal_EEF_Exception_Reviewer</name>
-    </customPermissions>
     <description>Exception Reviewer permission for EEF</description>
     <fieldPermissions>
         <editable>true</editable>
@@ -338,6 +334,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Exception__c.Core_MDF_Expose_Externally_ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Exception__c.Core_MDF_Issue_Description_dsc__c</field>
         <readable>true</readable>
@@ -424,8 +425,12 @@
         <tab>Core_MDF_Exception__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <tabSettings>
+        <tab>standard-report</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ApiEnabled</name>
+        <name>RunReports</name>
     </userPermissions>
 </PermissionSet>

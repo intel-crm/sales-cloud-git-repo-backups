@@ -14,13 +14,7 @@
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
-    <customWebAddresses>
-        <certificate>partner_admin_intel_com16</certificate>
-        <domainName>partner-admin.intel.com</domainName>
-        <primary>true</primary>
-    </customWebAddresses>
     <enableAuraRequests>true</enableAuraRequests>
-    <favoriteIcon>favicon</favoriteIcon>
     <fileNotFoundPage>FileNotFound</fileNotFoundPage>
     <genericErrorPage>Exception</genericErrorPage>
     <inMaintenancePage>InMaintenance</inMaintenancePage>
@@ -30,9 +24,9 @@
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <robotsTxtPage>PartnerAdminRobotsTxt</robotsTxtPage>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_Intel_Partner_Admin_C_sf_edge_I4f33</serverIsDown>
+    <serverIsDown>SNA_Intel_Partner_Admin_C_sf_default_cdn_7VlqE</serverIsDown>
     <siteAdmin>11034919@intel.com.crm</siteAdmin>
-    <siteGuestRecordDefaultOwner>10557526@intel.com.crm</siteGuestRecordDefaultOwner>
+    <siteGuestRecordDefaultOwner>11579849@intel.com.crm</siteGuestRecordDefaultOwner>
     <siteType>ChatterNetwork</siteType>
     <subdomain>intelcloudcrm</subdomain>
     <urlPathPrefix>partneradmin</urlPathPrefix>

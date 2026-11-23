@@ -44,8 +44,8 @@ public class Core_IPS_ProductDetailCtrlLWC_Test {
         try{
             Test.startTest();
             Core_IPS_ProductDetailCtrl_LWC.getCaseRecords(0,assetObj.id);
-            Core_IPS_ProductDetailCtrl_LWC.getCaseRecords(null,null);
-            Test.stopTest();
+            Core_IPS_ProductDetailCtrl_LWC.getCaseRecords(1,null);
+           Test.stopTest();
         }
         catch(Exception e){
         }

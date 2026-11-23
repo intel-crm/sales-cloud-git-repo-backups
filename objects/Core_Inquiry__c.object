@@ -560,6 +560,78 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
                     <default>false</default>
                     <label>Telecommunications</label>
                 </value>
+                <value>
+                    <fullName>Accommodation and Food Services</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Accommodation and Food Services</label>
+                </value>
+                <value>
+                    <fullName>Arts, Entertainment and Recreation</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Arts, Entertainment and Recreation</label>
+                </value>
+                <value>
+                    <fullName>Automotive (Non Manufacturing)</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Automotive (Non Manufacturing)</label>
+                </value>
+                <value>
+                    <fullName>Defense and Space</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Defense and Space</label>
+                </value>
+                <value>
+                    <fullName>Energy and Utilities</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Energy and Utilities</label>
+                </value>
+                <value>
+                    <fullName>Finance and Insurance</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Finance and Insurance</label>
+                </value>
+                <value>
+                    <fullName>Gaming</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Gaming</label>
+                </value>
+                <value>
+                    <fullName>Professional and Business Services</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Professional and Business Services</label>
+                </value>
+                <value>
+                    <fullName>Real Estate, Rental and Leasing</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Real Estate, Rental and Leasing</label>
+                </value>
+                <value>
+                    <fullName>Software and Services</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Software and Services</label>
+                </value>
+                <value>
+                    <fullName>To Be Defined</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>To Be Defined</label>
+                </value>
+                <value>
+                    <fullName>Transportation, Travel and Warehousing</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Transportation, Travel and Warehousing</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -740,12 +812,6 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
                     <fullName>SMG</fullName>
                     <default>false</default>
                     <label>SMG</label>
-                </value>
-                <value>
-                    <fullName>SSG&quot;</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>SSG&quot;</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1218,12 +1284,6 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
                     <label>Sales Approved</label>
                 </value>
                 <value>
-                    <fullName>Asked for Follow up  </fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Asked for Follow up  </label>
-                </value>
-                <value>
                     <fullName>High Value Engagement   </fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -1606,6 +1666,75 @@ TEXT(Core_Contact_Inquiries__r.Core_Country_Region__c))</formula>
         <unique>false</unique>
     </fields>
     <label>Inquiry</label>
+    <listViews>
+        <fullName>All_Inquiries</fullName>
+        <columns>Core_Inquiry_Date_Dte__c</columns>
+        <columns>Core_Reviewed_by_Rep_Chk__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Contact_Inquiries__c</columns>
+        <columns>Core_AcccountName__c</columns>
+        <columns>Core_Lead_Inquiries__c</columns>
+        <columns>Core_Company_Txt__c</columns>
+        <columns>Core_Inquiry_Priority_Pkt__c</columns>
+        <columns>Core_Inquiry_Status_Pkt__c</columns>
+        <columns>Core_Inquiry_Source_Txt__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Inquiries</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Active_to_be_Reviewed</fullName>
+        <columns>Core_Inquiry_Date_Dte__c</columns>
+        <columns>Core_Reviewed_by_Rep_Chk__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Contact_Inquiries__c</columns>
+        <columns>Core_AcccountName__c</columns>
+        <columns>Core_Inquiry_Priority_Pkt__c</columns>
+        <columns>Core_Inquiry_Status_Pkt__c</columns>
+        <columns>Core_Inquiry_Source_Txt__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Core_Reviewed_by_Rep_Chk__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>My Active to be Reviewed</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Contacts_to_be_Reviewed</fullName>
+        <columns>Core_Inquiry_Date_Dte__c</columns>
+        <columns>Core_Reviewed_by_Rep_Chk__c</columns>
+        <columns>NAME</columns>
+        <columns>Core_Contact_Inquiries__c</columns>
+        <columns>Core_AcccountName__c</columns>
+        <columns>Core_Inquiry_Priority_Pkt__c</columns>
+        <columns>Core_Inquiry_Status_Pkt__c</columns>
+        <columns>Core_Inquiry_Source_Txt__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Core_Reviewed_by_Rep_Chk__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Core_Contact_Inquiries__c</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>My Contacts to be Reviewed</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
     <nameField>
         <label>Inquiry Name</label>
         <trackHistory>false</trackHistory>

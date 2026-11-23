@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Submit_IPA_Campaign_For_Approval_process</name>
+        <label>Submit IPA Campaign For Approval process</label>
+        <locationX>969</locationX>
+        <locationY>163</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <stringValue>Core_MDF_IPA_Proposal_AP_v3</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>submitterId</name>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>submit</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>IPA campaign resubmit Approval process {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>IPA campaign resubmit Approval process</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <filterFormula>ISCHANGED({!$Record.Core_MDF_IPA_Approval_Status_nm__c}) &amp;&amp; ISPICKVAL({!$Record.Core_MDF_Program__c},&apos;Intel Partner Alliance&apos;) &amp;&amp; (ISPICKVAL({!$Record.Core_MDF_IPA_Approval_Status_nm__c},&apos;Pending Approval&apos;) &amp;&amp; Not(ISPICKVAL({!$Record__Prior.Core_MDF_IPA_Approval_Status_nm__c},&apos;Pending Approval&apos;)) &amp;&amp; {!$Record.Core_MDF_Approval_Step_Counter_nbr__c} = 0)</filterFormula>
+        <object>Campaign</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>resubmit_trigger_after_2mins</name>
+            <connector>
+                <targetReference>Submit_IPA_Campaign_For_Approval_process</targetReference>
+            </connector>
+            <label>resubmit trigger after 2mins</label>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>LastModifiedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

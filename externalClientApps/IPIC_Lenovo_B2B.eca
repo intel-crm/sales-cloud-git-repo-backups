@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>sushma.hamom@intel.com</contactEmail>
-    <description>Lenovo IPIC API Integrations</description>
+    <contactEmail>anushyax.sivasankaran@intel.com</contactEmail>
+    <description>For Lenovo API access</description>
     <distributionState>Local</distributionState>
     <isProtected>false</isProtected>
     <label>IPIC Lenovo B2B</label>
-    <orgScopedExternalApp>00Do0000000aRcf:IPIC_Lenovo_B2B</orgScopedExternalApp>
+    <orgScopedExternalApp>00D2i0000008d6j:IPIC_Lenovo_B2B</orgScopedExternalApp>
 </ExternalClientApplication>

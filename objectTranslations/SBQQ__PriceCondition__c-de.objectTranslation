@@ -41,7 +41,7 @@
         <value>Preisbedingungen</value>
     </caseValues>
     <fields>
-        <help>Wählen Sie ein Feld im Zielobjekt.</help>
+        <help>Wählen Sie das Feld, das den Wert enthalten soll, den Sie im Feld &quot;Wert&quot; eingeben.</help>
         <label><!-- Field --></label>
         <name>SBQQ__Field__c</name>
         <picklistValues>
@@ -63,6 +63,10 @@
         <picklistValues>
             <masterLabel>RecordTypeId</masterLabel>
             <translation><!-- RecordTypeId --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBQQ__ListPrice__c</masterLabel>
+            <translation><!-- SBQQ__ListPrice__c --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SBQQ__OptionLevel__c</masterLabel>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Invoke_inbound_staging_processing</name>
-        <label>Invoke inbound staging processing</label>
+        <name>Invoke_inbound_staging_process</name>
+        <label>Invoke inbound staging process</label>
         <locationX>50</locationX>
         <locationY>278</locationY>
         <actionName>Product_ProcessInboundStagingRecords</actionName>
@@ -15,6 +15,7 @@
             </value>
         </inputParameters>
         <nameSegment>Product_ProcessInboundStagingRecords</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Send_mulesoft_batch_failure_email_to_recipients</name>
@@ -63,6 +64,7 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -86,7 +88,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Invoke_inbound_staging_processing</targetReference>
+                <targetReference>Invoke_inbound_staging_process</targetReference>
             </connector>
             <label>Success</label>
         </rules>
@@ -123,7 +125,7 @@
         <object>Product_Inbound_Staging_Load__e</object>
         <triggerType>PlatformEvent</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <name>failureEmailBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>

@@ -51,6 +51,8 @@ export default class Core_IPS_SearchComponent extends LightningElement {
   }
 
   handleFocusOut() {
+    console.log("focus out search componet");
+    
     const focusOutEvent = new CustomEvent("focusout", {
       detail: this.searchKey
     });

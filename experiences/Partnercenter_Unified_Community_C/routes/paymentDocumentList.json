@@ -6,7 +6,7 @@
   "id" : "34e0e540-f033-4ba5-b82f-0ca190ad9e6e",
   "label" : "Payment Document List",
   "objectApiName" : "Core_MDF_Claim_VAT_Info__c",
-  "routeType" : "list-a8k",
+  "routeType" : "list-a15",
   "type" : "route",
   "urlPrefix" : "core-mdf-claim-vat-info"
 }

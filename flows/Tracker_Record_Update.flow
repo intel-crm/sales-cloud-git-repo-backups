@@ -5,8 +5,8 @@
     <assignments>
         <name>add_Values_to_Collection</name>
         <label>add Values to Collection</label>
-        <locationX>424</locationX>
-        <locationY>2555</locationY>
+        <locationX>270</locationX>
+        <locationY>1655</locationY>
         <assignmentItems>
             <assignToReference>TrackerRecordstoUpdate</assignToReference>
             <operator>Add</operator>
@@ -21,8 +21,8 @@
     <assignments>
         <name>inactivate_record</name>
         <label>inactivate record</label>
-        <locationX>424</locationX>
-        <locationY>2447</locationY>
+        <locationX>270</locationX>
+        <locationY>1547</locationY>
         <assignmentItems>
             <assignToReference>Iterate_over_records.IsActive__c</assignToReference>
             <operator>Assign</operator>
@@ -37,7 +37,7 @@
     <assignments>
         <name>Increment_counter</name>
         <label>Increment counter</label>
-        <locationX>424</locationX>
+        <locationX>270</locationX>
         <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>acrCount</assignToReference>
@@ -50,33 +50,10 @@
             <targetReference>Loop_ACR_to_get_all_Inactive_records</targetReference>
         </connector>
     </assignments>
-    <assignments>
-        <name>update_subs_status_reason</name>
-        <label>update subs status reason</label>
-        <locationX>270</locationX>
-        <locationY>1571</locationY>
-        <assignmentItems>
-            <assignToReference>For_Each_Item_in_get_subscriptions.PRM_Status_Reason_Txt__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>subsReason1</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>listToUpdateSubsReason</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>For_Each_Item_in_get_subscriptions</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>For_Each_Item_in_get_subscriptions</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <name>ACR_Inactive</name>
         <label>ACR Inactive?</label>
-        <locationX>633</locationX>
+        <locationX>468</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -98,7 +75,7 @@
     <decisions>
         <name>Check_if_records_are_not_Inactive</name>
         <label>Check if records are not Inactive</label>
-        <locationX>556</locationX>
+        <locationX>402</locationX>
         <locationY>647</locationY>
         <defaultConnector>
             <targetReference>Loop_ACR_to_get_all_Inactive_records</targetReference>
@@ -123,7 +100,7 @@
     <decisions>
         <name>If_inactive_acrLst_size_0_or_0</name>
         <label>If inactive acrLst size=0 or &gt;0</label>
-        <locationX>336</locationX>
+        <locationX>182</locationX>
         <locationY>1031</locationY>
         <defaultConnector>
             <targetReference>Get_Tracker_Records</targetReference>
@@ -145,79 +122,15 @@
             <label>if equlas 0</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>if_list_is_not_empty</name>
-        <label>if list is not empty</label>
-        <locationX>182</locationX>
-        <locationY>1847</locationY>
-        <defaultConnector>
-            <targetReference>Get_Tracker_Records</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>if empty</defaultConnectorLabel>
-        <rules>
-            <name>if_list_not_empty</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>listToUpdateSubsReason</leftValueReference>
-                <operator>IsEmpty</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Subscriptions_reason</targetReference>
-            </connector>
-            <label>if list not empty</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>if_partner_subscriptions_are_active</name>
-        <label>if partner subscriptions are active</label>
-        <locationX>402</locationX>
-        <locationY>1463</locationY>
-        <defaultConnector>
-            <targetReference>For_Each_Item_in_get_subscriptions</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>not</defaultConnectorLabel>
-        <rules>
-            <name>active</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>For_Each_Item_in_get_subscriptions.PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>update_subs_status_reason</targetReference>
-            </connector>
-            <label>active</label>
-        </rules>
-    </decisions>
     <description>Update Tracker records to inactive</description>
     <environments>Default</environments>
     <interviewLabel>Tracker Record Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Tracker Record Update</label>
     <loops>
-        <name>For_Each_Item_in_get_subscriptions</name>
-        <label>For Each Item in get subscriptions</label>
-        <locationX>182</locationX>
-        <locationY>1355</locationY>
-        <collectionReference>get_subscriptions</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>if_partner_subscriptions_are_active</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>if_list_is_not_empty</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
         <name>Iterate_over_records</name>
         <label>Iterate over records</label>
-        <locationX>336</locationX>
-        <locationY>2339</locationY>
+        <locationX>182</locationX>
+        <locationY>1439</locationY>
         <collectionReference>Get_Tracker_Records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -230,7 +143,7 @@
     <loops>
         <name>Loop_ACR_to_get_all_Inactive_records</name>
         <label>Loop ACR to get all Inactive records</label>
-        <locationX>336</locationX>
+        <locationX>182</locationX>
         <locationY>539</locationY>
         <collectionReference>Get_all_ACRs_of_account_for_which_ACR_is_inactivated</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -263,8 +176,8 @@
     <recordCreates>
         <name>Error_Logs</name>
         <label>Error Logs</label>
-        <locationX>666</locationX>
-        <locationY>2855</locationY>
+        <locationX>490</locationX>
+        <locationY>1955</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -307,7 +220,7 @@
     <recordLookups>
         <name>Get_all_ACRs_of_account_for_which_ACR_is_inactivated</name>
         <label>Get all ACRs of account for which ACR is inactivated</label>
-        <locationX>336</locationX>
+        <locationX>182</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -340,31 +253,10 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>get_subscriptions</name>
-        <label>get subscriptions</label>
-        <locationX>182</locationX>
-        <locationY>1247</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>For_Each_Item_in_get_subscriptions</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>PRM_Contact_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.PRM_Contact_Id__c</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>PRM_ContactSubscriptionAssociation__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_Tracker_Records</name>
         <label>Get Tracker Records</label>
-        <locationX>336</locationX>
-        <locationY>2231</locationY>
+        <locationX>182</locationX>
+        <locationY>1331</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Iterate_over_records</targetReference>
@@ -393,25 +285,15 @@
     <recordUpdates>
         <name>Update_Inactivated_Records</name>
         <label>Update Inactivated Records</label>
-        <locationX>336</locationX>
-        <locationY>2747</locationY>
+        <locationX>182</locationX>
+        <locationY>1847</locationY>
         <faultConnector>
             <targetReference>Error_Logs</targetReference>
         </faultConnector>
         <inputReference>TrackerRecordstoUpdate</inputReference>
     </recordUpdates>
-    <recordUpdates>
-        <name>Update_Subscriptions_reason</name>
-        <label>Update Subscriptions reason</label>
-        <locationX>50</locationX>
-        <locationY>1955</locationY>
-        <connector>
-            <targetReference>Get_Tracker_Records</targetReference>
-        </connector>
-        <inputReference>listToUpdateSubsReason</inputReference>
-    </recordUpdates>
     <start>
-        <locationX>507</locationX>
+        <locationX>342</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>ACR_Inactive</targetReference>
@@ -439,10 +321,10 @@
     <subflows>
         <name>Inactive_account_attributes</name>
         <label>Inactive account attributes</label>
-        <locationX>182</locationX>
+        <locationX>50</locationX>
         <locationY>1139</locationY>
         <connector>
-            <targetReference>get_subscriptions</targetReference>
+            <targetReference>Get_Tracker_Records</targetReference>
         </connector>
         <flowName>PRM_flowForDeactivationWithWithoutUnified</flowName>
         <inputAssignments>
@@ -453,11 +335,6 @@
         </inputAssignments>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </subflows>
-    <textTemplates>
-        <name>subsReason1</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>Inactivated as part of the last contact’s inactivation</text>
-    </textTemplates>
     <variables>
         <name>acrCount</name>
         <dataType>Number</dataType>
@@ -478,30 +355,12 @@
         <objectType>Core_Log_Entry__c</objectType>
     </variables>
     <variables>
-        <name>listToUpdateSubsReason</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>true</isInput>
-        <isOutput>true</isOutput>
-        <objectType>PRM_ContactSubscriptionAssociation__c</objectType>
-    </variables>
-    <variables>
         <name>LogEntry</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <objectType>Core_Log_Entry__c</objectType>
-    </variables>
-    <variables>
-        <name>subsreason</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <stringValue>Inactivated as part of the last contact’s inactivation</stringValue>
-        </value>
     </variables>
     <variables>
         <name>TrackerRecordstoUpdate</name>

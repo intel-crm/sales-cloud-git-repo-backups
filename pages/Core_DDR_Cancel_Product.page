@@ -1,0 +1,70 @@
+<apex:page StandardController="Core_Design_Registration_Product__c" extensions="Core_DDR_Cancel_Product_Controller" action="{!cancelDDRProduct}" lightningStylesheets="True">
+    <apex:form >
+        
+        <script>
+            function productIneligible()
+            {
+                alert("Design Registration Product is Ineligible. Please contact Support team.");
+                
+                if('{!$Profile.Name}' == 'Partner'){
+                    window.location.href='/{!$Label.core_ddr_site_url}/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+                else{
+                    window.location.href='/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+            }
+            
+            function productInactive()
+            {
+                alert("Design Registration Product is Inactive. Please contact Support team.");
+                
+                if('{!$Profile.Name}' == 'Partner'){
+                    window.location.href='/{!$Label.core_ddr_site_url}/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+                else{
+                    window.location.href='/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+            }
+            
+            function alreadyCancelled()
+            {
+                alert("Design Registration Product is already Cancelled.");
+                
+                if('{!$Profile.Name}' == 'Partner'){
+                    window.location.href='/{!$Label.core_ddr_site_url}/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+                else{
+                    window.location.href='/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+            }
+            
+            function succuessCancelled()
+            {
+                alert("Design Registration Product is Cancelled Successfully.");
+                
+                if('{!$Profile.Name}' == 'Partner'){
+                    window.location.href='/{!$Label.core_ddr_site_url}/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+                else{
+                    window.location.href='/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                }
+            }
+        
+            function customExceptionMsg() {
+                    alert("There is an issue processing the record. Please raise a support ticket.");
+                    if ('{!$CurrentPage.Name}' == 'Partner Admin' && '{!$Profile.Name}' == 'Partner') {
+                        window.location.href = '/core-design-registration-product/{!Core_Design_Registration_Product__c.Id}';
+                    }
+                    else if ('{!$Profile.Name}' == 'Partner') {
+                        window.location.href = '/{!$Label.core_ddr_site_url}/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                    }
+                    else {
+                        window.location.href = '/{!Core_Design_Registration_Product__c.Id}?btdid={!Core_Design_Registration_Product__c.Core_Design_Registration_Id__r.id}';
+                    }
+                }
+        </script>
+        
+        <apex:outputText value="{!callAlertFunc}" escape="false"></apex:outputText>
+        
+    </apex:form>
+</apex:page>

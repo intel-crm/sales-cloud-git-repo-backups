@@ -26,5 +26,21 @@
         <label><!-- Message Viewed --></label>
         <name>PRM_Message_Viewed_Ind__c</name>
     </fields>
+    <fields>
+        <label><!-- UI Display Area --></label>
+        <name>PRM_UI_Display_Area_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Leads</masterLabel>
+            <translation><!-- Leads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notification Area</masterLabel>
+            <translation><!-- Notification Area --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Points</masterLabel>
+            <translation><!-- Points --></translation>
+        </picklistValues>
+    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -4,7 +4,7 @@ public class PicklistManagerMetadataService {
     public class MetadataPort {
         public String endpoint_x = URL.getOrgDomainUrl().toExternalForm() + '/services/Soap/m/42.0';
       	//public String endpoint_x = 'callout:PicklistNamedCredential/services/Soap/m/42.0';
-        public Map<String,String> inputHttpHeaders_x;
+      	 public Map<String,String> inputHttpHeaders_x;
         public Map<String,String> outputHttpHeaders_x;
         public String clientCertName_x;
         public String clientCert_x;
@@ -19,6 +19,7 @@ public class PicklistManagerMetadataService {
         private String[] ns_map_type_info = new String[]{SOAP_M_URI, 'MetadataService'};
         
         public PicklistManagerMetadataService.SaveResult[] updateMetadata(PicklistManagerMetadataService.CustomField[] metadata) {
+            system.debug('Inside updatemetadat service:'+endpoint_x);
             PicklistManagerMetadataService.updateMetadata_element request_x = new PicklistManagerMetadataService.updateMetadata_element();
             request_x.metadata = metadata;
             PicklistManagerMetadataService.updateMetadataResponse_element response_x;

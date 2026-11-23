@@ -226,53 +226,6 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
-    <listViews>
-        <fullName>GDPR</fullName>
-        <columns>NAME</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>PRM_Content_Code_Txt__c</field>
-            <operation>contains</operation>
-            <value>GDPR</value>
-        </filters>
-        <label>GDPR</label>
-    </listViews>
-    <listViews>
-        <fullName>I_Accept_Text</fullName>
-        <columns>NAME</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>PRM_Content_Code_Txt__c</field>
-            <operation>contains</operation>
-            <value>IPA_CHECKBOX_TEXT</value>
-        </filters>
-        <label>I Accept Text</label>
-    </listViews>
-    <listViews>
-        <fullName>Partner_Assist</fullName>
-        <columns>NAME</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Terms_and_Conditions_Type_Nm__c</field>
-            <operation>equals</operation>
-            <value>Consent</value>
-        </filters>
-        <label>Partner Assist</label>
-    </listViews>
-    <listViews>
-        <fullName>Terms_and_Conditions</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Content_Language_Nm__c</columns>
-        <columns>PRM_InActive_Ind__c</columns>
-        <columns>PRM_Terms_and_Conditions_Type_Nm__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Content_Code_Txt__c</field>
-            <operation>equals</operation>
-            <value>IPA_TANDC1,IPA_TANDC2,IPA_TANDC3,IPA_TANDC4,IPA_TANDC5,IPA_TANDC6</value>
-        </filters>
-        <label>Terms and Conditions</label>
-    </listViews>
     <nameField>
         <label>Partner Terms and Contions Name</label>
         <type>Text</type>

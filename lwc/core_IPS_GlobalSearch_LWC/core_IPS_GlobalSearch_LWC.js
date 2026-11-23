@@ -67,10 +67,11 @@ export default class Core_IPS_GlobalSearch_LWC extends NavigationMixin(Lightning
     searchKeyword(event) {
         //Added by chetan as part of slow execution
         this.searchValue = event.target.value;
+        if(this.searchValue.length > 3){
         window.clearTimeout(this.delayTimeout);
         this.delayTimeout = setTimeout(() => {
         this.handlesubject(event);
-        }, 300);
+        }, 300);}
         
         //this.handlesubject(event);
     }
@@ -103,7 +104,6 @@ export default class Core_IPS_GlobalSearch_LWC extends NavigationMixin(Lightning
                 });
             })
             .catch(err => {
-                console.error(err);
             })
     }
     ddrBannerActive = false;
@@ -111,7 +111,7 @@ export default class Core_IPS_GlobalSearch_LWC extends NavigationMixin(Lightning
         getCustomSetting()
             .then(async (result) => {
                 result = await result.filter(element => {
-                    if (element.Core_Ips_BannerMessage_Text_LWC__c.includes('partners.intel.com/DDR/') == true && this.isDddAvailable == false) {
+                    if (element.Core_Ips_BannerMessage_Text_LWC__c.includes('https://partners.intel.com/partner') == true && this.isDddAvailable == false) {
                         return false;
                     } else {
                         return true;

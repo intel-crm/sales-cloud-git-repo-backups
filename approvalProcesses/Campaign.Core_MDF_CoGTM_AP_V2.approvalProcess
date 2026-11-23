@@ -95,7 +95,7 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>businessapprover.queue@intel.com.crm</name>
+                <name>business.approver.queue@intel.com.crm</name>
                 <type>user</type>
             </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>

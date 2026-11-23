@@ -32,4 +32,8 @@ public without sharing class UCD_ACM_ServiceContracts {
     public interface IAfterUpdateAccountTrigger {
         void execute(UCD_ACM_UnitOfWork unitOfWork, Map<Id, Account> oldAccounts, Map<Id, Account> newAccounts);
     }
+
+    public interface IBeforeDeleteAccountTrigger {
+        void execute(List<Account> oldAccounts);
+    }
 }

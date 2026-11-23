@@ -3,8 +3,8 @@
  * Test class Name : Core_IPS_CaseLandingPageControllerTest
  * 
  */
-
-public class Core_IPS_CaseLandingPageController {
+/* Niyaj ---- Added with sharing for vanuability changes*/
+public with sharing class Core_IPS_CaseLandingPageController {
     
     @AuraEnabled
     public static String getStandardActionRedirectionURL(String actionStr, String objectStr, String profileStr, String recTypeName) {

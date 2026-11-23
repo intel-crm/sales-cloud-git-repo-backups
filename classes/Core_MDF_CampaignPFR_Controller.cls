@@ -709,6 +709,7 @@ public without sharing class Core_MDF_CampaignPFR_Controller {
                     return result;
                 }       
             }
+
             programNameByRecTypeDevNameMap = Core_MDF_GeneralPurpose_UI_Utility.getProgramNameByRecordTypeDevName();
             if(programNameByRecTypeDevNameMap.containsKey(program)){
                 program = (String)programNameByRecTypeDevNameMap.get(program);

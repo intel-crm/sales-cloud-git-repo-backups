@@ -1,0 +1,4493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>false</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Nominative</caseType>
+        <plural>true</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>false</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Accusative</caseType>
+        <plural>true</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>false</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Genitive</caseType>
+        <plural>true</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>false</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Dative</caseType>
+        <plural>true</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>false</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Instrumental</caseType>
+        <plural>true</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>false</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <caseValues>
+        <caseType>Prepositional</caseType>
+        <plural>true</plural>
+        <value><!-- Design-Deal Registration --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations (Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Accepted By --></label>
+        <name>Core_Accepted_By_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations (Accepted By) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Age of Design --></label>
+        <name>Core_Age_Of_Design_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approve High Touch Button Visible --></label>
+        <name>Core_Approve_High_Touch_Button_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approve Low Touch Button Visible --></label>
+        <name>Core_Approve_Low_Touch_Button_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Approved Product Count --></label>
+        <name>Core_Approved_Product_Cnt__c</name>
+    </fields>
+    <fields>
+        <help><!-- Used to store the approver group name --></help>
+        <label><!-- System Approver Group Name --></label>
+        <name>Core_Approver_Grp_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Approver Group Notification Sent --></label>
+        <name>Core_Approver_Grp_Notification_Sent_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- DR Partner Type --></label>
+        <name>Core_DDR_Partner_Type_Txt__c</name>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM</masterLabel>
+            <translation><!-- ODM --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This is a brief description of what the Design will be used for (i.e., what function/value the end-customer&apos;s Product will provide). --></help>
+        <label><!-- Description --></label>
+        <name>Core_Design_Registration_Dsc__c</name>
+    </fields>
+    <fields>
+        <help><!-- The title of the registration that will become the opportunity name --></help>
+        <label><!-- Registration Name --></label>
+        <name>Core_Design_Registration_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Registration Stage --></label>
+        <name>Core_Design_Registration_Stage_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The status indicates that the registration is: Submitted, Pre-Approved, Re-Submitted, Approved, Rejected, or Abandoned. --></help>
+        <label><!-- Registration Status --></label>
+        <name>Core_Design_Registration_Status_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Abandoned</masterLabel>
+            <translation><!-- Abandoned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Accepted for Review</masterLabel>
+            <translation><!-- Deal Accepted for Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design in Review</masterLabel>
+            <translation><!-- Design in Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expired</masterLabel>
+            <translation><!-- Expired --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending with Partner</masterLabel>
+            <translation><!-- Pending with Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Precheck Completed</masterLabel>
+            <translation><!-- Precheck Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Precheck Pending</masterLabel>
+            <translation><!-- Precheck Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Re-Submitted</masterLabel>
+            <translation><!-- Re-Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Indicates whether this Design Registration is for a DSN Partner. --></help>
+        <label><!-- Design Solution Network --></label>
+        <name>Core_Design_Solution_Network_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Status Checkbox --></label>
+        <name>Core_Design_Status_Checkbox__c</name>
+    </fields>
+    <fields>
+        <help>The name of the company designing a product using Intel&apos;s components.</help>
+        <label><!-- End Customer Account Name --></label>
+        <name>Core_End_Customer_Account_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations (End Customer Account Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The name of the company designing a product using Intel&apos;s components.  This is a reference to the Account record. --></help>
+        <label><!-- End Customer Account --></label>
+        <name>Core_End_Customer_Account_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Account Owner --></label>
+        <name>Core_End_Customer_Account_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Account RecordType --></label>
+        <name>Core_End_Customer_Account_RecordType__c</name>
+    </fields>
+    <fields>
+        <help><!-- The city of the end customer&apos;s company --></help>
+        <label><!-- City --></label>
+        <name>Core_End_Customer_City_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Email --></label>
+        <name>Core_End_Customer_Contact_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Core_End_Customer_Contact_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Phone --></label>
+        <name>Core_End_Customer_Contact_Phone_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Title --></label>
+        <name>Core_End_Customer_Contact_Title_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Core_End_Customer_Country_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The state/province where the end customer company is located --></help>
+        <label><!-- State/Province --></label>
+        <name>Core_End_Customer_Country_Subdivision_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Export Compliance Block --></label>
+        <name>Core_End_Customer_Export_Cmplnc_Bloc_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Industry value of the End Customer Account. --></help>
+        <label><!-- System End Customer Industry --></label>
+        <name>Core_End_Customer_Industry_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The end customer&apos;s formal company name --></help>
+        <label><!-- End Customer Name --></label>
+        <name>Core_End_Customer_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is Intel&apos;s categorization of the End-Customer based on its volume of business.  It is pulled in from the End-Customer (Account) record and displayed on the Design Registration. --></help>
+        <label><!-- End Customer PSG Tier --></label>
+        <name>Core_End_Customer_PSG_Tier_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The zip/postal code of the end customer company --></help>
+        <label><!-- Zip/Postal Code --></label>
+        <name>Core_End_Customer_Postal_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- System End Customer Sales Group --></label>
+        <name>Core_End_Customer_Sales_Group_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The street address of the end customer&apos;s company --></help>
+        <label><!-- Street1 --></label>
+        <name>Core_End_Customer_Street_Addr_Line1_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street2 --></label>
+        <name>Core_End_Customer_Street_Addr_Line2_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The Sub-Industry value of the End Customer Account. --></help>
+        <label><!-- System End Customer Sub-Industry --></label>
+        <name>Core_End_Customer_Sub_Industry__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer URL --></label>
+        <name>Core_End_Customer_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Id --></label>
+        <name>Core_External_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- FPGA Quote Comments --></label>
+        <name>Core_FPGA_Quote_Comments_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the date by which the Disti expects the End-Customer to start ordering components. --></help>
+        <label><!-- First Customer Ship Date --></label>
+        <name>Core_First_Customer_Ship_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The name of the Intel Platform intended for use in this design-deal.  If not yet identified, user should select Not Applicable --></help>
+        <label><!-- Intel Platform --></label>
+        <name>Core_Intel_Platform_Nm__c</name>
+        <picklistValues>
+            <masterLabel>&lt;NOT APPLICABLE&gt;</masterLabel>
+            <translation><!-- &lt;NOT APPLICABLE&gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AGILEX</masterLabel>
+            <translation><!-- AGILEX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALDER LAKE</masterLabel>
+            <translation><!-- ALDER LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALDER LAKE D</masterLabel>
+            <translation><!-- ALDER LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALDER LAKE M</masterLabel>
+            <translation><!-- ALDER LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMSTON LAKE</masterLabel>
+            <translation><!-- AMSTON LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APOLLO LAKE I</masterLabel>
+            <translation><!-- APOLLO LAKE I --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARRIA</masterLabel>
+            <translation><!-- ARRIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARROW LAKE D</masterLabel>
+            <translation><!-- ARROW LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARROW LAKE M</masterLabel>
+            <translation><!-- ARROW LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARROW LAKE REFRESH D</masterLabel>
+            <translation><!-- ARROW LAKE REFRESH D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARROW LAKE REFRESH M</masterLabel>
+            <translation><!-- ARROW LAKE REFRESH M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BARTLETT LAKE S</masterLabel>
+            <translation><!-- BARTLETT LAKE S --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BASIN FALLS</masterLabel>
+            <translation><!-- BASIN FALLS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIRCH STREAM</masterLabel>
+            <translation><!-- BIRCH STREAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BOARD</masterLabel>
+            <translation><!-- BOARD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CASCADE LAKE SP</masterLabel>
+            <translation><!-- CASCADE LAKE SP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CATLOW</masterLabel>
+            <translation><!-- CATLOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CEDAR ISLAND</masterLabel>
+            <translation><!-- CEDAR ISLAND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COFFEE LAKE D</masterLabel>
+            <translation><!-- COFFEE LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COFFEE LAKE D R</masterLabel>
+            <translation><!-- COFFEE LAKE D R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COFFEE LAKE M</masterLabel>
+            <translation><!-- COFFEE LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COFFEE LAKE M R</masterLabel>
+            <translation><!-- COFFEE LAKE M R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COFFEE LAKE R</masterLabel>
+            <translation><!-- COFFEE LAKE R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COMET LAKE</masterLabel>
+            <translation><!-- COMET LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COMET LAKE D</masterLabel>
+            <translation><!-- COMET LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COMET LAKE M</masterLabel>
+            <translation><!-- COMET LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COMET LAKE R</masterLabel>
+            <translation><!-- COMET LAKE R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COOPER LAKE SP</masterLabel>
+            <translation><!-- COOPER LAKE SP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRESCENT ISLAND</masterLabel>
+            <translation><!-- CRESCENT ISLAND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CYCLONE</masterLabel>
+            <translation><!-- CYCLONE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DUNLOW</masterLabel>
+            <translation><!-- DUNLOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EAGLE STREAM</masterLabel>
+            <translation><!-- EAGLE STREAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EASIC</masterLabel>
+            <translation><!-- EASIC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ELKHART LAKE</masterLabel>
+            <translation><!-- ELKHART LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FRISCO LAKE</masterLabel>
+            <translation><!-- FRISCO LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GEMINI LAKE M R</masterLabel>
+            <translation><!-- GEMINI LAKE M R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GRANGEVILLE NS</masterLabel>
+            <translation><!-- GRANGEVILLE NS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Granite Rapids WS</masterLabel>
+            <translation><!-- Granite Rapids WS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HARRISONVILLE</masterLabel>
+            <translation><!-- HARRISONVILLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HARVEY LAKE</masterLabel>
+            <translation><!-- HARVEY LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICE LAKE</masterLabel>
+            <translation><!-- ICE LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICE LAKE M</masterLabel>
+            <translation><!-- ICE LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICE LAKE SP</masterLabel>
+            <translation><!-- ICE LAKE SP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IDAVILLE-HCC</masterLabel>
+            <translation><!-- IDAVILLE-HCC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IDAVILLE-LCC</masterLabel>
+            <translation><!-- IDAVILLE-LCC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JACOBSVILLE</masterLabel>
+            <translation><!-- JACOBSVILLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JASPER LAKE M</masterLabel>
+            <translation><!-- JASPER LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KABY LAKE D R</masterLabel>
+            <translation><!-- KABY LAKE D R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KABY LAKE M R</masterLabel>
+            <translation><!-- KABY LAKE M R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KASEYVILLE</masterLabel>
+            <translation><!-- KASEYVILLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOGANVILLE</masterLabel>
+            <translation><!-- LOGANVILLE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LUNAR LAKE M</masterLabel>
+            <translation><!-- LUNAR LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MALIBOU LAKE</masterLabel>
+            <translation><!-- MALIBOU LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MAPLE STREAM</masterLabel>
+            <translation><!-- MAPLE STREAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MAX</masterLabel>
+            <translation><!-- MAX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEHLOW</masterLabel>
+            <translation><!-- MEHLOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>METEOR LAKE M</masterLabel>
+            <translation><!-- METEOR LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>METEOR LAKE PS</masterLabel>
+            <translation><!-- METEOR LAKE PS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOVA LAKE D</masterLabel>
+            <translation><!-- NOVA LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOVA LAKE M</masterLabel>
+            <translation><!-- NOVA LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OAK STREAM</masterLabel>
+            <translation><!-- OAK STREAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PANTHER LAKE D</masterLabel>
+            <translation><!-- PANTHER LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PANTHER LAKE M</masterLabel>
+            <translation><!-- PANTHER LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PHOEBE LAKE</masterLabel>
+            <translation><!-- PHOEBE LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PURLEY</masterLabel>
+            <translation><!-- PURLEY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAPTOR LAKE M</masterLabel>
+            <translation><!-- RAPTOR LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAPTOR LAKE PS</masterLabel>
+            <translation><!-- RAPTOR LAKE PS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAPTOR LAKE REFRESH D</masterLabel>
+            <translation><!-- RAPTOR LAKE REFRESH D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAPTOR LAKE REFRESH M</masterLabel>
+            <translation><!-- RAPTOR LAKE REFRESH M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REDONDO LAKE</masterLabel>
+            <translation><!-- REDONDO LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROCKET LAKE D</masterLabel>
+            <translation><!-- ROCKET LAKE D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAPPHIRE RAPIDS D</masterLabel>
+            <translation><!-- SAPPHIRE RAPIDS D --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAPPHIRE RAPIDS REFRESH</masterLabel>
+            <translation><!-- SAPPHIRE RAPIDS REFRESH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAPPHIRE RAPIDS SP</masterLabel>
+            <translation><!-- SAPPHIRE RAPIDS SP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STANFIELD M</masterLabel>
+            <translation><!-- STANFIELD M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STRATIX</masterLabel>
+            <translation><!-- STRATIX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TATLOW</masterLabel>
+            <translation><!-- TATLOW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TIGER LAKE</masterLabel>
+            <translation><!-- TIGER LAKE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TIGER LAKE M</masterLabel>
+            <translation><!-- TIGER LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TIGER LAKE R</masterLabel>
+            <translation><!-- TIGER LAKE R --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TWINLAKE M</masterLabel>
+            <translation><!-- TWINLAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WALKER PASS</masterLabel>
+            <translation><!-- WALKER PASS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WHISKEY LAKE M</masterLabel>
+            <translation><!-- WHISKEY LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WHITLEY</masterLabel>
+            <translation><!-- WHITLEY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WILDCAT LAKE M</masterLabel>
+            <translation><!-- WILDCAT LAKE M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WILDCAT LAKE REFRESH</masterLabel>
+            <translation><!-- WILDCAT LAKE REFRESH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WIZARD LAKE</masterLabel>
+            <translation><!-- WIZARD LAKE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Intel Support Status --></label>
+        <name>Core_Intel_Support_Status__c</name>
+        <picklistValues>
+            <masterLabel>Device Builder Registration High</masterLabel>
+            <translation><!-- Device Builder Registration High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Device Builder Registration Low</masterLabel>
+            <translation><!-- Device Builder Registration Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disti Design Registration High</masterLabel>
+            <translation><!-- Disti Design Registration High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disti Design Registration Low</masterLabel>
+            <translation><!-- Disti Design Registration Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG Design Registration</masterLabel>
+            <translation><!-- PSG Design Registration --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This is the Intel Sales Owner of this Design Registration. --></help>
+        <label><!-- Intel DR Owner --></label>
+        <name>Core_Intel_Technical_Owner_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations (Intel DR Owner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Comments about this design added by an Intel Sales Owner (Not visible to Distributor) --></help>
+        <label><!-- Internal Comments --></label>
+        <name>Core_Internal_Comment_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Is End Customer Account Blocked --></label>
+        <name>Core_Is_End_Customer_Account_Blocked_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Is End Customer Account Covered --></label>
+        <name>Core_Is_End_Customer_Account_Covered_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Status Change Age --></label>
+        <name>Core_Last_Status_Change_Age_Cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Status Change Date --></label>
+        <name>Core_Last_Status_Change_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- IT IS THE INTEL PARTNER&apos;S RESPONSIBILITY TO UNDERSTAND THE EXPORT, CUSTOMS, AND SANCTION CONTROLS APPLICABLE TO INTEL PARTNER&apos;S COMPANY, PROJECT, AND PRODUCT AND TAKE ALL ACTIONS NECESSARY TO ENSURE COMPLIANCE. --></help>
+        <label><!-- MINDS Message --></label>
+        <name>Core_MINDS_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the region where the orders for this design will be manufactured. --></help>
+        <label><!-- Manufacturing Region --></label>
+        <name>Core_Manufacturing_Region_Cd__c</name>
+        <picklistValues>
+            <masterLabel>APJ</masterLabel>
+            <translation><!-- APJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO</masterLabel>
+            <translation><!-- ASMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC</masterLabel>
+            <translation><!-- PRC --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>This is a flag used to indicate whether this Design is used for more sensitive applications.</help>
+        <label>Military - Aerospace - Gov&apos;t End Use?</label>
+        <name>Core_Military_Aerospace_Gvrnmt_Use_Ind__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- My Accepted Design --></label>
+        <name>Core_My_Accepted_Design_Ind__c</name>
+    </fields>
+    <fields>
+        <help><!-- Manager of the Partner Account Owner. This person will receive the Approval if this design is converted to Opportunity and the Opportunity is submitted for Approval. --></help>
+        <label><!-- Opportunity Approver --></label>
+        <name>Core_Opportunity_Approver_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date by which the end customer will decide whether or not to move forward with the project --></help>
+        <label><!-- Decision Date --></label>
+        <name>Core_Opportunity_Decision_Dt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is a reference to the Opportunity record created after the Design-Deal Registration approval. --></help>
+        <label><!-- Opportunity Name --></label>
+        <name>Core_Opportunity_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- This is the number of whole units (which will involve all of the components in the design) the End-Customer expects to buy/sell on an annual basis. --></help>
+        <label><!-- Opportunity Volume --></label>
+        <name>Core_Opportunity_Volume_Cnt__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the representative of the Distributor that is the primary point of Contact with Intel for this Design Registration. --></help>
+        <label><!-- Owner Name --></label>
+        <name>Core_Owner_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Country Code --></label>
+        <name>Core_Partner_Account_Country_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Name --></label>
+        <name>Core_Partner_Account_Id__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations (Partner Account Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- This is Intel&apos;s Partner Account name submitting the Design-Deal Registration. --></help>
+        <label><!-- Partner Account --></label>
+        <name>Core_Partner_Account_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Owner Email --></label>
+        <name>Core_Partner_Account_Owner_Email_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Region --></label>
+        <name>Core_Partner_Account_Region_Cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account State Code --></label>
+        <name>Core_Partner_Account_State_Cd__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner&apos;s technical owner (field application engineer) --></help>
+        <label><!-- Partner Contact --></label>
+        <name>Core_Partner_FAE_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner FSR --></label>
+        <name>Core_Partner_FSR_Nm__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the name of the Intel Program the Distributor is participating in. --></help>
+        <label><!-- Partner Program --></label>
+        <name>Core_Partner_Program_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Pending Product Count --></label>
+        <name>Core_Pending_Product_Cnt__c</name>
+    </fields>
+    <fields>
+        <help><!-- The customer&apos;s application based upon the product segment --></help>
+        <label><!-- Product Application --></label>
+        <name>Core_Product_Application_Nm__c</name>
+        <picklistValues>
+            <masterLabel>ADAS L1-L3 and Mainstream Safety</masterLabel>
+            <translation><!-- ADAS L1-L3 and Mainstream Safety --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASIC Prototyping/Emulation</masterLabel>
+            <translation><!-- ASIC Prototyping/Emulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATE &amp; Semiconductor Tester</masterLabel>
+            <translation><!-- ATE &amp; Semiconductor Tester --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerospace/Avionics</masterLabel>
+            <translation><!-- Aerospace/Avionics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Autonomous Driving</masterLabel>
+            <translation><!-- Autonomous Driving --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Autonomous Driving - Other</masterLabel>
+            <translation><!-- Autonomous Driving - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadcast/Studio</masterLabel>
+            <translation><!-- Broadcast/Studio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Desktop</masterLabel>
+            <translation><!-- Business Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Mobility</masterLabel>
+            <translation><!-- Business Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Test &amp; Measuring Equipment</masterLabel>
+            <translation><!-- Comms Test &amp; Measuring Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compute Consolidation and SW Cockpit</masterLabel>
+            <translation><!-- Compute Consolidation and SW Cockpit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Desktop</masterLabel>
+            <translation><!-- Consumer Desktop --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer Mobility</masterLabel>
+            <translation><!-- Consumer Mobility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diagnostic, Test &amp; Measurement Equipment</masterLabel>
+            <translation><!-- Diagnostic, Test &amp; Measurement Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drives, Motor Control, Encoders</masterLabel>
+            <translation><!-- Drives, Motor Control, Encoders --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EV Charger</masterLabel>
+            <translation><!-- EV Charger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electrification and Energy Mgmt</masterLabel>
+            <translation><!-- Electrification and Energy Mgmt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded Board</masterLabel>
+            <translation><!-- Embedded Board --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded/IOT Virtual Appliances</masterLabel>
+            <translation><!-- Embedded/IOT Virtual Appliances --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming &amp; Lottery Machines</masterLabel>
+            <translation><!-- Gaming &amp; Lottery Machines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gateway</masterLabel>
+            <translation><!-- Gateway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Imaging Devices (not IP Camera based)</masterLabel>
+            <translation><!-- Imaging Devices (not IP Camera based) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-vehicle Zonal and Edge</masterLabel>
+            <translation><!-- In-vehicle Zonal and Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure (e.g., Roadside, Rail, etc.)</masterLabel>
+            <translation><!-- Infrastructure (e.g., Roadside, Rail, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interactive Displays &amp; Kiosks</masterLabel>
+            <translation><!-- Interactive Displays &amp; Kiosks --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEC/Edge Cloud</masterLabel>
+            <translation><!-- MEC/Edge Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motion Control and CNC</masterLabel>
+            <translation><!-- Motion Control and CNC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFVi / OssBss / Mano</masterLabel>
+            <translation><!-- NFVi / OssBss / Mano --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Appliance: Other</masterLabel>
+            <translation><!-- Network Appliance: Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Appliance: Security</masterLabel>
+            <translation><!-- Network Appliance: Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Network Virtual Appliances</masterLabel>
+            <translation><!-- Network Virtual Appliances --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLC &amp; PAC</masterLabel>
+            <translation><!-- PLC &amp; PAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POS / ATM</masterLabel>
+            <translation><!-- POS / ATM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAN/Edge</masterLabel>
+            <translation><!-- RAN/Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radar</masterLabel>
+            <translation><!-- Radar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics: Mobile (AGV, AMR)</masterLabel>
+            <translation><!-- Robotics: Mobile (AGV, AMR) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Robotics: Stationary</masterLabel>
+            <translation><!-- Robotics: Stationary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Routers</masterLabel>
+            <translation><!-- Routers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ruggedized/Industrial/Vertical Grade PCs</masterLabel>
+            <translation><!-- Ruggedized/Industrial/Vertical Grade PCs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ruggedized/Industrial/Vertical Grade Servers</masterLabel>
+            <translation><!-- Ruggedized/Industrial/Vertical Grade Servers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server - Hybrid Cloud</masterLabel>
+            <translation><!-- Server - Hybrid Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server - On Prem</masterLabel>
+            <translation><!-- Server - On Prem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Server - Public Cloud</masterLabel>
+            <translation><!-- Server - Public Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storage</masterLabel>
+            <translation><!-- Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switches</masterLabel>
+            <translation><!-- Switches --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thin Client, Cloud Client</masterLabel>
+            <translation><!-- Thin Client, Cloud Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vehicles - Non-Automotive (e.g. Trains, Ships, etc.)</masterLabel>
+            <translation><!-- Vehicles - Non-Automotive (e.g. Trains, Ships, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video (incl. Camera, NVR, AI Box, Video Server)</masterLabel>
+            <translation><!-- Video (incl. Camera, NVR, AI Box, Video Server) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Cloud Media</masterLabel>
+            <translation><!-- Visual Cloud Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless &amp; Wireline Core</masterLabel>
+            <translation><!-- Wireless &amp; Wireline Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Access CRAN/VRAN</masterLabel>
+            <translation><!-- Wireless Access CRAN/VRAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Access Macro/Micro BTS/Small</masterLabel>
+            <translation><!-- Wireless Access Macro/Micro BTS/Small --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Baseband/Radio</masterLabel>
+            <translation><!-- Wireless Baseband/Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Remote Radio Head</masterLabel>
+            <translation><!-- Wireless Remote Radio Head --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireline &amp; Broadband Access</masterLabel>
+            <translation><!-- Wireline &amp; Broadband Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireline &amp; Cable Access</masterLabel>
+            <translation><!-- Wireline &amp; Cable Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workstation</masterLabel>
+            <translation><!-- Workstation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>vCPE/uCPE/SD-WAN premises</masterLabel>
+            <translation><!-- vCPE/uCPE/SD-WAN premises --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This field will allow the Disti to indicate which Intel product group this DDR belongs to. --></help>
+        <label><!-- Product Group --></label>
+        <name>Core_Product_Group_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Embedded/IOT</masterLabel>
+            <translation><!-- Embedded/IOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded/IOT Boards &amp; Systems</masterLabel>
+            <translation><!-- Embedded/IOT Boards &amp; Systems --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The solution category for the intended product --></help>
+        <label><!-- Product Segment --></label>
+        <name>Core_Product_Segment_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Automotive / Transportation</masterLabel>
+            <translation><!-- Automotive / Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Computing</masterLabel>
+            <translation><!-- Client Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Infra. / Networking</masterLabel>
+            <translation><!-- Comms Infra. / Networking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data Center Computing</masterLabel>
+            <translation><!-- Data Center Computing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embedded / IOT</masterLabel>
+            <translation><!-- Embedded / IOT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This is the expected date for the ending of manufacturing of components for this design --></help>
+        <label><!-- Production End Date --></label>
+        <name>Core_Production_End_Dt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Red Flag Message --></label>
+        <name>Core_Red_Flag_Message_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Registration Number --></label>
+        <name>Core_Registration_Number_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rejection Comments --></label>
+        <name>Core_Rejection_Comment_Txt__c</name>
+    </fields>
+    <fields>
+        <help><!-- These are the reasons a DDR will be rejected.  A rejection indicates a final status.  These will be picklist values. --></help>
+        <label><!-- Rejection Reason --></label>
+        <name>Core_Rejection_Reason_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Company Out of Business</masterLabel>
+            <translation><!-- Company Out of Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competing Registration Present</masterLabel>
+            <translation><!-- Competing Registration Present --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design already done</masterLabel>
+            <translation><!-- Design already done --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duplicate registration</masterLabel>
+            <translation><!-- Duplicate registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EOL Product</masterLabel>
+            <translation><!-- EOL Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid customer contact</masterLabel>
+            <translation><!-- Invalid customer contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid product price</masterLabel>
+            <translation><!-- Invalid product price --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Need More Information</masterLabel>
+            <translation><!-- Need More Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Distributor FAE</masterLabel>
+            <translation><!-- No Distributor FAE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Program Eligible</masterLabel>
+            <translation><!-- Not Program Eligible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Supported by Distributor</masterLabel>
+            <translation><!-- Not Supported by Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Program Change</masterLabel>
+            <translation><!-- Partner Program Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product not program eligible</masterLabel>
+            <translation><!-- Product not program eligible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Products not eligible for DR payment</masterLabel>
+            <translation><!-- Products not eligible for DR payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Project Cancelled by Customer</masterLabel>
+            <translation><!-- Project Cancelled by Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registration Closed</masterLabel>
+            <translation><!-- Registration Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value Not High Enough</masterLabel>
+            <translation><!-- Value Not High Enough --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Submission_Type --></label>
+        <name>Core_Submission_Type__c</name>
+        <picklistValues>
+            <masterLabel>M2M</masterLabel>
+            <translation><!-- M2M --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portal</masterLabel>
+            <translation><!-- Portal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Identification of the market for product&apos;s expected use --></help>
+        <label><!-- Vertical Market --></label>
+        <name>Core_Vertical_Market_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Service Providers</masterLabel>
+            <translation><!-- Cloud Service Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comms Service Providers</masterLabel>
+            <translation><!-- Comms Service Providers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy and Utilities</masterLabel>
+            <translation><!-- Energy and Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Federal and Aerospace</masterLabel>
+            <translation><!-- Federal and Aerospace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Services Industry</masterLabel>
+            <translation><!-- Financial Services Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health and Life Sciences</masterLabel>
+            <translation><!-- Health and Life Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality</masterLabel>
+            <translation><!-- Hospitality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Medium Business</masterLabel>
+            <translation><!-- Small Medium Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Smart Cities</masterLabel>
+            <translation><!-- Smart Cities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sports</masterLabel>
+            <translation><!-- Sports --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test 999</masterLabel>
+            <translation><!-- Test 999 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undefined</masterLabel>
+            <translation><!-- Undefined --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Created_Through_Mapping_Tab --></label>
+        <name>Created_Through_Mapping_Tab__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner&apos;s technical owner (field application engineer) email address --></help>
+        <label><!-- Partner Contact Email --></label>
+        <name>DDR_Partner_FAE_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Technical Owner --></label>
+        <name>DDR_Technical_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delegated UserId --></label>
+        <name>Delegated_UserId__c</name>
+    </fields>
+    <fields>
+        <label><!-- L2 - Approver --></label>
+        <name>L2_Approver__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations (L2 - Approver) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approval Level --></label>
+        <name>PCC_Approval_Level__c</name>
+        <picklistValues>
+            <masterLabel>Level 1</masterLabel>
+            <translation><!-- Level 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Level 2</masterLabel>
+            <translation><!-- Level 2 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The overall competitive assumptions and the rationale for the quote request --></help>
+        <label><!-- Competition Assumptions --></label>
+        <name>PCC_Competition_Assumptions__c</name>
+    </fields>
+    <fields>
+        <help><!-- Countries where the product will be consumed. --></help>
+        <label><!-- Consumption Countries --></label>
+        <name>PCC_Consumption_Countries__c</name>
+    </fields>
+    <fields>
+        <label><!-- Covered Partner Account --></label>
+        <name>PCC_CoveredPartnerAccount__c</name>
+    </fields>
+    <fields>
+        <help><!-- Is Intel currently being used by the end customer? If not, which company&apos;s products are they currently using? --></help>
+        <label><!-- Current End Customer Product Provider --></label>
+        <name>PCC_Current_EndCustomer_Product_Provider__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal Approval Process Message --></label>
+        <name>PCC_Deal_Approval_Process_Message__c</name>
+    </fields>
+    <fields>
+        <help><!-- The project and business justification for the opportunity, what unique value does the partner bring to the opportunity --></help>
+        <label><!-- Deal Description --></label>
+        <name>PCC_Deal_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- The name of the specific project that you&apos;re working on with an end customer --></help>
+        <label><!-- Project Name --></label>
+        <name>PCC_Deal_Project_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deal re-try count --></label>
+        <name>PCC_Deal_re_try_count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Design Type --></label>
+        <name>PCC_Design_Type__c</name>
+        <picklistValues>
+            <masterLabel>Board-based</masterLabel>
+            <translation><!-- Board-based --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chip-down</masterLabel>
+            <translation><!-- Chip-down --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The end customer&apos;s digital identifier (URL or WeChat address) --></help>
+        <label><!-- Digital Identifier Value --></label>
+        <name>PCC_Digital_Identifier_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- The end customer&apos;s type of digital identifier (URL or WeChat) --></help>
+        <label><!-- Digital Identifier --></label>
+        <name>PCC_Digital_Identifier__c</name>
+        <picklistValues>
+            <masterLabel>WeChat</masterLabel>
+            <translation><!-- WeChat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Website/URL</masterLabel>
+            <translation><!-- Website/URL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Empty Approver Group --></label>
+        <name>PCC_Empty_Approver_Group__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use this to search for Previously selected End Customer --></help>
+        <label><!-- Search for Previous End Customer Account --></label>
+        <name>PCC_EndCustomerAcc_Mapping__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- End customer Alternate Language --></help>
+        <label><!-- End Customer Alternate Name Language --></label>
+        <name>PCC_End_Customer_Alternate_Name_Language__c</name>
+        <picklistValues>
+            <masterLabel>Abkhazian</masterLabel>
+            <translation><!-- Abkhazian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Achinese</masterLabel>
+            <translation><!-- Achinese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Acoli</masterLabel>
+            <translation><!-- Acoli --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adangme</masterLabel>
+            <translation><!-- Adangme --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adyghe</masterLabel>
+            <translation><!-- Adyghe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Afar</masterLabel>
+            <translation><!-- Afar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Afrihili</masterLabel>
+            <translation><!-- Afrihili --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Afrikaans</masterLabel>
+            <translation><!-- Afrikaans --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aghem</masterLabel>
+            <translation><!-- Aghem --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ainu (Japan)</masterLabel>
+            <translation><!-- Ainu (Japan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Akan</masterLabel>
+            <translation><!-- Akan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Akkadian</masterLabel>
+            <translation><!-- Akkadian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Albanian</masterLabel>
+            <translation><!-- Albanian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aleut</masterLabel>
+            <translation><!-- Aleut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amharic</masterLabel>
+            <translation><!-- Amharic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ancient Greek (to 1453)</masterLabel>
+            <translation><!-- Ancient Greek (to 1453) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Angika</masterLabel>
+            <translation><!-- Angika --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arabic</masterLabel>
+            <translation><!-- Arabic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aragonese</masterLabel>
+            <translation><!-- Aragonese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arapaho</masterLabel>
+            <translation><!-- Arapaho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arawak</masterLabel>
+            <translation><!-- Arawak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Armenian</masterLabel>
+            <translation><!-- Armenian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Assamese</masterLabel>
+            <translation><!-- Assamese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asturian</masterLabel>
+            <translation><!-- Asturian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asu (Tanzania)</masterLabel>
+            <translation><!-- Asu (Tanzania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Avaric</masterLabel>
+            <translation><!-- Avaric --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Avestan</masterLabel>
+            <translation><!-- Avestan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Awadhi</masterLabel>
+            <translation><!-- Awadhi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aymara</masterLabel>
+            <translation><!-- Aymara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azerbaijani</masterLabel>
+            <translation><!-- Azerbaijani --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bafia</masterLabel>
+            <translation><!-- Bafia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balinese</masterLabel>
+            <translation><!-- Balinese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baluchi</masterLabel>
+            <translation><!-- Baluchi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bambara</masterLabel>
+            <translation><!-- Bambara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basa (Cameroon)</masterLabel>
+            <translation><!-- Basa (Cameroon) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bashkir</masterLabel>
+            <translation><!-- Bashkir --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basque</masterLabel>
+            <translation><!-- Basque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beja</masterLabel>
+            <translation><!-- Beja --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belarusian</masterLabel>
+            <translation><!-- Belarusian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bemba (Zambia)</masterLabel>
+            <translation><!-- Bemba (Zambia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bena (Tanzania)</masterLabel>
+            <translation><!-- Bena (Tanzania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bengali</masterLabel>
+            <translation><!-- Bengali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bhojpuri</masterLabel>
+            <translation><!-- Bhojpuri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bikol</masterLabel>
+            <translation><!-- Bikol --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bilin</masterLabel>
+            <translation><!-- Bilin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bini</masterLabel>
+            <translation><!-- Bini --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bislama</masterLabel>
+            <translation><!-- Bislama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blissymbols</masterLabel>
+            <translation><!-- Blissymbols --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bodo (India)</masterLabel>
+            <translation><!-- Bodo (India) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bosnian</masterLabel>
+            <translation><!-- Bosnian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Braj</masterLabel>
+            <translation><!-- Braj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Breton</masterLabel>
+            <translation><!-- Breton --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Buginese</masterLabel>
+            <translation><!-- Buginese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulgarian</masterLabel>
+            <translation><!-- Bulgarian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Buriat</masterLabel>
+            <translation><!-- Buriat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burmese</masterLabel>
+            <translation><!-- Burmese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Caddo</masterLabel>
+            <translation><!-- Caddo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Catalan</masterLabel>
+            <translation><!-- Catalan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cebuano</masterLabel>
+            <translation><!-- Cebuano --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central Atlas Tamazight</masterLabel>
+            <translation><!-- Central Atlas Tamazight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central Khmer</masterLabel>
+            <translation><!-- Central Khmer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chagatai</masterLabel>
+            <translation><!-- Chagatai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chamorro</masterLabel>
+            <translation><!-- Chamorro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chechen</masterLabel>
+            <translation><!-- Chechen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cherokee</masterLabel>
+            <translation><!-- Cherokee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cheyenne</masterLabel>
+            <translation><!-- Cheyenne --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chibcha</masterLabel>
+            <translation><!-- Chibcha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chiga</masterLabel>
+            <translation><!-- Chiga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese</masterLabel>
+            <translation><!-- Chinese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinook jargon</masterLabel>
+            <translation><!-- Chinook jargon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chipewyan</masterLabel>
+            <translation><!-- Chipewyan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Choctaw</masterLabel>
+            <translation><!-- Choctaw --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Church Slavic</masterLabel>
+            <translation><!-- Church Slavic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chuukese</masterLabel>
+            <translation><!-- Chuukese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chuvash</masterLabel>
+            <translation><!-- Chuvash --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Classical Newari</masterLabel>
+            <translation><!-- Classical Newari --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Classical Syriac</masterLabel>
+            <translation><!-- Classical Syriac --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Congo Swahili</masterLabel>
+            <translation><!-- Congo Swahili --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coptic</masterLabel>
+            <translation><!-- Coptic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cornish</masterLabel>
+            <translation><!-- Cornish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corsican</masterLabel>
+            <translation><!-- Corsican --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cree</masterLabel>
+            <translation><!-- Cree --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Creek</masterLabel>
+            <translation><!-- Creek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crimean Tatar</masterLabel>
+            <translation><!-- Crimean Tatar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Croatian</masterLabel>
+            <translation><!-- Croatian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech</masterLabel>
+            <translation><!-- Czech --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dakota</masterLabel>
+            <translation><!-- Dakota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Danish</masterLabel>
+            <translation><!-- Danish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dargwa</masterLabel>
+            <translation><!-- Dargwa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delaware</masterLabel>
+            <translation><!-- Delaware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dhivehi</masterLabel>
+            <translation><!-- Dhivehi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dinka</masterLabel>
+            <translation><!-- Dinka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dogri (macrolanguage)</masterLabel>
+            <translation><!-- Dogri (macrolanguage) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dogrib</masterLabel>
+            <translation><!-- Dogrib --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Duala</masterLabel>
+            <translation><!-- Duala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch</masterLabel>
+            <translation><!-- Dutch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dyula</masterLabel>
+            <translation><!-- Dyula --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dzongkha</masterLabel>
+            <translation><!-- Dzongkha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eastern Frisian</masterLabel>
+            <translation><!-- Eastern Frisian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Efik</masterLabel>
+            <translation><!-- Efik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Egyptian (Ancient)</masterLabel>
+            <translation><!-- Egyptian (Ancient) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ekajuk</masterLabel>
+            <translation><!-- Ekajuk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Elamite</masterLabel>
+            <translation><!-- Elamite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Embu</masterLabel>
+            <translation><!-- Embu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Erzya</masterLabel>
+            <translation><!-- Erzya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Esperanto</masterLabel>
+            <translation><!-- Esperanto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Estonian</masterLabel>
+            <translation><!-- Estonian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ewe</masterLabel>
+            <translation><!-- Ewe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ewondo</masterLabel>
+            <translation><!-- Ewondo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fang (Equatorial Guinea)</masterLabel>
+            <translation><!-- Fang (Equatorial Guinea) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fanti</masterLabel>
+            <translation><!-- Fanti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Faroese</masterLabel>
+            <translation><!-- Faroese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fijian</masterLabel>
+            <translation><!-- Fijian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Filipino</masterLabel>
+            <translation><!-- Filipino --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finnish</masterLabel>
+            <translation><!-- Finnish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fon</masterLabel>
+            <translation><!-- Fon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French</masterLabel>
+            <translation><!-- French --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Friulian</masterLabel>
+            <translation><!-- Friulian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fulah</masterLabel>
+            <translation><!-- Fulah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ga</masterLabel>
+            <translation><!-- Ga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Galibi Carib</masterLabel>
+            <translation><!-- Galibi Carib --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Galician</masterLabel>
+            <translation><!-- Galician --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ganda</masterLabel>
+            <translation><!-- Ganda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gayo</masterLabel>
+            <translation><!-- Gayo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gbaya (Central African Republic)</masterLabel>
+            <translation><!-- Gbaya (Central African Republic) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Geez</masterLabel>
+            <translation><!-- Geez --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Georgian</masterLabel>
+            <translation><!-- Georgian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German</masterLabel>
+            <translation><!-- German --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gilbertese</masterLabel>
+            <translation><!-- Gilbertese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gondi</masterLabel>
+            <translation><!-- Gondi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gorontalo</masterLabel>
+            <translation><!-- Gorontalo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gothic</masterLabel>
+            <translation><!-- Gothic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grebo</masterLabel>
+            <translation><!-- Grebo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guarani</masterLabel>
+            <translation><!-- Guarani --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gujarati</masterLabel>
+            <translation><!-- Gujarati --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gusii</masterLabel>
+            <translation><!-- Gusii --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gwich in</masterLabel>
+            <translation><!-- Gwich in --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haida</masterLabel>
+            <translation><!-- Haida --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haitian</masterLabel>
+            <translation><!-- Haitian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hausa</masterLabel>
+            <translation><!-- Hausa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hawaiian</masterLabel>
+            <translation><!-- Hawaiian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hebrew</masterLabel>
+            <translation><!-- Hebrew --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Herero</masterLabel>
+            <translation><!-- Herero --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hiligaynon</masterLabel>
+            <translation><!-- Hiligaynon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hindi</masterLabel>
+            <translation><!-- Hindi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hiri Motu</masterLabel>
+            <translation><!-- Hiri Motu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hittite</masterLabel>
+            <translation><!-- Hittite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hmong</masterLabel>
+            <translation><!-- Hmong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungarian</masterLabel>
+            <translation><!-- Hungarian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hupa</masterLabel>
+            <translation><!-- Hupa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iban</masterLabel>
+            <translation><!-- Iban --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Icelandic</masterLabel>
+            <translation><!-- Icelandic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ido</masterLabel>
+            <translation><!-- Ido --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Igbo</masterLabel>
+            <translation><!-- Igbo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iloko</masterLabel>
+            <translation><!-- Iloko --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inari Sami</masterLabel>
+            <translation><!-- Inari Sami --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indonesian</masterLabel>
+            <translation><!-- Indonesian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ingush</masterLabel>
+            <translation><!-- Ingush --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interlingua (International Auxiliary Language Association)</masterLabel>
+            <translation><!-- Interlingua (International Auxiliary Language Association) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interlingue</masterLabel>
+            <translation><!-- Interlingue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inuktitut</masterLabel>
+            <translation><!-- Inuktitut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inupiaq</masterLabel>
+            <translation><!-- Inupiaq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Irish</masterLabel>
+            <translation><!-- Irish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian</masterLabel>
+            <translation><!-- Italian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Javanese</masterLabel>
+            <translation><!-- Javanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jola-Fonyi</masterLabel>
+            <translation><!-- Jola-Fonyi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Judeo-Arabic</masterLabel>
+            <translation><!-- Judeo-Arabic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Judeo-Persian</masterLabel>
+            <translation><!-- Judeo-Persian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kabardian</masterLabel>
+            <translation><!-- Kabardian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kabuverdianu</masterLabel>
+            <translation><!-- Kabuverdianu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kabyle</masterLabel>
+            <translation><!-- Kabyle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kachin</masterLabel>
+            <translation><!-- Kachin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kako</masterLabel>
+            <translation><!-- Kako --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kalaallisut</masterLabel>
+            <translation><!-- Kalaallisut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kalenjin</masterLabel>
+            <translation><!-- Kalenjin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kalmyk</masterLabel>
+            <translation><!-- Kalmyk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kamba (Kenya)</masterLabel>
+            <translation><!-- Kamba (Kenya) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kannada</masterLabel>
+            <translation><!-- Kannada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kanuri</masterLabel>
+            <translation><!-- Kanuri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kara-Kalpak</masterLabel>
+            <translation><!-- Kara-Kalpak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Karachay-Balkar</masterLabel>
+            <translation><!-- Karachay-Balkar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Karelian</masterLabel>
+            <translation><!-- Karelian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kashmiri</masterLabel>
+            <translation><!-- Kashmiri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kashubian</masterLabel>
+            <translation><!-- Kashubian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kawi</masterLabel>
+            <translation><!-- Kawi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kazakh</masterLabel>
+            <translation><!-- Kazakh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Khasi</masterLabel>
+            <translation><!-- Khasi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Khotanese</masterLabel>
+            <translation><!-- Khotanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kikuyu</masterLabel>
+            <translation><!-- Kikuyu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kimbundu</masterLabel>
+            <translation><!-- Kimbundu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kinyarwanda</masterLabel>
+            <translation><!-- Kinyarwanda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kirghiz</masterLabel>
+            <translation><!-- Kirghiz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Klingon</masterLabel>
+            <translation><!-- Klingon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kolsch</masterLabel>
+            <translation><!-- Kolsch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Komi</masterLabel>
+            <translation><!-- Komi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kongo</masterLabel>
+            <translation><!-- Kongo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Konkani (macrolanguage)</masterLabel>
+            <translation><!-- Konkani (macrolanguage) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean</masterLabel>
+            <translation><!-- Korean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kosraean</masterLabel>
+            <translation><!-- Kosraean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Koyra Chiini Songhay</masterLabel>
+            <translation><!-- Koyra Chiini Songhay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Koyraboro Senni Songhai</masterLabel>
+            <translation><!-- Koyraboro Senni Songhai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kpelle</masterLabel>
+            <translation><!-- Kpelle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kuanyama</masterLabel>
+            <translation><!-- Kuanyama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kumyk</masterLabel>
+            <translation><!-- Kumyk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kurdish</masterLabel>
+            <translation><!-- Kurdish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kurukh</masterLabel>
+            <translation><!-- Kurukh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kutenai</masterLabel>
+            <translation><!-- Kutenai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kwasio</masterLabel>
+            <translation><!-- Kwasio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ladino</masterLabel>
+            <translation><!-- Ladino --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lahnda</masterLabel>
+            <translation><!-- Lahnda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lamba</masterLabel>
+            <translation><!-- Lamba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Langi</masterLabel>
+            <translation><!-- Langi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lao</masterLabel>
+            <translation><!-- Lao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Latin</masterLabel>
+            <translation><!-- Latin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Latvian</masterLabel>
+            <translation><!-- Latvian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lezghian</masterLabel>
+            <translation><!-- Lezghian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Limburgan</masterLabel>
+            <translation><!-- Limburgan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lingala</masterLabel>
+            <translation><!-- Lingala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lithuanian</masterLabel>
+            <translation><!-- Lithuanian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lojban</masterLabel>
+            <translation><!-- Lojban --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low German</masterLabel>
+            <translation><!-- Low German --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lower Sorbian</masterLabel>
+            <translation><!-- Lower Sorbian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lozi</masterLabel>
+            <translation><!-- Lozi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luba-Katanga</masterLabel>
+            <translation><!-- Luba-Katanga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luba-Lulua</masterLabel>
+            <translation><!-- Luba-Lulua --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luiseno</masterLabel>
+            <translation><!-- Luiseno --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lule Sami</masterLabel>
+            <translation><!-- Lule Sami --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lunda</masterLabel>
+            <translation><!-- Lunda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luo (Kenya and Tanzania)</masterLabel>
+            <translation><!-- Luo (Kenya and Tanzania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lushai</masterLabel>
+            <translation><!-- Lushai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luxembourgish</masterLabel>
+            <translation><!-- Luxembourgish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luyia</masterLabel>
+            <translation><!-- Luyia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macedo-Romanian</masterLabel>
+            <translation><!-- Macedo-Romanian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macedonian</masterLabel>
+            <translation><!-- Macedonian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machame</masterLabel>
+            <translation><!-- Machame --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Madurese</masterLabel>
+            <translation><!-- Madurese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magahi</masterLabel>
+            <translation><!-- Magahi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maithili</masterLabel>
+            <translation><!-- Maithili --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Makasar</masterLabel>
+            <translation><!-- Makasar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Makhuwa-Meetto</masterLabel>
+            <translation><!-- Makhuwa-Meetto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Makonde</masterLabel>
+            <translation><!-- Makonde --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malagasy</masterLabel>
+            <translation><!-- Malagasy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malay (macrolanguage)</masterLabel>
+            <translation><!-- Malay (macrolanguage) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malayalam</masterLabel>
+            <translation><!-- Malayalam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maltese</masterLabel>
+            <translation><!-- Maltese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manchu</masterLabel>
+            <translation><!-- Manchu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mandar</masterLabel>
+            <translation><!-- Mandar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mandingo</masterLabel>
+            <translation><!-- Mandingo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manipuri</masterLabel>
+            <translation><!-- Manipuri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manx</masterLabel>
+            <translation><!-- Manx --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maori</masterLabel>
+            <translation><!-- Maori --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mapudungun</masterLabel>
+            <translation><!-- Mapudungun --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marathi</masterLabel>
+            <translation><!-- Marathi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mari (Russia)</masterLabel>
+            <translation><!-- Mari (Russia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marshallese</masterLabel>
+            <translation><!-- Marshallese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marwari</masterLabel>
+            <translation><!-- Marwari --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Masai</masterLabel>
+            <translation><!-- Masai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mende (Sierra Leone)</masterLabel>
+            <translation><!-- Mende (Sierra Leone) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meru</masterLabel>
+            <translation><!-- Meru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meta&apos;</masterLabel>
+            <translation><!-- Meta&apos; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mi&apos;kmaq</masterLabel>
+            <translation><!-- Mi&apos;kmaq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Middle Dutch (ca. 1050-1350)</masterLabel>
+            <translation><!-- Middle Dutch (ca. 1050-1350) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Middle English (1100-1500)</masterLabel>
+            <translation><!-- Middle English (1100-1500) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Middle French (ca. 1400-1600)</masterLabel>
+            <translation><!-- Middle French (ca. 1400-1600) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Middle High German (ca. 1050-1500)</masterLabel>
+            <translation><!-- Middle High German (ca. 1050-1500) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Middle Irish (900-1200)</masterLabel>
+            <translation><!-- Middle Irish (900-1200) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minangkabau</masterLabel>
+            <translation><!-- Minangkabau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mirandese</masterLabel>
+            <translation><!-- Mirandese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Modern Greek (1453-)</masterLabel>
+            <translation><!-- Modern Greek (1453-) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mohawk</masterLabel>
+            <translation><!-- Mohawk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moksha</masterLabel>
+            <translation><!-- Moksha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mongo</masterLabel>
+            <translation><!-- Mongo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mongolian</masterLabel>
+            <translation><!-- Mongolian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morisyen</masterLabel>
+            <translation><!-- Morisyen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mossi</masterLabel>
+            <translation><!-- Mossi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multiple languages</masterLabel>
+            <translation><!-- Multiple languages --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mundang</masterLabel>
+            <translation><!-- Mundang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N&apos;Ko</masterLabel>
+            <translation><!-- N&apos;Ko --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nama (Namibia)</masterLabel>
+            <translation><!-- Nama (Namibia) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nauru</masterLabel>
+            <translation><!-- Nauru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Navajo</masterLabel>
+            <translation><!-- Navajo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ndonga</masterLabel>
+            <translation><!-- Ndonga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Neapolitan</masterLabel>
+            <translation><!-- Neapolitan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nepali (macrolanguage)</masterLabel>
+            <translation><!-- Nepali (macrolanguage) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newari</masterLabel>
+            <translation><!-- Newari --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ngiemboon</masterLabel>
+            <translation><!-- Ngiemboon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ngomba</masterLabel>
+            <translation><!-- Ngomba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nias</masterLabel>
+            <translation><!-- Nias --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Niuean</masterLabel>
+            <translation><!-- Niuean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No linguistic content</masterLabel>
+            <translation><!-- No linguistic content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nogai</masterLabel>
+            <translation><!-- Nogai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Ndebele</masterLabel>
+            <translation><!-- North Ndebele --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northern Frisian</masterLabel>
+            <translation><!-- Northern Frisian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northern Sami</masterLabel>
+            <translation><!-- Northern Sami --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norwegian</masterLabel>
+            <translation><!-- Norwegian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norwegian Bokmal</masterLabel>
+            <translation><!-- Norwegian Bokmal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norwegian Nynorsk</masterLabel>
+            <translation><!-- Norwegian Nynorsk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nuer</masterLabel>
+            <translation><!-- Nuer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nyamwezi</masterLabel>
+            <translation><!-- Nyamwezi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nyanja</masterLabel>
+            <translation><!-- Nyanja --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nyankole</masterLabel>
+            <translation><!-- Nyankole --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nyoro</masterLabel>
+            <translation><!-- Nyoro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nzima</masterLabel>
+            <translation><!-- Nzima --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Occitan (post 1500)</masterLabel>
+            <translation><!-- Occitan (post 1500) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Official Aramaic (700-300 BCE)</masterLabel>
+            <translation><!-- Official Aramaic (700-300 BCE) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ojibwa</masterLabel>
+            <translation><!-- Ojibwa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old English (ca. 450-1100)</masterLabel>
+            <translation><!-- Old English (ca. 450-1100) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old French (842-ca. 1400)</masterLabel>
+            <translation><!-- Old French (842-ca. 1400) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old High German (ca. 750-1050)</masterLabel>
+            <translation><!-- Old High German (ca. 750-1050) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old Irish (to 900)</masterLabel>
+            <translation><!-- Old Irish (to 900) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old Norse</masterLabel>
+            <translation><!-- Old Norse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old Persian (ca. 600-400 B.C.)</masterLabel>
+            <translation><!-- Old Persian (ca. 600-400 B.C.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old Provencal (to 1500)</masterLabel>
+            <translation><!-- Old Provencal (to 1500) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oriya (macrolanguage)</masterLabel>
+            <translation><!-- Oriya (macrolanguage) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oromo</masterLabel>
+            <translation><!-- Oromo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Osage</masterLabel>
+            <translation><!-- Osage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ossetian</masterLabel>
+            <translation><!-- Ossetian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ottoman Turkish (1500-1928)</masterLabel>
+            <translation><!-- Ottoman Turkish (1500-1928) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pahlavi</masterLabel>
+            <translation><!-- Pahlavi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palauan</masterLabel>
+            <translation><!-- Palauan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pali</masterLabel>
+            <translation><!-- Pali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pampanga</masterLabel>
+            <translation><!-- Pampanga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pangasinan</masterLabel>
+            <translation><!-- Pangasinan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Panjabi</masterLabel>
+            <translation><!-- Panjabi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Papiamento</masterLabel>
+            <translation><!-- Papiamento --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pedi</masterLabel>
+            <translation><!-- Pedi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Persian</masterLabel>
+            <translation><!-- Persian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phoenician</masterLabel>
+            <translation><!-- Phoenician --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pohnpeian</masterLabel>
+            <translation><!-- Pohnpeian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polish</masterLabel>
+            <translation><!-- Polish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese</masterLabel>
+            <translation><!-- Portuguese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pushto</masterLabel>
+            <translation><!-- Pushto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quechua</masterLabel>
+            <translation><!-- Quechua --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rajasthani</masterLabel>
+            <translation><!-- Rajasthani --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rapanui</masterLabel>
+            <translation><!-- Rapanui --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romanian</masterLabel>
+            <translation><!-- Romanian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romansh</masterLabel>
+            <translation><!-- Romansh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romany</masterLabel>
+            <translation><!-- Romany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rombo</masterLabel>
+            <translation><!-- Rombo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rundi</masterLabel>
+            <translation><!-- Rundi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian</masterLabel>
+            <translation><!-- Russian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rwa</masterLabel>
+            <translation><!-- Rwa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saho</masterLabel>
+            <translation><!-- Saho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samaritan Aramaic</masterLabel>
+            <translation><!-- Samaritan Aramaic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samburu</masterLabel>
+            <translation><!-- Samburu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samoan</masterLabel>
+            <translation><!-- Samoan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sandawe</masterLabel>
+            <translation><!-- Sandawe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sango</masterLabel>
+            <translation><!-- Sango --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sangu (Tanzania)</masterLabel>
+            <translation><!-- Sangu (Tanzania) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sanskrit</masterLabel>
+            <translation><!-- Sanskrit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santali</masterLabel>
+            <translation><!-- Santali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sardinian</masterLabel>
+            <translation><!-- Sardinian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sasak</masterLabel>
+            <translation><!-- Sasak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scots</masterLabel>
+            <translation><!-- Scots --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scottish Gaelic</masterLabel>
+            <translation><!-- Scottish Gaelic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Selkup</masterLabel>
+            <translation><!-- Selkup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sena</masterLabel>
+            <translation><!-- Sena --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbian</masterLabel>
+            <translation><!-- Serbian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serer</masterLabel>
+            <translation><!-- Serer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shambala</masterLabel>
+            <translation><!-- Shambala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shan</masterLabel>
+            <translation><!-- Shan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shona</masterLabel>
+            <translation><!-- Shona --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sichuan Yi</masterLabel>
+            <translation><!-- Sichuan Yi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sicilian</masterLabel>
+            <translation><!-- Sicilian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sidamo</masterLabel>
+            <translation><!-- Sidamo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Siksika</masterLabel>
+            <translation><!-- Siksika --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sindhi</masterLabel>
+            <translation><!-- Sindhi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sinhala</masterLabel>
+            <translation><!-- Sinhala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Skolt Sami</masterLabel>
+            <translation><!-- Skolt Sami --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slave (Athapascan)</masterLabel>
+            <translation><!-- Slave (Athapascan) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovak</masterLabel>
+            <translation><!-- Slovak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovenian</masterLabel>
+            <translation><!-- Slovenian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Soga</masterLabel>
+            <translation><!-- Soga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sogdian</masterLabel>
+            <translation><!-- Sogdian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Somali</masterLabel>
+            <translation><!-- Somali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Soninke</masterLabel>
+            <translation><!-- Soninke --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Ndebele</masterLabel>
+            <translation><!-- South Ndebele --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Southern Altai</masterLabel>
+            <translation><!-- Southern Altai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Southern Sami</masterLabel>
+            <translation><!-- Southern Sami --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Southern Sotho</masterLabel>
+            <translation><!-- Southern Sotho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish</masterLabel>
+            <translation><!-- Spanish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sranan Tongo</masterLabel>
+            <translation><!-- Sranan Tongo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sukuma</masterLabel>
+            <translation><!-- Sukuma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sumerian</masterLabel>
+            <translation><!-- Sumerian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sundanese</masterLabel>
+            <translation><!-- Sundanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Susu</masterLabel>
+            <translation><!-- Susu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swahili (macrolanguage)</masterLabel>
+            <translation><!-- Swahili (macrolanguage) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swati</masterLabel>
+            <translation><!-- Swati --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swedish</masterLabel>
+            <translation><!-- Swedish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swiss German</masterLabel>
+            <translation><!-- Swiss German --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Syriac</masterLabel>
+            <translation><!-- Syriac --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tachelhit</masterLabel>
+            <translation><!-- Tachelhit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tagalog</masterLabel>
+            <translation><!-- Tagalog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tahitian</masterLabel>
+            <translation><!-- Tahitian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taita</masterLabel>
+            <translation><!-- Taita --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tajik</masterLabel>
+            <translation><!-- Tajik --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tamashek</masterLabel>
+            <translation><!-- Tamashek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tamil</masterLabel>
+            <translation><!-- Tamil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tasawaq</masterLabel>
+            <translation><!-- Tasawaq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tatar</masterLabel>
+            <translation><!-- Tatar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telugu</masterLabel>
+            <translation><!-- Telugu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tereno</masterLabel>
+            <translation><!-- Tereno --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Teso</masterLabel>
+            <translation><!-- Teso --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thai</masterLabel>
+            <translation><!-- Thai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tibetan</masterLabel>
+            <translation><!-- Tibetan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tigre</masterLabel>
+            <translation><!-- Tigre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tigrinya</masterLabel>
+            <translation><!-- Tigrinya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Timne</masterLabel>
+            <translation><!-- Timne --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tiv</masterLabel>
+            <translation><!-- Tiv --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tlingit</masterLabel>
+            <translation><!-- Tlingit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tok Pisin</masterLabel>
+            <translation><!-- Tok Pisin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tokelau</masterLabel>
+            <translation><!-- Tokelau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tonga (Nyasa)</masterLabel>
+            <translation><!-- Tonga (Nyasa) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tonga (Tonga Islands)</masterLabel>
+            <translation><!-- Tonga (Tonga Islands) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tsimshian</masterLabel>
+            <translation><!-- Tsimshian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tsonga</masterLabel>
+            <translation><!-- Tsonga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tswana</masterLabel>
+            <translation><!-- Tswana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tumbuka</masterLabel>
+            <translation><!-- Tumbuka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkish</masterLabel>
+            <translation><!-- Turkish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkmen</masterLabel>
+            <translation><!-- Turkmen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tuvalu</masterLabel>
+            <translation><!-- Tuvalu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tuvinian</masterLabel>
+            <translation><!-- Tuvinian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twi</masterLabel>
+            <translation><!-- Twi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Udmurt</masterLabel>
+            <translation><!-- Udmurt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ugaritic</masterLabel>
+            <translation><!-- Ugaritic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uighur</masterLabel>
+            <translation><!-- Uighur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ukrainian</masterLabel>
+            <translation><!-- Ukrainian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Umbundu</masterLabel>
+            <translation><!-- Umbundu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uncoded languages</masterLabel>
+            <translation><!-- Uncoded languages --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undetermined</masterLabel>
+            <translation><!-- Undetermined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upper Sorbian</masterLabel>
+            <translation><!-- Upper Sorbian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Urdu</masterLabel>
+            <translation><!-- Urdu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uzbek</masterLabel>
+            <translation><!-- Uzbek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vai</masterLabel>
+            <translation><!-- Vai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Venda</masterLabel>
+            <translation><!-- Venda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vietnamese</masterLabel>
+            <translation><!-- Vietnamese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Volapuk</masterLabel>
+            <translation><!-- Volapuk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Votic</masterLabel>
+            <translation><!-- Votic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vunjo</masterLabel>
+            <translation><!-- Vunjo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Walloon</masterLabel>
+            <translation><!-- Walloon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Walser</masterLabel>
+            <translation><!-- Walser --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waray (Philippines)</masterLabel>
+            <translation><!-- Waray (Philippines) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Washo</masterLabel>
+            <translation><!-- Washo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Welsh</masterLabel>
+            <translation><!-- Welsh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Western Frisian</masterLabel>
+            <translation><!-- Western Frisian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wolaytta</masterLabel>
+            <translation><!-- Wolaytta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wolof</masterLabel>
+            <translation><!-- Wolof --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xhosa</masterLabel>
+            <translation><!-- Xhosa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yakut</masterLabel>
+            <translation><!-- Yakut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yangben</masterLabel>
+            <translation><!-- Yangben --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yao</masterLabel>
+            <translation><!-- Yao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yapese</masterLabel>
+            <translation><!-- Yapese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yiddish</masterLabel>
+            <translation><!-- Yiddish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yoruba</masterLabel>
+            <translation><!-- Yoruba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zapotec</masterLabel>
+            <translation><!-- Zapotec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zarma</masterLabel>
+            <translation><!-- Zarma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zaza</masterLabel>
+            <translation><!-- Zaza --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zenaga</masterLabel>
+            <translation><!-- Zenaga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zhuang</masterLabel>
+            <translation><!-- Zhuang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zulu</masterLabel>
+            <translation><!-- Zulu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zuni</masterLabel>
+            <translation><!-- Zuni --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The country where the end customer company is located --></help>
+        <label><!-- End Customer Country --></label>
+        <name>PCC_End_Customer_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quick tip on End Customer selection --></label>
+        <name>PCC_End_Customer_Quick_Tip__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Sales Geography --></label>
+        <name>PCC_End_Customer_Sales_Geography__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Customer Selection Note --></label>
+        <name>PCC_End_Customer_Selection_Note__c</name>
+    </fields>
+    <fields>
+        <help><!-- The state/province where the end customer company is located --></help>
+        <label><!-- End Customer State --></label>
+        <name>PCC_End_Customer_State__c</name>
+        <picklistValues>
+            <masterLabel>Alabama</masterLabel>
+            <translation><!-- Alabama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alaska</masterLabel>
+            <translation><!-- Alaska --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alberta</masterLabel>
+            <translation><!-- Alberta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arizona</masterLabel>
+            <translation><!-- Arizona --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arkansas</masterLabel>
+            <translation><!-- Arkansas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>British Columbia</masterLabel>
+            <translation><!-- British Columbia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>California</masterLabel>
+            <translation><!-- California --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colorado</masterLabel>
+            <translation><!-- Colorado --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connecticut</masterLabel>
+            <translation><!-- Connecticut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delaware</masterLabel>
+            <translation><!-- Delaware --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Florida</masterLabel>
+            <translation><!-- Florida --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Georgia</masterLabel>
+            <translation><!-- Georgia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hawaii</masterLabel>
+            <translation><!-- Hawaii --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Idaho</masterLabel>
+            <translation><!-- Idaho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Illinois</masterLabel>
+            <translation><!-- Illinois --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indiana</masterLabel>
+            <translation><!-- Indiana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iowa</masterLabel>
+            <translation><!-- Iowa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kansas</masterLabel>
+            <translation><!-- Kansas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kentucky</masterLabel>
+            <translation><!-- Kentucky --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Louisiana</masterLabel>
+            <translation><!-- Louisiana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maine</masterLabel>
+            <translation><!-- Maine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manitoba</masterLabel>
+            <translation><!-- Manitoba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maryland</masterLabel>
+            <translation><!-- Maryland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Massachusetts</masterLabel>
+            <translation><!-- Massachusetts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Michigan</masterLabel>
+            <translation><!-- Michigan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minnesota</masterLabel>
+            <translation><!-- Minnesota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mississippi</masterLabel>
+            <translation><!-- Mississippi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missouri</masterLabel>
+            <translation><!-- Missouri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montana</masterLabel>
+            <translation><!-- Montana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nebraska</masterLabel>
+            <translation><!-- Nebraska --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nevada</masterLabel>
+            <translation><!-- Nevada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Brunswick</masterLabel>
+            <translation><!-- New Brunswick --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Hampshire</masterLabel>
+            <translation><!-- New Hampshire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Jersey</masterLabel>
+            <translation><!-- New Jersey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Mexico</masterLabel>
+            <translation><!-- New Mexico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New York</masterLabel>
+            <translation><!-- New York --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newfoundland and Labrador</masterLabel>
+            <translation><!-- Newfoundland and Labrador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Carolina</masterLabel>
+            <translation><!-- North Carolina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Dakota</masterLabel>
+            <translation><!-- North Dakota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northwest Territories</masterLabel>
+            <translation><!-- Northwest Territories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nova Scotia</masterLabel>
+            <translation><!-- Nova Scotia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nunavut</masterLabel>
+            <translation><!-- Nunavut --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ohio</masterLabel>
+            <translation><!-- Ohio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oklahoma</masterLabel>
+            <translation><!-- Oklahoma --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ontario</masterLabel>
+            <translation><!-- Ontario --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oregon</masterLabel>
+            <translation><!-- Oregon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pennsylvania</masterLabel>
+            <translation><!-- Pennsylvania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prince Edward Island</masterLabel>
+            <translation><!-- Prince Edward Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Puerto Rico</masterLabel>
+            <translation><!-- Puerto Rico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quebec</masterLabel>
+            <translation><!-- Quebec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rhode Island</masterLabel>
+            <translation><!-- Rhode Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rif Dimashq</masterLabel>
+            <translation><!-- Rif Dimashq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saskatchewan</masterLabel>
+            <translation><!-- Saskatchewan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Carolina</masterLabel>
+            <translation><!-- South Carolina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Dakota</masterLabel>
+            <translation><!-- South Dakota --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tennessee</masterLabel>
+            <translation><!-- Tennessee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Texas</masterLabel>
+            <translation><!-- Texas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utah</masterLabel>
+            <translation><!-- Utah --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vermont</masterLabel>
+            <translation><!-- Vermont --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virginia</masterLabel>
+            <translation><!-- Virginia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Washington</masterLabel>
+            <translation><!-- Washington --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West Virginia</masterLabel>
+            <translation><!-- West Virginia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wisconsin</masterLabel>
+            <translation><!-- Wisconsin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wyoming</masterLabel>
+            <translation><!-- Wyoming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yukon</masterLabel>
+            <translation><!-- Yukon --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Customer Use --></label>
+        <name>PCC_End_Customer_Use__c</name>
+    </fields>
+    <fields>
+        <help><!-- The end customer&apos;s primary industry --></help>
+        <label><!-- Industry --></label>
+        <name>PCC_Industry__c</name>
+        <picklistValues>
+            <masterLabel>Accommodation and Food Services</masterLabel>
+            <translation><!-- Accommodation and Food Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arts, Entertainment and Recreation</masterLabel>
+            <translation><!-- Arts, Entertainment and Recreation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive (Non Manufacturing)</masterLabel>
+            <translation><!-- Automotive (Non Manufacturing) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction</masterLabel>
+            <translation><!-- Construction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consulting</masterLabel>
+            <translation><!-- Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defense and Space</masterLabel>
+            <translation><!-- Defense and Space --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy and Utilities</masterLabel>
+            <translation><!-- Energy and Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance and Insurance</masterLabel>
+            <translation><!-- Finance and Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gaming</masterLabel>
+            <translation><!-- Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health and Life Sciences</masterLabel>
+            <translation><!-- Health and Life Sciences --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not For Profit</masterLabel>
+            <translation><!-- Not For Profit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Professional and Business Services</masterLabel>
+            <translation><!-- Professional and Business Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate, Rental and Leasing</masterLabel>
+            <translation><!-- Real Estate, Rental and Leasing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software and Services</masterLabel>
+            <translation><!-- Software and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecommunications</masterLabel>
+            <translation><!-- Telecommunications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>To Be Defined</masterLabel>
+            <translation><!-- To Be Defined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation, Travel and Warehousing</masterLabel>
+            <translation><!-- Transportation, Travel and Warehousing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Date by which Intel should respond to the quote line. --></help>
+        <label><!-- Intel Response Requested By Date --></label>
+        <name>PCC_Intel_Response_Requested_By_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intel DR Owner Name --></label>
+        <name>PCC_Intel_Technical_Owner_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Ownership Transfered --></label>
+        <name>PCC_Is_Ownership_Transfered__c</name>
+    </fields>
+    <fields>
+        <help><!-- The end customer&apos;s market segment classification. Corp are companies with more than 1000 employees. SMB are companies with fewer than 100 employees. --></help>
+        <label><!-- Market Segment --></label>
+        <name>PCC_Market_Segment__c</name>
+        <picklistValues>
+            <masterLabel>Consumer Retail Pull</masterLabel>
+            <translation><!-- Consumer Retail Pull --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corp</masterLabel>
+            <translation><!-- Corp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMB</masterLabel>
+            <translation><!-- SMB --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ODM/Board partner --></label>
+        <name>PCC_ODM_Board_Partner_Account__c</name>
+        <relationshipLabel><!-- Design-Deal Registrations (ODM/Board partner) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ODM/Board partner --></label>
+        <name>PCC_ODM_Board_partner__c</name>
+        <picklistValues>
+            <masterLabel>ADLINK</masterLabel>
+            <translation><!-- ADLINK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aaeon</masterLabel>
+            <translation><!-- Aaeon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advantech</masterLabel>
+            <translation><!-- Advantech --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asus</masterLabel>
+            <translation><!-- Asus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Congatec</masterLabel>
+            <translation><!-- Congatec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DFI</masterLabel>
+            <translation><!-- DFI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ECS</masterLabel>
+            <translation><!-- ECS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IEI</masterLabel>
+            <translation><!-- IEI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kontron</masterLabel>
+            <translation><!-- Kontron --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seco</masterLabel>
+            <translation><!-- Seco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tria</masterLabel>
+            <translation><!-- Tria --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Opportunity/Quote creation failed? --></label>
+        <name>PCC_Opportunity_Quote_creation_failed__c</name>
+    </fields>
+    <fields>
+        <help><!-- The partner&apos;s reference number associated to registration --></help>
+        <label><!-- External ID --></label>
+        <name>PCC_Partner_Reference_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- The requested end date of the quote and the last date consumption can happen. The Pricing End Date must be after the Pricing Start Date. --></help>
+        <label><!-- Pricing End Date --></label>
+        <name>PCC_Pricing_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The request date on which the quote goes into effect and consumption of the product can begin. The Pricing Start Date must be after the Decision Date. --></help>
+        <label><!-- Pricing Start Date --></label>
+        <name>PCC_Pricing_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the proposal is due to the end customer. Must be before Decision Date --></help>
+        <label><!-- Proposal Due Date --></label>
+        <name>PCC_Proposal_Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type --></label>
+        <name>PCC_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Type --></label>
+        <name>PCC_Registration_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Rejected or Cancelled Product --></label>
+        <name>PCC_Rejected_or_Cancelled_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- PCC_StatusChange --></label>
+        <name>PCC_StatusChange__c</name>
+    </fields>
+    <fields>
+        <help><!-- The end customer&apos;s sub industry --></help>
+        <label><!-- Sub Industry --></label>
+        <name>PCC_Sub_Industry__c</name>
+        <picklistValues>
+            <masterLabel>Accommodation</masterLabel>
+            <translation><!-- Accommodation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrative and Support Services</masterLabel>
+            <translation><!-- Administrative and Support Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advanced Driver Assistance Systems</masterLabel>
+            <translation><!-- Advanced Driver Assistance Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Air Transportation</masterLabel>
+            <translation><!-- Air Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amusement, Gambling and Recreation</masterLabel>
+            <translation><!-- Amusement, Gambling and Recreation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Animal Production</masterLabel>
+            <translation><!-- Animal Production --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apparel</masterLabel>
+            <translation><!-- Apparel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Appliance and Electrical Equipment</masterLabel>
+            <translation><!-- Appliance and Electrical Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Autonomous Driving</masterLabel>
+            <translation><!-- Autonomous Driving --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banking and Wealth Management</masterLabel>
+            <translation><!-- Banking and Wealth Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biotechnology</masterLabel>
+            <translation><!-- Biotechnology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Broadcasting (except Internet)</masterLabel>
+            <translation><!-- Broadcasting (except Internet) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Building Materials, Garden Equipment and Supplies</masterLabel>
+            <translation><!-- Building Materials, Garden Equipment and Supplies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Charitable Organizations and Foundations</masterLabel>
+            <translation><!-- Charitable Organizations and Foundations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chemical</masterLabel>
+            <translation><!-- Chemical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clinical Systems</masterLabel>
+            <translation><!-- Clinical Systems --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clothing and Accessories</masterLabel>
+            <translation><!-- Clothing and Accessories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colleges and Universities</masterLabel>
+            <translation><!-- Colleges and Universities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer and Electronic</masterLabel>
+            <translation><!-- Computer and Electronic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction of Buildings</masterLabel>
+            <translation><!-- Construction of Buildings --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consulting</masterLabel>
+            <translation><!-- Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consulting Services</masterLabel>
+            <translation><!-- Consulting Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Couriers and Messengers</masterLabel>
+            <translation><!-- Couriers and Messengers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crop Production</masterLabel>
+            <translation><!-- Crop Production --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diversified Telecommunications Services</masterLabel>
+            <translation><!-- Diversified Telecommunications Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Doctors and Clinics</masterLabel>
+            <translation><!-- Doctors and Clinics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Economic Programs and Services</masterLabel>
+            <translation><!-- Economic Programs and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Educational Support Services</masterLabel>
+            <translation><!-- Educational Support Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electric Power</masterLabel>
+            <translation><!-- Electric Power --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronics and Appliances</masterLabel>
+            <translation><!-- Electronics and Appliances --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Elementary and Secondary Schools</masterLabel>
+            <translation><!-- Elementary and Secondary Schools --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environmental Quality and Services</masterLabel>
+            <translation><!-- Environmental Quality and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Executive, Legislative and General Government</masterLabel>
+            <translation><!-- Executive, Legislative and General Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fabricated Metal</masterLabel>
+            <translation><!-- Fabricated Metal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fishing, Hunting and Trapping</masterLabel>
+            <translation><!-- Fishing, Hunting and Trapping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fitness and Wellness</masterLabel>
+            <translation><!-- Fitness and Wellness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fleet Management</masterLabel>
+            <translation><!-- Fleet Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food and Beverage</masterLabel>
+            <translation><!-- Food and Beverage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food and Drink</masterLabel>
+            <translation><!-- Food and Drink --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food and Drink Services</masterLabel>
+            <translation><!-- Food and Drink Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Forestry</masterLabel>
+            <translation><!-- Forestry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funds and Trusts</masterLabel>
+            <translation><!-- Funds and Trusts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Furniture and Home</masterLabel>
+            <translation><!-- Furniture and Home --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Furniture and Home Furnishings</masterLabel>
+            <translation><!-- Furniture and Home Furnishings --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gasoline Stations</masterLabel>
+            <translation><!-- Gasoline Stations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Merchandise</masterLabel>
+            <translation><!-- General Merchandise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ground Defense</masterLabel>
+            <translation><!-- Ground Defense --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health and Personal Care</masterLabel>
+            <translation><!-- Health and Personal Care --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Heavy and Civil Engineering Construction</masterLabel>
+            <translation><!-- Heavy and Civil Engineering Construction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitals and Laboratories</masterLabel>
+            <translation><!-- Hospitals and Laboratories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Housing, Urban Renewal and Development</masterLabel>
+            <translation><!-- Housing, Urban Renewal and Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Human Resource Programs</masterLabel>
+            <translation><!-- Human Resource Programs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Services</masterLabel>
+            <translation><!-- IT Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Vehicle Infotainment</masterLabel>
+            <translation><!-- In-Vehicle Infotainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Automation</masterLabel>
+            <translation><!-- Industrial Automation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance and Risk Management</masterLabel>
+            <translation><!-- Insurance and Risk Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet Publishing and Broadcasting</masterLabel>
+            <translation><!-- Internet Publishing and Broadcasting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internet Software and Services</masterLabel>
+            <translation><!-- Internet Software and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Justice, Public Order and Safety</masterLabel>
+            <translation><!-- Justice, Public Order and Safety --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leather and Allied Product</masterLabel>
+            <translation><!-- Leather and Allied Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lending and Mortgage</masterLabel>
+            <translation><!-- Lending and Mortgage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Life Sciences Tools and Services</masterLabel>
+            <translation><!-- Life Sciences Tools and Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machinery</masterLabel>
+            <translation><!-- Machinery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Management of Companies</masterLabel>
+            <translation><!-- Management of Companies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical Devices</masterLabel>
+            <translation><!-- Medical Devices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical Imaging</masterLabel>
+            <translation><!-- Medical Imaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Military Aircraft</masterLabel>
+            <translation><!-- Military Aircraft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Military Shipbuilding</masterLabel>
+            <translation><!-- Military Shipbuilding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mining (except oil and gas)</masterLabel>
+            <translation><!-- Mining (except oil and gas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Miscellaneous Manufacturing</masterLabel>
+            <translation><!-- Miscellaneous Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Miscellaneous Retailers</masterLabel>
+            <translation><!-- Miscellaneous Retailers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missiles and Space</masterLabel>
+            <translation><!-- Missiles and Space --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motion Picture and Sound Recording</masterLabel>
+            <translation><!-- Motion Picture and Sound Recording --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Motor Vehicle and Parts Dealers</masterLabel>
+            <translation><!-- Motor Vehicle and Parts Dealers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Museums and Historical Sites</masterLabel>
+            <translation><!-- Museums and Historical Sites --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>National Security and International Affairs</masterLabel>
+            <translation><!-- National Security and International Affairs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nonmetallic Mineral</masterLabel>
+            <translation><!-- Nonmetallic Mineral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nonstore Retailers</masterLabel>
+            <translation><!-- Nonstore Retailers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nuclear Power and Energy</masterLabel>
+            <translation><!-- Nuclear Power and Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nursing and Residential Care</masterLabel>
+            <translation><!-- Nursing and Residential Care --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oil and Gas</masterLabel>
+            <translation><!-- Oil and Gas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Business Services</masterLabel>
+            <translation><!-- Other Business Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Schools and Instruction</masterLabel>
+            <translation><!-- Other Schools and Instruction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PC Gaming</masterLabel>
+            <translation><!-- PC Gaming --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paper</masterLabel>
+            <translation><!-- Paper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Patient Infotainment</masterLabel>
+            <translation><!-- Patient Infotainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Performing Arts and Spectator Sports</masterLabel>
+            <translation><!-- Performing Arts and Spectator Sports --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Petroleum and Coal</masterLabel>
+            <translation><!-- Petroleum and Coal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pharmaceutical</masterLabel>
+            <translation><!-- Pharmaceutical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pipeline Transportation</masterLabel>
+            <translation><!-- Pipeline Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plastics and Rubber</masterLabel>
+            <translation><!-- Plastics and Rubber --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Postal Service</masterLabel>
+            <translation><!-- Postal Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Primary Metal</masterLabel>
+            <translation><!-- Primary Metal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Printing</masterLabel>
+            <translation><!-- Printing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Professional Scientific and Technical Services</masterLabel>
+            <translation><!-- Professional Scientific and Technical Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Publishing (except Internet)</masterLabel>
+            <translation><!-- Publishing (except Internet) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rail Transportation</masterLabel>
+            <translation><!-- Rail Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate</masterLabel>
+            <translation><!-- Real Estate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewable Energy</masterLabel>
+            <translation><!-- Renewable Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rental and Leasing Services</masterLabel>
+            <translation><!-- Rental and Leasing Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Satellites Electronics and Communications</masterLabel>
+            <translation><!-- Satellites Electronics and Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Securities and Commodities</masterLabel>
+            <translation><!-- Securities and Commodities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Advocacy Organizations</masterLabel>
+            <translation><!-- Social Advocacy Organizations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Assistance</masterLabel>
+            <translation><!-- Social Assistance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Software</masterLabel>
+            <translation><!-- Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty Trade Contractors</masterLabel>
+            <translation><!-- Specialty Trade Contractors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sporting Goods and Hobbies</masterLabel>
+            <translation><!-- Sporting Goods and Hobbies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student</masterLabel>
+            <translation><!-- Student --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Services</masterLabel>
+            <translation><!-- Support Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical and Trade Schools</masterLabel>
+            <translation><!-- Technical and Trade Schools --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Textile Mills</masterLabel>
+            <translation><!-- Textile Mills --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>To Be Defined</masterLabel>
+            <translation><!-- To Be Defined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tobacco</masterLabel>
+            <translation><!-- Tobacco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trade or Professional Associations</masterLabel>
+            <translation><!-- Trade or Professional Associations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transit and Ground Passenger Transportation</masterLabel>
+            <translation><!-- Transit and Ground Passenger Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation Equipment</masterLabel>
+            <translation><!-- Transportation Equipment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation and Travel Services</masterLabel>
+            <translation><!-- Transportation and Travel Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Truck Transportation</masterLabel>
+            <translation><!-- Truck Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utilities</masterLabel>
+            <translation><!-- Utilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Warehousing and Storage</masterLabel>
+            <translation><!-- Warehousing and Storage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Water Transportation</masterLabel>
+            <translation><!-- Water Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wireless Telecommunications Services</masterLabel>
+            <translation><!-- Wireless Telecommunications Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wood Product</masterLabel>
+            <translation><!-- Wood Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>eSports</masterLabel>
+            <translation><!-- eSports --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- PCC_VisiblityForNewApprover --></label>
+        <name>PCC_VisiblityForNewApprover__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Account Geo Region --></label>
+        <name>Partner_Account_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Resubmission mail design --></label>
+        <name>Resubmission_mail_design__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workflow Stage --></label>
+        <name>Workflow_Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Precheck Completed</masterLabel>
+            <translation><!-- Precheck Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approved Date --></label>
+        <name>core_cpq_approved_date__c</name>
+    </fields>
+    
+    <nameFieldLabel><!-- Registration Number --></nameFieldLabel>
+    <recordTypes>
+        <description><!-- Design Registration owned by Intel User. --></description>
+        <label><!-- Design Registration - Intel --></label>
+        <name>Core_Design_Registration_Intel</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Design Registration locked for edits. --></description>
+        <label><!-- Design Registration - Locked --></label>
+        <name>Core_Design_Registration_Locked</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Design Registration owned by Partner User. --></description>
+        <label><!-- Design Registration - Partner --></label>
+        <name>Core_Design_Registration_Partner</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record type is for the Deal registration in draft status --></description>
+        <label><!-- Deal Registration - Draft --></label>
+        <name>Deal_Registration_Draft</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Deal Registration locked for edits. --></description>
+        <label><!-- Deal Registration - Locked --></label>
+        <name>Deal_Registration_Locked</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- The Design Registration Record Type for Partners and Internal Users when DR in Draft Status. --></description>
+        <label><!-- Design Registration - Partner Draft --></label>
+        <name>Design_Registration_Partner_Draft</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Deal Registration owned by Partner --></description>
+        <label><!-- Deal Registration - Partner --></label>
+        <name>PCC_Deal_Registration_Partner</name>
+    </recordTypes>
+    <sharingReasons>
+        <label><!-- IPARefresh --></label>
+        <name>IPARefresh</name>
+    </sharingReasons>
+    <validationRules>
+        <errorMessage><!-- Product Application cannot be changed in the given Design registration status. --></errorMessage>
+        <name>Approvers_can_edit_product_application</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Segment cannot be changed in the given Design registration status. --></errorMessage>
+        <name>Approvers_can_edit_product_segment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Vertical Market cannot be changed in the given Design registration status. --></errorMessage>
+        <name>Approvers_can_edit_vertical_market</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product group can&apos;t be changed in the given Design registration status. --></errorMessage>
+        <name>CORE_DDR_ProductGroup</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Design Registration is created by Partner User and this field is NOT editable. --></errorMessage>
+        <name>Core_DDR_Lock_MINDS_Field</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure the following : 
+•Date entered cannot be in the past. 
+•Date cannot be same or after the production date.
+•Date cannot be same or before the decision date. --></errorMessage>
+        <name>Core_cannot_enter_past_cust_ship_dates</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure the following :
+•Date entered cannot be in the past.
+•Date once entered cannot be changed. --></errorMessage>
+        <name>Core_cannot_enter_past_decision_dates</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure the following :
+• Date entered cannot be in the past.
+• Date cannot be same or before the decision date. --></errorMessage>
+        <name>Core_cannot_enter_past_prod_dates</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Customer Account has to be Intel Account and Covered --></errorMessage>
+        <name>DDR_StatusVal_upon_submission_Approval</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End customer URL cannot be modified. --></errorMessage>
+        <name>DDR_customerURL</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the owner of this record. If required, please raise an IT support request. --></errorMessage>
+        <name>Internal_User_not_update_DR_Owner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the Record type of this record. --></errorMessage>
+        <name>Internal_User_not_update_RecordType</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ensure to have minimum of 2 characters --></errorMessage>
+        <name>PCC_Atleast_2_Char_VR</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ensure to have minimum of 2 characters --></errorMessage>
+        <name>PCC_Atleast_2_Char_Validation_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Design Registration Name should not contain the &quot;|&quot; character --></errorMessage>
+        <name>PCC_DDR_Block_Spl_Chars_DRName</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Group should be Embedded/IOT Boards &amp; Systems --></errorMessage>
+        <name>PCC_DDR_Proper_ProductGroup_Selection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Group can be either FPGA/Power or Embedded/IOT --></errorMessage>
+        <name>PCC_DDR_Right_ProductGroup_Selection</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit the field in the given status. --></errorMessage>
+        <name>PCC_EditInactivePicklist</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Provide values for all mandatory attributes in End Customer Information section to proceed further. --></errorMessage>
+        <name>PCC_EndCustAccBlankButNotName</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select End Customer Account or Enter End Customer Name --></errorMessage>
+        <name>PCC_EndCustAccBlankWithEndCustName</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Selected End Customer Account must be of Intel Account Record Type --></errorMessage>
+        <name>PCC_EndCustAcc_IntelRecCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill End Customer Name before Approving the record --></errorMessage>
+        <name>PCC_End_Customer_Mandatory_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Registrations for FPGA product group has been disabled. Please refer to the message on Portal for more details --></errorMessage>
+        <name>PCC_FPGA_DesignRegDisable</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Internal Comments cannot be updated without End Customer --></errorMessage>
+        <name>PCC_Internal_Comments_Updation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- ODM/Board Partner must be blank when Design Type is Chip-down. --></errorMessage>
+        <name>PCC_No_ODM_Partner_For_Chip_Down</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- ODM/Board Partner is required when Design Type is Board-based. --></errorMessage>
+        <name>PCC_ODM_Partner_Required_For_Board_Based</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Segment selected on Design Details page is not considered as Embedded Designs. Please go back to the Details page to update Product segment to be either Embedded/IOT or Comms Infra. / Networking --></errorMessage>
+        <name>PCC_ProductSegment_EmbeddedIOT</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please update Product Segment. Product segment can be either Embedded/IOT or Comms Infra. / Networking --></errorMessage>
+        <name>PCC_ProductSegment_EmbeddedIOTBoardSys</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide valid email address --></errorMessage>
+        <name>Partner_FAE_Email_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Either enter End Customer Name or Select End Customer Account --></errorMessage>
+        <name>TBD_PCC_EndCustNameAndSearchBlankCheck</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Core_Accept_Design --></label>
+        <name>Core_Accept_Design</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Approve_Design --></label>
+        <name>Core_Approve_Design</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Reject_Design --></label>
+        <name>Core_Reject_Design</name>
+    </webLinks>
+</CustomObjectTranslation>

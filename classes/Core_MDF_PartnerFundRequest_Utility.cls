@@ -17,7 +17,11 @@ public without sharing class Core_MDF_PartnerFundRequest_Utility {
      public static Map< String , List< Core_MDF_CCP_Custom_Metadata_Utility__c >> getCCPAttributeMapMetadata(){
 		/*for(CCP_Attributes_Map__mdt ccpAttribute : [SELECT Id, Core_MDF_Activity_Secondary_Pillar_Nm__c, Core_MDF_Activity_Pillar_Nm__c , Type__c, Category__c, Activity_Sub_Type__c, Record_Type_Picklist__c 
                                                       FROM CCP_Attributes_Map__mdt WHERE DeveloperName != null]){*/
-        Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>> pfrRecordTypeAttributeMetadataMap = new Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>>();
+        
+		
+		
+		
+		Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>> pfrRecordTypeAttributeMetadataMap = new Map<String,List<Core_MDF_CCP_Custom_Metadata_Utility__c>>();
         String query = 'SELECT Core_MDF_Field_5_txt__c, ' +
         'Core_MDF_Field_3_txt__c, ' +
         'Core_MDF_Field_9_txt__c, ' +

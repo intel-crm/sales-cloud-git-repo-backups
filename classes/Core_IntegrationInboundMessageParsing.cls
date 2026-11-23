@@ -25,8 +25,7 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
         Dom.XmlNode personXml = doc.getRootElement();
 
         p.inactIndicator = personXml.getAttributeValue('inact-indicator', null);
-        p.isDeleteIndicator = personXml.getAttributeValue('is-delete-indicator', null);
-        
+        p.isDeleteIndicator = personXml.getAttributeValue('is-delete-indicator', null);        
         
         p.publishTimestamp = null;
         if (getValue(personXml, 'publish-timestamp') != '') {
@@ -50,6 +49,7 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
             for (Dom.XmlNode childNode : personAccountsXml.getChildElements()) {
                 if (childNode.getName() == 'person-account' && childNode.getAttributeValue('inact-indicator', null) == 'N') {
                     // We only care about active account relationships
+                    //if (childNode.getAttributeValue('inact-indicator', null) == 'N')
                         p.personAccounts.add(parsePersonAccount(childNode));
                 }
             }
@@ -169,6 +169,8 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
         // Look for specific electronic addresses we need, and store them
         if (personElectronicAddrsXml != null) {
             for (Dom.XmlNode childNode : personElectronicAddrsXml.getChildElements()) {
+                //if ((childNode.getName() == 'person-electronic-address') &&
+                  //  (childNode.getAttributeValue('isnull-indicator', null) != 'Y')) {
 
                     // This is the code that needs to be updated to pull from the child element instead
                     if ((childNode.getName() == 'person-electronic-address') &&
@@ -180,6 +182,7 @@ public  without sharing class Core_IntegrationInboundMessageParsing {
                     else if ((childNode.getName() == 'person-electronic-address') &&
                                                                                                     (childNode.getAttributeValue('isnull-indicator', null) != 'Y') && childNode.getAttributeValue('electronic-addr-type-code', null) == 'FAX')
                         p.fax = childNode.getChildElement('electronic-address', null).getText();
+                //}
             }
         }
     }

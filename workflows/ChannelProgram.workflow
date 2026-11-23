@@ -11,18 +11,4 @@
         <protected>false</protected>
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
-    <rules>
-        <fullName>Core_MDF_Channel_Program_UniqueId_Field_Auto_Populate</fullName>
-        <actions>
-            <name>Core_MDF_Chnl_Prog_UniqueId_Population</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <criteriaItems>
-            <field>ChannelProgram.Name</field>
-            <operation>notEqual</operation>
-            <value>null</value>
-        </criteriaItems>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
 </Workflow>

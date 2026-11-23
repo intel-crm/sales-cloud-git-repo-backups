@@ -2890,7 +2890,7 @@ Automatically sets permission sets for those entitlements which need them.  Also
         </outputAssignments>
     </recordLookups>
     <startElementReference>Lookup_User</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <name>ActivitySubmitterChatterPost</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>

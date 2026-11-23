@@ -1595,7 +1595,7 @@
         <faultConnector>
             <targetReference>Create_Log_Entry_Get_Staging_Record</targetReference>
         </faultConnector>
-        <filterLogic>1 AND 2 AND (3 OR 4)</filterLogic>
+        <filterLogic>1 AND (2 OR (5 AND 6)) AND (3 OR 4)</filterLogic>
         <filters>
             <field>AccountId__c</field>
             <operator>EqualTo</operator>
@@ -1622,6 +1622,20 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>REMOVE_CPE</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>FAILED</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Retry_Counter__c</field>
+            <operator>LessThan</operator>
+            <value>
+                <numberValue>3.0</numberValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>

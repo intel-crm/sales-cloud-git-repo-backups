@@ -76,7 +76,8 @@ export default class PRM_ExternalAPIEmbedLWC extends LightningElement {
                       console.log('response', response);
                       this.report = response;
 
-                      if (response) {                       
+                      if (response) {
+                        console.log('Account Id -->', this.accountId);
                         if (response.embedUrl && response.embedToken) {
                           // Get the report container element
                           var reportContainer = this.template.querySelector(
@@ -155,6 +156,7 @@ export default class PRM_ExternalAPIEmbedLWC extends LightningElement {
     }).catch((error) => {
       console.log('Error from get report details method', error);
       this.loaded = true;
-    });    
+    });
+    console.log('Account Id -->', this.accountId);
   }
 }

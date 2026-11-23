@@ -8,7 +8,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:sales_NonEventFeedback",
-      "id" : "dcb95e1a-1a3d-4ef2-b869-8856c58fcf9b",
+      "id" : "71be9cf7-d2e2-45d9-9dff-b5f69482f455",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -19,7 +19,7 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "enableInlineEdit" : true,
+        "enableInlineEdit" : false,
         "filterName" : "All",
         "layout" : "FULL",
         "pageSize" : 25,

@@ -171,6 +171,7 @@ private class Core_MDF_ClaimReviewChecklist_Test {
                         Case record = [select id from Case limit 1];
                         caseRecordId = record.id;
                         
+
                         //List<Core_MDF_Checklist_Items__mdt> testMetadata = new List<Core_MDF_Checklist_Items__mdt>();
                         List<Core_MDF_Claim_Case_Checklist__c> testChecklistRecord = new List<Core_MDF_Claim_Case_Checklist__c>();
 

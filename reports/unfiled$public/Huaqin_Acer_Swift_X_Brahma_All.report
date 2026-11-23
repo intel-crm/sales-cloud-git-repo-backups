@@ -55,7 +55,14 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <filter>
-        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <booleanFilter>1  AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>huaqin</value>
+        </criteriaItems>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
@@ -69,13 +76,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>Brahma</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>NB2672</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

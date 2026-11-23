@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Partner Offerings</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Column_Field_Set --></label>
+        <name>Column_Field_Set</name>
+    </fieldSets>
     <fields>
         <label><!-- Offering Power 1 --></label>
         <name>Offering_Power_1__c</name>
@@ -78,6 +82,10 @@
     <fields>
         <label><!-- Logged in user --></label>
         <name>PMP_Current_User_Offering_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Do Not Contact Enabled ? --></label>
+        <name>PMP_Do_Not_Contact_Enabled__c</name>
     </fields>
     <fields>
         <label><!-- Edit/Clone Offering --></label>
@@ -451,6 +459,11 @@
     <recordTypes>
         <label><!-- Default Record Type --></label>
         <name>Default_Record_Type</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- New Record Type --></description>
+        <label><!-- PMP Partner Offering --></label>
+        <name>PMP_Partner_Offering</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>

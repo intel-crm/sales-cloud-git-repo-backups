@@ -44,8 +44,8 @@
         <help><!-- Please provide Intel or End customer Deal account. --></help>
         <label><!-- End Customer Account --></label>
         <lookupFilter>
-            <errorMessage><!-- Please provide Intel or End customer Deal account or Requested Account. --></errorMessage>
-            <informationalMessage><!-- End customer account record type should be Intel account or End Customer Deal Account or Requested Account --></informationalMessage>
+            <errorMessage><!-- Please provide Intel account or End customer Deal account. --></errorMessage>
+            <informationalMessage><!-- End customer account record type should be Intel account or End Customer Deal Account --></informationalMessage>
         </lookupFilter>
         <name>PRM_End_Customer_Account__c</name>
         <relationshipLabel><!-- Partner Deal Opportunities (End Customer Account) --></relationshipLabel>

@@ -9,10 +9,6 @@
         <value>Jifflenow Surveys</value>
     </caseValues>
     <fields>
-        <label><!-- Meeting Notes --></label>
-        <name>Meeting_Notes__c</name>
-    </fields>
-    <fields>
         <label><!-- Account --></label>
         <name>jiffle__Account__c</name>
         <relationshipLabel><!-- Jifflenow Surveys --></relationshipLabel>

@@ -128,16 +128,22 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_CPQ_List_Price_Record_Page</content>
         <formFactor>Large</formFactor>
-        <type>Default</type>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Core_CPQ_List_Price_Record_Page</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -247,18 +253,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>core_cpq_speed_nbr__c</fullName>
-        <externalId>false</externalId>
-        <label>Speed</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>core_cpq_unique_id__c</fullName>
         <caseSensitive>false</caseSensitive>
         <description>Ensures that the combination of Lower Bound,Upper Bound,Product Name and Pricebookentry is unique</description>
@@ -302,11 +296,12 @@
         <columns>core_cpq_list_price_amt__c</columns>
         <columns>core_cpq_minimum_order_qty__c</columns>
         <columns>core_cpq_multiple_order_quantity__c</columns>
+        <columns>core_cpq_Price_Book__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>core_cpq_product_opn_txt__c</field>
+            <field>core_cpq_product_name__c</field>
             <operation>equals</operation>
-            <value>01uVD000003L8CLYA0</value>
+            <value>TEST DEMO IP-CORPORATE</value>
         </filters>
         <label>All</label>
     </listViews>
@@ -339,7 +334,14 @@
         <active>true</active>
         <label>List Price Record Type</label>
     </recordTypes>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>core_cpq_product_name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>core_cpq_product_opn_txt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>core_cpq_list_price_amt__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>core_cpq_minimum_order_qty__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>core_cpq_multiple_order_quantity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>core_cpq_Price_Book__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

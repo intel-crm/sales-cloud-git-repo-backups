@@ -118,6 +118,16 @@
         </rules>
     </decisions>
     <description>V4- created version ; deleted some status values</description>
+    <ends>
+        <name>END_ELEMENT_1</name>
+        <locationX>1898</locationX>
+        <locationY>2915</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_3</name>
+        <locationX>974</locationX>
+        <locationY>3215</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>Core Create Campaign Member Statuses {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core Create Campaign Member Statuses</label>
@@ -145,6 +155,9 @@
         <label>Attended</label>
         <locationX>1898</locationX>
         <locationY>2807</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>CampaignId</field>
             <value>
@@ -1169,6 +1182,9 @@
         <label>Delete Campaign Member Statuses</label>
         <locationX>974</locationX>
         <locationY>3107</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_3</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Label</field>

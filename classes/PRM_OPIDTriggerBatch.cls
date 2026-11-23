@@ -8,15 +8,15 @@ Modification Log    :
 * Developer                         Date                           Description
 * ------------------------------------------------------------------------------------------------------------------------------------
 * Srishty                        4-March-2020                     US599996-Start method will return all the VX data with OPID null.
-* Srishty 						 24-March-2020					  US570458-Added the condition to return vx data with OPID 
+* Srishty              24-March-2020            US570458-Added the condition to return vx data with OPID 
 for upgrade scenario
-*Srishty						 3-April-2020 					  US619504-Added the aggregate query for quantiative criteria for 
+*Srishty             3-April-2020             US619504-Added the aggregate query for quantiative criteria for 
 Upgrade Recommendation
 *Srishty                        24-April-2020                     US643150-Added 'Total Nbr Achieved Competency' field and replaced 'Competency Achieved field' from VX data and VX Recommendation 
 *Srishty                        4-May-2020                        US638610,US632701,US638612-Optimized Execute Method 
 *Srishty                        13-May-2020                       Start Method query result was optimised by using PRM_IsChanged_Ind__c formula field which will return 
 only those records which needs to be processed.
-*Srishty						12-June-2020					 PRM_FPGA_Project_Registration_Count_Nbr__c replaced by PRM_Design_Registration_Count_Nbr__c field.
+*Srishty            12-June-2020           PRM_FPGA_Project_Registration_Count_Nbr__c replaced by PRM_Design_Registration_Count_Nbr__c field.
 *************************************************************************************************************************************/
 
 public class PRM_OPIDTriggerBatch implements Database.Batchable<sObject>,Database.Stateful {

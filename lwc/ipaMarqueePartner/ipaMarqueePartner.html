@@ -1,9 +1,9 @@
 <template>
     <c-core-intc-breadcrumbs></c-core-intc-breadcrumbs>
     <template if:true={showNotification}>
-    <p class="slds-align_absolute-center"><lightning-formatted-rich-text value={label.releaseNotification}></lightning-formatted-rich-text></p>
+        <p class="slds-align_absolute-center"><lightning-formatted-rich-text value={label.releaseNotification}></lightning-formatted-rich-text></p>
     </template>
-    <c-ipa-marquee-default title={title}>
+   <c-ipa-marquee-default title={title}>
         
         <div slot="subtitle">
             <div class="marquee-subtitle text-bold">{subtitle}</div>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFCC</backgroundEndColor>
+    <backgroundFadeDirection>TopToBottom</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>12/28/2014 12:00 AM</values>
+            <values>12/27/2015 12:00 AM</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>12/27/2015 12:00 AM</values>
+            <values>1/1/2017 12:00 AM</values>
+        </dashboardFilterOptions>
+        <name>Date</name>
+    </dashboardFilters>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <description>Data below and in the underlying reports should be used by Managers only to discuss training and coaching opportunities with their team members, or by Sales Ops teams to identify unused or underused licenses that may potentially be reallocated.</description>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>CUST_CREATED_DATE</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Snapshot for Sales Rep - BB; &quot; - &quot; indicates users who have never logged in. Goals: Weekly (15-99%-revised 5/11/15, 16-75%), Monthly (15-99%-revised 5/11/15, 16-90%). Snapshot of &apos;Last Login Date&apos; taken once per week. Days measures from date of snapshot.</footer>
+            <groupingColumn>Core_User_Login_Snapshot__c.Core_Geo__c</groupingColumn>
+            <groupingColumn>Core_User_Login_Snapshot__c.Core_Geo__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>SALES REPS</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_OSC_Embedded/User_Login_Snapshot_Sales_Rep2</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Sales Rep by Last Login Date</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>CUST_CREATED_DATE</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>Core_User_Login_Snapshot__c.Core_Full_Name__c</groupingColumn>
+            <groupingColumn>BucketField_25332621</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_OSC_Embedded/User_Login_Snapshot_Sales_Rep2</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Sales Rep (BB)-Login Last Week(by OSAM)</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>CUST_CREATED_DATE</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Snapshot for Sales Rep - BB; &quot; - &quot; indicates users who have never logged in. Goals: Weekly (15-99%-revised 5/11/15, 16-75%), Monthly (15-99%-revised 5/11/15, 16-90%). Snapshot of &apos;Last Login Date&apos; taken once per week. Days measures from date of snapshot.</footer>
+            <groupingSortProperties/>
+            <header>WEEKLY LOGIN TREND</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_OSC_Embedded/Sales_Rep_BB_Login_Weekly_Total</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Sales Rep-BB Login Weekly Trend</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </middleSection>
+    <owner>11587578@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>BarStacked100</componentType>
+            <dashboardFilterColumns>
+                <column>CUST_CREATED_DATE</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Snapshot for Sales Rep - BB; &quot; - &quot; indicates users who have never logged in. Goals: Weekly (15-99%-revised 5/11/15, 16-75%), Monthly (15-99%-revised 5/11/15, 16-90%). Snapshot of &apos;Last Login Date&apos; taken once per week. Days measures from date of snapshot.</footer>
+            <groupingSortProperties/>
+            <header>MONTHLY LOGIN TREND</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>APJ_OSC_Embedded/Sales_Rep_BB_Login_Monthly_Total</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Sales Rep-BB Login Monthly Trend</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>11587578@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>APJ OSC Adoption Metrics</title>
+    <titleColor>#333333</titleColor>
+    <titleSize>14</titleSize>
+</Dashboard>

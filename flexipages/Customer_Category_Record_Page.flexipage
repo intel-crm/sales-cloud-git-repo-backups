@@ -1426,7 +1426,7 @@
                     <criteria>
                         <leftValue>{!Record.Category__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Regional GSI ISV MSP</rightValue>
+                        <rightValue>Regional GSI ISV MSP​</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

@@ -17,12 +17,9 @@ import helpImg from '@salesforce/resourceUrl/helpIconImg';
 import completeRegstr from '@salesforce/label/c.Complete_Registration';
 import loginto from '@salesforce/label/c.IPA_Login';
 import contactUs from '@salesforce/label/c.Contact_Us';
-import isCidaaSEnabled from '@salesforce/label/c.PRM_CiDaaS_Enabled';
 import regLink from '@salesforce/label/c.PRM_IPA_Registration_Form_link_CidaaS';
 import chatSupport from '@salesforce/label/c.PRM_IPA_Chat_Support_CiDaaS';
 import accDenied from '@salesforce/label/c.PRM_IPA_AccessDen_Text5_CiDaaS';
-
-
 import {
   getCookieInfo,
   getCookieValue,
@@ -39,12 +36,12 @@ export default class IpaIntelAccessDenied extends LightningElement {
   loginLogo = logInIcon;
   loginScreen = logScreen;
   helpLogo = helpImg;
-    showContent = true;
+  showContent = true;
 
     label = {
       ContentLabel,
       HeaderLabel,
-      HeaderHome,      
+      HeaderHome,
       chatLinkText,
       loginURL,
       loginLink,
@@ -52,8 +49,9 @@ export default class IpaIntelAccessDenied extends LightningElement {
       loginto,
       contactUs
       
+      
     };
-    
+
     chatLinkStr;
 
     registerLinkStr;
@@ -87,24 +85,17 @@ export default class IpaIntelAccessDenied extends LightningElement {
       this.redirectTest();
       const registerStrMatch = this.matchString(registerLinkText);
       const cmpltRegisterStrMatch = this.matchString(registerLinkContent);
-      if(isCidaaSEnabled){
+      
         registerLink = `<a href=${regLink}>${registerStrMatch}</a>`;
         register1Link = `<a href=${regLink}>${cmpltRegisterStrMatch}</a>`;
-      }
-      else{
-        register1Link = `<a href=${RegistrationLink}>${cmpltRegisterStrMatch}</a>`;
-        registerLink = `<a href=${RegistrationLink}>${registerStrMatch}</a>`;
-      }
+      
+      
       const chatStrMatch1 = this.matchString(chatLinkContent);
       const loginLink1 = this.matchString(loginURL);
-      if(isCidaaSEnabled){
+     
          lgnLink = `<a href=${accDenied}>${loginLink1}</a>`;
          chatLink1 = `<a href=${chatSupport}>${chatStrMatch1}</a>`;
-      }
-      else{
-         lgnLink = `<a href=${loginLink}>${loginLink1}</a>`;
-         chatLink1 = `<a href=${ChatLink}>${chatStrMatch1}</a>`;
-      }
+      
       
       this.registerLinkStr = this.replaceString(registerLinkText, registerStrMatch, registerLink);
       console.log('string value1'+lgnLink);
@@ -116,8 +107,7 @@ export default class IpaIntelAccessDenied extends LightningElement {
       this.chatStr = this.replaceString(chatLinkContent, chatStrMatch1, chatLink1);
       this.loginStr = this.replaceString(loginURL,loginLink1,lgnLink);
       console.log('string'+this.loginStr);
-      
-    }
+   }
 
     /**
      *  Check the string and replace {} braces with anchor tag link

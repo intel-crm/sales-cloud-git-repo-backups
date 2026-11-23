@@ -114,7 +114,7 @@
             
             Core_ERPM_Engagement__c cee=new Core_ERPM_Engagement__c(Name  ='DCF', Core_Engagement_Type__c='SEC',Core_IsActive__c=true,Core_Technical_Engagement_Code__c='DCF');
             insert cee;
-            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Intel® Partner Investment Center',Core_Sub_Category__c='Datacenter',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='Datacenter User',Core_IsActive__c=true);
+            Core_Entitlement__c entitle = new Core_Entitlement__c (name ='DCF User', Core_Category__c='Consolidated Co-marketing Platform',Core_Sub_Category__c='Data Center Co-Marketing Fund (DCF)',Core_Help_Text__c='Help text',Core_ERPM_Engagement_Id__c=cee.id,Core_Display_Name__c='DCF User',Core_IsActive__c=true);
             insert entitle;
             Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(Core_Contact_Id__c=con.Id,
                                                                      Core_Entitlement_Id__c=entitle.id,
@@ -154,7 +154,9 @@
             grpMember3.GroupId = grp2.Id;
 
             List<UserShare> usList = new List<UserShare>();
+            UserShare us1 = new UserShare(UserId = usr2.Id, UserOrGroupId = grp1.Id, RowCause = 'Manual', UserAccessLevel = 'Read');
             UserShare us2 = new UserShare(UserId = usr3.Id, UserOrGroupId = grp1.Id, RowCause = 'Manual', UserAccessLevel = 'Read');
+            //usList.add(us1);
             usList.add(us2);
             Database.insert(usList);
 
@@ -190,7 +192,7 @@
             pgmList.add(pgm1);
             //pgmList.add(pgm2);
             Database.insert(pgmList);
-            //Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(dcfAcc.Id, usr2.Id, true);
+            Core_MDF_Partner_Node_User_Mapping__c pnum = Core_MDF_CCP_TestDataUtility.createPartnerNodeUserMapping(dcfAcc.Id, usr2.Id, true);
             //usr2.isActive = false;
             //Database.update(usr2);
 

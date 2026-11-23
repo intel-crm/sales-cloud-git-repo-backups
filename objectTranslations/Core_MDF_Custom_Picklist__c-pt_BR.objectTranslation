@@ -45,6 +45,10 @@
         <name>Core_MDF_Camp_IRTI</name>
     </fieldSets>
     <fieldSets>
+        <label><!-- Intel MDF Account Based1 --></label>
+        <name>Core_MDF_Camp_Intel_MDF_Account_Based1</name>
+    </fieldSets>
+    <fieldSets>
         <label><!-- Iot Premier - MDF Campaign --></label>
         <name>Core_MDF_Camp_Iot_Premier_MDF</name>
     </fieldSets>
@@ -205,6 +209,10 @@
         <name>Core_MDF_Activity_Description__c</name>
     </fields>
     <fields>
+        <label><!-- Activity Reimbursement Rate --></label>
+        <name>Core_MDF_Activity_Reimbursement_Rate_pct__c</name>
+    </fields>
+    <fields>
         <label><!-- Activity Subtype --></label>
         <name>Core_MDF_Activity_SubType_nm__c</name>
     </fields>
@@ -263,6 +271,10 @@
         <help>Se selecionado, o guia baseado em resultados se aplica. Se não for selecionado, o guia padrão de vendas e marketing se aplicará. As atividades sob esta campanha devem ser configuradas em conformidade.</help>
         <label>Campanha baseada em resultados</label>
         <name>Core_MDF_CampOutcomeOpt_In_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign Reimbursement Rate --></label>
+        <name>Core_MDF_Campaign_Reimbursement_Rate_pct__c</name>
     </fields>
     <fields>
         <label><!-- Campaign Reimbursement Rate --></label>
@@ -427,7 +439,7 @@
     </fields>
     <fields>
         <help>Novos clientes ganhando</help>
-        <label>Quantidade de implantações</label>
+        <label><!-- Deployment Quantity --></label>
         <name>Core_MDF_Deployment_Quantity_nbr__c</name>
     </fields>
     <fields>
@@ -547,7 +559,7 @@
     </fields>
     <fields>
         <help>Como a eficácia da campanha será medida. Os KPIs padrão incluem leads (novos contatos) e implantações (novos clientes ganhando).</help>
-        <label>Ind. chave de desempenho de marketing</label>
+        <label><!-- Marketing Key Performance Indicator --></label>
         <name>Core_MDF_Key_Marketing_Indicator_nm__c</name>
     </fields>
     <fields>
@@ -556,7 +568,7 @@
     </fields>
     <fields>
         <help>Novos contatos</help>
-        <label>Quantidade de oportunidades de vendas</label>
+        <label><!-- Lead Quantity --></label>
         <name>Core_MDF_Lead_Quantity_nbr__c</name>
     </fields>
     <fields>
@@ -613,6 +625,10 @@
         <name>Core_MDF_Opal_Budget_Type_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Other Outcome Brands/Technologies --></label>
+        <name>Core_MDF_Other_Brands_Technologies_txt__c</name>
+    </fields>
+    <fields>
         <label>Outro Parceiro de Ecossistemas</label>
         <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
     </fields>
@@ -630,7 +646,7 @@
         <name>Core_MDF_Other_Outcome_txt__c</name>
     </fields>
     <fields>
-        <label>Outra quantidade</label>
+        <label><!-- Other Quantity --></label>
         <name>Core_MDF_Other_Quantity_nbr__c</name>
     </fields>
     <fields>
@@ -923,8 +939,8 @@
         <name>Core_MDF_Total_Campaign_Cost_Amt__c</name>
     </fields>
     <fields>
-        <help>Escolha o caso de uso mais alinhado com a oferta de solução que esta campanha promoverá. Se nenhum dos casos de uso listados for aplicável, selecione Uso geral.</help>
-        <label>Caso de uso</label>
+        <help><!-- Please choose the Use Case that most closely aligns with the solution offering this campaign will promote. If none of the listed Uses Cases apply, select General purpose. --></help>
+        <label><!-- Use Case --></label>
         <name>Core_MDF_Use_Case_Nm__c</name>
     </fields>
     <fields>
@@ -960,6 +976,10 @@
     <recordTypes>
         <label><!-- Channel MDF - Account Based --></label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Channel MDF - Proposal Based --></label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Client --></label>

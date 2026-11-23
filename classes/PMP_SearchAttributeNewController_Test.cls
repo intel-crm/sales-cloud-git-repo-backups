@@ -388,8 +388,7 @@ public class PMP_SearchAttributeNewController_Test extends PMP_SearchWrapperStor
         company.PMP_Benefit_Update_Ind__c=False;
         company.PMP_Partner_Inactive_Ind__c = False;
         company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
         company.PMP_Is_Published_Ind__c=true;
       
         insert company;

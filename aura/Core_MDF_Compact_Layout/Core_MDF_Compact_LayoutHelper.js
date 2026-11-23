@@ -60,10 +60,17 @@
                 component.set("v.openCmp", 'Submit For PIC');
             }else if(quickAction == 'Submit for Payment Clearance'){  
                 component.set("v.openCmp", 'Submit for Payment Clearance');
-            }else if(quickAction == 'Manual Audit'){  //Roshan - added for Outcome based
+            } else if(quickAction == 'Recall to Payment Clearance'){ //TWC3117-19154
+                component.set("v.openCmp", 'Recall to Payment Clearance'); //TWC3117-19154
+                component.set("v.modalHeader", 'Recall to Payment Clearance'); //TWC3117-19154
+                component.set("v.isShowHeaderFooter", true); //TWC3117-19154
+                component.set("v.errorMessage", ''); //TWC3117-19154
+            }else if(quickAction == 'Manual Audit'){  //Anushya - added for IPA Final Outcome based
                 component.set("v.openCmp", 'Manual Audit');
             }else if(quickAction == 'Complete Payment Clearance Processing'){
                 component.set("v.openCmp", 'Complete Payment Clearance Processing');
+            }else if(quickAction == 'Cancel VAT'){  //Roshan - TWC3117-19010
+                component.set("v.openCmp", 'Cancel VAT');
             }
             if(quickAction != 'Create Claim'){
                 component.set("v.openModalForLtCmp", true);

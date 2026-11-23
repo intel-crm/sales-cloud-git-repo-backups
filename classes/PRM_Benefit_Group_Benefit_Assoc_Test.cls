@@ -139,7 +139,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         spec1.PRM_Description_Txt__c='This is description';
         spec1.PRM_Funding_BU_Nm__c='CCG Sales Group';
         spec1.PRM_Role_Nm__c='Service Provider';
-        spec1.PRM_Tier_Nm__c='Gold';//'Gold';
+        spec1.PRM_Tier_Nm__c='Gold';
         spec1.PRM_Start_Date_Dt__c= system.today() + 7;
         spec1.PRM_End_Date_Dt__c= spec1.PRM_Start_Date_Dt__c + 5;
         spec1.PRM_Access_Level_Nm__c='Public';
@@ -603,7 +603,7 @@ public class PRM_Benefit_Group_Benefit_Assoc_Test {
         spec1.PRM_Description_Txt__c='This is description';
         spec1.PRM_Funding_BU_Nm__c='CCG Sales Group';
         spec1.PRM_Role_Nm__c='Service Provider';
-        spec1.PRM_Tier_Nm__c='Gold';//'Gold';
+        spec1.PRM_Tier_Nm__c='Gold';
         spec1.PRM_Start_Date_Dt__c= system.today() + 7;
         spec1.PRM_End_Date_Dt__c= spec.PRM_Start_Date_Dt__c + 5;
         spec1.PRM_Access_Level_Nm__c='Public';

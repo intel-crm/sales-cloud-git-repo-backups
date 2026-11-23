@@ -90,6 +90,7 @@ public class Core_MDF_Reusable_Code {
 
     /** */
     public static boolean numberComp(ValidateRuleParams inputParam) {
+        System.debug('@@##inputParam1-> '+inputParam);
         boolean result = false;
 
         switch on inputParam.operator {
@@ -118,6 +119,7 @@ public class Core_MDF_Reusable_Code {
 
     /** */
     public static boolean dateComp(ValidateRuleParams inputParam) {
+        System.debug('@@##inputParam2-> '+inputParam);
         boolean result = false;
 
         switch on inputParam.operator {
@@ -145,6 +147,7 @@ public class Core_MDF_Reusable_Code {
 
     /** */
     public static boolean multiComp(ValidateRuleParams inputParam) {
+        System.debug('@@##inputParam3-> '+inputParam);
         boolean result = false;
         list<String> mainString = inputParam.crtValue.toLowerCase().trim().split(';'); 
 
@@ -189,8 +192,10 @@ public class Core_MDF_Reusable_Code {
         Schema.DescribeSObjectResult sObjRes;
         Schema.DescribeFieldResult sObjField;
         
-        sObject sObj = Schema.getGlobalDescribe().get(objectName).newSObject();
-        sObjRes = sObj.getSObjectType().getDescribe(); 
+    	// ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    	Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+    	if(results == null || results.isEmpty()) { return null; }
+    	sObjRes = results[0];
         sObjField = sObjRes.fields.getMap().get(field).getDescribe();
         return string.valueOf(sObjField.getType());   
     }

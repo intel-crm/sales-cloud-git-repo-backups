@@ -32,7 +32,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     public static testMethod void test_processException_Positive(){
         
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         requestObj.requestBody=Blob.valueof('myString');
         RestContext.request = requestObj;
@@ -44,7 +44,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     public static testMethod void test_processException_Negative(){
         
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         RestContext.request = requestObj;
         Core_SalesCRM_RestAPI_Response  response = new Core_SalesCRM_RestAPI_Response ();
@@ -63,7 +63,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     public static testMethod void testExceptionRequest_Positive(){
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
         Core_RestAPI_Request requestCustom = new Core_RestAPI_Request();
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'POST';
         RestContext.request = requestObj;
         Core_SalesCRM_RestAPI_Response response = new Core_SalesCRM_RestAPI_Response ();
@@ -74,7 +74,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     public static testMethod void testExceptionRequest_Negative(){
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
         Core_RestAPI_Request requestCustom = new Core_RestAPI_Request();
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'POST';
         RestContext.request = requestObj;
         Core_SalesCRM_RestAPI_Response  response = new Core_SalesCRM_RestAPI_Response (); 
@@ -91,12 +91,12 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     }    
     public static testMethod void test_getConditionWithURIParam_Positive(){
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         requestObj.requestBody=Blob.valueof('myString');
         RestContext.request = requestObj;
         String URIParam=  Core_SalesCRM_RestAPI_Util.getConditionWithURIParam('id',3);
-        String APIName=  Core_SalesCRM_RestAPI_Util.getAPIName('https://intel.my.salesforce.com//services/apexrest/v1.0/cases');
+        String APIName=  Core_SalesCRM_RestAPI_Util.getAPIName('https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases');
         system.assert(!String.isEmpty(URIParam));
         //system.assert(!String.isEmpty(APIName));
     }
@@ -112,7 +112,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     
     public static testMethod void test_getInputFromURIParam_Positive(){
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         requestObj.requestBody=Blob.valueof('myString');
         RestContext.request = requestObj;
@@ -121,7 +121,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     }
     public static testMethod void test_getInputFromURIParam_Negative(){
         RestRequest requestObj =(RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         requestObj.requestBody=Blob.valueof('myString');
         RestContext.request = requestObj;
@@ -131,7 +131,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     
     public static testMethod void test_getRequestParam_Positive(){
         RestRequest requestObj =(RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         requestObj.requestBody=Blob.valueof('myString');
         RestContext.request = requestObj;
@@ -152,7 +152,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     public static testMethod void test_isRequestParamValid_Positive(){
         
         RestRequest requestObj = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         requestObj.requestBody=Blob.valueof('myString');
         requestObj.addParameter('paramKey','case');
@@ -166,7 +166,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     public static testMethod void test_isRequestParamValid_Negative(){
         
         RestRequest requestObj =(RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         requestObj.requestBody=Blob.valueof('myString');
         requestObj.addParameter('paramKeyInvalid','case');
@@ -204,7 +204,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
         String str = 'test123456uiojdg';
         Integer maxLength = 8;
         RestRequest requestObj =(RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        requestObj.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        requestObj.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         requestObj.httpMethod = 'GET';
         requestObj.requestBody=Blob.valueof('myString');
         RestContext.request = requestObj;
@@ -216,7 +216,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
         system.runAs(Core_Test_Utility.systemAdminUser){
             test.startTest();
             RestRequest request1 = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-            request1.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+            request1.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
             request1.httpMethod = 'GET';
             RestContext.request = request1;
             Core_SalesCRM_RestAPI_Response response = new Core_SalesCRM_RestAPI_Response();
@@ -233,7 +233,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     
     public static testMethod void test_logTransaction_Positive(){
         RestRequest request1 = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        request1.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        request1.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         request1.httpMethod = 'GET';
         RestContext.request = request1;
         Core_SalesCRM_RestAPI_Response response = new Core_SalesCRM_RestAPI_Response();
@@ -248,7 +248,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     public static testMethod void test_logTransaction_Negative(){
         
         RestRequest request1 =  (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        request1.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        request1.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         request1.httpMethod = 'GET';
         RestContext.request = request1;
         Core_SalesCRM_RestAPI_Response responseNegative = new Core_SalesCRM_RestAPI_Response();
@@ -261,7 +261,7 @@ public class Core_SalesCRM_RestAPI_Util_Test {
     }
     public static testMethod void test_logErrorException_Positive(){
         RestRequest request1 = (RestRequest)System.jSON.deserialize(Core_RestAPI_TestUtilities.REQUEST_TEMPLATE, RestRequest.class);
-        request1.requestUri ='https://intel.my.salesforce.com//services/apexrest/v1.0/cases';
+        request1.requestUri ='https://intel--crmdevint3.sandbox.my.salesforce.com/services/apexrest/v1.0/cases';
         request1.httpMethod = 'POST';
         RestContext.request = request1;
         RestContext.request.requestBody=Blob.valueof('myString');

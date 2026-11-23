@@ -771,10 +771,15 @@
         <label>Intel® Robotics</label>
     </customValue>
     <customValue>
-        <fullName>Intel® vPro® platform</fullName>
+        <fullName>Intel® Geti™</fullName>
+        <default>false</default>
+        <label>Intel® Geti™</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel® Optane™ Solid State Drives  </fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Intel® vPro® platform</label>
+        <label>Intel® Optane™ Solid State Drives  </label>
     </customValue>
     <customValue>
         <fullName>Intel® Optane™ DC Persistent Memory </fullName>
@@ -783,10 +788,10 @@
         <label>Intel® Optane™ DC Persistent Memory </label>
     </customValue>
     <customValue>
-        <fullName>Intel® Optane™ Solid State Drives  </fullName>
+        <fullName>Intel® vPro® platform</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Intel® Optane™ Solid State Drives  </label>
+        <label>Intel® vPro® platform</label>
     </customValue>
     <description>Store Brand Values</description>
     <masterLabel>Brand</masterLabel>

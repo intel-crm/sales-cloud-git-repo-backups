@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>Core_MDF_Value_Txt__c</field>
-        <value xsi:type="xsd:string">Pending Available Fund;Payment Due;Hold;Pending Documents;PIC Pending;Resubmission Required;Draft;Pending Clarification;Pending Account Manager Clarification;Submitted;Payment Clearance Processing</value>
+        <value xsi:type="xsd:string">Pending Available Fund;Payment Due;Hold;Pending Documents;PIC Pending;Resubmission Required;Draft;Pending Clarification;Pending Account Manager Clarification;Payment Clearance Processing</value>
     </values>
 </CustomMetadata>

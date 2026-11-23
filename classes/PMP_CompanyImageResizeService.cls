@@ -56,7 +56,7 @@ public without sharing class PMP_CompanyImageResizeService implements PMP_RetryC
 
         if(string.isNotEmpty(contentAssetName)) {
             contentAssetURL =  baseCommunityUrl+staticFileAsset+contentAssetName+questionMarkSymbol;
-            response = makeCalloutToPIM(contentAssetURL);// make a call out to PIM
+            response = PMP_CompanyImageResizeService.makeCalloutToPIM(contentAssetURL);// make a call out to PIM
 
         }
         
@@ -65,9 +65,10 @@ public without sharing class PMP_CompanyImageResizeService implements PMP_RetryC
             
             //get the response body as blob data
             blob thumbNailImage = response.getBodyAsBlob();
+            Id publishLocationId = partnerResources[0].PMP_Company_Id__c;
             
             //Create a content version instance
-            ContentVersion newVersion = PMP_Image_Resizing.CreateContentVersionInstance(contentAssetName,thumbNailImage);
+            ContentVersion newVersion = PMP_Image_Resizing.CreateContentVersionInstance(contentAssetName,thumbNailImage,publishLocationId);
             
             //insert offering resource record with resource type as thumbnail
             PMP_Image_Resizing.insertThumbnailCompanyResource(newVersion,partnerResources[0].PMP_Company_Id__c,Integer.valueOf(partnerResources[0].PMP_Company_Resource_Sequence_Nbr__c));

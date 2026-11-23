@@ -27,7 +27,7 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V2 {
         
         String mmid = req.params.get('mmid');
         String orderingCode = req.params.get('orderingcd');
-        String oldMMID = req.params.get('oldmmid');
+        //String oldMMID = req.params.get('oldmmid');
         //List<Product_MM_Attribute_Mapping__c> l4l5Mapping = new List<Product_MM_Attribute_Mapping__c>();
         Product_MM_Attribute_Mapping__c l4l5Mapping = new Product_MM_Attribute_Mapping__c();
         PCC_Wrapper.PCC_restAPIl4l5DetailsWrapper respWrp = new PCC_Wrapper.PCC_restAPIl4l5DetailsWrapper();
@@ -38,9 +38,14 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V2 {
             system.debug('paramSize-->'+paramSize);
             system.debug('mmid-->'+mmid);
             system.debug('orderingCode-->'+orderingCode);
-            system.debug('oldMMID-->'+oldMMID);
+            //system.debug('oldMMID-->'+oldMMID);
+            
             if(paramSize == 1){
-                if(mmid != null || orderingCode != null || oldMMID!= null){
+                if(mmid == null && orderingCode == null){
+                	isError = true;
+                    errWrp.ResponseBody=PCC_Constants.MMID_ORDCODE;
+                }
+                if(mmid != null || orderingCode != null){//} || oldMMID!= null){
                     try{
                         if(mmid != null){
                         l4l5Mapping = [SELECT id,Ordering_Code__c,MMID__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where Name =:mmid];
@@ -48,11 +53,11 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V2 {
                         else if(orderingCode != null){
                         l4l5Mapping = [SELECT id,Ordering_Code__c,MMID__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where Ordering_Code__c =:orderingCode];
                         }
-                        else if(oldMMID != null){
-                        l4l5Mapping = [SELECT id,Ordering_Code__c,MMID__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where MMID__c =:oldMMID];
-                        }
+                        //else if(oldMMID != null){
+                        //l4l5Mapping = [SELECT id,Ordering_Code__c,MMID__c, Name,L4_Product__r.Name,L5_Product__r.Name From Product_MM_Attribute_Mapping__c where MMID__c =:oldMMID];
+                        //}
                         
-                        system.debug('mmid --> ' + mmid  + ' ordering code --> ' + orderingCode +   'old MMID --> ' + oldMMID);
+                        system.debug('mmid --> ' + mmid  + ' ordering code --> ' + orderingCode);// +   'old MMID --> ' + oldMMID);
                         system.debug('l4l5Mapping-->'+l4l5Mapping);
                         PCC_Wrapper.PCC_l4l5DetailsWrapper ddrWrp = PCC_CreateDRProductUtilityHandler_V2.setl4l5Wrapper(l4l5Mapping);
                         system.debug('ddrWrp-->'+ddrWrp);
@@ -71,18 +76,18 @@ global with sharing class PCC_CreateL4L5ProductsDetails_V2 {
                                 errWrp.ErrorCode = 9011;
                                 isError = true;
                         }
-                        else if(oldMMID != null){
+                        /*else if(oldMMID != null){
                                 errWrp.ResponseBody = 'No Product tagged with provided oldMMID: '+ oldMMID;
                                 errWrp.ErrorCode = 9011;
                                 isError = true;
-                        }
+                        }*/
                     }
                 }
             }
             else if(paramSize == 0){
                 RestContext.response.addHeader('Content-Type', 'application/json');      
                 RestContext.response.statusCode = 400;
-                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler_V2.setResponseBody(400, 'FAILURE', 400, 'Please provide MMID or ordering code to get L4 &L5 product details ', null))); 
+                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler_V2.setResponseBody(400, 'FAILURE', 400, PCC_Constants.MMID_ORDCODE, null))); 
             }
             if(isSuccess){
                 RestContext.response.addHeader('Content-Type', 'application/json');

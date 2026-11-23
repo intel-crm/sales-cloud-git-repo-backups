@@ -311,9 +311,49 @@
             <field>Core_Opportunity_Id__c.Name</field>
             <table>Core_Design_Registration__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_End_Customer_Industry_Nm__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_End_Customer_Sub_Industry__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MINDS_Message_Txt__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Submission_Type__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_DDR_Partner_Type_Txt__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Intel_Support_Status__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DDR_Technical_Owner__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
         <masterLabel>Design Registrations</masterLabel>
     </sections>
     <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Delegated_UserId__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>PCC_Design_Type__c</field>
@@ -322,6 +362,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>PCC_ODM_Board_partner__c</field>
+            <table>Core_Design_Registration__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c</field>
             <table>Core_Design_Registration__c</table>
         </columns>
         <columns>

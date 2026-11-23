@@ -16,10 +16,10 @@ global class Core_MDF_IPA_ReminderBatch implements Database.Batchable<sObject>, 
     /*Start Method - Will return the PFR's which will be closed in next 5,15 and 30 days*/
     public Database.QueryLocator start(Database.BatchableContext bc) {   
  
-        Date next30days =system.today() + 30 ;//first
-        Date next15days =system.today() + 15 ;//second
-        Date next5days =system.today() + 5 ;//third
-        Date next90days =system.today() +90 ;
+        Date next30days = system.today() + 30;
+        Date next15days = system.today() + 15;
+        Date next5days  = system.today() + 5;
+        Date next90days = system.today() + 90;
         String plannedStatus = Core_MDF_CCP_ConstantClass.PFR_PLANNED_STATUS;
         String ipaProgram    = Core_MDF_CCP_ConstantClass.PFR_IPA_PROGRAM;
                              

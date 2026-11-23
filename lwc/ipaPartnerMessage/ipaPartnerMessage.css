@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    
 }
 .message-content .body {
     overflow: auto;
@@ -53,6 +54,9 @@
 }
 .subject .text {
     flex: 1 1 auto;
+}
+.slbody {
+    padding-left: 0px;;
 }
 
 .message-unread .subject [class^="fa-"]:before,
@@ -108,5 +112,6 @@
     }
     .message-content {
         padding: 1rem 1rem 1rem 4rem;
+        text-indent: 9999;
     }
 }

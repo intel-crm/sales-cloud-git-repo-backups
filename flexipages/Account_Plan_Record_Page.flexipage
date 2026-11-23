@@ -45,7 +45,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>configurationData</name>
-                    <value>{&quot;appBuilderConfig&quot;:{&quot;optionSelected&quot;:3},&quot;globalTemplateUrl&quot;:&quot;https://intel.quip.com/m2pFAaR0MviE/Account-Plan-Accountr-Account-Name-Executive-Review&quot;,&quot;documentRecordFieldName&quot;:&quot;Quip_Account_Plan__c&quot;,&quot;linkSharingMode&quot;:&quot;edit&quot;}</value>
+                    <value>{&quot;appBuilderConfig&quot;:{&quot;optionSelected&quot;:3},&quot;globalTemplateUrl&quot;:&quot;https://intel-salescrm-dev.quip.com/k1GKAOvAB28O/Account-Plan-quip-doc&quot;,&quot;documentRecordFieldName&quot;:&quot;Quip_Account_Plan__c&quot;,&quot;linkSharingMode&quot;:&quot;edit&quot;}</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>height</name>
@@ -199,7 +199,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong&gt;Templates:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.my.salesforce.com/sfc/p/o0000000aRcf/a/3b000000ksFM/SLuD4vHZOtWj8a26Az.I5BKzVd0FGptSmOlkGnqo46E&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;SMG Account Review Template&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong&gt;Templates:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevsls3.sandbox.lightning.force.com/lightning/r/ContentDocument/0692D000001MQAAQA4/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;SMG Account Review Template&lt;/a&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>

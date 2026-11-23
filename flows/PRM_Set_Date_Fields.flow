@@ -3,6 +3,38 @@
     <apiVersion>64.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
+        <name>Activity_Earning_set_to_today</name>
+        <label>Activity Earning set to today</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_Activity_earning_excluded_Start_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>is_ClientBusinessEarning_updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ActivityEarning_set_today</name>
+        <label>ActivityEarning set today</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_Activity_earning_excluded_Start_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>is_ClientBusinessEarning_updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>BrandedPoint_set_today</name>
         <label>BrandedPoint set today</label>
         <locationX>0</locationX>
@@ -19,19 +51,51 @@
         </connector>
     </assignments>
     <assignments>
-        <name>BrandedPointDate_set_null</name>
-        <label>BrandedPointDate set null</label>
+        <name>BrandedPointDate_set_today</name>
+        <label>BrandedPointDate set today</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Branded_Point_earning_excl_Dt__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>blankDate</elementReference>
+                <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </assignmentItems>
         <connector>
             <targetReference>is_ODMWhiteboxPoint_updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>clientearning_set_to_today</name>
+        <label>clientearning set to today</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_ClientBusinessexcluded_StartDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>is_serverbusiness_updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Clientearning_set_today</name>
+        <label>Clientearning set today</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_ClientBusinessexcluded_StartDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>is_serverbusiness_updated</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -51,15 +115,15 @@
         </connector>
     </assignments>
     <assignments>
-        <name>ComponentPointDate_set_null</name>
-        <label>ComponentPointDate set null</label>
+        <name>ComponentPointDate_set_today</name>
+        <label>ComponentPointDate set today</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Component_Point_earning_excl_Dt__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>blankDate</elementReference>
+                <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -78,20 +142,226 @@
                 <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>Is_activitiyEarning_updated</targetReference>
+        </connector>
     </assignments>
     <assignments>
-        <name>ODMWhiteboxPointDate_set_null</name>
-        <label>ODMWhiteboxPointDate set null</label>
+        <name>ethernet_date_set_to_today</name>
+        <label>ethernet date set to today</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_Ethernet_BusinessexcludedStartDt__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ethernet_date_set_today</name>
+        <label>ethernet date set today</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_Ethernet_BusinessexcludedStartDt__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ODMWhiteboxPointDate_set_today</name>
+        <label>ODMWhiteboxPointDate set today</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_ODM_whiteboxPointEarning_excl_Dt__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>blankDate</elementReference>
+                <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>Is_activitiyEarning_updated</targetReference>
+        </connector>
     </assignments>
+    <assignments>
+        <name>server_date_set_to_today</name>
+        <label>server date set to today</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_Server_Business_excluded_Start_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ethernetbusiness_updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>server_date_set_today</name>
+        <label>server date set today</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_Server_Business_excluded_Start_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ethernetbusiness_updated</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>ethernetbusiness_updated</name>
+        <label>ethernetbusiness updated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ethernet_business_set_to_true</name>
+            <conditionLogic>(1 AND 2) OR (1 AND 3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Ethernet_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Ethernet_BusinessexcludedStartDt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.PRM_Ethernet_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ethernet_date_set_today</targetReference>
+            </connector>
+            <label>ethernet business set to true</label>
+        </rules>
+        <rules>
+            <name>ethernetbusiness_set_to_false</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Ethernet_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Ethernet_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ethernet_date_set_to_today</targetReference>
+            </connector>
+            <label>ethernetbusiness set to false</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_activitiyEarning_updated</name>
+        <label>Is activitiyEarning updated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>is_ClientBusinessEarning_updated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ActivityEarning_set_to_true</name>
+            <conditionLogic>(1 AND 2) OR (1 AND 3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Activity_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Activity_earning_excluded_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.PRM_Activity_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ActivityEarning_set_today</targetReference>
+            </connector>
+            <label>ActivityEarning set to true</label>
+        </rules>
+        <rules>
+            <name>ActivityEarning_set_to_false</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Activity_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.PRM_Activity_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Activity_Earning_set_to_today</targetReference>
+            </connector>
+            <label>ActivityEarning set to false</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>is_brandedPoints_updated</name>
         <label>is brandedPoints updated?</label>
@@ -155,9 +425,77 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>BrandedPointDate_set_null</targetReference>
+                <targetReference>BrandedPointDate_set_today</targetReference>
             </connector>
             <label>BrandedPoint set to false</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>is_ClientBusinessEarning_updated</name>
+        <label>is ClientBusinessEarning updated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>is_serverbusiness_updated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Clientearning_set_to_true</name>
+            <conditionLogic>(1 AND 2) OR (1 AND 3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Client_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_ClientBusinessexcluded_StartDate__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.PRM_Client_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Clientearning_set_today</targetReference>
+            </connector>
+            <label>Clientearning set to true</label>
+        </rules>
+        <rules>
+            <name>Clientearning_set_to_false</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Client_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.PRM_Client_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>clientearning_set_to_today</targetReference>
+            </connector>
+            <label>Clientearning set to false</label>
         </rules>
     </decisions>
     <decisions>
@@ -223,7 +561,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>ComponentPointDate_set_null</targetReference>
+                <targetReference>ComponentPointDate_set_today</targetReference>
             </connector>
             <label>Component Point earning excluded false</label>
         </rules>
@@ -233,6 +571,9 @@
         <label>is ODMWhiteboxPoint updated?</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_activitiyEarning_updated</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>ODMWhiteboxPoint_set_to_true</name>
@@ -288,12 +629,85 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>ODMWhiteboxPointDate_set_null</targetReference>
+                <targetReference>ODMWhiteboxPointDate_set_today</targetReference>
             </connector>
             <label>ODMWhiteboxPoint set to false</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>is_serverbusiness_updated</name>
+        <label>is serverbusiness updated?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>ethernetbusiness_updated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>server_business_set_to_true</name>
+            <conditionLogic>(1 AND 2) OR (1 AND 3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Server_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Server_Business_excluded_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.PRM_Server_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>server_date_set_today</targetReference>
+            </connector>
+            <label>server business set to true</label>
+        </rules>
+        <rules>
+            <name>serverbusiness_set_to_false</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Server_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.PRM_Server_Business_earning_excluded__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>server_date_set_to_today</targetReference>
+            </connector>
+            <label>serverbusiness set to false</label>
+        </rules>
+    </decisions>
     <description>Set the date field to today if user does not enter the date or blank out the date field if the user unchecks any of the checkboxes</description>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>blankDate</name>

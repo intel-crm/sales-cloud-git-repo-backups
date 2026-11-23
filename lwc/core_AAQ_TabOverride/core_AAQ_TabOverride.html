@@ -32,12 +32,22 @@
 				</th>
 			</tr>
 			<template for:each={categoryColumn} for:item="profiles" for:index="index">
+            <template if:false={profiles.isPricingRow}>
     <template if:true={profiles.Core_Run_As_Flow__c}>
         <tr key={profiles.Id} class={profiles.rowClass} style="display: flex;">
             <td style="flex-basis: auto; display: flex; align-items: center; gap: 0.15rem; min-width: fit-content;">
-                <button onclick={handleModal} style="border: 0px; max-width: 195px; height: 45px; cursor:pointer; flex-shrink: 0;" data-val={profiles.Name}>
-                    <img src={profiles.imageURL} class="imgAAQ"/>
-                </button>
+                        <template if:true={profiles.isPricingRow}>
+                            <div class="aaq-image-label-wrapper">
+                                <button onclick={handleModal} class="aaq-image-label-button" data-val={profiles.displayName}>
+                                    <img src={profiles.imageURL} class="imgAAQ"/>
+                                </button>
+                            </div>
+                        </template>
+                        <template if:false={profiles.isPricingRow}>
+                            <button onclick={handleModal} style="border: 0px; max-width: 195px; height: 45px; cursor:pointer; flex-shrink: 0;" data-val={profiles.displayName}>
+                                <img src={profiles.imageURL} class="imgAAQ"/>
+                            </button>
+                        </template>
                 <!-- Chat Button for Sales CRM, Access and Entitlement, Intel Premier Support -->
                 <template if:true={profiles.isChatBotProfile}>
                     <div class="oneai-tooltip-container">
@@ -45,7 +55,7 @@
                             <img src="/resource/AAQ_OneAIChatBot" class="imgAAQ"/>
                         </button>
                         <span class="oneai-tooltip-text">
-                            {profiles.tooltipText}
+                            {profiles.chatButtonTooltipText}
                         </span>
                     </div>
                 </template>
@@ -58,10 +68,20 @@
     <template if:false={profiles.Core_Run_As_Flow__c}>
         <tr key={profiles.Id} class={profiles.rowClass} style="display: flex;">
             <td style="flex-basis: auto; display: flex; align-items: center; gap: 0.15rem; min-width: fit-content;">
-                <a href={profiles.Core_Profile_Url__c} target="_blank" id={profiles.Name}
-                    style="border: 0px; max-width: 195px; height: 45px; flex-shrink: 0;">
-                    <img src={profiles.imageURL} class="imgAAQ"/>
-                </a>
+                <template if:true={profiles.isPricingRow}>
+                    <div class="aaq-image-label-wrapper">
+                        <a href={profiles.Core_Profile_Url__c} target="_blank" id={profiles.displayName}
+                            class="aaq-image-label-button">
+                            <img src={profiles.imageURL} class="imgAAQ"/>
+                        </a>
+                    </div>
+                </template>
+                <template if:false={profiles.isPricingRow}>
+                    <a href={profiles.Core_Profile_Url__c} target="_blank" id={profiles.displayName}
+                        style="border: 0px; max-width: 195px; height: 45px; flex-shrink: 0;">
+                        <img src={profiles.imageURL} class="imgAAQ"/>
+                    </a>
+                </template>
                 <!-- Chat Button for Sales CRM, Access and Entitlement, Intel Premier Support -->
                 <template if:true={profiles.isChatBotProfile}>
                     <div class="oneai-tooltip-container">
@@ -69,7 +89,7 @@
                             <img src="/resource/AAQ_OneAIChatBot" class="imgAAQ"/>
                         </button>
                         <span class="oneai-tooltip-text">
-                            {profiles.tooltipText}
+                            {profiles.chatButtonTooltipText}
                         </span>
                     </div>
                 </template>
@@ -79,8 +99,17 @@
             </td>
         </tr>
     </template>
+    </template>
 </template>
 		</table>
+        <template if:true={showPricingFloatingButton}>
+            <div class="smg-floating-launcher">
+                <button class="smg-floating-launcher__button" onclick={openPricingAgentChat} type="button">
+                    <img src={pricingAgentImageUrl} alt="SMG Pricing Agent" class="smg-floating-launcher__image" />
+                    <span class="smg-floating-launcher__label">SMG Pricing Agent</span>
+                </button>
+            </div>
+        </template>
 	</template>
 	<template lwc:if={error}>
 		<p>{error}</p>

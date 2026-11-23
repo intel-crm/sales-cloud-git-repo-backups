@@ -29,16 +29,27 @@ public without sharing class UCD_ACM_AddOrRemoveCPE {
                 }
             }
             if(!acctBusinessTypeToInsert.isEmpty()){
-                Database.SaveResult[] insertedCPE = database.insert(acctBusinessTypeToInsert,false);
-                accountWrapper.accountBusinessTypes = acctBusinessTypeToInsert;//System.debug('insertd : '+insertedCPE);
-                accountWrapper.insertedResult = insertedCPE;
+                if(Schema.sObjectType.Account_Business_Types__c.fields.Account__c.isCreateable() &&
+                Schema.sObjectType.Account_Business_Types__c.fields.Effective_Start_Date__c.isCreateable() &&
+                Schema.sObjectType.Account_Business_Types__c.fields.Account_Staging_Id__c.isCreateable() && 
+                Schema.sObjectType.Account_Business_Types__c.fields.Business_Types__c.isCreateable()
+                ){
+                    Database.SaveResult[] insertedCPE = database.insert(acctBusinessTypeToInsert,false);
+                    accountWrapper.accountBusinessTypes = acctBusinessTypeToInsert;
+                    accountWrapper.insertedResult = insertedCPE;
+                }
                 //accountWrapper.accStagingToCancel = accStagingToCancel;
                 //accountWrapper.businessTypeMap = acctBusinessTypeIdWithCode;
             }
             if(!acctBusinessTypeToUpdate.isEmpty()){
-                Database.SaveResult[] updatedCPE = database.update(acctBusinessTypeToUpdate,false);
-                accountWrapper.updatedAccountBusinessTypes = acctBusinessTypeToUpdate;
-                accountWrapper.updatedResult = updatedCPE;
+                if(Schema.sObjectType.Account_Business_Types__c.fields.Effective_Start_Date__c.isUpdateable() &&
+                Schema.sObjectType.Account_Business_Types__c.fields.Account_Staging_Id__c.isUpdateable() &&
+                Schema.sObjectType.Account_Business_Types__c.fields.Business_Types__c.isUpdateable()
+                ){
+                    Database.SaveResult[] updatedCPE = database.update(acctBusinessTypeToUpdate,false);
+                    accountWrapper.updatedAccountBusinessTypes = acctBusinessTypeToUpdate;
+                    accountWrapper.updatedResult = updatedCPE;
+                }
             }
         }catch(Exception ex){
             UCD_ACM_Logger.error('UCD_ACM_AddOrRemoveCPE','addCpeToAccount','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'ACM Account StgingIds: '+accountIdSet.toString());
@@ -81,10 +92,12 @@ public without sharing class UCD_ACM_AddOrRemoveCPE {
             }
 
             if(!acctBusinessTypeToDelete.isEmpty() || !accStagingToCancel.isEmpty()){
-                Database.DeleteResult[] deletedCpe = database.delete(acctBusinessTypeToDelete,false);
-                accountWrapper.deletedResult = deletedCpe;
-                accountWrapper.accountBusinessTypes = acctBusinessTypeToDelete;
-                accountWrapper.accStagingToCancel = accStagingToCancel;
+                if(Account_Business_Types__c.sObjectType.getDescribe().isDeletable()){
+                    Database.DeleteResult[] deletedCpe = database.delete(acctBusinessTypeToDelete,false);
+                    accountWrapper.deletedResult = deletedCpe;
+                    accountWrapper.accountBusinessTypes = acctBusinessTypeToDelete;
+                    accountWrapper.accStagingToCancel = accStagingToCancel;
+                }
             }
         }catch(Exception ex){
             UCD_ACM_Logger.error('UCD_ACM_AddOrRemoveCPE','deleteCpeToAccount','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'ACM Account StgingIds: '+accountIdSet.toString());
@@ -110,7 +123,8 @@ public without sharing class UCD_ACM_AddOrRemoveCPE {
     }
 
     public static Map<Id,Map<String,Id>> getActiveBusinessTypeForAccount(Set<Id> accountIdSet){
-        List<Account_Business_Types__c> activeAccountBusinessType = [SELECT Account__c,Effective_Start_Date__c,Business_Types__c,Business_Types__r.Business_Type_Code__c,Business_Types__r.Is_Active__c FROM Account_Business_Types__c Where Account__c IN : accountIdSet AND Business_Types__r.Is_Active__c = true];
+        List<Account_Business_Types__c> activeAccountBusinessType = new List<Account_Business_Types__c>();
+            activeAccountBusinessType = [SELECT Account__c,Effective_Start_Date__c,Business_Types__c,Business_Types__r.Business_Type_Code__c,Business_Types__r.Is_Active__c FROM Account_Business_Types__c Where Account__c IN : accountIdSet AND Business_Types__r.Is_Active__c = true WITH SECURITY_ENFORCED];
         Map<Id,Map<String,Id>> accActiveBusinessType = new Map<Id,Map<String,Id>>();
         if(activeAccountBusinessType.size()>0){
             for(Account_Business_Types__c businessType : activeAccountBusinessType){
@@ -126,10 +140,11 @@ public without sharing class UCD_ACM_AddOrRemoveCPE {
     
     public static Map<String,Business_Types__c> getMapOfBusinessTypes(){
         Map<String,Business_Types__c> mapOfBusineesType=new  Map<String,Business_Types__c>();
-        List<Business_Types__c> businessTypes = [
+        List<Business_Types__c> businessTypes = new List<Business_Types__c>();
+            businessTypes = [
             Select Id,Business_Type_Code__c, Name 
             from Business_Types__c 
-            where Is_Active__c = true
+            where Is_Active__c = true WITH SECURITY_ENFORCED
         ];
         for(Business_Types__c businessType : businessTypes){
             mapOfBusineesType.put(businessType.Business_Type_Code__c,businessType);

@@ -2,8 +2,8 @@
  * @description       : Test class for Bulk Primary Contact update Batch class
  * @author            : Sandeep Chamate
  * @group             : Accenture
- * @last modified on  : 08-04-2023
- * @last modified by  : Sandeep Chamate
+ * @last modified on  : 03-31-2026
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
 public class Pricing_BulkUpdatePrimCon_BatchTest {
@@ -30,7 +30,7 @@ public class Pricing_BulkUpdatePrimCon_BatchTest {
             insert acc1;
 
             List<Contact> contactListwithSameAccount = Pricing_Test_Utility.createPrimaryContact(acc.Id, 2);
-            Contact contactwithDiffAccount = Pricing_Test_Utility.createPrimaryContact(acc1.Id);
+            Contact contactwithDiffAccount = Pricing_Test_Utility.createPrimaryContactWithParam(acc1.Id,'Bulk_Update_Prim_Con_Batch');
 
             //Partner Users for Test Account
             User partnerUser = Pricing_Test_Utility.createPartnerUser(acc.Id);

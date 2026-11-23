@@ -586,7 +586,7 @@ public without sharing class Core_Salesout_Search_Controller {
         salesoutQuery += ' LIMIT ' + SALESOUT_MAX_RECORDS;
 
        
-		List<Core_Channel_Salesout__c> lstSalesout = Database.query(salesoutQuery);
+    List<Core_Channel_Salesout__c> lstSalesout = Database.query(salesoutQuery);
 
         
 
@@ -709,7 +709,7 @@ public without sharing class Core_Salesout_Search_Controller {
         membersQuery = membersQuery + ' LIMIT ' + ACCESS_CHECK_MAX_RECORDS;
 
        
-		List<Core_Channel_Membership__c> lstMembers = Database.query(membersQuery);
+    List<Core_Channel_Membership__c> lstMembers = Database.query(membersQuery);
 
         if (lstMembers == NULL || (lstMembers.size() == 0))
             return resultIds;
@@ -771,7 +771,7 @@ public without sharing class Core_Salesout_Search_Controller {
         membersQuery = membersQuery + ' LIMIT ' + ACCESS_CHECK_MAX_RECORDS;
 
         
-		List<Core_Training__c> lstMembers = Database.query(membersQuery);
+    List<Core_Training__c> lstMembers = Database.query(membersQuery);
 
         if (lstMembers == NULL || lstMembers.size() == 0)
             return resultIds;
@@ -805,7 +805,7 @@ public without sharing class Core_Salesout_Search_Controller {
         membersQuery = membersQuery + ' LIMIT ' + ACCESS_CHECK_MAX_RECORDS;
 
         
-		List<Core_Liability_Points__c> lstMembers = Database.query(membersQuery);
+    List<Core_Liability_Points__c> lstMembers = Database.query(membersQuery);
 
         if (lstMembers == NULL || lstMembers.size() == 0)
             return resultIds;

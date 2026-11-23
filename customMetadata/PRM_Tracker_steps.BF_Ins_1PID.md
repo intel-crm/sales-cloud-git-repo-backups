@@ -28,6 +28,6 @@
     </values>
     <values>
         <field>PRM_Type__c</field>
-        <value xsi:type="xsd:string">OPID Updates 1PID</value>
+        <value xsi:type="xsd:string">OPID Updates</value>
     </values>
 </CustomMetadata>

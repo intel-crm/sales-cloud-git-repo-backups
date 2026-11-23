@@ -113,6 +113,7 @@ Modified By   :        Date:           Changes:
             }
         }
 
+        system.debug('excludedUserIdMap@@@' + excludedUserIdMap);
         
         //Query on groupMembers
         //Tag the users to the record for which they would receive mail
@@ -176,6 +177,7 @@ Modified By   :        Date:           Changes:
                 }
                 if(params.emailIds != NULL){
                 
+                    system.debug('params.emailIds@@@' + params.emailIds);
                     for(String emailId : params.emailIds.split(';')){
                     //Check whether user has unsubscribed for a notification or not. If not then send email.  
                     Boolean hasUserOptedOut = isUserExcluded(null,emailId,params.recordId,null,excludedUserEmailMap);

@@ -89,7 +89,7 @@ const LINEITEM_COLS = [
     }
 ];
 
-export default class Core_IPS_MapProductsRelatedList extends NavigationMixin(LightningElement) {
+export default class Core_IPS_MapProductsRelatedList extends NavigationMixin(LightningElement) { 
 
     lightningCardTitle = "Product Access: Products";
     hideCheckboxColumn = false;
@@ -385,6 +385,7 @@ export default class Core_IPS_MapProductsRelatedList extends NavigationMixin(Lig
                         
                     }
                     if(lineItemList === undefined || lineItemList === null || lineItemList.length === 0) {
+                        console.log('this.spinnerOn ', this.spinnerOn);
                         this.spinnerOn = false;
                         this.reloadCurrentPage();
                     }
@@ -478,7 +479,7 @@ export default class Core_IPS_MapProductsRelatedList extends NavigationMixin(Lig
                         message: error.message,
                         variant: 'error',
                     }),
-                ); 
+                );
                 this.spinnerOn = false;
                 console.error('Core_IPS_MapProductsRelatedList ::: Error in deleting record. Error : ', JSON.stringify(error));
             });

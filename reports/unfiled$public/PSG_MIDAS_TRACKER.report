@@ -4,15 +4,6 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_Tier__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Support_Level__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Country__c</field>
-    </columns>
-    <columns>
         <field>ACCOUNT_ID</field>
     </columns>
     <columns>
@@ -56,7 +47,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2021 12:00 AM</value>
+            <value>1/1/2019 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

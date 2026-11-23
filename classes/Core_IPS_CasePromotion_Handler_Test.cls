@@ -1643,7 +1643,7 @@ Modification Log :
             labelList.add(labels1);
             //insert labels1;
             // Avoid Hardcoding Id Fix - Start - Shipra
-            Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
+            Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];
             Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
             labels2.name= 'Data Migration Profile Id';
             labels2.value__c=dataMigPrf.Id;
@@ -2098,7 +2098,7 @@ Modification Log :
             insert labels1;
             
             // Avoid Hardcoding Id Fix - Start - Shipra
-            Profile dataMigPrf = [select id, name from Profile where name = 'CCP - Core Access' Limit 1];
+            Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];
             Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
             labels2.name= 'Data Migration Profile Id';
             //labels2.value__c='00eo0000000f7Gd';

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>Core_IPS_Update_Support_Owners</customButtons>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>OpenSlackRecordChannel</excludeButtons>
@@ -187,34 +186,31 @@
         <customButtons>Core_IPS_Add_Members</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>Core_Selective_Member__c</fields>
         <fields>Core_IPS_Contact__c</fields>
+        <fields>Core_Status__c</fields>
         <fields>Core_IPS_Contact_Account__c</fields>
         <fields>Core_IPS_Contact_Email__c</fields>
+        <fields>Add_as_Case_Interested_Party__c</fields>
         <fields>CREATEDBY_USER</fields>
         <fields>CREATED_DATE</fields>
-        <fields>Core_Status__c</fields>
         <relatedList>Core_IPS_Project_Member__c.Core_IPS_Project__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Core_IPS_Prod_Default_Case_Owner__c</fields>
         <fields>Core_Supported_Product_Name__c</fields>
-        <fields>Product_Application__c</fields>
-        <fields>Core_IPS_Prodcut_Org__c</fields>
-        <fields>Status__c</fields>
         <fields>Core_IPS_Product_Status__c</fields>
-        <fields>Core_Supported_Product__c</fields>
+        <fields>Core_IPS_Prod_Default_Case_Owner__c</fields>
+        <fields>Status__c</fields>
+        <fields>Product_Application__c</fields>
         <relatedList>Core_IPS_Product__c.Core_IPS_Project__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>ASSET.NAME</fields>
-        <fields>ASSET.STATUS</fields>
         <fields>core_Product_Application__c</fields>
         <fields>Core_IPS_Case__c</fields>
-        <fields>CORE.USERS.ALIAS</fields>
         <fields>Core_Supported_Product__c</fields>
+        <fields>CORE.USERS.ALIAS</fields>
         <relatedList>Asset.Core_IPS_Project__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -227,7 +223,7 @@
         <fields>CASES.CREATED_DATE</fields>
         <fields>CASES.MILESTONE_STATUSICON</fields>
         <relatedList>Case.Core_IPS_Project_Case__c</relatedList>
-        <sortField>CASES.CREATED_DATE</sortField>
+        <sortField>CASES.LAST_UPDATE</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
@@ -255,7 +251,6 @@
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <relatedList>Core_IPS_Opportunity_PAR__c.Core_IPS_Premier_Support_Project__c</relatedList>
     </relatedLists>

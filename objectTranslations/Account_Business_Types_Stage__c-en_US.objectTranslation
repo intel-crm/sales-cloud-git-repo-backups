@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Business Types Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Business Types Stage</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Request Stage --></label>
+        <name>Account_Request_Stage__c</name>
+        <relationshipLabel><!-- Account Business Types Stage --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Business Types --></label>
+        <name>Business_Types__c</name>
+        <relationshipLabel><!-- Account Business Types Stage --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Effective End Date --></label>
+        <name>Effective_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Start Date --></label>
+        <name>Effective_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Reason --></label>
+        <name>Status_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

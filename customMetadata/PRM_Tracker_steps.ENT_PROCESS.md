@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PRM_Active__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>PRM_Conditional_Display__c</field>

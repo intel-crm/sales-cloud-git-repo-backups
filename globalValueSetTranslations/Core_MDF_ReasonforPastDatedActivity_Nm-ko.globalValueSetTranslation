@@ -49,12 +49,20 @@
         <translation>원래 프로젝트가 실수로 취소되었습니다</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Original project was cancelled by mistake.</masterLabel>
+        <translation>원래 프로젝트가 실수로 취소되었습니다.</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation><!-- Other --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project was discussed with Intel but not recorded in tool on time</masterLabel>
         <translation>프로젝트가 인텔과 논의되었으나 제때 도구에 기록되지 않았습니다</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Project was discussed with Intel but not recorded in tool on time.</masterLabel>
+        <translation>프로젝트가 인텔과 논의되었으나 제때 도구에 기록되지 않았습니다.</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Project was left as draft but never submitted</masterLabel>

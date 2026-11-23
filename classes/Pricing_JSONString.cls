@@ -1,11 +1,3 @@
-/**
- * @description       : Wrapper class for Mydeals Request Payload 
- * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
- * @group             : Gravity
- * @last modified on  : 07-09-2026
- * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
-//** when ever an attribute is added in this class we have to make sure to add in Pricing_BulkCR_JSONString class as well */
 public virtual class Pricing_JSONString {
     public virtual class Quote {
         public String Id;
@@ -27,6 +19,7 @@ public virtual class Pricing_JSONString {
         public String UnifiedEndCustomerGlobalName;
         public Boolean IsUnifiedEndCustomer;
         public String ComplianceWatchList;
+        
         public List<QuoteLine> QuoteLine;
     }
 

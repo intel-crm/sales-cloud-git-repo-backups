@@ -1,9 +1,9 @@
 ({
     
     doInit : function(component, event, helper) { 
+        //ipa 2.0 priyas change for topic event
         
-        
-        helper.getPromotionData(component,event,helper).then($A.getCallback(function(){
+       /* helper.getPromotionData(component,event,helper).then($A.getCallback(function(){
             var promoData = component.get('v.promotionData')
             
             //component.set("v.promotionData",promoData);
@@ -25,7 +25,7 @@
             }else{
                 component.destroy();
             }
-        }));
+        }));*/
         
     },
     handleDataChange: function(component, event, helper) {

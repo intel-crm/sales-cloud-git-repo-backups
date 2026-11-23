@@ -298,8 +298,10 @@ public class CRM_MetadataService {
         private String[] type_att_info = new String[]{'xsi:type'};
         private String[] field_order_type_info = new String[]{'fullName', 'caseAssignNotificationTemplate','caseCloseNotificationTemplate','caseCommentNotificationTemplate','caseCreateNotificationTemplate','caseFeedItemSettings','closeCaseThroughStatusChange','defaultCaseOwner','defaultCaseOwnerType','defaultCaseUser','emailActionDefaultsHandlerClass','emailToCase','enableCaseFeed','enableDraftEmails','enableEarlyEscalationRuleTriggers','enableEmailActionDefaultsHandler','enableSuggestedArticlesApplication','enableSuggestedArticlesCustomerPortal','enableSuggestedArticlesPartnerPortal','enableSuggestedSolutions','keepRecordTypeOnAssignmentRule','notifyContactOnCaseComment','notifyDefaultCaseOwner','notifyOwnerOnCaseComment','notifyOwnerOnCaseOwnerChange','showEmailAttachmentsInCaseAttachmentsRL','showFewerCloseActions','systemUserEmail','useSystemEmailAddress','useSystemUserAsDefaultCaseUser','webToCase'};
     }
-    public class readMetadataResponse_element {
-        public CRM_MetadataService.ReadResult result;
+    public class readMetadataResponse_element implements IReadResponseElement{
+        public CRM_MetadataService.ReadCustomSiteResult result;
+        public IReadResult getResult() { return result; }
+        //public CRM_MetadataService.ReadResult result;
         private String[] result_type_info = new String[]{'result',SOAP_M_URI,null,'1','1','false'};
         private String[] apex_schema_type_info = new String[]{SOAP_M_URI,'true','false'};
         private String[] field_order_type_info = new String[]{'result'};
@@ -6779,7 +6781,9 @@ public class CRM_MetadataService {
         private String[] apex_schema_type_info = new String[]{SOAP_M_URI,'true','false'};
         private String[] field_order_type_info = new String[]{'components','customDataTypeName','description','label'};
     }
-    public class readMetadata_element {
+    public class readMetadata_element implements IReadResult {
+        public CRM_MetadataService.CustomSite[] records;
+        public CRM_MetadataService.Metadata[] getRecords() { return records; }
         public String type_x;
         public String[] fullNames;
         private String[] type_x_type_info = new String[]{'type',SOAP_M_URI,null,'1','1','false'};

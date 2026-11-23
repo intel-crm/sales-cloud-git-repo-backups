@@ -84,5 +84,6 @@ public class ProductHierarchyWrapperTest {
         System.assertEquals('L5_001', item.l5, 'L5 should be set correctly');
         System.assertEquals('Level 5 Category', item.l5name, 'L5 name should be set correctly');
         System.assertEquals(0, item.l5_is_active, 'L5 active status should be set correctly');
+ 
     }
 }

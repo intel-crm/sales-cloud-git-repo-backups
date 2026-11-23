@@ -167,6 +167,10 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                 isSosl: this.isSosl
             })
                 .then(async (result) => {
+                    console.log('OUTPUT : result',result);
+                    console.log('OUTPUT : this.searchKey',this.searchKey);
+                    console.log('OUTPUT : this.queryString',this.queryString);
+                    console.log('OUTPUT : this.isSosl',this.isSosl);
 
                     if (result !== undefined && result !== null) {
                         let qString = this.queryString;
@@ -329,6 +333,7 @@ export default class Core_IPS_CustomLookup extends LightningElement {
                 let queryOrderByClauseStr = ' ORDER BY Name ASC';
                 
                 let queryWhereClauseStr = ' AND ( Name LIKE \'%' + this.searchKey + '%\'' + ' OR Core_IPS_Project_ID__c LIKE \'%' + this.searchKey + '%\')';
+            console.log('tempQueryString--'+this.tempQueryString+'\n'+this.selectedProject);
                 if(this.searchKey.length>0 )
                     this.queryString = this.tempQueryString + queryWhereClauseStr + queryOrderByClauseStr ;
                 else
@@ -415,6 +420,7 @@ export default class Core_IPS_CustomLookup extends LightningElement {
         }
     }
     handleFocusOut() {
+         console.log("focus out lookup component");
         let key = this.searchKey;
         if (key === undefined || key === null || key === '') {
             this.isRequiredFieldErrMsg = true;

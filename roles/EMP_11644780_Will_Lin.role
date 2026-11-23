@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Manager not assigned in Salesforce</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11644780_Will_Lin</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Role_Users_With_No_Manager</parentRole>
+</Role>

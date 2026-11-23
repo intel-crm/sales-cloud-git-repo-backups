@@ -11,6 +11,8 @@ public class UCD_AccountModel implements Comparable {
     @AuraEnabled
     public String Industry{get;set;}
     @AuraEnabled
+    public String webSite{get;set;}
+    @AuraEnabled
     public String accId{get;set;}
     @AuraEnabled
     public String accOwner{get;set;}
@@ -33,6 +35,8 @@ public class UCD_AccountModel implements Comparable {
     @AuraEnabled
     public String cimID{get;set;}
     @AuraEnabled
+    public String bpId{get;set;}
+    @AuraEnabled
     public Boolean sourceSystemCIM{get;set;}
     @AuraEnabled
     public String searchScore{get;set;}
@@ -45,6 +49,16 @@ public class UCD_AccountModel implements Comparable {
     @AuraEnabled
     public String StateCode{get;set;}
     @AuraEnabled
+    public String customerAggregationCode{get;set;}
+    @AUraEnabled
+    public String salesGroupCode{get;Set;}
+    @AuraEnabled
+    public String accCPE{get;set;}
+    @AuraEnabled
+    public String unifiedGlobalCustomer{get;set;}
+    @AuraEnabled
+    public String recordUrl{get;set;}
+    @AuraEnabled
     public String City{get;set;}
     @AuraEnabled
     public String postalCode{get;set;}
@@ -54,6 +68,35 @@ public class UCD_AccountModel implements Comparable {
     public Boolean salescouldAccount{get;set;}
     @AuraEnabled
     public String RecordTypeId{get;set;}
+    @AuraEnabled
+    public Integer relatedContacts{get;set;}   
+    @AuraEnabled
+    public List<additionalColumns> addColList{get;set;}
+    
+
+    public class additionalColumns{
+        @AuraEnabled
+        public String ApiName{get;set;}
+        @AuraEnabled
+        public Boolean isCheckbox{get;set;}
+        @AuraEnabled
+        public String UILabel{get;set;}  
+        @auraEnabled
+        public String textFieldValue{get;set;}
+        @auraEnabled
+        public Boolean checkboxFieldValue{get;set;}
+        @auraEnabled
+        public boolean showColumn{get;set;}
+    }
+    
+    /*@AuraEnabled
+    public static List<UCD_Account_Identifiers__c> fetchIdentifiers(){
+        Map<String,UCD_Account_Identifiers__c> allCodes = UCD_Account_Identifiers__c.getAll();
+        List<UCD_Account_Identifiers__c> code = allCodes.values();
+        return code;
+    }*/
+    
+   
     
     public UCD_AccountModel(){
         //Intentionally created constructor
@@ -70,10 +113,10 @@ public class UCD_AccountModel implements Comparable {
     }
     /*Logic for performing Sorting on the results where:
     * 1st pref if record has Salesforce id and Searchscore is FullDulp
-	* 2nd pref if record has Salesforce id and Searchscore is PartDup
-	* 3rd pref if record has NO Salesforce id and Searchscore is FullDup
-	* 2nd pref if record has NO Salesforce id and Searchscore is PartDup
-	*/
+    * 2nd pref if record has Salesforce id and Searchscore is PartDup
+    * 3rd pref if record has NO Salesforce id and Searchscore is FullDup
+    * 2nd pref if record has NO Salesforce id and Searchscore is PartDup
+    */
     public Integer compareTo(Object compareTo){
         UCD_AccountModel otherContact = (UCD_AccountModel)compareTo;
         if(salescouldAccount == otherContact.salescouldAccount){

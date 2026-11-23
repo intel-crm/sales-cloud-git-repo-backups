@@ -5,6 +5,7 @@ public class Pricing_UCD_BulkRejection_Scheduler_Test {
         String sch = '0 0 2 * * ?'; 
         test.startTest();
         System.schedule('Pricing_UCD_BulkRejection_Scheduler_Test', sch, prsch);
+        System.schedule('Pricing_QuoteLine_AutoRejection_Batch_Test', sch, prsch);
         test.stopTest();
         System.assert(sch != null);
     }

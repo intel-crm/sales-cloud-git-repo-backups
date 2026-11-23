@@ -248,9 +248,9 @@ public without sharing class PMP_SearchMarqueeDetailController {
                  }catch(Exception e){
                      //System.debug('Error while fetching record of company information :'+ e);
                  }
-             //system.debug('partner data111--'+partner);
-             //system.debug(partner.PMP_Is_Working_Copy_Ind__c);
-             //system.debug(partner.PMP_Is_Published_Ind__c);
+             system.debug('partner data111--'+partner);
+             system.debug(partner.PMP_Is_Working_Copy_Ind__c);
+             system.debug(partner.PMP_Is_Published_Ind__c);
                  if (partner.PMP_Is_Working_Copy_Ind__c == true){
                      try{
                          if(Schema.sObjectType.PMP_Company__c.isAccessible()){ //PMD Fix
@@ -263,9 +263,9 @@ public without sharing class PMP_SearchMarqueeDetailController {
                          //System.debug('Error while fetching record of company information :'+ e);
                      }
                  }
-             //system.debug('partner data--'+partner);
-             //system.debug(partner.PMP_Is_Working_Copy_Ind__c);
-             //system.debug(partner.PMP_Is_Published_Ind__c);
+             system.debug('partner data--'+partner);
+             system.debug(partner.PMP_Is_Working_Copy_Ind__c);
+             system.debug(partner.PMP_Is_Published_Ind__c);
            //workingcopy data changes
              if (partner.PMP_Is_Published_Ind__c == true){
                      try{
@@ -369,7 +369,7 @@ public without sharing class PMP_SearchMarqueeDetailController {
                  
                  
                  //Partner Image Implemetation
-                 /*List<PMP_Company_Resource__c> partner_resource = new List<PMP_Company_Resource__c>();
+                 List<PMP_Company_Resource__c> partner_resource = new List<PMP_Company_Resource__c>();
                  List<String> partnerConDocList = new List<String>();
                  Map<String, String> partnerContentMap = new Map<String,String>();//Added by Manasa  - for content Asset implementation
                  try{
@@ -391,6 +391,7 @@ public without sharing class PMP_SearchMarqueeDetailController {
                  
                  //Partner Image Implemetation ends
                  
+                 
                  partnerWrapper.id = partner.id;
                  partnerWrapper.categoryId = partner.id;
                  partnerWrapper.name = partner.Name;
@@ -406,90 +407,7 @@ public without sharing class PMP_SearchMarqueeDetailController {
                      //partnerWrapper.imageUrl = 'https://www.intel.com/content/dam/products/hero/foreground/badge-9th-gen-core-i9-1x1.png.rendition.intel.web.550.550.png';
                      //Changed default logo for storefront by NIKHIL
                      partnerWrapper.imageUrl = PMP_StaticConstants_Partner.staticStorefrontUrl;
-             }*/
-				//Commented above Image implementation and below is the new implementation to show image in draft status as well.
-                // ===============================
-                // Partner Image Implementation (START)
-                // ===============================
-                
-                // BASIC INFO
-                partnerWrapper.id = partner.id;
-                partnerWrapper.categoryId = partner.id;
-                partnerWrapper.name = partner.Name;
-                
-                // INIT FLAG
-                partnerWrapper.hasRealImage = false;
-                partnerWrapper.imageUrl = '';
-                
-                // STEP 1: STATUS
-                String status = partner.PMP_Company_Lifecycle_Status_Nm__c;
-                if(status != null){
-                    status = status.trim();
-                }
-                Boolean isDraft = (status == 'Draft');
-                
-                // STEP 2: DRAFT → WORKING COPY IMAGE
-                if(isDraft){
-                    Id recordIdToUse = partner.Id;
-                    if(partner.PMP_Working_Copy_Id__c != null){
-                        recordIdToUse = partner.PMP_Working_Copy_Id__c;
-                    }
-                
-                    List<ContentDocumentLink> cdlList = [SELECT ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId = :recordIdToUse LIMIT 1];
-                
-                    if(!cdlList.isEmpty()){
-                        List<ContentVersion> cvList = [SELECT Id FROM ContentVersion WHERE ContentDocumentId = :cdlList[0].ContentDocumentId AND IsLatest = true LIMIT 1];
-                
-                        if(!cvList.isEmpty()){
-                            partnerWrapper.imageUrl = '/sfc/servlet.shepherd/version/download/' + cvList[0].Id;
-                            // REAL IMAGE FOUND
-                            partnerWrapper.hasRealImage = true;
-                        }
-                    }
-                    // IMPORTANT: Do NOT set fallback here
-                    // Let UI decide (so Add Logo works)
-                }
-                // STEP 3: NON-DRAFT → YOUR ORIGINAL RESOURCE LOGIC
-                if(!isDraft){
-                    List<PMP_Company_Resource__c> partner_resource = new List<PMP_Company_Resource__c>();
-                    List<String> partnerConDocList = new List<String>();
-                    Map<String, String> partnerContentMap = new Map<String,String>();
-                
-                    try{
-                        if(Schema.sObjectType.PMP_Company_Resource__c.isAccessible()){
-                            partner_resource = [ SELECT PMP_Company_Id__c, PMP_Company_Image__c FROM PMP_Company_Resource__c  WHERE PMP_Company_Id__c =: partner.id AND PMP_Company_Resource_Type_Nm__c = 'Image' AND PMP_Company_Image__c != null AND PMP_Company_Resource_Sequence_Nbr__c = 0];
-                        }
-                    }catch(Exception e){
-                        // ToCheck
-                    }
-                
-                    if(!partner_resource.isEmpty()){
-                        partnerContentMap.put(
-                            partner_resource[0].PMP_Company_Id__c,
-                            partner_resource[0].PMP_Company_Image__c
-                        );
-                    }
-                
-                    partnerConDocList.addAll(partnerContentMap.values());
-                
-                    Map<String,String> partnerConAssetUrl = PMP_SearchOfferingImageUtility.getContentAssetUrlMap(partnerConDocList);
-                
-                    if(partnerConAssetUrl.containsKey(partnerContentMap.get(partner.Id))){
-                        String assetName = partnerConAssetUrl.get(partnerContentMap.get(partner.Id));
-                        partnerWrapper.imageUrl = System.Label.PMP_CommunityURLSuffix + 'file-asset/' + assetName + '?isOptimized=false';
-                        // REAL IMAGE FOUND
-                        partnerWrapper.hasRealImage = true;
-                    }
-                }
-                // STEP 4: FINAL FALLBACK (ONLY FOR NON-DRAFT)
-                if(!isDraft && String.isBlank(partnerWrapper.imageUrl)){
-                    partnerWrapper.imageUrl = PMP_StaticConstants_Partner.staticStorefrontUrl;
-                    partnerWrapper.hasRealImage = false;
-                }
-                // ===============================
-                // Partner Image Implementation (END)
-                // ===============================
-            
+             }
                  partnerWrapper.partnerName = partner.Name;
                  partnerWrapper.partnerLink = 'intel';
                  List<Attribute> types = new List<Attribute>();
@@ -717,8 +635,6 @@ public without sharing class PMP_SearchMarqueeDetailController {
          @AuraEnabled public Boolean isGUest {get; set;}
          @AuraEnabled public String publishedStatus {get; set;}
          @AuraEnabled public Boolean isLdrOeEmployee {get;set;}
-         @AuraEnabled public Boolean hasRealImage{get; set;}
-
      }
      // Attribute wrapper for the partner details
      public class Attribute{

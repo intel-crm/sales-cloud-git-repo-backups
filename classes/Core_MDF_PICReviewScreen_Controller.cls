@@ -116,14 +116,23 @@ public without sharing class Core_MDF_PICReviewScreen_Controller {
         
         list<Core_MDF_PIC_Review__c> existingPICReviewRecords = new List<Core_MDF_PIC_Review__c>();
         try {
-            existingPICReviewRecords = [select Id,Core_MDF_CycleNumber_nbr__c from Core_MDF_PIC_Review__c where Core_MDF_Claim_ID_id__c =: picReviewWrapper.claimId and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c DESC limit 1];
-        
+			//TWC3117-18978 defect
+            PartnerFundClaim claimToLock = [SELECT Id, Core_MDF_Status__c FROM PartnerFundClaim WHERE Id = :picReviewWrapper.claimId FOR UPDATE];
+            Boolean isEligibleForReview =
+            claimToLock.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_PIC_Pending ||
+            claimToLock.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_Payment_Clearance_Processing;
+            
+            if (!isEligibleForReview) {
+                return;
+            }
+			//TWC3117-18978 defect
+            existingPICReviewRecords = [select Id,Core_MDF_CycleNumber_nbr__c from Core_MDF_PIC_Review__c where Core_MDF_Claim_ID_id__c =: picReviewWrapper.claimId and Core_MDF_AI_PIC_Review_Ind__c = false order by Core_MDF_CycleNumber_nbr__c DESC limit 1]; 
+        	
             if(!existingPICReviewRecords.isEmpty()) {
                 reviewCycle = existingPICReviewRecords.get(0).Core_MDF_CycleNumber_nbr__c + 1;
             } else {
                 reviewCycle = 1;
-            }
-        
+            }       
         
             // PIC Review Insertion
             picReview = insertPICReview(reviewCycle,picReviewWrapper.internalComments,picReviewWrapper.startDateTime,picReviewWrapper.endDateTime,picReviewWrapper.claimId,picReviewWrapper.userId,picReviewWrapper.isReviewFailed, picReviewWrapper.latestAIPICreviewID);

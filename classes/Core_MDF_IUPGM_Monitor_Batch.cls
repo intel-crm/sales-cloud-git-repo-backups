@@ -279,11 +279,43 @@ ultimateAccountToBudgetTypeMap.put(asa.PRM_Account_Id__c,new Set<String>{benefit
                                     String allAccSpecificBTKey = allAccSpecificGeoKey + ';' + budgetType;
                                     
                                     
-                                    String WW_specificAccSpecificBTKey = WW_specificAccSpecificGeoKey + ';' + budgetType;String WW_allAccSpecificBTKey = WW_allAccSpecificGeoKey + ';' + budgetType;
-                                    pgmWrapper pgmWrap = new pgmWrapper();pgmWrap.specificAccSpecificBT = specificAccSpecificBTKey;pgmWrap.allAccSpecificBT = allAccSpecificBTKey;pgmWrap.specificAccSpecificGeo = specificAccSpecificGeoKey;pgmWrap.allAccSpecificGeo = allAccSpecificGeoKey;pgmWrap.WW_specificAccSpecificBT = WW_specificAccSpecificBTKey;pgmWrap.WW_allAccSpecificBT = WW_allAccSpecificBTKey;pgmWrap.WW_specificAccSpecificGeo = WW_specificAccSpecificGeoKey;pgmWrap.WW_allAccSpecificGeo = WW_allAccSpecificGeoKey;pgmWrap.accId = pgm.Core_MDF_Account__c;pgmWrap.accName = pgm.Core_MDF_Account__r.Name;pgmWrap.role = role;pgmWrap.prog = program;pgmWrap.region = ultimateAccountToGeoMap.get(pgm.Core_MDF_Account__c);pgmWrap.budgetType = budgetType;pgmWrapperList.add(pgmWrap);
+                                    String WW_specificAccSpecificBTKey = WW_specificAccSpecificGeoKey + ';' + budgetType;
+                                    String WW_allAccSpecificBTKey = WW_allAccSpecificGeoKey + ';' + budgetType;
+                                    pgmWrapper pgmWrap = new pgmWrapper();
+                                    pgmWrap.specificAccSpecificBT = specificAccSpecificBTKey;
+                                    pgmWrap.allAccSpecificBT = allAccSpecificBTKey;
+                                    pgmWrap.specificAccSpecificGeo = specificAccSpecificGeoKey;
+                                    pgmWrap.allAccSpecificGeo = allAccSpecificGeoKey;
+                                    
+                                    pgmWrap.WW_specificAccSpecificBT = WW_specificAccSpecificBTKey;
+                                    pgmWrap.WW_allAccSpecificBT = WW_allAccSpecificBTKey;
+                                    pgmWrap.WW_specificAccSpecificGeo = WW_specificAccSpecificGeoKey;
+                                    pgmWrap.WW_allAccSpecificGeo = WW_allAccSpecificGeoKey;
+                                    
+                                    pgmWrap.accId = pgm.Core_MDF_Account__c;
+                                    pgmWrap.accName = pgm.Core_MDF_Account__r.Name;
+                                    pgmWrap.role = role;
+                                    pgmWrap.prog = program;
+                                    pgmWrap.region = ultimateAccountToGeoMap.get(pgm.Core_MDF_Account__c);
+                                    pgmWrap.budgetType = budgetType;
+                                    
+                                    pgmWrapperList.add(pgmWrap);
                                 }
-                                else{pgmWrapper pgmWrap = new pgmWrapper();pgmWrap.WW_specificAccSpecificGeo = WW_specificAccSpecificGeoKey;
-                                    pgmWrap.WW_allAccSpecificGeo = WW_allAccSpecificGeoKey;pgmWrap.specificAccSpecificGeo = specificAccSpecificGeoKey;pgmWrap.allAccSpecificGeo = allAccSpecificGeoKey;pgmWrap.accId = pgm.Core_MDF_Account__c;pgmWrap.accName = pgm.Core_MDF_Account__r.Name;pgmWrap.role = role;pgmWrap.prog = program;pgmWrap.region = ultimateAccountToGeoMap.get(pgm.Core_MDF_Account__c);pgmWrapperList.add(pgmWrap); 
+                                else{
+                                    pgmWrapper pgmWrap = new pgmWrapper();
+                                    pgmWrap.WW_specificAccSpecificGeo = WW_specificAccSpecificGeoKey;
+                                    pgmWrap.WW_allAccSpecificGeo = WW_allAccSpecificGeoKey;
+                                    
+                                    pgmWrap.specificAccSpecificGeo = specificAccSpecificGeoKey;
+                                    pgmWrap.allAccSpecificGeo = allAccSpecificGeoKey;
+                                    
+                                    pgmWrap.accId = pgm.Core_MDF_Account__c;
+                                    pgmWrap.accName = pgm.Core_MDF_Account__r.Name;
+                                    pgmWrap.role = role;
+                                    pgmWrap.prog = program;
+                                    pgmWrap.region = ultimateAccountToGeoMap.get(pgm.Core_MDF_Account__c);
+                                    
+                                    pgmWrapperList.add(pgmWrap); 
                                 }
                             }
                         }

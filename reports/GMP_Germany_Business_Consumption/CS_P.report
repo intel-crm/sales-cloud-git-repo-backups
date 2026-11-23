@@ -36,7 +36,6 @@
         <field>PRODUCT_PRICE</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND 3 AND 5 AND (2 OR 4))</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
@@ -57,20 +56,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Deal: Sell-through</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>#Gmp_Ger_I40</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Production Win,Production Lost,Production Cancelled,Win Approved,Pending,On Hold,Win Submitted</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

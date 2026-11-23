@@ -5,6 +5,7 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
   static boolean isAccountNumberInsertCalled = false;
   static boolean isAccountNumberUpdateCalled = false;
   Type triggerExecutionClassType;
+  public static boolean firstUpdateRunForACM = true;
 
   
   static boolean runonce = true;
@@ -174,9 +175,10 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
     }
   
     //[Abhishek Arya : Mar/16/2016 : User Story# US36728 : ECB Marked Accounts Needs to Deactivate all IPS Contacts.]
-    /*if (!Test.isRunningTest()) {//IPS logic code commented-gangadhar-begin //US-0050009 Hercules_IPS_ECBFlagIssueFix
+    /*logic migrated to flow 29072025
+      if (!Test.isRunningTest()) {
       Core_IPS_Account_Trigger_Handler.UpdateContactOnECBCheck(Trigger.New,null);
-    }*/
+    } logic migrated to flow 29072025*/
   
 
     if (mapFunctionalityNameTriggerExecution.containsKey('PRM_CreateTrackerMilestones') &&
@@ -241,12 +243,12 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
     }
   
     Core_AccountTriggerHandlerController.accountRecordTypeAfterUpdate((List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap,(Map<Id, Account>) Trigger.NewMap);
-  
-    /*if (!Test.isRunningTest()) {//IPS logic code commented-gangadhar //US-0050009 Hercules_IPS_ECBFlagIssueFix
+    /*logic migrated to flow 29072025
+    if (!Test.isRunningTest()) {
       //TWC729-3627
       //[Abhishek Arya : Mar/16/2016 : User Story# US36728 : ECB Marked Accounts Needs to Deactivate all IPS Contacts.]
       Core_IPS_Account_Trigger_Handler.UpdateContactOnECBCheck((List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap);
-    }*/
+    } logic migrated to flow 29072025 */
     //David S Wong: Jun 3 2016: US35541 ACCOUNTS: Automate Account Team Membership Audit
     Core_AccountTriggerHandlerController.accountTeamAuditCompletion((List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap);
   
@@ -267,6 +269,7 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
         mapFunctionalityNameTriggerExecution.get('Update_MP_Partners').Core_Active__c &&
       !Test.isRunningTest()
     ) {
+        
       // Commented the below - As part of OPID Restructure - Sathish
       // Core_AccountHandler.updatePartnerInfo(trigger.New,trigger.NewMap,trigger.OldMap);
       //Added by Kirshna Ch - US854868 -KTBE : Changes in Biz org, Specialty
@@ -275,8 +278,7 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
   
     /********************* Raushan US369121 - Update Membership flag when partner type is being changed.***************/
     /*if (mapFunctionalityNameTriggerExecution.containsKey('accountPartnerTypeAfterUpate') &&
-        mapFunctionalityNameTriggerExecution.get('accountPartnerTypeAfterUpate').Core_Active__c
-    ) {
+        mapFunctionalityNameTriggerExecution.get('accountPartnerTypeAfterUpate').Core_Active__c) {
       Core_AccountTriggerHandlerController.membershipFlagUpdate((List<Account>) Trigger.Old,(List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap,(Map<Id, Account>) Trigger.NewMap);
     }*/
   
@@ -300,11 +302,11 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
     /*Description: on Update Account Name call psg method which will update same in license record
   author and date:dnyanadax.argulwar@intel.com ,23Nov    
   */
-    // if (mapFunctionalityNameTriggerExecution.containsKey('accountDetailsUpdateOnPsgMethod') &&
-    //     mapFunctionalityNameTriggerExecution.get('accountDetailsUpdateOnPsgMethod').Core_Active__c
-    // ) {
-    //   Core_AccountTriggerHandlerController.sendAccountDetailsToPsgMethods((List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap);
-    // }
+    if (mapFunctionalityNameTriggerExecution.containsKey('accountDetailsUpdateOnPsgMethod') &&
+        mapFunctionalityNameTriggerExecution.get('accountDetailsUpdateOnPsgMethod').Core_Active__c
+    ) {
+      //Core_AccountTriggerHandlerController.sendAccountDetailsToPsgMethods((List<Account>) Trigger.New,(Map<Id, Account>) Trigger.OldMap);
+    }
   
 
    
@@ -332,6 +334,7 @@ public without sharing class Core_AccountTriggerHandler extends TriggerHandler {
           }
         }
       }
+      System.debug('Commit work');
       unitwork.commitWork();
     }
   }

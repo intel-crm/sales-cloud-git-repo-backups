@@ -7,7 +7,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ddr.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Design_Owner_On_Approval</template>
     </alerts>
@@ -18,7 +18,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ddr.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Design_Owner_On_Rejection</template>
     </alerts>
@@ -37,6 +37,72 @@
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Owners_On_Open_Design</template>
     </alerts>
+    <alerts>
+        <fullName>Deal_Approved_Notification_Partner</fullName>
+        <description>Deal Approved Notification to Partner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Deal_Email_Templates/Deal_Approved_Notification_to_Partner</template>
+    </alerts>
+    <alerts>
+        <fullName>Deal_Approved_Notification_to_Approver_and_Partner</fullName>
+        <description>Deal Approved Notification to Approver and Partner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <field>Core_Accepted_By_Id__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Deal_Email_Templates/Deal_Approved_Notification_to_Approver_and_Partner</template>
+    </alerts>
+    <alerts>
+        <fullName>PCC_Deal_Approved_Notification_to_Approver</fullName>
+        <description>Deal Approved Notification to Approver</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Core_Intel_Technical_Owner_Id__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Deal_Email_Templates/PCC_Deal_Approved_Notification_for_Approver_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>PCC_Deal_Rejected_Notification_to</fullName>
+        <description>Deal Rejected Notification to Partner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Deal_Email_Templates/PCC_Deal_Rejected_Notification_to_Partner</template>
+    </alerts>
+    <alerts>
+        <fullName>PCC_Deal_Rejected_Notification_to_Approver</fullName>
+        <description>Deal Rejected Notification to Approver</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Core_Accepted_By_Id__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Deal_Email_Templates/PCC_Deal_Rejected_Notification_to_Approver_Template</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Approve_the_Deal</fullName>
+        <field>Core_Design_Registration_Status_Nm__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Approve the Deal</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_DDR_Assign_Partner_Region</fullName>
         <field>Core_Partner_Account_Region_Cd__c</field>
@@ -138,6 +204,27 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Update_Record_Type</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Deal_Registration_Locked</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Stage_to_Draft</fullName>
+        <field>Workflow_Status__c</field>
+        <literalValue>Draft</literalValue>
+        <name>Update Stage to Draft</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Update_status_to_Precheck_completed</fullName>
         <field>Core_Design_Registration_Status_Nm__c</field>
         <literalValue>Pre-Approved</literalValue>
@@ -176,21 +263,6 @@
         <active>false</active>
         <description>Changes the Record Type, so the design fields are NOT editable by Intel user.</description>
         <formula>Owner:User.Profile.Name = &apos;Partner&apos; &amp;&amp; NOT(RecordTypeId =  $Label.Core_DDR_Design_Locked_Record_Type_ID)</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core_DDR_Send_Email_On_Design_Approval</fullName>
-        <actions>
-            <name>Core_DDR_Notify_Design_Owner_On_Approval</name>
-            <type>Alert</type>
-        </actions>
-        <active>false</active>
-        <criteriaItems>
-            <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Approved</value>
-        </criteriaItems>
-        <description>Sends Email to Design Owner (Partner User) when Design is Approved.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

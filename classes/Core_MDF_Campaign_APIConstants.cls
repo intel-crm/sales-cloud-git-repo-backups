@@ -1,5 +1,6 @@
 /**
  * Centralized constants for Campaign REST API.
+ * Reference pattern: Core_MDF_PFR_RestAPIConstants.
  */
 public class Core_MDF_Campaign_APIConstants {
     // --------------------------------------------------

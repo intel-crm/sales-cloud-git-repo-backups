@@ -23,7 +23,6 @@ Trigger error notification email on creation of Log entry for CCP.</description>
     <environments>Default</environments>
     <interviewLabel>Core_MDF_CCP_Error_Notification {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_CCP_Error_Notification</label>
-    <migratedFromWorkflowRuleName>Core_MDF_CCP_Error_Notification</migratedFromWorkflowRuleName>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

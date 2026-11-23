@@ -25,6 +25,30 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
+        <name>Approval_Process_for_Co_Inv</name>
+        <label>Approval Process for Co-Inv</label>
+        <locationX>1422</locationX>
+        <locationY>757</locationY>
+        <actionName>submit</actionName>
+        <actionType>submit</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>vBudgetId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>processDefinitionNameOrId</name>
+            <value>
+                <elementReference>Co_Inv_Budget_ApprovalProcessId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>submit</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
         <name>Core_MDF_Approval_Process_for_EEF</name>
         <label>Approval Process for EEF</label>
         <locationX>1201</locationX>
@@ -718,6 +742,21 @@
             </connector>
             <label>Co-GTM</label>
         </rules>
+        <rules>
+            <name>Core_MDF_Co_Inv</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Fetch_Budget.Core_MDF_Program_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Core_MDF_Co_Inv_program_name</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Approval_Process_for_Co_Inv</targetReference>
+            </connector>
+            <label>Co-Inv</label>
+        </rules>
     </decisions>
     <decisions>
         <description>To Check whether the given budget is an IPA Proposal Based Budget</description>
@@ -751,6 +790,11 @@
         <name>Co_GTM_Budget_ApprovalProcessId</name>
         <dataType>String</dataType>
         <expression>{!$Label.Core_MDF_Co_GTM_Budget_ApprovalProcess}</expression>
+    </formulas>
+    <formulas>
+        <name>Co_Inv_Budget_ApprovalProcessId</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.Core_MDF_Co_Inv_Budget_ApprovalProcess}</expression>
     </formulas>
     <formulas>
         <name>EEF_ApprovalProcess_Name</name>

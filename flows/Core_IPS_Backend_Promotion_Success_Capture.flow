@@ -117,11 +117,12 @@
             <label>Condition One</label>
         </rules>
     </decisions>
-    <description>These 4 workflow converted into flow 
+    <description>These 6 workflow converted into flow 
 Core_IPS_Backend_Promotion_Success_Capture
 Core_IPS_Backend_Promotion_Time_Capture_WF
 Core IPS Case Escalated Date Stamp
-Core IPS GEC Flow Change</description>
+Core IPS GEC Flow Changes
+Core_IPS_Backend_Promotion_Outbound_Capture</description>
     <environments>Default</environments>
     <formulas>
         <name>Calculate_Core_IPS_Case_Promote_Count</name>
@@ -359,5 +360,5 @@ then it return true</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>InvalidDraft</status>
 </Flow>

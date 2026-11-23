@@ -29,7 +29,7 @@
                 <field>Sales_Companion_Server1_Txt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Sales_Contact__c</field>
             </layoutItems>
         </layoutColumns>

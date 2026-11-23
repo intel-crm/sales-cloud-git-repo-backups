@@ -30,7 +30,11 @@ export default class Custom_URL_Embed extends LightningElement {
         .then((data) => {
             
             var saveRes = JSON.parse(JSON.stringify(data));
+            console.log('reportURL  '+ saveRes['reportURL']);
+            console.log('hasAccess  '+ saveRes['hasAccess']);
+            console.log('autoSSOEnabled  '+ saveRes['autoSSOEnabled']);
             console.log('saveRes: '+saveRes);
+        
             this.hasAccess = saveRes['hasAccess'];
             if(this.hasAccess){
                 if(saveRes['autoSSOEnabled']){
@@ -61,7 +65,7 @@ export default class Custom_URL_Embed extends LightningElement {
     getEmbedURL(){
         getEmbeddingDataForReport({configName:this.configName,WorkspaceId: this.WorkspaceId,ReportId: this.ReportId,roles:this.roles})
         .then(response => {
-            
+            console.log(this.configName + ' ' + this.WorkspaceId + ' ' + this.ReportId + ' ' + this.roles);
             console.log('response', response);
                     this.report = response;
                     if (response) {

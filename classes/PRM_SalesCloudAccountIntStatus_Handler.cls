@@ -34,12 +34,12 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
         }
     }*/
     public static void setAccountIPAIntegrationStatusToPending(List<PRM_AccountChannelMembership__c> newAcms){
-        
+        //system.debug('setAccountIPAIntegrationStatusToPending  ACM');
         set<Id> acctIds = new set<Id>();
         for(PRM_AccountChannelMembership__c newAcm : newAcms) {
             acctIds.add(newAcm.PRM_Account_Id__c);
         }
-        
+        //system.debug('AcctIds ==>'+acctIds);
         if(acctIds.size() > 0) {
             updateAccountStatus(acctIds);
         }
@@ -47,7 +47,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
     
     //Added by Anand TB as part of US847809
     public static void setAccountIPAIntegrationStatusToPending(List<PRM_AccountLegalAgreemntAssociation__c> newAlas){
-        
+        //system.debug('setAccountIPAIntegrationStatusToPending  ALA');
         set<Id> acctIds = new set<Id>();
         for(PRM_AccountLegalAgreemntAssociation__c newAla : newAlas) {
             //UTKARSH - Put inactive indicator check
@@ -55,14 +55,14 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
                 acctIds.add(newAla.PRM_Account_Id__c);
             }
         }
-       
+       // system.debug('AcctIds ==>'+acctIds);
         if(acctIds.size() > 0) {
             updateAccountStatus(acctIds);
         }
     }
     
     public static void setAccountIPAIntegrationStatusToPending(List<PRM_Account_Specialty_Association__c> newAsas){
-        
+        //system.debug('setAccountIPAIntegrationStatusToPending  ASA');
         set<Id> acctIds = new set<Id>();
         /*if(!ipaRefresh  || test.isrunningtest()){ //IPA2.0-TWC727-2861
         for(PRM_Account_Specialty_Association__c newAsa : newAsas) {
@@ -74,9 +74,9 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
     }*/ //IPA Refresh - switch removal
     }
     public static void setAccountIPAIntegrationStatusToPending(List<PRM_AccountBenefitAssociation__c> newAbas){
-        
+        //system.debug('setAccountIPAIntegrationStatusToPending  ABA');
         set<Id> acctIds = new set<Id>();
-        for(PRM_AccountBenefitAssociation__c newAba : newAbas) {
+        for(PRM_AccountBenefitAssociation__c newAba : newAbas){
             acctIds.add(newAba.PRM_Account_Id__c);
         }
         for(Core_Account_Group_Member__c cag : [SELECT Core_Intel_Account_Id__c FROM Core_Account_Group_Member__c WHERE Core_Partner_Account_Id__c  IN:acctIds AND Core_Inactive_Ind__c = false ]){//TWC729-9275-To Create OBM on Intel account
@@ -87,7 +87,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
         }
     }
     public static void setAccountIPAIntegrationStatusToPending(List<Core_Account_Whitelisted_Domains__c> newAWDs){
-        
+        //system.debug('setAccountIPAIntegrationStatusToPending  AWD');
         set<Id> acctIds = new set<Id>();
         for(Core_Account_Whitelisted_Domains__c newAWD : newAWDs) {
             acctIds.add(newAWD.Account__c);
@@ -98,7 +98,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
     }
     
     public static void setAccountIPAIntegrationStatusToPending(List<PRM_Partner_Assist_Consent__c> newPAConsents){
-        
+        //system.debug('setAccountIPAIntegrationStatusToPending  PAConsents');
         set<Id> acctIds = new set<Id>();
         for(PRM_Partner_Assist_Consent__c newPAConsent : newPAConsents) {
             //UTKARSH - put inactive indicator check
@@ -111,7 +111,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
         }
     }
     public static void setAccountIPAIntegrationStatusToPending(List<PRM_Profile_Responses__c> newProfResps){
-      
+       // system.debug('setAccountIPAIntegrationStatusToPending  ProfResps');
         set<Id> acctIds = new set<Id>();
         for(PRM_Profile_Responses__c newProfResp : newProfResps) {
             acctIds.add(newProfResp.PRM_Account_Id__c);
@@ -122,7 +122,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
     }
     
     public static void setAccountIPAIntegrationStatusToPendingOpId(List<Core_Account_Group_Member__c> newAgms, Set<Id> oldAcctIds){
-       
+        //system.debug('setAccountIPAIntegrationStatusToPending  AGM');
         set<Id> acctIds = new set<Id>();
        // set<Id> oPAcctIds = new set<Id>();
         for(Core_Account_Group_Member__c newAgm : newAgms) {
@@ -141,7 +141,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
     }
     
     public static void updateAccountStatus(Set<Id> acctIds){
-        
+        //system.debug('inside updateAccountStatus');
         List<Account> accountsToBeUpdated = new List<Account>();
         Map<id,Account> accountsMap = getAccountsMap(acctIds);
         if(accountsMap.size() > 0) {
@@ -151,7 +151,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
                     accountsToBeUpdated.add(acct);
                 }
             }
-          
+           // system.debug('accountsToBeUpdated ==>'+accountsToBeUpdated);
             if(accountsToBeUpdated.size() > 0) {
                 update accountsToBeUpdated;
             }
@@ -176,6 +176,8 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
    public static void setAccountIPAIntegrationStatusToPendingOnUpdate(List<Account> newAccounts, Map<Id,Account> oldAccountsMap, Set<Id> accountIds){
         Set<Id> accountsToBeUpdated = new Set<Id>();
         //Map<id,Account> accountsMap = getAccountsMap(accountIds);
+        //system.debug('accountsMap- '+accountsMap);
+        //system.debug('newAccounts- '+newAccounts);
         //Set<Id> CIMUpdatedAcctIds = new Set<Id>();
         
         if(!FeatureManagement.checkPermission('PCC_Bypass_Automation')){
@@ -223,7 +225,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
                 }  
             }
             /*if(accountsToBeUpdated.size() > 0) {
-                
+                system.debug('actual update');
                 update accountsToBeUpdated;
             }*/
             /*
@@ -239,7 +241,7 @@ public without sharing class PRM_SalesCloudAccountIntStatus_Handler {
         }
     }      
     public static Map<Id,Account> getAccountsMap(Set<Id> accountIds) {
-      
+        //system.debug('configPartnerRoles ==>'+configPartnerRoles);
         //Id PAGRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
         /*return new Map<Id,Account>([ SELECT id,PRM_IPA_Integration_Status__c,
                                     (SELECT PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Partner_Role__c,PRM_Status_Nm__c

@@ -1,13 +1,17 @@
 ({
     //This is to check if the Cancel button has to be made visible to the user on the claim record
     doInit : function(component, event, helper) {
-        var action = component.get("c.isClaimEligibleForCancel");     
+        var action = component.get("c.isClaimEligibleForCancel");
         action.setParams({claimId : component.get('v.recordId')});
-        action.setCallback(this, function(response){            
-            
+        action.setCallback(this, function(response) {
             var state = response.getState();
             if(component.isValid() && state === "SUCCESS"){
                 var result = response.getReturnValue();
+                // New functionality: determine whether cancellation reason is mandatory
+                if (!$A.util.isUndefinedOrNull(result)) {
+                    component.set("v.reasonRequired", result.requiresCancellationReason == true);
+                    component.set("v.isSuperClaimOnHold", result.isSuperClaimOnHold == true);
+                }
                 if(!$A.util.isUndefinedOrNull(result.claimEligibleForCancel) && result.claimEligibleForCancel == true){
                     component.set("v.showCancelClaim",result.claimEligibleForCancel);
                 }
@@ -27,18 +31,18 @@
                     }                  
                 }
             }
-            else if(state === "ERROR"){
-                this.handleServerExceptions(component,response);
+            else if(state === "ERROR") {
+                this.handleServerExceptions(component, response);
             }
-            
         });
         $A.enqueueAction(action);
     },
+
     //This is to call the Cancel Claim Method
-    cancelClaim : function(component, event, helper) {
-        var action = component.get("c.cancelClaims");  
+    cancelClaim : function(component, event, helper, cancellationReason) {
+        var action = component.get("c.cancelClaimsWithReason");
         var listOfClaim = component.get('v.recordId');
-        action.setParams({claimIdList : listOfClaim});
+        action.setParams({claimIdList : listOfClaim, cancellationReason : cancellationReason});
         action.setCallback(this, function(response){            
             var state = response.getState();
             if(component.isValid() && state === "SUCCESS"){
@@ -66,26 +70,27 @@
         });
         $A.enqueueAction(action);
     },
-    
-    /*page refresh after data save*/
-    
+
+    /* Page refresh after data save */
     isRefreshed: function(component, event, helper) {
         location.reload();
-    },/*page refresh after data save*/
-    
-     //This function is use to show service side exception
+    },
+
+    // This function is used to show server-side exceptions
     handleServerExceptions: function(component, response) {
-        // Error! Show Validation message through a toast UI message
-        //close other toasts 
+        // Error! Show validation message through a toast UI message
+        // Close other toasts
         var successToast = component.find('toast');
         $A.util.addClass(successToast, 'slds-hide');
-        // Show error Modal
+
+        // Show error toast
         var errToast = component.find('errorToast');
         $A.util.removeClass(errToast, "slds-hide");
         component.set("v.Spinner", false);
-        // display message as specific message in case of Validation rules, or generic Application error message
-        if(response.getError()!=null){
-            if(response.getError().length>0 && JSON.stringify(response.getError()[0].pageErrors) !=null){
+
+        // Display a specific validation message or a generic application error
+        if(response.getError() != null) {
+            if(response.getError().length > 0 && JSON.stringify(response.getError()[0].pageErrors) != null) {
                 var error = JSON.stringify(response.getError()[0].pageErrors[0]);
                 if (error != null && (error.includes('FIELD_CUSTOM_VALIDATION_EXCEPTION') || error.includes('INVALID_FIELD_FOR_INSERT_UPDATE'))){
                     component.set("v.errorMsg", response.getError()[0].pageErrors[0].message);
@@ -94,8 +99,8 @@
                 component.set("v.errorMsg", $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
             }
         }
-        //component.set("v.errorMsg", message);    
-        //Auto hide error modal after 5sec
+
+        // Auto-hide error toast after 5 seconds
         window.setTimeout($A.getCallback(function() {
             if(component.isValid()) {
                 $A.util.addClass(errToast, "slds-hide");

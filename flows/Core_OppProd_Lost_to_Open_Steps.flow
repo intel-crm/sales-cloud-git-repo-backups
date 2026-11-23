@@ -6,7 +6,7 @@
         <name>Core_OppProd_Lost_to_Open_Steps</name>
         <label>Core_OppProd_Lost_to_Open_Steps</label>
         <locationX>578</locationX>
-        <locationY>359</locationY>
+        <locationY>311</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Core_OppProd_Lost_to_Open_Step_1a</name>
@@ -52,6 +52,58 @@
             <label>Core_OppProd_Lost_to_Open_Step_1a</label>
         </rules>
         <rules>
+            <name>Core_OppProd_Lost_to_Open_Step_1b</name>
+            <conditionLogic>(1 OR 2) AND (3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lost_to_Open_Flag</targetReference>
+            </connector>
+            <label>Core_OppProd_Lost_to_Open_Step_1b</label>
+        </rules>
+        <rules>
+            <name>Core_OppProd_Lost_to_Open_Step_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_Lost_to_Open_Flag__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Sale_Price_to_null</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Core_OppProd_Lost_to_Open_Step_2</label>
+        </rules>
+        <rules>
             <name>Core_OppProd_Claim_Date_Population</name>
             <conditionLogic>1 AND (2 OR 3 OR 4)</conditionLogic>
             <conditions>
@@ -65,7 +117,7 @@
                 <leftValueReference>$Record.Core_Status__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Win Submitted</stringValue>
+                    <stringValue>Production Win</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -88,29 +140,6 @@
             <label>Core_OppProd_Claim_Date_Population</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>OppProd_Lost_to_Open_Step_2</name>
-        <label>OppProd_Lost_to_Open_Step_2</label>
-        <locationX>372</locationX>
-        <locationY>676</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Core_OppProd_Lost_to_Open_Step_2of2</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.Core_Lost_to_Open_Flag__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Sale_Price_to_null</targetReference>
-            </connector>
-            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-            <label>Core_OppProd_Lost_to_Open_Step_2</label>
-        </rules>
-    </decisions>
     <description>Contains
 Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
     <environments>Default</environments>
@@ -130,7 +159,7 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -144,7 +173,7 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
         <name>Populate_Claim_Date</name>
         <label>Populate Claim Date</label>
         <locationX>842</locationX>
-        <locationY>479</locationY>
+        <locationY>431</locationY>
         <inputAssignments>
             <field>Core_Claim_Date__c</field>
             <value>
@@ -154,10 +183,23 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
+        <name>Update_Lost_to_Open_Flag</name>
+        <label>Update Lost to Open Flag</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Lost_to_Open_Flag__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Sale_Price_to_null</name>
         <label>Update Sale Price to null</label>
-        <locationX>663</locationX>
-        <locationY>835</locationY>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
         <inputAssignments>
             <field>Core_Lost_Sales_Price__c</field>
         </inputAssignments>
@@ -167,20 +209,26 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
                 <booleanValue>false</booleanValue>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Lost_Price__c</field>
+        </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>Update_SalePrice</name>
         <label>Update SalePrice</label>
         <locationX>50</locationX>
-        <locationY>479</locationY>
-        <connector>
-            <targetReference>OppProd_Lost_to_Open_Step_2</targetReference>
-        </connector>
+        <locationY>431</locationY>
         <inputAssignments>
-            <field>Core_Lost_to_Open_Flag__c</field>
+            <field>Core_PW_Sales_Price__c</field>
             <value>
-                <booleanValue>true</booleanValue>
+                <elementReference>$Record.Core_PW_Lost_Price__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_PW_Sales_Price__c</field>
+            <value>
+                <elementReference>$Record.Core_PW_Lost_Price__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -193,7 +241,7 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
     </recordUpdates>
     <start>
         <locationX>452</locationX>
-        <locationY>48</locationY>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Core_OppProd_Lost_to_Open_Steps</targetReference>
         </connector>
@@ -209,5 +257,5 @@ Core_OppProd_Lost_to_Open_Step 1a, 1b and 2</description>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>InvalidDraft</status>
 </Flow>

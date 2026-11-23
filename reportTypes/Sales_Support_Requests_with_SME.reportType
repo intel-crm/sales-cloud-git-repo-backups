@@ -231,11 +231,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Opportunity_URL__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Entry_SPP_US__c</field>
             <table>Opportunity</table>
         </columns>
@@ -1137,16 +1132,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_PW_Approval_Status__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Opportunity_Geo_INDIA__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Opportunity_Team_Geo_INDIA__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>

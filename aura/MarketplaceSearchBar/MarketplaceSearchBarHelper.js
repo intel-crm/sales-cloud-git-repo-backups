@@ -1,7 +1,7 @@
 ({
     
     getDefaultTypeAheadOptions : function(component) {
-        console.log('inside getDefaultTypeAheadOptions  ' );
+        
         var defaultTypeAheadOptions = [], keyword = component.get('v.searchQuery');
         
         // adds default options if given in design attributes (search bar full width)
@@ -71,7 +71,7 @@
                             // helper.dispatch(component, 'autoComplete', { query: searchString });
                             // Capturing searchtype param to display typeahead values based on type // Added By Manjula
                             helper.dispatch(component, 'searchAutoComplete', { query: searchString, Type: searchType, langCode: $A.get("$Locale.langLocale")});
-                            console.log(':::typeAheadOptions:::', component.get("v.typeAheadOptions"));
+                            
                         }
                     }
                 }), DELAY);
@@ -103,8 +103,7 @@
             var urlEvent = $A.get("e.force:navigateToURL");
             urlEvent.setParams({ url: '/' + pageName + '?search=' + str });
             if (component.get('v.debugMode')) {
-                console.log('SEARCH DEBUG -- PARAMS / URL -- ', urlParams, '/' + pageName + '?search=' + str);
-                console.log('SEARCH DEBUG -- URL Length ' + str.length);
+                
             } else {
                 urlEvent.fire();
             }

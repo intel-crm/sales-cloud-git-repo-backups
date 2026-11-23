@@ -1,0 +1,118 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="True" subject="Status for Quote: {!relatedTo.Name}/{!relatedTo.Pricing_SW_Account_Name__c}" recipientType="User" relatedToType="SBQQ__Quote__c">
+<messaging:htmlEmailBody >
+        <style>
+            /* Regular */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Regular-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: normal;
+            font-weight: 400;
+            font-style: normal;
+            }
+            
+            /* Light */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Light-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: 200;
+            font-style: normal;
+            }
+            
+            /* Bold */
+            @font-face{
+            font-family: 'Intel Clear','Intel Clear Pro';
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot')}");  /* IE9*/
+            src: url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.eot?#iefix')}") format('embedded-opentype'), /* IE6-IE8 */
+            url("{!URLFOR($Resource.IntelClearFonts, '/fonts/IntelClear-Bold-webfont.woff')}") format('woff');  /* Modern browsers*/
+            font-weight: bold;
+            font-weight: 700;
+            font-style: normal;
+            }
+            
+            table {
+            font-family: Intel Clear; /*arial, sans-serif;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+            
+            h1{
+            font-family: Intel Clear Pro !important; 
+            }
+        </style>
+        
+        
+        <body>
+            
+            <!-- Header Banner -->    
+            <table style="background-color:#0168B5;" width="75%">
+                <tr>
+                    <td style="padding-left:50px;border: 0px;border:none;">
+                        <!--<div style="color:white;"><h1>Quote is about to <b style="color:red;">Expire</b></h1></div>-->
+                        <div style="color:white;"><h3>Quote Expiry Date Approaching </h3></div>
+                    </td>
+                    <td style="border:none;padding-right:20px;" align="right">
+                      <!-- <apex:image url="{!headerURL}" width="100" height="80" alt="Intel Logo"/>-->
+                      <img src="https://intel--crmdevsls3.sandbox.my.salesforce.com/servlet/servlet.ImageServer?id=0152D000000TzOJ&oid=00D2D000000E9ZK&lastMod=1616784645000" width="100" height="80" alt="Intel Logo"></img>
+                    </td>
+                </tr>
+            </table>
+            <!-- Header Banner -->
+            <!-- Email Body -->
+            
+           <table width="75%">
+               <td style="padding-left:50px;">
+                        <!-- {!quoteData.SBQQ__PrimaryContact__r.Name}<br/><br/>-->
+                         Your quote is set to expire in 10 days. Upon expiration, the quote status will be set to Denied. If this quote is still in progress, take action prior to expiration to change the status to Accepted or to extend the Expiry Date. 
+                        <br/>
+                        <br/>
+                        <b>Quote:</b>&nbsp;<a href="https://intel--crmdevsls3.sandbox.lightning.force.com/lightning/r/SBQQ__Quote__c/{!relatedTo.Id}/view">{!relatedTo.Name}</a><br/>
+                        <b>Account:</b>&nbsp;{!relatedTo.Pricing_SW_Account_Name__c}<br/>                         
+                        <b>Opportunity Number:</b>&nbsp;<a href="https://intel--crmdevsls3.sandbox.lightning.force.com/lightning/r/Opportunity/{!relatedTo.SBQQ__Opportunity2__c}/view">{!relatedTo.SBQQ__Opportunity2__c}</a><br/>
+                        <b>Opportunity Name:</b>&nbsp;{!relatedTo.SBQQ__Opportunity2__r.Name}
+                        <br/>
+                        <br/>
+                        This email was sent from an unmonitored mailbox.  
+                        <br/>
+                    </td>
+            </table>
+            <!-- Email Body -->            
+            <!-- Email Body -->  
+            <!-- Global Footer -->
+            <table style="background-color:#0168B5;" width="75%">
+                <tr>    
+                    <td style="text-align:center;padding-left:50px;border:0px;border:none;">
+                        <div style="font-size:10px">
+                            <div style="color:white;">  
+                                This message was sent to you as an important business communication related to your current relationship with Intel Quote Request (IQR)<br/>
+                                ©{!year(today())} Intel Corporation <br/>
+                                Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<br/>
+                                
+                                
+                                <apex:outputLink value="www.intel.com" style="color:white;"> www.intel.com</apex:outputLink><br/>
+                                <apex:outputLink value="www.intel.com/privacy" style="color:white;">Privacy</apex:outputLink> | &nbsp;
+                                <apex:outputLink value="www.intel.com/cookies" style="color:white;">Cookies</apex:outputLink>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!-- Global Footer -->
+        </body>
+<!--<c:Pricing_SW_ThreeDaysRemNotification quoteRecordId="{!relatedTo.Id}"/> -->
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

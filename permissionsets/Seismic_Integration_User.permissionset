@@ -4,7 +4,7 @@
         <apexClass>SeismicLiveSendAPI</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <description>This permission set is created to provide Seismic API User the access to Salesforce (Salescloud) for the LiveSend validation.</description>
+    <description>This permission set is used by Seismic to access Salescloud Contact &amp; Lead data using Salesforce standard API for the LiveSend validation.</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.Core_Do_Not_Contact_Dtm__c</field>

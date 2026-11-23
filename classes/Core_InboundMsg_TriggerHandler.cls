@@ -8,7 +8,6 @@ public without sharing class Core_InboundMsg_TriggerHandler {
         Integer totalRecsCount=0;
         List<OPID_Sync_Request__c> opidsyncRecstoUpdateList = new List<OPID_Sync_Request__c>();
 		List<OPID_Sync_Request__c> opidSyncwithCIMRecsList = [SELECT Id, Status__c,(SELECT Id,Core_Status__c,Error_Description__c FROM One_Partner_Inbound_Messages__r) FROM OPID_Sync_Request__c WHERE Id IN: onDemandSyncRecIds];        
-        
         for(OPID_Sync_Request__c opsync:opidSyncwithCIMRecsList){
             for(Core_OnePartner_Inbound_Message__c cim: opsync.One_Partner_Inbound_Messages__r){
                 //If all the inbound SF records status is Processed

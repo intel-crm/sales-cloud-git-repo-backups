@@ -11,4 +11,28 @@
         <senderType>OrgWideEmailAddress</senderType>
         <template>Sales_Order_Management/Sales_Order_Creation_Failed</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>Sales_Status</fullName>
+        <field>Sales_status__c</field>
+        <literalValue>Order Activated</literalValue>
+        <name>Sales_Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Core_PSG_Field update</fullName>
+        <actions>
+            <name>Sales_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Order.Status</field>
+            <operation>equals</operation>
+            <value>Activated</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
 </Workflow>

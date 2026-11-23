@@ -68,8 +68,7 @@ private class Core_OpportunityProductController_Test {
          list<Account> acclist = new list<Account>();
           list<Opportunity> lstOpportunity = new list<Opportunity>();
           //Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' limit 1][0].Id;
-            /***
-        	Account acct = new Account(Name = 'Test Account territory', BillingStreet = '123 Fake St',
+            Account acct = new Account(Name = 'Test Account territory', BillingStreet = '123 Fake St',
                                        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
                                        BillingPostalCode = '12345',Core_Sales_Groups__c='Americas Brazil Sales Group',Industry = 'Gaming',Core_Sub_Industry__c='eSports');
             Account acct1 = new Account(Name = 'Test Account territory1', BillingStreet = '123 Fake St',
@@ -78,13 +77,7 @@ private class Core_OpportunityProductController_Test {
             Account acct2 = new Account(Name = 'Test Account territory2', BillingStreet = '123 Fake St',
                                        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
                                        BillingPostalCode = '12345',Core_Sales_Groups__c='Americas Brazil Sales Group',Industry = 'Gaming',Core_Sub_Industry__c='eSports');
-            ***/
-        
-      		Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-	        Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        	Account acct1 = new Account(Name ='Test Account2',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        	Account acct2 = new Account(Name ='Test Account3',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        
+            
             acclist.add(acct);acclist.add(acct1);acclist.add(acct2);
             insert acclist;
         

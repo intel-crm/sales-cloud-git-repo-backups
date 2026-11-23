@@ -103,6 +103,7 @@ global without sharing class PRM_CIMAccountSearchNew {
             } else {
                 throw new CustomException('INVALID_EMAIL');
             }
+            System.debug('>>>FinalsearchResult'+FinalsearchResult);
             //defaulting seachlimit and minimunScore
             SearchLimit = string.isNotBlank(SearchLimit)
                 ? SearchLimit
@@ -133,6 +134,8 @@ global without sharing class PRM_CIMAccountSearchNew {
                     res.statusCode = 200;
                     res.responseBody = Blob.valueOf(results);
                 }
+                
+                //system.debug('---FinalResponsefromSFDCtoAEMInSBCCallout==> ' +results);
             }
         } catch (CustomException ce) {
             customSearchErrors(ce,res);
@@ -166,6 +169,7 @@ global without sharing class PRM_CIMAccountSearchNew {
             //  Calling the utility method to create Integration log record
             PRM_ProcessInboundOPIDLogEntriesUtility logEntryUtility = new PRM_ProcessInboundOPIDLogEntriesUtility();
             Integer fieldLength = Schema.SObjectType.PRM_Integration_Log__c.fields.PRM_Response_Payload__c.getLength();
+            System.debug('>>>>res'+res);
             if (res != null) {
                 logEntryUtility.addLogEntry(
                     res.responseBody.toString(),
@@ -188,6 +192,7 @@ global without sharing class PRM_CIMAccountSearchNew {
                 }
             }
         }
+        System.debug('>>>results' + results);
         return results;
     }
 //congnitive complexity:
@@ -253,9 +258,10 @@ public static void customSearchErrors(CustomException ce,RestResponse res){
     }
 }
 
-public static void createLogEntries(RestResponse res){
+    //ATHR Fix - TWC729-9556 - JB
+/*public static void createLogEntries(RestResponse res){
    
-}
+}*/
     public static PRM_SBCSearchResults performStep1Search(String EmailAddress/*,RestResponse res*/) {
        // Set<Id> setOfAccountId = new Set<Id>();
        list<Id> listOfAccountId=new list<Id>();
@@ -266,7 +272,7 @@ public static void createLogEntries(RestResponse res){
                 String emailDomain = EmailAddress.substringAfter('@');
                 //Query to get Accounts from SFDC based on email domain
                 for (PRM_SBC_Account_Search_Configuration__c config : [
-                    SELECT ID, Account__c, Account__r.BillingCountryCode
+                    SELECT ID, Account__c/*, Account__r.BillingCountryCode*/ //ATHR Fix - TWC729-9556 - JB
                     FROM PRM_SBC_Account_Search_Configuration__c
                     WHERE
                         Email_Domain__c = :emailDomain
@@ -286,6 +292,11 @@ public static void createLogEntries(RestResponse res){
                         res.statusCode = 200;
                         res.responseBody = Blob.valueOf(finalresult);
                     }
+                    
+                    system.debug(
+                        '---FinalResponsefromSFDCtoAEMInSBCCallout==> ' +
+                        finalresult
+                    );
                     results = finalresult;
                 } else {
                     SalesforceError[] errs = new List<SalesforceError>{

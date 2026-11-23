@@ -96,7 +96,7 @@ public class PRM_PartnerAccountGroupDetails_Test {
         insert acr1;
         
     }
-          @isTest static void GetPAGDetailsTest()
+          @isTest static void GetPAGDetailsTest() 
     {
         
         Test.startTest();

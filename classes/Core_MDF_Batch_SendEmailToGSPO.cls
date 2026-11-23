@@ -26,10 +26,12 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
     public Core_MDF_Batch_SendEmailToGSPO(List<PartnerFundClaim> vatClaimList)
     {
         if(vatClaimList != NULL){
-			this.vatClaimList = vatClaimList; 
+			this.vatClaimList = vatClaimList;
+            system.debug('vatClaimListinbatch::'+this.vatClaimList);
             for(PartnerFundClaim vatPfc : this.vatClaimList){
                 pRunRecordIdSet.add(vatPfc.Core_MDF_Payment_Id__r.Core_MDF_Payment_Run_Id__c);
             }
+            system.debug('pRunRecordIdSet::'+pRunRecordIdSet);
         	//pRunRecordId = vatClaimList[0].Core_MDF_Payment_Id__r.Core_MDF_Payment_Run_Id__c;
         }
     }
@@ -43,6 +45,7 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
     public void execute(Database.BatchableContext bc, List<Core_MDF_Claim_VAT_Info__c> vatInfosList)
     {
         try{
+            system.debug('vatInfosList::'+vatInfosList);
             // Prepare Map of Content Document and Vat Information Record
             for(Core_MDF_Claim_VAT_Info__c vatInfos : vatInfosList){
                 if(vatInfos.Core_MDF_Approved_File_Id__c != NULL){
@@ -50,10 +53,10 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
                     contentDocIdToVatInfoMap.put(vatInfos.Core_MDF_Approved_File_Id__c, vatInfos);
                 }
             }
-              
+            system.debug('contentDocIdToVatInfoMap::'+contentDocIdToVatInfoMap);  
             // Querying Content Version for List of Content Document Ids
             contentVersionList = [SELECT Id,title, PathOnClient, FileType, versiondata, ContentDocumentId FROM contentversion WHERE ContentDocumentId IN :contentDocIdToVatInfoMap.keySet()];
-         
+         	system.debug('contentVersionList::'+contentVersionList);
             // Initialise Email Wrapper List
             List<Core_MDF_GenericClassToSendMail.MailParams> gspoEmailWrapperList = new List<Core_MDF_GenericClassToSendMail.MailParams>();
            
@@ -65,6 +68,7 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
                 // Update Email Wrapper Attributes
                 gspoEmailWrapper.emailIds = system.label.Core_MDF_GSPOEmailAddress;
                 gspoEmailWrapper.recordId = contentDocIdToVatInfoMap.get(String.valueOf(cversion.ContentDocumentId)).Id;
+                system.debug('recordId::'+gspoEmailWrapper.recordId);
                 gspoEmailWrapper.templateName = 'Core_MDF_VatNotificationForGSPO';
                 if(cversion.versiondata != NULL && cversion.PathOnClient != null){
                     //Versiondata stores the content or body of the Content Version
@@ -74,6 +78,7 @@ public without sharing class Core_MDF_Batch_SendEmailToGSPO implements Database.
                 }
                 emailAttachmentList.add(emailAttachment);
                 gspoEmailWrapper.emailAttachment = emailAttachmentList;
+                //gspoEmailWrapper.sendDiff = false;
                 // Add Wrapper in gspoEmailWrapperList
                 gspoEmailWrapperList.add(gspoEmailWrapper);
             }

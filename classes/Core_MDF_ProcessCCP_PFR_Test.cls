@@ -1457,6 +1457,7 @@ Test.startTest();
         List<PartnerFundRequest> pfrList2 = new List<PartnerFundRequest>();
         List<PartnerFundRequest> pfrList3 = new List<PartnerFundRequest>();
         Set<ID> accIDSet = new Set<ID>();
+        
         Account acc = [SELECT Id, Name FROM Account WHERE Name = 'Co-marketing Test Account Retail' LIMIT 1];
         User user = [SELECT Id FROM User WHERE LastName = 'Test PRC MS User'];
         Campaign cmp = [SELECT Id FROM Campaign WHERE Name = 'TestRetailCamp'];
@@ -1470,8 +1471,8 @@ Test.startTest();
         iupgm.Core_MDF_Active_Ind__c = TRUE;
         iupgm.Core_MDF_All_Accounts_cd__c ='No';
         Database.insert(iupgm);    
-        Test.startTest();
         
+      Test.startTest();      
        // PartnerFundRequest pfr = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(cmp.Id),string.valueof(acc.id),System.today(),System.today(),false); 
         PartnerFundRequest pfr = New PartnerFundRequest();
         pfr.CampaignId=string.valueof(cmp.Id);
@@ -1572,9 +1573,10 @@ Test.startTest();
         pfrList4.add(ipaPFR); 
         Database.insert(pfrList4);
         Set<ID> accIDSet1 = new Set<ID>();
-        accIDSet1.add(coMarketingIPA.id);       
-        PartnerFundRequest tempVar=[select Id,Core_MDF_Fund_Request_Status__c,ChannelPartnerId,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,recordtypeId,Recordtype.name,Core_MDF_Country_nm__c  from PartnerFundRequest where id=:ipaPFR.Id];
-        
+        accIDSet1.add(coMarketingIPA.id);
+       
+        PartnerFundRequest tempVar=[select Id,Core_MDF_Fund_Request_Status__c,ChannelPartnerId,Core_MDF_Proposal_Based_Ind__c,Core_MDF_Program__c,recordtypeId,Recordtype.name,Core_MDF_Country_nm__c  from PartnerFundRequest where id=:ipaPFR.Id limit 1];
+       
         Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(new List<PartnerFundRequest>{tempVar},accIDSet1);
         Core_MDF_ProcessCCP_PartnerFundRequest.runOnce();
         Test.stopTest();

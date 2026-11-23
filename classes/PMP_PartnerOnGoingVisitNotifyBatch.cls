@@ -11,14 +11,20 @@ Command to execute this batch class manually-Database.executeBatch(new PMP_Partn
 * Ajay					Optimization					10/20/2022							Optimized logic.
 ****************************************************************************************************************************************************************************************************************/
 //IPA2.0 - As part of TWC729-7977 commented the entire class & added dummy syntax to override error
-global class PMP_PartnerOnGoingVisitNotifyBatch{
-    public static Boolean isWorking() {
-        return true;
+global class PMP_PartnerOnGoingVisitNotifyBatch implements Database.Batchable<sObject>,Database.Stateful {
+    global Database.QueryLocator start(Database.BatchableContext bc) {
+        // added dummy syntax to override error
+       return null;
+    }
+    
+    global void execute(Database.BatchableContext bc, List<sObject> scope) {
+        // added dummy syntax to override error
     }
 
-    /*implements Database.Batchable<sObject>,Database.Stateful {
-   
-    
+    global void finish(Database.BatchableContext bc) {
+        // added dummy syntax to override error
+    }
+ /*   
     private String emailObjectRecordName = 'Partner_OnGoing_Visit';
     private static Set<Id> usersInScope = New set<Id>();
     global  map<id, date> userLoginMap = New Map<id, date>();

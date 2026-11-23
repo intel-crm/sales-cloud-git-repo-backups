@@ -9,5 +9,6 @@
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
     <tabs>standard-DataMgmtPolicy</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

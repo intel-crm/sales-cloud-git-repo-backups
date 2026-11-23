@@ -402,11 +402,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>User_Unique__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>WirelessTrialExpirationDate</field>
             <table>User</table>
         </columns>
@@ -423,6 +418,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Contact.Contact_ID__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_License_Reclaimed__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Fields_Merged__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Status_In_Denodo__c</field>
             <table>User</table>
         </columns>
         <masterLabel>Users</masterLabel>
@@ -581,6 +591,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Entitlement_Id__c.Core_Display_Name__c</field>
+            <table>User.Contact_Entitlements__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Entitlement_B2B_B2C_Indicator__c</field>
+            <table>User.Contact_Entitlements__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Entitlement_Type__c</field>
+            <table>User.Contact_Entitlements__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Removal_as_part_of_License_Reclaim__c</field>
             <table>User.Contact_Entitlements__r</table>
         </columns>
         <masterLabel>Contact Entitlements</masterLabel>

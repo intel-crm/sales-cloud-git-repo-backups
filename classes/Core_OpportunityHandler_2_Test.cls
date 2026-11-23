@@ -79,7 +79,7 @@ public class Core_OpportunityHandler_2_Test {
                             TimeZoneSidKey='America/Los_Angeles', UserName='OSOTOwner@mail.com', Department='OSC');
         insert OSOTOwner;
         //Added partner user for Portal role sharing fix
-        //Profile profile1 = [select Id from Profile where Name = 'Partner'];
+        Profile profile1 = [select Id from Profile where Name = 'Partner'];
  
         Id newOppRecTypeId = [select Id from RecordType where DeveloperName = 'Core_Design_Opportunity' limit 1][0].Id;
         
@@ -156,14 +156,13 @@ public class Core_OpportunityHandler_2_Test {
     }
     
     static testmethod void testOppoTO() { 
-        //List<OpportunityTeamMember> oppTMList = new List<OpportunityTeamMember>();
+        List<OpportunityTeamMember> oppTMList = new List<OpportunityTeamMember>();
         Opportunity oppo = [select id from Opportunity where Name = 'OppoHandler'  limit 1]; 
         User usr = [select id from User where Email='OSOTOwner@apttus.com' limit 1];
         
         Profile pro = [SELECT id, Name FROM Profile WHERE Name='Sales Rep-BB'];
         User usr1 = [SELECT id, Name, isActive FROM User WHERE ProfileId = :pro.Id AND isActive = true AND Core_User_Type__c !='External User' LIMIT 1];
- 
-
+        
         
         oppo.Core_Technical_Owner__c = usr1.id;
         update oppo;

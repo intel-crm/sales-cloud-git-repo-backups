@@ -874,7 +874,7 @@ public class Core_MDF_PFC_RetailClaim_Test {
         test.starttest();
         PartnerFundRequest pfr = [Select Id,Title,Core_MDF_Reimbursement_Rate__c from PartnerFundRequest where Title = 'Retail MDF Activity'];
         
-        PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today().addDays(-1), System.today().addDays(-1), 50.00, System.today(), null, false);
+        PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Retail Claim', Core_MDF_CCP_TestDataUtility.claim_RecordType_Retail, pfr.Id, System.today(), System.today(), 50.00, System.today(), null, false);
         claim1.Core_MDF_Type_Txt__c ='Claim';
         claim1.Core_MDF_Currency__c='USD';
         claim1.Core_MDF_Country_Location_nm__c= 'AFGHANISTAN'; 

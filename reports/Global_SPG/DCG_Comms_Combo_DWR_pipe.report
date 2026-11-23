@@ -46,14 +46,13 @@
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
-    <description>commissionable DWR KPI pipeline combined report</description>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_BU_Focus__c</column>

@@ -1,6 +1,6 @@
 {
-  "activity": "0RJdh0000001RRXXXX",
-  "FileName": "TestFile.xlsx",
-  "file": "base64-content",
-  "comment": "Testing upload"
+  "activity": "0RJ1J0000008QxFWAU",
+  "fileName": "Name.pdf",
+                    "file":"PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iIzAxNzZkMyI",
+  "comment": "Supporting documentation for activity claim"
 }

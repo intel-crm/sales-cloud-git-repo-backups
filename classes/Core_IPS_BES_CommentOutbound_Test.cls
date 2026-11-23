@@ -89,15 +89,14 @@ public class Core_IPS_BES_CommentOutbound_Test {
          outboundObject.add(new Core_IPS_BES_Outbound_Message__c(core_IPS_Outbound_Message_ID__c = '123',
                                                                  Core_IPS_Case_ID__c = cs.Id,
                                                                  Comment_Id__c = objCmt.Id));
-        
         insert outboundObject;
         if(outboundObject.size()>0){
-            //Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObject[0].Id});
+            Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObject[0].Id});
         }
-        
         
         System.assert(objCmt.Id!=null);
     }
+
     @isTest
     public static void negitiveTest(){
         Case cs =  TestUtilities.getCase();
@@ -153,6 +152,7 @@ public class Core_IPS_BES_CommentOutbound_Test {
         objCmt.Core_IPS_Case_Comment_Source__c = 'Internal Portal';
         insert objCmt;
 
+        System.debug('cs: ' + cs.Id);
         cs.Core_IPS_New_Backend_System__c = null;
         cs.Core_IPS_BackendID__c = '';
         update cs;

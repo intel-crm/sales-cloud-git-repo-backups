@@ -1,16 +1,17 @@
-<template>      
+<template>
     <div class="slds-page-header" style="margin-bottom: 0.5rem;" if:false={isRecordPage}>
-        <h1>                          
-            <span class="slds-page-header__title slds-truncate" title="Search Before Request">Search Before Request</span>
+        <h1>
+            <span class="slds-page-header__title slds-truncate" title="Search Before Request">Search Before
+                Request</span>
         </h1>
     </div>
-    <template if:false={noAccessToObject}> 
+    <template if:false={noAccessToObject}>
         <div class="background">
             <lightning-card title="">
                 <div class=" slds-theme--shade" style="padding: 5px;">
                     <lightning-layout multiple-rows="false">
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="6">
+                        <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                            medium-device-size="6" small-device-size="6">
                             <div class="slds-text-heading_medium">
                                 Account Search
                             </div>
@@ -23,29 +24,26 @@
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
                         <lightning-input type="text" name="name" label="Customer Name" placeholder="Enter Name"
-                            onchange={textInputChangeHandler} value={searchAccountData.customerName} >
+                            onchange={textInputChangeHandler} value={searchAccountData.customerName}>
                         </lightning-input>
                     </lightning-layout-item>
-                    <lightning-layout-item  padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                    small-device-size="6">
-                    <div class="slds-text-heading_x-small slds-text-align_left" style="font-weight: bold;position:absolute;">
-                        Note: <br>
-                        1. You will need to enter a value for at least two fields before a search can be performed.<br>
-                        2. It is recommended you start with customer name & country value as your first search so you can 
-                           identify any potential related accounts before making a new request.<br>
-                        3. If you want to search for an account with a specific address, as you are not sure the name used in Sales CRM on the account, you can enter the street name, country and 
-                           state/province for a refined narrow search result.
-                    </div>
-                </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="6">
+                        <div class="slds-text-heading_x-small slds-text-align_left"
+                            style="font-weight: bold;position:absolute;">
+                            <lightning-formatted-rich-text value={labels.Note}></lightning-formatted-rich-text>
+                        </div>
+                    </lightning-layout-item>
                 </lightning-layout>
 
-                
+
 
                 <lightning-layout multiple-rows="false" if:false={isRecordPage}>
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
-                        <lightning-combobox label="Primary Country/Region" name="country"
-                                placeholder="Select Country" options={countryOptions} onchange={pickListChangeHandler} value={searchAccountData.countryCode} >
+                        <lightning-combobox label="Primary Country/Region" name="country" placeholder="Select Country"
+                            options={countryOptions} onchange={pickListChangeHandler}
+                            value={searchAccountData.countryCode}>
                         </lightning-combobox>
                     </lightning-layout-item>
 
@@ -54,8 +52,8 @@
                 <lightning-layout multiple-rows="false" if:false={isRecordPage}>
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
-                        <lightning-combobox label="Primary State/Province" name="state"
-                                placeholder="Select State" options={stateOptions} onchange={pickListChangeHandler} value={searchAccountData.stateCode} >
+                        <lightning-combobox label="Primary State/Province" name="state" placeholder="Select State"
+                            options={stateOptions} onchange={pickListChangeHandler} value={searchAccountData.stateCode}>
                         </lightning-combobox>
                     </lightning-layout-item>
                 </lightning-layout>
@@ -63,18 +61,20 @@
                 <lightning-layout multiple-rows="false" if:false={isRecordPage}>
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
-                        <label class="slds-form-element__label" >Primary Street Name</label>
-                        <lightning-helptext content="Example: enter Terry Ave instead of 123 Terry Ave" class="customIcon"></lightning-helptext>
-                        <lightning-input type="text" name="street" label="Primary Street Name" placeholder="Enter Street Name"
-                        onchange={textInputChangeHandler} value={searchAccountData.street} variant="label-hidden">                        
-                        </lightning-input>                        
-                    </lightning-layout-item>                    
+                        <label class="slds-form-element__label">Primary Street Name</label>
+                        <lightning-helptext content="Example: enter Terry Ave instead of 123 Terry Ave"
+                            class="customIcon"></lightning-helptext>
+                        <lightning-input type="text" name="street" label="Primary Street Name"
+                            placeholder="Enter Street Name" onchange={textInputChangeHandler}
+                            value={searchAccountData.street} variant="label-hidden">
+                        </lightning-input>
+                    </lightning-layout-item>
                 </lightning-layout>
 
                 <lightning-layout multiple-rows="false" if:false={isRecordPage}>
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
-                        <lightning-input type="text" name="website"  label="Customer Website" placeholder="Enter Website"
+                        <lightning-input type="text" name="website" label="Customer Website" placeholder="Enter Website"
                             onchange={textInputChangeHandler} value={searchAccountData.customerWebsite}>
                         </lightning-input>
                     </lightning-layout-item>
@@ -85,27 +85,23 @@
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
                         <lightning-input type="text" name="name" label="Customer Name" placeholder="Enter Name"
-                            onchange={textInputChangeHandler} value={customerName} >
+                            onchange={textInputChangeHandler} value={customerName}>
                         </lightning-input>
                     </lightning-layout-item>
-                    <lightning-layout-item  padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="6">
-                            <div class="slds-text-heading_x-small slds-text-align_left" style="font-weight: bold;position:absolute;">
-                                Note: <br>
-                                1. You will need to enter a value for at least two fields before a search can be performed.<br>
-                                2. It is recommended you start with customer name & country value as your first search so you can 
-                                   identify any potential related accounts before making a new request.<br>
-                                3. If you want to search for an account with a specific address, as you are not sure the name used in Sales CRM on the account, you can enter the street name, country and 
-                                   state/province for a refined narrow search result.
-                            </div>
-                        </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
+                        small-device-size="6">
+                        <div class="slds-text-heading_x-small slds-text-align_left"
+                            style="font-weight: bold;position:absolute;">
+                            <lightning-formatted-rich-text value={labels.Note}></lightning-formatted-rich-text>
+                        </div>
+                    </lightning-layout-item>
                 </lightning-layout>
 
                 <lightning-layout multiple-rows="false" if:true={isRecordPage}>
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
-                         <lightning-combobox label="Primary Country/Region" name="country"
-                          placeholder="Select Country"  options={countryOptions} onchange={pickListChangeHandler} value={countryCode} >
+                        <lightning-combobox label="Primary Country/Region" name="country" placeholder="Select Country"
+                            options={countryOptions} onchange={pickListChangeHandler} value={countryCode}>
                         </lightning-combobox>
                     </lightning-layout-item>
                 </lightning-layout>
@@ -113,8 +109,8 @@
                 <lightning-layout multiple-rows="false" if:true={isRecordPage}>
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
-                        <lightning-combobox label="Primary State/Province" name="state"
-                                placeholder="Select State" options={stateOptions} onchange={pickListChangeHandler} value={stateCode} >
+                        <lightning-combobox label="Primary State/Province" name="state" placeholder="Select State"
+                            options={stateOptions} onchange={pickListChangeHandler} value={stateCode}>
                         </lightning-combobox>
                     </lightning-layout-item>
                 </lightning-layout>
@@ -123,33 +119,35 @@
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
                         <label class="slds-form-element__label">Primary Street Name</label>
-                        <lightning-helptext content="Terry Ave N instead of 410 Terry Ave N" class="customIcon"></lightning-helptext>
-                        <lightning-input type="text" name="street" label="Primary Street Name" placeholder="Enter Street Name"
-                         onchange={textInputChangeHandler} value={street} variant="label-hidden">
-                        </lightning-input>                        
+                        <lightning-helptext content="Terry Ave N instead of 410 Terry Ave N"
+                            class="customIcon"></lightning-helptext>
+                        <lightning-input type="text" name="street" label="Primary Street Name"
+                            placeholder="Enter Street Name" onchange={textInputChangeHandler} value={street}
+                            variant="label-hidden">
+                        </lightning-input>
                     </lightning-layout-item>
                 </lightning-layout>
 
                 <lightning-layout multiple-rows="false" if:true={isRecordPage}>
                     <lightning-layout-item padding="around-small" size="4" large-device-size="4" medium-device-size="4"
                         small-device-size="12">
-                        <lightning-input type="text" name="website"  label="Customer Website" placeholder="Enter Website"
+                        <lightning-input type="text" name="website" label="Customer Website" placeholder="Enter Website"
                             onchange={textInputChangeHandler} value={customerWebsite}>
                         </lightning-input>
                     </lightning-layout-item>
                 </lightning-layout>
-                
+
 
                 <!-- Search Button -->
-                <br/>
+                <br />
                 <lightning-layout multiple-rows="false">
                     <lightning-button class="slds-p-left_small" onclick={clearClickHandler} label="Clear" value="Clear">
                     </lightning-button>
 
-                    <lightning-button class="slds-p-left_small" variant="brand"
-                        onclick={searchClickHandler} label="Search" value="Search">
+                    <lightning-button class="slds-p-left_small" variant="brand" onclick={searchClickHandler}
+                        label="Search" value="Search">
                     </lightning-button>
-                    
+
 
                 </lightning-layout>
             </lightning-card>
@@ -161,7 +159,9 @@
                     <div if:true={showpagination}>
                         <p style="font-size: 20px; margin-top: 5px;font-weight: bold;">Search Results</p>
                         <p style="margin-bottom: 1rem;margin-top: 0.3rem;">
-                            <span class="slds-m-top_medium slds-text-body_regular">Use existing unified account from the results that corresponds to the customer company aligned to UCD hierarchy.<br>
+                            <span class="slds-m-top_medium slds-text-body_regular">
+                                <lightning-formatted-rich-text
+                                    value={labels.AccountResults}></lightning-formatted-rich-text>
                             </span>
                         </p>
                     </div>
@@ -187,10 +187,10 @@
                                 enable-infinite-loading onloadmore={loadMoreData} load-more-offset="20"
                                 if:true={isRecordPage}>
                             </lightning-datatable>
-                            
-                            <br/>
-                            <lightning-button class="slds-m-top_medium"
-                                onclick={reuseClickHandler} label="Reuse" value="Reuse" disabled={disableReUse} if:true ={isRecordPage}>
+
+                            <br />
+                            <lightning-button class="slds-m-top_medium" onclick={reuseClickHandler} label="Reuse"
+                                value="Reuse" disabled={disableReUse} if:true={isRecordPage}>
                             </lightning-button>
                         </div>
                         <br />
@@ -244,130 +244,151 @@
                         </template>
                         <br />
                         <div class="checkBoxDiv" if:false={isRecordPage}>
-                            <lightning-input type="checkbox" data-id="checkboxField" id = 'a' onchange={handleCheckBoxChange}>   </lightning-input>
-                                <label for = "a">No match was found! If you wish to create a new customer account, Click on the 'Create New Account' button below.</label>
+                            <lightning-input type="checkbox" data-id="checkboxField" id='a'
+                                onchange={handleCheckBoxChange}> </lightning-input>
+                            <label for="a"><lightning-formatted-rich-text
+                                    value={labels.NewAccRequest}></lightning-formatted-rich-text></label>
                         </div>
                         <br />
                         <template if:true={isValidUser}>
-                                <lightning-button if:false={isRecordPage} onclick={onNextClickHandler} data-element="next-button"
-                                    class="slds-p-left_small" variant="brand" value="NextAccount" label="Create New Account" disabled={disableNext}></lightning-button>
+                            <lightning-button if:false={isRecordPage} onclick={onNextClickHandler}
+                                data-element="next-button" class="slds-p-left_small" variant="brand" value="NextAccount"
+                                label="Create New Account" disabled={disableNext}></lightning-button>
                         </template>
                         <br />
                         <br />
-                        
+
                     </div>
-                </div>  
+                </div>
             </template>
         </div>
         <template if:true={showBIReport}>
             <lightning-card title="Unified Customer Report">
-                <div class="slds-card__body slds-card__body_inner"><strong>Attention Data Ops:</strong> When trying to determine if the request should be approved as Unified Global,Intermediate, Country, or Location,you can view the Country/Address which UCD already has recorded for an existing customer hierarchy using the Customer BI Report <a href={biReportLink} target="__blank">LINK</a></div>
+                <div class="slds-card__body slds-card__body_inner"><strong>Attention Data Ops:</strong> When trying to
+                    determine if the request should be approved as Unified Global,Intermediate, Country, or Location,you
+                    can view the Country/Address which UCD already has recorded for an existing customer hierarchy using
+                    the Customer BI Report <a href={biReportLink} target="__blank">LINK</a></div>
             </lightning-card>
         </template>
 
 
         <template if:true={isShowModal}>
-            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-            <div class="slds-modal__container">
-                <template if:true={showModalLoading}>
-                    <lightning-spinner alternative-text="Loading" size="medium" class="spinnerClass"></lightning-spinner>
-                </template>
-                <!-- modal header start -->
-                <header class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleBackButtonClick}>
-                        <lightning-icon icon-name="utility:close"
-                        alternative-text="close"
-                        variant="inverse"
-                        size="small" ></lightning-icon>
-                        <span class="slds-assistive-text">Close</span>
-                    </button>
-                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Reuse Account</h2>
-                </header>
-            
-                <!-- modal body start -->
-                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <template if:true={showModalLoading}>
+                        <lightning-spinner alternative-text="Loading" size="medium"
+                            class="spinnerClass"></lightning-spinner>
+                    </template>
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={handleBackButtonClick}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Reuse Account</h2>
+                    </header>
 
-                    <lightning-layout multiple-rows="false">
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Account Name"  label="Account Name" value={selectedRecordsData.accName} disabled></lightning-input>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Business Party Id"  label="Business Party Id" value={selectedRecordsData.bpId} disabled></lightning-input>
-                        </lightning-layout-item>
-                    </lightning-layout>
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
 
-                    <lightning-layout multiple-rows="false">
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Customer Type"  label="Customer Type" value={selectedRecordsData.customerAggregationCode} disabled></lightning-input>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-textarea type="text" name="Customer Process Engagement"  label="Customer Process Engagement" value={selectedRecordsData.cpe} disabled></lightning-textarea>
-                        </lightning-layout-item>
-                    </lightning-layout>
+                        <lightning-layout multiple-rows="false">
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Account Name" label="Account Name"
+                                    value={selectedRecordsData.accName} disabled></lightning-input>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Business Party Id" label="Business Party Id"
+                                    value={selectedRecordsData.bpId} disabled></lightning-input>
+                            </lightning-layout-item>
+                        </lightning-layout>
 
-                    <lightning-layout multiple-rows="false">
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Account Record Type"  label="Account Record Type" value={selectedRecordsData.recordType} disabled></lightning-input>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                          <!--  <lightning-textarea type="text" name="Customer Process Engagement"  label="Customer Process Engagement" value={selectedRecordsData.cpe} disabled></lightning-textarea>-->
-                        </lightning-layout-item>
-                    </lightning-layout>
+                        <lightning-layout multiple-rows="false">
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Customer Type" label="Customer Type"
+                                    value={selectedRecordsData.customerAggregationCode} disabled></lightning-input>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-textarea type="text" name="Customer Process Engagement"
+                                    label="Customer Process Engagement" value={selectedRecordsData.cpe}
+                                    disabled></lightning-textarea>
+                            </lightning-layout-item>
+                        </lightning-layout>
 
-                    <lightning-layout multiple-rows="false">
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Unified Hierarchy"  label="Unified Hierarchy" value={selectedRecordsData.unifiedHierarchy} disabled></lightning-input>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Associated Unified Global"  label="Associated Unified Global" value={selectedRecordsData.unifiedGlobalCustomer} disabled></lightning-input>
-                        </lightning-layout-item>
-                    </lightning-layout>
+                        <lightning-layout multiple-rows="false">
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Account Record Type" label="Account Record Type"
+                                    value={selectedRecordsData.recordType} disabled></lightning-input>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <!--  <lightning-textarea type="text" name="Customer Process Engagement"  label="Customer Process Engagement" value={selectedRecordsData.cpe} disabled></lightning-textarea>-->
+                            </lightning-layout-item>
+                        </lightning-layout>
 
-                    <lightning-layout multiple-rows="false">
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Website"  label="Unified Website URL" value={selectedRecordsData.Website} disabled></lightning-input>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Sales group"  label="Sales Group" value={selectedRecordsData.salesGroupCode} disabled></lightning-input>
-                        </lightning-layout-item>
-                    </lightning-layout>
+                        <lightning-layout multiple-rows="false">
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Unified Hierarchy" label="Unified Hierarchy"
+                                    value={selectedRecordsData.unifiedHierarchy} disabled></lightning-input>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Associated Unified Global"
+                                    label="Associated Unified Global" value={selectedRecordsData.unifiedGlobalCustomer}
+                                    disabled></lightning-input>
+                            </lightning-layout-item>
+                        </lightning-layout>
 
-                    <lightning-layout multiple-rows="false">
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-textarea type="text" name="Address"  label="Address" value={selectedRecordsData.address} disabled></lightning-textarea>
-                        </lightning-layout-item>
-                        <lightning-layout-item padding="around-small" size="6" large-device-size="6" medium-device-size="6"
-                            small-device-size="12">
-                            <lightning-input type="text" name="Account Owner"  label="Account Owner" value={selectedRecordsData.accOwner} disabled></lightning-input>
-                        </lightning-layout-item>
-                    </lightning-layout>
+                        <lightning-layout multiple-rows="false">
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Website" label="Unified Website URL"
+                                    value={selectedRecordsData.Website} disabled></lightning-input>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Sales group" label="Sales Group"
+                                    value={selectedRecordsData.salesGroupCode} disabled></lightning-input>
+                            </lightning-layout-item>
+                        </lightning-layout>
 
-                    <br/>
-                        
+                        <lightning-layout multiple-rows="false">
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-textarea type="text" name="Address" label="Address"
+                                    value={selectedRecordsData.address} disabled></lightning-textarea>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="6" large-device-size="6"
+                                medium-device-size="6" small-device-size="12">
+                                <lightning-input type="text" name="Account Owner" label="Account Owner"
+                                    value={selectedRecordsData.accOwner} disabled></lightning-input>
+                            </lightning-layout-item>
+                        </lightning-layout>
+
+                        <br />
+
+                    </div>
+
+                    <!-- modal footer start-->
+                    <footer class="slds-modal__footer" style="text-align: left;">
+                        <lightning-button-group>
+
+                            <lightning-button label="Cancel" onclick={handleBackButtonClick}></lightning-button>
+                            <lightning-button variant="brand" type="submit" label="Submit"
+                                onclick={handleSubmit}></lightning-button>
+                        </lightning-button-group>
+                        <b>&nbsp;&nbsp; Do you want to continue?</b>
+                    </footer>
+
                 </div>
-                
-                <!-- modal footer start-->
-                <footer class="slds-modal__footer" style="text-align: left;">
-                    <lightning-button-group>
-
-                        <lightning-button label="Cancel"  onclick={handleBackButtonClick}></lightning-button>
-                        <lightning-button variant="brand" type="submit" label="Submit" onclick={handleSubmit}></lightning-button>                             
-                    </lightning-button-group>
-                    <b>&nbsp;&nbsp; Do you want to continue?</b>
-                </footer>
-               
-            </div>
             </section>
             <div class="slds-backdrop slds-backdrop_open"></div>
         </template>

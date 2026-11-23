@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>An email notification will be sent to the account owner if twelve months have passed since the last document was uploaded.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ACM Document Reminder Notification Template</name>
+    <relatedEntityType>Account</relatedEntityType>
+    <style>none</style>
+    <subject>Action Required: Please update Customer Due Diligence file for Account  {{{Account.Name}}} ({{{Account.Id}}})</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

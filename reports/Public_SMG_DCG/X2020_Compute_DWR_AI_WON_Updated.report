@@ -9,9 +9,6 @@
         <field>OpportunityLineItem.Core_KPI_CPU_Units__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_KPI_Date__c</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
@@ -21,6 +18,9 @@
         <field>TYPE</field>
     </columns>
     <columns>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
@@ -28,6 +28,9 @@
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Vendor__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
@@ -118,7 +121,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Idaville,Spring Hill,Habana,Gaudi,Goya</value>
+            <value>Idaville,Spring Hill,Habana</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>
@@ -132,7 +135,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>AI on IA Deal Win (On-Prem),AI on IA Deal Win (Off-Prem)</value>
+            <value>,AI on IA Deal Win (On-Prem),AI on IA Deal Win (Off-Prem)</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -146,7 +149,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>DCG,IOTG,PSG,CCG</value>
+            <value>DCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_BU_Focus__c</column>

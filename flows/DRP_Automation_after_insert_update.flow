@@ -385,7 +385,7 @@
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>currentItem_Filter_Rejected_Records</name>
         <dataType>SObject</dataType>

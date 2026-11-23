@@ -5,29 +5,6 @@
   "id" : "b9cdf95f-7f4f-4660-a029-6d62894e8e42",
   "label" : "Record List",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : {
-        "enableInlineEdit" : false,
-        "filterName" : "00B2i000001GWjREAW",
-        "layout" : "FULL",
-        "pageSize" : 25,
-        "scope" : "Sales_Host__c",
-        "showActionBar" : true,
-        "showChartsPanel" : true,
-        "showDisplay" : "showall",
-        "showFilterPanel" : true,
-        "showImageIcon" : true,
-        "showManualRefreshButton" : true,
-        "showObjectName" : true,
-        "showPinnedList" : false,
-        "showSearchBar" : true
-      },
-      "componentName" : "forceCommunity:objectHome",
-      "id" : "61602ba8-2914-43f3-85cf-d128b5635c71",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "b6732fe9-9728-474b-9d00-c78c796214ec",
     "regionName" : "header",
     "type" : "region"

@@ -259,6 +259,7 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
+            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
@@ -285,11 +286,6 @@
                     <fullName>Visited Booth</fullName>
                     <default>false</default>
                     <label>Visited Booth</label>
-                </value>
-                <value>
-                    <fullName>CNDA Request</fullName>
-                    <default>false</default>
-                    <label>CNDA Request</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -398,26 +394,6 @@
         <externalId>false</externalId>
         <label>Profession</label>
         <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Project_Size__c</fullName>
-        <externalId>false</externalId>
-        <label>Project Size</label>
-        <length>25</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Project_Timeframe__c</fullName>
-        <externalId>false</externalId>
-        <label>Project Timeframe</label>
-        <length>25</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -598,15 +574,17 @@
     <listViews>
         <fullName>All_Records</fullName>
         <columns>NAME</columns>
+        <columns>PMP_MDA_BizOrg_Id__c</columns>
+        <columns>PMP_Offering_Id__c</columns>
+        <columns>Core_First_Name__c</columns>
+        <columns>Core_Last_Name__c</columns>
         <columns>CREATED_DATE</columns>
         <columns>Core_Status__c</columns>
         <columns>CREATEDBY_USER</columns>
-        <columns>Core_Email__c</columns>
-        <columns>Core_First_Name__c</columns>
-        <columns>Core_Last_Name__c</columns>
-        <columns>Core_Lead_Source__c</columns>
+        <columns>Core_Eloqua_Error__c</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>LS-{0000}</displayFormat>

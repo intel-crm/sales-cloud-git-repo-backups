@@ -204,6 +204,7 @@
         <columns>espy__Flex_Queue_Priority__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>PRIORITY-{0000}</displayFormat>

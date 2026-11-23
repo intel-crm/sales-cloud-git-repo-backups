@@ -39,6 +39,9 @@
         <field>Core_Opp_FC_Prod_Schedule__c.Core_FC_Last_Modified_Date__c</field>
     </columns>
     <columns>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</field>
+    </columns>
+    <columns>
         <field>Core_Opp_FC_Prod_Schedule__c.Core_Core_FC_Appvd_SalesPrice__c</field>
     </columns>
     <filter>
@@ -68,7 +71,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>DCG-Tier 1,DCAI-Tier 1,DCG-Tier 2,DCAI-Tier 2</value>
+            <value>DCG-Tier 1,DCG-Tier 2</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSE_DATE</column>
@@ -102,8 +105,8 @@
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</field>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsAcross>
@@ -140,13 +143,13 @@
     </params>
     <reportType>OpportunityCustomEntity$Core_Opp_FC_Prod_Schedule__c@Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Product__c</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approved_Date__c</dateColumn>
-        <endDate>2021-01-15</endDate>
+        <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
+        <endDate>2020-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-16</startDate>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

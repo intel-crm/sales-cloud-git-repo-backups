@@ -87,13 +87,19 @@ public without sharing class Core_MDF_Batch_UpdatePaymentRunClaims implements Da
     
     public void execute(Database.BatchableContext bc, List<PartnerFundClaim> claimList) {
         try{
-            if(errorFlag == false){                
+            //ATHR - Deeply Nested if 16209
+            if (errorFlag) {
+                return;
+            }               
                 // Grouping Logic Used as key for Creating Payment Records; The Key depends on Program or Budget Type
                 String paymentKey = '';
                 for(PartnerFundClaim claim : claimList)
                 {
                     paymentKey = getPaymentKeyForClaim(claim);
-                    if(paymentWrapperMap.containsKey(paymentKey)){
+                    //ATHR - Deeply Nested if 16209
+		            if(!paymentWrapperMap.containsKey(paymentKey)){
+		    	        continue;
+		            }
                         // Update Claim Status to Pending Payment
                         claim.Core_MDF_Status__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Pending_Payment');
                         // Update Payment Field on the claim
@@ -108,13 +114,11 @@ public without sharing class Core_MDF_Batch_UpdatePaymentRunClaims implements Da
                         claimIdtoPaymentId.put(claim.Id, claim.Core_MDF_Payment_Id__c);
                     }
                     
-                }            
                 // Update List of Claims
                 if(claimList != NULL && claimList.size()>0){
                     Database.update(claimList);
                 }
                 
-            }
         }
         catch(Exception e){
             errorFlag = true;
@@ -161,8 +165,77 @@ public without sharing class Core_MDF_Batch_UpdatePaymentRunClaims implements Da
     *******************************************************************************************************/
     
     public void generatePaymentFile(){
-        if(paymentWrapperMap != NULL && paymentWrapperMap.size()>0){
-            if(Core_MDF_PaymentUtility.isRsaMd(prunInstance)){
+        //ATHR - Deeply Nested if 16209
+        if (paymentWrapperMap == null || paymentWrapperMap.isEmpty()) {
+            return;
+        }
+        String runType = getRunType(prunInstance);
+        switch on runType {
+            when 'RSA_MD' {
+                Core_MDF_Payment_FileHelper.generateRsaMdPaymentFile(paymentWrapperMap, prunInstance);
+            }
+            when 'RETAIL_MDF' {
+                Core_MDF_Payment_FileHelper.generateRetailMdforIPAPaymentFile(paymentFileWrapperMap, prunInstance, paymentRunProgram);
+            }
+            when 'IPA_MDF' {
+                for (String key : paymentTypeToFileWrapper.keySet()) {
+                    switch on key {
+                        when 'Expense' {
+                            Core_MDF_Payment_FileHelper.generateIPAPaymentFileForExpense(paymentTypeToFileWrapper.get(key), prunInstance, paymentRunProgram);
+                        }
+                        when 'CSAR Cash' {
+                            Core_MDF_Payment_FileHelper.generateRetailMdforIPAPaymentFile(paymentTypeToFileWrapper.get(key), prunInstance, paymentRunProgram);
+                        }
+                        when 'CSAR Credit Memo' {
+                            Core_MDF_Payment_FileHelper.generateIPAPaymentFileForCreditMemo(paymentTypeToFileWrapper.get(key), prunInstance, paymentRunProgram);
+                        }
+                        when else {
+                            // no-op
+                        }
+                    }
+                }
+            }
+            when 'COGTM_CSAR' {
+                for (String key : paymentTypeToFileWrapper.keySet()) {
+                    switch on key {
+                        when 'CSAR Cash' {
+                            Core_MDF_Payment_FileHelper.generateRetailMdforIPAPaymentFile(paymentTypeToFileWrapper.get(key), prunInstance, paymentRunProgram);
+                        }
+                        when 'CSAR Credit Memo' {
+                            Core_MDF_Payment_FileHelper.generateIPAPaymentFileForCreditMemo(paymentTypeToFileWrapper.get(key), prunInstance, paymentRunProgram);
+                        }
+                    }
+                }
+            }
+            when 'COGTM_VISTEX' {
+                if (!Core_MDF_Utility.byPassFeature('Bypass_MDF_Vistex_File_Generation')) {
+                    Core_MDF_Payment_FileHelper.generateMDFVistexPaymentFile(paymentWrapperMap, prunInstance, paymentRunProgram);
+                }
+                if (!Core_MDF_Utility.byPassFeature('Bypass_MDF_Generic_File_Generation')) {
+                    Core_MDF_Payment_FileHelper.generateMDFGenericPaymentFile(paymentWrapperMap, prunInstance, paymentRunProgram);
+                }
+            }
+            when 'COGTM_EXPENSE' {
+                for (String key : paymentTypeToFileWrapper.keySet()) {
+                    if (key == 'Expense') {
+                        Core_MDF_Payment_FileHelper.generateIPAPaymentFileForExpense(paymentTypeToFileWrapper.get(key), prunInstance, paymentRunProgram);
+                    }
+                }
+            }
+            when 'MDF_OR_MDF_PLUS' {
+                if (!Core_MDF_Utility.byPassFeature('Bypass_MDF_Vistex_File_Generation')) {
+                    Core_MDF_Payment_FileHelper.generateMDFVistexPaymentFile(paymentWrapperMap, prunInstance, paymentRunProgram);
+                }
+                if (!Core_MDF_Utility.byPassFeature('Bypass_MDF_Generic_File_Generation')) {
+                    Core_MDF_Payment_FileHelper.generateMDFGenericPaymentFile(paymentWrapperMap, prunInstance, paymentRunProgram);
+                }
+            }
+            when else {
+                Core_MDF_Payment_FileHelper.ccpFileGenerator(paymentWrapperMap, prunInstance, paymentRunProgram);
+            }
+        }
+    }
+        /*if(Core_MDF_PaymentUtility.isRsaMd(prunInstance)){
                 // Payment file for RSA MD
                 Core_MDF_Payment_FileHelper.generateRsaMdPaymentFile(paymentWrapperMap,prunInstance); 
             }
@@ -221,8 +294,30 @@ public without sharing class Core_MDF_Batch_UpdatePaymentRunClaims implements Da
             else{
                 // Payment file for CCP program 
                 Core_MDF_Payment_FileHelper.ccpFileGenerator(paymentWrapperMap,prunInstance,paymentRunProgram); 
+    }*/
+    private String getRunType(Core_MDF_Payment_Run__c prunInstance) {        
+        if (Core_MDF_PaymentUtility.isRsaMd(prunInstance)) {
+            return 'RSA_MD';
             }
+        if (Core_MDF_PaymentUtility.isRetailMdf(prunInstance)) {
+            return 'RETAIL_MDF';
         }
+        if (Core_MDF_PaymentUtility.isIPAMdf(prunInstance)) {
+            return 'IPA_MDF';
+        }
+        if (Core_MDF_PaymentUtility.isCoGTMCSARPaymentRun(prunInstance)) {
+            return 'COGTM_CSAR';
+        }
+        if (Core_MDF_PaymentUtility.isCoGTMVistexPaymentRun(prunInstance)) {
+            return 'COGTM_VISTEX';
+        }
+        if (Core_MDF_PaymentUtility.isCoGTMExpensePaymentRun(prunInstance)) {
+            return 'COGTM_EXPENSE';
+        }
+        if (Core_MDF_PaymentUtility.isMdfOrMdfPlus(prunInstance)) {
+            return 'MDF_OR_MDF_PLUS';
+        }
+        return 'DEFAULT';
     }
     
     /****************************************************************************************************** 

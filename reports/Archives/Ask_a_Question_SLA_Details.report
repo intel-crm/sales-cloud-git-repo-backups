@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_88509095</developerName>
+        <masterLabel>Age Range</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Core_Ask_A_Question__c.Core_Age__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>3</to>
+            </sourceValues>
+            <value>0 - 3 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>3</from>
+                <to>7</to>
+            </sourceValues>
+            <value>3 -7 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>7</from>
+            </sourceValues>
+            <value>7 + Days</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Core_Ask_A_Question__c.Core_Severity_Level__c</field>
+    </columns>
+    <columns>
+        <field>Core_Ask_A_Question__c.Core_I_Need_Assistance_With__c</field>
+    </columns>
+    <columns>
+        <field>Core_Ask_A_Question__c.Core_Description__c</field>
+    </columns>
+    <columns>
+        <field>Core_Ask_A_Question__c.Core_SLA_Indicator__c</field>
+    </columns>
+    <columns>
+        <field>Core_Ask_A_Question__c.Core_SLA_Duration__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>CUST_LAST_UPDATE</field>
+    </columns>
+    <columns>
+        <field>Core_Ask_A_Question__c.Core_Age__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_88509095</field>
+    </columns>
+    <columns>
+        <field>Core_Ask_A_Question__c.Core_Resolution__c</field>
+    </columns>
+    <columns>
+        <field>Core_Ask_A_Question__c.Core_Resolution_Type__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>Ask a Question SLA Details</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_Ask_A_Question__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_Ask_A_Question__c.Core_SLA_Indicator__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

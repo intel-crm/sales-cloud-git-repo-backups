@@ -23,6 +23,6 @@ export default class Ips_AgentLuncher extends LightningElement {
         return '';
     }
 
-        return `https://oneai.intel.com/c/new?agent_id=agent_O7kTmJ6Ss22w4mlBfR2XY&prompt=${encodeURIComponent(this.caseNumber)}&submit=true`;
+        return `https://oneai-dev.intel.com/c/new?agent_id=agent_c5UlEqzemrfjdUrEi9oV2&prompt=${encodeURIComponent(this.caseNumber)}&submit=true`;
     }
 }

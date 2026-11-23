@@ -59,11 +59,6 @@
             }
         });
         $A.enqueueAction(action);
-      //  $A.get("e.force:refreshView").fire();
-        setTimeout(() => {
-                    console.log("Refreshing view");
-                    $A.get("e.force:refreshView").fire();
-                }, 2000);
     },
     cancelPopup : function(component, event, helper) {
         $A.get("e.force:closeQuickAction").fire();

@@ -531,4 +531,34 @@ public without sharing class Core_OppApproval { //TWC3123-5359 Added without sha
         }
         
     }
+    public static void blockApprovalPartnerLed(List<Opportunity> opportunityList, Map<Id, Opportunity> oldOppMap){
+        
+        CRM_OpportunitySubmissionSwitch__c partnerLedSwitch = CRM_OpportunitySubmissionSwitch__c.getInstance('CRM_PartnerLed');
+        
+        List<Opportunity> blockOppList = new List<Opportunity>();
+        
+        for(Opportunity opp : opportunityList){
+            
+            Boolean dwApproveCheck = opp.Core_Approval_Status__c <> null && 
+                (opp.Core_Approval_Status__c != oldOppMap.get(opp.Id).Core_Approval_Status__c) && 
+                (opp.Core_Approval_Status__c.equalsIgnoreCase('approved'))  && 
+                (oldOppMap.get(opp.Id).Core_Approval_Status__c == 'Submitted') ;
+            
+            Boolean blockApprovalCheck = partnerLedSwitch.Opportunity_Coverage__c.trim().equalsIgnoreCase(opp.Core_Opportunity_Coverage_Nm__c) && 
+                Date.today() >= partnerLedSwitch.Start_Date__c &&
+                Date.today() <= partnerLedSwitch.End_Date__c && 
+                partnerLedSwitch.Active__c == true && partnerLedSwitch.Allow_approval_before_cutoff_date__c == true &&
+                partnerLedSwitch.Submission_cut_off_date__c < opp.Core_Date_Submitted_for_Approval__c;
+            
+            if(dwApproveCheck && blockApprovalCheck){
+                blockOppList.add(opp);  
+            }                  
+        }
+        if(blockOppList.size()>0){
+            for(Opportunity opp:blockOppList){
+                opp.addError(Core_CRM_Utility.getCRMLabel('CRM_restrictOpptyApprovalMsg'), false);
+            }
+        }
+        
+    }
 }

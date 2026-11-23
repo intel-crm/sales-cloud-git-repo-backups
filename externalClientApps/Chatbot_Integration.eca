@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>amal.thomas@intel.com</contactEmail>
+    <distributionState>Local</distributionState>
+    <iconUrl>https://test.salesforce.com/logos/Salesforce/Salesforce/icon.png</iconUrl>
+    <isProtected>false</isProtected>
+    <label>Chatbot Integration</label>
+    <logoUrl>https://test.salesforce.com/logos/Salesforce/Salesforce/logo.png</logoUrl>
+    <orgScopedExternalApp>00D2i0000008d6j:Chatbot_Integration</orgScopedExternalApp>
+</ExternalClientApplication>

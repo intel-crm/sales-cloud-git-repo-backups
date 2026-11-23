@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <available>true</available>
+    <description>Email sent to Opportunity Owner when SLA is breached</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Opportunity SLA Breach 1</name>
+    <style>none</style>
+    <subject>-</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

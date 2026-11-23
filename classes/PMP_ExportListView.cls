@@ -34,7 +34,6 @@ objWrapperList.add(objW);
 }*/
         
         for(Map<String,Object> ListViewMappingMdt : new Core_CustomMetadataObjectController('PMP_ListViewMapping__mdt').getAll().values()){
-            System.debug('ListViewMappingMdt>>>'+ListViewMappingMdt);
             if(boolean.valueof(ListViewMappingMdt.get('PMP_Is_Active__c'))){
                 objWrapper objW = new objWrapper();
                 objW.sobjectName = String.valueOf(ListViewMappingMdt.get('PMP_sObjectName__c'));
@@ -60,7 +59,6 @@ FROM PMP_ListViewMapping__mdt WHERE PMP_sObjectName__c =:sObjectName AND PMP_Is_
 listViewSet.add(mdt.PMP_List_View_Name__c);
 }*/       
             for(Map<String,Object> ListViewMappingMdt : new Core_CustomMetadataObjectController('PMP_ListViewMapping__mdt').getAll().values()){
-                System.debug('ListViewMappingMdt>>>'+ListViewMappingMdt);
                 
                 if(boolean.valueof(ListViewMappingMdt.get('PMP_Is_Active__c')) 
                    && (String.valueOf(ListViewMappingMdt.get('PMP_sObjectName__c'))==sObjectName)){
@@ -68,7 +66,6 @@ listViewSet.add(mdt.PMP_List_View_Name__c);
                        listViewSet.add( String.valueOf(ListViewMappingMdt.get('PMP_List_View_Name__c')));
                    }
             }
-            system.debug('listViewSet>>>'+listViewSet);
             
             
             for(ListView lv : [SELECT Id, Name, DeveloperName,CreatedById FROM ListView
@@ -88,7 +85,6 @@ listViewSet.add(mdt.PMP_List_View_Name__c);
         catch(Exception e){
             //system.debug('Error on fetching listviews '+e.getMessage());
         }        
-        // system.debug('ListViewsReturned:'+oListViewWrapper);
         return oListViewWrapper; 
     }
     
@@ -109,11 +105,9 @@ listViewSet.add(mdt.PMP_List_View_Name__c);
             
             Http h = new Http();
             HttpResponse res = h.send(req);
-            //System.debug('res body:' + res.getBody());
             
             Map<String, Object> root = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
             strQuery = (String) root.get('query') + ' LIMIT ' + (maxExportRows + 1);
-            //System.debug('#10 strQuery: ' + strQuery);
             
             lstColumn = new List<SingleColumn>();
             parseJsonResponse(res.getBody());
@@ -143,7 +137,6 @@ listViewSet.add(mdt.PMP_List_View_Name__c);
         if (col.hidden == false && col.fieldNameOrPath != null && !col.fieldNameOrPath.contains('Clone')) {
             col.label = col.label.replace(',', '');
             lstColumn.add(col);
-            // System.debug('lstColumn' + lstColumn);
         }
     }
     
@@ -155,10 +148,8 @@ listViewSet.add(mdt.PMP_List_View_Name__c);
     @AuraEnabled
     public static List<sObject> fetchRecords(Id filterId, String sObjectName){
         //fetching records based on the query.
-        // System.debug('strQuery before fetch: ' + strQuery+sObjectName);
         if(strQuery == null){
             listViewFilter(filterId,sObjectName);
-            // System.debug('strQuery after fetch from inside if: ' + strQuery);
         }
         List<sObject> lstRec = new List<sObject>();
         try{string query =  strQuery;
@@ -190,7 +181,6 @@ listViewSet.add(mdt.PMP_List_View_Name__c);
                     
                 }
                 
-                //system.debug('keys:'+keysToLabelMap);
             }
         catch(Exception e){
             //system.debug('Error on fetching keys '+e.getMessage());

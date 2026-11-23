@@ -21,6 +21,7 @@ public without sharing class ACM_BU_SetAttributesOnMDMUpdate implements UCD_ACM_
                 setAttributes(newAccounts,oldAccounts);
                 geoAndSubgeoMapping(newAccounts);
                 setCountryandStateCode(newAccounts);
+                //setAddressMapping(newAccounts);
             }
             runOnce = false;
         } catch (Exception ex) {
@@ -90,4 +91,20 @@ Method to set Country and State Code
             } 
         }    
     }
+    
+    /*
+Method to Map Physical address for Country and Location Aggregation Type
+*/
+   /* private void setAddressMapping(Map<Id, Account> newAccounts) {
+        
+        for(Account account : newAccounts.values()) {
+            if(account.Core_Customer_Aggregation_Type__c=='UNFD_CTRY_CUST' ||account.Core_Customer_Aggregation_Type__c=='UNFD_LOC_CUST')
+            {
+                account.Core_Unified_Customer_Address__Street__s=account.Core_Unified_Secondary_Address__Street__s;
+                account.Core_Unified_Customer_Address__City__s=account.Core_Unified_Secondary_Address__City__s;
+                account.Core_Unified_Customer_Address__PostalCode__s=account.Core_Unified_Secondary_Address__PostalCode__s;
+                
+            }
+        }
+    }*/
 }

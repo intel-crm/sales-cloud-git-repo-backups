@@ -2,7 +2,7 @@
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
         <masterLabel>Account Plan</masterLabel>
-        <translation><!-- Account Plan --></translation>
+        <translation>Plan de la cuenta</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Business Client Acceleration - MDF</masterLabel>
@@ -23,6 +23,10 @@
     <valueTranslation>
         <masterLabel>Co-Engineering</masterLabel>
         <translation>Ingeniería conjunta</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Co-Investment</masterLabel>
+        <translation><!-- Co-Investment --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Data Center Market Accelerate</masterLabel>
@@ -58,11 +62,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Proposal I MDF</masterLabel>
-        <translation><!-- Proposal I MDF --></translation>
+        <translation>Propuesta I MDF</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Proposal II MDF</masterLabel>
-        <translation><!-- Proposal II MDF --></translation>
+        <translation>Propuesta II MDF</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>RSA MD</masterLabel>

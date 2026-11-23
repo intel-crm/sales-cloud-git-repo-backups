@@ -116,7 +116,6 @@ Accenture – Harika P        8/30/2018                    Created.
                                                                          Core_MDF_CCP_TestDataUtility.Campaign_RecordType_DCF, 'Data Center CoMarketing Fund',System.today().addDays(5) , 
                                                                          System.today().addDays(120), 5000, 'Hybrid Cloud', acc1.Id, 'Server',false);
             camp1.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            camp1.Core_MDF_Technology__c = 'Sapphire Rapids';
             insert camp1;
             Campaign campxc1 = [SELECT Name, Id, Core_MDF_Activity_Category_Type__c, Core_MDF_Activity_Category__c FROM Campaign WHERE 
                                 Name = 'DCFTestCamp' LIMIT 1];
@@ -171,10 +170,8 @@ Accenture – Harika P        8/30/2018                    Created.
             Campaign camp3 = Core_MDF_CCP_TestDataUtility.createCampaign('DCFTestCamp1','Reseller','Intel® Corporate Logo','CMP only', 
                                                                          Core_MDF_CCP_TestDataUtility.Campaign_RecordType_DCF, 'Data Center CoMarketing Fund',System.today().addDays(5) , 
                                                                          System.today().addYears(1), 5000, 'Hybrid Cloud', acc1.Id, 'Server',false);
-            camp3.Core_MDF_Technology__c = 'Sapphire Rapids';
-			camp3.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            insert camp3; 
-            
+            camp3.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
+            insert camp3;
             Campaign campxc3 = [SELECT Name, Id, Core_MDF_Activity_Category_Type__c, Core_MDF_Activity_Category__c FROM Campaign WHERE 
                                 Name = 'DCFTestCamp1' LIMIT 1];
             list<Core_MDF_Categorywise_Campaign_Budget__c> cWise2 = Core_MDF_CampGridController.categoryData(campxc3.Id);
@@ -186,9 +183,7 @@ Accenture – Harika P        8/30/2018                    Created.
                                                                          Core_MDF_CCP_TestDataUtility.Campaign_RecordType_DCF, 'Data Center CoMarketing Fund',System.today().addDays(5) , 
                                                                          System.today().addYears(1), 5000, 'Hybrid Cloud', acc1.Id, 'Server',false);
             camp4.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-	        camp4.Core_MDF_Technology__c = 'Sapphire Rapids';
-            insert camp4;  
-            
+            insert camp4;
             Campaign campxc4 = [SELECT Name, Id, Core_MDF_Activity_Category_Type__c, Core_MDF_Activity_Category__c FROM Campaign WHERE 
                                 Name = 'DCFTestCamp2' LIMIT 1];
             //campxc4.Core_MDF_Activity_Category_Type__c ='Broadcast->Podcast';
@@ -425,5 +420,5 @@ Accenture – Harika P        8/30/2018                    Created.
             update eefCamp;
            Test.stopTest(); 
         }
-    }    
+    }
 }

@@ -87,6 +87,20 @@
             <operator>notEqual</operator>
             <value></value>
         </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Intel Partner Alliance,Client,Datacenter</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Plan,MDF,MDF+,OEM CMP,Service Provider CMP</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>

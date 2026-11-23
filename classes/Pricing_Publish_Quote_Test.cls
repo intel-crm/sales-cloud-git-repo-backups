@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Sandeep Chamate
  * @group             : 
- * @last modified on  : 04-06-2026
+ * @last modified on  : 06-18-2026
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 @isTest
@@ -18,12 +18,13 @@ public class Pricing_Publish_Quote_Test {
         System.runAs(adminUser[0]){
             
             Product2 prod = new Product2();
+            List<String> lobValuesList = Label.Pricing_LOB_Values.split(',');
             prod.Core_Product_Org__c = 'Sales';
             prod.Core_Product_Type__c = 'Processors';
             prod.Core_Sales_Visible_Flag__c  = True;
             prod.IsActive = True;
             prod.Core_Hierarchy_ID__c = '43';
-            prod.Core_Group_Code_Short_Name__c = 'CCG';
+            prod.Core_Line_of_Business__c = lobValuesList[1];
             prod.Name = 'Product X';
             
             Pricing_Competitor_Product__c cp = new Pricing_Competitor_Product__c(
@@ -171,6 +172,7 @@ public class Pricing_Publish_Quote_Test {
         List<Pricing_Comments__c> lstComment = [SELECT Id,Pricing_Answer__c,Pricing_Required_Ind__c,Pricing_Quote__c
                                                 FROM Pricing_Comments__c 
                                                 WHERE Pricing_Quote__c =: lstquote[0].id and recordtypeid=:commentRecordTypeId];
+        //Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){ 
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquote[0].id);
@@ -191,6 +193,7 @@ public class Pricing_Publish_Quote_Test {
         List<SBQQ__Quote__c> lstquote = new List<SBQQ__Quote__c>([select id,Pricing_Intel_Sales_Rep_Email_Txt__c,Pricing_Intel_Account_Exec_Email_Txt__c,SBQQ__Account__c ,SBQQ__PrimaryContact__c from SBQQ__Quote__c Limit 1]);
         List<SBQQ__Quote__c> quotes = Pricing_Test_Utility.createQuoteWithParam(lstquote[0].SBQQ__Account__c, lstquote[0].SBQQ__PrimaryContact__c, 1,lstquote[0].Pricing_Intel_Sales_Rep_Email_Txt__c,lstquote[0].Pricing_Intel_Account_Exec_Email_Txt__c);
         test.stopTest();
+        //Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(quotes[0].id);
@@ -262,6 +265,7 @@ public class Pricing_Publish_Quote_Test {
         lstquoteLines[0].Pricing_CPUs_per_system_qty__c = 1;
         update lstquoteLines[0];
         test.stopTest();
+        //Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){
             glbVariable = Pricing_Publish_Quote.PublishTenderQuote(lstquoteLines[0].id+';');
@@ -343,6 +347,7 @@ public class Pricing_Publish_Quote_Test {
             //UPDATE lstQLI[0]; // fail
         }
         Test.stopTest();
+        //Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         SBQQ__QuoteLine__c qli = [select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c where id=:lstQLI[0].id limit 1];
         system.runAs(lstUsers[0]){
@@ -383,6 +388,7 @@ public class Pricing_Publish_Quote_Test {
         if(!performanceList.isEmpty()){
             insert performanceList;
         }
+        //Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers4[0]){
             Set<String> errorMessage = new Set<String>();
@@ -407,6 +413,7 @@ public class Pricing_Publish_Quote_Test {
         delete psa;
         List<SBQQ__QuoteLine__c> lstquoteLines = new List<SBQQ__QuoteLine__c>([select id,Pricing_Quote_Line_Number__c from SBQQ__QuoteLine__c limit 5]);
         test.stopTest();
+        //Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         system.runAs(lstUsers[0]){
             Set<String> errorMessage = new Set<String>();
@@ -425,6 +432,7 @@ public class Pricing_Publish_Quote_Test {
         List<User> lstUsers = [select id from user where email = 'partner@noemail.com'];
         List<SBQQ__QuoteLine__c> qli = [select id from SBQQ__QuoteLine__c Limit 1];
         Set<Id> qliSet = new Set<Id>{qli[0].id,null};
+            //Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         test.startTest();
         system.runAs(lstUsers[0]){
@@ -481,6 +489,7 @@ public class Pricing_Publish_Quote_Test {
                 insert performanceList;
             }
             Test.stopTest();
+           // Pricing_Publish_Quote p = new Pricing_Publish_Quote();
             Pricing_Publish_Quote.globalVariables glbVariable;
             if(!lstUsers.isEmpty()){                
                 system.runAs(lstUsers[0]){                    
@@ -522,6 +531,7 @@ public class Pricing_Publish_Quote_Test {
         {
             insert performanceList;
         }
+       // Pricing_Publish_Quote p = new Pricing_Publish_Quote();
         Pricing_Publish_Quote.globalVariables glbVariable;
         Pricing_Test_Utility.shareQuoteWithUser(quoteId, lstFSEUsers[0].Id);
         Test.startTest();

@@ -2,6 +2,7 @@ import { LightningElement, wire, track, api } from 'lwc';
 import { getObjectInfo, getPicklistValues } from 'lightning/uiObjectInfoApi';
 import CORE_MDF_OBJECT from '@salesforce/schema/Core_MDF_Activity_Outcome__c';
 import getActivityOutcomes from '@salesforce/apex/Core_MDF_Activity_Purpose_Controller.getActivityOutcomes';
+import isActivityPurposeVisible from '@salesforce/apex/Core_MDF_Activity_Purpose_Controller.isActivityPurposeVisible';
 import BASELINE_PERIOD_FIELD from '@salesforce/schema/Core_MDF_Activity_Outcome__c.Core_MDF_Baseline_Period_nm__c';
 import OUTCOME_METRIC_FIELD from '@salesforce/schema/Core_MDF_Activity_Outcome__c.Core_MDF_Outcome_Metric_nm__c';
 import isResultValueEditable from '@salesforce/apex/Core_MDF_Activity_Purpose_Controller.isResultValueEditable'; //Added by shravani to check if the result value should be editable
@@ -28,6 +29,11 @@ import And from '@salesforce/label/c.Core_MDF_and_Ac';
 import CannotbeZero from '@salesforce/label/c.Core_MDF_cannotbezeroLabel';
 import CompleteThisField from '@salesforce/label/c.Core_MDF_CompleteThisField_ErrorMessage';
 import ClosedBracket from '@salesforce/label/c.Core_MDF_CloseBracket';
+import MarketingPurpose from '@salesforce/label/c.Core_MDF_Marketing_Purpose';
+import BusinessPurpose from '@salesforce/label/c.Core_MDF_Business_Purpose';
+import BrandsForOutcomeMetric from '@salesforce/label/c.Core_MDF_Brands_for_Outcome_Metric';
+import TechnologiesForOutcomeMetric from '@salesforce/label/c.Core_MDF_Technologies_for_Outcome_Metric';
+import OtherBrandsTechnologies from '@salesforce/label/c.Core_MDF_Activity_Other_OutcomeBrandsTechnologies';
 
 export default class ActivityPurposeComp extends LightningElement {
 
@@ -52,6 +58,11 @@ export default class ActivityPurposeComp extends LightningElement {
     @track ResultValueHelptxt = ResultValueHelptxt;
     @track CannotbeZero = CannotbeZero;
     @track ClosedBracket = ClosedBracket;
+    @track MarketingPurpose = MarketingPurpose;
+    @track BusinessPurpose = BusinessPurpose;
+    @track BrandsForOutcomeMetric = BrandsForOutcomeMetric;
+    @track TechnologiesForOutcomeMetric = TechnologiesForOutcomeMetric;
+    @track OtherBrandsTechnologies = OtherBrandsTechnologies;
 
     // ===== Tracked Properties =====
     @track baselineOptions = [];
@@ -60,10 +71,13 @@ export default class ActivityPurposeComp extends LightningElement {
     @track selectedBaseline = '';
     @track selectedResult = '';
     @track outcomes = [];
+    @track marketingOutcomes = [];
+    @track businessOutcomes = [];
     @track description = '';
     @track isDisabled = true;
     @track isOutcomeBasedActivityVisible = false;
     @track selectedBaselineLabel = '';
+    pendingCcfDcfBaselinePeriod = null; //indu
 
     // ===== API Properties =====
     @api selectedTechnologyOptions = []; // array
@@ -74,6 +88,18 @@ export default class ActivityPurposeComp extends LightningElement {
     @api editable;
     @api Activitystatus;
     @api isOutcomeBasedActivity;
+    @api outcomeType;
+    _showHeader = true;
+
+    @api
+    get showHeader() {
+        return this._showHeader;
+    }
+
+    set showHeader(value) {
+        this._showHeader = value !== false && value !== 'false';
+    }
+    
     //@api labelValueMap = [];
 
     // ===== Private / helper variables =====
@@ -106,6 +132,16 @@ export default class ActivityPurposeComp extends LightningElement {
     baselinePicklist({ data, error }) {
         if (data) {
             this.baselineOptions = data.values.map(({ label, value }) => ({ label, value }));
+            if (
+                this.isCcfDcfPurpose &&
+                this.pendingCcfDcfBaselinePeriod !== null
+            ) {
+                this.selectedBaseline = this.resolveBaselinePeriodValue(
+                    this.pendingCcfDcfBaselinePeriod
+                );
+
+                this.pendingCcfDcfBaselinePeriod = null;
+            }
 
             // If editing an existing record, show label for pre-populated value
             if (this.selectedBaseline) {
@@ -187,7 +223,26 @@ set labelValueMap(value) {
 get labelValueMap() {
     return this._labelValueMap;
 }
+get hasTypedOutcomes() {
+    return this.marketingOutcomes.length > 0 ||
+        this.businessOutcomes.length > 0;
+}
 
+get hasMarketingOutcomes() {
+    return this.marketingOutcomes.length > 0;
+}
+
+get hasBusinessOutcomes() {
+    return this.businessOutcomes.length > 0;
+}
+
+get hasTypedReadOnlyOutcomes() {
+    return this.isReadOnly && this.hasTypedOutcomes;
+}
+
+get showLegacyReadOnlyDescription() {
+    return this.isReadOnly && !this.hasTypedOutcomes;
+}
 // ---------- BUILD LOOKUP ----------
 buildLabelLookup() {
     this.labelLookup.clear();
@@ -298,7 +353,22 @@ get selectedTechnologyLabels() {
         // END: Shravani | US: TWC702-15067
         if (this.isOutcomeBasedActivity) this.isOutcomeBasedActivityVisible = true;
         if (['Edit', 'Clone', ''].includes(this.mode)) this.isReadOnly = false;
-        if (this.recordId) this.loadOutcomes();
+
+        if (this.recordId) {
+            isActivityPurposeVisible({ activityId: this.recordId })
+                .then(isVisible => {
+                    if (!isVisible) {
+                        this.isOutcomeBasedActivityVisible = false;
+                        return;
+                    }
+
+                    this.loadOutcomes();
+                })
+                .catch(error => {
+                    console.error('Error checking Activity Purpose visibility:', error);
+                    this.loadOutcomes();
+                });
+        }
     }
 
     get divClass() {
@@ -306,37 +376,99 @@ get selectedTechnologyLabels() {
     }
 
     loadOutcomes() {
-        if (!this.recordId) return;
+            if (!this.recordId) return;
 
-        getActivityOutcomes({ activityId: this.recordId })
-            .then(result => {
-                if (this.hasAppliedAiOutcomeValues) {
-                    return;
-                }
-                this.outcomes = result || [];
-                if (result?.length > 0) {
-                    const record = result[0];
-
-                    this.outcomeApi = record.outcomeMetric || '';
-                    this.outcomeLabel = this.picklistLoaded ? (this.apiToLabel[this.outcomeApi] || this.outcomeApi) : this.outcomeApi;
-
-                    this.selectedBaselineValue = record.baselineValue || '';
-                    this.selectedGoalValue = record.goalValue || '';
-                    this.selectedBaseline = this.findMatchingBaselineValue(record.baseLinePeriod);
-                    this.selectedResult = (this.mode || '').toLowerCase() === 'clone' ? '' : (record.resultValue || '');
-                    //this.selectedResult = record.resultValue || '';
-                    this.description = record.Description || '';
-                    this.isOutcomeBasedActivityVisible = record.isOutcomebaseActivity || false;
-
-                    // Map pre-populated baseline to label
-                    if (this.selectedBaseline) {
-                        const match = this.baselineOptions.find(opt => opt.value === this.selectedBaseline);
-                        if (match) this.selectedBaselineLabel = match.label;
+            getActivityOutcomes({ activityId: this.recordId })
+                .then(result => {
+                    if (this.hasAppliedAiOutcomeValues) {
+                        return;
                     }
-                }
-            })
-            .catch(error => console.error('Error fetching outcomes:', error));
-    }
+
+                    this.outcomes = result || [];
+                    this.marketingOutcomes =
+                        this.outcomes.filter(item => item.outcomeType === 'Marketing');
+                    this.businessOutcomes =
+                        this.outcomes.filter(item => item.outcomeType === 'Business');
+
+                    let record;
+
+                    if (this.outcomeType) {
+                        record = this.outcomes.find(
+                            item => item.outcomeType === this.outcomeType
+                        );
+                    } else if (this.outcomes.length > 0) {
+                        record = this.outcomes[0];
+                    }
+
+                    if (record) {
+                        this.outcomeApi =
+                            record.outcomeMetricApi || record.outcomeMetric || '';
+                        this.outcomeLabel =
+                            record.outcomeMetric ||
+                            (
+                                this.picklistLoaded
+                                ? (this.apiToLabel[this.outcomeApi] || this.outcomeApi)
+                                : this.outcomeApi
+                            );
+
+                        if (this.isCcfDcfPurpose) {
+                            // Preserve zero and wait for picklist options when necessary.
+                            this.selectedBaselineValue =
+                                record.baselineValue == null ? '' : String(record.baselineValue);
+
+                            this.selectedGoalValue =
+                                record.goalValue == null ? '' : String(record.goalValue);
+
+                            this.selectedResult =
+                                record.resultValue == null ? '' : String(record.resultValue);
+
+                            if (this.baselineOptions.length > 0) {
+                                this.selectedBaseline =
+                                    this.resolveBaselinePeriodValue(record.baseLinePeriod);
+
+                                this.pendingCcfDcfBaselinePeriod = null;
+                            } else {
+                                this.selectedBaseline = '';
+                                this.pendingCcfDcfBaselinePeriod = record.baseLinePeriod || '';
+                            }
+                        } else {
+                            // Existing IPA behavior.
+                            this.selectedBaselineValue = record.baselineValue || '';
+                            this.selectedGoalValue = record.goalValue || '';
+                            this.selectedBaseline =
+                                this.findMatchingBaselineValue(record.baseLinePeriod);
+                            this.selectedResult = (this.mode || '').toLowerCase() === 'clone' ? '' : (record.resultValue || '');
+                            //this.selectedResult = record.resultValue || '';
+                        }
+                        this.description = record.Description || '';
+                        this.isOutcomeBasedActivityVisible =
+                            record.isOutcomebaseActivity || false;
+
+                        if (this.outcomeType && this.isReadOnly) {
+                            this.selectedBrandOptions =
+                                record.brandValues
+                                ? record.brandValues.split(';')
+                                : [];
+                            this.selectedTechnologyOptions =
+                                record.technologyValues
+                                ? record.technologyValues.split(';')
+                                : [];
+                        }
+
+                        if (this.selectedBaseline) {
+                            const match =
+                                this.baselineOptions.find(
+                                    opt => opt.value === this.selectedBaseline
+                                );
+
+                            if (match) {
+                                this.selectedBaselineLabel = match.label;
+                            }
+                        }
+                    }
+                })
+                .catch(error => console.error('Error fetching outcomes:', error));
+        }
 
     findMatchingBaselineValue(labelFromApex) {
         if (!labelFromApex || !this.baselineOptions) return '';
@@ -397,6 +529,9 @@ get selectedTechnologyLabels() {
     }
 
     resetInputBox() {
+        if (this.isCcfDcfPurpose) {
+            this.pendingCcfDcfBaselinePeriod = null;
+        }
         this.selectedBaselineValue = '';
         this.selectedBaseline = '';
         this.selectedGoalValue = '';
@@ -474,6 +609,9 @@ get selectedTechnologyLabels() {
 
     // ===== Event Handlers =====
     handleInputChangeBaselineValue(event) {
+        if (this.isCcfDcfPurpose) {
+            this.pendingCcfDcfBaselinePeriod = null;
+        }
         this.validateNumber(event);
         this.selectedBaselineValue = event.target.value || '';
     }
@@ -498,23 +636,148 @@ get selectedTechnologyLabels() {
         this.selectedResult = event.target.value || '';
     }
 
-    // ===== Validation =====
+    get isCcfDcfPurpose() {
+        return this.outcomeType === 'Marketing' ||
+            this.outcomeType === 'Business';
+    }
+
+    get isPurposeResultRequired() {
+        // Preserve the existing IPA HTML requirement.
+        // Result is optional for CCF/DCF.
+        return !this.isCcfDcfPurpose;
+    }
+
+    isPurposeValueBlank(value) {
+        return value === null ||
+            value === undefined ||
+            String(value).trim() === '';
+    }
+
+    hasPurposeSelection(value) {
+        const values = Array.isArray(value)
+            ? value
+            : String(value || '').split(';');
+
+        return values.some(item => !this.isPurposeValueBlank(item));
+    }
+
+    getPurposeNumberError(value, required) {
+        if (this.isPurposeValueBlank(value)) {
+            return required ? this.CompleteThisField : '';
+        }
+
+        const number = Number(value);
+
+        if (
+            !Number.isFinite(number) ||
+            number < 0 ||
+            !Number.isInteger(number)
+        ) {
+            return this.numberError;
+        }
+
+        return '';
+    }
+
     validateNumber(event) {
         const input = event.target;
+
+        if (this.isCcfDcfPurpose) {
+            const isResult = input.dataset.id === 'optionalValue';
+
+            input.setCustomValidity(
+                this.getPurposeNumberError(input.value, !isResult)
+            );
+            input.reportValidity();
+            return;
+        }
+
+        // Existing IPA behavior: unchanged.
         const value = parseFloat(input.value);
+
         if (isNaN(value) || value < 0 || !Number.isInteger(value)) {
             input.setCustomValidity(this.numberError);
         } else {
             input.setCustomValidity('');
         }
+
         input.reportValidity();
+    }
+
+    validateCcfDcfPurpose() {
+        // Check the values themselves, not only the rendered controls.
+        // This prevents an unrendered/hidden table from passing with
+        // missing Baseline, Goal or Baseline Period.
+        let allValid = true;
+
+        if (
+            this.isPurposeValueBlank(this.outcomeApi) ||
+            !this.hasPurposeSelection(this.selectedBrandOptions) ||
+            !this.hasPurposeSelection(this.selectedTechnologyOptions) ||
+            this.getPurposeNumberError(this.selectedBaselineValue, true) ||
+            this.getPurposeNumberError(this.selectedGoalValue, true) ||
+            this.isPurposeValueBlank(this.selectedBaseline)
+        ) {
+            allValid = false;
+        }
+
+        // Result is optional. Validate its number only when editable.
+        if (
+            !this.isDisabled &&
+            this.getPurposeNumberError(this.selectedResult, false)
+        ) {
+            allValid = false;
+        }
+
+        this.template.querySelectorAll('lightning-input').forEach(input => {
+            const isResult = input.dataset.id === 'optionalValue';
+
+            if (isResult && this.isDisabled) {
+                return;
+            }
+
+            const error = this.getPurposeNumberError(
+                input.value,
+                !isResult
+            );
+
+            input.setCustomValidity(error);
+
+            if (error || !input.checkValidity()) {
+                allValid = false;
+            }
+
+            input.reportValidity();
+        });
+
+        this.template.querySelectorAll('lightning-combobox').forEach(combo => {
+            const error = this.isPurposeValueBlank(combo.value)
+                ? this.CompleteThisField
+                : '';
+
+            combo.setCustomValidity(error);
+
+            if (error || !combo.checkValidity()) {
+                allValid = false;
+            }
+
+            combo.reportValidity();
+        });
+
+        return allValid;
     }
 
     @api
     validate() {
+        if (this.isCcfDcfPurpose) {
+            return this.validateCcfDcfPurpose();
+        }
+
+        // Existing IPA validation: unchanged.
         let allValid = true;
 
         const allInputs = this.template.querySelectorAll('lightning-input');
+
         allInputs.forEach(input => {
             if (input.dataset.ignore === 'true' && this.isDisabled) return;
 
@@ -527,19 +790,31 @@ get selectedTechnologyLabels() {
             }
 
             const numValue = Number(value);
-            if (isNaN(numValue) || numValue < 0 || !Number.isInteger(numValue)) allValid = false;
+
+            if (
+                isNaN(numValue) ||
+                numValue < 0 ||
+                !Number.isInteger(numValue)
+            ) {
+                allValid = false;
+            }
 
             input.reportValidity();
         });
 
-        const comboInputs = this.template.querySelectorAll('lightning-combobox');
+        const comboInputs =
+            this.template.querySelectorAll('lightning-combobox');
+
         comboInputs.forEach(combo => {
             if (combo.dataset.ignore === 'true' && this.isDisabled) return;
+
             combo.setCustomValidity('');
+
             if (!combo.value) {
                 combo.setCustomValidity(this.CompleteThisField);
                 allValid = false;
             }
+
             combo.reportValidity();
         });
 
@@ -565,21 +840,27 @@ get selectedTechnologyLabels() {
         return !!(this.selectedBaselineValue && this.selectedGoalValue && this.selectedBaseline && this.selectedBrandOptions?.length && this.selectedTechnologyOptions?.length);
     }
     get outcomeApiToSend() {
-    if (!this.labelToApi) return '';
+        const raw = this.outcomeApi || this.outcomeLabel;
 
-    const raw = this.outcomeLabel || this.outcomeApi;
-    if (!raw) return '';
+        if (!raw) {
+            return '';
+        }
 
-    return this.labelToApi[this.normalize(raw)] || '';
-}
+        const resolvedApi = this.resolveOutcomeMetricApi(raw);
+
+        return resolvedApi || raw;
+    }
 
     @api
     getAllActivityOutcomesDetails() {
         const multiplied = this.prepareIncreaseDecreaseLabel || '';
-        const baseline = this.selectedBaselineValue || '';
-        const goal = this.selectedGoalValue || '';
+        const baseline = this.isCcfDcfPurpose ? (this.isPurposeValueBlank(this.selectedBaselineValue) ? '' : String(this.selectedBaselineValue)) : (this.selectedBaselineValue || '');
+        const goal = this.isCcfDcfPurpose ? (this.isPurposeValueBlank(this.selectedGoalValue) ? '' : String(this.selectedGoalValue)) : (this.selectedGoalValue || '');
         const baselinePeriod = this.selectedBaseline || '';
-        const resultValue = this.selectedResult || '';
+        const resultValue = this.isCcfDcfPurpose
+            ? (this.isPurposeValueBlank(this.selectedResult)
+                ? '' : String(this.selectedResult))
+            : (this.selectedResult || '');
         const apiToSend = this.outcomeApiToSend;
             
  if (!apiToSend) {
@@ -594,6 +875,13 @@ get selectedTechnologyLabels() {
         return [
             {
                 outcomeMetric: apiToSend,
+                outcomeType: this.outcomeType || '',
+                brandValues: Array.isArray(this.selectedBrandOptions)
+                    ? this.selectedBrandOptions.join(';')
+                    : (this.selectedBrandOptions || ''),
+                technologyValues: Array.isArray(this.selectedTechnologyOptions)
+                    ? this.selectedTechnologyOptions.join(';')
+                    : (this.selectedTechnologyOptions || ''),
                 baselineValue: baseline,
                 goalValue: goal,
                 baseLinePeriod: baselinePeriod,
@@ -601,4 +889,8 @@ get selectedTechnologyLabels() {
             }
         ];
     }
+    get headerClass() {
+                return !this.isReadOnly ? 'header-title' : '';
+
+}
 }

@@ -99,7 +99,6 @@ export default class Core_IPS_AddMembers_Lex extends NavigationMixin(LightningEl
             console.log('error:'+error);
         })
     }
-    //Tushar bug fix
     getExistingMembers(){
         return getExistingMembers({
             projectId1 : this.recordId,

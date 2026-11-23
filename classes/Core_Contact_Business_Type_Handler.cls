@@ -131,9 +131,11 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             
             
             //Retrive Business type to entitlement mapping from entitlement matrix
-            if(Schema.sObjectType.PRM_VXEnttlmntMatrix__c.isAccessible()){
-                for (PRM_VXEnttlmntMatrix__c mat : [SELECT Id, Name,PRM_Entitlement_Id__c, PRM_Entitlement_Id__r.Name, Business_Types__c, Business_Types__r.Name 
-                                                    FROM PRM_VXEnttlmntMatrix__c 
+            if(Schema.sObjectType.PRM_VXEnttlmntMatrix__c.isAccessible()){                
+                //for (PRM_VXEnttlmntMatrix__c mat : [SELECT Id, Name,PRM_Entitlement_Id__c, PRM_Entitlement_Id__r.Name, Business_Types__c, Business_Types__r.Name
+                //Ganesh Changes 
+                                             for (PRM_VXEnttlmntMatrix__c mat : [SELECT Id, PRM_Entitlement_Id__c, Business_Types__c                                                        
+                									FROM PRM_VXEnttlmntMatrix__c 
                                                     WHERE Business_Types__c IN: cbtIds WITH SECURITY_ENFORCED]) {
                                                         if (!cbtEnttlMap.containsKey(mat.Business_Types__c)) {
                                                             cbtEnttlMap.put(mat.Business_Types__c, mat.PRM_Entitlement_Id__c);
@@ -211,7 +213,9 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             
             //Retrive Business type to entitlement mapping from entitlement matrix
             if(Schema.sObjectType.PRM_VXEnttlmntMatrix__c.isAccessible()){
-                for (PRM_VXEnttlmntMatrix__c mat : [SELECT Id, Name,PRM_Entitlement_Id__c, PRM_Entitlement_Id__r.Name, Business_Types__c, Business_Types__r.Name 
+                //for (PRM_VXEnttlmntMatrix__c mat : [SELECT Id, Name,PRM_Entitlement_Id__c, PRM_Entitlement_Id__r.Name, Business_Types__c, Business_Types__r.Name 
+                //Ganesh Changes  
+                for (PRM_VXEnttlmntMatrix__c mat : [SELECT Id, PRM_Entitlement_Id__c, Business_Types__c 
                                                     FROM PRM_VXEnttlmntMatrix__c 
                                                     WHERE Business_Types__c IN: cbtIds WITH SECURITY_ENFORCED]) {
                                                         if (!cbtEnttlMap.containsKey(mat.Business_Types__c)) {
@@ -220,7 +224,9 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                                                     }
             }
             //Retrive contact to entitlements map based entitlement retrived from entitlement matrix
-            for (Core_Contact_Entitlement__c contEnt : [SELECT id, Core_Contact_Id__c, Core_Entitlement_Id__c, Core_Entitlement_Id__r.Name, 
+            //for (Core_Contact_Entitlement__c contEnt : [SELECT id, Core_Contact_Id__c, Core_Entitlement_Id__c, Core_Entitlement_Id__r.Name, 
+            //Ganesh Changes
+            for (Core_Contact_Entitlement__c contEnt : [SELECT id, Core_Contact_Id__c, Core_Entitlement_Id__c,
                                                         Core_Selected__c,Core_Status__c 
                                                         FROM Core_Contact_Entitlement__c 
                                                         WHERE  Core_Entitlement_Id__c =:cbtEnttlMap.values() AND 
@@ -337,8 +343,11 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 }
             }
             if(Schema.sObjectType.Business_Types__c.isAccessible()){
-                for(Business_Types__c bT :  [Select id, Name, Business_Type_Code__c from Business_Types__c where id =: cbtype /* AND Name =: System.Label.ER_CBT_DZP */ WITH SECURITY_ENFORCED]){
-                    cbName.add(bT.Name);
+                //for(Business_Types__c bT :  [Select id, Name, Business_Type_Code__c from Business_Types__c where id =: cbtype /* AND Name =: System.Label.ER_CBT_DZP */ WITH SECURITY_ENFORCED]){
+                //Ganesh Changes    
+                for(Business_Types__c bT :  [Select id, Name from Business_Types__c where id =: cbtype /* AND Name =: System.Label.ER_CBT_DZP */ WITH SECURITY_ENFORCED]){
+                    
+                	cbName.add(bT.Name);
                     
                     cbtName = cbName[0];
                 }
@@ -347,7 +356,9 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             //if(cbtName.contains(System.Label.ER_CBT_DZP)){
                 if(Schema.sObjectType.Contact.isAccessible()){
                     //Retrive contact email in CBT to check if registration record is available
-                    for(Contact con : [Select id, Email, AccountId from Contact where id =: conIds]){
+                    //for(Contact con : [Select id, Email, AccountId from Contact where id =: conIds]){
+                    //Ganesh Changes  
+                    for(Contact con : [Select id, Email from Contact where id =: conIds]){
                         email.add(con.Email);
                         cids.add(con.id);
                         contactIds = cids[0];
@@ -387,7 +398,9 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             }
                 if(subscriptionValues != null && (Schema.sObjectType.PRM_Partner_Subscription__c.isAccessible()))
                 {
-                    for(PRM_Partner_Subscription__c sub : [Select Id,PRM_Subscription_Cd__c,Name from PRM_Partner_Subscription__c where PRM_Subscription_Cd__c IN : subscriptionValues]){
+                    //for(PRM_Partner_Subscription__c sub : [Select Id,PRM_Subscription_Cd__c,Name from PRM_Partner_Subscription__c where PRM_Subscription_Cd__c IN : subscriptionValues]){
+                    //Ganesh Changes
+                    for(PRM_Partner_Subscription__c sub : [Select Id,PRM_Subscription_Cd__c from PRM_Partner_Subscription__c where PRM_Subscription_Cd__c IN : subscriptionValues]){
                         subscriptionMap.put(sub.PRM_Subscription_Cd__c,sub);
                         subscriptionIds.add(sub.id);
                        
@@ -507,14 +520,33 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 accIdSet.add(cbt.Contact__r.AccountId); 
                 busiTypeSet.add(cbt.Business_Types__c);
             }
-            for(Contact_Business_Types__c existingCBT : [Select Id,Contact__c,Contact__r.AccountId,Business_Types__c,Status__c FROM 
+            /*for(Contact_Business_Types__c existingCBT : [Select Id,Contact__c,Contact__r.AccountId,Business_Types__c,Status__c FROM 
                                                          Contact_Business_Types__c WHERE Contact__r.AccountId IN: accIdSet
                                                          AND Business_Types__c IN: busiTypeSet AND Status__c = 'Approved'
                                                          AND Id NOT IN: cbtIdssList]){ 
                                                              accIdSet.Remove(existingCBT.Contact__r.AccountId);
                                                              businessTypeABTMap.put(existingCBT.Contact__r.AccountId,existingCBT.Business_Types__c);
                                                              
-                                                         }
+                                                         }*/
+            //Ganesh Changes
+            Set<Id> removedCbtIds = new Set<Id>();
+			for(String idStr : cbtIdssList){
+    			removedCbtIds.add((Id)idStr);
+				}
+
+			for(Contact_Business_Types__c existingCBT : [SELECT Id, Contact__c, Contact__r.AccountId, Business_Types__c, Status__c FROM Contact_Business_Types__c
+     													 WHERE Contact__r.AccountId IN :accIdSet
+     													 AND Business_Types__c IN :busiTypeSet
+     													 AND Status__c = 'Approved']){
+    
+             if(removedCbtIds.contains(existingCBT.Id)){
+        		continue;
+             }
+
+    		accIdSet.remove(existingCBT.Contact__r.AccountId);
+    		businessTypeABTMap.put(existingCBT.Contact__r.AccountId, existingCBT.Business_Types__c);
+			}
+            //Ganesh Changes End
             if(accIdSet != null && accIdSet.size() > 0){
                 for(Account_Business_Types__c	abt : [SELECT Id,Account__c,Business_Types__c,Status__c FROM Account_Business_Types__c
                                                        WHERE Account__c IN: accIdSet AND Business_Types__c IN: busiTypeSet

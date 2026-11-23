@@ -89,6 +89,7 @@ public without sharing class Core_MDF_CancelExceptionRecord {
                                                   FROM PermissionSetAssignment 
                                                   WHERE AssigneeId =: UserInfo.getUserId() AND 
                                                   PermissionSet.Name IN : exceptionUserpermissionSetList];
+            system.debug('pSet-->'+pSet);
             if(pSet != NULL && pSet.size() > 0){
                 for(PermissionSetAssignment lstpset : pSet){
                     if(Label.Core_MDF_Exception_Reviewer_Permission_Set.containsIgnoreCase(lstpset.PermissionSet.Name)){
@@ -99,7 +100,7 @@ public without sharing class Core_MDF_CancelExceptionRecord {
                     }
                 }
             }
-            
+            system.debug('exceptionWrap-->'+exceptionWrap);
             if(exceptionVar != NULL){
                 if((Label.Core_MDF_Exception_Denied_Status).containsIgnoreCase(exceptionVar.Core_MDF_Exception_Status_nm__c)){
                     exceptionWrap.isDenied = true;

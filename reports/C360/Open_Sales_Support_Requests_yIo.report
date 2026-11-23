@@ -41,7 +41,6 @@
     <columns>
         <field>Core_Sales_Support_Request__c.Core_DRD_Subject__c</field>
     </columns>
-    <description>**Do not Edit without Approval**</description>
     <filter>
         <criteriaItems>
             <column>Core_Sales_Support_Request__c.Status__c</column>

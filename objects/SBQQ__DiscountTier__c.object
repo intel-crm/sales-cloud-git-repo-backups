@@ -292,6 +292,17 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>core_cpq_Rebate__c</fullName>
+        <description>Used in discount schedule editor LWC. This Field Belongs to Retail Quote Project.</description>
+        <label>Rebate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
     <label>Discount Tier</label>
     <nameField>
         <label>Tier Name</label>

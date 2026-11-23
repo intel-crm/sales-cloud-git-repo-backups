@@ -48,13 +48,6 @@
                 <elementReference>regReq.PRM_Email_ID__c</elementReference>
             </value>
         </filters>
-        <filters>
-            <field>Id</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <elementReference>regReq.Id</elementReference>
-            </value>
-        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>PRM_Registration_Request__c</object>
         <queriedFields>Id</queriedFields>

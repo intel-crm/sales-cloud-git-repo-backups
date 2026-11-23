@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>META PLATFORMS INC Customer User</description>
+    <description>FACEBOOK Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>META PLATFORMS INC Customer User</name>
+    <name>FACEBOOK Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_10636777_Jeremy_Lu</parentRole>
+    <parentRole>EMP_10598501_Tarik_Muwafi</parentRole>
 </Role>

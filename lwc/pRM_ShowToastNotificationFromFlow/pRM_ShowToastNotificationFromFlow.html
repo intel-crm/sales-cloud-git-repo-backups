@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Custom HTML Notification">
+        <div class="slds-m-around_medium">
+            <p>Custom HTML notification will be shown below.</p>
+            <div if:true={showNotification} class="custom-notification-container">
+                <div class={notificationClasses} role="alert">
+                    <div class="slds-notify__content">
+                        <h2 class="slds-text-heading_small">{toastTitle}</h2>
+                        <p class="slds-m-top_x-small">{toastMessage}</p>
+                    </div>
+                    <button class="close-button" onclick={closeNotification}>
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

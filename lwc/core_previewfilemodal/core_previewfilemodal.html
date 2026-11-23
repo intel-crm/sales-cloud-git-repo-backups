@@ -3,15 +3,9 @@
       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
          <div class="slds-modal__header" style="opacity: 75%;background-color: black;color: white;">
             <div style="display: flex;">
-               <div style="display: flex;flex-basis: 40%;justify-content: flex-start;">
-                  <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1" style="display:flex;flex-basis: 40%;top: 0px;position: relative;margin-left:2%;">{documentLabel}</h1>
-               </div>
-               <div style="display: flex;flex-basis: 55%;justify-content: flex-start;">
-                  <lightning-button-icon class="slds-button slds-button__icon_large slds-modal__close slds-button_icon-inverse" icon-class="slds-button__icon_large" title="Download"  icon-name="utility:download" onclick={handleDownload} style="margin-left:15%;top:0;position:relative;display: flex;" label="Download"></lightning-button-icon>
-               </div>
-               <div style="display: flex;flex-basis: 5%;justify-content: center;">
-                  <lightning-button-icon class="slds-button slds-button__icon_large slds-modal__close slds-button_icon-inverse" icon-class="slds-button__icon_large" title="Close"  icon-name="utility:close" onclick={closeModal} style="top:0;position:relative;"></lightning-button-icon>
-               </div>
+               <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1" style="display:flex;flex-basis: 40%;top: 0px;position: relative;margin-left:2%;">{documentLabel}</h1>
+               <lightning-button-icon class="slds-modal__close" title="Download"  icon-name="utility:download" icon-class="slds-button_icon-inverse" onclick={handleDownload} style="margin-left:10%;top:0;position:relative;display: flex;flex-basis: 55%;" label="Download"></lightning-button-icon>
+               <lightning-button-icon class="slds-modal__close" title="Close"  icon-name="utility:close" icon-class="slds-button_icon-inverse" onclick={closeModal} style="top:0;position:relative;"></lightning-button-icon>
             </div>
          </div>
          <div class="slds-modal__container" style="width:70%">

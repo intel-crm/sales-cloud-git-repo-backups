@@ -375,7 +375,7 @@
         <name>Core_MDF_Brand__c</name>
     </fields>
     <fields>
-        <label>예산 금액</label>
+        <label>활동 지출 한도</label>
         <name>Core_MDF_Budget_Amount_amt__c</name>
     </fields>
     <fields>
@@ -407,7 +407,7 @@
         <name>Core_MDF_CampOutcomeOpt_In_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Campaign Budgets --></label>
+        <label>캠페인 예산</label>
         <name>Core_MDF_Campaign_Budgets_Id__c</name>
     </fields>
     <fields>
@@ -545,6 +545,54 @@
     <fields>
         <label>1년차 청구</label>
         <name>Core_MDF_First_Year_Claims__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDF Budget --></label>
+        <name>Core_MDF_Flexible_Budget__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDF Reimbursement Rate --></label>
+        <name>Core_MDF_Flexible_Reimbursement_Rate_Pct__c</name>
+        <picklistValues>
+            <masterLabel>10%</masterLabel>
+            <translation><!-- 10% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>100%</masterLabel>
+            <translation><!-- 100% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20%</masterLabel>
+            <translation><!-- 20% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30%</masterLabel>
+            <translation><!-- 30% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>40%</masterLabel>
+            <translation><!-- 40% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>50%</masterLabel>
+            <translation><!-- 50% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>60%</masterLabel>
+            <translation><!-- 60% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>70%</masterLabel>
+            <translation><!-- 70% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>80%</masterLabel>
+            <translation><!-- 80% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>90%</masterLabel>
+            <translation><!-- 90% --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help>販売されている主なフォーカス領域</help>
@@ -778,6 +826,10 @@
         <name>Core_MDF_Opal_Budget_Type_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Other Outcome Brands/Technologies --></label>
+        <name>Core_MDF_Other_Brands_Technologies_txt__c</name>
+    </fields>
+    <fields>
         <label>기타 생태계 파트너</label>
         <name>Core_MDF_Other_Ecosystem_Partner_txt__c</name>
     </fields>
@@ -908,10 +960,6 @@
     <fields>
         <label>환급율</label>
         <name>Core_MDF_Reimbursement_Rate__c</name>
-        <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>100%</masterLabel>
             <translation><!-- 100% --></translation>
@@ -1183,12 +1231,12 @@
         <name>Core_Tasks_Generated__c</name>
     </fields>
     <fields>
-        <label><!-- Event Stub --></label>
-        <name>CventEvents__EventStub__c</name>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
     </fields>
     <fields>
-        <label><!-- Session Stub --></label>
-        <name>CventEvents__SessionStub__c</name>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
     </fields>
     <fields>
         <label><!-- Campaign Brief Details --></label>
@@ -1225,6 +1273,10 @@
     <fields>
         <label><!-- Bulk Add/Invite Email Template --></label>
         <name>PRM_Bulk_Add_Invite_Email_Template__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsMarketingRecord --></label>
+        <name>SWS_IsMarketingRecord__c</name>
     </fields>
     <recordTypes>
         <description><!-- Record type for CCP Client Program --></description>
@@ -1297,12 +1349,20 @@
         <name>Core_MDF_CancellingIPACampaignInApproval</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please select the MDF Budget type --></errorMessage>
+        <name>Core_MDF_Check_For_Is_Opal_Budget_Type</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Enter only positive numeric values up to 16 digits. --></errorMessage>
         <name>Core_MDF_Check_For_Negative_Budget</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Enter only positive numeric values up to 16 digits. --></errorMessage>
         <name>Core_MDF_Check_For_Non_Negative_Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>캠페인을 생성하려면 계정이 필요합니다. 계정을 선택하고 다시 시도해 주세요.</errorMessage>
+        <name>Core_MDF_CoGTMAccountValidation</name>
     </validationRules>
     <validationRules>
         <errorMessage>캠페인을 만든 후에는 계정을 변경할 수 없습니다.</errorMessage>
@@ -1339,6 +1399,14 @@
     <validationRules>
         <errorMessage>통합 캠페인 정보를 입력하거나, 통합 캠페인인 경우 &quot;아니요&quot;를 선택하십시오</errorMessage>
         <name>Core_MDF_Integrated_Campaign_is_Yes</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select right combinations of budget type and Reimbursement Rate. --></errorMessage>
+        <name>Core_MDF_Opal_RRate_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Selected Budget type is not applicable for the time period selected. --></errorMessage>
+        <name>Core_MDF_OtherAccountRestriction</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Campaign end date should be greater than the campaign start date --></errorMessage>
@@ -1423,14 +1491,6 @@
     <webLinks>
         <label><!-- Core_New_Sales_Campaign --></label>
         <name>Core_New_Sales_Campaign</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- LinkEventsToCampaign --></label>
-        <name>CventEvents__LinkEventsToCampaign</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- SendInvitation --></label>
-        <name>CventEvents__SendInvitation</name>
     </webLinks>
     <webLinks>
         <label><!-- ViewAllCampaignMembers --></label>

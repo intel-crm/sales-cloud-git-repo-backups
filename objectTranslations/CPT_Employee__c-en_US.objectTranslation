@@ -345,7 +345,7 @@
         <relationshipLabel><!-- Commissionable Employees --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Sales Group --></label>
+        <label><!-- Region --></label>
         <name>CPT_Sales_Group__c</name>
     </fields>
     <fields>
@@ -372,5 +372,9 @@
     <validationRules>
         <errorMessage><!-- This record is locked. Contact Commissions Admin with questions. --></errorMessage>
         <name>CPT_Restrict_Update_OnLockedRecord</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Manager cannot be updated as the Quota setup record is Hard Locked. Contact your Administrator. --></errorMessage>
+        <name>xCPT_Prevent_ManagerUpdate_OnLockedRec</name>
     </validationRules>
 </CustomObjectTranslation>

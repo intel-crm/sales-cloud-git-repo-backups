@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>SCRTY_Inactive_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>SCRTY_Permission_API_Nm__c</field>

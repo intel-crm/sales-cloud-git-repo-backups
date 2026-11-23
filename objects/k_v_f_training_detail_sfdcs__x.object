@@ -114,7 +114,6 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>k_v_f_training_detail_sfdcs</description>
     <enableFeeds>false</enableFeeds>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
@@ -337,6 +336,34 @@
         <unique>false</unique>
     </fields>
     <label>k_v_f_training_detail_sfdcs</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>ExternalId</columns>
+        <columns>DisplayUrl</columns>
+        <columns>business_organization_nbr__c</columns>
+        <columns>business_organization_party_id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Training_Credits_at_Account_OPID_Level</fullName>
+        <columns>one_partner_customer_aggregation_id__c</columns>
+        <columns>business_organization_party_id__c</columns>
+        <columns>business_person_id__c</columns>
+        <columns>training_nm__c</columns>
+        <columns>DisplayUrl</columns>
+        <columns>start_dt__c</columns>
+        <columns>end_dt__c</columns>
+        <columns>training_complete_dt__c</columns>
+        <columns>training_credit_qty__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>training_complete_dt__c</field>
+            <operation>lessOrEqual</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Training Credits at Account/OPID Level</label>
+    </listViews>
     <pluralLabel>k_v_f_training_detail_sfdcs</pluralLabel>
     <searchLayouts/>
 </CustomObject>

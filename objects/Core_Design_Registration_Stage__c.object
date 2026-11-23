@@ -143,6 +143,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <description>Staging object to put the initial data of a DDR.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -156,6 +157,7 @@
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Core_Batch_ID__c</fullName>
+        <deprecated>false</deprecated>
         <label>Batch ID</label>
         <referenceTo>Core_Design_Registration_Batch__c</referenceTo>
         <relationshipLabel>Design Registration Stage</relationshipLabel>
@@ -168,6 +170,7 @@
     </fields>
     <fields>
         <fullName>Core_Cancelled_Ind__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Cancelled (Y)</label>
         <length>255</length>
@@ -178,6 +181,7 @@
     </fields>
     <fields>
         <fullName>Core_Comment_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Product Comments</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -185,6 +189,7 @@
     </fields>
     <fields>
         <fullName>Core_Converted_Design_Or_Product_Id__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Converted Design/Product Id</label>
         <length>255</length>
@@ -195,6 +200,7 @@
     </fields>
     <fields>
         <fullName>Core_Converted_Design_Or_Product_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Converted Design/Product Name</label>
         <length>255</length>
@@ -205,6 +211,7 @@
     </fields>
     <fields>
         <fullName>Core_Converted_Design_Or_Product_URL_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <description>IF( Core_Design_Registration_Header_Prod_ID__c != NULL, 
 IF( Core_Header_Or_Product_Ind__c = &apos;Header&apos;, 
 &apos;&apos;+ HYPERLINK(&apos;/&apos;+Core_Design_Registration_Header_Prod_ID__c, Core_Design_Registration_Header_Prod_Nm__c, &apos;&apos;) , 
@@ -224,6 +231,7 @@ HYPERLINK(Left($Api.Enterprise_Server_URL_190,(find(&apos;/services&apos;,$Api.E
     </fields>
     <fields>
         <fullName>Core_Converted_Design_Reg_Line_Id__c</fullName>
+        <deprecated>false</deprecated>
         <description>Align the &quot;Converted Design/Product Name&quot; value to either &quot;Registration Number&quot; or &quot;Design Registration Line ID&quot; based on &quot;Header/Product&quot; value.</description>
         <externalId>false</externalId>
         <formula>IF(Core_Header_Or_Product_Ind__c =&apos;Product&apos;, 
@@ -237,6 +245,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Converted_Registration_Number_Id__c</fullName>
+        <deprecated>false</deprecated>
         <description>Align the &quot;Converted Design/Product Name&quot; value to either &quot;Registration Number&quot; or &quot;Design Registration Line ID&quot; based on &quot;Header/Product&quot; value.</description>
         <externalId>false</externalId>
         <formula>IF(Core_Header_Or_Product_Ind__c =&apos;Header&apos;,
@@ -250,6 +259,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Design_Registration_Dsc__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Description</label>
         <length>255</length>
@@ -260,6 +270,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Design_Registration_Line_Id__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Design Registration Line ID</label>
         <length>255</length>
@@ -270,6 +281,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Design_Registration_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Design Registration Name</label>
         <length>120</length>
@@ -280,6 +292,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Design_Solution_Network_Ind__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Design Solution Network</label>
         <length>255</length>
@@ -290,6 +303,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_City_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>End Customer City</label>
         <length>255</length>
@@ -300,6 +314,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Contact_Email_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Contact Email</label>
         <length>255</length>
@@ -310,6 +325,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Contact_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Contact Name</label>
         <length>255</length>
@@ -320,6 +336,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Contact_Phone_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Contact Phone</label>
         <length>255</length>
@@ -330,6 +347,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Contact_Title_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Contact Title</label>
         <length>255</length>
@@ -340,6 +358,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Country_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>End Customer Country</label>
         <length>255</length>
@@ -350,6 +369,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Country_Subdivision_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>End Customer State</label>
         <length>255</length>
@@ -360,6 +380,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>End Customer Name</label>
         <length>255</length>
@@ -370,6 +391,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Postal_Cd__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>End Customer Zip/Postal Code</label>
         <length>255</length>
@@ -380,6 +402,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Street_Addr_Line1_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>End Customer Address1</label>
         <length>255</length>
@@ -390,6 +413,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_End_Customer_Street_Addr_Line2_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>End Customer Address2</label>
         <length>255</length>
@@ -410,6 +434,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_FPGA_Quote_Comments_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <description>Free from field to capture the comments from Partner.</description>
         <label>FPGA Quote Comments</label>
         <length>750</length>
@@ -419,6 +444,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_First_Customer_Ship_Dt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>First Customer Ship Date</label>
         <length>255</length>
@@ -429,6 +455,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Full_Year_Qty__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Quantity (Full Production Year)</label>
         <length>255</length>
@@ -439,6 +466,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Group_Id__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Group ID</label>
         <length>255</length>
@@ -449,6 +477,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Header_Or_Product_Ind__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Header/Product</label>
         <length>255</length>
@@ -459,6 +488,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Intel_Platform_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Intel Platform</label>
         <length>255</length>
@@ -469,6 +499,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Manufacturing_Region_Cd__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Manufacturing Region</label>
         <length>255</length>
@@ -479,6 +510,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Message_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <label>Message</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
@@ -487,8 +519,9 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Military_Aerospace_Gvrnmt_Use_Ind__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <label>Are Intel items used for MINDS?</label>
+        <label>Military - Aerospace - Gov&apos;t End Use?</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -497,6 +530,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Opportunity_Decision_Dt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Decision Date</label>
         <length>255</length>
@@ -507,6 +541,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Opportunity_Volume_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Opportunity Volume</label>
         <length>255</length>
@@ -517,6 +552,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Owner_Txt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Owner (Email)</label>
         <length>255</length>
@@ -527,6 +563,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Partner_FAE_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Partner FAE</label>
         <length>255</length>
@@ -537,6 +574,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Partner_FSR_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Partner FSR</label>
         <length>255</length>
@@ -547,6 +585,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Partner_Tracking_Cd__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Partner Tracking Number</label>
         <length>255</length>
@@ -557,6 +596,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Processing_Status_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <label>Processing Status</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -585,6 +625,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Product_Application_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Product Application</label>
         <length>255</length>
@@ -595,6 +636,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Product_Group_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Product Group</label>
         <length>255</length>
@@ -605,6 +647,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Product_Id__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Product</label>
         <length>255</length>
@@ -615,6 +658,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Product_Segment_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Product Segment</label>
         <length>255</length>
@@ -625,6 +669,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Production_End_Dt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Production End Date</label>
         <length>255</length>
@@ -635,6 +680,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Registration_Number_Id__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Registration Number</label>
         <length>255</length>
@@ -645,6 +691,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Target_Resale_Amt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Target Resale Price</label>
         <length>255</length>
@@ -655,6 +702,7 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     </fields>
     <fields>
         <fullName>Core_Vertical_Market_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Vertical Market</label>
         <length>255</length>
@@ -2009,10 +2057,8 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>Core_Batch_ID__c</columns>
         <columns>Core_Group_Id__c</columns>
         <columns>Core_Header_Or_Product_Ind__c</columns>
-        <columns>Core_Design_Registration_Nm__c</columns>
         <columns>Core_Processing_Status_Nm__c</columns>
         <columns>Core_Message_Txt__c</columns>
         <columns>Core_Converted_Design_Or_Product_URL_Txt__c</columns>
@@ -2024,7 +2070,6 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     <listViews>
         <fullName>Last_Month_Records</fullName>
         <columns>NAME</columns>
-        <columns>Core_Batch_ID__c</columns>
         <columns>Core_Group_Id__c</columns>
         <columns>Core_Header_Or_Product_Ind__c</columns>
         <columns>Core_Processing_Status_Nm__c</columns>
@@ -2043,10 +2088,8 @@ Core_Converted_Design_Or_Product_Nm__c, &apos;&apos;)</formula>
     <listViews>
         <fullName>Today_s_Record</fullName>
         <columns>NAME</columns>
-        <columns>Core_Batch_ID__c</columns>
         <columns>Core_Group_Id__c</columns>
         <columns>Core_Header_Or_Product_Ind__c</columns>
-        <columns>Core_Design_Registration_Nm__c</columns>
         <columns>Core_Processing_Status_Nm__c</columns>
         <columns>Core_Message_Txt__c</columns>
         <columns>Core_Converted_Design_Or_Product_URL_Txt__c</columns>

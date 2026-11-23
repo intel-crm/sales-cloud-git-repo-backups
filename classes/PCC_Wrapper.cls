@@ -68,7 +68,7 @@ global class PCC_Wrapper {
         	respList = new List<restAPIResponseWrapper>();
     	}
     }
-    /*global class PCC_DRDetailsWrapperForPut{
+    global class PCC_DRDetailsWrapperForPut{
         Public Integer failedRecordCount{get;set;}
         Public Integer successfulRecordCount{get;set;}
         Public List<SalesforceResponseWrapper> respList{get;set;}
@@ -81,7 +81,7 @@ global class PCC_Wrapper {
         public String status{get;set;}
         public String retiredAsOf{get;set;}
         public String externalId{get;set;}
-    }*/
+    }
      
      global class PCC_DesignRegDetailsWrapper{
         Public String name{get;set;}
@@ -189,7 +189,7 @@ global class PCC_Wrapper {
     global class PCC_l4l5DetailsWrapper{
         Public String mmid{get;set;}
         Public String orderingCode{get;set;}
-        Public String oldMMid{get;set;}
+        //Public String oldMMid{get;set;}
         Public String l4Product{get;set;}
         Public String l5Product{get;set;}
     }
@@ -228,7 +228,16 @@ global class PCC_Wrapper {
         Public Date   DDIProgramPaymentExpirationDate{get;set;}
         Public String DDIProgramPaymentEligible{get;set;}
         Public String DDIProgramPayRateNAREMEA {get;set;}
-        Public String DDIProgramPayRateAPJPRC {get;set;}
+	    Public String DDIProgramPayRateAPJPRC {get;set;}
+        
+    }
+    global class PCC_paymentInfo_Price11testdummy{
+        Public String mmid{get;set;}
+        Public String orderingCode{get;set;}
+        Public String oldMMid{get;set;}
+        Public Date   DDIProgramPaymentExpirationDate{get;set;}
+        Public String DDIProgramPaymentEligible{get;set;}
+        Public String DDIProgramPayRate{get;set;}
         
     }
     

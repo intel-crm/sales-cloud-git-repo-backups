@@ -59,7 +59,7 @@ public without sharing class Core_Opportunity_RenewalController {
             renewalOpp.Core_IsClone__c = false;
             renewalOpp.Core_Renewed_Opportunity_Ind__c = true;
             renewalOpp.Opportunity_Focus__c =''; //originalOpportunity.Opportunity_Focus__c; //TWC4767-3906 : we dont need this field anymore. 
-            renewalOpp.CloseDate = originalOpportunity.CRM_VBS_Contract_Start_Date__c.addMonths(originalOpportunity.CRM_VBS_Contract_Lifetime_in_Months__c == null ? 12 : (Integer)originalOpportunity.CRM_VBS_Contract_Lifetime_in_Months__c);
+            renewalOpp.CloseDate = originalOpportunity.CRM_VBS_Contract_Start_Date__c.addMonths( (Integer)originalOpportunity.CRM_VBS_Contract_Lifetime_in_Months__c);//originalOpportunity.CRM_VBS_Contract_Lifetime_in_Months__c == null ? 12 :
         
         
         try{
@@ -155,7 +155,7 @@ public without sharing class Core_Opportunity_RenewalController {
         List<Opportunity_Solution_Area__c> lstOppSolution = Database.query(String.escapeSingleQuotes(itemQuery).replaceAll('\\\\', ''));
         
         List<Opportunity_Solution_Area__c> lstNewSolution = new List<Opportunity_Solution_Area__c>();
-        //Opportunity_Solution_Area__c newOppSolution;
+        Opportunity_Solution_Area__c newOppSolution;
         
         for (Opportunity_Solution_Area__c itemRec : lstOppSolution) {
    
@@ -311,12 +311,12 @@ public without sharing class Core_Opportunity_RenewalController {
             newOppLineItem.Core_Approved_BU_Product_Segment__c = NULL;
             newOppLineItem.Core_Approved_BU_Short_Name__c      = NULL;
             //START - Added by Laxmana for defect fix  DE28307- US176771 - When we clone an approved opportunity then following fields are not cleared from the Approvalinfo   
-            newOppLineItem.Core_Opp_Approved_Sales_Group__c    = Null;
-            newOppLineItem.CRM_DW_App_UCD_Customer_Name__c     = Null;
+            newOppLineItem.Core_Opp_Approved_Sales_Group__c  =Null;
+            newOppLineItem.CRM_DW_App_UCD_Customer_Name__c=Null;
             newOppLineItem.Core_Approved_Prime_Account_Name__c =Null;
-            newOppLineItem.Core_Approved_Opp_Product_Segment__c = Null;
-            newOppLineItem.Core_Approved_KPI_Product_Group__c   = Null;
-            newOppLineItem.Core_Opp_Approved_Oppty_Coverage__c  = Null;
+            newOppLineItem.Core_Approved_Opp_Product_Segment__c =Null;
+            newOppLineItem.Core_Approved_KPI_Product_Group__c = Null;
+            newOppLineItem.Core_Opp_Approved_Oppty_Coverage__c = Null;
             // END - defect fix for DE28307- US176771    
              
             //START - Added by Ankita  on 30th Jan 2020 for US572823 - On Opportunity Products "Approved By" and all related Approve Fields are made to NULL while Opportunity Product cloning

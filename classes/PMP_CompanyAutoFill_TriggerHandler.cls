@@ -12,7 +12,6 @@ public class PMP_CompanyAutoFill_TriggerHandler extends TriggerHandler {
     public override void afterUpdate() {
         if(mapFunctionalityNameTriggerExecution.containsKey('Company_Autofill_Handler') && mapFunctionalityNameTriggerExecution.get('Company_Autofill_Handler').Core_Active__c){ 
         PMP_CompanyAutoFill_Helper.processStagingRecords(Trigger.new,oldMap);
-        PMP_CompanyAutoFill_Helper.processLogos(Trigger.new,oldMap);
         }
     }
 

@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div style=""><font face="arial" style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">Your&nbsp;</font><font face="arial">{!Core_MDF_Escalation__c.Core_MDF_Escalation_Type_nm__c}</font><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;escalation's request's&nbsp;</span><font face="arial"><span style="font-size: 12pt;"><a href="{!Core_MDF_Escalation__c.Core_MDF_Escalation_Detail_Link_txt__c}">{!Core_MDF_Escalation__c.Name}</a></span></font><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">&nbsp;status changed to&nbsp;</span><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;">{!Core_MDF_Escalation__c.Core_MDF_Escalation_Status_nm__c}</span></div><div style=""><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></span></div><div style=""><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></span></div><div style=""><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></span></div><div style=""><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></span></div><div style=""><span style="font-size: 12pt;"><br></span></div><div style=""><span style="font-size: 12pt;">Thank you,</span></div><div style=""><div><span style="font-size: 12pt;">Intel® Partner Investment Center</span></div></div><div style=""><span style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></span></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="arial"><br></font></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; color:#000000; bEditID:r3st1; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[]]></td>
+</tr>
+</table>

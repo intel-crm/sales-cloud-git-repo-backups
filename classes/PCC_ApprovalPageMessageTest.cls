@@ -144,7 +144,6 @@ private class PCC_ApprovalPageMessageTest {
             insert dealRec;
             dealRec[0].Core_Approver_Grp_Nm__c='AGS_Deal Reg- ASMO';    
             update dealRec;
-            System.debug('l222222222--->'+dealRec[0].L2_Approver__c);
             List<Id> nextApproverIds = new List<Id>{testUser.Id};
             Test.startTest();
                 // Create an approval request for the account

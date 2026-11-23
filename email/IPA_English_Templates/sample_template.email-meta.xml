@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>sample_template</name>
+    <style>none</style>
+    <subject>upgrade for tier is completed</subject>
+    <textOnly>upgrade for tier is completed
+
+
+Hi {!Contact.Name},
+the tier upgrade is completed for role tier automation {!Contact.Core_Account__c}.
+
+
+Thanks,
+Intel Support Team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -114,11 +114,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Plan_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -127,86 +130,527 @@
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>AccountChallenges</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>AccountCmptvWeaknesses</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>AccountCompetitiveStrengths</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>AccountCompetitors</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>AccountId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>AccountIndustryTrends</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>AccountPrfmIndicators</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>AccountStrategicPriorities</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>AccountVision</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
+        <fullName>CRM_Account_Plan_Score__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Plan Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Account_Value_Impact_to_Intel__c</fullName>
+        <inlineHelpText>i.e. why we do business with them ?
+2-3 sentences on the Key reasons we are engaged with this account/Highlight the impact they deliver.
+Note any Incubation or Transformation engagements</inlineHelpText>
+        <label>Account Value/Impact to Intel</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Competition__c</fullName>
+        <label>Competition</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Created_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Created By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Plans1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Created_Date__c</fullName>
+        <label>Created Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Customer_Nm__c</fullName>
+        <description>who is the Customer</description>
+        <inlineHelpText>Provides an executive summary of who the Account is, their market position, business value proposition etc</inlineHelpText>
+        <label>Who is the Customer ?</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Customer_Objectives__c</fullName>
+        <label>Customer Objectives</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Financial_Year__c</fullName>
+        <label>Financial Year</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>FY 2025</fullName>
+                    <default>false</default>
+                    <label>FY 2025</label>
+                </value>
+                <value>
+                    <fullName>FY 2024</fullName>
+                    <default>false</default>
+                    <label>FY 2024</label>
+                </value>
+                <value>
+                    <fullName>FY 2023</fullName>
+                    <default>false</default>
+                    <label>FY 2023</label>
+                </value>
+                <value>
+                    <fullName>FY 2022</fullName>
+                    <default>false</default>
+                    <label>FY 2022</label>
+                </value>
+                <value>
+                    <fullName>FY 2021</fullName>
+                    <default>false</default>
+                    <label>FY 2021</label>
+                </value>
+                <value>
+                    <fullName>FY 2020</fullName>
+                    <default>false</default>
+                    <label>FY 2020</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CRM_IAR_count__c</fullName>
+        <externalId>false</externalId>
+        <label>Intel Account Revenue Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CRM_Intel_Account_Revenue_Comments__c</fullName>
+        <label>Intel Account Revenue Comments</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Intel_Partner_Alliance_Activity__c</fullName>
+        <inlineHelpText>1.Partner Alliance Activation (Y/N T&amp;C Signed)
+2.Partner University Engagement. (Y/N Number of Trained Sellers)
+3.Marketplace Storefront(Y/N) (Y/N Number of Published Solutions)</inlineHelpText>
+        <label>Intel Partner Alliance Activity</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Intel_Values__c</fullName>
+        <label>Intel Values</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Last_Modified_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Last Modified By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Plans2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Last_Modified_Date__c</fullName>
+        <label>Last Modified Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CRM_Partners__c</fullName>
+        <label>Partners</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Recent_Customer_Announcements__c</fullName>
+        <inlineHelpText>Recent Earning Announcement
+Organizational Changes
+Executive moves
+Recent acquisitions
+Investments</inlineHelpText>
+        <label>Recent Customer Announcements</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_Relationship_Map_Comments__c</fullName>
+        <label>Relationship Map Comments</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CRM_SOW_count__c</fullName>
+        <externalId>false</externalId>
+        <label>SOW Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Plan_Score__c</fullName>
+        <description>Calculate the score based on the number of fields filled/Total number of fields</description>
+        <externalId>false</externalId>
+        <formula>( 
+  IF(NOT(ISBLANK(Core_Account_Revenue__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Potential_Revenue_next_5_years__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Market_Cap__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Revenue_Customer_Overview__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Net_Income__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Cash_Investments__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Debt_long_term__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Price_Earnings__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Gross_Margin__c)), 1, 0) +
+  IF(NOT(ISBLANK(Core_Employees__c)), 1, 0) 
+) / 10 * 100</formula>
+        <label>Account Plan Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Revenue_Comments__c</fullName>
+        <label>Account Revenue Comments</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Account_Revenue__c</fullName>
+        <label>Account Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Cash_Investments__c</fullName>
+        <label>Cash &amp; Investments</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Debt_long_term__c</fullName>
+        <label>Debt long term</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Employees__c</fullName>
+        <externalId>false</externalId>
+        <label>Employees</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Gross_Margin__c</fullName>
+        <label>Gross Margin</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Core_Manager_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Manager Name</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Account_Plans</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Core_Market_Cap__c</fullName>
+        <label>Market Cap</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Net_Income__c</fullName>
+        <label>Net Income</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Objective_Comments_Section__c</fullName>
+        <label>Objective Comments Section</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Core_Potential_Revenue_next_5_years__c</fullName>
+        <label>Potential Revenue (next 5 years)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Price_Earnings__c</fullName>
+        <label>Price/Earnings</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Revenue_Customer_Overview__c</fullName>
+        <label>Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Core_Revenue__c</fullName>
+        <label>Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>EndDate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>Name</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>Notes</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>OwnerId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>RelationshipOpportunities</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>RelationshipStrengths</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>RelationshipThreats</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>RelationshipWeaknesses</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>StartDate</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>Status</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Transformational_Opportunities_Comment_N__c</fullName>
+        <label>Transformational Opportunities Comment N</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Transformational_Opportunities_Comment__c</fullName>
+        <label>Transformational Opportunities Name</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Transformational_Opportunities_Links__c</fullName>
+        <label>Transformational Opportunities Links</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Transformational_Opportunities__c</fullName>
+        <label>Transformational Opportunities</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <searchLayouts>
         <customTabListAdditionalFields>Status</customTabListAdditionalFields>

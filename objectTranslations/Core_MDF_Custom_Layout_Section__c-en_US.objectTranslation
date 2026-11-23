@@ -40,6 +40,10 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
             <translation><!-- API Create --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>API List View</masterLabel>
+            <translation><!-- API List View --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Compact Layout</masterLabel>
             <translation><!-- Compact Layout --></translation>
         </picklistValues>
@@ -51,6 +55,10 @@ Ex: [{&quot;prmissionSetName&quot; : &quot;Core_MDF_CCP_Internal_IPA_Acct_Mgr&qu
     <fields>
         <label><!-- Hide If No Value --></label>
         <name>Core_MDF_Hide_If_No_Value_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- List API Record Count Limit --></label>
+        <name>Core_MDF_List_API_Record_Count_Limit_nbr__c</name>
     </fields>
     <fields>
         <label><!-- No Of Columns --></label>

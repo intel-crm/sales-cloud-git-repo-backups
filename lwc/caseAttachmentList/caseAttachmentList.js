@@ -343,6 +343,7 @@ export default class caseAttachmentList extends NavigationMixin(LightningElement
               
             console.log('url=',this.url);
             const newWindow = window.open(this.url+this.addParamSymbole+'c__recordId='+this.recordId+'+'+'Public_to_Customers');
+            console.log('newWindow', newWindow);
             newWindow.opener = null;//window.open(this.url,'_blank');
     }
     getAttachmentUrlPartners(){
@@ -401,15 +402,15 @@ export default class caseAttachmentList extends NavigationMixin(LightningElement
             console.log('url==',this.url);
         }
         else if(this.url.includes('crmdevcase--c.sandbox.vf.force.com/apex')){
-            this.url =  'https://intel--crmdevcase.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
+            this.url =  'https://intel--crmdevcase.sandbox.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
         }
         else if(this.url.includes('crmqa3--c.sandbox.vf.force.com/apex')){
             this.url =  'https://intel--crmqa3.sandbox.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
         }
         else if(this.url.includes('crmdevint3--c.sandbox.vf.force.com/apex')){
-            this.url =  'https://intel--crmdevint3.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
+            this.url =  'https://intel--crmdevint3.sandbox.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
         }
-        else if(this.url.includes('intel--c.visualforce.com/apex') || this.url.includes('intel--c.vf.force.com/apex')){
+        else if(this.url.includes('c.visualforce.com/apex') || this.url.includes('c.vf.force.com/apex')){
             this.url ='https://intel.lightning.force.com/lightning/n/Core_IPS_Case_Attachments_LEX';
         }
     }

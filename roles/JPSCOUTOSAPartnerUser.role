@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>JP SÁ COUTO S.A. Partner User</description>
+    <description>JP SÁ COUTO S.A Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>JP SÁ COUTO S.A. Partner User</name>
+    <name>JP SÁ COUTO S.A Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>EMP_11123496_Tiago_Terrivel</parentRole>
 </Role>

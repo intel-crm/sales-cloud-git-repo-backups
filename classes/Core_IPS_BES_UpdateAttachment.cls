@@ -21,6 +21,7 @@ public with sharing class Core_IPS_BES_UpdateAttachment {
                //START - Added as part of Code Refactor TWC745-6459
                String caseNumber = (String)backendJsonObj.get('target_id');
                caseNumberSet.add(caseNumber);
+               
                //if((!Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber)) || (Core_IPS_BES_InboundMessage.revisionMap.containskey(caseNumber) && (Integer.ValueOf(backendJsonObj.get('backend_rev')) > Integer.ValueOf(Core_IPS_BES_InboundMessage.revisionMap.get(caseNumber))))){
                 
                 //Added by Pavani for Null check Fix
@@ -28,13 +29,12 @@ public with sharing class Core_IPS_BES_UpdateAttachment {
                    Core_IPS_BES_InboundMessage.revisionMap.put(caseNumber, (String)backendJsonObj.get('backend_rev'));  }
                //if(!Core_IPS_BES_InboundMessage.sourceDetailsMap.containskey(caseNumber)){ 
                if(backendJsonObj.containskey('source_id') && String.isNotBlank((String)backendJsonObj.get('source_id')) && (!Core_IPS_BES_InboundMessage.sourceDetailsMap.containskey(caseNumber))){
-                Core_IPS_BES_InboundMessage.sourceDetailsMap.put(caseNumber, (String)backendJsonObj.get('source_id'));  } //END
-               
+                Core_IPS_BES_InboundMessage.sourceDetailsMap.put(caseNumber, (String)backendJsonObj.get('source_id')); } //END
             }
             List<Id> caseIds = new List<Id>();
             List<Case> caseList;
             //FLS Added as Part of code refactor
-	    
+	    //Added as part of code refactor
             if(Case.sObjectType.getDescribe().isQueryable()){
             	//caseList = [SELECT Id,CaseNumber FROM CASE WHERE CaseNumber IN: caseMap.keySet()];
                 caseList = [SELECT Id,CaseNumber FROM CASE WHERE CaseNumber IN: caseNumberSet]; //START - Added as part of Code Refactor TWC745-6459
@@ -44,6 +44,7 @@ public with sharing class Core_IPS_BES_UpdateAttachment {
                 	caseIds.add(cases.Id);
             	}   
             }
+            //FLS Added as Part of code refactor
             if(Core_IPS_Case_Attachments__c.sObjectType.getDescribe().isQueryable()){
             	//List<Core_IPS_Case_Attachments__c> attLi = [SELECT Id, Core_Case__c, Core_Upload_Status__c,Core_IPS_BES_Promote_Status__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c IN: caseIds AND Core_Upload_Status__c ='Complete'];
                 for(Core_IPS_Case_Attachments__c att: [SELECT Id, Core_Case__c, Core_Upload_Status__c,Core_IPS_BES_Promote_Status__c FROM Core_IPS_Case_Attachments__c WHERE Core_Case__c IN: caseIds AND Core_Upload_Status__c ='Complete']){

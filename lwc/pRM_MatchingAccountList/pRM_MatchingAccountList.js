@@ -328,7 +328,30 @@ export default class PRM_MatchingAccountList extends LightningElement {
       // console.log('this.blockedAccountfromIPA'+JSON.stringify(blockedAccountfromIPA));
      this.blockedAccount= this.accResult.blockedAccount;
     }
-
+    // async  getBlockedAccountMap(accId) {
+    //     try {
+    //         // Call the Apex method
+    //         const result = await getBlockedAccount({ accntId: accId });
+            
+    //         // Convert the result (which is an object) to a Map
+    //         this.mapdata = new Map(Object.entries(result));
+    //         this.mapValues = Array.from(this.mapData.values()); // Extracting values into an array
+    //         // for (let i = 0; i < mapValues.length; i++) {
+    //         //     if(this.mapValues[i].includes(true)){
+    //         //         this.blockedAccount=true;
+    //         //     }
+    //         // }
+    //         const requiredData = true; // The data you're checking for
+    //         this.blockedAccount = this.mapdata.has(this.getKeyFromValue(requiredData));
+    //         console.log(' this.blockedAccount'+ this.blockedAccount);
+    //        // console.log('Accounts blockedAccount:', this.blockedAccount);
+    //         return blockedAccount;
+    //     } catch (err) {
+    //         this.error = err;
+    //         console.error('Error fetching accounts map:', this.error);
+    //         return null;
+    //     }
+    // }
 
     getKeyFromValue(value) {
         for (let [key, val] of this.mapdata) {

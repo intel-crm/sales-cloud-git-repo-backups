@@ -2,7 +2,7 @@
 * @description       : 
 * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
 * @group             : 
-* @last modified on  : 09-18-2026
+* @last modified on  : 08-10-2026
 * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public without sharing class QuoteLineBusinessLogic { 
@@ -50,7 +50,8 @@ public without sharing class QuoteLineBusinessLogic {
             }
             for(SBQQ__QuoteLine__c quoteLine: lstquoteLines) {
                 if(quoteLine.Pricing_Change_Request_cb__c) {
-                    if(isOEMField) {
+                    //Pricing_QuoteLine_AutoApprovalController.isChangeRequestQl this change is related to autoApprove it should not go to production
+                    if(isOEMField && !Pricing_QuoteLine_AutoApprovalController.isChangeRequestQl) {
                         if(!Pricing_QuoteLine_AutoApprovalController.isChangeRequestPriceRule){
                         for(String field: changeRequestFieldsNonEditable) {
                             if(quoteLine.get(field) != oldMap.get(quoteLine.Id).get(field)) {
@@ -62,7 +63,7 @@ public without sharing class QuoteLineBusinessLogic {
                     } else if(isRPM) {
                         for(String field: changeRequestFieldsNonEditable) {
                             if(quoteLine.get(field) != oldMap.get(quoteLine.Id).get(field)) {
-                                quoteLine.addError(Label.Pricing_Tender_Change_Request_RPM_Validation_Error_Message);
+                               quoteLine.addError(Label.Pricing_Tender_Change_Request_RPM_Validation_Error_Message);
                                 break;
                             }
                         }
@@ -264,8 +265,10 @@ public without sharing class QuoteLineBusinessLogic {
                         }
                     }
                     //PAA V2 - Rationale for Pricing default value is set if the quoteline is not eligible for Pricing 
+                    system.debug('INSIDE RATIONALE FOR PRICING'+Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine));
                     if(oldMap.get(quoteLine.Id).Pricing_Status_Nm__c != quoteLine.Pricing_Status_Nm__c &&  quoteLine.Pricing_Status_Nm__c == Label.Pricing_Tender_QuoteLine_Status_PendingFurtherIntelReview && Pricing_QuoteLineController.eligibleForPricingSupportCheck(quoteLine)){
                         quoteLine.Pricing_Rationale_for_Pricing__c = Label.Pricing_Not_Eligible_For_Pricing;
+                        system.debug('INSIDE RATIONALE FOR PRICING'+quoteLine.Pricing_Rationale_for_Pricing__c);
                     
                     }
                     
@@ -973,7 +976,7 @@ public without sharing class QuoteLineBusinessLogic {
                         SBQQ__QuoteLine__c referenceQuoteLine = referenceQuoteLineMap.get(quoteLine.Pricing_Reference_Quote_Line_Nbr__c);
                         if(referenceQuoteLineUpdateMap.containsKey(referenceQuoteLine.Id)){
                             referenceQuoteLineUpdateMap.get(referenceQuoteLine.Id).Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
-                        }else{
+                        }else{//#ticket
                             if(referenceQuoteLine.Pricing_Status_Nm__c != Label.Pricing_Tender_QuoteLine_Status_Revised){
                                 referenceQuoteLine.Pricing_Status_Nm__c = Label.Pricing_Tender_QuoteLine_Status_Revised;
                                 referenceQuoteLineUpdateMap.put(referenceQuoteLine.Id,referenceQuoteLine);
@@ -1720,7 +1723,7 @@ public without sharing class QuoteLineBusinessLogic {
             competitorProductsIds.add(quoteLine.Pricing_Competetor_Product__c);
             regionList.add(region);
             applicationSetforAutoPop.add(application);
-    }
+        }        
     
 }
 

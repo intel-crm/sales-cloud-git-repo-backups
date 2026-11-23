@@ -17,6 +17,14 @@
         <name>Contact_ID__c</name>
     </fields>
     <fields>
+        <label><!-- Contact Valid for Deactivation --></label>
+        <name>Contact_Valid_for_Deactivation__c</name>
+    </fields>
+    <fields>
+        <label><!-- ContactId Prod --></label>
+        <name>Contactid_prod__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact Details --></label>
         <name>Contacts_Fields_Merged__c</name>
     </fields>
@@ -56,6 +64,10 @@
     <fields>
         <label><!-- AGS Re-publish Ind --></label>
         <name>Core_AGS_Republish_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- AGS Re-publish Signal --></label>
+        <name>Core_AGS_Republish_Signal__c</name>
     </fields>
     <fields>
         <help><!-- Number of retry attempts made upon failure on AGS Integration. --></help>
@@ -220,8 +232,16 @@
             <translation><!-- IPA User --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Intel Partner FAE</masterLabel>
+            <translation><!-- Intel Partner FAE --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Partner Portal - IPS</masterLabel>
             <translation><!-- Partner Portal - IPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Portal - Leads</masterLabel>
+            <translation><!-- Partner Portal - Leads --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>RMF External Activity Approver</masterLabel>
@@ -1246,8 +1266,8 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkiye</masterLabel>
-            <translation><!-- Turkiye --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Turkmenistan</masterLabel>
@@ -1331,11 +1351,15 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Current Year --></label>
+        <name>Core_Current_Year__c</name>
+    </fields>
+    <fields>
         <label><!-- Candidate for Customer Excellence Survey --></label>
         <name>Core_Customer_Excellence_Survey__c</name>
     </fields>
     <fields>
-        <help><!-- Prior to deactivating contact, view all opportunities/cases associated --></help>
+        <help>Check this box if you want to deactivate a contact</help>
         <label><!-- Deactivation Requested --></label>
         <name>Core_Deactivated__c</name>
     </fields>
@@ -1503,6 +1527,10 @@
         <name>Core_Enterprise_Id__c</name>
     </fields>
     <fields>
+        <label><!-- Entitlement Assignment Duration --></label>
+        <name>Core_Entitlement_Assignment_Duration__c</name>
+    </fields>
+    <fields>
         <label><!-- Entitlement Assignment Message --></label>
         <name>Core_Entitlement_Assignment_Message__c</name>
     </fields>
@@ -1527,6 +1555,10 @@
         <name>Core_Entitlement_Status_Change_Date_Time__c</name>
     </fields>
     <fields>
+        <label><!-- IsBulkLoadedContact --></label>
+        <name>Core_IPA_Contact_Assignment__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact Segment --></label>
         <name>Core_IPA_Contact_Segment__c</name>
         <picklistValues>
@@ -1549,6 +1581,10 @@
             <masterLabel>Storage and Memory</masterLabel>
             <translation><!-- Storage and Memory --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IPA Contact --></label>
+        <name>Core_IPA_Contact__c</name>
     </fields>
     <fields>
         <label><!-- Email Verification Date --></label>
@@ -1623,7 +1659,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Partner Role Old --></label>
+        <label><!-- Partner Role_Old --></label>
         <name>Core_IPA_Partner_Role__c</name>
         <picklistValues>
             <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
@@ -1658,8 +1694,8 @@
             <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Service Integrator</masterLabel>
-            <translation><!-- Service Integrator --></translation>
+            <masterLabel>Service  Integrator</masterLabel>
+            <translation><!-- Service  Integrator --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solution Provider</masterLabel>
@@ -1858,7 +1894,7 @@
         <name>Core_Import_ID__c</name>
     </fields>
     <fields>
-        <help><!-- Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same, otherwise returns FALSE. --></help>
+        <help><!-- Compares the Federation Id on the User Record with the Enterprise Id on the corresponding Contact Record. Returns TRUE if both are same OR if Enterprise Id is empty, otherwise returns FALSE. --></help>
         <label><!-- Is FederationId Valid --></label>
         <name>Core_Is_FederationId_Valid_Ind__c</name>
         <picklistValues>
@@ -1875,19 +1911,20 @@
         <name>Core_Job_Function_Code__c</name>
     </fields>
     <fields>
+        <help><!-- This field is inactive. Please use Profession field. Contact AAQ for questions. --></help>
         <label><!-- Job Function --></label>
         <name>Core_Job_Function__c</name>
         <picklistValues>
             <masterLabel>Administration/Clerical</masterLabel>
-            <translation>管理 / 事務</translation>
+            <translation>Administration/Clerical</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Branch Manager</masterLabel>
-            <translation>支店長</translation>
+            <translation>Branch Manager</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Business Development</masterLabel>
-            <translation>事業開発</translation>
+            <translation>Business Development</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>College/University Faculty</masterLabel>
@@ -1895,175 +1932,175 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Communications Engineer</masterLabel>
-            <translation>通信エンジニア</translation>
+            <translation>Communications Engineer</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Communications/Public Relations</masterLabel>
-            <translation>コミュニケーション / 広報</translation>
+            <translation>Communications/Public Relations</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Consultant/Advisor</masterLabel>
-            <translation>コンサルタント / アドバイザー</translation>
+            <translation>Consultant/Advisor</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Customer Quality/Support Engineer</masterLabel>
-            <translation>顧客品質 / サポートエンジニア</translation>
+            <translation>Customer Quality/Support Engineer</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Customer Service</masterLabel>
-            <translation>顧客サービス</translation>
+            <translation>Customer Service</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Database Administrator</masterLabel>
-            <translation>データベース管理者</translation>
+            <translation>Database Administrator</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Education and Training</masterLabel>
-            <translation>教育 &amp; トレーニング</translation>
+            <translation>Education and Training</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Engineering</masterLabel>
-            <translation>エンジニアリング</translation>
+            <translation>Engineering</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Facilities Management and Maintenance</masterLabel>
-            <translation>施設管理 &amp; 保守</translation>
+            <translation>Facilities Management and Maintenance</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Finance</masterLabel>
-            <translation>財務</translation>
+            <translation>Finance</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hardware Engineer</masterLabel>
-            <translation>ハードウェア・エンジニア</translation>
+            <translation>Hardware Engineer</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Healthcare Professional</masterLabel>
-            <translation>医療従事者</translation>
+            <translation>Healthcare Professional</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Human Resource</masterLabel>
-            <translation>人事</translation>
+            <translation>Human Resource</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Manager</masterLabel>
-            <translation>IT マネージャー</translation>
+            <translation>IT Manager</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Information Management Professional</masterLabel>
-            <translation>情報管理者</translation>
+            <translation>Information Management Professional</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Information Technology</masterLabel>
-            <translation>情報技術</translation>
+            <translation>Information Technology</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Legal</masterLabel>
-            <translation>法務</translation>
+            <translation>Legal</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Manufacturing</masterLabel>
-            <translation>製造</translation>
+            <translation>Manufacturing</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Marketing Executive</masterLabel>
-            <translation>マーケティング担当幹部</translation>
+            <translation>Marketing Executive</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Marketing Manager</masterLabel>
-            <translation>マーケティング・マネージャー</translation>
+            <translation>Marketing Manager</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Media and Design</masterLabel>
-            <translation>メディア &amp; デザイン</translation>
+            <translation>Media and Design</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Network Engineer</masterLabel>
-            <translation>ネットワーク・エンジニア</translation>
+            <translation>Network Engineer</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Operations</masterLabel>
-            <translation>運用</translation>
+            <translation>Operations</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
-            <translation>その他</translation>
+            <translation>Other</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other - Engineering</masterLabel>
-            <translation>その他 - エンジニアリング</translation>
+            <translation>Other - Engineering</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other - Information Technology</masterLabel>
-            <translation>その他 - 情報技術</translation>
+            <translation>Other - Information Technology</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other - Sales and Marketing</masterLabel>
-            <translation>その他 - 営業・マーケティング</translation>
+            <translation>Other - Sales and Marketing</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Owner/General Manager/CEO/CFO/COO</masterLabel>
-            <translation>オーナー / ジェネラル・マネージャー / CEO / CFO / COO</translation>
+            <translation>Owner/General Manager/CEO/CFO/COO</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Owners &amp; Sales</masterLabel>
-            <translation>オーナー / 営業</translation>
+            <translation>Owners &amp; Sales</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Project Management</masterLabel>
-            <translation>プロジェクト管理</translation>
+            <translation>Project Management</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Purchasing</masterLabel>
-            <translation>購買</translation>
+            <translation>Purchasing</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Research and Development</masterLabel>
-            <translation>研究開発</translation>
+            <translation>Research and Development</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Retail Sales Person</masterLabel>
-            <translation>小売販売員</translation>
+            <translation>Retail Sales Person</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales &amp; IT</masterLabel>
-            <translation>営業 / IT</translation>
+            <translation>Sales &amp; IT</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales &amp; Marketing Engineer</masterLabel>
-            <translation>営業 / マーケティング・エンジニア</translation>
+            <translation>Sales &amp; Marketing Engineer</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales &amp; Technical manager</masterLabel>
-            <translation>営業 / テクニカル・マネージャー</translation>
+            <translation>Sales &amp; Technical manager</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales Executive</masterLabel>
-            <translation>セールス担当幹部</translation>
+            <translation>Sales Executive</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales Manager</masterLabel>
-            <translation>セールス・マネージャー</translation>
+            <translation>Sales Manager</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales and Marketing</masterLabel>
-            <translation>営業 &amp; マーケティング</translation>
+            <translation>Sales and Marketing</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Security</masterLabel>
-            <translation>セキュリティー</translation>
+            <translation>Security</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Software Engineer</masterLabel>
-            <translation>ソフトウェア・エンジニア</translation>
+            <translation>Software Engineer</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solutions Architect</masterLabel>
-            <translation>ソリューション・アーキテクト</translation>
+            <translation>Solutions Architect</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Technical Integrator</masterLabel>
-            <translation>テクニカル・インテグレーター</translation>
+            <translation>Technical Integrator</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>University Member</masterLabel>
@@ -2071,15 +2108,15 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Warehousing, Transportation and Conveyan</masterLabel>
-            <translation>倉庫保管、輸送、運搬</translation>
+            <translation>Warehousing, Transportation and Conveyan</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Web Developer/Service Provider</masterLabel>
-            <translation>ウェブ開発者 / サービス・プロバイダー</translation>
+            <translation>Web Developer/Service Provider</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>eBusiness Manager/Developer</masterLabel>
-            <translation>eBusiness マネージャー / 開発者</translation>
+            <translation>eBusiness Manager/Developer</translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2194,6 +2231,10 @@
         <help><!-- By selecting this checkbox, you are confirming that Cases submitted on Intel® Premier Support are related to the use of Intel Products regarding military, intelligence, nuclear/biochemical, defense, or space items. --></help>
         <label><!-- MINDS --></label>
         <name>Core_MINDS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mailing Address1 --></label>
+        <name>Core_Mailing_Address__c</name>
     </fields>
     <fields>
         <label><!-- Marketing - Do Not Contact Date --></label>
@@ -2405,19 +2446,19 @@
         <name>Core_Profession__c</name>
         <picklistValues>
             <masterLabel>CIO (Chief Information Officer)</masterLabel>
-            <translation>CIO (最高情報責任者)</translation>
+            <translation><!-- CIO (Chief Information Officer) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CISO (Chief Information Security Officer)</masterLabel>
-            <translation>CISO (最高情報セキュリティー責任者)</translation>
+            <translation><!-- CISO (Chief Information Security Officer) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>COO (Chief Operating Officer)</masterLabel>
-            <translation>COO (最高執行責任者)</translation>
+            <translation><!-- COO (Chief Operating Officer) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>CTO (Chief Technology Officer)</masterLabel>
-            <translation>CTO (最高技術責任者)</translation>
+            <translation><!-- CTO (Chief Technology Officer) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Consultant</masterLabel>
@@ -2425,23 +2466,23 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Data Sciences</masterLabel>
-            <translation>データサイエンス</translation>
+            <translation><!-- Data Sciences --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Educator</masterLabel>
-            <translation>教育関係者</translation>
+            <translation><!-- Educator --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>FPGA Engineering</masterLabel>
-            <translation>FPGA エンジニアリング</translation>
+            <translation><!-- FPGA Engineering --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Facilities/Audio Video</masterLabel>
-            <translation>設備 / オーディオビデオ</translation>
+            <translation><!-- Facilities/Audio Video --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Finance/Procurement</masterLabel>
-            <translation>財務 / 調達</translation>
+            <translation><!-- Finance/Procurement --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Government</masterLabel>
@@ -2449,39 +2490,39 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Hardware Development/Engineering</masterLabel>
-            <translation>ハードウェアの開発 / エンジニアリング</translation>
+            <translation><!-- Hardware Development/Engineering --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hobbyist/Maker</masterLabel>
-            <translation>愛好家 / メーカー</translation>
+            <translation><!-- Hobbyist/Maker --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Generalist/Other IT</masterLabel>
-            <translation>IT ゼネラリスト / IT その他</translation>
+            <translation><!-- IT Generalist/Other IT --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Information Security</masterLabel>
-            <translation>IT 情報セキュリティー</translation>
+            <translation><!-- IT Information Security --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Management</masterLabel>
-            <translation>IT マネジメント</translation>
+            <translation><!-- IT Management --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT Storage</masterLabel>
-            <translation>IT ストレージ</translation>
+            <translation><!-- IT Storage --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IT User Devices - PCs tablets etc</masterLabel>
-            <translation>IT ユーザーデバイス - PC、タブレットなど</translation>
+            <translation><!-- IT User Devices - PCs tablets etc --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Infrastructure/Datacenter Architecture</masterLabel>
-            <translation>インフラストラクチャー / データセンター・アーキテクチャー</translation>
+            <translation><!-- Infrastructure/Datacenter Architecture --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Line of Business or Service Head</masterLabel>
-            <translation>事業分野またはサービスヘッド</translation>
+            <translation><!-- Line of Business or Service Head --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Marketing</masterLabel>
@@ -2489,11 +2530,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Network Architecture/Engineering</masterLabel>
-            <translation>ネットワーク・アーキテクチャー / エンジニアリング</translation>
+            <translation><!-- Network Architecture/Engineering --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Operations Engineer</masterLabel>
-            <translation>オペレーション・エンジニア</translation>
+            <translation><!-- Operations Engineer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
@@ -2501,11 +2542,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Owner/Executive Management</masterLabel>
-            <translation>オーナー / 経営管理</translation>
+            <translation><!-- Owner/Executive Management --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Press Analyst</masterLabel>
-            <translation>プレスアナリスト</translation>
+            <translation><!-- Press Analyst --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales</masterLabel>
@@ -2513,7 +2554,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Scientist/Researcher</masterLabel>
-            <translation>科学者 / 研究調査員</translation>
+            <translation><!-- Scientist/Researcher --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Software Operations</masterLabel>
@@ -2521,11 +2562,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Software/Application Development/Engineering</masterLabel>
-            <translation>ソフトウェア / アプリケーションの開発 / エンジニアリング</translation>
+            <translation><!-- Software/Application Development/Engineering --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solution/System Architecture</masterLabel>
-            <translation>ソリューション / システム・アーキテクチャー</translation>
+            <translation><!-- Solution/System Architecture --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Student</masterLabel>
@@ -2636,8 +2677,20 @@
         <name>Core_isEmailBounced_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Contact Stub --></label>
-        <name>CventEvents__ContactStub__c</name>
+        <label><!-- Current Year --></label>
+        <name>Current_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Verification Status --></label>
+        <name>Email_Verification_Status__c</name>
     </fields>
     <fields>
         <label><!-- External User State Change Date/Time --></label>
@@ -2654,6 +2707,51 @@
             <masterLabel>Pending Acceptance</masterLabel>
             <translation><!-- Pending Acceptance --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Languages --></label>
+        <name>LID__Languages__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>LID__Level__c</name>
+        <picklistValues>
+            <masterLabel>Primary</masterLabel>
+            <translation><!-- Primary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tertiary</masterLabel>
+            <translation><!-- Tertiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
+    </fields>
+    <fields>
+        <help><!-- Field automatically updated by LinkedIn Sales Navigator Data Validation. “Not at Company” means Contact is not with associated Account based on LinkedIn profile. No value indicates LinkedIn has no feedback to share. --></help>
+        <label><!-- Not at Company Flag --></label>
+        <name>LID__No_longer_at_Company__c</name>
+        <picklistValues>
+            <masterLabel>Ignore</masterLabel>
+            <translation><!-- Ignore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not at Company</masterLabel>
+            <translation><!-- Not at Company --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Session Id --></label>
+        <name>LID__Session_Id__c</name>
     </fields>
     <fields>
         <label><!-- Mailing Country/Region --></label>
@@ -2727,6 +2825,14 @@
             <masterLabel>Yes</masterLabel>
             <translation><!-- Yes --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid Cause --></label>
+        <name>SWS_Marketo_Email_Invalid_Cause__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid --></label>
+        <name>SWS_Marketo_Email_Invalid__c</name>
     </fields>
     <fields>
         <label><!-- Username --></label>
@@ -2812,6 +2918,10 @@
         <label><!-- View in Marketo --></label>
         <name>mkto_si__View_in_Marketo__c</name>
     </fields>
+    <fields>
+        <label><!-- pocQuest --></label>
+        <name>pocQuest_tobedeleted__c</name>
+    </fields>
     <recordTypes>
         <description><!-- If Do Not Contact flag is selected --></description>
         <label><!-- Contact Layout – Do Not Contact --></label>
@@ -2832,6 +2942,10 @@
         <label><!-- Standard --></label>
         <name>Standard</name>
     </recordTypes>
+    <validationRules>
+        <errorMessage><!-- You Can Not Create Contact With ECB Flagged Account --></errorMessage>
+        <name>ACM_Stop_Contact_Creation_With_ECB_Acct</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Use  &quot;Change Account&quot; button to Update Account --></errorMessage>
         <name>Core_Account_Name_Cannot_Update</name>
@@ -2918,12 +3032,25 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>Core_Prevent_Deactivation_Request_Unchec</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please Provide Country --></errorMessage>
+        <name>Country_validation_for_new_Contacts</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Email ID length exceeds 64 characters --></errorMessage>
         <name>Email_ID_Character_Restriction</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
+        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country. For more information please visit 
+https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
         <name>Embargoed_Country</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Mailing Country/Region signifies where the Contact currently resides and is mandatory --></errorMessage>
@@ -2958,32 +3085,12 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>Create_new_Contact</name>
     </webLinks>
     <webLinks>
-        <label><!-- InviteContactToEvent --></label>
-        <name>CventEvents__InviteContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelContactToEvent --></label>
-        <name>CventEvents__ModifyCancelContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateContactToEvent --></label>
-        <name>CventEvents__NominateContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterContactToEvent --></label>
-        <name>CventEvents__RegisterContactToEvent</name>
-    </webLinks>
-    <webLinks>
         <label><!-- GoogleMaps --></label>
         <name>GoogleMaps</name>
     </webLinks>
     <webLinks>
         <label><!-- GoogleSearch --></label>
         <name>GoogleSearch</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Remove_PSOs --></label>
-        <name>Remove_PSOs</name>
     </webLinks>
     <webLinks>
         <label><!-- SendGmail --></label>

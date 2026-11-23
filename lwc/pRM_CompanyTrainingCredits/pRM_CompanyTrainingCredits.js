@@ -217,6 +217,7 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
                     this.loadPrev = true;
                     this.isDataAvailable = true;
                     this.currentAccount = 0;
+                    console.log('Training data1',this.currentAccount);
                 } else {
                     this.hasRender = true;
                     this.records = result;
@@ -226,7 +227,9 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
                     let start = 0;
                     let end = pagesize;
                     this.currentAccountRecords = this.records.slice(start, end);
+                    console.log('Training data11',this.currentAccountRecords);
                     this.exprtdata = this.currentAccountRecords;
+                    Console.log('training data 12',this.exprtdata);
                     this.noFPages = Math.ceil(this.records.length / pagesize);
                     this.loadMore = (this.currentpage >= 1 && this.noFPages <= this.currentpage) ? true : false;
                     this.loadPrev = (this.currentpage === 1) ? true : false;
@@ -264,18 +267,22 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
         if (this.byFilter) {
             //  console.log('You are inside filtered records');
             this.currentAccountRecords = this.filteredRecordsList.slice(start, end);
+            Console.log('Training data 13', this.currentAccountRecords)
             this.loadMore = (this.currentpage > 1 && this.noFFilteredPages <= this.currentpage) ? true : false;
             this.loadPrev = (this.currentpage === 1) ? true : false;
         } else {
             this.filteredRecordsList = [];
             // console.log('Your are innside another method...');
             this.currentAccountRecords = this.records.slice(start, end);
+            Console.log('Training data 14', this.currentAccountRecords)
             this.checkPrevANDNext();
         }
         if (this.currentAccountRecords != null && this.currentAccountRecords.length > 0) {
             this.exprtdata = this.currentAccountRecords;
+            Console.log('Training data 15', this.exprtdata)
         } else {
             this.exprtdata = [];
+            Console.log('Training data 151', this.exprtdata)
         }
         this.spinner = false;
         //console.log('Data to append on table :' + this.currentAccountRecords);
@@ -310,7 +317,9 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
                 let end = pagesize;
                 this.exprtdata = [];
                 this.currentAccountRecords = this.records.slice(start, end);
+                Console.log('Training data 125', this.currentAccountRecords)
                 this.exprtdata = this.currentAccountRecords;
+                Console.log('Training data 1251', this.exprtdata)
                 if (this.currentAccountRecords.length < 1) {
                     this.isDataAvailable = (this.currentAccountRecords.length < 1) ? true : false;
                     this.spinner = false;

@@ -136,14 +136,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Account_Status_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -179,6 +176,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CX_Insight_Report_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( CX_Insight_Report__c ,&quot;CX Insight Report &quot; +  TEXT(YEAR( Core_Date__c ))  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CX Insight Report</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>CX_Insight_Report__c</fullName>
@@ -244,6 +253,12 @@
                     <fullName>AR Tracking</fullName>
                     <default>false</default>
                     <label>AR Tracking</label>
+                </value>
+                <value>
+                    <fullName>Insight Report</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Insight Report</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

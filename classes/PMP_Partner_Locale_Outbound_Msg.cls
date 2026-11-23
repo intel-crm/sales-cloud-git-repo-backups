@@ -10,10 +10,6 @@
 *****************************************************************************************************************************************/
 
 public with sharing class PMP_Partner_Locale_Outbound_Msg {
-    
-    public static Boolean isWorking() {
-        return true;
-    }
 //IPA2.0 - As part of TWC729-7977 commented the entire class
 /*    
     //Static list of partners

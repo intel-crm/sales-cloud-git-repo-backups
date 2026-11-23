@@ -86,7 +86,7 @@ public without sharing class UCD_ACM_CountryAccount implements UCD_ACM_ServiceCo
     */
     private static void validateDuplicateAccounts(List<UCD_ACM_Models.AccountModel> validAccountRequests, List<UCD_ACM_Models.BusinessOrganizationResponseforService> invalidResponse){
         Set<String> accountNames = new Set<String>();
-        String queryFields = 'Id,Name, Core_Parent_Data_Simplified_Account_Nm__c, Recordtype.Name,RecordTypeId, Core_Compliance_Watch_List_Type__c, BillingCountryCode,BillingCountry,ShippingCountryCode,ShippingCountry,Core_Data_Simplified_Account_Nm__c,'+
+        String queryFields = 'Id,Name, Core_Parent_Data_Simplified_Account_Nm__c, Recordtype.Name,RecordTypeId, Core_Compliance_Watch_List_Type__c, Core_Compliance_Status__c, BillingCountryCode,BillingCountry,ShippingCountryCode,ShippingCountry,Core_Data_Simplified_Account_Nm__c,'+
                             +'Core_Data_Country_Nm__c,Core_Customer_Aggregation_Type__c,CreatedDate,Core_Business_Party_Id__c,ParentId,Core_Unified_Global_Customer_BP_Id__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,'+
                             +'Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Core_Survivor_Account_Id__c,Core_Parent_Business_Party_Id__c';
         for(UCD_ACM_Models.AccountModel accountData : validAccountRequests){

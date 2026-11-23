@@ -15,6 +15,13 @@ import Alt_Language_Name from '@salesforce/schema/Account_Create_Request__c.Core
 import Website from '@salesforce/schema/Account_Create_Request__c.Website__c';
 import proType from '@salesforce/schema/Account_Create_Request__c.Process_Type__c';
 import callSubmitFlow from "@salesforce/apex/UCD_GenericAcctSearch_SBR.callSubmitFlow";
+import MandateName_Street from '@salesforce/label/c.UCD_ACM_MandateName_Street';
+import CustNameSize from '@salesforce/label/c.UCD_ACM_CustNameSize';
+import EnterCountry_State from '@salesforce/label/c.UCD_ACM_EnterCountry_State';
+import EnterCountry_State_Website from '@salesforce/label/c.UCD_ACM_EnterCountry_State_Website';
+import Note from '@salesforce/label/c.UCD_ACM_Note';
+import AccountResults from '@salesforce/label/c.UCD_ACM_AccResults';
+import NewAccRequest from '@salesforce/label/c.UCD_ACM_NewAccRequest';
 
 const fields = [Req_Acc_Name, Alt_Language_Name, Website, proType];
 
@@ -129,6 +136,7 @@ export default class SearchAccountScreen1 extends NavigationMixin(LightningEleme
     loadMoreStatus;
     totalRecountCount = 0;
     targetDatatable;
+    labels = { Note, AccountResults, NewAccRequest };
 
     @api acctreasontrail;
     @api isRecordPage;
@@ -388,20 +396,20 @@ export default class SearchAccountScreen1 extends NavigationMixin(LightningEleme
 
                 this.error = true;
                 this.loaded = false;
-                this.showToastMessage("Customer Name or Primary Street  is mandatory", "error", "dismissable");
+                this.showToastMessage(MandateName_Street, "error", "dismissable");
 
             } else if ((this.searchAccountData.customerName.trim().length < 2) && !(this.searchAccountData.customerName == '' || this.searchAccountData.customerName == undefined || this.searchAccountData.customerName == null || !this.searchAccountData.customerName.trim())) {
 
                 this.error = true;
                 this.loaded = false;
-                this.showToastMessage("Customer Name size should greater than 1.", "error", "dismissable");
+                this.showToastMessage(CustNameSize, "error", "dismissable");
 
             } else if (((this.searchAccountData.street != '' && this.searchAccountData.street != undefined && this.searchAccountData.street != null) &&
                 ((this.searchAccountData.countryCode == '' || this.searchAccountData.countryCode == undefined || this.searchAccountData.countryCode == 'None')
                 ))) {
                 this.error = true;
                 this.loaded = false;
-                this.showToastMessage("In addition to Primary Street, you need to enter Primary Country and Primary State", "error", "dismissable");
+                this.showToastMessage(EnterCountry_State, "error", "dismissable");
 
             } else if (((this.searchAccountData.customerName != '' || this.searchAccountData.customerName != undefined) || (this.searchAccountData.street != '' || this.searchAccountData.street != undefined)) &&
                 ((this.searchAccountData.customerWebsite == '' || this.searchAccountData.customerWebsite == undefined ||
@@ -411,7 +419,7 @@ export default class SearchAccountScreen1 extends NavigationMixin(LightningEleme
 
                 this.error = true;
                 this.loaded = false;
-                this.showToastMessage("In addition to Customer Name, you need to enter Primary Country & Primary State or Customer Website", "error", "dismissable");
+                this.showToastMessage(EnterCountry_State_Website, "error", "dismissable");
 
             } else {
                 if (this.searchAccountData.countryCode == 'None') {
@@ -455,14 +463,14 @@ export default class SearchAccountScreen1 extends NavigationMixin(LightningEleme
             if ((this.customerName == '' || this.customerName == undefined || this.customerName == null || !this.customerName.trim()) && (this.street == '' || this.street == undefined || this.street == null || !this.street.trim())) {
                 this.error = true;
                 this.loaded = false;
-                this.showToastMessage("Customer Name or Primary Street  is mandatory", "error", "dismissable");
+                this.showToastMessage(MandateName_Street, "error", "dismissable");
 
             } else if (((this.street != '' && this.street != undefined && this.street != null) &&
                 ((this.countryCode == '' || this.countryCode == undefined || this.countryCode == 'None')
                 ))) {
                 this.error = true;
                 this.loaded = false;
-                this.showToastMessage("In addition to Primary Street, you need to enter Primary Country and Primary State", "error", "dismissable");
+                this.showToastMessage(EnterCountry_State, "error", "dismissable");
 
             } else if (((this.customerName != '' || this.customerName != undefined) || (this.street != '' || this.street != undefined)) &&
                 ((this.customerWebsite == '' || this.customerWebsite == undefined ||
@@ -472,7 +480,7 @@ export default class SearchAccountScreen1 extends NavigationMixin(LightningEleme
 
                 this.error = true;
                 this.loaded = false;
-                this.showToastMessage("In addition to Customer Name, you need to enter Primary Country & Primary State or Customer Website", "error", "dismissable");
+                this.showToastMessage(EnterCountry_State_Website, "error", "dismissable");
 
             } else {
 
@@ -514,6 +522,7 @@ export default class SearchAccountScreen1 extends NavigationMixin(LightningEleme
         if (!this.error) {
             if (this.searchValuesList) {
                 console.log('acctreasontrailsearch', +this.acctreasontrail);
+                console.log('searchValuesList', +this.searchValuesList);
                 getAcctResults({
                     fDetails: this.searchValuesList,
                     requestReason: this.acctreasontrail
@@ -525,6 +534,7 @@ export default class SearchAccountScreen1 extends NavigationMixin(LightningEleme
                             const tempjson = JSON.parse(JSON.stringify(this.data).split('childAccounts').join('_children'))
 
                             //this.items = [...this.items, ...tempjson];
+
                             this.items = tempjson;
                             this.totalRecountCount = this.items.length;
                             this.treeItems = this.items.slice(0, this.recordCount);

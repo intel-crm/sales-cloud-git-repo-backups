@@ -115,6 +115,10 @@
     </fields>
     <fields>
         <label><!-- Prediction Score --></label>
+        <name>Core_MDF_Prediction_Score_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prediction Score --></label>
         <name>Core_MDF_Prediction_Score_PB__c</name>
     </fields>
     <fields>

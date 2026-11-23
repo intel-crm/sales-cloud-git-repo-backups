@@ -21,9 +21,6 @@
     <columns>
         <field>Account.Core_Is_Active__c</field>
     </columns>
-    <columns>
-        <field>ACCOUNT.NAME</field>
-    </columns>
     <crossFilters>
         <criteriaItems>
             <column>StageName</column>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>Core_IPS_External_New_Comment</customButtons>
     <customButtons>Attach_File</customButtons>
     <customButtons>Manage_Interested_Party</customButtons>
     <customButtons>Core_IPS_External_Close_Case</customButtons>
@@ -88,8 +87,12 @@
                 <field>Core_IPS_Legacy_IPS_ID__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_New_Backend_System__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_IPS_BackendID__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -255,11 +258,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <quickActionList>
-        <quickActionListItems>
-            <quickActionName>Case.SendEmail</quickActionName>
-        </quickActionListItems>
-    </quickActionList>
+    <quickActionList/>
     <relatedContent>
         <relatedContentItems>
             <layoutItem>

@@ -12,15 +12,15 @@
     </values>
     <values>
         <field>PRM_Current_Step__c</field>
-        <value xsi:type="xsd:string">33</value>
+        <value xsi:type="xsd:string">31</value>
     </values>
     <values>
         <field>PRM_Display_Step_No__c</field>
-        <value xsi:type="xsd:double">10.0</value>
+        <value xsi:type="xsd:double">12.0</value>
     </values>
     <values>
         <field>PRM_Previous_Step__c</field>
-        <value xsi:type="xsd:string">;;4;5;6;8;9;10;21;28;37;12;13;14;34;15;38;39;50;51;;</value>
+        <value xsi:type="xsd:string">;0;4;5;6;8;9;21;28;12;13;14;15;34;38;39;50;51;10;	55</value>
     </values>
     <values>
         <field>PRM_Registration_Type__c</field>

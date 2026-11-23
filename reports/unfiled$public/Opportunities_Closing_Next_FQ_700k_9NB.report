@@ -41,13 +41,27 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Product_Count__c</field>
     </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Product_Total_Price_Sum__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Product_Total_Price_Sum__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>700000</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Opportunities Closing Next FQ</name>
+    <name>Opportunities Closing Next FQ &lt; 700k</name>
     <params>
         <name>terr</name>
         <value>all</value>

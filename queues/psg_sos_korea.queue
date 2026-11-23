@@ -5,6 +5,7 @@
     <name>PSG-SOS-Korea</name>
     <queueMembers>
         <publicGroups>
+            <publicGroup>ags_internal_sos</publicGroup>
             <publicGroup>ags_sos_korea</publicGroup>
         </publicGroups>
     </queueMembers>

@@ -25,6 +25,12 @@
         <default>false</default>
         <label>Invoice Plan</label>
     </customValue>
+    <customValue>
+        <fullName>Prepaid Upfront</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Prepaid Upfront</label>
+    </customValue>
     <description>The billing frequency.</description>
     <masterLabel>Billing Frequency</masterLabel>
     <sorted>false</sorted>

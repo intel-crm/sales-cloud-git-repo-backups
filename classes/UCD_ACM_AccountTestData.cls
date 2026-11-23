@@ -8,6 +8,9 @@ public class UCD_ACM_AccountTestData {
         accountModel.RequesterName = requesterName;
         accountModel.RequesterEmail = requesterEmail;
         accountModel.Addresses = getAccountAddress(countryName,countryCode,'Billing');
+        accountModel.RecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
+
+
         return accountModel;
     }
     
@@ -37,7 +40,7 @@ public class UCD_ACM_AccountTestData {
         businessData.BusinessPartyId = null;
         requestModel.BusinessOrganization = businessData;
         
-        For(Integer i=0;i<=5;i++){
+        for(Integer i=0;i<=5;i++){
             UCD_ACM_BusinessOrganizationModel.AttributesData attribute = new UCD_ACM_BusinessOrganizationModel.AttributesData();
             if(i==0)
             attribute.AttributeName = 'AccountInformation';

@@ -34,7 +34,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Accelerated by Intel®</masterLabel>
-        <translation><!-- Accelerated by Intel® --></translation>
+        <translation>由英特尔® 提供加速支持</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Altera®</masterLabel>
@@ -66,7 +66,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Atom®</masterLabel>
-        <translation>Intel Atom®</translation>
+        <translation><!-- Intel Atom® --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel Celeron</masterLabel>
@@ -142,7 +142,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ G3 Processor</masterLabel>
-        <translation>英特尔锐炫™ G3 处理器</translation>
+        <translation>英特尔® Arc™ G3 处理器</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Arc™ GPU</masterLabel>
@@ -401,6 +401,10 @@
         <translation><!-- Intel® Gaudi® --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Intel® Geti™</masterLabel>
+        <translation><!-- Intel® Geti™ --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Intel® Infrastructure Power Manager</masterLabel>
         <translation><!-- Intel® Infrastructure Power Manager --></translation>
     </valueTranslation>
@@ -422,11 +426,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Iris® Xe Graphics</masterLabel>
-        <translation>英特尔锐炬® Xe 显卡</translation>
+        <translation><!-- Intel® Iris® Xe Graphics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Iris® Xe Max Graphics</masterLabel>
-        <translation>英特尔锐炬® Xe Max 显卡</translation>
+        <translation><!-- Intel® Iris® Xe Max Graphics --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® MAX®</masterLabel>
@@ -486,7 +490,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Processor (N/U Series)</masterLabel>
-        <translation><!-- Intel® Processor (N/U Series) --></translation>
+        <translation>英特尔® 处理器（N/U 系列）</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® RFP Ready Kits</masterLabel>
@@ -530,7 +534,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Tiber™</masterLabel>
-        <translation><!-- Intel® Tiber™ --></translation>
+        <translation>英特尔® Tiber™</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Tofino™</masterLabel>
@@ -558,11 +562,11 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® D Processor</masterLabel>
-        <translation>英特尔® 至强® D 处理器</translation>
+        <translation><!-- Intel® Xeon® D Processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® E Processor</masterLabel>
-        <translation>英特尔® 至强® E 处理器</translation>
+        <translation><!-- Intel® Xeon® E Processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® Gold Processor</masterLabel>
@@ -582,7 +586,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® Xeon® W processor</masterLabel>
-        <translation>英特尔® 至强® W 处理器</translation>
+        <translation><!-- Intel® Xeon® W processor --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Intel® eASIC</masterLabel>

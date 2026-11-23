@@ -1603,6 +1603,7 @@
         <name>Core_Is_Segment_Available_In_Offering__c</name>
     </fields>
     <fields>
+        <help><!-- This field is inactive. Please use Profession field. Contact AAQ for questions. --></help>
         <label><!-- Job Function --></label>
         <name>Core_Job_Function__c</name>
         <picklistValues>
@@ -3210,7 +3211,7 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <relationshipLabel><!-- Leads --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- This ID helps track the lead while loading data for HubSpot. --></help>
+        <help><!-- This ID helps track the lead while loading data for Hubspot. --></help>
         <label><!-- Source ID --></label>
         <name>Core_SourceSystem_Id__c</name>
     </fields>
@@ -3648,12 +3649,32 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_lead_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Contact Stub --></label>
-        <name>CventEvents__ContactStub__c</name>
+        <label><!-- Customer Name --></label>
+        <name>Customer_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
     </fields>
     <fields>
         <label><!-- Days --></label>
         <name>Days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated Decision date --></label>
+        <name>Estimated_Decision_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated software value --></label>
+        <name>Estimated_software_value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Estimated total budget for the project --></label>
+        <name>Estimated_total_budget_for_the_project__c</name>
     </fields>
     <fields>
         <label><!-- Convert Lead --></label>
@@ -3710,6 +3731,14 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
+    </fields>
+    <fields>
         <label><!-- Please click “Save” to own these Leads. --></label>
         <name>Lead_Status_on_Claim__c</name>
     </fields>
@@ -3720,6 +3749,14 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <fields>
         <label><!-- MQL to TAL Count --></label>
         <name>MQL_to_TAL_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Name --></label>
+        <name>Opportunity_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Summary --></label>
+        <name>Opportunity_Summary__c</name>
     </fields>
     <fields>
         <label><!-- Partner ID --></label>
@@ -3798,12 +3835,21 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>PMP_Partner_Offering_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- Partner Account New --></label>
+        <name>Partner_Account__c</name>
+        <relationshipLabel><!-- Leads (Partner Account) --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- SAL to SQL Count --></label>
         <name>SAL_to_SQL_Count__c</name>
     </fields>
     <fields>
         <label><!-- Claimed Date --></label>
         <name>SWS_Claimed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Invalid Cause --></label>
+        <name>SWS_Email_Invalid_Cause__c</name>
     </fields>
     <fields>
         <label><!-- Entrance Date - MEL --></label>
@@ -3828,6 +3874,10 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <fields>
         <label><!-- InContact Email Sent --></label>
         <name>SWS_InContact_Email_Sent__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsMarketingRecord --></label>
+        <name>SWS_IsMarketingRecord__c</name>
     </fields>
     <fields>
         <label><!-- Last Modified Date By Non System User --></label>
@@ -3863,8 +3913,20 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>SWS_Locked_SGL_Coverage__c</name>
     </fields>
     <fields>
+        <label><!-- Is Locked? --></label>
+        <name>SWS_Locked__c</name>
+    </fields>
+    <fields>
         <label><!-- MQL no task Calculation --></label>
         <name>SWS_MQL_no_task_Calculation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid Cause --></label>
+        <name>SWS_Marketo_Email_Invalid_Cause__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketo Email Invalid --></label>
+        <name>SWS_Marketo_Email_Invalid__c</name>
     </fields>
     <fields>
         <label><!-- No Schedule --></label>
@@ -3929,6 +3991,34 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <fields>
         <label><!-- TQL to SAL Count --></label>
         <name>TQL_to_SAL_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vertical Market --></label>
+        <name>Vertical_Market__c</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consumer</masterLabel>
+            <translation><!-- Consumer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise</masterLabel>
+            <translation><!-- Enterprise --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Who is the decision maker at the end cus --></label>
+        <name>Who_is_the_decision_maker_at_the_end_cus__c</name>
     </fields>
     <fields>
         <label><!-- Add to Marketo Campaign --></label>
@@ -4012,9 +4102,18 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>mkto_si__View_in_Marketo__c</name>
     </fields>
     <recordTypes>
+        <label><!-- Deal Registration --></label>
+        <name>Deal_Registration</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- DO NOT USE - Marketo ONLY --></description>
         <label><!-- Marketing Lead --></label>
         <name>Lead</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Choose this to initiate the official Deal Registration process. --></description>
+        <label><!-- Partner Deal Registration --></label>
+        <name>PartnerDealRegistration</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Creates a Partner Lead --></description>
@@ -4371,6 +4470,34 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <errorMessage><!-- &quot;Invalid substatus selection. Allowed substatus for the data condition: Not target profile,Already Engaged with Intel, or Rep Inactivity.&quot; --></errorMessage>
         <name>Core_Validate_salelead_substatus_for_SAL</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_Company_Id_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please do populate Covered Account before moving the record from New to Accepted. --></errorMessage>
+        <name>Require_covered_account_before_Accepted</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Lead source cannot be changed for Leads created from Credit request --></errorMessage>
+        <name>SWS_CreditRequest_LeadSrc_cannot_change</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Last Name and Email are required field. --></errorMessage>
+        <name>SWS_LastnameEmail_are_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Lead once disqualified cannot be edited or modified. --></errorMessage>
+        <name>SWS_Lead_Locked_for_disqualifed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please change status to &quot;Sales Qualified&quot; before converting --></errorMessage>
+        <name>SWS_Lead_cannot_be_CTO_before_SQL</name>
+    </validationRules>
     <webLinks>
         <label><!-- AltavistaNews --></label>
         <name>AltavistaNews</name>
@@ -4434,22 +4561,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <webLinks>
         <label><!-- Core_Revive --></label>
         <name>Core_Revive</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- InviteLeadToEvent --></label>
-        <name>CventEvents__InviteLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelLeadToEvent --></label>
-        <name>CventEvents__ModifyCancelLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateLeadToEvent --></label>
-        <name>CventEvents__NominateLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterLeadToEvent --></label>
-        <name>CventEvents__RegisterLeadToEvent</name>
     </webLinks>
     <webLinks>
         <label><!-- Eloqua_Profiler --></label>

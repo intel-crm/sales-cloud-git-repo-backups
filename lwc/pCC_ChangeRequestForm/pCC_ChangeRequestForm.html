@@ -1,0 +1,275 @@
+<template>
+   <!-- Form Header -->
+   <div class="slds-border_left slds-border_right slds-border_bottom">
+
+      <div class="slds-border_bottom t slds-border_top">
+         <div class="slds-page-header">
+
+            <div class="slds-page-header__row">
+               <div class="slds-page-header__col-title">
+                  <div class="slds-media">
+                     <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-opportunity" title="opportunity">
+                           <span>
+                              <lightning-icon icon-name="standard:opportunity" size="small"
+                                 alternative-text="Opportunity"></lightning-icon>
+                           </span>
+                           <span class="slds-assistive-text slds-page-header__title slds-truncate">opportunity</span>
+                        </span>
+                     </div>
+                     <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                           <div class="slds-page-header__name-title">
+                              <h1>
+                                 <span class="slds-page-header__title slds-truncate"
+                                    title={opportunity.Name}>{opportunity.Name}<br>
+
+                                 </span>
+                              </h1>
+                           </div>
+                        </div>
+                        <span class="slds-float_right">
+                           <template if:false={showForm}>
+
+                              <lightning-button variant="neutral" label="Add New Product" onclick={handleNewProduct}
+                                 disabled={hideButtons} class="slds-p-right_xx-small"></lightning-button>
+                              <!-- <div> -->
+                              <lightning-button variant="neutral" label="Change or Cancel Product/s"
+                                 onclick={handleCreateNewRequest} disabled={getEditButtonValue}></lightning-button>
+                              <template lwc:if={getEditButtonValue}>
+                                 <lightning-helptext icon-name="utility:info"
+                                    content="No product is eligible for change request"></lightning-helptext>
+                              </template>
+
+                              <!-- </div> -->
+                           </template>
+
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!-- Change request popup -->
+         <template if:true={showForm}>
+
+
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+               class="slds-modal slds-fade-in-open">
+               <!--  slds-modal_large -->
+               <div class="slds-modal__container" style="width: auto; height: auto; max-width: 90%; max-height: 100%">
+                  <!-- sldsValidatorIgnoreNextLine -->
+                  <button type="button" title="Close this window"
+                     class="slds-button slds-button_icon slds-modal__close slds-button_icon-bare" onclick={closePopup}>
+                     <lightning-icon icon-name="utility:close" alternative-text="Close" size="medium"
+                        class="slds-button__icon"></lightning-icon>
+                     <span class="slds-assistive-text">Close this window</span>
+                  </button>
+
+                  <!-- Edit products screen -->
+
+                  <template lwc:if={editModel}>
+                     <div class="slds-modal__header">
+                        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">New Change
+                           Request
+                        </h1>
+                     </div>
+                     <div class="slds-card">
+                        <template lwc:if={opportunitySelected}>
+
+                           <lightning-layout-item>
+
+                              <div class=" slds-box slds-m-around_small">
+                                 <h1 class=" slds-text-title_caps slds-text-title_bold" style="font-size:20px;">
+                                    Instructions</h1><br>
+                                 <div class="slds-text-color_weak">
+                                    <ul class="slds-p-left_medium slds-list_dotted">
+                                       <li>Editable columns are highlighted</li>
+                                       <li>Please use pencil icon for editing</li>
+                                    </ul>
+                                 </div>
+                              </div>
+
+
+                           </lightning-layout-item>
+
+
+                           <!-- <hr class="no-margin"> -->
+                           <div class="slds-var-m-around_small">
+                              <lightning-layout vertical-align="stretch" multiple-rows>
+                                 <lightning-layout-item size="12">
+                                    <div class={getDataTableHeight}>
+                                       <lightning-datatable key-field="id" data={data} columns={columns}
+                                          onsave={handleSave} onrowaction={handleRowAction} draft-values={draftValues}
+                                          errors={tableErrors} hide-checkbox-column wrap-table-header>
+
+
+                                       </lightning-datatable>
+
+                                    </div>
+                                 </lightning-layout-item>
+                              </lightning-layout>
+                           </div>
+
+                           <div class="slds-float_right slds-m-around_small">
+
+
+                              <lightning-button label="Review Change Request" disabled={enablePopUpSaveCancel}
+                                 variant="brand" onclick={handleOpenPrevieScreen}></lightning-button>
+
+
+                           </div>
+                        </template>
+
+                     </div>
+                  </template>
+
+                  <!-- Summary Screen -->
+                  <template lwc:else>
+                     <div class="slds-modal__header warningBackGround">
+                        <div class="slds-align_absolute-center">
+                           <lightning-icon icon-name="utility:warning" alternative-text="Warning"
+                              class="slds-icon slds-icon_x-small slds-m-right_large slds-button_icon-inverse"></lightning-icon>
+                           <h1 id="modal-heading-02"
+                              class="slds-modal__title slds-hyphenate slds-p-top_medium slds-text-color_inverse"
+                              tabindex="-1">Change Request Summary</h1>
+                           <lightning-icon icon-name="utility:warning" alternative-text="Warning"
+                              class="slds-icon slds-icon_x-small slds-m-left_medium slds-button_icon-inverse"></lightning-icon>
+                        </div>
+                     </div>
+                     <div class="slds-card">
+                        <template lwc:if={opportunitySelected}>
+                           <div class="slds-var-m-around_small">
+                              <lightning-layout vertical-align="stretch" multiple-rows>
+                                 <lightning-layout-item size="12">
+                                    <div class={getTableClass}>
+                                       <lightning-datatable key-field="id" data={editedProducts}
+                                          columns={previewScreenColumns} onsave={handleSave}
+                                          onrowaction={handleRowAction} draft-values={draftValues} errors={tableErrors}
+                                          hide-checkbox-column wrap-table-header>
+                                       </lightning-datatable>
+
+                                    </div>
+                                 </lightning-layout-item>
+                              </lightning-layout>
+                           </div>
+                           <!-- Summary Screen -->
+                           <div class="slds-float_right slds-p-around_small">
+                              <lightning-button class="slds-m-right_small" label="Edit Change Request"
+                                 disabled={enablePopUpSaveCancel} variant="neutral"
+                                 onclick={handleEditChangeRequest}></lightning-button>
+                              <lightning-button label="Save Change Request" disabled={enablePopUpSaveCancel}
+                                 variant="brand" onclick={handleSaveasDraft}></lightning-button>
+                           </div>
+                        </template>
+
+                     </div>
+                  </template>
+
+               </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+         </template>
+
+         <!-- Readonly View when page is loaded-->
+         <div class="slds-card">
+            <template lwc:if={opportunitySelected}>
+
+               <lightning-layout vertical-align="stretch" multiple-rows>
+
+                  <template lwc:if={editProducts}>
+                     <lightning-layout-item size="12" class="slds-p-around_small">
+
+                        <div class="slds-card slds-has-bottom-magnet">
+                           <div class="slds-p-around_medium slds-box" style="background-color: #f9f9f9;">
+                              <h5 class="slds-has-bottom-magnet"> Changed or Edited Products</h5>
+                           </div>
+                        </div>
+
+                        <div class={getTableClass}>
+                           <!-- style="height:200px;" -->
+                           <!-- <div class="box-title"> -->
+                           <lightning-datatable key-field="id" data={editedProducts} columns={previewScreenColumns}
+                              hide-checkbox-column wrap-table-header>
+
+                           </lightning-datatable>
+                           <!-- </div> -->
+                        </div>
+                     </lightning-layout-item>
+                  </template>
+
+                  <template lwc:if={newProducts}>
+                     <lightning-layout-item size="12" class="slds-p-around_small">
+                        <div class="slds-card slds-has-bottom-magnet">
+                           <div class="slds-p-around_medium slds-box" style="background-color: #f9f9f9;">
+                              <h5 class="slds-has-bottom-magnet"> Newly Added Products</h5>
+                           </div>
+                        </div>
+                        <div class={getTableClass}>
+                           <!-- style="height:200px;" -->
+                           <!-- <div class="box-title"> -->
+                           <c-p-c-c-_lookup key-field="id" data={newlyAddedProducts} columns={newProductScreenCols}
+                              hide-checkbox-column onrowaction={handleNewProductRowAction} wrap-table-header
+                              show-row-number-column>
+                           </c-p-c-c-_lookup>
+                           <!-- </div> -->
+                        </div>
+
+                     </lightning-layout-item>
+                  </template>
+
+                  <template if:false={editProducts}>
+                     <lightning-layout-item size="12">
+                        <template lwc:if={errormessages}>
+                           <div class="slds-var-p-around_small">
+                              <!-- slds-align_absolute-center  -->
+                              <ol>
+                                 <template for:each={errormessages} for:item="error">
+                                    <li key={error}>
+                                       <p> <strong>-</strong> {error}</p>
+                                    </li>
+                                 </template>
+                              </ol>
+                           </div>
+                        </template>
+                     </lightning-layout-item>
+                  </template>
+               </lightning-layout>
+               <!-- </div> -->
+
+            </template>
+
+         </div>
+      </div>
+
+      <!-- create new DRP -->
+      <template lwc:if={createRecord}>
+         <div>
+            <c-p-c-c_-create-product-component dr-id={designRegId} record-type-id={recordTypeId}
+               drp-record={editProduct} row-index={index} competitor-product-name={competitorProductName}
+               dr-name={drName} product-name={dealProductName} onclosecreatescreen={closeCreateScreen}
+               onclose={handleOnClose} onload={handleOnLoad}
+               onreadrecord={handleIncomingRecord}></c-p-c-c_-create-product-component>
+         </div>
+      </template>
+      <template if:true={showButtons}>
+
+         <div class="slds-align_absolute-center ">
+
+            <lightning-button class="slds-p-around_small" label="Cancel" disabled={disableButtons} variant="neutral"
+               onclick={handleCancel}></lightning-button>
+
+            <lightning-button class="slds-p-around_small" label="Submit" disabled={disableButtons} variant="brand"
+               onclick={handleSubmit}></lightning-button>
+
+         </div>
+
+      </template>
+
+      <!-- Loading spinner -->
+      <template if:false={loaded}>
+         <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+      </template>
+   </div>
+</template>

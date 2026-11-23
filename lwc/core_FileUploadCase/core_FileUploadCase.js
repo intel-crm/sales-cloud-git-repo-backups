@@ -15,7 +15,7 @@ export default class Core_FileUploadCase extends LightningElement {
     // Method to handle file change event
     handleFileChange(event) {
         if (event.target.files.length > 0) {
-            for (let i = 0; i < event.target.files.length; i++) {
+            for (var i = 0; i < event.target.files.length; i++) {
                 if (event.target.files[i].size > MAX_FILE_SIZE) {
                     this.ShowToast('Error!!', 'File size exceeded the upload size limit 2.5MB.', 'error', 'dismissable');
                     return;
@@ -23,9 +23,8 @@ export default class Core_FileUploadCase extends LightningElement {
                 let file = event.target.files[i];
                 let reader = new FileReader();
                 reader.onload = e => {
-                    var fileContents = reader.result.split(',')[1];
-                    let indexNumber = this.filesData.length;
-                    this.filesData.push({ 'indexNumber': indexNumber, 'fileName': file.name, 'fileContent': fileContents });
+                    var fileContents = reader.result.split(',')[1]
+                    this.filesData.push({ 'indexNumber': i, 'fileName': file.name, 'fileContent': fileContents });
                 };
                 reader.readAsDataURL(file);
             }
@@ -34,12 +33,8 @@ export default class Core_FileUploadCase extends LightningElement {
 
     // Method to remove file from the list
     removeFile(event) {
-        let index = event.target.dataset.index;
-        this.filesData = this.filesData.filter(item => item.indexNumber != index);
-
-        this.filesData.forEach((item, newIndex) => {
-            item.indexNumber = newIndex;
-        });
+        var index = event.target.dataset.index;
+        this.filesData.pop(index);
     }
 
     // Method to publish message for file upload
